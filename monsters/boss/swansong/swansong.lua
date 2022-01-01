@@ -957,7 +957,7 @@ rocketSwarmAttack = async(function(conf)
 					table.insert(projectiles, leftId)
 
 					local rightPos = vec2.add(mcontroller.position(), animator.partPoint("body", "rightRocketSource"))
-					local aimDir = vec2.rotate({1, 0}, -util.toRadians(30) * math.random() * util.toRadians(60))
+					aimDir = vec2.rotate({1, 0}, -util.toRadians(30) * math.random() * util.toRadians(60))
 					local rightId = world.spawnProjectile("swansongrocket", rightPos, entity.id(), aimDir, false, {power = scalePower(conf.power)})
 					table.insert(projectiles, rightId)
 
@@ -1133,7 +1133,7 @@ meleeChargeAttack = async(function(conf, bodyChargeState, bodyEndState)
 	animator.playSound("thrustLoop", -1)
 	monster.setDamageParts({"sword"})
 
-	local timer = 0.0
+	timer = 0.0
 	local windupTime = conf.windup
 	while timer < windupTime do
 		local jitter = 0.125 * timer / windupTime

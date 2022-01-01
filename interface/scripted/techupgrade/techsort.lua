@@ -22,7 +22,7 @@ function populateTechList(slot)
   end
 
   -- Add all of the unsorted stuff
-  local things = util.filter(techs, function(a) return not contains(things, a) end)
+  things = util.filter(techs, function(a) return not contains(things, a) end)
   for _,thing in pairs(things) do
       table.insert(stuff, thing)
   end

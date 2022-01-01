@@ -30,21 +30,21 @@ function populateMaterialsList()
                     widget.setText(path .. ".text", "^green;Date:^reset; "..getDate(world.day()))
 
                     -- print time
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Time:^reset; "..timeConversion())
 
                     -- print day length
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Day Length:^reset; "..math.floor(world.dayLength()))
 
                     -- print light level
                     local lightLevel = math.floor(world.lightLevel(world.entityPosition(player.id()))*100)/100
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Light Level:^reset; "..lightLevel)
 
                     -- print windLevel
                     local windLevel = math.floor(world.windLevel(world.entityPosition(player.id()))*100)/100
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Wind Level:^reset; "..windLevel)
 
                     local parameters = celestial.visitableParameters(planet)
@@ -58,10 +58,11 @@ function populateMaterialsList()
                         end
                     end
                     enviro = enviro.."."
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Enviroment Status Effects:^reset; "..enviro)
 
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Weather:^reset; ")
 
                     local weatherItem="None"

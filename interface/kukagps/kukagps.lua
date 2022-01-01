@@ -36,20 +36,20 @@ function populateMaterialsList()
 
                     local starType = celestial.planetParameters(system).typeName or "default"
                     -- print star
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Star:^reset; " .. (stars[starType] or '?'))
 
                     -- print coord
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Coordinate X:^reset; "..system.location[1].."                        ^green;Coordinate Y:^reset; "..system.location[2])
 
                     -- print planet
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Planet:^reset; "..celestial.planetName(planet))
 
                     -- print planet primary biome
                     local parameters = celestial.visitableParameters(planet)
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Primary biome:^reset; "..(parameters.primaryBiome and (biomes[parameters.primaryBiome] or parameters.primaryBiome) or (biomes[parameters.typeName] or parameters.typeName)))
 
                     -- print planet subbiomes (includes main biome)
@@ -66,25 +66,26 @@ function populateMaterialsList()
                         end
                     end
                     subbiomes = subbiomes.."."
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Secondary biomes:^reset; "..subbiomes)
 
                     local pos = world.entityPosition(player.id())
                     -- print pos
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Position X:^reset; "..math.floor(pos[1]).."                                       ^green;Position Y:^reset; "..math.floor(pos[2]))
 
                     local size = world.size() or {0,0}
                     -- print world size
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Width:^reset; "..size[1].."                                            ^green;Height:^reset; "..size[2])
 
                     -- print planet threat and gravity
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Threat:^reset; "..ThreatToString(parameters.threatLevel).."                                   ^green;Gravity:^reset; "..parameters.gravity or 0)
 
                     -- print planet ores names
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Ores:^reset; ")
                     local localOres="None"
                     local linecount=0
@@ -98,7 +99,7 @@ function populateMaterialsList()
                         if linecount==7 then
                             -- print line and reset counter
                             localOres = localOres.."."
-                            local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                            path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", "       "..localOres)
                             localOres = "None"
                             linecount = 0
@@ -106,35 +107,35 @@ function populateMaterialsList()
                     end
                     if linecount ~= 0 then
                         localOres = localOres.."."
-                        local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                        path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                         widget.setText(path .. ".text", "       "..localOres)
                     end
 
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "-------------------------------------------------------------------------------")
 
                     if parameters.primaryBiome then -- asteroid fields don't have time in the typical sense
                         -- print date
-                        local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                        path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                         widget.setText(path .. ".text", "^green;Date:^reset; "..getDate(world.day()))
 
                         -- print time
-                        local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                        path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                         widget.setText(path .. ".text", "^green;Time:^reset; "..timeConversion())
 
                         -- print day length
-                        local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                        path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                         widget.setText(path .. ".text", "^green;Day Length:^reset; "..math.floor(world.dayLength()))
                     end
 
                     -- print light level
                     local lightLevel = math.floor(world.lightLevel(world.entityPosition(player.id()))*100)/100
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Light Level:^reset; "..lightLevel)
 
                     -- print windLevel
                     local windLevel = math.floor(world.windLevel(world.entityPosition(player.id()))*100)/100
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Wind Level:^reset; "..windLevel)
 
                     -- print enviroment status effects
@@ -149,21 +150,21 @@ function populateMaterialsList()
                         end
                     end
 
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "-------------------------------------------------------------------------------")
 
                     enviro = enviro.."."
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Enviroment Status Effects:^reset; "..enviro)
 
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "-------------------------------------------------------------------------------")
 
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Weather:^reset; ")
 
                     local weatherItem="None"
-                    local linecount=0
+                    linecount=0
                     for _,w in pairs(parameters.weatherPool) do
                         ww = (w.weight * 100)
                         if weatherItem=="None" then
@@ -178,7 +179,7 @@ function populateMaterialsList()
                             -- after 4 elements, print line and reset counter
                             
                             weatherItem = weatherItem.."."
-                            local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                            path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", "          "..weatherItem)  -- print a long tab space, and then a line of weather info
                             weatherItem = "None"
                             linecount = 0
@@ -186,42 +187,42 @@ function populateMaterialsList()
                     end
                     if linecount ~= 0 then
                         weatherItem = weatherItem.."."
-                        local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                        path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                         widget.setText(path .. ".text", "          "..weatherItem)
                     end
 
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "-------------------------------------------------------------------------------")
 
                     -- print dungeons
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Dungeons on Planet:^reset; ")
 
                     -- Search for dungeons in spaceLayer. If exists in dungeon's list, look for name. Else, unknown dungeon.
                     if (parameters.spaceLayer and parameters.spaceLayer.dungeons) then
                         for _,dungeon in pairs(parameters.spaceLayer.dungeons) do
-                            local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                            path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
                         end
                     end
                     -- Search for dungeons in atmosphereLayer. If exists in dungeon's list, look for name. Else, unknown dungeon.
                     if (parameters.atmosphereLayer and parameters.atmosphereLayer.dungeons) then
                         for _,dungeon in pairs(parameters.atmosphereLayer.dungeons) do
-                            local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                            path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
                         end
                     end
                     -- Search for dungeons in surfaceLayer. If exists in dungeon's list, look for name. Else, unknown dungeon.
                     if (parameters.surfaceLayer and parameters.surfaceLayer.dungeons) then
                         for _,dungeon in pairs(parameters.surfaceLayer.dungeons) do
-                            local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                            path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
                         end
                     end
                     -- Search for dungeons in subsurfaceLayer. If exists in dungeon's list, look for name. Else, unknown dungeon.
                     if (parameters.subsurfaceLayer and parameters.subsurfaceLayer.dungeons) then
                         for _,dungeon in pairs(parameters.subsurfaceLayer.dungeons) do
-                            local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                            path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
                         end
                     end
@@ -230,7 +231,7 @@ function populateMaterialsList()
                         for _,layer in pairs(parameters.undergroundLayers) do
                             -- you have to go in every layer inside undergroundLayers               
                             for _,dungeon in pairs(layer.dungeons) do
-                                local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                                path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                                 widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
                             end
                         end
@@ -238,7 +239,7 @@ function populateMaterialsList()
                     -- Search for dungeons in corelayer. If exists in dungeon's list, look for name. Else, unknown dungeon.
                     if (parameters.coreLayer and parameters.coreLayer.dungeons) then
                         for _,dungeon in pairs(parameters.coreLayer.dungeons) do
-                            local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                            path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
                         end
                     end
