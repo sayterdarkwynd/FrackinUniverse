@@ -250,6 +250,7 @@ function excavatorCommon.grab(grabPos)
 		--if entity.entityInSight(drops[i])
 		local item = world.takeItemDrop(id)
 		if item~=nil then
+			-- luacheck: ignore 211
 			local result,countSent,dropped=transferUtil.throwItemsAt(transferUtil.vars.containerId,transferUtil.vars.inContainers[transferUtil.vars.containerId],item,true)
 			--sb.logInfo("result: %s, countSent: %s, dropped: %s",result,countSent,dropped)
 			if dropped then--throttle control. no effect if no vac delay (such as on quarries and pumps)
