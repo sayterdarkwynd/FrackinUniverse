@@ -34,20 +34,6 @@ function build(directory, config, parameters, level, seed)
 		return t
 	end
 
-	local configParameterDeep = function(keyName, defaultValue)
-		local sets=split(keyName,"%.")
-		local mergedBuffer=util.mergeTable(copy(config),copy(parameters))
-		for _,v in pairs(sets) do
-			if mergedBuffer[v] then
-				mergedBuffer=mergedBuffer[v]
-			else
-				mergedBuffer=defaultValue
-				break
-			end
-		end
-		return mergedBuffer
-	end
-
 	if level and not configParameter("fixedLevel", true) then
 		parameters.level = level
 	end
