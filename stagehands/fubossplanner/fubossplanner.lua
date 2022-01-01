@@ -79,7 +79,7 @@ function init()
       end
     end)
 
-  local reactions = reactionHooks(reactions, storage.plan)
+  reactions = reactionHooks(reactions, storage.plan)
   message.setHandler("trigger", function(_,_, triggerId, triggerPosition)
     if reactions[triggerId] then
       reactions[triggerId](triggerPosition)

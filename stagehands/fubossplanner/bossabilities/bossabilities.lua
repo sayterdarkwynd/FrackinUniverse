@@ -352,7 +352,7 @@ function bumpersHandler(ability, operation, plan, state, spaceConfig)
     positions[pos[2]] = true
   end
   positions = util.keys(positions)
-  local positions = util.map(positions, function(y) return {center, y} end)
+  positions = util.map(positions, function(y) return {center, y} end)
   ability = mapAbilityActions(ability, function(action)
       action.parameters.positions = positions
       action.parameters.projectileType = ability.projectileType:gsub("<element>", storage.elementalType)
