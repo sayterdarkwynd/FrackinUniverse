@@ -773,14 +773,12 @@ function getNearbyStations()
 	end
 
 	local found = {}
-	local foundone = false
 	for _, id in pairs(nearby) do
 		local name = world.entityName(id)
 		-- local obj = processObjects[name]
 		-- if obj and obj.map then name = obj.map end -- this was an exception for roof extractors, they don't exist anymore
 		if recognisedObjectsKey[name] then --processObjects[name] -- why processobjects in here ??????
 			found[name] = true
-			foundone = true
 		end
 	end
 

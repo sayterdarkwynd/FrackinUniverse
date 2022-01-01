@@ -29,7 +29,6 @@ function smashContainer(objectType)
 	local inventoryIcon = config.getParameter("inventoryIcon")
 	local renamedShortDescription = config.getParameter("renamedShortDescription")
 	local content = world.containerItems(entity.id())
-	local containerEmpty = true
 	local objParameters = {}
 	local description = ""
 	local shortdescription
@@ -82,7 +81,6 @@ function smashContainer(objectType)
 			description = (objectType == "mannequin") and description or "^green;^reset; " .. usedSlots .. " / " .. world.containerSize(entity.id()) .. " slots used"
 
 			if usedSlots > 0 then
-				containerEmpty = false
 				objParameters["price"] = price
 				objParameters["content"] = content
 				objParameters["inventoryIcon"] = inventoryIcon .. "?border=1;00FF00?fade=007800;0.1"

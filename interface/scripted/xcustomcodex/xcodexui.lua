@@ -6,7 +6,10 @@
 
 -- To reference any ScrollArea children widgets in Lua scripts (widget.* table) use the following format: <ScrollArea name>.<Children widget name>.
 
+-- luacheck: push ignore 231
 local print, warn, error, assertwarn, assert, tostring; -- Specify these as locals
+-- luacheck: pop
+
 require("/scripts/xcore_customcodex/LoggingOverride.lua") -- tl;dr I can use print, warn, error, assert, and assertwarn
 
 ---------------------------

@@ -2,7 +2,10 @@
 -- Code to learn codex entries.
 require("/scripts/xcore_customcodex/LoggingOverride.lua") -- Very nice script!
 local HasLoggingOverride = false
-local print, warn, error, assertwarn, assert, tostring;
+
+-- luacheck: push ignore 231
+local print, warn, error, assertwarn, assert, tostring
+-- luacheck: pop
 
 local function GetLoggingOverridesIfNecessary()
 	if HasLoggingOverride then return end

@@ -600,6 +600,7 @@ function update(dt)
 			animator.setGlobalTag("directives", "")
 		end
 
+		-- FIXME: found by Luacheck: visibility of this local "walking" variable disappears before it is used below.
 		local walking = false
 		if self.driverId then
 			-- for k, _ in pairs(self.lastControls) do

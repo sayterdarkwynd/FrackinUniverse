@@ -10,7 +10,6 @@ fertslot = 2
 inputSlots = {seedslot, waterslot, fertslot}
 local tenantNumber
 local happinessAmount
-local scanTimer
 local parentCore --save the colony core as a local so you don't have to look for it every time
 
 
@@ -49,7 +48,6 @@ function init()
 	tenantNumber = 0
 	happinessAmount = (config.getParameter("happiness",0))
 	wellsDrawing = 0
-	scanTimer = 0
 
 	getTenantNumber()
 	wellInit()

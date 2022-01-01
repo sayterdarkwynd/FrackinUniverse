@@ -61,7 +61,7 @@ function epoch.toTable(t)
     s=s-h*3600
     n=floor(s/60)
     s=s-n*60
-	return {hour=h,minute=n,second=s,month=m,day=d,year=y}
+	return {hour=h,minute=n,second=s,month=m,day=d,year=y,dow=w}
     --[[print("y","j","m","d","w","h","n","s")
     print(y,j+1,m,d,w,h,n,s)]]
 	

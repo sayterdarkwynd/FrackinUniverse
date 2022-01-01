@@ -341,9 +341,7 @@ function NebRNGAimBot:idealAimVector(inaccuracy)
 	local y = targetOffset[2]
 	local g = self.projectileGravityMultiplier * world.gravity(mcontroller.position())
 	local v = self.projectileParameters.speed
-	local reverseGravity = false
 	if g < 0 then
-	  reverseGravity = true
 	  g = -g
 	  y = -y
 	end

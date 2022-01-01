@@ -131,7 +131,6 @@ end
 -- output direction
 function approachTurn(args, output, _, dt)
 	local targetPosition = world.entityPosition(args.entity)
-	local distance = world.magnitude(targetPosition, mcontroller.position())
 	while true do
 		local toTarget = world.distance(targetPosition, mcontroller.position())
 		local angle = mcontroller.rotation()
@@ -160,7 +159,6 @@ function approachTurn(args, output, _, dt)
 		coroutine.yield(nil, {angle = angle, direction = diff})
 
 		targetPosition = world.entityPosition(args.entity)
-		distance = world.magnitude(targetPosition, mcontroller.position())
 	end
 end
 
