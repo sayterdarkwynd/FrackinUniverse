@@ -100,14 +100,6 @@ function explore()
 		end
 		coroutine.yield()
 	end
-
-	storage.stage = 2
-
-	player.radioMessage("gaterepair-findGate")
-
-	util.wait(8)
-
-	self.state:set(self.stages[storage.stage])
 end
 
 
@@ -135,8 +127,6 @@ function findGate()
 		end
 		coroutine.yield()
 	end
-
-	self.state:set(self.stages[storage.stage])
 end
 
 function gateFound()
@@ -261,7 +251,6 @@ function findEsther(dt)
 		end
 		coroutine.yield()
 	end
-	self.state:set(self.stages[storage.stage])
 end
 
 function questComplete()

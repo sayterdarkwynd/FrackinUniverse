@@ -274,8 +274,6 @@ function moveToPosition(args, board, node)
 
 		coroutine.yield(nil, {pathfinding = mcontroller.pathfinding(), direction = mcontroller.facingDirection()})
 	end
-
-	return true
 end
 -- param velocity
 -- param x

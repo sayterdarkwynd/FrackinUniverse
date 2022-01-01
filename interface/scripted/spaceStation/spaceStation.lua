@@ -1546,6 +1546,7 @@ end
 function populateScientificList()
 	if true then return false end
 
+	-- luacheck: push ignore 511
 	widget.clearListItems("scientificSpecialList.itemList")
 	scientificListIDs = {}
 
@@ -1589,6 +1590,7 @@ function populateScientificList()
 
 	checkScientificAvailability()
 	stationData.selected = nil
+	-- luacheck: pop
 end
 
 function checkScientificAvailability()

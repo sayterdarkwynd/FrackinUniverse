@@ -141,12 +141,9 @@ function transferUtil.throwItemsAt(target,targetPos,item,drop)
 		else
 			return true,item.count-leftOverItems.count
 		end
-	else
-		return true, item.count
 	end
 
-	return false;
-
+	return true, item.count
 end
 
 function transferUtil.updateInputs()

@@ -179,8 +179,6 @@ function playState(dt)
 
     coroutine.yield()
   end
-
-  self.state:set(winState)
 end
 
 function loseState()

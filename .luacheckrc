@@ -66,5 +66,8 @@ exclude_files = {
 	"**/communitygardenold.lua",
 	"**/monsters/fulegacyscripts/*",
 	"**/quests/scripts/test1.lua",
-	"**/stats/effects/fu_weaponeffects/swashbucklerpower.lua"
+	"**/stats/effects/fu_weaponeffects/swashbucklerpower.lua",
+
+	-- Example files (can have unreachable code, etc.)
+	"**/stats/effects/fu_armoreffects/setbonus_Templates/**"
 }

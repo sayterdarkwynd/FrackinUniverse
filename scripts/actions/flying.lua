@@ -74,7 +74,7 @@ function flyInGeneralDirection(args, board)
 	while true do
 		mcontroller.controlDown()
 		local maxAngle = util.toRadians(args.maxAngle)
-	local pos=args.position or entity.position()
+		local pos=args.position or entity.position()
 		local toTarget = vec2.norm(world.distance(pos, mcontroller.position()))
 		if direction == nil or math.acos(vec2.dot(toTarget, direction)) > maxAngle then
 			direction = vec2.rotate(toTarget, (util.randomDirection() * math.random() * maxAngle))
@@ -85,8 +85,6 @@ function flyInGeneralDirection(args, board)
 
 		coroutine.yield()
 	end
-
-	return true
 end
 
 
