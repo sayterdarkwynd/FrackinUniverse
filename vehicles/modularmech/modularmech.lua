@@ -572,6 +572,7 @@ function update(dt)
 
 	local newControls = {}
 	local oldControls = self.lastControls
+	local walking = false
 
 	if self.deploy then
 		self.deploy.fadeTimer = math.max(0.0, self.deploy.fadeTimer - dt)
@@ -600,8 +601,6 @@ function update(dt)
 			animator.setGlobalTag("directives", "")
 		end
 
-		-- FIXME: found by Luacheck: visibility of this local "walking" variable disappears before it is used below.
-		local walking = false
 		if self.driverId then
 			-- for k, _ in pairs(self.lastControls) do
 				-- newControls[k] = vehicle.controlHeld("seat", k)
