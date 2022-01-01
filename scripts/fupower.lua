@@ -10,6 +10,7 @@ function power.update(dt)
 		power.warmedUp=true
 	end
 	if power.objectPowerType then
+		-- luacheck: ignore 122
 		if object.pulseTimer and object.pulseTimer >= 1.0 then
 			object.pulseTimer=0.0
 			local inputCounter=0
