@@ -44,11 +44,11 @@ function init()
 			end
 
 			local adjacent = {}
-			local wrap = function(i)
-				while i > self.maxAdds do
-					i = i - self.maxAdds
+			local wrap = function(j)
+				while j > self.maxAdds do
+					j = j - self.maxAdds
 				end
-				return i
+				return j
 			end
 			if i % 3 ~= 0 then
 				table.insert(adjacent, self.ophanims[wrap(i + 1)])
