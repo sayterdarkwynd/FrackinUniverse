@@ -379,8 +379,8 @@ function spawnHelis()
 					{ entityType = "helicultist", count = 1},
 					{ entityType = "fuhelicultist", count = 1}
 				})
-				for _,entityId in pairs(newHelis) do
-					table.insert(helis, entityId)
+				for _,entityId2 in pairs(newHelis) do
+					table.insert(helis, entityId2)
 				end
 			end
 		end

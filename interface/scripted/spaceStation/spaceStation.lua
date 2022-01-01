@@ -140,7 +140,7 @@ function firstTimeInit()
 				rarity = "rare"
 			end
 
-			for _, tbl in pairs(available) do
+			for _, tbl in pairs(available) do -- luacheck: ignore 213/tbl
 				-- FIXME: detected by Luacheck: something is wrong here (loop checks the same thing 3 times).
 				if #available[rarity] < 1 then
 					if rarity == "rare" then
@@ -1003,9 +1003,9 @@ function shopRestock()
 
 					local roll = math.random(1,100)
 					local tiers = stationData.shop.weaponLevelRates
-					for i = 1, #tiers do
-						if roll < tiers[#tiers - i + 1] then
-							level = i
+					for j = 1, #tiers do
+						if roll < tiers[#tiers - j + 1] then
+							level = j
 							break
 						end
 					end
@@ -1038,9 +1038,9 @@ function shopRestock()
 
 					local roll = math.random(1,100)
 					local tiers = stationData.shop.weaponLevelRates
-					for i = 1, #tiers do
-						if roll < tiers[#tiers - i + 1] then
-							level = i
+					for j = 1, #tiers do
+						if roll < tiers[#tiers - j + 1] then
+							level = j
 							break
 						end
 					end

@@ -483,8 +483,8 @@ function populateTreeList()
 			end
 
 			if isAvailable and data.treeUnlocks[tree].research then
-				for tree, acronyms in pairs(data.treeUnlocks[tree].research) do
-					if not isResearched(tree, acronyms) then
+				for requiredAnotherTree, acronyms in pairs(data.treeUnlocks[tree].research) do
+					if not isResearched(requiredAnotherTree, acronyms) then
 						isAvailable = false
 						break
 					end
