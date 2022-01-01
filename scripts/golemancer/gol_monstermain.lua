@@ -41,6 +41,7 @@ function update(dt)
 	end
 end
 
+-- luacheck: ignore 121
 function require(s)
 	if s ~= "/monsters/monster.lua" then preGolemRequire(s) end
 end

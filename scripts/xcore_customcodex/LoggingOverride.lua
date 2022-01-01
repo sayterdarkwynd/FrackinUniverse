@@ -62,6 +62,7 @@ function CreateLoggingOverride(prefix, tostringPointsToSBPrint)
 		prefix = prefix .. " "
 	end
 
+	-- luacheck: ignore 121
 	tostring = function (...)
 		if (tostringPointsToSBPrint or LUA_TOSTRING == nil) and (sb ~= nil) then
 			return sb.print(...)
