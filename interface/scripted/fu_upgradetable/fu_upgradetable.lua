@@ -282,7 +282,7 @@ function itemSelected()
 	self.selectedItem = listItem
 
 	if listItem then
-		local listItem = widget.getData(string.format("%s.%s", self.itemList, listItem))
+		listItem = widget.getData(string.format("%s.%s", self.itemList, listItem))
 		localItem = self.upgradableItems[listItem.index]
 		local cost = upgradeCost(root.itemConfig(localItem.itemData), localItem.itemType, self.upgradeTargetLevel)
 		showItem(localItem.itemData,cost,localItem.itemType)

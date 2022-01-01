@@ -30,39 +30,39 @@ function populateMaterialsList()
                     local parameters = celestial.visitableParameters(planet)
                     if (parameters.spaceLayer and parameters.spaceLayer.dungeons) then
                         for _,dungeon in pairs(parameters.spaceLayer.dungeons) do
-                            local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                            path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
                         end
                     end
                     if (parameters.atmosphereLayer and parameters.atmosphereLayer.dungeons) then
                         for _,dungeon in pairs(parameters.atmosphereLayer.dungeons) do
-                            local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                            path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
                         end
                     end
                     if (parameters.surfaceLayer and parameters.surfaceLayer.dungeons) then
                         for _,dungeon in pairs(parameters.surfaceLayer.dungeons) do
-                            local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                            path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
                         end
                     end
                     if (parameters.subsurfaceLayer and parameters.subsurfaceLayer.dungeons) then
                         for _,dungeon in pairs(parameters.subsurfaceLayer.dungeons) do
-                            local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                            path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
                         end
                     end
                     if (parameters.undergroundLayers) then
                         for _,layer in pairs(parameters.undergroundLayers) do
                             for _,dungeon in pairs(layer.dungeons) do
-                                local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                                path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                                 widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
                             end
                         end
                     end
                     if (parameters.coreLayer and parameters.coreLayer.dungeons) then
                         for _,dungeon in pairs(parameters.coreLayer.dungeons) do
-                            local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                            path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
                         end
                     end

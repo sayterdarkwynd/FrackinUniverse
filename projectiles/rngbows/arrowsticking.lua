@@ -53,7 +53,7 @@ function update(dt)
 
   if self.stuckToGround then
 	if config.getParameter("proximitySearchRadius") then
-	  local targets = world.entityQuery(mcontroller.position(), self.searchDistance, {
+	  targets = world.entityQuery(mcontroller.position(), self.searchDistance, {
 		withoutEntityId = projectile.sourceEntity(),
 		includedTypes = {"creature"},
 		order = "nearest"

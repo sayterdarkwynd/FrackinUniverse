@@ -78,7 +78,7 @@ function populateMaterialsList()
                         if linecount==4 then
                             -- print line and reset counter
                             weatherItem = weatherItem.."."
-                            local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                            path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", "          "..weatherItem)
                             weatherItem = "None"
                             linecount = 0
@@ -86,7 +86,7 @@ function populateMaterialsList()
                     end
                     if linecount ~= 0 then
                         weatherItem = weatherItem.."."
-                        local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                        path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                         widget.setText(path .. ".text", "          "..weatherItem)
                     end
                 else

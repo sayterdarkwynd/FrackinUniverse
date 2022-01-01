@@ -253,7 +253,7 @@ function raceList_SelectedChanged()
 						end
 					end
 					itemNewInfo = root.itemConfig(self.newName) or {}
-					local itemNewCfg = itemNewInfo.config
+					itemNewCfg = itemNewInfo.config
 					if itemNewCfg then
 						widget.setImage("imgPreviewOut", getPlacementImage(itemNewCfg.orientations, itemNewInfo.directory))
 					else

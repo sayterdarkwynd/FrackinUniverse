@@ -45,7 +45,7 @@ function init()
 	end
 
 	if noError then
-		local status, err = pcall(customDatainit)
+		status, err = pcall(customDatainit)
 		if not status then
 			enableFailsafe(err)
 		end
