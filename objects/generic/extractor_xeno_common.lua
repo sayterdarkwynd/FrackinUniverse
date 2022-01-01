@@ -239,7 +239,7 @@ function validateRecipes(testData)
 	local okeys = {}
 	local pair = {}
 
-	for i = 1, table.getn(testData) do
+	for i = 1, #testData do
 		ikeys[i] = {}
 		okeys[i] = {}
 		for key, _ in pairs(testData[i].inputs) do
@@ -330,22 +330,22 @@ function validateRecipes(testData)
 
 	local huntOutput
 	huntOutput = function(chain)
-		local last = chain[table.getn(chain)]
-		for i = 1, table.getn(testData) do
+		local last = chain[#chain]
+		for i = 1, #testData do
 			if i ~= last and containsAny(ikeys[i], okeys[last]) then
 				if --[[containsAny(chain, {i})]] i == chain[1] then
 					printfunc("chain loop:" .. dumpChain(chain))
 				elseif not containsAny(chain, {i}) then
 					table.insert(chain, i)
 					huntOutput(chain)
-					table.remove(chain, table.getn(chain))
+					table.remove(chain, #chain)
 				end
 			end
 		end
 	end
 
-	for i = 1, table.getn(testData) - 1 do
-		for j = i + 1, table.getn(testData) do
+	for i = 1, #testData - 1 do
+		for j = i + 1, #testData do
 			if containsAll(ikeys[i], okeys[j]) and containsAll(okeys[i], ikeys[j]) then
 				if table_eq(testData[i].inputs, testData[j].outputs) and table_eq(testData[i].outputs, testData[j].inputs) then
 					printfunc(string.format("reversible: %s <-> %s", ikeys[i][1], ikeys[j][1]))
@@ -361,7 +361,7 @@ function validateRecipes(testData)
 
 		if not pair[i] then huntOutput({i}) end
 	end
-	huntOutput({table.getn(testData)}) -- last entry
+	huntOutput({#testData}) -- last entry
 end
 
 function die()
