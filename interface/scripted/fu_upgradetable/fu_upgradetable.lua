@@ -595,12 +595,6 @@ function upgradeTool(upgradeItem, target)
 end
 
 function applyBonusesEssence(mergeBuffer, itemConfig, categoryLower)
-	--base DPS
-	local baseDps=(mergeBuffer.baseDps) or itemConfig.config.baseDps
-	if baseDps then
-		mergeBuffer.baseDps = baseDps * (1 + (mergeBuffer.level/80) )	-- increase DPS a bit
-	end
-
 	--crit chance
 	local critChance=(mergeBuffer.critChance) or itemConfig.config.critChance
 	if critChance then
