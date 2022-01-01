@@ -500,7 +500,7 @@ function masteries.listenerBonuses(notifications,dt)
 		end
 	end
 	
-	if #notificationBuffer>0 then sb.logInfo("notices %s",notificationBuffer) end
+	--if #notificationBuffer>0 then sb.logInfo("notices %s",notificationBuffer) end
 
 	--hit stuff, typically for hit/kill count combos
 	local hitCount=0

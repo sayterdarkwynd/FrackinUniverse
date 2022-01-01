@@ -302,7 +302,7 @@ function transferUtil.getType(item)
 	elseif item.currency then
 		return "currency"
 	end
-	local itemRoot = root.itemConfig(item)
+	local itemRoot = root.itemConfig(item)--implement cache maybe?
 	if itemRoot.config.currency then
 		return "currency"
 	end
