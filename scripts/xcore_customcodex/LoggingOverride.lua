@@ -100,8 +100,7 @@ function CreateLoggingOverride(prefix, tostringPointsToSBPrint)
 
 	assert = function(requirement, msg)
 		if not requirement then
-			local msg = msg or "Assertion failed!"
-			_ENV.error(msg)
+			_ENV.error(msg or "Assertion failed!")
 		end
 		return requirement
 	end

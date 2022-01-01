@@ -43,7 +43,7 @@
 textTyper = {}
 textTyper.allowedScrambleCharacters = "abdeghnopqsuvyzABDGHJKNOPQRSUVXY023456789_~"
 
-function textTyper.init(textData, str, sound)
+function textTyper.init(textData, stringToPrint, sound)
 	if not textData then
 		sb.logError("[ZB] textTyper.init in textTyper received no textData table, writing aborted.")
 		return
@@ -55,7 +55,7 @@ function textTyper.init(textData, str, sound)
 	textData.written = ""
 	textData.textPause = 0
 	textData.isFinished = false
-	local textCopy = str
+	local textCopy = stringToPrint
 	local formatPause = 0
 	local skippedChars = 0 -- Required for text scrambling coords
 
@@ -70,9 +70,9 @@ function textTyper.init(textData, str, sound)
 	end
 
 	if textCopy == nil then
-		textCopy = "^red;ERROR -^reset;\ntextTyper.init received a nil value in 'str'"
+		textCopy = "^red;ERROR -^reset;\ntextTyper.init received a nil value in 'stringToPrint'"
 	elseif type(textCopy) ~= "string" then
-		textCopy = "^red;ERROR -^reset;\ntextTyper.init received a non-string value in 'str'"
+		textCopy = "^red;ERROR -^reset;\ntextTyper.init received a non-string value in 'stringToPrint'"
 	end
 
 	for i = 1, string.len(textCopy) do
