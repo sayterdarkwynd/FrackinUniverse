@@ -78,7 +78,7 @@ function filter(list, func)
 end
 
 function getValidRecipes(query)
-	local function subset(inputs, query)
+	local function subset(inputs)
 		if next(query) == nil then return false end
 		if inputs == query then return true end
 		local validRecipe = false
@@ -92,7 +92,7 @@ function getValidRecipes(query)
 		return validRecipe
 	end
 
-	return filter(recipes, function(l) return subset(l.inputs, query) end)
+	return filter(recipes, function(l) return subset(l.inputs) end)
 end
 
 function update(dt)

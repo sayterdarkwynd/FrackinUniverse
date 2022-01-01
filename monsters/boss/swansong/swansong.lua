@@ -1219,15 +1219,15 @@ meleeDashAttack = async(function(conf, targetAngle)
 		function()
 			local timer = 0.0
 			local startAngle = self.body.angle
-			local targetAngle = startAngle + util.angleDiff(startAngle, localAngle(targetAngle) * self.facing)
+			local targetAngle2 = startAngle + util.angleDiff(startAngle, localAngle(targetAngle) * self.facing)
 			while timer < rotateTime do
-				self.body.angle = util.lerp(timer / rotateTime, startAngle, targetAngle)
+				self.body.angle = util.lerp(timer / rotateTime, startAngle, targetAngle2)
 				self.righthand.angle = self.body.angle + util.toRadians(-90)
 				timer = timer + script.updateDt()
 				coroutine.yield()
 			end
 
-			self.body.angle = targetAngle
+			self.body.angle = targetAngle2
 		end
 	))
 

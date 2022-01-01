@@ -301,8 +301,8 @@ local NpcRelationship = defineSubclass(Relation, "NpcRelationship") {
 						if otherNpc and otherNpc ~= Nil then
 							return {{npc, otherNpc}}
 						else
-							return util.map(self.context:entitiesByType()["npc"], function (otherNpc)
-									return {npc, otherNpc}
+							return util.map(self.context:entitiesByType()["npc"], function (otherNpc2)
+									return {npc, otherNpc2}
 								end)
 						end
 					end
@@ -314,8 +314,8 @@ local NpcRelationship = defineSubclass(Relation, "NpcRelationship") {
 						if npc and npc ~= Nil then
 							return {{npc, otherNpc}}
 						else
-							return util.map(self.context:entitiesByType()["npc"], function (npc)
-									return {npc, otherNpc}
+							return util.map(self.context:entitiesByType()["npc"], function (firstNpc)
+									return {firstNpc, otherNpc}
 								end)
 						end
 					end
@@ -844,7 +844,7 @@ QuestRelations.ownsItemList = defineRelation("ownsItemList") {
 
 	implications = function (self)
 			return self:unpackPredicands {
-				[case(0, Player, ItemList, Any)] = function (self, owner, itemList, vars)
+				[case(0, Player, ItemList, Any)] = function (self, owner, itemList, vars) -- luacheck: ignore 432
 						local terms = {}
 
 						if vars == nil or vars == Nil then
