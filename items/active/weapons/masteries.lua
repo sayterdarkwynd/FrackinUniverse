@@ -360,7 +360,7 @@ function masteries.apply(args)
 						masteryBuffer[#masteryBuffer + 1]={stat="critDamage", amount=0.2*(1+(masteries.stats.katanaMastery*handMultiplier/3)) }
 						masteryBuffer[#masteryBuffer + 1]={stat="dodgetechBonus", amount=0.08*(1+(masteries.stats.katanaMastery*handMultiplier/2)) }
 						masteryBuffer[#masteryBuffer + 1]={stat="dashtechBonus", amount=0.08*(1+(masteries.stats.katanaMastery*handMultiplier/2)) }
-						masteryBuffer[#masteryBuffer + 1]={stat="critChance", amount=2*masteries.stats.katanaMastery*handMultiplier/2} 
+						masteryBuffer[#masteryBuffer + 1]={stat="critChance", amount=2*masteries.stats.katanaMastery*handMultiplier/2}
 					end
 				end
 			end

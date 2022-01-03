@@ -40,7 +40,7 @@ function init()
 
     storage.crazycarrycooldown=math.max(storage.crazycarrycooldown or 0,10.0)
 
-  
+
 	--make sure the annoying sounds dont flood
 	status.removeEphemeralEffect("partytime5madness")
 	status.removeEphemeralEffect("partytime5")
@@ -492,11 +492,11 @@ function update(dt)
 				self.madnessResearchBonus = 0
 			end
 		end
-        
+
         --time based research increases
         -- every 30 minutes we increment it by +1. So long as the player is active, this bonus applies. Going AFK pauses it
         checkPassiveTimerBonus()
-	    
+
 		self.researchBonus = storage.timedResearchBonus + self.threatBonus + self.madnessResearchBonus
 
 		self.bonus = self.researchBonus + (self.protheonCount) --status.stat("researchBonus") + self.researchBonus

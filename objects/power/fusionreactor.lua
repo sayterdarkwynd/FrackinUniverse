@@ -54,7 +54,7 @@ function onNodeConnectionChange(args)
 end
 
 function update(dt)
-	if self.timerFusionDisabled then 
+	if self.timerFusionDisabled then
 		self.timerFusionDisabled = self.timerFusionDisabled - 1
 	end
 
@@ -139,13 +139,13 @@ end
 
 function isn_powerSlotCheck(slotnum)
     local item = world.containerItemAt(entity.id(), slotnum)
-    if not item then 
+    if not item then
 		storage.radiation = storage.radiation - 5
 		animator.setAnimationState("screen", "off")
 		animator.setAnimationState("screenbright", "off")
 		power.setPower(0)
 		power.update(0)
-    	return 0 
+    	return 0
     end
 
 	return storage.fuels[item.name] and storage.fuels[item.name].power or 0
@@ -157,7 +157,7 @@ function isn_slotCoolantCheck(slot)
 
     if item and storage.coolant[item.name] and storage.currentHeat > 50 then
 		storage.currentHeat = storage.currentHeat - (storage.coolant[item.name] and storage.coolant[item.name].coldFactor or 0)
-		world.containerConsumeAt(entity.id(),slot,1) 
+		world.containerConsumeAt(entity.id(),slot,1)
 	end
 
 	animator.setAnimationRate(0.7 + 0.01*storage.currentHeat)
@@ -174,7 +174,7 @@ function isn_slotCoolantCheck(slot)
 end
 
 function isn_doSlotDecay(slot)
-	world.containerConsumeAt(entity.id(),slot,1) 
+	world.containerConsumeAt(entity.id(),slot,1)
 	local waste = world.containerItemAt(entity.id(),4)
 	local wastestack
 
@@ -183,11 +183,11 @@ function isn_doSlotDecay(slot)
 		  storage.radiation = storage.radiation + 5
 		  wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
 		else
-		  local wastecount = waste.count 
-		  world.containerConsumeAt(entity.id(),4,wastecount) 
-		  world.spawnItem(waste.name,entity.position(),wastecount) 
+		  local wastecount = waste.count
+		  world.containerConsumeAt(entity.id(),4,wastecount)
+		  world.spawnItem(waste.name,entity.position(),wastecount)
 		end
-	else 
+	else
 		wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
 	end
 
@@ -203,9 +203,9 @@ function isn_getCurrentPowerOutput()
 	for i=0,3 do
 		powercount = powercount + isn_powerSlotCheck(i)
 	end
-	if self.timerPowerReduced >= 1 then 
+	if self.timerPowerReduced >= 1 then
 	  self.timerPowerReduced = self.timerPowerReduced -1
-	  powercount = 0 
+	  powercount = 0
 	end
 	return powercount
 end
