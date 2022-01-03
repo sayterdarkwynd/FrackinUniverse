@@ -51,7 +51,7 @@ function populateItemList()
   table.sort(vehicleItems, function(a, b)
     return vehicleDurability(a) < vehicleDurability(b)
   end)
-  
+
   widget.setVisible("emptyLabel", #vehicleItems == 0)
 
   if not compare(vehicleItems, self.vehicleItems) then
@@ -109,7 +109,7 @@ function doRepair()
   if self.selectedItem then
     local selectedData = widget.getData(string.format("%s.%s", self.itemList, self.selectedItem))
     local vehicleItem = self.vehicleItems[selectedData]
-    
+
     if vehicleItem then
       repairVehicle(vehicleItem)
     end

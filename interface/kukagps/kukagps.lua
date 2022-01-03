@@ -141,7 +141,7 @@ function populateMaterialsList()
                     local enviro="None"
                     for _,env in pairs(parameters.environmentStatusEffects) do
                         if enviro=="None" then
-                            -- its the first.    
+                            -- its the first.
                             enviro = enviroment[env] or env
                         else
                             -- its NOT the first. Add comma.
@@ -176,7 +176,7 @@ function populateMaterialsList()
                         linecount = linecount+1
                         if linecount==4 then
                             -- after 4 elements, print line and reset counter
-                            
+
                             weatherItem = weatherItem.."."
                             local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", "          "..weatherItem)  -- print a long tab space, and then a line of weather info
@@ -228,7 +228,7 @@ function populateMaterialsList()
                     -- Search for dungeons in undergroundLayers. If exists in dungeon's list, look for name. Else, unknown dungeon.
                     if (parameters.undergroundLayers) then
                         for _,layer in pairs(parameters.undergroundLayers) do
-                            -- you have to go in every layer inside undergroundLayers               
+                            -- you have to go in every layer inside undergroundLayers
                             for _,dungeon in pairs(layer.dungeons) do
                                 local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                                 widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
@@ -243,7 +243,7 @@ function populateMaterialsList()
                         end
                     end
                 else
-                    -- no ship, no dungeon/instance and no world.......Where the fuck are you?    
+                    -- no ship, no dungeon/instance and no world.......Where the fuck are you?
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "This is a ERROR")
                 end

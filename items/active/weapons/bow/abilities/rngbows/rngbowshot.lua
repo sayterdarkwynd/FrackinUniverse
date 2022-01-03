@@ -15,7 +15,7 @@ function NebRNGBowShot:init()
 	self.drawTimer=0
 	self.baseDrawTime=self.drawTime
 	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*(1/(1+math.max(-0.99,status.stat("bowDrawTimeBonus")))))
-    
+
 	animator.setAnimationState("bow", "idle")
 	self.cooldownTimer = 0
 
@@ -231,7 +231,7 @@ function NebRNGBowShot:currentProjectileParameters()
 	end
 
 	--Bonus damage calculation for quiver users
-	local damageBonus = 1.0  
+	local damageBonus = 1.0
 	if self.useQuiverDamageBonus == true and status.statPositive("nebsrngbowdamagebonus") then
 		damageBonus = damageBonus+status.stat("nebsrngbowdamagebonus")
 	end

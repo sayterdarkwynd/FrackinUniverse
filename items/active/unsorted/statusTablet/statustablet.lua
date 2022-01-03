@@ -1,7 +1,7 @@
 
 function activate(fireMode, shiftHeld)
 	if shiftHeld then
-		if fireMode == "primary" then 
+		if fireMode == "primary" then
 			activeItem.interact("ScriptPane", "/zb/researchTree/researchTree.config")
 			animator.playSound("activate")
 		elseif fireMode == "alt" then

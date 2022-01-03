@@ -13,7 +13,7 @@ function init()
 
   self.speedCooldown = config.getParameter("speedCooldown", 1)
   self.speedTimer=0
-  
+
   createRider()
 
   self.onRail = false
@@ -109,7 +109,7 @@ function update(dt, fireMode, shiftHeld, moves)
     self.volumeAdjustTimer = self.volumeAdjustTime
     animator.stopAllSounds("grind")
   end
-  
+
   local upHeld = moves["up"]
   local downHeld = moves["down"]
   local leftHeld = moves["left"]

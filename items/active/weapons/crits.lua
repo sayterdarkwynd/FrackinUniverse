@@ -1,7 +1,7 @@
 Crits = {}
 
 --[[
-placing this in lua demo: 
+placing this in lua demo:
 	local passR1=0
 	local passR2=0
 	local sampleSize=1000000

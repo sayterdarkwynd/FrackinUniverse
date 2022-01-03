@@ -121,7 +121,7 @@ function missionSequence()
 		{ entityType = "cultistarcher", count = 1, parameters = { moveLeft = true } }
 	}))
 	util.appendLists(wave, spawnWave("midfieldspawn", {
-		{ entityType = "cultistknight", count = 2 }, 
+		{ entityType = "cultistknight", count = 2 },
 		{ entityType = "cultistarcher", count = 1 }
 	}))
 	while #wave > 0 do

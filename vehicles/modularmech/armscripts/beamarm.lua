@@ -81,7 +81,7 @@ function BeamArm:fireState()
 		self.basePower = 10 -- make sure our base power is easily computed
 		self.applyBeamDamage = self.basePower * (1 + self.mechTier/10) * self.largeLaser
 	else
-		self.applyBeamDamage = self.basePower * (1 + self.mechTier/10) 
+		self.applyBeamDamage = self.basePower * (1 + self.mechTier/10)
 	end
 
 	pParams = config.getParameter("")	-- change this later to only read the relevant data, rather than all of it
