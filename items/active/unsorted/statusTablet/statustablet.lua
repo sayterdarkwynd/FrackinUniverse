@@ -8,7 +8,7 @@ function activate(fireMode, shiftHeld)
 			activeItem.interact("ScriptPane", "/interface/scripted/mmutility/mmutility.config")
 			animator.playSound("activate3")
  	end
-			
+
 	elseif fireMode == "primary" then
 		activeItem.interact("ScriptPane", "/interface/scripted/statWindow/statWindow.config")
 		animator.playSound("activate")

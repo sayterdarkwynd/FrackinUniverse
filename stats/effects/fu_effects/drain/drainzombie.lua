@@ -35,9 +35,9 @@ function update(dt)
 	local lightMutator = (1 - (lightLevel / 100))/4
 	if lightMutator < 0 then lightMutator = 0 end
 	self.drainMultiplier = (self.baseDrainMult + lightMutator)*math.max(0,1+status.stat("healingBonus"))
-	
+
 	if lightLevel <= 50 then
-	
+
 		if self.cooldownTimer <= 0 then
 			local damageNotifications, nextStep = status.inflictedDamageSince(self.queryDamageSince)
 			self.queryDamageSince = nextStep

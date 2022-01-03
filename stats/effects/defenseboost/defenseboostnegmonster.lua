@@ -2,7 +2,7 @@ function init()
 	animator.setParticleEmitterOffsetRegion("snow", mcontroller.boundBox())
 	animator.setParticleEmitterActive("snow", true)
 	effect.setParentDirectives("fade=6f6f6f=0.55")
-	
+
 	local rAmt=config.getParameter("resistanceAmount", 0)
 	local dAmt=config.getParameter("defenseAmount", 0)
 	--[[if status.statPositive("specialStatusImmunity") then

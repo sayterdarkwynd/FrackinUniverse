@@ -184,7 +184,7 @@ function applyWet()
 		elseif self.isWater == 1 then
 			status.addEphemeralEffect("wet")
 		elseif self.isSaltWater == 1 then
-			status.addEphemeralEffect("wet")			
+			status.addEphemeralEffect("wet")
 	elseif self.isGeneric == 1 then
 		--kinda a space filler.
 		status.addEphemeralEffect("wet")

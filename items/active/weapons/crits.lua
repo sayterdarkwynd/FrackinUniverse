@@ -32,7 +32,7 @@ function Crits:setCritDamage(damage)
     local critBonus = config.getParameter("critBonus", 0) + status.stat("critBonus")     --  flat damage bonus to critical hits
     local critDamage = status.stat("critDamage")  -- % increase to crit damage multiplier (0.10 == +10% or 110% total additional damage)
 	--status.stat ONLY accepts ONE argument. and returns 0.0 if it is not found
-	
+
 	--sb.logInfo("crits.lua: crit chance: %s, crit bonus %s, crit damage %s",critChance,critBonus,critDamage)
 	local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
     -- Magnorbs get an inherent +1% crit chance
@@ -61,7 +61,7 @@ function Crits:setCritDamage(damage)
                 -- *****************************************************************
                 local stunRoll = (math.random(100)) + status.stat("stunChance") + config.getParameter("stunChance",0)
                 --local daggerChance = math.random(100) + status.stat("daggerChance") + config.getParameter("daggerChance",0)--unused
-				
+
                 if stunRoll > 99 and root.itemHasTag(heldItem, "dagger") then
                     params = { speed=14, power = 1, damageKind = "default"}
                     world.spawnProjectile("daggerCrit",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),true,params)

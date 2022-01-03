@@ -577,7 +577,7 @@ function checkPassiveTimerBonus()
 	    applyPassiveBonus()
 	else
 		storage.timedResearchBonus = 0  -- reset bonus if AFK
-    end	
+    end
 end
 
 function checkInitGap()
@@ -589,9 +589,9 @@ function checkInitGap()
 	storage.activeTime=((not (gap > 60.0)) and storage.activeTime) or 0
 end
 
-function applyPassiveBonus()	
+function applyPassiveBonus()
 	if storage.activeTime > 10800 then
-		storage.timedResearchBonus = 3	
+		storage.timedResearchBonus = 3
 	elseif storage.activeTime > 7200 then
 		storage.timedResearchBonus = 2
 	elseif storage.activeTime > 3600 then
@@ -604,7 +604,7 @@ end
 function passiveRadioMessage()
     if storage.activeTime == 3600 then player.radioMessage("researchBonus1") end
     if storage.activeTime == 7200 then player.radioMessage("researchBonus2") end
-    if storage.activeTime == 10800 then player.radioMessage("researchBonus3") end	
+    if storage.activeTime == 10800 then player.radioMessage("researchBonus3") end
 end
 ----------------------------------------------
 

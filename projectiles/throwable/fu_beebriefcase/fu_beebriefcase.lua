@@ -15,7 +15,7 @@ function spawnMonsters()
 			monsterType = util.randomFromList(self.monsterTypes2)
 			world.spawnMonster(monsterType, mcontroller.position(), {level = world.threatLevel(), aggressive = false })
 		elseif randomNumber == 20 then
-			world.spawnMonster("garflipp", mcontroller.position(), {level = world.threatLevel(), aggressive = false })		
+			world.spawnMonster("garflipp", mcontroller.position(), {level = world.threatLevel(), aggressive = false })
 		else
 			monsterType = util.randomFromList(self.monsterTypes1)
 			world.spawnMonster(monsterType, mcontroller.position(), {level = world.threatLevel(), aggressive = true })

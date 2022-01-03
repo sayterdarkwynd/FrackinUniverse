@@ -75,7 +75,7 @@ function onInteraction(args)
 		--				warpAction = string.format(config.getParameter("destination2"), storage.uuid, world.threatLevel())
 		--			}}
 		--		}
-		--	}				
+		--	}
 		else
 			return { "OpenTeleportDialog",
 				{

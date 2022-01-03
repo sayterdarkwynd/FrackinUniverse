@@ -127,7 +127,7 @@ function update(dt)
 									else
 										oreMod = world.mod(position, "background")
 									end
-								
+	
 								  for x = 1,3 do
 
 								    if scannerLib.colors[x][oreMod] then
