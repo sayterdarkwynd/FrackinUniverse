@@ -147,7 +147,7 @@ function setupMaterialSpaces()
     if object.isInputNodeConnected(0) then
       metamaterial = "metamaterial:lockedDoor"
     end
-    for i, space in ipairs(object.spaces()) do
+    for _, space in ipairs(object.spaces()) do
       table.insert(self.closedMaterialSpaces, {space, metamaterial})
     end
   end

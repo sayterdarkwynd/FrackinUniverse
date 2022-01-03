@@ -16,8 +16,6 @@ function init()
 end
 
 function setToolTipValues(ability)
-	local projectileCount=1
-
 	activeItem.setInstanceValue("tooltipFields", {
 		damagePerShotLabel = damagePerShot(ability,1),
 		speedLabel = 1 / ability.fireTime,

@@ -57,7 +57,7 @@ function getInputContents()
 	local id = entity.id()
 	local contents = {}
 	for i = 0, self.inputSlot-1 do
-		local stack = world.containerItemAt(entity.id(),i)
+		local stack = world.containerItemAt(id, i)
 		if stack then
 			contents[stack.name] = (contents[stack.name] or 0) + stack.count
 		end
@@ -78,7 +78,7 @@ function filter(list, func)
 end
 
 function getValidRecipes(query)
-	local function subset(inputs, query)
+	local function subset(inputs)
 		if next(query) == nil then return false end
 		if inputs == query then return true end
 		local validRecipe = false
@@ -92,7 +92,7 @@ function getValidRecipes(query)
 		return validRecipe
 	end
 
-	return filter(recipes, function(l) return subset(l.inputs, query) end)
+	return filter(recipes, function(l) return subset(l.inputs) end)
 end
 
 function update(dt)
@@ -138,7 +138,8 @@ function findRecipe(input)
 	local result=getValidRecipes(input)
 	local listSize=util.tableSize(result)
 	if listSize==1 then
-		for _,v in pairs(result) do return v end
+		_,v = next(result)
+		return v
 	elseif listSize > 1 then
 		local tempResult=false
 		for _,resEntry in pairs(result) do
@@ -179,12 +180,11 @@ function doCrafting(result)
 	else
 		--_, result = next(result)
 		storage.inputs={}
-		for k, v in pairs(result.inputs) do
+		for itemName, quantities in pairs(result.inputs) do
 			-- if we ever do multiple inputs, FIXME undo partial consumption on failure
-			local itemData={item = k , count = techlevelMap(v)}
-			if not (world.containerAvailable(entity.id(),{item = k}) >= techlevelMap(v) and (not powered or power.consume(config.getParameter('isn_requiredPower'))) and world.containerConsume(entity.id(), itemData)) then
+			local itemData={item = itemName , count = techlevelMap(quantities)}
+			if not (world.containerAvailable(entity.id(),{item = itemName}) >= techlevelMap(v) and (not powered or power.consume(config.getParameter('isn_requiredPower'))) and world.containerConsume(entity.id(), itemData)) then
 				for _,v in pairs(storage.inputs) do
-					local i=0
 					for i=0,world.containerSize(entity.id())-1 do
 						if v then
 							v=world.containerPutItemsAt(entity.id(),v,i)
@@ -239,7 +239,7 @@ function validateRecipes(testData)
 	local okeys = {}
 	local pair = {}
 
-	for i = 1, table.getn(testData) do
+	for i = 1, #testData do
 		ikeys[i] = {}
 		okeys[i] = {}
 		for key, _ in pairs(testData[i].inputs) do
@@ -330,22 +330,22 @@ function validateRecipes(testData)
 
 	local huntOutput
 	huntOutput = function(chain)
-		local last = chain[table.getn(chain)]
-		for i = 1, table.getn(testData) do
+		local last = chain[#chain]
+		for i = 1, #testData do
 			if i ~= last and containsAny(ikeys[i], okeys[last]) then
 				if --[[containsAny(chain, {i})]] i == chain[1] then
 					printfunc("chain loop:" .. dumpChain(chain))
 				elseif not containsAny(chain, {i}) then
 					table.insert(chain, i)
 					huntOutput(chain)
-					table.remove(chain, table.getn(chain))
+					table.remove(chain, #chain)
 				end
 			end
 		end
 	end
 
-	for i = 1, table.getn(testData) - 1 do
-		for j = i + 1, table.getn(testData) do
+	for i = 1, #testData - 1 do
+		for j = i + 1, #testData do
 			if containsAll(ikeys[i], okeys[j]) and containsAll(okeys[i], ikeys[j]) then
 				if table_eq(testData[i].inputs, testData[j].outputs) and table_eq(testData[i].outputs, testData[j].inputs) then
 					printfunc(string.format("reversible: %s <-> %s", ikeys[i][1], ikeys[j][1]))
@@ -361,7 +361,7 @@ function validateRecipes(testData)
 
 		if not pair[i] then huntOutput({i}) end
 	end
-	huntOutput({table.getn(testData)}) -- last entry
+	huntOutput({#testData}) -- last entry
 end
 
 function die()

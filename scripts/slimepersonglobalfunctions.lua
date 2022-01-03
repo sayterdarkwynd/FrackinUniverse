@@ -8,7 +8,7 @@ end
 -- local myString = "100, 200, 300, 400"
 -- local splited = myString:split(",") it can be any delimiter
 -- Result: Splited = {100, 200, 300, 400}
-function string:split( inSplitPattern, outResults )
+function string:split( inSplitPattern, outResults ) -- luacheck: ignore 142
   if not outResults then
     outResults = { }
   end

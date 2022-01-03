@@ -96,7 +96,7 @@ function build(directory, config, parameters, level, seed)
 	if type(config.inventoryIcon) == "string" then
 		config.inventoryIcon = config.inventoryIcon .. config.paletteSwaps
 	else
-		for i, drawable in ipairs(config.inventoryIcon) do
+		for _, drawable in ipairs(config.inventoryIcon) do
 			if drawable.image then drawable.image = drawable.image .. config.paletteSwaps end
 		end
 	end

@@ -109,7 +109,7 @@ end
 function detectorInHand()
 	local itemPrimary = player.primaryHandItem()
 	local itemAlt = player.altHandItem()
-	local inEssentialSlot=false
+	local inEssentialSlot=false -- luacheck: ignore 431/inEssentialSlot
 	local inPrimary=false
 	local inAlt=false
 

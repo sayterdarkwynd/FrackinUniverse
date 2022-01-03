@@ -34,20 +34,6 @@ function build(directory, config, parameters, level, seed)
 		return t
 	end
 
-	local configParameterDeep = function(keyName, defaultValue)
-		local sets=split(keyName,"%.")
-		local mergedBuffer=util.mergeTable(copy(config),copy(parameters))
-		for _,v in pairs(sets) do
-			if mergedBuffer[v] then
-				mergedBuffer=mergedBuffer[v]
-			else
-				mergedBuffer=defaultValue
-				break
-			end
-		end
-		return mergedBuffer
-	end
-
 	if level and not configParameter("fixedLevel", true) then
 		parameters.level = level
 	end
@@ -73,9 +59,6 @@ function build(directory, config, parameters, level, seed)
 	--Select, load and merge abilities
 	setupAbility(config, parameters, "alt", builderConfig, seed)
 	setupAbility(config, parameters, "primary", builderConfig, seed)
-
-	local primaryAbility=configParameterDeep("primaryAbility")
-	local altAbility=configParameterDeep("altAbility")
 
 	--Elemental type
 	if not parameters.elementalType and builderConfig.elementalType then
@@ -239,7 +222,6 @@ function build(directory, config, parameters, level, seed)
 	if builderConfig.gunParts then
 		construct(config, "animationCustom", "animatedParts", "parts")
 		local imageOffset = {0,0}
-		local gunPartOffset = {0,0}
 		for _,part in ipairs(builderConfig.gunParts) do
 			local imageSize = root.imageSize(config.animationParts[part])
 			construct(config.animationCustom.animatedParts.parts, part, "properties")

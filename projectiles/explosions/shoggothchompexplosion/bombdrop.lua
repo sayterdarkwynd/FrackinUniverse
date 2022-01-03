@@ -7,7 +7,7 @@ function init()
 		end
 	end
 	self.dungeonIDList[0]=nil
-	for id,values in pairs(self.dungeonIDList) do
+	for id in pairs(self.dungeonIDList) do
 		world.setTileProtection(id,false)
 	end
 	actions=config.getParameter("actionOnReap")
@@ -16,7 +16,7 @@ function init()
 	end
 end
 function uninit(dt)
-	for id,values in pairs(self.dungeonIDList) do
+	for id in pairs(self.dungeonIDList) do
 		world.setTileProtection(id,true)
 	end
 end

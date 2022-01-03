@@ -118,7 +118,7 @@ function finishProcessing()
 
 	local itemCount=storage.futureItem.count or 1
 
-	for i=1,storage.multiplier do
+	for _=1,storage.multiplier do
 		local randCheck = math.random(tagList[storage.processTag].range or 100)
 
 		if (randCheck == self.researchSlot) and (tagList[storage.processTag].currencies.bonusResearch) then

@@ -43,7 +43,7 @@
 textTyper = {}
 textTyper.allowedScrambleCharacters = "abdeghnopqsuvyzABDGHJKNOPQRSUVXY023456789_~"
 
-function textTyper.init(textData, str, sound)
+function textTyper.init(textData, stringToPrint, sound)
 	if not textData then
 		sb.logError("[ZB] textTyper.init in textTyper received no textData table, writing aborted.")
 		return
@@ -55,7 +55,7 @@ function textTyper.init(textData, str, sound)
 	textData.written = ""
 	textData.textPause = 0
 	textData.isFinished = false
-	local textCopy = str
+	local textCopy = stringToPrint
 	local formatPause = 0
 	local skippedChars = 0 -- Required for text scrambling coords
 
@@ -70,9 +70,9 @@ function textTyper.init(textData, str, sound)
 	end
 
 	if textCopy == nil then
-		textCopy = "^red;ERROR -^reset;\ntextTyper.init received a nil value in 'str'"
+		textCopy = "^red;ERROR -^reset;\ntextTyper.init received a nil value in 'stringToPrint'"
 	elseif type(textCopy) ~= "string" then
-		textCopy = "^red;ERROR -^reset;\ntextTyper.init received a non-string value in 'str'"
+		textCopy = "^red;ERROR -^reset;\ntextTyper.init received a non-string value in 'stringToPrint'"
 	end
 
 	for i = 1, string.len(textCopy) do
@@ -133,7 +133,7 @@ function textTyper.init(textData, str, sound)
 						amount = tonumber(string.sub(textCopy, i+11, bracketEnd-1))
 						table.insert(textData.scrambingLetters, #textData.toWrite + skippedChars..";"..#textData.toWrite + skippedChars + amount)
 
-						for j = 1, amount do
+						for _ = 1, amount do
 							table.insert(textData.toWrite, "#")
 						end
 
@@ -176,7 +176,6 @@ function textTyper.splitTableString(str)
 	local copy = str
 	local temp
 	local dotPos = 0
-	local length = string.len(str)
 
 	while dotPos do
 		dotPos = string.find(copy, "%.", 1)
@@ -293,7 +292,7 @@ function textTyper.scrambling(textData)
 
 		if toScramble ~= "" then
 			local replacement = ""
-			for i = 1, string.len(toScramble) do
+			for _ = 1, string.len(toScramble) do
 				-- replacement = replacement..textTyper.allowedScrambleCharacters[math.random(1,#textTyper.allowedScrambleCharacters)]
 				local rnd = math.random(1, string.len(textTyper.allowedScrambleCharacters))
 				replacement = replacement..string.sub(textTyper.allowedScrambleCharacters, rnd, rnd)

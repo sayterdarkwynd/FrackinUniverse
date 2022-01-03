@@ -37,7 +37,7 @@ function update(dt)
 		self.tickTimer = (self.tickTime or 1.0)
 		local targetIds = world.entityQuery(mcontroller.position(), self.jumpDistance, {withoutEntityId = entity.id(),includedTypes = {"creature"}})
 		shuffle(targetIds)
-		for i,id in ipairs(targetIds) do
+		for _,id in ipairs(targetIds) do
 			local sourceEntityId = effect.sourceEntity() or entity.id()
 			if world.entityCanDamage(sourceEntityId, id) and not world.lineTileCollision(mcontroller.position(), world.entityPosition(id)) then
 				local sourceDamageTeam = world.entityDamageTeam(sourceEntityId)

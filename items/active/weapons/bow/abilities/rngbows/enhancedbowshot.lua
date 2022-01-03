@@ -126,7 +126,7 @@ function NebBowShot:fire()
 	animator.stopAllSounds("ready")
 
 	if not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
-		for i = 1, (self.projectileCount or 1) do
+		for _ = 1, (self.projectileCount or 1) do
 			world.spawnProjectile(
 				self:perfectTiming() and self.powerProjectileType or self.projectileType,
 				self:firePosition(),

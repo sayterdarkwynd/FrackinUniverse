@@ -1,5 +1,5 @@
 require "/scripts/kheAA/transferUtil.lua"
-local deltaTime=0
+
 function init()
 	-- these are items wich will be used for upgrade
 	upgradeItemsList = {

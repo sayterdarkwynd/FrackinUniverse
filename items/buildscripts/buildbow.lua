@@ -60,7 +60,6 @@ function build(directory, config, parameters, level, seed)
 	replacePatternInData(config, nil, "<elementalName>", elementalType:gsub("^%l", string.upper))
 
 	local primaryAbility=configParameterDeep("primaryAbility")
-	local altAbility=configParameterDeep("altAbility")
 
 	-- calculate damage level multiplier
 	config.damageLevelMultiplier = root.evalFunction("weaponDamageLevelMultiplier", configParameter("level", 1))

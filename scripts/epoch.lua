@@ -50,10 +50,12 @@ function epoch.toTable(t)
     end
     j=floor(s/DSEC)
     s=s-j*DSEC
-    local m=1
+
+    m=1
     while mdays[m]<j do m=m+1 end
     m=m-1
-    local d=j-mdays[m]
+
+    d=j-mdays[m]
     -- Calculate day of week. Sunday is 0
     w=(floor(t/DSEC)+BASE_DOW)%7
     -- Calculate the time of day from the remaining seconds
@@ -61,7 +63,7 @@ function epoch.toTable(t)
     s=s-h*3600
     n=floor(s/60)
     s=s-n*60
-	return {hour=h,minute=n,second=s,month=m,day=d,year=y}
+	return {hour=h,minute=n,second=s,month=m,day=d,year=y,dow=w}
     --[[print("y","j","m","d","w","h","n","s")
     print(y,j+1,m,d,w,h,n,s)]]
 	

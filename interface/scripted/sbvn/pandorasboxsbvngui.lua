@@ -21,7 +21,7 @@ end
 
 function update(dt)
   self.transitions = util.filter(self.transitions, function(t)
-      local s, r = coroutine.resume(t)
+      local s = coroutine.resume(t)
       return s
     end)
 

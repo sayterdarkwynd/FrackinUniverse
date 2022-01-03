@@ -128,13 +128,12 @@ function update(dt)
 										oreMod = world.mod(position, "background")
 									end
 								
-								  for x = 1,3 do
-
-								    if scannerLib.colors[x][oreMod] then
+								  for z = 1,3 do
+									if scannerLib.colors[z][oreMod] then
 										self.colorCache[sType][cacheKey] = scannerLib.colors[oreMod]
 									else
 										self.colorCache[sType][cacheKey] = scannerLib.colors[1].none
-								    end
+									end
 								  end
 
 								end

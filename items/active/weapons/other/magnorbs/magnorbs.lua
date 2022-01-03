@@ -286,7 +286,7 @@ function removeShieldEffect()
 end
 
 function getProjectiles()
-	for i = 1, self.count do
-        table.insert(storage.projectileIds, false)
+	for _ = 1, self.count do
+		table.insert(storage.projectileIds, false)
 	end
 end

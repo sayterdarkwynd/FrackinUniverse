@@ -57,12 +57,12 @@ function FRHelper:call(args, ...)
 	for i,thing in ipairs(args or {}) do
 		if liqAt and (not thing.liquids or contains(thing.liquids,self.frconfig.liquidCache[liqAt[1]])) then
 			self:applyStats(thing, thing.name or "liquidEffect"..i, ...)
-			for x,thing2 in ipairs(thing.status or {}) do
+			for _,thing2 in ipairs(thing.status or {}) do
 				status.addEphemeralEffect(thing2, math.huge)
 			end
 		else
 			self:clearPersistent(thing.name or "liquidEffect"..i)
-			for x,thing2 in ipairs(thing.status or {}) do
+			for _,thing2 in ipairs(thing.status or {}) do
 				status.removeEphemeralEffect(thing2)
 			end
 		end

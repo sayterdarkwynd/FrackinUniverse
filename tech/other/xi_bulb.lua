@@ -77,7 +77,6 @@ function update(args)
 		attemptActivation()
 		animator.playSound("activate")
 	end
-	local tookHealth
 	local tookEnergy
 	self.specialLast = args.moves["special1"]
 	self.pressDown = args.moves["down"]
@@ -108,7 +107,8 @@ function update(args)
 					self.xibulbTimer = self.xibulbTimer + 1
 				else
 					tookEnergy=status.overConsumeResource("energy", (self.energyCostPerTick) or (self.energyCostPerSecond and (self.energyCostPerSecond*args.dt)) or 0.01,1)
-					tookHealth=status.overConsumeResource("health", ((tookEnergy and 1) or 2)*0.035,1)
+
+					local tookHealth=status.overConsumeResource("health", ((tookEnergy and 1) or 2)*0.035,1) -- luacheck: ignore 211
 					if tookEnergy then-- or tookHealth then--challenge mode: make the timer only go up when you lose energy
 						self.xibulbTimer = self.xibulbTimer + 1
 					end

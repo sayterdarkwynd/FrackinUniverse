@@ -15,9 +15,9 @@ function isn_getCurrentPowerInput(divide)
 		-- sb.logInfo("PID: Iteration " .. iterator)
 		if object.getInputNodeLevel(iterator) then
 			connectedDevices = object.getInputNodeIds(iterator)
-			for id, powerLevel in pairs (connectedDevices) do
+			for id in pairs(connectedDevices) do
 				-- sb.logInfo("PID: id is " .. id)
-				-- sb.logInfo("PID: powerLevel is " .. powerLevel)
+				-- sb.logInfo("PID: powerLevel is " .. connectedDevices[id])
 				-- sb.logInfo("PID: ID check resolves to " .. world.entityName(id))
 				if world.callScriptedEntity(id,"isn_canSupplyPower") then
 					if not isBattery then
@@ -50,14 +50,13 @@ function isn_countCurrentPowerInputs()
 	--- Same rule as for isn_getCurrentPowerInput()
 	local connectedDevices
 	local psus = 0
-	local totalInput = 0
 	local hasPSU = false
 	local hasPassthrough = false
 
 	for iterator = 0, object.inputNodeCount() - 1 do
 		if object.getInputNodeLevel(iterator) then
 			connectedDevices = object.getInputNodeIds(iterator)
-			for id, powerLevel in pairs (connectedDevices) do
+			for id in pairs (connectedDevices) do
 				if world.callScriptedEntity(id,"isn_canSupplyPower") then
 					local isPassthrough = world.callScriptedEntity(id,"isn_isPowerPassthrough")
 					if not isBattery then
@@ -139,7 +138,7 @@ function isn_areActivePowerDevicesConnectedOnOutboundNode(node)
 	if node == nil then return false end
 	local devicelist = object.getOutputNodeIds(node)
 	if devicelist == nil then return false end
-	for id, powerLevel in pairs(devicelist) do
+	for id in pairs(devicelist) do
 		if world.callScriptedEntity(id,"isn_canReceivePower") then
 			if not world.callScriptedEntity(id,"isn_doesNotConsumePower") then
 				if world.callScriptedEntity(id,"isn_activeConsumption") then
@@ -164,7 +163,7 @@ end
 function isn_checkValidOutput()
 	local connectedDevices = object.getOutputNodeIds(0)
 	if connectedDevices == nil then return false end
-	for id, powerLevel in pairs(connectedDevices) do
+	for id in pairs(connectedDevices) do
 		if not world.callScriptedEntity(id,"isn_canReceivePower") then return false end
 	end
 	return true
@@ -177,8 +176,8 @@ function isn_countPowerDevicesConnectedOnOutboundNode(node)
 	local devicelist = object.getOutputNodeIds(node)
 	if devicelist == nil then return 0 end
 	---sb.logInfo("PDCDB: iterating detected devices")
-	for key, value in pairs(devicelist) do
-		---sb.logInfo("PDCDB: key is " .. key)
+	for _, value in pairs(devicelist) do
+		---sb.logInfo("PDCDB: key is " .. _)
 		---sb.logInfo("PDCDB: value is " .. value)
 		---local devicecheck = world.entityName(value)
 		---if devicecheck == nil then
@@ -203,7 +202,7 @@ function isn_sumPowerActiveDevicesConnectedOnOutboundNode(node)
 	local batteries = 0
 	local devicelist = object.getOutputNodeIds(node)
 	if devicelist == nil then return 0 end
-	for id, powerLevel in pairs(devicelist) do
+	for id in pairs(devicelist) do
 		if world.callScriptedEntity(id,"isn_canReceivePower") then
 			if not world.callScriptedEntity(id,"isn_doesNotConsumePower") then
 				if world.callScriptedEntity(id,"isn_isBattery") == true then

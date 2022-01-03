@@ -126,7 +126,7 @@ function move(direction, run, noRatioLimit)
 end
 
 function collides(sensorGroup, direction)
-  for i, sensor in ipairs(config.getParameter(sensorGroup)) do
+  for _, sensor in ipairs(config.getParameter(sensorGroup)) do
     -- world.debugPoint(monster.toAbsolutePosition(vec2.rotate(sensor, self.rotation)), "blue")
     if world.pointTileCollision(monster.toAbsolutePosition(vec2.rotate(sensor, self.rotation)), {"Dynamic", "Null", "Block"}) then
       return true

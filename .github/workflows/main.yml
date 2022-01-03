@@ -26,7 +26,7 @@ jobs:
       # only on exit code 2 ("there were errors").
       # There are ~900 warnings in existing code, so we can't use "no warnings allowed" mode (yet?).
       - name: RUN -- luacheck .
-        run: luacheck --no-color . || [[ $? -le 1 ]]
+        run: luacheck --no-color --quiet . || [[ $? -le 1 ]]
 
   # Create .pak file for each GitHub release.
   pack-assets:

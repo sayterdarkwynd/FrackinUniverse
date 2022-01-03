@@ -329,8 +329,7 @@ function draw()
 end
 
 function addConfetti(amount)
-	for i = 1, amount do
-		local color = "#FFFFFF"
+	for _ = 1, amount do
 		local distance =  math.random(vfx.confetti.distance[1], vfx.confetti.distance[2])
 		local pos = {math.floor(math.random(0, distance)), 0}
 		pos[2] = math.sqrt(distance^2 - pos[1]^2)
@@ -398,7 +397,6 @@ function doneOpening()
 		local requirement = 0
 		local subtitle = nil
 		local title = nil
-		local item = nil
 		local flashColor = nil
 		local textColor = nil
 
@@ -692,7 +690,7 @@ function animate()
 		vfx.subtitle.alpha = fadeHex(vfx.subtitle.alpha, "in", vfx.subtitle.alphaFade)
 	else
 
-		for i, tbl in ipairs(vfx.boxes.instances) do
+		for _, tbl in ipairs(vfx.boxes.instances) do
 			if distanceToPoint(tbl.pos, tbl.targetPos) > 0.5 then
 				isAnimating = true
 
@@ -753,7 +751,6 @@ function fadeHex(hex, fade, amount, target)
 
 			if target then
 				local tTens = cb[string.byte(string.sub(target, 1, 1))]
-				local tUnits = cb[string.byte(string.sub(target, 2, 2))]
 
 				if tens <= tTens then
 					return target
@@ -788,7 +785,6 @@ function fadeHex(hex, fade, amount, target)
 
 			if target then
 				local tTens = cb[string.byte(string.sub(target, 1, 1))]
-				local tUnits = cb[string.byte(string.sub(target, 2, 2))]
 
 				if tens >= tTens then
 					return target
@@ -830,7 +826,7 @@ end
 function rollDice(dice, sides, mod)
 	local sum = mod or 0
 
-	for i = 1, dice do
+	for _ = 1, dice do
 		sum = sum + math.random(1, sides)
 	end
 

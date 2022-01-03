@@ -46,7 +46,6 @@ function BeamFire:fire()
   animator.playSound("fireStart")
   animator.playSound("fireLoop", -1)
 
-  local wasColliding = false
   while self.fireMode == (self.activatingFireMode or self.abilitySlot) and status.overConsumeResource("energy", (self.energyUsage or 0) * self.dt) do
     local beamStart = self:firePosition()
     local beamEnd = vec2.add(beamStart, vec2.mul(vec2.norm(self:aimVector(0)), self.beamLength))

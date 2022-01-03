@@ -1138,8 +1138,6 @@ function systemScreenState(system, warpIn)
 
     coroutine.yield()
   end
-
-  self.state:set(systemUniverseTransition, system)
 end
 
 function systemPlanetTransition(planets, toPlanet)

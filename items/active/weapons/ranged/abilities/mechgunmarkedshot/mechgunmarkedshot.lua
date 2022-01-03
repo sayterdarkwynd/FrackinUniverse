@@ -51,7 +51,7 @@ function setupAltAbility(altAbilityConfig)
   end
 
   function markedShot:fire()
-    local projectileId = self:fireProjectile(self.projectileType, {targets = self.targets})
+    self:fireProjectile(self.projectileType, {targets = self.targets})
 
     self:muzzleFlash()
 

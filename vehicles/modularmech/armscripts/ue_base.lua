@@ -112,7 +112,6 @@ function MechArm:fire()
 
 	if self.aimAngle and self.aimVector and self.firePosition and self:rayCheck(self.firePosition) then
 		local pParams = copy(self.projectileParameters)
-		local pParams2 = config.getParameter("") --copy(self.damageSources) -- for FU, beam weapons etc
 
 		if not self.projectileTrackSource and mcontroller.zeroG() then
 			pParams.referenceVelocity = mcontroller.velocity()
@@ -123,7 +122,6 @@ function MechArm:fire()
 
 		local pCount = self.projectileCount or 1
 		local pSpread = self.projectileSpread or 0
-		local inacc = self.projectileInaccuracy or 0
 		local aimVec = vec2.rotate(self.aimVector, -0.5 * (pCount - 1) * pSpread)
 
 		local firePos = self.firePosition
@@ -133,7 +131,7 @@ function MechArm:fire()
 			firePos = vec2.add(firePos, vec2.mul(pSpacing, (pCount - 1) * -0.5))
 		end
 
-		for i = 1, pCount do
+		for _ = 1, pCount do
 			local thisFirePos = firePos
 			if self.projectileRandomOffset then
 				thisFirePos = vec2.add(thisFirePos, {(math.random() - 0.5) * self.projectileRandomOffset[1], (math.random() - 0.5) * self.projectileRandomOffset[2]})

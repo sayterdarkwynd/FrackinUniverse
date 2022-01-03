@@ -199,8 +199,6 @@ function GunFire:burst()
 	self.recoilSpeed = (config.getParameter("recoilSpeed",0))
 	self.recoilForce = (config.getParameter("recoilForce",0))
 
-	local species = status.statusProperty("fr_race") or world.entitySpecies(activeItem.ownerEntityId())
-
 	if self.helper then
 		self.helper:runScripts("gunfire-burst", self)
 	end
@@ -269,7 +267,7 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
 	end
 
 	local projectileId = 0
-	for i = 1, (projectileCount or self.projectileCount) do
+	for _ = 1, (projectileCount or self.projectileCount) do
 		if params.timeToLive then
 			params.timeToLive = util.randomInRange(params.timeToLive)
 		end

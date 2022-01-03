@@ -4,7 +4,6 @@ function init()
 end
 
 function update(dt)
-  local currentVelocity = mcontroller.velocity()
   mcontroller.controlParameters({gravityEnabled = false})
   mcontroller.setVelocity({0, 0})
 end

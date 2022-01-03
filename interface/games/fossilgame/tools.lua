@@ -25,6 +25,7 @@ end
 function Tool:update(dt)
   self.tileList = self:hoverTiles()
 
+  -- FIXME: found by Luacheck: intended to be used in Tool:updateAnimation(), but is local.
   local volume = hit and 1.0 or 0.4
 
   if self:updateAnimation(dt) then

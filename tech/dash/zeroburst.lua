@@ -31,7 +31,6 @@ function init()
 			end
 		end)
 
-	self.superJumpTimer = 0
 	self.damageProjectileType = "burstjumpboom"
 	self.damageMultiplier = 1.0
 	self.cooldown = 5
@@ -53,7 +52,6 @@ end
 
 function update(args)
 	applyTechBonus()
-	local superJumpTime = 0.01
 
 	if self.dashCooldownTimer > 0 then
 		self.dashCooldownTimer = math.max(0, self.dashCooldownTimer - args.dt)

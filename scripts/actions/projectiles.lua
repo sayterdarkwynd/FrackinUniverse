@@ -21,18 +21,14 @@ function parseProjectileConfig(board, args)
 end
 
 function scalePower(power)
-  local level = 1
-  power = power or 10
-
+  local multiplier = 1
   if entity.entityType() == "monster" then
-    power = power * root.evalFunction("monsterLevelPowerMultiplier", monster.level())
-    level = monster.level()
+    multiplier = root.evalFunction("monsterLevelPowerMultiplier", monster.level())
   elseif entity.entityType() == "npc" then
-    power = power * root.evalFunction("npcLevelPowerMultiplierModifier", npc.level())
-    level = npc.level()
+    multiplier = root.evalFunction("npcLevelPowerMultiplierModifier", npc.level())
   end
-  power = power * status.stat("powerMultiplier")
-  return power
+
+  return (power or 10) * multiplier * status.stat("powerMultiplier")
 end
 
 -- param position

@@ -42,9 +42,6 @@ end
 function fumechspiderAttack.update(dt, stateData)
   if not canContinueSkill() or not hasTarget() then return true end
 
-  local targetPosition = world.entityPosition(self.target)
-  local toTarget = world.distance(targetPosition, mcontroller.position())
-
   local projectileName = config.getParameter("fumechspiderAttack.projectile")
   local power = root.evalFunction("monsterLevelPowerMultiplier", monster.level()) * config.getParameter("fumechspiderAttack.power")
 

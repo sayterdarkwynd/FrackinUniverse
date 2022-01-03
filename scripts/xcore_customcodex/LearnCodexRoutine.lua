@@ -2,7 +2,10 @@
 -- Code to learn codex entries.
 require("/scripts/xcore_customcodex/LoggingOverride.lua") -- Very nice script!
 local HasLoggingOverride = false
-local print, warn, error, assertwarn, assert, tostring;
+
+-- luacheck: push ignore 231
+local print, warn, error, assertwarn, assert, tostring
+-- luacheck: pop
 
 local function GetLoggingOverridesIfNecessary()
 	if HasLoggingOverride then return end
@@ -49,7 +52,7 @@ function LearnCodex(itemName)
 	end
 
 	-- Update item name to strip it of -codex since we no longer want that suffix.
-	local itemName = itemName:sub(1, -7)
+	itemName = itemName:sub(1, -7)
 
 	local foundCodexFile = pcall(root.assetJson, data.directory .. itemName .. ".codex")
 	if not foundCodexFile then
@@ -80,7 +83,7 @@ end
 function CleanUpCodexEntries()
 	local newKnownEntries = {}
 	local existingKnownEntries = player.getProperty("xcodex.knownCodexEntries") or {}
-	for index, cdx in ipairs(existingKnownEntries) do
+	for _, cdx in ipairs(existingKnownEntries) do
 		local data = root.itemConfig(cdx[1] or "ERR_NULL_ITEM_NAME")
 		if data ~= nil and data.directory ~= nil then
 			table.insert(newKnownEntries, cdx)

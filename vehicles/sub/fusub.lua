@@ -12,7 +12,7 @@ function isSafeLiquid()
 		self.liquidCache[liquidId] = root.liquidName(liquidId)
 	end
 	local vehicleLiquid=self.liquidCache[liquidId]
-	for x, value in pairs(self.liquidList) do
+	for _, value in pairs(self.liquidList) do
 		if value == vehicleLiquid then
 			return not self.liquidUnsafe
 		end
@@ -110,7 +110,6 @@ function init()
 			if (self.ownerKey and self.ownerKey == ownerKey) then
 				self.spawnPosition = mcontroller.position()
 				animator.setAnimationState("base", "warpOut")
-				local localStorable = (self.driver ==nil)
 				return {storable = true, healthFactor = storage.health / self.maxHealth}
 			end
 		end
@@ -482,7 +481,7 @@ function updateMovingEffects(floating,moving)
 			self.engineLoopPlaying = false
 		end
 
-		for i, emitter in ipairs(self.bowWaveParticleNames) do
+		for _, emitter in ipairs(self.bowWaveParticleNames) do
 			animator.setParticleEmitterActive(emitter, false)
 		end
 	end
