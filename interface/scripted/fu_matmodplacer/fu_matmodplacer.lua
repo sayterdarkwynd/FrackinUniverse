@@ -21,7 +21,6 @@ function update(dt)
 		pane.dismiss()
 	end
     updateSearch()
-    updateCounts()
     reloadCraftable()
     populateItemList()
 end
@@ -35,13 +34,6 @@ end
 function updateSearch()
     self.currentSearch = string.lower(widget.getText("filter"))
     self.availableFilter = widget.getChecked("btnFilterHaveMaterials")
-end
-
-function updateCounts()
-    local listItem = widget.getListSelected(self.itemList)
-
-    -- FIXME: found by Luacheck: useless code, as result is "local"
-    local itemData = widget.getData(string.format("%s.%s", self.itemList, listItem))
 end
 
 function populateItemList(forceRepop)
