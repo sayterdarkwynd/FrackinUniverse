@@ -244,7 +244,7 @@ local function CreateButtonToReadCodex(codexDisplayName, codexData, codexFileInf
 	widget.setData("codexList.entrylist." .. tostring(newButton), {buttonName})
 	widget.setText("codexList.entrylist." .. tostring(newButton) .. ".entryButton", codexData.title or "ERR_NO_TITLE")
 
-	CodexButtonBindings[buttonName] = {codexData, tostring(newButton)}
+	CodexButtonBindings[buttonName] = {codexData, tostring(newButton) .. ".entryButton"}
 	--print("Button " .. buttonName .. " added to codex list children.")
 end
 
@@ -483,8 +483,7 @@ function ListButtonClicked(widgetName, widgetData)
 	local data = CodexButtonBindings[info]
 	if data ~= nil then
 		OpenCodex(data[1])
-		-- SetActiveEntryButton("codexList.entrylist." .. tostring(selectedId))
-		-- ^ Doesn't seem to work right now (it just does nothing). Not super important.
+		SetActiveEntryButton("codexList.entrylist." .. tostring(selectedId) .. ".entryButton")
 	end
 end
 
