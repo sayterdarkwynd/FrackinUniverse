@@ -694,14 +694,16 @@ function applyBonusesEssence(mergeBuffer, itemConfig, categoryLower)
 				if (primaryAbility.drawTime or itemConfig.config.primaryAbility.drawTime) then
 					primaryAbility.drawTime = (primaryAbility.drawTime or itemConfig.config.primaryAbility.drawTime) * (1 - (0.05*mergeBuffer.level))
 				end
+
+				-- Increase perfect shot time.
 				local powerProjectileTime=primaryAbility.powerProjectileTime or itemConfig.config.primaryAbility.powerProjectileTime
 				if type(powerProjectileTime)=="number" then
-					powerProjectileTime = powerProjectileTime*(1-(0.05*mergeBuffer.level))
+					powerProjectileTime = powerProjectileTime*(1+(0.05*mergeBuffer.level))
 				elseif type(powerProjectileTime)=="table" then
-					powerProjectileTime[1]=powerProjectileTime[1]*(1-(0.05*mergeBuffer.level))
+					powerProjectileTime[1]=powerProjectileTime[1]*(1+(0.05*mergeBuffer.level))
 					powerProjectileTime[2]=powerProjectileTime[2]*(1+(0.05*mergeBuffer.level))
 				end
-				-- FIXME: found by Luacheck: value of "powerProjectileTime" (that we just calculated above) is unused, was it supposed to be saved somewhere?
+				primaryAbility.powerProjectileTime = powerProjectileTime
 
 				primaryAbility.energyPerShot=primaryAbility.energyPerShot or itemConfig.config.primaryAbility.energyPerShot
 				if (primaryAbility.energyPerShot or itemConfig.config.primaryAbility.energyPerShot) then
