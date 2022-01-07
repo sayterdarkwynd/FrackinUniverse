@@ -23,8 +23,6 @@ function apply(input)
 			local outputTag  = output:instanceValue("ammoTag")
 			local outputMax  = output:instanceValue("ammoMax")
 
-			local outputAmmoRate = output:instanceValue("ammoFireRate") or 1
-
 			local inputAmmo  = config.getParameter("ammoCount") or 1
 			local inputType  = config.getParameter("ammoType")
 			local inputTag   = config.getParameter("ammoTag")
