@@ -11,7 +11,6 @@ function NebRNGWarpPoint:init()
   animator.setGlobalTag("directives", config.getParameter("directives", ""))
   self.paletteSwaps = config.getParameter("paletteSwaps")
   self.elementalType = config.getParameter("elementalType")
-  self.arrowVariant = config.getParameter("animationParts")
   self.cannotUseAlt = false
 
   self.drawTimer = 0
@@ -230,8 +229,6 @@ function NebRNGWarpPoint:attemptTeleport()
 end
 
 function NebRNGWarpPoint:currentProjectileParameters()
-  -- FIXME: found by Luacheck: "arrowVariant" is unused, but looks like it should be used somehow.
-  local arrowVariant = self.arrowVariant.arrow:match("(%d+)%.png")
   --Set projectile parameters based on draw power level
   local projectileParameters = copy(self.projectileParameters or {})
   --Load the root projectile config based on draw power level

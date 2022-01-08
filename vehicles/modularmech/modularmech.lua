@@ -1411,14 +1411,7 @@ function jump()
 end
 
 function armRotation(armSide)
-	local absoluteOffset = animator.partPoint(armSide .. "BoosterFront", "shoulder")
-	local shoulderPosition = vec2.add(mcontroller.position(), absoluteOffset)
-	local aimVec = world.distance(self.aimPosition, shoulderPosition)
-	local rotation = vec2.angle(aimVec)
-	if self.facingDirection == -1 then
-		-- FIXME: found by Luacheck: value of "rotation" is not used for anything.
-		rotation = math.pi - rotation
-	end
+	-- Unused. Vanilla was calculating "local rotation" variable here, but never used it afterwards.
 end
 
 function legOffset(legCycle)

@@ -21,12 +21,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: sudo apt-get install -y luarocks && sudo luarocks install luacheck
-
-      # Don't fail if the exit code is 1 (which means "there were warnings, but no errors"),
-      # only on exit code 2 ("there were errors").
-      # There are ~900 warnings in existing code, so we can't use "no warnings allowed" mode (yet?).
       - name: RUN -- luacheck .
-        run: luacheck --no-color --quiet . || [[ $? -le 1 ]]
+        run: luacheck --no-color --quiet .
 
   # Create .pak file for each GitHub release.
   pack-assets:

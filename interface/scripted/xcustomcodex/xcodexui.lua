@@ -42,18 +42,6 @@ local QUESTION_MARK = "/interface/scripted/xcustomcodex/question_mark.png"
 -- This is the text that displays on the "Ambiguous Race" button.
 -- local TEXT_AMBIGUOUS_BUTTON = "?"
 
--- A template for one of the buttons displayed in the list of codex titles.
-local TEMPLATE_CODEX_ENTRY_BUTTON = {
-	type = "button",
-	caption = "",
-	textAlign = "center",
-	pressedOffset = {1, -1},
-	base = CODEX_BUTTON_STOCK,
-	hover = CODEX_BUTTON_HOVER,
-	pressed = CODEX_BUTTON_HOVER,
-	callback = "ListButtonClicked"
-}
-
 -- This template data is only created on GUI instantiation.
 -- This may be a better fit for simply having in the raw .config file itself.
 local TEMPLATE_CODEX_RACE_CATEGORY = {
@@ -250,18 +238,13 @@ local function CreateButtonToReadCodex(codexDisplayName, codexData, codexFileInf
 	local buttonName = "cdx_" .. codexData.id
 	codexData.title = codexDisplayName
 
-	-- Grab our button template and populate the necessary data.
-	--local button = TEMPLATE_CODEX_ENTRY_BUTTON
-	--button.caption = codexData.title or "ERR_NO_TITLE"
-	--button.position = {0, index * -22}
-
 	-- Now let's store this button's existence.
 
 	local newButton = widget.addListItem("codexList.entrylist")
 	widget.setData("codexList.entrylist." .. tostring(newButton), {buttonName})
 	widget.setText("codexList.entrylist." .. tostring(newButton) .. ".entryButton", codexData.title or "ERR_NO_TITLE")
 
-	CodexButtonBindings[buttonName] = {codexData, tostring(newButton)}
+	CodexButtonBindings[buttonName] = {codexData, tostring(newButton) .. ".entryButton"}
 	--print("Button " .. buttonName .. " added to codex list children.")
 end
 
@@ -500,8 +483,7 @@ function ListButtonClicked(widgetName, widgetData)
 	local data = CodexButtonBindings[info]
 	if data ~= nil then
 		OpenCodex(data[1])
-		-- SetActiveEntryButton("codexList.entrylist." .. tostring(selectedId))
-		-- ^ Doesn't seem to work right now (it just does nothing). Not super important.
+		SetActiveEntryButton("codexList.entrylist." .. tostring(selectedId) .. ".entryButton")
 	end
 end
 
