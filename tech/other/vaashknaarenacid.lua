@@ -70,7 +70,6 @@ function activate(fireMode,down)
 				["repeat"] = false,
 				type = self.projectileExplode2,
 				config = {
-					physics="grenade",
 					bounces=0,
 					timeToLive=1,
 					actionOnReap = {
@@ -79,7 +78,9 @@ function activate(fireMode,down)
 							time = 1,
 							type = self.projectileExplode2,
 							["repeat"] = false,
-							config = {timeToLive=buffer,periodicActions=carrierPeriodicConfig}
+							config = {
+								timeToLive=buffer,periodicActions=carrierPeriodicConfig
+							}
 						}
 					}
 				},
