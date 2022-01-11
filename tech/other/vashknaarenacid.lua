@@ -95,7 +95,6 @@ function activate(fireMode,down)
 		pParams.speed=25
 		pParams.timeToLive=15
 		pParams.piercing=false
-		local i
 		for i=0,self.projectile1spreadcount-1 do
 			table.insert(pParams.actionOnReap, {
 				time = 0.1,
