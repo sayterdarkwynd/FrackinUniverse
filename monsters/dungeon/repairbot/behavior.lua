@@ -124,7 +124,6 @@ function repairState.update(dt, stateData)
   end
 
   local toTarget = world.distance(targetPosition, mcontroller.position())
-  local animation = entity.animationState("movement")
   if world.magnitude(toTarget) < config.getParameter("repairDistance") then
     if setAnimation("repair") then
       entity.heal(stateData.targetId, config.getParameter("repairHealthPerSecond") * dt)
@@ -142,7 +141,7 @@ function repairState.findTaget()
   local entityIds = world.entityQuery(mcontroller.position(), config.getParameter("repairResponseMaxDistance"), {includedTypes = {"monster"}})
   local selfId = entity.id()
 
-  for i, entityId in ipairs(entityIds) do
+  for _, entityId in ipairs(entityIds) do
     if entityId ~= selfId then
       local healthStatus = world.entityHealth(entityId)
       if healthStatus[1] < healthStatus[2] then

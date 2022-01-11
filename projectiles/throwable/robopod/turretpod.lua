@@ -20,7 +20,8 @@ end
 function releaseMonsters()
 	if done then return end
 	local damageTeam = entity.damageTeam()
-	local entityId = world.spawnMonster(monsterType, mcontroller.position(), {
+	-- local entityId =
+	world.spawnMonster(monsterType, mcontroller.position(), {
 		level = world.threatLevel() + monsterLevelOffset,
 		damageTeam = damageTeam.team,
 		damageTeamType = damageTeam.type,

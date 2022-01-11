@@ -1,6 +1,5 @@
 require "/scripts/kheAA/transferUtil.lua"
 require "/scripts/kheAA/liquidLib.lua"
-local deltaTime = 0
 
 function init()
   object.setInteractive(true)

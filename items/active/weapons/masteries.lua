@@ -22,7 +22,6 @@ masteries.timers.both={}
 
 function masteries.apply(args)
 	if activeItem then error("masteries.lua: Masteries don't belong in activeitem scripts. Stop trying.") end
-	local masteryBuffer={}
 	for hand,data in pairs(masteries.timers) do
 		for var,set in pairs(data) do
 			local e=set[1]+(args.dt*set[2])
@@ -50,7 +49,7 @@ function masteries.apply(args)
 		--handle each combination in turn.
 		for currentHand,otherHand in pairs({primary="alt",alt="primary"}) do
 			--rather than applying dozens of separate effects...we just build a single list to apply.
-			masteryBuffer={}
+			local masteryBuffer={}
 
 			--trying to reduce code overhead by adding checks for melee/ranged/staff fails, sadly. because vanilla shit like fist weapons or wands/staves
 
@@ -332,9 +331,10 @@ function masteries.apply(args)
 						gritModifier=0
 					end
 				end
+
 				masteryBuffer[#masteryBuffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+powerModifier}
-				masteryBuffer[#masteryBuffer + 1]={stat="dashtechBonus", amount=0.1*(masteries.stats.shortswordMastery/3) }
-				masteryBuffer[#masteryBuffer + 1]={stat="dodgetechBonus", amount=0.1*(masteries.stats.shortswordMastery/3) }
+				masteryBuffer[#masteryBuffer + 1]={stat="dashtechBonus", amount=dashModifier }
+				masteryBuffer[#masteryBuffer + 1]={stat="dodgetechBonus", amount=dodgeModifier }
 				masteryBuffer[#masteryBuffer + 1]={stat="grit", amount=gritModifier}
 			end
 

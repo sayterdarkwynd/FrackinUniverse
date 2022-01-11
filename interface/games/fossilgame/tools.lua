@@ -25,8 +25,6 @@ end
 function Tool:update(dt)
   self.tileList = self:hoverTiles()
 
-  local volume = hit and 1.0 or 0.4
-
   if self:updateAnimation(dt) then
     self:strike(self.triggerPosition)
   end
@@ -59,7 +57,7 @@ function Tool:updateAnimation(dt)
     if frame ~= prevFrame then
       local soundIndex = self.soundTriggerSequence[frame]
       if soundIndex and self.sound[soundIndex] then
-        pane.playSound(self.sound[soundIndex], 0, volume)
+        pane.playSound(self.sound[soundIndex])
       end
       if frame == self.strikeFrame then return true end
     end

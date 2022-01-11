@@ -23,9 +23,8 @@ function init()
 	self.environmentTimer = 0
 
 	self.timer = 10.0 -- was zero, instant event on plopping in. giving players a short grace period. some of us teleport around a LOT.
-	local buffer=status.activeUniqueStatusEffectSummary()
-	for _,v in pairs(buffer) do
-		if buffer[1]=="mad" then
+	for _,effect in ipairs(status.activeUniqueStatusEffectSummary()) do
+		if effect[1]=="mad" then
 			status.removeEphemeralEffect("mad")
 			status.addEphemeralEffect("mad",self.timer)
 			break
@@ -67,7 +66,7 @@ function init()
 	--storage.armorSetData=storage.armorSetData or {}--moved into a separate setup
 	fuPersistentEffectRecorder.init()
 
-	for element,data in pairs(elementalTypes) do
+	for _,data in pairs(elementalTypes) do
 		if data.resistanceStat then
 			buffer[data.resistanceStat]=true
 		end
@@ -153,7 +152,7 @@ function randomEvent()
 	end
 
 	-- are we currently carrying any really weird stuff?
-	local carryWeird=isWeirdStuff(self.timer)
+	isWeirdStuff(self.timer)
 
 	--set duration of curse
 	self.curseDuration = math.min(self.timer,self.madnessCount / 5)--this value will be adjusted based on effect type. Clamping this because it's too much otherwise. --highest duration (285.71) is reached at 1428.57. duration at max madness: 150.

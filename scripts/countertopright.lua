@@ -1,7 +1,7 @@
 function update(dt)
 	if matchingcounter == nil then
 		matchingcounterlist = world.objectQuery({object.position()[1]-4,object.position()[2]},1)
-		for i,j in ipairs(matchingcounterlist) do
+		for _,j in ipairs(matchingcounterlist) do
 			if world.entityName(j) == "sushibeltcounterleft" then matchingcounter = j end
 		end
 	end

@@ -15,7 +15,7 @@ end
 function getRotTimeDescription(rotTime)
 	local descList = root.assetJson("/items/rotting.config:rotTimeDescriptions")
 	if not rotTime then return "" end
-	for i, desc in ipairs(descList) do
+	for _, desc in ipairs(descList) do
 		if rotTime <= desc[1] then return desc[2] end
 	end
 	return descList[#descList]

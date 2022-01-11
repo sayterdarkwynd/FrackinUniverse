@@ -34,7 +34,7 @@ function overheadBars()
     })
   end
 
-  for k,v in pairs(self.barsList) do
+  for _,v in pairs(self.barsList) do
 	table.insert(bars,{
 		percentage = v.percentage,
 		color = v.color

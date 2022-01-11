@@ -94,7 +94,7 @@ end
 
 
 function checkMouthPos(mouthPos)
-	for entry,offset in pairs(valueList) do
+	for _,offset in pairs(valueList) do
 		if vec2.eq(mouthPos,offset) then
 			return true
 		end

@@ -30,7 +30,6 @@ function Controlledteleport:update(dt, fireMode, shiftHeld)
 	if self.fireMode == (self.activatingFireMode or self.abilitySlot)
 		and not self.weapon.currentAbility
 		and not status.resourceLocked("energy") then
-	local aimPosition = activeItem.ownerAimPosition()
 
 		self:setState(self.charge)
 	end
@@ -95,7 +94,7 @@ function Controlledteleport:discharge()
 	(status.statPositive("admin") or player.isAdmin())
 	or ((world.terrestrial() or wType == "asteroids" or wType == "outpost" or wType == "unknown" or wType == "playerstation") and world.dayLength() ~= 100000)
 	or (wType=="scienceoutpost" and player.hasCountOfItem("sciencebrochure2")>0)
-	local lineOfSightActive = not world.lineTileCollision(activeItem.ownerAimPosition(), mcontroller.position())
+	-- local lineOfSightActive = not world.lineTileCollision(activeItem.ownerAimPosition(), mcontroller.position())
 
 	if (permittedWorld) then --and lineOfSightActive) then --make sure they can see destination so they cant cheat
 		local finalLocation=self:targetValid(mcontroller.collisionPoly(),activeItem.ownerAimPosition());

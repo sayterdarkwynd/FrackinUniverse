@@ -31,12 +31,12 @@ function fire(dt)
 		end
 	end
 	buffer=buffer2
-	for id,pos in pairs(buffer) do
+	for _,pos in pairs(buffer) do
 		local quack=math.floor(math.random(100))
 		if quack > 40 then
 			local aimVector=vec2.sub(pos,entity.position())
-			local aimVector={norm=vec2.norm(aimVector),mag=vec2.mag(aimVector)}
-			world.spawnProjectile("scouteyecultist",mcontroller.position(),entity.id(),aimVector.norm,false,{power=status.resourceMax("health")*status.stat("powerMultiplier")*0.02,damageKind="shadow",speed=aimVector.mag*2})
+			world.spawnProjectile("scouteyecultist", mcontroller.position(), entity.id(), vec2.norm(aimVector), false,
+				{ power=status.resourceMax("health")*status.stat("powerMultiplier")*0.02, damageKind="shadow", speed=vec2.mag(aimVector)*2 })
 		end
 	end
 end

@@ -112,10 +112,6 @@ end
 function setDesc()
 	if not self.overrideScanTooltip then return end
 
-	local color="^yellow;"
-	local info="Standby."
-
-
 	local worldtype = world.type()
 	if worldtype == 'unknown' then
 		worldtype = world.getProperty("ship.celestial_type") or worldtype

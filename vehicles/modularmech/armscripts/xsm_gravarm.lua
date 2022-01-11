@@ -83,7 +83,7 @@ function BeamArm:fireState()
 			self.newFireAngle = self.aimAngle
 		end
 		animator.rotateTransformationGroup(self.armName, self.newFireAngle, self.shoulderOffset)
-		local endPoint, beamCollision, beamLength = self:updateBeam()
+		local endPoint, beamCollision = self:updateBeam()
 
 		if stateTimer <= 0 then
 			stateTimer = self.fireTime
@@ -177,10 +177,10 @@ function BeamArm:progressiveLineCollision(startPoint, endPoint, stepSize, projec
 		local p1 = { normX * i * stepSize + startPoint[1], normY * i * stepSize + startPoint[2]}
 		local p2 = { normX * (i + 1) * stepSize + startPoint[1], normY * (i + 1) * stepSize + startPoint[2]}
 		if projectile ~= nil then
-			world.spawnProjectile(projectile, math.midPoint(p1, p2), self.driverId, {normX, normY}, false,{speed=0,referenceVelocity=pVelocity,onlyHitTerrain=true})
+			world.spawnProjectile(projectile, math_midPoint(p1, p2), self.driverId, {normX, normY}, false,{speed=0,referenceVelocity=pVelocity,onlyHitTerrain=true})
 		end
 		if world.lineCollision(p1, p2, {"Null","Block","Dynamic"}) then
-			return math.midPoint(p1, p2)
+			return math_midPoint(p1, p2)
 		end
 	end
 	return endPoint
@@ -214,7 +214,7 @@ function BeamArm:firePos()
 	return firePosition
 end
 
-function math.midPoint(coordA, coordB)
+function math_midPoint(coordA, coordB)
 	local u = { 0.5 * (coordB[1] + coordA[1]), 0.5 * (coordB[2] + coordA[2]) }
 	return u
 end

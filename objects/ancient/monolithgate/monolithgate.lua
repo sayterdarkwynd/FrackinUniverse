@@ -8,7 +8,7 @@ function init()
 end
 
 function update(dt)
-	for i, flag in ipairs(world.universeFlags()) do
+	for _, flag in ipairs(world.universeFlags()) do
 		if self.flagAnimationStates[flag] then
 			self.states[self.flagAnimationStates[flag]]=true
 		end

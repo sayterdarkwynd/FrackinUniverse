@@ -156,7 +156,7 @@ function TargetedBlink:blink()
 end
 
 function TargetedBlink:findBlinkPosition()
-	local searchposition = activeItem.ownerAimPosition()
+	local searchPosition = activeItem.ownerAimPosition()
 	local groundPosition = findGroundPosition(searchPosition, -self.blinkYTolerance, self.blinkYTolerance, false, {"Null", "Block", "Dynamic", "Platform"})
 	if groundPosition then
 		return groundPosition

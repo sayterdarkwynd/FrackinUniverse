@@ -572,6 +572,7 @@ function update(dt)
 
 	local newControls = {}
 	local oldControls = self.lastControls
+	local walking = false
 
 	if self.deploy then
 		self.deploy.fadeTimer = math.max(0.0, self.deploy.fadeTimer - dt)
@@ -600,7 +601,6 @@ function update(dt)
 			animator.setGlobalTag("directives", "")
 		end
 
-		local walking = false
 		if self.driverId then
 			-- for k, _ in pairs(self.lastControls) do
 				-- newControls[k] = vehicle.controlHeld("seat", k)
@@ -1059,8 +1059,6 @@ function update(dt)
 		end
 
 		for _, arm in pairs({"left", "right"}) do
-			local fireControl = (arm == "left") and "PrimaryFire" or "AltFire"
-
 			animator.resetTransformationGroup(arm .. "Arm")
 			animator.resetTransformationGroup(arm .. "ArmFlipper")
 
@@ -1413,14 +1411,7 @@ function jump()
 end
 
 function armRotation(armSide)
-	local absoluteOffset = animator.partPoint(armSide .. "BoosterFront", "shoulder")
-	local relativeOffset = vec2.mul(absoluteOffset, {self.facingDirection, 1})
-	local shoulderPosition = vec2.add(mcontroller.position(), absoluteOffset)
-	local aimVec = world.distance(self.aimPosition, shoulderPosition)
-	local rotation = vec2.angle(aimVec)
-	if self.facingDirection == -1 then
-		rotation = math.pi - rotation
-	end
+	-- Unused. Vanilla was calculating "local rotation" variable here, but never used it afterwards.
 end
 
 function legOffset(legCycle)

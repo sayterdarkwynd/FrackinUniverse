@@ -74,7 +74,7 @@ function flyInGeneralDirection(args, board)
 	while true do
 		mcontroller.controlDown()
 		local maxAngle = util.toRadians(args.maxAngle)
-	local pos=args.position or entity.position()
+		local pos=args.position or entity.position()
 		local toTarget = vec2.norm(world.distance(pos, mcontroller.position()))
 		if direction == nil or math.acos(vec2.dot(toTarget, direction)) > maxAngle then
 			direction = vec2.rotate(toTarget, (util.randomDirection() * math.random() * maxAngle))
@@ -85,8 +85,6 @@ function flyInGeneralDirection(args, board)
 
 		coroutine.yield()
 	end
-
-	return true
 end
 
 
@@ -131,7 +129,6 @@ end
 -- output direction
 function approachTurn(args, output, _, dt)
 	local targetPosition = world.entityPosition(args.entity)
-	local distance = world.magnitude(targetPosition, mcontroller.position())
 	while true do
 		local toTarget = world.distance(targetPosition, mcontroller.position())
 		local angle = mcontroller.rotation()
@@ -160,7 +157,6 @@ function approachTurn(args, output, _, dt)
 		coroutine.yield(nil, {angle = angle, direction = diff})
 
 		targetPosition = world.entityPosition(args.entity)
-		distance = world.magnitude(targetPosition, mcontroller.position())
 	end
 end
 
@@ -183,7 +179,6 @@ function approachBurn(args, output, _, dt)
 
 	local distance = world.magnitude(entity.position(), targetPosition)
 	local approach = vec2.add(targetPosition, vec2.mul(toTarget, -args.approachRadius))
-	local toApproach = vec2.norm(world.distance(approach, entity.position()))
 	local approachSpeed = flySpeed + vec2.mag(targetVelocity)
 	if distance < args.approachRadius * 2 then
 		local angle = math.atan(args.approachRadius, distance / 2)

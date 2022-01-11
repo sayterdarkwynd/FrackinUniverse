@@ -223,7 +223,7 @@ function PathMover:move(targetPosition, dt)
 	debugPath(self.finder)
 
 	self.controlParameters = copy(self.options.movementParameters)
-	local result = self:edgeMove()
+	result = self:edgeMove()
 	mcontroller.controlParameters(self.controlParameters)
 
 	return result

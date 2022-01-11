@@ -104,7 +104,7 @@ function BeamArm:fireState()
 	-- ********************************************************************
 	animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
 
-	local endPoint, beamCollision, beamLength = self:updateBeam()
+	local _, beamCollision, beamLength = self:updateBeam()
 
 	animator.playSound(self.armName .. "Fire")
 	animator.setParticleEmitterBurstCount(self.armName .. "Beam", math.ceil(self.beamParticleDensity * beamLength))

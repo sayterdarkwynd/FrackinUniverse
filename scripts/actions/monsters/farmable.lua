@@ -64,37 +64,31 @@ end
 
 function findTrough(args)
 	local troughtypelist = root.assetJson('/scripts/actions/monsters/farmable.config').troughlist
-	local troughlist = {}
+	local troughdislist = {}
 	for i = 1,#troughtypelist do
 		local objectList = world.objectQuery(args.position,100,{name = troughtypelist[i], order = "nearest"})
 		if #objectList > 0 then
-			table.insert(troughlist,objectList[1])
+			local entityKey = objectList[1]
+			troughdislist[entityKey] = world.magnitude(args.position,world.entityPosition(entityKey))
 		end
 	end
-	local isEmpty = true
-	for key,value in pairs(troughlist) do
-		isEmpty = false
-		break
-	end
-	if isEmpty then return false end
-	local troughdislist = {}
-	for _,value in pairs(troughlist) do
-		troughdislist[value] = world.magnitude(args.position,world.entityPosition(value))
-	end
-	for key,value in pairs(troughdislist) do
-		for key2,value2 in pairs(troughdislist) do
-			if key ~= key2 then
-				if value > value2 then
-					troughdislist[key] = nil
+	if not next(troughdislist) then return false end
+
+	-- Ignore all troughs except the closest one.
+	for entityKey1,distance1 in pairs(troughdislist) do
+		for entityKey2,distance2 in pairs(troughdislist) do
+			if entityKey1 ~= entityKey2 then
+				if distance1 > distance2 then
+					troughdislist[entityKey1] = nil
 				else
-					troughdislist[key2] = nil
+					troughdislist[entityKey2] = nil
 				end
 			end
 		end
 	end
-	for key,value in pairs(troughdislist) do
-		return true,{entity = key}
-	end
+
+	local closestEntityKey = next(troughdislist)
+	return true,{entity = closestEntityKey}
 end
 
 function eatFood(args)
@@ -304,7 +298,7 @@ function checkSoil()
 	configBombDrop = { speed = 20}
 	if world.mod(mcontroller.position(), "foreground") then
 	 --setAnimationState("body", "graze")
-		for _,value in pairs(tileMods.mainTiles) do
+		for _,value in pairs(tileModConfig.mainTiles) do
 			if world.mod(mcontroller.position(), "foreground") == value then
 				world.spawnProjectile("grazingprojectilespray",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop)
 			end

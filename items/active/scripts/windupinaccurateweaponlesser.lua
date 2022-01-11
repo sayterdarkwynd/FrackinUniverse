@@ -16,7 +16,6 @@ end
 function update(dt, fireMode, shiftHeld)
 
   local scaleFactor = status.resource("energy") / status.resourceMax("energy") + 0.005
-  local scaleFactor2 = status.resource("energy") / status.resourceMax("energy") + 0.03
   self.primaryAbility.fireTime = baseFireTime * scaleFactor
   self.primaryAbility.inaccuracy = baseInaccuracy * scaleFactor
   self.primaryAbility.baseDamageMultiplier = baseDamageMultiplier / scaleFactor

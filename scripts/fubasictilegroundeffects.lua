@@ -24,7 +24,7 @@ function update(dt)
     return
   end
 
-  local groundMat, offset, stoodOn
+  local groundMat, offset
   local onGround = mcontroller.onGround()
   local softness = 1
   self.position = mcontroller.position()
@@ -44,7 +44,7 @@ function update(dt)
 
   if onGround then
     self.airJumpModifier = 1
-    groundMat, offset, stoodOn = groundContact()
+    groundMat, offset = groundContact()
 
     if currentTile then
       applyTileEffects()
@@ -103,6 +103,7 @@ groundContact = function()
   local position = {mpos[1],math.floor(mpos[2])}
   local groundMat = world.material(vec2.add({position[1],position[2]}, {0,-2.5}), "foreground")
   local offset = 0
+  local stoodOn
 
   if groundMat == false then
     if mpos[1] - math.floor(mpos[1]) < 0.5 then

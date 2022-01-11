@@ -85,8 +85,6 @@ function build(directory, config, parameters, level, seed)
 		config.tooltipFields.shieldBashPushLabel = configParameter("shieldBashPush",0)
 		config.tooltipFields.stunChance = util.round(configParameter("stunChance",0), 0)
 
-		local resistanceInfo2={}
-
 		for _,v in pairs(config.leveledStatusEffects) do
 			if resistances[v.stat] then
 				local label=resistances[v.stat].label
@@ -125,7 +123,7 @@ function build(directory, config, parameters, level, seed)
 		config.description=config.description..resistanceText
 	end
 	resistanceInfo=configParameter("itemTags")
-	resistanceInfo2={}
+	local resistanceInfo2={}
 	doOnce=false
 	for _,tag in pairs(resistanceInfo or {}) do
 		doOnce=true

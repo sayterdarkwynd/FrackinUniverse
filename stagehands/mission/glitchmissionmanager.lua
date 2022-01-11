@@ -226,7 +226,7 @@ function missionSequence()
 			{ entityType = "cultistsciencepet", count = 2 }
 		}) end
 	}
-	for i = 1, 5 do
+	for _ = 1, 5 do
 		shuffle(spawnFunctions)
 		for _,spawn in pairs(spawnFunctions) do
 			util.appendLists(wave,spawn())
@@ -302,7 +302,7 @@ function bossWave()
 	util.wait(4.0)
 	startMusic("bossMusic")
 
-	for _,enemyId in pairs(wave) do
+	if wave[1] then
 		world.sendEntityMessage(wave[1], "notify", { type = "bossAggro", sourceId = entity.id() })
 	end
 
@@ -379,8 +379,8 @@ function spawnHelis()
 					{ entityType = "helicultist", count = 1},
 					{ entityType = "fuhelicultist", count = 1}
 				})
-				for _,entityId in pairs(newHelis) do
-					table.insert(helis, entityId)
+				for _,entityId2 in pairs(newHelis) do
+					table.insert(helis, entityId2)
 				end
 			end
 		end
@@ -394,7 +394,7 @@ function spawnWave(spawnPoint, wave)
 	if not spawnStagehand then error(string.format("No entity with unique ID: %s", spawnPoint)) end
 	local enemies = {}
 	for _,spawn in pairs(wave) do
-		for i = 1, (spawn.count or 1) do
+		for _ = 1, (spawn.count or 1) do
 			local position = world.entityPosition(spawnStagehand)
 
 			if contains({"cultistknight", "cultistarcher", "helicultist", "fuhelicultist","cultistbasic","cultistassault","cultistrocket","cultistscientistpet","cultistsniper","fusorceror"}, spawn.entityType) then

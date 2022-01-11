@@ -35,7 +35,7 @@ function AxeCleave:windup(windupProgress)
 
 	self.weapon:setStance(self.stances.windup)
 
-	local windupProgress = windupProgress or 0
+	windupProgress = windupProgress or 0
 	local bounceProgress = 0
 	while self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) do
 		if windupProgress < 1 then
@@ -103,13 +103,13 @@ function AxeCleave:fire()
 end
 
 function AxeCleave:setupInterpolation()
-	for i, v in ipairs(self.stances.windup.bounceWeaponAngle) do
+	for _, v in ipairs(self.stances.windup.bounceWeaponAngle) do
 		v[2] = interp[v[2]]
 	end
-	for i, v in ipairs(self.stances.windup.weaponAngle) do
+	for _, v in ipairs(self.stances.windup.weaponAngle) do
 		v[2] = interp[v[2]]
 	end
-	for i, v in ipairs(self.stances.windup.armAngle) do
+	for _, v in ipairs(self.stances.windup.armAngle) do
 		v[2] = interp[v[2]]
 	end
 end

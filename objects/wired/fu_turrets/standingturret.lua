@@ -183,7 +183,6 @@ end
 
 -- Coroutine
 function autoFire()
-  local level = math.max(1.0, world.threatLevel())
   local power = config.getParameter("power") * math.max(1.0, world.threatLevel())
   local fireTime = config.getParameter("fireTime")
   local projectileType = config.getParameter("projectileType")

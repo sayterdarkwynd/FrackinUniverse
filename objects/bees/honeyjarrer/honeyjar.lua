@@ -19,7 +19,6 @@ function update(dt)
 		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
 
-	local contents = world.containerItems(entity.id())
 	local ents = world.objectQuery(entity.position(), 5, {name="industrialcentrifuge", order="nearest"})
 
 	if #ents > 0 and world.entityName(ents[1]) == "industrialcentrifuge" then

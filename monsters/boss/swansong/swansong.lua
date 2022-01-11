@@ -44,11 +44,11 @@ function init()
 			end
 
 			local adjacent = {}
-			local wrap = function(i)
-				while i > self.maxAdds do
-					i = i - self.maxAdds
+			local wrap = function(j)
+				while j > self.maxAdds do
+					j = j - self.maxAdds
 				end
-				return i
+				return j
 			end
 			if i % 3 ~= 0 then
 				table.insert(adjacent, self.ophanims[wrap(i + 1)])
@@ -197,12 +197,10 @@ function boostAnimation()
 
 	local bodyTargetAngle = util.angleDiff(downAngle, thrustAngle) * 0.75
 	local lhTargetAngle = downAngle + util.angleDiff(downAngle, handThrustAngle)
-	local rhTargetAngle = downAngle + util.angleDiff(downAngle, handThrustAngle)
 	if braking then
 		-- move body and hands back toward their original angles when braking
 		bodyTargetAngle = util.angleDiff(0, bodyTargetAngle) * speedMultiplier
 		lhTargetAngle = downAngle + util.angleDiff(downAngle, lhTargetAngle) * speedMultiplier
-		rhTargetAngle = downAngle + util.angleDiff(downAngle, rhTargetAngle) * speedMultiplier
 	end
 
 	local hands = {
@@ -281,7 +279,7 @@ function anglePrediction(sourcePosition, targetId, time, trackRange)
 		local targetVelocity = world.entityVelocity(targetId)
 		local toTarget = world.distance(world.entityPosition(targetId), sourcePosition)
 
-		local trackRange = trackRange or vec2.mag(toTarget)
+		trackRange = trackRange or vec2.mag(toTarget)
 		local perpendicular = vec2.rotate(vec2.norm(toTarget), math.pi / 2)
 		local angularVel = vec2.dot(perpendicular, vec2.norm(targetVelocity)) * (vec2.mag(targetVelocity) / trackRange)
 		return vec2.angle(toTarget) + angularVel * time
@@ -375,7 +373,7 @@ activeState = async(function(attackConfig)
 			rocketSwarmAttack(attackConfig.rocketSwarm),
 			deathLaserAttack(attackConfig.deathLaser),
 			coroutine.create(function()
-				for i = 1, 4 do
+				for _ = 1, 4 do
 					await(meleeSequenceAttack(attackConfig.melee))
 				end
 			end)
@@ -386,7 +384,7 @@ activeState = async(function(attackConfig)
 			await(activateGravity(attackConfig.activateGravity))
 
 			await(spawnOphanimsAttack(attackConfig.spawnOphanims))
-			for i = 1, 2 do
+			for _ = 1, 2 do
 				await(hoverFireAttack(attackConfig.hoverFire))
 			end
 
@@ -405,7 +403,7 @@ activeState = async(function(attackConfig)
 				await(deathLaserAttack(attackConfig.deathLaser))
 			end
 			if step == 0 or step == 1 then
-				for i = 1, 4 do
+				for _ = 1, 4 do
 					await(meleeSequenceAttack(attackConfig.melee))
 				end
 			end
@@ -416,7 +414,7 @@ activeState = async(function(attackConfig)
 			await(flyTo({storage.spawnPosition[1], mcontroller.position()[2]}))
 
 			await(spawnOphanimsAttack(attackConfig.spawnOphanims))
-			for i = 1, 2 do
+			for _ = 1, 2 do
 				await(hoverFireAttack(attackConfig.hoverFire))
 			end
 
@@ -773,7 +771,7 @@ spawnAnimation = async(function()
 			await(delay(0.75))
 		end,
 		function()
-			for i = 1, 5 do
+			for _ = 1, 5 do
 				--animator.playSound("spawnClank")
 				await(delay(0.5))
 			end
@@ -834,7 +832,6 @@ spawnOphanimsAttack = async(function()
 	local upAngle = math.pi/2
 	local angleRange = ((math.pi - 0.2) / maxSpawn) * (spawnCount - 1)
 	local startAngle = upAngle - (angleRange / 2)
-	local endAngle = upAngle + (angleRange / 2)
 	await(moveRightHand({0, 2.0}, startAngle, 6.0, 0.5))
 
 	animator.setAnimationState("righthand", "firewindup")
@@ -902,7 +899,7 @@ hoverFireAttack = async(function(conf)
 	await(delay(0.5))
 	monster.setAnimationParameter("aimLaser", false)
 
-	for i = 1, 5 do
+	for _ = 1, 5 do
 		animator.setAnimationState("righthand", "fire", true)
 		local sourcePosition = vec2.add(mcontroller.position(), animator.partPoint("righthand", "projectileSource"))
 		local aimDir = vec2.withAngle(self.righthand.angle)
@@ -950,7 +947,7 @@ rocketSwarmAttack = async(function(conf)
 			function()
 				await(delay(0.5))
 
-				for i = 1, conf.rocketCount do
+				for _ = 1, conf.rocketCount do
 					-- spawn one rocket from each rocket orifice
 					local leftPos = vec2.add(mcontroller.position(), animator.partPoint("body", "leftRocketSource"))
 					local aimDir = vec2.rotate({-1, 0}, -util.toRadians(30) * math.random() * util.toRadians(60))
@@ -958,7 +955,7 @@ rocketSwarmAttack = async(function(conf)
 					table.insert(projectiles, leftId)
 
 					local rightPos = vec2.add(mcontroller.position(), animator.partPoint("body", "rightRocketSource"))
-					local aimDir = vec2.rotate({1, 0}, -util.toRadians(30) * math.random() * util.toRadians(60))
+					aimDir = vec2.rotate({1, 0}, -util.toRadians(30) * math.random() * util.toRadians(60))
 					local rightId = world.spawnProjectile("swansongrocket", rightPos, entity.id(), aimDir, false, {power = scalePower(conf.power)})
 					table.insert(projectiles, rightId)
 
@@ -1134,7 +1131,7 @@ meleeChargeAttack = async(function(conf, bodyChargeState, bodyEndState)
 	animator.playSound("thrustLoop", -1)
 	monster.setDamageParts({"sword"})
 
-	local timer = 0.0
+	timer = 0.0
 	local windupTime = conf.windup
 	while timer < windupTime do
 		local jitter = 0.125 * timer / windupTime
@@ -1222,15 +1219,15 @@ meleeDashAttack = async(function(conf, targetAngle)
 		function()
 			local timer = 0.0
 			local startAngle = self.body.angle
-			local targetAngle = startAngle + util.angleDiff(startAngle, localAngle(targetAngle) * self.facing)
+			local targetAngle2 = startAngle + util.angleDiff(startAngle, localAngle(targetAngle) * self.facing)
 			while timer < rotateTime do
-				self.body.angle = util.lerp(timer / rotateTime, startAngle, targetAngle)
+				self.body.angle = util.lerp(timer / rotateTime, startAngle, targetAngle2)
 				self.righthand.angle = self.body.angle + util.toRadians(-90)
 				timer = timer + script.updateDt()
 				coroutine.yield()
 			end
 
-			self.body.angle = targetAngle
+			self.body.angle = targetAngle2
 		end
 	))
 
@@ -1329,7 +1326,7 @@ deathLaserAttack = async(function(conf)
 	animator.setAnimationState("wings", "beamwindup")
 	await(delay(1.0))
 
-	for i = 1, 6 do
+	for _ = 1, 6 do
 		local sourcePosition = vec2.add(mcontroller.position(), animator.partPoint("beam", "beamStart"))
 		local toTarget = world.distance(world.entityPosition(self.target), sourcePosition)
 		controlFace(toTarget[1])
@@ -1400,13 +1397,13 @@ finalFormTransition = async(function(conf)
 			end
 		end,
 		function()
-			for i = 1, conf.beams do
+			for _ = 1, conf.beams do
 				await(handBeam("left", anglePrediction(mcontroller.position(), self.target, 1.0, 35), setDamagePartActive))
 			end
 		end,
 		function()
 			await(delay(0.75))
-			for i = 1, conf.beams do
+			for _ = 1, conf.beams do
 				await(handBeam("right", anglePrediction(mcontroller.position(), self.target, 1.0, 35), setDamagePartActive))
 			end
 		end

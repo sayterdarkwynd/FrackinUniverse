@@ -88,7 +88,7 @@ function spawnCompanions()
 	end
 	petSpawner:markDirty()
 
-	for uuid, recruit in pairs(recruitSpawner.followers) do
+	for _, recruit in pairs(recruitSpawner.followers) do
 		if not recruit:dead() then
 			recruit:spawn()
 		end
@@ -145,7 +145,7 @@ function updateShipUpgrades()--reworked, in vanilla the math is atrocious if the
 		upgrades[property] = upgrades[property] + result
 		--sb.logInfo("property %s upgrades(property) %s",property,upgrades[property])
 	end
-	local dink=status and true or false
+	--local dink=status and true or false
 	--sb.logInfo("status exists %s",dink)
 	--sb.logInfo("upgrades: %s",upgrades)
 	--rather than setting the upgrades directly, we set it so that these are set to a status property on the player. this is read by /scripts/quest/shipUpgrades.lua
@@ -375,10 +375,6 @@ function checkFollowLimits(recruitUuid)
 		return false
 	end
 	return true
-end
-
-local function getRoleName(npcConfig)
-	return ((((npcConfig.scriptConfig or {}).crew or {}).role or {}).name or "Soldier")
 end
 
 function recruitTags(recruit)

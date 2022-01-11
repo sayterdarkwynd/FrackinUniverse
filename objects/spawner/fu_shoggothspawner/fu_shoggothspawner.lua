@@ -35,7 +35,7 @@ end
 
 function die()
 	if self.trigger == "break" then
-		for i = 1, storage.stock do
+		for _ = 1, storage.stock do
 			spawn()
 		end
 	end

@@ -85,24 +85,24 @@ function findCeilingPosition(position, minHeight, maxHeight, avoidLiquid, collis
 	for y = 0, math.max(math.abs(minHeight), math.abs(maxHeight)) do
 		-- -- Look up
 		if y <= maxHeight and validCeilingPosition({position[1], position[2] + y}, avoidLiquid, collisionSet, bounds) then
-			groundPosition = {position[1], position[2] + y}
+			ceilingPosition = {position[1], position[2] + y}
 			break
 		end
 		-- Look down
 		if -y >= minHeight and validCeilingPosition({position[1], position[2] - y}, avoidLiquid, collisionSet, bounds) then
-			groundPosition = {position[1], position[2] - y}
+			ceilingPosition = {position[1], position[2] - y}
 			break
 		end
 	end
 
-	if groundPosition and avoidLiquid then
-		local liquidLevel = world.liquidAt(rect.translate(bounds, groundPosition))
+	if ceilingPosition and avoidLiquid then
+		local liquidLevel = world.liquidAt(rect.translate(bounds, ceilingPosition))
 		if liquidLevel and liquidLevel[2] >= 0.1 then
 			return nil
 		end
 	end
 
-	return groundPosition
+	return ceilingPosition
 end
 
 --Check if entity is on solid ground (not platforms)

@@ -148,7 +148,7 @@ function TheaReloadFire:fireProjectile(projectileType, projectileParams, inaccur
   end
 
   local projectileId = 0
-  for i = 1, (projectileCount or self.projectileCount) do
+  for _ = 1, (projectileCount or self.projectileCount) do
     if params.timeToLive then
       params.timeToLive = util.randomInRange(params.timeToLive)
     end

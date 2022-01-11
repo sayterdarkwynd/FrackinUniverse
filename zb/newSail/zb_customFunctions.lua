@@ -6,6 +6,7 @@ function zb_sailInfo()
 end
 
 function zb_skipStarterCrap()
+	-- luacheck: ignore 511
 	if false then--disabling this function until someone can make it not cause issues.
 		local quests = {"gaterepair", "shiprepair", "human_mission1", "mechunlock", "outpostclue"}
 		local str = "Quest IDs:"

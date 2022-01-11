@@ -57,11 +57,12 @@ local function ArgsToString(...)
 end
 
 function CreateLoggingOverride(prefix, tostringPointsToSBPrint)
-	local prefix = tostring(prefix) or ""
+	prefix = tostring(prefix) or ""
 	if prefix ~= nil and prefix ~= "" then
 		prefix = prefix .. " "
 	end
 
+	-- luacheck: ignore 121
 	tostring = function (...)
 		if (tostringPointsToSBPrint or LUA_TOSTRING == nil) and (sb ~= nil) then
 			return sb.print(...)
@@ -99,8 +100,7 @@ function CreateLoggingOverride(prefix, tostringPointsToSBPrint)
 
 	assert = function(requirement, msg)
 		if not requirement then
-			local msg = msg or "Assertion failed!"
-			_ENV.error(msg)
+			_ENV.error(msg or "Assertion failed!")
 		end
 		return requirement
 	end

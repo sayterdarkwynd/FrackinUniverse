@@ -128,7 +128,6 @@ end
 
 function isn_slotDecayCheck(slot)
 	local item = world.containerItemAt(entity.id(),slot)
-	local myLocation = entity.position()
 
     if item and storage.fuels[item.name] and math.random(1, storage.fuels[item.name].decayRate) == 1 then
         return true
@@ -153,7 +152,6 @@ end
 
 function isn_slotCoolantCheck(slot)
 	local item = world.containerItemAt(entity.id(),slot)
-	local myLocation = entity.position()
 
     if item and storage.coolant[item.name] and storage.currentHeat > 50 then
 		storage.currentHeat = storage.currentHeat - (storage.coolant[item.name] and storage.coolant[item.name].coldFactor or 0)

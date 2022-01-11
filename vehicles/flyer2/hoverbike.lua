@@ -372,13 +372,13 @@ function switchHeadLights(oldIndex, newIndex, activate)
     if (listOfLists ~= nil) then
       if (oldIndex ~= newIndex) then
         local listToSwitchOff = listOfLists[oldIndex]
-        for i, name in ipairs(listToSwitchOff) do
+        for _, name in ipairs(listToSwitchOff) do
           animator.setLightActive(name, false)
         end
       end
 
         local listToSwitchOn = listOfLists[newIndex]
-        for i, name in ipairs(listToSwitchOn) do
+        for _, name in ipairs(listToSwitchOn) do
         animator.setLightActive(name, activate)
       end
     end
@@ -437,7 +437,6 @@ end
 
 function move()
   local groundDistance = minimumSpringDistance(self.bodySpringPositions)
-  local nearGround = groundDistance < self.nearGroundDistance
 
   --assume idle pitch
   self.enginePitch = self.engineIdlePitch;
@@ -646,15 +645,15 @@ function updateDamage()
     end
   end
 
-  function appendTrackingVelocity(trackedVelocities, newVelocity)
+  function appendTrackingVelocity(trackedVelocities)
     table.insert(trackedVelocities, newVelocity)
     while #trackedVelocities > self.accelerationTrackingCount do
       table.remove(trackedVelocities, 1)
     end
   end
 
-  appendTrackingVelocity(self.collisionDamageTrackingVelocities, newVelocity)
-  appendTrackingVelocity(self.collisionNotificationTrackingVelocities, newVelocity)
+  appendTrackingVelocity(self.collisionDamageTrackingVelocities)
+  appendTrackingVelocity(self.collisionNotificationTrackingVelocities)
 end
 
 function minimumSpringDistance(points)

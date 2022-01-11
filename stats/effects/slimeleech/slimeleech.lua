@@ -17,7 +17,6 @@ end
 
 function update(dt)
 	self.tickTimer = self.tickTimer - dt
-	local boltPower = util.clamp(status.resourceMax("health") * self.healthDamageFactor, self.damageClampRange[1], self.damageClampRange[2])
 	if self.tickTimer <= 0 then
 		self.tickTimer = self.tickTime
 		local targetIds = world.entityQuery(mcontroller.position(), self.jumpDistance, {
@@ -27,7 +26,7 @@ function update(dt)
 
 		shuffle(targetIds)
 
-		for i,id in ipairs(targetIds) do
+		for _,id in ipairs(targetIds) do
 			local sourceEntityId = entity.id("crew", "player")
 			if world.entityCanDamage(sourceEntityId, id) and not world.lineTileCollision(mcontroller.position(), world.entityPosition(id)) then
 				local sourceDamageTeam = world.entityDamageTeam(sourceEntityId)

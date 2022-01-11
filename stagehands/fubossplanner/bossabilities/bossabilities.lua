@@ -31,7 +31,6 @@ end
 
 -- returns a behavior config with parameters applied from the operation
 function minionTriggerGroupHandler(ability, operation, plan, state, spaceConfig)
-  local behaviorConfig = ability.behaviorConfig
   local triggerId = minionTriggerId(operation, plan)
   local minionType = util.find(operation.postconditions, function(term) return term[1] == "Minion" end)[2][1]
   ability = mapAbilityActions(ability, function(action)
@@ -353,7 +352,7 @@ function bumpersHandler(ability, operation, plan, state, spaceConfig)
     positions[pos[2]] = true
   end
   positions = util.keys(positions)
-  local positions = util.map(positions, function(y) return {center, y} end)
+  positions = util.map(positions, function(y) return {center, y} end)
   ability = mapAbilityActions(ability, function(action)
       action.parameters.positions = positions
       action.parameters.projectileType = ability.projectileType:gsub("<element>", storage.elementalType)
