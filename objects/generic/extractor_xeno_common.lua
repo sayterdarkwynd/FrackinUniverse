@@ -183,7 +183,7 @@ function doCrafting(result)
 		for itemName, quantities in pairs(result.inputs) do
 			-- if we ever do multiple inputs, FIXME undo partial consumption on failure
 			local itemData={item = itemName , count = techlevelMap(quantities)}
-			if not (world.containerAvailable(entity.id(),{item = itemName}) >= techlevelMap(v) and (not powered or power.consume(config.getParameter('isn_requiredPower'))) and world.containerConsume(entity.id(), itemData)) then
+			if not (world.containerAvailable(entity.id(),{item = itemName}) >= techlevelMap(quantities) and (not powered or power.consume(config.getParameter('isn_requiredPower'))) and world.containerConsume(entity.id(), itemData)) then
 				for _,v in pairs(storage.inputs) do
 					for i=0,world.containerSize(entity.id())-1 do
 						if v then
