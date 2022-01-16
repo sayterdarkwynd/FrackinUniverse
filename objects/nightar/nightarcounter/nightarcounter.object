@@ -1,0 +1,37 @@
+{
+  "objectName" : "nightarcounter",
+  "colonyTags" : ["nightar","decoration"],
+  "rarity" : "legendary",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "This looks like a traditional Nightar counter.",
+  "shortdescription" : "Nightar Counter",
+  "race" : "nightar",
+  "category" : "storage",
+  "price" : 150,
+  "health" : 1.5,
+
+  "inventoryIcon" : "nightarcountericon.png",
+  "orientations" : [
+    {
+      "dualImage" : "nightarcounter.png:<color>",
+
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/woodenbox_close.ogg" ],
+  "slotCount" : 16,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+
+}

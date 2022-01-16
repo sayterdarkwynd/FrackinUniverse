@@ -21,7 +21,6 @@ function update(args)
 	local bounceFactor = config.getParameter("bounceFactor")
 
 	local curYVelocity = mcontroller.yVelocity()
-	local yVelChange = curYVelocity - self.lastYVelocity
 	self.lastYVelocity = curYVelocity
 
 	local activate = curYVelocity < -65

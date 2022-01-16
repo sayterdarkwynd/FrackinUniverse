@@ -83,7 +83,7 @@ end
 
 function upgradeCost(itemConfig,type,targetLvl)
 	local costValue=0
-	local itemLvl = (itemConfig.parameters.level or itemConfig.config.level) or 1
+	local itemLvl = math.floor((itemConfig.parameters.level or itemConfig.config.level) or 1)
 	if not targetLvl then
 		targetLvl = itemLvl
 	end
@@ -282,7 +282,7 @@ function itemSelected()
 	self.selectedItem = listItem
 
 	if listItem then
-		local listItem = widget.getData(string.format("%s.%s", self.itemList, listItem))
+		listItem = widget.getData(string.format("%s.%s", self.itemList, listItem))
 		localItem = self.upgradableItems[listItem.index]
 		local cost = upgradeCost(root.itemConfig(localItem.itemData), localItem.itemType, self.upgradeTargetLevel)
 		showItem(localItem.itemData,cost,localItem.itemType)
@@ -450,24 +450,24 @@ function upgradeWeapon(upgradeItem,target)
 
 				--load item upgrade parameters
 				if (itemConfig.config.upgradeParametersTricorder) and (mergeBuffer.level > 1) then
+					oldRarity=mergeBuffer.rarity
 					mergeBuffer=util.mergeTable(mergeBuffer,copy(itemConfig.config.upgradeParametersTricorder))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
-					oldRarity=mergeBuffer.rarity
 				end
 				if (itemConfig.config.upgradeParameters) and (mergeBuffer.level > math.max(defaultLvl, 4)) then
+					oldRarity=mergeBuffer.rarity
 					mergeBuffer=util.mergeTable(mergeBuffer,copy(itemConfig.config.upgradeParameters))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
-					oldRarity=mergeBuffer.rarity
 				end
 				if (itemConfig.config.upgradeParameters2) and (mergeBuffer.level > math.max(defaultLvl+1, 5)) then
+					oldRarity=mergeBuffer.rarity
 					mergeBuffer=util.mergeTable(mergeBuffer,copy(itemConfig.config.upgradeParameters2))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
-					oldRarity=mergeBuffer.rarity
 				end
 				if (itemConfig.config.upgradeParameters3) and (mergeBuffer.level > math.max(defaultLvl+2, 6)) then
+					oldRarity=mergeBuffer.rarity
 					mergeBuffer=util.mergeTable(mergeBuffer,copy(itemConfig.config.upgradeParameters3))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
-					oldRarity=mergeBuffer.rarity
 				end
 
 				local categoryLower=string.lower(mergeBuffer.category or itemConfig.parameters.category or itemConfig.config.category or "")
@@ -595,12 +595,6 @@ function upgradeTool(upgradeItem, target)
 end
 
 function applyBonusesEssence(mergeBuffer, itemConfig, categoryLower)
-	--base DPS
-	local baseDps=(mergeBuffer.baseDps) or itemConfig.config.baseDps
-	if baseDps then
-		mergeBuffer.baseDps = baseDps * (1 + (mergeBuffer.level/80) )	-- increase DPS a bit
-	end
-
 	--crit chance
 	local critChance=(mergeBuffer.critChance) or itemConfig.config.critChance
 	if critChance then
@@ -611,7 +605,7 @@ function applyBonusesEssence(mergeBuffer, itemConfig, categoryLower)
 		mergeBuffer.critChance = critChance + (mergeBuffer.level*modifier) -- increase Crit Chance
 	end
 
-	--crit chance
+	--crit bonus
 	local critBonus=(mergeBuffer.critBonus) or itemConfig.config.critBonus
 	if critBonus then
 		local modifier=0.5
@@ -700,13 +694,17 @@ function applyBonusesEssence(mergeBuffer, itemConfig, categoryLower)
 				if (primaryAbility.drawTime or itemConfig.config.primaryAbility.drawTime) then
 					primaryAbility.drawTime = (primaryAbility.drawTime or itemConfig.config.primaryAbility.drawTime) * (1 - (0.05*mergeBuffer.level))
 				end
+
+				-- Increase perfect shot time.
 				local powerProjectileTime=primaryAbility.powerProjectileTime or itemConfig.config.primaryAbility.powerProjectileTime
 				if type(powerProjectileTime)=="number" then
-					powerProjectileTime = powerProjectileTime*(1-(0.05*mergeBuffer.level))
+					powerProjectileTime = powerProjectileTime*(1+(0.05*mergeBuffer.level))
 				elseif type(powerProjectileTime)=="table" then
-					powerProjectileTime[1]=powerProjectileTime[1]*(1-(0.05*mergeBuffer.level))
+					powerProjectileTime[1]=powerProjectileTime[1]*(1+(0.05*mergeBuffer.level))
 					powerProjectileTime[2]=powerProjectileTime[2]*(1+(0.05*mergeBuffer.level))
 				end
+				primaryAbility.powerProjectileTime = powerProjectileTime
+
 				primaryAbility.energyPerShot=primaryAbility.energyPerShot or itemConfig.config.primaryAbility.energyPerShot
 				if (primaryAbility.energyPerShot or itemConfig.config.primaryAbility.energyPerShot) then
 					primaryAbility.energyPerShot = (primaryAbility.energyPerShot or itemConfig.config.primaryAbility.energyPerShot) * math.max(0,(1-(mergeBuffer.level*0.05)))

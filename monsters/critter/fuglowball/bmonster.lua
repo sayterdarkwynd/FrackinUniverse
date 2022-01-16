@@ -96,7 +96,7 @@ end
 function rotatePoly(angle)
   local basePoly = mcontroller.baseParameters().standingPoly
   local newPoly = {}
-  for i,point in pairs(basePoly) do
+  for _,point in pairs(basePoly) do
     table.insert(newPoly, vec2.rotate(point, angle))
   end
   self.collisionPoly = newPoly

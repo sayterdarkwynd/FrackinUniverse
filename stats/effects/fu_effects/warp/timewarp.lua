@@ -7,7 +7,7 @@ function init()
 	self.resources={}
 	self.lockedResources={}
 	local configuredResources=status.resourceNames() --root.assetJson("/player.config:statusControllerSettings.resources")
-	for k,v in pairs(configuredResources) do
+	for _,v in pairs(configuredResources) do
 		self.resources[v]=status.resource(v)
 		if status.resourceLocked(v) then self.lockedResources[v]=true end
 	end
@@ -24,7 +24,8 @@ function update(dt)
 end
 
 function uninit()
-	if teleported then return end
+	if teleported or (status.resource("health")<=0) then return end
+	teleported=true
 	for k,v in pairs(self.resources) do
 		status.setResource(k,v)
 		if self.lockedResources[k] then status.setResourceLocked(k,true) end

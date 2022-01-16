@@ -1,50 +1,49 @@
 {
-  "name" : "coldweathernew",
-  "blockingStat" : "",
+	"name" : "coldweathernew",
 
-  "effectConfig" : {
-    "resistanceTypes" : {
-      "iceResistance" : 1.0
-    },
-    "resistanceThreshold" : 0.2,
-    "immunityStats" : [
-      "biomecoldImmunity",
-      "ffextremecoldImmunity"
-    ],
+	"effectConfig" : {
+		"resistanceTypes" : {
+			"iceResistance" : 1.0
+		},
+		"resistanceThreshold" : 0.2,
+		"immunityStats" : [
+			"biomecoldImmunity",
+			"ffextremecoldImmunity"
+		],
 
-    "healthDrain" : 2,
-    "hungerDrain" : 0.2,
-    "energyDrain" : 0,
-    "speedPenalty" : 0.5,
-    "jumpPenalty" : 0.5,
+		"healthDrain" : 2,
+		"hungerDrain" : 0.2,
+		"energyDrain" : 0,
+		"speedPenalty" : 0.5,
+		"jumpPenalty" : 0.5,
 
-    "debuffRate" : 5,
-    "debuffStartDelay" : 0,
-    "debuffs" : {},
+		"debuffRate" : 5,
+		"debuffStartDelay" : 0,
+		"debuffs" : {},
 
-    "modifiers" : {
-      "night" : 1.1,
-      "wet" : 1.1,
-      "windy" : 1.2
-    },
+		"modifiers" : {
+			"night" : 1.1,
+			"wet" : 1.1,
+			"windy" : 1.2
+		},
 
-    "messages" : {
-      "intro" : "biomecold",
-      "night" : "ffbiomecoldnight",
-      "wet" : "ffbiomecoldwater",
-      "windy" : "fubiomecoldwind"
-    },
+		"messages" : {
+			"intro" : "biomecold",
+			"night" : "ffbiomecoldnight",
+			"wet" : "ffbiomecoldwater",
+			"windy" : "fubiomecoldwind"
+		},
 
-    "configPath" : "/stats/effects/fu_weathereffects/new/cold/coldweathernew.statuseffect"
-  },
-  "defaultDuration" : 5,
+		"configPath" : "/stats/effects/fu_weathereffects/new/cold/coldweathernew.statuseffect"
+	},
+	"defaultDuration" : 5,
 
-  "scripts" : [
-    "coldweathernew.lua"
-  ],
+	"scripts" : [
+		"coldweathernew.lua"
+	],
 
-  "animationConfig" : "coldweathernew.animation",
+	"animationConfig" : "coldweathernew.animation",
 
-  "label" : "Freezing (Resist: ^#77f4ff;Ice^reset;)",
-  "icon" : "/interface/statuses/biomecold.png"
+	"label" : "Freezing (Resist: ^#77f4ff;Ice^reset;)",
+	"icon" : "/interface/statuses/biomecold.png"
 }

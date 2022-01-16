@@ -17,7 +17,7 @@
 		},
 		{
 			"stat": "physicalResistance",
-			"amount": 0.30
+			"amount": 0.25
 		},
 		{
 			"stat": "electricResistance",
@@ -25,19 +25,27 @@
 		},
 		{
 			"stat": "fireResistance",
-			"amount": 0.40
+			"amount": 0.3
 		},
 		{
 			"stat": "iceResistance",
-			"amount": -0.40
+			"amount": -0.35
 		},
-		{
-			"stat": "poisonResistance",
-			"amount": 0.1
+		{ 
+                        "stat": "mentalProtection", 
+			"amount": -0.15 
 		},
 		{
 			"stat": "radioactiveResistance",
-			"amount": -0.2
+			"amount": -0.25
+		},
+		{
+			"stat": "shadowResistance",
+			"amount": -0.15
+		},
+		{
+			"stat": "cosmicResistance",
+			"amount": 0.15
 		},
 		{
 			"stat": "fireStatusImmunity",
@@ -48,12 +56,13 @@
 			"amount": 1
 		}
 	],
-	"diet": "anything",
+	"diet": "entity",
 	"controlModifiers": {
-		"speedModifier": 1.15
+		"speedModifier": 1.1,
+                "jumpModifier" : 1.1
 	},
 	"envEffects": [{
-			"biomes": ["barren", "lunar", "hot"],
+			"biomes": ["hot"],
 			"stats": [{
 					"stat": "maxHealth",
 					"effectiveMultiplier": 1.15
@@ -66,9 +75,9 @@
 			]
 		},
 		{
-			"biomes": ["lush", "forest"],
+			"biomes": ["lush", "forest", "chromatic"],
 			"stats": [{
-					"stat": "protection",
+					"stat": "maxHealth",
 					"effectiveMultiplier": 0.85
 				},
 				{
@@ -78,14 +87,14 @@
 			]
 		},
 		{
-			"biomes": ["rainforest", "jungle"],
+			"biomes": ["rainforest", "jungle", "atropus", "atropusdark"],
 			"stats": [{
 					"stat": "maxHealth",
-					"effectiveMultiplier": 0.55
+					"effectiveMultiplier": 0.70
 				},
 				{
 					"stat": "maxEnergy",
-					"effectiveMultiplier": 0.55
+					"effectiveMultiplier": 0.70
 				}
 			]
 		},
@@ -93,11 +102,11 @@
 			"biomes": ["cold", "snow", "tundra", "ocean"],
 			"stats": [{
 					"stat": "maxHealth",
-					"effectiveMultiplier": 0.25
+					"effectiveMultiplier": 0.40
 				},
 				{
 					"stat": "maxEnergy",
-					"effectiveMultiplier": 0.25
+					"effectiveMultiplier": 0.40
 				}
 			]
 		}
@@ -129,7 +138,7 @@
 			]
 		},
 		{
-			"weapons": ["grenadelauncher"],
+			"weapons": ["spear"],
 			"stats": [{
 					"stat": "powerMultiplier",
 					"effectiveMultiplier": 1.07

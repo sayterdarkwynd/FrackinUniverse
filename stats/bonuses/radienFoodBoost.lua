@@ -1,3 +1,6 @@
+require "/stats/effects/fu_statusUtil.lua"
+local foodThresholdPercent=0.5--used by checkFoodPercent
+
 function init()
 	modifiers=config.getParameter("modifiers",{})
 end
@@ -12,7 +15,7 @@ inverse causes the value to grow as hunger does, rather than shrink. step clamps
 
 function setValues()
 	local buffer={}
-	local foodPercent=checkFoodPercent()
+	local foodPercent=checkFoodPercent() or foodThresholdPercent
 	for statName,data in pairs(modifiers) do
 		local val=data.value
 		local fVal=foodPercent
@@ -31,15 +34,11 @@ function setValues()
 	status.setPersistentEffects("radienPower",buffer)
 end
 
-function checkFoodPercent()
-	return (((status.statusProperty("fuFoodTrackerHandler",0)>-1) and status.isResource("food")) and status.resourcePercentage("food")) or 0.5
-end
-
 function update(dt)
 	self.armorTimer = (self.armorTimer or 0) + dt
 
 	if self.armorTimer >= 50 then
-		self.armorTotal = math.min(25,self.armorTotal + 1)
+		self.armorTotal = math.min(25,(self.armorTotal or 0) + 1)
 		status.setPersistentEffects("radienArmor", {{stat = "protection", amount = 1+ self.armorTotal }})
 		self.armorTimer = 0
 	end
@@ -54,9 +53,4 @@ end
 function uninit()
 	status.clearPersistentEffects("radienPower")
 	status.clearPersistentEffects("radienArmor")
-end
-
-function round(num, idp)
-  local mult = 10^(idp or 0)
-  return math.floor(num * mult + 0.5) / mult
 end

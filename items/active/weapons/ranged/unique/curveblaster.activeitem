@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "A unique plasma phase weapon specially designed for breaching hulls.
-^yellow;Burns targets",
+^yellow;Burns targets^reset;",
   "shortdescription" : "Breach Gun",
   "category" : "Shotgun",
   "level" : 4,
@@ -26,11 +26,11 @@
     "animatedParts" : {
       "parts" : {
         "middlefullbright" : {
-		  "properties" : {
-			//Same as BaseOffset
-		    "offset" : [1.6, 0.3]
-		  }
-		}
+      "properties" : {
+      //Same as BaseOffset
+        "offset" : [1.6, 0.3]
+      }
+    }
       }
     },   
     "sounds" : {
@@ -73,33 +73,33 @@
       "knockback" : 20,
       "statusEffects" : [ "burning" ]
     },
-	  "stances" : {
-	    "idle" : {
-	      "armRotation" : 0,
-	      "weaponRotation" : 0,
-	      "twoHanded" : true,
-	      "allowRotate" : true,
-	      "allowFlip" : true
-	    },
-	    "fire" : {
-	      "duration" : 0.05,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0.05,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    },
-	    "cooldown" : {
-	      "duration" : 0.55,
-	      "armRotation" : 12,
-	      "weaponRotation" : 15,
-	      "twoHanded" : true,
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.55,
+        "armRotation" : 12,
+        "weaponRotation" : 15,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    }
-	  }
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
   },
 
   "critChance" : 2,
@@ -111,28 +111,28 @@
   
     "upgradeParameters" : {
     "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
-    "shortdescription" : "^cyan;Breach Ripper^reset; ^yellow;",
+    "shortdescription" : "^cyan;Breach Ripper^reset; ^yellow;^reset;",
   "description" : "A unique plasma phase weapon specially designed for breaching hulls.
-^yellow;Burns targets",
+^yellow;Burns targets^reset;",
   "animationParts" : {
     "middle" : "curveblaster_sacre2.png"
     },
     "inventoryIcon" : [ { "image" : "curveblaster_sacre2.png" } ],    
-	  "primaryAbility" : {
-	    "projectileParameters" : {
-	      "speed" : 70,
-	      "knockback" : 24,
-	      "statusEffects" : [ "frozenburning" ],
-		  "timeToLive" : 1.2,
-		  "animationCycle" : 1.2,	      
-		  "controlForce" : 60,
-		  "snapDistance" : 0.3,
-		  "pickupDistance" : 0.3,
-		  "returnOnHit" : false,
-		  "returning" : true,
-		  "ignoreTerrain" : true	      
-	    }          
+    "primaryAbility" : {
+      "projectileParameters" : {
+        "speed" : 70,
+        "knockback" : 24,
+        "statusEffects" : [ "frozenburning" ],
+      "timeToLive" : 1.2,
+      "animationCycle" : 1.2,        
+      "controlForce" : 60,
+      "snapDistance" : 0.3,
+      "pickupDistance" : 0.3,
+      "returnOnHit" : false,
+      "returning" : true,
+      "ignoreTerrain" : true        
+      }          
             
-	  }
+    }
       }
 }

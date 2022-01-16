@@ -1,0 +1,67 @@
+{
+  "objectName" : "nightarfurnace",
+  "colonyTags" : ["nightar","glitchvillage","crafting","light"],
+  "rarity" : "Common",
+  "category" : "crafting",
+  "price" : 195,
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/craftingfurnace.config",
+    "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : "  Nightar Furnace",
+        "subtitle" : "  Classic Nightarian blacksmith furnace.",
+        "icon" : {
+          "file" : "/objects/nightar/nightarfurnace/nightarfurnace.png"
+        }
+      }
+    },
+    "filter" : [ "craftingfurnace" ]
+  },
+
+  "description" : "a classic Nightarian blacksmith furnace.",
+  "shortdescription" : "Nightarian Furnace",
+  "race" : "nightar",
+
+  "maximumLiquidLevel" : 0.2,
+
+  "statusEffects" : [ ],
+    
+  "lightColor" : [179, 149, 107],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "inventoryIcon" : "nightarfurnaceicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "nightarfurnace.png:<color>.<frame>", "fullbright" : true }, { "image" : "nightarfurnacelit.png:<color>.<frame>" } ],
+      "imagePosition" : [-24, 0],
+      "direction" : "left",
+      "flipImages" : true,
+      
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "nightarfurnace.png:<color>.<frame>", "fullbright" : true }, { "image" : "nightarfurnacelit.png:<color>.<frame>" } ],
+      "imagePosition" : [-24, 0],
+      "direction" : "right",
+      
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/furnace.ogg"
+
+}

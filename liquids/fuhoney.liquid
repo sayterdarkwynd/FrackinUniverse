@@ -3,14 +3,21 @@
   "liquidId" : 54,
   "description" : "Pure, golden honey.",
   "tickDelta":5,
-  "color":[230,196,80,128],
+  "color" : [230,196,80,128],
   "itemDrop":"fu_liquidhoney",
   "texture":"/liquids/honeytex.png",
-  "bottomLightMix":[150,100,20],
+  "bottomLightMix" : [150,100,20],
   "textureMovementFactor":2.6,
   "statusEffects" :[ "swimming", "honeyslow" ],
-  "interactions":[
-    { "liquid": 1,
+  "interactions" : [
+    {
+      // water
+      "liquid": 1,
+      "materialResult": "honeycombmaterial"
+    },
+    {
+      // fusaltwater
+      "liquid": 73,
       "materialResult": "honeycombmaterial"
     }
   ]

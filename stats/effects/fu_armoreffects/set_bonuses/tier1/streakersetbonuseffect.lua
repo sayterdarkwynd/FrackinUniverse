@@ -15,10 +15,9 @@ function init()
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 	effectHandlerList.capeBonusHandle=effect.addStatModifierGroup({})
 	local elementalTypes=root.assetJson("/damage/elementaltypes.config")
-	local statBuffer={}
 	self.resistanceList={}
 
-	for element,data in pairs(elementalTypes) do
+	for _,data in pairs(elementalTypes) do
 		if data.resistanceStat then
 			self.resistanceList[data.resistanceStat]=true
 		end

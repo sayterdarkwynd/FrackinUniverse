@@ -71,10 +71,10 @@ function fire(ability,fireMode,shiftHeld)
 		powerMultiplier = activeItem.ownerPowerMultiplier()
 	}
 
-	for i = 1, projectileCount do
+	for _ = 1, projectileCount do
 		local aimVec=aimVector(ability)
 		--sb.logInfo("aimVec: %s",aimVec)
-		local projectileId = world.spawnProjectile(
+		world.spawnProjectile(
 			ability.projectileType,
 			firePosition(),
 			activeItem.ownerEntityId(),

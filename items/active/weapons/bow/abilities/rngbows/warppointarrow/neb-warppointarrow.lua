@@ -11,7 +11,6 @@ function NebRNGWarpPoint:init()
   animator.setGlobalTag("directives", config.getParameter("directives", ""))
   self.paletteSwaps = config.getParameter("paletteSwaps")
   self.elementalType = config.getParameter("elementalType")
-  self.arrowVariant = config.getParameter("animationParts")
   self.cannotUseAlt = false
 
   self.drawTimer = 0
@@ -139,11 +138,10 @@ function NebRNGWarpPoint:fire()
   animator.stopAllSounds("ready")
 
   if not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
-    local projectileParameters = copy(self.projectileParameters or {})
-	if self.elementalType ~= "physical" then
-	  self.projectileParameters.damageKind = self.elementalType .. "bow"
+    if self.elementalType ~= "physical" then
+        self.projectileParameters.damageKind = self.elementalType .. "bow"
     end
-    for i = 1, (self.projectileCount or 1) do
+    for _ = 1, (self.projectileCount or 1) do
 	  self.teleportProjectile = world.spawnProjectile(
         self.projectileType,
         self:firePosition(),
@@ -231,7 +229,6 @@ function NebRNGWarpPoint:attemptTeleport()
 end
 
 function NebRNGWarpPoint:currentProjectileParameters()
-  local arrowVariant = self.arrowVariant.arrow:match("(%d+)%.png")
   --Set projectile parameters based on draw power level
   local projectileParameters = copy(self.projectileParameters or {})
   --Load the root projectile config based on draw power level

@@ -126,14 +126,15 @@ end
 function NebBowShotElder:fire()
 	self.hasChargedCursor = false
 	activeItem.setCursor(self.cursorFrames[1])
-	self.weapon:setStance(self.stances.fire)
+	self.weapGon:setStance(self.stances.fire)
 
 	animator.setGlobalTag("drawFrame", "0")
 	animator.stopAllSounds("ready")
 
 	if not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
-		for i = 1, (self.projectileCount or 1) do
-			local projectileId = world.spawnProjectile(
+		local projectileId
+		for _ = 1, (self.projectileCount or 1) do
+			projectileId = world.spawnProjectile(
 				self:perfectTiming() and self.powerProjectileType or self.projectileType,
 				self:firePosition(),
 				activeItem.ownerEntityId(),

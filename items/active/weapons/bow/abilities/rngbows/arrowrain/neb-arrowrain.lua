@@ -108,7 +108,7 @@ function NebArrowRain:draw()
 
     local aimVec = self:idealAimVector()
     if self.aimOutOfReach or self.aimTypeSwitchTimer > 0 then
-	  local aimAngle, aimDirection = activeItem.aimAngleAndDirection(self.weapon.aimOffset, activeItem.ownerAimPosition())
+	  local aimAngle = activeItem.aimAngleAndDirection(self.weapon.aimOffset, activeItem.ownerAimPosition())
 	  self.weapon.aimAngle = aimAngle
 	  self.weapon:updateAim()
 	  world.debugLine(self:firePosition(), vec2.add(self:firePosition(), vec2.mul(vec2.norm(self:idealAimVector()), 3)), "yellow")
@@ -194,7 +194,7 @@ function NebArrowRain:fire()
 	end
 
 	--Spawn the projectile using the calculated parameters
-    for i = 1, (self.projectileCount or 1) do
+    for _ = 1, (self.projectileCount or 1) do
       local projectileId = world.spawnProjectile(
         self.altProjectileType,
         self:firePosition(),
@@ -309,9 +309,7 @@ function NebArrowRain:idealAimVector()
 	local y = targetOffset[2]
 	local g = self.projectileGravityMultiplier * world.gravity(mcontroller.position())
 	local v = self.projectileParameters.speed
-	local reverseGravity = false
 	if g < 0 then
-	  reverseGravity = true
 	  g = -g
 	  y = -y
 	end
@@ -355,7 +353,7 @@ end
 
 function NebArrowRain:unpack(tab)
     local unpacked = {}
-    for k, v in ipairs(tab) do
+    for _, v in ipairs(tab) do
         if type(v) == "table" then
             local t = self:unpack(v)
             for _, vv in ipairs(t) do

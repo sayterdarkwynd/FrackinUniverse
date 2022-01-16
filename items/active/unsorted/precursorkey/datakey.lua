@@ -20,7 +20,6 @@ function update(dt, fireMode, shiftHeld)
 	local aimPos = activeItem.ownerAimPosition()
 	local eList = world.entityQuery(aimPos,1/16) or {}
 
-	local target
 	local targetPositions={}
 
 	for _,v in pairs(eList) do
@@ -54,7 +53,7 @@ function update(dt, fireMode, shiftHeld)
 		end
 	end
 
-	target=nearestID
+	local target=nearestID
 	local rangecheck = world.magnitude(mcontroller.position(), aimPos) <= self.maxRange and not world.lineTileCollision(vec2.add(mcontroller.position(), activeItem.handPosition(self.baseOffset)), aimPos)
 	local firing=(fireMode=="primary" or fireMode=="alt")
 

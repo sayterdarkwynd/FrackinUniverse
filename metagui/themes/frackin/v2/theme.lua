@@ -2,7 +2,6 @@ local mg = metagui
 
 theme._export = { }
 require "/metagui/themes/frackin/theme.lua"
-local color = theme._export.color
 local paletteFor = theme._export.paletteFor
 
 local assets = theme.assets
@@ -39,7 +38,6 @@ function theme.drawFrame()
   
   if (style == "window") then
     local cs = c:size()
-    local bgClipWindow = rect.withSize({4, 4}, vec2.sub(cs, {4+6, 4+4}))
     assets.windowBorder:drawToCanvas(c, "frame" .. pal)
     assets.windowBorder:drawToCanvas(c, table.concat {"semi", pal, "?multiply=ffffff3f"})
     c:drawImage(assets.windowGadget .. pal, {5, math.min(math.floor(0.5 + cs[2] * 0.64), cs[2] - 44)}, 1.0, {255,255,255}, true)

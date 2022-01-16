@@ -21,15 +21,11 @@ shellBonus={
 	{stat = "slimestickImmunity", amount = 1}
 }
 
-armorBonus={}
-
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.shellBonusHandle=effect.addStatModifierGroup({})
 
 	checkShell()
-
-	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -40,7 +36,6 @@ function update(dt)
 		effect.expire()
 	else
 		checkShell()
-
 		status.addEphemeralEffect("regeneratingshield_energy-2_2-ereg_eblock-10")
 		status.addEphemeralEffect("regeneratingshieldindicatorwraith")
 	end

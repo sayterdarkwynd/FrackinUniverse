@@ -42,7 +42,7 @@ end
 
 function findTarget()
   local candidates = world.entityQuery(mcontroller.position(), self.snapRange, {includedTypes = {"Vehicle"}, boundMode = "position", order = "nearest"})
-  for i, eid in ipairs(candidates) do
+  for _, eid in ipairs(candidates) do
     if world.entityName(eid) == "modularmech" then
       self.targetEntity = eid
     end

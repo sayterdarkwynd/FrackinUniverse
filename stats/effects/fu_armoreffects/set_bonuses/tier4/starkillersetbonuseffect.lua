@@ -1,4 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+require "/stats/effects/fu_statusUtil.lua"
 setName="fu_starkillerset"
 
 armorBonus={
@@ -24,14 +25,6 @@ function init()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
 	checkArmor()
-end
-
-function daytimeCheck()
-	return world.timeOfDay() < 0.5
-end
-
-function undergroundCheck()
-	return world.underground(mcontroller.position())
 end
 
 function update(dt)

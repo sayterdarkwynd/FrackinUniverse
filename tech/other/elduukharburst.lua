@@ -1,7 +1,8 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
-local foodThreshold=15
+require "/stats/effects/fu_statusUtil.lua"
+local foodThreshold=15--used by checkFood
 
 function init()
 end
@@ -17,7 +18,7 @@ function activeFlight()
 	animator.setSoundVolume("activate", 0.5,0)
 	animator.setSoundVolume("recharge", 0.375,0)
 
-	world.spawnProjectile("elduukharflamethrower",self.mouthPosition, entity.id(), aimVector(), false, { power = ((checkFood() /60) + (status.resource("energy")/130) + (status.stat("protection") /220)) })
+	world.spawnProjectile("elduukharflamethrower",self.mouthPosition, entity.id(), aimVector(), false, { power = (((checkFood() or foodThreshold) /60) + (status.resource("energy")/130) + (status.stat("protection") /220)) })
 end
 
 function aimVector()
@@ -33,7 +34,7 @@ function update(args)
 	if args.moves["special1"] and status.overConsumeResource("energy", 0.001) then
 		self.randValFire = math.random(3)
 
-		if checkFood() > foodThreshold then
+		if (checkFood() or foodThreshold) > foodThreshold then
 			if self.randValFire == 1 then
 			    status.addEphemeralEffects{{effect = "foodcostfire", duration = 0.002}}
 		    end

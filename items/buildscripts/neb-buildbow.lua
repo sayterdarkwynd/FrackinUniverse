@@ -54,9 +54,6 @@ function build(directory, config, parameters, level, seed)
 	setupAbility(config, parameters, "alt")
 	setupAbility(config, parameters, "primary")
 
-	local primaryAbility=configParameterDeep("primaryAbility")
-	local altAbility=configParameterDeep("altAbility")
-
 	-- elemental type
 	local elementalType = parameters.elementalType or config.elementalType or "physical"
 	replacePatternInData(config, nil, "<elementalType>", elementalType)

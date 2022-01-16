@@ -33,7 +33,7 @@ function getFossilParameters()
 
   local treasurePool = treasure.pool
   if treasurePool then
-    local treasure = root.createTreasure(treasurePool, world.threatLevel())
+    treasure = root.createTreasure(treasurePool, world.threatLevel())
     self.treasureItem = treasure[1]
     local config = root.itemConfig(self.treasureItem)
     self.treasureIcon = util.absolutePath(config.directory, config.config.inventoryIcon)
@@ -179,8 +179,6 @@ function playState(dt)
 
     coroutine.yield()
   end
-
-  self.state:set(winState)
 end
 
 function loseState()
@@ -295,7 +293,7 @@ function winState()
     if self.treasureUncovered then
       drawSprite(treasureIcon, treasurePos, "foreground")
 
-      local name = root.itemConfig(self.treasureItem).config.shortdescription
+      name = root.itemConfig(self.treasureItem).config.shortdescription
       drawText(name, {position = {157, 80}, width = 88, horizontalAnchor = "mid"}, 10, "foreground")
     end
   end)

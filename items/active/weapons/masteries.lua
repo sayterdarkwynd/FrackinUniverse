@@ -22,7 +22,6 @@ masteries.timers.both={}
 
 function masteries.apply(args)
 	if activeItem then error("masteries.lua: Masteries don't belong in activeitem scripts. Stop trying.") end
-	local masteryBuffer={}
 	for hand,data in pairs(masteries.timers) do
 		for var,set in pairs(data) do
 			local e=set[1]+(args.dt*set[2])
@@ -50,7 +49,7 @@ function masteries.apply(args)
 		--handle each combination in turn.
 		for currentHand,otherHand in pairs({primary="alt",alt="primary"}) do
 			--rather than applying dozens of separate effects...we just build a single list to apply.
-			masteryBuffer={}
+			local masteryBuffer={}
 
 			--trying to reduce code overhead by adding checks for melee/ranged/staff fails, sadly. because vanilla shit like fist weapons or wands/staves
 
@@ -219,10 +218,10 @@ function masteries.apply(args)
 					masteries.timers[currentHand]["rapierTimerBonus"]=rapierTimerDefault
 				end
 
-				--a single rapier, with no other item in the other hand whatsoever, grants a crit chance boost based on time since last attack. wielding alongside a dagger reduces the tech boosts, but grants a protection multiplier.
+				--a single rapier, with no other weapon in the other hand whatsoever, grants a crit chance boost based on time since last attack. wielding alongside a dagger reduces the tech boosts, but grants a protection multiplier.
 				-- one handed --does it need to be HARD one-handed? can't use with a non-weapon?
 				--apparently supposed to grant crit damage? but didnt in previous code. instead, we have this.
-				if (not tagCaching[otherHand.."TagCacheItem"]) and masteries.vars[currentHand.."Firing"] then
+				if (not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"])) and masteries.vars[currentHand.."Firing"] then
 					--due to the implementation and nature of this bonus it will never display in the adv stats page or anywhere else. it is only active during the attack, and that is a very brief time frame
 					--to fully test this, it requires the use of debug code in crits.lua
 					critModifier=masteries.timers[currentHand]["rapierTimerBonus"][1]*(1+masteries.stats.rapierMastery)
@@ -242,7 +241,7 @@ function masteries.apply(args)
 
 			--shortspears: modifiers based on what else is or isn't wielded. none when combo'd.
 			if tagCaching[currentHand.."TagCache"]["shortspear"] then
-				if not tagCaching[otherHand.."TagCacheItem"] then --solo shortspear, no other items: boost crit damage.
+				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) then --solo shortspear, no other weapons: boost crit damage.
 					masteryBuffer[#masteryBuffer + 1]={stat="critDamage", amount=0.3*(1+masteries.stats.shortspearMastery) }
 				else
 					-- using shortspear with a shield: boost shield and defense tech stats.
@@ -273,8 +272,8 @@ function masteries.apply(args)
 				if masteries.vars[currentHand.."Firing"]and (masteries.vars[currentHand.."ComboStep"] >=3) then
 					masteryBuffer[#masteryBuffer + 1]={stat="critDamage", amount=0.15*(1+masteries.stats.longswordMastery)*handMultiplier}
 				end
-				-- longsword solo, no other items: attack speed.
-				if not tagCaching[otherHand.."TagCacheItem"] then
+				-- longsword solo, no other weapons: attack speed.
+				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) then
 					--this would be funny to apply at full value if wielding alongside another longsword. especially with a minor damage penalty.
 					masteryBuffer[#masteryBuffer + 1]={stat="attackSpeedUp", amount=0.7*masteries.stats.longswordMastery}
 				else
@@ -311,8 +310,8 @@ function masteries.apply(args)
 				local dashModifier=masteries.stats.shortswordMastery*handMultiplier
 				local gritModifier=masteries.stats.shortswordMastery*handMultiplier
 
-				-- solo shortsword, no other items: increased damage, dash/dodge tech bonuses, and knockback resistance
-				if not tagCaching[otherHand.."TagCacheItem"] then
+				-- solo shortsword, no other weapons: increased damage, dash/dodge tech bonuses, and knockback resistance
+				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) then
 					powerModifier=(powerModifier/1.5)
 					dashModifier=0.1*dashModifier/2
 					dodgeModifier=0.1*masteries.stats.shortswordMastery/2
@@ -332,9 +331,10 @@ function masteries.apply(args)
 						gritModifier=0
 					end
 				end
+
 				masteryBuffer[#masteryBuffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+powerModifier}
-				masteryBuffer[#masteryBuffer + 1]={stat="dashtechBonus", amount=0.1*(masteries.stats.shortswordMastery/3) }
-				masteryBuffer[#masteryBuffer + 1]={stat="dodgetechBonus", amount=0.1*(masteries.stats.shortswordMastery/3) }
+				masteryBuffer[#masteryBuffer + 1]={stat="dashtechBonus", amount=dashModifier }
+				masteryBuffer[#masteryBuffer + 1]={stat="dodgetechBonus", amount=dodgeModifier }
 				masteryBuffer[#masteryBuffer + 1]={stat="grit", amount=gritModifier}
 			end
 
@@ -342,8 +342,8 @@ function masteries.apply(args)
 				if masteries.vars[currentHand.."Firing"] and (masteries.vars[currentHand.."ComboStep"] >1) then -- combos higher than 1 move
 					table.insert(masteries.vars.controlModifiers,{speedModifier=1+((masteries.vars[currentHand.."ComboStep"]/10)*(1+masteries.stats.katanaMastery/48)) })
 				end
-				-- holding one katana with no other item: increase  defense techs, damage, protection and crit chance
-				if not tagCaching[otherHand.."TagCacheItem"] then
+				-- holding one katana with no other weapon: increase  defense techs, damage, protection and crit chance
+				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) then
 					masteryBuffer[#masteryBuffer + 1]={stat="defensetechBonus", amount=0.15*(1+(masteries.stats.katanaMastery/2)) }
 					masteryBuffer[#masteryBuffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.katanaMastery/3) }
 					masteryBuffer[#masteryBuffer + 1]={stat="protection", effectiveMultiplier=1+(masteries.stats.katanaMastery/8) }
@@ -486,6 +486,7 @@ function masteries.listenerBonuses(notifications,dt)
 	if not masteries.vars.inflictedHitCounter then masteries.vars.inflictedHitCounter=0 end
 	if not masteries.vars.hitTimer then masteries.vars.hitTimer=0.0 end
 	if not masteries.vars.killTimer then masteries.vars.killTimer=0.0 end
+	if not masteries.vars.leechInstances then masteries.vars.leechInstances={} end
 
 	--load the buffer with valid targets, verify hitType
 	local notificationBuffer={}
@@ -498,11 +499,26 @@ function masteries.listenerBonuses(notifications,dt)
 			table.insert(notificationBuffer,notification)
 		end
 	end
+	
+	--if #notificationBuffer>0 then sb.logInfo("notices %s",notificationBuffer) end
 
+	--hit stuff, typically for hit/kill count combos
 	local hitCount=0
 	local killCount=0
 	local strongHitCount=0
 	local weakHitCount=0
+
+	--total damage, used for leech calcs.
+	local totalDamage=0
+	--overkill damage, not used
+	--local overkillDamage=0
+	--leech percent - percent of damage leeched over the duration of the leech effect.
+	local leechPercent=status.stat("fuLeechPercent")
+	--maximum leech per second
+	local leechMaxRate=0.1+status.stat("fuLeechMaxRate")
+	--leech rate modifier: bigger number means faster ticks.
+	local leechDuration=10.0/(1.0+status.stat("fuLeechRateMod"))
+
 	for _,notification in pairs(notificationBuffer) do
 		--check if it's a valid target. only the first valid target is counted
 		--kill computation
@@ -518,7 +534,30 @@ function masteries.listenerBonuses(notifications,dt)
 			--strong hit computation
 			strongHitCount=strongHitCount+1
 		end
+		--overkillDamage=overkillDamage+notification.damageDealt
+		totalDamage=totalDamage+notification.healthLost
 	end
+
+	--leech calculation
+	local leechValue=math.min(status.stat("maxHealth")*leechMaxRate,(totalDamage*leechPercent)/leechDuration)
+	--sb.logInfo
+	--handle leech instances
+	local leechBuffer={}
+	if leechValue>0 then
+		table.insert(leechBuffer,{timer=leechDuration,amount=leechValue})
+	end
+	leechValue=0
+	for _,instance in pairs(masteries.vars.leechInstances) do
+		instance.timer=instance.timer-dt
+		if instance.timer>0 then
+			table.insert(leechBuffer,instance)
+		end
+	end
+	for _,instance in pairs(leechBuffer) do
+		leechValue=leechValue+instance.amount
+	end
+	masteries.vars.leechInstances=leechBuffer
+
 	--rather than limiting it to one per, making it so that it instead rounds down from sqrt, up to 5.
 	--this means that hitting 1-3 targets counts as 1, 4-8 counts as 2, 9-15 counts as 3, and 16  counts as 4. etc.
 	hitCount=math.min(5,math.floor(math.sqrt(weakHitCount+hitCount+strongHitCount)))
@@ -612,6 +651,13 @@ function masteries.listenerBonuses(notifications,dt)
 		if tagCaching.mergedCache["axe"] then
 			table.insert(listenerbonus,{stat="critChance", amount=math.min(5,masteries.vars.inflictedHitCounter)*3})
 		end
+	end
+
+	--insert leech last
+	if leechValue>0 then
+		--sb.logInfo("leechValue %s",leechValue)
+		world.sendEntityMessage(entity.id(),"recordFUPersistentEffect","fuLeeching")
+		status.setPersistentEffects("fuLeeching",{{stat="healthRegen",amount=leechValue}})
 	end
 
 	--using the temporary persistent effect system, to make it wear off

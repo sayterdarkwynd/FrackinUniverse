@@ -54,7 +54,7 @@ function MarkedShot:aim()
 end
 
 function MarkedShot:fire()
-  local projectileId = self:fireProjectile(self.projectileType, {targets = self.targets})
+  self:fireProjectile(self.projectileType, {targets = self.targets})
 
   self:muzzleFlash()
 

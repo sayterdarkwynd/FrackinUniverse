@@ -4,7 +4,7 @@ require "/scripts/rect.lua"
 
 -- Helper functions
 function fireShockwave()
-  local impact, impactHeight = impactPosition()
+  local impact = impactPosition()
 
   if impact then
     local charge = math.floor(config.getParameter("maxDistance"))
@@ -21,7 +21,7 @@ function fireShockwave()
           type = config.getParameter("projectileType")
         }
       }
-      for i,position in pairs(positions) do
+      for _,position in pairs(positions) do
         local xDistance = world.distance(position, impact)[1]
         local dir = util.toDirection(xDistance)
         params.timeToLive = (math.floor(math.abs(xDistance))) * 0.025
@@ -66,16 +66,12 @@ function shockwaveProjectilePositions(impactPosition, maxDistance, directions)
 end
 
 function scalePower(power)
-  local level = 1
-  power = power or 10
-
+  local multiplier = 1
   if entity.entityType() == "monster" then
-    power = power * root.evalFunction("monsterLevelPowerMultiplier", monster.level())
-    level = monster.level()
+    multiplier = root.evalFunction("monsterLevelPowerMultiplier", monster.level())
   elseif entity.entityType() == "npc" then
-    power = power * root.evalFunction("npcLevelPowerMultiplierModifier", npc.level())
-    level = npc.level()
+    multiplier = root.evalFunction("npcLevelPowerMultiplierModifier", npc.level())
   end
-  power = power * status.stat("powerMultiplier")
-  return power
+
+  return (power or 10) * multiplier * status.stat("powerMultiplier")
 end

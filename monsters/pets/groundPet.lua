@@ -187,7 +187,6 @@ end
 
 function findAnchor()
 	local anchorName = config.getParameter("anchorName", "humantechstation")
-	local nearObjects
 	if storage.anchorPosition then
 		local nearObjects = world.entityQuery(storage.anchorPosition, 5, {
 			includedTypes = { "object" },
@@ -195,7 +194,6 @@ function findAnchor()
 		})
 
 		for _,objectId in ipairs(nearObjects) do
-			local objectPosition = world.entityPosition(objectId)
 			if world.entityName(objectId) == anchorName and not world.callScriptedEntity(objectId, "hasPet") then
 				setAnchor(objectId)
 				return true
@@ -258,7 +256,7 @@ end
 
 function petResources()
 	local resources = {}
-	for resourceName, resourceValue in pairs(storage.petResources) do
+	for resourceName in pairs(storage.petResources) do
 		resources[resourceName] = status.resource(resourceName)
 	end
 	return resources
@@ -279,11 +277,10 @@ end
 function drawDebugResources()
 	if not self.debug then return end
 
-	local resources = storage.petResources
 	local position = mcontroller.position()
 
 	local y = 2
-	for resourceName, resourceValue in pairs(storage.petResources) do
+	for resourceName in pairs(storage.petResources) do
 		--Border
 		world.debugLine(vec2.add(position, {-2, y+0.125}), vec2.add(position, {-2, y + 0.75}), "black")
 		world.debugLine(vec2.add(position, {-2, y + 0.75}), vec2.add(position, {2, y + 0.75}), "black")

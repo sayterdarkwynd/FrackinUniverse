@@ -1,21 +1,18 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
-local foodThreshold=15
+require "/stats/effects/fu_statusUtil.lua"
+local foodThreshold=15--used by checkFood
 
 function init()
 	math.randomseed(util.seedTime())
-end
-
-function checkFood()
-	return (((status.statusProperty("fuFoodTrackerHandler",0)>-1) and status.isResource("food")) and status.resource("food")) or foodThreshold
 end
 
 function activeFlight(shiftHeld)
 	local aimPos=tech.aimPosition()
 	local direction=shiftHeld and {0,0} or vec2.norm(world.distance(aimPos,entity.position()))
 	status.removeEphemeralEffect("wellfed")
-	local damageConfig = { power = 2 + ((checkFood() /20) + (status.resource("energy")/50) + (status.stat("protection") /120)) * (1 + status.stat("bombtechBonus"))} -- add tech bonus damage from armor etc with self.bonusDamage
+	local damageConfig = { power = 2 + (((checkFood() or foodThreshold) /20) + (status.resource("energy")/50) + (status.stat("protection") /120)) * (1 + status.stat("bombtechBonus"))} -- add tech bonus damage from armor etc with self.bonusDamage
 	animator.playSound("activate",3)
 	animator.playSound("recharge")
 	animator.setSoundVolume("activate", 0.5,0)
@@ -44,7 +41,7 @@ end
 function update(args)
 	self.mouthPosition = vec2.add(mcontroller.position(), {mcontroller.facingDirection(),(args.moves["down"] and -0.7) or 0.15})
 	self.firetimer = math.max(0, (self.firetimer or 0) - args.dt)
-	self.fed=(checkFood() > foodThreshold)
+	self.fed=((checkFood() or foodThreshold) > foodThreshold)
 
 	if args.moves["special1"] and status.overConsumeResource("energy", 0.001) then
 		if self.fed then

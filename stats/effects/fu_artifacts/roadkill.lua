@@ -19,7 +19,6 @@ function update(dt)
 end
 
 function damageTaken(notifications)
-	local totalDamage = 0
 	for _, notification in pairs(notifications) do
 		if notification.hitType == "Hit" then
 			self.damageCounter=self.damageCounter+notification.damageDealt

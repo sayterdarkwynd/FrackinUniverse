@@ -3,7 +3,7 @@
   "price" : 160,
   "inventoryIcon" : "mobiusrifle.png",
   "maxStack" : 1,
-  "rarity" : "legendary",
+  "rarity" : "uncommon",
   "description" : "A mainstay of advanced forces. Rivaled by few.
 ^yellow;Inflicts frozen-fire^reset;
 ^cyan;Summons Shield Drones^reset;",
@@ -48,62 +48,62 @@
     //"projectileType" : "mobius",
     "projectileType" : "standardbullet",
     "projectileParameters":{
-	  "statusEffects":[], 
-	  "bounces":0, 
-	  "speed":95, 
-	  "timeToLive":3.0, 
-	  "power" : 5.25,
-	  "damageKind" : "electric",
-	  "knockback":0,
-	  "lightColor" : [255, 180, 0],    
-	  "periodicActions":[ 
-		  {
-		  "time":0.01, 
-		  "action":"projectile", 
-		  "type":"firelasershot2", 
-		  "config":{
-		    "processing":"?hueshift=127",
-		    "speed":0, 
-		    "physics" : "laser",
-		    "bounces" :-1,
-		    "timeToLive":0.4, 
-		    "power":1, 
-		    "knockback":0
-		    }
-		  }
-	  ], 	  
-	  "actionOnReap" : [
-	    {
-	      "action" : "sound",
-	      "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
-	    },	  	  
-	    {
-	      "action" : "projectile",
-	      "type" : "electricexplosion",
-	      "inheritDamageFactor" : 0.2,
-	      "fuzzAngle" : 0,
-	      "angleAdjust" : 0,
-	      "config" : {
-	        "speed" : 0
-	      }
-	    },
-	    {
-	      "action" : "projectile",
-	      "type" : "plasmaflame",
-	      "fuzzAngle" : 0,
-	      "inheritDamageFactor" : 0.2,
-	      "timeToLive" : 0.5,
-	      "angleAdjust" : 35
-	    },
-			    {
-	      "action" : "projectile",
-	      "type" : "plasmaflame",
-	      "fuzzAngle" : 0,
-	      "inheritDamageFactor" : 0.2,
-	      "timeToLive" : 0.5,
-	      "angleAdjust" : -35
-	    }
-	  ]
+    "statusEffects":[], 
+    "bounces":0, 
+    "speed":95, 
+    "timeToLive":3.0, 
+    "power" : 5.25,
+    "damageKind" : "electric",
+    "knockback":0,
+    "lightColor" : [255, 180, 0],    
+    "periodicActions":[ 
+      {
+      "time":0.01, 
+      "action":"projectile", 
+      "type":"firelasershot2", 
+      "config":{
+        "processing":"?hueshift=127",
+        "speed":0, 
+        "physics" : "laser",
+        "bounces" :-1,
+        "timeToLive":0.4, 
+        "power":1, 
+        "knockback":0
+        }
+      }
+    ],     
+    "actionOnReap" : [
+      {
+        "action" : "sound",
+        "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
+      },        
+      {
+        "action" : "projectile",
+        "type" : "electricexplosion",
+        "inheritDamageFactor" : 0.2,
+        "fuzzAngle" : 0,
+        "angleAdjust" : 0,
+        "config" : {
+          "speed" : 0
+        }
+      },
+      {
+        "action" : "projectile",
+        "type" : "plasmaflame",
+        "fuzzAngle" : 0,
+        "inheritDamageFactor" : 0.2,
+        "timeToLive" : 0.5,
+        "angleAdjust" : 35
+      },
+          {
+        "action" : "projectile",
+        "type" : "plasmaflame",
+        "fuzzAngle" : 0,
+        "inheritDamageFactor" : 0.2,
+        "timeToLive" : 0.5,
+        "angleAdjust" : -35
+      }
+    ]
   },
   
   "stances" : {
@@ -154,15 +154,15 @@
     "shortdescription" : "^cyan;Shatterstar^reset; ^yellow;^reset;",
   "animationParts" : {"middle" : "mobiusrifle2.png"},
     "inventoryIcon" : [{ "image" : "mobiusrifle2.png" }],
-	  "primaryAbility" : {
-	    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-	    "class" : "GunFire",
+    "primaryAbility" : {
+      "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+      "class" : "GunFire",
 
-	    "fireTime" : 0.3,
-	    "baseDps" : 7.2,
-	    "energyUsage" : 25,
+      "fireTime" : 0.3,
+      "baseDps" : 7.2,
+      "energyUsage" : 25,
 
-	    "projectileType" : "frozengravityball"
-	  }
+      "projectileType" : "frozengravityball"
+    }
   }
 }

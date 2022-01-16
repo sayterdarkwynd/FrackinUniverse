@@ -58,7 +58,7 @@ function update(dt)
 			elseif #fuStoredCrew > 0 then
 				fuFreeCrewSpace = math.min(fuCrewLimit - #fuCrewMembers, #fuStoredCrew)
 				if fuFreeCrewSpace > 0 then
-					for i = 1, fuFreeCrewSpace do
+					for _ = 1, fuFreeCrewSpace do
 						recruitSpawner:addCrew(fuStoredCrew[1].podUuid, fuStoredCrew[1])
 						table.remove(fuStoredCrew, 1)
 						status.setStatusProperty("fuStoredCrew", fuStoredCrew)

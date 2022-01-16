@@ -12,9 +12,6 @@ previewStates = {
 }
 
 function init()
-  local mechParamsMessage = world.sendEntityMessage(player.id(), "getMechParams")
-  local mechParams = mechParamsMessage:result()
-
   local getUnlockedMessage = world.sendEntityMessage(player.id(), "mechUnlocked")
   if getUnlockedMessage:finished() and getUnlockedMessage:succeeded() then
     local unlocked = getUnlockedMessage:result()
@@ -221,7 +218,7 @@ function updatePreview()
     local energyDrain = params.parts.body.energyDrain + params.parts.leftArm.energyDrain + params.parts.rightArm.energyDrain
 
     local chips = self.chips or {}
-    for chipName,chip in pairs(chips) do
+    for _,chip in pairs(chips) do
       if chip.name == "mechchiprefueler" then
         energyDrain = energyDrain * 0.75
       end

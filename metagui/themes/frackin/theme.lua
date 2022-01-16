@@ -59,9 +59,9 @@ local color = { } do -- mini version of StardustLib's color.lua
     local t = max + min
     local h = t / 2
     if max == min then return 0, 0, h end
-    local s, l = h, h
+    local l = h
     local d = max - min
-    s = l > .5 and d / (2 - t) or d / t
+    local s = l > .5 and d / (2 - t) or d / t
     if max == r then h = (g - b) / d % 6
     elseif max == g then h = (b - r) / d + 2
     elseif max == b then h = (r - g) / d + 4
@@ -85,8 +85,7 @@ local color = { } do -- mini version of StardustLib's color.lua
 end -- color lib
 
 local paletteFor do
-  local baseHue = color.toHsl(theme.defaultAccentColor)[1]
-  
+
   local basePal = { "588adb", "123166", "0d1f40", "060f1f" }
   local framePal = {
     "ffe15c", "ffbd00", "c78b05", "875808", -- yellow bands
@@ -126,7 +125,6 @@ local paletteFor do
       })
     end
     
-    --local hd = s > 0 and h - baseHue or 0
     local hd = (mg.cfg[theme.hueShiftProperty or false] or mg.cfg["frackin:hueShift"] or 0) / 360
     if hd ~= 0 then -- adjust frame colors
       hd = (hd+0.5 % 1) - 0.5

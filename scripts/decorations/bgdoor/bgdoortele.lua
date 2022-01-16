@@ -72,7 +72,6 @@ function update(dt)
 
 --Hit interact to do the time warp
 function onInteraction(activator)
-  local targetPosition = world.entityMouthPosition(self.connectedDoor)
   local interactor = activator.sourceId
 
   if self.connectedDoor then

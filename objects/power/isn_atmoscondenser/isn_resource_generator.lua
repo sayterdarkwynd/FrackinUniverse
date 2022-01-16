@@ -112,10 +112,6 @@ end
 function setDesc()
 	if not self.overrideScanTooltip then return end
 
-	local color="^yellow;"
-	local info="Standby."
-
-
 	local worldtype = world.type()
 	if worldtype == 'unknown' then
 		worldtype = world.getProperty("ship.celestial_type") or worldtype
@@ -145,7 +141,7 @@ function setDesc()
 					table.insert(buffer[weight],dummy)
 				end
 				buffer[weight]=table.concat(buffer[weight],", ")
-				buffer2[1]="^white;"..firstToUpper(weight).."^gray;: "..buffer[weight].."^reset;"
+				buffer2[1]="^reset;"..firstToUpper(weight).."^gray;: "..buffer[weight].."^reset;"
 			elseif weight=="uncommon" and self.rarityInfoLevel > 1 then
 				local items=myTable.items
 				buffer[weight]={}

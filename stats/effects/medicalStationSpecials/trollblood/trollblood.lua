@@ -37,7 +37,7 @@ function update(dt)
 			end
 		end
 
-		for i, index in ipairs(finishedIndexes) do
+		for i in ipairs(finishedIndexes) do
 			table.remove(self.damageInstances, #finishedIndexes - i + 1)
 		end
 

@@ -31,22 +31,18 @@ function charge()
 end
 
 function update(dt)
-
-	function update(dt)
-		if not deltaTime or (deltaTime > 1) then
-			for slot,item in pairs(world.containerItems(entity.id())) do
-				if slot == 1 then ammo = item end
-				if slot == 2 then magazine = item end
-			end
-
-			if ammo and magazine then
-				if magazine.count>=1 then
-					charge()
-				end
-			end
-		else
-			deltaTime=deltaTime+dt
+	if not deltaTime or (deltaTime > 1) then
+		for slot,item in pairs(world.containerItems(entity.id())) do
+			if slot == 1 then ammo = item end
+			if slot == 2 then magazine = item end
 		end
-	end
 
+		if ammo and magazine then
+			if magazine.count>=1 then
+				charge()
+			end
+		end
+	else
+		deltaTime=deltaTime+dt
+	end
 end

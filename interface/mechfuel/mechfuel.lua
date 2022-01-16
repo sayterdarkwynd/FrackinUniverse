@@ -7,7 +7,6 @@ function init()
 		lockDisplay(true)
 		return
 	end
-	local wType=world.type()--mechtestbasic
 	self.getUnlockedMessage = self.getUnlockedMessage or world.sendEntityMessage(player.id(), "mechUnlocked")
 	if self.getUnlockedMessage:finished() then
 		if self.getUnlockedMessage:succeeded() then
@@ -152,7 +151,6 @@ function fuel()
 	local id = player.id()
 
 	local fuelMultiplier = 0
-	local fuelBonus = 0
 	local localFuelType = ""
 
 	local fuelData = self.fuels[item.name]

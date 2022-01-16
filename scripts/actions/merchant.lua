@@ -35,7 +35,7 @@ function buildTradingConfig()
 
 			if highestLevelSet ~= nil then
 				for _, item in pairs(highestLevelSet) do
-					if item.item.parameters then item.item.parameters.level = npc.level() end
+					if item.item.parameters then item.item.parameters.level = level end
 					table.insert(items, item)
 				end
 			end
@@ -85,7 +85,6 @@ function buildTradingConfig()
 	end
 
 	-- Generate all randomized items with a consistent seed and level
-	local level = npc.level()
 	for _, item in pairs(selectedItems) do
 		if item.useSeed then
 			item.item.parameters = item.item.parameters or {}

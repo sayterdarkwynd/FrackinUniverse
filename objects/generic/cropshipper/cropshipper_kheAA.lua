@@ -118,7 +118,7 @@ function valueOfContents()
 	local value = 0
 	local itemCount=0
 	local allItems = world.containerItems(entity.id())
-	for slot,item in pairs(allItems) do
+	for _,item in pairs(allItems) do
 		if item.name=="money" then
 			value = value + item.count
 		else

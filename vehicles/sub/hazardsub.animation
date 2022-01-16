@@ -1,0 +1,320 @@
+{
+  "globalTagDefaults" : {
+    "colour" : ""
+  },
+  
+  "animatedParts" : {
+    "stateTypes" : {
+
+      "base" : {
+        "default" : "idle",
+        "states" : {
+
+          "warpIn" : {
+            "frames" : 6,  
+            "cycle" : 0.5,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "immediateSound" : "/sfx/tech/fusubwarp.ogg"
+            }
+          },
+
+          "idle" : {},
+
+          "warpOut" : {
+            "frames" : 6,  
+            "cycle" : 0.5,
+            "mode" : "transition",
+            "transition" : "warpedOut",
+            "properties" : {
+              "immediateSound" : "/sfx/tech/fusubwarp.ogg"
+            }          
+          },
+
+          "warpedOut" : {},
+
+          "sinking" : {},
+
+          "sunk" : {}
+
+        }
+      },
+
+      "propeller" : {
+        "priority" : 0,
+        "default" : "still",
+        "states" : {
+          "still" : {
+            "frames" : 1
+          },
+          "turning" : {
+            "frames" : 3,
+            "cycle" : 0.2,
+            "mode" : "loop"
+          },
+          "warping" : {}
+        }
+      }
+    },
+
+    "parts" : {
+      "seat" : {
+        "properties" : {
+          "zLevel" : -1,
+          "transformationGroups" : ["flip","rotation"],
+          "drivingSeatPosition" : [5.94, -1.5],
+          "frontSeatPosition" : [2.4, -1.8],
+          "middleSeatPosition" : [-0.8, -1.8]
+        }
+      },
+
+
+      "background" : {
+        "properties" : {
+          "offset" : [0, 0],
+          "zLevel" : -2,
+          "transformationGroups" : ["flip", "rotation"]
+        },
+
+        "partStates" : {
+          "base" : {
+
+            "warpIn" : {
+              "properties" : {}
+            },
+
+            "idle" : {
+              "properties" : {
+                "image" : "/vehicles/sub/hazardsub<colour>_back.png:hull.<damageState>"
+              }
+            },
+
+            "warpOut" : {
+              "properties" : {}
+            },
+
+            "invisible" : {
+              "properties" : {}
+            },
+
+            "sinking" : {
+              "properties" : {
+                "image" : "/vehicles/sub/hazardsub<colour>_back.png:hull.<damageState>"
+              }
+            },
+
+            "sunk" : {
+              "properties" : {
+                "image" : "/vehicles/sub/hazardsub<colour>_back.png:hull.<damageState>"
+              }
+            }
+
+          }
+        }
+      },
+
+
+      "boathull" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 2,
+          "transformationGroups" : ["flip", "rotation"]
+        },
+
+        "partStates" : {
+          "base" : {
+
+            "warpIn" : {
+              "properties" : {}
+            },
+
+            "idle" : {
+              "properties" : {
+                "image" : "/vehicles/sub/hazardsub<colour>_front.png:hull.<damageState>"
+              }
+            },
+
+            "warpOut" : {
+              "properties" : {}
+            },
+
+            "invisible" : {
+              "properties" : {}
+
+            },
+
+            "sinking" : {
+              "properties" : {
+                "image" : "/vehicles/sub/hazardsub<colour>_front.png:hull.<damageState>"
+              }
+            },
+
+            "sunk" : {
+              "properties" : {
+                "image" : "/vehicles/sub/hazardsub<colour>_front.png:hull.<damageState>"
+              }
+            }
+
+          }
+        }
+      },
+
+      "warp" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 3,
+          "fullbright" : true,
+          "transformationGroups" : ["flip", "rotation"],
+          "offset" : [0, -1.5]
+        },
+
+        "partStates" : {
+
+          "base" : {
+
+            "warpIn" : {
+              "properties" : {
+                "image" : "fusubwarp.png:warpIn.<frame>"
+              }
+            },
+
+            "idle" : {
+              "properties" : {}
+            },
+
+
+            "warpOut" : {
+              "properties" : {
+                "image" : "fusubwarp.png:warpOut.<frame>"
+              }
+            },
+
+            "invisible" : {
+              "properties" : {}
+            }
+
+          }
+        }
+      },
+
+      "prop" : {
+        "properties" : {
+          "zLevel" : 3,
+          "centered" : true,
+          "transformationGroups" : ["flip", "rotation"],
+          "offset" : [-4.64, 0.2]
+        },
+        "partStates" : {
+          "propeller" : {
+            "still" : {
+              "properties" : {
+                "image" : "/vehicles/sub/hazardsub_prop1.png:idle"
+              }
+            },
+            "turning" : {
+              "properties" : {
+                "image" : "/vehicles/sub/hazardsub_prop1.png:move.<frame>"
+              }
+            },
+            "warping" : {
+              "properties" : {}
+            }
+          }
+        }
+      }
+
+    }
+  },
+
+
+  "transformationGroups" : {
+    "rotation" : {
+      "interpolated" : true
+    },
+    "flip" : {}
+  },
+
+  "particleEmitters" : {
+    "bowWaveWater" : {
+       "emissionRate" : 25.0,
+       "active" : false,
+       "offsetRegion" : [ 5, -1.5, 5.1, 1.5],
+       "particles" : [{ "particle" : "splashwater"}]
+    },
+    "bowWaveLava" : {
+       "emissionRate" : 25.0,
+       "active" : false,
+       "offsetRegion" : [ 5, -1.5, 5.1, 1.5],
+       "particles" : [{ "particle" : "fireshard"}]
+    },
+    "bowWavePoison" : {
+       "emissionRate" : 25.0,
+       "active" : false,
+       "offsetRegion" : [ 5, -1.5, 5.1, 1.5],
+       "particles" : [{ "particle" : "splashpoison"}]
+    },
+
+    "splashWater" : {
+       "emissionRate" : 0,
+       "active" : false,
+       "burstCount" : 30,
+       "offsetRegion" : [ -5, -1.5, 5.0, -1.2],
+       "particles" : [{ "particle" : "splashwater"}]
+    },
+    "splashLava" : {
+       "emissionRate" : 0,
+       "active" : false,
+       "burstCount" : 30,
+       "offsetRegion" : [ -5, -1.5, 5.1, -1.2],
+       "particles" : [{ "particle" : "fireshard"}]
+    },
+    "splashPoison" : {
+       "emissionRate" : 0,
+       "active" : false,
+       "burstCount" : 30,
+       "offsetRegion" : [ -5, -1.5, 5.1, -1.2],
+       "particles" : [{ "particle" : "splashpoison"}]
+    },
+
+    "bubbles" : {
+       "enabled" : false,
+       "emissionRate" : 25.0,
+       "offsetRegion" : [ -3, -3, 3, 3],
+       "particles" : [{ "particle" : "bubbles"}]
+    },
+
+    "smoke" : {
+       "enabled" : false,
+       "emissionRate" : 25.0,
+       "offsetRegion" : [ -3, -3, 3, 3],
+       "particles" : [{ "particle" : "burningvehiclesmokefront"}]
+    }
+  },
+
+  "sounds" : {
+    "collisionNotification" : [ "/sfx/tech/hoverbike_bump1.ogg",
+                                "/sfx/tech/hoverbike_bump2.ogg",
+                                "/sfx/tech/hoverbike_bump3.ogg"  ],
+
+    "collisionDamage" : ["/sfx/melee/bite_robotic1.ogg"],
+
+    "changeDamageState" : [  "/sfx/gun/grenadeblast_small_fire1.ogg",
+                            "/sfx/gun/grenadeblast_small_fire2.ogg",
+                            "/sfx/gun/grenadeblast_small_fire3.ogg" ],
+
+    "hornLoop" : ["/sfx/tech/fusubsonar.ogg"],
+    
+    "fireTorp" : ["/sfx/tech/tech_jetpack_thrust1.ogg","/sfx/tech/tech_jetpack_thrust2.ogg"],
+    
+    "engineLoop" : ["/sfx/tech/fusubdrive.ogg"],	
+	
+    "headlightSwitchOn" : ["/sfx/objects/floodlights_on.ogg"],
+    "headlightSwitchOff" : ["/sfx/objects/floodlights_off.ogg"],
+	
+    "hatch" : ["/sfx/objects/shippingcontainer_close.ogg"],
+	
+    "engineLoopDamaged" : ["/sfx/tech/fusubidle.ogg"]
+    
+  }
+}

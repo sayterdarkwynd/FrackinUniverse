@@ -1,54 +1,53 @@
 {
-  "name" : "radioactiveweathernew2",
-  "blockingStat" : "",
+	"name" : "radioactiveweathernew2",
 
-  "effectConfig" : {
-    "resistanceTypes" : {
-      "radioactiveResistance" : 1.0
-    },
-    "resistanceThreshold" : 0.4,
-    "immunityStats" : [
-      "biomeradiationImmunity",
-      "ffextremeradiationImmunity"
-    ],
+	"effectConfig" : {
+		"resistanceTypes" : {
+			"radioactiveResistance" : 1.0
+		},
+		"resistanceThreshold" : 0.4,
+		"immunityStats" : [
+			"biomeradiationImmunity",
+			"ffextremeradiationImmunity"
+		],
 
-    "healthDrain" : 4,
-    "hungerDrain" : 0,
-    "energyDrain" : 0,
-    "speedPenalty" : 0,
-    "jumpPenalty" : 0,
+		"healthDrain" : 4,
+		"hungerDrain" : 0,
+		"energyDrain" : 0,
+		"speedPenalty" : 0,
+		"jumpPenalty" : 0,
 
-    "debuffRate" : 4,
-    "debuffStartDelay" : 0,
-    "debuffs" : {
-      "maxHealth" : {
-        "amount" : -5.0
-      },
-      "maxEnergy" : {
-        "amount" : -5.0,
-        "cap" : -1
-      }
-    },
+		"debuffRate" : 4,
+		"debuffStartDelay" : 0,
+		"debuffs" : {
+			"maxHealth" : {
+				"amount" : -5.0
+			},
+			"maxEnergy" : {
+				"amount" : -5.0,
+				"cap" : -1
+			}
+		},
 
-    "modifiers" : {
-      "windy" : 1.2
-    },
+		"modifiers" : {
+			"windy" : 1.2
+		},
 
-    "messages" : {
-      "intro" : "biomeradiation",
-      "windy" : "ffbiomeradiationwind"
-    },
+		"messages" : {
+			"intro" : "biomeradiation",
+			"windy" : "ffbiomeradiationwind"
+		},
 
-    "configPath" : "/stats/effects/fu_weathereffects/new/radiation/radioactiveweathernew2.statuseffect"
-  },
-  "defaultDuration" : 20,
+		"configPath" : "/stats/effects/fu_weathereffects/new/radiation/radioactiveweathernew2.statuseffect"
+	},
+	"defaultDuration" : 20,
 
-  "scripts" : [
-    "radioactiveweathernew.lua"
-  ],
+	"scripts" : [
+		"radioactiveweathernew.lua"
+	],
 
-  "animationConfig" : "radioactiveweathernew.animation",
+	"animationConfig" : "radioactiveweathernew.animation",
 
-  "label" : "Moderate Radiation (Resist: ^#83bb1d;Radioactive^reset;)",
-  "icon" : "/interface/statuses/radiation2.png"
+	"label" : "Moderate Radiation (Resist: ^#83bb1d;Radioactive^reset;)",
+	"icon" : "/interface/statuses/radiation2.png"
 }

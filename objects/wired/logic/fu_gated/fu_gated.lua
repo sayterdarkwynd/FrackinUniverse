@@ -26,7 +26,7 @@ function init()
 		local selected = {}
 		storage.input = 0
 		inputBits = inputBits or math.ceil (numConnected / 2)
-		for i = 1, math.min(numConnected, inputBits) do
+		for _ = 1, math.min(numConnected, inputBits) do
 			local bit
 			while true do
 				bit = rnd:randInt(1, numConnected)

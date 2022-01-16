@@ -10,11 +10,12 @@
     "objectType" : "container",
     "price" : 200,
 
-	"lightColor" : [229, 229, 207],
-	"pointLight" : true,
-	"pointBeam" : 1.25,
-	"beamAmbience" : 0.5,
-	"defaultLightState": false,
+    "emitsLightWhenPowered": true,
+    "lightColor" : [229, 229, 207],
+    "pointLight" : true,
+    "pointBeam" : 1.25,
+    "beamAmbience" : 0.5,
+    "defaultLightState": false,
 
     "inventoryIcon" : "irongrowingtray_inv.png",
     "orientations" : [
@@ -35,7 +36,7 @@
     "frameCooldown" : 67,
     "autoCloseCooldown" : 3600,
 
-    "scripts" : [ "/scripts/fupower.lua","irongrowingtray.lua" ],
+    "scripts" : [ "/scripts/fupower.lua","/objects/isn_unifiedgrowingtray.lua" ],
     "scriptDelta" : 60,
 
     "animation" : "irongrowingtray.animation",

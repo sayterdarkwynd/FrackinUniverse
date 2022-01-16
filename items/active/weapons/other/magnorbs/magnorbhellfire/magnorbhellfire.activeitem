@@ -1,84 +1,84 @@
 {
-	"itemName" : "magnorbhellfire",
-	"level" : 5,
-	"price" : 1100,
-	"maxStack" : 1,
-	"rarity" : "legendary",
-	"description" : "Full of scorchy fun.",
-	"shortdescription" : "Hellfire Orbs",
-	"tooltipKind" : "magnorb",
-	"category" : "Magnorb",
-	"twoHanded" : true,
-	"itemTags" : [ "weapon", "magnorb","hellfire", "upgradeableWeapon" ],
+  "itemName" : "magnorbhellfire",
+  "level" : 5,
+  "price" : 1100,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Full of scorchy fun.",
+  "shortdescription" : "Hellfire Orbs",
+  "tooltipKind" : "magnorb",
+  "category" : "Magnorb",
+  "twoHanded" : true,
+  "itemTags" : [ "weapon", "magnorb","hellfire", "upgradeableWeapon" ],
 
-	"inventoryIcon" : "iconhellfire.png",
-	"animation" : "magnorbhellfire.animation",
-	"animationParts" : {
-		"glove" : "glovehellfire.png",
-		"glovefullbright" : "glovehellfirefullbright.png",
-		"orb1" : "orbhellfire.png",
-		"orb2" : "orbhellfire.png",
-		"orb3" : "orbhellfire.png",
-		"orb4" : "orbhellfire.png"
-	},
+  "inventoryIcon" : "iconhellfire.png",
+  "animation" : "magnorbhellfire.animation",
+  "animationParts" : {
+    "glove" : "glovehellfire.png",
+    "glovefullbright" : "glovehellfirefullbright.png",
+    "orb1" : "orbhellfire.png",
+    "orb2" : "orbhellfire.png",
+    "orb3" : "orbhellfire.png",
+    "orb4" : "orbhellfire.png"
+  },
 
-	"animationCustom" : {
+  "animationCustom" : {
 
-		"lights" : {
-			"glow" : {
-			"active" : true,
-			"position" : [0.75, 0.5],
-			"color" : [155, 100, 42],
-			"flickerPeriod" : 0.85,
-			"flickerMinIntensity" : 0.8,
-			"flickerMaxIntensity" : 1
-			}
-		}
+    "lights" : {
+      "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [155, 100, 42],
+      "flickerPeriod" : 0.85,
+      "flickerMinIntensity" : 0.8,
+      "flickerMaxIntensity" : 1
+      }
+    }
 
-	},
+  },
 
-	"scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
+  "scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
 
-	"orbitRate" : 0.60,
+  "orbitRate" : 0.60,
 
-	"elementalType" : "hellfire",
+  "elementalType" : "hellfire",
 
-	"projectileType" : "magnorbhellfire",
+  "projectileType" : "magnorbhellfire",
 
-	"projectileParameters" : {
-		"power" : 4.05,
-		"knockback" : 1,
-		"returnOnHit" : true,
-		"ignoreTerrain" : false,
-		"controlForce" : 60,
-		"pickupDistance" : 1.5,
-		"snapDistance" : 1.0
-	},
+  "projectileParameters" : {
+    "power" : 4.05,
+    "knockback" : 1,
+    "returnOnHit" : true,
+    "ignoreTerrain" : false,
+    "controlForce" : 60,
+    "pickupDistance" : 1.5,
+    "snapDistance" : 1.0
+  },
 
-	"count" : 4,
-	"shieldKnockback" : 12,
-	"shieldEnergyCost" : 40,
-	"shieldHealth" : 60,
-	"shieldPower" : "Fire Aura",
-	"shieldPersistentGroup":"magnorbHellfire",
-	"shieldPersistentEffects":[{"stat":"fireResistance","amount":0.25},{"stat":"fireStatusImmunity","amount":1}],
-	"shieldEphemeralEffects":["fireburst"],
-	"critChance" : 2,
-	"critBonus" : 5,
+  "count" : 4,
+  "shieldKnockback" : 12,
+  "shieldEnergyCost" : 40,
+  "shieldHealth" : 60,
+  "shieldPower" : "Fire Aura",
+  "shieldPersistentGroup":"magnorbHellfire",
+  "shieldPersistentEffects":[{"stat":"fireResistance","amount":0.25},{"stat":"fireStatusImmunity","amount":1}],
+  "shieldEphemeralEffects":["fireburst"],
+  "critChance" : 2,
+  "critBonus" : 5,
 
-	"stances" : {
-		"idle" : {
-			"armRotation" : 10,
-			"twoHanded" : false,
-			"allowRotate" : true,
-			"allowFlip" : true
-		},
-		"shield" : {
-			"armRotation" : 0,
-			"twoHanded" : false,
-			"allowRotate" : true,
-			"allowFlip" : true
-		}
-	},
-	"builder" : "/items/buildscripts/fubuildmagnorb.lua"
+  "stances" : {
+    "idle" : {
+      "armRotation" : 10,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "shield" : {
+      "armRotation" : 0,
+      "twoHanded" : false,
+      "allowRotate" : true,
+      "allowFlip" : true
+    }
+  },
+  "builder" : "/items/buildscripts/fubuildmagnorb.lua"
 }

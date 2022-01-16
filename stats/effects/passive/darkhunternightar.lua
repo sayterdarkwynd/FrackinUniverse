@@ -1,4 +1,5 @@
 require "/scripts/util.lua"
+require "/stats/effects/fu_statusUtil.lua"
 
 function init()
 	script.setUpdateDelta(10)
@@ -14,24 +15,6 @@ function init()
 	self.activateDrainTimer = 0
 	self.didInit=true
 end
-
-function getLight()
-	local position = mcontroller.position()
-	position[1] = math.floor(position[1])
-	position[2] = math.floor(position[2])
-	local lightLevel = math.min(world.lightLevel(position),1.0)
-	lightLevel = math.floor(lightLevel * 100)
-	return lightLevel
-end
-
-function daytimeCheck()
-	return world.timeOfDay() < 0.5 -- true if daytime
-end
-
-function undergroundCheck()
-	return world.underground(mcontroller.position())
-end
-
 
 function update(dt)
 	if not self.didInit then init() end
@@ -69,12 +52,23 @@ function update(dt)
 	    local mult = math.min(math.max((lightLevel-55)/30,0),1)
 	    local healthPenalty = 1-mult*0.25
 	    if (self.species == "nightar") then
-		    effect.setStatModifierGroup(nightarDarkHunterEffects, {
-				{stat = "physicalResistance", amount = mult*-0.33},
-				{stat = "powerMultiplier", effectiveMultiplier = 1-mult*0.5},
-				{stat = "maxHealth", effectiveMultiplier = util.round(healthPenalty,1)},
-				{stat = "maxEnergy", effectiveMultiplier = util.round(healthPenalty,1)}
-		    })
+		    if status.stat("reducePenalty") >= 0 then
+		        reducePenalty = status.stat("reducePenalty")
+		        healthPenalty = 1-mult*0.1
+			    effect.setStatModifierGroup(nightarDarkHunterEffects, {
+					{stat = "physicalResistance", amount = mult*-0.1},
+					{stat = "powerMultiplier", effectiveMultiplier = 1-mult*0.2},
+					{stat = "maxHealth", effectiveMultiplier = util.round((healthPenalty),1)},
+					{stat = "maxEnergy", effectiveMultiplier = util.round((healthPenalty),1)}
+			    })		      
+		    else
+			    effect.setStatModifierGroup(nightarDarkHunterEffects, {
+					{stat = "physicalResistance", amount = mult*-0.33},
+					{stat = "powerMultiplier", effectiveMultiplier = 1-mult*0.5},
+					{stat = "maxHealth", effectiveMultiplier = util.round(healthPenalty,1)},
+					{stat = "maxEnergy", effectiveMultiplier = util.round(healthPenalty,1)}
+			    })		    	
+		    end	    	
 	    else  --tenebrhae have different bonuses than nightar
 		    effect.setStatModifierGroup(nightarDarkHunterEffects, {
 				{stat = "physicalResistance", amount = mult*-0.25},
@@ -96,4 +90,7 @@ function uninit()
 	if nightarDarkHunterEffects2 then
 		effect.removeStatModifierGroup(nightarDarkHunterEffects2)
 	end
+	if nightarDarkHunterEffects3 then
+		effect.removeStatModifierGroup(nightarDarkHunterEffects3)
+	end	
 end

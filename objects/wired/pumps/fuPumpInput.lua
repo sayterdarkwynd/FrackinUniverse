@@ -12,7 +12,7 @@ function animate()
 end
 
 function locatePump(area)
-    for outputObject,v in pairs(area) do
+    for outputObject in pairs(area) do
         local isStandard = world.getObjectParameter(outputObject,"pumpOutputStandard")
 		local isPressure = world.getObjectParameter(outputObject,"pumpOutputPressure")
         if isStandard or isPressure then
@@ -25,7 +25,6 @@ function locatePump(area)
 function setCurrentOutput()
     if object.isOutputNodeConnected(0) then
         local outputId,isPressure =  locatePump(object.getOutputNodeIds(0))
-        local var -- set to null
 
         if outputId then
             self.outputLocation = world.entityPosition(outputId)
@@ -56,7 +55,7 @@ function moveLiquid(inputLocation,outputLocation)
 				world.setTileProtection(world.dungeonId(self.outputLocation), false)
 				protectCheckOutput=true
             end
-			local destroyed=false
+			local destroyed
 			if world.isTileProtected(inputLocation) then
 				destroyed=world.forceDestroyLiquid(isTileProtected)
 			else

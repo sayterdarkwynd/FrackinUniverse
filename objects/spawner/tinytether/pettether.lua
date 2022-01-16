@@ -18,7 +18,7 @@ function finishInit()
 end
 
 function uninit()
-  for uuid, pod in pairs(petSpawner.pods) do
+  for _, pod in pairs(petSpawner.pods) do
     -- Tether is unloading or being destroyed, return all pets
     pod:recall()
   end
@@ -37,7 +37,7 @@ function updatePodsFromItems()
   local newPods = copy(pods)
   local removedPods = {}
 
-  for uuid, pod in pairs(petSpawner.pods) do
+  for uuid in pairs(petSpawner.pods) do
     if pods[uuid] then
       newPods[uuid] = nil
     else
@@ -94,7 +94,7 @@ function update(dt)
 
   updatePodsFromItems()
 
-  for uuid, pod in pairs(petSpawner.pods) do
+  for _, pod in pairs(petSpawner.pods) do
     pod:update(dt)
   end
 

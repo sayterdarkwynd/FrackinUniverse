@@ -38,7 +38,6 @@ function scanInteraction()
 	      local pool = config.getParameter("treasure.pool")
 	      local level = config.getParameter("treasure.level")
 	      local seed = config.getParameter("treasure.seed")
-	      local treasure = root.createTreasure(pool, level, seed)
 	      world.spawnTreasure(object.position(), pool, level, seed)
 	      self.scanned = 1
       end

@@ -1,6 +1,7 @@
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
 require "/items/active/weapons/crits.lua"
+require "/stats/effects/fu_statusUtil.lua"
 
 -- Base gun fire ability
 FUOverHeating = WeaponAbility:new()
@@ -65,22 +66,6 @@ function calcAmmo(self)
 	if (oldSize and oldSize~= self.magazineSize) then return true,oldSize end
 end
 
--- ****************************************
--- FR FUNCTIONS
-function daytimeCheck()
-	return world.timeOfDay() < 0.5 -- true if daytime
-end
-
-function undergroundCheck()
-	return world.underground(mcontroller.position())
-end
-
-function getLight()
-	local position = mcontroller.position()
-	position[1] = math.floor(position[1])
-	position[2] = math.floor(position[2])
-	return math.floor(math.min(world.lightLevel(position),1.0) * 100)
-end
 -- ***********************************************************************************************************
 -- ***********************************************************************************************************
 
@@ -172,7 +157,6 @@ function FUOverHeating:auto()
 	-- recoil stats reset every time we shoot so that it is consistent
 	self.recoilSpeed = (config.getParameter("recoilSpeed",0))
 	self.recoilForce = (config.getParameter("recoilForce",0))
-	local species = world.entitySpecies(activeItem.ownerEntityId())
 
 	if self.helper then
 		self.helper:runScripts("gunfire-auto", self)
@@ -223,7 +207,6 @@ function FUOverHeating:burst()
 	-- recoil stats reset every time we shoot so that it is consistent
 	self.recoilSpeed = (config.getParameter("recoilSpeed",0))
 	self.recoilForce = (config.getParameter("recoilForce",0))
-	local species = world.entitySpecies(activeItem.ownerEntityId())
 
 	if self.helper then
 			self.helper:runScripts("gunfire-burst", self)
@@ -310,7 +293,7 @@ function FUOverHeating:fireProjectile(projectileType, projectileParams, inaccura
 	end
 
 	local projectileId = 0
-	for i = 1, (projectileCount or self.projectileCount) do
+	for _ = 1, (projectileCount or self.projectileCount) do
 		if params.timeToLive then
 			params.timeToLive = util.randomInRange(params.timeToLive)
 		end

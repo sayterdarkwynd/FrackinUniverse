@@ -58,7 +58,6 @@ self.random = math.random(100)
   if self.triggerThorns then
     self.thornsTimer = self.thornsTimer - dt
 
-    local fadeOpacity = ((self.visualProjectileCount - self.spawnedThorns) / self.visualProjectileCount) * 0.8
     if self.thornsTimer <= 0 then
       local thornCount
       local visualInterval = self.visualDuration / self.visualProjectileCount

@@ -48,7 +48,7 @@ function onNodeConnectionChange(args)
   self.conected = 0
   self.conections = {}
   for i=0,nodes-1 do
-    for k, v in pairs(object.getOutputNodeIds(i)) do
+    for k in pairs(object.getOutputNodeIds(i)) do
       if world.entityName(k) == "peglaciwaterpurifier" then
         self.conected = self.conected+1
         table.insert(self.conections, k)

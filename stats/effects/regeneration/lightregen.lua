@@ -1,6 +1,7 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
+require "/stats/effects/fu_statusUtil.lua"
 
 function init()
 	self.healingRate = 1.01 / config.getParameter("healTime", 320)
@@ -9,23 +10,7 @@ function init()
 	bonusHandler=effect.addStatModifierGroup({})
 end
 
-function getLight()
-	local position = mcontroller.position()
-	position[1] = math.floor(position[1])
-	position[2] = math.floor(position[2])
-	return math.floor(math.min(world.lightLevel(position),1.0) * 100)
-end
-
-function daytimeCheck()
-	return world.timeOfDay() < 0.5 -- true if daytime
-end
-
-function undergroundCheck()
-	return world.underground(mcontroller.position())
-end
-
 function update(dt)
-	--sb.logInfo("lightregen")
 	local daytime = daytimeCheck()
 	local underground = undergroundCheck()
 	local lightLevel = getLight()

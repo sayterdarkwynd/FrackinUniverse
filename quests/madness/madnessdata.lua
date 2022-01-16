@@ -23,9 +23,8 @@ function init()
 	self.environmentTimer = 0
 
 	self.timer = 10.0 -- was zero, instant event on plopping in. giving players a short grace period. some of us teleport around a LOT.
-	local buffer=status.activeUniqueStatusEffectSummary()
-	for _,v in pairs(buffer) do
-		if buffer[1]=="mad" then
+	for _,effect in ipairs(status.activeUniqueStatusEffectSummary()) do
+		if effect[1]=="mad" then
 			status.removeEphemeralEffect("mad")
 			status.addEphemeralEffect("mad",self.timer)
 			break
@@ -67,7 +66,7 @@ function init()
 	--storage.armorSetData=storage.armorSetData or {}--moved into a separate setup
 	fuPersistentEffectRecorder.init()
 
-	for element,data in pairs(elementalTypes) do
+	for _,data in pairs(elementalTypes) do
 		if data.resistanceStat then
 			buffer[data.resistanceStat]=true
 		end
@@ -146,14 +145,14 @@ function randomEvent()
 	while (not didRng) or streakCheck(math.max(0,self.randEvent)) do
 		self.randEvent=math.random(1,100)
 		--mentalProtection can make it harder to be affected
-		if (self.currentProtectionAbs>0.0) and (self.isProtectedRandVal <= self.currentProtectionAbs) then
+		if (self.currentProtectionAbs>0.0) and (self.isProtectedRandVal <= self.currentProtection) then
 			self.randEvent = math.max(0,self.randEvent - util.round(self.currentProtection * 10)) --math.random(10,70) --it doesnt *remove* the effect, it just moves it further up (or down) the list, and potentially off of it.
 		end
 		didRng=true
 	end
 
 	-- are we currently carrying any really weird stuff?
-	local carryWeird=isWeirdStuff(self.timer)
+	isWeirdStuff(self.timer)
 
 	--set duration of curse
 	self.curseDuration = math.min(self.timer,self.madnessCount / 5)--this value will be adjusted based on effect type. Clamping this because it's too much otherwise. --highest duration (285.71) is reached at 1428.57. duration at max madness: 150.

@@ -1,4 +1,3 @@
-local oldUpdate=update
 local oldInit=init
 local oldUninit=uninit
 

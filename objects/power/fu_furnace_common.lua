@@ -40,6 +40,7 @@ function update(dt)
 		if (checkNormal and cSC) or (checkBonus) then
 			if (power.getTotalEnergy()>=self.effectiveRequiredPower) and world.containerConsume(entity.id(), {name = storage.currentinput, count = 2, data={}}) and power.consume(self.effectiveRequiredPower) then
 				animator.setAnimationState("furnaceState", "active")
+				object.setOutputNodeLevel(0,true)
 				storage.activeConsumption = true
 				local outputBarsCount=1
 				local outputBonusCount=0
@@ -83,9 +84,11 @@ function update(dt)
 			else
 				storage.activeConsumption = false
 				animator.setAnimationState("furnaceState", "idle")
+				object.setOutputNodeLevel(0,false)
 			end
 		else
 			animator.setAnimationState("furnaceState", "idle")
+			object.setOutputNodeLevel(0,false)
 		end
 	end
 	power.update(dt)

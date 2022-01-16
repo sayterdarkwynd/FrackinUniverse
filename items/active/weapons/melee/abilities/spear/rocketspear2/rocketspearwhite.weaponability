@@ -1,0 +1,112 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "chargeSwoosh" : {
+          "default" : "idle",
+          "states" : {
+            "idle" : {
+            },
+            "charge" : {
+              "frames" : 4,
+              "cycle" : 0.5,
+              "properties" : {
+                // "immediateSound" : "/sfx/melee/charge_up15.ogg"
+              }
+            },
+            "full" : {
+              "properties" : {
+                // "persistentSound" : "/sfx/gun/flamethrower.ogg"
+              }
+            }
+          }
+        }
+      },
+      "parts" : {
+        "chargeSwoosh" : {
+          "properties" : {
+            "zLevel" : 1,
+            "centered" : true,
+            "transformationGroups" : ["swoosh"],
+            "offset" : [3.75, 0.0625],
+            "fullbright" : true,
+            "damageArea" : [[-6, 0], [-3.5, 1], [-1.5, 1], [1.5, 0], [-1.5, -1], [-3.5, -1]],
+            "projectileSource" : [0,0]
+          },
+          "partStates" : {
+            "chargeSwoosh" : {
+              "idle" : {
+                "properties" : {
+                  "image" : ""
+                }
+              },
+              "charge" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/abilities/spear/rocketspear2/whiterocketcharge.png:<frame>"
+                }
+              },
+              "full" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/abilities/spear/rocketspear2/whiterocketcharge.png:4"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sounds" : {
+      "fireStart" : [ "/sfx/melee/swing_spear_fire1.ogg", "/sfx/melee/swing_spear_fire2.ogg", "/sfx/melee/swing_spear_fire3.ogg" ],
+      "fireBlast" : [ "/sfx/melee/rocketspear_loop_fire.ogg" ],
+      "fireEnd" : [ "/sfx/melee/rocketspear_stop_fire.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Pain Emitter",
+    "type" : "rocketspearwhite",
+    "scripts" : ["/items/active/weapons/melee/abilities/spear/rocketspear2/rocketspear.lua"],
+    "class" : "RocketSpear",
+
+    "baseDps" : 9,
+    "cooldownTime" : 0.5,
+    "energyUsage" : 45,
+    "fireTime" : 0.065,
+    "inaccuracy" : 0.05,
+
+    "boostSpeed" : 20,
+    "boostForce" : 250,
+
+    "elementalConfig" : {
+      "physical" : {
+        "projectileType" : "whiteflame"
+      }
+    },
+    "projectileParameters" : {
+      "speed" : 20
+    },
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.15,
+        "armRotation" : -100,
+        "weaponRotation" : 10,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 0.5],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "armRotation" : -15,
+        "weaponRotation" : -75,
+        "twoHanded" : true,
+        "weaponOffset" : [0.0, 1.25],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      }
+    }
+  }
+}

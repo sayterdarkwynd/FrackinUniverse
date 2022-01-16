@@ -3,10 +3,10 @@
   "price" : 160,
   "inventoryIcon" : "isn_magmavulcan.png",
   "maxStack" : 1,
-  "rarity" : "uncommon",
+  "rarity" : "legendary",
   "description" : "Ejects deadly balls of burning iron and magma
 ^yellow;Spawns molten metal!^reset;
-^green;Destroys tiles.",
+^green;Destroys tiles.^reset;",
   "shortdescription" : "Pyre Vulcan",
   "category" : "grenadeLauncher",
   "level" : 6,
@@ -27,10 +27,10 @@
     "animatedParts" : {
       "parts" : {
         "middlefullbright" : {
-		  "properties" : {
-		    "offset" : [-0.7, 0.7]
-		  }
-		}
+      "properties" : {
+        "offset" : [-0.7, 0.7]
+      }
+    }
       }
     },   
     "sounds" : {
@@ -75,55 +75,55 @@
       "knockback" : 6.5,
       "periodicActions" : [
         {
-	"time":0.05,
-	"action":"projectile",
-	"type":"redglobe",
-	"angleAdjust":180,
-	"fuzzAngle":80,
-	"config":{
-	  "knockback":-10,
-	  "power":1,
-	  "speed":400,
-	  "timeToLive":0.03,
-	  "periodicActions":[],
-	  "actionOnCollide":[],
-	  "actionOnReap":[],
-	  "processing":"?scalenearest=0",
-	  "bounces":-1,
-	  "piercing":true,
-	  "damageKind" : "hellfire"
-	  }
+  "time":0.05,
+  "action":"projectile",
+  "type":"redglobe",
+  "angleAdjust":180,
+  "fuzzAngle":80,
+  "config":{
+    "knockback":-10,
+    "power":1,
+    "speed":400,
+    "timeToLive":0.03,
+    "periodicActions":[],
+    "actionOnCollide":[],
+    "actionOnReap":[],
+    "processing":"?scalenearest=0",
+    "bounces":-1,
+    "piercing":true,
+    "damageKind" : "hellfire"
+    }
         }    
       ]  
     },
-	  "stances" : {
-	    "idle" : {
-	      "armRotation" : 0,
-	      "weaponRotation" : 0,
-	      "twoHanded" : true,
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
 
-	      "allowRotate" : true,
-	      "allowFlip" : true
-	    },
-	    "fire" : {
-	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    },
-	    "cooldown" : {
-	      "duration" : 0.075,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.075,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    }
-	  }
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
   },
 
   "critChance" : 4,
@@ -143,7 +143,7 @@
   "upgradeParameters2" : {
       "description" : "Searing death that is also quite capable of cooking great steaks.
       ^yellow;Spawns molten metal!^reset;
-      ^green;Destroys tiles.",
+      ^green;Destroys tiles.^reset;",
       "shortdescription" : "Infernal Deathblaster",
       "magazineSize" : 16,
       "fireTime" : 0.08

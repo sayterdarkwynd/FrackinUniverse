@@ -44,7 +44,7 @@ function init()
 	self.phases = config.getParameter("phases")
 	setPhaseStates(self.phases)
 
-	for skillName, params in pairs(self.skillParameters) do
+	for skillName in pairs(self.skillParameters) do
 		if type(_ENV[skillName].onInit) == "function" then
 			_ENV[skillName].onInit()
 		end
@@ -83,7 +83,7 @@ function update(dt)
 	end
 	self.levitationTimer=math.max(0,(self.levitationTimer or 0) - dt)
 
-	for skillName, params in pairs(self.skillParameters) do
+	for skillName in pairs(self.skillParameters) do
 		if type(_ENV[skillName].onUpdate) == "function" then
 			_ENV[skillName].onUpdate(dt)
 		end
@@ -193,7 +193,7 @@ function trackTargets(keepInSight, queryRange, trackingRange, switchTargetDistan
 
 	--Remove any invalid targets from the list
 	local updatedTargets = {}
-	for i,targetId in ipairs(self.targets) do
+	for _,targetId in ipairs(self.targets) do
 		if validTarget(targetId, keepInSight, trackingRange) then
 			table.insert(updatedTargets, targetId)
 		end

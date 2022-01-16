@@ -45,7 +45,7 @@ function update(dt)
 		end
 	end
 	if refreshingList and coroutine.status(refreshingList) ~= "dead" then
-		local a, b = coroutine.resume(refreshingList)
+		local a, b = coroutine.resume(refreshingList) -- luacheck: ignore 211
 		--sb.logInfo(tostring(a).." : "..tostring(b))
 	end
 
@@ -76,9 +76,9 @@ function getIcon(item, conf, listItem)
 			icon = absolutePath(conf.directory, icon)
 			widget.setImage("scrollArea.itemList." .. listItem .. ".itemIcon", icon)
 		elseif type(icon) == "table" then
-			for i,v in pairs(icon) do
-				local item = widget.addListItem("scrollArea.itemList" .. "." .. listItem .. ".compositeIcon")
-				widget.setImage("scrollArea.itemList." .. listItem .. ".compositeIcon." .. item ..".icon", absolutePath(conf.directory, v.image))
+			for _,v in pairs(icon) do
+				local listSubItem = widget.addListItem("scrollArea.itemList" .. "." .. listItem .. ".compositeIcon")
+				widget.setImage("scrollArea.itemList." .. listItem .. ".compositeIcon." .. listSubItem ..".icon", absolutePath(conf.directory, v.image))
 			end
 		end
 	end
