@@ -1,58 +1,58 @@
 {
-  "itemName" : "ff_scoutpants",
-  "inventoryIcon" : "icons.png:pants",
-  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "^orange;Set Bonuses^reset;:
+	"itemName": "ff_scoutpants",
+	"inventoryIcon": "icons.png:pants",
+	"dropCollision": [-4.0, -3.0, 4.0, 3.0],
+	"maxStack": 1,
+	"rarity": "uncommon",
+	"description": "^orange;Set Bonuses^reset;:
 ^yellow;^reset; +^green;100^reset;s Oxygen
 ^yellow;^reset; +^green;8^reset;% Energy Regen
-^yellow;^reset; ^cyan;Immune^reset;:Gas, Proto-Poison",
-  "shortdescription" : "Scout Greaves",
-  "category" : "legarmour",
-  "tooltipKind" : "armornew2",
+^yellow;^reset; ^cyan;Immune^reset;: Gas, Proto-Poison",
+	"shortdescription": "Scout Greaves",
+	"category": "legarmour",
+	"tooltipKind": "armornew2",
 
-//  "learnBlueprintsOnPickup" : [
-//    "ff_scoutchest_melee",
- //   "ff_scouthelm_melee",
-//    "ff_scoutpants_melee"
-//  ],
+//	"learnBlueprintsOnPickup": [
+//		"ff_scoutchest_melee",
+ //	 "ff_scouthelm_melee",
+//		"ff_scoutpants_melee"
+//	],
 
-  "maleFrames" : "pants.png",
-  "femaleFrames" : "pants.png",
-  "itemTags" : [ "upgradeableWeapon", "balanced", "ranged" ],
-  "level" : 3,
-  //"collectablesOnPickup" : { "fu_armorranged" : "ff_scoutpants" },
-  "leveledStatusEffects" : [
-    {
-      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.1
-    },
-    {
-      "levelFunction" : "standardArmorLevelProtectionMultiplier",
-      "stat" : "protection",
-      "amount" : 0.15
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
-      "stat" : "maxEnergy",
-      "amount" : 4
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
-      "stat" : "maxHealth",
-      "amount" : 1
-    }
-  ],
+	"maleFrames": "pants.png",
+	"femaleFrames": "pants.png",
+	"itemTags": [ "upgradeableWeapon", "balanced", "ranged" ],
+	"level": 3,
+	//"collectablesOnPickup": { "fu_armorranged": "ff_scoutpants" },
+	"leveledStatusEffects": [
+		{
+			"levelFunction": "standardArmorLevelPowerMultiplierMultiplier",
+			"stat": "powerMultiplier",
+			"baseMultiplier": 1.1
+		},
+		{
+			"levelFunction": "standardArmorLevelProtectionMultiplier",
+			"stat": "protection",
+			"amount": 0.15
+		},
+		{
+			"levelFunction": "standardArmorLevelMaxEnergyMultiplier",
+			"stat": "maxEnergy",
+			"amount": 4
+		},
+		{
+			"levelFunction": "standardArmorLevelMaxHealthMultiplier",
+			"stat": "maxHealth",
+			"amount": 1
+		}
+	],
 
-  "statusEffects" : [
-    "fusetbonusmanager",
-    {
-      "stat" : "fu_scoutset_legs",
-      "amount" : 1
-    }
-],
-  //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua"
+	"statusEffects": [
+		"scoutsetbonus",
+		{
+			"stat": "fu_scoutset_legs",
+			"amount": 1
+		}
+	],
+	//"upgrades": 1 ,
+	"builder": "/items/buildscripts/fubuildarmor.lua"
 }
