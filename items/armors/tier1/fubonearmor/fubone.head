@@ -1,67 +1,67 @@
 {
-  "itemName" : "fubonearmorhead",
-  "inventoryIcon" : "icons.png:head",
-  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
-  "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "^orange;Set Bonuses^reset;:
+	"itemName": "fubonearmorhead",
+	"inventoryIcon": "icons.png:head",
+	"dropCollision": [-4.0, -3.0, 4.0, 3.0],
+	"maxStack": 1,
+	"rarity": "Common",
+	"description": "^orange;Set Bonuses^reset;:
 ^yellow;^reset; Health x^green;1.05^reset;, Fall Damage x^green;0.85^reset;^reset;
 ^yellow;^reset; Longsword or Axe: Damage x^green;1.15^reset;
 ^yellow;^reset; ^cyan;Lush/Forest^reset;: Health x^green;1.05^reset;, Damage x^green;1.05^reset;, +^green;5^reset;% Phys. Resist^reset;",
 
-  "shortdescription" : "Bone Mask",
-  "category" : "headarmour",
-  "tooltipKind" : "armornew2",
- // "learnBlueprintsOnPickup" : [
- //   "fubonearmor2head",
-//    "fubonearmor2chest",
- //   "fubonearmor2legs"
-//  ],
-  "maleFrames" : "head.png",
-  "femaleFrames" : "head.png",
-  "mask" : "mask.png",
-  "itemTags" : [ "upgradeableWeapon", "defensive", "melee" ],
-  "level" : 1,
-  //"collectablesOnPickup" : { "fu_armorprotection" : "fubonearmorhead" },
-  "leveledStatusEffects" : [
-    {
-      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.135
-    },
-    {
-      "levelFunction" : "standardArmorLevelProtectionMultiplier",
-      "stat" : "protection",
-      "amount" : 0.37
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
-      "stat" : "maxEnergy",
-      "amount" : 2
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
-      "stat" : "maxHealth",
-      "amount" : 4
-    },
-    {
-      "levelFunction" : "fuArmorResistMultiplier",
-      "stat" : "fireResistance",
-      "amount" : 0.03
-    },
-    {
-      "levelFunction" : "fuArmorResistMultiplier",
-      "stat" : "poisonResistance",
-      "amount" : 0.03
-    }
-  ],
-  "statusEffects" : [
-    "fusetbonusmanager",
-    {
-      "stat" : "fu_boneset_head",
-      "amount" : 1
-    }
-  ],
-  //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua"
+	"shortdescription": "Bone Mask",
+	"category": "headarmour",
+	"tooltipKind": "armornew2",
+ // "learnBlueprintsOnPickup": [
+ //	 "fubonearmor2head",
+//		"fubonearmor2chest",
+ //	 "fubonearmor2legs"
+//	],
+	"maleFrames": "head.png",
+	"femaleFrames": "head.png",
+	"mask": "mask.png",
+	"itemTags": [ "upgradeableWeapon", "defensive", "melee" ],
+	"level": 1,
+	//"collectablesOnPickup": { "fu_armorprotection": "fubonearmorhead" },
+	"leveledStatusEffects": [
+		{
+			"levelFunction": "standardArmorLevelPowerMultiplierMultiplier",
+			"stat": "powerMultiplier",
+			"baseMultiplier": 1.135
+		},
+		{
+			"levelFunction": "standardArmorLevelProtectionMultiplier",
+			"stat": "protection",
+			"amount": 0.37
+		},
+		{
+			"levelFunction": "standardArmorLevelMaxEnergyMultiplier",
+			"stat": "maxEnergy",
+			"amount": 2
+		},
+		{
+			"levelFunction": "standardArmorLevelMaxHealthMultiplier",
+			"stat": "maxHealth",
+			"amount": 4
+		},
+		{
+			"levelFunction": "fuArmorResistMultiplier",
+			"stat": "fireResistance",
+			"amount": 0.03
+		},
+		{
+			"levelFunction": "fuArmorResistMultiplier",
+			"stat": "poisonResistance",
+			"amount": 0.03
+		}
+	],
+	"statusEffects": [
+		"bonesetbonus",
+		{
+			"stat": "fu_boneset_head",
+			"amount": 1
+		}
+	],
+	//"upgrades": 1 ,
+	"builder": "/items/buildscripts/fubuildarmor.lua"
 }
