@@ -7,7 +7,7 @@ function update(dt)
   if newFlyingType ~= storage.flyingType then
     object.setOutputNodeLevel(1, self.flyingOutputStates[newFlyingType])
     object.setOutputNodeLevel(0, not(self.flyingOutputStates[newFlyingType]))
-	
+
     storage.flyingType = newFlyingType
   end
 end

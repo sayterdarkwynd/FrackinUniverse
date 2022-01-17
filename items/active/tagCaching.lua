@@ -16,7 +16,7 @@ function tagCaching.update()
 	if tagCaching.primaryTagCacheItemChanged then
 		tagCaching.primaryTagCacheItemChanged=false
 		tagCaching.primaryTagCacheOld={}
-	end	
+	end
 	if tagCaching.altTagCacheItemChanged then
 		tagCaching.altTagCacheItemChanged=false
 		tagCaching.altTagCacheOld={}

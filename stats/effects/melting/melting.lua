@@ -7,7 +7,7 @@ function init()
 
 	self.tickTimer = 1.0
 	self.ticks=0
-	
+
 	if ( status.stat("fireResistance")	>= 1.0 ) then
 		effect.expire()
 		return

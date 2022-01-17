@@ -9,9 +9,9 @@ function update(dt)
 		if not self.timer or self.timer>=self.interval then
 			local sourceTeamData=world.entityDamageTeam(self.source)
 			local muz={
-				action="spawnmonster", 
-				type=self.monsterId, 
-				offset={0,0}, 
+				action="spawnmonster",
+				type=self.monsterId,
+				offset={0,0},
 				arguments={
 					damageTeamType=sourceTeamData.type,
 					damageTeam=sourceTeamData.team,

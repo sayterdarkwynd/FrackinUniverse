@@ -41,15 +41,15 @@ function update(dt)
 	end
 	local daytime = daytimeCheck()
 	local underground = undergroundCheck()
-	local lightLevel = getLight()	
+	local lightLevel = getLight()
 
 	if daytime and not underground and lightLevel > 50 then
 		if (self.species == "nightar") then
-		    effect.setStatModifierGroup(nightarDarkHunterEffects3, {{stat = "reducePenalty", amount = 0.7 }})		
+		    effect.setStatModifierGroup(nightarDarkHunterEffects3, {{stat = "reducePenalty", amount = 0.7 }})
 		elseif (self.species == "shadow") then
 			effect.removeStatModifierGroup(nightarDarkHunterEffects)
 		end
-	end	
+	end
 end
 
 

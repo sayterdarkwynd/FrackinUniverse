@@ -4,7 +4,7 @@ local fsDefaultAI = defaultAI or function() end
 
 function populateMiscList()
 	GUI.frackinship.sailSelect = false
-	
+
 	fsPopulateMiscList()
 end
 
@@ -25,7 +25,7 @@ end
 
 function defaultAI(type)
 	fsDefaultAI(type)
-	
+
 	loadFrackinShipSail()
 end
 

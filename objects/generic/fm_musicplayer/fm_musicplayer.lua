@@ -9,7 +9,7 @@ function init()
 	message.setHandler("turnOff", turnOff)
 	message.setHandler("toggleLabel", toggleLabel)
 	message.setHandler("setMusicRange", setMusicRange)
-	
+
 	self.musicboxlist={"fm_musicplayer","fm_musicplayerwall","apexbox","avianbox","elduukharbox","feneroxbox","floranbox","glitchbox","humanbox","hylotlbox","juuxbox","kirhosbox","mantizibox","nightarbox","novakidbox","peglacibox","radienbox","skathbox","slimebox","tenebrhaebox","thelusianbox","veluubox"}
 
 	if storage.isPlaying then

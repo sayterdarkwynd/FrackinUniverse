@@ -9,7 +9,7 @@ function init()
 
   self.active = false
   storage.fireTimer = storage.fireTimer or 0
-  
+
   self.miscShipConfig = root.assetJson("/frackinship/configs/misc.config")
   self.universeFlag = config.getParameter("universeFlag")
 end
