@@ -132,7 +132,7 @@ function init()
 	-- setup body
 
 	self.protection = self.parts.body.protection
-		
+
 	-- setup boosters
 
 	self.airControlSpeed = self.parts.booster.airControlSpeed
@@ -203,8 +203,8 @@ function init()
 		hazards[statusEffect] = nil
 		--self.hazardImmunityList[statusEffect]=true
 	end
-    
-    
+
+
 	local applyEnvironmentStatuses = config.getParameter("applyEnvironmentStatuses")
 	local seatStatusEffects = config.getParameter("loungePositions.seat.statusEffects")
 
@@ -842,15 +842,15 @@ function update(dt)
         if self.healthDrain > 0 then --do not do this if their HP is too low
         	totalMass()
 			if self.massTotal > 47 then
-        		self.healthDrain = 0.05           	
+        		self.healthDrain = 0.05
 			elseif self.massTotal > 44 then
-        		self.healthDrain = 0.2  
+        		self.healthDrain = 0.2
         	elseif self.massTotal > 36 then
         		self.healthDrain = 0.5
         	elseif self.massTotal > 29 then
-        		self.healthDrain = 0.65         		
+        		self.healthDrain = 0.65
         	elseif self.massTotal > 22 then
-        		self.healthDrain = 0.75       		        				
+        		self.healthDrain = 0.75
         	else
         		self.healthDrain = 1
         	end

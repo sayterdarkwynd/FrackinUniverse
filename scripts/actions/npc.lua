@@ -104,7 +104,7 @@ end
 -- param offset
 function setAimPosition(args, board)
 	if args.position == nil or args.offset == nil then return false end
-	
+
 	local position = vec2.add(args.position, args.offset)
 	npc.setAimPosition(position)
 

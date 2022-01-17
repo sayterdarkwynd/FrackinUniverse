@@ -1,7 +1,7 @@
 --[[
 	Provides a variety of effects designed for use by the Spirittree race.
 	Arguments:
-	
+
 	"args" : {
 				"daytimeConfig" : {
 					"stats" : [                  // Applied during the day

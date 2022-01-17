@@ -115,7 +115,7 @@ end
 function AimedProjectile:createProjectiles()
 	local position = self.focusPosition()
 	local aim = self.weapon.aimAngle
-	
+
 	local pCount = self.projectileCount or 1
 	-- bonus projectiles
 	local bonus=status.stat("focalProjectileCountBonus")

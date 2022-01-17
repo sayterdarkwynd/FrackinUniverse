@@ -60,15 +60,15 @@ function update(dt)
 					{stat = "powerMultiplier", effectiveMultiplier = 1-mult*0.2},
 					{stat = "maxHealth", effectiveMultiplier = util.round((healthPenalty),1)},
 					{stat = "maxEnergy", effectiveMultiplier = util.round((healthPenalty),1)}
-			    })		      
+			    })
 		    else
 			    effect.setStatModifierGroup(nightarDarkHunterEffects, {
 					{stat = "physicalResistance", amount = mult*-0.33},
 					{stat = "powerMultiplier", effectiveMultiplier = 1-mult*0.5},
 					{stat = "maxHealth", effectiveMultiplier = util.round(healthPenalty,1)},
 					{stat = "maxEnergy", effectiveMultiplier = util.round(healthPenalty,1)}
-			    })		    	
-		    end	    	
+			    })
+		    end
 	    else  --tenebrhae have different bonuses than nightar
 		    effect.setStatModifierGroup(nightarDarkHunterEffects, {
 				{stat = "physicalResistance", amount = mult*-0.25},
@@ -92,5 +92,5 @@ function uninit()
 	end
 	if nightarDarkHunterEffects3 then
 		effect.removeStatModifierGroup(nightarDarkHunterEffects3)
-	end	
+	end
 end

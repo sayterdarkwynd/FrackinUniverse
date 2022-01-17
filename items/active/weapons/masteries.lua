@@ -360,7 +360,7 @@ function masteries.apply(args)
 						masteryBuffer[#masteryBuffer + 1]={stat="critDamage", amount=0.2*(1+(masteries.stats.katanaMastery*handMultiplier/3)) }
 						masteryBuffer[#masteryBuffer + 1]={stat="dodgetechBonus", amount=0.08*(1+(masteries.stats.katanaMastery*handMultiplier/2)) }
 						masteryBuffer[#masteryBuffer + 1]={stat="dashtechBonus", amount=0.08*(1+(masteries.stats.katanaMastery*handMultiplier/2)) }
-						masteryBuffer[#masteryBuffer + 1]={stat="critChance", amount=2*masteries.stats.katanaMastery*handMultiplier/2} 
+						masteryBuffer[#masteryBuffer + 1]={stat="critChance", amount=2*masteries.stats.katanaMastery*handMultiplier/2}
 					end
 				end
 			end
@@ -399,7 +399,7 @@ function masteries.apply(args)
 				masteryBuffer[#masteryBuffer + 1]={stat="critChance", amount=2*(masteries.stats.axeMastery*handMultiplier) }
 				masteryBuffer[#masteryBuffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.axeMastery*handMultiplier) }
 			end
-			
+
 			--fist weapons: mastery: increased crit and stun chance. increased damage. combo: increased crit chance/damage, stun chance.
 			--fist weapons aren't 'melee' in vanilla. many mods unfortunately follow that idiot trend. ERM is even worse in that they don't even properly use the fistWeapon category.
 			if tagCaching[currentHand.."TagCache"]["fist"] or tagCaching[currentHand.."TagCache"]["fistweapon"] or tagCaching[currentHand.."TagCache"]["gauntlet"] then
@@ -499,7 +499,7 @@ function masteries.listenerBonuses(notifications,dt)
 			table.insert(notificationBuffer,notification)
 		end
 	end
-	
+
 	--if #notificationBuffer>0 then sb.logInfo("notices %s",notificationBuffer) end
 
 	--hit stuff, typically for hit/kill count combos

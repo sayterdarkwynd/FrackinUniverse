@@ -7,7 +7,7 @@ function init()
 	self.refresh=config.getParameter("refresh",0)
 	self.projectile=config.getParameter("auraprojectile")
 	script.setUpdateDelta(self.refresh)
-	
+
 	if oldInitAuraProjectile then oldInitAuraProjectile() end
 end
 
@@ -24,6 +24,6 @@ function uninit()
 	if self.yoink and world.entityExists(self.yoink) then
 		world.sendEntityMessage(self.yoink,"kill")
 	end
-	
+
 	if oldUninitAuraProjectile then oldUninitAuraProjectile() end
 end

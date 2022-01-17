@@ -25,9 +25,9 @@ function MeleeSlash:update(dt, fireMode, shiftHeld)
     velocityAdded = mcontroller.xVelocity()
     if velocityAdded > 0.01 or velocityAdded < 0 then
         activeHoldDamage = 1
-    else 
+    else
         activeHoldDamage = 0
-    end 
+    end
 
 	self.lowEnergy=((status.resource("energy") <= 1) or (status.resourceLocked("energy")))
 	-- FR

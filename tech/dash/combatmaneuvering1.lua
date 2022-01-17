@@ -77,7 +77,7 @@ function update(args)
     mcontroller.controlMove(self.dashDirection, true)
 
     mcontroller.controlModifiers({jumpingSuppressed = false})
-    
+
     if self.allowJump < 1 then
       mcontroller.controlModifiers({jumpingSuppressed = true})
     end
@@ -135,7 +135,7 @@ function endDash()
     mcontroller.controlApproachXVelocity(self.dashDirection * movementParams.runSpeed, self.dashControlForce)
   end
 
-  currentVelocity = mcontroller.velocity() 
+  currentVelocity = mcontroller.velocity()
   mcontroller.setVelocity({currentVelocity[1]*self.hasjumped, currentVelocity[2]})
 
   self.dashCooldownTimer = self.dashCooldown

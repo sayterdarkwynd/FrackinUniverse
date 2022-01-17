@@ -1,6 +1,6 @@
 require "/scripts/kheAA/transferUtil.lua"
 require "/scripts/fu_storageutils.lua"
-	
+
 function init()
 	self.mintick = 1
 	object.setInteractive(true)

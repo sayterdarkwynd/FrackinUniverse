@@ -275,7 +275,7 @@ function uninit(...)
 	if origUninit then
 		origUninit(...)
 	end
-	
+
 	if fuFoodTrackerHandler then
 		status.setStatusProperty("fuFoodTrackerHandler",0)
 	end

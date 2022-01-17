@@ -514,7 +514,7 @@ function getFrames(dt)
 					contents[frameSlot] = world.containerItemAt(entity.id(), frameSlot-1)
 				end
 				self.frameTakeTimers[frameCounter]=0.0
-			end				
+			end
 		end
 	end
 	--not including, it'd be too easy to cheese
@@ -783,7 +783,7 @@ function droneDecay(slot)
 	if self.chanceRemove > 75 then--25% chance of removal
 		world.containerTakeNumItemsAt(entity.id(), slot-1, math.floor(amount * beeData.droneDecayPercentile + beeData.droneDecayFlat))
 		contents[slot] = world.containerItemAt(entity.id(), slot-1)
-	end	
+	end
 end
 
 -- Receives a slot and reduces the amount of drones there based on the drones mite resistance stat and the amount of mites

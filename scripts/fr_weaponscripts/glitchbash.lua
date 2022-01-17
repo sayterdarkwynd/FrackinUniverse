@@ -16,7 +16,7 @@ function FRHelper:call(args, ...)
 	end
 	status.modifyResource(res,amount)
 	--animator.burstParticleEmitter(args.particles or "bonusBlock3")
-	
+
 	fuParticleBaseLoadCache(self,{"/particles/cartoonstars/greencartoonstar.particle","/particles/cartoonstars/redcartoonstar.particle","/particles/sparkles/sparkle5.particle","/particles/charge.particle","/particles/healthcross.particle"})
 	fuParticleBaseLoadLists(self)
 	fuParticleBaseParticleBurst(self,{args.particles,"bonusBlock3"})

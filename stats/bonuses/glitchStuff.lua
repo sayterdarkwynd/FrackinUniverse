@@ -30,5 +30,5 @@ function activateVisualEffects()
 end
 
 function uninit()
-  
+
 end
