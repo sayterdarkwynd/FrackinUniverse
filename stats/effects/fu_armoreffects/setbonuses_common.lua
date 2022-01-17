@@ -74,7 +74,7 @@ function weaponCheck(tags)
 	weaponCheckResults["primary"]=false
 	weaponCheckResults["alt"]=false
 	weaponCheckResults["both"]=false
-	weaponCheckResults["twoHanded"]=(temp~=nil and root.itemConfig(temp).config.twoHanded) or false
+	weaponCheckResults["twoHanded"]=false
 
 	for _,tag in pairs(tags) do
 		tag=string.lower(tag)
@@ -85,6 +85,7 @@ function weaponCheck(tags)
 		weaponCheckResults["both"]=weaponCheckResults["both"] or (primaryHasTag and altHasTag)
 		weaponCheckResults["either"]=weaponCheckResults["either"] or primaryHasTag or altHasTag
 	end
+	weaponCheckResults["twoHanded"]=tagCaching.primaryTagCache["twoHanded"] or tagCaching.altTagCache["twoHanded"]
 
 	return weaponCheckResults
 end
