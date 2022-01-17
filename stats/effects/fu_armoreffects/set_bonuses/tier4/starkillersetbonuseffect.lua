@@ -39,7 +39,7 @@ function checkArmor()
 	daytime = daytimeCheck()
 	underground = undergroundCheck()
 	if daytime and not underground then
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
+
 	else
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,{})
 	end

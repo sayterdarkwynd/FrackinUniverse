@@ -43,7 +43,6 @@ function update(dt)
 		effect.expire()
 	else
 		status.addEphemeralEffect("convert_energy-health_10_1-1")
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 		mcontroller.controlModifiers({speedModifier = 1.10})
 		checkWeapons()
 	end

@@ -1,67 +1,67 @@
 {
-  "itemName" : "fusamurai2chest",
-  "price" : 100,
-  "inventoryIcon" : "icons.png:chest",
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "^orange;Set Bonuses^reset;:
-^yellow;^reset; Katana Mastery:  +^cyan;24^reset;%
-^yellow;^reset; Dodge Techs:  +^green;15^reset;%
-^yellow;^reset; Defense Techs:  +^green;15^reset;%",
+	"itemName": "fusamurai2chest",
+	"price": 100,
+	"inventoryIcon": "icons.png:chest",
+	"maxStack": 1,
+	"rarity": "uncommon",
+	"description": "^orange;Set Bonuses^reset;:
+^yellow;^reset; Katana Mastery: +^cyan;24^reset;%
+^yellow;^reset; Dodge Techs: +^green;15^reset;%
+^yellow;^reset; Defense Techs: +^green;15^reset;%",
 
-  "shortdescription" : "Peerless Samurai Plate",
-  "category" : "chestarmour",
-  "tooltipKind" : "armornew2",
+	"shortdescription": "Peerless Samurai Plate",
+	"category": "chestarmour",
+	"tooltipKind": "armornew2",
 
-  "maleFrames" : {
-    "body" : "chestm.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
+	"maleFrames": {
+		"body": "chestm.png",
+		"backSleeve": "bsleeve.png",
+		"frontSleeve": "fsleeve.png"
+	},
 
-  "femaleFrames" : {
-    "body" : "chestf.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
-  "itemTags" : [ "upgradeableWeapon", "defensive", "melee" ],
-  "level" : 3,
-  //"collectablesOnPickup" : { "fu_armormelee" : "fusamuraichest" },
-  "leveledStatusEffects" : [
-    {
-      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.15
-    },
-    {
-      "levelFunction" : "standardArmorLevelProtectionMultiplier",
-      "stat" : "protection",
-      "amount" : 0.6
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
-      "stat" : "maxEnergy",
-      "amount" : 4
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
-      "stat" : "maxHealth",
-      "amount" : 5
-    },
-	{
-      "levelFunction" : "fuArmorResistMultiplier",
-      "stat" : "physicalResistance",
-      "amount" : 0.02
-    }
-  ],
+	"femaleFrames": {
+		"body": "chestf.png",
+		"backSleeve": "bsleeve.png",
+		"frontSleeve": "fsleeve.png"
+	},
+	"itemTags": [ "upgradeableWeapon", "defensive", "melee" ],
+	"level": 3,
+	//"collectablesOnPickup": { "fu_armormelee": "fusamuraichest" },
+	"leveledStatusEffects": [
+		{
+			"levelFunction": "standardArmorLevelPowerMultiplierMultiplier",
+			"stat": "powerMultiplier",
+			"baseMultiplier": 1.15
+		},
+		{
+			"levelFunction": "standardArmorLevelProtectionMultiplier",
+			"stat": "protection",
+			"amount": 0.6
+		},
+		{
+			"levelFunction": "standardArmorLevelMaxEnergyMultiplier",
+			"stat": "maxEnergy",
+			"amount": 4
+		},
+		{
+			"levelFunction": "standardArmorLevelMaxHealthMultiplier",
+			"stat": "maxHealth",
+			"amount": 5
+		},
+		{
+			"levelFunction": "fuArmorResistMultiplier",
+			"stat": "physicalResistance",
+			"amount": 0.02
+		}
+	],
 
-  "statusEffects" : [
-    "fusetbonusmanager",
-    {
-      "stat" : "samuraiset2count",
-      "amount" : 1
-    }
+	"statusEffects": [
+		"samuraisetbonus",
+		{
+			"stat": "fu_samuraiset_chest",
+			"amount": 1
+		}
 ],
-  //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+	//"upgrades": 1 ,
+	"builder": "/items/buildscripts/fubuildarmor.lua"
 }
