@@ -12,7 +12,7 @@
   "itemTags" : ["weapon","ranged","bow","upgradeableWeapon"],
   "level" : 1,
   "fixedLevel" : false,
-  
+
   "radioMessagesOnPickup" : [ "pickupbow" ],
 
   "animation" : "generatedbow.animation",
@@ -26,9 +26,9 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/bow/abilities/rngbows/rngbowshot.lua"],
     "class" : "NebRNGBowShot",
-	
+
 		"fireOffset" : [0.75, 0],
-		
+
 		//Config for animated cursor
 		"cursorFrames" : [
 			"/cursors/animated/rngbowsrotate/neb-rngbowreticle1.cursor",
@@ -45,12 +45,12 @@
     "energyPerShot" : [35, 42],								//Total energy consumption for a full draw
     "holdEnergyUsage" : [3, 18],							//Energy consumption per second while fully drawn
     "airborneBonus" : 1.31,								//A dmg multiplier for when airborne
-	
+
     "cooldownTime" : 0.2,								//Time between firing and drawing the next arrow
     "inaccuracy" : 0.0,									//Inaccuracy of the shot
-	
+
     "walkWhileFiring" : true,								//If true, prevents the player from running while drawing the bow
-    "useQuiverDamageBonus" : true,							//If true, allows this bow to use quiver damage bonuses	
+    "useQuiverDamageBonus" : true,							//If true, allows this bow to use quiver damage bonuses
     "drainEnergyWhilePowerful" : false,							//If true, consume energy while at max power
     "staticDamageMultiplier" : null,							//If this value is set, arrow damage is independent of draw time and is instead multiplied by this value
     "dynamicDamageMultiplier" : 1.0,							//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
@@ -101,7 +101,7 @@
 
   "critChance" : 3,
   "critBonus" : 15,
-  
+
   "builder" : "/items/buildscripts/neb-buildrandombow.lua",
   "builderConfig" : [{
     "elementalType" : [
@@ -112,13 +112,13 @@
       "poison",
       "cosmic",
       "radioactive",
-      "shadow" 
+      "shadow"
     ],
     "elementalConfig" : {
       "physical" : {
 	    "primaryAbility" : { "powerProjectileParameters" : { "statusEffects" : [ ] } },
         "perfectRelease" : [ "/sfx/gun/firebow_loose_perfect.ogg" ]
-      },    
+      },
       "fire" : {
 	    "primaryAbility" : { "powerProjectileParameters" : { "statusEffects" : [ "burning" ] } },
         "perfectRelease" : [ "/sfx/gun/firebow_loose_perfect.ogg" ]

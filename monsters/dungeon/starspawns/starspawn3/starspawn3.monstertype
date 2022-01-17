@@ -32,7 +32,7 @@
       "foundTargetActions" : [],
       "fleeActions" : [],
 
-      "hostileActions" : [ 
+      "hostileActions" : [
         {
           "name" : "action-fire",
           "cooldown" : 6.0,
@@ -47,7 +47,7 @@
             "projectileType" : "elderburst",
             "projectileParameters" : {
               "speed" : 40,
-              "damageKind" : "shadow"  
+              "damageKind" : "shadow"
             },
             "power" : 10,
             "fireOffset" : [0.0, 0.0],
@@ -60,7 +60,7 @@
             "winddownState" : "",
             "winddownTime" : 0.2
           }
-        },         
+        },
         {
           "name" : "action-charge",
           "cooldown" : 3.0,
@@ -81,10 +81,10 @@
             "winddownStopForce" : 1200,
             "winddownState" : "chargewinddown"
           }
-        }          
+        }
       ],
-      
-      "damageTakenActions" : [        
+
+      "damageTakenActions" : [
         {
           "name" : "action-invulnerable",
           "cooldown" : 4,
@@ -97,15 +97,15 @@
           }
         },
         {
-          "name" : "action-statuseffect", 
+          "name" : "action-statuseffect",
           "cooldown" : 10,
           "parameters" : {
             "effect" : "mage_shield_lvl4starspawn",
             "duration" : 5
           }
-        }          
+        }
       ],
-      
+
       //if using the actions below, disable invulnerability
       "invulnerableActions" : [
         {
@@ -124,7 +124,7 @@
               "speed" : 1,
               "timeToLive" : 5,
               "physics" : "laser",
-              "damageKind" : "poison"  
+              "damageKind" : "poison"
             },
             "power" : 5,
             "fireOffset" : [0.0, 0.0],
@@ -137,7 +137,7 @@
             "winddownState" : "",
             "winddownTime" : 0.2
           }
-        },      
+        },
         {
           "name" : "action-fire",
 	  "cooldown" : 12,
@@ -159,7 +159,7 @@
             "winddownState" : "idle",
             "winddownTime" : 0.7
           }
-        },           
+        },
         {
           "name" : "action-fire",
 	  "cooldown" : 6,
@@ -173,8 +173,8 @@
             "projectileType" : "shadowswoosh",
             "projectileParameters" : {
               "statusEffects" : [ "superdarkstatlarge" ],
-               "damageKind" : "shadow" 
-            },            
+               "damageKind" : "shadow"
+            },
             "power" : 8,
             "speed": 10,
             "fireOffset" : [3, 0],
@@ -187,10 +187,10 @@
             "winddownState" : "idle",
             "winddownTime" : 0.8
           }
-        }          
+        }
       ],
-      
-      "periodicActions" : [        
+
+      "periodicActions" : [
         {
           "name" : "action-spawncompanions",
           "cooldown" : 20,
@@ -200,7 +200,7 @@
             "monsterType" : "squidbeast",
             "state" : "fire2"
             }
-        }  
+        }
       ],
 
       "approachActions" : [
@@ -213,9 +213,9 @@
 	    "teleportMinDistance": 12,
 	    "targetXDelta": 5,
 	    "groundMinHeight": -20,
-	    "groundMaxHeight": 20               
+	    "groundMaxHeight": 20
           }
-        } 
+        }
       ],
 
       "followActions" : [
@@ -228,7 +228,7 @@
 	    "teleportMinDistance": 20,
 	    "targetXDelta": 5,
 	    "groundMinHeight": -30,
-	    "groundMaxHeight": 30               
+	    "groundMaxHeight": 30
           }
         }
       ],
@@ -243,12 +243,12 @@
 	    "teleportMinDistance": 12,
 	    "targetXDelta": 5,
 	    "groundMinHeight": -20,
-	    "groundMaxHeight": 20               
+	    "groundMaxHeight": 20
           }
-        } 
+        }
       ],
 
-      "concurrentActions" : [     
+      "concurrentActions" : [
         {
           "name" : "action-spawncompanions",
           "cooldown" : 20,
@@ -260,8 +260,8 @@
           }
         }
       ],
-      
-      "concurrentHostileActions" : [ 
+
+      "concurrentHostileActions" : [
         {
           "name" : "action-animate",
           "cooldown" : 6,
@@ -294,7 +294,7 @@
             "winddownState" : "",
             "winddownTime" : 0.7
           }
-        },        
+        },
         {
           "name" : "action-fire",
 	  "cooldown" : 7,
@@ -316,9 +316,9 @@
             "winddownState" : "",
             "winddownTime" : 1.2
           }
-        }      
+        }
       ]
-      
+
     },
 
 
@@ -403,19 +403,19 @@
         },
         "insanityImmunity" : {
           "baseValue" : 1.0
-        },     
+        },
         "pusImmunity" : {
           "baseValue" : 1.0
-        },          
+        },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
-        },        
+        },
         "powerMultiplier" : {
           "baseValue" : 1.0
         },
         "penaltyBlock" : {
           "baseValue" : 1.0
-        },         
+        },
         "poisonResistance" : { "baseValue" : 0.7 },
         "fireResistance" : { "baseValue" : 0 },
         "iceResistance" : { "baseValue" : 0.1 },
@@ -440,7 +440,7 @@
         "damageAbsorption" : {
           "deltaValue" : 0.0,
           "initialValue" : 0.0
-        },      
+        },
         "stunned" : {
           "deltaValue" : -1.0,
           "initialValue" : 0.0

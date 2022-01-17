@@ -36,10 +36,10 @@
 
       "foundTargetActions" : [
 	  {
-	  "name":"action-animate", 
-	  "parameters":{ 
-	  "stateType":"body", 
-	  "state":"aggro", 
+	  "name":"action-animate",
+	  "parameters":{
+	  "stateType":"body",
+	  "state":"aggro",
 	  "animationTime":0.6 }
 	  }
       ],
@@ -47,66 +47,66 @@
       "fleeActions" : [ ],
 
       "hostileActions" : [
-	{"name":"action-fire", 
-		"cooldown":4.0, 
+	{"name":"action-fire",
+		"cooldown":4.0,
 		"parameters":{
-		  "requireLineOfSight":true, 
-		  "maximumRange":10, 
-		  "minimumRange":3, 
-		  "windupState":"fire", 
-		  "windupTime":0.6, 
-		"projectileType":"capturepodgun", 
+		  "requireLineOfSight":true,
+		  "maximumRange":10,
+		  "minimumRange":3,
+		  "windupState":"fire",
+		  "windupTime":0.6,
+		"projectileType":"capturepodgun",
 		"projectileParameters":{
-		  "inaccuracy":0.0, 
-		  "speed":85, 
-		  "timeToLive":2.0, 
+		  "inaccuracy":0.0,
+		  "speed":85,
+		  "timeToLive":2.0,
 		  "power":5
-		  }, 
-		"power":10, 
-		"fireOffset":[1.0, 0.35], 
-		"projectileCount":1, 
-		"projectileInterval":0.4, 
-		"aimDirection":[1,0], 
-		"aimAtTarget":true, 
-		"fireSound":"fire", 
-		"fireState":"fire", 
-		"winddownState":"", 
+		  },
+		"power":10,
+		"fireOffset":[1.0, 0.35],
+		"projectileCount":1,
+		"projectileInterval":0.4,
+		"aimDirection":[1,0],
+		"aimAtTarget":true,
+		"fireSound":"fire",
+		"fireState":"fire",
+		"winddownState":"",
 		"winddownTime":0.5
 		}
-	}     
+	}
       ],
 
       "periodicActions" : [
 	{
-	"name":"action-projectile", 
-	"cooldown":10.0, 
+	"name":"action-projectile",
+	"cooldown":10.0,
 	"parameters":{
-	  "skillName":"glitterBurst", 
-	  "projectileCount":70, 
-	  "projectileType":"energyfist", 
+	  "skillName":"glitterBurst",
+	  "projectileCount":70,
+	  "projectileType":"energyfist",
 	  "projectileParameters":{
-	  "speed":80, 
-	  "image":"invisibleprojectile.png", 
-	  "statusEffects":[{"effect":"minibossglow", "duration":30}], 
-	  "processing":"?0", 
-	  "power":0, 
-	  "actionOnReap":[], 
-	  "damageTeam":{"type":"enemy"}, 
-	  "damageType":"damage", 
-	  "damageKind":"plasma"}, 
-	  "aimAtTarget":true, 
-	  "inaccuracy":3.14, 
+	  "speed":80,
+	  "image":"invisibleprojectile.png",
+	  "statusEffects":[{"effect":"minibossglow", "duration":30}],
+	  "processing":"?0",
+	  "power":0,
+	  "actionOnReap":[],
+	  "damageTeam":{"type":"enemy"},
+	  "damageType":"damage",
+	  "damageKind":"plasma"},
+	  "aimAtTarget":true,
+	  "inaccuracy":3.14,
 	  "fireOffset":[0,0]
 	  }
-	}      
+	}
        ],
 
       "approachActions" : [
 	{
-	"name":"approach-fly", 
+	"name":"approach-fly",
 		"parameters":{
-		"targetOffset":[0,5], 
-		"minRange":6, 
+		"targetOffset":[0,5],
+		"minRange":6,
 		"maxRange":10
 		}
 	}
@@ -115,34 +115,34 @@
       "followActions" : [
 	{"name":"approach-teleport",
 	  "parameters":{}
-	}, 
-	{"name":"approach-fly", 
+	},
+	{"name":"approach-fly",
 		"parameters":{
-		"targetOffset":[0,5], 
+		"targetOffset":[0,5],
 		"minRange":2, "maxRange":10
 		}
 	}
       ],
 
       "wanderActions" : [
-	{"name":"wander-fly", 
-	"cooldown":[5,20], 
+	{"name":"wander-fly",
+	"cooldown":[5,20],
 	"parameters":{
-		"wanderTime":[10,40], 
-		"groundDistance":50, 
-		"ceilingDistance":10, 
-		"xVelocity":8, 
+		"wanderTime":[10,40],
+		"groundDistance":50,
+		"ceilingDistance":10,
+		"xVelocity":8,
 		"yVelocity":12
 		}
 	},
-	{"name":"land-fly", 
+	{"name":"land-fly",
 		"parameters":{
-		"flySpeed":8, 
-		"flyControlForce":25, 
-		"landCheckDistance":40, 
+		"flySpeed":8,
+		"flyControlForce":25,
+		"landCheckDistance":40,
 		"idleTime":40
 		}
-	}	
+	}
       ],
 
       "concurrentActions" : [
@@ -157,28 +157,28 @@
 
       "concurrentHostileActions" : [
 	{
-	"name":"action-projectile", 
-	"cooldown":6.0, 
+	"name":"action-projectile",
+	"cooldown":6.0,
 	  "parameters":{
-	  "skillName":"glitterBurst", 
-	  "projectileCount":70, 
-	  "projectileType":"energyfist", 
+	  "skillName":"glitterBurst",
+	  "projectileCount":70,
+	  "projectileType":"energyfist",
 	  "projectileParameters":{
-		"speed":80, 
+		"speed":80,
 		"statusEffects":[
 		  {"effect":"capturebot", "duration":10, "damageTeam" : "enemy" }
-		], 
-		"processing":"?0", 
-		"timeToLive":0.5, 
-		"power":0, 
-		"actionOnReap":[], 
-		"damageTeam":{"type":"enemy"}, 
-		"damageType":"damage", 
+		],
+		"processing":"?0",
+		"timeToLive":0.5,
+		"power":0,
+		"actionOnReap":[],
+		"damageTeam":{"type":"enemy"},
+		"damageType":"damage",
 		"damageKind":"ice"
-		}, 
-	  "aimAtTarget":true, 
-	  "fireArc":false, 
-	  "inaccuracy":3.14, 
+		},
+	  "aimAtTarget":true,
+	  "fireArc":false,
+	  "inaccuracy":3.14,
 	  "fireOffset":[0,0]
 	  }
 	}
@@ -197,8 +197,8 @@
             "fireOffset" : [0, 1]
           }
         }
-      ]  
-      
+      ]
+
     },
 
     "touchDamage" : {
@@ -271,40 +271,40 @@
         },
         "electricResistance" : {
           "baseValue" : -0.3
-        },        
+        },
         "fireResistance" : {
           "baseValue" : 0.2
-        },       
+        },
         "fireStatusImmunity" : {
           "baseValue" : 1
         },
         "iceResistance" : {
           "baseValue" : 0.2
-        },       
+        },
         "iceStatusImmunity" : {
           "baseValue" : 1
-        },        
+        },
         "poisonResistance" : {
           "baseValue" : 0.7
-        },        
+        },
         "poisonStatusImmunity" : {
           "baseValue" : 1
         },
         "physicalResistance" : {
           "baseValue" : 0.25
-        },        
+        },
         "cosmicResistance" : {
           "baseValue" : 0.0
-        },        
+        },
         "radioactiveResistance" : {
           "baseValue" : 0.7
-        },        
+        },
         "shadowResistance" : {
           "baseValue" : 0.5
-        },        
+        },
         "extremepressureImmunity" : {
           "baseValue" : 1
-        },        
+        },
         "shadowImmunity" : {
           "baseValue" : 1
         },
@@ -313,7 +313,7 @@
         },
         "darknessImmunity" : {
           "baseValue" : 1
-        } 
+        }
       },
 
       "resources" : {
@@ -330,7 +330,7 @@
     },
 "animationCustom":{
 "sounds":{"fire":["sfx/objects/crystaltrap_on1.ogg", "sfx/objects/crystaltrap_on2.ogg"]}
-}, 
+},
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],

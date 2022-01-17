@@ -22,10 +22,10 @@
     "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3blue.png"
   },
   "animationCustom" : {
-      "sounds":{  
+      "sounds":{
         "fire" : [ "/sfx/weapons/explosion-large01.ogg" ],
         "cooldown":[ "/sfx/weapons/chargereload1.ogg" ]
-    }    
+    }
   },
 
   "animationScripts" : [
@@ -42,16 +42,16 @@
       }
     ]
   },
-  
+
   "isReloader" : 1,
-  
+
   "baseOffset" : [2.5, 0.3],
   "muzzleOffset" : [3.6, 0.325],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "fire",
-  
+
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
@@ -63,7 +63,7 @@
     "fireType" : "auto",
     "inaccuracy" : 0,
     "projectileType" : "plasmashot2",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 92,
       "knockback" : 12.5,
       "statusEffects" : [ "burning" ],
@@ -104,30 +104,30 @@
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 300,
-  "recoilForce" : 2500,    
+  "recoilForce" : 2500,
   "altAbilityType" : "swtjc_ewg_repelgrenades",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  
+
     "upgradeParameters" : {
     "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
     "shortdescription" : "^cyan;Paladin^reset; ^yellow;^reset;",
     "description" : "A massive energy sniper rifle. Big impact.
 ^yellow;AoE Denial Primary^reset;",
    "animationParts" : { "middle" : "bigdaddy2.png" },
-    "inventoryIcon" : [ { "image" : "bigdaddy2.png" } ], 
-    
+    "inventoryIcon" : [ { "image" : "bigdaddy2.png" } ],
+
 	  "primaryAbility" : {
 	    "baseDps" : 9.4,
 	    "energyUsage" : 47.0,
-	    "recoilForce" : 20,	  
-	    "projectileParameters" : { 
+	    "recoilForce" : 20,
+	    "projectileParameters" : {
 	      "processing":"?hueshift=-180",
 	      "speed" : 92,
 	      "knockback" : 30,
 	      "statusEffects" : [ "frozenburning" ],
 	      "damageKind" : "fireplasma"
-	    }       
-	  }	  
+	    }
+	  }
       }
 }

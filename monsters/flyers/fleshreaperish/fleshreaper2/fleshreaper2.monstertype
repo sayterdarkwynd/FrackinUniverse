@@ -1,4 +1,4 @@
-{ 
+{
   "type" : "fleshreaper2",
   "shortdescription" : "Flesh Reaper",
   "description" : "A strange, ghost like creature native to dark, forboding places.",
@@ -8,9 +8,9 @@
 
   "animation" : "fleshreaper2.animation",
 
-  "dropPools" : [ 
-    { 
-      "default" : "fleshreaperLoot", 
+  "dropPools" : [
+    {
+      "default" : "fleshreaperLoot",
       "bow" : "huntingghost",
       "firebow" : "huntingghost",
       "icebow" : "huntingghost",
@@ -19,7 +19,7 @@
       "cosmicbow" : "huntingghost",
       "radioactivebow" : "huntingghost",
       "shadowbow" : "huntingghost"
-    } 
+    }
   ],
 
   "baseParameters" : {
@@ -29,7 +29,7 @@
 
     "behavior" : "monster",
     "renderLayer" : "foregroundEntity",
-    
+
     "seeThroughLiquid" : false,
     "behaviorConfig" : {
       "damageOnTouch" : true,
@@ -41,12 +41,12 @@
       "targetOutOfSightTime" : 9.0,
       "hurtWaitForGround": false,
       "hurtWaitForGroundTime": 0.1,
-      
+
       "foundTargetActions" : [ ],
 
       "fleeActions" : [ ],
 
-      "hostileActions" : [ 
+      "hostileActions" : [
           {
             "name" : "action-fire",
             "cooldown" : 5,
@@ -57,7 +57,7 @@
               "windupStopForce" : 50,
               "windupState" : "fire",
               "windupTime" : 0,
-  
+
               "projectileType" : "largeshadowcloud",
               "projectileParameters" : {
                 "speed" : 15
@@ -68,11 +68,11 @@
               "onGround" : false,
               "fireState" : "",
               "fireSound" : "fire",
-  
+
               "winddownState" : "",
               "winddownTime" : 0.5
             }
-        },       
+        },
        {
           "name" : "action-fire",
           "cooldown" : 5,
@@ -98,25 +98,25 @@
             "winddownState" : "",
             "winddownTime" : 0.4
           }
-        },      
+        },
         {
           "name" : "action-charge",
           "cooldown" : 1,
           "parameters" : {
             "maximumRange": 25,
-            "minimumRange": 1,          
+            "minimumRange": 1,
             "windupState": "chargewindup",
             "windupTime" : 0.9,
-            
+
             "winddownState": "chargewinddown",
             "winddownTime" : 0.3,
-            
+
             "chargeState": "charge",
             "chargeSpeed": 115,
             "chargeTime": 0.35,
-            
+
             "chargeControlForce": 200,
-            
+
             "wallCollide": false,
             "aimAtTarget": true,
             "inaccuracy": 0,
@@ -135,14 +135,14 @@
 
       "periodicActions" : [ ],
 
-      "approachActions" : [    
+      "approachActions" : [
         {
           "name" : "approach-fly",
           "cooldown" : 5.0,
           "parameters" : {
             "usePathfinding" : false,
             "minRange" : 4,
-            "maxRange" : 12  
+            "maxRange" : 12
           }
         },
         {
@@ -154,17 +154,17 @@
 	    "teleportMinDistance": 20,
 	    "targetXDelta": 5,
 	    "groundMinHeight": -10,
-	    "groundMaxHeight": 10               
+	    "groundMaxHeight": 10
           }
-        }         
+        }
       ],
 
-      "followActions" : [     
+      "followActions" : [
         {
-        "name":"approach-fly", 
+        "name":"approach-fly",
         "parameters":{
-          "targetOffset":[0,5], 
-          "minRange":8, 
+          "targetOffset":[0,5],
+          "minRange":8,
           "maxRange":16
           }
         }
@@ -173,7 +173,7 @@
       "wanderActions" : [
         {
           "name" : "emerge-fly"
-        },      
+        },
         {
           "name" : "land-fly",
           "cooldown" : 2,
@@ -198,10 +198,10 @@
 
       "concurrentActions" : [],
 
-      "concurrentHostileActions" : [         
+      "concurrentHostileActions" : [
 
       ],
-      
+
       "damageTakenActions" : [
         {
           "name" : "action-invulnerable",
@@ -213,9 +213,9 @@
             "winddownState" : "warpin",
             "invulnerableTime" : 0.5
           }
-        }    
+        }
       ],
-      
+
       "invulnerableActions" : [
        {
           "name" : "action-fire",
@@ -242,7 +242,7 @@
             "winddownState" : "",
             "winddownTime" : 0.5
           }
-        },      
+        },
         {
           "name" : "approach-teleport",
           "cooldown" : 1,
@@ -252,11 +252,11 @@
 	    "teleportMinDistance": 20,
 	    "targetXDelta": 5,
 	    "groundMinHeight": -10,
-	    "groundMaxHeight": 10               
+	    "groundMaxHeight": 10
           }
-        }      
+        }
       ]
-      
+
     },
 
     "touchDamage" : {
@@ -336,28 +336,28 @@
         },
         "iceResistance" : {
           "baseValue" : 0.5
-        }, 
+        },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
-        },     
+        },
         "pusImmunity" : {
           "baseValue" : 1.0
-        },        
+        },
         "poisonResistance" : {
           "baseValue" : 0.5
-        },        
+        },
         "fireResistance" : {
           "baseValue" : -0.3
-        },        
+        },
         "radioactiveResistance" : {
           "baseValue" : 0.7
-        },        
+        },
         "shadowResistance" : {
           "baseValue" : 0.95
-        },        
+        },
         "cosmicResistance" : {
           "baseValue" : 0.95
-        }              
+        }
       },
 
       "resources" : {

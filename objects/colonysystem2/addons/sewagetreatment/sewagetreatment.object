@@ -11,7 +11,7 @@
   "printable" : false,
 
   "inventoryIcon" : "sewagetreatmenticon.png",
-  
+
   "orientations" : [
 		{
 			"dualImage" : "sewagetreatment.png:default",
@@ -23,53 +23,53 @@
 	],
 	"openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
     "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
-  
+
 	"scripts" : [ "/scripts/fupower.lua","/objects/colonysystem2/addons/sewagetreatment/sewagetreatment.lua"],
     "scriptDelta" : 60,
-  
-  	
+
+
 	"inputNodes" : [ [0, 2] ],
 	"outputNodes" : [ [1, 2] ],
 	"powertype" : "input",
 	"isn_requiredPower" : 0,
 	"isn_liquidCollector" : false,
 
-  
-  
+
+
 	"airWellRange":256,
 	"productionTime":3000,
 	"slotCount" : 24,
     "uiConfig" : "/interface/chests/chest<slots>.config",
     "frameCooldown" : 67,
     "autoCloseCooldown" : 3600,
-  
+
 	"happiness":2,
-  
+
     // Named weight categories (changing one will change all of the same weight)
     // Numbered weights can be used instead of names for customization purposes
-	
+
    "namedWeights" : {
-   
+
         "common" : 79,
         "uncommon" : 20,
         "rare" : 1
-    },  
-  
+    },
+
 	"rarityInfoLevel":3,
 	"overrideScanTooltip":true,
-  
+
    "outputs" : {
-       
+
         "default" : [
             { "weight" : "common",   "items" : [ "liquidwastewater", "liquidpoison", "sewage", "fu_nitrogen" ] },
             { "weight" : "uncommon", "items" : [ "poop", "liquidwastewater", "sewage", "poop", "phosphorus","fu_salt" ] },
             { "weight" : "rare",     "items" : [ "goldore", "silverore", "copperore", "liquidpoison", "poop", "sewage" ] }
         ]
-		
-	}
-	
-	
 
-  
-  
+	}
+
+
+
+
+
 }

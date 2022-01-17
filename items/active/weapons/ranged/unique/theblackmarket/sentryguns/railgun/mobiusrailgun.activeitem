@@ -36,7 +36,7 @@
 
   "scripts" : [
   "/items/active/weapons/ranged/gun.lua",
-    "/items/active/scripts/heavyweapon.lua" 
+    "/items/active/scripts/heavyweapon.lua"
   ],
 
   "elementalType" : "electric",
@@ -58,25 +58,25 @@
       "damageKind" : "electric",
       "lightColor" : [120, 0, 44],
       "piercing" : false,
-      "flippable" : true, 
+      "flippable" : true,
       "power" : 1.15,
-      "speed" : 95,      
+      "speed" : 95,
       "periodicActions" : [
     {
-    "time":0.01, 
-    "action":"projectile", 
-    "type":"firelasershot2", 
+    "time":0.01,
+    "action":"projectile",
+    "type":"firelasershot2",
     "config":{
       "damageSourceKind" : "electric",
-      "statusEffects":[], 
+      "statusEffects":[],
       "processing":"?hueshift=127",
-      "speed":0, 
-      "timeToLive":0.4, 
+      "speed":0,
+      "timeToLive":0.4,
       "bounces" : 0,
-      "power":1, 
+      "power":1,
       "knockback":0
       }
-    }        
+    }
       ],
       "actionOnReap" : [
       {
@@ -166,8 +166,8 @@
         "fuzzAngle" : 0,
         "inheritDamageFactor" : 0.08,
         "angleAdjust" : 180
-      }      
-      ]      
+      }
+      ]
     },
     "projectileCount" : 1,
 
@@ -200,14 +200,14 @@
       }
     }
   },
-  
+
   "critChance" : 6,
   "critBonus" : 26,
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
-  "recoilForce" : 2000,    
-  
+  "recoilForce" : 2000,
+
   "altAbilityType" : "fudronelauncheradv",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

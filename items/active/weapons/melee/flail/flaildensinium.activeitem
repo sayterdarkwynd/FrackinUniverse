@@ -36,15 +36,15 @@
   "critChance" : 1,
   "critBonus" : 7,
   "stunChance" : 10,
-  
+
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementType" : "electric",
   "primaryAbilityType" : "tentaclegun",
   "primaryAbility" : {
     "chain" : {
-      "arcRadiusRatio" : [8, 8],    
-      "taper" : 0.0, 
+      "arcRadiusRatio" : [8, 8],
+      "taper" : 0.0,
       "segmentImage" : "/items/active/weapons/melee/flail/flailchaindensinium.png?scale=1",
       "endSegmentImage" : "/items/active/weapons/melee/flail/flailballdensinium.png",
       "segmentSize" : 0.70
@@ -65,16 +65,16 @@
       "controlForce":330,
       "targetTrackingForce":0,
       "processing":"?hueshift=15",
-      
+
       "knockback" : 30,
       "piercing":false,
       "speed" : 90,
-      "bounces":-1, 
-      "timeToLive" : 0.85, 
+      "bounces":-1,
+      "timeToLive" : 0.85,
       "damageKind" : "electric",
-      
+
       "statusEffects" : [ "electrified" ],
-      
+
       "periodicActions" : [
 
       {
@@ -106,29 +106,29 @@
               }
             ]
           }
-        }      
+        }
       ],
       "actionOnCollide":[
       {
-        "time":0.01, 
-        "action":"explosion", 
-        "foregroundRadius":2.5, 
-        "backgroundRadius":0, 
-        "explosiveDamageAmount":7, 
-        "delaySteps":2, 
+        "time":0.01,
+        "action":"explosion",
+        "foregroundRadius":2.5,
+        "backgroundRadius":0,
+        "explosiveDamageAmount":7,
+        "delaySteps":2,
         "harvestLevel":1
-      },      
+      },
         {
-          "action":"sound","options":["/sfx/objects/rock_big_break1.ogg"], 
-          "time":0.05, 
+          "action":"sound","options":["/sfx/objects/rock_big_break1.ogg"],
+          "time":0.05,
           "repeat":false
         }
-      ],      
+      ],
       "actionOnReap" : [
         {
           "action":"sound",
-          "options":["/sfx/tools/axe_chop_heavy.ogg", "/sfx/tools/axe_chop_flesh3.ogg", "/sfx/tools/axe_chop_normal.ogg"], 
-          "time":0.05, 
+          "options":["/sfx/tools/axe_chop_heavy.ogg", "/sfx/tools/axe_chop_flesh3.ogg", "/sfx/tools/axe_chop_normal.ogg"],
+          "time":0.05,
           "repeat":false
         }
       ]

@@ -11,9 +11,9 @@
   "category" : "lance",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","spear","energy", "upgradeableWeapon","ancient"],
-  
+
   "emitters" : [ "ancientenergytrail", "barrierelectric" ],
-  
+
   "inventoryIcon" : "ancientspear.png",
   "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
   "animationParts" : {
@@ -21,13 +21,13 @@
     "blade" : "ancientspear.png",
     "bladefullbright" : "ancientspearfullbright.png"
   },
-  "animationCustom" : { 
+  "animationCustom" : {
 	  "sounds" : {
 	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
-	  }  
+	  }
   },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
@@ -48,7 +48,7 @@
     }
   },
   "altAbilityType" : "rocketspear",
-  "altAbility" : { 
+  "altAbility" : {
     "name" : "Cosmic Blast",
     "statusEffects" : [ "bleedinglong", "defenseboostneg20" ],
     "baseDps" : 8,
@@ -57,11 +57,11 @@
     "fireTime" : 0.05,
     "inaccuracy" : 0,
     "boostSpeed" : 120,
-    "boostForce" : 50   
+    "boostForce" : 50
   },
 
   "critChance" : 3,
   "critBonus" : 12,
-  
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
