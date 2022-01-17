@@ -1,93 +1,97 @@
 {
-  "itemName" : "fubonearmor2chest",
-  "inventoryIcon" : "icons.png:chest",
-  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
-  "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "^orange;Set Bonuses^reset;:
+	"itemName": "fubonearmor2chest",
+	"inventoryIcon": "icons.png:chest",
+	"dropCollision": [-4.0, -3.0, 4.0, 3.0],
+	"maxStack": 1,
+	"rarity": "Common",
+	"description": "^orange;Set Bonuses^reset;:
 ^yellow;^reset; Fall Damage x^green;0.75^reset;
 ^yellow;^reset; Swords: Damage x^green;1.15^reset;",
 
-  "shortdescription" : "Bone-Steel Chest",
-  "category" : "chestarmour",
-  "tooltipKind" : "armornew2",
-  "maleFrames" : {
-    "body" : "chestm.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
+	"shortdescription": "Bone-Steel Chest",
+	"category": "chestarmour",
+	"tooltipKind": "armornew2",
+	"maleFrames": {
+		"body": "chestm.png",
+		"backSleeve": "bsleeve.png",
+		"frontSleeve": "fsleeve.png"
+	},
 
-  "femaleFrames" : {
-    "body" : "chestm.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
+	"femaleFrames": {
+		"body": "chestm.png",
+		"backSleeve": "bsleeve.png",
+		"frontSleeve": "fsleeve.png"
+	},
 
-  "itemTags" : [ "upgradeableWeapon", "balanced", "melee" ],
-  "level" : 2,
-  //"collectablesOnPickup" : { "fu_armorprotection" : "fubonearmor2chest" },
-  "leveledStatusEffects" : [
-    {
-      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.25
-    },
-    {
-      "levelFunction" : "standardArmorLevelProtectionMultiplier",
-      "stat" : "protection",
-      "amount" : 0.55
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
-      "stat" : "maxEnergy",
-      "amount" : 4
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
-      "stat" : "maxHealth",
-      "amount" : 6
-    },
-	{
-      "levelFunction" : "fuArmorResistMultiplier",
-      "stat" : "physicalResistance",
-      "amount" : 0.053334
-    }
-  ],
+	"itemTags": [ "upgradeableWeapon", "balanced", "melee" ],
+	"level": 2,
+	//"collectablesOnPickup": { "fu_armorprotection": "fubonearmor2chest" },
+	"leveledStatusEffects": [
+		{
+			"levelFunction": "standardArmorLevelPowerMultiplierMultiplier",
+			"stat": "powerMultiplier",
+			"baseMultiplier": 1.25
+		},
+		{
+			"levelFunction": "standardArmorLevelProtectionMultiplier",
+			"stat": "protection",
+			"amount": 0.55
+		},
+		{
+			"levelFunction": "standardArmorLevelMaxEnergyMultiplier",
+			"stat": "maxEnergy",
+			"amount": 4
+		},
+		{
+			"levelFunction": "standardArmorLevelMaxHealthMultiplier",
+			"stat": "maxHealth",
+			"amount": 6
+		},
+		{
+			"levelFunction": "fuArmorResistMultiplier",
+			"stat": "physicalResistance",
+			"amount": 0.053334
+		}
+	],
 
-  "statusEffects" : [
-    "fusetbonusmanager",
-    {
-      "stat" : "fu_bonesteelset_chest",
-      "amount" : 1
-    }
-  ],
+	"statusEffects": [
+		"bonesteelsetbonus",
+		{
+			"stat": "fu_bonesteelset_chest",
+			"amount": 1
+		},
+		{
+			"stat": "fu_boneset_chest",
+			"amount": 1
+		}
+	],
 
-  "colorOptions" : [
-    /* GREY */
-    { "ffca8a" : "b5b5b5", "e0975c" : "808080", "a85636" : "555555", "6f2919" : "303030" },
-    /* YELLOW */
-    { "ffca8a" : "fffca4", "e0975c" : "ffea00", "a85636" : "ccb009", "6f2919" : "a18d12" },
-    /* WHITE */
-    { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },
-    /* BROWN */
-    { "ffca8a" : "a58571", "e0975c" : "896c5a", "a85636" : "53453a", "6f2919" : "403434" },
-    /* BLACK */
-    { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },
-    /* GREY */
-    { "ffca8a" : "b5b5b5", "e0975c" : "808080", "a85636" : "555555", "6f2919" : "303030" },
-    /* RED */
-    { "ffca8a" : "f4988c", "e0975c" : "d93a3a", "a85636" : "932625", "6f2919" : "601119" },
-    /* ORANGE */
-    { "ffca8a" : "ffd495", "e0975c" : "ea9931", "a85636" : "af4e00", "6f2919" : "6e2900" },
-    /* GREEN */
-    { "ffca8a" : "b2e89d", "e0975c" : "51bd3b", "a85636" : "247824", "6f2919" : "144216" },
-    /* BLUE */
-    { "ffca8a" : "96cbe7", "e0975c" : "5588d4", "a85636" : "344495", "6f2919" : "1a1c51" },
-    /* PURPLE */
-    { "ffca8a" : "d29ce7", "e0975c" : "a451c4", "a85636" : "6a2284", "6f2919" : "320c40" },
-    /* PINK */
-    { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" }
-],
-  //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua"
+	"colorOptions": [
+		/* GREY */
+		{ "ffca8a": "b5b5b5", "e0975c": "808080", "a85636": "555555", "6f2919": "303030" },
+		/* YELLOW */
+		{ "ffca8a": "fffca4", "e0975c": "ffea00", "a85636": "ccb009", "6f2919": "a18d12" },
+		/* WHITE */
+		{ "ffca8a": "e6e6e6", "e0975c": "b6b6b6", "a85636": "7b7b7b", "6f2919": "373737" },
+		/* BROWN */
+		{ "ffca8a": "a58571", "e0975c": "896c5a", "a85636": "53453a", "6f2919": "403434" },
+		/* BLACK */
+		{ "ffca8a": "838383", "e0975c": "555555", "a85636": "383838", "6f2919": "151515" },
+		/* GREY */
+		{ "ffca8a": "b5b5b5", "e0975c": "808080", "a85636": "555555", "6f2919": "303030" },
+		/* RED */
+		{ "ffca8a": "f4988c", "e0975c": "d93a3a", "a85636": "932625", "6f2919": "601119" },
+		/* ORANGE */
+		{ "ffca8a": "ffd495", "e0975c": "ea9931", "a85636": "af4e00", "6f2919": "6e2900" },
+		/* GREEN */
+		{ "ffca8a": "b2e89d", "e0975c": "51bd3b", "a85636": "247824", "6f2919": "144216" },
+		/* BLUE */
+		{ "ffca8a": "96cbe7", "e0975c": "5588d4", "a85636": "344495", "6f2919": "1a1c51" },
+		/* PURPLE */
+		{ "ffca8a": "d29ce7", "e0975c": "a451c4", "a85636": "6a2284", "6f2919": "320c40" },
+		/* PINK */
+		{ "ffca8a": "eab3db", "e0975c": "d35eae", "a85636": "97276d", "6f2919": "59163f" }
+	],
+	//"upgrades": 1 ,
+	"builder": "/items/buildscripts/fubuildarmor.lua"
 }
