@@ -26,13 +26,13 @@
           { "particle" : "dust2", "offset" : [0, -0.15] }
         ]
       }
-    },    
-    "sounds" : { 
+    },
+    "sounds" : {
       "fire" : [ "/sfx/gun/pistol1.ogg" ]
     },
-    "lights" : { "muzzleFlash" : {"color" : [70, 70, 70] } } 
+    "lights" : { "muzzleFlash" : {"color" : [70, 70, 70] } }
   },
-  
+
   "baseOffset" : [0.375, 0.125],
   "muzzleOffset" : [0.875, 0.5],
 
@@ -92,103 +92,35 @@
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 300,
-  "recoilForce" : 400,   
+  "recoilForce" : 400,
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  
+
   "improvedParameters" : {
     "inventoryIcon" : "aegisaltpistol4.png",
     "shortdescription" : "^cyan;Protectorate Incapacitator^reset; ^yellow;^reset;",
   "description" : "Fires two-round bursts.
-^cyan;+1 projectiles^reset;", 
+^cyan;+1 projectiles^reset;",
   "animationParts" : {
     "butt" : "",
     "middle" : "aegisaltpistol4.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/particlemuzzle1.png"
-  },    
+  },
     "critChance" : 3,
     "critBonus" : 4,
 	  "primaryAbility" : {
 	    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
 	    "class" : "GunFire",
-            
+
             "fireTime" : 0.32,
 	    "baseDps" : 7.25,
 	    "energyUsage" : 24,
 	    "inaccuracy" : 0.008,
 	    "fireType" : "burst",
-	    
+
             "burstTime" : 0.075,
     	    "burstCount" : 2,
-    
-            "projectileCount" : 1,
-	    "projectileType" : "chargeshotsmall",
-	    "projectileParameters" : {
-	      "fullbright" : true,
-	      "knockback" : 8,
-	      "speed" : 90
-	      },
 
-
-	    "stances" : {
-	      "idle" : {
-		"armRotation" : 0,
-		"weaponRotation" : 0,
-		"twoHanded" : false,
-
-		"allowRotate" : true,
-		"allowFlip" : true
-	      },
-	      "fire" : {
-		"duration" : 0.01,
-		"armRotation" : 2,
-		"weaponRotation" : 2,
-		"twoHanded" : false,
-
-		"allowRotate" : false,
-		"allowFlip" : false
-	      },
-	      "cooldown" : {
-		"duration" : 0.04,
-		"armRotation" : 4,
-		"weaponRotation" : 4,
-		"twoHanded" : false,
-
-		"allowRotate" : false,
-		"allowFlip" : false
-	      }
-	    }
-	  }
-  },  
-  "upgradeParameters" : {
-    "inventoryIcon" : "aegisaltpistol4.png",
-    "shortdescription" : "^cyan;Protectorate Incapacitator^reset; ^yellow;^reset;",
-  "description" : "Fires two-round bursts.
-^cyan;+1 projectiles^reset;", 
-  "animationParts" : {
-    "butt" : "",
-    "middle" : "aegisaltpistol4.png",
-    "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/particlemuzzle1.png"
-  },    
-    "critChance" : 3,
-    "critBonus" : 4,
-    "isAmmoBased" : 1,
-    "magazineSize" : 12,    
-    "reloadTime" : 0.95,
-	  "primaryAbility" : {
-	    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-	    "class" : "GunFire",
-            
-            "fireTime" : 0.32,
-	    "baseDps" : 7.2,
-	    "energyUsage" : 30,
-	    "inaccuracy" : 0.008,
-	    "fireType" : "burst",
-	    
-            "burstTime" : 0.075,
-    	    "burstCount" : 2,
-    
             "projectileCount" : 1,
 	    "projectileType" : "chargeshotsmall",
 	    "projectileParameters" : {
@@ -228,22 +160,90 @@
 	    }
 	  }
   },
-  
+  "upgradeParameters" : {
+    "inventoryIcon" : "aegisaltpistol4.png",
+    "shortdescription" : "^cyan;Protectorate Incapacitator^reset; ^yellow;^reset;",
+  "description" : "Fires two-round bursts.
+^cyan;+1 projectiles^reset;",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "aegisaltpistol4.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/particlemuzzle1.png"
+  },
+    "critChance" : 3,
+    "critBonus" : 4,
+    "isAmmoBased" : 1,
+    "magazineSize" : 12,
+    "reloadTime" : 0.95,
+	  "primaryAbility" : {
+	    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+	    "class" : "GunFire",
+
+            "fireTime" : 0.32,
+	    "baseDps" : 7.2,
+	    "energyUsage" : 30,
+	    "inaccuracy" : 0.008,
+	    "fireType" : "burst",
+
+            "burstTime" : 0.075,
+    	    "burstCount" : 2,
+
+            "projectileCount" : 1,
+	    "projectileType" : "chargeshotsmall",
+	    "projectileParameters" : {
+	      "fullbright" : true,
+	      "knockback" : 8,
+	      "speed" : 90
+	      },
+
+
+	    "stances" : {
+	      "idle" : {
+		"armRotation" : 0,
+		"weaponRotation" : 0,
+		"twoHanded" : false,
+
+		"allowRotate" : true,
+		"allowFlip" : true
+	      },
+	      "fire" : {
+		"duration" : 0.01,
+		"armRotation" : 2,
+		"weaponRotation" : 2,
+		"twoHanded" : false,
+
+		"allowRotate" : false,
+		"allowFlip" : false
+	      },
+	      "cooldown" : {
+		"duration" : 0.04,
+		"armRotation" : 4,
+		"weaponRotation" : 4,
+		"twoHanded" : false,
+
+		"allowRotate" : false,
+		"allowFlip" : false
+	      }
+	    }
+	  }
+  },
+
   "upgradeParameters2" : {
     "inventoryIcon" : "aegisaltpistol5.png",
     "shortdescription" : "^cyan;Protectorate Decimator^reset; ^yellow;^reset;",
   "description" : "A finely-tuned pistol with dangerous burst-fire!
-^cyan;+3 projectiles^reset;", 
+^cyan;+3 projectiles^reset;",
   "animationParts" : {
     "butt" : "",
     "middle" : "aegisaltpistol5.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/particlemuzzle1.png"
-  },    
+  },
     "critChance" : 4,
     "critBonus" : 6,
     "isAmmoBased" : 1,
-    "magazineSize" : 16,   
+    "magazineSize" : 16,
     "reloadTime" : 0.9,
 	  "primaryAbility" : {
 	    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -253,16 +253,16 @@
 	    "energyUsage" : 30,
 	    "inaccuracy" : 0.03,
 	    "fireType" : "burst",
-	    
+
             "burstTime" : 0.1,
     	    "burstCount" : 4,
-    
+
             "projectileCount" : 2,
 	    "projectileType" : "chargeshotsmall",
 	    "projectileParameters" : {
 	      "fullbright" : true,
-	      "knockback" : 8, 
-	      "speed" : 90 
+	      "knockback" : 8,
+	      "speed" : 90
 	      },
 
 	    "stances" : {
@@ -295,5 +295,5 @@
 	    }
 	  }
   }
-  
+
 }

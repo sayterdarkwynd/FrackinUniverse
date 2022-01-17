@@ -8,14 +8,14 @@
 	//	sail_group_order	- Defined only in 'money'(aka pixels), and used to order the groups. Not patching defined groups into this will result in random orders for those groups
 	//						'main' should not be on the list because it is added manually via script, and is always first (I suggest against touching their 'sail_group' value as well)
 	//						'unsorted' should not be on the list because it is added manually via script, and is always last
-	
+
 	// Grouping vanilla currencies
 	{
 		"op": "add",
 		"path": "/money/sail_group_order",
 		"value": ["fu_research", "fu_tradegoods", "fu_madness"]
 	},
-	
+
 	// Grouping vanilla currencies
 	{
 		"op": "add",
@@ -27,7 +27,7 @@
 		"path": "/essence/sail_group",
 		"value": "main"
 	},
-	
+
 	// Research currencies
 	{
 		"op": "add",
@@ -49,7 +49,7 @@
 		"path": "/fugeneticmaterial",
 		"value": { "representativeItem" : "fugeneticmaterial", "playerMax" : 15000, "sail_group" : "fu_research" }
 	},
-	
+
 	// Space station trading goods
 	{
 		"op": "add",

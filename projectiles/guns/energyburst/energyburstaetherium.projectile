@@ -19,136 +19,136 @@
     {
       "action" : "config",
       "file" : "/projectiles/explosions/energyburstexplosion/energyburstexplosion.config"
-    },	      
+    },
     {
-      "action":"projectile", 
-      "type":"deathzone", 
-      "inheritDamageFactor":0.5, 
-      "angleAdjust":0, 
-      "fuzzAngle":0, 
+      "action":"projectile",
+      "type":"deathzone",
+      "inheritDamageFactor":0.5,
+      "angleAdjust":0,
+      "fuzzAngle":0,
       "config":{
-        "piercing":true, 
-        "speed":0, 
-        "timeToLive":2, 
-        "knockback":0,  
+        "piercing":true,
+        "speed":0,
+        "timeToLive":2,
+        "knockback":0,
         "periodicActions":[
           {
-            "action":"particle", 
-            "specification":"cosmicswoosh1", 
-            "time":0.2, 
+            "action":"particle",
+            "specification":"cosmicswoosh1",
+            "time":0.2,
             "repeat":true
           },
           {
             "time" : 0.14,
             "loop" : true,
-            "action":"projectile", 
-            "type":"fuhailstrikeshot", 
-            "inheritDamageFactor":0.03, 
+            "action":"projectile",
+            "type":"fuhailstrikeshot",
+            "inheritDamageFactor":0.03,
             "fuzzAngle" : 360,
-            "config":{ 
+            "config":{
               "damageTeam":{"type":"friendly"}
             }
-          }          
-        ], 
+          }
+        ],
         "actionOnReap":[
           {
-            "action":"projectile", 
-            "type":"fuhailstrikeshot", 
-            "inheritDamageFactor":0.5, 
-            "fuzzAngle":180, 
+            "action":"projectile",
+            "type":"fuhailstrikeshot",
+            "inheritDamageFactor":0.5,
+            "fuzzAngle":180,
             "config":{
-              "timeToLive":0, 
+              "timeToLive":0,
               "actionOnReap":[
                 {
-                  "action":"projectile", 
-                  "type":"fuhailstrikeshot", 
-                  "inheritDamageFactor":0.03, 
-                  "angleAdjust":36, 
-                  "config":{ 
-                    "damageTeam":{"type":"friendly"}
-                  }
-                }, 
-                {
-                  "action":"projectile", 
-                  "type":"fuhailstrikeshot", 
-                  "inheritDamageFactor":0.03, 
-                  "angleAdjust":72, 
+                  "action":"projectile",
+                  "type":"fuhailstrikeshot",
+                  "inheritDamageFactor":0.03,
+                  "angleAdjust":36,
                   "config":{
                     "damageTeam":{"type":"friendly"}
                   }
-                }, 
+                },
                 {
-                  "action":"projectile", 
-                  "type":"fuhailstrikeshot", 
-                  "inheritDamageFactor":0.03, 
-                  "angleAdjust":108, 
+                  "action":"projectile",
+                  "type":"fuhailstrikeshot",
+                  "inheritDamageFactor":0.03,
+                  "angleAdjust":72,
                   "config":{
                     "damageTeam":{"type":"friendly"}
                   }
-                }, 
+                },
                 {
-                  "action":"projectile", 
-                  "type":"fuhailstrikeshot", 
-                  "inheritDamageFactor":0.03, 
-                  "angleAdjust":144, 
+                  "action":"projectile",
+                  "type":"fuhailstrikeshot",
+                  "inheritDamageFactor":0.03,
+                  "angleAdjust":108,
                   "config":{
                     "damageTeam":{"type":"friendly"}
                   }
-                }, 
+                },
                 {
-                  "action":"projectile", 
-                  "type":"fuhailstrikeshot", 
-                  "inheritDamageFactor":0.03, 
-                  "angleAdjust":180, 
+                  "action":"projectile",
+                  "type":"fuhailstrikeshot",
+                  "inheritDamageFactor":0.03,
+                  "angleAdjust":144,
                   "config":{
                     "damageTeam":{"type":"friendly"}
                   }
-                }, 
+                },
                 {
-                  "action":"projectile", 
-                  "type":"fuhailstrikeshot", 
-                  "inheritDamageFactor":0.03, 
-                  "angleAdjust":216, 
+                  "action":"projectile",
+                  "type":"fuhailstrikeshot",
+                  "inheritDamageFactor":0.03,
+                  "angleAdjust":180,
                   "config":{
                     "damageTeam":{"type":"friendly"}
                   }
-                }, 
+                },
                 {
-                  "action":"projectile", 
-                  "type":"fuhailstrikeshot", 
-                  "inheritDamageFactor":0.03, 
-                  "angleAdjust":252, 
+                  "action":"projectile",
+                  "type":"fuhailstrikeshot",
+                  "inheritDamageFactor":0.03,
+                  "angleAdjust":216,
                   "config":{
                     "damageTeam":{"type":"friendly"}
                   }
-                }, 
+                },
                 {
-                  "action":"projectile", 
-                  "type":"fuhailstrikeshot", 
-                  "inheritDamageFactor":0.03, 
-                  "angleAdjust":288, 
+                  "action":"projectile",
+                  "type":"fuhailstrikeshot",
+                  "inheritDamageFactor":0.03,
+                  "angleAdjust":252,
                   "config":{
                     "damageTeam":{"type":"friendly"}
                   }
-                }, 
+                },
                 {
-                  "action":"projectile", 
-                  "type":"fuhailstrikeshot", 
-                  "inheritDamageFactor":0.03, 
-                  "angleAdjust":324, 
+                  "action":"projectile",
+                  "type":"fuhailstrikeshot",
+                  "inheritDamageFactor":0.03,
+                  "angleAdjust":288,
+                  "config":{
+                    "damageTeam":{"type":"friendly"}
+                  }
+                },
+                {
+                  "action":"projectile",
+                  "type":"fuhailstrikeshot",
+                  "inheritDamageFactor":0.03,
+                  "angleAdjust":324,
                   "config":{
                     "damageTeam":{"type":"friendly"}
                   }
                 }
               ]
             }
-          }, 
+          },
           {
-            "action":"config", 
+            "action":"config",
             "file":"/projectiles/explosions/burstexplosion/cosmicburstexplosion.config"
           }
         ]
-      }	  
+      }
     }
-  ]    
+  ]
 }

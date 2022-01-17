@@ -15,22 +15,22 @@
   "twoHanded" : false,
   "weaponType" : "Energy",
 //  "learnBlueprintsOnPickup" : [ "gravitongun" ],
-  
-  
+
+
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "gravitonpistol.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlepurple.png"
-  },      
-  
+  },
+
   "animationCustom" : {
-    "sounds" : { 
+    "sounds" : {
       "fire" : [ "/sfx/weapons/gravitongun.ogg" ],
       "cooldown" : [ "/sfx/interface/aichatter2.ogg" ]
     },
-    "lights" : { "muzzleFlash" : {"color" : [75, 0, 124] } }  
+    "lights" : { "muzzleFlash" : {"color" : [75, 0, 124] } }
   },
 
   "baseOffset" : [0.67, 0.3],
@@ -39,9 +39,9 @@
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "electric",
-  
+
   "isReloader" : 1,
-  
+
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
@@ -58,14 +58,14 @@
       "timeToLive" : 0.6
     },
     "stances" : {
-      "idle":{  
+      "idle":{
         "armRotation":0,
         "weaponRotation":0,
         "twoHanded":false,
         "allowRotate":true,
         "allowFlip":true
       },
-      "fire":{  
+      "fire":{
         "duration":0.1,
         "armRotation":3,
         "weaponRotation":8,
@@ -73,7 +73,7 @@
         "allowRotate":false,
         "allowFlip":true
       },
-      "cooldown":{  
+      "cooldown":{
         "duration":0.2,
         "armRotation":-7,
         "weaponRotation":-360,

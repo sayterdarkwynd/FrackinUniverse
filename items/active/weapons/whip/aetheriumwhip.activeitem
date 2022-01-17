@@ -20,7 +20,7 @@
   "animationCustom" : {
     "particleEmitters" : { "crack" : { "particles" : [ ]}},
     "sounds" : {
-      "swing" : ["/sfx/melee/mech_energysword_swing1.ogg", "/sfx/melee/mech_energysword_swing2.ogg", "/sfx/melee/mech_energysword_swing3.ogg"], 
+      "swing" : ["/sfx/melee/mech_energysword_swing1.ogg", "/sfx/melee/mech_energysword_swing2.ogg", "/sfx/melee/mech_energysword_swing3.ogg"],
       "crack" : [ "/sfx/projectiles/plasma1.ogg", "/sfx/projectiles/plasma2.ogg", "/sfx/projectiles/plasma3.ogg" ]
     }
   },
@@ -35,23 +35,23 @@
   },
 
   "scripts" : [ "whip.lua" ],
-  
+
   "elementalType" : "aether",
-  
+
   "primaryAbilityType" : "whipcrack",
   "primaryAbility" : {
     "fireTime" : 0.9,
     "chainDps" : 3.0,
     "crackDps" : 7,
 
-    "damageConfig" : {	
+    "damageConfig" : {
       "statusEffects":["defenseboostneg20"],
 	  "damageSourceKind" : "aetherlash"
     },
 
     "projectileType" : "whipcrackaether"
   },
-    
+
   "critChance" : 2,
   "critBonus" : 7,
   "builder" : "/items/buildscripts/buildwhip.lua"

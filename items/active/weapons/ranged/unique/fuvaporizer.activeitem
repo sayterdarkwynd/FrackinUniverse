@@ -11,7 +11,7 @@
   "category" : "assaultRifle",
   "level" : 5,
   "tooltipKind" : "gun2",
-//  "learnBlueprintsOnPickup" : [ "fuvaporizer" ],   
+//  "learnBlueprintsOnPickup" : [ "fuvaporizer" ],
   "weaponType" : "Energy",
   "itemTags" : ["weapon","ranged","assaultrifle", "energy", "precursor", "upgradeableWeapon"],
   "twoHanded" : true,
@@ -33,7 +33,7 @@
 		  }
 		}
       }
-    },    
+    },
     "sounds" : {
       "fire" : [ "/sfx/weapons/plasmaburst.ogg" ]
     }
@@ -57,29 +57,29 @@
     "fireType" : "auto",
 
     "projectileType" : "electricguardianbullet",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "knockback" : 1,
       "knockbackDirectional" : true,
       "damageKind" : "radioactive",
         "lightColor" : [90,90,0],
-	"periodicActions":[], 
+	"periodicActions":[],
 	"processing":"?hueshift=-165",
-	
-	"bounces":0, 
+
+	"bounces":0,
 	"speed" : 60,
-	"timeToLive":1, 
-	"power":0.0, 
+	"timeToLive":1,
+	"power":0.0,
 	"actionOnReap":[
 	    {
 	      "action" : "projectile",
 	      "inheritDamageFactor" : 0,
 	      "type" : "teslaboomsmall"
-	    },	
+	    },
 	    {
 	      "action" : "sound",
 	      "options" : [ "/sfx/weapons/shock_impact3.ogg" ]
-	    }	
-	]        
+	    }
+	]
     },
 	  "stances" : {
 	    "idle" : {
@@ -129,12 +129,12 @@
       "timeToLive" : 1,
       "knockback" : 10,
       "bounces" : 1,
-      "statusEffects":[{"effect":"fuparalysis", "duration":2.0}], 
+      "statusEffects":[{"effect":"fuparalysis", "duration":2.0}],
 	"actionOnReap":[
 	    {
 	      "action" : "sound",
 	      "options" : [ "/sfx/weapons/shock_impact3.ogg" ]
-	    },	
+	    },
 	    {
 	      "action" : "projectile",
 	      "inheritDamageFactor" : 0,
@@ -144,7 +144,7 @@
 	      "action" : "projectile",
 	      "inheritDamageFactor" : 0.95,
 	      "type" : "plasmaball",
-	      "config" : { 
+	      "config" : {
 		      "damageSourceKind" : "radioactive",
 		      "speed" : 10,
 		      "piercing" : true,
@@ -157,17 +157,17 @@
 			    {
 			      "action" : "sound",
 			      "options" : [ "/sfx/weapons/shock_impact3.ogg" ]
-			    },	
+			    },
 			    {
 			      "action" : "projectile",
 			      "inheritDamageFactor" : 0,
 			      "type" : "teslaboomsmall"
-			    },		      
+			    },
 			    {
 			      "action" : "projectile",
 			      "inheritDamageFactor" : 0.90,
 			      "type" : "plasmaball",
-			      "config" : { 
+			      "config" : {
 				      "damageSourceKind" : "radioactive",
 				      "speed" : 20,
 				      "piercing" : true,
@@ -180,17 +180,17 @@
 					    {
 					      "action" : "sound",
 					      "options" : [ "/sfx/weapons/shock_impact3.ogg" ]
-					    },					      
+					    },
 					    {
 					      "action" : "projectile",
 					      "inheritDamageFactor" : 0,
 					      "type" : "teslaboomsmall"
-					    },				      
+					    },
 					    {
 					      "action" : "projectile",
 					      "inheritDamageFactor" : 0.80,
 					      "type" : "plasmaball",
-					      "config" : { 
+					      "config" : {
 						      "damageSourceKind" : "radioactive",
 						      "speed" : 40,
 						      "piercing" : true,
@@ -203,17 +203,17 @@
 							    {
 							      "action" : "sound",
 							      "options" : [ "/sfx/weapons/shock_impact3.ogg" ]
-							    },							      
+							    },
 							    {
 							      "action" : "projectile",
 							      "inheritDamageFactor" : 0,
 							      "type" : "teslaboomsmall"
-							    },						      
+							    },
 							    {
 							      "action" : "projectile",
 							      "inheritDamageFactor" : 0.75,
 							      "type" : "plasmaball",
-							      "config" : { 
+							      "config" : {
 								      "damageSourceKind" : "radioactive",
 								      "speed" : 80,
 								      "piercing" : true,
@@ -221,30 +221,30 @@
 								      "knockback" : 10,
 								      "bounces" : 5,
 								      "processing":"?hueshift=-165",
-								      "statusEffects":[{"effect":"fuparalysis", "duration":2.0}],	
+								      "statusEffects":[{"effect":"fuparalysis", "duration":2.0}],
 								      "actionOnReap" : [
 									    {
 									      "action" : "sound",
 									      "options" : [ "/sfx/weapons/shock_impact3.ogg" ]
-									    },									      
+									    },
 									    {
 									      "action" : "projectile",
 									      "inheritDamageFactor" : 0,
 									      "type" : "teslaboomsmall"
-									    }								      
+									    }
 								      ]
 							      }
 							    }
-						      ]							      
+						      ]
 						      }
 					    }
-				      ]				      
+				      ]
 				      }
 		            }
 		      ]
 	      }
-	    }	    
-	]        
+	    }
+	]
     }
   },
 

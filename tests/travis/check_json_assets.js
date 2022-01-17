@@ -9,6 +9,9 @@ const fs = require( 'fs' ),
 	glob = require( 'fast-glob' ),
 	stripJsonComments = require( 'strip-json-comments' );
 
+// Make output synchronous (workaround for Node.js sometimes exiting before printing everything).
+process.stdout._handle.setBlocking( true ); // eslint-disable-line no-underscore-dangle
+
 class JsonAssetsTest {
 	constructor() {
 		this.failedCount = 0; // Incremented by fail().
@@ -50,7 +53,7 @@ class JsonAssetsTest {
 		this.checkTreeUnlocks();
 		this.checkLiquidInteractions();
 
-		process.stdout.write( 'Checked ' + totalAssetCount + ' JSON files. Errors: ' + this.failedCount + '.\n' );
+		console.log( 'Checked ' + totalAssetCount + ' JSON files. Errors: ' + this.failedCount + '.\n' );
 		return this.failedCount === 0;
 	}
 
@@ -90,12 +93,32 @@ class JsonAssetsTest {
 			totalAssetCount = 0;
 
 		this.findAssetFilenames( directory ).forEach( ( filename ) => {
-			if ( ++totalAssetCount % 2500 === 0 ) {
+			if ( ++totalAssetCount % 2500 === 0 && process.stdout.isTTY ) {
 				// Progress bar.
 				process.stdout.write( totalAssetCount + ' ' );
 			}
 
-			var jsonString = this.sanitizeRelaxedJson( fs.readFileSync( directory + '/' + filename ).toString() );
+			var relaxedJsonString = fs.readFileSync( directory + '/' + filename ).toString();
+
+			// Detect trailing spaces in JSON files except 1) changelogs,
+			// 2) files created by Tiled, such as tilesets or dungeons.
+			if ( !filename.match( /^((dungeons|frackinship|tilesets)\/|_(FU|ZB).*\.config$)/ ) ) {
+				relaxedJsonString.split( /\r?\n/ ).forEach( ( line, lineIndex ) => {
+					if ( line.match( /\s+$/ ) ) {
+						let errorMessage;
+						if ( line.match( /[^\s]/ ) ) {
+							errorMessage = 'trailing whitespace: "' + line + '"';
+						} else {
+							errorMessage = 'line contains only whitespace';
+						}
+
+						this.fail( filename + ':' + ( 1 + lineIndex ) + ': ' + errorMessage );
+					}
+				} );
+			}
+
+			// Parse the JSON asset.
+			var jsonString = this.sanitizeRelaxedJson( relaxedJsonString );
 			var data;
 
 			try {

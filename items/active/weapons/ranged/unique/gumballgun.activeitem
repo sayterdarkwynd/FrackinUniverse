@@ -20,7 +20,7 @@
     "barrel" : "",
     "muzzleFlash" : ""
   },
-  "animationCustom" : { 
+  "animationCustom" : {
     "sounds" : {
       "fire" : [ "/sfx/weapons/gumballgun.ogg" ]
     }
@@ -30,9 +30,9 @@
   "muzzleOffset" : [2.5, 0.5],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
-  
+
   "elementType" : "physical",
-  
+
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
@@ -45,14 +45,14 @@
     "fireType" : "auto",
 
     "projectileType" : ["electricguardianpellet","fireguardianpellet","iceguardianpellet","poisonguardianpellet"],
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 72,
       "knockback" : 4,
       "actionOnReap" : [
 	    {
 	      "action" : "config",
 	      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
-	    }      
+	    }
       ]
     },
 	  "stances" : {

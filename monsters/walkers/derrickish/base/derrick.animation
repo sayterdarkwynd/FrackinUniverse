@@ -13,7 +13,7 @@
               "particleEmittersOff" : [ "chargeup" ],
               "immediateSound" : "/sfx/npc/monsters/scaveran_idle1.ogg",
               "immediateSoundRangeMultiplier" : 0.5
-            }            
+            }
           },
           "walk" : {
             "frames" : 8,
@@ -21,10 +21,10 @@
             "mode" : "loop",
             "properties" : {
               "particleEmittersOff" : [ "chargeup" ]
-            },    
+            },
             "frameProperties" : {
               "immediateSound" : [ "/sfx/npc/monsters/lilodon_step1.ogg", "", "/sfx/npc/monsters/lilodon_step2.ogg", "", "/sfx/npc/monsters/lilodon_step1.ogg", "", "/sfx/npc/monsters/lilodon_step2.ogg", "" ]
-            }            
+            }
           },
           "jump" : {
             "frames" : 1,
@@ -38,13 +38,13 @@
             "frames" : 1,
             "properties" : {
               "particleEmittersOff" : [ "chargeup" ]
-            }            
-          },          
+            }
+          },
           "fall" : {
             "frames" : 1,
             "properties" : {
               "particleEmittersOff" : [ "chargeup" ]
-            }            
+            }
           },
           "windup" : {
             "frames" : 4,
@@ -53,8 +53,8 @@
               "particleEmittersOn" : [ "chargeup" ],
               "immediateSound" : "/sfx/npc/monsters/scaveran_attack.ogg",
               "immediateSoundRangeMultiplier" : 0.5
-            }          
-          },          
+            }
+          },
           "chargewindup" : {
             "frames" : 4,
             "cycle" : 0.4,
@@ -65,7 +65,7 @@
             } ,
             "frameProperties" : {
               "immediateSound" : [ "/sfx/npc/monsters/lilodon_step1.ogg", "", "/sfx/npc/monsters/lilodon_step2.ogg", "" ]
-            }            
+            }
           },
           "charge" : {
             "frames" : 8,
@@ -74,7 +74,7 @@
             "transition" : "chargewinddown",
             "properties" : {
               "particleEmittersOff" : [ "chargeup" ]
-            },            
+            },
             "frameProperties" : {
               "immediateSound" : [ "/sfx/npc/monsters/lilodon_step1.ogg", "", "/sfx/npc/monsters/lilodon_step2.ogg", "" ]
             }
@@ -86,7 +86,7 @@
             "transition" : "idle",
             "properties" : {
               "particleEmittersOff" : [ "chargeup" ]
-            }            
+            }
           },
           "melee" : {
             "frames" : 4,
@@ -94,8 +94,8 @@
             "mode" : "loop",
             "properties" : {
               "particleEmittersOff" : [ "chargeup" ]
-            }            
-          }          
+            }
+          }
         }
       },
       "damage" : {
@@ -144,7 +144,7 @@
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
               }
-            },          
+            },
             "idle" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
@@ -169,7 +169,7 @@
               "properties" : {
                 "image" : "<partImage>:windup.<frame>"
               }
-            },            
+            },
             "chargewindup" : {
               "properties" : {
                 "image" : "<partImage>:walk.<frame>"
@@ -179,7 +179,7 @@
               "properties" : {
                 "image" : "<partImage>:melee.<frame>"
               }
-            },            
+            },
             "charge" : {
               "properties" : {
                 "image" : "<partImage>:walk.<frame>"
@@ -217,7 +217,7 @@
 
   "particleEmitters" : {
     "chargeup" : {
-      "emissionRate" : 7, 
+      "emissionRate" : 7,
       "offsetRegion" : [ -0.4, 0.5, 0.4, 0.2],
       "particles" : [
         { "particle" : "firefly" },
@@ -226,7 +226,7 @@
         { "particle" : "castelectric" },
         { "particle" : "castelectric" }
       ]
-    },  
+    },
     "deathPoof" : {
       "particles" : [
         { "particle" : "monstersplosion" },

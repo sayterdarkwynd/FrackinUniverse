@@ -11,9 +11,9 @@
   "category" : "spear",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","spear","energy", "upgradeableWeapon","aetherium","cosmic"],
-  
+
   "emitters" : [ "ancientenergytrail", "barrierelectric" ],
-  
+
   "inventoryIcon" : "aetheriumspear.png",
   "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
   "animationParts" : {
@@ -21,13 +21,13 @@
     "blade" : "aetheriumspear.png",
     "bladefullbright" : "aetheriumspearfullbright.png"
   },
-  "animationCustom" : { 
+  "animationCustom" : {
 	  "sounds" : {
 	    "fire" : [ "/sfx/melee/mech_energysword_swing1.ogg" ],
 	    "fire2" : ["/sfx/melee/mech_energysword_swing2.ogg"],
 	    "fire3" : [ "/sfx/melee/mech_energysword_swing3.ogg"],
 	    "crit" : [ "/sfx/melee/energywhip_impact3.ogg" ]
-	  }  
+	  }
   },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
@@ -48,7 +48,7 @@
     }
   },
   "altAbilityType" : "rocketspear",
-  "altAbility" : { 
+  "altAbility" : {
     "name" : "Aether Blast",
     "statusEffects" : [ "defenseboostneg20" ],
     "baseDps" : 7.5,
@@ -57,11 +57,11 @@
     "fireTime" : 0.05,
     "inaccuracy" : 0,
     "boostSpeed" : 220,
-    "boostForce" : 150   
+    "boostForce" : 150
   },
 
   "critChance" : 3,
   "critBonus" : 12,
-  
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

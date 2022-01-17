@@ -4,9 +4,9 @@
     "type" : "rngbows_arrowrain",
     "scripts" : ["/items/active/weapons/bow/abilities/rngbows/arrowrain/neb-arrowrain.lua"],
     "class" : "NebArrowRain",
-	
+
 	"fireOffset" : [0.75, 0],
-	
+
 	//Config for animated cursor
 	"cursorFrames" : [
 	  "/cursors/animated/rngbowsshrink/neb-rngbowsshrink1.cursor",
@@ -17,19 +17,19 @@
 	  "/cursors/animated/rngbowsshrink/neb-rngbowsshrink6.cursor",
 	  "/cursors/animated/rngbowsshrink/neb-rngbowsshrink7.cursor"
 	],
-	
+
     "drawTime" : [1.1, 1.7],				//Time to fully draw the bow
 	"powerProjectileTime" : [0.1, 0.15],	//After fully drawing, the bow is super-charged for this long
 	"energyPerShot" : [35, 45],			//Total energy consumption for a full draw
 	"holdEnergyUsage" : [4, 12],			//Energy consumption per second while fully drawn
 	"airborneBonus" : 1.5,			//A dmg multiplier for when airborne
-	
+
     "cooldownTime" : 0.67,			//Time between firing and drawing the next arrow
     "inaccuracy" : 0.0,				//Inaccuracy of the shot
-	
+
 	"walkWhileFiring" : true,		//If true, prevents the player from running while drawing the bow
 	"useQuiverDamageBonus" : true,	//If true, allows this bow to use quiver damage bonuses
-	
+
 	"drainEnergyWhilePowerful" : false,	//If true, consume energy while at max power
 	"staticDamageMultiplier" : null,	//If this value is set, arrow damage is independent of draw time and is instead multiplied by this value
 	"dynamicDamageMultiplier" : 1.1,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
@@ -37,7 +37,7 @@
     "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1", "swimIdle.1"],
 
 	"projectileCount" : 1,	//Amount of arrows to shoot at once
-    "timeUntilSplit" : 0.5,				//Time taken until the arrow splits			
+    "timeUntilSplit" : 0.5,				//Time taken until the arrow splits
     "splitCount" : [5, 10],					//Amount of arrows the first arrow splits into
     "arrowSplitAngle" : [5,10],				//The angle cluster arrows spawn at
 	"maxProjectileSpeedInherit" : 1.15,	//Minimum speed at which the projectile cluster spawns
@@ -45,7 +45,7 @@
 	"projectileMovementParameters" : {
 	  "gravityMultiplier" : 1.15
 	},
-	
+
     "projectileParameters" : {
       "knockbackRange" : [2,4],
       "speed" : 80,

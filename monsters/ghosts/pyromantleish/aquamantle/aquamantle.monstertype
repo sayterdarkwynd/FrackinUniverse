@@ -8,9 +8,9 @@
 
   "animation" : "aquamantle.animation",
 
-  "dropPools" : [ 
-    { 
-      "default" : "extraMonsterIce", 
+  "dropPools" : [
+    {
+      "default" : "extraMonsterIce",
       "bow" : "extraMonsterIceHunting",
       "firebow" : "extraMonsterIceHunting",
       "icebow" : "extraMonsterIceHunting",
@@ -19,12 +19,12 @@
       "cosmicbow" : "extraMonsterIceHunting",
       "radioactivebow" : "extraMonsterIceHunting",
       "shadowbow" : "extraMonsterIceHunting"
-    } 
+    }
   ],
-  
+
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"    
+      "/monsters/monster.lua"
     ],
 
     "behavior" : "monster",
@@ -34,7 +34,7 @@
 
       "targetQueryRange" : 30,
       "targetOnDamage" : true,
-      
+
       "keepTargetInSight" : false,
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 5.0,
@@ -78,7 +78,7 @@
             "winddownState" : "fly",
             "winddownTime" : 0.5
           }
-        },      
+        },
         {
           "name" : "action-fire",
           "cooldown" : 5.0,
@@ -142,7 +142,7 @@
             "winddownStopForce" : 25,
             "winddownTime" : 0.05
           }
-        }         
+        }
       ],
 
       "followActions" : [
@@ -179,13 +179,13 @@
             "winddownStopForce" : 25,
             "winddownTime" : 0.05
           }
-        }         
+        }
       ],
 
       "wanderActions" : [
         {
           "name" : "emerge-fly"
-        },      
+        },
         {
           "name" : "wander-fly",
           "parameters" : {
@@ -222,7 +222,7 @@
             "winddownStopForce" : 25,
             "winddownTime" : 0.05
           }
-        }       
+        }
       ]
     },
 
@@ -331,9 +331,9 @@
         },
         "radioactiveResistance" : {
           "baseValue" : 0.5
-        }, 
+        },
         "shadowResistance" : { "baseValue" : 1.0 },
-        "cosmicResistance" : { "baseValue" : -1.0 }     
+        "cosmicResistance" : { "baseValue" : -1.0 }
       },
 
       "resources" : {

@@ -28,9 +28,9 @@
       "hurtTime": 0.10,
       "hurtWaitForGround": false,
       "hurtWaitForGroundTime": 0.1,
-      
 
-      "foundTargetActions" : [ 
+
+      "foundTargetActions" : [
         {
           "name" : "action-animate",
           "cooldown" : 8,
@@ -39,12 +39,12 @@
             "state" : "roar",
             "animationTime" : 0.53
           }
-        }        
+        }
       ],
 
       "fleeActions" : [],
 
-      "hostileActions" : [      
+      "hostileActions" : [
         {
           "name" : "action-fire",
 	  "cooldown" : 4.5,
@@ -55,9 +55,9 @@
             "windupState" : "fire2",
             "windupTime" : 0.5,
 
-            "projectileType" : "fusoundwaveboss",      
+            "projectileType" : "fusoundwaveboss",
             "power" : 9,
-            
+
             "fireOffset" : [2.5, 0.3],
             "aimAtTarget" : true,
             "projectileCount" : 5,
@@ -68,7 +68,7 @@
             "winddownState" : "",
             "winddownTime" : 0.6
           }
-        },    
+        },
         {
           "name" : "action-fire",
 	  "cooldown" : 1,
@@ -79,13 +79,13 @@
             "windupState" : "chargewindup",
             "windupTime" : 0.3,
 
-            "projectileType" : "rocktrollswoosh",      
+            "projectileType" : "rocktrollswoosh",
             "projectectileParameters" : {
               "timeToLive" : 0.01,
               "speed":60
             },
             "power" : 22,
-            
+
             "fireOffset" : [5, 0.3],
             "aimAtTarget" : true,
             "projectileCount" : 1,
@@ -94,7 +94,7 @@
             "winddownState" : "chargewinddown",
             "winddownTime" : 0.2
           }
-        },         
+        },
         {
           "name" : "action-charge",
           "cooldown" : 2.75,
@@ -114,7 +114,7 @@
             "winddownStopForce" : 1000,
             "winddownState" : "chargewinddown"
           }
-        },       
+        },
        {
           "name" : "action-fire",
           "cooldown" : 8.5,
@@ -136,7 +136,7 @@
             "aimAtTarget" : true,
             "onGround" : false
           }
-        }  
+        }
       ],
 
       "periodicActions" : [
@@ -148,7 +148,7 @@
             "state" : "roar",
             "animationTime" : 0.53
           }
-        }    
+        }
       ],
       "approachActions" : [
         {
@@ -161,7 +161,7 @@
             "jumpXControlForce" : 50,
             "minXRange" : 10
           }
-        }       
+        }
       ],
 
       "followActions" : [
@@ -180,7 +180,7 @@
             "jumpXControlForce" : 50,
             "minXRange" : 10
           }
-        }        
+        }
       ],
 
       "wanderActions" : [
@@ -190,11 +190,11 @@
           "parameters" : {
             "wanderTime" : [5, 15]
           }
-        }    
+        }
       ],
 
       "damageTakenActions" : [],
-      
+
       "concurrentActions" : [
         {
           "name" : "action-spawncompanions",
@@ -203,20 +203,20 @@
             "spawnCooldown" : 5.0,
             "monsterType" : "knifetop"
           }
-        }       
+        }
       ],
-      
-      "concurrentHostileActions" : [  
+
+      "concurrentHostileActions" : [
         {
-          "name" : "action-statuseffect", 
+          "name" : "action-statuseffect",
           "cooldown" : 20,
           "parameters" : {
           "effect" : "nofalldamage",
           "duration" : 120
           }
-        },      
+        },
         {
-          "name" : "action-leap", 
+          "name" : "action-leap",
           "cooldown" : 3,
           "parameters" : {
             "minimumRange" : 0,
@@ -234,7 +234,7 @@
             "winddownState" : "",
             "winddownTime" : 0.2
           }
-        }      
+        }
       ]
     },
 

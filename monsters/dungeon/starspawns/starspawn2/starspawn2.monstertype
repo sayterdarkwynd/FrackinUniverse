@@ -32,7 +32,7 @@
       "foundTargetActions" : [],
       "fleeActions" : [],
 
-      "hostileActions" : [ 
+      "hostileActions" : [
         {
           "name" : "action-fire",
           "cooldown" : 4.0,
@@ -60,7 +60,7 @@
             "winddownState" : "",
             "winddownTime" : 0.2
           }
-        },                      
+        },
         {
           "name" : "action-charge",
           "cooldown" : 9.0,
@@ -81,9 +81,9 @@
             "winddownStopForce" : 1200,
             "winddownState" : "chargewinddown"
           }
-        }        
+        }
       ],
-      
+
       "damageTakenActions" : [
         {
           "name" : "action-invulnerable",
@@ -97,15 +97,15 @@
           }
         },
         {
-          "name" : "action-statuseffect", 
+          "name" : "action-statuseffect",
           "cooldown" : 30,
           "parameters" : {
             "effect" : "mage_shield_lvl4starspawn",
             "duration" : 3
           }
-        }         
+        }
       ],
-      
+
       //if using the actions below, disable invulnerability
       "invulnerableActions" : [
         {
@@ -121,7 +121,7 @@
             "projectileType" : "shadowswoosh",
             "projectileParameters" : {
               "statusEffects" : [ "superdarkstatmid" ],"damageKind" : "shadow"
-            },            
+            },
             "power" : 9,
             "speed": 15,
             "fireOffset" : [3, 0],
@@ -134,7 +134,7 @@
             "winddownState" : "",
             "winddownTime" : 1.2
           }
-        },      
+        },
         {
           "name" : "action-fire",
 	  "cooldown" : 12,
@@ -148,7 +148,7 @@
             "projectileType" : "chaosswoosh",
             "projectileParameters" : {
               "damageKind" : "shadow"
-            },             
+            },
             "power" : 11,
             "speed": 20,
             "fireOffset" : [4, 0],
@@ -159,7 +159,7 @@
             "winddownState" : "",
             "winddownTime" : 1.4
           }
-        },     
+        },
         {
           "name" : "action-charge",
           "cooldown" : 20.0,
@@ -194,12 +194,12 @@
             "windupTime" : 0.2,
 
             "projectileType" : "floatydeathballelder",
-            
+
             "projectileParameters" : {
               "speed" : 1,
               "timeToLive" : 5,
               "physics" : "laser",
-              "damageKind" : "shadow",                          
+              "damageKind" : "shadow",
               "statusEffects" : [ "superdarkstatmid" ]
             },
             "power" : 5,
@@ -213,9 +213,9 @@
             "winddownState" : "",
             "winddownTime" : 0.2
           }
-        }   
+        }
       ],
-      
+
       "periodicActions" : [ ],
 
       "approachActions" : [
@@ -228,9 +228,9 @@
 	    "teleportMinDistance": 12,
 	    "targetXDelta": 5,
 	    "groundMinHeight": -20,
-	    "groundMaxHeight": 20               
+	    "groundMaxHeight": 20
           }
-        } 
+        }
       ],
 
       "followActions" : [
@@ -243,7 +243,7 @@
 	    "teleportMinDistance": 20,
 	    "targetXDelta": 5,
 	    "groundMinHeight": -30,
-	    "groundMaxHeight": 30               
+	    "groundMaxHeight": 30
           }
         }
       ],
@@ -258,9 +258,9 @@
 	    "teleportMinDistance": 12,
 	    "targetXDelta": 5,
 	    "groundMinHeight": -20,
-	    "groundMaxHeight": 20               
+	    "groundMaxHeight": 20
           }
-        } 
+        }
       ],
 
       "concurrentActions" : [
@@ -275,7 +275,7 @@
           }
         }
       ],
-      
+
     "concurrentHostileActions" : [
         {
           "name" : "action-fire",
@@ -300,7 +300,7 @@
             "winddownState" : "",
             "winddownTime" : 0.7
           }
-        },        
+        },
         {
           "name" : "action-fire",
 	  "cooldown" : 3,
@@ -323,9 +323,9 @@
             "winddownState" : "",
             "winddownTime" : 1.2
           }
-        }    
+        }
     ]
-      
+
     },
 
 
@@ -410,19 +410,19 @@
         },
         "insanityImmunity" : {
           "baseValue" : 1.0
-        },     
+        },
         "pusImmunity" : {
           "baseValue" : 1.0
-        },          
+        },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
-        },        
+        },
         "powerMultiplier" : {
           "baseValue" : 1.0
         },
         "penaltyBlock" : {
           "baseValue" : 1.0
-        },         
+        },
         "poisonResistance" : { "baseValue" : 0.8 },
         "fireResistance" : { "baseValue" : 0.3 },
         "iceResistance" : { "baseValue" : 0.2 },

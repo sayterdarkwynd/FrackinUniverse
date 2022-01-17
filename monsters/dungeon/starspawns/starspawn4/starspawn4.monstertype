@@ -57,8 +57,8 @@
           }
         }
       ],
-      
-      "hostileActions" : [   
+
+      "hostileActions" : [
         {
           "name" : "action-fire",
 	  "cooldown" : 5,
@@ -82,7 +82,7 @@
             "winddownState" : "invis",
             "winddownTime" : 1.0
           }
-        },    
+        },
         {
           "name" : "action-fire",
 	  "cooldown" : 8,
@@ -103,7 +103,7 @@
             "winddownState" : "",
             "winddownTime" : 0.6
           }
-        },           
+        },
         {
           "name" : "action-fire",
 	  "cooldown" : 10,
@@ -116,7 +116,7 @@
 
             "projectileType" : "starspawnball",
             "projectileParameters" : {
-                "damageKind" : "shadow", 
+                "damageKind" : "shadow",
 		"actionOnReap" : [
 		    {
 		      "action" : "config",
@@ -129,7 +129,7 @@
 		      "inheritDamageFactor" : 0.75,
 		      "angleAdjust" : 0
 		    }
-		]            
+		]
             },
             "power" : 20,
             "speed": 15,
@@ -140,7 +140,7 @@
             "winddownState" : "invis",
             "winddownTime" : 0.6
           }
-        },            
+        },
         {
           "name" : "action-fire",
 	  "cooldown" : 12,
@@ -152,10 +152,10 @@
             "windupTime" : 0.9,
 
             "projectileType" : "poisonportal",
-            "projectileParameters" : { 
-              "speed" : 5, 
+            "projectileParameters" : {
+              "speed" : 5,
               "power" : 10,
-              "damageSourceKind" : "radioactive", 
+              "damageSourceKind" : "radioactive",
               "timeToLive" : 5,
 		        "actionOnReap" : [
 			    {
@@ -169,7 +169,7 @@
 			      "inheritDamageFactor" : 0.75,
 			      "angleAdjust" : 35
 			    }
-			],                
+			],
 		  "periodicActions" : [
 		    {
 		      "time" : 0.087,
@@ -178,14 +178,14 @@
 		      "type" : "floatypoisonball2",
 		      "inheritDamageFactor" : 1.0,
 		      "fuzzAngle" : 360,
-		      "projectileParameters" : { 
-		        "damageKind" : "poison", 
+		      "projectileParameters" : {
+		        "damageKind" : "poison",
 		        "speed" : 12 ,
 		        "power" : 8
 	              }
 		    }
-		  ]             
-            
+		  ]
+
             },
             "power" : 20,
             "fireOffset" : [4, 8],
@@ -196,7 +196,7 @@
             "winddownState" : "",
             "winddownTime" : 0.6
           }
-        }     
+        }
       ],
 
       "periodicActions" : [],
@@ -211,7 +211,7 @@
 	    "teleportMinDistance": 15,
 	    "targetXDelta": 5,
 	    "groundMinHeight": -10,
-	    "groundMaxHeight": 10               
+	    "groundMaxHeight": 10
           }
         },
         {
@@ -237,7 +237,7 @@
 	    "teleportMinDistance": 18,
 	    "targetXDelta": 5,
 	    "groundMinHeight": -20,
-	    "groundMaxHeight": 20               
+	    "groundMaxHeight": 20
           }
         }
       ],
@@ -252,9 +252,9 @@
 	    "teleportMinDistance": 14,
 	    "targetXDelta": 5,
 	    "groundMinHeight": -20,
-	    "groundMaxHeight": 20               
+	    "groundMaxHeight": 20
           }
-        },      
+        },
         {
           "name" : "wander-walk",
           "cooldown" : 3.0,
@@ -270,7 +270,7 @@
         }
       ],
 
-      "concurrentActions" : [      
+      "concurrentActions" : [
         {
           "name" : "action-spawncompanions",
           "cooldown" : 12,
@@ -280,20 +280,20 @@
             "monsterType" : "squidbeast",
             "state" : "fire"
           }
-        }       
+        }
       ],
-      
+
       "damageTakenActions" : [
         {
-          "name" : "action-statuseffect", 
+          "name" : "action-statuseffect",
           "cooldown" : 30,
           "parameters" : {
             "effect" : "mage_shield_lvl4starspawn",
             "duration" : 20
           }
-        }      
-      ]     
-      
+        }
+      ]
+
     },
 
     "damageParts" : {
@@ -362,14 +362,14 @@
       "stats" : {
         "penaltyBlock" : {
           "baseValue" : 1.0
-        },       
+        },
         "knockbackStunTime" : {"baseValue" : 0.25},
         "knockbackThreshold" : {"baseValue" : 9},
         "maxHealth" : {"baseValue" : 150},
         "protection" : {"baseValue" : 0.25},
         "fireStatusImmunity" : {"baseValue" : 1.0},
-        "insanityImmunity" : {"baseValue" : 1.0},         
-        "poisonStatusImmunity" : {"baseValue" : 1.0},        
+        "insanityImmunity" : {"baseValue" : 1.0},
+        "poisonStatusImmunity" : {"baseValue" : 1.0},
         "powerMultiplier" : {"baseValue" : 1.0},
         "poisonResistance" : { "baseValue" : 0.2 },
         "fireResistance" : { "baseValue" : 0.2 },
@@ -395,7 +395,7 @@
         "damageAbsorption" : {
           "deltaValue" : 0.0,
           "initialValue" : 0.0
-        },      
+        },
         "stunned" : {
           "deltaValue" : -1.0,
           "initialValue" : 0.0
