@@ -1,92 +1,91 @@
 {
-  "itemName" : "leatherhead",
-  "price" : 1440,
-  "inventoryIcon" : "icons.png:head",
-  "maxStack" : 1,
-  "rarity" : "Common",
-  "category" : "headarmour",
-  "description" : "^orange;Set Bonuses^reset;:
+	"itemName": "leatherhead",
+	"price": 1440,
+	"inventoryIcon": "icons.png:head",
+	"maxStack": 1,
+	"rarity": "Common",
+	"category": "headarmour",
+	"description": "^orange;Set Bonuses^reset;:
 ^yellow;^reset; +^green;1^reset;% Crit Chance, +^green;2.5^reset;% Speed
 ^yellow;^reset; Garden/Forest: Energy x^green;1.05^reset;, +^green;5^reset;% Knockback Resistance
 ^yellow;^reset; Bow/XBow^reset;: +^green;2^reset;% Crit Chance, Damage x^green;1.15^reset;, -^green;4^reset; Energy Per Shot, +^green;5^reset; Air Dmg, +^green;10^reset;% Draw Speed",
 
-  "shortdescription" : "Leather Cap",
-  "tooltipKind" : "armornew2",
+	"shortdescription": "Leather Cap",
+	"tooltipKind": "armornew2",
 
-  "maleFrames" : "head.png",
-  "femaleFrames" : "head.png",
-  "mask" : "mask.png",
-  "itemTags" : [ "upgradeableWeapon", "offensive", "ranged" ],
-  "level" : 1,
-  //"collectablesOnPickup" : { "fu_armorranged" : "leatherhead" },
-  "leveledStatusEffects" : [
-    {
-      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.175
-    },
-    {
-      "levelFunction" : "standardArmorLevelProtectionMultiplier",
-      "stat" : "protection",
-      "amount" : 0.25
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
-      "stat" : "maxEnergy",
-      "amount" : 5
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
-      "stat" : "maxHealth",
-      "amount" : 2
-    },
-	{
-      "levelFunction" : "fuArmorResistMultiplier",
-      "stat" : "iceResistance",
-      "amount" : 0.04
-    },
-	{
-      "levelFunction" : "fuArmorResistMultiplier",
-      "stat" : "electricResistance",
-      "amount" : 0.04
-    }
-  ],
+	"maleFrames": "head.png",
+	"femaleFrames": "head.png",
+	"mask": "mask.png",
+	"itemTags": [ "upgradeableWeapon", "offensive", "ranged" ],
+	"level": 1,
+	//"collectablesOnPickup": { "fu_armorranged": "leatherhead" },
+	"leveledStatusEffects": [
+		{
+			"levelFunction": "standardArmorLevelPowerMultiplierMultiplier",
+			"stat": "powerMultiplier",
+			"baseMultiplier": 1.175
+		},
+		{
+			"levelFunction": "standardArmorLevelProtectionMultiplier",
+			"stat": "protection",
+			"amount": 0.25
+		},
+		{
+			"levelFunction": "standardArmorLevelMaxEnergyMultiplier",
+			"stat": "maxEnergy",
+			"amount": 5
+		},
+		{
+			"levelFunction": "standardArmorLevelMaxHealthMultiplier",
+			"stat": "maxHealth",
+			"amount": 2
+		},
+		{
+			"levelFunction": "fuArmorResistMultiplier",
+			"stat": "iceResistance",
+			"amount": 0.04
+		},
+		{
+			"levelFunction": "fuArmorResistMultiplier",
+			"stat": "electricResistance",
+			"amount": 0.04
+		}
+	],
 
-  "statusEffects" : [
-    "fusetbonusmanager",
-    {
-      "stat" : "leathersetcount",
-      "amount" : 1
-    }
-  ],
+	"statusEffects": [
+		"leathersetbonus",
+		{
+			"stat": "fu_leatherset_head",
+			"amount": 1
+		}
+	],
 
-
-  "colorOptions" : [
-    // BROWN
-    { "ffca8a" : "cc9f69", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" },
-    // LIGHT GREY
-    { "ffca8a" : "cccccc", "e0975c" : "9e9e9e", "a85636" : "616161", "6f2919" : "383838" },
-    // BLACK
-    { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },
-    // GREY
-    { "ffca8a" : "b5b5b5", "e0975c" : "808080", "a85636" : "555555", "6f2919" : "303030" },
-    // WHITE
-    { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },
-    // RED
-    { "ffca8a" : "f4988c", "e0975c" : "d93a3a", "a85636" : "932625", "6f2919" : "601119" },
-    // ORANGE
-    { "ffca8a" : "ffd495", "e0975c" : "ea9931", "a85636" : "af4e00", "6f2919" : "6e2900" },
-    // YELLOW
-    { "ffca8a" : "ffffa7", "e0975c" : "e2c344", "a85636" : "a46e06", "6f2919" : "642f00" },
-    // GREEN
-    { "ffca8a" : "b2e89d", "e0975c" : "51bd3b", "a85636" : "247824", "6f2919" : "144216" },
-    // BLUE
-    { "ffca8a" : "96cbe7", "e0975c" : "5588d4", "a85636" : "344495", "6f2919" : "1a1c51" },
-    // PURPLE
-    { "ffca8a" : "d29ce7", "e0975c" : "a451c4", "a85636" : "6a2284", "6f2919" : "320c40" },
-    // PINK
-    { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" }
-  ],
-  //"upgrades" : 1 ,   //only add if the armor has an upgrade
-  "builder" : "/items/buildscripts/fubuildarmor.lua"
+	"colorOptions": [
+		// BROWN
+		{ "ffca8a": "cc9f69", "e0975c": "a47844", "a85636": "754c23", "6f2919": "472b13" },
+		// LIGHT GREY
+		{ "ffca8a": "cccccc", "e0975c": "9e9e9e", "a85636": "616161", "6f2919": "383838" },
+		// BLACK
+		{ "ffca8a": "838383", "e0975c": "555555", "a85636": "383838", "6f2919": "151515" },
+		// GREY
+		{ "ffca8a": "b5b5b5", "e0975c": "808080", "a85636": "555555", "6f2919": "303030" },
+		// WHITE
+		{ "ffca8a": "e6e6e6", "e0975c": "b6b6b6", "a85636": "7b7b7b", "6f2919": "373737" },
+		// RED
+		{ "ffca8a": "f4988c", "e0975c": "d93a3a", "a85636": "932625", "6f2919": "601119" },
+		// ORANGE
+		{ "ffca8a": "ffd495", "e0975c": "ea9931", "a85636": "af4e00", "6f2919": "6e2900" },
+		// YELLOW
+		{ "ffca8a": "ffffa7", "e0975c": "e2c344", "a85636": "a46e06", "6f2919": "642f00" },
+		// GREEN
+		{ "ffca8a": "b2e89d", "e0975c": "51bd3b", "a85636": "247824", "6f2919": "144216" },
+		// BLUE
+		{ "ffca8a": "96cbe7", "e0975c": "5588d4", "a85636": "344495", "6f2919": "1a1c51" },
+		// PURPLE
+		{ "ffca8a": "d29ce7", "e0975c": "a451c4", "a85636": "6a2284", "6f2919": "320c40" },
+		// PINK
+		{ "ffca8a": "eab3db", "e0975c": "d35eae", "a85636": "97276d", "6f2919": "59163f" }
+	],
+	//"upgrades": 1 ,	 //only add if the armor has an upgrade
+	"builder": "/items/buildscripts/fubuildarmor.lua"
 }

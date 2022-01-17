@@ -8,7 +8,7 @@
   "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; ^cyan;Spawns Minions^reset;: Magma Slime
 ^yellow;^reset; Slime weapons: +^green;6^reset;% Crit, Damage x^green;1.2^reset;
-^yellow;^reset; ^cyan;Immune^reset;: Poison, Bio-Ooze, Slime, Mud, Clay, Snow, Ice Slip", 
+^yellow;^reset; ^cyan;Immune^reset;: Poison, Bio-Ooze, Slime, Mud, Clay, Snow, Ice Slip",
   "shortdescription" : "Red Slime Chest",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -62,13 +62,22 @@
       "levelFunction" : "fuArmorSetTierMultiplier",
       "stat" : "fu_slimeset3_chest",
       "amount" : 1
+    },
+    {
+      "levelFunction" : "fuArmorSetTierMultiplier",
+      "stat" : "fu_slimeset2_chest",
+      "amount" : 1
+    },
+    {
+      "levelFunction" : "fuArmorSetTierMultiplier",
+      "stat" : "fu_slimeset_chest",
+      "amount" : 1
     }
   ],
 
   "statusEffects" : [
     "slimesetbonus3"
   ],
-
 
   "colorOptions" : [
     { "ffca8a" : "fffdb0", "e0975c" : "cbc234", "a85636" : "926e19", "6f2919" : "563f0f" },
@@ -85,5 +94,5 @@
 
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

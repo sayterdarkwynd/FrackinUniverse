@@ -23,7 +23,7 @@ function update(dt)
 		effect.expire()
 		status.removeEphemeralEffect( "damagedefense" )
 	else
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
+
 		checkWeapons()
 		status.addEphemeralEffect( "damagedefense" )
 	end

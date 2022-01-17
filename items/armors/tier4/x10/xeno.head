@@ -5,10 +5,10 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
    "description" : "^cyan;Headlamp^reset;
-^orange;Set Bonuses^reset;: 
+^orange;Set Bonuses^reset;:
 ^yellow;^reset; Fall Damage x^green;0.7^reset;
 ^yellow;^reset; Assault/Energy Rifle: Damage x^green;1.2^reset; and +^green;2^reset;% Crit Chance
-^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Gas, Liq. Nitrogen, Cold", 
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Gas, Liq. Nitrogen, Cold",
   "shortdescription" : "X10 Power Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -53,10 +53,14 @@
   ],
   "itemTags" : [ "upgradeableWeapon", "defensive", "ranged", "hyper" ],
   "statusEffects" : [
-    "headlamp",     
+    "headlamp",
     "x10setbonus",
     {
       "stat" : "fu_x10set_head",
+      "amount" : 1
+    },
+    {
+      "stat" : "fu_assaultset_head",
       "amount" : 1
     }
   ],
@@ -75,6 +79,6 @@
     { "ffca8a" : "ebd3c4", "e0975c" : "be8569", "a85636" : "763f28", "6f2919" : "1c0c06" }
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }
 
