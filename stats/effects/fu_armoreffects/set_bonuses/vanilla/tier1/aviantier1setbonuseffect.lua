@@ -5,17 +5,11 @@ weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.1}
 }
 
-armorBonus={
-
-}
-
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
 	checkWeapons()
-
-	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
