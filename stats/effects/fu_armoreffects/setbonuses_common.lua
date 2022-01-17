@@ -39,6 +39,7 @@ end
 
 function setBonusMultiply(effectBase,mult)
 	local temp={}
+	if not effectBase then return temp end
 	for _,vOld in pairs(effectBase) do
 		local v=copy(vOld)
 		v["amount"]=(v["amount"] and (v["amount"]*mult)) or nil
