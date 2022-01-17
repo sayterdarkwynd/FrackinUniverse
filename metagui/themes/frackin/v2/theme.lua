@@ -12,7 +12,7 @@ local titleBar, icon, title, close, spacer
 function theme.decorate()
   local style = mg.cfg.style
   widget.addChild(frame.backingWidget, { type = "canvas", position = {0, 0}, size = frame.size }, "canvas")
-  
+
   if (style == "window") then
     titleBar = frame:addChild { type = "layout", position = {12, 3}, size = {frame.size[1] - 24 - 5, 23}, mode = "horizontal", align = 0.55 }
     icon = titleBar:addChild { type = "image" }
@@ -33,15 +33,15 @@ function theme.drawFrame()
   local style = mg.cfg.style
   c = widget.bindCanvas(frame.backingWidget .. ".canvas")
   c:clear() --assets.frame:drawToCanvas(c)
-  
+
   local pal = paletteFor "accent"
-  
+
   if (style == "window") then
     local cs = c:size()
     assets.windowBorder:drawToCanvas(c, "frame" .. pal)
     assets.windowBorder:drawToCanvas(c, table.concat {"semi", pal, "?multiply=ffffff3f"})
     c:drawImage(assets.windowGadget .. pal, {5, math.min(math.floor(0.5 + cs[2] * 0.64), cs[2] - 44)}, 1.0, {255,255,255}, true)
-    
+
     spacer.explicitSize = (not mg.cfg.icon) and -2 or 1
     icon.explicitSize = (not mg.cfg.icon) and {-1, 0} or nil
     icon:setFile(mg.cfg.icon)
