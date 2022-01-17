@@ -332,10 +332,9 @@ function masteries.apply(args)
 					end
 				end
 
-				-- FIXME: found by Luacheck: values of "dashModifier" and "dodgeModifier" (calculated above) are not used for anything.
 				masteryBuffer[#masteryBuffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+powerModifier}
-				masteryBuffer[#masteryBuffer + 1]={stat="dashtechBonus", amount=0.1*(masteries.stats.shortswordMastery/3) }
-				masteryBuffer[#masteryBuffer + 1]={stat="dodgetechBonus", amount=0.1*(masteries.stats.shortswordMastery/3) }
+				masteryBuffer[#masteryBuffer + 1]={stat="dashtechBonus", amount=dashModifier }
+				masteryBuffer[#masteryBuffer + 1]={stat="dodgetechBonus", amount=dodgeModifier }
 				masteryBuffer[#masteryBuffer + 1]={stat="grit", amount=gritModifier}
 			end
 
