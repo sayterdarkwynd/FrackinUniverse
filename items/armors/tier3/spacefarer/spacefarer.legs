@@ -1,64 +1,68 @@
 {
-  "itemName" : "spacefarerpants",
-  "inventoryIcon" : "icons.png:pants",
-  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "^orange;Set Bonuses^reset;:
+	"itemName" : "spacefarerpants",
+	"inventoryIcon" : "icons.png:pants",
+	"dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; Mining Laser: Combat Damage x^green;2^reset;
 ^yellow;^reset; +^green;175^reset;s Oxygen
 ^yellow;^reset; +^green;50^reset;% Defense Tech Efficiency
 ^cyan;Immune^reset;: Burning, Proto-Poison, Gas",
-  "shortdescription" : "Spacefarer Greaves",
-  "category" : "legarmour",
-  "tooltipKind" : "armornew2",
+	"shortdescription" : "Spacefarer Greaves",
+	"category" : "legarmour",
+	"tooltipKind" : "armornew2",
  // "learnBlueprintsOnPickup" : [ "spacefarerpantsadv" ],
 
-  "maleFrames" : "pants.png",
-  "femaleFrames" : "pants.png",
-    "itemTags" : [ "upgradeableWeapon", "defensive", "explorer" ],
-  "level" : 3,
-  //"collectablesOnPickup" : { "fu_armorexplorer" : "spacefarerpants" },
-  "leveledStatusEffects" : [
-    {
-      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.05
-    },
-    {
-      "levelFunction" : "standardArmorLevelProtectionMultiplier",
-      "stat" : "protection",
-      "amount" : 0.2
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
-      "stat" : "maxEnergy",
-      "amount" : 3
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
-      "stat" : "maxHealth",
-      "amount" : 3
-    },
-	{
-      "levelFunction" : "fuArmorResistMultiplier",
-      "stat" : "electricResistance",
-      "amount" : 0.035
-    },
-	{
-      "levelFunction" : "fuArmorResistMultiplier",
-      "stat" : "physicalResistance",
-      "amount" : 0.015
-    }
-  ],
+	"maleFrames" : "pants.png",
+	"femaleFrames" : "pants.png",
+		"itemTags" : [ "upgradeableWeapon", "defensive", "explorer" ],
+	"level" : 3,
+	//"collectablesOnPickup" : { "fu_armorexplorer" : "spacefarerpants" },
+	"leveledStatusEffects" : [
+		{
+			"levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+			"stat" : "powerMultiplier",
+			"baseMultiplier" : 1.05
+		},
+		{
+			"levelFunction" : "standardArmorLevelProtectionMultiplier",
+			"stat" : "protection",
+			"amount" : 0.2
+		},
+		{
+			"levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+			"stat" : "maxEnergy",
+			"amount" : 3
+		},
+		{
+			"levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+			"stat" : "maxHealth",
+			"amount" : 3
+		},
+		{
+			"levelFunction" : "fuArmorResistMultiplier",
+			"stat" : "electricResistance",
+			"amount" : 0.035
+		},
+		{
+			"levelFunction" : "fuArmorResistMultiplier",
+			"stat" : "physicalResistance",
+			"amount" : 0.015
+		}
+	],
 
-  "statusEffects" : [
-    "spacefarersetbonus",
-    {
-      "stat" : "fu_spacefarerset_legs",
-      "amount" : 1
-    }
+	"statusEffects" : [
+		"spacefarersetbonus",
+		{
+			"stat" : "fu_spacefarerset_legs",
+			"amount" : 1
+		},
+		{
+			"stat": "fu_tw_spacesuitset_legs",
+			"amount": 1
+		}
 ],
-  //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua"
+	//"upgrades" : 1 ,
+	"builder" : "/items/buildscripts/fubuildarmor.lua"
 }
