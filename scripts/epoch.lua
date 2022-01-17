@@ -66,7 +66,7 @@ function epoch.toTable(t)
 	return {hour=h,minute=n,second=s,month=m,day=d,year=y,dow=w}
     --[[print("y","j","m","d","w","h","n","s")
     print(y,j+1,m,d,w,h,n,s)]]
-	
+
 end
 --[[
 local t=os.time()

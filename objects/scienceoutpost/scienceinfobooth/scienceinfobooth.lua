@@ -19,8 +19,8 @@ function update(dt)
     end
   end
   self.containsPlayers = newPlayers
-  
-  
+
+
   if self.chatTimer == 0 and self.chatIndex ~= 0  then
   chatOptions = config.getParameter("chatOptions", {})
 	object.say(chatOptions[(self.chatIndex % #chatOptions)])
@@ -32,7 +32,7 @@ function update(dt)
 		--object.say(self.chatTimer)
 		end
 	end
-  
+
 end
 
 function onInteraction(args)

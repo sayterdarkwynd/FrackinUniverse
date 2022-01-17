@@ -152,8 +152,8 @@ function WhipCrack:fire()
 
 	local chainStartPos = vec2.add(mcontroller.position(), activeItem.handPosition(self.chain.startOffset))
 	local chainLength = world.magnitude(chainStartPos, activeItem.ownerAimPosition())
-	chainLength = math.min(self.chain.length[2], math.max(self.chain.length[1], chainLength)) 
-    
+	chainLength = math.min(self.chain.length[2], math.max(self.chain.length[1], chainLength))
+
     -- *****************
     -- FR STUFF
     if self.helper then

@@ -122,7 +122,7 @@ function routeItems(dt)
 		if sourceItems then
 			for indexIn,item in pairs(sourceItems or {}) do
 				if not storage.leaveOne or item.count > 1 then
-					if storage.leaveOne then 
+					if storage.leaveOne then
 						item.count = item.count - 1
 					end
 					local pass,mod = checkFilter(item)

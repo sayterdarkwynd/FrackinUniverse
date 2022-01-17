@@ -25,7 +25,7 @@ function build(directory, config, parameters, level, seed)
 	end
 	local dumptable=function(tt)
 		local s = ""
-		for _,p in pairs(tt) do  
+		for _,p in pairs(tt) do
 			s=s.." "..p
 		end
 		return string.sub(s, 2)

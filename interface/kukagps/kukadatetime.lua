@@ -24,7 +24,7 @@ function populateMaterialsList()
                 if worldId[1]=="CelestialWorld" then
                     weather =root.assetJson("/interface/kukagps/weather.config")
                     enviroment =root.assetJson("/interface/kukagps/enviroment.config")
-                    
+
                     -- print date
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Date:^reset; "..getDate(world.day()))

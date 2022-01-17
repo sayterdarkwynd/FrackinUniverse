@@ -18,7 +18,7 @@ function init()
 	self.baseDamage=config.getParameter("baseDamage",0.0007)
 	--'hard' target damage is scaled by world tier, multiplied by base damage and any special scaling
 	self.hardMult=config.getParameter("baseDamage",500)
-	
+
 	--30s internal timer, no refreshing
 	local dur=effect.duration()
 	self.duration=self.duration or math.min(30,dur)
