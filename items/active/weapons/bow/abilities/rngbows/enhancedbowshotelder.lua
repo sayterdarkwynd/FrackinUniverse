@@ -126,7 +126,7 @@ end
 function NebBowShotElder:fire()
 	self.hasChargedCursor = false
 	activeItem.setCursor(self.cursorFrames[1])
-	self.weapGon:setStance(self.stances.fire)
+	self.weapon:setStance(self.stances.fire)
 
 	animator.setGlobalTag("drawFrame", "0")
 	animator.stopAllSounds("ready")
@@ -204,7 +204,7 @@ function NebBowShotElder:currentProjectileParameters()
 	local drawTimeMultiplier = self.staticDamageMultiplier or math.min(1, (self.drawTimer/ self.modifiedDrawTime))
 	projectileParameters.power = projectileParameters.power or projectileConfig.power
 	projectileParameters.power = projectileParameters.power
-		* self.modifiedDrawTime
+		* self.baseDrawTime
 		* self.weapon.damageLevelMultiplier
 		* drawTimeMultiplier
 		* (self.dynamicDamageMultiplier or 1)

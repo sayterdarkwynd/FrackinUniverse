@@ -239,7 +239,7 @@ function NebRNGBowShot:currentProjectileParameters()
 	local drawTimeMultiplier = self.staticDamageMultiplier or math.min(1, (self.drawTimer/ self.modifiedDrawTime))
 	projectileParameters.power = projectileParameters.power or projectileConfig.power
 	projectileParameters.power = projectileParameters.power
-		* self.modifiedDrawTime
+		* self.self.baseDrawTime
 		* self.weapon.damageLevelMultiplier
 		* drawTimeMultiplier
 		* (self.dynamicDamageMultiplier or 1)
