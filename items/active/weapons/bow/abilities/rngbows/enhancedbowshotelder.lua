@@ -229,7 +229,7 @@ end
 
 function NebBowShotElder:updateProjectiles()
 	local aimPosition = activeItem.ownerAimPosition()
-	sb.logInfo("%s",aimPosition)
+	--sb.logInfo("%s",aimPosition)
 	local newProjectiles = {}
 	for _, projectileId in pairs(storage.projectiles) do
 		if world.entityExists(projectileId) then
