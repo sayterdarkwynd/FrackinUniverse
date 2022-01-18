@@ -63,14 +63,14 @@ end
 
 function NebRNGBowShot:draw()
 	self.energyBonus = status.stat("bowEnergyBonus")
-
 	self.weapon:setStance(self.stances.draw)
+	local readySoundPlayed = false
+	status.setStatusProperty(activeItem.hand().."Firing",true)
 
+	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*(1/(1+math.max(-0.99,status.stat("bowDrawTimeBonus")))))
 	animator.setSoundPitch("draw", 1, self.modifiedDrawTime)
 	animator.playSound("draw", -1)
-	local readySoundPlayed = false
 
-	status.setStatusProperty(activeItem.hand().."Firing",true)
 	while self.fireMode == (self.activatingFireMode or self.abilitySlot) and not status.resourceLocked("energy") do
 		if self.walkWhileFiring then
 			mcontroller.controlModifiers({runningSuppressed = true})
@@ -89,7 +89,7 @@ function NebRNGBowShot:draw()
 			status.setResourcePercentage("energyRegenBlock", 0.6)
 			drawFrame = #self.drawArmFrames - 1
 			if self.drainEnergyWhilePowerful then
-			status.overConsumeResource("energy", self.holdEnergyUsage * self.dt) --Optionally drain energy while at max power level
+				status.overConsumeResource("energy", self.holdEnergyUsage * self.dt) --Optionally drain energy while at max power level
 			end
 
 		--If drawn beyond power peak levels, drain energy slowly
@@ -239,15 +239,15 @@ function NebRNGBowShot:currentProjectileParameters()
 	local drawTimeMultiplier = self.staticDamageMultiplier or math.min(1, (self.drawTimer/ self.modifiedDrawTime))
 	projectileParameters.power = projectileParameters.power or projectileConfig.power
 	projectileParameters.power = projectileParameters.power
-		* self.self.baseDrawTime
+		* self.baseDrawTime
 		* self.weapon.damageLevelMultiplier
 		* drawTimeMultiplier
 		* (self.dynamicDamageMultiplier or 1)
 		* damageBonus
 		* ((mcontroller.onGround() and 1) or ((mcontroller.liquidMovement() and 1) or (mcontroller.zeroG() and 1) or (self.airborneBonus + status.stat("bowAirBonus"))))
 		/ (self.projectileCount or 1)
-		projectileParameters.power = Crits.setCritDamage(self,projectileParameters.power)
 		projectileParameters.powerMultiplier = activeItem.ownerPowerMultiplier()
+		projectileParameters.power = Crits.setCritDamage(self,projectileParameters.power)
 	return projectileParameters
 end
 

@@ -11,6 +11,7 @@ function NebBowShot:init()
 	self.drawTimer=0
 	self.baseDrawTime=self.drawTime
 	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*(1/(1+math.max(-0.99,status.stat("bowDrawTimeBonus")))))
+
 	animator.setGlobalTag("drawFrame", "0")
 	animator.setAnimationState("bow", "idle")
 	self.cooldownTimer = 0
@@ -60,12 +61,13 @@ end
 function NebBowShot:draw()
 	self.energyBonus = status.stat("bowEnergyBonus")
 	self.weapon:setStance(self.stances.draw)
+	local readySoundPlayed = false
+	status.setStatusProperty(activeItem.hand().."Firing",true)
 
+	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*(1/(1+math.max(-0.99,status.stat("bowDrawTimeBonus")))))
 	animator.setSoundPitch("draw", 1, self.modifiedDrawTime)
 	animator.playSound("draw", -1)
-	local readySoundPlayed = false
-	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*(1/(1+math.max(-0.99,status.stat("bowDrawTimeBonus")))))
-	status.setStatusProperty(activeItem.hand().."Firing",true)
+
 	while self.fireMode == (self.activatingFireMode or self.abilitySlot) and not status.resourceLocked("energy") do
 		if self.walkWhileFiring then
 			mcontroller.controlModifiers({runningSuppressed = true})
@@ -174,6 +176,7 @@ function NebBowShot:currentProjectileParameters()
 	if self.minMaxSpeedMultiplier then
 		speedMultiplier = math.random(self.minMaxSpeedMultiplier[1] * 100, self.minMaxSpeedMultiplier[2] * 100) / 100
 	end
+	speedMultiplier = speedMultiplier*(1+status.stat("arrowSpeedMultiplier"))															
 
 	--Calculate projectile speed based on draw time and projectile parameters
 	projectileParameters.speed = projectileParameters.speed or projectileConfig.speed
