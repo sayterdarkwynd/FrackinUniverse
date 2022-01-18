@@ -1,0 +1,56 @@
+{
+  "partTagDefaults" : {
+    "head" : {
+      "frameSet" : "",
+      "directives" : ""
+    }
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "head" : {
+        "default" : "hide",
+        "states" : {
+          "show" : {},
+          "hide" : {}
+        }
+      }
+    },
+
+    "parts" : {
+      "standBase" : {
+        "properties" : {
+          "centered" : false,
+          "offset" : [0, 0],
+          "zLevel" : 0,
+          "image" : "fubuststandbase.png"
+        }
+      },
+      "dummyHead" : {
+        "properties" : {
+          "centered" : false,
+          "offset" : [0, 0.125],
+          "zLevel" : 4,
+          "image" : "/humanoid/any/fubusthead.png"
+        }
+      },
+      "head" : {
+        "properties" : {
+          "centered" : false,
+          "offset" : [-1, -1.875],
+          "zLevel" : 8
+        },
+
+        "partStates" : {
+          "head" : {
+            "show" : {
+              "properties" : {
+                "image" : "<frameSet>:normal<directives>"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
