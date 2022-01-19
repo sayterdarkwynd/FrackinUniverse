@@ -16,7 +16,7 @@ function tagCaching.update()
 	if tagCaching.primaryTagCacheItemChanged then
 		tagCaching.primaryTagCacheItemChanged=false
 		tagCaching.primaryTagCacheOld={}
-	end	
+	end
 	if tagCaching.altTagCacheItemChanged then
 		tagCaching.altTagCacheItemChanged=false
 		tagCaching.altTagCacheOld={}
@@ -30,6 +30,18 @@ function tagCaching.update()
 		tagCaching.primaryTagCacheOld=copy(tagCaching.primaryTagCache)
 		local pass,result=pcall(root.itemConfig,primaryItem)
 		tagCaching.primaryTagCache=tagCaching.tagsToKeys(tagCaching.fetchTags(pass and result))
+		if pass and result then
+			local dummy=nil
+			if (result.parameters.twoHanded~=nil) then
+				dummy=result.parameters.twoHanded
+			elseif (result.config.twoHanded~=nil) then
+				dummy=result.config.twoHanded
+			end
+			if dummy ~= nil then
+				tagCaching.primaryTagCache.twoHanded=dummy
+				tagCaching.primaryTagCache.oneHanded=not dummy
+			end
+		end
 		tagCaching.primaryTagCacheItem=primaryItem
 		tagCaching.primaryTagCacheItemChanged=true
 		doMerge=true
@@ -38,6 +50,18 @@ function tagCaching.update()
 		tagCaching.altTagCacheOld=copy(tagCaching.altTagCache)
 		local pass,result=pcall(root.itemConfig,altItem)
 		tagCaching.altTagCache=tagCaching.tagsToKeys(tagCaching.fetchTags(pass and result))
+		if pass and result then
+			local dummy=nil
+			if (result.parameters.twoHanded~=nil) then
+				dummy=result.parameters.twoHanded
+			elseif (result.config.twoHanded~=nil) then
+				dummy=result.config.twoHanded
+			end
+			if dummy ~= nil then
+				tagCaching.altTagCache.twoHanded=dummy
+				tagCaching.altTagCache.oneHanded=not dummy
+			end
+		end
 		tagCaching.altTagCacheItem=altItem
 		tagCaching.altTagCacheItemChanged=true
 		doMerge=true

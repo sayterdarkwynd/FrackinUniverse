@@ -17,14 +17,14 @@
     "middle" : "longarmpistol.png",
     "barrel" : "",
     "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
-  },      
+  },
   "animationCustom" : {
-    "sounds" : { 
+    "sounds" : {
       "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ],
       "cooldown":[  "/sfx/weapons/shotgunreload.ogg"]
     },
- 
-    "lights" : { "muzzleFlash" : {"color" : [44, 44, 44] } }  
+
+    "lights" : { "muzzleFlash" : {"color" : [44, 44, 44] } }
   },
 
   "baseOffset" : [0.8, 0.1],
@@ -35,7 +35,7 @@
   "elementalType" : "electric",
 
   "isReloader" : 1,
-  
+
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
@@ -51,14 +51,14 @@
       "knockback" : 7
     },
     "stances" : {
-      "idle":{  
+      "idle":{
         "armRotation":0,
         "weaponRotation":0,
         "twoHanded":false,
         "allowRotate":true,
         "allowFlip":true
       },
-      "fire":{  
+      "fire":{
         "duration":0.1,
         "armRotation":3,
         "weaponRotation":8,
@@ -66,7 +66,7 @@
         "allowRotate":false,
         "allowFlip":true
       },
-      "cooldown":{  
+      "cooldown":{
         "duration":0.3,
         "armRotation":-7,
         "weaponRotation":-360,
@@ -81,11 +81,11 @@
   "critBonus" : 3,
   "isAmmoBased" : 1,
   "magazineSize" : 6,
-  "reloadTime" : 1.5, 
+  "reloadTime" : 1.5,
   "isShotgun" : 1,
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
-  "recoilForce" : 500,   
+  "recoilForce" : 500,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,61 +1,65 @@
 {
-  "itemName" : "ff_scoutpants_melee",
-  "inventoryIcon" : "icons.png:pants",
-  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "^orange;Set Bonuses^reset;: 
+	"itemName" : "ff_scoutpants_melee",
+	"inventoryIcon" : "icons.png:pants",
+	"dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; Health & Speed x^green;1.1^reset;
 ^yellow;^reset; Melee: Damage x^green;1.1^reset;",
-  "shortdescription" : "Warrior Greaves",
-  "category" : "legarmour",
-  "tooltipKind" : "armornew2",
+	"shortdescription" : "Warrior Greaves",
+	"category" : "legarmour",
+	"tooltipKind" : "armornew2",
 
-  "maleFrames" : "pants.png",
-  "femaleFrames" : "pants.png",
+	"maleFrames" : "pants.png",
+	"femaleFrames" : "pants.png",
 
-  "level" : 4,
-  //"collectablesOnPickup" : { "fu_armorbalanced" : "ff_scoutpants_melee" },
-  "leveledStatusEffects" : [
-    {
-      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.1
-    },
-    {
-      "levelFunction" : "standardArmorLevelProtectionMultiplier",
-      "stat" : "protection",
-      "amount" : 0.2
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
-      "stat" : "maxEnergy",
-      "amount" : 2
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
-      "stat" : "maxHealth",
-      "amount" : 2
-    },
-  {
-      "levelFunction" : "fuArmorResistMultiplier",
-      "stat" : "physicalResistance",
-      "amount" : 0.016
-    },
-  {
-      "levelFunction" : "fuArmorResistMultiplier",
-      "stat" : "electricResistance",
-      "amount" : 0.012
-    }
-  ],
-  "itemTags" : [ "upgradeableWeapon", "balanced", "melee" ],
-  "statusEffects" : [
-    "warriorsetbonus",
-    {
-      "stat" : "fu_warriorset_legs",
-      "amount" : 1
-    }
-],
-  //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+	"level" : 4,
+	//"collectablesOnPickup" : { "fu_armorbalanced" : "ff_scoutpants_melee" },
+	"leveledStatusEffects" : [
+		{
+			"levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+			"stat" : "powerMultiplier",
+			"baseMultiplier" : 1.1
+		},
+		{
+			"levelFunction" : "standardArmorLevelProtectionMultiplier",
+			"stat" : "protection",
+			"amount" : 0.2
+		},
+		{
+			"levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+			"stat" : "maxEnergy",
+			"amount" : 2
+		},
+		{
+			"levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+			"stat" : "maxHealth",
+			"amount" : 2
+		},
+		{
+			"levelFunction" : "fuArmorResistMultiplier",
+			"stat" : "physicalResistance",
+			"amount" : 0.016
+		},
+		{
+			"levelFunction" : "fuArmorResistMultiplier",
+			"stat" : "electricResistance",
+			"amount" : 0.012
+		}
+	],
+	"itemTags" : [ "upgradeableWeapon", "balanced", "melee" ],
+	"statusEffects" : [
+		"warriorsetbonus",
+		{
+			"stat" : "fu_warriorset_legs",
+			"amount" : 1
+		},
+		{
+			"stat" : "fu_scoutset_legs",
+			"amount" : 1
+		}
+	],
+	//"upgrades" : 1 ,
+	"builder" : "/items/buildscripts/fubuildarmor.lua"
 }

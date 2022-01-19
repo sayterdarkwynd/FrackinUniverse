@@ -44,7 +44,7 @@
 
   "critChance" : 15,
   "critBonus" : 25,
-  
+
   "primaryAbility" : {
     "stances" : {
       "idle" : {
@@ -74,7 +74,7 @@
         "allowFlip" : false
       }
     },
-    
+
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
@@ -95,40 +95,40 @@
       "timeToLive":4,
       "power":5.0,
       "knockback":0,
-      "actionOnReap":[  
-        {  
+      "actionOnReap":[
+        {
           "action":"sound",
-          "options":[  
+          "options":[
             "/sfx/interface/nav_select.ogg"
           ],
           "time":0.1,
           "repeat":false
         },
-        {  
+        {
           "time":2.0,
           "angle":90,
           "action":"projectile",
           "offset":[0,7],
           "type":"energyfist",
           "piercing":true,
-          "config":{  
-            "damageTeam":{  
+          "config":{
+            "damageTeam":{
               "type":"friendly"
             },
             "damageKind":"noDamage",
 		  "periodicActions" : [
-      		     {  
+      		     {
 			"time":0.9,
 			"angle":-90,
 			"action":"projectile",
 			"type":"apebossmissile",
-			"config":{  
+			"config":{
 			  "actionOnReap" : [
 			    {
 			      "action" : "config",
 			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-			    },                  
-			    {"action":"explosion", "foregroundRadius":7, "backgroundRadius":4, "explosiveDamageAmount":12.0, "delaySteps":2, "harvestLevel":10}                   
+			    },
+			    {"action":"explosion", "foregroundRadius":7, "backgroundRadius":4, "explosiveDamageAmount":12.0, "delaySteps":2, "harvestLevel":10}
 			  ],
 			  "statusEffects":[],
 			  "speed":100,
@@ -136,19 +136,19 @@
 			  "power":20.0,
 			  "knockback":0
 			}
-		      },              
-		      {  
+		      },
+		      {
 			"time":0.07,
 			"angle":-90,
 			"action":"projectile",
 			"type":"miniknogrocket",
-			"config":{  
+			"config":{
 			  "actionOnReap" : [
 			    {
 			      "action" : "config",
 			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-			    },                  
-			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":12.0, "delaySteps":2, "harvestLevel":10}                   
+			    },
+			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":12.0, "delaySteps":2, "harvestLevel":10}
 			  ],
 			  "statusEffects":[],
 			  "speed":100,
@@ -156,19 +156,19 @@
 			  "power":20.0,
 			  "knockback":0
 			}
-		      },  		  
-		      {  
+		      },
+		      {
 		        "time" : 1.4,
 			"angle":-90,
 			"action":"projectile",
 			"type":"apebossmissile",
-			"config":{  
+			"config":{
 			  "actionOnReap" : [
 			    {
 			      "action" : "config",
 			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-			    },                  
-			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":2, "explosiveDamageAmount":4.0, "delaySteps":2, "harvestLevel":10}                   
+			    },
+			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":2, "explosiveDamageAmount":4.0, "delaySteps":2, "harvestLevel":10}
 			  ],
 			  "statusEffects":[],
 			  "speed":100,
@@ -176,21 +176,21 @@
 			  "power":2.0,
 			  "knockback":0
 			}
-		      }, 
-		      {  
+		      },
+		      {
 		        "offset":[-6,12],
 			"time":0.1,
 			"loop" : false,
 			"angle":-90,
 			"action":"projectile",
 			"type":"miniknogrocket",
-			"config":{  
+			"config":{
 			  "actionOnReap" : [
 			    {
 			      "action" : "config",
 			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-			    },                  
-			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}                   
+			    },
+			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}
 			  ],
 			  "statusEffects":[],
 			  "speed":100,
@@ -198,21 +198,21 @@
 			  "power":3.0,
 			  "knockback":0
 			}
-		      },                   
-		      {  
+		      },
+		      {
 		        "offset":[-4,12],
 			"time":0.2,
 			"loop" : false,
 			"angle":-90,
 			"action":"projectile",
 			"type":"miniknogrocket",
-			"config":{  
+			"config":{
 			  "actionOnReap" : [
 			    {
 			      "action" : "config",
 			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-			    },                  
-			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}                   
+			    },
+			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}
 			  ],
 			  "statusEffects":[],
 			  "speed":100,
@@ -220,21 +220,21 @@
 			  "power":3.0,
 			  "knockback":0
 			}
-		      },                   
-		      { 
+		      },
+		      {
 		        "offset":[-2,12],
 			"time":0.3,
 			"loop" : false,
 			"angle":-90,
 			"action":"projectile",
 			"type":"miniknogrocket",
-			"config":{  
+			"config":{
 			  "actionOnReap" : [
 			    {
 			      "action" : "config",
 			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-			    },                  
-			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}                   
+			    },
+			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}
 			  ],
 			  "statusEffects":[],
 			  "speed":100,
@@ -242,21 +242,21 @@
 			  "power":3.0,
 			  "knockback":0
 			}
-		      },                   
-		      {  
+		      },
+		      {
 		        "offset":[0,12],
 			"time":0.4,
 			"loop" : false,
 			"angle":-90,
 			"action":"projectile",
 			"type":"miniknogrocket",
-			"config":{  
+			"config":{
 			  "actionOnReap" : [
 			    {
 			      "action" : "config",
 			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-			    },                  
-			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}                   
+			    },
+			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}
 			  ],
 			  "statusEffects":[],
 			  "speed":100,
@@ -265,20 +265,20 @@
 			  "knockback":0
 			}
 		      },
-		      {  
+		      {
 		        "offset":[2,12],
 			"time":0.5,
 			"loop" : false,
 			"angle":-90,
 			"action":"projectile",
 			"type":"miniknogrocket",
-			"config":{  
+			"config":{
 			  "actionOnReap" : [
 			    {
 			      "action" : "config",
 			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-			    },                  
-			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}                   
+			    },
+			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}
 			  ],
 			  "statusEffects":[],
 			  "speed":100,
@@ -287,20 +287,20 @@
 			  "knockback":0
 			}
 		      },
-		      {  
+		      {
 		        "offset":[4,12],
 			"time":0.6,
 			"loop" : false,
 			"angle":-90,
 			"action":"projectile",
 			"type":"miniknogrocket",
-			"config":{  
+			"config":{
 			  "actionOnReap" : [
 			    {
 			      "action" : "config",
 			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-			    },                  
-			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}                   
+			    },
+			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}
 			  ],
 			  "statusEffects":[],
 			  "speed":100,
@@ -308,21 +308,21 @@
 			  "power":3.0,
 			  "knockback":0
 			}
-		      },                   
-		      {  
+		      },
+		      {
 		        "offset":[6,12],
 			"time":0.7,
 			"loop" : false,
 			"angle":-90,
 			"action":"projectile",
 			"type":"miniknogrocket",
-			"config":{  
+			"config":{
 			  "actionOnReap" : [
 			    {
 			      "action" : "config",
 			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-			    },                  
-			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}                   
+			    },
+			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}
 			  ],
 			  "statusEffects":[],
 			  "speed":100,
@@ -330,21 +330,21 @@
 			  "power":2.0,
 			  "knockback":0
 			}
-		      },                   
-		      { 
+		      },
+		      {
 		        "offset":[8,12],
 			"time":0.8,
 			"loop" : false,
 			"angle":-90,
 			"action":"projectile",
 			"type":"miniknogrocket",
-			"config":{  
+			"config":{
 			  "actionOnReap" : [
 			    {
 			      "action" : "config",
 			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-			    },                  
-			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}                   
+			    },
+			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}
 			  ],
 			  "statusEffects":[],
 			  "speed":100,
@@ -352,21 +352,21 @@
 			  "power":2.0,
 			  "knockback":0
 			}
-		      },                   
-		      {  
+		      },
+		      {
 		        "offset":[-2,12],
 			"time":0.9,
 			"loop" : false,
 			"angle":-90,
 			"action":"projectile",
 			"type":"miniknogrocket",
-			"config":{  
+			"config":{
 			  "actionOnReap" : [
 			    {
 			      "action" : "config",
 			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-			    },                  
-			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}                   
+			    },
+			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}
 			  ],
 			  "statusEffects":[],
 			  "speed":100,
@@ -375,20 +375,20 @@
 			  "knockback":0
 			}
 		      },
-		      {  
+		      {
 		        "offset":[2,12],
 			"time":1.0,
 			"loop" : false,
 			"angle":-90,
 			"action":"projectile",
 			"type":"miniknogrocket",
-			"config":{  
+			"config":{
 			  "actionOnReap" : [
 			    {
 			      "action" : "config",
 			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-			    },                  
-			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}                   
+			    },
+			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}
 			  ],
 			  "statusEffects":[],
 			  "speed":100,
@@ -397,20 +397,20 @@
 			  "knockback":0
 			}
 		      },
-		      {  
+		      {
 		        "offset":[-4,12],
 			"time":1.1,
 			"loop" : false,
 			"angle":-90,
 			"action":"projectile",
 			"type":"miniknogrocket",
-			"config":{  
+			"config":{
 			  "actionOnReap" : [
 			    {
 			      "action" : "config",
 			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-			    },                  
-			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}                   
+			    },
+			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}
 			  ],
 			  "statusEffects":[],
 			  "speed":100,
@@ -419,20 +419,20 @@
 			  "knockback":0
 			}
 		      },
-		      {  
+		      {
 		        "offset":[4,12],
 			"time":1.2,
 			"loop" : false,
 			"angle":-90,
 			"action":"projectile",
 			"type":"miniknogrocket",
-			"config":{  
+			"config":{
 			  "actionOnReap" : [
 			    {
 			      "action" : "config",
 			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-			    },                  
-			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}                   
+			    },
+			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}
 			  ],
 			  "statusEffects":[],
 			  "speed":100,
@@ -441,20 +441,20 @@
 			  "knockback":0
 			}
 		      },
-		      {  
+		      {
 		        "offset":[-6,12],
 			"time":1.3,
 			"loop" : false,
 			"angle":-90,
 			"action":"projectile",
 			"type":"miniknogrocket",
-			"config":{  
+			"config":{
 			  "actionOnReap" : [
 			    {
 			      "action" : "config",
 			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-			    },                  
-			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}                   
+			    },
+			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}
 			  ],
 			  "statusEffects":[],
 			  "speed":100,
@@ -463,20 +463,20 @@
 			  "knockback":0
 			}
 		      },
-		      {  
+		      {
 		        "offset":[6,12],
 			"time":1.4,
 			"loop" : false,
 			"angle":-90,
 			"action":"projectile",
 			"type":"miniknogrocket",
-			"config":{  
+			"config":{
 			  "actionOnReap" : [
 			    {
 			      "action" : "config",
 			      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-			    },                  
-			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}                   
+			    },
+			    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":1.0, "delaySteps":2, "harvestLevel":10}
 			  ],
 			  "statusEffects":[],
 			  "speed":100,
@@ -484,70 +484,29 @@
 			  "power":2.0,
 			  "knockback":0
 			}
-		      }		      
-            ],                  
+		      }
+            ],
             "piercing":true,
             "speed":120,
             "processing":"?0",
             "timeToLive":0.5,
             "power":5.0,
             "knockback":0,
-            
-            "actionOnReap":[  
-              {  
+
+            "actionOnReap":[
+              {
                 "time":0.0,
                 "offset":[-3,12],
                 "angle":-90,
                 "action":"projectile",
                 "type":"fireguidedrocket",
-                "config":{  
+                "config":{
                   "actionOnReap" : [
 		    {
 		      "action" : "config",
 		      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-		    },                  
-		    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":12.0, "delaySteps":2, "harvestLevel":10}                  
-                  ],                
-                  "statusEffects":[],
-                  "speed":100,
-                  "timeToLive":1.6,
-                  "power":20.0,
-                  "knockback":0
-                }
-              },
-              {  
-                "time":0.0,
-                "offset":[3,6],
-                "angle":-90,
-                "action":"projectile",
-                "type":"fireguidedrocket",
-                "config":{  
-                  "actionOnReap" : [
-		    {
-		      "action" : "config",
-		      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-		    },                  
-		    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":12.0, "delaySteps":2, "harvestLevel":10}                 
-                  ],                
-                  "statusEffects":[],
-                  "speed":100,
-                  "timeToLive":1.6,
-                  "power":20.0,
-                  "knockback":0
-                }
-              },
-              {  
-                "time":0.0,
-                "angle":-90,
-                "action":"projectile",
-                "type":"fireguidedrocket",
-                "config":{  
-                  "actionOnReap" : [
-		    {
-		      "action" : "config",
-		      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
-		    },                  
-		    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":12.0, "delaySteps":2, "harvestLevel":10}                   
+		    },
+		    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":12.0, "delaySteps":2, "harvestLevel":10}
                   ],
                   "statusEffects":[],
                   "speed":100,
@@ -555,25 +514,66 @@
                   "power":20.0,
                   "knockback":0
                 }
-              } 
+              },
+              {
+                "time":0.0,
+                "offset":[3,6],
+                "angle":-90,
+                "action":"projectile",
+                "type":"fireguidedrocket",
+                "config":{
+                  "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
+		    },
+		    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":12.0, "delaySteps":2, "harvestLevel":10}
+                  ],
+                  "statusEffects":[],
+                  "speed":100,
+                  "timeToLive":1.6,
+                  "power":20.0,
+                  "knockback":0
+                }
+              },
+              {
+                "time":0.0,
+                "angle":-90,
+                "action":"projectile",
+                "type":"fireguidedrocket",
+                "config":{
+                  "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
+		    },
+		    {"action":"explosion", "foregroundRadius":4, "backgroundRadius":0, "explosiveDamageAmount":12.0, "delaySteps":2, "harvestLevel":10}
+                  ],
+                  "statusEffects":[],
+                  "speed":100,
+                  "timeToLive":1.6,
+                  "power":20.0,
+                  "knockback":0
+                }
+              }
             ]
           }
         },
-        {  
+        {
           "time":0.0,
           "angle":0,
           "action":"projectile",
           "type":"targetexplosion",
-          "config":{  
-            "statusEffects":[  
+          "config":{
+            "statusEffects":[
 
             ],
             "processing":"?hueshift=60",
-            "periodicActions":[  
+            "periodicActions":[
 
             ],
             "piercing":true,
-            "damageTeam":{  
+            "damageTeam":{
               "type":"enemy"
             },
             "damageKind":"noDamage",
@@ -581,7 +581,7 @@
             "timeToLive":0.8,
             "power":0.0,
             "knockback":0,
-            "actionOnReap":[  
+            "actionOnReap":[
 
             ]
           }
@@ -593,7 +593,7 @@
   },
 
   "altAbilityType":"explosiveshot",
-  "altAbility":{  
+  "altAbility":{
     "name" : "Fury Field",
     "firePositionPart":"barrel",
     "fireTime":2.0,
@@ -602,11 +602,11 @@
     "projectileType":"kluexzone",
     "inaccuracy":0.0,
     "projectileCount":1,
-    "projectileParameters":{  
-      "periodicActions":[  
-        {  
+    "projectileParameters":{
+      "periodicActions":[
+        {
           "action":"sound",
-          "options":[  
+          "options":[
             "/sfx/gun/erchiuseyebeam_start.ogg"
           ],
           "time":0.1,
@@ -619,7 +619,7 @@
       "power":0,
       "knockback":10,
       "bounces":0,
-      "actionOnReap":[  
+      "actionOnReap":[
 
       ]
     }

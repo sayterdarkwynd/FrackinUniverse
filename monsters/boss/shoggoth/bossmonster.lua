@@ -377,7 +377,7 @@ function move(delta, run, jumpThresholdX)
 		local ePos=mcontroller.position()
 		if not lastPos then lastPos=ePos end
 		if vec2.mag(world.distance(lastPos,ePos))<1.0 then
-			
+
 			biteCounter = (biteCounter or 0) + 1--timer so these dont spam
 			soundChance = math.random(100)
 			if biteCounter >= 3 then

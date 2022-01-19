@@ -56,8 +56,8 @@
 
 	// Custom ZB player init functions
 	[ { "op": "add", "path": "/deploymentConfig/scripts/-", "value": "/zb/zb_player_init.lua" } ],
-	
-	
+
+
 	//starter mechs
 	[{"op": "replace","path": "/deploymentConfig/starterMechSet/leftArm","value": "mecharmflakcannon"}],
 	[{"op": "replace","path": "/deploymentConfig/starterMechSet/rightArm", "value": "mecharmdrill0"}],
@@ -127,7 +127,7 @@
 
 	// Companiom Uniform Slot
 	[ { "op": "add", "path": "/companionsConfig/uniformSlots/head", "value": ["headCosmetic", "head" ]} ],
-	
+
 	// lessen diminishing returns on crew benefits.
 	[ { "op": "replace", "path": "/companionsConfig/shipUpgradeDiminishingReturns", "value": "0.5833333333" } ],
 
@@ -156,13 +156,13 @@
 
 
 	//remove vanilla blueprints
-		
+
 	[{"op":"test","path":"/defaultBlueprints/tier1/248"},{"op":"remove","path":"/defaultBlueprints/tier1/248"}], //pettether
 	[{"op":"test","path":"/defaultBlueprints/tier1/247"},{"op":"remove","path":"/defaultBlueprints/tier1/247"}], //pethealingstation
 	[{"op":"test","path":"/defaultBlueprints/tier1/246"},{"op":"remove","path":"/defaultBlueprints/tier1/246"}], //capturepod
 	[{"op":"test","path":"/defaultBlueprints/tier1/245"},{"op":"remove","path":"/defaultBlueprints/tier1/245"}], //railhook
 	//244 stationtram
-	//243 compositerailplatform 
+	//243 compositerailplatform
 	//242 rustyrailplatform
 	//241 railtrampstop
 	//240 railstop
@@ -393,13 +393,13 @@
 	[{"op":"test","path":"/defaultBlueprints/tier1/15"},{"op":"remove","path":"/defaultBlueprints/tier1/15"}], //bow
 	[{"op":"test","path":"/defaultBlueprints/tier1/14"},{"op":"remove","path":"/defaultBlueprints/tier1/14"}], //hoe
 	//13 bomb
-	[{"op":"test","path":"/defaultBlueprints/tier1/12"},{"op":"remove","path":"/defaultBlueprints/tier1/12"}], //startershield			
+	[{"op":"test","path":"/defaultBlueprints/tier1/12"},{"op":"remove","path":"/defaultBlueprints/tier1/12"}], //startershield
 	[{"op":"test","path":"/defaultBlueprints/tier1/11"},{"op":"remove","path":"/defaultBlueprints/tier1/11"}], //breathprotectionback
-	[{"op":"test","path":"/defaultBlueprints/tier1/10"},{"op":"remove","path":"/defaultBlueprints/tier1/10"}], //craftingwheel	
-	[{"op":"test","path":"/defaultBlueprints/tier1/9"},{"op":"remove","path":"/defaultBlueprints/tier1/9"}], //craftingfurniture		
+	[{"op":"test","path":"/defaultBlueprints/tier1/10"},{"op":"remove","path":"/defaultBlueprints/tier1/10"}], //craftingwheel
+	[{"op":"test","path":"/defaultBlueprints/tier1/9"},{"op":"remove","path":"/defaultBlueprints/tier1/9"}], //craftingfurniture
 	[{"op":"test","path":"/defaultBlueprints/tier1/8"},{"op":"remove","path":"/defaultBlueprints/tier1/8"}], //craftingfurnace
 	[{"op":"test","path":"/defaultBlueprints/tier1/7"},{"op":"remove","path":"/defaultBlueprints/tier1/7"}], //craftingfarm
-	[{"op":"test","path":"/defaultBlueprints/tier1/6"},{"op":"remove","path":"/defaultBlueprints/tier1/6"}], //craftinganvil		
+	[{"op":"test","path":"/defaultBlueprints/tier1/6"},{"op":"remove","path":"/defaultBlueprints/tier1/6"}], //craftinganvil
 
 
 	//begin starting blueprints
@@ -408,7 +408,7 @@
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "clay"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "floranneedler"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "plantfibre"} } ],
-	
+
 	//logbook
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "xcodexlogbook"} } ],
 
@@ -429,7 +429,7 @@
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "ffguide6-codex"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "networkguide-codex"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "networkguide2-codex"} } ],
-	
+
 	//booze stuff
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "smallwoodencrate1" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "winecabinet" } } ],
@@ -670,7 +670,7 @@
 	//kibbles
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "robosnax"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "meatkibble"} } ],
-	
+
 
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_defaultunlockdiagnoser"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_solidrailplatform"} } ],
@@ -678,12 +678,12 @@
 
 
 	//end starting blueprints
-	
+
 	//begin inventoryFilter edits
-	
+
 	[ { "op": "add", "path": "/inventoryFilters/reagentBag/tagWhitelist/-", "value": "bee" } ],
 	[ { "op": "add", "path": "/inventoryFilters/mainBag/tagBlacklist/-", "value": "bee" } ]
-	
+
 	//end inventoryFilter edits
 
 ]

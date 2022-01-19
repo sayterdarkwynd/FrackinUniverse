@@ -18,10 +18,10 @@
     "middle" : "mobiuspistol.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
-  },      
+  },
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/gun/pulsecannon2.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }  
+    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }
   },
 
   "baseOffset" : [0.65, 0.18],
@@ -42,35 +42,35 @@
     "projectileCount" : 1,
     "projectileType" : "standardbullet",
     "projectileParameters":{
-    "statusEffects":[], 
-    "bounces":0, 
-    "speed":95, 
-    "timeToLive":3.0, 
+    "statusEffects":[],
+    "bounces":0,
+    "speed":95,
+    "timeToLive":3.0,
     "power" : 5,
     "damageKind" : "electric",
     "knockback":0,
-    "lightColor" : [255, 180, 0],    
-      "periodicActions":[ 
+    "lightColor" : [255, 180, 0],
+      "periodicActions":[
       {
-      "time":0.01, 
-      "action":"projectile", 
-      "type":"firelasershot2", 
+      "time":0.01,
+      "action":"projectile",
+      "type":"firelasershot2",
       "config":{
         "processing":"?hueshift=127",
-        "speed":0, 
+        "speed":0,
         "physics" : "laser",
         "bounces" :-1,
-        "timeToLive":0.4, 
-        "power":1, 
+        "timeToLive":0.4,
+        "power":1,
         "knockback":0
         }
       }
-    ],     
+    ],
     "actionOnReap" : [
       {
         "action" : "sound",
         "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
-      },        
+      },
       {
         "action" : "projectile",
         "type" : "electricexplosion",
@@ -128,13 +128,13 @@
       }
     }
   },
-  
+
   "critChance" : 4,
   "critBonus" : 6,
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
-  "recoilForce" : 500,    
-  
+  "recoilForce" : 500,
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

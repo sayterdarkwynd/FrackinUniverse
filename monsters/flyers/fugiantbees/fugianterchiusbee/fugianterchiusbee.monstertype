@@ -17,7 +17,7 @@
 
     "behavior" : "monster",
     "deathBehavior" : "monster-death",
-    
+
     "seeThroughLiquid" : false,
     "behaviorConfig" : {
       "damageOnTouch" : true,
@@ -41,7 +41,7 @@
 
       "fleeActions" : [ ],
 
-      "hostileActions" : [ 
+      "hostileActions" : [
         {
           "name" : "action-fire",
           "cooldown" : 10,
@@ -65,7 +65,7 @@
 		      "inheritDamageFactor" : 0.12,
 		      "timeToLive" : 5,
 		      "angleAdjust" : 75
-		    }                
+		    }
               ]
             },
             "power" : 15,
@@ -78,20 +78,20 @@
             "winddownState" : "",
             "winddownTime" : 0.5
           }
-        }         
+        }
       ],
 
       "periodicActions" : [
 	{
-		"name":"action-spawncompanions", 
+		"name":"action-spawncompanions",
 		  "cooldown" : 1,
 		"parameters":{
-		  "spawnCooldown":0.1, 
-		  "monsterType":"futinybeeerchius", 
-		  "maxCount":12, 
+		  "spawnCooldown":0.1,
+		  "monsterType":"futinybeeerchius",
+		  "maxCount":12,
 		  "monsterParameters":{"level":[2]}
 		  }
-	}      
+	}
       ],
 
       "approachActions" : [
@@ -189,15 +189,15 @@
               "parameters":{ "usePathfinding": true }
         },
 	{
-		"name":"action-spawncompanions", 
+		"name":"action-spawncompanions",
 		  "cooldown" : 1,
 		"parameters":{
-		  "spawnCooldown":0.1, 
-		  "monsterType":"futinybeeerchius", 
-		  "maxCount":6, 
+		  "spawnCooldown":0.1,
+		  "monsterType":"futinybeeerchius",
+		  "maxCount":6,
 		  "monsterParameters":{"level":[2]}
 		  }
-	}         
+	}
       ]
     },
 

@@ -42,7 +42,7 @@ function update(dt)
 		status.setPersistentEffects("radienArmor", {{stat = "protection", amount = 1+ self.armorTotal }})
 		self.armorTimer = 0
 	end
-	
+
 	self.valueTimer=(self.valueTimer or 0)-dt
 	if self.valueTimer<=0 then
 		setValues()

@@ -14,7 +14,7 @@ function init()
 end
 
 function update(dt, fireMode, shiftHeld)
-	updateAim()	
+	updateAim()
 	if world.getProperty("ephemeral") then
 		storage.fireTimer=0
 		animator.stopAllSounds("error")

@@ -5,8 +5,8 @@ SpearStab = MeleeSlash:new()
 
 function SpearStab:init()
 	MeleeSlash.init(self)
-	self.holdDamageConfig = sb.jsonMerge(self.damageConfig, self.holdDamageConfig)  
-    self.holdDamageConfig.baseDamage = self.holdDamageMultiplier * self.damageConfig.baseDamage   
+	self.holdDamageConfig = sb.jsonMerge(self.damageConfig, self.holdDamageConfig)
+    self.holdDamageConfig.baseDamage = self.holdDamageMultiplier * self.damageConfig.baseDamage
     velocityAdded = 0
     self.spearMastery = 1 + status.stat("spearMastery")
 end
@@ -47,7 +47,7 @@ function SpearStab:hold()
             self.holdDamageConfig.knockback =  28   -- stable knockback so a charge can do some real damage
         else
             self.holdDamageConfig.baseDamage = self.holdDamageMultiplier * self.damageConfig.baseDamage
-        end  
+        end
         local damageArea = partDamageArea("blade")
         self.weapon:setDamage(self.holdDamageConfig, damageArea)
         coroutine.yield()

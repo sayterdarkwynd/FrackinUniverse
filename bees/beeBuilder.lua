@@ -89,7 +89,7 @@ function build(directory, config, parameters, level, seed)
         local fullLifespan = genelib.statFromGenomeToValue(parameters.genome, "queenLifespan") *2 --* ((frameBonuses.queenLifespan or 0 / 8) + 1)
 
 		if not parameters.lifespan then
-			parameters.lifespan = fullLifespan 
+			parameters.lifespan = fullLifespan
 		end
 
 		if parameters.genomeInspected then

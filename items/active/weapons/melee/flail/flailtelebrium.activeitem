@@ -36,16 +36,16 @@
   "critChance" : 1,
   "critBonus" : 5,
   "stunChance" : 10,
-  
+
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementType" : "poison",
-  
+
   "primaryAbilityType" : "tentaclegun",
   "primaryAbility" : {
     "chain" : {
-      "arcRadiusRatio" : [8, 8],    
-      "taper" : 0.0, 
+      "arcRadiusRatio" : [8, 8],
+      "taper" : 0.0,
       "segmentImage" : "/items/active/weapons/melee/flail/flailchaintelebrium.png?scale=1",
       "endSegmentImage" : "/items/active/weapons/melee/flail/flailballtelebrium.png",
       "segmentSize" : 0.70
@@ -66,16 +66,16 @@
       "controlForce":280,
       "targetTrackingForce":0,
       "processing":"?hueshift=15",
-      
+
       "knockback" : 30,
       "piercing":false,
       "speed" : 90,
-      "bounces":-1, 
-      "timeToLive" : 0.9, 
+      "bounces":-1,
+      "timeToLive" : 0.9,
       "damageKind" : "poison",
-      
+
       "statusEffects" : [ "weakpoison" ],
-      
+
       "periodicActions" : [
     {
       "action":"particle",
@@ -92,7 +92,7 @@
 	"type":"textured"
 	},
       "time":0
-    },      
+    },
       {
         "time":0.0,
         "action":"projectile",
@@ -122,36 +122,36 @@
               }
             ]
           }
-        }      
+        }
       ],
       "actionOnCollide":[
       {
-        "time":0.01, 
-        "action":"explosion", 
-        "foregroundRadius":2, 
-        "backgroundRadius":0, 
-        "explosiveDamageAmount":3, 
-        "delaySteps":2, 
+        "time":0.01,
+        "action":"explosion",
+        "foregroundRadius":2,
+        "backgroundRadius":0,
+        "explosiveDamageAmount":3,
+        "delaySteps":2,
         "harvestLevel":1
-      },      
+      },
         {
           "action" : "projectile",
           "type" : "plasmaball2",
           "fuzzAngle" : 0,
           "inheritDamageFactor" : 0.1,
           "angleAdjust" : 0
-        },    
+        },
         {
-          "action":"sound","options":["/sfx/projectiles/goocluster_pop.ogg"], 
-          "time":0.05, 
+          "action":"sound","options":["/sfx/projectiles/goocluster_pop.ogg"],
+          "time":0.05,
           "repeat":false
         }
-      ],      
+      ],
       "actionOnReap" : [
         {
           "action":"sound",
-          "options":["/sfx/tools/axe_chop_heavy.ogg", "/sfx/tools/axe_chop_flesh3.ogg", "/sfx/tools/axe_chop_normal.ogg"], 
-          "time":0.05, 
+          "options":["/sfx/tools/axe_chop_heavy.ogg", "/sfx/tools/axe_chop_flesh3.ogg", "/sfx/tools/axe_chop_normal.ogg"],
+          "time":0.05,
           "repeat":false
         }
       ]

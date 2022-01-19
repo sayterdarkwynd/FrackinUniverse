@@ -19,9 +19,6 @@ ignore = {
 
 	-- Cosmetic/irrelevant issues.
 	-- Wouldn't disable this for newly added files, but too many places to fix in existing code.
-	"611", -- line contains only whitespace
-	"612", -- line contains trailing whitespace
-	"614", -- trailing whitespace in a comment
 	"621", -- inconsistent indentation (SPACE followed by TAB)
 }
 

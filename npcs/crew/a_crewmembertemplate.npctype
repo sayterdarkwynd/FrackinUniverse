@@ -14,17 +14,17 @@
         "legs" : "protectoratepants",
         "back" : "raggedprotectoratecape"
       },
-      
+
       "role" : {
         "type" : "soldier", //This is a fallback in case there's no 'name' field.
         "name" : "Template Crewmate", //The player-facing name of the crewmate, e.g. "Researcher", "Agaran Sellsword" etc.
         "field" : "Mod developer", //Used for the joke-y subtitles in the recruit offer and SAIL, can be the same as 'name'.
-        
+
         "uniformColorIndex" : 1, //The colour of their uniform. Can be deleted and their costumes will be un-dyed.
-        
+
         //Note that FU armour sometimes doesn't have alternate colours, or doesn't recolour as expected. Always test your crew.
         //1: Black, 2: Grey, 3: White, 4: Red, 5: Orange, 6: Yellow, 7: Green, 8: Blue, 9: Purple, 10: Pink, 11: Brown
-        
+
         "benefits" : [ //The benefits the crewmember gives
           {
           //Ephemeral effects are applied when you beam down, and in combat when the crewmember is nearby. Think medics/chemists.
@@ -32,7 +32,7 @@
             "effect" : "glow",
             "duration" : 1
           },
-          
+
           {
           //Ship benefits apply to your ship passively.
             "type": "ShipUpgradeBenefit",
@@ -115,7 +115,7 @@
             "primary" : [ "aegisaltpistol3", "aegisaltpistol" ],
             // Off hand. Make sure all primaries are compatible with all secondaries, delete if primary is 2h.
             "secondary" : [ "pandorasboxprotectorateshield" ],
-            
+
             "sheathedprimary" : [ "aegisaltpistol3" ], // Main hand, secondary option. Very optional.
             "sheathedsecondary" : [ "pandorasboxprotectorateshield" ] // Off hand, secondary option. Very optional.
           }

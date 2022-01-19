@@ -8,9 +8,9 @@
 
   "animation" : "nanoswarm.animation",
 
-  "dropPools" : [ 
-    { 
-      "default" : "servitorTreasure", 
+  "dropPools" : [
+    {
+      "default" : "servitorTreasure",
       "bow" : "huntingmechanicalLarge",
       "firebow" : "huntingmechanicalLarge",
       "icebow" : "huntingmechanicalLarge",
@@ -19,7 +19,7 @@
       "cosmicbow" : "huntingmechanicalLarge",
       "radioactivebow" : "huntingmechanicalLarge",
       "shadowbow" : "huntingmechanicalLarge"
-    } 
+    }
   ],
 
   "baseParameters" : {
@@ -56,46 +56,46 @@
 
       "hostileActions" : [
        {
-       "name":"action-swoop", 
-       "cooldown":1.0, 
+       "name":"action-swoop",
+       "cooldown":1.0,
 	"parameters":{
-	  "skillName":"flyingSwoopApproach", 
-	  "minimumRange":0, 
-	  "maximumRange":30, 
-	  "onGround":false, 
-	  "windupTime":0.25, 
-	  "windupState":"charge", 
-	  "windupStopForce":50, 
-	  "swoopState":"charge", 
-	  "gravityMultiplier":-0.3, 
-	  "collisionCheck":true, 
-	  "highArc":false, 
-	  "swoopTime":1.1, 
-	  "winddownTime":0.1, 
-	  "winddownState":"fly", 
+	  "skillName":"flyingSwoopApproach",
+	  "minimumRange":0,
+	  "maximumRange":30,
+	  "onGround":false,
+	  "windupTime":0.25,
+	  "windupState":"charge",
+	  "windupStopForce":50,
+	  "swoopState":"charge",
+	  "gravityMultiplier":-0.3,
+	  "collisionCheck":true,
+	  "highArc":false,
+	  "swoopTime":1.1,
+	  "winddownTime":0.1,
+	  "winddownState":"fly",
 	  "winddownStopForce":20
 	  }
-	}     
+	}
       ],
 
       "periodicActions" : [
-	{"name":"action-projectile", 
-	"cooldown":0.1, 
+	{"name":"action-projectile",
+	"cooldown":0.1,
 	"parameters":{
-	  "skillName":"glitterBurst", 
-	  "projectileCount":1, 
-	  "projectileType":"hiveswarm", 
+	  "skillName":"glitterBurst",
+	  "projectileCount":1,
+	  "projectileType":"hiveswarm",
 	  "projectileParameters":{
-	    "speed":5, 
-	    "statusEffects":[ { "effect":"electrified", "duration":3} ], 
-	    "power":0, 
-	    "actionOnReap":[], 
-	    "damageTeam":{"type":"enemy"}, 
-	    "damageType": "damage", 
+	    "speed":5,
+	    "statusEffects":[ { "effect":"electrified", "duration":3} ],
+	    "power":0,
+	    "actionOnReap":[],
+	    "damageTeam":{"type":"enemy"},
+	    "damageType": "damage",
 	    "damageKind":"electric"
-	    }, 
-	  "aimAtTarget":true, 
-	  "inaccuracy":3.14, 
+	    },
+	  "aimAtTarget":true,
+	  "inaccuracy":3.14,
 	  "fireOffset":[0,0]
 	  }
 	}
@@ -106,28 +106,28 @@
       ],
 
       "followActions" : [
-        {"name":"approach-teleport", "parameters":{}}, 
+        {"name":"approach-teleport", "parameters":{}},
         {"name":"approach-fly", "parameters":{"targetOffset":[0,5], "minRange":5, "maxRange":15}}
       ],
 
       "wanderActions" : [
 	{
-	"name":"wander-fly", 
-	"cooldown":[5,20], 
+	"name":"wander-fly",
+	"cooldown":[5,20],
 	"parameters":{
-		"wanderTime":[10,40], 
-		"groundDistance":20, 
-		"ceilingDistance":10, 
-		"xVelocity":8, 
+		"wanderTime":[10,40],
+		"groundDistance":20,
+		"ceilingDistance":10,
+		"xVelocity":8,
 		"yVelocity":12
 		}
-	}, 
+	},
 	{
-	"name":"land-fly", 
+	"name":"land-fly",
 	"parameters":{
-		"flySpeed":8, 
-		"flyControlForce":25, 
-		"landCheckDistance":40, 
+		"flySpeed":8,
+		"flyControlForce":25,
+		"landCheckDistance":40,
 		"idleTime":40
 		}
 	}
@@ -144,25 +144,25 @@
       ],
 
       "concurrentHostileActions" : [
-	{"name":"action-projectile", 
-	"cooldown":0.1, 
+	{"name":"action-projectile",
+	"cooldown":0.1,
 	"parameters":{
-	  "skillName":"glitterBurst", 
-	  "projectileCount":5, 
-	  "projectileType":"hiveswarm", 
+	  "skillName":"glitterBurst",
+	  "projectileCount":5,
+	  "projectileType":"hiveswarm",
 	  "projectileParameters":{
 	    "timeToLive" : 0.5,
-	    "speed":10, 
-	    "statusEffects":[ {"effect":"electrified", "duration":3} ], 
-	    "power":0.3, 
-	    "actionOnReap":[], 
-	    "damageTeam":{"type":"enemy"}, 
-	    "damageType":"damage", 
+	    "speed":10,
+	    "statusEffects":[ {"effect":"electrified", "duration":3} ],
+	    "power":0.3,
+	    "actionOnReap":[],
+	    "damageTeam":{"type":"enemy"},
+	    "damageType":"damage",
 	    "damageKind":"electric"
-	    }, 
+	    },
 	  "aimAtTarget":true,
-	  "fireArc":false, 
-	  "inaccuracy":3.14, 
+	  "fireArc":false,
+	  "inaccuracy":3.14,
 	  "fireOffset":[0,0]
 	  }
 	}
@@ -181,8 +181,8 @@
             "fireOffset" : [0, 1]
           }
         }
-      ]  
-      
+      ]
+
     },
 
     "touchDamage" : {
@@ -258,7 +258,7 @@
         },
 	"electricResistance" : {
           "baseValue" : -0.5
-        }        
+        }
       },
 
       "resources" : {

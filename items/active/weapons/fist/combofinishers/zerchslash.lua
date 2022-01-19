@@ -34,7 +34,7 @@ function SonicSlash:startAttack()
     power = self:damageAmount(),
     speed = 120
   }
-  world.spawnProjectile("fuicebullet", position, activeItem.ownerEntityId(), self:aimVector(), false, params)  
+  world.spawnProjectile("fuicebullet", position, activeItem.ownerEntityId(), self:aimVector(), false, params)
 end
 
 -- State: windup

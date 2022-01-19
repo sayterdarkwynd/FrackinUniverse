@@ -24,10 +24,10 @@ function init()
   end
 
   self.targetErchius = 0
-  message.setHandler("setErchiusLevel", function(_,_,amount) 
+  message.setHandler("setErchiusLevel", function(_,_,amount)
     self.targetErchius = amount
   end)
-  message.setHandler("killGhost", function() 
+  message.setHandler("killGhost", function()
     status.setResource("health", 0)
   end)
 

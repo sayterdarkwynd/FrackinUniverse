@@ -35,16 +35,16 @@
   "critChance" : 1,
   "critBonus" : 5,
   "stunChance" : 10,
-  
+
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementType" : "ice",
-  
+
   "primaryAbilityType" : "tentaclegun",
   "primaryAbility" : {
     "chain" : {
-      "arcRadiusRatio" : [8, 8],    
-      "taper" : 0.0, 
+      "arcRadiusRatio" : [8, 8],
+      "taper" : 0.0,
       "segmentImage" : "/items/active/weapons/melee/flail/flailchainzerchesium.png?scale=1",
       "endSegmentImage" : "/items/active/weapons/melee/flail/flailballzerchesium.png",
       "segmentSize" : 0.70
@@ -65,16 +65,16 @@
       "controlForce":350,
       "targetTrackingForce":0,
       "processing":"?hueshift=15",
-      
+
       "knockback" : 30,
       "piercing":false,
       "speed" : 90,
-      "bounces":-1, 
-      "timeToLive" : 0.8, 
+      "bounces":-1,
+      "timeToLive" : 0.8,
       "damageKind" : "iceplasma",
-      
+
       "statusEffects" : [ ],
-      
+
       "periodicActions" : [
 
       {
@@ -106,29 +106,29 @@
               }
             ]
           }
-        }      
+        }
       ],
       "actionOnCollide":[
       {
-        "time":0.01, 
-        "action":"explosion", 
-        "foregroundRadius":2, 
-        "backgroundRadius":0, 
-        "explosiveDamageAmount":5.2, 
-        "delaySteps":2, 
+        "time":0.01,
+        "action":"explosion",
+        "foregroundRadius":2,
+        "backgroundRadius":0,
+        "explosiveDamageAmount":5.2,
+        "delaySteps":2,
         "harvestLevel":1
-      },      
+      },
         {
-          "action":"sound","options":["/sfx/objects/rock_big_break1.ogg"], 
-          "time":0.05, 
+          "action":"sound","options":["/sfx/objects/rock_big_break1.ogg"],
+          "time":0.05,
           "repeat":false
         }
-      ],      
+      ],
       "actionOnReap" : [
         {
           "action":"sound",
-          "options":["/sfx/tools/axe_chop_heavy.ogg", "/sfx/tools/axe_chop_flesh3.ogg", "/sfx/tools/axe_chop_normal.ogg"], 
-          "time":0.05, 
+          "options":["/sfx/tools/axe_chop_heavy.ogg", "/sfx/tools/axe_chop_flesh3.ogg", "/sfx/tools/axe_chop_normal.ogg"],
+          "time":0.05,
           "repeat":false
         }
       ]

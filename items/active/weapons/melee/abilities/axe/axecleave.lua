@@ -31,7 +31,7 @@ function AxeCleave:windup(windupProgress)
 	--*************************************
 	-- FU/FR ADDONS
 	setupHelper(self, "axecleave-fire")
-	--**************************************				
+	--**************************************
 
 	self.weapon:setStance(self.stances.windup)
 

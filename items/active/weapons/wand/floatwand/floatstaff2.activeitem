@@ -12,7 +12,7 @@
   "tooltipKind" : "base",
   "emitters" : [ "electricpillar" ],
   "animation" : "/items/active/weapons/staff/staff.animation",
-  
+
 	"animationParts" : {
 	  "staff" : "floatstaff2.png",
 	  "stone" : "/items/active/weapons/wand/generated/stone/floatstaff2.png",
@@ -38,23 +38,23 @@
 
 	    "sounds" : {
 	      "physicalactivate" : ["/sfx/npc/boss/cultistboss_recharge.ogg"]
-	    },    
+	    },
 	  "animatedParts":{
 	    "stateTypes":{
 	      "charge":{
 		"states":{
 		  "charge":{
-		    "frames":13, 
+		    "frames":13,
 		    "cycle":0.05
-		  }, 
-	      "spark":{"frames":3, "cycle":0.05}, 
-	      "charged":{"frames":4,"cycle":0.5}, 
+		  },
+	      "spark":{"frames":3, "cycle":0.05},
+	      "charged":{"frames":4,"cycle":0.5},
 	      "discharge":{"frames":1, "cycle":0.05}
 		  }
 	      }
 	    }
 	  }
-	}, 
+	},
 
   "inventoryIcon" : "floatstaff2.png",
 
@@ -109,25 +109,25 @@
   "elementalType" : "electric",
 
 
-	"primaryAbilityType":"elementorb", 
-	
+	"primaryAbilityType":"elementorb",
+
 	"primaryAbility":{
-	  "energyCost":100, 
-	  "maxCastRange":50, 
-	  "projectileType":"invisibleorb", 
+	  "energyCost":100,
+	  "maxCastRange":50,
+	  "projectileType":"invisibleorb",
 	  "projectileParameters":{
-	    
-	    "baseDamage":0, 
-	    "persistentAudio":"", 
-	    
-	    "power":0, 
-	    "damageKind":"noDamage", 
-	    "damageType":"noDamage", 
+
+	    "baseDamage":0,
+	    "persistentAudio":"",
+
+	    "power":0,
+	    "damageKind":"noDamage",
+	    "damageType":"noDamage",
 	      "controlMovement":{
-		"maxSpeed":35, 
+		"maxSpeed":35,
 		"controlForce":1000
-	      }, 
-	    "timeToLive":60, 
+	      },
+	    "timeToLive":60,
 
 	    "periodicActions":[{"time":0.01, "action":"projectile", "type":"frozengravityball", "angleAdjust":-90, "config":{"statusEffects" : [ "gravrain" ],"speed":0, "knockback":0, "timeToLive":0.01, "power":0.0}}]
 	    }

@@ -12,7 +12,7 @@
   "itemTags" : ["weapon","ranged","bow","upgradeableWeapon"],
   "level" : 1,
   "fixedLevel" : false,
-  
+
   "radioMessagesOnPickup" : [ "pickupbow" ],
 
   "animation" : "generatedbow.animation",
@@ -26,9 +26,9 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/bow/abilities/rngbows/rngbowshot.lua"],
     "class" : "NebRNGBowShot",
-	
+
 		"fireOffset" : [0.75, 0],
-		
+
 		//Config for animated cursor
 		"cursorFrames" : [
 			"/cursors/animated/rngbowsrotate/neb-rngbowreticle1.cursor",
@@ -45,10 +45,10 @@
 	"energyPerShot" : [25, 40],			//Total energy consumption for a full draw
 	"holdEnergyUsage" : [2.5, 18],			//Energy consumption per second while fully drawn
 	"airborneBonus" : 1.20,			//A dmg multiplier for when airborne
-	
+
     "cooldownTime" : 0.2,			//Time between firing and drawing the next arrow
     "inaccuracy" : 0.0,				//Inaccuracy of the shot
-	
+
 	"walkWhileFiring" : true,		//If true, prevents the player from running while drawing the bow
 	"useQuiverDamageBonus" : true,	//If true, allows this bow to use quiver damage bonuses
 
@@ -101,7 +101,7 @@
 
   "critChance" : 3,
   "critBonus" : 5,
-  
+
   "builder" : "/items/buildscripts/neb-buildrandombow.lua",
   "builderConfig" : [{
     "nameGenerator" : "bownames.config:nameGen",

@@ -11,7 +11,7 @@
   "dropPools" : [ ],
 
   "baseParameters" : {
-  
+
 "colorSwap":{"373737":"373737aa", "808080":"808080", "b6b6b6":"d35ea0", "7b7b7b":"97276d", "450f21":"450f2100", "641929":"64192900", "714a44":"714a4400", "a96e65":"a96e6500", "210610":"21061000", "30636c":"30636c00", "4facb2":"4facb200", "a8e6e2":"a8e6e200", "ca8d30":"7b7b7b", "dcc253":"e6e6e6"},
 
     "scripts" : [
@@ -31,13 +31,13 @@
       "keepTargetInRange" : 60,
       "targetOutOfSightTime" : 18.0,
       "swoopVelocity" : 45,
-      
+
 
       "hurtTime" : 0.25,
       "hurtWaitForGround" : false,
-      
-      "seeThroughLiquid":true, 
-      "onGround":false,      
+
+      "seeThroughLiquid":true,
+      "onGround":false,
 
       "deathActions" : [],
 
@@ -46,154 +46,154 @@
       "fleeActions" : [ ],
 
 
-      "periodicActions" : [ 
+      "periodicActions" : [
 	{
-	"name":"action-projectile", 
-	"cooldown":0.2, 
+	"name":"action-projectile",
+	"cooldown":0.2,
 	"parameters":{
-	"timeToLive":0.3, 
-	"projectileCount":1, 
-	"projectileType":"wormerang3", 
+	"timeToLive":0.3,
+	"projectileCount":1,
+	"projectileType":"wormerang3",
 	"projectileParameters":{
-	  "speed":0, 
-	  "persistentAudio":"", 
+	  "speed":0,
+	  "persistentAudio":"",
 	  "timeToLive":0.3,
-	  "statusEffects":[], 
-	  "power":1.0, 
+	  "statusEffects":[],
+	  "power":1.0,
 	  "damageTeam":{"type":"enemy"},
-	  "damageType":"damage", 
-	  "damageKind":"electric"}, 
-	  "aimAtTarget":true, 
-	  "fireArc":false, 
-	  "inaccuracy":3.14, 
+	  "damageType":"damage",
+	  "damageKind":"electric"},
+	  "aimAtTarget":true,
+	  "fireArc":false,
+	  "inaccuracy":3.14,
 	  "fireOffset":[0,0.5]
 	 }
-	}, 
+	},
 
-	{"name":"action-projectile", 
-	  "cooldown":0.3, 
+	{"name":"action-projectile",
+	  "cooldown":0.3,
 	  "parameters":{
-	    "timeToLive":0.3, 
-	    "projectileCount":1, 
-	    "projectileType":"wormerang3", 
+	    "timeToLive":0.3,
+	    "projectileCount":1,
+	    "projectileType":"wormerang3",
 	    "projectileParameters":{
-	      "speed":0, 
-	      "persistentAudio":"", 
-	      "timeToLive":0.3, 
-	      "statusEffects":[], 
-	      "power":1.0, 
-	      "damageTeam":{"type":"enemy"}, 
-	      "damageType":"damage", 
-	      "damageKind":"electric"}, 
-	      "aimAtTarget":true, 
-	      "fireArc":false, 
-	      "inaccuracy":3.14, 
+	      "speed":0,
+	      "persistentAudio":"",
+	      "timeToLive":0.3,
+	      "statusEffects":[],
+	      "power":1.0,
+	      "damageTeam":{"type":"enemy"},
+	      "damageType":"damage",
+	      "damageKind":"electric"},
+	      "aimAtTarget":true,
+	      "fireArc":false,
+	      "inaccuracy":3.14,
 	      "fireOffset":[0,0.5]
 	    }
 	  }
-	],       
+	],
 
       "hostileActions":[
       {
-      "name":"approach-fly", 
+      "name":"approach-fly",
       "parameters":{
-        "flyControlForce":10, 
-        "seeThroughLiquid":true, 
+        "flyControlForce":10,
+        "seeThroughLiquid":true,
         "usePathfinding":false}
       }
-      ], 
-      
+      ],
+
       "approachActions":[
       {
-      "name":"approach-swarm", 
+      "name":"approach-swarm",
       "parameters":{
-        "flyControlForce":10, 
+        "flyControlForce":10,
         "usePathfinding":false
         }
       }
-      ], 
-      
+      ],
+
       "followActions":[
       {
-        "name":"approach-fly", 
+        "name":"approach-fly",
         "parameters":{
-        "flyControlForce":60, 
+        "flyControlForce":60,
         "seeThroughLiquid":true,
         "usePathfinding":false
         }
       }
-      ], 
-      
+      ],
+
       "wanderActions":[
       {
-      "name":"wander-fly", 
-      "cooldown":[5,20], 
+      "name":"wander-fly",
+      "cooldown":[5,20],
       "parameters":{
-        "flyControlForce":30, 
-        "usePathfinding":false, 
-        "wanderTime":[10,40], 
-        "groundDistance":20, 
-        "ceilingDistance":10, 
-        "xVelocity":8, 
+        "flyControlForce":30,
+        "usePathfinding":false,
+        "wanderTime":[10,40],
+        "groundDistance":20,
+        "ceilingDistance":10,
+        "xVelocity":8,
         "yVelocity":12}
-      }, 
-      
+      },
+
       {
-      "name":"land-fly", 
+      "name":"land-fly",
       "parameters":{
-        "flySpeed":118, 
-        "flyControlForce":10, 
-        "landCheckDistance":40, 
+        "flySpeed":118,
+        "flyControlForce":10,
+        "landCheckDistance":40,
         "idleTime":40}
       }
-      ], 
-      
-      "concurrentActions":[], 
-      
+      ],
+
+      "concurrentActions":[],
+
       "concurrentHostileActions":[
       {
-        "name":"action-projectile", 
-        "cooldown":0.01, 
-      "parameters":{ 
-        "timeToLive":0.5, 
-        "projectileCount":1, 
-        "projectileType":"wormerang3", 
-        "projectileParameters":{
-          "speed":0, 
-          "persistentAudio":"", 
-          "timeToLive":0.5, 
-          "statusEffects":[], 
-          "power":1.0, 
-          "damageTeam":{"type":"enemy"}, 
-          "damageType":"damage", "damageKind":"electric"}, 
-          "aimAtTarget":true, 
-          "fireArc":false, 
-          "inaccuracy":3.14, "fireOffset":[0,0.5]}}, 
-          
-      {
-      "name":"action-projectile", 
-      "cooldown":0.1, 
+        "name":"action-projectile",
+        "cooldown":0.01,
       "parameters":{
-      "timeToLive":0.5, 
-      "projectileCount":1, 
-      "aimDirection":[0,0], 
-      "projectileType":"wormerang3", 
+        "timeToLive":0.5,
+        "projectileCount":1,
+        "projectileType":"wormerang3",
+        "projectileParameters":{
+          "speed":0,
+          "persistentAudio":"",
+          "timeToLive":0.5,
+          "statusEffects":[],
+          "power":1.0,
+          "damageTeam":{"type":"enemy"},
+          "damageType":"damage", "damageKind":"electric"},
+          "aimAtTarget":true,
+          "fireArc":false,
+          "inaccuracy":3.14, "fireOffset":[0,0.5]}},
+
+      {
+      "name":"action-projectile",
+      "cooldown":0.1,
+      "parameters":{
+      "timeToLive":0.5,
+      "projectileCount":1,
+      "aimDirection":[0,0],
+      "projectileType":"wormerang3",
       "projectileParameters":{
-        "speed":0, 
-        "persistentAudio":"", 
-        "timeToLive":0.5, 
-        "statusEffects":[], 
-        "power":1.0, 
-        "damageTeam":{"type":"enemy"}, 
-        "damageType":"damage", 
-        "damageKind":"electric"}, 
-        "aimAtTarget":true, 
-        "fireArc":false, "inaccuracy":3.14, 
+        "speed":0,
+        "persistentAudio":"",
+        "timeToLive":0.5,
+        "statusEffects":[],
+        "power":1.0,
+        "damageTeam":{"type":"enemy"},
+        "damageType":"damage",
+        "damageKind":"electric"},
+        "aimAtTarget":true,
+        "fireArc":false, "inaccuracy":3.14,
         "fireOffset":[0,0.5]}
         }
       ]
     },
-    
+
     "touchDamage" : {
       "poly":[ [0.625, 1], [1, 0.625], [1, -0.625], [0.625, -1], [-0.625, -1], [-1, -0.625], [-1, 0.625], [-0.625, 1] ],
       "damage" : 12,
@@ -290,8 +290,8 @@
         "poisonStatusImmunity" : {
           "baseValue" : 0.0
         },
-        "lavaImmunity" : { 
-          "baseValue" : 0.0 
+        "lavaImmunity" : {
+          "baseValue" : 0.0
         }
       },
 
@@ -314,18 +314,18 @@
     "captureHealthFraction" : 0.2,
     "nametagColor" : [64, 200, 255]
   },
-  
+
 "animationCustom":{
-  "animatedParts":{ 
+  "animatedParts":{
     "stateTypes":{
       "body":{
         "states":{
           "fly":{
             "properties":{
-            "persistentSound":"/sfx/npc/boss/tentacleboss_roar.ogg", 
+            "persistentSound":"/sfx/npc/boss/tentacleboss_roar.ogg",
             "persistentSoundStopTime":3.3
-            } 
-          }, 
+            }
+          },
           "fire": {
             "properties":{
               "persistentSound":"/sfx/projectiles/bugswarm4.ogg"

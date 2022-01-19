@@ -8,7 +8,7 @@
   "animation" : "skywhale2.animation",
 
   "dropPools" : [ { "default" : "gasbagLoot" } ],
-  
+
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
@@ -17,10 +17,10 @@
       "behavior" : "monster",
       "aggressive" : false,
       "seeThroughLiquid" : true,
-      
+
     "behaviorConfig" : {
       "damageOnTouch" : true,
-      
+
       "targetQueryRange" : 20,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
@@ -31,7 +31,7 @@
 
       "fleeActions" : [ ],
 
-      "hostileActions" : [ 
+      "hostileActions" : [
         {
           "name" : "action-charge",
           "cooldown" : 2.5,
@@ -65,7 +65,7 @@
           "parameters" : {
             "usePathfinding" : false,
             "minRange" : 4,
-            "maxRange" : 12            
+            "maxRange" : 12
           }
         }
       ],
@@ -76,7 +76,7 @@
           "parameters" : {
             "minRange" : 14,
             "maxRange" : 18
-          }          
+          }
         }
       ],
 
@@ -98,7 +98,7 @@
       "concurrentHostileActions" : [ ],
 
       "deathActions" : []
-      
+
     },
 
     "touchDamage" : {
@@ -171,7 +171,7 @@
         },
         "captureImmunity" : {
           "baseValue" : 1
-        }  
+        }
       },
 
       "resources" : {
@@ -191,7 +191,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.05,
-    "capturedMonsterType" : "skywhale2",  
+    "capturedMonsterType" : "skywhale2",
     "nametagColor" : [64, 200, 255]
   }
 }

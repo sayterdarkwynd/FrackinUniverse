@@ -21,10 +21,10 @@
     "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
   },
   "animationCustom" : {
-    "sounds" : { 
+    "sounds" : {
       "fire" : [ "/sfx/weapons/longarm.wav" ],
       "cooldown":[  "/sfx/weapons/shotgunreload.ogg"]
-    }    
+    }
   },
 
   "baseOffset" : [0.84, 0.32],
@@ -35,7 +35,7 @@
   "elementalType" : "physical",
 
   "isReloader" : 1,
-  
+
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
@@ -48,19 +48,19 @@
     "fireType" : "auto",
 
     "projectileType" : "splitbullet",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 62,
       "knockback" : 7
     },
     "stances" : {
-      "idle":{  
+      "idle":{
         "armRotation":0,
         "weaponRotation":0,
         "twoHanded":true,
         "allowRotate":true,
         "allowFlip":true
       },
-      "fire":{  
+      "fire":{
         "duration":0.1,
         "armRotation":3,
         "weaponRotation":8,
@@ -68,7 +68,7 @@
         "allowRotate":false,
         "allowFlip":true
       },
-      "cooldown":{  
+      "cooldown":{
         "duration":0.3,
         "armRotation":-7,
         "weaponRotation":-360,
@@ -83,12 +83,12 @@
   "critBonus" : 3,
   "isAmmoBased" : 1,
   "magazineSize" : 4,
-  "reloadTime" : 1.5, 
+  "reloadTime" : 1.5,
   "isShotgun" : 1,
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
-  "recoilForce" : 800,   
+  "recoilForce" : 800,
   "altAbilityType" : "grenadelauncher",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

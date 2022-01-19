@@ -114,7 +114,7 @@ function fuInsanityWeather.applyDebuffs(self, modifier)
 		else
 			buffer["amount"]=self.currentDebuffs[statName]
 		end
-		
+
 		newGroup[i] = buffer
 		--sb.logInfo("%s",{dAmount=dAmount,dStat=dStat,dParams=dParams,statName=statName,modifier=modifier})
 		i = i + 1

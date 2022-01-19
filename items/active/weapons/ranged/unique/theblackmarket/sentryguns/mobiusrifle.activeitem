@@ -44,39 +44,39 @@
     "inaccuracy" : 0,
     "projectileCount" : 1,
     "fireType" : "auto",
-    
+
     //"projectileType" : "mobius",
     "projectileType" : "standardbullet",
     "projectileParameters":{
-    "statusEffects":[], 
-    "bounces":0, 
-    "speed":95, 
-    "timeToLive":3.0, 
+    "statusEffects":[],
+    "bounces":0,
+    "speed":95,
+    "timeToLive":3.0,
     "power" : 5.25,
     "damageKind" : "electric",
     "knockback":0,
-    "lightColor" : [255, 180, 0],    
-    "periodicActions":[ 
+    "lightColor" : [255, 180, 0],
+    "periodicActions":[
       {
-      "time":0.01, 
-      "action":"projectile", 
-      "type":"firelasershot2", 
+      "time":0.01,
+      "action":"projectile",
+      "type":"firelasershot2",
       "config":{
         "processing":"?hueshift=127",
-        "speed":0, 
+        "speed":0,
         "physics" : "laser",
         "bounces" :-1,
-        "timeToLive":0.4, 
-        "power":1, 
+        "timeToLive":0.4,
+        "power":1,
         "knockback":0
         }
       }
-    ],     
+    ],
     "actionOnReap" : [
       {
         "action" : "sound",
         "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
-      },        
+      },
       {
         "action" : "projectile",
         "type" : "electricexplosion",
@@ -105,7 +105,7 @@
       }
     ]
   },
-  
+
   "stances" : {
     "idle" : {
       "armRotation" : 0,
@@ -135,21 +135,21 @@
     }
   }
   },
-  
+
   "critChance" : 4,
   "critBonus" : 6,
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
-  "recoilForce" : 900,  
-  
-  
+  "recoilForce" : 900,
+
+
   "altAbilityType" : "fudronelauncher",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  
-  
-  
+
+
+
   "upgradeParameters" : {
     "shortdescription" : "^cyan;Shatterstar^reset; ^yellow;^reset;",
   "animationParts" : {"middle" : "mobiusrifle2.png"},

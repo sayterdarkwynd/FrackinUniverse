@@ -39,7 +39,7 @@ function init()
 
     storage.crazycarrycooldown=math.max(storage.crazycarrycooldown or 0,10.0)
 
-  
+
 	--make sure the annoying sounds dont flood
 	status.removeEphemeralEffect("partytime5madness")
 	status.removeEphemeralEffect("partytime5")
@@ -491,11 +491,11 @@ function update(dt)
 				self.madnessResearchBonus = 0
 			end
 		end
-        
+
         --time based research increases
         -- every 30 minutes we increment it by +1. So long as the player is active, this bonus applies. Going AFK pauses it
         checkPassiveTimerBonus()
-	    
+
 		self.researchBonus = storage.timedResearchBonus + self.threatBonus + self.madnessResearchBonus
 
 		self.bonus = self.researchBonus + (self.protheonCount) --status.stat("researchBonus") + self.researchBonus
@@ -576,7 +576,7 @@ function checkPassiveTimerBonus()
 	    applyPassiveBonus()
 	else
 		storage.timedResearchBonus = 0  -- reset bonus if AFK
-    end	
+    end
 end
 
 function checkInitGap()
@@ -588,9 +588,9 @@ function checkInitGap()
 	storage.activeTime=((not (gap > 60.0)) and storage.activeTime) or 0
 end
 
-function applyPassiveBonus()	
+function applyPassiveBonus()
 	if storage.activeTime > 10800 then
-		storage.timedResearchBonus = 3	
+		storage.timedResearchBonus = 3
 	elseif storage.activeTime > 7200 then
 		storage.timedResearchBonus = 2
 	elseif storage.activeTime > 3600 then
@@ -603,7 +603,7 @@ end
 function passiveRadioMessage()
     if storage.activeTime == 3600 then player.radioMessage("researchBonus1") end
     if storage.activeTime == 7200 then player.radioMessage("researchBonus2") end
-    if storage.activeTime == 10800 then player.radioMessage("researchBonus3") end	
+    if storage.activeTime == 10800 then player.radioMessage("researchBonus3") end
 end
 ----------------------------------------------
 
