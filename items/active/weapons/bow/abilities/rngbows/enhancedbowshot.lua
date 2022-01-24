@@ -99,8 +99,8 @@ function NebBowShot:draw()
 		if self.drawTimer>= (self.modifiedDrawTime - 0.15) then
 			animator.stopAllSounds("draw")
 			if not readySoundPlayed then
-			animator.playSound("ready")
-			readySoundPlayed = true
+				animator.playSound("ready")
+				readySoundPlayed = true
 			end
 		end
 
