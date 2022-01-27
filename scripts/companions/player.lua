@@ -231,7 +231,7 @@ function update(dt)
 			storage.resummonCrew=nil
 		end
 		if storage.summonCrew then
-			for uuid, recruit in pairs(recruitSpawner.followers) do
+			for _, recruit in pairs(recruitSpawner.followers) do
 				recruit:despawn()
 				recruit.uniqueId = nil
 			end
