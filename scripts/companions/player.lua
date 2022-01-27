@@ -212,7 +212,7 @@ function update(dt)
 			petSpawner:setPodCollar(uuid, podItem.parameters.currentCollar)
 		end
 	end
-	if storage.summonPets then 
+	if storage.summonPets then
 		storage.summonPets=nil
 	end
 
