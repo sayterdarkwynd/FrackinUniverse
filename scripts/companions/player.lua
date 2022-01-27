@@ -3,15 +3,17 @@ require "/scripts/companions/recruitspawner.lua"
 require "/scripts/achievements.lua"
 
 local petPersistentEffects = {
-		powerMultiplier = true,
-		protection = true,
-		maxHealth = true
-	}
+	powerMultiplier = true,
+	protection = true,
+	maxHealth = true
+}
 
 local function filterPersistentEffects(effects)
-	return util.filter(effects, function (effect)
+	return util.filter(effects,
+		function (effect)
 			return type(effect) == "table" and petPersistentEffects[effect.stat]
-		end)
+		end
+	)
 end
 
 function getPetPersistentEffects()
@@ -36,6 +38,7 @@ function init()
 	message.setHandler("pets.deactivatePod", localHandler(deactivatePod))
 	message.setHandler("pets.togglePod", localHandler(togglePod))
 	message.setHandler("pets.spawnFromPod", localHandler(spawnFromPod))
+	message.setHandler("pets.summon", localHandler(summonPets))
 
 	--Messages specific to player-spawned recruits:
 	message.setHandler("recruits.offerRecruit", simpleHandler(offerRecruit))
@@ -45,6 +48,7 @@ function init()
 	message.setHandler("recruits.offerUniformUpdate", simpleHandler(offerUniformUpdate))
 	message.setHandler("recruits.triggerFieldBenefits", simpleHandler(triggerFieldBenefits))
 	message.setHandler("recruits.triggerCombatBenefits", simpleHandler(triggerCombatBenefits))
+	message.setHandler("recruits.summon", simpleHandler(summonCrew))
 
 	petSpawner.ownerUuid = entity.uniqueId()
 	recruitSpawner.ownerUuid = entity.uniqueId()
@@ -59,10 +63,13 @@ function init()
 	for _,follower in pairs(followers) do
 		follower.uniqueId = nil
 	end
-	recruitSpawner:load({
+	recruitSpawner:load(
+		{
 			followers = followers,
 			shipCrew = playerCompanions.getCompanions("shipCrew")
-		}, storage.recruits or {})
+		},
+		storage.recruits or {}
+	)
 
 	storage.activePods = storage.activePods or {}
 	self.spawnedCompanions = false
@@ -199,9 +206,14 @@ function update(dt)
 		local podItem = player.getItemWithParameter("podUuid", uuid)
 		if pod:dead() or not podItem then
 			deactivatePod(uuid)
+		--[[elseif storage.summonPets then
+			pod:recall()]]
 		else
 			petSpawner:setPodCollar(uuid, podItem.parameters.currentCollar)
 		end
+	end
+	if storage.summonPets then 
+		storage.summonPets=nil
 	end
 
 	recruitSpawner:update(dt)
@@ -212,6 +224,19 @@ function update(dt)
 			if not recruitSpawner.beenOnShip[uuid] then
 				runFirstShipExperience(uuid, recruit)
 			end
+		end
+	else
+		if storage.resummonCrew then
+			resummonCrew()
+			storage.resummonCrew=nil
+		end
+		if storage.summonCrew then
+			for uuid, recruit in pairs(recruitSpawner.followers) do
+				recruit:despawn()
+				recruit.uniqueId = nil
+			end
+			storage.summonCrew=nil
+			storage.resummonCrew=true
 		end
 	end
 
@@ -379,12 +404,12 @@ end
 
 function recruitTags(recruit)
 	return {
-			name = recruit.name,
-			role = recruit.role.name,
-			field = recruit.role.field,
-			rank = recruit.rank,
-			status = recruit.statusText
-		}
+		name = recruit.name,
+		role = recruit.role.name,
+		field = recruit.role.field,
+		rank = recruit.rank,
+		status = recruit.statusText
+	}
 end
 
 function createConfirmationDialog(configPath, recruit)
@@ -425,7 +450,8 @@ local function recruitImpl(uniqueId, position, recruitInfo, entityId, dialogConf
 		dialogConfig.images.portrait = recruit.portrait
 	end
 
-	promises:add(player.confirm(dialogConfig), function (choice)
+	promises:add(player.confirm(dialogConfig),
+		function (choice)
 			if choice and playerHasItems(price) then
 				promises:add(world.sendEntityMessage(uniqueId, "recruit.confirmRecruitment", recruitSpawner.ownerUuid, uuid, onOwnShip()), function (success)
 						if success then
@@ -437,7 +463,8 @@ local function recruitImpl(uniqueId, position, recruitInfo, entityId, dialogConf
 			else
 				world.sendEntityMessage(uniqueId, "recruit.declineRecruitment", recruitSpawner.ownerUuid)
 			end
-		end)
+		end
+	)
 end
 
 function offerRecruit(uniqueId, position, recruitInfo, entityId)
@@ -453,9 +480,11 @@ function requestFollow(uniqueId, recruitUuid, recruitInfo)
 		world.sendEntityMessage(uniqueId, "recruit.interactBehavior", { sourceId = entity.id() })
 		return
 	end
-	promises:add(world.sendEntityMessage(uniqueId, "recruit.confirmFollow"), function (success)
+	promises:add(world.sendEntityMessage(uniqueId, "recruit.confirmFollow"),
+		function (success)
 			recruitSpawner:recruitFollowing(onOwnShip(), recruitUuid, recruitInfo)
-		end)
+		end
+	)
 end
 
 function requestUnfollow(uniqueId, recruitUuid)
@@ -484,9 +513,9 @@ function getPlayerUniform()
 		end
 	end
 	return {
-			slots = slots,
-			items = items
-		}
+		slots = slots,
+		items = items
+	}
 end
 
 function setUniform(items)
@@ -509,20 +538,24 @@ function offerUniformUpdate(recruitUuid, entityId)
 		local dialogConfig = createConfirmationDialog("/interface/confirmation/setuniformconfirmation.config", recruit)
 		dialogConfig.sourceEntityId = entityId
 		dialogConfig.images.portrait = world.entityPortrait(entity.id(), "full")
-		promises:add(player.confirm(dialogConfig), function (choice)
+		promises:add(player.confirm(dialogConfig),
+			function (choice)
 				if choice then
 					updateUniform()
 				end
-			end)
+			end
+		)
 	else
 		local dialogConfig = createConfirmationDialog("/interface/confirmation/resetuniformconfirmation.config", recruit)
 		dialogConfig.sourceEntityId = entityId
 		dialogConfig.images.portrait = world.entityPortrait(entity.id(), "full")
-		promises:add(player.confirm(dialogConfig), function (choice)
+		promises:add(player.confirm(dialogConfig),
+			function (choice)
 				if choice then
 					resetUniform()
 				end
-			end)
+			end
+		)
 	end
 end
 
@@ -580,4 +613,39 @@ function triggerCombatBenefits(recruitUuid)
 	end
 
 	status.addEphemeralEffects(recruit:combatBenefits())
+end
+
+function summonPets()
+	storage.summonPets=true
+	--sb.logInfo("summoning pets")
+end
+
+function summonCrew()
+	if not storage.resummonCrew then
+		storage.summonCrew=true
+	end
+	--sb.logInfo("summoning crew")
+end
+
+function resummonCrew()
+	if world.pointTileCollision(entity.position(), {"Null"}) then
+		-- The player's sector is not loaded yet. We need it to be loaded in
+		-- order to be able to spawn pets at positions that won't intersect
+		-- world geometry.
+		return false
+	end
+
+	-- don't attempt to spawn companions when entering a world without gravity
+	if world.gravity(entity.position()) <= 0 then
+		return true
+	end
+
+	for _, recruit in pairs(recruitSpawner.followers) do
+		if not recruit:dead() then
+			recruit:spawn()
+		end
+	end
+	recruitSpawner:markDirty()
+
+	return true
 end
