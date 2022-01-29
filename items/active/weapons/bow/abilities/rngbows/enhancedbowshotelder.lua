@@ -103,8 +103,8 @@ function NebBowShotElder:draw()
 		if self.drawTimer>= (self.modifiedDrawTime - 0.15) then
 			animator.stopAllSounds("draw")
 			if not readySoundPlayed then
-			animator.playSound("ready")
-			readySoundPlayed = true
+				animator.playSound("ready")
+				readySoundPlayed = true
 			end
 		end
 
@@ -229,7 +229,6 @@ end
 
 function NebBowShotElder:updateProjectiles()
 	local aimPosition = activeItem.ownerAimPosition()
-	--sb.logInfo("%s",aimPosition)
 	local newProjectiles = {}
 	for _, projectileId in pairs(storage.projectiles) do
 		if world.entityExists(projectileId) then
