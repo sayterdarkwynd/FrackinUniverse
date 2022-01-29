@@ -1,5 +1,7 @@
 local inputList = "inputSlotScrollArea.inputSlotList";
 local outputList = "outputSlotScrollArea.outputSlotList";
+local filterFunctionsLabelDefault = "Functions: ^yellow;Use these to help divide outputs for automation.^reset;"
+local helpMode=false
 
 buttons = {
 	invertButtons = {
@@ -66,6 +68,8 @@ function update()
 		if promise:finished() and promise:succeeded() then
 			initialize(promise:result())
 			initialized = true;
+			widget.setText("filterFunctionsLabel",filterFunctionsLabelDefault)
+			widget.setText("filterFunctionsLabel2","")
 		elseif promise:finished() and not promise:succeeded() then
 			promise = world.sendEntityMessage(myBox, "sendConfig")
 		end
@@ -74,10 +78,20 @@ function update()
 end
 
 function addInputSlot()
+	if helpMode then
+		widget.setText("filterFunctionsLabel2","Left '^green;+^reset;': adds an item from the input slot filter list.")
+		widget.setText("filterFunctionsLabel","This is the list for the source.")
+		return
+	end
 	addListSlot("inputSlotCount", inputList, inputSlots, "setInputSlots")
 end
 
 function addOutputSlot()
+	if helpMode then
+		widget.setText("filterFunctionsLabel2","Right '^green;+^reset;': adds an item from the output slot filter list.")
+		widget.setText("filterFunctionsLabel","This is the list for the destination.")
+		return
+	end
 	addListSlot("outputSlotCount", outputList, outputSlots, "setOutputSlots")
 end
 
@@ -99,10 +113,20 @@ function addListSlot(label, list, slots, notify)
 end
 
 function subInputSlot()
+	if helpMode then
+		widget.setText("filterFunctionsLabel2","Left '^red;-^reset;': Removes an item from the intput slot filter list.")
+		widget.setText("filterFunctionsLabel","")
+		return
+	end
 	subFromListSlots(inputList, inputSlots, "setInputSlots");
 end
 
 function subOutputSlot()
+	if helpMode then
+		widget.setText("filterFunctionsLabel2","Right '^red;-^reset;': Removes an item from the output slot filter list.")
+		widget.setText("filterFunctionsLabel","")
+		return
+	end
   subFromListSlots(outputList, outputSlots, "setOutputSlots");
 end
 
@@ -136,13 +160,6 @@ function redrawListSlots(list, slots)
 	end
 end
 
-function invSlots()
-	if not initialized then return end
-	invertSlots[1]=widget.getChecked("invInputSlot")
-	invertSlots[2]=widget.getChecked("invOutputSlot")
-	world.sendEntityMessage(myBox, "setInvertSlots", invertSlots);
-end
-
 function syncListSlots(slots, notify)
 	local temp={}
 	for _,v in pairs(slots) do
@@ -157,6 +174,18 @@ function redrawItemFilters()
 	end
 end
 
+function invSlots()
+	if helpMode then
+		widget.setText("filterFunctionsLabel2","'I' buttons: Inverts slot filter selection for a given side.")
+		widget.setText("filterFunctionsLabel","")
+		return
+	end
+	if not initialized then return end
+	invertSlots[1]=widget.getChecked("invInputSlot")
+	invertSlots[2]=widget.getChecked("invOutputSlot")
+	world.sendEntityMessage(myBox, "setInvertSlots", invertSlots);
+end
+
 function redrawInvertButtons()
 	for name,i in pairs(buttons.invertButtons) do
 		widget.setChecked(name,filterInverted[i])
@@ -168,7 +197,25 @@ function redrawInvertSlotButtons()
 	widget.setChecked("invOutputSlot",invertSlots[2])
 end
 
+function help()
+	helpMode=not helpMode
+	if helpMode then
+		widget.setText("filterFunctionsLabel","^green;Click a button for information^reset;")
+		widget.setButtonImages("help",{base = "/interface/inspect.png?scanlines=5555AACC;0.4;5555FFCC;0.4?scalenearest=0.75",hover = "/interface/inspecthover.png?scanlines=5555AACC;0.4;5555FFCC;0.4?scalenearest=0.75",pressed = "/interface/inspecthover.png?scanlines=5555AACC;0.4;5555FFCC;0.4?scalenearest=0.75"})
+	else
+		widget.setButtonImages("help",{base = "/interface/inspect.png?scalenearest=0.75",hover = "/interface/inspecthover.png?scalenearest=0.75",pressed = "/interface/inspecthover.png?scalenearest=0.75"})
+		widget.setText("filterFunctionsLabel","")
+		widget.setText("filterFunctionsLabel2","")
+		init()
+	end
+end
+
 function itemFilters()
+	if helpMode then
+		widget.setText("filterFunctionsLabel2","Item Filters: select whether an item is: Matched Exactly,")
+		widget.setText("filterFunctionsLabel","Matched by Type (item category), matched by Category (groups of!)")
+		return
+	end
 	if not initialized then return end
 	for i=1,5 do
 		filterType[i]=widget.getSelectedOption("item"..i.."Filter")
@@ -177,32 +224,55 @@ function itemFilters()
 end
 
 function invertButtons(name)
+	if helpMode then
+		widget.setText("filterFunctionsLabel2","Invert Logic: Slot is treated as an exception for pattern matching.")
+		widget.setText("filterFunctionsLabel","")
+		return
+	end
 	if not initialized then return end
 	filterInverted[buttons.invertButtons[name]] = widget.getChecked(name)
 	world.sendEntityMessage(myBox, "setInverts", filterInverted);
 end
 
 function roundRobinToggle(name)
+	if helpMode then
+		widget.setText("filterFunctionsLabel2","Even Split: splits stacks of an item evenly between containers.")
+		widget.setText("filterFunctionsLabel","^orange;Only matches a single item^reset;")
+		return
+	end
 	roundRobin = widget.getChecked(name)
 	world.sendEntityMessage(myBox, "setRR", roundRobin)
 end
 
 function roundRobinSlotToggle(name)
+	if helpMode then
+		widget.setText("filterFunctionsLabel2","Slot Split: Splits a stack between slots in a container.")
+		widget.setText("filterFunctionsLabel","")
+		return
+	end
 	roundRobin = widget.getChecked(name)
 	world.sendEntityMessage(myBox, "setRRS", roundRobin)
 end
 
 function leaveOneItemToggle(name)
+	if helpMode then
+		widget.setText("filterFunctionsLabel2","Leave One: Self exclamatory.")
+		widget.setText("filterFunctionsLabel","^orange;Do you really need help with this?^reset;")
+		return
+	end
 	leaveOne = widget.getChecked(name)
 	world.sendEntityMessage(myBox, "setLO", leaveOne)
 end
 
 function onlyStackToggle(name)
+	if helpMode then
+		widget.setText("filterFunctionsLabel2","Only Stack: Only attempts to add to already present stacks.")
+		widget.setText("filterFunctionsLabel","^orange;Only matches a single item^reset;")
+		return
+	end
 	onlyStack = widget.getChecked(name)
 	world.sendEntityMessage(myBox, "setOS", onlyStack)
 end
-
-
 
 function dbg(args)
 	sb.logInfo(sb.printJson(args))
