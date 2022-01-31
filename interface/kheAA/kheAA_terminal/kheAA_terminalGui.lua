@@ -2,10 +2,11 @@ require "/scripts/util.lua"
 local deltatime=0
 
 function init()
-	promise=nil
-	self={}
+	promise = nil
+	self = {}
 	items = {}
-	deltatime=30
+	itemsShown = {}
+	deltatime = 30
 	pos = world.entityPosition(pane.containerEntityId())
 	widget.addListItem("scrollArea.itemList")
 	filterText = ""
@@ -89,6 +90,8 @@ function refreshList()
 	if #items <= maxItemsForSorting then
 		sortItems()
 	end
+
+	itemsShown={}
 	for i = 1, #items do
 		local item = items[i][2]
 		local conf = items[i][3]
@@ -96,6 +99,7 @@ function refreshList()
 
 		if filterText == "" or comparableName(name):find(comparableFilter()) then
 			local listItem = widget.addListItem("scrollArea.itemList")
+			table.insert(itemsShown, {item, listItem})
 			widget.setText("scrollArea.itemList." .. listItem .. ".itemName", name)
 			widget.setText("scrollArea.itemList." .. listItem .. ".amount", "×" .. item.count)
 			pcall(getIcon, item, conf, listItem)
@@ -148,24 +152,35 @@ function requestAllButOne()
 	end
 end
 
---[[
-
-function addInputSlot()
-	local text = widget.getText("inputSlotCount")
-	if text ~= "" and tonumber(text) >= 0 then
-		local slot = tonumber(text)
-		for _,v in pairs(inputSlots) do
-			if v[1] == slot then
-				return
-			end
+function requestShown()
+	local data = widget.getData("scrollArea.itemList")
+	local selected = widget.getListSelected("scrollArea.itemList")
+	for i = 1, #itemsShown do
+		local current = itemsShown[i][2]
+		local data = widget.getData("scrollArea.itemList." .. tostring(current))
+		if data then
+			requestItem(current, data[2].count)
 		end
-		local item = widget.addListItem(inputList)
-		widget.setText(inputList .. "." .. item .. ".slotNr", slot .. "")
-		table.insert(inputSlots, {slot, item})
-		syncInputSlots()
 	end
 end
 
+--[[
+
+function addInputSlot()
+    local text = widget.getText("inputSlotCount")
+    if text ~= "" and tonumber(text) >= 0 then
+        local slot = tonumber(text)
+        for _,v in pairs(inputSlots) do
+            if v[1] == slot then
+                return
+            end
+        end
+        local item = widget.addListItem(inputList)
+        widget.setText(inputList .. "." .. item .. ".slotNr", slot .. "")
+        table.insert(inputSlots, {slot, item})
+        syncInputSlots()
+    end
+end
 
 ]]
 
