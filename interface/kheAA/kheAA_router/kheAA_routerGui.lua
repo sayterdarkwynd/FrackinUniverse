@@ -256,7 +256,7 @@ end
 
 function leaveOneItemToggle(name)
 	if helpMode then
-		widget.setText("filterFunctionsLabel2","Leave One: Self exclamatory.")
+		widget.setText("filterFunctionsLabel2","Leave One: Self-explanatory.")
 		widget.setText("filterFunctionsLabel","^orange;Do you really need help with this?^reset;")
 		return
 	end

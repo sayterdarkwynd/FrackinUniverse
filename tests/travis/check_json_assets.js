@@ -142,14 +142,14 @@ class JsonAssetsTest {
 	 */
 	analyzeAssets() {
 		for ( var [ filename, data ] of this.knownAssets ) {
-			var filenamePaths = filename.split( '.' ),
-				fileExtension = filenamePaths.pop(),
+			var filenameParts = filename.split( '.' ),
+				fileExtension = filenameParts.pop(),
 				patchedExtension = null;
 
 			if ( fileExtension === 'patch' ) {
 				// We don't have full vanilla assets here, so we can't apply patches completely,
 				// but some parts of them may still be analyzed below.
-				patchedExtension = filenamePaths.pop();
+				patchedExtension = filenameParts.pop();
 			}
 
 			// Add "sourceFilename" to all assets (for use in error messages).
