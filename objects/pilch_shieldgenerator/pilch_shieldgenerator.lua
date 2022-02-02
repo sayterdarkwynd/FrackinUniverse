@@ -259,7 +259,7 @@ function checkArea()
 			if (dId >= LOWID) and (dId <= HIGHID) then
 				overlaps = overlaps + 1
 				if storage.debugMode then
-					table.insert("\n"..overlapList,tostring(dId) .. " @ " .. tostring(x) .. ", " .. tostring(y))
+					table.insert(overlapList,"\n"..tostring(dId) .. " @ " .. tostring(x) .. ", " .. tostring(y))
 				end
 			end
 			iterations = iterations + 1
