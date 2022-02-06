@@ -311,16 +311,18 @@ end
 function Pet:despawn(callback)
 	if not self.uniqueId then return end
 	self.statusTimer = nil
-	promises:add(world.sendEntityMessage(self.uniqueId, self.returnMessage), function (status)
+	promises:add(
+		world.sendEntityMessage(self.uniqueId, self.returnMessage), function (status)
 			self.status = status
 			self.uniqueId = nil
 			if callback then callback() end
-		end)
+		end
+	)
 end
 
 function Pet:needsRespawn()
 	if not self.uniqueId then return false end
-	if not compare(self.spawnedCollarParameters, self.collar and self.collar.parameters) then
+	if storage.summonPets or (not compare(self.spawnedCollarParameters, self.collar and self.collar.parameters)) then
 		-- The collar changed and it defines parameter overrides for the pet
 		return true
 	end
@@ -403,7 +405,7 @@ function Pet:setStatus(status, dead)
 	end
 end
 
--- Pods are contain one or more pets. All are released and returned at once.
+-- Pods contain one or more pets. All are released and returned at once.
 -- In the most common case, a pod will be only one pet, but they can contain
 -- more, e.g. in the cases of hemogoblin and nutmidge, which drop smaller
 -- monsters when they die.
@@ -421,9 +423,9 @@ end
 
 function Pod:store()
 	return {
-			uuid = self.uuid,
-			pets = util.map(self.pets, Pet.store, jarray())
-		}
+		uuid = self.uuid,
+		pets = util.map(self.pets, Pet.store, jarray())
+	}
 end
 
 function Pod.load(json)

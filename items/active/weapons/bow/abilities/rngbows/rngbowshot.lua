@@ -102,8 +102,8 @@ function NebRNGBowShot:draw()
 		if self.drawTimer>= (self.modifiedDrawTime - 0.15) then
 			animator.stopAllSounds("draw")
 			if not readySoundPlayed then
-			animator.playSound("ready")
-			readySoundPlayed = true
+				animator.playSound("ready")
+				readySoundPlayed = true
 			end
 		end
 
@@ -148,21 +148,21 @@ function NebRNGBowShot:fire()
 					action = "projectile",
 					type = self.elementalType .. "arrowenergy",
 					angleAdjust = 0,
-				config = {timeToLive = 0},
+					config = {timeToLive = 0},
 					inheritDamageFactor = 0.0,
 					inheritSpeedFactor = 1
 				}
 			}
-			end
-			for _ = 1, (self.projectileCount or 1) do
-				world.spawnProjectile(
-					self:perfectTiming() and self.powerProjectileType or self.projectileType,
-					self:firePosition(),
-					activeItem.ownerEntityId(),
-					self:aimVector(),
-					false,
-					self:currentProjectileParameters()
-				)
+		end
+		for _ = 1, (self.projectileCount or 1) do
+			world.spawnProjectile(
+				self:perfectTiming() and self.powerProjectileType or self.projectileType,
+				self:firePosition(),
+				activeItem.ownerEntityId(),
+				self:aimVector(),
+				false,
+				self:currentProjectileParameters()
+			)
 
 			if self:perfectTiming() then
 				animator.playSound("perfectRelease")

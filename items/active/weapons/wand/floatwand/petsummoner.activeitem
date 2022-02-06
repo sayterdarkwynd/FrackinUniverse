@@ -1,0 +1,119 @@
+{
+	"itemName": "fupetsummoner",
+	"price": 1440,
+	"maxStack": 1,
+	"level": 1,
+	"rarity": "essential",
+	"description": "Used to summon your pets to your side.
+Hold ^green;Shift^reset; to summon crew instead.
+^red;Consumes ALL energy^reset;",
+	"shortdescription": "Companion Recall Device",
+	"category": "tool",
+	"twoHanded": false,
+	"itemTags": ["tool"],
+	"tooltipKind": "base",
+	"emitters": ["electricpillar"],
+	"animation": "/items/active/weapons/staff/staff.animation",
+
+	"animationParts": {
+		"staff": "floatstaff.png",
+		"stone": "/items/active/weapons/wand/generated/stone/floatstaff.png",
+		"chargeEffect": "floatstaffglow.png"
+	},
+	"animationCustom": {
+		"lights": {
+			"glow": {
+				"color": [35, 14, 72]
+			}
+		},
+		"particleEmitters": {
+			"physicalcharge": {
+				"active": false,
+				"transformationGroups": ["weapon"],
+				"emissionRate": 10,
+				"offsetRegion": [-0.5, 1.0, 0.5, 2.5],
+				"particles": [{
+					"particle": "castphysical"
+				}]
+			}
+		},
+
+		"sounds": {
+			"physicalactivate": ["/sfx/npc/boss/cultistboss_recharge.ogg"]
+		},
+		"animatedParts": {
+			"stateTypes": {
+				"charge": {
+					"states": {
+						"charge": {
+							"frames": 13,
+							"cycle": 0.05
+						},
+						"spark": {
+							"frames": 3,
+							"cycle": 0.05
+						},
+						"charged": {
+							"frames": 4,
+							"cycle": 0.5
+						},
+						"discharge": {
+							"frames": 1,
+							"cycle": 0.05
+						}
+					}
+				}
+			}
+		}
+	},
+
+	"inventoryIcon": "floatstaff.png",
+
+	"scripts": ["/items/active/weapons/wand/floatwand/petsummoner.lua"],
+
+	"stances": {
+		"idle": {
+			"armRotation": -90,
+			"weaponRotation": 0,
+			"twoHanded": false,
+
+			"allowRotate": false,
+			"allowFlip": true
+		},
+		"charge": {
+			"duration": 3,
+			"armRotation": 20,
+			"weaponRotation": -20,
+			"twoHanded": false,
+
+			"allowRotate": false,
+			"allowFlip": true
+		},
+		"charged": {
+			"armRotation": 20,
+			"weaponRotation": -20,
+			"twoHanded": false,
+
+			"allowRotate": false,
+			"allowFlip": true
+		},
+		"discharge": {
+			"duration": 0.05,
+			"armRotation": -10,
+			"weaponRotation": -50,
+			"twoHanded": false,
+
+			"allowRotate": true,
+			"allowFlip": true
+		},
+		"cooldown": {
+			"duration": 0.05,
+			"armRotation": -45,
+			"weaponRotation": 0,
+			"twoHanded": false,
+
+			"allowRotate": false,
+			"allowFlip": true
+		}
+	}
+}
