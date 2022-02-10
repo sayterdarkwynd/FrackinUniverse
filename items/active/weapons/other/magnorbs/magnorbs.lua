@@ -191,9 +191,9 @@ function fire(orbIndex)
 
         --if status.stat("magnorbMastery") > 0 then
         --	self.energyCost = self.tempEnergy * status.stat("magnorbMastery")
-    	--else
-    	self.energyCost = self.tempEnergy
-    	--end
+	--else
+	self.energyCost = self.tempEnergy
+	--end
         status.overConsumeResource("energy", self.energyCost)
 
 	end

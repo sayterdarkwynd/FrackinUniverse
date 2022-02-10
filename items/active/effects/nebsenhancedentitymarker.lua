@@ -12,7 +12,7 @@ function update()
     local entities = animationConfig.animationParameter("entities") or {}
     entities = util.filter(entities, world.entityExists)
     for _,entityId in pairs(entities) do
-  	  local markerDrawable = {
+      local markerDrawable = {
         image = markerImage,
         centered = true,
         position = world.entityMouthPosition(entityId),

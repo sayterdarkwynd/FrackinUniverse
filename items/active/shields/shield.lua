@@ -96,7 +96,7 @@ function init()
 	stunChance = config.getParameter("stunChance", 0)
 	shieldBash = config.getParameter("shieldBash",0)
 	shieldBashPush = config.getParameter("shieldBashPush",0)
- 	--shieldBonusApply()
+	--shieldBonusApply()
 	-- end FU special effects
 
 	animator.setGlobalTag("directives", "")
@@ -149,7 +149,7 @@ function shieldBonusApply(raised)
 		buffer[#buffer+1]={stat = "ffextremeheatImmunity", amount = protectionXHeat}
 		buffer[#buffer+1]={stat = "biomeradiationImmunity", amount = protectionRads}
 		buffer[#buffer+1]={stat = "ffextremeradiationImmunity", amount = protectionXRads}
- 	end
+	end
 	status.setPersistentEffects("shieldEffects",buffer)
 end
 
@@ -276,7 +276,7 @@ function raiseShield()
     -- ******************** END RAISED SHIELD SPECIALS
 
 	self.damageListener = damageListener("damageTaken", function(notifications)
-    	for _,notification in pairs(notifications) do
+	for _,notification in pairs(notifications) do
             if notification.hitType == "ShieldHit" then
                 -- *** set up shield bash values *** --
                 self.randomBash = math.random(100) + config.getParameter("shieldBash",0) + status.stat("shieldBash")
