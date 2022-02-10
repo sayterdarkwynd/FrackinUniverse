@@ -31,7 +31,7 @@ end
 
 function checkArmor()
 	if checkBiome({"lightless","penumbra","aethersea","moon_shadow","shadow","midnight"}) then
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
+
 	else
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,{})
 	end

@@ -2,16 +2,13 @@
 	"type": "fulostandfoundnpc",
 	"baseType": "merchant",
 	"damageTeamType": "friendly",
-	
+
 	"npcname" : "Khe",
 	"identity" : {
 		"name" : "Khe",
 		"gender" : "female",
 		"hairGroup" : "hair",
 		"hairType" : "1",
-		
-		
-		
 
 		//{ "FFCA8A" : "555555", "E0975C" : "424242", "A85636" : "303030", "6F2919" : "151515" },
 		"bodyDirectives" : "?replace=FFCA8A=555555?replace=E0975C=424242?replace=A85636=303030?replace=6F2919=151515?replace=FFD800=2D2D2D?replace=D8B400=101010?replace=FFCC00=555555?replace=56CC7B=555555",
@@ -26,10 +23,19 @@
 		"personalityHeadOffset" : [-1, 0],
 		"personalityArmOffset" : [0, 0]
 	},
-	
+
 	"scriptConfig": {
-		"offeredQuests" : [ "khe_fabric","khe_lantern" ],
-		"turnInQuests": ["kevin_feedkhe","khe_fabric","khe_lantern"],
+		"offeredQuests" : [
+			"khe_fabric","khe_lantern"//,
+			//"fu_t10_initial"//disabled. quest will reward a beacon which is used to access the arena. each quest will reward ONE beacon to the next arena. more can be bought.
+		],
+		"turnInQuests": [
+			"kevin_feedkhe","khe_fabric","khe_lantern",
+			"fu_t10_initial","fu_t10_gaterepair","fu_t10_human_mission1","fu_t10_floran_mission2",
+			"fu_t10_floranarena1","fu_t10_hylotl_mission2","fu_t10_floranarena2","fu_t10_avian_mission2",
+			"fu_t10_floranarena3","fu_t10_apex_mission2","fu_t10_precursor","fu_t10_glitch_mission2"
+			//df2 (7) -> ruin (6) -> swansong (6)
+		],
 		"merchant": {
 			"waitTime": 40,
 			"storeRadius": 8,
@@ -55,35 +61,40 @@
 				"start": {
 					"default": {
 						"default": [
-							"I'm Khe. I find shinies. Lose some?"
+							"I'm Khe. I find shinies. Lose some?",
+							"I sell lost things. Check them out!"
 						]
 					}
 				},
 				"end": {
 					"default": {
 						"default": [
-							"Be well. Bring back shinies!"
+							"Be well. Bring back shinies!",
+							"It's no small feat to sell such great things!"
 						]
 					}
 				},
 				"follow": {
 					"default": {
 						"default": [
-							"Follow me for shiny."
+							"Follow me for shiny.",
+							"Follow me and we can do business."
 						]
 					}
 				},
 				"welcome": {
 					"default": {
 						"default": [
-							"We're here. Shiny?"
+							"We're here. Shiny?",
+							"Greetings."
 						]
 					}
 				},
 				"tout": {
 					"default": {
 						"default": [
-							"Shinies for sale! Lost some? Want some? Get some!"
+							"Shinies for sale! Lost some? Want some? Get some!",
+							"Mrowr. Looking to purchase things you've lost? I've got what you need."
 						]
 					}
 				}

@@ -1,14 +1,15 @@
 {
   "objectName" : "braingenerator",
-  "rarity" : "Common",
-    "colonyTags" : [ "science" ],
+  "rarity" : "common",
+  "colonyTags" : [ "science" ],
   "category" : "wire",
   "objectType" : "container",
   "price" : 3500,
-  "description" : "A product of mad science that appears to run from cannisters of still-living brains. ^blue;Left Input^reset;: Power Switch",
-  "shortdescription" : "^cyan;Neuro-Psionic Generator^white;",
+  "description" : "A product of mad science that appears to run from cannisters of still-living brains. ^orange;Gradually wakes up, consciousness determines output.^reset; Maximum power ^orange;60W^reset;. ^blue;Left Input^reset;: On/Off Switch",
+  "shortdescription" : "^cyan;Neuro-Psionic Generator^reset;",
   "race" : "generic",
   "printable" : false,
+  "tooltipKind" : "base",
   "soundEffect" : "/objects/power/braingenerator/braingenerator.ogg",
 
   "inventoryIcon" : "braingeneratoricon.png",
@@ -28,18 +29,18 @@
     "base" : "braingenerator_base.png"
   },
   "animationPosition" : [0, 0],
-  
+
   "slotCount" : 1,
   "uiConfig" : "/objects/power/braingenerator/braingenerator.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
-  
+
   "scripts" : [ "/scripts/fupower.lua","/scripts/fugenerator.lua"],
   "scriptDelta" : 60,
-  
+
   "inputNodes" : [ [2, 2],[0, 2] ],
   "outputNodes" : [ [2, 1] ],
-  
+
   "powertype" : "output",
   "acceptablefuel" : {
 	  "inferiorbrain" : 10,

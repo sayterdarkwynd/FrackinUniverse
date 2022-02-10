@@ -5,8 +5,8 @@
   "rarity" : "legendary",
   "description" : "An ice weapon of epic proportions.
 ^yellow;Supreme frost power.^reset;
-^cyan;Large recoil. Crouch to minimize.",
-  "shortdescription" : "^#bb39ce;Yeti",
+^cyan;Large recoil. Crouch to minimize.^reset;",
+  "shortdescription" : "^#bb39ce;Yeti^reset;",
   "tooltipKind" : "gununique",
   "category" : "sniperRifle",
   "twoHanded" : true,
@@ -40,12 +40,12 @@
           { "particle" : "smallicecloud1", "offset" : [0.0, 0.1] },
           { "particle" : "smallicecloud2", "offset" : [0.0, 0.1] },
           { "particle" : "iceshard", "offset" : [0.0, 0.1] },
-          { "particle" : "iceshard", "offset" : [0.0, 0.1] },          
+          { "particle" : "iceshard", "offset" : [0.0, 0.1] },
           { "particle" : "iceshard", "offset" : [0.0, 0.1] },
           { "particle" : "iceshard", "offset" : [0.0, 0.1] }
         ]
       }
-    },    
+    },
   "animatedParts" : {
       "parts" : {
         "middleFullbright" : {
@@ -59,7 +59,7 @@
 		  }
 		}
       }
-    }    
+    }
   },
 
   "baseOffset" : [2.9, 0.28],
@@ -91,10 +91,10 @@
 	  "periodicActions" : [
 	    {
 	      "time" : 0.05,
-	      "loop" : true,	    
+	      "loop" : true,
 	      "action" : "config",
 	      "file" : "/projectiles/explosions/iceexplosion1/iceexplosion1.config"
-	    },	  
+	    },
 	    {
 	      "time" : 0.05,
 	      "loop" : true,
@@ -103,7 +103,7 @@
 	      "inheritDamageFactor" :0.05,
 	      "fuzzAngle" : 0,
 	      "projectileParameters" : { "speed" : 0, "damageKind" : "ice", "timeToLive" : 1 }
-	   }	  
+	   }
 	  ],
 	  "actionOnCollide" : [
 	    {
@@ -113,24 +113,24 @@
 	    {
 		  "action" : "config",
 		  "file" : "/projectiles/explosions/iceboom/iceboom.config"
-	    }		    
-	  ],	  
+	    }
+	  ],
 	  "actionOnReap" : [
 	    {
 		  "action" : "config",
 		  "file" : "/projectiles/explosions/iceexplosion3/iceexplosion3.config"
-	    },	  	  
+	    },
 	    {
 		  "action" : "config",
 		  "file" : "/projectiles/explosions/iceboom/iceboom.config"
-	    }	  
+	    }
 	  ]
     },
-    
+
     "recoilKnockbackVelocity" : 45,
     "crouchRecoilKnockbackVelocity" : 20,
     "crouchStopsRecoil" : true,
-	
+
     "stances" : {
       "idle" : {
         "armRotation" : 0,
@@ -160,16 +160,16 @@
       }
     }
   },
-  
+
   "critChance" : 6,
   "critBonus" : 10,
    //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 300,
-  "recoilForce" : 1400, 
-  
+  "recoilForce" : 1400,
+
   "altAbilityType" : "railgunshotpower",
-  "altAbility" : { 
+  "altAbility" : {
     "energyUsage" : 40,
     "fireTime" : 5,
     "projectileType" : "energyzone",
@@ -181,6 +181,6 @@
       "actionOnReap" : []
     }
   },
-  
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

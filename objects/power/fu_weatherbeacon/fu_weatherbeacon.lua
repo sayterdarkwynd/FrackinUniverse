@@ -1,11 +1,12 @@
 function init()
 	self.chatTimer = 0 --Cooldown on announcing power conditions
-	
+
 	self.onShip=world.getProperty("fu_byos.owner") --Is world a BYOS?
-	self.onStation=(world.type() == 'playerstation') --Is world a player station?
+	self.onStation=(world.type() == 'playerstation') or (world.type() == 'asteroids')
+    --Is world a player station or asteroid belt?
 	local ePos=entity.position()
 	storage.randomizedPos = storage.randomizedPos or {ePos[1] + math.random(2,3), ePos[2] + 1}
-	
+
 	self.solarPower1=1.0 --Solar Panel power mult
 	self.solarPower2=2.5 --Solar Array power mult
 	self.solarPower3=6 --Solar Tower power mult
@@ -15,40 +16,40 @@ end
 function update(dt)
 
 	if (world.underground(storage.randomizedPos) or ((not (self.onShip or self.onStation)) and (world.timeOfDay() > 0.55))) then --Are we underground, or on a planet at nighttime?
-		self.solargenmult = 0 --No power
+		self.solargenmult = 0 --No solar power
 	else
 		self.solargenmult = getLightLevel()
 	end
-	
+
 	self.generated_solar1 = self.solargenmult * self.solarPower1 --Solar Panel power
 	self.generated_solar2 = self.solargenmult * self.solarPower2 --Solar Array power
 	self.generated_solar3 = self.solargenmult * self.solarPower3 --Solar Tower power
-	
+
 	if isn_powerGenerationBlocked() then
 		self.generated_wind=0
 	else
 		self.generated_wind = math.min(math.abs(world.windLevel(isn_getTruePosition())),self.windPower)
 	end
-	
+
 	--Round power to 1 decimal place for readability
-	
+
 	self.generated_solar1 = math.floor(self.generated_solar1*10)/10
 	self.generated_solar2 = math.floor(self.generated_solar2*10)/10
 	self.generated_solar3 = math.floor(self.generated_solar3*10)/10
 	self.generated_wind = math.floor(self.generated_wind*10)/10
-	
+
 	--Power output determined, now figure out if and how the beacon should speak
-	
+
 	self.chatTimer = math.max(0, self.chatTimer - dt)
-	
+
 	if self.chatTimer == 0 then
 		local players = world.entityQuery(object.position(), config.getParameter("chatRadius"), {
 			includedTypes = {"player"},
 			boundMode = "CollisionArea"
 		})
-		
+
 		self.beaconDialog = "Solar Panel: "..self.generated_solar1.."W\nSolar Array: "..self.generated_solar2.."W\nSolar Tower: "..self.generated_solar3.."W\nWind Array: "..self.generated_wind.."W"
-		
+
 		if #players > 0 and self.beaconDialog then
 			object.say(self.beaconDialog)
 			self.chatTimer = config.getParameter("chatCooldown")
@@ -79,7 +80,7 @@ function getLightLevel()
 	if world.liquidAt(storage.randomizedPos) then
 		genmult = genmult * 0.05
 	end
-	
+
 	return genmult
 end
 

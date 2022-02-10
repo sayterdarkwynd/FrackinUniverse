@@ -82,8 +82,6 @@ function miniShoggothSpawnAttack2.spit(direction)
 	local projectileType = config.getParameter("miniShoggothSpawnAttack2.projectile.type")
 	local projectileConfig = config.getParameter("miniShoggothSpawnAttack2.projectile.config")
 	local projectileOffset = config.getParameter("miniShoggothSpawnAttack2.projectile.offset")
-	local direction2 = vec2.add(direction, {0, 10})
-	local direction3 = vec2.add(direction, {0, -10})
 
 	if projectileConfig.power then
 		projectileConfig.power = projectileConfig.power * root.evalFunction("monsterLevelPowerMultiplier", monster.level())

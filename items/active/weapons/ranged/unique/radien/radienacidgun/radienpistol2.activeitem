@@ -16,7 +16,7 @@
   "piercing" : true,
   "weaponType" : "Bio Pistol",
   "handGrip" : "wrap",
-  
+
   "animation" : "/items/active/weapons/ranged/unique/radien/fugunoverheating.animation",
   "animationParts" : {
     "butt" : "",
@@ -24,8 +24,8 @@
     "middlefullbright" : "radienpistol2fullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
-  },      
-  
+  },
+
   "animationCustom" : {
     "animatedParts" : {
       "parts" : {
@@ -35,7 +35,7 @@
 		  }
 		}
       }
-    },  
+    },
     "sounds" : { "fire" : [ "/sfx/weapons/radienpistol.ogg" ] },
     "lights" : { "glow" : {
       "active" : true,
@@ -64,7 +64,7 @@
     "energyUsage" : 30,
     "inaccuracy" : 0.0,
     "fireType" : "auto",
-    
+
 	//Overheating Weapon Values (based heavily on elithian races version)
 	"heatGain" : 5,					//Heat generated per shot
 	"coolingTime" : 1.0,				//Time before passive cooling kicks in
@@ -72,9 +72,9 @@
 	"heatLossRateMax" : 3,				//Heat lost per second while overheated
 	"lowLevel" : 10,				//Value required to reach Low heat
 	"medLevel" : 15,				//Value required to reach Medium heat
-	"highLevel" : 20,				//Value required to reach High heat	
+	"highLevel" : 20,				//Value required to reach High heat
 	"overheatLevel" : 25,				//Overheat at this value
-	
+
     "projectileCount" : 1,
     "projectileType" : "radiationguardianpelletgrenade",
     "projectileParameters" : {
@@ -95,7 +95,7 @@
 	      "explosiveDamageAmount" : 2,
 	      "harvestLevel" : 99,
 	      "delaySteps" : 2
-	    },      
+	    },
 	    {
 	      "action" : "projectile",
 	      "type" : "radiengas",
@@ -103,25 +103,25 @@
 	      "fuzzAngle" : 360,
 	      "projectileCount" : 1,
 	      "projectileParameters" : { "speed" : 5}
-	   }        
+	   }
       ],
       "periodicActions" : [
 	    {
 	      "time" : 0.14,
-	      "loop" : true,	    
+	      "loop" : true,
 	      "action" : "sound",
 	      "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
 	    },
 	    {
 	      "time" : 0.10,
-	      "loop" : true,	    
+	      "loop" : true,
 	      "action" : "explosion",
 	      "foregroundRadius" : 2,
 	      "backgroundRadius" : 2,
 	      "explosiveDamageAmount" : 1,
 	      "harvestLevel" : 99,
 	      "delaySteps" : 2
-	    },      
+	    },
 	    {
 	      "time" : 0.5,
 	      "loop" : true,
@@ -131,7 +131,7 @@
 	      "fuzzAngle" : 360,
 	      "projectileCount" : 1,
 	      "projectileParameters" : { "speed" : 5}
-	   }      
+	   }
       ],
       "actionOnReap" : [
 	    {
@@ -145,7 +145,7 @@
 	      "explosiveDamageAmount" : 2,
 	      "harvestLevel" : 99,
 	      "delaySteps" : 2
-	    },      
+	    },
 	    {
 	      "action" : "projectile",
 	      "type" : "radiengas",
@@ -156,20 +156,20 @@
 		      "periodicActions" : [
 			    {
 			      "time" : 0.14,
-			      "loop" : true,	    
+			      "loop" : true,
 			      "action" : "sound",
 			      "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
 			    },
 			    {
 			      "time" : 0.10,
-			      "loop" : true,	    
+			      "loop" : true,
 			      "action" : "explosion",
 			      "foregroundRadius" : 2,
 			      "backgroundRadius" : 2,
 			      "explosiveDamageAmount" : 1,
 			      "harvestLevel" : 99,
 			      "delaySteps" : 2
-			    },      
+			    },
 			    {
 			      "time" : 0.5,
 			      "loop" : true,
@@ -179,7 +179,7 @@
 			      "fuzzAngle" : 360,
 			      "projectileCount" : 1,
 			      "projectileParameters" : { "speed" : 5}
-			   }      
+			   }
 		      ],
 		      "actionOnReap" : [
 			    {
@@ -193,7 +193,7 @@
 			      "explosiveDamageAmount" : 2,
 			      "harvestLevel" : 99,
 			      "delaySteps" : 2
-			    },      
+			    },
 			    {
 			      "action" : "projectile",
 			      "type" : "radiengas",
@@ -201,10 +201,10 @@
 			      "fuzzAngle" : 360,
 			      "projectileCount" : 1,
 			      "projectileParameters" : { "speed" : 5}
-			   }       
-		      ]	      
+			   }
+		      ]
 	      }
-	   }       
+	   }
       ]
     },
     "stances" : {
@@ -246,27 +246,27 @@
 
   "critChance" : 1,
   "critBonus" : 3,
-  
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  
+
   "upgradeParameters" : {
   "shortdescription" : "^cyan;X'ian Acid Ejector^reset;",
   "description" : "A strange X'i-formed weapon.
 ^cyan;Eats Tiles, ^orange;+2 Projectiles^reset;^reset;
-^yellow;Poison Rad Gas^reset;",  
-	  "primaryAbility" : {							
+^yellow;Poison Rad Gas^reset;",
+	  "primaryAbility" : {
 		"projectileCount" : 2,
 		"inaccuracy" : 0.05
-	  }  
+	  }
   },
   "upgradeParameters2" : {
   "shortdescription" : "^orange;X'ian Acid Blaster^reset;",
   "description" : "A strange X'i-formed weapon.
 ^cyan;Eats Tiles, ^orange;+2 Projectiles^reset;^reset;
-^yellow;Poison Rad Gas^reset;",  
-	  "primaryAbility" : {	  
+^yellow;Poison Rad Gas^reset;",
+	  "primaryAbility" : {
 		"projectileCount" : 3,
 		"inaccuracy" : 0.07
-	  }  
+	  }
   }
 }

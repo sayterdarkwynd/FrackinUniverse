@@ -6,11 +6,12 @@
   "category" : "^orange;Extraction Device^reset;",
   "printable" : false,
   "objectType" : "container",
+  "tooltip" : "base",
 
-  "price" : 14450,
+  "price" : 800,
   "lightColor" : [ 100, 176, 191 ],
   "inventoryIcon" : "quantumextractoricon.png",
-  "description" : "The ultimate in block extraction technology. ^cyan;Requires ^orange;60J^cyan; per extraction.^reset;",
+  "description" : "The ultimate in block extraction technology. ^cyan;Requires ^orange;60J^cyan; per extraction.^reset; Can be placed on floors -or- ceilings.",
   "shortdescription" : "^cyan;Quantum Extractor^reset;",
   "subtitle" : "Resource converter",
   "orientations" : [
@@ -72,9 +73,7 @@
   ],
 
   "animation" : "/objects/power/quantumextractor/quantumextractor.animation",
-  "animationParts" : {
-    "samplingarrayanim" : "quantumextractor.png"
-  },
+  "animationParts" : {"samplingarrayanim" : "quantumextractor.png"},
 
   "powertype" : "input",
   "isn_requiredPower" : 60,
@@ -83,17 +82,37 @@
   "fu_stationTechLevel" : 3,
   "fu_timerMod" : 1,
 
-  "outputNodes" : [ [0, 1] ],
-  "inputNodes" : [ [0, 0] ],
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
 
-  "scripts" : [ "/scripts/fupower.lua", "/objects/generic/extractionlab_common.lua" ],
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "crouchcollect"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  },
+
+  "scripts" : [ "/scripts/fupower.lua", "/objects/generic/extractionlab_common.lua", "/scripts/npcToyObject.lua"],
 
   "scriptDelta" : 5,
 
+  "inputSlot": 6,
+
   "recipeGroup" : "quantumextractor",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
-  "slotCount" : 12,
-  "uiConfig" : "/interface/extractor/extractor.config",
+  "slotCount" : 18,
+  "uiConfig" : "/interface/extractor/extractor3.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600
 }

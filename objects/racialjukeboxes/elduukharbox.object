@@ -3,7 +3,7 @@
 	"colonyTags" : ["elduukhar", "musical"],
 	"rarity" : "Common",
 	"category" : "decorative",
-    "lightColor" : [102, 190, 166], 
+ //   "lightColor" : [102, 190, 166],
 	"description" : "A music player, for playing music.",
 	"shortdescription" : "Eld'uu Music Player",
 	"race" : "generic",
@@ -11,11 +11,11 @@
 	"inventoryIcon" : "elduukharboxicon.png",
 	"orientations" : [
 		{
-			"image" : "elduukharboxunlit.png",
+			"image" : "elduukharbox.png:<color>.<frame>",
 			"imagePosition" : [-12, 0],
 			"animationPosition" : [-12, 0],
 			"animationParts" : {
-				"bg" : "elduukharboxunlit.png",
+				"bg" : "elduukharbox.png",
 				"fg" : "elduukharboxlit.png"
 			},
 			"direction" : "left",
@@ -24,11 +24,11 @@
 			"anchors" : [ "bottom" ]
 		},
 		{
-			"image" : "elduukharboxunlit.png",
+			"image" : "elduukharbox.png:<color>.<frame>",
 			"imagePosition" : [-12, 0],
 			"animationPosition" : [-12, 0],
 			"animationParts" : {
-				"bg" : "elduukharboxunlit.png",
+				"bg" : "elduukharbox.png",
 				"fg" : "elduukharboxlit.png"
 			},
 			"direction" : "right",
@@ -36,21 +36,21 @@
 			"anchors" : [ "bottom" ]
 		}
 	],
-	
-	"animation" : "racialmusicbox.animation",
+
+	"animation" : "racialmboxanimated.animation",
 	"animationParts" : {
-		"bg" : "elduukharboxunlit.png",
+		"bg" : "elduukharbox.png",
 		"fg" : "elduukharboxlit.png"
 	},
 	"animationPosition" : [-8, 0],
 	"interactAction" : "ScriptPane",
 	"interactData" : "/interface/scripted/fm_musicplayer/fm_musicplayer.config",
-	
+
 	"inputNodes" : [ [-1, 0] ],
 	"outputNodes" : [ [1, 0] ],
-	
+
 	"scripts" : [ "/objects/generic/fm_musicplayer/fm_musicplayer.lua"],
-	"scriptDelta" : 7,	
-	
+	"scriptDelta" : 7,
+
 	"musicRadius" : 30
 }

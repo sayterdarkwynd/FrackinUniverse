@@ -28,6 +28,13 @@ function SonicSlash:startAttack()
 
   self.weapon.freezesLeft = 0
   self.freezeTimer = self.freezeTime or 0
+  local position = vec2.add(mcontroller.position(), {self.projectileOffset[1] * mcontroller.facingDirection(), self.projectileOffset[2]})
+  local params = {
+    powerMultiplier = activeItem.ownerPowerMultiplier(),
+    power = self:damageAmount(),
+    speed = 120
+  }
+  world.spawnProjectile("fuicebullet", position, activeItem.ownerEntityId(), self:aimVector(), false, params)
 end
 
 -- State: windup
@@ -63,14 +70,6 @@ function SonicSlash:fire()
 
     self.weapon:setDamage(self.damageConfig, damageArea, self.fireTime)
   end)
-
-      local position = vec2.add(mcontroller.position(), {self.projectileOffset[1] * mcontroller.facingDirection(), self.projectileOffset[2]})
-	local params = {
-    powerMultiplier = activeItem.ownerPowerMultiplier(),
-    power = self:damageAmount(),
-	speed = 120
-  }
-  world.spawnProjectile("fuicebullet", position, activeItem.ownerEntityId(), self:aimVector(), false, params)
 
   finishFistCombo()
   activeItem.callOtherHandScript("finishFistCombo")

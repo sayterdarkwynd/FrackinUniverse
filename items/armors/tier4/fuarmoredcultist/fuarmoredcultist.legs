@@ -4,7 +4,7 @@
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Common",
+  "rarity" : "rare",
    "description" : "^cyan;Immune^reset; to most terrain effects.
 ^orange;Set Bonuses^reset;:
 ^yellow;^reset; ^cyan;Flings Eyeballs^reset;
@@ -40,13 +40,13 @@
       "stat" : "maxHealth",
       "amount" : 2
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "shadowResistance",
       "amount" : 0.028
     }
   ],
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced" ],
   "statusEffects" : [
     "corruptsetbonus",
     {
@@ -54,7 +54,7 @@
       "amount" : 1
     },
     "movementprotection"
-  ], 
+  ],
 
   "colorOptions" : [
     /* PURPLE */
@@ -94,5 +94,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

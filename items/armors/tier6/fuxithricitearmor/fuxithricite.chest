@@ -4,14 +4,14 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Rare",
-   "description" : "^orange;Set Bonuses^reset;: 
-^yellow;^reset; Xithricite Weapons: +^green;3^reset;% Crit 
-^yellow;^reset; ^cyan;Immune^reset;: All Rads, Pressure, Shadow, Aether, Insanity, Oxygen", 
+  "rarity" : "legendary",
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Xithricite Weapons: +^green;3^reset;% Crit
+^yellow;^reset; ^cyan;Immune^reset;: All Rads, Pressure, Shadow Taint, Aether, Insanity, Oxygen",
   "shortdescription" : "Xithricite Chestplate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced" ],
   "maleFrames" : {
     "body" : "chest.png",
     "backSleeve" : "bsleeve.png",
@@ -47,12 +47,12 @@
       "stat" : "maxHealth",
       "amount" : 5
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "cosmicResistance",
       "amount" : 0.042857
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "radioactiveResistance",
       "amount" : 0.025715
@@ -73,5 +73,5 @@
 
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

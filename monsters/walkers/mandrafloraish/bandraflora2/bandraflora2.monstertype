@@ -18,10 +18,10 @@
     "electricbow" : "mandrafloraHunting",
     "cosmicbow" : "mandrafloraHunting",
     "radioactivebow" : "mandrafloraHunting",
-    "shadowbow" : "mandrafloraHunting"     
+    "shadowbow" : "mandrafloraHunting"
     }
-  ], 
-  
+  ],
+
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
@@ -33,7 +33,7 @@
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 20,
+      "targetQueryRange" : 30,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
       "keepTargetInRange" : 50,
@@ -45,30 +45,23 @@
 
       "hostileActions" : [
         {
-          "name" : "action-fire",
-          "cooldown" : 0.2,
-          "parameters" : {
-            "maximumRange" : 30,
-            "minimumRange" : 3,
-            "windupState" : "chargewindup",
-            "windupTime" : 0.2,
+          "name" : "action-charge",
+            "cooldown" : 2,
+            "parameters" : {
+              "minimumRange" : 1,
+              "maximumRange" : 55,
+              "windupTime" : 0.6,
 
-            "projectileType" : "futarball3",
-            "fireOffset" : [3, -0.7],
+              "aimAtTarget" : true,
+              "chargeTime" : 1.0,
+              "chargeSpeed" : 30,
+              "chargeControlForce" : 400,
+              "wallCrashSound" : "",
+              "wallCrashEmitter" : "",
 
-            "aimAtTarget" : true,
-            "projectileCount" : 12,
-            "inaccuracy" : 1,
-            "aimDirection" : [0,1],
-            "power" : 3,
-            "speed": 30,
-            "fireSound" : "fire",
-            "fireState" : "charge",
-
-
-            "winddownState" : "chargewinddown"
+            "winddownTime" : 0.6
           }
-        }   
+        }
       ],
 
       "periodicActions" : [],
@@ -120,24 +113,37 @@
           }
         }
       ],
-      
-      "concurrentHostileActions" : [ 
+
+      "concurrentHostileActions" : [
         {
-          "name" : "action-projectile",
-          "cooldown" : 0.5,
+          "name" : "action-fire",
+          "cooldown" : 3,
           "parameters" : {
-            "projectileCount" : 1,
-            "projectileType" : "ectoboom",
-            "projectileParameters" : {},
-            "power" : 0,
-            "aimDirection" : [1, 1],
-            "inaccuracy" : 3.5,
-            "fireOffset" : [0, 0]
+            "maximumRange" : 20,
+            "minimumRange" : 0,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.2,
+
+            "projectileType" : "futarball3",
+            "projectileInterval" : 0.1,
+            "fireOffset" : [1, -0.7],
+
+            "aimAtTarget" : true,
+            "projectileCount" : 4,
+            "inaccuracy" : 0.85,
+            "aimDirection" : [0,1],
+            "power" : 2,
+            "speed": 20,
+            "fireSound" : "fire",
+            "fireState" : "charge",
+
+
+            "winddownState" : "chargewinddown"
           }
-        }       
+        }
       ],
-      
-      
+
+
       "wanderActions" : [
         {
           "name" : "wander-walk",
@@ -151,7 +157,7 @@
 
     "touchDamage" : {
       "poly" : [ [1.0125, 1.25], [1.5125, 0.75],  [1.5125, -1.55], [1.0125, -1.95],  [-1.0125, -1.95], [-1.5125, -1.55],  [-1.5125, 0.75], [-1.0125, 1.25] ],
-      "damage" : 14,
+      "damage" : 10,
 
       "teamType" : "enemy",
       "damageSourceKind" : "bioweapon",
@@ -246,7 +252,7 @@
         },
         "shadowResistance" : {
           "baseValue" : -0.99
-        },        
+        },
         "poisonStatusImmunity" : {
           "baseValue" : 1
         }
@@ -269,7 +275,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "bandraflora2" }
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "bandraflora2" }
   }
 }

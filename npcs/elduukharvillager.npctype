@@ -1,30 +1,30 @@
 {
   "type" : "elduukharvillager",
   "baseType" : "base",
-  
+
   "levelVariance" : [3, 3],
   "persistent" : true,
-  
+
   "damageTeamType" : "friendly",
 
   "scriptConfig" : {
     "behavior" : "elduukharguard",
-	
+
 	"behaviorConfig" : {
 	  "greetingChance" : 0.2,
-	  
+
 	  "hostileDamageTeam" : { "type" : "enemy", "team" : 1 }
 	},
-	
+
 	"questGenerator" : {
       "pools" : ["common"],
 	  "enableParticipation" : true,
-	  
+
 	  "timeLimit" : 30,
 	  "nearbyQuestLimit" : 2,
 	  "nearbyQuestRange" : 50,
 	  "questCountRange" : [1, 4],
-	  
+
 	  "graduation" : {
         "nextNpcType" : [
           [1, "crewmember"],
@@ -36,7 +36,50 @@
           [1, "crewmembermechanic"],
           [1, "crewmembermedic"],
           [1, "crewmemberjanitor"],
-          [1, "crewmembertailor"]
+          [1, "crewmembertailor"],
+          [0.5, "crewmember_spacestationassassin"],
+          [0.5, "crewmember_spacestationcaptain"],
+          [0.5, "crewmember_spacestationcommander"],
+          [0.5, "crewmember_spacestationdevastator"],
+          [0.5, "crewmember_spacestationmercenary"],
+          [0.5, "crewmember_spacestationwarmonger"],
+          [1, "crewmemberarctic"],
+          [1, "crewmemberbiohazard"],
+          [1, "crewmemberbountyhunter"],
+          [0.5, "crewmemberchef"],
+          [0.35, "crewmemberchef2"],
+          [0.15, "crewmemberchef3"],
+          [0.5, "crewmembercollector"],
+          [0.5, "crewmembercounsellor"],
+          [0.35, "crewmembercounsellor2"],
+          [0.15, "crewmembercounsellor3"],
+          [1, "crewmembercultist"],
+          [0.5, "crewmembercyborg"],
+          [0.8, "crewmemberengineer2"],
+          [0.2, "crewmemberbees"],
+          [1, "crewmemberfuhunter"],
+          [1, "crewmembergas"],
+          [0.3, "crewmembergeologist"],
+          [0.3, "crewmemberghostbuster"],
+          [0.05, "crewmembergreg"],
+          [1, "crewmemberguardian"],
+          [0.6, "crewmemberhobo"],
+          [0.3, "crewmembermagicalgirl"],
+          [0.8, "crewmembermechanic2"],
+          [0.8, "crewmembermedic2"],
+          [0.4, "crewmembermetalhead"],
+          [1, "crewmemberoceanographer"],
+          [0.5, "crewmemberoutlaw"],
+          [0.3, "crewmemberplur"],
+          [1, "crewmemberresearcher"],
+          [1, "crewmembersciencedrug"],
+          [1, "crewmemberscuba"],
+          [0.4, "crewmembershadow"],
+          [1, "crewmemberstealth"],
+          [1, "crewmembervolcanologist"],
+          [1, "crewmemberwarrior"],
+          [1, "crewmemberwarrior2"],
+          [1, "crewmemberwarrior3"]
         ]
       }
     },
@@ -63,7 +106,7 @@
           "rent" : "/dialog/arrivedhome.config:rent"
         }
       },
-	  
+
 	  "breakObject" : "/dialog/converse.config:breakObject",
       "greeting" : "/dialog/elduuconverse.config:greeting",
       "converse" : "/dialog/elduuconverse.config:converse",
@@ -79,12 +122,12 @@
       "cantReach" : "/dialog/combat.config:cantReach"
     }
   },
-  
+
   "movementParameters" : {
     "mass" : 1.0,
     "runSpeed" : 10.0
   },
-  
+
   "matchColorIndices" : true,
   "items" : {
 
@@ -92,15 +135,15 @@
 			[0, [
 				{
 		    "chest" : [
-			{ "name" : "sweatervestchest", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } }, 
-            { "name" : "protectoratevestchest", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } }, 
-            { "name" : "workoutchest", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } } 
+			{ "name" : "sweatervestchest", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+            { "name" : "protectoratevestchest", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+            { "name" : "workoutchest", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } }
 			],
 
 			"legs" : [
-			{ "name" : "sweatervestlegs", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } }, 
-            { "name" : "traditionallegs", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } }, 
-            { "name" : "workoutlegs", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } } 
+			{ "name" : "sweatervestlegs", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+            { "name" : "traditionallegs", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+            { "name" : "workoutlegs", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } }
                         ],
 			"primary" : [
 			  "elduukhartier2shortsword"
@@ -115,14 +158,14 @@
       ] ]
     ]
   },
-  
+
   "dropPools" : [ "villagertreasure" ],
 
   "statusControllerSettings" : {
     "statusProperties" : {
       "targetMaterialKind" : "organic"
     },
-	
+
 	"appliesEnvironmentStatusEffects" : false,
     "appliesWeatherStatusEffects" : true,
     "minimumLiquidStatusEffectPercentage" : 0.1,
@@ -214,7 +257,7 @@
       }
     }
   },
-  
+
 
   "splashConfig" : {
     "splashSpeedMin" : 10.0,

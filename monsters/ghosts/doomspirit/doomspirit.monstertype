@@ -8,9 +8,9 @@
 
   "animation" : "doomspirit.animation",
 
-  "dropPools" : [ 
-    { 
-      "default" : "spookitTreasure", 
+  "dropPools" : [
+    {
+      "default" : "spookitTreasure",
       "bow" : "huntingghost",
       "firebow" : "huntingghost",
       "icebow" : "huntingghost",
@@ -19,7 +19,7 @@
       "cosmicbow" : "huntingghost",
       "radioactivebow" : "huntingghost",
       "shadowbow" : "huntingghost"
-    } 
+    }
   ],
 
   "baseParameters" : {
@@ -65,14 +65,14 @@
             "usePathfinding" : false,
             "flyState" : "summon2"
           }
-        }    
+        }
       ],
 
       "foundTargetActions" : [ ],
 
       "fleeActions" : [ ],
 
-      "hostileActions" : [  
+      "hostileActions" : [
         {
           "name" : "action-fire",
 	  "cooldown" : 1.5,
@@ -88,7 +88,7 @@
             "projectileType" : "magnorbwraith",
             "power" : 15,
             "fireOffset" : [1, 1],
-            
+
             "aimAtTarget" : true,
             "fireSound" : "melee",
             "fireState" : "melee",
@@ -96,7 +96,7 @@
             "winddownState" : "",
             "winddownTime" : 0.1
           }
-        },        
+        },
         {
           "name" : "action-swoosh-charge",
           "cooldown" : 6,
@@ -120,7 +120,7 @@
             "fireOffset" : [0,0],
             "fireDelay" : 0.7
           }
-        } 	       
+        }
       ],
 
       "periodicActions" : [ ],
@@ -131,7 +131,7 @@
           "parameters" : {
             "usePathfinding" : false,
             "minRange" : 2,
-            "maxRange" : 8   
+            "maxRange" : 8
           }
         }
       ],
@@ -145,14 +145,14 @@
 	    "teleportMinDistance": 15,
 	    "targetXDelta": 10,
 	    "groundMinHeight": -10,
-	    "groundMaxHeight": 10               
+	    "groundMaxHeight": 10
           }
         },
         {
-        "name":"approach-fly", 
+        "name":"approach-fly",
         "parameters":{
-          "targetOffset":[0,5], 
-          "minRange":5, 
+          "targetOffset":[0,5],
+          "minRange":5,
           "maxRange":15
           }
         }
@@ -160,13 +160,13 @@
 
       "wanderActions" : [
         {"name" : "emerge-fly"},
-	{"name":"wander-fly", "cooldown":[5,20], "parameters":{"wanderTime":[10,40], "groundDistance":20, "ceilingDistance":10, "xVelocity":8, "yVelocity":12}}, 
-	{"name":"land-fly", "parameters":{"flySpeed":8, "flyControlForce":25, "landCheckDistance":40, "idleTime":40}}        
+	{"name":"wander-fly", "cooldown":[5,20], "parameters":{"wanderTime":[10,40], "groundDistance":20, "ceilingDistance":10, "xVelocity":8, "yVelocity":12}},
+	{"name":"land-fly", "parameters":{"flySpeed":8, "flyControlForce":25, "landCheckDistance":40, "idleTime":40}}
       ],
 
       "concurrentActions" : [  ],
 
-      "concurrentHostileActions" : [ 
+      "concurrentHostileActions" : [
         {
           "name" : "action-fire",
 	  "cooldown" : 6,
@@ -182,7 +182,7 @@
             "projectileType" : "particleswoosh",
             "power" : 10,
             "fireOffset" : [2, 0],
-            
+
             "aimAtTarget" : true,
             "fireSound" : "melee",
             "fireState" : "melee",
@@ -190,9 +190,9 @@
             "winddownState" : "",
             "winddownTime" : 0.25
           }
-        }        
+        }
       ]
-      
+
     },
 
     "touchDamage" : {
@@ -272,16 +272,16 @@
         },
         "insanityImmunity" : {
           "baseValue" : 1.0
-        },        
+        },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
         },
         "biooozeImmunity" : {
           "baseValue" : 1.0
-        },   
+        },
         "sulphuricImmunity" : {
           "baseValue" : 1.0
-        },        
+        },
         "powerMultiplier" : {
           "baseValue" : 1.0
         },
@@ -312,7 +312,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.25,
-    "nametagColor" : [64, 64, 64],
-    "captureCollectables" : { "fu_monster" : "doomspirit" }
+    "nametagColor" : [64, 64, 64]//,
+    //"captureCollectables" : { "fu_monster" : "doomspirit" }
   }
 }

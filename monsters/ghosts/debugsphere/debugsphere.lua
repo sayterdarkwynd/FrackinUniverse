@@ -27,16 +27,15 @@ function update(dt)
 
   if target then
       local targetPosition = world.entityPosition(target)
-      local angle = vec2.angle(vec2.sub(targetPosition,mcontroller.position()))
-      local step = vec2.withAngle(angle,self.radius)
-      local distance = vec2.mag(vec2.sub(mcontroller.position(),targetPosition))
+      local mainAngle = vec2.angle(vec2.sub(targetPosition,mcontroller.position()))
+      local step = vec2.withAngle(mainAngle,self.radius)
+      local mainDistance = vec2.mag(vec2.sub(mcontroller.position(),targetPosition))
       local path = {mcontroller.position()}
       local orientation = 1
       local facingDirection = mcontroller.position()[1] < targetPosition[1] and 1 or -1
       local junction = mcontroller.position()
-      local close = false
       local axis
-      for axii=1,math.max(1,distance/self.radius),2 do
+      for axii=1,math.max(1,mainDistance/self.radius),2 do
 
         local angle = vec2.angle(vec2.sub(targetPosition,junction))
 
@@ -83,8 +82,6 @@ function update(dt)
     path[1] = mcontroller.position()
 
     local targetPosition = world.entityPosition(target)
-
-    local step  = self.step
 
     local xDist = targetPosition[1] - path[1][1]
 

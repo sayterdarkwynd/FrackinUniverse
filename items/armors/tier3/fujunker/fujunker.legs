@@ -6,8 +6,8 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "^orange;Set Bonuses^reset;:
-^yellow;^reset; +^green;100^reset;s Oxygen, +^green;15^reset;% Energy Regen
-^yellow;^reset; +^green;450^reset;% Sphere Bomb Dmg
+^yellow;^reset; +^green;800^reset; Oxygen, +^green;15^reset;% E. Regen, -^green;10^reset;% E. Regen Block
+^yellow;^reset; +^green;450^reset;% Bomb Tech Damage
 ^yellow;^reset; +^green;35^reset;% Dash Tech Speed
 ^yellow;^reset; +^green;15^reset;% Jump Tech Height
 ^yellow;^reset; ^cyan;Immune^reset;: Acid, Gas",
@@ -17,7 +17,7 @@
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "ranged", "explorer" ],
   "level" : 3,
   "leveledStatusEffects" : [
     {
@@ -51,9 +51,9 @@
   ],
 
   "statusEffects" : [
-    "fusetbonusmanager",
+    "junkersetbonus",
     {
-      "stat" : "junkersetcount",
+      "stat" : "fu_junkerset_legs",
       "amount" : 1
     }
   ],
@@ -82,5 +82,5 @@
 
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

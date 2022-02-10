@@ -46,6 +46,7 @@ if type(uicfg) == "string" then
   end
 end
 if type(uicfg) ~= "table" then
+  sb.logError("metaGUI: pane not found")
   return nil -- error?
 end
 
@@ -54,7 +55,7 @@ end
 local defaultTheme = registry.defaultTheme or false
 if not registry.themes[defaultTheme] then for k in pairs(registry.themes) do defaultTheme = k break end end
 
-settings = player.getProperty("metaGUISettings") or { }
+settings = player.getProperty("metagui:settings") or player.getProperty("metaGUISettings") or { }
 local theme = settings.theme or defaultTheme
 if uicfg.forceTheme then theme = uicfg.forceTheme end
 if not registry.themes[theme] then theme = defaultTheme end
@@ -79,10 +80,12 @@ local size = {
 uicfg.totalSize = size
 
 -- handle unique conditions
+local abort
 if uicfg.uniqueBy == "path" and uicfg.configPath then
   local ipc = getmetatable ''.metagui_ipc
   if ipc and ipc.uniqueByPath and ipc.uniqueByPath[uicfg.configPath] then
     ipc.uniqueByPath[uicfg.configPath]()
+    if uicfg.uniqueMode == "toggle" then return end
   end
 end
 
@@ -95,6 +98,13 @@ if type(uicfg.anchor) == "table" then
   pf.positionLocked = true
 end
 
+-- assembly aids for scroll area
+local am = "/assetmissing.png"
+local bhp = { base = am, hover = am, pressed = am }
+local fbbhp = { forward = bhp, backward = bhp }
+local bei = { begin = am, ["end"] = am, inner = am }
+local bhpbei = { base = bei, hover = bei, pressed = bei }
+
 player.interact("ScriptPane", {
   gui = {
     _ = {
@@ -103,7 +113,8 @@ player.interact("ScriptPane", {
     },
     _pf = pf,
     _tracker = { type = "canvas", size = size, zlevel = -99999 },
-    _mouse = { type = "canvas", size = size, zlevel = -99998, captureMouseEvents = true },
+    _mouse = { type = "canvas", size = size, zlevel = -99995, captureMouseEvents = true },
+    _wheel = { type = "scrollArea", position = {99999999, 0}, size = size, zlevel = -99997, verticalScroll = false },
   },
   scripts = { _mgcfg.providerRoot .. "core.lua" },
   scriptWidgetCallbacks = { "__cb1", "__cb2", "__cb3", "__cb4", "__cb5", "_clickLeft", "_clickRight" },

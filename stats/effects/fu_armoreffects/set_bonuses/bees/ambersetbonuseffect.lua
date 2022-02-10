@@ -25,7 +25,7 @@ function update(dt)
 		effect.expire()
 	else
 		status.addEphemeralEffect("thorns")
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
+
 		checkWeapons()
 	end
 end

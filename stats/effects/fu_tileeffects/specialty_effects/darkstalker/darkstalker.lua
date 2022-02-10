@@ -1,3 +1,5 @@
+require "/stats/effects/fu_statusUtil.lua"
+
 function init()
 	--self.maxHealth = status.stat("maxHealth")
 	self.hasEnergy=status.isResource("energy")
@@ -10,7 +12,6 @@ function init()
 	script.setUpdateDelta(1)
 	self.timers = {}
 
-	--local bounds = mcontroller.boundBox()
 	effect.addStatModifierGroup({{stat = "energyRegenPercentageRate", baseMultiplier = 0.7 }})
 
 	--test
@@ -22,7 +23,7 @@ function activateVisualEffects()
 	if world.entityType(entity.id()) ~= "player" then
 		effect.expire()
 	end
-	local statusTextRegion = { 0, 1, 0, 1 }
+	--local statusTextRegion = { 0, 1, 0, 1 }
 	--animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
 	--animator.burstParticleEmitter("statustext")
 	animator.playSound("burn")
@@ -36,16 +37,6 @@ function activateVisualEffects()
 		--animator.setParticleEmitterActive("smoke", false)
 	end
 end
-
-function getLight()
-	local position = mcontroller.position()
-	position[1] = math.floor(position[1])
-	position[2] = math.floor(position[2])
-	local lightLevel = math.min(world.lightLevel(position),1.0)
-	lightLevel = math.floor(lightLevel * 100)
-	return lightLevel
-end
-
 
 function setParticleConfig(dt)
 	if not particleConfig then

@@ -9,7 +9,7 @@
   "category" : "uniqueWeapon",
   "twoHanded" : false,
   "itemTags" : ["weapon","ranged","upgradeableWeapon"],
-  "level" : 6, 
+  "level" : 6,
 
   "inventoryIcon" : "extrachargebeamicon.png",
 
@@ -27,7 +27,7 @@
 
   "critChance" : 4,
   "critBonus" : 4,
-  
+
   "primaryAbilityType" : "chargefire",
   "primaryAbility" : {
     "chargeLevels" : [
@@ -46,14 +46,14 @@
         "energyCost" : 50,
         "cooldown" : 0.5,
         "projectileType" : "chargeshotlarge",
-        "projectileParameters" : { 
+        "projectileParameters" : {
 		"actionOnReap" : [
 		    {
 		      "action" : "config",
 		      "file" : "/projectiles/explosions/pulsecannonexplosion/pulsecannonexplosion.config"
 		    }
 		 ],
-	"damageType" : "NoDamage"	
+	"damageType" : "NoDamage"
         },
         "inaccuracy" : 0,
         "baseDamage" : 14,
@@ -61,6 +61,6 @@
       }
     ]
   },
-//  "learnBlueprintsOnPickup" : [ "extrachargebeam" ],
+  "learnBlueprintsOnPickup" : [ "extrachargebeam" ],
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -47,7 +47,6 @@ function Charge:dash(charge,level)
 		animator.playSound("fire")
 	end
 
-	local uuid = sb.makeUuid()
 	if level == 4 then
 		local position = vec2.add(mcontroller.position(), activeItem.handPosition(animator.partPoint("blade", "projectileSource")))
 		local aimDirection = {mcontroller.facingDirection() * math.cos(self.weapon.aimAngle), math.sin(self.weapon.aimAngle)}

@@ -127,14 +127,13 @@ function update(dt)
 									else
 										oreMod = world.mod(position, "background")
 									end
-								
-								  for x = 1,3 do
 
-								    if scannerLib.colors[x][oreMod] then
+								  for z = 1,3 do
+									if scannerLib.colors[z][oreMod] then
 										self.colorCache[sType][cacheKey] = scannerLib.colors[oreMod]
 									else
 										self.colorCache[sType][cacheKey] = scannerLib.colors[1].none
-								    end
+									end
 								  end
 
 								end
@@ -145,7 +144,7 @@ function update(dt)
 							local color = copy(self.colorCache[sType][cacheKey])
 
 							local dist = math.sqrt(distSquared)
-							local fadeFactor = 2 * math.min(dist - self.pingInnerRadius, math.min(self.pingOuterRadius - dist, searchRange - dist)) / fadeDistance
+							local fadeFactor = 2 * math.min(dist - self.pingInnerRadius, self.pingOuterRadius - dist, searchRange - dist) / fadeDistance
 							color[4] = color[4] * fadeFactor
 
 							local variant = math.random(1, self.detectConfig.variants)

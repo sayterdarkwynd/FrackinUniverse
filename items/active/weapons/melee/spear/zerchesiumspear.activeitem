@@ -1,52 +1,57 @@
 {
-  "itemName" : "zerchesiumspear",
-  "price" : 160,
-  "level" : 3,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "A wonderfully made tool of war.
+	"itemName" : "zerchesiumspear",
+	"price" : 160,
+	"level" : 3,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "A wonderfully made tool of war.
 ^cyan;Hunting weapon^reset;",
-  "shortdescription" : "Zerchesium Spear",
-  "tooltipKind" : "sword2",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear","zerchesium", "upgradeableWeapon"],
+	"shortdescription" : "Zerchesium Spear",
+	"tooltipKind" : "sword2",
+	"category" : "spear",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear","zerchesium", "upgradeableWeapon"],
 
-  "inventoryIcon" : "zerchesiumspear.png",
-  //"collectablesOnPickup" : { "fu_weaponspear" : "zerchesiumspear" },
-  "animation" : "/items/active/weapons/melee/spear/spear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "zerchesiumspear.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"inventoryIcon" : "zerchesiumspear.png",
+	//"collectablesOnPickup" : { "fu_weaponspear" : "zerchesiumspear" },
+	"animation" : "/items/active/weapons/melee/spear/spear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "zerchesiumspear.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+	"elementalType" : "ice",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "scripts" : [],
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "spearstab",
+	"primaryAbility" : {
+		"scripts" : [],
 
-    "fireTime" : 0.75,
-    "baseDps" : 10.3,
-    "damageConfig" : {
-      "damageSourceKind" : "icebow",
-      "statusEffects" : [ ],
-      "knockback" : 20
-    }
-  },
-  "altAbilityType" : "fucharge",
-  "altAbility" : { },
-  
-  "critChance" : 4,
-  "critBonus" : 2,
-  
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+		"fireTime" : 0.75,
+		"baseDps" : 10.3,
+		"damageConfig" : {
+			"damageSourceKind" : "icebow",
+			"statusEffects" : [ ],
+			"knockback" : 20
+		}
+	},
+	"altAbilityType" : "fucharge",
+
+	"altAbility" : {
+		"damageConfig" : {
+			"damageSourceKind" : "bow"
+		}
+	},
+
+	"critChance" : 4,
+	"critBonus" : 2,
+
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

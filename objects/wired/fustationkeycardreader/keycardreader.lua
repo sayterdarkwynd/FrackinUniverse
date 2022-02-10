@@ -1,11 +1,11 @@
 function init()
-  self.keycard=config.getParameter("keyname",nil)
+  self.keycard=config.getParameter("keyname")
   if self.keycard==nil then
     object.setInteractive(false)
   else
     object.setInteractive(true)
   end
-  
+
   if storage.state == nil then
     output(false)
   else
@@ -22,7 +22,7 @@ function onInteraction(args)
     if storage.state == false then
       output(true)
     end
-    
+
     animator.playSound("on");
     storage.timer = self.interval
   else

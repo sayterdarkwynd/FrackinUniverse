@@ -5,7 +5,7 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "^orange;Set Bonuses^reset;: 
+  "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; ^cyan;Fire Nova when hit^reset;
 ^yellow;^reset; Flamethrower: Damage x^green;1.3^reset;
 ^yellow;^reset; ^cyan;Immune^reset;: Heat I, Burning",
@@ -31,7 +31,7 @@
 //  "hellfirehelm",
 //  "hellfireshield"
 //  ],
-  
+
   "level" : 4,
   //"collectablesOnPickup" : { "fu_armorbalanced" : "fuinfernochest" },
   "leveledStatusEffects" : [
@@ -55,13 +55,13 @@
       "stat" : "maxHealth",
       "amount" : 5
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "fireResistance",
       "amount" : 0.036
     }
   ],
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "melee" ],
   "statusEffects" : [
     "infernosetbonus",
     {
@@ -69,7 +69,6 @@
       "amount" : 1
     }
   ],
-
 
   "colorOptions" : [
     /* BLACK */
@@ -97,5 +96,5 @@
 
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

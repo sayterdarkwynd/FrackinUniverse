@@ -4,7 +4,7 @@
   "inventoryIcon" : "thornrifle.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Stab the hell out of your foolish foes
+  "description" : "Stab the hell out of your foolish foes.
 ^yellow;Inflicts poison^reset;
 ^cyan;Summons Pterobombs^reset;",
   "shortdescription" : "Thorn Rifle",
@@ -47,7 +47,7 @@
     "fireType" : "auto",
 
     "projectileType" : "thornriflebullet",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 90,
       "knockback" : 5
     },
@@ -103,35 +103,35 @@
         "/sfx/blocks/footstep_brains.ogg",
         "/sfx/projectiles/goocluster_pop.ogg"
       ]
-    },     
+    },
  	{
- 	  "action":"spawnmonster", 
- 	  "type":"pteropodsummoned", 
- 	  "offset":[0,0], 
+ 	  "action":"spawnmonster",
+ 	  "type":"pteropodsummoned",
+ 	  "offset":[0,0],
  	  "arguments":{
  	    "damageTeamType":"friendly", "damageTeam":0
  	  }
- 	} 	
+ 	}
       ]
-    }    
+    }
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  
+
     "upgradeParameters" : {
     "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
-    "shortdescription" : "^cyan;Thornrage^reset; ^yellow;",
+    "shortdescription" : "^cyan;Thornrage^reset; ^yellow;^reset;",
     "description" : "What greater joy than cooking flesh?
 ^yellow;Inflicts poison^reset;
 ^cyan;Summons Pterobombs^reset;",
     "animationParts" : {"middle" : "thornrifle2.png"},
-    "inventoryIcon" : [ { "image" : "thornrifle2.png" } ],    
+    "inventoryIcon" : [ { "image" : "thornrifle2.png" } ],
 	  "primaryAbility" : {
 	    "baseDps" : 8.4,
 	    "projectileParameters" : {
 	      "speed" : 110,
 	      "knockback" : 10
-	    }          
+	    }
 	  }
-      }     
+      }
 }

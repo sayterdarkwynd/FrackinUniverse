@@ -6,7 +6,7 @@ function liquidLib.init()
 	liquidLib.vars={}
 	liquidLib.vars.inLiquidNode=config.getParameter("kheAA_inLiquidNode")--doesn't actually do anything, doesn't matter at this point.
 
-	for i,v in pairs(storage.liquids) do
+	for i in pairs(storage.liquids) do
 		if not root.liquidConfig(i) then
 			storage.liquids[i]=nil
 		end
@@ -99,8 +99,8 @@ function liquidLib.doPump()
 	local items = world.containerItems(entity.id())
 
 	if items ~= nil then
-		for slot,item in pairs(items) do
-			if liquidLib.tryConsumeLiqitem(items[1]) then break end
+		for _,item in pairs(items) do
+			if liquidLib.tryConsumeLiqitem(item) then break end
 		end
 	end
 
@@ -133,7 +133,7 @@ function liquidLib.update(dt)
 	end
 	local tempList=object.getOutputNodeIds(liquidLib.vars.inLiquidNode)
 	if tempList then
-		for id,node in pairs(tempList) do
+		for id in pairs(tempList) do
 			local result=world.callScriptedEntity(id,"liquidLib.canReceiveLiquid")
 			if result then
 				self.liquidOuts[id]=world.entityPosition(id)

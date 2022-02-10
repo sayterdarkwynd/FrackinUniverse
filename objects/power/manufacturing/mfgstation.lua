@@ -79,23 +79,27 @@ outputExclusionList = {
 	nocxiumbar=true,
 }
 
-
-local deltaTime = 0
-
 function init()
-	power.init()
 	self.mintick = math.max(script.updateDt(),0.0167)--0.0167 (1/60 of a second) is minimum due to frames/second limit.
 	storage.timer = storage.timer or self.mintick
 	storage.powerTimer = 0
-	storage.requiredPower = config.getParameter('isn_requiredPower')*self.mintick--<40>/s.
+	storage.craftDelay = config.getParameter('craftDelay') or 0 -- in seconds, added to normal crafting time of an item.
+
+	-- This script is used by both powered Manufacturing Station and non-powered Gnome Workshop.
+	storage.requiredPower = config.getParameter('isn_requiredPower')
+	if storage.requiredPower then
+		storage.requiredPower = storage.requiredPower * self.mintick -- <40>/s.
+		power.init()
+	end
+
 	storage.crafting = storage.crafting or false
 	storage.output = storage.output or {}
+	self.recipesForItem={}
 	animate()
 end
 
 
 function getInputContents()
-	local id = entity.id()
 	local contents = {}
 	for i=1,6 do
 		local stack = world.containerItemAt(entity.id(),i)
@@ -130,15 +134,16 @@ function scanRecipes(sample)
 		end
 	end
 
-	local recipeScan = root.recipesForItem(sample.name)
+	local recipeScan = self.recipesForItem[sample.name] or root.recipesForItem(sample.name)
+	if recipeScan and not self.recipesForItem[sample.name] then self.recipesForItem=recipeScan end --tentative optimization: caching values in the lua script, instead of relying on the engine to do it. +ramUse, -hddUse
 	if recipeScan then --sb.logInfo("RecipeScan: %s", recipeScan)
-		for index,recipe in pairs(recipeScan) do
-			local recipeInputs = {recipe.input}
+		for _,recipe in pairs(recipeScan) do
 			local sampleInputs = {}
 			local sampleOutput = {}
 			local stackOut = recipe.output
 			sampleOutput[stackOut.name] = stackOut.count
 
+			--note that SB autoconverts any items that are in the material inputs tab to currencyinputs, if they are a currency.
 			if not recipe.currencyInputs or util.tableSize(recipe.currencyInputs) == 0 then
 				local groupFail
 				--ignore any recipes that take a currency
@@ -159,7 +164,7 @@ function scanRecipes(sample)
 				end
 
 				if not groupFail then
-					for index,item in pairs(recipe.input) do
+					for _,item in pairs(recipe.input) do
 						sampleInputs[item.name]=item.count
 					end
 					table.insert(recipes, {inputs = sampleInputs, outputs = sampleOutput, time = math.max(util.round(recipe.duration^0.5,3),self.mintick) })
@@ -237,9 +242,9 @@ function update(dt)
 		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
 
-    storage.timer = storage.timer - dt
+	storage.timer = storage.timer - dt
 
-	if storage.crafting then
+	if storage.crafting and storage.requiredPower then
 		if not storage.powerTimer or storage.powerTimer <= 0 then
 			if power.consume(storage.requiredPower) then
 				storage.powerTimer=self.minTick
@@ -252,7 +257,7 @@ function update(dt)
 
 	end
 
-	if storage.timer <= 0 then
+	if storage.timer <= -storage.craftDelay then
 		if storage.crafting then
 			for k,v in pairs(storage.output) do
 				local leftover = {name = k, count = v}
@@ -273,7 +278,7 @@ function update(dt)
 		end
 	end
 
-	if not storage.crafting and storage.timer <= 0 then --make sure we didn't just finish crafting
+	if not storage.crafting and storage.timer <= -storage.craftDelay then --make sure we didn't just finish crafting
 		local slot0 = world.containerItemAt(entity.id(), 0)
 		if slot0 then                            --sb.logInfo("slot0: %s", slot0)
 			local type = root.itemType(slot0.name) --sb.logInfo("slot0 type: %s", type)
@@ -287,10 +292,10 @@ function update(dt)
 					end
 				end
 			end
-			if not tagfail then
+			if not tagFail then
 				if not (outputExclusionList.types and outputExclusionList.types[type]) and not (outputExclusionList and outputExclusionList[slot0.name]) then
-					local totalEnergy = power.getTotalEnergy() --sb.logInfo("totalEnergy %s", totalEnergy)
-					if totalEnergy >= storage.requiredPower then
+					local hasEnoughPower = (not storage.requiredPower) or (power.getTotalEnergy() >= storage.requiredPower)
+					if hasEnoughPower then
 						if not startCrafting(getValidRecipes(getInputContents())) then
 							storage.timer = self.mintick
 						end --set timeout if there were no recipes
@@ -301,7 +306,10 @@ function update(dt)
 			end
 		end
 	end
-	power.update(dt)
+
+	if storage.requiredPower then
+		power.update(dt)
+	end
 end
 
 

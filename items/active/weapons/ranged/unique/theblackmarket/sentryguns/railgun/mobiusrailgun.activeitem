@@ -3,7 +3,7 @@
   "level" : 4,
   "price" : 1500,
   "maxStack" : 1,
-  "rarity" : "legendary",
+  "rarity" : "uncommon",
   "description" : "This beast absolutely murders the enemy!
 ^yellow;Inflicts frozen-fire^reset;
 ^cyan;Summons Assault Drones^reset;",
@@ -36,7 +36,7 @@
 
   "scripts" : [
   "/items/active/weapons/ranged/gun.lua",
-    "/items/active/scripts/heavyweapon.lua" 
+    "/items/active/scripts/heavyweapon.lua"
   ],
 
   "elementalType" : "electric",
@@ -58,116 +58,116 @@
       "damageKind" : "electric",
       "lightColor" : [120, 0, 44],
       "piercing" : false,
-      "flippable" : true, 
+      "flippable" : true,
       "power" : 1.15,
-      "speed" : 95,      
+      "speed" : 95,
       "periodicActions" : [
-	  {
-	  "time":0.01, 
-	  "action":"projectile", 
-	  "type":"firelasershot2", 
-	  "config":{
-	    "damageSourceKind" : "electric",
-	    "statusEffects":[], 
-	    "processing":"?hueshift=127",
-	    "speed":0, 
-	    "timeToLive":0.4, 
-	    "bounces" : 0,
-	    "power":1, 
-	    "knockback":0
-	    }
-	  }        
+    {
+    "time":0.01,
+    "action":"projectile",
+    "type":"firelasershot2",
+    "config":{
+      "damageSourceKind" : "electric",
+      "statusEffects":[],
+      "processing":"?hueshift=127",
+      "speed":0,
+      "timeToLive":0.4,
+      "bounces" : 0,
+      "power":1,
+      "knockback":0
+      }
+    }
       ],
       "actionOnReap" : [
-	    {
-	      "action" : "config",
-	      "file" : "/projectiles/explosions/energyburstexplosion/sentryrailgun.config"
-	    },
-	    {
-	      "action" : "projectile",
-	      "type" : "mobius",
-	      "fuzzAngle" : 0,
-	      "inheritDamageFactor" : 0.08,
-	      "angleAdjust" : 0
-	    },
-			    {
-	      "action" : "projectile",
-	      "type" : "mobius",
-	      "fuzzAngle" : 0,
-	      "inheritDamageFactor" : 0.08,
-	      "angleAdjust" : 35
-	    },
-			    {
-	      "action" : "projectile",
-	      "type" : "mobius",
-	      "fuzzAngle" : 0,
-	      "inheritDamageFactor" : 0.08,
-	      "angleAdjust" : -35
-	    },
-	    {
-	      "action" : "projectile",
-	      "type" : "mobius",
-	      "fuzzAngle" : 0,
-	      "inheritDamageFactor" : 0.08,
-	      "angleAdjust" : -0
-	    },
-	    {
-	      "action" : "projectile",
-	      "type" : "mobius",
-	      "fuzzAngle" : 0,
-	      "inheritDamageFactor" : 0.08,
-	      "angleAdjust" : -70
-	    },
-			    {
-	      "action" : "projectile",
-	      "type" : "mobius",
-	      "fuzzAngle" : 0,
-	      "inheritDamageFactor" : 0.08,
-	      "angleAdjust" : 70
-	    },
-	    {
-	      "action" : "projectile",
-	      "type" : "mobius",
-	      "fuzzAngle" : 0,
-	      "inheritDamageFactor" : 0.08,
-	      "angleAdjust" : -120
-	    },
-			    {
-	      "action" : "projectile",
-	      "type" : "mobius",
-	      "fuzzAngle" : 0,
-	      "inheritDamageFactor" : 0.08,
-	      "angleAdjust" : 120
-	    },
-	    {
-	      "action" : "projectile",
-	      "type" : "mobius",
-	      "fuzzAngle" : 0,
-	      "inheritDamageFactor" : 0.08,
-	      "angleAdjust" : -150
-	    },
-			    {
-	      "action" : "projectile",
-	      "type" : "mobius",
-	      "fuzzAngle" : 0,
-	      "inheritDamageFactor" : 0.08,
-	      "angleAdjust" : 150
-	    },
-	    {
-	      "action" : "projectile",
-	      "type" : "mobius",
-	      "fuzzAngle" : 0,
-	      "inheritDamageFactor" : 0.08,
-	      "angleAdjust" : -180
-	    },
-			    {
-	      "action" : "projectile",
-	      "type" : "mobius",
-	      "fuzzAngle" : 0,
-	      "inheritDamageFactor" : 0.08,
-	      "angleAdjust" : 180
-	    }      
-      ]      
+      {
+        "action" : "config",
+        "file" : "/projectiles/explosions/energyburstexplosion/sentryrailgun.config"
+      },
+      {
+        "action" : "projectile",
+        "type" : "mobius",
+        "fuzzAngle" : 0,
+        "inheritDamageFactor" : 0.08,
+        "angleAdjust" : 0
+      },
+          {
+        "action" : "projectile",
+        "type" : "mobius",
+        "fuzzAngle" : 0,
+        "inheritDamageFactor" : 0.08,
+        "angleAdjust" : 35
+      },
+          {
+        "action" : "projectile",
+        "type" : "mobius",
+        "fuzzAngle" : 0,
+        "inheritDamageFactor" : 0.08,
+        "angleAdjust" : -35
+      },
+      {
+        "action" : "projectile",
+        "type" : "mobius",
+        "fuzzAngle" : 0,
+        "inheritDamageFactor" : 0.08,
+        "angleAdjust" : -0
+      },
+      {
+        "action" : "projectile",
+        "type" : "mobius",
+        "fuzzAngle" : 0,
+        "inheritDamageFactor" : 0.08,
+        "angleAdjust" : -70
+      },
+          {
+        "action" : "projectile",
+        "type" : "mobius",
+        "fuzzAngle" : 0,
+        "inheritDamageFactor" : 0.08,
+        "angleAdjust" : 70
+      },
+      {
+        "action" : "projectile",
+        "type" : "mobius",
+        "fuzzAngle" : 0,
+        "inheritDamageFactor" : 0.08,
+        "angleAdjust" : -120
+      },
+          {
+        "action" : "projectile",
+        "type" : "mobius",
+        "fuzzAngle" : 0,
+        "inheritDamageFactor" : 0.08,
+        "angleAdjust" : 120
+      },
+      {
+        "action" : "projectile",
+        "type" : "mobius",
+        "fuzzAngle" : 0,
+        "inheritDamageFactor" : 0.08,
+        "angleAdjust" : -150
+      },
+          {
+        "action" : "projectile",
+        "type" : "mobius",
+        "fuzzAngle" : 0,
+        "inheritDamageFactor" : 0.08,
+        "angleAdjust" : 150
+      },
+      {
+        "action" : "projectile",
+        "type" : "mobius",
+        "fuzzAngle" : 0,
+        "inheritDamageFactor" : 0.08,
+        "angleAdjust" : -180
+      },
+          {
+        "action" : "projectile",
+        "type" : "mobius",
+        "fuzzAngle" : 0,
+        "inheritDamageFactor" : 0.08,
+        "angleAdjust" : 180
+      }
+      ]
     },
     "projectileCount" : 1,
 
@@ -200,14 +200,14 @@
       }
     }
   },
-  
+
   "critChance" : 6,
   "critBonus" : 26,
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
-  "recoilForce" : 2000,    
-  
+  "recoilForce" : 2000,
+
   "altAbilityType" : "fudronelauncheradv",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

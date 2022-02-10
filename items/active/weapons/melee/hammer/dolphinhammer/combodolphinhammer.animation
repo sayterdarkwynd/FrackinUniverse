@@ -33,10 +33,10 @@
 			"frameProperties" : {"immediateSound" : ["/sfx/melee/travelingslash_poison3.ogg"]}
           },
 		  "fire4" : {
-		    "frames" : 5, 
-			"cycle" : 0.2, 
-			"mode" : "transition", 
-			"transition" : "idle", 
+		    "frames" : 5,
+			"cycle" : 0.2,
+			"mode" : "transition",
+			"transition" : "idle",
 			"frameProperties" : {"immediateSound" : []}
 		  }
         }
@@ -103,8 +103,8 @@
             },
 			"fire4" : {
 			  "properties" : {
-			    "image" : "/projectiles/explosions/poisonsmoke/poisonsmoke.png:<frame>?scalenearest=1.5", 
-				"offset" : [5,-0.5], 
+			    "image" : "/projectiles/explosions/poisonsmoke/poisonsmoke.png:<frame>?scalenearest=1.5",
+				"offset" : [5,-0.5],
 				"damageArea" : [[5, 5], [-5, 5], [5, -5], [-5, -5]]
 			  }
 			}
@@ -120,32 +120,32 @@
   },
 
   "particleEmitters" : {
-    "fire4fire":{"active":false, "offsetRegion":[5,-0.5,5,-0.5], 
-    "transformationGroups":["swoosh"], "emissionRate":1, "burstCount":7, 
-    "particles":[{"particle":{"type":"animated", "looping":false, 
-    
-    "animation":"/animations/bloodcharge/bloodcharge.animation", "approach" : [0.5, 0.5], "timeToLive" : 0.6, 
-    "layer" : "front", "variance" : {"position" : [1.5, 1.5], "initialVelocity" : [1, 1], "timeToLive" : 0.15, 
-    "rotation" : 180}}}]}, 
-    
-    "fire4smoke":{"active":false, "offsetRegion":[5,-0.5,5,-0.5], "transformationGroups":["swoosh"], 
-    "emissionRate":1, "burstCount":7, "particles":[{"particle":{"type":"animated", "looping":false, 
-   
-    "animation":"/animations/cultcloud/cultcloud.animation", "approach" : [0.5, 0.5], "timeToLive" : 0.6, 
-    "variance" : {"position" : [1.5, 1.5], "initialVelocity" : [1, 1], "timeToLive" : 0.15, "rotation" : 180}}}]}, 
-    "idlejet1":{"active":false, "transformationGroups":["weapon"], "emissionRate":20, "offsetRegion":[-0.8,4.4,-0.8,4.6], 
-    "particles":[{"particle":{"type":"animated", 
-    
-    "animation":"/animations/drippingblood/drippingblood.animation", 
-    "position":[0,0], "layer":"back", "initialVelocity":[-5,0], "finalVelocity":[0,0], "approach":[0,0], "fade":0.5, 
-    "destructionAction":"shrink", "destructionTime":1, "size":0.7, "timeToLive":0, "fullbright":true, "rotation":70, 
-    "variance":{"initialVelocity":[1,1], "rotation":180}}}]}, 
-    
-    "idlejet2":{"active":false, "transformationGroups":["weapon"], 
-    "emissionRate":20, "offsetRegion":[-0.8,5,-0.8,5.2], "particles":[{"particle":{"type":"animated", 
-    
-    "animation":"/animations/bloodcloudpuff/bloodcloudpuff.animation", "position":[0,0], "layer":"back", "initialVelocity":[-5,0], 
-    "finalVelocity":[0,0], "approach":[0,0], "fade":0.5, "destructionAction":"shrink", "destructionTime":1, "size":0.7, "timeToLive":0, 
+    "fire4fire":{"active":false, "offsetRegion":[5,-0.5,5,-0.5],
+    "transformationGroups":["swoosh"], "emissionRate":1, "burstCount":7,
+    "particles":[{"particle":{"type":"animated", "looping":false,
+
+    "animation":"/animations/bloodcharge/bloodcharge.animation", "approach" : [0.5, 0.5], "timeToLive" : 0.6,
+    "layer" : "front", "variance" : {"position" : [1.5, 1.5], "initialVelocity" : [1, 1], "timeToLive" : 0.15,
+    "rotation" : 180}}}]},
+
+    "fire4smoke":{"active":false, "offsetRegion":[5,-0.5,5,-0.5], "transformationGroups":["swoosh"],
+    "emissionRate":1, "burstCount":7, "particles":[{"particle":{"type":"animated", "looping":false,
+
+    "animation":"/animations/cultcloud/cultcloud.animation", "approach" : [0.5, 0.5], "timeToLive" : 0.6,
+    "variance" : {"position" : [1.5, 1.5], "initialVelocity" : [1, 1], "timeToLive" : 0.15, "rotation" : 180}}}]},
+    "idlejet1":{"active":false, "transformationGroups":["weapon"], "emissionRate":20, "offsetRegion":[-0.8,4.4,-0.8,4.6],
+    "particles":[{"particle":{"type":"animated",
+
+    "animation":"/animations/drippingblood/drippingblood.animation",
+    "position":[0,0], "layer":"back", "initialVelocity":[-5,0], "finalVelocity":[0,0], "approach":[0,0], "fade":0.5,
+    "destructionAction":"shrink", "destructionTime":1, "size":0.7, "timeToLive":0, "fullbright":true, "rotation":70,
+    "variance":{"initialVelocity":[1,1], "rotation":180}}}]},
+
+    "idlejet2":{"active":false, "transformationGroups":["weapon"],
+    "emissionRate":20, "offsetRegion":[-0.8,5,-0.8,5.2], "particles":[{"particle":{"type":"animated",
+
+    "animation":"/animations/bloodcloudpuff/bloodcloudpuff.animation", "position":[0,0], "layer":"back", "initialVelocity":[-5,0],
+    "finalVelocity":[0,0], "approach":[0,0], "fade":0.5, "destructionAction":"shrink", "destructionTime":1, "size":0.7, "timeToLive":0,
     "fullbright":true, "rotation":70, "variance":{"initialVelocity":[1,1], "rotation":180}}}]},
     "physicalswoosh" : {
       "active" : false,
@@ -201,11 +201,11 @@
   },
 
   "sounds" : {
-    "fire" : ["/sfx/melee/swing_axe_poison1.ogg"], 
-    "fire2" : ["/sfx/melee/travelingslash_poison1.ogg"], 
-    "fire3" : ["/sfx/melee/travelingslash_poison3.ogg"], 
+    "fire" : ["/sfx/melee/swing_axe_poison1.ogg"],
+    "fire2" : ["/sfx/melee/travelingslash_poison1.ogg"],
+    "fire3" : ["/sfx/melee/travelingslash_poison3.ogg"],
     "fire4" : ["/sfx/melee/travelingslash_poison2.wav"]
-  }, 
+  },
   "lights" : {
     "glow" : {"position" : [0, 5], "color":[150, 50, 19], "transformationGroups" : ["weapon"]}
   }

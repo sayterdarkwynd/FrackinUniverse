@@ -3,7 +3,7 @@
   "price" : 160,
   "inventoryIcon" : "rimecutter.png",
   "maxStack" : 1,
-  "rarity" : "uncommon",
+  "rarity" : "legendary",
   "description" : "Freezing rounds mince enemies good.
 ^yellow;Inflicts freezing^reset;",
   "shortdescription" : "Rime Cutter",
@@ -46,7 +46,7 @@
     "fireType" : "auto",
 
     "projectileType" : "snowflakeshuriken",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 50,
       "knockback" : 2
     },
@@ -86,7 +86,7 @@
   "altAbilityType" : "rimecutteraltshot",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  
+
   "upgradeParameters" : {
     "shortdescription" : "^cyan;Ice Slicer^reset; ^yellow;^reset;",
   "description" : "Faster and more dangerous.
@@ -100,53 +100,53 @@
     "critChance" : 3,
     "critBonus" : 4,
     "primaryAbility" : {
-	    "fireTime" : 0.12,
-	    "baseDps" : 8.62,
-	    "energyUsage" : 25,
-	    "inaccuracy" : 0.008,
+      "fireTime" : 0.12,
+      "baseDps" : 8.62,
+      "energyUsage" : 25,
+      "inaccuracy" : 0.008,
 
-	    "projectileParameters" : { 
-	      "speed" : 60,
-	      "knockback" : 4,
-	      "fullbright" :true,
-	      "actionOnCollide" : [
-		    {
-		      "action" : "projectile",
-		      "inheritDamageFactor" : 0.1,
-		      "type" : "chargeshotboom"
-		    },
-		    {
-		      "action" : "sound",
-		      "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
-		    },
-		    {
-		      "action" : "light",
-		      "color" : "blue"
-		    }	      
-	      ],		      
-	      "actionOnReap" : [
-		    {
-		      "action" : "projectile",
-		      "inheritDamageFactor" : 0.1,
-		      "type" : "chargeshotboom"
-		    },
-		    {
-		      "action" : "sound",
-		      "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
-		    },
-		    {
-		      "action" : "light",
-		      "color" : "blue"
-		    },
-		    {
-		      "action" : "explosion",
-		      "foregroundRadius" : 2,
-		      "backgroundRadius" : 0,
-		      "explosiveDamageAmount" : 0.1,
-		      "delaySteps" : 2
-		    }	      
-	      ]	      
-	    }   
+      "projectileParameters" : {
+        "speed" : 60,
+        "knockback" : 4,
+        "fullbright" :true,
+        "actionOnCollide" : [
+        {
+          "action" : "projectile",
+          "inheritDamageFactor" : 0.1,
+          "type" : "chargeshotboom"
+        },
+        {
+          "action" : "sound",
+          "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
+        },
+        {
+          "action" : "light",
+          "color" : "blue"
+        }
+        ],
+        "actionOnReap" : [
+        {
+          "action" : "projectile",
+          "inheritDamageFactor" : 0.1,
+          "type" : "chargeshotboom"
+        },
+        {
+          "action" : "sound",
+          "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
+        },
+        {
+          "action" : "light",
+          "color" : "blue"
+        },
+        {
+          "action" : "explosion",
+          "foregroundRadius" : 2,
+          "backgroundRadius" : 0,
+          "explosiveDamageAmount" : 0.1,
+          "delaySteps" : 2
+        }
+        ]
+      }
     }
-  }  
+  }
 }

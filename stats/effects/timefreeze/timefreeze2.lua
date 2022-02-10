@@ -7,7 +7,7 @@ function init()
 		animator.playSound("timefreeze_loop", -1)
 		animator.setAnimationRate(0)
 	end
-
+	effect.addStatModifierGroup({{stat="timeFreeze",amount=1}})
 	if status.isResource("stunned") then
 		status.setResource("stunned", math.max(status.resource("stunned"), effect.duration()))
 	end

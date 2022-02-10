@@ -8,7 +8,7 @@
 
   "animation" : "adultpoptop.animation",
 
-  "dropPools" : [ { "default" : "motherpoptopTreasure",    
+  "dropPools" : [ { "default" : "motherpoptopTreasure",
     "bow" : "motherpoptopTreasure",
     "firebow" : "motherpoptopTreasure",
     "icebow" : "motherpoptopTreasure",
@@ -36,9 +36,9 @@
       "hurtTime": 0.05,
       "hurtWaitForGround": false,
       "hurtWaitForGroundTime": 0.1,
-      
 
-      "foundTargetActions" : [ 
+
+      "foundTargetActions" : [
         {
           "name" : "action-animate",
           "cooldown" : 8,
@@ -47,12 +47,12 @@
             "state" : "roar",
             "animationTime" : 0.53
           }
-        }        
+        }
       ],
 
       "fleeActions" : [],
 
-      "hostileActions" : [  
+      "hostileActions" : [
         {
           "name" : "action-fire",
           "cooldown" : 6.14,
@@ -74,7 +74,7 @@
             "aimAtTarget" : true,
             "onGround" : false
           }
-        },       
+        },
         {
           "name" : "action-fire",
 	  "cooldown" : 4,
@@ -85,9 +85,9 @@
             "windupState" : "fire2",
             "windupTime" : 1.1,
 
-            "projectileType" : "fusoundwaveboss",      
+            "projectileType" : "fusoundwaveboss",
             "power" : 12,
-            
+
             "fireOffset" : [2.5, 0.3],
             "aimAtTarget" : true,
             "projectileCount" : 4,
@@ -97,7 +97,7 @@
             "winddownState" : "",
             "winddownTime" : 0.6
           }
-        },                             
+        },
         {
           "name" : "action-charge",
           "cooldown" : 2.75,
@@ -117,7 +117,7 @@
             "winddownStopForce" : 1000,
             "winddownState" : "chargewinddown"
           }
-        }       
+        }
       ],
 
       "periodicActions" : [
@@ -128,7 +128,7 @@
             "spawnCooldown" : 1.0,
             "monsterType" : "poptopmicro"
           }
-        },        
+        },
         {
           "name" : "action-spawncompanions",
           "parameters" : {
@@ -136,7 +136,7 @@
             "spawnCooldown" : 8.0,
             "monsterType" : "poptop"
           }
-        },        
+        },
         {
           "name" : "action-animate",
           "cooldown" : 12,
@@ -145,9 +145,9 @@
             "state" : "roar",
             "animationTime" : 0.53
           }
-        }        
+        }
       ],
-      
+
       "approachActions" : [
         {
           "name" : "approach-walk",
@@ -159,7 +159,7 @@
             "jumpXControlForce" : 50,
             "minXRange" : 10
           }
-        }       
+        }
       ],
 
       "followActions" : [
@@ -178,7 +178,7 @@
             "jumpXControlForce" : 50,
             "minXRange" : 10
           }
-        }        
+        }
       ],
 
       "wanderActions" : [
@@ -188,26 +188,26 @@
           "parameters" : {
             "wanderTime" : [5, 15]
           }
-        }    
+        }
       ],
 
       "damageTakenActions" : [
-     
+
       ],
-      
+
       "concurrentActions" : [ ],
-      
-      "concurrentHostileActions" : [  
+
+      "concurrentHostileActions" : [
         {
-          "name" : "action-statuseffect", 
+          "name" : "action-statuseffect",
           "cooldown" : 20,
           "parameters" : {
           "effect" : "nofalldamage",
           "duration" : 120
           }
-        },      
+        },
         {
-          "name" : "action-leap", 
+          "name" : "action-leap",
           "cooldown" : 2,
           "parameters" : {
             "minimumRange" : 0,
@@ -225,7 +225,7 @@
             "winddownState" : "",
             "winddownTime" : 0.2
           }
-        }      
+        }
       ]
     },
 
@@ -313,7 +313,7 @@
         },
         "physicalResistance" : {
           "baseValue" : 0.40
-        }        
+        }
       },
 
       "resources" : {
@@ -335,7 +335,7 @@
     "captureHealthFraction" : 0.01,
     "capturedMonsterName" : "Adult Poptop",
     "capturedMonsterType" : "adultpoptop", // turn into an adultpoptop when captured
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "monsters" : "adultpoptop" }
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "monsters" : "adultpoptop" }
   }
 }

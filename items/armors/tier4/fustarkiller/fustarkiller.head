@@ -3,11 +3,11 @@
   "inventoryIcon" : "icons.png:head",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Rare",
+  "rarity" : "rare",
   "description" : "^cyan;Headlamp 2^reset;
-^orange;Set Bonuses^reset;: 
+^orange;Set Bonuses^reset;:
 ^yellow;^reset; Sunlight: Power/Defense/Energy/Health x^green;1.25^reset;
-^yellow;^reset; ^cyan;Immune^reset;: Pressure, Mud, Slime Stick, Ice Slip, Snow Slow, Oxygen", 
+^yellow;^reset; ^cyan;Immune^reset;: Pressure, Mud, Slime Stick, Ice Slip, Snow Slow, Oxygen",
   "shortdescription" : "Star-Killer Mask",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -39,18 +39,18 @@
       "stat" : "maxHealth",
       "amount" : 3
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "radioactiveResistance",
       "amount" : 0.032
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "fireResistance",
       "amount" : 0.032
     }
   ],
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "explorer" ],
   "statusEffects" : [
     "headlamp2",
     "starkillersetbonus",
@@ -98,5 +98,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

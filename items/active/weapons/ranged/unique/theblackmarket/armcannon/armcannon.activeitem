@@ -3,7 +3,7 @@
   "price" : 500,
   "inventoryIcon" : "armcannon.png",
     "maxStack" : 1,
-    "rarity" : "rare",
+    "rarity" : "common",
   "description" : "Attaches to the forearm. Fires energy blasts.
 ^yellow;Counts as 'energy' for set bonuses^reset;",
   "shortdescription" : "Arm Cannon",
@@ -11,7 +11,7 @@
   "category" : "armcannon",
   "itemTags" : ["weapon","ranged","energy", "upgradeableWeapon", "armcannon"],
   "tooltipKind" : "gun2",
-  
+
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
@@ -19,10 +19,10 @@
     "middle" : "armcannon.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
-  },      
+  },
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/gun/needler1.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }  
+    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }
   },
 
   "baseOffset" : [0.0, 0.34],
@@ -31,7 +31,7 @@
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "physical",
-  "learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ], //keeping em here for now. 
+  "learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ], //keeping em here for now.
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],

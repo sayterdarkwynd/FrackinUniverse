@@ -17,6 +17,9 @@ function update()
 	-- for stat, type in pairs(self.stats) do
 	for stat, type in pairs(self.data.stats) do
 		local value = status.stat(stat)
+		--[[if stat=="healthRegen" then
+			sb.logInfo("%s",{stat=stat,value=value})
+		end]]
 
 		-- Getting rid of the redundant .0's
 		local fraction = math.abs(math.floor(value) - value)
@@ -49,21 +52,22 @@ function update()
 		elseif type == "food" then
 			local foodVal=status.isResource("food") and status.resourceMax("food") or 0
 			if foodVal~=0 then
-				value = math.abs(shorten(1 / (value / status.resourceMax("food")) * 0.01))
+				--value = math.abs(shorten(1 / (value / status.resourceMax("food")) * 0.01))--blatantly wrong
+				value=math.abs(shorten(foodVal/(value*60.0)))
 				if value % 1 == 0 then
 					widget.setText(stat, tostring(math.floor(value)))
 				else
 					widget.setText(stat, tostring(value))
 				end
 			else
-				widget.setText(stat, "0")
+				widget.setText(stat, "---")
 			end
 
 		elseif type == "breath" then
 			local breathRate = value
 			if breathMax > 0 then
-				-- Why divided by 2 you ask? Fuck if I know, it returns double the right value otherwise.
-				--khe: that's because breath timer is decremented twice per update.
+				-- Why divided by 2 you ask? Fuck if I know, it returns double the right value otherwise. <-zimber's note
+				--khe: that's because breath timer is decremented twice per update; once in vanilla code, once in FR code.
 				widget.setText("breathMaxTime", breathMax / breathRate / 2)
 				widget.setText("breathRegenTime", breathMax / breatRegen / 2)
 			end

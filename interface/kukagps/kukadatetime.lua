@@ -9,44 +9,42 @@ end
 
 function populateMaterialsList()
         widget.clearListItems(MATERIALS)
-        local worldId = string.split(player.worldId(),":")
+        local worldId = string_split(player.worldId(),":")
         local planet = {location = {tonumber(worldId[2]),tonumber(worldId[3]),tonumber(worldId[4])}, planet = tonumber(worldId[5]), satellite = (tonumber(worldId[6]) or 0)}
-        local system ={location = {tonumber(worldId[2]),tonumber(worldId[3]),tonumber(worldId[4])}}
         if worldId[1]=="InstanceWorld" then
             local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-            widget.setText(path .. ".text", "This is a Instance World")
+            widget.setText(path .. ".text", "This is a Instance World. Instance World do not contain relevant GPS data. Please travel to a planet surface.")
             -- More info about the dungeon could be added here
         else
             if worldId[1]=="ClientShipWorld" then
                 local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                widget.setText(path .. ".text", "This is a Ship World")
+                widget.setText(path .. ".text", "This is a Ship World. Ship Worlds do not contain relevant GPS data. Please travel to a planet surface.")
                 -- More info about the ship could be added here
             else
                 if worldId[1]=="CelestialWorld" then
                     weather =root.assetJson("/interface/kukagps/weather.config")
                     enviroment =root.assetJson("/interface/kukagps/enviroment.config")
-                    --stars =root.assetJson("/interface/kukagps/stars.config")
 
                     -- print date
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Date:^reset; "..getDate(world.day()))
 
                     -- print time
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Time:^reset; "..timeConversion())
 
                     -- print day length
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Day Length:^reset; "..math.floor(world.dayLength()))
 
                     -- print light level
                     local lightLevel = math.floor(world.lightLevel(world.entityPosition(player.id()))*100)/100
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Light Level:^reset; "..lightLevel)
 
                     -- print windLevel
                     local windLevel = math.floor(world.windLevel(world.entityPosition(player.id()))*100)/100
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Wind Level:^reset; "..windLevel)
 
                     local parameters = celestial.visitableParameters(planet)
@@ -60,10 +58,11 @@ function populateMaterialsList()
                         end
                     end
                     enviro = enviro.."."
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Enviroment Status Effects:^reset; "..enviro)
 
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Weather:^reset; ")
 
                     local weatherItem="None"
@@ -79,7 +78,7 @@ function populateMaterialsList()
                         if linecount==4 then
                             -- print line and reset counter
                             weatherItem = weatherItem.."."
-                            local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                            path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", "          "..weatherItem)
                             weatherItem = "None"
                             linecount = 0
@@ -87,7 +86,7 @@ function populateMaterialsList()
                     end
                     if linecount ~= 0 then
                         weatherItem = weatherItem.."."
-                        local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                        path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                         widget.setText(path .. ".text", "          "..weatherItem)
                     end
                 else
@@ -98,7 +97,7 @@ function populateMaterialsList()
         end
 end
 
-function string.split(str, pat)
+function string_split(str, pat)
     local t = {}  -- NOTE: use {n = 0} in Lua-5.0
     local fpat = "(.-)" .. pat
     local last_end = 1

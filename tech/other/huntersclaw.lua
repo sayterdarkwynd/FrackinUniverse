@@ -1,7 +1,8 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
-local foodThreshold=10
+require "/stats/effects/fu_statusUtil.lua"
+local foodThreshold=10--used by checkFood
 
 function init()
 	self.firetimer = 0
@@ -10,10 +11,6 @@ function init()
 	self.rechargeEffectTimer = 0
 	self.flashCooldownTimer = 0
 	self.halted = 0
-end
-
-function checkFood()
-	return (((status.statusProperty("fuFoodTrackerHandler",0)>-1) and status.isResource("food")) and status.resource("food")) or foodThreshold
 end
 
 function activeFlight(foodValue,direction)
@@ -57,7 +54,7 @@ function update(args)
 	if args.moves["special1"] and self.firetimer == 0 and not (primaryItem and root.itemHasTag(primaryItem, "weapon")) and not (altItem and root.itemHasTag(altItem, "weapon")) then
 		local upDown=((args.moves["down"] and -1) or 0) + ((args.moves["up"] and 1) or 0)
 		local leftRight=((args.moves["left"] and -1) or 0) + ((args.moves["right"] and 1) or 0)
-		local foodValue=checkFood()
+		local foodValue=checkFood() or foodThreshold
 		if foodValue > 10 then
 			status.addEphemeralEffects{{effect = "foodcostclaw", duration = 0.005}}
 		else

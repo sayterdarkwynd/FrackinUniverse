@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "A unique flavor of bioweapon that avoids violations of intergalactic law.
-^cyan;Targets cannot heal when hit.^reset;",
+^cyan;Targets cannot heal when hit^reset;",
   "shortdescription" : "Quietus Shotgun",
   "category" : "shotgun",
   "level" : 4,
@@ -29,7 +29,7 @@
           { "particle" : "druidstaff", "offset" : [0.4, -0.4] }
         ]
       }
-    },    
+    },
     "sounds" : {
       "fire" : [ "/sfx/weapons/blastcannon.ogg" ],
       "cooldown":[  "/sfx/weapons/shotgunreload.ogg"]
@@ -55,19 +55,19 @@
     "fireType" : "auto",
 
     "projectileType" : "quietusbullet",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 56,
       "knockback" : 4
     },
     "stances" : {
-      "idle":{  
+      "idle":{
         "armRotation": 0,
         "weaponRotation": 0,
         "twoHanded": true,
         "allowRotate": true,
         "allowFlip": true
       },
-      "fire":{  
+      "fire":{
         "duration": 0.1,
         "armRotation": 3,
         "weaponRotation": 8,
@@ -75,7 +75,7 @@
         "allowRotate": false,
         "allowFlip": true
       },
-      "cooldown":{  
+      "cooldown":{
         "duration": 0.3,
         "armRotation": -7,
         "weaponRotation": -355,
@@ -93,16 +93,16 @@
   "isAmmoBased" : 1,
   "magazineSize" : 9,
   "reloadTime" : 1.2,
-  
+
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 300,
-  "recoilForce" : 600, 
-  
+  "recoilForce" : 600,
+
   "altAbilityType" : "swtjc_ewg_bouncingorbitals",
   "altAbility" : {
-	  "isAmmoBased" : 1,
-	  "reloadTime" : 1  
+    "isAmmoBased" : 1,
+    "reloadTime" : 1
   },
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

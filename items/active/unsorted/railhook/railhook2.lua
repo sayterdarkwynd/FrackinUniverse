@@ -7,12 +7,14 @@ function init()
   self.activeArmAngle = config.getParameter("activeArmAngle", 0)
   self.inactiveArmAngle = config.getParameter("inactiveArmAngle", 0)
 
-  local railConfig = config.getParameter("railConfig", {})
-  railConfig.speed = config.getParameter("speed")
-  railConfig.onEngage = function() animator.playSound("engage") end
+  self.maxSpeed = config.getParameter("maxSpeed", 60)
+  self.minSpeed = config.getParameter("minSpeed", 20)
+  self.currentSpeed=self.maxSpeed
 
-  self.railRider = Rails.createRider(railConfig)
-  self.railRider:init()
+  self.speedCooldown = config.getParameter("speedCooldown", 1)
+  self.speedTimer=0
+
+  createRider()
 
   self.onRail = false
   self.volumeAdjustTimer = 0.0
@@ -21,13 +23,28 @@ function init()
   self.effectGroupName = "railhook" .. activeItem.hand()
 end
 
+function createRider()
+  local railConfig = config.getParameter("railConfig", {})
+  railConfig.speed = self.currentSpeed
+  railConfig.onEngage = function() animator.playSound("engage") end
+
+  self.railRider = Rails.createRider(railConfig)
+  self.railRider:init()
+end
+
 function uninit()
   status.clearPersistentEffects(self.effectGroupName)
 end
 
 function update(dt, fireMode, shiftHeld, moves)
+  self.speedTimer = math.max(0, self.speedTimer - dt)
   local edgeTrigger = fireMode ~= self.lastFireMode
-  if fireMode == "primary" then
+  if shiftHeld and fireMode == "primary" then
+    if self.speedTimer == 0 then
+      switchSpeed()
+      self.speedTimer=self.speedCooldown
+    end
+  elseif fireMode == "primary" then
     if edgeTrigger and self.railRider:onRail() then
       disengageHook()
     elseif edgeTrigger and not status.statPositive("activeMovementAbilities") and not mcontroller.onGround() then
@@ -92,23 +109,34 @@ function update(dt, fireMode, shiftHeld, moves)
     self.volumeAdjustTimer = self.volumeAdjustTime
     animator.stopAllSounds("grind")
   end
-  
+
   local upHeld = moves["up"]
   local downHeld = moves["down"]
   local leftHeld = moves["left"]
   local rightHeld = moves["right"]
 
   if not self.railRider.moving then
-		if upHeld then
-			self.railRider:railResume(self.railRider:position(), nil, Rails.dirs.n)
-		elseif downHeld then
-			self.railRider:railResume(self.railRider:position(), nil, Rails.dirs.s)
-		elseif leftHeld then
-			self.railRider:railResume(self.railRider:position(), nil, Rails.dirs.w)
-		elseif rightHeld then
-			self.railRider:railResume(self.railRider:position(), nil, Rails.dirs.e)
-		end
+    if upHeld then
+      self.railRider:railResume(self.railRider:position(), nil, Rails.dirs.n)
+    elseif downHeld then
+      self.railRider:railResume(self.railRider:position(), nil, Rails.dirs.s)
+    elseif leftHeld then
+      self.railRider:railResume(self.railRider:position(), nil, Rails.dirs.w)
+    elseif rightHeld then
+      self.railRider:railResume(self.railRider:position(), nil, Rails.dirs.e)
+    end
   end
+end
+
+function switchSpeed()
+  if self.currentSpeed == self.maxSpeed then
+    self.currentSpeed = self.minSpeed
+    animator.playSound("minSpeed")
+  else
+    self.currentSpeed = self.maxSpeed
+    animator.playSound("maxSpeed")
+  end
+  createRider()
 end
 
 function engageHook()

@@ -4,16 +4,16 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "uncommon",
-   "description" : "^orange;Set Bonuses^reset;: 
+  "rarity" : "legendary",
+   "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; ^cyan;Swim Boost 2^reset;
 ^yellow;^reset; +^green;35^reset;% Shield Stamina, Block, Shield Regen
 ^yellow;^reset; Sword and Shield: Damage x^green;1.2^reset;
-^yellow;^reset; ^cyan;Immune^reset;: Pressure, Insanity, Aether", 
+^yellow;^reset; ^cyan;Immune^reset;: Pressure, Insanity, Aether",
   "shortdescription" : "Ultra-Mesh Breastplate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "melee" ],
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -49,7 +49,7 @@
       "stat" : "maxHealth",
       "amount" : 6
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "electricResistance",
       "amount" : 0.057143
@@ -60,6 +60,10 @@
     "ultrameshsetbonus",
     {
       "stat" : "fu_ultrameshset_chest",
+      "amount" : 1
+    },
+    {
+      "stat" : "fu_cellularset_chest",
       "amount" : 1
     }
   ],
@@ -105,5 +109,5 @@
 
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

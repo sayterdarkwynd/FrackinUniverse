@@ -1,223 +1,229 @@
 {
-  "type" : "bighairyfrankbabyrad",
-  "shortdescription" : "Widow",
-  "description" : "Loves your delicious ground-walker insides.",
+	"type" : "bighairyfrankbabyrad",
+	"shortdescription" : "Widow",
+	"description" : "Loves your delicious ground-walker insides.",
 
-  "categories" : [ "bighairyfrankbabyrad" ],
-  "parts" : [ "body" ],
+	"categories" : [ "bighairyfrankbabyrad" ],
+	"parts" : [ "body" ],
 
-  "animation" : "bighairyfrankbabyrad.animation",
+	"animation" : "bighairyfrankbabyrad.animation",
 
-  "dropPools" : [  ],
+	"dropPools" : [	],
 
-  "baseParameters" : {
-    "scripts" : [ "/monsters/monster.lua" ],
+	"baseParameters" : {
+		"scripts" : [ "/monsters/monster.lua" ],
 
-    "behavior" : "monster",
-    "deathBehavior" : "monster-death",
+		"behavior" : "monster",
+		"deathBehavior" : "monster-death",
 
-    "behaviorConfig" : {
-      "damageOnTouch" : true,
-      "seeThroughLiquid" : false,
-      "targetQueryRange" : 50,
-      "targetOnDamage" : true,
-      "keepTargetInSight" : true,
-      "keepTargetInRange" : 100,
-      "targetOutOfSightTime" : 10.0,
-      "damageTakenActions" : [ ],
-      "foundTargetActions" : [ ],
-      "fleeActions" : [ ],    
-      "hostileActions" : [
-        {
-          "name" : "action-fire",
-          "cooldown" : 0.3,
-          "parameters" : {
-            "requireLineOfSight" : false,
-            "maximumRange" : 100,
-            "minimumRange" : 0,
-            "windupState" : "",
-            "windupTime" : 0,
-	    "projectileInterval" : 0,
-            "projectileCount" : 1,
-	    "inaccuracy" : 3,
-            "projectileType" : "tilesprayer",
-	    "projectileParameters" : {
-	    "speed" : 15
-	},
-            "fireOffset" : [0, 0],
-            "aimAtTarget" : false,
-            "fireState" : "",
-            "fireDelay" : 0,
-            "fireSound" : "",
-            "winddownState" : "",
-            "winddownTime" : 0
-          }
-        }		
-      ],
-      "periodicActions" : [ ],
-      "approachActions" : [
-        {
-          "name" : "approach-fly",
-          "parameters" : {
-          "minRange" : 1,
-          "maxRange" : 1,
-          "targetOffset" : [0,-3],
-          "avoidLiquid" : true,
-          "usePathfinding" : true,
-          "approachAngle" : 5,
-          "stopForce" : 100
-          }
-        }
-      ],
-      "wanderActions" : [
-        {
-          "name" : "wander-fly",
-          "parameters" : {
-            "ceilingDistance" : 10,
-            "groundDistance" : 10,
-            "xVelocity": 12,
-            "yVelocity": 18
-          }
-        }
-      ],
-      "concurrentHostileActions" : [ { "name" : "action-aim-head" } ],
-      "concurrentActions" : [ { "name" : "action-aim-head"} ],
-      "deathActions" : [ ]
-    },
+		"behaviorConfig" : {
+			"damageOnTouch" : true,
+			"seeThroughLiquid" : false,
+			"targetQueryRange" : 50,
+			"targetOnDamage" : true,
+			"keepTargetInSight" : true,
+			"keepTargetInRange" : 100,
+			"targetOutOfSightTime" : 10.0,
+			"damageTakenActions" : [ ],
+			"foundTargetActions" : [ ],
+			"fleeActions" : [ ],
+			"hostileActions" : [
+				{
+					"name" : "action-fire",
+					"cooldown" : 0.3,
+					"parameters" : {
+						"requireLineOfSight" : false,
+						"maximumRange" : 100,
+						"minimumRange" : 0,
+						"windupState" : "",
+						"windupTime" : 0,
+						"projectileInterval" : 0,
+						"projectileCount" : 1,
+						"inaccuracy" : 3,
+						"projectileType" : "tilesprayer",
+						"projectileParameters" : {
+							"speed" : 15
+						},
+						"fireOffset" : [0, 0],
+						"aimAtTarget" : false,
+						"fireState" : "",
+						"fireDelay" : 0,
+						"fireSound" : "",
+						"winddownState" : "",
+						"winddownTime" : 0
+					}
+				}
+			],
+			"periodicActions" : [ ],
+			"approachActions" : [
+				{
+					"name" : "approach-fly",
+					"parameters" : {
+					"minRange" : 1,
+					"maxRange" : 1,
+					"targetOffset" : [0,-3],
+					"avoidLiquid" : true,
+					"usePathfinding" : true,
+					"approachAngle" : 5,
+					"stopForce" : 100
+					}
+				}
+			],
+			"wanderActions" : [
+				{
+					"name" : "wander-fly",
+					"parameters" : {
+						"ceilingDistance" : 10,
+						"groundDistance" : 10,
+						"xVelocity": 12,
+						"yVelocity": 18
+					}
+				}
+			],
+			"concurrentHostileActions" : [ { "name" : "action-aim-head" } ],
+			"concurrentActions" : [ { "name" : "action-aim-head"} ],
+			"deathActions" : [ ]
+		},
 
-    "touchDamage" : {
-      "poly" : [ [3, 1.5], [3, -1.5], [0.5, -2.5], [-2.5, -1.5], [-2.5, 1.5], [0.5, 2.5] ],
-      "damage" : 6,
+		"touchDamage" : {
+			"poly" : [ [3, 1.5], [3, -1.5], [0.5, -2.5], [-2.5, -1.5], [-2.5, 1.5], [0.5, 2.5] ],
+			"damage" : 6,
 
-      "teamType" : "enemy",
-      "damageSourceKind" : "slash",
-      "knockback" : 20,
-      "statusEffects" : [ "radiationburn" ]
-    },
+			"teamType" : "enemy",
+			"damageSourceKind" : "slash",
+			"knockback" : 20,
+			"statusEffects" : [ "radiationburn" ]
+		},
 
-    "metaBoundBox" : [-4, -4, 4, 4],
-    "scale" : 0.25,
+		"metaBoundBox" : [-4, -4, 4, 4],
+		"scale" : 0.25,
 
-    "movementSettings" : {
+		"movementSettings" : {
 
-      "collisionEnabled" : true,
-      "collisionPoly" : [ [2.5, 1.5], [2.5, -1.5], [-2.5, -1.5], [-2.5, 1.5] ],
+			"collisionEnabled" : true,
+			"collisionPoly" : [ [2.5, 1.5], [2.5, -1.5], [-2.5, -1.5], [-2.5, 1.5] ],
 
-      "mass" : 7.0,
-      "walkSpeed" : 12,
-      "runSpeed" : 20,
-      "gravityEnabled" : false,
+			"mass" : 7.0,
+			"walkSpeed" : 12,
+			"runSpeed" : 20,
+			"gravityEnabled" : false,
 
-      "airFriction" : 4,
-      "airForce" : 40,
-      "flySpeed" : 24
+			"airFriction" : 4,
+			"airForce" : 40,
+			"flySpeed" : 24
 
-    },
+		},
 
-    "bodyMaterialKind" : "organic",
+		"bodyMaterialKind" : "organic",
 
-    "knockoutTime" : 0.01,
-    "knockoutAnimationStates" : {
-      "damage" : "stunned"
-    },
-    "deathParticles" : "deathPoof",
-    "knockoutEffect" : "",
+		"knockoutTime" : 0.01,
+		"knockoutAnimationStates" : {
+			"damage" : "stunned"
+		},
+		"deathParticles" : "deathPoof",
+		"knockoutEffect" : "",
 
-    "statusSettings" : {
-      "statusProperties" : {
-        "targetMaterialKind" : "organic"
-      },
+		"statusSettings" : {
+			"statusProperties" : {
+				"targetMaterialKind" : "organic"
+			},
 
-      "appliesEnvironmentStatusEffects" : false,
-      "appliesWeatherStatusEffects" : true,
-      "minimumLiquidStatusEffectPercentage" : 0.1,
+			"appliesEnvironmentStatusEffects" : false,
+			"appliesWeatherStatusEffects" : true,
+			"minimumLiquidStatusEffectPercentage" : 0.1,
 
-      "primaryScriptSources" : [
-        "/stats/monster_primary.lua"
-      ],
-      "primaryScriptDelta" : 5,
+			"primaryScriptSources" : [
+				"/stats/monster_primary.lua"
+			],
+			"primaryScriptDelta" : 5,
 
-      "stats" : {
-        "grit" : {
-          "baseValue" : 1.0
-        },
-        "maxHealth" : {
-          "baseValue" : 50
-        },
-        "protection" : {
-          "baseValue" : 25.0
-        },
-        "healthRegen" : {
-          "baseValue" : 0.0
-        },
-        "powerMultiplier" : {
-          "baseValue" : 1.0
-        },
-        "physicalResistance" : {
-          "baseValue" : 0.11
-        },
-        "fireResistance" : {
-          "baseValue" : -0.25
-        },
-        "fireStatusImmunity" : {
-          "baseValue" : 0.0
-        },
-        "iceResistance" : {
-          "baseValue" : 0.24
-        },
-        "iceStatusImmunity" : {
-          "baseValue" : 0.0
-        },
-        "electricResistance" : {
-          "baseValue" : 0.4
-        },
-        "electricStatusImmunity" : {
-          "baseValue" : 0.0
-        },
-        "poisonResistance" : {
-          "baseValue" : 0.9
-        },
-        "poisonStatusImmunity" : {
-          "baseValue" : 1.0
-        },
-	"pusImmunity" : {
-          "baseValue" : 1.0
-        },
-	"webstickImmunity" : {
-          "baseValue" : 1.0
-        },
-        "shadowResistance" : {
-         "baseValue" : 0.75 
-        },
-        "shadowImmunity" : {
-         "baseValue" : 1
-        },
-        "cosmicResistance" : { 
-         "baseValue" : 0.2 
-        },
-        "radiationburnImmunity" : { 
-          "baseValue" : 1
-        },
-        "radioactiveResistance" : { 
-          "baseValue" : 0.5
-        }
-      },
+			"stats" : {
+				"grit" : {
+					"baseValue" : 1.0
+				},
+				"maxHealth" : {
+					"baseValue" : 50
+				},
+				"protection" : {
+					"baseValue" : 25.0
+				},
+				"healthRegen" : {
+					"baseValue" : 0.0
+				},
+				"powerMultiplier" : {
+					"baseValue" : 1.0
+				},
+				"physicalResistance" : {
+					"baseValue" : 0.11
+				},
+				"fireResistance" : {
+					"baseValue" : -0.25
+				},
+				"fireStatusImmunity" : {
+					"baseValue" : 0.0
+				},
+				"iceResistance" : {
+					"baseValue" : 0.24
+				},
+				"iceStatusImmunity" : {
+					"baseValue" : 0.0
+				},
+				"electricResistance" : {
+					"baseValue" : 0.4
+				},
+				"electricStatusImmunity" : {
+					"baseValue" : 0.0
+				},
+				"poisonResistance" : {
+					"baseValue" : 0.9
+				},
+				"poisonStatusImmunity" : {
+					"baseValue" : 1.0
+				},
+				"pusImmunity" : {
+					"baseValue" : 1.0
+				},
+				"webstickImmunity" : {
+					"baseValue" : 1.0
+				},
+				"slagStatusImmunity" : {
+					"baseValue" : 1.0
+				},
+				"bluoplasmaStatusImmunity" : {
+					"baseValue" : 1.0
+				},
+				"shadowResistance" : {
+				 "baseValue" : 0.75
+				},
+				"shadowImmunity" : {
+				 "baseValue" : 1
+				},
+				"cosmicResistance" : {
+				 "baseValue" : 0.2
+				},
+				"radiationburnImmunity" : {
+					"baseValue" : 1
+				},
+				"radioactiveResistance" : {
+					"baseValue" : 0.5
+				}
+			},
 
-      "resources" : {
-        "stunned" : {
-          "deltaValue" : -1.0,
-          "initialValue" : 0.0
-        },
-        "health" : {
-          "maxStat" : "maxHealth",
-          "deltaStat" : "healthRegen",
-          "defaultPercentage" : 100
-        }
-      }
-    },
+			"resources" : {
+				"stunned" : {
+					"deltaValue" : -1.0,
+					"initialValue" : 0.0
+				},
+				"health" : {
+					"maxStat" : "maxHealth",
+					"deltaStat" : "healthRegen",
+					"defaultPercentage" : 100
+				}
+			}
+		},
 
-    "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -8],
-    "capturable" : false
-  }
+		"mouthOffset" : [0, 0],
+		"feetOffset" : [0, -8],
+		"capturable" : false
+	}
 }

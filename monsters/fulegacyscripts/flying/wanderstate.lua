@@ -35,7 +35,7 @@ function wanderState.update(dt, stateData)
 			movement[2] = config.getParameter("wanderRiseSpeed")
 
 			--Avoid ceiling
-			for i, ceilingSensorIndex in ipairs({ 3, 2, 1 }) do
+			for _, ceilingSensorIndex in ipairs({ 3, 2, 1 }) do
 				local sensor = self.sensors.ceilingSensors.collisionTrace[ceilingSensorIndex]
 				if sensor.value then
 					movement[2] = movement[2] - 0.6 * config.getParameter("wanderRiseSpeed")
@@ -82,7 +82,7 @@ function wanderState.calculateSeparationMovement()
 	local position = mcontroller.position()
 	local selfId = entity.id()
 	local entityIds = world.entityQuery(mcontroller.position(), 3.0, { callScript = "isFlyer", includedTypes = {"monster"} })
-	for i, entityId in ipairs(entityIds) do
+	for _, entityId in ipairs(entityIds) do
 		if entityId ~= selfId then
 			local fromEntity = world.distance(position, world.entityPosition(entityId))
 			separationMovement[1] = separationMovement[1] + fromEntity[1] * math.random()

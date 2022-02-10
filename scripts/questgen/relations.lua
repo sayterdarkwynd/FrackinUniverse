@@ -222,7 +222,7 @@ QuestRelations.monsterTenants = defineQueryRelation("monsterTenants", true) {
 			return Relation.empty
 		end,
 
-	[case(2, Entity, Nil)] = function (self, deed, count)
+	[case(2, Entity, Nil)] = function (self, deed)
 			if self.negated then return Relation.some end
 			local count = deed:callScript("countMonsterTenants")
 			if count then
@@ -301,8 +301,8 @@ local NpcRelationship = defineSubclass(Relation, "NpcRelationship") {
 						if otherNpc and otherNpc ~= Nil then
 							return {{npc, otherNpc}}
 						else
-							return util.map(self.context:entitiesByType()["npc"], function (otherNpc)
-									return {npc, otherNpc}
+							return util.map(self.context:entitiesByType()["npc"], function (otherNpc2)
+									return {npc, otherNpc2}
 								end)
 						end
 					end
@@ -314,8 +314,8 @@ local NpcRelationship = defineSubclass(Relation, "NpcRelationship") {
 						if npc and npc ~= Nil then
 							return {{npc, otherNpc}}
 						else
-							return util.map(self.context:entitiesByType()["npc"], function (npc)
-									return {npc, otherNpc}
+							return util.map(self.context:entitiesByType()["npc"], function (firstNpc)
+									return {firstNpc, otherNpc}
 								end)
 						end
 					end
@@ -754,8 +754,21 @@ QuestRelations.objectExists = defineQueryRelation("objectExists", true) {
 local function getRecipes(item)
 	local recipes = util.map(root.recipesForItem(item.itemName), QuestPredicands.Recipe.new)
 	recipes=util.filter(recipes, function (recipe) return #recipe.inputs > 0 end)
-	recipes=util.filter(recipes, function (recipe) return not contains(recipe.groups,"excludeFromQuests") end)
-	return recipes
+	local buffer={}
+	for _,recipe in pairs(recipes) do
+		local pass=true
+		for group,_ in pairs(recipe.groups) do
+			if group=="excludeFromQuests" then
+				pass=false
+				break
+			end
+		end
+		if pass then
+			table.insert(buffer,recipe)
+		end
+	end
+	--recipes=buffer--util.filter(recipes, function (recipe) return not contains(recipe.groups,"excludeFromQuests") end)
+	return buffer
 end
 
 local function recipeExists(recipe, item)
@@ -831,7 +844,7 @@ QuestRelations.ownsItemList = defineRelation("ownsItemList") {
 
 	implications = function (self)
 			return self:unpackPredicands {
-				[case(0, Player, ItemList, Any)] = function (self, owner, itemList, vars)
+				[case(0, Player, ItemList, Any)] = function (self, owner, itemList, vars) -- luacheck: ignore 432
 						local terms = {}
 
 						if vars == nil or vars == Nil then
@@ -1016,7 +1029,6 @@ QuestRelations.findLocation = defineQueryRelation("findLocation", true) {
 	[case(1, QuestPredicands.Location, TagSet, NonNil, NonNil)] = function (self, location, tags, minDistance, maxDistance)
 			local locationPos = rect.center(location.region)
 			local distance = world.magnitude(locationPos, entity.position())
-			local farEnoughAway = distance >= minDistance
 			local inRange = maxDistance < 0 or distance <= maxDistance
 			local tagsMatch = set.containsAll(set.new(location.tags), tags.tags)
 			if xor(self.negated, tagsMatch and inRange) then

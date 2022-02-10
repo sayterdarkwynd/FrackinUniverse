@@ -67,7 +67,6 @@ function BlinkSlash:slashAction()
 	status.addEphemeralEffect("blink")
 	util.wait(0.25)
 
-	local fromPosition = mcontroller.position()
 	mcontroller.setPosition(self.blinkPosition)
 	self.weapon.aimDirection = -self.weapon.aimDirection
 	self.weapon:setStance(self.stances.slash)

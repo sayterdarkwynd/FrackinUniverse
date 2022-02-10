@@ -7,6 +7,7 @@ function init()
 	self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
 	self.gravActive=false
 	idle()
+	self.checkWorldOnce=false
 end
 
 function uninit()
@@ -14,6 +15,10 @@ function uninit()
 end
 
 function update(args)
+	if not self.checkWorldOnce then
+		self.onOwnShip = status.statusProperty("player.ownShipWorldId") == status.statusProperty("player.worldId")
+		self.checkWorldOnce=true
+	end
 	local jumpBonus = 1 + status.stat("jumptechBonus")
 	local jumpActivated = args.moves["jump"] and not self.lastJump
 	self.lastJump = args.moves["jump"]
@@ -25,7 +30,7 @@ function update(args)
 	self.specialLast=args.moves["special1"]
 
 	if self.gravActive then
-		if status.overConsumeResource("energy", 0.07) then
+		if self.onOwnShip or status.overConsumeResource("energy", 0.07) then
 			status.addEphemeralEffects{{effect = "nofalldamage", duration = 0.2 * jumpBonus}}
 		else
 			self.gravActive=false
@@ -46,7 +51,7 @@ function update(args)
 			if vec2.eq(direction, {0, 0}) then direction = {0, 0} end
 			boost(direction,jumpBonus)
 			if args.moves["jump"] then
-			if status.overConsumeResource("energy", self.energyCostPerSecond * args.dt) then
+			if self.onOwnShip or status.overConsumeResource("energy", self.energyCostPerSecond * args.dt) then
 				mcontroller.controlApproachVelocity(self.boostVelocity, self.boostForce*jumpBonus)
 			else
 				idle()

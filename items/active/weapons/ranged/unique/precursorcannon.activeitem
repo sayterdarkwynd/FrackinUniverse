@@ -32,7 +32,7 @@
 		  }
 		}
       }
-    },    
+    },
     "sounds" : {
       "fire" : [ "/sfx/weapons/hvmarauder2.wav" ]
     }
@@ -56,26 +56,26 @@
     "fireType" : "auto",
 
     "projectileType" : "electricguardianbullet",
-    "projectileParameters" : { 
-	"periodicActions":[], 
+    "projectileParameters" : {
+	"periodicActions":[],
 	"processing":"?hueshift=-165",
-	"statusEffects":[{"effect":"electrified", "duration":1.5}], 
-	"bounces":0, 
+	"statusEffects":[{"effect":"electrified", "duration":1.5}],
+	"bounces":0,
 	"speed" : 60,
-	"timeToLive":1, 
-	"power":0.0, 
-	"knockback":20, 
+	"timeToLive":1,
+	"power":0.0,
+	"knockback":20,
 	"actionOnReap":[
 	    {
 	      "action" : "projectile",
 	      "inheritDamageFactor" : 0.01,
 	      "type" : "teslaboomsmall"
-	    },	
+	    },
 	    {
 	      "action" : "sound",
 	      "options" : [ "/sfx/melee/fleshwhip_impact1.ogg" ]
-	    }	
-	]    
+	    }
+	]
     },
 	  "stances" : {
 	    "idle" : {
@@ -112,8 +112,8 @@
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
-  "recoilForce" : 1200,   
-  
+  "recoilForce" : 1200,
+
   "altAbilityType" : "kbshot",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

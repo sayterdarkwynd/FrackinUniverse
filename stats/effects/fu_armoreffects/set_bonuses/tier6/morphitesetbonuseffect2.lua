@@ -1,8 +1,6 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_morphiteset2"
 
-weaponBonus={}
-
 armorEffect={
 	{stat = "biomeheatImmunity", amount = 1},
 	{stat = "biomecoldImmunity", amount = 1},

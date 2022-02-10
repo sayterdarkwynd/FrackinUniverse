@@ -3,9 +3,9 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "uncommon",
-   "description" : "^orange;Set Bonuses^reset;: 
-^yellow;^reset; Mining Laser: Damage x^green;1.5^reset;
+  "rarity" : "rare",
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Mining Laser: Combat Damage x^green;1.5^reset;
 ^yellow;^reset; ^cyan;Immune^reset;: Liq. Nitrogen, Poison, Pus
 ^yellow;^reset; Research Bonus +^green;2^reset;",
   "shortdescription" : "Geologist's Coat",
@@ -48,14 +48,14 @@
       "amount" : 3
     }
   ],
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "explorer", "specialist" ],
   "statusEffects" : [
     "geologistsetbonus",
     {
       "stat" : "fu_geologistset_chest",
       "amount" : 1
     }
-  ], 
+  ],
 
   "colorOptions" : [
     /* GREY */
@@ -95,5 +95,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

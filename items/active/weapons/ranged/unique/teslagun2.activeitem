@@ -30,16 +30,16 @@
         }
       }
     },
-    "lights" : {"muzzleFlash" : {"color" : [60, 70, 120]}},  
+    "lights" : {"muzzleFlash" : {"color" : [60, 70, 120]}},
     "sounds" : {
       "fireStart" : [ "/sfx/weapons/teslagun.ogg" ],
       "fireLoop" : [ "/sfx/projectiles/electric_barrier_shock1.ogg", "/sfx/projectiles/electric_barrier_shock2.ogg" ],
       "fireLoopIdle" : [ "/sfx/gun/shockblast.ogg" ],
-      "fireEnd" : [ "/sfx/projectiles/electric_barrier_shock1.ogg", "/sfx/projectiles/electric_barrier_shock2.ogg" ]      
+      "fireEnd" : [ "/sfx/projectiles/electric_barrier_shock1.ogg", "/sfx/projectiles/electric_barrier_shock2.ogg" ]
     }
-  },   
+  },
   "animationScripts" : ["/items/active/effects/thea-doublelightning.lua"],
-  
+
   "baseOffset" : [1.5, 0.35],
   "muzzleOffset" : [0.5, 0.375],
 
@@ -53,7 +53,7 @@
     "fireTime" : 0.1,
     "baseDps" : 50,
     "energyUsage" : 10.0,
-    
+
     "damageConfig" : {
       "statusEffects" : [ "electrified" ],
       "damageKind" : "electric",
@@ -61,7 +61,7 @@
     },
   "lightningDistanceGround" : 45,
 	"lightningDistanceEnemies" : 25.0,
-	
+
 	//Lightning config
 	"lightningAmount" : 3,
 	"lightningWidth" : 1.0,
@@ -70,7 +70,7 @@
 	"lightningDisplacementMin" : 0.2,
 	"lightningDisplacementMax" : 2.8,
 	"lightningColour" : [171, 205, 252, 200],
-	
+
 	//Secondary lightning config
 	"lightningAmount2" : 1,
 	"lightningWidth2" : 1.0,
@@ -80,7 +80,7 @@
 	"lightningColour2" : [222, 66, 252, 200],
 	"lightningStartOffset" : [-1.125, 0.0],
 	"lightningEndOffset" : [-0.5, 0.0],
-	
+
   "stances" : {
     "idle" : {
       "armRotation" : 0,
@@ -124,9 +124,9 @@
     "projectileParameters": {
       "timeToLive": 0,
       "knockback": 10,
-      
+
       "statusEffects" : [ "electrified" ],
-      
+
       "actionOnTimeout": [
         {
           "action": "projectile",
@@ -140,7 +140,7 @@
                     "action": "projectile",
                     "angle": 180,
                     "angleAdjust": 0,
-                    "config": { 
+                    "config": {
                       "knockback": 15,
                       "statusEffects" : [ "electrified" ],
                       "periodicActions": [
@@ -769,6 +769,6 @@
     "type": "physicalshockwave"
   },
   "altAbilityType": "shockburstshot",
-  
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

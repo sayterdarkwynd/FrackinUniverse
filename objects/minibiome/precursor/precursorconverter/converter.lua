@@ -15,8 +15,8 @@ function getInputContents()
 	local id = entity.id()
 
 	local contents = {}
-	for i=0,2 do
-			local stack = world.containerItemAt(entity.id(),i)
+	for i=0,1 do
+			local stack = world.containerItemAt(id, i)
 			if stack ~=nil then
 					if contents[stack.name] ~= nil then
 						contents[stack.name] = contents[stack.name] + stack.count
@@ -67,7 +67,7 @@ function getOutSlotsFor(something)
 		local empty = {} -- empty slots in the outputs
 		local slots = {} -- slots with a stack of "something"
 
-		for i = 3, 11 do -- iterate all output slots
+		for i = 2, 10 do -- iterate all output slots
 			local stack = world.containerItemAt(entity.id(), i) -- get the stack on i
 			if stack ~= nil then -- not empty
 				if stack.name == something then -- its "something"

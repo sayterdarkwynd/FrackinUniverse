@@ -11,12 +11,9 @@ function die(...)
 	object.setConfigParameter("breakDropPool", "empty")
 	object.setInteractive(false)
 
-	local dummy=root.recipesForItem(object.name())
-	for _,recipe in pairs(dummy) do
+	local _,recipe = next(root.recipesForItem(object.name()))
 
-		for _,item in pairs(recipe.input) do
-			world.spawnItem(item,object.position())
-		end
-		break
+	for _,item in pairs(recipe.input) do
+		world.spawnItem(item,object.position())
 	end
 end

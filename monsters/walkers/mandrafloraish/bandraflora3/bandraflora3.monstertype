@@ -18,10 +18,10 @@
     "electricbow" : "mandrafloraHunting",
     "cosmicbow" : "mandrafloraHunting",
     "radioactivebow" : "mandrafloraHunting",
-    "shadowbow" : "mandrafloraHunting"     
+    "shadowbow" : "mandrafloraHunting"
     }
-  ], 
-  
+  ],
+
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
@@ -46,24 +46,23 @@
       "hostileActions" : [
         {
           "name" : "action-fire",
-          "cooldown" : 2,
+          "cooldown" : 1,
           "parameters" : {
             "maximumRange" : 7,
-            "minimumRange" : 1,
+            "minimumRange" : 0,
             "windupState" : "chargewindup",
-            "windupTime" : 0.2,
+            "windupTime" : 0.5,
 
             "projectileType" : "webblast",
-            "fireOffset" : [2, -0.7],
+            "fireOffset" : [4.25, 1.2],
 
             "aimAtTarget" : true,
 
-            "inaccuracy" : 0.04,
-            "power" : 8,
-            "speed": 50,
+            "inaccuracy" : 0,
+            "power" : 10,
+            "speed": 80,
             "fireSound" : "fire",
             "fireState" : "charge",
-
 
             "winddownState" : "chargewinddown"
           }
@@ -72,14 +71,14 @@
           "name" : "action-charge",
           "cooldown" : 3,
           "parameters" : {
-            "maximumRange" : 24,
+            "maximumRange" : 40,
             "minimumRange" : 7,
             "windupTime" : 0.6,
 
             "aimAtTarget" : true,
             "chargeTime" : 0.6,
             "chargeSpeed" : 50,
-            "chargeControlForce" : 2000,
+            "chargeControlForce" : 700,
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
 
@@ -90,13 +89,13 @@
 
       "periodicActions" : [
         {
-          "name" : "action-statuseffect", 
-          "cooldown" : 5,
+          "name" : "action-statuseffect",
+          "cooldown" : 12,
           "parameters" : {
           "effect" : "lowgrav",
-          "duration" : 500
+          "duration" : 7
           }
-        }      
+        }
       ],
 
       "approachActions" : [
@@ -136,22 +135,43 @@
         {
           "name" : "action-projectile",
           "parameters" : {
-            "projectileCount" : 2,
+            "projectileCount" : 1,
             "projectileType" : "blistergunexplosion",
-            "projectileParameters" : {},
+            "projectileParameters" : { },
             "power" : 0,
             "aimDirection" : [1, 1],
-            "inaccuracy" : 1.5,
+            "inaccuracy" : 0,
             "fireOffset" : [0, 0]
           }
         }
       ],
-      
-      "concurrentHostileActions" : [ 
 
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 3,
+          "parameters" : {
+            "maximumRange" : 7,
+            "minimumRange" : 0,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.5,
+
+            "projectileType" : "webblast",
+            "fireOffset" : [4.25, 1.2],
+
+            "aimAtTarget" : true,
+
+            "inaccuracy" : 0,
+            "power" : 5,
+            "speed": 80,
+            "fireSound" : "fire",
+            "fireState" : "charge",
+
+            "winddownState" : "chargewinddown"
+          }
+        }
       ],
-      
-      
+
       "wanderActions" : [
         {
           "name" : "wander-walk",
@@ -260,10 +280,10 @@
         },
         "shadowResistance" : {
           "baseValue" : -0.99
-        },        
+        },
         "poisonStatusImmunity" : {
           "baseValue" : 1
-        },        
+        },
         "fallDamageMultiplier" : {
           "baseValue" : 0.01
         }
@@ -286,7 +306,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "bandraflora3" }
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "bandraflora3" }
   }
 }

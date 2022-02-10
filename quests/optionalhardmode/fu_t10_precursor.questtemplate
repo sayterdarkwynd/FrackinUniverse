@@ -1,0 +1,37 @@
+{
+	"id" : "fu_t10_precursor",
+	"mainQuest" : true,
+	"title" : "Dark Machines",
+	"prerequisites" : ["fu_t10_apex_mission2"],
+	"text" : "You know da drill by now. No, not da erchius drill. Next stop, Precursor Ruins.",
+	"completionText" : "...mew. Telemetry data. Similar energy to...mew? What?!? And Kevin left notes, largely gibberish except one. \"SHE is here? No, it's not her, just a shell.\" Mew scared now.",
+	"portraits" : {
+		"questStarted" : "questGiver",
+		"questComplete" : "questReceiver"
+	},
+	"moneyRange" : [0, 0],
+	"missionUnlockedCinema" : "/cinematics/coordinates.cinematic",
+	"rewards" : [ [ [ "fu_t10_glitch_mission2beacon", 1 ] ] ],
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/fuhardmodeinstance.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "questGiver"
+		},
+		"descriptions" : {
+			"enterInstance" : "Use the ^orange;Dark Precursor Ruins Beacon^reset;.",
+			"findGoal" : "Find the signature",
+			"turnIn" : "Return to ^orange;Khe^reset; at the ^orange;Science Outpost^reset;"
+		},
+		"warpAction" : "fuprecursordungeon2t10",
+		"goalTrigger" : "proximity",
+		"proximityRange" : 20,
+
+		"goalEntityUid" : "precursordungeonquestcrystal",
+		"indicateGoal" : false,
+		"trackGoalEntity" : false,
+
+		"turnInEntityUid" : "kheraeoutpost"
+	}
+}

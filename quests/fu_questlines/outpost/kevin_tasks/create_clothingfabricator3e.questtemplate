@@ -1,35 +1,33 @@
 {
-  "id" : "create_clothingfabricator3e",
-  "prerequisites" : [ "create_clothingfabricator3d" ],
-  "title" : "Madness and Death",
-  "text" : "I bet you cant collect more brains than I can! In fact, I ^orange;double-dog-dare^reset; you to collect ^orange;more brains^reset; than I can! Remove ^orange;50 brains^reset; from random life-forms...that's a decent start.",
-  "completionText" : "That's a whole lot of brains! Also, I didn't even bother collecting any. You beat me! You're also now ^orange;a murderer^reset;! Congratulations!",
-  "moneyRange" : [10, 20],
-  "rewards" : [ [ [ "tungstenbar", 50 ], [ "fumadnessresource", 5000 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "create_clothingfabricator3e",
+	"prerequisites" : [ "create_clothingfabricator3d" ],
+	"title" : "Madness and Death",
+	"text" : "I bet you cant collect more brains than I can! In fact, I ^orange;double-dog-dare^reset; you to collect ^orange;more brains^reset; than I can! Remove ^orange;50 brains^reset; from random life-forms...that's a decent start.",
+	"completionText" : "That's a whole lot of brains! Also, I didn't even bother collecting any. You beat me! You're also now ^orange;a murderer^reset;! Congratulations!",
+	"moneyRange" : [10, 20],
+	"rewards" : [ [ [ "tungstenbar", 50 ], [ "fumadnessresource", 5000 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : true,
+		"requireTurnIn" : true,
 
-    "turnInDescription" : "Bring ^red;Kevin^reset; 50 ^orange;Brains^reset; of average quality.",
+		"turnInDescription" : "Bring ^red;Kevin^reset; 50 ^orange;Brains^reset; of average quality.",
 
-
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "brain",
-        "count" : 50,
-        "consume" : true
-      }
-    ]
-  }
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "brain",
+				"count" : 50,
+				"consume" : true
+			}
+		]
+	}
 }

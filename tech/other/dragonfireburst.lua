@@ -1,14 +1,8 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
-local foodThreshold=15
-
-function init()
-end
-
-function checkFood()
-	return (((status.statusProperty("fuFoodTrackerHandler",0)>-1) and status.isResource("food")) and status.resource("food")) or foodThreshold
-end
+require "/stats/effects/fu_statusUtil.lua"
+local foodThreshold=15--used by checkFood
 
 function activeFlight(foodValue)
 	status.removeEphemeralEffect("wellfed")
@@ -30,7 +24,7 @@ function update(args)
 
 	self.firetimer = math.max(0, (self.firetimer or 0) - args.dt)
 	if args.moves["special1"] and status.overConsumeResource("energy", 0.001) then
-		local foodValue=checkFood()
+		local foodValue=checkFood() or foodThreshold
 		if foodValue > foodThreshold then
 			status.addEphemeralEffects{{effect = "foodcostfire", duration = 0.02}}
 		else

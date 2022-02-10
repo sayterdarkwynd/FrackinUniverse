@@ -15,7 +15,7 @@
   "itemTags" : ["weapon","ranged","rocketlauncher", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  
+
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
@@ -26,11 +26,11 @@
   },
   "animationCustom" : {
     "sounds" : {
-      "fire":[  
+      "fire":[
         "/sfx/gun/lightningcoil3.ogg",
         "/sfx/gun/lightningcoil2.ogg"
       ],
-      "altFire":[  
+      "altFire":[
         "/sfx/tools/chainsaw_rev_down.ogg"
       ]
     }
@@ -56,9 +56,9 @@
     "fireType" : "auto",
 
     "projectileType" : "plasmatorpedo2",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "statusEffects" : [ "slow" ],
-      "periodicActions":[  
+      "periodicActions":[
         {
           "time":0,
           "action" : "explosion",
@@ -67,33 +67,33 @@
           "explosiveDamageAmount" : 4,
           "harvestLevel" : 99,
           "delaySteps" : 2
-        },      
-        {  
+        },
+        {
           "time":0,
           "action":"particle",
-          "specification":{  
+          "specification":{
             "type":"ember",
-            "light":[  
+            "light":[
               0,
               0,
               255
             ],
             "size":0.5,
-            "color":[  
+            "color":[
               0,
               0,
               180,
               50
             ],
-            "initialVelocity":[  
+            "initialVelocity":[
               0.0,
               10.0
             ],
-            "finalVelocity":[  
+            "finalVelocity":[
               0.0,
               -3.0
             ],
-            "approach":[  
+            "approach":[
               0.0,
               -1.0
             ],
@@ -102,12 +102,12 @@
             "destructionAction":"shrink",
             "destructionTime":0.2,
             "layer":"front",
-            "variance":{  
-              "initialVelocity":[  
+            "variance":{
+              "initialVelocity":[
                 0.0,
                 0.0
               ],
-              "position":[  
+              "position":[
                 2.2,
                 0.2
               ],
@@ -121,7 +121,7 @@
       "power":8.5,
       "knockback":1,
       "processing":"?hueshift=-60",
-      "actionOnReap":[  
+      "actionOnReap":[
         {
           "action" : "explosion",
           "foregroundRadius" : 2,
@@ -129,16 +129,16 @@
           "explosiveDamageAmount" : 4,
           "harvestLevel" : 99,
           "delaySteps" : 2
-        }, 	    
-        {  
+        },
+        {
           "time":0.1,
           "action":"projectile",
           "type":"electro",
-          "config":{  
-            "statusEffects":[  
+          "config":{
+            "statusEffects":[
 
             ],
-            "emitters":[  
+            "emitters":[
 
             ],
             "processing":"?0",
@@ -150,41 +150,41 @@
         }
       ]
     },
-	  "stances" : {
-	    "idle" : {
-	      "armRotation" : 0,
-	      "weaponRotation" : 0,
-	      "twoHanded" : true,
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
 
-	      "allowRotate" : true,
-	      "allowFlip" : true
-	    },
-	    "fire" : {
-	      "duration" : 0,
-	      "armRotation" : 3,
-	      "weaponRotation" : -6,
-	      "twoHanded" : true,
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 3,
+        "weaponRotation" : -6,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    },
-	    "cooldown" : {
-	      "duration" : 0.0,
-	      "armRotation" : 3,
-	      "weaponRotation" : -6,
-	      "twoHanded" : true,
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 3,
+        "weaponRotation" : -6,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    }
-	  }
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
   },
 
   "critChance" : 5,
   "critBonus" : 13,
-  
+
   "altAbilityType":"explosiveshot",
-  "altAbility":{  
+  "altAbility":{
     "firePositionPart":"barrel",
     "fireTime":1.0,
     "burstTime":0.04,
@@ -194,15 +194,15 @@
     "cooldownTime":1.0,
     "energyUsage":20,
     "projectileType":"fu_genericBlankProjectile",
-    "projectileParameters":{ 
+    "projectileParameters":{
       "speed":0,
       "timeToLive":0.01,
       "knockback":10,
-      "bounces":0,    
+      "bounces":0,
       "statusEffects" : [ "bleedinglong", "electrified" ],
       "piercing" : true,
       "processing":"?hueshift=-60",
-      "periodicActions":[  
+      "periodicActions":[
         {
           "time":0,
           "loop" : true,
@@ -212,33 +212,33 @@
           "explosiveDamageAmount" : 3,
           "harvestLevel" : 99,
           "delaySteps" : 2
-        },       
-        {  
+        },
+        {
           "time":0,
           "action":"particle",
-          "specification":{  
+          "specification":{
             "type":"ember",
-            "light":[  
+            "light":[
               0,
               0,
               255
             ],
             "size":0.5,
-            "color":[  
+            "color":[
               0,
               0,
               180,
               50
             ],
-            "initialVelocity":[  
+            "initialVelocity":[
               0.0,
               10.0
             ],
-            "finalVelocity":[  
+            "finalVelocity":[
               0.0,
               -3.0
             ],
-            "approach":[  
+            "approach":[
               0.0,
               -1.0
             ],
@@ -247,12 +247,12 @@
             "destructionAction":"shrink",
             "destructionTime":0.2,
             "layer":"front",
-            "variance":{  
-              "initialVelocity":[  
+            "variance":{
+              "initialVelocity":[
                 0.0,
                 0.0
               ],
-              "position":[  
+              "position":[
                 2.2,
                 0.2
               ],
@@ -262,91 +262,91 @@
         }
       ],
 
-      "actionOnReap":[  
+      "actionOnReap":[
       {
-	    "action" : "projectile",
-	    "type" : "plasmatorpedo2",
-	    "fuzzAngle" : 0,
-	    "inheritDamageFactor" : 1.0,
-	    "angleAdjust" : 0,
-	    "config" : {
-	              "processing":"?hueshift=-60",
-		      "speed":60,
-		      "timeToLive":1.0,
-		      "knockback":10,
-		      "bounces":0,    
-		      "statusEffects" : [ "bleedinglong", "electrified" ],
-		      "piercing" : true,
-		      "periodicActions":[  
-			{
-			  "time":0,
-			  "loop" : true,
-			  "action" : "explosion",
-			  "foregroundRadius" : 2,
-			  "backgroundRadius" : 2,
-			  "explosiveDamageAmount" : 3,
-			  "harvestLevel" : 99,
-			  "delaySteps" : 2
-			},       
-			{  
-			  "time":0,
-			  "action":"particle",
-			  "specification":{  
-			    "type":"ember",
-			    "light":[  
-			      0,
-			      0,
-			      255
-			    ],
-			    "size":0.5,
-			    "color":[  
-			      0,
-			      0,
-			      180,
-			      50
-			    ],
-			    "initialVelocity":[  
-			      0.0,
-			      10.0
-			    ],
-			    "finalVelocity":[  
-			      0.0,
-			      -3.0
-			    ],
-			    "approach":[  
-			      0.0,
-			      -1.0
-			    ],
-			    "timeToLive":0.5,
-			    "fade":1,
-			    "destructionAction":"shrink",
-			    "destructionTime":0.2,
-			    "layer":"front",
-			    "variance":{  
-			      "initialVelocity":[  
-				0.0,
-				0.0
-			      ],
-			      "position":[  
-				2.2,
-				0.2
-			      ],
-			      "size":2
-			    }
-			  }
-			}
-		      ],
-		      "actionOnReap" : [
-			    {
-			      "action" : "config",
-			      "file" : "/projectiles/explosions/atomsmasherboom/atomsmasherboombasic.config"
-			    }		      
-		      ]
-	    }
-      },        
-        {  
+      "action" : "projectile",
+      "type" : "plasmatorpedo2",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 1.0,
+      "angleAdjust" : 0,
+      "config" : {
+                "processing":"?hueshift=-60",
+          "speed":60,
+          "timeToLive":1.0,
+          "knockback":10,
+          "bounces":0,
+          "statusEffects" : [ "bleedinglong", "electrified" ],
+          "piercing" : true,
+          "periodicActions":[
+      {
+        "time":0,
+        "loop" : true,
+        "action" : "explosion",
+        "foregroundRadius" : 2,
+        "backgroundRadius" : 2,
+        "explosiveDamageAmount" : 3,
+        "harvestLevel" : 99,
+        "delaySteps" : 2
+      },
+      {
+        "time":0,
+        "action":"particle",
+        "specification":{
+          "type":"ember",
+          "light":[
+            0,
+            0,
+            255
+          ],
+          "size":0.5,
+          "color":[
+            0,
+            0,
+            180,
+            50
+          ],
+          "initialVelocity":[
+            0.0,
+            10.0
+          ],
+          "finalVelocity":[
+            0.0,
+            -3.0
+          ],
+          "approach":[
+            0.0,
+            -1.0
+          ],
+          "timeToLive":0.5,
+          "fade":1,
+          "destructionAction":"shrink",
+          "destructionTime":0.2,
+          "layer":"front",
+          "variance":{
+            "initialVelocity":[
+        0.0,
+        0.0
+            ],
+            "position":[
+        2.2,
+        0.2
+            ],
+            "size":2
+          }
+        }
+      }
+          ],
+          "actionOnReap" : [
+          {
+            "action" : "config",
+            "file" : "/projectiles/explosions/atomsmasherboom/atomsmasherboombasic.config"
+          }
+          ]
+      }
+      },
+        {
           "action":"sound",
-          "options":[  
+          "options":[
             "/sfx/tools/chainsaw_rev_up.ogg"
           ]
         }

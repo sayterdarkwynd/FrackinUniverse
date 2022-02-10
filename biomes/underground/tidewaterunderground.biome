@@ -1,17 +1,17 @@
 {
   "name" : "tidewaterunderground",
   "friendlyName" : "Underground Tidewater",
-  
+
     "spawnProfile" : {
     "groups" : [
       {
         "select" : 2,
-        "pool" : [ 
-          [ 0.1111, "nautileech" ],     
+        "pool" : [
+          [ 0.1111, "nautileech" ],
           [ 0.1111, "lilodon" ],
-          [ 0.1111, "crabcano" ],        
+          [ 0.1111, "crabcano" ],
           [ 0.1111, "miasmop" ],
-          [ 0.1111, "pulpin" ],     
+          [ 0.1111, "pulpin" ],
           [ 0.1111, "snaggler" ],
           [ 0.1111, "leadlit" ]
         ]
@@ -30,7 +30,7 @@
       }
     ]
   },
-  
+
   "parallax" : "/parallax/underground/tidewaterunderground.parallax",
 
   "mainBlock" : "marestone",
@@ -51,12 +51,12 @@
       "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 
   "undergroundPlaceables" : {
-    "items" : [ 
+    "items" : [
       {
         "mode" : "background",
         "priority" : 1.0,
@@ -70,7 +70,7 @@
             "parameters" : {  "materials" : ["mud", "cobblestone", "bonematerial"]}
           }
         ]
-      },    
+      },
       {
         "mode" : "floor",
         "priority" : 1.0,
@@ -79,23 +79,23 @@
 
         "type" : "grass",
         "grasses" : [ "corals", "seaweed", "tidewatergrass" ]
-      },    
+      },
            {
              "mode" : "ceiling",
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:ffCommon",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
                    [0.50, "wildlumivineseed" ]
                  ],
                  "parameters" : { "startingStage" : 3 }
                }
              ]
-           },    
+           },
       {
         "mode" : "floor",
         "priority" : 0.0,
@@ -105,12 +105,12 @@
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ 
+            "pool" : [
             [0.5, "wildcoralcreepseed" ],
             [0.5, "wildcellpodsplant" ],
             [0.5, "wildgemglowseed" ],
             [0.5, "wildpiruseed" ],
-            [0.25, "wildcellpodsplant" ], 
+            [0.25, "wildcellpodsplant" ],
             [0.25, "wildkamaranpodsplant" ],
             [0.35, "wildnakatiseed" ]
             ],
@@ -133,7 +133,7 @@
             "parameters" : { }
           }
         ]
-      },      
+      },
       {
         "mode" : "floor",
         "priority" : 99.0,
@@ -142,8 +142,8 @@
 
         "type" : "microdungeon",
         "microdungeons" : [ "underground1amicrodungeons" ]
-      }             
-    
+      }
+
     ]
   },
 

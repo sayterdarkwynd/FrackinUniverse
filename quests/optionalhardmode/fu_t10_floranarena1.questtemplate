@@ -1,0 +1,34 @@
+{
+	"id" : "fu_t10_floranarena1",
+	"prerequisites" : [ "fu_t10_floran_mission2" ],
+	"title" : "A Darker Contest",
+	"text" : "Kevin went to an arena. Maybe to fight? Go there, kill things, and come back with energy signature. Be careful, this one feels...wrong. Really wrong.",
+	"completionText" : "No Kevin, but energy signature there. Fresher. Kinda. Mew...keep going. Beacons here.",
+	"moneyRange" : [0, 0],
+	"rewards" : [ [ [ "fu_t10_hylotl_mission2beacon", 1 ] ] ],
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/fuhardmodeinstance.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "questGiver"
+		},
+
+		"descriptions" : {
+			"enterInstance" : "Use the ^orange;Bronze Arena Beacon^reset;.",
+			"findGoal" : "Win the arena battle",
+			"turnIn" : "Return to ^orange;Khe^reset; at the ^orange;Science Outpost^reset;"
+		},
+
+		"warpAction" : "fuarena1t10",
+
+		"goalTrigger" : "proximity",
+		"proximityRange" : 20,
+
+		"goalEntityUid" : "arena1teleporter",
+		"indicateGoal" : false,
+		"trackGoalEntity" : false,
+
+		"turnInEntityUid" : "kheraeoutpost"
+	}
+}

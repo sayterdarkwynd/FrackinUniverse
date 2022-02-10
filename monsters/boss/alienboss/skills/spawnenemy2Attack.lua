@@ -96,7 +96,7 @@ function spawnenemy2Attack.update(dt, stateData)
       end
     --Wind down floating to the ground before leaving the state
     else
-      local toSpawn = world.distance(self.spawnPosition, mcontroller.position())
+      toSpawn = world.distance(self.spawnPosition, mcontroller.position())
       if stateData.winddownTimer == config.getParameter("spawnenemy2Attack.winddownTime") then
         animator.setAnimationState("movement", "winddown")
       end

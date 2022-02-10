@@ -1,34 +1,33 @@
 {
-  "id" : "start_basics4",
-  "prerequisites" : [ "start_basics3b" ],
-  "title" : "Homestead IV",
-  "text" : "I'm lookin' to acquire some ^orange;Silver^reset;, but I ain't no good in enclosed spaces. ^green;Rarer ores are more commonly found at depths below the surface^reset;. ^orange;1 Silver Bar^reset; should be plenty. You'll need to ^orange;Research^reset; into ^orange;Geology^reset; to learn how.",
-  "completionText" : "I kin finally make ^green;Clementine^reset; the ^orange;symbol of our love^reset; I always promised 'afore her tragic passing back in '72. Take this and my thanks, friend.",
-  "moneyRange" : [44, 55],
-  "rewards" : [ [ [ "coalore",100 ],[ "fuscienceresource",50 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "start_basics4",
+	"prerequisites" : [ "start_basics3b" ],
+	"title" : "Homestead IV",
+	"text" : "I'm lookin' to acquire some ^orange;Silver^reset;, but I ain't no good in enclosed spaces. ^green;Rarer ores are more commonly found at depths below the surface^reset;. ^orange;1 Silver Bar^reset; should be plenty. You'll need to ^orange;Research^reset; into ^orange;Geology^reset; to learn how.",
+	"completionText" : "I kin finally make ^green;Clementine^reset; the ^orange;symbol of our love^reset; I always promised 'afore her tragic passing back in '72. Take this and my thanks, friend.",
+	"moneyRange" : [44, 55],
+	"rewards" : [ [ [ "coalore",100 ],[ "fuscienceresource",50 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : true,  
+		"requireTurnIn" : true,
 
-    "turnInDescription" : "Craft a ^green;Silver Bar^reset; at a ^orange;Furnace^reset; and return to ^green;Welchie^reset;.",
+		"turnInDescription" : "Craft a ^green;Silver Bar^reset; at a ^orange;Furnace^reset; and return to ^green;Welchie^reset;.",
 
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "silverbar",
-        "count" : 1,
-        "consume" : true
-      }
-    ]
-  }
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "silverbar",
+				"count" : 1,
+				"consume" : true
+			}
+		]
+	}
 }

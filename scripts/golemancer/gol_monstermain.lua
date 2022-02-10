@@ -21,22 +21,27 @@ function update(dt)
 	self.tickEvoTimerAging = self.tickEvoTimerAging - dt
 	if self.tickEvoTimer <= 0 then
 		self.tickEvoTimer = self.tickEvoTime
-		self.position = mcontroller.position()
-		for _, v in ipairs(self.evolutions) do
-			local evolution = root.assetJson(v)
-			if consumeResources(evolution) == "allConsumed" then evolve(evolution) end
+		if not world.getProperty("ephemeral") then
+			self.position = mcontroller.position()
+			for _, v in ipairs(self.evolutions) do
+				local evolution = root.assetJson(v)
+				if consumeResources(evolution) == "allConsumed" then evolve(evolution) end
+			end
 		end
 	end
 	if self.tickEvoTimerAging <= 0 then
 		self.tickEvoTimerAging = self.baseEvoTime
-		self.position = mcontroller.position()
-		for _, v in ipairs(self.evolutions) do
-			local evolution = root.assetJson(v)
-			evolve(evolution)
+		if not world.getProperty("ephemeral") then
+			self.position = mcontroller.position()
+			for _, v in ipairs(self.evolutions) do
+				local evolution = root.assetJson(v)
+				evolve(evolution)
+			end
 		end
 	end
 end
 
+-- luacheck: ignore 121
 function require(s)
 	if s ~= "/monsters/monster.lua" then preGolemRequire(s) end
 end

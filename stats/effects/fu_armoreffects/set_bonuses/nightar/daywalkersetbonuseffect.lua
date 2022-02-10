@@ -1,4 +1,6 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+require "/stats/effects/fu_statusUtil.lua"
+
 setName="fu_daywalkerset"
 
 weaponBonus={
@@ -25,6 +27,9 @@ function init()
 	checkWeapons()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+
+	if not world.entityExists(entity.id()) then return end
+	getLight()
 end
 
 function update(dt)
@@ -34,7 +39,20 @@ function update(dt)
 
 		checkWeapons()
 	end
+	local daytime = daytimeCheck()
+	local underground = undergroundCheck()
+	local lightLevel = getLight()
+
+	if daytime and not underground and lightLevel > 50 then
+		if (self.species == "nightar") then
+		    effect.setStatModifierGroup(nightarDarkHunterEffects3, {{stat = "reducePenalty", amount = 0.7 }})
+		elseif (self.species == "shadow") then
+			effect.removeStatModifierGroup(nightarDarkHunterEffects)
+		end
+	end
 end
+
+
 
 function checkWeapons()
 	local weapons=weaponCheck({"longsword","rapier","katana","shortsword","dagger"})

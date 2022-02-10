@@ -3,18 +3,18 @@
   "friendlyName" : "Bog Caverns",
 
       "spawnProfile" : {
-    "groups" : [ 
+    "groups" : [
       {
         "select" : 3,
-        "pool" : [ 
-          [ 0.1111, "furatthing" ],     
-          [ 0.1111, "seedspawn" ],        
-          [ 0.1111, "snaunt" ],
-          [ 0.1111, "batong" ],     
-          [ 0.1111, "toumingo" ],
-          [ 0.1111, "quagmutt" ],
-          [ 0.1111, "fusnapper" ],
-	 	  [ 0.1111, "bobfae" ],
+        "pool" : [
+          [ 0.1, "furatthing" ],
+          [ 0.1, "seedspawn" ],
+          [ 0.1, "snaunt" ],
+          [ 0.1, "batong" ],
+          [ 0.03, "glitchtop" ],
+          [ 0.12, "quagmutt" ],
+          [ 0.1, "fusnapper" ],
+	 	      [ 0.15, "bobfae" ],
           [ 0.2, "pandorasboxhummingbug"]
         ]
       },
@@ -69,7 +69,7 @@
       "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 
@@ -90,17 +90,17 @@
             "parameters" : {  "materials" : ["mud", "cobblestone", "bonematerial"]}
           }
         ]
-      },    
+      },
            {
              "mode" : "ceiling",
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
               [0.50, "greenceilingspike1" ],
               [0.50, "greenceilingspike2" ],
               [0.50, "greenceilingspike3" ],
@@ -115,16 +115,16 @@
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
               [0.50, "greengroundspike1" ],
               [0.50, "greengroundspike2" ],
               [0.50, "greengroundspike3" ],
               [0.50, "greengroundspike4" ],
-              [0.50, "copperrock" ], 
+              [0.50, "copperrock" ],
               [0.50, "copperrocksmall" ],
               [0.50, "silverrock" ],
               [0.50, "silverrocksmall" ],
@@ -140,7 +140,7 @@
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
@@ -198,7 +198,7 @@
             "parameters" : { }
           }
         ]
-      },        
+      },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -247,7 +247,7 @@
 
         "type" : "microdungeon",
         "microdungeons" : [ "underground5amicrodungeons" ]
-      }               
+      }
     ]
   },
     "hueShiftOptions" : [0]

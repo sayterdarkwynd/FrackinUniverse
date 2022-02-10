@@ -12,12 +12,12 @@ function effectUtil.getSelfType()
 	return world.entityType(effectUtil.getSelf())
 end
 
-function effectUtil.effectOnSource(effect,duration,force)
-	local source=effect and effect.sourceEntity and effect.sourceEntity() or effectUtil.source or nil
-	if source then
-		return effectUtil.effectTarget(source,effect,duration)
+function effectUtil.effectOnSource(effect,duration,force,source)
+	local effectSource=effect and effect.sourceEntity and effect.sourceEntity() or effectUtil.source or nil
+	if effectSource then
+		return effectUtil.effectTarget(effectSource,effect,duration,source)
 	elseif force then
-		return effectUtil.effectSelf(effect,duration)
+		return effectUtil.effectSelf(effect,duration,source)
 	else
 		if not sourceWarning then
 			sb.logInfo("effectUtil: effectOnSource needs effectUtil.source to be set in init to function.")
@@ -73,7 +73,7 @@ function effectUtil.entityTypeName()
 	return npc and npc.npcType() or monster and monster.type or entity and entity.entityType()
 end
 
-function effectUtil.effectTypesInRange(effect,range,types,duration,teamType)
+function effectUtil.effectTypesInRange(effect,range,types,duration,teamType,source)
 	if type(effect)~="string" then
 		return 0
 	end
@@ -81,22 +81,21 @@ function effectUtil.effectTypesInRange(effect,range,types,duration,teamType)
 	local rVal=0
 	if effectUtil.getSelfType()=="player" then
 		local data={}
-		data.messageFunctionArgs={effect,range,types,duration,teamType}
+		data.messageFunctionArgs={effect,range,types,duration,teamType,source}
 		data.messenger=effectUtil.getSelf()
-		 world.spawnStagehand(pos,"effectUtilStarryPyHelper",{messageData=data})
+		world.spawnStagehand(pos,"effectUtilStarryPyHelper",{messageData=data})
 	else
 		local buffer=world.entityQuery(pos,range,{includedTypes=types or {"creature"}})
 		teamType=teamType or "all"
 
 		for _,id in pairs(buffer) do
 			if teamType == "all" then
-				if effectUtil.effectTarget(id,effect,duration) then
+				if effectUtil.effectTarget(id,effect,duration,source) then
 					rVal=rVal+1
 				end
 			else
 				local validTypes=entity and entity.entityType and {monster=true,npc=true,player=true,currentType=entity.entityType()}
 				local valid=validTypes and validTypes[validTypes["currentType"]] and (entity.isValidTarget and entity.isValidTarget(id))
-				--sb.logInfo("%s:%s",valid,validTypes)
 				local teamData={}
 				if valid==false then
 					teamData.type="friendly"
@@ -107,7 +106,7 @@ function effectUtil.effectTypesInRange(effect,range,types,duration,teamType)
 				end
 
 				if teamData.type==teamType then
-					if effectUtil.effectTarget(id,effect,duration) then
+					if effectUtil.effectTarget(id,effect,duration,source) then
 						rVal=rVal+1
 					end
 				end
@@ -173,40 +172,41 @@ function effectUtil.messageMechsInRange(effect,range,args)
 	return rVal
 end
 
-function effectUtil.effectAllInRange(effect,range,duration)
-	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration)
+--effectUtil.effectTypesInRange(effect,range,types,duration,teamType,source)
+function effectUtil.effectAllInRange(effect,range,duration,source)
+	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,nil,source)
 end
 
-function effectUtil.effectAllOfTeamInRange(effect,range,duration,team)
-	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,team)
+function effectUtil.effectAllOfTeamInRange(effect,range,duration,team,source)
+	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,team,source)
 end
 
-function effectUtil.effectAllEnemiesInRange(effect,range,duration)
-	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,"enemy")
+function effectUtil.effectAllEnemiesInRange(effect,range,duration,source)
+	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,"enemy",source)
 end
 
-function effectUtil.effectAllFriendliesInRange(effect,range,duration)
-	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,"friendly")
+function effectUtil.effectAllFriendliesInRange(effect,range,duration,source)
+	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,"friendly",source)
 end
 
-function effectUtil.effectNonPlayersInRange(effect,range,duration)
-	return effectUtil.effectTypesInRange(effect,range,{"npc","monster"},duration)
+function effectUtil.effectNonPlayersInRange(effect,range,duration,source)
+	return effectUtil.effectTypesInRange(effect,range,{"npc","monster"},nil,duration,source)
 end
 
-function effectUtil.effectPlayersInRange(effect,range,duration)
-	return effectUtil.effectTypesInRange(effect,range,{"player"},duration)
+function effectUtil.effectPlayersInRange(effect,range,duration,source)
+	return effectUtil.effectTypesInRange(effect,range,{"player"},duration,nil,source)
 end
 
-function effectUtil.effectSelf(effect,duration)
-	return effectUtil.effectTarget(effectUtil.getSelf(),effect,duration)
+function effectUtil.effectSelf(effect,duration,source)
+	return effectUtil.effectTarget(effectUtil.getSelf(),effect,duration,source)
 end
 
-function effectUtil.effectTarget(id,effect,duration)
+function effectUtil.effectTarget(id,effect,duration,source)
 	if world.entityExists(id) then
 		if not effect or effect=="" then
 			return false
 		else
-			world.sendEntityMessage(id,"applyStatusEffect",effect,duration,effectUtil.getSelf())
+			world.sendEntityMessage(id,"applyStatusEffect",effect,duration,source or effectUtil.getSelf())
 			return true
 		end
 	else
@@ -222,7 +222,7 @@ end
 
 function effectUtil.projectileTypesInRange(projtype,tilerange,types)
 	local targetlist = world.entityQuery(entity.position(),tilerange,{includedTypes=types})
-	for key, value in pairs(targetlist) do
+	for _, value in pairs(targetlist) do
 		world.spawnProjectile(projtype, world.entityPosition(value), entity.id())
 	end
 end
@@ -237,7 +237,7 @@ end
 
 function effectUtil.projectileTypesInRangeParams(projtype,tilerange,params,types)
 	local targetlist = world.entityQuery(entity.position(),tilerange,{includedTypes=types})
-	for key, value in pairs(targetlist) do
+	for _, value in pairs(targetlist) do
 		world.spawnProjectile(projtype, world.entityPosition(value), entity.id(),{0,0},false,params)
 	end
 end
@@ -252,7 +252,7 @@ end
 
 function effectUtil.projectileTypesInRectangle(projtype,entpos,xwidth,yheight,types)
 	local targetlist = world.entityQuery(entpos,{entpos[1]+xwidth, entpos[2]+yheight},{includedTypes=types})
-	for key, value in pairs(targetlist) do
+	for _, value in pairs(targetlist) do
 		world.spawnProjectile(projtype,world.entityPosition(value))
 	end
 end

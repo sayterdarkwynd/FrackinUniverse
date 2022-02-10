@@ -86,6 +86,7 @@ function init()
 		"industrialcentrifuge",
 		"ironcentrifuge",
 		"woodencentrifuge",
+		"precursorsmelter",
 		"isn_powdersifter",
 		"fu_woodensifter",
 		"fu_rockbreaker",
@@ -108,6 +109,7 @@ function init()
 		["industrialcentrifuge"] = true,
 		["ironcentrifuge"] = true,
 		["woodencentrifuge"] = true,
+		["precursorsmelter"] = true,
 		["isn_powdersifter"] = true,
 		["fu_woodensifter"] = true,
 		["fu_rockbreaker"] = true,
@@ -145,6 +147,8 @@ function init()
 		processObjects["ironcentrifuge"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
 	if found["woodencentrifuge"] then
 		processObjects["woodencentrifuge"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
+	if found["precursorsmelter"] then
+		processObjects["precursorsmelter"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
 	if found["isn_powdersifter"] then
 		processObjects["isn_powdersifter"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
 	if found["fu_woodensifter"] then
@@ -175,6 +179,7 @@ function init()
 		industrialcentrifuge  = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		ironcentrifuge        = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		woodencentrifuge      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		precursorsmelter      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		isn_powdersifter      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		fu_woodensifter       = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		electricfurnace       = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = electricFurnace },
@@ -248,20 +253,27 @@ function registerMaterial(mat, station)
 		end
 		-- saplings are special-cased
 		local sapling = mat == 'sapling'
-		if not sapling and not root.itemConfig(mat) then
-			materialsMissing[mat] = true
-			-- commented out the creation of warnings cause recipes exist for mods not always installed
-			-- sb.logInfo("Crafting Info Display found non-existent item '%s'", mat)
-			return
-		end
-		local data = root.itemConfig({ name = mat, data = { stemName = 'pineytree' } })
+		local data
 		if sapling then
+			data = root.itemConfig({ name = mat, data = { stemName = 'pineytree' } })
+
 			-- workaround: show something with trunk and leaf info
 			data.config.inventoryIcon = '/interface/scripted/fu_craftinfo/sapling.png'
-		elseif type(data.config.inventoryIcon) == 'table' then
-			-- handle multi-icon items by just using the first icon (broken, I know)
-			data.config.inventoryIcon = data.config.inventoryIcon[1].image
+		else
+			data = root.itemConfig(mat)
+			if not data then
+				materialsMissing[mat] = true
+				-- commented out the creation of warnings cause recipes exist for mods not always installed
+				-- sb.logInfo("Crafting Info Display found non-existent item '%s'", mat)
+				return
+			end
+
+			if type(data.config.inventoryIcon) == 'table' then
+				-- handle multi-icon items by just using the first icon (broken, I know)
+				data.config.inventoryIcon = data.config.inventoryIcon[1].image
+			end
 		end
+
 		materials[mat] = { stations = {}, id = mat, name = data.config.shortdescription, icon = rescale(canonicalise(data.config.inventoryIcon, data.directory), 16, 16) }
 		table.insert(materialsSorted, materials[mat])
 	end
@@ -331,7 +343,6 @@ function populateResultsList(itemIn, itemOut)
 	local y = spacing * 2 -- convenience for later subtraction
 	for _, item in ipairs(list) do
 		local parentSize = widget.getSize(item)
-		local parentPos = widget.getPosition(item)
 		local textHeight = widget.getSize(item .. '.text')[2]
 		local height = math.max(widget.getSize(item .. '.icon')[2], textHeight) + 2
 		y = y + height + spacing
@@ -339,7 +350,6 @@ function populateResultsList(itemIn, itemOut)
 		widget.setPosition(item .. '.text', { widget.getPosition(item .. '.text')[1], (height - textHeight) / 2 })
 		widget.setPosition(item .. '.direction', { widget.getPosition(item .. '.direction')[1], height - 1 })
 	end
-	local tableSize = widget.getSize(RECIPES)
 	widget.setSize(RECIPES, { widget.getSize(RECIPES)[1], y })
 	for _, item in ipairs(list) do
 		local size = widget.getSize(item)
@@ -513,7 +523,7 @@ function doLiquidInteraction(list, recipes, itemIn, itemOut, objectName)
 		end
 
 		if output then
-			for index, inputs in pairs(result) do
+			for _, inputs in pairs(result) do
 				addTextItem("<=", inputs,list)
 			end
 		end
@@ -527,7 +537,7 @@ function concatLiquid(list, resultquantity, sep)
 	local out = ""
 	local sep2 = ""
 
-	for item, counts in pairs(list) do
+	for item in pairs(list) do
 			if materials[item] then
 				if resultquantity then
 					local colour =  string.format("^#FF%02X00;", math.floor(resultquantity*80+70))
@@ -603,7 +613,7 @@ end
 
 function getTableSize(t)
     local count = 0
-    for _, __ in pairs(t) do
+    for _ in pairs(t) do
         count = count + 1
     end
     return count
@@ -763,14 +773,12 @@ function getNearbyStations()
 	end
 
 	local found = {}
-	local foundone = false
 	for _, id in pairs(nearby) do
 		local name = world.entityName(id)
 		-- local obj = processObjects[name]
 		-- if obj and obj.map then name = obj.map end -- this was an exception for roof extractors, they don't exist anymore
 		if recognisedObjectsKey[name] then --processObjects[name] -- why processobjects in here ??????
 			found[name] = true
-			foundone = true
 		end
 	end
 

@@ -1,6 +1,7 @@
 require "/scripts/behavior.lua"
 require "/scripts/pathing.lua"
 require "/scripts/util.lua"
+require "/scripts/rect.lua"
 require "/scripts/vec2.lua"
 require "/scripts/poly.lua"
 require "/scripts/drops.lua"
@@ -109,8 +110,6 @@ function update(dt)
   capturable.update(dt)
   self.damageTaken:update()
 
-
-
   if status.resourcePositive("stunned") then
     animator.setAnimationState("damage", "stunned")
     animator.setGlobalTag("hurt", "hurt")
@@ -146,21 +145,19 @@ function update(dt)
     -- ************** FU SPECIALS **********
     self.healthLevel = status.resource("health") / status.stat("maxHealth")
     self.randval = math.random(100)
-    spit={ power = 1, speed = 15, timeToLive = 0.2 }
-    bang={ power = 7, speed = 65, timeToLive = 1 }
+    spit={ power = 1, speed = 20, timeToLive = 0.24 }
+    bang={ power = 2, speed = 15 }
 
     specialCount1 = specialCount1 + 1
     specialCount2 = specialCount2 + 1
     if specialCount1 > 40 then
       if self.healthLevel < 0.75 and self.randval > 70 then
         self.suppressDamageTimer = config.getParameter("stunDamageSuppression", 0.5)
-        animator.setAnimationState("body", "fire")
         if math.random(5) == 1 then
           animator.playSound("attack")
         end
-       -- world.spawnProjectile("deaththrower",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),3},false,bang)
-       -- world.spawnProjectile("deaththrower",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),0},false,bang)
-        world.spawnProjectile("fireblastdragon",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),0},false,bang)
+        animator.setAnimationState("body", "fire")
+        world.spawnProjectile("megaFaunaScare",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),0},false,bang)
         specialCount1 = 0
       end
     end
@@ -183,7 +180,6 @@ function update(dt)
           world.spawnProjectile("shoggothchompexplosion3",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),0},false,spit)
           world.spawnProjectile("shoggothchompexplosion3",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),0},false,spit)
         end
-
         specialCount2 = 0
       end
     end
@@ -335,7 +331,7 @@ function overrideCollisionPoly()
   end
 end
 
-function setupTenant(...)
-  require("/scripts/tenant.lua")
-  tenant.setHome(...)
-end
+--function setupTenant(...)
+--  require("/scripts/tenant.lua")
+--  tenant.setHome(...)
+--end

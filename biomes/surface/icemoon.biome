@@ -1,10 +1,10 @@
 {
   "name" : "icemoon",
   "friendlyName" : "Frozen Moon",
-  "statusEffects" : [ "ffbiomecold2" ],
+  "statusEffects" : [ "ffbiomecold2", "biomeairless" ],
   "airless" : true,
   "breathable" : false,
-  
+
     "spawnProfile" : {
     "groups" : [
       {
@@ -14,11 +14,12 @@
           [ 0.1, "rimeling" ],
           [ 0.1, "wisper" ],
           [ 0.1, "wisper7" ],
-          [ 0.1, "cryopod" ],
-          [ 0.1, "frostlit"],
-          [ 0.111, "fusnowfennix" ]
+          [ 0.2, "cryopod" ],
+          [ 0.2, "frostlit"],
+          [ 0.1, "fusnowfennix" ],
+          [ 0.1, "glitchtop" ]
         ]
-      },    
+      },
       {
         "select" : 3,
         "pool" : [
@@ -150,8 +151,8 @@
       "nightLightColor" : [90, 90, 90]
     }
   ],
-  
-  
+
+
   "mainBlock" : "frozendirt",
   "subBlocks" : [ "frozenstone", "frozenwater", "iceblock1" ],
   "ores" : "ff_icemoonOres",
@@ -169,10 +170,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/Myst.ogg","/music/OTR.ogg","/music/depthsOfDespair.ogg","/music/frost.ogg","/music/GlacialHorizon.ogg","/music/viaAurora.ogg","/music/ultramarine.ogg","/music/scorian-flow.ogg", "/music/hizzaque.ogg","/music/shores_of_tranquility.ogg", "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/m54.ogg", "/music/nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/Myst.ogg","/music/OTR.ogg","/music/depthsOfDespair.ogg","/music/frost.ogg","/music/GlacialHorizon.ogg","/music/ViaAurora.ogg","/music/ultramarine.ogg","/music/scorian-flow.ogg", "/music/hizzaque.ogg","/music/shores_of_tranquility.ogg", "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/Srinagar.ogg","/music/OTR.ogg","/music/depthsOfDespair.ogg","/music/frost.ogg","/music/GlacialHorizon.ogg","/music/viaAurora.ogg","/music/ultramarine.ogg","/music/scorian-flow.ogg","/music/ambient_dark.ogg","/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/m54.ogg", "/music/nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/Srinagar.ogg","/music/OTR.ogg","/music/depthsOfDespair.ogg","/music/frost.ogg","/music/GlacialHorizon.ogg","/music/ViaAurora.ogg","/music/ultramarine.ogg","/music/scorian-flow.ogg","/music/ambient_dark.ogg","/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 
@@ -188,7 +189,7 @@
 
           "type" : "microdungeon",
           "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none", "ice" ]
-        },    
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -198,16 +199,16 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "icefloor1" ],
               [0.35, "icefloor2" ],
-              [0.35, "icefloor3" ], 
-              [0.35, "icefloor4" ]            
+              [0.35, "icefloor3" ],
+              [0.35, "icefloor4" ]
               ],
               "parameters" : { }
             }
           ]
-        },        
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -217,10 +218,10 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "icestalk" ],
               [0.35, "iceball_rock" ],
-              [0.35, "icespikeff" ], 
+              [0.35, "icespikeff" ],
               [0.35, "frozencritter1" ]
               ],
               "parameters" : { }
@@ -236,10 +237,10 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "snowdrift1" ],
               [0.35, "snowdrift2" ],
-              [0.35, "snowdrift3" ], 
+              [0.35, "snowdrift3" ],
               [0.35, "snowdrift4" ]
               ],
               "parameters" : { }
@@ -255,7 +256,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "plynth1" ],
               [0.35, "plynth2" ]
               ],
@@ -372,7 +373,7 @@
               "parameters" : { }
             }
           ]
-        },        
+        },
         {
           "mode" : "floor",
           "priority" : 2.0,
@@ -407,7 +408,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "plynth1" ],
               [0.35, "plynth2" ],
               [0.35, "monolith1" ],
@@ -421,7 +422,7 @@
             }
           ]
         }
-        
+
       ]
     },
     "undergroundPlaceables" : {
@@ -437,20 +438,20 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "icefloor1" ],
               [0.35, "icefloor2" ],
-              [0.35, "icefloor3" ], 
+              [0.35, "icefloor3" ],
               [0.35, "icefloor4" ],
               [0.35, "icepillar1" ],
               [0.35, "icepillar2" ],
-              [0.35, "icepillar3" ], 
-              [0.35, "icepillar4" ]              
+              [0.35, "icepillar3" ],
+              [0.35, "icepillar4" ]
               ],
               "parameters" : { }
             }
           ]
-        }, 
+        },
         {
           "mode" : "ceiling",
           "priority" : 1.0,
@@ -460,16 +461,16 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "iceceiling1" ],
               [0.35, "iceceiling2" ],
-              [0.35, "iceceiling3" ], 
-              [0.35, "iceceiling4" ]             
+              [0.35, "iceceiling3" ],
+              [0.35, "iceceiling4" ]
               ],
               "parameters" : { }
             }
           ]
-        },           
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -579,7 +580,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "plynth1" ],
               [0.35, "plynth2" ],
               [0.35, "monolith1" ],

@@ -1,0 +1,120 @@
+{
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "attack" : {
+          "states" : {
+            "special" : {
+              "frames" : 4,
+              "cycle" : 0.19,
+              "mode" : "transition",
+              "transition" : "idle"
+            }
+          }
+        }
+      },
+      "parts" : {
+        "specialswoosh" : {
+          "properties" : {
+            "transformationGroups" : ["weapon"],
+            "centered" : true,
+            "offset" : [-0.875, 0],
+            "zLevel" : 1
+          },
+
+          "partStates" : {
+            "attack" : {
+              "idle" : { },
+              "fire" : { },
+              "special" : {
+                "properties" : {
+                  "image" : "swoosh/uppercutswoosh.png:<frame>",
+                  "damageArea" : [ [-2.0, 0.0], [1.25, 1.0], [2.25, 0.5], [2.5, -0.5], [1.5, -1.5], [-0.5, -1.5] ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sounds" : {
+      "special" : [ "/sfx/melee/swing_broadsword.ogg" ]
+    }
+  },
+
+  "comboFinisher" : {
+    "name" : "Uppercut",
+    "type" : "uppercut",
+    "scripts" : ["/items/active/weapons/fist/combofinishers/uppercut.lua"],
+    "class" : "Uppercut",
+
+    "damageConfig" : {
+      "statusEffects" : [ ],
+      "baseDamage" : 6.0,
+      "damageSourceKind" : "fist",
+      "knockback" : [0, 45],
+      "timeoutGroup" : "primary",
+      "timeout" : 0.2
+    },
+
+    "freezeTime" : 0.2,
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 45,
+        "weaponRotationCenter" : [-1.0, 0.0],
+        "weaponOffset" : [-0.25, -0.575],
+
+        "allowRotate" : false,
+        "allowFlip" : true,
+
+        "frontArmFrame" : "run.2",
+        "backArmFrame" : "jump.3"
+      },
+      "windup" : {
+        "duration" : 0.1,
+        "armRotation" : 0,
+        "weaponRotation" : -90,
+        "weaponRotationCenter" : [-1.0, 0.0],
+        "weaponOffset" : [-0.25, -0.875],
+
+        "allowRotate" : false,
+        "allowFlip" : false,
+
+        "frontArmFrame" : "jump.2",
+        "backArmFrame" : "jump.1",
+        "velocity" : [0, 0]
+      },
+      "windup2" : {
+        "duration" : 0.1,
+        "armRotation" : 20,
+        "weaponRotation" : 25,
+        "weaponRotationCenter" : [-1.0, 0.0],
+        "weaponOffset" : [0.125, -0.375],
+
+        "allowRotate" : false,
+        "allowFlip" : false,
+
+        "frontArmFrame" : "run.1",
+        "backArmFrame" : "run.5",
+        "velocity" : [0, 0]
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : 50,
+        "weaponRotation" : 10,
+        "weaponRotationCenter" : [-1.0, 0.0],
+        "weaponOffset" : [0.25, -0.125],
+
+        "allowRotate" : false,
+        "allowFlip" : false,
+
+        "frontArmFrame" : "swim.3",
+        "backArmFrame" : "swim.3",
+
+        "velocity" : [0, 5]
+      }
+    }
+  }
+}

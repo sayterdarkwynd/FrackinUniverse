@@ -1,11 +1,11 @@
-	{
+  {
   "itemName" : "hytalisarmorhead",
   "price" : 575,
   "inventoryIcon" : "icons.png:head",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "uncommon",
-   "description" : "^orange;Set Bonuses^reset;: 
+  "rarity" : "legendary",
+   "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; ^cyan;Swim Boost 2^reset;
 ^yellow;^reset; +^green;35^reset;% Shield Stamina, Block, Shield Regen
 ^yellow;^reset; Sword and Shield: Damage x^green;1.2^reset;
@@ -13,7 +13,7 @@
   "shortdescription" : "Ultra-Mesh Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "melee" ],
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
@@ -41,7 +41,7 @@
       "stat" : "maxHealth",
       "amount" : 5
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "electricResistance",
       "amount" : 0.028572
@@ -52,6 +52,10 @@
     "ultrameshsetbonus",
     {
       "stat" : "fu_ultrameshset_head",
+      "amount" : 1
+    },
+    {
+      "stat" : "fu_cellularset_head",
       "amount" : 1
     }
   ],
@@ -96,5 +100,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

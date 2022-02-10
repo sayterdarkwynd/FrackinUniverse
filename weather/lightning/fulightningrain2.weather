@@ -4,10 +4,10 @@
 
    "particles" : [
       {
-  
+
         "density" : 0.05,
         "autoRotate" : true,
-  
+
         "particle" : {
           "type" : "textured",
           "image" : "/particles/rain/1.png",
@@ -25,7 +25,7 @@
       {
         "density" : 0.05,
         "autoRotate" : true,
-  
+
         "particle" : {
           "type" : "textured",
           "image" : "/particles/rain/2.png",
@@ -43,7 +43,7 @@
       {
         "density" : 0.05,
         "autoRotate" : true,
-  
+
         "particle" : {
           "type" : "textured",
           "image" : "/particles/rain/3.png",
@@ -57,10 +57,10 @@
           "collidesForeground" : true,
           "collidesLiquid" : true
         }
-      },     
+      },
 
  	{
- 
+
        "density" : 0.0025,
        "particle" : {
          "type" : "textured",
@@ -70,10 +70,10 @@
          "timeToLive" : 100,
          "collidesForeground" : true,
          "collidesLiquid" : true
-       }	  
+       }
      }
   ],
-  
+
   "projectiles" : [
     {
       "projectile" : "ffteslasmall",
@@ -85,7 +85,7 @@
 		    {
 		      "action" : "config",
 		      "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
-		    }        
+		    }
           ]
       },
       "velocity" : [0, -50],
@@ -100,33 +100,33 @@
 	      "timeToLive": 0,
 	      "knockback": 10,
 	      "speed" : 200,
-	      
+
 	      "statusEffects" : [ "electrified" ],
           "actionOnReap" : [
 		    {
 		      "action" : "config",
 		      "file" : "/projectiles/explosions/burstexplosion/electricburstexplosion.config"
-		    },          
+		    },
 		    {
 		      "action" : "config",
 		      "file" : "/projectiles/explosions/teslaboom/teslaboomnobreak.config"
-		    }, 
+		    },
 	    {
 	      "action" : "projectile",
 	      "type" : "firefinish",
 	      "fuzzAngle" : 0,
 	      "inheritDamageFactor" : 0,
 	      "angleAdjust" : 0
-	    }, 		    
+	    },
 	    {
 	      "action" : "projectile",
 	      "type" : "zeroenergylesser",
 	      "fuzzAngle" : 0,
 	      "inheritDamageFactor" : 0,
 	      "angleAdjust" : 0
-	    }          
+	    }
           ],
-                  
+
 		"actionOnTimeout": [
 		{
 		  "action": "projectile",
@@ -140,7 +140,7 @@
 			    "action": "projectile",
 			    "angle": 180,
 			    "angleAdjust": 0,
-			    "config": { 
+			    "config": {
 			      "knockback": 15,
 			      "statusEffects" : [ "electrified" ],
 			      "periodicActions": [
@@ -157,25 +157,25 @@
 					    {
 					      "action" : "config",
 					      "file" : "/projectiles/explosions/burstexplosion/electricburstexplosion.config"
-					    },          
+					    },
 					    {
 					      "action" : "config",
 					      "file" : "/projectiles/explosions/teslaboom/teslaboomnobreak.config"
-					    }, 
+					    },
 				    {
 				      "action" : "projectile",
 				      "type" : "firefinish",
 				      "fuzzAngle" : 0,
 				      "inheritDamageFactor" : 0,
 				      "angleAdjust" : 0
-				    }, 		    
+				    },
 				    {
 				      "action" : "projectile",
 				      "type" : "zeroenergylesser",
 				      "fuzzAngle" : 0,
 				      "inheritDamageFactor" : 0,
 				      "angleAdjust" : 0
-				    },				    
+				    },
 				      {
 					"action": "projectile",
 					"angle": -90,
@@ -187,25 +187,25 @@
 					    {
 					      "action" : "config",
 					      "file" : "/projectiles/explosions/burstexplosion/electricburstexplosion.config"
-					    },          
+					    },
 					    {
 					      "action" : "config",
 					      "file" : "/projectiles/explosions/teslaboom/teslaboomnobreak.config"
-					    }, 
+					    },
 					    {
 					      "action" : "projectile",
 					      "type" : "firefinish",
 					      "fuzzAngle" : 0,
 					      "inheritDamageFactor" : 0,
 					      "angleAdjust" : 0
-					    }, 		    
+					    },
 					    {
 					      "action" : "projectile",
 					      "type" : "zeroenergylesser",
 					      "fuzzAngle" : 0,
 					      "inheritDamageFactor" : 0,
 					      "angleAdjust" : 0
-					    },					  
+					    },
 					    {
 					      "action": "projectile",
 					      "angle": -90,
@@ -217,25 +217,25 @@
 						    {
 						      "action" : "config",
 						      "file" : "/projectiles/explosions/burstexplosion/electricburstexplosion.config"
-						    },          
+						    },
 						    {
 						      "action" : "config",
 						      "file" : "/projectiles/explosions/teslaboom/teslaboomnobreak.config"
-						    }, 
+						    },
 						    {
 						      "action" : "projectile",
 						      "type" : "firefinish",
 						      "fuzzAngle" : 0,
 						      "inheritDamageFactor" : 0,
 						      "angleAdjust" : 0
-						    }, 		    
+						    },
 						    {
 						      "action" : "projectile",
 						      "type" : "zeroenergylesser",
 						      "fuzzAngle" : 0,
 						      "inheritDamageFactor" : 0,
 						      "angleAdjust" : 0
-						    },						
+						    },
 						  {
 						    "action": "projectile",
 						    "inheritDamageFactor": 3,
@@ -816,7 +816,7 @@
       "spawnAboveRegion" : 20,
       "spawnHorizontalPad" : 10,
       "windAffectAmount" : 0.08
-    },    
+    },
     {
       "projectile" : "ffteslasmall2",
       "parameters" : {
@@ -827,21 +827,21 @@
 		    {
 		      "action" : "config",
 		      "file" : "/projectiles/explosions/burstexplosion/electricburstexplosion.config"
-		    }, 
+		    },
 	    {
 	      "action" : "projectile",
 	      "type" : "firefinish",
 	      "fuzzAngle" : 0,
 	      "inheritDamageFactor" : 0,
 	      "angleAdjust" : 0
-	    }, 		    
+	    },
 	    {
 	      "action" : "projectile",
 	      "type" : "zeroenergylesser2",
 	      "fuzzAngle" : 0,
 	      "inheritDamageFactor" : 0,
 	      "angleAdjust" : 0
-	    }          
+	    }
           ]
       },
       "velocity" : [0, -50],
@@ -871,21 +871,21 @@
 	    {
 	     "action" : "config",
 	     "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
-	    }, 
+	    },
 	    {
 	      "action" : "projectile",
 	      "type" : "firefinish",
 	      "fuzzAngle" : 0,
 	      "inheritDamageFactor" : 0,
 	      "angleAdjust" : 0
-	    }, 		    
+	    },
 	    {
 	      "action" : "projectile",
 	      "type" : "zeroenergylesser2",
 	      "fuzzAngle" : 0,
 	      "inheritDamageFactor" : 0,
 	      "angleAdjust" : 0
-	    }          
+	    }
           ]
       },
       "velocity" : [0, -80],
@@ -904,25 +904,25 @@
 		    {
 		      "action" : "config",
 		      "file" : "/projectiles/explosions/burstexplosion/electricburstexplosion.config"
-		    },          
+		    },
 		    {
 		      "action" : "config",
 		      "file" : "/projectiles/explosions/teslaboom/teslaboomnobreak.config"
-		    }, 
+		    },
 	    {
 	      "action" : "projectile",
 	      "type" : "firefinish",
 	      "fuzzAngle" : 0,
 	      "inheritDamageFactor" : 0,
 	      "angleAdjust" : 0
-	    }, 		    
+	    },
 	    {
 	      "action" : "projectile",
 	      "type" : "zeroenergylesser",
 	      "fuzzAngle" : 0,
 	      "inheritDamageFactor" : 0,
 	      "angleAdjust" : 0
-	    }          
+	    }
           ]
       },
       "velocity" : [0, -80],

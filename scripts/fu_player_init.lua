@@ -14,9 +14,25 @@ function init(...)
 		origInit(...)
 	end
 	didInit=true
+	idiotitem=root.itemConfig("idiotitem")
 	doIdiotCheck=true
 	sb.logInfo("----- FU player init -----")
-	ffunknownConfig=root.assetJson("/scripts/ffunknownconfig.config")
+	local wType=world.type()
+	if wType=="ffunknown" then
+		ffunknownConfig=root.assetJson("/scripts/ffunknownconfig.config")
+	elseif wType=="strangesea" then
+		ffunknownConfig=root.assetJson("/scripts/ffunknownconfig.config")
+		local terraConfig={root.assetJson("/terrestrial_worlds.config:regionTypes.strangesea"),root.assetJson("/terrestrial_worlds.config:regionTypes.strangeseafloor")}
+		for _,v in pairs(terraConfig) do
+			if strangeSeaOverrideCheck then break end
+			for _,v2 in pairs(v.oceanLiquid or {}) do
+				if v2~="alienjuice" then
+					strangeSeaOverrideCheck=true
+					break
+				end
+			end
+		end
+	end
 	message.setHandler("fu_key", function(_, _, requiredItem)
 		if player.hasItem(requiredItem) then
 			return true
@@ -37,7 +53,9 @@ function init(...)
 	message.setHandler("player.isAdmin",player.isAdmin)
 	message.setHandler("player.uniqueId",player.uniqueId)
 	message.setHandler("player.worldId",player.worldId)
+	message.setHandler("player.hasCompletedQuest",function (_,_,...) return player.hasCompletedQuest(...) end)
 	status.setStatusProperty("player.worldId",player.worldId())
+	status.setStatusProperty("player.ownShipWorldId",player.ownShipWorldId())
 	message.setHandler("player.availableTechs", player.availableTechs)
 	message.setHandler("player.enabledTechs", player.enabledTechs)
 	message.setHandler("player.shipUpgrades", player.shipUpgrades)
@@ -119,7 +137,7 @@ end
 function idiotCheck(dt)
 	if doIdiotCheck then
 		if world.entityType(entity.id()) == "player" then --can't send radio messages to nonexistent entities. this is the case when players are loading in.
-			local idiotitem=root.itemConfig("idiotitem") -- FR detection.
+			--local idiotitem=root.itemConfig("idiotitem") -- FR detection.
 			if idiotitem then
 				world.sendEntityMessage(entity.id(),"queueRadioMessage","fu_frdetectedmessage") -- tell them they're a grounded idiot.
 				if (not world.getProperty("ship.fuel")) then
@@ -140,9 +158,12 @@ function essentialCheck(dt)
 			local buffer=player.essentialItem(slot)
 			if buffer and buffer.count==0 then
 				if slot=="beamaxe" then
+					if not self.racial then
+						_,self.racial = pcall(function (f) return root.assetJson("/frackinraces.config").manipulators end)
+					end
 					swapMM()
 				else
-					local baseTool=origTool(slot)
+					local baseTool=buffer.parameters.originalMM or origTool(slot)
 					player.giveEssentialItem(slot,baseTool)
 				end
 			end
@@ -153,31 +174,41 @@ function essentialCheck(dt)
 	end
 end
 
+function randTilt(floored,remainder)
+	if remainder>0.0 then
+		floored=math.floor(floored)+(((math.random()>(1-remainder)) and 1) or 0)
+	end
+	return floored
+end
+
 function unknownCheck(dt)
 	if not ffunknownCheckTimer then
 		ffunknownCheckTimer=0.99
 	elseif ffunknownCheckTimer>=1.0 then
 		local ffunknownWorldProp=world.getProperty("ffunknownWorldProp")
-		if ffunknownConfig and world.type()=="ffunknown" and not playerIsInVehicle() then
+		local wType=world.type()
+		if ffunknownConfig and ((wType=="ffunknown") or (strangeSeaOverrideCheck and (wType=="strangesea"))) and not playerIsInVehicle() then
 			if not ffunknownWorldProp or (ffunknownWorldProp.version~=ffunknownConfig.version) then
 				ffunknownWorldProp={version=ffunknownConfig.version}
 				ffunknownWorldProp.effects={}
 
 				local threatLevel=world.threatLevel()
 				local leftoverThreat=threatLevel%1
-				if leftoverThreat>0.0 then
-					threatLevel=math.floor(threatLevel)+(((math.random()>(1-leftoverThreat)) and 1) or 0)
-				end
+				threatLevel=randTilt(threatLevel,leftoverThreat)
+
 				threatLevel=math.sqrt(threatLevel)
 				leftoverThreat=threatLevel%1
-				if leftoverThreat>0.0 then
-					threatLevel=math.floor(threatLevel)+(((math.random()>(1-leftoverThreat)) and 1) or 0)
-				end
+				threatLevel=randTilt(threatLevel,leftoverThreat)
+
+				threatLevel=threatLevel*(ffunknownConfig.modifier or 1.5)
+				leftoverThreat=threatLevel%1
+				threatLevel=randTilt(threatLevel,leftoverThreat)
 
 				local inc=0
 				local tempConfig=copy(ffunknownConfig.effectList)
-				while (inc<threatLevel) and (inc<10) do
+				while inc<threatLevel do
 					local key,value=chooseRandomPair(tempConfig)
+					if not key then break end
 					table.insert(ffunknownWorldProp.effects,value[math.random(#value)])
 					tempConfig[key]=nil
 					inc=inc+1
@@ -186,7 +217,7 @@ function unknownCheck(dt)
 				world.setProperty("ffunknownWorldProp",ffunknownWorldProp)
 			end
 			status.setPersistentEffects("ffunknownEffects",ffunknownWorldProp.effects)
-		elseif ffunknownWorldProp and world.type()~="ffunknown" then
+		elseif ffunknownWorldProp and not ((wType=="ffunknown") or (strangeSeaOverrideCheck and (wType=="strangesea"))) then
 			world.setProperty("ffunknownWorldProp",nil)
 			status.setPersistentEffects("ffunknownEffects",{})
 		else
@@ -221,6 +252,7 @@ function chooseRandomPair(tbl)
 
     -- Get the amount of possible values
     local max = #keys
+	if max==0 then return end
     local number = math.random(1, max)
     local selectedKey = keys[number]
 
@@ -235,7 +267,7 @@ function uninit(...)
 		if threatLevel < 1 then
 		  threatLevel = 1
 		end
-		for i = 1, untieredLootboxes do
+		for _ = 1, untieredLootboxes do
 			player.consumeItem({name = "fu_lootbox", parameters = {}}, true, true)
 			player.giveItem({name = "fu_lootbox", parameters = {level = threatLevel}})
 		end
@@ -243,7 +275,7 @@ function uninit(...)
 	if origUninit then
 		origUninit(...)
 	end
-	
+
 	if fuFoodTrackerHandler then
 		status.setStatusProperty("fuFoodTrackerHandler",0)
 	end

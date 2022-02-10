@@ -49,18 +49,18 @@
   ],
 
   "maxImmersion" : 0.125,
-  
+
   "animation" : "/scripts/fu_farmableobject.animation",
 
   "animationParts" : {
     "base" : "fu_scriptedfarmableexample.png"
   },
-  
+
   "scripts" : [ "/scripts/fu_farmableobject.lua" ],
   "scriptDelta" : 60,
-  
+
   "scriptedFarmable" : true,		//So that scripts can know that this object is a scripted farmable
-  
+
   "breakDropPool" : "empty",		//To fix an issue where it would drop the seed when it shouldn't if you harvest a non-perennial crop
   "dropSeed" : true					//If set to false, makes it so that the seed won't drop when broken, if set to a string, makes the crop drop that item when broken, can be removed if set to true
 }

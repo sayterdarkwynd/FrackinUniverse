@@ -43,7 +43,7 @@ function update(dt)
     end
 
     local combinedMovement = { 0, 0 }
-    for i, movementComponent in ipairs(movements) do
+    for _, movementComponent in ipairs(movements) do
       local movement, weight = table.unpack(movementComponent)
       combinedMovement = vec2.add(combinedMovement, vec2.mul(movement, weight))
     end

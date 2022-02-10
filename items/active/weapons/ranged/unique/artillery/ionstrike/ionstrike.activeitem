@@ -3,7 +3,7 @@
   "level" : 4,
   "price" : 1500,
   "maxStack" : 1,
-  "rarity" : "rare",
+  "rarity" : "uncommon",
   "description" : "A brutal salvo of energy blasts.
 ^cyan;Counts as Rocket or Energy^reset;",
   "shortdescription" : "Orbital Strike",
@@ -44,7 +44,7 @@
 
   "critChance" : 10,
   "critBonus" : 20,
-  
+
   "primaryAbility" : {
     "stances" : {
       "idle" : {
@@ -74,7 +74,7 @@
         "allowFlip" : false
       }
     },
-    
+
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
@@ -95,24 +95,24 @@
       "timeToLive":3,
       "power":5.0,
       "knockback":0,
-      "actionOnReap":[  
-        {  
+      "actionOnReap":[
+        {
           "action":"sound",
-          "options":[  
+          "options":[
             "/sfx/interface/nav_select.ogg"
           ],
           "time":0.1,
           "repeat":false
         },
-        {  
+        {
           "time":2.0,
           "angle":90,
           "action":"projectile",
           "offset":[0,7],
           "type":"energyfist",
           "piercing":true,
-          "config":{  
-            "damageTeam":{  
+          "config":{
+            "damageTeam":{
               "type":"friendly"
             },
             "damageKind":"noDamage",
@@ -123,283 +123,283 @@
             "power":1.0,
             "knockback":0,
             "periodicActions" : [
-		      {  
-		        "time" : 0.08,
-		        "offset":[-1,5],
-			"angle":-90,
-			"action":"projectile",
-			"type":"energyassault",
-			"config":{  
-			  "actionOnReap" : [
-				    {
-				      "action" : "config",
-				      "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
-				    }                 
-			  ],
-			  "statusEffects":[],
-			  "speed":100,
-			  "timeToLive":1.6,
-			  "power":2.0,
-			  "knockback":0
-			}
-		      },		      
-		      {  
-		        "time" : 0.1,
-		        "offset":[1,-2],
-			"angle":-90,
-			"action":"projectile",
-			"type":"energyassault",
-			"config":{  
-			  "actionOnReap" : [
-				    {
-				      "action" : "config",
-				      "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
-				    }                     
-			  ],
-			  "statusEffects":[],
-			  "speed":100,
-			  "timeToLive":1.6,
-			  "power":2.0,
-			  "knockback":0
-			}
-		      },            
-		      {  
-		        "time" : 0.08,
-		        "offset":[-2,5],
-			"angle":-90,
-			"action":"projectile",
-			"type":"energyassault",
-			"config":{  
-			  "actionOnReap" : [
-				    {
-				      "action" : "config",
-				      "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
-				    }                 
-			  ],
-			  "statusEffects":[],
-			  "speed":100,
-			  "timeToLive":1.6,
-			  "power":2.0,
-			  "knockback":0
-			}
-		      },		      
-		      {  
-		        "time" : 0.1,
-		        "offset":[2,-2],
-			"angle":-90,
-			"action":"projectile",
-			"type":"energyassault",
-			"config":{  
-			  "actionOnReap" : [
-				    {
-				      "action" : "config",
-				      "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
-				    }                     
-			  ],
-			  "statusEffects":[],
-			  "speed":100,
-			  "timeToLive":1.6,
-			  "power":2.0,
-			  "knockback":0
-			}
-		      },            
-		      {  
-		        "time" : 0.08,
-		        "offset":[-4,5],
-			"angle":-90,
-			"action":"projectile",
-			"type":"energyassault",
-			"config":{  
-			  "actionOnReap" : [
-				    {
-				      "action" : "config",
-				      "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
-				    }                 
-			  ],
-			  "statusEffects":[],
-			  "speed":100,
-			  "timeToLive":1.6,
-			  "power":2.0,
-			  "knockback":0
-			}
-		      },		      
-		      {  
-		        "time" : 0.1,
-		        "offset":[4,-2],
-			"angle":-90,
-			"action":"projectile",
-			"type":"energyassault",
-			"config":{  
-			  "actionOnReap" : [
-				    {
-				      "action" : "config",
-				      "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
-				    }                     
-			  ],
-			  "statusEffects":[],
-			  "speed":100,
-			  "timeToLive":1.6,
-			  "power":2.0,
-			  "knockback":0
-			}
-		      },  		      
-		      {  
-		        "time" : 0.08,
-		        "offset":[5,-4],
-			"angle":-85,
-			"action":"projectile",
-			"type":"energyassault",
-			"config":{  
-			  "actionOnReap" : [
-				    {
-				      "action" : "config",
-				      "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
-				    }                    
-			  ],
-			  "statusEffects":[],
-			  "speed":100,
-			  "timeToLive":1.6,
-			  "power":2.0,
-			  "knockback":0
-			}
-		      },   		      
-		      {  
-		        "time" : 0.1,
-		        "offset":[-5,12],
-			"angle":-95,
-			"action":"projectile",
-			"type":"energyassault",
-			"config":{  
-			  "actionOnReap" : [
-				    {
-				      "action" : "config",
-				      "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
-				    }                 
-			  ],
-			  "statusEffects":[],
-			  "speed":100,
-			  "timeToLive":1.6,
-			  "power":2.0,
-			  "knockback":0
-			}
-		      },             
-		      {  
-		        "time" : 0.08,
-		        "offset":[-3,5],
-			"angle":-88,
-			"action":"projectile",
-			"type":"energyassault",
-			"config":{  
-			  "actionOnReap" : [
-				    {
-				      "action" : "config",
-				      "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
-				    }                 
-			  ],
-			  "statusEffects":[],
-			  "speed":100,
-			  "timeToLive":1.6,
-			  "power":2.0,
-			  "knockback":0
-			}
-		      },		      
-		      {  
-		        "time" : 0.08,
-		        "offset":[3,-2],
-			"angle":-92,
-			"action":"projectile",
-			"type":"energyassault",
-			"config":{  
-			  "actionOnReap" : [
-				    {
-				      "action" : "config",
-				      "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
-				    }                     
-			  ],
-			  "statusEffects":[],
-			  "speed":100,
-			  "timeToLive":1.6,
-			  "power":2.0,
-			  "knockback":0
-			}
-		      },  		      
-		      {  
-		        "time" : 0.08,
-		        "offset":[7,-4],
-			"angle":-85,
-			"action":"projectile",
-			"type":"energyassault",
-			"config":{  
-			  "actionOnReap" : [
-				    {
-				      "action" : "config",
-				      "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
-				    }                    
-			  ],
-			  "statusEffects":[],
-			  "speed":100,
-			  "timeToLive":1.6,
-			  "power":2.0,
-			  "knockback":0
-			}
-		      },  
-		      {  
-		        "time" : 0.1,
-			"angle":-90,
-			"action":"projectile",
-			"type":"energyassault",
-			"config":{  
-			  "actionOnReap" : [
-				    {
-				      "action" : "config",
-				      "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
-				    }                     
-			  ],
-			  "statusEffects":[],
-			  "speed":100,
-			  "timeToLive":1.6,
-			  "power":2.0,
-			  "knockback":0
-			}
-		      },  		      
-		      {  
-		        "time" : 0.08,
-		        "offset":[-7,12],
-			"angle":-95,
-			"action":"projectile",
-			"type":"energyassault",
-			"config":{  
-			  "actionOnReap" : [
-				    {
-				      "action" : "config",
-				      "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
-				    }                 
-			  ],
-			  "statusEffects":[],
-			  "speed":100,
-			  "timeToLive":1.6,
-			  "power":2.0,
-			  "knockback":0
-			}
-		      }              
+          {
+            "time" : 0.08,
+            "offset":[-1,5],
+      "angle":-90,
+      "action":"projectile",
+      "type":"energyassault",
+      "config":{
+        "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
+            }
+        ],
+        "statusEffects":[],
+        "speed":100,
+        "timeToLive":1.6,
+        "power":2.0,
+        "knockback":0
+      }
+          },
+          {
+            "time" : 0.1,
+            "offset":[1,-2],
+      "angle":-90,
+      "action":"projectile",
+      "type":"energyassault",
+      "config":{
+        "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
+            }
+        ],
+        "statusEffects":[],
+        "speed":100,
+        "timeToLive":1.6,
+        "power":2.0,
+        "knockback":0
+      }
+          },
+          {
+            "time" : 0.08,
+            "offset":[-2,5],
+      "angle":-90,
+      "action":"projectile",
+      "type":"energyassault",
+      "config":{
+        "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
+            }
+        ],
+        "statusEffects":[],
+        "speed":100,
+        "timeToLive":1.6,
+        "power":2.0,
+        "knockback":0
+      }
+          },
+          {
+            "time" : 0.1,
+            "offset":[2,-2],
+      "angle":-90,
+      "action":"projectile",
+      "type":"energyassault",
+      "config":{
+        "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
+            }
+        ],
+        "statusEffects":[],
+        "speed":100,
+        "timeToLive":1.6,
+        "power":2.0,
+        "knockback":0
+      }
+          },
+          {
+            "time" : 0.08,
+            "offset":[-4,5],
+      "angle":-90,
+      "action":"projectile",
+      "type":"energyassault",
+      "config":{
+        "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
+            }
+        ],
+        "statusEffects":[],
+        "speed":100,
+        "timeToLive":1.6,
+        "power":2.0,
+        "knockback":0
+      }
+          },
+          {
+            "time" : 0.1,
+            "offset":[4,-2],
+      "angle":-90,
+      "action":"projectile",
+      "type":"energyassault",
+      "config":{
+        "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
+            }
+        ],
+        "statusEffects":[],
+        "speed":100,
+        "timeToLive":1.6,
+        "power":2.0,
+        "knockback":0
+      }
+          },
+          {
+            "time" : 0.08,
+            "offset":[5,-4],
+      "angle":-85,
+      "action":"projectile",
+      "type":"energyassault",
+      "config":{
+        "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
+            }
+        ],
+        "statusEffects":[],
+        "speed":100,
+        "timeToLive":1.6,
+        "power":2.0,
+        "knockback":0
+      }
+          },
+          {
+            "time" : 0.1,
+            "offset":[-5,12],
+      "angle":-95,
+      "action":"projectile",
+      "type":"energyassault",
+      "config":{
+        "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
+            }
+        ],
+        "statusEffects":[],
+        "speed":100,
+        "timeToLive":1.6,
+        "power":2.0,
+        "knockback":0
+      }
+          },
+          {
+            "time" : 0.08,
+            "offset":[-3,5],
+      "angle":-88,
+      "action":"projectile",
+      "type":"energyassault",
+      "config":{
+        "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
+            }
+        ],
+        "statusEffects":[],
+        "speed":100,
+        "timeToLive":1.6,
+        "power":2.0,
+        "knockback":0
+      }
+          },
+          {
+            "time" : 0.08,
+            "offset":[3,-2],
+      "angle":-92,
+      "action":"projectile",
+      "type":"energyassault",
+      "config":{
+        "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
+            }
+        ],
+        "statusEffects":[],
+        "speed":100,
+        "timeToLive":1.6,
+        "power":2.0,
+        "knockback":0
+      }
+          },
+          {
+            "time" : 0.08,
+            "offset":[7,-4],
+      "angle":-85,
+      "action":"projectile",
+      "type":"energyassault",
+      "config":{
+        "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
+            }
+        ],
+        "statusEffects":[],
+        "speed":100,
+        "timeToLive":1.6,
+        "power":2.0,
+        "knockback":0
+      }
+          },
+          {
+            "time" : 0.1,
+      "angle":-90,
+      "action":"projectile",
+      "type":"energyassault",
+      "config":{
+        "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
+            }
+        ],
+        "statusEffects":[],
+        "speed":100,
+        "timeToLive":1.6,
+        "power":2.0,
+        "knockback":0
+      }
+          },
+          {
+            "time" : 0.08,
+            "offset":[-7,12],
+      "angle":-95,
+      "action":"projectile",
+      "type":"energyassault",
+      "config":{
+        "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/densiniumboom/densiniumboom.config"
+            }
+        ],
+        "statusEffects":[],
+        "speed":100,
+        "timeToLive":1.6,
+        "power":2.0,
+        "knockback":0
+      }
+          }
             ]
           }
         },
-        {  
+        {
           "time":0.0,
           "angle":0,
           "action":"projectile",
           "type":"targetexplosion",
-          "config":{  
-            "statusEffects":[  
+          "config":{
+            "statusEffects":[
 
             ],
             "processing":"?hueshift=80",
-            "periodicActions":[  
+            "periodicActions":[
 
             ],
             "piercing":true,
-            "damageTeam":{  
+            "damageTeam":{
               "type":"enemy"
             },
             "damageKind":"noDamage",
@@ -407,7 +407,7 @@
             "timeToLive":0.8,
             "power":0.0,
             "knockback":0,
-            "actionOnReap":[  
+            "actionOnReap":[
 
             ]
           }

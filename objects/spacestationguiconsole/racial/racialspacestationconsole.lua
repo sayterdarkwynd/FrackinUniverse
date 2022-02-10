@@ -53,7 +53,7 @@ function PrintTable(tbl, depth)
     for k, v in pairs(tbl) do
         local str = ""
 
-        for i = 1, spaces do
+        for _ = 1, spaces do
             str = str.." "
         end
 

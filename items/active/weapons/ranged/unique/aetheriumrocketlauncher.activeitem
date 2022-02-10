@@ -7,7 +7,7 @@
   "description" : "Shatteringly powerful homing missile swarm.",
   "shortdescription" : "Aetherium Rocketlauncher",
   "level" : 7,
-  "tooltipKind" : "gun2",
+  "tooltipKind" : "gun2aetherium",
   "category" : "rocketLauncher",
   "itemTags" : ["weapon","ranged","rocketlauncher","upgradeableWeapon", "upgradeableWeapon","aetherium","cosmic","explosive"],
   "twoHanded" : true,
@@ -69,10 +69,10 @@
     "fireType" : "auto",
 
     "projectileType" : "aethermissile",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 40,
       "knockback" : 8
-    },    
+    },
 
     "stances" : {
       "idle" : {
@@ -119,7 +119,7 @@
           "action" : "projectile",
           "type" : "pushzone",
           "config" : { "timeToLive": 4}
-        },        
+        },
         {
           "action" : "projectile",
           "type" : "pushzone",
@@ -132,13 +132,13 @@
         }
       ],
       "statusEffects" : [ "stun" ]
-      
-      
+
+
     }
   },
-  
+
   "critChance" : 4,
   "critBonus" : 2,
-  
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

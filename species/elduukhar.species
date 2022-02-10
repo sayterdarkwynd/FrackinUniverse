@@ -9,10 +9,10 @@
  ^orange;Diet^reset;: Can eat almost anything
 
 ^orange;Perks^reset;:
-  Defense +^green;5^reset;. Max Food x^green;1.3^reset;
-  When at 50% Health, emit slowing ice clouds.
-  ^green;Resist^reset;: +^green;25^reset;% Ice, +^green;20^reset;% Physical
-  Tech: ^green;Crystal Breath, Elduukhar Flight^reset;
+  Max Health x^green;1.05^reset;, Fall Damage x^green;0.75^reset;
+  ^green;Resist^reset;: +^cyan;15^reset;% Fire & Ice, +^cyan;5^reset;% Physical,+^cyan;4^reset;% Shadow
+  ^cyan;When at 50% Health, emit slowing ice clouds.^reset;
+  Tech: ^green;Crystal Breath^reset;, ^green;Elduukhar Flight^reset;
 
 ^orange;Environment^reset;:
   ^green;Aether Sea, Crystal, Chromatic, Red Desert^reset; biomes: Health x^green;1.25^reset; and +^green;10^reset;% Crit Damage.
@@ -21,11 +21,11 @@
 
 ^orange;Weapons^reset;:
   Crystal / Lunari: +^green;12^reset;% Max Health & Defense
-  Whip, Chakram, Boomerang : Energy & Damage x^green;1.12^reset;
 
 ^red;Weaknesses^reset;:
+  ^red;High Metabolism^reset;: +^red;15^reset;% hunger rate
   ^red;High Food Cost^reset; for Crystal Breath attack and Flight.
-  ^red;Resist^reset;: -^red;20^reset;% Electric, -^red;20^reset;% Poison, -^red;10^reset;% Shadow"
+  ^red;Resist^reset;: -^red;20^reset;% Poison, -^red;10^reset;% Electric"
   },
 
   "nameGen" : [ "/species/elduukharmalenamegen.config:names", "/species/elduukharfemalenamegen.config:names" ],
@@ -35,57 +35,56 @@
   "effectDirectives" : "?replace=FEFFFFFF=EEFFBAFF?replace=9bd4ffFF=AEDEBFFF?replace=31a6ffFF=67BFA6FF",
   "defaultBlueprints" : {
     "tier1" : [
-
       { "item" : "flagelduukhar" },
       { "item" : "spawnerelduukhar" },
 
       { "item" : "aviantier1head" },
       { "item" : "aviantier1chest" },
       { "item" : "aviantier1pants" },
-	  { "item" : "elduukhartier1shortsword" },
+      { "item" : "elduukhartier1shortsword" },
       { "item" : "elduukhartier1broadsword" },
       { "item" : "aviantier2head" },
       { "item" : "aviantier2chest" },
       { "item" : "aviantier2pants" },
-	  { "item" : "elduukhartier2shortsword" },
+      { "item" : "elduukhartier2shortsword" },
       { "item" : "elduukhartier2broadsword" },
       { "item" : "aviantier3head" },
       { "item" : "aviantier3chest" },
       { "item" : "aviantier3pants" },
-	  { "item" : "elduukhartier3shortsword" },
+      { "item" : "elduukhartier3shortsword" },
       { "item" : "elduukhartier3broadsword" },
       { "item" : "aviantier4head" },
       { "item" : "aviantier4chest" },
       { "item" : "aviantier4pants" },
-	  { "item" : "elduukhartier4shortsword" },
+      { "item" : "elduukhartier4shortsword" },
       { "item" : "elduukhartier4broadsword" },
 
       { "item" : "aviantier5ahead" },
       { "item" : "aviantier5achest" },
       { "item" : "aviantier5apants" },
-	  { "item" : "elduukhartier5shortsword" },
+      { "item" : "elduukhartier5shortsword" },
       { "item" : "elduukhartier5broadsword" },
       { "item" : "aviantier6ahead" },
       { "item" : "aviantier6achest" },
       { "item" : "aviantier6apants" },
-	  { "item" : "elduukhartier6shortsword" },
+      { "item" : "elduukhartier6shortsword" },
       { "item" : "elduukhartier6broadsword" },
 
       { "item" : "aviantier5mhead" },
       { "item" : "aviantier5mchest" },
       { "item" : "aviantier5mpants" },
-	  { "item" : "elduukhartier7shortsword" },
+      { "item" : "elduukhartier7shortsword" },
       { "item" : "elduukhartier7broadsword" },
       { "item" : "aviantier6mhead" },
       { "item" : "aviantier6mchest" },
       { "item" : "aviantier6mpants" },
-	  { "item" : "elduukhartier8shortsword" },
+      { "item" : "elduukhartier8shortsword" },
       { "item" : "elduukhartier8broadsword" },
 
       { "item" : "aviantier5shead" },
       { "item" : "aviantier5schest" },
       { "item" : "aviantier5spants" },
-	  { "item" : "elduukhartier9shortsword" },
+      { "item" : "elduukhartier9shortsword" },
       { "item" : "elduukhartier9broadsword" },
       { "item" : "aviantier6shead" },
       { "item" : "aviantier6schest" },
@@ -93,14 +92,15 @@
 
       { "item" : "elduuchest1" },
       { "item" : "elduuchest2" },
-	  { "item" : "avianstoragelocker" },
+      { "item" : "avianstoragelocker" },
       { "item" : "avianshipdoor" },
       { "item" : "avianshiphatch" },
+      { "item" : "fu_elduukharcrewdeed" },
 
       { "item" : "inviselduuchest" },
-	  { "item" : "inviselduuhead" },
-	  { "item" : "inviselduupants" },
-	  { "item" : "avianadventurershirt" },
+      { "item" : "inviselduuhead" },
+      { "item" : "inviselduupants" },
+      { "item" : "avianadventurershirt" },
       { "item" : "avianadventurerpants" },
       { "item" : "aviancommonershirt" },
       { "item" : "aviancommonerlegs" },

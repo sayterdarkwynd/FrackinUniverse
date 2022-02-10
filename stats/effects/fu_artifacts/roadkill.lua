@@ -7,7 +7,6 @@ function init()
 	script.setUpdateDelta(60)
 end
 
-
 function update(dt)
 	self.damageListener:update()
 	if self.damageCounter >= status.resourceMax("health") then
@@ -20,15 +19,12 @@ function update(dt)
 end
 
 function damageTaken(notifications)
-	local totalDamage = 0
 	for _, notification in pairs(notifications) do
 		if notification.hitType == "Hit" then
 			self.damageCounter=self.damageCounter+notification.damageDealt
 		end
 	end
 end
-
-
 
 function trigger()
 	world.spawnMonster("fughostlostcat",entity.position())

@@ -18,20 +18,20 @@
     "electricbow" : "trictusHunting",
     "cosmicbow" : "trictusHunting",
     "radioactivebow" : "trictusHunting",
-    "shadowbow" : "trictusHunting"     
+    "shadowbow" : "trictusHunting"
     }
-  ], 
+  ],
 
   "baseParameters" : {
-  
+
     "colorSwap":{
-    "1b4c2a":"321b4c", 
-    "48832f":"2f3a83", 
+    "1b4c2a":"321b4c",
+    "48832f":"2f3a83",
     "629a4b" : "4b559a",
-    "9bba3d":"3d86ba", 
+    "9bba3d":"3d86ba",
     "d1e160":"60bbe1"
     },
-    
+
     "scripts" : [
       "/monsters/monster.lua"
     ],
@@ -52,7 +52,7 @@
 
       "fleeActions" : [],
 
-      "hostileActions" : [      
+      "hostileActions" : [
         {
           "name" : "action-charge",
           "cooldown" : 0.0,
@@ -74,8 +74,8 @@
           }
         }
       ],
-      
-      "damageTakenActions" : [     
+
+      "damageTakenActions" : [
 	{
          "name":"action-projectile",
          "cooldown" : 2,
@@ -87,10 +87,10 @@
           "aimDirection" : [-0.4,-1],
           "aimAtTarget" : false
          }
-        }      
+        }
       ],
-      
-      "periodicActions" : [      
+
+      "periodicActions" : [
         {
           "name" : "action-invulnerable",
           "cooldown" : [10, 20],
@@ -103,9 +103,9 @@
             "invulnerableState" : "windup",
             "invulnerableTime" : 0.25
           }
-        }         
+        }
       ],
-      
+
       "approachActions" : [
         {
           "name" : "approach-teleport",
@@ -116,9 +116,9 @@
 	    "teleportMinDistance": 15,
 	    "targetXDelta": 15,
 	    "groundMinHeight": -10,
-	    "groundMaxHeight": 10               
+	    "groundMaxHeight": 10
           }
-        }       
+        }
       ],
 
       "followActions" : [
@@ -131,25 +131,25 @@
 	    "teleportMinDistance": 15,
 	    "targetXDelta": 15,
 	    "groundMinHeight": -10,
-	    "groundMaxHeight": 10               
+	    "groundMaxHeight": 10
           }
         }
       ],
-      
+
       "invulnerableActions" : [
         {
-          "name" : "action-statuseffect", 
+          "name" : "action-statuseffect",
           "cooldown" : 5,
           "parameters" : {
           "effect" : "novax10",
           "duration" : 10
           }
-        }      
+        }
       ],
-      
+
       "wanderActions" : [],
-      
-      "concurrentHostileActions" : [       
+
+      "concurrentHostileActions" : [
 	    {
 	      "name" : "action-fire",
 	      "cooldown" : 8,
@@ -176,8 +176,8 @@
 		"winddownState" : "winddown",
 		"winddownTime" : 0.5
 		}
-	     }        
-      ]     
+	     }
+      ]
     },
 
     "damageParts" : {
@@ -308,7 +308,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "trictus2" }
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "trictus2" }
   }
 }

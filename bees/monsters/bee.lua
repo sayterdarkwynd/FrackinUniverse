@@ -14,7 +14,7 @@ end
 -- Doing the item name check in case other drops are added to the bugnet drop list. Don't want them having a param breaking stacking.
 function die()
 	if captured then
-		local genome = config.getParameter("genome", nil)
+		local genome = config.getParameter("genome")
 
 		if genome then
 			local item = root.createTreasure(monster.type(), 1)

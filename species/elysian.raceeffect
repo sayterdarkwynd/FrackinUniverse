@@ -1,21 +1,21 @@
 {
 	"stats": [
-		{ "stat": "foodDelta", "baseMultiplier": 0.85 },
+		{ "stat": "foodDelta", "baseMultiplier": 0.8 },
 		{ "stat": "maxHealth", "effectiveMultiplier": 1.05 },
 		{ "stat": "maxEnergy", "effectiveMultiplier": 1.25 },
 		{ "stat": "protection", "effectiveMultiplier": 0.9 },
 		{ "stat": "fallDamageMultiplier", "effectiveMultiplier": 0.75 },
 		{ "stat": "physicalResistance", "amount": 0.1 },
-		{ "stat": "electricResistance", "amount": 0.25 },
-		{ "stat": "iceResistance", "amount": -0.15 },
+		{ "stat": "electricResistance", "amount": 0.15 },
+		{ "stat": "iceResistance", "amount": -0.10 },
 		{ "stat": "cosmicResistance", "amount": 0.05 },
-		{ "stat": "radioactiveResistance", "amount": -0.15 },
+		{ "stat": "radioactiveResistance", "amount": -0.10 },
 		{ "stat": "electricStatusImmunity", "amount": 1 }
 	],
 	"diet" : "carnivore",
 	"controlModifiers": {
-		"speedModifier": 1.1,
-		"airJumpModifier": 1.05
+		"speedModifier": 1.05,
+		"airJumpModifier": 1.1
 	},
 	"envEffects": [
 		{
@@ -30,14 +30,14 @@
 		{
 			"biomes": [ "irradiated" ],
 			"stats": [
-				{ "stat": "maxEnergy", "effectiveMultiplier": 0.75 },
-				{ "stat": "powerMultiplier", "effectiveMultiplier": 0.85 }
+				{ "stat": "maxEnergy", "effectiveMultiplier": 0.9 },
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 0.95 }
 			]
 		}
 	],
 	"weaponEffects": [
 		{
-			"weapons": [ "bow",
+			"weapons": [
 				"broadsword",
 				"shortsword",
 				"dagger",
@@ -45,6 +45,12 @@
 				"chakram" ],
 			"stats": [
 				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.1 }
+			]
+		},
+		{
+			"weapons": [ "bow" ],
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.05 }
 			]
 		}
 	],

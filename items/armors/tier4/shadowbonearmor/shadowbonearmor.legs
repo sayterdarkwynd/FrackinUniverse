@@ -3,8 +3,8 @@
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "^orange;Set Bonuses^reset;:  
+  "rarity" : "rare",
+  "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; +^green;10^reset;% Speed
 ^yellow;^reset; Axe/Hammer/Scythe: Damage x^green;1.3^reset;
 ^yellow;^reset; ^cyan;Immune^reset;: Shadow Taint",
@@ -38,13 +38,13 @@
       "stat" : "maxHealth",
       "amount" : 5
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "shadowResistance",
       "amount" : 0.04
     }
   ],
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "defensive", "melee", "hyper" ],
   "statusEffects" : [
     "shadowbonesetbonus",
     {
@@ -93,5 +93,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

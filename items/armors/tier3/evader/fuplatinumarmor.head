@@ -3,7 +3,7 @@
   "inventoryIcon" : "icons.png:head",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Common",
+  "rarity" : "uncommon",
   "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; +^green;25^reset;% Shield Regen, Stamina, Block
 ^yellow;^reset; Shield and Sword: +^green;8^reset;% Phys. Resist",
@@ -19,7 +19,7 @@
  //   "fumantizitier5schest",
 //    "fumantizitier5shead"
 //  ],
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "defensive", "melee", "hyper" ],
   "level" : 3,
   //"collectablesOnPickup" : { "fu_armortank" : "fuplatinumarmorhead" },
   "leveledStatusEffects" : [
@@ -43,7 +43,7 @@
       "stat" : "maxHealth",
       "amount" : 5
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "physicalResistance",
       "amount" : 0.01665
@@ -51,9 +51,13 @@
   ],
 
   "statusEffects" : [
-    "fusetbonusmanager",
+    "evadersetbonus",
     {
-      "stat" : "evadersetcount",
+      "stat" : "fu_evaderset_head",
+      "amount" : 1
+    },
+    {
+      "stat" : "fu_plebeianset_head",
       "amount" : 1
     }
   ],
@@ -98,5 +102,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

@@ -2,34 +2,34 @@
   "name" : "atropus",
   "friendlyName" : "Atropus",
   "statusEffects" : [ "insanitynew"  ],
-  
-  
+
+
     "spawnProfile" : {
     "groups" : [
       {
         "select" : 3,
-        "pool" : [ 
+        "pool" : [
           [ 0.11, "anglure2" ],
           [ 0.11, "wormmass" ],
-          [ 0.11, "fleshleech" ],  
-          [ 0.11, "fleshleech2" ], 
+          [ 0.11, "fleshleech" ],
+          [ 0.11, "fleshleech2" ],
           [ 0.11, "pteropod3" ],
-	  [ 0.11, "snaunt2" ],
+	      [ 0.11, "snaunt2" ],
           [ 0.11, "ravager" ],
           [ 0.11, "bunnythingmeat" ],
           [ 0.11, "tentaclespawner2" ],
           [ 0.11, "pandorasboxfleshgummi" ]
         ]
-      },  
+      },
 
       {
         "select" : 3,
         "pool" : [
-          [ 0.4, "maggot" ], 
+          [ 0.4, "maggot" ],
           [ 0.2, "ghastbrain" ],
-	  [ 0.2, "xenofly" ],
-	  [ 0.1, "bee_devoratrix" ],
-	  [ 0.1, "bee_reaper" ],
+	      [ 0.2, "xenofly" ],
+	      [ 0.1, "bee_devoratrix" ],
+	      [ 0.1, "bee_reaper" ],
           [ 0.3, "bulbopflesh" ]
         ]
       },
@@ -37,15 +37,15 @@
         "select" : 4,
         "pool" : [
           [ 0.1, "bigwormcritter" ],
-	  [ 0.1, "apexscabcritter" ],
+	      [ 0.1, "apexscabcritter" ],
           [ 0.1, "avianscabcritter" ],
           [ 0.1, "eyefriendcritter" ],
           [ 0.1, "eyepodcritter" ],
-	  [ 0.1, "floranscabcritter" ],
-	  [ 0.1, "glitchscabcritter" ],
-	  [ 0.1, "humanscabcritter" ],
-	  [ 0.1, "hylotlscabcritter" ],
-	  [ 0.1, "maggotcritter" ]
+	      [ 0.1, "floranscabcritter" ],
+	      [ 0.1, "glitchscabcritter" ],
+	      [ 0.1, "humanscabcritter" ],
+	      [ 0.1, "hylotlscabcritter" ],
+	      [ 0.1, "maggotcritter" ]
         ]
       },
       {
@@ -67,7 +67,7 @@
         "stats" : {
           "poisonStatusImmunity" : {
             "baseValue" : 1.0
-          },           
+          },
           "insanityImmunity" : {
             "baseValue" : 1.0
           },
@@ -81,16 +81,16 @@
       }
     }
   },
-  
+
   "hueShiftOptions" : [-35, -15, 0, 15, 35 ],
-  
+
     "weather" : [
       [0, [
         "/weather.config:atropus"
       ]]
   ],
-  
-  
+
+
   "skyOptions" : [
     //varied
     {
@@ -120,7 +120,7 @@
       "eveningLightColor" : [0, 100, 65],
       "nightLightColor" : [0, 40, 40]
     },
-       
+
     {
       "mainColor" : [255, 255, 255],
 
@@ -175,12 +175,12 @@
     },
      {
        "mainColor" : [255, 0, 255],
- 
+
        "morningColors" : [ [255, 224, 129], [252, 230, 164] ],
        "dayColors" : [ [255, 152, 107], [255, 183, 152] ],
        "eveningColors" : [ [254, 121, 69], [254, 165, 129] ],
        "nightColors" : [ [60, 0, 0], [20, 0, 0] ],
- 
+
        "morningLightColor" : [202, 177, 100],
        "dayLightColor" : [202, 138, 100],
        "eveningLightColor" : [202, 100, 100],
@@ -463,7 +463,7 @@
       "dayLightColor" : [100, 240, 202],
       "eveningLightColor" : [100, 240, 202],
       "nightLightColor" : [17, 17, 40]
-    },    
+    },
 //green tinted
     {
       "mainColor" : [110, 155, 255],
@@ -491,7 +491,7 @@
       "dayLightColor" : [15, 40, 15],
       "eveningLightColor" : [10, 30, 10],
       "nightLightColor" : [5, 20, 5]
-    },    
+    },
 //red tinted
     {
       "mainColor" : [255, 155, 155],
@@ -520,7 +520,7 @@
       "eveningLightColor" : [25, 50, 30],
       "nightLightColor" : [0, 12, 0]
     },
-//dark red 
+//dark red
     {
       "mainColor" : [90, 23, 23],
 
@@ -579,7 +579,7 @@
 
   "mainBlock" : "fleshblock",
   "subBlocks" : [ "brainsblock", "hellstone" ],
-  
+
   "ores" : "ff_surfaceatropusOres",
 
   "parallax" : "/parallax/surface/atropus.parallax",
@@ -595,14 +595,14 @@
 
     "musicTrack" : {
       "day" : {
-        "tracks" : [ "/music/atropusambiance1a.ogg", "/music/atropusambiance2a.ogg" ]
+        "tracks" : [ "/music/fog.ogg","/music/atropusambiance1a.ogg", "/music/atropusambiance2a.ogg" ]
       },
       "night" : {
         "tracks" : [ "/music/atropusambiance3a.ogg", "/music/atropusambiance4a.ogg" ]
       }
     },
 
- 
+
     "surfacePlaceables" : {
       "grassMod" : [ "fleshgrass2", "tentaclegrass", "fleshgrass" ],
       "grassModDensity" : 0.9,
@@ -614,7 +614,7 @@
             "priority" : 1.0,
             "variants" : 1,
             "distribution" : "/biomes/distributions.config:potsRare",
-  
+
             "type" : "object",
             "objectSets" : [
               {
@@ -632,27 +632,27 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : 
-              [ 
-              [0.55, "atropus1" ], 
-              [0.55, "atropus2" ], 
+              "pool" :
+              [
+              [0.55, "atropus1" ],
+              [0.55, "atropus2" ],
               [0.55, "atropus3" ],
-              [0.15, "fleshbush1" ], 
-              [0.15, "fleshbush2" ], 
-              [0.15, "fleshbush3" ], 
-              [0.15, "fleshbush4" ], 
-              [0.15, "fleshbush5" ], 
+              [0.15, "fleshbush1" ],
+              [0.15, "fleshbush2" ],
+              [0.15, "fleshbush3" ],
+              [0.15, "fleshbush4" ],
+              [0.15, "fleshbush5" ],
               [0.15, "fleshbush6" ],
-              [0.15, "heckaltar" ], 
-              [0.15, "heckbush1" ], 
-              [0.15, "heckbush2" ], 
-              [0.15, "heckbush3" ], 
-              [0.15, "heckbush4" ], 
+              [0.15, "heckaltar" ],
+              [0.15, "heckbush1" ],
+              [0.15, "heckbush2" ],
+              [0.15, "heckbush3" ],
+              [0.15, "heckbush4" ],
               [0.15, "heckbush5" ],
-              [0.15, "heckbush6" ], 
-              [0.15, "heckbush7" ], 
-              [0.15, "heckbush8" ], 
-              [0.15, "heckbush9" ], 
+              [0.15, "heckbush6" ],
+              [0.15, "heckbush7" ],
+              [0.15, "heckbush8" ],
+              [0.15, "heckbush9" ],
               [0.15, "heckbush10" ]
               ],
               "parameters" : { }
@@ -670,7 +670,7 @@
           "treeStemHueShiftMax" : 220,
           "treeStemList" : [ "eyevein" ],
           "treeFoliageList" : [ "eyeveiny"  ]
-        },                
+        },
          {
           "mode" : "floor",
           "priority" : 1.0,
@@ -682,7 +682,7 @@
           "treeStemHueShiftMax" : 35,
           "treeStemList" : [ "bloodkelp", "doomwood" ],
           "treeFoliageList" : [ "bloodkelpy", "doomy1" ]
-        },       
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -727,7 +727,7 @@
 
           "type" : "grass",
           "grasses" : [ "freebone", "fleshbone", "fleshplant", "heckflower", "atropusgrass1" ]
-        },   
+        },
         {
           "mode" : "ceiling",
           "priority" : 3.0,
@@ -751,7 +751,7 @@
               "modHueShiftMax" : 35
             }
           ]
-        },   
+        },
         {
           "mode" : "floor",
           "priority" : 2.0,
@@ -766,7 +766,7 @@
               "modHueShiftMax" : 35
             }
           ]
-        }, 
+        },
         {
           "mode" : "floor",
           "priority" : 2.0,
@@ -781,7 +781,7 @@
               "modHueShiftMax" : 35
             }
           ]
-        }, 
+        },
         {
           "mode" : "floor",
           "priority" : 2.0,
@@ -831,7 +831,7 @@
               "modHueShiftMax" : 35
             }
           ]
-        },          
+        },
          {
           "mode" : "ceiling",
           "priority" : 2.0,
@@ -876,7 +876,7 @@
               "modHueShiftMax" : 35
             }
           ]
-        },       
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -907,7 +907,7 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "ffbasicChest", "ffatropusChest" ]
+          "treasureBoxSets" : [ "ffatropusChest" ]
         },
         {
           "mode" : "floor",
@@ -958,7 +958,7 @@
 
           "type" : "microdungeon",
           "microdungeons" : [ "fu_dae_microdungeons", "fuencountercultist", "fuapexencounter", "furandomencounter" ]
-        },      
+        },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -967,17 +967,17 @@
 
           "type" : "microdungeon",
           "microdungeons" : [ "desertplatforming" ]
-        },      
+        },
            {
              "mode" : "floor",
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:ffunCommon",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
                    [0.50, "isn_wildmeatplant" ],
                    [0.50, "wildtentacleplant" ]
                  ],
@@ -1054,7 +1054,7 @@
             "priority" : 1.0,
             "variants" : 1,
             "distribution" : "/biomes/distributions.config:potsRare",
-  
+
             "type" : "object",
             "objectSets" : [
               {
@@ -1072,36 +1072,36 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : 
-              [ 
-              [0.15, "fleshbush1" ], 
-              [0.15, "fleshbush2" ], 
-              [0.15, "fleshbush3" ], 
-              [0.15, "fleshbush4" ], 
-              [0.15, "fleshbush5" ], 
+              "pool" :
+              [
+              [0.15, "fleshbush1" ],
+              [0.15, "fleshbush2" ],
+              [0.15, "fleshbush3" ],
+              [0.15, "fleshbush4" ],
+              [0.15, "fleshbush5" ],
               [0.15, "fleshbush6" ],
-              [0.15, "heckaltar" ], 
-              [0.15, "heckbush1" ], 
-              [0.15, "heckbush2" ], 
-              [0.15, "heckbush3" ], 
-              [0.15, "heckbush4" ], 
+              [0.15, "heckaltar" ],
+              [0.15, "heckbush1" ],
+              [0.15, "heckbush2" ],
+              [0.15, "heckbush3" ],
+              [0.15, "heckbush4" ],
               [0.15, "heckbush5" ],
-              [0.15, "heckbush6" ], 
-              [0.15, "heckbush7" ], 
-              [0.15, "heckbush8" ], 
-              [0.15, "heckbush9" ], 
+              [0.15, "heckbush6" ],
+              [0.15, "heckbush7" ],
+              [0.15, "heckbush8" ],
+              [0.15, "heckbush9" ],
               [0.15, "heckbush10" ],
-              [0.15, "hecklight1" ], 
-              [0.15, "hecklight2" ], 
-              [0.15, "heckpillar1" ], 
+              [0.15, "hecklight1" ],
+              [0.15, "hecklight2" ],
+              [0.15, "heckpillar1" ],
               [0.15, "heckpillar2" ]
               ],
               "parameters" : { }
             }
           ]
         },
-        
-        
+
+
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -1134,7 +1134,7 @@
 
           "type" : "grass",
           "grasses" : [ "freebone", "fleshbone", "fleshplant", "heckflower", "shadowy", "atropusgrass1"  ]
-        },   
+        },
         {
           "mode" : "ceiling",
           "priority" : 3.0,
@@ -1158,7 +1158,7 @@
               "modHueShiftMax" : 35
             }
           ]
-        },   
+        },
         {
           "mode" : "floor",
           "priority" : 2.0,
@@ -1173,7 +1173,7 @@
               "modHueShiftMax" : 35
             }
           ]
-        }, 
+        },
         {
           "mode" : "floor",
           "priority" : 2.0,
@@ -1188,7 +1188,7 @@
               "modHueShiftMax" : 35
             }
           ]
-        }, 
+        },
         {
           "mode" : "floor",
           "priority" : 2.0,
@@ -1238,7 +1238,7 @@
               "modHueShiftMax" : 35
             }
           ]
-        },     
+        },
          {
           "mode" : "ceiling",
           "priority" : 2.0,
@@ -1283,9 +1283,9 @@
               "modHueShiftMax" : 35
             }
           ]
-        }          
+        }
 // *** END FF STUFF
       ]
     }
-    
+
 }

@@ -18,10 +18,10 @@
     "electricbow" : "rocktrollLoot",
     "cosmicbow" : "rocktrollLoot",
     "radioactivebow" : "rocktrollLoot",
-    "shadowbow" : "rocktrollLoot"    
+    "shadowbow" : "rocktrollLoot"
     }
-  ], 
-  
+  ],
+
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
@@ -31,7 +31,7 @@
     "deathBehavior" : "monster-death",
     "behaviorConfig" : {
       "damageOnTouch" : true,
-      
+
       "targetQueryRange" : 20,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
@@ -43,7 +43,7 @@
 
       "foundTargetActions" : [],
 
-      "hostileActions" : [        
+      "hostileActions" : [
         {
           "name" : "action-fire",
 	  "cooldown" : 2,
@@ -66,7 +66,7 @@
             "winddownState" : "flameattackwinddown",
             "winddownTime" : 0.4
           }
-        },        
+        },
         {
           "name" : "action-charge",
           "cooldown" : 5,
@@ -74,7 +74,7 @@
             "maximumRange" : 20,
             "windupState" : "",
             "windupTime" : 0.4,
-            
+
 
             "chargeTime" : 0.8,
             "chargeSpeed" : 30,
@@ -89,9 +89,9 @@
           }
         }
       ],
-      
-      "fleeActions" : [], 
-      
+
+      "fleeActions" : [],
+
       "approachActions" : [
         {
           "name" : "approach-walk",
@@ -99,9 +99,9 @@
             "canJump" : false,
             "run" : true
           }
-        }      
+        }
       ],
-      
+
       "wanderActions" : [
         {
           "name" : "wander-walk",
@@ -109,7 +109,7 @@
           "parameters" : {
             "wanderTime" : [2, 3]
           }
-        }    
+        }
       ],
 
       "concurrentActions" : [
@@ -125,9 +125,9 @@
             "aimDirection" : [0, -1],
             "fireOffset" : [0, 1]
           }
-        }       
+        }
       ],
-      
+
       "concurrentHostileActions" : [
         {
           "name" : "action-statuseffect",
@@ -138,7 +138,7 @@
           }
         }
       ],
-      
+
       "periodicActions" : [
         {
           "name" : "action-projectile",
@@ -152,9 +152,9 @@
             "inaccuracy" : 0,
             "fireOffset" : [0, 1]
           }
-        }        
+        }
       ],
-      
+
       "followActions" : [
         {
           "name" : "approach-teleport",
@@ -167,7 +167,7 @@
             "canJump" : false,
             "run" : true
           }
-        }        
+        }
       ],
 
       "deathActions" : [
@@ -182,7 +182,7 @@
             "inaccuracy" : 0,
             "fireOffset" : [0, 1.2]
           }
-        }      
+        }
       ]
     },
 
@@ -198,7 +198,7 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [-1.375,3.542], [-1.333,-3.875], [2.042,-3.875], [2.292,3.333] ], 
+      "poly" : [ [-1.375,3.542], [-1.333,-3.875], [2.042,-3.875], [2.292,3.333] ],
       "damage" : 13,
 
       "teamType" : "enemy",
@@ -273,10 +273,10 @@
         },
         "iceStatusImmunity" : {
           "baseValue" : 1.0
-        },        
+        },
         "fireResistance" : {
           "baseValue" : -0.5
-        }        
+        }
       },
 
       "resources" : {
@@ -296,7 +296,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.24,
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "frostrotter" }
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "frostrotter" }
   }
 }

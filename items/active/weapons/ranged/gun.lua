@@ -4,19 +4,19 @@ require "/items/active/weapons/weapon.lua"
 require "/scripts/FRHelper.lua"
 
 function init()
-    --*************************************
-    -- FU/FR ADDONS
+	--*************************************
+	-- FU/FR ADDONS
+	local species = status.statusProperty("fr_race") or world.entitySpecies(activeItem.ownerEntityId())
 
-    local species = status.statusProperty("fr_race") or world.entitySpecies(activeItem.ownerEntityId())
-
-    if species then
-        self.helper = FRHelper:new(species)
-        self.helper:loadWeaponScripts("gun-init")
-        self.helper:runScripts("gun-init", self)
-    end
-    --**************************************
-    -- END FR BONUSES
-    -- *************************************
+	if species then
+		self.helper = FRHelper:new(species)
+		self.helper:loadWeaponScripts("gun-init")
+		self.helper:runScripts("gun-init", self)
+	end
+	status.setStatusProperty(activeItem.hand().."IsGun",true)
+	--**************************************
+	-- END FR BONUSES
+	-- *************************************
 
 
 	activeItem.setCursor("/cursors/reticle0.cursor")
@@ -32,30 +32,21 @@ function init()
 
 	local secondaryAbility = getAltAbility(self.weapon.elementalType)
 	if secondaryAbility then
-        self.weapon:addAbility(secondaryAbility)
+		self.weapon:addAbility(secondaryAbility)
 	end
 
 	self.weapon:init()
-
 end
 
 function update(dt, fireMode, shiftHeld)
-
-    -- ***************************************************
-    --FR stuff
-    -- ***************************************************
-
-    -- ***************************************************
-    -- END FR STUFF
-    -- ***************************************************
-
 	self.weapon:update(dt, fireMode, shiftHeld)
 end
 
 
 function uninit()
-    if self.helper then
-        self.helper:clearPersistent()
-    end
+	if self.helper then
+		self.helper:clearPersistent()
+	end
+	status.setStatusProperty(activeItem.hand().."IsGun",nil)
 	self.weapon:uninit()
 end

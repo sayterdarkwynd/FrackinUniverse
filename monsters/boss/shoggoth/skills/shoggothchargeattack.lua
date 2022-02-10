@@ -6,8 +6,6 @@ function shoggothChargeAttack.enter()
 		return nil
 	end
 	monster.setDamageOnTouch(true)
-
-
 	return {
 		timer = config.getParameter("shoggothChargeAttack.skillTime", 0.14),
 		damagePerSecond = config.getParameter("shoggothChargeAttack.damagePerSecond", 5000),
@@ -33,7 +31,7 @@ function shoggothChargeAttack.update(dt, stateData)
 	local toTarget = world.distance(self.targetPosition, mcontroller.position())
 	local targetDir = util.toDirection(toTarget[1])
 
-	if not stateData.swiping then
+	--if not stateData.swiping then
 
 		--projectile interval check and spawn
 		if stateData.currentPeriod < 0 then
@@ -80,9 +78,9 @@ function shoggothChargeAttack.update(dt, stateData)
 		else
 			stateData.swiping = true
 		end
-	end
+	--end
 
-	return false
+	return stateData.swiping
 end
 
 

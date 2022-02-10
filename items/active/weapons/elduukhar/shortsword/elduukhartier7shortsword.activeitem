@@ -1,9 +1,9 @@
 {
   "itemName" : "elduukhartier7shortsword",
-  "level" : 7,
+  "level" : 5,
   "price" : 810,
   "maxStack" : 1,
-  "rarity" : "legendary",
+  "rarity" : "rare",
   "description" : "This sword is as much art as it is a weapon. It was fashioned to look like a serpent.",
   "shortdescription" : "Fused Emera Shortsword",
   "tooltipKind" : "sword2",
@@ -22,17 +22,20 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "poison",
 
   "primaryAbilityType" : "shortswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.625,
-    "baseDps" : 7.5
+    "baseDps" : 7.5,
+    "damageConfig" : {
+      "damageSourceKind" : "poison"
+    }
   },
-  
+
   "critChance" : 2,
   "critBonus" :9,
-  
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
-  
+
 }

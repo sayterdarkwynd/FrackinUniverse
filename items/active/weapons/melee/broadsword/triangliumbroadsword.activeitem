@@ -1,52 +1,52 @@
 {
-	"itemName": "triangliumbroadsword",
-	"price": 320,
-	"level": 4,
-	"maxStack": 1,
-	"rarity": "Rare",
-	"description": "Stacked Trianglium Pyramids shaped into a sword blade. More effective than you think. 
-^cyan;Shoots radioactive exploding shards.^reset;",
-	"shortdescription": "Trianglium Broadsword",
-	"tooltipKind": "sword2",
-	"category": "broadsword",
-	"twoHanded": true,
-	"itemTags": ["weapon", "melee", "broadsword", "upgradeableWeapon"],
+  "itemName": "triangliumbroadsword",
+  "price": 320,
+  "level": 4,
+  "maxStack": 1,
+  "rarity": "rare",
+  "description": "Stacked Trianglium Pyramids shaped into a sword blade. More effective than you think.
+^cyan;Shoots radioactive exploding shards^reset;",
+  "shortdescription": "Trianglium Broadsword",
+  "tooltipKind": "sword2",
+  "category": "broadsword",
+  "twoHanded": true,
+  "itemTags": ["weapon", "melee", "broadsword", "upgradeableWeapon"],
 
-	"inventoryIcon": "triangliumbroadsword.png",
+  "inventoryIcon": "triangliumbroadsword.png",
 
-	"animation": "/items/active/weapons/melee/broadsword/combobroadsword.animation",
-	"animationParts": {
-		"blade": "",
-		"handle": "triangliumbroadsword.png"
-	},
-	"animationCustom": {
-		"sounds": {
-			"fire": ["/sfx/melee/swing_broadsword_poison1.ogg", "/sfx/melee/swing_broadsword_poison2.ogg", "/sfx/melee/swing_broadsword_poison3.ogg"],
-			"fire2": ["/sfx/melee/swing_broadsword_poison1.ogg", "/sfx/melee/swing_broadsword_poison2.ogg", "/sfx/melee/swing_broadsword_poison3.ogg"],
-			"fire3": ["/sfx/melee/swing_broadsword_poison1.ogg", "/sfx/melee/swing_broadsword_poison2.ogg", "/sfx/melee/swing_broadsword_poison3.ogg"]
-		}
-	},
+  "animation": "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animationParts": {
+    "blade": "",
+    "handle": "triangliumbroadsword.png"
+  },
+  "animationCustom": {
+    "sounds": {
+      "fire": ["/sfx/melee/swing_broadsword_poison1.ogg", "/sfx/melee/swing_broadsword_poison2.ogg", "/sfx/melee/swing_broadsword_poison3.ogg"],
+      "fire2": ["/sfx/melee/swing_broadsword_poison1.ogg", "/sfx/melee/swing_broadsword_poison2.ogg", "/sfx/melee/swing_broadsword_poison3.ogg"],
+      "fire3": ["/sfx/melee/swing_broadsword_poison1.ogg", "/sfx/melee/swing_broadsword_poison2.ogg", "/sfx/melee/swing_broadsword_poison3.ogg"]
+    }
+  },
 
-	"scripts": ["/items/active/weapons/melee/meleeweapon.lua"],
+  "scripts": ["/items/active/weapons/melee/meleeweapon.lua"],
 
-	"activeTime": 3.0,
+  "activeTime": 3.0,
 
-	"elementalType": "radioactive",
+  "elementalType": "radioactive",
 
-	"primaryAbilityType": "broadswordcombo",
-	"primaryAbility": {
-		"fireTime": 0.9,
-		"baseDps": 10.5,
-		"damageConfig": {
-			"damageSourceKind": "radioactivebroadsword",
-			"statusEffects": ["radiationburn"]
-		}
-	},
+  "primaryAbilityType": "broadswordcombo",
+  "primaryAbility": {
+    "fireTime": 0.9,
+    "baseDps": 10.5,
+    "damageConfig": {
+      "damageSourceKind": "radioactivebroadsword",
+      "statusEffects": ["radiationburn"]
+    }
+  },
 
-	"altAbilityType": "triangliumblast",
+  "altAbilityType": "triangliumblast",
 
-	"critChance": 3,
-	"critBonus": 3,
+  "critChance": 3,
+  "critBonus": 3,
 
-	"builder": "/items/buildscripts/buildunrandweapon.lua"
+  "builder": "/items/buildscripts/buildunrandweapon.lua"
 }

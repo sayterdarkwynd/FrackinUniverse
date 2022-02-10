@@ -1,5 +1,5 @@
 require "/scripts/vec2.lua"
-local foodThreshold=15
+--local foodThreshold=15
 local maxFreeFlightTime=5 -- in seconds, the max stored flight time that is 'free' (Excluding boost)
 
 function init()

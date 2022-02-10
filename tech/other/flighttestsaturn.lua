@@ -1,5 +1,6 @@
 require "/scripts/vec2.lua"
-local foodThreshold=15
+require "/stats/effects/fu_statusUtil.lua"
+local foodThreshold=15--used by checkFood
 
 function init()
 	self.active=false
@@ -19,11 +20,6 @@ function uninit()
 	status.removeEphemeralEffect("lowgravflighttech")
 	animator.setParticleEmitterActive("feathers", false)
 end
-
-function checkFood()
-	return (((status.statusProperty("fuFoodTrackerHandler",0)>-1) and status.isResource("food")) and status.resource("food")) or foodThreshold
-end
-
 function boost(direction)
 	self.boostVelocity = vec2.mul(vec2.norm(direction), self.boostSpeed)
 	if self.boostSpeed > 20 then -- prevent super-rapid movement
@@ -74,23 +70,17 @@ function update(args)
 		mcontroller.controlApproachVelocity(self.boostVelocity, 30)
 		-- end boost
 
-		if checkFood() > foodThreshold then
+		if (checkFood() or foodThreshold) > foodThreshold then
 			if not self.downVal and not self.leftVal and not self.rightVal and not self.upVal then
-				status.setPersistentEffects("glide", {
-					{stat = "gliding", amount = 1},
-					{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}
-				})
+				status.setPersistentEffects("glide", {{stat = "gliding", amount = 1},{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}})
 			else
-				status.setPersistentEffects("glide", {
-					{stat = "foodDelta", amount = -5},
-					{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}
-				})
+				status.setPersistentEffects("glide", {{stat = "foodDelta", amount = -5},{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}})
 			end
 		else
 			--(1/0.0166667)*0.008 = ~0.48 per second
 			if not self.downVal and not self.leftVal and not self.rightVal and not self.upVal then
 				status.overConsumeResource("energy", 0.008)
-				status.setPersistentEffects("glide", {{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}})
+				status.setPersistentEffects("glide", {{stat = "gliding", amount = 1},{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}})
 			else
 				status.overConsumeResource("energy", 0.65)
 				status.setPersistentEffects("glide", {{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}})

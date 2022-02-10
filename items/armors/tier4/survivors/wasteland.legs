@@ -3,8 +3,8 @@
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "^orange;Set Bonuses^reset;: 
+  "rarity" : "uncommon",
+  "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; -^green;50^reset;% Hunger Drain Rate
 ^yellow;^reset; Grenade/Rocket Launchers, (Cross)Bows: +^green;6^reset;% Crit Damage, Damage x^green;1.2^reset;
 ^yellow;^reset; ^cyan;Immune^reset;: Gas, Poison, Proto-Poison",
@@ -38,28 +38,28 @@
       "stat" : "maxHealth",
       "amount" : 3
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "fireResistance",
       "amount" : 0.028
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "poisonResistance",
       "amount" : 0.028
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "iceResistance",
       "amount" : 0.028
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "electricResistance",
       "amount" : 0.028
     }
   ],
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "defensive", "ranged", "explorer" ],
   "statusEffects" : [
     "survivorsetbonus",
     {
@@ -68,5 +68,5 @@
     }
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

@@ -1,77 +1,9 @@
 {
-	"stats": [
-		{ "stat": "grit", "amount": 0.3 },
-		{ "stat": "fuCharisma", "baseMultiplier": 0.75 },
-		{ "stat": "protection", "amount": 5 },
-		{ "stat": "fireResistance", "amount": -0.3 },
-		{ "stat": "maxFood", "effectiveMultiplier": 1.5 },
-		{ "stat": "iceResistance", "amount": -0.2 },
-		{ "stat": "electricResistance", "amount": 0.2 },
-		{ "stat": "radioactiveResistance", "amount": 0.2 }
-	],
-	"diet" : [ { "ORGANIC" : false, "INORGANIC" : false, "ROBOT_PLANT" : false }, 
-			   { "ROCK_RAD" : true } ],
-	"controlModifiers": {
-		"speedModifier": 1.07,
-		"airJumpModifier": 1.07
-	},
-	"envEffects": [
+	"scripts" : [
 		{
-			"biomes": [
-				"sulphuric",
-				"sulphuricdark",
-				"sulphuricocean",
-				"sulphuricoceanfloor",
-				"jungle",
-				"desert",
-				"desertwastes",
-				"desertwastesdark"
-			],
-			"stats": [
-				{ "stat": "maxEnergy", "effectiveMultiplier": 1.1 },
-				{ "stat": "protection", "effectiveMultiplier": 1.1 }
-			]
-		}
-	],
-	"weaponEffects": [
-		{
-			"weapons": [ "bow", "crossbow" ],
-			"stats": [
-				{ "stat": "protection", "effectiveMultiplier": 1.1 },
-				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.1 }
-			]
-		},
-		{
-			"weapons": [ "shield" ],
-			"stats": [
-				{ "stat": "shieldBash", "amount": 2 },
-				{ "stat": "shieldBashPush", "amount": 2 }
-			]
-		},
-		{
-			"combos": [[ "shortspear", "shield" ], [ "shortsword", "shield" ]],
-			"stats": [
-				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.2 },
-				{ "stat": "protection", "effectiveMultiplier": 1.2 }
-			]
-		}
-	],
-	"weaponScripts": [
-		{
-			"script": "/scripts/fr_weaponscripts/perfectblockbonus.lua",
-			"contexts": [ "shield-perfectblock" ],
-			"args": {
-				"resources": {
-					"health": {
-						"base": 0.025,
-						"comboBase": 0.0008,
-						"max": 0.05
-					},
-					"shieldStamina": {
-						"base": 0.2
-					}
-				},
-				"particles": "bonusBlock"
+			"script" : "/scripts/fr_scripts/speciesredirect.lua",
+			"args" : {
+				"species" : "fumantizi"
 			}
 		}
 	]

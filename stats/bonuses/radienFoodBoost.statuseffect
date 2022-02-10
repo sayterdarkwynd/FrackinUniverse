@@ -1,17 +1,21 @@
 {
-  "name" : "radienFoodBoost",
-  "effectConfig" : {
-    //Core attributes
-    "radioactiveResistance" : 0.5,
-    "damageBonus" : 0.2,
-    "baseHealth" : 0.95,
-    "baseEnergy" : 1.1
-  },
+	"name" : "radienFoodBoost",
+	"effectConfig" : {
+		"modifiers":{
+			"maxHealth":{"type":"effectiveMultiplier","value":0.91,"invert":true,"step":0.1},
+			"maxEnergy":{"type":"effectiveMultiplier","value":0.83,"invert":true,"step":0.1},
+			"radioactiveResistance":{"type":"amount","value":0.35},
+			"poisonResistance":{"type":"amount","value":0.1,"step":0.1},
+			"cosmicResistance":{"type":"amount","value":0.05,"step":0.2},
+			"iceResistance":{"type":"amount","value":-0.1,"invert":true,"step":0.1},
+			"fireResistance":{"type":"amount","value":-0.1,"invert":true,"step":0.1},
+			"electricResistance":{"type":"amount","value":-0.1,"invert":true,"step":0.1}
+		}
+	},
 
-  "defaultDuration" : 3,
+	"defaultDuration" : 3,
 
-  "scripts" : [
-    "radienFoodBoost.lua"
-  ]
-
+	"scripts" : [
+		"radienFoodBoost.lua"
+	]
 }

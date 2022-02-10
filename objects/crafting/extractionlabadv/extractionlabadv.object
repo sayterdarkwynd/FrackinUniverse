@@ -6,11 +6,11 @@
   "category" : "^orange;Extraction Device^reset;",
   "printable" : false,
   "objectType" : "container",
-  "price" : 650,
+  "price" : 450,
   "inventoryIcon" : "extractionlabicon.png",
-  "description" : "Efficiently extracts useful materials from most block types.",
- // "learnBlueprintsOnPickup" : [ "quantumextractor" ],
-  "shortdescription" : "^cyan;Extraction Lab MKII^white;",
+  "description" : "Efficiently extracts useful materials from most blocks. ^cyan;Requires ^orange;30J^cyan; per extraction.^reset; Can be placed on floors -or- ceilings.",
+  "tooltip" : "base",
+  "shortdescription" : "^cyan;Extraction Lab MKII^reset;",
   "subtitle" : "Resource converter",
   "orientations" : [
      {
@@ -70,21 +70,19 @@
   ],
 
   "animation" : "extractionlabadv.animation",
-  "animationParts" : {
-    "samplingarrayanim" : "extractionlabadv.png"
-  },
-  "scripts" : [ "/objects/generic/extractionlab_common.lua",
-                "/scripts/npcToyObject.lua" ],
+  "animationParts" : {"samplingarrayanim" : "extractionlabadv.png"},
+  "scripts" : [ "/scripts/fupower.lua", "/objects/generic/extractionlab_common.lua","/scripts/npcToyObject.lua" ],
   "scriptDelta" : 5,
+
   "recipeGroup" : "extractionlab",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
   "slotCount" : 12,
-  "uiConfig" : "/interface/extractor/extractor.config",
+  "uiConfig" : "/interface/extractor/extractor2.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
 
-  "outputNodes" : [ [0, 1] ],
-  "inputNodes" : [ [0, 0] ],
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
 
   "npcToy" : {
     "influence" : [
@@ -104,6 +102,10 @@
     "maxNpcs" : 1
   },
 
+  "inputSlot": 3,
+  "powertype" : "input",
+  "isn_requiredPower" : 30,
+  "isn_liquidCollector" : false,
   "fu_mintick" : 1,
   "fu_stationTechLevel" : 2,
   "fu_timerMod" : 2

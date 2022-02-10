@@ -1,52 +1,51 @@
 {
-  "name" : "protoweather",
-  "blockingStat" : "",
+	"name" : "protoweather",
 
-  "effectConfig" : {
-    "resistanceTypes" : {
-      "poisonResistance" : 1.0
-    },
-    "resistanceThreshold" : 0.45,
-    "immunityStats" : [
-      "protoImmunity"
-    ],
+	"effectConfig" : {
+		"resistanceTypes" : {
+			"poisonResistance" : 1.0
+		},
+		"resistanceThreshold" : 0.45,
+		"immunityStats" : [
+			"protoImmunity"
+		],
 
-    "healthDrain" : 0.75,
-    "hungerDrain" : 0,
-    "energyDrain" : 0,
-    "speedPenalty" : 0,
-    "jumpPenalty" : 0,
+		"healthDrain" : 0.75,
+		"hungerDrain" : 0,
+		"energyDrain" : 0,
+		"speedPenalty" : 0,
+		"jumpPenalty" : 0,
 
-    "debuffRate" : 5,
-    "debuffStartDelay" : 45,
-    "debuffs" : {
-      "maxHealth" : {
-        "type" : "absolute",
-        "amount" : -3.0
-      },
-      "critChance" : {
-        "type" : "absolute",
-        "amount" : -0.3,
-        "cap" : 0
-      }
-    },
+		"debuffRate" : 5,
+		"debuffStartDelay" : 45,
+		"debuffs" : {
+			"maxHealth" : {
+				"type" : "absolute",
+				"amount" : -3.0
+			},
+			"critChance" : {
+				"type" : "absolute",
+				"amount" : -0.3,
+				"cap" : 0
+			}
+		},
 
-    "modifiers" : {},
+		"modifiers" : {},
 
-    "messages" : {
-      "intro" : "fubiomeproto"
-    },
+		"messages" : {
+			"intro" : "fubiomeproto"
+		},
 
-    "configPath" : "/stats/effects/fu_weathereffects/new/protoworld/protoweather.statuseffect"
-  },
-  "defaultDuration" : 5,
+		"configPath" : "/stats/effects/fu_weathereffects/new/protoworld/protoweather.statuseffect"
+	},
+	"defaultDuration" : 5,
 
-  "scripts" : [
-    "protoweather.lua"
-  ],
+	"scripts" : [
+		"protoweather.lua"
+	],
 
-  "animationConfig" : "protoweather.animation",
+	"animationConfig" : "protoweather.animation",
 
-  "label" : "Proto Poison",
-  "icon" : "/interface/statuses/hpdown.png"
+	"label" : "Proto Poison (Resist: ^green;Poison^reset;)",
+	"icon" : "/interface/statuses/hpdown.png"
 }

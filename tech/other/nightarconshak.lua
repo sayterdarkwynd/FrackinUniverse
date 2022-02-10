@@ -1,4 +1,5 @@
 require "/scripts/vec2.lua"
+require "/stats/effects/fu_statusUtil.lua"
 
 function init()
 	initCommonParameters()
@@ -10,7 +11,7 @@ function initCommonParameters()
 	self.conshakTimer = 0
 	-- for status bar filling, below are required
 	self.playerId = entity.id()
-	self.maxConshakValue = 500
+	self.maxConshakValue = 400
 	self.barName = "conshakBar"
 	self.barColor = {150,77,250,125}
 	self.timerRemoveConshakBar = 0
@@ -53,19 +54,8 @@ function displayBar()
 	end
 end
 
-function getLight()
-	local position = mcontroller.position()
-	position[1] = math.floor(position[1])
-	position[2] = math.floor(position[2])
-	return math.floor(math.min(world.lightLevel(position),1.0) * 100)
-end
-
-function undergroundCheck()
-	return world.underground(mcontroller.position())
-end
-
 function checkStance()
-	if (self.conshakTimer < 500) then
+	if (self.conshakTimer < 400) then
 		animator.setParticleEmitterActive("conshak", false)
 	else
 		animator.playSound("conshakActivate")
@@ -115,7 +105,7 @@ function update(args)
 				self.bombTimer = math.max(0, self.bombTimer - args.dt)
 			end
 			if (self.pressDown) and not self.pressLeft and not self.pressRight and not self.pressUp and not self.pressJump then
-				if (self.conshakTimer < 500) then
+				if (self.conshakTimer < 400) then
 					displayBar()
 					self.conshakTimer = self.conshakTimer + 1
 				else
@@ -136,13 +126,12 @@ function update(args)
 					checkStance()
 				end
 
-				if (self.conshakTimer >= 500) then
+				if (self.conshakTimer >= 400) then
 					animator.setParticleEmitterActive("defenseStance", false)
 					animator.setParticleEmitterActive("conshak", true)
 					local configBombDrop = { power = 0 }
 					world.spawnProjectile("activeConshakCharged", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
-					status.addEphemeralEffects{{effect = "nightarconshakstat", duration = 60}}
-					status.addEphemeralEffects{{effect = "thorns", duration = 60}}
+					--status.addEphemeralEffects{{effect = "nightarconshakstat", duration = 60}}
 					status.addEphemeralEffects{{effect = "detectmonsternightar", duration = 60}}
 					self.conshakTimer = 0
 				end

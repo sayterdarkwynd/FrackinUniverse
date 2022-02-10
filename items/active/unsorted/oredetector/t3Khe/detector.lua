@@ -59,7 +59,7 @@ function update()
           local color = copy(self.colorCache[cacheKey])
 
           local dist = math.sqrt(distSquared)
-          local fadeFactor = 2 * math.min(dist - innerRadius, math.min(outerRadius - dist, searchRange - dist)) / fadeDistance
+          local fadeFactor = 2 * math.min(dist - innerRadius, outerRadius - dist, searchRange - dist) / fadeDistance
           color[4] = color[4] * fadeFactor
 
           local variant = math.random(1, detectConfig.variants)

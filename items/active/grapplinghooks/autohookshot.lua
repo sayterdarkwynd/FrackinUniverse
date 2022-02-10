@@ -146,8 +146,6 @@ end
 
 
 function swing(moves)
-  local canReel = self.ropeLength > self.reelInDistance or world.magnitude(self.rope[2], mcontroller.position()) > self.reelInDistance
-
   local armAngle = activeItem.aimAngle(self.fireOffset[2], self.rope[2])
   local pullDirection = vec2.withAngle(armAngle)
   --sb.logInfo("armang: %s, pullang: %s", armAngle,pullDirection)
@@ -180,7 +178,6 @@ function firePosition()
 end
 
 function updateRope(newRope)
-  local position = mcontroller.position()
   local previousRopeCount = #self.rope
   self.rope = newRope
   self.ropeLength = 0

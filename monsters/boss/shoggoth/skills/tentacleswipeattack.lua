@@ -6,6 +6,18 @@ function tentacleSwipeAttack.enter()
 		return nil
 	end
 	monster.setDamageOnTouch(true)
+	if (not self.dungeonIDList) or (not dungeonIDCheck) or dungeonIDCheck <=0 then
+		self.dungeonIDList={}
+		local ePos=entity.position()
+		for xP=math.floor(ePos[1])-100,math.ceil(ePos[1])+100 do--math.floor(math.min(blockLine[1][1],blockLine[2][1])),math.ceil(math.max(blockLine[1][1],blockLine[2][1])) do
+			for yP=math.floor(ePos[2])-1,math.ceil(ePos[2])+1 do--math.floor(math.min(blockLine[1][2],blockLine[2][2])),math.ceil(math.max(blockLine[1][2],blockLine[2][2])) do
+				self.dungeonIDList[world.dungeonId({xP,yP})]=true
+			end
+		end
+		self.dungeonIDList[0]=nil
+		dungeonIDCheck=15
+	end
+	tentacleSwipeAttack.handleProtection(false)
 
 
 	return {
@@ -18,10 +30,15 @@ function tentacleSwipeAttack.enter()
 	}
 end
 
+function tentacleSwipeAttack.handleProtection(on)
+	for id,_ in pairs(self.dungeonIDList or {}) do
+		world.setTileProtection(id,on)
+	end
+end
+
 --------------------------------------------------------------------------------
 function tentacleSwipeAttack.enteringState(stateData)
 	animator.setAnimationState("movement", "idle")
-
 	monster.setActiveSkillName("tentacleSwipeAttack")
 end
 
@@ -50,12 +67,12 @@ function tentacleSwipeAttack.update(dt, stateData)
 			if stateData.windupTimer == config.getParameter("tentacleSwipeAttack.windupTime") then
 				animator.setAnimationState("movement", "swipe")
 
-			self.randValNum = math.random(100)
-			if self.randValNum >=75 then
-				animator.playSound("attackMain")
-			end
-		animator.setParticleEmitterOffsetRegion("whipUp", mcontroller.boundBox())
-		animator.setParticleEmitterActive("whipUp", true)
+				self.randValNum = math.random(100)
+				if self.randValNum >=75 then
+					animator.playSound("attackMain")
+				end
+				animator.setParticleEmitterOffsetRegion("whipUp", mcontroller.boundBox())
+				animator.setParticleEmitterActive("whipUp", true)
 			end
 			stateData.windupTimer = stateData.windupTimer - dt
 		elseif stateData.winddownTimer > 0 then
@@ -87,6 +104,7 @@ end
 
 function tentacleSwipeAttack.leavingState(stateData)
 	animator.setAnimationState("movement", "idle")
+	tentacleSwipeAttack.handleProtection(true)
 	monster.setActiveSkillName("")
 end
 

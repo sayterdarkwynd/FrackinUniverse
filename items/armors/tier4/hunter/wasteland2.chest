@@ -3,8 +3,8 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "^orange;Set Bonuses^reset;: 
+  "rarity" : "uncommon",
+  "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; Energy x^green;1.1^reset;
 ^yellow;^reset; Rocket/Grenade Launcher: Damage x^green;1.2^reset;, +^green;6^reset;% Crit Damage",
   "shortdescription" : "Hunter's Chestpiece",
@@ -28,7 +28,7 @@
 //  "kirhostier5mchest",
 //  "kirhostier5mpants"
 //  ],
-  
+
   "level" : 4,
   //"collectablesOnPickup" : { "fu_armorbalanced" : "wastelandchest2" },
   "leveledStatusEffects" : [
@@ -52,29 +52,29 @@
       "stat" : "maxHealth",
       "amount" : 5
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "physicalResistance",
       "amount" : 0.028
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "radioactiveResistance",
       "amount" : 0.028
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "shadowResistance",
       "amount" : 0.028
     }
   ],
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "ranged" ],
   "statusEffects" : [
     "huntersetbonus",
     {
       "stat" : "fu_hunterset_chest",
       "amount" : 1
-    } 
+    }
   ],
 
     "colorOptions" : [
@@ -104,5 +104,5 @@
 
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

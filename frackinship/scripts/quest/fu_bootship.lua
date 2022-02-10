@@ -25,15 +25,7 @@ function questInteract(entityId)
   if self.interactTimer > 0 then return true end
 
   if world.entityUniqueId(entityId) == self.techstationUid then
-    if world.entityTypeName(entityId) == "fu_byostechstationdeco" then
-		player.interact("ScriptPane", "/interface/ai/fu_byosai.config")
-	else
-		local interface = root.assetJson("/interface/ai/fu_byosai.config")
-		-- can't be bothered making it a json value since it's temp anyway
-		interface.states.initial.buttons = {{name = "Vanilla", newState = "vanillaShipSelected"}}
-		interface.states.initial.text = "Ship has sustained major damage when escaping earth. Please select which ship type you want:\n\nVanilla Ship:\nThe default starbound ship for your race."
-		player.interact("ScriptPane", interface)
-	end
+	player.interact("ScriptPane", "/interface/ai/fu_byosai.config")
     self.interactTimer = 1.0
     return true
   end

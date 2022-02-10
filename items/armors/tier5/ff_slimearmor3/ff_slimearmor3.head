@@ -8,11 +8,11 @@
   "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; ^cyan;Spawns Minions^reset;: Magma Slime
 ^yellow;^reset; Slime weapons: +^green;6^reset;% Crit, Damage x^green;1.2^reset;
-^yellow;^reset; ^cyan;Immune^reset;: Poison, Bio-Ooze, Slime, Mud, Clay, Snow, Ice Slip", 
+^yellow;^reset; ^cyan;Immune^reset;: Poison, Bio-Ooze, Slime, Mud, Clay, Snow, Ice Slip",
   "shortdescription" : "Red Slime Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "melee", "explorer" ],
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
@@ -54,6 +54,16 @@
       "levelFunction" : "fuArmorSetTierMultiplier",
       "stat" : "fu_slimeset3_head",
       "amount" : 1
+    },
+    {
+      "levelFunction" : "fuArmorSetTierMultiplier",
+      "stat" : "fu_slimeset2_head",
+      "amount" : 1
+    },
+    {
+      "levelFunction" : "fuArmorSetTierMultiplier",
+      "stat" : "fu_slimeset_head",
+      "amount" : 1
     }
   ],
 
@@ -76,5 +86,5 @@
 
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

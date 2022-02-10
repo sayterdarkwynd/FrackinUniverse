@@ -3,8 +3,8 @@
   "inventoryIcon" : "icons.png:head",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Uncommon",
-  "description" : "^orange;Set Bonuses^reset;: 
+  "rarity" : "rare",
+  "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; Health x^green;1.12^reset;
 ^yellow;^reset; Melee: +^green;3^reset;%/^green;6^reset;% Crit Chance
 ^yellow;^reset; ^cyan;Immune^reset;: Acid, Oxygen",
@@ -17,11 +17,11 @@
   "mask" : "mask.png",
 
  // "learnBlueprintsOnPickup" : [
- //   "geistchest", 
- //   "geisthead", 
-//    "geistpants"   
+ //   "geistchest",
+ //   "geisthead",
+//    "geistpants"
 //  ],
-  
+
   "level" : 5,
   "leveledStatusEffects" : [
     {
@@ -55,11 +55,15 @@
       "amount" : 0.028
     }
   ],
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "melee" ],
   "statusEffects" : [
     "kingslayersetbonus",
     {
       "stat" : "fu_kingslayerset_head",
+      "amount" : 1
+    },
+    {
+      "stat" : "fu_battlebornset_head",
       "amount" : 1
     }
   ],
@@ -90,5 +94,5 @@
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

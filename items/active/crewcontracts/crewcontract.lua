@@ -26,7 +26,7 @@ function update(dt, fireMode, shiftHeld)
 			end
 			item.consume(1)
 			local crewtype = config.getParameter("crewtype.crewname")
-			local seed = math.random(255)
+			local seed = sb.makeRandomSource():randu64()
 			local parameters = {}
 			local crewrace = self.crewrace
 			world.spawnNpc(mcontroller.position(), crewrace, crewtype, 1, seed, parameters)

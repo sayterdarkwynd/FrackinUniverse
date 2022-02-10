@@ -1,0 +1,26 @@
+{
+	"text": "Mew. Kevin clone problem? It went to other reality. Bad things happened there, everything went wrong. Go open gate, get gate signature data.",
+	"completionText": "Mew...gate signatures old. Sad kitty. More tracking needed. Have new beacon.",
+	"title": "Through the Darkness",
+	"id": "fu_t10_gaterepair",
+	"updateDelta": 10,
+	"script": "/quests/scripts/story/fuhardmodegaterepair.lua",
+	"prerequisites": ["fu_t10_initial"],
+	"moneyRange": [0, 0],
+	"scriptConfig": {
+		"portraits": {
+			"questComplete": "questReceiver",
+			"questStarted": "questReceiver"
+		},
+		"descriptions": {
+			"findEsther": "Return to ^orange;Khe^reset; at the ^orange;Science Outpost^reset;",
+			"repairGate": "Open the ^orange;Gate^reset;.",
+			"explore": "Use a ^orange;Dark Cave Beacon^reset;."
+		},
+		"caveUid": "ancientgate2",
+		"estherUid": "kheraeoutpost",
+		"instanceWorld":"fucavedungeont10",
+		"targetUid":"ancientgate2"
+	},
+	"rewards" : [ [ [ "fu_t10_human_mission1beacon", 1 ] ] ]
+}

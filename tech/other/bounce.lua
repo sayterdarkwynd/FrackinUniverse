@@ -20,7 +20,6 @@ function update(args)
 	local bounceFactor = config.getParameter("bounceFactor")
 
 	local curYVelocity = mcontroller.yVelocity()
-	local yVelChange = curYVelocity - self.lastYVelocity
 	self.lastYVelocity = curYVelocity
 
 	local activate = curYVelocity < -65
@@ -32,7 +31,7 @@ function update(args)
 		self.bounceTimer = self.bounceTimer - args.dt
 	end
 
-	if not self.active and activate and world.resolvePolyCollision(bounceCollisionPoly, mcontroller.position(), 1)
+	if not self.active and activate --and world.resolvePolyCollision(bounceCollisionPoly, mcontroller.position(), 1)
 	and status.overConsumeResource("energy", energyUsageRate * args.dt) then
 		status.setPersistentEffects("bounceTech", {{stat = "fallDamageMultiplier", effectiveMultiplier = 0}})
 		self.active = true

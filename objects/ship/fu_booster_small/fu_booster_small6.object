@@ -3,11 +3,11 @@
   "colonyTags": ["byos"],
   "scannable": false,
   "rarity": "legendary",
-  "description": "A small sub-light thruster. Somewhat increases interplanetary travel speed.\n^yellow;Ship Speed: +36\n^cyan;BYOS Only^white;",
+  "description": "A small sub-light thruster. Somewhat increases interplanetary travel speed.\n^yellow;Ship Speed: +36\n^cyan;BYOS Only^reset;",
   "shortdescription": "Small Ship Booster Mk6",
   "race": "generic",
 //  "learnBlueprintsOnPickup":["fu_booster_small7"],
-  
+
   "apexDescription": "A booster. These have been known to malfunction and explode.",
   "avianDescription": "A booster, the wings of a ship.",
   "floranDescription": "Ssscary fire.",
@@ -15,7 +15,7 @@
   "humanDescription": "This thing eats through fuel.",
   "hylotlDescription": "Propulsion.",
   "novakidDescription": "This flame 'ere has a powerful kick.",
-  
+
   "category": "light",
   "lightColor": [59, 183, 255],
   "pointLight": true,
@@ -49,20 +49,20 @@
       ]
     }
   ],
-  
+
   "fullbright": true,
-  
+
   "animation": "/objects/ship/boosters/boosterflame.animation",
-    
+
   "soundEffect": "/sfx/objects/smallboosterflame.ogg",
   "soundEffectRangeMultiplier": 0.5,
-  
+
   "scripts": [
     "/objects/ship/boosters/boosterflame.lua",
     "/objects/ship/fu_shipstatmodifier.lua"
   ],
   "scriptDelta": 32,
-  
+
   "touchDamage": {
     "poly": [
       [-0.75, 1],
@@ -75,7 +75,7 @@
     "damageType": "Environment",
     "damageSourceKind": "plasma"
   },
-  
+
   "flyingBoosterStates": {
     "none": "turnOff",
     "disembarking": "turnOn",
@@ -84,6 +84,6 @@
   },
   "stats": {
     "shipSpeed": 36
-  }, 
+  },
   "byosOnly": true
 }

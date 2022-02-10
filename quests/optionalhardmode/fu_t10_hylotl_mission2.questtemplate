@@ -1,0 +1,30 @@
+{
+	"id": "fu_t10_hylotl_mission2",
+	"prerequisites": [ "fu_t10_floranarena1" ],
+	"title": "Darkest Pages, Darkest Knowledge",
+	"text": "Hero visits the library! Right? Get events out of order sometimes. Kevin probably went there. Go look.",
+	"completionText": "Artifact had energy signature, yus. Different. Encoded message. Kevin's. \"There was no Kevin.\" That's...concerning. Well...cookie trail.",
+	"moneyRange": [0, 0],
+	"rewards" : [ [ [ "fu_t10_floranarena2beacon", 1 ] ] ],
+
+	"questGiverIndicator": "mainquestgiver",
+	"questReceiverIndicator": "mainquestreceiver",
+
+	"updateDelta": 10,
+	"script": "/quests/scripts/fuartifacthardmode.lua",
+	"scriptConfig": {
+		"portraits": {
+			"questStarted": "questGiver",
+			"questComplete": "questReceiver"
+		},
+		"associatedMission": "fuhylotlmission1t10",
+		"descriptions"	: {
+			"artifact": "Find the ^orange;artifact^reset; in the ^orange;Dark Pagoda Library^reset;",
+			"turnIn": "Return to ^orange;Kherae^reset; at ^orange;the Science Outpost^reset;"
+		},
+
+		"artifactUid": "hylotlartifactaltar",
+		"artifactMessage": "hylotlArtifactTaken",
+		"estherUid": "kheraeoutpost"
+	}
+}

@@ -1,14 +1,22 @@
 {
   "objectName" : "fu_solararray",
-  "rarity" : "Common",
-    "colonyTags" : [ "science" ],
+  "rarity" : "common",
+  "colonyTags" : [ "science" ],
   "category" : "wire",
   "price" : 300,
-  "description" : "Uses sunlight to generate electricity. It can generate much more power than smaller units. Can potentially generate over ^orange;8.5W^reset;.",
-  "shortdescription" : "^cyan;Solar Array^white;",
+  "description" : "Uses sunlight to generate electricity. It can generate much more power than smaller units. Can potentially generate over ^orange;10W^reset;.",
+  "shortdescription" : "^cyan;Solar Array^reset;",
   "race" : "generic",
   "printable" : false,
+  "tooltipKind" : "base",
 //  "learnBlueprintsOnPickup" : [ "isn_thermalgenerator", "fu_conduit", "fu_solararrayadv" ],
+
+  "apexDescription" : "The Miniknog tends not to care about renewable energy. There are all manner of theories as to why.",
+  "avianDescription" : "Just one of the many uses of the sun.",
+  "floranDescription" : "Machine get power from sssun like plant. Floran like it.",
+  "glitchDescription" : "Analytical. Atmospheric interference means this panel will generate less power at low altitudes.",
+  "humanDescription" : "I hope it doesn't rain. That'd block out the sun!",
+  "hylotlDescription" : "Only structures close to the surface of the ocean can use these. A pity.",
 
   "inventoryIcon" : "fu_solararray_icon.png",
   "orientations" : [
@@ -26,12 +34,12 @@
     "base" : "fu_solararray_base.png"
   },
   "animationPosition" : [0, 0],
-  
+
   "scripts" : [ "/scripts/fupower.lua","/objects/power/isn_solarpanel.lua" ],
   "scriptDelta" : 60,
-  
+
   "outputNodes" : [ [2, 1] ],
-  
+
   "isn_powerSupplier" : true,
   "powertype" : "output",
   "powerLevel" : 2.5

@@ -12,11 +12,13 @@ ignore = {
 	-- but the log would be flooded with 1000 "unused argument dt" or "unused argument shiftHeld".
 	"212", -- "unused argument"
 
+	-- Skip "empty if branch", most (if not all) current cases
+	-- seem to do this intentionally for better readability.
+	-- Alternative would be having ~50 inline comments "-- luacheck: ignore 542".
+	"542",
+
 	-- Cosmetic/irrelevant issues.
 	-- Wouldn't disable this for newly added files, but too many places to fix in existing code.
-	"611", -- line contains only whitespace
-	"612", -- line contains trailing whitespace
-	"614", -- trailing whitespace in a comment
 	"621", -- inconsistent indentation (SPACE followed by TAB)
 }
 
@@ -53,6 +55,16 @@ codes = true -- Show luacheck's error/warning codes. Useful for adding exception
 self = false
 
 exclude_files = {
+	"**/fu_metagui/**", -- Periodically synced with Stardust, any fixes in these files would be lost.
+
+	-- Legacy files (not currently used by the game).
 	"**/*unused*",
-	"**/*UNUSED*"
+	"**/*UNUSED*",
+	"**/communitygardenold.lua",
+	"**/monsters/fulegacyscripts/*",
+	"**/quests/scripts/test1.lua",
+	"**/stats/effects/fu_weaponeffects/swashbucklerpower.lua",
+
+	-- Example files (can have unreachable code, etc.)
+	"**/stats/effects/fu_armoreffects/setbonus_Templates/**"
 }

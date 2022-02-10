@@ -1,29 +1,30 @@
 {
   "kind" : "slimeperson",
-	"charCreationTooltip" : {
-	"title" : "Slime",
-	"subTitle" : "???",
-	"description" : "Symbiotes birthed from the fallen. Sentient. An unusual and resilient people who struggle to come to grips with where they came from.
+  "charCreationTooltip" : {
+  "title" : "Slime",
+  "subTitle" : "???",
+  "description" : "Symbiotes birthed from the fallen. Sentient. An unusual and resilient people who struggle to come to grips with where they came from.
 
-  ^orange;Diet^reset;: Omnivore
+^orange;Diet^reset;: Omnivore
 
 ^orange;Perks^reset;:
-  ^green;Resist^reset;: +^green;20^reset;% Electric, Poison, +^green;40^reset;% Fire
-  Fall Damage x^green;0.85^reset;
-  +^green;1^reset;% Health Regen
+  Fall Damage x^green;0.5^reset;
+  ^green;Resist^reset;: +^cyan;30^reset;% Poison, +^cyan;10^reset;% Radioactive, +^cyan;4^reset;% Electric, +^cyan;3^reset;% Cosmic
+  +^green;1^reset;% Health Regen (Constant)
   Tech: ^green;Sticky ball, Wall Grab^reset;
   ^cyan;Immune^reset;: Slime Bounce, Slime Stick, Poison, Webs
 
 ^orange;Environment^reset;:
   Gelatinous, Bog and Swamp biomes: Health x^green;1.25^reset; and +^green;15^reset;% Speed
   Cold biomes: Health x^red;0.75^reset;
+  Can breathe in liquid slime
 
 ^orange;Weapons^reset;:
-  Whips: Damage x^green;1.2^reset;, Defense x^green;1.12^reset;
-  Bio/Slime/Living: Damage x^green;1.15^reset;, +^green;20^reset;%^reset; Crit Damage
+  Whip Mastery:  x^green;15^reset;%
+  Bioweapon: Damage x^green;1.15^reset;, +^green;20^reset;%^reset; Crit Damage
 
 ^red;Weaknesses^reset;:
-  ^red;Resist^reset;: -^red;50^reset;% Ice, -^red;25^reset;% Radiation
+  ^red;Resist^reset;: -^red;20^reset;% Fire & Ice
   +^red;25^reset;% Hunger Drain"
   },
   "nameGen" : [ "/species/slimepersonmalenamegen.config:names", "/species/slimepersonfemalenamegen.config:names" ],
@@ -39,8 +40,7 @@
   // Empty Hands
       { "item" : "flagslimeperson" },
       { "item" : "slimegoo" },
-      { "item" : "raceEffectEnablerSlime" },
-	
+
 // Anvil
       { "item" : "slimepersontier1head" },
       { "item" : "slimepersontier1chest" },
@@ -87,9 +87,10 @@
 
 // Biochemist Table
       { "item" : "shoategg" },
+      { "item" : "slimebioluminescence" },
       { "item" : "slimebiolumepp" }
-	
-	  ]
+
+    ]
   },
 
   "altOptionAsUndyColor" : true,

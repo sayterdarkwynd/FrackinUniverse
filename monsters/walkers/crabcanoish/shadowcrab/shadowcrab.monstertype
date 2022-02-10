@@ -2,7 +2,7 @@
   "type" : "shadowcrab",
   "shortdescription" : "Shadow Shell",
   "description" : "Don't let these guys erupt in your face. You won't like it.",
-  
+
   "categories" : [ "shadowcrab" ],
   "parts" : [ "body" ],
 
@@ -18,10 +18,10 @@
     "electricbow" : "huntingchitincold",
     "cosmicbow" : "huntingchitincold",
     "radioactivebow" : "huntingchitincold",
-    "shadowbow" : "huntingchitincold"     
+    "shadowbow" : "huntingchitincold"
     }
   ],
-  
+
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
@@ -42,7 +42,7 @@
       "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
 
       "fleeActions" : [],
-  
+
       "hostileActions" : [
         {
           "name" : "action-fire",
@@ -97,18 +97,18 @@
           }
         }
       ],
-      
+
       "damageTakenActions" : [
         {
-          "name" : "action-statuseffect", 
+          "name" : "action-statuseffect",
           "cooldown" : 10,
           "parameters" : {
           "effect" : "mage_shield_lvl1shadowcrab",
           "duration" : 5
           }
-        }      
+        }
       ],
-      
+
      "deathActions" : [
         {
           "name" : "action-projectile",
@@ -245,7 +245,7 @@
         "damageAbsorption" : {
           "deltaValue" : 0.0,
           "initialValue" : 0.0
-        },    
+        },
         "stunned" : {
           "deltaValue" : -1.0,
           "initialValue" : 0.0
@@ -262,8 +262,8 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "shadowcrab" }
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "shadowcrab" }
   }
 }
 

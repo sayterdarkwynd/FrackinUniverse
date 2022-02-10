@@ -9,14 +9,16 @@ function init()
 	if config.getParameter("isTar",0)==1 then
 		activateVisualEffects("fade=300030=0.8")
 	end
-
+	self.groundMovementModifier = config.getParameter("moveMod",1)
+	self.speedModifier = config.getParameter("speedMod",1)
+	self.airJumpModifier = config.getParameter("jumpMod",1)
 end
 
 function update(dt)
 	mcontroller.controlModifiers({
-		groundMovementModifier = config.getParameter("moveMod",1),
-		speedModifier = config.getParameter("speedMod",1),
-		airJumpModifier = config.getParameter("jumpMod",1)
+		groundMovementModifier = self.groundMovementModifier,
+		speedModifier = self.speedModifier,
+		airJumpModifier = self.airJumpModifier
 	})
 end
 

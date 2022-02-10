@@ -1,0 +1,54 @@
+{
+  "projectileName" : "magnorbshadowveluu",
+  "image" : "magnorbshadow.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 1.0,
+  "speed" : 50,
+  "damageKind" : "shadowplasma",
+  "physics" : "laser",
+  "fullbright" : true,
+  "bounces" : 0,
+  "piercing" : false,
+  "timeToLive" : 3,
+  "lightColor" : [63, 0, 76],
+
+  "actionOnReap" : [ ],
+  "statusEffects" : [ "shadowgasfx" , "entropicwardpenalty"],
+  "actionOnCollide" : [
+    {
+      "action" : "projectile",
+      "type" : "ngravityexplosion",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.33,
+      "angleAdjust" : -35
+    },
+    {
+      "action" : "projectile",
+      "type" : "ngravityexplosion",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.33,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "ngravityexplosion",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.33,
+      "angleAdjust" : 35
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/weapons/magnorbproto_impact1.ogg",
+        "/sfx/weapons/magnorbproto_impact2.ogg",
+        "/sfx/weapons/magnorbproto_impact3.ogg"
+      ]
+    }
+  ],
+
+  "scripts" : [ ]
+}

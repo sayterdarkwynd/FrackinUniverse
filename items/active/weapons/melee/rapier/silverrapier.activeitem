@@ -3,7 +3,7 @@
   "price" : 170,
   "level" : 2,
   "maxStack" : 1,
-  "rarity" : "uncommon",
+  "rarity" : "common",
   "description" : "Pierces through any elemental defenses.",
   "shortdescription" : "Silver Rapier",
   "tooltipKind" : "sword2",
@@ -19,7 +19,7 @@
   },
   "animationCustom" : { },
   "critChance" : 1,
-  "critBonus" : 1, 
+  "critBonus" : 1,
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
   "elementalType" : "silverweapon",
@@ -27,7 +27,10 @@
   "primaryAbilityType" : "piercecombo",
   "primaryAbility" : {
     "fireTime" : 0.42,
-    "baseDps" : 5.25
+    "baseDps" : 5.25,
+    "damageConfig" : {
+      "damageSourceKind":"silverweapon"
+    }
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

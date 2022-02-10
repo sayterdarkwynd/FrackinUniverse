@@ -191,7 +191,7 @@ function Weapon:setOwnerDamageAreas(damageConfig, damageAreas, damageTimeout)
   self.ownerDamageWasSet = true
   self.ownerDamageCleared = false
   local damageSources = {}
-  for i, area in ipairs(damageAreas) do
+  for _, area in ipairs(damageAreas) do
     table.insert(damageSources, self:damageSource(damageConfig, area, damageTimeout))
   end
   activeItem.setDamageSources(damageSources)
@@ -207,7 +207,7 @@ function Weapon:setDamageAreas(damageConfig, damageAreas, damageTimeout)
   self.damageWasSet = true
   self.damageCleared = false
   local damageSources = {}
-  for i, area in ipairs(damageAreas) do
+  for _, area in ipairs(damageAreas) do
     table.insert(damageSources, self:damageSource(damageConfig, area, damageTimeout))
   end
   activeItem.setItemDamageSources(damageSources)

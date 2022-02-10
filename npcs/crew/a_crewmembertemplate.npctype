@@ -4,7 +4,7 @@
   //baseType is set to fu_crewmember by default in order to ignore the racial dialogue vanilla has. Feel free to set it to "crewmember" if you don't plan on doing unique dialogue.
 
   //Custom crew protection, power and permanent effects. Delete or ignore if you don't plan on giving them any of these.
-  "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20}, "nofallcrew" ],
+  "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20}, {"stat" : "fallDamageMultiplier", "effectiveMultiplier" : 0} ],
 
   "scriptConfig" : {
     "crew" : {
@@ -14,27 +14,27 @@
         "legs" : "protectoratepants",
         "back" : "raggedprotectoratecape"
       },
-	  
+
       "role" : {
         "type" : "soldier", //This is a fallback in case there's no 'name' field.
         "name" : "Template Crewmate", //The player-facing name of the crewmate, e.g. "Researcher", "Agaran Sellsword" etc.
         "field" : "Mod developer", //Used for the joke-y subtitles in the recruit offer and SAIL, can be the same as 'name'.
-		
+
         "uniformColorIndex" : 1, //The colour of their uniform. Can be deleted and their costumes will be un-dyed.
-		
-		//Note that FU armour sometimes doesn't have alternate colours, or doesn't recolour as expected. Always test your crew.
-		//1: Black, 2: Grey, 3: White, 4: Red, 5: Orange, 6: Yellow, 7: Green, 8: Blue, 9: Purple, 10: Pink, 11: Brown
-		
+
+        //Note that FU armour sometimes doesn't have alternate colours, or doesn't recolour as expected. Always test your crew.
+        //1: Black, 2: Grey, 3: White, 4: Red, 5: Orange, 6: Yellow, 7: Green, 8: Blue, 9: Purple, 10: Pink, 11: Brown
+
         "benefits" : [ //The benefits the crewmember gives
           {
-		  //Ephemeral effects are applied when you beam down, and in combat when the crewmember is nearby. Think medics/chemists.
+          //Ephemeral effects are applied when you beam down, and in combat when the crewmember is nearby. Think medics/chemists.
             "type" : "EphemeralEffect",
             "effect" : "glow",
             "duration" : 1
           },
-		  
+
           {
-		  //Ship benefits apply to your ship passively.
+          //Ship benefits apply to your ship passively.
             "type": "ShipUpgradeBenefit",
             "property": "maxFuel",
             "value": 1
@@ -111,11 +111,11 @@
     "default" : [ //Values other than "default" let you assign racial weapons to the crewmate. Not commonly used in crew.
       [0, [ //This is a world-tier parameter, ignore it because players are probably using contracts on their ship.
           {
-			// Main hand. Can list as many options as you want (for all weapon slots).
+            // Main hand. Can list as many options as you want (for all weapon slots).
             "primary" : [ "aegisaltpistol3", "aegisaltpistol" ],
-			// Off hand. Make sure all primaries are compatible with all secondaries, delete if primary is 2h.
+            // Off hand. Make sure all primaries are compatible with all secondaries, delete if primary is 2h.
             "secondary" : [ "pandorasboxprotectorateshield" ],
-			
+
             "sheathedprimary" : [ "aegisaltpistol3" ], // Main hand, secondary option. Very optional.
             "sheathedsecondary" : [ "pandorasboxprotectorateshield" ] // Off hand, secondary option. Very optional.
           }

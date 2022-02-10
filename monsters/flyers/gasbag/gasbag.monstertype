@@ -9,21 +9,21 @@
   "animation" : "gasbag.animation",
 
   "dropPools" : [ { "default" : "gasbagLoot"} ],
-  
+
 
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
-    ], 
+    ],
       "renderLayer" : "ForegroundEntity",
       "behavior" : "monster",
       "deathBehavior" : "monster-death",
       "aggressive" : false,
       "seeThroughLiquid" : true,
-      
+
     "behaviorConfig" : {
       "damageOnTouch" : true,
-      
+
       "targetQueryRange" : 20,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
@@ -34,7 +34,7 @@
 
       "fleeActions" : [ ],
 
-      "hostileActions" : [ 
+      "hostileActions" : [
         {
           "name" : "action-charge",
           "cooldown" : 2.5,
@@ -75,7 +75,7 @@
             "inaccuracy" : 3,
             "fireOffset" : [0, 1]
           }
-        }      
+        }
       ],
 
       "approachActions" : [
@@ -84,7 +84,7 @@
           "parameters" : {
             "usePathfinding" : false,
             "minRange" : 4,
-            "maxRange" : 12            
+            "maxRange" : 12
           }
         }
       ],
@@ -93,8 +93,8 @@
         {
         "name":"approach-fly",
         "parameters":{
-          "targetOffset":[0,5], 
-          "minRange":1, 
+          "targetOffset":[0,5],
+          "minRange":1,
           "maxRange":15
           }
         }
@@ -104,10 +104,10 @@
         {
           "name" : "emerge-fly",
             "flyState" : "hidden"
-        },      
+        },
         {
           "name" : "wander-fly",
-          
+
           "parameters" : {
             "wanderTime" : [2,4],
             "groundDistance" : 8,
@@ -120,8 +120,8 @@
 
       "concurrentActions" : [ ],
 
-      "concurrentHostileActions" : [ 
-      
+      "concurrentHostileActions" : [
+
        {
           "name" : "action-fire",
           "cooldown" : 2,
@@ -144,12 +144,12 @@
             "projectileInterval" : 0.05,
             "projectileParameters" : {
               "timeToLive" : 2,
-              "speed" : 25            
+              "speed" : 25
             },
             "winddownState" : "idle",
             "winddownTime" : 0.8
           }
-        },             
+        },
        {
           "name" : "action-fire",
           "cooldown" : 40,
@@ -173,7 +173,7 @@
             "winddownState" : "firewinddown",
             "winddownTime" : 3.7
           }
-        }      
+        }
       ],
 
       "damageTakenActions" : [
@@ -188,7 +188,7 @@
 
             "invulnerableTime" : 2
           }
-        }     
+        }
       ],
 
       "invulnerableActions" : [
@@ -200,8 +200,8 @@
           }
         }
       ],
-      
-      
+
+
       "deathActions" : [
         {
           "name" : "action-projectile",
@@ -218,7 +218,7 @@
           }
         }
       ]
-      
+
     },
 
     "touchDamage" : {
@@ -330,7 +330,7 @@
         },
         "captureImmunity" : {
           "baseValue" : 1
-        }  
+        }
       },
 
       "resources" : {
@@ -351,8 +351,8 @@
     "capturable" : true,
     "captureHealthFraction" : 0.05,
     "capturedMonsterName" : "Gas Bag",
-    "capturedMonsterType" : "gasbag2", // turn into an adultpoptop when captured    
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "gasbag2" }
+    "capturedMonsterType" : "gasbag2", // turn into an adultpoptop when captured
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "gasbag2" }
   }
 }

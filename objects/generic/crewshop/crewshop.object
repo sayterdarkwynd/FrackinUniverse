@@ -1,111 +1,45 @@
 {
-	"objectName" : "crewshop",
-	"colonyTags" : ["crafting"],
-	"rarity" : "Uncommon",
-	"race" : "generic",
-	"category" : "crafting",
-	
-	//this is handled by the lua
-	"breakDropOptions" : [],
+  "objectName" : "crewshop",
+  "colonyTags" : ["crafting"],
+  "rarity" : "Uncommon",
+  "race" : "generic",
+  "category" : "crafting",
+  "description" : "Get your meat shields here. ^green;Research^reset; contracts in the ^orange;Craftsmanship^reset; tree.",
+  "shortdescription" : "^orange;Hiring Office^reset;",
+  "price" : 50,
+  "printable" : false,
 
-	"price" : 50,
-	"printable" : false,
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/craftingcrewshop.config",
+    "paneLayoutOverride" : {
+      "windowtitle" : {"title" : "","subtitle" : "","icon" : {"file" : ""}}
+    },
+    "filter" : [ "crewcontract" ]
+  },
 
-	"scripts" : [ "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua" ],
+  "inventoryIcon" : "crewshopIcon.png",
+  "placementImage" : "crewshop.png:default.default",
+  "placementImagePosition" : [-64, 0],
 
-	"animation" : "crewshop.animation",
-	"animationPosition" : [0, 28],
-	
-	"inventoryIcon" : "crewshopIcon.png",
-	"placementImage" : "crewshop.png:default.default",
-	"placementImagePosition" : [-64, 0],		
+  "animation" : "crewshop.animation",
+  "animationPosition" : [0, 28],
 
-	"description" : "Exchange pixels for living bullet shields.",
-	"shortdescription" : "^orange;Hiring Office^white;",
-
-	"startingUpgradeStage" : 1,
-	"maxUpgradeStage" : 1,
-
-	"upgradeStages" : [
-		{
-			"animationState" : "tier1",
-
-			"itemSpawnParameters" : {
-				"inventoryIcon" : "crewshopIcon.png",
-				"placementImage" : "crewshop.png:default.default",
-				"placementImagePosition" : [-64, 0],		
-
-				"description" : "Exchange pixels for living bullet shields. ^green;Research^reset; contracts in the ^orange;Craftsmanship^reset; tree.",
-				"shortdescription" : "^orange;Hiring Office^white;"
-			},
-
-			"interactData" : {
-				"config" : "/interface/windowconfig/craftingcrewshop.config",
-				"paneLayoutOverride" : {
-					"windowtitle" : {
-						"title" : " Hiring Office",
-						"subtitle" : " ^#b9b5b2;Hire crew members for your ship.",
-						"icon" : {
-							"file" : "/interface/crafting/crewshopIcon.png"
-						}
-					}
-				},
-				"filter" : [ "crewcontract" ],
-				
-				"upgradeMaterials" : [
-					{ "item" : "titaniumbar", "count" : 15 },
-					{ "item" : "silverbar", "count" : 10 },
-					{ "item" : "copperbar", "count" : 10 }			 
-				]
-			},
-
-			"upgradeSoundEffect" : "fanfare",
-			"upgradeParticleEffect" : "dust"
-		},
-
-		{
-			"animationState" : "tier2",
-
-			"itemSpawnParameters" : {
-				"inventoryIcon" : "crewshopIcon.png",
-				"placementImage" : "crewshop.png:default.default",
-				"placementImagePosition" : [-64, 0],		
-
-				"description" : "Exchange pixels for living bullet shields.",
-				"shortdescription" : "^orange;crewshop^white;"
-			},
-
-			"interactData" : {
-				"config" : "/interface/windowconfig/crewshop.config",
-				"paneLayoutOverride" : {
-					"windowtitle" : {
-						"title" : " Fabricant Anvil",
-						"subtitle" : " ^#b9b5b2;Weapons and Armor",
-						"icon" : {
-							"file" : "/interface/crafting/crewshopBody.png"
-						}
-					}
-				},
-				"filter" : [ "crewcontract" ]				
-			}
-		}
-	],
-
-	"orientations" : [
-		{
-			"image" : "crewshop.png:<color>.<frame>",
-			"imagePosition" : [-64, 0],
-			"direction" : "left",
-			"flipImages" : true,
-			"spaceScan" : 0.1,
-			"anchors" : [ "bottom" ]
-		},
-		{
-			"image" : "crewshop.png:<color>.<frame>",
-			"imagePosition" : [-64, 0],
-			"direction" : "right",
-			"spaceScan" : 0.1,
-			"anchors" : [ "bottom" ]
-		}
-	]
+  "orientations" : [
+    {
+      "image" : "crewshop.png:<color>.<frame>",
+      "imagePosition" : [-64, 0],
+      "direction" : "left",
+      "flipImages" : true,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "crewshop.png:<color>.<frame>",
+      "imagePosition" : [-64, 0],
+      "direction" : "right",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
 }

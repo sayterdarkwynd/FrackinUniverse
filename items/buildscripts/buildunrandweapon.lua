@@ -55,6 +55,7 @@ function build(directory, config, parameters, level, seed)
 	-- elemental type and config (for alt ability)
 	local elementalType = configParameter("elementalType", "physical")
 	replacePatternInData(config, nil, "<elementalType>", elementalType)
+	replacePatternInData(config, nil, "<elementalName>", elementalType:gsub("^%l", string.upper))
 
 	if (type(config.altAbility)=="table") and (type(config.altAbility.elementalConfig)=="table") and (type(elementalType)=="string") and ((type(config.altAbility.elementalConfig[elementalType])=="table") or (type(config.altAbility.elementalConfig["physical"])=="table")) then
 		--The difference is here, i added an if null-coalescing operation that checks if the alt ability has the elementalType in the elementalConfig list and replaces it with the physical type if it doesn't exist.
@@ -95,7 +96,7 @@ function build(directory, config, parameters, level, seed)
 	if type(config.inventoryIcon) == "string" then
 		config.inventoryIcon = config.inventoryIcon .. config.paletteSwaps
 	else
-		for i, drawable in ipairs(config.inventoryIcon) do
+		for _, drawable in ipairs(config.inventoryIcon) do
 			if drawable.image then drawable.image = drawable.image .. config.paletteSwaps end
 		end
 	end

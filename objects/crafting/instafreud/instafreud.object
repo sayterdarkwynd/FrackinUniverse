@@ -13,8 +13,22 @@
   "inventoryIcon" : "instafreud.png",
   "orientations" : [
     {
-      "dualImage" : "instafreud.png:<color>",
+      "image" : "instafreud.png:<color>",
+      "sitCoverImage" : "/objects/crafting/instafreud/instafreudcover.png",
 
+	  "direction" : "right",
+      "imagePosition" : [-28, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "instafreudflip.png:<color>",
+      "sitCoverImage" : "/objects/crafting/instafreud/instafreudcoverflip.png",
+
+	  "direction" : "left",
       "imagePosition" : [-28, 0],
       "frames" : 1,
       "animationCycle" : 1.0,
@@ -29,7 +43,6 @@
   "sitPosition" : [-4, 20],
   "sitOrientation" : "sit",
   "sitAngle" : 0,
-  "sitCoverImage" : "/objects/crafting/instafreud/instafreudcover.png",
   "sitEmote" : "sleep",
   "sitStatusEffects" : [ "madnesslossfreud" ],
   "sitEffectEmitters" : [ "cosmicdust" ]

@@ -3,8 +3,8 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Uncommon",
-  "description" : "^orange;Set Bonuses^reset;:  
+  "rarity" : "rare",
+  "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; ^cyan;Slowfall^reset;
 ^yellow;^reset; Fall Damage x^green;0.75^reset;
 ^yellow;^reset; Magnorbs/Energy: Damage x^green;1.2^reset; and +^green;5^reset;% Crit Chance
@@ -23,7 +23,6 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-
 
 //  "learnBlueprintsOnPickup" : [
 //  "kirhostier5spants",
@@ -54,13 +53,13 @@
       "stat" : "maxHealth",
       "amount" : 4
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "electricResistance",
       "amount" : 0.032
     }
   ],
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "offensive", "ranged" ],
   "statusEffects" : [
     "invadersetbonus",
     {
@@ -107,5 +106,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

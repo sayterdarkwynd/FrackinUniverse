@@ -1,0 +1,33 @@
+{
+	"projectileName":"fuitemmagnetprojectile1",
+	"physics":"laser",
+	"timeToLive":1,
+	"image":"invisibleprojectile.png",
+
+	"actionOnReap":[],
+	"speed":0,
+	"power":0,
+
+	"onlyHitTerrain":true,
+
+	"boundBox":[-20, -20, 20, 20],
+	"physicsForces":{
+		"pull":{
+			"type":"RadialForceRegion",
+			"categoryWhitelist":["itemdrop"],
+			"outerRadius":20,
+			"innerRadius":3,
+			"targetRadialVelocity":-20,
+			"controlForce":300
+		}
+	},
+
+	"renderLayer":"Player+1",
+	"orientationLocked":true,
+	"fullbright":true,
+	"emitters":[ ],
+
+	"scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+	"piercing":true,
+	"bounces":-1
+}

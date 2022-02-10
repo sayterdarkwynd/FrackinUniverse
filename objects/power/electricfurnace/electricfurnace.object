@@ -3,7 +3,7 @@
   "rarity" : "uncommon",
   "colonyTags" : [ "science" ],
   "description" : "A powered furnace which can smelt all ^gray;common^reset; and ^green;uncommon^reset; ores, and some basic materials. ^cyan;Requires ^orange;12W ^cyan;power.^reset;",
-  "shortdescription" : "^cyan;Electric Furnace^white;",
+  "shortdescription" : "^cyan;Electric Furnace^reset;",
   "race" : "generic",
   "category" : "^orange;Extraction Device^reset;",
   "price" : 500,
@@ -21,7 +21,7 @@
 
   "animationParts" : {
     "fu_blastfurnace" : "electricfurnace.png",
-	"fu_blastfurnacefullbright" : "electricfurnacefullbright.png"
+  "fu_blastfurnacefullbright" : "electricfurnacefullbright.png"
   },
   "animationPosition" : [0, 0],
 
@@ -40,12 +40,13 @@
   "outputNodes" : [ [2, 1] ],
 
   "powertype" : "input",
-  "isn_requiredPower" : 12,
+  "isn_requiredPower" : 12,//this is multiplied by fu_timer, which is how long between crafts, so it averages to 12W
   "fu_timer" : 1,
-  "fu_extraConsumptionChance" : 0.333,
+  //"fu_extraConsumptionChance" : 0.333,
+  "fu_extraProductionChance":0.17,//chance to produce extra stuff from the bonus table. 50% (original rate) - chance to consume (33%) = 17%
 
   "inputsToOutputs": {
-   
+
     //Common Ores (T1/T2)
     "ironore": "ironbar",
     "tungstenore": "tungstenbar",
@@ -55,7 +56,7 @@
     "solarishard": "solaricrystal",
     "moonstoneore": "moonstonebar",
     "plutoniumore": "plutoniumrod",
-    
+
     //Uncommon Ores (T3/Durasteel)
     "titaniumore": "titaniumbar",
     "penumbriteore": "penumbriteshard",
@@ -63,27 +64,31 @@
     "zerchesiumore": "zerchesiumbar",
     "durasteelore": "durasteelbar",
     "uraniumore": "uraniumrod",
-    
+
     //Rare Ores (T4/T5)
     //"irradiumore": "irradiumbar",
     //"triangliumore": "triangliumpyramid",
     //"prisiliteore": "prisilitestar",
     //"quietusore": "quietusbar",
-    //"effigiumore": "effigiumbar",
     //"aegisaltore": "refinedaegisalt",
     //"violiumore": "refinedviolium",
     //"feroziumore": "refinedferozium",
     //"corruptionore": "corruptionseed",
     //"neptuniumore": "neptuniumrod",
     //"thoriumore": "thoriumrod",
-    
+
     //Legendary Ores (T6)
+    //"effigiumore": "effigiumbar",
     //"solariumore": "solariumstar",
     //"pyreiteore": "pyreitebar",
     //"isogenore": "isogenbar",
     //"xithriciteore": "xithricitecrystal",
     //"densiniumore": "densiniumbar",
-    
+
+    //Essential Ores (T7+)
+    //"nocxiumore" : "nocxiumbar",
+
+
     //Reagents
     "cinnabarore": "ff_mercury",
     "magnesiumore": "magnesiumpowder",
@@ -95,13 +100,14 @@
     //"graphene": "fu_carbon",
     //"morphiteore": "aliencompound",
     //"ff_plastic": "silk",
-    
+
     //"fu_hydrogenmetallic": "liquidmetallichydrogen",
     //"deuterium": "liquiddeuterium",
-    
-    
+
+
     //Tiles (Electric furnace)
     "bonematerial": "bonemealmaterial",
+    "bookpiles": "ash",
     "clay": "firedclay",
     "firedclay": "brickmaterial",
     "drysand": "glass",
@@ -109,7 +115,8 @@
     "obsidian": "blackglass",
     "sand": "limestone",
     "sand2": "glass",
-    
+    "retexsand2": "glass",
+
     //Tiles (Blast furnace+Arc)
     //"alienrock": "ff_silicon",
     //"blaststone": "ff_silicon",
@@ -123,16 +130,15 @@
     //"moonstone": "ff_silicon",
     //"protorockmaterial": "fu_carbon",
     //"treasurehoard" : "money",
-    
+
     //Other/Non-FU
-    //"platinumore": "platinumbar",
     "luckycoin":"luckycoin_khe"
-    
+
   },
 
   "bonusOutputs": {
-  
-    
+
+
     //Common Ores (T1/T2)
     "ironore": {"fu_carbon": 25,"lead": 23,"liquidironfu": 10,"fu_carbondioxide": 30},
     "tungstenore": { "fu_hydrogen": 22, "fu_carbon": 25 },
@@ -142,7 +148,7 @@
     "solarishard": { "liquidnitrogenitem": 26, "fu_carbon": 25 },
     "moonstoneore": { "helium3gasliquid": 28, "fu_carbon": 25 },
     "plutoniumore": {"lead": 6,"neptuniumore": 6,"unstableparticles": 6},
-    
+
     //Uncommon Ores (T3/Durasteel)
     "titaniumore": {"ff_silicon": 26, "fu_carbondioxide": 30},
     "penumbriteore": { "liquiddarkwater": 28, "phasematter": 9 },
@@ -150,29 +156,31 @@
     "zerchesiumore": { "liquidironfu": 28, "fu_carbon": 25 },
     "durasteelore": { "fu_nitrogen": 22, "fu_carbon": 25 },
     "uraniumore": {"lead": 6,"thoriumore": 6,"unstableparticles": 6},
-    
+
     //Rare Ores (T4/T5)
     //"irradiumore": { "liquidirradium": 38, "fu_carbon": 25 },
     //"triangliumore": { "ff_mercury": 28, "ff_silicon": 25 },
     //"prisiliteore": { "liquidgravrain": 25, "fu_oxygen": 25 },
     //"quietusore": { "shadowgasliquid": 22, "ff_silicon": 25 },
-    //"effigiumore": { "deuterium": 42, "iodine": 45 },
     //"aegisaltore": { "helium3gasliquid": 22, "staticcell": 20 },
     //"feroziumore": { "fu_hydrogen": 22, "iodine": 25 },
     //"violiumore": { "fu_carbon": 28 },
     //"corruptionore": { "liquiddarkwater": 28, "unstableparticles": 9 },
     //"neptuniumore": {"lead": 6,"uraniumore": 6,"unstableparticles": 6},
     //"thoriumore": { "lead": 8, "unstableparticles": 10 },
-    
+
     //Legendary Ores (T6)
+    //"effigiumore": { "deuterium": 42, "iodine": 45 },
     //"solariumore": { "ultronium": 8 },
     //"pyreiteore": { "scorchedcore": 32, "volatilepowder": 35 },
     //"isogenore": { "icecrystal": 32, "cryonicextract": 35 },
     //"xithriciteore": { "solaricrystal": 32, "staticcell": 35 },
     //"densiniumore": { "liquidironfu": 28, "fu_carbon": 25 },
-    
-    
-    
+
+    //Essential Ores (T7+)
+    //"nocxiumore" : { "liquidelderfluid" : 80, "ff_mercury" : 50, "ultronium" : 20 },
+
+
     //Reagents
     "cinnabarore": { "fu_nitrogen": 28, "fu_carbon": 25 },
     "magnesiumore": { "magnesiumpowder": 28, "fu_oxygen": 25 },
@@ -183,20 +191,22 @@
     //"graphene": { "fu_carbon": 28, "liquidwater": 25 },
     //"morphiteore": { "liquidbioooze": 33, "fu_nitrogen": 25 },
     //"ff_plastic": { "fu_carbon": 28, "agaranichor": 25 },
-    
+
     //"fu_hydrogenmetallic": { "fu_hydrogen": 52, "tungstenore": 25 },
     //"deuterium": { "tritium": 15, "fu_hydrogenmetallic": 15 },
-    
-    
+
+
     //Tiles (Electric furnace)
     "bonematerial": { "liquidoil": 16 },
+    "bookpiles": { "fu_carbondioxide": 28, "liquidwater": 25 },
     "clay": { "firedclay": 90 },
     "firedclay": { "brickmaterial": 90 },
     "drysand": { "fu_carbon": 8 },
     "mud": { "mudstonematerial": 90 },
     "sand": { "fu_carbon": 8 },
-    "sand2": { "fu_carbon": 8 }//,
-    
+    "sand2": { "fu_carbon": 8 },
+    "retexsand2": { "fu_carbon": 8 }//,
+
     //Tiles (Blast furnace+Arc)
     //"alienrock": {"fu_nitrogen": 21,"vialproto": 18,"liquidnitrogenitem": 16,"fu_carbondioxide": 30},
     //"bars": { "ironore": 26 },
@@ -213,10 +223,9 @@
     //"protorockmaterial": {"fu_nitrogen": 11,"aliencompound": 18,"liquidbioooze": 24,"fu_carbondioxide": 30},
     //"rustyblock": { "fu_carbon": 26 },
     //"rustymetal": { "fu_carbon": 26 },
-    //"treasurehoard": { "silverbar": 48, "goldbar": 48 },
-    
+    //"treasurehoard": { "silverbar": 48, "goldbar": 48 }
+
     //Other/Non-FU
-    //"platinumore": {"ff_silicon": 26, "fu_carbondioxide": 30}
-    
+
   }
 }

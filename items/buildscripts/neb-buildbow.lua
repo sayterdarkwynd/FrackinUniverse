@@ -54,12 +54,10 @@ function build(directory, config, parameters, level, seed)
 	setupAbility(config, parameters, "alt")
 	setupAbility(config, parameters, "primary")
 
-	local primaryAbility=configParameterDeep("primaryAbility")
-	local altAbility=configParameterDeep("altAbility")
-
 	-- elemental type
 	local elementalType = parameters.elementalType or config.elementalType or "physical"
 	replacePatternInData(config, nil, "<elementalType>", elementalType)
+	replacePatternInData(config, nil, "<elementalName>", elementalType:gsub("^%l", string.upper))
 
 	-- calculate damage level multiplier
 	config.damageLevelMultiplier = root.evalFunction("weaponDamageLevelMultiplier", configParameter("level", 1))

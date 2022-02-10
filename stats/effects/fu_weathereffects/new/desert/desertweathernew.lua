@@ -1,22 +1,6 @@
 require("/scripts/vec2.lua")
 require("/stats/effects/fu_weathereffects/new/fuWeatherBase.lua")
 
---================================== NOTES ==================================--
---[[
-The old desert weather had an additional effect where if the player had less
-than 25% of their max health, they would receive a movement penalty. I have not
-ported this behaviour yet. It could be re-implemented later, but I think it
-would be a good idea to add a new SAIL warning message which plays when the
-penalty is applied.
-
-TODO: The heatwave{1,2,3} weather effects are a little bit odd. They
-share the desert heat effects, but probably don't occur on desert planets...
-(Actually, heatwave2 and heatwave3 aren't used.) They could use a proper
-revamp, and removing duplication with "heatweathernew" would be a good idea.
-
--Wannas (Wannas16)
-]]--
-
 --============================= CLASS DEFINITION ============================--
 --[[ This instantiates a child class of fuWeatherBase. The child's metatable
     is set to the parent's, so that any missing indexes (methods) are looked

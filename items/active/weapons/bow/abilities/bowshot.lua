@@ -47,13 +47,14 @@ end
 function BowShot:reset()
 	animator.setGlobalTag("drawFrame", "0")
 	self.weapon:setStance(self.stances.idle)
+	status.setStatusProperty(activeItem.hand().."Firing",nil)
 end
 
 function BowShot:draw()
 	self.weapon:setStance(self.stances.draw)
 
 	animator.playSound("draw")
-
+	status.setStatusProperty(activeItem.hand().."Firing",true)
 	while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
 		if self.walkWhileFiring then mcontroller.controlModifiers({runningSuppressed = true}) end
 
@@ -104,6 +105,7 @@ function BowShot:fire()
 	end
 
 	self.cooldownTimer = self.cooldownTime
+	status.setStatusProperty(activeItem.hand().."Firing",false)
 end
 
 function BowShot:perfectTiming()
@@ -113,8 +115,7 @@ end
 function BowShot:currentProjectileParameters()
 	local projectileParameters = copy(self.projectileParameters or {})
 	local projectileConfig = root.projectileConfig(self:perfectTiming() and self.powerProjectileType or self.projectileType)
-	projectileParameters.speed = projectileParameters.speed or projectileConfig.speed
-	projectileParameters.speed = projectileParameters.speed * root.evalFunction(self.drawSpeedMultiplier, self.drawTime)
+	projectileParameters.speed = (projectileParameters.speed or projectileConfig.speed) * root.evalFunction(self.drawSpeedMultiplier, self.drawTime) * (1+status.stat("arrowSpeedMultiplier"))
 	projectileParameters.power = projectileParameters.power or projectileConfig.power
 	--projectileParameters.power = projectileParameters.power* self.weapon.damageLevelMultiplier* root.evalFunction(self.drawPowerMultiplier, self.drawTime) + BowShot:setCritDamage(damage)
 	projectileParameters.power = Crits.setCritDamage(self, projectileParameters.power* self.weapon.damageLevelMultiplier* root.evalFunction(self.drawPowerMultiplier, self.drawTime))

@@ -1,6 +1,6 @@
 {
   "itemName" : "autocrossbow",
-  "price" : 1800,
+  "price" : 800,
   "inventoryIcon" : "autocrossbow.png",
   "maxStack" : 1,
   "rarity" : "Legendary",
@@ -29,7 +29,7 @@
 		  }
 		}
       }
-    },   
+    },
     "sounds" : {
       "fire" : [ "/sfx/gun/crossbow1.ogg" ]
     }
@@ -46,13 +46,13 @@
     "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
     "class" : "GunFireFixed",
     "fireTime" : 0.2,
-    
+
     "baseDps" : 10,
     "energyUsage" : 60,
-    "muzzleNoFlash" : true,    
+    "muzzleNoFlash" : true,
     "runSlowWhileShooting" : true,
-    "useEnergy" : true,    
-    
+    "useEnergy" : true,
+
     "inaccuracy" : 0.008,
 
     "projectileCount" : 1,
@@ -95,12 +95,12 @@
   "critBonus" : 3,
   "isCrossbow" : 1,
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  
-  
+
+
   "upgradeParameters" : {
     "shortdescription" : "^cyan;Assail^reset; ^yellow;^reset;",
   "description" : "So fast it blows minds.",
-  
+
   "animationParts" : {
     "butt" : "",
     "middle" : "autocrossbow2.png",
@@ -108,9 +108,9 @@
     "barrel" : "",
     "muzzleFlash" : ""
     },
-    "inventoryIcon" : [{ "image" : "autocrossbow2.png" } ],  
+    "inventoryIcon" : [{ "image" : "autocrossbow2.png" } ],
     "critChance" : 3,
-    "critBonus" : 5,  
+    "critBonus" : 5,
     "stances" : {
       "cooldown" : {
         "duration" : 0.05,
@@ -121,7 +121,7 @@
         "allowRotate" : false,
         "allowFlip" : false
       }
-    },    
+    },
 	  "primaryAbility" : {
 	    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
 	    "class" : "GunFire",
@@ -129,6 +129,6 @@
 	    "fireTime" : 0.05,
 
 	    "projectileType" : "autobolt2"
-	    }   
+	    }
   }
 }

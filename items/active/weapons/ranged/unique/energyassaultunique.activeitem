@@ -1,0 +1,132 @@
+{
+  "itemName" : "energyassaultunique",
+  "price" : 160,
+  "inventoryIcon" : "energyassault3.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "A highly overtuned energy rifle with a plain steel body.
+^yellow;High efficiency^reset;
+^yellow;Counts as 'Energy' for set bonuses^reset;",
+  "shortdescription" : "Wailin' Banshee",
+  "category" : "assaultRifle",
+  "level" : 4,
+  "tooltipKind" : "gununique",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "energyassault3.png",
+    "middlefullbright" : "energyassault1afullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.0, 0.2]
+		  }
+		}
+      }
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "plasmafireflames", "offset" : [0.4, -0.4] },
+          { "particle" : "electricenergy", "offset" : [0.4, -0.4] },
+          { "particle" : "daggerblue", "offset" : [0.4, -0.4] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/energyassault.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.0, 0.2],
+  "muzzleOffset" : [1.645, 0.225],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "silverweapon",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.2,
+    "baseDps" : 9,
+    "energyUsage" : 37.0,
+    "inaccuracy" : 0.05,
+
+    "projectileCount" : 2,
+    "fireType" : "auto",
+
+    "projectileType" : "armcannonfire",
+    "projectileParameters" : {
+      "speed" : 62,
+      "knockback" : 2,
+      "damageKind" : "silverweapon"
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 4,
+  "critBonus" : 2,
+
+  "altAbilityType" : "burstshot",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+"upgradeParameters" : {
+    "shortdescription" : "^cyan;Mr.Dependable^reset; ^yellow;^reset;",
+  "description" : "You've gone and made it even better.
+^yellow;High efficiency^reset;",
+  "critChance" : 5,
+  "critBonus" : 3,
+    "primaryAbility" : {
+      "fireTime" : 0.15,
+      "baseDps" : 9.2,
+      "energyUsage" : 40.0,
+      "projectileCount" : 3,
+      "inaccuracy" : 0.06,
+
+      "projectileType" : "armcannonfire",
+      "projectileParameters" : {
+        "speed" : 72,
+        "knockback" : 4,
+        "damageKind" : "silverweapon"
+      }
+    }
+  }
+}

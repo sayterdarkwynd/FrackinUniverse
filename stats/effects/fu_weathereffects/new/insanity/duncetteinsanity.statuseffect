@@ -1,64 +1,63 @@
 {
 	"name" : "duncetteinsanity",
-	"blockingStat" : "",
 
 	"effectConfig" : {
-     "typerParticleConfig" : {
-      "particle" : {
-        "color" : [0, 0, 0, 205],
-        "size" : 1,
-        "fade" : 0.7,
-        "destructionTime" : 0.8,
-        "initialVelocity" : [0, 4],
-        "finalVelocity" : [0, 0],
-        "timeToLive" : 0,
-        "destructionAction" : "shrink"
-      },
+		"typerParticleConfig" : {
+			"particle" : {
+				"color" : [0, 0, 0, 205],
+				"size" : 1,
+				"fade" : 0.7,
+				"destructionTime" : 0.8,
+				"initialVelocity" : [0, 4],
+				"finalVelocity" : [0, 0],
+				"timeToLive" : 0,
+				"destructionAction" : "shrink"
+			},
 
-      "spawnInterval" : 5,
-      "writeInterval" : 0.05,
-      "printTextInOrder" : false,
-      "loopOrderedText" : true,
-      "spacing" : [1, 1.5],
-      "boundingBox" : [ 0, 0 ],
-      "texts" : [
-        "kill",
-        "KILL",
-        "flesh",
-        "catch the sky",
-        "dream",
-        "dream deeply",
-        "consume",
-        "work 8 hours",
-        "play 8 hours",
-        "sleep 8 hours",
-        "watch your back",
-        "they're out to get you",
-        "drown",
-        "forget the truth",
-        "bury the lies",
-        "never tell the truth",
-        "devour",
-        "weep",
-        "sleep",
-        "Never sleep again",
-        "drink in all suffering",
-        "agony calls you"
-      ],
+			"spawnInterval" : 5,
+			"writeInterval" : 0.05,
+			"printTextInOrder" : false,
+			"loopOrderedText" : true,
+			"spacing" : [1, 1.5],
+			"boundingBox" : [ 0, 0 ],
+			"texts" : [
+				"kill",
+				"KILL",
+				"flesh",
+				"catch the sky",
+				"dream",
+				"dream deeply",
+				"consume",
+				"work 8 hours",
+				"play 8 hours",
+				"sleep 8 hours",
+				"watch your back",
+				"they're out to get you",
+				"drown",
+				"forget the truth",
+				"bury the lies",
+				"never tell the truth",
+				"devour",
+				"weep",
+				"sleep",
+				"Never sleep again",
+				"drink in all suffering",
+				"agony calls you"
+			],
 
-    // All of these are optional
-      "controllers" : {
-        "color" : [125, 50, 25, 0],
-        "colorLoop" : true,
-        "size" : 0.005,
-        "sizeMax" : 10,
-        "timeToLive" : 1,
-        "timeToLiveMax" : 5,
-        "boundingBox" : [3, 3],
-        "boundingBoxMax" : [50, 50]//,
-        //"spacing" : [1, 1.5]
-      }
-    }, 
+		// All of these are optional
+			"controllers" : {
+				"color" : [125, 50, 25, 0],
+				"colorLoop" : true,
+				"size" : 0.005,
+				"sizeMax" : 10,
+				"timeToLive" : 1,
+				"timeToLiveMax" : 5,
+				"boundingBox" : [3, 3],
+				"boundingBoxMax" : [50, 50]//,
+				//"spacing" : [1, 1.5]
+			}
+		},
 
 		"resistanceTypes" : {
 			"cosmicResistance" : 1.0,
@@ -73,20 +72,23 @@
 		"speedPenalty" : 0,
 		"jumpPenalty" : 0,
 
-		"debuffRate" : 8,
+		//at these rates, they complete in 360s exact
+		"debuffRate" : 9,//time in seconds
 		"debuffStartDelay" : 0,
 		"debuffs" : {
 			"healingBonus":{
-				"amount":-0.05,
+				"amount":-0.5,
 				"cap":-2
 			},
 			"protection" : {
-				"amount" : -1,
-				"cap" : -10
+				"amount" : -2.5,//amount per interval
+				"cap" : -100,
+				"type" : "effectiveMultiplier"
 			},
 			"maxEnergy" : {
-				"amount" : -1,
-				"cap" : -1
+				"amount" : -2.25,
+				"cap" : -90,
+				"type" : "effectiveMultiplier"
 			}
 		},
 
@@ -106,11 +108,11 @@
 			"intro" : "fubiomeinsanity",
 			"wet" : "insanityeffectliquid",
 			"fast" : "insanityeffectfast",
-			"zeroG" : "insanityEffectgrav",
+			"zeroG" : "insanityeffectgrav",
 			"airborne" : [
-				"insanityEffectair",
-				"insanityEffectair2",
-				"insanityEffectair3"
+				"insanityeffectair",
+				"insanityeffectair2",
+				"insanityeffectair3"
 			],
 			"injured" : [
 				"insanityeffectdying",

@@ -33,7 +33,7 @@ end
 function clearPatternArea(pattern)
   local initialPos = vec2.add(self.position, {-pattern.offset[1] - 1, -pattern.offset[2] - 1})
   for y, layer in pairs(pattern.layoutTable) do
-		for x, expectedId in pairs(layer) do
+    for x in pairs(layer) do
       local tileToDestroy = vec2.add(initialPos, {x, y})
       world.damageTiles({tileToDestroy}, "foreground", tileToDestroy, "blockish", 10000, 0)
     end

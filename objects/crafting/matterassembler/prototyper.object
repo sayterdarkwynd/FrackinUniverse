@@ -21,7 +21,7 @@
   "placementImagePosition" : [-28, 0],
 
   "description" : "^cyan;(Frackin' Universe main table)^reset; Craft all sorts of useful gear.",
-  "shortdescription" : "^orange;Machining Table^white;",
+  "shortdescription" : "^orange;Machining Table^reset;",
 
 
   "startingUpgradeStage" : 1,
@@ -37,26 +37,17 @@
         "placementImagePosition" : [-28, 0],
 
         "description" : "Craft all sorts of complex gear.",
-        "shortdescription" : "^orange;Machining Table^white;"
+        "shortdescription" : "^orange;Machining Table^reset;"
       },
 
       "interactData" : {
         "config" : "/interface/windowconfig/prototyper.config",
         "paneLayoutOverride" : {
-          "windowtitle" : {
-            "title" : " Machining Table",
-            "subtitle" : " ^#b9b5b2;Create complex gear",
-            "icon" : {
-              "file" : ""
-            }
-          }
+          "windowtitle" : {"title" : " ","subtitle" : " ","icon" : {"file" : ""}},
+          "lblTitle" : {"value" : " ^#00ff85;Machining Table^reset;"},
+          "lblSubTitle" : {"value" : " ^#dddddd;Create tech and components."}
         },
-
         "filter" : [ "prototyper1" ],
-		
-    //    "initialRecipeUnlocks" : [ "fu_upgradetable", "powerstation", "petpicrepair", "servitorloader", "bothealingstation", "genecabinet", "genestorage", "polymer", "laserdiode", "wiretoolfu", "fu_alternatorgenerator", "fu_woodensifter", "siliconboard","electromagnet", "wire", "microscope", "handmill", "nanofabricator", "armory", "designlab", "sproutingtable", "fu_growingtray", "farmwell", "eggincubator", "heavypipe", "fulabpipe", "labtechpanel", "fu_autobeamer3bugs", "portablelight", "crewcontract_science", "fm_musicplayer", "apexbox", "avianbox", "elduukharbox", "feneroxbox", "floranbox", "glitchbox", "humanbox", "hylotlbox", "juuxbox", "kirhosbox", "mantizibox", "nightarbox", "novakidbox", "peglacibox", "radienbox", "skathbox", "slimebox", "tenebrhaebox", "thelusianbox", "veluubox", "fu_racialiser", "fu_shipcraftingtable" ],
-    
-
     "upgradeMaterials" : [
           { "item" : "tungstenbar", "count" : 10 },
           { "item" : "siliconboard", "count" : 2 },
@@ -78,26 +69,17 @@
         "placementImagePosition" : [-28, 0],
 
         "description" : "Create more complicated gear",
-        "shortdescription" : "^orange;Auto-Assembler^white;"
+        "shortdescription" : "^orange;Auto-Assembler^reset;"
       },
 
       "interactData" : {
         "config" : "/interface/windowconfig/prototyper.config",
         "paneLayoutOverride" : {
-          "windowtitle" : {
-            "title" : " Auto-Assembler",
-            "subtitle" : " ^#b9b5b2;Complex gear",
-            "icon" : {
-              "file" : ""
-            }
-          }
+          "windowtitle" : {"title" : " ","subtitle" : " ","icon" : {"file" : ""}},
+          "lblTitle" : {"value" : " ^#00ff85;Auto-assembler^reset;"},
+          "lblSubTitle" : {"value" : " ^#dddddd;Create more complex gear."}
         },
         "filter" : [ "prototyper1", "prototyper2" ],
-		
-		
- //       "initialRecipeUnlocks" : [ "fu_craftinfo","instafreud", "fuelcatalyst", "fu_upgradetable", "labcomputer2", "labcomputer3","fu_autobeamer3farmbeasts","mechassemblystation", "fusubcontroller", "powerstation", "mechcraftingtable", "mechrepairpod", "miningbench", "checkpoint", "petpicrepair", "servitorloader", "bothealingstation", "genecabinet", "genestorage", "polymer", "laserdiode", "wiretoolfu", "fu_alternatorgenerator", "fu_woodensifter", "siliconboard", "electromagnet", "wire", "microscope", "handmill", "nanofabricator", "armory", "designlab", "sproutingtable", "fu_growingtray", "farmwell", "eggincubator", "heavypipe", "fulabpipe", "labtechpanel", "fu_autobeamer3bugs", "portablelight", "fulabhoverplatform", "fulabhoverpanel", "labvendingmachine", "techconsole", "xenostation", "apexcoolshelf2",  "apexpod2", "electronmicroscope", "titaniumwallblockmaterial", "speedblockmaterial", "jumpblockmaterial", "extractionlab", "manipulatormodule", "upgrademodule", "techcard", "crewcontract_gas", "crewcontract_sciencedrug", "crewcontract_scuba", "fm_musicplayer", "apexbox", "avianbox", "elduukharbox", "feneroxbox", "floranbox", "glitchbox", "humanbox", "hylotlbox", "juuxbox", "kirhosbox", "mantizibox", "nightarbox", "novakidbox", "peglacibox", "radienbox", "skathbox", "slimebox", "tenebrhaebox", "thelusianbox", "veluubox", "fu_racialiser", "fu_shipcraftingtable" ],
-      
-
 
 	  "upgradeMaterials" : [
           { "item" : "titaniumbar", "count" : 6 },
@@ -122,188 +104,20 @@
         "placementImagePosition" : [-28, 0],
 
         "description" : "Create advanced technology.",
-        "shortdescription" : "^orange;Matter Assembler^white;"
+        "shortdescription" : "^orange;Matter Assembler^reset;"
       },
 
       "interactData" : {
         "config" : "/interface/windowconfig/prototyper.config",
         "paneLayoutOverride" : {
-          "windowtitle" : {
-            "title" : " Matter Assembler",
-            "subtitle" : " ^#b9b5b2;Advanced technology",
-            "icon" : {
-              "file" : ""
-            }
-          }
+          "background" : {"fileHeader" : "/interface/windowconfig/newuiheader_dark_upgraded.png"},
+          "windowtitle" : {"title" : " ","subtitle" : " ","icon" : {"file" : ""}},
+          "lblTitle" : {"value" : " ^#00ff85;Matter Assembler^reset;"},
+          "lblSubTitle" : {"value" : " ^#dddddd;Create advanced technology."}
         },
         "filter" : [ "prototyper1", "prototyper2", "prototyper3" ],
-        "craftingSound" : "/sfx/interface/crafting_furnacetech.ogg"//,
-		
-		
-  //      "initialRecipeUnlocks" : [
-  //      "instafreud", "fuelcatalyst", "fu_upgradetable", "mechassemblystation", "fusubcontroller", "fu_autobeamer3farmbeasts",
- //       "mechcraftingtable",
- //       "mechrepairpod",
- //       "miningbench",
-  //      "checkpoint",
-  //      "petpicrepair",
-  //      "servitorloader",
-  //      "bothealingstation",
-  //      "genecabinet",
-  //      "genestorage",
-  //      "polymer",
-  //      "laserdiode",
-  //      "wiretoolfu",
-  //      "fu_alternatorgenerator",
-  //      "fu_woodensifter",
-  //      "siliconboard",
-  //      "electromagnet",
-  //      "wire",
- //       "microscope",
- //       "handmill",
-  //      "nanofabricator",
- //       "armory",
- //       "designlab",
-  //      "sproutingtable",
-  //      "fu_growingtray",
-  //      "farmwell",
-  //      "eggincubator",
- //       "heavypipe",
-  //      "fulabpipe",
-  //      "labtechpanel",
-  //      "fu_autobeamer3bugs",
-  //      "portablelight",
-  //      "fulabhoverplatform",
- //       "fulabhoverpanel",
-  //      "labvendingmachine",
-  //      "techconsole",
-  //      "xenostation",
-  //      "apexcoolshelf2",
-  //      "apexpod2",
- //       "electronmicroscope",
-  //      "titaniumwallblockmaterial",
-  //      "speedblockmaterial",
-   //     "jumpblockmaterial",
-  //      "extractionlab",
-  //      "clonelab",
-  //      "gravgen",
-   //     "antigravgen",
-   //     "fu_craftinfo",
-   //     "powerstation",
- //       "manipulatormodule",
- //       "upgrademodule",
- //      "techcard",
-  //      "crewcontract_gas", "crewcontract_sciencedrug", "crewcontract_scuba",
-  //      "microformeraliendesert",
-  //      "microformeralienforest",
-  //      "microformerbadlands",
-  //      "microformerbirchforest",
-  //      "microformerblackslimebog",
-  //      "microformerblisterbushfield",
-  //      "microformerbloodgulch",
-  //      "microformerbloodstonefield",
-  //      "microformercactiplace",
-   //     "microformercalichefield",
-  //      "microformercellfield",
- //       "microformercloudforest",
- //       "microformercorrupt",
-  //      "microformercorruptedforest",
-  //      "microformercorruptmoon",
-  //      "microformercrystaldesert",
-  //      "microformercrystalswamp",
-   //     "microformercrystalplain",
-  //      "microformerdeadwood",
-  //      "microformerdesertoasis",
-  //      "microformerdryriverbed",
- //       "microformerelder",
- //       "microformerenergyorbforest",
- //       "microformerffhive",
-  //      "microformerhellhive",
-  //      "microformergoreforest",
-  //      "microformerhauntedforest",
-  //     "microformerhauntedgraveyard",
-  //      "microformerhellfirefield",
-  //      "microformerhotsprings",
-  //      "microformericefire",
-  //      "microformerirradiatedwaste",
-  //      "microformermagicsnowland",
-  //      "microformermeadow",
-  //      "microformermetalhive",
-  //      "microformermetaljungle",
-   //     "microformerpineforest",
-  //      "microformerpitchfield",
-  //      "microformerprimevalforest",
- //       "microformerrainbowforest",
-  //      "microformerreddesert",
-  //      "microformersnowyforest",
-  //      "microformersulphuricmagma",
-  //      "microformersupermatterzone",
-  //      "microformertaiga",
-  //      "microformerwartfield",
-   //     "terraformeralien",
-   //     "terraformerarboreal",
-   //     "terraformerarboreal2",
-   //     "terraformeratropus",
-  //      "terraformerbog",
-  //      "terraformerchromatic",
-  //      "terraformercrystalmoon",
-  //      "terraformerdesert",
- //       "terraformerdesertwastes",
- //       "terraformereden",
- //       "terraformerforest",
-  //      "terraformerfrozenvolcanic",
-  //      "terraformerfungus",
-  //      "terraformergarden",
-  //      "terraformericemoon",
-  //      "terraformericewaste",
-  //      "terraformerinfernus",
-  //      "terraformerirradiated",
-  //      "terraformerjungle",
-  //      "terraformerlightless",
- //       "terraformermidnight",
-  //      "terraformermountainous",
-  //      "terraformerpenumbra",
-  //      "terraformerprotoworld",
-  //      "terraformerscorched",
-  //      "terraformersavannah",
-  //      "terraformerslimeworld",
-  //      "terraformersnow",
-  //      "terraformersulphuric",
-  //      "terraformertarball",
-  //      "terraformerthickjungle",
-  //      "terraformertundra",
-  //      "terraformervolcanic",
-  //      "futeleporter2",
- //       "nanostove",
-//	"fm_musicplayer",
- //       "apexbox", 
- //       "avianbox", 
- //       "elduukharbox", 
- //       "feneroxbox", 
- //       "floranbox", 
-  //      "glitchbox", 
- //       "humanbox", 
- //       "hylotlbox", 
- //       "juuxbox", 
- //       "kirhosbox", 
- //       "mantizibox", 
-  //      "nightarbox", 
-  //      "novakidbox", 
-  //      "peglacibox", 
- //       "radienbox", 
- //       "skathbox", 
- //       "slimebox", 
- //       "tenebrhaebox", 
- //       "thelusianbox", 
- //       "veluubox",
-//	"fu_racialiser",
-//	"fu_shipcraftingtable"
-  //      ]
-   
-
-   }//,
-
-  //    "learnBlueprintsOnPickup" : [ "labdoorhuge", "labhatchhuge", "labhatchplatformlarge" ]
+        "craftingSound" : "/sfx/interface/crafting_furnacetech.ogg"
+      }
     }
   ],
 

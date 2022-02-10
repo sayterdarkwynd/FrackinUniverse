@@ -4,7 +4,7 @@
   "rarity" : "Common",
   "category" : "decorative",
   "price" : 200,
-  "printable" : false,  
+  "printable" : false,
   "description" : "A Precursor power junction. It's broken.",
   "shortdescription" : "Precursor Artifact",
   "inventoryIcon" : "metallicceiling4.png",
@@ -14,12 +14,27 @@
     {
       "imageLayers" : [ { "image" : "metallicceiling4.png:<color>.<frame>", "fullbright" : true }, { "image" : "metallicceiling4fullbright.png:<color>.<frame>" } ],
       "imagePosition" : [0, -1],
+
+      "direction" : "right",
+
       "frames" : 1,
       "animationCycle" : 0.5,
 
       "spaceScan" : 0.1,
       "anchors" : [ "top" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "metallicceiling4.png:<color>.<frame>", "fullbright" : true }, { "image" : "metallicceiling4fullbright.png:<color>.<frame>" } ],
+      "imagePosition" : [0, -1],
 
+      "direction" : "left",
+      "flipImages" : true,
+
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
     }
   ]
 }

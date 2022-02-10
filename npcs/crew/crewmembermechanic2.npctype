@@ -6,7 +6,7 @@
     "crew" : {
       "defaultUniform" : {
       },
-	  
+
       "role" : {
         "type" : "mechanic",
         "name" : "Chief Mechanic",
@@ -16,9 +16,8 @@
         "benefits" : [
           {
             "type" : "PersistentEffect",
-            "property" : "shipMass",
-            "value" : 0.8
-          },              
+            "effect" : "shipMassMed"
+          },
           {
             "type" : "ShipUpgradeBenefit",
             "property" : "fuelEfficiency",
@@ -33,7 +32,7 @@
         "roleDescription" : {
           "default" : {
             "default" : [
-              "I'll keep clearing out the carborator while I'm here. Fuel costs are down by 20% and Ship Mass has decreased by 20%."
+              "I'll keep clearing out the carborator while I'm here. Fuel costs are down by 20% and ^cyan;Ship Mass has decreased by 20%^reset;."
             ]
           }
         }

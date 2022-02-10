@@ -75,7 +75,7 @@ function eyeBeamAttack.update(dt, stateData)
 					-- rotate the eyebeam animation to aim at user
 					local animationAngle = math.atan(-toTargetAim[2], math.abs(toTargetAim[1]))
 					animator.rotateGroup("projectileAim", animationAngle)
-					entity.targetSnapshot = toTargetAim
+					entity.targetSnapshot = toTargetAim -- luacheck: ignore 122
 
 			end
 			return false

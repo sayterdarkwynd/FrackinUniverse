@@ -3,7 +3,7 @@
   "price" : 800,
   "level" : 3,
   "maxStack" : 1,
-  "rarity" : "common",
+  "rarity" : "uncommon",
   "description" : "A lethal edge cuts foes deep.
 ^cyan;Inflicts bleeding^reset;
 ^yellow;6 hit combo^reset;",
@@ -28,25 +28,25 @@
 
   "primaryAbilityType" : "katanacombo",
   "primaryAbility":{
-    "fireTime":0.85, 
-    "baseDps":5.0, 
+    "fireTime":0.85,
+    "baseDps":5.0,
     "damageConfig":{
       "knockback":20
-      }, 
+      },
       "comboSteps":6,
-	    "stepDamageConfig" : [
-		{"baseDamageFactor":0.5, "knockback":10}, 
-		{"baseDamageFactor":0.8, "knockback":15}, 
-		{"baseDamageFactor":0.6, "knockback":5}, 
-		{"baseDamageFactor":1.0, "knockback":8},
-		{"baseDamageFactor":0.6, "knockback":7},
-		{"baseDamageFactor":0.7, "knockback":8, "statusEffects":["bleedingshort"]}        
-	    ]         
-    }, 
+      "stepDamageConfig" : [
+    {"baseDamageFactor":0.5, "knockback":10},
+    {"baseDamageFactor":0.8, "knockback":15},
+    {"baseDamageFactor":0.6, "knockback":5},
+    {"baseDamageFactor":1.0, "knockback":8},
+    {"baseDamageFactor":0.6, "knockback":7},
+    {"baseDamageFactor":0.7, "knockback":8, "statusEffects":["bleedingshort"]}
+      ]
+    },
 
   "critChance" : 1,
   "critBonus" : 3,
-  
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

@@ -28,14 +28,13 @@ function applyStats(multiplier)
 		end
 	end
 	if storage.appliedStats.stats then
-		for objectStat, statAmount in pairs (storage.appliedStats.stats) do
+		for objectStat in pairs (storage.appliedStats.stats) do
 			statChange(objectStat)
 		end
 	end
 end
 
 function statChange(stat)
-	local baseAmount = world.getProperty("fu_byos." .. stat) or 0
 	world.setProperty("fu_byos." .. stat,0)
 end
 
@@ -49,7 +48,7 @@ function validCheck(new)
 		world.setProperty(maxAmountProperty, 0)
 	end
 	if storage.appliedStats.maxAmountGroups then
-		for groupName, groupMaxAmount in pairs (storage.appliedStats.maxAmountGroups) do
+		for groupName in pairs (storage.appliedStats.maxAmountGroups) do
 			local maxAmountProperty = "fu_byos.group." .. groupName
 			world.setProperty(maxAmountProperty, 0)
 		end

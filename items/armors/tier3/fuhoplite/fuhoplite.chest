@@ -4,13 +4,13 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Common",
+  "rarity" : "uncommon",
   "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; +^green;20^reset;% Shield Regen, +^green;10^reset;% Shield Bash/Push
 ^yellow;^reset; +^green;12^reset;% Knockback Resist
 ^yellow;^reset; (Short) Spears: +^green;3^reset;% Crit Chance
 ^yellow;^reset; Mountainous^reset;: +^green;2.5^reset;% Crit Chance
-^yellow;^reset; ^cyan;Immune: Proto-Poison",
+^yellow;^reset; ^cyan;Immune: Proto-Poison^reset;",
   "shortdescription" : "Hoplite Plate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -26,7 +26,7 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "offensive", "melee" ],
   "level" : 3,
   //"collectablesOnPickup" : { "fu_armormelee" : "fuhoplitechest" },
   "leveledStatusEffects" : [
@@ -50,7 +50,7 @@
       "stat" : "maxHealth",
       "amount" : 5
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "physicalResistance",
       "amount" : 0.025
@@ -58,9 +58,9 @@
   ],
 
   "statusEffects" : [
-    "fusetbonusmanager",
+    "hoplitesetbonus",
     {
-      "stat" : "hoplitesetcount",
+      "stat" : "fu_hopliteset_chest",
       "amount" : 1
     }
   ],
@@ -92,5 +92,5 @@
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

@@ -47,7 +47,7 @@ end
 
 function findTarget()
   local candidates = world.monsterQuery(mcontroller.position(), self.snapRange, {boundMode = "collisionarea", order = "nearest"})
-  for i, eid in ipairs(candidates) do
+  for _, eid in ipairs(candidates) do
 	 promises:add(world.sendEntityMessage(eid, "pet.restoreHealth"), function (isPet)
         if isPet then
 		  self.targetEntity = eid

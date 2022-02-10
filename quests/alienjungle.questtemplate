@@ -1,32 +1,31 @@
-  {
-  "id" : "alienjungle.gearup",
-  "title" : "^green;Brine Star",
-  "text" : "The ancient map gives me directions to a deep underground jungle on a far-off, remote planet. What will I find there?",
-  "completionText" : "That was truly harrowing! Did I manage to find all the secret rooms?",
-  "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questReceiver"
-  },
-  "moneyRange" : [0, 0],
-  "missionUnlockedCinema" : "/cinematics/coordinates.cinematic",
-  "rewards" : [
-      [ 
-        [ "ancient_tech" ], 
-        [ "cuddlehorse", 1 ], 
-        [ "ixodoomaf", 1 ], 
-        [ "fuscienceresource", 5000 ] 
-        ]
-   ],
-  "canBeAbandoned" : true,
+	{
+	"id" : "alienjungle.gearup",
+	"title" : "^green;Brine Star",
+	"text" : "The ancient map gives me directions to a deep underground jungle on a far-off, remote planet. What will I find there?",
+	"completionText" : "That was truly harrowing! Did I manage to find all the secret rooms?",
+	"portraits" : {
+		"questStarted" : "questGiver",
+		"questComplete" : "questReceiver"
+	},
+	"moneyRange" : [0, 0],
+	"missionUnlockedCinema" : "/cinematics/coordinates.cinematic",
+	"rewards" : [
+		[
+			[ "ancient_tech" ],
+			[ "cuddlehorse", 1 ],
+			[ "ixodoomaf", 1 ],
+			[ "fuscienceresource", 5000 ]
+		]
+	],
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 		"portraits" : {
-		"default" : "player"
+			"default" : "player"
 		},
-	"associatedMission" : "alienjungle",
-    "turnInDescription" : "Explore the entirety of the Brine Star ruins.",
-    "requireTurnIn" : true
-  }
+		"associatedMission" : "alienjungle",
+		"turnInDescription" : "Explore the entirety of the Brine Star ruins.",
+		"requireTurnIn" : true
+	}
 }

@@ -1,0 +1,30 @@
+{
+	"id": "fu_t10_apex_mission2",
+	"prerequisites": [ "fu_t10_floranarena3" ],
+	"title": "Dark Imperator",
+	"text": "Next on da list, smacking da monkey. Okay, not that kind. Go kill a Big Ape.",
+	"completionText": "Okay, mew is really really concerned now. New Kevin message. \"My fault. All my fault. ALL MY FAULT.\" Very unlike him. What his fault though?",
+	"moneyRange": [0, 0],
+	"rewards" : [ [ [ "fu_t10_precursorbeacon", 1 ] ] ],
+
+	"questGiverIndicator": "mainquestgiver",
+	"questReceiverIndicator": "mainquestreceiver",
+
+	"updateDelta": 10,
+	"script": "/quests/scripts/fuartifacthardmode.lua",
+	"scriptConfig": {
+		"portraits": {
+			"questStarted": "questGiver",
+			"questComplete": "questReceiver"
+		},
+		"associatedMission": "fuapexmission1t10",
+		"descriptions"	: {
+			"artifact": "Find the ^orange;artifact^reset; in the ^orange;Dark Miniknog stronghold^reset;",
+			"turnIn": "Return to ^orange;Khe^reset; at ^orange;the Science Outpost^reset;"
+		},
+
+		"artifactUid": "apexartifactaltar",
+		"artifactMessage": "apexArtifactTaken",
+		"estherUid": "kheraeoutpost"
+	}
+}

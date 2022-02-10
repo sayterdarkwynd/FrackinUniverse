@@ -2,6 +2,7 @@ require "/scripts/util.lua"
 require "/scripts/epoch.lua"
 require "/scripts/vec2.lua"
 require "/scripts/effectUtil.lua"
+require "/scripts/fuPersistentEffectRecorder.lua"
 
 function init()
 	-- passive research gain
@@ -9,22 +10,21 @@ function init()
 	self.madnessResearchBonus = 0
 	self.researchBonus = 0
 
-	self.researchCount = player.currency("fuscienceresource") or 0
-	self.protheonCount = player.currency("fuprecursorresource")/10 or 0
+	self.researchCount = player.currency("fuscienceresource")
+	self.protheonCount = player.currency("fuprecursorresource")/10
 	if self.protheonCount > 10 then -- protheon bonus never surpasses 100 in calculations (+10, as we use protheonCount / 10)
 		self.protheonCount = 10
 	end
-	self.madnessCount = player.currency("fumadnessresource") or 0
-	self.geneCount = player.currency("fugeneticmaterial") or 0
+	self.madnessCount = player.currency("fumadnessresource")
+	self.geneCount = player.currency("fugeneticmaterial")
 
 	self.baseVal = config.getParameter("baseValue") or 1
 	self.timerCounter = 0
 	self.environmentTimer = 0
 
 	self.timer = 10.0 -- was zero, instant event on plopping in. giving players a short grace period. some of us teleport around a LOT.
-	local buffer=status.activeUniqueStatusEffectSummary()
-	for _,v in pairs(buffer) do
-		if buffer[1]=="mad" then
+	for _,effect in ipairs(status.activeUniqueStatusEffectSummary()) do
+		if effect[1]=="mad" then
 			status.removeEphemeralEffect("mad")
 			status.addEphemeralEffect("mad",self.timer)
 			break
@@ -39,7 +39,7 @@ function init()
 
     storage.crazycarrycooldown=math.max(storage.crazycarrycooldown or 0,10.0)
 
-  
+
 	--make sure the annoying sounds dont flood
 	status.removeEphemeralEffect("partytime5madness")
 	status.removeEphemeralEffect("partytime5")
@@ -63,10 +63,10 @@ function init()
 	local buffer={}
 
 
-	storage.armorSetData=storage.armorSetData or {}
-	message.setHandler("recordFUArmorSetBonus",function(_,_,setName) storage.armorSetData[setName]=os.time() end)
+	--storage.armorSetData=storage.armorSetData or {}--moved into a separate setup
+	fuPersistentEffectRecorder.init()
 
-	for element,data in pairs(elementalTypes) do
+	for _,data in pairs(elementalTypes) do
 		if data.resistanceStat then
 			buffer[data.resistanceStat]=true
 		end
@@ -93,11 +93,23 @@ function indexOf(t,v1)
 	return index
 end
 
+function forceInts(inTable)
+	if type(inTable)~="table" then return end
+	local buffer={}
+	for k,v in pairs(inTable) do
+		buffer[k]=tonumber(v)
+	end
+	return buffer
+end
+
 function streakCheck(val)
+	val=tonumber(val)
 	if not storage.streakTable then
 		storage.streakTable={}
+		table.insert(storage.streakTable,val)
 		return false
 	end
+	storage.streakTable=forceInts(storage.streakTable)
 	if val <= 0 then
 		return false
 	end
@@ -133,14 +145,14 @@ function randomEvent()
 	while (not didRng) or streakCheck(math.max(0,self.randEvent)) do
 		self.randEvent=math.random(1,100)
 		--mentalProtection can make it harder to be affected
-		if (self.currentProtectionAbs>0.0) and (self.isProtectedRandVal <= self.currentProtectionAbs) then
+		if (self.currentProtectionAbs>0.0) and (self.isProtectedRandVal <= self.currentProtection) then
 			self.randEvent = math.max(0,self.randEvent - util.round(self.currentProtection * 10)) --math.random(10,70) --it doesnt *remove* the effect, it just moves it further up (or down) the list, and potentially off of it.
 		end
 		didRng=true
 	end
 
 	-- are we currently carrying any really weird stuff?
-	local carryWeird=isWeirdStuff(self.timer)
+	isWeirdStuff(self.timer)
 
 	--set duration of curse
 	self.curseDuration = math.min(self.timer,self.madnessCount / 5)--this value will be adjusted based on effect type. Clamping this because it's too much otherwise. --highest duration (285.71) is reached at 1428.57. duration at max madness: 150.
@@ -419,7 +431,7 @@ end
 
 function update(dt)
 	storage.crazycarrycooldown=math.max(0,(storage.crazycarrycooldown or 0) - dt)
-	handleSetOrphans(dt)
+	fuPersistentEffectRecorder.update(dt)
 	--anti-afk concept: check vs a set of 8 points, referring to the 8 'cardinal' directions. If a person moves far enough past one of the last recorded point, the afk timer is reset.
 	--if the player doesn't move enough, a timer will increment. once that timer gets over a certain point, the player is flagged as afk via status property, which is global and thus we only need this code running in one place.
 	--afk timer and recorded points are reset when the script resets.
@@ -462,18 +474,14 @@ function update(dt)
 		self.madnessResearchBonus = 0
 		self.researchBonus = 0
 
-		if (world.threatLevel() > 1) then --is the world a higher threat level?
+		if (world.threatLevel() > 1) then --if we are on a biome above tier 1, then we do things
 			if (self.environmentTimer > 300) then -- has at least 5 minutes elapsed? If so, begin applying exploration bonus
-				self.threatBonus = world.threatLevel() / 1.5 -- set the base calculation
-                if (self.threatBonus < 2) then -- make sure its never less than 2 if we are on a biome above tier 1
-					self.threatBonus = 1
-			    end
-				if (self.threatBonus > 6) then -- make sure we never surpass + 6 bonus
-					self.threatBonus = 6
-				end
+				self.threatBonus = util.clamp(world.threatLevel() / 1.5,1,6) -- base calculation: threat / 1.5, then make sure its never less than 1 or greater than 6
 			end
-			if afkLvl<=3 then
-				self.environmentTimer = self.environmentTimer + (dt/(afkLvl+1))
+			if afkLvl<=3 then --if active, increment up to 600 (10 mins)
+				self.environmentTimer = math.min(600.0,self.environmentTimer + (dt/(afkLvl+1)))
+			else --if inactive, decrement at afklvl/6 rate, down to 0. at afklvl 4,current max and where this fires, that's 2/3, so it decreases by 2/3 of a second every second; it would take 15 minutes to fully decay.
+				self.environmentTimer = math.max(0.0,self.environmentTimer - (dt*(afkLvl/6)))
 			end
 		end
 		-- how crazy are we?
@@ -483,11 +491,11 @@ function update(dt)
 				self.madnessResearchBonus = 0
 			end
 		end
-        
+
         --time based research increases
-        -- every 30 minutes we increment it by +1. So long as the player is active, this bonus applies. Going AFK resets it.
+        -- every 30 minutes we increment it by +1. So long as the player is active, this bonus applies. Going AFK pauses it
         checkPassiveTimerBonus()
-	    
+
 		self.researchBonus = storage.timedResearchBonus + self.threatBonus + self.madnessResearchBonus
 
 		self.bonus = self.researchBonus + (self.protheonCount) --status.stat("researchBonus") + self.researchBonus
@@ -568,7 +576,7 @@ function checkPassiveTimerBonus()
 	    applyPassiveBonus()
 	else
 		storage.timedResearchBonus = 0  -- reset bonus if AFK
-    end	
+    end
 end
 
 function checkInitGap()
@@ -580,9 +588,9 @@ function checkInitGap()
 	storage.activeTime=((not (gap > 60.0)) and storage.activeTime) or 0
 end
 
-function applyPassiveBonus()	
+function applyPassiveBonus()
 	if storage.activeTime > 10800 then
-		storage.timedResearchBonus = 3	
+		storage.timedResearchBonus = 3
 	elseif storage.activeTime > 7200 then
 		storage.timedResearchBonus = 2
 	elseif storage.activeTime > 3600 then
@@ -595,7 +603,7 @@ end
 function passiveRadioMessage()
     if storage.activeTime == 3600 then player.radioMessage("researchBonus1") end
     if storage.activeTime == 7200 then player.radioMessage("researchBonus2") end
-    if storage.activeTime == 10800 then player.radioMessage("researchBonus3") end	
+    if storage.activeTime == 10800 then player.radioMessage("researchBonus3") end
 end
 ----------------------------------------------
 
@@ -638,21 +646,6 @@ function checkMadnessArt()
 	if hasPainting then
 		checkCrazyCarry()
 		status.addEphemeralEffect("madnesspaintingindicator",self.paintTimer)
-	end
-end
-
-function handleSetOrphans(dt)
-	if orphanSetBonusTimer and orphanSetBonusTimer >= 1.0 then
-		orphanSetBonusTimer=0.0
-		local t=os.time()
-		for set,bd in pairs(storage.armorSetData) do
-			if math.abs(t-bd)>1.0 then
-				status.clearPersistentEffects(set)
-				storage.armorSetData[set]=nil
-			end
-		end
-	else
-		orphanSetBonusTimer=(orphanSetBonusTimer or -1.0)+dt
 	end
 end
 

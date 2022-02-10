@@ -1,7 +1,7 @@
 {
   "itemName" : "elduukhartier2broadsword",
   "price" : 380,
-  "level" : 2,
+  "level" : 1,
   "maxStack" : 1,
   "rarity" : "common",
   "description" : "A greatsword crafted from crystal. The quality is not the best, but it gets the job done.",
@@ -22,19 +22,22 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "poison",
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
-    "baseDps" : 11.5
+    "baseDps" : 11.5,
+    "damageConfig" : {
+      "damageSourceKind" : "poison"
+    }
   },
-  
+
   "critChance" : 1,
   "critBonus" : 5,
-  
+
   "altAbilityType" : "risingslash",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
-  
+
 }

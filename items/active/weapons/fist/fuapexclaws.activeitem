@@ -1,114 +1,114 @@
 {
-  "itemName" : "fuapexclaws",
-  "price" : 1000,
-  "level" : 5,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "A deadly fist weapon that projects kinetic force.",
-  "shortdescription" : "Force Gauntlet",
-  "tooltipKind" : "fist2",
-  "category" : "fistWeapon",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","fist", "upgradeableWeapon"],
-  //"collectablesOnPickup" : { "fu_weaponfist" : "fuapexclaws" },
-  "inventoryIcon" : "apexclaws.png:front",
-  "animation" : "fistweapon.animation",
-  "animationParts" : {
-    "weapon" : "apexclaws.png",
-    "swoosh" : "swoosh/electricswoosh.png"
-  },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "attack" : { "fire" : { "properties" : {
-      "damageArea" : [[-1, -1.1], [2.1, -0.6], [2.1, 0.8], [-1, 1.3]]
-    }}}}}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/energywhip_swing1.ogg", "/sfx/melee/energywhip_swing2.ogg", "/sfx/melee/energywhip_swing3.ogg" ]
-    }
-  },
-  "scripts" : [ "fistweapon.lua" ],
+	"itemName" : "fuapexclaws",
+	"price" : 1000,
+	"level" : 5,
+	"maxStack" : 1,
+	"rarity" : "legendary",
+	"description" : "A deadly fist weapon that projects kinetic force.",
+	"shortdescription" : "Force Gauntlet",
+	"tooltipKind" : "fist2",
+	"category" : "fistWeapon",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","fist", "upgradeableWeapon"],
+	//"collectablesOnPickup" : { "fu_weaponfist" : "fuapexclaws" },
+	"inventoryIcon" : "apexclaws.png:front",
+	"animation" : "fistweapon.animation",
+	"animationParts" : {
+		"weapon" : "apexclaws.png",
+		"swoosh" : "swoosh/electricswoosh.png"
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "attack" : { "fire" : { "properties" : {
+			"damageArea" : [[-1, -1.1], [2.1, -0.6], [2.1, 0.8], [-1, 1.3]]
+		}}}}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/energywhip_swing1.ogg", "/sfx/melee/energywhip_swing2.ogg", "/sfx/melee/energywhip_swing3.ogg" ]
+		}
+	},
+	"scripts" : [ "fistweapon.lua" ],
 
-  "needsEdgeTrigger" : true,
-  "edgeTriggerGrace" : 0.15,
-  
-  "comboSteps" : 5,
-  "comboTiming" : [0.1, 0.35],
-  "comboCooldown" : 0.25,
-  "comboFinisherSource" : "/items/active/weapons/fist/combofinishers/thunderpunch.combofinisher",
+	"needsEdgeTrigger" : true,
+	"edgeTriggerGrace" : 0.15,
 
-  "freezeLimit" : 2,
-  "elementalType" : "electric",
-  "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/fist/punch.lua"],
-    "class" : "Punch",
+	"comboSteps" : 5,
+	"comboTiming" : [0.1, 0.35],
+	"comboCooldown" : 0.25,
+	"comboFinisherSource" : "/items/active/weapons/fist/combofinishers/thunderpunch.combofinisher",
 
-    "freezeTime" : 0.15,
-    "fireTime" : 0.2,
-    "baseDps" : 13.0,
-    "damageConfig" : {
-      "statusEffects" : [ ],
-      "damageSourceKind" : "electric",
-      "knockback" : [0, 10],
-      "timeoutGroup" : "primary",
-      "timeout" : 0.11
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : 0,
-        "weaponRotation" : 45,
-        "weaponRotationCenter" : [-1.0, 0.0],
-        "weaponOffset" : [-0.25, -0.575],
+	"freezeLimit" : 2,
+	"elementalType" : "electric",
+	"primaryAbility" : {
+		"scripts" : ["/items/active/weapons/fist/punch.lua"],
+		"class" : "Punch",
 
-        "allowRotate" : true,
-        "allowFlip" : true,
+		"freezeTime" : 0.15,
+		"fireTime" : 0.2,
+		"baseDps" : 13.0,
+		"damageConfig" : {
+			"statusEffects" : [ ],
+			"damageSourceKind" : "electric",
+			"knockback" : [0, 10],
+			"timeoutGroup" : "primary",
+			"timeout" : 0.11
+		},
+		"stances" : {
+			"idle" : {
+				"armRotation" : 0,
+				"weaponRotation" : 45,
+				"weaponRotationCenter" : [-1.0, 0.0],
+				"weaponOffset" : [-0.25, -0.575],
 
-        "frontArmFrame" : "run.2",
-        "backArmFrame" : "jump.3"
-      },
-      "windup" : {
-        "duration" : 0.05,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "weaponRotationCenter" : [-1.0, 0.0],
-        "weaponOffset" : [-0.625, -0.125],
+				"allowRotate" : true,
+				"allowFlip" : true,
 
-        "allowRotate" : true,
-        "allowFlip" : false,
+				"frontArmFrame" : "run.2",
+				"backArmFrame" : "jump.3"
+			},
+			"windup" : {
+				"duration" : 0.05,
+				"armRotation" : 0,
+				"weaponRotation" : 0,
+				"weaponRotationCenter" : [-1.0, 0.0],
+				"weaponOffset" : [-0.625, -0.125],
 
-        "frontArmFrame" : "swimIdle.1",
-        "backArmFrame" : "swim.1"
-      },
-      "windup2" : {
-        "duration" : 0.05,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "weaponRotationCenter" : [-1.0, 0.0],
-        "weaponOffset" : [-0.75, -0.125],
+				"allowRotate" : true,
+				"allowFlip" : false,
 
-        "allowRotate" : true,
-        "allowFlip" : false,
+				"frontArmFrame" : "swimIdle.1",
+				"backArmFrame" : "swim.1"
+			},
+			"windup2" : {
+				"duration" : 0.05,
+				"armRotation" : 0,
+				"weaponRotation" : 0,
+				"weaponRotationCenter" : [-1.0, 0.0],
+				"weaponOffset" : [-0.75, -0.125],
 
-        "frontArmFrame" : "swimIdle.1",
-        "backArmFrame" : "swim.1",
+				"allowRotate" : true,
+				"allowFlip" : false,
 
-        "recoil" : true
-      },
-      "fire" : {
-        "duration" : 0.1,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "weaponRotationCenter" : [-1.0, 0.0],
-        "weaponOffset" : [0.125, -0.25],
+				"frontArmFrame" : "swimIdle.1",
+				"backArmFrame" : "swim.1",
 
-        "allowRotate" : true,
-        "allowFlip" : false,
+				"recoil" : true
+			},
+			"fire" : {
+				"duration" : 0.1,
+				"armRotation" : 0,
+				"weaponRotation" : 0,
+				"weaponRotationCenter" : [-1.0, 0.0],
+				"weaponOffset" : [0.125, -0.25],
 
-        "frontArmFrame" : "rotation",
-        "backArmFrame" : "rotation"
-      }
-    }
-  },
-  "critChance" : 4,
-  "critBonus" : 6, 
-  "fistBonus" : 2,
-  "builder" : "/items/buildscripts/buildfist.lua"
+				"allowRotate" : true,
+				"allowFlip" : false,
+
+				"frontArmFrame" : "rotation",
+				"backArmFrame" : "rotation"
+			}
+		}
+	},
+	"critChance" : 4,
+	"critBonus" : 6,
+	"fistBonus" : 2,
+	"builder" : "/items/buildscripts/buildfist.lua"
 }

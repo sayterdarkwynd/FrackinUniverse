@@ -1,37 +1,47 @@
 {
-	"stats" : [
-		{ "stat" : "maxHealth", "effectiveMultiplier" : 0.90 },
-		{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.1 },	
-		{ "stat" : "foodDelta", "baseMultiplier" : 1.25 },
-		{ "stat" : "radiationburnImmunity", "amount" : 1 },
-		{ "stat" : "healingStatusImmunity", "amount" : 1 }
+	"stats": [
+		{ "stat": "maxHealth", "effectiveMultiplier": 1.1 },
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.2 },
+		{ "stat": "protection", "effectiveMultiplier": 1.03 },
+		{ "stat": "foodDelta", "baseMultiplier": 1.25 },
+
+		{ "stat": "mentalProtection", "amount": 0.05 },
+		{ "stat": "fireResistance", "amount": -0.2 },
+		{ "stat": "iceResistance", "amount": -0.2 },
+		{ "stat": "poisonResistance", "amount": 0.1 },
+		{ "stat": "electricResistance", "amount": -0.2 },
+		{ "stat": "cosmicResistance", "amount": 0.05 },
+		{ "stat": "radioactiveResistance", "amount": 0.35 },
+
+		{ "stat": "radiationburnImmunity", "amount": 1 },
+		{ "stat": "healingStatusImmunity", "amount": 1 }
 	],
 	"diet" : "entity",
 	"special" : [ "radienFoodBoost" ],
-	
+
 	"envEffects" : [
 		{
 			"biomes" : [ "hot" ],
-			"stats" : [
-				{ "stat" : "protection", "effectiveMultiplier" : 0.85 },
-				{ "stat" : "foodDelta", "baseMultiplier" : 1.35 }
+			"stats": [
+				{ "stat": "protection", "effectiveMultiplier": 0.85 },
+				{ "stat": "foodDelta", "baseMultiplier": 1.35 }
 			]
 		},
 		{
 			"biomes" : [ "toxic", "alien", "protoworld", "irradiated", "chromatic", "protoworlddark", "jungle", "fungus", "fungal" ],
-			"stats" : [
-				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.15 },
-				{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 1.15 },
-				{ "stat" : "foodDelta", "baseMultiplier" : 0.95 }
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.15 },
+				{ "stat": "energyRegenPercentageRate", "baseMultiplier": 1.15 },
+				{ "stat": "foodDelta", "baseMultiplier": 0.95 }
 			]
 		}
 	],
 	"weaponEffects" : [
 		{
 			"weapons" : [ "radien" ],
-			"stats" : [
-				{ "stat" : "critChance", "amount" : 1.5 },
-				{ "stat" : "protection", "effectiveMultiplier" : 1.15 }
+			"stats": [
+				{ "stat": "critChance", "amount": 1.5 },
+				{ "stat": "protection", "effectiveMultiplier": 1.15 }
 			]
 		}
 	],

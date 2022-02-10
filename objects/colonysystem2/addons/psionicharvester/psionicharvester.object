@@ -10,7 +10,7 @@
   "price" : 1000,
   "inventoryIcon" : "psionicharvestericon.png",
   "description" : "Steals your tenants' negative thoughts and emotions to create psionic energy. Requires 200W. ^yellow;+10 Happiness^reset;",
-  "shortdescription" : "^cyan;Psionic Harvester^white;",
+  "shortdescription" : "^cyan;Psionic Harvester^reset;",
   "orientations" : [
     {
       "dualImage" : "tenantbrainharvester_base.png",
@@ -26,10 +26,10 @@
     "base" : "tenantbrainharvester_base.png"
   },
   "animationPosition" : [0, 0],
-  
+
   "scripts" : [ "/scripts/fupower.lua", "/objects/colonysystem2/addons/psionicharvester/psionicharvester.lua" ],
   "scriptDelta" : 60,
-  
+
   "outputNodes" : [ [0, 1] ],
   "inputNodes" : [ [0, 0] ],
   "powertype" : "input",
@@ -44,31 +44,31 @@
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
 
-  
+
   "happiness":10,
-  
+
     // Named weight categories (changing one will change all of the same weight)
     // Numbered weights can be used instead of names for customization purposes
-	
+
    "namedWeights" : {
-   
+
         "common" : 79,
         "uncommon" : 20,
         "rare" : 1
-    },  
-  
+    },
+
 	"rarityInfoLevel":3,
 	"overrideScanTooltip":true,
-  
+
    "outputs" : {
-       
+
         "default" : [
             { "weight" : "common",   "items" : [ "psionicenergy" ] },
             { "weight" : "uncommon", "items" : [ "psionicenergy2" ] },
             { "weight" : "rare",     "items" : [ "psionicenergy4", "psionicenergy3", "psionicenergy3" ] }
         ]
-		
+
 	}
 
-  
+
 }

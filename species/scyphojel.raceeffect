@@ -1,0 +1,51 @@
+{
+	"stats": [
+//		Innate to the mod that adds them, Scyphojel do not need to breathe.
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.05 },
+		{ "stat": "fuCharisma", "baseMultiplier": 1.10 },
+
+		{ "stat": "fireResistance", 		"amount": 0.1 },
+		{ "stat": "electricResistance", 	"amount": 0.25 },
+		{ "stat": "radioactiveResistance", 	"amount": -0.15 },
+		{ "stat": "shadowResistance", 		"amount": -0.1 },
+
+//		Scyphojel are levitating, electric producing jellyfish, so most terrain and slow effects wouldn't make sense affecting them.
+		{ "stat": "mudslowImmunity", 		"amount": 1 },
+		{ "stat": "fumudslowImmunity", 		"amount": 1 },
+		{ "stat": "fuclayslowImmunity", 	"amount": 1 },
+		{ "stat": "jungleslowImmunity", 	"amount": 1 },
+		{ "stat": "slushslowImmunity", 		"amount": 1 },
+		{ "stat": "snowslowImmunity", 		"amount": 1 },
+		{ "stat": "snowslipImmunity", 		"amount": 1 },
+		{ "stat": "iceslipImmunity", 		"amount": 1 },
+		{ "stat": "tarImmunity", 			"amount": 1 },
+		{ "stat": "tarStatusImmunity", 		"amount": 1 },
+		{ "stat": "blacktarImmunity", 		"amount": 1 },
+		{ "stat": "quicksandImmunity", 		"amount": 1 },
+		{ "stat": "slimefrictionImmunity", 	"amount": 1 },
+		{ "stat": "slimestickImmunity", 	"amount": 1 },
+		{ "stat": "honeyslowImmunity", 		"amount": 1 },
+		{ "stat": "webstickImmunity", 		"amount": 1 },
+		{ "stat": "slimeImmunity", 			"amount": 1 },
+
+        { "stat": "electricStatusImmunity", "amount": 1 }
+	],
+	"diet" : [ { "ORGANIC" : false, "ROBOT_PLANT" : true }, { "MEAT_RAW" : true } ],
+
+	"weaponEffects": [
+		{
+			"weapons": [ "whip", "yoyo" ],
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.12 }
+			]
+		},
+		{
+			"weapons" : [ "energy" ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.15 }
+			]
+		}
+	],
+
+	"weaponScripts": [ ]
+}

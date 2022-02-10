@@ -10,6 +10,8 @@ function init()
 	message.setHandler("toggleLabel", toggleLabel)
 	message.setHandler("setMusicRange", setMusicRange)
 
+	self.musicboxlist={"fm_musicplayer","fm_musicplayerwall","apexbox","avianbox","elduukharbox","feneroxbox","floranbox","glitchbox","humanbox","hylotlbox","juuxbox","kirhosbox","mantizibox","nightarbox","novakidbox","peglacibox","radienbox","skathbox","slimebox","tenebrhaebox","thelusianbox","veluubox"}
+
 	if storage.isPlaying then
 		animator.setAnimationState("light", "on")
 	end
@@ -64,8 +66,10 @@ function changeMusic(_,_, dir, name, direction, time)
 		local output = object.getOutputNodeIds(0)
 		if not direction or direction == "output" then
 			for id, _ in pairs(output) do
-				if world.entityName(id) == "fm_musicplayer" or world.entityName(id) == "fm_musicplayerwall" then
-					world.sendEntityMessage(id, "changeMusic", dir, name, "output", self.lastWireModified)
+				for _,musicboxid in pairs(self.musicboxlist) do
+					if world.entityName(id) == musicboxid then
+						world.sendEntityMessage(id, "changeMusic", dir, name, "output", self.lastWireModified)
+					end
 				end
 			end
 		end

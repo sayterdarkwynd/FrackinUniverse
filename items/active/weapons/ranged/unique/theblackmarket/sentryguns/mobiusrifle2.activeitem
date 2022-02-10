@@ -42,39 +42,39 @@
     "inaccuracy" : 0,
     "projectileCount" : 1,
     "fireType" : "auto",
-    
+
     //"projectileType" : "mobius",
     "projectileType" : "standardbullet",
     "projectileParameters":{
-	  "statusEffects":[], 
-	  "bounces":0, 
-	  "speed":95, 
-	  "timeToLive":3.0, 
+	  "statusEffects":[],
+	  "bounces":0,
+	  "speed":95,
+	  "timeToLive":3.0,
 	  "power" : 5.25,
 	  "damageKind" : "electric",
 	  "knockback":0,
-	  "lightColor" : [255, 180, 0],    
-	  "periodicActions":[ 
+	  "lightColor" : [255, 180, 0],
+	  "periodicActions":[
 		  {
-		  "time":0.01, 
-		  "action":"projectile", 
-		  "type":"firelasershot2", 
+		  "time":0.01,
+		  "action":"projectile",
+		  "type":"firelasershot2",
 		  "config":{
 		    "processing":"?hueshift=127",
-		    "speed":0, 
+		    "speed":0,
 		    "physics" : "laser",
 		    "bounces" :-1,
-		    "timeToLive":0.4, 
-		    "power":1, 
+		    "timeToLive":0.4,
+		    "power":1,
 		    "knockback":0
 		    }
 		  }
-	  ], 	  
+	  ],
 	  "actionOnReap" : [
 	    {
 	      "action" : "sound",
 	      "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
-	    },	  	  
+	    },
 	    {
 	      "action" : "projectile",
 	      "type" : "electricexplosion",
@@ -103,7 +103,7 @@
 	    }
 	  ]
   },
-  
+
   "stances" : {
     "idle" : {
       "armRotation" : 0,
@@ -136,42 +136,42 @@
   "critChance" : 4,
   "critBonus" : 6,
 
-"altAbilityType":"elementswarm", 
+"altAbilityType":"elementswarm",
 
 "altAbility":{
 
 	"projectileCount":1,
 	"projectileDistance":0,
 	"maxCastRange":120,
-	"projectileType":"electricswarmer", 
-	"cooldownTime":0.3, 
-	"energyCost":180, 
+	"projectileType":"electricswarmer",
+	"cooldownTime":0.3,
+	"energyCost":180,
 	"projectileParameters":{
-		"knockback":5, 
-		"timeToLive":25.0, 
-		"processing":"?multiply=59FF0000", 
-		"damageType":"nodamage", 
+		"knockback":5,
+		"timeToLive":25.0,
+		"processing":"?multiply=59FF0000",
+		"damageType":"nodamage",
 		"speed":0.01,
 		"controlMovement":{
-			"maxSpeed":0.01, 
+			"maxSpeed":0.01,
 			"controlForce":20
-		}, 
+		},
 		"periodicActions":[
 			{
 			"action":"sound",
-			"options":["/sfx/gun/aegisaltpistol_start.ogg"], 
-			"time":0.3, 
+			"options":["/sfx/gun/aegisaltpistol_start.ogg"],
+			"time":0.3,
 			"repeat":true
 			},
 			{
-			"time":0.01, 
-			"repeat":true, 
+			"time":0.01,
+			"repeat":true,
 			"action":"particle",
 			"rotate":true,
 			"specification":{
 				"type":"textured",
 				"image":"/items/active/weapons/ranged/assaultrifle/barrel/3.png?replace;808080=B352FA;606060=7D1FC1;404040=4A027E;e35f5d=52EDDF;b22042=1FB6A8;871132=00766B?flipy",
-				"timeToLive":0.01, 
+				"timeToLive":0.01,
 				"destructionTime":0.01,
 				"size":0.6,
 				"fullbright":false,
@@ -180,14 +180,14 @@
 				}
 			},
 			{
-			"time":0.01, 
-			"repeat":true, 
+			"time":0.01,
+			"repeat":true,
 			"action":"particle",
 			"rotate":true,
 			"specification":{
 				"type":"textured",
 				"image":"/items/active/weapons/ranged/assaultrifle/barrel/3.png?replace;808080=B352FA;606060=7D1FC1;404040=4A027E;e35f5d=52EDDF;b22042=1FB6A8;871132=00766B",
-				"timeToLive":0.01, 
+				"timeToLive":0.01,
 				"destructionTime":0.01,
 				"size":0.6,
 				"fullbright":false,
@@ -196,14 +196,14 @@
 				}
 			},
 			{
-			"time":0.01, 
-			"repeat":true, 
+			"time":0.01,
+			"repeat":true,
 			"action":"particle",
 			"rotate":true,
 			"specification":{
 				"type":"textured",
 				"image":"/items/active/weapons/ranged/rocketlauncher/barrel/7.png?replace;808080=B352FA;606060=7D1FC1;404040=4A027E;e35f5d=52EDDF;b22042=1FB6A8;871132=00766B",
-				"timeToLive":0.01, 
+				"timeToLive":0.01,
 				"destructionTime":0.01,
 				"size":1.1,
 				"fullbright":false,
@@ -212,14 +212,14 @@
 				}
 			},
 			{
-			"time":0.01, 
-			"repeat":true, 
+			"time":0.01,
+			"repeat":true,
 			"action":"particle",
 			"rotate":true,
 			"specification":{
 				"type":"textured",
 				"image":"/items/active/weapons/ranged/assaultrifle/barrel/5.png?replace;808080=B352FA;606060=7D1FC1;404040=4A027E;e35f5d=52EDDF;b22042=1FB6A8;871132=00766B",
-				"timeToLive":0.01, 
+				"timeToLive":0.01,
 				"destructionTime":0.01,
 				"size":0.7,
 				"fullbright":false,
@@ -228,24 +228,24 @@
 				}
 			},
 			{
-			"time":0.01, 
-			"repeat":true, 
+			"time":0.01,
+			"repeat":true,
 			"action":"particle",
 			"rotate":true,
 			"specification":{
 				"type":"textured",
 				"image":"/items/active/weapons/ranged/assaultrifle/barrel/5.png?replace;808080=B352FA;606060=7D1FC1;404040=4A027E;e35f5d=52EDDF;b22042=1FB6A8;871132=00766B?flipy",
-				"timeToLive":0.01, 
+				"timeToLive":0.01,
 				"destructionTime":0.01,
 				"size":0.7,
 				"fullbright":false,
 				"destructionAction":"fade",
 				"position":[0.4,0.7]
 				}
-			}, 
+			},
 			{
-			"time":0.0, 
-			"repeat":false, 
+			"time":0.0,
+			"repeat":false,
 			"action":"projectile",
 			"type":"gravitysphere",
 			"angleAdjust":0,
@@ -257,113 +257,113 @@
 				"timeToLive":0.3,
 				"statusEffects":["glow"],
 				"projectileType":"",
-				"animationCycle":0.05, 
+				"animationCycle":0.05,
 				"periodicActions":[],
 				"actionOnReap":[]
 				}
 			},
 			{
-			"time":0, 
-			"action":"particle", 
+			"time":0,
+			"action":"particle",
 			"specification":{
-				"type":"ember",  
-				"size":0.6, 
-				"light":[130, 30, 250], 
-				"color":[130, 30, 250, 200], 
-				"initialVelocity":[0.0, 0.0], 
-				"finalVelocity":[0.0,0.0], 
-				"approach":[0.0,-1.0], 
-				"timeToLive":0.3, 
-				"fade":1, 
-				"destructionAction":"shrink", 
-				"destructionTime":1.1, 
-				"layer":"back", 
+				"type":"ember",
+				"size":0.6,
+				"light":[130, 30, 250],
+				"color":[130, 30, 250, 200],
+				"initialVelocity":[0.0, 0.0],
+				"finalVelocity":[0.0,0.0],
+				"approach":[0.0,-1.0],
+				"timeToLive":0.3,
+				"fade":1,
+				"destructionAction":"shrink",
+				"destructionTime":1.1,
+				"layer":"back",
 				"variance":{
 					"initialVelocity":[0.0, 0.0],
-					"position":[0.1,0.1], 
+					"position":[0.1,0.1],
 					"size":1
 					}
 				}
 			},
 			{
-			"time":0.3, 
-			"action":"projectile", 
-			"type":"plasma2", 
+			"time":0.3,
+			"action":"projectile",
+			"type":"plasma2",
 			"config":{
 				"periodicActions":[
 				  {
-					"time":0.01, 
-					"action":"particle", 
+					"time":0.01,
+					"action":"particle",
 					"specification":{
-						"type":"animated", 
-						"animation":"/animations/sparkles/sparkleloop3.animation", 
-						"initialVelocity":[0,0], 
-						"timeToLive":0.15, 
-						"size":1.0, 
-						"light":[130, 30, 250], 
-						"color":[130, 30, 250, 240], 
+						"type":"animated",
+						"animation":"/animations/sparkles/sparkleloop3.animation",
+						"initialVelocity":[0,0],
+						"timeToLive":0.15,
+						"size":1.0,
+						"light":[130, 30, 250],
+						"color":[130, 30, 250, 240],
 						"variance":{
-							"position":[0.0,0.0], 
+							"position":[0.0,0.0],
 							"rotation":180
 						}
 					}
 				  }
 				],
 
-				"speed":80, 
+				"speed":80,
 
 				"actionOnReap":[
 					{
 					"action":"sound",
-					"options":["/sfx/gun/pulsecannon_blast1.ogg"], 
-					"time":0.0, 
+					"options":["/sfx/gun/pulsecannon_blast1.ogg"],
+					"time":0.0,
 					"repeat":false
 					},
 					{
-					"action":"projectile", 
-					"type":"lightballout", 
+					"action":"projectile",
+					"type":"lightballout",
 					"config":{
 						"movementSettings":{"collisionEnabled":false},
 						"damageKind":"electric",
-						"emmitters":[], 
+						"emmitters":[],
 						"timeToLive":0.3,
 						"statusEffects" : [{"effect":"glow", "duration":5.0}],
 						"processing":"?multiply=FF00B275?scale=0.4"
-						}, 
-					"inheritDamageFactor":0.0, 
+						},
+					"inheritDamageFactor":0.0,
 					"angle":5
 					}
 
-				], 
-				"persistentAudio":"", 
-				"knockback":0, 
-				"timeToLive":1.0, 
-				"processing":"?scalenearest=2.3;0.4?multiply=FF00B295","power":9.0}}], 
-				"actionOnReap":[ 
-					{ 
-					"time":0.01, 
-					"action":"projectile", 
-					"type":"electricplasmaexplosion", 
-					"angleAdjust":-90, 
-					"config":{ 
-						"power":8, 
-						"processing":"?hueshift=0", 
-						"knockback":20, 
-						"damageType":"damage", 
+				],
+				"persistentAudio":"",
+				"knockback":0,
+				"timeToLive":1.0,
+				"processing":"?scalenearest=2.3;0.4?multiply=FF00B295","power":9.0}}],
+				"actionOnReap":[
+					{
+					"time":0.01,
+					"action":"projectile",
+					"type":"electricplasmaexplosion",
+					"angleAdjust":-90,
+					"config":{
+						"power":8,
+						"processing":"?hueshift=0",
+						"knockback":20,
+						"damageType":"damage",
 
-						"speed":0, 
+						"speed":0,
 						"timeToLive":0.3
-						} 
+						}
 					},
-					{ 
-					"action":"sound", 
+					{
+					"action":"sound",
 					"options":["/sfx/tech/vehicle_appear3.ogg"]
 					}]
-					}, 
-					"projectileOffset":[0.5, -1.1], 
-					"bounces":0, 
-					"baseDamage":9, 
-					"knockback":25, 
+					},
+					"projectileOffset":[0.5, -1.1],
+					"bounces":0,
+					"baseDamage":9,
+					"knockback":25,
 					  "stances" : {
 					   "windup":{"duration":0.15, "weaponOffset":[0, 1.5]},
 					    "idle" : {
@@ -394,12 +394,12 @@
 					    }
 					  }
 				},
-				
+
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  
-  
-  
+
+
+
   "upgradeParameters" : {
     "shortdescription" : "^cyan;Shatterstar^reset; ^yellow;^reset;",
   "animationParts" : {"middle" : "mobiusrifle2.png"},

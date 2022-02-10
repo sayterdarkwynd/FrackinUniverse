@@ -1,9 +1,9 @@
 {
   "itemName" : "elduukhartier6shortsword",
-  "level" : 6,
+  "level" : 5,
   "price" : 725,
   "maxStack" : 1,
-  "rarity" : "legendary",
+  "rarity" : "rare",
   "description" : "An artfully crafted blade. The crystal on the handle shines softly.",
   "shortdescription" : "Nhydri Shortsword",
   "tooltipKind" : "sword2",
@@ -22,17 +22,20 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "electric",
 
   "primaryAbilityType" : "shortswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.625,
-    "baseDps" : 7.5
+    "baseDps" : 7.5,
+    "damageConfig" : {
+      "damageSourceKind" : "electric"
+    }
   },
-  
+
   "critChance" : 2,
   "critBonus" : 8,
-  
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
-  
+
 }

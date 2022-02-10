@@ -25,7 +25,7 @@ function update(dt)
 		for _, playerId in pairs (messagePlayers) do
 			promises:add(
 				--world.sendEntityMessage(playerId, "fu_key", "statustablet"),
-				world.sendEntityMessage(playerId, "fu_key", "fuancientkey"),
+				world.sendEntityMessage(playerId, "player.hasCompletedQuest", "create_matterassembler"),
 				function(successful)
 					if world.entityUniqueId(playerId) then
 						if successful then
@@ -64,7 +64,7 @@ function onInteraction(args)
 				}
 			}
 		--elseif  status.stat("gaterepair") then--player already completed the dungeon once. afterwards, they get a shittier version with less loot
-		--	return { "OpenTeleportDialog",
+		---	return { "OpenTeleportDialog",
 		--		{
 		--			canBookmark = false,
 		--			includePlayerBookmarks = false,
@@ -75,7 +75,7 @@ function onInteraction(args)
 		--				warpAction = string.format(config.getParameter("destination2"), storage.uuid, world.threatLevel())
 		--			}}
 		--		}
-		--	}				
+		--	}
 		else
 			return { "OpenTeleportDialog",
 				{

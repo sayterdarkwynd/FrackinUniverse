@@ -4,7 +4,7 @@
   "inventoryIcon" : "trigun.png",
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "A decidedly original .45 calibre weapon.",
+  "description" : "A decidedly original .45 calibre weapon with bouncing and homing bullets.",
   "shortdescription" : "Vash's Theft",
   "category" : "pistol",
   "level" : 4,
@@ -33,14 +33,14 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.5,
+    "fireTime" : 0.3,
     "baseDps" : 6.2,
     "energyUsage" : 28,
     "inaccuracy" : 0,
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "tracerbullet",
+    "projectileType" : "futrigunbullet",
     "projectileParameters" : {
       "speed" : 145,
       "statusEffects" : ["slow"],
@@ -80,14 +80,30 @@
     }
   },
 
-  "critChance" : 3,
+  "critChance" : 4,
   "critBonus" : 5,
   "isAmmoBased" : 1,
-  "magazineSize" : 6,
+  "magazineSize" : 8,
   "reloadTime" : 1.2,
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
-  "recoilForce" : 600,   
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "recoilForce" : 600,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters2" : {
+    "description" : "A gun for those who just can't get enough death.",
+    "shortdescription" : "Vash's Strength",
+      "critChance" : 6,
+      "critBonus" : 6,
+      "primaryAbility" : {
+	    "fireTime" : 0.28,
+	    "baseDps" : 6.55,
+	    "energyUsage" : 30.0,
+	    "projectileParameters" : {
+	      "speed" : 160,
+	      "knockback" : 6
+	    }
+    }
+  }
 }

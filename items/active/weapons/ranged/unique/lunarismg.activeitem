@@ -3,10 +3,10 @@
   "price" : 210,
   "inventoryIcon" : "lunarismg.png",
   "maxStack" : 1,
-  "rarity" : "rare",
+  "rarity" : "common",
   "description" : "Rapidly fired blasts of lunari charged projectiles.
 ^yellow;Lights areas^reset;
-^green;Long-lived projectiles",
+^green;Long-lived projectiles^reset;",
     "shortdescription" : "Lunari SMG",
   "category" : "machinePistol",
   "level" : 2,
@@ -25,12 +25,12 @@
   "animationCustom" : {
     "sounds" : {
       "fire" : [ "/sfx/weapons/beam.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [143, 131, 98] } }  
+    "lights" : { "muzzleFlash" : {"color" : [143, 131, 98] } }
   },
 
   "baseOffset" : [0.125, -0.0625],
   "muzzleOffset" : [0.875, 0.3125],
-  
+
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "electric",
@@ -47,7 +47,7 @@
     "fireType" : "auto",
 
     "projectileType" : "lunarimicronoboom",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 50,
       "knockback" : 1
     },
@@ -95,6 +95,6 @@
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
-  "recoilForce" : 300, 
+  "recoilForce" : 300,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

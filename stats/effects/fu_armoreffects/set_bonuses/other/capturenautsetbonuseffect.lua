@@ -21,7 +21,7 @@ function update(dt)
 			self.timer = self.timer + dt
 		end
 		if not self.timer2 or self.timer2 >= 0.25 then
-			world.sendEntityMessage(entity.id(),"recordFUArmorSetBonus",setName.."_special")
+			world.sendEntityMessage(entity.id(),"recordFUPersistentEffect",setName.."_special")
 			self.timer2 = 0
 		else
 			self.timer2 = self.timer2 + dt

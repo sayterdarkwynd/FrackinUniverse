@@ -19,12 +19,10 @@
 
   "inventoryIcon" : "chemlab1icon.png",
   "placementImage" : "chemlab1.png:default.default",
-  "placementImagePosition" : [-28, 0],    
+  "placementImagePosition" : [-28, 0],
 
   "description" : "Play with chemicals. Endless fun.",
-  "shortdescription" : "^orange;Alchemy Table^white;",
-
- // "learnBlueprintsOnPickup" : [ "fucopperbomb", "fuironbomb", "glowbomb" ],
+  "shortdescription" : "^orange;Alchemy Table^reset;",
 
   "startingUpgradeStage" : 1,
   "maxUpgradeStage" : 3,
@@ -36,28 +34,21 @@
       "itemSpawnParameters" : {
         "inventoryIcon" : "chemlab1icon.png",
         "placementImage" : "chemlab1.png:default.default",
-        "placementImagePosition" : [-28, 0],    
+        "placementImagePosition" : [-28, 0],
 
-        "description" : "Experiment with chemicals. Super fun.",
-        "shortdescription" : "^orange;Alchemy Table^white;"
+        "description" : "Experiment with chemicals.",
+        "shortdescription" : "^orange;Alchemy Table^reset;"
       },
 
       "interactData" : {
         "config" : "/interface/windowconfig/chemlab.config",
         "paneLayoutOverride" : {
-          "windowtitle" : {
-            "title" : " Alchemy Table",
-            "subtitle" : " ^#b9b5b2;Basic chemistry",
-            "icon" : {
-              "file" : ""
-            }
-          }
+          "windowtitle" : {"title" : " ","subtitle" : " ","icon" : {"file" : ""}},
+          "lblTitle" : {"value" : " ^orange;Alchemy Table^reset;"},
+          "lblSubTitle" : {"value" : " ^#dddddd;Experiment with chemicals."}
         },
 
         "filter" : [ "chemlab1" ],
-		
-   //     "initialRecipeUnlocks" : [ "pesticide", "fu_mulch", "ff_fertilizer", "methanol", "fu_nitrogen", "glowbomb", "grassremedy", "crewcontract_chemistblue", "crewcontract_chemistgreen", "crewcontract_chemistorange", "crewcontract_chemistyellow", "crewcontract_biohazard", "bomb", "bouncyball" ],
-   
         "upgradeMaterials" : [
           { "item" : "tungstenbar", "count" : 4 },
           { "item" : "bottle", "count" : 4 },
@@ -66,7 +57,7 @@
         ]
       },
 
-      
+
       "craftingSound" : "/sfx/interface/crafting_medical.ogg",
       "upgradeSoundEffect" : "fanfare",
       "upgradeParticleEffect" : "dust"
@@ -79,28 +70,19 @@
         "price" : 400,
         "inventoryIcon" : "chemlab2icon.png",
         "placementImage" : "chemlab2.png:default.default",
-        "placementImagePosition" : [-28, 0],    
+        "placementImagePosition" : [-28, 0],
 
         "description" : "More advanced experiments. More kaboom.",
-        "shortdescription" : "^orange;Chemistry Lab^white;"
+        "shortdescription" : "^orange;Chemistry Lab^reset;"
       },
-   //   "initialRecipeUnlocks" : [ "unstableparticles" ],
       "interactData" : {
         "config" : "/interface/windowconfig/chemlab.config",
         "paneLayoutOverride" : {
-          "windowtitle" : {
-            "title" : " Chemistry Lab",
-            "subtitle" : " ^#b9b5b2;Advanced chemistry",
-            "icon" : {
-              "file" : ""
-            }
-          }
+          "windowtitle" : {"title" : " ","subtitle" : " ","icon" : {"file" : ""}},
+          "lblTitle" : {"value" : " ^orange;Chemistry Lab^reset;"},
+          "lblSubTitle" : {"value" : " ^#dddddd;More advanced experiments. More kaboom."}
         },
         "filter" : [ "chemlab1", "chemlab2" ],
-		
-     //   "initialRecipeUnlocks" : [ "pesticide", "thoriumrod", "neptuniumrod", "plutoniumrod", "uraniumrod", "fu_mulch", "ff_fertilizer", "methanol", "fu_nitrogen", "glowbomb", "grassremedy", "crewcontract_chemistblue", "crewcontract_chemistgreen", "crewcontract_chemistorange", "crewcontract_chemistyellow", "crewcontract_biohazard", "bomb", "bouncyball" ],
-    
-
     "upgradeMaterials" : [
           { "item" : "titaniumbar", "count" : 6 },
           { "item" : "cpu", "count" : 2 },
@@ -122,26 +104,22 @@
         "price" : 750,
         "inventoryIcon" : "chemlab3icon.png",
         "placementImage" : "chemlab3.png:default.default",
-        "placementImagePosition" : [-28, 0],    
+        "placementImagePosition" : [-28, 0],
 
         "description" : "Superior chemistry and biology experiments.",
-        "shortdescription" : "^orange;Bio-Chem Lab^white;"
+        "shortdescription" : "^orange;Bio-Chem Lab^reset;"
       },
 
       "interactData" : {
         "config" : "/interface/windowconfig/chemlab.config",
         "paneLayoutOverride" : {
-          "windowtitle" : {
-            "title" : " Bio-Chem Lab",
-            "subtitle" : " ^#b9b5b2;Superior Chemistry",
-            "icon" : {
-              "file" : ""
-            }
-          }
+          "background" : {"fileHeader" : "/interface/windowconfig/newuiheader_dark_upgraded.png"},
+          "windowtitle" : {"title" : " ","subtitle" : " ","icon" : {"file" : ""}},
+          "lblTitle" : {"value" : " ^orange;Bio-Chem Lab^reset;"},
+          "lblSubTitle" : {"value" : " ^#dddddd;Superior chemistry and biology experiments."}
         },
         "filter" : [ "chemlab1", "chemlab2", "chemlab3" ],
-        "craftingSound" : "/sfx/interface/crafting_medical.ogg"//,
-        //"initialRecipeUnlocks" : [ "thoriumrod", "neptuniumrod", "plutoniumrod", "uraniumrod", "fu_mulch", "ff_fertilizer", "methanol", "fu_nitrogen", "glowbomb", "grassremedy", "bomb", "bouncyball" ]
+        "craftingSound" : "/sfx/interface/crafting_medical.ogg"
       },
 
       "learnBlueprintsOnPickup" : []
@@ -151,7 +129,7 @@
   "orientations" : [
     {
       "image" : "chemlab1.png:default.<frame>",
-      "imagePosition" : [-28, 0],    
+      "imagePosition" : [-28, 0],
       "direction" : "left",
       "flipImages" : true,
       "spaceScan" : 0.1,
@@ -159,7 +137,7 @@
     },
     {
       "image" : "chemlab1.png:default.<frame>",
-      "imagePosition" : [-28, 0],    
+      "imagePosition" : [-28, 0],
       "direction" : "right",
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]

@@ -3,10 +3,10 @@
   "price" : 210,
   "inventoryIcon" : "lunaririfle.png",
   "maxStack" : 1,
-  "rarity" : "rare",
+  "rarity" : "common",
   "description" : "Crystalline blasts charged with lunari energy.
 ^yellow;Lights areas^reset;
-^green;Long-lived projectiles",
+^green;Long-lived projectiles^reset;",
     "shortdescription" : "Lunari Rifle",
   "category" : "assaultRifle",
   "level" : 2,
@@ -25,12 +25,12 @@
   "animationCustom" : {
     "sounds" : {
       "fire" : [ "/sfx/weapons/beam.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [143, 131, 98] } } 
+    "lights" : { "muzzleFlash" : {"color" : [143, 131, 98] } }
   },
 
   "baseOffset" : [0.56, 0.2],
   "muzzleOffset" : [2, 0.125],
-  
+
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "ice",
@@ -47,7 +47,7 @@
     "fireType" : "auto",
 
     "projectileType" : "lunarishotrifle",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 40,
       "knockback" : 2
     },
@@ -95,8 +95,8 @@
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
-  "recoilForce" : 500, 
-  
+  "recoilForce" : 500,
+
   "altAbilityType" : "lunarishrapnelbomb",
   "altAbility" : {
     "name" : "Starshock"
@@ -127,11 +127,11 @@
 	    "fireType" : "auto",
 
 	    "projectileType" : "lunarishotinitiate",
-	    "projectileParameters" : { 
+	    "projectileParameters" : {
 	      "speed" : 50,
 	      "knockback" : 4
 	    }
     }
   }
-  
+
 }

@@ -51,8 +51,8 @@ function MeleeArm:fireState(fromAngle, toAngle, allowCombo) -- allowCombo false=
   while stateTimer > 0 do
     fireWasTriggered = fireWasTriggered or self.fireTriggered
 
-    local swingRatio = math.min(1, (self.fireTime - stateTimer) / self.swingTime)
-    local currentAngle = util.lerp(swingRatio, fromAngle, toAngle)
+--    local swingRatio = math.min(1, (self.fireTime - stateTimer) / self.swingTime)
+--    local currentAngle = util.lerp(swingRatio, fromAngle, toAngle)
 --    animator.rotateTransformationGroup(self.armName, self.aimAngle + currentAngle, self.shoulderOffset)
     animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
 

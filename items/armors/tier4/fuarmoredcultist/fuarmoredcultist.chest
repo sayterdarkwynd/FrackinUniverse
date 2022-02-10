@@ -4,7 +4,7 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Common",
+  "rarity" : "rare",
    "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; ^cyan;Flings Eyeballs^reset;
 ^yellow;^reset; Aether/Lightless Worlds: Damage x^green;1.15^reset;, Health x^green;1.25^reset;
@@ -48,20 +48,20 @@
       "stat" : "maxHealth",
       "amount" : 5
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "shadowResistance",
       "amount" : 0.032
     }
   ],
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced" ],
   "statusEffects" : [
     "corruptsetbonus",
     {
       "stat" : "fu_corruptset_chest",
       "amount" : 1
     }
-  ], 
+  ],
 
   "colorOptions" : [
     /* PURPLE */
@@ -101,5 +101,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }
