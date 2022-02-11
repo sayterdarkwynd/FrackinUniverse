@@ -40,7 +40,7 @@ end
 
 function transferUtil.sendConfig()
     local buffer = {}
-    for id, pos in pairs(transferUtil.vars.inContainers) do
+    for id, pos in pairs(transferUtil.vars.inContainers or {}) do
         local awake, newId = transferUtil.containerAwake(id, pos)
         if awake then
             id = newId or id
