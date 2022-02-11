@@ -10,7 +10,7 @@
   "inventoryIcon" : "mound3.png",
   "orientations" : [
     {
-      "image" : "mound3.png:<color>",
+      "dualImage" : "mound3.png:<color>",
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
@@ -20,12 +20,10 @@
 
     }
   ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/projectiles/hivebomb_impact.ogg" ],
+  "smashParticles" : [ { "count" : 15, "particle" : "lightlessplantshard" } ],
   "smashDropOptions" : [
-    [ [ "penumbriteore", 5, { } ], [ "fuscienceresource", 12, { } ] ]
-  ],
-
-  "breakDropOptions" : [
     [ [ "penumbriteore", 5, { } ], [ "fuscienceresource", 12, { } ] ]
   ],
   "biomePlaced" : true

@@ -10,7 +10,7 @@
   "inventoryIcon" : "geyser_small.png",
   "orientations" : [
     {
-      "image" : "geyser_small.png:<color>.<frame>",
+      "dualImage" : "geyser_small.png:<color>.<frame>",
       "imagePosition" : [0, 0],
       "frames" : 40,
       "animationCycle" : 3.5,
@@ -20,12 +20,9 @@
 
     }
   ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/melee/fist_hit_stone1.ogg", "/sfx/melee/fist_hit_stone2.ogg", "/sfx/melee/fist_hit_stone3.ogg", "/sfx/melee/fist_hit_stone4.ogg" ],
   "smashDropOptions" : [
-    [ [ "fuscienceresource", 3, { } ] ]
-  ],
-
-  "breakDropOptions" : [
     [ [ "fuscienceresource", 3, { } ] ]
   ],
   "biomePlaced" : true

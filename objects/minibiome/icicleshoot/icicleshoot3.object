@@ -11,7 +11,7 @@
   "inventoryIcon" : "icicleshoot3.png",
   "orientations" : [
     {
-      "image" : "icicleshoot3.png:<color>",
+      "dualImage" : "icicleshoot3.png:<color>",
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
@@ -21,12 +21,21 @@
 
     }
   ],
-  "smashSounds" : [ "/sfx/blocks/footstep_ice.ogg" ],
-  "smashDropOptions" : [
-    [ [ "icecrystal", 1, { } ] ]
+  "smashOnBreak" : true,
+  "smashSounds" : [ 
+    "/sfx/projectiles/ice_break1.ogg", 
+    "/sfx/projectiles/ice_break2.ogg", 
+    "/sfx/projectiles/ice_break3.ogg", 
+    "/sfx/projectiles/ice_break4.ogg", 
+    "/sfx/projectiles/ice_break5.ogg", 
+    "/sfx/projectiles/ice_break6.ogg", 
+    "/sfx/projectiles/ice_break7.ogg", 
+    "/sfx/projectiles/ice_break8.ogg", 
+    "/sfx/projectiles/ice_break9.ogg", 
+    "/sfx/projectiles/ice_break10.ogg" 
   ],
-
-  "breakDropOptions" : [
+  "smashParticles" : [ { "count" : 5, "particle" : "prismfineshard" } ],
+  "smashDropOptions" : [
     [ [ "icecrystal", 1, { } ] ]
   ],
   "biomePlaced" : true

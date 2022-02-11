@@ -1,60 +1,43 @@
 {
-    "objectName": "bioplant12",
-    "rarity": "Common",
-    "category": "decorative",
-    "price": 400,
-    "printable": false,
-    "description": "Experimental Plant",
-    "shortdescription": "Experimental Plant",
-    "inventoryIcon": "bioplant12.png",
-    "orientations": [
-        {
-            "imageLayers": [
-                {
-                    "image": "bioplant12.png:<color>"
-                },
-                {
-                    "image": "bioplant12fullbright.png:<color>",
-                    "fullbright": true
-                }
-            ],
-            "imagePosition": [
-                0,
-                0
-            ],
-            "frames": 1,
-            "animationCycle": 0.5,
-            "spaceScan": 0.1,
-            "anchors": [
-                "bottom"
-            ]
-        }
-    ],
-    "smashSounds": [
-        "/sfx/tools/axe_chop_alt_heavy.ogg"
-    ],
-    "smashDropOptions": [
-        [
-            [
-                "biosample",
-                1,
-                {
+  "objectName": "bioplant12",
+  "rarity": "Common",
+  "category": "decorative",
+  "price": 400,
+  "printable": false,
+  "description": "Experimental Plant",
+  "shortdescription": "Experimental Plant",
+  "lightColor" : [47, 47, 14],
+  
+  "inventoryIcon": "bioplant12.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "bioplant12.png:<color>" }, { "image" : "bioplant12fullbright.png:<color>", "fullbright" : true } ],
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
 
-                }
-            ]
-        ]
-    ],
-    "breakDropOptions": [
-        [
-            [
-                "biosample",
-                1,
-                {
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
+    },
+    {
+      "imageLayers" : [ { "image" : "bioplant12.png:<color>" }, { "image" : "bioplant12fullbright.png:<color>", "fullbright" : true } ],
+      "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
 
-                }
-            ]
-        ]
-    ],
-    "biomePlaced": true,
-    "scannable": false
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "left"
+    }
+  ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/plant_break1.ogg", "/sfx/objects/plant_break2.ogg", "/sfx/objects/plant_break3.ogg", "/sfx/objects/plant_break4.ogg", "/sfx/objects/plant_break5.ogg", "/sfx/objects/plant_break6.ogg" ],
+  "smashParticles" : [ { "count" : 5, "particle" : "eldershard" } ],
+  "smashDropOptions" : [
+    [ [ "biosample", 1, { } ] ]
+  ],
+  "biomePlaced": true,
+  "scannable": false
 }

@@ -1,53 +1,30 @@
 {
-    "objectName": "waterpod",
-    "rarity": "Common",
-    "category": "decorative",
-    "price": 400,
-    "printable": false,
-    "description": "Waterpod",
-    "shortdescription": "Waterpod",
-    "race": "apex",
-    "inventoryIcon": "waterpod.png",
-    "orientations": [
-        {
-            "image": "waterpod.png:<color>",
-            "imagePosition": [
-                0,
-                0
-            ],
-            "frames": 1,
-            "animationCycle": 0.5,
-            "spaceScan": 0.1,
-            "anchors": [
-                "bottom"
-            ]
-        }
-    ],
-    "smashSounds": [
-        "/sfx/tools/axe_chop_alt_heavy.ogg"
-    ],
-    "smashDropOptions": [
-        [
-            [
-                "wildvines",
-                1,
-                {
+  "objectName": "waterpod",
+  "rarity": "Common",
+  "category": "decorative",
+  "printable": false,
+  
+  "description": "Waterpod",
+  "shortdescription": "Waterpod",
+  "race": "apex",
+  
+  "inventoryIcon": "waterpod.png",
+  "orientations" : [
+    {
+      "dualImage" : "waterpod.png:<color>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
 
-                }
-            ]
-        ]
-    ],
-    "breakDropOptions": [
-        [
-            [
-                "wildvines",
-                1,
-                {
-
-                }
-            ]
-        ]
-    ],
-    "biomePlaced": true,
-    "scannable": false
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/blocks/water_swim.ogg" ],
+  "smashDropOptions" : [
+    [ [ "wildvines", 1, { } ] ]
+  ],
+  "biomePlaced": true,
+  "scannable": false
 }

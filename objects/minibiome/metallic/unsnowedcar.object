@@ -10,14 +10,26 @@
   "inventoryIcon" : "unsnowedcar.png",
   "health" : 5,
   "orientations" : [
-     {
+    {
+      "imageLayers" : [ { "image" : "unsnowedcar.png", "fullbright" : true }, { "image" : "unsnowedcarfullbright.png" } ],
+      "flipImages" : true,
+      "imagePosition" : [-62, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "left"
+    },
+    {
       "imageLayers" : [ { "image" : "unsnowedcar.png", "fullbright" : true }, { "image" : "unsnowedcarfullbright.png" } ],
       "imagePosition" : [-62, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
     }
   ]
 }
