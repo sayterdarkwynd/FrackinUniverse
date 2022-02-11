@@ -15,22 +15,21 @@ function init()
 end
 
 function update(dt)
-  mcontroller.controlParameters({
-        airForce = 35.0,
-        groundForce = 23.5,
-        runSpeed = 17.0
-    })
-  mcontroller.controlModifiers({
-      speedModifier = 1.40
-    })
+	mcontroller.controlParameters({
+		airForce = 35.0,
+		groundForce = 23.5,
+		runSpeed = 17.0
+	})
+	mcontroller.controlModifiers({
+		speedModifier = 1.40
+	})
 
-    self.activateTimer = self.activateTimer -1
-    self.madnessTimer = self.madnessTimer -1
-    if (self.madnessTimer == 0) and (self.activateTimer == 0) then
-    	world.spawnItem("fumadnessresource",entity.position(),self.madVal)
-    	self.activateTimer = 10
-    end
-
+	self.activateTimer = self.activateTimer -1
+	self.madnessTimer = self.madnessTimer -1
+	if (self.madnessTimer == 0) and (self.activateTimer == 0) then
+		world.spawnItem("fumadnessresource",entity.position(),self.madVal)
+		self.activateTimer = 10
+	end
 end
 
 function uninit()

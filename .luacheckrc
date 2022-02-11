@@ -15,11 +15,7 @@ ignore = {
 	-- Skip "empty if branch", most (if not all) current cases
 	-- seem to do this intentionally for better readability.
 	-- Alternative would be having ~50 inline comments "-- luacheck: ignore 542".
-	"542",
-
-	-- Cosmetic/irrelevant issues.
-	-- Wouldn't disable this for newly added files, but too many places to fix in existing code.
-	"621", -- inconsistent indentation (SPACE followed by TAB)
+	"542"
 }
 
 -- These global variables are allowed.
