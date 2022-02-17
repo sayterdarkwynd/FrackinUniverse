@@ -149,8 +149,8 @@ function MechArm:fire()
 
         self:statSet()
 
- 	-- ****************************** FU mass computation ***************************
-          self.mechMass = self.parts.body.stats.mechMass + self.parts.booster.stats.mechMass + self.parts.legs.stats.mechMass + self.parts.leftArm.stats.mechMass + self.parts.rightArm.stats.mechMass or 0
+        -- ****************************** FU mass computation ***************************
+        self.mechMass = self.parts.body.stats.mechMass + self.parts.booster.stats.mechMass + self.parts.legs.stats.mechMass + self.parts.leftArm.stats.mechMass + self.parts.rightArm.stats.mechMass or 0
 
         -- ****************************** FU damage computation ***************************
         self.mechTier = self.stats.power

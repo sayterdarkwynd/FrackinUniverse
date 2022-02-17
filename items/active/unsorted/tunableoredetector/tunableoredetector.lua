@@ -45,18 +45,16 @@ function update(dt, fireMode, shiftHeld)
 end
 
 function activate(fireMode, shiftHeld)
-
 	if shiftHeld then
-	activeItem.interact("ScriptPane", "/interface/scripted/tunableoredetector/tunableoredetector.config")
-    animator.playSound("configure")
-
+		activeItem.interact("ScriptPane", "/interface/scripted/tunableoredetector/tunableoredetector.config")
+		animator.playSound("configure")
 	elseif ready() then
 		self.pingTimer = self.pingDuration
 		local pingOffset = animator.partPoint("detector", "pingPosition")
 		pingOffset[1] = pingOffset[1] * self.aimDirection
 		local pingLocation = vec2.floor(vec2.add(mcontroller.position(), pingOffset))
 		activeItem.setScriptedAnimationParameter("pingLocation", pingLocation)
-    	animator.playSound("ping")
+		animator.playSound("ping")
 	end
 end
 
