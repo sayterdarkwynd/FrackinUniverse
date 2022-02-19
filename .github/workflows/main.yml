@@ -24,6 +24,16 @@ jobs:
       - name: RUN -- luacheck .
         run: luacheck --no-color --quiet .
 
+  # Detect non-optimized PNG images (where lossless compression can seriously reduce their filesize).
+  unoptimized-png-images:
+    if: ${{ github.ref != 'refs/heads/master' }}
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: sudo apt-get install -y optipng
+      - run: .github/scripts/detect-unoptimized-png-images.sh
+
   # Create .pak file for each GitHub release.
   pack-assets:
     if: startsWith(github.ref, 'refs/tags/')
