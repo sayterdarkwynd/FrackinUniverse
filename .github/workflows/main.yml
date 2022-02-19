@@ -26,7 +26,7 @@ jobs:
 
   # Detect non-optimized PNG images (where lossless compression can seriously reduce their filesize).
   unoptimized-png-images:
-    if: ${{ github.ref != 'refs/heads/master' }}
+    if: ${{ github.base_ref || github.ref != 'refs/heads/master' }}
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
