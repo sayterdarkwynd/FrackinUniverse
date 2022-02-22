@@ -83,7 +83,7 @@
     }
   },
 
-  "hueShiftOptions" : [ 0 ],
+  "hueShiftOptions" : [-30, -20, -10, 0, 10],
 
   "weather" : [
     [0, [
@@ -620,10 +620,10 @@
 
   "ambientNoises" : {
     "day" : {
-      "tracks" : [ "/sfx/ambiance/sulphuricambiance2.ogg" ]
+      "tracks" : [ "/sfx/ambiance/sulphuricambiance2.ogg", "/sfx/environmental/ocean_surface_calm.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/sfx/ambiance/sulphuricambiance2.ogg" ]
+      "tracks" : [ "/sfx/ambiance/sulphuricambiance2.ogg", "/sfx/environmental/ocean_surface_calm.ogg" ]
     }
   },
 
@@ -637,8 +637,8 @@
   },
 
   "surfacePlaceables" : {
-    "grassMod" : [ "bloodstonegrass", "blackslimegrass", "fualiengrass", "fualiengrass2" ],
-    "grassModDensity" : 0.9,
+    "grassMod" : [ "bloodstonegrass", "blackslimegrass", "fualiengrass", "fualiengrass2", "bone", "charredgrass", "savannahgrass" ],
+    "grassModDensity" : 0.3,
       "items" : [
         {
           "mode" : "floor",
@@ -675,14 +675,14 @@
         "type" : "tree",
         "treeFoliageHueShiftMax" : 120,
         "treeStemHueShiftMax" : 215,
-        "treeStemList" : [ "bleake" ],
-        "treeFoliageList" : [ "flatte" ]
+        "treeStemList" : [ "bleake", "gloomy", "murky", "savah", "spiked" ],
+        "treeFoliageList" : [ "flatte", "burly" ]
       },
       {
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseLarge",
+        "distribution" : "/biomes/distributions.config:ffAverage",
 
         "type" : "tree",
         "treeFoliageHueShiftMax" : 255,
@@ -690,42 +690,66 @@
         "treeStemList" : [ "weeping" ],
         "treeFoliageList" : [ "weepingleaves" ]
       },
-      {
-        "mode" : "ceiling",
-        "priority" : 2.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
-
-        "type" : "tree",
-        "treeFoliageHueShiftMax" : 130,
-        "treeStemHueShiftMax" : 120,
-        "treeStemList" : [ "desertvine"],
-        "treeFoliageList" : [ "leafed" ]
-      },
            {
              "mode" : "floor",
              "priority" : 1.0,
              "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
+             "distribution" : "/biomes/distributions.config:ffunCommon",
 
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [
-              [0.50, "groundspike1" ],
-              [0.50, "groundspike2" ],
-              [0.50, "groundspike3" ],
-              [0.50, "groundspike4" ]
-                 ],
-                 "parameters" : { "startingStage" : 3 }
+                 "pool" : [ [0.20, "thorns1" ], [0.20, "thorns2" ], [0.20, "thorns3" ], [0.20, "thorns4" ] ],
+                 "parameters" : { }
                }
              ]
            },
         {
           "mode" : "floor",
-          "priority" : 1.0,
+          "priority" : 0.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "fflabChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -774,6 +798,51 @@
             },
             {
               "name" : "thorns2",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "aridskeleton",
+              "baseHueShiftMax" : 20,
+              "modHueShiftMax" : 20
+            },
+            {
+              "name" : "skulls",
+              "baseHueShiftMax" : 20,
+              "modHueShiftMax" : 35
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "savannahgreenbush",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "shrub1",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "swampbush",
               "baseHueShiftMax" : 40,
               "modHueShiftMax" : 180
             }

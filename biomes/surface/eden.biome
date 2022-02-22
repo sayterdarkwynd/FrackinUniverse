@@ -171,7 +171,7 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [
@@ -205,7 +205,6 @@
             }
           ]
         },
-
       {
         "mode" : "floor",
         "priority" : 0,
@@ -213,7 +212,16 @@
         "distribution" : "/biomes/distributions.config:overgroundChests",
 
         "type" : "treasureBox",
-        "treasureBoxSets" : [ "forestChest" ]
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "forestChest", "springChest" ]
       },
       {
         "mode" : "floor",
@@ -229,6 +237,30 @@
           }
         ]
       },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 15,
+        "treeStemList" : [ "birch", "cocoa", "fleshy", "grumpy", "pine", "roottree", "slimey", "something", "spikey", "twisted", "wood", "slobby" ],
+        "treeFoliageList" : [ "bubbles", "cloudy", "frumpy", "greenleaves", "hanging", "leafy", "lotus", "lushgreen", "orangeflower", "redleaves", "rose", "scraggy" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 15,
+        "treeStemHueShiftMax" : 15,
+        "treeStemList" : [ "applewood", "cherrywood", "cherrybloomwood", "peachwood", "pearwood" ],
+        "treeFoliageList" : [ "apple", "cherrygreen", "cherrybloom", "peach", "pear" ]
+      },
         {
           "mode" : "floor",
           "priority" : 2.0,
@@ -236,8 +268,8 @@
           "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 220,
-          "treeStemHueShiftMax" : 120,
+          "treeFoliageHueShiftMax" : 180,
+          "treeStemHueShiftMax" : 15,
           "treeStemList" : [ "redwood" ],
           "treeFoliageList" : [ "redwood1" ]
         },
@@ -245,7 +277,7 @@
         "mode" : "floor",
         "priority" : 0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:overgroundRareChests",
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
         "type" : "treasureBox",
         "treasureBoxSets" : [ "weaponChest" ]
@@ -270,7 +302,7 @@
         "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
 
         "type" : "microdungeon",
-        "microdungeons" : [ "fubandits", "fulabs", "fuencounters", "forestmicrodungeons" ]
+        "microdungeons" : [ "fubandits", "fulabs", "fuencounters", "forestmicrodungeons", "springmicrodungeons" ]
       },
         {
           "mode" : "floor",
@@ -285,10 +317,19 @@
         "mode" : "floor",
         "priority" : 3.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseSmall",
+        "distribution" : "/biomes/distributions.config:denseMedium",
 
         "type" : "grass",
         "grasses" : [ "grass", "testflower", "testflower2", "testflower3", "testflower4", "testflower5", "testflower6", "testflower7" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "grass",
+        "grasses" : [ "grass" ]
       },
       {
         "mode" : "floor",
@@ -300,8 +341,28 @@
         "bushes" : [
           {
             "name" : "testbush",
-            "baseHueShiftMax" : 180,
-            "modHueShiftMax" : 180
+            "baseHueShiftMax" : 40,
+            "modHueShiftMax" : 0
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "flowery",
+            "baseHueShiftMax" : 40,
+            "modHueShiftMax" : 0
+          },
+          {
+            "name" : "springbush",
+            "baseHueShiftMax" : 40,
+            "modHueShiftMax" : 0
           }
         ]
       },
@@ -373,8 +434,8 @@
   },
 
     "undergroundPlaceables" : {
-      "grassMod" : [ "flowerygrass", "mossgrass2" ],
-      "grassModDensity" : 0.5,
+      "grassMod" : [ "flowerygrass", "mossgrass2", "grass" ],
+      "grassModDensity" : 0.3,
 
       "ceilingGrassMod" : [ "roots" ],
       "ceilingGrassModDensity" : 0.3,
@@ -384,10 +445,19 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "ffbasicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "forestChest", "springChest" ]
         },
         {
           "mode" : "floor",
@@ -402,7 +472,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:undergroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -425,7 +495,7 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredPots",
+          "distribution" : "/biomes/distributions.config:potsRare",
 
           "type" : "object",
           "objectSets" : [
@@ -442,12 +512,24 @@
           "distribution" : "/biomes/distributions.config:denseMedium",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 220,
-          "treeStemHueShiftMax" : 220,
-          "treeStemList" : [ "vineroot2", "glitteringroot2", "twistedvine2", "floweryvine2", "wildernessvine", "sulphurvine" ],
+          "treeFoliageHueShiftMax" : 180,
+          "treeStemHueShiftMax" : 40,
+          "treeStemList" : [ "vineroot2", "glitteringroot2", "twistedvine2", "floweryvine2", "wildernessvine", "sulphurvine", "vine", "vine2", "vine3", "vine4" ],
           "treeFoliageList" : [ "flowery2", "starry2", "dreamy2", "flowery", "starry", "dreamy"  ]
         },
-         {
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 180,
+          "treeStemHueShiftMax" : 40,
+          "treeStemList" : [ "floweryvine2" ],
+          "treeFoliageList" : [ "nofoliagevine" ]
+        },
+        {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
@@ -484,76 +566,36 @@
         {
           "mode" : "floor",
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
 
           "type" : "grass",
-          "grasses" : [ "vinegrass", "clawfern", "peppergrass", "mushroom", "wflower", "puffplant", "blobby", "root", "bell", "blueslime", "circles", "crisp" , "dandy", "fancy", "glowmushroom", "leafsy", "lillies", "signplant", "shrooms" , "sprout", "sunflower", "thickgrass", "thickpetals" ]
+          "grasses" : [ "testflower", "testflower2", "testflower3", "testflower4", "testflower5", "testflower6", "testflower7" ]
         },
         {
-          "mode" : "ceiling",
+          "mode" : "floor",
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffCommon",
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
 
           "type" : "grass",
-          "grasses" : [ "ceilingflowers", "ceilinghandlike", "ceilingroots", "ceilingweeds", "ceilingweedy", "glowceiling", "ceilingmushroom"  ]
+          "grasses" : [ "grass" ]
         },
         {
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
 
           "type" : "bush",
           "bushes" : [
             {
-              "name" : "happybush",
-              "baseHueShiftMax" : 220,
-              "modHueShiftMax" : 180
+              "name" : "flowery",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 0
             },
             {
-              "name" : "shrub1",
-              "baseHueShiftMax" : 220,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "testbush",
-              "baseHueShiftMax" : 220,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "thorns2",
-              "baseHueShiftMax" : 220,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "wicked",
-              "baseHueShiftMax" : 220,
-              "modHueShiftMax" : 180
-            }
-          ]
-        },
-        {
-          "mode" : "ceiling",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "ceilingarchrock",
-              "baseHueShiftMax" : 220,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "ceilingwicked",
-              "baseHueShiftMax" : 220,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "ceilingthinspiral",
-              "baseHueShiftMax" : 220,
-              "modHueShiftMax" : 180
+              "name" : "springbush",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 0
             }
           ]
         }

@@ -377,6 +377,30 @@
       },
       {
         "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ 
+            [0.15, "icicleshoot1" ],
+            [0.15, "icicleshoot2" ],
+            [0.15, "icicleshoot3" ],
+            [0.15, "icicleshoot4" ],
+            [0.15, "icicleshoot5" ],
+            [0.15, "icicleshoot6" ],
+            [0.15, "icebloom" ],
+            [0.15, "iceplant2" ],
+            [0.15, "icespikeff" ]
+            ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
         "priority" : 1,
         "variants" : 1,
         "distribution" : "/biomes/distributions.config:mainBiomeRareMicrodungeon",
@@ -392,6 +416,20 @@
 
         "type" : "microdungeon",
         "microdungeons" : [ "encounterdungeons" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "snowman" ] ],
+            "parameters" : { }
+          }
+        ]
       },
       {
         "mode" : "floor",
@@ -499,7 +537,7 @@
         "treeFoliageHueShiftMax" : 0,
         "treeStemHueShiftMax" : 12,
         "treeStemList" : [ "geometricstem", "icespherestem" ],
-        "treeFoliageList" : [ "" ]
+        "treeFoliageList" : [ "geometricfoliage", "icespherefoliage" ]
       },
       {
         "mode" : "floor",
@@ -581,7 +619,7 @@
         "mode" : "ceiling",
         "priority" : 2.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
+        "distribution" : "/biomes/distributions.config:denseLarge",
 
         "type" : "tree",
         "treeFoliageHueShiftMax" : 180,
@@ -667,6 +705,34 @@
         "objectSets" : [
           {
             "pool" : [ [0.20, "icestalactite1" ], [0.20, "icestalactite2" ], [0.20, "icestalactite3" ], [0.20, "icestalactite4" ] ]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "iceshard1" ], [0.35, "iceshard2" ], [0.35, "iceshard3" ], [0.35, "iceshard4" ], [0.35, "iceshard5" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "geometricshard1" ], [0.35, "geometricshard2" ], [0.35, "geometricshard3" ], [0.35, "geometricshard4" ], [0.35, "geometricshard5" ] ],
+            "parameters" : { }
           }
         ]
       }

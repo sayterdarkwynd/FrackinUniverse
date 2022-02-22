@@ -300,7 +300,7 @@
 			"tracks": ["/sfx/environmental/arid_day.ogg"]
 		},
 		"night": {
-			"tracks": ["/sfx/environmental/crystal_underground.ogg"]
+			"tracks": ["/sfx/environmental/arid_night.ogg", "/sfx/environmental/crystal_underground.ogg"]
 		}
 	},
 	  "musicTrack" : {
@@ -323,7 +323,7 @@
 				"distribution": "/biomes/distributions.config:overgroundChests",
 
 				"type": "treasureBox",
-				"treasureBoxSets": ["basicChest"]
+				"treasureBoxSets": ["basicChest", "ffbasicChest", "ffbasicChest2"]
 			},
 			{
 				"mode": "floor",
@@ -352,7 +352,7 @@
 				"mode": "floor",
 				"priority": 1.0,
 				"variants": 1,
-				"distribution": "/biomes/distributions.config:surfaceCapsules",
+				"distribution": "/biomes/distributions.config:potsRare",
 
 				"type": "object",
 				"objectSets": [{
@@ -371,7 +371,7 @@
 				"distribution": "/biomes/distributions.config:denseLarge",
 
 				"type": "tree",
-				"treeFoliageHueShiftMax": 0,
+				"treeFoliageHueShiftMax": 25,
 				"treeStemHueShiftMax": 15,
 				"treeStemList": ["astral"],
 				"treeFoliageList": ["nebula"]
@@ -442,22 +442,24 @@
 					"parameters": {}
 				}]
 			},
-           {
-             "mode" : "ceiling",
-             "priority" : 1.0,
-             "variants" : 1,
-             "distribution" : "/biomes/distributions.config:ffunCommon",
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
-             "type" : "object",
-             "objectSets" : [
-               {
-                 "pool" : [
-                   [0.50, "wildlumivineseed" ]
-                 ],
-                 "parameters" : { "startingStage" : 3 }
-               }
-             ]
-           },
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "astralruin" ],
+              [0.35, "astralobelisk" ],
+              [0.35, "astralarch" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -469,9 +471,13 @@
             {
               "pool" : [
               [0.15, "timeobelisk" ],
-              [0.35, "astralruin" ],
-              [0.35, "astralobelisk" ],
-              [0.35, "astralarch" ]
+              [0.35, "plynth1" ],
+              [0.35, "plynth2" ],
+              [0.35, "monolith1" ],
+              [0.35, "monolith2" ],
+              [0.35, "monolith3" ],
+              [0.35, "monolith4" ],
+              [0.35, "elderidol" ]
               ],
               "parameters" : { }
             }
@@ -519,7 +525,7 @@
 				"distribution": "/biomes/distributions.config:undergroundChests",
 
 				"type": "treasureBox",
-				"treasureBoxSets": ["basicChest"]
+				"treasureBoxSets": ["basicChest", "ffbasicChest", "ffbasicChest2"]
 			},
 
 			{
@@ -554,16 +560,25 @@
 					"parameters": {}
 				}]
 			},
+		      {
+		        "mode" : "floor",
+		        "priority" : 2.0,
+		        "variants" : 1,
+		        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+		        "type" : "grass",
+		        "grasses" : [ "magmaflower", "magmaflower2", "magmaflower3", "magmaflower4", "testflower8", "magmaflower5" ]
+		      },
 			{
 				"mode": "ceiling",
 				"priority": 2.0,
 				"variants": 1,
-				"distribution": "/biomes/distributions.config:denseSmall",
+				"distribution": "/biomes/distributions.config:denseMedium",
 
 				"type": "tree",
 				"treeFoliageHueShiftMax": 0,
 				"treeStemHueShiftMax": 0,
-				"treeStemList": ["darkvine"],
+				"treeStemList": ["astralvine"],
 				"treeFoliageList": [""]
 			},
 	        {
@@ -584,11 +599,27 @@
 	            }
 	          ]
 	        },
+           {
+             "mode" : "ceiling",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:ffunCommon",
+   
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [ 
+                   [0.50, "wildlumivineseed" ]
+                 ],
+                 "parameters" : { "startingStage" : 3 }
+               }
+             ]
+           },
 			{
 				"mode": "floor",
 				"priority": 1.0,
 				"variants": 1,
-				"distribution": "/biomes/distributions.config:undergroundCapsules",
+				"distribution": "/biomes/distributions.config:potsRare",
 
 				"type": "object",
 				"objectSets": [{
@@ -600,6 +631,27 @@
 					"parameters": {}
 				}]
 
+			},
+			{
+				"mode" : "floor",
+				"priority" : 1.0,
+				"variants" : 1,
+				"distribution" : "/biomes/distributions.config:potsRare",
+
+				"type" : "object",
+				"objectSets" : [{
+					"pool" : [
+						[0.15, "timeobelisk" ],
+						[0.35, "plynth1" ],
+						[0.35, "plynth2" ],
+						[0.35, "monolith1" ],
+						[0.35, "monolith2" ],
+						[0.35, "monolith3" ],
+						[0.35, "monolith4" ],
+						[0.35, "elderidol" ]
+					],
+					"parameters" : { }
+				}]
 			}
 		]
 	}

@@ -296,7 +296,7 @@
         "distribution" : "/biomes/distributions.config:overgroundChests",
 
         "type" : "treasureBox",
-        "treasureBoxSets" : [ "basicChest" ]
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
       },
       {
         "mode" : "floor",
@@ -366,6 +366,15 @@
         "mode" : "floor",
         "priority" : 3.0,
         "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "obsidianpebbles" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
         "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
 
         "type" : "microdungeon",
@@ -397,6 +406,21 @@
       },
       {
         "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "moltenbones",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
         "distribution" : "/biomes/distributions.config:rareClumpyLarge",
@@ -404,10 +428,37 @@
         "type" : "tree",
         "treeFoliageHueShiftMax" : 180,
         "treeStemHueShiftMax" : 15,
-        "treeStemList" : [ "grumpy", "ashy", "coal", "crispy", "lava", "magma" ],
-        "treeFoliageList" : [ "grey", "red", "fluff" ]
+        "treeStemList" : [ "ashy", "coal", "magma" ],
+        "treeFoliageList" : [ "" ]
       },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
 
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ 
+            [0.35, "volcanicrockseed" ],
+            [0.35, "volcanicrockseed2" ],
+            [0.35, "volcanicrockseed3" ],
+            [0.35, "volcanicrockseed4" ],
+            [0.35, "volcanicrockseed5" ],
+            [0.35, "volcanicrockseed6" ],
+            [0.35, "volcanicrockseed7" ],
+            [0.35, "volcanicrockseed8" ],
+            [0.35, "volcanicrock2seed" ],
+            [0.35, "volcanicrock2seed2" ],
+            [0.35, "volcanicrock2seed3" ],
+            [0.35, "volcanicrock2seed4" ],
+            [0.35, "volcanicrock2seed5" ],
+            [0.35, "volcanicrock2seed6" ]
+            ]
+          }
+        ]
+      },
       {
         "mode" : "floor",
         "priority" : 0.0,

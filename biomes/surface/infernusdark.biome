@@ -201,42 +201,32 @@
   },
 
   "surfacePlaceables" : {
-    "grassMod" : [ "blackash" ],
+    "grassMod" : [ "ash", "blackash" ],
     "grassModDensity" : 0.9,
       "items" : [
       {
         "mode" : "floor",
         "priority" : 0.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundChests",
+        "distribution" : "/biomes/distributions.config:overgroundChests",
 
         "type" : "treasureBox",
-        "treasureBoxSets" : [ "basicChest" ]
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
       },
       {
         "mode" : "floor",
         "priority" : 0.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundChests",
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
         "type" : "treasureBox",
         "treasureBoxSets" : [ "weaponChest" ]
-      },
-
-      {
-        "mode" : "floor",
-        "priority" : 0.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundtechChests",
-
-        "type" : "treasureBox",
-        "treasureBoxSets" : [ "techChest" ]
       },
       {
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundChests",
+        "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
         "type" : "object",
         "objectSets" : [
@@ -250,7 +240,7 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [
@@ -287,6 +277,15 @@
           "type" : "microdungeon",
           "microdungeons" : [ "fu_dae_microdungeons", "bonesmicrodungeons", "foundrymicrodungeons", "randomencounter", "avianencounter", "glitchencounter", "shroomencounter" ]
         },
+      {
+        "mode" : "floor",
+        "priority" : 1,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "volcanicmicrodungeons" ]
+      },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -335,22 +334,26 @@
             "mode" : "floor",
             "priority" : 1.0,
             "variants" : 1,
-            "distribution" : "/biomes/distributions.config:ffunCommon",
+            "distribution" : "/biomes/distributions.config:denseLarge",
 
             "type" : "object",
             "objectSets" : [
               {
                 "pool" : [
-                [0.15, "volcanicrockseed4" ],
-                [0.15, "volcanicrock2seed" ],
-                [0.15, "volcanicrockseed5" ],
-                [0.15, "volcanicrock2seed3" ],
-                [0.15, "volcanicrockseed6" ],
-                [0.15, "volcanicrock2seed4" ],
-                [0.15, "volcanicrockseed7" ],
-                [0.15, "volcanicrock2seed5" ],
-                [0.15, "volcanicrockseed8" ],
-                [0.15, "volcanicrock2seed6" ]
+                [0.35, "volcanicrockseed" ],
+                [0.35, "volcanicrockseed2" ],
+                [0.35, "volcanicrockseed3" ],
+                [0.35, "volcanicrockseed4" ],
+                [0.35, "volcanicrockseed5" ],
+                [0.35, "volcanicrockseed6" ],
+                [0.35, "volcanicrockseed7" ],
+                [0.35, "volcanicrockseed8" ],
+                [0.35, "volcanicrock2seed" ],
+                [0.35, "volcanicrock2seed2" ],
+                [0.35, "volcanicrock2seed3" ],
+                [0.35, "volcanicrock2seed4" ],
+                [0.35, "volcanicrock2seed5" ],
+                [0.35, "volcanicrock2seed6" ]
                 ],
                 "parameters" : { }
               }
@@ -360,7 +363,7 @@
         {
           "mode" : "floor",
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
 
           "type" : "grass",
           "grasses" : [ "ashlion", "fireflower", "magmaflower", "magmaflower2", "magmaflower3", "magmaflower4", "magmaflower5" ]
@@ -369,106 +372,39 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
 
           "type" : "bush",
           "bushes" : [
             {
               "name" : "moltenbones",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             },
             {
               "name" : "magmapitcher",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             },
             {
               "name" : "moltenrock",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             },
             {
               "name" : "lavabowl",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            }
-          ]
-        },
-        {
-          "mode" : "ceiling",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "ceilingarchrock",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "ceilingmagmapods",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "ceilingwicked",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "ceilingspiralrocks",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             }
           ]
         }
       ]
     },
   "undergroundPlaceables" : {
-    "grassMod" : [ "ash" ],
+    "grassMod" : [ "ash", "blackash" ],
     "grassModDensity" : 0.6,
 
     "items" : [
-           {
-             "mode" : "ceiling",
-             "priority" : 1.0,
-             "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
-
-             "type" : "object",
-             "objectSets" : [
-               {
-                 "pool" : [
-              [0.50, "ceilingspike1" ],
-              [0.50, "ceilingspike2" ],
-              [0.50, "ceilingspike3" ],
-              [0.50, "ceilingspike4" ]
-                 ],
-                 "parameters" : { "startingStage" : 3 }
-               }
-             ]
-           },
-           {
-             "mode" : "floor",
-             "priority" : 1.0,
-             "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
-
-             "type" : "object",
-             "objectSets" : [
-               {
-                 "pool" : [
-              [0.50, "magmagroundspike1" ],
-              [0.50, "magmagroundspike2" ],
-              [0.50, "magmagroundspike3" ]
-                 ],
-                 "parameters" : { "startingStage" : 3 }
-               }
-             ]
-           },
       {
         "mode" : "floor",
         "priority" : 0.0,
@@ -476,13 +412,13 @@
         "distribution" : "/biomes/distributions.config:undergroundChests",
 
         "type" : "treasureBox",
-        "treasureBoxSets" : [ "basicChest" ]
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
       },
       {
         "mode" : "floor",
         "priority" : 0.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundChests",
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
         "type" : "treasureBox",
         "treasureBoxSets" : [ "weaponChest" ]
@@ -515,7 +451,7 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [
@@ -529,7 +465,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "infernusChest" ]
@@ -538,7 +474,36 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:rareClumpySmall",
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [
+            [0.35, "volcanicrockseed" ],
+            [0.35, "volcanicrockseed2" ],
+            [0.35, "volcanicrockseed3" ],
+            [0.35, "volcanicrockseed4" ],
+            [0.35, "volcanicrockseed5" ],
+            [0.35, "volcanicrockseed6" ],
+            [0.35, "volcanicrockseed7" ],
+            [0.35, "volcanicrockseed8" ],
+            [0.35, "volcanicrock2seed" ],
+            [0.35, "volcanicrock2seed2" ],
+            [0.35, "volcanicrock2seed3" ],
+            [0.35, "volcanicrock2seed4" ],
+            [0.35, "volcanicrock2seed5" ],
+            [0.35, "volcanicrock2seed6" ]
+            ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
 
         "type" : "grass",
         "grasses" : [ "magmaflower", "magmaflower2", "magmaflower3", "magmaflower4", "testflower8", "magmaflower5" ]

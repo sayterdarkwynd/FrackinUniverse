@@ -86,7 +86,6 @@
           "objectSets" : [
             {
               "pool" : [
-              [0.3, "wildwhitespine" ],
               [0.2, "emeraseed" ],
               [0.2, "duskilineseed" ],
               [0.2, "apaliteseed" ],
@@ -96,48 +95,38 @@
             }
           ]
         },
-        {
-          "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:potsRare",
-
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : [
-              [0.65, "geyser_small" ]
-              ],
-              "parameters" : { }
-            }
-          ]
-        },
            {
              "mode" : "floor",
              "priority" : 1.0,
              "variants" : 1,
-             "distribution" : "/biomes/distributions.config:ffCommon",
+             "distribution" : "/biomes/distributions.config:ffunCommon",
 
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [
-              [0.50, "savannahgroundspike1" ],
-              [0.50, "savannahgroundspike2" ],
-              [0.50, "savannahgroundspike3" ],
-              [0.50, "savannahgroundspike4" ],
-              [0.50, "magmagroundspike1" ],
-              [0.50, "magmagroundspike2" ],
-              [0.50, "magmagroundspike3" ],
-              [0.50, "groundspike1" ],
-              [0.50, "groundspike2" ],
-              [0.50, "groundspike3" ],
-              [0.50, "groundspike4" ]
-                 ],
-                 "parameters" : { "startingStage" : 3 }
+                 "pool" : [ [0.20, "sulphuricgroundspike1" ], [0.20, "sulphuricgroundspike2" ], [0.20, "sulphuricgroundspike3" ], [0.20, "sulphuricgroundspike4" ] ],
+                 "parameters" : { }
                }
              ]
            },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "grass",
+          "grasses" : [ "sulphurpebbles" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "grass",
+          "grasses" : [ "sulphurplant" ]
+        },
         {
           "mode" : "floor",
           "priority" : 2.0,
@@ -158,56 +147,21 @@
             }
           ]
         },
-           {
-             "mode" : "ceiling",
-             "priority" : 1.0,
-             "variants" : 1,
-             "distribution" : "/biomes/distributions.config:ffCommon",
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
 
-             "type" : "object",
-             "objectSets" : [
-               {
-                 "pool" : [
-              [0.50, "savannahceilingspike1" ],
-              [0.50, "savannahceilingspike2" ],
-              [0.50, "savannahceilingspike3" ],
-              [0.50, "savannahceilingspike4" ],
-              [0.50, "desertceilingspike1" ],
-              [0.50, "desertceilingspike2" ],
-              [0.50, "desertceilingspike3" ],
-              [0.50, "desertceilingspike4" ],
-              [0.50, "magmaceilingspike1" ],
-              [0.50, "magmaceilingspike2" ],
-              [0.50, "magmaceilingspike3" ]
-
-                 ],
-                 "parameters" : { "startingStage" : 3 }
-               }
-             ]
-           },
-      {
-        "mode" : "floor",
-        "priority" : 1.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundOreRocks",
-
-        "type" : "object",
-        "objectSets" : [
-          {
-            "pool" : [
-              [0.50, "copperrock" ],
-              [0.50, "copperrocksmall" ],
-              [0.50, "silverrock" ],
-              [0.50, "silverrocksmall" ],
-              [0.50, "goldrock" ],
-              [0.50, "goldrocksmall" ],
-              [0.50, "diamondrock" ],
-              [0.50, "diamondrocksmall" ]
-            ],
-            "parameters" : { }
-          }
-        ]
-      },
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "sulphurrocks",
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
+            }
+          ]
+        },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -256,22 +210,13 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 0.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
-
-          "type" : "treasureBox",
-          "treasureBoxSets" : [ "fflabChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -285,7 +230,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]

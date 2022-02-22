@@ -39,7 +39,20 @@
       }
 },
 
+ {
+   "op": "add",
+   "path": "/surfacePlaceables/items/-",
+   "value":
+   {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
 
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+   }
+ },
 
 {"op":"add","path":"/surfacePlaceables/items/-","value":{
           "mode" : "floor",
@@ -79,6 +92,48 @@
   "microdungeons" : [ "fu_dae_microdungeons", "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "newavianmicro", "minigreenruins", "fuencounters", "fulabs", "fubandits", "newhumanmicro", "newavianmicro", "minigreenruins", "fuhives", "furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter" ]
   }
 },
+ 
+ {
+   "op": "add",
+   "path": "/undergroundPlaceables/items/0/treasureBoxSets/-",
+   "value": "ffbasicChest"
+ },
+ 
+ {
+   "op": "add",
+   "path": "/undergroundPlaceables/items/0/treasureBoxSets/-",
+   "value": "ffbasicChest2"
+ },
+ 
+ {
+   "op": "add",
+   "path": "/undergroundPlaceables/items/-",
+   "value": 
+   {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "jungleChest" ]
+   }
+ },
+ 
+ {
+   "op": "add",
+   "path": "/undergroundPlaceables/items/-",
+   "value": 
+   {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "jungleflower1", "jungleflower2", "jungleflower3" ]
+   }
+ },
 
 {"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
   "mode" : "floor",

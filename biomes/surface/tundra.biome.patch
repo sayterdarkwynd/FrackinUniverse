@@ -24,6 +24,69 @@
         ]
       }
 },
+
+  {
+    "op": "replace",
+    "path": "/surfacePlaceables/items/16/treeFoliageList/0",
+    "value": "geometricfoliage"
+  },
+ 
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/16/treeFoliageList/-",
+    "value": "icespherefoliage"
+  },
+ 
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value": 
+    {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:veryRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "snowman" ] ],
+            "parameters" : { }
+          }
+        ]
+    }
+  },
+ 
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.15, "icicleshoot1" ],
+              [0.15, "icicleshoot2" ],
+              [0.15, "icicleshoot3" ],
+              [0.15, "icicleshoot4" ],
+              [0.15, "icicleshoot5" ],
+              [0.15, "icicleshoot6" ],
+              [0.15, "icebloom" ],
+              [0.15, "iceplant2" ],
+              [0.15, "icespikeff" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+    }
+  },
+ 
 {"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
   "mode" : "floor",
   "priority" : 1,
@@ -34,6 +97,53 @@
   "microdungeons" : [ "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "fulabs", "fubandits", "newhumanmicro", "newavianmicro", "furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter" ]
   }
 },
+
+  {
+    "op": "replace",
+    "path": "/undergroundPlaceables/items/2/distribution",
+    "value": "/biomes/distributions.config:denseLarge"
+  },
+ 
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "iceshard1" ], [0.35, "iceshard2" ], [0.35, "iceshard3" ], [0.35, "iceshard4" ], [0.35, "iceshard5" ] ],
+            "parameters" : { }
+          }
+        ]
+    }
+  },
+ 
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "geometricshard1" ], [0.35, "geometricshard2" ], [0.35, "geometricshard3" ], [0.35, "geometricshard4" ], [0.35, "geometricshard5" ] ],
+            "parameters" : { }
+          }
+        ]
+    }
+  },
+ 
 {"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
   "mode" : "floor",
   "priority" : 1,
