@@ -20,6 +20,7 @@ function chooseTenants(seed, tags)
 		end
 	end
 	origChooseTenants(seed, tags)
+	if not isOccupiedMk2() then return end
 	storage.occupier.colonyTagCriteria = getTagCriteria()
 	for tag, needed in pairs (self.extraTagCriteria or {}) do
 		storage.occupier.colonyTagCriteria[tag] = (storage.occupier.colonyTagCriteria[tag] or 0) + needed

@@ -59,9 +59,9 @@ function update(dt)
 
 	end
 
-  	updateAngularVelocity(dt)
-  	updateRotationFrame(dt)
-  	self.lastPosition = mcontroller.position()
+	updateAngularVelocity(dt)
+	updateRotationFrame(dt)
+	self.lastPosition = mcontroller.position()
 
 end
 

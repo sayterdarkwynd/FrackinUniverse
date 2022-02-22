@@ -137,15 +137,15 @@ function isn_slotDecayCheck(slot)
 end
 
 function isn_powerSlotCheck(slotnum)
-    local item = world.containerItemAt(entity.id(), slotnum)
-    if not item then
+	local item = world.containerItemAt(entity.id(), slotnum)
+	if not item then
 		storage.radiation = storage.radiation - 5
 		animator.setAnimationState("screen", "off")
 		animator.setAnimationState("screenbright", "off")
 		power.setPower(0)
 		power.update(0)
-    	return 0
-    end
+		return 0
+	end
 
 	return storage.fuels[item.name] and storage.fuels[item.name].power or 0
 end
