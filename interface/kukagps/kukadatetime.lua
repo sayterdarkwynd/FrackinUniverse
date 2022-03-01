@@ -145,15 +145,17 @@ end
 function getDate(days)
     local year=0
     local month=1
-    local daysperyear=365
-    while (days>=daysperyear) do
+    local daysperyear=365.242--365
+    --[[while (days>=daysperyear) do
        daysperyear=365
        if ((year%4)==0) or (((year%100)==0) and ((year%400)==0)) then
           daysperyear=366
        end
        days=days-daysperyear
        year=year+1
-    end
+    end]]--
+	year = math.floor(days / daysperyear)
+	days = math.floor(days % daysperyear)
     local dayspermonth={31,28,31,30,31,30,31,31,30,31,30,31}
     if ((year%4)==0) or (((year%100)==0) and ((year%400)==0)) then
        dayspermonth={31,29,31,30,31,30,31,31,30,31,30,31}
