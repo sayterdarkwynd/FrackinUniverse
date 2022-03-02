@@ -14,11 +14,9 @@ function updateAim()
 end
 
 function update(dt, fireMode, shiftHeld)
-	local target=updateAim()
-
 	self.cooldownTimer = math.max(self.cooldownTimer - dt, 0.0)
 
-	local position = activeItem.ownerAimPosition()
+	local position = updateAim()
 	local target = world.objectAt(position)
 
 	local rangecheck = world.magnitude(mcontroller.position(), position) <= self.maxRange and not world.lineTileCollision(vec2.add(mcontroller.position(), activeItem.handPosition(self.baseOffset)), position)
