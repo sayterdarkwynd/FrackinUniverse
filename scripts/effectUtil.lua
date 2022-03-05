@@ -64,6 +64,8 @@ function effectUtil.say(sentence)
 		world.callScriptedEntity(effectUtil.getSelf(),"npc.say",sentence)
 	elseif selfType=="monster" then
 		world.callScriptedEntity(effectUtil.getSelf(),"monster.say",sentence)
+	elseif selfType=="object" then
+		world.callScriptedEntity(effectUtil.getSelf(),"object.say",sentence)
 	else
 		effectUtil.messageParticle(effectUtil.getPos(),sentence)
 	end
