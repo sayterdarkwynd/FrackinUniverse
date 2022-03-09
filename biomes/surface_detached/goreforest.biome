@@ -47,10 +47,10 @@
 
   "ambientNoises" : {
     "day" : {
-      "tracks" : [ "/sfx/environmental/forest_day.ogg", "/sfx/environmental/forest_day2.ogg" ]
+      "tracks" : [ "/sfx/environmental/forest_day.ogg", "/sfx/environmental/forest_day2.ogg", "/sfx/environmental/jungle_day.ogg", "/sfx/environmental/jungle_day2.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/sfx/environmental/forest_night.ogg", "/sfx/environmental/forest_night2.ogg" ]
+      "tracks" : [ "/sfx/environmental/forest_night.ogg", "/sfx/environmental/forest_night2.ogg", "/sfx/environmental/jungle_night.ogg", "/sfx/environmental/jungle_night2.ogg" ]
     }
   },
 
@@ -62,15 +62,15 @@
       "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
-  "hueShiftOptions" : [ -25, 0, 25 ],
+  "hueShiftOptions" : [-30, -20, -10, 0, 10, 20, 30],
 
-    "mainBlock" : "rottingflesh",
-    "subBlocks" : [ "eyepiles", "fleshblock" ],
+    "mainBlock" : "fleshblock",
+    "subBlocks" : [ "eyepiles", "rottingflesh" ],
     "ores" : "ff_surfacePenumbraOres",
 
   "surfacePlaceables" : {
-    "grassMod" : [ "darkgrass" ],
-    "grassModDensity" : 0.8,
+    "grassMod" : [ "heckgrass" ],
+    "grassModDensity" : 0.9,
 
     "items" : [
         {
@@ -91,20 +91,6 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:potsRare",
-
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : [ [0.35, "flowerred" ], [0.35, "flowerblue" ], [0.35, "floweryellow" ] ],
-              "parameters" : { }
-            }
-          ]
-        },
-         {
-          "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
           "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "object",
@@ -119,7 +105,6 @@
             }
           ]
         },
-
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -127,15 +112,22 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
 
-
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "fleshChest" ]
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -149,19 +141,83 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
         },
         {
           "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.50, "tombstone1" ],
+              [0.50, "tombstone2" ],
+              [0.50, "tombstone3" ],
+              [0.50, "tombstone4" ],
+              [0.50, "tombstone5" ],
+              [0.50, "tombstone6" ],
+              [0.50, "tombstone7" ],
+              [0.50, "tombstone8" ],
+              [0.50, "tombstone9" ],
+              [0.50, "tombstone10" ],
+              [0.50, "tombstone11" ],
+              [0.50, "tombthing1" ],
+              [0.50, "tombthing2" ],
+              [0.50, "tombthing3" ],
+              [0.50, "tombthing4" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseSmall",
+          "distribution" : "/biomes/distributions.config:denseMedium",
 
           "type" : "grass",
           "grasses" : [ "heckflower" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "grass",
+          "grasses" : [ "fleshbone", "fleshplant" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "eyebush",
+              "baseHueShiftMax" : 15,
+              "modHueShiftMax" : 0
+            },
+            {
+              "name" : "tendonbush",
+              "baseHueShiftMax" : 15,
+              "modHueShiftMax" : 0
+            },
+            {
+              "name" : "fleshcorpse",
+              "baseHueShiftMax" : 15,
+              "modHueShiftMax" : 0
+            }
+          ]
         },
         {
           "mode" : "floor",
@@ -172,7 +228,7 @@
           "type" : "tree",
           "treeFoliageHueShiftMax" : 180,
           "treeStemHueShiftMax" : 15,
-          "treeStemList" : [ "doomwood", "skeletal", "stripey" ],
+          "treeStemList" : [ "doomwood", "barren", "skeletal", "stripey" ],
           "treeFoliageList" : [ "aridblank", "doomy1" ]
         },
         {
@@ -188,7 +244,7 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 5,
-          "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+          "distribution" : "/biomes/distributions.config:mainBiomeRareMicrodungeon",
 
           "type" : "microdungeon",
           "microdungeons" : [ "hauntedmini" ]
@@ -214,8 +270,8 @@
     ]
   },
     "undergroundPlaceables" : {
-      "grassMod" : [ "darkgrass" ],
-      "grassModDensity" : 0.2,
+      "grassMod" : [ "heckgrass" ],
+      "grassModDensity" : 0.3,
 
       "items" : [
         {
@@ -225,9 +281,17 @@
           "distribution" : "/biomes/distributions.config:undergroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
 
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "fleshChest" ]
+        },
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -255,7 +319,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:undergroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -264,7 +328,7 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredPots",
+          "distribution" : "/biomes/distributions.config:potsRare",
 
           "type" : "object",
           "objectSets" : [
@@ -275,24 +339,15 @@
           ]
         },
         {
-          "mode" : "floor",
-          "priority" : 10,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:tiyDistPlatform",
-
-          "type" : "microdungeon",
-          "microdungeons" : [ "aridplatforming" ]
-        },
-        {
           "mode" : "ceiling",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseMedium",
+          "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 25,
-          "treeStemHueShiftMax" : 25,
-          "treeStemList" : [ "bloodvine" ],
+          "treeFoliageHueShiftMax" : 0,
+          "treeStemHueShiftMax" : 15,
+          "treeStemList" : [ "bloodvine", "fleshvine2" ],
           "treeFoliageList" : [ "nofoliagevine" ]
         },
         {
@@ -304,6 +359,24 @@
 
           "type" : "grass",
           "grasses" : [ "heckflower" ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "grass",
+          "grasses" : [ "ceilingfleshbone", "ceilingfleshplant" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "grass",
+          "grasses" : [ "fleshbone", "fleshplant" ]
         }
       ]
     }

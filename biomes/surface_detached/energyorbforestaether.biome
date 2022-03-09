@@ -42,14 +42,14 @@
     }
   },
 
-  "parallax" : "/parallax/surface/forestsub.parallax",
+  "parallax" : "/parallax/surface/aethernew.parallax",
 
   "ambientNoises" : {
     "day" : {
-      "tracks" : [ "/sfx/environmental/forest_day.ogg", "/sfx/environmental/forest_day2.ogg" ]
+      "tracks" : [ "/sfx/ambiance/sulphuricambiance2.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/sfx/environmental/forest_night.ogg", "/sfx/environmental/forest_night2.ogg" ]
+      "tracks" : [ "/sfx/ambiance/sulphuricambiance2.ogg" ]
     }
   },
 
@@ -61,11 +61,11 @@
       "tracks" : [ "/music/Gario_EldrichSporeSpawn.ogg","/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
-  "hueShiftOptions" : [-165, -70, -25, 0, 25, 70, 165],
+  "hueShiftOptions" : [ -160, -140, -120, -100, -80, -60, -40, -20, 0, 20, 40 ],
 
-    "mainBlock" : "bonemeal",
-    "subBlocks" : [ "darkness", "clay" ],
-    "ores" : "ff_surfacesulfurOres",
+    "mainBlock" : "darkness",
+    "subBlocks" : [ "blackslime", "hiveold", "clay" ],
+    "ores" : "aethersurface",
 
   "surfacePlaceables" : {
     "grassMod" : [ "blackslimegrass" ],
@@ -76,15 +76,41 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:ffCommon",
 
           "type" : "object",
           "objectSets" : [
             {
               "pool" : [
                [0.35, "wildenergiflowerseed" ]
-          ],
+              ],
               "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.35, "rotbulb1" ],
+              [0.35, "rotbulb2" ],
+              [0.35, "rotbulb3" ],
+              [0.35, "shadecoral1" ],
+              [0.35, "shadecoral2" ],
+              [0.35, "shadecoral3" ],
+              [0.35, "shadecoral4" ],
+              [0.35, "shadowgrass1" ],
+              [0.35, "shadowgrass2" ],
+              [0.35, "shadowgrass3" ],
+              [0.35, "shadowgrass4" ]
+              ],
+              "parameters" : { }
             }
           ]
         },
@@ -107,16 +133,16 @@
           "distribution" : "/biomes/distributions.config:tiyDist",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
+          "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
         },
         {
           "mode" : "floor",
           "priority" : 4.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "spiralspikes", "blocks", "block1platforms", "loops", "aethermini" ]
+          "microdungeons" : [ "aethermini" ]
         },
         {
           "mode" : "floor",
@@ -125,23 +151,9 @@
           "distribution" : "/biomes/distributions.config:scatteredSmall",
 
           "type" : "grass",
-          "grasses" : [ "jungleflower1", "jungleflower2", "jungleflower3", "blobby", "mushroom"  ]
+          "grasses" : [ "shadowy" ]
         },
         {
-          "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:potsRare",
-
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : [ [0.35, "flowerred" ], [0.35, "flowerblue" ], [0.35, "floweryellow" ], [0.35, "junglebush1" ], [0.35, "junglebush2" ], [0.35, "junglebush3" ], [0.35, "junglebush4" ], [0.35, "junglebush5" ], [0.35, "junglebush6" ], [0.35, "junglebush7" ], [0.35, "junglebush8" ], [0.35, "junglebush9" ], [0.35, "junglebush10" ], [0.35, "junglebush11" ], [0.35, "junglebush12" ], [0.35, "junglebush13" ], [0.35, "junglebush14" ], [0.35, "junglebush15" ], [0.35, "junglebush16" ], [0.35, "junglebush17" ], [0.35, "junglebush18" ] ],
-              "parameters" : { }
-            }
-          ]
-        },
-         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
@@ -162,14 +174,13 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
-
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -183,7 +194,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -197,34 +208,18 @@
           "type" : "microdungeon",
           "microdungeons" : [ "terrainfeatures" ]
         },
-
         {
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:denseMedium",
 
           "type" : "bush",
           "bushes" : [
             {
-              "name" : "testbush",
-              "baseHueShiftMax" : 60,
-              "modHueShiftMax" : 220
-            },
-            {
-              "name" : "shrub1",
-              "baseHueShiftMax" : 60,
-              "modHueShiftMax" : 220
-            },
-            {
-              "name" : "tentacleshrub",
-              "baseHueShiftMax" : 60,
-              "modHueShiftMax" : 220
-            },
-            {
-              "name" : "podbush",
-              "baseHueShiftMax" : 60,
-              "modHueShiftMax" : 220
+              "name" : "testbush2",
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             }
           ]
         },
@@ -232,21 +227,24 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseLarge",
+          "distribution" : "/biomes/distributions.config:potsRare",
 
-          "type" : "tree",
-          "treeFoliageHueShiftMax" : 180,
-          "treeStemHueShiftMax" : 15,
-          "treeStemList" : [ "mushroomstalk" ],
-          "treeFoliageList" : [ "mushroomredtop", "mushroomyellowtop" ]
-        },
-        {
-          "mode" : "ceiling",
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
-
-          "type" : "grass",
-          "grasses" : [ "glowceiling", "ceilingmushroom" ]
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.15, "timeobelisk" ],
+              [0.35, "plynth1" ],
+              [0.35, "plynth2" ],
+              [0.35, "monolith1" ],
+              [0.35, "monolith2" ],
+              [0.35, "monolith3" ],
+              [0.35, "monolith4" ],
+              [0.35, "elderidol" ]
+              ],
+              "parameters" : { }
+            }
+          ]
         }
     ]
   }

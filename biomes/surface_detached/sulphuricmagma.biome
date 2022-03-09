@@ -1,10 +1,10 @@
 {
   "name" : "sulphuricmagma",
   "friendlyName" : "Volcanic Sulphuric",
-  "hueShiftOptions" : [-40, -25, 0, 25, 40],
+  "hueShiftOptions" : [0],
 
     "mainBlock" : "sulphurdirt",
-    "subBlocks" : [ "sulphurstone", "magmatile2", "magmatile1" ],
+    "subBlocks" : [ "sulphurstone", "magmarock", "obsidian" ],
     "ores" : "ff_surfacesulfurOres",
 
   "spawnProfile" : {
@@ -66,7 +66,7 @@
     }
   },
   "surfacePlaceables" : {
-    "grassMod" : [ "blackash" ],
+    "grassMod" : [ "blackash", "sulphuricgrass" ],
     "grassModDensity" : 0.9,
 
     "items" : [
@@ -84,28 +84,45 @@
             }
           ]
         },
-
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:superCommon",
+          "distribution" : "/biomes/distributions.config:ffAverage",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.20, "sulphuricgroundspike1" ], [0.20, "sulphuricgroundspike2" ], [0.20, "sulphuricgroundspike3" ], [0.20, "sulphuricgroundspike4" ] ]
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffAverage",
 
           "type" : "object",
           "objectSets" : [
             {
               "pool" : [
+              [0.35, "volcanicrockseed" ],
+              [0.35, "volcanicrockseed2" ],
+              [0.35, "volcanicrockseed3" ],
               [0.35, "volcanicrockseed4" ],
-              [0.35, "volcanicrock2seed" ],
               [0.35, "volcanicrockseed5" ],
-              [0.35, "volcanicrock2seed3" ],
               [0.35, "volcanicrockseed6" ],
-              [0.35, "volcanicrock2seed4" ],
               [0.35, "volcanicrockseed7" ],
-              [0.35, "volcanicrock2seed5" ],
               [0.35, "volcanicrockseed8" ],
-              [0.35, "volcanicrock2seed6" ] ],
-              "parameters" : { "startingStage" : 3 }
+              [0.35, "volcanicrock2seed" ],
+              [0.35, "volcanicrock2seed2" ],
+              [0.35, "volcanicrock2seed3" ],
+              [0.35, "volcanicrock2seed4" ],
+              [0.35, "volcanicrock2seed5" ],
+              [0.35, "volcanicrock2seed6" ]
+			  ],
+              "parameters" : { }
             }
           ]
         },
@@ -116,15 +133,13 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
-
-
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -138,7 +153,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -156,12 +171,20 @@
           "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseSmall",
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
 
           "type" : "grass",
           "grasses" : [ "magmaflower", "magmaflower2", "magmaflower3", "magmaflower4", "magmaflower5" ]
         },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
 
+          "type" : "grass",
+          "grasses" : [ "sulphurpebbles" ]
+        },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -175,27 +198,189 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseMedium",
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
 
           "type" : "bush",
           "bushes" : [
             {
               "name" : "magmapitcher",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 40
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             },
             {
               "name" : "lavabowl",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 40
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             },
             {
               "name" : "moltenrock",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 40
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
+            },
+            {
+              "name" : "moltenbones",
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "sulphurrocks",
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.3, "wildwhitespine" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
             }
           ]
         }
+    ]
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "blackash", "sulphuricgrass" ],
+    "grassModDensity" : 0.3,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffAverage",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.20, "sulphuricceilingspike1" ], [0.20, "sulphuricceilingspike2" ], [0.20, "sulphuricceilingspike3" ], [0.20, "sulphuricceilingspike4" ] ]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffAverage",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.20, "sulphuricgroundspike1" ], [0.20, "sulphuricgroundspike2" ], [0.20, "sulphuricgroundspike3" ], [0.20, "sulphuricgroundspike4" ] ]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ 
+            [0.35, "volcanicrockseed" ],
+            [0.35, "volcanicrockseed2" ],
+            [0.35, "volcanicrockseed3" ],
+            [0.35, "volcanicrockseed4" ],
+            [0.35, "volcanicrockseed5" ],
+            [0.35, "volcanicrockseed6" ],
+            [0.35, "volcanicrockseed7" ],
+            [0.35, "volcanicrockseed8" ],
+            [0.35, "volcanicrock2seed" ],
+            [0.35, "volcanicrock2seed2" ],
+            [0.35, "volcanicrock2seed3" ],
+            [0.35, "volcanicrock2seed4" ],
+            [0.35, "volcanicrock2seed5" ],
+            [0.35, "volcanicrock2seed6" ]
+            ]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "sulphurpebbles" ]
+      }
     ]
   }
 }

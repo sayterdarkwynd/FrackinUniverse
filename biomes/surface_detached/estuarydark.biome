@@ -2,8 +2,10 @@
   "name" : "estuarydark",
   "friendlyName" : "Estuary",
 
-  "mainBlock" : "mud",
-  "subBlocks" : [ "clay", "wetdirt", "oystershell", "clay" ],
+  "hueShiftOptions" : [-30, -20, -10, 0, 10],
+
+  "mainBlock" : "clay",
+  "subBlocks" : [ "marestone", "oystershell" ],
   "ores" : "surface",
 
   "spawnProfile" : {
@@ -31,8 +33,28 @@
     ]
   },
 
+  "parallax" : "/parallax/surface/tidewater.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/ambiance/tidewaterambiance.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/ambiance/tidewaterambiance.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/MelodyofMisery.ogg","/music/OceanExploration1.ogg","/music/ocean-exploration2.ogg","/music/ultramarine.ogg","/music/forsaken-grotto.ogg", "/music/lava-exploration1.ogg", "/music/lava-exploration2.ogg", "/music/drosera.ogg", "/music/crystal-exploration1.ogg", "/music/inviolate-loop.ogg", "/music/body-electric-loop.ogg", "/music/europa.ogg", "/music/crystal-exploration2.ogg", "/music/forsaken-grotto.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/SomethingIntoDarkness.ogg","/music/OceanExploration1.ogg","/music/ocean-exploration2.ogg","/music/ultramarine.ogg","/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mira.ogg", "/music/the-deep.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg", "/music/Nomads.ogg", "/music/forsaken-grotto.ogg", "/music/mercury.ogg", "/music/procyon.ogg" ]
+    }
+  },
+
   "surfacePlaceables" : {
-    "grassMod" : [ "clay" ],
+    "grassMod" : [ "aridgrass" ],
     "grassModDensity" : 0.3,
 
     "items" : [
@@ -40,7 +62,7 @@
         "mode" : "floor",
         "priority" : 0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:minibiomeChests",
+        "distribution" : "/biomes/distributions.config:overgroundChests",
 
         "type" : "treasureBox",
         "treasureBoxSets" : [ "oasisChest" ]
@@ -49,7 +71,16 @@
         "mode" : "floor",
         "priority" : 0.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:overgroundRareChests",
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "fftidewaterChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
         "type" : "treasureBox",
         "treasureBoxSets" : [ "weaponChest" ]
@@ -67,7 +98,24 @@
           }
         ]
       },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
 
+        "type" : "grass",
+        "grasses" : [ "pebbles" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "oceanislandsmicrodungeons" ]
+      },
       {
         "mode" : "floor",
         "priority" : 3.0,
@@ -81,7 +129,19 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:superCommon",
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 15,
+        "treeStemList" : [ "crackly", "oldwood", "oldwood", "palmlike", "woody" ],
+        "treeFoliageList" : [ "lushy", "jungly", "junglepalm", "jungleleaf" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
 
         "type" : "object",
         "objectSets" : [
@@ -116,6 +176,29 @@
           }
         ]
       },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [              
+            [0.35, "rockstony1" ], 
+            [0.35, "rockstony2" ], 
+            [0.35, "rockstony3" ],
+            [0.35, "rockstony4" ], 
+            [0.35, "rockstony5" ], 
+            [0.35, "rockstony6" ],
+            [0.35, "rockstony7" ], 
+            [0.35, "rockstony8" ]              
+            ],
+            "parameters" : { }
+          }
+        ]
+      },
 
       // CROPS
 
@@ -143,8 +226,8 @@
   },
 
   "undergroundPlaceables" : {
-    "grassMod" : [ "clay" ],
-    "grassModDensity" : 0.9,
+    "grassMod" : [ "aridgrass" ],
+    "grassModDensity" : 0.2,
 
     "items" : [
       {

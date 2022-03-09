@@ -4,8 +4,10 @@
 
   "statusEffects" : [ "biomeheat" ],
 
+  "hueShiftOptions" : [ -180, -160, -140, -120, -100, -80, -60, -40, -20, 0, 20, 40, 60, 80, 100, 120, 140, 160, 180 ],
+
   "mainBlock" : "magmarock",
-  "subBlocks" : [ "magmatile1", "magmatile2", "magmatile3", "magmatile4" ],
+  "subBlocks" : [ "magmatile1", "magmatile2", "andesite", "obsidian" ],
   "ores" : "surface",
 
   "spawnProfile" : {
@@ -33,7 +35,7 @@
     ]
   },
 
-  "parallax" : "/parallax/surface/tidewaterfloor.parallax",
+  "parallax" : "/parallax/surface/oceanfloor.parallax",
 
   "ambientNoises" : {
     "day" : {
@@ -53,8 +55,8 @@
     }
   },
   "surfacePlaceables" : {
-    "grassMod" : [ "ash" ],
-    "grassModDensity" : 0.2,
+    "grassMod" : [ "ash", "blackash" ],
+    "grassModDensity" : 0.9,
 
     "items" : [
       {
@@ -65,6 +67,24 @@
 
         "type" : "treasureBox",
         "treasureBoxSets" : [ "oceanFloorChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "grass",
+        "grasses" : [ "corals" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "pebbles" ]
       },
       {
         "mode" : "floor",
@@ -82,8 +102,8 @@
       {
         "mode" : "floor",
         "priority" : 2.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
+        "variants" : 3,
+        "distribution" : "/biomes/distributions.config:denseLarge",
 
         "type" : "bush",
         "bushes" : [
@@ -98,7 +118,7 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:scatteredLarge",
+        "distribution" : "/biomes/distributions.config:ffunCommon",
 
         "type" : "object",
         "objectSets" : [
@@ -106,7 +126,94 @@
             "pool" : [ [0.20, "oshroom1" ], [0.20, "oshroom2" ], [0.20, "oshroom3" ], [0.20, "oshroom4" ], [0.20, "oshroom5" ]]
           }
         ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.5,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:oceanRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.20, "brokenanchor" ]]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ 
+            [0.35, "volcanicrockseed" ],
+            [0.35, "volcanicrockseed2" ],
+            [0.35, "volcanicrockseed3" ],
+            [0.35, "volcanicrockseed4" ],
+            [0.35, "volcanicrockseed5" ],
+            [0.35, "volcanicrockseed6" ],
+            [0.35, "volcanicrockseed7" ],
+            [0.35, "volcanicrockseed8" ],
+            [0.35, "volcanicrock2seed" ],
+            [0.35, "volcanicrock2seed2" ],
+            [0.35, "volcanicrock2seed3" ],
+            [0.35, "volcanicrock2seed4" ],
+            [0.35, "volcanicrock2seed5" ],
+            [0.35, "volcanicrock2seed6" ]
+            ]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffCommon",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "oceansmokegen" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "wildcoralcreepseed" ] ],
+            "parameters" : {
+              "startingStage" : 4
+            }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "wildreefpodseed" ] ],
+            "parameters" : {
+              "startingStage" : 3
+            }
+          }
+        ]
       }
-	  ]
+	]
   }
 }

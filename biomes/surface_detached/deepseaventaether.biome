@@ -3,8 +3,8 @@
   "friendlyName" : "Aether Sea Vent",
 
   "mainBlock" : "matterblock",
-  "subBlocks" : [ "obsidian", "bonemeal" ],
-  "ores" : "ff_surfacesulfurOres",
+  "subBlocks" : [ "obsidian", "magmatile3", "magmatile4" ],
+  "ores" : "aethersurface",
 
   "spawnProfile" : {
     "groups" : [
@@ -51,7 +51,7 @@
           }
     }
   },
-  "parallax" : "/parallax/surface/tidewaterfloor.parallax",
+  "parallax" : "/parallax/surface/aetherseafloor.parallax",
 
   "ambientNoises" : {
     "day" : {
@@ -71,8 +71,8 @@
     }
   },
   "surfacePlaceables" : {
-    "grassMod" : [ "blackslimegrass" ],
-    "grassModDensity" : 0.75,
+    "grassMod" : [ "blackslimegrass", "blackash" ],
+    "grassModDensity" : 0.9,
 
     "items" : [
       {
@@ -82,7 +82,25 @@
         "distribution" : "/biomes/distributions.config:overgroundChests",
 
         "type" : "treasureBox",
-        "treasureBoxSets" : [ "oceanFloorChest" ]
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
       },
       {
         "mode" : "floor",
@@ -90,41 +108,37 @@
         "variants" : 1,
         "distribution" : "/biomes/distributions.config:scatteredLarge",
 
-        "type" : "object",
-        "objectSets" : [
-          {
-            "pool" : [ [0.125, "seashell1" ], [0.125, "seashell2" ], [0.125, "seashell3" ], [0.125, "seashell4" ], [0.125, "seashell5" ], [0.125, "seashell6" ], [0.125, "seashell7" ], [0.125, "seashell8" ]]
-          }
-        ]
-      },
-      {
-        "mode" : "floor",
-        "priority" : 2.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
-
-        "type" : "bush",
-        "bushes" : [
-          {
-            "name" : "coral",
-            "baseHueShiftMax" : 180,
-            "modHueShiftMax" : 180
-          }
-        ]
+        "type" : "grass",
+        "grasses" : [ "aethergrass" ]
       },
       {
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:scatteredLarge",
+        "distribution" : "/biomes/distributions.config:denseLarge",
 
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ [0.20, "oshroom1" ], [0.20, "oshroom2" ], [0.20, "oshroom3" ], [0.20, "oshroom4" ], [0.20, "oshroom5" ] ]
+            "pool" : [ 
+            [0.35, "volcanicrockseed" ],
+            [0.35, "volcanicrockseed2" ],
+            [0.35, "volcanicrockseed3" ],
+            [0.35, "volcanicrockseed4" ],
+            [0.35, "volcanicrockseed5" ],
+            [0.35, "volcanicrockseed6" ],
+            [0.35, "volcanicrockseed7" ],
+            [0.35, "volcanicrockseed8" ],
+            [0.35, "volcanicrock2seed" ],
+            [0.35, "volcanicrock2seed2" ],
+            [0.35, "volcanicrock2seed3" ],
+            [0.35, "volcanicrock2seed4" ],
+            [0.35, "volcanicrock2seed5" ],
+            [0.35, "volcanicrock2seed6" ]
+            ]
           }
         ]
       }
-	  ]
+	]
   }
 }

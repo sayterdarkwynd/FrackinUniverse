@@ -1,7 +1,7 @@
 {
   "name" : "coralreef",
   "friendlyName" : "Reef",
-  "hueShiftOptions" : [-40, -25, 0, 25, 40],
+  "hueShiftOptions" : [ -180, -160, -140, -120, -100, -80, -60, -40, -20, 0, 20, 40, 60, 80, 100, 120, 140, 160, 180 ],
 
 
   "spawnProfile" : {
@@ -34,7 +34,7 @@
   "subBlocks" : [ "coral2", "oystershell", "sand2" ],
   "ores" : "surface",
 
-  "parallax" : "/parallax/surface/tidewaterfloor.parallax",
+  "parallax" : "/parallax/surface/oceanfloor.parallax",
 
   "ambientNoises" : {
     "day" : {
@@ -75,7 +75,16 @@
         "distribution" : "/biomes/distributions.config:scatteredSmall",
 
         "type" : "grass",
-        "grasses" : [ "corals", "seaweed", "waterplant2", "waterplant3" ]
+        "grasses" : [ "corals" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "grass",
+        "grasses" : [ "seaweed", "waterplant2", "waterplant3" ]
       },
       {
         "mode" : "floor",
@@ -92,8 +101,17 @@
       },
       {
         "mode" : "floor",
-        "priority" : 2.0,
+        "priority" : 1,
         "variants" : 1,
+        "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "oceanmicrodungeons" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 2,
         "distribution" : "/biomes/distributions.config:denseMedium",
 
         "type" : "bush",
@@ -108,7 +126,7 @@
       {
         "mode" : "floor",
         "priority" : 2.0,
-        "variants" : 1,
+        "variants" : 3,
         "distribution" : "/biomes/distributions.config:denseMedium",
 
         "type" : "bush",
@@ -124,7 +142,7 @@
         "mode" : "floor",
         "priority" : 2.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
 
         "type" : "bush",
         "bushes" : [
@@ -139,7 +157,7 @@
         "mode" : "floor",
         "priority" : 2.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
 
         "type" : "bush",
         "bushes" : [
@@ -154,12 +172,26 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:scatteredLarge",
+        "distribution" : "/biomes/distributions.config:denseLarge",
 
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ [0.20, "oshroom1" ], [0.20, "oshroom2" ], [0.20, "oshroom3" ], [0.20, "oshroom4" ], [0.20, "oshroom5" ]]
+            "pool" : [ [0.35, "embercoral1" ], [0.35, "embercoral2" ], [0.35, "embercoral3" ], [0.35, "embercoral4" ], [0.35, "embercoral5" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.5,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:oceanRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.20, "brokenanchor" ]]
           }
         ]
       },

@@ -1,7 +1,7 @@
 {
   "name" : "crystalswampaether",
   "friendlyName" : "Crystalline Swamp",
-  "hueShiftOptions" : [-225, -195, -125, -40, -25, 0, 25, 40, 125, 195, 225],
+  "hueShiftOptions" : [-180, -160, -140, -120, -100, -80, -60, -40, -20, 0, 20, 40, 60, 80, 100, 120, 140, 160, 180],
   "spawnProfile" : {
     "groups" : [
       {
@@ -32,14 +32,14 @@
     ]
   },
 
-  "parallax" : "/parallax/surface/bog.parallax",
+  "parallax" : "/parallax/surface/aethercrystalline.parallax",
 
   "ambientNoises" : {
     "day" : {
-      "tracks" : [ "/sfx/ambiance/bogambiance1.ogg", "/sfx/ambiance/bogambiance3.ogg" ]
+      "tracks" : [ "/sfx/ambiance/sulphuricambiance2.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/sfx/ambiance/bogambiance2.ogg", "/sfx/ambiance/fungalambiance2.ogg" ]
+      "tracks" : [ "/sfx/ambiance/sulphuricambiance2.ogg" ]
     }
   },
 
@@ -52,11 +52,11 @@
     }
   },
     "mainBlock" : "aegisaltcrystal",
-    "subBlocks" : [ "retexaetherdust", "geodeblock", "geodestone" ],
+    "subBlocks" : [ "fuaetherstone", "geodeblock", "geodestone" ],
     "ores" : "ff_crystalmoonOresSpecial",
 
   "surfacePlaceables" : {
-    "grassMod" : [ "purplecrystalgrass" ],
+    "grassMod" : [ "crystalgrass" ],
     "grassModDensity" : 0.9,
 
     "items" : [
@@ -73,22 +73,22 @@
           "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "spiralspikes", "blocks", "block1platforms", "loops", "aethermini" ]
+          "microdungeons" : [ "aethermini" ]
         },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 2,
-          "distribution" : "/biomes/distributions.config:scatteredLarge",
+          "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 225,
-          "treeStemHueShiftMax" : 225,
-          "treeStemList" : [ "crystalline2", "crystalline3" ],
-          "treeFoliageList" : [ "crystallinenofoliage2", "crystallinenofoliagefull" ]
+          "treeFoliageHueShiftMax" : 180,
+          "treeStemHueShiftMax" : 180,
+          "treeStemList" : [ "crystalline2" ],
+          "treeFoliageList" : [ "crystallinenofoliage2" ]
         },
         {
           "mode" : "floor",
@@ -117,36 +117,16 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
+          "distribution" : "/biomes/distributions.config:denseMedium",
 
           "type" : "object",
           "objectSets" : [
             {
               "pool" : [
-              [0.35, "crystalcavebush1" ],
-              [0.35, "crystalcavebush2" ],
-              [0.35, "crystalcavebush3" ],
-              [0.35, "crystalcavebush4" ],
-              [0.35, "crystalcavebush5" ],
-              [0.35, "crystalcavebush6" ],
-              [0.35, "crystalcavebush7" ],
-              [0.35, "crystalcavebush8" ],
-              [0.35, "crystalcavebush9" ],
-              [0.35, "crystalcavebush10" ],
-              [0.35, "crystalcavebush11" ],
-              [0.35, "crystalcavebush12" ],
-              [0.35, "crystalcavebush13" ],
-              [0.35, "crystalcavebush14" ],
-              [0.35, "crystalcavebush15" ],
-              [0.35, "crystalcavebush16" ],
-              [0.35, "crystalcavebush17" ],
-              [0.35, "crystallinebush1" ],
-              [0.35, "crystallinebush2" ],
+              [0.35, "crystallinebush1" ], 
+              [0.35, "crystallinebush2" ], 
               [0.35, "crystallinebush3" ],
-              [0.35, "crystallinebush4" ],
-              [0.35, "crystallarge1" ],
-              [0.35, "crystallarge2" ],
-              [0.35, "crystallarge3" ]
+              [0.35, "crystallinebush4" ]
               ],
               "parameters" : { }
             }
@@ -161,7 +141,6 @@
           "type" : "grass",
           "grasses" : [ "crystalflower" ]
         },
-
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -182,12 +161,67 @@
         },
         {
           "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:minibiomeChests",
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "crystalChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "techChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
         },
         {
           "mode" : "floor",
@@ -197,21 +231,6 @@
 
           "type" : "microdungeon",
           "microdungeons" : [ "greenplatforming" ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
-
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "crystals",
-              "baseHueShiftMax" : 225,
-              "modHueShiftMax" : 225
-            }
-          ]
         }
     ]
   },

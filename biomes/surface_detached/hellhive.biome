@@ -1,10 +1,10 @@
 {
   "name" : "hellhive",
   "friendlyName" : "Hell Hive",
-  "hueShiftOptions" : [-40, -25, 0, 25, 40],
+  "hueShiftOptions" : [-25, -20, -15, -10, -5, 0, 5, 10, 15, 20, 25],
 
-    "mainBlock" : "redhoneycombmaterial",
-    "subBlocks" : [ "fu_redhoneycombblock", "rock14", "spidersilkblock" ],
+    "mainBlock" : "fu_redhoneycombblock",
+    "subBlocks" : [ "redhoneycombmaterial", "rock14" ],
     "ores" : "ff_redhoneyOres",
     "spawnProfile" : {
     "groups" : [
@@ -29,14 +29,14 @@
     ]
   },
 
-    "parallax" : "/parallax/surface/infernus.parallax",
+  "parallax" : "/parallax/surface/arboreal.parallax",
 
   "ambientNoises" : {
     "day" : {
-      "tracks" : [ "/sfx/environmental/magma_day.ogg" ]
+      "tracks" : [ "/sfx/ambiance/arborealambiance.ogg", "/sfx/environmental/jungle_day2.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/sfx/environmental/magma_night.ogg" ]
+      "tracks" : [ "/sfx/ambiance/arborealambiance2.ogg", "/sfx/environmental/jungle_night2.ogg" ]
     }
   },
 
@@ -50,7 +50,7 @@
   },
 
   "surfacePlaceables" : {
-    "grassMod" : [ "bone" ],
+    "grassMod" : [ "bone", "heckgrass" ],
     "grassModDensity" : 0.5,
 
     "items" : [
@@ -78,51 +78,11 @@
             }
           ]
         },
-
-           {
-             "mode" : "floor",
-             "priority" : 1.0,
-             "variants" : 1,
-             "distribution" : "/biomes/distributions.config:ffunCommon",
-
-             "type" : "object",
-             "objectSets" : [
-               {
-                 "pool" : [
-              		[0.50, "hiveblob" ],
-              		[0.50, "hiveblob1" ],
-              		[0.50, "hiveblob2" ],
-              		[0.50, "hiveblob3" ],
-              		[0.50, "hiveblob4" ],
-              		[0.50, "hiveblob5" ],
-              		[0.50, "copperrock" ],
-              		[0.50, "copperrocksmall" ],
-              		[0.50, "silverrock" ],
-              		[0.50, "silverrocksmall" ],
-              		[0.50, "goldrock" ],
-              		[0.50, "goldrocksmall" ]
-                 ]
-               }
-             ]
-           },
-      {
-        "mode" : "ceiling",
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:ffunCommon",
-
-        "type" : "object",
-        "objectSets" : [
-          {
-            "pool" : [ [0.35, "ceilinghive1" ], [0.35, "ceilinghive2" ], [0.35, "ceilinghive3" ] ],
-            "parameters" : { }
-          }
-        ]
-      },
       {
         "mode" : "floor",
         "priority" : 4.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseLarge",
+        "distribution" : "/biomes/distributions.config:denseMedium",
 
         "type" : "grass",
         "grasses" : [ "heckflower" ]
@@ -134,7 +94,7 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "ffbeeChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
         {
           "mode" : "floor",
@@ -143,32 +103,22 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "weaponChest" ]
+          "treasureBoxSets" : [ "fleshChest" ]
         },
         {
-          "mode" : "ceiling",
+          "mode" : "floor",
+          "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
-          "type" : "grass",
-          "grasses" : [ "glowceiling", "ceilingmushroom" ]
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
         },
-      {
-        "mode" : "ceiling",
-        "priority" : 2.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
-
-        "type" : "tree",
-        "treeFoliageHueShiftMax" : 180,
-        "treeStemHueShiftMax" : 180,
-        "treeStemList" : [ "podvine" ]
-      },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -177,14 +127,6 @@
               "parameters" : { }
             }
           ]
-        },
-        {
-          "mode" : "floor",
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
-
-          "type" : "grass",
-          "grasses" : [ "viney", "springy", "root", "shrooms", "leafsy", "pods", "thinstem", "waterplant", "waterplant2", "waterplant3", "weedy" ]
         },
         {
           "mode" : "floor",
@@ -207,31 +149,6 @@
         },
         {
           "mode" : "floor",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "hivebush",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "rocklarge",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "podbush",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            }
-          ]
-        },
-        {
-          "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:denseLarge",
@@ -239,14 +156,14 @@
           "type" : "tree",
           "treeFoliageHueShiftMax" : 180,
           "treeStemHueShiftMax" : 15,
-          "treeStemList" : [ "roottree", "fleshy", "slobby", "slimey" ],
-          "treeFoliageList" : [ "hanging", "lushgreen", "redleaves", "greenleaves" ]
+          "treeStemList" : [ "cocoa", "fleshy", "grumpy", "pine", "roottree", "slimey", "something", "spikey", "twisted", "wood" ],
+          "treeFoliageList" : [ "frumpy", "hanging", "leafy", "lushgreen", "redleaves", "scraggy" ]
         },
       {
         "mode" : "floor",
         "priority" : 0.1,
         "variants" : 11,
-        "distribution" : "/biomes/distributions.config:denseSmall",
+        "distribution" : "/biomes/distributions.config:denseMedium",
 
         "type" : "object",
         "objectSets" : [
@@ -255,6 +172,129 @@
             "parameters" : { }
           }
         ]
+      }
+    ]
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "heckgrass" ],
+    "grassModDensity" : 0.5,
+	
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "fleshChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+	  {
+        "mode" : "floor",
+        "priority" : 0.1,
+        "variants" : 11,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "heckbush1" ], [0.35, "heckbush2" ], [0.35, "heckbush3" ], [0.35, "heckbush4" ], [0.35, "heckbush5" ], [0.35, "heckbush6" ], [0.35, "heckbush7" ], [0.35, "heckbush8" ], [0.35, "heckbush9" ], [0.35, "heckbush10" ], [0.35, "hecklight1" ], [0.35, "hecklight2" ], [0.35, "heckaltar" ], [0.35, "woodentalllantern" ], [0.1, "huntingpike1" ], [0.1, "huntingpike2" ], [0.1, "huntingpike3" ], [0.35, "heckpillar1" ], [0.35, "heckpillar2" ], [0.05, "hecksign" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+	  {
+        "mode" : "floor",
+        "priority" : 4.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "heckflower" ]
+      },
+      {
+        "mode" : "floor",
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "grass",
+        "grasses" : [ "fleshplant" ]
+      },
+      {
+        "mode" : "ceiling",
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "ceilingfleshplant" ]
+      },
+	  {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 0,
+        "treeStemHueShiftMax" : 15,
+        "treeStemList" : [ "fleshvine2" ],
+        "treeFoliageList" : [ "" ]
       }
     ]
   }
