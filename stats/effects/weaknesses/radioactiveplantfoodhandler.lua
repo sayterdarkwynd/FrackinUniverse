@@ -8,7 +8,8 @@ function update(dt)
 end
 
 function applyEffects()
-	effect.setStatModifierGroup(self.statHandler,{{stat = "foodDelta", baseMultiplier = -1-(status.stat("xiBulbFoodBonus")+status.stat("xiBonus"))} })
+	self.bonusValue = status.stat("xiBonus") * 2
+	effect.setStatModifierGroup(self.statHandler,{{stat = "foodDelta", baseMultiplier = -1-(status.stat("xiBulbFoodBonus")+self.bonusValue)} })
 end
 
 function uninit()
