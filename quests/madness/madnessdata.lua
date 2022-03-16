@@ -505,7 +505,7 @@ function update(dt)
 						self.timerCounterGenes = 0
 					else
 						self.timerCounterGenes = self.timerCounterGenes + dt
-					end			
+					end
 				end
 			end
 		else
