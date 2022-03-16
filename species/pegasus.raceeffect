@@ -1,151 +1,38 @@
 {
 	"stats": [
-		{
-			"stat": "maxEnergy",
-			"effectiveMultiplier": 1.25
-		},
-		{
-			"stat": "energyRegenPercentageRate",
-			"baseMultiplier": 1.4
-		},
-		{
-			"stat": "maxHealth",
-			"effectiveMultiplier": 0.85
-		},
-		{
-			"stat": "fallDamageMultiplier",
-			"effectiveMultiplier": 0.3
-		},
-		{
-			"stat": "shadowResistance",
-			"amount": -0.33
-		},
-		{
-			"stat": "fireResistance",
-			"amount": -0.1
-		},
-		{
-			"stat": "iceResistance",
-			"amount": -0.1
-		},
-		{
-			"stat": "electricResistance",
-			"amount": -0.1
-		},
-		{
-			"stat": "foodDelta",
-			"baseMultiplier": 1.2
-		},
-		{
-			"stat": "grit",
-			"amount": -0.5
-		}
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.1 },
+		{ "stat": "energyRegenPercentageRate", "baseMultiplier": 1.1 },
+		{ "stat": "maxHealth", "effectiveMultiplier": 0.9 },
+		{ "stat": "fallDamageMultiplier", "effectiveMultiplier": 0.7 },
+		{ "stat": "maxBreath", "amount": 60 },
+
+		{ "stat": "physicalResistance", "amount": -0.2 },
+		{ "stat": "fireResistance", "amount": -0.1 },
+		{ "stat": "iceResistance", "amount": 0.2 },
+		{ "stat": "electricResistance", "amount": 0.2 },
+		{ "stat": "biomecoldImmunity", "amount": 1 },
+		{ "stat": "electricStatusImmunity", "amount": 1 },
+		{ "stat": "foodDelta", "baseMultiplier": 1.2 },
+		{ "stat": "grit", "amount": -0.5 },
+
+		{ "stat": "grenadelauncherMastery", "amount": 0.05 },
+		{ "stat": "crossbowMastery", "amount": 0.05 },
+		{ "stat": "assaultrifleMastery", "amount": 0.05 },
+		{ "stat": "sniperrifleMastery", "amount": 0.05 }
+
 	],
 	"diet" : "herbivore",
-	"controlModifiers": {
-		"speedModifier": 1.1,
-		"airJumpModifier": 1.05
-	},
+	"controlModifiers": { "speedModifier": 1.1, "airJumpModifier": 1.25 },
 	"envEffects":
 	[
 		{
-		"biomes": [
-			"garden",
-			"arboreal",
-			"jungle",
-			"forest",
-			"savannah"
-		],
-		"stats": [{
-				"stat": "physicalResistance",
-				"amount": 0.1
-			},
-			{
-				"stat": "maxEnergy",
-				"effectiveMultiplier": 1.1
-			}
-		],
-		"controlModifiers":
-			{
-					"speedModifier": 1.07,
-					"airJumpModifier": 1.07
-			}
-		},
-		{
-			"biomes": [
-				"arboreal2","scorchedcity", "desert", "desertwastes", "desertwastesdark", "magma", "magmadark", "volcanic", "volcanicdark", "infernus", "infernusdark",
-				"snow", "snowdark", "tundra", "arctic", "arcticdark", "nitrogensea", "icemoon", "frozenvolcanic", "icewaste"
-			],
+			"biomes": [ "arboreal2", "magma", "magmadark", "volcanic", "volcanicdark", "infernus", "infernusdark" ],
 			"stats": [
-					{
-					"stat": "maxHealth",
-					"effectiveMultiplier": 0.9
-					},
-					{
-					"stat": "energyRegenPercentageRate",
-					"baseMultiplier": 0.7
-					}
-			],
-			"controlModifiers":
-			{
-					"speedModifier": 0.9,
-					"airJumpModifier": 0.9
-			}
-		},
-		{
-		"biomes": [
-			"alien",
-			"atropus", "atropusdark", "tentacle", "bloodstonesea", "bloodstoneseafloor", "strangesea", "strangeseafloor"
-		],
-		"stats": [
-				{
-					"stat": "maxEnergy",
-					"effectiveMultiplier": 0.5
-				}
-			],
-				"controlModifiers":
-			{
-					"speedModifier": 0.85
-			}
+					{ "stat" : "maxHealth", "effectiveMultiplier": 0.95 },
+					{ "stat" : "energyRegenPercentageRate", "baseMultiplier": 0.75 }
+			]
 		}
 	],
 	"weaponEffects":
-	[
-		{
-			"weapon": [ "spear", "shortspear" ],
-			"stats": [
-				{
-				"stat": "powerMultiplier",
-				"effectiveMultiplier": 1.09
-				}
-			]
-		},
-		{
-			"combo": [ "grenadelauncher, grenadelauncher" ],
-			"stats": [
-				{
-				"stat": "critDamage",
-				"amount": 0.25
-				}
-			],
-			"controlModifiers": { "speedModifier": 1.075}
-		},
-		{
-			"weapon": [ "bow" ],
-			"stats": [
-				{
-				"stat": "critChance",
-				"amount": 4
-				},
-				{
-				"stat": "energyRegenPercentageRate",
-				"baseMultiplier": 1.1
-				}
-			]
-		},
-		{
-			"weapon": [ "assaultrifle" ],
-			"controlModifiers": { "speedModifier": 1.07 }
-		}
-	]
+	[]
 }
