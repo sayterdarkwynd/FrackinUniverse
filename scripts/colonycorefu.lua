@@ -27,8 +27,7 @@ function init()
 		local diff=os.time() - leftTime
 		if diff>0 then
 			diff=math.min(math.floor(diff/rentTime),math.floor(maxOfflineSeconds/rentTime))
-			offlineTicks=diff-1
-			math.max(0, diff - 1)
+			offlineTicks=math.max(-1, diff - 1)
             rentTimer=rentTime+1
 		end
 	end
