@@ -17,7 +17,7 @@ local parentCore --save the colony core as a local so you don't have to look for
 function init()
 	transferUtil.loadSelfContainer()
 
-    object.setInteractive(true)
+    object.setInteractive(false)
 --  self.powerConsumption = config.getParameter("isn_requiredPower")
     productionTime = (config.getParameter("productionTime",120))/60
 --  power.init()
@@ -70,8 +70,33 @@ end
 
 function setDesc()
 	if not self.overrideScanTooltip then return end
+	local tooltipString="^white;Range:^gray; "..wellRange.."\n^white;Tenants: ^"
+	local wellCount=((wellsDrawing or 0)-1)
 
-	object.setConfigParameter('description',"^red;Range:^gray; "..wellRange.."\n^red;Similar Objects:^gray; "..((wellsDrawing or 0)-1).."\n^red;Tenants:^gray; "..tenantNumber.."\n^red;Happiness Factor: ^gray; "..happinessAmount.."^reset;")
+	--colony stuff calc
+	if tenantNumber>0 then
+		tooltipString=tooltipString.."green"
+	else
+		tooltipString=tooltipString.."red"
+	end
+	tooltipString=tooltipString..";"..tenantNumber.." ^white;\nSimilar Objects:^"
+
+	if wellCount>0 then
+		tooltipString=tooltipString.."red"
+	else
+		tooltipString=tooltipString.."green"
+	end
+	tooltipString=tooltipString.."; "..wellCount.."\n^white;Happiness Factor:^"
+
+	local happy=amountHappiness()
+	if happy>0 then
+		tooltipString=tooltipString.."green"
+	else
+		tooltipString=tooltipString.."white"
+	end
+	tooltipString=tooltipString.."; "..happy.."^reset;"
+
+	object.setConfigParameter('description',tooltipString)
 end
 
 
@@ -114,8 +139,6 @@ function amountHappiness()
 	end
 
 end
-
-
 
 function firstToUpper(str)
 	--sb.logInfo("%s",str)
