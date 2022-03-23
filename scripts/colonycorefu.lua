@@ -88,7 +88,6 @@ function getTenantsNum() return wellsDrawing end
 
 function setDesc()
 	local tooltipString="^white;Range:^gray; "..wellRange.."\n^white;Tenants: ^"
-	local wellCount=(wellsDrawing or 0)
 
 	--colony stuff calc
 	if wellsDrawing>0 then
