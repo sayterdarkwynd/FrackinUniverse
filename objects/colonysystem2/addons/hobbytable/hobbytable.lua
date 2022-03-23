@@ -1,5 +1,5 @@
 require "/scripts/util.lua"
-require "/scripts/kheAA/transferUtil.lua"
+--require "/scripts/kheAA/transferUtil.lua"
 --require "/scripts/fupower.lua"
 
 -- You might notice there's no timer here.
@@ -15,7 +15,7 @@ local parentCore --save the colony core as a local so you don't have to look for
 
 
 function init()
-	transferUtil.loadSelfContainer()
+	--transferUtil.loadSelfContainer()
 
     object.setInteractive(false)
 --  self.powerConsumption = config.getParameter("isn_requiredPower")
@@ -54,7 +54,7 @@ function update(dt)
 --	power.update(dt)
 -- Notify ITD but no faster than once per second.
 	if not scanTimer or (scanTimer > 1) then
-		transferUtil.loadSelfContainer()
+		--transferUtil.loadSelfContainer()
 		wellInit()
 		setDesc()
 		scanTimer = 0
@@ -101,7 +101,7 @@ end
 
 
 function wellInit()
-	transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
+	--transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
 	getTenantNumber()
 	if not wellRange then wellRange=config.getParameter("wellRange",256) end
 	wellsDrawing=1+#(world.entityQuery(entity.position(),wellRange,{includedTypes={"object"},withoutEntityId = entity.id(),callScript="fu_isAddonHobbyTable"}) or {})
@@ -114,15 +114,15 @@ function getTenantNumber()
 	if parentCore and world.entityExists(parentCore) then
 		tenantNumber = world.callScriptedEntity(parentCore,"getTenantsNum")
 	else
-		transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
+		--transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
 
 		local objectIds = world.objectQuery(storage.position, wellRange/2, { order = "nearest" })
 
 		for _, objectId in pairs(objectIds) do
-				if world.callScriptedEntity(objectId,"fu_isColonyCore") then
-					tenantNumber = world.callScriptedEntity(objectId,"getTenantsNum")
-					parentCore = objectId
-				end
+			if world.callScriptedEntity(objectId,"fu_isColonyCore") then
+				tenantNumber = world.callScriptedEntity(objectId,"getTenantsNum")
+				parentCore = objectId
+			end
 		end
 	end
 
