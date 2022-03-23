@@ -87,5 +87,24 @@ function fu_isWell() return false end
 function getTenantsNum() return wellsDrawing end
 
 function setDesc()
-	object.setConfigParameter('description',"^red;Range:^gray; "..wellRange.."\n^red;Tenants in range:^gray; "..((wellsDrawing or 0)).."\n^red;Total Happiness:^gray; "..(bonusHappiness).."^reset;")
+	local tooltipString="^white;Range:^gray; "..wellRange.."\n^white;Tenants: ^"
+	local wellCount=(wellsDrawing or 0)
+
+	--colony stuff calc
+	if wellsDrawing>0 then
+		tooltipString=tooltipString.."green"
+	else
+		tooltipString=tooltipString.."red"
+	end
+
+	tooltipString=tooltipString.."; "..wellsDrawing.."\n^white;Total Happiness:^"
+
+	if bonusHappiness>0 then
+		tooltipString=tooltipString.."green"
+	else
+		tooltipString=tooltipString.."white"
+	end
+	tooltipString=tooltipString.."; "..bonusHappiness.."^reset;"
+
+	object.setConfigParameter('description',tooltipString)
 end
