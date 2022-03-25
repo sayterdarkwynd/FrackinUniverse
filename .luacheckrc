@@ -21,10 +21,7 @@ ignore = {
 	"542",
 
 	-- Skip warning which suggests replacing 'not (x > y)' with 'x <= y'
-	"581", -- "[...] can be replaced by [...] (if neither side is a table or NaN)"
-
-	-- Skips warning for "if not x==y then"
-	"582" -- "Error prone negation: negation is executed before relational operator."
+	"581" -- "[...] can be replaced by [...] (if neither side is a table or NaN)"
 }
 
 -- These global variables are allowed.

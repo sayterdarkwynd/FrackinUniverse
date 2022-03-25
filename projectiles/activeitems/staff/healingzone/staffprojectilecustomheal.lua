@@ -64,7 +64,7 @@ function rotateTo(position, dt)
 end
 
 function processTimedAction(action, dt)
-  if not world.entityType() == "monster" then
+  if world.entityType() ~= "monster" then
 	  if action.complete then
 	    return
 	  elseif action.delayTime then
