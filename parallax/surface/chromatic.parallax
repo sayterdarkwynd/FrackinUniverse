@@ -3,14 +3,14 @@
 
   "layers" : [
     {
-      "kind" : "divider/arboreal",
+      "kind" : "divider/chromatic",
       "offset" : [0, 200],
       "nohueshift" : true,
       "lightMapped" : true,
       "parallax" : 1.07
     },
     {
-      "kind" : "tile/dirt",
+      "kind" : "tile/chromatic",
       "nohueshift" : true,
       "lightMapped" : true,
       "repeatY" : true,
@@ -18,73 +18,47 @@
       "parallax" : 1.08
     },
     {
-      "kind" : "forestfront",
-      "offset" : [0, 390],
-      "parallax" : 1.09,
-      "lightMapped" : true
-    },
-
-    {
-      "kind" : "baseforestcanopy",
-      "offset" : [0, -175],
-      "parallax" : 1.1,
-      "directives" : "?saturation=-10",
-      "lightMapped" : true
-    },
-    {
-      "kind" : "baseforestlargetree",
-      "offset" : [0, 90],
-      "parallax" : 1.11,
-      "directives" : "?brightness=-5",
-      "lightMapped" : true
-    },
-    {
-      "kind" : "baseforestcanopy",
-      "offset" : [0, -175],
-      "parallax" : 1.21,
-      "directives" : "?saturation=-30"
-    },
-    {
-      "kind" : "godrays",
-      "offset" : [0, 90],
-      "parallax" : 1.211,
-      "timeOfDayCorrelation" : "dayVisible",
-      "unlit" : true
-    },
-    {
-      "kind" : "baseforestlargetree",
-      "offset" : [0, 90],
-      "parallax" : 1.2,
-      "directives" : "?brightness=-5"
-    },
-    {
-      "kind" : "baseforestcanopy",
-      "offset" : [0, -175],
-      "parallax" : 1.31,
-      "directives" : "?saturation=-60"
-    },
-    {
-      "kind" : "baseforestsmalltree",
-      "offset" : [0, 90],
+      "kind" : "chromaticfront",
+      "offset" : [0, 410],
       "parallax" : 1.3
     },
     {
-      "kind" : "baseforestsmalltree",
-      "offset" : [0, 90],
-      "parallax" : 1.4
-    },
-    {
-      "kind" : "baseforesttreesback",
-      "offset" : [0, 400],
-      "parallax" : 1.5
-    },
-    {
-      "kind" : "arborealback",
-      "offset" : [0, 394],
+      "kind" : "foliage/treeback",
+      "offset" : [0, 370],
       "parallax" : 4,
+      "directives" : "?saturation=-10?brightness=-10",
+      "fadePercent" : 0.07
+    },    
+    {
+      "kind" : "foliage/treefront",
+      "offset" : [0, 320],
+      "parallax" : 3,
+      "directives" : "?saturation=-5?brightness=-5",
+      "fadePercent" : 0.03
+    },
+    {
+      "kind" : "foliage/treefront",
+      "offset" : [0, 300],
+      "parallax" : 2
+    },
+    {
+      "kind" : "crystalfoliage",
+      "offset" : [0, 355],
+      "baseCount" : 3,
+      "parallax" : 5,
+      "nightCorrelation" : 0,
+      "minSpeed" : 0,
+      "maxSpeed" : 0,
+      "modifiers" : "?brightness=5?saturation=-4",
       "fadePercent" : 0.1
     },
-
+    {
+      "kind" : "chromaticback",
+      "offset" : [0, 394],
+      "parallax" : 6,
+      "fadePercent" : 0.1
+    },
+	
 
 // Day Clouds
 
@@ -114,7 +88,7 @@
       "kind" : "clouds1",
       "baseCount" : 2,
       "offset" : [0, 300],
-      "parallax" : 6,
+      "parallax" : 7,
       "minSpeed" : 1000,
       "maxSpeed" : 5000,
       "fadePercent" : 0.0,
@@ -147,7 +121,7 @@
       "kind" : "clouds1",
       "baseCount" : 2,
       "offset" : [0, 200],
-      "parallax" : 6,
+      "parallax" : 7,
       "minSpeed" : 1000,
       "maxSpeed" : 5000,
       "fadePercent" : 0.0,
@@ -180,7 +154,7 @@
       "kind" : "clouds1",
       "baseCount" : 2,
       "offset" : [0, 80],
-      "parallax" : 6,
+      "parallax" : 7,
       "minSpeed" : 1000,
       "maxSpeed" : 5000,
       "fadePercent" : 0.0,
@@ -216,7 +190,7 @@
       "kind" : "clouds1",
       "baseCount" : 2,
       "offset" : [0, 300],
-      "parallax" : 6,
+      "parallax" : 7,
       "minSpeed" : 1000,
       "maxSpeed" : 5000,
       "fadePercent" : 0.0,
@@ -249,7 +223,7 @@
       "kind" : "clouds1",
       "baseCount" : 2,
       "offset" : [0, 200],
-      "parallax" : 6,
+      "parallax" : 7,
       "minSpeed" : 1000,
       "maxSpeed" : 5000,
       "fadePercent" : 0.0,
@@ -282,13 +256,12 @@
       "kind" : "clouds1",
       "baseCount" : 2,
       "offset" : [0, 80],
-      "parallax" : 6,
+      "parallax" : 7,
       "minSpeed" : 1000,
       "maxSpeed" : 5000,
       "fadePercent" : 0.0,
       "unlit" : false,
       "timeOfDayCorrelation" : "nightCloudVisible"
     }
-
   ]
 }

@@ -17,76 +17,79 @@
     },
 
     {
-      "kind" : "tile/ocean",
-      "parallax" : [8, 1],
+      "kind" : "tile/liquidnitrogen",
+      "parallax" : 20,
       "repeatY" : true,
       "nohueshift" : true
     },
-
+    
+    //wavy sand
     {
       "kind" : "arcticoceanfloorbelow1",
-      "offset" : [0, 190],
-      "parallax" : [1.8, 2.1]
+      "offset" : [0, 220],
+      "parallax" : [1.4, 1.9]
     },
     {
       "kind" : "arcticoceanfloorbelow2",
-      "offset" : [0, 190],
-      "parallax" : [1.8001, 2.1]
+      "offset" : [0, 220],
+      "parallax" : [1.4001, 1.9]
+    },
+    
+    //plain sand
+    {
+      "kind" : "arcticoceanfloorbelow3",
+      "offset" : [0, 220],
+      "parallax" : [1.4002, 1.9]
     },
     {
       "kind" : "arcticoceanfloorbelow3",
-      "offset" : [0, 190],
-      "parallax" : [1.8002, 2.1]
+      "offset" : [0, 360],
+      "parallax" : [1.4, 1.9]
     },
-    {
-      "kind" : "arcticoceanfloorbelow3",
-      "offset" : [0, 330],
-      "parallax" : [1.8, 2.1]
-    },
-    {
-      "kind" : "coral_background",
-      "offset" : [0, 50],
-      "parallax" : [8.2, 2.4]
-    },
-    {
-      "kind" : "coralfloor1",
-      "offset" : [0, 50],
-      "parallax" : [8.2, 2.4]
-    },
-    {
-      "kind" : "coralfloor1",
-      "offset" : [10, 50],
-      "parallax" : [8.2, 2.35]
-    },
-    {
-      "kind" : "coral_foreground",
-      "offset" : [0, 30],
-      "parallax" : [6.5, 2.3]
-    },
-    {
-      "kind" : "coral_foreground",
-      "offset" : [50, 50],
-      "parallax" : [4, 2.25]
-    },
-
+    
+    //coral, start actual background terrain
     {
       "kind" : "arcticoceanfloor1",
-      "offset" : [0, 50],
+      "offset" : [0, 80],
+      "parallax" : [1.4, 1.9]
+    },
+    {
+      "kind" : "arcticoceanfloor2",
+      "offset" : [0, 75],
+      "parallax" : [1.5, 1.9]
+    },
+    {
+      "kind" : "arcticoceanfloor3",
+      "offset" : [0, 70],
+      "parallax" : [1.6, 2]
+    },
+    {
+      "kind" : "arcticoceanfloor1",
+      "offset" : [0, 65],
       "parallax" : [1.8, 2.1]
     },
     {
       "kind" : "arcticoceanfloor2",
-      "offset" : [0, 50],
+      "offset" : [0, 65],
       "parallax" : [2, 2.1]
     },
     {
       "kind" : "arcticoceanfloor3",
-      "offset" : [0, 50],
+      "offset" : [0, 60],
       "parallax" : [3, 2.15]
     },
+    
+    //undersea hills
+    {
+      "kind" : "nitrogenseafloorice",
+      "offset" : [50, 50],
+      "parallax" : [4, 2.25],
+      "directives" : "?brightness=40"
+    },
+    //coral
     {
       "kind" : "arcticoceanfloor4",
-      "offset" : [0, 50],
+      "offset" : [0, 55],
       "parallax" : [4, 2.2]
     },
     {
@@ -97,22 +100,50 @@
     {
       "kind" : "arcticoceanfloor6",
       "offset" : [0, 50],
-      "parallax" : [5.5, 2.3]
+      "parallax" : [6, 2.3]
     },
+    
+    //undersea hills
+    {
+      "kind" : "nitrogenseafloorice",
+      "offset" : [0, 30],
+      "parallax" : [6.5, 2.3],
+      "directives" : "?brightness=60"
+    },
+    //coral
     {
       "kind" : "arcticoceanfloor7",
       "offset" : [0, 50],
-      "parallax" : [6, 2.35]
+      "parallax" : [7, 2.35]
     },
     {
       "kind" : "arcticoceanfloor8",
       "offset" : [0, 50],
-      "parallax" : [6.5, 2.4]
+      "parallax" : [8, 2.4]
     },
     {
       "kind" : "arcticoceanfloor9",
       "offset" : [0, 50],
       "parallax" : [8, 2.4]
+    },
+    
+    //undersea mountains
+    {
+      "kind" : "nitrogenseafloormountains1",
+      "offset" : [0, 50],
+      "parallax" : [9.5, 2.6],
+      "directives" : "?brightness=-40"
+    },
+    {
+      "kind" : "nitrogenseafloormountains1",
+      "offset" : [10, 50],
+      "parallax" : [8.2, 2.35],
+      "directives" : "?brightness=-20"
+    },
+    {
+      "kind" : "nitrogenseafloormountains2",
+      "offset" : [0, 50],
+      "parallax" : [9, 2.5]
     }
   ]
 }

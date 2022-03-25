@@ -1,5 +1,5 @@
 {
-    "verticalOrigin" : -15,
+  "verticalOrigin" : -15,
 
   "layers" : [
     {
@@ -30,6 +30,7 @@
       "kind" : "mountainousback4",
       "offset" : [0, 70],
       "parallax" : 11,
+      "directives" : "?saturation=-100?brightness=-20",
       "fadePercent" : 0.30,
       "baseCount" : 5
     },
@@ -37,52 +38,42 @@
       "kind" : "mountainousback3",
       "offset" : [0, 80],
       "parallax" : 9,
+      "directives" : "?saturation=-100?brightness=-30",
       "fadePercent" : 0.15,
       "baseCount" : 3
     },
     {
-      "kind" : "mountainousback2",
-	    "baseCount" : 1,
-	    "mod1Count" : 3,
+      "kind" : "glacialback",
+      //"offset" : [0, 130],
       "offset" : [0, 170],
-      "parallax" : 7
+      "parallax" : 7,
+      "directives" : "?saturation=-60",
+      "fadePercent" : 0.05
     },
     {
-      "kind" : "mountainousfront",
-      "baseCount" : 1,
-      "offset" : [0, 130],
+      "kind" : "mountainousback",
+      "offset" : [0, 390],
       "parallax" : 6,
-      "directives" : "?saturation=-20?brightness=-20"
+      "directives" : "?saturation=-100",
+      "fadePercent" : 0.05
     },
     {
-      "kind" : "foliage/treeback",
-      "offset" : [0, 430],
-      "parallax" : 5,
-      "directives" : "?saturation=-10?brightness=-10",
-      "fadePercent" : 0.07
+      "kind" : "volcanic2",
+      //"offset" : [0, 275],
+      "offset" : [0, 245],
+      "noRandomOffset" : true,
+      "parallax" : [5, 5.001],
+      "directives" : "?saturation=-100",
+      "nohueshift" : true,
+      "fadePercent" : 0.02
     },
     {
-      "kind" : "foliage/treefront",
-      "offset" : [0, 380],
-      "parallax" : 4,
-      "directives" : "?saturation=-5?brightness=-5",
-      "fadePercent" : 0.03
-    },
-    {
-      "kind" : "foliage/treefront",
-      "offset" : [0, 360],
-      "parallax" : 3
-    },
-    {
-      "kind" : "forestfront",
-      "offset" : [0, 450],
-      "parallax" : 2.4
-    },
-
-    {
-      "kind" : "forestfront",
-      "offset" : [0, 470],
-      "parallax" : 2
+      "kind" : "volcanic1",
+      "offset" : [100, 400],
+      "noRandomOffset" : true,
+      "parallax" : [3, 3.003],
+      "directives" : "?saturation=-100",
+      "nohueshift" : true
     },
     {
       "kind" : "clouds3",
