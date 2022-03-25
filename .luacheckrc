@@ -12,10 +12,19 @@ ignore = {
 	-- but the log would be flooded with 1000 "unused argument dt" or "unused argument shiftHeld".
 	"212", -- "unused argument"
 
+	-- Skip warning when using variables starting with '_'
+	"214", -- "used variable [...]"
+
 	-- Skip "empty if branch", most (if not all) current cases
 	-- seem to do this intentionally for better readability.
 	-- Alternative would be having ~50 inline comments "-- luacheck: ignore 542".
-	"542"
+	"542",
+
+	-- Skip warning which suggests replacing 'not (x > y)' with 'x <= y'
+	"581", -- "[...] can be replaced by [...] (if neither side is a table or NaN)"
+
+	-- Skips warning for "if not x==y then"
+	"582" -- "Error prone negation: negation is executed before relational operator."
 }
 
 -- These global variables are allowed.
