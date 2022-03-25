@@ -27,7 +27,7 @@ function transferItem(_, _, itemData)
     local slot = itemData[1][2]
     local count = itemData[2].count
     local awake, newId = transferUtil.containerAwake(source, sourcePos)
-    if not (awake == true) then
+    if awake ~= true then
         return
     else
         if newId ~= nil then source = newId end
