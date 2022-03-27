@@ -135,7 +135,32 @@ function knockbackMomentum(momentum)
 	end
 end
 
+local oldUpdate = update or function() end
+
+function OutOfShipCheck(dt)
+  oldUpdate(dt)
+
+  if world.type() == "unknown" then
+    if not world.tileIsOccupied(mcontroller.position(), false) then
+        lifeSupport(false)
+    else
+        lifeSupport(true)
+    end
+  end
+end
+
+function lifeSupport(isOn)
+    if isOn then
+        mcontroller.controlParameters({gravityEnabled = true})
+    else
+        mcontroller.clearControls()
+        mcontroller.controlParameters({gravityEnabled = false})
+    end
+end
+
 function update(dt)
+	--BYO monster gravity
+	OutOfShipCheck(dt)
 	--fall damage
 	if (self.fallDamagePreferences == 1 or (self.fallDamagePreferences == 2 and world.entityAggressive(entity.id()))) and mcontroller.baseParameters().gravityEnabled then
 		local minimumFallDistance = 14
