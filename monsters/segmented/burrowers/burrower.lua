@@ -9,25 +9,25 @@ end
 
 function burrowEffect(dt)
 	self.burrowing = world.polyCollision(self.burrowPoly, mcontroller.position(), {"block"})
-	if not self.burrowed == self.burrowing then
-		if not playerModified(mcontroller.position(),3) then
-		--	print('ding',mcontroller.position()[1],mcontroller.position()[2])
-				world.spawnProjectile(self.burrowBurstProjectile, mcontroller.position())
-		end
-		animator.burstParticleEmitter("groundBurstEmitter")
-		animator.setParticleEmitterActive("behindGroundEmitter", self.burrowing)
-			animator.setGlobalTag("groundState", self.burrowing and "below" or "above" )
-	else
+--	if self.burrowTick <= 0 and self.burrowed ~= self.burrowing then
+--		if not playerModified(mcontroller.position(),3) then
+--			-- print('ding',mcontroller.position()[1],mcontroller.position()[2])
+--			world.spawnProjectile(self.burrowBurstProjectile, mcontroller.position())
+--		end
+--		animator.burstParticleEmitter("groundBurstEmitter")
+--		animator.setParticleEmitterActive("behindGroundEmitter", self.burrowing)
+--		animator.setGlobalTag("groundState", self.burrowing and "below" or "above" )
+--	else
 		self.burrowTick = self.burrowTick - dt
-		if self.burrowTick <= 0  and self.burrowing then
+		if self.burrowTick <= 0 and self.burrowing then
 			if not playerModified(mcontroller.position(),2) then
 				-- print('dong',mcontroller.position()[1],mcontroller.position()[2])
 				world.spawnProjectile(self.burrowProjectile, mcontroller.position())
 			end
 			self.burrowTick = self.burrowTimer
 		end
-	end
-	self.burrowed = self.burrowing
+--	end
+--	self.burrowed = self.burrowing
 end
 
 function twistEffect()
