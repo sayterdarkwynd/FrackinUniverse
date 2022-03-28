@@ -244,8 +244,13 @@ function init()
 		AltFire = false,
 		Special1 = false
 	}
-
-	setFlightMode(world.gravity(mcontroller.position()) == 0)
+	
+	-- for use mech in byo ship
+	  if world.type() == "unknown" then
+	    setFlightMode(not world.tileIsOccupied(mcontroller.position(), false))
+	  else
+	    setFlightMode(world.gravity(mcontroller.position()) == 0)
+	  end
 
 	message.setHandler("deploy", function()
 		self.deploy = config.getParameter("deploy")
@@ -517,7 +522,12 @@ function update(dt)
 	if self.manualFlightMode then
 			setFlightMode(true)
 	else
-		setFlightMode(world.gravity(mcontroller.position()) == 0)-- or world.liquidAt(mcontroller.position()))--lpk:add liquidMovement
+	-- for use mech in byo ship
+	  if world.type() == "unknown" then
+	      setFlightMode(not world.tileIsOccupied(mcontroller.position(), false))
+	  else
+	    setFlightMode(world.gravity(mcontroller.position()) == 0) -- or world.liquidAt(mcontroller.position()))--lpk:add liquidMovement
+	  end
 	end
 
 	if self.manualFlightMode and world.gravity(mcontroller.position()) == 0 then
