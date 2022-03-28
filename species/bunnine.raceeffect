@@ -1,0 +1,62 @@
+{
+	"stats" : [
+		{ "stat": "maxHealth", "baseMultiplier": 1.1 },
+		{ "stat": "maxEnergy", "baseMultiplier": 1.3 },
+		{ "stat": "fallDamageMultiplier", "baseMultiplier": 0.5 },
+		{ "stat" : "shadowResistance", "amount" : 0.2 },
+		{ "stat" : "cosmicResistance", "amount" : 0.2 },
+		{ "stat" : "iceResistance", "amount" : 0.2 },
+		{ "stat" : "fireResistance", "amount" : -0.2 },
+		{ "stat" : "radioactiveResistance", "amount" : 0.2 },
+		{ "stat" : "poisonResistance", "amount" : -0.1 },
+		{ "stat" : "nitrogenfreezeImmunity", "amount" : 1 },
+		{ "stat" : "snowslowImmunity", "amount" : 1 },
+		{ "stat" : "slushslowImmunity", "amount" : 1 },
+		{ "stat" : "iceslipImmunity", "amount" : 1 },
+		{ "stat" : "biomecoldImmunity", "amount" : 1 },
+		{ "stat" : "insanityImmunity", "amount" : 1 }
+	],
+	"diet" : "omnivore",
+	"controlModifiers" : {
+		"speedModifier" : 1.12,
+		"airJumpModifier" : 1.5
+	},
+	"envEffects" : [
+		{
+			"biomes" : [ "alien", "midnight", "forest", "snow", "arboreal", "arborealdark" ],
+			"stats" : [
+				{ "stat" : "maxHealth", "effectiveMultiplier" : 1.15 },
+				{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.25 }
+			]
+		}
+	],
+	"weaponEffects" : [
+		{
+			"weapons" : [ "fist" ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 0.7 }
+			]
+		},
+		{
+			"weapons" : [ "pistol", "machinepistol" ],
+			"stats" : [
+				{ "stat" : "critChance", "amount" : 3 }
+				{ "stat" : "critDamage", "amount" : 10 }
+			]
+		},
+		{
+			"weapons" : [ "sniperrifle", "rifle" ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.15 }
+				{ "stat" : "critChance", "amount" : 5}
+			]
+		},
+		{
+			"weapons" : [ "magnorb", "thrown" ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.2 },
+				{ "stat" : "protection", "effectiveMultiplier" : 1.2 }
+			]
+		}
+	]
+}
