@@ -102,20 +102,20 @@ class JsonAssetsTest {
 
 			// Detect trailing spaces in JSON files except 1) changelogs,
 			// 2) files created by Tiled, such as tilesets or dungeons.
-			if ( !filename.match( /^((dungeons|frackinship|tilesets)\/|_(FU|ZB).*\.config$)/ ) ) {
-				relaxedJsonString.split( /\r?\n/ ).forEach( ( line, lineIndex ) => {
-					if ( line.match( /\s+$/ ) ) {
-						let errorMessage;
-						if ( line.match( /[^\s]/ ) ) {
-							errorMessage = 'trailing whitespace: "' + line + '"';
-						} else {
-							errorMessage = 'line contains only whitespace';
-						}
-
-						this.fail( filename + ':' + ( 1 + lineIndex ) + ': ' + errorMessage );
-					}
-				} );
-			}
+//			if ( !filename.match( /^((dungeons|frackinship|tilesets)\/|_(FU|ZB).*\.config$)/ ) ) {
+//				relaxedJsonString.split( /\r?\n/ ).forEach( ( line, lineIndex ) => {
+//					if ( line.match( /\s+$/ ) ) {
+//						let errorMessage;
+//						if ( line.match( /[^\s]/ ) ) {
+//							errorMessage = 'trailing whitespace: "' + line + '"';
+//						} else {
+//							errorMessage = 'line contains only whitespace';
+//						}
+//
+//						this.fail( filename + ':' + ( 1 + lineIndex ) + ': ' + errorMessage );
+//					}
+//				} );
+//			}
 
 			// Parse the JSON asset.
 			var jsonString = this.sanitizeRelaxedJson( relaxedJsonString );

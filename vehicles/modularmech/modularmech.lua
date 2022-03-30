@@ -244,8 +244,8 @@ function init()
 		AltFire = false,
 		Special1 = false
 	}
-	
-	-- for use mech in byo ship
+
+	-- mech follows player gravity rules in the shipworld
 	  if world.type() == "unknown" then
 	    setFlightMode(not world.tileIsOccupied(mcontroller.position(), false))
 	  else
