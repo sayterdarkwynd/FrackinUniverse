@@ -1,28 +1,26 @@
 {
 	"stats" : [
-		{ "stat" : "foodDelta", "baseMultiplier" : 1.05 },
-		{ "stat" : "maxEnergy", "baseMultiplier" : 1.25 },
+		{ "stat" : "foodDelta", "baseMultiplier" : 1.06 },
+		{ "stat" : "maxHealth", "baseMultiplier" : 0.85 },
+		{ "stat" : "maxEnergy", "baseMultiplier" : 1.20 },
 		{ "stat" : "fallDamageMultiplier", "baseMultiplier" : 0.50 },
 		{ "stat" : "iceResistance", "amount" : 0.2 },
 		{ "stat" : "radioactiveResistance", "amount" : 0.1 },
 		{ "stat" : "cosmicResistance", "amount" : 0.2 },
 		{ "stat" : "fireResistance", "amount" : -0.2 },
 		{ "stat" : "poisonResistance", "amount" : -0.2 },
-		{ "stat" : "electricResistance", "amount" : -0.15 },
+		{ "stat" : "electricResistance", "amount" : -0.2 },
 		{ "stat" : "snowslowImmunity", "amount" : 1 },
 		{ "stat" : "slushslowImmunity", "amount" : 1 },
 		{ "stat" : "iceslipImmunity", "amount" : 1 }
-		{ "stat" : "fistMastery", "amount" : -0.5 },
-		{ "stat" : "hammerMastery", "amount" : -0.5 },
-		{ "stat" : "pistolMastery", "amount" : 0.2 },
+		{ "stat" : "assaultrifleMastery", "amount" : 0.2 },
 		{ "stat" : "machinepistolMastery", "amount" : 0.2 },
-		{ "stat" : "magnorbMastery", "amount" : 0.2 },
-		{ "stat" : "assaultrifleMastery", "amount" : 0.2 }
+		{ "stat" : "magnorbMastery", "amount" : 0.2 }
 	],
 	"diet" : "omnivore",
 	"controlModifiers" : {
-		"speedModifier" : 1.05,
-		"airJumpModifier" : 1.25
+		"speedModifier" : 1.06,
+		"airJumpModifier" : 1.20
 	},
 	"envEffects" : [
 		{
@@ -33,7 +31,7 @@
 			]
 		},
 		{
-			"biomes" : [ "volcanic", "desert" ],
+			"biomes" : [ "volcanic", "desert", "magma", "volcanicdark", "magmadark", "sulphuric","sulphuricdark" ],
 			"stats" : [
 				{ "stat" : "maxHealth", "effectiveMultiplier" : 0.85 },
 				{ "stat" : "protection", "effectiveMultiplier" : 0.85 }
