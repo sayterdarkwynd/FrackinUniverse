@@ -2519,6 +2519,21 @@
 	},
 	{
 		"op": "add",
+		"path": "/planetTypes/moon/layers/surface/secondaryRegionCount",
+		"value": [0, 1]
+	},
+	{
+		"op": "add",
+		"path": "/planetTypes/moon/layers/surface/secondaryRegionSize",
+		"value": [0.25, 0.4]
+	},
+	{
+		"op": "add",
+		"path": "/planetTypes/moon/layers/surface/secondaryRegions",
+		"value": ["supermatterzonemoon", "wastelandminimoon"]
+	},
+	{
+		"op": "add",
 		"path": "/planetTypes/moon/layers/subsurface/secondaryRegions",
 		"value": [
 			"ffcrystalcavern",
@@ -4413,7 +4428,7 @@
 		"op": "add",
 		"path": "/planetTypes/icemoon",
 		"value": {
-			"gravityRange": [50, 90],
+			"gravityRange": [10, 40],
 			"threatRange": [2, 4.4],
 			"layers": {
 				"space": {
@@ -5733,7 +5748,7 @@
 		"op": "add",
 		"path": "/planetTypes/moon_desert",
 		"value": {
-			"gravityRange": [10, 80],
+			"gravityRange": [10, 40],
 			"threatRange": [1, 3.4],
 			"layers": {
 				"space": {
@@ -5778,7 +5793,7 @@
 		"op": "add",
 		"path": "/planetTypes/moon_stone",
 		"value": {
-			"gravityRange": [10, 80],
+			"gravityRange": [10, 40],
 			"threatRange": [1, 3.4],
 			"layers": {
 				"space": {
@@ -5786,6 +5801,9 @@
 				},
 				"surface": {
 					"primaryRegion": ["moon_stone"],
+					"secondaryRegions" : ["supermatterzonemoon", "wastelandminimoon"],
+					"secondaryRegionCount" : [0, 1],
+					"secondaryRegionSize" : [0.25, 0.4],
 					"dungeons": [
 						[1.0, "apexspaceelevator"],
 						[1.0, "elderruins"],
@@ -5823,7 +5841,7 @@
 		"op": "add",
 		"path": "/planetTypes/moon_toxic",
 		"value": {
-			"gravityRange": [10, 80],
+			"gravityRange": [10, 40],
 			"threatRange": [1, 3.4],
 			"layers": {
 				"space": {
@@ -5831,6 +5849,9 @@
 				},
 				"surface": {
 					"primaryRegion": ["moon_toxic"],
+					"secondaryRegions" : ["supermatterzonemoon", "wastelandminimoon"],
+					"secondaryRegionCount" : [0, 1],
+					"secondaryRegionSize" : [0.25, 0.4],
 					"dungeons": [
 						[1.0, "apexspaceelevator"],
 						[1.0, "elderruins"],
@@ -5867,7 +5888,7 @@
 		"op": "add",
 		"path": "/planetTypes/moon_volcanic",
 		"value": {
-			"gravityRange": [10, 80],
+			"gravityRange": [10, 40],
 			"threatRange": [1, 3.4],
 			"layers": {
 				"space": {
@@ -5911,7 +5932,7 @@
 		"op": "add",
 		"path": "/planetTypes/moon_shadow",
 		"value": {
-			"gravityRange": [10, 80],
+			"gravityRange": [10, 40],
 			"threatRange": [3, 5.4],
 
 			"layers": {
