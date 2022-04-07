@@ -749,11 +749,12 @@ function masteries.update(dt)
 end
 
 function masteries.clearHand(hand)
-	if (not type(hand)=="string") or (not type(tagCaching[hand.."TagCacheOld"])=="table") then return end
+	if (type(hand)~="string") or (type(tagCaching[hand.."TagCacheOld"])~="table") then return end
 	masteries.timers[hand]={}
 	masteries.timers["both"]={}
-	status.setPersistentEffects("masteryBonus"..hand, {})
-	status.setPersistentEffects("ammoMasteryBonus"..hand, {})
+	--because for some reason, the game shits itself on NPCs sometimes and acts like the list HAS to have entries in it.
+	status.setPersistentEffects("masteryBonus"..hand, {{stat="maxHealth",amount=0}})
+	status.setPersistentEffects("ammoMasteryBonus"..hand, {{stat="maxHealth",amount=0}})
 end
 
 function masteries.reset()
