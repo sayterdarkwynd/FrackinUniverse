@@ -111,8 +111,7 @@ end
 
 function handleFoodTracking(dt)
 	local foodCheck=((status.isResource("food") and status.resource("food")) or 0)
-	local foodDelta=status.stat("foodDelta")
-	if (foodDelta>=0) or (foodCheck ~= self.foodTracker) then
+	if (foodCheck ~= self.foodTracker) then
 		status.setStatusProperty("fuFoodTrackerHandler",1)
 	else
 		status.setStatusProperty("fuFoodTrackerHandler",-1)
