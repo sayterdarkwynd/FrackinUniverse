@@ -1,0 +1,29 @@
+{
+  "itemName" : "chocolatecakevegan",
+  "rarity" : "Uncommon",
+  "price" : 380,
+  "category" : "preparedFood",
+  "inventoryIcon" : "chocolatecake.png",
+  "description" : "A vegan chocolate cake. Like the original, but for ^green;herbivores.^reset;/n^green;Type: Herb Sugar^reset;",
+  "shortdescription" : "Vegan Chocolate Cake",
+  "effects" : [ [
+    {
+        "effect" : "maxenergyscalingboostfood",
+        "duration" : 540
+    }
+  ] ,
+    [
+      "herb_dessert"
+    ]
+  
+  ],
+  "foodValue" : 60,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

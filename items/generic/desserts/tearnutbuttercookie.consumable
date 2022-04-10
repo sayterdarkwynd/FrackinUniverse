@@ -4,12 +4,17 @@
   "price" : 12,
   "category" : "preparedFood",
   "inventoryIcon" : "tearnutbuttercookie.png",
-  "description" : "Crunchy and sweet combined for greatness.",
+  "description" : "Crunchy and sweet combined for greatness.\nType: Sugar",
   "shortdescription" : "Tearnut Butter Cookie",
   "foodValue" : 3,
   "tooltipKind" : "food",
   "builder" : "/items/buildscripts/buildfood.lua",
   "maxStack" : 1000,
+  "effects": [
+    [
+	"sugar_food"
+    ]
+  ],
   "itemAgingScripts" : ["/scripts/items/rotting.lua"],
   "rottingMultiplier" : 1.0,
   "blockingEffects" : ["wellfed"]
