@@ -684,7 +684,6 @@ function masteries.load(dt)
 end
 
 function masteries.update(dt)
-	if dt==0 and world.entityType(entity.id())~="player" then return end
 	local args={}
 	args.dt=dt
 
