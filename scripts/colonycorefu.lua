@@ -24,7 +24,7 @@ function init()
 
 	--figuring out how many ticks we missed
 	local leftTime = config.getParameter("leftTime")
-	
+
 	--sb.logInfo( tostring(leftTime) )
 	if leftTime then
 		local diff=os.time() - leftTime
