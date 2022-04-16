@@ -29,7 +29,7 @@ function init()
 	if leftTime then
 		local diff=os.time() - leftTime
 		if diff>0 then
-			diff=math.min(math.floor(diff/rentTime),math.floor(maxOfflineSeconds/rentTime))
+			diff=math.floor(math.min(diff,maxOfflineSeconds)/rentTime)
 			offlineTicks=math.max(-1, diff - 1)
             rentTimer=rentTime+1
 		end
@@ -45,7 +45,7 @@ function update(dt)
 	else
 		scanTimer=scanTimer+dt
 	end
-	rentTimer = rentTimer + 1
+	rentTimer = rentTimer + dt
 	if (rentTimer > rentTime) then
 		world.containerPutItemsAt(entity.id(),{name=wellSlots[1].name,count=(10 * (wellsDrawing) * (bonusHappiness/10))*(1+offlineTicks)},0)
 		offlineTicks=0
