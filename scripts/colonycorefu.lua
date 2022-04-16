@@ -15,16 +15,17 @@ function init()
 	wellRange=config.getParameter("wellRange",128)
 	rentTime=config.getParameter("productionTime",150)
 	wellSlots=config.getParameter('wellslots')
-	maxOfflineSeconds=config.getParameter("maxOfflineSeconds",86400)--86400 1 day
+	maxOfflineSeconds=config.getParameter("maxOfflineSeconds",3600)--max amount of real time offline in seconds. setting to max 1 day
 	bonusHappiness = 10
 	rentTimer = 0
 	wellInit()
 	setDesc()
-	sb.logInfo("init")
+	--sb.logInfo("init")
 
 	--figuring out how many ticks we missed
 	local leftTime = config.getParameter("leftTime")
-	sb.logInfo( tostring(leftTime) )
+	
+	--sb.logInfo( tostring(leftTime) )
 	if leftTime then
 		local diff=os.time() - leftTime
 		if diff>0 then
@@ -76,8 +77,8 @@ end
 
 function uninit()
 	object.setConfigParameter("leftTime", os.time() )
-	sb.logInfo( tostring( config.getParameter("leftTime", "LMAO NOPE") ) )
-	sb.logInfo("uninit")
+	--sb.logInfo( tostring( config.getParameter("leftTime", "LMAO NOPE") ) )
+	--sb.logInfo("uninit")
 end
 
 function fu_isColonyCore() return true end
