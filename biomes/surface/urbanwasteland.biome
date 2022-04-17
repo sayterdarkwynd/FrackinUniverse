@@ -277,25 +277,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [
-			  [0.15, "unsnowedcar" ],
-			  [0.35, "ruinsvehicle1" ],
-			  [0.35, "ruinsvehicle2" ],
-			  [0.35, "ruinsvehicle2a" ],
-			  [0.35, "ruinsvehicle2b" ],
-			  [0.35, "ruinsvehicle3" ],
-			  [0.35, "ruinsvehicle3a" ],
-			  [0.35, "ruinsvehicle3b" ],
-			  [0.35, "ruinsvehicle3c" ],
-			  [0.35, "ruinsvehicle4" ],
-			  [0.35, "ruinsvehicle5" ],
-			  [0.35, "mechruin" ],
-			  [0.35, "truck1" ],
-			  [0.35, "truck2" ],
-			  [0.35, "truck3" ],
-			  [0.35, "truck4" ],
-			  [0.35, "truck5" ]
-			  ],
+              "pool" : [ [0.35, "ruinsvehicle2a" ], [0.35, "ruinsvehicle2b" ], [0.35, "ruinsvehicle3a" ], [0.35, "ruinsvehicle3b" ],[0.35, "ruinsvehicle3c" ], [0.35, "ruinsvehicle4" ], [0.35, "ruinsvehicle5" ], [0.35, "mechruin" ], [0.35, "truck3" ], [0.35, "truck4" ], [0.35, "truck5" ] ],
               "parameters" : { }
             }
           ]
@@ -502,6 +484,27 @@
       "grassModDensity" : 0.2,
 
       "items" : [
+           {
+             "mode" : "floor",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:ffunCommon",
+
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [
+              [0.50, "techbush1" ],
+              [0.50, "techbush2" ],
+              [0.50, "techbush3" ],
+              [0.50, "techbush4" ],
+              [0.50, "techbush5" ],
+              [0.50, "techbush6" ]
+                 ],
+                 "parameters" : { "startingStage" : 3 }
+               }
+             ]
+           },
         {
           "mode" : "floor",
           "priority" : 0.0,
