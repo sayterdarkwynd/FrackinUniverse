@@ -59,7 +59,7 @@
   },
 
     "mainBlock" : "mud",
-    "subBlocks" : [ "irradiatedtile2", "waste", "junk" ],
+    "subBlocks" : [ "irradiatedtile2", "waste", "junk", "rustyblock" ],
     "ores" : "ff_radioactiveOres",
 
   "parallax" : "/parallax/surface/jungle.parallax",
@@ -150,7 +150,7 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredLarge",
+          "distribution" : "/biomes/distributions.config:denseMedium",
 
           "type" : "object",
           "objectSets" : [
@@ -173,6 +173,20 @@
               [0.15, "metalbarrel1" ],
               [0.35, "toxicwastebarrel" ]
               ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "toxicgasprimer" ] ],
               "parameters" : { }
             }
           ]
@@ -276,6 +290,36 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "rubble",
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "largerubble",
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
           "distribution" : "/biomes/distributions.config:rareClumpySmall",
 
           "type" : "bush",
@@ -316,7 +360,7 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "grass",
           "grasses" : [ "pods", "r", "savannahgrass", "toxicplains", "glowmushroom", "minipod", "shrooms", "spikes", "spire" ]
@@ -400,7 +444,7 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:scatteredLarge",
+        "distribution" : "/biomes/distributions.config:denseMedium",
 
         "type" : "object",
         "objectSets" : [
@@ -414,7 +458,7 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:ffunCommon",
+        "distribution" : "/biomes/distributions.config:ffAverage",
 
         "type" : "object",
         "objectSets" : [
@@ -435,6 +479,36 @@
 
         "type" : "grass",
         "grasses" : [ "toxicplains" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "rubble",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "largerubble",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          }
+        ]
       },
       {
         "mode" : "ceiling",
