@@ -3420,7 +3420,7 @@
 				},
 				"surface": {
 					"primaryRegion": ["bloodstone"],
-					"secondaryRegions": ["wartfield", "wastelandmini", "midnight", "corruptmoon", "supermatterzone", "goreforest", "crystalswamp", "ffhive", "alienforest", "sulphuricmagma", "cellfield", "reddesert", "rainbowforest", "bloodgulch", "hellhive", "elder", "corruptedforest"],
+					"secondaryRegions": ["blooddesert", "wartfield", "wastelandmini", "midnight", "corruptmoon", "supermatterzone", "goreforest", "crystalswamp", "ffhive", "alienforest", "sulphuricmagma", "cellfield", "reddesert", "rainbowforest", "bloodgulch", "hellhive", "elder", "corruptedforest"],
 
 					"dungeons": [
 						[2.0, "elderruins"],
@@ -3545,7 +3545,7 @@
 				},
 				"surface": {
 					"primaryRegion": ["bog"],
-					"secondaryRegions": ["wartfield", "wastelandmini", "prism", "fieldofbracken", "cactiplace", "crystalswamp", "ffhive", "alienforest", "energyorbforest", "deadwood", "blackslimebog", "pitchfield", "giantflowers", "forest", "jungle"],
+					"secondaryRegions": ["murkyswamp", "wartfield", "wastelandmini", "prism", "fieldofbracken", "cactiplace", "crystalswamp", "ffhive", "alienforest", "energyorbforest", "deadwood", "blackslimebog", "pitchfield", "giantflowers", "forest", "jungle"],
 
 					"dungeons": [
 						[1.0, "gregbase"],
@@ -4624,7 +4624,7 @@
 				},
 				"surface": {
 					"primaryRegion": ["irradiated"],
-					"secondaryRegions": ["wartfield", "wastelandmini", "aliendesert", "goreforest", "crystaldesert", "crystalswamp", "supermatterzone", "ffhive", "corruptedforest", "birchforest", "alienforest", "cellfield", "reddesert", "swamp", "bloodgulch", "hellhive", "elder", "icewaste", "snow", "protoworld", "irradiated", "precursorsurface"],
+					"secondaryRegions": ["biowastes", "wartfield", "wastelandmini", "aliendesert", "goreforest", "crystaldesert", "crystalswamp", "supermatterzone", "ffhive", "corruptedforest", "birchforest", "alienforest", "cellfield", "reddesert", "swamp", "bloodgulch", "hellhive", "elder", "icewaste", "snow", "protoworld", "irradiated", "precursorsurface"],
 
 					"dungeons": [
 						[0.5, "fuwreck"],
@@ -4813,7 +4813,7 @@
 				},
 				"surface": {
 					"primaryRegion": ["mountainous"],
-					"secondaryRegions": ["wastelandmini", "ffhive", "birchforest", "alienforest", "cellfield", "reddesert", "finesand", "cloudforest", "swamp", "alpine", "spring", "glacial", "hotsprings", "pineforest2", "rainbowforest"],
+					"secondaryRegions": ["highlands", "wastelandmini", "ffhive", "birchforest", "alienforest", "cellfield", "reddesert", "finesand", "cloudforest", "swamp", "alpine", "spring", "glacial", "hotsprings", "pineforest2", "rainbowforest"],
 
 					"dungeons": [
 						[1.0, "apexspaceelevator"],
@@ -7157,6 +7157,23 @@
 
 	{
 		"op": "add",
+		"path": "/regionTypes/biowastes",
+		"value": {
+			"caveLiquid" : [ "bio_ooze" ],
+			"caveLiquidSeedDensityRange" : [20, 20],
+			"encloseLiquids" : true,
+			"fillMicrodungeons" : true,
+			"blockSelector": ["remixedPoolsSurface"],
+			"fgCaveSelector": ["surfaceCaves"],
+			"bgCaveSelector": ["empty"],
+			"biome": [
+				[0, ["biowastes"]]
+			]
+		}
+	},
+
+	{
+		"op": "add",
 		"path": "/regionTypes/blackslimebog",
 		"value": {
 			"caveLiquid": ["swampwater"],
@@ -7212,6 +7229,19 @@
 			"bgCaveSelector": ["empty"],
 			"biome": [
 				[0, ["blisterbushfield"]]
+			]
+		}
+	},
+
+	{
+		"op": "add",
+		"path": "/regionTypes/blooddesert",
+		"value": {
+			"blockSelector": ["remixedSurface", "remixedMildSurface"],
+			"fgCaveSelector": ["surfaceCaves"],
+			"bgCaveSelector": ["empty"],
+			"biome": [
+				[0, ["blooddesert"]]
 			]
 		}
 	},
@@ -7628,6 +7658,19 @@
 
 	{
 		"op": "add",
+		"path": "/regionTypes/highlands",
+		"value": {
+			"blockSelector": ["remixedMountainsSurface"],
+			"fgCaveSelector": ["surfaceCaves", "normalCaves", "sparseCaves"],
+			"bgCaveSelector": ["empty"],
+			"biome": [
+				[0, ["highlands"]]
+			]
+		}
+	},
+
+	{
+		"op": "add",
 		"path": "/regionTypes/icefire",
 		"value": {
 			"caveLiquid": ["lava", "liquidnitrogen"],
@@ -8002,6 +8045,22 @@
 			"bgCaveSelector": ["empty"],
 			"biome": [
 				[0, ["metalworks4"]]
+			]
+		}
+	},
+
+	{
+		"op": "add",
+		"path": "/regionTypes/murkyswamp",
+		"value": {
+			"caveLiquid" : [ "swampwater" ],
+			"caveLiquidSeedDensityRange" : [20, 20],
+			"encloseLiquids" : true,
+			"blockSelector": ["remixedSwampySurface", "remixedPoolsSurface"],
+			"fgCaveSelector": ["surfaceCaves"],
+			"bgCaveSelector": ["empty"],
+			"biome": [
+				[0, ["murkyswamp"]]
 			]
 		}
 	},
