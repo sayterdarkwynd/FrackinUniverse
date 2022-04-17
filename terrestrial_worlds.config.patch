@@ -3144,7 +3144,7 @@
 					"primaryRegion": ["atmosphere"]
 				},
 				"surface": {
-					"primaryRegion": ["barren", "barren2", "barren3"]
+					"primaryRegion": ["barren"]
 				},
 				"subsurface" : {
 					"primaryRegion" : ["barrenunderground"]
@@ -5996,6 +5996,16 @@
 		"op": "replace",
 		"path": "/regionTypes/barren/fgCaveSelector/0",
 		"value": "surfaceCaves"
+	},
+	{
+		"op": "add",
+		"path": "/regionTypes/barren/biome/0/1/-",
+		"value": "barren2"
+	},
+	{
+		"op": "add",
+		"path": "/regionTypes/barren/biome/0/1/-",
+		"value": "barren3"
 	},
 	{
 		"op": "add",
