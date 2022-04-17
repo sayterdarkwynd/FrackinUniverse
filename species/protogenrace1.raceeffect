@@ -1,13 +1,22 @@
 {
 	"stats": [
+		// base stats
 		{ "stat": "maxEnergy", "effectiveMultiplier": 1.15 },
+		{ "stat": "maxHealth", "effectiveMultiplier": 0.95 },
+		{ "stat": "healingBonus", "effectiveMultiplier": 0.1 },
+		// resists
 		{ "stat": "electricResistance", "amount": -0.25 },
-		{ "stat": "darknessResistance", "amount": -0.25 },
-		{ "stat": "fireResistance", "amount": -0.10 },
-		{ "stat": "fallDamageMultiplier", "effectiveMultiplier" : 0.80 }
+		{ "stat": "radioactiveResistance", "amount": 0.25 },
+		{ "stat": "iceResistance", "amount": 0.15 },
+		{ "stat": "fireResistance", "amount": 0.15 },
+		{ "stat": "physicalResistance", "amount": -0.10 },
+		{ "stat": "fallDamageMultiplier", "effectiveMultiplier" : 0.80 },
+		// masteries
+		{ "stat": "shotgunMastery", "amount": 0.15 },
+		{ "stat": "pistolMastery", "amount": 0.15 },
 	],
 	"diet" : "omnivore",
 	"controlModifiers": {
-		"airJumpModifier" : 1.0
+		"speedModifier" : 1.1
 	}
 }
