@@ -5,11 +5,18 @@ function init()
     BA = "/interface/scripted/statWindow/statWindow",
     BB = "/zb/questList/questList"
   }
+  sfx = {
+    AA = "",
+    AB = "3",
+    BA = "",
+    BB = "2"
+  }
 end
 
 function activate(fireMode, shiftHeld)
-	activeItem.interact("ScriptPane", modes[string.format("%s%s",fireMode and "A" or "B", shiftHeld and "A" or "B")]..".config", player.id())
-	animator.playSound("activate")
+        key = string.format("%s%s",fireMode and "A" or "B", shiftHeld and "A" or "B")
+	activeItem.interact("ScriptPane", modes[key]..".config", player.id())
+	animator.playSound("activate"..sfx[key])
 end
 
 function update()
