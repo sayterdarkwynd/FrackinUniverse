@@ -1,5 +1,5 @@
-# FrackinUnicerst
-(in progress) FU fork for people that hate research n stuff
+# Frackin' Unicerst
+an (in progress) FU fork for people that hate research n stuff!
 
 ![Steam DMCA from 2/14/2022](https://media.discordapp.net/attachments/965312039440502844/965375722413768794/firefox_Zlt9qldxC6.png)
 
