@@ -1,29 +1,24 @@
-
-function activate(fireMode, shiftHeld)
-	if shiftHeld then
-		if fireMode == "primary" then
-			activeItem.interact("ScriptPane", "/zb/researchTree/researchTree.config")
-			animator.playSound("activate")
-		elseif fireMode == "alt" then
-			activeItem.interact("ScriptPane", "/interface/scripted/mmutility/mmutility.config")
-			animator.playSound("activate3")
-	end
-
-	elseif fireMode == "primary" then
-		activeItem.interact("ScriptPane", "/interface/scripted/statWindow/statWindow.config")
-		animator.playSound("activate")
-	elseif fireMode == "alt" then
-		activeItem.interact("ScriptPane", "/zb/questList/questList.config")
-		animator.playSound("activate2")
-	end
-
+function init()
+  modes = {
+    AA = "/zb/researchTree/researchTree",
+    AB = "/interface/scripted/mmutility/mmutility",
+    BA = "/interface/scripted/statWindow/statWindow",
+    BB = "/zb/questList/questList"
+  }
+  sfx = {
+    AA = "",
+    AB = "3",
+    BA = "",
+    BB = "2"
+  }
 end
 
+function activate(fireMode, shiftHeld)
+        key = string.format("%s%s",fireMode and "A" or "B", shiftHeld and "A" or "B")
+	activeItem.interact("ScriptPane", modes[key]..".config", player.id())
+	animator.playSound("activate"..sfx[key])
+end
 
 function update()
-	if mcontroller.crouching() then
-		activeItem.setArmAngle(-0.15)
-	else
-		activeItem.setArmAngle(-0.5)
-	end
+    activeItem.setArmAngle(mcontroller.crouching() and -0.15 or -0.5)
 end
