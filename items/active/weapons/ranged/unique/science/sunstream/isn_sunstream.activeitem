@@ -1,12 +1,12 @@
 {
   "itemName" : "isn_sunstream",
-  "level" : 5,
+  "level" : 6,
   "price" : 1500,
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "The sun, in your hands. Truly deadly, and unique.
 ^yellow;Homing alt^reset;
-^green;Bouncing projectiles",
+^green;Bouncing projectiles^reset;",
   "shortdescription" : "Polaris",
   "tooltipKind" : "gun2",
   "category" : "rocketLauncher",
@@ -90,16 +90,16 @@
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
   "recoilForce" : 1200,
-  
+
   "altAbilityType" : "floatydeathball",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  
+
   "upgradeParameters" : {
   "shortdescription" : "^cyan;Singularity^reset; ^yellow;^reset;",
   "description" : "Even more powerful and boomy.
 ^yellow;Homing alt^reset;
-^green;Bouncing projectiles",
+^green;Bouncing projectiles^reset;",
   "animationParts" : {
     "butt" : "",
     "middle" : "isn_sunstream2.png",
@@ -115,13 +115,13 @@
 	    "fireTime" : 1.2,
 	    "baseDps" : 5.75,
 	    "energyUsage" : 30,
-            
+
 	    "projectileParameters" : {
 	      "image" : "isn_sunstreamshot2.png",
 	      "knockback" : 20,
  	      "damageKind" : "electric",
   	      "emitters" : [ "electricplasma" ],
-  	      "processing":"?hueshift=180",	      
+  	      "processing":"?hueshift=180",
 	      "speed" : 60,
 		  "periodicActions" : [
 		    {
@@ -146,19 +146,19 @@
 		    {
 			  "action" : "config",
 			  "file" : "/projectiles/explosions/plasmaboom/plasmaboom.config"
-		    },   
+		    },
 		    {
 		      "action" : "sound",
 		      "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
 		    }
-		  ]       
+		  ]
 	    }
 	  },
 	  "altAbilityType" : "floatydeathball2",
 	  "altAbility" : {
 	    "fireTime" : 2,
 	    "baseDps" : 12,
-	    "energyUsage" : 40,	  
+	    "energyUsage" : 40,
 	    "projectileParameters" : {
 	      "processing":"?hueshift=0"
 	    }

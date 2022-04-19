@@ -6,7 +6,7 @@
   "rarity" : "uncommon",
   "description" : "Fires repulsive glowy goo-globs.
 ^green;Targets glow
-^yellow;+Pus effect",
+^yellow;+Pus effect^reset;",
   "shortdescription" : "Blister Gun",
   "category" : "bioweapon",
   "level" : 3,
@@ -32,7 +32,7 @@
 		  }
 		}
       }
-    },  
+    },
     "sounds" : {
       "fire" : [ "/sfx/projectiles/goo_spit2.ogg" ]
     },
@@ -67,7 +67,7 @@
     "fireType" : "auto",
 
     "projectileType" : "blistergunshot",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 50,
       "bounces" : 1,
       "knockback" : 10,
@@ -105,16 +105,16 @@
 
 
   "critChance" : 5,
-  "critBonus" : 3, 
+  "critBonus" : 3,
   "isAmmoBased" : 1,
   "magazineSize" : 12,
   "reloadTime" : 1,
-  
+
   "altAbilityType" : "blisteraltshot",
   "altAbility" : {
 	  "isAmmoBased" : 1,
 	  "magazineSize" : 2,
-	  "reloadTime" : 1  
+	  "reloadTime" : 1
   },
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

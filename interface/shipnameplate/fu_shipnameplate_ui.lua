@@ -7,7 +7,7 @@ local stardate
 
 function init()
 	shipTypes = config.getParameter("shipTypes")
-    currTypeIndex = 7
+    currTypeIndex = 1
 
     --widget.setText("tboxName","Starship")
     widget.setText("lblType", shipTypes[currTypeIndex])

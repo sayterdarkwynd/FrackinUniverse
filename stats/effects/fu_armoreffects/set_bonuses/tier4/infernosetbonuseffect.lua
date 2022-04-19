@@ -24,7 +24,7 @@ function update(dt)
 		status.removeEphemeralEffect("fireburst")
 		effect.expire()
 	else
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
+
 		status.addEphemeralEffect("fireburst")
 		checkWeapons()
 	end

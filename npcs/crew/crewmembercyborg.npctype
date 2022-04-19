@@ -1,123 +1,39 @@
 {
   "type" : "crewmembercyborg",
-  "baseType" : "base",
-  //"disableWornArmor" : false,
-  "dropPools" : [ "villagertreasure" ],
-
-  "damageTeamType" : "friendly",
-
-  // Remove protection and powermultiplier gained from being level 1 as scaling is from player armor
-  //"innateStatusEffects" : [ { "stat" : "protection", "amount": 0.15 }, {"stat" : "powerMultiplier", "amount" : 0.25} ], 
-
-  "persistent" : true,
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behavior" : "crewmember",
-    "behaviorConfig" : {
-      "emptyHands" : false,
-
-      // Wander behavior config
-      "wanderTime" : 1,
-      "idleTime" : 10,
-      "outerHomeRange" : 20,
-      "innerHomeRange" : 15,
-
-      "hostileDamageTeam" : {"type" : "friendly", "team" : 1}
-    },
-
     "crew" : {
-      "recruitable" : true,
-
-      "recruitInteractAction" : {
-        "messageType" : "recruits.offerRecruit",
-        "messageArgs" : []
-      },
-
-      "powerMultiplierExponent" : 1.0,
-
-      "role" : {
-	"benefits" : [
-          {
-            "type" : "ShipUpgradeBenefit",
-            "property" : "shipSpeed",
-            "value" : 1.25
-          },             
-          {
-            // Ephemeral effects gained upon leaving the ship
-            "type" : "EphemeralEffect",
-            "effect" : "aetherimmunity",
-            "duration" : 300
-          },         
-          {
-            "type" : "PersistentEffect",
-            "effect" : "shipMassSmall"
-          }
-        ],      
-        "type" : "chemist",
-        "name" : "Cyborg",
-        "field" : "Obliteration",
-        "uniformColorIndex" : 8
-      },
-
-      "ranks" : [
-        "Second-to-Last <role>",
-        "3rd Technical Assistant <field> Officer",
-        "Assistant Deputy <role> Guy/Gal",
-        "Trainee Apprentice <role>",
-        "Temporary Relief <role>",
-        "3rd Rear Lieutenant <role>",
-        "64th Commodore <role>",
-        "Standing <field> Officer",
-        "Sitting <field> Officer",
-        "Executive Coffee-Making <role>",
-        "Command Master Chief Petty <field> Officer",
-        "Independent <field> Auditor",
-        "Dependant <field> Auditor",
-        "Dreadnought <field> Officer",
-        "Trainee <field> Mastermind",
-        "Head of Petty <field> Arguments",
-        "Backup <role>",
-        "Reliable <field> Lacky",
-        "Theoretical <field> Advisor",
-        "Reliable <field> Lackey",
-        "Head of <field> operations",
-        "Wild Card <role>",
-        "Head of <field> Relations",
-        "Last-Minute <role>",
-        "Expert in <field> Diplomacy",
-        "<field> Innovation Manager",
-        "Loose Cannon <role>",
-        "Regional <field> Director",
-        "Private <field> Investigator",
-        "Temporal <field> Surveyor",
-        "Radical <field> Innovator",
-        "Independent Head of <field> Operations",
-        "Just your average <role>",
-        "Hobbyist <role>",
-        "Master of <field> Matters",
-        "Alternative <field> Advisory Representative",
-        "Runner-Up <field> Officer",
-        "Emergency <field> Officer",
-        "First Mate's Second-Cousin's Third <role>",
-        "Unpaid <field> Intern",
-        "<field> Student",
-        "<field> Forum Moderator",
-        "Rogue <field> Profiteer",
-        "Neutral Third Party <role>",
-        "Low Quality <field> Negotiations",
-        "Armchair <field> Expert"
-      ],
-
       "defaultUniform" : {
         "head" : "rustyskul",
         "chest" : "apextier6schest",
         "legs" : "apextier6spants"
       },
-      "uniformSlots" : [ "head", "headCosmetic", "chest", "chestCosmetic", "legs", "legsCosmetic", "back", "backCosmetic"]
-    },
 
-    "questGenerator" : {
-      "enableParticipation" : false
+      "role" : {
+        "type" : "chemist",
+        "name" : "Cyborg",
+        "field" : "Obliteration",
+        "uniformColorIndex" : 8,
+
+        "benefits" : [
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "shipSpeed",
+            "value" : 1.25
+          },
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "aetherimmunity",
+            "duration" : 300
+          },
+          {
+            "type" : "PersistentEffect",
+            "effect" : "shipMassSmall"
+          }
+        ]
+      }
     },
 
     "dialog" : {
@@ -130,12 +46,36 @@
               "My programming requires that I obliterate the enemy. Hire me!",
               "We should band together and annihilate your foes."
             ]
+          },
+          "floran" : {
+            "default" : [
+              "Let'ss work together and annihilate our foess.",
+              "Floran wantss to sstab and burn enemiess. Hire Floran.",
+              "Floran's programming requires that Floran obliterate the enemy. Hire Floran!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Menacing. My organic components feel only rage. Let us annihilate our foes together.",
+              "Fevered. I was told that the installation of an Apex adrenal gland would drive me insane. I acquired one anyways. Hire me.",
+              "My organic brain components drive me to obliterate the enemy. Hire me!"
+            ]
           }
         },
         "roleDescription" : {
           "default" : {
             "default" : [
               "I will interface with SAIL and increase your ships speed."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran will interface with SAIL and increase ssship sspeed!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Intense. With my biological enhancements, I can increase your ships speed."
             ]
           }
         },
@@ -146,10 +86,24 @@
               "Circuits reset. Commencing program.",
               "I seek retribution, fearless leader."
             ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran remainss ever-ready to vanquish enemiess.",
+              "Circuitss reset. Commencing program.",
+              "Floran sseekss retribution, sstrong leader."
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Manic. I cannot rest until I slay the one who slew me.",
+              "Concerned. My organic neural components appear to have grown in size. Is this normal?",
+              "Furious. I am ready for retribution, fearless leader."
+            ]
           }
         },
-        
-        
+
+
         "combatBenefit" : {
           "default" : {
             "default" : [
@@ -167,7 +121,7 @@
             ]
           }
         },
-        
+
         "unfollow" : {
           "default" : {
             "default" : [
@@ -262,45 +216,9 @@
               "Concerned. Wait for me!"
             ]
           }
-        },
-          "penguin" : {
-            "default" : [
-              "Hey, biggun! Let me catch up!",
-              "Don't get too far off!",
-              "Wait up, big guy!"
-            ]
-          }
-      },
-
-      "tenant" : {
-        "grumbles" : {
-          "tagCriteria" : "/dialog/grumble.config:tagCriteria",
-          "enclosedArea" : "/dialog/grumble.config:enclosedArea",
-          "otherDeed" : "/dialog/grumble.config:otherDeed",
-          "severe" : "/dialog/grumble.config:severe",
-          "final" : "/dialog/grumble.config:final"
-        },
-        "arrivedHome" : {
-          "beacon" : "/dialog/arrivedhome.config:beacon",
-          "rent" : "/dialog/arrivedhome.config:rent"
         }
-      },
-
-      "converse" : "/dialog/crewmember.config:converse",
-
-      "attack" : "/dialog/combat.config:attack",
-      "reattack" : "/dialog/combat.config:reattack",
-      "killedTarget" : "/dialog/combat.config:killedTarget",
-      "lostTarget" : "/dialog/combat.config:lostTarget",
-      "outOfSight" : "/dialog/combat.config:outOfSight",
-      "cheerOn" : "/dialog/combat.config:cheerOn",
-      "cantReach" : "/dialog/combat.config:cantReach"
+      }
     }
-  },
-
-  "movementParameters" : {
-    // Run at the same speed as the player
-    "runSpeed" : 20.0
   },
 
   "items" : {
@@ -308,42 +226,10 @@
       [0, [
           {
             "primary" : [ "phaseblade","advalloyshortsword","metalliccleaver", "dblade", "heliosblade", "precursorbroadsword","quietusscythe" ],
-            "secondary" : [ "isn_annihilator", "energyassault", "fusteampunkgun", "gravgun", "rimecutter","isn_flamethrower4","aegisaltmace" ],
             "sheathedprimary" : [ "densiniumshield","bubbleshield","durasteelshield","fupioneershield" ],
-	    "head" :  [{ "name" : "rustyskul", "count" :1, "parameters" : { "colorIndex" : 8 } } ],
-	    "chest" : [ { "name" : "apextier6schest", "count" :1, "parameters" : { "colorIndex" : 8 } } ],
-            "legs" : [ { "name" : "apextier6spants", "count" :1, "parameters" : { "colorIndex" : 8 } } ]
+            "secondary" : [ "isn_annihilator", "energyassault", "fusteampunkgun", "gravgun", "rimecutter","isn_flamethrower4","aegisaltmace" ]
           }
-        ] ]  
+        ] ]
     ]
-  },
-
-  "statusControllerSettings" : {
-    "statusProperties" : {
-      "hitInvulnerability" : true,
-      "hitInvulnerabilityThreshold" : 0.0333,
-      "hitInvulnerabilityTime" : 1,
-      "hitInvulnerabilityFlash" : 0.15,
-      "damageFlashOnDirectives" : "",
-      "damageFlashOffDirectives" : ""
-    },
-
-    "stats" : {
-      "maxHealth" : {
-        "baseValue" : 350.0
-      },
-      "powerMultiplier" : {
-        "baseValue" : 0.25
-      },
-      "healthRegen" : {
-        "baseValue" : 2.2
-      },
-      "aetherImmunity" : {
-        "baseValue" : 1
-      },
-      "protection" : {
-        "baseValue" : 0.2
-      }      
-    }
   }
 }

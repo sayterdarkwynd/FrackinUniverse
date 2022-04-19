@@ -1,83 +1,56 @@
 {
 	"stats": [
-		{
-			"stat": "maxHealth",
-			"effectiveMultiplier": 1.10
-		},	
-		{
-			"stat": "maxEnergy",
-			"effectiveMultiplier": 1.05
-		},		
-		{
-			"stat": "foodDelta",
-			"baseMultiplier": 1.06
-		},
-		{
-			"stat": "iceResistance",
-			"amount": 0.40
-		},
-		{
-			"stat": "shadowResistance",
-			"amount": 0.30
-		},
-		{
-			"stat": "poisonResistance",
-			"amount": -0.25
-		},
-		{
-			"stat": "cosmicResistance",
-			"amount": -0.25
-		},
-		{
-			"stat": "fireResistance",
-			"amount": -0.25
-		},
-		{
-			"stat": "shadowImmunity",
-			"amount": 1
-		},
-		{
-			"stat": "darknessImmunity",
-			"amount": 1
-		}
+		{ "stat": "maxHealth", "effectiveMultiplier": 0.85},
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.12},
+		{ "stat": "foodDelta", "baseMultiplier": 0.85},
+
+		{ "stat": "fireResistance", "amount": -0.10},
+		{ "stat": "iceResistance", "amount": 0.20},
+		{ "stat": "poisonResistance", "amount": 0.15},
+		{ "stat": "electricResistance", "amount":  -0.15},
+		{ "stat": "cosmicResistance", "amount":  -0.15},
+		{ "stat": "radiationResistance", "amount": 0.10},
+		{ "stat": "shadowResistance", "amount": 0.20},
+
+		{ "stat": "shadowImmunity", "amount": 1 },
+		{ "stat": "darknessImmunity", "amount": 1 },
+		{ "stat": "breathProtection", "amount": 1 },
+
+		{ "stat": "scytheMastery", "amount": 0.25 }
 	],
 	"diet" : "entity",
-	"envEffects": [{
-		"biomes": [
-			"shadow",
-			"penumbra",
-			"lightless",
-			"midnight",
-			"atropusdark",
-			"arborealdark",
-			"magmadark",
-			"volcanicdark",
-			"arcticdark",
-			"desertwastesdark",
-			"sulphuricdark"
-		],
-		"stats": [{
-				"stat": "critChance",
-				"amount": 2
-			},
-			{
-				"stat": "maxEnergy",
-				"effectiveMultiplier": 1.15
-			}
-		]
-	}],
+	"envEffects": [
+		{
+		"biomes": ["shadow","penumbra","lightless","midnight","atropusdark","arborealdark","magmadark","volcanicdark","arcticdark","desertwastesdark","sulphuricdark"],
+			"stats": [{
+					"stat": "critChance",
+					"amount": 2
+				},
+				{
+					"stat": "maxEnergy",
+					"effectiveMultiplier": 1.15
+				}
+			]
+		},
+		{
+		"biomes": ["chromatic"],
+			"stats": [
+				{
+					"stat": "protection",
+					"effectiveMultiplier": 0.80
+				},
+				{
+					"stat": "maxHealth",
+					"effectiveMultiplier": 0.75
+				}
+			]
+		}
+	],
 	"weaponEffects": [{
 			"weapons": ["staff","wand"],
 			"stats": [{
 				"stat": "maxHealth",
 				"effectiveMultiplier": 1.25
-			}]
-		},
-		{
-			"weapons": ["dagger","rapier"],
-			"stats": [{
-				"stat": "powerMultiplier",
-				"effectiveMultiplier": 1.06
 			}]
 		},
 		{

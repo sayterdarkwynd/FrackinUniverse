@@ -1,20 +1,21 @@
 {
   "type" : "crewmembercollector",
-  "baseType" : "crewmember",
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
-
     "crew" : {
       "defaultUniform" : {
         "head" : "fancaphead",
         "chest" : "sciencefuchestnpc",
         "legs" : "sciencefulegsnpc"
-        },
+      },
 
       "role" : {
+        "type" : "soldier",
+        "name" : "Creature Hunter",
+        "field" : "Collector",
+        "uniformColorIndex" : 4,
+
         "benefits" : [
           {
             "type" : "ShipUpgradeBenefit",
@@ -25,16 +26,12 @@
             "type" : "EphemeralEffect",
             "effect" : "thornsstranglevine",
             "duration" : 120
-          },         
+          },
           {
             "type" : "Regeneration",
             "value" : 1
-          }       
-        ],
-        "type" : "chemist",
-        "name" : "Creature Hunter",
-        "field" : "Collector",
-        "uniformColorIndex" : 4
+          }
+        ]
       }
     },
 
@@ -55,21 +52,6 @@
               "I shall capture them all!",
               "I'll add you to my collection, you putrid aberration!"
             ]
-          },
-          "floran" : {
-            "default" : [
-              "Floran hasss things to help you out!",
-              "Floran can help out!",
-              "Floran hasss things to help!"
-            ]
-          },
-          "glitch" : {
-            "default" : [
-              "Eager. I can help you out!",
-              "Excited. Perhaps you could do with a power-up!",
-              "Intrigued. I wonder if this will help you?",
-              "Helpful. Take this, it will help!"
-            ]
           }
         }
       }
@@ -80,11 +62,7 @@
     "default" : [
       [0, [
           {
-            "primary" : [ "capturegun" ],
-            "sheathedprimary" : [ "npcdagger" ],
-			"head" :  [{ "name" : "fancaphead", "count" :1, "parameters" : { "colorIndex" : 4 } } ],
-			"chest" : [ { "name" : "sciencefuchestnpc", "count" :1, "parameters" : { "colorIndex" : 4 } } ],
-            "legs" : [ { "name" : "sciencefulegsnpc", "count" :1, "parameters" : { "colorIndex" : 4 } } ]
+            "primary" : [ "capturegun" ]
           }
         ] ]
     ]

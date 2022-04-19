@@ -1,17 +1,12 @@
 require "/scripts/vec2.lua"
+--local foodThreshold=15
+local maxFreeFlightTime=5 -- in seconds, the max stored flight time that is 'free' (Excluding boost)
 
 function init()
-	--self.energyCostPerSecond = config.getParameter("energyCostPerSecond")--not used
 	self.active=false
-	self.available = true
-	--self.species = world.entitySpecies(entity.id())
-	self.timer = 0
-	self.boostSpeed = 12
-	self.active=false
-	self.available = true
+	self.baseBoostSpeed = 12
+	self.boostSpeed = self.baseBoostSpeed
 	self.forceDeactivateTime = 3
-	self.fuelTimer = 0 --failsafe value. default to no stamina so elduukhar have to wait before they can fly.
-	self.soundTimer = 60
 	self.bonusFlightTime=config.getParameter("bonusFlightTime",0)
 	self.fallingParameters=config.getParameter("fallingParameters")
 	self.maxFallSpeed=config.getParameter("maxFallSpeed")
@@ -19,48 +14,37 @@ end
 
 function uninit()
 	animator.stopAllSounds("activate")
-	status.clearPersistentEffects("glide")
-	animator.setParticleEmitterActive("feathers", false)
+	handleEffects(false)
 end
 
-function checkFood()
-	-- make sure flight stamina never exceeds limits
-	if not self.fuelTimer then self.fuelTimer = 0 end
-	if self.fuelTimer == 300 then
-		animator.playSound("recharge")
-		status.addEphemeralEffects{{effect = "flightRecharge", duration = 0.15}}
+function handleFuel(dt)
+	self.fuelTimer=math.min(math.max((self.fuelTimer or 0)+dt,0),maxFreeFlightTime)
+	if self.fuelTimer >= maxFreeFlightTime then
+		if (self.soundTimer or 0)<=0.0 then
+			animator.playSound("recharge")
+		end
+		self.soundTimer = 10
+		status.addEphemeralEffect("flightRechargedIndicator")
 		animator.setParticleEmitterActive("feathers", true)
-		self.soundTimer = 60
 	else
+		self.soundTimer=math.max(0,((self.soundTimer or 0)-math.abs(dt)))
 		animator.setParticleEmitterActive("feathers", false)
-		self.soundTimer = 60
 	end
-	self.fuelTimer=math.min(math.max(self.fuelTimer,0),300)
-	--[[if self.fuelTimer < 0 then
-		self.fuelTimer = 0
-	end
-	if self.fuelTimer > 300 then
-		self.fuelTimer = 300
-	end]]
-	-- end flight stamina check
 end
 
-function boost(direction)
-	self.boostVelocity = vec2.mul(vec2.norm(direction), self.boostSpeed)
-	if self.boostSpeed > 55 then -- prevent super-rapid movement
-		self.boostSpeed = 55
+function handleEffects(on)
+	if on then
+		status.addEphemeralEffects{{effect = "elduukharflight", duration = 2}}
+		status.addEphemeralEffects{{effect = "lowgravflighttech", duration = 2}}
+	else
+		status.clearPersistentEffects("glide")
+		animator.setParticleEmitterActive("feathers", false)
+		self.boostSpeed = self.baseBoostSpeed
+		status.removeEphemeralEffect("lowgravflighttech")
 	end
 end
 
 function update(args)
-	--fuel stamina check
-	--sb.logInfo(self.fuelTimer)
-	if self.soundTimer <= 0 then --sound effect timer for flight timer
-		self.soundTimer = 60
-	else
-		self.soundTimer = self.soundTimer - 1
-	end
-
 	if not self.specialLast and args.moves["special1"] then	--toggle on
 		attemptActivation()
 	end
@@ -75,70 +59,44 @@ function update(args)
 		deactivate()
 	end
 
-	if self.active and status.overConsumeResource("energy", 0.0001) and not mcontroller.zeroG() and not mcontroller.liquidMovement() then -- do we have energy and the ability is active?
-		checkFood()
-		status.addEphemeralEffects{{effect = "elduukharflight", duration = 2}}
-		status.addEphemeralEffects{{effect = "lowgravflighttech", duration = 2}}
-		self.upVal = args.moves["up"]	--set core movement variables
-		self.downVal = args.moves["down"]
-		self.leftVal = args.moves["right"]
-		self.rightVal = args.moves["left"]
-		self.runVal = args.moves["run"]
-
+	if self.active and ((not mcontroller.onGround() or args.moves["up"])) and (not mcontroller.zeroG()) and (not mcontroller.liquidMovement()) and status.overConsumeResource("energy", 0.0001) then -- do we have energy and the ability is active?
+		handleEffects(true)
 		--enable air physics
 		mcontroller.controlParameters(self.fallingParameters or {})
 		mcontroller.setYVelocity(math.max(mcontroller.yVelocity(), self.maxFallSpeed or 0))
 
 		-- boost in direction pressed
-		local direction = {0, 0} -- set default
-		if self.upVal then direction[2] = direction[2] + 1 end
-		if self.downVal then direction[2] = direction[2] - 1 end
-		if self.leftVal then direction[1] = direction[1] + 1 end
-		if self.rightVal then direction[1] = direction[1] - 1 end
-
-		self.boostSpeed = self.boostSpeed + args.dt
-		boost(direction)
+		local direction = {((args.moves["right"] and 1) or 0) + ((args.moves["left"] and -1) or 0),((args.moves["up"] and 1) or 0) + ((args.moves["down"] and -1) or 0)} -- set default
+		self.boostSpeed = math.min(self.boostSpeed + args.dt,55) -- prevent super-rapid movement
+		self.boostVelocity = vec2.mul(vec2.norm(direction), self.boostSpeed)
 		mcontroller.controlApproachVelocity(self.boostVelocity, 30)
 		-- end boost
 
 		-- stamina cost for flight, based on current speed / 100, plus a modifier value
-		self.fuelCostLesser = ((self.boostSpeed/100) + 0.01) - (self.bonusFlightTime or 0)
-		self.fuelCostGreater = ((self.boostSpeed/100)	+ 0.05) - (self.bonusFlightTime or 0)
-		self.fuelCostExhausted = ((self.boostSpeed/100)	+ 0.55) - (self.bonusFlightTime or 0)
-
-		if self.fuelTimer < 0 then self.fuelTimer = 0 end
+		local useExhausted,useGreater,useLesser
 		if self.fuelTimer > 0 then
-			self.fuelTimer = self.fuelTimer - 1
-			status.overConsumeResource("energy", self.fuelCostGreater)
-			if self.runVal and not self.downVal and not self.leftVal and not self.rightVal and not self.upVal then
-				status.setPersistentEffects("glide", {
-					--{stat = "gliding", amount = 1},
-					{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}
-				})
-			else
-				status.setPersistentEffects("glide", {
-					--{stat = "gliding", amount = 0},
-					{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}
-				})
+			if (args.moves["down"]) or (args.moves["left"]) or (args.moves["right"]) or (args.moves["up"]) then
+				useLesser=true
 			end
 		else
-			if self.runVal and not self.downVal and not self.leftVal and not self.rightVal and not self.upVal then
-				status.overConsumeResource("energy", self.fuelCostLesser)
-				status.setPersistentEffects("glide", {
-					{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}
-				})
+			if (args.moves["down"]) or (args.moves["left"]) or (args.moves["right"]) or (args.moves["up"]) then
+				useExhausted=true
 			else
-				status.overConsumeResource("energy", self.fuelCostExhausted)
-				status.setPersistentEffects("glide", {
-					{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}
-				})
+				useGreater=true
 			end
-
 		end
+		status.setPersistentEffects("glide", {{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}})
+		local fuelCost = (((self.boostSpeed/100)*((((direction[1]~=0) or (direction[2]>0)) and 1) or ((direction[2]<0) and -1) or 0)) + ((useGreater and 0.05) or (useLesser and 0.01) or (useExhausted and 0.55) or 0)) - (self.bonusFlightTime or 0)
+		if fuelCost>0 then
+			status.overConsumeResource("energy",fuelCost)
+		elseif fuelCost<0 then
+			status.modifyResource("energy",-1*fuelCost)
+		end
+		handleFuel(-1*args.dt)
 		checkForceDeactivate(args.dt) -- force deactivation
 	else
-		checkFood()
-		self.fuelTimer = self.fuelTimer + 1 -- when not active, the stamina to fly regenerates.
+		handleEffects(false)
+		handleFuel(args.dt)
 	end
 end
 
@@ -177,10 +135,7 @@ end
 
 function deactivate()
 	if self.active then
-		status.clearPersistentEffects("glide")
-		animator.setParticleEmitterActive("feathers", false)
-		self.boostSpeed = 8
-		status.removeEphemeralEffect("lowgravflighttech")
+		handleEffects(false)
 		status.addEphemeralEffects{{effect = "nofalldamage", duration = 2}}
 	end
 	self.active = false

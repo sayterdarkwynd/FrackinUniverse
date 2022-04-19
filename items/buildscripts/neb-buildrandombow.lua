@@ -15,39 +15,6 @@ function build(directory, config, parameters, level, seed)
 		end
 	end
 
-	local function split(str, pat)
-		local t = {}	-- NOTE: use {n = 0} in Lua-5.0
-		local fpat = "(.-)" .. pat
-		local last_end = 1
-		local s, e, cap = str:find(fpat, 1)
-		while s do
-			if s ~= 1 or cap ~= "" then
-				 table.insert(t, cap)
-			end
-			last_end = e+1
-			s, e, cap = str:find(fpat, last_end)
-		end
-		if last_end <= #str then
-			cap = str:sub(last_end)
-			table.insert(t, cap)
-		end
-		return t
-	end
-
-	local configParameterDeep = function(keyName, defaultValue)
-		local sets=split(keyName,"%.")
-		local mergedBuffer=util.mergeTable(copy(config),copy(parameters))
-		for _,v in pairs(sets) do
-			if mergedBuffer[v] then
-				mergedBuffer=mergedBuffer[v]
-			else
-				mergedBuffer=defaultValue
-				break
-			end
-		end
-		return mergedBuffer
-	end
-
 	if level and not configParameter("fixedLevel", true) then
 		parameters.level = level
 	end
@@ -73,9 +40,6 @@ function build(directory, config, parameters, level, seed)
 	--Select, load and merge abilities
 	setupAbility(config, parameters, "alt", builderConfig, seed)
 	setupAbility(config, parameters, "primary", builderConfig, seed)
-
-	local primaryAbility=configParameterDeep("primaryAbility")
-	local altAbility=configParameterDeep("altAbility")
 
 	--Elemental type
 	if not parameters.elementalType and builderConfig.elementalType then
@@ -239,7 +203,6 @@ function build(directory, config, parameters, level, seed)
 	if builderConfig.gunParts then
 		construct(config, "animationCustom", "animatedParts", "parts")
 		local imageOffset = {0,0}
-		local gunPartOffset = {0,0}
 		for _,part in ipairs(builderConfig.gunParts) do
 			local imageSize = root.imageSize(config.animationParts[part])
 			construct(config.animationCustom.animatedParts.parts, part, "properties")

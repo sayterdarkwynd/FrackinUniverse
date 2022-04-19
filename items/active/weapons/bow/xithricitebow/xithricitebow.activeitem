@@ -6,7 +6,7 @@
   "rarity" : "Legendary",
   "tooltipKind" : "bow2",
   "category" : "bow",
-  "description" : "Interdimensional Hunting",
+  "description" : "Interdimensional Hunting.",
   "shortdescription" : "Xithricite Bow",
   "twoHanded" : true,
   "itemTags" : ["weapon", "ranged", "bow","upgradeableWeapon","xithricite"],
@@ -21,7 +21,7 @@
     "bowFullbright" : "xithricitebowfullbright.png"
   },
   "animationCustom" : {
-    "animatedParts" : { 
+    "animatedParts" : {
       "parts" : {
         "bow" : { "properties" : {"offset" : [0, 0]}},
         "bowFullbright" : { "properties" : { "offset" : [0, 0]}}
@@ -35,15 +35,15 @@
   },
   "elementalType" : "cosmic",
   "scripts" : ["/items/active/weapons/bow/bow.lua"],
-  "collectablesOnPickup" : { "fu_weaponbow" : "xithricitebow" },
+  //"collectablesOnPickup" : { "fu_weaponbow" : "xithricitebow" },
   "primaryAbilityType" : "rngbows_enhancedbowshot",
-  "primaryAbility" : { 
+  "primaryAbility" : {
     "drawTime" : 1.1,				//Time to fully draw the bow
 	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
 	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
-	"energyPerShot" : 36,			
-	"holdEnergyUsage" : 8,				
-	"airborneBonus" : 1.25,	
+	"energyPerShot" : 36,
+	"holdEnergyUsage" : 8,
+	"airborneBonus" : 1.25,
     "projectileType" : "cosmicarrow",
     "powerProjectileType" : "chargedcosmicarrow",
     "projectileParameters" : {

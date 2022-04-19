@@ -1,0 +1,27 @@
+{
+	"text": "Mew. Need help. See Kevin? New copy from terminal. Nobody noticed lack of corpse yet. Have temporo-spatial beacons to universe where he went, don't ask how. Help find traces, find what happened.\n^red;This begins the optional, tier 10, hard mode for Frackin Universe and Vanilla dungeons. It is designed to be a form of challenge for those who have reached the heights of what FU offers.^reset;",
+	"completionText": "You gonna help mew? YAY! Can provide more beacons for shiny, if you can't manage first try.",
+	"title": "Khe's Quest",
+	"id": "fu_t10_initial",
+	"updateDelta": 10,
+	"script": "/quests/scripts/main.lua",
+	"prerequisites": ["kevin_feedkhe","destroyruin","cultist_mission1","precursor_unlock","shoggoth_defeat"],
+	"moneyRange": [0, 0],
+	"scriptConfig": {
+		"requireTurnIn" : true,
+		"portraits": {
+			"questComplete": "questReceiver",
+			"questStarted": "questReceiver"
+		},
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "money",
+				"count" : 1000,
+				"consume" : true,
+				"description" : "Bring ^orange;<itemName>^reset;: ^green;<current> / <required>^reset;"
+			}
+		]
+	},
+	"rewards" : [ [ [ "fu_t10_gaterepairbeacon", 1 ] ] ]
+}

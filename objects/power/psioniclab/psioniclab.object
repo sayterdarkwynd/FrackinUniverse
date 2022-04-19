@@ -9,8 +9,8 @@
 
   "price" : 450,
   "inventoryIcon" : "psioniclabicon.png",
-  "description" : "Generates nascent psionic energy with a little help from some brains. Requires 100J per extraction.",
-  "shortdescription" : "^cyan;Psionic Amplifier^white;",
+  "description" : "Generates nascent psionic energy with a little help from some brains. ^cyan;Requires ^orange;100J^cyan; per extraction.^reset;",
+  "shortdescription" : "^cyan;Psionic Amplifier^reset;",
   "orientations" : [
      {
       "imageLayers" : [ { "image" : "psioniclab.png:<color>.<frame>", "fullbright" : true }, { "image" : "psioniclablit.png:<color>.<frame>" } ],
@@ -45,14 +45,14 @@
   "animationParts" : {
     "samplingarrayanim" : "psioniclab.png"
   },
-  
+
   "powertype" : "input",
   "isn_requiredPower" : 100,
   "isn_liquidCollector" : false,
   "fu_mintick" : 0,
   "fu_stationTechLevel" : 3,
   "fu_timerMod" : 1,
-  
+
   "scripts" : [ "/scripts/fupower.lua", "/objects/generic/extractionlab_madness.lua",
                 "/scripts/npcToyObject.lua" ],
   "scriptDelta" : 30,

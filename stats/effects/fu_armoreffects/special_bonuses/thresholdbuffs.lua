@@ -6,7 +6,7 @@ end
 
 function update(dt)
 	local buffer={}
-	for effect,data in pairs(buffList) do
+	for _,data in pairs(buffList) do
 		local comparator
 		if data.comparatorType=="stat" and data.comparator then
 			comparator=status.stat(data.comparator)

@@ -3,7 +3,7 @@
   "colonyTags" : ["telebrium", "light"],
   "rarity" : "uncommon",
   "category" : "light",
-  "lightColor" : [34, 255, 183], 
+  "lightColor" : [34, 255, 183],
   "price" : 300,
   "description" : "A wall mounted lamp made from Telebrium.",
   "shortdescription" : "Telebrium Wall Lamp",
@@ -21,27 +21,12 @@
   "orientations" : [
     {
       "image" : "telebriumwalllamp.png:<color>.<frame>",
-      "imagePosition" : [-8, 0],
+      "imagePosition" : [0, 0],
       "animationParts" : {
         "bg" : "telebriumwalllamp.png",
         "fg" : "telebriumwalllamplit.png"
       },
-      "animationPosition" : [-8, 0],
-
-      "direction" : "left",
-      "flipImages" : true,
-
-      "spaceScan" : 0.1,
-      "anchors" : [ "background" ]
-    },
-    {
-      "image" : "telebriumwalllamp.png:<color>.<frame>",
-      "imagePosition" : [-8, 0],
-      "animationParts" : {
-        "bg" : "telebriumwalllamp.png",
-        "fg" : "telebriumwalllamplit.png"
-      },
-      "animationPosition" : [-8, 0],
+      "animationPosition" : [0, 0],
 
       "direction" : "right",
 
@@ -49,7 +34,7 @@
       "anchors" : [ "background" ]
     }
   ],
-  
+
   "animation" : "/objects/wired/light/lighttoggle.animation",
   "animationParts" : {
     "light" : "telebriumwalllamp.png"
@@ -58,9 +43,9 @@
 
   "scripts" : [ "/objects/wired/light/light.lua" ],
   "scriptDelta" : 60,
-  
+
   "interactive" : true,
 
   "inputNodes" : [ [0, 0] ]
-  
+
 }

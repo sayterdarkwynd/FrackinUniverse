@@ -101,7 +101,7 @@ end
 
 function uninit()
 getSkinColorOnce = 0
-  for i, projectile in ipairs(storage.activeProjectiles) do
+  for _, projectile in ipairs(storage.activeProjectiles) do
     world.callScriptedEntity(projectile, "setTarget", nil)
   end
 end
@@ -132,7 +132,7 @@ end
 
 function updateProjectiles()
   local newProjectiles = {}
-  for i, projectile in ipairs(storage.activeProjectiles) do
+  for _, projectile in ipairs(storage.activeProjectiles) do
     if world.entityExists(projectile) then
       newProjectiles[#newProjectiles + 1] = projectile
     end
@@ -144,7 +144,7 @@ function triggerProjectiles()
   if #storage.activeProjectiles > 0 then
     animator.playSound("trigger")
   end
-  for i, projectile in ipairs(storage.activeProjectiles) do
+  for _, projectile in ipairs(storage.activeProjectiles) do
     world.callScriptedEntity(projectile, "trigger")
   end
 end

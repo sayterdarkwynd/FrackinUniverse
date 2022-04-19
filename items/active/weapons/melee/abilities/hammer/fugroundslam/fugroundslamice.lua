@@ -38,10 +38,8 @@ function GroundSlam:windup()
 end
 
 function GroundSlam:slam()
-	local preSlamPosition = self:slamPosition()
 	self.weapon:setStance(self.stances.slam)
 	self.weapon:updateAim()
-	local postSlamPosition = self:slamPosition()
 
 	if animator.hasSound("groundSlamFall") then
 		animator.playSound("groundSlamFall")

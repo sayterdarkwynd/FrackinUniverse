@@ -1,54 +1,53 @@
 {
-  "name" : "radioactiveweathernew",
-  "blockingStat" : "",
+	"name" : "radioactiveweathernew",
 
-  "effectConfig" : {
-    "resistanceTypes" : {
-      "radioactiveResistance" : 1.0
-    },
-    "resistanceThreshold" : 0.2,
-    "immunityStats" : [
-      "biomeradiationImmunity",
-      "ffextremeradiationImmunity"
-    ],
+	"effectConfig" : {
+		"resistanceTypes" : {
+			"radioactiveResistance" : 1.0
+		},
+		"resistanceThreshold" : 0.2,
+		"immunityStats" : [
+			"biomeradiationImmunity",
+			"ffextremeradiationImmunity"
+		],
 
-    "healthDrain" : 2,
-    "hungerDrain" : 0,
-    "energyDrain" : 0,
-    "speedPenalty" : 0,
-    "jumpPenalty" : 0,
+		"healthDrain" : 2,
+		"hungerDrain" : 0,
+		"energyDrain" : 0,
+		"speedPenalty" : 0,
+		"jumpPenalty" : 0,
 
-    "debuffRate" : 5,
-    "debuffStartDelay" : 0,
-    "debuffs" : {
-      "maxHealth" : {
-        "amount" : -3.0
-      },
-      "maxEnergy" : {
-        "amount" : -3.0,
-        "cap" : -1
-      }
-    },
+		"debuffRate" : 5,
+		"debuffStartDelay" : 0,
+		"debuffs" : {
+			"maxHealth" : {
+				"amount" : -3.0
+			},
+			"maxEnergy" : {
+				"amount" : -3.0,
+				"cap" : -1
+			}
+		},
 
-    "modifiers" : {
-      "windy" : 1.2
-    },
+		"modifiers" : {
+			"windy" : 1.2
+		},
 
-    "messages" : {
-      "intro" : "biomeradiation",
-      "windy" : "ffbiomeradiationwind"
-    },
+		"messages" : {
+			"intro" : "biomeradiation",
+			"windy" : "ffbiomeradiationwind"
+		},
 
-    "configPath" : "/stats/effects/fu_weathereffects/new/radiation/radioactiveweathernew.statuseffect"
-  },
-  "defaultDuration" : 20,
+		"configPath" : "/stats/effects/fu_weathereffects/new/radiation/radioactiveweathernew.statuseffect"
+	},
+	"defaultDuration" : 20,
 
-  "scripts" : [
-    "radioactiveweathernew.lua"
-  ],
+	"scripts" : [
+		"radioactiveweathernew.lua"
+	],
 
-  "animationConfig" : "radioactiveweathernew.animation",
-  
-  "label" : "Severe Radiation",
-  "icon" : "/interface/statuses/radiation1.png"
+	"animationConfig" : "radioactiveweathernew.animation",
+
+	"label" : "Mild Radiation (Resist: ^#83bb1d;Radioactive^reset;)",
+	"icon" : "/interface/statuses/radiation1.png"
 }

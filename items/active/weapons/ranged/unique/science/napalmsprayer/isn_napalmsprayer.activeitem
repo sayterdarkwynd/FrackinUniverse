@@ -3,11 +3,11 @@
   "price" : 500,
   "inventoryIcon" : "isn_napalmsprayer.png",
     "maxStack" : 1,
-    "rarity" : "rare",
+    "rarity" : "uncommon",
   "description" : "Huge gouts of dangerous napalm. Keep away from children.
 ^yellow;Inflicts burning^reset;",
   "shortdescription" : "Scorchburst",
-  "level" : 4,
+  "level" : 3,
   "category" : "flamethrower",
   "itemTags" : ["weapon","ranged","flamethrower", "upgradeableWeapon"],
   "tooltipKind" : "gun2",
@@ -18,10 +18,10 @@
     "middle" : "isn_napalmsprayer.png",
     "barrel" : "",
     "muzzleFlash" : ""
-  },      
+  },
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/weapons/firearrow.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }  
+    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }
   },
 
   "baseOffset" : [1.4, 0.34],
@@ -43,28 +43,28 @@
     "projectileType" : "isn_napalmsprayer",
     "projectileParameters" : {
       "speed" : 52,
-		    "actionOnReap" : [
-			  { "action" : "liquid", "liquid" : "fuironliquid", "quantity" : 0.2 },
-			    {
-			      "action" : "config",
-			      "file" : "/projectiles/explosions/burstexplosion/fireburstexplosion.config"
-			    }			  
-		    ] ,      
-	  "periodicActions":[ 
-		  {
-		  "time":0.01, 
-		  "action":"projectile", 
-		  "type":"firelasershot3", 
-		  "config":{
-		    "speed":0, 
-		    "physics" : "laser",
-		    "bounces" :-1,
-		    "timeToLive":0.4, 
-		    "power":1, 
-		    "knockback":0
-		    }
-		  }	  
-	  ]	  
+        "actionOnReap" : [
+        { "action" : "liquid", "liquid" : "fuironliquid", "quantity" : 0.2 },
+          {
+            "action" : "config",
+            "file" : "/projectiles/explosions/burstexplosion/fireburstexplosion.config"
+          }
+        ] ,
+    "periodicActions":[
+      {
+      "time":0.01,
+      "action":"projectile",
+      "type":"firelasershot3",
+      "config":{
+        "speed":0,
+        "physics" : "laser",
+        "bounces" :-1,
+        "timeToLive":0.4,
+        "power":1,
+        "knockback":0
+        }
+      }
+    ]
     },
     "stances" : {
       "idle" : {

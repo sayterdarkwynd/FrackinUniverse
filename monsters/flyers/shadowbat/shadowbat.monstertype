@@ -2,16 +2,16 @@
   "type" : "shadowbat",
   "shortdescription" : "Vorp",
   "description" : "A strange creature composed of pulsing sacks of shadowy material.",
-  
+
   "reversed" : true,
   "categories" : [ "shadowbat" ],
   "parts" : [ "body" ],
 
   "animation" : "shadowbat.animation",
 
-  "dropPools" : [ 
-    { 
-      "default" : "batongTreasure", 
+  "dropPools" : [
+    {
+      "default" : "batongTreasure",
       "bow" : "batongHunting",
       "firebow" : "batongHunting",
       "icebow" : "batongHunting",
@@ -20,7 +20,7 @@
       "cosmicbow" : "batongHunting",
       "radioactivebow" : "batongHunting",
       "shadowbow" : "batongHunting"
-    } 
+    }
   ],
 
   "baseParameters" : {
@@ -44,9 +44,9 @@
 
       "fleeActions" : [ ],
 
-      "hostileActions" : [ 
+      "hostileActions" : [
         {
-          "name" : "action-swoop", 
+          "name" : "action-swoop",
           "cooldown" : 4,
           "parameters" : {
             "minimumRange" : 0,
@@ -67,7 +67,7 @@
             "winddownState" : "fly",
             "winddownStopForce" : 10
           }
-        }     
+        }
       ],
 
       "periodicActions" : [
@@ -78,7 +78,7 @@
           "projectileType" : "shadowelementcloud2",
           "power" : 5
          }
-        }           
+        }
       ],
 
       "approachActions" : [
@@ -87,7 +87,7 @@
           "cooldown" : 1.5,
           "parameters" : {
             "approachAngle" : 30,
-            "usePathfinding" : false,            
+            "usePathfinding" : false,
             "wanderTime" : [2,4],
             "groundDistance" : 8,
             "ceilingDistance" : 8,
@@ -103,7 +103,7 @@
             "maxRange" : 12,
             "targetOffset" : [0,4]
           }
-        }             
+        }
       ],
 
       "followActions" : [
@@ -129,7 +129,7 @@
           }
         }
       ],
-      
+
       "damageTakenActions" : [
         {
          "name":"action-projectile",
@@ -138,9 +138,9 @@
           "projectileType" : "shadowfireboom",
           "power" : 5
          }
-        } 
+        }
       ],
-      
+
       "concurrentActions" : [ ],
 
       "concurrentHostileActions" : [
@@ -166,7 +166,7 @@
             "winddownState" : "",
             "winddownTime" : 0.1
           }
-        } 
+        }
        ]
     },
 
@@ -243,28 +243,28 @@
         },
         "poisonResistance" : {
           "baseValue" : 1
-        }, 
+        },
         "shadowResistance" : {
           "baseValue" : 1
         },
         "cosmicResistance" : {
           "baseValue" : 0.6
-        },  
+        },
         "fireResistance" : {
           "baseValue" : -0.5
-        },          
+        },
         "iceResistance" : {
           "baseValue" : 0.5
-        },          
+        },
         "insanityImmunity" : {
           "baseValue" : 1.0
-        },            
+        },
         "radioactiveResistance" : {
           "baseValue" : 0.7
         },
-        "shadowImmunity" : { 
+        "shadowImmunity" : {
           "baseValue" : 1
-        }                        
+        }
       },
 
       "resources" : {
@@ -284,7 +284,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "shadowbat" }
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "shadowbat" }
   }
 }

@@ -53,7 +53,6 @@ function populateList()
 	end
 	table.sort(petArray)
 	local currentPet = world.getObjectParameter(containerId, "shipPetType")
-	local currentPetListItem
 	for _, pet in ipairs (petArray) do
 		local listItem = "petList.petList." .. widget.addListItem("petList.petList")
 		widget.setText(listItem .. ".name", pet)

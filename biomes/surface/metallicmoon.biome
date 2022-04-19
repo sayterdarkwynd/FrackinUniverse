@@ -6,18 +6,18 @@
     "groups" : [
       {
         "select" : 4,
-        "pool" : [ 
-          [ 0.1, "scandroid" ],   
-          [ 0.03, "fuchiropterror" ], 
-          [ 0.1, "triplod" ],  
+        "pool" : [
+          [ 0.1, "scandroid" ],
+          [ 0.03, "fuchiropterror" ],
+          [ 0.1, "triplod" ],
           [ 0.03, "nanoswarm" ],
-          [ 0.1, "fumechspider" ],   
+          [ 0.1, "fumechspider" ],
           [ 0.03, "minidrone" ],
-          [ 0.1, "fuglitchspider" ], 
+          [ 0.1, "fuglitchspider" ],
           [ 0.1, "fuomnicannon" ],
-          [ 0.1, "fuomnicannon2" ],       
+          [ 0.1, "fuomnicannon2" ],
           [ 0.1, "cleaningbot" ],
-          [ 0.1, "repairbot"], 
+          [ 0.1, "repairbot"],
           [ 0.01, "fatalcircuit" ],
           [ 0.1, "fumechspiderultra" ]
         ]
@@ -42,7 +42,7 @@
             },
             "fireStatusImmunity" : {
               "baseValue" : 1.0
-            },            
+            },
             "ffextremeheatImmunity" : {
               "baseValue" : 1.0
             }
@@ -50,9 +50,9 @@
       }
     }
   },
-  
-  
-  "statusEffects" : [ ],
+
+
+  "statusEffects" : [ "biomeairless" ],
   "airless" : true,
   "breathable" : false,
 
@@ -394,10 +394,10 @@
       "dayLightColor" : [45, 100, 55],
       "eveningLightColor" : [25, 50, 30],
       "nightLightColor" : [0, 12, 0]
-    }    
+    }
   ],
-  
-  
+
+
   "mainBlock" : "steelsand",
   "subBlocks" : [ "rustyblock", "steelstone", "rustymetal" ],
   "ores" : "ff_metalmoonOres",
@@ -415,10 +415,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/Expiation.ogg","/music/Temporis.ogg","/music/vangelis.ogg","/music/cybersphere_industrial.ogg","/music/explorationfanfare.ogg","/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
+      "tracks" : [ "/music/Expiation.ogg","/music/Temporis.ogg","/music/vangelis.ogg","/music/cybersphere_industrial.ogg","/music/explorationfanfare.ogg","/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/Nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/Expiation.ogg","/music/vangelis.ogg","/music/cybersphere_industrial.ogg","/music/ambient_dark.ogg","/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
+      "tracks" : [ "/music/Expiation.ogg","/music/vangelis.ogg","/music/cybersphere_industrial.ogg","/music/ambient_dark.ogg","/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/Nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
     }
   },
 
@@ -431,16 +431,16 @@
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [   
+                 "pool" : [
               [0.50, "groundspike1" ],
               [0.50, "groundspike2" ],
               [0.50, "groundspike3" ],
               [0.50, "groundspike4" ],
-              [0.50, "copperrock" ], 
+              [0.50, "copperrock" ],
               [0.50, "copperrocksmall" ],
               [0.50, "silverrock" ],
               [0.50, "silverrocksmall" ],
@@ -461,7 +461,7 @@
 
           "type" : "microdungeon",
           "microdungeons" : [ "fu_dae_microdungeons", "metallicmini", "junkmini", "steamspringmicrodungeons", "alienmicrodungeons", "fulabs", "corrupt" ]
-        },    
+        },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -470,7 +470,7 @@
 
           "type" : "microdungeon",
           "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none", "ice" ]
-        },      
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -584,16 +584,16 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "wilddiodiaseed" ],
               [0.35, "wildautomatoseed" ],
               [0.35, "wildcurrentcornseed" ]
-              
+
           ],
               "parameters" : { "startingStage" : 3 }
             }
           ]
-        },                
+        },
         {
           "mode" : "ceiling",
           "priority" : 1.0,
@@ -607,7 +607,7 @@
               "parameters" : { }
             }
           ]
-        },        
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -621,7 +621,7 @@
               "parameters" : { }
             }
           ]
-        }        
+        }
       ]
     },
     "undergroundPlaceables" : {
@@ -683,7 +683,7 @@
               "parameters" : { }
             }
           ]
-        },        
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -697,7 +697,7 @@
               "parameters" : { }
             }
           ]
-        }  
+        }
       ]
     }
 }

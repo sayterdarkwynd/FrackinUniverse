@@ -56,10 +56,16 @@ function init()
 	-- health effects
 	self.critChance = config.getParameter("critChance", 0)
 	self.critBonus = config.getParameter("critBonus", 0)
+	self.critDamage = config.getParameter("critDamage", 0)
 	self.shieldBonusShield = config.getParameter("shieldBonusShield", 0)	-- bonus shield HP
 	self.shieldBonusRegen = config.getParameter("shieldBonusRegen", 0)	-- bonus shield regen time
 	self.shieldHealthRegen = config.getParameter("shieldHealthRegen", 0)
+	shieldEnergyRegen = config.getParameter("shieldEnergyRegen",0)
+	shieldHealthBonus = 1.0+config.getParameter("shieldHealthBonus",0)
+	shieldEnergyBonus = 1.0+config.getParameter("shieldEnergyBonus",0)
+	shieldProtection = config.getParameter("shieldProtection",0)
 	shieldStamina = config.getParameter("shieldStamina",0)
+	shieldFalling = (1.0+config.getParameter("shieldFalling",0))
 	protectionBee = config.getParameter("protectionBee",0)
 	protectionAcid = config.getParameter("protectionAcid",0)
 	protectionBlackTar = config.getParameter("protectionBlackTar",0)
@@ -90,7 +96,7 @@ function init()
 	stunChance = config.getParameter("stunChance", 0)
 	shieldBash = config.getParameter("shieldBash",0)
 	shieldBashPush = config.getParameter("shieldBashPush",0)
- 	--shieldBonusApply()
+	--shieldBonusApply()
 	-- end FU special effects
 
 	animator.setGlobalTag("directives", "")
@@ -103,59 +109,48 @@ function init()
 	updateAim()
 end
 
-
-function shieldBonusApplyPartial()
-	status.setPersistentEffects("shieldEffects", {
- 		{stat = "maxHealth", amount = config.getParameter("shieldHealthBonus",0)*(status.resourceMax("health"))},
- 		{stat = "maxEnergy", amount = config.getParameter("shieldEnergyBonus",0)*(status.resourceMax("energy"))},
- 		{stat = "protection", amount = config.getParameter("shieldProtection",0)},
- 		{stat = "shieldStaminaRegen", amount = shieldStamina},
- 		{stat = "fallDamageMultiplier", amount = config.getParameter("shieldFalling",0)},
- 		{stat = "stunChance", amount =  stunChance},
- 		{stat = "shieldBash", amount =  shieldBash},
- 		{stat = "shieldBashPush", amount =  shieldBashPush},
- 		{stat = "critChance", amount =  self.critChance},
- 		{stat = "critChance", amount =  self.critBonus}
- 	})
-end
-
-function shieldBonusApply()
-	status.setPersistentEffects("shieldEffects", {
- 		{stat = "baseShieldHealth", amount = config.getParameter("shieldBonusShield", 0) },
- 		{stat = "energyRegenPercentageRate", amount = config.getParameter("shieldEnergyRegen",0)},
- 		{stat = "maxHealth", amount = config.getParameter("shieldHealthBonus",0)*(status.resourceMax("health"))},
- 		{stat = "maxEnergy", amount = config.getParameter("shieldEnergyBonus",0)*(status.resourceMax("energy"))},
- 		{stat = "protection", amount = config.getParameter("shieldProtection",0)},
- 		{stat = "shieldStaminaRegen", amount = shieldStamina},
- 		{stat = "fallDamageMultiplier", amount = config.getParameter("shieldFalling",0)},
- 		{stat = "beestingImmunity", amount = protectionBee},
- 		{stat = "sulphuricImmunity", amount = protectionAcid},
- 		{stat = "blacktarImmunity", amount = protectionBlackTar},
- 		{stat = "biooozeImmunity", amount = protectionBioooze},
- 		{stat = "poisonStatusImmunity", amount = protectionPoison},
- 		{stat = "insanityImmunity", amount = protectionInsanity},
- 		{stat = "shockStatusImmunity", amount = protectionShock},
- 		{stat = "slimeImmunity", amount = protectionSlime},
- 		{stat = "lavaImmunity", amount = protectionLava},
- 		{stat = "fireStatusImmunity", amount = protectionFire},
- 		{stat = "protoImmunity", amount = protectionProto},
- 		{stat = "sulphuricImmunity", amount = protectionAcid},
- 		{stat = "blacktarImmunity", amount = protectionBlackTar},
- 		{stat = "biooozeImmunity", amount = protectionBioooze},
- 		{stat = "poisonStatusImmunity", amount = protectionPoison},
- 		{stat = "insanityImmunity", amount = protectionInsanity},
- 		{stat = "electricStatusImmunity", amount = protectionShock},
- 		{stat = "slimeImmunity", amount = protectionSlime},
- 		{stat = "lavaImmunity", amount = protectionLava},
- 		{stat = "biomecoldImmunity", amount = protectionCold},
- 		{stat = "ffextremecoldImmunity", amount = protectionXCold},
- 		{stat = "biomeheatImmunity", amount = protectionHeat},
- 		{stat = "ffextremeheatImmunity", amount = protectionXHeat},
- 		{stat = "biomeradiationImmunity", amount = protectionRads},
- 		{stat = "ffextremeradiationImmunity", amount = protectionXRads},
- 		{stat = "shieldBash", amount = shieldBash},
- 		{stat = "shieldBashPush", amount = shieldBashPush}
- 	})
+function shieldBonusApply(raised)
+	local buffer={}
+	buffer[#buffer+1]={stat = "maxHealth", effectiveMultiplier = shieldHealthBonus}
+	buffer[#buffer+1]={stat = "stunChance", amount =  stunChance}
+	buffer[#buffer+1]={stat = "critBonus", amount =  self.critBonus}
+	buffer[#buffer+1]={stat = "critDamage", amount =  self.critDamage}
+	buffer[#buffer+1]={stat = "maxEnergy", effectiveMultiplier = shieldEnergyBonus}
+	buffer[#buffer+1]={stat = "protection", amount = shieldProtection}
+	buffer[#buffer+1]={stat = "fallDamageMultiplier", effectiveMultiplier = shieldFalling}
+	buffer[#buffer+1]={stat = "shieldStaminaRegen", amount = shieldStamina}
+	buffer[#buffer+1]={stat = "shieldBash", amount = shieldBash}
+	buffer[#buffer+1]={stat = "shieldBashPush", amount = shieldBashPush}
+	if raised then
+		buffer[#buffer+1]={stat = "baseShieldHealth", amount = self.shieldBonusShield }
+		buffer[#buffer+1]={stat = "energyRegenPercentageRate", amount = shieldEnergyRegen}
+		buffer[#buffer+1]={stat = "beestingImmunity", amount = protectionBee}
+		buffer[#buffer+1]={stat = "sulphuricImmunity", amount = protectionAcid}
+		buffer[#buffer+1]={stat = "blacktarImmunity", amount = protectionBlackTar}
+		buffer[#buffer+1]={stat = "biooozeImmunity", amount = protectionBioooze}
+		buffer[#buffer+1]={stat = "poisonStatusImmunity", amount = protectionPoison}
+		buffer[#buffer+1]={stat = "insanityImmunity", amount = protectionInsanity}
+		buffer[#buffer+1]={stat = "shockStatusImmunity", amount = protectionShock}
+		buffer[#buffer+1]={stat = "slimeImmunity", amount = protectionSlime}
+		buffer[#buffer+1]={stat = "lavaImmunity", amount = protectionLava}
+		buffer[#buffer+1]={stat = "fireStatusImmunity", amount = protectionFire}
+		buffer[#buffer+1]={stat = "protoImmunity", amount = protectionProto}
+		buffer[#buffer+1]={stat = "sulphuricImmunity", amount = protectionAcid}
+		buffer[#buffer+1]={stat = "blacktarImmunity", amount = protectionBlackTar}
+		buffer[#buffer+1]={stat = "biooozeImmunity", amount = protectionBioooze}
+		buffer[#buffer+1]={stat = "poisonStatusImmunity", amount = protectionPoison}
+		buffer[#buffer+1]={stat = "insanityImmunity", amount = protectionInsanity}
+		buffer[#buffer+1]={stat = "electricStatusImmunity", amount = protectionShock}
+		buffer[#buffer+1]={stat = "slimeImmunity", amount = protectionSlime}
+		buffer[#buffer+1]={stat = "lavaImmunity", amount = protectionLava}
+		buffer[#buffer+1]={stat = "biomecoldImmunity", amount = protectionCold}
+		buffer[#buffer+1]={stat = "ffextremecoldImmunity", amount = protectionXCold}
+		buffer[#buffer+1]={stat = "biomeheatImmunity", amount = protectionHeat}
+		buffer[#buffer+1]={stat = "ffextremeheatImmunity", amount = protectionXHeat}
+		buffer[#buffer+1]={stat = "biomeradiationImmunity", amount = protectionRads}
+		buffer[#buffer+1]={stat = "ffextremeradiationImmunity", amount = protectionXRads}
+	end
+	status.setPersistentEffects("shieldEffects",buffer)
 end
 
 function isShield(name) -- detect if they have a shield equipped for racial tag checks
@@ -167,7 +162,7 @@ end
 
 function update(dt, fireMode, shiftHeld)
 
-    shieldBonusApplyPartial()
+    shieldBonusApply(self.active)
 
     if not self.species:succeeded() then init() end
     if self.helper then self.helper:runScripts("shield-update", self, dt, fireMode, shiftHeld) end
@@ -260,7 +255,7 @@ function raiseShield()
 	local shieldPoly = animator.partPoly("shield", "shieldPoly")
 	activeItem.setItemShieldPolys({shieldPoly})
 
-    shieldBonusApply()
+    shieldBonusApply(self.active)
 
 	if self.knockback > 0 then
         local knockbackDamageSource = {
@@ -281,7 +276,7 @@ function raiseShield()
     -- ******************** END RAISED SHIELD SPECIALS
 
 	self.damageListener = damageListener("damageTaken", function(notifications)
-    	for _,notification in pairs(notifications) do
+	for _,notification in pairs(notifications) do
             if notification.hitType == "ShieldHit" then
                 -- *** set up shield bash values *** --
                 self.randomBash = math.random(100) + config.getParameter("shieldBash",0) + status.stat("shieldBash")

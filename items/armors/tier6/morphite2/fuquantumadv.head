@@ -4,19 +4,19 @@
   "inventoryIcon" : "icons.png:head",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "^orange;Set Bonuses^reset;: 
-^yellow;^reset; ^cyan;Immune^reset;: Deadly Heat/Cold/Rads, Acid",
+  "rarity" : "rare",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; ^cyan;Immune^reset;: Extreme Heat/Cold/Rads, Acid",
   "shortdescription" : "Morphite Helm MK2",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "explorer" ],
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "level" : 6,
-  "collectablesOnPickup" : { "fu_armorpowerranged" : "fuquantumheadadv" },
+  "level" : 5,
+  //"collectablesOnPickup" : { "fu_armorpowerranged" : "fuquantumheadadv" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -80,6 +80,10 @@
     {
       "stat" : "fu_morphiteset2_head",
       "amount" : 1
+    },
+    {
+      "stat" : "fu_morphiteset_head",
+      "amount" : 1
     }
   ],
 
@@ -109,5 +113,5 @@
 
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

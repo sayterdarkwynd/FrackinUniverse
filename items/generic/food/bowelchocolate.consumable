@@ -1,0 +1,23 @@
+{
+	"itemName": "bowelchocolate",
+	"rarity": "uncommon",
+	"price": 45,
+	"category": "preparedFood",
+	"inventoryIcon": "bowelchocolate.png",
+	"description": "At least it's sweetened... \n^red;Poison^reset; (60s) ^green;HP^reset; Food Type: ^green;Eww...^reset;",
+	"shortdescription": "Bowel Chocolate",
+	"effects": [
+        ["meatc_plant_meal",
+			{"effect": "weakpoison",
+				"duration": 60
+			}
+        ]
+    ],
+	"foodValue": 15,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 0.20,
+	"blockingEffects": ["wellfed"]
+}

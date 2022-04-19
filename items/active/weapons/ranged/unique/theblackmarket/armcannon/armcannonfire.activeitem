@@ -6,7 +6,7 @@
     "rarity" : "rare",
   "description" : "Attaches to the forearm. Fires incendiary blasts.
 ^yellow;Counts as 'flamethrower' and 'machinepistol' for set bonuses^reset;",
-  "shortdescription" : "^orange;Arm Cannon (Fire)",
+  "shortdescription" : "^orange;Arm Cannon (Fire)^reset;",
   "level" : 3,
   "category" : "armcannon",
   "itemTags" : ["weapon","ranged","flamethrower", "upgradeableWeapon", "armcannon", "fire"],
@@ -18,10 +18,10 @@
     "middle" : "armcannonfire.png",
     "barrel" : "",
     "muzzleFlash" : ""
-  },      
+  },
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/gun/plasma_mp2.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }  
+    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }
   },
 
   "baseOffset" : [0.0, 0.34],
@@ -30,7 +30,7 @@
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "fire",
- // "learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ], 
+ // "learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ],
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",

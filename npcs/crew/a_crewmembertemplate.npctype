@@ -1,0 +1,125 @@
+{ //Make a copy of the "a_crewmembertemplate_blank.npctype" file and edit it for your crew.
+  "type" : "crewmembertemplate", //The ID of your crewmate.
+  "baseType" : "fu_crewmember", //Don't delete this! Either leave it as crewmember or set it to another (crew) npctype
+  //baseType is set to fu_crewmember by default in order to ignore the racial dialogue vanilla has. Feel free to set it to "crewmember" if you don't plan on doing unique dialogue.
+
+  //Custom crew protection, power and permanent effects. Delete or ignore if you don't plan on giving them any of these.
+  "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20}, {"stat" : "fallDamageMultiplier", "effectiveMultiplier" : 0} ],
+
+  "scriptConfig" : {
+    "crew" : {
+      "defaultUniform" : { //The uniform the crewmate will wear without a tailor. You can delete any of these, the Protectorate uniform is the default.
+        "head" : "duncecap",
+        "chest" : "protectoratechest",
+        "legs" : "protectoratepants",
+        "back" : "raggedprotectoratecape"
+      },
+
+      "role" : {
+        "type" : "soldier", //This is a fallback in case there's no 'name' field.
+        "name" : "Template Crewmate", //The player-facing name of the crewmate, e.g. "Researcher", "Agaran Sellsword" etc.
+        "field" : "Mod developer", //Used for the joke-y subtitles in the recruit offer and SAIL, can be the same as 'name'.
+
+        "uniformColorIndex" : 1, //The colour of their uniform. Can be deleted and their costumes will be un-dyed.
+
+        //Note that FU armour sometimes doesn't have alternate colours, or doesn't recolour as expected. Always test your crew.
+        //1: Black, 2: Grey, 3: White, 4: Red, 5: Orange, 6: Yellow, 7: Green, 8: Blue, 9: Purple, 10: Pink, 11: Brown
+
+        "benefits" : [ //The benefits the crewmember gives
+          {
+          //Ephemeral effects are applied when you beam down, and in combat when the crewmember is nearby. Think medics/chemists.
+            "type" : "EphemeralEffect",
+            "effect" : "glow",
+            "duration" : 1
+          },
+
+          {
+          //Ship benefits apply to your ship passively.
+            "type": "ShipUpgradeBenefit",
+            "property": "maxFuel",
+            "value": 1
+          }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "offer" : { //"I want to join your crew"
+          "default" : { //Crew will look for a field specific to their species, and otherwise use "default".
+            "default" : [ //If you want to have a harpooner speak to Hylotl players differently, set that here. Rarely used.
+              "Hey, let me join your crew."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Let Floran join your crew. Alsso, you can do ssspecies dialogue like thiss asss well."
+            ]
+          }
+        },
+        "roleDescription" : { //"This is my job description" - remember, players will have usually already seen the contract.
+          "default" : {
+            "default" : [
+              "I'm an unconfigured crewmate, ready for purpose. This is what I say when I'm recruited, so put flavour text here."
+            ]
+          }
+        },
+        "combatBenefit" : { //"Here, have some healing or a buff"
+          "default" : {
+            "default" : [
+              "This is what I say when I apply a mid-combat buff."
+            ]
+          }
+        },
+        "respawned" : { //"I'm alive!", "I was dead just now!"
+          "default" : {
+            "default" : [
+              "There I go dying again. Good thing I'm alive now!"
+            ]
+          }
+        },
+        "follow" : { //"I'll come with you on a mission/to the planet"
+          "default" : {
+            "default" : [
+              "Let's go jump in lava!"
+            ]
+          }
+        },
+        "unfollow" : { //"I'll wait here/on your ship, I guess"
+          "default" : {
+            "default" : [
+              "You want me to stay on the ship? Won't you get lonely?"
+            ]
+          }
+        },
+        "cantreach" : { //"I got stuck on scenery, send help"
+          "default" : {
+            "default" : [
+              "Help, I don't have double jump!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "movementParameters" : { //Overwrite this if you want them to run faster or slower (slow=unfun). Most crew don't need this changing (delete it).
+    "runSpeed" : 14.0
+  },
+
+  "items" : { // This field and everything in it is optional, delete any part you don't want. Note that crew will have no weapons without this.
+    "default" : [ //Values other than "default" let you assign racial weapons to the crewmate. Not commonly used in crew.
+      [0, [ //This is a world-tier parameter, ignore it because players are probably using contracts on their ship.
+          {
+            // Main hand. Can list as many options as you want (for all weapon slots).
+            "primary" : [ "aegisaltpistol3", "aegisaltpistol" ],
+            // Off hand. Make sure all primaries are compatible with all secondaries, delete if primary is 2h.
+            "secondary" : [ "pandorasboxprotectorateshield" ],
+
+            "sheathedprimary" : [ "aegisaltpistol3" ], // Main hand, secondary option. Very optional.
+            "sheathedsecondary" : [ "pandorasboxprotectorateshield" ] // Off hand, secondary option. Very optional.
+          }
+      ] ]
+    ]
+  }
+}

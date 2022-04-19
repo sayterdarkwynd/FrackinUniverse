@@ -17,10 +17,10 @@
     "middle" : "flaregun.png",
     "barrel" : "",
     "muzzleFlash" : ""
-  },      
+  },
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/gun/paintgun3.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }  
+    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }
   },
 
   "baseOffset" : [1.0, 0.34],
@@ -33,7 +33,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 1,
+    "fireTime" : 0.2,
     "baseDps" : 0.5,
     "energyUsage" : 20,
     "fireType" : "auto",
@@ -75,6 +75,9 @@
 
   "critChance" : 2,
   "critBonus" : 2,
+  "isAmmoBased" : 1,
+  "magazineSize" : 1,
+  "reloadTime" : 1,
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

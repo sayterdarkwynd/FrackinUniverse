@@ -21,65 +21,42 @@ function init()
 	stationType = ""
 	defaultMaxStack = 0
 
-	-- Find closest object and use it
-	-- There should only be one object in the stations world anyways
-	-- If theres another one close enough to interact with, but the first one is closer to the player
-	-- the ones that closer will be read.
-	-- So don't do that
-	local objects = {}
+	-- Maps objectName of supported station objects to their type.
+	local supportedObjects = {
+		spacestationguiconsole = "",
+		racialspacestationconsole = ""
+	}
+	for _, type in ipairs(stationData.stationTypes) do
+		supportedObjects["spacestationguiconsole_"..type] = type
+		supportedObjects["racialspacestationconsole_"..type] = type
+	end
+
+	-- Find closest object and use it.
+	-- There should only be one object in the stations world anyways,
+	-- but it's possible that the player is standing close to two stations.
+	local chosenObject, chosenType, shortestDistance
 	local playerPos = world.entityPosition(player.id())
 
-	local objectIDs = world.objectQuery(playerPos, 10, { order = "nearest", name = "spacestationguiconsole" })
-	for _, ID in ipairs(objectIDs) do
-		local distance = world.distance(world.entityPosition(player.id()), world.entityPosition(ID))
-		distance = math.sqrt(distance[1]^2 + distance[2]^2)
-		table.insert(objects, {ID, distance})
-		break
-	end
-
-	for _, type in ipairs(stationData.stationTypes) do
-		objectIDs = world.objectQuery(playerPos, 10, { order = "nearest", name = "spacestationguiconsole_"..type })
-		for _, ID in ipairs(objectIDs) do
-			local distance = world.distance(world.entityPosition(player.id()), world.entityPosition(ID))
+	for supportedObjectName, objectType in pairs(supportedObjects) do
+		local _, foundId = next(world.objectQuery(playerPos, 10, { order = "nearest", name = supportedObjectName }))
+		if foundId then
+			local distance = world.distance(playerPos, world.entityPosition(foundId))
 			distance = math.sqrt(distance[1]^2 + distance[2]^2)
-			table.insert(objects, {ID, distance, type})
-			break
+
+			if not shortestDistance or distance < shortestDistance then
+				shortestDistance = distance
+				chosenObject = foundId
+				chosenType = objectType
+			end
 		end
 	end
 
-	objectIDs = world.objectQuery(playerPos, 10, { order = "nearest", name = "racialspacestationconsole" })
-	for _, ID in ipairs(objectIDs) do
-		local distance = world.distance(world.entityPosition(player.id()), world.entityPosition(ID))
-		distance = math.sqrt(distance[1]^2 + distance[2]^2)
-		table.insert(objects, {ID, distance})
-		break
-	end
-
-	for _, type in ipairs(stationData.stationTypes) do
-		objectIDs = world.objectQuery(playerPos, 10, { order = "nearest", name = "racialspacestationconsole_"..type })
-		for _, ID in ipairs(objectIDs) do
-			local distance = world.distance(world.entityPosition(player.id()), world.entityPosition(ID))
-			distance = math.sqrt(distance[1]^2 + distance[2]^2)
-			table.insert(objects, {ID, distance, type})
-			break
-		end
-	end
-
-	local closest = objects[1]
-	for _, tbl in ipairs(objects) do
-		if tbl[2] < closest[2] then
-			closest = tbl
-		end
-	end
-
-	if closest and closest[1] then
-		objectID = closest[1]
+	if chosenObject then
+		objectID = chosenObject
 		objectData = world.sendEntityMessage(objectID, 'getStorage')
 		world.sendEntityMessage(objectID, 'setInteractable', false)
 
-		if closest[3] then
-			stationType = closest[3]
-		end
+		stationType = chosenType
 
 		widget.setText("text", "") -- Clear error message
 	else
@@ -152,7 +129,7 @@ function firstTimeInit()
 			end
 		end
 
-		for i = 1, tradesAvailable do
+		for _ = 1, tradesAvailable do
 			local tradeTbl = {}
 
 			local rnd = math.random()
@@ -163,7 +140,8 @@ function firstTimeInit()
 				rarity = "rare"
 			end
 
-			for _, tbl in pairs(available) do
+			for _, tbl in pairs(available) do -- luacheck: ignore 213/tbl
+				-- FIXME: detected by Luacheck: something is wrong here (loop checks the same thing 3 times).
 				if #available[rarity] < 1 then
 					if rarity == "rare" then
 						rarity = "uncommon"
@@ -259,7 +237,7 @@ function firstTimeInit()
 	end
 
 	-- Fill the stations trading goods stocks
-	for goods, tbl in pairs(stationData.goods) do
+	for _, tbl in pairs(stationData.goods) do
 		local stock = tbl.baseAmount
 
 		local stockStatus = 0 -- -1 = lacking, 0 = normal, 1 = abundance
@@ -906,8 +884,14 @@ function populateShopList()
 				price = price * (math.max(item.parameters.level * 0.5, 1))
 			end
 			price = calculateShopPrice(price, true,pricePcnt)
-
-			widget.setText(listItem..".name", item.parameters.shortdescription or "")
+			--sb.logInfo("itemData:%s",item)
+			local itemName=item.parameters.shortdescription
+			if not itemName then
+				local itemRoot=root.itemConfig(item)
+				--sb.logInfo("%s",itemRoot)
+				itemName=itemRoot.config.shortdescription or ""
+			end
+			widget.setText(listItem..".name", itemName)
 			widget.setItemSlotItem(listItem..".item", item)
 			widget.setText(listItem..".price", price)
 			widget.setData(listItem, { name = item.name, price = price, maxStack = 1, isWeapon = true })
@@ -917,7 +901,6 @@ function populateShopList()
 			local config = root.itemConfig(item)
 			if config then
 				local listItem = "shopScrollList.itemList."..widget.addListItem("shopScrollList.itemList")
-				local isWeapon = false
 				local basePrice = math.max(config.config.price or 1, 1)
 				local maxStack = config.config.maxStack or defaultMaxStack
 
@@ -1020,9 +1003,9 @@ function shopRestock()
 
 					local roll = math.random(1,100)
 					local tiers = stationData.shop.weaponLevelRates
-					for i = 1, #tiers do
-						if roll < tiers[#tiers - i + 1] then
-							level = i
+					for j = 1, #tiers do
+						if roll < tiers[#tiers - j + 1] then
+							level = j
 							break
 						end
 					end
@@ -1055,9 +1038,9 @@ function shopRestock()
 
 					local roll = math.random(1,100)
 					local tiers = stationData.shop.weaponLevelRates
-					for i = 1, #tiers do
-						if roll < tiers[#tiers - i + 1] then
-							level = i
+					for j = 1, #tiers do
+						if roll < tiers[#tiers - j + 1] then
+							level = j
 							break
 						end
 					end
@@ -1087,7 +1070,7 @@ function shopBuy()
 					local slot = widget.getListSelected("shopScrollList.itemList")
 					local item = widget.itemSlotItem("shopScrollList.itemList."..slot..".item")
 
-					for i = 1, amount do
+					for _ = 1, amount do
 						player.giveItem(item)
 					end
 				else
@@ -1105,7 +1088,6 @@ function shopIncrement()
 		local currentValue = string.gsub(widget.getText("shopBuyAmount"),"x","")
 		currentValue = tonumber(currentValue)
 		local value = currentValue
-		local price = 0
 
 		if value then
 			local affordable = math.min(math.floor(player.currency("money") / stationData.selected.price), stationData.selected.maxStack)
@@ -1154,7 +1136,7 @@ function shopItemSlot(wd)
 	local slotItem = widget.itemSlotItem(wd)
 	local cursorItem = player.swapSlotItem()
 
-	if cursorItem and slotItem and cursorItem.name == slotItem.name then
+	if cursorItem and slotItem and root.itemDescriptorsMatch(cursorItem, slotItem, true) then
 		local slotItemConfig = root.itemConfig(cursorItem.name)
 		local maxStack = slotItemConfig.config.maxStack
 		if not maxStack then maxStack = 1000 end
@@ -1228,7 +1210,7 @@ function calculateSellPrice()
 			local slotItem = widget.itemSlotItem("shopSellSlot"..row..column)
 			if slotItem then
 				local config = root.itemConfig(slotItem.name)
-				local itemPrice = config.config.price
+				local itemPrice = (slotItem.parameters and slotItem.parameters.price) or config.config.price
 				if itemPrice then
 					total = itemPrice * slotItem.count + total
 				end
@@ -1249,7 +1231,7 @@ function shopSell()
 			local slotItem = widget.itemSlotItem("shopSellSlot"..row..column)
 			if slotItem then
 				local config = root.itemConfig(slotItem.name)
-				local itemPrice = config.config.price
+				local itemPrice = (slotItem.parameters and slotItem.parameters.price) or config.config.price
 				if itemPrice then
 					money = itemPrice * slotItem.count + money
 				end
@@ -1463,7 +1445,7 @@ function simulateGoodTrades()
 		local trades = math.min(1000,math.abs(math.floor(timePassed / stationData.passiveTradeInterval)))
 		--sb.logInfo("spaceStation.lua:simulateGoodTrades()::timePassed:%s,trades:%s",timePassed,trades)
 		if trades > 0 then
-			for t = 1, trades do
+			for _ = 1, trades do
 				for goods, amount in pairs(objectData.goodsStock) do
 					-- Get index, and goods state
 					for i, tbl in ipairs(stationData.goods) do
@@ -1564,6 +1546,7 @@ end
 function populateScientificList()
 	if true then return false end
 
+	-- luacheck: push ignore 511
 	widget.clearListItems("scientificSpecialList.itemList")
 	scientificListIDs = {}
 
@@ -1607,6 +1590,7 @@ function populateScientificList()
 
 	checkScientificAvailability()
 	stationData.selected = nil
+	-- luacheck: pop
 end
 
 function checkScientificAvailability()
@@ -1783,19 +1767,19 @@ function invest()
 end
 
 function investMax()
-	objectData.specialsTable.investing = math.min(math.min(objectData.specialsTable.investRequired - objectData.specialsTable.invested, 99999), player.currency("money"))
+	objectData.specialsTable.investing = math.min(objectData.specialsTable.investRequired - objectData.specialsTable.invested, 99999, player.currency("money"))
 	widget.setText("investAmount", objectData.specialsTable.investing)
 end
 
 function investAmount(wd)
 	local value = tonumber(widget.getText(wd))
-	local max = objectData.specialsTable.investRequired - objectData.specialsTable.invested
+	local maxValue = objectData.specialsTable.investRequired - objectData.specialsTable.invested
 
 	if objectData.specialsTable.investLevel >= stationData.trading.investMaxLevel then
 		widget.setText(wd, "")
 	else
 		if value then
-			value = math.min(math.min(math.floor(value), max), player.currency("money"))
+			value = math.min(math.floor(value), maxValue, player.currency("money"))
 			if value == 0 then
 				widget.setText(wd, "")
 				objectData.specialsTable.investing = 0

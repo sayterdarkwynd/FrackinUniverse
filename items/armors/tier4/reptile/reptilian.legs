@@ -4,7 +4,7 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "^orange;Set Bonuses^reset;: 
+  "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; Damage/Health x^green;1.16^reset;
 ^yellow;^reset; Sword+Shield: +^green;10^reset;% Phys. Resist
 ^yellow;^reset; Axe/Shortspear + Shield: Damage x^green;1.25^reset;
@@ -16,7 +16,7 @@
   "femaleFrames" : "pants.png",
 
   "level" : 4,
-  "collectablesOnPickup" : { "fu_armorexplorer" : "reptilianlegs" },
+  //"collectablesOnPickup" : { "fu_armorexplorer" : "reptilianlegs" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -49,7 +49,7 @@
       "amount" : 0.04
     }
   ],
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "melee" ],
   "statusEffects" : [
     "reptilesetbonus",
     {
@@ -98,5 +98,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

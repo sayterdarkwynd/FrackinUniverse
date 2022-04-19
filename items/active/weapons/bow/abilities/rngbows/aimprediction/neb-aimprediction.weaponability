@@ -16,17 +16,17 @@
     }
   },
   "animationScripts" : [ "/items/active/effects/nebsenhancedentitymarker.lua" ],
-  
+
   "ability" : {
     "name" : "Dead Eye",
     "type" : "rngbows_aimprediction",
     "scripts" : ["/items/active/weapons/bow/abilities/rngbows/aimprediction/neb-aimprediction.lua"],
     "class" : "NebRNGAimBot",
-	
+
 	"fireOffset" : [0.75, 0],
 
     "targetQueryDistance" : 2,
-	
+
 	//Config for animated cursor
 	"cursorFrames" : [
 	  "/cursors/animated/rngbowsinvert/neb-rngbowaltreticle1.cursor",
@@ -37,24 +37,24 @@
 	  "/cursors/animated/rngbowsinvert/neb-rngbowaltreticle6.cursor",
 	  "/cursors/animated/rngbowsinvert/neb-rngbowaltreticle7.cursor"
 	],
-	
+
     "entityMarker" : {
       "markerImage" : "/items/active/weapons/bow/abilities/rngbows/aimprediction/targetoverlay.png",
       "fullbright" : true
     },
-	
+
     "drawTime" : [0.9, 1.6],				//Time to fully draw the bow
 		"powerProjectileTime" : [0.05, 0.1],	//After fully drawing, the bow is super-charged for this long
 		"energyPerShot" : [35, 45],			//Total energy consumption for a full draw
 		"holdEnergyUsage" : [4, 12],			//Energy consumption per second while fully drawn
 		"airborneBonus" : 1.35,			//A dmg multiplier for when airborne
-	
+
     "cooldownTime" : 0.67,			//Time between firing and drawing the next arrow
     "inaccuracy" : 0.0,				//Inaccuracy of the shot
-	
+
 		"walkWhileFiring" : true,		//If true, prevents the player from running while drawing the bow
 		"useQuiverDamageBonus" : true,	//If true, allows this bow to use quiver damage bonuses
-	
+
 		"drainEnergyWhilePowerful" : false,	//If true, consume energy while at max power
 		"staticDamageMultiplier" : null,	//If this value is set, arrow damage is independent of draw time and is instead multiplied by this value
 		"dynamicDamageMultiplier" : 1.1,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows

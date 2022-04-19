@@ -5,10 +5,10 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "A unique flavor of bioweapon that avoids violations of intergalactic law.
-^cyan;Targets cannot heal when hit.^reset;",
+^cyan;Targets cannot heal when hit^reset;",
   "shortdescription" : "Quietus Machinepistol",
   "tooltipKind" : "gun2",
-  "level" : 2,
+  "level" : 4,
   "category" : "machinePistol",
   "itemTags" : ["weapon","ranged","machinepistol","upgradeableWeapon","bioweapon","quietus"],
   "weaponType" : "machinepistol",
@@ -27,13 +27,13 @@
           { "particle" : "druidstaff", "offset" : [0.4, -0.4] }
         ]
       }
-    },    
-    "sounds" : { 
+    },
+    "sounds" : {
       "fire" : [ "/sfx/weapons/dkmarauder3.wav" ]
     },
-    "lights" : { "muzzleFlash" : {"color" : [140, 4, 4] } } 
+    "lights" : { "muzzleFlash" : {"color" : [140, 4, 4] } }
   },
-  
+
   "baseOffset" : [0.45, 0.14],
   "muzzleOffset" : [1.2, 0.5],
 
@@ -93,7 +93,7 @@
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 300,
-  "recoilForce" : 400,   
+  "recoilForce" : 400,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
-  
+
 }

@@ -1,6 +1,6 @@
 {
   "itemName" : "precursorpistolgrav",
-  "price" : 160,
+  "price" : 1600,
   "inventoryIcon" : "precursorpistolgrav.png",
   "maxStack" : 1,
   "rarity" : "rare",
@@ -31,7 +31,7 @@
 		  }
 		}
       }
-    },     
+    },
     "sounds" : {
       "fire" : [ "/sfx/gun/aegisaltpistol_stop.ogg" ]
     }
@@ -39,7 +39,7 @@
 
   "baseOffset" : [0.5, -0.1],
   "muzzleOffset" : [0.8, 0.125],
-  
+
   "scripts" : [ "/items/active/weapons/ranged/gun.lua" ],
 
   "elementalType" : "cosmic",
@@ -55,34 +55,34 @@
     "projectileCount":1,
 
     "projectileType" : "yellowglobeexplosion",
-	"projectileParameters":{ 
-		"periodicActions":[  
-			{  
+	"projectileParameters":{
+		"periodicActions":[
+			{
 			  "time":0.0,
 			  "action":"particle",
-			  "specification":{  
+			  "specification":{
 			    "type":"ember",
 			    "size":0.4,
-			    "light":[  
+			    "light":[
 			      204,
 			      204,
 			      0
 			    ],
-			    "color":[  
+			    "color":[
 			      204,
 			      204,
 			      0,
 			      190
 			    ],
-			    "initialVelocity":[  
+			    "initialVelocity":[
 			      0.0,
 			      -9.0
 			    ],
-			    "finalVelocity":[  
+			    "finalVelocity":[
 			      0.0,
 			      -3.0
 			    ],
-			    "approach":[  
+			    "approach":[
 			      0.0,
 			      -1.0
 			    ],
@@ -91,12 +91,12 @@
 			    "destructionAction":"shrink",
 			    "destructionTime":0.6,
 			    "layer":"front",
-			    "variance":{  
-			      "initialVelocity":[  
+			    "variance":{
+			      "initialVelocity":[
 				0.0,
 				0.0
 			      ],
-			      "position":[  
+			      "position":[
 				0.9,
 				0.9
 			      ],
@@ -106,11 +106,11 @@
 			}
 		      ],
 		      "processing":"?hueshift=?0",
-		      "damageTeam":{  
+		      "damageTeam":{
 			"type":"indiscriminate"
 		      },
 		      "damageKind":"hidden",
-		      "statusEffects":[  
+		      "statusEffects":[
 			{ "effect":"levitation","duration":0.3},
 			{ "effect":"shiprunboost","duration":0.3},
 			{ "effect":"jumpboostfood","duration":0.3},
@@ -126,7 +126,7 @@
 		      "power":0.0,
 		      "knockback":0,
 		      "actionOnReap":[]
-	},    
+	},
 	  "stances" : {
 	    "idle" : {
 	      "armRotation" : 0.2,
@@ -167,7 +167,7 @@
     },
 
   "critChance" : 4,
-  "critBonus" : 12, 
+  "critBonus" : 12,
 
     "builder" : "/items/buildscripts/buildunrandweapon.lua"
 

@@ -1,26 +1,26 @@
 {
-  "id" : "fuquest_farming4",
-  "title" : "Feeding Livestock",
-  "text" : "^green;Livestock^reset; grow a whole lot faster when you toss them some ^orange;Cattle Feed^reset; to munch on. Grind up ^orange;Corn^reset; in your ^orange;Hand Mill^reset; to get some. Then place it in a ^orange;Trough^reset; crafted from a ^orange;Foraging Table^reset;.",
-  "completionText" : "Animals do not produce resources unless they are fed and happy. Keeping them fed means lots of resources. The happier they are, the faster they will produce for you! Just feed them what they actually eat! Mooshi do not enjoy meat, and raptors hate carrots.",
-  "rewards" : [ [ [ "glass", 1 ], [ "ironore", 4 ]  ] ],
-  "moneyRange" : [10, 10],
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
-    "portraits" : {
-      "default" : "player"
-    },
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,  
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "cattlefeed",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
-  }
+	"id" : "fuquest_farming4",
+	"title" : "Feeding Livestock",
+	"text" : "^green;Livestock^reset; grow a whole lot faster when you toss them some ^orange;Cattle Feed^reset; to munch on. Grind up ^orange;Corn^reset; in your ^orange;Hand Mill^reset; to get some. Then place it in a ^orange;Trough^reset; crafted from a ^orange;Foraging Table^reset;.",
+	"completionText" : "Animals do not produce resources unless they are fed and happy. Keeping them fed means lots of resources. The happier they are, the faster they will produce for you! Just feed them what they actually eat! Mooshi do not enjoy meat, and raptors hate carrots.",
+	"rewards" : [ [ [ "glass", 1 ], [ "ironore", 4 ] ] ],
+	"moneyRange" : [10, 10],
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "player"
+		},
+
+		"requireTurnIn" : false,
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "cattlefeed",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
 }

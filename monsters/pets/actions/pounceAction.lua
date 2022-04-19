@@ -54,7 +54,7 @@ function pounceAction.update(dt, stateData)
     setMovementState(true)
     mcontroller.controlParameters({airFriction=0})
 
-    local toTarget = world.distance(targetPosition, mcontroller.position())
+    toTarget = world.distance(targetPosition, mcontroller.position())
     toTarget[2] = toTarget[2] + 1
     if toTarget[2] < 0 then
       mcontroller.controlDown()

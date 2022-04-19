@@ -8,7 +8,7 @@
   "race" : "generic",
   "category" : "furniture",
 //  "learnBlueprintsOnPickup" : [ "fu_fuelpurifiert4" ],
-  
+
   "inventoryIcon" : "fu_fuelpurifiericon3.png",
   "orientations" : [
     {
@@ -22,20 +22,38 @@
       "anchors" : [ "bottom" ]
     }
   ],
-  
+
   "animation" : "fu_fuelpurifiert3.animation",
   "animationParts" : {
     "centrifuge" : "fu_fuelpurifiert3.png",
     "centrifugefullbright" : "fu_fuelpurifiert3fullbright.png"
   },
 
-  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua" ],
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua", "/scripts/npcToyObject.lua" ],
   "scriptDelta" : 60,
   "stats" : {
     "fuelEfficiency" : 0.15
   },
   "maxAmountGroups" : {
     "fuelPurifier" : 4
-  },  
-  "byosOnly" : false
+  },
+  "byosOnly" : false,
+
+    "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "crouchwarm"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
 }

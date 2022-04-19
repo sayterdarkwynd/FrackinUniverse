@@ -21,9 +21,8 @@ function init(args)
 	if (storage.spaces == nil) then
 		storage.spaces = {}
 		local pos = entity.position()
-		local offset, backMaterial
 		for _, offset in ipairs(object.spaces()) do
-			backMaterial = world.material(vec2.add(pos, offset), "background")
+			local backMaterial = world.material(vec2.add(pos, offset), "background")
 			table.insert(storage.spaces, {offset, backMaterial})
 		end
 	end
@@ -38,6 +37,9 @@ function init(args)
 		storage.topEdge = 4
 		updateTargetRect()
 	end
+	if (storage.fieldActive == nil) then
+		setActive(false)
+	end
 	if (storage.dungeonId == nil) then
 		storage.dungeonId = claimDungeonId()
 	end
@@ -49,9 +51,6 @@ function init(args)
 	end
 	if (storage.applyGravity == nil) then
 		setGravity(nil, nil, false, storage.defaultGravity)
-	end
-	if (storage.fieldActive == nil) then
-		setActive(false)
 	end
 	setWired()
 	incDirty()
@@ -150,8 +149,21 @@ function propertyRecord()
 	return nil
 end
 
+-- check for a terrestrial world or valid instance world
+function checkWorldType()
+	local acceptableWorlds = {unknown=true,playerstation=true,asteroids=true}
+	if not (world.terrestrial() or acceptableWorlds[world.type()]) then
+		setStatus("Error: Invalid world type", "red")
+		return false
+	end
+	return true
+end
+
 -- find and claim an unused dungeonId within our 15k range
 function claimDungeonId()
+	if not checkWorldType() then
+		return -1
+	end
 	local firstId, lastId = LOWID, HIGHID
 	local record = propertyRecord()
 	for i = firstId, lastId do
@@ -230,6 +242,10 @@ end
 
 -- make sure the target area doesn't include any other generator fields
 function checkArea()
+	if not checkWorldType() then
+		incDirty()
+		return
+	end
 	if (storage.dungeonId == -1) then
 		setStatus("Error: No Suitable DungeonID", "red")
 		incDirty()
@@ -243,7 +259,7 @@ function checkArea()
 			if (dId >= LOWID) and (dId <= HIGHID) then
 				overlaps = overlaps + 1
 				if storage.debugMode then
-					table.insert("\n"..overlapList,tostring(dId) .. " @ " .. tostring(x) .. ", " .. tostring(y))
+					table.insert(overlapList,"\n"..tostring(dId) .. " @ " .. tostring(x) .. ", " .. tostring(y))
 				end
 			end
 			iterations = iterations + 1

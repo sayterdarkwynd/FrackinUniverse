@@ -1,0 +1,84 @@
+{
+  "itemName" : "ignuschilinpc",
+  "level" : 1,
+  "price" : 1,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "category" : "boomerang",
+  "description" : "throwing stars for NPCs.",
+  "shortdescription" : "Ingus Chili for NPCs",
+  "tooltipKind" : "boomerang",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","boomerang","upgradeableWeapon", "ranged", "bow"],
+
+  "inventoryIcon" : "/items/throwables/ignuschili.png",
+  "animation" : "fakethrowingitem.animation",
+  "animationParts" : {
+    "boomerang" : "/items/throwables/ignuschili.png"
+  },
+  "animationCustom" : { },
+  "scripts" : ["/items/active/weapons/boomerang/boomerang.lua"],
+  "fireOffset" : [1.25, 0.5],
+
+  "cooldownTime" : 2.4,
+  "edgeTrigger" : true,
+  "projectileType" : "ignus",
+  "projectileParameters" : {
+    "speed" : 45,
+    "power" : 9,
+    "level" : 2,
+    "knockback" : 0,
+
+    "ignoreTerrain" : false,
+    "controlForce" : 1,
+    "pickupDistance" : 1.0,
+    "snapDistance" : 20.0
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true,
+	  "aimAngle" : 0,
+      "weaponOffset" : [ -0.2, -0.6]
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transition" : "throw",
+      "transitionFunction" : "fire",
+      "armRotation" : -80,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false,
+      "weaponOffset" : [ -0.2, -0.6]
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+  "critChance" : 12,
+  "critBonus" : 2,
+
+  "builder" : "/items/buildscripts/buildboomerang.lua"
+}

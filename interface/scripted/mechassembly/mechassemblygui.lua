@@ -336,7 +336,6 @@ function updatePreview()
     energyDrain = (energyDrain * (1 + massMod)) * (self.fuelCost or 1)
 
     --check mobility boosts
-    local mobilityMax = self.mobilityBoostValue or 0
     local mobilityBoostMax = self.mobilityBoostValue or 0
     local mobilityControlMax = self.mobilityControlValue or 0
     local mobilityJumpMax = self.mobilityJumpValue or 0
@@ -356,7 +355,6 @@ function updatePreview()
     widget.setVisible("lblFuelBonus", true)
     widget.setText("lblDefenseBoost", string.format(self.defenseBoostFormat, math.floor(self.defenseModifier)))
     widget.setText("lblEnergyBoost", string.format(self.energyBoostFormat, math.floor(self.energyBoost)))
-    --widget.setText("lblMobility", string.format(self.mobilityFormat, math.floor(mobilityMax)).."%")
     widget.setText("lblMobilityBoost", string.format(self.mobilityBoostFormat, math.floor(mobilityBoostMax)).."%")
     widget.setText("lblMobilityControl", string.format(self.mobilityControlFormat, math.floor(mobilityControlMax)).."%")
     widget.setText("lblMobilityJump", string.format(self.mobilityJumpFormat, math.floor(mobilityJumpMax)).."%")

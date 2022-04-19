@@ -1,34 +1,33 @@
 {
-  "id" : "start_basics",
-  "prerequisites" : [ ],
-  "title" : "Homestead I",
-  "text" : "Hi there! I've not seen another new soul besides that ^green;slug-lookin' feller^reset; in a long time. If yer fixin' to escape this world, I kin help a bit, maybe. Bring me say...^orange;5 potatos^reset;, and we'll talk. A ^orange;Greenhouse^reset; might help you make some, in a pinch.",
-  "completionText" : "Thanks fer the tasty tots, friend. As a thanks, you can have this store of ^green;Iron Ore^reset; my grand-papa kept around when this place was still nice. T'aint worth a thing to me, but it'll sure be useful for you!",
-  "moneyRange" : [22, 33],
-  "rewards" : [ [ [ "ironore",20 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "start_basics",
+	"prerequisites" : [ ],
+	"title" : "Homestead I",
+	"text" : "Hi there! I've not seen another new soul besides that ^green;slug-lookin' feller^reset; in a long time. If yer fixin' to escape this world, I kin help a bit, maybe. Bring me say...^orange;5 potatoes^reset;, and we'll talk. A ^orange;Greenhouse^reset; might help you make some, in a pinch.",
+	"completionText" : "Thanks fer the tasty tots, friend. As a thanks, you can have this store of ^green;Iron Ore^reset; my grand-papa kept around when this place was still nice. T'aint worth a thing to me, but it'll sure be useful for you!",
+	"moneyRange" : [22, 33],
+	"rewards" : [ [ [ "ironore",20 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : true,  
+		"requireTurnIn" : true,
 
-    "turnInDescription" : "Gather or Grow ^orange;5 potatos^reset; and return to ^green;Welchie^reset;.",
+		"turnInDescription" : "Gather or Grow ^orange;5 potatoes^reset; and return to ^green;Welchie^reset;.",
 
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "potato",
-        "count" : 5,
-        "consume" : true
-      }
-    ]
-  }
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "potato",
+				"count" : 5,
+				"consume" : true
+			}
+		]
+	}
 }

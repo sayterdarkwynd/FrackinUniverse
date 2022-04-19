@@ -4,19 +4,19 @@
   "inventoryIcon" : "icons.png:head",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "^orange;Set Bonuses^reset;: 
+  "rarity" : "rare",
+  "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; ^cyan;Immune^reset;: Sulphuric Acid",
   "shortdescription" : "Morphite Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
- // "learnBlueprintsOnPickup" : [ "fuquantumheadadv" ], 
+ // "learnBlueprintsOnPickup" : [ "fuquantumheadadv" ],
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-    "itemTags" : [ "upgradeableWeapon" ],
+    "itemTags" : [ "upgradeableWeapon", "balanced", "explorer" ],
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorranged" : "fuquantumhead" },
+  //"collectablesOnPickup" : { "fu_armorranged" : "fuquantumhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -38,37 +38,37 @@
       "stat" : "maxHealth",
       "amount" : 2
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "radioactiveResistance",
       "amount" : 0.03
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "fireResistance",
       "amount" : 0.03
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "iceResistance",
       "amount" : 0.03
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "poisonResistance",
       "amount" : 0.023334
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "electricResistance",
       "amount" : 0.023334
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "cosmicResistance",
       "amount" : 0.023334
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "shadowResistance",
       "amount" : 0.023334
@@ -109,5 +109,5 @@
 
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

@@ -8,15 +8,15 @@
    "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; +^green;0.8^reset;% Health Regen
 ^yellow;^reset; Wand/Staff: Damage x^green;1.15^reset;
-^yellow;^reset; ^cyan;Immune^reset;: Shadow Taint, Darkness, Insanity", 
+^yellow;^reset; ^cyan;Immune^reset;: Shadow Taint, Darkness, Insanity",
   "shortdescription" : "Cultist Pants",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "ranged" ],
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorranged" : "cultarmorpants" },
+  //"collectablesOnPickup" : { "fu_armorranged" : "cultarmorpants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -44,7 +44,6 @@
       "amount" : 0.02
     }
   ],
-
 
   "statusEffects" : [
     "cultistsetbonus",
@@ -94,5 +93,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

@@ -1,78 +1,77 @@
 {
-  "itemName" : "fubonearmorchest",
-  "inventoryIcon" : "icons.png:chest",
-  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
-  "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "^orange;Set Bonuses^reset;:
+	"itemName": "fubonearmorchest",
+	"inventoryIcon": "icons.png:chest",
+	"dropCollision": [-4.0, -3.0, 4.0, 3.0],
+	"maxStack": 1,
+	"rarity": "Common",
+	"description": "^orange;Set Bonuses^reset;:
 ^yellow;^reset; Health x^green;1.05^reset;, Fall Damage x^green;0.85^reset;^reset;
 ^yellow;^reset; Longsword or Axe: Damage x^green;1.15^reset;
 ^yellow;^reset; ^cyan;Lush/Forest^reset;: Health x^green;1.05^reset;, Damage x^green;1.05^reset;, +^green;5^reset;% Phys. Resist^reset;",
 
-  "shortdescription" : "Bone Chest",
-  "category" : "chestarmour",
-  "tooltipKind" : "armornew2",
-//  "learnBlueprintsOnPickup" : [
-//    "fubonearmor2head",
- //   "fubonearmor2chest",
-//    "fubonearmor2legs"
+	"shortdescription": "Bone Chest",
+	"category": "chestarmour",
+	"tooltipKind": "armornew2",
+//	"learnBlueprintsOnPickup": [
+//		"fubonearmor2head",
+ //	 "fubonearmor2chest",
+//		"fubonearmor2legs"
  // ],
-  "maleFrames" : {
-    "body" : "chestm.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
+	"maleFrames": {
+		"body": "chestm.png",
+		"backSleeve": "bsleeve.png",
+		"frontSleeve": "fsleeve.png"
+	},
 
+	"femaleFrames": {
+		"body": "chestf.png",
+		"backSleeve": "bsleeve.png",
+		"frontSleeve": "fsleeve.png"
+	},
+		"itemTags": [ "upgradeableWeapon", "defensive", "melee" ],
+		"level": 1,
+		//"collectablesOnPickup": { "fu_armorprotection": "fubonearmorchest" },
+		"leveledStatusEffects": [
+		{
+			"levelFunction": "standardArmorLevelPowerMultiplierMultiplier",
+			"stat": "powerMultiplier",
+			"baseMultiplier": 1.22
+		},
+		{
+			"levelFunction": "standardArmorLevelProtectionMultiplier",
+			"stat": "protection",
+			"amount": 0.58
+		},
+		{
+			"levelFunction": "standardArmorLevelMaxEnergyMultiplier",
+			"stat": "maxEnergy",
+			"amount": 4
+		},
+		{
+			"levelFunction": "standardArmorLevelMaxHealthMultiplier",
+			"stat": "maxHealth",
+			"amount": 6
+		},
+		{
+			"levelFunction": "fuArmorResistMultiplier",
+			"stat": "fireResistance",
+			"amount": 0.03
+		},
+		{
+			"levelFunction": "fuArmorResistMultiplier",
+			"stat": "poisonResistance",
+			"amount": 0.03
+		}
+	],
 
-  "femaleFrames" : {
-    "body" : "chestf.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
-    "itemTags" : [ "upgradeableWeapon" ],
-    "level" : 1,
-    "collectablesOnPickup" : { "fu_armorprotection" : "fubonearmorchest" },
-    "leveledStatusEffects" : [
-    {
-      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.22
-    },
-    {
-      "levelFunction" : "standardArmorLevelProtectionMultiplier",
-      "stat" : "protection",
-      "amount" : 0.58
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
-      "stat" : "maxEnergy",
-      "amount" : 4
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
-      "stat" : "maxHealth",
-      "amount" : 6
-    },
-    {
-      "levelFunction" : "fuArmorResistMultiplier",
-      "stat" : "fireResistance",
-      "amount" : 0.03
-    },
-    {
-      "levelFunction" : "fuArmorResistMultiplier",
-      "stat" : "poisonResistance",
-      "amount" : 0.03
-    }
-  ],
-
-  "statusEffects" : [
-    "fusetbonusmanager",
-    {
-      "stat" : "bonesetcount",
-      "amount" : 1
-    }
-  ],
-  //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua"
+	"statusEffects": [
+		"bonesetbonus",
+		{
+			"stat": "fu_boneset_chest",
+			"amount": 1
+		}
+	],
+	//"upgrades": 1 ,
+	"builder": "/items/buildscripts/fubuildarmor.lua"
 
 }

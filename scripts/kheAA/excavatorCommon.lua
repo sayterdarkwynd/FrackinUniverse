@@ -26,9 +26,9 @@ node list:
 ]]
 
 function excavatorCommon.init()
-	local buffer=""
 	transferUtil.loadSelfContainer()
 	if self.disabled then
+		storage.state="disabled"
 		sb.logInfo("excavatorCommon disabled on non-objects (current is \"%s\") for safety reasons.",entityType.entityType())
 		return
 	end
@@ -39,7 +39,7 @@ function excavatorCommon.init()
 	excavatorCommon.vars.isPump=config.getParameter("kheAA_isPump",false)
 	excavatorCommon.vars.isVacuum=config.getParameter("kheAA_isVacuum",false)
 
-	buffer=config.getParameter("kheAA_excavatorRate")
+	local buffer=config.getParameter("kheAA_excavatorRate")
 	excavatorCommon.vars.excavatorRate=((type(buffer)=="number" and buffer > 0.0) and buffer) or 1.0
 
 	step=(step or -0.2)
@@ -102,8 +102,13 @@ function excavatorCommon.cycle(dt)
 		end
 	end
 
-	setRunning(true)
 	excavatorCommon.mainDelta = (excavatorCommon.mainDelta or 100) + dt--DO NOT INCREMENT ELSEWHERE
+	if not storage.state then
+		excavatorCommon.init()
+		return
+	end
+	if storage.state=="disabled" then return end
+	setRunning(true)
 	time = (time or (dt*-1)) + dt
 	if time > 10 then
 		local pos = storage.position
@@ -120,6 +125,10 @@ function excavatorCommon.cycle(dt)
 		time=0
 	end
 	states[storage.state](dt)
+end
+
+function states.disabled(dt)
+	return
 end
 
 function states.start(dt)
@@ -224,8 +233,8 @@ function excavatorCommon.grab(grabPos)
 		return
 	end
 
-	if not entity.entityType() == "object" then
-		sb.logInfo("excavatorCommon.grab: Cannot run on non-object (id: %s). Stop trying to do so.",entity.id())
+	if entity.entityType() ~= "object" then
+		--sb.logInfo("excavatorCommon.grab: Cannot run on non-object (id: %s). Stop trying to do so.",entity.id())
 		return
 	end
 	if not excavatorCommon.vars.vacuumRange then
@@ -241,6 +250,7 @@ function excavatorCommon.grab(grabPos)
 		--if entity.entityInSight(drops[i])
 		local item = world.takeItemDrop(id)
 		if item~=nil then
+			-- luacheck: ignore 211
 			local result,countSent,dropped=transferUtil.throwItemsAt(transferUtil.vars.containerId,transferUtil.vars.inContainers[transferUtil.vars.containerId],item,true)
 			--sb.logInfo("result: %s, countSent: %s, dropped: %s",result,countSent,dropped)
 			if dropped then--throttle control. no effect if no vac delay (such as on quarries and pumps)
@@ -330,7 +340,7 @@ function states.mine(dt)
 			local weeds=world.objectQuery({absdrillPos[1]-1,absdrillPos[2]-1},{absdrillPos[1]+1,absdrillPos[2]+1})
 			if weeds then
 				local cut=false
-				for k,v in pairs(weeds) do
+				for _,v in pairs(weeds) do
 					if world.entityExists(v) then
 						cut=true
 						break
@@ -373,7 +383,7 @@ function states.pump(dt)
 		return
 	end
 
-	local tempDelta=excavatorCommon.mainDelta
+	--local tempDelta=excavatorCommon.mainDelta
 	excavatorCommon.mainDelta = 0
 
 	--storage.pumpThrottler=math.max(storage.pumpThrottler-(tempDelta*excavatorCommon.vars.excavatorRate*2),0)

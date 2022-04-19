@@ -7,31 +7,31 @@
   "pointLight" : false,
   "flippable" : true,
   "orientationLocked" : false,
-  "fullbright" : true,  
+  "fullbright" : true,
   "physics" : "illusion",
   "bounces" : 12,
   "piercing" : true,
   "timeToLive" : 5,
   "light" : [0, 100, 150],
-  
+
   "power" : 5.0,
   "speed" : 90,
   "damageKind" : "electric",
   "damageRepeatTimeout" : 0.05,
 
-  "statusEffects" : [ "electrified", "stun"],	
-  "actionOnReap" : [ 
+  "statusEffects" : [ "electrified", "stun"],
+  "actionOnReap" : [
     {
       "action" : "config",
       "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
-    }	  
+    }
   ],
 
   "actionOnCollide" : [
     {
       "action" : "config",
       "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
-    },	  
+    },
     {
       "action" : "sound",
       "options" : [
@@ -57,13 +57,13 @@
         "timeToLive":0.01,
         "power":0.0
       }
-    },  
+    },
     {
       "action" : "config",
       "time" : 0.05,
-      "loop" : true,      
+      "loop" : true,
       "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
-    },	  
+    },
     {
       "action" : "explosion",
       "time" : 0.03,
@@ -73,7 +73,7 @@
       "explosiveDamageAmount" : 2.5,
       "harvestLevel" : 99,
       "delaySteps" : 2
-    },	  
+    },
     {
       "time" : 0.05,
       "repeat" : true,

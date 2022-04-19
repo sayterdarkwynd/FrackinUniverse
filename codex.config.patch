@@ -1,9 +1,5 @@
 [
-	{
-		"op": "add",
-		"path": "/defaultItemConfig",
-		"value" : {
-			"scripts" : ["/scripts/codex/OverrideCodexUsage.lua"]
-		}
-	}
+	[{"op": "test","path": "/defaultItemConfig","inverse":true},{"op": "add","path": "/defaultItemConfig","value":{}}],
+	[{"op": "test","path": "/defaultItemConfig/scripts","inverse":true},{"op": "add","path": "/defaultItemConfig/scripts","value":[]}],
+	[{"op": "add","path": "/defaultItemConfig/scripts/-","value" : "/scripts/codex/OverrideCodexUsage.lua"}]
 ]

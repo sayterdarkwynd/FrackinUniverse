@@ -1,41 +1,37 @@
 {
   "type" : "crewmemberguardian",
-  "baseType" : "crewmember",
-  //"disableWornArmor" : false,
-  "innateStatusEffects" : [{ "stat" : "protection", "amount": -10 } ], 
-  "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
+  "baseType" : "fu_crewmember",
 
+  "scriptConfig" : {
     "crew" : {
       "defaultUniform" : {
         "head" : "fuguardianhead",
         "chest" : "fuguardianchest",
         "legs" : "fuguardianpants"
-        },
+      },
 
       "role" : {
+        "type" : "soldier",
+        "name" : "Guardian",
+        "field" : "Protectification",
+        "uniformColorIndex" : 2,
+
         "benefits" : [
           {
             "type" : "ShipUpgradeBenefit",
             "property" : "fuelEfficiency",
             "value" : 0.05
-          },        
+          },
           {
             "type" : "EphemeralEffect",
             "effect" : "defense5",
             "duration" : 300
-          },         
+          },
           {
             "type" : "Regeneration",
             "value" : 1
           }
-        ],
-        "type" : "chemist",
-        "name" : "Guardian",
-        "field" : "Protectification",
-        "uniformColorIndex" : 2
+        ]
       }
     },
 
@@ -71,11 +67,8 @@
     "default" : [
       [0, [
           {
-            "primary" : [ "aegisaltmace", "irradiummace", "furaremace", "fuuncommonmace", "zerchesiummace", "triangliummace", "titaniummace", "durasteelmace", "densealloymace" ],
-            "alt" : [ "bubbleshield", "battlershield", "warswornshield", "quantumshield" ],
-			"head" :  [{ "name" : "fuguardianhead", "count" :1, "parameters" : { "colorIndex" : 2 } } ],
-			"chest" : [ { "name" : "fuguardianchest", "count" :1, "parameters" : { "colorIndex" : 2 } } ],
-            "legs" : [ { "name" : "fuguardianpants", "count" :1, "parameters" : { "colorIndex" : 2 } } ]
+            "primary" : [ "aegisaltmace", "irradiummace", "zerchesiummace", "triangliummace", "titaniummace", "durasteelmace", "densealloymace" ],
+            "alt" : [ "bubbleshield", "battlershield", "warswornshield", "quantumshield" ]
           }
         ] ]
     ]

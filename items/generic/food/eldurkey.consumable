@@ -1,0 +1,32 @@
+{
+	"itemName": "eldurkey",
+	"rarity": "rare",
+	"price": 25,
+	"category": "preparedFood",
+	"inventoryIcon": "eldurkey.png",
+	"description": "A meal of Eldritch proportions. \n^cyan;+^reset;20%^green; HP^reset; ^cyan;+^reset;15%^green; Energy^reset;^cyan; +^reset; 3^blue;Madness^reset;^red; Insanity^reset; 180s; Food Type:^orange; Cooked Meat^reset;",
+	"shortdescription": "Eldurkey",
+	"effects": [
+        ["madnessgain3", "meatc_plant_meal",
+        {
+            "effect": "maxenergyscalingboostfood",
+            "duration": 180,
+            "energyModifier": 1.15
+        },
+        { "effect" : "maxhealthscalingboostfood",
+            "duration": 180,
+            "healthModifier": 1.20
+        },
+        { "effect" : "insanity",
+            "duration": 300
+        }
+        ]
+    ],
+	"foodValue": 65,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}

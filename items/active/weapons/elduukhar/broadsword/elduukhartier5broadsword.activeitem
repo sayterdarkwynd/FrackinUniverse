@@ -1,18 +1,18 @@
 {
   "itemName" : "elduukhartier5broadsword",
-  "level" : 5,
+  "level" : 4,
   "price" : 930,
   "maxStack" : 1,
-  "rarity" : "rare",
+  "rarity" : "uncommon",
   "description" : "An elegant greatsword with a dragon's head as a pommel.",
   "shortdescription" : "Fused Thanatite Broadsword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","broadsword","crystal", "upgradeableWeapon"],
-  
+
   "inventoryIcon" : "elduukhartier5broadsword.png",
-  
+
   "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
   "animationParts" : {
     "handle" : "",
@@ -22,16 +22,22 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "fire",
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
-    "baseDps" : 11.5
+    "baseDps" : 11.5,
+    "damageConfig" : {
+      "damageSourceKind" : "fire"
+    }
   },
+
+  "critChance" : 1,
+  "critBonus" : 7,
 
   "altAbilityType" : "superspinslash",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
-  
+
 }

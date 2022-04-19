@@ -1,9 +1,9 @@
 {
   "itemName" : "fucellsword",
   "price" : 1500,
-  "level" : 3,
+  "level" : 2,
   "maxStack" : 1,
-  "rarity" : "uncommon",
+  "rarity" : "common",
   "description" : "A bizarre amalgamation of gene and metal.",
   "shortdescription" : "Cell Blade",
   "tooltipKind" : "sword2",
@@ -11,20 +11,20 @@
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","bioweapon", "longsword", "upgradeableWeapon"],
   "inventoryIcon" : "fucellsword.png",
-  "collectablesOnPickup" : { "fu_weaponlongsword" : "fucellsword" },
+  //"collectablesOnPickup" : { "fu_weaponlongsword" : "fucellsword" },
   "animation" : "combolongswordglow.animation",
   "animationParts" : {
     "handle" : "",
     "blade" : "fucellsword.png",
     "bladefullbright" : "fucellswordfullbright.png"
   },
-  "animationCustom" : { 
+  "animationCustom" : {
 	  "sounds" : {
 	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
-	  }  
+	  }
   },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
@@ -41,6 +41,6 @@
   },
 
   "critChance" : 1,
-  "critBonus" : 8,  
+  "critBonus" : 8,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

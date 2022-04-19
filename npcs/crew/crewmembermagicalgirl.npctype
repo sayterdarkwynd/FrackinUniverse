@@ -1,44 +1,22 @@
 {
   "type" : "crewmembermagicalgirl",
-  "baseType" : "crewmember",
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false,
-
-      "combatParameters" : {
-        "npcCombat" : {
-          "rangedWeaponRanges" : {
-            "cutestaff" : {
-              "minRange" : 3,
-              "maxRange" : 25,
-              "forceMoveRange" : 25
-            }
-          },
-          "staffCombat" : {
-            "parameters" : {
-              "staffChargeTime": 0.5,
-              "staffMinChargedTime": 0,
-              "staffMaxChargedTime": 0,
-              "staffCooldownTime": 0.25,
-              "chargedProjectiles": false,
-              "projectileTimeToLive": 0.25,
-              "offset": [0,0]
-            }
-          }
-        }
-      }
-    },
-
     "crew" : {
       "defaultUniform" : {
         "head" : "cutehead",
         "chest" : "cutechest",
         "legs" : "cutelegs",
         "cosmeticback" : "cutewings"
-        },
+      },
 
       "role" : {
+        "type" : "soldier",
+        "name" : "Magical Girl",
+        "field" : "Magical Girl",
+        "uniformColorIndex" : 1,
+
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
@@ -57,11 +35,7 @@
             "property": "fuelEfficiency",
             "value": 0.05
           }
-        ],
-        "type" : "soldier",
-        "name" : "Magical Girl",
-        "field" : "Magical Girl",
-        "uniformColorIndex" : 1
+        ]
       }
     },
 
@@ -71,6 +45,16 @@
           "default" : {
             "default" : [
               "My powers of love will protect you from the powers of shadow."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran'ss power of love will protect you from the powerss of shadow!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Valiant. My powers of love will protect you from the powers of shadow."
             ]
           }
         },
@@ -85,21 +69,20 @@
           },
           "floran" : {
             "default" : [
-              "Floran hasss things to help you out!",
-              "Floran can help out!",
-              "Floran hasss things to help!"
+              "Floran knowss only love!",
+              "Floran can banish this evil!",
+              "Floran hasss the power of kindnesss!"
             ]
           },
           "glitch" : {
             "default" : [
-              "Eager. I can help you out!",
-              "Excited. Perhaps you could do with a power-up!",
-              "Intrigued. I wonder if this will help you?",
-              "Helpful. Take this, it will help!"
+              "Valiant. Darkness be gone!",
+              "Caring. Looks like you could use some love!",
+              "Brave. Let me help you out!"
             ]
           }
         }
-      }
+	  }
     }
   },
 
@@ -109,14 +92,9 @@
           {
             "primary" : [ "cutestaff" ],
             "sheathedprimary" : [ "cuterapier" ],
-            "sheathedalt" : [ "cuteshield" ],
-			"head" :  [{ "name" : "cutehead", "count" :1, "parameters" : { "colorIndex" : 1 } } ],
-			"chest" : [ { "name" : "cutechest", "count" :1, "parameters" : { "colorIndex" : 1 } } ],
-            "legs" : [ { "name" : "cutelegs", "count" :1, "parameters" : { "colorIndex" : 1 } } ],
-			"cosmeticback" : [ { "name" : "cutewings", "count" :1, "parameters" : { "colorIndex" : 1 } } ]
+            "sheathedalt" : [ "cuteshield" ]
           }
-        ]
-      ]
+        ] ]
     ]
   }
 }

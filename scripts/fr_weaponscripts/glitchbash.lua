@@ -1,3 +1,5 @@
+require "/scripts/fr_weaponscripts/particlebase.lua"
+
 -- Intended for use with shield bashing
 
 -- Possible args:
@@ -12,7 +14,12 @@ function FRHelper:call(args, ...)
 	if res=="health" then
 		amount=amount*math.max(0,1+status.stat("healingBonus"))
 	end
-    status.modifyResource(res,amount)
-    animator.burstParticleEmitter(args.particles or "bonusBlock3")
-    animator.playSound(args.sound or "bonusEffect")
+	status.modifyResource(res,amount)
+	--animator.burstParticleEmitter(args.particles or "bonusBlock3")
+
+	fuParticleBaseLoadCache(self,{"/particles/cartoonstars/greencartoonstar.particle","/particles/cartoonstars/redcartoonstar.particle","/particles/sparkles/sparkle5.particle","/particles/charge.particle","/particles/healthcross.particle"})
+	fuParticleBaseLoadLists(self)
+	fuParticleBaseParticleBurst(self,{args.particles,"bonusBlock3"})
+
+	if animator.hasSound(args.sound or "bonusEffect") then animator.playSound(args.sound or "bonusEffect") end
 end

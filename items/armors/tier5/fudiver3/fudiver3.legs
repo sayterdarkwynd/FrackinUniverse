@@ -12,12 +12,12 @@
   "shortdescription" : "Leviathan Leggings",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "defensive", "explorer" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorexplorer" : "fudiverlegs3" },
+  //"collectablesOnPickup" : { "fu_armorexplorer" : "fudiverlegs3" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -46,6 +46,14 @@
     {
       "stat" : "fu_leviathanset_legs",
       "amount" : 1
+    },
+    {
+      "stat" : "fu_krakenset_legs",
+      "amount" : 1
+    },
+    {
+      "stat" : "fu_nautilusset_legs",
+      "amount" : 1
     }
   ],
 
@@ -73,5 +81,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

@@ -88,7 +88,7 @@ function ChargeFire:fireProjectile()
   local params = copy(pConfig.parameters)
   params.powerMultiplier = activeItem.ownerPowerMultiplier()
 
-  for i = 1, pConfig.count or 1 do
+  for _ = 1, pConfig.count or 1 do
     if params.timeToLive then
       params.timeToLive = util.randomInRange(params.timeToLive)
     end

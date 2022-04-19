@@ -2,14 +2,13 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_diamondset"
 
 weaponBonus={
-	{stat = "powerMultiplier", effectiveMultiplier = 1.25},
-	{stat = "critChance", amount = 2.5}
+	{stat = "katanaMastery", amount = 0.32}
 }
-
 armorBonus={
-	{stat = "katanaMastery", amount = 0.4},
 	{stat = "sulphuricImmunity", amount = 1},
-	{stat = "biooozeImmunity", amount = 1}
+	{stat = "biooozeImmunity", amount = 1},
+	{stat = "dodgetechBonus", amount = 0.2},
+	{stat = "defensetechBonus", amount = 0.2}
 }
 
 function init()

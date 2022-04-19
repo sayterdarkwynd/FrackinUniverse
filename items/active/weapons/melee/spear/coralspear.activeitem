@@ -3,7 +3,7 @@
   "price" : 100,
   "level" : 4,
   "maxStack" : 1,
-  "rarity" : "Uncommon",
+  "rarity" : "rare",
   "description" : "Dangerously sharp bits of coral. Stabby!
 ^cyan;Hunting weapon^reset;",
   "shortdescription" : "Coral Spear",
@@ -13,7 +13,7 @@
   "itemTags" : ["weapon","melee","spear", "upgradeableWeapon","coral"],
 
   "inventoryIcon" : "coralspear.png",
-  "collectablesOnPickup" : { "fu_weaponspear" : "coralspear" },
+  //"collectablesOnPickup" : { "fu_weaponspear" : "coralspear" },
   "animation" : "/items/active/weapons/melee/spear/spear.animation",
   "animationParts" : {
     "handle" : "",
@@ -43,10 +43,14 @@
     }
   },
   "altAbilityType" : "flurry",
-  "altAbility" : { },
+  "altAbility" : {
+    "damageConfig" : {
+      "damageSourceKind" : "bow"
+    }
+  },
 
   "critChance" : 1,
   "critBonus" : 4,
-  
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

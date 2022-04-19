@@ -1,34 +1,33 @@
 {
-  "id" : "create_plastic",
-  "prerequisites" : [ "create_iodine" ],
-  "title" : "Getting into Plastics",
-  "text" : "If you're going to make it as a scientist, you are going to need ^orange;Advanced Plastic^reset;. Find some ^orange;Oil^reset; from a ^green;Desert^reset; or from ^orange;Bonemeal^reset; and then head to your ^orange;Bio Lab^reset;. Bring me back one single piece!",
-  "completionText" : "Excellent! You'll need a lot of plastic, so keep well stocked.",
-  "moneyRange" : [ 640, 960],
-  "rewards" : [ [ [ "fu_lootbox", 1 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "create_plastic",
+	"prerequisites" : [ "create_iodine" ],
+	"title" : "Getting into Plastics",
+	"text" : "If you're going to make it as a scientist, you are going to need ^orange;Advanced Plastic^reset;. Find some ^orange;Oil^reset; from a ^green;Desert^reset; or from ^orange;Bonemeal^reset; and then head to your ^orange;Bio Lab^reset;. Bring me back one single piece!",
+	"completionText" : "Excellent! You'll need a lot of plastic, so keep well stocked.",
+	"moneyRange" : [ 640, 960],
+	"rewards" : [ [ [ "fu_lootbox", 1 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,
+		"requireTurnIn" : false,
 
-    "turnInDescription" : "Bring the ^orange;Advanced Plastic^reset; to the scientist at the ^green;Science Outpost^reset;",
+		"turnInDescription" : "Bring the ^orange;Advanced Plastic^reset; to the scientist at the ^green;Science Outpost^reset;",
 
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "ff_plastic",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
-  }
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "ff_plastic",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
 }

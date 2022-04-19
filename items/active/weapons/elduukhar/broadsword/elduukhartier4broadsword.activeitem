@@ -1,18 +1,18 @@
 {
   "itemName" : "elduukhartier4broadsword",
   "price" : 750,
-  "level" : 4,
+  "level" : 3,
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "This prototype blade was used to build on existing techniques. It's rather bulky.",
   "shortdescription" : "Weak Metal Broadsword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","broadsword","crystal", "upgradeableWeapon"],
-  
+
   "inventoryIcon" : "elduukhartier4broadsword.png",
-  
+
   "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
   "animationParts" : {
     "handle" : "",
@@ -22,16 +22,22 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "ice",
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
-    "baseDps" : 11.5
+    "baseDps" : 11.5,
+    "damageConfig" : {
+      "damageSourceKind" : "ice"
+    }
   },
+
+  "critChance" : 1,
+  "critBonus" : 6,
 
   "altAbilityType" : "spinslash",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
-  
+
 }

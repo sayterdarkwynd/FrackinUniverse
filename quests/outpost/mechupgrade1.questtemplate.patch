@@ -1,0 +1,32 @@
+[
+  {
+    "op": "replace",
+    "path": "/text",
+    "value": "I'm working on a shiny new mech weapon, but I need some help gathering some pieces. If you could ^green;find me 4^orange; durasteel bars^white; and ^green;an ^orange;advanced circuit^white;, I think that'll be enough to finish it!"
+  },
+  {
+    "op": "replace",
+    "path": "/scriptConfig/conditions/0/itemName",
+    "value": "durasteelbar"
+  },
+  {
+    "op": "replace",
+    "path": "/scriptConfig/conditions/0/count",
+    "value": 4
+  },
+  {
+    "op": "replace",
+    "path": "/scriptConfig/conditions/1/itemName",
+    "value": "advcircuit"
+  },
+  {
+    "op": "replace",
+    "path": "/scriptConfig/conditions/1/count",
+    "value": 1
+  },
+  {
+    "op": "add",
+    "path": "/scriptConfig/giveBlueprints/-",
+    "value": "mecharmsinrack"
+  }
+]

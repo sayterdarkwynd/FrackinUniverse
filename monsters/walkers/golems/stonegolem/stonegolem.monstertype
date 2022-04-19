@@ -19,7 +19,7 @@
     "deathBehavior" : "monster-death",
     "behaviorConfig" : {
       "damageOnTouch" : true,
-      
+
       "targetQueryRange" : 20,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
@@ -29,7 +29,7 @@
       "hurtWaitForGround": false,
       "hurtWaitForGroundTime": 0.1,
 
-      "foundTargetActions" : [ 
+      "foundTargetActions" : [
         {
           "name" : "action-animate",
           "cooldown" : 12,
@@ -38,7 +38,7 @@
             "state" : "roar",
             "animationTime" : 1.4
           }
-        }        
+        }
       ],
 
       "hostileActions" : [
@@ -50,7 +50,7 @@
             "state" : "roar",
             "animationTime" : 1.4
           }
-        },         
+        },
         {
           "name" : "action-fire",
 	  "cooldown" : 10,
@@ -73,7 +73,7 @@
             "winddownState" : "firewinddown",
             "winddownTime" : 0.4
           }
-        },        
+        },
         {
           "name" : "action-charge",
           "parameters" : {
@@ -94,7 +94,7 @@
           }
         }
       ],
-      
+
       "followActions" : [
         {
           "name" : "approach-teleport",
@@ -115,15 +115,15 @@
             "inaccuracy" : 0,
             "fireOffset" : [0, 1]
           }
-        }      
+        }
       ],
-      
-      "fleeActions" : [], 
-      
+
+      "fleeActions" : [],
+
       "wanderActions" : [],
 
       "concurrentActions" : [],
-      
+
       "periodicActions" : [],
 
       "approachActions" : []
@@ -142,7 +142,7 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [-0.958,1.208], [-1.625,0.583], [-1.917,-2.542], [-1.042,-3.708], [1.625,-3.833], [2.375,-2.542], [2.375,0.375], [1.542,1.458] ], 
+      "poly" : [ [-0.958,1.208], [-1.625,0.583], [-1.917,-2.542], [-1.042,-3.708], [1.625,-3.833], [2.375,-2.542], [2.375,0.375], [1.542,1.458] ],
       "damage" : 13,
 
       "teamType" : "enemy",
@@ -241,13 +241,13 @@
         },
         "cosmicResistance" : {
           "baseValue" : 0.0
-        }, 
+        },
         "radioactiveResistance" : {
           "baseValue" : 1.0
         },
         "shadowResistance" : {
           "baseValue" : 0.2
-        }     
+        }
       },
 
       "resources" : {
@@ -268,7 +268,7 @@
     "capturable" : true,
     "captureHealthFraction" : 0.24,
     "capturedMonsterName" : "Rock Golem",
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "stonegolem" }
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "stonegolem" }
   }
 }

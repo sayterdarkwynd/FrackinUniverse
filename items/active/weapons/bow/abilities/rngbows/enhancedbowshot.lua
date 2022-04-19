@@ -8,11 +8,9 @@ NebBowShot = WeaponAbility:new()
 function NebBowShot:init()
 	self.energyPerShot = self.energyPerShot or 0
 
-	self.drawTimer= 0
-	self.bonusSpeed = math.max(-0.99,status.stat("bowDrawTimeBonus"))
-	self.bonusSpeedMult=1/(1+self.bonusSpeed)
+	self.drawTimer=0
 	self.baseDrawTime=self.drawTime
-	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*self.bonusSpeedMult)
+	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*(1/(1+math.max(-0.99,status.stat("bowDrawTimeBonus")))))
 
 	animator.setGlobalTag("drawFrame", "0")
 	animator.setAnimationState("bow", "idle")
@@ -57,16 +55,18 @@ function NebBowShot:reset()
 	animator.stopAllSounds("draw")
 	animator.stopAllSounds("ready")
 	self.weapon:setStance(self.stances.idle)
+	status.setStatusProperty(activeItem.hand().."Firing",nil)
 end
 
 function NebBowShot:draw()
 	self.energyBonus = status.stat("bowEnergyBonus")
-
 	self.weapon:setStance(self.stances.draw)
+	local readySoundPlayed = false
+	status.setStatusProperty(activeItem.hand().."Firing",true)
 
+	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*(1/(1+math.max(-0.99,status.stat("bowDrawTimeBonus")))))
 	animator.setSoundPitch("draw", 1, self.modifiedDrawTime)
 	animator.playSound("draw", -1)
-	local readySoundPlayed = false
 
 	while self.fireMode == (self.activatingFireMode or self.abilitySlot) and not status.resourceLocked("energy") do
 		if self.walkWhileFiring then
@@ -86,7 +86,7 @@ function NebBowShot:draw()
 			status.setResourcePercentage("energyRegenBlock", 0.6)
 			drawFrame = #self.drawArmFrames - 1
 			if self.drainEnergyWhilePowerful then
-			status.overConsumeResource("energy", self.holdEnergyUsage * self.dt) --Optionally drain energy while at max power level
+				status.overConsumeResource("energy", self.holdEnergyUsage * self.dt) --Optionally drain energy while at max power level
 			end
 
 		--If drawn beyond power peak levels, drain energy slowly
@@ -99,8 +99,8 @@ function NebBowShot:draw()
 		if self.drawTimer>= (self.modifiedDrawTime - 0.15) then
 			animator.stopAllSounds("draw")
 			if not readySoundPlayed then
-			animator.playSound("ready")
-			readySoundPlayed = true
+				animator.playSound("ready")
+				readySoundPlayed = true
 			end
 		end
 
@@ -128,7 +128,7 @@ function NebBowShot:fire()
 	animator.stopAllSounds("ready")
 
 	if not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
-		for i = 1, (self.projectileCount or 1) do
+		for _ = 1, (self.projectileCount or 1) do
 			world.spawnProjectile(
 				self:perfectTiming() and self.powerProjectileType or self.projectileType,
 				self:firePosition(),
@@ -153,7 +153,7 @@ function NebBowShot:fire()
 	else
 		animator.setGlobalTag("drawFrame", "0")
 	end
-
+	status.setStatusProperty(activeItem.hand().."Firing",false)
 	self.cooldownTimer = self.cooldownTime
 end
 
@@ -176,6 +176,7 @@ function NebBowShot:currentProjectileParameters()
 	if self.minMaxSpeedMultiplier then
 		speedMultiplier = math.random(self.minMaxSpeedMultiplier[1] * 100, self.minMaxSpeedMultiplier[2] * 100) / 100
 	end
+	speedMultiplier = speedMultiplier*(1+status.stat("arrowSpeedMultiplier"))
 
 	--Calculate projectile speed based on draw time and projectile parameters
 	projectileParameters.speed = projectileParameters.speed or projectileConfig.speed

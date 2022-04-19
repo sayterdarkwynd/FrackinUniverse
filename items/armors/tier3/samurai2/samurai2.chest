@@ -3,14 +3,14 @@
   "price" : 2400,
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
-  "rarity" : "Common",
+  "rarity" : "uncommon",
   "category" : "chestarmour",
   "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; Katana: Damage x^green;1.15^reset;, +^green;3^reset;% Crit, +^green;10^reset;% Crit Damage^reset;
 ^yellow;^reset; Katana + Dagger: +^green;1^reset;% Crit Chance, Defense x^green;1.14^reset;^reset;",
   "shortdescription" : "Neishin Breastplate",
   "tooltipKind" : "armornew2",
-  "itemTags": ["upgradeableWeapon"],
+  "itemTags": ["upgradeableWeapon", "balanced", "melee"],
 
   "maleFrames" : {
     "body" : "chestm.png",
@@ -46,7 +46,7 @@
       "stat" : "maxHealth",
       "amount" : 5
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "physicalResistance",
       "amount" : 0.025
@@ -54,9 +54,13 @@
   ],
 
   "statusEffects" : [
-    "fusetbonusmanager",
+    "samuraisetbonus2",
     {
-      "stat" : "samurai2setcount",
+      "stat" : "fu_samuraiset2_chest",
+      "amount" : 1
+    },
+    {
+      "stat" : "fu_samuraiset_chest",
       "amount" : 1
     }
   ],
@@ -88,5 +92,5 @@
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

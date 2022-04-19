@@ -153,7 +153,7 @@ function checkLiquidType()
 	clearWetEffects()
 
 	if liquidAtMouth then -- is liquid at least up to our mouth? if so set the tags below
-		if liquidAtMouth[1] == 1 or liquidAtMouth[1] == 12 or liquidAtMouth[1] == 58 or liquidAtMouth[1] == 69 then -- check if its a 'normal' water
+		if liquidAtMouth[1] == 1 or liquidAtMouth[1] == 12 or liquidAtMouth[1] == 58 or liquidAtMouth[1] == 73 or liquidAtMouth[1] == 69 then -- check if its a 'normal' water
 			self.isWater = 1
 		elseif liquidAtMouth[1] == 40 then -- check if the Blood effect for Wet needs to play
 			self.isBlood = 1
@@ -183,6 +183,8 @@ function applyWet()
 			status.addEphemeralEffect("wetelder")
 		elseif self.isWater == 1 then
 			status.addEphemeralEffect("wet")
+		elseif self.isSaltWater == 1 then
+			status.addEphemeralEffect("wet")
 	elseif self.isGeneric == 1 then
 		--kinda a space filler.
 		status.addEphemeralEffect("wet")
@@ -196,6 +198,7 @@ function clearWetEffects()
 	self.isHealingWater = 0
 	self.isElder = 0
 	self.isWater = 0
+	self.isSaltWater = 0
 	self.isGeneric = 0
 end
 
@@ -229,4 +232,8 @@ function setMonsterAbilities()
 		mcontroller.controlParameters(self.monsterWaterParameters)
 		effect.setStatModifierGroup(handle,{{stat="gravityMod",amount=self.gravityMultipliers.monsterWater},{stat="fuswimming",amount=1}})
 	end
+end
+
+function uninit()
+	effect.removeStatModifierGroup(handle)
 end

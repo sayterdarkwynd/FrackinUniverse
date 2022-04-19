@@ -7,12 +7,12 @@
   "description" : "Searing heat, and puncture-fresh lethality.
 ^orange;Inflicts Burning^reset;
 ^cyan;Hunting weapon^reset;",
-  "shortdescription" : "Core Spear",
+  "shortdescription" : "Core Lance",
   "tooltipKind" : "sword2",
-  "category" : "spear",
+  "category" : "lance",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","spear","upgradeableWeapon"],
-  
+
   "inventoryIcon" : "lavaspear.png",
   "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
   "animationParts" : {
@@ -31,7 +31,7 @@
   "elementalType" : "fire",
   "fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
   "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
+  "primaryAbilityType" : "heavyspearcombo",
   "primaryAbility" : {
     "scripts" : [],
 
@@ -44,7 +44,7 @@
     }
   },
   "altAbilityType" : "rocketspear",
-  "altAbility" : { 
+  "altAbility" : {
     "name" : "Flame Blast",
     "statusEffects" : [ "burning" ],
     "baseDps" : 8,
@@ -53,11 +53,11 @@
     "fireTime" : 0.05,
     "inaccuracy" : 0,
     "boostSpeed" : 120,
-    "boostForce" : 50   
+    "boostForce" : 50
   },
 
   "critChance" : 3,
   "critBonus" : 12,
-  
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

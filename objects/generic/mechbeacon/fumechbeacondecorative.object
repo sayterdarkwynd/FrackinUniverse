@@ -1,0 +1,71 @@
+{
+  "objectName" : "fumechbeacondecorative",
+  "colonyTags" : ["station","mech"],
+  "rarity" : "Common",
+  "description" : "This guidance beacon marks the position of a landing bay.",
+  "shortdescription" : "Landing Beacon (Decorative)",
+  "race" : "generic",
+  "category" : "light",
+  "price" : 100,
+  "printable" : true,
+
+  "apexDescription" : "This marks the position of a mech landing bay.",
+  "avianDescription" : "This marker signifies a space bay made for mech entry.",
+  "floranDescription" : "Beacon showsss where mechs can enter space.",
+  "glitchDescription" : "Informed. This beacon type is useful for tracking where mech vehicles can dock.",
+  "humanDescription" : "A marker to tell pilots where to land their mech suits.",
+  "hylotlDescription" : "This beacon is for marking entry bays for mechs.",
+  "novakidDescription" : "This marker is here to mark where t'saddle up your mech.",
+
+  "lightColor" : [115, 33, 33],
+
+  "flickerPeriod" : 0.8,
+  "flickerMinIntensity" : 0.8,
+  "flickerMaxIntensity" : 1.0,
+  "flickerPeriodVariance" : 0,
+  "flickerIntensityVariance" : 0,
+
+  "inventoryIcon" : "mechbeaconicon.png",
+  "orientations" : [
+    {
+      "image" : "mechbeacon.png:<frame>",
+      "imagePosition" : [-16, -16],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "mechbeacon.png:<frame>",
+      "imagePosition" : [-16, -16],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ],
+
+  "animation" : "mechbeacon.animation",
+
+  "animationParts" : {
+    "bg" : "mechbeacon.png",
+    "fg" : "mechbeaconlit.png"
+  },
+
+  "animationPosition" : [-16, -16],
+
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallswitch.ogg" ],
+      "off" : [ "/sfx/objects/tinywallswitch.ogg" ]
+    }
+  }
+}

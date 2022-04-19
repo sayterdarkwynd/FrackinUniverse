@@ -1,37 +1,33 @@
 {
-  "id" : "start_basics2",
-  "prerequisites" : [ "start_basics" ],
-  "title" : "Homestead II",
-  "text" : "I've got a tip for you: You can make ^orange;Paper^reset; in a ^orange;Furnace^reset;! I could use say, ^orange;10^reset; pieces. I'm fixin' to write some letters to loved ones.",
-  "completionText" : "It may not seem like much...but paper will come in handy when yer least expectin' it. Besides, it's great for writin', no matter how pretty a computer can make things look.",
-  "moneyRange" : [22, 44],
-  "rewards" : [ [ [ "cottonseed",3 ],[ "fuscienceresource",110 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "start_basics2",
+	"prerequisites" : [ "start_basics" ],
+	"title" : "Homestead II",
+	"text" : "I've got a tip for you: You can make ^orange;Paper^reset; in a ^orange;Furnace^reset;! I could use say, ^orange;10^reset; pieces. I'm fixin' to write some letters to loved ones.",
+	"completionText" : "It may not seem like much...but paper will come in handy when yer least expectin' it. Besides, it's great for writin', no matter how pretty a computer can make things look.",
+	"moneyRange" : [22, 44],
+	"rewards" : [ [ [ "cottonseed",3 ],[ "fuscienceresource",110 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
+		"requireTurnIn" : true,
 
+		"turnInDescription" : "Craft ^orange;10 Paper^reset; at a ^orange;Furnace^reset; and return to ^green;Welchie^reset;.",
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : true,  
-
-    "turnInDescription" : "Craft ^orange;10 Paper^reset; at a ^orange;Furnace^reset; and return to ^green;Welchie^reset;.",
-
-
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "paper",
-        "count" : 10,
-        "consume" : true
-      }
-    ]
-  }
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "paper",
+				"count" : 10,
+				"consume" : true
+			}
+		]
+	}
 }

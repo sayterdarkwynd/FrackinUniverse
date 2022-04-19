@@ -1,56 +1,55 @@
 {
-	"objectName": "skathshiplight",
-	"colonyTags": ["light", "skath"],
-	"rarity": "common",
-	"category": "light",
-	"lightColor": [0, 240, 255],
-	"price": 60,
-	"description": "A small blue light",
-	"shortdescription": "Skath Ship Light",
-	"race": "skath",
+  "objectName": "skathshiplight",
+  "colonyTags": ["light", "skath"],
+  "rarity": "common",
+  "category": "light",
+  "lightColor": [0, 240, 255],
+  "price": 60,
+  "description": "A small blue light",
+  "shortdescription": "Skath Ship Light",
+  "race": "skath",
 
-	"apexDescription": "These lights are commonly used on ships.",
-	"avianDescription": "A vibrant light.",
-	"floranDescription": "Ship light is harsh on Floran eyesss.",
-	"glitchDescription": "Impressed. This lighting fixture generates more light than heat.",
-	"humanDescription": "A bright, blue light.",
-	"hylotlDescription": "A bright, blue light. It creates a neutral atmosphere.",
-	"novakidDescription": "That's one bright lightbulb.",
+  "apexDescription": "These lights are commonly used on ships.",
+  "avianDescription": "A vibrant light.",
+  "floranDescription": "Ship light is harsh on Floran eyesss.",
+  "glitchDescription": "Impressed. This lighting fixture generates more light than heat.",
+  "humanDescription": "A bright, blue light.",
+  "hylotlDescription": "A bright, blue light. It creates a neutral atmosphere.",
+  "novakidDescription": "That's one bright lightbulb.",
+  "skathDescription": "A blue light, commonly found on our ships and cruisers. The blue light is very calming..",
 
-	"skathDescription": "A blue light, commonly found on our ships and cruisers. The blue light is very calming..",
+  "inventoryIcon": "skathshiplighticon.png",
+  "orientations": [{
+    "imageLayers": [{
+      "image": "skathshiplight.png:<color>.<frame>",
+      "fullbright": true
+    }, {
+      "image": "skathshiplightlit.png:<color>.<frame>"
+    }],
+    "imagePosition": [-8, 0],
 
-	"inventoryIcon": "skathshiplighticon.png",
-	"orientations": [{
-		"imageLayers": [{
-			"image": "skathshiplight.png:<color>.<frame>",
-			"fullbright": true
-		}, {
-			"image": "skathshiplightlit.png:<color>.<frame>"
-		}],
-		"imagePosition": [-8, 0],
+    "direction": "right",
 
-		"direction": "right",
+    "spaceScan": 0.1,
+    "anchors": ["background"]
+  }],
 
-		"spaceScan": 0.1,
-		"anchors": ["background"]
-	}],
+  "soundEffect": "/sfx/objects/fluorescent_light_quiet.ogg",
+  "soundEffectRangeMultiplier": 0.5,
 
-	"soundEffect": "/sfx/objects/fluorescent_light_quiet.ogg",
-	"soundEffectRangeMultiplier": 0.5,
+  "animation": "/objects/wired/light/lighttoggle.animation",
+  "animationParts": {
+    "light": "skathshiplight.png"
+  },
+  "animationPosition": [-8, 0],
 
-	"animation": "/objects/wired/light/lighttoggle.animation",
-	"animationParts": {
-		"light": "skathshiplight.png"
-	},
-	"animationPosition": [-8, 0],
+  "scripts": ["/objects/wired/light/light.lua"],
+  "scriptDelta": 60,
 
-	"scripts": ["/objects/wired/light/light.lua"],
-	"scriptDelta": 60,
+  "interactive": false,
 
-	"interactive": false,
-
-	"inputNodes": [
-		[0, 0]
-	]
+  "inputNodes": [
+    [0, 0]
+  ]
 
 }

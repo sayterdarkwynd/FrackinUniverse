@@ -47,7 +47,7 @@ function craftingRecipe(items)
 			newParams.muzzleOffset={0,0}
 			newParams.animationParts=newParams.animationParts or {}
 			if oldParts then
-				for partName,partImg in pairs(oldParts) do
+				for partName in pairs(oldParts) do
 					local failed=false
 					lPartName=string.lower(partName)
 					for _,bannedEntry in pairs(bannedParts) do

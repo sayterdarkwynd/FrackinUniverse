@@ -1,16 +1,17 @@
 {
   "objectName" : "fu_alternatorgenerator",
-  "rarity" : "Common",
-    "colonyTags" : [ "science", "power" ],
+  "rarity" : "common",
+  "colonyTags" : [ "science", "power" ],
   "category" : "wire",
   "objectType" : "container",
   "price" : 200,
-  "description" : "A wood, coal or energiwood burning power source. Max of ^orange;4W^reset; power. ^blue;Left Input^reset;: Power Switch",
-  "shortdescription" : "^cyan;Alternator Generator^white;",
+  "description" : "A wood, coal or energiwood burning power source. Generates up to ^orange;4W^reset; power, fuel type determines consumption rate. ^blue;Left Input^reset;: On/Off Switch",
+  "shortdescription" : "^cyan;Alternator Generator^reset;",
   "race" : "generic",
   "printable" : false,
+  "tooltipKind" : "base",
 //  "learnBlueprintsOnPickup" : [  "isn_thermalgenerator" ],
-  
+
   "inventoryIcon" : "fu_alternatorgeneratoricon.png",
   "orientations" : [
     {
@@ -29,18 +30,18 @@
   },
   "animationPosition" : [0, 0],
   "soundEffect" : "/objects/power/fu_alternatorgenerator/fu_alternatorgenerator.wav",
-  
+
   "slotCount" : 1,
   "uiConfig" : "/objects/power/fu_alternatorgenerator/fu_alternatorgenerator.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
-  
+
   "scripts" : [ "/scripts/fupower.lua","/scripts/fugenerator.lua"],
   "scriptDelta" : 60,
-  
+
   "inputNodes" : [ [2, 2],[0, 2] ],
   "outputNodes" : [ [2, 1] ],
-  
+
   "powertype" : "output",
   "acceptablefuel" : {
 	  "coalore" : 7,

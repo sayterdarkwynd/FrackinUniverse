@@ -1,7 +1,7 @@
 {
   "objectName" : "thelusianceilinglamp",
   "colonyTags" : ["thelusian", "light"],
-  "rarity" : "uncommon",
+  "rarity" : "common",
   "category" : "light",
   "lightColor" : [122, 255, 126],
   "price" : 160,
@@ -22,14 +22,24 @@
     {
       "imageLayers" : [ { "image" : "thelusianceilinglamp.png:<color>.<frame>", "fullbright" : true }, { "image" : "thelusianceilinglamplit.png:<color>.<frame>" } ],
       "imagePosition" : [-8, 0],
-      
+
       "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "thelusianceilinglamp.png:<color>.<frame>", "fullbright" : true }, { "image" : "thelusianceilinglamplit.png:<color>.<frame>" } ],
+      "imagePosition" : [-8, 0],
+
+      "flipImages" : true,
+      "direction" : "left",
 
       "spaceScan" : 0.1,
       "anchors" : [ "top" ]
     }
   ],
-  
+
   "animation" : "/objects/wired/light/lighttoggle.animation",
   "animationParts" : {
     "light" : "thelusianceilinglamp.png"
@@ -38,9 +48,9 @@
 
   "scripts" : [ "/objects/wired/light/light.lua" ],
   "scriptDelta" : 60,
-  
-  "interactive" : true,
+
+  "interactive" : false,
 
   "inputNodes" : [ [0, 0] ]
-  
+
 }

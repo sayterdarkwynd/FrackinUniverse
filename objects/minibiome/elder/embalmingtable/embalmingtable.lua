@@ -12,7 +12,7 @@ function getInputContents()
 
         local contents = {}
         for i=0,2 do
-            local stack = world.containerItemAt(entity.id(),i)
+            local stack = world.containerItemAt(id, i)
             if stack ~=nil then
                 if contents[stack.name] ~= nil then
                   contents[stack.name] = contents[stack.name] + stack.count
@@ -27,7 +27,7 @@ function getInputContents()
 
 function map(l,f)
     local res = {}
-    for k,v in ipairs(l) do
+    for _,v in ipairs(l) do
         local val = f(v)
         if val ~= nil then
           table.insert(res, val)

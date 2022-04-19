@@ -18,9 +18,9 @@
     "electricbow" : "poptopHunting",
     "cosmicbow" : "poptopHunting",
     "radioactivebow" : "poptopHunting",
-    "shadowbow" : "poptopHunting" 
+    "shadowbow" : "poptopHunting"
     }
-  ], 
+  ],
 
   "baseParameters" : {
     "scripts" : [
@@ -31,7 +31,7 @@
   "tickEvoTime" : 5,
   "agingEvoTime" : 500,
   "evolutions" : [ "/scripts/golemancer/evolutions/adultshadowtop.evo" ],
-  
+
     "behavior" : "monster",
 
     "behaviorConfig" : {
@@ -54,7 +54,7 @@
           "parameters" : {
             "maximumRange" : 3,
             "minimumRange" : 1,
-            "windupState" : "firewindup",
+            "windupState" : "firewindup2",
             "windupTime" : 0.5,
 
             "projectileType" : "meleebite",
@@ -71,7 +71,7 @@
 
             "winddownState" : ""
           }
-        },           
+        },
         {
           "name" : "action-fire",
           "cooldown" : 6,
@@ -99,9 +99,9 @@
 
             "winddownState" : ""
           }
-        },   
+        },
         {
-          "name" : "action-leap", 
+          "name" : "action-leap",
           "cooldown" : 3,
           "parameters" : {
             "minimumRange" : 3,
@@ -118,7 +118,7 @@
             "winddownTime" : 0.6,
             "winddownState" : "idle"
           }
-        }, 
+        },
         {
           "name" : "action-charge",
           "cooldown" : 3,
@@ -270,13 +270,13 @@
         },
         "poisonStatusImmunity" : {
           "baseValue" : 1
-        }, 
+        },
         "insanityImmunity" : {
           "baseValue" : 1
         },
         "wetImmunity" : {
           "baseValue" : 1
-        }         
+        }
       },
 
       "resources" : {
@@ -296,7 +296,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "shadowtop" }
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "shadowtop" }
   }
 }

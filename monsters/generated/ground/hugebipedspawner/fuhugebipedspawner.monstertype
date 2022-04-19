@@ -1,0 +1,124 @@
+{
+  "type" : "fuhugebipedspawner",
+  "shortdescription" : "Mega-Fauna Egg",
+  "description" : "The tiny egg of a massive primeval creature. It looks about ready to hatch!",
+  "categories" : [ "fuhugebipedspawner" ],
+  "parts" : [ "body" ],
+
+  "animation" : "fuhugebipedspawner.animation",
+  "reversed" : false,
+
+  "dropPools" : [
+    {
+      "default" : "empty"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "walkingcritter",
+    "deathBehavior" : "monster-death",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : false,
+      "targetQueryRange" : 0,
+      "targetOnDamage" : false,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 0,
+      "targetOutOfSightTime" : 0,
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [ ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-suicide",
+          "cooldown" : 0,
+          "parameters" : {
+            "minimumRange" : 0,
+            "maximumRange" : 7,
+            "onGround" : false,
+            "windupTime" : 0.05,
+            "windupStopForce" : 0,
+            "windupState" : ""
+          }
+        }
+      ],
+
+      "approachActions" : [ ],
+
+      "followActions" : [ ],
+
+      "wanderActions" : [ ],
+
+      "spawnActions" : [ ],
+
+      "deathActions" : [
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [0,10],
+            "monsterType" : "fuhugebiped",
+            "replacement" : true
+          }
+        }
+      ]
+    },
+    "metaBoundBox" : [-2.5, -0.5, 2.5, 11],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-2.5, -0.5], [2.5, -0.5], [2.5, 11], [-2.5, 11] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 1.5,
+      "runSpeed" : 1.5,
+      "jumpSpeed" : 1.5
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "",
+    "deathParticles" : "deathPoof",
+
+    "damageTeamType" : "passive",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "maxHealth" : {
+          "baseValue" : 0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false,
+    "relocatable" : false,
+    "captureHealthFraction" : 1.0,
+    "nametagColor" : [64, 200, 255]
+  }
+}

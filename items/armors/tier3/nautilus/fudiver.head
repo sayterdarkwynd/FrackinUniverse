@@ -3,7 +3,7 @@
   "inventoryIcon" : "icons.png:head",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Rare",
+  "rarity" : "uncommon",
   "description" : "^cyan;Swim Boost 1^reset;, ^cyan;Headlamp 2^reset;
 ^orange;Set Bonuses^reset;:
 ^yellow;^reset; +^green;87.5^reset;s Air, +^green;50^reset;% Breath Regen
@@ -16,9 +16,9 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "melee", "explorer" ],
   "level" : 3,
-  "collectablesOnPickup" : { "fu_armorprotection" : "fudiverhead" },
+  //"collectablesOnPickup" : { "fu_armorprotection" : "fudiverhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -50,9 +50,9 @@
   "statusEffects" : [
     "headlamp2",
     "swimboost1",
-    "fusetbonusmanager",
+    "nautilussetbonus",
     {
-      "stat" : "nautilussetcount",
+      "stat" : "fu_nautilusset_head",
       "amount" : 1
     }
   ],
@@ -95,5 +95,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

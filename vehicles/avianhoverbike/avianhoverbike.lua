@@ -555,15 +555,15 @@ function updateDamage()
     end
   end
 
-  function appendTrackingVelocity(trackedVelocities, newVelocity)
+  function appendTrackingVelocity(trackedVelocities)
     table.insert(trackedVelocities, newVelocity)
     while #trackedVelocities > self.accelerationTrackingCount do
       table.remove(trackedVelocities, 1)
     end
   end
 
-  appendTrackingVelocity(self.collisionDamageTrackingVelocities, newVelocity)
-  appendTrackingVelocity(self.collisionNotificationTrackingVelocities, newVelocity)
+  appendTrackingVelocity(self.collisionDamageTrackingVelocities)
+  appendTrackingVelocity(self.collisionNotificationTrackingVelocities)
 end
 
 function minimumSpringDistance(points)

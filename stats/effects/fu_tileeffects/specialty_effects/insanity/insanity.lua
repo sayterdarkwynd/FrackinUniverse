@@ -1,14 +1,14 @@
 function init()
-	--local bounds = mcontroller.boundBox()
 	script.setUpdateDelta(5)
 	self.tickDamagePercentage = 0.0005
 	self.tickTime = 5.0
 	self.tickTimer = self.tickTime
 	activateVisualEffects()
 	self.timers = {}
-	_x = config.getParameter("defenseModifier", 0)
+	--this section is actually useless since the effects dont have this parameter. also, badly implemented.
+	--[[_x = config.getParameter("defenseModifier", 0)
 	baseValue = config.getParameter("defenseModifier",0)*(status.stat("protection"))
-	effect.addStatModifierGroup({{stat = "protection", amount = baseValue }})
+	effect.addStatModifierGroup({{stat = "protection", amount = baseValue }})]]
 end
 
 function activateVisualEffects()
@@ -39,7 +39,7 @@ function update(dt)
 		self.tickTimer = self.tickTime
 		status.applySelfDamageRequest({
 			damageType = "IgnoresDef",
-			effect.addStatModifierGroup({{stat = "protection", amount = baseValue }}),
+			--effect.addStatModifierGroup({{stat = "protection", amount = baseValue }}),
 			damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage) + 1,
 			damageSourceKind = "poison",
 			sourceEntityId = entity.id(),

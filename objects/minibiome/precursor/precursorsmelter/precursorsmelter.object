@@ -3,46 +3,59 @@
   "colonyTags" : [ "precursor"],
   "printable" : false,
   "rarity" : "legendary",
-  "description" : "Built to process entire worlds into cyberspheres.",
-  "shortdescription" : "Precursor Forge",
+  "description" : "Built to process entire worlds into cyberspheres. Sifts and crushes blocks. ^cyan;Requires ^orange;120W ^cyan;power.^reset;",
+  "shortdescription" : "^cyan;Precursor Forge^reset;",
   "race" : "precursor",
-  "category" : "crafting",
-  "price" : 2000,
-  "interactAction" : "OpenCraftingInterface",
-  "interactData" : {
-    "config" : "/interface/windowconfig/fissionfurnace.config",
-    "filter" : [ "craftingfurnace", "craftingfurnace2", "craftingfurnace3", "fissionfurnace" ],
-    "paneLayoutOverride": {
-      "windowtitle": {
-        "title": " Precursor Forge",
-        "subtitle": " ^#b9b5b2;Ancient Smelting",
-        "icon": {
-          "file": "/interface/crafting/craftingfurnace4.png"
-        }
-      }
-    }
-  },
+  "category" : "^orange;Extraction Device^reset;",
+  "price" : 4000,
+  "objectType" : "container",
+  "hydrophobic" : false,
 
   "inventoryIcon" : "precursorsmeltericon.png",
   "orientations" : [
     {
-      "direction" : "left",
-      "imageLayers" : [ { "image" : "precursorsmelter.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursorsmelterlit.png:<color>.<frame>" } ],
-      "imagePosition" : [-40, 0],
+      "dualImage" : "precursorsmelter.png:<color>.<frame>",
+
+      "imagePosition" : [0, 0],
       "frames" : 1,
-      "animationCycle" : 1.0,
+      "animationCycle" : 1,
 
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
-    },
-    {
-      "direction" : "right",
-      "imageLayers" : [ { "image" : "precursorsmelter.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursorsmelterlit.png:<color>.<frame>" } ],
-      "imagePosition" : [-24, 0],
-      "frames" : 1,
-      "animationCycle" : 1.0,
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-    }    
-  ]
+    }
+  ],
+  "animation" : "precursorsmelter.animation",
+  "animationParts" : {
+    "centrifuge" : "precursorsmelter.png",
+    "centrifugefullbright" : "precursorsmelterfullbright.png"
+  },
+
+  "scripts" : [ "/scripts/fupower.lua", "/objects/bees/centrifuge.lua" ],
+
+  "scriptDelta" : 20,
+  "recipeGroup" : "centrifuge",
+  "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
+  "slotCount" : 26,
+  "uiConfig" : "/objects/power/isn_powdersifter/isn_powdersifter.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "craftDelay": 0.04,
+  "itemChances": {
+    "rarest": 0.012,
+    "rare": 0.045,
+    "uncommon": 0.105,
+    "normal": 0.225,
+    "common": 0.375
+  },
+
+  "inputSlot": 2,
+
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
+
+  "centrifugeType" : "precursor",
+  "powertype" : "input",
+  "isn_requiredPower" : 120
 }

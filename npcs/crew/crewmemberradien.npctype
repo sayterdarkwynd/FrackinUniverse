@@ -1,39 +1,35 @@
 {
   "type" : "crewmemberradien",
-  "baseType" : "crewmember",
+  "baseType" : "fu_crewmember",
   "npcname" : "Sievert Gray",
-  //"disableWornArmor" : false,
-    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.25} ], 
-  "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
 
+  "scriptConfig" : {
     "crew" : {
       "defaultUniform" : {
         "head" : "fudesertwalkerhead",
         "chest" : "fudesertwalkerchest",
         "legs" : "fudesertwalkerpants"
-        },
+      },
 
       "role" : {
+        "type" : "chemist",
+        "name" : "X'ian Explorer",
+        "field" : "X'ian Explorer",
+        "uniformColorIndex" : 6,
+
         "benefits" : [
           {
             "type" : "ShipUpgradeBenefit",
             "property" : "fuelEfficiency",
             "value" : 0.2
-          },        
+          },
           {
             // Ephemeral effects gained upon leaving the ship
             "type" : "EphemeralEffect",
             "effect" : "ffextremeradiationimmunityicon",
             "duration" : 300
           }
-        ],
-        "type" : "chemist",
-        "name" : "Radien Explorer",
-        "field" : "Radien Explorer",
-        "uniformColorIndex" : 6
+        ]
       }
     },
 
@@ -51,24 +47,9 @@
             "default" : [
               "I absorb radiation! Handy, that!"
             ]
-          },
-          "floran" : {
-            "default" : [
-              "Floran hasss things to help you out!",
-              "Floran can help out!",
-              "Floran hasss things to help!"
-            ]
-          },
-          "glitch" : {
-            "default" : [
-              "Eager. I can help you out!",
-              "Excited. Perhaps you could do with a power-up!",
-              "Intrigued. I wonder if this will help you?",
-              "Helpful. Take this, it will help!"
-            ]
           }
         }
-      }
+	  }
     }
   },
 
@@ -78,10 +59,7 @@
           {
             "primary" : [ "advalloydagger" ],
             "alt" : ["durasteelshield"],
-            "sheathedprimary" : [ "furailgun" ],
-			"head" :  [{ "name" : "fudesertwalkerhead", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
-			"chest" : [ { "name" : "fudesertwalkerchest", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
-            "legs" : [ { "name" : "fudesertwalkerpants", "count" :1, "parameters" : { "colorIndex" : 6 } } ]
+            "sheathedprimary" : [ "furailgun" ]
           }
         ] ]
     ]

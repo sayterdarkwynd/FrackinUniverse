@@ -1,7 +1,7 @@
 {
   "metadata" : {
     "name" : "avianencounter",
-    "species" : "dummy",
+    "species" : "avian",
     "rules" : [
     ],
     "anchor" : [ "aviancave", "aviandock", "aviangrave", "avianluxury", "avianhunter", "villagerhouse1", "villagerhouse2" ],
@@ -2028,88 +2028,38 @@
   "parts" : [
     {
       "name" : "aviancave",
-      "rules" : [ ],
+      "rules": [["maxSpawnCount", [1]]],
       "def" : [ "image", [ "aviancave.png", "aviancaveobjects.png" ] ]
     },
     {
       "name" : "aviandock",
-      "rules" : [ ],
+      "rules": [["maxSpawnCount", [1]]],
       "def" : [ "image", [ "aviandock.png", "aviandockobjects.png" ] ]
     },
     {
       "name": "aviangrave",
-      "rules": [
-        [
-          "maxSpawnCount",
-          [
-            1
-          ]
-        ]
-      ],
-      "def": [
-        "tmx",
-         "aviangrave.json"
-      ]
+      "rules": [["maxSpawnCount", [1]]],
+      "def": ["tmx", "aviangrave.json"]
     },
     {
       "name": "avianluxury",
-      "rules": [
-        [
-          "maxSpawnCount",
-          [
-            1
-          ]
-        ]
-      ],
-      "def": [
-        "tmx",
-         "avianluxury.json"
-      ]
+      "rules": [["maxSpawnCount", [1]]],
+      "def": ["tmx", "avianluxury.json"]
     },
     {
       "name": "avianhunter",
-      "rules": [
-        [
-          "maxSpawnCount",
-          [
-            1
-          ]
-        ]
-      ],
-      "def": [
-        "tmx",
-         "avianhunter.json"
-      ]
+      "rules": [["maxSpawnCount", [1]]],
+      "def": ["tmx", "avianhunter.json"]
     },
     {
       "name": "villagerhouse1",
-      "rules": [
-        [
-          "maxSpawnCount",
-          [
-            1
-          ]
-        ]
-      ],
-      "def": [
-        "tmx",
-         "villagerhouse1.json"
-      ]
+      "rules": [["maxSpawnCount", [1]]],
+      "def": ["tmx", "villagerhouse1.json"]
     },
     {
       "name": "villagerhouse2",
-      "rules": [
-        [
-          "maxSpawnCount",
-          [
-            1
-          ]
-        ]
-      ],
-      "def": [
-        "tmx",
-         "villagerhouse2.json"
-      ]
+      "rules": [["maxSpawnCount", [1]]],
+      "def": ["tmx", "villagerhouse2.json"]
     }
   ]
 }

@@ -1,0 +1,32 @@
+{
+	"itemName": "nightmarefuel",
+	"rarity": "rare",
+	"price": 75,
+	"category": "preparedFood",
+	"inventoryIcon": "nightmarefuel.png",
+	"description": "An ominous coffee-like substance for robotic consumers. \n^cyan;+^reset;35%^green; Energy^reset;^red; Nightmare^reset; 180s^reset;^cyan;+^reset;1^blue; Madness^reset; Food Type:^yellow; Robot^reset;",
+	"shortdescription": "Nightmare Fuel",
+	"effects": [
+        ["madnessgain2", "robot_food",
+        {
+            "effect": "maxenergyscalingboostfood",
+            "duration": 180,
+            "energyModifier": 1.35
+        },
+        {
+            "effect": "shadowoverlay",
+            "duration": 180
+        },
+        {       "effect": "insanity",
+                "duration": 180
+            }
+        ]
+    ],
+	"foodValue": 40,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 0.2,
+	"blockingEffects": ["wellfed"]
+}

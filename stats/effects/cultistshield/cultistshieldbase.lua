@@ -3,8 +3,7 @@ function init()
 	local buffer={}
 	local resists={}
 
-
-	for element,data in pairs(elementaltypes) do
+	for _,data in pairs(elementaltypes) do
 		if data.resistanceStat then
 			buffer[data.resistanceStat]=true
 		end

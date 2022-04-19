@@ -1,13 +1,8 @@
 {
   "type" : "crewmemberscuba",
-  "baseType" : "crewmember",
-  //"disableWornArmor" : false,
-    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.25} ], 
-  "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
+  "baseType" : "fu_crewmember",
 
+  "scriptConfig" : {
     "crew" : {
       "defaultUniform" : {
         "head" : "fudiverhead",
@@ -16,22 +11,23 @@
       },
 
       "role" : {
+        "type" : "chemist",
+        "name" : "Diver",
+        "field" : "Harpooning",
+        "uniformColorIndex" : 6,
+
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
             "type" : "EphemeralEffect",
             "effect" : "swimboost2",
             "duration" : 300
-          },         
+          },
           {
             "type" : "Regeneration",
             "value" : 1
           }
-        ],
-        "type" : "chemist",
-        "name" : "Diver",
-        "field" : "Harpooning",
-        "uniformColorIndex" : 6
+        ]
       }
     },
 
@@ -40,10 +36,10 @@
         "fieldBenefit" : {
           "default" : {
             "default" : [
-              "Want to swim faster?!!?",
+              "Want to swim faster?!",
               "Let me help you out!",
-              "Looks like you could use my assistance!",
-              "I can help!"
+              "Looks like you could use a little swim boost!",
+              "Jump right in, the water's fine!"
             ]
           }
         },
@@ -67,25 +63,10 @@
         "combatBenefit" : {
           "default" : {
             "default" : [
-              "Want to swim faster?!!?",
+              "Want to swim faster?!",
               "Let me help you out!",
-              "Looks like you could use my assistance!",
-              "I can help!"
-            ]
-          },
-          "floran" : {
-            "default" : [
-              "Floran hasss things to help you out!",
-              "Floran can help out!",
-              "Floran hasss things to help!"
-            ]
-          },
-          "glitch" : {
-            "default" : [
-              "Eager. I can help you out!",
-              "Excited. Perhaps you could do with a power-up!",
-              "Intrigued. I wonder if this will help you?",
-              "Helpful. Take this, it will help!"
+              "Looks like you could use a little swim boost!",
+              "Jump right in, the water's fine!"
             ]
           }
         }
@@ -98,10 +79,7 @@
       [0, [
           {
             "primary" : [ "randomharpoongun" ],
-            "sheathedprimary" : [ "coralspear" ],
-			"head" :  [{ "name" : "fudiverhead", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
-			"chest" : [ { "name" : "fudiverchest", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
-            "legs" : [ { "name" : "fudiverlegs", "count" :1, "parameters" : { "colorIndex" : 6 } } ]          
+            "sheathedprimary" : [ "coralspear" ]
           }
         ] ]
     ]

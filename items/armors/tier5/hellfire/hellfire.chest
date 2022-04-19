@@ -9,16 +9,16 @@
 ^yellow;^reset; ^cyan;Fire Nova when hit^reset;
 ^yellow;^reset; ^#ac522b;Glow^reset;
 ^yellow;^reset; Flamethrower/Hellfire: Damage x^green;1.25^reset;
-^yellow;^reset; ^cyan;Immune^reset;: Deadly Heat, Burning",
+^yellow;^reset; ^cyan;Immune^reset;: Extreme Heat, Burning",
   "shortdescription" : "Hellfire Chest",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "defensive", "melee", "hyper" ],
   "maleFrames" : { "body" : "chest.png", "backSleeve" : "bsleeve.png", "frontSleeve" : "fsleeve.png" },
   "femaleFrames" : { "body" : "chest.png", "backSleeve" : "bsleeve.png", "frontSleeve" : "fsleeve.png" },
 
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armortank" : "hellfirechest" },
+  //"collectablesOnPickup" : { "fu_armortank" : "hellfirechest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -55,5 +55,5 @@
     }
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

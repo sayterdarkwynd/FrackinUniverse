@@ -5,13 +5,13 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "^orange;Set Bonuses^reset;: 
+  "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; Daggers: +^green;20^reset;/^green;40^reset;% Crit Damage
-^yellow;^reset; ^cyan;Immune^reset;: Snow, Slush, Ice, Deadly Cold",
+^yellow;^reset; ^cyan;Immune^reset;: Snow, Slush, Ice, Extreme Cold",
   "shortdescription" : "Wolf Coat",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "offensive", "melee", "hyper" ],
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -25,7 +25,7 @@
   },
 
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorexplorer" : "fuwolfchest2" },
+  //"collectablesOnPickup" : { "fu_armorexplorer" : "fuwolfchest2" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -58,6 +58,10 @@
     "wolfsetbonus2",
     {
       "stat" : "fu_wolfset2_chest",
+      "amount" : 1
+    },
+    {
+      "stat" : "fu_wolfset_chest",
       "amount" : 1
     }
   ],
@@ -100,5 +104,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

@@ -8,23 +8,28 @@
   "race" : "generic",
   "category" : "furniture",
   "price" : 65,
-
+  "objectType" : "loungeable",
+  "sitFlipDirection" : false,
   "inventoryIcon" : "fuokeahitechsofaicon.png",
   "orientations" : [
     {
-      "dualImage" : "fuokeahitechsofa.png:<color>",
-
+      "image" : "fuokeahitechsofa.png:<color>",
+      "sitCoverImage" : "/objects/pixelgoods/fuokeahitechsofaoverlay.png",
       "imagePosition" : [-12, 0],
-      "frames" : 1,
-      "animationCycle" : 1.0,
-
+      "direction" : "left",
+      "flipImages" : true,
+      "sitPositions" : [[-22,22],[0, 22]],
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
-
+    },
+    {
+      "image" : "fuokeahitechsofa.png:<color>",
+      "sitCoverImage" : "/objects/pixelgoods/fuokeahitechsofaoverlay.png",
+      "imagePosition" : [-12, 0],
+      "direction" : "right",
+      "sitPositions" : [[2, 22],[24, 22]],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
     }
-  ],
-
-  "objectType" : "loungeable",
-  "sitFlipDirection" : false,
-  "sitPosition" : [2, 22]
+  ]
 }

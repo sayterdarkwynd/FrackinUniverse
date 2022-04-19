@@ -3,7 +3,7 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Rare",
+  "rarity" : "uncommon",
   "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; +^green;87.5^reset;s Air, +^green;50^reset;% Breath Regen
 ^yellow;^reset; Oceans: Damage x^green;1.15^reset;, +^green;5^reset;% Speed, +^green;3^reset;% Crit Damage
@@ -23,9 +23,9 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "melee", "explorer" ],
   "level" : 3,
-  "collectablesOnPickup" : { "fu_armorprotection" : "fudiverchest" },
+  //"collectablesOnPickup" : { "fu_armorprotection" : "fudiverchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -55,9 +55,9 @@
   ],
 
   "statusEffects" : [
-    "fusetbonusmanager",
+    "nautilussetbonus",
     {
-      "stat" : "nautilussetcount",
+      "stat" : "fu_nautilusset_chest",
       "amount" : 1
     }
   ],
@@ -102,5 +102,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

@@ -2,8 +2,8 @@
   "itemName" : "quietusknave",
   "price" : 640,
   "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "A fine quietus weapon",
+  "rarity" : "rare",
+  "description" : "A fine quietus weapon.",
   "shortdescription" : "Knave's Blade",
   "tooltipKind" : "sword2",
   "category" : "dagger",
@@ -11,7 +11,7 @@
   "itemTags" : ["weapon","melee","dagger","quietus", "upgradeableWeapon"],
   "level" : 4,
   "inventoryIcon" : "quietusknave.png",
-  "collectablesOnPickup" : { "fu_weapondagger" : "quietusknave" },
+  //"collectablesOnPickup" : { "fu_weapondagger" : "quietusknave" },
   "animation" : "daggercombo.animation",
   "animationParts" : {
     "handle" : "",
@@ -19,10 +19,10 @@
   },
 
   "animationCustom" : {
-    "animatedParts" : { 
-      "parts" : { 
+    "animatedParts" : {
+      "parts" : {
         "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}      
+        "swoosh" : { "properties" : {"offset" : [1, 2]}}
       }
     }
   },
@@ -40,8 +40,8 @@
       "knockback" : 10
     }
   },
-  "critChance" : 1, 
-  "critBonus" : 6, 
+  "critChance" : 1,
+  "critBonus" : 6,
   "stunChance" : 50,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -2,7 +2,7 @@
   "type" : "megaburrower_segment",
   "shortdescription" : "Burrower Segment",
   "description" : "A segment of a camoflauged burrowing worm",
- 
+
  "categories" : [ "megaburrower_segment" ],
   "parts" : [ "body" ],
 
@@ -30,27 +30,27 @@
       "targetOutOfSightTime" : 2.5,
       "damageTakenActions" : [
         {
-          "name" : "action-statuseffect", 
+          "name" : "action-statuseffect",
           "cooldown" : 4,
           "parameters" : {
             "effect" : "mage_shield_lvl4starspawn",
             "duration" : 2
           }
-        }         
-      ],  
+        }
+      ],
       "hostileActions" : [
         {
          "cooldown" : 4,
           "name" : "action-projectile",
           "parameters" : {
             "projectileCount" : 1,
-            "projectileType" : "gasburst",
-            "projectileConfig" : {"timeToLive" : 2,"power":2},
+            "projectileType" : "gasburstxith",
+            "projectileConfig" : {"timeToLive" : 4,"power":2},
             "aimDirection" : [0, 0],
             "fireOffset" : [0, 0]
           }
-        }        
-      ],      
+        }
+      ],
       "deathActions" : [
         {
           "name" : "action-projectile",
@@ -66,7 +66,7 @@
         {
           "name" : "action-projectile",
           "parameters" : {
-            "projectileType" : "uraniumdeath",
+            "projectileType" : "lasombriumdeath",//was uranium
             "power" : 0,
             "aimDirection" : [0, 0],
             "fireOffset" : [0, 0]
@@ -171,23 +171,23 @@
         },
         "sulphuricImmunity" : {
           "baseValue" : 1
-        },        
+        },
         "shadowResistance" : {
          "baseValue" : 0.66
         },
         "shadowStatusImmunity" : {
          "baseValue" : 1
         },
-        "cosmicStatusImmunity" : { 
+        "cosmicStatusImmunity" : {
          "baseValue" : 1
         },
-        "cosmicResistance" : { 
-         "baseValue" : 0.55 
+        "cosmicResistance" : {
+         "baseValue" : 0.55
         },
-        "radioactiveStatusImmunity" : { 
+        "radioactiveStatusImmunity" : {
         "baseValue" : 1
         },
-        "radioactiveResistance" : { 
+        "radioactiveResistance" : {
         "baseValue" : 0.55
         }
       },

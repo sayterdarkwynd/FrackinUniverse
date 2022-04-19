@@ -1,35 +1,33 @@
 {
-  "id" : "create_clothingfabricator3d",
-  "prerequisites" : [ "create_clothingfabricator3c" ],
-  "title" : "Insanity and Rage.",
-  "text" : "I'm unsure I can trust you after that whole ^orange;orange fruit^reset; thing, but we'll try again I guess. You ever laid hands on some ^orange;Plasmic Crystal^reset;? If so, I could use about 20. For...reasons. Certainly not involving large flightless birds and carnage.",
-  "completionText" : "Excellent. Now I can distill raw rage into crystalline form and feed it to my babies! Just in time for the ballet! Take this crap as a thanks.",
-  "moneyRange" : [10, 20],
-  "rewards" : [ [ [ "siliconboard", 100 ], [ "fumadnessresource", 1000 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "create_clothingfabricator3d",
+	"prerequisites" : [ "create_clothingfabricator3c" ],
+	"title" : "Insanity and Rage.",
+	"text" : "I'm unsure I can trust you after that whole ^orange;orange fruit^reset; thing, but we'll try again I guess. You ever laid hands on some ^orange;Plasmic Crystal^reset;? If so, I could use about 20. For...reasons. Certainly not involving large flightless birds and carnage.",
+	"completionText" : "Excellent. Now I can distill raw rage into crystalline form and feed it to my babies! Just in time for the ballet! Take this crap as a thanks.",
+	"moneyRange" : [10, 20],
+	"rewards" : [ [ [ "siliconboard", 100 ], [ "fumadnessresource", 1000 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : true,
+		"requireTurnIn" : true,
 
-    "turnInDescription" : "Bring ^red;Kevin^reset; 20 ^orange;Plasmic Crystals^reset;.",
+		"turnInDescription" : "Bring ^red;Kevin^reset; 20 ^orange;Plasmic Crystals^reset;.",
 
-
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "blooddiamond",
-        "count" : 20,
-        "consume" : true
-      }
-    ]
-  }
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "blooddiamond",
+				"count" : 20,
+				"consume" : true
+			}
+		]
+	}
 }

@@ -7,17 +7,17 @@
   "rarity" : "rare",
   "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; ^cyan;Low Gravity^reset;
-^yellow;^reset; ^cyan;Immune^reset;: Poison, Pus, Bio-Ooze", 
+^yellow;^reset; ^cyan;Immune^reset;: Poison, Pus, Bio-Ooze",
   "shortdescription" : "Wretchel Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "ranged", "explorer" ],
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorranged" : "wretchelhead" },
+  //"collectablesOnPickup" : { "fu_armorranged" : "wretchelhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -52,8 +52,7 @@
       "stat" : "fu_wretchelset_head",
       "amount" : 1
     }
-  ], 
-
+  ],
 
   "colorOptions" : [
     /* PURPLE */
@@ -65,5 +64,5 @@
 
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

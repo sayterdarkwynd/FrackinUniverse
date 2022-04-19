@@ -1,5 +1,12 @@
 { "backgroundcolor":"#000000",
  "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "target":"."
+        }
+    },
  "height":60,
  "infinite":false,
  "layers":[
@@ -254,9 +261,31 @@
          "name":"monsters & npcs",
          "objects":[
                 {
-                 "gid":8965,
+                 "gid":9016,
                  "height":16,
-                 "id":758,
+                 "id":760,
+                 "name":"",
+                 "properties":
+                    {
+                     "object":"extrainvisiblenpcspawnerworld",
+                     "parameters":"{ \"spawner\" : { \"npcSpecies\" : [\"human\"], \"npcTypes\" : [\"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistassault\", \"cultistassault\", \"cultistassault\", \"cultistassault\", \"cultistsniper\", \"cultistsniper\", \"cultistrocket\" ], \"npcParams\" : { \"aggressive\" : true, \"persistent\" : true }, \"position\" : [0, 2], \"positionVariance\" : [0, 0], \"spawnchance\": 40, \"frequency\" : [0.2, 0.2], \"stock\" : 8, \"trigger\" : \"wire\", \"outOfSight\" : false } }"
+                    },
+                 "propertytypes":
+                    {
+                     "object":"string",
+                     "parameters":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":304,
+                 "y":352
+                }, 
+                {
+                 "gid":7962,
+                 "height":16,
+                 "id":765,
                  "name":"",
                  "rotation":0,
                  "type":"",
@@ -264,47 +293,6 @@
                  "width":16,
                  "x":304,
                  "y":336
-                }, 
-                {
-                 "gid":7870,
-                 "height":8,
-                 "id":759,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"parameters",
-                         "type":"string",
-                         "value":"{ \"detectArea\" : [ [-9999, -9999], [9999, 9999] ], \"detectEntityTypes\" : [ \"player\" ]}"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":304,
-                 "y":320
-                }, 
-                {
-                 "gid":9016,
-                 "height":16,
-                 "id":760,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"object",
-                         "type":"string",
-                         "value":"extrainvisiblenpcspawnerworld"
-                        }, 
-                        {
-                         "name":"parameters",
-                         "type":"string",
-                         "value":"{ \"spawner\" : { \"npcSpecies\" : [\"human\"], \"npcTypes\" : [\"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistassault\", \"cultistassault\", \"cultistassault\", \"cultistassault\", \"cultistsniper\", \"cultistsniper\", \"cultistrocket\" ], \"npcParams\" : { \"aggressive\" : true, \"persistent\" : true }, \"position\" : [0, 2], \"positionVariance\" : [0, 0], \"spawnchance\": 40, \"frequency\" : [0.2, 0.2], \"stock\" : 8, \"trigger\" : \"wire\", \"outOfSight\" : false } }"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":304,
-                 "y":352
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -318,26 +306,6 @@
          "id":7,
          "name":"wiring - locked door",
          "objects":[
-                {
-                 "height":0,
-                 "id":763,
-                 "name":"",
-                 "polyline":[
-                        {
-                         "x":0,
-                         "y":0
-                        }, 
-                        {
-                         "x":-8,
-                         "y":8
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":312,
-                 "y":312
-                }, 
                 {
                  "height":0,
                  "id":764,
@@ -624,17 +592,16 @@
                  "height":104,
                  "id":749,
                  "name":"",
-                 "properties":[
-                        {
-                         "name":"parameters",
-                         "type":"string",
-                         "value":"{\"locationType\":\"garden.graveyard\"}"
-                        }, 
-                        {
-                         "name":"stagehand",
-                         "type":"string",
-                         "value":"questlocation"
-                        }],
+                 "properties":
+                    {
+                     "parameters":"{\"locationType\":\"garden.graveyard\"}",
+                     "stagehand":"questlocation"
+                    },
+                 "propertytypes":
+                    {
+                     "parameters":"string",
+                     "stagehand":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -660,7 +627,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":765,
+ "nextobjectid":766,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.2",
@@ -808,10 +775,10 @@
         }, 
         {
          "firstgid":8982,
-         "source":"..\/..\/..\/..\/..\/frackin\/tilesets\/extradungeons-custom\/modstuff.json"
+         "source":"..\/..\/..\/..\/tilesets\/extradungeons-custom\/modstuff.json"
         }],
  "tilewidth":8,
  "type":"map",
- "version":1.4,
+ "version":1.1,
  "width":75
 }

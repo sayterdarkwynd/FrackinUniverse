@@ -1,33 +1,53 @@
 {
-  "objectName" : "weed3",
-  "rarity" : "Common",
-  "category" : "decorative",
-  "price" : 400,
-  "printable" : false,  
-  "description" : "weed",
-  "shortdescription" : "weed",
-  "race" : "apex",
+    "objectName": "weed3",
+    "rarity": "Common",
+    "category": "decorative",
+    "price": 400,
+    "printable": false,
+    "description": "Weedy weeds",
+    "shortdescription": "Weed",
+    "race": "apex",
+    "inventoryIcon": "weed3.png",
+    "orientations": [
+        {
+            "image": "weed3.png:<color>",
+            "imagePosition": [
+                0,
+                0
+            ],
+            "frames": 1,
+            "animationCycle": 0.5,
+            "spaceScan": 0.1,
+            "anchors": [
+                "bottom"
+            ]
+        }
+    ],
+    "smashSounds": [
+        "/sfx/tools/axe_chop_alt_heavy.ogg"
+    ],
+    "smashDropOptions": [
+        [
+            [
+                "wildvines",
+                1,
+                {
 
-  "inventoryIcon" : "weed3.png",
-  "orientations" : [
-    {
-      "image" : "weed3.png:<color>",
-      "imagePosition" : [0, 0],
-      "frames" : 1,
-      "animationCycle" : 0.5,
+                }
+            ]
+        ]
+    ],
+    "breakDropOptions": [
+        [
+            [
+                "wildvines",
+                1,
+                {
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-
-    }
-  ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
-  "smashDropOptions" : [
-    [ [ "wildvines", 1, { } ] ]
-  ],
-
-  "breakDropOptions" : [
-    [ [ "wildvines", 1, { } ] ]
-  ],
-  "biomePlaced" : true
+                }
+            ]
+        ]
+    ],
+    "biomePlaced": true,
+    "scannable": false
 }

@@ -3,7 +3,7 @@
   "price" : 1000,
   "level" : 4,
   "maxStack" : 1,
-  "rarity" : "Uncommon",
+  "rarity" : "rare",
   "description" : "A fantastic foe-stabber.
 ^cyan;Hunting weapon^reset;",
   "shortdescription" : "Quietus Spear",
@@ -13,7 +13,7 @@
   "itemTags" : ["weapon","melee","spear","quietus", "upgradeableWeapon"],
 
   "inventoryIcon" : "quietusspear.png",
-  "collectablesOnPickup" : { "fu_weaponspear" : "quietusspear" },
+  //"collectablesOnPickup" : { "fu_weaponspear" : "quietusspear" },
   "animation" : "/items/active/weapons/melee/spear/spear.animation",
   "animationParts" : {
     "handle" : "",
@@ -43,10 +43,14 @@
     }
   },
   "altAbilityType" : "flurry",
-  "altAbility" : { },
+  "altAbility" : {
+    "damageConfig" : {
+      "damageSourceKind" : "bow"
+    }
+  },
 
   "critChance" : 1,
   "critBonus" : 16,
-  
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

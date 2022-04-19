@@ -1,0 +1,24 @@
+{
+	"itemName": "cinnamonsugarcups",
+	"rarity": "common",
+	"price": 35,
+	"category": "preparedFood",
+	"inventoryIcon": "cinnamonsugarcups.png",
+	"description": "Good with a cup of coffee! \n^cyan;+^reset;15%^green; HP^reset; Food Type:^green; Herb Dessert^reset;",
+	"shortdescription": "Cinnamon Sugar Cups",
+	"effects": [
+        ["herb_dessert",
+        { "effect" : "maxhealthscalingboostfood",
+            "duration": 240,
+            "healthModifier": 1.15
+        }
+        ]
+    ],
+	"foodValue": 20,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}

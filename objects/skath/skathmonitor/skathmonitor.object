@@ -9,27 +9,38 @@
   "flickerDistance" : 0.2,
   "flickerStrength" : 0.05,
   "flickerTiming" : 4,
-  "description" : "A Skath monitor for monitoring things.",
+  "description" : "A Skath monitor, for monitoring things.",
   "shortdescription" : "Skath Monitor",
   "race" : "skath",
 
   "apexDescription" : "I can't really decipher this. I wonder what this monitor is for.",
   "avianDescription" : "The flickering of the screen makes me feel dizzy. I can't read what it says.",
-  "floranDescription" : "Floran isss not interested in sssilly screen.",
-  "glitchDescription" : "Confused. The writings of the Skath are still unreadable for me.",
-  "humanDescription" : "It appears to be a monitor of some sorts but what is it monitoring?",
-  "hylotlDescription" : "The writings of the Skath are still a mystery to so many. Not that I care about it though.",
-  "novakidDescription" : "Some mighty fine lookin monitor. Can't read what it says though.",
-
-        "skathDescription" : "This monitor displays a map and some basic informations about this location.",
-//  "volarianDescription" : "TODO.",
-//  "placeholderDescription" : "TODO.",
+  "floranDescription" : "Floran not interested in sssilly screen.",
+  "glitchDescription" : "Confused. The writings of the Skath are still unreadable by me.",
+  "humanDescription" : "It appears to be a monitor of some sort, but what is it monitoring? And who monitors the monitor?",
+  "hylotlDescription" : "The writings of the Skath are still a mystery to so many.",
+  "novakidDescription" : "A mighty fine lookin' monitor. Can't read what it says though.",
+  "skathDescription" : "This monitor displays a map and basic locational information.",
 
   "inventoryIcon" : "skathmonitoricon.png",
   "orientations" : [
     {
-      "dualImage" : "skathmonitor.png:<color>.<4>",
+      "image" : "skathmonitor.png:<color>.<key>",
       "imagePosition" : [-8, 0],
+      "animationPosition" : [-8, -0],
+
+      "flipImages" : true,
+      "direction" : "left",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "skathmonitor.png:<color>.<key>",
+      "imagePosition" : [-8, 0],
+      "animationPosition" : [-8, -0],
+
+      "direction" : "right",
 
       "spaceScan" : 0.1,
       "anchors" : [ "background" ]
@@ -37,12 +48,12 @@
   ],
 
   "scripts" : [
-    "/objects/wired/switch/switch.lua",
+    "/objects/wired/light/light.lua",
     "/scripts/npcToyObject.lua"
   ],
-  "scriptDelta" : 5,
+  "scriptDelta" : 60,
 
-  "animation" : "/objects/wired/switch/switch3.animation",
+  "animation" : "/objects/skath/skathmonitor/skathmonitor.animation",
   "animationCustom" : {
     "sounds" : {
       "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
@@ -50,11 +61,11 @@
     }
   },
   "animationParts" : {
-    "switch" : "skathmonitor.png"
+    "bg" : "skathmonitor.png",
+    "fg" : "skathmonitorlit.png"
   },
-  "animationPosition" : [-8, 0],
 
-  "outputNodes" : [ [0, 0] ],
+  "inputNodes" : [ [0, 0] ],
 
   "npcToy" : {
     "ownerOnly" : true,

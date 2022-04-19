@@ -1,26 +1,27 @@
 {
   "type" : "crewmemberchef2",
-  "baseType" : "crewmember",
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
-
     "crew" : {
       "defaultUniform" : {
         "head" : "chefhead",
         "chest" : "chefchest",
         "legs" : "cheflegs"
-        },
+      },
 
       "role" : {
+        "type" : "chemist",
+        "name" : "Line Chef",
+        "field" : "Cooking",
+        "uniformColorIndex" : 3,
+
         "benefits" : [
           {
             "type" : "ShipUpgradeBenefit",
             "property" : "fuelEfficiency",
             "value" : 0.04
-          },        
+          },
          {
             "type" : "EphemeralEffect",
             "effect" : "feedpackcrew2ground",
@@ -29,12 +30,8 @@
           {
             "type" : "PersistentEffect",
             "effect" : "feedpackcrew2"
-          }   
-        ],
-        "type" : "chemist",
-        "name" : "Line Chef",
-        "field" : "Cooking",
-        "uniformColorIndex" : 3
+          }
+        ]
       }
     },
 
@@ -80,10 +77,7 @@
     "default" : [
       [0, [
           {
-            "primary" : [ "fryingpan" ],
-			"head" :  [{ "name" : "chefhead", "count" :1, "parameters" : { "colorIndex" : 3 } } ],
-			"chest" : [ { "name" : "chefchest", "count" :1, "parameters" : { "colorIndex" : 3 } } ],
-            "legs" : [ { "name" : "cheflegs", "count" :1, "parameters" : { "colorIndex" : 3 } } ]
+            "primary" : [ "fryingpan" ]
           }
         ] ]
     ]

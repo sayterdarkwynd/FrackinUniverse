@@ -4,7 +4,7 @@
   "price" : 150,
   "inventoryIcon" : "carbonbowicon.png",
   "maxStack" : 1,
-  "rarity" : "rare",
+  "rarity" : "uncommon",
   "tooltipKind" : "bow2",
   "weaponType" : "Bow",
   "description" : "A carbon hunting bow, monsters killed with a bow drop tasty meat.",
@@ -33,16 +33,16 @@
   "scripts" : ["/items/active/weapons/bow/bow.lua"],
 
   "elementalType" : "physical",
-  "collectablesOnPickup" : { "fu_weaponbow" : "carbonbow" },
-  
+  //"collectablesOnPickup" : { "fu_weaponbow" : "carbonbow" },
+
   "primaryAbilityType" : "rngbows_enhancedbowshot",
-  "primaryAbility" : {    
-  "drawTime" : 1.0,				//Time to fully draw the bow
-	"powerProjectileTime" : 0.215,	//After fully drawing, the bow is super-charged for this long
-	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows	
-	"energyPerShot" : 40,			
-	"holdEnergyUsage" : 4,				
-	"airborneBonus" : 1.45,	
+  "primaryAbility" : {
+  "drawTime" : 1.0,        //Time to fully draw the bow
+  "powerProjectileTime" : 0.215,  //After fully drawing, the bow is super-charged for this long
+  "dynamicDamageMultiplier" : 1.0,  //All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+  "energyPerShot" : 40,
+  "holdEnergyUsage" : 4,
+  "airborneBonus" : 1.45,
     "projectileType" : "ironarrow",
     "powerProjectileType" : "chargedironarrow",
     "projectileParameters" : {
@@ -59,7 +59,7 @@
   "altAbility" : {
     "name" : "Explosive Arrow",
     "drawTime" : 1.5,
-    "powerProjectileTime" : 0.3,	//After fully drawing, the bow is super-charged for this long
+    "powerProjectileTime" : 0.3,  //After fully drawing, the bow is super-charged for this long
     "energyPerShot" : 70,
     "projectileType" : "ironarrow",
     "powerProjectileType" : "explosivebolt",
@@ -72,8 +72,8 @@
       "piercing" : false
     }
   },
-  
+
   "critChance" : 4,
-  "critBonus" : 13, 
+  "critBonus" : 13,
   "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

@@ -8,7 +8,7 @@
 ^yellow;Inflicts Radiation Burn^reset;",
   "shortdescription" : "Crippler Machinegun",
   "category" : "assaultRifle",
-  "level" : 4,
+  "level" : 5,
   "tooltipKind" : "gun2",
   "weaponType" : "Energy",
   "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon"],
@@ -22,13 +22,13 @@
     "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
   },
   "animationCustom" : {
-    "particleEmitters":{  
-      "altMuzzleFlash":{  
+    "particleEmitters":{
+      "altMuzzleFlash":{
         "offsetRegion":[0.3,0.125,1.2,1.2],
         "emissionRate":0.0,
         "particles":[{"particle":"energyblade2"}]
       }
-    },  
+    },
     "sounds" : {
       "fire" : [ "/sfx/weapons/dkmarauder3.wav" ],
       "altFire":["/sfx/melee/laser_weapon_swing1.ogg"]
@@ -91,72 +91,72 @@
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
-  "recoilForce" : 300,   
-  
+  "recoilForce" : 300,
+
   "altAbilityType" : "piercingshot",
   "altAbility" : {
-    "stances":{  
-      "idle":{  
+    "stances":{
+      "idle":{
         "armRotation":0,
         "weaponRotation":0,
         "twoHanded":true,
         "allowRotate":true,
         "allowFlip":true,
-        "weaponOffset":[  
+        "weaponOffset":[
           -1,
           -2
         ]
       },
-      "fire":{  
+      "fire":{
         "duration":0,
         "armRotation":3,
         "weaponRotation":-6,
         "twoHanded":true,
         "allowRotate":false,
         "allowFlip":false,
-        "weaponOffset":[  
+        "weaponOffset":[
           -1,
           -2
         ]
       },
-      "cooldown":{  
+      "cooldown":{
         "duration":0.0,
         "armRotation":3,
         "weaponRotation":-6,
         "twoHanded":true,
         "allowRotate":false,
         "allowFlip":false,
-        "weaponOffset":[  
+        "weaponOffset":[
           -1,
           -2
         ]
       }
-    },  
+    },
     "name" : "Stun Sphere",
     "baseDps" : 0,
     "fireTime" : 0.01,
     "energyUsage" : 40,
     "inaccuracy" : 0,
     "projectileCount" : 1,
-    "fireType" : "auto",    
+    "fireType" : "auto",
     "projectileType":"meleeslash",
-    "projectileParameters":{  
-      "periodicActions":[  
+    "projectileParameters":{
+      "periodicActions":[
 
       ],
       "piercing":false,
       "damageKind":"hidden",
       "processing":"?0",
-      "statusEffects":[  
-        {  
+      "statusEffects":[
+        {
           "effect":"levitation",
           "duration":0.2
         },
-        {  
+        {
           "effect":"electricaura",
           "duration":0.2
         },
-        {  
+        {
           "effect":"stun",
           "duration":0.2
         }
@@ -166,17 +166,17 @@
       "timeToLive":0.5,
       "power":0.0,
       "knockback":0,
-      "actionOnReap":[  
-        {  
+      "actionOnReap":[
+        {
           "time":0.01,
-          "offset":[  
+          "offset":[
             0,
             0
           ],
           "angle":0,
           "action":"projectile",
           "type":"gravitysphere",
-          "config":{  
+          "config":{
             "statusEffects":[],
             "damageKind":"hidden",
             "processing":"?0",

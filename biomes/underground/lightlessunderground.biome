@@ -6,16 +6,17 @@
     "groups" : [
       {
         "select" : 3,
-        "pool" : [ 
+        "pool" : [
           [ 0.03, "burrower_depth_selector" ],
           [ 0.1, "anglure5" ],
           [ 0.1111, "anglure6" ],
           [ 0.08, "pteropod2" ],
-          [ 0.1, "seedspawn2" ],        
-          [ 0.1, "furatthing2" ],    
+          [ 0.1, "seedspawn2" ],
+          [ 0.1, "furatthing2" ],
           [ 0.05, "crutter2" ],
           [ 0.05, "fublackbat" ],
-          [ 0.2, "fearmoth" ], 
+          [ 0.1, "illumitop" ],
+          [ 0.2, "fearmoth" ],
           [ 0.1, "shadowtop" ],
           [ 0.05, "adultshadowtop" ],
           [ 0.05, "blackgiantscorpion" ],
@@ -25,11 +26,11 @@
       },
       {
         "select" : 1,
-        "pool" : [ 
+        "pool" : [
           [ 0.20, "bighairyfrank" ],
           [ 0.05, "bighairyfrankboss" ]
         ]
-      },      
+      },
       {
         "select" : 3,
         "pool" : [
@@ -62,7 +63,7 @@
     "mainBlock" : "darkstone",
     "subBlocks" : [ "darkness", "hiveold" ],
     "ores" : "ff_deepsurfaceshadowOres",
-    
+
   "parallax" : "/parallax/underground/penumbraunderground.parallax",
 
   "ambientNoises" : {
@@ -79,7 +80,7 @@
       "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 
@@ -96,13 +97,13 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.30, "exoniteseed" ]
               ],
               "parameters" : { "startingStage" : 3 }
             }
           ]
-        },    
+        },
       {
         "mode" : "background",
         "priority" : 1.0,
@@ -116,17 +117,17 @@
             "parameters" : {  "materials" : ["mud", "cobblestone", "bonematerial"]}
           }
         ]
-      },    
+      },
            {
              "mode" : "floor",
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
               [0.50, "groundspike1" ],
               [0.50, "groundspike2" ],
               [0.50, "groundspike3" ],
@@ -135,17 +136,17 @@
                  "parameters" : { "startingStage" : 3 }
                }
              ]
-           },    
+           },
            {
              "mode" : "ceiling",
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
               [0.50, "ceilingspike1" ],
               [0.50, "ceilingspike2" ],
               [0.50, "ceilingspike3" ],
@@ -160,19 +161,19 @@
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
-              [0.50, "wilddarklightflower" ],    
-              [0.50, "copperrock" ], 
+                 "pool" : [
+              [0.50, "wilddarklightflower" ],
+              [0.50, "copperrock" ],
               [0.50, "copperrocksmall" ],
               [0.50, "silverrock" ],
               [0.50, "silverrocksmall" ],
               [0.50, "goldrock" ],
               [0.05, "timeobelisk" ],
-              [0.50, "goldrocksmall" ]           
+              [0.50, "goldrocksmall" ]
                  ],
                  "parameters" : { "startingStage" : 3 }
                }
@@ -205,7 +206,7 @@
             "parameters" : { }
           }
         ]
-      },        
+      },
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -288,7 +289,7 @@
 
         "type" : "microdungeon",
         "microdungeons" : [ "fuunderground" ]
-      }      
+      }
     ]
   },
     "hueShiftOptions" : [0]

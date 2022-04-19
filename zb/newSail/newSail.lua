@@ -45,7 +45,7 @@ function init()
 	end
 
 	if noError then
-		local status, err = pcall(customDatainit)
+		status, err = pcall(customDatainit)
 		if not status then
 			enableFailsafe(err)
 		end
@@ -799,7 +799,7 @@ function populateMiscList()
 					local argStr=varName:match("%((.+)%)")
 					local args={}
 					if type(argStr)=="string" then
-						for k,v in (argStr):gmatch("[^,]+") do
+						for k in (argStr):gmatch("[^,]+") do
 							if k=="true" then
 								k = true
 							elseif k=="false" then

@@ -14,7 +14,7 @@
   "fixedLevel" : false,
 
   "radioMessagesOnPickup" : [ "pickupbow" ],
-  
+
   "animation" : "generatedbow.animation",
   "animationParts" : { },
   "animationCustom" : { },
@@ -26,9 +26,9 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/bow/abilities/rngbows/rngbowshot.lua"],
     "class" : "NebRNGBowShot",
-	
+
 		"fireOffset" : [0.75, 0],
-		
+
 		//Config for animated cursor
 		"cursorFrames" : [
 			"/cursors/animated/rngbowsrotate/neb-rngbowreticle1.cursor",
@@ -39,16 +39,16 @@
 			"/cursors/animated/rngbowsrotate/neb-rngbowreticle6.cursor",
 			"/cursors/animated/rngbowsrotate/neb-rngbowreticle7.cursor"
 		],
-		
+
     "drawTime" : [0.5, 1.4],				//Time to fully draw the bow
     "powerProjectileTime" : [0.105, 0.35],		//After fully drawing, the bow is super-charged for this long
     "energyPerShot" : [30, 41],				//Total energy consumption for a full draw
     "holdEnergyUsage" : [3, 18],			//Energy consumption per second while fully drawn
     "airborneBonus" : 1.25,				//A dmg multiplier for when airborne
-	
+
     "cooldownTime" : 0.2,				//Time between firing and drawing the next arrow
     "inaccuracy" : 0.0,					//Inaccuracy of the shot
-	
+
 	"walkWhileFiring" : true,		//If true, prevents the player from running while drawing the bow
 	"useQuiverDamageBonus" : true,		//If true, allows this bow to use quiver damage bonuses
 
@@ -62,7 +62,7 @@
     "projectileParameters" : {
       "knockbackRange" : [2,4],
       "speed" : 85,
-      "power" : 8
+      "power" : 7
     },
     "powerProjectileType" : "rng<elementalType>powerarrow",
     "powerProjectileParameters" : {
@@ -101,7 +101,7 @@
 
   "critChance" : 3,
   "critBonus" : 10,
-  
+
   "builder" : "/items/buildscripts/neb-buildrandombow.lua",
   "builderConfig" : [{
     "elementalType" : [

@@ -7,12 +7,12 @@
   "description" : "Fire condensed freedom at enemies of capitalism.",
   "shortdescription" : "^red;FR^white;EED^blue;OM^reset;",
   "level" : 4,
-  "category" : "rocketLauncher", 
+  "category" : "rocketLauncher",
   "tooltipKind" : "gununique",
   "weaponType" : "rocketLauncher",
   "itemTags" : ["weapon","ranged","rocketlauncher", "upgradeableWeapon"],
   "twoHanded" : true,
-  
+
   "cursor" : "/cursors/cursor_freedom.cursor",
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
@@ -30,7 +30,7 @@
           { "particle" : "fireember", "offset" : [0.05, -0.4] }
         ]
       }
-    },    
+    },
     "sounds" : {
       "fire" : [ "/sfx/weapons/freedom.ogg" ],
       "altFire" : [ "/sfx/weapons/freedom.ogg" ]
@@ -39,7 +39,7 @@
 
   "baseOffset" : [-0.2, 0.62],
   "muzzleOffset" : [1.645, 0.125],
-  
+
   "scripts" : ["/items/active/scripts/thea-gun.lua"],
 
   "elementalType" : "freedom",
@@ -50,14 +50,14 @@
     "fireTime" : 4,
     "baseDps" : 12.65,
     "energyUsage" : 55.5,
-    
+
     "inaccuracy" : 0,
 
     "projectileCount" : 1,
     "fireType" : "auto",
 
     "projectileType" : "freedommissile",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 55,
       "knockback" : 35
     },
@@ -108,8 +108,8 @@
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 300,
-  "recoilForce" : 1500, 
-  
+  "recoilForce" : 1500,
+
   "altAbilityType" : "swtjc_ewg_rocketjump",
   "altAbility" : {
   "name" : "F$%@* YEA!",
@@ -130,7 +130,7 @@
 	      "inheritDamageFactor" : 0.2,
 	      "fuzzAngle" : 360
 	   }
-	  ],    
+	  ],
        "actionOnReap" : [
 	    {
 	      "action" : "config",
@@ -139,7 +139,7 @@
 	    {
 	      "action" : "config",
 	      "file" : "/projectiles/explosions/freedomexplosion.config"
-	    }    
+	    }
        ]
      }
   },

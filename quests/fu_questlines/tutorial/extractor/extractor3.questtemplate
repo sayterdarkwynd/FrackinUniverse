@@ -1,34 +1,32 @@
 {
-  "id" : "extractor3",
-  "prerequisites" : [ "extractor2" ],
-  "title" : "The Extractor III",
-  "text" : "If you have spare ^orange;Dirt^reset;...and you certainly will...^green;why not extract it^reset;? You'll get something useful for 50 ^orange;Dirt^reset;.",
-  "completionText" : "See? Not so hard. Let's move on, shall we?",
-  "moneyRange" : [0, 0],
-  "rewards" : [ [ [ "glassmaterial", 100 ] ] ],
-  "speaker" : "questGiver",
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"id" : "extractor3",
+	"prerequisites" : [ "extractor2" ],
+	"title" : "The Extractor III",
+	"text" : "If you have spare ^orange;Dirt^reset;...and you certainly will...^green;why not extract it^reset;? You'll get something useful for 50 ^orange;Dirt^reset;.",
+	"completionText" : "See? Not so hard. Let's move on, shall we?",
+	"moneyRange" : [0, 0],
+	"rewards" : [ [ [ "glassmaterial", 100 ] ] ],
+	"speaker" : "questGiver",
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,  
-    "turnInDescription" : "Bring the ^green;Nutrient Paste^reset; to the scientist at the ^orange;Science Outpost^reset;",
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "fuscienceresource",
-        "count" : 5,
-        "consume" : false
-      }
-    ]
-  }
+		"requireTurnIn" : false,
+		"turnInDescription" : "Bring the ^green;Nutrient Paste^reset; to the scientist at the ^orange;Science Outpost^reset;",
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "fuscienceresource",
+				"count" : 5,
+				"consume" : false
+			}
+		]
+	}
 }

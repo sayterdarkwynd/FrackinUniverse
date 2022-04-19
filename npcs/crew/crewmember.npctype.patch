@@ -1,24 +1,69 @@
 [
   {
+    "op": "replace",
+    "path": "/innateStatusEffects/1/amount",
+    "value": -0.2
+  },
+  {
+    "op": "replace",
+    "path": "/innateStatusEffects/0/amount",
+    "value": -10
+  },
+  {
     "op": "add",
-    "path": "/crewModifier",
-    "value": 20
+    "path": "/innateStatusEffects/-",
+    "value": {
+      "stat": "fallDamageMultiplier",
+      "effectiveMultiplier": 0
+    }
+  },
+  {
+    "op": "add",
+    "path": "/statusControllerSettings/stats/specialStatusImmunity",
+    "value": {
+      "baseValue": 1.0
+    }
   },
 
-  {"op" : "add", 
-  "path" : "/scriptConfig/crew/uniformSlots/-",
-  "value" : "back"
+  {
+    "op": "replace",
+    "path": "/items/default/0/1/1/sheathedprimary/0",
+    "value": "fuprotectoratesniper"
   },
-  {"op" : "add", 
-  "path" : "/scriptConfig/crew/uniformSlots/-",
-  "value" : "backCosmetic"
-  },  
-  {"op" : "add", 
-  "path" : "/scriptConfig/crew/uniformSlots/-",
-  "value" : "head"
+  {
+    "op": "replace",
+    "path": "/items/default/0/1/1/primary/0",
+    "value": "tungstenbroadsword"
   },
-  {"op" : "add", 
-  "path" : "/scriptConfig/crew/uniformSlots/-",
-  "value" : "headCosmetic"
-  }  
-]  
+  {
+    "op": "replace",
+    "path": "/items/default/0/1/0/sheathedprimary/0",
+    "value": "tungstenbroadsword"
+  },
+  {
+    "op": "replace",
+    "path": "/items/default/0/1/0/primary/0",
+    "value": "fuprotectoraterifle"
+  },
+
+  {
+    "op" : "add",
+    "path" : "/scriptConfig/crew/uniformSlots/-",
+    "value" : "back"
+  },
+  {
+    "op" : "add",
+    "path" : "/scriptConfig/crew/uniformSlots/-",
+    "value" : "backCosmetic"
+  },
+  {
+    "op" : "add",
+    "path" : "/scriptConfig/crew/uniformSlots/-",
+    "value" : "head"
+  },
+  {
+    "op" : "add",
+    "path" : "/scriptConfig/crew/uniformSlots/-",
+    "value" : "headCosmetic"
+  }
+]

@@ -1,18 +1,21 @@
-NOTICE: 
+NOTICE:
  > YES, THERE ARE SOME REDUNDANT STATS IN HERE.
  > YES, THEY ARE ALL NEEDED. For instance, if you want to add immunity to something like mudslow, add fumudslow AND mudslow.
- 
+
  > [0-Relative] means that THE STATS ARE ORIENTED AROUND 0. This means that the default state is 0. These must use [amount] or [effectiveMultiplier]. [effectiveMultiplier] will only have an effect if other sources use [amount]!
  > [X-Relative] means that THE STATS ARE ORIENTED AROUND X (As example:1). Default values are stated.
- 
+
  > [baseMultiplier]: This means that the default state is X (100%). Values < 1 subtract from this stat, and values > 1 add to this stat. (e.g. 0.5 means "50% of this stat's value")
  > [effectiveMultiplier]: applies a multiplier. 0.5 means half of whatever the stat currently is. 2 means twice.
- 
+
  > [armorStatA]: stats that use [amount] on armor stat lists and [effectiveMultiplier] on pretty much every other case
  > [armorStatB]: stats that use [baseMultiplier] on armor stat lists and [effectiveMultiplier] on pretty much every other case
- 
- > [boolean] means that THE VALUE IS A SWITCH, AND MUST BE OFF (0) OR ON (1). No other values are legal.
 
+ > [boolean] means that THE VALUE IS A SWITCH, AND MUST BE OFF (0) OR ON (1). No other values are legal. that said, typically any value that isnt 0 is treated as true.
+
+ > [fixed]: special case. stat comes only in specific values
+
+ > [Variant]: it has specific cases it can be, but varies by context.
 
 RESISTANCES: These use float values (0.5 is 50% Resistance)
 	ELEMENTAL:
@@ -20,18 +23,18 @@ RESISTANCES: These use float values (0.5 is 50% Resistance)
 		poisonResistance            [amount] [0-Relative]
 		iceResistance               [amount] [0-Relative]
 		electricResistance          [amount] [0-Relative]
-		
+
 		radioactiveResistance       [amount] [0-Relative]
 		shadowResistance            [amount] [0-Relative]
 		darknessResistance          [amount] [0-Relative] - not used in FU anywhere. is on a few races.
 		cosmicResistance            [amount] [0-Relative]
-		
-		
+
+
 	PHYSICAL:
 		physicalResistance          [amount] [0-Relative]
 		grit                        [amount] [0-Relative] - Impacts knockback from big hits. See /stats/*_primary.lua
-		
-		
+
+
 	OTHER:
 		mentalProtection            [amount] [0-Relative] - Impacts insanity effect frequency and potency, and madness decay.
 
@@ -42,99 +45,143 @@ IMMUNITIES
         fumudslowImmunity           [amount] [Boolean]
         fuclayslowImmunity          [amount] [Boolean]
         jungleslowImmunity          [amount] [Boolean]
-        
+
         slushslowImmunity           [amount] [Boolean]
         snowslowImmunity            [amount] [Boolean]
         snowslipImmunity            [amount] [Boolean]
         iceslipImmunity             [amount] [Boolean]
-        
+
         tarImmunity                 [amount] [Boolean]
         tarStatusImmunity           [amount] [Boolean]
         blacktarImmunity            [amount] [Boolean]
-		
+
         quicksandImmunity           [amount] [Boolean]
-        
+
         slimefrictionImmunity       [amount] [Boolean] - this is basically only used on certain enemy effects.
         slimestickImmunity          [amount] [Boolean] - This is for tiles
         honeyslowImmunity           [amount] [Boolean]
         webstickImmunity            [amount] [Boolean]
-		
+
         stunImmunity                [amount] [Boolean]
-        
-        
+
+
     ENVIRONMENT_WEATHER_AND_ELEMENTAL:
         biomecoldImmunity           [amount] [Boolean]
         ffextremecoldImmunity       [amount] [Boolean]
         liquidnitrogenImmunity      [amount] [Boolean]
         iceStatusImmunity           [amount] [Boolean]
         coldimmunity    			[amount] [Boolean]
-		
+
         biomeheatImmunity           [amount] [Boolean]
         ffextremeheatImmunity       [amount] [Boolean]
         fireStatusImmunity          [amount] [Boolean] - burning
         lavaImmunity                [amount] [Boolean]
-		
+
         biomeradiationImmunity      [amount] [Boolean]
         ffextremeradiationImmunity  [amount] [Boolean]
         radiationburnImmunity       [amount] [Boolean]
-		
+
         poisonStatusImmunity        [amount] [Boolean]
+        poisongasImmunity           [amount] [Boolean] - poison gas weather
         biooozeImmunity             [amount] [Boolean]
-		
+        boozeImmunity               [amount] [Boolean]
+
         electricStatusImmunity      [amount] [Boolean]
-		
+
         sandstormImmunity           [amount] [Boolean]
-		
+
         breathProtection            [amount] [Boolean] - includes water breath protection
         waterbreathProtection       [amount] [Boolean] - anti-drowning
-		
+
         waterImmunity               [amount] [Boolean] - blocks swimming
         wetImmunity                 [amount] [Boolean] - blocks 'wet' effects
-		
+
         pressureProtection          [amount] [Boolean] - These two are put together everywhere. Use both, even if this one isn't used on any biome effects.
         extremepressureProtection   [amount] [Boolean]
-		
+        negativeMiasma              [amount] [Boolean] - negates (extreme) pressure protection. not actually used.
+
         beestingImmunity            [amount] [Boolean] - BEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEES!
         erchiusImmunity             [amount] [Boolean] - because big spooky ghosty is a nuisance
         slimeImmunity               [amount] [Boolean] - vanilla, rarely used.
-		
+
         darknessImmunity            [amount] [Boolean] - unbreachable darkness
-        shadowImmunity              [amount] [Boolean] - shadow taint, shadow gas
+        shadowImmunity              [amount] [Boolean] - shadow taint, caliginous (formerly shadow) gas
+		metallichydrogengasImmunity [amount] [Boolean] - not actually used.
         insanityImmunity            [amount] [Boolean] - nearly all forms of madness
+		freudBonus                  [amount] [0-Relative] - see /quests/madness/madnessdata.lua. tl;dr: higher number, madness decays faster. lower number, madness decays slower.
         aetherImmunity              [amount] [Boolean]
-        
-  
+
+
     MISC:
-        specialStatusImmunity       [amount] [Boolean] - Used almost exclusively on bosses.
+        specialStatusImmunity       [amount] [Boolean] - Used almost exclusively on bosses. when 'hard targets' are referred to, it means targets with this.
         healingStatusImmunity       [amount] [Boolean] - Used primarily on bosses.
-    
+		invulnerable                [amount] [Boolean] - immunity to damage. vanilla. appears engine-side.
+		statusImmunity              [amount] [Boolean] - Typically Binary (0 or 1), blanket ephemeral status immunity. vanilla. appears engine-side.
 
 OTHER:
     maxHealth                       [armorStatB]     	  [X-Relative, Default:100]
     healthRegen                     [amount]              [0-Relative] - Flat value regenerated each second.
 	healingBonus                    [amount]              [0-Relative, Float] Used as a percentage increase to healing effects. 0.05 is +5%.
-	
+	xiBonus                         [amount] [0-Relative] - applies to xi bulbs' healing mechanic.
+
     maxEnergy                       [armorStatB]		  [X-Relative, Default: 100]
     energyRegenBlockTime            [baseMultiplier]      [X-Relative, Default: 1.5] - Delay in seconds til regen starts.
     energyRegenPercentageRate       [baseMultiplier]      [X-Relative, Default: 0.585] - Result: 1.75 second recharge time
-    
-    maxFood                         [any] 				  [X-Relative, Default: 70]
+
+    maxFood                         [any] 				  [X-Relative, Default: 70] Source: FU
     noFood                          [amount]              [Boolean] - doesn't really do anything?
     foodDelta                       [baseMultiplier]      [X-Relative, Default: -0.0583] Results in -70 food over 20 minutes. Flat modifier to food per second.
-    
+	foodImmunity                    [amount] [Boolean]    immunity to the effects of food.
+
     maxBreath                       [amount]              [Static Number, Default: 100]
-    breathDepletionRate             [baseMultiplier]      [X-Relative, Default: 4]
-    breathRegenerationRate          [amount]              [Static Number, Unit unknown: Breath/sec? Default: 10]
-	
+    breathDepletionRate             [baseMultiplier]      [X-Relative, Default: 4] due to how some numpty coded things, this is effectively applied TWICE.
+    breathRegenerationRate          [amount]              [Static Number, Unit unknown: Breath/sec? Default: 10] due to how some numpty coded things, this is effectively applied TWICE.
+	boostAmount                     [Variant]             COMPLICATED. this is used for swim boosts effects. base is 1, effects ADD 1 to the base, then multiply by a value.
+	riseAmount                      [Variant]             COMPLICATED. swim code stuff.
+
     shieldRegen                     [amount]              [Unknown. Default: 0]
+    perfectBlockLimit               [amount]              [Unknown. Default: ?]
     perfectBlockLimitRegen          [amount]              [Unknown. Default: 0.2]
     shieldStaminaRegen          	[amount]              [Unknown. Default: 0.2]
-    
+
     protection                      [armorStatA]		  [0-Relative]
     powerMultiplier                 [armorStatB]      	  [1-Relative]
 	knockbackThreshold				[any]				  [Unknown. Default: 9]
-    fallDamageMultiplier            [effectiveMultiplier] [1-Relative]
-    
-    bowDrawTimeBonus                [amount]              [Unknown]
-    
+    fallDamageMultiplier            [effectiveMultiplier] [1-Relative] DO NOT use baseMultiplier. We want to avoid players getting fall damage immunity from additive sources.
+    jumpModifier                    [amount] [1-Relative] vanilla thing.
+	activeMovementAbilities         [amount]              [0-Relative] Typically Binary (0 or 1), used to block movement related abilities. vanilla.
+
+	arrowSpeedMultiplier			[amount]			  [0-relative] additive multiplier to projectile speed on bows.
+	bowAirBonus                     [amount]              [0-Relative] additive damage multiplier while airborne, only for supported bow/crossbow weapons. primarily added by quivers.
+	bowEnergyBonus                  [amount]              [0-Relative] positive value, subtracted from bow drain.
+	nebsrngbowdamagebonus           [amount]              [0-Relative] additive damage multiplier, only for supported bow/crossbow weapons. primarily added by quivers.
+    bowDrawTimeBonus                [amount]              [0-Relative] increases bow draw speed.
+
+	critChance                      [amount]              [0-relative. Default: 0] Chance for weapons to crit. value of 42 is 42% chance to crit.
+	critBonus                       [amount]              [0-relative. Default: 0] Bonus Crit Damage. Flat amount added, does not scale with critDamage. Avoid using this stat. It should only be part of weapon config files.
+	critDamage                      [amount]              [0-relative. Default: 0] Bonus to Crit Damage multiplier. This is added to a base value of 1.50, but the stat starts as 0. +0.1 will make the crit damage multiplier 1.6.
+	stunChance                      [amount]              [0-relative. Default: 0] Chance to stun. Requires a crit. value of 42 is 42% chance to stun on crit. so if you have 42% chance for both, that equates to about 17% chance to stun.
+
+	magazineMultiplier				[amount]			  [0-relative] additive multiplier to BASE magazine size, before magazineSize. if a magazine has 1 shot in it,  1.0 will make it 2. magazine size after calculations basically rounds up
+	magazineSize					[amount]			  [0-relative] additive flat increase to magazine size. value of 1 is 1 bullet added to the magazine
+
+	focalRangeMult					[amount]			  [0-relative] additive multiplier to wand/staff max range, is multiplied by 1+ this
+	focalCastTimeMult				[amount]			  [0-relative] additive multiplier to wand/staff cast time = charge stance's duration times 1+this.
+	focalProjectileCountBonus		[amount]			  [0-relative] Increases wand/staff projectile count. this is not a dps increase, as damage is divided per projectile.
+
     fuCharisma                      [baseMultiplier]	  [1-Relative] Used for trading on space stations.
+	fuFoodTrackerHandler			[fixed]				  [-1,0,1] set by fu_player_init. -1 means food isnt draining,1 means it is, 0 means the value isnt initialized.
+
+	fu_<setname>set_<partname>      [amount]              [Variant] metagroup used by armor sets. see each set for whether it does something or not. in most cases, the default value is 1. Most set bonuses require an entire set worn to function.
+	<setname>setcount               [amount]              This will eventually be phased out. hopefully. it's used by "new" set bonus code, which needs removal.
+
+	jumpTechBonus                   [amount]              [0-Relative] used as part of multipliers for scaling FU techs
+	healTechBonus                   [amount]              [0-Relative] used as part of multipliers for scaling FU techs
+	bombTechBonus                   [amount]              [0-Relative] used as part of multipliers for scaling FU techs
+	dashTechBonus                   [amount]              [0-Relative] used as part of multipliers for scaling FU techs
+	dodgeTechBonus                  [amount]              [0-Relative] used as part of multipliers for scaling FU techs
+	defenseTechBonus                [amount]              [0-Relative] used as part of multipliers for scaling FU techs
+	phaseTechBonus                  [amount]              [0-Relative] used as part of multipliers for scaling FU techs
+	gravFlightOverride              [amount] [Boolean]    used by flight techs to disable gravity code
+
+	pandoraBoxExtraPets             [amount]              [0-Relative] increase to pet count

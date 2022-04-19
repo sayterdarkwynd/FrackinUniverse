@@ -1,9 +1,9 @@
 {
   "itemName" : "elduukhartier2shortsword",
   "price" : 260,
-  "level" : 2,
+  "level" : 1,
   "maxStack" : 1,
-  "rarity" : "uncommon",
+  "rarity" : "common",
   "description" : "This sword teaches the crafter to create a sword only with crystal.",
   "shortdescription" : "Emera Shortsword",
   "tooltipKind" : "sword2",
@@ -22,14 +22,20 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "poison",
 
   "primaryAbilityType" : "shortswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.625,
-    "baseDps" : 7.5
+    "baseDps" : 7.5,
+    "damageConfig" : {
+      "damageSourceKind" : "poison"
+    }
   },
 
+  "critChance" : 1,
+  "critBonus" : 4,
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
-  
+
 }

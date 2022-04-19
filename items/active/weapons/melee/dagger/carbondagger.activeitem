@@ -2,7 +2,7 @@
   "itemName" : "fucarbondagger",
   "price" : 140,
   "maxStack" : 1,
-  "rarity" : "common",
+  "rarity" : "uncommon",
   "description" : "Sturdy, and keeps a keen edge.
 ^cyan;Inflicts bleeding^reset;",
   "shortdescription" : "Carbon Knife",
@@ -12,7 +12,7 @@
   "itemTags" : ["weapon","melee","dagger", "upgradeableWeapon"],
   "level" : 3,
   "inventoryIcon" : "carbondagger.png",
-  "collectablesOnPickup" : { "fu_weapondagger" : "fucarbondagger" },
+  //"collectablesOnPickup" : { "fu_weapondagger" : "fucarbondagger" },
   "animation" : "daggercombo.animation",
   "animationParts" : {
     "handle" : "",
@@ -20,10 +20,10 @@
   },
 
   "animationCustom" : {
-    "animatedParts" : { 
-      "parts" : { 
+    "animatedParts" : {
+      "parts" : {
         "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}      
+        "swoosh" : { "properties" : {"offset" : [1, 2]}}
       }
     }
   },
@@ -42,8 +42,8 @@
       "statusEffects" : [ "bleedingshort" ]
     }
   },
-  "critChance" : 3, 
-  "critBonus" : 1, 
+  "critChance" : 3,
+  "critBonus" : 1,
   "stunChance" : 50,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

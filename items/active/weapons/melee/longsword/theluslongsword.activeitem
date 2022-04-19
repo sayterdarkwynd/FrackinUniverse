@@ -7,7 +7,7 @@
   "description" : "A lethal edged weapon of the Thelusians.
 ^cyan;Counts as Hunting weapon^reset;",
   "shortdescription" : "Thelusian Longsword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "longsword",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","longsword", "upgradeableWeapon","thelusian"],
@@ -18,13 +18,13 @@
     "handle" : "",
     "blade" : "theluslongsword.png"
   },
-  "animationCustom" : { 
+  "animationCustom" : {
 	  "sounds" : {
 	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
-	  }  
+	  }
   },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
@@ -40,8 +40,8 @@
     }
   },
 
-  "critChance" : 0.8, 
-  "critBonus" : 11, 
-  
+  "critChance" : 0.8,
+  "critBonus" : 11,
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

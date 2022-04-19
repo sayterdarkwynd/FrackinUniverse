@@ -6,8 +6,8 @@
   "rarity" : "Uncommon",
   "description" : "^orange;Set Bonuses^reset;
 ^yellow;^reset; +^green;5^reset;% Jump, Speed
-^yellow;^reset; +^green;50^reset;% Distortion Bomb Dmg;
-^yellow;^reset; +^green;50^reset;s Oxygen 
+^yellow;^reset; +^green;150^reset;% Bomb Tech Damage
+^yellow;^reset; +^green;50^reset;s Oxygen
 ^yellow;^reset; Assault Rifles, (Machine) Pistols: Damage x^green;1.15^reset;
 ^yellow;^reset; ^cyan;Immune^reset;: Pus, Black Tar",
   "shortdescription" : "Corsair Breastplate",
@@ -25,9 +25,9 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "ranged", "explorer" ],
   "level" : 3,
-  "collectablesOnPickup" : { "fu_armorranged" : "kirhostier3chest" },
+  //"collectablesOnPickup" : { "fu_armorranged" : "kirhostier3chest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -52,9 +52,9 @@
   ],
 
   "statusEffects" : [
-    "fusetbonusmanager",
+    "corsairsetbonus",
     {
-      "stat" : "corsairsetcount",
+      "stat" : "fu_corsairset_chest",
       "amount": 1
     }
   ],
@@ -100,5 +100,5 @@
 
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

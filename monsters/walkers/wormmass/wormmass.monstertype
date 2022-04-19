@@ -6,12 +6,12 @@
   "categories" : [ "wormmass" ],
   "parts" : [ "body" ],
   "reversed" : true,
-  
+
   "animation" : "wormmass.animation",
 
-  "dropPools" : [ 
-    { 
-      "default" : "poptopTreasure", 
+  "dropPools" : [
+    {
+      "default" : "poptopTreasure",
       "bow" : "meatlumpLoot",
       "firebow" : "meatlumpLoot",
       "icebow" : "meatlumpLoot",
@@ -20,9 +20,9 @@
       "cosmicbow" : "meatlumpLoot",
       "radioactivebow" : "meatlumpLoot",
       "shadowbow" : "meatlumpLoot"
-    } 
+    }
   ],
-  
+
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
@@ -30,7 +30,7 @@
 
     "behavior" : "monster",
     "deathBehavior" : "monster-death",
-    
+
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
@@ -42,7 +42,7 @@
 
       "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
 
-      "hostileActions" : [   
+      "hostileActions" : [
         {
           "name" : "action-landing-projectile-hop",
           "cooldown" : 2.0,
@@ -60,11 +60,11 @@
             "power" : 4,
             "fireOffset" : [0,0]
           }
-        }        
+        }
       ],
-      
+
       "concurrentHostileActions" : [],
-      
+
       "periodicActions" : [
         {
           "name" : "action-landing-projectile-hop",
@@ -83,7 +83,7 @@
             "power" : 4,
             "fireOffset" : [0,0]
           }
-        }        
+        }
       ],
 
       "followActions" : [
@@ -99,7 +99,7 @@
           }
         }
       ],
-      
+
       "wanderActions" : [
         {
           "name" : "wander-walk",
@@ -108,7 +108,7 @@
           }
         }
       ],
-      
+
       "damageTakenActions" : [
         {
           "name" : "action-landing-projectile-hop",
@@ -127,9 +127,9 @@
             "power" : 4,
             "fireOffset" : [0,0]
           }
-        }      
+        }
       ],
-      
+
       "deathActions" : [
         {
           "name" : "action-projectile",
@@ -142,7 +142,7 @@
             "fireOffset" : [0, 2]
           }
         }
-      ]      
+      ]
     },
 
     "touchDamage" : {
@@ -211,16 +211,16 @@
         },
         "shadowImmunity" : {
           "baseValue" : 1.0
-        }, 
+        },
         "pusImmunity" : {
           "baseValue" : 1.0
-        },           
+        },
         "bleedingImmunity" : {
           "baseValue" : 1.0
-        },           
+        },
         "stunImmunity" : {
           "baseValue" : 1.0
-        },           
+        },
         "insanityImmunity" : {
           "baseValue" : 1.0
         }
@@ -243,7 +243,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.25,
-    "nametagColor" : [255, 30, 10],
-    "captureCollectables" : { "fu_monster" : "wormmass" }
+    "nametagColor" : [255, 30, 10]//,
+    //"captureCollectables" : { "fu_monster" : "wormmass" }
   }
 }

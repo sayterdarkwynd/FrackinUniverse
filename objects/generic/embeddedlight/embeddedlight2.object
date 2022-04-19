@@ -1,0 +1,44 @@
+{
+  "objectName" : "embeddedlight2",
+  "colonyTags" : ["light"],
+  "rarity" : "Common",
+  "description" : "A floating, nearly-invisible light.",
+  "shortdescription" : "Hidden Light",
+  "race" : "generic",
+  "printable" : true,
+
+  "category" : "light",
+  "price" : 80,
+  "lightColor" : [220, 220, 220],
+
+  "apexDescription" : "A hidden light, floating in the air.",
+  "avianDescription" : "I prefer the glow of avolite crystals, myself.",
+  "floranDescription" : "Sssecret light!",
+  "glitchDescription" : "Observant. A hidden light which floats in the air.",
+  "humanDescription" : "Can't see anything here, but it sure is bright!",
+  "hylotlDescription" : "I appreciate the subtlety of this light source, though I do wish its light was a little more natural.",
+
+  "inventoryIcon" : "/objects/outpost/outpostlight/outpostlighticon.png",
+  "orientations" : [
+    {
+      "image" : "embeddedlight.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.3,
+      "spaceScan" : 0.1
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "embeddedlight.png",
+    "fg" : "embeddedlight.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+}

@@ -6,12 +6,12 @@
   "category" : "^orange;Extraction Device^reset;",
   "printable" : false,
   "objectType" : "container",
- // "learnBlueprintsOnPickup" : [ "extractionlabadv" ],
+  "tooltip" : "base",
 
-  "price" : 450,
+  "price" : 250,
   "inventoryIcon" : "extractionlabicon.png",
-  "description" : "A lab-worthy successor to the Hand Mill that extracts useful materials from most block types.",
-  "shortdescription" : "^cyan;Extraction Lab^white;",
+  "description" : "Extracts useful materials from most blocks. ^cyan;Requires ^orange;10J^cyan; per extraction.^reset; Can be placed on floors -or- ceilings.",
+  "shortdescription" : "^cyan;Extraction Lab^reset;",
   "subtitle" : "Resource converter",
   "orientations" : [
      {
@@ -71,11 +71,8 @@
   ],
 
   "animation" : "extractionlab.animation",
-  "animationParts" : {
-    "samplingarrayanim" : "extractionlab.png"
-  },
-  "scripts" : [ "/objects/generic/extractionlab_common.lua",
-                "/scripts/npcToyObject.lua" ],
+  "animationParts" : {"samplingarrayanim" : "extractionlab.png"},
+  "scripts" : [ "/scripts/fupower.lua", "/objects/generic/extractionlab_common.lua","/scripts/npcToyObject.lua" ],
   "scriptDelta" : 5,
   "recipeGroup" : "extractionlab",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
@@ -84,8 +81,8 @@
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
 
-  "outputNodes" : [ [0, 1] ],
-  "inputNodes" : [ [0, 0] ],
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
 
   "npcToy" : {
     "influence" : [
@@ -105,6 +102,10 @@
     "maxNpcs" : 1
   },
 
+  "inputSlot": 2,
+  "powertype" : "input",
+  "isn_requiredPower" : 10,
+  "isn_liquidCollector" : false,
   "fu_mintick" : 1,
   "fu_stationTechLevel" : 1,
   "fu_timerMod" : 4

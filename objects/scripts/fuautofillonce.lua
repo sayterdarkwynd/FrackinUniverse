@@ -5,7 +5,7 @@ end
 
 function update(dt)
 	if not storage.didFill then
-		for i, item in ipairs(self.autofillContents) do
+		for _, item in ipairs(self.autofillContents) do
 			local numberAvailable = world.containerAvailable(entity.id(), item.name)
 			if numberAvailable < item.count then
 				newItem = {

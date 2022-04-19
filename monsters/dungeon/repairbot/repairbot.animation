@@ -12,7 +12,7 @@
             "mode" : "loop",
             "properties" : {
               "immediateSound" : "/sfx/npc/droid1.ogg"
-            }  
+            }
           },
           "hurt" : {
             "frames" : 7,
@@ -20,8 +20,8 @@
             "mode" : "loop",
             "properties" : {
               "immediateSound" : "/sfx/npc/droid2.ogg"
-            }  
-          },          
+            }
+          },
           "move" : {
             "frames" : 4,
             "cycle" : 0.25,
@@ -36,7 +36,7 @@
             "frames" : 4,
             "cycle" : 0.15,
             "mode" : "loop"
-          },          
+          },
           "repairStart" : {
             "frames" : 5,
             "cycle" : 0.5,
@@ -44,7 +44,7 @@
             "transition" : "repair",
             "properties" : {
               "immediateSound" : "/sfx/npc/droid4.ogg"
-            }            
+            }
           },
           "repair" : {
             "frames" : 13,
@@ -64,7 +64,7 @@
             "transition" : "attack",
             "properties" : {
               "immediateSound" : "/sfx/npc/droid3.ogg"
-            }  
+            }
           },
           "fire" : {
             "frames" : 2,
@@ -76,7 +76,7 @@
             "cycle" : 0.25,
             "mode" : "transition",
             "transition" : "idle"
-          },          
+          },
           "attackStart" : {
             "frames" : 3,
             "cycle" : 0.25,
@@ -84,18 +84,18 @@
             "transition" : "attack",
             "properties" : {
               "immediateSound" : "/sfx/npc/droid3.ogg"
-            }  
+            }
           },
           "jump" : {
             "frames" : 2,
             "cycle" : 0.25,
             "mode" : "loop"
-          },  
+          },
           "fall" : {
             "frames" : 2,
             "cycle" : 0.25,
             "mode" : "loop"
-          },          
+          },
           "attack" : {
             "frames" : 2,
             "cycle" : 0.25,
@@ -125,7 +125,7 @@
 
     "parts" : {
       "body" : {
-  
+
         "partStates" : {
           "body" : {
             "idle" : {
@@ -142,27 +142,27 @@
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
               }
-            },  
+            },
             "jump" : {
               "properties" : {
                 "image" : "<partImage>:attack.<frame>"
               }
-            },    
+            },
             "fall" : {
               "properties" : {
                 "image" : "<partImage>:attack.<frame>"
               }
-            },              
+            },
             "walk" : {
               "properties" : {
                 "image" : "<partImage>:move.<frame>"
               }
-            },     
+            },
             "run" : {
               "properties" : {
                 "image" : "<partImage>:move.<frame>"
               }
-            },            
+            },
             "repairStart" : {
               "properties" : {
                 "image" : "<partImage>:repairStart.<frame>"
@@ -192,7 +192,7 @@
               "properties" : {
                 "image" : "<partImage>:attackEnd.<frame>"
               }
-            },            
+            },
             "attackStart" : {
               "properties" : {
                 "image" : "<partImage>:attackStart.<frame>"

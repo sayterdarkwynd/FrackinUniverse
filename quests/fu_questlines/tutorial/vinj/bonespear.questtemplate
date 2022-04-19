@@ -1,28 +1,28 @@
 {
-  "id" : "fuquest_bonespear",
-  "title" : "Path of the Hunter",
-  "text" : "Hunting will help you obtain resources such as ^green;Raw Meat^reset;, ^green;Leather^reset; and ^orange;Bone^reset;. Try making a ^orange;Primitive Spear^reset; in your ^green;[C]rafting^reset; menu under the Weapons tab.",
-  "completionText" : "You can also hunt using ^orange;Bows^reset; or ^orange;Throwing Spears^reset; and ^orange;Hunting Rifles^reset;. It will be critical to your survival, as the primary means to gather ^orange;Raw Meat^reset; for cooking and eating.",
-  "rewards" : [
-    [ [ "fuscienceresource", 10] ]
-  ],
-  "moneyRange" : [200, 350],
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
-    "portraits" : {
-      "default" : "player"
-    },
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,  
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "stonespear",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
-  }
+	"id" : "fuquest_bonespear",
+	"title" : "Path of the Hunter",
+	"text" : "Hunting will help you obtain resources such as ^green;Raw Meat^reset;, ^green;Leather^reset; and ^orange;Bone^reset;. Try making a ^orange;Primitive Spear^reset; in your ^green;[C]rafting^reset; menu under the Weapons tab.",
+	"completionText" : "You can also hunt using ^orange;Bows^reset; or ^orange;Throwing Spears^reset; and ^orange;Hunting Rifles^reset;. It will be critical to your survival, as the primary means to gather ^orange;Raw Meat^reset; for cooking and eating.",
+	"rewards" : [
+		[ [ "fuscienceresource", 10] ]
+	],
+	"moneyRange" : [200, 350],
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "player"
+		},
+
+		"requireTurnIn" : false,
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "stonespear",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
 }

@@ -1,6 +1,6 @@
 {
   "itemName" : "precursorpistolxray",
-  "price" : 160,
+  "price" : 1600,
   "inventoryIcon" : "precursorpistolxray.png",
   "maxStack" : 1,
   "rarity" : "rare",
@@ -31,7 +31,7 @@
 		  }
 		}
       }
-    },   
+    },
     "sounds" : {
       "fire" : [ "/sfx/gun/elemental_lance.ogg" ]
     }
@@ -39,7 +39,7 @@
 
   "baseOffset" : [0.5, 0.2],
   "muzzleOffset" : [0.8, 0.125],
-  
+
   "scripts" : [ "/items/active/weapons/ranged/gun.lua" ],
 
   "elementalType" : "ice",
@@ -49,24 +49,24 @@
     "class" : "GunFire",
     "fireTime" : 1,
     "baseDps" : 0.1,
-    "energyUsage" : 40.0,
+    "energyUsage" : 20.0,
     "inaccuracy" : 0.2,
 
     "projectileCount" : 9,
     "fireType" : "auto",
-    
+
 
     "projectileType" : "energyfist",
-	"projectileParameters":{ 
-	"processing":"?0", 
-	"speed":55, 
-	"knockback":0, 
+	"projectileParameters":{
+	"processing":"?0",
+	"speed":55,
+	"knockback":0,
 	"statusEffects":[
 	  {"effect":"minibossglow", "duration":8.0}
 	  ],
-	"bounces":3, 
+	"bounces":3,
 	"damageKind":"ice"
-	},    
+	},
 	  "stances" : {
 	    "idle" : {
 	      "armRotation" : 0.2,
@@ -107,7 +107,7 @@
     },
 
   "critChance" : 4,
-  "critBonus" : 12, 
+  "critBonus" : 12,
 
     "builder" : "/items/buildscripts/buildunrandweapon.lua"
 

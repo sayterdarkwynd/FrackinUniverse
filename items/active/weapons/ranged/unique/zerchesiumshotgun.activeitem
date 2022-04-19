@@ -8,7 +8,7 @@
 ^cyan;Slows enemies^reset;",
   "shortdescription" : "Zerchesium Shotgun",
   "category" : "shotgun",
-  "level" : 4,
+  "level" : 3,
   "tooltipKind" : "gun2",
   "weaponType" : "Shotgun",
   "itemTags" : ["weapon","ranged","shotgun", "upgradeableWeapon","zerchesium"],
@@ -26,7 +26,7 @@
       "fire" : [ "/sfx/weapons/marauder7.wav" ],
       "cooldown":[  "/sfx/weapons/shotgunreload.ogg" ]
     },
-    "lights" : { "muzzleFlash" : {"color" : [55, 55, 84] } }     
+    "lights" : { "muzzleFlash" : {"color" : [55, 55, 84] } }
   },
 
   "baseOffset" : [0.425, 0.195],
@@ -47,18 +47,18 @@
     "projectileCount" : 6,
     "fireType" : "auto",
     "projectileType" : "fuicebulletzerch",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "knockback" : 3
     },
     "stances" : {
-      "idle":{  
+      "idle":{
         "armRotation":0,
         "weaponRotation":0,
         "twoHanded":true,
         "allowRotate":true,
         "allowFlip":true
       },
-      "fire":{  
+      "fire":{
         "duration":0.1,
         "armRotation":3,
         "weaponRotation":8,
@@ -66,7 +66,7 @@
         "allowRotate":false,
         "allowFlip":true
       },
-      "cooldown":{  
+      "cooldown":{
         "duration":0.2,
         "armRotation":-7,
         "weaponRotation":-360,
@@ -84,7 +84,7 @@
   "isAmmoBased" : 1,
   "reloadTime" : 3.4,
   "magazineSize" : 6,
-  
+
   "altAbilityType" : "iceburstshot",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

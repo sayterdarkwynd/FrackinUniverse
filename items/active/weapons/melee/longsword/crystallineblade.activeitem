@@ -1,9 +1,9 @@
 {
   "itemName" : "crystallineblade",
   "price" : 1500,
-  "level" : 3,
+  "level" : 4,
   "maxStack" : 1,
-  "rarity" : "uncommon",
+  "rarity" : "rare",
   "description" : "Beautiful, shiny, and deadly.",
   "shortdescription" : "Crystal Blade",
   "tooltipKind" : "sword2",
@@ -11,19 +11,19 @@
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","broadsword", "longsword", "crystal", "upgradeableWeapon"],
   "inventoryIcon" : "crystallineblade.png",
-  "collectablesOnPickup" : { "fu_weaponlongsword" : "crystallineblade" },
+  //"collectablesOnPickup" : { "fu_weaponlongsword" : "crystallineblade" },
   "animation" : "combolongsword.animation",
   "animationParts" : {
     "handle" : "",
     "blade" : "crystallineblade.png"
   },
-  "animationCustom" : { 
-	  "sounds" : {
-	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
-	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
-	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
-	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
-	  }  
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+      "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+      "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+      "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+    }
   },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
@@ -39,7 +39,7 @@
     }
   },
 
-  "critChance" : 2, 
-  "critBonus" : 5, 
+  "critChance" : 2,
+  "critBonus" : 5,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

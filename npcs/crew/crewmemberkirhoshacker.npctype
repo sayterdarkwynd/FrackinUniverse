@@ -1,13 +1,8 @@
 {
   "type" : "crewmemberkirhoshacker",
-  "baseType" : "crewmember",
-  //"disableWornArmor" : false,
-    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20} ], 
-  "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
+  "baseType" : "fu_crewmember",
 
+  "scriptConfig" : {
     "crew" : {
       "defaultUniform" : {
         "head" : "bloodhoundhead",
@@ -16,6 +11,11 @@
       },
 
       "role" : {
+        "type" : "soldier",
+        "name" : "Hacker",
+        "field" : "Hacker",
+        "uniformColorIndex" : 1,
+
         "benefits" : [
           {
             "type" : "ShipUpgradeBenefit",
@@ -28,24 +28,12 @@
             "effect" : "electricblock3",
             "duration" : 300
           }
-        ],
-        "type" : "soldier",
-        "name" : "Hacker",
-        "field" : "Hacker",
-        "uniformColorIndex" : 1
+        ]
       }
     },
 
     "dialog" : {
       "crewmember" : {
-        "fieldBenefit" : {
-          "default" : {
-            "default" : [
-              "Don't forget your bio-antivirus, boss!",
-              "This'll mask your signal!"
-            ]
-          }
-        },
         "roleDescription" : {
           "default" : {
             "default" : [
@@ -61,7 +49,7 @@
             ]
           }
         }
-      }
+	  }
     }
   },
 
@@ -70,10 +58,7 @@
       [0, [
           {
             "primary" : [ "kirhossniper" ],
-            "sheathedprimary" : [ "kirhosscythe" ],
-			"head" :  [{ "name" : "bloodhoundhead", "count" :1, "parameters" : { "colorIndex" : 1 } } ],
-			"chest" : [ { "name" : "bloodhoundchest", "count" :1, "parameters" : { "colorIndex" : 1 } } ],
-            "legs" : [ { "name" : "bloodhoundlegs", "count" :1, "parameters" : { "colorIndex" : 1 } } ]          
+            "sheathedprimary" : [ "kirhosscythe" ]
           }
         ] ]
     ]

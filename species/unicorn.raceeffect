@@ -1,55 +1,42 @@
 {
 	"stats": [
-		{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.3 },
-		{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.15 },
-		{ "stat" : "protection", "effectiveMultiplier" : 0.7 },
-		{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 1.15 },
-		{ "stat" : "cosmicResistance", "amount" : 0.4 },
-		{ "stat" : "shadowResistance", "amount" : -0.5 },
-		{ "stat" : "radioactiveResistance", "amount" : -0.15 }
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.2 },
+		{ "stat": "powerMultiplier", "effectiveMultiplier": 1.05 },
+		{ "stat": "protection", "effectiveMultiplier": 0.9 },
+
+		{ "stat": "cosmicResistance", "amount": 0.2 },
+		{ "stat": "fireResistance", "amount": 0.05 },
+		{ "stat": "iceResistance", "amount": 0.05 },
+		{ "stat": "poisonResistance", "amount": 0.05 },
+		{ "stat": "electricResistance", "amount": 0.05 },
+		{ "stat": "shadowResistance", "amount": -0.2 },
+		{ "stat": "radioactiveResistance", "amount": -0.15 },
+		{ "stat": "mentalProtection", "amount": -0.25 },
+		{ "stat": "freudBonus", "amount": -0.25 },
+		{ "stat": "aetherImmunity", "amount": 1 },
+		{ "stat": "energyMastery", "amount": 0.1 },
+		{ "stat": "wandMastery", "amount": 0.1 },
+		{ "stat": "staffMastery", "amount": 0.2 }
 	],
 	"diet" : "herbivore",
-	"envEffects": 
+	"envEffects":
 	[
-		{ "biomes": [ "garden", "arboreal", "jungle", "forest", "savannah"],
-		"stats": [{ "stat" : "physicalResistance", "amount" : 0.1 },
-			{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.1 }
-		],
-		"controlModifiers": { "speedModifier": 1.03, "airJumpModifier": 1.03 }
+		{
+		"biomes": ["aethersea", "crystalmoon"],
+		"stats": [
+			{ "stat": "physicalResistance", "amount": 0.1 },
+			{ "stat": "maxEnergy", "effectiveMultiplier": 1.1 }
+			]
 		},
 		{
-		"biomes": [ "alien", "atropus", "atropusdark", "tentacle", "bloodstonesea", "bloodstoneseafloor", "strangesea", "strangeseafloor" ],
+		"biomes": [ "atropus", "atropusdark", "tentacle", "bloodstonesea", "bloodstoneseafloor" ],
 		"stats": [
-			{"stat" : "energyRegenPercentageRate", "baseMultiplier" : 0.66},
-			{"stat" : "powerMultiplier", "effectiveMultiplier" : 0.8},
-			{"stat" : "maxEnergy", "effectiveMultiplier" : 0.8}
-		]
+			{"stat": "energyRegenPercentageRate", "baseMultiplier": 0.9},
+			{"stat": "powerMultiplier", "effectiveMultiplier": 0.9},
+			{"stat": "maxEnergy", "effectiveMultiplier": 0.9}
+			]
 		}
 	],
-	"weaponEffects": 
-	[
-		{
-			"weapon": [ "wand" ],
-			"stats": [
-				{ "stat" : "protection", "effectiveMultiplier" : 1.08},
-				{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 1.25 }
-			]
-		},
-		{
-			"weapon": [ "staff" ],
-			"stats": [
-				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.1 },
-				{ "stat" : "critChance", "amount" : 5 }
-			]
-		},
-		{
-			"weapon": [ "energy" ],
-			"stats": [
-				{
-				"stat": "powerMultiplier",
-				"effectiveMultiplier": 1.15
-				}
-			]
-		}
-	]
+	"weaponEffects":
+	[]
 }

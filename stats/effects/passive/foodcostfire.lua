@@ -3,21 +3,20 @@ function init()
 
 	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
 
-  if self.species == "kazdra" then
-    self.foodCost = 4
-  else
-    self.foodCost = 6
-  end
+	if self.species == "kazdra" then
+		self.foodCost = 4
+	else
+		self.foodCost = 6
+	end
 
-  bonusHandler=effect.addStatModifierGroup({
-    {stat = "foodDelta", amount = -self.foodCost }
-  })
+	bonusHandler=effect.addStatModifierGroup({
+		{stat = "foodDelta", amount = -self.foodCost }
+	})
 	self.didInit=true
 end
 
 function update(dt)
 	if not self.didInit then init() end
-
 end
 
 function uninit()

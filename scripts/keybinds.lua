@@ -18,7 +18,9 @@ local set = function(values, f) local v = {};  for _,value in pairs(values) do v
 -- vec1-vec2
 local sub = function(a, b) return { a[1] - b[1], a[2] - b[2] } end
 -- http://lua-users.org/wiki/SplitJoin
-function string:split(sep) local sep, fields = sep or ":", {}; local pattern = string.format("([^%s]+)", sep); self:gsub(pattern, function(c) fields[#fields+1] = c end); return fields; end
+function string:split(sep) -- luacheck: ignore 142
+	local fields = {}; local pattern = string.format("([^%s]+)", sep or ":"); self:gsub(pattern, function(c) fields[#fields+1] = c end); return fields
+end
 -- Sets the tostring of of a table to "vec2"
 function keybinds.setVec2(point) setmetatable(point, { __tostring = function() return "vec2" end }) end
 
@@ -77,7 +79,7 @@ function keybinds.update(args)
     sb.setLogMap("player_rel", string.format("%s %s", keybinds.input.aimrelative[1], keybinds.input.aimrelative[2]))
   end
 
-  for id,bind in pairs(keybinds.binds) do
+  for _,bind in pairs(keybinds.binds) do
     local isMatch, matches, noMatches = bind:matches(keybinds.input)
 
     -- Run function if the current input matches the arguments of the bind.

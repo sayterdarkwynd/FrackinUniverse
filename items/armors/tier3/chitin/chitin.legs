@@ -19,9 +19,9 @@
  //   "fumonsterplatedhead",
  //   "fumonsterplatedlegs"
  // ],
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "melee" ],
   "level" : 3,
-  "collectablesOnPickup" : { "fu_armorprotection" : "chitinlegs" },
+  //"collectablesOnPickup" : { "fu_armorprotection" : "chitinlegs" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -56,9 +56,13 @@
   ],
 
   "statusEffects" : [
-    "fusetbonusmanager",
+    "chitinsetbonus",
     {
-      "stat" : "chitinsetcount",
+      "stat" : "fu_chitinset_legs",
+      "amount" : 1
+    },
+    {
+      "stat" : "fu_nomadset_legs",
       "amount" : 1
     }
   ],
@@ -103,5 +107,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

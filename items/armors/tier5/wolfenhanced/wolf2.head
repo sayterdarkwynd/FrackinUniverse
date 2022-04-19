@@ -5,19 +5,19 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "^orange;Set Bonuses^reset;: 
+  "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; Daggers: +^green;20^reset;/^green;40^reset;% Crit Damage
-^yellow;^reset; ^cyan;Immune^reset;: Snow, Slush, Ice, Deadly Cold",
+^yellow;^reset; ^cyan;Immune^reset;: Snow, Slush, Ice, Extreme Cold",
   "shortdescription" : "Wolf Hood",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "offensive", "melee", "hyper" ],
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
   "level": 5,
-  "collectablesOnPickup" : { "fu_armorexplorer" : "fuwolfhead2" },
+  //"collectablesOnPickup" : { "fu_armorexplorer" : "fuwolfhead2" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -44,13 +44,17 @@
       "stat" : "iceResistance",
       "amount" : 0.033334
     }
-  ],  
+  ],
 
   "statusEffects" : [
 
     "wolfsetbonus2",
     {
       "stat" : "fu_wolfset2_head",
+      "amount" : 1
+    },
+    {
+      "stat" : "fu_wolfset_head",
       "amount" : 1
     }
   ],
@@ -93,5 +97,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

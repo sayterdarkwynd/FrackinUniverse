@@ -12,7 +12,7 @@
   "level" : 3,
   "tooltipKind" : "gun2",
   "weaponType" : "sniperRifle",
-  "itemTags" : ["weapon","ranged","sniperrifle", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","sniperrifle", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
@@ -27,20 +27,20 @@
     "animatedParts" : {
       "parts" : {
         "middlefullbright" : {
-	  "properties" : {
-		//Same as BaseOffset
-	    "offset" : [0.875, 0.25]
-	  }
-	}
+          "properties" : {
+            //Same as BaseOffset
+            "offset" : [0.875, 0.25]
+          }
+        }
       }
-    },  
+    },
     "particleEmitters" : {
       "muzzleFlash" : {
         "particles" : [
           { "particle" : "fushellcasing", "offset" : [-3.875, -0.15] }
         ]
       }
-    },   
+    },
     "sounds" : {
       "fire" : [ "/sfx/weapons/beam.wav" ]
     }
@@ -64,46 +64,46 @@
     "fireType" : "auto",
 
     "projectileType" : "poisonguardianbullet",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 90,
       "knockback" : 25,
       "damageKind" : "radioactivebow",
       "statusEffects" : [ "radiationburn" ],
 	    "periodicActions":[
-	    {
-	      "action":"particle",
-	      "repeat":true,
-	      "rotate":true,
-	      "specification":{
-		"destructionAction":"fade",
-		"destructionTime":0.2,
-		"fullbright":true,
-		"image":"/projectiles/boss/guardianboss/guardianpellet/poisonguardianpellet.png",
-		"layer":"back",
-		"position":[0,0],
-		"timeToLive":0,
-		"type":"textured"
-		},
-	      "time":0
-	    },
+        {
+          "action":"particle",
+          "repeat":true,
+          "rotate":true,
+          "specification":{
+            "destructionAction":"fade",
+            "destructionTime":0.2,
+            "fullbright":true,
+            "image":"/projectiles/boss/guardianboss/guardianpellet/poisonguardianpellet.png",
+            "layer":"back",
+            "position":[0,0],
+            "timeToLive":0,
+            "type":"textured"
+          },
+          "time":0
+        },
 
-	    {
-	      "action":"particle",
-	      "repeat":true,
-	      "rotate":true,
-	      "specification":{
-		"destructionAction":"fade",
-		"destructionTime":0.2,
-		"fullbright":true,
-		"image":"/projectiles/boss/guardianboss/guardianpellet/poisonguardianpellet.png",
-		"layer":"back",
-		"position":[0,0],
-		"timeToLive":0.03,
-		"type":"textured"
-		},
-	      "time":0.05
-	      }
-	    ]      
+        {
+          "action":"particle",
+          "repeat":true,
+          "rotate":true,
+          "specification":{
+            "destructionAction":"fade",
+            "destructionTime":0.2,
+            "fullbright":true,
+            "image":"/projectiles/boss/guardianboss/guardianpellet/poisonguardianpellet.png",
+            "layer":"back",
+            "position":[0,0],
+            "timeToLive":0.03,
+            "type":"textured"
+          },
+          "time":0.05
+        }
+      ]
     },
 	  "stances" : {
 	    "idle" : {
@@ -134,15 +134,15 @@
 	    }
 	  }
   },
-    "particleEmitters" : {
-      "muzzleFlash" : {
-        "particles" : [
-          { "particle" : "radioactivedrip1", "offset" : [0.0, 0.0] },
-          { "particle" : "radioactivedrip2", "offset" : [0.0, 0.0] },
-          { "particle" : "radioactivedrip3", "offset" : [0.0, 0.0] }
-        ]
-      }
-    },
+  "particleEmitters" : {
+    "muzzleFlash" : {
+      "particles" : [
+        { "particle" : "radioactivedrip1", "offset" : [0.0, 0.0] },
+        { "particle" : "radioactivedrip2", "offset" : [0.0, 0.0] },
+        { "particle" : "radioactivedrip3", "offset" : [0.0, 0.0] }
+      ]
+    }
+  },
 
 
   "critChance" : 4,
@@ -151,12 +151,12 @@
   "isAmmoBased" : 1,
   "magazineSize" : 4,
   "reloadTime" : 1.4,
-  
+
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
-  "recoilForce" : 1200, 
-  
+  "recoilForce" : 1200,
+
   "altAbilityType" : "explosiveburst",
   "altAbility" : {
     "name" : "Radiation Burst",
@@ -165,17 +165,17 @@
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
     "upgradeParameters" : {
     "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
-    "shortdescription" : "^cyan;Expar Sniper Rifle^reset; ^yellow;",
-  "description" : "Highly useful weapon for wanderers.
+    "shortdescription" : "^cyan;Expar Sniper Rifle^reset; ^yellow;^reset;",
+    "description" : "Highly useful weapon for wanderers.
 ^yellow;Counts as Hunting weapon^reset;
-^green;Causes Rad Burn^reset;", 
-  "animationParts" : {"middle" : "nomadgun2.png","middlefullbright" : "nomadgun2fullbright.png"},
-  "inventoryIcon" : [ { "image" : "nomadgun2.png" } ],    
+^green;Causes Rad Burn^reset;",
+    "animationParts" : {"middle" : "nomadgun2.png","middlefullbright" : "nomadgun2fullbright.png"},
+    "inventoryIcon" : [ { "image" : "nomadgun2.png" } ],
 	  "primaryAbility" : {
 	    "fireTime" : 0.7,
 	    "baseDps" : 8,
 	    "energyUsage" : 30.0,
-	    "inaccuracy" : 0     
+	    "inaccuracy" : 0
 	  }
-      }
+  }
 }

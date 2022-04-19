@@ -3,18 +3,18 @@
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Uncommon",
-  "description" : "^orange;Set Bonuses^reset;: 
+  "rarity" : "legendary",
+  "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; Health x^green;1.25^reset;^reset;
 ^yellow;^reset; Melee: +^green;1.5^reset;/^green;3^reset;% Crit Chance
 ^yellow;^reset; ^cyan;Immune^reset;: Acid, Oxygen",
   "shortdescription" : "Geist Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "melee" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-  
+
   "level" : 6,
   "leveledStatusEffects" : [
     {
@@ -37,22 +37,30 @@
       "stat" : "maxHealth",
       "amount" : 3
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "poisonResistance",
       "amount" : 0.025715
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "physicalResistance",
       "amount" : 0.025715
     }
   ],
 
-  "statusEffects" : [ 
+  "statusEffects" : [
     "geistsetbonus",
     {
       "stat" : "fu_geistset_legs",
+      "amount" : 1
+    },
+    {
+      "stat" : "fu_kingslayerset_legs",
+      "amount" : 1
+    },
+    {
+      "stat" : "fu_battlebornset_legs",
       "amount" : 1
     }
   ],
@@ -83,5 +91,5 @@
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

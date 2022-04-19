@@ -11,6 +11,8 @@ function init()
 	message.setHandler("setOutputSlots", function (msg, _, slots) storage.outputSlots = slots end)
 	message.setHandler("setRR", function (msg, _, rr) storage.roundRobin = rr end)
 	message.setHandler("setRRS", function (msg, _, rr) storage.roundRobinSlots = rr end)
+	message.setHandler("setLO", function (msg, _, leaveOne) storage.leaveOne = leaveOne end)
+	message.setHandler("setOS", function (msg, _, onlyStack) storage.onlyStack = onlyStack end)
 	object.setInteractive(true)
 end
 
@@ -97,7 +99,7 @@ function sendConfig()
 	if not storage.invertSlots then
 		storage.invertSlots={false,false}
 	end
-	return {storage.inputSlots,storage.outputSlots,storage.filterInverted,storage.filterType,storage.invertSlots,storage.roundRobin or false,storage.roundRobinSlots or false}
+	return {storage.inputSlots,storage.outputSlots,storage.filterInverted,storage.filterType,storage.invertSlots,storage.roundRobin or false,storage.roundRobinSlots or false,storage.leaveOne or false,storage.onlyStack or false}
 end
 
 function routeItems(dt)
@@ -119,111 +121,120 @@ function routeItems(dt)
 
 		if sourceItems then
 			for indexIn,item in pairs(sourceItems or {}) do
-				local pass,mod = checkFilter(item)
-				if pass and (not storage.roundRobin or item.count>=(mod*outputSizeG)) then
-					local outputSlotCountG = util.tableSize(storage.outputSlots)
-					local originalCount=item.count
-					local canRobinRoundSlots
-					if storage.roundRobin then
-						local buffer
-						buffer=math.floor(item.count/outputSizeG)
-						buffer=math.floor(buffer-(buffer%mod))
-						item.count = math.floor(buffer)
+				if not storage.leaveOne or item.count > 1 then
+					if storage.leaveOne then
+						item.count = item.count - 1
 					end
-					if storage.roundRobinSlots and not storage.invertSlots[2] and outputSlotCountG>0 then
-						local buffer
-						buffer=math.floor(item.count/outputSlotCountG)
-						buffer=math.floor(buffer-(buffer%mod))
-						item.count = math.floor(buffer)
-					end
-					item.count = item.count - (item.count % mod)
-					for targetContainer,targetPos in pairs(transferUtil.vars.outContainers or {}) do
-						local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetPos)
-						if ping2 ~= nil then
-							targetContainer=ping2
+					local pass,mod = checkFilter(item)
+					if pass and (not storage.roundRobin or item.count>=(mod*outputSizeG)) then
+						local outputSlotCountG = util.tableSize(storage.outputSlots)
+						local originalCount=item.count
+						if storage.roundRobin then
+							local buffer
+							buffer=math.floor(item.count/outputSizeG)
+							buffer=math.floor(buffer-(buffer%mod))
+							item.count = math.floor(buffer)
 						end
-						if targetAwake == true and sourceAwake == true then
-							local containerSize=world.containerSize(targetContainer)
-							local outputSlotCount=outputSlotCountG
-							local outputSlotsBuffer={}
+						if storage.roundRobinSlots and not storage.invertSlots[2] and outputSlotCountG>0 then
+							local buffer
+							buffer=math.floor(item.count/outputSlotCountG)
+							buffer=math.floor(buffer-(buffer%mod))
+							item.count = math.floor(buffer)
+						end
+						item.count = item.count - (item.count % mod)
+						for targetContainer,targetPos in pairs(transferUtil.vars.outContainers or {}) do
+							local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetPos)
+							if ping2 ~= nil then
+								targetContainer=ping2
+							end
+							if targetAwake == true and sourceAwake == true then
+								local containerSize=world.containerSize(targetContainer)
+								local outputSlotsBuffer={}
 
 
-							for _,v in pairs(storage.outputSlots) do
-								if v <= containerSize then
-									table.insert(outputSlotsBuffer,v)
+								for _,v in pairs(storage.outputSlots) do
+									if v <= containerSize then
+										table.insert(outputSlotsBuffer,v)
+									end
 								end
-							end
 
-							outputSlotCount=util.tableSize(outputSlotsBuffer)
+								local outputSlotCount=util.tableSize(outputSlotsBuffer)
 
 
-							local subCount=item.count
-							if storage.roundRobinSlots and storage.invertSlots[2] then
-								outputSlotCount=containerSize-outputSlotCount
-								local buffer
-								buffer=math.floor(item.count/outputSlotCount)
-								buffer=math.floor(buffer-(buffer%mod))
-								item.count = math.floor(buffer)
-							end
+								local subCount=item.count
+								if storage.roundRobinSlots and storage.invertSlots[2] then
+									outputSlotCount=containerSize-outputSlotCount
+									local buffer
+									buffer=math.floor(item.count/outputSlotCount)
+									buffer=math.floor(buffer-(buffer%mod))
+									item.count = math.floor(buffer)
+								end
 
-							if validInputSlot(indexIn) then
-								if outputSlotCount > 0 then
-									local buffer=item.count * (storage.roundRobin and outputSize or 1) * (storage.roundRobinSlots and outputSlotCount or 1)
-									if item.count>0 and buffer<=originalCount then
-										for indexOut=1,containerSize do
-											if validOutputSlot(indexOut) then
-												local leftOverItems=world.containerPutItemsAt(targetContainer,item,indexOut-1)
-												if leftOverItems then
-													world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
-													originalCount=originalCount-(item.count-leftOverItems.count)
-													if not storage.roundRobinSlots then
-														if not storage.roundRobin then
-															item = leftOverItems
-														else
+								if validInputSlot(indexIn) then
+									if outputSlotCount > 0 or storage.onlyStack then
+										local buffer=item.count * (storage.roundRobin and outputSize or 1) * (storage.roundRobinSlots and outputSlotCount or 1)
+										if item.count>0 and buffer<=originalCount then
+											for indexOut=1,containerSize do
+												if validOutputSlot(indexOut) then
+													if storage.onlyStack and not world.containerItemAt(targetContainer,indexOut-1) then
+														if not storage.roundRobinSlots and storage.roundRobin then
 															break
 														end
+													else
+														local leftOverItems=world.containerPutItemsAt(targetContainer,item,indexOut-1)
+														if leftOverItems then
+															world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
+															originalCount=originalCount-(item.count-leftOverItems.count)
+															if not storage.roundRobinSlots then
+																if not storage.roundRobin then
+																	item = leftOverItems
+																else
+																	break
+																end
+															end
+														else
+															world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
+															originalCount=originalCount-item.count
+															if not (storage.roundRobinSlots) then
+																break
+															end
+														end
+													end
+												end
+											end
+										end
+									else
+										if item.count>0 then
+											--world.containerStackItems() attempts to add items to an existing stack. fails otherwise. returns leftovers
+											local test=world.containerItemsCanFit(targetContainer,item)
+											if test>0 then
+												local leftOverItems=world.containerAddItems(targetContainer,item)
+												if leftOverItems then
+													local tempQuantity=item.count-leftOverItems.count
+													if tempQuantity > 0 then
+														world.containerTakeNumItemsAt(sourceContainer,indexIn-1,tempQuantity)
+														item=leftOverItems
+													else
+														backflowInstances=backflowInstances+1
 													end
 												else
 													world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
-													originalCount=originalCount-item.count
-													if not (storage.roundRobinSlots) then
-														break
+													if not storage.roundRobin then
+														item.count=0
 													end
 												end
-											end
-										end
-									end
-								else
-									if item.count>0 then
-										--world.containerStackItems() attempts to add items to an existing stack. fails otherwise. returns leftovers
-										local test=world.containerItemsCanFit(targetContainer,item)
-										if test>0 then
-											local leftOverItems=world.containerAddItems(targetContainer,item)
-											if leftOverItems then
-												local tempQuantity=item.count-leftOverItems.count
-												if tempQuantity > 0 then
-													world.containerTakeNumItemsAt(sourceContainer,indexIn-1,tempQuantity)
-													item=leftOverItems
-												else
-													backflowInstances=backflowInstances+1
-												end
 											else
-												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
-												if not storage.roundRobin then
-													item.count=0
-												end
+												backflowInstances=backflowInstances+1
 											end
-										else
-											backflowInstances=backflowInstances+1
 										end
 									end
 								end
+								if storage.roundRobinSlots and storage.invertSlots[2] then
+									item.count=subCount
+								end
 							end
-							if storage.roundRobinSlots and storage.invertSlots[2] then
-								item.count=subCount
-							end
+							outputSize=outputSize-1
 						end
-						outputSize=outputSize-1
 					end
 				end
 			end
@@ -252,8 +263,6 @@ function checkFilter(item)
 				result = true
 			elseif fType == 1 and transferUtil.compareCategories(rItem, item) then
 				result = true
-			else
-				result = false
 			end
 			if storage.filterInverted[slot] then
 				result = not result

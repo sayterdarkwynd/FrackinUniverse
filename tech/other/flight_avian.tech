@@ -5,18 +5,19 @@
 	"scripts" : ["flighttest.lua"],
 	"animator" : "flighttest.animation",
 
-	"description" : "Your race can glide...just a bit. Use ^green;[F]^reset;.",
+	"description" : "Glide as gracefully as you can. Use ^green;[F]^reset;.",
 	"shortDescription" : "Avian Slowfall",
 	"rarity" : "Legendary",
-	"icon" : "/items/active/raceEffectEnabler/raceeffectenabler.png",
+	"icon" : "/tech/racialtech.png",
 	"chipCost" : 1,
-	"energyCostPerSecond" : 30,
+	"energyCostPerSecond" : 8,
 
 	"maxFallSpeed" : -39,
 	"fallingParameters" : {
-		"airForce" : 40,
+		"airForce" : 50,
 		"runSpeed" : 24,
-		"walkSpeed" : 24,		
-		"flySpeed" : 30
+		"walkSpeed" : 24,
+		"flySpeed" : 30,
+		"gravityMultiplier" : 0.65
 	}
 }

@@ -8,9 +8,9 @@
 
   "animation" : "shadowyokat.animation",
 
-  "dropPools" : [ 
-    { 
-      "default" : "yokatTreasure", 
+  "dropPools" : [
+    {
+      "default" : "yokatTreasure",
       "bow" : "yokatHunting",
       "firebow" : "yokatHunting",
       "icebow" : "yokatHunting",
@@ -19,7 +19,7 @@
       "cosmicbow" : "yokatHunting",
       "radioactivebow" : "yokatHunting",
       "shadowbow" : "yokatHunting"
-    } 
+    }
   ],
 
   "baseParameters" : {
@@ -42,7 +42,7 @@
 
       "fleeActions" : [],
 
-      "hostileActions" : [ 
+      "hostileActions" : [
         {
           "name" : "action-fire",
 	  "cooldown" : 10,
@@ -63,16 +63,16 @@
               "timeToLive" : 5,
               "physics" : "illusion",
               "damageSourceKind" : "shadow",
-              "actionOnReap" : [ 
+              "actionOnReap" : [
 		    {
 		      "action" : "config",
 		      "file" : "/projectiles/explosions/fuwavebeamexplosion/fuwavebeamexp.config"
-		    }            
+		    }
               ]
             },
 
             "power" : 5,
-            
+
             "fireOffset" : [0.2, 1.2],
             "aimAtTarget" : true,
             "fireSound" : "fire",
@@ -81,27 +81,27 @@
             "winddownState" : "winddown",
             "winddownTime" : 0.6
           }
-        }       
+        }
       ],
 
-      "damageTakenActions" : [      
+      "damageTakenActions" : [
         {
-          "name" : "action-statuseffect", 
+          "name" : "action-statuseffect",
           "parameters" : {
           "effect" : "camouflage05",
           "duration" : 60
           }
-        }       
+        }
       ],
-      
-      "periodicActions" : [      
+
+      "periodicActions" : [
         {
-          "name" : "action-statuseffect", 
+          "name" : "action-statuseffect",
           "parameters" : {
           "effect" : "camouflage35",
           "duration" : 60
           }
-        }       
+        }
       ],
 
       "approachActions" : [
@@ -154,10 +154,10 @@
             "stateType" : "aggro",
             "state" : "deaggro"
           }
-        }        
+        }
       ],
 
-      "concurrentHostileActions" : [     
+      "concurrentHostileActions" : [
         {
           "name" : "action-animate",
           "parameters" : {
@@ -166,12 +166,12 @@
           }
         },
         {
-          "name" : "action-statuseffect", 
+          "name" : "action-statuseffect",
           "parameters" : {
           "effect" : "camouflage35",
           "duration" : 60
           }
-        }           
+        }
       ]
     },
 
@@ -272,7 +272,7 @@
         },
         "shadowImmunity" : {
           "baseValue" : 1.0
-        },        
+        },
         "poisonResistance" : {
           "baseValue" : 0.5
         },
@@ -281,7 +281,7 @@
         },
         "biooozeImmunity" : {
           "baseValue" : 1.0
-        }        
+        }
       },
 
       "resources" : {
@@ -301,7 +301,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "shadowyokat" }
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "shadowyokat" }
   }
 }

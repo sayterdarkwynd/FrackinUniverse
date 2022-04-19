@@ -1,0 +1,218 @@
+{
+  "name": "crewmembermute",
+  "description": "",
+  "scripts": [
+    "/scripts/behavior.lua",
+    "/scripts/actions/crew.lua",
+    "/scripts/actions/world.lua"
+  ],
+  "parameters": {
+    "inspectCooldown": [60, 180],
+    "inspectObjects": false //Fixes an issue where Agaran Sellsword crewmate used Floran examines - they won't examine things at all now.
+  },
+  "root": {
+    "title": "parallel",
+    "type": "composite",
+    "name": "parallel",
+    "parameters": {
+      "fail": {"value": -1},
+      "success": {"value": -1}
+    },
+    "children": [
+      {
+        "title": "sequence",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "unsetFlag",
+            "type": "action",
+            "name": "unsetFlag",
+            "parameters": {
+              "name": {"value": "playerMoved"}
+            }
+          },
+          {
+            "title": "isFollowingRecruiter",
+            "type": "action",
+            "name": "isFollowingRecruiter",
+            "parameters": {}
+          },
+          {
+            "title": "recruiterEntity",
+            "type": "action",
+            "name": "recruiterEntity",
+            "parameters": {},
+            "output": {
+              "entity": "player"
+            }
+          },
+          {
+            "title": "selector",
+            "type": "composite",
+            "name": "selector",
+            "parameters": {},
+            "children": [
+              {
+                "title": "entityInRange",
+                "type": "action",
+                "name": "entityInRange",
+                "parameters": {
+                  "entity": {"key": "player"},
+                  "position": {"key": "playerPosition"},
+                  "range": {"value": 0.5}
+                }
+              },
+              {
+                "title": "setFlag",
+                "type": "action",
+                "name": "setFlag",
+                "parameters": {
+                  "name": {"value": "playerMoved"}
+                }
+              }
+            ]
+          },
+          {
+            "title": "entityPosition",
+            "type": "action",
+            "name": "entityPosition",
+            "parameters": {
+              "entity": {"key": "player"}
+            },
+            "output": {
+              "position": "playerPosition"
+            }
+          }
+        ]
+      },
+      {
+        "title": "dynamic",
+        "type": "composite",
+        "name": "dynamic",
+        "parameters": {},
+        "children": [
+          {
+            "title": "Tenant Baseline Behavior",
+            "type": "module",
+            "name": "Tenant Baseline Behavior",
+            "parameters": {}
+          },
+          {
+            "title": "crewmember-notifications",
+            "type": "module",
+            "name": "crewmember-notifications",
+            "parameters": {}
+          },
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "hasFlag",
+                "type": "action",
+                "name": "hasFlag",
+                "parameters": {
+                  "name": {"key": "playerMoved"}
+                }
+              },
+              {
+                "title": "crewmember-catchup",
+                "type": "module",
+                "name": "crewmember-catchup",
+                "parameters": {}
+              }
+            ]
+          },
+          {
+            "title": "crewmember-combat",
+            "type": "module",
+            "name": "crewmember-combat",
+            "parameters": {}
+          },
+          {
+            "title": "cooldown",
+            "type": "decorator",
+            "name": "cooldown",
+            "parameters": {
+              "cooldown": {"key": "<inspectCooldown>"},
+              "onFail": {"value": false},
+              "onSuccess": {"value": true}
+            },
+            "child": {
+              "title": "optional",
+              "type": "decorator",
+              "name": "optional",
+              "parameters": {
+                "shouldRun": {"key": "<inspectObjects>"}
+              },
+              "child": {
+                "title": "npcinspect",
+                "type": "module",
+                "name": "npcinspect",
+                "parameters": {}
+              }
+            }
+          },
+          {
+            "title": "converse",
+            "type": "module",
+            "name": "converse",
+            "parameters": {}
+          },
+          {
+            "title": "crewmember-emptyhands",
+            "type": "module",
+            "name": "crewmember-emptyhands",
+            "parameters": {}
+          },
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "hasFlag",
+                "type": "action",
+                "name": "hasFlag",
+                "parameters": {
+                  "name": {"key": "playerMoved"}
+                }
+              },
+              {
+                "title": "crewmember-follow",
+                "type": "module",
+                "name": "crewmember-follow",
+                "parameters": {}
+              }
+            ]
+          },
+          {
+            "title": "crewmember-tout",
+            "type": "module",
+            "name": "crewmember-tout",
+            "parameters": {}
+          },
+          {
+            "title": "crewmember-fieldbenefits",
+            "type": "module",
+            "name": "crewmember-fieldbenefits",
+            "parameters": {}
+          },
+          {
+            "title": "NPC Idle",
+            "type": "module",
+            "name": "NPC Idle",
+            "parameters": {
+              "play": {"value": true}
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

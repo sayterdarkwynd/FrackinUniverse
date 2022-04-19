@@ -1,0 +1,27 @@
+{
+	"itemName": "putridpestpuree",
+	"rarity": "uncommon",
+	"price": 75,
+	"category": "preparedFood",
+	"inventoryIcon": "putridpestpuree.png",
+	"description": "A blended mixture of pest, larva, and pussplum. Guaranteed to flush your bowels. \n^cyan;+^green;12% HP ^reset; ^blue;+2^reset; Madness",
+	"shortdescription": "Putrid Pest Puree",
+    "effects": [
+        ["madnessgain2", "meat_cooked",
+            { "effect" : "maxhealthscalingboostfood",
+                "duration": 120,
+				"healthModifier": 1.12
+			},
+			{"effect": "weakpoison",
+				"duration": 60
+			}
+            ]
+        ],
+	"foodValue": 40,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}

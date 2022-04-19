@@ -1,6 +1,6 @@
 {
   "itemName" : "shadowtentaclegun2",
-  "level" : 6,
+  "level" : 7,
   "price" : 500,
   "maxStack" : 1,
   "rarity" : "Legendary",
@@ -43,8 +43,8 @@
   "primaryAbilityType" : "tentaclegun",
   "primaryAbility" : {
     "chain" : {
-      "arcRadiusRatio" : [8, 8],    
-      "taper" : 0.0, 
+      "arcRadiusRatio" : [8, 8],
+      "taper" : 0.0,
       "segmentImage" : "/items/active/weapons/melee/flail/flailchain.png?scale=1",
       "endSegmentImage" : "/items/active/weapons/melee/flail/flailchain.png?scale=1",
       "segmentSize" : 0.75
@@ -65,30 +65,30 @@
       "controlForce":350,
       "targetTrackingForce":0,
       "processing":"?hueshift=60",
-      
+
       "knockback" : 20,
       "piercing":true,
       "speed" : 80,
-      "bounces":-1, 
-      "timeToLive" : 6, 
+      "bounces":-1,
+      "timeToLive" : 6,
       "damageKind" : "shadow",
-      
+
       "statusEffects" : [ "shadowgasfx", "blacktarslow" ],
       "periodicActions" : [
       {
-        "time":0.01, 
-        "action":"explosion", 
-        "foregroundRadius":2.5, 
-        "backgroundRadius":0, 
-        "explosiveDamageAmount":5.0, 
-        "delaySteps":2, 
+        "time":0.01,
+        "action":"explosion",
+        "foregroundRadius":2.5,
+        "backgroundRadius":0,
+        "explosiveDamageAmount":5.0,
+        "delaySteps":2,
         "harvestLevel":1
       },
       {
         "action":"sound",
-        "options":["/sfx/melee/sword_guard.ogg"], 
+        "options":["/sfx/melee/sword_guard.ogg"],
         "time":0.0, "repeat":false
-      }, 
+      },
       {
         "time":0.0,
         "action":"projectile",
@@ -117,19 +117,19 @@
               }
             ]
           }
-        }      
+        }
       ],
       "actionOnCollide":[
         {
-          "action":"sound","options":["/sfx/objects/rock_big_break1.ogg"], 
-          "time":0.05, 
+          "action":"sound","options":["/sfx/objects/rock_big_break1.ogg"],
+          "time":0.05,
           "repeat":false}
-        ],      
+        ],
       "actionOnReap" : [
         {
           "action":"sound",
-          "options":["/sfx/melee/sword_hit_metal4.ogg"], 
-          "time":0.05, 
+          "options":["/sfx/melee/sword_hit_metal4.ogg"],
+          "time":0.05,
           "repeat":false
         }
       ]
@@ -220,8 +220,8 @@
 	      "inheritDamageFactor" : 0.01,
 	      "config" : { "speed" :2, "timeToLive" : 0.2},
 	      "angleAdjust" : 0
-	    } 	    
-      ],      
+	    }
+      ],
       "actionOnReap" : [
 	    {
 	      "action" : "projectile",
@@ -230,7 +230,7 @@
 	      "inheritDamageFactor" : 0.01,
 	      "config" : { "speed" :0, "timeToLive" : 1},
 	      "angleAdjust" : 0
-	    }      
+	    }
       ]
     }
   },

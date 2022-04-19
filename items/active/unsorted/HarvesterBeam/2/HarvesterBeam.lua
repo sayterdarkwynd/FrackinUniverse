@@ -98,7 +98,7 @@ function beamgunUpdate(dt)
 			bugSpawn = 10
 		end
 		local buglist = world.monsterQuery(mcontroller.position(), 20)
-		for i,j in ipairs(buglist) do
+		for _,j in ipairs(buglist) do
 			if world.monsterType(j) == "hbeamscriptbug" then
 				self.scriptBug = j
 				break
@@ -194,7 +194,7 @@ function fireBeam(primary)
 		animator.playSound("harvest")
 		addLine("harvest3", {armPos, toPointer})
 		local farmQuery = world.entityLineQuery(armPos, toPointer,{inSightOf = self.owner})
-		for i,j in pairs(farmQuery) do
+		for _,j in pairs(farmQuery) do
 				--sb.logInfo("%s", world.getObjectParameter(j, "objectName"))
 				local plantStage = world.farmableStage(j)
 				--sb.logInfo("%s, %s at %s: %s, %s, %s", j, world.entityType(j), world.entityPosition(j), world.farmableStage(j), world.entityName(j), world.getObjectParameter(j, "hasObjectItem"))

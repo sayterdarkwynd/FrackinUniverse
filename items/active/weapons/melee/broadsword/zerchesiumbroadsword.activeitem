@@ -1,7 +1,7 @@
 {
   "itemName" : "zerchesiumbroadsword",
   "price" : 700,
-  "level" : 4,
+  "level" : 3,
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "Attack with absolute certainty that your foe will fall.",
@@ -12,7 +12,7 @@
   "itemTags" : ["weapon","melee","broadsword","zerchesium", "upgradeableWeapon"],
 
   "inventoryIcon" : "zerchesiumbroadsword.png",
-  "collectablesOnPickup" : { "fu_weaponbroadsword" : "zerchesiumbroadsword" },
+  //"collectablesOnPickup" : { "fu_weaponbroadsword" : "zerchesiumbroadsword" },
   "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
   "animationParts" : {
     "handle" : "",
@@ -31,16 +31,16 @@
     "damageConfig" : {
       "damageSourceKind" : "ice"
     },
-    
-    
+
+
 "stances" : {
       "idle":{"twoHanded":false, "armRotation":-20, "weaponRotation":120, "weaponOffset":[0.14,1], "allowRotate":false, "allowFlip":true}
-    }    
+    }
   },
 
   "altAbilityType" : "bladecharge",
 
-  "critChance" : 4, 
-  "critBonus" : 4, 
+  "critChance" : 4,
+  "critBonus" : 4,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

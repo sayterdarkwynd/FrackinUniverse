@@ -1,96 +1,111 @@
 {
-  "itemName" : "fucarbonhandcannon",
-  "price" : 460,
-  "inventoryIcon" : "carbonhandcannon.png",
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "A brutally effective pistol.
-^cyan;Shotgun-style bursts^reset;",
-  "shortdescription" : "Blasthammer",
-  "category" : "pistol",
-  "level" : 4,
-  "tooltipKind" : "gun2",
+  "itemName": "fucarbonhandcannon",
+  "price": 460,
+  "inventoryIcon": "carbonhandcannon.png",
+  "maxStack": 1,
+  "rarity": "uncommon",
+  "description": "A brutally effective pistol.\n^cyan;Shotgun - style bursts ^reset;",
+  "shortdescription": "Blasthammer",
+  "category": "pistol",
+  "level": 4,
+  "tooltipKind": "gun2",
 
-  "itemTags" : ["weapon","ranged","pistol","upgradeableWeapon" ],
-  "twoHanded" : false,
-  "weaponType" : "shotgun",
-  "animation" : "/items/active/weapons/ranged/gun.animation",
-  "animationParts" : {
-    "butt" : "",
-    "middle" : "carbonhandcannon.png",
-    "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
+  "itemTags": ["weapon", "ranged", "pistol", "upgradeableWeapon"],
+  "twoHanded": false,
+  "weaponType": "shotgun",
+  "animation": "/items/active/weapons/ranged/gun.animation",
+  "animationParts": {
+    "butt": "",
+    "middle": "carbonhandcannon.png",
+    "barrel": "",
+    "muzzleFlash": "/animations/muzzleflash/muzzleflash2.png"
   },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/gun/shotgun3.ogg" ]
+  "animationCustom": {
+    "sounds": {
+      "fire": ["/sfx/gun/shotgun3.ogg"]
     }
   },
 
-  "baseOffset" : [1.2, 0.35],
-  "muzzleOffset" : [2,0],
+  "baseOffset": [1.2, 0.35],
+  "muzzleOffset": [2, 0],
 
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+  "scripts": ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "radioactive",
+  "elementalType": "radioactive",
 
-  "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
-    "fireTime" : 1.4,
-    "baseDps" : 7,
-    "energyUsage" : 24,
-    "inaccuracy" : 0.12,
+  "primaryAbility": {
+    "scripts": ["/items/active/weapons/ranged/gunfire.lua"],
+    "class": "GunFire",
+    "fireTime": 1.4,
+    "baseDps": 7,
+    "energyUsage": 24,
+    "inaccuracy": 0.12,
 
-    "projectileCount" : 5,
-    "fireType" : "auto",
+    "projectileCount": 5,
+    "fireType": "auto",
 
-    "projectileType" : "splitbullet2",
-    "projectileParameters" : {
-      "speed" : 75
+    "projectileType": "splitbullet2",
+    "projectileParameters": {
+      "speed": 75,
+      "actionOnReap": [{
+          "action": "projectile",
+          "type": "furadbullet-2",
+          "inheritDamageFactor": 0.6,
+          "angleAdjust": 0,
+          "fuzzAngle": 10,
+          "damageConfig" : { "damageKind" : "radioactive" }
+        },
+        {
+          "action": "projectile",
+          "type": "furadbullet-2",
+          "inheritDamageFactor": 0.6,
+          "angleAdjust": 0,
+          "fuzzAngle": 10,
+          "damageConfig" : { "damageKind" : "radioactive" }
+        }
+      ]
     },
 
-    "stances" : {
-      "idle" : {
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "twoHanded" : false,
-        "weaponOffset" : [-0.2, 0],
+    "stances": {
+      "idle": {
+        "armRotation": 0,
+        "weaponRotation": 0,
+        "twoHanded": false,
+        "weaponOffset": [-0.2, 0],
 
-        "allowRotate" : true,
-        "allowFlip" : true
+        "allowRotate": true,
+        "allowFlip": true
       },
-      "fire" : {
-        "duration" : 0.2,
-        "armRotation" : 2,
-        "weaponRotation" : 2,
-        "twoHanded" : false,
+      "fire": {
+        "duration": 0.2,
+        "armRotation": 2,
+        "weaponRotation": 2,
+        "twoHanded": false,
 
-        "allowRotate" : true,
-        "weaponOffset" : [-0.5, 0],
-        "allowFlip" : true
+        "allowRotate": true,
+        "weaponOffset": [-0.5, 0],
+        "allowFlip": true
       },
-      "cooldown" : {
-        "duration" : 0.15,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "twoHanded" : false,
+      "cooldown": {
+        "duration": 0.15,
+        "armRotation": 0,
+        "weaponRotation": 0,
+        "twoHanded": false,
 
-        "allowRotate" : true,
-        "weaponOffset" : [-0.5, 0],
-        "allowFlip" : true
+        "allowRotate": true,
+        "weaponOffset": [-0.5, 0],
+        "allowFlip": true
       }
     }
   },
 
-  "critChance" : 2,
-  "critBonus" : 20,
-  "isAmmoBased" : 1,
-  "magazineSize" : 3,
-  "isShotgun" : 1,
-  //recoil
-  "hasRecoil" : 1,
-  "recoilSpeed" : 200,
-  "recoilForce" : 900,   
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "critChance": 2,
+  "critBonus": 20,
+  "isAmmoBased": 1,
+  "magazineSize": 3,
+  "isShotgun": 1,
+  "hasRecoil": 1,
+  "recoilSpeed": 200,
+  "recoilForce": 900,
+  "builder": "/items/buildscripts/buildunrandweapon.lua"
 }

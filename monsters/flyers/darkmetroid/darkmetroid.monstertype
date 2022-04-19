@@ -8,9 +8,9 @@
 
   "animation" : "darkmetroid.animation",
 
-  "dropPools" : [ 
-    { 
-      "default" : "darkmetroidTreasure", 
+  "dropPools" : [
+    {
+      "default" : "darkmetroidTreasure",
       "bow" : "huntingDarkMetroid",
       "firebow" : "huntingDarkMetroid",
       "icebow" : "huntingDarkMetroid",
@@ -20,7 +20,7 @@
       "radioactivebow" : "huntingDarkMetroid",
       "shadowbow" : "huntingDarkMetroid",
       "aetherbow" : "huntingDarkMetroid"
-    } 
+    }
   ],
 
   "baseParameters" : {
@@ -44,19 +44,19 @@
 
       "fleeActions" : [ ],
 
-      "hostileActions" : [ 
-      
+      "hostileActions" : [
+
         {
           "name" : "approach-fly",
           "parameters" : {
             "approachAngle" : 30,
             "minRange" : 0,
-            "maxRange" : 1           
+            "maxRange" : 1
           }
-        }      
+        }
       ],
 
-      "periodicActions" : [ 
+      "periodicActions" : [
         {
           "name" : "action-animate",
           "cooldown" : 15,
@@ -65,21 +65,21 @@
             "state" : "roar",
             "animationTime" : 2.2
           }
-        }         
+        }
       ],
 
-      "approachActions" : [    
+      "approachActions" : [
         {
           "name" : "approach-fly",
           "parameters" : {
             "approachAngle" : 30,
             "minRange" : 0,
-            "maxRange" : 4           
+            "maxRange" : 4
           }
         }
       ],
 
-      "followActions" : [       
+      "followActions" : [
         {
           "name" : "approach-teleport",
           "parameters" : {
@@ -90,8 +90,8 @@
           "parameters" : {
             "approachAngle" : 20,
             "minRange" : 0,
-            "maxRange" : 15           
-          }          
+            "maxRange" : 15
+          }
         }
       ],
 
@@ -118,7 +118,7 @@
         }
       ],
 
-      "concurrentActions" : [   
+      "concurrentActions" : [
         {
           "name" : "action-animate",
           "cooldown" : 10,
@@ -127,10 +127,10 @@
             "state" : "roar",
             "animationTime" : 2.2
           }
-        }      
+        }
       ],
 
-      "concurrentHostileActions" : [       
+      "concurrentHostileActions" : [
         {
          "name":"action-projectile",
          "cooldown" : 0.02,
@@ -141,11 +141,11 @@
 	    "power":0.0,
 	    "speed" : 0,
 	    "damageType" : "NoDamage",
-	    "inaccuracy":0.0, 
-	    "fireOffset":[0,0]          
+	    "inaccuracy":0.0,
+	    "fireOffset":[0,0]
          }
-        }      
-      
+        }
+
       ]
     },
 
@@ -222,16 +222,16 @@
         },
         "iceResistance" : {
           "baseValue" : -0.4
-        },        
+        },
         "physicalResistance" : {
           "baseValue" : 0.6
-        },        
+        },
         "electricResistance" : {
           "baseValue" : 0.6
         },
         "radioactiveResistance" : {
           "baseValue" : -0.15
-        },        
+        },
         "poisonResistance" : {
           "baseValue" : -0.2
         },
@@ -240,13 +240,13 @@
         },
         "cosmicResistance" : {
           "baseValue" : 1.0
-        },        
+        },
         "shadowImmunity" : {
           "baseValue" : 1.0
         },
         "aetherImmunity" : {
           "baseValue" : 1.0
-        }        
+        }
       },
 
       "resources" : {

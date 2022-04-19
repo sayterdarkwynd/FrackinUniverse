@@ -483,8 +483,8 @@ function populateTreeList()
 			end
 
 			if isAvailable and data.treeUnlocks[tree].research then
-				for tree, acronyms in pairs(data.treeUnlocks[tree].research) do
-					if not isResearched(tree, acronyms) then
+				for requiredAnotherTree, acronyms in pairs(data.treeUnlocks[tree].research) do
+					if not isResearched(requiredAnotherTree, acronyms) then
 						isAvailable = false
 						break
 					end
@@ -568,7 +568,7 @@ function draw()
 		local endPoint = {0,0}
 
 		-- draw tree lines
-		for research, tbl in pairs(researchTree) do
+		for _, tbl in pairs(researchTree) do
 			if tbl.state ~= "hidden" then
 				if tbl.children and #tbl.children > 0 then
 					startPoint[1] = tbl.position[1] + dragOffset.x
@@ -855,9 +855,9 @@ end
 function stringToAcronyms(dataString)
 	local splitString = {}
 	local _, count = string.gsub(dataString, ",", "")
-	for i = 1, count do
-		splitpos = string.find(dataString, ",")
-		insertingString = string.sub(dataString, 1, splitpos)
+	for _ = 1, count do
+		local splitpos = string.find(dataString, ",")
+		local insertingString = string.sub(dataString, 1, splitpos)
 		dataString = string.gsub(dataString, insertingString, "")
 
 		insertingString = string.gsub(insertingString, ",", "")
@@ -879,8 +879,6 @@ function buildStates(tree)
 
 	local researchedTable = status.statusProperty("zb_researchtree_researched", {}) or {}
 	local dataString = researchedTable[selectedTree] or ""
-	local insertingString = ""
-	local splitpos = 0
 
 	local versionEndPos = string.find(dataString, data.versionSplitString)
 	if versionEndPos then

@@ -15,9 +15,9 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced" ],
   "level" : 3,
-  "collectablesOnPickup" : { "fu_armorbalanced" : "fuintrepidhead" },
+  //"collectablesOnPickup" : { "fu_armorbalanced" : "fuintrepidhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -47,9 +47,9 @@
   ],
 
   "statusEffects" : [
-    "fusetbonusmanager",
+    "intrepidsetbonus",
     {
-      "stat" : "intrepidsetcount",
+      "stat" : "fu_intrepidset_head",
       "amount" : 1
     }
   ],
@@ -92,5 +92,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

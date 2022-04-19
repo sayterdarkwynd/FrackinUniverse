@@ -1,12 +1,8 @@
 {
   "type" : "crewmembershadow",
-  "baseType" : "crewmember",
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
-
     "crew" : {
       "defaultUniform" : {
         "head" : "darkhead",
@@ -15,26 +11,35 @@
       },
 
       "role" : {
+        "type" : "chemist",
+        "name" : "Shadow Being",
+        "field" : "Shadow-Walk",
+        "uniformColorIndex" : 1,
+
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
             "type" : "EphemeralEffect",
             "effect" : "shadowimmunity",
             "duration" : 300
-          },         
+          },
           {
             "type" : "Regeneration",
             "value" : 1
           }
-        ],
-        "type" : "chemist",
-        "name" : "Shadow Being",
-        "field" : "Shadow-Walk"
+        ]
       }
     },
 
     "dialog" : {
       "crewmember" : {
+        "offer" : {
+          "default" : {
+            "default" : [
+              "...?"
+            ]
+          }
+        },
         "roleDescription" : {
           "default" : {
             "default" : [
@@ -51,9 +56,8 @@
               "... .. .... ."
             ]
           }
-        }
-      },
-	  "fieldBenefit" : {
+        },
+	    "fieldBenefit" : {
           "default" : {
             "default" : [
               "!!!",
@@ -62,7 +66,36 @@
               "... .. .... ."
             ]
           }
+        },
+        "respawned" : {
+          "default" : {
+            "default" : [
+              "..... ..."
+            ]
+          }
+        },
+        "unfollow" : {
+          "default" : {
+            "default" : [
+              "..? ..."
+            ]
+          }
+        },
+        "follow" : {
+          "default" : {
+            "default" : [
+              "..? ..!"
+            ]
+          }
+        },
+        "cantreach" : {
+          "default" : {
+            "default" : [
+              "..!"
+            ]
+          }
         }
+      }
     }
   },
 
@@ -71,10 +104,7 @@
       [0, [
           {
             "primary" : [ "penumbrabow" ],
-            "sheathedprimary" : [ "effigiumhammer" ],
-			"head" :  [{ "name" : "darkhead" } ],
-			"chest" : [ { "name" : "darkchest" } ],
-            "legs" : [ { "name" : "darklegs" } ]          
+            "sheathedprimary" : [ "effigiumhammer" ]
           }
         ] ]
     ]

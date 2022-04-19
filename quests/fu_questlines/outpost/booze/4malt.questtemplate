@@ -1,33 +1,32 @@
 {
-  "id" : "4malt",
-  "prerequisites" : [ "3hops" ],
-  "title" : "Malt",
-  "text" : "Time to use some new stations. First, put one piece of ^orange;Wheat^reset; into the ^orange;Rain Barrel^reset;. Once it's soaked, put it into the ^orange;Sprouting Table^reset;. Then take your sprouted wheat and place it into a ^orange;Campfire^reset;.",
-  "completionText" : "Nice. Note that if you need dark malt, you just need to put back your malt into the ^orange;Furnace^reset; and cook it some more.",
-  "moneyRange" : [120, 220],
-  "rewards" : [ ],
-  "speaker" : "questGiver",
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"id" : "4malt",
+	"prerequisites" : [ "3hops" ],
+	"title" : "Malt",
+	"text" : "Time to use some new stations. First, put one piece of ^orange;Wheat^reset; into the ^orange;Rain Barrel^reset;. Once it's soaked, put it into the ^orange;Sprouting Table^reset;. Then take your sprouted wheat and place it into a ^orange;Campfire^reset;.",
+	"completionText" : "Nice. Note that if you need dark malt, you just need to put back your malt into the ^orange;Furnace^reset; and cook it some more.",
+	"moneyRange" : [120, 220],
+	"rewards" : [ ],
+	"speaker" : "questGiver",
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,
-        "turnInDescription" : "Bring the ^orange;malt^reset; to me at the ^orange;Science Outpost^reset;",
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "malt",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
-  }
+		"requireTurnIn" : false,
+		"turnInDescription" : "Bring the ^orange;malt^reset; to me at the ^orange;Science Outpost^reset;",
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "malt",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
 }

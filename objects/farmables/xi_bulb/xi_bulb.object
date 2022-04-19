@@ -1,7 +1,7 @@
 {
   "objectName" : "xi_bulb",
   "colonyTags" : [ "nature" ],
-  "rarity" : "rare",
+  "rarity" : "uncommon",
   "category" : "seed",
   "description" : "Provides light, and can be used to form many X'ian tools. Radioactive. Doesn't work on your ship.",
   "shortdescription" : "X'ian Seed Bulb",
@@ -11,6 +11,8 @@
   "lightColor" : [100, 100, 42],
   "inventoryIcon" : "xi_bulbicon.png",
   "largeImage" : "xi_bulb.png:default.3.0",
+  "learnBlueprintsOnPickup" : ["xi_bulb2"],
+
   "orientations" : [
     {
       "dualImage" : "xi_bulb.png:<color>.<stage>.<alt>",
@@ -18,7 +20,7 @@
       "frames" : 1,
       "animationCycle" : 0.5,
 
-      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+      "spaces" : [ [-1, 0], [0, 0], [1, 0], [2, 0], [-1, 1], [0, 1], [1, 1], [2, 1], [-1, 2], [0, 2], [1, 2], [2, 2], [-1, 3], [0, 3], [1, 3], [2, 3], [-1, 4], [0, 4], [1, 4], [2, 4], [-1, 5], [0, 5], [1, 5], [2, 5], [-1, 6], [0, 6], [1, 6], [2, 6] ],
       "requireTilledAnchors" : false,
       "anchors" : [ "bottom" ]
 
@@ -46,7 +48,7 @@
     "damageSourceKind" : "radioactive",
     "statusEffects" : [ "radioactiveplant","radioactiveplantfoodhandler" ]
   },
-          
+
   "consumeSoilMoisture" : false,
   "maxImmersion" : 1.0
 }

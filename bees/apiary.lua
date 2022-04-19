@@ -237,8 +237,8 @@ function update(dt)
 			local ticks = math.min(ticksToSimulate, beeData.maxSimulatedTicksPerUpdate)
 			ticksToSimulate = ticksToSimulate - ticks
 
-			for i = 1, ticks do
-				beeTick()
+			for _ = 1, ticks do
+				beeTick(dt)
 			end
 		else
 			-- Renable interaction if done simulating ticks
@@ -263,7 +263,7 @@ function update2(dt)
 
 	if beeUpdateTimer <= 0 then
 		beeUpdateTimer = beeData.beeUpdateInterval
-		beeTick()
+		beeTick(beeData.beeUpdateInterval)
 		beeTickDelta = 0
 	end
 end
@@ -288,7 +288,7 @@ end
 -- Bee ticks that should happen while the object is not loaded
 -- Called on init if there are any ticks that need simulating
 -- While just calling update a bunch of times in a row is easy, it has a lot of stuff going on that you don't need
-function beeTick()
+function beeTick(dt)
 	contents = world.containerItems(entity.id())
 
 	-- Get amount of hives with active drones in the areas
@@ -300,7 +300,7 @@ function beeTick()
 	local haltProduction = checkRivalries()
 
 	-- Check if there's a frame and get their bonuses
-	getFrames()
+	getFrames(dt)
 
 	-- Check if there was a queen in the queen slot last time the object updated
 	if queen then
@@ -456,7 +456,7 @@ function beeTick()
 end
 
 -- Check for frames, and get the stat modifiers
-function getFrames()
+function getFrames(dt)
 
 	-- Set default values
 	hasFrame = false
@@ -476,16 +476,21 @@ function getFrames()
 		cosmicResistance = false,
 		physicalResistance = false
 	}
-
+	if not self.frameTakeTimers then
+--		sb.logInfo("initializing frame grab timers")
+		self.frameTakeTimers={}
+	end
+	local frameCounter=0
 	-- Iterate through frame slots, set 'hasFrame' to true if there's a frame, and add bonuses to the table
 	-- Also call their special function from the 'specialFrameFunctions' table if they have one
 	for _, frameSlot in ipairs(frameSlots) do
 		if contents[frameSlot] and root.itemHasTag(contents[frameSlot].name, "apiaryFrame") then
+			frameCounter=frameCounter+1
 			hasFrame = true
 			local cfg = root.itemConfig(contents[frameSlot].name)
-			local amountcheck = contents[frameSlot].count
+			--local amountcheck = contents[frameSlot].count--currently unused
 
-			for stat, value in pairs(frameBonuses) do
+			for stat, _ in pairs(frameBonuses) do--value in pairs(frameBonuses) do
 				if stat == "allowDay" or stat == "allowNight" or stat== "frameWorktimeModifierDay" or stat=="frameWorktimeModifierNight" or stat == "coldResistance" or stat=="heatResistance" or stat=="radResistance" or stat=="physicalResistance" or stat=="cosmicResistance" then
 					if cfg.config[stat] then
 						frameBonuses[stat] = true
@@ -500,16 +505,22 @@ function getFrames()
 				specialFrameFunctions[cfg.config.specialFunction](cfg.config.functionParams)
 			end
 
-			-- we remove frames randomly based on a rare diceroll. all frames use the same rate. This keeps stacks replenishing via crafting
-			-- this should make automation less fire-and-forget, requiring at least a little maintenance and work
-			-- frames, in this way, can be made 'expensive' to ensure bees are costly but worthwhile
-			local randomChanceToTake = math.random(50)
-			if randChanceToTake == 1 then
-				world.containerTakeNumItemsAt(entity.id(), frameSlot-1, 1)
-				contents[frameSlot] = world.containerItemAt(entity.id(), frameSlot-1)
+			-- we remove frames randomly based on a rare diceroll. all frames use the same rate. This keeps stacks replenishing via crafting rather than a one-time bit of crafting
+			self.frameTakeTimers[frameCounter]=(self.frameTakeTimers[frameCounter] or 0) + (dt or 0)
+			if self.frameTakeTimers[frameCounter] >= 180.0 and hasDrone and queen then
+				local randomChanceToTake = math.random(50)
+				if randomChanceToTake == 1 then
+					world.containerTakeNumItemsAt(entity.id(), frameSlot-1, 1)
+					contents[frameSlot] = world.containerItemAt(entity.id(), frameSlot-1)
+				end
+				self.frameTakeTimers[frameCounter]=0.0
 			end
 		end
 	end
+	--not including, it'd be too easy to cheese
+	--[[while #self.frameTakeTimers>frameCounter do
+		self.frameTakeTimers[frameCounter+1]=nil
+	end]]
 end
 
 
@@ -608,7 +619,6 @@ function queenProduction()
 	-- below, a base value of 0.01 was added so that even 0 Queen Breed bees have a low chance
 	local productionQueen = 0.01 + genelib.statFromGenomeToValue(queen.parameters.genome, "queenBreedRate") + frameBonuses.queenBreedRate * ((flowerFavor + biomeFavor) / 2)
 
-	-- the final divider on youngQueenProgress (/4) was added later as a means to reduce the frequency at which queens appeared.
 	-- adjusted to 50% instead of 25% on 11-04-2020
 	-- also added a divider to the droneProgress so drone births are 75% less frequent. This will lower production rates as a consequence as bees breed.
 	--youngQueenProgress = youngQueenProgress + productionQueen * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01) * 0.25
@@ -620,7 +630,7 @@ function queenProduction()
 		local produced = math.floor(youngQueenProgress / beeData.youngQueenProductionRequirement)
 		youngQueenProgress = youngQueenProgress % beeData.youngQueenProductionRequirement
 
-		for i = 1, produced do
+		for _ = 1, produced do--for _ = 1, math.floor(youngQueenProgress / beeData.youngQueenProductionRequirement) do--produced do
 			local youngQueen = generateYoungQueen() -- Generate queen stats
 			for j = firstInventorySlot, slotCount do
 				youngQueen = world.containerPutItemsAt(entity.id(), youngQueen, j-1)
@@ -679,16 +689,13 @@ function queenProduction()
 				droneSlot = i
 			end
 		end
-
-		-- If a slot with this type of drones was found, stack em into the inventory
-		-- Otherwise just add it to the inventory
+		-- If a slot with this type of drones was found, stack em into the inventory, Otherwise just add it to the inventory
 		if droneSlot then
 			world.containerStackItems(entity.id(), drones)
 		else
 			world.containerAddItems(entity.id(), drones)
 		end
 	end
-
 	-- Will not always reach here because of how I wrote the drone adding segment
 	ageQueen()
 end
@@ -698,7 +705,8 @@ end
 -- Can be called from other places (Like the frame scripts)
 function ageQueen(amount)
 	--if changing this, make sure it matches in beeBuilder.lua
-	local fullLifespan = genelib.statFromGenomeToValue(queen.parameters.genome, "queenLifespan") * 2.0
+    local fullLifespan = genelib.statFromGenomeToValue(queen.parameters.genome, "queenLifespan") * ((frameBonuses.queenLifespan or 0 / 8) + 1)
+    --sb.logInfo(fullLifespan)
 
 	if not queen.parameters.lifespan or queen.parameters.lifespan < 0 then
 	  queen.parameters.lifespan = fullLifespan
@@ -738,8 +746,8 @@ function generateYoungQueen()
 	return descriptor
 end
 
--- Function for randomizing a stat value for when a new queen is generated
-function randomMod(num)
+-- Function for randomizing a stat value for when a new queen is generated--totally unused
+--[[function randomMod(num)
 	local rnd = math.random()
 
 	if rnd <= 0.05 then -- 5% -3
@@ -759,7 +767,7 @@ function randomMod(num)
 	end
 
 	return num
-end
+end]]
 
 -- Returns a queen version of the young queen, with exactly the same stats and parameters
 function youngQueenToQueen(youngQueen)
@@ -775,7 +783,7 @@ function droneDecay(slot)
 	if self.chanceRemove > 75 then--25% chance of removal
 		world.containerTakeNumItemsAt(entity.id(), slot-1, math.floor(amount * beeData.droneDecayPercentile + beeData.droneDecayFlat))
 		contents[slot] = world.containerItemAt(entity.id(), slot-1)
-	end	
+	end
 end
 
 -- Receives a slot and reduces the amount of drones there based on the drones mite resistance stat and the amount of mites
@@ -936,7 +944,7 @@ function miteGrowth()
 		end
 
 	elseif math.random() <= beeData.mites.infestationChance then
-	    storage.mites = beeData.mites.growthStatic
+	    storage.mites = beeData.mites.growthStatic --storage.mites = storage.mites + (storage.mites*mult) - (hiveMiteResistance)
 	end
 end
 

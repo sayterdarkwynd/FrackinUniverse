@@ -6,7 +6,7 @@
   "rarity" : "Uncommon",
   "description" : "A lightweight, yet strong blade.",
   "shortdescription" : "Titanium Longsword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "longsword",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee", "longsword", "upgradeableWeapon"],
@@ -15,19 +15,19 @@
 
   "animation" : "combolongsword.animation",
 
-  "collectablesOnPickup" : { "fu_weaponlongsword" : "titaniumlongsword" },
-  
+  //"collectablesOnPickup" : { "fu_weaponlongsword" : "titaniumlongsword" },
+
   "animationParts" : {
     "handle" : "",
     "blade" : "titaniumlongsword.png"
   },
-  "animationCustom" : { 
+  "animationCustom" : {
 	  "sounds" : {
 	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
-	  }  
+	  }
   },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
@@ -39,8 +39,8 @@
     "fireTime" : 0.897,
     "baseDps" : 6.2
   },
-  
+
   "critChance" : 1,
-  "critBonus" : 9,  
+  "critBonus" : 9,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -23,6 +23,13 @@ function build(directory, config, parameters, level, seed)
 			return defaultValue
 		end
 	end
+	local dumptable=function(tt)
+		local s = ""
+		for _,p in pairs(tt) do
+			s=s.." "..p
+		end
+		return string.sub(s, 2)
+	end
 
 	if level and not configParameter("fixedLevel", false) then
 		parameters.level = level
@@ -78,8 +85,6 @@ function build(directory, config, parameters, level, seed)
 		config.tooltipFields.shieldBashPushLabel = configParameter("shieldBashPush",0)
 		config.tooltipFields.stunChance = util.round(configParameter("stunChance",0), 0)
 
-		local resistanceInfo2={}
-
 		for _,v in pairs(config.leveledStatusEffects) do
 			if resistances[v.stat] then
 				local label=resistances[v.stat].label
@@ -114,11 +119,55 @@ function build(directory, config, parameters, level, seed)
 			resistanceText=resistanceText..", "
 		end
 	end
-	if string.len(resistanceText) then
+	if string.len(resistanceText)>0 then
 		config.description=config.description..resistanceText
-		--sb.logInfo("data\n%s",config.description)
 	end
-
+	resistanceInfo=configParameter("itemTags")
+	local resistanceInfo2={}
+	doOnce=false
+	for _,tag in pairs(resistanceInfo or {}) do
+		doOnce=true
+		if type(tag)=="string" then resistanceInfo2[tag:lower()]=true end
+	end
+	if doOnce then
+		resistanceText=""
+		resistanceInfo={}
+		resistanceInfo["balance"]=((resistanceInfo2["balanced"] or (resistanceInfo2["defensive"] and resistanceInfo2["offensive"])) and "Balanced") or (resistanceInfo2["defensive"] and "Tank") or (resistanceInfo2["offensive"] and "Offensive")
+		resistanceInfo["range"]=((resistanceInfo2["ranged"] and not resistanceInfo2["melee"]) and "Ranged") or ((resistanceInfo2["melee"] and not resistanceInfo2["ranged"]) and "Melee")
+		resistanceInfo["explorer"]=resistanceInfo2["explorer"] and "Explorer"
+		resistanceInfo["specialist"]=resistanceInfo2["specialist"] and "Specialist"
+		resistanceInfo["hyper"]=resistanceInfo2["hyper"] and "Hyper"
+		if resistanceInfo["hyper"] or resistanceInfo["balance"] or resistanceInfo["range"] or resistanceInfo["explorer"] or resistanceInfo["specialist"] then
+			resistanceInfo2={}
+			resistanceText="\n^green;^reset; Class: "
+			if resistanceInfo["specialist"] then
+				table.insert(resistanceInfo2,resistanceInfo["specialist"])
+				--config.tooltipFields.specialistLabel=resistanceInfo["specialist"]
+			end
+			if resistanceInfo["explorer"] then
+				table.insert(resistanceInfo2,resistanceInfo["explorer"])
+				--config.tooltipFields.explorerLabel=resistanceInfo["explorer"]
+			end
+			if resistanceInfo["range"] then
+				table.insert(resistanceInfo2,resistanceInfo["range"])
+				--config.tooltipFields.rangeLabel=resistanceInfo["range"]
+			end
+			if resistanceInfo["hyper"] then
+				table.insert(resistanceInfo2,resistanceInfo["hyper"])
+				--config.tooltipFields.hyperLabel=resistanceInfo["hyper"]
+			end
+			if resistanceInfo["balance"] then
+				table.insert(resistanceInfo2,resistanceInfo["balance"])
+				--config.tooltipFields.specialistLabel=resistanceInfo["balance"]
+			end
+			resistanceText=resistanceText..dumptable(resistanceInfo2)
+			config.tooltipFields.armorClassLabel=resistanceText
+		end
+		if string.len(resistanceText)>0 then
+			config.description=config.description..resistanceText
+			--sb.logInfo("data\n%s",config.description)
+		end
+	end
 	return config, parameters
 end
 

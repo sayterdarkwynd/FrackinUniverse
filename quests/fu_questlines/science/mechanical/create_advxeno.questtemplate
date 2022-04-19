@@ -1,34 +1,32 @@
 {
-  "id" : "create_advxeno",
-  "prerequisites" : [ "create_miraclegrass" ],
-  "title" : "Advanced Genetics",
-  "text" : "Can you out-science me? I doubt it. If you think you can, prove it by bringing me a completed ^orange;Advanced Xeno Lab^reset;!",
-  "completionText" : "Well...I guess that settles it. I suck. Since you bested me fair and square, have these ^orange;Tech Cards^reset;",
-  "moneyRange" : [220, 320],
-  "rewards" : [ [ [ "techcard" , 3 ]] ],
-  "speaker" : "questGiver",
+	"id" : "create_advxeno",
+	"prerequisites" : [ "create_miraclegrass" ],
+	"title" : "Advanced Genetics",
+	"text" : "Can you out-science me? I doubt it. If you think you can, prove it by bringing me a completed ^orange;Advanced Xeno Lab^reset;!",
+	"completionText" : "Well...I guess that settles it. I suck. Since you bested me fair and square, have these ^orange;Tech Cards^reset;",
+	"moneyRange" : [220, 320],
+	"rewards" : [ [ [ "techcard" , 3 ]] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
+		"requireTurnIn" : false,
+		"turnInDescription" : "Bring the ^orange;Advanced Xenolab^reset; to the scientist at the ^orange;Science Outpost^reset;",
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,  
-        "turnInDescription" : "Bring the ^orange;Advanced Xenolab^reset; to the scientist at the ^orange;Science Outpost^reset;",
-
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "xenostationadvnew",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
-  }
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "xenostationadvnew",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
 }

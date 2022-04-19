@@ -15,23 +15,26 @@
   "inventoryIcon" : "precursorconsoleicon.png",
   "orientations" : [
     {
-      "direction" : "left",
       "imageLayers" : [ { "image" : "precursorconsole.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursorconsolelit.png:<color>.<frame>" } ],
       "imagePosition" : [-8, 0],
       "frames" : 3,
       "animationCycle" : 0.8,
+      "direction" : "left",
+      "flipImages" : true,
+
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     },
     {
-      "direction" : "right",
       "imageLayers" : [ { "image" : "precursorconsole.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursorconsolelit.png:<color>.<frame>" } ],
       "imagePosition" : [-8, 0],
       "frames" : 3,
       "animationCycle" : 0.8,
+
+      "direction" : "right",
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
-    }  
+    }
   ],
 
   "scripts" : [ "/objects/wired/switch/switch.lua" ],
@@ -50,6 +53,6 @@
   "animationPosition" : [-8, 0],
   "inputNodes" : [ [0, 1] ],
   "outputNodes" : [ [0, 0] ],
-  
+
  "learnBlueprintsOnPickup" : [ "precursorconsoleswitch"]
 }

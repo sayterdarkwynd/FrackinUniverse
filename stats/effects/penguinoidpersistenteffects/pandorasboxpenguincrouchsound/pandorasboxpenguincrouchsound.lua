@@ -4,8 +4,8 @@ end
 
 function update(dt)
   if not self.played and mcontroller.crouching() then
-  	animator.playSound("pandorasboxPenguinCrouchSound")
-  	self.played = true
+    animator.playSound("pandorasboxPenguinCrouchSound")
+    self.played = true
   end
   if not mcontroller.crouching() then self.played = false end
 end

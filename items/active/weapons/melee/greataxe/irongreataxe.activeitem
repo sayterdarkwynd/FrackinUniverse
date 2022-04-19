@@ -12,7 +12,7 @@
   "itemTags" : ["weapon","melee","greataxe", "upgradeableWeapon"],
 
   "inventoryIcon" : "irongreataxe.png",
-  "collectablesOnPickup" : { "fu_weapongreataxe" : "irongreataxe" },
+  //"collectablesOnPickup" : { "fu_weapongreataxe" : "irongreataxe" },
   "animation" : "/items/active/weapons/melee/greataxe/greataxe.animation",
   "animationParts" : {
     "handle" : "",
@@ -22,10 +22,10 @@
     "sounds" : {
       "fire" : [ "/sfx/melee/swing_broadsword.ogg" ]
     },
-    "animatedParts" : { 
-      "parts" : { 
+    "animatedParts" : {
+      "parts" : {
         "blade" : { "properties" : {"offset" : [0, 0.5]}},
-        "swoosh" : { "properties" : {"offset" : [0, 2]}}    	
+        "swoosh" : { "properties" : {"offset" : [0, 2]}}
       }
     }
   },
@@ -46,6 +46,6 @@
   "critChance" : 3,
   "critBonus" : 5,
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  
+
   "stunChance" : 5
 }

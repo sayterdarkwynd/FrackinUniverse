@@ -3,8 +3,8 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Rare",
-  "description" : "^orange;Set Bonuses^reset;: 
+  "rarity" : "rare",
+  "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; Scythe/Bio-Weapon: +^green;3^reset;% Crit Chance
 ^yellow;^reset; ^cyan;Immune^reset;: Insanity",
   "shortdescription" : "Flesh Chestplate",
@@ -22,9 +22,9 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced" ],
   "level" : 4,
-  "collectablesOnPickup" : { "fu_armorranged" : "cultfleshchest" },
+  //"collectablesOnPickup" : { "fu_armorranged" : "cultfleshchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -46,7 +46,7 @@
       "stat" : "maxHealth",
       "amount" : 3
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "shadowResistance",
       "amount" : 0.02
@@ -60,6 +60,6 @@
       "amount" : 1
     }
   ],
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 
 }

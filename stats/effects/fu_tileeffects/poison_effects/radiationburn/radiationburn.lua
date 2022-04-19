@@ -28,11 +28,11 @@ function update(dt)
     -- Apply damage if target's physical resistance is zero (otherwise, just make the 'hurt' SFX). --
     local dmg = 0.1
     if (self.currentDebuff == self.maxDebuff) then
-  	  if status.statPositive("specialStatusImmunity") then
+      if status.statPositive("specialStatusImmunity") then
           dmg = math.floor(world.threatLevel() * self.tickDamagePercentage * 100)
       else
-  	      dmg = math.floor((status.resourceMax("health") * self.tickDamagePercentage) + (world.threatLevel()/3))
-  	  end
+          dmg = math.floor((status.resourceMax("health") * self.tickDamagePercentage) + (world.threatLevel()/3))
+      end
     end
 
     status.applySelfDamageRequest({

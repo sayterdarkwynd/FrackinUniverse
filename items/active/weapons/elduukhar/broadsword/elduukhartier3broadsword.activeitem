@@ -1,18 +1,18 @@
 {
   "itemName" : "elduukhartier3broadsword",
   "price" : 530,
-  "level" : 3,
+  "level" : 2,
   "maxStack" : 1,
-  "rarity" : "uncommon",
+  "rarity" : "common",
   "description" : "An ornate greatsword crafted from metal and crystal.",
   "shortdescription" : "Feya Broadsword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","broadsword","crystal", "upgradeableWeapon"],
-  
+
   "inventoryIcon" : "elduukhartier3broadsword.png",
-  
+
   "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
   "animationParts" : {
     "handle" : "",
@@ -22,16 +22,22 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "electric",
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
-    "baseDps" : 11.5
+    "baseDps" : 11.5,
+    "damageConfig" : {
+      "damageSourceKind" : "electric"
+    }
   },
+
+  "critChance" : 1,
+  "critBonus" : 5,
 
   "altAbilityType" : "downstab",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
-  
+
 }

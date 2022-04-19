@@ -12,9 +12,9 @@ function isn_getCurrentPowerInput(divide)
 		---sb.logInfo("PID: Iteration " .. iterator)
 		if object.getInputNodeLevel(iterator) == true then
 			connectedDevices = object.getInputNodeIds(iterator)
-			for id, powerLevel in pairs (connectedDevices) do
+			for id in pairs(connectedDevices) do
 				---sb.logInfo("PID: id is " .. id)
-				---sb.logInfo("PID: powerLevel is " .. powerLevel)
+				---sb.logInfo("PID: powerLevel is " .. connectedDevices[id])
 				---sb.logInfo("PID: ID check resolves to " .. world.entityName(id))
 				if world.callScriptedEntity(id,"isn_canSupplyPower") == true then
 					local output = world.callScriptedEntity(id,"isn_getCurrentPowerOutput",divide)
@@ -61,7 +61,7 @@ end
 function isn_checkValidOutput()
 	local connectedDevices = object.getOutputNodeIds(0)
 	if not connectedDevices then return false end
-	for id, powerLevel in pairs(connectedDevices) do
+	for id in pairs(connectedDevices) do
 		if world.callScriptedEntity(id,"isn_canReceivePower") == false then return false end
 	end
 	return true
@@ -74,9 +74,9 @@ function isn_countPowerDevicesConnectedOnOutboundNode(node)
 	local devicelist = object.getOutputNodeIds(node)
 	if devicelist == nil then return 0 end
 	---sb.logInfo("PDCDB: iterating detected devices")
-	for id, powerLevel in pairs(devicelist) do
+	for id in pairs(devicelist) do
 		---sb.logInfo("PDCDB: id is " .. id)
-		---sb.logInfo("PDCDB: powerLevel is " .. powerLevel)
+		---sb.logInfo("PDCDB: powerLevel is " .. devicelist[id])
 		---local devicecheck = world.entityName(id)
 		---if not devicecheck then
 			---sb.logInfo("PDCDB: id resolves to nil")

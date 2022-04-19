@@ -27,7 +27,7 @@ function init()
 	if not storage.fert then storage.fert = {} end
 	if not storage.water then storage.water = {} end
 
-	self.requiredPower = config.getParameter("isn_requiredPower", nil)
+	self.requiredPower = config.getParameter("isn_requiredPower")
 	self.unpoweredGrowthRate = config.getParameter("unpoweredGrowthRate", 0.434782609)   -- Multiplier on base growth rate when unpowered
 	self.liquidInputs = config.getParameter("waterInputs")
 	self.fertInputs = config.getParameter("fertInputs")
@@ -44,6 +44,9 @@ function init()
 	storage.hasFluid = storage.hasFluid or false		--If false soil is dry and no further growth.
 
 	if storage.activeConsumption == nil then storage.activeConsumption = false end
+
+	self.emitsLightWhenPowered = config.getParameter("emitsLightWhenPowered", false)
+	setLightEnabled()
 end
 
 --Updates the state of the object.
@@ -71,6 +74,7 @@ function update(dt)
 				if object.outputNodeCount() > 0 then
 					object.setOutputNodeLevel(0,false)
 				end
+				setLightEnabled(false)
 			end
 			handleTooltip({water=water,fert=fert,growthmod=nil})--update description
 			return
@@ -227,9 +231,11 @@ function consumePower(dt)
 	if self.requiredPower then
 		if power.consume(self.requiredPower * dt) then
 			animator.setAnimationState("powlight", "on")
+			setLightEnabled(true)
 			return true
 		else
 			animator.setAnimationState("powlight", "off")
+			setLightEnabled(false)
 			return false
 		end
 	end
@@ -263,9 +269,9 @@ function growPlant(growthmod, dt)
 
 	-- If the new stage is a harvesting stage, harvest and handle perennial
 	if stage().harvestPool then
-		local tblmerge = function(tb1, tb2) for k,v in pairs(tb2) do table.insert(tb1, v) end end
+		local tblmerge = function(tb1, tb2) for _,v in pairs(tb2) do table.insert(tb1, v) end end
 		local output = {}
-		for i=1,getFertSum("yield") do
+		for _=1,getFertSum("yield") do
 			tblmerge(output, root.createTreasure(stage().harvestPool, 1))
 		end
 		--sb.logInfo("%s",output)
@@ -361,7 +367,7 @@ Third, Starbound gracefully handles if a seed changes data, mods (resetToStage c
 --Also handles some of perennial growth mechanics.
 function genGrowthData()
 	storage.growthCap = 0
-	for index,stage in ipairs(storage.stage) do
+	for _,stage in ipairs(storage.stage) do
 		storage.growthCap = storage.growthCap + (stage.duration and stage.duration[1] or 0)
 		stage.val = storage.growthCap
 	end
@@ -443,3 +449,31 @@ function resetBonuses()
 	storage.fert = {}
 	storage.water = {}
 end
+
+function setLightEnabled(isEnabled)
+  if not self.emitsLightWhenPowered then
+    return
+  end
+
+  if isEnabled == nil then
+    isEnabled = storage.state or config.getParameter("defaultLightState", false)
+  end
+
+  if isEnabled then
+    object.setSoundEffectEnabled(true)
+    if animator.hasSound("on") then
+      animator.playSound("on")
+    end
+    --TODO: support lightColors configuration
+    object.setLightColor(config.getParameter("lightColor", {255, 255, 255}))
+  else
+    object.setSoundEffectEnabled(false)
+    if animator.hasSound("off") then
+      animator.playSound("off")
+    end
+    object.setLightColor(config.getParameter("lightColorOff", {0, 0, 0}))
+  end
+
+  storage.state = isEnabled
+end
+

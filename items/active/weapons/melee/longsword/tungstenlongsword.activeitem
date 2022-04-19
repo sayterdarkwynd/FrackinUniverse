@@ -6,7 +6,7 @@
   "rarity" : "Common",
   "description" : "A large, heavy tungsten blade.",
   "shortdescription" : "Tungsten Longsword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "longsword",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee", "longsword", "upgradeableWeapon"],
@@ -19,13 +19,13 @@
     "handle" : "",
     "blade" : "tungstenlongsword.png"
   },
-  "animationCustom" : { 
+  "animationCustom" : {
 	  "sounds" : {
 	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
-	  }  
+	  }
   },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
@@ -38,8 +38,8 @@
     "baseDps" : 6.14
   },
   "critChance" : 1,
-  "critBonus" : 9,  
+  "critBonus" : 9,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
-    "collectablesOnPickup" : { "fu_weaponlongsword" : "tungstenlongsword" }
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"//,
+  //"collectablesOnPickup" : { "fu_weaponlongsword" : "tungstenlongsword" }
 }

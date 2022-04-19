@@ -1,11 +1,18 @@
 { "backgroundcolor":"#000000",
  "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "target":"."
+        }
+    },
  "height":60,
  "infinite":false,
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJzt2LsRgzAQhGFVQBGuhBkac78mcwMmIXBi3WN1K\/AGf6r55oAZcXtrz10ppZRSt+jVWkM3qwvlrbRFrEyfxcm2WZxsV8\/INlmcbM8djGyLxcl2yCijjDLOlowyeto6sY2LMZaxNz\/UPKNG6\/wQ84zcIb3zy8wzeg9fjx7B1j8wWp1Vxsz\/9ZYwet7HzK6iwpjd+Yw2IvZno4xe2y8v0ohwnb2P80Y2uy\/rrPJdwTjrsz7PRn43aC\/ahnaO9CGsVb6Is9rmdTJ9FjPb03OyHeq7D6rqWlk=",
+         "data":"eJzt2LsRwjAQhGFVQE2eMT3QDv3ijAYwgQMSdI\/VrTAb\/Kn8zdmakbW1dt+UUkopdYoerTV0s7pQ3kpbxMr0WZxsm8XJdvWMbJPFyfacwci2WJxsh4wyyijjbMkoo6e1E9t4McYy9uaHmmfUaJ0fYp6RM6R3fpl5Rs\/hy9412PIHRquzypj5v14TRs\/3mLmrqDBm73zez7kFsxgR92ejjF7bNy\/SiHAdPff1Rja7L+us8v2CcdZ3fayN3DdoL9qGdo70IaxVvoiz2uZ1Mn0WM9vTc7Id6rMXeatsVw==",
          "encoding":"base64",
          "height":60,
          "id":1,
@@ -19,7 +26,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJzt0MEJgDAQRNFUYE2C\/VdjA54ED0Kim90Z8T\/YY8hnWgMAAAAAAAAAvLV1Tm0ZPJXefuo9R\/dT7fl0P8Weq+ht1T+Rt1X\/RN4CmGtPPve+aGdV3xcaozK7ZvRl9mZy75vRWs257cq9745738m9768Oz3PL+w==",
+         "data":"eJzt0EsKgDAMRdEureAiXFfX6gYcCQ6EFvN74j2QYcglrQEAAAAAAAAA3hqTqbYvTpXZ\/6r\/ufq\/qn9uxsnQi3az7lh2s+5YdgH4OoJHvc\/amdX3hUaryC6PvsjeSOp9Hq3ZlNvu1PueqPdd1Pv+6gSCldjr",
          "encoding":"base64",
          "height":60,
          "id":2,
@@ -78,12 +85,14 @@
                  "height":16,
                  "id":740,
                  "name":"",
-                 "properties":[
-                        {
-                         "name":"parameters",
-                         "type":"string",
-                         "value":"{\"treasurePools\":[\"basicTreasure\"]}"
-                        }],
+                 "properties":
+                    {
+                     "parameters":"{\"treasurePools\":[\"basicTreasure\"]}"
+                    },
+                 "propertytypes":
+                    {
+                     "parameters":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -152,9 +161,31 @@
                  "y":320
                 }, 
                 {
-                 "gid":8965,
+                 "gid":9016,
                  "height":16,
-                 "id":746,
+                 "id":748,
+                 "name":"",
+                 "properties":
+                    {
+                     "object":"extrainvisiblenpcspawnerworld",
+                     "parameters":"{ \"spawner\" : { \"npcSpecies\" : [\"human\"], \"npcTypes\" : [\"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistassault\", \"cultistassault\", \"cultistassault\", \"cultistassault\", \"cultistsniper\", \"cultistsniper\", \"cultistrocket\" ], \"npcParams\" : { \"aggressive\" : true, \"persistent\" : true }, \"position\" : [0, 2], \"positionVariance\" : [0, 0], \"spawnchance\": 40, \"frequency\" : [0.2, 0.2], \"stock\" : 2, \"trigger\" : \"wire\", \"outOfSight\" : false } }"
+                    },
+                 "propertytypes":
+                    {
+                     "object":"string",
+                     "parameters":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":152,
+                 "y":344
+                }, 
+                {
+                 "gid":7962,
+                 "height":16,
+                 "id":754,
                  "name":"",
                  "rotation":0,
                  "type":"",
@@ -162,47 +193,6 @@
                  "width":16,
                  "x":136,
                  "y":336
-                }, 
-                {
-                 "gid":7870,
-                 "height":8,
-                 "id":747,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"parameters",
-                         "type":"string",
-                         "value":"{ \"detectArea\" : [ [-9999, -9999], [9999, 9999] ], \"detectEntityTypes\" : [ \"player\" ]}"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":152,
-                 "y":328
-                }, 
-                {
-                 "gid":9016,
-                 "height":16,
-                 "id":748,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"object",
-                         "type":"string",
-                         "value":"extrainvisiblenpcspawnerworld"
-                        }, 
-                        {
-                         "name":"parameters",
-                         "type":"string",
-                         "value":"{ \"spawner\" : { \"npcSpecies\" : [\"human\"], \"npcTypes\" : [\"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistbasic\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistscientistpet\", \"cultistassault\", \"cultistassault\", \"cultistassault\", \"cultistassault\", \"cultistsniper\", \"cultistsniper\", \"cultistrocket\" ], \"npcParams\" : { \"aggressive\" : true, \"persistent\" : true }, \"position\" : [0, 2], \"positionVariance\" : [0, 0], \"spawnchance\": 40, \"frequency\" : [0.2, 0.2], \"stock\" : 2, \"trigger\" : \"wire\", \"outOfSight\" : false } }"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":152,
-                 "y":344
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -240,26 +230,6 @@
          "id":7,
          "name":"wiring - locked door",
          "objects":[
-                {
-                 "height":0,
-                 "id":752,
-                 "name":"",
-                 "polyline":[
-                        {
-                         "x":0,
-                         "y":0
-                        }, 
-                        {
-                         "x":-24,
-                         "y":0
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":160,
-                 "y":320
-                }, 
                 {
                  "height":0,
                  "id":753,
@@ -536,7 +506,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":754,
+ "nextobjectid":755,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.2",
@@ -684,10 +654,10 @@
         }, 
         {
          "firstgid":8982,
-         "source":"..\/..\/..\/..\/..\/frackin\/tilesets\/extradungeons-custom\/modstuff.json"
+         "source":"..\/..\/..\/..\/tilesets\/extradungeons-custom\/modstuff.json"
         }],
  "tilewidth":8,
  "type":"map",
- "version":1.4,
+ "version":1.1,
  "width":41
 }

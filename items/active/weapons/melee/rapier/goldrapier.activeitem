@@ -6,12 +6,12 @@
   "rarity" : "Common",
   "description" : "Flash em with flashy gold!",
   "shortdescription" : "Gold Rapier",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "Rapier",
   "twoHanded" : false,
   "itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon"],
   "inventoryIcon" : "goldrapier_frann.png",
-  "collectablesOnPickup" : { "fu_weaponrapier" : "goldrapier" },
+  //"collectablesOnPickup" : { "fu_weaponrapier" : "goldrapier" },
   "animation" : "piercecombo.animation",
   "animationParts" : {
     "handle": "",
@@ -21,14 +21,18 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "fire",
 
   "primaryAbilityType" : "piercecombo",
   "primaryAbility" : {
     "fireTime" : 0.42,
-    "baseDps" : 5.87
+    "baseDps" : 5.75,
+    "damageConfig" : {
+      "damageSourceKind":"fire",
+      "statusEffects":["burning"]
+    }
   },
-  "critChance" : 3, 
-  "critBonus" : 1, 
+  "critChance" : 3,
+  "critBonus" : 1,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

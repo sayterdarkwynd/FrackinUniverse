@@ -1,32 +1,30 @@
 {
   "id" : "fu_byosftldrive",
-  //"prerequisites" : [ "fu_byosshipcraftingtable" ], 
-  "prerequisites" : [ "create_matterassembler" ],
-  "title" : "Space Travel",
-  "text" : "To travel through space I need to build a ^orange;Small FTL Drive^reset; on a ^orange;Machining Table^reset;. Maybe I can find an erchius crystal mine and get some ^green;erchius crystals^reset; from there.",
-  "completionText" : "All I need to do is place the ^orange;FTL Drive^reset; and I can travel through space.",
-  "moneyRange" : [0, 0],
-  "rewards" : [ [ [ "apexshipdetails", 50 ],[ "apexshipsupport", 50 ],[ "apexshipwall", 200 ],[ "slopedhullpanel", 200 ] ] ],
-  "speaker" : "player",
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+  "prerequisites" : [ "gaterepair", "fu_byos" ],
 
+  "title" : "Interstellar Travel",
+  "text" : "Welcome back, dear. Let's get your ship fixed, shall we? To get to other stars you'll need to repair your ^cyan;FTL drive^reset;. First thing's first, though. Build an ^orange;STL drive^reset; so you can explore the system you're in.",
+
+  "completionText" : "All you need to do is place that ^cyan;FTL Drive^reset; in your ship and you'll be able to travel between stars. Good work, agent!",
+
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "solidfuel", 50 ],[ "apexshipdetails", 50 ],[ "apexshipsupport", 50 ],[ "apexshipwall", 200 ],[ "slopedhullpanel", 200 ] ] ],
+
+  "canBeAbandoned" : false,
+  "requireTurnIn" : false,
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/tutorial/fu_byosftldrive.lua",
+  "scriptConfig" : {
     "portraits" : {
-      "questStarted" : "player",
-      "questComplete" : "player"
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
     },
-    
-    "requireTurnIn" : false,
-    
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "fu_ftldrivesmall",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
+
+    "descriptions" : {
+      "makeSTL" : "Research and craft an ^orange;STL drive^reset;",
+      "getErchius" : "Explore a nearby moon to find ^pink;Erchius Crystals^reset;",
+      "makeFTL" : "Research and craft a ^cyan;Small FTL Drive^reset;"
+    }
   }
 }

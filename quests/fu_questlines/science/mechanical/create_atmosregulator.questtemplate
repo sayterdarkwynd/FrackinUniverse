@@ -1,34 +1,33 @@
 {
-  "id" : "create_atmosregulator",
-  "prerequisites" : [ "create_tritium" ],
-  "title" : "Protective Measures",
-  "text" : "I need to ^green;borrow^reset; an ^orange;Atmospheric Regulator^reset; so I can colonize a hostile world. You'll find it at your ^orange;Power Station^reset;. I'll need to keep it for a while but I'll pay top dollar for it.",
-  "completionText" : "Excellent, and the one I ordered is already on the way. There we go. As promised, ^green;a ton of money.^green;",
-  "moneyRange" : [ 25000,25001 ],
-  "rewards" : [ [ [ "fu_lootbox", 1 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "create_atmosregulator",
+	"prerequisites" : [ "create_tritium" ],
+	"title" : "Protective Measures",
+	"text" : "I need to ^green;borrow^reset; an ^orange;Atmospheric Regulator^reset; so I can colonize a hostile world. You'll find it at your ^orange;Power Station^reset;. I'll need to keep it for a while but I'll pay top dollar for it.",
+	"completionText" : "Excellent, and the one I ordered is already on the way. There we go. As promised, ^green;a ton of money.^green;",
+	"moneyRange" : [ 25000,25001 ],
+	"rewards" : [ [ [ "fu_lootbox", 1 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,  
+		"requireTurnIn" : false,
 
-    "turnInDescription" : "Bring the ^orange;Atmosphere Regulator^reset; to the scientist at the ^orange;Science Outpost^reset;",
+		"turnInDescription" : "Bring the ^orange;Atmosphere Regulator^reset; to the scientist at the ^orange;Science Outpost^reset;",
 
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "isn_atmosregulatornew",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
-  }
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "isn_atmosregulatornew",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
 }

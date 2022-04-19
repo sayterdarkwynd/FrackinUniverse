@@ -181,7 +181,6 @@ function build(directory, config, parameters, level, seed)
 	if builderConfig.gunParts then
 		construct(config, "animationCustom", "animatedParts", "parts")
 		local imageOffset = {0,0}
-		local gunPartOffset = {0,0}
 		for _,part in ipairs(builderConfig.gunParts) do
 			local imageSize = root.imageSize(config.animationParts[part])
 			construct(config.animationCustom.animatedParts.parts, part, "properties")

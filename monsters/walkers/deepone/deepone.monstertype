@@ -13,11 +13,11 @@
 
   "baseParameters" : {
     "colors" : "deepone",
-    
+
     "scripts" : [ "/monsters/monster.lua" ],
 
     "behavior" : "monster",
-    
+
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
@@ -32,13 +32,23 @@
 
       "foundTargetActions" : [],
       "fleeActions" : [],
-      
+
       "hostileActions" : [
+        {
+          "name" : "action-animate",
+          "cooldown" : 15,
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "roarwindup",
+            "animationTime" : 3
+          }
+        },
         {
           "name" : "action-charge",
           "cooldown" : 7,
           "parameters" : {
-            "maximumRange" : 20,
+            "minimumRange" : 4,
+            "maximumRange" : 15,
             "windupState" : "chargewindup",
             "windupTime" : 0.4,
 
@@ -55,57 +65,59 @@
           }
         },
         {
-          "name" : "action-fire",
-	  "cooldown" : 3,
+          "name" : "action-charge",
+          "cooldown" : 3,
           "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 4,
             "minimumRange" : 0,
-            "windupState" : "chargewindup",
-            "windupTime" : 0.4,
+            "maximumRange" : 6,
+            "windupState" : "bitewindup",
+            "windupTime" : 0.3,
 
-            "projectileType" : "raptorbite",
-            "projectileCount" : 1,
-            "projectileParameters" : { "damageKind" : "shadow" },
-            "power" : 12,
-            "speed": 40,
-            
-            "fireOffset" : [2.5, -0.5],
-            "aimAtTarget" : true,
-            "fireSound" : "fire",
-            "fireState" : "charge",
-            "winddownState" : "chargewinddown",
-            "winddownTime" : 1.4
+            "chargeTime" : 0.5,
+            "chargeSpeed" : 10,
+            "chargeControlForce" : 800,
+            "chargeState" : "chomp",
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.2,
+            "winddownStopForce" : 500,
+            "winddownState" : "bitewinddown"
           }
-        },          
+        },
+
+
         {
           "name" : "action-fire",
-	  "cooldown" : 3,
+	        "cooldown" : 5,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 15,
+            "maximumRange" : 20,
             "minimumRange" : 8,
             "windupState" : "firewindup",
-            "windupTime" : 0.3,
+            "windupTime" : 0.8,
 
             "projectileType" : "randomfish",
             "projectileParameters" : { "damageKind" : "bioweapon" },
-            "projectileCount" : 5,
-            "projectileInterval" : 0.05,
-            "power" : 12,
+            "projectileCount" : 3,
+            "projectileInterval" : 0.035,
+            "power" : 5,
             "speed": 30,
-            
-            "fireOffset" : [2.5, -0.5],
+
+            "fireOffset" : [2.0, 0],
             "aimAtTarget" : true,
-            "fireSound" : "fire",
-            "fireState" : "fire",
+            "fireDelay" : 0.22,
+            "fireSound" : "spit",
+            "fireState" : "spit",
             "winddownState" : "firewinddown",
-            "winddownTime" : 1.4
+            "winddownTime" : 0.8
           }
-        }        
+        }
       ],
 
-      "periodicActions" : [],
+      "periodicActions" : [
+
+      ],
 
       "approachActions" : [
         {
@@ -116,7 +128,7 @@
             "canJump" : true,
             "maxJumps" : 5,
             "jumpXVelocity" : 12,
-            "jumpYVelocity" : 30,
+            "jumpYVelocity" : 40,
             "jumpXControlForce" : 50,
             "minXRange" : 10
           }
@@ -135,7 +147,7 @@
             "canJump" : true,
             "maxJumps" : 5,
             "jumpXVelocity" : 12,
-            "jumpYVelocity" : 30,
+            "jumpYVelocity" : 40,
             "jumpXControlForce" : 50,
             "minXRange" : 10
           }
@@ -151,7 +163,7 @@
             "canJump" : true,
             "maxJumps" : 5,
             "jumpXVelocity" : 12,
-            "jumpYVelocity" : 30,
+            "jumpYVelocity" : 40,
             "jumpXControlForce" : 50,
             "minXRange" : 10
           }
@@ -159,9 +171,9 @@
       ],
 
       "concurrentActions" : [ ],
-      
-      "deathActions" : [ ]      
-      
+
+      "deathActions" : [ ]
+
     },
 
 
@@ -177,7 +189,7 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [-1.2,0.8], [-1.7,-0.05], [-1.45,-5.15], [-1.05,-5.7], [-0.5,-5.75], [0,-5.1], [0,-0.1], [-0.4,0.8] ],
+      "poly" : [  [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3]  ],
       "damage" : 22,
 
       "teamType" : "enemy",
@@ -193,8 +205,8 @@
       "collisionPoly" : [ [-1.2,0.8], [-1.7,-0.05], [-1.45,-5.15], [-1.05,-5.7], [-0.5,-5.75], [0,-5.1], [0,-0.1], [-0.4,0.8] ],
 
       "mass" : 2.5,
-      "walkSpeed" : 5,
-      "runSpeed" : 11,
+      "walkSpeed" : 7,
+      "runSpeed" : 12,
 
       "airFriction" : 0,
 
@@ -243,7 +255,7 @@
         },
         "insanityImmunity" : {
           "baseValue" : 1.0
-        },                   
+        },
         "powerMultiplier" : {
           "baseValue" : 1.0
         },

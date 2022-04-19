@@ -1,29 +1,12 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
+require "/stats/effects/fu_statusUtil.lua"
 
 function init()
 	self.healingRate = 1.008 / config.getParameter("healTime", 220)
 	script.setUpdateDelta(10)
 	bonusHandler=effect.addStatModifierGroup({})
-end
-
-function getLight()
-	local position = mcontroller.position()
-	position[1] = math.floor(position[1])
-	position[2] = math.floor(position[2])
-	local lightLevel = math.min(world.lightLevel(position),1.0)
-	lightLevel = math.floor(lightLevel * 100)
-	return lightLevel
-end
-
-
-function nighttimeCheck()
-	return world.timeOfDay() > 0.5 -- true if night
-end
-
-function undergroundCheck()
-	return world.underground(mcontroller.position())
 end
 
 function update(dt)
@@ -37,8 +20,6 @@ function update(dt)
 	else
 		self.foodValue = 70
 	end
-
-	--local lightLevel = getLight()--not actually used
 
 	if nighttime or underground and (self.foodValue >= 45) then
 		self.healingRate = 1.007 / config.getParameter("healTime", 220)

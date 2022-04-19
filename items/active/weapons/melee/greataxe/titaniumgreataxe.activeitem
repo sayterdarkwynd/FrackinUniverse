@@ -6,13 +6,13 @@
   "rarity" : "Uncommon",
   "description" : "An extremely durable titanium greataxe.",
   "shortdescription" : "Titanium Greataxe",
-  "tooltipKind" : "hammervanilla",
+  "tooltipKind" : "hammer",
   "category" : "greataxe",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","greataxe", "upgradeableWeapon"],
 
   "inventoryIcon" : "titaniumgreataxe.png",
-  "collectablesOnPickup" : { "fu_weapongreataxe" : "titaniumgreataxe" },
+  //"collectablesOnPickup" : { "fu_weapongreataxe" : "titaniumgreataxe" },
   "animation" : "/items/active/weapons/melee/greataxe/greataxe.animation",
   "animationParts" : {
     "handle" : "",
@@ -22,10 +22,10 @@
     "sounds" : {
       "fire" : [ "/sfx/melee/swing_broadsword.ogg" ]
     },
-    "animatedParts" : { 
-      "parts" : { 
+    "animatedParts" : {
+      "parts" : {
         "blade" : { "properties" : {"offset" : [0, 0.5]}},
-        "swoosh" : { "properties" : {"offset" : [0, 2]}}    	
+        "swoosh" : { "properties" : {"offset" : [0, 2]}}
       }
     }
   },
@@ -46,6 +46,6 @@
   "critChance" : 3,
   "critBonus" : 5,
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  
+
   "stunChance" : 6
 }

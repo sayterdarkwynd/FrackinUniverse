@@ -8,9 +8,9 @@
 
   "animation" : "eyebaht.animation",
 
-  "dropPools" : [ 
-    { 
-      "default" : "servitorTreasure", 
+  "dropPools" : [
+    {
+      "default" : "servitorTreasure",
       "bow" : "huntingmechanicalLarge",
       "firebow" : "huntingmechanicalLarge",
       "icebow" : "huntingmechanicalLarge",
@@ -19,7 +19,7 @@
       "cosmicbow" : "huntingmechanicalLarge",
       "radioactivebow" : "huntingmechanicalLarge",
       "shadowbow" : "huntingmechanicalLarge"
-    } 
+    }
   ],
 
   "baseParameters" : {
@@ -54,29 +54,29 @@
 
       "fleeActions" : [ ],
 
-      "hostileActions" : [     
+      "hostileActions" : [
        {
-       "name":"action-multiswoop", 
-       "cooldown":2.0, 
+       "name":"action-multiswoop",
+       "cooldown":2.0,
 	"parameters":{
-	  "skillName":"flyingSwoopApproach", 
-	  "minimumRange":0, 
-	  "maximumRange":14, 
-	  "onGround":false, 
-	  "windupTime":0.25, 
-	  "windupState":"fly", 
-	   // "windupStopForce":50, 
-	  "swoopState":"attack", 
-	  "gravityMultiplier":-0.5, 
+	  "skillName":"flyingSwoopApproach",
+	  "minimumRange":0,
+	  "maximumRange":14,
+	  "onGround":false,
+	  "windupTime":0.25,
+	  "windupState":"fly",
+	   // "windupStopForce":50,
+	  "swoopState":"attack",
+	  "gravityMultiplier":-0.5,
 	  "swoopVelocity" : 50,
-	  "collisionCheck":true, 
-	  "highArc":false, 
-	  "swoopTime":1.1, 
-	  "winddownTime":1, 
-	  "winddownState":"fly", 
+	  "collisionCheck":true,
+	  "highArc":false,
+	  "swoopTime":1.1,
+	  "winddownTime":1,
+	  "winddownState":"fly",
 	  "winddownStopForce":20
 	  }
-	}     
+	}
       ],
 
       "periodicActions" : [
@@ -88,19 +88,19 @@
       ],
 
       "followActions" : [
-        {"name":"approach-teleport", "parameters":{}}, 
+        {"name":"approach-teleport", "parameters":{}},
         {"name":"approach-fly", "parameters":{"targetOffset":[0,5], "minRange":5, "maxRange":15}}
       ],
 
       "wanderActions" : [
 	{
-	"name":"wander-fly", 
-	"cooldown":[5,20], 
+	"name":"wander-fly",
+	"cooldown":[5,20],
 	"parameters":{
-		"wanderTime":[10,40], 
-		"groundDistance":20, 
-		"ceilingDistance":10, 
-		"xVelocity":8, 
+		"wanderTime":[10,40],
+		"groundDistance":20,
+		"ceilingDistance":10,
+		"xVelocity":8,
 		"yVelocity":12
 		}
 	}
@@ -123,8 +123,8 @@
             "fireOffset" : [0, 1]
           }
         }
-      ]  
-      
+      ]
+
     },
 
     "touchDamage" : {
@@ -200,7 +200,7 @@
         },
 	"electricResistance" : {
           "baseValue" : -0.5
-        }        
+        }
       },
 
       "resources" : {

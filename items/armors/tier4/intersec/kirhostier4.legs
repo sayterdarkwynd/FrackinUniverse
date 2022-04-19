@@ -3,10 +3,10 @@
   "price" : 250,
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
-  "rarity" : "Uncommon",
-  "description" : "^orange;Set Bonuses^reset;: 
+  "rarity" : "rare",
+  "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; -^green;15^reset;%Ship Mass^reset;^reset;
-^yellow;^reset; Assault Rifle, Pistol: +^green;2^reset;% Crit Chance, +^green;25^reset;% Crit Damage", 
+^yellow;^reset; Assault Rifle, Pistol: +^green;2^reset;% Crit Chance, +^green;25^reset;% Crit Damage",
   "shortdescription" : "Intersec Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -15,7 +15,7 @@
   "femaleFrames" : "pants.png",
 
   "level" : 4,
-  "collectablesOnPickup" : { "fu_armorbalanced" : "kirhostier4pants" },
+  //"collectablesOnPickup" : { "fu_armorbalanced" : "kirhostier4pants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -38,19 +38,19 @@
       "amount" : 2
     }
   ],
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "ranged" ],
   "statusEffects" : [
     "intersecsetbonus",
     {
       "stat" : "fu_intersecset_legs",
       "amount" : 1
-    } 
+    }
   ],
 
   "colorOptions" : [
     /* BLUE */
     { "ffca8a" : "96cbe7", "e0975c" : "5588d4", "a85636" : "344495", "6f2919" : "1a1c51" },
-  
+
     /* YELLOW-ORANGE */
     { "ffca8a" : "fdc500", "e0975c" : "d17700", "a85636" : "993d00", "6f2919" : "542800" },
     /* BLACK */
@@ -86,5 +86,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

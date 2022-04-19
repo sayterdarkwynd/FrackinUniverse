@@ -5,12 +5,12 @@
   "category" : "decorative",
   "price" : 125,
   "printable" : true,
-  
+
   "lightColor" : [0, 100, 150],
   "pointLight" : true,
   "pointBeam" : 2.25,
   "beamAmbience" : 0.7,
-  
+
   "flickerPeriod" : 0.4,
   "flickerMinIntensity" : 0.975,
   "flickerMaxIntensity" : 1,
@@ -28,7 +28,7 @@
   "humanDescription" : "Man, this monitor is huge!",
   "hylotlDescription" : "This screen is able to display some information. Shame I can't read any of it.",
   "novakidDescription" : "This screen is just hangin' there.",
-  "peglaciDescription" : "Screens like this are very useful on our ships.",
+  "fupeglaciDescription" : "Screens like this are very useful on our ships.",
 
 
   "inventoryIcon" : "peglacishipscreen2icon.png",
@@ -36,27 +36,27 @@
     {
       "image" : "peglacishipscreen2.png:<color>.<frame>",
       "imagePosition" : [-16, 0],
-      
+
       "direction" : "left",
       "flipImages" : true,
       "animationPosition" : [-16, 0],
-      
+
       "spaceScan" : 0.1,
       "anchors" : [ "background" ],
-      
+
       "lightPosition" : [0, 1],
       "beamAngle" : 225
     },
     {
       "image" : "peglacishipscreen2.png:<color>.<frame>",
       "imagePosition" : [-16, 0],
-      
+
       "direction" : "right",
       "animationPosition" : [-16, 0],
-      
+
       "spaceScan" : 0.1,
       "anchors" : [ "background" ],
-      
+
       "lightPosition" : [0, 1],
       "beamAngle" : 270
     }
@@ -78,6 +78,8 @@
 
   "scripts" : [ "/objects/wired/light/light.lua" ],
   "scriptDelta" : 60,
-  
+
+  "interactive" : false,
+
   "inputNodes" : [ [0, 0] ]
 }

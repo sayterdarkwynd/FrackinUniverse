@@ -1,25 +1,21 @@
 {
   "type" : "crewmembermedic2",
-  "baseType" : "crewmember",
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : true
-    },
-
     "crew" : {
       "defaultUniform" : {
         "head" : "medichead",
         "chest" : "medicchest",
         "legs" : "mediclegs"
-      },	
+      },
+
       "role" : {
         "type" : "medic",
         "name" : "Field Medic",
         "field" : "Medical Combat",
         "uniformColorIndex" : 2,
 
-// what I'd like to do is be able to reduce the on-ship regen to 1, but in field regen to 12-15, to seperate it from the surgeon (who is more for on-ship regen.)
         "benefits" : [
           {
             "type" : "Regeneration",
@@ -98,7 +94,7 @@
             ]
           }
         }
-      }
+	  }
     }
   },
 
@@ -106,11 +102,8 @@
     "default" : [
       [0, [
           {
-		    "head" : [ { "name" : "medichead", "count" :1, "parameters" : { "colorIndex" : 2 } } ],
-            "chest" : [ { "name" : "medicchest", "count" :1, "parameters" : { "colorIndex" : 2 } } ],
-            "legs" : [ { "name" : "mediclegs", "count" :1, "parameters" : { "colorIndex" : 2 } } ],
-            "alt" : [ "medkit" ],
-            "primary" : [ "npcmachinepistol", "npcmachinepistol", "npcmachinepistol", "npcmachinepistol", "zerchesiumsmg", "lunarismg", "telebriummachinepistol" ]
+            "primary" : [ "zerchesiumsmg", "lunarismg", "telebriummachinepistol" ],
+            "alt" : [ "medkit" ]
           }
         ] ]
     ]

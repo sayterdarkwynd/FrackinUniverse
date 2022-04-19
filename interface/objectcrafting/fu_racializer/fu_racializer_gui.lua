@@ -159,6 +159,15 @@ function btnConvert_Clicked()
 		itemNew.parameters.shipPetType = itemNewInfo.config.shipPetType
 		itemNew.parameters.orientations = nil
 		itemNew.parameters.racialisedTo = self.newName
+		if itemNewInfo.config.animationCustom and itemNewInfo.config.animationCustom.sounds then
+			if itemNewInfo.config.animationCustom.sounds.open and itemNewInfo.config.animationCustom.sounds.open.pool then
+				itemNew.parameters.customSoundsOpen = itemNewInfo.config.animationCustom.sounds.open.pool
+			end
+			if itemNewInfo.config.animationCustom.sounds.close and itemNewInfo.config.animationCustom.sounds.close.pool then
+				itemNew.parameters.customSoundsClose = itemNewInfo.config.animationCustom.sounds.close.pool
+			end
+		end
+
 		itemNew.parameters = util.mergeTable(itemNew.parameters, getNewParameters(itemNewInfo, self.newItem.positionOverride))
 
 		if self.useAll == true then
@@ -244,7 +253,7 @@ function raceList_SelectedChanged()
 						end
 					end
 					itemNewInfo = root.itemConfig(self.newName) or {}
-					local itemNewCfg = itemNewInfo.config
+					itemNewCfg = itemNewInfo.config
 					if itemNewCfg then
 						widget.setImage("imgPreviewOut", getPlacementImage(itemNewCfg.orientations, itemNewInfo.directory))
 					else
@@ -282,12 +291,9 @@ function buildRaceTable()
 				tempRaceTable[race].items[race .. objectType] = true
 			end
 		end
-		local hasObjects = false
-		for object, _ in pairs (tempRaceTable[race].items) do
-			hasObjects = true
-			break
-		end
-		if not hasObjects then
+
+		if not next(tempRaceTable[race].items) then
+			-- Race doesn't have any objects.
 			tempRaceTable[race] = nil
 			--sb.logInfo("Removing " .. tostring(race))
 		end

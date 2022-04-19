@@ -10,6 +10,7 @@ function power.update(dt)
 		power.warmedUp=true
 	end
 	if power.objectPowerType then
+		-- luacheck: ignore 122
 		if object.pulseTimer and object.pulseTimer >= 1.0 then
 			object.pulseTimer=0.0
 			local inputCounter=0
@@ -89,7 +90,7 @@ end
 function power.sendPowerToBatteries()
 	if (type(power.entitylist)=="table") and (type(power.entitylist.battery)=="table") then
 		if (storage.energy or 0) > 0 then
-			for key,value in pairs(power.entitylist.battery) do
+			for _,value in pairs(power.entitylist.battery) do
 				amount = math.min((storage.energy or 0),(callEntity(value,'power.getStorageLeft') or 0))
 				storage.energy = (storage.energy or 0) - amount
 				callEntity(value,'power.receivePower',amount)

@@ -9,22 +9,22 @@
   "speed" : 0,
   "power" : 10,
   "level" : 4,
-  "damageKind" : "fire",
+  "damageKind" : "poison",
   "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
-  "statusEffects" : [ "weakpoison" ],
+  "statusEffects" : [ "weakpoison", "shocked", "slow" ],
   "fullbright" : true,
   "emitters" : [ "sparklesunicorn" ],
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/acidexplosion3/acidexplosion3.config"
-    },  
+      "file" : "/projectiles/explosions/acidexplosion3/acidexplosiondruid.config"
+    },
     {
       "action" : "sound",
       "options" : [
-        "/sfx/weapons/firearrow.ogg"
+        "/sfx/weapons/firearrow_quiet.ogg"
       ]
-    },    
+    },
     {
       "action" : "loop",
       "count" : 5,

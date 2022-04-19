@@ -13,9 +13,9 @@ local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mo
 end
 
 function update(dt)
-local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-local mouthful = world.liquidAt(mouthposition)
-	if (world.liquidAt(mouthPosition)) and (inWater == 0) and (mcontroller.liquidId()== 2) or (mcontroller.liquidId()== 8)then
+	local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
+	local liquidId = mcontroller.liquidId()
+	if (world.liquidAt(mouthPosition)) and (inWater == 0) and (liquidId== 2) or (liquidId== 8)then
             status.setPersistentEffects("lavahealing", {
               {stat = "physicalResistance", baseMultiplier = 1.25},
               {stat = "maxEnergy", baseMultiplier = 1.25},

@@ -1,40 +1,38 @@
 {
-  "name" : "ffbiomecold4",
-  "blockingStat" : "lethalColdImmunity",
+	"name": "ffbiomecold4",
+	"effectConfig": {
+		"resistanceTypes": {
+			"iceResistance": 1.0
+		},
+		"resistanceThreshold": 0.8,
+		"immunityStats": ["lethalColdImmunity"],
+		"healthDrain": 20,
+		"hungerDrain": 0.7,
+		"energyDrain": 0,
+		"speedPenalty": 0.75,
+		"jumpPenalty": 0.75,
 
-  "effectConfig" : {
-    "resistanceTypes" : {
-      "iceResistance" : 1.0
-    },
-    "resistanceThreshold" : 0.8,
-    "immunityStats" : [],
-    "healthDrain" : 20,
-    "hungerDrain" : 0.7,
-    "energyDrain" : 0,
-    "speedPenalty" : 0.75,
-    "jumpPenalty" : 0.75,
+		"debuffRate": 5,
+		"debuffStartDelay": 0,
+		"debuffs": {},
 
-    "debuffRate" : 5,
-    "debuffStartDelay" : 0,
-    "debuffs" : {},
+		"modifiers": {
+			"night": 1.5,
+			"wet": 1.5,
+			"windy": 1.2
+		},
 
-    "modifiers" : {
-      "night" : 1.5,
-      "wet" : 1.5,
-      "windy" : 1.2
-    },
-
-    "messages" : {
-      "intro" : "biomecold",
-      "night" : "ffbiomecoldnight",
-      "wet" : "ffbiomecoldwater",
-      "windy" : "fubiomecoldwind"
-    },
-    "configPath" : "/stats/effects/fu_weathereffects/new/cold/ffbiomecold4.statuseffect"
-  },
-  "defaultDuration" : 5,
-  "scripts" : [ "coldweathernew.lua" ],
-  "animationConfig" : "coldweathernew.animation",
-  "label" : "Lethal Cold",
-  "icon" : "/interface/statuses/cold4.png"
+		"messages": {
+			"intro": "biomecold",
+			"night": "ffbiomecoldnight",
+			"wet": "ffbiomecoldwater",
+			"windy": "fubiomecoldwind"
+		},
+		"configPath": "/stats/effects/fu_weathereffects/new/cold/ffbiomecold4.statuseffect"
+	},
+	"defaultDuration": 5,
+	"scripts": ["coldweathernew.lua"],
+	"animationConfig": "coldweathernew.animation",
+	"label": "Lethal Cold (Resist: ^#77f4ff;Ice^reset;)",
+	"icon": "/interface/statuses/cold4.png"
 }

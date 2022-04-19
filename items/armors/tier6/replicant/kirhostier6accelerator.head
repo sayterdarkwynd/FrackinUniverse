@@ -3,21 +3,21 @@
   "price" : 575,
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
-  "rarity" : "Legendary",
-  "description" : "^orange;Set Bonuses^reset;: 
-^yellow;^reset; Single Sword: +^green;2^reset;% Crit, 
+  "rarity" : "rare",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Single Sword: +^green;2^reset;% Crit,
 ^yellow;^reset; Dual Swords: Damage x^green;1.25^reset;
-^yellow;^reset; ^cyan;Immune^reset;: Gas, Shadow, Tar^reset;",
+^yellow;^reset; ^cyan;Immune^reset;: Gas, Shadow Taint, Tar^reset;",
   "shortdescription" : "Replicant's Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "defensive", "melee", "hyper" ],
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "level" : 6,
-  "collectablesOnPickup" : { "fu_armorpowermelee" : "kirhostier6ahead" },
+  "level" : 5,
+  //"collectablesOnPickup" : { "fu_armorpowermelee" : "kirhostier6ahead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -39,7 +39,7 @@
       "stat" : "maxHealth",
       "amount" : 7
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "shadowResistance",
       "amount" : 0.028572
@@ -92,5 +92,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

@@ -4,7 +4,7 @@
   "price" : 1150,
   "inventoryIcon" : "hellfirebowicon.png",
   "maxStack" : 1,
-  "rarity" : "rare",
+  "rarity" : "legendary",
   "tooltipKind" : "bow2",
   "weaponType" : "Bow",
   "description" : "Burn your targets to cinders. Counterproductive, but fun.",
@@ -21,7 +21,7 @@
     "bowFullbright" : "hellfirebowfullfullbright.png"
   },
   "animationCustom" : {
-    "animatedParts" : { 
+    "animatedParts" : {
       "parts" : {
         "bow" : { "properties" : {"offset" : [0.25, 0]}},
         "bowFullbright" : { "properties" : { "offset" : [0.25, 0]}}
@@ -47,15 +47,15 @@
   "scripts" : ["/items/active/weapons/bow/bow.lua"],
 
   "elementalType" : "hellfire",
-  "collectablesOnPickup" : { "fu_weaponbow" : "hellfirebow" },
+  //"collectablesOnPickup" : { "fu_weaponbow" : "hellfirebow" },
   "primaryAbilityType" : "rngbows_enhancedbowshot",
-  "primaryAbility" : { 
-    "drawTime" : 0.75,				//Time to fully draw the bow
-	"powerProjectileTime" : 0.30,	//After fully drawing, the bow is super-charged for this long
-	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
-	"energyPerShot" : 55,			
-	"holdEnergyUsage" : 12,				
-	"airborneBonus" : 1.12, 	
+  "primaryAbility" : {
+    "drawTime" : 0.75,        //Time to fully draw the bow
+  "powerProjectileTime" : 0.30,  //After fully drawing, the bow is super-charged for this long
+  "dynamicDamageMultiplier" : 1.0,  //All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+  "energyPerShot" : 55,
+  "holdEnergyUsage" : 12,
+  "airborneBonus" : 1.12,
     "projectileType" : "flamearrow",
     "powerProjectileType" : "hellfirearrow",
     "projectileParameters" : {
@@ -70,8 +70,8 @@
 
   "altAbilityType" : "rngbows_enhancedbowshot",
   "altAbility" : {
-    "drawTime" : 1.35,				//Time to fully draw the bow
-    "powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long  
+    "drawTime" : 1.35,        //Time to fully draw the bow
+    "powerProjectileTime" : 0.225,  //After fully drawing, the bow is super-charged for this long
     "name" : "Burning Death",
     "projectileType" : "flamearrow",
     "powerProjectileType" : "dragonprojectile2",
@@ -86,6 +86,6 @@
   },
 
   "critChance" : 2,
-  "critBonus" : 12, 
+  "critBonus" : 12,
   "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

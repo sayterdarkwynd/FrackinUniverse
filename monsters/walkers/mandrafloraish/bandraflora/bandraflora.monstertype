@@ -18,10 +18,10 @@
     "electricbow" : "mandrafloraHunting",
     "cosmicbow" : "mandrafloraHunting",
     "radioactivebow" : "mandrafloraHunting",
-    "shadowbow" : "mandrafloraHunting"     
+    "shadowbow" : "mandrafloraHunting"
     }
-  ], 
-   
+  ],
+
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
@@ -39,14 +39,14 @@
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 2.5,
 
-      "foundTargetActions" : [ 
+      "foundTargetActions" : [
         {
           "name" : "action-statuseffect",
           "parameters" : {
           "effect" : "bandrafloraspawnbydamage",
-          "duration" : 600
+          "duration" : 20
           }
-        }       
+        }
        ],
 
       "fleeActions" : [],
@@ -54,27 +54,28 @@
       "hostileActions" : [
         {
           "name" : "action-fire",
-          "cooldown" : 0.5,
+          "cooldown" : 2,
           "parameters" : {
-            "projectileCount" : 3,
+            "projectileCount" : 1,
             "projectileType" : "poisonballoon",
-            "projectileParameters" : {},
+            "projectileParameters" : { "speed" : 35},
             "power" : 0,
-	    "fireState": "charge",
-	    "winddownState": "chargewinddown",
-	    "windupState": "chargewindup",
-	    "fireDelay" : 0.3,
-	    "fireArc" : true,
-	    "highArc" : true,
-            "maximumRange" : 7,
-            "minimumRange" : 0
+	        "fireState": "charge",
+	        "winddownState": "chargewinddown",
+	        "windupState": "chargewindup",
+	        "fireDelay" : 0.3,
+	        "fireArc" : true,
+	        "highArc" : true,
+            "maximumRange" : 25,
+            "minimumRange" : 5
           }
         },
         {
           "name" : "action-charge",
-	  "cooldown" : 3.0,
+	      "cooldown" : 2.5,
           "parameters" : {
-            "maximumRange" : 15,
+          	"minimumRange" : 5,
+            "maximumRange" : 55,
             "windupTime" : 0.6,
 
             "aimAtTarget" : true,
@@ -138,13 +139,13 @@
           }
         }
       ],
-      
-      "concurrentHostileActions" : [ 
+
+      "concurrentHostileActions" : [
       ],
-      
+
       "concurrentActions" : [
       ],
-      
+
       "wanderActions" : [
         {
           "name" : "wander-walk",
@@ -253,7 +254,7 @@
         },
         "shadowResistance" : {
           "baseValue" : -0.99
-        },        
+        },
         "poisonStatusImmunity" : {
           "baseValue" : 1
         }
@@ -276,7 +277,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "bandraflora" }
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "bandraflora" }
   }
 }

@@ -26,25 +26,25 @@
     "animatedParts" : {
       "parts" : {
         "middlefullbright" : {
-		  "properties" : {
-		    "offset" : [0.7, 0.4]
-		  }
-		}
+      "properties" : {
+        "offset" : [0.4, 0.4]
       }
-    },    
+    }
+      }
+    },
     "particleEmitters" : {
       "muzzleFlash" : {
         "particles" : [
           { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
         ]
       }
-    },   
+    },
     "sounds" : {
       "fire" : [ "/sfx/weapons/hailstrike.ogg" ]
     }
   },
 
-  "baseOffset" : [0.7, 0.4],
+  "baseOffset" : [0.4, 0.4],
   "muzzleOffset" : [2.4, 0.24],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
@@ -63,40 +63,40 @@
     "fireType" : "auto",
 
     "projectileType" : "lightpellet",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 60,
       "knockback" : 4,
       "fullbright" : true,
       "damageKind" : "cosmic"
     },
-	  "stances" : {
-	    "idle" : {
-	      "armRotation" : 0,
-	      "weaponRotation" : 0,
-	      "twoHanded" : true,
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
 
-	      "allowRotate" : true,
-	      "allowFlip" : true
-	    },
-	    "fire" : {
-	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    },
-	    "cooldown" : {
-	      "duration" : 0.075,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.075,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    }
-	  }
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
   },
     "particleEmitters" : {
       "muzzleFlash" : {
@@ -114,7 +114,7 @@
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
-  "recoilForce" : 400,  
+  "recoilForce" : 400,
   "altAbilityType" : "swtjc_ewg_attractgrenades",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

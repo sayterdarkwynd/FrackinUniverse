@@ -1,0 +1,68 @@
+{
+	"stats" : [
+		{ "stat" : "maxHealth", "effectiveMultiplier" : 1.05 },
+		{ "stat" : "protection", "effectiveMultiplier" : 0.9 },
+		{ "stat" : "spearMastery", "amount" : 0.2 },
+		{ "stat" : "bowMastery", "amount" : 0.2 },
+		{ "stat" : "fireResistance", "amount" : -0.30 },
+		{ "stat" : "poisonResistance", "amount" : 0.35 },
+		{ "stat" : "cosmicResistance", "amount" : 0.15 },
+		{ "stat" : "radioactiveResistance", "amount" : 0.15 },
+		{ "stat" : "poisonStatusImmunity", "amount" : 1 },
+		{ "stat": "jungleslowImmunity", "amount": 1 },
+		{ "stat": "fumudslowImmunity", "amount": 1 },
+		{ "stat": "mudslowImmunity", "amount": 1 },
+		{ "stat": "fuclayslowImmunity", "amount": 1 },
+		{ "stat": "blacktarslowImmunity", "amount": 1 },
+		{ "stat": "slushslowImmunity", "amount": 1 }
+	],
+	"diet" : "omnivore",
+	"envEffects" : [
+		{
+			"biomes" : [ "jungle", "thickjungle", "ocean", "oceanfloor", "toxic", "toxicoceanfloor" ],
+			"stats" : [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.1 }
+			],
+			"controlModifiers" : {
+				"speedModifier" : 1.1
+			}
+		},
+		{
+			"biomes" : "hot",
+			"stats" : [
+				{ "stat" : "maxHealth", "effectiveMultiplier" : 0.9 },
+				{ "stat" : "protection", "effectiveMultiplier" : 0.95 }
+			]
+		}
+	],
+	"weaponEffects" : [
+		{
+			"weapons" : [ "harpoon" ],
+			"stats" : [
+				{ "stat" : "critChance", "amount" : 5 },
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.1 },
+				{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 1.25 }
+			]
+		}
+	],
+	"scripts" : [
+		{
+			"script" : "/scripts/fr_scripts/healthRegen.lua",
+			"args" : {
+				"healingRate" : 0.02
+			}
+		}
+	],
+	"liquidEffects": [
+		{
+			"liquids": [ "water", "healingliquid", "wastewater", "swampwater", "poison" ],
+			"stats": [
+				{ "stat": "breathProtection", "amount": 1 },
+				{ "stat" : "protection", "effectiveMultiplier" : 1.1 }
+			],
+			"controlModifiers" : {
+				"speedModifier" : 1.1
+			}
+		}
+	]
+}

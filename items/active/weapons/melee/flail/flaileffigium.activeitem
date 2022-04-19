@@ -35,15 +35,15 @@
   "critChance" : 1,
   "critBonus" : 6,
   "stunChance" : 10,
-  
+
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementType" : "shadow",
   "primaryAbilityType" : "tentaclegun",
   "primaryAbility" : {
     "chain" : {
-      "arcRadiusRatio" : [8, 8],    
-      "taper" : 0.0, 
+      "arcRadiusRatio" : [8, 8],
+      "taper" : 0.0,
       "segmentImage" : "/projectiles/extraessence/extraessence.png?scale=0.2",
       "endSegmentImage" : "/projectiles/extraessence/extraessence.png?scale=0.2",
       "segmentSize" : 0.2
@@ -59,23 +59,23 @@
     "energyUsage" : 10,
     "inaccuracy" : 0.2,
     "projectileCount" : 2,
-    
+
     "projectileType" : "invisibletentaclefistshadow",
     "projectileParameters" : {
       "controlForce":270,
       "targetTrackingForce":0,
       "processing":"?hueshift=45",
-      
+
       "knockback" : 10,
       "piercing":true,
       "speed" : 90,
-      "bounces":-1, 
-      "timeToLive" : 1.5, 
+      "bounces":-1,
+      "timeToLive" : 1.5,
       "damageKind" : "shadowplasma",
-      
-      
+
+
       "statusEffects" : [ "shadowgasfx" ],
-      
+
       "periodicActions" : [
 
       {
@@ -108,7 +108,7 @@
               }
             ]
           }
-        }      
+        }
       ],
       "actionOnCollide":[
     {
@@ -118,27 +118,27 @@
     {
       "action" : "light",
       "color" : "green"
-    },    
+    },
       {
-        "time":0.01, 
-        "action":"explosion", 
-        "foregroundRadius":2, 
-        "backgroundRadius":0, 
-        "explosiveDamageAmount":5.2, 
-        "delaySteps":2, 
+        "time":0.01,
+        "action":"explosion",
+        "foregroundRadius":2,
+        "backgroundRadius":0,
+        "explosiveDamageAmount":5.2,
+        "delaySteps":2,
         "harvestLevel":1
-      },      
+      },
         {
-          "action":"sound","options":["/sfx/weapons/disruptor.ogg"], 
-          "time":0.05, 
+          "action":"sound","options":["/sfx/weapons/disruptor.ogg"],
+          "time":0.05,
           "repeat":false
         }
-      ],      
+      ],
       "actionOnReap" : [
         {
           "action":"sound",
-          "options":["/sfx/weapons/wave.ogg"], 
-          "time":0.05, 
+          "options":["/sfx/weapons/wave.ogg"],
+          "time":0.05,
           "repeat":false
         }
       ]

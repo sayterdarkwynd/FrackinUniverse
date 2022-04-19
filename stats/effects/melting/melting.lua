@@ -1,48 +1,51 @@
 function init()
-  animator.setParticleEmitterOffsetRegion("flames", mcontroller.boundBox())
-  animator.setParticleEmitterActive("flames", true)
-  effect.setParentDirectives("fade=FF8800=0.2")
+	animator.setParticleEmitterOffsetRegion("flames", mcontroller.boundBox())
+	animator.setParticleEmitterActive("flames", true)
+	effect.setParentDirectives("fade=FF8800=0.2")
 
-  script.setUpdateDelta(5)
+	script.setUpdateDelta(5)
 
-  self.tickTime = 1.0
-  self.tickTimer = self.tickTime
-  self.damage = 30
+	self.tickTimer = 1.0
+	self.ticks=0
 
-  status.applySelfDamageRequest({
-      damageType = "IgnoresDef",
-      damage = 30,
-      damageSourceKind = "fire",
-      sourceEntityId = entity.id()
-    })
+	if ( status.stat("fireResistance")	>= 1.0 ) then
+		effect.expire()
+		return
+	end
 
- self.damage = setEffectDamage()
+	status.applySelfDamageRequest({
+		damageType = "IgnoresDef",
+		damage = damageValue(),
+		damageSourceKind = "fire",
+		sourceEntityId = entity.id()
+	})
 end
 
-
-function setEffectDamage()
-  return ( self.damage *  (1 -status.stat("fireResistance") )  )
+function damageValue()
+	return (math.max(0,1-status.stat("fireResistance"))*(((status.statPositive("specialStatusImmunity") and 5) or 30)+(5*self.ticks)))
 end
 
 function update(dt)
-
-  if ( status.stat("fireResistance")  >= 1.0 ) then
-    effect.expire()
-  end
-
-  self.tickTimer = self.tickTimer - dt
-  if self.tickTimer <= 0 then
-    self.tickTimer = self.tickTime
-    self.damage = self.damage + 5
-    status.applySelfDamageRequest({
-        damageType = "IgnoresDef",
-        damage = self.damage,
-        damageSourceKind = "fire",
-        sourceEntityId = entity.id()
-      })
-  end
+	if ( status.stat("fireResistance")	>= 1.0 ) then
+		effect.expire()
+		return
+	end
+	self.tickTimer = self.tickTimer - dt
+	if self.tickTimer <= 0 then
+		self.ticks=(self.ticks or 0)+1
+		if status.statPositive("specialStatusImmunity") then
+			self.ticks=math.min(self.ticks,world.threatLevel())
+		end
+		self.tickTimer = 1.0
+		status.applySelfDamageRequest({
+			damageType = "IgnoresDef",
+			damage = damageValue(),
+			damageSourceKind = "fire",
+			sourceEntityId = entity.id()
+		})
+	end
 end
 
 function onExpire()
-  status.addEphemeralEffect("burning")
+	status.addEphemeralEffect("burning")
 end

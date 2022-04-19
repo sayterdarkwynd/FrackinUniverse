@@ -56,8 +56,8 @@
 
 	// Custom ZB player init functions
 	[ { "op": "add", "path": "/deploymentConfig/scripts/-", "value": "/zb/zb_player_init.lua" } ],
-	
-	
+
+
 	//starter mechs
 	[{"op": "replace","path": "/deploymentConfig/starterMechSet/leftArm","value": "mecharmflakcannon"}],
 	[{"op": "replace","path": "/deploymentConfig/starterMechSet/rightArm", "value": "mecharmdrill0"}],
@@ -94,7 +94,6 @@
 
 	// Space Station Charisma Stat
 	[ { "op": "add", "path": "/statusControllerSettings/stats/fuCharisma", "value": { "baseValue" : 1.00 } } ],
-
 	[ { "op": "add", "path": "/statusControllerSettings/primaryScriptSources/-", "value": "/stats/player_primary_bars.lua" } ],
 	[ { "op": "add", "path": "/statusControllerSettings/primaryScriptSources/-" , "value": "/scripts/fr_raceEffects.lua" } ],
 	[ { "op": "add", "path": "/statusControllerSettings/primaryScriptSources/-","value": "/stats/cat_primary.lua"} ],
@@ -129,6 +128,9 @@
 	// Companiom Uniform Slot
 	[ { "op": "add", "path": "/companionsConfig/uniformSlots/head", "value": ["headCosmetic", "head" ]} ],
 
+	// lessen diminishing returns on crew benefits.
+	[ { "op": "replace", "path": "/companionsConfig/shipUpgradeDiminishingReturns", "value": "0.5833333333" } ],
+
 	// Crew Medic changes
 	[ { "op": "replace", "path": "/companionsConfig/crewBenefits/shipRegeneration/0", "value": "fucrewmedicshipregeneration2" } ],
 	[ { "op": "replace", "path": "/companionsConfig/crewBenefits/shipRegeneration/1", "value": "fucrewmedicshipregeneration1" } ],
@@ -154,13 +156,13 @@
 
 
 	//remove vanilla blueprints
-		
-	[{"op":"test","path":"/defaultBlueprints/tier1/249"},{"op":"remove","path":"/defaultBlueprints/tier1/248"}], //pettether
-	[{"op":"test","path":"/defaultBlueprints/tier1/248"},{"op":"remove","path":"/defaultBlueprints/tier1/247"}], //pethealingstation
-	[{"op":"test","path":"/defaultBlueprints/tier1/247"},{"op":"remove","path":"/defaultBlueprints/tier1/246"}], //capturepod
-	[{"op":"test","path":"/defaultBlueprints/tier1/246"},{"op":"remove","path":"/defaultBlueprints/tier1/245"}], //railhook
+
+	[{"op":"test","path":"/defaultBlueprints/tier1/248"},{"op":"remove","path":"/defaultBlueprints/tier1/248"}], //pettether
+	[{"op":"test","path":"/defaultBlueprints/tier1/247"},{"op":"remove","path":"/defaultBlueprints/tier1/247"}], //pethealingstation
+	[{"op":"test","path":"/defaultBlueprints/tier1/246"},{"op":"remove","path":"/defaultBlueprints/tier1/246"}], //capturepod
+	[{"op":"test","path":"/defaultBlueprints/tier1/245"},{"op":"remove","path":"/defaultBlueprints/tier1/245"}], //railhook
 	//244 stationtram
-	//243 compositerailplatform 
+	//243 compositerailplatform
 	//242 rustyrailplatform
 	//241 railtrampstop
 	//240 railstop
@@ -194,13 +196,13 @@
 	//212 lightsensor
 	//211 secrettrapdoor
 	//210 secretdoor
-	//209 standingturret
+[{"op":"test","path":"/defaultBlueprints/tier1/209"},{"op":"remove","path":"/defaultBlueprints/tier1/209"}], //209 standingturret
 	//208 drain
 	//207 bulb
 	//206 alarm
-	[{"op":"test","path":"/defaultBlueprints/tier1/206"},{"op":"remove","path":"/defaultBlueprints/tier1/205"}], //burnspray
-	[{"op":"test","path":"/defaultBlueprints/tier1/205"},{"op":"remove","path":"/defaultBlueprints/tier1/204"}], //nanowrap
-	[{"op":"test","path":"/defaultBlueprints/tier1/204"},{"op":"remove","path":"/defaultBlueprints/tier1/203"}], //medkit
+	[{"op":"test","path":"/defaultBlueprints/tier1/205"},{"op":"remove","path":"/defaultBlueprints/tier1/205"}], //burnspray
+	[{"op":"test","path":"/defaultBlueprints/tier1/204"},{"op":"remove","path":"/defaultBlueprints/tier1/204"}], //nanowrap
+	[{"op":"test","path":"/defaultBlueprints/tier1/203"},{"op":"remove","path":"/defaultBlueprints/tier1/203"}], //medkit
 	[{"op":"test","path":"/defaultBlueprints/tier1/202"},{"op":"remove","path":"/defaultBlueprints/tier1/202"}], //bluestim
 	[{"op":"test","path":"/defaultBlueprints/tier1/201"},{"op":"remove","path":"/defaultBlueprints/tier1/201"}], //greenstim
 	[{"op":"test","path":"/defaultBlueprints/tier1/200"},{"op":"remove","path":"/defaultBlueprints/tier1/200"}], //smallbattery
@@ -233,7 +235,7 @@
 	[{"op":"test","path":"/defaultBlueprints/tier1/173"},{"op":"remove","path":"/defaultBlueprints/tier1/173"}], //pinkdye
 	[{"op":"test","path":"/defaultBlueprints/tier1/172"},{"op":"remove","path":"/defaultBlueprints/tier1/172"}], //orangedye
 	[{"op":"test","path":"/defaultBlueprints/tier1/171"},{"op":"remove","path":"/defaultBlueprints/tier1/171"}], //greydye
-	//170 mannequin
+	[{"op":"test","path":"/defaultBlueprints/tier1/170"},{"op":"remove","path":"/defaultBlueprints/tier1/170"}], //mannequin
 	[{"op":"test","path":"/defaultBlueprints/tier1/169"},{"op":"remove","path":"/defaultBlueprints/tier1/169"}], //syntheticmaterial
 	[{"op":"test","path":"/defaultBlueprints/tier1/168"},{"op":"remove","path":"/defaultBlueprints/tier1/168"}], //canvas
 	[{"op":"test","path":"/defaultBlueprints/tier1/167"},{"op":"remove","path":"/defaultBlueprints/tier1/167"}], //silk
@@ -390,25 +392,23 @@
 	[{"op":"test","path":"/defaultBlueprints/tier1/16"},{"op":"remove","path":"/defaultBlueprints/tier1/16"}], //tungstenbow
 	[{"op":"test","path":"/defaultBlueprints/tier1/15"},{"op":"remove","path":"/defaultBlueprints/tier1/15"}], //bow
 	[{"op":"test","path":"/defaultBlueprints/tier1/14"},{"op":"remove","path":"/defaultBlueprints/tier1/14"}], //hoe
-	[{"op":"test","path":"/defaultBlueprints/tier1/13"},{"op":"remove","path":"/defaultBlueprints/tier1/13"}], //bomb
-	[{"op":"test","path":"/defaultBlueprints/tier1/12"},{"op":"remove","path":"/defaultBlueprints/tier1/12"}], //startershield			
+	//13 bomb
+	[{"op":"test","path":"/defaultBlueprints/tier1/12"},{"op":"remove","path":"/defaultBlueprints/tier1/12"}], //startershield
 	[{"op":"test","path":"/defaultBlueprints/tier1/11"},{"op":"remove","path":"/defaultBlueprints/tier1/11"}], //breathprotectionback
-	[{"op":"test","path":"/defaultBlueprints/tier1/10"},{"op":"remove","path":"/defaultBlueprints/tier1/10"}], //craftingwheel	
-	[{"op":"test","path":"/defaultBlueprints/tier1/9"},{"op":"remove","path":"/defaultBlueprints/tier1/9"}], //craftingfurniture		
+	[{"op":"test","path":"/defaultBlueprints/tier1/10"},{"op":"remove","path":"/defaultBlueprints/tier1/10"}], //craftingwheel
+	[{"op":"test","path":"/defaultBlueprints/tier1/9"},{"op":"remove","path":"/defaultBlueprints/tier1/9"}], //craftingfurniture
 	[{"op":"test","path":"/defaultBlueprints/tier1/8"},{"op":"remove","path":"/defaultBlueprints/tier1/8"}], //craftingfurnace
 	[{"op":"test","path":"/defaultBlueprints/tier1/7"},{"op":"remove","path":"/defaultBlueprints/tier1/7"}], //craftingfarm
-	[{"op":"test","path":"/defaultBlueprints/tier1/6"},{"op":"remove","path":"/defaultBlueprints/tier1/6"}], //craftinganvil		
+	[{"op":"test","path":"/defaultBlueprints/tier1/6"},{"op":"remove","path":"/defaultBlueprints/tier1/6"}], //craftinganvil
 
 
 	//begin starting blueprints
 
 
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "clay"} } ],
-	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "bonematerial"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "floranneedler"} } ],
-	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "throwingbones"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "plantfibre"} } ],
-	
+
 	//logbook
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "xcodexlogbook"} } ],
 
@@ -429,7 +429,7 @@
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "ffguide6-codex"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "networkguide-codex"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "networkguide2-codex"} } ],
-	
+
 	//booze stuff
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "smallwoodencrate1" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "winecabinet" } } ],
@@ -442,7 +442,9 @@
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "placeablecyanider" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "placeablelambicbottle" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "placeablestout" } } ],
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "placeablechampagne" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "beerkeg" } } ],
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fuwoodbarrels" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "darkalemash" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "premiumcyanider" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "wheatsprout" } } ],
@@ -518,7 +520,6 @@
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "stoneshortspear"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "stonebroadsword"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "stonegreataxe"} } ],
-	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "stonedagger"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "roastedmushrooms"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "cookedtentacle"} } ],
 
@@ -619,6 +620,11 @@
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "swtjc_wp_emitter" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "swtjc_wp_brokenemitter" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "hiddenproximityscanner" } } ],
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fuplayersensor" } } ],
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "funpcsensor" } } ],
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fumonstersensor" } } ],
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fufriendlysensor" } } ],
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fuenemysensor" } } ],
 
 	//Basic Switches
 
@@ -640,6 +646,7 @@
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "swtjc_wp_advancedswitch" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "swtjc_wp_advancedswitch_nolatch" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "swtjc_wp_advancedswitch_noninteractive" } } ],
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "keypad" } } ],
 
 	//Sequencers
 
@@ -663,7 +670,7 @@
 	//kibbles
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "robosnax"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "meatkibble"} } ],
-	
+
 
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_defaultunlockdiagnoser"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_solidrailplatform"} } ],
@@ -671,12 +678,12 @@
 
 
 	//end starting blueprints
-	
+
 	//begin inventoryFilter edits
-	
+
 	[ { "op": "add", "path": "/inventoryFilters/reagentBag/tagWhitelist/-", "value": "bee" } ],
 	[ { "op": "add", "path": "/inventoryFilters/mainBag/tagBlacklist/-", "value": "bee" } ]
-	
+
 	//end inventoryFilter edits
 
 ]

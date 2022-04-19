@@ -1,3 +1,4 @@
+require "/items/active/tagCaching.lua" --integral to mastery identification
 require "/scripts/util.lua"
 
 function setSEBonusInit(setBonusName, SetBonusEffects)
@@ -23,7 +24,7 @@ function checkSetWorn(mySet)
 end
 
 function checkSetLevel(mySet)
-	return math.min(math.min(status.stat(mySet[1]),status.stat(mySet[2])),status.stat(mySet[3]))
+	return math.min(status.stat(mySet[1]),status.stat(mySet[2]),status.stat(mySet[3]))
 end
 
 function checkBiome(set)
@@ -38,6 +39,7 @@ end
 
 function setBonusMultiply(effectBase,mult)
 	local temp={}
+	if not effectBase then return temp end
 	for _,vOld in pairs(effectBase) do
 		local v=copy(vOld)
 		v["amount"]=(v["amount"] and (v["amount"]*mult)) or nil
@@ -56,7 +58,7 @@ function applySetEffects()
 		status.addEphemeralEffect(v,2)
 	end]]
 	--sb.logInfo("s %s e %s",setName,self.setBonusEffects)
-	world.sendEntityMessage(entity.id(),"recordFUArmorSetBonus",setName)
+	world.sendEntityMessage(entity.id(),"recordFUPersistentEffect",setName)
 	status.setPersistentEffects(setName,self.setBonusEffects)
 end
 
@@ -64,72 +66,27 @@ function removeSetEffects()
 	status.setPersistentEffects(setName,{})
 end
 
-function fetchTags(buffer)
-	local tags={}
-	for k,v in pairs(buffer or {}) do
-		if string.lower(k)=="itemtags" then
-			tags=util.mergeTable(tags,v)
-		end
-	end
-	return tags
-end
-
+--need to revise this to use tagCaching.lua.
+--also, move over elementaltype stuff to its own distinct separate-alongside segment.
 function weaponCheck(tags)
+	tagCaching.update()
 	local weaponCheckResults={}
-	local heldItemPrimary=world.entityHandItem(entity.id(), "primary")
-	local heldItemAlt=world.entityHandItem(entity.id(), "alt")
-
-	local temp=world.entityHandItemDescriptor(entity.id(), "primary")
-
 	weaponCheckResults["either"]=false
 	weaponCheckResults["primary"]=false
 	weaponCheckResults["alt"]=false
 	weaponCheckResults["both"]=false
-	weaponCheckResults["twoHanded"]=(temp~=nil and root.itemConfig(temp).config.twoHanded) or false
-
-	if heldItemPrimary and not self.SETagCache[heldItemPrimary] then
-		local result,buffer=pcall(root.itemConfig,heldItemPrimary)
-		if result and buffer then
-			buffer=util.mergeTable(buffer.config,buffer.parameters)
-			local buffer2=buffer.elementalType
-			buffer=fetchTags(buffer)
-			if buffer2 then table.insert(buffer,string.lower(buffer2)) end
-		else
-			buffer={}
-		end
-		buffer2={}
-		for _,v in pairs(buffer) do
-			buffer2[string.lower(v)]=true
-		end
-		self.SETagCache[heldItemPrimary]=buffer2
-	end
-
-	if heldItemAlt and not self.SETagCache[heldItemAlt] then
-		local result,buffer=pcall(root.itemConfig,heldItemAlt)
-		if result and buffer then
-			buffer=util.mergeTable(buffer.config,buffer.parameters)
-			local buffer2=buffer.elementalType
-			buffer=fetchTags(buffer)
-			if buffer2 then table.insert(buffer,string.lower(buffer2)) end
-		else
-			buffer={}
-		end
-		buffer2={}
-		for _,v in pairs(buffer) do
-			buffer2[string.lower(v)]=true
-		end
-		self.SETagCache[heldItemAlt]=buffer2
-	end
+	weaponCheckResults["twoHanded"]=false
 
 	for _,tag in pairs(tags) do
 		tag=string.lower(tag)
-		local primaryHasTag=heldItemPrimary and self.SETagCache[heldItemPrimary][tag]
-		local altHasTag=heldItemAlt and self.SETagCache[heldItemAlt][tag]
+		local primaryHasTag=tagCaching.primaryTagCache[tag]
+		local altHasTag=tagCaching.altTagCache[tag]
 		weaponCheckResults["primary"]=weaponCheckResults["primary"] or primaryHasTag
 		weaponCheckResults["alt"]=weaponCheckResults["alt"] or altHasTag
 		weaponCheckResults["both"]=weaponCheckResults["both"] or (primaryHasTag and altHasTag)
 		weaponCheckResults["either"]=weaponCheckResults["either"] or primaryHasTag or altHasTag
 	end
+	weaponCheckResults["twoHanded"]=tagCaching.primaryTagCache["twoHanded"] or tagCaching.altTagCache["twoHanded"]
 
 	return weaponCheckResults
 end

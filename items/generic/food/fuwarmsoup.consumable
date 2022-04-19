@@ -1,0 +1,29 @@
+{
+  "itemName" : "fuwarmsoup",
+  "rarity" : "uncommon",
+  "price" : 0,
+  "category" : "preparedFood",
+  "inventoryIcon" : "fuwarmsoup.png",
+  "description" : "When scientists call it 'soup' they're being metaphorical, amino acids aren't food.\n^green;Regeneration^reset; ^gray;(^white;60s^gray;)^reset;\n^red;-^white;10%^red; HP^reset; ^gray;(^white;60s^gray;)^reset;\n^gray;Type: Universal^reset;",
+  "shortdescription" : "Warmed Organic Soup",
+  "foodValue" : 10,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.6,
+  "effects" : [ [
+	{
+      "effect" : "regeneration01",
+      "duration" : 60
+	},
+	{
+      "effect" : "negativehealth10",
+      "duration" : 60
+    }
+  ] ],
+  "emitters" : [ "drinking" ],
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

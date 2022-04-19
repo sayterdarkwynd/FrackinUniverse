@@ -4,19 +4,19 @@
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "^orange;Set Bonuses^reset;: 
+  "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; Fall Damage x^green;0.75^reset;
 ^yellow;^reset; Magnorb, Chakram, Boomerang: Damage x^green;1.25^reset;, +^green;3^reset;% Crit Chance
 ^yellow;^reset; ^cyan;Immune^reset;: Gas, Proto-Poison",
   "shortdescription" : "Rifter Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "offensive", "ranged", "hyper" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorpowerranged" : "kirhostier5spants" },
+  //"collectablesOnPickup" : { "fu_armorpowerranged" : "kirhostier5spants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -49,6 +49,10 @@
     "riftersetbonus",
     {
       "stat" : "fu_rifterset_legs",
+      "amount" : 1
+    },
+    {
+      "stat" : "fu_invaderset_legs",
       "amount" : 1
     }
   ],
@@ -93,5 +97,5 @@
 */
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

@@ -31,7 +31,7 @@ function circleState.update(dt, stateData)
   end
 
   --Lower circle height if we're near ceiling
-  for i, ceilingSensorIndex in ipairs({ 3, 2, 1 }) do
+  for _, ceilingSensorIndex in ipairs({ 3, 2, 1 }) do
     local sensor = self.sensors.ceilingSensors.collisionTrace[ceilingSensorIndex]
     if sensor.value then
       self.circleYOffsetFactor = self.circleYOffsetFactor - 0.75 * dt

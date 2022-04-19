@@ -31,7 +31,6 @@ function init()
       end
     end)
 
-  self.superJumpTimer = 0
   self.damageProjectileType = "burstjumpboom"
   self.damageMultiplier = 1.0
   self.cooldown = 5
@@ -53,7 +52,6 @@ end
 
 function update(args)
   applyTechBonus()
-local superJumpTime = 0.01
 
   if self.dashCooldownTimer > 0 then
     self.dashCooldownTimer = math.max(0, self.dashCooldownTimer - args.dt)
@@ -125,15 +123,15 @@ function startDash(direction)
       power = (status.stat("maxEnergy")/5) * self.damageBonus,
       damageSourceKind = "default"
     }
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {0, 0}, true, damageConfig)
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {10, 0}, true, damageConfig)
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {-10, 0}, true, damageConfig)
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {0, 10}, true, damageConfig)
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {0, -10}, true, damageConfig)
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {10, 10}, true, damageConfig)
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {-10, -10}, true, damageConfig)
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {10, -10}, true, damageConfig)
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {-10, 10}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {0, 0}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {10, 0}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {-10, 0}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {0, 10}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {0, -10}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {10, 10}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {-10, -10}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {10, -10}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {-10, 10}, true, damageConfig)
 -- ***end projectile
  end
 end
@@ -142,7 +140,7 @@ function endDash()
   status.clearPersistentEffects("movementAbility")
 
   if self.stopAfterDash then
-  	    animator.setAnimationState("dashing", "on")
+    animator.setAnimationState("dashing", "on")
     animator.setParticleEmitterActive("dashParticles", true)
     local movementParams = mcontroller.baseParameters()
     local currentVelocity = mcontroller.velocity()

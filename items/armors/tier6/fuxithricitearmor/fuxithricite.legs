@@ -4,19 +4,19 @@
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Rare",
-   "description" : "^orange;Set Bonuses^reset;: 
-^yellow;^reset; Xithricite Weapons: +^green;3^reset;% Crit 
-^yellow;^reset; ^cyan;Immune^reset;: All Rads, Pressure, Shadow, Aether, Insanity, Oxygen", 
+  "rarity" : "legendary",
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Xithricite Weapons: +^green;3^reset;% Crit
+^yellow;^reset; ^cyan;Immune^reset;: All Rads, Pressure, Shadow Taint, Aether, Insanity, Oxygen",
   "shortdescription" : "Xithricite Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
   "level" : 6,
-  "collectablesOnPickup" : { "fu_armorbalanced" : "fuxithricitepants" },
+  //"collectablesOnPickup" : { "fu_armorbalanced" : "fuxithricitepants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -38,12 +38,12 @@
       "stat" : "maxHealth",
       "amount" : 2
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "cosmicResistance",
       "amount" : 0.028572
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "radioactiveResistance",
       "amount" : 0.02
@@ -65,5 +65,5 @@
 
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

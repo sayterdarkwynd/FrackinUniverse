@@ -358,7 +358,7 @@ function populateQuestList()
 				for sublineNum, subline in ipairs(lineTbl.sublines) do
 					for questNum, questID in ipairs(QD.sublines[subline]) do
 						if questNum == 1 then
-							for j = 1, GD.portraitQuestNameCount do
+							for _ = 1, GD.portraitQuestNameCount do
 								local tempPath = "questList.list."..widget.addListItem("questList.list")
 								widget.setVisible(tempPath..".questName", false)
 								widget.setVisible(tempPath..".bg", false)
@@ -439,7 +439,7 @@ function questSelected()
 						widget.setText("questTitle", tostring(config.title))
 
 						local text = "^red;UNAVAILABLE!^reset;\nRequirements:"
-						for i, quest in ipairs(config.prerequisites) do
+						for _, quest in ipairs(config.prerequisites) do
 							local tempConfig = root.questConfig(quest)
 
 							if player.hasCompletedQuest(quest) then

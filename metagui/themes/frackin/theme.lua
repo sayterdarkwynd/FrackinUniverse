@@ -85,13 +85,24 @@ local color = { } do -- mini version of StardustLib's color.lua
 end -- color lib
 
 local paletteFor do
-  local baseHue = color.toHsl(theme.defaultAccentColor)[1]
 
   local basePal = { "588adb", "123166", "0d1f40", "060f1f" }
   local framePal = {
     "ffe15c", "ffbd00", "c78b05", "875808", -- yellow bands
     "b3eeff", "7be1ff", "00c6ff", -- gems
   }
+
+  if not theme.paletteShades then
+    theme.paletteShades = { }
+    local pal = theme.stockPalette or basePal
+    local rs = color.toHsl(pal[1]) -- root shade
+    for i = 1, 3 do
+      local cs = color.toHsl(pal[i+1]) -- comparison shade
+      theme.paletteShades[i] = { cs[2] / rs[2], cs[3] / rs[3] }
+    end
+  end
+  local ps = theme.paletteShades
+
   local pals = { }--[theme.defaultAccentColor] = "" }
   local bgAlpha = 0.9
   paletteFor = function(col)
@@ -100,15 +111,21 @@ local paletteFor do
     local h, s, l = table.unpack(color.toHsl(col))
     s = math.min(s, 0.64532019704433)
     local function c(v) return util.clamp(v, 0, 1) end
-    local r = color.replaceDirective(basePal, {
-      col, -- highlight
-      color.fromHsl { h, c(s * 1.11), c(l * 0.39), bgAlpha }, -- bg
-      color.fromHsl { h, c(s * 1.04), c(l * 0.25), bgAlpha }, -- bg dark
-      color.fromHsl { h, c(s * 1.04), c(l * 0.125), bgAlpha }, -- bg shadow
-    })
+    local r
+    if col == theme.defaultAccentColor and theme.stockPalette then
+      local pm = util.mergeTable({ }, theme.stockPalette)
+      for i=2,4 do pm[i] = string.format("%s%02x", pm[i], math.floor(0.5 + bgAlpha * 255)) end
+      r = color.replaceDirective(basePal, pm)
+    else
+      r = color.replaceDirective(basePal, {
+        col, -- highlight
+        color.fromHsl { h, c(s * ps[1][1]), c(l * ps[1][2]), bgAlpha }, -- bg
+        color.fromHsl { h, c(s * ps[2][1]), c(l * ps[2][2]), bgAlpha }, -- bg dark
+        color.fromHsl { h, c(s * ps[3][1]), c(l * ps[3][2]), bgAlpha }, -- bg shadow
+      })
+    end
 
-    --local hd = s > 0 and h - baseHue or 0
-    local hd = (mg.cfg["frackin:hueShift"] or 0) / 360
+    local hd = (mg.cfg[theme.hueShiftProperty or false] or mg.cfg["frackin:hueShift"] or 0) / 360
     if hd ~= 0 then -- adjust frame colors
       hd = (hd+0.5 % 1) - 0.5
       -- tone down some of the harsher results
@@ -131,6 +148,14 @@ local paletteFor do
     return r
   end
 end
+
+if theme._export then
+  theme._export.color = color
+  theme._export.paletteFor = paletteFor
+end
+
+-- set up fixed directives for some stock functionality
+theme.scrollBarDirectives = paletteFor "accent" .. "?multiply=ffffff7f"
 
 local titleBar, icon, title, close, spacer
 function theme.decorate()
@@ -158,7 +183,7 @@ function theme.drawFrame()
   c = widget.bindCanvas(frame.backingWidget .. ".canvas")
   c:clear() --assets.frame:drawToCanvas(c)
 
-  local pal = paletteFor("accent")
+  local pal = paletteFor "accent"
 
   if (style == "window") then
     local bgClipWindow = rect.withSize({4, 4}, vec2.sub(c:size(), {4+6, 4+4}))
@@ -173,8 +198,28 @@ function theme.drawFrame()
 end
 
 function theme.drawPanel(w)
+  if w.tabStyle and theme.useTabStyling then return theme.drawTabPanel(w) end
   local c = widget.bindCanvas(w.backingWidget)
-  c:clear() assets.panel:drawToCanvas(c, (w.style or "convex") .. paletteFor("accent"))
+  c:clear() assets.panel:drawToCanvas(c, (w.style or "convex") .. paletteFor "accent")
+end
+
+function theme.drawTabPanel(w)
+  local c = widget.bindCanvas(w.backingWidget)
+  c:clear() assets.tabPanel:drawToCanvas(c, w.tabStyle .. paletteFor "accent")
+end
+
+function theme.drawTab(w)
+  local c = widget.bindCanvas(w.backingWidget) c:clear()
+  local state
+  if w.selected and not theme.tabsNoFocusFrame then state = "focus"
+  elseif w.hover then state = "hover"
+  else state = "idle" end
+  state = w.tabStyle .. "." .. state .. paletteFor(w.color or "accent")
+
+  assets.tab:drawToCanvas(c, state)
+  --[[if w.selected then
+    assets.tab:drawToCanvas(c, w.tabStyle .. ".accent?multiply=" .. mg.getColor(w.color or "accent"))
+  end]]
 end
 
 function theme.drawButton(w)
@@ -194,21 +239,28 @@ function theme.drawCheckBox(w)
   else state = w.checked and ":checked" or ":idle" end
   state = state .. paletteFor("accent")
 
-  c:drawImageDrawable(assets.checkBox .. state, vec2.mul(c:size(), 0.5), 1.0)
+  local img = w.radioGroup and assets.radioButton or assets.checkBox
+  c:drawImageDrawable(img .. state, vec2.mul(c:size(), 0.5), 1.0)
 end
 
 function theme.drawTextBox(w)
   local c = widget.bindCanvas(w.backingWidget)
-  c:clear() assets.textBox:drawToCanvas(c, (w.focused and "focused" or "idle") .. paletteFor("accent"))
+  c:clear() assets.textBox:drawToCanvas(c, (w.focused and "focused" or "idle") .. paletteFor "accent")
 end
 
 function theme.drawItemSlot(w)
   local center = {9, 9}
   local c = widget.bindCanvas(w.backingWidget)
-  c:clear() c:drawImage(assets.itemSlot .. ":" .. (w.hover and "hover" or "idle") .. paletteFor("accent"), center, nil, nil, true)
-  if w.glyph then c:drawImage(w.glyph, center, nil, nil, true) end
+  c:clear() c:drawImage(assets.itemSlot .. ":" .. (w.hover and "hover" or "idle") .. paletteFor "accent", center, nil, nil, true)
+  if w.glyph then
+    if w.colorGlyph then
+      c:drawImage(w.glyph, center, nil, nil, true)
+    else
+      c:drawImage(string.format("%s?multiply=%s?multiply=ffffff7f", w.glyph, mg.getColor "accent"), center, nil, nil, true)
+    end
+  end
   local ic = root.itemConfig(w:item())
-  if ic then
+  if ic and not w.hideRarity then
     local rarity = (ic.parameters.rarity or ic.config.rarity or "Common"):lower()
     c:drawImage(assets.itemRarity .. ":" .. rarity .. (w.hover and "?brightness=50" or ""), center, nil, nil, true)
   end

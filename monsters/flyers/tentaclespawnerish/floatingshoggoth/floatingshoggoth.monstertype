@@ -32,9 +32,9 @@
       "hostileActions" : [ ],
       "approachActions" : [
 	{
-          "name":"approach-swarm", 
+          "name":"approach-swarm",
           "parameters":{ "usePathfinding": true }
-        }       
+        }
       ],
 
       "followActions" : [
@@ -44,17 +44,17 @@
           }
         },
 	{
-          "name":"approach-swarm", 
+          "name":"approach-swarm",
           "parameters":{ "usePathfinding": true }
-        }          
+        }
       ],
 
-      "wanderActions" : [ 
+      "wanderActions" : [
         {
           "name" : "wander-fly"
-        }      
+        }
       ],
-      
+
       "periodicActions" : [
         {
          "name":"action-projectile",
@@ -66,9 +66,9 @@
           "aimAtTarget" : false,
           "power" : 5
          }
-        }      
+        }
       ],
-      
+
       "concurrentActions" : [
         {
          "name":"action-projectile",
@@ -98,7 +98,7 @@
       ],
 
       "damageTakenActions" : [],
-      
+
       "deathActions" : [
           {
             "name" : "action-projectile",
@@ -124,12 +124,12 @@
                           {
                             "action" : "sound",
                             "options" : [ "/sfx/projectiles/bloodvomit1.ogg", "/sfx/projectiles/bloodvomit2.ogg", "/sfx/projectiles/bloodvomit3.ogg", "/sfx/projectiles/bloodvomit4.ogg", "/sfx/projectiles/bloodvomit5.ogg", "/sfx/projectiles/bloodvomit6.ogg", "/sfx/projectiles/bloodvomit7.ogg" ]
-                          }           
-                      ]             
+                          }
+                      ]
                     }
-                  }             
-                ],                   
-                "actionOnReap" : [             
+                  }
+                ],
+                "actionOnReap" : [
                   {
                     "action" : "sound",
                     "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
@@ -137,18 +137,18 @@
                   {
                     "action" : "sound",
                     "options" : [ "/sfx/weather/acidburn.ogg" ]
-                  },              
+                  },
                   {
                     "action" : "explosion",
                     "foregroundRadius" : 4,
                     "backgroundRadius" : 0,
                     "explosiveDamageAmount" : 40,
                     "delaySteps" : 2
-                  }                
+                  }
                 ]
               }
-            }  
-          }       
+            }
+          }
       ]
     },
 
@@ -228,7 +228,7 @@
         },
         "insanityImmunity" : {
           "baseValue" : 1.0
-        },         
+        },
         "fireResistance" : {
           "baseValue" : -0.25
         },
@@ -252,7 +252,7 @@
         },
         "shadowResistance" : {
           "baseValue" : 0.7
-        },            
+        },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
         },
@@ -268,7 +268,7 @@
         "xanafianStatusImmunity" : { "baseValue" : 1 },
         "akkimariacidResistance" : { "baseValue" : 0.9 },
         "akkimariacidStatusImmunity" : { "baseValue" : 1 },
-        "ignoreInvisibilityEffects" : { "baseValue" : 1 } 
+        "ignoreInvisibilityEffects" : { "baseValue" : 1 }
       },
 
       "resources" : {

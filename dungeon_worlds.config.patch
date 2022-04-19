@@ -1,4 +1,5 @@
-[{
+[
+  {
 		"op": "replace",
 		"path": "/lunarbase/musicTrack",
 		"value": "/sfx/environmental/moon_surface.ogg"
@@ -100,7 +101,7 @@
 			"dungeonBaseHeight": 1175,
 			"dungeonSurfaceHeight": 1050,
 			"ambientLightLevel": [80, 80, 80],
-			"biome": "thickjungle",
+			"biome": "fungus",
 			"musicTrack": "/music/scienceoutpost.ogg",
 			"environmentStatusEffects": ["nofallinvis"]
 		}
@@ -175,6 +176,21 @@
 			"dungeonBaseHeight": 1400,
 			"dungeonSurfaceHeight": 1500,
 			"ambientLightLevel": [25, 25, 25],
+			"biome": "mamapoptop"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/cavedungeon2",
+		"value": {
+			"primaryDungeon": "cavedungeon2",
+			"threatLevel": 2,
+			"gravity": 110,
+			"airless": false,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 1400,
+			"dungeonSurfaceHeight": 1500,
+			"ambientLightLevel": [15, 15, 15],
 			"biome": "mamapoptop"
 		}
 	},
@@ -779,7 +795,7 @@
 		"op": "add",
 		"path": "/fuarena1t10",
 		"value": {
-			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew3"],
+			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew3arena"],
 			"dungeonSurfaceHeight": 1115,
 			"primaryDungeon": "arena1",
 			"biome": "arborealdark",
@@ -796,7 +812,7 @@
 		"op": "add",
 		"path": "/fuarena2t10",
 		"value": {
-			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew3"],
+			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew3arena"],
 			"dungeonSurfaceHeight": 1115,
 			"primaryDungeon": "arena2",
 			"biome": "arborealdark",
@@ -813,7 +829,7 @@
 		"op": "add",
 		"path": "/fuarena3t10",
 		"value": {
-			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew3"],
+			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew3arena"],
 			"dungeonSurfaceHeight": 1115,
 			"primaryDungeon": "arena3",
 			"biome": "arborealdark",
@@ -873,6 +889,21 @@
 			"worldSize" : [850, 950],
 			"ambientLightLevel" : [32, 32, 32],
 			"musicTrack" : "/sfx/environmental/moon_surface.ogg"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/fu_techtrials_emergencybounce",
+		"value": {
+			"primaryDungeon": "fu_techtrials_emergencybounce",
+			"threatLevel": 1,
+			"gravity": 80,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 500,
+			"ambientLightLevel": [200, 200, 200],
+			"musicTrack": "/music/command.ogg",
+			"overrideTech" : ["emergencybounce"],
+			"environmentStatusEffects": ["dontstarve", "extraenergising", "maxenergyboost145"]
 		}
 	}
 ]

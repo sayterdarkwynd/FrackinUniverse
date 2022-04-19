@@ -9,8 +9,9 @@ fertslot = 2
 
 inputSlots = {seedslot, waterslot, fertslot}
 local tenantNumber
+local tenantNumberModifier
+--local baseHappinessAmount
 local happinessAmount
-local scanTimer
 local parentCore --save the colony core as a local so you don't have to look for it every time
 
 
@@ -29,8 +30,6 @@ function init()
 		-- ??
 	}
 
-
-
 	multipliers = { growthRate=true } -- Which stats should be calculated as multipliers
 
 	if not storage.fert then storage.fert = {} end
@@ -47,9 +46,11 @@ function init()
 
 	wellRange=config.getParameter("wellRange",256)
 	tenantNumber = 0
+	tenantNumberModifier=1
+	--baseHappinessAmount = (config.getParameter("happiness",0))
 	happinessAmount = (config.getParameter("happiness",0))
+	--happinessAmount=baseHappinessAmount
 	wellsDrawing = 0
-	scanTimer = 0
 
 	getTenantNumber()
 	wellInit()
@@ -74,7 +75,6 @@ function update(dt)
 	else
 		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
-
 
 	-- Check tray inputs
 	local water,fert=checkTrayInputs()
@@ -103,7 +103,6 @@ function update(dt)
 		--sb.logInfo("growthmod: %s",growthmod)
 		growPlant(growthmod, dt)
 	end
-
 
 	handleTooltip({water=water,fert=fert,growthmod=growthmod,seed=storage.currentseed})--update description
 
@@ -148,8 +147,6 @@ function checkTrayInputs()
 	local water = inputWater and self.liquidInputs[inputWater.name] or nil
 	local fert = inputFert and self.fertInputs[inputFert.name] or nil
 
-
-
 	-- Relocate invalid inputs
 	if inputWater and not water then inputWater = fu_relocateItem(waterslot, inputSlots) end
 	if inputFert and not fert then inputFert = fu_relocateItem(fertslot, inputSlots) end
@@ -157,7 +154,6 @@ function checkTrayInputs()
 	-- Update cache
 	storage.cacheWaterName = inputWater and inputWater.name or nil
 	storage.cacheFertName = inputFert and inputFert.name or nil
-
 
 	return water,fert
 end
@@ -185,7 +181,7 @@ function handleTooltip(args)
 			powerString=powerString.."Power: ^green;"..self.requiredPower.."^reset;/"..self.requiredPower.."\n"
 		end
 	else
-		growthString='Growth Rate: ^green;' .. growthrate2*tenantNumber .. "^reset;\n"
+		growthString='Growth Rate: ^green;' .. growthrate2 .. "^reset;\n"
 	end
 
 	--seed use and seed display
@@ -234,11 +230,39 @@ function handleTooltip(args)
 		waterValueString=waterValueString..waterValue
 	end
 
-
 	--colony stuff calc
-	local tenantsString = "\n^red;Tenants:^gray; "..tenantNumber
-	local similarObjectsString = "\n^red;Similar Objects:^gray; "..(wellsDrawing - 1)
-	local happinessString = "\n^red;Happiness Factor:^gray; "..happinessAmount
+	local tenantsString = "\n^white;Tenants:^"
+	if tenantNumber>0 then
+		tenantsString=tenantsString.."green"
+	else
+		tenantsString=tenantsString.."white"
+	end
+	tenantsString=tenantsString.."; "..tenantNumber.." ^white;(Yield Multiplier:^"
+	if tenantNumberModifier>1 then
+		tenantsString=tenantsString.."green"
+	elseif tenantNumberModifier==0 then
+		tenantsString=tenantsString.."red"
+	else
+		tenantsString=tenantsString.."white"
+	end
+	local tenantModRounded=util.round(tenantNumberModifier,2)
+	tenantsString=tenantsString.."; "..tenantModRounded.."^white;)"
+
+	local similarObjectsString = "\n^white;Similar Objects: ^"
+	if wellsDrawing-1>0 then
+		similarObjectsString=similarObjectsString.."red"
+	else
+		similarObjectsString=similarObjectsString.."green"
+	end
+	similarObjectsString=similarObjectsString..";"..(wellsDrawing - 1)
+
+	local happinessString = "\n^white;Happiness Factor: ^"
+	if happinessAmount>0 then
+		happinessString=happinessString.."green"
+	else
+		happinessString=happinessString.."red"
+	end
+	happinessString=happinessString..";"..happinessAmount.."^reset;"
 
 	--set desc!
 	local desc = powerString..seedString..yieldString..growthString..waterUseString..waterValueString..similarObjectsString..tenantsString..happinessString
@@ -284,7 +308,9 @@ function growPlant(growthmod, dt)
 	if not storage.hasFluid then return end
 
 	-- Add growth
-	storage.growth = storage.growth + getFertSum("growthRate") * tenantNumber * (growthmod or 1) * dt
+	--removing the tenant multiplier
+	--storage.growth = storage.growth + getFertSum("growthRate") * tenantNumber * (growthmod or 1) * dt
+	storage.growth = storage.growth + getFertSum("growthRate") * (growthmod or 1) * dt
 
 	-- If current stage is complete, consume fluid units and increment stage
 	if storage.growth >= stage().val then
@@ -294,9 +320,12 @@ function growPlant(growthmod, dt)
 
 	-- If the new stage is a harvesting stage, harvest and handle perennial
 	if stage().harvestPool then
-		local tblmerge = function(tb1, tb2) for k,v in pairs(tb2) do table.insert(tb1, v) end end
+		local tblmerge = function(tb1, tb2) for _,v in pairs(tb2) do table.insert(tb1, v) end end
 		local output = {}
-		for i=1,getFertSum("yield") do
+		local yieldCount=getFertSum("yield")*tenantNumberModifier
+		local yieldCountFloor=math.floor(yieldCount)
+		yieldCount=yieldCountFloor+((math.random()<=(yieldCount-yieldCountFloor)) and 1 or 0)
+		for _=1,yieldCount do
 			tblmerge(output, root.createTreasure(stage().harvestPool, 1))
 		end
 
@@ -312,7 +341,6 @@ function growPlant(growthmod, dt)
 		-- Perennial plants should return yeild of seeds for balance purposes.
 		-- By returning yield seeds we handle part of perennials regrowing from the same seed.
 		if stage().resetToStage then
-			--storage.currentseed.count = getFertSum("yield")--removing because this causes massive seed generation.
 			fu_sendOrStoreItems(0, storage.currentseed, seedAvoid)
 			storage.perennialSeedName = storage.currentseed.name
 		end
@@ -391,7 +419,7 @@ Third, Starbound gracefully handles if a seed changes data, mods (resetToStage c
 --Also handles some of perennial growth mechanics.
 function genGrowthData()
 	storage.growthCap = 0
-	for index,stage in ipairs(storage.stage) do
+	for _,stage in ipairs(storage.stage) do
 		storage.growthCap = storage.growthCap + (stage.duration and stage.duration[1] or 0)
 		stage.val = storage.growthCap
 	end
@@ -485,21 +513,27 @@ function fu_isAddonCommunityFarm() return true end
 
 function getTenantNumber()
 	tenantNumber = 0
+	tenantNumberModifier=1
 	if parentCore and world.entityExists(parentCore) then
-		tenantNumber = world.callScriptedEntity(parentCore,"getTenantsNum")
+		tenantNumber = world.callScriptedEntity(parentCore,"getTenantsNum") or 0
 	else
 		transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
 
 		local objectIds = world.objectQuery(storage.position, wellRange/2, { order = "nearest" })
 
 		for _, objectId in pairs(objectIds) do
-				if world.callScriptedEntity(objectId,"fu_isColonyCore") then
-					tenantNumber = world.callScriptedEntity(objectId,"getTenantsNum")
-					parentCore = objectId
-				end
+			if world.callScriptedEntity(objectId,"fu_isColonyCore") then
+				tenantNumber = world.callScriptedEntity(objectId,"getTenantsNum") or 0
+				parentCore = objectId
+			end
 		end
 	end
-
+	--more tenants, yield drops off
+	if tenantNumber>0 then
+		tenantNumberModifier=1+(tenantNumber/(tenantNumber^(1/3)))
+	else
+		tenantNumberModifier=1
+	end
 end
 
 function providesHappiness() return true end
@@ -510,5 +544,4 @@ function amountHappiness()
 	else
 		return 0
 	end
-
 end

@@ -98,7 +98,6 @@ function update(dt)
 			storage.timer=-1
 		end
 		local input
-		local found
 		for i=0,self.inputSlot-1 do
 			input = world.containerItemAt(entity.id(),i)
 			if input then
@@ -111,7 +110,6 @@ function update(dt)
 					else
 						storage.activeConsumption = false
 					end
-					found=true
 					break
 				end
 			end

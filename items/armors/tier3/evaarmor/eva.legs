@@ -3,7 +3,7 @@
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Common",
+  "rarity" : "uncommon",
   "description" : "^orange;Set Bonuses^reset;
 ^yellow;^reset; ^cyan;Immune^reset;: Radiation, Rad Burns, Pus, Liq. Nitrogen",
   "shortdescription" : "E.V.A Pants",
@@ -12,9 +12,9 @@
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "defensive", "melee", "explorer" ],
   "level" : 3,
-  "collectablesOnPickup" : { "fu_armorexplorer" : "evapants" },
+  //"collectablesOnPickup" : { "fu_armorexplorer" : "evapants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -59,9 +59,9 @@
   ],
 
   "statusEffects" : [
-    "fusetbonusmanager",
+    "evasetbonus",
     {
-      "stat" : "evasetcount",
+      "stat" : "fu_evaset_legs",
       "amount" : 1
     }
   ],
@@ -93,5 +93,5 @@
     {"0e779a" : "694d3f", "139ac6" : "886452", "30fdfd" : "b68b78", "f0ffff" : "e9ddd5", "664206" : "4b3c31", "875808" : "604c3e", "ffbd00" : "a38767", "ffe15c" : "c4b59e"}
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

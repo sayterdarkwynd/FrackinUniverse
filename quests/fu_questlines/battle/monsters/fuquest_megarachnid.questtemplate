@@ -1,35 +1,34 @@
 {
-  "id" : "fuquest_megarachnid",
-  "prerequisites" : [ "create_teleportercore" ],
-  "title" : "Megarachnid [BOSS]",
-  "text" : "If you thought large spiders were a threat, try taking out a ^orange;Megarachnid^reset;...they're the largest spiders in the galaxy. I dare you, in fact! Kill a ^orange;Megarachnid^reset; and you'll get my respect.",
-  "completionText" : "Few can say they have hunted and killed one of these. I salute your skill.",
-  "moneyRange" : [720, 780],
-  "rewards" : [ ],
-  "speaker" : "questGiver",
+	"id" : "fuquest_megarachnid",
+	"prerequisites" : [ "create_teleportercore" ],
+	"title" : "Megarachnid [BOSS]",
+	"text" : "If you thought large spiders were a threat, try taking out a ^orange;Megarachnid^reset;...they're the largest spiders in the galaxy. I dare you, in fact! Kill a ^orange;Megarachnid^reset; and you'll get my respect.",
+	"completionText" : "Few can say they have hunted and killed one of these. I salute your skill.",
+	"moneyRange" : [720, 780],
+	"rewards" : [ ],
+	"speaker" : "questGiver",
 
-  "secret" : true,
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"secret" : true,
 
-    "portraits" : {
-      "questStarted" : "player",
-      "questComplete" : "player"
-    },
-    
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,
-    "turnInDescription" : "Bring the ^green;Web Shooter^reset; to me at the ^orange;Science Outpost^reset;",
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "websnapper",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
-  }
+		"portraits" : {
+			"questStarted" : "player",
+			"questComplete" : "player"
+		},
+
+		"requireTurnIn" : false,
+		"turnInDescription" : "Bring the ^green;Web Shooter^reset; to me at the ^orange;Science Outpost^reset;",
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "websnapper",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
 }

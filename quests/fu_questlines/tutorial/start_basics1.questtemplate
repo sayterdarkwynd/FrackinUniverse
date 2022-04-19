@@ -1,34 +1,33 @@
 {
-  "id" : "start_basics1",
-  "prerequisites" : [ ],
-  "title" : "Armament",
-  "text" : "I t'aint much fer fightin', lemme tell you. But in a pinch, I's been known ter swing a fist or two. But fists ain't gonna cut it. You'll be needin' somethin' more dangerous. Try making",
-  "completionText" : "Thanks fer the tasty tots, friend. As a thanks, you can have this store of ^green;Iron Ore^reset; my grand-papa kept around when this place was still nice. T'aint worth a thing to me, but it'll sure be useful for you!",
-  "moneyRange" : [22, 33],
-  "rewards" : [ [ [ "ironore",20 ],[ "fuscienceresource",110 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "start_basics1",
+	"prerequisites" : [ ],
+	"title" : "Armament",
+	"text" : "I t'aint much fer fightin', lemme tell you. But in a pinch, I's been known ter swing a fist or two. But fists ain't gonna cut it. You'll be needin' somethin' more dangerous. Try making",
+	"completionText" : "Thanks fer the tasty tots, friend. As a thanks, you can have this store of ^green;Iron Ore^reset; my grand-papa kept around when this place was still nice. T'aint worth a thing to me, but it'll sure be useful for you!",
+	"moneyRange" : [22, 33],
+	"rewards" : [ [ [ "ironore",20 ],[ "fuscienceresource",110 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : true,  
+		"requireTurnIn" : true,
 
-    "turnInDescription" : "Gather or Grow ^orange;5 potatos^reset; and return to ^green;Welchie^reset;.",
+		"turnInDescription" : "Gather or Grow ^orange;5 potatos^reset; and return to ^green;Welchie^reset;.",
 
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "potato",
-        "count" : 5,
-        "consume" : true
-      }
-    ]
-  }
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "potato",
+				"count" : 5,
+				"consume" : true
+			}
+		]
+	}
 }

@@ -8,11 +8,11 @@
 ^cyan;Hunting and Energy weapon^reset;",
   "shortdescription" : "Kirhosi Rifle",
   "category" : "sniperRifle",
-  "level" : 1,
+  "level" : 2,
   "tooltipKind" : "gun2overheat",
   "weaponType" : "Sniper Rifle",
 //  "learnBlueprintsOnPickup" : [ "kirhossniper" ],
-  "itemTags" : ["weapon","ranged","energy", "upgradeableWeapon", "sniperrifle","kirhos"],
+  "itemTags" : ["weapon","ranged","sniperrifle", "upgradeableWeapon", "energy", "kirhos"],
   "twoHanded" : true,
 
   "animation" : "fugunoverheating.animation",
@@ -32,7 +32,7 @@
 		  }
 		}
       }
-    },   
+    },
     "sounds" : {
       "fire" : [ "/sfx/weapons/dark-explosion.ogg" ],
       "cooldown" : [ "/sfx/weapons/charging.wav" ]
@@ -62,9 +62,9 @@
 	"heatLossRateMax" : 30,				//Heat lost per second while overheated
 	"lowLevel" : 25,					//Value required to reach Low heat
 	"medLevel" : 50,				//Value required to reach Medium heat
-	"highLevel" : 80,				//Value required to reach High heat	
+	"highLevel" : 80,				//Value required to reach High heat
 	"overheatLevel" : 100,				//Overheat at this value
- 
+
     "projectileType" : "farsightshotkirhos",
     "projectileParameters" : {
       "speed" : 90,
@@ -114,17 +114,17 @@
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
-  "recoilForce" : 900,  
-  
+  "recoilForce" : 900,
+
   "altAbilityType" : "flashlight",
 
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  
+
   "upgradeParameters" : {
     "shortdescription" : "^cyan;Kirhosi Rifle II^reset; ^yellow;^reset;",
   "description" : "Perfection.
-^cyan;Hunting Weapon^reset;", 
+^cyan;Hunting and Energy Weapon^reset;",
   "animationParts" : {
     "middle" : "kirhossniper.png",
     "middlefullbright" : "kirhossniperfullbright.png"
@@ -132,9 +132,9 @@
     "inventoryIcon" : [{ "image" : "kirhossnipericon.png" }],
 	  "critChance" : 4,
 	  "critBonus" : 10,
-	  "primaryAbility" : {					
-		"heatLossLevel" : 24,				
+	  "primaryAbility" : {
+		"heatLossLevel" : 24,
 		"heatLossRateMax" : 30
 	  }
-  }  
+  }
 }

@@ -11,11 +11,11 @@
   "category" : "spear",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","spear","quietus", "upgradeableWeapon"],
-  
+
   "emitters" : [ "ancientenergytrail", "barrierelectric" ],
-  
+
   "inventoryIcon" : "tristab.png",
-  "collectablesOnPickup" : { "fu_weaponspear" : "tristab" },
+  //"collectablesOnPickup" : { "fu_weaponspear" : "tristab" },
   "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
   "animationParts" : {
     "handle" : "",
@@ -47,9 +47,9 @@
       "knockback" : 30
     }
   },
-  
+
   "altAbilityType" : "rocketspear",
-  "altAbility" : { 
+  "altAbility" : {
     "name" : "Cosmic Blast",
     "statusEffects" : [ "bleedinglong" ],
     "baseDps" : 12,
@@ -58,11 +58,11 @@
     "fireTime" : 1,
     "inaccuracy" : 0,
     "boostSpeed" : 120,
-    "boostForce" : 50   
+    "boostForce" : 50
   },
 
   "critChance" : 3,
   "critBonus" : 12,
-  
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

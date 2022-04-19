@@ -1,111 +1,91 @@
 {
 	"stats": [
-		{ "stat": "maxHealth", "effectiveMultiplier": 1.05 },
-		{ "stat": "maxEnergy", "effectiveMultiplier": 1.2 },
-		{ "stat": "powerMultiplier", "effectiveMultiplier": 1.05 },
-		{ "stat": "electricResistance", "amount": 0.25 },
-		{ "stat": "fireResistance", "amount": -0.5 },
-		{ "stat": "iceResistance", "amount": 0.25 },
-		{ "stat": "poisonResistance", "amount": -0.25 },
-		{ "stat": "radioactiveResistance", "amount": 0.2 },
-		{ "stat": "electricStatusImmunity", "amount": 1 },
-		{ "stat" : "bowDrawTimeBonus", "amount": 0.1 }	
+		{ "stat": "maxHealth", "effectiveMultiplier": 1.15 },
+
+		{ "stat": "mentalProtection", "amount": 0.20 },
+		{ "stat": "fireResistance", "amount": -0.30 },
+		{ "stat": "poisonResistance", "amount": 0.20 },
+		{ "stat": "electricResistance", "amount": 0.15 },
+		{ "stat": "shadowResistance", "amount": -0.05 },
+
+		{ "stat": "bowMastery", "amount": 0.20 },
+		{ "stat": "spearMastery", "amount": 0.15 }
+
 	],
 	"diet" : "carnivore",
 	"envEffects": [
 		{
-			"biomes": "jungle",
+			"biomes" : [ "jungle", "thickjungle","forest", "arboreal", "arboreal2", "arborealdark" ],
 			"stats": [
-				{ "stat": "maxHealth", "effectiveMultiplier": 1.1 },
-				{ "stat": "maxEnergy", "effectiveMultiplier": 1.1 }
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.15 }
+			]
+		},
+		{
+			"biomes" : [ "sulphuric", "sulphuricdark","sulphuricocean","icemoon", "arctic", "arcticdark","barren", "arctic", "icewaste", "icewastedark" ],
+			"stats": [
+				{ "stat": "maxHealth", "effectiveMultiplier": 0.80 }
 			]
 		}
 	],
 	"weaponEffects": [
 		{
-			"weapons": [ "bow" ],
-			"stats": [
-				{ "stat" : "critDamage", "amount": 0.2 },
-				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.12}				
-			],
-			"controlModifiers": { "speedModifier": 1.05 }
-		},
-		{
-			"weapons": [ "dagger", "spear" ],
-			"stats": [
-				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.08 },
-				{ "stat": "critChance", "amount": 3 }
-			]
-		},
-		{
 			"weapons": [ "needler", "thrown", "floran" ],
-			"stats": [
-				{ "stat": "critChance", "amount": 2 }
-			]
-		},
-		{
-			"combos": [
-				[ "needler", "needler" ],
-				[ "floran", "floran" ]
-			],
-			"controlModifiers": {
-				"speedModifier": 1.08
-			}
+			"stats": [{ "stat": "critChance", "amount": 2 }]
 		}
 	],
 	"weaponScripts": [
-		{
-			"script": "/scripts/fr_weaponscripts/hungercost.lua",
-			"contexts": [
-				"boomerang-fire",
-				"axecleave-fire",
-				"hammersmash-fire"
-			],
-			"args": {
-				"food": -0.01
-			}
-		},
-		{
-			"script": "/scripts/fr_weaponscripts/hungercost.lua",
-			"contexts": [ "fist-combo" ],
-			"args": {
-				"food": -0.002
-			}
-		},
-		{
-			"script": "/scripts/fr_weaponscripts/hungercost.lua",
-			"contexts": [ "bowshot-fire" ],
-			"args": {
-				"food": -0.02
-			}
-		},
-		{
-			"script": "/scripts/fr_weaponscripts/hungercost.lua",
-			"contexts": [
-				"meleecombo-fire",
-				"whip-fire"
-			],
-			"args": {
-				"food": -0.005
-			}
-		},
-		{
-			"script": "/scripts/fr_weaponscripts/hungercost.lua",
-			"blacklist": true,
-			"weapons": [ "spear", "dagger" ],
-			"contexts": [ "meleeslash-fire" ],
-			"args": {
-				"food": -0.005
-			}
-		},
-		{
-			"script": "/scripts/fr_weaponscripts/hungercost.lua",
-			"weapons": [ "spear", "dagger" ],
-			"contexts": [ "meleeslash-fire" ],
-			"args": {
-				"food": -0.01
-			}
-		},
+		//{
+		//	"script": "/scripts/fr_weaponscripts/hungercost.lua",
+		//	"contexts": [
+		//		"boomerang-fire",
+		//		"axecleave-fire",
+		//		"hammersmash-fire"
+		//	],
+		//	"args": {
+		//		"food": -0.01
+		//	}
+		//},
+		//{
+		//	"script": "/scripts/fr_weaponscripts/hungercost.lua",
+		//	"contexts": [ "fist-combo" ],
+		//	"args": {
+		//		"food": -0.002
+		//	}
+		//},
+		//{
+		//	"script": "/scripts/fr_weaponscripts/hungercost.lua",
+		//	"contexts": [ "bowshot-fire" ],
+		//	"args": {
+		//		"food": -0.02
+		//	}
+		//},
+		//{
+		//	"script": "/scripts/fr_weaponscripts/hungercost.lua",
+		//	"contexts": [
+		//		"meleecombo-fire",
+		//		"whip-fire"
+		//	],
+		//	"args": {
+		//		"food": -0.005
+		//	}
+		//},
+		//{
+		//	"script": "/scripts/fr_weaponscripts/hungercost.lua",
+		//	"blacklist": true,
+		//	"weapons": [ "spear", "dagger" ],
+		//	"contexts": [ "meleeslash-fire" ],
+		//	"args": {
+		//		"food": -0.005
+		//	}
+		//},
+		//{
+		//	"script": "/scripts/fr_weaponscripts/hungercost.lua",
+		//	"weapons": [ "spear", "dagger" ],
+		//	"contexts": [ "meleeslash-fire" ],
+		//	"args": {
+		//		"food": -0.01
+		//	}
+		//},
 		{
 			"script": "/scripts/fr_weaponscripts/randprojectile.lua",
 			"weapons": [ "spear", "dagger" ],
@@ -125,9 +105,9 @@
 			"script" : "/scripts/fr_scripts/floranStuff.lua",
 			"args" : {
 				"daytimeConfig" : {
-					"stats" : [
-						{ "stat" : "energyRegenBlockTime", "baseMultiplier" : 0.65 },
-						{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 1.35 }
+					"stats": [
+						{ "stat": "energyRegenBlockTime", "baseMultiplier": 0.65 },
+						{ "stat": "energyRegenPercentageRate", "baseMultiplier": 1.35 }
 					],
 					"hungerRegen" : 0.008,
 					"hungerThreshold" : 0.40,
@@ -140,12 +120,12 @@
 					"undergroundHunger" : -0.005
 				},
 				"nightConfig" : {
-					"stats" : [
-						{ "stat" : "maxHealth", "effectiveMultiplier" : 0.90 },
-						{ "stat" : "maxEnergy", "effectiveMultiplier" : 0.70 }
+					"stats": [
+						{ "stat": "maxHealth", "effectiveMultiplier": 0.90 },
+						{ "stat": "maxEnergy", "effectiveMultiplier": 0.80 }
 					],
-					"hungerLoss" : -0.0032,
-					"hungerLossLight" : -0.0019,
+					"hungerLoss" : -0.0020,
+					"hungerLossLight" : -0.0009,
 					"lightThreshold" : 0.25
 				}
 			}

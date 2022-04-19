@@ -1,3 +1,5 @@
+require "/scripts/fr_weaponscripts/particlebase.lua"
+
 -- Intended for use with shield bashing
 
 -- Possible args:
@@ -74,10 +76,16 @@ function FRHelper:call(args, main, ...)
         end
         table.insert(newargs.stats, newStat)
     end
-    --newargs = util.mergeTable(util.mergeTable({}, args), newargs)
 
-    animator.burstParticleEmitter(args.particles or "bonusBlock3")
-    animator.playSound(args.sound or "bonusEffect")
+	fuParticleBaseLoadCache(self,{"/particles/cartoonstars/greencartoonstar.particle","/particles/cartoonstars/redcartoonstar.particle","/particles/sparkles/sparkle5.particle","/particles/charge.particle","/particles/healthcross.particle"})
+	fuParticleBaseLoadLists(self)
+
+	if self.fuParticleBaseParticleLists then
+		fuParticleBaseParticleBurst(self.fuParticleBaseParticleLists,{args.particles,"bonusBlock3"})
+	end
+    --newargs = util.mergeTable(util.mergeTable({}, args), newargs)
+    --animator.burstParticleEmitter(args.particles or "bonusBlock3")
+    if animator.hasSound(args.sound or "bonusEffect") then animator.playSound(args.sound or "bonusEffect") end
 
     self:applyStats(newargs, args.name or "FR_perfectBlockBonus", main, ...)
 end

@@ -1,7 +1,6 @@
 require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
 require '/scripts/fupower.lua'
-local deltaTime=0
 
 function init()
 	power.init()
@@ -16,7 +15,7 @@ function getInputContents()
 
         local contents = {}
         for i=0,1 do
-            local stack = world.containerItemAt(entity.id(),i)
+            local stack = world.containerItemAt(id, i)
             if stack ~=nil then
                 if contents[stack.name] ~= nil then
                   contents[stack.name] = contents[stack.name] + stack.count

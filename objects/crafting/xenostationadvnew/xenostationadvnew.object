@@ -1,93 +1,107 @@
 {
-  "objectName" : "xenostationadvnew",
-  "rarity" : "Legendary",
-  "objectType" : "container",
-  "tooltipKind" : "container",
-  "printable" : false,
-  "description" : "A top of the line Quantum Xeno Lab for efficiently extracting genes from seeds.",
-  "shortdescription" : "^cyan;Advanced Xenolab^white;",
-  "race" : "generic",
-  "category" : "^orange;Extraction Device^reset;",
-  "price" : 1250,
+  "objectName": "xenostationadvnew",
+  "rarity": "Legendary",
+  "objectType": "container",
+  "tooltipKind": "container",
+  "printable": false,
+  "description": "A top of the line Quantum Xeno Lab for efficiently extracting genes from seeds.",
+  "shortdescription": "^cyan;Advanced Xenolab^reset;",
+  "race": "generic",
+  "category": "^orange;Extraction Device^reset;",
+  "price": 1250,
 
   "fu_stationTechLevel": 3,
   "fu_mintick": 1,
-  "fu_timerMod" : 0,
-  
-  "lightColor" : [31, 66, 102],
-  "lightPosition" : [0, 2],
+  "fu_timerMod": 0,
 
-  "flickerPeriod" : 0.5,
-  "flickerMinIntensity" : 0.95,
-  "flickerMaxIntensity" : 1.0,
-  "flickerPeriodVariance" : 0.0,
-  "flickerIntensityVariance" : 0.0,
+  "lightColor": [31, 66, 102],
+  "lightPosition": [0, 2],
 
-  "inventoryIcon" : "xenostationadvicon.png",
-  "orientations" : [
+  "flickerPeriod": 0.5,
+  "flickerMinIntensity": 0.95,
+  "flickerMaxIntensity": 1.0,
+  "flickerPeriodVariance": 0.0,
+  "flickerIntensityVariance": 0.0,
+
+  "inventoryIcon": "xenostationadvicon.png",
+  "orientations": [
     {
-      "imageLayers" : [ { "image" : "xenostationadvnewlit.png:<color>.<frame>", "fullbright" : true },{ "image" : "xenostationadvnew.png:<color>.<frame>" } ],
+      "imageLayers": [{
+        "image": "xenostationadvnewlit.png:<color>.<frame>",
+        "fullbright": true
+      }, {
+        "image": "xenostationadvnew.png:<color>.<frame>"
+      }],
 
-      "imagePosition" : [0, 0],
-      "frames" : 4,
-      "animationCycle" : 0.75,
-      
-      "direction" : "left",
-      "flipImages" : true,
+      "imagePosition": [0, 0],
+      "frames": 4,
+      "animationCycle": 0.75,
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+      "direction": "left",
+      "flipImages": true,
+
+      "spaceScan": 0.1,
+      "anchors": [ "bottom"]
     },
     {
-      "imageLayers" : [ { "image" : "xenostationadvnewlit.png:<color>.<frame>", "fullbright" : true },{ "image" : "xenostationadvnew.png:<color>.<frame>" } ],
+      "imageLayers": [{
+        "image": "xenostationadvnewlit.png:<color>.<frame>",
+        "fullbright": true
+      }, {
+        "image": "xenostationadvnew.png:<color>.<frame>"
+      }],
 
-      "imagePosition" : [0, 0],
-      "frames" : 4,
-      "animationCycle" : 0.75,
-      
-      "direction" : "right",
+      "imagePosition": [0, 0],
+      "frames": 4,
+      "animationCycle": 0.75,
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+      "direction": "right",
+
+      "spaceScan": 0.1,
+      "anchors": [ "bottom"]
     }
   ],
-  
-  "animation" : "xenostationadvnew.animation",
-  "animationParts" : {
-    "samplingarrayanim" : "xenostationadvnewlit.png"
+
+  "animation": "xenostationadvnew.animation",
+  "animationParts": {
+    "samplingarrayanim": "xenostationadvnewlit.png"
   },
-  
-  "uiConfig" : "/interface/xenolab/xenolab.config",
-  "statusEffects" : [ ],
 
-  "scripts" : [ "/objects/generic/xenostation_common.lua",
-                "/scripts/npcToyObject.lua" ],
-  "scriptDelta" : 12,
-  "recipeGroup" : "xenostation",
-  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
-  "slotCount" : 12,
-  "frameCooldown" : 67,
-  "autoCloseCooldown" : 3600,
-  
-  "inputNodes" : [ [1, 1] ],
-  "outputNodes" : [ [2, 1] ],
+  "uiConfig": "/interface/xenolab/xenolab.config",
+  "statusEffects": [],
 
-  "npcToy" : {
-    "influence" : [
+  "scripts": [ "/objects/generic/xenostation_common.lua", "/scripts/npcToyObject.lua" ],
+  "scriptDelta": 12,
+  "recipeGroup": "xenostation",
+  "openSounds": [ "/sfx/objects/locker_open.ogg"],
+  "slotCount": 12,
+  "frameCooldown": 67,
+  "autoCloseCooldown": 3600,
+
+  "inputNodes": [
+    [1, 1]
+  ],
+  "outputNodes": [
+    [2, 1]
+  ],
+  "inputSlot": 3,
+
+  "npcToy": {
+    "influence": [
       "sink",
       "sinkComplete"
     ],
-    "defaultReactions" : {
-      "sink" : [
+    "defaultReactions": {
+      "sink": [
         [1.0, "typing"]
       ],
-      "sinkComplete" : [
+      "sinkComplete": [
         [1.0, "smile"]
       ]
     },
-    "preciseStandPositionLeft" : [-1.0, 0.0],
-    "preciseStandPositionRight" : [1.0, 0.0],
-    "maxNpcs" : 2
+    "preciseStandPositionLeft": [-1.0, 0.0],
+    "preciseStandPositionRight": [1.0, 0.0],
+    "maxNpcs": 2
   }
 
 }

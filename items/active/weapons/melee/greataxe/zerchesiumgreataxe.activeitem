@@ -1,7 +1,7 @@
 {
   "itemName" : "zerchesiumgreataxe",
   "price" : 900,
-  "level" : 4,
+  "level" : 3,
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "A freezing and dangerous edge.",
@@ -12,7 +12,7 @@
   "itemTags" : ["weapon","melee","greataxe", "upgradeableWeapon","zerchesium"],
 
   "inventoryIcon" : "zerchesiumgreataxe.png",
-  "collectablesOnPickup" : { "fu_weapongreataxe" : "zerchesiumgreataxe" },
+  //"collectablesOnPickup" : { "fu_weapongreataxe" : "zerchesiumgreataxe" },
   "animation" : "/items/active/weapons/melee/greataxe/greataxe.animation",
   "animationParts" : {
     "handle" : "",
@@ -22,10 +22,10 @@
     "sounds" : {
       "fire" : [ "/sfx/melee/swing_broadsword.ogg" ]
     },
-    "animatedParts" : { 
-      "parts" : { 
+    "animatedParts" : {
+      "parts" : {
         "blade" : { "properties" : {"offset" : [0, 0.5]}},
-        "swoosh" : { "properties" : {"offset" : [0, 2]}}    	
+        "swoosh" : { "properties" : {"offset" : [0, 2]}}
       }
     }
   },
@@ -45,6 +45,6 @@
   "critChance" : 3,
   "critBonus" : 5,
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  
+
   "stunChance" : 8
 }

@@ -4,18 +4,18 @@
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "^orange;Set Bonuses^reset;: 
-^yellow;^reset; ^cyan;Immune^reset;: Deadly Heat/Cold/Rads, Acid",
+  "rarity" : "rare",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; ^cyan;Immune^reset;: Extreme Heat/Cold/Rads, Acid",
   "shortdescription" : "Morphite Greaves MK2",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "explorer" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "level" : 6,
-  "collectablesOnPickup" : { "fu_armorpowerranged" : "fuquantumlegsadv" },
+  "level" : 5,
+  //"collectablesOnPickup" : { "fu_armorpowerranged" : "fuquantumlegsadv" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -78,6 +78,10 @@
     {
       "stat" : "fu_morphiteset2_legs",
       "amount" : 1
+    },
+    {
+      "stat" : "fu_morphiteset_legs",
+      "amount" : 1
     }
   ],
 
@@ -107,5 +111,5 @@
 
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

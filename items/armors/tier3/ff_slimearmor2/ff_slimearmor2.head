@@ -15,9 +15,9 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-  "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon", "balanced", "melee", "explorer" ],
   "level" : 3,
-  "collectablesOnPickup" : { "fu_armorprotection" : "ff_slimehead2" },
+  //"collectablesOnPickup" : { "fu_armorprotection" : "ff_slimehead2" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -53,6 +53,11 @@
       "levelFunction" : "fuArmorSetTierMultiplier",
       "stat" : "fu_slimeset2_head",
       "amount" : 1
+    },
+    {
+      "levelFunction" : "fuArmorSetTierMultiplier",
+      "stat" : "fu_slimeset_head",
+      "amount" : 1
     }
   ],
 
@@ -75,5 +80,5 @@
 
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

@@ -24,6 +24,7 @@ end
 
 function update(dt)
 	if not self.didInit then init() end
+	if not self.didInit then return end
 	if self.frEnabled and (self.species == "fragmentedruin") then
 		--sb.logInfo("weakpoison")
 		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=((self.healingRate*( 1 + status.stat("healingBonus") )) - self.penaltyRate)}})
@@ -33,9 +34,10 @@ function update(dt)
 			self.tickTimer = self.tickTimer - dt
 			if self.tickTimer <= 0 then
 				self.tickTimer = self.tickTime
+				local damageCalc=math.ceil((status.statPositive("specialStatusImmunity") and world.threatLevel()*self.tickDamagePercentage*100) or (status.resourceMax("health") * self.tickDamagePercentage))
 				status.applySelfDamageRequest({
 					damageType = "IgnoresDef",
-					damage = math.ceil(status.resourceMax("health") * self.tickDamagePercentage),
+					damage = damageCalc,
 					damageSourceKind = "poison",
 					sourceEntityId = entity.id()
 				})

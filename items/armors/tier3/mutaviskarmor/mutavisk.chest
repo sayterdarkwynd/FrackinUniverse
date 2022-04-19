@@ -3,7 +3,7 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Rare",
+  "rarity" : "uncommon",
   "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; Fall Damage x^green;0.75^reset;
 ^yellow;^reset; ^cyan;Immune^reset;: All Rads",
@@ -22,9 +22,9 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-    "itemTags" : [ "upgradeableWeapon" ],
+    "itemTags" : [ "upgradeableWeapon", "defensive", "melee", "explorer" ],
   "level" : 3,
-  "collectablesOnPickup" : { "fu_armorexplorer" : "mutaviskchest" },
+  //"collectablesOnPickup" : { "fu_armorexplorer" : "mutaviskchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -46,7 +46,7 @@
       "stat" : "maxHealth",
       "amount" : 6
     },
-	{
+  {
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "radioactiveResistance",
       "amount" : 0.05
@@ -54,9 +54,9 @@
   ],
 
   "statusEffects" : [
-    "fusetbonusmanager",
+    "mutavisksetbonus",
     {
-      "stat" : "mutavisksetcount",
+      "stat" : "fu_mutaviskset_chest",
       "amount" : 1
     }
   ],
@@ -76,5 +76,5 @@
 
 ],
   //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

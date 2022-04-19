@@ -56,7 +56,7 @@ function update(dt)
 	  effect.expire()
 	  return
 	end
-mcontroller.controlParameters(self.liquidMovementParameter)
+	mcontroller.controlParameters(self.liquidMovementParameter)
 
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then

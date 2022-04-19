@@ -56,14 +56,14 @@ local function fu_itemBroadcast_sendItems(node, itemDescriptor)
 	storage.fu_storage_knownPeers = {}
 
 	-- get info on chests in range of connected receivers
-	for i, j in ipairs( object.getOutputNodeIds(node) or {} ) do
+	for i in ipairs( object.getOutputNodeIds(node) or {} ) do
 		world.callScriptedEntity(i, "returnBeaconHandshake")
 	end
 
 	-- try to store items in them
 
 	-- sb.logInfo ('sending %s to objects %s', itemDescriptor, storage.fu_storage_knownPeers)
-	for i, chest in ipairs(storage.fu_storage_knownPeers) do
+	for _, chest in ipairs(storage.fu_storage_knownPeers) do
 		itemDescriptor = world.containerAddItems(chest, itemDescriptor)
 		-- sb.logInfo("result: %s", itemDescriptor)
 		if not itemDescriptor or itemDescriptor.count == 0 then break end
@@ -76,7 +76,7 @@ end
 -- Required for receiving responses from Item Broadcaster's item receivers
 function acknowledgeBeaconPeers(ids)
 	-- record storage objects except for self
-	for i, j in ipairs(ids) do
+	for _, j in ipairs(ids) do
 		if j[1] ~= entity.id() then table.insert(storage.fu_storage_knownPeers, j[1]) end
 	end
 end
@@ -90,7 +90,7 @@ function fu_sendItems(node, itemDescriptor)
 	local unfail = { name = itemDescriptor.name, count = 0, data = itemDescriptor.data }
 
 	local connectedIds = object.getOutputNodeIds(0)
-	for i,j in ipairs(connectedIds) do
+	for i in ipairs(connectedIds) do
 		-- Wired Industry interop
 		if world.getObjectParameter(i, "acceptsItems") then
 			-- sb.logInfo ('sending %s to object %s', itemDescriptor, i)

@@ -1,4 +1,5 @@
 require "/scripts/util.lua"
+require "/interface/scripted/mmutility/mmutility.lua"
 
 function init()
     self.baseStats = {
@@ -68,13 +69,10 @@ function performUpgrade(widgetName, widgetData)
             if upgrade.setItem then
                 player.giveEssentialItem(upgrade.essentialSlot, upgrade.setItem)
             end
+            local item = player.essentialItem(upgrade.essentialSlot)
+            local beamgunStats = root.itemConfig(item).config
 
             if upgrade.setItemParameters then
-                local item = player.essentialItem(upgrade.essentialSlot)
-
-                --[[ FU Special additions here --]]
-                local beamgunStats = root.itemConfig(item).config
-
                 for stat,value in pairs(upgrade.setItemParameters) do
                     -- Subtract out the vanilla MM value to get the amount to add
                     -- This fixes issues with mods like Enhanced Matter Manipulator
@@ -84,14 +82,16 @@ function performUpgrade(widgetName, widgetData)
                         item.parameters[stat] = value
                     end
                 end
-                --[[ End FU Special additions here --]]
-
                 player.giveEssentialItem(upgrade.essentialSlot, item)
             end
 
             if upgrade.setStatusProperties then
-                for k, v in pairs(upgrade.setStatusProperties) do
-                    status.setStatusProperty(k, v)
+                for stat, value in pairs(upgrade.setStatusProperties) do
+                    if stat == "bonusBeamGunRadius" then
+                      status.setStatusProperty(stat, value+(beamgunStats.rangeBonus or 0))
+                    else
+                      status.setStatusProperty(stat, value)
+                    end
                 end
             end
 
@@ -120,6 +120,9 @@ function giveRacialManipulator()
                 mm.parameters.upgrades = mm.parameters.upgrades or {}
                 mm.parameters.canCollectLiquid = true
                 mm.parameters.upgrades[#mm.parameters.upgrades + 1] = "liquidcollection"
+            end
+            if manip.rangeBonus then
+                status.setStatusProperty("bonusBeamGunRadius", getMMRange(mm))
             end
 
             local newcfg = root.itemConfig(manip.item).config
@@ -181,23 +184,22 @@ function updateGui()
 end
 
 function updateCurrentUpgrades()
-  self.currentUpgrades = {}
+    self.currentUpgrades = {}
 
-  local mm = player.essentialItem("beamaxe") or {}
-  local currentUpgrades = mm.parameters.upgrades or {}
-	  for i, v in ipairs(currentUpgrades) do
-	    self.currentUpgrades[v] = true
-	  end
+    local mm = player.essentialItem("beamaxe") or {}
+    local currentUpgrades = mm.parameters.upgrades or {}
+    for _, v in ipairs(currentUpgrades) do
+        self.currentUpgrades[v] = true
+    end
 end
 
 function hasPrereqs(prereqs)
-	  for i, v in ipairs(prereqs) do
-	    if not self.currentUpgrades[v] then
-	      return false
-	    end
-	  end
-
-	  return true
+    for _, v in ipairs(prereqs) do
+        if not self.currentUpgrades[v] then
+          return false
+        end
+    end
+    return true
 end
 
 function selectedUpgradeAvailable()

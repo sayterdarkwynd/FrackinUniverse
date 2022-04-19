@@ -1,7 +1,7 @@
 {
   "itemName" : "coraldullblade",
   "price" : 1500,
-  "level" : 4,
+  "level" : 3,
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "Made from the depths. And hate. Lots and lots of hate.
@@ -12,19 +12,19 @@
   "twoHanded" : false,
   "itemTags" : ["weapon","melee", "longsword", "upgradeableWeapon","coral"],
   "inventoryIcon" : "coraldullblade.png",
-  "collectablesOnPickup" : { "fu_weaponlongsword" : "coraldullblade" },
+  //"collectablesOnPickup" : { "fu_weaponlongsword" : "coraldullblade" },
   "animation" : "combolongsword.animation",
   "animationParts" : {
     "handle" : "",
     "blade" : "coraldullblade.png"
   },
-  "animationCustom" : { 
+  "animationCustom" : {
 	  "sounds" : {
 	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
-	  }  
+	  }
   },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
@@ -41,7 +41,7 @@
     }
   },
 
-  "critChance" : 1, 
-  "critBonus" : 9, 
+  "critChance" : 1,
+  "critBonus" : 9,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

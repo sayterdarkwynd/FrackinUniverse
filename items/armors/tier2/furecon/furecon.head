@@ -1,80 +1,80 @@
 {
-  "itemName" : "fureconhead",
-  "price" : 225,
-  "inventoryIcon" : "icons.png:head",
-  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
-  "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "^orange;^orange;Set Bonuses^reset;: ^reset;
+	"itemName" : "fureconhead",
+	"price" : 225,
+	"inventoryIcon" : "icons.png:head",
+	"dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+	"maxStack" : 1,
+	"rarity" : "Common",
+	"description" : "^orange;^orange;Set Bonuses^reset;: ^reset;
 ^yellow;^reset; +^green;5^reset;% Speed
 ^yellow;^reset; Assault/Sniper Rifle: Damage x^green;1.15^reset;
 ^yellow;^reset; ^cyan;Immune^reset;: Rad Burn^reset;",
 
-  "shortdescription" : "Recon Headgear",
-  "category" : "headarmour",
-  "tooltipKind" : "armornew2",
+	"shortdescription" : "Recon Headgear",
+	"category" : "headarmour",
+	"tooltipKind" : "armornew2",
  // "learnBlueprintsOnPickup" : [
- //   "fureconhead2",
- //   "fureconchest2",
- //   "fureconpants2"
-//  ],
-  "maleFrames" : "head.png",
-  "femaleFrames" : "head.png",
-  "mask" : "mask.png",
+ //	 "fureconhead2",
+ //	 "fureconchest2",
+ //	 "fureconpants2"
+//	],
+	"maleFrames" : "head.png",
+	"femaleFrames" : "head.png",
+	"mask" : "mask.png",
 
-  "itemTags" : [ "upgradeableWeapon" ],
-  "level" : 2,
-  "collectablesOnPickup" : { "fu_armorranged" : "fureconhead" },
-  "leveledStatusEffects" : [
-    {
-      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.15
-    },
-    {
-      "levelFunction" : "standardArmorLevelProtectionMultiplier",
-      "stat" : "protection",
-      "amount" : 0.25
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
-      "stat" : "maxEnergy",
-      "amount" : 5
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
-      "stat" : "maxHealth",
-      "amount" : 2
-    },
-	{
-      "levelFunction" : "fuArmorResistMultiplier",
-      "stat" : "radioactiveResistance",
-      "amount" : 0.026667
-    }
-  ],
+	"itemTags" : [ "upgradeableWeapon", "balanced", "ranged" ],
+	"level" : 2,
+	//"collectablesOnPickup" : { "fu_armorranged" : "fureconhead" },
+	"leveledStatusEffects" : [
+		{
+			"levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+			"stat" : "powerMultiplier",
+			"baseMultiplier" : 1.15
+		},
+		{
+			"levelFunction" : "standardArmorLevelProtectionMultiplier",
+			"stat" : "protection",
+			"amount" : 0.25
+		},
+		{
+			"levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+			"stat" : "maxEnergy",
+			"amount" : 5
+		},
+		{
+			"levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+			"stat" : "maxHealth",
+			"amount" : 2
+		},
+		{
+			"levelFunction" : "fuArmorResistMultiplier",
+			"stat" : "radioactiveResistance",
+			"amount" : 0.026667
+		}
+	],
 
-  "statusEffects" : [
-    "fusetbonusmanager",
-    {
-      "stat" : "reconsetcount",
-      "amount" : 1
-    }
-  ],
+	"statusEffects" : [
+		"reconsetbonus",
+		{
+			"stat" : "fu_reconset_head",
+			"amount" : 1
+		}
+	],
 
-  "colorOptions" : [
+	"colorOptions" : [
 
-    /* GREEN */
-    { "ffca8a" : "b2e89d", "e0975c" : "51bd3b", "a85636" : "247824", "6f2919" : "144216", "cccccc" : "99b26c" , "9e9e9e" : "7d8e5f", "818181" : "616c4e", "383838" : "373b2a" },
-    /* BLUE */
-    { "ffca8a" : "96cbe7", "e0975c" : "5588d4", "a85636" : "344495", "6f2919" : "1a1c51" },
-    /* PURPLE */
-    { "ffca8a" : "d29ce7", "e0975c" : "a451c4", "a85636" : "6a2284", "6f2919" : "320c40" },
-    /* PINK */
-    { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
-    /* BROWN */
-    { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
+		/* GREEN */
+		{ "ffca8a" : "b2e89d", "e0975c" : "51bd3b", "a85636" : "247824", "6f2919" : "144216", "cccccc" : "99b26c" , "9e9e9e" : "7d8e5f", "818181" : "616c4e", "383838" : "373b2a" },
+		/* BLUE */
+		{ "ffca8a" : "96cbe7", "e0975c" : "5588d4", "a85636" : "344495", "6f2919" : "1a1c51" },
+		/* PURPLE */
+		{ "ffca8a" : "d29ce7", "e0975c" : "a451c4", "a85636" : "6a2284", "6f2919" : "320c40" },
+		/* PINK */
+		{ "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
+		/* BROWN */
+		{ "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-],
-  //"upgrades" : 1 ,
-  "builder" : "/items/buildscripts/fubuildarmor.lua" 
+	],
+	//"upgrades" : 1 ,
+	"builder" : "/items/buildscripts/fubuildarmor.lua"
 }
