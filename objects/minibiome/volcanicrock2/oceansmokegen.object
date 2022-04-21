@@ -1,0 +1,72 @@
+{
+  "objectName" : "oceansmokegen",
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "breakable",
+
+  "description" : "Smoke Primer.",
+  "shortdescription" : "Smoke",
+  "race" : "generic",
+
+  "apexDescription" : "Smoke Primer.",
+  "avianDescription" : "Smoke Primer.",
+  "floranDescription" : "Smoke Primer.",
+  "glitchDescription" : "Smoke Primer.",
+  "humanDescription" : "Smoke Primer.",
+  "hylotlDescription" : "Smoke Primer.",
+  "novakidDescription" : "Smoke Primer.",
+
+  "inventoryIcon" : "oceansmokegen.png",
+  "orientations" : [
+    {
+      "image" : "oceansmokegen.png:<color>",
+      "imagePosition" : [-4, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "oceansmokegen.png:<color>",
+      "imagePosition" : [-4, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "particleEmitter" : {
+    "emissionRate" : 1.5,
+    "emissionVariance" : 0.05,
+    "pixelOrigin" : [0, 0],
+
+    "particle" : {
+      "type" : "textured",
+      "image" : "/animations/volcanopoof/volcanopoof.png",
+      "size" : 1.0,
+      "color" : [175, 175, 175, 255],
+      "destructionAction" : "fade",
+      "destructionTime" : 3,
+      "initialVelocity" : [0, 2],
+      "timeToLive" : 15,
+      "layer" : "front",
+      "position" : [2, 3],
+      "collidesForeground" : false
+    },
+    "particleVariance" : {
+      "initialVelocity" : [0.0, 3.0],
+      "position" : [1, 1],
+      "rotation" : 90,
+      "size" : 0.5
+    }
+  },
+
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/rock_break1.ogg", "/sfx/objects/rock_break2.ogg", "/sfx/objects/rock_break3.ogg", "/sfx/objects/rock_break4.ogg", "/sfx/objects/rock_break5.ogg" ],
+  "smashParticles" : [ { "count" : 5, "particle" : "shadowrockshard" } ],
+  "smashDropOptions" : [
+    [ [ "magmawall4", 1, { } ], [ "magmawall4", 1, { } ] ]
+  ],
+  "biomePlaced" : true
+}

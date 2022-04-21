@@ -1,0 +1,75 @@
+{
+  "objectName" : "sulphuricceilingspike1",
+  "colonyTags" : [],
+  "rarity" : "Common",
+  "category" : "trap",
+  "printable" : false,
+
+  "description" : "Watch out!",
+  "shortdescription" : "Sharp Spikes",
+  "race" : "generic",
+
+  "apexDescription" : "Sharp stone spikes.",
+  "avianDescription" : "The stone looks razor sharp.",
+  "floranDescription" : "Sharp and pointy.",
+  "glitchDescription" : "Cautious. Sharp rock could penetrate Glitch shell.",
+  "humanDescription" : "I'd better not touch these.",
+  "hylotlDescription" : "I will gracefully avoid these.",
+  "novakidDescription" : "These sure look sharp, I'm ready to hightail it outta here!",
+
+  "particleEmitter" : {
+    "emissionRate" : 0.5,
+    "emissionVariance" : 0.25,
+    "pixelOrigin" : [0, 0],
+    "placeInSpaces" : true,
+
+    "particle" : {
+      "type" : "textured",
+      "image" : "/particles/hazard/hazardstat.png",
+      "size" : 0.5,
+      "color" : [231, 223, 189, 175],
+      "fade" : 0,
+      "destructionAction" : "fade",
+      "destructionTime" : 0.5,
+      "initialVelocity" : [0, -1],
+      "finalVelocity" : [0, -2],
+      "approach" : [4, 1],
+      "timeToLive" : 0.5,
+      "layer" : "middle",
+      "collidesForeground" : false
+    },
+    "particleVariance" : {
+      "position" : [0.5, 0.5],
+      "initialVelocity" : [2, 0],
+      "finalVelocity" : [1, 0]
+    }
+  },
+
+  "inventoryIcon" : "sulphuricceilingspike1.png",
+  "orientations" : [
+    {
+      "image" : "sulphuricceilingspike1.png:<color>",
+      "imagePosition" : [0, -8],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "touchDamage" : {
+    "poly" : [ [0.5, -0.5], [1.0, 1.0], [0.0, 1.0] ],
+    "damage" : 15,
+    "knockback" : 20,
+
+    "damageType" : "Environment",
+    "damageSourceKind" : "spear"
+  },
+
+  "smashable" : true,
+  "smashSounds" : [ "/sfx/objects/rock_break1.ogg", "/sfx/objects/rock_break2.ogg", "/sfx/objects/rock_break3.ogg", "/sfx/objects/rock_break4.ogg", "/sfx/objects/rock_break5.ogg", "/sfx/objects/rock_crumble1.ogg", "/sfx/objects/rock_crumble2.ogg", "/sfx/objects/rock_crumble3.ogg", "/sfx/objects/rock_crumble4.ogg", "/sfx/objects/rock_crumble5.ogg" ],
+  "smashParticles" : [ { "count" : 5, "particle" : "sandstoneshard" } ],
+
+  "biomePlaced" : true
+}

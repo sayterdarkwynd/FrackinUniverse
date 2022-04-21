@@ -21,6 +21,29 @@
       "anchors" : [ "bottom" ]
     }
   ],
+  "particleEmitter" : {
+    "emissionRate" : 0.25,
+    "emissionVariance" : 0.05,
+    "pixelOrigin" : [0, 0],
+
+    "particle" : {
+      "type" : "textured",
+      "image" : "/animations/alpinefog/alpinefog.png",
+      "size" : 1.0,
+      "color" : [175, 175, 175, 255],
+      "destructionAction" : "fade",
+      "destructionTime" : 3,
+      "initialVelocity" : [0, 0],
+      "timeToLive" : 15,
+      "layer" : "front",
+      "position" : [2, 3],
+      "collidesForeground" : false
+    },
+    "particleVariance" : {
+      "initialVelocity" : [3.0, 0.0],
+      "position" : [1, 1]
+    }
+  },
 
   "stages" : [
     {

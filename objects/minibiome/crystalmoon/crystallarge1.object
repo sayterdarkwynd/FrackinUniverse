@@ -8,6 +8,16 @@
   "description" : "A crystalline bush. Shiny.",
   "shortdescription" : "Crystalline Bush",
   "race" : "apex",
+  
+  "fullbright" : true,
+  "lightColor" : [83, 114, 137],
+
+  "apexDescription" : "A beautiful crystal bush.",
+  "avianDescription" : "A bush of shiny crystals.",
+  "floranDescription" : "Ssshiny bush.",
+  "glitchDescription" : "Shrewd. This bush could be worth a lot on certain black markets.",
+  "humanDescription" : "Ooh, pretty.",
+  "hylotlDescription" : "This crystal bush reminds me of coral.",
 
   "inventoryIcon" : "crystallarge1.png",
   "orientations" : [
@@ -18,15 +28,27 @@
       "animationCycle" : 0.5,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "lightPosition" : [3, 2]
+    },
+    {
+      "image" : "crystallarge1.png",
+      "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+	  
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "left",
+      "lightPosition" : [3, 2]
     }
   ],
-  "smashSounds" : [ "/sfx/objects/capsule_break1.ogg", "/sfx/objects/capsule_break2.ogg", "/sfx/objects/capsule_break3.ogg" ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/prism_break_large1.ogg", "/sfx/objects/prism_break_large2.ogg" ],
+  "smashParticles" : [ { "count" : 6, "particle" : "crystalshard" } ],
   "smashDropOptions" : [
-    [ [ "crystal", 1, { } ], [ "crystal", 1, { } ], [ "crystal", 1, { } ] ]
-  ],
-  "breakDropOptions" : [
     [ [ "crystal", 1, { } ], [ "crystal", 1, { } ], [ "crystal", 1, { } ] ]
   ],
   "biomePlaced" : true

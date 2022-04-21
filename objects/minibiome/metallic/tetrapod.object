@@ -12,14 +12,24 @@
   "orientations" : [
     {
       "imageLayers" : [ { "image" : "tetrapod.png:<color>", "fullbright" : true }, { "image" : "tetrapodfullbright.png:<color>" } ],
-
+      "flipImages" : true,
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+      "anchors" : [ "bottom" ],
+      "direction" : "left"
+    },
+    {
+      "imageLayers" : [ { "image" : "tetrapod.png:<color>", "fullbright" : true }, { "image" : "tetrapodfullbright.png:<color>" } ],
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
 
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
     }
   ],
   "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],

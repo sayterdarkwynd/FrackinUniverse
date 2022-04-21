@@ -8,12 +8,10 @@
   "description" : "Heartroot",
   "shortdescription" : "Heartroot",
 
-
-
   "inventoryIcon" : "heartroot.png",
   "orientations" : [
     {
-      "image" : "heartroot.png:<color>",
+      "dualImage" : "heartroot.png:<color>",
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
@@ -23,12 +21,10 @@
 
     }
   ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/meat_break1.ogg", "/sfx/objects/meat_break2.ogg", "/sfx/objects/meat_break3.ogg" ],
+  "smashParticles" : [ { "count" : 4, "particle" : "bloodplantshard" }, { "count" : 3, "particle" : "fleshshard" } ],
   "smashDropOptions" : [
-    [ [ "fuscienceresource", 1, { } ] ]
-  ],
-
-  "breakDropOptions" : [
     [ [ "fuscienceresource", 1, { } ] ]
   ],
   "biomePlaced" : true

@@ -7,11 +7,10 @@
   "description" : "What the hell is this?",
   "shortdescription" : "Lisperbush",
 
-
   "inventoryIcon" : "tonguebush1.png",
   "orientations" : [
     {
-      "image" : "tonguebush1.png:<color>",
+      "dualImage" : "tonguebush1.png:<color>",
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
@@ -21,12 +20,10 @@
 
     }
   ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/meat_break1.ogg", "/sfx/objects/meat_break2.ogg", "/sfx/objects/meat_break3.ogg" ],
+  "smashParticles" : [ { "count" : 4, "particle" : "tarshard" } ],
   "smashDropOptions" : [
-    [ [ "fu_nodule", 1, { } ] ]
-  ],
-
-  "breakDropOptions" : [
     [ [ "fu_nodule", 1, { } ] ]
   ],
   "biomePlaced" : true
