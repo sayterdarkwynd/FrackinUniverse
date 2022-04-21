@@ -18,32 +18,32 @@ function init()
 
 	local secondaryAttack = getAltAbility()
 	if secondaryAttack then
-        self.weapon:addAbility(secondaryAttack)
+		self.weapon:addAbility(secondaryAttack)
 	end
 
 	self.weapon:init()
 end
 
 function update(dt, fireMode, shiftHeld)
-    -- ***************************************************
-    --FR stuff
-    -- ***************************************************
-    setupHelper(self, "weapon-update")
+	-- ***************************************************
+	--FR stuff
+	-- ***************************************************
+	setupHelper(self, "weapon-update")
 
 	if self.helper then
-    	self.helper:runScripts("weapon-update", self, dt, fireMode, shiftHeld)
+		self.helper:runScripts("weapon-update", self, dt, fireMode, shiftHeld)
 	end
-    -- ***************************************************
-    -- END FR STUFF
-    -- ***************************************************
+	-- ***************************************************
+	-- END FR STUFF
+	-- ***************************************************
 
 	self.weapon:update(dt, fireMode, shiftHeld)
 end
 
 function uninit()
-    if self.helper then
-        self.helper:clearPersistent()
-    end
+	if self.helper then
+		self.helper:clearPersistent()
+	end
 	self.weapon:uninit()
 end
 
@@ -55,8 +55,8 @@ function cancelEffects()
 	status.clearPersistentEffects("shortspearbonus")
 	status.clearPersistentEffects("daggerbonus")
 	status.clearPersistentEffects("scythebonus")
-    status.clearPersistentEffects("axebonus")
-    status.clearPersistentEffects("hammerbonus")
+	status.clearPersistentEffects("axebonus")
+	status.clearPersistentEffects("hammerbonus")
 	status.clearPersistentEffects("multiplierbonus")
 	status.clearPersistentEffects("dodgebonus")
 	self.rapierTimerBonus = 0

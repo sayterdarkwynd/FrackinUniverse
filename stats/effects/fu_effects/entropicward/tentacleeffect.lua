@@ -25,9 +25,9 @@ function update(dt)
 end
 
 function uninit()
-	if not world.entityType(entity.id()) == "player" then
+	--[[if world.entityType(entity.id()) ~= "player" then
 		status.removeEphemeralEffect("blacktarslow")
 		status.removeEphemeralEffect("insanity")
 		status.removeEphemeralEffect("l6doomed")
-	end
+	end]]
 end

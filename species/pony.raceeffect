@@ -1,150 +1,50 @@
 {
 	"stats": [
-		{
-			"stat": "maxHealth",
-			"effectiveMultiplier": 1.1
-		},
-		{
-			"stat": "maxEnergy",
-			"effectiveMultiplier": 0.75
-		},
-		{
-			"stat": "powerMultiplier",
-			"effectiveMultiplier": 0.92
-		},
-		{
-			"stat": "protection",
-			"effectiveMultiplier": 1.1
-		},
-		{
-			"stat": "physicalResistance",
-			"amount": 0.15
-		},
-		{
-			"stat": "shadowResistance",
-			"amount": -0.33
-		},
-		{
-			"stat": "radioactiveResistance",
-			"amount": -0.4
-		},
-		{
-			"stat": "iceResistance",
-			"amount": 0.2
-		},
-		{
-			"stat": "poisonResistance",
-			"amount": 0.15
-		},
-		{
-			"stat": "energyRegenPercentageRate",
-			"baseMultiplier": 0.9
+		{ "stat": "maxHealth", "effectiveMultiplier": 1.1 },
+		{ "stat": "maxEnergy", "effectiveMultiplier": 0.9 },
+		{ "stat": "powerMultiplier", "effectiveMultiplier": 0.92 },
+		{ "stat": "protection", "effectiveMultiplier": 1.1 },
 
-		}
+		{ "stat": "physicalResistance", "amount": 0.2 },
+		{ "stat": "fireResistance", "amount": -0.1 },
+		{ "stat": "radioactiveResistance", "amount": -0.1 },
+		{ "stat": "cosmicResistance", "amount": -0.2 },
+		{ "stat": "electricResistance", "amount": 0.1 },
+		{ "stat": "poisonResistance", "amount": 0.15 },
+
+		{ "stat" : "fujungleslowImmunity", "amount" : 1 },
+		{ "stat" : "jungleslowImmunity", "amount" : 1 },
+		{ "stat" : "fumudslowImmunity", "amount" : 1 },
+		{ "stat" : "fuclayslowImmunity", "amount" : 1 },
+
+		{ "stat": "broadswordMastery", "amount": 0.2 },
+		{ "stat": "whipMastery", "amount": 0.1 },
+		{ "stat": "fistMastery", "amount": 0.15 }
 	],
 	"diet" : "herbivore",
-	"controlModifiers": {
-		"speedModifier": 1.07,
-		"airJumpModifier": 1.07
-	},
-	"envEffects": [{
-		"biomes": [
-			"garden", "arboreal", "jungle", "forest", "savannah"
+	"controlModifiers": { "speedModifier": 1.07, "airJumpModifier": 1.07 },
+	"envEffects": [ {
+		"biomes": [ "garden", "arboreal", "arboreal2", "arborealdark", "jungle", "thickjungle", "forest", "savannah", "bog" ],
+		"stats": [
+			{ "stat": "physicalResistance", "amount": 0.1 },
+			{ "stat": "maxHealth", "effectiveMultiplier": 1.1 }
 		],
-		"stats": [{
-				"stat": "physicalResistance",
-				"amount": 0.1
-			},
-			{
-				"stat": "maxEnergy",
-				"effectiveMultiplier": 1.1
-			}
-		],
-		"controlModifiers":
-			{
-					"speedModifier": 1.07,
-					"airJumpModifier": 1.07
-			}
+		"controlModifiers": { "speedModifier": 1.07, "airJumpModifier": 1.07 }
 	},
 	{
-		"biomes": [
-			"alien", "atropus", "atropusdark", "tentacle", "bloodstonesea", "bloodstoneseafloor", "strangesea", "strangeseafloor"
-		],
+		"biomes": [ "desert", "moon_desert", "desertwastes", "desertwastesdark", "sulphuric", "sulphuricdark", "scorchedcity" ],
 		"stats": [
-			{
-				"stat": "protection",
-				"effectiveMultiplier": 0.66
-			}
-		],
-		"controlModifiers": {
-			"speedModifier": 0.9,
-			"airJumpModifier": 0.9
-			}
+			{ "stat": "protection", "effectiveMultiplier": 0.9 },
+			{ "stat": "maxEnergy", "effectiveMultiplier": 0.95 }
+		]
+	},
+	{
+		"biomes": [ "crystalmoon", "aethersea", "magma", "magmadark", "volcanic", "volcanicdark", "infernus", "infernusdark" ],
+		"stats": [
+			{ "stat": "powerMultiplier", "effectiveMultiplier": 0.8 },
+			{ "stat": "maxEnergy", "effectiveMultiplier": 0.9 }
+			]
 	}
 ],
-	"weaponEffects": [
-		{
-			"weapons": [
-				"wand"
-			],
-			"stats": [{
-				"stat": "powerMultiplier",
-				"effectiveMultiplier": 0.01
-				},
-				{
-					"stat": "critChance",
-					"amount": -2
-				}
-			]
-		},
-		{
-			"weapons": [
-				"staff"
-			],
-			"stats": [{
-					"stat": "critChance",
-					"amount": -3
-				},
-				{
-					"stat": "powerMultiplier",
-					"effectiveMultiplier": 0.01
-				}
-			]
-		},
-		{
-			"weapons": [
-				"broadsword"
-			],
-			"stats": [
-				{
-					"stat": "critDamage",
-					"amount": 0.5
-				}
-			],
-			"controlModifiers": {"speedMultiplier": 0.8}
-		},
-		{
-			"weapons": [ "whip" ],
-			"stats": [
-				{
-					"stat": "critChance",
-					"amount": 5
-				}
-			],
-			"controlModifiers": {"speedMultiplier": 1.05}
-		},
-		{
-			"weapons": [ "fist" ],
-			"stats": [{
-					"stat": "powerMultiplier",
-					"effectiveMultiplier": 1.15
-				}
-			],
-			"controlModifiers": {"speedMultiplier": 1.05}
-		},
-		{
-			"combo": [ "fist, whip" ],
-			"stats": [{ "stat" : "critDamage", "amount" : 0.1 }]
-		}
-	]
+	"weaponEffects": []
 }

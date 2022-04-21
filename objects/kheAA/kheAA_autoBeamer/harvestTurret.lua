@@ -259,7 +259,7 @@ function setTET()
 
 	if isTheDate then
 		for _,a in pairs({"player","npc"}) do
-			if contains(self.targetEntityTypes,a) then
+			if not contains(self.targetEntityTypes,a) then
 				table.insert(self.targetEntityTypes,a)
 			end
 		end

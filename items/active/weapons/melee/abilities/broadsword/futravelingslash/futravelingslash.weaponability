@@ -1,92 +1,92 @@
 {
-  "animationParts" : { },
-  "animationCustom" : {
-    "sounds" : {
-      "fireTravelSlash" : [ "/sfx/melee/travelingslash_fire1.ogg" ],
-      "hellfireTravelSlash" : [ "/sfx/melee/travelingslash_fire1.ogg" ],
-      "iceTravelSlash" : [ "/sfx/melee/travelingslash_ice2.ogg" ],
-      "hoarfrostTravelSlash" : [ "/sfx/melee/travelingslash_ice2.ogg" ],
-      "electricTravelSlash" : [ "/sfx/melee/travelingslash_electric4.ogg" ],
-      "poisonTravelSlash" : [ "/sfx/melee/travelingslash_poison2.ogg" ],
-      "bioweaponTravelSlash" : [ "/sfx/melee/travelingslash_poison2.ogg" ],
-      "shadowTravelSlash" : [ "/sfx/melee/travelingslash_poison2.ogg" ],
-      "cosmicTravelSlash" : [ "/sfx/melee/travelingslash_electric3.ogg" ],
-      "aetherTravelSlash" : [ "/sfx/melee/travelingslash_electric3.ogg" ],
-      "radioactiveTravelSlash" : [ "/sfx/melee/travelingslash_poison3.ogg" ],
-      "silverweaponTravelSlash" : [ "/sfx/melee/travelingslash_fire1.ogg" ]
-    }
-  },
+	"animationParts": {},
+	"animationCustom": {
+		"sounds": {
+			"fireTravelSlash": ["/sfx/melee/travelingslash_fire1.ogg"],
+			"hellfireTravelSlash": ["/sfx/melee/travelingslash_fire1.ogg"],
+			"iceTravelSlash": ["/sfx/melee/travelingslash_ice2.ogg"],
+			"hoarfrostTravelSlash": ["/sfx/melee/travelingslash_ice2.ogg"],
+			"electricTravelSlash": ["/sfx/melee/travelingslash_electric4.ogg"],
+			"poisonTravelSlash": ["/sfx/melee/travelingslash_poison2.ogg"],
+			"bioweaponTravelSlash": ["/sfx/melee/travelingslash_poison2.ogg"],
+			"shadowTravelSlash": ["/sfx/melee/travelingslash_poison2.ogg"],
+			"cosmicTravelSlash": ["/sfx/melee/travelingslash_electric3.ogg"],
+			"aetherTravelSlash": ["/sfx/melee/travelingslash_electric3.ogg"],
+			"radioactiveTravelSlash": ["/sfx/melee/travelingslash_poison3.ogg"],
+			"silverweaponTravelSlash": ["/sfx/melee/travelingslash_fire1.ogg"]
+		}
+	},
 
-  "ability" : {
-    "name" : "Wave Slash",
-    "type" : "futravelingslash",
-    "scripts" : ["/items/active/weapons/melee/abilities/broadsword/futravelingslash/futravelingslash.lua"],
-    "class" : "TravelingSlash",
+	"ability": {
+		"name": "Wave Slash",
+		"type": "futravelingslash",
+		"scripts": ["/items/active/weapons/melee/abilities/broadsword/futravelingslash/futravelingslash.lua"],
+		"class": "TravelingSlash",
 
-    "projectileOffset" : [0,0],
-    "elementalConfig" : { //todo check damageKind
-      "physical" : {},
-      "fire" : {
-        "projectileType" : "waveblast"
-      },
-      "ice" : {
-        "projectileType" : "iceblast1"
-      },
-      "poison" : {
-        "projectileType" : "poisonblast"
-      },
-      "electric" : {
-        "projectileType" : "electricblast"
-      },
-      "shadow" : {
-        "projectileType" : "fudarkbeamshot"
-      },
-      "cosmic" : {
-	"projectileType":"energyburstaetherium"
-      },
-      "radioactive" : {
-        "projectileType" : "miniwobbleshot2"
-      },
-      "aether" : {
-	"projectileType":"energyburstaetherium"
-      },
-      "silverweapon" : {
-        "projectileType" : "waveblast"
-      },
-      "bioweapon" : {
-        "projectileType" : "poisonblast"
-      },
-      "hoarfrost" : {
-        "projectileType" : "iceblast1"
-      },
-      "hellfire" : {
-        "projectileType" : "waveblast"
-      }
-    },
+		"projectileOffset": [0, 0],
+		"elementalConfig": { //todo check damageKind
+			"physical": {},
+			"fire": {
+				"projectileType": "waveblast"
+			},
+			"ice": {
+				"projectileType": "iceblast1"
+			},
+			"poison": {
+				"projectileType": "poisonblast"
+			},
+			"electric": {
+				"projectileType": "electricblast"
+			},
+			"shadow": {
+				"projectileType": "fudarkbeamshot"
+			},
+			"cosmic": {
+				"projectileType": "energyburstaetherium"
+			},
+			"radioactive": {
+				"projectileType": "miniwobbleshot2"
+			},
+			"aether": {
+				"projectileType": "energyburstaetherium"
+			},
+			"silverweapon": {
+				"projectileType": "waveblast"
+			},
+			"bioweapon": {
+				"projectileType": "poisonblast"
+			},
+			"hoarfrost": {
+				"projectileType": "iceblast1"
+			},
+			"hellfire": {
+				"projectileType": "waveblast"
+			}
+		},
 
-    "baseDamage" : 7,
-    "energyUsage" : 120,
-    "cooldownTime" : 1.5,
+		"baseDamage": 7,
+		"energyUsage": 120,
+		"cooldownTime": 1.5,
 
-    "stances" : {
-      "windup" : {
-        "duration" : 0.25,
-        "armRotation" : 70,
-        "weaponRotation" : 0,
-        "twoHanded" : true,
+		"stances": {
+			"windup": {
+				"duration": 0.25,
+				"armRotation": 70,
+				"weaponRotation": 0,
+				"twoHanded": true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "fire" : {
-        "duration" : 0.4,
-        "armRotation" : -45,
-        "weaponRotation" : -55,
-        "twoHanded" : true,
+				"allowRotate": false,
+				"allowFlip": false
+			},
+			"fire": {
+				"duration": 0.4,
+				"armRotation": -45,
+				"weaponRotation": -55,
+				"twoHanded": true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      }
-    }
-  }
+				"allowRotate": false,
+				"allowFlip": false
+			}
+		}
+	}
 }

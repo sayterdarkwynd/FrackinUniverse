@@ -30,9 +30,9 @@ function update(dt)
 
 		if self.mode == 'velocity' then
 
-  			world.spawnProjectile(self.projectile, mcontroller.position(), entity.id(), mcontroller.velocity(), self.track, {power = self.power})
+			world.spawnProjectile(self.projectile, mcontroller.position(), entity.id(), mcontroller.velocity(), self.track, {power = self.power})
 
-  		elseif self.mode == 'absolute' then
+		elseif self.mode == 'absolute' then
 
 			world.spawnProjectile(self.projectile, mcontroller.position(), entity.id(), self.vector, self.track, {power = self.power})
 

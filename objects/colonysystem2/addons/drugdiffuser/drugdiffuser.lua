@@ -10,8 +10,9 @@ require "/scripts/fupower.lua"
 -- interacts with Item Transference Device (transferUtil) code.
 local scanTimer	-- Making it local is faster than leaving it global.
 local tenantNumber
+local tenantNumberModifier
 local happinessAmount
-local hasPower
+local producing
 local parentCore --save the colony core as a local so you don't have to look for it every time
 
 function init()
@@ -25,7 +26,8 @@ function init()
     self.maxWeight = {}
     self.outputMap = {}
 	tenantNumber = 0
-	hasPower = 0
+	tenantNumberModifier=1
+	producing = 0
     initMap(world.type())
 	wellRange=config.getParameter("wellRange",256)
 	wellInit()
@@ -71,56 +73,50 @@ function update(dt)
 	self.hasPower=power.consume(self.powerConsumption*dt)
 
 	if storage.timer>=productionTime then
-
-		local worldtype = world.type()
-		if worldtype == 'unknown' then
-			worldtype = world.getProperty("ship.celestial_type") or worldtype
-		end
-		if not self.outputMap[worldtype] then
-			initMap(worldtype)
-		end
-
-		local output = nil
-		local rarityroll = math.random(1, self.maxWeight[worldtype])
-
-		-- Goes through the list adding values to the range as it goes.
-		-- This keeps the chance ratios while allowing the list to be in any order.
-		local total = 0
-		for weight,myTable in pairs(self.outputMap[worldtype]) do
-			total = total + weight
-			if rarityroll <= total then
-				output = util.randomFromList(myTable)
-				break
+		if (wellsDrawing==1) and self.hasPower and (tenantNumber>0) then
+			local worldtype = world.type()
+			if worldtype == 'unknown' then
+				worldtype = world.getProperty("ship.celestial_type") or worldtype
 			end
-		end
-
-		if output and clearSlotCheck(output) and self.hasPower then
-			if object.outputNodeCount() > 0 then
-				object.setOutputNodeLevel(0,true)
+			if not self.outputMap[worldtype] then
+				initMap(worldtype)
 			end
-			--animator.setAnimationState("samplingarrayanim", "working")
-			local count=tenantNumber
-			if count>0 then
-				count=math.sqrt(count)
-				if math.floor(count)~=count then
-					count=math.floor(count+(((math.random()>count-math.floor(count)) and 1) or 0))
+
+			local count=tenantNumberModifier
+			if math.floor(count)~=count then
+				count=math.floor(count+(((math.random()>count-math.floor(count)) and 1) or 0))
+			end
+
+			for _=1,count do
+				local output = nil
+				local rarityroll = math.random(1, self.maxWeight[worldtype])
+
+				-- Goes through the list adding values to the range as it goes.
+				-- This keeps the chance ratios while allowing the list to be in any order.
+				local total = 0
+				for weight,myTable in pairs(self.outputMap[worldtype]) do
+					total = total + weight
+					if rarityroll <= total then
+						output = util.randomFromList(myTable)
+						break
+					end
 				end
-				world.containerAddItems(entity.id(), {name=output,count=count, data={}})
-			end
 
-			hasPower = 1
-		else
-			if object.outputNodeCount() > 0 then
-				object.setOutputNodeLevel(0,false)
+				if output and clearSlotCheck(output) then
+					producing = 1
+					world.containerAddItems(entity.id(), {name=output,count=1, data={}})
+				end
 			end
-			--animator.setAnimationState("samplingarrayanim", "idle")
-			hasPower = 0
+		else
+			producing=0
+		end
+		if object.outputNodeCount() > 0 then
+			--animator.setAnimationState("samplingarrayanim", (producing==1) and "working" or "idle")
+			object.setOutputNodeLevel(0,producing==1)
 		end
 		storage.timer=0
 	else
-		if wellsDrawing == 1 then
-			storage.timer=storage.timer+(dt)
-		end
+		storage.timer=storage.timer+dt
 	end
 end
 
@@ -129,13 +125,54 @@ function clearSlotCheck(checkname)
 end
 
 function setDesc()
+	--tooltipString=tooltipString..
 	if not self.overrideScanTooltip then return end
+	local tooltipString="^white;Range:^gray; "..wellRange.."\n^white;Tenants: ^"
+	local wellCount=((wellsDrawing or 0)-1)
 
-	object.setConfigParameter('description',"^red;Range:^gray; "..wellRange.."\n^red;Similar Objects:^gray; "..((wellsDrawing or 0)-1).."\n^red;Tenants:^gray; "..tenantNumber.."\n^red;Happiness Factor: ^gray; "..happinessAmount*hasPower.."^reset;")
+	--colony stuff calc
+	if tenantNumber>0 then
+		tooltipString=tooltipString.."green"
+	else
+		tooltipString=tooltipString.."red"
+	end
+	tooltipString=tooltipString..";"..tenantNumber.." ^white;(Yield Multiplier: ^"
+
+	local tenantModRounded=util.round(tenantNumberModifier,2)
+	if tenantNumberModifier>1 then
+		tooltipString=tooltipString.."green"
+	else
+		tooltipString=tooltipString.."white"
+	end
+	tooltipString=tooltipString..";"..tenantModRounded.."^white;)\nSimilar Objects:^"
+
+	if wellCount>0 then
+		tooltipString=tooltipString.."red"
+	else
+		tooltipString=tooltipString.."green"
+	end
+	tooltipString=tooltipString.."; "..wellCount.."\n^white;Happiness Factor:^"
+
+	local happy=amountHappiness()
+	if happy<0 then
+		tooltipString=tooltipString.."red"
+	else
+		tooltipString=tooltipString.."white"
+	end
+	tooltipString=tooltipString.."; "..happy.."\n^white;Powered:^"
+
+	if self.hasPower then
+		tooltipString=tooltipString.."green"
+	else
+		tooltipString=tooltipString.."red"
+	end
+	tooltipString=tooltipString.."; "..(self.hasPower and "true" or "false").."^reset;"
+
+	object.setConfigParameter('description',tooltipString)
 end
 
 function wellInit()
-	transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
+	--transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
 	getTenantNumber()
 	if not wellRange then wellRange=config.getParameter("wellRange",256) end
 	wellsDrawing=1+#(world.entityQuery(entity.position(),wellRange,{includedTypes={"object"},withoutEntityId = entity.id(),callScript="fu_isAddonDrugDiffuser"}) or {})
@@ -146,27 +183,31 @@ function fu_isAddonDrugDiffuser() return true end
 function getTenantNumber()
 	tenantNumber = 0
 	if parentCore and world.entityExists(parentCore) then
-		tenantNumber = world.callScriptedEntity(parentCore,"getTenantsNum")
+		tenantNumber = world.callScriptedEntity(parentCore,"getTenantsNum") or 0
 	else
-		transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
+		--transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
 
 		local objectIds = world.objectQuery(storage.position, wellRange, { order = "nearest" })
 
 		for _, objectId in pairs(objectIds) do
-				if world.callScriptedEntity(objectId,"fu_isColonyCore") then
-					tenantNumber = world.callScriptedEntity(objectId,"getTenantsNum")
-					parentCore = objectId
-				end
+			if world.callScriptedEntity(objectId,"fu_isColonyCore") then
+				tenantNumber = world.callScriptedEntity(objectId,"getTenantsNum") or 0
+				parentCore = objectId
+			end
 		end
 	end
-
+	if tenantNumber>0 then
+		tenantNumberModifier=tenantNumber/(tenantNumber^(1/3))
+	else
+		tenantNumberModifier=0
+	end
 end
 
 function providesHappiness() return true end
 
 function amountHappiness()
 	if wellsDrawing == 1 then
-		return happinessAmount*hasPower
+		return happinessAmount*producing
 	else
 		return 0
 	end

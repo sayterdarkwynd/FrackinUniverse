@@ -29,7 +29,12 @@ function findGroundPosition(position, minHeight, maxHeight, avoidLiquid, collisi
 
 	-- Align the vertical position of the bottom of our feet with the top
 	-- of the row of tiles below:
-	position = {position[1], math.ceil(position[2]) - (bounds[2] % 1)}
+	if not bounds then
+		position = {position[1], math.ceil(position[2])}
+		sb.logWarn("pathutil:findGroundPosition: bounds is nil for %s",(monster and monster.type()) or (npc and npc.npcType()) or entity.id())
+	else
+		position = {position[1], math.ceil(position[2]) - (bounds[2] % 1)}
+	end
 
 	local groundPosition
 	for y = 0, math.max(math.abs(minHeight), math.abs(maxHeight)) do
@@ -75,11 +80,16 @@ end
 --Find a valid ground position
 function findCeilingPosition(position, minHeight, maxHeight, avoidLiquid, collisionSet, bounds)
 	bounds = bounds or mcontroller.boundBox()
-	rect.rotate(bounds,math.pi)
 
 	-- Align the vertical position of the bottom of our feet with the top
 	-- of the row of tiles below:
-	position = {position[1], math.ceil(position[2]) - (bounds[4] % 1)}
+	if not bounds then
+		position = {position[1], math.ceil(position[2])}
+		sb.logWarn("pathutil:findCeilingPosition: bounds is nil for %s",(monster and monster.type()) or (npc and npc.npcType()) or entity.id())
+	else
+		rect.rotate(bounds,math.pi)
+		position = {position[1], math.ceil(position[2]) - (bounds[4] % 1)}
+	end
 
 	local ceilingPosition
 	for y = 0, math.max(math.abs(minHeight), math.abs(maxHeight)) do
