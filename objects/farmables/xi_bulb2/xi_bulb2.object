@@ -1,0 +1,54 @@
+{
+  "objectName" : "xi_bulb2",
+  "colonyTags" : [ "nature" ],
+  "rarity" : "rare",
+  "category" : "seed",
+  "description" : "Provides light, and can be used to form many X'ian tools. Radioactive. Doesn't work on your ship.",
+  "shortdescription" : "X'ian Mutant Bulb",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 1,
+  "lightColor" : [150, 150, 72],
+  "inventoryIcon" : "xi_bulbicon.png",
+  "largeImage" : "xi_bulb.png:default.3.0",
+  "learnBlueprintsOnPickup" : ["xi_bulb3"],
+
+  "orientations" : [
+    {
+      "dualImage" : "xi_bulb.png:<color>.<stage>.<alt>",
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [-1, 0], [0, 0], [1, 0], [2, 0], [-1, 1], [0, 1], [1, 1], [2, 1], [-1, 2], [0, 2], [1, 2], [2, 2], [-1, 3], [0, 3], [1, 3], [2, 3], [-1, 4], [0, 4], [1, 4], [2, 4], [-1, 5], [0, 5], [1, 5], [2, 5], [-1, 6], [0, 6], [1, 6], [2, 6] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [200, 400]
+    },
+    {
+      "duration" : [200, 400]
+    },
+    {
+      "alts" : 3,
+      "harvestPool" : "xiHarvest"
+    }
+  ],
+
+  "touchDamage" : {
+    "poly" : [ [-1.5, 0.0], [-1.5, 3.0], [3.0, 3.0], [3.0, 0.0] ],
+    "damage" : 0,
+
+    "damageType" : "IgnoresDef",
+    "damageSourceKind" : "radioactive",
+    "statusEffects" : [ "radioactiveplant2","radioactiveplantfoodhandler" ]
+  },
+
+  "consumeSoilMoisture" : false,
+  "maxImmersion" : 1.0
+}

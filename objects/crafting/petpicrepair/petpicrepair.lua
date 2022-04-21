@@ -4,13 +4,11 @@ end
 
 function scanButton()
 	local items=world.containerItems(entity.id())
-	if not items then return end
-	for index,invItem in pairs(items)do
-		invItem=loadMonster(invItem)
-		if not invItem then return end
-		world.containerTakeAt(entity.id(),index-1)
-		world.containerPutItemsAt(entity.id(),invItem,index-1)
-	end
+	if (not items) or (items[2]) or (not items[1]) then return end
+	invItem=loadMonster(items[1])
+	if not invItem then return end
+	world.containerTakeAt(entity.id(),0)
+	world.containerPutItemsAt(entity.id(),invItem,1)
 end
 
 function loadMonster(invItem)

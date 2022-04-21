@@ -65,7 +65,7 @@ function worldInfo()
 end
 
 function setDesc()
-	local baseMessage="^blue;Input^reset;1^blue;:^reset; Logic\n^blue;Input^reset;2^blue;:^reset; Power"
+	local baseMessage="^blue;Input^reset;1^blue;:^reset; On/Off Switch\n^blue;Input^reset;2^blue;:^reset; Power"
 	local color="^yellow;"
 	local info
 	if world.type() == 'playerstation' or world.type() == 'unknown' then

@@ -3,20 +3,40 @@ require "/scripts/kheAA/transferUtil.lua"
 local bonusHappiness
 -- This is a modified well script. wellsDrawing is being used to represent how many tenants are active under this colony core.
 local rentTimer
-local rentGoal
+local rentTime
+local offlineTicks=0
+
+-- This object keep work even if it's unloaded. The trick is simple
+-- It simply remembers the time it was unloaded. When is loaded it will try to compensate all missed ticks.
+-- It will compensate maximum 24 hours of work.
 
 function init()
 	transferUtil.loadSelfContainer()
 	wellRange=config.getParameter("wellRange",128)
-	rentGoal=config.getParameter("productionTime",150)
+	rentTime=config.getParameter("productionTime",150)
+	wellSlots=config.getParameter('wellslots')
+	maxOfflineSeconds=config.getParameter("maxOfflineSeconds",3600)--max amount of real time offline in seconds. setting to max 1 day
 	bonusHappiness = 10
 	rentTimer = 0
 	wellInit()
 	setDesc()
+	--sb.logInfo("init")
+
+	--figuring out how many ticks we missed
+	local leftTime = config.getParameter("leftTime")
+
+	--sb.logInfo( tostring(leftTime) )
+	if leftTime then
+		local diff=os.time() - leftTime
+		if diff>0 then
+			diff=math.floor(math.min(diff,maxOfflineSeconds)/rentTime)
+			offlineTicks=math.max(-1, diff - 1)
+            rentTimer=rentTime+1
+		end
+	end
 end
 
 function update(dt)
-
 	if not scanTimer or (scanTimer > 1) then
 		scanTimer=0
 		transferUtil.loadSelfContainer()
@@ -24,55 +44,18 @@ function update(dt)
 		setDesc()
 	else
 		scanTimer=scanTimer+dt
-
 	end
-	rentTimer = rentTimer + 1
-
---	  for i=2,#config.getParameter('wellslots') do
---	    if world.containerItemAt(entity.id(),i-1) and world.containerItemAt(entity.id(),i-1).name ~= config.getParameter('wellslots')[i].name then
---	      world.containerConsumeAt(entity.id(),i-1,world.containerItemAt(entity.id(),i-1).count)
---	      world.spawnItem(world.containerItemAt(entity.id(),i-1),entity.position())
---	    end
---	  end
-
-
---	  if item.name ~= config.getParameter('wellslots')[1].name then
---	    world.spawnItem(item,entity.position())
---	    world.containerConsumeAt(entity.id(),0,item.count)
---	    item.count = 0
---	  elseif item.count > config.getParameter('wellslots')[1].max then
---	    local dropitem = item
---	    dropitem.count = dropitem.count - config.getParameter('wellslots')[1].max
---	    world.spawnItem(dropitem,entity.position())
---	    world.containerConsumeAt(entity.id(),0,dropitem.count)
---	    item.count = config.getParameter('wellslots')[1].max
---	  end
-	if (rentTimer > rentGoal) then
---		local item = world.containerItemAt(entity.id(),0) or {name=config.getParameter('wellslots')[1].name,count=0}
---		local amount = math.min(math.floor(storage.waterCount/config.getParameter('wellslots')[1].ratio),config.getParameter('wellslots')[1].max - item.count)
-		world.containerPutItemsAt(entity.id(),{name=config.getParameter('wellslots')[1].name,count=(10 * (wellsDrawing) * (bonusHappiness/10))},0)
-	 -- storage.waterCount = math.min((storage.waterCount or 0) + dt,100)
-	--	storage.waterCount = storage.waterCount - amount * config.getParameter('wellslots')[1].ratio
+	rentTimer = rentTimer + dt
+	if (rentTimer > rentTime) then
+		world.containerPutItemsAt(entity.id(),{name=wellSlots[1].name,count=(10 * (wellsDrawing) * (bonusHappiness/10))*(1+offlineTicks)},0)
+		offlineTicks=0
 		rentTimer = 0
 	end
-
---	  if amount > 0 and #config.getParameter('wellslots') > 1 then
---	    for i=(storage.count or 0)+1,(storage.count or 0)+amount do
---	      for j=2,#config.getParameter('wellslots') do
---		amountmod = math.min(math.floor(math.max(config.getParameter('wellslots')[j].count/config.getParameter('wellslots')[j].amount,1)),config.getParameter('wellslots')[j].amount)
---		if config.getParameter('wellslots')[j].chance > 0 and math.fmod(i,config.getParameter('wellslots')[j].count/amountmod) == 0 and math.random() <= config.getParameter('wellslots')[j].chance then
---		  world.containerPutItemsAt(entity.id(),{name=config.getParameter('wellslots')[j].name,count=config.getParameter('wellslots')[j].amount/amountmod},j-1)
---		end
---	      end
---	    end
---	    storage.count = (storage.count or 0) + amount
---	  end
-
 end
 
 function wellInit()
 	transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
-	wellsDrawing= #(world.entityQuery(entity.position(),wellRange,{includedTypes={"object"},withoutEntityId = entity.id(),callScript="isOccupiedMk2", callScriptResult = true}) or {})
+	wellsDrawing=#(world.entityQuery(entity.position(),wellRange,{includedTypes={"object"},withoutEntityId = entity.id(),callScript="isOccupiedMk2", callScriptResult = true}) or {})
 	tallyHappiness()
 end
 
@@ -82,14 +65,20 @@ function tallyHappiness()
 	local objectIds = world.objectQuery(storage.position, wellRange, { order = "nearest" })
 
 	for _, objectId in pairs(objectIds) do
-			if (world.callScriptedEntity(objectId,"fu_isColonyCore") and objectId ~= entity.id()) then
-				object.smash()
-			end
-			if world.callScriptedEntity(objectId,"providesHappiness") then
-				bonusHappiness = (bonusHappiness + (world.callScriptedEntity(objectId,"amountHappiness") or 0))
-			end
+		if (world.callScriptedEntity(objectId,"fu_isColonyCore") and objectId ~= entity.id()) then
+			object.smash()
+		end
+		if world.callScriptedEntity(objectId,"providesHappiness") then
+			bonusHappiness = (bonusHappiness + (world.callScriptedEntity(objectId,"amountHappiness") or 0))
+		end
 	end
 
+end
+
+function uninit()
+	object.setConfigParameter("leftTime", os.time() )
+	--sb.logInfo( tostring( config.getParameter("leftTime", "LMAO NOPE") ) )
+	--sb.logInfo("uninit")
 end
 
 function fu_isColonyCore() return true end
@@ -98,10 +87,24 @@ function fu_isWell() return false end
 
 function getTenantsNum() return wellsDrawing end
 
-
-
-
-
 function setDesc()
-	object.setConfigParameter('description',"^red;Range:^gray; "..wellRange.."\n^red;Tenants in range:^gray; "..((wellsDrawing or 0)).."\n^red;Total Happiness:^gray; "..(bonusHappiness).."^reset;")
+	local tooltipString="^white;Range:^gray; "..wellRange.."\n^white;Tenants: ^"
+
+	--colony stuff calc
+	if wellsDrawing>0 then
+		tooltipString=tooltipString.."green"
+	else
+		tooltipString=tooltipString.."red"
+	end
+
+	tooltipString=tooltipString.."; "..wellsDrawing.."\n^white;Total Happiness:^"
+
+	if bonusHappiness>0 then
+		tooltipString=tooltipString.."green"
+	else
+		tooltipString=tooltipString.."white"
+	end
+	tooltipString=tooltipString.."; "..bonusHappiness.."^reset;"
+
+	object.setConfigParameter('description',tooltipString)
 end

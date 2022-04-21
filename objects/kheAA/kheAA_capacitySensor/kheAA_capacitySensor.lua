@@ -15,28 +15,27 @@ function update(dt)
 		return;
 	end
 	deltatime=0
-	findContainer()
+	local size=findContainer()
 
 	if self.outPartialFillNode or self.outCompleteFillNode then
-		self.containerSize=world.containerSize(self.containerId)
-		self.containerFill=util.tableSize(world.containerItems(self.containerId) or {})
+		local containerFill=util.tableSize(world.containerItems(self.containerId) or {})
 
 		if self.outPartialFillNode then
-			object.setOutputNodeLevel(self.outPartialFillNode,(self.containerFill or 0) > 0)
+			object.setOutputNodeLevel(self.outPartialFillNode,(containerFill or 0) > 0)
 		end
 		if self.outCompleteFillNode then
-			object.setOutputNodeLevel(self.outCompleteFillNode,(self.containerFill and self.containerSize) and (self.containerFill==self.containerSize))
+			object.setOutputNodeLevel(self.outCompleteFillNode,(containerFill and size) and (containerFill==size))
 		end
 	end
-
 end
 
 function findContainer()
 	local objectIds = world.objectQuery(entity.position(), self.linkRange, { order = "nearest" })
 	for _, objectId in pairs(objectIds) do
-		if world.containerSize(objectId) and not world.getObjectParameter(objectId,"notItemStorage",false) then
+		local sSize=world.containerSize(objectId)
+		if sSize and not world.getObjectParameter(objectId,"notItemStorage",false) then
 			self.containerId=objectId
-			break
+			return sSize
 		end
 	end
 end

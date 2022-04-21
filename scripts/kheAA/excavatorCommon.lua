@@ -233,8 +233,8 @@ function excavatorCommon.grab(grabPos)
 		return
 	end
 
-	if not entity.entityType() == "object" then
-		sb.logInfo("excavatorCommon.grab: Cannot run on non-object (id: %s). Stop trying to do so.",entity.id())
+	if entity.entityType() ~= "object" then
+		--sb.logInfo("excavatorCommon.grab: Cannot run on non-object (id: %s). Stop trying to do so.",entity.id())
 		return
 	end
 	if not excavatorCommon.vars.vacuumRange then

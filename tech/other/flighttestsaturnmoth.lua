@@ -85,6 +85,7 @@ function update(args)
 				})
 			end
 		else
+			--(1/0.0166667)*0.008 = ~0.48 per second
 			if not self.downVal and not self.leftVal and not self.rightVal and not self.upVal then
 				status.overConsumeResource("energy", 0.008)
 				status.setPersistentEffects("glide", {

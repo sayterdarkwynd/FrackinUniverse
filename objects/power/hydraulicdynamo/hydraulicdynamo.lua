@@ -76,12 +76,14 @@ end
 
 function isn_slotDecayCheckWater(slot)
 	local item = world.containerItemAt(entity.id(),slot)
-    if item and item.name == "liquidwater" then
-        return true
-    end
-    if item and item.name == "fusaltwater" then
-    	return true
-    end
+	if item and item.name == "liquidwater" then
+		return true
+	end
+
+	if item and item.name == "fusaltwater" then
+		return true
+	end
+
 	return false
 end
 

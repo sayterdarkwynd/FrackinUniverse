@@ -1,5 +1,5 @@
 require "/scripts/util.lua"
-require "/scripts/kheAA/transferUtil.lua"
+--require "/scripts/kheAA/transferUtil.lua"
 --require "/scripts/fupower.lua"
 
 -- You might notice there's no timer here.
@@ -15,9 +15,10 @@ local parentCore --save the colony core as a local so you don't have to look for
 
 
 function init()
-	transferUtil.loadSelfContainer()
+	--transferUtil.loadSelfContainer()
+	storage.position=entity.position()
 
-    object.setInteractive(true)
+    object.setInteractive(false)
 --  self.powerConsumption = config.getParameter("isn_requiredPower")
     productionTime = (config.getParameter("productionTime",120))/60
 --  power.init()
@@ -54,7 +55,7 @@ function update(dt)
 --	power.update(dt)
 -- Notify ITD but no faster than once per second.
 	if not scanTimer or (scanTimer > 1) then
-		transferUtil.loadSelfContainer()
+		--transferUtil.loadSelfContainer()
 		wellInit()
 		setDesc()
 		scanTimer = 0
@@ -70,13 +71,38 @@ end
 
 function setDesc()
 	if not self.overrideScanTooltip then return end
+	local tooltipString="^white;Range:^gray; "..wellRange.."\n^white;Tenants: ^"
+	local wellCount=((wellsDrawing or 0)-1)
 
-	object.setConfigParameter('description',"^red;Range:^gray; "..wellRange.."\n^red;Similar Objects:^gray; "..((wellsDrawing or 0)-1).."\n^red;Tenants:^gray; "..tenantNumber.."\n^red;Happiness Factor: ^gray; "..happinessAmount.."^reset;")
+	--colony stuff calc
+	if tenantNumber>0 then
+		tooltipString=tooltipString.."green"
+	else
+		tooltipString=tooltipString.."red"
+	end
+	tooltipString=tooltipString..";"..tenantNumber.." ^white;\nSimilar Objects:^"
+
+	if wellCount>0 then
+		tooltipString=tooltipString.."red"
+	else
+		tooltipString=tooltipString.."green"
+	end
+	tooltipString=tooltipString.."; "..wellCount.."\n^white;Happiness Factor:^"
+
+	local happy=amountHappiness()
+	if happy>0 then
+		tooltipString=tooltipString.."green"
+	else
+		tooltipString=tooltipString.."white"
+	end
+	tooltipString=tooltipString.."; "..happy.."^reset;"
+
+	object.setConfigParameter('description',tooltipString)
 end
 
 
 function wellInit()
-	transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
+	--transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
 	getTenantNumber()
 	if not wellRange then wellRange=config.getParameter("wellRange",256) end
 	wellsDrawing=1+#(world.entityQuery(entity.position(),wellRange,{includedTypes={"object"},withoutEntityId = entity.id(),callScript="fu_isAddonHobbyTable"}) or {})
@@ -89,15 +115,15 @@ function getTenantNumber()
 	if parentCore and world.entityExists(parentCore) then
 		tenantNumber = world.callScriptedEntity(parentCore,"getTenantsNum")
 	else
-		transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
+		--transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
 
 		local objectIds = world.objectQuery(storage.position, wellRange/2, { order = "nearest" })
 
 		for _, objectId in pairs(objectIds) do
-				if world.callScriptedEntity(objectId,"fu_isColonyCore") then
-					tenantNumber = world.callScriptedEntity(objectId,"getTenantsNum")
-					parentCore = objectId
-				end
+			if world.callScriptedEntity(objectId,"fu_isColonyCore") then
+				tenantNumber = world.callScriptedEntity(objectId,"getTenantsNum")
+				parentCore = objectId
+			end
 		end
 	end
 
@@ -114,8 +140,6 @@ function amountHappiness()
 	end
 
 end
-
-
 
 function firstToUpper(str)
 	--sb.logInfo("%s",str)

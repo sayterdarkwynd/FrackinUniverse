@@ -56,12 +56,12 @@ function update(dt, fireMode, shiftHeld)
 					end
 				end
 
-				world.spawnStagehand(position, "fugenericmonstersaystagehand", {messageData={monsterId=target,message=message}})
+				world.spawnStagehand(position, "fugenericentitysaystagehand", {messageData={targetId=target,message=message}})
 			end
 		else
 			if firing then
 				self.cooldownTimer = self.cooldownTime
-				animator.playSound("error")
+				playSound("error")
 			end
 		end
 	end

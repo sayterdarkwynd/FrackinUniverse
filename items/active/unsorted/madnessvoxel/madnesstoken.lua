@@ -12,7 +12,7 @@ function init()
 
   --make sure Madness quest is on, this is a safe place to do so
   if not player.hasQuest("madnessquestdata") then
-  	player.startQuest("madnessquestdata")
+    player.startQuest("madnessquestdata")
   end
 end
 

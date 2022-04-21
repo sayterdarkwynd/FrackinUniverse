@@ -20,6 +20,7 @@ function init()
 
 	self.baseVal = config.getParameter("baseValue") or 1
 	self.timerCounter = 0
+	self.timerCounterGenes = 0 --xi specific
 	self.environmentTimer = 0
 
 	self.timer = 10.0 -- was zero, instant event on plopping in. giving players a short grace period. some of us teleport around a LOT.
@@ -490,6 +491,25 @@ function update(dt)
 			if self.madnessResearchBonus < 1 then
 				self.madnessResearchBonus = 0
 			end
+		end
+
+
+		if self.timerCounterGenes >= (1+afkLvl) then
+			if afkLvl <= 3 then
+				self.rewardedGenes = status.stat("isXi")
+				if status.stat("isXi") then
+					if self.timerCounterGenes >= (25 - self.rewardedGenes) then
+						if player.currency("fugeneticmaterial") <= 99 then  -- dont generate more unless below 100 genes to prevent abusing for profit
+							player.addCurrency("fugeneticmaterial", self.rewardedGenes)
+						end
+						self.timerCounterGenes = 0
+					else
+						self.timerCounterGenes = self.timerCounterGenes + dt
+					end
+				end
+			end
+		else
+			self.timerCounterGenes = self.timerCounterGenes + dt
 		end
 
         --time based research increases

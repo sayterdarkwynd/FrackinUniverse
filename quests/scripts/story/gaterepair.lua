@@ -266,6 +266,8 @@ function questComplete()
 		player.playCinematic(config.getParameter("shipUpgradeCinema"))
 	end
 
+	player.startQuest("fu_outpost") -- lets players re-acquire the vanilla Outpost teleport if deleted
+
 	world.sendEntityMessage(player.id(), "setQuestFuelCount", 500)
 	player.setUniverseFlag("outpost_mission1")
 end
