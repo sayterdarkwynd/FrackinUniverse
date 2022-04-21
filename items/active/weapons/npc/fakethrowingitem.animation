@@ -1,0 +1,47 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "weapon" : {
+        "default" : "visible",
+        "states" : {
+          "visible" : {},
+          "hidden" : {}
+        }
+      }
+    },
+
+    "parts" : {
+      "boomerang" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [0.0, 0.0],
+          //"offset" : [0.625, 0.75],
+          "transformationGroups" : [ "weapon" ]
+        },
+
+        "partStates" : {
+          "weapon" : {
+            "visible" : {
+              "properties" : {
+                "image" : "<partImage>"
+              }
+            },
+            "hidden" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {}
+  },
+
+  "sounds" : {
+    "throw" : [ "/sfx/melee/swing_dagger.ogg" ]
+  }
+}

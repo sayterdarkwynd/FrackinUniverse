@@ -3,6 +3,7 @@ function init()
 	self.maxMod=config.getParameter("maxMod",1.0)--value at speedmax
 	self.speedMax=config.getParameter("speedMax")--upper bound of speed. note that this is to be mathematically greater than speedmin.
 	self.speedMin=config.getParameter("speedMin")--lower bound of speed
+	self.allowLiquids=config.getParameter("allowLiquids")--whether or not to allow liquids
 	local yD=self.maxMod-self.minMod
 	local xD=self.speedMax-self.speedMin
 	self.slope=yD/xD--this is the power of algebra...designating a range of inputs and mapping it to a range of outputs.
@@ -10,7 +11,7 @@ function init()
 end
 
 function update(dt)
-	local liquidId=mcontroller.liquidId()--0 if none
+	local liquidId=(self.allowLiquids and 0) or mcontroller.liquidId()--0 if none
 	local falling=mcontroller.falling()
 	local flying=mcontroller.flying()
 	local mult=1.0--starts at 1.0, adds scaled value if in correct falling state.

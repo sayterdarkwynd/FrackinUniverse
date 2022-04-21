@@ -1,10 +1,12 @@
 {
   "itemName" : "slimegrenadelauncher",
-  "price": 1500,
+  "price": 1200,
   "level" : 6,
   "maxStack" : 1,
-  "rarity" : "Legendary",
-  "description" : "A hunting weapon that fires remotely-detonated blobs of slime.",
+  "rarity" : "rare",
+  "description" : "Fires remotely-detonated blobs of slime.
+^green;Counts as Hunting Weapon.^reset;  
+^yellow;Detonate all blobs with right-click.^reset;",
   "shortdescription" : "Slime Grenade Launcher",
   "tooltipKind" : "base",
   "category" : "grenadeLauncher",
@@ -14,10 +16,8 @@
 
   "inventoryIcon" : "slimegrenadelauncher.png",
   "animation" : "slimegrenadelauncher.animation",
-  "animationParts" : {
-    "middle" : "slimegrenadelauncher.png"
-  },
-  "animationCustom" : { },
+  "animationParts" : {"middle" : "slimegrenadelauncher.png"},
+  "animationCustom" : {},
   "scripts" : ["slimegrenadelauncher.lua"],
   "handGrip" : "wrap",
   "fireOffset" : [1.25, 0.125],
@@ -27,11 +27,9 @@
 "flashDirectives" : "",
   "projectileType" : "slimelaunchergrenade",
   "projectileParameters" : {
-    "power" : 4,
-    "timeToLive" : 10,
-	"speed" : 30
-
-
+    "power" : 7.25,
+    "timeToLive" : 5,
+	  "speed" : 40
   },
   "critChance" : 1,
   "critBonus" : 12,

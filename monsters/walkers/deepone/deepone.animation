@@ -8,12 +8,21 @@
           "idle" : {
             "frames" : 4,
             "cycle" : 1,
-            "mode" :"loop"
+            "mode" :"loop",
+            "frameProperties" : {
+              "particleEmittersOff" : [ ["waterdrip"], [], [], [] ],
+              "particleEmittersOn" : [ [], [], ["waterdrip"], [] ]
+            }
           },
           "walk" : {
             "frames" : 8,
             "cycle" : 1,
-            "mode" :"loop"
+            "mode" :"loop",
+            "frameProperties" : {
+              "particleEmittersOff" : [ ["waterdrip"], [], [], [], ["waterdrip"], [], [], ["waterdrip"] ],
+              "particleEmittersOn" : [ [], [], ["waterdrip"], [], [], ["waterdrip"], [], [] ],
+              "immediateSound" : [ "", "", "", "/sfx/npc/wetstep2.ogg", "", "", "/sfx/npc/wetstep1.ogg", "" ]
+            }
           },
           "hurt" : {
             "frames" : 1,
@@ -21,17 +30,49 @@
               "immediateSound" : "/sfx/npc/quadruped/lion_attack1.ogg"
             }
           },
+          "melee" : {
+            "frames" : 7,
+            "cycle" : 1
+          },
+          "bite" : {
+            "frames" : 7,
+            "cycle" : 1
+          },
+          "bitewindup" : {
+            "frames" : 2,
+            "cycle" : 0.3
+          },
+          "bitewinddown" : {
+            "frames" : 2,
+            "cycle" : 0.2
+          },
+          "chomp" : {
+            "frames" : 3,
+            "cycle" : 0.5,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/quadruped/lion_attack2.ogg"
+            }
+          },
           "fire" : {
-            "frames" : 1,
+            "frames" : 9,
             "cycle" : 1
           },
           "firewindup" : {
             "frames" : 4,
-            "cycle" : 0.4
+            "cycle" : 0.8
+          },
+          "spit" : {
+            "frames" : 5,
+            "cycle" : 0.7
           },
           "firewinddown" : {
-            "frames" : 4,
-            "cycle" : 0.4
+            "frames" : 7,
+            "cycle" : 0.8
+          },
+          "jumpwindup" : {
+            "frames" : 1,
+            "cycle" : 0.5,
+            "mode" :"loop"
           },
           "jump" : {
             "frames" : 1,
@@ -43,14 +84,14 @@
             "cycle" : 0.5
           },
           "chargewindup" : {
-            "frames" : 1,
+            "frames" : 2,
             "cycle" : 0.35,
             "properties" : {
               "immediateSound" : "/sfx/npc/quadruped/lion_attack2.ogg"
             },
             "frameProperties" : {
-              "particleEmittersOff" : [ [ "waterdrip" ], [], [], ["waterdrip"], [], [], [], ["waterdrip"] ],
-              "particleEmittersOn" : [ [], [], ["waterdrip"], [], [], ["waterdrip"], [], ["waterdrip"] ]
+              "particleEmittersOff" : [ [ "waterdrip" ], [] ],
+              "particleEmittersOn" : [ [], [] ]
             }
           },
           "chargewinddown" : {
@@ -62,8 +103,8 @@
               "immediateSound" : "/sfx/npc/quadruped/lion_idle2.ogg"
             },
             "frameProperties" : {
-              "particleEmittersOff" : [ ["waterdrip"], [], [], [], ["waterdrip"], [], [], ["waterdrip"] ],
-              "particleEmittersOn" : [ [], [], ["waterdrip"], [], [], ["waterdrip"], [], [] ]
+              "particleEmittersOff" : [ ["waterdrip"] ],
+              "particleEmittersOn" : [ [] ]
             }
           },
           "charge" : {
@@ -73,22 +114,39 @@
               "immediateSound" : "/sfx/npc/monsters/oogler_charge.ogg"
             },
             "frameProperties" : {
-              "particleEmittersOff" : [ ["waterdrip"], [], [], [], ["waterdrip"], [], [], ["waterdrip"] ],
-              "particleEmittersOn" : [ [], [], ["waterdrip"], [], [], [], ["waterdrip"], [] ]
+              "particleEmittersOff" : [ [], ["waterdrip"],  [], ["waterdrip"]],
+              "particleEmittersOn" : [ ["waterdrip"], [],  ["waterdrip"], [] ]
+            }
+          },
+
+          "roarwindup" : {
+            "frames" : 2,
+            "cycle" : 0.3 ,
+            "mode" : "transition",
+            "transition" : "roar",
+            "frameProperties" : {
+              "particleEmittersOff" : [ [],[] ],
+              "particleEmittersOn" : [ ["waterdrip"],[] ]
             }
           },
           "roar" : {
-            "frames" : 5,
-            "cycle" : 3.25,
+            "frames" : 1,
+            "cycle" : 2,
+            "mode" : "transition",
+            "transition" : "roarwinddown",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/monsters/troll5.ogg",
+              "persistentSoundStopTime" : 1.25
+            }
+          },
+          "roarwinddown" : {
+            "frames" : 2,
+            "cycle" : 0.2,
             "mode" : "transition",
             "transition" : "idle",
-            "properties" : {
-              "persistentSound" : "/sfx/npc/monsters/troll/troll5.ogg",
-              "persistentSoundStopTime" : 1.25
-            },
             "frameProperties" : {
-              "particleEmittersOff" : [ [ "waterdrip" ], [], [], [], [], [], [], ["waterdrip"] ],
-              "particleEmittersOn" : [ [], [], ["waterdrip"], [], [], [], [], [] ]
+              "particleEmittersOff" : [ ["waterdrip"],[] ],
+              "particleEmittersOn" : [ [],[] ]
             }
           }
         }
@@ -136,84 +194,136 @@
           "body" : {
             "idle" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame>"
+                "image" : "<partImage>:idle.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
               }
             },
             "walk" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>"
+                "image" : "<partImage>:walk.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+
+            "jumpwindup" : {
+              "properties" : {
+                "image" : "<partImage>:jumpwindup",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
               }
             },
             "jump" : {
               "properties" : {
-                "image" : "<partImage>:jump"
+                "image" : "<partImage>:jump",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
               }
             },
             "fall" : {
               "properties" : {
-                "image" : "<partImage>:fall"
+                "image" : "<partImage>:fall",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
               }
             },
+
             "roarwindup" : {
               "properties" : {
-                "image" : "<partImage>:firewindup.<frame>"
+                "image" : "<partImage>:roarwindup.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
               }
             },
             "roarwinddown" : {
               "properties" : {
-                "image" : "<partImage>:firewinddown.<frame>"
+                "image" : "<partImage>:firewinddown.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
               }
             },
             "roar" : {
               "properties" : {
-                "image" : "<partImage>:fire.<frame>"
-              }
-            },
-            "chargewindup" : {
-              "properties" : {
-                "image" : "<partImage>:firewindup.<frame>"
-              }
-            },
-            "chargewinddown" : {
-              "properties" : {
-                "image" : "<partImage>:firewinddown.<frame>"
+                "image" : "<partImage>:roar",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
               }
             },
             "hurt" : {
               "properties" : {
-                "image" : "<partImage>:hurt"
+                "image" : "<partImage>:hurt",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:chargewindup.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:chargewinddown.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
               }
             },
             "charge" : {
               "properties" : {
-                "image" : "<partImage>:melee.<frame>",
-                "damageArea" : [ [-1.2,0.8], [-1.7,-0.05], [-1.45,-5.15], [-1.05,-5.7], [-0.5,-5.75], [0,-5.1], [0,-0.1], [-0.4,0.8] ]
+                "image" : "<partImage>:charge.<frame>",
+                "damageArea" : [ [-2.3,1.0],[-1.7,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
               }
             },
             "melee" : {
               "properties" : {
                 "image" : "<partImage>:melee.<frame>",
-                "damageArea" : [ [-1.2,0.8], [-1.7,-0.05], [-1.45,-5.15], [-1.05,-5.7], [-0.5,-5.75], [0,-5.1], [0,-0.1], [-0.4,0.8] ]
+                "damageArea" : [ [-2.3,1.0],[-1.7,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
               }
             },
+
+            "bite" : {
+              "properties" : {
+                "image" : "<partImage>:bite.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3]  ]
+              }
+            },
+            "bitewindup" : {
+              "properties" : {
+                "image" : "<partImage>:bitewindup.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "chomp" : {
+              "properties" : {
+                "image" : "<partImage>:chomp.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "bitewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:bitewinddown.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+
             "fire" : {
               "properties" : {
-                "image" : "<partImage>:fire",
-                "damageArea" : [ [-1.2,0.8], [-1.7,-0.05], [-1.45,-5.15], [-1.05,-5.7], [-0.5,-5.75], [0,-5.1], [0,-0.1], [-0.4,0.8] ]
+                "image" : "<partImage>:fire.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
               }
             },
             "firewindup" : {
               "properties" : {
                 "image" : "<partImage>:firewindup.<frame>",
-                "damageArea" : [ [-1.2,0.8], [-1.7,-0.05], [-1.45,-5.15], [-1.05,-5.7], [-0.5,-5.75], [0,-5.1], [0,-0.1], [-0.4,0.8] ]
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "spit" : {
+              "properties" : {
+                "image" : "<partImage>:spit.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
               }
             },
             "firewinddown" : {
               "properties" : {
                 "image" : "<partImage>:firewinddown.<frame>",
-                "damageArea" : [ [-1.2,0.8], [-1.7,-0.05], [-1.45,-5.15], [-1.05,-5.7], [-0.5,-5.75], [0,-5.1], [0,-0.1], [-0.4,0.8] ]
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
               }
             }
+
           },
           "damage" : {
             "stunned" : {
@@ -244,12 +354,12 @@
       "emissionRate" : 15,
       "offsetRegion" : [ 1.0, -1.0, 2.0, -0.0 ],
       "particles" : [
-        { "particle" : "waterdrip" },
-        { "particle" : "waterdrip" },
-        { "particle" : "waterdrip" },
-        { "particle" : "waterdrip" },
-        { "particle" : "waterdrip" },
-        { "particle" : "waterdrip" }
+        { "particle" : "deeponedrip" },
+        { "particle" : "deeponedrip" },
+        { "particle" : "deeponedrip" },
+        { "particle" : "deeponedrip" },
+        { "particle" : "deeponedrip" },
+        { "particle" : "deeponedrip" }
 
       ]
     },
@@ -305,6 +415,8 @@
     "aggroHop" : [ "/sfx/npc/monsters/deeponeturnhostile.ogg" ],
     "deathPuff" : [ "/sfx/npc/monsters/deeponeturnhostile.ogg" ],
     "turnHostile" : [ "/sfx/npc/monsters/deeponeturnhostile.ogg" ],
-    "fire" : [ "/sfx/npc/monsters/deeponeattack1.ogg" , "/sfx/npc/monsters/deeponeattack2.ogg"  ]
+    //"fire" : [ "/sfx/npc/monsters/deeponeattack1.ogg" , "/sfx/npc/monsters/deeponeattack2.ogg"  ]
+    "fire" : [   ],
+    "spit" : [ "/sfx/npc/monsters/deeponeattack1.ogg"]
   }
 }

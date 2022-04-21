@@ -1,0 +1,49 @@
+{
+	"stats" : [
+		{ "stat" : "foodDelta", "baseMultiplier" : 1.06 },
+		{ "stat" : "maxHealth", "baseMultiplier" : 0.85 },
+		{ "stat" : "maxEnergy", "baseMultiplier" : 1.20 },
+		{ "stat" : "fallDamageMultiplier", "baseMultiplier" : 0.50 },
+		{ "stat" : "iceResistance", "amount" : 0.2 },
+		{ "stat" : "radioactiveResistance", "amount" : 0.1 },
+		{ "stat" : "cosmicResistance", "amount" : 0.2 },
+		{ "stat" : "fireResistance", "amount" : -0.2 },
+		{ "stat" : "poisonResistance", "amount" : -0.2 },
+		{ "stat" : "electricResistance", "amount" : -0.2 },
+		{ "stat" : "snowslowImmunity", "amount" : 1 },
+		{ "stat" : "slushslowImmunity", "amount" : 1 },
+		{ "stat" : "iceslipImmunity", "amount" : 1 },
+		{ "stat" : "assaultrifleMastery", "amount" : 0.2 },
+		{ "stat" : "machinepistolMastery", "amount" : 0.2 },
+		{ "stat" : "magnorbMastery", "amount" : 0.2 }
+	],
+	"diet" : "omnivore",
+	"controlModifiers" : {
+		"speedModifier" : 1.06,
+		"airJumpModifier" : 1.20
+	},
+	"envEffects" : [
+		{
+			"biomes" : [ "alien", "snow" ],
+			"stats" : [
+				{ "stat" : "maxHealth", "effectiveMultiplier" : 1.15 },
+				{ "stat" : "protection", "effectiveMultiplier" : 1.15 }
+			]
+		},
+		{
+			"biomes" : [ "volcanic", "desert", "magma", "volcanicdark", "magmadark", "sulphuric","sulphuricdark" ],
+			"stats" : [
+				{ "stat" : "maxHealth", "effectiveMultiplier" : 0.85 },
+				{ "stat" : "protection", "effectiveMultiplier" : 0.85 }
+			]
+		}
+	],
+	"weaponEffects" : [
+		{
+			"weapons" : [ "magnorb", "thrown" ],
+			"stats" : [
+				{ "stat" : "protection", "effectiveMultiplier" : 1.2 }
+			]
+		}
+	]
+}

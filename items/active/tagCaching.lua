@@ -32,9 +32,9 @@ function tagCaching.update()
 		tagCaching.primaryTagCache=tagCaching.tagsToKeys(tagCaching.fetchTags(pass and result))
 		if pass and result then
 			local dummy=nil
-			if (result.parameters.twoHanded~=nil) then
+			if (result.parameters and result.parameters.twoHanded~=nil) then
 				dummy=result.parameters.twoHanded
-			elseif (result.config.twoHanded~=nil) then
+			elseif (result.config and result.config.twoHanded~=nil) then
 				dummy=result.config.twoHanded
 			end
 			if dummy ~= nil then
@@ -52,9 +52,9 @@ function tagCaching.update()
 		tagCaching.altTagCache=tagCaching.tagsToKeys(tagCaching.fetchTags(pass and result))
 		if pass and result then
 			local dummy=nil
-			if (result.parameters.twoHanded~=nil) then
+			if (result.parameters and result.parameters.twoHanded~=nil) then
 				dummy=result.parameters.twoHanded
-			elseif (result.config.twoHanded~=nil) then
+			elseif (result.config and result.config.twoHanded~=nil) then
 				dummy=result.config.twoHanded
 			end
 			if dummy ~= nil then

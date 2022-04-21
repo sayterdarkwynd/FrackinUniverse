@@ -1,0 +1,27 @@
+{
+  "itemName" : "coffeecakevegan",
+  "rarity" : "Uncommon",
+  "price" : 350,
+  "category" : "preparedFood",
+  "inventoryIcon" : "coffeecake.png",
+  "description" : "A moist vegan cake enriched with coffee. Like the original, but for ^green;herbivores.^reset;\n^green;Type: Herb Sugar^reset;",
+  "shortdescription" : "Vegan Coffee Cake",
+  "effects" : [ [
+    {
+        "effect" : "maxenergyscalingboostfood",
+        "duration" : 540
+    }
+  ],
+    [
+      "herb_dessert"
+    ] ],
+  "foodValue" : 60,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

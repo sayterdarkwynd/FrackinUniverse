@@ -944,7 +944,7 @@ function miteGrowth()
 		end
 
 	elseif math.random() <= beeData.mites.infestationChance then
-	    storage.mites = beeData.mites.growthStatic
+	    storage.mites = beeData.mites.growthStatic --storage.mites = storage.mites + (storage.mites*mult) - (hiveMiteResistance)
 	end
 end
 

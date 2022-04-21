@@ -55,7 +55,7 @@ end
 
 function applyEffects()
 	self.appliedHeal = self.healthRegen + status.stat("xiBonus")
-	effect.setStatModifierGroup(self.statHandler,{{stat = "healthRegen", amount = self.appliedHeal*math.max(0,1+status.stat("healingBonus"))},{stat = "xiBulbFoodBonus", amount=0.08}})
+	effect.setStatModifierGroup(self.statHandler,{{stat = "healthRegen", amount = self.appliedHeal*math.max(0,1+status.stat("healingBonus"))},{stat = "xiBulbFoodBonus", amount=0.2}})--was 0.08, but that sucked
 	status.removeEphemeralEffect("wellfed")
 	if status.isResource("food") then
 		if status.resourcePercentage("food") > 0.99 then status.setResourcePercentage("food", 0.99) end

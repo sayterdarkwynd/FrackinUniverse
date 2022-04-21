@@ -1,22 +1,61 @@
 {
   "frameGrid" : {
     "size" : [96, 96],
-    "dimensions" : [ 9, 4 ],
+    "dimensions" : [ 10, 7 ],
 
     "names" : [
-      [ null, "walk.1", "walk.2", "walk.3", "walk.4", "walk.5", "walk.6", "walk.7", "walk.8" ],
-      [ null, "idle.1", "idle.2", "idle.3", "idle.4", null, null, null, null ],
-      [ null, "firewindup.1", "firewindup.2", "firewindup.3", "firewindup.4", "fire", null, null, null],
-      [ null, "melee.1", "melee.2", "melee.3", "melee.4", null, null, null, null ]
+      [ null, "idle.1", "idle.2", "idle.3", "idle.4",null,null,null,null,null],
+      [ null, "jumpwindup", "jump",null,null,null,null,null,null,null ],
+      [ null, "hurt.1",null,null,null,"roar",null,null,null,null ],
+      [ null, "melee.1", "melee.2", "melee.3", "melee.4", "melee.5", "melee.6", "melee.7",null,null ],
+      [ null, "bite.1", "bite.2", "bite.3", "bite.4", "bite.5", "bite.6", "bite.7",null,null ],
+      [ null, "fire.1", "fire.2", "fire.3", "fire.4", "fire.5", "fire.6", "fire.7", "fire.8", "fire.9" ],
+      [ null, "walk.1", "walk.2", "walk.3", "walk.4", "walk.5", "walk.6", "walk.7", "walk.8",null ]
     ]
   },
  "aliases": {
-    "jump" : "idle.1",
-    "fall" : "idle.1",
-    "firewinddown.1" : "firewindup.4",
-    "firewinddown.2" : "firewindup.3",
-    "firewinddown.3" : "firewindup.2",
-    "firewinddown.4" : "firewindup.1",
-    "hurt.1" : "idle.1"
+    "fall" : "jump",
+
+
+
+    "bitewindup.1" : "bite.1",
+    "bitewindup.2" : "bite.2",
+    "chomp.1" : "bite.3",
+    "chomp.2" : "bite.4",
+    "chomp.3" : "bite.5",
+    "bitewinddown.1" : "bite.6",
+    "bitewinddown.2" : "bite.7",
+
+    "roarwindup.1" : "bite.1",
+    "roarwindup.2" : "bite.2",
+    "roarwinddown.1" : "bite.6",
+    "roarwinddown.2" : "bite.7",
+
+    "chargewindup.1" : "melee.1",
+    "chargewindup.2" : "melee.2",
+    "charge.1" : "melee.3",
+    "charge.2" : "melee.4",
+    "charge.3" : "melee.5",
+    "charge.4" : "melee.6",
+    "chargewinddown.1" : "melee.7",
+
+    "firewindup.1" : "fire.1",
+    "firewindup.2" : "fire.2",
+    "firewindup.3" : "fire.3",
+    "firewindup.4" : "fire.4",
+
+    "spit.1" : "fire.5",
+    "spit.2" : "fire.6",
+    "spit.3" : "fire.7",
+    "spit.4" : "fire.8",
+    "spit.5" : "fire.9",
+
+    "firewinddown.1" : "fire.8",
+    "firewinddown.2" : "fire.7",
+    "firewinddown.3" : "fire.6",
+    "firewinddown.4" : "fire.5",
+    "firewinddown.5" : "fire.3",
+    "firewinddown.6" : "fire.2",
+    "firewinddown.7" : "fire.1"
   }
 }

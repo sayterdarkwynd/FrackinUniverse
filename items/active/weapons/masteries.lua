@@ -749,7 +749,7 @@ function masteries.update(dt)
 end
 
 function masteries.clearHand(hand)
-	if (not type(hand)=="string") or (not type(tagCaching[hand.."TagCacheOld"])=="table") then return end
+	if (type(hand)~="string") or (type(tagCaching[hand.."TagCacheOld"])~="table") then return end
 	masteries.timers[hand]={}
 	masteries.timers["both"]={}
 	status.setPersistentEffects("masteryBonus"..hand, {})
