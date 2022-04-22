@@ -69,7 +69,7 @@
     ]
   },
 
-  "hueShiftOptions" : [-90, -70, -50, -20, 0, 20, 50, 70, 90],
+  "hueShiftOptions" : [-90, -80, -70, -60, -50, -40, -30, -20, -10, 0, 10, 20, 30, 40, 50, 50, 70, 80, 90],
 
   "weather" : [
     [0, [
@@ -372,7 +372,7 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredPots",
+          "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "object",
           "objectSets" : [
@@ -393,7 +393,15 @@
               [0.35, "rockbare5" ],
               [0.35, "rockbare6" ],
               [0.35, "rockbare7" ],
-              [0.35, "rockbare8" ]
+              [0.35, "rockbare8" ],
+              [0.35, "rockstony1" ],
+              [0.35, "rockstony2" ],
+              [0.35, "rockstony3" ],
+              [0.35, "rockstony4" ],
+              [0.35, "rockstony5" ],
+              [0.35, "rockstony6" ],
+              [0.35, "rockstony7" ],
+              [0.35, "rockstony8" ]
               ],
               "parameters" : { }
             }
@@ -421,7 +429,7 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
         {
           "mode" : "floor",
@@ -430,13 +438,22 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
+          "treasureBoxSets" : [ "alpineChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+          "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
         },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -488,7 +505,7 @@
           "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseSmall",
+          "distribution" : "/biomes/distributions.config:denseMedium",
 
           "type" : "grass",
           "grasses" : [ "grass", "testflower", "testflower2", "testflower3", "testflower4", "testflower5", "testflower6", "testflower7" ]
@@ -497,7 +514,7 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseMedium",
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
 
           "type" : "bush",
           "bushes" : [
@@ -517,14 +534,14 @@
           "type" : "tree",
           "treeFoliageHueShiftMax" : 180,
           "treeStemHueShiftMax" : 15,
-          "treeStemList" : [ "cherrybloomwood", "cherrywood","birch", "cocoa", "fleshy", "grumpy", "metal", "pine", "roottree", "slimey", "something", "spikey", "twisted", "wood", "slobby", "pineytree" ],
-          "treeFoliageList" : [ "cherrygreen", "cherrybloom","bubbles", "cloudy", "greenleaves", "leafy", "pinefoliage", "redleaves", "scraggy" ]
+          "treeStemList" : [ "cocoa", "fleshy", "grumpy", "pine", "roottree", "slimey", "something", "spikey", "twisted", "wood", "slobby", "pineytree" ],
+          "treeFoliageList" : [ "bubbles", "cloudy", "frumpy", "greenleaves", "leafy", "pinefoliage", "redleaves", "scraggy" ]
         },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:potsRare",
 
           "type" : "object",
           "objectSets" : [
@@ -602,14 +619,61 @@
         },
         {
           "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "rockmossy1" ],
+              [0.35, "rockmossy2" ],
+              [0.35, "rockmossy3" ],
+              [0.35, "rockmossy4" ],
+              [0.35, "rockmossy5" ],
+              [0.35, "rockmossy6" ],
+              [0.35, "rockmossy7" ],
+              [0.35, "rockmossy8" ],
+              [0.35, "rockbare1" ],
+              [0.35, "rockbare2" ],
+              [0.35, "rockbare3" ],
+              [0.35, "rockbare4" ],
+              [0.35, "rockbare5" ],
+              [0.35, "rockbare6" ],
+              [0.35, "rockbare7" ],
+              [0.35, "rockbare8" ],
+              [0.35, "rockstony1" ],
+              [0.35, "rockstony2" ],
+              [0.35, "rockstony3" ],
+              [0.35, "rockstony4" ],
+              [0.35, "rockstony5" ],
+              [0.35, "rockstony6" ],
+              [0.35, "rockstony7" ],
+              [0.35, "rockstony8" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:undergroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
 
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "alpineChest" ]
+        },
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -637,7 +701,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:undergroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -646,7 +710,7 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredPots",
+          "distribution" : "/biomes/distributions.config:potsRare",
 
           "type" : "object",
           "objectSets" : [
@@ -669,7 +733,7 @@
           "mode" : "ceiling",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseMedium",
+          "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "tree",
           "treeFoliageHueShiftMax" : 180,
@@ -686,6 +750,16 @@
 
           "type" : "grass",
           "grasses" : [ "testflower", "testflower2", "testflower3", "testflower4", "testflower5", "testflower6", "testflower7" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "period" : 5,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "grass",
+          "grasses" : [ "pebbles" ]
         }
       ]
     }

@@ -1,11 +1,11 @@
 {
   "name" : "metalhive",
   "friendlyName" : "Metal Hive",
-  "hueShiftOptions" : [-40, -25, 0, 25, 40],
+  "hueShiftOptions" : [0],
 
     "mainBlock" : "steelhive",
-    "subBlocks" : [ "steelsand", "steelstone" ],
-    "ores" : "ff_honeyOres",
+    "subBlocks" : [ "steelsand", "steelstone", "steelpartblock" ],
+    "ores" : "ff_metalmoonOres",
   "spawnProfile" : {
     "groups" : [
       {
@@ -154,7 +154,7 @@
       "nightLightColor" : [0, 0, 0]
     }
   ],
-   "parallax" : "/parallax/surface/scorchedcity.parallax",
+   "parallax" : "/parallax/surface/metallicmoon.parallax",
 
   "ambientNoises" : {
     "day" : {
@@ -176,7 +176,7 @@
 
   "surfacePlaceables" : {
     "grassMod" : [ "metal" ],
-    "grassModDensity" : 0.3,
+    "grassModDensity" : 0.5,
 
     "items" : [
         {
@@ -192,10 +192,10 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+          "distribution" : "/biomes/distributions.config:mainBiomeRareMicrodungeon",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "metallicmini", "junkmini", "steamspringmicrodungeons", "alienmicrodungeons" ]
+          "microdungeons" : [ "metallicmini", "junkmini" ]
         },
         {
           "mode" : "floor",
@@ -211,46 +211,39 @@
             }
           ]
         },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
 
-           {
-             "mode" : "floor",
-             "priority" : 1.0,
-             "variants" : 1,
-             "distribution" : "/biomes/distributions.config:ffunCommon",
-
-             "type" : "object",
-             "objectSets" : [
-               {
-                 "pool" : [
-              		[0.50, "hiveblob" ],
-              		[0.50, "hiveblob1" ],
-              		[0.50, "hiveblob2" ],
-              		[0.50, "hiveblob3" ],
-              		[0.50, "hiveblob4" ],
-              		[0.50, "hiveblob5" ],
-              		[0.50, "copperrock" ],
-              		[0.50, "copperrocksmall" ],
-              		[0.50, "silverrock" ],
-              		[0.50, "silverrocksmall" ],
-              		[0.50, "goldrock" ],
-              		[0.50, "goldrocksmall" ]
-                 ]
-               }
-             ]
-           },
-      {
-        "mode" : "ceiling",
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:ffunCommon",
-
-        "type" : "object",
-        "objectSets" : [
-          {
-            "pool" : [ [0.35, "ceilinghive1" ], [0.35, "ceilinghive2" ], [0.35, "ceilinghive3" ] ],
-            "parameters" : { }
-          }
-        ]
-      },
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "metalbush1" ],
+              [0.35, "metalbush2" ],
+              [0.35, "metalbush3" ],
+              [0.35, "metalbush4" ],
+              [0.35, "metalbush5" ],
+              [0.35, "metalbush6" ],
+              [0.35, "metalbush7" ],
+              [0.35, "metalbush8" ],
+              [0.35, "metalbush9" ],
+              [0.35, "metalbush10" ],
+              [0.35, "metalbush11" ],
+              [0.35, "metalbush12" ],
+              [0.35, "metalbush13" ],
+              [0.35, "metalbush14" ],
+              [0.35, "metalbush15" ],
+              [0.35, "metalbush16" ],
+              [0.35, "metalbush17" ],
+              [0.35, "metalbush18" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -258,34 +251,31 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "ffbeeChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
         {
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "ffmetallicChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
         },
         {
-          "mode" : "ceiling",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
-
-          "type" : "tree",
-          "treeFoliageHueShiftMax" : 180,
-          "treeStemHueShiftMax" : 180,
-          "treeStemList" : [ "wildernessvine", "sulphurvine" ],
-          "treeFoliageList" : [ "flowery", "starry", "dreamy" ]
-        },
-        {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -298,10 +288,10 @@
         {
           "mode" : "floor",
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
+          "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "grass",
-          "grasses" : [ "viney", "springy", "root", "shrooms", "leafsy", "pods", "thinstem", "waterplant", "waterplant2", "waterplant3", "weedy" ]
+          "grasses" : [ "rustflower" ]
         },
         {
           "mode" : "floor",
@@ -326,24 +316,14 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:denseMedium",
 
           "type" : "bush",
           "bushes" : [
             {
-              "name" : "hivebush",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "rocklarge",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "podbush",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
+              "name" : "metalhivebush",
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             }
           ]
         },
@@ -354,11 +334,95 @@
           "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 180,
-          "treeStemHueShiftMax" : 15,
-          "treeStemList" : [ "roottree", "fleshy", "slobby", "slimey" ],
-          "treeFoliageList" : [ "hanging", "lushgreen", "redleaves", "greenleaves" ]
+          "treeFoliageHueShiftMax" : 0,
+          "treeStemHueShiftMax" : 0,
+          "treeStemList" : [ "metal" ],
+          "treeFoliageList" : [ "rustflower" ]
         }
+    ]
+  },
+
+  "undergroundPlaceables" : {
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "ffmetallicChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "metalhivebush",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          }
+        ]
+      }
     ]
   }
 }

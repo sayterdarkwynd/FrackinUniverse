@@ -66,7 +66,7 @@
     }
   },
 
-  "hueShiftOptions" : [ 0 ],
+  "hueShiftOptions" : [-30, -25, -20, -15, -10, -5, 0],
 
   "weather" : [
     [0, [
@@ -211,8 +211,7 @@
     "subBlocks" : [ "biostone", "bioblock", "biogravel" ],
     "ores" : "ff_surfaceprotoOres",
 
-  //"parallax" : "/parallax/surface/protoworld.parallax",
-  "parallax" : "/parallax/surface/jungle.parallax",
+  "parallax" : "/parallax/surface/protoworld.parallax",
 
   "ambientNoises" : {
     "day" : {
@@ -254,21 +253,6 @@
           "type" : "grass",
           "grasses" : [ "protodeco1", "protodeco2", "jungleflower3" ]
         },
-        {
-          "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
-
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : [ [0.35, "junglebush1" ], [0.35, "junglebush2" ], [0.35, "junglebush3" ], [0.35, "junglebush4" ], [0.35, "junglebush5" ], [0.35, "junglebush6" ], [0.35, "junglebush7" ], [0.35, "junglebush8" ], [0.35, "junglebush9" ], [0.35, "junglebush10" ], [0.35, "junglebush11" ], [0.35, "junglebush12" ], [0.35, "junglebush13" ], [0.35, "junglebush14" ], [0.35, "junglebush15" ], [0.35, "junglebush16" ], [0.35, "junglebush17" ], [0.35, "junglebush18" ] ],
-              "parameters" : { }
-            }
-          ]
-        },
-
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -372,14 +356,22 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
           "treasureBoxSets" : [ "ffprotoChest" ]
         },
-
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -393,11 +385,11 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseLarge",
+          "distribution" : "/biomes/distributions.config:denseSmall",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 0,
-          "treeStemHueShiftMax" : 0,
+          "treeFoliageHueShiftMax" : 180,
+          "treeStemHueShiftMax" : 15,
           "treeStemList" : [ "prototree" ],
           "treeFoliageList" : [ "protoleaves" ]
         },
@@ -405,31 +397,19 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredLarge",
+          "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 60,
+          "treeFoliageHueShiftMax" : 180,
           "treeStemHueShiftMax" : 15,
           "treeStemList" : [ "twisty", "woody", "oldwood", "crackly", "palmlike", "alienweird", "alienbubble", "alienstriped" ],
           "treeFoliageList" : [ "lushy", "junglepalm", "jungly", "jungleleaf", "alienbigleaf", "aliencircle" ]
         },
         {
-          "mode" : "ceiling",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseMedium",
-
-          "type" : "tree",
-          "treeFoliageHueShiftMax" : 60,
-          "treeStemHueShiftMax" : 20,
-          "treeStemList" : [ "bubblevine", "glitteringroot2", "vineroot2", "twistedvine2" ],
-          "treeFoliageList" : [ "flowery2", "starry2", "dreamy2", "nofoliagevine" ]
-        },
-        {
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -447,19 +427,19 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:tiyDistRare",
+          "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "protomini2" ]
+          "microdungeons" : [ "alienmicrodungeons" ]
         },
         {
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+          "distribution" : "/biomes/distributions.config:mainBiomeRareMicrodungeon",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "terrainfeatures", "rockclimb", "rocktunnel", "toxicmicrodungeons", "sandstone", "blockpile", "loops", "flats", "reversepyramids" ]
+          "microdungeons" : [ "protomini2" ]
         },
         {
           "mode" : "floor",
@@ -486,19 +466,14 @@
   "type" : "microdungeon",
   "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
   },
-         {
+        {
           "mode" : "floor",
-          "priority" : 1.0,
+          "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:potsRare",
+          "distribution" : "/biomes/distributions.config:undergroundChests",
 
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : [ [0.35, "carbonrock" ], [0.35, "carbonrocksmall" ], [0.35, "goldrock" ], [0.35, "goldrocksmall" ], [0.35, "silverrock" ], [0.35, "silverrocksmall" ], [0.35, "copperrock" ], [0.35, "copperrocksmall" ], [0.35, "diamondrock" ], [0.35, "diamondrocksmall" ] ],
-              "parameters" : { }
-            }
-          ]
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
         {
           "mode" : "floor",
@@ -522,7 +497,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:undergroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -545,7 +520,7 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredPots",
+          "distribution" : "/biomes/distributions.config:potsRare",
 
           "type" : "object",
           "objectSets" : [
@@ -564,7 +539,7 @@
           "type" : "tree",
           "treeFoliageHueShiftMax" : 300,
           "treeStemHueShiftMax" : 300,
-          "treeStemList" : [ "bubblevine", "glitteringroot2", "vineroot2", "twistedvine2" ],
+          "treeStemList" : [ "bubblevine", "glitteringroot2", "vineroot2", "twistedvine2", "purplevine" ],
           "treeFoliageList" : [ "flowery2", "starry2", "dreamy2", "nofoliagevine" ]
         },
 
@@ -586,7 +561,7 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseSmall",
+          "distribution" : "/biomes/distributions.config:denseMedium",
 
           "type" : "object",
           "objectSets" : [

@@ -101,8 +101,8 @@
     }
   ],
 
-  "mainBlock" : "magmatile3",
-  "subBlocks" : [ "magmatile4", "magmarock", "redhotcobblestone" ],
+  "mainBlock" : "magmarock",
+  "subBlocks" : [ "magmatile4", "magmatile3", "redhotcobblestone" ],
   "ores" : "moon",
 
   "parallax" : "/parallax/surface/volcanicmoon.parallax",
@@ -136,7 +136,7 @@
         "distribution" : "/biomes/distributions.config:overgroundChests",
 
         "type" : "treasureBox",
-        "treasureBoxSets" : [ "basicChest" ]
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
       },
       {
         "mode" : "floor",
@@ -165,7 +165,7 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [
@@ -263,6 +263,26 @@
       },
       {
         "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "lavabowl",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          },
+          {
+            "name" : "moltenrock",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
         "distribution" : "/biomes/distributions.config:rareClumpyLarge",
@@ -305,7 +325,7 @@
         "distribution" : "/biomes/distributions.config:undergroundChests",
 
         "type" : "treasureBox",
-        "treasureBoxSets" : [ "basicChest" ]
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
       },
 
       {

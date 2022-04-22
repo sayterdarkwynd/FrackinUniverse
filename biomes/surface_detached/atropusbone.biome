@@ -83,10 +83,10 @@
 
     "ambientNoises" : {
       "day" : {
-        "tracks" : [ "/music/Gario_EldrichSporeSpawn.ogg","/sfx/ambiance/atropusambiance2.ogg", "/sfx/ambiance/atropusambiance5.ogg", "/sfx/ambiance/atropusambiance6.ogg" ]
+        "tracks" : [ "/sfx/ambiance/atropusambiance2.ogg", "/sfx/ambiance/atropusambiance5.ogg", "/sfx/ambiance/atropusambiance6.ogg" ]
       },
       "night" : {
-        "tracks" : [ "/music/Gario_EldrichSporeSpawn.ogg","/sfx/ambiance/atropusambiance.ogg", "/sfx/ambiance/atropusambiance2.ogg", "/sfx/ambiance/atropusambiance4.ogg" ]
+        "tracks" : [ "/sfx/ambiance/atropusambiance.ogg", "/sfx/ambiance/atropusambiance2.ogg", "/sfx/ambiance/atropusambiance4.ogg" ]
       }
     },
 
@@ -98,7 +98,7 @@
         "tracks" : [ "/music/atropusambiance3a.ogg", "/music/atropusambiance4a.ogg" ]
       }
     },
-  "hueShiftOptions" : [-90, -45, 0, 45, 90],
+  "hueShiftOptions" : [-30, -20, -10, 0, 10, 20, 30],
 
   "mainBlock" : "boneyflesh",
   "subBlocks" : [ "fleshblock", "hellstone" ],
@@ -162,18 +162,6 @@
           ]
         },
         {
-          "mode" : "ceiling",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "tree",
-          "treeFoliageHueShiftMax" : 220,
-          "treeStemHueShiftMax" : 220,
-          "treeStemList" : [ "eyevein" ],
-          "treeFoliageList" : [ "eyeveiny"  ]
-        },
-         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
@@ -199,30 +187,6 @@
           "treeFoliageList" : [ "fleshfoliage", "fleshfoliage2", "bloodkelpy" ]
         },
         {
-          "mode" : "ceiling",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "tree",
-          "treeFoliageHueShiftMax" : 220,
-          "treeStemHueShiftMax" : 220,
-          "treeStemList" : [ "fleshvine_atropus", "fleshvine2", "podvine", "bloodvine"],
-          "treeFoliageList" : [ "nofoliagevine" ]
-        },
-        {
-          "mode" : "ceiling",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseMedium",
-
-          "type" : "tree",
-          "treeFoliageHueShiftMax" : 220,
-          "treeStemHueShiftMax" : 220,
-          "treeStemList" : [ "vein", "bluevein"],
-          "treeFoliageList" : [ "blueveiny", "veiny" ]
-        },
-        {
           "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
@@ -232,19 +196,28 @@
           "grasses" : [ "freebone", "fleshbone", "fleshplant", "heckflower", "atropusgrass1" ]
         },
         {
-          "mode" : "ceiling",
+          "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
 
           "type" : "grass",
-          "grasses" : [ "ceilingfleshplant", "ceilingfleshbone" ]
+          "grasses" : [ "freebone" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "grass",
+          "grasses" : [ "fleshbone" ]
         },
         {
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:ffCommon",
 
           "type" : "bush",
           "bushes" : [
@@ -259,7 +232,7 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:ffCommon",
 
           "type" : "bush",
           "bushes" : [
@@ -279,77 +252,57 @@
           "type" : "bush",
           "bushes" : [
             {
-              "name" : "fleshbonebush",
-              "baseHueShiftMax" :35,
-              "modHueShiftMax" : 35
-            },
-            {
               "name" : "fleshcorpse",
-              "baseHueShiftMax" : 35,
-              "modHueShiftMax" : 35
-            },
-            {
-              "name" : "skeletalbush",
-              "baseHueShiftMax" : 35,
-              "modHueShiftMax" : 35
-            },
-            {
-              "name" : "eyebush",
-              "baseHueShiftMax" : 35,
-              "modHueShiftMax" : 35
-            },
-            {
-              "name" : "tendonbush",
-              "baseHueShiftMax" : 35,
-              "modHueShiftMax" : 35
-            },
-            {
-              "name" : "tendonlight",
-              "baseHueShiftMax" : 35,
+              "baseHueShiftMax" :35,
               "modHueShiftMax" : 35
             }
           ]
         },
-         {
-          "mode" : "ceiling",
+        {
+          "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseMedium",
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "bush",
           "bushes" : [
             {
-              "name" : "ceilingflesh",
+              "name" : "fleshbonebush",
               "baseHueShiftMax" :35,
               "modHueShiftMax" : 35
-            },
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
             {
-              "name" : "ceilinggrub",
-              "baseHueShiftMax" : 35,
+              "name" : "eyebush",
+              "baseHueShiftMax" :35,
               "modHueShiftMax" : 35
-            },
-            {
-              "name" : "ceilingeye",
-              "baseHueShiftMax" : 35,
-              "modHueShiftMax" : 35
-            },
-            {
-              "name" : "tendonlight",
-              "baseHueShiftMax" : 35,
-              "modHueShiftMax" : 35
-            },
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
             {
               "name" : "tendonbush",
               "baseHueShiftMax" : 35,
               "modHueShiftMax" : 35
             },
             {
-              "name" : "glowbush",
-              "baseHueShiftMax" : 35,
-              "modHueShiftMax" : 35
-            },
-            {
-              "name" : "ceilingbones",
+              "name" : "tendonlight",
               "baseHueShiftMax" : 35,
               "modHueShiftMax" : 35
             }
@@ -376,7 +329,7 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
         {
           "mode" : "floor",
@@ -391,7 +344,7 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -405,7 +358,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -478,7 +431,16 @@
           "distribution" : "/biomes/distributions.config:undergroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "ffbasicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "ffatropusChest" ]
         },
         {
           "mode" : "floor",
@@ -493,7 +455,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:undergroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -516,7 +478,7 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredPots",
+          "distribution" : "/biomes/distributions.config:potsRare",
 
           "type" : "object",
           "objectSets" : [
@@ -578,40 +540,68 @@
             }
           ]
         },
-
-
         {
-          "mode" : "floor",
-          "priority" : 1.0,
+          "mode" : "ceiling",
+          "priority" : 2.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 35,
-          "treeStemHueShiftMax" : 35,
-          "treeStemList" : [ "fleshstem" ],
-          "treeFoliageList" : [ "fleshfoliage" ]
+          "treeFoliageHueShiftMax" : 0,
+          "treeStemHueShiftMax" : 30,
+          "treeStemList" : [ "fleshvine_atropus", "fleshvine2", "bloodvine" ],
+          "treeFoliageList" : [ "nofoliagevine" ]
         },
         {
           "mode" : "ceiling",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseMedium",
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 220,
-          "treeStemHueShiftMax" : 220,
-          "treeStemList" : [ "fleshvine_atropus", "fleshvine2", "podvine" ],
-          "treeFoliageList" : [ "nofoliagevine" ]
+          "treeFoliageHueShiftMax" : 30,
+          "treeStemHueShiftMax" : 30,
+          "treeStemList" : [ "bluevein", "vein" ],
+          "treeFoliageList" : [ "blueveiny", "veiny" ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 30,
+          "treeStemHueShiftMax" : 30,
+          "treeStemList" : [ "eyevein" ],
+          "treeFoliageList" : [ "eyeveiny" ]
         },
         {
           "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "grass",
-          "grasses" : [ "freebone", "fleshbone", "fleshplant", "heckflower", "shadowy", "atropusgrass1"  ]
+          "grasses" : [ "freebone", "fleshbone", "fleshplant", "heckflower", "atropusgrass1" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "grass",
+          "grasses" : [ "freebone" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "grass",
+          "grasses" : [ "fleshbone" ]
         },
         {
           "mode" : "ceiling",
@@ -621,6 +611,15 @@
 
           "type" : "grass",
           "grasses" : [ "ceilingfleshplant", "ceilingfleshbone" ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "grass",
+          "grasses" : [ "ceilingfleshbone" ]
         },
         {
           "mode" : "floor",
@@ -641,7 +640,7 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:ffCommon",
 
           "type" : "bush",
           "bushes" : [
@@ -717,11 +716,11 @@
             }
           ]
         },
-         {
+        {
           "mode" : "ceiling",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffCommon",
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "bush",
           "bushes" : [
@@ -731,32 +730,37 @@
               "modHueShiftMax" : 35
             },
             {
+              "name" : "ceilingbones",
+              "baseHueShiftMax" : 35,
+              "modHueShiftMax" : 35
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
               "name" : "ceilinggrub",
               "baseHueShiftMax" : 35,
               "modHueShiftMax" : 35
-            },
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
             {
               "name" : "ceilingeye",
-              "baseHueShiftMax" : 35,
-              "modHueShiftMax" : 35
-            },
-            {
-              "name" : "tendonlight",
-              "baseHueShiftMax" : 35,
-              "modHueShiftMax" : 35
-            },
-            {
-              "name" : "tendonbush",
-              "baseHueShiftMax" : 35,
-              "modHueShiftMax" : 35
-            },
-            {
-              "name" : "glowbush",
-              "baseHueShiftMax" : 35,
-              "modHueShiftMax" : 35
-            },
-            {
-              "name" : "ceilingbones",
               "baseHueShiftMax" : 35,
               "modHueShiftMax" : 35
             }

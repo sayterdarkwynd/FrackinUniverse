@@ -73,7 +73,7 @@
     }
   },
 
-  "hueShiftOptions" : [ 0 ],
+  "hueShiftOptions" : [-30, -20, -10, 0, 10],
   "weather" : [
     [0, [
       "/weather.config:arboreal"
@@ -82,13 +82,13 @@
 
   "skyOptions" : [ ],
 
-    "mainBlock" : "violiumcrystal",
-    "subBlocks" : [ "harrowstone", "genetile", "bonemeal" ],
+    "mainBlock" : "bonemeal",
+    "subBlocks" : [ "harrowstone", "genetile", "violiumcrystal" ],
     "ores" : "ff_deepstrangeseaOres",
 
   "surfacePlaceables" : {
-    "grassMod" : [ "bloodstonegrass", "blackslimegrass", "fualiengrass", "fualiengrass2" ],
-    "grassModDensity" : 0.9,
+    "grassMod" : [ "bloodstonegrass", "blackslimegrass", "fualiengrass", "fualiengrass2", "bone" ],
+    "grassModDensity" : 0.6,
       "items" : [
         {
           "mode" : "floor",
@@ -115,26 +115,172 @@
         },
         {
           "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "grass",
+          "grasses" : [ "seaweed", "waterplant", "waterplant2", "oceangrass", "oceangrass2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "grass",
+          "grasses" : [ "freebone" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.125, "seashell1" ], [0.125, "seashell2" ], [0.125, "seashell3" ], [0.125, "seashell4" ], [0.125, "seashell5" ], [0.125, "seashell6" ], [0.125, "seashell7" ], [0.125, "seashell8" ]]
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "cone",
+              "baseHueShiftMax" : 180,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "toxiccone",
+              "baseHueShiftMax" : 180,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "darkcone",
+              "baseHueShiftMax" : 180,
+              "modHueShiftMax" : 180
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "coral",
+              "baseHueShiftMax" : 180,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "toxiccoral",
+              "baseHueShiftMax" : 180,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "darkcoral",
+              "baseHueShiftMax" : 180,
+              "modHueShiftMax" : 180
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "bush",
           "bushes" : [
             {
               "name" : "seagrass",
-              "baseHueShiftMax" : 240,
-              "modHueShiftMax" : 220
+              "baseHueShiftMax" : 180,
+              "modHueShiftMax" : 180
             },
             {
-              "name" : "cone",
-              "baseHueShiftMax" : 240,
-              "modHueShiftMax" : 220
+              "name" : "toxicseagrass",
+              "baseHueShiftMax" : 180,
+              "modHueShiftMax" : 180
             },
+            {
+              "name" : "darkseagrass",
+              "baseHueShiftMax" : 180,
+              "modHueShiftMax" : 180
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "bush",
+          "bushes" : [
             {
               "name" : "seaweed",
-              "baseHueShiftMax" : 240,
-              "modHueShiftMax" : 220
+              "baseHueShiftMax" : 180,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "oceanbush",
+              "baseHueShiftMax" : 180,
+              "modHueShiftMax" : 180
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.20, "oshroom1" ], [0.20, "oshroom2" ], [0.20, "oshroom3" ], [0.20, "oshroom4" ], [0.20, "oshroom5" ]]
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 4,
+          "distribution" : "/biomes/distributions.config:ffAverage",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "crystalcavebush14" ],
+              [0.35, "crystalcavebush15" ],
+              [0.35, "crystalcavebush16" ],
+              [0.35, "crystalcavebush17" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.5,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:oceanRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.20, "brokenanchor" ]]
             }
           ]
         },
@@ -186,7 +332,7 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
         {
           "mode" : "floor",
@@ -224,23 +370,23 @@
         "mode" : "floor",
         "priority" : 2.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
+        "distribution" : "/biomes/distributions.config:denseLarge",
 
         "type" : "tree",
-        "treeFoliageHueShiftMax" : 150,
-        "treeStemHueShiftMax" : 150,
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 180,
         "treeStemList" : [ "kelp", "seaweed" ],
-        "treeFoliageList" : [ "flowy", "kelpy", "leafy", "wavy" ]
+        "treeFoliageList" : [ "flowy", "kelpy", "leafy", "wavy", "bubbles" ]
       },
       {
         "mode" : "floor",
         "priority" : 2.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
 
         "type" : "tree",
-        "treeFoliageHueShiftMax" : 150,
-        "treeStemHueShiftMax" : 150,
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 180,
         "treeStemList" : [ "bloodkelp" ],
         "treeFoliageList" : [ "bloodkelpy" ]
       },

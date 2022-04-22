@@ -21,6 +21,48 @@
         ]
       }
 },
+
+  {
+    "op": "replace",
+    "path": "/surfacePlaceables/items/1/distribution",
+    "value": "/biomes/distributions.config:overgroundChests"
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "toxicwastebarrel" ] ],
+              "parameters" : {  }
+            }
+          ]
+    }
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+    }
+  },
+
 {"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
   "mode" : "floor",
   "priority" : 1,
