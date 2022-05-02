@@ -938,7 +938,7 @@ function miteGrowth()
 
 		-- remove the hive resistance from the mite total if over a certain threshold, otherwise increment them
 		if hiveMiteResistance > 0 then
-		  storage.mites = storage.mites - (hiveMiteResistance)
+		  storage.mites = storage.mites + (storage.mites * mult) - (hiveMiteResistance)
 		else
 	          storage.mites = storage.mites + (storage.mites * mult) + beeData.mites.growthStatic
 		end
