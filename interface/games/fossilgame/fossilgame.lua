@@ -31,6 +31,10 @@ function getFossilParameters()
   local treasure = world.getObjectParameter(fossilId, "treasure")
   self.treasureType = treasure.type
 
+  local researchReward = root.createTreasure("fuFossilResearchTreasure", world.threatLevel())
+  self.researchItem = researchReward[1].name
+  self.researchCount = researchReward[1].count
+
   local treasurePool = treasure.pool
   if treasurePool then
     treasure = root.createTreasure(treasurePool, world.threatLevel())
@@ -255,7 +259,7 @@ function winState()
   -- FU research drop
   -- I chose to use a useable item rather than spawning a # of research simply to give the player
   -- the satisfaction of using the item and getting the particle effects and sound
-  world.sendEntityMessage(pane.sourceEntity(), "addDrop", "smalldata")
+  world.sendEntityMessage(pane.sourceEntity(), "addDrop", {self.researchItem,self.researchCount})
   --
   clearBoard()
 
