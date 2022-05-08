@@ -547,8 +547,8 @@
           "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 0,
-          "treeStemHueShiftMax" : 30,
+          "treeFoliageHueShiftMax" : 35,
+          "treeStemHueShiftMax" : 35,
           "treeStemList" : [ "fleshvine_atropus", "fleshvine2", "bloodvine" ],
           "treeFoliageList" : [ "nofoliagevine" ]
         },
@@ -559,8 +559,8 @@
           "distribution" : "/biomes/distributions.config:scatteredLarge",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 30,
-          "treeStemHueShiftMax" : 30,
+          "treeFoliageHueShiftMax" : 35,
+          "treeStemHueShiftMax" : 35,
           "treeStemList" : [ "bluevein", "vein" ],
           "treeFoliageList" : [ "blueveiny", "veiny" ]
         },
@@ -571,8 +571,8 @@
           "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 30,
-          "treeStemHueShiftMax" : 30,
+          "treeFoliageHueShiftMax" : 35,
+          "treeStemHueShiftMax" : 35,
           "treeStemList" : [ "eyevein" ],
           "treeFoliageList" : [ "eyeveiny" ]
         },
@@ -728,7 +728,17 @@
               "name" : "ceilingflesh",
               "baseHueShiftMax" :35,
               "modHueShiftMax" : 35
-            },
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "bush",
+          "bushes" : [
             {
               "name" : "ceilingbones",
               "baseHueShiftMax" : 35,
