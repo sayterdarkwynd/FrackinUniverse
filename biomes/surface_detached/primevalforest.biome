@@ -1,7 +1,7 @@
 {
   "name" : "primevalforest",
   "friendlyName" : "Ancient Glade",
-  "hueShiftOptions" : [-40, -30, -20, -10, 0, 10, 20, 30, 40],
+  "hueShiftOptions" : [-30, -20, -15, -10, 0, 10, 15, 20, 30],
 
     "mainBlock" : "rainforestfloor",
     "subBlocks" : [ "rainforestfloorflowers", "vinewall", "junglestone" ],
@@ -229,10 +229,8 @@
           "type" : "tree",
           "treeFoliageHueShiftMax" : 180,
           "treeStemHueShiftMax" : 15,
-          "treeStemList" : [ "birch", "cocoa", "fleshy", "grumpy", "metal", "pine", "roottree", "slimey", "something", "spikey", "twisted", "wood", "slobby", "pineytree" ],
-          "treeFoliageList" : [ "rose", "brains", "bubbles", "cloudy", "frumpy", "greenleaves", "hanging", "leafy", "lotus", "lushgreen", "orangeflower", "pinefoliage", "redleaves", "scraggy", "spikeyfoliage" ]
-
-
+          "treeStemList" : [ "birch", "cocoa", "fleshy", "grumpy", "pine", "roottree", "slimey", "something", "spikey", "twisted", "wood", "slobby", "pineytree" ],
+          "treeFoliageList" : [ "rose", "bubbles", "cloudy", "frumpy", "greenleaves", "hanging", "leafy", "lotus", "lushgreen", "orangeflower", "pinefoliage", "redleaves", "scraggy" ]
         },
         {
           "mode" : "floor",
@@ -352,7 +350,6 @@
           "distribution" : "/biomes/distributions.config:randomEncounter",
           "type" : "microdungeon",
           "microdungeons" : [ "randomencounter" ]
-
         },
 
         {
@@ -363,21 +360,6 @@
 
           "type" : "microdungeon",
           "microdungeons" : [ "terrainfeatures" ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseMedium",
-
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "testbush",
-              "baseHueShiftMax" : 50,
-              "modHueShiftMax" : 50
-            }
-          ]
         }
     ]
   },

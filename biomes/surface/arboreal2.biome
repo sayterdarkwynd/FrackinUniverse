@@ -658,8 +658,8 @@
           "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 220,
-          "treeStemHueShiftMax" : 220,
+          "treeFoliageHueShiftMax" : 180,
+          "treeStemHueShiftMax" : 40,
           "treeStemList" : [ "vineroot2", "glitteringroot2", "twistedvine2", "floweryvine2", "wildernessvine", "sulphurvine" ],
           "treeFoliageList" : [ "flowery2", "starry2", "dreamy2", "flowery", "starry", "dreamy"  ]
         },
@@ -708,10 +708,10 @@
         {
           "mode" : "floor",
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
 
           "type" : "grass",
-          "grasses" : [ "testflower8" ]
+          "grasses" : [ "testflower8", "crisp" ]
         },
         {
           "mode" : "ceiling",
@@ -720,81 +720,6 @@
 
           "type" : "grass",
           "grasses" : [ "ceilingflowers", "ceilinghandlike", "ceilingroots", "ceilingweeds", "ceilingweedy", "glowceiling", "ceilingmushroom"  ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "happybush",
-              "baseHueShiftMax" : 220,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "shrub1",
-              "baseHueShiftMax" : 220,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "testbush",
-              "baseHueShiftMax" : 220,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "thorns2",
-              "baseHueShiftMax" : 220,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "wicked",
-              "baseHueShiftMax" : 220,
-              "modHueShiftMax" : 180
-            }
-          ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseLarge",
-
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "testbush2",
-              "baseHueShiftMax" : 0,
-              "modHueShiftMax" : 0
-            }
-          ]
-        },
-        {
-          "mode" : "ceiling",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "ceilingarchrock",
-              "baseHueShiftMax" : 220,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "ceilingwicked",
-              "baseHueShiftMax" : 220,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "ceilingthinspiral",
-              "baseHueShiftMax" : 220,
-              "modHueShiftMax" : 180
-            }
-          ]
         }
       ]
     }
