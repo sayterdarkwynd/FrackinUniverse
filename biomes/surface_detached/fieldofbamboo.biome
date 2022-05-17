@@ -23,86 +23,7 @@
     }
   },
 
-  "hueShiftOptions" : [-30, -20, -15, -10, -5, 0, 5, 10, 15, 20, 30],
-
-  "weather" : [
-    [0, [
-      "/weather.config:forest"
-    ]]
-  ],
-
-  "skyOptions" : [
-    {
-      // sunny earth days, red/orange sunrise and purple/red sunset
-      "mainColor" : [255, 255, 255],
-
-      "morningColors" : [ [242, 120, 0], [255, 230, 176] ],
-      "dayColors" : [ [115, 224, 255], [255, 255, 255] ],
-      "eveningColors" : [ [125, 17, 158], [210, 52, 50] ],
-      "nightColors" : [ [24, 38, 53, 80], [58, 42, 70, 160] ],
-
-      "morningLightColor" : [140, 71, 0],
-      "dayLightColor" : [200, 200, 200],
-      "eveningLightColor" : [160, 120, 180],
-      "nightLightColor" : [40, 20, 60]
-    },
-    {
-      // sunny green day, darkgreen/yellow sunrise and purple/blue sunset
-      "mainColor" : [255, 255, 255],
-
-      "morningColors" : [ [68, 164, 84], [243, 201, 115] ],
-      "dayColors" : [ [115, 255, 204], [255, 255, 255] ],
-      "eveningColors" : [ [43, 17, 118], [244, 161, 231] ],
-      "nightColors" : [ [24, 38, 53, 80], [58, 42, 70, 160] ],
-
-      "morningLightColor" : [20, 91, 100],
-      "dayLightColor" : [200, 200, 200],
-      "eveningLightColor" : [160, 120, 180],
-      "nightLightColor" : [40, 20, 60]
-    },
-    {
-      // sunny lilac day, blue/orange sunrise and blue/green sunset
-      "mainColor" : [255, 255, 255],
-
-      "morningColors" : [ [0, 24, 55], [255, 140, 49] ],
-      "dayColors" : [ [176, 115, 255], [255, 255, 255] ],
-      "eveningColors" : [ [100, 86, 173], [0, 222, 73] ],
-      "nightColors" : [ [24, 38, 53, 80], [58, 42, 70, 160] ],
-
-      "morningLightColor" : [140, 71, 0],
-      "dayLightColor" : [200, 200, 200],
-      "eveningLightColor" : [160, 120, 180],
-      "nightLightColor" : [40, 20, 60]
-    },
-    {
-      // sunny pink day, pink/peach sunrise and blue/pink sunset
-      "mainColor" : [255, 255, 255],
-
-      "morningColors" : [ [197, 48, 174], [253, 161, 96] ],
-      "dayColors" : [ [255, 116, 122], [255, 255, 255] ],
-      "eveningColors" : [ [88, 42, 91], [175, 20, 50] ],
-      "nightColors" : [ [24, 38, 53, 80], [58, 42, 70, 160] ],
-
-      "morningLightColor" : [140, 71, 0],
-      "dayLightColor" : [200, 200, 200],
-      "eveningLightColor" : [180, 120, 120],
-      "nightLightColor" : [40, 20, 60]
-    },
-    {
-      // sunny orange day, orange/yellow sunrise and green/orange sunset
-      "mainColor" : [255, 255, 255],
-
-      "morningColors" : [ [174, 89, 47], [255, 197, 54] ],
-      "dayColors" : [ [255, 186, 116], [255, 255, 255] ],
-      "eveningColors" : [ [3, 90, 92], [250, 138, 77] ],
-      "nightColors" : [ [24, 38, 53, 80], [58, 42, 70, 160] ],
-
-      "morningLightColor" : [140, 71, 0],
-      "dayLightColor" : [200, 200, 200],
-      "eveningLightColor" : [180, 120, 120],
-      "nightLightColor" : [40, 20, 60]
-    }
-  ],
+  "hueShiftOptions" : [-30, -20, -15, -10, 0, 10, 15, 20, 30],
 
   "parallax" : "/parallax/surface/thickjungle.parallax",
 
@@ -542,8 +463,8 @@
         "distribution" : "/biomes/distributions.config:denseMedium",
 
         "type" : "tree",
-        "treeFoliageHueShiftMax" : 40,
-        "treeStemHueShiftMax" : 180,
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 40,
         "treeStemList" : [ "vine", "vine2", "vine3", "vine4", "wildernessvine" ],
         "treeFoliageList" : [ "flowery", "starry", "dreamy" ]
       }
