@@ -1,53 +1,31 @@
 {
-    "objectName": "whitebulb",
-    "rarity": "Common",
-    "category": "decorative",
-    "price": 400,
-    "printable": false,
-    "description": "White Potato",
-    "shortdescription": "White Potato",
-    "race": "apex",
-    "inventoryIcon": "whitebulb.png",
-    "orientations": [
-        {
-            "image": "whitebulb.png:<color>",
-            "imagePosition": [
-                0,
-                0
-            ],
-            "frames": 1,
-            "animationCycle": 0.5,
-            "spaceScan": 0.1,
-            "anchors": [
-                "bottom"
-            ]
-        }
-    ],
-    "smashSounds": [
-        "/sfx/tools/axe_chop_alt_heavy.ogg"
-    ],
-    "smashDropOptions": [
-        [
-            [
-                "wildvines",
-                1,
-                {
+  "objectName": "whitebulb",
+  "rarity": "Common",
+  "category": "decorative",
+  "printable": false,
+  
+  "description": "White Potato",
+  "shortdescription": "White Potato",
+  "race": "apex",
+  
+  "inventoryIcon": "whitebulb.png",
+  "orientations" : [
+    {
+      "dualImage" : "whitebulb.png:<color>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
 
-                }
-            ]
-        ]
-    ],
-    "breakDropOptions": [
-        [
-            [
-                "wildvines",
-                1,
-                {
-
-                }
-            ]
-        ]
-    ],
-    "biomePlaced": true,
-    "scannable": false
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/plant_break1.ogg", "/sfx/objects/plant_break2.ogg", "/sfx/objects/plant_break3.ogg", "/sfx/objects/plant_break4.ogg", "/sfx/objects/plant_break5.ogg", "/sfx/objects/plant_break6.ogg" ],
+  "smashParticles" : [ { "count" : 3, "particle" : "plantshard" } ],
+  "smashDropOptions" : [
+    [ [ "wildvines", 1, { } ] ]
+  ],
+  "biomePlaced": true,
+  "scannable": false
 }

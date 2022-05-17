@@ -13,21 +13,30 @@
   "orientations" : [
     {
       "imageLayers" : [ { "image" : "fungal2.png:<color>", "fullbright" : true }, { "image" : "fungal2fullbright.png:<color>" } ],
+      "flipImages" : true,
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+      "anchors" : [ "bottom" ],
+      "direction" : "left"
+    },
+    {
+      "imageLayers" : [ { "image" : "fungal2.png:<color>", "fullbright" : true }, { "image" : "fungal2fullbright.png:<color>" } ],
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
 
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
     }
   ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/projectiles/tar_hit_organic1.ogg", "/sfx/projectiles/tar_hit_organic2.ogg", "/sfx/projectiles/tar_hit_organic3.ogg", "/sfx/projectiles/tar_hit_organic4.ogg", "/sfx/projectiles/tar_hit_organic5.ogg" ],
+  "smashParticles" : [ { "count" : 4, "particle" : "slimeshard" } ],
   "smashDropOptions" : [
-    [ [ "biospore", 4, { } ] ]
-  ],
-
-  "breakDropOptions" : [
     [ [ "biospore", 4, { } ] ]
   ],
   "biomePlaced" : true

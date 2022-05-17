@@ -7,10 +7,22 @@
   "description" : "I wonder what causes it to glow?",
   "shortdescription" : "Penumball Plant",
   "race" : "apex",
-  "lightColor" : [14, 64, 31],
+  "lightColor" : [21, 99, 47],
 
   "inventoryIcon" : "penumball4.png",
-  "orientations" : [
+  "orientations" : [ 
+    {
+      "imageLayers" : [ { "image" : "penumball4.png:<color>" }, { "image" : "penumball4fullbright.png:<color>", "fullbright" : true } ],
+      "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+	  
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "lightPosition" : [2.8, 4.5]
+    },
     {
       "imageLayers" : [ { "image" : "penumball4.png:<color>" }, { "image" : "penumball4fullbright.png:<color>", "fullbright" : true } ],
       "imagePosition" : [0, 0],
@@ -18,16 +30,15 @@
       "animationCycle" : 0.5,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-
+      "anchors" : [ "bottom" ],
+      "direction" : "left",
+      "lightPosition" : [1.5, 4.5]
     }
   ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_light.ogg" ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/bush_break1.ogg" ],
+  "smashParticles" : [ { "count" : 6, "particle" : "penumball1shard" }, { "count" : 4, "particle" : "penumball2shard" } ],
   "smashDropOptions" : [
-    [ [ "energywood", 2, { } ] ]
-  ],
-
-  "breakDropOptions" : [
     [ [ "energywood", 2, { } ] ]
   ],
   "biomePlaced" : true

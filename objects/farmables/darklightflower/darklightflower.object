@@ -12,6 +12,7 @@
 //  "learnBlueprintsOnPickup" : [ "bellamorte", "darklightflower" ],
   "largeImage" : "darklightflower.png:default.3.0",
   //"collectablesOnPickup" : { "fu_plant" : "darklightflower" },
+  "lightColor" : [20, 58, 60],
   "orientations" : [
 	{
       "imageLayers" : [ { "image" : "darklightflower.png:<color>.<stage>.<alt>", "fullbright" : true }, { "image" : "darklightflowerlit.png:<color>.<stage>.<alt>" } ],
@@ -20,10 +21,10 @@
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
-	"spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
-	"requireTilledAnchors" : true,
-      "anchors" : [ "bottom" ]
-
+	  "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+	  "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ],
+      "lightPosition" : [0, 1]
     },
 	{
       "imageLayers" : [ { "image" : "darklightflower.png:<color>.<stage>.<alt>", "fullbright" : true }, { "image" : "darklightflowerlit.png:<color>.<stage>.<alt>" } ],
@@ -33,7 +34,8 @@
       "animationCycle" : 0.5,
       "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
       "requireTilledAnchors" : true,
-      "anchors" : [ "bottom" ]
+      "anchors" : [ "bottom" ],
+      "lightPosition" : [0, 1]
     }
   ],
 

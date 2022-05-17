@@ -7,19 +7,32 @@
   "printable" : true,
   "description" : "A lamp post.",
   "shortdescription" : "Lamp Post",
-  "lightColor" : [171, 177, 147],
+  "lightColor" : [197, 204, 169],
   "inventoryIcon" : "ruinslamppost.png",
   "health" : 12,
   "orientations" : [
     {
-      "dualImage" : "ruinslamppost.png:<color>",
+      "image" : "ruinslamppost.png:<color>",
+      "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+	  
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "left",
+      "lightPosition" : [1, 8]
+    },
+    {
+      "image" : "ruinslamppost.png:<color>",
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "lightPosition" : [0, 8]
     }
   ],
   "biomePlaced" : true

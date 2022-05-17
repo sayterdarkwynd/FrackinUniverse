@@ -1,7 +1,7 @@
 {
   "name" : "deadwood",
   "friendlyName" : "Deadwood",
-  "hueShiftOptions" : [-40, -25, 0, 25, 40],
+  "hueShiftOptions" : [-180, -160, -140, -120, -100, -80, -60, -40, -20, 0, 20, 40, 60, 80, 100, 120, 140, 160, 180],
   "spawnProfile" : {
     "groups" : [
       {
@@ -47,7 +47,7 @@
   },
 
 
-  "parallax" : "/parallax/surface/forestsub.parallax",
+  "parallax" : "/parallax/surface/haunted.parallax",
 
   "ambientNoises" : {
     "day" : {
@@ -67,12 +67,12 @@
     }
   },
 
-    "mainBlock" : "drydirt",
-    "subBlocks" : [ "bleachedbonematerial", "sand2", "biorock" ],
+    "mainBlock" : "dirt",
+    "subBlocks" : [ "bonemeal", "bleachedbonematerial", "cobblestone" ],
     "ores" : "surface",
 
   "surfacePlaceables" : {
-    "grassMod" : [ "bone" ],
+    "grassMod" : [ "bone", "deadleaves" ],
     "grassModDensity" : 0.9,
 
     "items" : [
@@ -89,7 +89,7 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+          "distribution" : "/biomes/distributions.config:mainBiomeRareMicrodungeon",
 
           "type" : "microdungeon",
           "microdungeons" : [ "hauntedmini" ]
@@ -132,29 +132,77 @@
         },
         {
           "mode" : "floor",
-          "priority" : 0.0,
+          "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
-          "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "futombstone" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
         },
-        {
-          "mode" : "floor",
-          "priority" : 0.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
-
-          "type" : "treasureBox",
-          "treasureBoxSets" : [ "weaponChest" ]
-        },
-
-
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+        {
+          "pool" : [
+          [0.35, "redcap2" ],
+          [0.35, "redcap3" ],
+          [0.35, "redcap" ],
+          [0.15, "fireflies1"],
+          [0.50, "tombstone1" ],
+          [0.50, "tombstone2" ],
+          [0.50, "tombstone3" ],
+          [0.50, "tombstone4" ],
+          [0.50, "tombstone5" ],
+          [0.50, "tombstone6" ],
+          [0.50, "tombstone7" ],
+          [0.50, "tombstone8" ],
+          [0.50, "tombstone9" ],
+          [0.50, "tombstone10" ],
+          [0.50, "tombstone11" ],
+          [0.50, "tombthing1" ],
+          [0.50, "tombthing2" ],
+          [0.50, "tombthing3" ],
+          [0.50, "tombthing4" ]
+          ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
           "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -171,7 +219,7 @@
           "distribution" : "/biomes/distributions.config:scatteredSmall",
 
           "type" : "grass",
-          "grasses" : [ "pebbles" ]
+          "grasses" : [ "pebbles", "root" ]
         },
         {
           "mode" : "floor",
@@ -201,34 +249,29 @@
           "type" : "bush",
           "bushes" : [
             {
-              "name" : "desertrocks",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "rocklarge",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "sandstoneplant",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "skeletalbush",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "tendonlight",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
               "name" : "testbush2",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
+            },
+            {
+              "name" : "wicked",
+              "baseHueShiftMax" : 15,
+              "modHueShiftMax" : 0
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffAverage",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "aridskeleton",
+              "baseHueShiftMax" : 20,
+              "modHueShiftMax" : 20
             }
           ]
         },
@@ -236,26 +279,125 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseLarge",
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
 
           "type" : "tree",
           "treeFoliageHueShiftMax" : 180,
           "treeStemHueShiftMax" : 15,
-          "treeStemList" : [ "burnttreestem" ],
-          "treeFoliageList" : [ "burntleaves", "burntmoss" ]
+          "treeStemList" : [ "old", "barren", "skeletal", "stripey" ],
+          "treeFoliageList" : [ "willowy", "weirdly" ]
         },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseLarge",
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
 
           "type" : "tree",
           "treeFoliageHueShiftMax" : 180,
           "treeStemHueShiftMax" : 15,
-          "treeStemList" : [ "mushroomstalk" ],
-          "treeFoliageList" : [ "mushroomredtop", "mushroomyellowtop" ]
+          "treeStemList" : [ "edelwood" ],
+          "treeFoliageList" : [ "" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 15,
+          "treeStemHueShiftMax" : 15,
+          "treeStemList" : [ "deadtree1" ],
+          "treeFoliageList" : [ "deadmoss" ]
         }
+    ]
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "bone", "deadleaves" ],
+    "grassModDensity" : 0.2,
+
+    "ceilingGrassMod" : [ "roots" ],
+    "ceilingGrassModDensity" : 0.3,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 10,
+        "treeStemList" : [ "rootvine", "rootvine2" ],
+        "treeFoliageList" : [ "" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "grass",
+        "grasses" : [ "root" ]
+      }
     ]
   }
 }

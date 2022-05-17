@@ -71,11 +71,11 @@
       }
     },
 
-  "hueShiftOptions" : [-165, -70, -25, 0, 25, 70, 165],
+  "hueShiftOptions" : [-20, -10, 0, 10, 20, 30, 40],
 
     "mainBlock" : "genetile",
-    "subBlocks" : [ "rottingflesh", "boneyflesh" ],
-    "ores" : "ff_deepsurfaceshadowOres",
+    "subBlocks" : [ "fleshblock", "boneyflesh" ],
+    "ores" : "ff_surfaceatropusOres",
 
   "surfacePlaceables" : {
     "grassMod" : [ "tentaclegrass" ],
@@ -86,7 +86,48 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
           "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "cellChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "ffatropusChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -107,38 +148,203 @@
         },
         {
           "mode" : "floor",
-          "priority" : 3.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:randomEncounter",
-
-          "type" : "microdungeon",
-          "microdungeons" : [ "tar", "randomencounter" ]
-        },
-        {
-          "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:rareClumpyLarge",
+          "distribution" : "/biomes/distributions.config:denseLarge",
 
-          "type" : "bush",
-          "bushes" : [
+          "type" : "object",
+          "objectSets" : [
             {
-              "name" : "tentacleshrub",
-              "baseHueShiftMax" : 30,
-              "modHueShiftMax" : 20
-            },
-            {
-              "name" : "fleshcorpse",
-              "baseHueShiftMax" : 30,
-              "modHueShiftMax" : 20
+              "pool" : [ [0.15, "fleshbush1" ], [0.15, "fleshbush2" ], [0.15, "fleshbush3" ], [0.15, "fleshbush4" ], [0.15, "fleshbush5" ], [0.15, "fleshbush6" ] ],
+              "parameters" : { }
             }
           ]
         },
         {
           "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "cellstructure1" ], [0.35, "cellstructure2" ], [0.35, "cellstructure3" ], [0.35, "cellstructure4" ], [0.35, "cellstructure5" ], [0.35, "dnaplant1" ], [0.35, "dnaplant2" ], [0.35, "dnaplant3" ], [0.35, "dnaplant4" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffAverage",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 35,
+          "treeStemHueShiftMax" : 35,
+          "treeStemList" : [ "fleshstem", "fleshstem2" ],
+          "treeFoliageList" : [ "fleshfoliage", "fleshfoliage2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.72, "braintentacle" ], [0.72, "brainspud" ], [0.72, "bonebud" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" :
+              [
+              [0.15, "heckaltar" ],
+              [0.15, "heckbush1" ],
+              [0.15, "heckbush2" ],
+              [0.15, "heckbush3" ],
+              [0.15, "heckbush4" ],
+              [0.15, "heckbush5" ],
+              [0.15, "heckbush6" ],
+              [0.15, "heckbush7" ],
+              [0.15, "heckbush8" ],
+              [0.15, "heckbush9" ],
+              [0.15, "heckbush10" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "grass",
+          "grasses" : [ "freebone", "fleshbone", "fleshplant", "heckflower", "atropusgrass1" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "atropusbush1",
+              "baseHueShiftMax" :35,
+              "modHueShiftMax" : 35
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "atropusbush2",
+              "baseHueShiftMax" :35,
+              "modHueShiftMax" : 35
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "fleshcorpse",
+              "baseHueShiftMax" :35,
+              "modHueShiftMax" : 35
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "fleshbonebush",
+              "baseHueShiftMax" :35,
+              "modHueShiftMax" : 35
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "eyebush",
+              "baseHueShiftMax" :35,
+              "modHueShiftMax" : 35
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "tendonbush",
+              "baseHueShiftMax" : 35,
+              "modHueShiftMax" : 35
+            },
+            {
+              "name" : "tendonlight",
+              "baseHueShiftMax" : 35,
+              "modHueShiftMax" : 35
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:randomEncounter",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "randomencounter" ]
+        },
+        {
+          "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -161,19 +367,77 @@
 
           "type" : "microdungeon",
           "microdungeons" : [ "aridplatforming" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.50, "isn_wildmeatplant" ],
+              [0.50, "wildtentacleplant" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
         }
     ]
   },
   "undergroundPlaceables" : {
     "grassMod" : [ "tentaclegrass" ],
-    "grassModDensity" : 0.9,
+    "grassModDensity" : 0.7,
 
     "items" : [
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "cellChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "ffatropusChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
 
           "type" : "object",
           "objectSets" : [
@@ -187,41 +451,301 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
         },
         {
           "mode" : "floor",
-          "priority" : 3.0,
+          "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+          "distribution" : "/biomes/distributions.config:undergroundtechChests",
 
-          "type" : "microdungeon",
-          "microdungeons" : [ "terrainfeatures", "rockclimb","rocktunnel",  "toxicmicrodungeons", "sandstone", "blockpile", "rockyshapes", "rods", "spikes" ]
-        },
-
-        {
-          "mode" : "floor",
-          "priority" : 3.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:tiyDistPlatform",
-
-          "type" : "microdungeon",
-          "microdungeons" : [ "aridplatforming" ]
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "techChest" ]
         },
         {
           "mode" : "ceiling",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseMedium",
+          "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 220,
-          "treeStemHueShiftMax" : 220,
-          "treeStemList" : [ "bloodvine" ],
-          "treeFoliageList" : [ "nofoliagevine"  ]
+          "treeFoliageHueShiftMax" : 0,
+          "treeStemHueShiftMax" : 15,
+          "treeStemList" : [ "bloodvine", "colourfulvine" ],
+          "treeFoliageList" : [ "" ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 35,
+          "treeStemHueShiftMax" : 35,
+          "treeStemList" : [ "fleshvine_atropus", "fleshvine2", "bloodvine" ],
+          "treeFoliageList" : [ "nofoliagevine" ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 35,
+          "treeStemHueShiftMax" : 35,
+          "treeStemList" : [ "bluevein", "vein" ],
+          "treeFoliageList" : [ "blueveiny", "veiny" ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 35,
+          "treeStemHueShiftMax" : 35,
+          "treeStemList" : [ "eyevein" ],
+          "treeFoliageList" : [ "eyeveiny" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.15, "fleshbush1" ], [0.15, "fleshbush2" ], [0.15, "fleshbush3" ], [0.15, "fleshbush4" ], [0.15, "fleshbush5" ], [0.15, "fleshbush6" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "cellstructure1" ], [0.35, "cellstructure2" ], [0.35, "cellstructure3" ], [0.35, "cellstructure4" ], [0.35, "cellstructure5" ], [0.35, "dnaplant1" ], [0.35, "dnaplant2" ], [0.35, "dnaplant3" ], [0.35, "dnaplant4" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.72, "braintentacle" ], [0.72, "brainspud" ], [0.72, "bonebud" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" :
+              [
+              [0.15, "heckaltar" ],
+              [0.15, "heckbush1" ],
+              [0.15, "heckbush2" ],
+              [0.15, "heckbush3" ],
+              [0.15, "heckbush4" ],
+              [0.15, "heckbush5" ],
+              [0.15, "heckbush6" ],
+              [0.15, "heckbush7" ],
+              [0.15, "heckbush8" ],
+              [0.15, "heckbush9" ],
+              [0.15, "heckbush10" ],
+              [0.15, "hecklight1" ],
+              [0.15, "hecklight2" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "grass",
+          "grasses" : [ "freebone", "fleshbone", "fleshplant", "heckflower", "atropusgrass1" ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "grass",
+          "grasses" : [ "ceilingfleshplant", "ceilingfleshbone" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "atropusbush1",
+              "baseHueShiftMax" :35,
+              "modHueShiftMax" : 35
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "atropusbush2",
+              "baseHueShiftMax" :35,
+              "modHueShiftMax" : 35
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "fleshcorpse",
+              "baseHueShiftMax" :35,
+              "modHueShiftMax" : 35
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "fleshbonebush",
+              "baseHueShiftMax" :35,
+              "modHueShiftMax" : 35
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "eyebush",
+              "baseHueShiftMax" :35,
+              "modHueShiftMax" : 35
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "tendonbush",
+              "baseHueShiftMax" : 35,
+              "modHueShiftMax" : 35
+            },
+            {
+              "name" : "tendonlight",
+              "baseHueShiftMax" : 35,
+              "modHueShiftMax" : 35
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "ceilingflesh",
+              "baseHueShiftMax" :35,
+              "modHueShiftMax" : 35
+            },
+            {
+              "name" : "ceilingbones",
+              "baseHueShiftMax" : 35,
+              "modHueShiftMax" : 35
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "ceilinggrub",
+              "baseHueShiftMax" : 35,
+              "modHueShiftMax" : 35
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "ceilingeye",
+              "baseHueShiftMax" : 35,
+              "modHueShiftMax" : 35
+            }
+          ]
         }
     ]
   }

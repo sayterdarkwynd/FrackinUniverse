@@ -6,7 +6,8 @@
 			"repeatY": true,
 			"tileLimitTop": 610,
 			"parallax": 1.0,
-			"nohueshift": true
+			"nohueshift": true,
+			"directives" : "hueshift=8"
 		},
 		{
 			"kind": "darkoceanbelow",
@@ -58,14 +59,6 @@
 			"unlit": true
 		},
 		{
-			"kind": "aetherrare",
-			"offset": [0, 200],
-			"baseCount": 5,
-			"parallax": [19, 12.001],
-			"frequency": 1,
-			"fadePercent": 0.6
-		},
-		{
 			"kind": "aetherocean7",
 			"offset": [0, 290],
 			"parallax": [7, 1.20],
@@ -96,20 +89,19 @@
 		{
 			"kind": "aetherback",
 			"baseCount": 3,
-			"offset": [19, 340],
-			"parallax": 9,
+			"offset": [19, 440],
+			"parallax": [10, 1.75],
 			"nightCorrelation": 0,
 			"minSpeed": 0,
 			"maxSpeed": 0
 		},
 		{
-			"kind": "aethermid",
-			"baseCount": 2,
-			"offset": [0, 360],
-			"parallax": 6,
-			"nightCorrelation": 0,
-			"minSpeed": 0,
-			"maxSpeed": 0
+			"kind": "starsky1",
+			"offset": [507, -118],
+			"noRandomOffset": true,
+			"parallax": 4,
+			"nohueshift": true,
+			"unlit": true
 		},
 		{
 			"kind": "starsky1",
@@ -128,6 +120,30 @@
 			"unlit": true
 		},
 		{
+			"kind": "starsky2",
+			"offset": [338, 70],
+			"noRandomOffset": true,
+			"parallax": 6,
+			"nohueshift": true,
+			"unlit": true
+		},
+		{
+			"kind": "starsky2",
+			"offset": [676, -100],
+			"noRandomOffset": true,
+			"parallax": 6,
+			"nohueshift": true,
+			"unlit": true
+		},
+		{
+			"kind": "starsky3",
+			"offset": [-507, 528],
+			"noRandomOffset": true,
+			"parallax": 8,
+			"nohueshift": true,
+			"unlit": true
+		},
+		{
 			"kind": "starsky3",
 			"offset": [0, 260],
 			"noRandomOffset": true,
@@ -136,8 +152,32 @@
 			"unlit": true
 		},
 		{
+			"kind": "starsky3",
+			"offset": [507, -8],
+			"noRandomOffset": true,
+			"parallax": 8,
+			"nohueshift": true,
+			"unlit": true
+		},
+		{
+			"kind": "starsky4",
+			"offset": [-507, 568],
+			"noRandomOffset": true,
+			"parallax": 11,
+			"nohueshift": true,
+			"unlit": true
+		},
+		{
 			"kind": "starsky4",
 			"offset": [0, 280],
+			"noRandomOffset": true,
+			"parallax": 11,
+			"nohueshift": true,
+			"unlit": true
+		},
+		{
+			"kind": "starsky4",
+			"offset": [507, -8],
 			"noRandomOffset": true,
 			"parallax": 11,
 			"nohueshift": true,
@@ -226,11 +266,12 @@
 		},
 		{
 			"kind": "nebula",
-			"offset": [0, 150],
+			"offset": [500, 150],
 			"noRandomOffset": true,
 			"parallax": 1000000,
 			"nohueshift": true,
-			"unlit": true
+			"unlit": true,
+			"timeOfDayCorrelation" : "nightVisible"
 		}
 	]
 }

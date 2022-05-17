@@ -1,53 +1,31 @@
 {
-    "objectName": "pinkbloom",
-    "rarity": "Common",
-    "category": "decorative",
-    "price": 400,
-    "printable": false,
-    "description": "Gale Lily",
-    "shortdescription": "Gale Lily",
-    "race": "apex",
-    "inventoryIcon": "pinkbloom.png",
-    "orientations": [
-        {
-            "image": "pinkbloom.png:<color>",
-            "imagePosition": [
-                0,
-                0
-            ],
-            "frames": 1,
-            "animationCycle": 0.5,
-            "spaceScan": 0.1,
-            "anchors": [
-                "bottom"
-            ]
-        }
-    ],
-    "smashSounds": [
-        "/sfx/tools/axe_chop_alt_heavy.ogg"
-    ],
-    "smashDropOptions": [
-        [
-            [
-                "plantfibre",
-                2,
-                {
+  "objectName": "pinkbloom",
+  "rarity": "Common",
+  "category": "decorative",
+  "printable": false,
+  
+  "description": "Gale Lily",
+  "shortdescription": "Gale Lily",
+  "race": "apex",
+  
+  "inventoryIcon": "pinkbloom.png",
+  "orientations" : [
+    {
+      "dualImage" : "pinkbloom.png:<color>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
 
-                }
-            ]
-        ]
-    ],
-    "breakDropOptions": [
-        [
-            [
-                "plantfibre",
-                2,
-                {
-
-                }
-            ]
-        ]
-    ],
-    "biomePlaced": true,
-    "scannable": false
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/plant_break1.ogg", "/sfx/objects/plant_break2.ogg", "/sfx/objects/plant_break3.ogg", "/sfx/objects/plant_break4.ogg", "/sfx/objects/plant_break5.ogg", "/sfx/objects/plant_break6.ogg" ],
+  "smashParticles" : [ { "count" : 4, "particle" : "plantshard" } ],
+  "smashDropOptions" : [
+    [ [ "plantfibre", 2, { } ] ]
+  ],
+  "biomePlaced": true,
+  "scannable": false
 }

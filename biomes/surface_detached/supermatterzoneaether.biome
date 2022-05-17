@@ -1,26 +1,69 @@
 {
   "name" : "supermatterzoneaether",
   "friendlyName" : "Aether Erchius Expanse",
-  "hueShiftOptions" : [ -125, -40, -25, 0, 25, 40, 125 ],
+  "hueShiftOptions" : [ -120, -110, -100, -40, -30, -20, -10, 0, 10, 20, 30, 40, 100, 110, 120 ],
 
     "mainBlock" : "supermatter",
-    "subBlocks" : [ "violiumcrystal" ],
+    "subBlocks" : [ "violiumcrystal", "fuaetherstone" ],
     "ores" : "ff_crystalmoonOres",
 
-  "parallax" : "/parallax/surface/crystalmoon.parallax",
+    "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 2,
+        "pool" : [
+          [ 0.1111, "lumoth" ],
+          [ 0.1111, "narfin" ],
+          [ 0.1111, "voltip" ],
+          [ 0.1111, "garflipp" ]
+        ]
+      },
+      {
+        "select" : 1,
+        "pool" : [
+          [ 0.1, "normalbee" ],
+          [ 0.1, "stinkjack" ],
+          [ 0.1, "fireflyspawner" ],
+		  [ 0.1, "goldbuck" ],
+		  [ 0.1, "scuttleploom" ],
+		  [ 0.1, "frogcritter" ],
+		  [ 0.1, "harecritter" ],
+		  [ 0.1, "owlcritter" ],
+		  [ 0.1, "tritrotscritter" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      }
+    ],
+    "monsterParameters" : {
+      "statusSettings" : {
+        "stats" : {
+          "ffextremeradiationImmunity" : {
+            "baseValue" : 1.0
+          },
+          "ffextremecoldImmunity" : {
+            "baseValue" : 1.0
+          }
+        }
+      }
+    }
+  },
+  "parallax" : "/parallax/surface/aethercrystalline.parallax",
 
   "ambientNoises" : {
     "day" : {
-      "tracks" : [ "/music/alienlandscape.ogg","/sfx/environmental/arctic_day.ogg", "/sfx/environmental/arid_day.ogg", "/sfx/environmental/moon_surface.ogg"  ]
+      "tracks" : [ "/sfx/ambiance/sulphuricambiance2.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/sfx/environmental/arctic_night.ogg", "/sfx/environmental/arid_night.ogg", "/sfx/environmental/moon_underground.ogg" ]
+      "tracks" : [ "/sfx/ambiance/sulphuricambiance2.ogg" ]
     }
   },
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/shores_of_tranquility.ogg", "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/alienlandscape.ogg", "/music/shores_of_tranquility.ogg", "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
       "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
@@ -81,36 +124,24 @@
           "objectSets" : [
             {
               "pool" : [
-              [0.35, "crystalcavebush1" ],
-              [0.35, "crystalcavebush2" ],
-              [0.35, "crystalcavebush3" ],
-              [0.35, "crystalcavebush4" ],
-              [0.35, "crystalcavebush5" ],
-              [0.35, "crystalcavebush6" ],
-              [0.35, "crystalcavebush7" ],
-              [0.35, "crystalcavebush8" ],
-              [0.35, "crystalcavebush9" ],
-              [0.35, "crystalcavebush10" ],
-              [0.35, "crystalcavebush11" ],
-              [0.35, "crystalcavebush12" ],
-              [0.35, "crystalcavebush13" ],
               [0.35, "crystalcavebush14" ],
               [0.35, "crystalcavebush15" ],
               [0.35, "crystalcavebush16" ],
-              [0.35, "crystalcavebush17" ],
-              [0.35, "crystallinebush1" ],
-              [0.35, "crystallinebush2" ],
-              [0.35, "crystallinebush3" ],
-              [0.35, "crystallinebush4" ],
-              [0.35, "crystallarge1" ],
-              [0.35, "crystallarge2" ],
-              [0.35, "crystallarge3" ]
+              [0.35, "crystalcavebush17" ]
               ],
               "parameters" : { }
             }
           ]
         },
+        {
+          "mode" : "floor",
+          "priority" : 4.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
 
+          "type" : "grass",
+          "grasses" : [ "crystalflower" ]
+        },
         {
           "mode" : "floor",
           "priority" : 5.0,
@@ -124,10 +155,10 @@
           "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "none", "canyonmini", "terrainfeatures", "aethermini" ]
+          "microdungeons" : [ "aethermini" ]
         },
         {
           "mode" : "floor",
@@ -140,12 +171,67 @@
         },
         {
           "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:minibiomeChests",
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "crystalChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "techChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
         },
         {
           "mode" : "floor",
@@ -155,21 +241,6 @@
 
           "type" : "microdungeon",
           "microdungeons" : [ "greenplatforming" ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
-
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "crystals",
-              "baseHueShiftMax" : 225,
-              "modHueShiftMax" : 225
-            }
-          ]
         }
     ]
   },

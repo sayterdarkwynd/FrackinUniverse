@@ -17,13 +17,26 @@
   "orientations" : [
     {
       "imageLayers" : [ { "image" : "tech2left.png:<color>.<frame>", "fullbright" : true }, { "image" : "tech2fullbright.png:<color>.<frame>" } ],
-
+      "flipImages" : true,
       "imagePosition" : [-45, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
 
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ],
+      "direction" : "left",
+      "collision" : "platform"
+
+    },
+    {
+      "imageLayers" : [ { "image" : "tech2left.png:<color>.<frame>", "fullbright" : true }, { "image" : "tech2fullbright.png:<color>.<frame>" } ],
+      "imagePosition" : [-45, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
       "collision" : "platform"
 
     }

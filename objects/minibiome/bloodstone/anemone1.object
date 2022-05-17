@@ -11,7 +11,7 @@
   "inventoryIcon" : "anemone1.png",
   "orientations" : [
     {
-      "image" : "anemone1.png:<color>",
+      "dualImage" : "anemone1.png:<color>",
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
@@ -21,12 +21,11 @@
 
     }
   ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/plant_break1.ogg", "/sfx/objects/plant_break2.ogg", "/sfx/objects/plant_break3.ogg", "/sfx/objects/plant_break4.ogg", "/sfx/objects/plant_break5.ogg", "/sfx/objects/plant_break6.ogg" ],
+  "smashParticles" : [ { "count" : 4, "particle" : "bloodplantshard" } ],
   "smashDropOptions" : [
     [ [ "fuscienceresource", 5, { } ] ]
   ],
-
-  "breakDropOptions" : [
-    [ [ "fuscienceresource", 5, { } ] ]
-  ]
+  "biomePlaced" : true
 }

@@ -118,6 +118,20 @@
           ]
           }
 	},
+ {
+   "op": "add",
+   "path": "/surfacePlaceables/items/-",
+   "value":
+   {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+   }
+ },
 
 {"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
   "mode" : "floor",
@@ -129,6 +143,27 @@
   "microdungeons" : [ "lakes_water", "randomencounter","newhumanmicro", "newavianmicro", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter" ]
   }
 },
+
+ {
+   "op": "replace",
+   "path": "/undergroundPlaceables/items/4/treeStemHueShiftMax",
+   "value": 40
+ },
+
+ {
+   "op": "add",
+   "path": "/undergroundPlaceables/items/-",
+   "value":
+   {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+   }
+ },
 
 {"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
   "mode" : "floor",

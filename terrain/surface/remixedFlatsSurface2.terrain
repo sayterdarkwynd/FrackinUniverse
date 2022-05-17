@@ -1,0 +1,90 @@
+{
+  "name" : "remixedFlatsSurface2",
+
+  //jaggy ledges
+  "type" : "displacement",
+  "xType" : "perlin",
+  "xOctaves" : 2,
+  "xFreq" : 0.07,
+  "xAmp" : 10,
+  "xXInfluence" : 0.3,
+  "xYInfluence" : 0.5,
+  "yType" : "perlin",
+  "yOctaves" : 1,
+  "yFreq" : 0.02,
+  "yAmp" : 1,
+  "yYInfluence" : 0,
+
+  "source" : {
+    "type" : "mix",
+
+    "mixSource" : {
+      "type" : "perlin",
+      "function" : "perlin",
+      "octaves" : 2,
+      "freq" : 0.004,
+      "amp" : 10,
+      "bias" : 3.0,
+      "xInfluence" : 1,
+      "yInfluence" : 0.1
+    },
+
+    "aSource" : {
+      //mountain tops
+      "type" : "displacement",
+      "xType" : "perlin",
+      "xOctaves" : 1,
+      "xFreq" : 0.007,
+      "xAmp" : 0,
+      "yType" : "perlin",
+      "yOctaves" : 3,
+      "yFreq" : 0.009,
+      "yAmp" : 30,
+      "yBias" : -30,
+      "yClamp" : [-60, 10],
+      "yClampSmoothing" : 10,
+      "yYInfluence" : 0.1,
+
+      "source" : {
+        "type" : "flatSurface",
+
+        "adjustment" : 40
+      }
+    },
+
+    "bSource" : {
+      //low hills
+      "type" : "displacement",
+      "xType" : "perlin",
+      "xOctaves" : 2,
+      "xFreq" : 0.01,
+      "xAmp" : 0,
+      "yType" : "perlin",
+      "yOctaves" : 1,
+      "yFreq" : 0.015,
+      "yAmp" : 5,
+      "yClamp" : [-60, 10],
+      "yClampSmoothing" : 5,
+      "yYInfluence" : 0.2,
+
+      "source" : {
+        //slower, lower hills
+        "type" : "displacement",
+        "xType" : "perlin",
+        "xOctaves" : 2,
+        "xFreq" : 0.01,
+        "xAmp" : 0,
+        "yType" : "perlin",
+        "yOctaves" : 1,
+        "yFreq" : 0.005,
+        "yAmp" : 20,
+
+        "source" : {
+          "type" : "flatSurface",
+
+          "adjustment" : 0
+        }
+      }
+    }
+  }
+}

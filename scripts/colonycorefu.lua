@@ -15,20 +15,21 @@ function init()
 	wellRange=config.getParameter("wellRange",128)
 	rentTime=config.getParameter("productionTime",150)
 	wellSlots=config.getParameter('wellslots')
-	maxOfflineSeconds=config.getParameter("maxOfflineSeconds",86400)--86400 1 day
+	maxOfflineSeconds=config.getParameter("maxOfflineSeconds",3600)--max amount of real time offline in seconds. setting to max 1 day
 	bonusHappiness = 10
 	rentTimer = 0
 	wellInit()
 	setDesc()
-	sb.logInfo("init")
+	--sb.logInfo("init")
 
 	--figuring out how many ticks we missed
 	local leftTime = config.getParameter("leftTime")
-	sb.logInfo( tostring(leftTime) )
+
+	--sb.logInfo( tostring(leftTime) )
 	if leftTime then
 		local diff=os.time() - leftTime
 		if diff>0 then
-			diff=math.min(math.floor(diff/rentTime),math.floor(maxOfflineSeconds/rentTime))
+			diff=math.floor(math.min(diff,maxOfflineSeconds)/rentTime)
 			offlineTicks=math.max(-1, diff - 1)
             rentTimer=rentTime+1
 		end
@@ -44,7 +45,7 @@ function update(dt)
 	else
 		scanTimer=scanTimer+dt
 	end
-	rentTimer = rentTimer + 1
+	rentTimer = rentTimer + dt
 	if (rentTimer > rentTime) then
 		world.containerPutItemsAt(entity.id(),{name=wellSlots[1].name,count=(10 * (wellsDrawing) * (bonusHappiness/10))*(1+offlineTicks)},0)
 		offlineTicks=0
@@ -76,8 +77,8 @@ end
 
 function uninit()
 	object.setConfigParameter("leftTime", os.time() )
-	sb.logInfo( tostring( config.getParameter("leftTime", "LMAO NOPE") ) )
-	sb.logInfo("uninit")
+	--sb.logInfo( tostring( config.getParameter("leftTime", "LMAO NOPE") ) )
+	--sb.logInfo("uninit")
 end
 
 function fu_isColonyCore() return true end

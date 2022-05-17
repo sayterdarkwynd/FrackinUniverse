@@ -16,6 +16,7 @@ local parentCore --save the colony core as a local so you don't have to look for
 
 function init()
 	--transferUtil.loadSelfContainer()
+	storage.position=entity.position()
     object.setInteractive(false)
 	self.powerConsumption = config.getParameter("isn_requiredPower")
     productionTime = (config.getParameter("productionTime",120))/60

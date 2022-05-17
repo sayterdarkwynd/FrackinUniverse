@@ -1,0 +1,56 @@
+[
+  {
+    "op": "replace",
+    "path": "/orientations/0/imagePosition",
+    "value": [-8, -17]
+  },
+ 
+  {
+    "op": "replace",
+    "path": "/orientations/0/lightPosition",
+    "value": [0, -2]
+  },
+ 
+  {
+    "op": "replace",
+    "path": "/orientations/1/imagePosition",
+    "value": [-8, -17]
+  },
+ 
+  {
+    "op": "replace",
+    "path": "/orientations/1/lightPosition",
+    "value": [0, -2]
+  },
+ 
+  {
+    "op": "add",
+    "path": "/smashOnBreak",
+    "value": true
+  },
+ 
+  {
+    "op": "add",
+    "path": "/smashSounds",
+    "value": [ "/sfx/projectiles/tar_hit_organic1.ogg", "/sfx/projectiles/tar_hit_organic2.ogg", "/sfx/projectiles/tar_hit_organic3.ogg", "/sfx/projectiles/tar_hit_organic4.ogg", "/sfx/projectiles/tar_hit_organic5.ogg" ]
+  },
+ 
+  {
+    "op": "add",
+    "path": "/smashParticles",
+    "value": [ { "count" : 5, "particle" : "biovineshard" } ]
+  },
+ 
+  {
+    "op": "remove",
+    "path": "/breakDropOptions"
+  },
+ 
+  {
+    "op": "add",
+    "path": "/smashDropOptions",
+    "value": [
+      [ [ "glowfibre", 1, { } ] ]
+    ]
+  }
+]
