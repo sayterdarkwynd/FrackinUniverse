@@ -31,7 +31,7 @@ function fillPercent(container)
 			count = count + 1
 
 			if size == 1 then
-				size = 1000
+				size = item.maxStack
 				count = item.count
 			end
 		end
