@@ -19,13 +19,80 @@
     "particles" : {
       "breakTree" : {
         "density" : 3,
-        "options" : [ {
-            "image" : "/particles/treestems/wood.png",
-            "timeToLive" : 10
-          } ]
+        "options" : [
+          {
+            "type" : "ember",
+            "color" : [89, 122, 9],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, -30],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialPosition" : [1.0, 1.0],
+              "initialVelocity" : [1.0, 1.0]
+            }
+          },
+          {
+            "type" : "ember",
+            "color" : [138, 171, 58],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, -30],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialPosition" : [1.0, 1.0],
+              "initialVelocity" : [1.0, 1.0]
+            }
+          },
+          {
+            "type" : "ember",
+            "color" : [196, 229, 116],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, -30],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialPosition" : [1.0, 1.0],
+              "initialVelocity" : [1.0, 1.0]
+            }
+          }
+        ]
       },
-      "hitGround" : { "density" : 3, "options" : [ { "animation" : "/animations/dusttest/dusttest.animation", "initial" : "drift", "rotation" : 3.14, "timeToLive" : 3 } ] },
-      "damageTree" : { "density" : 1, "options" : [ { "image" : "/particles/treestems/something.png", "timeToLive" : 10 } ] }
+      "hitGround" : {
+        "density" : 3,
+        "options" : [ {
+          "type" : "animated",
+          "animation" : "/animations/dusttest/dusttest.animation",
+          "timeToLive" : 3,
+          "destructionAction" : "shrink",
+          "destructionTime" : 1.0,
+          "variance" : {
+            "rotation" : 180,
+            "timeToLive" : 1.0,
+            "initialPosition" : [1.0, 1.0],
+            "initialVelocity" : [1.0, 1.0]
+          }
+        } ]
+      },
+      "damageTree" : {
+        "density" : 1,
+        "options" : [ {
+          "type" : "ember",
+          "color" : [48, 67, 1],
+          "timeToLive" : 10,
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, -30],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialPosition" : [1.0, 1.0],
+              "initialVelocity" : [1.0, 1.0]
+            }
+        } ]
+      }
     }
   },
   "base" : {

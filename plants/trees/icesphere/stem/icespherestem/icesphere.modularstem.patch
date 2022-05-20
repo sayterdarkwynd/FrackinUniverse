@@ -1,0 +1,85 @@
+[
+  {
+    "op": "replace",
+    "path": "/shape",
+    "value": "icesphere"
+  },
+  {
+    "op": "replace",
+    "path": "/dropConfig/sounds/breakTree",
+    "value": [ { "file" : "/sfx/environmental/tree_crystal_breaking.ogg" } ]
+  },
+  {
+    "op": "replace",
+    "path": "/dropConfig/sounds/hitGround",
+    "value": [ { "file" : "/sfx/environmental/tree_crystal_hitground.ogg" } ]
+  },
+  {
+    "op": "replace",
+    "path": "/dropConfig/sounds/damageTree",
+    "value": [ { "file" : "/sfx/tools/axe_chop_crystal1.ogg" }, { "file" : "/sfx/tools/axe_chop_crystal2.ogg" }, { "file" : "/sfx/tools/axe_chop_crystal3.ogg" } ]
+  },
+  {
+    "op": "replace",
+    "path": "/dropConfig/particles/breakTree",
+    "value": 
+      {
+        "density" : 3,
+        "options" : [
+          {
+            "type" : "ember",
+            "color" : [203, 220, 222],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, -30],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialPosition" : [1.0, 1.0],
+              "initialVelocity" : [1.0, 1.0]
+            }
+          },
+          {
+            "type" : "ember",
+            "color" : [231, 240, 240],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, -30],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialPosition" : [1.0, 1.0],
+              "initialVelocity" : [1.0, 1.0]
+            }
+          },
+          {
+            "type" : "ember",
+            "color" : [245, 249, 253],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, -30],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialPosition" : [1.0, 1.0],
+              "initialVelocity" : [1.0, 1.0]
+            }
+          }
+        ]
+      }
+  },
+  {
+    "op": "replace",
+    "path": "/dropConfig/particles/damageTree/options/0/type",
+    "value": "ember"
+  },
+  {
+    "op": "remove",
+    "path": "/dropConfig/particles/damageTree/options/0/image"
+  },
+  {
+    "op": "add",
+    "path": "/dropConfig/particles/damageTree/options/0/color",
+    "value": [100, 104, 124]
+  }
+]
