@@ -21,39 +21,44 @@
         "density" : 3,
         "options" : [
           {
-            "color" : [24, 20, 38],
-            "timeToLive" : 10
-          },
-          {
-            "color" : [33, 31, 57],
-            "timeToLive" : 10
-          },
-          {
-            "color" : [57, 49, 78],
-            "timeToLive" : 10
-          }
-        ]
-      },
-      "hitGround" : {
-        "density" : 3,
-        "options" : [
-          {
+            "type" : "ember",
             "color" : [24, 20, 38],
             "timeToLive" : 10,
-            "initial" : "upwards"
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           },
           {
+            "type" : "ember",
             "color" : [33, 31, 57],
             "timeToLive" : 10,
-            "initial" : "upwards"
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           },
           {
+            "type" : "ember",
             "color" : [57, 49, 78],
             "timeToLive" : 10,
-            "initial" : "upwards"
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           }
         ]
       }
+      //no hitground particles due to severe lag
     }
   },
 
