@@ -1,11 +1,9 @@
 function init()
-  script.setUpdateDelta(5)
+	script.setUpdateDelta(5)
 end
 
 function update(dt)
-	status.setResourcePercentage("food", 1.0)
-end
-
-function uninit()
-
+	if status.isResource("food") then
+		status.setResourcePercentage("food", 1.0)
+	end
 end
