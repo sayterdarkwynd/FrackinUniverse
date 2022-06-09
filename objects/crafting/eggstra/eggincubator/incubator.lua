@@ -10,7 +10,7 @@ function init()
 	self.centrifugeType = config.getParameter("centrifugeType")
 	incubation = config.getParameter("incubation")
 
-	-- egg modifiers --not used
+	-- egg modifiers 
 	--eggmodifiers = {
 	--	default = 1
 	--}
@@ -35,7 +35,7 @@ function fillPercent(container)
 			count = count + 1
 
 			if size == 1 then
-				size = item.maxStack
+				size = 999999
 				count = item.count
 			end
 		end
