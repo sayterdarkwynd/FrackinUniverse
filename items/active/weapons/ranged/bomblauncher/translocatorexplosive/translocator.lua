@@ -64,12 +64,10 @@ function teleport()
       status.addEphemeralEffect("translocateattack")
     elseif self.itemLevel == 2 then
       status.addEphemeralEffect("translocateattack2")
-    elseif self.itemLevel == 4 then
+    elseif self.itemLevel == 3 then
       status.addEphemeralEffect("translocateattack3")
-    elseif self.itemLevel == 6 then
+    elseif self.itemLevel == 4 then
       status.addEphemeralEffect("translocateattack4")
-    elseif self.itemLevel == 7 then
-      status.addEphemeralEffect("translocateattack5")
     else
       status.addEphemeralEffect("translocateattack5")
     end
