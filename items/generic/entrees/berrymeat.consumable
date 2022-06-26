@@ -1,28 +1,25 @@
 {
-  "itemName": "berrymeat",
-  "inventoryIcon": "berrymeat.png",
-  "rarity": "Common",
-  "price": 25,
-
-  "description": "The combination of a poisonous berry and a frozen steak ends up with a surprisingly tasty meal!\n^green;Heal ^white;30 ^gray;(^white;2s^gray;)^reset; ^orange;Type: Cooked Meat^reset; ^orange;Type: Cooked Meat + Vegetables^reset;",
-  "shortdescription": "Berrymeat",
-"category":"preparedFood",
-  "tooltipKind": "food",
+  "itemName" : "berrymeat",
+  "rarity" : "Common",
+  "price" : 25,
+  "category" : "preparedFood",
+  "inventoryIcon" : "berrymeat.png",
+  "description" : "The combination of a poisonous berry and a frozen steak ends up with a surprisingly tasty meal!\n^green;Heal ^white;30 ^gray;(^white;2s^gray;)^reset; ^orange;Type: Cooked Meat + Fruits^reset;",
+  "shortdescription" : "Berrymeat",
   "handPosition": [0, 4],
-  "effects": [
-    [
-	  {
-	    "effect": "meatc_plant_meal"
-	  },
-      {
-        "effect": "heal_tier2",
-        "duration": 2
-      },
-      {
-        "effect": "wellfed",
-        "duration": 120
-      }
-    ]
-  ],
-  "blockingEffects": ["wellfed"]
+  "effects" : [ [
+    {
+        "effect" : "heal_tier2"
+    },
+    {
+        "effect" : "meatc_fruit_meal"
+    }
+  ] ],
+  "foodValue" : 50,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [ "wellfed" ]
 }

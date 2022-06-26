@@ -4,11 +4,14 @@
   "price" : 12,
   "category" : "preparedFood",
   "inventoryIcon" : "chocolateyumyum.png",
-  "description" : "A cream-filled moon cake.",
+  "description" : "A cream-filled moon cake. ^orange;Type: Grain + Dairy + Eggs + Sugar^reset;",
   "shortdescription" : "Chocolate Yum Yum",
-  "foodValue" : 10,
+  "effects" : [ [ { "effect" : "cake_meal" } ] ],
+  "foodValue" : 40,
   "tooltipKind" : "food",
   "builder" : "/items/buildscripts/buildfood.lua",
   "maxStack" : 1000,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1,
   "blockingEffects" : ["wellfed"]
 }

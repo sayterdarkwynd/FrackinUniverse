@@ -6,11 +6,12 @@
   "price": 2000,
   "foodValue": 20,
 
-  "description": "Floran delicacy. A live baby chicken.\n^green;Heals ^white;5% ^green;HP ^gray;(^white;5s^gray;)^reset;",
+  "description": "Floran delicacy. A live baby chicken.\n^green;Heals ^white;5% ^green;HP ^gray;(^white;5s^gray;)^reset;\n^red;Type: Raw Meat^reset;",
   "shortdescription": "Crunchy Chick",
   "builder": "/items/buildscripts/buildfood.lua",
 
-  "effects": [ ["regeneration1"] ],
-  "learnBlueprintsOnPickup": [ "cockblock" ]
+  "effects": [ ["regeneration1", "meat_raw"] ],
+  "learnBlueprintsOnPickup": [ "cockblock" ],
   //"learnBlueprintsOnPickup": [ "crunchychickpie","cockblock" ]
+  "blockingEffects" : [ "wellfed" ]
 }

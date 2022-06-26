@@ -4,13 +4,15 @@
   "price" : 5,
   "category" : "preparedFood",
   "inventoryIcon" : "chocodonut.png",
-  "description" : "Delicious donut.\n^green;Type: Fruity Dessert^reset;",
+  "description" : "Delicious donut. ^orange;Type: Grain + Dairy + Eggs + Sugar^reset;",
   "shortdescription" : "Chocolate Donut",
-  "foodValue" : 4,
+  "foodValue" : 35,
   "tooltipKind" : "food",
   "builder" : "/items/buildscripts/buildfood.lua",
   "maxStack" : 1000,
-  "effects" : [ [ { "effect" : "fruit_dessert" } ] ],
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1,
+  "effects" : [ [ { "effect" : "cake_meal" } ] ],
   "blockingEffects" : [
     "wellfed"
   ]

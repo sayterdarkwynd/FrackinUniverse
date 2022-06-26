@@ -1,22 +1,28 @@
 {
-  "itemName": "honeystraw",
-  "rarity": "Common",
-  "category": "food",
-  "price": 50,
-  "inventoryIcon": "honeystraw.png",
-  "description": "A delicious honey straw. Get a sugar high!\n^green;Heal ^white;160 ^gray;(^white;2m^gray;)^reset;",
-  "shortdescription": "Honey Straw",
-  "effects": [
-    [
-      {
-        "effect": "honeyheal2",
-        "duration": 90
-      },
-      {
-        "effect": "fedhoney",
-        "duration": 90
-      }
-    ]
-  ],
-  "blockingEffects": ["fedhoney"]
+  "itemName" : "honeystraw",
+  "rarity" : "Common",
+  "price" : 50,
+  "category" : "food",
+  "inventoryIcon" : "honeystraw.png",
+  "description" : "A delicious honey straw. Get a sugar high!\n^green;Heal ^white;160 ^gray;(^white;2m^gray;)^reset; \n^green;Type: Sugar^reset;",
+  "shortdescription" : "Honey Straw",
+  "effects" : [ [
+    {
+        "effect" : "honeyheal2",
+        "duration" : 90
+    },
+    {
+        "effect" : "fedhoney",
+        "duration" : 90
+    },
+    {
+        "effect" : "sugar_food"
+    }
+  ] ],
+  "foodValue" : 4,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 5,
+  "blockingEffects" : [ "wellfed", "fedhoney" ]
 }

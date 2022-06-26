@@ -1,18 +1,25 @@
 {
-  "itemName": "applejuice",
-  "rarity": "Common",
-  "category": "drink",
-  "inventoryIcon": "applejuice.png",
-  "description": "A sweet juice made of apples.",
-  "shortdescription": "Apple Juice",
-  "eventCategory": "eventCrop",
-  "foodValue": 10,
-  "price": 5,
-  "tooltipKind": "food",
-  //"learnBlueprintsOnPickup": ["methanol"],
-  "builder": "/items/buildscripts/buildfood.lua",
-  "maxStack": 100,
-  "itemAgingScripts": ["/scripts/items/rotting.lua"],
-  "rottingMultiplier": 3.0,
+  "itemName" : "applejuice",
+  "rarity" : "Common",
+  "price" : 115,
+  "category" : "drink",
+  "inventoryIcon" : "applejuice.png",
+  "description" : "A sweet juice made from apples.\n^green;Heal ^white;50% ^green;HP ^gray;(^white;30s^gray;)^reset; \n^green;Type: Fruit^reset;",
+  "shortdescription" : "Apple Juice",
+  "effects" : [ [
+    {
+      "effect" : "regeneration1",
+      "duration" : 30
+    },
+    {
+	  "effect" : "fruit_food"
+	}
+  ] ],
+  "foodValue" : 20,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [ "wellfed" ],
   "emitters" : [ "drinking" ]
 }

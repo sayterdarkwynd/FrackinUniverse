@@ -1,26 +1,25 @@
 {
-  "itemName": "coldmarrowpanini",
-  "inventoryIcon": "coldmarrowpanini.png",
-  "rarity": "Common",
-  "price": 25,
-
-  "description": "A frozen meat and Boneboo sandwich, cooked to perfection - then served cold.\n^green;Heal ^white;20 ^gray;(^white;2s^gray;)^reset; ^orange;Type: Cooked Meat^reset;",
-  "shortdescription": "Coldmarrow Panini",
-
-"category":"preparedFood",
-  "tooltipKind": "food",
+  "itemName" : "coldmarrowpanini",
+  "rarity" : "Common",
+  "price" : 25,
+  "category" : "preparedFood",
+  "inventoryIcon" : "coldmarrowpanini.png",
+  "description" : "A frozen meat and Boneboo sandwich, cooked to perfection - then served cold. ^green;Heal ^white;20 ^gray;(^white;2s^gray;)^reset; ^orange;Type: Cooked Meat + Vegetables^reset;",
+  "shortdescription" : "Coldmarrow Panini",
   "handPosition": [0, 4],
-  "effects": [
-    [
-      "heal_tier1",
-	  {
-	    "effect": "meat_plant"
-	  },
-      {
-        "effect": "wellfed",
-        "duration": 120
-      }
-    ]
-  ],
-  "blockingEffects": ["wellfed"]
+  "effects" : [ [
+    {
+        "effect" : "heal_tier1"
+    },
+    {
+        "effect" : "meatc_plant_meal"
+    }
+  ] ],
+  "foodValue" : 45,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [ "wellfed" ]
 }

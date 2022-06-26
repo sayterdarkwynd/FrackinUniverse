@@ -4,13 +4,16 @@
 	"category": "food",
 	"rarity": "Common",
 	"price": 40,
-	"foodValue": 40,
+	"foodValue": 10,
+	"eventCategory": "eventCrop",
 
 	"tooltipKind": "food",
 	"description": "Has it just melted my teeth?!\n^yellow;^reset;^cyan;+20% Run^reset;: 40s\n^yellow;^reset;^red;Burning^reset;: 10s",
 	"shortdescription": "Phasefruit",
 
 	"builder": "/items/buildscripts/buildfood.lua",
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 3,
 	"effects": [
 		[{
 				"effect": "runboostfood",
