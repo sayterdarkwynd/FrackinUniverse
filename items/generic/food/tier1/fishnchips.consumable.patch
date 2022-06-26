@@ -1,14 +1,10 @@
 [
   {
-    "op": "replace",
-    "path": "/effects",
-    "value": [ [
-    {
-        "effect" : "maxhealthscalingboostfood",
-        "duration" : 450
-    },
-	"fish_plant_meal"
-  ] ]
+    "op": "add",
+    "path": "/effects/0/-",
+    "value": {
+      "effect": "fish_plant_meal"
+    }
   },
   {
     "op": "replace",
