@@ -6834,8 +6834,9 @@
 		"op": "add",
 		"path": "/regionTypes/sulphuricmagma",
 		"value": {
-			"caveLiquid": ["lava", "sulphuricacid"],
-			"caveLiquidChanceRange": [20, 100],
+			"caveLiquid": ["lava"],
+			"caveLiquidSeedDensityRange" : [1, 3],
+			"encloseLiquids" : true,
 			"blockSelector": ["remixedSurface", "remixedMildSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface", "remixedMountainsSurface"],
 			"fgCaveSelector": ["surfaceCaves"],
 			"bgCaveSelector": ["empty"],
@@ -7049,7 +7050,8 @@
 		"path": "/regionTypes/tarball",
 		"value": {
 			"caveLiquid": ["tarliquid", "blacktar"],
-			"caveLiquidChanceRange": [100, 100],
+			"caveLiquidSeedDensityRange" : [1, 3],
+			"encloseLiquids" : true,
 			"blockSelector": ["remixedSurface", "remixedMildSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface", "remixedMountainsSurface"],
 			"fgCaveSelector": ["surfaceCaves", "normalCaves", "sparseCaves"],
 			"bgCaveSelector": ["empty"],
@@ -7837,8 +7839,9 @@
 		"op": "add",
 		"path": "/regionTypes/pitchfield",
 		"value": {
-			"caveLiquid": ["tarliquid", "blacktar", "darkwater", "sludge"],
-			"caveLiquidChanceRange": [55, 100],
+			"caveLiquid": ["blacktar"],
+			"caveLiquidSeedDensityRange" : [20, 20],
+			"encloseLiquids" : true,
 			"blockSelector": ["remixedSurface", "remixedMildSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface"],
 			"fgCaveSelector": ["surfaceCaves"],
 			"bgCaveSelector": ["empty"],

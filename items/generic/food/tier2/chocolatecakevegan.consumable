@@ -4,19 +4,17 @@
   "price" : 380,
   "category" : "preparedFood",
   "inventoryIcon" : "chocolatecake.png",
-  "description" : "A vegan chocolate cake. Like the original, but for ^green;herbivores.^reset;\n^green;Type: Herb Sugar^reset;",
+  "description" : "A vegan chocolate cake. Like the original, but for ^green;herbivores^reset;. ^green;Type: Vegetable Dessert^reset;",
   "shortdescription" : "Vegan Chocolate Cake",
   "effects" : [ [
     {
         "effect" : "maxenergyscalingboostfood",
         "duration" : 540
+    },
+    {
+        "effect" : "plant_dessert"
     }
-  ] ,
-    [
-      "herb_dessert"
-    ]
-  
-  ],
+  ] ],
   "foodValue" : 60,
   "tooltipKind" : "food",
   "builder" : "/items/buildscripts/buildfood.lua",

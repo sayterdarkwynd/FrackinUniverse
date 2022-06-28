@@ -7,9 +7,7 @@
   "description" : "Please don't.\n^cyan;+^white;15% ^cyan;Run ^gray;(^white;1m^gray;)\n^cyan;Caffeinated ^gray;(^white;1m^gray;)\n^blue;+^white;1 ^blue;Madness^reset;",
   "shortdescription" : "Chunky Meat Coffee",
   "handPosition" : [0, -2],
-  "tooltipKind" : "food",
   "effects" : [ [
-    "madnessgain",
     {
       "effect" : "strongcoffee2",
       "duration" : 60
@@ -17,7 +15,16 @@
     {
       "effect" : "runboost15",
       "duration" : 60
+    },
+    {
+      "effect" : "madnessgain"
     }
   ] ],
+  "foodValue" : 25,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1,
+  "blockingEffects" : [ "wellfed" ],
   "emitters" : [ "drinking" ]
 }

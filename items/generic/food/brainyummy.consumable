@@ -4,7 +4,7 @@
   "price" : 42,
   "category" : "preparedFood",
   "inventoryIcon" : "brainyummy.png",
-  "description" : "You've gone ahead and cut the less tasty bits off. Nobody wants to eat cerebellum.\n^red;-^white;10% ^red;HP ^gray;(^white;10s^gray;)\n^blue;+^white;1 ^blue;Madness^reset; ^red;Type: Raw Meat^reset;",
+  "description" : "You've gone ahead and cut the less tasty bits off. Nobody wants to eat cerebellum. ^red;-^white;10% ^red;HP ^gray;(^white;10s^gray;), ^blue;+^white;1 ^blue;Madness^reset; ^red;Type: Raw Meat^reset;",
   "shortdescription" : "Edible Brains",
   //"learnBlueprintsOnPickup" : [ "bowlofbrains" ],
   "effects" : [ [
@@ -17,8 +17,9 @@
   ] ],
   "foodValue" : 30,
   "tooltipKind" : "food",
-
   "builder": "/items/buildscripts/buildfood.lua",
   "maxStack" : 1000,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 0.5,
   "blockingEffects" : [ "wellfed","negativehealth5" ]
 }

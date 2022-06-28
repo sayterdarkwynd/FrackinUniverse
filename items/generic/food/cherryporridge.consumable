@@ -4,12 +4,14 @@
   "price" : 8,
   "category" : "preparedFood",
   "inventoryIcon" : "cherryporridge.png",
-  "description" : "Thick, with whole cherries to accent the flavor. ^green;Type: Herbivore^reset;",
+  "description" : "Thick, with whole cherries to accent the flavor. ^green;Type: Grain^reset;",
   "shortdescription" : "Cherry Porridge",
-  "foodValue" : 14,
+  "foodValue" : 25,
   "tooltipKind" : "food",
   "builder" : "/items/buildscripts/buildfood.lua",
   "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1,
   "blockingEffects" : [
     "wellfed"
   ],

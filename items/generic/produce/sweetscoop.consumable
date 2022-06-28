@@ -4,18 +4,23 @@
 	"category": "food",
 	"rarity": "Uncommon",
 	"price": 60,
-	"foodValue": 40,
+	"foodValue": 30,
 
 	"tooltipKind": "food",
-	"description": "^yellow;^reset;^cyan;Energy x1.2^reset;: 2m",
+	"description": "^yellow;^reset;^cyan;Energy x1.2^reset;: 2m \n^green;Type: Fruit^reset;",
 	"shortdescription": "Sweetscoop",
 
 	"eventCategory": "eventCrop",
 	"builder": "/items/buildscripts/buildfood.lua",
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
 	"effects": [
 		[{
 			"effect": "maxenergyscalingboostfood",
 			"duration": 120
+		},
+		{
+			"effect": "fruit_food"
 		}]
 	],
 	"blockingEffects": ["wellfed"]
