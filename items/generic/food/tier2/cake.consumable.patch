@@ -1,14 +1,14 @@
 [
   {
-    "op": "replace",
-    "path": "/description",
-    "value": "It's a delicious cake! ^orange;Type: Herb Dairy&Egg Sugary Desert."
+    "op": "add",
+    "path": "/effects/0/-",
+    "value": {
+      "effect": "cake_meal"
+    }
   },
   {
-    "op": "add",
-    "path": "/effects/-",
-    "value": [
-      "cake_meal"
-    ]
+    "op": "replace",
+    "path": "/description",
+    "value": "It's a delicious cake! ^orange;Type: Grain + Dairy + Eggs + Sugar^reset;"
   }
 ]

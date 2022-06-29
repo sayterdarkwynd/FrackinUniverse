@@ -13,7 +13,7 @@
         "options" : [
           {
             "type" : "ember",
-            "color" : [88, 151, 199],
+            "color" : [203, 220, 222],
             "timeToLive" : 10,
             "initialVelocity" : [0, 5],
             "finalVelocity" : [0, -20],
@@ -25,7 +25,7 @@
           },
           {
             "type" : "ember",
-            "color" : [160, 219, 248],
+            "color" : [231, 240, 240],
             "timeToLive" : 10,
             "initialVelocity" : [0, 5],
             "finalVelocity" : [0, -20],
@@ -37,7 +37,7 @@
           },
           {
             "type" : "ember",
-            "color" : [214, 242, 251],
+            "color" : [245, 249, 253],
             "timeToLive" : 10,
             "initialVelocity" : [0, 5],
             "finalVelocity" : [0, -20],
@@ -51,44 +51,19 @@
       },
       "hitGround" : {
         "density" : 3,
-        "options" : [
-          {
-            "type" : "ember",
-            "color" : [88, 151, 199],
-            "timeToLive" : 10,
-            "initialVelocity" : [0, 5],
-            "finalVelocity" : [0, -20],
-            "approach" : [0, 5],
-            "variance" : {
-              "timeToLive" : 3.0,
-              "initialVelocity" : [1.0, 1.0]
-            }
-          },
-          {
-            "type" : "ember",
-            "color" : [160, 219, 248],
-            "timeToLive" : 10,
-            "initialVelocity" : [0, 5],
-            "finalVelocity" : [0, -20],
-            "approach" : [0, 5],
-            "variance" : {
-              "timeToLive" : 3.0,
-              "initialVelocity" : [1.0, 1.0]
-            }
-          },
-          {
-            "type" : "ember",
-            "color" : [214, 242, 251],
-            "timeToLive" : 10,
-            "initialVelocity" : [0, 5],
-            "finalVelocity" : [0, -20],
-            "approach" : [0, 5],
-            "variance" : {
-              "timeToLive" : 3.0,
-              "initialVelocity" : [1.0, 1.0]
-            }
+        "options" : [ {
+          "type" : "animated",
+          "animation" : "/animations/dusttest/dusttest.animation",
+          "timeToLive" : 3,
+          "destructionAction" : "shrink",
+          "destructionTime" : 1.0,
+          "variance" : {
+            "rotation" : 180,
+            "timeToLive" : 1.0,
+            "initialPosition" : [1.0, 1.0],
+            "initialVelocity" : [1.0, 1.0]
           }
-        ]
+        } ]
       }
     }
   },

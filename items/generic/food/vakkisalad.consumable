@@ -4,13 +4,16 @@
   "price" : 35,
   "category" : "preparedFood",
   "inventoryIcon" : "toastburnt.png",
-  "description" : "Left it in the toaster for too long\n^cyan;+^white;10% ^cyan;HP ^gray;(^white;45s^gray;)^reset;",
+  "description" : "Left it in the toaster for too long. \n^cyan;+^white;10% ^cyan;HP ^gray;(^white;45s^gray;)^reset; ^green;Type: Grain^reset;",
   "shortdescription" : "Burnt Toast",
   "effects" : [ [
     {
       "effect" : "maxhealthscalingboostfood",
       "duration" : 45,
 		  "healthModifier" : 1.10
+    },
+    {
+      "effect" : "plant_food"
     }
   ] ],
   "foodValue" : 5,

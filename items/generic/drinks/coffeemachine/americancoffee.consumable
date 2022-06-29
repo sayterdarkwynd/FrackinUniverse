@@ -7,12 +7,17 @@
   "description" : "A less potent, commercial-grade coffee.\n^cyan;Weakly Caffeinated ^gray;(^white;1m^gray;)^reset;",
   "shortdescription" : "Blonde Coffee",
   "handPosition" : [0, -2],
-  "tooltipKind" : "food",
   "effects" : [ [
     {
-      "effect" : "strongcoffee1",
-      "duration" : 60
+        "effect" : "strongcoffee1",
+        "duration" : 60
     }
   ] ],
+  "foodValue" : 15,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1,
+  "blockingEffects" : [ "wellfed" ],
   "emitters" : [ "drinking" ]
 }

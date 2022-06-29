@@ -12,12 +12,12 @@ end
 function update(dt)
 	deltatime = (deltatime or 0) + dt;
 	if deltatime < 1 then
-		return;
+		return
 	end
 	deltatime=0
 	local size=findContainer()
 
-	if self.outPartialFillNode or self.outCompleteFillNode then
+	if size and (self.outPartialFillNode or self.outCompleteFillNode) then
 		local containerFill=util.tableSize(world.containerItems(self.containerId) or {})
 
 		if self.outPartialFillNode then

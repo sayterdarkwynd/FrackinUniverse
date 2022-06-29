@@ -204,7 +204,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ [0.30, "penumbush1" ], [0.30, "penumbush2" ], [0.30, "penumbush3" ], [0.25, "penumbush4" ], [0.25, "penumbush5" ], [0.25, "penumbush6" ], [0.25, "penumbush7" ], [0.25, "penumbush8" ], [0.25, "penumbush9" ], [0.25, "penumbush10" ], [0.25, "penumbush11" ], [0.25, "penumbush12" ], [0.25, "penumbush13" ], [0.25, "penumbush14" ], [0.25, "penumbush15" ], [0.25, "penumbush16" ], [0.25, "penumbush17" ], [0.25, "penumbush18" ], [0.20, "penumball1" ], [0.25, "penumball2" ], [0.25, "penumball3" ], [0.25, "penumball4" ], [0.20, "penumball5" ], [0.35, "penumball6" ], [0.35, "penumball7" ], [0.35, "penumball8" ], [0.35, "penumball9" ], [0.35, "penumball10" ], [0.35, "penumball11" ], [0.35, "penumball12" ] ],
+              "pool" : [ [0.35, "penumbush1" ], [0.35, "penumbush2" ], [0.35, "penumbush3" ], [0.35, "penumbush4" ], [0.35, "penumbush5" ], [0.35, "penumbush6" ], [0.35, "penumbush7" ], [0.35, "penumbush8" ], [0.35, "penumbush9" ], [0.35, "penumbush10" ], [0.35, "penumbush11" ], [0.35, "penumbush12" ], [0.35, "penumbush13" ], [0.35, "penumbush14" ], [0.35, "penumbush15" ], [0.35, "penumbush16" ], [0.35, "penumbush17" ], [0.35, "penumbush18" ], [0.20, "penumball1" ], [0.25, "penumball2" ], [0.25, "penumball3" ], [0.25, "penumball4" ], [0.20, "penumball5" ], [0.35, "penumball6" ], [0.35, "penumball7" ], [0.35, "penumball8" ], [0.35, "penumball9" ], [0.35, "penumball10" ], [0.35, "penumball11" ], [0.35, "penumball12" ] ],
               "parameters" : { }
             }
           ]
@@ -452,6 +452,18 @@
           "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "tree",
+          "treeFoliageHueShiftMax" : 60,
+          "treeStemHueShiftMax" : 15,
+          "treeStemList" : [ "penumbralbarren", "penumbralstripey" ],
+          "treeFoliageList" : [ "penumbralvespertine", "penumbralviolet" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "tree",
           "treeFoliageHueShiftMax" : 170,
           "treeStemHueShiftMax" : 170,
           "treeStemList" : [ "energyorbstem", "mushroomstalkbio", "deadtree1", "woody", "oldwood", "underwood", "alienweird", "alienbubble" ],
@@ -629,12 +641,12 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseLarge",
+          "distribution" : "/biomes/distributions.config:denseMedium",
 
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ [0.30, "penumbush1" ], [0.30, "penumbush2" ], [0.30, "penumbush3" ], [0.25, "penumbush4" ], [0.25, "penumbush5" ], [0.25, "penumbush6" ], [0.25, "penumbush7" ], [0.25, "penumbush8" ], [0.25, "penumbush9" ], [0.25, "penumbush10" ], [0.25, "penumbush11" ], [0.25, "penumbush12" ], [0.25, "penumbush13" ], [0.25, "penumbush14" ], [0.25, "penumbush15" ], [0.25, "penumbush16" ], [0.25, "penumbush17" ], [0.25, "penumbush18" ] ],
+              "pool" : [ [0.35, "penumbush1" ], [0.35, "penumbush2" ], [0.35, "penumbush3" ], [0.35, "penumbush4" ], [0.35, "penumbush5" ], [0.35, "penumbush6" ], [0.35, "penumbush7" ], [0.35, "penumbush8" ], [0.35, "penumbush9" ], [0.35, "penumbush10" ], [0.35, "penumbush11" ], [0.35, "penumbush12" ], [0.35, "penumbush13" ], [0.35, "penumbush14" ], [0.35, "penumbush15" ], [0.35, "penumbush16" ], [0.35, "penumbush17" ], [0.35, "penumbush18" ] ],
               "parameters" : { }
             }
           ]
@@ -701,7 +713,7 @@
           "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredLarge",
+          "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "grass",
           "grasses" : [ "jungleflower1", "jungleflower2", "jungleflower3", "shadowy" ]

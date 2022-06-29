@@ -1,0 +1,45 @@
+{
+  "objectName" : "nightarobsidianchest",
+  "colonyTags" : ["nightar","storage"],
+  "rarity" : "common",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "race" : "nightar",
+  "health" : 1.5,
+
+  "category" : "storage",
+  "price" : 45,
+  "printable" : false,
+  "description" : "A small obsidian chest.",
+  "shortdescription" : "Obsidian Chest",
+
+  "inventoryIcon" : "nightarobsidianchesticon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "nightarobsidianchest.png:<color>.<key>", "fullbright" : false } ],
+      "imagePosition" : [-16, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "nightarobsidianchest.png:<color>.<key>", "fullbright" : false } ],
+      "imagePosition" : [-16, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/chest_small_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/chest_small_close.ogg" ],
+  "slotCount" : 16,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+}

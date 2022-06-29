@@ -1,22 +1,28 @@
 {
-  "itemName": "grapehoneystraw",
-  "rarity": "Common",
-  "category": "food",
-  "price": 60,
-  "inventoryIcon": "grapehoneystraw.png",
-  "description": "A grape honey straw! More nutritious and delicious!\n^green;Heal ^white;160 ^gray;(^white;2m^gray;)^reset;",
-  "shortdescription": "Honey Straw Grape",
-  "effects": [
-    [
-      {
-        "effect": "honeyheal2",
-        "duration": 120
-      },
-      {
-        "effect": "fedhoney",
-        "duration": 120
-      }
-    ]
-  ],
-  "blockingEffects": ["fedhoney"]
+  "itemName" : "grapehoneystraw",
+  "rarity" : "Common",
+  "price" : 60,
+  "category" : "food",
+  "inventoryIcon" : "grapehoneystraw.png",
+  "description" : "A grape honey straw! More nutritious and delicious!\n^green;Heal ^white;160 ^gray;(^white;2m^gray;)^reset; \n^green;Type: Fruit Dessert^reset;",
+  "shortdescription" : "Grape Honey Straw",
+  "effects" : [ [
+    {
+        "effect" : "honeyheal2",
+        "duration" : 120
+    },
+    {
+        "effect" : "fedhoney",
+        "duration" : 120
+    },
+    {
+        "effect" : "fruit_dessert"
+    }
+  ] ],
+  "foodValue" : 6,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 5,
+  "blockingEffects" : [ "wellfed", "fedhoney" ]
 }
