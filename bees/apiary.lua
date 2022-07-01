@@ -895,8 +895,10 @@ end
 function miteGrowth()
 	if storage.mites > 0 then
 
-	        --display an infested hive image over the normal hive appearance if its infested enough
-		if storage.mites > 50 then  --if mites pass 100, display a rotten looking apiary
+		--display an infested hive image over the normal hive appearance if its infested enough
+		if storage.mites > 1 then --display warning but dont change apiary look
+		  animator.setAnimationState("warning", "on", true) --show symbol for mite infestation, but dont change apiary look
+		elseif storage.mites > 50 then  --if mites pass 100, display a rotten looking apiary
 		  animator.setAnimationState("base", "infested", true)
 		  animator.setAnimationState("warning", "on", true)
 		elseif storage.mites > 200 then  --if mites pass 200, display a really rotten looking apiary
@@ -918,7 +920,7 @@ function miteGrowth()
 			local item = contents[slot]
 			if item and root.itemHasTag(item.name, "bee") and root.itemHasTag(item.name, "drone") then
 				hiveMiteResistance = hiveMiteResistance + genelib.statFromGenomeToValue(item.parameters.genome, "miteResistance") + frameBonuses.miteResistance
-				droneCount = droneCount + 1
+				droneCount = droneCount + contents[slot].count --loops through drone slots and adds them together
 			end
 		end
 
@@ -927,10 +929,10 @@ function miteGrowth()
 		-- If the value is negative, the hive is weaker to mites, and the multiplier is multiplied by the stat (a non-negative version of it that is)
 		if droneCount > 0 then
 			hiveMiteResistance = hiveMiteResistance / droneCount
-
 			-- we create a little function that improves as resistance does
 			if hiveMiteResistance > 0 then
-				mult = math.max(mult / (hiveMiteResistance*100), beeData.mites.growthPercentileMinimum)
+				mult = math.max(mult / (hiveMiteResistance*3125), beeData.mites.growthPercentileMinimum)
+				-- 3125 makes mite resist 4.0 stop mites with full apiary, 50 drones balances at 0.2 mite resist. Change if different balance desired
 			elseif hiveMiteResistance < 0 then
 				mult = mult + mult * math.abs(hiveMiteResistance)
 			end
@@ -938,7 +940,7 @@ function miteGrowth()
 
 		-- remove the hive resistance from the mite total if over a certain threshold, otherwise increment them
 		if hiveMiteResistance > 0 then
-		  storage.mites = storage.mites - (hiveMiteResistance)
+		  storage.mites = storage.mites + (storage.mites * mult) - (hiveMiteResistance) -- added storage.mites*mult to balance mite growth against hive resistance
 		else
 	          storage.mites = storage.mites + (storage.mites * mult) + beeData.mites.growthStatic
 		end
