@@ -73,7 +73,7 @@
     }
   },
 
-  "hueShiftOptions" : [ -125, -105, -85, -65, -35, 0, 35, 65, 85, 105, 125],
+  "hueShiftOptions" : [-120, -110, -100, -90, -80, -70, -60, -50, -40, -30, -20, -10, 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120],
 
   "weather" : [
     [0, [
@@ -153,13 +153,13 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
         {
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -168,7 +168,7 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -225,18 +225,12 @@
         },
         {
           "mode" : "floor",
-          "priority" : 2.0,
+          "priority" : 3.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
 
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "lightless",
-              "baseHueShiftMax" : 0,
-              "modHueShiftMax" : 0
-            }
-          ]
+          "type" : "grass",
+          "grasses" : [ "shadowy" ]
         },
         {
           "mode" : "floor",
@@ -247,7 +241,7 @@
           "type" : "bush",
           "bushes" : [
             {
-              "name" : "tarbulb",
+              "name" : "lightless",
               "baseHueShiftMax" : 0,
               "modHueShiftMax" : 0
             }
@@ -294,6 +288,10 @@
           "objectSets" : [
             {
               "pool" : [
+              [0.35, "monolith1" ],
+              [0.35, "monolith2" ],
+              [0.35, "monolith3" ],
+              [0.35, "monolith4" ],
               [0.35, "plynth1" ],
               [0.35, "plynth2" ],
               [0.35, "mound3" ],
@@ -317,7 +315,6 @@
             }
           ]
         },
-
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -326,23 +323,11 @@
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "ffRareLootShadowChest" ]
-        },
-        {
-          "mode" : "ceiling",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseMedium",
-
-          "type" : "tree",
-          "treeFoliageHueShiftMax" : 180,
-          "treeStemHueShiftMax" : 180,
-          "treeStemList" : [ "vine", "shadowvine" ],
-          "treeFoliageList" : [ "flowery", "starry", "dreamy" ]
         }
       ]
     },
     "undergroundPlaceables" : {
-      "grassMod" : [ "blackslimegrass" ],
+      "grassMod" : [ "blackslimegrass", "darkgrass" ],
       "grassModDensity" : 0.2,
 
       "items" : [
@@ -353,9 +338,17 @@
           "distribution" : "/biomes/distributions.config:undergroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
 
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "ffRareLootShadowChest" ]
+        },
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -369,7 +362,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:undergroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -404,14 +397,23 @@
         },
         {
           "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffAverage",
+
+          "type" : "grass",
+          "grasses" : [ "shadowy" ]
+        },
+        {
+          "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
+          "distribution" : "/biomes/distributions.config:ffAverage",
 
           "type" : "bush",
           "bushes" : [
             {
-              "name" : "tarcrystal",
+              "name" : "lightless",
               "baseHueShiftMax" : 0,
               "modHueShiftMax" : 0
             }
@@ -419,18 +421,46 @@
         },
         {
           "mode" : "floor",
-          "priority" : 2.0,
+          "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
+          "distribution" : "/biomes/distributions.config:ffAverage",
 
-          "type" : "bush",
-          "bushes" : [
+          "type" : "object",
+          "objectSets" : [
             {
-              "name" : "tarbulb",
-              "baseHueShiftMax" : 0,
-              "modHueShiftMax" : 0
+              "pool" : [
+              [0.35, "rotbulb1" ],
+              [0.35, "rotbulb2" ],
+              [0.35, "rotbulb3" ],
+              [0.35, "tonguebush1" ],
+              [0.35, "tonguebush2" ],
+              [0.35, "shadecoral1" ],
+              [0.35, "shadecoral2" ],
+              [0.35, "shadecoral3" ],
+              [0.35, "shadecoral4" ],
+              [0.35, "blobbush1" ],
+              [0.35, "blobbush2" ],
+              [0.35, "blobbush3" ],
+              [0.35, "shadowgrass1" ],
+              [0.35, "shadowgrass2" ],
+              [0.35, "shadowgrass3" ],
+              [0.35, "shadowgrass4" ]
+              ],
+              "parameters" : { }
             }
           ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 180,
+          "treeStemHueShiftMax" : 0,
+          "treeStemList" : [ "shadowvine" ],
+          "treeFoliageList" : [ "" ]
         }
       ]
     }

@@ -5,12 +5,15 @@
 	"rarity": "Uncommon",
 	"price": 35,
 	"foodValue": 5,
+	"eventCategory": "eventCrop",
 
 	"tooltipKind": "food",
 	"description": "I don't think this is healthy food...\n^yellow;^reset;^#b3b398;Glow^reset;: 90s\n^yellow;^reset;^red;Burning^reset;: 10s",
 	"shortdescription": "Solusberry",
 
 	"builder": "/items/buildscripts/buildfood.lua",
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 3,
 	"effects": [
 		[{
 				"effect": "glow",

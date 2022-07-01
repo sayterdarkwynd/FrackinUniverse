@@ -1,10 +1,65 @@
 [
+  {
+    "op": "replace",
+    "path": "/surfacePlaceables/grassMod/0",
+    "value": "mossgrass1"
+  },
+
+  {
+    "op": "replace",
+    "path": "/surfacePlaceables/grassModDensity",
+    "value": 0.9
+  },
+
+  {
+    "op": "replace",
+    "path": "/surfacePlaceables/items/6/bushes/0/baseHueShiftMax",
+    "value": 40
+  },
+
+  {
+    "op": "replace",
+    "path": "/surfacePlaceables/items/7/bushes/0/baseHueShiftMax",
+    "value": 40
+  },
+
+  {
+    "op": "replace",
+    "path": "/surfacePlaceables/items/8/bushes/0/baseHueShiftMax",
+    "value": 40
+  },
+
+  {
+    "op": "remove",
+    "path": "/surfacePlaceables/items/2"
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "toxicwastebarrel" ] ],
+              "parameters" : {  }
+            }
+          ]
+    }
+  },
+
 {
   "op": "add",
   "path": "/undergroundPlaceables",
   "value": {
-    "grassMod" : [ "sand" ],
-    "grassModDensity" : 0.9,
+    "grassMod" : [ "mossgrass1" ],
+    "grassModDensity" : 0.3,
 
     "items" : []
   }

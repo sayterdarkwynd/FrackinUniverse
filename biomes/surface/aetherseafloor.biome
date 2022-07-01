@@ -77,10 +77,10 @@
 
     "mainBlock" : "retexaetherdust",
     "subBlocks" : [ "blackslime", "fuaetherstone" ],
-    "ores" : "aetherunderground",
+    "ores" : "aethersurface",
 
   "surfacePlaceables" : {
-    "grassMod" : [ "bloodstonegrass", "darkgrass", "blackslimegrass" ],
+    "grassMod" : [ "blackash", "darkgrass", "blackslimegrass" ],
     "grassModDensity" : 0.9,
       "items" : [
         {
@@ -128,26 +128,6 @@
         },
         {
           "mode" : "floor",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "desertrocks",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "rocklarge",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            }
-          ]
-        },
-        {
-          "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
@@ -164,15 +144,6 @@
           "type" : "microdungeon",
           "microdungeons" : [ "desertplatforming" ]
         },
-      {
-        "mode" : "floor",
-        "priority" : 1,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
-
-        "type" : "microdungeon",
-        "microdungeons" : [ "oceanmicrodungeons" ]
-      },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -203,7 +174,7 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
         {
           "mode" : "floor",
@@ -216,26 +187,21 @@
         },
         {
           "mode" : "floor",
-          "priority" : 1.0,
+          "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : [ [1, "statuspod" ] ],
-              "parameters" : { }
-            }
-          ]
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
         },
         {
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundtechChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "weaponChest" ]
+          "treasureBoxSets" : [ "techChest" ]
         },
         {
           "mode" : "floor",

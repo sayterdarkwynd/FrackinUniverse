@@ -5,14 +5,14 @@
   "price" : 400,
   "printable" : false,
   "scannable" : false,
-  "description" : "Volcanic rock",
-  "shortdescription" : "Volcanic Rock",
+  "description" : "A small volcanic formation.",
+  "shortdescription" : "Small Volcanic Formation",
   "race" : "apex",
 
   "inventoryIcon" : "volcanicrockseed.png",
   "orientations" : [
     {
-      "image" : "volcanicrockseed.png:<color>",
+      "dualImage" : "volcanicrockseed.png:<color>",
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
@@ -22,12 +22,10 @@
 
     }
   ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/rock_break1.ogg", "/sfx/objects/rock_break2.ogg", "/sfx/objects/rock_break3.ogg", "/sfx/objects/rock_break4.ogg", "/sfx/objects/rock_break5.ogg" ],
+  "smashParticles" : [ { "count" : 3, "particle" : "shadowrockshard" } ],
   "smashDropOptions" : [
-    [ [ "ammoniumsulfate", 1, { } ], [ "fuscienceresource", 2, { } ] ]
-  ],
-
-  "breakDropOptions" : [
     [ [ "ammoniumsulfate", 1, { } ], [ "fuscienceresource", 2, { } ] ]
   ],
   "biomePlaced" : true

@@ -12,7 +12,7 @@
   "inventoryIcon" : "flesh3.png",
   "orientations" : [
     {
-      "image" : "flesh3.png:<color>",
+      "dualImage" : "flesh3.png:<color>",
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
@@ -22,12 +22,10 @@
 
     }
   ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/meat_break1.ogg", "/sfx/objects/meat_break2.ogg", "/sfx/objects/meat_break3.ogg" ],
+  "smashParticles" : [ { "count" : 8, "particle" : "fleshshard" } ],
   "smashDropOptions" : [
-    [ [ "fleshstrand", 2, { } ] ]
-  ],
-
-  "breakDropOptions" : [
     [ [ "fleshstrand", 2, { } ] ]
   ],
   "biomePlaced" : true

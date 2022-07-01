@@ -4,9 +4,12 @@
   "category" : "drink",
   "price" : 210,
   "inventoryIcon" : "Blood_Chalice_slugbait.png",
-  "description" : "A Chalice full of blood from a terrible ritual devised by ^orange;Synniebun^reset;, ^orange;Izuna^reset;, and ^orange;Koshi^reset;.\n^cyan;+^white;20%^cyan;HP ^gray;(^white;90s^gray;)\n^green;Heal ^white;60 ^gray;(^white;2s^gray;)\n^green;Heal ^white;200.2% ^green;HP ^gray;(^white;3m^gray;)^reset;",
+  "description" : "A Chalice full of blood from a terrible ritual devised by ^orange;Synniebun^reset;, ^orange;Izuna^reset;, and ^orange;Koshi^reset;.\n^cyan;+^white;20% ^cyan;HP ^gray;(^white;90s^gray;), ^green;Heal ^white;60 ^gray;(^white;2s^gray;), ^green;Heal ^white;200.2% ^green;HP ^gray;(^white;3m^gray;)^reset;",
   "shortdescription" : "Blood Chalice",
   "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.1,
   //"learnBlueprintsOnPickup" : [ "fubloodchalice"],
   "handPosition" : [0, -4],
   "effects" : [ [

@@ -7,11 +7,10 @@
   "description" : "Purplish-black grass.",
   "shortdescription" : "Shadow Grass",
 
-
   "inventoryIcon" : "shadowgrass3.png",
   "orientations" : [
     {
-      "image" : "shadowgrass3.png:<color>",
+      "dualImage" : "shadowgrass3.png:<color>",
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
@@ -21,12 +20,10 @@
 
     }
   ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/plant_break1.ogg", "/sfx/objects/plant_break2.ogg", "/sfx/objects/plant_break3.ogg", "/sfx/objects/plant_break4.ogg", "/sfx/objects/plant_break5.ogg", "/sfx/objects/plant_break6.ogg" ],
+  "smashParticles" : [ { "count" : 3, "particle" : "lightlessplantshard" } ],
   "smashDropOptions" : [
-    [ [ "biosample", 1, { } ] ]
-  ],
-
-  "breakDropOptions" : [
     [ [ "biosample", 1, { } ] ]
   ],
   "biomePlaced" : true

@@ -298,25 +298,9 @@
   },
 
   "surfacePlaceables" : {
-    "grassMod" : [ "bloodstonegrass", "darkgrass", "blackslimegrass" ],
+    "grassMod" : [ "blackash", "darkgrass", "blackslimegrass" ],
     "grassModDensity" : 0.9,
       "items" : [
-           {
-             "mode" : "ceiling",
-             "priority" : 1.0,
-             "variants" : 1,
-             "distribution" : "/biomes/distributions.config:ffunCommon",
-
-             "type" : "object",
-             "objectSets" : [
-               {
-                 "pool" : [
-                   [0.50, "wildlumivineseed" ]
-                 ],
-                 "parameters" : { "startingStage" : 3 }
-               }
-             ]
-           },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -344,19 +328,19 @@
           "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+          "distribution" : "/biomes/distributions.config:tiyDist",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "rockclimb", "rocktunnel", "sandstone", "blockpile", "loops", "flats", "spikes", "rods", "spiralspikes", "stripeblocks", "wiggles" ]
+          "microdungeons" : [ "canyonmini", "rockclimb", "rocktunnel", "sandstone", "blockpile", "loops", "flats", "spikes", "rods", "spiralspikes", "stripeblocks", "wiggles" ]
         },
         {
           "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "none", "canyonmini", "terrainfeatures", "aethermini" ]
+          "microdungeons" : [ "aethermini" ]
         },
         {
           "mode" : "floor",
@@ -380,10 +364,10 @@
         "mode" : "floor",
         "priority" : 0.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundChests",
+        "distribution" : "/biomes/distributions.config:overgroundChests",
 
         "type" : "treasureBox",
-        "treasureBoxSets" : [ "basicChest" ]
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
       },
 
       {
@@ -408,7 +392,7 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [
@@ -436,30 +420,25 @@
             }
           ]
         },
-           {
-             "mode" : "floor",
-             "priority" : 1.0,
-             "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
-
-             "type" : "object",
-             "objectSets" : [
-               {
-                 "pool" : [
-              [0.50, "groundspike1" ],
-              [0.50, "groundspike2" ],
-              [0.50, "groundspike3" ],
-              [0.50, "groundspike4" ]
-                 ],
-                 "parameters" : { "startingStage" : 3 }
-               }
-             ]
-           },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "shadowrock1" ], [0.35, "shadowrock2" ], [0.35, "shadowrock3" ], [0.35, "shadowrock4" ], [0.35, "shadowrock5" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -469,43 +448,6 @@
             }
           ]
         },
-        {
-          "mode" : "floor",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "desertrocks",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "rocklarge",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "skulls",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            }
-          ]
-        },
-      {
-        "mode" : "ceiling",
-        "priority" : 2.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseSmall",
-
-        "type" : "tree",
-        "treeFoliageHueShiftMax" : 0,
-        "treeStemHueShiftMax" : 0,
-        "treeStemList" : [ "darkvine" ],
-        "treeFoliageList" : [ "" ]
-      },
          {
           "mode" : "floor",
           "priority" : 1.0,
@@ -513,10 +455,22 @@
           "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 15,
-          "treeStemHueShiftMax" : 25,
+          "treeFoliageHueShiftMax" : 0,
+          "treeStemHueShiftMax" : 15,
           "treeStemList" : [ "darkrock" ],
           "treeFoliageList" : [ "" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 25,
+          "treeStemHueShiftMax" : 15,
+          "treeStemList" : [ "astral" ],
+          "treeFoliageList" : [ "nebula" ]
         }
       ]
     },

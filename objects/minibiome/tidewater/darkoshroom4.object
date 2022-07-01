@@ -1,0 +1,51 @@
+{
+  "objectName" : "darkoshroom4",
+  "colonyTags" : ["ocean"],
+  "rarity" : "Common",
+  "description" : "A dark glowing oshroom.",
+  "shortdescription" : "Dark Glowing Oshroom",
+  "race" : "generic",
+
+  "apexDescription" : "I can't tell whether this is a fruit, vegetable or fungus.",
+  "avianDescription" : "These plants light the ocean's depths like tiny, gentle suns.",
+  "floranDescription" : "Pretty! Floran cannot glow on command. Would be ssso useful...",
+  "glitchDescription" : "Approving. Another fine example of natural bioluminescence.",
+  "humanDescription" : "Some kind of ocean mushroom... an oshroom?",
+  "hylotlDescription" : "Yet another example of the ocean's delicate beauty.",
+  "novakidDescription" : "Wonder if we're made of the same stuff, lil' glowing plant.",
+
+  "category" : "light",
+  "printable" : false,
+
+  "minimumLiquidLevel" : 1.0,
+
+  "lightColor" : [14, 140, 167],
+
+  "inventoryIcon" : "darkoshroom4.png",
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "darkoshroom4.png", "fullbright" : true }, { "image" : "darkoshroom4lit.png" } ],
+      "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "left",
+      "lightPosition" : [0, 2.5]
+    },
+    {
+      "imageLayers" : [ { "image" : "darkoshroom4.png", "fullbright" : true }, { "image" : "darkoshroom4lit.png" } ],
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "lightPosition" : [0, 2.5]
+    }
+  ],
+
+  "smashable" : true,
+  "smashSounds" : [ "/sfx/objects/meat_break1.ogg", "/sfx/objects/meat_break2.ogg", "/sfx/objects/meat_break3.ogg" ],
+  "smashParticles" : [ { "count" : 5, "particle" : "darkoshroomshard" } ],
+
+  "biomePlaced" : true
+}

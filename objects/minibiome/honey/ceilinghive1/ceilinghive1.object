@@ -31,9 +31,10 @@
   "inventoryIcon" : "ceilinghive1icon.png",
   "orientations" : [
     {
-      "image" : "ceilinghive1.png:<color>",
-      "imagePosition" : [-3, -11],
-      "direction" : "right",
+      "dualImage" : "ceilinghive1.png:<color>",
+      "imagePosition" : [0, -10],
+      "frames" : 1,
+      "animationCycle" : 0.5,
 
       "spaceScan" : 0.1,
       "anchors" : [ "top" ]
@@ -42,6 +43,7 @@
 
   "smashable" : true,
   "smashSounds" : [ "/sfx/blocks/water_swim.ogg" ],
+  "smashParticles" : [ { "count" : 4, "particle" : "honeyshard" } ],
   "smashDropOptions" : [
     [ [ "fu_liquidhoney", 1, { } ], [ "fu_liquidhoney", 1, { } ], [ "fu_liquidhoney", 1, { } ] ]
   ],

@@ -4,7 +4,7 @@
 
   "dropConfig" : {
     "drops" : [
-      [ { "item" : "biospore" } ]
+      [ { "item" : "sapling" } ]
     ],
     "sounds" : {
       "breakTree" : [
@@ -21,16 +21,40 @@
         "density" : 3,
         "options" : [
           {
-            "color" : [177, 166, 116],
-            "timeToLive" : 10
+            "type" : "ember",
+            "color" : [90, 36, 55],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           },
           {
-            "color" : [205, 194, 142],
-            "timeToLive" : 10
+            "type" : "ember",
+            "color" : [102, 47, 67],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           },
           {
-            "color" : [237, 227, 179],
-            "timeToLive" : 10
+            "type" : "ember",
+            "color" : [114, 64, 82],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           }
         ]
       },
@@ -38,19 +62,40 @@
         "density" : 3,
         "options" : [
           {
-            "color" : [177, 166, 116],
+            "type" : "ember",
+            "color" : [90, 36, 55],
             "timeToLive" : 10,
-            "initial" : "upwards"
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           },
           {
-            "color" : [205, 194, 142],
+            "type" : "ember",
+            "color" : [102, 47, 67],
             "timeToLive" : 10,
-            "initial" : "upwards"
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           },
           {
-            "color" : [237, 227, 179],
+            "type" : "ember",
+            "color" : [114, 64, 82],
             "timeToLive" : 10,
-            "initial" : "upwards"
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           }
         ]
       }

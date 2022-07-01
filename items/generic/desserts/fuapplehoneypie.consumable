@@ -4,7 +4,7 @@
   "price": 35,
   "category": "preparedFood",
   "inventoryIcon": "fuapplehoneypie.png",
-  "description": "Pie.\n^cyan;+^white;25% ^cyan;HP ^gray;& ^cyan;EP ^gray;(^white;90s^gray;)^reset;",
+  "description": "Pie.\n^cyan;+^white;25% ^cyan;HP ^gray;& ^cyan;EP ^gray;(^white;90s^gray;)^reset; \n^green;Type: Fruit Dessert^reset;",
   "shortdescription": "Apple Honey Pie",
   "effects": [
     [
@@ -17,10 +17,13 @@
         "effect": "maxenergyscalingboostfood",
         "duration": 90,
         "energyModifier": 1.25
+      },
+      {
+        "effect": "fruit_dessert"
       }
     ]
   ],
-  "foodValue": 20,
+  "foodValue": 40,
   "tooltipKind": "food",
   "builder": "/items/buildscripts/buildfood.lua",
   "maxStack": 1000,

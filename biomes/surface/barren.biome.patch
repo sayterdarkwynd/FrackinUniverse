@@ -1,4 +1,47 @@
-[{
+[
+  {
+    "op": "replace",
+    "path": "/hueShiftOptions",
+    "value": [-180, -160, -140, -120, -100, -80, -60, -40, -20, 0, 20, 40, 60, 80, 100, 120, 140, 160, 180]
+  },
+
+  {
+    "op": "replace",
+    "path": "/surfacePlaceables/grassModDensity",
+    "value": 0.2
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+      "mode" : "floor",
+      "priority" : 3.0,
+      "variants" : 1,
+      "distribution" : "/biomes/distributions.config:tiyDist",
+
+      "type" : "microdungeon",
+      "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
+    }
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+      "mode" : "floor",
+      "priority" : 3.0,
+      "variants" : 1,
+      "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+      "type" : "grass",
+      "grasses" : [ "pebbles" ]
+    }
+  },
+
+{
 	"op": "add",
 	"path": "/surfacePlaceables/items/-",
 	"value": {
@@ -10,4 +53,32 @@
 		"type": "microdungeon",
 		"microdungeons": ["fu_dae_microdungeons", "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "fuencounters", "fulabs", "fubandits", "newhumanmicro", "newavianmicro", "furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter"]
 	}
-}]
+},
+
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/grassMod",
+    "value": [ "sand" ]
+  },
+
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/grassModDensity",
+    "value": 0.2
+  },
+
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+      "mode" : "floor",
+      "priority" : 3.0,
+      "variants" : 1,
+      "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+      "type" : "grass",
+      "grasses" : [ "pebbles" ]
+    }
+  }
+]

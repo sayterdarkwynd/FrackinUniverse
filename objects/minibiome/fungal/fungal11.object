@@ -11,7 +11,7 @@
   "inventoryIcon" : "fungal11.png",
   "orientations" : [
     {
-      "imageLayers" : [ { "image" : "fungal11.png:<color>" } ],
+      "dualImage" : "fungal11.png:<color>",
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
@@ -21,12 +21,10 @@
 
     }
   ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/projectiles/tar_hit_organic1.ogg", "/sfx/projectiles/tar_hit_organic2.ogg", "/sfx/projectiles/tar_hit_organic3.ogg", "/sfx/projectiles/tar_hit_organic4.ogg", "/sfx/projectiles/tar_hit_organic5.ogg" ],
+  "smashParticles" : [ { "count" : 4, "particle" : "eldershard" } ],
   "smashDropOptions" : [
-    [ [ "biospore", 4, { } ] ]
-  ],
-
-  "breakDropOptions" : [
     [ [ "biospore", 4, { } ] ]
   ],
   "biomePlaced" : true

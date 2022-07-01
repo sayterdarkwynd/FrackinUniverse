@@ -1,48 +1,48 @@
 -- HELPERS
 function entityLevel()
-  if entity.entityType() == "monster" then
-    return monster.level()
-  elseif entity.entityType() == "npc" then
-    return npc.level()
-  else
-    return 1
-  end
+	if entity.entityType() == "monster" then
+		return monster.level()
+	elseif entity.entityType() == "npc" then
+		return npc.level()
+	else
+		return 1
+	end
 end
 
 -- ACTIONS
 
 -- output list
 function playersInWorld(args, board)
-  return true, {list = world.players()}
+	return true, {list = world.players()}
 end
 
 -- param flag
 function setUniverseFlag(args, board)
-  world.setUniverseFlag(args.flag)
-  return true
+	world.setUniverseFlag(args.flag)
+	return true
 end
 
 
 -- ENTITIES
 
 function entityAggressive(args, board)
-  if not args.entity or not world.entityExists(args.entity) then return false end
-  return world.entityAggressive(args.entity)
+	if not args.entity or not world.entityExists(args.entity) then return false end
+	return world.entityAggressive(args.entity)
 end
 
 -- param entity
 function entityExists(args, board)
-  if args.entity == nil then return false end
-  return world.entityExists(args.entity)
+	if args.entity == nil then return false end
+	return world.entityExists(args.entity)
 end
 
 -- param entity
 -- output position
 function entityPosition(args, board)
-  if args.entity == nil or not world.entityExists(args.entity) then return false end
+	if args.entity == nil or not world.entityExists(args.entity) then return false end
 
-  local position = world.entityPosition(args.entity)
-  return true, {position = position, x = position[1], y = position[2]}
+	local position = world.entityPosition(args.entity)
+	return true, {position = position, x = position[1], y = position[2]}
 end
 
 -- param position
@@ -51,180 +51,180 @@ end
 -- param xRange
 -- param yRange
 function entityInRange(args, board)
-  if args.entity == nil or not world.entityExists(args.entity) or args.position == nil then return false end
+	if args.entity == nil or not world.entityExists(args.entity) or args.position == nil then return false end
 
-  local targetPosition = world.entityPosition(args.entity)
+	local targetPosition = world.entityPosition(args.entity)
 
-  if args.range then
-    return world.magnitude(targetPosition, args.position) <= args.range
-  elseif args.xRange then
-    return math.abs(world.distance(targetPosition, args.position)[1]) <= args.xRange
-  elseif args.yRange then
-    return math.abs(world.distance(targetPosition, args.position)[2]) <= args.yRange
-  else
-    return false
-  end
+	if args.range then
+		return world.magnitude(targetPosition, args.position) <= args.range
+	elseif args.xRange then
+		return math.abs(world.distance(targetPosition, args.position)[1]) <= args.xRange
+	elseif args.yRange then
+		return math.abs(world.distance(targetPosition, args.position)[2]) <= args.yRange
+	else
+		return false
+	end
 end
 
 -- param entity
 -- param types
 function entityInTypes(args, output)
-  if args.entity == nil or args.types == nil then return false end
+	if args.entity == nil or args.types == nil then return false end
 
-  local entityType = world.entityType(args.entity)
-  for _,acceptedType in pairs(args.types) do
-    if entityType == acceptedType then
-      return true
-    end
-  end
-  return false
+	local entityType = world.entityType(args.entity)
+	for _,acceptedType in pairs(args.types) do
+		if entityType == acceptedType then
+			return true
+		end
+	end
+	return false
 end
 
 -- param entity
 -- output number
 function entityHealth(args, board)
-  local health = world.entityHealth(args.entity)
-  if health == nil then return false end
+	local health = world.entityHealth(args.entity)
+	if health == nil then return false end
 
-  return true, {number = health[1]}
+	return true, {number = health[1]}
 end
 
 -- param entity
 -- output number
 function entityHealthPercentage(args, board)
-  local health = world.entityHealth(args.entity)
-  if health == nil then return false end
+	local health = world.entityHealth(args.entity)
+	if health == nil then return false end
 
-  return true, {number = health[1]/health[2]}
+	return true, {number = health[1]/health[2]}
 end
 
 -- param entity
 -- output number
 function entityMoney(args, board)
-  local money = world.entityCurrency(args.entity, "money")
-  if money == nil then return false end
+	local money = world.entityCurrency(args.entity, "money")
+	if money == nil then return false end
 
-  return true, {number = money}
+	return true, {number = money}
 end
 
 -- param entity
 -- param damageTeam
 function isNpc(args, board)
-  if args.entity == nil then return false end
+	if args.entity == nil then return false end
 
-  return world.isNpc(args.entity, args.damageTeam)
+	return world.isNpc(args.entity, args.damageTeam)
 end
 
 -- param entity
 -- param func
 function callScriptedEntity(args, output)
-  if args.entity == nil or args.func == nil then return false end
+	if args.entity == nil or args.func == nil then return false end
 
-  return world.callScriptedEntity(args.entity, args.func) == true
+	return world.callScriptedEntity(args.entity, args.func) == true
 end
 
 -- param entity
 -- param message
 -- param arguments
 function sendEntityMessage(args, board)
-  if args.entity == nil or args.message == nil then return false end
+	if args.entity == nil or args.message == nil then return false end
 
-  world.sendEntityMessage(args.entity, args.message, table.unpack(args.arguments))
-  return true
+	world.sendEntityMessage(args.entity, args.message, table.unpack(args.arguments))
+	return true
 end
 
 -- param uniqueId
 -- output entity
 function loadUniqueEntity(args, board)
-  if not args.uniqueId then return false end
+	if not args.uniqueId then return false end
 
-  local entityId = world.loadUniqueEntity(args.uniqueId)
-  if not world.entityExists(entityId) then return false end
+	local entityId = world.loadUniqueEntity(args.uniqueId)
+	if not world.entityExists(entityId) then return false end
 
-  return true, {entity = entityId}
+	return true, {entity = entityId}
 end
 
 -- param entity
 -- param region
 function keepEntityLoaded(args, board)
-  if args.entity == nil or not world.entityExists(args.entity) then return false end
+	if args.entity == nil or not world.entityExists(args.entity) then return false end
 
-  local position = world.entityPosition(args.entity)
-  world.loadRegion(rect.translate(args.region, position))
-  return true
+	local position = world.entityPosition(args.entity)
+	world.loadRegion(rect.translate(args.region, position))
+	return true
 end
 
 -- param entity
 -- param species
 function hasSpeciesSpecificDescription(args, board)
-  local species = args.species or (entity.entityType() == "npc" and npc.species()) or "human"
-  if not args.entity or not world.entityExists(args.entity) then return false end
+	local species = args.species or (entity.entityType() == "npc" and npc.species()) or "human"
+	if not args.entity or not world.entityExists(args.entity) then return false end
 
-  -- Return success if the species description is non-generic.
-  -- If the description is default (or a duplicate of default) it's not
-  -- species-specific
-  return world.entityDescription(args.entity, species) ~= world.entityDescription(args.entity)
+	-- Return success if the species description is non-generic.
+	-- If the description is default (or a duplicate of default) it's not
+	-- species-specific
+	return world.entityDescription(args.entity, species) ~= world.entityDescription(args.entity)
 end
 
 -- param entity
 function entityHoldingWeapon(args, board)
-  if args.entity == nil then return false end
+	if args.entity == nil then return false end
 
-  local primaryItem = world.entityHandItem(args.entity, "primary")
-  local altItem = world.entityHandItem(args.entity, "alt")
-  return (primaryItem and root.itemHasTag(primaryItem, "weapon")) or (altItem and root.itemHasTag(altItem, "weapon")) or false
+	local primaryItem = world.entityHandItem(args.entity, "primary")
+	local altItem = world.entityHandItem(args.entity, "alt")
+	return (primaryItem and root.itemHasTag(primaryItem, "weapon")) or (altItem and root.itemHasTag(altItem, "weapon")) or false
 end
 -- param entity
 -- param itemTag
 function entityHandItemTag(args, board)
-  local primary, alt = world.entityHandItem(args.entity, "primary"), world.entityHandItem(args.entity, "alt")
-  if (primary and root.itemHasTag(primary, args.itemTag)) or (alt and root.itemHasTag(alt, args.itemTag)) then
-    return true
-  else
-    return false
-  end
+	local primary, alt = world.entityHandItem(args.entity, "primary"), world.entityHandItem(args.entity, "alt")
+	if (primary and root.itemHasTag(primary, args.itemTag)) or (alt and root.itemHasTag(alt, args.itemTag)) then
+		return true
+	else
+		return false
+	end
 end
 
 -- OBJECTS
 
 -- param entity
 function loungableOccupied(args, board)
-  if args.entity == nil then return false end
+	if args.entity == nil then return false end
 
-  return world.loungeableOccupied(args.entity) == true
+	return world.loungeableOccupied(args.entity) == true
 end
 
 -- param entity
 function isLoungeable(args, board)
-  if args.entity == nil then return false end
-  return world.getObjectParameter(args.entity, "objectType") == "loungeable"
+	if args.entity == nil then return false end
+	return world.getObjectParameter(args.entity, "objectType") == "loungeable"
 end
 
 -- param interactObject
 function interactObject(args)
-  if args.entity == nil then return false end
-  if not world.entityExists(args.entity) then return false end
-  if not (world.entityType(args.entity) == "object") then return false end
-  local pass,result=pcall(world.callScriptedEntity,args.entity, "onInteraction", {sourceId = entity.id()})
-  return (pass and result) or false
+	if args.entity == nil then return false end
+	if not world.entityExists(args.entity) then return false end
+	if not (world.entityType(args.entity) == "object") then return false end
+	local pass,result=pcall(world.callScriptedEntity,args.entity, "onInteraction", {sourceId = entity.id()})
+	return (pass and ((result==nil) and true) or result)
 end
 
 -- param objectEntity
 -- param itemName
 -- param tag
 function hasItemTag(args, board)
-  if args.objectEntity then
-    if not args.objectEntity or not world.entityExists(args.objectEntity) then return false end
+	if args.objectEntity then
+		if not args.objectEntity or not world.entityExists(args.objectEntity) then return false end
 
-    local tags = world.getObjectParameter(args.objectEntity, "itemTags", {})
+		local tags = world.getObjectParameter(args.objectEntity, "itemTags", {})
 
-    return contains(tags, args.tag) ~= false
+		return contains(tags, args.tag) ~= false
 
-  elseif args.itemName then
-    return contains(root.itemConfig(args.itemName).config.itemTags or {}, args.tag) ~= false
-  end
+	elseif args.itemName then
+		return contains(root.itemConfig(args.itemName).config.itemTags or {}, args.tag) ~= false
+	end
 
-  return false
+	return false
 end
 
 -- SPAWNING
@@ -238,16 +238,16 @@ end
 -- param seed
 -- param parameters
 function spawnNpc(args, board)
-  args.parameters.damageTeam = args.damageTeam
-  args.parameters.damageTeamType = args.damageTeamType
+	args.parameters.damageTeam = args.damageTeam
+	args.parameters.damageTeamType = args.damageTeamType
 
-  if not args.position or not args.species or not args.npcType or not args.level then
-    return false
-  end
+	if not args.position or not args.species or not args.npcType or not args.level then
+		return false
+	end
 
-  local entityId = world.spawnNpc(args.position, args.species, args.npcType, args.level, args.seed, args.parameters)
-  world.callScriptedEntity(entityId, "status.addEphemeralEffect", "beamin")
-  return true
+	local entityId = world.spawnNpc(args.position, args.species, args.npcType, args.level, args.seed, args.parameters)
+	world.callScriptedEntity(entityId, "status.addEphemeralEffect", "beamin")
+	return true
 end
 
 -- param position
@@ -260,80 +260,80 @@ end
 -- param inheritParameters
 -- output enittyId
 function spawnMonster(args, board)
-  if args.position == nil then return false end
+	if args.position == nil then return false end
 
-  local parameters = args.parameters or {}
-  parameters.level = args.level or entityLevel()
-  parameters.damageTeamType = args.damageTeamType or entity.damageTeam().type
-  parameters.damageTeam = args.damageTeam or entity.damageTeam().team
-  parameters.aggressive = parameters.aggressive or config.getParameter("aggressive", true)
+	local parameters = args.parameters or {}
+	parameters.level = args.level or entityLevel()
+	parameters.damageTeamType = args.damageTeamType or entity.damageTeam().type
+	parameters.damageTeam = args.damageTeam or entity.damageTeam().team
+	parameters.aggressive = parameters.aggressive or config.getParameter("aggressive", true)
 
-  for _, paramName in pairs(args.inheritParameters) do
-    parameters[paramName] = config.getParameter(paramName, parameters[paramName])
-  end
+	for _, paramName in pairs(args.inheritParameters) do
+		parameters[paramName] = config.getParameter(paramName, parameters[paramName])
+	end
 
-  if args.replacement then
-    assert(monster)
-    parameters.scale = config.getParameter("scale")
+	if args.replacement then
+		assert(monster)
+		parameters.scale = config.getParameter("scale")
 
-    if capturable then
-      parameters.ownerUuid = config.getParameter("ownerUuid")
-      parameters.podUuid = config.getParameter("podUuid")
+		if capturable then
+			parameters.ownerUuid = config.getParameter("ownerUuid")
+			parameters.podUuid = config.getParameter("podUuid")
 
-      if parameters.podUuid then
-        parameters.uniqueId = parameters.uniqueId or sb.makeUuid()
-      else
-        -- This wasn't a pet
-      end
-    end
-  end
+			if parameters.podUuid then
+				parameters.uniqueId = parameters.uniqueId or sb.makeUuid()
+			else
+				-- This wasn't a pet
+			end
+		end
+	end
 
-  local entityId = world.spawnMonster(args.type, args.position, parameters)
-  if args.replacement then
-    world.callScriptedEntity(entityId, "status.addPersistentEffects", "miniboss", status.getPersistentEffects("miniboss"))
-  end
+	local entityId = world.spawnMonster(args.type, args.position, parameters)
+	if args.replacement then
+		world.callScriptedEntity(entityId, "status.addPersistentEffects", "miniboss", status.getPersistentEffects("miniboss"))
+	end
 
-  if args.replacement and parameters.podUuid and capturable then
-    capturable.disassociate()
-    capturable.associate({
-        name = world.entityName(entityId),
-        description = world.entityDescription(entityId),
-        portrait = world.entityPortrait(entityId, "full"),
-        uniqueId = parameters.uniqueId,
-        config = {
-            type = args.type,
-            parameters = parameters
-          },
-        collisionPoly = world.callScriptedEntity(entityId, "mcontroller.collisionPoly"),
-        status = world.callScriptedEntity(entityId, "capturable.captureStatus")
-      })
-  end
+	if args.replacement and parameters.podUuid and capturable then
+		capturable.disassociate()
+		capturable.associate({
+				name = world.entityName(entityId),
+				description = world.entityDescription(entityId),
+				portrait = world.entityPortrait(entityId, "full"),
+				uniqueId = parameters.uniqueId,
+				config = {
+						type = args.type,
+						parameters = parameters
+					},
+				collisionPoly = world.callScriptedEntity(entityId, "mcontroller.collisionPoly"),
+				status = world.callScriptedEntity(entityId, "capturable.captureStatus")
+			})
+	end
 
-  return true, {entityId = entityId}
+	return true, {entityId = entityId}
 end
 
 -- param position
 -- param type
 -- param stagehandConfig
 function spawnStagehand(args)
-  if args.position == nil then return false end
+	if args.position == nil then return false end
 
-  world.spawnStagehand(args.position, args.type, args.stagehandConfig)
-  return true
+	world.spawnStagehand(args.position, args.type, args.stagehandConfig)
+	return true
 end
 
 function dungeonId(args, board)
-  if args.position == nil then return false end
+	if args.position == nil then return false end
 
-  local id = world.dungeonId(args.position)
-  if id ~= 0 then return true, {dungeonId = id}
-  else return false, {dungeonId = 0}
-  end
+	local id = world.dungeonId(args.position)
+	if id ~= 0 then return true, {dungeonId = id}
+	else return false, {dungeonId = 0}
+	end
 end
 
 function spawnItem(args)
-  world.spawnItem(args.item, args.position, args.count, args.parameters, args.velocity, args.intangibleTime)
-  return true
+	world.spawnItem(args.item, args.position, args.count, args.parameters, args.velocity, args.intangibleTime)
+	return true
 end
 
 -- param player
@@ -344,34 +344,34 @@ end
 -- param okCaption
 -- param cancelCaption
 function playerConfirm(args)
-  local dialogConfig = {
-    title = args.title,
-    subtitle = args.subtitle,
-    icon = args.icon,
-    message = args.message,
-    okCaption = args.okCaption,
-    cancelCaption = args.cancelCaption,
-    sourceEntityId = entity.id()
-  }
+	local dialogConfig = {
+		title = args.title,
+		subtitle = args.subtitle,
+		icon = args.icon,
+		message = args.message,
+		okCaption = args.okCaption,
+		cancelCaption = args.cancelCaption,
+		sourceEntityId = entity.id()
+	}
 
-  -- ask player for confirmation, returns a uuid used for polling the result
-  local confirm = util.await(world.sendEntityMessage(args.player, "confirm", dialogConfig))
-  if not confirm:succeeded() then
-    error("Confirm message failed")
-  end
+	-- ask player for confirmation, returns a uuid used for polling the result
+	local confirm = util.await(world.sendEntityMessage(args.player, "confirm", dialogConfig))
+	if not confirm:succeeded() then
+		error("Confirm message failed")
+	end
 
-  local uuid = confirm:result()
-  while true do
-    -- poll confirmation until the message fails (player is gone) or a result is returned
-    local confirmResult = util.await(world.sendEntityMessage(args.player, "confirmResult", uuid))
-    if not confirmResult:succeeded() then
-      return false
-    end
-    local res = confirmResult:result()
-    if res == nil then
-      util.run(0.5)
-    else
-      return res == true
-    end
-  end
+	local uuid = confirm:result()
+	while true do
+		-- poll confirmation until the message fails (player is gone) or a result is returned
+		local confirmResult = util.await(world.sendEntityMessage(args.player, "confirmResult", uuid))
+		if not confirmResult:succeeded() then
+			return false
+		end
+		local res = confirmResult:result()
+		if res == nil then
+			util.run(0.5)
+		else
+			return res == true
+		end
+	end
 end

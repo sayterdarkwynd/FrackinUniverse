@@ -1,118 +1,107 @@
 -- Egg Incubation
 -- player places egg in incubator
 -- egg hatch time is eggs base hatch time +- any modifiers
--- factors that influence egg hatch time are "hardiness", the type of egg, warmth. colder worlds hatch slower (unless a cold-type egg)
 -- plus every egg also gets a random variable attached to it that can change the hatch time, so each egg is a bit unique
 
 function init()
 	-- egg type?
+	self.entityId=entity.id()
 	self.centrifugeType = config.getParameter("centrifugeType")
+
 	incubation = config.getParameter("incubation")
 
-	-- egg modifiers
-	eggmodifiers = {
-		default = 1
-	}
-
 	spawnMod = math.random(10) -- + config.getParameter("spawnModValue") -- change this to check the egg instead. each egg has a spawnMod that influences its hatch time
-	storage.warmth = 0 -- is world temperature suitable? warmer weather reduces spawn time unless it likes cold
-	storage.hardiness = 0 -- how tough is the egg? the tougher it is, the longer it takes to hatch
 end
 
 
-function fillPercent(container)
-	if type(container) ~= "number" then return nil end
-	local size = world.containerSize(container)
-	local count = 0
-	for i = 0,size,1 do
-		local item = world.containerItemAt(container, i)
+function fillAmount()
+	if type(self.entityId) ~= "number" then return nil end
 
+	local containerSize = world.containerSize(self.entityId)
+	if type(containerSize)~="number" then return nil end
+
+	--just count total number of items across all stacks
+	local count=0
+	for i = 0,containerSize,1 do
+		local item = world.containerItemAt(self.entityId, i)
 		if item ~= nil then
-			count = count + 1
-
-			if size == 1 then
-				size = 1000
-				count = item.count
-			end
+			count=count+item.count
 		end
 	end
-	return (count/size)
+	return count
 end
 
 function binInventoryChange()
-	if entity.id() then
-		local container = entity.id()
-		local frames = config.getParameter("binFrames", 10) - 1
-		local fill = math.ceil(frames * fillPercent(container))
-		if self.fill ~= fill then
-			self.fill = fill
-			animator.setAnimationState("fillState", tostring(fill))
-		end
+	--after counting, just use the highest valid frame.
+	local fill = math.min(config.getParameter("binFrames", 10) - 1,fillAmount())
+	if self.fill ~= fill then
+		self.fill = fill
+		animator.setAnimationState("fillState", tostring(fill))
 	end
 end
 
 function update()
-	fillPercent()
 	binInventoryChange()
 	checkHatching()
 end
 
 function checkHatching()
-	if entity.id() then
-		local container = entity.id()
-		local item = world.containerItemAt(container, 0)
+	local item = world.containerItemAt(self.entityId, 0)
 
-		if item ~= nil and incubation[item.name] ~= nil then
+	if (item ~= nil) and (incubation[item.name] ~= nil) then
 
-			-- set incubation time
-			if storage.incubationTime == nil then
-				storage.incubationTime = os.time()
-			end
-
-			-- set the eggs current age
-			local age = (os.time() - storage.incubationTime) - spawnMod
-
-			-- base hatch time
-			local hatchTime = incubation[item.name][2]
-			if hatchTime == nil then -- Cannot ever be true, since this if-block never gets run if hatchTime would be nil
-				hatchTime = incubation.default
-			end
-
-			-- forced hatch time
-			local forceHatchTime = item.forceHatchTime
-			if forceHatchTime == nil then
-				forceHatchTime = (hatchTime / 2)
-			end
-			hatchTime=math.max(60,math.min(hatchTime,forceHatchTime))
-
-			-- set visual growth bar on the incubator
-			self.indicator = math.ceil( (age / hatchTime) * 9)
-
-			-- hatching check
-			if age >= hatchTime then
-				hatchEgg()
-				self.indicator = 0
-				storage.incubationTime = nil
-				self.timer = 0
-			end
-
-			if self.indicator == nil then self.indicator = 0 end
-
-			if self.timer == nil or self.timer > self.indicator then
-				self.timer = self.indicator
-			end
-
-			if self.timer > -1 then
-				animator.setGlobalTag("bin_indicator", self.timer)
-			end
-			self.timer = self.timer + 1
+		-- set incubation time
+		if storage.incubationTime == nil then
+			storage.incubationTime = os.time()
 		end
+
+		-- set the eggs current age
+		local age = (os.time() - storage.incubationTime) - spawnMod
+
+		-- base hatch time
+		local hatchTime = incubation[item.name][2]
+		if hatchTime == nil then -- Cannot ever be true, since this if-block never gets run if hatchTime would be nil
+			hatchTime = incubation.default
+		end
+
+		-- forced hatch time
+		local forceHatchTime = item.forceHatchTime
+		if forceHatchTime == nil then
+			forceHatchTime = (hatchTime / 2)
+		end
+		hatchTime=math.max(60,math.min(hatchTime,forceHatchTime))
+
+		-- set visual growth bar on the incubator
+		self.indicator = math.ceil( (age / hatchTime) * 9)
+
+		-- hatching check
+		if age >= hatchTime then
+			hatchEgg()
+			self.indicator = 0
+			storage.incubationTime = nil
+			self.timer = 0
+		end
+
+		if self.indicator == nil then self.indicator = 0 end
+
+		if self.timer == nil or self.timer > self.indicator then
+			self.timer = self.indicator
+		end
+
+		if self.timer > -1 then
+			animator.setGlobalTag("bin_indicator", self.timer)
+		end
+		self.timer = self.timer + 1
+	else
+		storage.incubationTime = nil
+		self.indicator=0
+		self.timer=0
+		animator.setGlobalTag("bin_indicator", self.timer)
 	end
 end
 
 function hatchEgg()	--make the baby
-	local container = entity.id()
-	local item = world.containerTakeNumItemsAt(container, 0, 1)
+	local item = world.containerTakeNumItemsAt(self.entityId, 0, 1)
 
 	if item then
 		if (math.random() < incubation[item.name][3]) then
@@ -141,7 +130,7 @@ function hatchEgg()	--make the baby
 				world.spawnMonster(incubation[item.name][1], spawnposition, parameters)
 			end
 		else
-			world.containerPutItemsAt(container, {name = "rottenfood", amount = 1}, 0)
+			world.containerPutItemsAt(self.entityId, {name = "rottenfood", amount = 1}, 0)
 		end
 	end
 	storage.incubationTime = nil

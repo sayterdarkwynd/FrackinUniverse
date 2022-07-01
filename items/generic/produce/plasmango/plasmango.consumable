@@ -4,12 +4,16 @@
 	"category": "food",
 	"rarity": "Uncommon",
 	"price": 42,
+	"foodValue": 10,
 	"eventCategory": "eventCrop",
 
 	"tooltipKind": "food",
 	"shortdescription": "Plasmango",
-	"description": "^yellow;^reset;^cyan;+20% Jump^reset;: 40s\n^yellow;^reset;^red;Burning^reset;: 10s\n\"Everything is gonna be fine\" - non-Novakid prior to eating a Plasmango",
+	"description": "\"Everything is gonna be fine\" - non-Novakid prior to eating a Plasmango. \n^yellow;^reset;^cyan;+20% Jump^reset;: 40s\n^yellow;^reset;^red;Burning^reset;: 10s",
 
+	"builder": "/items/buildscripts/buildfood.lua",
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 3,
 	"effects": [
 		[{
 				"effect": "jumpboostfood",

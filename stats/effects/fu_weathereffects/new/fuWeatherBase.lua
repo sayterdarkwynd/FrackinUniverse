@@ -113,9 +113,9 @@ function fuWeatherBase.applyEffect(self)
 		local debuffStartMult
 		local totalResist = self:totalResist()
 		if (totalResist >= 0) then
-			debuffStartMult = 1.0 / (1.0 + totalResist / self.resistanceThreshold)
+			debuffStartMult = 1.0 + (totalResist / self.resistanceThreshold)
 		else
-			debuffStartMult = 1.0 / math.max(1.0 + totalResist, 0.5)
+			debuffStartMult = math.max(1.0 + totalResist, 0.5)
 		end
 		self.debuffStartTimer = self.baseDebuffStartDelay * debuffStartMult
 	else

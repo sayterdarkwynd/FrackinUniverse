@@ -1,0 +1,31 @@
+{
+  "objectName" : "metalbush14",
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "breakable",
+
+  "description" : "An unusual metallic bush. It looks sharp.",
+  "shortdescription" : "Metallic Bush",
+  "race" : "generic",
+
+  "inventoryIcon" : "metalbush14.png",
+  "orientations" : [
+    {
+      "dualImage" : "metalbush14.png:<color>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+  "smashable" : true,
+  "smashSounds" : [ "/sfx/objects/metalbarrel_break1.ogg", "/sfx/objects/metalbarrel_break2.ogg", "/sfx/objects/metalbarrel_break3.ogg" ],
+  "smashParticles" : [ { "count" : 3, "particle" : "claypotshard" }, { "count" : 2, "particle" : "metalshard" } ],
+  "smashDropOptions" : [
+    [ [ "metallic", 1, { } ], [ "metallic", 1, { } ], [ "metallic", 1, { } ], [ "ff_spareparts", 2, { } ] ]
+  ],
+  "biomePlaced" : true
+}

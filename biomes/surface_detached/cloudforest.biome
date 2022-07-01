@@ -48,7 +48,7 @@
   },
 
 
-  "parallax" : "/parallax/surface/forestsub.parallax",
+  "parallax" : "/parallax/surface/forest.parallax",
 
   "ambientNoises" : {
     "day" : {
@@ -68,7 +68,7 @@
     }
   },
 
-  "hueShiftOptions" : [-225, -165, -70, -25, 0, 25, 70, 165, 225],
+  "hueShiftOptions" : [-180, -160, -140, -120, -100, -80, -60, -40, -20, 0, 20, 40, 60, 80, 100, 120, 140, 160, 180],
 
     "mainBlock" : "cloudblock",
     "subBlocks" : [ "raincloud" ],
@@ -76,7 +76,7 @@
 
   "surfacePlaceables" : {
     "grassMod" : [ "cloud" ],
-    "grassModDensity" : 0.5,
+    "grassModDensity" : 1.0,
 
     "items" : [
          {
@@ -159,13 +159,13 @@
            "distribution" : "/biomes/distributions.config:overgroundChests",
 
            "type" : "treasureBox",
-           "treasureBoxSets" : [ "basicChest" ]
+           "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
          },
          {
            "mode" : "floor",
            "priority" : 0.0,
            "variants" : 1,
-           "distribution" : "/biomes/distributions.config:overgroundChests",
+           "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
            "type" : "treasureBox",
            "treasureBoxSets" : [ "weaponChest" ]
@@ -176,7 +176,7 @@
            "mode" : "floor",
            "priority" : 1.0,
            "variants" : 1,
-           "distribution" : "/biomes/distributions.config:overgroundChests",
+           "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
            "type" : "object",
            "objectSets" : [
@@ -215,7 +215,7 @@
           "bushes" : [
             {
               "name" : "cloudbush",
-              "baseHueShiftMax" : 0,
+              "baseHueShiftMax" : 180,
               "modHueShiftMax" : 0
             }
           ]
@@ -244,24 +244,74 @@
     ]
   },
   "undergroundPlaceables" : {
-    "grassMod" : [ "grass" ],
-    "grassModDensity" : 0.3,
-
-    "ceilingGrassMod" : [ "undergrowth" ],
-    "ceilingGrassModDensity" : 0.3,
+    "grassMod" : [ "cloud" ],
+    "grassModDensity" : 0.2,
 
     "items" : [
       {
-        "mode" : "ceiling",
-        "priority" : 2.0,
+        "mode" : "floor",
+        "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
-        "type" : "tree",
-        "treeFoliageHueShiftMax" : 180,
-        "treeStemHueShiftMax" : 180,
-        "treeStemList" : [ "vine", "vine2", "vine3", "vine4" ],
-        "treeFoliageList" : [ "flowery" ]
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "period" : 5,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "cloudflower", "cloudspin", "cloudspire" ]
       }
     ]
   }

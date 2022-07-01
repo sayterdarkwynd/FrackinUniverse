@@ -26,6 +26,86 @@
       }
 },
 
+  {
+    "op": "remove",
+    "path": "/surfacePlaceables/items/11/treeStemList/5"
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "snowman" ] ],
+            "parameters" : { }
+          }
+        ]
+    }
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0.5,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "snowbloom1" ], [0.35, "snowbloom2" ], [0.35, "snowbloom3" ] ],
+            "parameters" : { }
+          }
+        ]
+    }
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0.5,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "snowbush1" ], [0.35, "snowtree1" ] ],
+            "parameters" : { }
+          }
+        ]
+    }
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest" ]
+    }
+  },
+
     {"op":"add","path":"/surfacePlaceables/items/-","value":{
             "mode" : "floor",
             "priority" : 3.0,
@@ -36,29 +116,6 @@
             "microdungeons" : [ "fu_dae_microdungeons","newavianmicro", "minigreenruins" ]
         }
     },
-
-    {"op":"add","path":"/surfacePlaceables/items/-","value":{
-          "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
-
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : [
-              [0.25, "icicleshoot1" ],
-              [0.35, "icicleshoot2" ],
-              [0.35, "icicleshoot3" ],
-              [0.25, "icicleshoot4" ],
-              [0.25, "icicleshoot5" ],
-              [0.25, "icicleshoot6" ]
-              ],
-              "parameters" : { }
-            }
-          ]
-        }
-	},
 
 	{"op":"add","path":"/surfacePlaceables/items/-","value":{
           "mode" : "floor",
@@ -90,6 +147,22 @@
   "microdungeons" : [ "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "fulabs", "fubandits", "newhumanmicro", "newavianmicro", "furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter" ]
   }
 },
+
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest" ]
+    }
+  },
+
 {"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
   "mode" : "floor",
   "priority" : 1,

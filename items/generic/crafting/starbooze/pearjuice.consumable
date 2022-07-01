@@ -1,17 +1,25 @@
 {
-  "itemName": "pearjuice",
-  "rarity": "Common",
-  "inventoryIcon": "pearjuice.png",
-  "description": "A sweet juice made from pears.",
-  "shortdescription": "Pear Juice",
-  "category": "drink",
-  "eventCategory": "eventCrop",
-  "foodValue": 10,
-  "price": 5,
-  "tooltipKind": "food",
-  "builder": "/items/buildscripts/buildfood.lua",
-  "maxStack": 100,
-  "itemAgingScripts": ["/scripts/items/rotting.lua"],
-  "rottingMultiplier": 3.0,
+  "itemName" : "pearjuice",
+  "rarity" : "Common",
+  "price" : 115,
+  "category" : "drink",
+  "inventoryIcon" : "pearjuice.png",
+  "description" : "A sweet juice made from pears.\n^green;Heal ^white;50% ^green;HP ^gray;(^white;30s^gray;)^reset; \n^green;Type: Fruit^reset;",
+  "shortdescription" : "Pear Juice",
+  "effects" : [ [
+    {
+      "effect" : "regeneration1",
+      "duration" : 30
+    },
+    {
+	  "effect" : "fruit_food"
+	}
+  ] ],
+  "foodValue" : 20,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [ "wellfed" ],
   "emitters" : [ "drinking" ]
 }

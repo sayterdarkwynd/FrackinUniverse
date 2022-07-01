@@ -2,10 +2,10 @@
   "name" : "deepseaventsulphur",
   "friendlyName" : "Deep Sea Vent",
 
-  "statusEffects" : [ "sulphuricweathernew2" ],
+  "hueShiftOptions" : [ -180, -160, -140, -120, -100, -80, -60, -40, -20, 0, 20, 40, 60, 80, 100, 120, 140, 160, 180 ],
 
-  "mainBlock" : "sulphurdirt",
-  "subBlocks" : [ "sulphurstone", "drydirt" ],
+  "mainBlock" : "magmarock",
+  "subBlocks" : [ "magmatile1", "magmatile2", "sulphurstone", "obsidian" ],
   "ores" : "ff_surfacesulfurOres",
 
   "spawnProfile" : {
@@ -44,7 +44,7 @@
       }
     }
   },
-  "parallax" : "/parallax/surface/tidewaterfloor.parallax",
+  "parallax" : "/parallax/surface/sulphuroceanfloor.parallax",
 
   "ambientNoises" : {
     "day" : {
@@ -64,8 +64,8 @@
     }
   },
   "surfacePlaceables" : {
-    "grassMod" : [ "ash" ],
-    "grassModDensity" : 0.2,
+    "grassMod" : [ "ash", "blackash" ],
+    "grassModDensity" : 0.9,
 
     "items" : [
       {
@@ -75,33 +75,38 @@
         "distribution" : "/biomes/distributions.config:overgroundChests",
 
         "type" : "treasureBox",
-        "treasureBoxSets" : [ "oceanFloorChest" ]
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
       },
       {
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:scatteredLarge",
+        "distribution" : "/biomes/distributions.config:ffAverage",
 
-        "type" : "object",
-        "objectSets" : [
-          {
-            "pool" : [ [0.125, "seashell1" ], [0.125, "seashell2" ], [0.125, "seashell3" ], [0.125, "seashell4" ], [0.125, "seashell5" ], [0.125, "seashell6" ], [0.125, "seashell7" ], [0.125, "seashell8" ]]
-          }
-        ]
+        "type" : "grass",
+        "grasses" : [ "sulphurplant" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "pebbles" ]
       },
       {
         "mode" : "floor",
         "priority" : 2.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
+        "distribution" : "/biomes/distributions.config:denseLarge",
 
         "type" : "bush",
         "bushes" : [
           {
-            "name" : "coral",
-            "baseHueShiftMax" : 180,
-            "modHueShiftMax" : 180
+            "name" : "sulphurrocks",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
           }
         ]
       },
@@ -109,15 +114,44 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:scatteredLarge",
+        "distribution" : "/biomes/distributions.config:denseLarge",
 
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ [0.20, "oshroom1" ], [0.20, "oshroom2" ], [0.20, "oshroom3" ], [0.20, "oshroom4" ], [0.20, "oshroom5" ]]
+            "pool" : [
+            [0.35, "volcanicrockseed" ],
+            [0.35, "volcanicrockseed2" ],
+            [0.35, "volcanicrockseed3" ],
+            [0.35, "volcanicrockseed4" ],
+            [0.35, "volcanicrockseed5" ],
+            [0.35, "volcanicrockseed6" ],
+            [0.35, "volcanicrockseed7" ],
+            [0.35, "volcanicrockseed8" ],
+            [0.35, "volcanicrock2seed" ],
+            [0.35, "volcanicrock2seed2" ],
+            [0.35, "volcanicrock2seed3" ],
+            [0.35, "volcanicrock2seed4" ],
+            [0.35, "volcanicrock2seed5" ],
+            [0.35, "volcanicrock2seed6" ]
+            ]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffCommon",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "oceansmokegen" ] ],
+            "parameters" : { }
           }
         ]
       }
-	  ]
+	]
   }
 }

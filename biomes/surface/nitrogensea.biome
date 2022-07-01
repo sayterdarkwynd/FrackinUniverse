@@ -38,7 +38,7 @@
       }
     ],
     "monsterParameters" : {
-      "colors" : "magma",
+      "colors" : "ice",
       "statusSettings" : {
         "stats" : {
             "ffextremecoldImmunity" : {
@@ -153,7 +153,7 @@
   "subBlocks" : [ "frozenwater", "frozensand", "iceblock4" ],
   "ores" : "surface",
 
-  "parallax" : "/parallax/surface/arctic.parallax",
+  "parallax" : "/parallax/surface/nitrogensea.parallax",
 
   "ambientNoises" : {
     "day" : {
@@ -239,9 +239,18 @@
         },
         {
           "mode" : "floor",
-          "priority" : 1.0,
+          "priority" : 0.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "iceChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -255,7 +264,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -307,26 +316,31 @@
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:scatteredSmall",
 
-          "type" : "tree",
-          "treeFoliageHueShiftMax" : 0,
-          "treeStemHueShiftMax" : 0,
-          "treeStemList" : [ "geometricstem", "icespherestem", "purewhite" ],
-          "treeFoliageList" : [ "geometricfoliage", "icespherefoliage", "purewhitey" ]
-        },
-        {
-          "mode" : "ceiling",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
-
-          "type" : "grass",
-          "grasses" : [ "ceilingice", "ceilingthinice", "ceilingiceballs", "ceilingsnow" ]
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "geometricshard1" ], [0.35, "geometricshard2" ], [0.35, "geometricshard3" ], [0.35, "geometricshard4" ], [0.35, "geometricshard5" ] ],
+              "parameters" : { }
+            }
+          ]
         },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 0,
+          "treeStemHueShiftMax" : 12,
+          "treeStemList" : [ "geometricstem", "icespherestem", "purewhite" ],
+          "treeFoliageList" : [ "geometricfoliage", "icespherefoliage", "purewhitey" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "object",
           "objectSets" : [
@@ -343,15 +357,6 @@
               "parameters" : { }
             }
           ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 3.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "grass",
-          "grasses" : [ "geometricflower", "nitrogengrass" ]
         }
       ]
     },

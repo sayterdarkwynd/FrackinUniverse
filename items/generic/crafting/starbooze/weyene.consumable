@@ -3,14 +3,24 @@
   "rarity": "Common",
   "category": "drink",
   "inventoryIcon": "weyene.png",
-  "description": "Red, red wine.\n^green;Heal ^white;20 ^gray;(^white;2s^gray;)^reset;",
+  "description": "Red, red wine.\n^green;Heal ^white;20 ^gray;(^white;2s^gray;)^reset;, 35% ^red;Slow^reset;, ^red;Drunk^gray; (^white;30s^gray;)^reset;",
   "shortdescription": "Weyene",
   "eventCategory": "eventCrop",
-  "foodValue": 10,
   "price": 500,
   "tooltipKind": "food",
-  "builder": "/items/buildscripts/buildfood.lua",
   "maxStack": 100,
-  "effects": [["heal_tier1"]],
+  "effects": [ [
+    {
+        "effect" : "heal_tier1"
+    },
+    {
+        "effect" : "slow",
+        "duration" : 30
+    },
+    {
+        "effect" : "booze",
+        "duration" : 30
+    }
+  ] ],
   "emitters" : [ "drinking" ]
 }

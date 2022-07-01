@@ -88,7 +88,7 @@
 
   "mainBlock" : "shadowblock",
   "subBlocks" : [ "obsidian", "shadowwallblock" ],
-  "ores" : "moondeepores",
+  "ores" : "moon",
 
   "parallax" : "/parallax/surface/moon.parallax",
 
@@ -111,8 +111,8 @@
   },
 
   "surfacePlaceables" : {
-    "grassMod" : [ "blackslimegrass" ],
-    "grassModDensity" : 0.2,
+    "grassMod" : [ "blackslimegrass", "blackash" ],
+    "grassModDensity" : 0.9,
     "items" : [
       {
         "mode" : "floor",
@@ -137,18 +137,32 @@
       },
       {
         "mode" : "floor",
-        "priority" : 0.0,
+        "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:overgroundChests",
+        "distribution" : "/biomes/distributions.config:denseLarge",
 
-        "type" : "treasureBox",
-        "treasureBoxSets" : [ "basicChest" ]
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "shadowrock1" ], [0.35, "shadowrock2" ], [0.35, "shadowrock3" ], [0.35, "shadowrock4" ], [0.35, "shadowrock5" ]],
+            "parameters" : { }
+          }
+        ]
       },
       {
         "mode" : "floor",
         "priority" : 0.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:overgroundRareChests",
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
         "type" : "treasureBox",
         "treasureBoxSets" : [ "weaponChest" ]
@@ -192,7 +206,7 @@
           "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "darkmicrodungeons", "fleshmicrodungeons" ]
+          "microdungeons" : [ "darkmicrodungeons" ]
         },
            {
              "mode" : "floor",
@@ -206,37 +220,10 @@
                  "pool" : [
               [0.50, "monolith1" ],
               [0.50, "monolith2" ],
-              [0.50, "monolith3" ]
-                 ]
-               }
-             ]
-           },
-
-
-           {
-             "mode" : "floor",
-             "priority" : 1.0,
-             "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
-
-             "type" : "object",
-             "objectSets" : [
-               {
-                 "pool" : [
-              [0.50, "volcanicrockseed" ],
-              [0.50, "volcanicrockseed2" ],
-              [0.50, "volcanicrockseed3" ],
-              [0.50, "volcanicrockseed4" ],
-              [0.50, "volcanicrockseed5" ],
-              [0.50, "volcanicrockseed6" ],
-              [0.50, "volcanicrockseed7" ],
-              [0.50, "volcanicrockseed8" ],
-              [0.50, "volcanicrock2seed" ],
-              [0.50, "volcanicrock2seed2" ],
-              [0.50, "volcanicrock2seed3" ],
-              [0.50, "volcanicrock2seed4" ],
-              [0.50, "volcanicrock2seed5" ],
-              [0.50, "volcanicrock2seed6" ]
+              [0.50, "monolith3" ],
+              [0.50, "monolith4" ],
+              [0.50, "plynth1" ],
+              [0.50, "plynth2" ]
                  ]
                }
              ]
@@ -253,11 +240,6 @@
                  "pool" : [
               [0.50, "shadowchimes" ],
               [0.50, "shadowmarker" ],
-              [0.50, "shadowrock1" ],
-              [0.50, "shadowrock2" ],
-              [0.50, "shadowrock3" ],
-              [0.50, "shadowrock4" ],
-              [0.50, "shadowrock5" ],
               [0.50, "shadowshrine" ],
               [0.50, "shadowshrine2" ],
               [0.50, "shadowshrine3" ],
@@ -276,8 +258,8 @@
   },
 
   "undergroundPlaceables" : {
-    "grassMod" : [ "blackslimegrass" ],
-    "grassModDensity" : 0.2,
+    "grassMod" : [ "blackslimegrass", "blackash" ],
+    "grassModDensity" : 0.6,
 
     "items" : [
            {
@@ -290,42 +272,8 @@
              "objectSets" : [
                {
                  "pool" : [
-              [0.50, "volcanicrockseed" ],
-              [0.50, "volcanicrockseed2" ],
-              [0.50, "volcanicrockseed3" ],
-              [0.50, "volcanicrockseed4" ],
-              [0.50, "volcanicrockseed5" ],
-              [0.50, "volcanicrockseed6" ],
-              [0.50, "volcanicrockseed7" ],
-              [0.50, "volcanicrockseed8" ],
-              [0.50, "volcanicrock2seed" ],
-              [0.50, "volcanicrock2seed2" ],
-              [0.50, "volcanicrock2seed3" ],
-              [0.50, "volcanicrock2seed4" ],
-              [0.50, "volcanicrock2seed5" ],
-              [0.50, "volcanicrock2seed6" ],
-              [0.50, "exoniteseed" ]
-                 ]
-               }
-             ]
-           },
-           {
-             "mode" : "floor",
-             "priority" : 1.0,
-             "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
-
-             "type" : "object",
-             "objectSets" : [
-               {
-                 "pool" : [
               [0.50, "shadowchimes" ],
               [0.50, "shadowmarker" ],
-              [0.50, "shadowrock1" ],
-              [0.50, "shadowrock2" ],
-              [0.50, "shadowrock3" ],
-              [0.50, "shadowrock4" ],
-              [0.50, "shadowrock5" ],
               [0.50, "shadowshrine" ],
               [0.50, "shadowshrine2" ],
               [0.50, "shadowshrine3" ],
@@ -339,6 +287,20 @@
                }
              ]
            },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "shadowrock1" ], [0.35, "shadowrock2" ], [0.35, "shadowrock3" ], [0.35, "shadowrock4" ], [0.35, "shadowrock5" ]],
+            "parameters" : { }
+          }
+        ]
+      },
       {
         "mode" : "ceiling",
         "priority" : 2.0,
@@ -369,7 +331,7 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [
@@ -378,6 +340,33 @@
             "parameters" : { }
           }
         ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
       }
     ]
   }

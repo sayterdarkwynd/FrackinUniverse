@@ -1,18 +1,14 @@
 [
 	{
-		"op": "replace",
-		"path": "/effects",
-		"value": [ [
-				{
-					"effect" : "maxhealthscalingboostfood",
-					"duration" : 270
-				},
-				"fish_plant_meal"
-			] ]
+		"op": "add",
+		"path": "/effects/0/-",
+		"value": {
+			"effect": "fish_plant_meal"
+		}
 	},
 	{
 		"op": "replace",
 		"path": "/description",
-		"value": "Simple fish dumplings, steamed and lightly seasoned. ^orange;Type: Cooked Seafood + Vegetable^reset;"
+		"value": "Simple fish dumplings, steamed and lightly seasoned. ^orange;Type: Cooked Seafood + Vegetables^reset;"
 	}
 ]

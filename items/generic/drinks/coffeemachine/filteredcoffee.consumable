@@ -4,10 +4,9 @@
   "price" : 12,
   "category" : "drink",
   "inventoryIcon" : "filteredcoffee.png",
-  "description" : "Coffee and hot milk.\n^cyan;+^white;15% ^cyan;Run ^gray;(^white;1m^gray;)\n^cyan;Caffeinated ^gray;(^white;1m^gray;)^reset;",
+  "description" : "Coffee and hot milk.\n^cyan;+^white;15% ^cyan;Run ^gray;(^white;1m^gray;), ^cyan;Caffeinated ^gray;(^white;1m^gray;)^reset; \n^orange;Type: Dairy^reset;",
   "shortdescription" : "Cafe Au Lait",
   "handPosition" : [0, -2],
-  "tooltipKind" : "food",
   "effects" : [ [
     {
       "effect" : "strongcoffee2",
@@ -16,7 +15,16 @@
     {
       "effect" : "runboost15",
       "duration" : 60
+    },
+    {
+      "effect" : "dairy_food"
     }
   ] ],
+  "foodValue" : 30,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1,
+  "blockingEffects" : [ "wellfed" ],
   "emitters" : [ "drinking" ]
 }

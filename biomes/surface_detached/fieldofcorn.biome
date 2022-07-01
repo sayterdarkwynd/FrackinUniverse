@@ -25,86 +25,8 @@
       "persistent" : false
     }
   },
-  "weather" : [
-    [0, [
-      "/weather.config:forest"
-    ]]
-  ],
 
-  "skyOptions" : [
-    {
-      // sunny earth days, red/orange sunrise and purple/red sunset
-      "mainColor" : [255, 255, 255],
-
-      "morningColors" : [ [242, 120, 0], [255, 230, 176] ],
-      "dayColors" : [ [115, 224, 255], [255, 255, 255] ],
-      "eveningColors" : [ [125, 17, 158], [210, 52, 50] ],
-      "nightColors" : [ [24, 38, 53, 80], [58, 42, 70, 160] ],
-
-      "morningLightColor" : [140, 71, 0],
-      "dayLightColor" : [200, 200, 200],
-      "eveningLightColor" : [160, 120, 180],
-      "nightLightColor" : [40, 20, 60]
-    },
-    {
-      // sunny green day, darkgreen/yellow sunrise and purple/blue sunset
-      "mainColor" : [255, 255, 255],
-
-      "morningColors" : [ [68, 164, 84], [243, 201, 115] ],
-      "dayColors" : [ [115, 255, 204], [255, 255, 255] ],
-      "eveningColors" : [ [43, 17, 118], [244, 161, 231] ],
-      "nightColors" : [ [24, 38, 53, 80], [58, 42, 70, 160] ],
-
-      "morningLightColor" : [20, 91, 100],
-      "dayLightColor" : [200, 200, 200],
-      "eveningLightColor" : [160, 120, 180],
-      "nightLightColor" : [40, 20, 60]
-    },
-    {
-      // sunny lilac day, blue/orange sunrise and blue/green sunset
-      "mainColor" : [255, 255, 255],
-
-      "morningColors" : [ [0, 24, 55], [255, 140, 49] ],
-      "dayColors" : [ [176, 115, 255], [255, 255, 255] ],
-      "eveningColors" : [ [100, 86, 173], [0, 222, 73] ],
-      "nightColors" : [ [24, 38, 53, 80], [58, 42, 70, 160] ],
-
-      "morningLightColor" : [140, 71, 0],
-      "dayLightColor" : [200, 200, 200],
-      "eveningLightColor" : [160, 120, 180],
-      "nightLightColor" : [40, 20, 60]
-    },
-    {
-      // sunny pink day, pink/peach sunrise and blue/pink sunset
-      "mainColor" : [255, 255, 255],
-
-      "morningColors" : [ [197, 48, 174], [253, 161, 96] ],
-      "dayColors" : [ [255, 116, 122], [255, 255, 255] ],
-      "eveningColors" : [ [88, 42, 91], [175, 20, 50] ],
-      "nightColors" : [ [24, 38, 53, 80], [58, 42, 70, 160] ],
-
-      "morningLightColor" : [140, 71, 0],
-      "dayLightColor" : [200, 200, 200],
-      "eveningLightColor" : [180, 120, 120],
-      "nightLightColor" : [40, 20, 60]
-    },
-    {
-      // sunny orange day, orange/yellow sunrise and green/orange sunset
-      "mainColor" : [255, 255, 255],
-
-      "morningColors" : [ [174, 89, 47], [255, 197, 54] ],
-      "dayColors" : [ [255, 186, 116], [255, 255, 255] ],
-      "eveningColors" : [ [3, 90, 92], [250, 138, 77] ],
-      "nightColors" : [ [24, 38, 53, 80], [58, 42, 70, 160] ],
-
-      "morningLightColor" : [140, 71, 0],
-      "dayLightColor" : [200, 200, 200],
-      "eveningLightColor" : [180, 120, 120],
-      "nightLightColor" : [40, 20, 60]
-    }
-  ],
-
-  "parallax" : "/parallax/surface/forestsub.parallax",
+  "parallax" : "/parallax/surface/forest.parallax",
 
   "ambientNoises" : {
     "day" : {
@@ -123,7 +45,7 @@
       "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
-  "hueShiftOptions" : [-30, -20, -15, -10, -5, 0, 5, 10, 15, 20, 30],
+  "hueShiftOptions" : [-30, -20, -15, -10, 0, 10, 15, 20, 30],
 
     "mainBlock" : "dirt",
     "subBlocks" : [ "clay", "mud", "rock01" ],
@@ -138,7 +60,7 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [
@@ -157,12 +79,36 @@
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ [0.35, "flowerred" ], [0.35, "flowerblue" ], [0.35, "floweryellow" ] ],
+            "pool" : [
+            [0.35, "flowerred" ],
+            [0.35, "flowerblue" ],
+            [0.35, "floweryellow" ],
+            [0.35, "flowerspring" ],
+            [0.35, "flowerblack" ],
+            [0.35, "flowerbrown" ],
+            [0.35, "flowergreen" ],
+            [0.35, "flowergrey" ],
+            [0.35, "flowerorange" ],
+            [0.35, "flowerorchid" ],
+            [0.35, "flowerorchid2" ],
+            [0.35, "flowerorchid3" ],
+            [0.35, "flowerpink" ],
+            [0.35, "flowerpurple" ],
+            [0.35, "flowerwhite" ]
+			],
             "parameters" : { }
           }
         ]
       },
+      {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
 
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
       {
         "mode" : "floor",
         "priority" : 0,
@@ -238,7 +184,7 @@
         "bushes" : [
           {
             "name" : "testbush",
-            "baseHueShiftMax" : 180,
+            "baseHueShiftMax" : 40,
             "modHueShiftMax" : 180
           }
         ]
@@ -253,7 +199,7 @@
         "treeFoliageHueShiftMax" : 180,
         "treeStemHueShiftMax" : 15,
         "treeStemList" : [ "birch", "cocoa", "fleshy", "grumpy", "pine", "roottree", "slimey", "something", "spikey", "twisted", "wood", "slobby", "pineytree" ],
-        "treeFoliageList" : [ "rose", "bubbles", "cloudy", "frumpy", "greenleaves", "hanging", "leafy", "lotus", "lushgreen", "orangeflower", "pinefoliage", "redleaves", "scraggy", "spikeyfoliage" ]
+        "treeFoliageList" : [ "rose", "bubbles", "cloudy", "frumpy", "greenleaves", "hanging", "leafy", "lotus", "lushgreen", "orangeflower", "pinefoliage", "redleaves", "scraggy" ]
       },
         {
           "mode" : "floor",
@@ -277,10 +223,84 @@
     "grassMod" : [ "grass" ],
     "grassModDensity" : 0.3,
 
-    "ceilingGrassMod" : [ "undergrowth" ],
+    "ceilingGrassMod" : [ "roots" ],
     "ceilingGrassModDensity" : 0.3,
 
     "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "forestChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "period" : 5,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "testflower", "testflower2", "testflower3", "testflower4", "testflower5", "testflower6", "testflower7" ]
+      },
       {
         "mode" : "ceiling",
         "priority" : 2.0,
@@ -289,9 +309,9 @@
 
         "type" : "tree",
         "treeFoliageHueShiftMax" : 180,
-        "treeStemHueShiftMax" : 180,
-        "treeStemList" : [ "vine", "vine2", "vine3", "vine4" ],
-        "treeFoliageList" : [ "flowery" ]
+        "treeStemHueShiftMax" : 10,
+        "treeStemList" : [ "rootvine", "rootvine2", "rootvine3" ],
+        "treeFoliageList" : [ "" ]
       }
     ]
   }

@@ -1,65 +1,43 @@
 {
-    "objectName": "bioplant25",
-    "rarity": "Common",
-    "category": "decorative",
-    "price": 400,
-    "printable": false,
-    "description": "Proto Plant",
-    "shortdescription": "Proto Plant",
-    "lightColor": [
-        45,
-        45,
-        8
-    ],
-    "inventoryIcon": "bioplant25.png",
-    "orientations": [
-        {
-            "imageLayers": [
-                {
-                    "image": "bioplant25.png:<color>.<key>"
-                },
-                {
-                    "image": "bioplant25fullbright.png:<color>.<key>",
-                    "fullbright": true
-                }
-            ],
-            "imagePosition": [
-                0,
-                0
-            ],
-            "frames": 1,
-            "animationCycle": 0.5,
-            "spaceScan": 0.1,
-            "anchors": [
-                "bottom"
-            ]
-        }
-    ],
-    "smashSounds": [
-        "/sfx/tools/axe_chop_alt_heavy.ogg"
-    ],
-    "smashDropOptions": [
-        [
-            [
-                "glowfibre",
-                1,
-                {
+  "objectName": "bioplant25",
+  "rarity": "Common",
+  "category": "decorative",
+  "price": 400,
+  "printable": false,
+  "description": "Proto Plant",
+  "shortdescription": "Proto Plant",
+  "lightColor" : [50, 50, 10],
+	
+  "inventoryIcon": "bioplant25.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "bioplant25.png:<color>" }, { "image" : "bioplant25fullbright.png:<color>", "fullbright" : true } ],
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
 
-                }
-            ]
-        ]
-    ],
-    "breakDropOptions": [
-        [
-            [
-                "glowfibre",
-                1,
-                {
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
+    },
+    {
+      "imageLayers" : [ { "image" : "bioplant25.png:<color>" }, { "image" : "bioplant25fullbright.png:<color>", "fullbright" : true } ],
+      "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
 
-                }
-            ]
-        ]
-    ],
-    "biomePlaced": true,
-    "scannable": false
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "left"
+    }
+  ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/plant_break1.ogg", "/sfx/objects/plant_break2.ogg", "/sfx/objects/plant_break3.ogg", "/sfx/objects/plant_break4.ogg", "/sfx/objects/plant_break5.ogg", "/sfx/objects/plant_break6.ogg" ],
+  "smashParticles" : [ { "count" : 1, "particle" : "bioplant1shard" } ],
+  "smashDropOptions" : [
+    [ [ "glowfibre", 1, { } ] ]
+  ],
+  "biomePlaced": true,
+  "scannable": false
 }

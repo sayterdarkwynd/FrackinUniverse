@@ -7,11 +7,10 @@
   "description" : "It looks to be a rock.",
   "shortdescription" : "A Rock",
 
-
   "inventoryIcon" : "rockmossy1.png",
   "orientations" : [
     {
-      "image" : "rockmossy1.png:<color>",
+      "dualImage" : "rockmossy1.png:<color>",
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
@@ -21,12 +20,10 @@
 
     }
   ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/rock_break1.ogg", "/sfx/objects/rock_break2.ogg", "/sfx/objects/rock_break3.ogg", "/sfx/objects/rock_break4.ogg", "/sfx/objects/rock_break5.ogg" ],
+  "smashParticles" : [ { "count" : 8, "particle" : "rockshard" } ],
   "smashDropOptions" : [
-    [ [ "fuscienceresource", 1, { } ] ]
-  ],
-
-  "breakDropOptions" : [
     [ [ "fuscienceresource", 1, { } ] ]
   ],
   "biomePlaced" : true

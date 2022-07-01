@@ -98,7 +98,7 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [
@@ -118,28 +118,29 @@
           "objectSets" : [
             {
               "pool" : [
-              [0.35, "bigpresent" ],
+              [0.15, "bigpresent" ],
               [0.35, "decoratedtree" ],
-              [0.35, "greencandycane1" ],
+              [0.15, "greencandycane1" ],
               [0.35, "greencandycane2" ],
               [0.35, "greencandycane3" ],
               [0.35, "greengumdrop1" ],
               [0.35, "greengumdrop2" ],
-              [0.35, "holidaypole" ],
-              [0.35, "lollipop1" ],
+              [0.15, "holidaypole" ],
+              [0.15, "lollipop1" ],
               [0.35, "lollipop2" ],
               [0.35, "present1" ],
               [0.35, "present2" ],
               [0.35, "present3" ],
-              [0.35, "redcandycane1" ],
+              [0.35, "present4" ],
+              [0.35, "purplegumdrop1" ],
+              [0.35, "purplegumdrop2" ],
+              [0.15, "redcandycane1" ],
               [0.35, "redcandycane2" ],
               [0.35, "redcandycane3" ],
               [0.35, "redgumdrop1" ],
               [0.35, "redgumdrop2" ],
-              [0.35, "scifisleigh" ],
               [0.35, "smallholidaytree" ],
               [0.35, "undecoratedtree" ]
-
               ],
               "parameters" : { }
             }
@@ -171,6 +172,34 @@
       },
       {
         "mode" : "floor",
+        "priority" : 0.5,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "snowbush1" ], [0.35, "snowtree1" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "snowman" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
         "distribution" : "/biomes/distributions.config:ultraRare",
@@ -182,6 +211,15 @@
             "parameters" : { }
           }
         ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest" ]
       },
       {
         "mode" : "floor",
@@ -210,7 +248,7 @@
         "mode" : "floor",
         "priority" : 0.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:overgroundRareChests",
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
         "type" : "treasureBox",
         "treasureBoxSets" : [ "weaponChest" ]
@@ -243,12 +281,12 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:scatteredSmall",
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
 
         "type" : "tree",
         "treeFoliageHueShiftMax" : 180,
         "treeStemHueShiftMax" : 15,
-        "treeStemList" : [ "snowpinetree", "snowbirch", "snowcocoa", "snowfleshy", "snowgrumpy", "snowmetal", "snowpine", "snowslimey", "snowsomething", "snowspikey", "snowtwisted", "snowwood" ],
+        "treeStemList" : [ "snowpinetree", "snowbirch", "snowcocoa", "snowfleshy", "snowgrumpy", "snowpine", "snowslimey", "snowsomething", "snowspikey", "snowtwisted", "snowwood" ],
         "treeFoliageList" : [ "snowpine", "snowblank", "snowscraggy", "snowleafy", "snowfrumpy", "snowredleaves", "snowgreenleaves" ]
       },
 
@@ -282,7 +320,7 @@
         "distribution" : "/biomes/distributions.config:undergroundChests",
 
         "type" : "treasureBox",
-        "treasureBoxSets" : [ "snowChest" ]
+        "treasureBoxSets" : [ "basicChest" ]
       },
       {
         "mode" : "floor",
@@ -291,9 +329,17 @@
         "distribution" : "/biomes/distributions.config:undergroundChests",
 
         "type" : "treasureBox",
+        "treasureBoxSets" : [ "snowChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
         "treasureBoxSets" : [ "weaponChest" ]
       },
-
       {
         "mode" : "floor",
         "priority" : 0.0,
@@ -321,7 +367,7 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [
@@ -352,8 +398,8 @@
         "type" : "grass",
         "grasses" : [ "ceilingice", "ceilingthinice", "ceilingiceballs", "ceilingsnow" ]
       }
-      ]
-    }
+    ]
+  }
 }
 
 

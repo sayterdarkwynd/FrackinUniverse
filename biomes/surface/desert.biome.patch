@@ -60,6 +60,21 @@
       }
 },
 
+ {
+   "op": "add",
+   "path": "/surfacePlaceables/items/-",
+   "value":
+   {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+   }
+ },
+
 	{"op":"add","path":"/surfacePlaceables/items/-","value":
 	  {
           "mode" : "floor",
@@ -71,11 +86,6 @@
           "objectSets" : [
             {
               "pool" : [
-              [0.35, "fusand1" ],
-              [0.35, "fusand2" ],
-              [0.35, "fusand3"],
-              [0.35, "fusand4" ],
-              [0.35, "fusand5" ],
               [0.35, "fudesertrock1"],
               [0.35, "fudesertrock2" ],
               [0.35, "fudesertrock3" ],
@@ -88,6 +98,26 @@
            ]
           }
 	},
+
+ {
+   "op": "add",
+   "path": "/surfacePlaceables/items/-",
+   "value":
+   {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ultraRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "wormstatue" ], [0.35, "sandstonestatueapex" ], [0.35, "sandstonestatueavian" ], [0.35, "sandstonestatuefloran" ], [0.35, "sandstonestatueglitch" ], [0.35, "sandstonestatuehuman" ], [0.35, "sandstonestatuehylotl" ] ],
+            "parameters" : { }
+          }
+        ]
+   }
+ },
 
 {"op":"add","path":"/subBlocks/-","value": "calichestone"},
 
@@ -120,6 +150,76 @@
   "microdungeons" : [ "fu_dae_microdungeons", "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "fuencounters",  "fulabs", "fubandits", "newhumanmicro", "newavianmicro", "fuhives", "furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter" ]
   }
 },
+
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/2/treasureBoxSets/-",
+    "value": "ffbasicChest"
+  },
+
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/2/treasureBoxSets/-",
+    "value": "ffbasicChest2"
+  },
+
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "desertChest" ]
+    }
+  },
+
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ultraRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "wormstatue" ], [0.35, "sandstonestatueapex" ], [0.35, "sandstonestatueavian" ], [0.35, "sandstonestatuefloran" ], [0.35, "sandstonestatueglitch" ], [0.35, "sandstonestatuehuman" ], [0.35, "sandstonestatuehylotl" ] ],
+            "parameters" : { }
+          }
+        ]
+    }
+  },
+
+	{"op":"add","path":"/undergroundPlaceables/items/-","value":
+	  {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "fudesertrock1"],
+              [0.35, "fudesertrock2" ],
+              [0.35, "fudesertrock3" ],
+              [0.35, "fudesertrock4"],
+              [0.35, "fudesertrock5" ],
+              [0.35, "fudesertrock6" ]
+              ]
+            }
+           ]
+          }
+	},
 
 {"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
   "mode" : "floor",

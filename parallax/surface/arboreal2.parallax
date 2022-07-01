@@ -1,6 +1,5 @@
 {
-    "verticalOrigin" : -15,
-
+  "verticalOrigin" : -15,
 
   "layers" : [
     {
@@ -8,15 +7,15 @@
       "offset" : [0, 200],
       "nohueshift" : true,
       "lightMapped" : true,
-      "parallax" : 1.199
+      "parallax" : 1.07
     },
     {
-      "kind" : "tile/foliage",
+      "kind" : "tile/dirt",
       "nohueshift" : true,
       "lightMapped" : true,
       "repeatY" : true,
       "tileLimitTop" : 125,
-      "parallax" : 1.2
+      "parallax" : 1.08
     },
     {
       "kind" : "forestfront",
@@ -26,61 +25,58 @@
     },
 
     {
-      "kind" : "forestcanopy",
-      "offset" : [0, -225],
+      "kind" : "foliage/forestcanopy",
+      "offset" : [0, -175],
       "parallax" : 1.1,
+      "directives" : "?saturation=-10",
       "lightMapped" : true
     },
-
     {
-      "kind" : "forestlargetree",
+      "kind" : "stem/forestlargetree",
       "offset" : [0, 90],
       "parallax" : 1.11,
+      "directives" : "?brightness=-5",
       "lightMapped" : true
     },
     {
-      "kind" : "forestcanopy",
-      "offset" : [0, -225],
+      "kind" : "foliage/forestcanopy",
+      "offset" : [0, -175],
       "parallax" : 1.21,
       "directives" : "?saturation=-30"
     },
-
-  //  {
-  //    "kind" : "godrays",
-  //    "offset" : [0, 90],
-  //    "parallax" : 1.211
-  //  },
     {
-      "kind" : "forestlargetree",
+      "kind" : "stem/forestlargetree",
       "offset" : [0, 90],
-      "parallax" : 1.2
+      "parallax" : 1.2,
+      "directives" : "?brightness=-5"
     },
     {
-      "kind" : "forestcanopy",
-      "offset" : [0, -225],
+      "kind" : "foliage/forestcanopy",
+      "offset" : [0, -175],
       "parallax" : 1.31,
       "directives" : "?saturation=-60"
     },
     {
-      "kind" : "forestsmalltree",
+      "kind" : "stem/forestsmalltree",
       "offset" : [0, 90],
       "parallax" : 1.3
     },
     {
-      "kind" : "forestsmalltree",
+      "kind" : "stem/forestsmalltree",
       "offset" : [0, 90],
       "parallax" : 1.4
     },
     {
-      "kind" : "foresttreesback",
+      "kind" : "stem/foresttreesback",
       "offset" : [0, 400],
       "parallax" : 1.5
     },
     {
-      "kind" : "forestback",
-      "offset" : [0, 394],
-      "parallax" : 4,
-      "fadePercent" : 0.1
+      "kind" : "arborealback",
+      "offset" : [0, 300],
+      "baseCount" : 3,
+      "parallax" : 2.5,
+      "fadePercent" : 0.02
     },
 
     {

@@ -35,7 +35,7 @@
   },
 
 
-  "parallax" : "/parallax/surface/bloodstoneseafloor.parallax",
+  "parallax" : "/parallax/surface/atropusbloodseafloor.parallax",
 
   "skyOptions" : [
 
@@ -124,7 +124,7 @@
     }
   },
 
-  "hueShiftOptions" : [ 0 ],
+  "hueShiftOptions" : [-20, -15, -10, -5, 0, 5, 10, 15, 20],
 
   "mainBlock" : "bloodsand",
   "subBlocks" : [ "fleshblock", "ff_bloodstone", "brainsblock" ],
@@ -155,24 +155,6 @@
         },
         {
           "mode" : "floor",
-          "priority" : 3.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:tiyDist",
-
-          "type" : "microdungeon",
-          "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
-        },
-      {
-        "mode" : "floor",
-        "priority" : 1,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
-
-        "type" : "microdungeon",
-        "microdungeons" : [ "oceanmicrodungeons" ]
-      },
-        {
-          "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:potsRare",
@@ -192,13 +174,22 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "ffbasicChest2" ]
+          "treasureBoxSets" : [ "ffatropusChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -212,21 +203,11 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
         },
-        {
-          "mode" : "floor",
-          "priority" : 3.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
-
-          "type" : "microdungeon",
-          "microdungeons" : [ "canyonmini", "terrainfeatures", "rockclimb","rocktunnel",  "toxicmicrodungeons", "sandstone", "blockpile", "rockyshapes", "rods", "spikes" ]
-        },
-
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -267,44 +248,54 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffCommon",
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ [1, "bloodstoneplant1" ] ]
-            },
-            {
-              "pool" : [ [1, "bloodstoneplant2" ] ]
-            },
-            {
-              "pool" : [ [1, "bloodstoneplant3" ] ]
-            },
-            {
-              "pool" : [ [1, "bloodstoneplant4" ] ]
-            },
-            {
-              "pool" : [ [1, "bloodstoneplant5" ] ]
-            },
-            {
-              "pool" : [ [1, "anemone1" ] ]
-            },
-            {
-	      "pool" : [ [1, "heartroot" ] ]
+              "pool" : [
+              [0.35, "bloodstoneplant1" ],
+              [0.35, "bloodstoneplant2" ],
+              [0.35, "bloodstoneplant3" ],
+              [0.35, "bloodstoneplant4" ],
+              [0.35, "bloodstoneplant5" ],
+              [0.35, "anemone1"],
+              [0.35, "heartroot" ]
+              ]
             }
           ]
         },
         {
-          "mode" : "ceiling",
+          "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseMedium",
+          "distribution" : "/biomes/distributions.config:ffAverage",
 
-          "type" : "tree",
-          "treeFoliageHueShiftMax" : 220,
-          "treeStemHueShiftMax" : 220,
-          "treeStemList" : [ "vein", "bluevein"],
-          "treeFoliageList" : [ "blueveiny", "veiny" ]
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "heckpillar1" ],
+              [0.35, "heckpillar2" ]
+              ]
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "hecklight1" ],
+              [0.35, "hecklight2" ]
+              ]
+            }
+          ]
         },
       {
         "mode" : "floor",
@@ -313,23 +304,11 @@
         "distribution" : "/biomes/distributions.config:denseMedium",
 
         "type" : "tree",
-        "treeFoliageHueShiftMax" : 0,
-        "treeStemHueShiftMax" : 0,
+        "treeFoliageHueShiftMax" : 15,
+        "treeStemHueShiftMax" : 15,
         "treeStemList" : [ "bloodkelp" ],
         "treeFoliageList" : [ "bloodkelpy" ]
       },
-        {
-          "mode" : "ceiling",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseMedium",
-
-          "type" : "tree",
-          "treeFoliageHueShiftMax" : 220,
-          "treeStemHueShiftMax" : 220,
-          "treeStemList" : [ "bloodvine", "fleshvine_atropus", "fleshvine2", "podvine" ],
-          "treeFoliageList" : [ "nofoliagevine"  ]
-        },
       {
         "mode" : "floor",
         "priority" : 2.0,
@@ -340,7 +319,7 @@
         "bushes" : [
           {
             "name" : "bloodsea",
-            "baseHueShiftMax" : 0,
+            "baseHueShiftMax" : 15,
             "modHueShiftMax" : 0
           }
         ]

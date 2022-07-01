@@ -11,7 +11,7 @@
   "inventoryIcon" : "icefloor2.png",
   "orientations" : [
     {
-      "image" : "icefloor2.png:<color>",
+      "dualImage" : "icefloor2.png:<color>",
       "imagePosition" : [-8, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
@@ -21,12 +21,10 @@
 
     }
   ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/ice_break1.ogg", "/sfx/objects/ice_break2.ogg", "/sfx/objects/ice_break3.ogg" ],
+  "smashParticles" : [ { "count" : 5, "particle" : "iceshard" } ],
   "smashDropOptions" : [
-    [ [ "ice", 20, { } ] ]
-  ],
-
-  "breakDropOptions" : [
     [ [ "ice", 20, { } ] ]
   ],
   "biomePlaced" : true

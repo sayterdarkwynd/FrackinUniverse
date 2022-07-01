@@ -1,0 +1,44 @@
+[
+  {
+    "op": "replace",
+    "path": "/orientations/1/imageLayers/0/image",
+    "value": "bioshroom3.png"
+  },
+ 
+  {
+    "op": "replace",
+    "path": "/orientations/1/imageLayers/1/image",
+    "value": "bioshroom3lit.png"
+  },
+ 
+  {
+    "op": "add",
+    "path": "/smashOnBreak",
+    "value": true
+  },
+ 
+  {
+    "op": "add",
+    "path": "/smashSounds",
+    "value": [ "/sfx/projectiles/tar_hit_organic1.ogg", "/sfx/projectiles/tar_hit_organic2.ogg", "/sfx/projectiles/tar_hit_organic3.ogg", "/sfx/projectiles/tar_hit_organic4.ogg", "/sfx/projectiles/tar_hit_organic5.ogg" ]
+  },
+ 
+  {
+    "op": "add",
+    "path": "/smashParticles",
+    "value": [ { "count" : 4, "particle" : "biovineshard" } ]
+  },
+ 
+  {
+    "op": "remove",
+    "path": "/breakDropOptions"
+  },
+ 
+  {
+    "op": "add",
+    "path": "/smashDropOptions",
+    "value": [
+      [ [ "glowfibre", 1, { } ] ]
+    ]
+  }
+]
