@@ -4,7 +4,7 @@
   "price" : 8,
   "category" : "preparedFood",
   "inventoryIcon" : "cherryporridge.png",
-  "description" : "Thick, with whole cherries to accent the flavor. ^green;Type: Grain^reset;",
+  "description" : "Thick, with whole cherries to accent the flavor.\n^cyan;+^white;20% ^cyan;EP ^gray;(^white;120s^gray;)\n^green;Type: Grain^reset;",
   "shortdescription" : "Cherry Porridge",
   "foodValue" : 25,
   "tooltipKind" : "food",
@@ -15,5 +15,13 @@
   "blockingEffects" : [
     "wellfed"
   ],
-  "effects": [ [ {"effect": "plant_food"} ] ]
+  "effects" : [ [
+    {
+        "effect" : "maxenergyscalingboostfood",
+        "duration" : 120
+    },
+    {
+        "effect" : "plant_food"
+    }
+  ] ]
 }
