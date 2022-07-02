@@ -4,7 +4,7 @@
   "price": 50,
   "category": "drink",
   "inventoryIcon": "sourmilkandbees.png",
-  "description": "Enough people drink this that it comes in cartons?\n^red;-^white;5% ^red;HP ^gray;& ^red;Damage^gray;, ^cyan;+^white;5% ^cyan;Run^gray;, ^cyan;+^white;8% ^cyan;Jump^gray;, ^cyan;Increased Air Force ^gray;(^white;1m^gray;)^reset;",
+  "description": "Enough people drink this that it comes in cartons?\n^red;-^white;5% ^red;HP ^gray;& ^red;Damage^gray;, ^cyan;+^white;5% ^cyan;Run^gray;, ^cyan;+^white;8% ^cyan;Jump^gray;, ^cyan;Increased Air Force ^gray;(^white;1m^gray;)^reset; ^orange;Type: Dairy^reset;",
   "shortdescription": "Sour Milk and Bees",
   "foodValue": 25,
   "tooltipKind": "food",
@@ -13,7 +13,7 @@
   "itemAgingScripts": ["/scripts/items/rotting.lua"],
   "rottingMultiplier": 2.0,
 
-  "effects": [["sourmilk"]],
+  "effects": [["sourmilk", { "effect": "dairy_food" }]],
   "blockingEffects": ["sourmilk", "wellfed"],
 
   "emitters": ["drinking"]//,

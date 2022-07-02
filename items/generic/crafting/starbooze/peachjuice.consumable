@@ -1,17 +1,25 @@
 {
-  "itemName": "peachjuice",
-  "rarity": "Common",
-  "inventoryIcon": "peachjuice.png",
-  "description": "A sweet juice made from peaches.",
-  "shortdescription": "Peach Juice",
-  "category": "drink",
-  "price": 5,
-  "eventCategory": "eventCrop",
-  "foodValue": 10,
-  "tooltipKind": "food",
-  "builder": "/items/buildscripts/buildfood.lua",
-  "maxStack": 100,
-  "itemAgingScripts": ["/scripts/items/rotting.lua"],
-  "rottingMultiplier": 3.0,
+  "itemName" : "peachjuice",
+  "rarity" : "Common",
+  "price" : 115,
+  "category" : "drink",
+  "inventoryIcon" : "peachjuice.png",
+  "description" : "A sweet juice made from peaches.\n^green;Heal ^white;50% ^green;HP ^gray;(^white;30s^gray;)^reset; \n^green;Type: Fruit^reset;",
+  "shortdescription" : "Peach Juice",
+  "effects" : [ [
+    {
+      "effect" : "regeneration1",
+      "duration" : 30
+    },
+    {
+	  "effect" : "fruit_food"
+	}
+  ] ],
+  "foodValue" : 20,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [ "wellfed" ],
   "emitters" : [ "drinking" ]
 }

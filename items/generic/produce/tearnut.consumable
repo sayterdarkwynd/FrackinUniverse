@@ -8,7 +8,7 @@
 	"maxStack": 1000,
 
 	"tooltipKind": "food",
-	"description": "^yellow;^reset;^cyan;Heal 20^reset;: 2s",
+	"description": "^yellow;^reset;^cyan;Heal 20^reset;: 2s \n^green;Type: Nut^reset;",
 	"shortdescription": "Tearnut",
 
 	"eventCategory": "eventCrop",
@@ -19,8 +19,11 @@
 		[{
 			"effect": "heal_tier1",
 			"duration": 2
+		},
+		{
+			"effect": "plant_food"
 		}]
 	],
-	"blockingEffects": ["heal_tier1"],
+	"blockingEffects": ["wellfed", "heal_tier1"],
 	"learnBlueprintsOnPickup": ["tearnutbutter"]
 }

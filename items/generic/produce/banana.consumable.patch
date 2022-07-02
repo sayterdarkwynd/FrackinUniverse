@@ -4,11 +4,6 @@
 		{ "op" : "replace", "path" : "/maxStack", "value" : 20 }
 	],
 	[
-		{ "op" : "test", "path" : "/itemAgingScripts", "value" : ["/scripts/items/rotting.lua"] },
-		{ "op" : "remove", "path" : "/itemAgingScripts" },
-		{ "op" : "remove", "path" : "/rottingMultiplier" }
-	],
-	[
 		{ "op" : "replace", "path" : "/foodValue", "value" : 3 },
 		{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "bananamilk" },
 		{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "bananapudding" }
@@ -22,7 +17,7 @@
 		{
 			"op" : "replace",
 			"path" : "/description",
-			"value" : "A genetically enhanced banana. ^green;Type: Fruit^reset;\n^cyan;+^white;10% ^cyan;Crit Chance ^gray;(^white;1m^gray;)^reset;"
+			"value" : "A genetically enhanced banana. \n^cyan;+^white;10% ^cyan;Crit Chance ^gray;(^white;1m^gray;)^reset; ^green;Type: Fruit^reset;"
 		}
 	],
 	[{"op":"test","path":"/learnBlueprintsOnPickup/2"},{"op":"remove","path":"/learnBlueprintsOnPickup/2"}],

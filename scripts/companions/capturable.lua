@@ -177,7 +177,7 @@ function capturable.update(dt)
 		end
 	end
 
-	if not capturable.ownerUuid() and storage.pandorasboxSpecialColor and storage.pandorasboxSpecialColor ~= "default" then
+	--[[if not capturable.ownerUuid() and storage.pandorasboxSpecialColor and storage.pandorasboxSpecialColor ~= "default" then
 		for playerId, _ in pairs(pandorasboxSpecialColorMusicPlayers) do
 			local playerNearby = pandorasboxPlayerInRange(playerId)
 			if not playerNearby then
@@ -193,7 +193,7 @@ function capturable.update(dt)
 		end
 		pandorasboxStartMusic()
 		pandorasboxSpecialColorMusicPlaying = true
-	end
+	end]]--
 end
 
 function capturable.die()
