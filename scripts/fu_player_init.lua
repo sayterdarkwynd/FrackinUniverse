@@ -23,7 +23,7 @@ function init(...)
 	elseif wType=="superdense" then
 		ffunknownConfig=root.assetJson("/scripts/ffsuperdenseconfig.config")
 	elseif wType=="shadow" then
-		ffunknownConfig=root.assetJson("/scripts/ffshadowconfig.config")		
+		ffunknownConfig=root.assetJson("/scripts/ffshadowconfig.config")
 	elseif wType=="strangesea" then
 		ffunknownConfig=root.assetJson("/scripts/ffunknownconfig.config")
 		local terraConfig={root.assetJson("/terrestrial_worlds.config:regionTypes.strangesea"),root.assetJson("/terrestrial_worlds.config:regionTypes.strangeseafloor")}
