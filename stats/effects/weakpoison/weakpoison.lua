@@ -17,7 +17,7 @@ function init()
 	self.tickTimer = self.tickTime
 
 	self.penaltyRate = config.getParameter("penaltyRate",0)
-	self.healingRate = config.getParameter("healAmount", 5) / effect.duration()
+	self.healingRate = config.getParameter("healAmount", 5) / (effect.duration() or 15)
 	bonusHandler=effect.addStatModifierGroup({})
 	self.didInit=true
 end
