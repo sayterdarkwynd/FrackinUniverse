@@ -4,6 +4,12 @@ local didInit=false
 local origInit = init
 local origUninit = uninit
 local oldUpdate=update
+local unknownWorlds={
+	ffunknown="/scripts/ffunknownconfig.config",
+	shadow="/scripts/ffshadowconfig.config",
+	superdense="/scripts/ffsuperdenseconfig.config",
+	strangesea="/scripts/ffunknownconfig.config"
+}
 local ffunknownConfig
 
 --HAS to be done in this specific order: get local functions, THEN load this script.
@@ -17,26 +23,7 @@ function init(...)
 	idiotitem=root.itemConfig("idiotitem")
 	doIdiotCheck=true
 	sb.logInfo("----- FU player init -----")
-	local wType=world.type()
-	if wType=="ffunknown" then
-		ffunknownConfig=root.assetJson("/scripts/ffunknownconfig.config")
-	elseif wType=="superdense" then
-		ffunknownConfig=root.assetJson("/scripts/ffsuperdenseconfig.config")
-	elseif wType=="shadow" then
-		ffunknownConfig=root.assetJson("/scripts/ffshadowconfig.config")
-	elseif wType=="strangesea" then
-		ffunknownConfig=root.assetJson("/scripts/ffunknownconfig.config")
-		local terraConfig={root.assetJson("/terrestrial_worlds.config:regionTypes.strangesea"),root.assetJson("/terrestrial_worlds.config:regionTypes.strangeseafloor")}
-		for _,v in pairs(terraConfig) do
-			if strangeSeaOverrideCheck then break end
-			for _,v2 in pairs(v.oceanLiquid or {}) do
-				if v2~="alienjuice" then
-					strangeSeaOverrideCheck=true
-					break
-				end
-			end
-		end
-	end
+	fuUnknownWorldsInit()
 	message.setHandler("fu_key", function(_, _, requiredItem)
 		if player.hasItem(requiredItem) then
 			return true
@@ -184,16 +171,40 @@ function randTilt(floored,remainder)
 	return floored
 end
 
+function fuUnknownWorldsInit()
+	local wType=world.type()
+	if unknownWorlds[wType] then
+		ffunknownConfig=root.assetJson(unknownWorlds[wType])
+		if wType=="strangesea" then
+			ffunknownConfig=root.assetJson("/scripts/ffunknownconfig.config")
+			local terraConfig={root.assetJson("/terrestrial_worlds.config:regionTypes.strangesea"),root.assetJson("/terrestrial_worlds.config:regionTypes.strangeseafloor")}
+			for _,v in pairs(terraConfig) do
+				if strangeSeaOverrideCheck then break end
+				for _,v2 in pairs(v.oceanLiquid or {}) do
+					if v2~="alienjuice" then
+						strangeSeaOverrideCheck=true
+						break
+					end
+				end
+			end
+		end
+	end
+end
+
 function unknownCheck(dt)
 	if not ffunknownCheckTimer then
 		ffunknownCheckTimer=0.99
 	elseif ffunknownCheckTimer>=1.0 then
 		local ffunknownWorldProp=world.getProperty("ffunknownWorldProp")
 		local wType=world.type()
-		if ffunknownConfig and ((wType=="ffunknown") or (strangeSeaOverrideCheck and (wType=="strangesea"))) and not playerIsInVehicle() then
-			if not ffunknownWorldProp or (ffunknownWorldProp.version~=ffunknownConfig.version) then
+		if (unknownWorlds[wType] and ((not (strangeSeaOverrideCheck)) or (wType=="strangesea"))) and not playerIsInVehicle() then
+			if (not ffunknownWorldProp) or (ffunknownConfig and (ffunknownWorldProp.version~=ffunknownConfig.version)) or (ffunknownWorldProp.worldType~=wType) then
+				if (not ffunknownWorldProp) or (ffunknownWorldProp.worldType~=wType) then
+					fuUnknownWorldsInit()
+				end
 				ffunknownWorldProp={version=ffunknownConfig.version}
 				ffunknownWorldProp.effects={}
+				ffunknownWorldProp.worldType=wType
 
 				local threatLevel=world.threatLevel()
 				local leftoverThreat=threatLevel%1
@@ -211,7 +222,7 @@ function unknownCheck(dt)
 				local tempConfig=copy(ffunknownConfig.effectList)
 				while inc<threatLevel do
 					local key,value=chooseRandomPair(tempConfig)
-					if not key then break end
+					if (not key) or (type(value)~="table") or (#value <= 0) then break end
 					table.insert(ffunknownWorldProp.effects,value[math.random(#value)])
 					tempConfig[key]=nil
 					inc=inc+1
@@ -220,7 +231,7 @@ function unknownCheck(dt)
 				world.setProperty("ffunknownWorldProp",ffunknownWorldProp)
 			end
 			status.setPersistentEffects("ffunknownEffects",ffunknownWorldProp.effects)
-		elseif ffunknownWorldProp and not ((wType=="ffunknown") or (strangeSeaOverrideCheck and (wType=="strangesea"))) then
+		elseif ffunknownWorldProp and not ((unknownWorlds[wType]) or (strangeSeaOverrideCheck and (wType=="strangesea"))) then
 			world.setProperty("ffunknownWorldProp",nil)
 			status.setPersistentEffects("ffunknownEffects",{})
 		else
