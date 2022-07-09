@@ -60,7 +60,7 @@ function populateMaterialsList()
                                 if subbiomes=="None" then
                                     subbiomes = biomes[subBiome.biome]
                                 else
-                                    subbiomes = subbiomes..", "..biomes[subBiome.biome]
+                                    subbiomes = subbiomes..", "..(biomes[subBiome.biome] or subBiome.biome)
                                 end
                             end
                         end
