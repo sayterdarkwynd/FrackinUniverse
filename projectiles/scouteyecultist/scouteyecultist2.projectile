@@ -1,0 +1,72 @@
+{
+  "projectileName" : "scouteyecultist2",
+  "clientEntityMode" : "ClientPresenceMaster",
+  "image" : "eye.png",
+  "physics" : "grenade",
+  "animationCycle" : 1,
+  "frameNumber" : 1,
+  "power" : 10,
+  "speed" : 32,
+  "timeToLive" : 1.5,
+  "bounces" : 3,
+  "piercing" : false,
+  "damageKind" : "shadow",
+  "statusEffects" : [ "madnessgain" ],
+  "periodicActions" : [
+    {
+      "time" : 0.25,
+      "action" : "particle",
+      "specification" : {
+        "type" : "ember",
+        "size" : 2,
+        "color" : [240, 50, 80, 200],
+        "initialVelocity" : [0.0, 2.0],
+        "finalVelocity" : [0.0, -10.0],
+        "approach" : [2.0, 25.0],
+        "timeToLive" : 0.25,
+        "fade" : 0.8,
+        "destructionAction" : "shrink",
+        "destructionTime" : 0.25,
+        "layer" : "back",
+        "variance" : {
+          "initialVelocity" : [3.0, 1.0],
+          "size" : 1.0
+        }
+      }
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/blocks/footstep_mud.ogg" ]
+    },
+    {
+      "action" : "loop",
+      "count" : 6,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "ember",
+            "size" : 2,
+            "color" : [240, 50, 80, 200],
+            "initialVelocity" : [0.0, 4.0],
+            "finalVelocity" : [0.0, -10.0],
+            "approach" : [2.0, 25.0],
+            "timeToLive" : 0.25,
+            "fade" : 0.8,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.25,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [4.0, 2.0],
+              "size" : 1.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+
+  "scripts" : ["/projectiles/killable.lua"]
+}
