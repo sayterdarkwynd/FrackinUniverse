@@ -49,8 +49,8 @@
         "windupTime": 0,
         "windupState": "",
         "winddownTime": 0,
-        "winddownState": "idle",
-        "invulnerableTime": 1
+        "winddownState": "eye",
+        "invulnerableTime": 0.5
       }
     }
   },
@@ -68,6 +68,34 @@
         "invulnerableTime": 1
       }
     }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/hostileActions/-",
+    "value": {
+          "name" : "action-fire",
+          "cooldown" : 6,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 12,
+            "minimumRange" : 0,
+            "windupState" : "eye",
+            "windupTime" : 0.4,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.01,
+            "inaccuracy" : 0,
+            "projectileType" : "scouteyecultist2",
+            "power" : 7,
+            "fireOffset" : [2, 0],
+
+            "aimAtTarget" : true,
+            "fireSound" : "",
+            "fireState" : "",
+            "fireDelay" : 0.6,
+            "winddownState" : "",
+            "winddownTime" : 0.25
+      }
+    }  
   },
   {
     "op": "replace",
