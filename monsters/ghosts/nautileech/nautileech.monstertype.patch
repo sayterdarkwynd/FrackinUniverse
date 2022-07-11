@@ -73,5 +73,23 @@
     "op": "replace",
     "path": "/baseParameters/statusSettings/stats/poisonResistance/baseValue",
     "value": 0.95
-  }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/hostileActions/-",
+    "value": {
+          "name" : "action-projectile",
+          "cooldown" : 1.5,
+          "parameters" : {
+            "projectileCount" : 8,
+            "inaccuracy" : 3.60,
+            "projectileInterval" : 0,
+            "projectileType" : "electricplasma",
+            "projectileParameters" : { "speed" : 32, "timeToLive" : 1 },
+            "power" : 3,
+            "aimDirection" : [0, -0.1],
+            "fireOffset" : [0, 0]      
+      }
+    }
+  } 
 ]
