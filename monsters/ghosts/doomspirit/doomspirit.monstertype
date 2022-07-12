@@ -75,7 +75,7 @@
       "hostileActions" : [
         {
           "name" : "action-fire",
-	  "cooldown" : 1.5,
+	       "cooldown" : 1.5,
           "parameters" : {
             "requireLineOfSight" : false,
             "maximumRange" : 70,
@@ -140,12 +140,12 @@
         {
           "name" : "approach-teleport",
           "parameters" : {
-	    "moveState": "summon",
-	    "idleState": "summon2",
-	    "teleportMinDistance": 15,
-	    "targetXDelta": 10,
-	    "groundMinHeight": -10,
-	    "groundMaxHeight": 10
+      	    "moveState": "summon",
+      	    "idleState": "summon2",
+      	    "teleportMinDistance": 15,
+      	    "targetXDelta": 10,
+      	    "groundMinHeight": -10,
+      	    "groundMaxHeight": 10
           }
         },
         {
@@ -160,8 +160,8 @@
 
       "wanderActions" : [
         {"name" : "emerge-fly"},
-	{"name":"wander-fly", "cooldown":[5,20], "parameters":{"wanderTime":[10,40], "groundDistance":20, "ceilingDistance":10, "xVelocity":8, "yVelocity":12}},
-	{"name":"land-fly", "parameters":{"flySpeed":8, "flyControlForce":25, "landCheckDistance":40, "idleTime":40}}
+	      {"name":"wander-fly", "cooldown":[5,20], "parameters":{"wanderTime":[10,40], "groundDistance":20, "ceilingDistance":10, "xVelocity":8, "yVelocity":12}},
+	      {"name":"land-fly", "parameters":{"flySpeed":8, "flyControlForce":25, "landCheckDistance":40, "idleTime":40}}
       ],
 
       "concurrentActions" : [  ],
@@ -169,7 +169,7 @@
       "concurrentHostileActions" : [
         {
           "name" : "action-fire",
-	  "cooldown" : 6,
+	        "cooldown" : 6,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 4,
