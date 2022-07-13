@@ -4,6 +4,11 @@
 		{ "op" : "replace", "path" : "/maxStack", "value" : 20 }
 	],
 	[
+		{ "op" : "test", "path" : "/itemAgingScripts", "value" : ["/scripts/items/rotting.lua"] },
+		{ "op" : "remove", "path" : "/itemAgingScripts" },
+		{ "op" : "remove", "path" : "/rottingMultiplier" }
+	],
+	[
 		{ "op" : "replace", "path" : "/foodValue", "value" : 3 },
 		{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "bananamilk" },
 		{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "bananapudding" }
