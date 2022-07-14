@@ -1,6 +1,5 @@
 function init()
-   effect.addStatModifierGroup({{stat = "iceResistance", amount = 0.25}, {stat = "biomecoldImmunity", amount = 1}})
-
+   effect.addStatModifierGroup({{stat = "iceResistance", amount = 0.15}, {stat = "biomecoldImmunity", amount = 1}})
    script.setUpdateDelta(0)
 end
 
