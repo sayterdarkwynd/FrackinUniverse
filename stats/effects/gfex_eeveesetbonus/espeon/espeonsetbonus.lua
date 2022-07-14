@@ -1,6 +1,6 @@
 function init()
   effect.addStatModifierGroup({
-    {stat = "physicalResistance", "amount": 0.15},
+    {stat = "physicalResistance", amount = 0.15},
     {stat = "fallDamageMultiplier", effectiveMultiplier = 0.7}
   })
   
