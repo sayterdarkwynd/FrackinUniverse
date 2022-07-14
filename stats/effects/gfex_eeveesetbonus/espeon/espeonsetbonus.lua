@@ -1,7 +1,7 @@
 function init()
   effect.addStatModifierGroup({
-    {stat = "physicalResistance", "amount": 0.1},
-    {stat = "fallDamageMultiplier", effectiveMultiplier = 0.5}
+    {stat = "physicalResistance", "amount": 0.15},
+    {stat = "fallDamageMultiplier", effectiveMultiplier = 0.7}
   })
   
   script.setUpdateDelta(0)
