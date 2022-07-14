@@ -7,7 +7,7 @@ function init()
   self.movementParameters = config.getParameter("movementParameters", {})
 end
 
-function update()
+function update(dt)
 end
 
 function uninit()
