@@ -58,12 +58,24 @@
   "hueShiftOptions" : [0],
   "parallax" : "/parallax/underground/dirtunderground.parallax",
 
-  "sky" : {
-    "topColor" : [182, 204, 255],
-    "bottomColor" : [224, 239, 255],
-    "nightTopColor" : [0, 0, 30],
-    "nightBottomColor" : [0, 0, 0]
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/moon_underground.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/moon_underground.ogg" ]
+    }
   },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+
     "undergroundPlaceables" : {
       "grassMod" : [ "blackslimegrass" ],
       "grassModDensity" : 0.2,
