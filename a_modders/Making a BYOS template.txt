@@ -1,0 +1,23 @@
+This guide teaches you to PR a ship template into FU so that players can select it when creating a character.
+
+This also works for external mods adding BYOS presets, for example for non-FU races, though you'll have to create a patch file in step 5 rather than editing the file directly. Make sure you have FrackinUniverse in the 'includes' parameter in your mod's metadata file.
+
+Please try to keep ships relatively balanced against one another (don't place a Precursor Crucible in the ship, for example). Items can be added to containers without issue (including the shiplocker), using the treasurePools custom parameter as in any other dungeon.
+
+1. Set up Tiled. These guides are useful for this: https://starbounder.org/Modding:Tiled and https://community.playstarbound.com/threads/starbound-and-tiled-getting-started-tiles.131443/
+
+2. Download unpacked FU from the Github and put it in your mods folder.
+
+3. Make a copy of the template BYOS file in /frackinship/ships (https://github.com/sayterdarkwynd/FrackinUniverse/tree/master/frackinship/ships), name it in the same style as the pre-existing ships, and design the ship in that file. Make sure it has all the basic ship components (teleporter, captain's chair, fuel hatch, broken FTL drive, shiplocker, nameplate), the template file comes with these already placed. FU's tilesets can be found in its /tilesets folder.
+
+4. Make a copy of one of the .dungeon files in that folder, rename it to the same as your ship file, and edit it accordingly.
+
+5. Give the ship an entry in the /frackinship/configs/ships.config file (https://github.com/sayterdarkwynd/FrackinUniverse/blob/master/frackinship/configs/ships.config) in the same format as the others (this file is sorted, so put it in the right place in the list).
+
+6. (This step isn't necessary for testing, you can do this at the end when you're happy with the ship) Put a preview image of the ship in the /interface/ai/shippreviews folder (https://github.com/sayterdarkwynd/FrackinUniverse/tree/master/interface/ai/shippreviews).
+- To match the other preview images, take the screenshot while the ship is flying in-system. It's easy to do this by pausing the game mid-flight and hiding your interface with ALT+Z.
+- You can make your character invisible by spawning the item fuinvisiblehat, and hide the ship pet by placing an invisiblenot object somewhere and wiring its output to SAIL's input.
+- The "Extra Zoom Levels" mod (https://steamcommunity.com/sharedfiles/filedetails/?id=729791646) helps for screenshotting large ships. If a ship doesn't fit in the 1x zoom of that mod, you'll need to take multiple screenshots (use the game-pausing trick above) and stitch them together in an image editing program, such as paint.net.
+- Make sure to run the screenshot through the program PNGGauntlet (https://pnggauntlet.com/) to reduce its file size.
+
+7. PR the ship once you've tested and are happy with it (you can find guides to making Github Pull Requests online if you don't know how).
