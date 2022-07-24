@@ -2,7 +2,12 @@ This guide teaches you to PR a ship template into FU so that players can select 
 
 This also works for external mods adding BYOS presets, for example for non-FU races, though you'll have to create a patch file in step 5 rather than editing the file directly. Make sure you have FrackinUniverse in the 'includes' parameter in your mod's metadata file.
 
-Please try to keep ships relatively balanced against one another (don't place a Precursor Crucible in the ship, for example). Items can be added to containers without issue (including the shiplocker), using the treasurePools custom parameter as in any other dungeon.
+Please try to keep ships relatively balanced against one another (don't place a Precursor Crucible in the ship, for example). Keep an eye on the ship components and other benefits you're adding to your template. Items can be added to containers (including the shiplocker) using the treasurePools custom parameter, as in any other dungeon.
+
+Something to keep in mind is that BYOS templates are intended to be a jumping-off point for players to expand on and develop their ship further as they see fit. Accordingly, make sure everything used within the ship is available to players - don't use unobtainable tiles or objects, or breakable pots, vegetation etc. that the player can't place or replace. Unsmashable and player-obtainable versions of vanilla smashables can be found in the /tilesets/frackinuniverse-custom/fu_proppack_unsmashables.json tileset.
+
+Additionally, all ships are designed to be used by all races and cannot be race-restricted, so you should make them usable by all races. For example in lore an aquatic race might fill their ship with water, but an Apex player will drown if they choose that ship and so a water-filled ship is unsuitable as a BYOS template.
+
 
 1. Set up Tiled. These guides are useful for this: https://starbounder.org/Modding:Tiled and https://community.playstarbound.com/threads/starbound-and-tiled-getting-started-tiles.131443/
 
