@@ -2,20 +2,23 @@ This guide teaches you to PR a ship template into FU so that players can select 
 
 This also works for external mods adding BYOS presets, for example for non-FU races, though you'll have to create a patch file in step 5 rather than editing the file directly. Make sure you have FrackinUniverse in the 'includes' parameter in your mod's metadata file.
 
-Please try to keep ships relatively balanced against one another (don't place a Precursor Crucible in the ship, for example). Keep an eye on the ship components and other benefits you're adding to your template. Items can be added to containers (including the shiplocker) using the treasurePools custom parameter, as in any other dungeon.
-
-Something to keep in mind is that BYOS templates are intended to be a jumping-off point for players to expand on and develop their ship further as they see fit. Accordingly, make sure everything used within the ship is available to players - don't use unobtainable tiles or objects, or breakable pots, vegetation etc. that the player can't place or replace. Unsmashable and player-obtainable versions of vanilla smashables can be found in the /tilesets/frackinuniverse-custom/fu_proppack_unsmashables.json tileset.
-
-Additionally, all ships are designed to be used by all races and cannot be race-restricted, so you should make them usable by all races. For example in lore an aquatic race might fill their ship with water, but an Apex player will drown if they choose that ship and so a water-filled ship is unsuitable as a BYOS template.
-
 
 1. Set up Tiled. These guides are useful for this: https://starbounder.org/Modding:Tiled and https://community.playstarbound.com/threads/starbound-and-tiled-getting-started-tiles.131443/
 
 2. Download unpacked FU from the Github and put it in your mods folder.
 
-3. Make a copy of the template BYOS file in /frackinship/ships (https://github.com/sayterdarkwynd/FrackinUniverse/tree/master/frackinship/ships), name it in the same style as the pre-existing ships, and design the ship in that file. Make sure it has all the basic ship components (teleporter, captain's chair, fuel hatch, broken FTL drive, shiplocker, nameplate), the template file comes with these already placed. FU's tilesets can be found in its /tilesets folder.
+3. Make a copy of the template BYOS file (_fu_byostemplateship.json) in /frackinship/ships (https://github.com/sayterdarkwynd/FrackinUniverse/tree/master/frackinship/ships), name it in the same style as the pre-existing ships, and design the ship in that file.
+- FU's tilesets can be found in its /tilesets folder.
+- Make sure your ship has all the basic BYOS components (teleporter, captain's chair, fuel hatch, broken FTL drive, shiplocker, nameplate). The template file comes with these already placed.
+- Try to keep your ship's components and other benefits balanced against those already ingame - don't place a Precursor Crucible, for example.
+- All ships are designed to be used by all races and cannot be race-restricted, so you should make them usable by all races.
+In lore an aquatic race might fill their ship with water, but an Apex player will drown if they choose that ship and so a water-filled ship is unsuitable as a BYOS template.
+- BYOS templates are intended to be a jumping-off point for players to expand on and develop their ship further as they see fit.
+Make sure everything used within the ship is available to players - don't use unobtainable tiles or objects, or breakable objects like pots and vegetation that the player can't place or replace.
+Unsmashable, player-obtainable versions of vanilla breakable objects can be found in the /tilesets/frackinuniverse-custom/fu_proppack_unsmashables.json tileset.
+- Items can be added to containers (including the shiplocker) using the treasurePools custom parameter, as in any other dungeon.
 
-4. Make a copy of one of the .dungeon files in that folder, rename it to the same as your ship file, and edit it accordingly.
+4. Make a copy of the template ship's dungeon file (_fu_byostemplateship.dungeon), rename it to the same as your ship file, and edit it accordingly.
 
 5. Give the ship an entry in the /frackinship/configs/ships.config file (https://github.com/sayterdarkwynd/FrackinUniverse/blob/master/frackinship/configs/ships.config) in the same format as the others (this file is sorted, so put it in the right place in the list).
 
