@@ -79,7 +79,7 @@ function init()
       end
     end)
 
-  local reactions = reactionHooks(reactions, storage.plan)
+  reactions = reactionHooks(reactions, storage.plan)
   message.setHandler("trigger", function(_,_, triggerId, triggerPosition)
     if reactions[triggerId] then
       reactions[triggerId](triggerPosition)
@@ -121,7 +121,7 @@ function generationTest(planCount)
   local minLength = 999
   local maxLength = 0
   local sumLength = 0
-  for i = 1, planCount do
+  for _ = 1, planCount do
     local plan, _, planTries = generate(self.planner, self.spaceConfig)
     tries = tries + planTries
     local abilities = util.filter(plan, function(op) return self.bossAbilities[op.name] ~= nil end)
@@ -299,7 +299,7 @@ function addPlannerTriggers(planner, triggers, reactions)
   end
   planner:addOperators(triggers)
 
-  for name,reaction in pairs(reactions) do
+  for _,reaction in pairs(reactions) do
     for _,script in pairs(reaction.scripts or {}) do
       require(script)
     end
