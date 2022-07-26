@@ -86,7 +86,7 @@ function init()
     end
   end)
 
-  if not storage.bossDead then
+  if not storage.bossUid then
     local parameters = bossParametersFromPlan(bossAbilities, storage.plan, storage.state, spaceConfig)
     storage.bossUid = storage.bossUid or sb.makeUuid()
     self.bossId = spawnBoss(parameters, storage.bossUid, storage.seed)
