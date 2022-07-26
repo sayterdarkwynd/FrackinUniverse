@@ -501,5 +501,6 @@ function spawnBoss(bossParameters, bossUid, seed)
   bossParameters.level = math.random(7,9)
   bossParameters.uniqueId = bossUid
   bossParameters.seed = seed
+  bossParameters.persistent = true
   return world.spawnMonster(string.format("%sfuguardianboss", storage.elementalType), entity.position(), bossParameters)
 end
