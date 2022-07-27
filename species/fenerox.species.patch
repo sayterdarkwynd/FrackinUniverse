@@ -28,31 +28,31 @@
   Health x^red;0.9^reset;
   ^red;Resist^reset;: -^red;18^reset;% Ice, -^red;15^reset;% Physical Resist"
   },
-	{
-		"op": "replace",
-		"path": "/ouchNoises/0",
-		"value": "/sfx/humanoid/fenerox_malehurt.ogg"
-	},
-	{
-		"op": "replace",
-		"path": "/ouchNoises/1",
-		"value": "/sfx/humanoid/fenerox_femalehurt.ogg"
-	},
-	{
-		"op": "replace",
-		"path": "/charGenTextLabels/8",
-		"value": "FENEROX"
-	},
-	{
-		"op": "replace",
-		"path": "/genders/0/characterImage",
-		"value": "/interface/title/feneroxmale.png"
-	},
-	{
-		"op": "replace",
-		"path": "/genders/1/characterImage",
-		"value": "/interface/title/feneroxfemale.png"
-	},
+  {
+    "op": "replace",
+    "path": "/charGenTextLabels",
+    "value": [ "Fur colour", "Hair style", "Shirt", "Legwear", "Skin colour", "Hair colour", "Shirt colour", "Legwear colour", "FENEROX", "Personality" ]
+  },
+  {
+    "op": "replace",
+    "path": "/genders/0/characterImage",
+    "value": "/interface/title/feneroxmale.png"
+  },
+  {
+    "op": "replace",
+    "path": "/genders/1/characterImage",
+    "value": "/interface/title/feneroxfemale.png"
+  },
+  {
+    "op": "replace",
+    "path": "/ouchNoises/0",
+    "value": "/sfx/humanoid/fenerox_malehurt.ogg"
+  },
+  {
+    "op": "replace",
+    "path": "/ouchNoises/1",
+    "value": "/sfx/humanoid/fenerox_femalehurt.ogg"
+  },
   {
     "op": "replace",
     "path": "/defaultBlueprints/tier1/0/item",
@@ -348,158 +348,156 @@
     "path": "/defaultBlueprints/tier1/42"
   },
 
-	{
-		"op": "replace",
-		"path": "/bodyColor",
-		"value": [
-			{ "f0e1bb": "f0e1bb", "cfbc88": "cfbc88", "9e8555": "9e8555", "6b583d": "6b583d" },
-			{ "f0e1bb": "f9e6cc", "cfbc88": "efd5ab", "9e8555": "bfa27a", "6b583d": "7f6d52" },
-			{ "f0e1bb": "fff0c4", "cfbc88": "dcce9c", "9e8555": "a89c77", "6b583d": "5f5b4b" },
-			{ "f0e1bb": "e5e5d4", "cfbc88": "c2c2a0", "9e8555": "939070", "6b583d": "5f5b4b" },
-			{ "f0e1bb": "dfd3c1", "cfbc88": "bdae97", "9e8555": "81725b", "6b583d": "574b38" },
-			{ "f0e1bb": "baaa7c", "cfbc88": "a5946a", "9e8555": "85734f", "6b583d": "4f432c" },
-			{ "f0e1bb": "f0d7bb", "cfbc88": "cfa688", "9e8555": "9c6c54", "6b583d": "69483e" },
-			{ "f0e1bb": "8e7a6c", "cfbc88": "766559", "9e8555": "4c3c35", "6b583d": "231717" },
-			{ "f0e1bb": "fad086", "cfbc88": "e48c37", "9e8555": "a56220", "6b583d": "68320d" },
-			{ "f0e1bb": "faba86", "cfbc88": "d47744", "9e8555": "9f4d29", "6b583d": "623221" },
-			{ "f0e1bb": "d8b18f", "cfbc88": "bf8857", "9e8555": "875d3b", "6b583d": "443529" },
-			{ "f0e1bb": "e0bd93", "cfbc88": "b9865e", "9e8555": "8c643c", "6b583d": "643e2d" },
-			{ "f0e1bb": "f7ddb0", "cfbc88": "d9aa7b", "9e8555": "a47c56", "6b583d": "66452e" },
-			{ "f0e1bb": "f8f8f8", "cfbc88": "e5e5e5", "9e8555": "a5a5a5", "6b583d": "5c5c5c" },
-			{ "f0e1bb": "e5e5e5", "cfbc88": "b5b5b5", "9e8555": "808080", "6b583d": "555555" },
-			{ "f0e1bb": "afafaf", "cfbc88": "767676", "9e8555": "5b5b5b", "6b583d": "3d3d3d" }
-		]
-	},
-	{
-		"op": "replace",
-		"path": "/undyColor",
-		"value": [
-			{ "e6e6e6": "f0e1bb", "b6b6b6": "cfbc88", "7b7b7b": "9e8555" },
-			{ "e6e6e6": "f9e6cc", "b6b6b6": "efd5ab", "7b7b7b": "bfa27a" },
-			{ "e6e6e6": "fff0c4", "b6b6b6": "dcce9c", "7b7b7b": "a89c77" },
-			{ "e6e6e6": "e5e5d4", "b6b6b6": "c2c2a0", "7b7b7b": "939070" },
-			{ "e6e6e6": "dfd3c1", "b6b6b6": "bdae97", "7b7b7b": "81725b" },
-			{ "e6e6e6": "baaa7c", "b6b6b6": "a5946a", "7b7b7b": "85734f" },
-			{ "e6e6e6": "8e7a6c", "b6b6b6": "766559", "7b7b7b": "4c3c35" },
-			{ "e6e6e6": "fad086", "b6b6b6": "e48c37", "7b7b7b": "a56220" },
-			{ "e6e6e6": "faba86", "b6b6b6": "d47744", "7b7b7b": "9f4d29" },
-			{ "e6e6e6": "d8b18f", "b6b6b6": "bf8857", "7b7b7b": "875d3b" },
-			{ "e6e6e6": "e0bd93", "b6b6b6": "b9865e", "7b7b7b": "8c643c" },
-			{ "e6e6e6": "f7ddb0", "b6b6b6": "d9aa7b", "7b7b7b": "a47c56" },
-			{ "e6e6e6": "f0d7bb", "b6b6b6": "cfa688", "7b7b7b": "9c6c54" },
-			{ "e6e6e6": "f8f8f8", "b6b6b6": "e5e5e5", "7b7b7b": "a5a5a5" },
-			{ "e6e6e6": "e5e5e5", "b6b6b6": "b5b5b5", "7b7b7b": "808080" },
-			{ "e6e6e6": "afafaf", "b6b6b6": "767676", "7b7b7b": "5b5b5b" }
-		]
-	},
-	{
-		"op": "replace",
-		"path": "/hairColor",
-		"value": [
-			{ "d9c189": "f0e1bb", "a38d59": "cfbc88", "735e3a": "9e8555" },
-			{ "d9c189": "f9e6cc", "a38d59": "efd5ab", "735e3a": "bfa27a" },
-			{ "d9c189": "fff0c4", "a38d59": "dcce9c", "735e3a": "a89c77" },
-			{ "d9c189": "e5e5d4", "a38d59": "c2c2a0", "735e3a": "939070" },
-			{ "d9c189": "dfd3c1", "a38d59": "bdae97", "735e3a": "81725b" },
-			{ "d9c189": "baaa7c", "a38d59": "a5946a", "735e3a": "85734f" },
-			{ "d9c189": "8e7a6c", "a38d59": "766559", "735e3a": "4c3c35" },
-			{ "d9c189": "fad086", "a38d59": "e48c37", "735e3a": "a56220" },
-			{ "d9c189": "faba86", "a38d59": "d47744", "735e3a": "9f4d29" },
-			{ "d9c189": "d8b18f", "a38d59": "bf8857", "735e3a": "875d3b" },
-			{ "d9c189": "e0bd93", "a38d59": "b9865e", "735e3a": "8c643c" },
-			{ "d9c189": "f7ddb0", "a38d59": "d9aa7b", "735e3a": "a47c56" },
-			{ "d9c189": "f0d7bb", "a38d59": "cfa688", "735e3a": "9c6c54" },
-			{ "d9c189": "f8f8f8", "a38d59": "e5e5e5", "735e3a": "a5a5a5" },
-			{ "d9c189": "e5e5e5", "a38d59": "b5b5b5", "735e3a": "808080" },
-			{ "d9c189": "afafaf", "a38d59": "767676", "735e3a": "5b5b5b" }
-		]
-	},
+  {
+    "op": "replace",
+    "path": "/bodyColor",
+    "value": [
+      { "f0e1bb": "f0e1bb", "cfbc88": "cfbc88", "9e8555": "9e8555", "6b583d": "6b583d" },
+      { "f0e1bb": "f9e6cc", "cfbc88": "efd5ab", "9e8555": "bfa27a", "6b583d": "7f6d52" },
+      { "f0e1bb": "fff0c4", "cfbc88": "dcce9c", "9e8555": "a89c77", "6b583d": "5f5b4b" },
+      { "f0e1bb": "e5e5d4", "cfbc88": "c2c2a0", "9e8555": "939070", "6b583d": "5f5b4b" },
+      { "f0e1bb": "dfd3c1", "cfbc88": "bdae97", "9e8555": "81725b", "6b583d": "574b38" },
+      { "f0e1bb": "baaa7c", "cfbc88": "a5946a", "9e8555": "85734f", "6b583d": "4f432c" },
+      { "f0e1bb": "f0d7bb", "cfbc88": "cfa688", "9e8555": "9c6c54", "6b583d": "69483e" },
+      { "f0e1bb": "8e7a6c", "cfbc88": "766559", "9e8555": "4c3c35", "6b583d": "231717" },
+      { "f0e1bb": "fad086", "cfbc88": "e48c37", "9e8555": "a56220", "6b583d": "68320d" },
+      { "f0e1bb": "faba86", "cfbc88": "d47744", "9e8555": "9f4d29", "6b583d": "623221" },
+      { "f0e1bb": "d8b18f", "cfbc88": "bf8857", "9e8555": "875d3b", "6b583d": "443529" },
+      { "f0e1bb": "e0bd93", "cfbc88": "b9865e", "9e8555": "8c643c", "6b583d": "643e2d" },
+      { "f0e1bb": "f7ddb0", "cfbc88": "d9aa7b", "9e8555": "a47c56", "6b583d": "66452e" },
+      { "f0e1bb": "f8f8f8", "cfbc88": "e5e5e5", "9e8555": "a5a5a5", "6b583d": "5c5c5c" },
+      { "f0e1bb": "e5e5e5", "cfbc88": "b5b5b5", "9e8555": "808080", "6b583d": "555555" },
+      { "f0e1bb": "afafaf", "cfbc88": "767676", "9e8555": "5b5b5b", "6b583d": "3d3d3d" }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/undyColor",
+    "value": [
+      { "e6e6e6": "f0e1bb", "b6b6b6": "cfbc88", "7b7b7b": "9e8555" },
+      { "e6e6e6": "f9e6cc", "b6b6b6": "efd5ab", "7b7b7b": "bfa27a" },
+      { "e6e6e6": "fff0c4", "b6b6b6": "dcce9c", "7b7b7b": "a89c77" },
+      { "e6e6e6": "e5e5d4", "b6b6b6": "c2c2a0", "7b7b7b": "939070" },
+      { "e6e6e6": "dfd3c1", "b6b6b6": "bdae97", "7b7b7b": "81725b" },
+      { "e6e6e6": "baaa7c", "b6b6b6": "a5946a", "7b7b7b": "85734f" },
+      { "e6e6e6": "8e7a6c", "b6b6b6": "766559", "7b7b7b": "4c3c35" },
+      { "e6e6e6": "fad086", "b6b6b6": "e48c37", "7b7b7b": "a56220" },
+      { "e6e6e6": "faba86", "b6b6b6": "d47744", "7b7b7b": "9f4d29" },
+      { "e6e6e6": "d8b18f", "b6b6b6": "bf8857", "7b7b7b": "875d3b" },
+      { "e6e6e6": "e0bd93", "b6b6b6": "b9865e", "7b7b7b": "8c643c" },
+      { "e6e6e6": "f7ddb0", "b6b6b6": "d9aa7b", "7b7b7b": "a47c56" },
+      { "e6e6e6": "f0d7bb", "b6b6b6": "cfa688", "7b7b7b": "9c6c54" },
+      { "e6e6e6": "f8f8f8", "b6b6b6": "e5e5e5", "7b7b7b": "a5a5a5" },
+      { "e6e6e6": "e5e5e5", "b6b6b6": "b5b5b5", "7b7b7b": "808080" },
+      { "e6e6e6": "afafaf", "b6b6b6": "767676", "7b7b7b": "5b5b5b" }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/hairColor",
+    "value": [
+      { "d9c189": "f0e1bb", "a38d59": "cfbc88", "735e3a": "9e8555" },
+      { "d9c189": "f9e6cc", "a38d59": "efd5ab", "735e3a": "bfa27a" },
+      { "d9c189": "fff0c4", "a38d59": "dcce9c", "735e3a": "a89c77" },
+      { "d9c189": "e5e5d4", "a38d59": "c2c2a0", "735e3a": "939070" },
+      { "d9c189": "dfd3c1", "a38d59": "bdae97", "735e3a": "81725b" },
+      { "d9c189": "baaa7c", "a38d59": "a5946a", "735e3a": "85734f" },
+      { "d9c189": "8e7a6c", "a38d59": "766559", "735e3a": "4c3c35" },
+      { "d9c189": "fad086", "a38d59": "e48c37", "735e3a": "a56220" },
+      { "d9c189": "faba86", "a38d59": "d47744", "735e3a": "9f4d29" },
+      { "d9c189": "d8b18f", "a38d59": "bf8857", "735e3a": "875d3b" },
+      { "d9c189": "e0bd93", "a38d59": "b9865e", "735e3a": "8c643c" },
+      { "d9c189": "f7ddb0", "a38d59": "d9aa7b", "735e3a": "a47c56" },
+      { "d9c189": "f0d7bb", "a38d59": "cfa688", "735e3a": "9c6c54" },
+      { "d9c189": "f8f8f8", "a38d59": "e5e5e5", "735e3a": "a5a5a5" },
+      { "d9c189": "e5e5e5", "a38d59": "b5b5b5", "735e3a": "808080" },
+      { "d9c189": "afafaf", "a38d59": "767676", "735e3a": "5b5b5b" }
+    ]
+  },
 
-	{
-		"op": "add",
-		"path": "/genders/0/hair/-",
-		"value": "male6"
-	},
-	{
-		"op": "add",
-		"path": "/genders/0/hair/-",
-		"value": "male7"
-	},
-	{
-		"op": "add",
-		"path": "/genders/0/hair/-",
-		"value": "male8"
-	},
-	{
-		"op": "add",
-		"path": "/genders/0/hair/-",
-		"value": "male9"
-	},
-	{
-		"op": "add",
-		"path": "/genders/0/hair/-",
-		"value": "male10"
-	},
-	{
-		"op": "add",
-		"path": "/genders/0/hair/-",
-		"value": "male11"
-	},
-	{
-		"op": "add",
-		"path": "/genders/0/hair/-",
-		"value": "male12"
-	},
-	{
-		"op": "add",
-		"path": "/genders/0/hair/-",
-		"value": "male13"
-	},
-	{
-		"op": "add",
-		"path": "/genders/0/hair/-",
-		"value": "male14"
-	},
-	{
-		"op": "add",
-		"path": "/genders/1/hair/-",
-		"value": "fem6"
-	},
-	{
-		"op": "add",
-		"path": "/genders/1/hair/-",
-		"value": "fem7"
-	},
-	{
-		"op": "add",
-		"path": "/genders/1/hair/-",
-		"value": "fem8"
-	},
-	{
-		"op": "add",
-		"path": "/genders/1/hair/-",
-		"value": "fem9"
-	},
-	{
-		"op": "add",
-		"path": "/genders/1/hair/-",
-		"value": "fem10"
-	},
-	{
-		"op": "add",
-		"path": "/genders/1/hair/-",
-		"value": "fem11"
-	},
-	{
-		"op": "add",
-		"path": "/genders/1/hair/-",
-		"value": "fem12"
-	},
-	{
-		"op": "add",
-		"path": "/genders/1/hair/-",
-		"value": "fem13"
-	}
+  {
+    "op": "add",
+    "path": "/genders/0/hair/-",
+    "value": "male6"
+  },
+  {
+    "op": "add",
+    "path": "/genders/0/hair/-",
+    "value": "male7"
+  },
+  {
+    "op": "add",
+    "path": "/genders/0/hair/-",
+    "value": "male8"
+  },
+  {
+    "op": "add",
+    "path": "/genders/0/hair/-",
+    "value": "male9"
+  },
+  {
+    "op": "add",
+    "path": "/genders/0/hair/-",
+    "value": "male10"
+  },
+  {
+    "op": "add",
+    "path": "/genders/0/hair/-",
+    "value": "male11"
+  },
+  {
+    "op": "add",
+    "path": "/genders/0/hair/-",
+    "value": "male12"
+  },
+  {
+    "op": "add",
+    "path": "/genders/0/hair/-",
+    "value": "male13"
+  },
+  {
+    "op": "add",
+    "path": "/genders/0/hair/-",
+    "value": "male14"
+  },
+  {
+    "op": "add",
+    "path": "/genders/1/hair/-",
+    "value": "fem6"
+  },
+  {
+    "op": "add",
+    "path": "/genders/1/hair/-",
+    "value": "fem7"
+  },
+  {
+    "op": "add",
+    "path": "/genders/1/hair/-",
+    "value": "fem8"
+  },
+  {
+    "op": "add",
+    "path": "/genders/1/hair/-",
+    "value": "fem9"
+  },
+  {
+    "op": "add",
+    "path": "/genders/1/hair/-",
+    "value": "fem10"
+  },
+  {
+    "op": "add",
+    "path": "/genders/1/hair/-",
+    "value": "fem11"
+  },
+  {
+    "op": "add",
+    "path": "/genders/1/hair/-",
+    "value": "fem12"
+  },
+  {
+    "op": "add",
+    "path": "/genders/1/hair/-",
+    "value": "fem13"
+  }
 ]
-
-
