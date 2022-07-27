@@ -55,7 +55,7 @@ function update(dt)
     })
 
     --Referencing the .object means that translating the strings doesn't require overwriting the lua
-    self.beaconDialog = string.format( '%s%s%s\n%s%s%s\n%s%s%s\n%s%s%s\n',
+    self.beaconDialog = string.format( '%s%s%s\n%s%s%s\n%s%s%s\n%s%s%s\n%s%s%s',
       self.chatStrings.solarPanel, self.generated_solar1, self.chatStrings.watts1,
       self.chatStrings.solarArray, self.generated_solar2, self.chatStrings.watts2,
       self.chatStrings.solarTower, self.generated_solar3, self.chatStrings.watts3,
