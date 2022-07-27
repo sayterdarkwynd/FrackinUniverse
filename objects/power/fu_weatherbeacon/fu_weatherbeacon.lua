@@ -54,8 +54,14 @@ function update(dt)
       boundMode = "CollisionArea"
     })
 
-    --This is a bit of a mess, but it means the dialogue can be translated by patching the .object file rather than overwriting the lua
-    self.beaconDialog = self.chatStrings.solarPanel..self.generated_solar1..self.chatStrings.watts1.."\n"..self.chatStrings.solarArray..self.generated_solar2..self.chatStrings.watts2.."\n"..self.chatStrings.solarTower..self.generated_solar3..self.chatStrings.watts3.."\n"..self.chatStrings.nocturnArray..self.generated_dark..self.chatStrings.watts4.."\n"..self.chatStrings.windTurbine..self.generated_wind..self.chatStrings.watts5
+    --Referencing the .object means that translating the strings doesn't require overwriting the lua
+    self.beaconDialog = string.format( '%s%s%s\n%s%s%s\n%s%s%s\n%s%s%s\n',
+      self.chatStrings.solarPanel, self.generated_solar1, self.chatStrings.watts1,
+      self.chatStrings.solarArray, self.generated_solar2, self.chatStrings.watts2,
+      self.chatStrings.solarTower, self.generated_solar3, self.chatStrings.watts3,
+      self.chatStrings.nocturnArray, self.generated_dark, self.chatStrings.watts4,
+      self.chatStrings.windTurbine, self.generated_wind, self.chatStrings.watts5
+    )
 
     if #players > 0 and self.beaconDialog then
       object.say(self.beaconDialog)
