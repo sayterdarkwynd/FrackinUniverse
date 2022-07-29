@@ -145,7 +145,9 @@ function update(dt)
 	end
 
 	if player.isAdmin() then
-		widget.setVisible("cheatBox", true)
+		--widget.setVisible("cheatBox", true)
+		widget.setText("cheatBox", "")
+		widget.setVisible("cheatBox", false)		
 	else
 		widget.setText("cheatBox", "")
 		widget.setVisible("cheatBox", false)
