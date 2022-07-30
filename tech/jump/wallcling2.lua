@@ -87,7 +87,7 @@ function update(args)
       else
         mcontroller.controlFace(self.wall == "left" and 1 or -1)
 
-        if args.moves["up"] then
+        if args.moves["up"] and not self.pressDown then
           goUpside()
         end
 

@@ -86,7 +86,7 @@ function init()
     end
   end)
 
-  if not storage.bossDead then
+  if not storage.bossUid then
     local parameters = bossParametersFromPlan(bossAbilities, storage.plan, storage.state, spaceConfig)
     storage.bossUid = storage.bossUid or sb.makeUuid()
     self.bossId = spawnBoss(parameters, storage.bossUid, storage.seed)
@@ -501,5 +501,6 @@ function spawnBoss(bossParameters, bossUid, seed)
   bossParameters.level = math.random(7,9)
   bossParameters.uniqueId = bossUid
   bossParameters.seed = seed
+  bossParameters.persistent = true
   return world.spawnMonster(string.format("%sfuguardianboss", storage.elementalType), entity.position(), bossParameters)
 end
