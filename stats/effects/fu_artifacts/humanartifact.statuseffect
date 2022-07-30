@@ -1,25 +1,29 @@
 {
-	"name": "humanartifact",
-	"effectConfig": {
-		"stats": [{
-				"stat": "maxEnergy",
-				"effectiveMultiplier": 1.2
-			},
-			{
-				"stat": "powerMultiplier",
-				"effectiveMultiplier": 1.1
-			},
-			{
-				"stat": "cosmicResistance",
-				"amount": 0.2
-			}
-		]
-	},
+  "name": "humanartifact",
+  "effectConfig": {
+    "stats": [
+      {
+        "stat": "ammoMastery",
+        "amount": 0.20
+      },
+      {
+        "stat": "critChance",
+        "amount": 2
+      },
+      {
+        "stat": "powerMultiplier",
+        "effectiveMultiplier": 1.2
+      },
+      {
+        "stat": "maxEnergy",
+        "effectiveMultiplier": 1.2
+      }
+    ]
+  },
 
-	"defaultDuration": 3,
+  "defaultDuration": 3,
 
-	"scripts": [
-		"/stats/effects/fu_genericStatApplier.lua"
-	]
-
+  "scripts": [
+    "/stats/effects/fu_genericStatApplier.lua"
+  ]
 }
