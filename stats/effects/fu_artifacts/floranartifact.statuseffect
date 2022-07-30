@@ -1,33 +1,29 @@
 {
-	"name": "floranartifact",
-	"effectConfig": {
-		"stats": [{
-				"stat": "maxHealth",
-				"effectiveMultiplier": 1.15
-			},
-			{
-				"stat": "maxEnergy",
-				"effectiveMultiplier": 1.15
-			},
-			{
-				"stat": "electricResistance",
-				"amount": 0.15
-			},
-			{
-				"stat": "iceResistance",
-				"amount": 0.1
-			},
-			{
-				"stat": "electricStatusImmunity",
-				"amount": 1
-			}
-		]
-	},
+  "name": "floranartifact",
+  "effectConfig": {
+    "stats": [
+      {
+        "stat": "spearMastery",
+        "amount": 0.08
+      },
+      {
+        "stat": "bowMastery",
+        "amount": 0.08
+      },
+      {
+        "stat": "maxHealth",
+        "effectiveMultiplier": 1.15
+      },
+      {
+        "stat": "electricStatusImmunity",
+        "amount": 1
+      }
+    ]
+  },
 
-	"defaultDuration": 3,
+  "defaultDuration": 3,
 
-	"scripts": [
-		"/stats/effects/fu_genericStatApplier.lua"
-	]
-
+  "scripts": [
+    "/stats/effects/fu_genericStatApplier.lua"
+  ]
 }
