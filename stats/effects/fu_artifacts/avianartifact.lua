@@ -1,16 +1,16 @@
 function init()
-	script.setUpdateDelta(10)
-	handler=effect.addStatModifierGroup({})
+  script.setUpdateDelta(10)
+  handler=effect.addStatModifierGroup({})
 end
 
 function update(dt)
-	if not mcontroller.onGround() then
-		effect.setStatModifierGroup(handler, {{stat = "powerMultiplier", effectiveMultiplier = 1.10}})
-	else
-		effect.setStatModifierGroup(handler,{})
-	end
+  if not mcontroller.onGround() then
+    effect.setStatModifierGroup(handler, {{stat = "powerMultiplier", effectiveMultiplier = 1.15}})
+  else
+    effect.setStatModifierGroup(handler,{})
+  end
 end
 
 function uninit()
-	effect.removeStatModifierGroup(handler)
+  effect.removeStatModifierGroup(handler)
 end
