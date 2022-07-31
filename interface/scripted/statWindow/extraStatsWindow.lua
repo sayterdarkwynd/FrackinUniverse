@@ -32,7 +32,10 @@ function update()
 			widget.setText(stat, value)
 
 		elseif type == "percent" then
-			value = tostring(average(value * 100)).."%"
+			value=average(value * 100)
+			local sign=""
+			if value>0 then sign="+" elseif value<0 then sign="-" end
+			value = sign..tostring(value).."%"
 			widget.setText(stat, value)
 
 		elseif type == "crit" then
@@ -62,6 +65,17 @@ function update()
 			else
 				widget.setText(stat, "---")
 			end
+
+		elseif type == "charisma" then
+			local v2=(value-1)*100
+			if v2>0 then
+				v2 = "+"..tostring(util.round(v2,1)).."%"
+			elseif v2<0 then
+				v2 = "-"..tostring(util.round(v2,1)).."%"
+			else
+				v2="0%"
+			end
+			widget.setText(stat, v2)
 
 		elseif type == "breath" then
 			local breathRate = value
