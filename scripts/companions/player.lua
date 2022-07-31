@@ -52,7 +52,9 @@ function init()
 
 	petSpawner.ownerUuid = entity.uniqueId()
 	recruitSpawner.ownerUuid = entity.uniqueId()
-	recruitSpawner.activeCrewLimit = config.getParameter("activeCrewLimit")
+	recruitSpawner.baseCrewLimit = config.getParameter("activeCrewLimit")
+	recruitSpawner.activeCrewLimit = calcActiveCrewLimit()
+	--sb.logInfo("player.lua:init:%s",{status.stat("fuCharisma"),recruitSpawner.baseCrewLimit,recruitSpawner.activeCrewLimit})
 	recruitSpawner.crewLimit = function() return player.shipUpgrades().crewSize end
 
 	for uuid, podStore in pairs(storage.pods or {}) do
@@ -193,6 +195,16 @@ function dismissCompanion(category, podUuid)
 	end
 end
 
+function calcActiveCrewLimit()
+	local fart=(status.stat("fuCharisma")-1.0)/(1/3) -- divide charisma modifier by percent per crew. note that this makes charisma penalties more damning.
+	if fart<0 then
+		fart=math.ceil(fart)
+	elseif fart>0 then
+		fart=math.floor(fart)
+	end
+	return math.max(0,recruitSpawner.baseCrewLimit+fart)
+end
+
 function update(dt)
 	if not self.spawnedCompanions then
 		self.spawnedCompanions = spawnCompanions()
@@ -214,6 +226,33 @@ function update(dt)
 	end
 	if storage.summonPets then
 		storage.summonPets=nil
+	end
+
+	if not charismaCrewTimer or charismaCrewTimer>=1.0 then
+		local lim=calcActiveCrewLimit()
+		if recruitSpawner.activeCrewLimit ~= lim then
+			recruitSpawner.activeCrewLimit = lim
+			local counter=0
+			local banishList={}
+			for k,v in pairs(recruitSpawner.followers) do
+				counter=counter+1
+				if counter>recruitSpawner.activeCrewLimit then
+					banishList[k]=v.uniqueId
+				end
+			end
+			for k,v in pairs(banishList) do --recruit id, unique id
+				if not onOwnShip() then
+					recruitSpawner.shipCrew[k]=recruitSpawner.followers[k]
+					recruitSpawner.followers[k]=nil
+					world.sendEntityMessage(v, "recruit.beamOut")
+				else
+					requestUnfollow(v,k)
+				end
+			end
+		end
+		charismaCrewTimer=0
+	else
+		charismaCrewTimer=charismaCrewTimer+dt
 	end
 
 	recruitSpawner:update(dt)
