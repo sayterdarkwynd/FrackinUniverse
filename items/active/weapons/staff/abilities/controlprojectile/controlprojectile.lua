@@ -7,7 +7,8 @@ function ControlProjectile:init()
 	storage.projectiles = storage.projectiles or {}
 
 	self.elementalType = self.elementalType or self.weapon.elementalType
-
+	self.baseCount=self.projectileCount or 1
+	--sb.logInfo("%s",self.baseCount)
 	self.baseDamageFactor = config.getParameter("baseDamageFactor", 1.0)
 	self.stances = config.getParameter("stances")
 
@@ -185,9 +186,12 @@ function ControlProjectile:updateProjectiles()
 		n=n+1
 		if world.entityExists(projectileId) then
 			local aP=aimPosition
-			if n>1 then
-				aP[1]=aP[1]+(2*n*(math.random(0.0,1.0)-0.5))
-				aP[2]=aP[2]+(2*n*(math.random(0.0,1.0)-0.5))
+			--if self.randomizeBonusProjectilePositions then
+			if self.baseCount==1 then
+				if n>1 then
+					aP[1]=aP[1]+(2*n*(math.random(0.0,1.0)-0.5))
+					aP[2]=aP[2]+(2*n*(math.random(0.0,1.0)-0.5))
+				end
 			end
 			local projectileResponse = world.sendEntityMessage(projectileId, "updateProjectile", aP)
 			if projectileResponse:finished() then
