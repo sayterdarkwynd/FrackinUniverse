@@ -653,7 +653,7 @@ class JsonAssetsTest {
 			}
 
 			if ( resultMaterial && inputItems.includes( outputItem ) ) {
-				// This is of the cosmetic interactions like "jellystone -> fublueslimestone",
+				// This is one of the cosmetic interactions like "jellystone -> fublueslimestone",
 				// where the resulting material yields the same item as the input material.
 				// This is not usable in Liquid Mixer (which is for changing item and/or quantity of liquid).
 				return;
