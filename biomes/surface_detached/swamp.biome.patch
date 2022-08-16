@@ -54,7 +54,22 @@
             ]
           }
         }
-      },    
+      },
+  {
+    "op": "replace",
+    "path": "/surfacePlaceables/items/4/grasses",
+    "value": [ "leafsy", "signplant", "thickgrass", "vine", "viney" ]
+  },
+  {
+    "op": "replace",
+    "path": "/surfacePlaceables/items/6/distribution",
+    "value": "/biomes/distributions.config:denseMedium"
+  },
+  {
+    "op": "replace",
+    "path": "/surfacePlaceables/items/6/objectSets/0/pool",
+    "value": [ [0.35, "rootbush1" ], [0.35, "rootbush2" ], [0.35, "rootbush3" ], [0.35, "rootbush4" ], [0.35, "rootbush5" ], [0.35, "swamproot1" ], [0.35, "swamproot2" ], [0.35, "swamproot3" ], [0.35, "swamproot4" ], [0.35, "swamproot5" ] ]
+  },
   {
     "op": "add",
     "path": "/surfacePlaceables/items/-",
@@ -104,6 +119,70 @@
   },
   {
     "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "swampbush",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          },
+          {
+            "name" : "swampplant",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          },
+          {
+            "name" : "swampshrub",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          }
+        ]
+      }
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "reedseed1" ], [0.35, "reedseed2" ], [0.35, "reedseed3" ], [0.35, "reedseed4" ], [0.35, "reedseed5" ], [0.35, "tallgrass1" ], [0.35, "tallgrass2" ], [0.35, "tallgrass3" ], [0.35, "tallgrass4" ] ],
+            "parameters" : { }
+          }
+        ]
+      }
+  },
+  {
+    "op": "replace",
+    "path": "/undergroundPlaceables/items/0/distribution",
+    "value": "/biomes/distributions.config:denseMedium"
+  },
+  {
+    "op": "replace",
+    "path": "/undergroundPlaceables/items/1/distribution",
+    "value": "/biomes/distributions.config:denseMedium"
+  },
+  {
+    "op": "replace",
+    "path": "/undergroundPlaceables/items/1/objectSets/0/pool",
+    "value": [ [0.35, "rootbush1" ], [0.35, "rootbush2" ], [0.35, "rootbush3" ], [0.35, "rootbush4" ], [0.35, "rootbush5" ], [0.35, "swamproot1" ], [0.35, "swamproot2" ], [0.35, "swamproot3" ], [0.35, "swamproot4" ], [0.35, "swamproot5" ] ]
+  },
+  {
+    "op": "add",
     "path": "/undergroundPlaceables/items/-",
     "value":
     {
@@ -134,6 +213,20 @@
         "type" : "treasureBox",
         "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
     }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:minibiomeChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "swampChest" ]
+      }
   },
   {
     "op": "add",
@@ -181,6 +274,34 @@
           }
         ]
     }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "weedy" ]
+      }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+      {
+        "mode" : "ceiling",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "ceilingweedy" ]
+      }
   },
 {"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
   "mode" : "floor",
