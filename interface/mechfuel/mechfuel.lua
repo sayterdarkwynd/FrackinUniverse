@@ -98,7 +98,7 @@ function update(dt)
 	if self.setItemMessage and self.setItemMessage:finished() then
 		self.setItemMessage = nil
 	end
-	
+
 	if not self.getItemMessage then
 		local id = player.id()
 		self.getItemMessage = world.sendEntityMessage(id, "getFuelSlotItem")
@@ -141,7 +141,7 @@ function update(dt)
 		self.fuelSwapCooldown=self.fuelSwapCooldown-dt
 		if self.fuelSwapCooldown<0 then
 			self.fuelSwapCooldown=nil
-			
+
 			widget.setVisible("itemSlot_fuel",true)
 			widget.setVisible("itemSlot_fuel_locked",false)
 		end
