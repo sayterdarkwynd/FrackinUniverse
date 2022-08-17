@@ -54,7 +54,12 @@
             ]
           }
         }
-      },    
+      },
+  {
+    "op": "add",
+    "path": "/hueShiftOptions",
+    "value": [-30, -20, -15, -10, 0, 10, 15, 20, 30]
+  },
   {
     "op": "add",
     "path": "/subBlocks/-",
@@ -214,6 +219,20 @@
           }
         ]
     }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "grass" ]
+      }
   },
 {"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
   "mode" : "floor",

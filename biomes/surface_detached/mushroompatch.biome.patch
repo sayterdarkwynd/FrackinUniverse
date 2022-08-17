@@ -23,7 +23,12 @@
             "tracks" : [ "/music/Pure.ogg","/music/ViaAurora.ogg","/music/TentacleExploration2.ogg","/music/devils_tritone.ogg", "/music/crystal-exploration2.ogg", "/music/desert-exploration2.ogg", "/music/lava-exploration2.ogg", "/music/mira.ogg", "/music/tranquility-base.ogg", "/music/arctic-constellation1.ogg", "/music/body-electric-loop.ogg", "/music/mercury.ogg", "/music/Nomads.ogg", "/music/casiopeia.ogg" ]
           }
         }
-      },  
+      },
+  {
+    "op": "add",
+    "path": "/hueShiftOptions",
+    "value": [-30, -20, -15, -10, 0, 10, 15, 20, 30]
+  },
   {
     "op": "add",
     "path": "/subBlocks/-",
@@ -75,6 +80,50 @@
           }
         ]
     }
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "grass",
+        "grasses" : [ "grass" ]
+      }
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "testbush",
+            "baseHueShiftMax" : 40,
+            "modHueShiftMax" : 180
+          }
+        ]
+      }
+  },
+  {
+    "op": "replace",
+    "path": "/undergroundPlaceables/items/1/distribution",
+    "value": "/biomes/distributions.config:denseLarge"
+  },
+  {
+    "op": "replace",
+    "path": "/undergroundPlaceables/items/1/variants",
+    "value": 2
   },
   {
     "op": "add",
@@ -136,6 +185,20 @@
           }
         ]
     }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "grass" ]
+      }
   },
 {"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
   "mode" : "floor",

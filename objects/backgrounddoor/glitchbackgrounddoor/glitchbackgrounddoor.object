@@ -1,0 +1,47 @@
+{
+  "objectName" : "glitchbackgrounddoor",
+  "colonyTags" : ["glitch","door"],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "printable" : false,
+  "price" : 40,
+  "description" : "Wire ^red;Red^reset; node to bottom left ^blue;Blue^reset; node of second door to teleport between.",
+  "shortdescription" : "Glitch Background Door",
+
+  "inventoryIcon" : "glitchbackgrounddoor.png",
+  "orientations" : [
+    {
+      "dualImage" : "glitchbackgrounddoor.png:<color>",
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "/animations/bgdoor/backgrounddoor.animation",
+    "animationCustom" : {
+     "sounds" : {
+       "open" : {
+           "pool" : ["/sfx/objects/energy_door_open.ogg"],
+           "rangeMultiplier" : 0.25
+       },
+       "close" : {
+         "pool" : ["/sfx/objects/energy_door_close.ogg"],
+         "rangeMultiplier" : 0.25
+       }
+     }
+   },
+   "animationParts" : {
+     "door" : "glitchbackgrounddoor.png"
+   },
+   "animationPosition" : [-8,0],
+
+  "scripts" : ["/scripts/decorations/bgdoor/bgdoortele.lua"],
+  "openAoe" : [[-2,0],[2,5]],
+
+  "allowTele" : true,
+  "telePos" : [0,-1],
+  "inputNodes" : [ [-1, 0], [-1, 1] ],
+  "outputNodes" : [ [1, 4] ]
+}
