@@ -14,6 +14,7 @@ function init()
 			self.enabled=not not unlocked
 			lockDisplay(not (self.enabled or (world.type()=="mechtestbasic")))
 			self.didInit=true
+			lockFuel()
 		else
 			self.enabled=false
 			lockDisplay(true)
@@ -33,6 +34,12 @@ function init()
 	self.mechHornEnergyBoosts = config.getParameter("mechHornEnergyBoosts")
 	self.planetId = player.worldId()
 	--self.didInit = true
+end
+
+function lockFuel()
+	widget.setVisible("itemSlot_fuel",false)
+	widget.setVisible("itemSlot_fuel_locked",true)
+	self.fuelSwapCooldown=1.0
 end
 
 function lockDisplay(locked)
@@ -91,7 +98,7 @@ function update(dt)
 	if self.setItemMessage and self.setItemMessage:finished() then
 		self.setItemMessage = nil
 	end
-
+	
 	if not self.getItemMessage then
 		local id = player.id()
 		self.getItemMessage = world.sendEntityMessage(id, "getFuelSlotItem")
@@ -130,11 +137,22 @@ function update(dt)
 			sb.logWarn("FU Mech Fuel UI: Something may be overwriting FU's version of playermechdeployment.lua.")
 		end
 	end
+	if self.fuelSwapCooldown then
+		self.fuelSwapCooldown=self.fuelSwapCooldown-dt
+		if self.fuelSwapCooldown<0 then
+			self.fuelSwapCooldown=nil
+			
+			widget.setVisible("itemSlot_fuel",true)
+			widget.setVisible("itemSlot_fuel_locked",false)
+		end
+	end
 end
 
 function insertFuel()
 	if not ((world.type()=="mechtestbasic") or self.enabled) then return end
-
+	if self.fuelswapCooldown then return end
+	if self.setItemMessage then return end
+	lockFuel()
 	swapItem("itemSlot_fuel")
 end
 
