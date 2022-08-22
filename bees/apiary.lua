@@ -896,7 +896,7 @@ function miteGrowth()
 	if storage.mites > 0 then
 
 		--display an infested hive image over the normal hive appearance if its infested enough
-		if storage.mites > 1 then --display warning but dont change apiary look
+		--below - display warning but dont change apiary look
 		  animator.setAnimationState("warning", "on", true) --show symbol for mite infestation, but dont change apiary look
 		elseif storage.mites > 50 then  --if mites pass 100, display a rotten looking apiary
 		  animator.setAnimationState("base", "infested", true)
