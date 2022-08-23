@@ -6,7 +6,7 @@ function init()
 	self.outPartialFillNode=config.getParameter("kheAA_outPartialFillNode")
 	self.outCompleteFillNode=config.getParameter("kheAA_outCompleteFillNode")
 
-	object.setConfigParameter('description',"^red;Output1:^reset; Partial Fill^red;Output2:^reset; Complete Fill")
+	object.setConfigParameter('description',config.getParameter("scanDescription"),"Voidberg was here")
 end
 
 function update(dt)
