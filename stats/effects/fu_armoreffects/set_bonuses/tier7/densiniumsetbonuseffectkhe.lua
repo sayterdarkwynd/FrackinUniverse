@@ -26,7 +26,7 @@ armorBonus={
 
 	{stat = "fallDamageMultiplier", effectiveMultiplier = 0.25},
 	{stat = "grit", amount=0.75},
-	
+
 	{stat = "energyRegenPercentageRate", effectiveMultiplier = 0.80},
 	{stat = "energyRegenBlockTime", effectiveMultiplier = 1.2}
 }
