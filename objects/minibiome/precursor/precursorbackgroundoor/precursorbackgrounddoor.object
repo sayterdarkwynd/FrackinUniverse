@@ -5,8 +5,9 @@
   "category" : "decorative",
   "printable" : false,
   "price" : 40,
-  "description" : "An impenetrable door. Whatever lurks behind it is unknowable.",
+  "description" : "A Precursor teleporter door. Whatever lurks behind it is unknowable.\n^blue;Input 1^reset;: Lock\n^blue;Input 2^reset;/^red;Output^reset;: Door connections",
   "shortdescription" : "Precursor Background Door",
+  "tooltipKind" : "base",
 
   "inventoryIcon" : "icon.png",
   "orientations" : [
@@ -23,11 +24,11 @@
     "animationCustom" : {
      "sounds" : {
        "open" : {
-           "pool" : ["/sfx/objects/energy_door_open.ogg"],
+           "pool" : ["/sfx/objects/airlock_heavy_open.ogg"],
            "rangeMultiplier" : 0.25
        },
        "close" : {
-         "pool" : ["/sfx/objects/energy_door_close.ogg"],
+         "pool" : ["/sfx/objects/airlock_heavy_close.ogg"],
          "rangeMultiplier" : 0.25
        }
      }
@@ -43,7 +44,7 @@
   "allowTele" : true,
   "telePos" : [0,-1],
 
-  "inputNodes" : [ [-2, 0], [-2, 2] ],
+  "inputNodes" : [ [-2, 0], [-2, 1] ],
   "outputNodes" : [ [1, 4] ],
 
   "learnBlueprintsOnPickup" : [ "precursorbackgrounddoor" ]
