@@ -46,7 +46,7 @@ function update(dt)
 		effect.expire()
 	else
 		status.addEphemeralEffect("convert_energy-health_10_1-1_inefficientover")
-		mcontroller.controlModifiers({speedModifier = 1.10})
+		mcontroller.controlModifiers({speedModifier = 1.15})
 		checkWeapons()
 	end
 
