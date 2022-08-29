@@ -1,19 +1,22 @@
 {
-  "name" : "thornsstranglevinesuper",
-  "effectConfig" : {
-    "range" : 5,
-    "damageProjectileType" : "armorthornburst",
-    "damageMultiplier" : 2,
-    "minTriggerDamage" : 1,
-    "cooldown" : 1
+	"name": "thornsstranglevinesuper",
+	"effectConfig": {
+		"minRange": 0.5,
+		"visualProjectileCount": 8,
+		//"visualProjectileType": "armorthorns",
+		"visualProjectileSpeed": 6.66,
+		"visualProjectileTime": 0.75,
+		"visualDuration": 0.2,
+		"damageMultiplier": 2,
+		"damageProjectileType": "armorthornburst",
+		"cooldown": 1
+	},
+	"defaultDuration": 60,
 
-  },
-  "defaultDuration" : 60,
+	"scripts": [
+		"thorns.lua"
+	],
 
-  "scripts" : [
-    "thornsstranglevine.lua"
-  ],
-
-  "label" : "Thorns",
-  "icon" : "/interface/statuses/thorns.png"
+	"label": "Thorns",
+	"icon": "/interface/statuses/thorns.png"
 }

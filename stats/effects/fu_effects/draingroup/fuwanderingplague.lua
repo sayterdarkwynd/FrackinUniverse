@@ -23,6 +23,7 @@ function init()
 	local dur=effect.duration()
 	self.duration=self.duration or math.min(30,dur)
 	effect.modifyDuration(self.duration-dur)
+	self.handler=effect.addStatModifierGroup({})
 end
 
 function update(dt)
@@ -53,20 +54,34 @@ function update(dt)
 	self.tickTimer = math.max(0,(self.tickTimer or self.tickTime) - dt)
 	if self.tickTimer <= 0 then
 		--damage starts off weak, but progressively ramps up
-		damageCalc=self.baseDamage*((self.stacks or 0)+math.max(1,(30.0-self.duration)/2))
+		local stacks=((self.stacks or 0)+math.max(1,(30.0-self.duration)/2))
+		damageCalc=self.baseDamage*stacks
 		--can't forget hard target distinction. percentage of health against beefy targets is broken, and not allowed.
 		damageCalc=math.ceil((status.statPositive("specialStatusImmunity") and world.threatLevel()*damageCalc*self.hardMult) or (status.resourceMax("health") * damageCalc))
+
+		effect.setStatModifierGroup(self.handler,{
+			{stat="iceResistance",amount=-0.005*stacks},
+			{stat="poisonResistance",amount=-0.005*stacks}
+		})
 
 		--effect uses two damage instances, this instance is frost and is covered by ice resistance
 		local iceRes=status.stat("iceResistance")
 		if iceRes <= 0.8 then
-			status.applySelfDamageRequest({damageType = "IgnoresDef",damage = damageCalc,damageSourceKind = "hoarfrost",sourceEntityId = self.source})
+			local resMod=1.0
+			if iceRes>0 then
+				resMod=resMod+(iceRes)
+			end
+			status.applySelfDamageRequest({damageType = "IgnoresDef",damage = damageCalc*resMod,damageSourceKind = "hoarfrost",sourceEntityId = self.source})
 		end
 
 		--similar to the ice section, but this one is poison
 		local poisonRes=status.stat("poisonResistance")
 		if poisonRes <= 0.8 then
-			status.applySelfDamageRequest({damageType = "IgnoresDef",damage = damageCalc,damageSourceKind = "bioweapon",sourceEntityId = self.source})
+			local resMod=1.0
+			if iceRes>0 then
+				resMod=resMod+(poisonRes)
+			end
+			status.applySelfDamageRequest({damageType = "IgnoresDef",damage = damageCalc*resMod,damageSourceKind = "bioweapon",sourceEntityId = self.source})
 			effect.setParentDirectives(string.format("fade=00AA00=%.1f", self.tickTimer * 0.4))
 		end
 
@@ -84,3 +99,9 @@ function update(dt)
 	end
 end
 
+function uninit()
+	if self.handler then
+		effect.removeStatModifierGroup(self.handler)
+		self.handler=nil
+	end
+end
