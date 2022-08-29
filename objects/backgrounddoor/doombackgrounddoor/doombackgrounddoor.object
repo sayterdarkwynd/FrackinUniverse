@@ -5,8 +5,9 @@
   "category" : "decorative",
   "printable" : false,
   "price" : 40,
-  "description" : "Wire ^red;Red^reset; node to bottom left ^blue;Blue^reset; node of second door to teleport between.",
+  "description" : "A doom-laden teleporter door. Connect to another door to teleport between them.\n^blue;Input 1^reset;: Lock\n^blue;Input 2^reset;/^red;Output^reset;: Door connections",
   "shortdescription" : "Doom Background Door",
+  "tooltipKind" : "base",
 
   "inventoryIcon" : "doombackgrounddooricon.png",
   "orientations" : [
@@ -23,11 +24,11 @@
     "animationCustom" : {
      "sounds" : {
        "open" : {
-           "pool" : ["/sfx/objects/energy_door_open.ogg"],
+           "pool" : ["/sfx/objects/stonedoor_open_fast.ogg"],
            "rangeMultiplier" : 0.25
        },
        "close" : {
-         "pool" : ["/sfx/objects/energy_door_close.ogg"],
+         "pool" : ["/sfx/objects/stonedoor_close_fast.ogg"],
          "rangeMultiplier" : 0.25
        }
      }
@@ -43,5 +44,5 @@
   "allowTele" : true,
   "telePos" : [0,-1],
   "inputNodes" : [ [-1, 0], [-1, 1] ],
-  "outputNodes" : [ [1, 4] ]
+  "outputNodes" : [ [0, 4] ]
 }
