@@ -434,7 +434,7 @@ function beeTick(dt)
 		end
 	else
 		noQueenTimer = noQueenTimeAllowed
-		if storage.mites > 0 and queen then
+		if storage.mites > 0.99 and queen then
 			world.containerTakeAt(entity.id(), queenSlot-1)
 			queen = nil
 		end
