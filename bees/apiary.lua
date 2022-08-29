@@ -406,7 +406,7 @@ function beeTick(dt)
 			end
 
 			-- Kill drones if there are mites present
-			if storage.mites > 0 and contents[slot] then
+			if storage.mites > 0.98 and contents[slot] then
 				miteDamage(slot)
 				item = contents[slot]
 			end
