@@ -82,8 +82,10 @@ function update()
 			if breathMax > 0 then
 				-- Why divided by 2 you ask? Fuck if I know, it returns double the right value otherwise. <-zimber's note
 				--khe: that's because breath timer is decremented twice per update; once in vanilla code, once in FR code.
-				widget.setText("breathMaxTime", breathMax / breathRate / 2)
-				widget.setText("breathRegenTime", breathMax / breatRegen / 2)
+				--widget.setText("breathMaxTime", breathMax / breathRate / 2)
+				widget.setText("breathMaxTime", breathMax / breathRate)
+				--widget.setText("breathRegenTime", breathMax / breatRegen / 2)
+				widget.setText("breathRegenTime", breathMax / breatRegen)
 			end
 		end
 	end
