@@ -406,7 +406,7 @@ function beeTick(dt)
 			end
 
 			-- Kill drones if there are mites present
-			if storage.mites > 0 and contents[slot] then
+			if storage.mites > 0.98 and contents[slot] then
 				miteDamage(slot)
 				item = contents[slot]
 			end
@@ -434,7 +434,7 @@ function beeTick(dt)
 		end
 	else
 		noQueenTimer = noQueenTimeAllowed
-		if storage.mites > 0 and queen then
+		if storage.mites > 0.99 and queen then
 			world.containerTakeAt(entity.id(), queenSlot-1)
 			queen = nil
 		end
@@ -896,14 +896,14 @@ function miteGrowth()
 	if storage.mites > 0 then
 
 		--display an infested hive image over the normal hive appearance if its infested enough
-		if storage.mites > 1 then --display warning but dont change apiary look
-		  animator.setAnimationState("warning", "on", true) --show symbol for mite infestation, but dont change apiary look
-		elseif storage.mites > 50 then  --if mites pass 100, display a rotten looking apiary
-		  animator.setAnimationState("base", "infested", true)
-		  animator.setAnimationState("warning", "on", true)
-		elseif storage.mites > 200 then  --if mites pass 200, display a really rotten looking apiary
+		if storage.mites > 20 then  --if mites pass 20, display a really rotten looking apiary
 		  animator.setAnimationState("base", "infested2", true)
 		  animator.setAnimationState("warning", "on", true)
+		elseif storage.mites > 6 then  --if mites pass 6, display a rotten looking apiary
+		  animator.setAnimationState("base", "infested", true)
+		  animator.setAnimationState("warning", "on", true)
+		elseif storage.mites > 0.98 then
+		  animator.setAnimationState("warning", "on", true) --show symbol for mite infestation, but dont change apiary look
 		else
 		  animator.setAnimationState("base", "default", true)
 		  animator.setAnimationState("warning", "off", true)

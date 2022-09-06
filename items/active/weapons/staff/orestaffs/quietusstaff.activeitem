@@ -4,7 +4,7 @@
   "price" : 1440,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Oooh, Pretty!",
+  "description" : "Oooh, Pretty! Fires ^red;Sharp^reset; blades.",
   "shortdescription" : "Quietus Staff",
   "category" : "staff",
   "twoHanded" : true,
@@ -80,7 +80,10 @@
   "primaryAbilityType" : "plasmabladebarrage",
   "primaryAbility" : {
     "name" : "Blood Blade",
-    "projectileType" : "quietusblade"
+    "projectileType" : "quietusblade",
+	"projectileParameters":{
+	  "statusEffects":["bleeding05"]
+	}
   },
   "altAbilityType" : "healingzone",
   "altAbility" : {},

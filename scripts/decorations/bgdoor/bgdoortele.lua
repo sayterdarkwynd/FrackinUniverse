@@ -40,19 +40,19 @@ function update(dt)
     boundMode = "CollisionArea"
   })
 
-     if #players > 0 and self.connectedDoor and animator.animationState("doorState") == "closed" and not self.doorLocked then
-       animator.setAnimationState("doorState", "transitioningopen")
-       animator.playSound("open")
-     elseif #players == 0 and self.connectedDoor and animator.animationState("doorState") == "open" and self.forceOpenTimer == 0 and not self.doorLocked then
-       animator.setAnimationState("doorState", "transitioningclose")
-       animator.playSound("close")
-     elseif not self.connectedDoor and animator.animationState("doorState") == "open" and self.forceOpenTimer == 0 and not self.doorLocked then
-       animator.setAnimationState("doorState", "transitioningclose")
-       animator.playSound("close")
-     elseif animator.animationState("doorState") == "open" and self.doorLocked then
-       animator.setAnimationState("doorState", "transitioningclose")
-       animator.playSound("close")
-     end
+  if #players > 0 and self.connectedDoor and animator.animationState("doorState") == "closed" and not self.doorLocked then
+    animator.setAnimationState("doorState", "transitioningopen")
+    animator.playSound("open")
+  elseif #players == 0 and self.connectedDoor and animator.animationState("doorState") == "open" and self.forceOpenTimer == 0 and not self.doorLocked then
+    animator.setAnimationState("doorState", "transitioningclose")
+    animator.playSound("close")
+  elseif not self.connectedDoor and animator.animationState("doorState") == "open" and self.forceOpenTimer == 0 and not self.doorLocked then
+    animator.setAnimationState("doorState", "transitioningclose")
+    animator.playSound("close")
+  elseif animator.animationState("doorState") == "open" and self.doorLocked then
+    animator.setAnimationState("doorState", "transitioningclose")
+    animator.playSound("close")
+  end
 
 --If a door is connected, try to shut
   if self.connectedDoor and world.entityExists(self.connectedDoor) and not self.doorLocked then
@@ -79,16 +79,19 @@ function onInteraction(activator)
   end
 end
 
-function onNodeChange()
+function onNodeConnectionChange()
   checkConnections()
 end
 
 function checkConnections()
   self.connectedDoor = nil
+  object.setOutputNodeLevel(0, false)
+
   for entityId, _ in pairs(object.getOutputNodeIds(0)) do
     if world.entityExists(entityId) then
       if world.getObjectParameter(entityId, "allowTele", false) then
         self.connectedDoor = entityId
+        object.setOutputNodeLevel(0, true) --helps keep the destination door loaded
       end
     end
   end
