@@ -77,8 +77,6 @@ end
 
 function uninit()
 	object.setConfigParameter("leftTime", os.time() )
-	--sb.logInfo( tostring( config.getParameter("leftTime", "LMAO NOPE") ) )
-	--sb.logInfo("uninit")
 end
 
 function fu_isColonyCore() return true end
