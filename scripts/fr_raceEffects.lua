@@ -108,7 +108,7 @@ function update(dt)
 		self.helper:applyControlModifiers(self.helper.controlModifiers,self.helper.controlParameters)
 	end
 	self.helper:runScripts("racialscript", self, dt)
-
+--[[--disabling
 	-- Breath handling
 	-- which, as it happens, is already handled by the vanilla script. so this applies TWICE.
 	if entity.entityType() ~= "npc" then
@@ -120,7 +120,7 @@ function update(dt)
 		else
 			status.modifyResource("breath", -status.stat("breathDepletionRate") * dt)
 		end
-	end
+	end]]
 	tagCaching.update()
 	masteries.update(dt)
 end
