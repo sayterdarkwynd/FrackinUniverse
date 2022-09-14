@@ -118,19 +118,49 @@ function build(directory, config, parameters, level, seed)
 		config.tooltipFields = {}
 		config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
 		config.tooltipFields.dpsLabel = util.round((primaryAbility and primaryAbility.baseDps or 0) * config.damageLevelMultiplier, 1)
-		config.tooltipFields.speedLabel = util.round(1 / (primaryAbility.fireTime or 1.0), 1)
-		config.tooltipFields.damagePerShotLabel = util.round((primaryAbility and (primaryAbility.baseDps or primaryAbility.baseDamage) or 0) * (primaryAbility and primaryAbility.fireTime or 1.0) * config.damageLevelMultiplier, 1)
-		config.tooltipFields.energyPerShotLabel = util.round((primaryAbility and (primaryAbility.energyUsage or primaryAbility.energyPerShot) or 0) * (primaryAbility and primaryAbility.fireTime or 1.0), 1)
+		local energyCost = 0
+		local damagePerShot = 0
+		local speed=primaryAbility and primaryAbility.fireTime or 1.0
+		local isAmmo=configParameter("isAmmoBased")==1
+		if primaryAbility then
+			if primaryAbility.chargeLevels then
+				local bufferEnergy={}
+				local bufferDamage={}
+				local bufferFireTime={}
+				for _,set in pairs(primaryAbility.chargeLevels) do
+					table.insert(bufferEnergy,set.energyCost)
+					table.insert(bufferDamage,set.baseDamage)
+					table.insert(bufferFireTime,set.time)
+				end
+				local function t2s(t,mult)
+					str=""
+					for i = 1, #t do
+					  str=str..(t[i]*(mult or 1.0))..(i==#t and "" or ", " )
+					end
+					return str
+				end
+				energyCost=t2s(bufferEnergy,isAmmo and 0.5)
+				damagePerShot=t2s(bufferDamage)
+				speed=t2s(bufferFireTime)
+			else
+				energyCost=util.round((primaryAbility and (primaryAbility.energyUsage or primaryAbility.energyPerShot) or 0) * (speed) * (isAmmo and 0.5 or 1.0),1)
+				damagePerShot=util.round((primaryAbility and (primaryAbility.baseDps or primaryAbility.baseDamage) or 0) * (speed) * config.damageLevelMultiplier, 1)
+				speed=util.round(1 / (primaryAbility and primaryAbility.fireTime or 1.0), 1)
+			end
+		
+		end
 		-- *******************************
 		-- FU ADDITIONS
-		if (configParameter("isAmmoBased")==1) then
-			config.tooltipFields.energyPerShotLabel = util.round(((primaryAbility and primaryAbility.energyUsage or 0) * (primaryAbility and primaryAbility.fireTime or 1.0)/2), 1)
+		if isAmmo then
 			config.tooltipFields.magazineSizeLabel = util.round(configParameter("magazineSize",0), 0)
 			config.tooltipFields.reloadTimeLabel = configParameter("reloadTime",1) .. "s"
 		else
 			config.tooltipFields.magazineSizeLabel = "--"
 			config.tooltipFields.reloadTimeLabel = "--"
 		end
+		config.tooltipFields.energyPerShotLabel=energyCost
+		config.tooltipFields.damagePerShotLabel=damagePerShot
+		config.tooltipFields.speedLabel = speed
 
 		config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)		-- rather than not applying a bonus to non-crit-enabled weapons, we just set it to always be at least 1 --no. -Khe
 
