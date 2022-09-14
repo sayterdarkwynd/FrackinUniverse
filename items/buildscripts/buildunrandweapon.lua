@@ -147,7 +147,7 @@ function build(directory, config, parameters, level, seed)
 				damagePerShot=util.round((primaryAbility and (primaryAbility.baseDps or primaryAbility.baseDamage) or 0) * (speed) * config.damageLevelMultiplier, 1)
 				speed=util.round(1 / (primaryAbility and primaryAbility.fireTime or 1.0), 1)
 			end
-		
+
 		end
 		-- *******************************
 		-- FU ADDITIONS
