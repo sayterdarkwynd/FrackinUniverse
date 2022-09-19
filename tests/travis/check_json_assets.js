@@ -49,6 +49,7 @@ class JsonAssetsTest {
 		this.checkCentrifuges();
 		this.checkSmelters();
 		this.checkSpaceStations();
+		this.checkPixelShops();
 		this.checkTreasurePools();
 		this.checkTreeUnlocks();
 		this.checkLiquidInteractions();
@@ -472,6 +473,33 @@ class JsonAssetsTest {
 			if ( !this.knownItemCodes.has( itemCode ) ) {
 				this.fail( 'Unknown item sold at spacestations: ' + itemCode );
 			}
+		}
+	}
+
+	/**
+	 * Check if pixel shops have unknown item codes.
+	 */
+	checkPixelShops() {
+		for ( var [ filename, data ] of this.knownAssets ) {
+			let interactData = data.interactData;
+			if ( !interactData || !interactData.items ) {
+				continue;
+			}
+
+			interactData.items.forEach( ( shopSlot ) => {
+				var itemCode = shopSlot.item;
+				if ( typeof itemCode === 'object' ) {
+					if ( Array.isArray( itemCode ) ) {
+						itemCode = itemCode[0];
+					} else {
+						itemCode = itemCode.name;
+					}
+				}
+
+				if ( !this.knownItemCodes.has( itemCode ) ) {
+					this.fail( filename, 'Unknown item sold at the shop: ' + itemCode );
+				}
+			} );
 		}
 	}
 
