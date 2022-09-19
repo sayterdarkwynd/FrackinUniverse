@@ -25,10 +25,8 @@ function handleFuel(dt)
 		end
 		self.soundTimer = 10
 		status.addEphemeralEffect("flightRechargedIndicator")
-		animator.setParticleEmitterActive("feathers", true)
 	else
 		self.soundTimer=math.max(0,((self.soundTimer or 0)-math.abs(dt)))
-		animator.setParticleEmitterActive("feathers", false)
 	end
 end
 
@@ -38,7 +36,6 @@ function handleEffects(on)
 		status.addEphemeralEffects{{effect = "lowgravflighttech", duration = 2}}
 	else
 		status.clearPersistentEffects("glide")
-		animator.setParticleEmitterActive("feathers", false)
 		self.boostSpeed = self.baseBoostSpeed
 		status.removeEphemeralEffect("lowgravflighttech")
 	end
