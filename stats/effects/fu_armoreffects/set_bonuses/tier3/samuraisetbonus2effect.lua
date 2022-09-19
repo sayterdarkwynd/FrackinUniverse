@@ -30,7 +30,7 @@ end
 
 function checkWeapons()
 	local daggercheck=weaponCheck({"dagger"})
-	local katanacheck=weaponCheck({"daikatana","katana"})
+	local katanacheck=weaponCheck({"katana"})
 	if katanacheck["either"] then
 		if daggercheck["either"] then
 			effect.setStatModifierGroup(effectHandlerList.weaponBonus1Handle,weaponBonus2)

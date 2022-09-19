@@ -35,7 +35,7 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weaponSword=weaponCheck({"shortsword","rapier","katana","longsword"})
+	local weaponSword=weaponCheck({"sword","shortsword","longsword","broadsword","rapier","katana"})
 	local weaponShield=weaponCheck({"shield"})
 
 	if weaponSword["either"] and weaponShield["either"] then

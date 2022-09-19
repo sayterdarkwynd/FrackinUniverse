@@ -27,12 +27,11 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weaponSword=weaponCheck({ "axe", "hammer", "broadsword", "spear","quarterstaff","daikatana" })
-
-	if weaponSword["either"] then
+	local melee=weaponCheck({ "melee","dagger","knife","sword","shortsword","longsword","broadsword","rapier","katana","axe","greataxe","scythe","mace","hammer","spear","shortspear","quarterstaff","flail" })
+	local axes=weaponCheck({ "axe","greataxe" })
+	if (melee["either"] and melee["twoHanded"]) or axes["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
-
 end

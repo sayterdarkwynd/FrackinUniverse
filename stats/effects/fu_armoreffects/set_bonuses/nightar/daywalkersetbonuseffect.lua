@@ -17,7 +17,7 @@ armorBonus={
 	{stat = "iceslipImmunity", amount = 1},
 	{stat = "snowslowImmunity", amount = 1},
 	{stat = "slushslowImmunity", amount = 1},
-	{stat = "maxEnergy", effectiveMultiplier = 1.1}
+	{stat = "maxEnergy", effectiveMultiplier = 1.05}
 }
 
 function init()
@@ -55,7 +55,7 @@ end
 
 
 function checkWeapons()
-	local weapons=weaponCheck({"longsword","rapier","katana","shortsword","dagger"})
+	local weapons=weaponCheck({"sword","shortsword","longsword","broadsword","rapier","katana"})
 	if weapons["either"] and not weapons["twoHanded"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else

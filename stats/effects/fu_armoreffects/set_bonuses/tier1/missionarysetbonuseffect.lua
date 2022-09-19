@@ -29,7 +29,7 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({ "quarterstaff","fist" })
-	if (weapons["either"] and weapons["twoHanded"]) or weapons["both"] then
+	if (weapons["either"] and (weapons["twoHanded"] or weapons["both"])) then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonus1Handle,weaponBonus1)
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonus1Handle,{})

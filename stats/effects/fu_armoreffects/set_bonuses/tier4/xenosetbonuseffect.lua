@@ -2,16 +2,14 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_xenoset"
 
 weaponBonus={
-	{stat = "powerMultiplier", effectiveMultiplier = 1.20},
-	{stat = "critChance", amount = 2}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.20}
 }
 
 armorEffect={
 	{stat = "breathProtection", amount = 1.0},
 	{stat = "gasImmunity", amount = 1.0},
 	{stat = "liquidnitrogenImmunity", amount = 1.0},
-	{stat = "biomecoldImmunity", amount = 1.0},
-	{stat = "fallDamageMultiplier", effectiveMultiplier = 0.70}
+	{stat = "biomecoldImmunity", amount = 1.0}
 }
 
 function init()

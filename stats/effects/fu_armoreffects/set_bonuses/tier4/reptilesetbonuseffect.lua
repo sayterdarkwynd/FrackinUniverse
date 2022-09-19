@@ -1,11 +1,11 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_reptileset"
 
-weaponBonus={
+weaponBonusSword={
 	{stat = "physicalResistance", amount = 0.1}
 }
 
-weaponBonus2={
+weaponBonusAxe={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
@@ -34,14 +34,14 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weaponSword=weaponCheck({"shortsword","longsword","katana","rapier","dagger"})
+	local weaponSword=weaponCheck({"sword","shortsword","longsword","broadsword","rapier","katana"})
+	local weaponAxe=weaponCheck({"axe","shortspear"})
 	local weaponShield=weaponCheck({"shield"})
-	local weaponSword2=weaponCheck({"axe","shortspear"})
 
 	if weaponSword["either"] and weaponShield["either"] then
-		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
-	elseif weaponSword2["either"] and weaponShield["either"] then
-		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus2)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonusSword)
+	elseif weaponAxe["either"] and weaponShield["either"] then
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonusAxe)
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
