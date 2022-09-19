@@ -194,7 +194,7 @@ function firePosition()
 end
 
 function updateRope(newRope)
-  local position = mcontroller.position()
+--  local position = mcontroller.position()
   local previousRopeCount = #self.rope
   self.rope = newRope
   self.ropeLength = 0
