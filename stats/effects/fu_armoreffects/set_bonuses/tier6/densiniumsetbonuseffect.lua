@@ -2,15 +2,15 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_densiniumset"
 
 weaponBonus={
-	{stat = "critChance", amount = 3},
+	{stat = "critChance", amount = 2},
 	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
 armorBonus={
 	{stat = "breathProtection", amount = 1},
 	{stat = "poisonStatusImmunity", amount = 1},
-	{stat = "extremepressureProtection", amount = 1},
 	{stat = "pressureProtection", amount = 1},
+	{stat = "extremepressureProtection", amount = 1},
 	{stat = "gasImmunity", amount = 1}
 }
 

@@ -2,7 +2,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_stalkerset"
 
 armorBonus={
-	{stat = "fallDamageMultiplier", effectiveMultiplier = 0.875},
+	{stat = "fallDamageMultiplier", effectiveMultiplier = 0.75},
 	{stat = "biooozeImmunity", amount = 1},
 	{stat = "poisonStatusImmunity", amount = 1}
 }
@@ -23,7 +23,7 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		mcontroller.controlModifiers({airJumpModifier = 1.08})
+		mcontroller.controlModifiers({speed = 1.08})
 		checkWeapons()
 	end
 end

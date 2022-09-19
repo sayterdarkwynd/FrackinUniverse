@@ -29,9 +29,9 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"dagger","broadsword","axe","hammer","shortsword","greataxe","spear","shortspear","quarterstaff"})
+	local weapons=weaponCheck({"melee","dagger","knife","sword","shortsword","longsword","broadsword","rapier","katana","axe","greataxe","scythe","mace","hammer","spear","shortspear","quarterstaff","flail"})
 
-	if (weapons["twoHanded"] and weapons["either"]) or (weapons["primary"] and weapons["alt"]) then
+	if (weapons["either"] and (weapons["twoHanded"] or weapons["both"])) then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,setBonusMultiply(weaponBonus,2))
 	elseif weapons["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)

@@ -5,7 +5,7 @@ armorBonus={
 	{stat = "critChance", amount = 2}
 }
 weaponBonus={
-	{stat = "critDamage", amount = 0.1},
+	{stat = "critDamage", amount = 0.15},
 	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
 }
 

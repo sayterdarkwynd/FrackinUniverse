@@ -3,7 +3,7 @@ setName="fu_millenionset"
 
 weaponBonus={
 	{stat = "maxHealth", effectiveMultiplier = 1.20},
-	{stat="grit", amount=0.25}
+	{stat = "grit", amount=0.25}
 }
 
 armorBonus={
@@ -32,7 +32,7 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weaponSword=weaponCheck({"shortsword","longsword","rapier","katana"})
+	local weaponSword=weaponCheck({"sword","shortsword","longsword","broadsword","rapier","katana"})
 	local weaponShield=weaponCheck({"shield"})
 
 	if weaponSword["either"] and weaponShield["either"] then
