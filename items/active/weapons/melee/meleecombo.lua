@@ -2,11 +2,14 @@ require("/scripts/FRHelper.lua")
 require "/scripts/status.lua" --for damage listener
 require "/items/active/tagCaching.lua"
 require "/stats/effects/fu_statusUtil.lua"
+require "/scripts/util.lua"
 
 -- Melee primary ability
 MeleeCombo = WeaponAbility:new()
 
 function MeleeCombo:init()
+	self.baseStanceData=copy(self.stances)
+	self.stances=self:regurgitateStances(copy(self.baseStanceData),self.fireTime)
 	self.comboStep = 1
 	status.setStatusProperty(activeItem.hand().."ComboStep",self.comboStep)
 
@@ -32,7 +35,7 @@ function MeleeCombo:init()
 	-- **************************************************
 	self.species = world.sendEntityMessage(activeItem.ownerEntityId(), "FR_getSpecies")
 	self.foodValue=(status.isResource("food") and status.resource("food")) or 60
-	attackSpeedUp = 0 -- base attackSpeed. This acts as the timer between *combos* , not individual attacks
+	attackSpeedUp = status.stat("attackSpeedUp") -- base attackSpeed. This acts as the timer between *combos* , not individual attacks
 	--only use tag caching in meleecombo for energy costs.
 	tagCaching.update()
 end
@@ -350,4 +353,15 @@ function fuLoadSwooshData(self)
 		end
 	end
 	self.delayLoad=false
+end
+
+function MeleeCombo:regurgitateStances(stances,fireTime)
+	--sb.logInfo("%s",stances)
+	local buffer={}
+	for stanceName,stanceData in pairs(stances) do
+		if stanceData.duration then stanceData.duration=stanceData.duration * fireTime end
+		buffer[stanceName]=stanceData
+	end
+	--sb.logInfo("%s",buffer)
+	return(buffer)
 end
