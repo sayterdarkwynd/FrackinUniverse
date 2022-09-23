@@ -47,11 +47,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
 	setupHelper(self, "meleecombo-fire")
-	if not attackSpeedUp then
-		attackSpeedUp = 0
-	else
-		attackSpeedUp = status.stat("attackSpeedUp")
-	end
+	attackSpeedUp = status.stat("attackSpeedUp")
 
 	if self.cooldownTimer > 0 then
 		self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
