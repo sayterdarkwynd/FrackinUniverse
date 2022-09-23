@@ -10,7 +10,7 @@ weaponBonus={
 	{stat="powerMultiplier",effectiveMultiplier=1.15 },
 	{stat="bowEnergyBonus",amount=4 },
 	{stat="bowAirBonus",amount=0.05 },
-	{stat="bowDrawTimeBonus",amount=0.01 }
+	{stat="bowDrawTimeBonus",amount=0.10 }
 }
 
 biomeBonus={

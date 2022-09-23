@@ -1,7 +1,11 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_neuromancerset"
 
-weaponBonus={
+weaponBonusDual={
+	{stat = "critDamage", amount = 0.30}
+}
+
+weaponBonusSingle={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
@@ -35,9 +39,9 @@ function checkWeapons()
 	local weapons=weaponCheck({"energy"})
 
 	if weapons["both"] then
-		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,setBonusMultiply(weaponBonus,2))
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonusDual)
 	elseif weapons["either"] then
-		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonusSingle)
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end

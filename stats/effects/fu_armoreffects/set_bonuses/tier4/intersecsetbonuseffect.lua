@@ -1,4 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+setName="fu_intersecset"
 
 weaponBonus={
 	{stat = "critChance", amount = 2},
@@ -9,12 +10,13 @@ armorBonus={
 	{stat = "shipMass", baseMultiplier = 0.85}
 }
 
-setName="fu_intersecset"
 
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
+
 	checkWeapons()
+
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 

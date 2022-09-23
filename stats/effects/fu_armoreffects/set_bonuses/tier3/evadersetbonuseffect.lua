@@ -30,7 +30,7 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"shortsword", "longsword"})
+	local weapons=weaponCheck({"sword","shortsword","longsword","broadsword","rapier","katana"})
 	local shield=weaponCheck({"shield"})
 	if weapons["either"] and shield["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonus1Handle,weaponBonus1)
