@@ -94,7 +94,7 @@ function FlipSlash:flip()
 end
 
 function FlipSlash:aimVelocity(speed)
-	return vec2.mul(vec2.norm(world.distance(entity.position(),activeItem.ownerAimPosition())),speed*-1)
+	return vec2.mul(vec2.norm(world.distance(activeItem.ownerAimPosition(),entity.position())),speed)
 end
 
 function FlipSlash:uninit()
