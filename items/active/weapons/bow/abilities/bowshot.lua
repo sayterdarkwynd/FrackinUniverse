@@ -10,7 +10,7 @@ function BowShot:init()
 
 	self.drawTime = 0
 	self.cooldownTimer = self.cooldownTime
-	
+
 	if type(self.powerProjectileTime) ~= "table" then
 		--this is not supposed to happen, this script should only be run on 'vanilla' bows that use a range
 		local thisItem=world.entityHandItem(activeItem.ownerEntityId(),activeItem.hand())
