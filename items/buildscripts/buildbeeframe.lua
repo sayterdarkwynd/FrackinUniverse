@@ -29,7 +29,7 @@ function build(directory, config, parameters, level, seed)
 		queenLifespan = configParameter("queenLifespan",0),
 		miteResistance = configParameter("miteResistance",0), -- Note that (currently) the normal range is -6.48 to 6.48, so use values smaller than 1 for balanced frames
 	}
-	
+
 	local percentStatsStrings={
 		mutationChance="Mutation Chance"
 	}
