@@ -5,15 +5,22 @@
   "physics" : "grenade",
   "frameNumber" : 1,
   "pointLight" : false,
-  "speed" : 20,
+  "speed" : 45,
   "actionOnReap" : [
     {
       "action" : "config",
       "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
-    }
+    },
+    {
+      "action" : "explosion",
+      "foregroundRadius" : 2,
+      "backgroundRadius" : 1,
+      "explosiveDamageAmount" : 1,
+      "delaySteps" : 2
+    }    
   ],
   "power" : 60.0,
-  "damageKind" : "dagger",
+  "damageKind" : "default",
   "emitters" : [ "daggerblue" ],
   "damagePoly" : [ [-3, -2], [5, -3], [8, 0], [5, 3], [-3, 2] ]
 }

@@ -13,12 +13,20 @@
 
   "edgeTrigger" : true,
   "windupTime" : 0.0,
-  "cooldown" : 0.4,
+  "cooldown" : 0.65,
 
   "projectileType" : "peglacitier10knife",
   "projectileConfig" : {
     "speed" : 45,
-    "power" : 56
+    "power" : 26,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item.ogg" ]
+      }
+    ]
   }
 }
 
