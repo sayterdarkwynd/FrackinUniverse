@@ -98,7 +98,7 @@ function build(directory, config, parameters, level, seed)
 		end
 	end
 	--sb.logInfo("%s",dataBuffer)
-	local beeData="\n"
+	local beeData=""
 	for i,v in pairs(dataBuffer) do
 		if i>1 then beeData=beeData.."\n" end
 		beeData=beeData..v
