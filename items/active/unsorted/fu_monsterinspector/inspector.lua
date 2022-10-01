@@ -57,7 +57,8 @@ function update(dt, fireMode, shiftHeld)
 					end
 				end
 				--in a realistic scenario this should near-always fail...but sometimes it won't.
-				local pass,result=pcall(world.callScriptedEntity,"monster.say",message)
+				--local pass,result=pcall(world.callScriptedEntity,"monster.say",message)
+				local pass=pcall(world.callScriptedEntity,"monster.say",message)
 				if not pass then
 					world.spawnStagehand(position, "fugenericentitysaystagehand", {messageData={targetId=target,message=message}})
 				end
