@@ -41,6 +41,7 @@ function update(dt, fireMode, shiftHeld)
 
 				local monsterParams=root.monsterParameters(world.monsterType(target))
 				local monsterName=world.entityName(target)
+				if monsterName=="" then monsterName="???" end
 				local monsterDesc=world.entityDescription(target)
 				local message="^yellow;"..(monsterName or "???") .."^reset;\n".. (monsterDesc or "")
 
@@ -55,8 +56,11 @@ function update(dt, fireMode, shiftHeld)
 						message=message.."\n^green;Relocatable^reset;."
 					end
 				end
-
-				world.spawnStagehand(position, "fugenericentitysaystagehand", {messageData={targetId=target,message=message}})
+				--in a realistic scenario this should near-always fail...but sometimes it won't.
+				local pass,result=pcall(world.callScriptedEntity,"monster.say",message)
+				if not pass then
+					world.spawnStagehand(position, "fugenericentitysaystagehand", {messageData={targetId=target,message=message}})
+				end
 			end
 		else
 			if firing then
