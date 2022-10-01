@@ -28,7 +28,7 @@ function init()
 	if (ratio==0.0) then ratio=false end--scriptopt shenanigans?
 	local a1=status.isResource(resource1)
 	local a2=status.isResource(resource2)
-	active=a1 and (ratio or a2)
+	active=a1 and ((not ratio) or a2)
 end
 
 function update(dt)
