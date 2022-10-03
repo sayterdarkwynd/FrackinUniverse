@@ -176,7 +176,6 @@ function fuUnknownWorldsInit()
 	if unknownWorlds[wType] then
 		ffunknownConfig=root.assetJson(unknownWorlds[wType])
 		if wType=="strangesea" then
-			ffunknownConfig=root.assetJson("/scripts/ffunknownconfig.config")
 			local terraConfig={root.assetJson("/terrestrial_worlds.config:regionTypes.strangesea"),root.assetJson("/terrestrial_worlds.config:regionTypes.strangeseafloor")}
 			for _,v in pairs(terraConfig) do
 				if strangeSeaOverrideCheck then break end
@@ -197,7 +196,7 @@ function unknownCheck(dt)
 	elseif ffunknownCheckTimer>=1.0 then
 		local ffunknownWorldProp=world.getProperty("ffunknownWorldProp")
 		local wType=world.type()
-		if (unknownWorlds[wType] and ((not (strangeSeaOverrideCheck)) or (wType=="strangesea"))) and not playerIsInVehicle() then
+		if (unknownWorlds[wType] and (strangeSeaOverrideCheck or not (wType=="strangesea"))) and (not playerIsInVehicle()) then
 			if (not ffunknownWorldProp) or (ffunknownConfig and (ffunknownWorldProp.version~=ffunknownConfig.version)) or (ffunknownWorldProp.worldType~=wType) then
 				if (not ffunknownWorldProp) or (ffunknownWorldProp.worldType~=wType) then
 					fuUnknownWorldsInit()
@@ -227,11 +226,10 @@ function unknownCheck(dt)
 					tempConfig[key]=nil
 					inc=inc+1
 				end
-				--sb.logInfo("ffunknownWorldProp %s",ffunknownWorldProp)
 				world.setProperty("ffunknownWorldProp",ffunknownWorldProp)
 			end
 			status.setPersistentEffects("ffunknownEffects",ffunknownWorldProp.effects)
-		elseif ffunknownWorldProp and not ((unknownWorlds[wType]) or (strangeSeaOverrideCheck and (wType=="strangesea"))) then
+		elseif ffunknownWorldProp and not ((unknownWorlds[wType]) or ((wType=="strangesea") and (not strangeSeaOverrideCheck))) then
 			world.setProperty("ffunknownWorldProp",nil)
 			status.setPersistentEffects("ffunknownEffects",{})
 		else
