@@ -1,0 +1,25 @@
+{
+  "projectileName" : "fuiceshotspear",
+  "physics" : "bullet",
+  "image" : "fuiceshot.png",
+  "damageKindImage" : "icon.png",
+  "speed" : 50,
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "timeToLive" : 0.1,
+  "power" : 6,
+  "emitters" : [ "defaultwhite" ],
+  "damageKind" : "slash",
+   "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/mediumsnowballexplosion/mediumsnowballexplosion.config"
+    },
+    {
+      "action" : "liquid",
+      "liquid" : "liquidnitrogen",
+      "quantity" : 1
+    }
+  ],
+  "statusEffects" : [ "nitrogenfreeze" ]
+}

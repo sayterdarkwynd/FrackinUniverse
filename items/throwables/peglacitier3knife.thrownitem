@@ -6,7 +6,7 @@
     "inventoryIcon" : "peglacitier3knife.png",
   "image" : "peglacitier3knife.png",
   "shortdescription" : "Ricoshave",
-  "description" : "The gyroscopically stable blade can be banked off walls to hit another.",
+  "description" : "The gyroscopically stable blade can be banked off walls.",
 
   "ammoUsage" : 1,
   "category" : "throwableItem",
@@ -18,7 +18,15 @@
   "projectileType" : "peglacitier3knife",
   "projectileConfig" : {
     "speed" : 45,
-    "power" : 12
+    "power" : 30,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item.ogg" ]
+      }
+    ]
   }
 }
 

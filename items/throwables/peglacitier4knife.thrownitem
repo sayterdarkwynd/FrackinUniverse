@@ -6,7 +6,7 @@
     "inventoryIcon" : "peglacitier4knife.png",
   "image" : "peglacitier4knife.png",
   "shortdescription" : "Spiker",
-  "description" : "A flat discus that sticks to objects momentarily before emitting frozen blades.",
+  "description" : "A javelin that explodes to emit freezing clouds.",
 
   "ammoUsage" : 1,
   "category" : "throwableItem",
@@ -18,7 +18,15 @@
   "projectileType" : "peglacitier4knife",
   "projectileConfig" : {
     "speed" : 45,
-    "power" : 16
+    "power" : 14,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item.ogg" ]
+      }
+    ]
   }
 }
 
