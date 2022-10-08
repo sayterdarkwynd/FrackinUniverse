@@ -326,8 +326,22 @@ function beeTick(dt)
 				-- If the slot has a young queen, convert it into a normal queen and reset queen production progress
 				youngQueenProgress = 0
 				droneProgress = 0
-
 				queen = youngQueenToQueen(contents[queenSlot])
+				--need to check item count, if there's more than 1 we gotta not void 'em.
+				if contents[queenSlot].count>1 then
+					local leftovers=copy(contents[queenSlot])
+					leftovers.count=leftovers.count-1
+					local incr=firstInventorySlot
+					local size=world.containerSize(entity.id())
+					while incr<=size do
+						leftovers=world.containerPutItemsAt(entity.id(),leftovers,incr-1)
+						if not leftovers then break end
+						incr=incr+1
+					end
+					if leftovers then
+						world.spawnItem(leftovers,entity.position())
+					end
+				end
 				world.containerTakeAt(entity.id(), queenSlot-1)
 				world.containerPutItemsAt(entity.id(), queen, queenSlot-1)
 				contents[queenSlot] = world.containerItemAt(entity.id(), queenSlot-1)
@@ -357,6 +371,22 @@ function beeTick(dt)
 			elseif root.itemHasTag(contents[queenSlot].name, "youngQueen") then
 				-- Convert to a queen and index it if its a young queen
 				queen = youngQueenToQueen(contents[queenSlot])
+				--need to check item count, if there's more than 1 we gotta not void 'em.
+				if contents[queenSlot].count>1 then
+					local leftovers=copy(contents[queenSlot])
+					leftovers.count=leftovers.count-1
+					local incr=firstInventorySlot
+					local size=world.containerSize(entity.id())
+					while incr<=size do
+						leftovers=world.containerPutItemsAt(entity.id(),leftovers,incr-1)
+						if not leftovers then break end
+						incr=incr+1
+					end
+					if leftovers then
+						world.spawnItem(leftovers,entity.position())
+					end
+				end
+
 				world.containerTakeAt(entity.id(), queenSlot-1)
 				world.containerPutItemsAt(entity.id(), queen, queenSlot-1)
 				contents[queenSlot] = world.containerItemAt(entity.id(), queenSlot-1)
