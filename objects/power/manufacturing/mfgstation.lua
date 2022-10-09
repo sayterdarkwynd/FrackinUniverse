@@ -351,7 +351,7 @@ function abort()
 		for k,v in pairs(storage.input) do
 			local leftovers=world.containerAddItems(entity.id(), {item = k , count = v})
 			if leftovers then
-				world.spawnItem(entity.position(), leftovers)
+				world.spawnItem(leftovers, entity.position())
 			end
 		end
 	end
