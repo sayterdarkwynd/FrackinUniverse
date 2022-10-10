@@ -224,7 +224,8 @@ function update(dt)
 		if storage.lastActive then
 			setAnimationStates(false, false, true)
 			object.setInteractive(false)
-			ticksToSimulate = beeData and beeData.unloadedUpdateInterval and math.min((storage.unfinishedTicks or 0) + math.floor((world.time() - storage.lastActive) / beeData.unloadedUpdateInterval),beeData.totalMaxSimulatedTicks or 60) or 0
+			local buffer=(world.time() - storage.lastActive)
+			ticksToSimulate = (buffer>=0) and beeData and beeData.unloadedUpdateInterval and math.min((storage.unfinishedTicks or 0) + math.floor(buffer / beeData.unloadedUpdateInterval),beeData.totalMaxSimulatedTicks or 60) or 0
 			storage.unfinishedTicks = nil
 		else
 			object.setInteractive(true)
