@@ -1,5 +1,3 @@
-local duration
-
 function init()
 	shatter()
 	handler=effect.addStatModifierGroup({
