@@ -1,8 +1,13 @@
 require "/scripts/kheAA/transferUtil.lua"
 
 function init()
+	delayInit=true
+end
+
+function delayedInit()
 	containerCallback()
 	object.setInteractive(true)
+	delayInit=false
 end
 
 function update(dt)
@@ -11,6 +16,9 @@ function update(dt)
 		transferUtil.loadSelfContainer()
 	else
 		transferUtilDeltaTime=transferUtilDeltaTime+dt
+	end
+	if delayInit then
+		delayedInit()
 	end
 	--[[if not smartboxCompareTimer or (smartboxCompareTimer > 1) then
 		smartboxCompareTimer=0
