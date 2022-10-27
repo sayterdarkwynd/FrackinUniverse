@@ -151,7 +151,6 @@ function routeItems(dt)
 								local containerSize=world.containerSize(targetContainer)
 								local outputSlotsBuffer={}
 
-
 								for _,v in pairs(storage.outputSlots) do
 									if v <= containerSize then
 										table.insert(outputSlotsBuffer,v)
@@ -159,7 +158,6 @@ function routeItems(dt)
 								end
 
 								local outputSlotCount=util.tableSize(outputSlotsBuffer)
-
 
 								local subCount=item.count
 								if storage.roundRobinSlots and storage.invertSlots[2] then
@@ -170,7 +168,7 @@ function routeItems(dt)
 									item.count = math.floor(buffer)
 								end
 
-								if validInputSlot(indexIn) then
+								if ((#storage.outputSlots==0) or (#outputSlotsBuffer>0)) and validInputSlot(indexIn) then
 									if outputSlotCount > 0 or storage.onlyStack then
 										local buffer=item.count * (storage.roundRobin and outputSize or 1) * (storage.roundRobinSlots and outputSlotCount or 1)
 										if item.count>0 and buffer<=originalCount then
@@ -183,8 +181,11 @@ function routeItems(dt)
 													else
 														local leftOverItems=world.containerPutItemsAt(targetContainer,item,indexOut-1)
 														if leftOverItems then
-															world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
-															originalCount=originalCount-(item.count-leftOverItems.count)
+															local leftCount=item.count-leftOverItems.count
+															if leftCount>0 then
+																world.containerTakeNumItemsAt(sourceContainer,indexIn-1,leftCount)
+																originalCount=originalCount-leftCount
+															end
 															if not storage.roundRobinSlots then
 																if not storage.roundRobin then
 																	item = leftOverItems
