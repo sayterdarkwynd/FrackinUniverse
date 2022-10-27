@@ -160,7 +160,7 @@ function masteries.apply(args)
 			--bows: crit chance, crit damage, faster draw time, reduced cost to fire/hold, increased damage.
 			if tagCaching[currentHand.."TagCache"]["bow"] then
 				masteryBuffer[#masteryBuffer + 1]={stat="critChance", amount=2*masteries.stats.bowMastery*handMultiplier}
-				masteryBuffer[#masteryBuffer + 1]={stat="critDamage", amount=7*masteries.stats.bowMastery*handMultiplier}
+				masteryBuffer[#masteryBuffer + 1]={stat="critDamage", amount=0.35*masteries.stats.bowMastery*handMultiplier}
 				masteryBuffer[#masteryBuffer + 1]={stat="bowDrawTimeBonus", amount=(0.01/2)*masteries.stats.bowMastery*handMultiplier}
 				masteryBuffer[#masteryBuffer + 1]={stat="bowEnergyBonus", amount=(1/2)*masteries.stats.bowMastery*handMultiplier}
 				masteryBuffer[#masteryBuffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.bowMastery*handMultiplier) }
