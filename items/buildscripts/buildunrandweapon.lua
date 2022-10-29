@@ -132,10 +132,14 @@ function build(directory, config, parameters, level, seed)
 					table.insert(bufferDamage,set.baseDamage)
 					table.insert(bufferFireTime,set.time)
 				end
+				bufferEnergy={math.min(table.unpack(bufferEnergy)),math.max(table.unpack(bufferEnergy))}
+				bufferDamage={math.min(table.unpack(bufferDamage)),math.max(table.unpack(bufferDamage))}
+				bufferFireTime={math.min(table.unpack(bufferFireTime)),math.max(table.unpack(bufferFireTime))}
+
 				local function t2s(t,mult)
 					str=""
 					for i = 1, #t do
-					  str=str..(t[i]*(mult or 1.0))..(i==#t and "" or ", " )
+					  str=str..(t[i]*(mult or 1.0))..(i==#t and "" or " : " )
 					end
 					return str
 				end

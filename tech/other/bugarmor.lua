@@ -55,7 +55,6 @@ function setStance()
 			"foodcostarmor",
 			"thelusiantechdummyshield",
 			{stat = "shieldBash", amount = 25},
-			{stat = "shieldStaminaRegenBlock", effectiveMultiplier = 0.5},
 			{stat = "perfectBlockLimit", effectiveMultiplier = 2},
 			{stat = "shieldBashPush", amount = 5},
 			{stat = "maxEnergy", effectiveMultiplier = 0.50}

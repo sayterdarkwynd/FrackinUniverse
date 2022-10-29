@@ -55,17 +55,24 @@ function update(dt)
 	if self.tickTimer <= 0 then
 		--damage starts off weak, but progressively ramps up
 		local stacks=((self.stacks or 0)+math.max(1,(30.0-self.duration)/2))
+		local immuneIce=status.statPositive("iceStatusImmunity")
+		local immunePoison=status.statPositive("poisonStatusImmunity")
+		local immuneSpecial=status.statPositive("specialStatusImmunity")
 		damageCalc=self.baseDamage*stacks
 		--can't forget hard target distinction. percentage of health against beefy targets is broken, and not allowed.
-		damageCalc=math.ceil((status.statPositive("specialStatusImmunity") and world.threatLevel()*damageCalc*self.hardMult) or (status.resourceMax("health") * damageCalc))
+		damageCalc=math.ceil((immuneSpecial and world.threatLevel()*damageCalc*self.hardMult) or (status.resourceMax("health") * damageCalc))
+		local buffer={}
+		if not immuneIce then
+			table.insert(buffer,{stat="iceResistance",amount=-0.005*stacks})
+		end
+		if not immunePoison then
+			table.insert(buffer,{stat="poisonResistance",amount=-0.005*stacks})
+		end
 
-		effect.setStatModifierGroup(self.handler,{
-			{stat="iceResistance",amount=-0.005*stacks},
-			{stat="poisonResistance",amount=-0.005*stacks}
-		})
+		effect.setStatModifierGroup(self.handler,buffer)
 
 		--effect uses two damage instances, this instance is frost and is covered by ice resistance
-		local iceRes=status.stat("iceResistance")
+		local iceRes=(immuneIce and 1.0) or status.stat("iceResistance")
 		if iceRes <= 0.8 then
 			local resMod=1.0
 			if iceRes>0 then
@@ -75,7 +82,7 @@ function update(dt)
 		end
 
 		--similar to the ice section, but this one is poison
-		local poisonRes=status.stat("poisonResistance")
+		local poisonRes=(immunePoison and 1.0) or status.stat("poisonResistance")
 		if poisonRes <= 0.8 then
 			local resMod=1.0
 			if iceRes>0 then
