@@ -53,6 +53,7 @@ class JsonAssetsTest {
 		this.checkTreasurePools();
 		this.checkTreeUnlocks();
 		this.checkLiquidInteractions();
+		this.checkMonsters();
 
 		console.log( 'Checked ' + totalAssetCount + ' JSON files. Errors: ' + this.failedCount + '.\n' );
 		return this.failedCount === 0;
@@ -746,6 +747,31 @@ class JsonAssetsTest {
 		if ( recommendedMixerRecipesToAdd.size > 0 ) {
 			console.log( 'Recommendation: you might want to add these recipes to Liquid Mixer:\n\t' +
 				[...recommendedMixerRecipesToAdd].sort().join( ',\n\t' ) );
+		}
+	}
+
+	/**
+	 * Check monsters for common errors.
+	 */
+	checkMonsters() {
+		for ( var [ filename, data ] of this.knownAssets ) {
+			if ( !filename.endsWith( '.monstertype' ) ) {
+				continue;
+			}
+
+			var statusSettings = data.baseParameters.statusSettings;
+			if ( !statusSettings ) {
+				continue;
+			}
+
+			var stats = statusSettings.stats;
+			var protection = ( stats.protection && stats.protection.baseValue );
+			if ( protection && protection > 0 && protection < 1 ) {
+				// A common typo (easy for human to not notice):
+				// "protection" stat must be a larger number (e.g. 25 or 40), not something like 0.25.
+				this.fail( filename, 'Monster has incorrect protection (between 0 and 1): ' +
+					protection + ': should probably be ' + ( protection * 100 ) + '.' );
+			}
 		}
 	}
 
