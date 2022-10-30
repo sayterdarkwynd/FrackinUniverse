@@ -1,12 +1,6 @@
 require "/scripts/vec2.lua"
 
 function init()
-	initCommonParameters()
-end
-
-function initCommonParameters()
-	self.energyCost = config.getParameter("energyCost")
-	self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
 	self.deactiveDelayMax = 0.6
 	self.deactiveDelay = 1
 	self.deactiveReady = false
@@ -43,9 +37,6 @@ function update(args)
 			status.addEphemeralEffect("phaseattackinvuln",1)
 			status.addEphemeralEffect("phaseattackstat",1)
 		end
-	--unused junk, does nothing.
-	--elseif not self.active and world.getProperty("hide[" .. tostring(entity.id()) .. "]") then
-	--	world.setProperty("hide[" .. tostring(entity.id()) .. "]", nil)
 	end
 end
 
@@ -64,8 +55,6 @@ function activate()
 		status.removeEphemeralEffect("phaseattackindicatorcharged")
 		status.addEphemeralEffect("phaseattackstat",1)
 		status.addEphemeralEffect("phaseattackinvuln",1)
-		--this does nothing.
-		--world.setProperty("hide[" .. tostring(entity.id()) .. "]", true)
 		animator.playSound("activate")
 	end
 
@@ -82,8 +71,4 @@ function deactivate()
 	end
 
 	self.active = false
-end
-
-function generateSkillEffect()
-	status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
 end
