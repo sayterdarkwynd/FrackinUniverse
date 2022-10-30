@@ -39,6 +39,8 @@ function update(args)
 		if status.resourceLocked("energy") then
 			deactivate()
 			self.deactiveReady = false
+		else
+			status.addEphemeralEffect("phaseattackstat",1)
 		end
 	elseif not self.active and world.getProperty("hide[" .. tostring(entity.id()) .. "]") then
 		world.setProperty("hide[" .. tostring(entity.id()) .. "]", nil)
@@ -56,7 +58,9 @@ end
 function activate()
 	if status.resourceLocked("energy") then return end
 	if not self.active then
-		status.addPersistentEffect("booster", "phaseattackstat", math.huge)
+		status.removeEphemeralEffect("phaseattackstat")
+		status.removeEphemeralEffect("phaseattackindicatorcharged")
+		status.addEphemeralEffect("phaseattackstat",1)
 		world.setProperty("hide[" .. tostring(entity.id()) .. "]", true)
 		animator.playSound("activate")
 	end
@@ -67,7 +71,6 @@ end
 
 function deactivate()
 	if self.active then
-		status.clearPersistentEffects("booster")
 		world.setProperty("hide[" .. tostring(entity.id()) .. "]", nil)
 		animator.playSound("deactivate")
 	end

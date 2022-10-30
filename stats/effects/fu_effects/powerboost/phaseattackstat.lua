@@ -26,6 +26,12 @@ function update(dt)
 			self.damageBonus=math.min(self.damageBonus*(1+(0.08*dt)),3.0)
 		end
 	end
+	if self.damageBonus==3.0 then
+		status.removeEphemeralEffect("phaseattackindicatorcharging")
+		status.addEphemeralEffect("phaseattackindicatorcharged",1)
+	else
+		status.addEphemeralEffect("phaseattackindicatorcharging",1)
+	end
 
 	effect.setStatModifierGroup(powerHandler,{{stat = "powerMultiplier", effectiveMultiplier = self.damageBonus}})
 end
