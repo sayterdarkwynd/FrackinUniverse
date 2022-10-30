@@ -2,6 +2,7 @@ function init()
 	if not status.isResource("damageAbsorption") then return end
 	self.opacityMultiplier=config.getParameter("opacityMultiplier",0.5)
 	self.color=config.getParameter("color","FFFFFF")
+	self.invert=config.getParameter("invertGradient",false)
 	if string.len(self.color)<6 then
 		while string.len(self.color) < 6 do
 			self.color=self.color.."0"
@@ -15,6 +16,7 @@ end
 function update(dt)
 	if not status.isResource("damageAbsorption") then return end
 	local rsp=status.stat("regeneratingshieldpercent")
+	if self.invert then rsp=1.0-rsp end
 	if rsp > 0.05 then
 		--effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,shellBonus)
 		if rsp>1.0 then rsp=1.0 elseif rsp<0 then rsp=0 end
