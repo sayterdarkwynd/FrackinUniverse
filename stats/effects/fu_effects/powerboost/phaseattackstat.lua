@@ -3,7 +3,6 @@ require "/scripts/vec2.lua"
 function init()
 	local alpha = math.floor(config.getParameter("alpha") * 255)
 	effect.setParentDirectives(string.format("?multiply=ffffff%02x", alpha))
-	effect.addStatModifierGroup({{stat = "invulnerable", amount = 1}})
 	script.setUpdateDelta(10)
 	self.damageBonus=1.0+(getTechBonus()*0.01)
 	powerHandler=effect.addStatModifierGroup({{stat = "powerMultiplier", effectiveMultiplier = self.damageBonus}})
@@ -25,6 +24,7 @@ function update(dt)
 		if status.resourcePositive("energyRegenBlock") then
 			self.damageBonus=math.min(self.damageBonus*(1+(0.08*dt)),3.0)
 		end
+	else
 	end
 	if self.damageBonus==3.0 then
 		status.removeEphemeralEffect("phaseattackindicatorcharging")

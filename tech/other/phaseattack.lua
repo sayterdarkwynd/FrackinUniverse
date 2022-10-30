@@ -40,10 +40,12 @@ function update(args)
 			deactivate()
 			self.deactiveReady = false
 		else
+			status.addEphemeralEffect("phaseattackinvuln",1)
 			status.addEphemeralEffect("phaseattackstat",1)
 		end
-	elseif not self.active and world.getProperty("hide[" .. tostring(entity.id()) .. "]") then
-		world.setProperty("hide[" .. tostring(entity.id()) .. "]", nil)
+	--unused junk, does nothing.
+	--elseif not self.active and world.getProperty("hide[" .. tostring(entity.id()) .. "]") then
+	--	world.setProperty("hide[" .. tostring(entity.id()) .. "]", nil)
 	end
 end
 
@@ -61,7 +63,9 @@ function activate()
 		status.removeEphemeralEffect("phaseattackstat")
 		status.removeEphemeralEffect("phaseattackindicatorcharged")
 		status.addEphemeralEffect("phaseattackstat",1)
-		world.setProperty("hide[" .. tostring(entity.id()) .. "]", true)
+		status.addEphemeralEffect("phaseattackinvuln",1)
+		--this does nothing.
+		--world.setProperty("hide[" .. tostring(entity.id()) .. "]", true)
 		animator.playSound("activate")
 	end
 
@@ -71,7 +75,9 @@ end
 
 function deactivate()
 	if self.active then
-		world.setProperty("hide[" .. tostring(entity.id()) .. "]", nil)
+		status.removeEphemeralEffect("phaseattackinvuln")
+		--this does nothing
+		--world.setProperty("hide[" .. tostring(entity.id()) .. "]", nil)
 		animator.playSound("deactivate")
 	end
 
