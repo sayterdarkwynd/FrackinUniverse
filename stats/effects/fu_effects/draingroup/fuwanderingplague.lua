@@ -14,6 +14,9 @@ function init()
 
 	--damage ticks every second, and much of the effect is oriented around that.
 	self.tickTime = 2.0
+	--cooldown on gaining stacks from plague bearing weapons
+	self.baseStackGainCooldown=0.5
+	self.stackGainCooldown=self.baseStackGainCooldown
 	--damage starts piddly, but ramps up as the effect goes on. this value is a percentage.
 	self.baseDamage=config.getParameter("baseDamage",0.0007)
 	--'hard' target damage is scaled by world tier, multiplied by base damage and any special scaling
@@ -47,11 +50,16 @@ function update(dt)
 
 	--check duration, if it's not within an expected range we reset it back to the correct duration.
 	if (self.duration~=dur) and (math.abs(self.duration-dur)>(2*dt)) then
-		self.stacks=(self.stacks or 0)+1
+		if self.stackGainCooldown==0 then
+			self.stacks=(self.stacks or 0)+1
+			self.stackGainCooldown = self.baseStackGainCooldown
+			--sb.logInfo("wandering plague stacks: %s",self.stacks)
+		end
 		effect.modifyDuration(self.duration-dur)
 	end
 
 	self.tickTimer = math.max(0,(self.tickTimer or self.tickTime) - dt)
+	self.stackGainCooldown = math.max(0,(self.stackGainCooldown or self.baseStackGainCooldown) - dt)
 	if self.tickTimer <= 0 then
 		--damage starts off weak, but progressively ramps up
 		local stacks=((self.stacks or 0)+math.max(1,(30.0-self.duration)/2))
