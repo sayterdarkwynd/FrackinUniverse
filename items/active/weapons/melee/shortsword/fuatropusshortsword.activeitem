@@ -1,43 +1,42 @@
 {
-  "itemName" : "fuatropusshortsword",
-  "price" : 700,
-  "level" : 5,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "A revolting bio-weapon.
-^cyan;Inflicts Poison^reset;",
-  "shortdescription" : "Fleshweave Sword",
-  "tooltipKind" : "sword2",
-  "category" : "shortsword",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword", "upgradeableWeapon","atropus","bioweapon"],
+	"itemName": "fuatropusshortsword",
+	"price": 700,
+	"level": 5,
+	"maxStack": 1,
+	"rarity": "rare",
+	"description": "A revolting bio-weapon.\n^cyan;Plague Bearing^reset;",
+	"shortdescription": "Fleshweave Sword",
+	"tooltipKind": "sword2",
+	"category": "shortsword",
+	"twoHanded": false,
+	"itemTags": ["weapon", "melee", "shortsword", "upgradeableWeapon", "atropus", "bioweapon"],
 
-  "inventoryIcon" : "fuatropusshortsword.png",
-  //"collectablesOnPickup" : { "fu_weaponshortsword" : "fuatropusshortsword" },
-  "animation" : "comboshortsword.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "fuatropusshortsword.png"
-  },
-  "animationCustom" : { },
+	"inventoryIcon": "fuatropusshortsword.png",
+	//"collectablesOnPickup" : { "fu_weaponshortsword" : "fuatropusshortsword" },
+	"animation": "comboshortsword.animation",
+	"animationParts": {
+		"handle": "",
+		"blade": "fuatropusshortsword.png"
+	},
+	"animationCustom": {},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts": ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "bioweapon",
+	"elementalType": "bioweapon",
 
-  "primaryAbilityType" : "shortswordcombo2",
-  "primaryAbility" : {
-    "fireTime" : 0.68,
-    "baseDps" : 6.54,
-    "damageConfig" : {
-      "statusEffects" : [ "weakpoison" ],
-      "damageSourceKind": "bioweaponbroadsword"
-    }
-  },
+	"primaryAbilityType": "shortswordcombo2",
+	"primaryAbility": {
+		"fireTime": 0.68,
+		"baseDps": 6.54,
+		"damageConfig": {
+			"statusEffects": ["fuwanderingplague"],
+			"damageSourceKind": "bioweaponbroadsword"
+		}
+	},
 
-  "critChance" : 3,
-  "critBonus" : 2,
+	"critChance": 3,
+	"critBonus": 2,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder": "/items/buildscripts/buildunrandweapon.lua"
 
 }

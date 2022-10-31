@@ -1,10 +1,10 @@
 {
-  "projectileName" : "radioactivepillar",
-  "image" : "radioactivepillar.png",
+  "projectileName" : "plaguepillar",
+  "image" : "poisonpillar.png",
   "physics" : "gas",
   "frameNumber" : 4,
   "animationCycle" : 0.4,
-  "lightColor" : [158, 158, 0],
+  "lightColor" : [50, 160, 50],
   "power" : 2,
   "speed" : 0,
   "timeToLive" : 2.0,
@@ -15,9 +15,9 @@
   "flippable" : true,
   "damagePoly" : [ [8, 4],  [8, -4],  [-8, -4],  [-8, 4] ],
   "piercing" : true,
-  "damageKind" : "radioactivebarrier",
-  "emitters" : [ "radioactivepillar" ],
-  "statusEffects" : [ "radiationburn" ],
+  "damageKind" : "poisonbarrier",
+  "emitters" : [ "poisonpillar" ],
+  "statusEffects":["fuwanderingplague"],
   "actionOnReap" : [
     {
       "action" : "sound",
@@ -31,7 +31,7 @@
           "action" : "particle",
           "specification" : {
             "type" : "animated",
-            "animation" : "/animations/statuseffects/radiationburn/radiationburnshort.animation",
+            "animation" : "/animations/statuseffects/poison/poisonshort.animation",
             "finalVelocity" : [0, 2],
             "timeToLive" : 0.45,
             "destructionAction" : "shrink",
@@ -48,7 +48,7 @@
           "specification" : {
             "type" : "animated",
             "looping" : true,
-            "animation" : "/animations/shards/radioactiveshard.animation",
+            "animation" : "/animations/shards/slimeshard.animation",
             "size" : 1,
             "approach" : [30, 30],
             "timeToLive" : 1,
@@ -67,7 +67,7 @@
           "specification" : {
             "type" : "animated",
             "looping" : true,
-            "animation" : "/animations/shards/radioactiveshard.animation",
+            "animation" : "/animations/shards/slimeshard.animation",
             "size" : 1,
             "approach" : [30, 30],
             "timeToLive" : 1,
@@ -85,7 +85,7 @@
           "action" : "particle",
           "specification" : {
             "type" : "animated",
-            "animation" : "/animations/elementalaura/radioactiveaura/radioactiveaura.animation",
+            "animation" : "/animations/elementalaura/poisonaura/poisonaura.animation",
             "initialVelocity" : [0, 1],
             "finalVelocity" : [0, 3],
             "approach" : [1, 1],
@@ -103,7 +103,7 @@
           "action" : "particle",
           "specification" : {
             "type" : "animated",
-            "animation" : "/animations/radioactivedrip/radioactivedrip1.animation",
+            "animation" : "/animations/poisondrip/poisondrip1.animation",
             "initialVelocity" : [0, -5],
             "finalVelocity" : [0, -10],
             "timeToLive" : 0.45,
