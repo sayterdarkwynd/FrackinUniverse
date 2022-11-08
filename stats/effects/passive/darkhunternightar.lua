@@ -49,11 +49,11 @@ function update(dt)
 			{stat = "physicalResistance", amount = mult*0.25}
 	    })
 	elseif daytime and not underground and lightLevel > 50 then
+		local weaknessCheck=status.statPositive("fuReduceRacialDarkWeakness")
 	    local mult = math.min(math.max((lightLevel-55)/30,0),1)
 	    local healthPenalty = 1-mult*0.25
 	    if (self.species == "nightar") then
-		    if status.stat("reducePenalty") >= 0 then
-		        reducePenalty = status.stat("reducePenalty")
+		    if weaknessCheck then
 		        healthPenalty = 1-mult*0.1
 			    effect.setStatModifierGroup(nightarDarkHunterEffects, {
 					{stat = "physicalResistance", amount = mult*-0.1},
@@ -69,11 +69,18 @@ function update(dt)
 					{stat = "maxEnergy", effectiveMultiplier = util.round(healthPenalty,1)}
 			    })
 		    end
-	    else  --tenebrhae have different bonuses than nightar
-		    effect.setStatModifierGroup(nightarDarkHunterEffects, {
-				{stat = "physicalResistance", amount = mult*-0.25},
-				{stat = "powerMultiplier", effectiveMultiplier = 1-mult*0.4}
-		    })
+	    else --tenebrhae have different bonuses than nightar
+			if weaknessCheck then
+				effect.setStatModifierGroup(nightarDarkHunterEffects, {
+					{stat = "physicalResistance", amount = mult*-0.01},
+					{stat = "powerMultiplier", effectiveMultiplier = 1-mult*0.01}
+				})
+			else
+				effect.setStatModifierGroup(nightarDarkHunterEffects, {
+					{stat = "physicalResistance", amount = mult*-0.25},
+					{stat = "powerMultiplier", effectiveMultiplier = 1-mult*0.4}
+				})
+			end
 	    end
 
 	else
