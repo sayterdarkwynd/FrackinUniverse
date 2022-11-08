@@ -43,6 +43,9 @@ end
 
 -- Ticks on every update regardless of whether this is the active ability
 function MeleeCombo:update(dt, fireMode, shiftHeld)
+	if self.fireTime~=self.recordedFireTime then
+		self.stances=self:regurgitateStances(copy(self.baseStanceData),self.fireTime)
+	end
 	tagCaching.update()
 	if self.delayLoad then
 		fuLoadSwooshData(self)
@@ -363,5 +366,6 @@ function MeleeCombo:regurgitateStances(stances,fireTime)
 		buffer[stanceName]=stanceData
 	end
 	--sb.logInfo("%s",buffer)
+	self.recordedFireTime=fireTime
 	return(buffer)
 end
