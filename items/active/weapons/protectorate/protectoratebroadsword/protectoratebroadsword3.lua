@@ -24,10 +24,8 @@ function init()
 	self.activeBaseDps = config.getParameter("activeBaseDps")
 	self.inactiveFireTime = config.getParameter("inactiveFireTime")
 	self.activeFireTime = config.getParameter("activeFireTime")
-	self.inactiveElement = config.getParameter("inactiveElement")
-	self.activeElement = config.getParameter("activeElement")
-	self.inactivePAbility = config.getParameter("inactivePAbility")
-	self.activePAbility = config.getParameter("activePAbility")
+	self.inactiveDamageSourceKind = config.getParameter("inactiveDamageSourceKind")
+	self.activeDamageSourceKind = config.getParameter("activeDamageSourceKind")
 
 	self.active = false
 	animator.setAnimationState("sword", "inactive")
@@ -38,8 +36,10 @@ function init()
 end
 
 function update(dt, fireMode, shiftHeld)
+	--sb.logInfo("%s",self.primaryAbility.damageConfig)
 	self.weapon:update(dt, fireMode, shiftHeld)
 	setActive(self.altAbility.active)
+	--sb.logInfo("%s",self.primaryAbility.stepDamageConfig)
 end
 
 function DeepPrintTable(tbl)
@@ -85,19 +85,26 @@ end
 
 function setActive(active)
 	if self.active ~= active then
-		--DeepPrintTable(self.primaryAbility)
 		self.active = active
 		if self.active then
 			animator.setAnimationState("sword", "extend")
 			self.primaryAbility.animKeyPrefix = "active"
 			self.primaryAbility.baseDps = self.activeBaseDps
 			self.primaryAbility.fireTime = self.activeFireTime
+			if self.activeDamageSourceKind and self.inactiveDamageSourceKind then
+				self.primaryAbility.damageConfig.damageSourceKind=self.activeDamageSourceKind
+			end
+			self.primaryAbility.damageConfig.overrideStepDamage=true
 			self.primaryAbility:computeDamageAndCooldowns()
 		else
 			animator.setAnimationState("sword", "retract")
 			self.primaryAbility.animKeyPrefix = "inactive"
 			self.primaryAbility.baseDps = self.inactiveBaseDps
 			self.primaryAbility.fireTime = self.inactiveFireTime
+			if self.activeDamageSourceKind and self.inactiveDamageSourceKind then
+				self.primaryAbility.damageConfig.damageSourceKind=self.inactiveDamageSourceKind
+			end
+			self.primaryAbility.damageConfig.overrideStepDamage=nil
 			self.primaryAbility:computeDamageAndCooldowns()
 		end
 	end
