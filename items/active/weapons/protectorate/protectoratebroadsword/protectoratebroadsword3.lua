@@ -34,6 +34,7 @@ function init()
 	self.primaryAbility.animKeyPrefix = "inactive"
 	self.primaryAbility.baseDps = self.inactiveBaseDps
 	self.primaryAbility:computeDamageAndCooldowns()
+	--sb.logInfo("%s",self.primaryAbility.damageConfig)
 end
 
 function update(dt, fireMode, shiftHeld)
@@ -84,7 +85,7 @@ end
 
 function setActive(active)
 	if self.active ~= active then
-		DeepPrintTable(self.primaryAbility)
+		--DeepPrintTable(self.primaryAbility)
 		self.active = active
 		if self.active then
 			animator.setAnimationState("sword", "extend")
