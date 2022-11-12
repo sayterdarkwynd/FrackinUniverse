@@ -43,6 +43,9 @@ end
 
 -- Ticks on every update regardless of whether this is the active ability
 function MeleeCombo:update(dt, fireMode, shiftHeld)
+	if self.fireTime~=self.recordedFireTime then
+		self.stances=self:regurgitateStances(copy(self.baseStanceData),self.fireTime)
+	end
 	tagCaching.update()
 	if self.delayLoad then
 		fuLoadSwooshData(self)
@@ -297,7 +300,11 @@ function MeleeCombo:computeDamageAndCooldowns()
 	local totalAttackTime = 0
 	local totalDamageFactor = 0
 	for i, attackTime in ipairs(attackTimes) do
-		self.stepDamageConfig[i] = util.mergeTable(copy(self.damageConfig), self.stepDamageConfig[i])
+		if self.damageConfig.overrideStepDamage then
+			self.stepDamageConfig[i] = util.mergeTable(self.stepDamageConfig[i],copy(self.damageConfig))
+		else
+			self.stepDamageConfig[i] = util.mergeTable(copy(self.damageConfig), self.stepDamageConfig[i])
+		end
 		self.stepDamageConfig[i].timeoutGroup = "primary"..i
 
 		local damageFactor = self.stepDamageConfig[i].baseDamageFactor
@@ -356,12 +363,11 @@ function fuLoadSwooshData(self)
 end
 
 function MeleeCombo:regurgitateStances(stances,fireTime)
-	--sb.logInfo("%s",stances)
 	local buffer={}
 	for stanceName,stanceData in pairs(stances) do
 		if stanceData.duration then stanceData.duration=stanceData.duration * fireTime end
 		buffer[stanceName]=stanceData
 	end
-	--sb.logInfo("%s",buffer)
+	self.recordedFireTime=fireTime
 	return(buffer)
 end
