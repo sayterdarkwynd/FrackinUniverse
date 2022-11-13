@@ -93,8 +93,8 @@ function setActive(active)
 			self.primaryAbility.fireTime = self.activeFireTime
 			if self.activeDamageSourceKind and self.inactiveDamageSourceKind then
 				self.primaryAbility.damageConfig.damageSourceKind=self.activeDamageSourceKind
+				self.primaryAbility.damageConfig.overrideStepDamage=true
 			end
-			self.primaryAbility.damageConfig.overrideStepDamage=true
 			self.primaryAbility:computeDamageAndCooldowns()
 		else
 			animator.setAnimationState("sword", "retract")
@@ -103,6 +103,7 @@ function setActive(active)
 			self.primaryAbility.fireTime = self.inactiveFireTime
 			if self.activeDamageSourceKind and self.inactiveDamageSourceKind then
 				self.primaryAbility.damageConfig.damageSourceKind=self.inactiveDamageSourceKind
+				self.primaryAbility.damageConfig.overrideStepDamage=true
 			end
 			self.primaryAbility.damageConfig.overrideStepDamage=nil
 			self.primaryAbility:computeDamageAndCooldowns()
