@@ -1,5 +1,8 @@
 require "/stats/effects/fu_statusUtil.lua"
 
+local myHandler
+local doOnce
+
 function init()
 	--self.maxHealth = status.stat("maxHealth")
 	self.hasEnergy=status.isResource("energy")
@@ -12,17 +15,17 @@ function init()
 	script.setUpdateDelta(1)
 	self.timers = {}
 
-	effect.addStatModifierGroup({{stat = "energyRegenPercentageRate", baseMultiplier = 0.7 }})
-
-	--test
-	effect.setParentDirectives("fade=000000=0.9?border=0;121212FF;44444400?saturation=-60")
+	myHandler=effect.addStatModifierGroup({})
 end
 
 
 function activateVisualEffects()
+	--[[redundant
 	if world.entityType(entity.id()) ~= "player" then
-		effect.expire()
-	end
+		--effect.expire()
+		return
+	end]]
+	effect.setParentDirectives("fade=000000=0.9?border=0;121212FF;44444400?saturation=-60")
 	--local statusTextRegion = { 0, 1, 0, 1 }
 	--animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
 	--animator.burstParticleEmitter("statustext")
@@ -49,10 +52,11 @@ end
 
 function update(dt)
 	if world.entityType(entity.id()) ~= "player" then
-		effect.expire()
+		--effect.expire()--do not use, effect is in an effect zone.
 		return
 	end
 	if not doOnce then
+		effect.setStatModifierGroup(myHandler,{{stat = "energyRegenPercentageRate", baseMultiplier = 0.7 }})
 		activateVisualEffects()
 		doOnce=true
 	end
@@ -95,7 +99,7 @@ function update(dt)
 	end
 end
 
-
 function uninit()
-
+	effect.removeStatModifierGroup(myHandler)
+	myHandler=nil
 end
