@@ -300,7 +300,7 @@ function MeleeCombo:computeDamageAndCooldowns()
 	local totalAttackTime = 0
 	local totalDamageFactor = 0
 	for i, attackTime in ipairs(attackTimes) do
-		if self.damageConfig.overrideStepDamage then
+		if (self.damageConfig.overrideStepDamage) or (self.stepDamageConfig[i].overrideStepDamage) then
 			self.stepDamageConfig[i] = util.mergeTable(self.stepDamageConfig[i],copy(self.damageConfig))
 		else
 			self.stepDamageConfig[i] = util.mergeTable(copy(self.damageConfig), self.stepDamageConfig[i])

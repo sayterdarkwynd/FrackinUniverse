@@ -11,11 +11,3 @@ function init()
 		{stat = "electricResistance", amount = rAmt}
 	})
 end
-
-function update(dt)
-
-end
-
-function uninit()
-
-end
