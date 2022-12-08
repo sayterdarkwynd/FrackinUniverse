@@ -383,7 +383,7 @@ function masteries.apply(args)
 			end
 
 			-- hammers: increased damage. crit, stun chance. crit damage.
-			--special bonuses while doing charged attacks, like greataxes.
+			--special bonuses while doing charged attacks, like greataxes. note that greataxes are exclusively handled in /items/active/weapons/melee/abilities/greataxe/greataxesmash.lua
 			if tagCaching[currentHand.."TagCache"]["hammer"] then
 				masteryBuffer[#masteryBuffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.hammerMastery*handMultiplier/2) }
 				masteryBuffer[#masteryBuffer + 1]={stat="critChance", amount=2*masteries.stats.hammerMastery*handMultiplier}
