@@ -4,10 +4,12 @@ require '/scripts/fupower.lua'
 
 function init()
 	power.init()
-	self.timer = config.getParameter("craftingSpeed")
-	self.crafting = false
-	self.output = {}
+	storage.timer = storage.timer or config.getParameter("craftingSpeed")
+	storage.crafting = storage.crafting or false
+	storage.output = storage.output or {}
 	self.recipeTable = getRecipes()
+	self.powerCost=config.getParameter('isn_requiredPower')
+	self.speed=config.getParameter("craftingSpeed")
 end
 
 function getInputContents()
@@ -88,11 +90,11 @@ function update(dt)
 	else
 		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
-	self.timer = self.timer - dt
-	if self.timer <= 0 then
-		if self.crafting then
-			if power.consume(config.getParameter('isn_requiredPower')) then
-				for k,v in pairs(self.output) do
+	storage.timer = storage.timer - dt
+	if storage.timer <= 0 then
+		if storage.crafting then
+			if power.consume(self.powerCost) then
+				for k,v in pairs(storage.output) do
 					local leftover = {name = k, count = v}
 					local slots = getOutSlotsFor(k)
 					for _,i in pairs(slots) do
@@ -106,17 +108,17 @@ function update(dt)
 						world.spawnItem(leftover.name, entity.position(), leftover.count)
 					end
 				end
-				self.crafting = false
-				self.output = {}
-				self.timer = config.getParameter("craftingSpeed")
+				storage.crafting = false
+				storage.output = {}
+				storage.timer = self.speed
 			else
 				animator.setAnimationState("centrifuge", "idle")
 			end
 		end
 
-		if not self.crafting and self.timer <= 0 then --make sure we didn't just finish crafting
+		if not storage.crafting and storage.timer <= 0 then --make sure we didn't just finish crafting
 			if not startCrafting(getValidRecipes(getInputContents())) then
-				self.timer = config.getParameter("craftingSpeed")
+				storage.timer = self.speed
 				animator.setAnimationState("centrifuge", "idle")
 			end --set timeout if there were no recipes
 		end
@@ -127,7 +129,7 @@ end
 
 
 function startCrafting(result)
-	if power.getTotalEnergy() >= config.getParameter('isn_requiredPower') then
+	if power.getTotalEnergy() >= self.powerCost then
 		if next(result) == nil then
 			return false
 		else
@@ -137,9 +139,9 @@ function startCrafting(result)
 				if not world.containerConsume(entity.id(), {item = k , count = v}) then return false end
 			end
 
-			self.crafting = true
-			self.timer = config.getParameter("craftingSpeed")
-			self.output = result.outputs
+			storage.crafting = true
+			storage.timer = self.speed
+			storage.output = result.outputs
 			animator.setAnimationState("centrifuge", "working")
 			return true
 		end
