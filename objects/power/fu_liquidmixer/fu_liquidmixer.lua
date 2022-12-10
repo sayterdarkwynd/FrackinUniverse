@@ -6,6 +6,7 @@ function init()
 	power.init()
 	storage.timer = storage.timer or config.getParameter("craftingSpeed")
 	storage.crafting = storage.crafting or false
+	object.setOutputNodeLevel(0,storage.crafting)
 	storage.output = storage.output or {}
 	self.recipeTable = getRecipes()
 	self.powerCost=config.getParameter('isn_requiredPower')
@@ -109,6 +110,7 @@ function update(dt)
 					end
 				end
 				storage.crafting = false
+				object.setOutputNodeLevel(0,storage.crafting)
 				storage.output = {}
 				storage.timer = self.speed
 			else
@@ -140,6 +142,7 @@ function startCrafting(result)
 			end
 
 			storage.crafting = true
+			object.setOutputNodeLevel(0,storage.crafting)
 			storage.timer = self.speed
 			storage.output = result.outputs
 			animator.setAnimationState("centrifuge", "working")
