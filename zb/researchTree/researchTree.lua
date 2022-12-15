@@ -80,7 +80,7 @@ function init()
 		end
 	end
 
-	-- Check if the tree was updated, and reaquire blueprints for already learned research
+	-- Check if the tree was updated, and reacquire blueprints for already learned research
 	for tree, dataString in pairs(researchedTable) do
 		if data.versions[tree] then
 			local oldVersion = ""
