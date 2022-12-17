@@ -174,7 +174,7 @@ function NebRNGWarpPoint:fire()
 
 	self.cannotUseAlt = true
 
-	while world.entityExists(self.teleportProjectile) do
+	while (self.teleportProjectile) and world.entityExists(self.teleportProjectile) do
 		world.debugText("Active projectiles detected!", mcontroller.position(), "green")
 
 		self.targetPosition = world.entityPosition(self.teleportProjectile)

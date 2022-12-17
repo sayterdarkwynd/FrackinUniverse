@@ -62,10 +62,10 @@ function GreataxeSmash:windup(windupProgress)
 				self.timerGreataxe = 0
 				status.setPersistentEffects("greataxeMasteryBonus", {})
 			else
-				if self.timerGreataxe < 100 then --otherwise, add bonus
+				if self.timerGreataxe < 100 then --otherwise, add bonus. crit chance scales from 0 to 100%, reaching it quicker with higher mastery. crit damage reaches 1% at max, multiplied by mastery value (30% makes it 1.3% CD)
 					self.timerGreataxe = self.timerGreataxe + 0.5
 					local greataxeMastery=1+status.stat("greataxeMastery")
-					status.setPersistentEffects("greataxeMasteryBonus", {{stat = "critChance", amount = ((self.timerGreataxe * 1.05) + (greataxeMastery/2)) },{stat = "critDamage", amount = (self.timerGreataxe/100) + (greataxeMastery/100)}})
+					status.setPersistentEffects("greataxeMasteryBonus", {{stat = "critChance", amount = self.timerGreataxe * 1.05 * greataxeMastery },{stat = "critDamage", amount = greataxeMastery*self.timerGreataxe/100}})
 					world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","greataxeMasteryBonus")
 				end
 				if self.timerGreataxe == 100 then	--at 101, play a sound
