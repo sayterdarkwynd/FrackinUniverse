@@ -88,8 +88,9 @@ function setDesc()
 end
 
 function toHex(num)
-	local hex = string.format("%X", math.floor(num + 0.5))
-	if num < 16 then hex = "0"..hex end
+	local num2=math.floor(num + 0.5)
+	local hex = string.format("%X", num2)
+	if num2 < 16 then hex = "0"..hex end
 	return hex
 end
 
