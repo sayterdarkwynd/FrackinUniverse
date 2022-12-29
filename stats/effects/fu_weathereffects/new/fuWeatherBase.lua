@@ -373,10 +373,7 @@ end
 
 function fuWeatherBase.toHex(self, num)
 	local num2=math.floor(num + 0.5)
-	local hex = string.format("%X",num2)
-	if num2 < 16 then
-		hex = "0" .. hex
-	end
+	local hex = string.format("%02X",num2)
 	return hex
 end
 
