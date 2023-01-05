@@ -4,8 +4,8 @@ require "/scripts/effectUtil.lua"
 
 function init()
 	power.init()
-	wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
-	tritiumstack = world.containerSwapItems(entity.id(),{name = "tritium", count = 1, data={}},5)
+	wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1},4)
+	tritiumstack = world.containerSwapItems(entity.id(),{name = "tritium", count = 1},5)
 	object.setInteractive(true)
 	radiationStates = {
 		{amount = 100, state = 'danger'},
@@ -64,7 +64,7 @@ function update(dt)
 	end
 	if storage.active2 then
 		for i=0,3 do
-			if isn_slotDecayCheck(i) then isn_doSlotDecay(i) end
+			isn_slotDecayCheck(i)
 		end
 	end
 	local powerout = isn_getCurrentPowerOutput()
@@ -106,54 +106,27 @@ end
 function isn_slotDecayCheck(slot)
 	local item = world.containerItemAt(entity.id(),slot)
 	if item and self and self.fuels and self.fuels[item.name] and math.random(1, self.fuels[item.name].decayRate) == 1 then
-	return true
+		world.containerConsumeAt(entity.id(),slot,1)
+		local wastename=(self.fuels[item.name].altWaste or "toxicwaste")
+		local bonuschance=(self.fuels[item.name].bonusChance or storage.bonusWasteChance)
+		isn_dropWaste(wastename, 4)
+		if (math.random(0,100) < bonuschance) then
+			isn_dropWaste(wastename, 4)
+			isn_dropWaste("tritium", 5)
+		end
 	end
-	return false
 end
 
-function isn_doSlotDecay(slot)
-	world.containerConsumeAt(entity.id(),slot,1) --consume resource
-	local waste = world.containerItemAt(entity.id(),4)
-	local tritium = world.containerItemAt(entity.id(),5)
-	local wastestack
-	local tritiumstack
-	if waste then
-		-- sb.logInfo("Waste found in slot. Name is " .. waste.name)
-		if (waste.name == "toxicwaste") then
-			-- sb.logInfo("increasing storage.radiation")
-			storage.radiation = storage.radiation + 5
-			wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
-		else
-			-- sb.logInfo("not toxic waste, ejecting")
-			local wastecount = waste.count -- variable to ensure no change of quantities in between calculations.
-			world.containerConsumeAt(entity.id(),4,wastecount) --delete waste
-			world.spawnItem(waste.name,entity.position(),wastecount) --drop it on the ground
-		end
-	else -- (waste == nil)
-		wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
-	end
-	if tritium then
-		if (tritium.name == "tritium") then
-			storage.radiation = storage.radiation + 5
-			if (math.random(100) < storage.bonusWasteChance) then
-				tritiumstack = world.containerSwapItems(entity.id(),{name = "tritium", count = 1, data={}},5)
-				wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
-			end
-		else
-			local tritiumcount = tritium.count
-			world.containerConsumeAt(entity.id(),5,tritiumcount) --delete waste
-			world.spawnItem(tritium.name,entity.position(),tritiumcount) --drop it on the ground
-		end
-	elseif (math.random(100) < storage.bonusWasteChance) then -- (tritium == nil)
-		tritiumstack = world.containerSwapItems(entity.id(),{name = "tritium", count = 1, data={}},5)
-		wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
-	end
-	if wastestack  and (wastestack.count > 0) then
-		world.spawnItem(wastestack.name,entity.position(),wastestack.count) --drop it on the ground
+function isn_dropWaste(wastename,slot)
+	if world.containerItemAt(entity.id(),slot) == wastename then
 		storage.radiation = storage.radiation + 5
 	end
-	if tritiumstack and (tritiumstack.count > 0) then
-		world.spawnItem(tritiumstack.name,entity.position(),tritiumstack.count) --drop it on the ground
+	excess = world.containerSwapItems(entity.id(),{name = wastename, count = 1},slot)
+	if excess and (excess.count > 0) then
+		if excess.name == wastename then
+			storage.radiation = storage.radiation + 5
+		end
+		world.spawnItem(excess.name,entity.position(),excess.count,excess.parameters)
 	end
 end
 
