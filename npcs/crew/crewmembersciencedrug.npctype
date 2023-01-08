@@ -3,28 +3,6 @@
   "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "role" : {
-      "benefits" : [
-        {
-          // Ephemeral effects gained upon leaving the ship
-          "type" : "EphemeralEffect",
-          "effect" : "runboost10",
-          "duration" : 30
-        },
-        {
-          // Ephemeral effects gained upon leaving the ship
-          "type" : "EphemeralEffect",
-          "effect" : "jumpboost15",
-          "duration" : 30
-        },
-        {
-          "type": "ShipUpgradeBenefit",
-          "property": "fuelEfficiency",
-          "value": 0.05
-        }
-      ]
-    },
-
     "crew" : {
       "defaultUniform" : {
         "head" : "scientisthead",
@@ -35,7 +13,27 @@
         "type" : "chemist",
         "name" : "Scientist",
         "field" : "Biochemistry",
-        "uniformColorIndex" : 2
+        "uniformColorIndex" : 2,
+
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "runboost10",
+            "duration" : 30
+          },
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "jumpboost15",
+            "duration" : 30
+          },
+          {
+            "type": "ShipUpgradeBenefit",
+            "property": "fuelEfficiency",
+            "value": 0.05
+          }
+        ]
       }
     },
 
