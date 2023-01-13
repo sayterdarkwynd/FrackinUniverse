@@ -121,12 +121,12 @@ function routeItems(dt)
 
 		if sourceItems then
 			for indexIn,item in pairs(sourceItems or {}) do
-				if not storage.leaveOne or item.count > 1 then
+				if (not storage.leaveOne) or (item.count > 1) then
 					if storage.leaveOne then
 						item.count = item.count - 1
 					end
 					local pass,mod = checkFilter(item)
-					if pass and (not storage.roundRobin or item.count>=(mod*outputSizeG)) then
+					if pass and ((not storage.roundRobin) or (item.count>=(mod*outputSizeG))) then
 						local outputSlotCountG = util.tableSize(storage.outputSlots)
 						local originalCount=item.count
 						if storage.roundRobin then
@@ -169,13 +169,13 @@ function routeItems(dt)
 								end
 
 								if ((#storage.outputSlots==0) or (#outputSlotsBuffer>0)) and validInputSlot(indexIn) then
-									if outputSlotCount > 0 or storage.onlyStack then
-										local buffer=item.count * (storage.roundRobin and outputSize or 1) * (storage.roundRobinSlots and outputSlotCount or 1)
+									if (outputSlotCount > 0) or storage.onlyStack then
+										local buffer=item.count * ((storage.roundRobin and outputSize) or 1) * ((storage.roundRobinSlots and outputSlotCount) or 1)
 										if item.count>0 and buffer<=originalCount then
 											for indexOut=1,containerSize do
 												if validOutputSlot(indexOut) then
-													if storage.onlyStack and not world.containerItemAt(targetContainer,indexOut-1) then
-														if not storage.roundRobinSlots and storage.roundRobin then
+													if (storage.onlyStack) and (not world.containerItemAt(targetContainer,indexOut-1)) then
+														if (not storage.roundRobinSlots) and (storage.roundRobin) then
 															break
 														end
 													else
@@ -190,7 +190,7 @@ function routeItems(dt)
 																if not storage.roundRobin then
 																	item = leftOverItems
 																else
-																	break
+																	--break--commenting out until someone says something about a bug to do with it. this was causing transfers to abort w/o transferring past first item
 																end
 															end
 														else
