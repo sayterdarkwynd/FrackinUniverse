@@ -17,7 +17,7 @@ function update(dt)
 	local liquidId = mcontroller.liquidId()
 	if (world.liquidAt(mouthPosition)) and (inWater == 0) and (liquidId== 2) or (liquidId== 8)then
             status.setPersistentEffects("lavahealing", {
-              {stat = "physicalResistance", baseMultiplier = 1.25},
+              {stat = "physicalResistance", amount = 0.25},
               {stat = "maxEnergy", baseMultiplier = 1.25},
               {stat = "maxHealth", baseMultiplier = 1.25}
             })
