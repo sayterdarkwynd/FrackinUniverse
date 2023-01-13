@@ -13,7 +13,7 @@ function update(dt)
 			{stat = "maxHealth", baseMultiplier = 1.25}
 		})
 		inWater = true
-	elseif inWater
+	elseif inWater then
 		status.clearPersistentEffects("lavahealing")
 		inWater = false
 	end
