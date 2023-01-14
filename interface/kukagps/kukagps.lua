@@ -52,23 +52,214 @@ function populateMaterialsList()
                     path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Primary biome:^reset; "..(parameters.primaryBiome and (biomes[parameters.primaryBiome] or parameters.primaryBiome) or (biomes[parameters.typeName] or parameters.typeName)))
 
-                    -- print planet subbiomes (includes main biome)
-                    local subbiomes="None"
-                    if parameters.surfaceLayer then
-                        for _,subBiome in pairs(parameters.surfaceLayer.secondarySubRegions) do
-                            if subBiome and subBiome.biome ~= parameters.primaryBiome then
-                                if subbiomes=="None" then
-                                    subbiomes = biomes[subBiome.biome]
-                                else
-                                    subbiomes = subbiomes..", "..(biomes[subBiome.biome] or subBiome.biome)
+                    -- Search for biomes in spaceLayer.
+                    local spaceLayerBiomes="Space Layer:"
+                    if (parameters.spaceLayer) then
+                        local spacePrinted={}
+
+                        spaceLayerBiomes=spaceLayerBiomes.." "..(biomes[parameters.spaceLayer.primaryRegion.biome] or parameters.spaceLayer.primaryRegion.biome)
+                        table.insert(spacePrinted,parameters.spaceLayer.primaryRegion.biome)
+
+                        if(not BiomeAlreadyPrinted(spacePrinted,parameters.spaceLayer.primarySubRegion.biome))then
+                            spaceLayerBiomes=spaceLayerBiomes..", "..(biomes[parameters.spaceLayer.primarySubRegion.biome] or parameters.spaceLayer.primarySubRegion.biome)
+                            table.insert(spacePrinted,parameters.spaceLayer.primarySubRegion.biome)
+                        end
+
+                        if (parameters.spaceLayer.secondaryRegions) then
+                            for _,valor in pairs(parameters.spaceLayer.secondaryRegions) do
+                                if(not BiomeAlreadyPrinted(spacePrinted,valor.biome))then
+                                    spaceLayerBiomes=spaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                    table.insert(spacePrinted,valor.biome)
                                 end
                             end
                         end
-                    end
-                    subbiomes = subbiomes.."."
+                        if (parameters.spaceLayer.secondarySubRegions) then
+                            for _,valor in pairs(parameters.spaceLayer.secondarySubRegions) do
+                                if(not BiomeAlreadyPrinted(spacePrinted,valor.biome))then
+                                    spaceLayerBiomes=spaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                    table.insert(spacePrinted,valor.biome)
+                                end
+                            end
+                        end
 
-                    path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                    widget.setText(path .. ".text", "^green;Secondary biomes:^reset; "..subbiomes)
+                        spaceLayerBiomes=spaceLayerBiomes.."."
+                        path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                        widget.setText(path .. ".text", spaceLayerBiomes)
+                    end
+
+                    -- Search for biomes in atmosphereLayer.
+                    local atmosphereLayerBiomes="Atmosphere Layer:"
+                    if (parameters.atmosphereLayer) then
+                        local atmospherePrinted={}
+                        atmosphereLayerBiomes=atmosphereLayerBiomes.." "..(biomes[parameters.atmosphereLayer.primaryRegion.biome] or parameters.atmosphereLayer.primaryRegion.biome)
+                        table.insert(atmospherePrinted,parameters.atmosphereLayer.primaryRegion.biome)
+
+                        if(not BiomeAlreadyPrinted(atmospherePrinted,parameters.atmosphereLayer.primarySubRegion.biome))then
+                            atmosphereLayerBiomes=atmosphereLayerBiomes..", "..(biomes[parameters.atmosphereLayer.primarySubRegion.biome] or parameters.atmosphereLayer.primarySubRegion.biome)
+                            table.insert(atmospherePrinted,parameters.atmosphereLayer.primarySubRegion.biome)
+                        end
+
+                        if (parameters.atmosphereLayer.secondaryRegions) then
+                            for _,valor in pairs(parameters.atmosphereLayer.secondaryRegions) do
+                                if(not BiomeAlreadyPrinted(atmospherePrinted,valor.biome))then
+                                    atmosphereLayerBiomes=atmosphereLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                    table.insert(atmospherePrinted,valor.biome)
+                                end
+                            end
+                        end
+                        if (parameters.atmosphereLayer.secondarySubRegions) then
+                            for _,valor in pairs(parameters.atmosphereLayer.secondarySubRegions) do
+                                if(not BiomeAlreadyPrinted(atmospherePrinted,valor.biome))then
+                                    atmosphereLayerBiomes=atmosphereLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                    table.insert(atmospherePrinted,valor.biome)
+                                end
+                            end
+                        end
+
+                        atmosphereLayerBiomes=atmosphereLayerBiomes.."."
+                        path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                        widget.setText(path .. ".text", atmosphereLayerBiomes)
+                    end
+                    
+                    -- Search for biomes in surfaceLayer.
+                    local surfaceLayerBiomes="Surface Layer:"
+                    if (parameters.surfaceLayer) then
+                        local surfacePrinted={}
+                        surfaceLayerBiomes=surfaceLayerBiomes.." "..(biomes[parameters.surfaceLayer.primaryRegion.biome] or parameters.surfaceLayer.primaryRegion.biome)
+                        table.insert(surfacePrinted,parameters.surfaceLayer.primaryRegion.biome)
+
+                        if(not BiomeAlreadyPrinted(surfacePrinted,parameters.surfaceLayer.primarySubRegion.biome))then
+                            surfaceLayerBiomes=surfaceLayerBiomes..", "..(biomes[parameters.surfaceLayer.primarySubRegion.biome] or parameters.surfaceLayer.primarySubRegion.biome)
+                            table.insert(surfacePrinted,parameters.surfaceLayer.primarySubRegion.biome)
+                        end
+
+                        if (parameters.surfaceLayer.secondaryRegions) then
+                            for _,valor in pairs(parameters.surfaceLayer.secondaryRegions) do
+                                if(not BiomeAlreadyPrinted(surfacePrinted,valor.biome))then
+                                    surfaceLayerBiomes=surfaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                    table.insert(surfacePrinted,valor.biome)
+                                end
+                            end
+                        end
+                        if (parameters.surfaceLayer.secondarySubRegions) then
+                            for _,valor in pairs(parameters.surfaceLayer.secondarySubRegions) do
+                                if(not BiomeAlreadyPrinted(surfacePrinted,valor.biome))then
+                                    surfaceLayerBiomes=surfaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                    table.insert(surfacePrinted,valor.biome)
+                                end
+                            end
+                        end
+
+                        surfaceLayerBiomes=surfaceLayerBiomes.."."
+                        path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                        widget.setText(path .. ".text", surfaceLayerBiomes)
+                    end
+
+                    -- Search for biomes in subsurfaceLayer.
+                    local subsurfaceLayerBiomes="SubSurface Layer:"
+                    if (parameters.subsurfaceLayer) then
+                        local subsurfacePrinted={}
+                        subsurfaceLayerBiomes=subsurfaceLayerBiomes.." "..(biomes[parameters.subsurfaceLayer.primaryRegion.biome] or parameters.subsurfaceLayer.primaryRegion.biome)
+                        table.insert(subsurfacePrinted,parameters.subsurfaceLayer.primaryRegion.biome)
+
+                        if(not BiomeAlreadyPrinted(subsurfacePrinted,parameters.subsurfaceLayer.primarySubRegion.biome))then
+                            subsurfaceLayerBiomes=subsurfaceLayerBiomes..", "..(biomes[parameters.subsurfaceLayer.primarySubRegion.biome] or parameters.subsurfaceLayer.primarySubRegion.biome)
+                            table.insert(subsurfacePrinted,parameters.subsurfaceLayer.primarySubRegion.biome)
+                        end
+
+                        if (parameters.subsurfaceLayer.secondaryRegions) then
+                            for _,valor in pairs(parameters.subsurfaceLayer.secondaryRegions) do
+                                if(not BiomeAlreadyPrinted(subsurfacePrinted,valor.biome))then
+                                    subsurfaceLayerBiomes=subsurfaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                    table.insert(subsurfacePrinted,valor.biome)
+                                end
+                            end
+                        end
+                        if (parameters.subsurfaceLayer.secondarySubRegions) then
+                            for _,valor in pairs(parameters.subsurfaceLayer.secondarySubRegions) do
+                                if(not BiomeAlreadyPrinted(subsurfacePrinted,valor.biome))then
+                                    subsurfaceLayerBiomes=subsurfaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                    table.insert(subsurfacePrinted,valor.biome)
+                                end
+                            end
+                        end
+
+                        subsurfaceLayerBiomes=subsurfaceLayerBiomes.."."
+                        path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                        widget.setText(path .. ".text", subsurfaceLayerBiomes)
+                    end
+
+                    -- Search for biomes in undergroundLayers.
+                    if (parameters.undergroundLayers) then
+                        for numero,layer in pairs(parameters.undergroundLayers) do
+                            -- you have to go in every layer inside undergroundLayers
+                            local undergroundLayersBiomes="Underground Layer "..numero..":"
+                            local undergroundPrinted={}
+                            
+                            undergroundLayersBiomes=undergroundLayersBiomes.." "..(biomes[layer.primaryRegion.biome] or layer.primaryRegion.biome)
+                            table.insert(undergroundPrinted,layer.primaryRegion.biome)
+                            
+                            if(not BiomeAlreadyPrinted(undergroundPrinted,layer.primarySubRegion.biome))then
+                                undergroundLayersBiomes=undergroundLayersBiomes..", "..(biomes[layer.primarySubRegion.biome] or layer.primarySubRegion.biome)
+                                table.insert(undergroundPrinted,layer.primarySubRegion.biome)
+                            end
+
+                            if (layer.secondaryRegions) then
+                                for _,valor in pairs(layer.secondaryRegions) do
+                                    if(not BiomeAlreadyPrinted(undergroundPrinted,valor.biome))then
+                                        undergroundLayersBiomes=undergroundLayersBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                        table.insert(undergroundPrinted,valor.biome)
+                                    end
+                                end
+                            end
+
+                            if (layer.secondarySubRegions) then
+                                for _,valor in pairs(layer.secondarySubRegions) do
+                                    if(not BiomeAlreadyPrinted(undergroundPrinted,valor.biome))then
+                                        undergroundLayersBiomes=undergroundLayersBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                        table.insert(undergroundPrinted,valor.biome)
+                                    end
+                                end
+                            end
+
+                            undergroundLayersBiomes=undergroundLayersBiomes.."."
+                            path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                            widget.setText(path .. ".text", undergroundLayersBiomes)
+                        end
+                    end
+                    -- Search for biomes in corelayer.
+                    local coreLayerBiomes="Core Layer:"
+                    if (parameters.coreLayer) then
+                        local corePrinted={}
+                        coreLayerBiomes=coreLayerBiomes.." "..(biomes[parameters.coreLayer.primaryRegion.biome] or parameters.coreLayer.primaryRegion.biome)
+                        table.insert(corePrinted,parameters.coreLayer.primaryRegion.biome)
+                        
+                        if(not BiomeAlreadyPrinted(corePrinted,parameters.coreLayer.primarySubRegion.biome))then
+                            coreLayerBiomes=coreLayerBiomes..", "..(biomes[parameters.coreLayer.primarySubRegion.biome] or parameters.coreLayer.primarySubRegion.biome)
+                            table.insert(corePrinted,parameters.coreLayer.primarySubRegion.biome)
+                        end
+
+                        if (parameters.coreLayer.secondaryRegions) then
+                            for _,valor in pairs(parameters.coreLayer.secondaryRegions) do
+                                if(not BiomeAlreadyPrinted(corePrinted,valor.biome))then
+                                    coreLayerBiomes=coreLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                    table.insert(corePrinted,valor.biome)
+                                end
+                            end
+                        end
+                        if (parameters.coreLayer.secondarySubRegions) then
+                            for _,valor in pairs(parameters.coreLayer.secondarySubRegions) do
+                                if(not BiomeAlreadyPrinted(corePrinted,valor.biome))then
+                                    coreLayerBiomes=coreLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                    table.insert(corePrinted,valor.biome)
+                                end
+                            end
+                        end
+
+                        coreLayerBiomes=coreLayerBiomes.."."
+                        path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                        widget.setText(path .. ".text", coreLayerBiomes)
+                    end
 
                     local pos = world.entityPosition(player.id())
                     -- print pos
@@ -333,4 +524,14 @@ function getDate(days)
     end
     days=days+1
     return "Year "..year..", Month "..month.." and Day "..days
+end
+
+-- check list of biomes already printed
+function BiomeAlreadyPrinted(tbl, biome)
+    for _, value in pairs(tbl) do
+        if (value == biome) then
+            return true
+        end
+    end
+    return false
 end
