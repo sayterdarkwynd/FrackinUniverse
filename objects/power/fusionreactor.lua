@@ -173,25 +173,15 @@ end
 
 function isn_doSlotDecay(slot)
 	world.containerConsumeAt(entity.id(),slot,1)
-	local waste = world.containerItemAt(entity.id(),4)
-	local wastestack
-
-	if waste then
-		if (waste.name == "toxicwaste") then
-		  storage.radiation = storage.radiation + 5
-		  wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
-		else
-		  local wastecount = waste.count
-		  world.containerConsumeAt(entity.id(),4,wastecount)
-		  world.spawnItem(waste.name,entity.position(),wastecount)
-		end
-	else
-		wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
-	end
-
-	if wastestack  and (wastestack.count > 0) then
-		world.spawnItem(wastestack.name,entity.position(),wastestack.count)
+	if world.containerItemAt(entity.id(),4) == "toxicwaste" then
 		storage.radiation = storage.radiation + 5
+	end
+	local excess = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1},4)
+	if excess and (excess.count > 0) then
+		if excess.name == "toxicwaste" then
+			storage.radiation = storage.radiation + 5
+		end
+		world.spawnItem(excess.name,entity.position(),excess.count,excess.parameters)
 	end
 end
 
