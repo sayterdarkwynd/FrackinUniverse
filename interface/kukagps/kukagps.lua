@@ -50,208 +50,323 @@ function populateMaterialsList()
                     -- print planet primary biome
                     local parameters = celestial.visitableParameters(planet)
                     path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                    widget.setText(path .. ".text", "^green;Primary biome:^reset; "..(parameters.primaryBiome and (biomes[parameters.primaryBiome] or parameters.primaryBiome) or (biomes[parameters.typeName] or parameters.typeName)))
+                    widget.setText(path .. ".text", "                                                ^green;BIOMES:^reset; ")
+                   
+                    local forbiddenBiomes={"atropuselder","atropuselderunderground","elder","elderunderground","precursorsurface","precursorunderground","shoggothbiome"}
+                    local anomaliesFound=false
+                    local size = world.size() or {0,0}
 
-                    -- Search for biomes in spaceLayer.
-                    local spaceLayerBiomes="Space Layer:"
+                    -- Search for biomes in spaceLayer.                    
                     if (parameters.spaceLayer) then
                         local spacePrinted={}
+                        local spaceLayerBiomes=""
 
-                        spaceLayerBiomes=spaceLayerBiomes.." "..(biomes[parameters.spaceLayer.primaryRegion.biome] or parameters.spaceLayer.primaryRegion.biome)
-                        table.insert(spacePrinted,parameters.spaceLayer.primaryRegion.biome)
-
-                        if(not BiomeAlreadyPrinted(spacePrinted,parameters.spaceLayer.primarySubRegion.biome))then
-                            spaceLayerBiomes=spaceLayerBiomes..", "..(biomes[parameters.spaceLayer.primarySubRegion.biome] or parameters.spaceLayer.primarySubRegion.biome)
-                            table.insert(spacePrinted,parameters.spaceLayer.primarySubRegion.biome)
+                        if(not BiomeCheck(forbiddenBiomes,parameters.spaceLayer.primaryRegion.biome)) then
+                            spaceLayerBiomes=spaceLayerBiomes.." "..(biomes[parameters.spaceLayer.primaryRegion.biome] or parameters.spaceLayer.primaryRegion.biome)
+                            table.insert(spacePrinted,parameters.spaceLayer.primaryRegion.biome)
+                        else
+                            anomaliesFound=true
+                        end
+                        
+                        if(not BiomeCheck(spacePrinted,parameters.spaceLayer.primarySubRegion.biome))then
+                            if(not BiomeCheck(forbiddenBiomes,parameters.spaceLayer.primarySubRegion.biome)) then
+                                spaceLayerBiomes=spaceLayerBiomes..", "..(biomes[parameters.spaceLayer.primarySubRegion.biome] or parameters.spaceLayer.primarySubRegion.biome)
+                                table.insert(spacePrinted,parameters.spaceLayer.primarySubRegion.biome)
+                            else
+                                anomaliesFound=true
+                            end
                         end
 
                         if (parameters.spaceLayer.secondaryRegions) then
                             for _,valor in pairs(parameters.spaceLayer.secondaryRegions) do
-                                if(not BiomeAlreadyPrinted(spacePrinted,valor.biome))then
-                                    spaceLayerBiomes=spaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
-                                    table.insert(spacePrinted,valor.biome)
+                                if(not BiomeCheck(spacePrinted,valor.biome))then
+                                    if(not BiomeCheck(forbiddenBiomes,valor.biome)) then
+                                        spaceLayerBiomes=spaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                        table.insert(spacePrinted,valor.biome)
+                                    else
+                                        anomaliesFound=true
+                                    end
                                 end
                             end
                         end
                         if (parameters.spaceLayer.secondarySubRegions) then
                             for _,valor in pairs(parameters.spaceLayer.secondarySubRegions) do
-                                if(not BiomeAlreadyPrinted(spacePrinted,valor.biome))then
-                                    spaceLayerBiomes=spaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
-                                    table.insert(spacePrinted,valor.biome)
+                                if(not BiomeCheck(spacePrinted,valor.biome))then
+                                    if(not BiomeCheck(forbiddenBiomes,valor.biome)) then
+                                        spaceLayerBiomes=spaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                        table.insert(spacePrinted,valor.biome)
+                                    else
+                                        anomaliesFound=true
+                                    end
                                 end
                             end
                         end
 
                         spaceLayerBiomes=spaceLayerBiomes.."."
                         path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                        widget.setText(path .. ".text", spaceLayerBiomes)
+                        widget.setText(path .. ".text", "^green;Space Layer^reset; ["..parameters.spaceLayer.layerMinHeight.."-"..size[2].."]: "..spaceLayerBiomes)
+                        
                     end
 
-                    -- Search for biomes in atmosphereLayer.
-                    local atmosphereLayerBiomes="Atmosphere Layer:"
+                    -- Search for biomes in atmosphereLayer.                    
                     if (parameters.atmosphereLayer) then
                         local atmospherePrinted={}
-                        atmosphereLayerBiomes=atmosphereLayerBiomes.." "..(biomes[parameters.atmosphereLayer.primaryRegion.biome] or parameters.atmosphereLayer.primaryRegion.biome)
-                        table.insert(atmospherePrinted,parameters.atmosphereLayer.primaryRegion.biome)
+                        local atmosphereLayerBiomes=""
 
-                        if(not BiomeAlreadyPrinted(atmospherePrinted,parameters.atmosphereLayer.primarySubRegion.biome))then
-                            atmosphereLayerBiomes=atmosphereLayerBiomes..", "..(biomes[parameters.atmosphereLayer.primarySubRegion.biome] or parameters.atmosphereLayer.primarySubRegion.biome)
-                            table.insert(atmospherePrinted,parameters.atmosphereLayer.primarySubRegion.biome)
+                        if(not BiomeCheck(forbiddenBiomes,parameters.atmosphereLayer.primaryRegion.biome)) then
+                            atmosphereLayerBiomes=atmosphereLayerBiomes.." "..(biomes[parameters.atmosphereLayer.primaryRegion.biome] or parameters.atmosphereLayer.primaryRegion.biome)
+                            table.insert(atmospherePrinted,parameters.atmosphereLayer.primaryRegion.biome)
+                        else
+                            anomaliesFound=true
+                        end
+                        if(not BiomeCheck(atmospherePrinted,parameters.atmosphereLayer.primarySubRegion.biome))then
+                            if(not BiomeCheck(forbiddenBiomes,parameters.atmosphereLayer.primarySubRegion.biome)) then
+                                atmosphereLayerBiomes=atmosphereLayerBiomes..", "..(biomes[parameters.atmosphereLayer.primarySubRegion.biome] or parameters.atmosphereLayer.primarySubRegion.biome)
+                                table.insert(atmospherePrinted,parameters.atmosphereLayer.primarySubRegion.biome)
+                            else
+                                anomaliesFound=true
+                            end
                         end
 
                         if (parameters.atmosphereLayer.secondaryRegions) then
                             for _,valor in pairs(parameters.atmosphereLayer.secondaryRegions) do
-                                if(not BiomeAlreadyPrinted(atmospherePrinted,valor.biome))then
-                                    atmosphereLayerBiomes=atmosphereLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
-                                    table.insert(atmospherePrinted,valor.biome)
+                                if(not BiomeCheck(atmospherePrinted,valor.biome))then
+                                    if(not BiomeCheck(forbiddenBiomes,valor.biome)) then
+                                        atmosphereLayerBiomes=atmosphereLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                        table.insert(atmospherePrinted,valor.biome)
+                                    else
+                                        anomaliesFound=true
+                                    end
                                 end
                             end
                         end
                         if (parameters.atmosphereLayer.secondarySubRegions) then
                             for _,valor in pairs(parameters.atmosphereLayer.secondarySubRegions) do
-                                if(not BiomeAlreadyPrinted(atmospherePrinted,valor.biome))then
-                                    atmosphereLayerBiomes=atmosphereLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
-                                    table.insert(atmospherePrinted,valor.biome)
+                                if(not BiomeCheck(atmospherePrinted,valor.biome))then
+                                    if(not BiomeCheck(forbiddenBiomes,valor.biome)) then
+                                        atmosphereLayerBiomes=atmosphereLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                        table.insert(atmospherePrinted,valor.biome)
+                                    else
+                                        anomaliesFound=true
+                                    end
                                 end
                             end
                         end
 
                         atmosphereLayerBiomes=atmosphereLayerBiomes.."."
                         path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                        widget.setText(path .. ".text", atmosphereLayerBiomes)
+                        widget.setText(path .. ".text",  "^green;Atmosphere Layer^reset; ["..parameters.atmosphereLayer.layerMinHeight.."-"..parameters.spaceLayer.layerMinHeight.."]: "..atmosphereLayerBiomes)
                     end
                     
                     -- Search for biomes in surfaceLayer.
-                    local surfaceLayerBiomes="Surface Layer:"
                     if (parameters.surfaceLayer) then
                         local surfacePrinted={}
-                        surfaceLayerBiomes=surfaceLayerBiomes.." "..(biomes[parameters.surfaceLayer.primaryRegion.biome] or parameters.surfaceLayer.primaryRegion.biome)
-                        table.insert(surfacePrinted,parameters.surfaceLayer.primaryRegion.biome)
+                        local surfaceLayerBiomes=""
 
-                        if(not BiomeAlreadyPrinted(surfacePrinted,parameters.surfaceLayer.primarySubRegion.biome))then
-                            surfaceLayerBiomes=surfaceLayerBiomes..", "..(biomes[parameters.surfaceLayer.primarySubRegion.biome] or parameters.surfaceLayer.primarySubRegion.biome)
-                            table.insert(surfacePrinted,parameters.surfaceLayer.primarySubRegion.biome)
+                        if(not BiomeCheck(forbiddenBiomes,parameters.surfaceLayer.primaryRegion.biome)) then
+                            surfaceLayerBiomes=surfaceLayerBiomes.." ^yellow;"..(biomes[parameters.surfaceLayer.primaryRegion.biome] or parameters.surfaceLayer.primaryRegion.biome).."^reset;"
+                            table.insert(surfacePrinted,parameters.surfaceLayer.primaryRegion.biome)
+                        else
+                            anomaliesFound=true
+                        end
+
+                        if(not BiomeCheck(surfacePrinted,parameters.surfaceLayer.primarySubRegion.biome))then
+                            if(not BiomeCheck(forbiddenBiomes,parameters.surfaceLayer.primarySubRegion.biome)) then
+                                surfaceLayerBiomes=surfaceLayerBiomes..", "..(biomes[parameters.surfaceLayer.primarySubRegion.biome] or parameters.surfaceLayer.primarySubRegion.biome)
+                                table.insert(surfacePrinted,parameters.surfaceLayer.primarySubRegion.biome)
+                            else
+                                anomaliesFound=true
+                            end
                         end
 
                         if (parameters.surfaceLayer.secondaryRegions) then
                             for _,valor in pairs(parameters.surfaceLayer.secondaryRegions) do
-                                if(not BiomeAlreadyPrinted(surfacePrinted,valor.biome))then
-                                    surfaceLayerBiomes=surfaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
-                                    table.insert(surfacePrinted,valor.biome)
+                                if(not BiomeCheck(surfacePrinted,valor.biome))then
+                                    if(not BiomeCheck(forbiddenBiomes,valor.biome)) then
+                                        surfaceLayerBiomes=surfaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                        table.insert(surfacePrinted,valor.biome)
+                                    else
+                                        anomaliesFound=true
+                                    end
                                 end
                             end
                         end
                         if (parameters.surfaceLayer.secondarySubRegions) then
                             for _,valor in pairs(parameters.surfaceLayer.secondarySubRegions) do
-                                if(not BiomeAlreadyPrinted(surfacePrinted,valor.biome))then
-                                    surfaceLayerBiomes=surfaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
-                                    table.insert(surfacePrinted,valor.biome)
+                                if(not BiomeCheck(surfacePrinted,valor.biome))then
+                                    if(not BiomeCheck(forbiddenBiomes,valor.biome)) then
+                                        surfaceLayerBiomes=surfaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                        table.insert(surfacePrinted,valor.biome)
+                                    else
+                                        anomaliesFound=true
+                                    end
                                 end
                             end
                         end
 
                         surfaceLayerBiomes=surfaceLayerBiomes.."."
                         path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                        widget.setText(path .. ".text", surfaceLayerBiomes)
+                        widget.setText(path .. ".text",  "^green;Surface Layer^reset; ["..parameters.surfaceLayer.layerMinHeight.."-"..parameters.atmosphereLayer.layerMinHeight.."]: "..surfaceLayerBiomes)
                     end
 
                     -- Search for biomes in subsurfaceLayer.
-                    local subsurfaceLayerBiomes="SubSurface Layer:"
                     if (parameters.subsurfaceLayer) then
                         local subsurfacePrinted={}
-                        subsurfaceLayerBiomes=subsurfaceLayerBiomes.." "..(biomes[parameters.subsurfaceLayer.primaryRegion.biome] or parameters.subsurfaceLayer.primaryRegion.biome)
-                        table.insert(subsurfacePrinted,parameters.subsurfaceLayer.primaryRegion.biome)
+                        local subsurfaceLayerBiomes=""
 
-                        if(not BiomeAlreadyPrinted(subsurfacePrinted,parameters.subsurfaceLayer.primarySubRegion.biome))then
-                            subsurfaceLayerBiomes=subsurfaceLayerBiomes..", "..(biomes[parameters.subsurfaceLayer.primarySubRegion.biome] or parameters.subsurfaceLayer.primarySubRegion.biome)
-                            table.insert(subsurfacePrinted,parameters.subsurfaceLayer.primarySubRegion.biome)
+                        if(not BiomeCheck(forbiddenBiomes,parameters.subsurfaceLayer.primaryRegion.biome)) then
+                            subsurfaceLayerBiomes=subsurfaceLayerBiomes.." "..(biomes[parameters.subsurfaceLayer.primaryRegion.biome] or parameters.subsurfaceLayer.primaryRegion.biome)
+                            table.insert(subsurfacePrinted,parameters.subsurfaceLayer.primaryRegion.biome)
+                        else
+                            anomaliesFound=true
+                        end
+
+                        if(not BiomeCheck(subsurfacePrinted,parameters.subsurfaceLayer.primarySubRegion.biome))then
+                            if(not BiomeCheck(forbiddenBiomes,parameters.subsurfaceLayer.primarySubRegion.biome)) then
+                                subsurfaceLayerBiomes=subsurfaceLayerBiomes..", "..(biomes[parameters.subsurfaceLayer.primarySubRegion.biome] or parameters.subsurfaceLayer.primarySubRegion.biome)
+                                table.insert(subsurfacePrinted,parameters.subsurfaceLayer.primarySubRegion.biome)
+                            else
+                                anomaliesFound=true
+                            end
                         end
 
                         if (parameters.subsurfaceLayer.secondaryRegions) then
                             for _,valor in pairs(parameters.subsurfaceLayer.secondaryRegions) do
-                                if(not BiomeAlreadyPrinted(subsurfacePrinted,valor.biome))then
-                                    subsurfaceLayerBiomes=subsurfaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
-                                    table.insert(subsurfacePrinted,valor.biome)
+                                if(not BiomeCheck(subsurfacePrinted,valor.biome))then
+                                    if(not BiomeCheck(forbiddenBiomes,valor.biome)) then
+                                        subsurfaceLayerBiomes=subsurfaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                        table.insert(subsurfacePrinted,valor.biome)
+                                    else
+                                        anomaliesFound=true
+                                    end
                                 end
                             end
                         end
                         if (parameters.subsurfaceLayer.secondarySubRegions) then
                             for _,valor in pairs(parameters.subsurfaceLayer.secondarySubRegions) do
-                                if(not BiomeAlreadyPrinted(subsurfacePrinted,valor.biome))then
-                                    subsurfaceLayerBiomes=subsurfaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
-                                    table.insert(subsurfacePrinted,valor.biome)
+                                if(not BiomeCheck(subsurfacePrinted,valor.biome))then
+                                    if(not BiomeCheck(forbiddenBiomes,valor.biome)) then
+                                        subsurfaceLayerBiomes=subsurfaceLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                        table.insert(subsurfacePrinted,valor.biome)
+                                    else
+                                        anomaliesFound=true
+                                    end
                                 end
                             end
                         end
 
                         subsurfaceLayerBiomes=subsurfaceLayerBiomes.."."
                         path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                        widget.setText(path .. ".text", subsurfaceLayerBiomes)
+                        widget.setText(path .. ".text",  "^green;SubSurface Layer^reset; ["..parameters.subsurfaceLayer.layerMinHeight.."-"..parameters.surfaceLayer.layerMinHeight.."]: "..subsurfaceLayerBiomes)
                     end
 
                     -- Search for biomes in undergroundLayers.
                     if (parameters.undergroundLayers) then
-                        for numero,layer in pairs(parameters.undergroundLayers) do
-                            -- you have to go in every layer inside undergroundLayers
-                            local undergroundLayersBiomes="Underground Layer "..numero..":"
+                        for number,layer in pairs(parameters.undergroundLayers) do
+                            -- you have to go in every layer inside undergroundLayers                            
                             local undergroundPrinted={}
+                            local undergroundLayersBiomes=""
                             
-                            undergroundLayersBiomes=undergroundLayersBiomes.." "..(biomes[layer.primaryRegion.biome] or layer.primaryRegion.biome)
-                            table.insert(undergroundPrinted,layer.primaryRegion.biome)
-                            
-                            if(not BiomeAlreadyPrinted(undergroundPrinted,layer.primarySubRegion.biome))then
-                                undergroundLayersBiomes=undergroundLayersBiomes..", "..(biomes[layer.primarySubRegion.biome] or layer.primarySubRegion.biome)
-                                table.insert(undergroundPrinted,layer.primarySubRegion.biome)
+                            if(not BiomeCheck(forbiddenBiomes,layer.primaryRegion.biome)) then
+                                undergroundLayersBiomes=undergroundLayersBiomes.." "..(biomes[layer.primaryRegion.biome] or layer.primaryRegion.biome)
+                                table.insert(undergroundPrinted,layer.primaryRegion.biome)
+                            else
+                                anomaliesFound=true
+                            end
+
+                            if(not BiomeCheck(undergroundPrinted,layer.primarySubRegion.biome))then
+                                if(not BiomeCheck(forbiddenBiomes,layer.primarySubRegion.biome)) then
+                                    undergroundLayersBiomes=undergroundLayersBiomes..", "..(biomes[layer.primarySubRegion.biome] or layer.primarySubRegion.biome)
+                                    table.insert(undergroundPrinted,layer.primarySubRegion.biome)
+                                else
+                                    anomaliesFound=true
+                                end
                             end
 
                             if (layer.secondaryRegions) then
                                 for _,valor in pairs(layer.secondaryRegions) do
-                                    if(not BiomeAlreadyPrinted(undergroundPrinted,valor.biome))then
-                                        undergroundLayersBiomes=undergroundLayersBiomes..", "..(biomes[valor.biome] or valor.biome)
-                                        table.insert(undergroundPrinted,valor.biome)
+                                    if(not BiomeCheck(undergroundPrinted,valor.biome))then
+                                        if(not BiomeCheck(forbiddenBiomes,valor.biome)) then
+                                            undergroundLayersBiomes=undergroundLayersBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                            table.insert(undergroundPrinted,valor.biome)
+                                        else
+                                            anomaliesFound=true
+                                        end
                                     end
                                 end
                             end
 
                             if (layer.secondarySubRegions) then
                                 for _,valor in pairs(layer.secondarySubRegions) do
-                                    if(not BiomeAlreadyPrinted(undergroundPrinted,valor.biome))then
-                                        undergroundLayersBiomes=undergroundLayersBiomes..", "..(biomes[valor.biome] or valor.biome)
-                                        table.insert(undergroundPrinted,valor.biome)
+                                    if(not BiomeCheck(undergroundPrinted,valor.biome))then
+                                        if(not BiomeCheck(forbiddenBiomes,valor.biome)) then
+                                            undergroundLayersBiomes=undergroundLayersBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                            table.insert(undergroundPrinted,valor.biome)
+                                        else
+                                            anomaliesFound=true
+                                        end
                                     end
                                 end
                             end
 
                             undergroundLayersBiomes=undergroundLayersBiomes.."."
+                            local maxHeight=0
+                            if(number==1)then
+                                maxHeight=parameters.subsurfaceLayer.layerMinHeight
+                            else
+                                if(number==2)then
+                                    maxHeight=parameters.undergroundLayers[1].layerMinHeight
+                                else
+                                    maxHeight=parameters.undergroundLayers[2].layerMinHeight
+                                end
+                            end
                             path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                            widget.setText(path .. ".text", undergroundLayersBiomes)
+                            widget.setText(path .. ".text",  "^green;Underground Layer "..number.."^reset; ["..layer.layerMinHeight.."-"..maxHeight.."]: "..undergroundLayersBiomes)
                         end
                     end
-                    -- Search for biomes in corelayer.
-                    local coreLayerBiomes="Core Layer:"
+
+                    -- Search for biomes in corelayer.                    
                     if (parameters.coreLayer) then
                         local corePrinted={}
-                        coreLayerBiomes=coreLayerBiomes.." "..(biomes[parameters.coreLayer.primaryRegion.biome] or parameters.coreLayer.primaryRegion.biome)
-                        table.insert(corePrinted,parameters.coreLayer.primaryRegion.biome)
-                        
-                        if(not BiomeAlreadyPrinted(corePrinted,parameters.coreLayer.primarySubRegion.biome))then
-                            coreLayerBiomes=coreLayerBiomes..", "..(biomes[parameters.coreLayer.primarySubRegion.biome] or parameters.coreLayer.primarySubRegion.biome)
-                            table.insert(corePrinted,parameters.coreLayer.primarySubRegion.biome)
+                        local coreLayerBiomes=""
+
+                        if(not BiomeCheck(forbiddenBiomes,parameters.coreLayer.primaryRegion.biome)) then
+                            coreLayerBiomes=coreLayerBiomes.." "..(biomes[parameters.coreLayer.primaryRegion.biome] or parameters.coreLayer.primaryRegion.biome)
+                            table.insert(corePrinted,parameters.coreLayer.primaryRegion.biome)
+                        else
+                            anomaliesFound=true
+                        end
+
+                        if(not BiomeCheck(corePrinted,parameters.coreLayer.primarySubRegion.biome))then
+                            if(not BiomeCheck(forbiddenBiomes,parameters.coreLayer.primarySubRegion.biome)) then
+                                coreLayerBiomes=coreLayerBiomes..", "..(biomes[parameters.coreLayer.primarySubRegion.biome] or parameters.coreLayer.primarySubRegion.biome)
+                                table.insert(corePrinted,parameters.coreLayer.primarySubRegion.biome)
+                            else
+                                anomaliesFound=true
+                            end
                         end
 
                         if (parameters.coreLayer.secondaryRegions) then
                             for _,valor in pairs(parameters.coreLayer.secondaryRegions) do
-                                if(not BiomeAlreadyPrinted(corePrinted,valor.biome))then
-                                    coreLayerBiomes=coreLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
-                                    table.insert(corePrinted,valor.biome)
+                                if(not BiomeCheck(corePrinted,valor.biome))then
+                                    if(not BiomeCheck(forbiddenBiomes,valor.biome)) then
+                                        coreLayerBiomes=coreLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                        table.insert(corePrinted,valor.biome)
+                                    else
+                                        anomaliesFound=true
+                                    end
                                 end
                             end
                         end
                         if (parameters.coreLayer.secondarySubRegions) then
                             for _,valor in pairs(parameters.coreLayer.secondarySubRegions) do
-                                if(not BiomeAlreadyPrinted(corePrinted,valor.biome))then
-                                    coreLayerBiomes=coreLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
-                                    table.insert(corePrinted,valor.biome)
+                                if(not BiomeCheck(corePrinted,valor.biome))then
+                                    if(not BiomeCheck(forbiddenBiomes,valor.biome)) then
+                                        coreLayerBiomes=coreLayerBiomes..", "..(biomes[valor.biome] or valor.biome)
+                                        table.insert(corePrinted,valor.biome)
+                                    else
+                                        anomaliesFound=true
+                                    end
                                 end
                             end
                         end
@@ -259,6 +374,13 @@ function populateMaterialsList()
                         coreLayerBiomes=coreLayerBiomes.."."
                         path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                         widget.setText(path .. ".text", coreLayerBiomes)
+                        widget.setText(path .. ".text",  "^green;Core Layer^reset; [0-"..parameters.undergroundLayers[3].layerMinHeight.."]: "..coreLayerBiomes)
+                    end
+
+                    -- anomalies found?
+                    if (anomaliesFound) then
+                        path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                        widget.setText(path .. ".text", "^red;Some anomalies were found on those layers....^reset; ")
                     end
 
                     local pos = world.entityPosition(player.id())
@@ -527,7 +649,7 @@ function getDate(days)
 end
 
 -- check list of biomes already printed
-function BiomeAlreadyPrinted(tbl, biome)
+function BiomeCheck(tbl, biome)
     for _, value in pairs(tbl) do
         if (value == biome) then
             return true
