@@ -121,7 +121,7 @@ function isn_dropWaste(wastename,slot)
 	if world.containerItemAt(entity.id(),slot) == wastename then
 		storage.radiation = storage.radiation + 5
 	end
-	excess = world.containerSwapItems(entity.id(),{name = wastename, count = 1},slot)
+	local excess = world.containerSwapItems(entity.id(),{name = wastename, count = 1},slot)
 	if excess and (excess.count > 0) then
 		if excess.name == wastename then
 			storage.radiation = storage.radiation + 5
