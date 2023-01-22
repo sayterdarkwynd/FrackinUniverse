@@ -51,12 +51,12 @@ function populateMaterialsList()
                     local parameters = celestial.visitableParameters(planet)
                     path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "                                                ^green;BIOMES:^reset; ")
-                   
+
                     local forbiddenBiomes={"atropuselder","atropuselderunderground","elder","elderunderground","precursorsurface","precursorunderground","shoggothbiome"}
                     local anomaliesFound=false
                     local size = world.size() or {0,0}
 
-                    -- Search for biomes in spaceLayer.                    
+                    -- Search for biomes in spaceLayer.
                     if (parameters.spaceLayer) then
                         local spacePrinted={}
                         local spaceLayerBiomes=""
@@ -67,7 +67,7 @@ function populateMaterialsList()
                         else
                             anomaliesFound=true
                         end
-                        
+
                         if(not BiomeCheck(spacePrinted,parameters.spaceLayer.primarySubRegion.biome))then
                             if(not BiomeCheck(forbiddenBiomes,parameters.spaceLayer.primarySubRegion.biome)) then
                                 spaceLayerBiomes=spaceLayerBiomes..", "..(biomes[parameters.spaceLayer.primarySubRegion.biome] or parameters.spaceLayer.primarySubRegion.biome)
@@ -105,10 +105,9 @@ function populateMaterialsList()
                         spaceLayerBiomes=spaceLayerBiomes.."."
                         path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                         widget.setText(path .. ".text", "^green;Space Layer^reset; ["..parameters.spaceLayer.layerMinHeight.."-"..size[2].."]: "..spaceLayerBiomes)
-                        
                     end
 
-                    -- Search for biomes in atmosphereLayer.                    
+                    -- Search for biomes in atmosphereLayer.
                     if (parameters.atmosphereLayer) then
                         local atmospherePrinted={}
                         local atmosphereLayerBiomes=""
@@ -157,7 +156,7 @@ function populateMaterialsList()
                         path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                         widget.setText(path .. ".text",  "^green;Atmosphere Layer^reset; ["..parameters.atmosphereLayer.layerMinHeight.."-"..parameters.spaceLayer.layerMinHeight.."]: "..atmosphereLayerBiomes)
                     end
-                    
+
                     -- Search for biomes in surfaceLayer.
                     if (parameters.surfaceLayer) then
                         local surfacePrinted={}
@@ -263,10 +262,10 @@ function populateMaterialsList()
                     -- Search for biomes in undergroundLayers.
                     if (parameters.undergroundLayers) then
                         for number,layer in pairs(parameters.undergroundLayers) do
-                            -- you have to go in every layer inside undergroundLayers                            
+                            -- you have to go in every layer inside undergroundLayers
                             local undergroundPrinted={}
                             local undergroundLayersBiomes=""
-                            
+
                             if(not BiomeCheck(forbiddenBiomes,layer.primaryRegion.biome)) then
                                 undergroundLayersBiomes=undergroundLayersBiomes.." "..(biomes[layer.primaryRegion.biome] or layer.primaryRegion.biome)
                                 table.insert(undergroundPrinted,layer.primaryRegion.biome)
@@ -325,7 +324,7 @@ function populateMaterialsList()
                         end
                     end
 
-                    -- Search for biomes in corelayer.                    
+                    -- Search for biomes in corelayer.
                     if (parameters.coreLayer) then
                         local corePrinted={}
                         local coreLayerBiomes=""
@@ -388,7 +387,7 @@ function populateMaterialsList()
                     path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Position X:^reset; "..math.floor(pos[1]).."                                       ^green;Position Y:^reset; "..math.floor(pos[2]))
 
-                    local size = world.size() or {0,0}
+                    -- local size = world.size() or {0,0}
                     -- print world size
                     path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Width:^reset; "..size[1].."                                            ^green;Height:^reset; "..size[2])
