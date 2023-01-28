@@ -312,13 +312,12 @@ function populateMaterialsList()
                             local maxHeight
                             if(number==1)then
                                 maxHeight=parameters.subsurfaceLayer.layerMinHeight
+                            elseif(number==2)then
+                                maxHeight=parameters.undergroundLayers[1].layerMinHeight
                             else
-                                if(number==2)then
-                                    maxHeight=parameters.undergroundLayers[1].layerMinHeight
-                                else
-                                    maxHeight=parameters.undergroundLayers[2].layerMinHeight
-                                end
+                                maxHeight=parameters.undergroundLayers[2].layerMinHeight
                             end
+
                             path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text",  "^green;Underground Layer "..number.."^reset; ["..layer.layerMinHeight.."-"..maxHeight.."]: "..undergroundLayersBiomes)
                         end
