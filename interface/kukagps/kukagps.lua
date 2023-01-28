@@ -309,7 +309,7 @@ function populateMaterialsList()
                             end
 
                             undergroundLayersBiomes=undergroundLayersBiomes.."."
-                            local maxHeight=0
+                            local maxHeight
                             if(number==1)then
                                 maxHeight=parameters.subsurfaceLayer.layerMinHeight
                             else
