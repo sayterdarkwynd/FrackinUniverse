@@ -26,7 +26,7 @@ function checkWeapons()
 	if weapons["both"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonus1Handle,setBonusMultiply(weaponBonus,2.5))
 	elseif weapons["either"] then
-		effect.setStatModifierGroup(effectHandlerList.weaponBonus1Handle,weaponBonus1)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonus1Handle,weaponBonus)
 	elseif weapons2["either"] and weapons2["twoHanded"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonus1Handle,setBonusMultiply(weaponBonus,2))
 	else
