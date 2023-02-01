@@ -1,0 +1,26 @@
+{
+  "projectileName" : "radioactivetrailweak",
+  "image" : "radioactivetrail.png",
+  "physics" : "gas",
+  "frameNumber" : 3,
+  "animationCycle" : 0.35,
+  "lightColor" : [160, 160, 0],
+  "power" : 0,
+  "speed" : 0,
+  "timeToLive" : 2.0,
+  "bounces" : -1,
+  "knockback" : 25,
+  "knockbackDirectional" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [ [2, 4],  [2, -4],  [-2, -4],  [-2, 4] ],
+  "piercing" : true,
+  "damageKind" : "radioactivebarrier",
+  "emitters" : ["barrierradioactive"],
+  "statusEffects" : [ "radiationburn" ],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/poison_barrier_break1.ogg" ]
+    }
+  ]
+}
