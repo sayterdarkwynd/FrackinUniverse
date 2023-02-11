@@ -20,13 +20,13 @@ function containerCallback()
     catalyst = root.assetJson("/objects/crafting/geneticstation/catalyst.config")
 
     local items = world.containerItems(entity.id())
-    
+
     if items[1]~=null and items[1].name == "sapling" then
         if items[2]~=null and catalyst[items[2].name] then
             local stemsample = items[1]
-            if checkBanlist(stemsample, stemsample) then
+            if checkBanlist(stemsample) then
                 local selectedCatalyst = catalyst[items[2].name]
-                if ((selectedCatalyst.count)<=(items[2].count)) then   
+                if ((selectedCatalyst.count)<=(items[2].count)) then
                     local itemConfig = root.itemConfig(stemsample)
                     local mergeBuffer={}
                     local stages=stemsample.parameters.stages or itemConfig.config.stages
@@ -46,7 +46,7 @@ function containerCallback()
                                 v.duration[2] = newDuration2
                                 maxDuration = maxDuration+newDuration2
                             end
-                        end   
+                        end
                     end
                     saplingLevel = stemsample.parameters.saplingLevel or 0
                     mergeBuffer.description = itemConfig.config.description.."\nModified sapling (^green;"..(saplingLevel+1).."^reset;)\n Time (^green;"..minDuration.."^reset;/^green;"..maxDuration.."^reset;)"
@@ -64,10 +64,10 @@ function containerCallback()
         end
     elseif items[1]~=null and seeds[items[1].name] then
         if items[2]~=null and catalyst[items[2].name] then
-            -- seed combination        
+            -- seed combination
             local seedsample = items[1]
             local selectedCatalyst = catalyst[items[2].name]
-            if ((selectedCatalyst.count)<=(items[2].count)) then                
+            if ((selectedCatalyst.count)<=(items[2].count)) then
                 local itemConfig = root.itemConfig(seedsample)
                 local mergeBuffer={}
                 local stages=seedsample.parameters.stages or itemConfig.config.stages
@@ -87,7 +87,7 @@ function containerCallback()
                             v.duration[2] = newDuration2
                             maxDuration = maxDuration+newDuration2
                         end
-                    end   
+                    end
                 end
                 seedLevel = seedsample.parameters.seedLevel or 0
                 mergeBuffer.description = itemConfig.config.description.."\nModified seed (^green;"..(seedLevel+1).."^reset;)\n Time (^green;"..minDuration.."^reset;/^green;"..maxDuration.."^reset;)"
@@ -110,7 +110,7 @@ function containerCallback()
     end
 end
 
-function checkBanlist(stemsample, stemsample)
+function checkBanlist(stemsample)
     local leaf = stemsample.parameters["foliageName"]
     local stem = stemsample.parameters["stemName"]
 
