@@ -1,0 +1,90 @@
+{
+  "objectName": "kukagene",
+  "rarity": "Legendary",
+  "objectType": "container",
+  "tooltipKind": "container",
+  "printable": false,
+  "description": "A top of the line Quantum Genetic Lab for efficiently breed bees, seeds and saplings.",
+  "shortdescription": "^cyan;Genetic Station^reset;",
+  "race": "generic",
+  "category": "^orange;Extraction Device^reset;",
+  "price": 1250,
+
+  "fu_stationTechLevel": 3,
+  "fu_mintick": 1,
+  "fu_timerMod": 0,
+
+  "lightColor": [31, 66, 102],
+  "lightPosition": [0, 2],
+
+  "flickerPeriod": 0.5,
+  "flickerMinIntensity": 0.95,
+  "flickerMaxIntensity": 1.0,
+  "flickerPeriodVariance": 0.0,
+  "flickerIntensityVariance": 0.0,
+
+  "inventoryIcon": "geneticstationicon.png",
+  "orientations": [
+    {
+      "imageLayers": [{
+        "image": "geneticstationlit.png:<color>.<frame>",
+        "fullbright": true
+      }, {
+        "image": "geneticstation.png:<color>.<frame>"
+      }],
+
+      "imagePosition": [0, 0],
+      "frames": 4,
+      "animationCycle": 0.75,
+
+      "direction": "left",
+      "flipImages": true,
+
+      "spaceScan": 0.1,
+      "anchors": [ "bottom"]
+    },
+    {
+      "imageLayers": [{
+        "image": "geneticstationlit.png:<color>.<frame>",
+        "fullbright": true
+      }, {
+        "image": "geneticstation.png:<color>.<frame>"
+      }],
+
+      "imagePosition": [0, 0],
+      "frames": 4,
+      "animationCycle": 0.75,
+
+      "direction": "right",
+
+      "spaceScan": 0.1,
+      "anchors": [ "bottom"]
+    }
+  ],
+
+  "animation": "geneticstation.animation",
+  "animationParts": {
+    "samplingarrayanim": "geneticstationlit.png"
+  },
+
+  "uiConfig": "/interface/xenolab/xenolab.config",
+  "statusEffects": [],
+
+  "scripts" : [ "clonelab.lua" ],
+  "scriptDelta": 12,
+  "recipeGroup": "xenostation",
+  "openSounds": [ "/sfx/objects/locker_open.ogg"],
+  "slotCount": 12,
+  "frameCooldown": 67,
+  "autoCloseCooldown": 3600,
+
+  "inputNodes": [
+    [1, 1]
+  ],
+  "outputNodes": [
+    [2, 1]
+  ],
+  "inputSlot": 3,
+  "bannedFoliage" : ["geodefoliage"],
+  "bannedStems" : []
+}
