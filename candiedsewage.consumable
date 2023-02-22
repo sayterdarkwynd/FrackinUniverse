@@ -1,0 +1,24 @@
+{
+  "itemName" : "candiedsewage",
+  "rarity" : "common",
+  "price" : 45,
+  "category" : "preparedFood",
+  "inventoryIcon" : "candiedsewage.png",
+  "description" : "A fancy Halloween treat, for those who don't need a costume to look like a monster. \n^blue;+^white;1 ^blue;Madness^reset; ^red;Poisoned^reset; ^gray;(^white;1m^gray;)\n^green;Type: Sugar^reset;",
+  "shortdescription" : "Candied Sewage",
+  "effects": [
+        ["sugar_food", "madnessgain",
+			{"effect": "weakpoison",
+				"duration": 60
+			}
+			
+        ]
+    ],
+  "foodValue" : 15,
+  "tooltipKind" : "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 0.35,
+  "blockingEffects" : [ "wellfed" ]
+}

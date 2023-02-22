@@ -1,0 +1,24 @@
+{
+  "itemName" : "candyrottingflesh",
+  "rarity" : "common",
+  "price" : 45,
+  "category" : "preparedFood",
+  "inventoryIcon" : "candyrottingflesh.png",
+  "description" : "Lovely caramelized rotten flesh, with a bitter aftertaste. Children's favourite. \n^blue;+^white;1 ^blue;Madness^reset; ^red;Poisoned^reset; ^gray;(^white;1m^gray;)^reset;\n^green;Type: Sugar^reset;",
+  "shortdescription" : "Candy Rotting Flesh",
+  "effects": [
+        ["sugar_food", "madnessgain",
+			{"effect": "weakpoison",
+				"duration": 60
+			}
+			
+        ]
+    ],
+  "foodValue" : 15,
+  "tooltipKind" : "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 0.20,
+  "blockingEffects" : [ "wellfed" ]
+}

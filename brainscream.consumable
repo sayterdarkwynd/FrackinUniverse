@@ -1,0 +1,25 @@
+{
+  "itemName" : "brainscream",
+  "rarity" : "uncommon",
+  "price" : 320,
+  "category" : "preparedFood",
+  "inventoryIcon" : "brainscream.png",
+  "description" : "Sweet delicacy that pretends to be smarter than you. \n^cyan;+^white;20% ^cyan;EP ^gray;(^white;120s^gray;)\n^blue;+^white;1 ^blue;Madness^reset; ^red;Type: Raw Meat^reset;",
+  "shortdescription" : "Brainscream",
+  "effects" : [ [
+    "madnessgain",
+	{ "effect" : "meat_raw" }, 
+  {
+      "effect" : "maxenergyscalingboostfood",
+      "duration" : 120
+	  "energyModifier": 1.20
+    }
+	]],
+  "foodValue" : 35,
+  "tooltipKind" : "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1,
+  "blockingEffects" : [ "wellfed" ]
+}

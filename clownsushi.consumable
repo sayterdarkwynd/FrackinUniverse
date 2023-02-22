@@ -1,0 +1,27 @@
+{
+  "itemName" : "clownsushi",
+  "rarity" : "uncommon",
+  "price" : 100,
+  "category" : "preparedFood",
+  "inventoryIcon" : "clownsushi.png",
+  "description" : "No real people were harmed making this, just clowns. \n^cyan;+^white;20% ^cyan;HP ^gray;(^white;45s^gray;) ^blue;+^white;1 ^blue;Madness^reset;\n^orange;Type: Cooked Meat^reset;",
+  "shortdescription" : "Clown Sushi",
+  "effects" : [ [
+    "madnessgain",
+	{
+        "effect" : "meat_cooked"
+    },
+  {
+      "effect" : "maxhealthscalingboostfood",
+      "duration" : 45,
+	    "healthModifier" : 1.20
+    }
+	]],
+  "foodValue" : 40,
+  "tooltipKind" : "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1,
+  "blockingEffects" : [ "wellfed" ]
+}
