@@ -6,7 +6,7 @@ weaponBonus={
 }
 
 armorBonus={
-	{stat = "erchiusimmunity", amount = 1},
+	{stat = "erchiusImmunity", amount = 1},
 	{stat = "slimestickImmunity", amount = 1},
 	{stat = "slimefrictionImmunity", amount = 1},
 	{stat = "slimeImmunity", amount = 1},
