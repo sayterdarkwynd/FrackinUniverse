@@ -5,7 +5,6 @@ function update(dt)
 		eType=world.entityType(entity.id())
 	elseif eType ~= "player" then
 		if not status.statPositive("shadowImmunity") then
-			animator.setAnimationState("aura", "on")
 			status.addEphemeralEffect("l6doomed", 6, entity.id())
 			status.addEphemeralEffect("blacktarslow", 6, entity.id())
 			status.addEphemeralEffect("insanity", 6, entity.id())
