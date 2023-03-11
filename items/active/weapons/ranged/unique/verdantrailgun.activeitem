@@ -5,13 +5,13 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "A poisonous sniping experience.
-^yellow;Inflicts poison^reset;",
+^yellow;Inflicts poison, ^cyan;Floran^reset;",
   "shortdescription" : "Verdant Rifle",
   "category" : "sniperRifle",
-  "level" : 4,
+  "level" : 3,
   "tooltipKind" : "gun2",
   "weaponType" : "Sniper Rifle",
-  "itemTags" : ["weapon","ranged","sniperrifle","bioweapon", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","sniperrifle","bioweapon", "upgradeableWeapon","floran"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -91,8 +91,11 @@
   "recoilSpeed" : 200,
   "recoilForce" : 300,
 
-  "altAbilityType" : "biogrenadelauncher",
-
-
+  "altAbilityType" : "corrosivegrenade",
+  "altAbility" : {
+    "baseDamage" : 8,
+    "projectileType" : "corrosivegrenadefloran",
+    "projectileParameters" : {"speed" : 42}    
+  },
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
