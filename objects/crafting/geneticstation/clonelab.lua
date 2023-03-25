@@ -15,16 +15,16 @@ function cloningPrep()
 end
 
 function containerCallback()
-    seeds = root.assetJson("/objects/crafting/geneticstation/seeds.config")
-    bees = root.assetJson("/objects/crafting/geneticstation/bees.config")
-    catalyst = root.assetJson("/objects/crafting/geneticstation/catalyst.config")
+    seeds = root.assetJson("/object/crafting/geneticstation/seeds.config")
+    bees = root.assetJson("/object/crafting/geneticstation/bees.config")
+    catalyst = root.assetJson("/object/crafting/geneticstation/catalyst.config")
 
     local items = world.containerItems(entity.id())
     
     if items[1]~=null and items[1].name == "sapling" then
         if items[2]~=null and catalyst[items[2].name] then
-            local stemsample = items[1]
             if checkBanlist(stemsample, stemsample) then
+                local stemsample = items[1]
                 local selectedCatalyst = catalyst[items[2].name]
                 if (selectedCatalyst.count<=items[2].count) then                
                     local itemConfig = root.itemConfig(stemsample)
@@ -32,24 +32,24 @@ function containerCallback()
                     local stages=itemConfig.config.stages
                     local description = itemConfig.config.description
                     local descArray = string_split(description,"\n")
-                    if(descArray[2])then
+                    if(descArray[2])
                         -- is modified sapling
                         local tempArray = string_split(descArray[2],"(")
                         local saplingLevel = string_split(tempArray[2],")")
-                    end    
+        `           end    
                     local minDuration=0
                     local maxDuration=0
                     local canConsume=false
                     for k,v in pairs(stages) do
-                        if (v.duration) and (itemConfig.config.stages[k].duration) then
+                        if (v.duration) and (itemConfig.config.stages.k.duration) then
                             local newDuration1 = v.duration[1]-selectedCatalyst.value
                             local newDuration2 = v.duration[2]-selectedCatalyst.value
-                            if(newDuration1>(itemConfig.config.stages[k].duration[1]/2))then
+                            if(newDuration1>(itemConfig.config.stages[k].duration[1]/2))
                                 v.duration[1] = newDuration1
                                 minDuration = minDuration+newDuration1
                                 canConsume=true
                             end
-                            if(newDuration2>(itemConfig.config.stages[k].duration[2]/2))then
+                            if(newDuration2>(itemConfig.config.stages[k].duration[2]/2))
                                 v.duration[2] = newDuration2
                                 maxDuration = maxDuration+newDuration2
                             end
@@ -57,8 +57,8 @@ function containerCallback()
                     end
                     mergeBuffer.description = descArray[1].."\n^green;Modified sapling ("..saplingLevel[1]..")^reset;\n Time ("..minDuration.."/"..maxDuration..")"
                     mergeBuffer.stages = stages
-                    if(canConsume)then
-if(world.containerConsumeAt(entity.id(),2,10))then
+                    if(canConsume)
+                        if(world.containerConsumeAt(entity.id(),2,10))then
                             stemsample.parameters=util.mergeTable(copy(stemsample.parameters),copy(mergeBuffer))
                             world.containerTakeAt(entity.id(),0)
                             world.containerPutItemsAt(entity.id(),stemsample,0)
@@ -78,24 +78,24 @@ if(world.containerConsumeAt(entity.id(),2,10))then
                 local stages=itemConfig.config.stages
                 local description = itemConfig.config.description
                 local descArray = string_split(description,"\n")
-                if(descArray[2])then
+                if(descArray[2])
                     -- is modified seed
                     local tempArray = string_split(descArray[2],"(")
                     local seedLevel = string_split(tempArray[2],")")
-                end    
+    `           end    
                 local minDuration=0
                 local maxDuration=0
                 local canConsume=false
                 for k,v in pairs(stages) do
-                    if (v.duration) and (itemConfig.config.stages[k]duration) then
+                    if (v.duration) and (itemConfig.config.stages.k.duration) then
                         local newDuration1 = v.duration[1]-selectedCatalyst.value
                         local newDuration2 = v.duration[2]-selectedCatalyst.value
-                        if(newDuration1>(itemConfig.config.stages[k].duration[1]/2))then
+                        if(newDuration1>(itemConfig.config.stages[k].duration[1]/2))
                             v.duration[1] = newDuration1
                             minDuration = minDuration+newDuration1
                             canConsume=true
                         end
-                        if(newDuration2>(itemConfig.config.stages[k].duration[2]/2))then
+                        if(newDuration2>(itemConfig.config.stages[k].duration[2]/2))
                             v.duration[2] = newDuration2
                             maxDuration = maxDuration+newDuration2
                         end
@@ -103,7 +103,7 @@ if(world.containerConsumeAt(entity.id(),2,10))then
                 end
                 mergeBuffer.description = descArray[1].."\n^green;Modified seed ("..seedLevel[1]..")^reset;\n Time ("..minDuration.."/"..maxDuration..")"
                 mergeBuffer.stages = stages
-                if(canConsume)then
+                if(canConsume)
                     if(world.containerConsumeAt(entity.id(),2,10))then
                         seedsample.parameters=util.mergeTable(copy(seedsample.parameters),copy(mergeBuffer))
                         world.containerTakeAt(entity.id(),0)
@@ -120,8 +120,8 @@ if(world.containerConsumeAt(entity.id(),2,10))then
     end
 end
 
-function checkBanlist(stemsample, stemsample)
-    local leaf = stemsample.parameters["foliageName"]
+function checkBanlist(leafsample, stemsample)
+    local leaf = leafsample.parameters["foliageName"]
     local stem = stemsample.parameters["stemName"]
 
     for _, bannedLeaf in ipairs(storage.bannedFoliage) do
