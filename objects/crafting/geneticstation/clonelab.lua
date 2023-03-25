@@ -55,11 +55,7 @@ function containerCallback()
                             end
                         end   
                     end
-                    if(saplingLevel)then
-                        mergeBuffer.description = descArray[1].."\n^green;Modified sapling ("..saplingLevel[1]..")^reset;\n Time ("..minDuration.."/"..maxDuration..")"
-                    else
-                        mergeBuffer.description = descArray[1].."\n^green;Modified sapling (1)^reset;\n Time ("..minDuration.."/"..maxDuration..")"
-                    end
+                    mergeBuffer.description = descArray[1].."\n^green;Modified sapling ("..saplingLevel[1]..")^reset;\n Time ("..minDuration.."/"..maxDuration..")"
                     mergeBuffer.stages = stages
                     if(canConsume)then
 if(world.containerConsumeAt(entity.id(),2,10))then
@@ -91,7 +87,7 @@ if(world.containerConsumeAt(entity.id(),2,10))then
                 local maxDuration=0
                 local canConsume=false
                 for k,v in pairs(stages) do
-                    if (v.duration) and (itemConfig.config.stages[k].duration) then
+                    if (v.duration) and (itemConfig.config.stages[k]duration) then
                         local newDuration1 = v.duration[1]-selectedCatalyst.value
                         local newDuration2 = v.duration[2]-selectedCatalyst.value
                         if(newDuration1>(itemConfig.config.stages[k].duration[1]/2))then
@@ -105,11 +101,7 @@ if(world.containerConsumeAt(entity.id(),2,10))then
                         end
                     end   
                 end
-                if(seedLevel)then
-                    mergeBuffer.description = descArray[1].."\n^green;Modified seed ("..seedLevel[1]..")^reset;\n Time ("..minDuration.."/"..maxDuration..")"
-                else
-                    mergeBuffer.description = descArray[1].."\n^green;Modified seed (1)^reset;\n Time ("..minDuration.."/"..maxDuration..")"
-                end
+                mergeBuffer.description = descArray[1].."\n^green;Modified seed ("..seedLevel[1]..")^reset;\n Time ("..minDuration.."/"..maxDuration..")"
                 mergeBuffer.stages = stages
                 if(canConsume)then
                     if(world.containerConsumeAt(entity.id(),2,10))then
