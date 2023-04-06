@@ -112,7 +112,7 @@ function update(dt)
 				storage.crafting = false
 				object.setOutputNodeLevel(0,storage.crafting)
 				storage.output = {}
-				storage.timer = self.speed
+				--storage.timer = self.speed
 			else
 				animator.setAnimationState("centrifuge", "idle")
 			end
