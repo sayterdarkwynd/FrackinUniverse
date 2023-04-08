@@ -1,39 +1,38 @@
 bugActiveStats = {
-{stat = "biomeheatImmunity", amount = 1},
-{stat = "breathProtection", amount = 1},
-{stat = "biomecoldImmunity", amount = 1},
-{stat = "biomeradiationImmunity", amount = 1},
-{stat = "poisonImmunity", amount = 1},
-{stat = "fireImmunity", amount = 1},
-{stat = "lavaImmunity", amount = 1},
-{stat = "biomeheatImmunity", amount = 1},
+	{stat = "biomeheatImmunity", amount = 1},
+	{stat = "breathProtection", amount = 1},
+	{stat = "biomecoldImmunity", amount = 1},
+	{stat = "biomeradiationImmunity", amount = 1},
+	{stat = "poisonImmunity", amount = 1},
+	{stat = "fireImmunity", amount = 1},
+	{stat = "lavaImmunity", amount = 1},
+	{stat = "biomeheatImmunity", amount = 1},
 }
 
 canReplant = {
-["flower"] = true,
-
+	["flower"] = true,
 }
 
 function init(args)
 	--sb.logInfo("I am harvester bug!")
 	self.dead = false
 	monster.setDamageOnTouch(false)
-    monster.setAggressive(false)
+	monster.setAggressive(false)
 	self.visible = false
 	silenceTime = 0
 	status.addPersistentEffects("bugActive", bugActiveStats)
 	monster.setDamageBar("None")
 	message.setHandler("keepAlive", function()
-      keepAlive()
-    end)
+		keepAlive()
+	end)
 	message.setHandler("takeItems", function(_,_, pos, radius, owner, name)
-	  --sb.logInfo(tostring(pos).."|"..tostring(radius).."|"..tostring(owner).."|"..tostring(name))
-      takeItems(pos, radius, owner, name)
-    end)
+		--sb.logInfo(tostring(pos).."|"..tostring(radius).."|"..tostring(owner).."|"..tostring(name))
+		takeItems(pos, radius, owner, name)
+	end)
 	message.setHandler("callScript", function(_,_, id, fName)
-	  --sb.logInfo(tostring(pos).."|"..tostring(radius).."|"..tostring(owner).."|"..tostring(name))
-      world.callScriptedEntity(id, fName)
-    end)
+		--sb.logInfo(tostring(pos).."|"..tostring(radius).."|"..tostring(owner).."|"..tostring(name))
+		world.callScriptedEntity(id, fName)
+	end)
 end
 
 function update(dt)
@@ -93,7 +92,7 @@ function kill()
 end
 
 function shouldDie()
-  return self.dead
+	return self.dead
 end
 
 function damage(args)
