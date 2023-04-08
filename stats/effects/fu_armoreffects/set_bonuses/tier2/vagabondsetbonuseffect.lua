@@ -17,7 +17,7 @@ function update(dt)
 		effect.expire()
 	else
 		checkWeapons()
-		mcontroller.controlModifiers({speed=1.1})
+		mcontroller.controlModifiers({speedModifier=(status.statPositive("spikeSphereActive") and 1.0) or 1.1})
 	end
 end
 
