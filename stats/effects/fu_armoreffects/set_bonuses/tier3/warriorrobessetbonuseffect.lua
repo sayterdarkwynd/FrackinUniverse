@@ -18,7 +18,7 @@ function update(dt)
 		effect.expire()
 	else
 		mcontroller.controlModifiers({
-			speedModifier = 1.08,
+			speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.08,
 			airJumpModifier = 1.08
 		})
 	end

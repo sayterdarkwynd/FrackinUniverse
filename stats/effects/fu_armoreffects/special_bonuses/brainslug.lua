@@ -21,7 +21,7 @@ function update(dt)
 		runSpeed = 17.0
 	})
 	mcontroller.controlModifiers({
-		speedModifier = 1.40
+		speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.40
 	})
 
 	self.activateTimer = self.activateTimer -1

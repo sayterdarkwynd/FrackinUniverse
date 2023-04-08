@@ -48,7 +48,7 @@ function update(dt)
 	else
 		status.addEphemeralEffect("convert_energy-health_10_1-1_inefficientover")
 		status.addEphemeralEffect("devaarmorpenalty")
-		mcontroller.controlModifiers({speedModifier = 1.15})
+		mcontroller.controlModifiers({speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.15})
 		checkWeapons()
 	end
 

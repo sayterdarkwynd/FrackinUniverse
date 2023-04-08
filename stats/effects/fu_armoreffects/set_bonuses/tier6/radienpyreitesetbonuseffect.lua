@@ -41,7 +41,7 @@ function update(dt)
 		checkWeapons()
 		checkPlanet()
 		mcontroller.controlModifiers({
-			speedModifier = 1.05
+			speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.05
 		})
 	end
 end

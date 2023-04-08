@@ -28,7 +28,7 @@ function update(dt)
 	end
 	mcontroller.controlModifiers({
 		airJumpModifier = 1.05,
-		speedModifier = 1.05
+		speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.05
 	})
 end
 
