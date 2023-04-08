@@ -68,7 +68,7 @@ function attemptActivation()
       activate()
     end
   elseif self.active then
-    status.addEphemeralEffect("waterimmunity",1)  --disable spike sphere insanity-speed in liquid
+    status.addEphemeralEffect("waterimmunity_spikespheres",1)  --disable spike sphere insanity-speed in liquid
     local pos = restorePosition()
     if pos then
       mcontroller.setPosition(pos)

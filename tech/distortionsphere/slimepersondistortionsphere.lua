@@ -43,7 +43,7 @@ function update(args)
 
   if self.active then
     --disable spike sphere insanity-speed in liquid
-    status.addEphemeralEffect("waterimmunity",1)
+    status.addEphemeralEffect("waterimmunity_spikespheres",1)
     mcontroller.controlParameters(self.transformedMovementParameters)
     status.setResourcePercentage("energyRegenBlock", 1.0)
 

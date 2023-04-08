@@ -51,7 +51,7 @@ function update(args)
   self.damageListener:update()
 
   if self.active then
-    status.addEphemeralEffect("waterimmunity",1)  --disable spike sphere insanity-speed in liquid
+    status.addEphemeralEffect("waterimmunity_spikespheres",1)  --disable spike sphere insanity-speed in liquid
       if self.bombTimer > 0 then
         self.bombTimer = math.max(0, self.bombTimer - args.dt)
       end
