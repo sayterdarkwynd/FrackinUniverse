@@ -33,9 +33,9 @@ function update(dt)
 		local revPcnt = 1 - (currPcnt / fullPcnt)
 		local pcntOfSpeedBonus = revPcnt * self.maxSpeedBonus
 
-		mcontroller.controlModifiers({ speedModifier = 1 + pcntOfSpeedBonus })
+		mcontroller.controlModifiers({ speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or (1 + pcntOfSpeedBonus) })
 	else
-		mcontroller.controlModifiers({ speedModifier = 1 + self.maxSpeedBonus })
+		mcontroller.controlModifiers({ speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or (1 + self.maxSpeedBonus) })
 	end
 
 	baseUpdate(dt)

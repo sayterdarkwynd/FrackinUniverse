@@ -215,7 +215,7 @@ function activate()
   self.active = true
   status.setPersistentEffects("ballprotection", {{stat = "protection", amount = 20 * (1+ status.stat("defensetechBonus")) }})
 
-  status.addEphemeralEffect("waterimmunity",1)  --disable spike sphere insanity-speed in liquid
+  status.addEphemeralEffect("waterimmunity_spikespheres",1)  --disable spike sphere insanity-speed in liquid
 end
 
 function deactivate()

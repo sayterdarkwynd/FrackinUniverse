@@ -38,7 +38,7 @@ function update(dt)
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle2,armorBonus2)
 
 		mcontroller.controlModifiers({
-			speedModifier = 1.05
+			speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.05
 		})
 	else
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle2,{})

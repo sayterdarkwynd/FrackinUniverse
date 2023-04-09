@@ -46,7 +46,7 @@ function update(args)
   self.damageListener:update()
 
   if self.active then
-    status.addEphemeralEffect("waterimmunity",1)  --disable spike sphere insanity-speed in liquid
+    status.addEphemeralEffect("waterimmunity_spikespheres",1)  --disable spike sphere insanity-speed in liquid
     local groundDirection
     if self.damageDisableTimer == 0 then
       groundDirection = findGroundDirection()
