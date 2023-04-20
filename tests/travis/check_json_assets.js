@@ -199,6 +199,13 @@ class JsonAssetsTest {
 					this.placeableMaterials.add( data.materialId );
 				}
 
+				// Check if any of the racial scan descriptions are exactly the same as default scan text.
+				for ( let [ key, value ] of Object.entries( data ) ) {
+					if ( key.endsWith( 'Description' ) && value === data.description ) {
+						this.fail( '\n', filename, 'Unnecessary key: ' + key + ': value is exactly the same as default scan text.' );
+					}
+				}
+
 				// No more checks for items.
 				continue;
 			}
