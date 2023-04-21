@@ -50,6 +50,7 @@ function update(dt)
 		world.containerPutItemsAt(entity.id(),{name=wellSlots[1].name,count=(10 * (wellsDrawing) * (bonusHappiness/10))*(1+offlineTicks)},0)
 		offlineTicks=0
 		rentTimer = 0
+		object.setConfigParameter("leftTime", os.time() )
 	end
 end
 
