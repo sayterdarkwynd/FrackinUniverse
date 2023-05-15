@@ -1,191 +1,218 @@
 {
-  "type" : "fucorruptflylarge",
-  "shortdescription" : "Large Corrupt Fly",
-  "description" : "He is the Lord of the Flies.",
+	"type": "fucorruptflylarge",
+	"shortdescription": "Large Corrupt Fly",
+	"description": "He is the Lord of the Flies.",
 
-  "categories" : [ "fucorruptfly" ],
-  "parts" : [ "body" ],
+	"categories": ["fucorruptfly"],
+	"parts": ["body"],
 
-  "animation" : "fucorruptfly.animation",
-  "reversed" : true,
+	"animation": "fucorruptfly.animation",
+	"reversed": true,
 
-  "dropPools" : [ { "default" : "corruptflyLoot", "bow" : "huntingchitin" } ],
+	"dropPools": [{
+		"default": "corruptflyLoot",
+		"bow": "huntingchitin"
+	}],
 
-  "baseParameters" : {
-    "scripts" : [
-      "/monsters/monster.lua"
-    ],
+	"baseParameters": {
+		"scripts": [
+			"/monsters/monster.lua"
+		],
 
-    "behavior" : "monster",
+		"behavior": "monster",
 
-    "behaviorConfig" : {
-      "damageOnTouch" : true,
+		"behaviorConfig": {
+			"damageOnTouch": true,
 
-      "targetQueryRange" : 20,
-      "targetOnDamage" : true,
-      "keepTargetInSight" : true,
-      "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 5.0,
+			"targetQueryRange": 20,
+			"targetOnDamage": true,
+			"keepTargetInSight": true,
+			"keepTargetInRange": 50,
+			"targetOutOfSightTime": 5.0,
 
-      "foundTargetActions" : [ ],
+			"foundTargetActions": [],
 
-      "fleeActions" : [ ],
+			"fleeActions": [],
 
-      "hostileActions" : [
-        {"name":"approach-swarm",
-          "parameters":{ "usePathfinding": true }
-        }
-      ],
+			"hostileActions": [{
+				"name": "approach-swarm",
+				"parameters": {
+					"usePathfinding": true
+				}
+			}],
 
-      "periodicActions" : [ ],
+			"periodicActions": [],
 
-      "approachActions" : [
-        {
-          "name" : "approach-fly"
-        }
-      ],
+			"approachActions": [{
+				"name": "approach-fly"
+			}],
 
-      "followActions" : [
-        {
-          "name" : "approach-teleport",
-          "parameters" : {
-          }
-        },
-        {"name":"approach-fly", "parameters":{"usePathfinding":true}}
-      ],
+			"followActions": [{
+					"name": "approach-teleport",
+					"parameters": {}
+				},
+				{
+					"name": "approach-fly",
+					"parameters": {
+						"usePathfinding": true
+					}
+				}
+			],
 
-      "wanderActions" : [
-	{
-	"name":"wander-fly",
-	"cooldown":[5,20],
-	"parameters":{
-		"wanderTime":[10,40],
-		"groundDistance":20,
-		"ceilingDistance":10,
-		"xVelocity":8,
-		"yVelocity":12
-	        }
-	},
+			"wanderActions": [{
+					"name": "wander-fly",
+					"cooldown": [5, 20],
+					"parameters": {
+						"wanderTime": [10, 40],
+						"groundDistance": 20,
+						"ceilingDistance": 10,
+						"xVelocity": 8,
+						"yVelocity": 12
+					}
+				},
 
-	{
-	"name":"land-fly",
-	"parameters":{
-	  "flySpeed":8,
-	  "flyControlForce":25,
-	  "landCheckDistance":40,
-	  "idleTime":40
-	  }
+				{
+					"name": "land-fly",
+					"parameters": {
+						"flySpeed": 8,
+						"flyControlForce": 25,
+						"landCheckDistance": 40,
+						"idleTime": 40
+					}
+				}
+			],
+
+			"concurrentActions": [],
+
+			"concurrentHostileActions": [{
+				"name": "action-spawncompanions",
+				"parameters": {
+					"spawnCooldown": 0.2,
+					"monsterType": "fucorruptfly",
+					"maxCount": 5
+				}
+			}]
+		},
+
+		"metaBoundBox": [-1.625, -1.25, 1.875, 1.625],
+		"scale": 1.0,
+
+		"movementSettings": {
+			"gravityEnabled": false,
+			"collisionPoly": [
+				[-1.625, -1.25],
+				[1.875, -1.25],
+				[1.875, 1.625],
+				[-1.0, 1.625]
+			],
+
+			"mass": 0.8,
+			"flySpeed": 10,
+			"airFriction": 0.25,
+			"airForce": 15.0
+		},
+
+		"bodyMaterialKind": "organic",
+
+		"knockoutTime": 0.1,
+		"knockoutEffect": "blink",
+		"deathParticles": "deathPoof",
+
+		"touchDamage": {
+			"poly": [
+				[-1.625, -1.25],
+				[1.875, -1.25],
+				[1.875, 1.625],
+				[-1.0, 1.625]
+			],
+			"damage": 15,
+
+			"teamType": "enemy",
+			"damageSourceKind": "slash",
+			"knockback": 20,
+			"statusEffects": ["darkwaterpoison"]
+		},
+
+		"statusSettings": {
+			"statusProperties": {
+				"targetMaterialKind": "organic"
+			},
+
+			"appliesEnvironmentStatusEffects": false,
+			"appliesWeatherStatusEffects": true,
+			"minimumLiquidStatusEffectPercentage": 0.1,
+
+			"primaryScriptSources": [
+				"/stats/monster_primary.lua"
+			],
+			"primaryScriptDelta": 5,
+
+			"stats": {
+				"knockbackStunTime": {
+					"baseValue": 0.25
+				},
+				"knockbackThreshold": {
+					"baseValue": 9
+				},
+				"maxHealth": {
+					"baseValue": 85
+				},
+				"protection": {
+					"baseValue": 0.0
+				},
+				"healthRegen": {
+					"baseValue": 0.0
+				},
+				"poisonStatusImmunity": {
+					"baseValue": 1.0
+				},
+				"powerMultiplier": {
+					"baseValue": 1.0
+				},
+				"shadowResistance": {
+					"baseValue": -0.2
+				},
+				"poisonResistance": {
+					"baseValue": 1
+				},
+				"cosmicResistance": {
+					"baseValue": -0.2
+				},
+				"radioactiveResistance": {
+					"baseValue": -0.2
+				},
+				"iceResistance": {
+					"baseValue": 0.6
+				},
+				"fireResistance": {
+					"baseValue": 0.2
+				},
+				"physicalResistance": {
+					"baseValue": 0.2
+				},
+				"electricResistance": {
+					"baseValue": 0.9
+				}
+			},
+
+			"resources": {
+				"stunned": {
+					"deltaValue": -1.0,
+					"initialValue": 0.0
+				},
+				"health": {
+					"maxStat": "maxHealth",
+					"deltaStat": "healthRegen",
+					"defaultPercentage": 100
+				}
+			}
+		},
+
+		"mouthOffset": [0, 0],
+		"feetOffset": [0, -8],
+		"capturable": true,
+		"captureHealthFraction": 0.5,
+		"nametagColor": [64, 200, 255] //,
+		//"captureCollectables" : { "fu_monster" : "fucorruptflylarge" }
 	}
-      ],
-
-      "concurrentActions" : [ ],
-
-      "concurrentHostileActions" : [
-	{
-	"name":"action-spawncompanions",
-	"parameters":{
-	  "spawnCooldown":0.2,
-	  "monsterType":"fucorruptfly",
-	  "maxCount":5,
-	  "monsterParameters":{"level":[3]}
-	  }
-	}
-      ]
-    },
-
-    "metaBoundBox" : [-1.625, -1.25, 1.875, 1.625],
-    "scale" : 1.0,
-
-    "movementSettings" : {
-      "gravityEnabled" : false,
-      "collisionPoly" : [ [-1.625, -1.25], [1.875, -1.25], [1.875, 1.625], [-1.0, 1.625] ],
-
-      "mass" : 0.8,
-      "flySpeed" : 10,
-      "airFriction" : 0.25,
-      "airForce" : 15.0
-    },
-
-    "bodyMaterialKind" : "organic",
-
-    "knockoutTime" : 0.1,
-    "knockoutEffect" : "blink",
-    "deathParticles" : "deathPoof",
-
-    "touchDamage" : {
-      "poly" : [ [-1.625, -1.25], [1.875, -1.25], [1.875, 1.625], [-1.0, 1.625] ],
-      "damage" : 15,
-
-      "teamType" : "enemy",
-      "damageSourceKind" : "slash",
-      "knockback" : 20,
-      "statusEffects" : [ "darkwaterpoison" ]
-    },
-
-    "statusSettings" : {
-      "statusProperties" : {
-        "targetMaterialKind" : "organic"
-      },
-
-      "appliesEnvironmentStatusEffects" : false,
-      "appliesWeatherStatusEffects" : true,
-      "minimumLiquidStatusEffectPercentage" : 0.1,
-
-      "primaryScriptSources" : [
-        "/stats/monster_primary.lua"
-      ],
-      "primaryScriptDelta" : 5,
-
-      "stats" : {
-        "knockbackStunTime" : {
-          "baseValue" : 0.25
-        },
-        "knockbackThreshold" : {
-          "baseValue" : 9
-        },
-        "maxHealth" : {
-          "baseValue" : 85
-        },
-        "protection" : {
-          "baseValue" : 0.0
-        },
-        "healthRegen" : {
-          "baseValue" : 0.0
-        },
-        "poisonStatusImmunity" : {
-          "baseValue" : 1.0
-        },
-        "powerMultiplier" : {
-          "baseValue" : 1.0
-        },
-        "shadowResistance" : { "baseValue" : -0.2 },
-        "poisonResistance" : { "baseValue" : 1 },
-        "cosmicResistance" : { "baseValue" : -0.2 },
-        "radioactiveResistance" : { "baseValue" : -0.2 },
-        "iceResistance" : { "baseValue" : 0.6 },
-        "fireResistance" : { "baseValue" : 0.2 },
-        "physicalResistance" : { "baseValue" : 0.2 },
-        "electricResistance" : { "baseValue" : 0.9 }
-      },
-
-      "resources" : {
-        "stunned" : {
-          "deltaValue" : -1.0,
-          "initialValue" : 0.0
-        },
-        "health" : {
-          "maxStat" : "maxHealth",
-          "deltaStat" : "healthRegen",
-          "defaultPercentage" : 100
-        }
-      }
-    },
-
-    "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -8],
-    "capturable" : true,
-    "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255]//,
-    //"captureCollectables" : { "fu_monster" : "fucorruptflylarge" }
-  }
 }
