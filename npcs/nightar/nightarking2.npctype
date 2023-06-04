@@ -1,0 +1,113 @@
+{
+  "type" : "nightarking2",
+  "baseType" : "hostile",
+
+  "identity" : {
+    "name" : "Gin_Yorukishi_III",
+    "gender" : "male",
+    "race" : "nightar"
+  },
+
+  "dropPools" : [ "fuGenericQuestLootMid" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+
+      "attack" : {
+        "default" : {
+          "default" : [
+            "I am Heptarch. I alone defeated one-thousand foes and was made glorious through victory. Kneel."
+          ]
+        }
+      },
+      "reattack" : {
+        "default" : {
+          "default" : [
+            "There will be no honor in your death.",
+	    "May She guide my blade."
+          ]
+        }
+      },
+      "killedTarget" : {
+        "default" : {
+          "default" : [
+            "Crushed like the insect you are."
+          ]
+        }
+      },
+      "lostTarget" : {
+        "default" : {
+          "default" : [
+            "It is pointless to hide!"
+          ]
+        }
+      },
+      "outOfSight" : {
+        "default" : {
+          "default" : [
+            "You really believe the darkness to be your ally, challenger...?"
+          ]
+        }
+      },
+      "cheerOn" : {
+        "default" : {
+          "default" : [
+            "Onward!"
+          ]
+        }
+      },
+      "cantReach" : {
+        "default" : {
+          "default" : [
+            "You will not escape, wretch."
+          ]
+        }
+      }
+    },
+    "chatSounds" : {
+      "default" : {
+        "male" : [
+          "/sfx/humanoid/human_chatter_male1.ogg",
+          "/sfx/humanoid/human_chatter_male2.ogg",
+          "/sfx/humanoid/human_chatter_male3.ogg"
+        ]
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "funightarkinghead", "parameters" : { "colorIndex" : 1 } } ],
+            "chest" : [ { "name" : "geistchest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "geistpants", "parameters" : { "colorIndex" : 1 } } ],
+	    "back" : [ { "name" : "flexcape", "parameters" : { "colorIndex" : 1 } } ],
+            "primary" : [ "nightarshortsword" ],
+            "alt" : [ "nightardagger" ],
+            "sheathedprimary" : [ "nightarshortsword" ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 400.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 1.6
+      },
+      "protection" : {
+        "baseValue" : 1.15
+      },
+      "fireStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+      "lavaImmunity" : {
+        "baseValue" : 1.0
+      }
+    }
+  }
+}

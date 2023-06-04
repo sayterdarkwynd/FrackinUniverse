@@ -6,17 +6,18 @@
   "rarity" : "uncommon",
   "description" : "A weapon from the kingdom of Fife.",
   "shortdescription" : "Energy Blade",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword"],
-
+  "itemTags" : ["weapon","melee","broadsword","energy", "upgradeableWeapon"],
+//  "learnBlueprintsOnPickup" : [ "energyblade2" ],
   "inventoryIcon" : "energyblade.png",
-
-  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  //"collectablesOnPickup" : { "fu_weaponbroadsword" : "energyblade" },
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "energyblade.png"
+    "blade" : "energyblade.png",
+    "bladefullbright" : "energybladefullbright.png"
   },
   "animationCustom" : { },
 
@@ -27,10 +28,12 @@
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.73,
-    "baseDps" : 10.9
+    "baseDps" : 10.9,
+    "damageSourceKind" : "electric"
   },
 
   "altAbilityType" : "flipslash",
-
+  "critChance" : 3,
+  "critBonus" : 7,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

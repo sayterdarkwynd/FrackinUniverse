@@ -1,0 +1,90 @@
+{
+  "itemName" : "telebriumbow",
+  "level" : 2,
+  "price" : 100,
+  "inventoryIcon" : "telebriumbowicon.png",
+  "maxStack" : 1,
+  "rarity" : "common",
+  "tooltipKind" : "bow2",
+  "weaponType" : "Bow",
+  "description" : "Poison-tipped arrows promise pain.",
+  "shortdescription" : "Telebrium Bow",
+  "category" : "bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow","upgradeableWeapon","telebrium"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+  "baseOffset" : [1.0, 1.0],
+  "animation" : "/items/active/weapons/bow/bowglow.animation",
+  "animationParts" : {
+    "bow" : "telebriumbow.png",
+    "bowFullbright" : "telebriumbowfullbright.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "bow" : { "properties" : {"offset" : [0, 0]}},
+        "bowFullbright" : { "properties" : { "offset" : [0, 0]}}
+      }
+    },
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    },
+    "lights" : {
+      "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [22, 76, 22],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "poison",
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : {
+    "drawTime" : 0.86,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"energyPerShot" : 30,
+	"holdEnergyUsage" : 4,
+	"airborneBonus" : 1.10,
+    "projectileType" : "telebriumarrow",
+    "powerProjectileType" : "telebriumchargedarrow",
+    "projectileParameters" : {
+      "power" : 7.8,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 8.85,
+      "piercing" : false
+    }
+  },
+
+  "altAbilityType" : "rngbows_enhancedbowshot",
+  "altAbility" : {
+    "drawTime" : 1.1,
+    "name" : "Toxin Burst",
+    "projectileType" : "telebriumarrow",
+    "powerProjectileType" : "poisonblast",
+    "projectileParameters" : {
+      "power" : 9,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 6,
+      "piercing" : true
+    }
+  },
+  "critChance" : 3,
+  "critBonus" : 20,
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
+}

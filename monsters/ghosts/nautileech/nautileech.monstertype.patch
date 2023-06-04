@@ -1,0 +1,95 @@
+[
+  {
+    "op": "add",
+    "path": "/dropPools/0/firebow",
+    "value": "nautileechHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/icebow",
+    "value": "nautileechHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/poisonbow",
+    "value": "nautileechHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/electricbow",
+    "value": "nautileechHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/radioactivebow",
+    "value": "nautileechHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/cosmicbow",
+    "value": "nautileechHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/shadowbow",
+    "value": "nautileechHunting"
+  },
+  {
+    "op": "add",
+    "path": "/shortdescription",
+    "value": "Nautileech"
+  },
+  {
+    "op": "add",
+    "path": "/description",
+    "value": "They are a common pest to ocean divers, due to their persistence to feed."
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/colors",
+    "value": "pandorasboxvibrant"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 95
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/fireResistance/baseValue",
+    "value": 0
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/iceResistance/baseValue",
+    "value": -0.5
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/electricResistance/baseValue",
+    "value": -0.5
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/poisonResistance/baseValue",
+    "value": 0.95
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/hostileActions/-",
+    "value": {
+          "name" : "action-projectile",
+          "cooldown" : 1.5,
+          "parameters" : {
+            "projectileCount" : 8,
+            "inaccuracy" : 3.60,
+            "projectileInterval" : 0,
+            "projectileType" : "electricplasma",
+            "projectileParameters" : { "speed" : 32, "timeToLive" : 1 },
+            "power" : 3,
+            "aimDirection" : [0, -0.1],
+            "fireOffset" : [0, 0]      
+      }
+    }
+  } 
+]

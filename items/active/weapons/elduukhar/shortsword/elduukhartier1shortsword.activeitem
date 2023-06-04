@@ -1,0 +1,41 @@
+{
+  "itemName" : "elduukhartier1shortsword",
+  "price" : 180,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "This sword is the a part of the apprentice gemcrafter's final test.",
+  "shortdescription" : "Oceanite Shortsword",
+  "tooltipKind" : "sword2",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword","crystal", "upgradeableWeapon"],
+
+  "inventoryIcon" : "elduukhartier1shortsword.png",
+
+  "animation" : "/items/active/weapons/melee/shortsword/comboshortsword.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "elduukhartier1shortsword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.625,
+    "baseDps" : 7.5,
+    "damageConfig" : {
+      "damageSourceKind" : "ice"
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 4,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

@@ -1,0 +1,58 @@
+{
+  "itemName" : "silverlongsword",
+  "price" : 350,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Silver is capable of harming even non-corporeal beasts.",
+  "shortdescription" : "Silver Longsword",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee", "longsword", "upgradeableWeapon","silver"],
+
+  "inventoryIcon" : "silverlongsword.png",
+
+  "animation" : "combolongsword.animation",
+
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "silverlongsword.png"
+  },
+  "animationCustom" : { //override default swoosh and particles cause cuteness.
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  },
+    "particleEmitters" : {
+      "shadowswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "emissionRate" : 40,
+        "particles" : [
+          { "particle" : "shadowswoosh1"},
+          { "particle" : "shadowswoosh2"},
+          { "particle" : "shadowswoosh3"}
+        ]
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "silverweapon",
+  "damageKindImage" : "/interface/elements/silverweapon.png",
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.9,
+    "baseDps" : 6.31,
+    "damageKindImage" : "/interface/elements/silverweapon.png",
+    "damageConfig" : { "damageSourceKind" : "silverweapon" }
+  },
+
+  "critChance" : 1.25,
+  "critBonus" : 10,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

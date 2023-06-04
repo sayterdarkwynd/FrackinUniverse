@@ -1,22 +1,24 @@
 {
-  "itemName" : "speedhoneyjar",
-  "rarity" : "Common",
-  "category" : "food",
-  "price" : 200,
-  "inventoryIcon" : "speedhoneyjar.png",
-  "description" : "A contraband jar of honey.",
-  "shortdescription" : "Speed Honey Jar",
- 
-  "effects" : [ [
-    {
-        "effect" : "honeyheal4",
-        "duration" :180  },
-    {
-        "effect" : "fedhoney",
-        "duration" : 180
-    }
-  ] ],
-  "blockingEffects" : [
-     "fedhoney"
-  ]
+  "itemName": "speedhoneyjar",
+  "rarity": "Common",
+  "category": "food",
+  "price": 50,
+  "inventoryIcon": "speedhoneyjar.png",
+  "description": "A contraband jar of honey.\n^cyan;+^white;25% ^cyan;Run ^gray;(^white;3m^gray;)^reset;",
+  "shortdescription": "Speed Honey Jar",
+
+  "tooltipKind": "food",
+  "effects": [
+    [
+      {
+        "effect": "runboost25",
+        "duration": 180
+      },
+      {
+        "effect": "fedhoney",
+        "duration": 180
+      }
+    ]
+  ],
+  "blockingEffects": ["fedhoney"]
 }

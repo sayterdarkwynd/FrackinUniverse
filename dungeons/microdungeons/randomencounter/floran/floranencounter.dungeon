@@ -1,0 +1,2133 @@
+{
+  "metadata" : {
+    "name" : "floranencounter",
+    "species" : "floran",
+    "rules" : [
+    ],
+    "anchor" : [ "floranhut1", "nomads", "outhouse1", "outhouse2", "outhouse3", "florancaged1", "florancaged2", "shroomcamp1", "shroomcamp2", "shroomcamp3", "pinfriend", "pinfriend2", "shroomcamp4", "shroomcamp5", "shroomcamp6", "shroomcamp7", "pincave", "shroompatch1", "giantpod" ],
+    "maxRadius" : 2000,
+    "maxParts" : 30
+  },
+  "tiles" : [
+
+    {
+      "value" : [150, 255, 100, 255],
+      "comment" : "shroom merchant",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "floran",
+            "typeName" : "shroommerchant",
+            // "seed" : "stable",
+            "parameters" : {
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [150, 250, 0, 255],
+      "comment" : "shroom npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "floran",
+            "typeName" : "shroomguard",
+            // "seed" : "stable",
+            "parameters" : {
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [0, 175, 0, 255],
+      "comment" : "passive shroom npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "smallshroom",
+            "seed" : "stable",
+            "parameters" : {
+              "aggressive" : false
+            }
+          }
+        ] ]
+    },
+
+    // NPC MONSTER SPAWN BRUSHES //
+
+    {
+      "value" : [0, 222, 0, 255],
+      "comment" : "pinfriend",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "pinfriend",
+            "seed" : "stable",
+            "parameters" : {
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [255, 0, 220, 255],
+      "comment" : "magic pinkppp, a no-op value"
+    },
+    {
+      "value" : [0, 0, 0, 255],
+      "rules" : [ [ "worldGenMustContainAirBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ] ]
+    },
+    {
+      "value" : [255, 255, 255, 255],
+      "rules" : [ [ "worldGenMustContainSolidBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface" ] ]
+    },
+    {
+      "value" : [0, 38, 255, 255],
+      "comment" : "bright blue, entrance coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [0, 255, 186, 255],
+      "comment" : "bright aqua, alternate coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [168, 255, 0, 255],
+      "comment" : "bright green, alternate coupler #2",
+      "connector" : true
+    },
+
+    {
+      "value" : [255, 168, 0, 255],
+      "comment" : "bright orange, alternate coupler #3",
+      "connector" : true
+    },
+
+    {
+      "value" : [32, 32, 32, 255],
+      "comment" : "Empty hole",
+      "brush" : [ [ "clear" ] ]
+    },
+
+    {
+      "value" : [48, 48, 48, 255],
+      "comment" : "Empty hole overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ] ]
+    },
+
+    {
+      "value" : [128, 128, 128, 255],
+      "comment" : "Biome tile brush",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [100, 100, 100, 255],
+      "comment" : "Biome tile brush non-overwritable",
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [200, 200, 200, 255],
+      "comment" : "Biome tile background brush",
+      "brush" : [ [ "clear" ], [ "surfacebackground" ] ]
+    },
+
+    {
+      "value" : [54, 63, 105, 255],
+      "comment" : "water pool foreground",
+      "brush" : [ [ "clear" ], [ "liquid", "water" ] ]
+    },
+
+    {
+      "value" : [255, 96, 0, 255],
+      "comment" : "lava pool foreground",
+      "brush" : [ [ "clear" ], [ "liquid", "lava" ] ]
+    },
+
+    {
+      "value" : [255, 0, 0, 255],
+      "comment" : "wire #1 Red",
+      "brush" : [ [ "wire", { "group" : "group1", "local" : true } ] ]
+    },
+
+    {
+      "value" : [0, 255, 0, 255],
+      "comment" : "wire #2 Green",
+      "brush" : [ [ "wire", { "group" : "group2", "local" : true } ] ]
+    },
+
+    {
+      "value" : [0, 0, 255, 255],
+      "comment" : "wire #3 Blue",
+      "brush" : [ [ "wire", { "group" : "group3", "local" : true } ] ]
+    },
+
+    {
+      "value" : [166, 65, 65, 255],
+      "comment" : "background bamboo",
+      "brush" : [ [ "clear" ], [ "back", "bamboo" ] ]
+    },
+
+    {
+      "value" : [217, 85, 85, 255],
+      "comment" : "foreground bamboo",
+      "brush" : [ [ "clear" ], [ "back", "bamboo" ], [ "front", "bamboo" ] ]
+    },
+
+    {
+      "value" : [166, 140, 65, 255],
+      "comment" : "background thatch",
+      "brush" : [ [ "clear" ], [ "back", "thatch" ] ]
+    },
+
+    {
+      "value" : [217, 184, 85, 255],
+      "comment" : "foreground thatch",
+      "brush" : [ [ "clear" ], [ "back", "thatch" ], [ "front", "thatch" ] ]
+    },
+
+    {
+      "value" : [98, 166, 65, 255],
+      "comment" : "background fullwood2",
+      "brush" : [ [ "clear" ], [ "back", "fullwood2" ] ]
+    },
+
+    {
+      "value" : [129, 217, 85, 255],
+      "comment" : "foreground fullwood2",
+      "brush" : [ [ "clear" ], [ "back", "fullwood2" ], [ "front", "fullwood2" ] ]
+    },
+
+    {
+      "value" : [65, 166, 166, 255],
+      "comment" : "background cobblestone",
+      "brush" : [ [ "clear" ], [ "back", "cobblestone" ] ]
+    },
+    {
+      "value" : [85, 217, 217, 255],
+      "comment" : "foreground cobblestone",
+      "brush" : [ [ "clear" ], [ "back", "cobblestone" ], [ "front", "cobblestone" ] ]
+    },
+
+    {
+      "value" : [65, 75, 166, 255],
+      "comment" : "background fullwood1",
+      "brush" : [ [ "clear" ], [ "back", "fullwood1" ] ]
+    },
+
+    {
+      "value" : [85, 98, 217, 255],
+      "comment" : "foreground fullwood1",
+      "brush" : [ [ "clear" ], [ "back", "fullwood1" ], [ "front", "fullwood1" ] ]
+    },
+
+    {
+      "value" : [117, 65, 166, 255],
+      "comment" : "background crosshatch",
+      "brush" : [ [ "clear" ], [ "back", "crosshatch" ] ]
+    },
+
+    {
+      "value" : [153, 85, 217, 255],
+      "comment" : "foreground crosshatch",
+      "brush" : [ [ "clear" ], [ "front", "crosshatch" ] ]
+    },
+
+    {
+      "value" : [166, 102, 65, 255],
+      "comment" : "background wicker",
+      "brush" : [ [ "clear" ], [ "back", "wicker" ] ]
+    },
+
+    {
+      "value" : [140, 86, 55, 255],
+      "comment" : "background wicker overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "wicker" ] ]
+    },
+
+    {
+      "value" : [217, 133, 85, 255],
+      "comment" : "foreground wicker",
+      "brush" : [ [ "clear" ], [ "back", "wicker" ], [ "front", "wicker" ] ]
+    },
+
+    {
+      "value" : [191, 117, 75, 255],
+      "comment" : "foreground wicker overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "wicker" ], [ "front", "wicker" ] ]
+    },
+
+    {
+      "value" : [146, 166, 65, 255],
+      "comment" : "background plantblock",
+      "brush" : [ [ "clear" ], [ "back", "plantblock" ] ]
+    },
+
+    {
+      "value" : [123, 140, 55, 255],
+      "comment" : "background plantblock overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "plantblock" ] ]
+    },
+
+    {
+      "value" : [190, 217, 85, 255],
+      "comment" : "foreground plantblock",
+      "brush" : [ [ "clear" ], [ "back", "plantblock" ], [ "front", "plantblock" ] ]
+    },
+
+    {
+      "value" : [168, 191, 75, 255],
+      "comment" : "foreground plantblock overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "plantblock" ], [ "front", "plantblock" ] ]
+    },
+
+    {
+      "value" : [65, 166, 98, 255],
+      "comment" : "background plantmatter",
+      "brush" : [ [ "clear" ], [ "back", "plantmatter" ] ]
+    },
+
+    {
+      "value" : [55, 140, 83, 255],
+      "comment" : "background plantmatter overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "plantmatter" ] ]
+    },
+
+    {
+      "value" : [85, 217, 129, 255],
+      "comment" : "foreground plantmatter",
+      "brush" : [ [ "clear" ], [ "back", "plantmatter" ], [ "front", "plantmatter" ] ]
+    },
+
+    {
+      "value" : [75, 191, 113, 255],
+      "comment" : "foreground plantmatter overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "plantmatter" ], [ "front", "plantmatter" ] ]
+    },
+
+    {
+      "value" : [65, 124, 166, 255],
+      "comment" : "background mossypackeddirt",
+      "brush" : [ [ "clear" ], [ "back", "mossypackeddirt" ] ]
+    },
+
+    {
+      "value" : [55, 105, 140, 255],
+      "comment" : "background mossypackeddirt overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "mossypackeddirt" ] ]
+    },
+
+    {
+      "value" : [85, 162, 217, 255],
+      "comment" : "foreground mossypackeddirt",
+      "brush" : [ [ "clear" ], [ "back", "mossypackeddirt" ], [ "front", "mossypackeddirt" ] ]
+    },
+
+    {
+      "value" : [75, 143, 191, 255],
+      "comment" : "foreground mossypackeddirt overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "mossypackeddirt" ], [ "front", "mossypackeddirt" ] ]
+    },
+
+    {
+      "value" : [83, 65, 166, 255],
+      "comment" : "background rockbrick",
+      "brush" : [ [ "clear" ], [ "back", "rockbrick" ] ]
+    },
+
+    {
+      "value" : [70, 55, 140, 255],
+      "comment" : "background rockbrick overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "rockbrick" ] ]
+    },
+
+    {
+      "value" : [109, 85, 217, 255],
+      "comment" : "foreground rockbrick",
+      "brush" : [ [ "clear" ], [ "back", "rockbrick" ], [ "front", "rockbrick" ] ]
+    },
+
+    {
+      "value" : [96, 75, 191, 255],
+      "comment" : "foreground rockbrick overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "rockbrick" ], [ "front", "rockbrick" ] ]
+    },
+
+    {
+      "value" : [166, 65, 157, 255],
+      "comment" : "background vine",
+      "brush" : [ [ "clear" ], [ "back", "vine" ] ]
+    },
+
+    {
+      "value" : [217, 85, 206, 255],
+      "comment" : "foreground vine",
+      "brush" : [ [ "clear" ], [ "back", "vine" ], [ "front", "vine" ] ]
+    },
+
+    {
+      "value" : [120, 91, 59, 255],
+      "comment" : "wood stairs/platform2",
+      "brush" : [ [ "clear" ], [ "front", "platform2" ] ]
+    },
+
+    {
+      "value" : [184, 145, 101, 255],
+      "comment" : "wooden stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "woodenplatform" ] ]
+    },
+
+    {
+      "value" : [108, 153, 63, 255],
+      "comment" : "bamboo stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "bambooplatform" ] ]
+    },
+
+    {
+      "value" : [131, 148, 105, 255],
+      "comment" : "plant stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "plantplatform" ] ]
+    },
+
+    {
+      "value" : [93, 58, 31, 255],
+      "comment" : "bamboodoor",
+      "brush" : [ [ "clear" ], [ "object", "bamboodoor" ] ]
+    },
+
+    {
+      "value" : [150, 150, 150, 255],
+      "comment" : "frogmerchant",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "hylotl",
+            "typeName" : "frogmerchant",
+            // "seed" : "stable",
+            "parameters" : {
+              "persistent" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [90, 90, 180, 255],
+      "comment" : "kennel",
+      "brush" : [ [ "clear" ], [ "object", "kennel", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [90, 90, 200, 255],
+      "comment" : "kennel",
+      "brush" : [ [ "clear" ], [ "object", "kennel", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 33, 33, 255],
+      "comment" : "floranarmchair facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranarmchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 29, 29, 255],
+      "comment" : "floranarmchair facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranarmchair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 63, 33, 255],
+      "comment" : "floranbed facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranbed", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 56, 29, 255],
+      "comment" : "floranbed facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranbed", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 94, 33, 255],
+      "comment" : "floranbench facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranbench", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 83, 29, 255],
+      "comment" : "floranbench facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranbench", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 125, 33, 255],
+      "comment" : "floranbonedisplay1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranbonedisplay1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 110, 29, 255],
+      "comment" : "floranbonedisplay1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranbonedisplay1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 155, 33, 255],
+      "comment" : "floranbonedisplay2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranbonedisplay2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 137, 29, 255],
+      "comment" : "floranbonedisplay2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranbonedisplay2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 186, 33, 255],
+      "comment" : "floranbonerack",
+      "brush" : [ [ "clear" ], [ "object", "floranbonerack" ] ]
+    },
+
+    {
+      "value" : [217, 217, 33, 255],
+      "comment" : "floranbonestool facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranbonestool", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 191, 29, 255],
+      "comment" : "floranbonestool facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranbonestool", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [186, 217, 33, 255],
+      "comment" : "floranbonetable1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranbonetable1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [164, 191, 29, 255],
+      "comment" : "floranbonetable1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranbonetable1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [155, 217, 33, 255],
+      "comment" : "floranbonetable2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranbonetable2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [137, 191, 29, 255],
+      "comment" : "floranbonetable2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranbonetable2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [125, 217, 33, 255],
+      "comment" : "floranbookcase facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranbookcase", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [110, 191, 29, 255],
+      "comment" : "floranbookcase facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranbookcase", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [94, 217, 33, 255],
+      "comment" : "florancabinet1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "florancabinet1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [83, 191, 29, 255],
+      "comment" : "florancabinet1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "florancabinet1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [63, 217, 33, 255],
+      "comment" : "florancabinet2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "florancabinet2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [56, 191, 29, 255],
+      "comment" : "florancabinet2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "florancabinet2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [33, 217, 33, 255],
+      "comment" : "florancabinet3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "florancabinet3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [29, 191, 29, 255],
+      "comment" : "florancabinet3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "florancabinet3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [33, 217, 63, 255],
+      "comment" : "floranceilingbones facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranceilingbones1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [29, 191, 56, 255],
+      "comment" : "floranceilingbones facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranceilingbones1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [194, 236, 201, 255],
+      "comment" : "floranceilingbones2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranceilingbones2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [174, 212, 180, 255],
+      "comment" : "floranceilingbones2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranceilingbones2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [33, 217, 94, 255],
+      "comment" : "floranchair facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [29, 191, 83, 255],
+      "comment" : "floranchair facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranchair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [33, 217, 125, 255],
+      "comment" : "floranchandelier facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranchandelier", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [29, 191, 110, 255],
+      "comment" : "floranchandelier facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranchandelier", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [33, 217, 155, 255],
+      "comment" : "florancorner",
+      "brush" : [ [ "clear" ], [ "object", "florancorner" ] ]
+    },
+
+    {
+      "value" : [33, 217, 186, 255],
+      "comment" : "florancouch facing left",
+      "brush" : [ [ "clear" ], [ "object", "florancouch", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [29, 191, 164, 255],
+      "comment" : "florancouch facing right",
+      "brush" : [ [ "clear" ], [ "object", "florancouch", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [33, 217, 217, 255],
+      "comment" : "florancrate facing left",
+      "brush" : [ [ "clear" ], [ "object", "florancrate", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [29, 191, 191, 255],
+      "comment" : "florancrate facing right",
+      "brush" : [ [ "clear" ], [ "object", "florancrate", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [33, 186, 217, 255],
+      "comment" : "florancurtain facing left",
+      "brush" : [ [ "clear" ], [ "object", "florancurtain", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [29, 164, 191, 255],
+      "comment" : "florancurtain facing right",
+      "brush" : [ [ "clear" ], [ "object", "florancurtain", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [33, 155, 217, 255],
+      "comment" : "florandesk facing left",
+      "brush" : [ [ "clear" ], [ "object", "florandesk", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [29, 137, 191, 255],
+      "comment" : "florandesk facing right",
+      "brush" : [ [ "clear" ], [ "object", "florandesk", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [33, 125, 217, 255],
+      "comment" : "florandrum1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "florandrum1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [29, 110, 191, 255],
+      "comment" : "florandrum1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "florandrum1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [33, 94, 217, 255],
+      "comment" : "florandrum2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "florandrum2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [29, 83, 191, 255],
+      "comment" : "florandrum2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "florandrum2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [33, 63, 217, 255],
+      "comment" : "florandrum3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "florandrum3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [29, 56, 191, 255],
+      "comment" : "florandrum3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "florandrum3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [33, 33, 217, 255],
+      "comment" : "florandrum4 facing left",
+      "brush" : [ [ "clear" ], [ "object", "florandrum4", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [29, 29, 191, 255],
+      "comment" : "florandrum4 facing right",
+      "brush" : [ [ "clear" ], [ "object", "florandrum4", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [63, 33, 217, 255],
+      "comment" : "floranlamp1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranlamp1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [56, 29, 191, 255],
+      "comment" : "floranlamp1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranlamp1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [94, 33, 217, 255],
+      "comment" : "floranlight",
+      "brush" : [ [ "clear" ], [ "object", "floranlight" ] ]
+    },
+
+    {
+      "value" : [125, 33, 217, 255],
+      "comment" : "floranpainting1",
+      "brush" : [ [ "clear" ], [ "object", "floranpainting1" ] ]
+    },
+
+    {
+      "value" : [155, 33, 217, 255],
+      "comment" : "floranpainting2",
+      "brush" : [ [ "clear" ], [ "object", "floranpainting2" ] ]
+    },
+
+    {
+      "value" : [186, 33, 217, 255],
+      "comment" : "floranpainting3",
+      "brush" : [ [ "clear" ], [ "object", "floranpainting3" ] ]
+    },
+
+    {
+      "value" : [217, 33, 217, 255],
+      "comment" : "floranpainting4",
+      "brush" : [ [ "clear" ], [ "object", "floranpainting4" ] ]
+    },
+
+    {
+      "value" : [217, 33, 186, 255],
+      "comment" : "floranpainting5",
+      "brush" : [ [ "clear" ], [ "object", "floranpainting5" ] ]
+    },
+
+    {
+      "value" : [217, 33, 155, 255],
+      "comment" : "floranpelt1",
+      "brush" : [ [ "clear" ], [ "object", "floranpelt1" ] ]
+    },
+
+    {
+      "value" : [217, 33, 125, 255],
+      "comment" : "floranpelt2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranpelt2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 29, 110, 255],
+      "comment" : "floranpelt2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranpelt2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 33, 94, 255],
+      "comment" : "floranpelt3",
+      "brush" : [ [ "clear" ], [ "object", "floranpelt3" ] ]
+    },
+
+    {
+      "value" : [217, 33, 63, 255],
+      "comment" : "floranpelt4",
+      "brush" : [ [ "clear" ], [ "object", "floranpelt4" ] ]
+    },
+
+    {
+      "value" : [166, 25, 25, 255],
+      "comment" : "floranpelt5 facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranpelt5", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [140, 21, 21, 255],
+      "comment" : "floranpelt5 facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranpelt5", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [166, 48, 25, 255],
+      "comment" : "floranscreen1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranscreen1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [140, 41, 21, 255],
+      "comment" : "floranscreen1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranscreen1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [166, 72, 25, 255],
+      "comment" : "floranscreen2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranscreen2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [140, 61, 21, 255],
+      "comment" : "floranscreen2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranscreen2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [166, 95, 25, 255],
+      "comment" : "floranshelf facing left",
+      "brush" : [ [ "clear" ], [ "object", "floranshelf", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [140, 81, 21, 255],
+      "comment" : "floranshelf facing right",
+      "brush" : [ [ "clear" ], [ "object", "floranshelf", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [166, 119, 25, 255],
+      "comment" : "floransmalltable facing left",
+      "brush" : [ [ "clear" ], [ "object", "floransmalltable", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [140, 101, 21, 255],
+      "comment" : "floransmalltable facing right",
+      "brush" : [ [ "clear" ], [ "object", "floransmalltable", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [166, 142, 25, 255],
+      "comment" : "floranstove",
+      "brush" : [ [ "clear" ], [ "object", "floranstove" ] ]
+    },
+
+    {
+      "value" : [166, 166, 25, 255],
+      "comment" : "florantable1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "florantable1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [140, 140, 21, 255],
+      "comment" : "florantable1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "florantable1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [142, 166, 25, 255],
+      "comment" : "florantable2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "florantable2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [120, 140, 21, 255],
+      "comment" : "florantable2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "florantable2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [119, 166, 25, 255],
+      "comment" : "florantanningrack facing left",
+      "brush" : [ [ "clear" ], [ "object", "florantanningrack", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [101, 140, 21, 255],
+      "comment" : "florantanningrack facing right",
+      "brush" : [ [ "clear" ], [ "object", "florantanningrack", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [95, 166, 25, 255],
+      "comment" : "florantoilet facing left",
+      "brush" : [ [ "clear" ], [ "object", "florantoilet", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [81, 140, 21, 255],
+      "comment" : "florantoilet facing right",
+      "brush" : [ [ "clear" ], [ "object", "florantoilet", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [72, 166, 25, 255],
+      "comment" : "fireflowerpot facing left",
+      "brush" : [ [ "clear" ], [ "object", "fireflowerpot", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [61, 140, 21, 255],
+      "comment" : "fireflowerpot facing right",
+      "brush" : [ [ "clear" ], [ "object", "fireflowerpot", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [48, 166, 25, 255],
+      "comment" : "wflowerpot facing left",
+      "brush" : [ [ "clear" ], [ "object", "wflowerpot", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [41, 140, 21, 255],
+      "comment" : "wflowerpot facing right",
+      "brush" : [ [ "clear" ], [ "object", "wflowerpot", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 237, 178, 255],
+      "comment" : "chestfloran1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "chestfloran1", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [229, 213, 161, 255],
+      "comment" : "chestfloran1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "chestfloran1", { "direction" : "right", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [255, 222, 178, 255],
+      "comment" : "chestfloran2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "chestfloran2", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [229, 199, 161, 255],
+      "comment" : "chestfloran2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "chestfloran2", { "direction" : "right", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [253, 209, 77, 255],
+      "comment" : "woodentalllantern",
+      "brush" : [ [ "clear" ], [ "object", "woodentalllantern" ] ]
+    },
+	
+	{
+      "value" : [160, 250, 0, 255],
+      "comment" : "floranpod1",
+      "brush" : [ [ "clear" ], [ "object", "floranpod1" ] ]
+    },
+
+    {
+      "value" : [170, 250, 0, 255],
+      "comment" : "floranpod2",
+      "brush" : [ [ "clear" ], [ "object", "floranpod2" ] ]
+    },
+
+    {
+      "value" : [180, 250, 0, 255],
+      "comment" : "floranpod3",
+      "brush" : [ [ "clear" ], [ "object", "floranpod3" ] ]
+    },
+	
+	{
+      "value" : [190, 250, 0, 255],
+      "comment" : "floranopenpod1",
+      "brush" : [ [ "clear" ], [ "object", "floranopenpod1" ] ]
+    },
+	
+	{
+      "value" : [200, 250, 0, 255],
+      "comment" : "floranopenpod2",
+      "brush" : [ [ "clear" ], [ "object", "floranopenpod2" ] ]
+    },
+	
+	{
+      "value" : [210, 250, 0, 255],
+      "comment" : "floranpodapex",
+      "brush" : [ [ "clear" ], [ "object", "floranpodapex" ] ]
+    },
+	
+	{
+      "value" : [220, 250, 0, 255],
+      "comment" : "agaranmushroom",
+      "brush" : [ [ "clear" ], [ "object", "agaranmushroom" ] ]
+    },
+	
+	{
+      "value" : [230, 250, 0, 255],
+      "comment" : "giantfloranpod",
+      "brush" : [ [ "clear" ], [ "object", "giantfloranpod" ] ]
+    },
+
+    {
+      "value" : [255, 186, 78, 255],
+      "comment" : "torch",
+      "brush" : [ [ "clear" ], [ "object", "torch" ] ]
+    },
+
+    {
+      "value" : [217, 11, 11, 255],
+      "comment" : "huntingbench facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingbench", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 10, 10, 255],
+      "comment" : "huntingbench facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingbench", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 28, 11, 255],
+      "comment" : "huntingbigstatue facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingbigstatue", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 25, 10, 255],
+      "comment" : "huntingbigstatue facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingbigstatue", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 45, 11, 255],
+      "comment" : "huntingdisplay1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingdisplay1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 40, 10, 255],
+      "comment" : "huntingdisplay1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingdisplay1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 62, 11, 255],
+      "comment" : "huntingdisplay2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingdisplay2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 55, 10, 255],
+      "comment" : "huntingdisplay2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingdisplay2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 79, 11, 255],
+      "comment" : "huntingdoor1",
+      "brush" : [ [ "clear" ], [ "object", "huntingdoor1" ] ]
+    },
+
+    {
+      "value" : [217, 97, 11, 255],
+      "comment" : "huntinggroundtorch facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntinggroundtorch", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 85, 10, 255],
+      "comment" : "huntinggroundtorch facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntinggroundtorch", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 114, 11, 255],
+      "comment" : "huntinglight1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntinglight1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 100, 10, 255],
+      "comment" : "huntinglight1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntinglight1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 131, 11, 255],
+      "comment" : "huntinglight2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntinglight2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 116, 10, 255],
+      "comment" : "huntinglight2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntinglight2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 148, 11, 255],
+      "comment" : "huntinglight3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntinglight3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 131, 10, 255],
+      "comment" : "huntinglight3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntinglight3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 165, 11, 255],
+      "comment" : "huntingpike1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingpike1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 146, 10, 255],
+      "comment" : "huntingpike1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingpike1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 182, 11, 255],
+      "comment" : "huntingpike2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingpike2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 161, 10, 255],
+      "comment" : "huntingpike2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingpike2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 200, 11, 255],
+      "comment" : "huntingpike3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingpike3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 176, 10, 255],
+      "comment" : "huntingpike3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingpike3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 217, 11, 255],
+      "comment" : "huntingplatform1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingplatform1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 191, 10, 255],
+      "comment" : "huntingplatform1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingplatform1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [200, 217, 11, 255],
+      "comment" : "huntingplatform2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingplatform2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [176, 191, 10, 255],
+      "comment" : "huntingplatform2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingplatform2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [182, 217, 11, 255],
+      "comment" : "huntingplatformleaves facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingplatformleaves", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [161, 191, 10, 255],
+      "comment" : "huntingplatformleaves facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingplatformleaves", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [165, 217, 11, 255],
+      "comment" : "huntingplatformrocks facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingplatformrocks", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [146, 191, 10, 255],
+      "comment" : "huntingplatformrocks facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingplatformrocks", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [148, 217, 11, 255],
+      "comment" : "huntingpunjisticks1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingpunjisticks1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [131, 191, 10, 255],
+      "comment" : "huntingpunjisticks1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingpunjisticks1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [131, 217, 11, 255],
+      "comment" : "huntingpunjisticks2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingpunjisticks2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [116, 191, 10, 255],
+      "comment" : "huntingpunjisticks2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingpunjisticks2", { "direction" : "right" } ] ]
+    },
+    {
+      "value" : [114, 217, 11, 255],
+      "comment" : "huntingrail1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingrail1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [100, 191, 10, 255],
+      "comment" : "huntingrail1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingrail1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [97, 217, 11, 255],
+      "comment" : "huntingrail2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingrail2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [85, 191, 10, 255],
+      "comment" : "huntingrail2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingrail2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [79, 217, 11, 255],
+      "comment" : "huntingstatue facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingstatue", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [70, 191, 10, 255],
+      "comment" : "huntingstatue facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingstatue", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [62, 217, 11, 255],
+      "comment" : "huntingtrophy1",
+      "brush" : [ [ "clear" ], [ "object", "huntingtrophy1" ] ]
+    },
+
+    {
+      "value" : [45, 217, 11, 255],
+      "comment" : "huntingtrophy2",
+      "brush" : [ [ "clear" ], [ "object", "huntingtrophy2" ] ]
+    },
+
+    {
+      "value" : [28, 217, 11, 255],
+      "comment" : "huntingtrophy3",
+      "brush" : [ [ "clear" ], [ "object", "huntingtrophy3" ] ]
+    },
+
+    {
+      "value" : [11, 217, 11, 255],
+      "comment" : "huntingweaponrack1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingweaponrack1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 191, 10, 255],
+      "comment" : "huntingweaponrack1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingweaponrack1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 217, 28, 255],
+      "comment" : "huntingweaponrack2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "huntingweaponrack2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 191, 25, 255],
+      "comment" : "huntingweaponrack2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "huntingweaponrack2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 217, 45, 255],
+      "comment" : "plantbed1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantbed1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 191, 40, 255],
+      "comment" : "plantbed1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantbed1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 217, 62, 255],
+      "comment" : "plantbed2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantbed2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 191, 55, 255],
+      "comment" : "plantbed2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantbed2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 217, 79, 255],
+      "comment" : "plantbed3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantbed3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 191, 70, 255],
+      "comment" : "plantbed3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantbed3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 217, 97, 255],
+      "comment" : "plantbed4 facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantbed4", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 191, 85, 255],
+      "comment" : "plantbed4 facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantbed4", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 217, 114, 255],
+      "comment" : "plantbiolight",
+      "brush" : [ [ "clear" ], [ "object", "plantbiolight" ] ]
+    },
+
+    {
+      "value" : [11, 217, 131, 255],
+      "comment" : "plantbrokencage facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantbrokencage", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 191, 116, 255],
+      "comment" : "plantbrokencage facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantbrokencage", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 217, 148, 255],
+      "comment" : "plantcabinet1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantcabinet1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 191, 131, 255],
+      "comment" : "plantcabinet1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantcabinet1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 217, 165, 255],
+      "comment" : "plantcabinet2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantcabinet2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 191, 146, 255],
+      "comment" : "plantcabinet2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantcabinet2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 217, 182, 255],
+      "comment" : "plantcage1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantcage1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 191, 161, 255],
+      "comment" : "plantcage1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantcage1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 217, 200, 255],
+      "comment" : "plantcage2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantcage2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 191, 176, 255],
+      "comment" : "plantcage2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantcage2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 217, 217, 255],
+      "comment" : "plantcage3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantcage3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 191, 191, 255],
+      "comment" : "plantcage3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantcage3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 200, 217, 255],
+      "comment" : "plantchair facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 176, 191, 255],
+      "comment" : "plantchair facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantchair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 182, 217, 255],
+      "comment" : "plantdesklamp facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantdesklamp", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 161, 191, 255],
+      "comment" : "plantdesklamp facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantdesklamp", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 165, 217, 255],
+      "comment" : "plantdoor1",
+      "brush" : [ [ "clear" ], [ "object", "plantdoor1" ] ]
+    },
+
+    {
+      "value" : [11, 148, 217, 255],
+      "comment" : "plantdoor2",
+      "brush" : [ [ "clear" ], [ "object", "plantdoor2" ] ]
+    },
+
+    {
+      "value" : [11, 131, 217, 255],
+      "comment" : "plantdrysapdispenser",
+      "brush" : [ [ "clear" ], [ "object", "plantdrysapdispenser" ] ]
+    },
+
+    {
+      "value" : [11, 114, 217, 255],
+      "comment" : "plantgeyser1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantgeyser1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 100, 191, 255],
+      "comment" : "plantgeyser1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantgeyser1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 97, 217, 255],
+      "comment" : "plantgeyser2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantgeyser2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 85, 191, 255],
+      "comment" : "plantgeyser2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantgeyser2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 79, 217, 255],
+      "comment" : "plantlog facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantlog", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 70, 191, 255],
+      "comment" : "plantlog facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantlog", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 62, 217, 255],
+      "comment" : "plantorb facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantorb", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 55, 191, 255],
+      "comment" : "plantorb facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantorb", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 45, 217, 255],
+      "comment" : "plantplatform1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantplatform1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 40, 191, 255],
+      "comment" : "plantplatform1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantplatform1", { "direction" : "right" } ] ]
+    },
+    {
+      "value" : [11, 28, 217, 255],
+      "comment" : "plantplatform2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantplatform2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 25, 191, 255],
+      "comment" : "plantplatform2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantplatform2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [11, 11, 217, 255],
+      "comment" : "plantrack facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantrack", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 10, 191, 255],
+      "comment" : "plantrack facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantrack", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [28, 11, 217, 255],
+      "comment" : "plantshelf facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantshelf", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [25, 10, 191, 255],
+      "comment" : "plantshelf facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantshelf", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [45, 11, 217, 255],
+      "comment" : "planttorch",
+      "brush" : [ [ "clear" ], [ "object", "planttorch" ] ]
+    },
+
+    {
+      "value" : [62, 11, 217, 255],
+      "comment" : "planttorturedevice facing left",
+      "brush" : [ [ "clear" ], [ "object", "planttorturedevice", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [55, 10, 191, 255],
+      "comment" : "planttorturedevice facing right",
+      "brush" : [ [ "clear" ], [ "object", "planttorturedevice", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [79, 11, 217, 255],
+      "comment" : "planturn1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "planturn1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [70, 10, 191, 255],
+      "comment" : "planturn1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "planturn1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [97, 11, 217, 255],
+      "comment" : "planturn2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "planturn2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [85, 10, 191, 255],
+      "comment" : "planturn2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "planturn2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [114, 11, 217, 255],
+      "comment" : "planturn3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "planturn3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [100, 10, 191, 255],
+      "comment" : "planturn3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "planturn3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [131, 11, 217, 255],
+      "comment" : "plantvinetable facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantvinetable", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [116, 10, 191, 255],
+      "comment" : "plantvinetable facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantvinetable", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [148, 11, 217, 255],
+      "comment" : "plantvolcano1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantvolcano1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [131, 10, 191, 255],
+      "comment" : "plantvolcano1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantvolcano1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [165, 11, 217, 255],
+      "comment" : "plantvolcano2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "plantvolcano2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [146, 10, 191, 255],
+      "comment" : "plantvolcano2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "plantvolcano2", { "direction" : "right" } ] ]
+    },
+
+    // NPC MONSTER SPAWN BRUSHES //
+
+    {
+      "value" : [200, 0, 200, 255],
+      "comment" : "placeholder humanoid npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "floran",
+            "typeName" : "villager",
+            // "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true
+            }
+          }
+        ] ]
+    },
+    {
+      "value" : [150, 0, 200, 255],
+      "comment" : "grizzled floran",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "floran",
+            "typeName" : "blacksmith",
+            // "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true
+            }
+          }
+        ] ]
+    },
+    {
+      "value" : [160, 0, 200, 255],
+      "comment" : "escaped cultist",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "human",
+            "typeName" : "cultist",
+            // "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true
+            }
+          }
+        ] ]
+    },
+    {
+      "value" : [175, 0, 0, 255],
+      "comment" : "floran nomad merchant npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "floran",
+            "typeName" : "merchant",
+            "parameters" : {
+              "scriptConfig" : {
+                "noticePlayersRadius" : 20.0,
+                "merchant" : {
+                  "storeRadius" : 2,
+                  "categories" :{"default": [ "floraningredients" ]},
+                  "priceVarianceRange" : [1.3, 2.0],
+                  "numItems" : 20
+                },
+                "sit" : {
+                  "searchRadius" : 8
+                }
+              }
+            }
+          }
+        ] ]
+    },
+
+    // STAGEHANDS
+
+    {
+      "value" : [166, 76, 255, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "floranencounter.caged"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 254, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "floranencounter.hut"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 253, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "floranencounter.nomad"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 252, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "floranencounter.pincave"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 251, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "floranencounter.pinfriend"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 250, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "agaranencounter.giantpod"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 249, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "agaranencounter.hut"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 248, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "agaranencounter.plantvolcano"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 247, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "agaranencounter.pond"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 246, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "agaranencounter.cave"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 245, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "agaranencounter.shroompatch"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 244, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "agaranencounter.cauldron"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 243, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "agaranencounter.cauldronwater"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 242, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "agaranencounter.cauldronlava"
+          }
+        }
+      ] ]
+    }
+  ],
+
+  "parts" : [
+    {
+      "name" : "nomads",
+      "rules" : [ ],
+      "def" : [ "image", [ "nomads.png", "nomadsobjects.png" ] ]
+    },
+    {
+      "name" : "outhouse1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "outhouse1.png", "outhouse1objects.png" ] ]
+    },
+    {
+      "name" : "florancaged1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "florancaged1.png", "florancaged1objects.png" ] ]
+    },
+    {
+      "name" : "shroomcamp2",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "shroomcamp2.png", "shroomcamp2objects.png" ] ]
+    },
+    {
+      "name" : "shroomcamp3",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "shroomcamp3.png", "shroomcamp3objects1.png", "shroomcamp3objects2.png" ] ]
+    },
+    {
+      "name" : "shroomcamp5",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "shroomcamp5.png", "shroomcamp5objects.png", "shroomcamp5objects2.png" ] ]
+    },
+    {
+      "name" : "shroomcamp6",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "shroomcamp6.png", "shroomcamp6objects.png", "shroomcamp6objects2.png" ] ]
+    },
+    {
+      "name" : "shroomcamp7",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "shroomcamp7.png", "shroomcamp7objects.png" ] ]
+    },
+    {
+      "name" : "pinfriend",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "pinfriend.png", "pinfriendobjects.png" ] ]
+    },
+    {
+      "name" : "pinfriend2",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "pinfriend2.png", "pinfriend2objects.png" ] ]
+    },
+    {
+      "name" : "pincave",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "pincave.png", "pincaveobjects.png" ] ]
+    },
+    {
+      "name" : "florancaged2",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "florancaged2.png", "florancaged2objects.png" ] ]
+    },
+	{
+      "name" : "giantpod",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "giantpod.png", "giantpodobjects1.png", "giantpodobjects2.png" ] ]
+    },
+	{
+      "name" : "shroompatch1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "shroompatch1.png", "shroompatch1objects.png" ] ]
+    },
+    {
+      "name": "floranhut1",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "floranhut1.json"
+      ]
+    },
+    {
+      "name": "outhouse2",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "outhouse2.json"
+      ]
+    },
+    {
+      "name": "outhouse3",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "outhouse3.json"
+      ]
+    },
+    {
+      "name": "shroomcamp1",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "shroomcamp1.json"
+      ]
+    },
+    {
+      "name": "shroomcamp4",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "shroomcamp4.json"
+      ]
+    }
+  ]
+}

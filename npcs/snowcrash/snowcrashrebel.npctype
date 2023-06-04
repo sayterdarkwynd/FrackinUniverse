@@ -1,0 +1,57 @@
+{
+  "type" : "snowcrashrebel",
+  "baseType" : "base",
+
+  "damageTeamType" : "friendly",
+  "levelVariance" : [0, 0],
+
+  "persistent" : true,
+
+  "dropPools" : [ "villagertreasure" ],
+
+  "scriptConfig" : {
+    "behavior" : "spectator",
+
+    "dialog" : {
+      "converse" : {
+        "default" : {
+          "default" : [
+            "You shouldn't be seeing this."
+          ]
+        },
+        "apex" : {
+          "default" : [
+			"Watch out for explosive barrels under switches. You can blow those up to destroy and deactivate the switch.",
+			"I hear there's an entrance to the sewers in the caves.",
+			"It's chilly out there. Wrap up well.",
+			"I hope you succeed - mostly because if you don't, we'll have to go out ourselves.",
+			"Hostage situations are the worst.",
+			"Whatever route you take into the dacha, good luck!",
+			"The Miniknog often takes hostages to insure good behaviour, but this is something else altogether.",
+			"Don't forget to load up before you go. We don't have much, but we'll sell you what we can.",
+            "This is as close as we dare to get to the commissar's dacha."
+          ]
+        }
+      }
+    }
+  },
+
+  "matchColorIndices" : true,
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "apextier1head" } ],
+            "chest" : [ { "name" : "apextier1chest" } ],
+            "legs" : [ { "name" : "apextier1pants" } ],
+            "primary" : [
+              "npcmachinepistol"
+            ],
+            "sheathedprimary" : [
+              "npcbroadsword"
+            ]
+          }
+        ] ]
+    ]
+  }
+}

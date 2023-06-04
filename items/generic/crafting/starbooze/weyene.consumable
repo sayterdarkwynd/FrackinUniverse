@@ -1,16 +1,26 @@
 {
-  "itemName" : "weyene",
-  "rarity" : "Common",
-  "category" : "drink",
-  "inventoryIcon" : "weyene.png",
-  "description" : "Red, red wine.",
-  "shortdescription" : "Wine",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 10,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 100,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 3.0,
-  "effects" : [ [ "heal_10"  ] ]
+  "itemName": "weyene",
+  "rarity": "Common",
+  "category": "drink",
+  "inventoryIcon": "weyene.png",
+  "description": "Red, red wine.\n^green;Heal ^white;20 ^gray;(^white;2s^gray;)^reset;, 35% ^red;Slow^reset;, ^red;Drunk^gray; (^white;30s^gray;)^reset;",
+  "shortdescription": "Weyene",
+  "eventCategory": "eventCrop",
+  "price": 500,
+  "tooltipKind": "food",
+  "maxStack": 100,
+  "effects": [ [
+    {
+        "effect" : "heal_tier1"
+    },
+    {
+        "effect" : "slow",
+        "duration" : 30
+    },
+    {
+        "effect" : "booze",
+        "duration" : 30
+    }
+  ] ],
+  "emitters" : [ "drinking" ]
 }

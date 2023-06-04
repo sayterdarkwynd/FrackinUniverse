@@ -1,0 +1,82 @@
+{
+  "itemName" : "penumbriteboomerang",
+  "price" : 350,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "category" : "boomerang",
+  "description" : "Honed to a sharp, crackling edge.",
+  "shortdescription" : "Penumbrite Boomerang",
+  "tooltipKind" : "boomerang",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","boomerang", "penumbrite","upgradeableWeapon","silver"],
+
+  "level" : 3,
+
+  "inventoryIcon" : "penumbriteboomerang.png",
+  "animation" : "boomerangglow.animation",
+  "animationParts" : {
+    "boomerang" : "penumbriteboomerang.png",
+    "boomerangfullbright" : "penumbriteboomerangfullbright.png"
+  },
+  "animationCustom" : { },
+  "scripts" : ["boomerang.lua"],
+  "fireOffset" : [1.25, 0.5],
+  "fireAngleOffset" : 10,
+
+  "cooldownTime" : 0.6,
+
+  "projectileType" : "penumbriteboomerang",
+  "projectileParameters" : {
+    "power" : 3,
+    "knockback" : 20,
+
+    "ignoreTerrain" : false,
+    "controlForce" : 85,
+    "pickupDistance" : 1.0,
+    "snapDistance" : 1.0
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transition" : "throw",
+      "transitionFunction" : "fire",
+      "armRotation" : 70,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+  },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+  "critChance": 4,
+  "critBonus": 3,
+
+  "builder" : "/items/buildscripts/buildboomerang.lua"
+}

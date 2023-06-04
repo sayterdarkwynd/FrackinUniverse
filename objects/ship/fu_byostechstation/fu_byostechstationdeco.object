@@ -1,0 +1,93 @@
+{
+  "objectName" : "fu_byostechstationdeco",
+  "colonyTags" : ["misc"],
+  "printable" : false,
+  "rarity" : "Common",
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/zb/newSail/newSail.config",
+
+  "planetInteractAction" : "ScriptPane",
+  "planetInteractData" : "/interface/scripted/fu_planetsail/fu_planetsail.config",
+
+  "category" : "decorative",
+
+  "description" : "Ship-based Artificial Intelligence Lattice, or S.A.I.L for short. Does not come with a pet.",
+  "shortdescription" : "S.A.I.L Interface",
+  "race" : "generic",
+
+  "lightColor" : [61, 88, 102],
+  "lightPosition" : [-1, 0],
+
+  "apexDescription" : "I can talk to SAIL through this console.",
+  "avianDescription" : "I can use this station to talk to S.A.I.L..",
+  "floranDescription" : "Floran use thisss magic panel to talk to S.A.I.L.!",
+  "glitchDescription" : "Happy. This station allows me to talk to S.A.I.L..",
+  "humanDescription" : "This station allows me to communicate with S.A.I.L..",
+  "hylotlDescription" : "This console allows me to communicate with S.A.I.L..",
+  "novakidDescription" : "This here station lets me talk with S.A.I.L..",
+  "fukirhosDescription" : "I can use this to load up on augs or chat with S.A.I.L., if I get lonely.",
+  "fumantiziDescription" : "I can mess with my techs here, as well as talk to the AI, S.A.I.L.",
+  "fupeglaciDescription" : "A tech station - S.A.I.L displays data in both 'visible' and infrared light best suited for Peglaci eyes.",
+  "shadowDescription" : "This reminds me of the One.",
+  "slimepersonDescription" : "My friend.",
+
+  "aegiDescription" : "This panel allows for interaction with S.A.I.L., the ship-based AI.",
+  "avikanDescription" : "The Nomada doesn't like AIs like S.A.I.L., but the Protectorate insisted on installing it.",
+  "draunaarDescription" : "A station for interacting with S.A.I.L..",
+  "trinkDescription" : "I can speak to S.A.I.L. using this console. It's good to have another AI on the ship.",
+  "hymidDescription" : "This console allows for interaction with S.A.I.L.. It's nice to have someone to talk to.",
+  "notixDescription" : "S.A.I.L. is one companion who will never fail you.",
+  "jorgasianDescription" : "A console for communicating with S.A.I.L..",
+  "drodenDescription" : "Detected S.A.I.L. interface. Console enables communication with S.A.I.L..",
+  "akkimariDescription" : "Interface-S.A.I.L.. Akki talk to ship here.",
+
+  "inventoryIcon" : "/objects/ship/techstation/apexrecordplayericon.png",
+  "placementImage" : "/objects/ship/techstation/techstation.png:default.0",
+  "placementImagePosition" : [-16, -8],
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "/objects/ship/fu_byostechstation/fu_byostechstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "/objects/ship/fu_byostechstation/fu_byostechstationlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 32,
+      "animationCycle" : 3.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+	  "spaces" : [
+	  [-2,1],  [-1,1],  [0,1],
+	  [-2,0],  [-1,0],  [0,0],
+	  [-2,-1], [-1,-1], [0,-1]
+	  ]
+
+    }
+  ],
+  "defaultImageConfig" : [
+    {
+      "imageLayers" : [ { "image" : "/objects/ship/techstation/techstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "/objects/ship/techstation/techstationlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 32,
+      "animationCycle" : 3.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+
+    }
+  ],
+
+  "offeredQuests" : [ "gaterepair" ],
+
+  "scripts" : [
+  	"/objects/ship/fu_byosobjectdeath.lua",
+    "/objects/scripts/customtechstation.lua",
+	"/objects/ship/fu_shipobjectplanetinteraction.lua"
+   ],
+  "animation" : "/objects/ship/techstation.animation",
+  "animationScripts" : ["/objects/ship/fu_byosobjectanimation.lua"],
+  "scriptDelta" : 20,
+  "racialiserType" : "techstation",
+  "retainObjectParametersInItem" : true,
+
+  "byosBootupReplacement" : "fu_byostechstation",
+  "byosBootupUniqueId" : "techstation"
+}

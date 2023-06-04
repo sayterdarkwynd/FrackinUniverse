@@ -1,0 +1,46 @@
+{
+  "objectName" : "isogenceilinglamp",
+  "colonyTags" : ["isogen", "light"],
+  "rarity" : "rare",
+  "category" : "light",
+  "lightColor" : [127, 241, 255],
+  "price" : 160,
+  "description" : "A blue ceiling light. It feels like it's frozen.",
+  "shortdescription" : "Isogen Ceiling Lamp",
+  "race" : "generic",
+
+  "apexDescription" : "This light conserves so much energy, it's freezing.",
+  "avianDescription" : "A harsh, cold light.",
+  "floranDescription" : "Light is bright, too cold for Floran.",
+  "glitchDescription" : "Confused. This light freezes the air around it.",
+  "humanDescription" : "A cold, blue light.",
+  "hylotlDescription" : "A cold, blue light. It creates a freezing atmosphere. Literally.",
+  "novakidDescription" : "That's mighty cold. I could keep my drinks cool.",
+
+  "inventoryIcon" : "isogenceilinglampicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "isogenceilinglamp.png:<color>.<frame>", "fullbright" : true }, { "image" : "isogenceilinglamplit.png:<color>.<frame>" } ],
+      "imagePosition" : [0, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "isogenceilinglamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

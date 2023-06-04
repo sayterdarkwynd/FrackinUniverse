@@ -1,0 +1,226 @@
+{
+  "type" : "waterbot",
+  "shortdescription" : "Precursor Blast Droid",
+  "description" : "Wanders endlessly, blasting with abandon. Well armored.",
+  "categories" : [ "waterbot" ],
+  "parts" : [ "body" ],
+  "reversed" : true,
+  "animation" : "waterbot.animation",
+
+  "dropPools" : [ { "default" : "robotTreasure","brain" : "madnessBrainHarvestingRobot" } ],
+
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+      "aggressive" : true,
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "targetEntityTypes" : [ "player", "npc", "monster" ],
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 2.5,
+          "parameters" : {
+            "maximumRange" : 30,
+            "minimumRange" : 0,
+            "windupState" : "firewindup",
+            "windupTime" : 0.5,
+
+            "projectileType" : "precursorshot2",
+            "fireOffset" : [0, 2],
+
+            "aimAtTarget" : false,
+            "projectileCount" : 20,
+            "projectileInterval" : 0.008,
+            "inaccuracy" : 3.14,
+            "aimDirection" : [0,1],
+            "power" : 5,
+            "fireSound" : "fire",
+            "fireState" : "fire",
+
+
+            "winddownState" : ""
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 2.5,
+          "parameters" : {
+            "maximumRange" : 30,
+            "minimumRange" : 0,
+            "windupState" : "firewindup",
+            "windupTime" : 0.5,
+
+            "projectileType" : "radioactiveplasma",
+            "fireOffset" : [0, 0.75],
+
+            "aimAtTarget" : false,
+            "projectileCount" : 12,
+            "projectileInterval" : 0.05,
+            "inaccuracy" : 0.2,
+            "aimDirection" : [0,1],
+            "power" : 0,
+            "fireSound" : "fire",
+            "fireState" : "fire",
+
+
+            "winddownState" : ""
+          }
+        }
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : false
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [0.5, 2.5]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, -1.05], [0.8125, -1.75],  [-0.8125, -1.75], [-1.3125, -1.05],  [-1.3125, 0.75], [-0.8125, 1.25] ],
+      "damage" : 10,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, -1.05], [0.8125, -1.75],  [-0.8125, -1.75], [-1.3125, -1.05],  [-1.3125, 0.75], [-0.8125, 1.25] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 5,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 12
+        },
+        "maxHealth" : {
+          "baseValue" : 120
+        },
+        "protection" : {
+          "baseValue" : 25
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "liquidnitrogenImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "biooozeImmunity" : {
+          "baseValue" : 1.0
+        },
+        "insanityImmunity" : {
+          "baseValue" : 1.0
+        },
+        "pusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : { "baseValue" : 1.0 },
+        "fireResistance" : { "baseValue" : 0.8 },
+        "iceResistance" : { "baseValue" : 0 },
+        "electricResistance" : { "baseValue" : -0.45 },
+        "physicalResistance" : { "baseValue" : 0.4 },
+        "shadowResistance" : { "baseValue" : 0.5 },
+        "radioactiveResistance" : { "baseValue" : 0.7 },
+        "cosmicResistance" : { "baseValue" : 0.4 }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.1,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "waterbot" }
+  }
+}

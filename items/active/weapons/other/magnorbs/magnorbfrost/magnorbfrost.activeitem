@@ -1,0 +1,73 @@
+{
+	"itemName" : "magnorbfrost",
+	"level" : 4,
+	"price" : 900,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "Cold as ice.",
+	"shortdescription" : "Frost Lobber",
+	"tooltipKind" : "magnorb",
+	"category" : "Magnorb",
+	"twoHanded" : true,
+	"itemTags" : [ "weapon","magnorb","ice", "isogen", "upgradeableWeapon" ],
+
+	"inventoryIcon" : "iconfrost.png",
+	"animation" : "magnorbfrost.animation",
+	"animationParts" : {
+		"glove" : "glovefrost.png",
+		"orb1" : "orbfrost.png",
+		"orb2" : "orbfrost.png",
+		"orb3" : "orbfrost.png",
+		"orb4" : "orbfrost.png",
+		"orb5" : "orbfrost.png"
+	},
+
+	"animationCustom" : {
+
+	},
+
+	"scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
+
+	"orbitRate" : 0.60,
+
+	"elementalType" : "ice",
+
+	"projectileType" : "magnorbfrost",
+
+	"projectileParameters" : {
+		"power" : 3.75,
+		"knockback" : 10,
+		"returnOnHit" : true,
+		"ignoreTerrain" : false,
+		"controlForce" : 30,
+		"pickupDistance" : 1.2,
+		"snapDistance" : 1.0
+	},
+
+	"count" : 5,
+	"shieldKnockback" : 12,
+	"shieldEnergyCost" : 40,
+	"shieldHealth" : 80,
+	"shieldPower" : "Frost Aura",
+	"shieldPersistentGroup":"magnorbFrost",
+	"shieldPersistentEffects":[{"stat":"iceResistance","amount":0.15}],
+	"shieldEphemeralEffects":["iceburst"],
+	"critChance" : 1,
+	"critBonus" : 4,
+
+	"stances" : {
+		"idle" : {
+			"armRotation" : 10,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		},
+		"shield" : {
+			"armRotation" : 0,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		}
+	},
+	"builder" : "/items/buildscripts/fubuildmagnorb.lua"
+}

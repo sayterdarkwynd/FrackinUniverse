@@ -1,0 +1,45 @@
+{
+  "itemName" : "tethersnap",
+  "price" : 3000,
+  "inventoryIcon" : "tethersnapicon.png",
+  "rarity" : "rare",
+  "maxStack" : 1,
+  "description" : "An amazing grappler. Use carefully, as it is ^orange;very^reset; fast.",
+  "shortdescription" : "Nano-Tether",
+  "largeImage" : "tethersnap.png",
+  "category" : "Tool",
+  "fireTime" : 0,
+  "twoHanded" : false,
+
+  "scripts" : ["/items/active/grapplinghooks/grapplinghook.lua"],
+  "animationScripts" : ["/items/active/effects/renderrope.lua"],
+
+  "animation" : "tethersnap.animation",
+
+  "fireOffset" : [0, 0],
+  "ropeOffset" : [-1.2, 0],
+  "ropeVisualOffset" : [0.75, 0],
+  "handGrip" : "wrap",
+  "consumeOnUse" : false,
+
+  "projectileType" : "tethersnap",
+  "projectileParameters" : {
+    "speed" : 120,
+    "timeToLive" : 0.7,
+    "actionOnCollide":[ {"options":["/sfx/projectiles/magnorb_impact2.ogg"],"action":"sound"} ]
+  },
+
+  "ropeWidth" : 0.2,
+  "ropeColor" : [122, 112, 110, 225],
+
+  "reelInDistance" : 3,
+  "reelOutLength" : 250,
+  "breakLength" : 280,
+
+  "minSwingDistance" : 0.05,
+
+  "reelSpeed" : 45,
+  "controlForce" : 9000,
+
+  "groundLagTime" : 0
+}

@@ -6,14 +6,18 @@
     "groups" : [
       {
         "select" : 1,
-        "pool" : [ 
-          [ 0.06, "nautileech" ],     
-          [ 0.06, "lilodon" ],
-          [ 0.06, "crabcano" ], 
-          [ 0.06, "shadowcrab" ], 
-          [ 0.06, "miasmop" ],
-          [ 0.06, "pulpin" ],     
-          [ 0.06, "snaggler" ]
+        "pool" : [
+          [ 0.08, "zapin" ],
+          [ 0.08, "electropod" ],
+          [ 0.08, "nautileech" ],
+          [ 0.08, "lilodon" ],
+          [ 0.08, "crabcano" ],
+          [ 0.08, "shadowcrab" ],
+          [ 0.08, "miasmop" ],
+          [ 0.08, "pulpin" ],
+          [ 0.08, "snaggler" ],
+          [ 0.08, "pandorasboxhummingbug"],
+          [ 0.08, "pandorasboxglofae"]
         ]
       },
       {
@@ -40,22 +44,27 @@
     "monsterParameters" : {
       "statusSettings" : {
         "stats" : {
+          "poisonResistance" : {
+            "baseValue" : 1.0
+          },
           "poisonStatusImmunity" : {
             "baseValue" : 1.0
           },
           "pusImmunity" : {
             "baseValue" : 1.0
-          }		  
+          }
         }
       }
     }
   },
-  
-  "hueShiftOptions" : [ 0, 0, 0, 0 ],
+
+  "hueShiftOptions" : [-40, -30, -20, -10, 0, 10, 20, 30],
 
   "weather" : [
     [0, [
-      "/weather.config:tidewater"
+      "/weather.config:tidewater",
+      "/weather.config:tidewater2",
+      "/weather.config:tidewater3"
     ]]
   ],
 
@@ -63,7 +72,7 @@
 	{
 		// original tidewater biome
 		"mainColor" : [25, 0, 25],
-		
+
 		"morningColors" : [ [86, 121, 135], [0, 21, 147] ],
 		"dayColors" : [ [68, 115, 181], [40, 67, 106] ],
 		"eveningColors" : [ [86, 121, 135], [0, 21, 147] ],
@@ -76,7 +85,7 @@
     },
 	{
 		"mainColor" : [0, 0, 0],
-		
+
 		"morningColors" : [ [0, 0, 0], [0, 0, 0] ],
 		"dayColors" : [ [20, 20, 20], [20, 20, 20] ],
 		"eveningColors" : [ [0, 0, 0], [0, 0, 0] ],
@@ -86,7 +95,7 @@
 		"dayLightColor" : [20, 20, 20],
 		"eveningLightColor" : [0, 0, 0],
 		"nightLightColor" : [0, 0, 0]
-    },	
+    },
 	{
       "mainColor" : [60, 3, 12],
 
@@ -112,7 +121,7 @@
       "dayLightColor" : [140, 0, 0],
       "eveningLightColor" : [100, 0, 0],
       "nightLightColor" : [0, 0, 222]
-    },	
+    },
     {
       "mainColor" : [50, 0, 0],
 
@@ -129,7 +138,7 @@
   ],
 
   "mainBlock" : "marestone",
-  "subBlocks" : [ "clay", "coral", "oystershell", "coral2"],
+  "subBlocks" : [ "clay", "coral", "coral2"],
   "ores" : "surface",
 
   "parallax" : "/parallax/surface/tidewater.parallax",
@@ -145,18 +154,66 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/MelodyofMisery.ogg","/music/OceanExploration1.ogg","/music/ocean-exploration2.ogg","/music/ultramarine.ogg","/music/forsaken-grotto.ogg", "/music/lava-exploration1.ogg", "/music/lava-exploration2.ogg", "/music/drosera.ogg", "/music/crystal-exploration1.ogg", "/music/inviolate-loop.ogg", "/music/body-electric-loop.ogg", "/music/europa.ogg", "/music/crystal-exploration2.ogg", "/music/forsaken-grotto.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/SomethingIntoDarkness.ogg","/music/OceanExploration1.ogg","/music/ocean-exploration2.ogg","/music/ultramarine.ogg","/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mira.ogg", "/music/the-deep.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg", "/music/Nomads.ogg", "/music/forsaken-grotto.ogg", "/music/mercury.ogg", "/music/procyon.ogg" ]
     }
   },
 
   "surfacePlaceables" : {
     "grassMod" : [ "clay" ],
-    "grassModDensity" : 0.9,
+    "grassModDensity" : 0.5,
 
     "items" : [
+           {
+             "mode" : "ceiling",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:ffunCommon",
+
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [
+                   [0.50, "wildlumivineseed" ]
+                 ],
+                 "parameters" : { "startingStage" : 3 }
+               }
+             ]
+           },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "rockstony1" ],
+              [0.35, "rockstony2" ],
+              [0.35, "rockstony3" ],
+              [0.35, "rockstony4" ],
+              [0.35, "rockstony5" ],
+              [0.35, "rockstony6" ],
+              [0.35, "rockstony7" ],
+              [0.35, "rockstony8" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
       {
         "mode" : "floor",
         "priority" : 0.0,
@@ -170,7 +227,7 @@
         "mode" : "floor",
         "priority" : 0.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:overgroundRareChests",
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
         "type" : "treasureBox",
         "treasureBoxSets" : [ "weaponChest" ]
@@ -179,10 +236,10 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:scatteredSmall",
+        "distribution" : "/biomes/distributions.config:denseLarge",
 
         "type" : "grass",
-        "grasses" : [ "corals", "seaweed", "waterplant2", "waterplant3" ]
+        "grasses" : [ "darkcorals", "seaweed", "waterplant2", "waterplant3" ]
       },
       {
         "mode" : "floor",
@@ -211,55 +268,25 @@
         "mode" : "floor",
         "priority" : 2.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
+        "distribution" : "/biomes/distributions.config:denseLarge",
 
         "type" : "bush",
         "bushes" : [
           {
-            "name" : "cone",
+            "name" : "darkcone",
             "baseHueShiftMax" : 180,
             "modHueShiftMax" : 180
-          }
-        ]
-      },
-      {
-        "mode" : "floor",
-        "priority" : 2.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
-
-        "type" : "bush",
-        "bushes" : [
+          },
           {
-            "name" : "coral",
+            "name" : "darkcoral",
             "baseHueShiftMax" : 180,
             "modHueShiftMax" : 180
-          }
-        ]
-      },
-      {
-        "mode" : "floor",
-        "priority" : 2.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
-
-        "type" : "bush",
-        "bushes" : [
+          },
           {
-            "name" : "seagrass",
+            "name" : "darkseagrass",
             "baseHueShiftMax" : 180,
             "modHueShiftMax" : 180
-          }
-        ]
-      },
-      {
-        "mode" : "floor",
-        "priority" : 2.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
-
-        "type" : "bush",
-        "bushes" : [
+          },
           {
             "name" : "seaweed",
             "baseHueShiftMax" : 180,
@@ -280,7 +307,7 @@
         "mode" : "floor",
         "priority" : 2.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:scatteredLarge",
+        "distribution" : "/biomes/distributions.config:ffAverage",
 
         "type" : "tree",
         "treeFoliageHueShiftMax" : 180,
@@ -297,12 +324,13 @@
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ 
+            "pool" : [
             [0.5, "wildcoralcreepseed" ],
             [0.5, "wildcellpodsplant" ],
             [0.5, "wildgemglowseed" ],
             [0.5, "wildpiruseed" ],
-            [0.25, "wildcellpodsplant" ], 
+            [0.35, "wildphasefruitseed" ],
+            [0.25, "wildcellpodsplant" ],
             [0.25, "wildkamaranpodsplant" ],
             [0.35, "wildnakatiseed" ]
             ],
@@ -311,6 +339,102 @@
             }
           }
         ]
+      }
+    ]
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "clay" ],
+    "grassModDensity" : 0.0,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "fftidewaterChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [
+            [0.35, "rockstony1" ],
+            [0.35, "rockstony2" ],
+            [0.35, "rockstony3" ],
+            [0.35, "rockstony4" ],
+            [0.35, "rockstony5" ],
+            [0.35, "rockstony6" ],
+            [0.35, "rockstony7" ],
+            [0.35, "rockstony8" ]
+            ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "darkcone",
+            "baseHueShiftMax" : 20,
+            "modHueShiftMax" : 0
+          },
+          {
+            "name" : "darkcoral",
+            "baseHueShiftMax" : 20,
+            "modHueShiftMax" : 0
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "pebbles" ]
       }
     ]
   }

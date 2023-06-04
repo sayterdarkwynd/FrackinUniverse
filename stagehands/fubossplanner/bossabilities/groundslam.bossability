@@ -1,0 +1,53 @@
+{
+  "name" : "fugroundSlam",
+  "preconditions" : [
+    ["!Boss", 0, 0, "GuidedPosition"],
+    ["!Boss", 1, 0, "GuidedPosition"],
+    ["!Boss", 2, 0, "GuidedPosition"],
+    ["!Boss", 3, 0, "GuidedPosition"],
+    ["!Boss", 4, 0, "GuidedPosition"],
+    ["!Boss", 5, 0, "GuidedPosition"],
+    ["!Boss", 6, 0, "GuidedPosition"],
+    ["!Boss", 7, 0, "GuidedPosition"],
+    ["ReachableIn", [[0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1]]],
+    ["Ability", "StaticAbility"]
+  ],
+  "postconditions" : [
+    ["!Ability", "StaticAbility"],
+    ["Ability", "MovingAbility"]
+  ],
+  "statemodifiers" : [
+    ["Boss", 0, 0, "GuidedPosition"],
+    ["Boss", 1, 0, "GuidedPosition"],
+    ["Boss", 2, 0, "GuidedPosition"],
+    ["Boss", 3, 0, "GuidedPosition"],
+    ["Boss", 4, 0, "GuidedPosition"],
+    ["Boss", 5, 0, "GuidedPosition"],
+    ["Boss", 6, 0, "GuidedPosition"],
+    ["Boss", 7, 0, "GuidedPosition"],
+    ["WeaponEquipped"],
+    ["Ability", "CloseRange"]
+  ],
+  "objectives" : [
+    ["Boss", 0, 0, "GuidedPosition"],
+    ["Boss", 1, 0, "GuidedPosition"],
+    ["Boss", 2, 0, "GuidedPosition"],
+    ["Boss", 3, 0, "GuidedPosition"],
+    ["Boss", 4, 0, "GuidedPosition"],
+    ["Boss", 5, 0, "GuidedPosition"],
+    ["Boss", 6, 0, "GuidedPosition"],
+    ["Boss", 7, 0, "GuidedPosition"]
+  ],
+
+
+  "sequenceActions" : [
+    {
+      "name" : "guardianslam",
+      "parameters" : {
+        "windupHeight" : 8,
+        "windupTime" : 1,
+        "stunTime" : 4
+      }
+    }
+  ]
+}

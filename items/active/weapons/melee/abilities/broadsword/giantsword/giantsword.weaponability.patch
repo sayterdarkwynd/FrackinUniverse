@@ -1,0 +1,115 @@
+[
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowcharge",
+    "value" : [ "/sfx/melee/giantsword_charge_poison.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowfullwindup",
+    "value" : [ "/sfx/melee/giantsword_charge_full.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowfull",
+    "value" : [ "/sfx/melee/giantsword_charged_poison.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/radioactivecharge",
+    "value" : [ "/sfx/melee/giantsword_charge_poison.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/radioactivefullwindup",
+    "value" : [ "/sfx/melee/giantsword_charge_full.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/radioactivefull",
+    "value" : [ "/sfx/melee/giantsword_charged_poison.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/cosmiccharge",
+    "value" : [ "/sfx/melee/giantsword_charge_electric.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/cosmicfullwindup",
+    "value" : [ "/sfx/melee/giantsword_charge_full.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/cosmicfull",
+    "value" : [ "/sfx/melee/giantsword_charged_electric.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/shadowSwordCharge",
+    "value" : {
+      "active" : false,
+      "transformationGroups" : ["weapon"],
+      "emissionRate" : 30,
+      "offsetRegion" : [-0.75, 0.0, 0.75, 5.5],
+      "particles" : [
+        { "particle" : "shadowswoosh1"},
+        { "particle" : "shadowswoosh2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/shadow",
+    "value" : {
+      "damageConfig" : { "statusEffects" : [ "shadowgasfx" ] }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/radioactiveSwordCharge",
+    "value" : {
+      "active" : false,
+      "transformationGroups" : ["weapon"],
+      "emissionRate" : 30,
+      "offsetRegion" : [-0.75, 0.0, 0.75, 5.5],
+      "particles" : [
+        { "particle" : "radioactiveswoosh1"},
+        { "particle" : "radioactiveswoosh2"},
+        { "particle" : "poisonswoosh2"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/radioactive",
+    "value" : {
+      "damageConfig" : { "statusEffects" : [ "radiationburn" ] }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/cosmicSwordCharge",
+    "value" : {
+      "active" : false,
+      "transformationGroups" : ["weapon"],
+      "emissionRate" : 30,
+      "offsetRegion" : [-0.75, 0.0, 0.75, 5.5],
+      "particles" : [
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/cosmic",
+    "value" : {
+      "damageConfig" : { "statusEffects" : [ "defenseboostneg20" ] }
+    }
+  }
+]

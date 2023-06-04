@@ -1,0 +1,94 @@
+{
+	"stats": [
+		{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 1.12
+		},
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 1.12
+		},
+		{
+			"stat": "grit",
+			"amount": 0.4
+		},
+		{
+			"stat": "iceResistance",
+			"amount": 0.3
+		},
+		{
+			"stat": "radioactiveResistance",
+			"amount": -0.5
+		},
+		{
+			"stat": "jungleslowImmunity",
+			"amount": 1
+		}
+	],
+	"diet" : "carnivore",
+	"controlModifiers": {
+		"speedModifier": 1.14
+	},
+	"weaponEffects": [{
+			"weapons": [
+				"dagger",
+				"shortsword",
+				"broadsword"
+			],
+			"stats": [{
+				"stat": "protection",
+				"amount": 2
+			}]
+		},
+		{
+			"weapons": [
+				"whip"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.12
+			}]
+		}
+	],
+	"weaponScripts": [{
+			"script": "/scripts/fr_weaponscripts/freebonus.lua",
+			"contexts": [
+				"gun-init"
+			],
+			"args": {
+				"stats": [{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.08
+				}]
+			}
+		},
+		{
+			"script": "/scripts/fr_weaponscripts/perfectblockbonus.lua",
+			"contexts": [
+				"shield-perfectblock"
+			],
+			"args": {
+				"stats": [{
+						"stat": "powerMultiplier",
+						"amount": 0.02
+					},
+					{
+						"stat": "protection",
+						"amount": 0
+					}
+				],
+				"statCombos": {
+					"powerMultiplier": {
+						"comboBase": 0.02,
+						"max": 30
+					},
+					"protection": {
+						"comboBase": 2,
+						"max": 16
+					}
+				},
+				"particles": "bonusBlock4"
+			}
+		}
+	]
+}

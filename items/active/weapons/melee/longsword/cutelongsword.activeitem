@@ -1,0 +1,58 @@
+{
+  "itemName" : "cutelongsword",
+  "price" : 400,
+  "maxStack" : 1,
+  "level" : 4,
+  "rarity" : "rare",
+  "description" : "Colorful, sharp, and one-handed.
+^yellow;Counts as 'energy' for set bonuses^reset;",
+  "shortdescription" : "Prismatic Longsword",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","longsword","energy","upgradeableWeapon", "cute","cosmic"],
+  "inventoryIcon" : "cutelongsword.png",
+  "animation" : "combolongswordglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "cutelongsword.png",
+    "bladefullbright" : "cutelongswordfullbright.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "swoosh" : {
+      "fire" : { "properties" : { "image" : "/items/active/weapons/melee/broadsword/swoosh/cuteswoosh.png:<frame>" }},
+      "fire2" : { "properties" : { "image" : "/items/active/weapons/melee/broadsword/swoosh2/cuteswoosh.png:<frame>" }},
+      "fire3" : { "properties" : { "image" : "/items/active/weapons/melee/broadsword/swoosh3/cuteswoosh.png:<frame>" }}
+    }}}}},
+    "particleEmitters" : {
+      "cosmicswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "emissionRate" : 50,
+        "particles" : [
+          { "particle" : "cuteswoosh1"},
+          { "particle" : "cuteswoosh2"},
+          { "particle" : "cuteswoosh3"}
+        ]
+      }
+    }
+  },
+
+  "elementalType" : "cosmic",
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.93,
+    "baseDps" : 6.12,
+    "damageConfig" : {
+      "damageSourceKind" : "cosmicbroadsword"
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 7,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

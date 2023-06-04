@@ -1,31 +1,52 @@
 {
   "name" : "desertwastesdark",
   "friendlyName" : "Red Wastes",
-  
-  "statusEffects" : [ "biomecold" ],
- 
+
+  "statusEffects" : [ "desertweathernewdeadly" ],
+
   "spawnProfile" : {
     "groups" : [
       {
         "select" : 3,
-        "pool" : [ 
-          [ 0.04, "fugiantscorpion" ],
-          [ 0.04, "blackgiantscorpion" ], 
-          [ 0.04, "kluexsentry" ],  
-          [ 0.04, "kluextotem" ],
-          [ 0.05, "fugiantredbee2" ],
-          [ 0.09, "pyromantle" ],     
-          [ 0.02, "futargolem" ],
-          [ 0.06, "trictus" ]
+        "pool" : [
+          [ 0.1, "kluexsentry" ],
+          [ 0.1, "kluextotem" ],
+          [ 0.1, "pyropod" ],
+          [ 0.1, "crabcano" ],
+          [ 0.1, "flintlit" ],
+          [ 0.1, "pyromantle" ],
+          [ 0.1, "futargolem" ],
+          [ 0.1, "trictus2" ],
+          [ 0.1, "crisper" ],
+          [ 0.1, "volpin" ]
         ]
       },
       {
-        "select" : 1,
+        "select" : 3,
+        "pool" : [
+          [ 0.1, "fucamelcritter" ],
+          [ 0.075, "fuhorsecritter" ],
+          [ 0.075, "fubrownsnakecritter" ],
+          [ 0.015, "fudesertdactylcritter" ],
+          [ 0.1, "fudesertlizardcritter" ],
+          [ 0.1, "furoadrunnercritter" ],
+          [ 1, "armadillocritter" ],
+          [ 1, "deserttortoisecritter" ],
+          [ 1, "birdcritter" ],
+          [ 1, "fufireball" ],
+          [ 1, "groopcritter" ],
+          [ 1, "fuscorpion" ],
+          [ 1, "wurmcritter" ]
+        ]
+      },
+      {
+        "select" : 3,
         "pool" : [
           [ 0.4, "sunskipper" ],
           [ 0.3, "goldbuck" ],
           [ 0.4, "hellbeetle" ],
-          [ 0.3, "volcanicbee" ]
+          [ 0.14, "bee_sandprowler" ],
+          [ 0.3, "bee_scoria" ]
         ]
       },
       {
@@ -39,19 +60,6 @@
       {
         "select" : 2,
         "pool" : "generatedFlying"
-      },
-      {
-        "select" : 2,
-        "pool" : [
-          [ 0.1111, "fennix" ],    
-          [ 1, "armadillocritter" ],
-          [ 1, "deserttortoisecritter" ],
-          [ 1, "birdcritter" ],
-          [ 1, "fufireball" ],
-          [ 1, "groopcritter" ],
-          [ 1, "fuscorpion" ],
-          [ 1, "wurmcritter" ]   
-        ]
       }
     ],
     "monsterParameters" : {
@@ -71,7 +79,7 @@
       }
     }
   },
-  
+
 
   "hueShiftOptions" : [0],
 
@@ -82,6 +90,86 @@
   ],
 
   "skyOptions" : [
+    {
+      "mainColor" : [125, 125, 125],
+
+      "morningColors" : [ [89, 88, 88], [88, 90, 90] ],
+      "dayColors" : [ [79, 90, 80], [79, 90, 75] ],
+      "eveningColors" : [ [55, 50, 55], [55, 50, 55] ],
+      "nightColors" : [ [12, 20, 10], [12, 20, 10] ],
+
+      "morningLightColor" : [37, 55, 37],
+      "dayLightColor" : [25, 25, 55],
+      "eveningLightColor" : [15, 15, 15],
+      "nightLightColor" : [5, 5, 5]
+    },
+    //total darkness
+    {
+      "mainColor" : [0, 0, 0],
+
+      "morningColors" : [ [0, 0, 0], [0, 0, 0] ],
+      "dayColors" : [ [0, 0, 0], [0, 0, 0] ],
+      "eveningColors" : [ [0, 0, 0], [0, 0, 0] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+      "morningLightColor" : [0, 0, 0],
+      "dayLightColor" : [0, 0, 0],
+      "eveningLightColor" : [0, 0, 0],
+      "nightLightColor" : [0, 0, 0]
+    },
+    //black
+    {
+      "mainColor" : [20, 20, 20],
+
+      "morningColors" : [ [20, 20, 20], [20, 20, 20] ],
+      "dayColors" : [ [20, 20, 20], [20, 20, 20] ],
+      "eveningColors" : [ [10, 10, 10], [10, 10, 10] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+      "morningLightColor" : [20, 20, 20],
+      "dayLightColor" : [20, 20, 20],
+      "eveningLightColor" : [10, 10, 10],
+      "nightLightColor" : [0, 0, 0]
+    },
+    {
+      "mainColor" : [90, 90, 90],
+
+      "morningColors" : [ [70, 70, 70], [70, 70, 70] ],
+      "dayColors" : [ [50, 50, 50], [50, 50, 50] ],
+      "eveningColors" : [ [30, 30, 30], [30, 30, 30] ],
+      "nightColors" : [ [12, 20, 10], [12, 20, 10] ],
+
+      "morningLightColor" : [47, 66, 75],
+      "dayLightColor" : [20, 60, 60],
+      "eveningLightColor" : [10, 20, 20],
+      "nightLightColor" : [0, 0, 0]
+    },
+    {
+      "mainColor" : [20, 70, 20],
+
+      "morningColors" : [ [59, 59, 59], [59, 59, 59] ],
+      "dayColors" : [ [50, 50, 50], [50, 50, 50] ],
+      "eveningColors" : [ [30, 30, 30], [30, 30, 30] ],
+      "nightColors" : [ [15, 15, 15], [15, 15, 15] ],
+
+      "morningLightColor" : [59, 59, 59],
+      "dayLightColor" : [49, 49, 49],
+      "eveningLightColor" : [30, 30, 30],
+      "nightLightColor" : [15, 15, 15]
+    },
+    {
+      "mainColor" : [20, 75, 45],
+
+      "morningColors" : [ [79, 79, 79], [64, 100, 64] ],
+      "dayColors" : [ [79, 70, 80], [79, 75, 75] ],
+      "eveningColors" : [ [55, 90, 55], [55, 90, 55] ],
+      "nightColors" : [ [12, 50, 10], [12, 50, 10] ],
+
+      "morningLightColor" : [47, 97, 55],
+      "dayLightColor" : [20, 30, 10],
+      "eveningLightColor" : [20, 40, 90],
+      "nightLightColor" : [17, 40, 77]
+    },
     {
       "mainColor" : [0, 0, 0],
 
@@ -185,31 +273,31 @@
       "dayLightColor" : [197, 184, 182],
       "eveningLightColor" : [197, 98, 126],
       "nightLightColor" : [28, 14, 14]
-    }    
-    
+    }
+
   ],
 
   "mainBlock" : "redsand2",
-  "subBlocks" : [ "retexredsandstone", "retexrock17", "calichestone" ],
+  "subBlocks" : [ "retexredsandstone", "redslate2", "redsand" ],
   "ores" : "surface",
 
-  "parallax" : "/parallax/surface/desert.parallax",
+  "parallax" : "/parallax/surface/reddesert.parallax",
 
   "ambientNoises" : {
     "day" : {
-      "tracks" : [ "/sfx/environmental/desert_day.ogg" ]
+      "tracks" : [ "/sfx/environmental/desert_day.ogg", "/sfx/ambiance/Desert_Pilgrims.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/sfx/environmental/desert_night.ogg" ]
+      "tracks" : [ "/sfx/environmental/desert_night.ogg", "/sfx/ambiance/Desert_Pilgrims.ogg" ]
     }
   },
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/MelodyofMisery.ogg","/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/Nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/SomethingIntoDarkness.ogg","/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/Nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
     }
   },
 
@@ -231,15 +319,24 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "pool" : [ [0.05, "timeobelisk" ],[0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
             "parameters" : { }
           }
         ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
       },
       {
         "mode" : "floor",
@@ -254,7 +351,7 @@
         "mode" : "floor",
         "priority" : 0.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:overgroundRareChests",
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
         "type" : "treasureBox",
         "treasureBoxSets" : [ "weaponChest" ]
@@ -298,7 +395,7 @@
         "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
 
         "type" : "microdungeon",
-        "microdungeons" : [ "fuencounters", "desertmicrodungeons" ]
+        "microdungeons" : [ "desertmicrodungeons" ]
       },
         {
           "mode" : "floor",
@@ -307,8 +404,8 @@
           "distribution" : "/biomes/distributions.config:randomEncounter",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "fubandits", "fushops", "fulabs", "fuelders", "fuhives", "furedhives", "newhumanmicro", "newavianmicro", "minigreenruins", "furandomencounter", "fuglitchencounter", "fuavianencounter" ]
-        },      
+          "microdungeons" : [ "fu_dae_microdungeons", "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "fubandits", "fuencounters",  "fulabs", "fuelders", "fuhives", "furedhives", "newhumanmicro", "newavianmicro", "minigreenruins", "furandomencounter", "fuglitchencounter", "fuavianencounter" ]
+        },
       {
         "mode" : "floor",
         "priority" : 3.0,
@@ -320,6 +417,21 @@
       },
       {
         "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "savannahbush",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
         "distribution" : "/biomes/distributions.config:rareClumpyLarge",
@@ -327,8 +439,8 @@
         "type" : "tree",
         "treeFoliageHueShiftMax" : 180,
         "treeStemHueShiftMax" : 15,
-        "treeStemList" : [ "pearlwood", "nyanistem", "bananatreestem", "desertpalm", "alienpalm", "bark", "beach", "blank", "cross", "palm", "plain", "twirl" ],
-        "treeFoliageList" : [ "pearlfoliage", "nyanifoliage", "bananatreeleaf", "palmleaves", "palmy", "roseleaves", "lushleaves", "palmlush", "elegant" ]
+        "treeStemList" : [ "desertpalm", "alienpalm", "bark", "beach", "blank", "cross", "palm", "plain", "twirl" ],
+        "treeFoliageList" : [ "palmleaves", "palmy", "roseleaves", "lushleaves", "palmlush", "elegant" ]
       },
       {
         "mode" : "floor",
@@ -342,6 +454,20 @@
         "treeStemList" : [ "cactus" ],
         "treeFoliageList" : [ "cactusflowers", "bigflowers", "nothing" ]
       },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ultraRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "wormstatue" ], [0.35, "sandstonestatueapex" ], [0.35, "sandstonestatueavian" ], [0.35, "sandstonestatuefloran" ], [0.35, "sandstonestatueglitch" ], [0.35, "sandstonestatuehuman" ], [0.35, "sandstonestatuehylotl" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
 
       // CROPS
 
@@ -350,14 +476,16 @@
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:ffunCommon",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
                    [0.50, "wildcrystalplantseed" ],
-                   [0.50, "fuwildavikanspiceplantseed" ],
-                   [0.50, "fuwildavikancactusseed" ],
+                   [0.50, "wildbolbohnseed" ],
+                   [0.50, "wilddunestalkseed" ],
+                   [0.50, "wildavikanspiceplantseed" ],
+                   [0.50, "wildavikancactusseed" ],
                    [0.50, "energiflowerseed" ],
                    [0.50, "wildquellstem" ],
                    [0.50, "wildignuschiliseed" ]
@@ -366,8 +494,8 @@
                }
              ]
            }
-           
-           
+
+
     ]
   },
 
@@ -376,16 +504,25 @@
     "grassModDensity" : 0.9,
 
     "items" : [
+  {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
+  },
       {
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "pool" : [ [0.05, "timeobelisk" ],[0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
             "parameters" : { }
           }
         ]
@@ -397,9 +534,17 @@
         "distribution" : "/biomes/distributions.config:undergroundChests",
 
         "type" : "treasureBox",
-        "treasureBoxSets" : [ "basicChest" ]
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
       },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
 
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "desertChest" ]
+      },
       {
         "mode" : "floor",
         "priority" : 0.0,
@@ -427,7 +572,7 @@
         "mode" : "floor",
         "priority" : 0.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundChests",
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
         "type" : "treasureBox",
         "treasureBoxSets" : [ "weaponChest" ]
@@ -440,6 +585,32 @@
 
         "type" : "grass",
         "grasses" : [ "pebbles" ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 10,
+        "treeStemList" : [ "desertvine"],
+        "treeFoliageList" : [ "" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ultraRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "wormstatue" ], [0.35, "sandstonestatueapex" ], [0.35, "sandstonestatueavian" ], [0.35, "sandstonestatuefloran" ], [0.35, "sandstonestatueglitch" ], [0.35, "sandstonestatuehuman" ], [0.35, "sandstonestatuehylotl" ] ],
+            "parameters" : { }
+          }
+        ]
       }
     ]
   }

@@ -1,0 +1,190 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "baseState" : {
+        "default" : "inactive",
+        "states" : {
+          "inactive" : {
+            "frames" : 1,
+            "properties" : {
+              "lightsOff" : ["activeGlow"]
+            }
+          },
+          "activate" : {
+            "frames" : 2,
+            "cycle" : 0.25,
+            "mode" : "transition",
+            "transition" : "active",
+            "properties" : {
+              "lightsOn" : ["activeGlow"],
+              "persistentSound" : "/sfx/objects/terraformer_active_loop.ogg",
+              "persistentSoundRangeMultiplier" : 0.5,
+              "persistentSoundStopTime" : 0.2
+            }
+          },
+          "idle" : {
+            "frames" : 6,
+            "cycle" : 0.75,
+            "mode" : "loop",
+            "properties" : {
+              "lightsOn" : ["activeGlow"],
+              "persistentSound" : "/sfx/objects/terraformer_idle_loop.ogg",
+              "persistentSoundRangeMultiplier" : 0.5,
+              "persistentSoundStopTime" : 0.2
+            }
+          },
+          "active" : {
+            "frames" : 6,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+              "lightsOn" : ["activeGlow"],
+              "persistentSound" : "/sfx/objects/terraformer_active_loop.ogg",
+              "persistentSoundRangeMultiplier" : 0.5,
+              "persistentSoundStopTime" : 0.2
+            }
+          }
+        }
+      },
+      "beamState" : {
+        "default" : "inactive",
+        "states" : {
+          "inactive" : {},
+          "activate" : {
+            "frames" : 1,
+            "cycle" : 0.25,
+            "mode" : "transition",
+            "transition" : "active"
+          },
+          "idle" : {
+            "frames" : 1
+          },
+          "active" : {
+            "frames" : 8,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "beam" : {
+        "properties" : {
+          "zLevel" : -1,
+          "fullbright" : true,
+          "centered" : false,
+          "offset" : [1.5, 5.0]
+        },
+
+        "partStates" : {
+          "beamState" : {
+            "inactive" : {},
+
+            "activate" : {},
+
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+
+            "active" : {
+              "properties" : {
+                "image" : "<partImage>:active.<frame>"
+              }
+            }
+          }
+        }
+      },
+      "base" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "baseState" : {
+            "inactive" : {
+              "properties" : {
+                "image" : "<partImage>:inactive"
+              }
+            },
+
+            "activate" : {
+              "properties" : {
+                "image" : "<partImage>:activate.<frame>"
+              }
+            },
+
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:active.<frame>"
+              }
+            },
+
+            "active" : {
+              "properties" : {
+                "image" : "<partImage>:active.<frame>"
+              }
+            }
+          }
+        }
+      },
+      "baseFullbright" : {
+        "properties" : {
+          "zLevel" : 1,
+          "fullbright" : true,
+          "centered" : false
+        },
+
+        "partStates" : {
+          "baseState" : {
+            "inactive" : {
+              "properties" : {
+                "image" : "<partImage>:inactive"
+              }
+            },
+
+            "activate" : {
+              "properties" : {
+                "image" : "<partImage>:activate.<frame>"
+              }
+            },
+
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:active.<frame>"
+              }
+            },
+
+            "active" : {
+              "properties" : {
+                "image" : "<partImage>:active.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "lights" : {
+    "inactiveGlow" : {
+      "active" : true,
+      "position" : [2.0, 3.5],
+      "color" : [35, 35, 35]
+    },
+    "activeGlow" : {
+      "active" : false,
+      "position" : [2.0, 3.5],
+      "color" : [75, 75, 75]
+    }
+  },
+
+  "particleEmitters" : {},
+
+  "sounds" : {
+    "activate" : ["/sfx/melee/elemental_aura_activate.ogg"],
+    "deactivate" : ["/sfx/objects/terraformer_deactivate.ogg"]
+  }
+}

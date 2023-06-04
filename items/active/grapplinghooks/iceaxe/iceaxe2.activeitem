@@ -1,0 +1,131 @@
+{
+  "itemName" : "iceaxe2",
+  "price" : 120,
+  "inventoryIcon" : "iceaxe2.png",
+  "rarity" : "legendary",
+  "maxStack" : 1,
+  "description" : "Short-ranged grapple. ^red;Regenerates health^reset; when attached. Improves healing.",
+  "shortdescription" : "Bloodhook",
+  "largeImage" : "iceaxe2.png",
+  "category" : "Tool",
+  "fireTime" : 0,
+  "twoHanded" : false,
+
+  "scripts" : ["/items/active/grapplinghooks/grapplinghook.lua"],
+    "animationScripts" : ["/items/active/effects/renderrope.lua"],
+
+  "animation" : "iceaxe2.animation",
+
+  "fireOffset" : [0, 0],
+  "ropeOffset" : [-1.2, 0],
+  "ropeVisualOffset" : [0.75, 0],
+  "handGrip" : "wrap",
+  "consumeOnUse" : false,
+
+  "projectileType" : "iceaxe",
+  "projectileParameters" : {
+    "speed" : 120,
+    "timeToLive" : 0.45,
+    "power" : 10,
+    "piercing" : true,
+    "onlyHitTerrain":false,
+    "actionOnCollide":[ {"options":["/sfx/projectiles/magnorb_impact2.ogg"],"action":"sound"} ],
+    "statusEffects" : [ "bleedingshort" ],
+    "periodicActions": [
+      {
+        "time": 0,
+        "action": "particle",
+        "specification": {
+          "type": "ember",
+          "size": 0.2,
+          "light": [185,20,25],
+          "color": [255,25,25,255],
+          "initialVelocity": [0,1],
+          "finalVelocity": [0,-3],
+          "approach": [0,0 ],
+          "timeToLive": 1.0,
+          "fade": 0.3,
+          "destructionAction": "shrink",
+          "destructionTime": 0.95,
+          "layer": "front",
+          "variance": {
+            "initialVelocity": [ 0,-1 ],
+            "position": [ 0.9,0.9 ],
+            "size": 0.7
+          }
+        }
+      },
+      {
+        "repeat": true,
+        "time": 0.9,
+        "action": "projectile",
+        "type": "invisibletentaclefistnosound",
+        "angleAdjust": 180,
+        "config": {
+          "ignoreTerrain": true,
+          "controlForce": 800,
+          "power": 0,
+          "knockback": 0,
+          "damageTeam": {
+            "type": "indiscriminate"
+          },
+          "damageType": "damage",
+          "damageKind": "hidden",
+          "statusEffects": [],
+          "speed": 70,
+          "processing": "?scalenearest=0.1",
+          "timeToLive": 6,
+          "actionOnReap": [
+            {
+              "time": 0,
+              "repeat": false,
+              "action": "projectile",
+              "type": "invisibleprojectile",
+              "angleAdjust": 0,
+              "config": {
+                "power": 0,
+                "knockback": 0,
+                "statusEffects": [
+		    {
+		      "effect" : "healingbonus",
+		      "duration" : 0.9
+		    },
+                  {
+                    "effect": "regeneration4",
+                    "duration": 0.9
+                  },
+                  {
+                    "effect": "colorred",
+                    "duration": 0.9
+                  }
+                ],
+                "damageType": "damage",
+                "damageKind": "hidden",
+                "damageTeam": {
+                  "type": "indiscriminate"
+                },
+                "speed": 0,
+                "timeToLive": 0.05
+              }
+            }
+          ],
+          "periodicActions": []
+        }
+      }
+    ]
+  },
+
+  "ropeWidth" : 0.01,
+  "ropeColor" : [122, 112, 110, 225],
+
+  "reelInDistance" : 2,
+  "reelOutLength" : 2,
+  "breakLength" : 3,
+
+  "minSwingDistance" : 0,
+
+  "reelSpeed" : 70,
+  "controlForce" : 9000,
+
+  "groundLagTime" : 0
+}

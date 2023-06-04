@@ -1,0 +1,89 @@
+{
+	"stats": [
+		{ "stat": "maxHealth", "effectiveMultiplier": 0.85 },
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.15 },
+		{ "stat": "powerMultiplier", "effectiveMultiplier": 1.05 },
+		{ "stat": "fallDamageMultiplier", "effectiveMultiplier": 0.50 },
+
+		{ "stat": "physicalResistance", "amount": -0.05 },
+		{ "stat": "fireResistance", "amount": -0.15 },
+		{ "stat": "electricResistance", "amount": 0.25 },
+		{ "stat": "radioactiveResistance", "amount": -0.10 },
+
+		{ "stat": "electricStatusImmunity", "amount": 1 },
+
+		{ "stat": "quarterstaffMastery", "amount": 0.25 }
+	],
+	"diet" : "omnivore",
+	"controlModifiers" : {"airJumpModifier" : 1.15},
+
+	"envEffects": [
+	// jungle bonus exists to simply negate the penalties they suffer on their Vanilla biome world type
+	// it does not need to be listed in the species patch file
+		{
+			"biomes": [ "jungle","thickjungle" ],
+			"stats": [
+				{ "stat": "physicalResistance", "effectiveMultiplier":  1.1 }
+			]
+		},
+		{
+			"biomes": [ "irradiated", "scorchedcity","tidewater" ],
+			"stats": [
+				{ "stat": "protection", "effectiveMultiplier":  0.8 }
+			]
+		}
+	],
+
+	"weaponEffects" : [],
+
+	"weaponScripts" : [
+		{
+			"script" : "/scripts/fr_weaponscripts/aviancombo.lua",
+			"weapons" : [ "dagger" ],
+			"contexts" : [ "meleecombo-fire" ]
+		},
+		{
+			"script" : "/scripts/fr_weaponscripts/freebonus.lua",
+			"contexts" : [ "staff-init" ],
+			"args" : {
+				"stats": [
+					{ "stat": "powerMultiplier", "effectiveMultiplier": 1.2 }
+				],
+				"scripts" : [
+					{
+						"script" : "/scripts/fr_weaponscripts/wandresist.lua",
+						"args" : {
+							"amount" : 0.15
+						}
+					}
+				]
+			}
+		}
+	],
+	"aerialEffect" : {
+		"airStats" : {
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.12 }
+			]
+		},
+
+		"windEffects" : {
+			"windHigh" : {
+				"speed" : 60
+			},
+			"windLow" : {
+				"speed" : 5,
+				"stats": [
+					{ "stat": "maxHealth", "effectiveMultiplier": 1.15 },
+					{ "stat": "protection", "effectiveMultiplier": 1.1 }
+				],
+				"controlModifiers" : {
+					"speedModifier" : 1.19,
+					"airJumpModifier" : 1.2,
+					"airForce" : 86
+				}
+			}
+		}
+	},
+	"tech" : [ "flight_avian" ]
+}

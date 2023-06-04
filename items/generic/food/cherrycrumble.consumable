@@ -1,0 +1,25 @@
+{
+  "itemName" : "cherrycrumble",
+  "rarity" : "Common",
+  "price" : 15,
+  "category" : "preparedFood",
+  "inventoryIcon" : "cherrycrumble.png",
+  "description" : "A wonderfully tasty desert.\n^cyan;+^white;20% ^cyan;EP ^gray;(^white;150s^gray;)\n^green;Type: Fruit Dessert^reset;",
+  "shortdescription" : "Cherry Crumble",
+  "foodValue" : 30,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1,
+  "blockingEffects" : [ "wellfed" ],
+  "effects" : [ [
+    {
+        "effect" : "maxenergyscalingboostfood",
+        "duration" : 150
+    },
+    {
+        "effect" : "fruit_dessert"
+    }
+  ] ]
+}

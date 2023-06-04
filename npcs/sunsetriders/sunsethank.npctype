@@ -1,0 +1,64 @@
+{
+  "type" : "sunsethank",
+  "baseType" : "hostilefu",
+
+    "identity" : {
+    "name" : "Hawkeye Hank",
+    "gender" : "male",
+    "race" : "novakid"
+  },
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "extraNovakid" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "I ain't kilt nobody, I swear it. It was that eyed tentercle thang!",
+            "Ain't nobody ever gonna believe I ain't done in Ginger? I'm sick o' runnin!",
+            "Fer the last time...I ain't kilt no girl and I ain't let no creature snack on 'er!"
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "cowboyhead", "parameters" : { "colorIndex" : 7 } } ],
+            "chest" : [ { "name" : "cowboychest", "parameters" : { "colorIndex" : 7 } } ],
+            "legs" : [ { "name" : "cowboylegs", "parameters" : { "colorIndex" : 7 } } ],
+            "primary" : [
+              "pistoltitaniumfucustom"
+            ],
+	      "alt" : [
+              "commonsmallshield",
+              "commonlargeshield"
+            ]
+
+          }
+         ]
+    ]
+	]
+  },
+
+  "statusControllerSettings" : {
+
+    "stats" : {
+      "powerMultiplier" : {
+        "baseValue" : 1.25
+      },
+	  "maxHealth" : {
+        "baseValue" : 200.0
+      },
+	  "maxEnergy" : {
+        "baseValue" : 200.0
+      }
+    }
+  }
+}

@@ -1,9 +1,13 @@
 {
-  "name" : "honeyslowimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "honeyslowimmunity.lua"
-  ]
+	"name": "honeyslowimmunity",
+	"effectConfig": {
+		"stats": [{
+			"stat": "honeyslowImmunity",
+			"amount": 1
+		}]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

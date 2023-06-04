@@ -1,136 +1,58 @@
-function init(virtual)
-	if virtual == true then return end
-	object.setInteractive(true)
-	object.setSoundEffectEnabled(false)
-	
-	if storage.currentpowerprod == nil then storage.currentpowerprod = 0 end
-	if storage.fueledticks == nil then storage.fueledticks = 0 end
-	if storage.decayrate == nil then storage.decayrate = 5 end
-	if storage.active == nil then storage.active = true end	
-	if storage.batteryHold == nil then storage.batteryHold = false end
-end
+require '/scripts/fupower.lua'
+require "/scripts/kheAA/transferUtil.lua"
 
-function onInputNodeChange(args)
-	if object.isInputNodeConnected(0) then
-		if object.getInputNodeLevel(0) == true then storage.active = true
-		else storage.active = false
-		end
-	else storage.active = true
-	end
+function init()
+	heat = config.getParameter('heat')
+	power.init()
 end
 
 function update(dt)
-
-	local devices = isn_getAllDevicesConnectedOnNode(0,"output")
-	-- sb.logInfo("devices found: %s", devices)
-	local fullBattery = false
-	local spendingPower = false
-	for key,value in pairs(devices) do
-		-- sb.logInfo("Checking device %s", value)
-		if world.callScriptedEntity(value, "isn_isBattery") then
-			local currentBatteryStorage = world.callScriptedEntity(value, "isn_getCurrentPowerStorage")
-			if currentBatteryStorage > 98 then
-				fullBattery = true
-			else
-				if storage.batteryHold and currentBatteryStorage > 90 then
-					fullBattery = true
-				else
-					spendingPower = true
-				end
-			end
-		else
-			if not world.callScriptedEntity(value, "isn_doesNotConsumePower") then
-				spendingPower = true
-			end
-		end
-	end
-	if fullBattery and not spendingPower then
-		storage.batteryHold = true
-		-- sb.logInfo("Battery full and no other consumers connected, shutting down")
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
+		transferUtil.loadSelfContainer()
 	else
-		storage.batteryHold = false
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
-
-	-- check current power production and set the animation state accordingly
-	if storage.currentpowerprod > 90 and storage.active and not storage.batteryHold then
-		animator.setAnimationState("screen", "slow")
-        object.setLightColor(config.getParameter("lightColor", {126, 206, 255}))
-        object.setSoundEffectEnabled(true)
-	elseif storage.currentpowerprod > 50 and storage.active and not storage.batteryHold then
-		animator.setAnimationState("screen", "slow")
-		animator.setAnimationState("fans", "slow")
-        object.setLightColor(config.getParameter("lightColor", {70, 126, 161}))		
-		object.setSoundEffectEnabled(true)
-	elseif storage.currentpowerprod > 10 and storage.active and not storage.batteryHold then
-		animator.setAnimationState("screen", "slow")
-		animator.setAnimationState("fans", "slow")
-        object.setLightColor(config.getParameter("lightColor", {35, 79, 87}))
-		object.setSoundEffectEnabled(true)
-	else
-		animator.setAnimationState("screen", "off")
-		animator.setAnimationState("fans", "off")
-		object.setSoundEffectEnabled(false)
-        object.setLightColor({0, 0, 0, 0})		
+	if storage.fueltime and storage.fueltime > 0 then
+		storage.fueltime = math.max(storage.fueltime - dt,0)
 	end
-
-	if not storage.active or storage.batteryHold then
-		return
-	end
-
-	if storage.fueledticks > 0 then -- if we're currently fueled up
-		  storage.fueledticks = storage.fueledticks - 1
-		-- Increase power but cap it at a 0-100 range
-		storage.currentpowerprod = isn_numericRange((storage.currentpowerprod + storage.decayrate),0,100)
-	else -- oh no we've got no fuel
-		-- if the generator isn't active don't bother trying to refuel
-		if storage.active then
-			-- try to get some fuel
-			local contents = world.containerItems(entity.id())
-			if contents[1] == nil then
-				-- if there's nothing in storage just skip straight to cutting power
-				storage.currentpowerprod = isn_numericRange((storage.currentpowerprod - storage.decayrate),0,100)
-				return
-			end
-			
-			for key, value in pairs(config.getParameter("acceptablefuel")) do
-				-- go through our fuel table and see if the contents of the fuel slot match
-				if key == contents[1].name then -- found it!
-					storage.fueledticks = value
-					world.containerConsume(entity.id(), {name = contents[1].name, count = 1, data={}})
-					return -- end it here since we want to start again with the new fuel
+	if not storage.fueltime or storage.fueltime == 0 then
+		storage.powermod = nil
+		item = world.containerItemAt(entity.id(),0)
+		if item and (not object.isInputNodeConnected(1) or object.getInputNodeLevel(1)) then
+			itemlist = config.getParameter('acceptablefuel')
+			for key,value in pairs(itemlist) do
+				if item.name == key then
+					world.containerConsumeAt(entity.id(),0,1)
+					storage.fueltime = value
+					storage.powermod = value
 				end
 			end
 		end
-		-- since the loop ends this update if it finds fuel, if we've reached this point
-		-- it means we didn't find any fuel so now we decrease power gradually
-		storage.currentpowerprod = isn_numericRange((storage.currentpowerprod - storage.decayrate),0,100)
 	end
-end
-
-function isn_getCurrentPowerOutput(divide)
-
-	if storage.batteryHold or not storage.active then return 0 end
-
-	---sb.logInfo("THERMAL GENERATOR CURRENT POWER OUTPUT DEBUG aka TGCPOD")
-	local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)
-	---sb.logInfo("TGCPOD: Divisor is " .. divisor)
-	if divisor < 1 then divisor = 1 end
-	
-	local powercount = 0
-	if storage.currentpowerprod > 90 then powercount = 100
-	elseif storage.currentpowerprod > 70 then powercount = 50
-	elseif storage.currentpowerprod > 50 then powercount = 36
-	elseif storage.currentpowerprod > 30 then powercount = 24
-	elseif storage.currentpowerprod > 10 then powercount = 8
-	else powercount = 0 end
-	---sb.logInfo("TGCPOD: Powercount is" .. powercount)
-	
-	---sb.logInfo("THERMAL GENERATOR CURRENT POWER OUTPUT DEBUG END")
-	if divide == true then return powercount / divisor
-	else return powercount end
-end
-
-function onNodeConnectionChange()
-	if isn_checkValidOutput() == true then object.setOutputNodeLevel(0, true)
-	else object.setOutputNodeLevel(0, false) end
+	if storage.fueltime and storage.fueltime > 0 then
+		storage.heat = math.min((storage.heat or 0) + dt*5,100)
+	else
+		storage.heat = math.max((storage.heat or 0) - dt*5,0)
+	end
+	local heatmark=0
+	for i=1,#heat do
+		if storage.heat >= heat[i].minheat then
+			heatmark=heat[i].power
+			power.setPower(heatmark + (storage.powermod or 0))
+			local light = config.getParameter("lightColor", heat[i].light)
+			local brightness = math.min(0.75,0.75*(storage.heat/90))
+			light[1] = math.floor(light[1]*0.25 + light[1]*brightness)
+			light[2] = math.floor(light[2]*0.25 + light[2]*brightness)
+			light[3] = math.floor(light[3]*0.25 + light[3]*brightness)
+			object.setLightColor(light)
+			object.setSoundEffectEnabled(heat[i].sound)
+			for key,value in pairs(heat[i].animator) do
+				animator.setAnimationState(key, value)
+			end
+			break
+		end
+	end
+	object.setAllOutputNodes(heatmark>0)
+	power.update(dt)
 end

@@ -1,0 +1,30 @@
+{
+  "projectileName" : "mrscorchy",
+  "image" : "isn_magmavulcanshot.png",
+  "physics" : "grenadezbomb",
+  "animationCycle" : 0.25,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 6,
+  "power" : 1.5,
+  "level" : 5,
+  "speed" : 80,
+  "timeToLive" : 1,
+  "bounces" : 0,
+  "piercing" : false,
+  "fallSpeed" : 10,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [155, 77, 0],
+  "damageKind" : "hellfire",
+  "emitters" : [ "flamesfast" ],
+  "statusEffects" : [ "melting" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/guns/magmaorb/mrscorchy.config"
+    },
+    {
+      "action" : "liquid",
+      "liquid" : "lava", "quantity" : 1
+    }
+  ]
+}

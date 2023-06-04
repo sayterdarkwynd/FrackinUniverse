@@ -1,0 +1,31 @@
+{
+	"name": "deathbombbrainharvest",
+	"blockingStat": "specialStatusImmunity",
+	"effectConfig": {
+		"blocker":"deathbombbrainharvest",
+		"minMaxHealth":10,
+		"minBaseHealth":10,
+		"poolData": {
+			"default": "madnessBrainHarvesting",
+			"npc": {
+				"default": "madnessBrainHarvestingGreat",
+				"glitch": "madnessBrainHarvestingRobot",
+				"trink": "madnessBrainHarvestingRobot",
+				"droden": "madnessBrainHarvestingRobot",
+				"novakid":"madnessBrainHarvestingPlasma",
+				"anodyne":"madnessBrainHarvestingPlasma"
+			},
+			"monster": {
+				"default": "madnessBrainHarvesting",
+				"robotic": "madnessBrainHarvestingRobot",
+				"beer": "madnessBrainHarvestingBeer"
+			}
+		}
+	},
+	"defaultDuration": 10,
+
+	"scripts": [
+		"deathbombcomplextreasurepool.lua",
+		"fu_precursorspawnerbrainharvest.lua"
+	]
+}

@@ -1,0 +1,229 @@
+{
+  "name" : "furuinsunderground",
+  "friendlyName" : "Ruined Caverns",
+
+    "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 3,
+        "pool" : [
+          [ 0.1111, "fleshleech" ],
+          [ 0.1111, "paratail" ],
+          [ 0.07, "smallshroom" ],
+          [ 0.04, "kluexsentry" ],
+          [ 0.04, "kluextotem" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : [
+          [ 0.4, "shardwing" ],
+          [ 0.3, "stinkjack" ],
+	  [ 0.3, "xenofly" ]
+        ]
+      },
+      {
+        "select" : 3,
+        "pool" : [
+	  [ 0.3, "apexscabcritter" ],
+          [ 0.4, "avianscabcritter" ],
+          [ 0.3, "eyefriendcritter" ],
+          [ 0.3, "eyepodcritter" ],
+	  [ 0.3, "floranscabcritter" ],
+	  [ 0.3, "glitchscabcritter" ],
+	  [ 0.3, "humanscabcritter" ],
+	  [ 0.3, "hylotlscabcritter" ],
+	  [ 0.3, "maggotcritter" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      }
+    ],
+    "monsterParameters" : {
+      "colors" : "magma",
+      "statusSettings" : {
+        "stats" : {
+          "insanityImmunity" : {
+            "baseValue" : 1.0
+          },
+          "pusImmunity" : {
+            "baseValue" : 1.0
+          },
+          "biooozeImmunity" : {
+            "baseValue" : 1.0
+          }
+        }
+      }
+    }
+  },
+
+  "mainBlock" : "tombbrick",
+  "subBlocks" : [ "tombbrick2", "tombbrick3", "tombbrick4", "tombbrick5" ],
+  "ores" : "depth2",
+
+  "parallax" : "/parallax/underground/furuinunderground.parallax",
+
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/desert_underground.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/desert_underground.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "bone", "junglegrass" ],
+    "grassModDensity" : 0.2,
+    "ceilingGrassMod" : [ "undergrowth" ],
+    "ceilingGrassModDensity" : 0.8,
+    "items" : [
+      {
+        "mode" : "background",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundFossils",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.15, "dirtyfossil1" ], [0.15, "dirtyfossil2" ], [0.15, "dirtyfossil3" ], [0.15, "dirtyfossil4" ], [0.1, "dirtyfossil5" ], [0.1, "dirtyfossil6" ], [0.1, "dirtyfossil7" ], [0.1, "dirtyfossil8" ] ],
+            "parameters" : {  "materials" : ["mud", "cobblestone", "bonematerial"]}
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "smashbones1" ], [0.35, "smashbones2" ], [0.35, "smashbones3" ], [0.35, "smashbones4" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:minibiomeChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "sandstoneChest" ]
+      },
+
+      {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [
+            [0.3, "birdjar1" ],
+            [0.3, "birdjar2" ],
+            [0.3, "birdtable" ],
+            [0.3, "birdthrone" ],
+            [0.3, "birdaltar2" ],
+            [0.3, "bigjar1" ],
+            [0.3, "obsidianbookcase" ],
+            [0.3, "sacrificialaltar" ],
+            [0.3, "sarcoavian1" ],
+            [0.3, "sarcoavian2" ],
+            [0.3, "spearrack" ],
+            [0.3, "sawblade" ],
+            [0.3, "talljar1" ],
+            [0.3, "ashjar1" ],
+            [0.3, "altaravian" ],
+            [0.3, "feathers1" ],
+            [0.3, "feathers2" ],
+            [0.3, "goldenjar1" ],
+            [0.3, "goldenurn" ],
+            [0.3, "featherybird" ],
+            [0.3, "tombstatueavian" ]
+            ]
+          }
+        ]
+      },
+
+
+      {
+        "mode" : "background",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [
+            [0.08, "earthemblem" ],
+            [0.08, "birdgodemblem" ],
+            [0.08, "airemblem" ],
+            [0.08, "avianbanner1" ],
+            [0.08, "avianbanner2" ],
+            [0.08, "avianbanner3" ],
+            [0.08, "avianbanner4" ],
+            [0.08, "birdgong1" ],
+            [0.08, "birdgong2" ],
+            [0.08, "consoletribalwall" ],
+            [0.08, "decorativewallrug1" ],
+            [0.08, "decorativewallrug2" ],
+            [0.08, "fireemblem" ],
+            [0.08, "moonemblem" ],
+            [0.08, "sundecor" ],
+            [0.08, "wateremblem" ],
+            [0.08, "earthemblem" ],
+            [0.08, "earthemblem" ]
+            ]
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [
+              [0.3, "sawblade" ]
+            ]
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 180,
+        "treeStemList" : [ "vine", "vine2", "vine3", "vine4" ],
+        "treeFoliageList" : [ "flowery", "starry", "dreamy" ]
+      }
+    ]
+  }
+}

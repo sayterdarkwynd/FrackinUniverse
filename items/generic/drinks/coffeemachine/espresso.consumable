@@ -1,0 +1,23 @@
+{
+  "itemName" : "espresso",
+  "rarity" : "Common",
+  "price" : 13,
+  "category" : "drink",
+  "inventoryIcon" : "espresso.png",
+  "description" : "A rich and potent caffeinated blend.\n^cyan;Strongly Caffeinated ^gray;(^white;2m^gray;)^reset;",
+  "shortdescription" : "Espresso",
+  "handPosition" : [0, -2],
+  "effects" : [ [
+    {
+      "effect" : "strongcoffee3",
+      "duration" : 120
+    }
+  ] ],
+  "foodValue" : 20,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1,
+  "blockingEffects" : [ "wellfed" ],
+  "emitters" : [ "drinking" ]
+}

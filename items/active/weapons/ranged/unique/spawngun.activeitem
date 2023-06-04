@@ -4,12 +4,13 @@
   "inventoryIcon" : "spawngunicon.png",
     "maxStack" : 1,
     "rarity" : "rare",
-  "description" : "Fires pods that sprout into vicious, flesh-rending plants.",
+  "description" : "Why fire bullets when you can fire living creatures?
+^yellow;Spawns Spike-bugs^reset;",
   "shortdescription" : "Spike-Bug Launcher",
   "level" : 4,
-  "category" : "uniqueWeapon",
-  "itemTags" : ["weapon","ranged","machinepistol"],
-  "tooltipKind" : "gun",
+  "category" : "bioweapon",
+  "itemTags" : ["weapon","ranged","machinepistol", "bioweapon", "upgradeableWeapon" ],
+  "tooltipKind" : "gun2",
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
@@ -17,10 +18,10 @@
     "middle" : "spawngun.png",
     "barrel" : "",
     "muzzleFlash" : ""
-  },      
+  },
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/gun/needler1.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }  
+    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }
   },
 
   "baseOffset" : [1.0, 0.34],
@@ -72,6 +73,7 @@
       }
     }
   },
-
+  "critChance" : 2,
+  "critBonus" : 22,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

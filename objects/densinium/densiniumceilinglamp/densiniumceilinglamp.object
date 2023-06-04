@@ -1,0 +1,66 @@
+{
+  "objectName" : "densiniumceilinglamp",
+  "colonyTags" : ["densinium", "light"],
+  "rarity" : "legendary",
+  "category" : "light",
+  "lightColor" : [193, 0, 255],
+  "price" : 300,
+  "description" : "A ceiling mounted lamp made from densinium.",
+  "shortdescription" : "Densinium Ceiling Lamp",
+  "race" : "generic",
+
+  "apexDescription" : "This lamp would cerainly hurt were it to fall.",
+  "avianDescription" : "This lamp is extremely heavy!",
+  "floranDescription" : "Heavy lamp! Ssshiny metal!",
+  "glitchDescription" : "Wary. I hope that doesn't fall.",
+  "humanDescription" : "It's a very pretty coloured lamp.",
+  "hylotlDescription" : "A very sturdy pod-like lamp.",
+  "novakidDescription" : "It's mighty heavy, but sturdy. I hope it don't fall on me.",
+
+  "inventoryIcon" : "densiniumceilinglampicon.png",
+  "orientations" : [
+    {
+      "image" : "densiniumceilinglamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "densiniumceilinglamp.png",
+        "fg" : "densiniumceilinglamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "image" : "densiniumceilinglamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "densiniumceilinglamp.png",
+        "fg" : "densiniumceilinglamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "densiniumceilinglamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : true,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

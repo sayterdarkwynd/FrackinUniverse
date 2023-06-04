@@ -1,0 +1,115 @@
+{
+  "itemName" : "transdimensionalstaff",
+  "level" : 8,
+  "price" : 72000,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Cross through dimensions at will.",
+  "shortdescription" : "Void-Warp Locus",
+  "category" : "staff",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","staff","upgradeableWeapon"],
+  "tooltipKind" : "staff",
+
+  "blinkCollisionCheckDiameter" : 2,
+  "blinkVerticalGroundCheck" : 0,
+
+  // Specific to humanoid
+  "blinkFootOffset" : -2.5,
+
+  "blinkOutTime" : 0.55,
+  "blinkInTime" : 0.55,
+
+  "blinkMode" : "cursorPenetrate",
+
+  "teleportOffset" : [0, 2.5],
+  "teleportTolerance" : 1.0,
+
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "transdim.png",
+    "stone" : "",
+    "chargeEffect" : "staffglow.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "electriccharge" : {
+        "offsetRegion" : [-0.5, 1.75, 0.5, 3.25]
+      }
+    }
+  },
+
+  "inventoryIcon" : "transdim.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 1.3,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "discharge" : {
+      "duration" : 0.5,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.0,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "elementalType" : "shadow",
+
+  "primaryAbilityType" : "transdimensional",
+
+  "altAbility" : {
+    "type" : "translocatorportal",
+    "name" : "Teleport",
+    "scripts" : ["/items/active/weapons/staff/abilities/transdimensional.lua"],
+    "class" : "Controlledteleport",
+
+    "energyCost" : 500,
+
+    "maxCastRange" : 300,
+
+    "projectileCount" : 1,
+    "projectileDistance" : 2.5,
+    "projectileType" : "balllightning",
+    "projectileParameters" : {
+      "baseDamage" : 0
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

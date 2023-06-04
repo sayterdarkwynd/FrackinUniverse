@@ -1,0 +1,27 @@
+{
+  "name" : "skathguardtenant",
+  "priority" : 6,
+
+  "colonyTagCriteria" : {
+    "light" : 1,
+    "door" : 1,
+    "skath" : 3,
+    "combat" : 4
+  },
+
+  "tenants" : [{
+      "spawn" : "npc",
+      "species" : "skath",
+      "level" : 6,
+      "type" : "guard",
+      "overrides" : {
+        "damageTeamType" : "friendly"
+      }
+    }
+  ],
+
+  "rent" : {
+    "periodRange" : [900.0, 1800.0],
+    "pool" : "villagerGift"
+  }
+}

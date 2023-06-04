@@ -1,0 +1,111 @@
+{
+  "projectileName" : "cosmicorbxithricite",
+  "physics" : "laser",
+  "timeToLive" : 1,
+  "image" : "cosmicorb.png",
+  "animationCycle" : 0.3,
+  "lightColor" : [60, 30, 100],
+  "frameNumber" : 4,
+  "periodicActions" : [
+    {
+      "time" : 0.2,
+      "action" : "loop",
+      "count" : 5,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/lightningsparks/lightningsparks.animation",
+            "position" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1.5, 1.5],
+            "destructionAction" : "fade",
+            "destructionTime" : 0.85,
+            "fade" : 1,
+            "size" : 0.3,
+            "layer" : "middle",
+            "timeToLive" : 0.35,
+            "variance" : {
+              "size" : 0.2,
+              "position" : [1.2, 1.0],
+              "initialVelocity" : [2.0, 2.0]
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/sparkles/sparkle6.animation",
+            "initialVelocity" : [0.0, 7.0],
+            "finalVelocity" : [0.0, 4.0],
+            "approach" : [0.3, 60],
+            "timeToLive" : 0.8,
+            "layer" : "back",
+            "size" : 0.3,
+            "collidesForeground" : true,
+            "variance" : {
+            "position" : [0.5, 0.5],
+            "size" : 0.2,
+            "initialVelocity" : [5, 3],
+            "finalVelocity" : [0, 0],
+            "rotation" : 170,
+            "angularVelocity" : 180
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/sparkles/sparkle6.animation",
+            "position" : [0, 0],
+            "initialVelocity" : [0.2, -10],
+            "finalVelocity" : [0.1, -50],
+            "approach" : [0, 10],
+            "fade" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2,
+            "layer" : "middle",
+            "size" : 0.3,
+            "timeToLive" : 1,
+            "variance" : {
+            "position" : [1, 1],
+            "size" : 0.2,
+            "initialVelocity" : [0, 4]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/gun/lightningcoil1.ogg", "/sfx/gun/lightningcoil2.ogg", "/sfx/gun/lightningcoil3.ogg" ]
+    },
+    {
+      "action" : "projectile",
+      "type" : "cosmicportalclose",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : 0
+    }
+  ],
+  "speed" : 30,
+  "power" : 1,
+  "damageKind" : "cosmicplasma",
+  "damagePoly" : [ [-10, 0], [-7, -7], [0, -10], [7, -7], [10, 0], [7, 7], [0, 10], [-7, 7] ],
+  "statusEffects" : [ "defenseboostneg20" ],
+  "damageRepeatTimeout" : 0.25,
+
+  "orientationLocked" : true,
+  "fullbright" : true,
+  "emitters" : [ "cosmicdust" ],
+
+  "piercing" : true,
+  "bounces" : -1,
+
+  "persistentAudio" : "/sfx/melee/barrier_create_electric.ogg"
+}

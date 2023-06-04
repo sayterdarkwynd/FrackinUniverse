@@ -1,0 +1,47 @@
+{
+  "itemName" : "zerchesiumlongsword",
+  "price" : 600,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Heavy-edged and freezing cold.
+^cyan;Counts as Hunting weapon^reset;",
+  "shortdescription" : "Zerchesium Longsword",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","longsword", "upgradeableWeapon","zerchesium"],
+  "inventoryIcon" : "zerchesiumlongsword.png",
+
+  "animation" : "combolongsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "zerchesiumlongsword.png"
+  },
+  "animationCustom" : {
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.905,
+    "baseDps" : 6.7,
+    "damageConfig" : {
+      "damageSourceKind" : "ice"
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 3,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

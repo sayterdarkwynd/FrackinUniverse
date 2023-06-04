@@ -1,0 +1,51 @@
+{
+  "objectName" : "fujaildoor",
+  "colonyTags" : ["wood","door"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 125,
+  "description" : "A heavy pressure door, great for use on ships.",
+  "shortdescription" : "Pressure Door",
+  "race" : "glitch",
+
+  "inventoryIcon" : "jaildooricon.png",
+
+  "tooltipKind" : "door",
+  "largeImage" : "jaildoor.png:right",
+
+  "orientations" : [
+    {
+      "image" : "jaildoor.png:default",
+      "imagePosition" : [-15, 0],
+      "renderLayer" : "Object+5",
+
+      "spaces" : [ [0,0], [0,1], [0,2], [0,3], [0,4] ],
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/bardoor2_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/bardoor2_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "jaildoor.png"
+  },
+  "animationPosition" : [-15, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

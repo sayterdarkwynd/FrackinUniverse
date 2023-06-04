@@ -1,0 +1,25 @@
+{
+	"itemName": "fuchurros",
+	"rarity": "uncommon",
+	"price": 10,
+	"category": "preparedFood",
+	"inventoryIcon": "churros.png",
+	"description": "Fried dough coated in sugar and cinnamon; a festival favorite. \n^cyan;+^reset;12% Energy ^green;Type: Grain^reset;",
+	"shortdescription": "Churros",
+	"effects": [
+		["plant_food", {
+			"effect": "maxenergyscalingboostfood",
+			"duration": 120,
+			"energyModifier": 1.12
+			}
+
+		]
+	],
+	"foodValue": 20,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}

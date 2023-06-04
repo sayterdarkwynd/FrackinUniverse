@@ -1,0 +1,102 @@
+{
+  "itemName" : "aetheriumdisc",
+  "price" : 1800,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "category" : "chakram",
+  "description" : "Slice em up with cosmic power.",
+  "shortdescription" : "Aether Disc",
+  "tooltipKind" : "chakram",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","chakram", "upgradeableWeapon","aetherium","cosmic"],
+  //"collectablesOnPickup" : { "fu_weaponchakram" : "aetheriumdisc" },
+  "inventoryIcon" : "aetheriumdisc.png",
+  "animation" : "chakramglow.animation",
+  "animationParts" : {
+    "chakram" : "aetheriumdisc.png",
+    "chakramfullbright" : "aetheriumdiscfullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "throw" : [ "/sfx/melee/swing_dagger.ogg" ]
+    }
+  },
+  "scripts" : ["/items/active/weapons/boomerang/boomerang.lua"],
+  "fireOffset" : [1.25, 0.5],
+
+  "elementalType":"cosmic",
+  "critChance" : 6,
+  "critBonus" : 5,
+
+  "projectileType" : "aetheriumdisc",
+  "projectileParameters" : {
+    "knockback" : 12,
+    "power" : 7,
+    "damageRepeatTimeout" : 0.05,
+    "damageConfig" : { "damageKind" : "aether" },
+    "returnOnHit" : true,
+    "pickupDistance" : 1.0,
+
+    "hoverMaxDistance" : 90,
+    "maxDistance" : 90,
+    "hoverTime" : 0.5
+  },
+  "level" : 7,
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transition" : "throw",
+      "transitionFunction" : "fire",
+      "armRotation" : 70,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+  "upgradeParameters": {
+    "description" : "Derision be thy shield.",
+	"shortdescription" : "Aether Defender",
+	"inventoryIcon": "aetheriumdisct8.png",
+	"animationParts" : {
+      "chakram" : "aetheriumdisct8.png",
+      "chakramfullbright" : "aetheriumdiscfullbrightt8.png"
+    },
+	"projectileType" : "aetheriumdisct8",
+	"projectileParameters" : {
+      "damageRepeatTimeout" : 1,
+      "returnOnHit" : false,
+      "hoverTime" : 2,
+	  "timeToLive" : 10
+    }
+  },
+  "builder" : "/items/buildscripts/fubuildchakram.lua"
+}

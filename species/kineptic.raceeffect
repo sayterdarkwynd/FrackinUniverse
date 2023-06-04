@@ -1,0 +1,71 @@
+{
+	"stats": [
+		{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 1.06
+		},
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 1.22
+		},
+		{
+			"stat": "iceResistance",
+			"amount": 0.2
+		},
+		{
+			"stat": "electricResistance",
+			"amount": -0.15
+		},
+		{
+			"stat": "poisonResistance",
+			"amount": 0.2
+		},
+		{
+			"stat": "shadowResistance",
+			"amount": -0.25
+		}
+	],
+	"diet" : "carnivore",
+	"controlModifiers": {
+		"speedModifier": 1.05,
+		"airJumpModifier": 1.05
+	},
+	"weaponEffects": [{
+		"weapons": [
+			"quarterstaff"
+		],
+		"stats": [{
+				"stat": "protection",
+				"amount": 3
+			},
+			{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.15
+			}
+		]
+	}],
+	"weaponScripts": [{
+		"script": "/scripts/fr_weaponscripts/freebonus.lua",
+		"contexts": [
+			"staff-init"
+		],
+		"args": {
+			"stats": [{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.25
+				},
+				{
+					"stat": "energyRegenPercentageRate",
+					"baseMultiplier": 1.2
+				},
+				{
+					"stat": "energyRegenBlockTime",
+					"baseMultiplier": 0.5
+				}
+			]
+		}
+	}],
+	"special": [
+		"darkregenfenerox"
+	]
+}

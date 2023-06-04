@@ -1,0 +1,53 @@
+{
+  "objectName" : "chickennest",
+  "rarity" : "Common",
+  "objectType" : "container",
+
+  "category" : "storage",
+  "price" : 100,
+  "description" : "A chicken nest.",
+  "shortdescription" : "Chicken Nest",
+  "race" : "generic",
+  "printable" : false,
+
+  "apexDescription" : "A nest for eggs.",
+  "avianDescription" : "A baby birdy home.",
+  "floranDescription" : "A box of tassssty.",
+  "glitchDescription" : "Identify. Egg Nest.",
+  "hylotlDescription" : "An egg nest.",
+
+  "inventoryIcon" : "chickennesticon.png",
+  "orientations" : [
+    {
+      "dualImage" : "chickennest.png:default",
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/crafting/eggstra/bin.animation",
+
+  "animationParts" : {
+    "bin" : "chickennest.png"
+  },
+
+  "scripts" : [
+    "/objects/crafting/eggstra/bin.lua",
+    "incubator.lua"
+  ],
+  "containerCallback" : "binInventoryChange",
+  "scriptDelta" : 100,
+  "binFrames" : 3,
+
+  "openSounds" : [ "/sfx/objects/woodenbox_open.wav" ],
+  "closeSounds" : [ "/sfx/objects/woodenbox_close.wav" ],
+  "slotCount" : 1,
+  "uiConfig" : "/interface/chests/chest1.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600
+}

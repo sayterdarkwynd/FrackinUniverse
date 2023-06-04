@@ -1,0 +1,32 @@
+{
+  "id" : "shoggoth_wagner",
+  "mainQuest" : true,
+  "prerequisites" : [ "shoggoth_unlock" ],
+  "title" : "A Missing Friend",
+  "text" : "I've no idea how to reach my friend. ^orange;All of the teleporters^reset; leading to Delta Freya II appear to be down, and I can't get word to them. If you find a way there, could you please search for my pal Wagner?",
+  "completionText" : "Oh no. Wagner is...dead? Thank you...^orange;sad news is better than no news at all^reset;. Please take this for your efforts, and leave me. Now go, please. ^green;I need to be alone^reset;  for a while.",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "nocxiumbar", 12 ] ]],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : true,
+    "turnInDescription" : "Return ^orange;Wagner's ID^reset; to the ^orange;Science Outpost^reset;",
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "wagneridcard",
+        "count" : 1,
+        "consume" : true
+      }
+    ]
+  }
+}

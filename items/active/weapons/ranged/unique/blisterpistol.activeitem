@@ -1,30 +1,42 @@
 {
   "itemName" : "blisterpistol",
-  "price" : 500,
+  "price" : 80,
   "inventoryIcon" : "blisterpistol.png",
     "maxStack" : 1,
-    "rarity" : "rare",
-  "description" : "A gene-spliced living weapon.",
+    "rarity" : "uncommon",
   "shortdescription" : "Blister Pistol",
+  "description" : "Fires repulsive glowy goo-globs.
+^green;Targets glow
+^yellow;+Pus effect^reset;",
   "level" : 3,
-  "category" : "uniqueWeapon",
-  "itemTags" : ["weapon","ranged","machinepistol"],
-  "tooltipKind" : "gun",
+  "category" : "bioweapon",
+  "itemTags" : ["weapon","ranged","machinepistol","bioweapon","blister", "upgradeableWeapon"],
+  "tooltipKind" : "gun2",
   "twoHanded" : false,
   "weaponType" : "Bioweapon",
-  "learnBlueprintsOnPickup" : [ "blistergun" ],
-  
-  
-  "animation" : "/items/active/weapons/ranged/unique/blisterpistol.animation",
+ // "learnBlueprintsOnPickup" : [ "blistergun" ],
+
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "blisterpistol.png",
     "middlefullbright" : "blisterpistolfullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/purplemuzzle.png"
-  },      
-  
+  },
+
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+			//Same as BaseOffset
+		    "offset" : [0.7, 0.2]
+		  }
+		}
+      }
+    },
     "sounds" : { "fire" : [ "/sfx/projectiles/goo_spit2.ogg" ] },
     "lights" : { "glow" : {
       "active" : true,
@@ -43,7 +55,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "bioweapon",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -56,7 +68,8 @@
     "projectileCount" : 1,
     "projectileType" : "blisterpistolshot",
     "projectileParameters" : {
-      "speed" : 32
+      "speed" : 32,
+      "statusEffects" : [ "weakpoison" ]
     },
     "stances" : {
       "idle" : {
@@ -87,6 +100,12 @@
       }
     }
   },
+
+  "critChance" : 5,
+  "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : 12,
+  "reloadTime" : 1,
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

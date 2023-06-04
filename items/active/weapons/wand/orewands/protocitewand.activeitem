@@ -1,0 +1,110 @@
+{
+  "itemName" : "protocitewand",
+  "level" : 3,
+  "price" : 960,
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "Sufficiently Advanced Technology.",
+  "shortdescription" : "Protocite Wand",
+  "category" : "wand",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","wand","upgradeableWeapon","energy", "proto"],
+  "tooltipKind" : "staff",
+
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "protocitewand.png",
+    "stone" : "/items/active/weapons/wand/generated/stone/protocitewand.png",
+    "chargeEffect" : "/items/active/weapons/staff/generated/glow/poison.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "wand" : { "properties" : { "offset" : [0, 0.5] } },
+		"chargeEffect" : { "properties" : { "offset" : [0, 0] } }
+      }
+    }
+  },
+
+  "inventoryIcon" : "protocitewand.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "baseDamageFactor" : 0.5,
+
+  "stances" : {
+    "idle" : {
+      "weaponOffset" : [0, 1.0],
+
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "weaponOffset" : [0, 1.5],
+
+      "duration" : 1.0,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "weaponOffset" : [0, 1.5],
+
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "weaponOffset" : [0, 1.5],
+
+      "duration" : 0.5,
+      "armRotation" : -10,
+      "weaponRotation" : -50,
+      "twoHanded" : false,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "cooldown" : {
+      "weaponOffset" : [0, 1.0],
+
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "elementalType" : "poison",
+
+  "primaryAbility" : {
+    "type" : "elementbouncer",
+    "name" : "Poison Bouncer",
+    "scripts" : ["/items/active/weapons/staff/abilities/controlprojectile/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 75,
+
+    "maxCastRange" : 25,
+
+    "projectileType" : "poisonbouncer",
+    "projectileParameters" : {
+      "baseDamage" : 6
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,43 @@
+{
+  "objectName" : "thelusianfridge",
+  "colonyTags" : ["thelusian","cooking","storage"],
+  "rarity" : "common",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "A chitin storage that keeps food fresh.",
+  "shortdescription" : "Thelusian Food Locker",
+  "race" : "thelusian",
+
+  "category" : "fridgeStorage",
+  "price" : 500,
+  "health" : 1.5,
+
+
+  "inventoryIcon" : "thelusianfridgeicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "thelusianfridge.png:<color>.<key>",
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/fridge_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/fridge_close.ogg" ],
+  "slotCount" : 32,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+
+  "itemAgeMultiplier" : 0.0,
+
+  "soundEffect" : "/sfx/objects/fridge_hum.ogg"
+
+}

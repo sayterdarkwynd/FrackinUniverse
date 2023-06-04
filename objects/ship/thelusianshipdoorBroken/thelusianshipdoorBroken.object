@@ -1,0 +1,33 @@
+{
+  "objectName" : "thelusianshipdoorBroken",
+  "colonyTags" : ["thelusian"],
+  "printable" : false,
+  "rarity" : "uncommon",
+
+  "category" : "decorative",
+  "description" : "A door suitable for a spaceship.",
+  "shortdescription" : "Thelusian Ship Door",
+  "race" : "thelusian",
+
+
+  "inventoryIcon" : "thelusianshipdoorBrokenicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "thelusianshipdoorBroken.png:default",
+      "imagePosition" : [-20, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "collision" : "solid",
+      "collisionSpaces" : [ [-1, 0], [0, 0], [-1, 1], [0, 1], [-1, 2], [0, 2], [-1, 3], [0, 3], [-1, 4], [0, 4] ]
+    }
+  ],
+
+  "animation" : "/objects/noisy/noisy.animation",
+
+  "scripts" : [
+    "/objects/noisy/noisy.lua"
+  ],
+
+  "sounds" : [ "/sfx/interface/ship_error1.ogg" ]
+}

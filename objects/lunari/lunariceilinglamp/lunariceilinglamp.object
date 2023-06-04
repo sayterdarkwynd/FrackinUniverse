@@ -1,0 +1,66 @@
+{
+  "objectName" : "lunariceilinglamp",
+  "colonyTags" : ["lunari", "light"],
+  "rarity" : "rare",
+  "category" : "light",
+  "lightColor" : [255, 162, 0],
+  "price" : 300,
+  "description" : "A ceiling mounted lamp made from lunari.",
+  "shortdescription" : "Lunari Ceiling Lamp",
+  "race" : "generic",
+
+  "apexDescription" : "An extremely bright lamp.",
+  "avianDescription" : "This reminds me of the sun.",
+  "floranDescription" : "Sssunssshine lightsss!",
+  "glitchDescription" : "Uncomfortable. This lamp almost fries my optics.",
+  "humanDescription" : "This lamp is like a star!",
+  "hylotlDescription" : "This lamp almost reminds me of the sun.",
+  "novakidDescription" : "This lamp is brighter than me!",
+
+  "inventoryIcon" : "lunariceilinglampicon.png",
+  "orientations" : [
+    {
+      "image" : "lunariceilinglamp.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "animationParts" : {
+        "bg" : "lunariceilinglamp.png",
+        "fg" : "lunariceilinglamplit.png"
+      },
+      "animationPosition" : [0, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "image" : "lunariceilinglamp.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "animationParts" : {
+        "bg" : "lunariceilinglamp.png",
+        "fg" : "lunariceilinglamplit.png"
+      },
+      "animationPosition" : [0, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "lunariceilinglamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : true,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

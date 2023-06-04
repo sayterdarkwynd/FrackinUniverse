@@ -1,0 +1,25 @@
+{
+  "itemName" : "slushpaste",
+  "rarity" : "Common",
+  "price" : 25,
+  "category" : "preparedFood",
+  "inventoryIcon" : "slushpaste.png",
+  "description" : "A pureed mixture of snow and plant matter that can barely be termed food. It'll keep you from starving, but only just.\n^green;Heal ^white;10 ^gray;(^white;2s^gray;)^reset; ^green;Type: Plant^reset;",
+  "shortdescription" : "Slushpaste",
+  "handPosition": [0, 4],
+  "effects" : [ [
+    {
+        "effect" : "heal_tier0"
+    },
+    {
+        "effect" : "plant_food"
+    }
+  ] ],
+  "foodValue" : 4,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [ "wellfed" ]
+}

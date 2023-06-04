@@ -1,0 +1,87 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "parts" : {
+      "blade" : {
+        "properties" : {
+          "zLevel" : 1,
+          "centered" : true,
+          "transformationGroups" : ["swoosh"],
+          "fullbright" : true,
+          "offset" : [0, 0],
+          "focalPoint" : [0.0, 2.5],
+          "damageArea" : [[0, -0.5], [-0.75, 1.0], [-0.75, 2.75], [0, 4.25], [0.75, 2.75], [0.75, 1.0]]
+        },
+        "partStates" : {
+          "blade" : {
+            "idle" : {
+              "properties" : {
+                "image" : ""
+              }
+            },
+            "swing" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "sounds" : {
+      "flurry" : [ "/sfx/melee/spear_flurry.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Sting Flurry",
+    "type" : "stingflurry",
+    "scripts" : ["/items/active/weapons/melee/abilities/spear/stingflurry/stingflurry.lua"],
+    "class" : "Flurry",
+
+    "cooldownResetTime" : 0.25,
+    "maxCooldownTime" : 0.25,
+    "minCooldownTime" : 0.15,
+    "cooldownSwingReduction" : 0.04,
+
+    "energyUsage" : 9.0,
+    "cooldownTime" : 0.2,
+
+    "damageConfig" : {
+      "damageSourceKind" : "spear",
+      "statusEffects" : [ "fubeesting2" ],
+      "baseDamage" : 3,
+      "knockback" : 10,
+      "timeout" : 0.15,
+      "timeoutGroup" : "alt"
+    },
+
+    "projectileType" : "honeystingergunsting",
+    "projectileParameters" : {
+      "baseDamage" : 8
+    },
+
+    "cycleRotationOffsets" : [0, 7.5, -7.5],
+    "stances" : {
+	    "idle" : {
+	      "armRotation" : -90,
+	      "weaponRotation" : 0,
+	      "twoHanded" : false,
+	      "weaponOffset" : [0, 0.5],
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+      "swing" : {
+        "duration" : 0.1,
+        "armRotation" : -15,
+        "weaponRotation" : -75,
+        "twoHanded" : true,
+        "weaponOffset" : [0.0, 0.0],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

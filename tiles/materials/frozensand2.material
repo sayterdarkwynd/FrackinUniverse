@@ -6,6 +6,7 @@
   "description" : "Sand covered in ice.",
   "shortdescription" : "Frozen Sand",
   "footstepSound" : "/sfx/blocks/footstep_sand2.ogg",
+  "soil" : true,
   "health" : 3,
   "category": "materials",
 
@@ -15,18 +16,18 @@
     "variants" : 5,
     "lightTransparent" : false,
     "occludesBelow" : true,
-    "multiColored" : false
+    "multiColored" : true
   },
-  
+
   "liquidInteractions" : [
     {
       "liquidId" : 2,
-      "consumeLiquid" : 0.65,
+      "consumeLiquid" : 0.35,
       "transformMaterialId" : 31
     },
     {
       "liquidId" : 52,
-      "consumeLiquid" : 0.65,
+      "consumeLiquid" : 0.35,
       "transformMaterialId" : 31
     }
   ]

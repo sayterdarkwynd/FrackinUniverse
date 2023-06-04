@@ -31,7 +31,7 @@ function circleState.update(dt, stateData)
   end
 
   --Lower circle height if we're near ceiling
-  for i, ceilingSensorIndex in ipairs({ 3, 2, 1 }) do
+  for _, ceilingSensorIndex in ipairs({ 3, 2, 1 }) do
     local sensor = self.sensors.ceilingSensors.collisionTrace[ceilingSensorIndex]
     if sensor.value then
       self.circleYOffsetFactor = self.circleYOffsetFactor - 0.75 * dt
@@ -57,7 +57,7 @@ function circleState.update(dt, stateData)
 
   -- The circle gets tilted up while climbing and down while gliding to
   -- emphasize the gain and loss of altitude
-  local tiltRatio = 0
+  local tiltRatio
 
   if ratio > 0.75 then
     -- Initial quarter of circle; climbing (1.0 -> 0.75) => (0.0 -> 1.0)

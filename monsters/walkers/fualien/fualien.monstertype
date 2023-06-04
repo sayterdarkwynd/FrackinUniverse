@@ -1,0 +1,283 @@
+{
+  "type" : "fualien",
+  "shortdescription" : "Baroshk Nyano",
+  "description" : "A hostile, flesh-eating alien race",
+
+  "categories" : [ "fualien" ],
+  "parts" : [ "body" ],
+
+  "animation" : "fualien.animation",
+
+  "dropPools" : [
+    {
+    "default" : "furobotTreasure",
+    "bow" : "huntingminiboss",
+    "firebow" : "huntingminiboss",
+    "icebow" : "huntingminiboss",
+    "poisonbow" : "huntingminiboss",
+    "electricbow" : "huntingminiboss",
+    "cosmicbow" : "huntingminiboss",
+    "radioactivebow" : "huntingminiboss",
+    "shadowbow" : "huntingminiboss",
+  		"brain" : "madnessBrainHarvestingGreat"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [
+        { "name" : "action-aggrohop" }
+      ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+	{
+          "name" : "action-fire",
+          "cooldown" : 3,
+          "parameters" : {
+
+            "maximumRange" : 20,
+            "minimumRange" : 1,
+            "windupState" : "idle",
+            "windupTime" : 0.1,
+
+            "projectileType" : "magnorbshadow2",
+            "fireOffset" : [0, 0],
+
+            "aimAtTarget" : false,
+            "projectileCount" : 1,
+            "projectileParameters" : {
+              "speed" : 90,
+              "timeToLive" : 0.1,
+              "statusEffects" : ["madnessgain"]
+              },
+            "projectileInterval" : 1,
+            "aimDirection" : [-0.3,-1],
+
+            "power" : 0,
+            "fireSound" : "fire",
+            "fireState" : "fire",
+
+            "winddownState" : "",
+            "winddownTime" : 0.5
+          }
+        },
+        {
+          "name" : "action-fire",
+	  "cooldown" : 1,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 15,
+            "minimumRange" : 4,
+            "windupState" : "fireWindup",
+            "windupTime" : 0.5,
+
+            "projectileType" : "alienblast",
+            "projectileParameters" : { "damageSourceKind" : "cosmic" },
+            "power" : 10,
+
+            "fireOffset" : [1.35, -1],
+            "aimAtTarget" : true,
+            "fireSound" : "fire",
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        }
+      ],
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 10,
+          "parameters" : {
+          "effect" : "mage_shield_lvl1shadowcrab",
+          "duration" : 5
+          }
+        }
+      ],
+
+      "concurrentHostileActions" : [
+         {
+             "name" : "action-fire",
+   	    "cooldown" : 1,
+               "parameters" : {
+               "requireLineOfSight" : true,
+               "maximumRange" : 3,
+               "minimumRange" : 1,
+               "windupState" : "",
+               "windupTime" : 0.25,
+               "onGround" : true,
+               "projectileType" : "energyswoosh3",
+               "power" : 7,
+               "fireOffset" : [4, -1],
+               "aimAtTarget" : true,
+               "projectileCount" : 1,
+               "projectileInterval" : 0.01,
+               "fireSound" : "fire",
+               "fireState" : "melee",
+               "winddownState" : "",
+               "winddownTime" : 0.34
+             }
+          }
+      ],
+
+      "periodicActions" : [
+
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "resetHeading" : false
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "cooldown" : 3.0,
+          "parameters" : {
+            "resetHeading" : false
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 1.0,
+          "parameters" : {
+            "wanderTime" : [2, 5]
+          }
+        }
+      ]
+    },
+    "touchDamage" : {
+      "poly" : [ [-0.917,0.958], [-1,0.417], [-1,-2.625], [-0.583,-3.167], [0.125,-3.167], [0.333,-2.5], [0.292,0.5], [0.167,1] ],
+      "damage" : 12,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 12,
+      "statusEffects" : [ "weakpoison" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-0.917,0.958], [-1,0.417], [-1,-2.625], [-0.583,-3.167], [0.125,-3.167], [0.333,-2.5], [0.292,0.5], [0.167,1] ],
+
+      "mass" : 1.2,
+      "walkSpeed" : 6,
+      "runSpeed" : 12,
+      "flySpeed" : 15,
+      "airForce" : 50.0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 15.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.24,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.25,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 80
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "pusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "insanityImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "damageAbsorption" : {
+          "deltaValue" : 0.0,
+          "initialValue" : 0.0
+        },
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false,
+
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
+  }
+}

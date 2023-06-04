@@ -1,0 +1,99 @@
+{
+  "itemName" : "npcmachinepistol",
+  "price" : 0,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A small fully-automatic pistol that lacks stopping power, but can be wielded in one hand with decent accuracy.",
+  "shortdescription" : "NPC Machine Pistol",
+  "tooltipKind" : "gun",
+  "category" : "machinePistol",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","ranged","machinepistol"],
+  // "level" : 1,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : { },
+  "animationCustom" : { },
+  "baseOffset" : [-0.375, 0.125],
+  "muzzleOffset" : [0.0, 0.375],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+
+  "magazineSize" : [12,36],
+  "reloadTime" : [0.75,1.5],
+  "isAmmoBased" : 1,
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.08,
+    "baseDps" : 6.25,
+    "energyUsage" : 9.375,
+    "inaccuracy" : 0.04,
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "knockbackRange" : [2,4]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.075,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  },
+  "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/uzi1.ogg", "/sfx/gun/uzi2.ogg", "/sfx/gun/uzi3.ogg" ],
+
+  "elementalType" : "physical",
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "animationParts" : {
+      "butt" : {
+        "path" : "/items/active/weapons/ranged/machinepistol/butt/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "middle" : {
+        "path" : "/items/active/weapons/ranged/machinepistol/middle/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "barrel" : {
+        "path" : "/items/active/weapons/ranged/machinepistol/barrel/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+    },
+    "gunParts" : ["butt", "middle", "barrel"],
+    "altAbilities" : [ ],
+    "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
+    "iconDrawables" : ["butt", "middle", "barrel"]
+  }]
+}

@@ -1,0 +1,91 @@
+{
+  "itemName" : "fushovelspear",
+  "price" : 80,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Pierce the heavens, or at least the earth.",
+  "shortdescription" : "The Diginator",
+  "tooltipKind" : "swordunique",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear", "upgradeableWeapon","shovel"],
+
+  "inventoryIcon" : [{"image" : "fushovelspear.png:1"}],
+
+  "animation" : "fushovelspear.animation",
+  "animationParts" : {},
+  "animationCustom" : {},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/other/drillspear/drillspearstab.lua"],
+    "class" : "DrillSpearStab",
+
+    "fireTime" : 1,
+    "baseDps" : 7.5
+  },
+
+  "altAbility" : {
+    "scripts" : ["/items/active/weapons/other/drillspear/drillcharge.lua"],
+    "class" : "DrillCharge",
+
+    "energyUsage" : 25,
+
+    "boostSpeed" : 0,
+    "boostForce" : 0,
+
+    "damageTimeout" : 0.25,
+    "damageConfig" : {
+      "damageSourceKind" : "bow",
+      "statusEffects" : [ ],
+      "knockbackMode" : "aim",
+      "knockback" : 25,
+      "baseDamage" : 3.5
+    },
+
+    "tileDamage" : 0.5,
+    "tileDamageRate" : 0.15,
+    "damageTileDepth" : 3,
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.5,
+        "armRotation" : -100,
+        "weaponRotation" : 10,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 0.5],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "armRotation" : -15,
+        "weaponRotation" : -75,
+        "twoHanded" : true,
+        "weaponOffset" : [0.0, 0.75],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "winddown" : {
+        "duration" : 0.5,
+        "armRotation" : -85,
+        "weaponRotation" : -5,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 0.5],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

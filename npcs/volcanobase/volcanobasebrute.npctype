@@ -1,0 +1,60 @@
+{
+  "type" : "volcanobasebrute",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Enraged. Raaaarrrgh!",
+			"Bloodthirsty. Crush! Kill! Destroy!",
+			"Fanatical. Fear the might of the warlords!",
+			"Deranged. I will break you!",
+			"Confident. I am unstoppable!",
+            "Enraged. Death to intruders!"
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+      "runSpeed" : 14,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    },
+    "mass" : 2.0
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "glitchtier3head", "parameters" : { "colorIndex" : 1 } } ],
+            "chest" : [ { "name" : "glitchtier4chest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "glitchtier4pants", "parameters" : { "colorIndex" : 1 } } ],
+            "primary" : [
+              { "name" : "npcbruisersword" }
+            ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+
+    "stats" : {
+	  "powerMultiplier" : {
+        "baseValue" : 2.25
+      },
+      "maxHealth" : {
+        "baseValue" : 200.0
+      }
+    }
+  }
+}

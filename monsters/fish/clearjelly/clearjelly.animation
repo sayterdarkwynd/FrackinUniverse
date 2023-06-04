@@ -1,0 +1,166 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "movement" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : { },
+          "bloop" : {
+            "frames" : 4,
+            "cycle" : 0.8,
+            "mode" : "transition",
+            "transition" : "idle"
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "zIndex" : 10,
+          "rotationGroup" : "body"
+        },
+        "partStates" : {
+          "movement" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "bloop" : {
+              "properties" : {
+                "image" : "<partImage>:move.<frame>"
+              }
+            }
+          }
+        }
+      },
+      "bodylit" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "zIndex" : 20,
+          "fullbright" : true,
+          "rotationGroup" : "body"
+        },
+        "partStates" : {
+          "movement" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "bloop" : {
+              "properties" : {
+                "image" : "<partImage>:move.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+  "rotationGroups" : {
+    "body" : {
+      "rotationCenter" : [0, 0],
+      "angularVelocity" : 5
+    }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "particleEmitters" : {
+     "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+
+
+    "captureParticles":{
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles":{
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut":{
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn":{
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "turnHostile" : [ ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
+  },
+  "lights" : {
+    "Glow" : {
+      "active" : true,
+      "position" : [0, 0],
+      "color" : [90, 90, 90],
+      "pointLight" : true
+    }
+  }
+}

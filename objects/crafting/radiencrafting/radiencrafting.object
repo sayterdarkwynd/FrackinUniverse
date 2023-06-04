@@ -1,0 +1,48 @@
+{
+  "objectName" : "radiencrafting",
+  "rarity" : "Common",
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/radien.config",
+    "paneLayoutOverride" : {
+      "windowtitle" : {"title" : " ","subtitle" : " ","icon" : {"file" : ""}},
+      "lblTitle" : {"value" : " ^#ffea00;X'ian Forming Bulb"},
+      "lblSubTitle" : {"value" : " ^#dddddd;For everything to do with X'i"}
+    },
+    "filter" : [ "radiencrafting" ]
+  },
+
+  "description" : "Allows a X'i to craft pieces of itself through direct melding.",
+  "shortdescription" : "X'ian Forming Bulb",
+  "race" : "radien",
+  "category" : "crafting",
+  "price" : 2,
+  "printable" : false,
+  "inventoryIcon" : "radiencraftingicon.png",
+  "colonyTags" : ["crafting","radien"],
+
+  "lightColor" : [80, 80, 42],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "orientations" : [
+    {
+      "dualImage" : "radiencrafting.png:<color>",
+
+      "imagePosition" : [-12, 0],
+      "frames" : 4,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "radioMessagesOnPickup" : [ "radienhealing" ]
+}

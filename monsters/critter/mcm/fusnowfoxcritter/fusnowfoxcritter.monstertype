@@ -1,0 +1,98 @@
+{
+  "type" : "fusnowfoxcritter",
+  "shortdescription" : "Snow Fox",
+  "description" : "A small carnivorous animal found in cold climates. It has white fur and is known for its cleverness.",
+
+  "categories" : [ "fusnowfoxcritter" ],
+  "parts" : [ "body" ],
+
+  "animation" : "fusnowfoxcritter.animation",
+  "reversed" : false,
+
+  "dropPools" : [
+    {
+      "default" : "empty",
+      "bow" : "huntingflying"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "walkingcritter",
+
+    "metaBoundBox" : [-3.0, -1.0, 3.0, 1.0],
+    "scale" : 1.00,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.75, -1.0], [1.75, -1.0], [1.75, 1.0], [-1.75, 1.0] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 7,
+      "runSpeed" : 7,
+      "jumpSpeed" : 7
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "",
+"deathParticles" : "deathPoof",
+    "damageTeamType" : "passive",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.9,
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 1
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 1.0,
+    "nametagColor" : [64, 200, 255]
+  }
+}

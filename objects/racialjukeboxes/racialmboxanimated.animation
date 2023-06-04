@@ -1,0 +1,107 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "light" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "music" ]
+            }
+          },
+          "on" : {
+            "frames" : 6,
+            "cycle" : 0.78,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOn" : [ "music" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "bg" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "light" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.off"
+              }
+            },
+
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.<frame>",
+                "fullbright" : true
+              }
+            }
+          }
+        }
+      },
+      "fg" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 1
+        },
+
+        "partStates" : {
+          "light" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.off"
+              }
+            },
+
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "music" : {
+      "emissionRate" : 1.5,
+      "emissionRateVariance" : 0.0,
+      "active" : true,
+
+
+
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "textured",
+            "image" : "/particles/music/note.png",
+            "flippable" : false,
+            "position" : [2.5, 1.5],
+            "size" : 0.5,
+            "color" : [255, 255, 255, 255],
+            "light" : [0, 0, 0],
+            "fade" : 0,
+            "destructionAction" : "shrink",
+            "destructionTime" : 5,
+            "initialVelocity" : [2.0, -3.0],
+            "finalVelocity" : [0.0, 5.0],
+            "approach" : [0, 20],
+            "timeToLive" : 0.5,
+            "layer" : "middle",
+            "collidesForeground" : false,
+            "variance" : {
+              "initialVelocity" : [1.0, 1.0]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "samplingarrayanim" : {
+        "default" : "idle",
+        "states" : {
+          "working" : {
+            "frames" : 3,
+            "cycle" : 0.7,
+            "mode" : "loop",
+            "frameProperties" : {
+              "particleEmittersOn" : [ [], [], ["blood"], [] ],
+              "particleEmittersOff" : [ ["blood"], ["blood"], [], ["blood"] ]
+            }
+          },
+          "idle" : {
+            "frames" : 1,
+            "frameProperties" : {
+              "particleEmittersOff" : [ ["blood"], ["blood"], ["blood"], ["blood"] ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "samplingarrayanim" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "samplingarrayanim" : {
+            "working" : {
+              "properties" : {
+                "image" : "<partImage>:default.<frame>"
+              }
+            },
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:default.default"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "blood" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [ -1.0, 1.6, 1.0, 1.8 ],
+      "particles" : [
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" }
+
+      ]
+    }
+  },
+
+  "sounds" : {
+    "bodydown" : [ "/sfx/objects/bookcase_open.ogg","/sfx/objects/bookcase_close.ogg" ],
+    "active" : [ "/sfx/tools/pickaxe_break.ogg" ],
+    "cutting" : [ "/sfx/autopsy.ogg" ]
+  }
+}

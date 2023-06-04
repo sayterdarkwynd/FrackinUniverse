@@ -1,19 +1,18 @@
 {
-  "itemName" : "aquapod",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "aquapod.png",
-  "description" : "Increases your speed in liquids.",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 4,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "shortdescription" : "Aquapod Bulb",
-      "effects" : [ [
-          "swimboost2"
-    ] ]
+	"itemName": "aquapod",
+	"inventoryIcon": "aquapod.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Swim Boost (Pod)^reset;: 2m",
+	"shortdescription": "Aquapod Bulb",
+
+	"effects": [
+		[{
+			"effect": "swimboostaquapod",
+			"duration": 120
+		}]
+	]
 }

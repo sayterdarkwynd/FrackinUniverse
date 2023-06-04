@@ -1,0 +1,419 @@
+[
+  {"op": "add","path": "/hasRecoil","value": 1},
+  {"op": "add","path": "/recoilSpeed","value": 200},
+  {"op": "add","path": "/recoilForce","value": 500},
+  {"op": "add","path": "/magazineSize","value": [8,24]},
+  {"op": "add","path": "/reloadTime","value": [0.75,2]},
+  {"op": "add","path": "/isAmmoBased","value": [0,1]},
+  {
+    "op": "add",
+    "path": "/critChance",
+    "value": 1
+  },
+  {
+    "op": "add",
+    "path": "/critBonus",
+    "value": 3
+  },
+  {
+    "op": "replace",
+    "path": "/price",
+    "value": 1140
+  },
+  {
+    "op": "replace",
+    "path": "/description",
+    "value": "A fully automatic, military grade rifle, with decent stopping power and accuracy."
+  },
+  {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "upgradeableWeapon"
+  },
+  {
+    "op": "replace",
+    "path": "/primaryAbility/fireTime/0",
+    "value": 0.08
+  },
+  {
+    "op": "replace",
+    "path": "/primaryAbility/fireTime/1",
+    "value": 0.14
+  },
+  {
+    "op": "replace",
+    "path": "/primaryAbility/baseDps/0",
+    "value": 8
+  },
+  {
+    "op": "remove",
+    "path": "/primaryAbility/energyUsage/0"
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbility/energyUsage/-",
+    "value": 34.5
+  },
+  {
+    "op": "replace",
+    "path": "/primaryAbility/inaccuracy",
+    "value": 0.04
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "radioactive"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "shadow"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalType/-",
+    "value": "cosmic"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/radioactive",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "radioactiveplasma",
+        "projectileParameters": {
+          "statusEffects": [
+            "radiationburn"
+          ]
+        }
+      },
+      "fireSounds": [
+        "/sfx/gun/plasma_mp1.ogg",
+        "/sfx/gun/plasma_mp2.ogg",
+        "/sfx/gun/plasma_mp3.ogg",
+        "/sfx/gun/plasma_ar1.ogg",
+        "/sfx/gun/plasma_ar2.ogg",
+        "/sfx/gun/plasma_ar3.ogg"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/shadow",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "shadowplasma",
+        "projectileParameters": {
+          "statusEffects": [
+            "shadowgasfx"
+          ]
+        }
+      },
+      "fireSounds": [
+        "/sfx/gun/plasma_mp1.ogg",
+        "/sfx/gun/plasma_mp2.ogg",
+        "/sfx/gun/plasma_mp3.ogg",
+        "/sfx/gun/plasma_ar1.ogg",
+        "/sfx/gun/plasma_ar2.ogg",
+        "/sfx/gun/plasma_ar3.ogg"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/cosmic",
+    "value": {
+      "primaryAbility": {
+        "projectileType": "cosmicplasma",
+        "projectileParameters": {
+          "statusEffects": [
+            "percentarmorboostneg2"
+          ]
+        }
+      },
+      "fireSounds": [
+        "/sfx/gun/plasma_mp1.ogg",
+        "/sfx/gun/plasma_mp2.ogg",
+        "/sfx/gun/plasma_mp3.ogg",
+        "/sfx/gun/plasma_ar1.ogg",
+        "/sfx/gun/plasma_ar2.ogg",
+        "/sfx/gun/plasma_ar3.ogg"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/fire/fireSounds/0",
+    "value": "/sfx/gun/plasma_mp1.ogg"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/fire/fireSounds/1",
+    "value": "/sfx/gun/plasma_mp2.ogg"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/fire/fireSounds/2",
+    "value": "/sfx/gun/plasma_mp3.ogg"
+  },
+  {
+    "op": "remove",
+    "path": "/builderConfig/0/elementalConfig/fire/fireSounds/6"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/ice/fireSounds/0",
+    "value": "/sfx/gun/plasma_mp1.ogg"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/ice/fireSounds/1",
+    "value": "/sfx/gun/plasma_mp2.ogg"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/ice/fireSounds/2",
+    "value": "/sfx/gun/plasma_mp3.ogg"
+  },
+  {
+    "op": "remove",
+    "path": "/builderConfig/0/elementalConfig/ice/fireSounds/6"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/poison/fireSounds/0",
+    "value": "/sfx/gun/plasma_mp1.ogg"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/poison/fireSounds/1",
+    "value": "/sfx/gun/plasma_mp2.ogg"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/poison/fireSounds/2",
+    "value": "/sfx/gun/plasma_mp3.ogg"
+  },
+  {
+    "op": "remove",
+    "path": "/builderConfig/0/elementalConfig/poison/fireSounds/6"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/electric/fireSounds/0",
+    "value": "/sfx/gun/plasma_mp1.ogg"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/electric/fireSounds/1",
+    "value": "/sfx/gun/plasma_mp2.ogg"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/elementalConfig/electric/fireSounds/2",
+    "value": "/sfx/gun/plasma_mp3.ogg"
+  },
+  {
+    "op": "remove",
+    "path": "/builderConfig/0/elementalConfig/electric/fireSounds/6"
+  },
+  {
+    "op": "replace",
+    "path": "/builderConfig/0/animationParts/barrel/variants",
+    "value": 27
+  },
+  {
+    "op": "replace",
+    "path": "/builderConfig/0/altAbilities/0",
+    "value": "bouncingshot"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/1",
+    "value": "deathbomb"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/3",
+    "value": "explosiveshot"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "lance"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "markedshot"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "piercingshot"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "shrapnelbomb"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "spray"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "stickyshot"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_bouncingspray"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_bouncingspread"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_bouncingpiercingshot"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_bouncingpiercingspray"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_bouncingpiercingspread"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_explosivebouncingshot"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_explosivebouncingspray"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_explosivebouncingspread"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_explosivespray"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_explosivespread"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_piercingspray"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_piercingspread"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_railgun"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_spreadshot"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_stickyspray"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_stickyspread"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_clusterbomb"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_markedshotweak"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_proximitymines"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_bouncingorbitals"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_cellspray"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_darkplasma"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_elementalspray"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_explosivebubbles"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_forceshield"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_globelauncher"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_phaseburst"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_rocketjump"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "swtjc_ewg_shattershot"
+  },
+  {
+    "op": "add",
+    "path": "/builderConfig/0/altAbilities/-",
+    "value": "forcebubble"
+  }
+]

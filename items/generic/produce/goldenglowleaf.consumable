@@ -1,23 +1,32 @@
 {
-  "itemName" : "goldenglowleaf",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "goldenglowleaf.png",
-  "description" : "Increases running speed a great deal for a short time.",
-  "shortdescription" : "Goldenglow Petal",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 4,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      {
-        "effect" : "runboost",
-        "amount" : 0.50,
-        "duration" : 20
-      }
-    ] ]
+	"itemName": "goldenglowleaf",
+	"inventoryIcon": "goldenglowleaf.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+12.5% E. Regen & -6.25% E. Regen Block^reset;, ^cyan;+50% Run^reset;: 1m",
+	"shortdescription": "Goldenglow Petal",
+
+	"effects": [
+		[{
+				"effect": "energyregenfu25",
+				"duration": 60
+			},
+			{
+				"effect": "runboost",
+				"duration": 60
+			}
+		]
+	],
+	"blockingEffects": [
+		"energyregenfu50",
+		"energyregenfu10",
+		"energyregenfu60",
+		"energyregenfu35",
+		"energyregenfu20",
+		"energyregenfu05",
+		"energyregenfu40"
+	]
 }

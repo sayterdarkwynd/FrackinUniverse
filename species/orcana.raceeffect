@@ -1,0 +1,118 @@
+{
+	"stats": [
+		{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 1.2
+		},
+		{
+			"stat": "maxFood",
+			"effectiveMultiplier": 1.4
+		},
+		{
+			"stat": "maxBreath",
+			"amount": 2000
+		},
+		{
+			"stat": "breathRegenerationRate",
+			"amount": 70
+		},
+		{
+			"stat": "electricResistance",
+			"amount": -0.3
+		},
+		{
+			"stat": "fireResistance",
+			"amount": 0.2
+		},
+		{
+			"stat": "iceResistance",
+			"amount": 0.3
+		},
+		{
+			"stat": "poisonResistance",
+			"amount": -0.2
+		},
+		{
+			"stat": "radioactiveResistance",
+			"amount": 0.2
+		},
+		{
+			"stat": "wetImmunity",
+			"amount": 1
+		}
+	],
+	"diet" : [ { "ORGANIC" : false, "FISH" : true }, { "MEAT_RAW" : true } ],
+	"envEffects": [
+	{
+		"biomes": "ocean",
+		"stats": [{
+				"stat": "maxHealth",
+				"effectiveMultiplier": 1.15
+			},
+			{
+				"stat": "maxEnergy",
+				"effectiveMultiplier": 1.2
+			}
+		]
+	}
+	],
+	"weaponEffects": [
+	{
+		"weapons": ["trident"],
+		"stats": [
+			{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.1
+			},
+			{
+				"stat": "critChance",
+				"amount": 2
+			},
+			{
+				"stat": "critDamage",
+				"amount": 0.05
+			}
+		]
+	},
+	{
+		"weapons": ["spear"],
+		"stats": [
+			{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.2
+			}
+		]
+	},
+	{
+		"weapons": ["boltgun"],
+		"stats": [
+			{
+				"stat": "critDamage",
+				"amount": 0.02
+			},
+			{
+				"stat": "critChance",
+				"amount": 5
+			}
+		]
+	}
+	],
+	"special": ["swimboost2"],
+	"liquidEffects": [{
+		"liquids": [ "water", "fusaltwater","healingliquid", "wastewater", "swampwater"],
+		"stats": [{
+				"stat": "foodDelta",
+				"baseMultiplier": 0.5
+			},
+			{
+				"stat": "fallDamageMultiplier",
+				"effectiveMultiplier": 0
+			},
+			{
+				"stat": "poisonResistance",
+				"amount": 0.2
+			}
+		],
+		"statusEffects": ["regenerationminor2"]
+	}]
+}

@@ -1,0 +1,44 @@
+{
+  "objectName" : "mintseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Uncommon",
+  "category" : "seed",
+  "description" : "Restores natural energy reserves.",
+  "shortdescription" : "Star Mint Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 15,
+//  "learnBlueprintsOnPickup" : [ "mintseed" ],
+  "inventoryIcon" : "mintseedicon.png",
+  "largeImage" : "mintseed.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "mint" },
+  "orientations" : [
+    {
+      "dualImage" : "mintseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [200, 320]
+    },
+    {
+      "duration" : [200, 320]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "mintHarvest",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125
+}

@@ -1,0 +1,62 @@
+{
+  "objectName" : "rainbarrel",
+  "colonyTags" : [ "crafting", "booze" ],
+  "printable" : false,
+  "rarity" : "rare",
+  "description" : "A barrel to collect rainwater!",
+  "shortdescription" : "^orange;Rain Barrel^reset;",
+  "subtitle" : "Rain Barrel.",
+  "race" : "generic",
+  "category" : "crafting",
+  "price" : 200,
+  "objectType" : "container",
+
+  "hydrophobic" : true,
+
+  "particleEmitter" : {
+    "emissionRate" : 2.0,
+    "emissionVariance" : 0.5,
+	"pixelOrigin" : [18, 0],
+
+    "particle" : {
+      "type" : "ember",
+      "size" : 1.0,
+      "color" : [0, 144, 247, 255],
+      "light" : [0, 0, 0],
+      "fade" : 0.2,
+      "initialVelocity" : [0.0, 5.0],
+      "finalVelocity" : [0.2, 3.0],
+      "approach" : [0, 10],
+      "timeToLive" : 0.3,
+      "layer" : "middle"
+    },
+
+    "particleVariance" : {
+      "initialVelocity" : [0.5, 2.0]
+    }
+  },
+
+  "inventoryIcon" : "rainbarrelicon.png",
+  "orientations" : [
+    {
+      "image" : "rainbarrel.png:<color>.<frame>",
+
+      "imagePosition" : [0, 0],
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/aquarium1.ogg",
+  "recipeGroup" : "rainbarrel",
+  "openSounds" : [ "/sfx/objects/florancrate_open.ogg" ],
+  "slotCount" :2,
+  "uiConfig" : "/interface/objectcrafting/dip.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600
+
+ }

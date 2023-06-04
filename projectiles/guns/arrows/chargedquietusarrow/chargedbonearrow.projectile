@@ -1,0 +1,23 @@
+{
+  "projectileName" : "chargedbonearrow",
+  "physics" : "arrownosticky",
+  "image" : "chargedbonearrow.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "emitters" : [ "daggerblue" ],
+  "damageKindImage" : "icon.png",
+  "timeToLive" : 10,
+  "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ],
+  "pointLight" : false,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/arrowexplosion/arrowexplosion.config"
+    }
+  ],
+  "power" : 10,
+  "knockback" : 10,
+  "knockbackDirectional" : true,
+  "damageKind" : "bow",
+  "piercing" : true
+}

@@ -1,0 +1,37 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "dashing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {}
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "dashParticles" : {
+      "emissionRate" : 40.0,
+      "particles" : [
+        {
+          "particle" : "zeroburst",
+          "flip" : true
+        },
+        {
+          "particle" : "frozenflames",
+          "flip" : true
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "activate" : [ "/sfx/melee/spear_flurry.ogg", "/sfx/melee/soulseeker_swing.ogg", "/sfx/melee/slash.ogg" ],
+    "recharge" : [ ],
+      "refire" : [ "/sfx/melee/spear_flurry.ogg", "/sfx/melee/soulseeker_swing.ogg", "/sfx/melee/slash.ogg" ],
+    "chargeUp" : [  ],
+    "powerAttack" : [ "/sfx/melee/charge_full_swing4.ogg" ]
+  }
+}

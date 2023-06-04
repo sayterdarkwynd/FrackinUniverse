@@ -1,0 +1,40 @@
+{
+  "projectileName" : "magnorbshadow",
+  "image" : "magnorbshadow.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 1.5,
+  "speed" : 75,
+  "damageKind" : "shadowplasma",
+  "physics" : "laser",
+  "fullbright" : true,
+  "bounces" : 6,
+  "piercing" : true,
+  "timeToLive" : 2,
+  "lightColor" : [63, 0, 76],
+
+  "actionOnReap" : [ ],
+  "statusEffects" : [ "shadowgasfx" ],
+  "actionOnCollide" : [
+    {
+      "action" : "projectile",
+      "type" : "ngravityexplosion",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.25,
+      "angleAdjust" : 35
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/weapons/magnorbproto_impact1.ogg",
+        "/sfx/weapons/magnorbproto_impact2.ogg",
+        "/sfx/weapons/magnorbproto_impact3.ogg"
+      ]
+    }
+  ],
+
+  "scripts" : [ ]
+}

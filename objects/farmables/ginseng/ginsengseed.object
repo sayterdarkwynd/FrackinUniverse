@@ -1,0 +1,43 @@
+{
+  "objectName" : "ginsengseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "common",
+  "category" : "seed",
+  "description" : "A well-known medicinal plant.",
+  "shortdescription" : "Heartroot Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 20,
+  "inventoryIcon" : "ginsengseedicon.png",
+  "largeImage" : "ginsengseed.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "ginseng" },
+  "orientations" : [
+    {
+      "dualImage" : "ginsengseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [220, 340]
+    },
+    {
+      "duration" : [220, 340]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "ginsengHarvest",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125
+}

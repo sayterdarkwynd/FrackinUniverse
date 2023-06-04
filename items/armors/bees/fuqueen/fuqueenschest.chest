@@ -4,8 +4,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "The armor of a Honey Bee Queen.",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;25^reset;% Speed, +^green;15^reset;% Jump
+^yellow;^reset; Bee Weapons: +^green;8^reset;% Crit Chance, +^green;50^reset;% Crit Damage, Damage x^green;1.2^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Beestings, Honey, Extreme Radiation",
   "shortdescription" : "Queen's Dress",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -19,30 +23,46 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 5,
-  "statusEffects" : [
+  "level" : 5,
+  //"collectablesOnPickup" : { "fu_armorexplorer" : "fuqueenchest" },
+  "itemTags" : [ "upgradeableWeapon", "defensive" ],
+
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.05
-    },  
+      "baseMultiplier" : 1.18
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 37
+      "amount" : 0.62
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 60
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 35
+      "amount" : 5
     },
-    "beestingimmunity",
-    "honeyslowimmunity"
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.023334
+    }
   ],
-  
+
+  "statusEffects" : [
+    "queensetbonus",
+    {
+      "stat" : "fu_queenset_chest",
+      "amount" : 1
+    }
+  ],
+
  "colorOptions" : [
     /* DEFAULT */
     { "ffb400" : "ffb400", "d09b1d" : "d09b1d", "a67c16" : "a67c16", "795910" : "795910" },
@@ -68,5 +88,6 @@
     { "ffb400" : "fb7dbb", "d09b1d" : "de5398", "a67c16" : "a24e78", "795910" : "743c58" },
     /* BROWN */
     { "ffb400" : "844d33", "d09b1d" : "72310b", "a67c16" : "522922", "795910" : "462327" }
-  ]
+  ],
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

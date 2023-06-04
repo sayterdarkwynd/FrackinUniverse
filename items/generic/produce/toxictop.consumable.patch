@@ -1,0 +1,26 @@
+[
+	[
+		{
+			"op" : "add",
+			"path" : "/effects/0/-",
+			"value" : "fruit_food"
+		},
+		{
+			"op" : "replace",
+			"path" : "/description",
+			"value" : "A toxic looking fruit. Can looks be deceiving? ^green;Type: Fruit^reset;"
+		}
+	],
+	[
+		{
+			"op" : "test",
+			"path" : "/maxStack"
+		},
+		{
+			"op" : "replace",
+			"path" : "/maxStack",
+			"value" : 20
+		}
+	],
+	[{"op":"test","path":"/learnBlueprintsOnPickup/0"},{"op":"remove","path":"/learnBlueprintsOnPickup/0"}]
+]

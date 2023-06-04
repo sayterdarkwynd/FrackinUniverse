@@ -1,0 +1,58 @@
+{
+  "type" : "infiltrationtavish",
+  "baseType" : "base",
+
+  "identity" : {
+    "name" : "Tavish",
+    "gender" : "male"
+  },
+
+  "damageTeamType" : "ghostly",
+  "levelVariance" : [0, 0],
+
+  "persistent" : true,
+
+  "dropPools" : [ "villagertreasure" ],
+
+  "scriptConfig" : {
+    "behavior" : "spectator",
+
+	"dialogMode" : "sequence",
+
+    "dialog" : {
+      "converse" : {
+        "default" : {
+          "default" : [
+            "You shouldn't be seeing this."
+          ]
+        },
+        "apex" : {
+          "default" : [
+			"Oh, you're <entityname>. Shore base radioed me to let you know you were coming, took you long enough.",
+			"Took me a little while to dig all quiet-like, but I've managed to expose part of the facility's waste system.",
+			"They be discharging their effluent straight into the ocean, but I guess they can't mess this rock up any worse, aye?",
+			"Now I've just finished setting them beauties of charges...a good bang to them, and they go with a minimum of noise.",
+			"Just poke at that there console and you'll be in no sweat."
+          ]
+        }
+      }
+    }
+  },
+
+  "matchColorIndices" : true,
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "eyepatchhead", "parameters" : { "colorIndex" : 1 } } ],
+            "chest" : [ { "name" : "apextier1chest" } ],
+            "legs" : [ { "name" : "apextier1pants" } ],
+            "back" : [ { "name" : "dangerbarrelback" } ],
+            "sheathedprimary" : [
+              "npcbroadsword"
+            ]
+          }
+        ] ]
+    ]
+  }
+}

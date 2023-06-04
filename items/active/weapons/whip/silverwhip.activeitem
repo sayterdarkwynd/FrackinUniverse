@@ -1,0 +1,59 @@
+{
+  "itemName" : "silverwhip",
+  "price" : 500,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Vanquish monsters with stylish silver!
+^cyan;Able to damage all elements equally^reset;",
+  "shortdescription" : "Silver Whip",
+  "tooltipKind" : "sword2",
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","whip","upgradeableWeapon"],
+
+  "inventoryIcon" : "silverwhip.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "silverwhip.png",
+	"weaponFullbright" : ""
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : { "particles" : [ ]}},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/whip_swing1.ogg", "/sfx/melee/whip_swing2.ogg", "/sfx/melee/whip_swing3.ogg" ],
+      "crack" : [ "/sfx/melee/whip_impact1.ogg", "/sfx/melee/whip_impact2.ogg", "/sfx/melee/whip_impact3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [0.625, 0],
+    "length" : [4, 15],
+    "segmentImage" : "/items/active/weapons/whip/silverwhipchain.png",
+    "endSegmentImage" : "/items/active/weapons/whip/silverwhipchainend.png",
+    "segmentSize" : 0.375,
+    "fullbright" : false
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "silverweapon",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 1.7,
+    "chainDps" : 1.0,
+    "crackDps" : 5.0,
+
+    "damageConfig" : {
+      "damageSourceKind" : "silverweapon"
+    },
+
+    "projectileType" : "whipcracksilver"
+  },
+
+  "critChance" : 1.25,
+  "critBonus" : 10,
+  "stunChance" : 50,
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}

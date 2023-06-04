@@ -1,0 +1,38 @@
+{
+  "objectName" : "precursormatrix",
+  "colonyTags" : [ "precursor"],
+  "printable" : false,
+  "rarity" : "legendary",
+  "description" : "A massive power matrix of ancient design.",
+  "shortdescription" : "Precursor Matrix",
+  "race" : "precursor",
+  "category" : "decorative",
+  "price" : 500,
+
+  "inventoryIcon" : "precursormatrixicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "precursormatrix.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursormatrixlit.png:<color>.<frame>" } ],
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "direction" : "left",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "precursormatrix.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursormatrixlit.png:<color>.<frame>" } ],
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+  "learnBlueprintsOnPickup": ["precursormatrix"]
+}

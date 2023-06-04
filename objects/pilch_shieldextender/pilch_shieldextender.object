@@ -1,0 +1,37 @@
+{
+	"objectName" : "pilch_shieldextender",
+	"rarity" : "Common",
+	"description" : "Extends a wire connection between a field generator and field marker.",
+	"shortdescription" : "Field Extender",
+
+	"race" : "generic",
+	"category" : "wire",
+	"price" : 1,
+	"printable" : false,
+
+	"inventoryIcon" : "/objects/pilch_shieldextender/pilch_shieldextender_icon.png",
+	"orientations" : [
+		{
+			"dualImage" : "/objects/pilch_shieldextender/pilch_shieldextender.png:<color>.<frame>",
+			"imagePosition" : [0, 0],
+			"frames" : 1,
+			"animationCycle" : 1.0,
+			"anchors" : [ "background" ],
+			"spaceScan" : 0.1
+		}
+	],
+
+	"animation" : "/objects/pilch_shieldextender/pilch_shieldextender.animation",
+	"animationParts" : {
+		"power" : "/objects/pilch_shieldextender/pilch_shieldextender.png"
+	},
+	"animationPosition" : [0, 0],
+
+	"scripts" : [
+		"/objects/pilch_shieldextender/pilch_shieldextender.lua"
+	],
+	"scriptDelta" : 0,
+
+	"inputNodes" : [ [-1, -1] ],
+	"outputNodes" : [ [1, 1] ]
+}

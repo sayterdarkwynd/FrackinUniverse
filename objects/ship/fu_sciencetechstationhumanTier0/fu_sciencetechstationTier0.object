@@ -1,0 +1,74 @@
+{
+  "objectName" : "fu_sciencetechstationhumanTier0",
+  "colonyTags" : ["science"],
+  "printable" : false,
+  "rarity" : "Common",
+
+  "interactAction" : "ScriptPane",
+
+  "category" : "decorative",
+  "lightColor" : [99, 132, 153],
+  "lightPosition" : [-1, 0],
+
+  "flickerDistance" : 1.0,
+  "flickerStrength" : 0.05,
+  "flickerTiming" : 8,
+
+  "description" : "Ship-based Artificial Intelligence Lattice, or S.A.I.L for short.",
+  "shortdescription" : "Science S.A.I.L",
+  "race" : "human",
+
+  "apexDescription" : "When it's working, I can talk to SAIL through this console.",
+  "avianDescription" : "Rebooting this station should enable me to talk to SAIL.",
+  "floranDescription" : "Floran fix thisss panel to wake ship up!",
+  "glitchDescription" : "Distressed. I first need to reboot this station to communicate with SAIL.",
+  "humanDescription" : "If I can reboot this station SAIL should come back online!",
+  "hylotlDescription" : "This console will allow me to communicate with SAIL. I need to reboot it first.",
+  "novakidDescription" : "Time to reboot this station so I can talk to SAIL.",
+
+  "inventoryIcon" : "fu_sciencetechstationTier0icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fu_sciencetechstationTier0.png:<color>.<frame>", "fullbright" : true }, { "image" : "fu_sciencetechstationTier0lit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 32,
+      "animationCycle" : 3.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+
+    }
+  ],
+
+  "offeredQuests" : [ "gaterepair" ],
+
+  "animation" : "/objects/ship/techstation.animation",
+
+
+
+
+
+  "interactData" : "/zb/newSail/newSail.config",
+  "scripts" : [ "/objects/scripts/customtechstation.lua", "/objects/scripts/customtechstation.lua" ],
+
+  "chatPortrait" : "/ai/portraits/humanportrait.png:yell.1",
+  "dialog" : {
+    "wakeUp" : [
+      [ "Rebooting...", "/ai/portraits/humanportrait.png:unique.1" ],
+      [ "I am S.A.I.L, your Ship-based Artificial Intelligence Lattice. I manage the maintainance of your ship.", "/ai/portraits/humanportrait.png:talk.0" ],
+      [ "I am also programmed to offer you information and advice.", "/ai/portraits/humanportrait.png:talk.1" ],
+      [ "Earth was attacked by an unknown force, and was subsequently annihilated.", "/ai/portraits/humanportrait.png:talk.0" ],
+      [ "The ship's navigation systems were damaged in our escape. Our location is currently unknown.", "/ai/portraits/humanportrait.png:talk.1" ]
+    ],
+    "wakePlayer" : [
+      [ "System is down, please reboot.", "/ai/portraits/humanportrait.png:unique.1"],
+      [ "Please reboot the system.", "/ai/portraits/humanportrait.png:unique.1"],
+      [ "Reboot process remains uninitiated.", "/ai/portraits/humanportrait.png:unique.1"],
+      [ "To make use of your S.A.I.L please reboot.", "/ai/portraits/humanportrait.png:unique.1" ],
+      [ "Rebooting has shown to improve ship interaction satisfaction levels by 73%.", "/ai/portraits/humanportrait.png:unique.1"],
+      [ "Rebooting requires a conscious entity to interact with the S.A.I.L console.", "/ai/portraits/humanportrait.png:unique.1" ]
+    ]
+  },
+
+  "uniqueId" : "techstation"
+}

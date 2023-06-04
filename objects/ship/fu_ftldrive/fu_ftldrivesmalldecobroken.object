@@ -1,0 +1,62 @@
+{
+  "objectName" : "fu_ftldrivedecosmallbroken",
+  "rarity" : "common",
+  "colonyTags" : [ "science" ],
+  "category" : "furniture",
+  "description" : "An FTL drive spewing smoke. The circuitry is fried on the inside.",
+  "shortdescription" : "Fried FTL Drive",
+  "race" : "generic",
+  "printable" : false,
+
+  "apexDescription" : "The wiring inside this FTL Drive is shot. It is well beyond repair.",
+  "avianDescription" : "Smoke is pouring out of this FTL Drive. I don't think it works at all.",
+  "floranDescription" : "Smoke coming out machine, and machine not starting.",
+  "glitchDescription" : "Disheartened. There is not a single way to make this FTL Drive work.",
+  "humanDescription" : "As expected, the insides look horrid. This thing ain't working anytime soon.",
+  "hylotlDescription" : "This FTL Drive is smoking violently, and smeels of burnt rubber.",
+  "novakidDescription" : "This drive's shot. Ain't no way it'll work anytime soon.",
+
+  "inventoryIcon" : "fu_ftldrivesmallicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_ftldrivesmall.png",
+      "imagePosition" : [-30, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "particleEmitter" : {
+    "emissionRate" : 4.0,
+    "emissionVariance" : 0.65,
+
+    "particle" :
+    {
+	    "type" : "animated",
+	    "animation" : "/animations/energy/energy.animation",
+	    "position" : [0, 2],
+	    "finalVelocity" : [0, 0],
+	    "approach" : [0, 0],
+	    "destructionAction" : "shrink",
+	    "destructionTime" : 2.4,
+	    "fade" : 1,
+	    "size" : 1,
+	    "layer" : "front",
+	    "timeToLive" : 2.5,
+	    "variance" : {}
+    },
+
+    "particleVariance" : {
+      "initialVelocity" : [0.5, 2.0],
+      "position" : [0.4, 0]
+    }
+  },
+  "animation" : "fu_ftldrivesmallbroken.animation",
+  "animationParts" : {
+    "base" : "fu_ftldrivesmall.png",
+	"fullbright" : "fu_ftldrivesmallfullbright.png"
+  },
+  "animationPosition" : [-30, 0],
+
+  "scripts" : [ "/objects/ship/fu_ftldriveanimation.lua" ],
+  "scriptDelta" : 60
+}

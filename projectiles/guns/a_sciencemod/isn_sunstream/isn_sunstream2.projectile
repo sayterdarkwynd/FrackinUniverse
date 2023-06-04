@@ -1,0 +1,45 @@
+{
+  "projectileName" : "isn_sunstream2",
+  "image" : "isn_sunstreamshot2.png",
+  "physics" : "laser",
+  "animationCycle" : 1,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 4,
+  "level" : 6,
+  "speed" : 60,
+  "power" : 5,
+  "timeToLive" : 4,
+  "fullbright" : true,
+  "bounces" : 5,
+  "piercing" : false,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [40, 20, 150],
+  "damageKind" : "electric",
+  "emitters" : [ "tinyrocketsmoke" ],
+  "statusEffects" : [ "burning" ],
+  "periodicActions" : [
+    {
+      "time" : 0.30,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "chargeshotboom",
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 0
+   },
+    {
+      "time" : 0.15,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "electricguardianbullet",
+      "inheritDamageFactor" :0.5,
+      "fuzzAngle" : 360,
+      "projectileParameters" : { "speed" : 0 }
+   }
+  ],
+  "actionOnReap" : [
+	{
+	  "action" : "config",
+	  "file" : "/projectiles/explosions/hellfireexplosion/hellfireexplosion.config"
+    }
+  ]
+}

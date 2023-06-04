@@ -1,0 +1,119 @@
+{
+  "type" : "futentaclebarrier",
+  "shortdescription" : "Tentacle Barrier",
+  "description" : "You'd like to go somewhere, but there's a huge tentacle in the way!",
+
+  "categories" : [ "futentaclebarrier" ],
+  "parts" : [ "body" ],
+
+  "animation" : "futentaclebarrier.animation",
+
+  "dropPools" : [ { "default" : "empty" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetOnDamage" : false
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.5125, 4.25], [1.0125, 3.75],  [1.0125, -2.525], [0.5125, -2.725],  [-0.5125, -2.725], [-1.0125, -2.525],  [-1.0125, 3.75], [-0.5125, 4.25] ],
+      "damage" : 10,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "cosmic",
+      "knockback" : 20,
+
+      "damageRepeatTimeout" : 0.05,
+      "statusEffects" : [ "insanity" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.5125, 4.25], [1.0125, 3.75],  [1.0125, -2.525], [0.5125, -2.725],  [-0.5125, -2.725], [-1.0125, -2.525],  [-1.0125, 3.75], [-0.5125, 4.25] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 0,
+      "runSpeed" : 0,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 35.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "aggressive" : true,
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.0
+        },
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 80
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8]
+  }
+}

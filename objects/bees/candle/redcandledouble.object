@@ -1,0 +1,51 @@
+{
+  "objectName": "redcandledouble",
+  "colonyTags": ["bees", "light"],
+  "rarity": "Common",
+  "category": "light",
+  "price": 90,
+  "description": "Two candles made with red beeswax.",
+  "shortdescription": "Two Red Candles",
+  "race": "generic",
+  "maximumLiquidLevel" : 0.2,
+  "apexDescription": "Two small candles.",
+  "avianDescription": "Avian priests often work by candlelight.",
+  "floranDescription": "Hsss take it away!",
+  "glitchDescription": "Explanation. The Glitch do not yet have the technology to produce electric lights.",
+  "humanDescription": "Pretty little candles.",
+  "hylotlDescription": "Little is as beautiful as the flickering of a candle flame.",
+  "novakidDescription": "Neat lil candles.",
+  "statusEffects": [],
+  "lightColor": [150, 125, 90],
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.75,
+  "flickerMaxIntensity" : 0.8,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+  "inventoryIcon": "redcandledoubleicon.png",
+  "orientations": [{
+    "dualImage": "redcandledouble.png:<color>.<frame>",
+    "imagePosition": [0, 0],
+    "animationPosition": [0, 0],
+    "spaceScan" : 0.1,
+    "anchors" : [ "bottom" ]
+  }],
+  "soundEffect": "/sfx/objects/oillantern.ogg",
+  "animation": "redcandle.animation",
+  "animationParts": {
+    "bg": "redcandledouble.png",
+    "fg": "redcandledoublelit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/torch_on1.ogg", "/sfx/objects/torch_on2.ogg" ],
+      "off" : [ ]
+    }
+  },
+  "animationPosition": [0, 0],
+  "scripts": ["/objects/wired/light/light.lua"],
+  "scriptDelta": 60,
+  "inputNodes": [
+    [0, 0]
+  ]
+}

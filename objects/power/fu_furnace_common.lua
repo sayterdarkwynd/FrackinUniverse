@@ -1,104 +1,147 @@
 require "/scripts/fu_storageutils.lua"
+require "/scripts/kheAA/transferUtil.lua"
+require '/scripts/fupower.lua'
 
-function init(virtual)
-	if virtual == true then return end
-	
+function init()
+	power.init()
 	object.setInteractive(true)
-	
+
 	storage.currentinput = nil
 	storage.currentoutput = nil
 	storage.bonusoutputtable = nil
 	storage.activeConsumption = false
+	self.requiredPower=config.getParameter("isn_requiredPower", 1)
 
 	self.timerInitial = config.getParameter ("fu_timer", 1)
-	self.extraConsumptionChance = config.getParameter ("fu_extraConsumptionChance", 0)
+	--script.setUpdateDelta(self.timerInitial*60.0)
+	script.setUpdateDelta(1)
+	self.effectiveRequiredPower=self.requiredPower*self.timerInitial
+
+	--self.extraConsumptionChance = config.getParameter ("fu_extraConsumptionChance", 0)
+	self.extraProductionChance = config.getParameter ("fu_extraProductionChance")
+	self.itemList=config.getParameter("inputsToOutputs")
+	self.bonusItemList=config.getParameter("bonusOutputs")
 	self.timer = self.timerInitial
 end
 
 function update(dt)
-  self.orerandom = math.random(1,2)
-  self.timer = self.timer - dt
-  if self.timer <= 0 then
-
-	if isn_hasRequiredPower() == false then
-		animator.setAnimationState("furnaceState", "idle")
-		storage.activeConsumption = false
-		return
-	end
-	
-	if oreCheck() == false then 
-		animator.setAnimationState("furnaceState", "idle")
-		storage.activeConsumption = false
-		return
-	end
-	
-	if storage.currentoutput == nil or clearSlotCheck(storage.currentoutput) == false then
-		animator.setAnimationState("furnaceState", "idle")
-		storage.activeConsumption = false
-		return
-	end
-	
-	animator.setAnimationState("furnaceState", "active")
-	storage.activeConsumption = true
-	
-	if world.containerConsume(entity.id(), {name = storage.currentinput, count = 2, data={}}) then
-		if math.random() <= self.extraConsumptionChance then
-		  world.containerConsume(entity.id(), {name = storage.currentinput, count = 2, data={}})
-		end
-		if hasBonusOutputs(storage.currentinput) == true then
-			if storage.bonusoutputtable == nil then return end 
-				for key, value in pairs(storage.bonusoutputtable) do
-					if clearSlotCheck(key) == false then break end
-					if math.random(1,100) <= value then
-						fu_storeItems({name = key, count = 1, data = {}}, {0}, true)
-					end
-			end
-		end
-		
-		fu_storeItems({name = storage.currentoutput, count = self.orerandom, data = {}}, {0}, true)
-		self.timer = self.timerInitial
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
+		transferUtil.loadSelfContainer()
 	else
-		storage.activeConsumption = false
-		animator.setAnimationState("furnaceState", "idle")
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
-  end	
+	self.timer = (self.timer or self.timerInitial) - dt
+	if self.timer <= 0 then
+		self.timer = self.timerInitial
+		local checkNormal,checkBonus=oreCheck()
+		local cSC=(checkNormal and clearSlotCheck(storage.currentoutput)) or false
+		--sb.logInfo("checkNormal=%s,cSC=%s,checkBonus=%s",checkNormal,cSC,checkBonus)
+		if (checkNormal and cSC) or (checkBonus) then
+			if (power.getTotalEnergy()>=self.effectiveRequiredPower) and world.containerConsume(entity.id(), {name = storage.currentinput, count = 2, data={}}) and power.consume(self.effectiveRequiredPower) then
+				animator.setAnimationState("furnaceState", "active")
+				object.setOutputNodeLevel(0,true)
+				storage.activeConsumption = true
+				local outputBarsCount=1
+				local outputBonusCount=0
+				--[[if math.random() <= self.extraConsumptionChance then
+					local succeeded=world.containerConsume(entity.id(), {name = storage.currentinput, count = 2, data={}})
+					if not succeeded then
+						outputBarsCount=outputBarsCount-1
+						outputBonusCount=outputBonusCount-1
+					end
+				end]]
+				if not self.extraProductionChance then
+					outputBonusCount=outputBonusCount+math.random(0,1)
+				elseif math.random()<=self.extraProductionChance then
+					outputBonusCount=outputBonusCount+1
+				end
+				--sb.logInfo("%s",{sepc=self.extraProductionChance,obc1=outputBarsCount,obc2=outputBonusCount})
+				if checkBonus then
+					if outputBonusCount>0 then
+						for key, value in pairs(storage.bonusoutputtable) do
+							if clearSlotCheck(key) and math.random(0,100) <= value then
+								fu_sendOrStoreItems(0, {name = key, count = outputBonusCount, data = {}}, {0}, true)
+							end
+						end
+					end
+				end
+				--sb.logInfo("%s",{sbot=storage.bonusoutputtable})
+				if type(storage.currentoutput)=="string" then--normal output is always a single item, not a table
+					if outputBarsCount>0 then
+						fu_sendOrStoreItems(0, {name = storage.currentoutput, count = outputBarsCount, data = {}}, {0}, true)
+					end
+				elseif type(storage.currentoutput)=="table" then--this occurs when there is no 'normal' item, the output becomes the bonus table.
+					--if outputBonusCount>0 then
+					if outputBarsCount>0 then
+						for _,item in pairs(storage.currentoutput) do
+							--fu_sendOrStoreItems(0, {name = item, count = outputBonusCount, data = {}}, {0}, true)
+							fu_sendOrStoreItems(0, {name = item, count = outputBarsCount, data = {}}, {0}, true)
+						end
+					end
+				end
+				--sb.logInfo("%s",{sco=storage.currentoutput})
+			else
+				storage.activeConsumption = false
+				animator.setAnimationState("furnaceState", "idle")
+				object.setOutputNodeLevel(0,false)
+			end
+		else
+			animator.setAnimationState("furnaceState", "idle")
+			object.setOutputNodeLevel(0,false)
+		end
+	end
+	power.update(dt)
 end
 
-
-
 function oreCheck()
-	local contents = world.containerItems(entity.id())
-	storage.currentoutput = nil
-	
-	if contents[1] == nil then return false end
-	if contents[1].name == currentinput then return true end
-	
-	for key, value in pairs(config.getParameter("inputsToOutputs")) do
-		if key == contents[1].name then
-			storage.currentinput = key
-			storage.currentoutput = value
-			return true
+	local content = world.containerItemAt(entity.id(),0)
+	if content then
+		local checkNormal=hasNormalOutputs(content)
+		local checkBonus=hasBonusOutputs(content)
+		if checkNormal or checkBonus then
+			storage.currentinput = content.name
 		end
+		return checkNormal,checkBonus
+	else
+		return false,false
 	end
-	return false
 end
 
 function clearSlotCheck(checkname)
 	if world.containerItemsCanFit(entity.id(), {name= checkname, count=1, data={}}) > 0 then
 		return true
+	else
+		return false
 	end
-	return false
 end
 
-function hasBonusOutputs(checkname)
-	local contents = world.containerItems(entity.id())
-	if contents[1] == nil then return false end
-	
-	for key, value in pairs(config.getParameter("bonusOutputs")) do
-		if key == contents[1].name then
-			storage.bonusoutputtable = value
+function hasNormalOutputs(content)
+	if content then
+		if self.itemList[content.name] then
+			storage.currentoutput = self.itemList[content.name]
 			return true
+		else
+			storage.currentoutput = {}
+			return false
 		end
+	else
+		storage.currentoutput = {}
+		return false
 	end
-	return false
+end
+
+function hasBonusOutputs(content)
+	if content then
+		if self.bonusItemList[content.name] then
+			storage.bonusoutputtable = self.bonusItemList[content.name]
+			return true
+		else
+			storage.bonusoutputtable = {}
+			return false
+		end
+	else
+		storage.bonusoutputtable = {}
+		return false
+	end
 end

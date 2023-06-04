@@ -1,0 +1,151 @@
+{
+  "objectName" : "slimenpclamp",
+  "colonyTags" : ["slimenpc","slimenpchuman","slimeperson","slimevillage","light","slime"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A small slimy lamp.",
+  "shortdescription" : "Slime Lamp",
+  "race" : "slimeperson",
+
+  "apexDescription" : "A slime lamp.",
+  "avianDescription" : "Does anyone like sticky lamps?",
+  "floranDescription" : "Sssuch a great ssslimy lamp!",
+  "glitchDescription" : "Confused. How does it glow?",
+  "humanDescription" : "A sticky lamp.",
+  "hylotlDescription" : "The lifeform emits a dull light.",
+  "novakidDescription" : "A slimy lamp. Great design.",
+  "slimepersonDescription" : "Normal table lamp.",
+
+  "category" : "light",
+  "price" : 85,
+  "lightColor" : [217, 217, 190],
+
+  "inventoryIcon" : "slimenpclampicon.png",
+  "orientations" : [
+    {
+      "image" : "slimenpclamp.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.3,
+      "flipImages" : true,
+      "direction" : "left",
+      "animationPosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "slimenpclamp.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.3,
+      "direction" : "right",
+      "animationPosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+	    {
+      "image" : "slimenpclampleft.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.3,
+      "direction" : "right",
+      "animationPosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "left" ],
+
+	  "animationParts" : {
+        "bg" : "slimenpclampleft.png",
+        "fg" : "slimenpclampleftlit.png"
+    }},
+    {
+      "image" : "slimenpclampright.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.3,
+      "direction" : "right",
+      "animationPosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "right" ],
+
+	   "animationParts" : {
+        "bg" : "slimenpclampright.png",
+        "fg" : "slimenpclamprightlit.png"
+    }},
+		    {
+      "image" : "slimenpclampceiling.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+	  "flipImages" : true,
+      "animationCycle" : 0.3,
+      "direction" : "left",
+      "animationPosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ],
+
+	  "animationParts" : {
+        "bg" : "slimenpclampceiling.png",
+        "fg" : "slimenpclampceilinglit.png"
+    }},
+    {
+      "image" : "slimenpclampceiling.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.3,
+      "direction" : "right",
+      "animationPosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ],
+
+	   "animationParts" : {
+        "bg" : "slimenpclampceiling.png",
+        "fg" : "slimenpclampceilinglit.png"
+
+    }},
+			    {
+      "image" : "slimenpclampback.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+	  "flipImages" : true,
+      "animationCycle" : 0.3,
+      "direction" : "left",
+      "animationPosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+	  "animationParts" : {
+        "bg" : "slimenpclampback.png",
+        "fg" : "slimenpclampbacklit.png"
+    }},
+    {
+      "image" : "slimenpclampback.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.3,
+      "direction" : "right",
+      "animationPosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+	   "animationParts" : {
+        "bg" : "slimenpclampback.png",
+        "fg" : "slimenpclampbacklit.png"
+    }}
+  ],
+
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "slimenpclamp.png",
+    "fg" : "slimenpclamplit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallswitch.ogg" ],
+      "off" : [ "/sfx/objects/tinywallswitch.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ]
+}

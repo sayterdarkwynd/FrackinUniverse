@@ -1,56 +1,51 @@
 {
-  "objectName" : "flowercandle",
-  "colonyTags" : [ "light", "bees" ],
-  "rarity" : "Common",
-  "category" : "light",
-  "price" : 200,
-
-  "description" : "A candle made with flowers.",
-  "shortdescription" : "Aromatic Candle",
-  "race" : "generic",
-
-  "hydrophobic" : true,
-
-  "apexDescription" : "A small candle.",
-  "avianDescription" : "Avian priests often work by candlelight.",
-  "floranDescription" : "Hsss take it away!",
-  "glitchDescription" : "Explanation. The Glitch do not yet have the technology to produce electric lights.",
-  "humanDescription" : "A pretty little candle.",
-  "hylotlDescription" : "Little is as beautiful as the flickering of a candle flame.",
-
-  "lightColor" : [245, 189, 173],
-  "flickerDistance" : 0.5,
-  "flickerStrength" : 0.1,
-   "particleEmitter" : {
-    "emissionRate" : 2,
-    "emissionVariance" : 0,
-
-    "particle" : {
-      "type" : "animated",
-      "animation" : "/animations/aroma/aroma.animation",
-      "size" : 1.0,
-      "position" : [-0.20, 1.60],
-      "timeToLive" : 1.25,
-      "layer" : "middle"
-    },
-	  "particleVariance" : {
-       "position" : [0, 0]
+  "objectName": "flowercandle",
+  "colonyTags": ["bees", "light"],
+  "rarity": "Common",
+  "category": "light",
+  "price": 45,
+  "description": "A candle made with flowers.",
+  "shortdescription": "Aromatic Candle",
+  "race": "generic",
+  "maximumLiquidLevel" : 0.2,
+  "apexDescription": "A small candle.",
+  "avianDescription": "Avian priests often work by candlelight.",
+  "floranDescription": "Hsss take it away!",
+  "glitchDescription": "Explanation. The Glitch do not yet have the technology to produce electric lights.",
+  "humanDescription": "A pretty little candle.",
+  "hylotlDescription": "Little is as beautiful as the flickering of a candle flame.",
+  "novakidDescription": "A neat lil candle.",
+  "statusEffects": [],
+  "lightColor": [135, 112, 80],
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.75,
+  "flickerMaxIntensity" : 0.8,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+  "inventoryIcon": "flowercandleicon.png",
+  "orientations": [{
+    "dualImage": "flowercandle.png:<color>.<frame>",
+    "imagePosition": [0, 0],
+    "animationPosition": [0, 0],
+    "spaceScan" : 0.1,
+    "anchors" : [ "bottom" ]
+  }],
+  "soundEffect": "/sfx/objects/oillantern.ogg",
+  "animation": "flowercandle.animation",
+  "animationParts": {
+    "bg": "flowercandle.png",
+    "fg": "flowercandlelit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/torch_on1.ogg", "/sfx/objects/torch_on2.ogg" ],
+      "off" : [ ]
     }
-   },
-  "inventoryIcon" : "flowercandleicon.png",
-  "orientations" : [
-
-    {
-      "dualImage" : "flowercandle.png:<color>.<frame>",
-      "imagePosition" : [0, 0],
-      "frames" : 3,
-      "animationCycle" : 0.5,
-
-      "spaces" : [ [0, 0], [0, 1] ],
-      "fgAnchors" : [ [0, -1] ]
-    }
-  ],
-
-  "soundEffect" : "/sfx/objects/oillantern.ogg"
-
+  },
+  "animationPosition": [0, 0],
+  "scripts": ["/objects/wired/light/light.lua"],
+  "scriptDelta": 60,
+  "inputNodes": [
+    [0, 0]
+  ]
 }

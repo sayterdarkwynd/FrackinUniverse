@@ -7,18 +7,36 @@
     "scripts" : [ "/monsters/boss/shoggoth/skills/eyebeamattack.lua" ],
     "eyeBeamAttack" : {
       "skillTime" : 2,
-      
-      "damagePerSecond" : 2000,
-      "distanceRange" : [10,80],
-      "windupTime" : 0.6,
-      "winddownTime" : 0.6,
+
+      "damagePerSecond" : 0.01,
+      "distanceRange" : [0,300],
+      "windupTime" : 1.4,
+      "winddownTime" : 1.6,
+
       "projectile" : {
-        "type" : "shoggotheyebeam",
+        "type" : "shoggothboss",
         "config" : {
-          "power" : 30,
-          "speed" : 15
+          "speed" : 100,
+          "bounces" : 0,
+          "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/acidexplosionshoggoth/fxshoggoth.config"
+	    },
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elementimpact/radioactiveimpact.config"
+	    },
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 3,
+	      "backgroundRadius" : 0,
+	      "explosiveDamageAmount" : 1,
+	      "delaySteps" : 2
+	    }
+          ]
         },
-        "offset" : [9.5, -5]
+        "offset" : [12, -5]
       }
     }
   }

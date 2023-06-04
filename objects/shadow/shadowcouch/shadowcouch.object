@@ -1,0 +1,56 @@
+{
+  "objectName" : "shadowcouch",
+  "colonyTags" : ["shadow", "misc"],
+  "rarity" : "Common",
+  "description" : "A comfy dark colored couch.",
+  "shortdescription" : "Shadowy Couch",
+  "race" : "shadow",
+  "category" : "furniture",
+  "price" : 125,
+
+  "apexDescription" : "A simple dark colored couch. The pillows are striped.",
+  "avianDescription" : "The pillows make this couch comfortable.",
+  "floranDescription" : "Ssstripy couch. Ssoft pillows.",
+  "glitchDescription" : "Inspired. Perhaps I should decorate myself with stripes.",
+  "humanDescription" : "A dark bench with nice stripy pillows.",
+  "hylotlDescription" : "Not too soft, not too firm. A good spot for meditation.",
+  "novakidDescription" : "A good place to sit and watch a sun go down.",
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : false,
+
+  "inventoryIcon" : "shadowcouchicon.png",
+  "orientations" : [
+    {
+      "image" : "shadowcouch.png:<color>",
+      "sitCoverImage" : "/objects/shadow/shadowcouch/shadowcouchcover.png",
+      "imagePosition" : [-16, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "sitPositions" : [
+        // Positions from front to back.
+        [-7, 21], // Right
+        [6, 21] // Left
+      ],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "shadowcouch.png:<color>",
+      "sitCoverImage" : "/objects/shadow/shadowcouch/shadowcouchcover.png",
+      "imagePosition" : [-16, 0],
+      "direction" : "right",
+
+      "sitPositions" : [
+        // Positions from front to back.
+        [-6, 21], // Left
+        [7, 21] // Right
+      ],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+}

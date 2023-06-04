@@ -1,62 +1,119 @@
 {
   "itemName" : "lunaribow",
-  "level" : 3,
+  "level" : 2,
   "price" : 150,
   "inventoryIcon" : "lunaribowicon.png",
   "maxStack" : 1,
-  "rarity" : "rare",
-  "tooltipKind" : "bow",
+  "rarity" : "common",
+  "tooltipKind" : "bow2",
   "weaponType" : "Bow",
   "description" : "Crystalline bow for hunting extra dangerous game.",
   "shortdescription" : "Lunari Bow",
+  "category" : "bow",
   "twoHanded" : true,
-  "itemTags" : ["weapon", "ranged", "bow"],
+  "itemTags" : ["weapon", "ranged", "bow", "lunari", "upgradeableWeapon"],
 
   "radioMessagesOnPickup" : [ "pickupbow" ],
 
-  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animation" : "/items/active/weapons/bow/bowglow.animation",
   "animationParts" : {
-    "bow" : "lunaribow.png"
+    "bow" : "lunaribow.png",
+    "bowFullbright" : "lunaribowfullbright.png"
   },
   "animationCustom" : {
-    "animatedParts" : { "parts" : { "bow" : { "properties" : {
-      "offset" : [0.25, 0]
-    }}}},
+    "animatedParts" : {
+      "parts" : {
+        "bow" : { "properties" : {"offset" : [0.25, 0]}},
+        "bowFullbright" : { "properties" : { "offset" : [0.25, 0]}}
+      }
+    },
     "sounds" : {
       "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
       "release" : [ "/sfx/gun/bow_loose.ogg" ],
       "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
-    }
+    },
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [239, 255, 107],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    }}
   },
 
   "scripts" : ["/items/active/weapons/bow/bow.lua"],
 
-  "elementalType" : "physical",
-
-  "primaryAbilityType" : "bowshot",
+  "elementalType" : "electric",
+  //"collectablesOnPickup" : { "fu_weaponbow" : "lunaribow" },
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
   "primaryAbility" : {
-    "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "bowImageSelector",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
-    "projectileType" : "lunaribow2",
-    "powerProjectileType" : "lunaribow1",
+    "drawTime" : 0.8,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.40,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"energyPerShot" : 25,
+	"holdEnergyUsage" : 4,
+	"airborneBonus" : 1.35,
+    "projectileType" : "lunariarrow",
+    "powerProjectileType" : "chargedlunariarrow",
     "projectileParameters" : {
-      "power" : 6.65
+      "power" : 7.1
+    },
+    "powerProjectileParameters" : {
+      "power" : 8.2
     }
   },
 
-  "altAbilityType" : "zenshot",
+  "altAbilityType" : "rngbows_enhancedbowshot",
   "altAbility" : {
-    "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "bowImageSelectorNoPower",
+	"name" : "Enhanced Shot",
+    "drawFrameSelector" : "poisonBowImageSelectorNoPower",
     "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
-    "projectileType" : "lunaribow1",
+    "drawTime" : 1.3,				//Time to fully draw the bow
+    "powerProjectileTime" : 0.40,	//After fully drawing, the bow is super-charged for this long
+    "dynamicDamageMultiplier" : 1.1,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+    "energyPerShot" : 40,
+    "holdEnergyUsage" : 8,
+    "projectileType" : "chargedlunariarrow",
+    "powerProjectileType" : "chargedlunariarrow",
     "projectileParameters" : {
-      "power" : 8.425
+      "power" : 7.1,
+      "speed" : 70
     },
-    "splitDelay" : 0.2,
-    "splitAngle" : 2
+    "powerProjectileParameters" : {
+      "power" : 8.2,
+      "timeToLive" : 0.05,
+      "actionOnReap" : [
+        {
+          "action" : "projectile",
+          "type" : "chargedlunariarrow",
+          "angleAdjust" : -25,
+          "inheritDamageFactor" : 0.33,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "chargedlunariarrow",
+          "angleAdjust" : 0,
+          "inheritDamageFactor" : 0.33,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "chargedlunariarrow",
+          "angleAdjust" : 25,
+          "inheritDamageFactor" : 0.33,
+          "inheritSpeedFactor" : 1
+        }
+      ]
+    },
+    "splitDelay" : 0.04,
+    "splitAngle" : 5
   },
+  "critChance" : 5,
+  "critBonus" : 5,
 
-  "builder" : "/items/buildscripts/buildbow.lua"
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

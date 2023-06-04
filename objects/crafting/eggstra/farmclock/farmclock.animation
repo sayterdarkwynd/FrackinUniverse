@@ -1,0 +1,58 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "timeState" : {
+        "default" : "time",
+        "states" : {
+          "time" : {
+            "frames" : 8,
+            "cycle" : 2,
+            "mode" : "loop"
+          }
+        }
+      }
+    },
+    "parts" : {
+      "face" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [0, 0.5],
+          "rotationGroup" : "time",
+          "zLevel" : 1
+        },
+
+        "partStates" : {
+          "timeState" : {
+            "time" : {
+              "properties" : {
+                "image" : "<partImage>:<color>"
+              }
+            }
+          }
+        }
+      },
+      "body" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 0
+        },
+
+        "partStates" : {
+          "timeState" : {
+            "time" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "rotationGroups" : {
+    "time" : {
+      "rotationCenter" : [0.0625, 0.4375],
+      "angularVelocity" : 1.5
+    }
+  }
+}

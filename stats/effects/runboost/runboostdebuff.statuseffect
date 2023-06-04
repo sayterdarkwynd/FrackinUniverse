@@ -1,14 +1,19 @@
 {
   "name" : "runboostdebuff",
-  "effectConfig" : {},
-  "defaultDuration" : 30,
+  "blockingStat" : "stunImmunity",
+	"effectConfig": {
+		"controlModifiers": {
+			"runModifier": 0.7
+		}
+	},
+	"defaultDuration": 30,
 
-  "scripts" : [
-    "runboostdebuff.lua"
-  ],
+	"scripts": [
+		"/stats/effects/fu_genericControlModifiers.lua"
+	],
 
   "animationConfig" : "runboost.animation",
 
-  "label" : "-Run",
+  "label" : "-30% Run",
   "icon" : "/interface/statuses/haste.png"
 }

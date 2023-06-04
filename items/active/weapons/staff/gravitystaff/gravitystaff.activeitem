@@ -1,0 +1,202 @@
+{
+  "itemName" : "gravitystaff",
+  "price" : 1440,
+  "maxStack" : 1,
+  "level" : 5,
+  "rarity" : "rare",
+  "description" : "^orange;Primary^reset;: Foreground, ^orange;Secondary^reset;: Background.",
+  "shortdescription" : "Matter Staff",
+  "category" : "staff",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","staff","gravity"],
+  "tooltipKind" : "staff",
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "druidstaff.png",
+    "stone" : "",
+    "chargeEffect" : "druidstaffglow.png"
+  },
+  "animationCustom" : {
+    "lights" : {
+      "glow" : {
+        "color" : [55, 34, 122]
+      }
+    },
+    "particleEmitters" : {
+      "physicalcharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 20,
+        "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
+        "particles" : [
+          {"particle" : "defaultblue"}
+        ]
+      }
+    }
+  },
+
+  "inventoryIcon" : "druidstaff.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 1.0,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "duration" : 0.05,
+      "armRotation" : -10,
+      "weaponRotation" : -50,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "cooldown" : {
+      "duration" : 0.05,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "elementalType" : "physical",
+
+"primaryAbilityType":"elementorb",
+"primaryAbility":{
+"name" : "Gravity Siphon (F)",
+"energyCost":100,
+"maxCastRange":30,
+"projectileType":"electricorb",
+"projectileParameters":{
+  "baseDamage":0,
+  "persistentAudio":"/sfx/npc/boss/crystalboss_beam.ogg",
+
+  "power":0,
+  "damageKind":"noDamage",
+  "damageType":"noDamage",
+  "controlMovement":{
+    "maxSpeed":20,
+    "controlForce":500
+  },
+  "timeToLive":20,
+  "periodicActions":[
+    {
+      "time":0.01,
+      "action":"projectile",
+      "type":"pulsecannonexplosion",
+      "config":{
+        "speed":0,
+        "persistentAudio":"",
+        "knockback":-50,
+        "timeToLive":0.01,
+        "power":0.0
+      }
+    },
+    {
+      "time":0.01,
+      "action":"projectile",
+      "type":"hgravityexplosion",
+      "config":{
+        "speed":0,
+        "persistentAudio":"",
+        "knockback":-50,
+        "timeToLive":0.01,
+        "power":0.0}
+      },
+      {
+        "time":0.01,
+        "action":"explosion",
+        "foregroundRadius":3,
+        "backgroundRadius":0,
+        "explosiveDamageAmount":5.0,
+        "delaySteps":2,
+        "harvestLevel":10
+      }
+    ]
+  }
+},
+
+"altAbilityType":"elementorb",
+"altAbility":{
+  "name" : "Gravity Siphon (R)",
+  "energyCost":200,
+  "maxCastRange":50,
+  "projectileType":"fireorb",
+  "projectileParameters":{
+    "baseDamage":0,
+    "persistentAudio":"/sfx/npc/boss/crystalboss_beamin.ogg",
+
+    "power":0,
+    "damageKind":"noDamage",
+    "damageType":"noDamage",
+    "controlMovement":{
+      "maxSpeed":20,
+      "controlForce":500
+    },
+    "timeToLive":20,
+    "periodicActions":[
+    {
+      "time":0.01,
+      "action":"projectile",
+      "type":"pulsecannonexplosion",
+      "config":{
+        "speed":0,
+        "persistentAudio":"",
+        "knockback":-50,
+        "timeToLive":0.01,
+        "power":0.0
+      }
+    },
+    {
+      "time":0.01,
+      "action":"projectile",
+      "type":"hgravityexplosion",
+      "config":{
+        "speed":0,
+        "persistentAudio":"",
+        "knockback":-50,
+        "timeToLive":0.01,
+        "power":0.0
+      }
+    },
+    {
+      "time":0.01,
+      "action":"explosion",
+      "foregroundRadius":0,
+      "backgroundRadius":3,
+      "explosiveDamageAmount":5.0,
+      "delaySteps":2,
+      "harvestLevel":10
+    }
+    ]
+   }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

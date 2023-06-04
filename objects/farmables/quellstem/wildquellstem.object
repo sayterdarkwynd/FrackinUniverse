@@ -1,0 +1,47 @@
+{
+  "objectName" : "wildquellstem",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Legendary",
+  "category" : "seed",
+  "description" : "Immune to all forms of heat, including lava.",
+  "shortdescription" : "Quell Stem",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 300,
+  "inventoryIcon" : "quellstemicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "quellstem.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2] ],
+
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+"stages" : [
+    {
+      "alts" : 3,
+      "duration" : [68, 111]
+    },
+    {
+      "alts" : 3,
+      "duration" : [68, 111]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "quellstem",
+      "resetToStage" : 0
+    }
+  ],
+  "maxImmersion" : 0.125,
+  "breakDropOptions" : [
+    [ [ "quellstem", 1, { } ] ]
+  ],
+  "beeLikeness" : { "scoria" : 1,"mason" : 1}
+}

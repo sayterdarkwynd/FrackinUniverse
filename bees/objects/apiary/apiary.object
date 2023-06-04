@@ -1,0 +1,50 @@
+{
+	"objectName" : "normalapiary",
+	"colonyTags" : [ "hive", "bees", "insects" ],
+	"rarity" : "common",
+	"description" : "A bee breeding apiary.",
+	"shortdescription" : "Apiary",
+	"race" : "generic",
+	"subtitle" : "Harvest honey!",
+	"category" : "crafting",
+	"price" : 100,
+	"objectType" : "container",
+	"printable" : false,
+	"health" : 0.1,
+	"smashOnBreak" : true, // Dropping is handled via script
+
+	"inventoryIcon" : "icon.png",
+	"orientations" : [
+		{
+			"dualImage" : "object.png:default",
+			"imagePosition" : [0, 0],
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ],
+			"collision" : "platform"
+		}
+	],
+
+	"animation" : "/bees/objects/apiary.animation",
+	"animationParts" : {"base" : "object.png", "bees" : "bees.png", "loading" : "loading.png",  "warning" : "warning.png"},
+	"animationPosition" : [0, 0],
+	"recipeGroup" : "beetrap",
+	"openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+
+	"frameCooldown" : 67,
+	"autoCloseCooldown" : 3600,
+
+	"scripts" : [ "/bees/apiary.lua" ],
+	"scriptDelta" : 5,
+
+	// Params required for the apiary script
+	"uiConfig" : "/bees/interface/apiary/smallapiary.config",
+	"slotCount" : 12,
+	"queenSlot" : 1,
+	"droneSlots" : [ 2 ],
+	"frameSlots" : [ 3 ],
+	"firstInventorySlot" : 4
+
+//	"inputNodes":[[0,0]],
+//	"outputNodes":[[0,1]],
+//	"notItemStorage":true
+}

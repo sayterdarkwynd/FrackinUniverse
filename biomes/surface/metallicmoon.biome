@@ -5,27 +5,29 @@
   "spawnProfile" : {
     "groups" : [
       {
-        "select" : 3,
-        "pool" : [ 
-          [ 0.08, "scandroid" ],     
-          [ 0.08, "tintix" ],
-          [ 0.08, "triplod" ],        
-          [ 0.08, "bobot" ],
-          [ 0.05, "fumechspider" ],   
-          [ 0.05, "minidrone" ],
-          [ 0.06, "fuglitchspider" ],
-          [ 0.07, "fudeathdroid" ],
-          [ 0.03, "zombot" ],     
-          [ 0.03, "warbot" ],
-          [ 0.01, "fufatalcircuit" ],
-          [ 0.01, "fufatalcircuit2" ]
+        "select" : 4,
+        "pool" : [
+          [ 0.1, "scandroid" ],
+          [ 0.03, "fuchiropterror" ],
+          [ 0.1, "triplod" ],
+          [ 0.03, "nanoswarm" ],
+          [ 0.1, "fumechspider" ],
+          [ 0.03, "minidrone" ],
+          [ 0.1, "fuglitchspider" ],
+          [ 0.1, "fuomnicannon" ],
+          [ 0.1, "fuomnicannon2" ],
+          [ 0.1, "cleaningbot" ],
+          [ 0.1, "repairbot"],
+          [ 0.01, "fatalcircuit" ],
+          [ 0.1, "fumechspiderultra" ]
         ]
       },
       {
         "select" : 1,
         "pool" : [
-          [ 0.4, "fudrone" ],
-          [ 0.4, "robotchicken" ]
+          [ 0.33, "fudrone" ],
+          [ 0.05, "robotchicken" ],
+          [ 0.33, "bee_cybernetic" ]
         ]
       }
     ],
@@ -40,7 +42,7 @@
             },
             "fireStatusImmunity" : {
               "baseValue" : 1.0
-            },            
+            },
             "ffextremeheatImmunity" : {
               "baseValue" : 1.0
             }
@@ -48,9 +50,9 @@
       }
     }
   },
-  
-  
-  "statusEffects" : [ ],
+
+
+  "statusEffects" : [ "biomeairless" ],
   "airless" : true,
   "breathable" : false,
 
@@ -180,15 +182,227 @@
       "dayLightColor" : [24, 28, 24],
       "eveningLightColor" : [12, 14, 12],
       "nightLightColor" : [0, 0, 0]
+    },
+    {
+      // light reddish
+      "mainColor" : [20, 20, 20],
+
+      "morningColors" : [ [255, 224, 129], [252, 230, 164] ],
+      "dayColors" : [ [255, 152, 107], [255, 183, 152] ],
+      "eveningColors" : [ [254, 121, 69], [254, 165, 129] ],
+      "nightColors" : [ [70, 20, 0, 60], [70, 20, 0, 160] ],
+
+      "morningLightColor" : [202, 177, 100],
+      "dayLightColor" : [202, 138, 100],
+      "eveningLightColor" : [202, 100, 100],
+      "nightLightColor" : [70, 20, 0]
+    },
+    {
+      // pinkish all around
+      "mainColor" : [40, 40, 40],
+
+      "morningColors" : [ [255, 167, 152], [255, 163, 208] ],
+      "dayColors" : [ [228, 152, 169], [243, 205, 193] ],
+      "eveningColors" : [ [221, 186, 235], [247, 73, 121] ],
+      "nightColors" : [ [70, 20, 0, 60], [70, 20, 0, 160] ],
+
+      "morningLightColor" : [195, 156, 149],
+      "dayLightColor" : [197, 184, 182],
+      "eveningLightColor" : [197, 98, 126],
+      "nightLightColor" : [70, 20, 0]
+    },
+    {
+      // dark peachy massacre
+      "mainColor" : [0, 0, 0],
+
+      "morningColors" : [ [200, 24, 0], [252, 30, 0] ],
+      "dayColors" : [ [200, 52, 7], [255, 83, 52] ],
+      "eveningColors" : [ [200, 21, 0], [254, 65, 29] ],
+      "nightColors" : [ [70, 20, 0, 60], [70, 20, 0, 160] ],
+
+      "morningLightColor" : [100, 77, 0],
+      "dayLightColor" : [100, 38, 0],
+      "eveningLightColor" : [100, 0, 0],
+      "nightLightColor" : [70, 20, 0]
+    },
+    {
+      "mainColor" : [60, 0, 0],
+
+      "morningColors" : [ [255, 160, 160], [255, 180, 180] ],
+      "dayColors" : [ [200, 120, 120], [255, 150, 152] ],
+      "eveningColors" : [ [180, 80, 69], [190, 70, 70] ],
+      "nightColors" : [ [60, 0, 0], [20, 0, 0] ],
+
+      "morningLightColor" : [220, 40, 40],
+      "dayLightColor" : [180, 40, 40],
+      "eveningLightColor" : [120, 30, 30],
+      "nightLightColor" : [90, 17, 17]
+    },
+    {
+      "mainColor" : [12, 0, 0],
+
+      "morningColors" : [ [220, 160, 160], [252, 180, 180] ],
+      "dayColors" : [ [200, 120, 120], [255, 150, 152] ],
+      "eveningColors" : [ [180, 80, 69], [190, 70, 70] ],
+      "nightColors" : [ [60, 0, 0], [20, 0, 0] ],
+
+      "morningLightColor" : [120, 40, 40],
+      "dayLightColor" : [120, 40, 40],
+      "eveningLightColor" : [80, 30, 30],
+      "nightLightColor" : [40, 17, 17]
+    },
+    {
+      "mainColor" : [80, 20, 0],
+
+      "morningColors" : [ [220, 160, 160], [252, 180, 180] ],
+      "dayColors" : [ [200, 120, 120], [255, 150, 152] ],
+      "eveningColors" : [ [180, 80, 69], [190, 70, 70] ],
+      "nightColors" : [ [60, 0, 0], [20, 0, 0] ],
+
+      "morningLightColor" : [202, 177, 100],
+      "dayLightColor" : [202, 138, 100],
+      "eveningLightColor" : [202, 100, 100],
+      "nightLightColor" : [40, 17, 17]
+    },
+    {
+      "mainColor" : [0, 40, 0],
+
+      "morningColors" : [ [120, 40, 40], [160, 80, 80] ],
+      "dayColors" : [ [120, 40, 40], [160, 60, 80] ],
+      "eveningColors" : [ [80, 30, 30], [80, 30, 30] ],
+      "nightColors" : [ [40, 17, 17], [40, 17, 17] ],
+
+      "morningLightColor" : [120, 40, 40],
+      "dayLightColor" : [120, 40, 40],
+      "eveningLightColor" : [80, 30, 30],
+      "nightLightColor" : [40, 17, 17]
+    },
+    {
+      "mainColor" : [50, 0, 0],
+
+      "morningColors" : [ [123, 224, 150], [124, 230, 164] ],
+      "dayColors" : [ [130, 255, 190], [135, 255, 195] ],
+      "eveningColors" : [ [100, 200, 130], [111, 211, 150] ],
+      "nightColors" : [ [0, 50, 0], [0, 50, 0] ],
+
+      "morningLightColor" : [90, 150, 110],
+      "dayLightColor" : [45, 100, 55],
+      "eveningLightColor" : [25, 50, 30],
+      "nightLightColor" : [0, 12, 0]
+    },
+    {
+      "mainColor" : [0, 70, 0],
+
+      "morningColors" : [ [124, 124, 200], [134, 134, 225] ],
+      "dayColors" : [ [70, 70, 150], [70, 70, 170] ],
+      "eveningColors" : [ [30, 30, 100], [30, 30, 120] ],
+      "nightColors" : [ [14, 14, 75], [14, 14, 90] ],
+
+      "morningLightColor" : [122, 122, 200],
+      "dayLightColor" : [90, 90, 150],
+      "eveningLightColor" : [50, 50, 100],
+      "nightLightColor" : [12, 12, 50]
+    },
+    {
+      "mainColor" : [0, 0, 70],
+
+      "morningColors" : [ [124, 124, 200], [134, 134, 225] ],
+      "dayColors" : [ [70, 70, 150], [70, 70, 170] ],
+      "eveningColors" : [ [30, 30, 100], [30, 30, 120] ],
+      "nightColors" : [ [14, 14, 75], [14, 14, 90] ],
+
+      "morningLightColor" : [122, 122, 200],
+      "dayLightColor" : [90, 90, 150],
+      "eveningLightColor" : [50, 50, 100],
+      "nightLightColor" : [12, 12, 50]
+    },
+//white
+    {
+      "mainColor" : [0, 0, 0],
+
+      "morningColors" : [ [255, 255, 255], [255, 255, 225] ],
+      "dayColors" : [ [190, 190, 190], [190, 190, 190] ],
+      "eveningColors" : [ [120, 120, 120], [120, 120, 120] ],
+      "nightColors" : [ [75, 75, 75], [75, 75, 75] ],
+
+      "morningLightColor" : [255, 255, 255],
+      "dayLightColor" : [220, 220, 220],
+      "eveningLightColor" : [180, 180, 180],
+      "nightLightColor" : [90, 90, 90]
+    },
+     {
+       "mainColor" : [0, 0, 10],
+
+       "morningColors" : [ [255, 224, 129], [252, 230, 164] ],
+       "dayColors" : [ [255, 152, 107], [255, 183, 152] ],
+       "eveningColors" : [ [254, 121, 69], [254, 165, 129] ],
+       "nightColors" : [ [60, 0, 0], [20, 0, 0] ],
+
+       "morningLightColor" : [202, 177, 100],
+       "dayLightColor" : [202, 138, 100],
+       "eveningLightColor" : [202, 100, 100],
+       "nightLightColor" : [40, 17, 17]
+    },
+    {
+      "mainColor" : [5, 20, 80],
+
+      "morningColors" : [ [255, 224, 129], [252, 230, 164] ],
+      "dayColors" : [ [255, 152, 107], [255, 183, 152] ],
+      "eveningColors" : [ [254, 121, 69], [254, 165, 129] ],
+      "nightColors" : [ [60, 0, 0], [20, 0, 0] ],
+
+      "morningLightColor" : [202, 177, 100],
+      "dayLightColor" : [202, 138, 100],
+      "eveningLightColor" : [202, 100, 100],
+      "nightLightColor" : [40, 17, 17]
+    },
+    {
+      "mainColor" : [66, 20, 0],
+
+      "morningColors" : [ [255, 224, 129], [252, 230, 164] ],
+      "dayColors" : [ [255, 152, 107], [255, 183, 152] ],
+      "eveningColors" : [ [254, 121, 69], [254, 165, 129] ],
+      "nightColors" : [ [60, 0, 0], [20, 0, 0] ],
+
+      "morningLightColor" : [202, 177, 100],
+      "dayLightColor" : [202, 138, 100],
+      "eveningLightColor" : [202, 100, 100],
+      "nightLightColor" : [40, 17, 17]
+    },
+    {
+      "mainColor" : [0, 77, 0],
+
+      "morningColors" : [ [123, 224, 150], [124, 230, 164] ],
+      "dayColors" : [ [130, 255, 190], [135, 255, 195] ],
+      "eveningColors" : [ [100, 200, 130], [111, 211, 150] ],
+      "nightColors" : [ [0, 50, 0], [0, 50, 0] ],
+
+      "morningLightColor" : [90, 150, 110],
+      "dayLightColor" : [45, 100, 55],
+      "eveningLightColor" : [25, 50, 30],
+      "nightLightColor" : [0, 12, 0]
+    },
+    {
+      "mainColor" : [40, 0, 40],
+
+      "morningColors" : [ [123, 224, 150], [124, 230, 164] ],
+      "dayColors" : [ [130, 255, 190], [135, 255, 195] ],
+      "eveningColors" : [ [100, 200, 130], [111, 211, 150] ],
+      "nightColors" : [ [0, 50, 0], [0, 50, 0] ],
+
+      "morningLightColor" : [90, 150, 110],
+      "dayLightColor" : [45, 100, 55],
+      "eveningLightColor" : [25, 50, 30],
+      "nightLightColor" : [0, 12, 0]
     }
   ],
-  
-  
+
+
   "mainBlock" : "steelsand",
   "subBlocks" : [ "rustyblock", "steelstone", "rustymetal" ],
   "ores" : "ff_metalmoonOres",
 
-  "parallax" : "/parallax/surface/scorchedcity.parallax",
+  "parallax" : "/parallax/surface/metallicmoon.parallax",
 
   "ambientNoises" : {
     "day" : {
@@ -201,10 +415,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/Expiation.ogg","/music/Temporis.ogg","/music/vangelis.ogg","/music/cybersphere_industrial.ogg","/music/explorationfanfare.ogg","/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/Nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/Expiation.ogg","/music/vangelis.ogg","/music/cybersphere_industrial.ogg","/music/ambient_dark.ogg","/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/Nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
     }
   },
 
@@ -212,33 +426,6 @@
     "grassMod" : [ "metal", "metalgrass" ],
     "grassModDensity" : 0.9,
       "items" : [
-           {
-             "mode" : "floor",
-             "priority" : 1.0,
-             "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
-   
-             "type" : "object",
-             "objectSets" : [
-               {
-                 "pool" : [ 
-              [0.50, "groundspike1" ],
-              [0.50, "groundspike2" ],
-              [0.50, "groundspike3" ],
-              [0.50, "groundspike4" ],
-              [0.50, "copperrock" ], 
-              [0.50, "copperrocksmall" ],
-              [0.50, "silverrock" ],
-              [0.50, "silverrocksmall" ],
-              [0.50, "goldrock" ],
-              [0.50, "goldrocksmall" ],
-              [0.50, "diamondrock" ],
-              [0.50, "diamondrocksmall" ]
-                 ],
-                 "parameters" : { "startingStage" : 3 }
-               }
-             ]
-           },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -246,8 +433,17 @@
           "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "metallicmini", "junkmini", "steamspringmicrodungeons", "alienmicrodungeons", "fulabs", "fushops", "corrupt" ]
-        },           
+          "microdungeons" : [ "fu_dae_microdungeons", "metallicmini", "junkmini", "fulabs" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffAverage",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "corrupt" ]
+        },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -255,35 +451,7 @@
           "distribution" : "/biomes/distributions.config:tiyDist",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none", "ice" ]
-        },      
-        {
-          "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
-
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : [ [1, "statuspod" ] ],
-              "parameters" : { }
-            }
-          ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:potsRare",
-
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
-              "parameters" : { }
-            }
-          ]
+          "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
         },
         {
           "mode" : "floor",
@@ -310,7 +478,7 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "ffmetallicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
         {
           "mode" : "floor",
@@ -319,13 +487,22 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
+          "treasureBoxSets" : [ "ffmetallicChest", "ffmetallicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+          "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
         },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -370,44 +547,69 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "wilddiodiaseed" ],
               [0.35, "wildautomatoseed" ],
               [0.35, "wildcurrentcornseed" ]
-              
+
           ],
               "parameters" : { "startingStage" : 3 }
             }
           ]
-        },                
-        {
-          "mode" : "ceiling",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : [ [0.35, "teslaspike"], [0.35,"apexsecuritycamera" ], [0.35, "metallicceiling1" ],[0.35, "metallicceiling2" ],[0.35, "metallicceiling3" ],[0.35, "metallicceiling4" ],[0.35, "sawblade2" ],[0.35, "ancientbouldertrap" ],[0.35, "airbooster" ], [ 0.35, "ancienticetrap" ], [ 0.35, "ancientcrystaltrap" ], [ 0.35, "jumpbooster" ], [ 0.35, "powerbooster" ], [ 0.35, "speedbooster" ]  ],
-              "parameters" : { }
-            }
-          ]
-        },        
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ [0.35, "invisiblelight"], [0.35, "invisiblesparker"], [0.35, "teslaspike"], [0.35, "tesla"], [0.35, "coppersupport"],[0.35, "junctionbox" ], [0.55, "device1" ], [0.35, "metallicmachine1" ],[0.35, "metallicmachine2" ],[0.35, "metallicmachine3" ],[0.35, "metallicmachine4" ],[0.35, "metallicmachine5" ],[0.35, "metallicmachine6" ],[0.35, "metallicmachine7" ],[0.35, "tetrapod" ],[0.35, "tech2" ],[0.35, "outpostcargocrate" ],[0.35, "outpostcargocrateshort" ],[0.35, "outpostgenerator" ],[0.35, "outpostconsole" ],[0.35, "outpostradardish" ],[0.35, "outpostsecurityconsole" ],[0.35, "outposttank" ],[0.35, "roofvent" ],[0.35, "outpostlamp" ],[0.35, "sawblade2" ],[0.35, "ancientbouldertrap" ],[0.35, "airbooster" ],[0.35, "ancientconsole" ], [0.35, "wreckconsole1" ], [0.35, "wreckconsole2" ], [0.35, "wreckconsole3" ], [ 0.35, "wreckturbine2" ], [ 0.35, "wreckturbines" ], [ 0.35, "ancienticetrap" ], [ 0.35, "ancientpillar" ], [ 0.35, "ancientcrystaltrap" ], [ 0.35, "jumpbooster" ], [ 0.35, "powerbooster" ], [ 0.35, "speedbooster" ]  ],
+              "pool" : [
+              [0.35, "metalbarrel1" ],
+              [0.35, "bunkerwires" ],
+              [0.35, "antenna" ],
+              [0.35, "invisiblesparker" ],
+              [0.35, "teslaspike" ],
+              [0.35, "tesla" ],
+              [0.35, "bunkercrate" ],
+              [0.35, "outpostcargocrate" ],
+              [0.35, "outpostcargocrateshort" ],
+              [0.35, "outpostgenerator" ],
+              [0.35, "outpostradardish" ],
+              [0.35, "outposttank" ],
+              [0.35, "roofvent" ],
+              [0.35, "sawblade2" ],
+              [0.35, "wreckcrate1" ],
+              [0.35, "wreckgenerator" ],
+              [0.35, "wreckturbine2" ],
+              [0.35, "wreckturbines" ]
+              ],
               "parameters" : { }
             }
           ]
-        }        
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:rareClumpyLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "ancienticetrap" ],
+              [0.35, "airbooster" ],
+              [0.35, "jumpbooster" ],
+              [0.35, "powerbooster" ],
+              [0.35, "speedbooster" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        }
       ]
     },
     "undergroundPlaceables" : {
@@ -421,9 +623,17 @@
           "distribution" : "/biomes/distributions.config:undergroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "ffmetallicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
 
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "ffmetallicChest", "ffmetallicChest2" ]
+        },
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -437,7 +647,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:undergroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -457,33 +667,112 @@
           ]
         },
         {
-          "mode" : "ceiling",
+          "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:potsRare",
 
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ [0.35, "teslaspike"], [0.35,"apexsecuritycamera" ], [0.35, "metallicceiling1" ],[0.35, "metallicceiling2" ],[0.35, "metallicceiling3" ],[0.35, "metallicceiling4" ],[0.35, "sawblade2" ],[0.35, "ancientbouldertrap" ],[0.35, "airbooster" ], [ 0.35, "ancienticetrap" ], [ 0.35, "ancientcrystaltrap" ], [ 0.35, "jumpbooster" ], [ 0.35, "powerbooster" ], [ 0.35, "speedbooster" ]  ],
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
               "parameters" : { }
             }
           ]
-        },        
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "invisiblesparker" ],
+              [0.35, "teslaspike" ],
+              [0.35, "apexsecuritycamera" ],
+              [0.35, "sawblade2" ],
+              [0.35, "wreckwiresceiling" ]
+              ],
+			  "parameters" : { }
+            }
+          ]
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ [0.35, "teslaspike"], [0.35, "tesla"], [0.35, "junctionbox" ], [0.55, "device1" ], [0.35, "metallicmachine1" ],[0.35, "metallicmachine2" ],[0.35, "metallicmachine3" ],[0.35, "metallicmachine4" ],[0.35, "metallicmachine5" ],[0.35, "metallicmachine6" ],[0.35, "metallicmachine7" ],[0.35, "tetrapod" ],[0.35, "tech2" ],[0.35, "outpostcargocrate" ],[0.35, "outpostcargocrateshort" ],[0.35, "outpostgenerator" ],[0.35, "outpostconsole" ],[0.35, "outpostradardish" ],[0.35, "outpostsecurityconsole" ],[0.35, "outposttank" ],[0.35, "roofvent" ],[0.35, "outpostlamp" ],[0.35, "sawblade2" ],[0.35, "ancientbouldertrap" ],[0.35, "airbooster" ],[0.35, "ancientconsole" ], [0.35, "wreckconsole1" ], [0.35, "wreckconsole2" ], [0.35, "wreckconsole3" ], [ 0.35, "wreckturbine2" ], [ 0.35, "wreckturbines" ], [ 0.35, "ancienticetrap" ], [ 0.35, "ancientpillar" ], [ 0.35, "ancientcrystaltrap" ], [ 0.35, "jumpbooster" ], [ 0.35, "powerbooster" ], [ 0.35, "speedbooster" ]  ],
+              "pool" : [
+              [0.35, "metalbarrel1" ],
+              [0.35, "bunkerwires" ],
+              [0.35, "antenna" ],
+              [0.35, "invisiblesparker" ],
+              [0.35, "teslaspike" ],
+              [0.35, "tesla" ],
+              [0.35, "bunkercrate" ],
+              [0.35, "outpostcargocrate" ],
+              [0.35, "outpostcargocrateshort" ],
+              [0.35, "outposttank" ],
+              [0.35, "roofvent" ],
+              [0.35, "sawblade2" ],
+              [0.35, "wreckcrate1" ],
+              [0.35, "wreckgenerator" ],
+              [0.35, "wreckturbine2" ],
+              [0.35, "wreckturbines" ]
+              ],
               "parameters" : { }
             }
           ]
-        }  
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:rareClumpyLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.50, "ancientcrystaltrap" ],
+              [0.35, "ancienticetrap" ],
+              [0.35, "airbooster" ],
+              [0.35, "jumpbooster" ],
+              [0.35, "powerbooster" ],
+              [0.35, "speedbooster" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:rareClumpyLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.50, "ancientcrystaltrap" ],
+              [0.35, "ancienticetrap" ],
+              [0.35, "airbooster" ],
+              [0.35, "jumpbooster" ],
+              [0.35, "powerbooster" ],
+              [0.35, "speedbooster" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        }
       ]
     }
 }

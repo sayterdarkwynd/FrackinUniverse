@@ -1,0 +1,65 @@
+{
+  "objectName" : "moonlitcomet",
+  "colonyTags" : ["scienceoutpost"],
+  "rarity" : "Common",
+  "category" : "other",
+  "description" : "Famous scientist of the rare Xarwiek race",
+  "shortdescription" : "Vinalisj",
+  "race" : "generic",
+
+  "scannable" : false,
+  "printable" : false,
+  "hasObjectItem" : false,
+  "smashOnBreak" : true,
+
+  "inventoryIcon" : "moonlitcometicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "moonlitcomet.png:<color>.<frame>"} ],
+      "imagePosition" : [-32, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "frames" : 47,
+      "animationCycle" : 7.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "moonlitcomet.png:<color>.<frame>"} ],
+      "imagePosition" : [-32, 0],
+
+      "direction" : "right",
+
+      "frames" : 47,
+      "animationCycle" : 7.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "offeredQuests" : [ "create_matterassembler" ],
+  "turnInQuests" : [ "create_matterassembler","create_matterassembler2" ],
+
+  "scripts" : ["/scripts/chattyObject.lua"],
+  "scriptDelta" : 60,
+
+  "uniqueId" : "ancientgate",
+
+  "chatOptions" : [
+    "My large size means I require rather absurd amounts of nutrients. I don't suppose you have an Orange? I do love those. Rare. Especially now...",
+    "It's not that I am not brave, or have no backbone...I just can't seem to get the motivation to fire Kevin.",
+    "Have you ever stopped to think at just how many coincidences occurred to get you to this specific point in time?",
+    "I should probably find a better communications specialist for my Staff. Someone who can make sense of this strange transmission we found...",
+    "I am not a slug. I don't look like it, according to most people, but I'm actually in the monotreme family. I will be very furry in the future, when I'm older.",
+    "You should definitely make regular use of your ^orange;Tricorder^reset;. It will help you in many ways.",
+    "I'd love to chat about science at just about any time. Except right now. I'm too hungry.",
+    "If you can't find oil to make plastic...you can always use Milk. It's not optimal, but it'll do the trick in a serious bind.",
+    "I hear rumors of some strange new forays into scientific study that, frankly, terrify me.",
+    "If you ever find yourself in dire need of fuel, you can pull hydrogen straight from water and use that. It's a lifesaver when you're in dire straits.",
+    "It may not sound like it by name, but the Science Outpost has a bustling and varied marketplace."
+  ]
+}

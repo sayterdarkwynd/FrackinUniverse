@@ -1,0 +1,74 @@
+[
+  {
+    "op": "replace",
+    "path": "/statusEffects",
+    "value": [
+      "ffbiomecold2"
+    ]
+  },
+
+  {
+    "op": "replace",
+    "path": "/skyOptions/0",
+    "value":
+    {
+      "mainColor" : [255, 255, 255],
+
+      "morningColors" : [ [19, 30, 78, 80], [47, 35, 152, 160] ],
+      "dayColors" : [ [24, 38, 100, 80], [58, 42, 190, 160] ],
+      "eveningColors" : [ [19, 30, 78, 80], [47, 35, 152, 160] ],
+      "nightColors" : [ [13, 21, 55, 80], [36, 27, 117, 160] ],
+
+      "morningLightColor" : [30, 30, 60],
+      "dayLightColor" : [40, 40, 80],
+      "eveningLightColor" : [30, 30, 60],
+      "nightLightColor" : [23, 23, 46]
+    }
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/0/treasureBoxSets/-",
+    "value": "ffbasicChest"
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/0/treasureBoxSets/-",
+    "value": "ffbasicChest2"
+  },
+
+{"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "randomencounterfire", "shroomencounterfire", "eyeencounterfire", "colourfulencounterfire", "boneencounterfire", "humanencounterfire", "glitchencounterfire", "apexencounterfire", "avianencounterfire", "floranencounterfire", "fulabs", "fubandits", "newhumanmicro", "newavianmicro","furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter" ]
+  }
+},
+
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/0/treasureBoxSets/-",
+    "value": "ffbasicChest"
+  },
+
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/0/treasureBoxSets/-",
+    "value": "ffbasicChest2"
+  },
+
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
+  }
+}
+]

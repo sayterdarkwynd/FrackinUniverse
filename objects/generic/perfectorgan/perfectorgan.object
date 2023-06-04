@@ -1,0 +1,104 @@
+{
+  "objectName" : "perfectorgan",
+  "colonyTags" : ["mechanical","musical","pretty","valuable","odd","kirhos", "fukirhos","wired","electronic"],
+  "rarity" : "Rare",
+  "category" : "decorative",
+  "description" : "You may need a new cochlea if I ever play this!",
+  "shortdescription" : "Perfect Organ",
+  "race" : "novakid",
+  "price" : 7500,
+
+  "felinDescription" : "Anyone who plays so grim and aberrant an instrument like this needs to be shot on sight.",
+  "hylotlDescription" : "For so much effort lavished upon its creation, the music it produces is far from beautiful.",
+  "humanDescription" : "Proof that a perfect machine can produce imperfect music.",
+  "bothanDescription" : "A pipe organ with inbuilt lighting, for use in theatre productions.",
+  "feneroxDescription" : "Perfect machine. Imperfect music. Auditory assault!",
+
+  "rodianDescription" : "I'd rather listen to the worst cantina singing than a recital on this .... device.",
+  "zabrakDescription" : "I'm too afraid to even consider what tunes should be played on this device.",
+  "togrutaDescription" : "Is this a machine? or a musical instrument?",
+  "tuskanDescription" : "Not many of my kind on my own planet have had the chance to practise working with these machines.",
+  "sithDescription" : "There must be a way to convert the discordant and jarring sounds of this instrument into a sonic-based weapon.",
+  "skathDescription" : "There must be a way to convert the discordant and jarring sounds of this instrument into a sonic-based weapon.",
+  "diathimDescription" : "I've never understood how these devices work.",
+  "avianDescription" : "Never have I ever in my life ever heard such an awful cacophony.",
+  "floranDescription" : "Ssso many different coloured butonssss. Floran afraid to presssss one!",
+  "mawgDescription" : "I'm gettin' a lotta bad vibes simply by listenin' to a single note from this monster.",
+
+  "apexDescription" : "An electronic organ that nevertheless can evoke awe and wonder like any portative pipe organ.",
+  "novakidDescription" : "Now there's some music fer the crazed souls o' the universe.",
+  "glitchDescription" : "Apprehensive. This keyboard instrument is electronically powered, not pneumatically.",
+  "kirhosDescription" : "By Azakon Reticuli, this is such a rad instrument!",
+  "fukirhosDescription" : "By Azakon Reticuli, this is such a rad instrument!",
+
+"printable" : false
+,
+  "inventoryIcon" : "perfectorgan.png",
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "ccccc_perfectorganleft.png:<color>.<frame>", "fullbright" : true }, { "image" : "ccccc_perfectorganleftlit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : false,
+
+      "imagePosition" : [-46, 0],
+
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "ccccc_perfectorganright.png:<color>.<frame>", "fullbright" : true }, { "image" : "ccccc_perfectorganrightlit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [-18, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/noisy/noisy.animation",
+
+  "scripts" : [
+    "/objects/noisy/noisy.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+
+  "sounds" : [
+    "/sfx/instruments/organ_C_maj2.ogg",
+    "/sfx/instruments/organ_Eb_maj.ogg",     "/sfx/instruments/organ_Eb_maj1.ogg",     "/sfx/instruments/organ_Eb_maj2.ogg",
+    "/sfx/instruments/organ_C_maj3.ogg",
+    "/sfx/instruments/organ_C_maj4.ogg",
+    "/sfx/instruments/organ_C_maj5.ogg",
+    "/sfx/instruments/gothic_organ11b.ogg",
+    "/sfx/instruments/baptism2.ogg",
+    "/sfx/instruments/gothic_organ11a.ogg",
+    "/sfx/instruments/gothic_organ12.ogg", "/sfx/instruments/gothic_organ10.ogg",
+    "/sfx/instruments/organ_F_maj2.ogg",
+    "/sfx/instruments/organ_G_maj.ogg",
+    "/sfx/instruments/organ_G_maj2.ogg",
+    "/sfx/instruments/organ_G_maj3.ogg",
+    "/sfx/instruments/organ_G_maj4.ogg",
+    "/sfx/instruments/organ_G_maj5.ogg",
+    "/sfx/instruments/portative (6).ogg",
+    "/sfx/instruments/portative_elvis1.ogg",     "/sfx/instruments/portative_elvis2.ogg"
+  ],
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : true,
+  "sitPosition" : [-21, 21],
+
+  "npcToy" : {
+    "influence" : [
+      "piano"
+    ],
+    "defaultReactions" : {
+      "piano" : [
+        [1.0, "pianoparty"]
+      ]
+    },
+    "interactOnNpcPlayStart": false,
+    "randomStandXRange" : [-8, 8]
+  }
+}

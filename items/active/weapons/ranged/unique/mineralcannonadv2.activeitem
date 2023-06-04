@@ -4,12 +4,14 @@
   "inventoryIcon" : "mineralcannonadv2.png",
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "The ultimate particle weapon.",
+  "description" : "Unsurpassed in its weapon class.
+^yellow;Utterly eradicates tiles^reset;",
   "shortdescription" : "Hyperion Particle Cannon",
-  "level" : 6,
-  "tooltipKind" : "gun",
-  "weaponType" : "Rifle",
-  "itemTags" : ["weapon","ranged","rifle"],
+  "category" : "rocketLauncher",
+  "level" : 7,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","rocketlauncher", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -21,13 +23,16 @@
   },
   "animationCustom" : {
     "sounds" : {"fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]},
-    "lights" : { "muzzleFlash" : {"color" : [0, 184, 0] } }     
+    "lights" : { "muzzleFlash" : {"color" : [0, 184, 0] } }
   },
 
   "baseOffset" : [1.5, 0.2],
   "muzzleOffset" : [1.145, 0.125],
 
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+  "scripts" : [
+  "/items/active/weapons/ranged/gun.lua",
+  "/items/active/scripts/heavyweapon.lua"
+  ],
 
   "elementalType" : "electric",
 
@@ -35,7 +40,7 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 2,
-    "baseDps" : 5.75,
+    "baseDps" : 7.45,
     "energyUsage" : 45.0,
     "inaccuracy" : 0,
 
@@ -43,7 +48,7 @@
     "fireType" : "auto",
 
     "projectileType" : "mineralcannonshotadv2",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 60,
       "knockback" : 12
     },
@@ -76,6 +81,9 @@
 	    }
 	  }
   },
+
+  "critChance" : 8,
+  "critBonus" : 23,
 
   "altAbilityType" : "guidedrocket",
 

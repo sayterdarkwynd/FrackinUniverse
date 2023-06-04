@@ -1,0 +1,279 @@
+{
+  "type" : "eyejellypet",
+  "shortdescription" : "Gelatinous Eye",
+  "description" : "An eye immersed in a violet viscous fluid.",
+
+  "categories" : [ "eyejelly" ],
+  "parts" : [ "body", "head" ],
+
+  "animation" : "eyejelly.animation",
+
+  "dropPools" : [ { "default" : "slimemonsterTreasure" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 35,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "hurtTime" : 0.25,
+      "hurtWaitForGround" : false,
+
+      "damageTakenActions" : [
+      ],
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+
+        {
+          "name" : "action-fire",
+          "cooldown" : 0.5,
+          "parameters" : {
+            "requireLineOfSight" : false,
+            "maximumRange" : 30,
+            "minimumRange" : 2,
+	    "maxXRange" : 10,
+            "windupState" : "firewindup",
+            "windupTime" : 0.5,
+            "projectileType" : "eyejellybubblestart",
+            "power" : 10,
+            "fireOffset" : [0.0, -4],
+            "aimDirection" : [0,0],
+            "faceTarget" : false,
+            "aimAtTarget" : false,
+            "onGround" : false,
+            "fireState" : "altfire",
+            "fireSound" : "fire",
+            "fireDelay" : 0.25,
+            "rotatedOffset" : [0,-1],
+            "winddownState" : "firewinddown",
+            "winddownTime" : 0.5
+          }
+        },
+        {
+         "name" : "action-fire",
+          "cooldown" : 3.5,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 30,
+            "minimumRange" : 21,
+            "windupState" : "firewindup",
+            "windupTime" : 0.5,
+            "projectileType" : "eyejellyblock",
+	    "highArc" : true,
+            "power" : 5,
+            "speed" : 5,
+	    "faceTarget" : false,
+            "fireOffset" : [0, -4],
+	    "aimDirection" : [0, 1],
+	    //"rotateToTarget" : true,
+	    //"rotateAim" : true,
+            "aimAtTarget" : true,
+            "onGround" : false,
+            "fireState" : "fire",
+            "fireSound" : "fire",
+            "fireDelay" : 0.25,
+            "fireArc": true,
+            "projectileSpeed": 25,
+            "gravityMultiplier": 0.6,
+            "winddownState" : "firewinddown",
+            "winddownTime" : 0.5
+          }
+        }
+      ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "targetOffset" : [0,8],
+            "minRange" : 10,
+            "maxRange" : 15
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-fly"
+        }
+      ],
+
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "eyejellyslime",
+            "projectileParameters" : {},
+            "power" : 0,
+            "aimDirection" : [0, -1],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 1]
+          }
+        }
+      ],
+
+      "concurrentActions" : [  ],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-aim-head"
+        }
+       ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-2,-4], [2,-4], [3,-3], [3,2], [2,3], [-2,3], [-3,2], [-3,-3] ],
+      "damage" : 9,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 20,
+      "statusEffects" : [ {"effect" : "slimefriction", "duration" : 2.5} ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionEnabled" : true,
+      "collisionPoly" : [ [-2,-4], [2,-4], [3,-3], [3,2], [2,3], [-2,3], [-3,2], [-3,-3] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 2.0,
+      "airForce" : 40,
+      "flySpeed" : 15
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 600
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "slimestickImmunity" : {
+          "baseValue" : 1.0
+        },
+        "slimeImmunity" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.35
+        },
+        "fireResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "eyejellypet" }
+  }
+}

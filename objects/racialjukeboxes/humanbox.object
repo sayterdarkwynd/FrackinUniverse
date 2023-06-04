@@ -1,0 +1,56 @@
+{
+	"objectName" : "humanbox",
+	"colonyTags" : ["human", "musical"],
+	"rarity" : "Common",
+	"category" : "decorative",
+//    "lightColor" : [242, 191, 2],
+	"description" : "A music player, for playing music.",
+	"shortdescription" : "Human Music Player",
+	"race" : "generic",
+
+	"inventoryIcon" : "humanboxicon.png",
+	"orientations" : [
+		{
+			"image" : "humanbox.png",
+			"imagePosition" : [-12, 0],
+			"animationPosition" : [-12, 0],
+			"animationParts" : {
+				"bg" : "humanbox.png",
+				"fg" : "humanboxlit.png"
+			},
+			"direction" : "left",
+			"flipImages" : true,
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		},
+		{
+			"image" : "humanbox.png",
+			"imagePosition" : [-12, 0],
+			"animationPosition" : [-12, 0],
+			"animationParts" : {
+				"bg" : "humanbox.png",
+				"fg" : "humanboxlit.png"
+			},
+			"direction" : "right",
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		}
+	],
+
+	"animation" : "racialmusicbox.animation",
+	"animationParts" : {
+		"bg" : "humanbox.png",
+		"fg" : "humanboxlit.png"
+	},
+	"animationPosition" : [-8, 0],
+	"interactAction" : "ScriptPane",
+	"interactData" : "/interface/scripted/fm_musicplayer/fm_musicplayer.config",
+
+	"inputNodes" : [ [-1, 0] ],
+	"outputNodes" : [ [1, 0] ],
+
+	"scripts" : [ "/objects/generic/fm_musicplayer/fm_musicplayer.lua"],
+	"scriptDelta" : 7,
+
+	"musicRadius" : 30
+}

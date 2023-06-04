@@ -1,0 +1,252 @@
+{
+  "type" : "veilendrex",
+  "shortdescription" : "Veilendrex",
+  "description" : "One of the most dangerous known predatory fish families.",
+  "reversed" : true,
+
+  "categories" : [ "veilendrex" ],
+  "parts" : [ "body" ],
+
+  "animation" : "veilendrex.animation",
+
+  "dropPools" : [
+    {
+      "default" : "tidewaterFloorChestTreasure"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/fish/veilendrex/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    //"renderLayer" : "foregroundEntity",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 35,
+      "targetOnDamage" : true,
+      "targetEntityTypes" : [ "player", "npc", "monster" ],
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "hurtTime" : 0.25,
+      "hurtWaitForGround" : false,
+
+      "damageTakenActions" : [],
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 5.0,
+          "parameters" : {
+            "minimumRange" : 1,
+            "maximumRange" : 20,
+            "windupStopForce" : 25,
+            "windupTime" : 1,
+
+            "onGround" : false,
+            "wallCollide" : false,
+            "aimAtTarget" : true,
+            "chargeTime" : 0.5,
+            "chargeSpeed" : 30,
+            "chargeControlForce" : 750,
+
+            "winddownState" : "charge",
+            "winddownStopForce" : 25,
+            "winddownTime" : 0.05
+          }
+        }
+      ],
+
+      "periodicActions" : [
+
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "usePathfinding" : false
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "emerge-fly"
+        },
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "wanderTime" : 4,
+            "groundDistance" : 8,
+            "ceilingDistance" : 8,
+            "xVelocity" : 12,
+            "yVelocity" : 12
+          }
+        }
+      ],
+
+      "concurrentActions" : [
+
+      ],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-projectile",
+          "cooldown" : 0.5,
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "shadowelementcloud",
+            "projectileParameters" : {
+              "power" : 2,
+              "timeToLive" : 4,
+              "speed" : 1
+            },
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0.0]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [6.25, 2.75], [6.625, 2.375], [6.625, -2.375], [6.25, -2.75], [-6.25, -2.75], [-6.625, -2.375], [-6.625, 2.375], [-6.25, 2.75] ],
+      "damage" : 15,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "shadow",
+      "knockback" : 20,
+      "statusEffects" : [ "madnessgain" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "selfDamagePoly" : [ [6.25, 2.75], [6.625, 2.375], [6.625, -2.375], [6.25, -2.75], [-6.25, -2.75], [-6.625, -2.375], [-6.625, 2.375], [-6.25, 2.75] ],
+
+    "movementSettings" : {
+      "collisionPoly" : [ [6.25, 2.75], [6.625, 2.375], [6.625, -2.375], [6.25, -2.75], [-6.25, -2.75], [-6.625, -2.375], [-6.625, 2.375], [-6.25, 2.75] ],
+
+      "mass" : 12.0,
+      "walkSpeed" : 2,
+      "runSpeed" : 5,
+      "gravityEnabled" : false,
+
+      "airForce" : 50,
+      "flySpeed" : 6
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : false,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 730
+        },
+        "protection" : {
+          "baseValue" : 25.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.01
+        },
+        "iceImmunity" : {
+          "baseValue" : 1.0
+        },
+        "liquidnitrogenImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : { "baseValue" : 1 },
+        "fireResistance" : { "baseValue" : 0.5 },
+        "iceResistance" : { "baseValue" : -0.1 },
+        "electricResistance" : { "baseValue" : -0.22 },
+        "physicalResistance" : { "baseValue" : 0.6 },
+        "shadowResistance" : { "baseValue" : 0.99 },
+        "cosmicResistance" : { "baseValue" : 0.2 },
+        "radioactiveResistance" : { "baseValue" : -0.2 },
+        "bleedingImmunity" : { "baseValue" : 1 },
+        "linerifleResistance" : { "baseValue" : 0.5 },
+        "linerifleStatusImmunity" : { "baseValue" : 1 },
+        "centensianenergyResistance" : { "baseValue" : 0.5 },
+        "centensianenergyStatusImmunity" : { "baseValue" : 1 },
+        "xanafianResistance" : { "baseValue" : 0.5 },
+        "xanafianStatusImmunity" : { "baseValue" : 1 },
+        "akkimariacidResistance" : { "baseValue" : 0.5 },
+        "akkimariacidStatusImmunity" : { "baseValue" : 1 },
+        "ignoreInvisibilityEffects" : { "baseValue" : 1 },
+        "stunImmunity" : {"baseValue" : 1},
+        "isWaterCreature" : {
+          "baseValue" : 1.0
+        },
+        "breathProtection" : {
+          "baseValue" : 1.0
+        },
+        "isBossCreature" : {
+          "baseValue" : 1.0
+        },
+        "wetImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false,
+    "nametagColor" : [64, 200, 255]
+  }
+}

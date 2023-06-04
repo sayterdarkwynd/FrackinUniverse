@@ -1,0 +1,17 @@
+{ //  -*- grammar-ext: json -*-
+  "style" : "window", // window (has titlebar), panel (just a frame) etc.
+  "size" : [300, 232], // *internal* size (not including chrome)
+  "title" : "Settings",
+  "icon" : "settings.icon.png",
+  "uniqueBy" : "path",
+  "scripts" : [ "settings.lua" ],
+  "children" : [
+    { "type" : "tabField", "id" : "tabField", "layout" : "vertical", "noFocusFirstTab" : true, "tabWidth" : 96,
+      "bottomBar" : [ "spacer",
+        { "type" : "button", "id" : "apply", "caption" : "Apply" },
+        { "type" : "button", "id" : "cancel", "caption" : "Cancel" }
+      ]
+    }
+
+  ]
+}

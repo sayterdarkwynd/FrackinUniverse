@@ -1,0 +1,270 @@
+{
+  "type" : "frostlit",
+  "shortdescription" : "Frostlit",
+  "description" : "Able to spin and spray ice everywhere, these bastards annoy anyone they see.",
+
+  "categories" : [ "frostlit" ],
+  "parts" : [ "body" ],
+
+  "animation" : "frostlit.animation",
+
+  "dropPools" : [
+    {
+    "default" : "extraMonsterIce",
+    "bow" : "extraMonsterIceHunting",
+    "firebow" : "extraMonsterIceHunting",
+    "icebow" : "extraMonsterIceHunting",
+    "poisonbow" : "extraMonsterIceHunting",
+    "electricbow" : "extraMonsterIceHunting",
+    "cosmicbow" : "extraMonsterIceHunting",
+    "radioactivebow" : "extraMonsterIceHunting",
+    "shadowbow" : "extraMonsterIceHunting"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+
+        {
+          "name" : "action-trail-charge",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "maximumRange" : 20,
+            "minimumRange" : 5,
+            "windupTime" : 0.5,
+            "winddownTime" : 0.5,
+            "chargeSpeed" : 15,
+            "chargeControlForce" : 200,
+            "chargeTime" : 1.5,
+            "aimAtTarget" : true,
+            "wallKnockback" : true,
+            "knockbackThreshold": 3,
+
+
+            "projectileType" : "frostlittrail",
+            "projectileParameters" : {},
+            "projectileInterval" : 0.05,
+            "offset" : [0,-1],
+            "power" : 0,
+            "scalePower" : false
+
+          }
+        },
+        {
+          "name" : "action-invulnerable",
+          "cooldown" : 3.5,
+          "parameters" : {
+            "windupTime" : 0.5,
+            "windupState" : "invulnerablewindup",
+            "winddownTime" : 0.5,
+            "winddownState" : "invulnerablewinddown",
+            "onGround" : true,
+            "invulnerableTime" : 4
+          }
+        }
+
+      ],
+
+      "periodicActions" : [
+
+        {
+          "name" : "action-invulnerable",
+          "cooldown" : [6, 12],
+          "parameters" : {
+            "windupTime" : 0.5,
+            "windupState" : "invulnerablewindup",
+            "winddownTime" : 0.5,
+            "winddownState" : "invulnerablewinddown",
+
+            "invulnerableTime" : 20
+          }
+        }
+      ],
+
+      "damageTakenActions" : [
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 3,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 3,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 20]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.3125, 1.25], [0.8125, 0.75],  [0.8125, -0.75], [0.3125, -1.25],  [-0.3125, -1.25], [-0.8125, -0.75],  [-0.8125, 0.75], [-0.3125, 1.25] ],
+      "damage" : 9,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "hoarfrost",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.3125, 1.25], [0.8125, 0.75],  [0.8125, -0.75], [0.3125, -1.25],  [-0.3125, -1.25], [-0.8125, -0.75],  [-0.8125, 0.75], [-0.3125, 1.25] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 3,
+      "runSpeed" : 5,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "stone",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "stone"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 48
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.5
+        },
+        "fireResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "frostlit" }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "animationParts" : { },
+  "animationCustom" : { },
+
+  "ability" : {
+    "name" : "Cleave",
+    "type" : "axecleaveshadow",
+    "scripts" : ["/items/active/weapons/melee/abilities/axe/axecleave.lua"],
+    "class" : "AxeCleave",
+
+    "fireTime" : 0.8,
+    "baseDps" : 6.5,
+    "damageConfig" : {
+      "damageSourceKind" : "shadow",
+      "statusEffects" : [  ],
+      "knockbackMode" : "aim",
+      "knockback" : 22,
+      "timeoutGroup" : "primary"
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : 0,
+        "weaponOffset" : [0.25, 2.0],
+        "twoHanded" : false,
+
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "windup" : {
+        "duration" : 0.8,
+        "armRotation" : 90,
+        "weaponRotation" : 0,
+        "weaponOffset" : [0.25, 2.5],
+        "twoHanded" : false,
+
+        "allowFlip" : true,
+        "allowRotate" : true,
+
+        "bounceTime" : 0.12,
+        "bounceWeaponAngle" : [
+          [0.75, "linear", 20, 60],
+          [0.875, "sin", 60, 55],
+          [1.0, "cos", 60, 55]
+        ],
+
+        "weaponAngle" : [
+          [1.0, "linear", -20, 20]
+        ],
+
+        "armAngle" : [
+          [1.0, "sin", -90, 50]
+        ]
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -45,
+        "weaponRotation" : -45,
+        "weaponOffset" : [0.25, 2.75],
+        "twoHanded" : false,
+
+        "allowFlip" : true,
+        "allowRotate" : false
+      }
+    }
+  }
+}

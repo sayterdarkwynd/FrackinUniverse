@@ -1,0 +1,29 @@
+{
+	"itemName": "bigbreakfast",
+	"rarity": "uncommon",
+	"price": 75,
+	"category": "preparedFood",
+	"inventoryIcon": "bigbreakfast.png",
+	"description": "A full breakfast plate of cinnamon apple pancakes; the best way to start the day! \n^cyan;+^reset;20%^green; Energy^reset;^cyan; +^reset;10%^green; HP^reset; \n^orange;Type: Fruits + Dairy + Eggs^reset;",
+	"shortdescription": "Big Breakfast",
+	"effects": [
+        ["fruit_pancakes_meal",
+        {
+            "effect": "maxenergyscalingboostfood",
+            "duration": 300,
+            "energyModifier": 1.20
+        },
+        { "effect" : "maxhealthscalingboostfood",
+            "duration": 300,
+            "healthModifier": 1.10
+        }
+        ]
+    ],
+	"foodValue": 60,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}

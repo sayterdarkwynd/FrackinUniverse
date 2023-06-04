@@ -1,0 +1,99 @@
+{
+  "type" : "crewmembercultist",
+  "baseType" : "fu_crewmember",
+
+  "scriptConfig" : {
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "cultarmorhead",
+        "chest" : "cultarmorchest",
+        "legs" : "cultarmorpants"
+      },
+
+      "role" : {
+        "type" : "soldier",
+        "name" : "Cultist",
+        "field" : "Evil Worship",
+        "uniformColorIndex" : 8,
+
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "insanityimmunity",
+            "duration" : 300
+          },
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "poisonblock2",
+            "duration" : 300
+          },
+	      {
+	        "type": "ShipUpgradeBenefit",
+	        "property": "maxFuel",
+	        "value": 150
+	      }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'll pray to my dark lord, and fuel your ship with his rage!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran pray to dark lord and fuel ship with its rage!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Manic. I'll pray to my dark lord, and fuel your ship with his rage!"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "I've made you immune to poisons and insanity.",
+              "Need an antidote?",
+              "Looks like you could use my assistance!",
+              "I can help cure poison!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran use idolss to help you out!",
+              "Floran can help out!",
+              "Floran hasss potionss to help!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Eager. I can help you out!",
+              "Excited. Perhaps you could do with a ritual empowerement!",
+              "Intrigued. I wonder if this will help more than it dooms you?",
+              "Helpful. Take this, it will help, for a time!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "carbonquarterstaff", "curvestaff", "cultiststaffmelee",  "bloodyknife", "fubonepickaxe", "effigiumdagger" ],
+            "sheathedprimary" : [ "eyecannon", "sniperknife", "thornslinger", "elderpistol", "elderrepeater", "ff_icechucker", "blistergun", "blisterpistol", "biopistol", "biogun" ]
+          }
+        ] ]
+    ]
+  }
+}

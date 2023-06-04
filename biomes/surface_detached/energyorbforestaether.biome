@@ -1,0 +1,251 @@
+{
+  "name" : "energyorbforestaether",
+  "friendlyName" : "Dark Zone (Aether)",
+
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 3,
+        "pool" : [
+          [ 0.1111, "fumoontant" ],
+          [ 0.1111, "swarpion" ],
+          [ 0.1111, "lumoth" ],
+          [ 0.1111, "fleshreaper" ],
+          [ 0.1111, "glarp" ],
+          [ 0.1111, "scandroid" ],
+          [ 0.1111, "garflipp" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : [
+          [ 0.4, "bee_cuckoo" ],
+          [ 0.3, "bee_redbanded" ],
+          [ 0.3, "phoenixfly" ],
+          [ 0.3, "bouncercritter" ],
+          [ 0.3, "glowingball2critter" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      }
+    ],
+    "monsterParameters" : {
+      "statusSettings" : {
+        "stats" : {
+          "biooozeImmunity" : {
+            "baseValue" : 1.0
+          }
+        }
+      }
+    }
+  },
+
+  "parallax" : "/parallax/surface/aethernew.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/ambiance/sulphuricambiance2.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/ambiance/sulphuricambiance2.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/Gario_EldrichSporeSpawn.ogg","/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+  "hueShiftOptions" : [ -160, -140, -120, -100, -80, -60, -40, -20, 0, 20, 40 ],
+
+    "mainBlock" : "darkness",
+    "subBlocks" : [ "blackslime", "hiveold", "clay" ],
+    "ores" : "aethersurface",
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "blackslimegrass" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+               [0.35, "wildenergiflowerseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "rotbulb1" ],
+              [0.35, "rotbulb2" ],
+              [0.35, "rotbulb3" ],
+              [0.35, "shadecoral1" ],
+              [0.35, "shadecoral2" ],
+              [0.35, "shadecoral3" ],
+              [0.35, "shadecoral4" ],
+              [0.35, "shadowgrass1" ],
+              [0.35, "shadowgrass2" ],
+              [0.35, "shadowgrass3" ],
+              [0.35, "shadowgrass4" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 170,
+          "treeStemHueShiftMax" : 170,
+          "treeStemList" : [ "energyorbstem" ],
+          "treeFoliageList" : [ "energyorbfoliage"  ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDist",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 4.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "aethermini" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "grass",
+          "grasses" : [ "shadowy" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ]],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "terrainfeatures" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "testbush2",
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.15, "timeobelisk" ],
+              [0.35, "plynth1" ],
+              [0.35, "plynth2" ],
+              [0.35, "monolith1" ],
+              [0.35, "monolith2" ],
+              [0.35, "monolith3" ],
+              [0.35, "monolith4" ],
+              [0.35, "elderidol" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        }
+    ]
+  }
+}

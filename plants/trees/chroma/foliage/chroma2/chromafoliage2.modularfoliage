@@ -6,22 +6,46 @@
     "drops" : [
       [ { "item" : "sapling" } ]
     ],
-    
+
     "particles" : {
       "breakTree" : {
         "density" : 3,
         "options" : [
           {
-            "color" : [236, 127, 151],
-            "timeToLive" : 10
+            "type" : "ember",
+            "color" : [131, 150, 161],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           },
           {
-            "color" : [248, 199, 209],
-            "timeToLive" : 10
+            "type" : "ember",
+            "color" : [226, 243, 248],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           },
           {
-            "color" : [254, 227, 236],
-            "timeToLive" : 10
+            "type" : "ember",
+            "color" : [246, 253, 253],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           }
         ]
       },
@@ -29,19 +53,40 @@
         "density" : 3,
         "options" : [
           {
-            "color" : [236, 127, 151],
+            "type" : "ember",
+            "color" : [131, 150, 161],
             "timeToLive" : 10,
-            "initial" : "upwards"
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           },
           {
-            "color" : [248, 199, 209],
+            "type" : "ember",
+            "color" : [226, 243, 248],
             "timeToLive" : 10,
-            "initial" : "upwards"
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           },
           {
-            "color" : [254, 227, 236],
+            "type" : "ember",
+            "color" : [246, 253, 253],
             "timeToLive" : 10,
-            "initial" : "upwards"
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           }
         ]
       }
@@ -49,7 +94,7 @@
   },
 
   "parallaxFoliage" : true,
-  
+
   "crownLeaves" : {
     "crown1" : {
       "image" : "crown1.png",

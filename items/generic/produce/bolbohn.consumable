@@ -1,0 +1,27 @@
+{
+	"itemName": "bolbohn",
+	"inventoryIcon": "bolbohn.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 80,
+
+	"tooltipKind": "food",
+	"description": "A root with a strong taste that few enjoy. \n^yellow;^reset;^cyan;+10% Crit Chance^reset;: 1m \n^green;Type: Vegetable^reset;",
+	"shortdescription": "Bolbohn",
+	"foodValue" : 3,
+	"builder" : "/items/buildscripts/buildfood.lua",
+	"itemAgingScripts" : ["/scripts/items/rotting.lua"],
+	"rottingMultiplier" : 3,
+	"eventCategory": "eventCrop",
+	"learnBlueprintsOnPickup": ["avikanmeal", "bolbohnjam", "spicebol"],
+	"effects": [
+		[{
+			"effect": "critchance1",
+			"duration": 60
+		},
+		{
+			"effect": "plant_food"
+		}]
+	],
+	"blockingEffects" : [ "wellfed" ]
+}

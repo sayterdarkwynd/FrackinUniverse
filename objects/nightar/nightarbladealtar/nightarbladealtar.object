@@ -1,0 +1,56 @@
+{
+  "objectName" : "nightarbladealtar",
+  "colonyTags" : ["nightar"],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 250,
+
+
+  "description" : "An altar dedicated to the purity of the blade. Standing near slightly increases your defense.",
+  "shortdescription" : "Nightar Blade Altar",
+  "printable" : false,
+  "race" : "nightar",
+
+  "inventoryIcon" : "nightarbladealtaricon.png",
+
+   "orientations" : [
+     {
+ 	"imageLayers" : [ { "image" : "nightarbladealtar.png:<color>.<frame>", "fullbright" : true }, { "image" : "nightarbladealtarlit.png:<color>.<frame>" } ],
+       "imagePosition" : [0, 0],
+       "frames" : 12,
+       "animationCycle" : 0.8,
+
+       "spaceScan" : 0.1,
+       "anchors" : [ "bottom" ],
+       "flipImages" : true,
+       "direction" : "left"
+     },
+     {
+ 	"imageLayers" : [ { "image" : "nightarbladealtar.png:<color>.<frame>", "fullbright" : true }, { "image" : "nightarbladealtarlit.png:<color>.<frame>" } ],
+       "imagePosition" : [0, 0],
+       "frames" : 12,
+       "animationCycle" : 0.8,
+
+       "spaceScan" : 0.1,
+       "anchors" : [ "bottom" ],
+       "direction" : "right"
+     }
+  ],
+
+  "breakDropOptions" : [
+    [ [ "nightarbladealtar", 1, { } ] ]
+  ],
+
+  "scripts" : ["/objects/scripts/fu-interactpickuptimed.lua"],
+  "scriptDelta" : 5,
+
+  "spawnableItem" : "honorcoin",
+  "timedSpawner" : 1,
+  "waitDuration" : 240,
+  "animation" : "nightarbladealtar.animation",
+  "animationParts" : {
+    "interactiveObject" : "nightarbladealtar.png",
+    "interactiveObjectlit" : "nightarbladealtarlit.png"
+  },
+  "animationPosition" : [0, 0]
+}

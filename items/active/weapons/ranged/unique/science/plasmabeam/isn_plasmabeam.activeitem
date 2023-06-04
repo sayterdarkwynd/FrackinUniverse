@@ -3,13 +3,16 @@
   "level" : 5,
   "price" : 1500,
   "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "A cannon that shoots streams of superheated plasma.",
+  "rarity" : "rare",
+  "description" : "Slow but devastating. Forbidden in the Helyn Sector.
+^cyan;Counts as plasma weapon for set bonuses^reset;
+^yellow;Extreme explosion^reset;
+^red;Heavy^reset;",
   "shortdescription" : "Plasma Beam Cannon",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "rocketLauncher",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","rocketlauncher"],
+  "itemTags" : ["weapon","ranged","rocketlauncher", "plasma", "upgradeableWeapon"],
   "inventoryIcon" : "isn_plasmabeamicon.png",
   "animation" : "isn_plasmabeam.animation",
   "animationParts" : {
@@ -42,7 +45,7 @@
 
     "fireTime" : 2.6,
     "baseDps" : 6.0,
-    "energyUsage" : 40,
+    "energyUsage" : 120,
     "inaccuracy" : 0,
     "fireType" : "auto",
 
@@ -82,6 +85,13 @@
       }
     }
   },
+
+  "critChance" : 9,
+  "critBonus" : 12,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 1800,
 
   "altAbilityType" : "spatialcollapseblast",
 

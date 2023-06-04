@@ -1,26 +1,31 @@
 {
   "itemName" : "batterypack_quantum",
+  "price" : 5000,
   "inventoryIcon" : "batterypack_quantumicon.png",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
-  "rarity" : "rare",
-  "description" : "Provides an almost unsurpassed energy regen, and max energy increase.",
+  "rarity" : "legendary",
+  "description" : "Extremely powerful energy tank. Blocks electrical storms. Energy x1.25, +40% E. Regen, -20% E. Block, and a slight ^#0000aa;glow^reset;.",
   "shortdescription" : "Quantum Energy Pack",
   "tooltipKind" : "baseaugment",
   "category" : "enviroProtectionPack",
   "acceptsAugmentType" : "back",
   "radioMessagesOnPickup" : [ "pickupepp" ],
-  
+
   "maleFrames" : "back.png",
   "femaleFrames" : "back.png",
 
+  "maxStack" : 1,
   "statusEffects" : [
     "energyregenfu_quantum",
     {
       "stat" : "maxEnergy",
-      "amount" : 60
+      "effectiveMultiplier" : 1.25
     },
-    "glowblue2"
+    "glowblue2",
+    {
+      "stat" : "biomeelectricImmunity",
+      "amount" : 1.0
+    }
   ]
-  
-  
+
 }

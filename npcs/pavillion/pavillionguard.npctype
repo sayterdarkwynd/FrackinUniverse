@@ -1,0 +1,59 @@
+{
+  "type" : "pavillionguard",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "For the Shogun!",
+            "An intruder! Alarm! Alarm!",
+            "Banzai!",
+            "You intrude upon our peaceful village?",
+            "B-But I'm just a conscript...",
+            "Yaaaaaah!"
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+      "runSpeed" : 14,
+	  "walkSpeed" : 14,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    }
+  },
+
+    "statusControllerSettings" : {
+    "stats" : {
+	      "powerMultiplier" : {
+        "baseValue" : 1.0
+      },
+      "maxHealth" : {
+        "baseValue" : 100.0
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "hylotltier1head" } ],
+            "chest" : [ { "name" : "hylotltier1chest" } ],
+            "legs" : [ { "name" : "hylotltier1pants" } ],
+            "primary" : [
+              "npcspear"
+            ]
+          }
+        ] ]
+    ]
+  }
+}

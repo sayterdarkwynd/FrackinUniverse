@@ -1,0 +1,58 @@
+{
+  "objectName" : "nightarbox2",
+  "colonyTags" : ["nightar","storage","commerce"],
+  "printable" : true,
+  "rarity" : "Legendary",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+
+  "category" : "storage",
+  "price" : 175,
+  "description" : "A mysterious Nightar box.",
+  "shortdescription" : "Large Nightar Box",
+  "race" : "nightar",
+  "health" : 1.5,
+
+  "apexDescription" : "A Nightar box.",
+  "avianDescription" : "A storage box.",
+  "floranDescription" : "Box!",
+  "glitchDescription" : "Curious. Is there anything inside?",
+  "humanDescription" : "A Nightar box.",
+  "hylotlDescription" : "A box.",
+
+  "inventoryIcon" : "nightarbox2icon.png",
+  "orientations" : [
+    {
+      "image" : "nightarbox2.png:default",
+      "direction" : "left",
+      "flipImages" : true,
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "image" : "nightarbox2.png:default",
+      "direction" : "right",
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/woodenbox_close.ogg" ],
+  "slotCount" : 24,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+}

@@ -1,0 +1,63 @@
+{
+	"animatedParts" : {
+		"stateTypes" : {
+			"routerState" : {
+				"default" : "off",
+				"states" : {
+					"off" : {
+						"frames" : 1
+					},
+					"on" : {
+						"frames" : 1
+					},
+					"throttled" : {
+
+					},
+					"idle" : {
+
+					}
+				}
+			}
+		},
+
+		"parts" : {
+			"router" : {
+				"properties" : {
+					"centered" : false
+				},
+
+				"partStates" : {
+					"routerState" : {
+						"off" : {
+							"properties" : {
+								"image" : "<partImage>:off"
+							}
+						},
+
+						"on" : {
+							"properties" : {
+								"image" : "<partImage>:on"
+							}
+						},
+
+						"throttled" : {
+							"properties" : {
+								"image" : "<partImage>:throttled"
+							}
+						},
+
+						"idle" : {
+							"properties" : {
+								"image" : "<partImage>:throttled"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"sounds" : {
+		"alarm" : ["/sfx/interface/ship_error1.ogg"],
+		"alarm2" : ["/sfx/objects/redalert.ogg"]
+	}
+}

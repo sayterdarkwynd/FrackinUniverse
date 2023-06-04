@@ -1,0 +1,37 @@
+{
+  "objectName" : "pethouserolliepollie",
+  "rarity" : "Common",
+  "printable" : false,
+  "category" : "storage",
+  "price" : 500,
+  "description" : "A rock that rollie pollies love to hide under.",
+  "shortdescription" : "Rollie Pollie Pet House",
+  "race" : "generic",
+
+  "inventoryIcon" : "pethouse2.png",
+		"scripts" : [
+    "/objects/spawner/shipPetSpawner.lua"
+  ],
+  "scriptDelta" : 20,
+	"shipPetType" : "rolliepollie",
+
+  "orientations" : [
+    {
+      "image" : "pethouse2.png",
+      "imagePosition" : [-8, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaces" : [ [-1, 0], [0, 0], [1, 0], [-1, 1], [0, 1], [1, 1], [-1, 2], [0, 2], [1, 2] ],
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "pethouse2.png",
+      "imagePosition" : [-8, 0],
+      "direction" : "right",
+
+      "spaces" : [ [-1, 0], [0, 0], [1, 0], [-1, 1], [0, 1], [1, 1], [-1, 2], [0, 2], [1, 2] ],
+      "anchors" : [ "bottom" ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "objectName" : "winepress",
+  "colonyTags" : [ "crafting", "booze" ],
+  "printable" : false,
+  "rarity" : "rare",
+  "description" : "A machine used to squeeze juices from fruits.",
+  "shortdescription" : "^orange;Fruit Press^reset;",
+  "race" : "generic",
+  "category" : "crafting",
+  "price" : 160,
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/fruitpressnew.config",
+    "filter" : [ "winepress" ]
+  },
+
+  "hydrophobic" : true,
+
+  "inventoryIcon" : "fruitpressicon.png",
+  "orientations" : [
+    {
+      "image" : "fruitpress.png:<color>",
+
+      "imagePosition" : [0, 0],
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/aquarium1.ogg"
+
+}

@@ -1,0 +1,99 @@
+{
+  "itemName" : "fuautohookshot",
+  "price" : 200,
+  "inventoryIcon" : "autohookshoticon.png",
+  "rarity" : "common",
+  "maxStack" : 1,
+  "level" : 1,
+  "upmod" : 3,
+  "description" : "It pulls you up automatically! Upgrade using your ^orange;Tricorder^reset;.",
+  "shortdescription" : "Hookshot",
+  "largeImage" : "autohookshotbig.png",
+  "category" : "hookshot",
+  "fireTime" : 0,
+  "twoHanded" : false,
+  "itemTags" : [ "upgradeableTool", "tool" ],
+
+  "scripts" : ["/items/active/grapplinghooks/autohookshot.lua"],
+  "animationScripts" : ["/items/active/grapplinghooks/autohookshotanimation.lua"],
+
+  "animation" : "autohookshot.animation",
+
+  "fireOffset" : [0, 0.3],
+  "ropeOffset" : [-1.75, 0.3],
+  "ropeVisualOffset" : [0.75, 0.3],
+
+  "consumeOnUse" : false,
+
+  "projectileType" : "grapplehook",
+  "projectileParameters" : {
+    "speed" : 70,
+    "timeToLive" : 0.3
+  },
+
+  "ropeWidth" : 1.0,
+  "ropeColor" : [150, 150, 150, 255],
+
+  "reelInDistance" : 3.5,
+  "reelOutLength" : 40,
+  "breakLength" : 50,
+
+  "reelSpeed" : 30,
+  "controlForce" : 800,
+
+  "groundLagTime" : 0.2,
+  "upmax" : 3,
+
+
+
+"upgradeParameters" : {
+  "description" : "It pulls you up automatically! Upgrade using your ^orange;Tricorder^reset;.",
+  "shortdescription" : "Hookshot MkII ^red;^reset;",
+
+  "animation" : "autohookshot2.animation",
+  "largeImage" : "autohookshotbig2.png",
+  "inventoryIcon" : "autohookshoticon2.png",
+
+	  "projectileParameters" : {
+	    "speed" : 90,
+	    "timeToLive" : 0.35
+	  },
+
+	  "ropeWidth" : 1.0,
+	  "ropeColor" : [150, 150, 150, 255],
+
+	  "reelInDistance" : 3.5,
+	  "reelOutLength" : 60,
+	  "breakLength" : 70,
+
+	  "reelSpeed" : 40,
+	  "controlForce" : 900,
+
+	  "groundLagTime" : 0.1
+  },
+"upgradeParameters2" : {
+  "description" : "It pulls you up automatically! ^green;Fully Upgraded^reset;.",
+  "shortdescription" : "Hookshot MkIII ^#e43774;^reset;",
+
+  "animation" : "autohookshot3.animation",
+  "largeImage" : "autohookshotbig3.png",
+  "inventoryIcon" : "autohookshoticon3.png",
+
+  "projectileParameters" : {
+    "speed" : 120,
+    "timeToLive" : 0.4
+  },
+
+  "ropeWidth" : 1.0,
+  "ropeColor" : [150, 150, 150, 255],
+
+  "reelInDistance" : 3.5,
+  "reelOutLength" : 80,
+  "breakLength" : 90,
+
+  "reelSpeed" : 50,
+  "controlForce" : 1100,
+
+  "groundLagTime" : 0.05
+  }
+}

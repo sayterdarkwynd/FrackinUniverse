@@ -1,0 +1,57 @@
+{
+  "objectName" : "swtjc_wp_persistentswitch_withnot",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A modified Persistent Switch with a built-in NOT Gate.",
+  "shortdescription" : "Persistent Switch (with NOT Gate)",
+  "race" : "generic",
+
+  "category" : "wire",
+  "price" : 20,
+
+  "floranDescription" : "A modified Persssissstent Ssswitch with a built-in NOT Gate.",
+  "glitchDescription" : "Curious. A modified Persistent Switch with a built-in NOT Gate.",
+
+  "inventoryIcon" : "persistentswitchicon.png",
+  "orientations" : [
+    {
+      "image" : "persistentswitch.png:<color>.off",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/advancedswitch/swtjc_wp_advancedswitch.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle.animation",
+
+  "animationParts" : {
+    "switch" : "persistentswitch.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "interactive" : false,
+
+  "inputNodes" : [ [-1, 0], [-1, -1] ],
+  "outputNodes" : [ [0, -1], [0, 0] ],
+
+  "hasNotGate" : true,
+  "notGateNode" : 1,
+  "hasStateToggle" : false,
+//  "stateToggleNode" : 0,
+  "hasPersistentSwitchFunctionality" : true,
+  "persistentSwitchOnNode" : 1,
+  "persistentSwitchOffNode" : 0,
+  "hasInteractiveToggle" : false,
+//  "interactiveToggleNode" : 3,
+  "hasLatch" : false,
+//  "latchNode" : 4,
+
+  "interval" : 15
+}

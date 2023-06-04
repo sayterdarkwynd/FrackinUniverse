@@ -1,0 +1,109 @@
+{
+  "type" : "catmerchant",
+  "baseType" : "base",
+
+  "persistent" : true,
+  "damageTeamType" : "friendly",
+
+  "dropPools" : [ "basicTreasure" ],
+
+  "scripts" : [
+    "/npcs/bmain.lua"
+  ],
+  "initialScriptDelta" : 5,
+  "scriptConfig" : {
+    "behavior" : "merchant",
+
+    "behaviorConfig" : {
+      "noticePlayersRadius" : 20,
+
+      "hostileDamageTeam" : { "type" : "enemy", "team" : 1 }
+    },
+
+    "questGenerator" : {
+      "pools" : ["common", "merchant"],
+      "enableParticipation" : true,
+
+      "timeLimit" : 30,
+      "chance" : 0.02,
+      "nearbyQuestLimit" : 2,
+      "nearbyQuestRange" : 50
+    },
+
+    "reactions" : {
+      "spontaneous" : [
+        [5.0, "sleep", { "timeRange" : [0.7, 0.9] }],
+        [1.0, "sit", { "timeRange" : [0.6,0.2]}],
+        [1.0, "wander", { "timeRange" : [0.2, 0.6] }]
+      ]
+    },
+
+    "merchant" : {
+      "waitTime" : 40,
+      "storeRadius" : 16,
+      "poolsFile" : "/npcs/merchantpools.config",
+      "categories" : {
+        "default" : ["genericarmour", "basicmerchant", "randomguns", "randomswords", "humaningredients"],
+        "apex" : ["genericarmour", "basicmerchant", "apexfurniture", "randomguns", "randomswords", "apexarmour", "apexingredients" ],
+        "avian" : ["genericarmour", "basicmerchant", "avianfurniture", "randomguns", "randomswords", "avianarmour", "avianingredients" ],
+        "floran" : ["genericarmour", "basicmerchant", "floranfurniture", "randomguns", "randomswords", "floranarmour", "floraningredients" ],
+        "glitch" : ["genericarmour", "basicmerchant", "glitchfurniture", "randomguns", "randomswords", "glitcharmour", "glitchingredients" ],
+        "human" : ["genericarmour", "basicmerchant", "humanfurniture", "randomguns", "randomswords", "humanarmour", "humaningredients" ],
+        "hylotl" : ["genericarmour", "basicmerchant", "hylotlfurniture", "randomguns", "randomswords", "hylotlarmour", "hylotlingredients" ],
+        "novakid" : ["genericarmour", "basicmerchant", "randomguns", "randomswords", "novakidarmour", "novakidingredients" ]
+      },
+      "buyFactorRange" : [ 0.9, 1.2 ],
+      "sellFactorRange" : [ 0.2, 0.2 ],
+      "numItems" : 10
+    },
+    "dialog" : {
+      "merchant" : {
+        "start" : "/dialog/merchant.config:merchantStart",
+        "end" : "/dialog/merchant.config:merchantEnd",
+        "follow" : "/dialog/merchant.config:follow",
+        "welcome" : "/dialog/merchant.config:welcome",
+        "tout" : "/dialog/merchant.config:tout"
+      },
+      "flee" : {
+        "helpme" : "/dialog/flee.config:helpme",
+        "safe" : "/dialog/flee.config:safe"
+      },
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/merchant.config:tagCriteria",
+          "enclosedArea" : "/dialog/merchant.config:enclosedArea",
+          "otherDeed" : "/dialog/merchant.config:otherDeed",
+          "severe" : "/dialog/merchant.config:severe",
+          "final" : "/dialog/merchant.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/merchant.config:beacon",
+          "rent" : "/dialog/merchant.config:rent"
+        }
+      },
+      "accuse" : "/dialog/thief.config:accuse",
+      "alert" : "/dialog/thief.config:alert"
+    }
+  },
+
+  "items" : {
+    "cat" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "hiderhead", "parameters" : { "colorIndex" : 0 } }
+            ],
+            "back" : [
+              { "name" : "hiderback", "parameters" : { "colorIndex" : 0 } }
+            ],
+            "chest" : [
+              { "name" : "hiderchest", "parameters" : { "colorIndex" : 0 } }
+            ],
+            "legs" : [
+              { "name" : "hiderlegs", "parameters" : { "colorIndex" : 0 } }
+            ]
+        }
+      ]]
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+	"objectName" : "network_deedlink",
+	"printable" : false,
+	"rarity" : "Common",
+	"description" : "Collects rent from colony deeds within 32 units.\n^red;Disclaimer: This device does not actually pick up anything.^reset;",
+	"shortdescription" : "Colony Deed Rent Collector",
+	"race" : "generic",
+
+	"category" : "wire",
+	"price" : 100,
+
+
+        "animation" : "kheAA_containerlink.animation",
+
+	"inventoryIcon" : "/objects/kheAA/kheAA_containerLink/Itemlink.png:default.off",
+	"orientations" : [
+
+		{
+			"imageLayers" : [{"image":"Itemlink.png:default.off?scale=0.5","fullbright" : true},{"image":"Itemlinkfullbright.png:default.off?scale=0.5"}],
+			"imagePosition" : [0, 0],
+                        "frames" : 1,
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ]
+		}
+	],
+	"animationParts" : {
+		"Itemlink" : "Itemlink.png"
+	},
+	"animationPosition" : [0, 0],
+
+	"scripts" : [ "/objects/kheAA/kheAA_containerLink/kheAA_deedLink.lua" ],
+	"scriptDelta" : 5,
+
+	"inputNodes" : [[0,0]],
+	"outputNodes" : [[1,0]],
+	"kheAA_inDataNode":0,
+	"kheAA_outDataNode":0,
+	"kheAA_outPartialFillNode":1,
+	"kheAA_outCompleteFillNode":2,
+
+	"interval" : 5
+}

@@ -1,0 +1,29 @@
+{
+  "itemName": "honeynutboltos",
+  "rarity": "Common",
+  "category": "preparedFood",
+  "inventoryIcon": "honeynutboltos.png",
+  "description": "Mmm, cereal.\n^cyan;+^white;20% ^cyan;EP ^gray;(^white;3m^gray;)\n^green;Heal ^white;120 ^gray;(^white;90s^gray;)^reset; ^yellow;Type: Robot Food^reset;",
+  "shortdescription": "Honey Nut Boltos",
+  "price": 175,
+  "foodValue": 75,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1000,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 5.0,
+  "effects": [
+    [
+      { "effect" : "robot_food" },
+      {
+        "effect": "honeyheal2",
+        "duration": 90
+      },
+      {
+        "effect": "maxenergyscalingboostfood",
+        "duration": 180
+      }
+    ]
+  ],
+  "blockingEffects": ["wellfed"]
+}

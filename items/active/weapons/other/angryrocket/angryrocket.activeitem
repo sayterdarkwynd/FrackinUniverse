@@ -1,0 +1,53 @@
+{
+  "itemName" : "angryrocket",
+  "price": 1500,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Deadly rockets. Internal battery charged by your energy pool when not in use.
+^cyan;Heat-Seeking Alt (3 tick lock-on)^reset;
+^yellow;Alt slows, irradiates and burns!^reset;",
+  "shortdescription" : "Spankr",
+  "tooltipKind" : "gununique",
+  "category" : "rocketLauncher",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","rocketlauncher", "upgradeableWeapon"],
+
+  "inventoryIcon" : "angryrocket.png",
+  "animation" : "angryrocket.animation",
+  "animationParts" : {
+    "gun" : "angryrocket.png",
+    "gunfullbright" : "angryrocketfullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "enterAimMode" : [ "/sfx/interface/sniper_mark_start2.ogg" ],
+      "targetAcquired1" : [ "/sfx/interface/sniper_mark_pitch1.ogg" ],
+      "targetAcquired2" : [ "/sfx/interface/sniper_mark_pitch5.ogg" ],
+      "disengage" : [ "/sfx/interface/sniper_mark_stop2.ogg"]
+    }
+  },
+  "animationScripts" : [ "/items/active/effects/entitymarker.lua" ],
+
+  "scripts" : ["angryrocket.lua"],
+
+  "fireOffset" : [3.0, 0.625],
+  "critChance" : 6,
+  "critBonus" : 8,
+  "primaryAbility" : {
+    "energyUsage" : 112,
+    "baseDamage" : 22,
+    "projectileType" : "rocketshell",
+    "projectileCount" : 1
+  },
+
+  "altAbility" : {
+    "energyUsage" : 112,
+    "baseDamage" : 17.5,
+    "projectileType" : "homingrocket4",
+    "projectileCount" : 1,
+
+    "name" : "Life Seeker"
+  },
+    "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

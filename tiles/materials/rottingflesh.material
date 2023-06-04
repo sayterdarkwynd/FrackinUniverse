@@ -9,39 +9,39 @@
 	"health" : 3,
 	"category": "materials",
 
-	"renderTemplate" : "/tiles/classicmaterialtemplate.config",
+	"renderTemplate" : "/tiles/fuclassicnopaint.config",
 	"renderParameters" : {
 		"texture" : "rottingflesh.png",
 		"variants" : 5,
 		"lightTransparent" : false,
-		"multiColored" : false,
+		"multiColored" : true,
 		"occludesBelow" : true,
-		"zLevel" : 0
+		"zLevel" : 120
 	},
-  "liquidInteractions" : [ 
+  "liquidInteractions" : [
       {
         "liquidId": 2,
-        "consumeLiquid": 0.45,
+        "consumeLiquid": 0.25,
         "transformMaterialId": 6642
       },
       {
         "liquidId": 52,
-        "consumeLiquid": 0.45,
+        "consumeLiquid": 0.25,
         "transformMaterialId": 6642
-      },      
+      },
       {
         "liquidId": 40,
-        "consumeLiquid": 0.35,
+        "consumeLiquid": 0.15,
         "transformMaterialId": 165
       },
       {
         "liquidId": 6,
-        "consumeLiquid": 0.45,
+        "consumeLiquid": 0.25,
         "transformMaterialId": 165
-      },      
+      },
       {
         "liquidId": 46,
-        "consumeLiquid": 0.45,
+        "consumeLiquid": 0.25,
         "transformMaterialId": 136
       }
   ]

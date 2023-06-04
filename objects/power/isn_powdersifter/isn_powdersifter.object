@@ -1,56 +1,62 @@
 {
   "objectName" : "isn_powdersifter",
-  "rarity" : "Common",
-    "colonyTags" : [ "science" ],
-  "description" : "Sifts through powders to find useful reagents. Requires 2u of power.",
-  "shortdescription" : "^cyan;Powder Sifter^white;",
+  "colonyTags" : [ "science", "machines" ],
+  "printable" : false,
+  "rarity" : "common",
+  "description" : "This advanced Sifter efficiently extracts materials from loose or powdery materials. ^cyan;Requires ^orange;40W ^cyan;power.^reset;",
+  "shortdescription" : "^cyan;Powder Sifter^reset;",
   "race" : "generic",
-  "category" : "storage",
+  "category" : "^orange;Extraction Device^reset;",
   "price" : 500,
   "objectType" : "container",
-  "printable" : false,
+//  "learnBlueprintsOnPickup" : [ "centrifuge" ],
+  "hydrophobic" : false,
 
-  "apexDescription" : "This machine can turn useless dust into valuable reagents.",
-  "avianDescription" : "Ashes to riches, dust to stuff.",
-  "floranDescription" : "Weird thing ssscrabble through garbage, find good rock. Floran throw at fishman.",
-  "glitchDescription" : "Identification. This is a high power centrifuge capable of working with powdered solids.",
-  "humanDescription" : "Instant treasure, just add useless crap!",
-  "hylotlDescription" : "A device to seek diamonds in the rough. Oddly poetic, if ultimately capitalist.",
-  
-  "scripts" : [ "/objects/power/isn_powdersifter/isn_powdersifter.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-				"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 15,
-  
-  "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
-  "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
-  "slotCount" : 25,
-  "uiConfig" : "/objects/power/isn_powdersifter/isn_powdersifter.config",
-  "frameCooldown" : 67,
-  "autoCloseCooldown" : 3600,
-  
-  "commonOutputs" : [ "saltpeter", "ironore", "coalore", "sulphur", "rawminerals", "nutrientpaste", "copperore", "fu_salt", "ff_silicon", "lead" ],
-  "uncommonOutputs" : [ "petalred", "petalyellow", "petalblue", "bone", "crystal", "silverore", "goldore", "fu_carbon" ],
-  "rareOutputs" : [ "crystal", "icecrystal", "diamond" ],
-  
-  "animation" : "/objects/power/isn_powdersifter/isn_powdersifter.animation",
-
-  "animationParts" : {
-    "isn_powdersifter" : "isn_powdersifter.png"
-  },
-  "animationPosition" : [0, 0],
-  
-  "inputNodes" : [ [1, 1] ],
-  "isn_powerReciever" : true,
-  "isn_requiredPower" : 2,
-  
   "inventoryIcon" : "isn_powdersiftericon.png",
   "orientations" : [
     {
-      "image" : "isn_powdersifter.png:<color>.idle",
+      "dualImage" : "isn_powdersifter.png:<color>.<frame>",
+
       "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 1,
+
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     }
-  ]
+  ],
+  "animation" : "isn_powdersifter.animation",
+  "animationParts" : {
+    "centrifuge" : "isn_powdersifter.png",
+    "centrifugefullbright" : "isn_powdersifterfullbright.png"
+  },
+
+  "scripts" : [ "/scripts/fupower.lua", "/objects/bees/centrifuge.lua" ],
+
+  "scriptDelta" : 10,
+  "recipeGroup" : "centrifuge",
+  "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
+  "slotCount" : 26,
+  "uiConfig" : "/objects/power/isn_powdersifter/isn_powdersifter.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "craftDelay": 0.116666667,
+  "itemChances": {
+    "rarest": 0.008,
+    "rare": 0.03,
+    "uncommon": 0.07,
+    "normal": 0.15,
+    "common": 0.25
+  },
+
+  "inputSlot": 2,
+
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
+
+  "centrifugeType" : "powder",
+  "powertype" : "input",
+  "isn_requiredPower" : 40
 }

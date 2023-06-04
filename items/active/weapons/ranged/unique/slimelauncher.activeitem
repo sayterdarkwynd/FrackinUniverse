@@ -4,12 +4,14 @@
   "inventoryIcon" : "slimelauncher.png",
   "maxStack" : 1,
   "rarity" : "rare",
-    "description" : "Not entirely practical, but fun.",
+  "description" : "Not practical, but certainly enjoyable.
+^yellow;Spawns slime^reset;",
     "shortdescription" : "Slime Launcher",
+  "category" : "liquidGun",
   "level" : 3,
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "weaponType" : "Bio-Weapon",
-  "itemTags" : ["weapon","ranged","rocketlauncher"],
+  "itemTags" : ["weapon","ranged","grenadelauncher","slime", "upgradeableWeapon","explosive" ],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -27,7 +29,7 @@
 
   "baseOffset" : [1.0, 0.2],
   "muzzleOffset" : [2.645, 0.125],
-  
+
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "physical",
@@ -45,7 +47,7 @@
     "fireType" : "burst",
 
     "projectileType" : "squirtslime",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 40,
       "knockback" : 0
     },
@@ -78,7 +80,7 @@
     }
   }
   },
-  
+
     "particleEmitters" : {
       "muzzleFlash" : {
         "particles" : [
@@ -88,9 +90,18 @@
         ]
       }
     },
- 
+
+  "critChance" : 4,
+  "critBonus" : 8,
+  "isAmmoBased" : 1,
+  "magazineSize" : 8,
+  "reloadTime" : 1.4,
 
   "altAbilityType" : "biogrenadelauncher",
+  "altAbility" : {
+    "projectileParameters" : { "speed" : 30},
+    "reloadTime" : 2
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

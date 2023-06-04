@@ -1,0 +1,210 @@
+{
+  "type" : "catcrewmember",
+  "baseType" : "base",
+
+  "dropPools" : [ "villagertreasure" ],
+
+  "damageTeamType" : "friendly",
+
+  // Remove protection and powermultiplier gained from being level 1 as scaling is from player armor
+  "innateStatusEffects" : [ { "stat" : "protection", "amount": -25 }, {"stat" : "powerMultiplier", "amount" : -0.5} ],
+
+  "persistent" : true,
+
+  "scriptConfig" : {
+    "behavior" : "crewmember",
+    "behaviorConfig" : {
+      "emptyHands" : false,
+
+      // Wander behavior config
+      "wanderTime" : 1,
+      "idleTime" : 10,
+      "outerHomeRange" : 20,
+      "innerHomeRange" : 15,
+
+      "hostileDamageTeam" : {"type" : "friendly", "team" : 1}
+    },
+
+    "crew" : {
+      "recruitable" : true,
+
+      "recruitInteractAction" : {
+        "messageType" : "recruits.offerRecruit",
+        "messageArgs" : []
+      },
+
+      "powerMultiplierExponent" : 1.0,
+
+      "role" : {
+        "type" : "soldier",
+        "name" : "Soldier",
+        "field" : "Security",
+        "uniformColorIndex" : 4
+      },
+
+      "ranks" : [
+        "Pun-Master <role>",
+        "Feline <field> Officer",
+        "Deputy <role> Cat",
+        "Appurrentice <role>",
+        "Near-Purrfect <role>",
+        "Furierce <role>",
+        "Feline Commodore <role>",
+        "Executive Feline <role>",
+        "Independent <field> Cat",
+        "Dependant <field> Cat",
+        "Dreadnought <field> Cat",
+        "Feline <field> Mastermind",
+        "Feline <role>",
+        "Reliable <field> Cat",
+        "Theoretical <field> Cat",
+        "Reliable <field> Cat",
+        "Armchair <field> Cat"
+      ],
+
+      "defaultUniform" : {
+        "chest" : "hiderchest",
+        "legs" : "hiderlegs"
+      },
+      "uniformSlots" : ["chest", "chestCosmetic", "legs", "legsCosmetic", "back", "backCosmetic"]
+    },
+
+    "questGenerator" : {
+      // Disable participation of crewmembers in generated quests until the
+      // generated quest system knows how to deal with entities that can
+      // disappear from the world and/or change uniqueId.
+      "enableParticipation" : false
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "offer" : {
+          "default" : {
+            "default" : [
+              "Hey adventurer, mind if I join mew? I'll purrove myself useful, I purromise!",
+              "I'm <selfname>, and I've been looking to get off this planet. Can I come with mew?",
+              "I sense that mew would see my usefulness as a crew member. Let's go together!",
+              "I'm looking for a ship's crew to join. Care to have me aboard?",
+              "This place is getting boring. Care to let a cat join your crew?"
+            ]
+          }
+		  },
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I might not look like much, but I can wield a weapon as good as any humanoid!",
+              "If you need purrtection, mew know where to find me!",
+              "Even cats have claws. I'll be here if mew need 'em!"
+            ]
+			}
+          },
+        "respawned" : {
+          "default" : {
+            "default" : [
+              "Technology is amazing!",
+              "That was only one life. I have more.",
+              "That was an...interesting experience...",
+              "I'm back and my pelt is in one piece!",
+              "I'm alive again! Purr.",
+              "...Is there a kink in my tail?",
+              "My paw hurts.",
+              "What was I doing just before I died?"
+            ]
+          }
+		 },
+        "follow" : {
+          "default" : {
+            "default" : [
+              "Are mew taking meowt?",
+              "Yes, captain!",
+              "Where are we going?",
+              "Let's go, let's go!",
+              "Are we going somewhere?"
+            ]
+          }
+		  },
+        "cantreach" : {
+          "default" : {
+            "default" : [
+              "I can't reach mew!",
+              "Mew're too fast!",
+              "Hey, wait up!",
+              "How are Mew so fast?",
+              "Hey! Come back!"
+            ]
+          }
+		  },
+
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/grumble.config:tagCriteria",
+          "enclosedArea" : "/dialog/grumble.config:enclosedArea",
+          "otherDeed" : "/dialog/grumble.config:otherDeed",
+          "severe" : "/dialog/grumble.config:severe",
+          "final" : "/dialog/grumble.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/arrivedhome.config:beacon",
+          "rent" : "/dialog/arrivedhome.config:rent"
+        }
+      }
+},
+      "converse" : "/dialog/crewmember.config:converse",
+
+      "attack" : "/dialog/combat.config:attack",
+      "reattack" : "/dialog/combat.config:reattack",
+      "killedTarget" : "/dialog/combat.config:killedTarget",
+      "lostTarget" : "/dialog/combat.config:lostTarget",
+      "outOfSight" : "/dialog/combat.config:outOfSight",
+      "cheerOn" : "/dialog/combat.config:cheerOn",
+      "cantReach" : "/dialog/combat.config:cantReach"
+    }
+  },
+
+  "movementParameters" : {
+    // Run at the same speed as the player
+    "runSpeed" : 14.0
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "chest" : [ { "name" : "hiderchest" } ],
+            "legs" : [ { "name" : "hiderlegs" } ],
+            "primary" : [ "npcpistol" ],
+            "sheathedprimary" : [ "veluushortsword3" ]
+          },
+          {
+            "chest" : [ { "name" : "hiderchest" } ],
+            "legs" : [ { "name" : "hiderlegs" } ],
+            "primary" : [ "npcpistol" ],
+            "sheathedprimary" : [ "veluushortsword3" ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "statusProperties" : {
+      "hitInvulnerability" : true,
+      "hitInvulnerabilityThreshold" : 0.0333,
+      "hitInvulnerabilityTime" : 1,
+      "hitInvulnerabilityFlash" : 0.15,
+      "damageFlashOnDirectives" : "",
+      "damageFlashOffDirectives" : ""
+	},
+
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 300.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.25
+      },
+      "healthRegen" : {
+        "baseValue" : 2.0
+      }
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "itemName" : "densiniumshotgun",
+  "price" : 160,
+  "inventoryIcon" : "densiniumshotgun.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Rapid-fire bursts of unmatched potential.
+^yellow;5-round 3-pellet bursts^reset;
+^green;Rebounding plasma alt-fire^reset;",
+    "shortdescription" : "Densinium Shotgun",
+  "category" : "shotgun",
+  "level" : 6,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","shotgun","energy","densinium","upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "densiniumshotgun.png",
+    "middlefullbright" : "densiniumshotgun_fullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.3125, 0.125]
+		  }
+		}
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
+    },
+    "lights" : { "muzzleFlash" : {"color" : [92, 41, 123] } },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "frozenflames", "offset" : [0.0, 0.0] },
+          { "particle" : "frozenfiretrail", "offset" : [0.0, 0.0] },
+          { "particle" : "teslaboltpurple", "offset" : [0.0, 0.0] }
+        ]
+      }
+    }
+  },
+
+  "baseOffset" : [1.3125, 0.125],
+  "muzzleOffset" : [2.4375, 0.375],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
+    "fireTime" : 1.25,
+    "baseDps" : 2.8,
+    "useEnergy" : true,
+    "energyUsage" : 24.2,
+    "runSlowWhileShooting" : true,
+    "burstCooldown" : 1,
+    "inaccuracy" : 0.35,
+    "burstTime" : 0.075,
+    "burstCount" : 5,
+    "projectileCount" : 3,
+    "fireType" : "burst",
+
+    "projectileType" : "densiniumrifleshot",
+    "projectileParameters" : {
+      "knockback" : 6,
+      "damageSourceKind" : "electric"
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 6,
+	      "weaponRotation" : 6,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 6,
+	      "weaponRotation" : 6,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 5,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 900,
+  "altAbilityType" : "fu_darkplasma",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

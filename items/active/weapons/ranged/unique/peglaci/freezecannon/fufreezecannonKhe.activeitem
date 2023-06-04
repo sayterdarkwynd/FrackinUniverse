@@ -1,0 +1,144 @@
+{
+	"itemName": "fufreezecannonKhe",
+	"price": 4600,
+	"inventoryIcon": "fufreezecannonbw2icon.png",
+	"maxStack": 1,
+	"rarity": "legendary",
+	"description": "Primary: ^cyan;Snowball Machine Gun.^reset;\nAlt: ^cyan;Compressed Snowball Cannon^reset;",
+	"shortdescription": "Broken Promise",
+	"category": "uniqueWeapon",
+	"level": 4,
+	"tooltipKind": "gununique",
+	"weaponType": "Ice Cannon",
+	"itemTags": ["weapon", "ranged", "assaultrifle", "isogen", "upgradeableWeapon"],
+	"twoHanded": true,
+
+	"animation": "/items/active/weapons/ranged/gun.animation",
+	"animationParts": {
+		"butt": "",
+		"middle": "fufreezecannonbw2.png",
+		"barrel": "",
+		"muzzleFlash": "/animations/muzzleflash/fuplasmamuzzle3blue.png"
+	},
+	"animationCustom": {
+	    "particleEmitters" : {
+	      "muzzleFlash" : {
+		"particles" : [
+		  { "particle" : "coldbreath", "offset" : [-0.8, -0.4] },
+		  { "particle" : "icetrail", "offset" : [-0.4, -0.4] },
+		  { "particle" : "icetrailwide", "offset" : [-0.4, -0.4] },
+		  { "particle" : "icethrowertrail", "offset" : [-0.4, -0.4] }
+		]
+	      }
+	    },
+		"sounds": {
+			"fire": ["/sfx/weapons/fufreeze.ogg"]
+		}
+	},
+
+	"baseOffset": [1.0, 0.120],
+	"muzzleOffset": [1.645, 0.125],
+
+	"scripts": ["/items/active/weapons/ranged/gun.lua"],
+
+	"elementalType": "hoarfrost",
+
+	"primaryAbility": {
+		"scripts": ["/items/active/weapons/ranged/gunfire.lua"],
+		"class": "GunFire",
+		"fireTime": 0.08,
+		"baseDps": 6.2,
+		"energyUsage": 60.0,
+		"inaccuracy": 0.08,
+
+		"projectileCount": 1,
+		"fireType": "auto",
+
+		"projectileType": "mediumsnowballsplit",
+		"projectileParameters": {
+			"speed": 66,
+			"knockback": 8,
+			"statusEffects" : [ "freezefu2" ],
+			"damageKind" : "hoarfrost"
+		},
+		"stances": {
+			"idle": {
+				"armRotation": 0,
+				"weaponRotation": 0,
+				"twoHanded": true,
+
+				"allowRotate": true,
+				"allowFlip": true
+			},
+			"fire": {
+				"duration": 0,
+				"armRotation": 2,
+				"weaponRotation": 2,
+				"twoHanded": true,
+
+				"allowRotate": false,
+				"allowFlip": false
+			},
+			"cooldown": {
+				"duration": 0.01,
+				"armRotation": 2,
+				"weaponRotation": 2,
+				"twoHanded": true,
+
+				"allowRotate": false,
+				"allowFlip": false
+			}
+		}
+	},
+	"critChance": 1,
+	"critBonus": 3,
+	"altAbility": {
+		"name":"Snowball Cannon",
+		"scripts": ["/items/active/weapons/ranged/gunfire.lua"],
+		"class": "GunFire",
+		"fireTime": 3.0,
+		"baseDps": 0.3,
+		"energyUsage": 17.5,
+		"inaccuracy": 0,
+
+		"projectileCount": 1,
+		"fireType": "auto",
+
+		"projectileType": "compressedsnowballsplit",
+		"projectileParameters": {
+			"speed": 90,
+			"knockback": 8,
+			"statusEffects" : [ "freezefu" ]
+		},
+		"stances": {
+			"idle": {
+				"armRotation": 0,
+				"weaponRotation": 0,
+				"twoHanded": true,
+
+				"allowRotate": true,
+				"allowFlip": true
+			},
+			"fire": {
+				"duration": 0,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
+
+				"allowRotate": false,
+				"allowFlip": false
+			},
+			"cooldown": {
+				"duration": 0.25,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
+
+				"allowRotate": false,
+				"allowFlip": false
+			}
+		}
+	},
+
+	"builder": "/items/buildscripts/buildunrandweapon.lua"
+}

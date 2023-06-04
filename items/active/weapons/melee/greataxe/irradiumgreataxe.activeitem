@@ -1,0 +1,56 @@
+{
+  "itemName" : "irradiumgreataxe",
+  "price" : 1350,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Not at all fun to be cleaved by.
+^cyan;+12% Stun chance^reset;",
+  "shortdescription" : "Irradium Greataxe",
+  "tooltipKind" : "hammer",
+  "category" : "greataxe",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","greataxe", "upgradeableWeapon","irradium","radioactive"],
+
+  "inventoryIcon" : "irradiumgreataxe.png",
+  "animation" : "/items/active/weapons/melee/greataxe/greataxe.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "irradiumgreataxe.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ]
+    },
+    "animatedParts" : {
+      "parts" : {
+        "blade" : { "properties" : {"offset" : [0, 0.5]}},
+        "swoosh" : { "properties" : {"offset" : [0, 2]}}
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbilityType" : "greataxesmash",
+  "primaryAbility" : {
+    "fireTime" : 0.75,
+    "baseDps" : 11.0,
+    "damageConfig" : {
+      "damageSourceKind" : "radioactive",
+      "statusEffects" : [ "radiationburn" ],
+      "knockback":20
+    }
+  },
+
+  "palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
+
+  "altAbilityType" : "fusuperflipslash",
+  "critChance" : 2,
+  "critBonus" : 8,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "stunChance" : 12
+}

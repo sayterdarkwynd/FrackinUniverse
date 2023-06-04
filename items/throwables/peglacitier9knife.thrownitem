@@ -1,0 +1,33 @@
+{
+  "itemName" : "peglacitier9knife",
+
+  "price" : 300,
+  "rarity" : "Rare",
+  "level" : 5,
+    "inventoryIcon" : "peglacitier9knife.png",
+  "image" : "peglacitier9knife.png",
+  "shortdescription" : "Witherblade",
+  "description" : "Pierces through foes while draining their very energy!",
+
+  "ammoUsage" : 1,
+  "category" : "throwableItem",
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 0.4,
+
+  "projectileType" : "peglacitier9knife",
+  "projectileConfig" : {
+    "speed" : 45,
+    "power" : 24,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item.ogg" ]
+      }
+    ]
+  }
+}
+

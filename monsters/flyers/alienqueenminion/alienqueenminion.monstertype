@@ -1,0 +1,102 @@
+{
+  "type" : "alienqueenminion",
+  "shortdescription" : "Salitekch",
+  "description" : "A horrifying abomination with acid-coated glistening flesh.",
+
+  "categories" : [ "alienqueenminion" ],
+  "parts" : [ "arms", "body" ],
+
+  "animation" : "alienqueenminion.animation",
+
+  "dropPools" : [ ],
+
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "alienqueenminion",
+
+    "metaBoundBox" : [-8, -8, 8, 8],
+    "scale" : 0.50,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-0.675, -3.775], [-4.275, 0.275], [-4.375, 2.25], [0.15, 3.875], [0.15, 3.875], [4.375, 3.25], [4.375, 0.275], [0.775, -3.775] ],
+
+      "gravityEnabled" : false,
+      "mass" : 1.0
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.0,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 300
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "shadowResistance" : { "baseValue" : 1.0 },
+        "poisonResistance" : { "baseValue" : 0.5 },
+        "cosmicResistance" : { "baseValue" : -0.35 },
+        "radioactiveResistance" : { "baseValue" : -0.2 },
+        "iceResistance" : { "baseValue" : 0.6 },
+        "fireResistance" : { "baseValue" : -0.5 },
+        "physicalResistance" : { "baseValue" : 0.4 },
+        "electricResistance" : { "baseValue" : 0.7 }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 8336
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8]
+  }
+}

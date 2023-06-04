@@ -1,0 +1,127 @@
+{
+  "name" : "astralvine",
+  "shape" : "ceilingtest",
+  "health" : 2,
+  "middleMinSize" : 0,
+  "middleMaxSize" : 2,
+  "ceiling" : true,
+  "dropConfig" : {
+    "drops" : [
+      [ { "item" : "plantfibre", "count" : 2 } ]
+    ],
+    "sounds" : {
+      "breakTree" : [
+        { "file" : "/sfx/environmental/vine_cut1.ogg" }, { "file" : "/sfx/environmental/vine_cut2.ogg" }, { "file" : "/sfx/environmental/vine_cut3.ogg" }
+      ]
+    },
+    "particles" : {
+      "breakTree" : {
+        "density" : 3,
+        "options" : [ {
+            "image" : "/particles/treestems/vine.png",
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, -30],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialPosition" : [1.0, 1.0],
+              "initialVelocity" : [1.0, 1.0]
+            }
+          } ]
+      },
+      "hitGround" : {
+        "density" : 3,
+        "options" : [ {
+          "type" : "animated",
+          "animation" : "/animations/dusttest/dusttest.animation",
+          "timeToLive" : 3,
+          "destructionAction" : "shrink",
+          "destructionTime" : 1.0,
+          "variance" : {
+            "rotation" : 180,
+            "timeToLive" : 1.0,
+            "initialPosition" : [1.0, 1.0],
+            "initialVelocity" : [1.0, 1.0]
+          }
+        } ]
+      },
+      "damageTree" : {
+        "density" : 1,
+        "options" : [ {
+          "type" : "ember",
+          "color" : [0, 0, 0],
+          "timeToLive" : 10,
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, -30],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialPosition" : [1.0, 1.0],
+              "initialVelocity" : [1.0, 1.0]
+            }
+        } ]
+      }
+    }
+  },
+  "base" : {
+    "base1" : {
+      "image" : "astralvinebase1.png",
+      "attachment" : {
+        "bx" : -7,
+        "by" : -8,
+        "x" : 5,
+        "y" : 0
+      }
+    },
+    "base2" : {
+      "image" : "astralvinebase2.png",
+      "attachment" : {
+        "bx" : -6,
+        "by" : -8,
+        "x" : 9,
+        "y" : 0
+      }
+    }
+  },
+  "middle" : {
+    "middle1" : {
+      "image" : "astralvinemid1.png",
+      "attachment" : {
+        "bx" : -6,
+        "by" : -16,
+        "x" : 6,
+        "y" : 0
+      }
+    },
+    "middle2" : {
+      "image" : "astralvinemid2.png",
+      "attachment" : {
+        "bx" : -6,
+        "by" : -16,
+        "x" : 6,
+        "y" : 0
+      }
+    }
+  },
+  "crown" : {
+    "crown1" : {
+      "image" : "astralvineend1.png",
+      "attachment" : {
+        "bx" : -7,
+        "by" : -8,
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "crown2" : {
+      "image" : "astralvineend2.png",
+      "attachment" : {
+        "bx" : -7,
+        "by" : -8,
+        "x" : 0,
+        "y" : 0
+      }
+    }
+  }
+}

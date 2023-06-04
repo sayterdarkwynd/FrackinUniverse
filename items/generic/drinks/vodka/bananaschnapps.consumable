@@ -1,21 +1,24 @@
 {
-  "itemName" : "bananaschnapps",
-  "price" : 100,
-  "rarity" : "Common",
-  "category" : "drink",
-  "inventoryIcon" : "bananaschnapps.png",
-  "description" : "A bottle of banana flavored schnapps!",
-  "shortdescription" : "Banana Schnapps",
-  "handPosition" : [0, -2],
-  "effects" : [ [
-		{
-        "effect" : "slow",
-        "duration" : 60
-		},
-		{
-		"effect" : "booze",
-		"amount" : 3,
-		"duration" : 60
-        }
-    ] ]
+  "itemName": "bananaschnapps",
+  "price": 1750,
+  "rarity": "Common",
+  "category": "drink",
+  "inventoryIcon": "bananaschnapps.png",
+  "description": "A bottle of banana flavored schnapps!\n^white;35% ^red;Slow ^gray;, ^red;Drunk ^gray;(^white;1m^gray;)^reset;",
+  "shortdescription": "Banana Schnapps",
+  "handPosition": [0, -2],
+  "tooltipKind": "food",
+  "effects": [
+    [
+      {
+        "effect": "slow",
+        "duration": 60
+      },
+      {
+        "effect": "booze",
+        "duration": 60
+      }
+    ]
+  ],
+  "emitters" : [ "drinking" ]
 }

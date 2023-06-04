@@ -12,14 +12,14 @@
         "states" : {
 
           "warpInPart1" : {
-            "frames" : 4,  
+            "frames" : 4,
             "cycle" : 0.33,
             "mode" : "transition",
             "transition" : "warpInPart2"
             },
 
           "warpInPart2" : {
-            "frames" : 4,  
+            "frames" : 4,
             "cycle" : 0.33,
             "mode" : "transition",
             "transition" : "idle"
@@ -28,14 +28,14 @@
           "idle" : {},
 
           "warpOutPart1" : {
-            "frames" : 4,  
+            "frames" : 4,
             "cycle" : 0.33,
             "mode" : "transition",
             "transition" : "warpOutPart2"
             },
 
           "warpOutPart2" : {
-            "frames" : 4,  
+            "frames" : 4,
             "cycle" : 0.33,
             "mode" : "transition",
             "transition" : "invisible"
@@ -96,6 +96,42 @@
 
           "on" : {}
         }
+      },
+
+      "frontFiring" : {
+        "default" : "off",
+
+        "states" : {
+          "fire" : {
+            "frames" : 3,
+            "cycle" : 0.15,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "immediateSound" : "/sfx/gun/pulserifle2.ogg"
+            }
+          },
+
+          "off" : { }
+        }
+      },
+
+      "backFiring" : {
+        "default" : "off",
+
+        "states" : {
+          "fire" : {
+            "frames" : 3,
+            "cycle" : 0.15,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "immediateSound" : "/sfx/gun/pulserifle2.ogg"
+            }
+          },
+
+          "off" : { }
+        }
       }
 
 
@@ -108,6 +144,7 @@
         "properties" : {
           "centered" : true,
           "zLevel" : -1,
+          "fullbright" : true,
           "transformationGroups" : ["flip", "rotation"]
         },
 
@@ -208,12 +245,12 @@
 
             "warpInPart1" : {
               "properties" : {
-                "image" : "hoverbikewarp.png:warpInPart1.<frame>"
+                "image" : "fuflyerwarp.png:warpInPart1.<frame>"
               }
             },
             "warpInPart2" : {
               "properties" : {
-                "image" : "hoverbikewarp.png:warpInPart2.<frame>"
+                "image" : "fuflyerwarp.png:warpInPart2.<frame>"
               }
             },
 
@@ -225,12 +262,12 @@
 
             "warpOutPart1" : {
               "properties" : {
-                "image" : "hoverbikewarp.png:warpOutPart1.<frame>"
+                "image" : "fuflyerwarp.png:warpOutPart1.<frame>"
               }
             },
             "warpOutPart2" : {
               "properties" : {
-                "image" : "hoverbikewarp.png:warpOutPart2.<frame>"
+                "image" : "fuflyerwarp.png:warpOutPart2.<frame>"
               }
             },
 
@@ -306,7 +343,7 @@
               "properties" : {
                 "image" : "/animations/hoverbikethruster/backthruster.png:thrust.<rearThrusterFrame>",
 
-                "offset" : [-4.75, 0.9]
+                "offset" : [-6.75, -0.43]
               }
             }
           }
@@ -328,7 +365,135 @@
             "on" : {
               "properties" : {
                 "image" : "/animations/hoverbikethruster/bottomthruster.png:thrust.<bottomThrusterFrame>",
-                "offset" : [0.1, -2.0]
+                "offset" : [3.3, -5.35]
+              }
+            }
+          }
+        }
+      },
+
+
+      "backGunFire" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : -1.5,
+          "offset" : [8.9, -2.83],
+          "rotationGroup" : "guns",
+          "rotationCenter" : [5.4, -2.83],
+          "anchorPart" : "foreground"
+        },
+
+        "partStates" : {
+          "backFiring" : {
+            "fire" : {
+              "properties" : {
+                "image" : "/animations/smuzzle/bulletmuzzle1.png:<frameIndex>"
+              }
+            }
+          }
+        }
+      },
+
+      "backGun" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : -1,
+          "offset" : [6.4, -2.7],
+          "rotationGroup" : "guns",
+          "rotationCenter" : [5.4, -2.7],
+          "firePoint" : [1.2, -0.2],
+          "anchorPart" : "foreground"
+        },
+
+        "partStates" : {
+          "movement" : {
+            "idle" : {
+              "properties" : {
+                "image" : "/animations/guns/fumechgun.png:rotation"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "/animations/guns/fumechgun.png:rotation"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "/animations/guns/fumechgun.png:rotation"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "/animations/guns/fumechgun.png:rotation"
+              }
+            },
+            "backWalk" : {
+              "properties" : {
+                "image" : "/animations/guns/fumechgun.png:rotation"
+              }
+            }
+          }
+        }
+      },
+
+      "frontGunFire" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 2,
+          "fullbright" : true,
+          "offset" : [9.3, -2.785],
+          "rotationGroup" : "guns",
+          "rotationCenter" : [5.4, -2.83],
+          "anchorPart" : "foreground"
+        },
+
+        "partStates" : {
+          "frontFiring" : {
+            "fire" : {
+              "properties" : {
+                "image" : "/animations/smuzzle/bulletmuzzle1.png:<frameIndex>"
+              }
+            }
+          }
+        }
+      },
+
+      "frontGun" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 4,
+          "offset" : [6.4, -2.7],
+          "rotationGroup" : "guns",
+          "rotationCenter" : [5.4, -2.7],
+          "firePoint" : [1.2, -0.2],
+          "anchorPart" : "foreground"
+        },
+
+        "partStates" : {
+          "movement" : {
+            "idle" : {
+              "properties" : {
+                "image" : "/animations/guns/fumechgun.png:rotation"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "/animations/guns/fumechgun.png:rotation"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "/animations/guns/fumechgun.png:rotation"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "/animations/guns/fumechgun.png:rotation"
+              }
+            },
+            "backWalk" : {
+              "properties" : {
+                "image" : "/animations/guns/fumechgun.png:rotation"
               }
             }
           }
@@ -345,34 +510,38 @@
     },
     "flip" : {}
   },
+  "rotationGroups" : {
+    "guns" : {
+      "angularVelocity" : 10.0
+    }
+  },
 
   "particleEmitters" : {
-
     "rearThrusterIdle" : {
       "transformationGroups" : ["flip", "rotation"],
-      "emissionRate" : 5.0,
-      "offsetRegion" : [ -5, 0.5, -5, 1.5],
-      "particles" : [{ "particle" : "hoverbikethrust"}]
+      "emissionRate" : 3.0,
+      "offsetRegion" : [ -6.75, 0.42, -6.85, 0.44],
+      "particles" : [{ "particle" : "smoke"}]
     },
 
     "rearThrusterDrive" : {
       "transformationGroups" : ["flip", "rotation"],
-      "emissionRate" : 15.0,
-      "offsetRegion" : [-3.5, 0.5, -3.5, -0.5],
-      "particles" : [{ "particle" : "hoverbikethrust"}]
+      "emissionRate" : 55.0,
+      "offsetRegion" : [-6.75, 0.42, -6.85, -0.44],
+      "particles" : [{ "particle" : "smoke"}]
     },
 
     "ventralThrusterIdle" : {
       "transformationGroups" : ["flip", "rotation"],
-      "emissionRate" : 5.0,
-      "offsetRegion" : [-0.5, -1.5, 0.5, -1.55],
+      "emissionRate" : 15.0,
+      "offsetRegion" : [3.25, -5.35, 3.35, -7.55],
       "particles" : [{ "particle" : "hoverbikedownthrust"}]
     },
     "ventralThrusterJump" : {
       "transformationGroups" : ["flip", "rotation"],
-      "emissionRate" : 15.0,
+      "emissionRate" : 55.0,
       "burstCount"  : 2,
-      "offsetRegion" : [-0.5, -1.5, 0.5, -1.55],
+      "offsetRegion" : [3.25, -5.35, 3.35, -7.55],
       "particles" : [{ "particle" : "hoverbikedownthrust"}]
     },
 
@@ -383,7 +552,7 @@
       "offsetRegion" : [-1.5, -1.5, 0.5, -1],
       "particles" : [{ "particle" : "burningvehiclesmokefront"}]
     },
-    
+
     "fire" : {
       "transformationGroups" : ["flip", "rotation"],
       "emissionRate" : 0.0,
@@ -443,13 +612,13 @@
                   "/sfx/gun/grenadeblast_small_fire3.ogg" ],
 
 
-    "engineStart" : ["/sfx/tools/teleport_up.ogg"],
+    "engineStart" : ["/sfx/vehicles/jet-start.ogg"],
 
-    "engineLoop" : ["/sfx/tech/hoverbike_drive_loop.ogg"],
+    "engineLoop" : ["/sfx/vehicles/plane-engine-loop.ogg"],
 
-    "engineStartDamaged" : ["/sfx/tools/teleport_up.ogg"],
+    "engineStartDamaged" : ["/sfx/vehicles/jet-start.ogg"],
 
-    "engineLoopDamaged" : ["/sfx/tech/hoverbike_idle_loop.ogg"],
+    "engineLoopDamaged" : ["/sfx/vehicles/plane-engine-loop.ogg"],
 
     "damageIntermittent" : [ "/sfx/gun/grenadeblast_small_fire1.ogg",
                              "/sfx/gun/grenadeblast_small_fire2.ogg",
@@ -458,7 +627,6 @@
     "hornLoop" : ["/sfx/tech/honk.ogg"],
     "headlightSwitchOn" : ["/sfx/objects/floodlights_on.ogg"],
     "headlightSwitchOff" : ["/sfx/objects/floodlights_off.ogg"],
-
     "returnvehicle" : ["/sfx/tech/vehicle_disappear1.ogg"]
 
   }

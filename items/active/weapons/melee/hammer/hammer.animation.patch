@@ -1,0 +1,151 @@
+[
+
+  {"op" : "replace",
+    "path" : "/sounds",
+  	"value" :
+	  {
+	  	 "fire" : [],
+	  	 "fire2" : [],
+	  	 "groundImpact" : [ "/sfx/melee/hammer_hit_ground3.ogg", "/sfx/melee/hammer_hit_ground4.ogg" ],
+       "charged" : [ "/sfx/tech/tricorder2.ogg" ],
+       "overCharged" : [ "/sfx/interface/energy_out1.ogg","/sfx/interface/energy_out2.ogg" ],
+	     "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }
+  },
+  {
+    "op" : "add",
+    "path" : "/particleEmitters/charged",
+    "value" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
+      "particles" : [
+        { "particle" : "energy"},
+        { "particle" : "burninghat"},
+        { "particle" : "burninghat"},
+        { "particle" : "charge"},
+        { "particle" : "charge"},
+        { "particle" : "charge"}
+      ]
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/particleEmitters/shadowswoosh",
+    "value" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
+      "particles" : [
+        { "particle" : "shadowswoosh1"},
+        { "particle" : "shadowswoosh2"},
+        { "particle" : "shadowswoosh3"},
+        { "particle" : "shadowsmoke1"},
+        { "particle" : "shadowsmoke1"},
+        { "particle" : "shadowsmoke2"}
+      ]
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/particleEmitters/radioactiveswoosh",
+    "value" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
+      "particles" : [
+        { "particle" : "radioactiveswoosh1"},
+        { "particle" : "radioactiveswoosh2"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "radioactiveswoosh1"},
+        { "particle" : "radioactiveswoosh2"},
+        { "particle" : "poisonswoosh2"}
+      ]
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/particleEmitters/cosmicswoosh",
+    "value": {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 50,
+      "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
+      "particles" : [
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"},
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/particleEmitters/silverweaponswoosh",
+    "value": {
+      "active": false,
+      "transformationGroups": [
+        "swoosh"
+      ],
+      "emissionRate": 50,
+      "burstCount": 3,
+      "particles": [
+        {
+          "particle": "cosmicswoosh1"
+        },
+        {
+          "particle": "cosmicswoosh2"
+        },
+        {
+          "particle": "cosmicswoosh3"
+        }
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/particleEmitters/hellfireswoosh",
+    "value": {
+      "active": false,
+      "transformationGroups": [
+        "swoosh"
+      ],
+      "emissionRate": 50,
+      "burstCount": 3,
+      "particles": [
+        {
+          "particle": "fireswoosh1"
+        },
+        {
+          "particle": "fireswoosh2"
+        },
+        {
+          "particle": "fireswoosh3"
+        }
+      ]
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/particleEmitters/bioweaponswoosh",
+    "value": {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
+      "particles" : [
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "fireswoosh2"},
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "fireswoosh2"}
+      ]
+    }
+  }
+]

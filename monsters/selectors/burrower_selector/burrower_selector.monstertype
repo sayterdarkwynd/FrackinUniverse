@@ -1,0 +1,186 @@
+{
+  "type" : "burrower_selector",
+  "shortdescription" : "burrower_selector",
+  "description" : "Used to spawn tier appropriate burrowers",
+  "categories" : [ "burrower_selector" ],
+  "parts" : [ "body" ],
+  "animation" : "default.animation",
+  "dropPools" : [ ],
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua",
+      "/monsters/selectors/tiered_spawner.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+      "foundTargetActions" : [],
+      "fleeActions" : [],
+      "hostileActions" : [],
+      "approachActions" : [],
+      "wanderActions" : []
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-0.5,-0.5], [-0.5,0.5], [0.5,0.5], [0.5,-0.5] ],
+      "damage" : 14,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+
+      "collisionPoly" : [ [-0.5,-0.5], [-0.5,0.5], [0.5,0.5], [0.5,-0.5] ],
+
+      "gravityEnabled" : false,
+      "mass" : 1.0,
+      "walkSpeed" : 5,
+      "runSpeed" : 7,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 65
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "biomePools" : {
+        "crystalmoon" : ["lunari_burrower"],
+        "moon_shadow" :["moonstone_burrower", "plutonium_burrower", "thorium_burrower"],
+        "moon_desert" : ["moonstone_burrower", "plutonium_burrower", "thorium_burrower"],
+        "moon_volcanic" :["moonstone_burrower", "plutonium_burrower", "thorium_burrower"],
+        "moon_stone" : ["moonstone_burrower", "plutonium_burrower", "thorium_burrower"],
+        "moon_toxic" : ["moonstone_burrower", "plutonium_burrower", "thorium_burrower", "uranium_burrower"],
+        "metallicmoon" : ["densinium_burrower"],
+        "sulphuric" : ["densinium_burrower"],
+        "sulphuricdark" : ["densinium_burrower"],
+        "irradiated" : ["irradium_burrower", "neptunium_burrower","thorium_burrower","uranium_burrower", "plutonium_burrower"],
+        "icewaste" : ["isogen_burrower"],
+        "icewastedark" : ["isogen_burrower"],
+        "penumbra" : ["penumbrite_burrower"],
+        "chromatic" : ["prisilite_burrower"],
+        "protoworld" : ["protocite_burrower"],
+        "infernus" : ["pyreite_burrower"],
+        "infernusdark" : ["pyreite_burrower"],
+        "atropus" : ["quietus_burrower"],
+        "bloodstonesea" : ["quietus_burrower"],
+        "lightless" : ["trianglium_burrower"],
+        "aethersea" : ["xithricite_burrower"],
+        "mountainous" : ["zerchesium_burrower","neptunium_burrower"],
+        "mountainous2" : ["zerchesium_burrower"],
+        "mountainous3" : ["zerchesium_burrower"],
+        "mountainous4" : ["zerchesium_burrower"]
+    },
+    "pools" : [
+      ["copper_burrower","copper_burrower","silver_burrower","gold_burrower","iron_burrower","iron_burrower","iron_burrower","iron_burrower","copper_burrower"],
+      ["tungsten_burrower","tungsten_burrower","tungsten_burrower","tungsten_burrower","iron_burrower","iron_burrower","silver_burrower","gold_burrower","copper_burrower"],
+      ["titanium_burrower","titanium_burrower","tungsten_burrower","silver_burrower","gold_burrower","copper_burrower","iron_burrower"],
+      ["durasteel_burrower","durasteel_burrower","titanium_burrower","durasteel_burrower","durasteel_burrower","titanium_burrower","silver_burrower","gold_burrower","copper_burrower","iron_burrower"],
+      ["durasteel_burrower","durasteel_burrower","durasteel_burrower","durasteel_burrower","silver_burrower","gold_burrower","copper_burrower","diamond_burrower"],
+      ["durasteel_burrower","aegisalt_burrower", "ferozium_burrower", "violium_burrower"],
+      ["aegisalt_burrower", "ferozium_burrower", "violium_burrower", "solarium_burrower"],
+      ["aegisalt_burrower", "ferozium_burrower", "violium_burrower", "solarium_burrower"],
+      ["aegisalt_burrower", "ferozium_burrower", "violium_burrower", "solarium_burrower"]    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+	"objectName": "fu_ftl_human",
+	"rarity": "essential",
+	"colonyTags": ["science"],
+	"category": "furniture",
+	"description": "An FTL drive for Human space ships. Allows interstellar travel.\n^yellow;Ship Speed: +15, Ship Mass: +3.25^reset;. ^red;BYOS Only^reset;",
+	"shortdescription": "^cyan;Human FTL Drive Mk1^reset;",
+	"race": "human",
+	"printable": false,
+//	"learnBlueprintsOnPickup": ["fu_ftl_humanUpgrade"],
+
+	"inventoryIcon": "/objects/ship/fu_ftldriveicon.png",
+	"orientations": [{
+		"dualImage": "fu_ftl_human.png:off",
+		"imagePosition": [0, 0],
+
+		"spaceScan": 0.1,
+		"anchors": ["background"]
+	}],
+
+	"animation": "fu_ftl_human.animation",
+	"animationParts": {
+		"base": "fu_ftl_human.png",
+		"fullbright": "fu_ftl_humanFullbright.png"
+	},
+	"animationPosition": [36, 16],
+
+	"scripts": ["/objects/ship/fu_shipstatmodifier.lua", "/objects/ship/fu_ftldriveanimation.lua"],
+	"scriptDelta": 60,
+
+	"stats": {
+		"shipSpeed": 15,
+		"shipMass": 3.25
+	},
+	"capabilities": [
+		"systemTravel",
+		"planetTravel"
+	],
+	"maxAmountGroups": {
+		"ftlDrive": 1
+	},
+	"byosOnly": true
+}

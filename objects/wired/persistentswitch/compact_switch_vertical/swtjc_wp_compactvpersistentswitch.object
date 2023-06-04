@@ -1,0 +1,45 @@
+{
+  "objectName" : "swtjc_wp_compactvpersistentswitch",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "Once triggered this switch will remain in its switched state.",
+  "shortdescription" : "Compact Persistent Switch",
+  "race" : "generic",
+
+  "category" : "wire",
+  "price" : 20,
+
+  "floranDescription" : "Once triggered this sswitch will remain in its sswitched ssstate.",
+  "glitchDescription" : "Neutral. Once triggered this switch will remain in its switched state.",
+
+  "inventoryIcon" : "swtjc_wp_compactvpersistentswitch.png:default.off",
+  "orientations" : [
+    {
+      "image" : "swtjc_wp_compactvpersistentswitch.png:default.off",
+      "imagePosition" : [-0, -0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/switch/persistentswitch.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle.animation",
+
+  "animationParts" : {
+    "switch" : "swtjc_wp_compactvpersistentswitch.png"
+  },
+  "animationPosition" : [-0, -0],
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0], [0, 2] ],
+  "outputNodes" : [ [0, 1] ],
+
+  "interval" : 15
+}

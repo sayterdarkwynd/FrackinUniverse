@@ -1,19 +1,27 @@
 {
-  "itemName" : "haleflowerpetal",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "haleflowerpetal.png",
-  "description" : "Tastes like bacon, restores energy like fusion.",
-  "shortdescription" : "Hale Flower Petal",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 7,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-        "energyregenfu60"
-    ] ]
+	"itemName": "haleflowerpetal",
+	"inventoryIcon": "haleflowerpetal.png",
+	"category": "food",
+	"rarity": "Rare",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+30% E. Regen & -15% E. Regen Block^reset;: 1m",
+	"shortdescription": "Hale Flower Petal",
+
+	"effects": [
+		[{
+			"effect": "energyregenfu60",
+			"duration": 60
+		}]
+	],
+	"blockingEffects": [
+		"energyregenfu50",
+		"energyregenfu10",
+		"energyregenfu25",
+		"energyregenfu35",
+		"energyregenfu20",
+		"energyregenfu05",
+		"energyregenfu40"
+	]
 }

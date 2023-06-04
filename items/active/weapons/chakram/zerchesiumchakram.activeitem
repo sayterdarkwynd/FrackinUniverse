@@ -1,0 +1,84 @@
+{
+  "itemName" : "zerchesiumchakram",
+  "price" : 400,
+
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "category" : "chakram",
+  "description" : "Zerchesium power of crystalline destruction.",
+  "shortdescription" : "Zerchesium Chakram",
+  "tooltipKind" : "chakram",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","chakram", "zerchesium", "upgradeableWeapon"],
+  "inventoryIcon" : "zerchesiumchakram.png",
+  "animation" : "chakram.animation",
+  "animationParts" : {
+    "chakram" : "zerchesiumchakram.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "throw" : [ "/sfx/melee/swing_dagger.ogg" ]
+    }
+  },
+  "scripts" : ["/items/active/weapons/boomerang/boomerang.lua"],
+  "fireOffset" : [1.25, 0.5],
+
+  "critChance" : 3,
+  "critBonus" : 2,
+
+  "projectileType" : "zerchesiumchakram",
+  "projectileParameters" : {
+    "knockback" : 7,
+    "power" : 6,
+    "damageRepeatTimeout" : 0.2,
+
+    "returnOnHit" : true,
+    "pickupDistance" : 1.0,
+
+    "hoverMaxDistance" : 40,
+    "hoverTime" : 0.25
+  },
+
+  "level" : 3,
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transition" : "throw",
+      "transitionFunction" : "fire",
+      "armRotation" : 70,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+  "builder" : "/items/buildscripts/fubuildchakram.lua"
+}

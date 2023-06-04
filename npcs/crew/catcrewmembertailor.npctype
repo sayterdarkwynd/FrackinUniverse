@@ -1,0 +1,62 @@
+{
+  "type" : "catcrewmembertailor",
+  "baseType" : "catcrewmember",
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "emptyHands" : true
+    },
+
+    "crew" : {
+      "role" : {
+        "type" : "tailor",
+        "name" : "Tailor",
+        "field" : "Fashion",
+        "uniformColorIndex" : 9
+      },
+
+      // This interactActions only happens when in a crew, and only when
+      // interacted with by the captain.
+      "interactAction" : "Message",
+      "interactData" : {
+        "messageType" : "recruits.offerUniformUpdate",
+        "messageArgs" : [ ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "Meow. I might be a cat, but my fashion sense is as keen as any other's!",
+              "Meow. I might be a cat, but I can still use a needle with my powers! Talk to me when you want to change outfits."
+            ]
+          }}
+        }
+      },
+      "converse" : {
+        "cat" : {
+          "default" : [
+            "Meow! That looks purrfect!",
+            "Meow! Mew have great taste!",
+            "Meow! Watch as everyone pawses to look at your selection!",
+            "Meow! Mew are Captain Fashionable!"
+          ]
+        }
+      }
+    },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "chest" : [ { "name" : "hiderchest" } ],
+            "legs" : [ { "name" : "hiderlegs" } ],
+            //"primary" : ["flowerbouquet"]
+            "sheathedprimary" : [ "npcpistol", "veluushortsword3" ]
+          }
+        ] ]
+    ]
+  }
+}

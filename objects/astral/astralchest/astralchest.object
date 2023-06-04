@@ -1,0 +1,49 @@
+{
+	"objectName": "astralchest",
+	"colonyTags": ["fu", "aether", "pretty", "valuable", "storage"],
+	"rarity": "Legendary",
+	"objectType": "container",
+	"tooltipKind": "container",
+
+	"category": "storage",
+	"price": 70,
+	"description": "A stellar chest, for when you need a pocket dimension to store your stuff.",
+	"shortdescription": "Aen Chest",
+	"race": "generic",
+	"health": 1.5,
+	"lightColor" : [120, 20, 180],
+
+
+	"inventoryIcon": "icon.png",
+	"orientations" : [
+    {
+      "imageLayers" : [ { "image" : "astralchest.png:<color>.<key>" }, { "image" : "astralchestfullbright.png:<color>.<key>", "fullbright" : true } ],
+      "imagePosition" : [-12, 0],
+      "frames" : 1,
+      "animationCycle" : 2.0,
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "astralchest.png:<color>.<key>" }, { "image" : "astralchestfullbright.png:<color>.<key>", "fullbright" : true } ],
+      "imagePosition" : [-12, 0],
+      "frames" : 1,
+      "animationCycle" : 2.0,
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+
+	"openSounds" : [ "/sfx/objects/miningchest_open.ogg" ],
+  	"closeSounds" : [ "/sfx/objects/miningchest_close.ogg" ],
+	"slotCount": 64,
+	"uiConfig": "/interface/chests/chest<slots>.config",
+  	"frameCooldown" : 32,
+	"autoCloseCooldown": 3600
+}

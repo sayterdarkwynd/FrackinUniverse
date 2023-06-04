@@ -1,0 +1,260 @@
+{
+  "type" : "pandorasboxcupcaketop",
+  "shortdescription" : "Cupcaketop",
+  "description" : "Cupcaketops rarely stray from their mother. They can only produce cupcakes at this age.",
+
+  "categories" : [ "pandorasboxcaketop" ],
+  "parts" : [ "body" ],
+
+  "animation" : "pandorasboxcupcaketop.animation",
+
+  "dropPools" : [ ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua",
+      "/monsters/pandorasboxmonsterscripts/pandorasboxsimplefarmablemonster.lua"
+    ],
+
+    "damageTeamType" : "enemy",
+
+    "behavior" : "monster",
+
+    "harvestTime" : [500, 900],
+    "harvestSpawnOffset" : [0, 0],
+    "harvestPool" : "pandorasboxcupcaketopHarvest",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : false,
+
+      "targetQueryRange" : 0,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 0,
+      "targetOutOfSightTime" : 0,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 3,
+          "parameters" : {
+            "maximumRange" : 5,
+            "windupTime" : 0.4,
+
+            "aimAtTarget" : false,
+            "aimDirection" : [1, 0.5],
+            "chargeTime" : [0.3, 0.3],
+            "chargeSpeed" : 25,
+            "chargeControlForce" : 200,
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.5
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-hop",
+          "cooldown" : 40.0,
+          "parameters" : {
+            "verticalSpeed" : 20,
+            "horizontalSpeed" : 5,
+            "hopSequence" : 5,
+            "windupTime" : 0,
+            "landTime" : 0,
+            "timeBetweenHops" : 0.00,
+            "hopAwayFromWall" : true
+          }
+        }
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 8,
+            "moveState" : "run",
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10,
+            "run" : true
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 8,
+            "moveState" : "run",
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10,
+            "run" : true
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 3.0,
+          "parameters" : {
+            "moveState" : "stroll",
+            "wanderTime" : [5, 20]
+          }
+        },
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "moveState" : "silentstroll",
+            "wanderTime" : [5, 20]
+          }
+        }
+      ]
+    },
+
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 0.5,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, 0.10], [0.8125, -0.40],  [-0.8125, -0.40], [-1.3125, 0.10],  [-1.3125, 0.75], [-0.8125, 1.25] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 2,
+      "runSpeed" : 10,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 50
+        },
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "invulnerable" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.50
+        },
+        "lavaImmunity" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "specialStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "stunImmunity" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "wildHarvestable" : true,
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false,
+    "relocatable" : true,
+    "nametagColor" : [64, 200, 255]
+  }
+}

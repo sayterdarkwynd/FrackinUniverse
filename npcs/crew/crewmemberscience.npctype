@@ -1,21 +1,16 @@
 {
   "type" : "crewmemberscience",
-  "baseType" : "crewmember",
+  "baseType" : "fu_crewmember",
 
-  // This npctype is used just as a base for the other crewmemberchemist*
-  // npctypes. Don't use it directly for spawning NPCs.
+  // Not used for anything currently, feel free to turn into something else.
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
-
     "crew" : {
-    "defaultUniform" : {
-	"head" : "scientisthead",
-    	"chest" : "scientistchest",
-   	"legs" : "scientistlegs"
-  	},
+      "defaultUniform" : {
+        "head" : "scientisthead",
+        "chest" : "scientistchest",
+        "legs" : "scientistlegs"
+      },
       "role" : {
         "type" : "chemist",
         "name" : "Scientist",
@@ -30,6 +25,16 @@
           "default" : {
             "default" : [
               "I'll give you a boost whenever we're on the ship!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran will give you boostsss when we are on ship!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Friendly. I'll give you a boost whenever we're on the ship!"
             ]
           }
         },
@@ -66,8 +71,8 @@
     "default" : [
       [0, [
           {
-            "primary" : [ "dblade" ],
-            "sheathedprimary" : [ "laspistol" ]          
+            "primary" : [ "carbonblade" ],
+            "sheathedprimary" : [ "energyassault" ]
           }
         ] ]
     ]

@@ -3,26 +3,23 @@
   "price" : 1000,
   "inventoryIcon" : "coldprotectionicon.png",
   "tooltipKind" : "baseaugment",
-  "rarity" : "Rare",
+  "rarity" : "uncommon",
   "pickupQuestTemplates" : [ ],
   "category" : "enviroProtectionPack",
-  "description" : "This upgrade adds heat generation to your EPP's capabilities. Useful on ^red;dangerously cold^reset; planets.",
+  "description" : "+20% Ice Resist. Useful on ^cyan;mildly cold^reset; planets.",
   "shortdescription" : "Heating EPP",
-
+ // "learnBlueprintsOnPickup" : [ "coldprotectionback2" ],
   "maleFrames" : "back.png",
   "femaleFrames" : "back.png",
   "maxStack" : 1,
-
   "statusEffects" : [
     {
-      "stat" : "biomecoldImmunity",
-      "amount" : 1.0
+      "stat" : "iceResistance",
+      "amount" : 0.2
     }
   ],
-
   "acceptsAugmentType" : "back",
   "radioMessagesOnPickup" : [ "pickupepp" ],
-
   "colorOptions" : [
     // BLACK
     { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },

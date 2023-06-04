@@ -1,19 +1,17 @@
 {
-  "itemName" : "shinyacorn",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "shinyacornicon.png",
-  "description" : "Provides a substantial health boost.",
-  "shortdescription" : "Helkat Nut",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,  
-  "effects" : [ [
-    "maxhealthboost5"
-    ] ]
+	"itemName": "shinyacorn",
+	"inventoryIcon": "shinyacornicon.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+21 HP^reset;: 3m",
+	"shortdescription": "Helkat Nut",
+	"effects": [
+		[{
+			"effect": "maxhealthboost5",
+			"duration": 180
+		}]
+	]
 }

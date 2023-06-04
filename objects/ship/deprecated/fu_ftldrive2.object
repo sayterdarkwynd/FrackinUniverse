@@ -1,0 +1,43 @@
+{
+  "objectName" : "fu_ftldrive2",
+  "rarity" : "essential",
+  "colonyTags" : [ "science" ],
+  "category" : "furniture",
+  "description" : "^red;This item was deprecated. Place and break to get the items used to make this back.^reset;",
+  "shortdescription" : "^red;DEPRECATED^reset; FTL Drive",
+  "race" : "generic",
+  "printable" : false,
+
+  "inventoryIcon" : "/objects/ship/fu_ftldrive/fu_ftldrive2icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "/objects/ship/fu_ftldrive/fu_ftldrive2.png:off",
+      "imagePosition" : [-28, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "animation" : "/objects/ship/fu_ftldrive/fu_ftldrive2.animation",
+  "animationParts" : {
+    "base" : "/objects/ship/fu_ftldrive/fu_ftldrive2.png",
+	"fullbright" : "/objects/ship/fu_ftldrive/fu_ftldrive2fullbright.png"
+  },
+  "animationPosition" : [-28, 0],
+
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua", "/objects/ship/fu_ftldriveanimation.lua","/objects/ship/deprecated/fu_deprecatedbyosobject.lua"  ],
+  "scriptDelta" : 60,
+
+  "stats" : {
+    "shipSpeed" : 4,
+    "shipMass" : 3
+  },
+  "capabilities" : [
+    "systemTravel",
+    "planetTravel"
+  ],
+  "maxAmountGroups" : {
+    "ftlDrive" : 1
+  },
+  "byosOnly" : true
+}

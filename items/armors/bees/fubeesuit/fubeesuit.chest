@@ -3,10 +3,12 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "uncommon",
+  "rarity" : "common",
   "description" : "Prevents nasty bee stings!",
   "shortdescription" : "Bee Keeper's Armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
+  "itemTags" : [ "upgradeableWeapon", "defensive" ],
   "maleFrames" : {
     "body" : "chest.png",
     "backSleeve" : "bsleeve.png",
@@ -19,23 +21,30 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.12
+      "baseMultiplier" : 1.15
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 5
+      "amount" : 0.45
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 5
+      "amount" : 2
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 4
-    },
+      "amount" : 2
+    }
+  ],
+
+  "statusEffects" : [
     "beestingimmunity"
   ],
 
@@ -77,5 +86,6 @@
     { "e0975c" : "aaaaaa", "a85636" : "6f6f6f", "6f2919" : "494949" },
     { "e0975c" : "d8d8d8", "a85636" : "8d8d8d", "6f2919" : "636363" }
 */
-  ]
+  ],
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

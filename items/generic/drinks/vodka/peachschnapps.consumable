@@ -1,22 +1,24 @@
 {
-  "itemName" : "peachschnapps",
-  "price" : 100,
-  "rarity" : "Common",
-  "category" : "drink",
-  "inventoryIcon" : "peachschnapps.png",
-  "description" : "A bottle of peach flavored schnapps!",
-  "shortdescription" : "Peach Schnapps",
-  "handPosition" : [0, -2],
-  "effects" : [ [
-
-		{
-        "effect" : "slow",
-        "duration" : 60
-		},
-		{
-		"effect" : "booze",
-		"amount" : 3,
-		"duration" : 60
-        }
-    ] ]
+  "itemName": "peachschnapps",
+  "price": 1000,
+  "rarity": "Common",
+  "category": "drink",
+  "inventoryIcon": "peachschnapps.png",
+  "description": "A bottle of peach flavored schnapps!\n^white;35% ^red;Slow ^gray;, ^red;Drunk ^gray;(^white;1m^gray;)^reset;",
+  "shortdescription": "Peach Schnapps",
+  "tooltipKind": "food",
+  "handPosition": [0, -2],
+  "effects": [
+    [
+      {
+        "effect": "slow",
+        "duration": 60
+      },
+      {
+        "effect": "booze",
+        "duration": 60
+      }
+    ]
+  ],
+  "emitters" : [ "drinking" ]
 }

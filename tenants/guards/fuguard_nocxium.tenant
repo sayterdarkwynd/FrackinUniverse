@@ -1,0 +1,28 @@
+{
+  "name": "fuguard_nocxium",
+  "priority": 10,
+
+  "colonyTagCriteria": {
+    "light": 1,
+    "door": 1,
+    "combat" : 8,
+    "nocxium" : 9
+  },
+
+  "tenants": [
+    {
+      "spawn": "npc",
+      "species": ["human", "fudarkizku"],
+      "level": 7,
+      "type": "funocxiumguard",
+      "overrides": {
+        "damageTeamType" : "friendly"
+       }
+     }
+   ],
+
+  "rent": {
+    "periodRange": [900.0, 1800.0],
+    "pool": "villagerGift"
+  }
+}

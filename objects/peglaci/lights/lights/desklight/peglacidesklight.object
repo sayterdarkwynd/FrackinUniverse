@@ -1,0 +1,65 @@
+{
+  "objectName" : "peglacidesklight",
+  "colonyTags" : [ "peglaci", "peglacivillage", "light" ],
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 60,
+  "printable" : true,
+
+  "description" : "A small table lantern lit by a floating and glowing crystal.",
+  "shortdescription" : "Crystal Desk Lamp",
+  "race" : "peglaci",
+
+  "apexDescription" : "A small, glowing crystal is floating in this device.",
+  "avianDescription" : "The light it gives off is so cold...",
+  "floranDescription" : "Why thiss shiny stone fly? the stoness don't fly.",
+  "glitchDescription" : "Intrigued. This glowing crystal appears to float in a strong magnetic field.",
+  "humanDescription" : "This crystal is floating! Yes, science!",
+  "hylotlDescription" : "Such beautiful technology. How did the Peglaci learn to harness it?",
+  "novakidDescription" : "This floating shiny rock is glowin' bright, but not as bright as me!",
+  "fupeglaciDescription" : "This little device uses the properties of one of our crystals to emit light.",
+
+  "statusEffects" : [ ],
+
+  "lightColor" : [100, 200, 255],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "inventoryIcon" : "peglacidesklighticon.png",
+  "orientations" : [
+    {
+      "dualImage" : "peglacidesklight.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/oillantern.ogg",
+
+  "animation" : "peglacidesklight.animation",
+  "animationParts" : {
+    "bg" : "peglacidesklight.png",
+    "fg" : "peglacidesklightlit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/oillantern_on.ogg" ],
+      "off" : [ "/sfx/objects/oillantern_off.ogg" ]
+    }
+  },
+  "animationPosition" : [-8, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

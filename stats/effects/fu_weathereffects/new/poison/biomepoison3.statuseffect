@@ -1,0 +1,50 @@
+{
+	"name" : "biomepoison3",
+
+	"effectConfig" : {
+		"resistanceTypes" : {
+			"poisonResistance" : 1.0
+		},
+		"resistanceThreshold" : 0.6,
+		"immunityStats" : [
+			"poisongasImmunity",
+			"gasImmunity"
+		],
+
+		"healthDrain" : 3,
+		"hungerDrain" : 0,
+		"energyDrain" : 0,
+		"speedPenalty" : 0.8,
+		"jumpPenalty" : 0.8,
+
+		"debuffRate" : 3,
+		"debuffStartDelay" : 20,
+		"debuffs" : {
+			"powerMultiplier" : {
+				"type" : "absolute",
+				"amount" : -0.07,
+				"cap" : 0.05
+			}
+		},
+
+		"modifiers" : {
+			"windy" : 1.2
+		},
+
+		"messages" : {
+			"intro" : "ffbiomepoison",
+			"windy" : "ffbiomepoisonwind"
+		},
+
+		"configPath" : "/stats/effects/fu_weathereffects/new/poison/biomepoison3.statuseffect"
+	},
+	"defaultDuration" : 20,
+
+	"scripts" : [
+		"poisonweathernew.lua"
+	],
+
+	"animationConfig" : "poisonweathernew.animation",
+	"label" : "Extreme Poison (Resist: ^green;Poison^reset;)",
+	"icon" : "/interface/statuses/poison3.png"
+}

@@ -1,0 +1,51 @@
+{
+  "itemName" : "curvedagger",
+  "price" : 1200,
+  "maxStack" : 1,
+  "level" : 4,
+  "rarity" : "uncommon",
+  "description" : "Charged plasma-laced dagger. Handy, that.
+^cyan;Inflicts Burning^reset;",
+  "shortdescription" : "Breach Knife",
+  "tooltipKind" : "sword2",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "weaponType" : "Plasma",
+  "itemTags" : ["weapon","melee","dagger","plasma", "upgradeableWeapon","electric"],
+  "inventoryIcon" : "curvedagger_sacre.png",
+  "animation" : "daggercomboglow.animation",
+  "animationParts" : {
+    "blade" : "curvedagger_sacre.png",
+    "bladefullbright" : "curvedaggerfullbright.png",
+    "handle" : ""
+  },
+
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "swoosh" : { "properties" : {"offset" : [1, 2]}}
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "daggercombo",
+  "primaryAbility" : {
+    "fireTime" : 0.45,
+    "baseDps" : 5.5,
+    "damageConfig" : {
+      "damageSourceKind" : "electricdagger",
+      "knockback" : 10,
+       "statusEffects" : [ "burning" ]
+    }
+  },
+  "critChance" : 3,
+  "critBonus" : 3,
+  "stunChance" : 50,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

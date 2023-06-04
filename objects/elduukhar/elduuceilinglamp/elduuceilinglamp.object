@@ -1,0 +1,46 @@
+{
+  "objectName" : "elduuceilinglamp",
+  "colonyTags" : ["elduukhar", "light"],
+  "rarity" : "uncommon",
+  "category" : "light",
+  "lightColor" : [238, 255, 186],
+  "price" : 160,
+  "description" : "A ceiling light featuring a floating crystal.",
+  "shortdescription" : "Crystal Ceiling Lamp",
+  "race" : "elduukhar",
+
+  "apexDescription" : "This light doesn't seem practical.",
+  "avianDescription" : "A pretty light.",
+  "floranDescription" : "Light isss bright, isss pretty.",
+  "glitchDescription" : "Happy. This light is beautiful.",
+  "humanDescription" : "A pretty light.",
+  "hylotlDescription" : "A pretty light, made for form more than function.",
+  "novakidDescription" : "A mighty fancy light.",
+
+  "inventoryIcon" : "elduuceilinglampicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "elduuceilinglamp.png:<color>.<frame>", "fullbright" : true }, { "image" : "elduuceilinglamplit.png:<color>.<frame>" } ],
+      "imagePosition" : [0, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "elduuceilinglamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : true,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

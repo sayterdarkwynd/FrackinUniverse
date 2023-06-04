@@ -1,0 +1,57 @@
+{
+  "objectName" : "psionicbench",
+  "colonyTags" : ["combat","madness","psionics"],
+  "printable" : false,
+  "rarity" : "rare",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/psionicbench.config",
+    "filter" : [ "psibench" ],
+      "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : " ",
+        "subtitle" : " ",
+        "icon" : {"file" : ""}
+      },
+      "lblTitle" : {"value" : " ^#ffea00;Psionics Table"},
+      "lblSubTitle" : {"value" : " ^#dddddd;Create psionic weapons and gear."}
+    }
+  },
+
+  "category" : "crafting",
+  "price" : 2400,
+
+  "description" : "Create psionic weapons and gear.",
+  "shortdescription" : "^orange;Psionics Table^reset;",
+  "race" : "generic",
+
+  "inventoryIcon" : "psionicbench.png",
+  "orientations" : [
+     {
+      "imageLayers" : [ { "image" : "psionicbench.png:<color>.<frame>", "fullbright" : true }, { "image" : "psionicbenchfullbright.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+      "animationParts" : {
+          "samplingarrayanim" : "psioniclab.png"
+        },
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 2,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "psionicbench.png:<color>.<frame>", "fullbright" : true }, { "image" : "psionicbenchfullbright.png:<color>.<frame>" } ],
+      "direction" : "right",
+      "animationParts" : {
+          "samplingarrayanim" : "psioniclab.png"
+        },
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 2,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+
+  ]
+}

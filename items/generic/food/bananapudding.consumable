@@ -1,0 +1,20 @@
+{
+  "itemName" : "bananapudding",
+  "rarity" : "rare",
+  "price" : 125,
+  "category" : "preparedFood",
+  "inventoryIcon" : "bananapudding.png",
+  "description" : "Sweet, creamy and delicious.\n^cyan;+^white;10% ^cyan;Crit Chance ^gray;(^white;1m^gray;)^reset; \n^orange;Type: Fruit Dairy Dessert^reset;",
+  "shortdescription" : "Banana Pudding",
+  "effects" : [ [
+  { "effect": "critchance2" },
+  { "effect": "fruit_dairy_dessert" }
+  ] ],
+  "foodValue" : 40,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 10,
+  "blockingEffects" : [ "wellfed" ]
+}

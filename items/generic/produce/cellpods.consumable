@@ -1,19 +1,19 @@
 {
-  "itemName" : "cellpods",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "cellpods.png",
-  "description" : "Squishy, delicious meat sacs that heal you up.",
-  "shortdescription" : "Cell Pods",
-   "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      "regeneration2"
-    ] ]
+	"itemName": "cellpods",
+	"category": "food",
+	"inventoryIcon": "cellpods.png",
+	"rarity": "Common",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Heal 40% HP^reset;: 1m",
+	"shortdescription": "Cell Pods",
+
+	"effects": [
+		[{
+			"effect": "regeneration2",
+			"duration": 60
+		}]
+	],
+	"blockingEffects": ["regeneration01"]
 }

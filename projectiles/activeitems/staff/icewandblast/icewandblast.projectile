@@ -1,0 +1,65 @@
+{
+  "projectileName" : "icewandblast",
+  "physics" : "default",
+  "timeToLive" : 2,
+  "image" : "icewandblast.png",
+  "animationCycle" : 0.2,
+  "lightColor" : [12, 32, 80],
+  "frameNumber" : 1,
+  "speed" : 0,
+  "power" : 30,
+  "damageKind" : "ice",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "freezefu" ],
+  "fullbright" : true,
+  "emitters" : [ "iceshockwave" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/iceexplosion2/iceexplosion2.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/ice_barrier_kill.ogg"
+      ]
+    },
+    {
+      "action" : "projectile",
+      "type" : "icebouncer",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.33,
+      "angleAdjust" : -90
+    },
+    {
+      "action" : "loop",
+      "count" : 5,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "icethrowertrail",
+          "time" : 0.1,
+          "repeat" : true
+        },
+        {
+          "action" : "particle",
+          "specification" : "icethrowertrail",
+          "time" : 0.1,
+          "repeat" : true
+        }
+      ]
+    }
+  ],
+
+  "bounces" : 5,
+
+  "scripts" : [ "/projectiles/activeitems/staff/icewandblast/icewandblast.lua" ],
+
+  "triggerSpeed" : 80,
+
+  "controlRotation" : {
+    "maxSpeed" : 15,
+    "controlForce" : 1000,
+    "friction" : 10
+  }
+}

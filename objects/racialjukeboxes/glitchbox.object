@@ -1,0 +1,55 @@
+{
+	"objectName" : "glitchbox",
+	"colonyTags" : ["glitch", "musical"],
+	"rarity" : "Common",
+	"category" : "decorative",
+	"description" : "A music player, for playing music.",
+	"shortdescription" : "Glitch Music Player",
+	"race" : "generic",
+
+	"inventoryIcon" : "glitchboxicon.png",
+	"orientations" : [
+		{
+			"image" : "glitchbox.png",
+			"imagePosition" : [-12, 0],
+			"animationPosition" : [-12, 0],
+			"animationParts" : {
+				"bg" : "glitchbox.png",
+				"fg" : "glitchboxlit.png"
+			},
+			"direction" : "left",
+			"flipImages" : true,
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		},
+		{
+			"image" : "glitchbox.png",
+			"imagePosition" : [-12, 0],
+			"animationPosition" : [-12, 0],
+			"animationParts" : {
+				"bg" : "glitchbox.png",
+				"fg" : "glitchboxlit.png"
+			},
+			"direction" : "right",
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		}
+	],
+
+	"animation" : "racialmusicbox.animation",
+	"animationParts" : {
+		"bg" : "glitchbox.png",
+		"fg" : "glitchboxlit.png"
+	},
+	"animationPosition" : [-8, 0],
+	"interactAction" : "ScriptPane",
+	"interactData" : "/interface/scripted/fm_musicplayer/fm_musicplayer.config",
+
+	"inputNodes" : [ [-1, 0] ],
+	"outputNodes" : [ [1, 0] ],
+
+	"scripts" : [ "/objects/generic/fm_musicplayer/fm_musicplayer.lua"],
+	"scriptDelta" : 7,
+
+	"musicRadius" : 30
+}

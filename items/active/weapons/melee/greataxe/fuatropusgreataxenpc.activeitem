@@ -1,0 +1,57 @@
+{
+  "itemName" : "fuatropusgreataxenpc",
+  "price" : 600,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A revolting bio-weapon.
+^cyan;Inflicts Poison^reset;",
+  "shortdescription" : "Fleshweave Greataxe",
+  "tooltipKind" : "hammer",
+  "category" : "greataxe",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","greataxe", "upgradeableWeapon","atropus","bioweapon"],
+
+  "inventoryIcon" : "fuatropusgreataxe.png",
+  //"collectablesOnPickup" : { "fu_weapongreataxe" : "fuatropusgreataxe" },
+  "animation" : "/items/active/weapons/melee/greataxe/greataxe.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "fuatropusgreataxe.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ]
+    },
+    "animatedParts" : {
+      "parts" : {
+        "blade" : { "properties" : {"offset" : [0, 0.5]}},
+        "swoosh" : { "properties" : {"offset" : [0, 2]}}
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+  "scriptDelta" : 2,
+
+  "elementalType" : "bioweapon",
+
+  "primaryAbilityType" : "greataxesmash",
+  "primaryAbility" : {
+    "fireTime" : 0.45,
+    "baseDps" : 11.5,
+    "damageConfig" : {
+      "statusEffects" : [ "weakpoison" ],
+      "damageSourceKind": "bioweaponbroadsword"
+    }
+  },
+
+  "palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
+
+  "altAbilityType" : "fusuperflipslash",
+  "critChance" : 3,
+  "critBonus" : 5,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "stunChance" : 8
+}

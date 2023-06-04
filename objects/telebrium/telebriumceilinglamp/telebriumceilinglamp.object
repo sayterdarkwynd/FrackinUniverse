@@ -1,0 +1,66 @@
+{
+  "objectName" : "telebriumceilinglamp",
+  "colonyTags" : ["telebrium", "light"],
+  "rarity" : "uncommon",
+  "category" : "light",
+  "lightColor" : [34, 255, 183],
+  "price" : 300,
+  "description" : "A ceiling lamp made from Telebrium.",
+  "shortdescription" : "Telebrium Ceiling Lamp",
+  "race" : "generic",
+
+  "apexDescription" : "An intricately designed light.",
+  "avianDescription" : "This lamp is oddly unsettling.",
+  "floranDescription" : "It'sss green like Floran.",
+  "glitchDescription" : "Curious. An intricate set of drawers.",
+  "humanDescription" : "This feels like it was made by an ancient race.",
+  "hylotlDescription" : "The design unsettles me somehow.",
+  "novakidDescription" : "It's mighty fancy.",
+
+  "inventoryIcon" : "telebriumceilinglampicon.png",
+  "orientations" : [
+    {
+      "image" : "telebriumceilinglamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "telebriumceilinglamp.png",
+        "fg" : "telebriumceilinglamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "image" : "telebriumceilinglamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "telebriumceilinglamp.png",
+        "fg" : "telebriumceilinglamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "telebriumceilinglamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : true,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

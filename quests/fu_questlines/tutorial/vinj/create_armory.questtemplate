@@ -1,0 +1,36 @@
+{
+  "id" : "create_armory",
+  "prerequisites" : [ "create_matterassembler" ],
+  "title" : "Armorworks",
+  "text" : "With an ^orange;Armorworks^reset; you can fashion weapons and armor. Upgraded, it provides tons of variety. Try building an ^orange;Armorworks^reset; now. You'll need to ^orange;Research^reset; into ^orange;Armor and Weapons^reset;.",
+  "completionText" : "Don't forget to upgrade this station whenever you have the resources to do so. It is absolutely worth the effort.",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "ironore", 24 ],[ "copperore", 5 ] ] ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+
+
+    "requireTurnIn" : false,
+
+    "turnInDescription" : "Bring the ^green;Armorworks^reset; to me at the ^orange;Science Outpost^reset;",
+
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "armory",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

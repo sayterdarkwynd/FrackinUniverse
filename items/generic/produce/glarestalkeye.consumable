@@ -1,19 +1,38 @@
 {
-  "itemName" : "glarestalkeye",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "glarestalkeye.png",
-  "description" : "Grants 40% damage boost. Immune to insanity.",
-  "shortdescription" : "Glarestalk Eye",
-   "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 5,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      "damagebonus6", "insanityimmunity"
-    ] ]
+	"itemName": "glarestalkeye",
+	"inventoryIcon": "glarestalkeye.png",
+	"category": "food",
+	"rarity": "Rare",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Damage x1.3^reset;: 1m\n^yellow;^reset;^cyan;Immune^reset;: Insanity: 3m",
+	"shortdescription": "Glarestalk Eye",
+
+	"effects": [
+		[{
+				"effect": "rage30",
+				"duration": 60
+			},
+			{
+				"effect": "insanityimmunity",
+				"duration": 180
+			}
+		]
+	],
+	"blockingEffects": [
+		"rage",
+		"rage_base",
+		"rage20fu",
+		"rage50",
+		"rage60",
+		"rage75",
+		"rage100",
+		"damagebonus01",
+		"damagebonus2",
+		"damagebonus3",
+		"damagebonus6",
+		"damagebonus4",
+		"damagebonus5"
+	]
 }

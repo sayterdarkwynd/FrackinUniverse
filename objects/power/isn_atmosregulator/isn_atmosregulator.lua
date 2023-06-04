@@ -1,17 +1,11 @@
-function init(virtual)
-	if virtual == true then return end
-end
+require "/scripts/effectUtil.lua"
 
 function update(dt)
-	if isn_hasRequiredPower() == false then
+	if power.consume(config.getParameter('isn_requiredPower')) then
+		animator.setAnimationState("switchState", "on")
+		effectUtil.effectAllInRange("isn_atmosprotection",500)
+	else
 		animator.setAnimationState("switchState", "off")
-		return
 	end
-	animator.setAnimationState("switchState", "on")
-	
-	--local targetlist = world.playerQuery(entity.position(),500)
-	--for key, value in pairs(targetlist) do
-	--	world.spawnProjectile("isn_atmosprojectile",world.entityPosition(value))
-	--end
-	isn_projectileAllInRange("isn_atmosprojectile",500)
+	power.update(dt)
 end

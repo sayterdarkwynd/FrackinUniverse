@@ -1,0 +1,99 @@
+{
+  "objectName" : "nightarstove",
+  "colonyTags" : ["cooking","light","nightar"],
+  "printable" : true,
+  "price" : 300,
+  "rarity" : "legendary",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/craftingcampfire.config",
+    "filter" : [ "campfire","craftingfood" ]
+  },
+  "description" : "An advanced cooking device, with controllable heat for perfect cooking.",
+  "shortdescription" : "Nightar Cooker",
+  "race" : "nightar",
+  "category" : "crafting",
+
+  "maximumLiquidLevel" : 0.2,
+
+  "lightColor" : [125, 143, 179],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "particleEmitter" : {
+    "emissionRate" : 1.0,
+    "emissionVariance" : 0.5,
+
+    "particle" : {
+      "type" : "ember",
+      "position" : [0.5, 0.3],
+      "size" : 1.0,
+      "color" : [255, 100, 0, 255],
+      "light" : [150, 50, 50],
+      "fade" : 0.9,
+      "initialVelocity" : [0.0, 5.0],
+      "finalVelocity" : [0.0, 3.0],
+      "approach" : [0, 20],
+      "timeToLive" : 2,
+      "layer" : "middle"
+    },
+
+    "particleVariance" : {
+      "initialVelocity" : [0.5, 2.0],
+      "position" : [0.4, 0]
+    }
+  },
+
+  "inventoryIcon" : "nightarstoveicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "nightarstove.png:<color>.<frame>", "fullbright" : true }, { "image" : "nightarstovelit.png:<color>.<frame>"} ],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 0.8,
+
+      "spaces" : [ [0, 0], [0, 1], [1, 0], [1, 1] ],
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "nightarstove.png:<color>.<frame>", "fullbright" : true }, { "image" : "nightarstovelit.png:<color>.<frame>"} ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 0.58,
+
+      "spaces" : [ [0, 0], [0, 1], [1, 0], [1, 1] ],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/campfire.ogg",
+  "soundEffectRangeMultiplier" : 0.5,
+
+  "statusEffects" : [ ],
+
+  "scripts" : [ "/scripts/npcToyObject.lua"],
+  "npcToy" : {
+    "influence" : [
+      "campfire",
+      "campfire"
+    ],
+    "defaultReactions" : {
+      "campfire" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-2.5, 0.0],
+    "preciseStandPositionRight" : [2.5, 0.0],
+    "maxNpcs" : 1
+  }
+}

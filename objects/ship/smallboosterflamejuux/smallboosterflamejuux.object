@@ -1,0 +1,55 @@
+{
+  "objectName" : "smallboosterflamejuux",
+  "colonyTags" : [],
+  "scannable" : false,
+  "rarity" : "Common",
+  "description" : "I wonder how quickly that would cook a burger.",
+  "shortdescription" : "Small Booster Flame",
+  "race" : "generic",
+
+  "apexDescription" : "A booster. These have been known to malfunction and explode.",
+  "avianDescription" : "A booster, the wings of a ship.",
+  "floranDescription" : "Ssscary fire.",
+  "glitchDescription" : "Analyse. Temperature too high to measure.",
+  "humanDescription" : "This thing eats through fuel.",
+  "hylotlDescription" : "Propulsion.",
+
+  "category" : "light",
+  "lightColor" : [237, 205, 116],
+  "pointLight" : true,
+  "flickerDistance" : 0.2,
+  "flickerStrength" : 0.05,
+  "flickerTiming" : 4,
+
+  "inventoryIcon" : "torchicon.png",
+  "orientations" : [
+    {
+      "image" : "smallboosterflamejuux.png:on.1",
+      "imagePosition" : [-14, -14],
+      "fullbright" : true,
+
+      "collision" : "solid",
+      "spaces" : [ [-2, 1], [-2, 0], [-2, -1], [-1, 1], [-1, 0], [-1, -1], [0, 1], [0, 0], [0, -1], [1, 1], [1, 0], [1, -1] ],
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "animation" : "/objects/ship/boosters/boosterflame.animation",
+  "animationParts" : {
+    "booster" : "smallboosterflamejuux.png"
+  },
+  "animationPosition" : [-14, -14],
+
+  "soundEffect" : "/sfx/objects/smallboosterflame.ogg",
+  "soundEffectRangeMultiplier" : 0.5,
+
+  "scripts" : ["/objects/ship/boosters/boosterflame.lua"],
+  "scriptDelta" : 10,
+
+  "flyingBoosterStates" : {
+    "none" : "off",
+    "disembarking" : "turnOn",
+    "warp" : "turnOff",
+    "arriving" : "turnOn"
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "type" : "lobster",
+  "shortdescription" : "Lobster",
+  "description" : "An underwater arachnid. Delicious meat.",
+
+  "categories" : [ "lobster" ],
+  "parts" : [ "body" ],
+
+  "animation" : "lobster.animation",
+  "reversed" : true,
+
+  "dropPools" : [ "lobsterLoot" ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/walkers/lobster/behavior.lua",
+      "/monsters/flocking.lua",
+      "/scripts/sensors.lua",
+      "/scripts/stateMachine.lua",
+      "/scripts/util.lua",
+      "/scripts/vec2.lua"
+    ],
+
+    "metaBoundBox" : [-1.625, -1.25, 1.0, 0.5],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.625, -1.25], [1.0, -1.25], [1.0, 0.5], [-1.625, 0.5] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 8,
+      "runSpeed" : 12,
+      "jumpSpeed" : 5,
+      "flySpeed" : 15,
+      "airFriction" : 0.25,
+      "airForce" : 50.0
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathPoof",
+
+    "touchDamage" : {
+      "poly" : [ [-1.625, -1.25], [1.0, -1.25], [1.0, 0.5], [-1.625, 0.5] ],
+      "damage" : 4,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "poisondagger",
+      "knockback" : 10,
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 16
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : -0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+
+    "collisionSensors" : [ [2.0, 0.0] ],
+
+    "nearGroundSensor" : [ [0.0, -2.25] ],
+    "midGroundSensor" : [ [0.0, -5.0] ],
+
+    "targetNoticeDistance" : 30,
+
+    "idleTimeRange" : [1.0, 3.0],
+    "moveTimeRange" : [2.5, 5.0],
+
+    "attackTargetHoldTime" : 5.0,
+    "attackRange" : [0.5, 3.0],
+    "attackPauseTime" : 0.75,
+
+    "flockRegion" : [ [-8.0, -1.0], [8.0, 1.0] ],
+    "flockMovementWeight" : 3.0,
+    "flockLeaderInfluence" : 3.0,
+    "flockSeparationDistance" : 2.0,
+    "flockSeparationFactor" : 0.5,
+    "flockAlignmentDistance" : 0.5,
+    "flockAlignmentFactor" : 0.25,
+    "flockCohesionFactor" : 0.1,
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
+  }
+}

@@ -1,26 +1,23 @@
 {
-  "itemName" : "vextonguestamen",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "vextonguestamen.png",
-  "description" : "Low rege. Also immune to proto-poison.",
-  "shortdescription" : "Vextongue Stamen",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-      {
-        "effect" : "regeneration2",
-	"duration" : 24
-      },
-      "protoimmunity"
-    ] ],
-  "blockingEffects" : [
-    "regeneration2","protoimmunity"
-  ]
+	"itemName": "vextonguestamen",
+	"inventoryIcon": "vextonguestamen.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 5,
+	"description": "^yellow;^reset;^cyan;Immune^reset;: Proto-Poison: 2m\n^yellow;^reset;^cyan;Heal 60% HP^reset;: 90s",
+	"shortdescription": "Vextongue Stamen",
+	"tooltipKind": "food",
+	"effects": [
+		[
+			{
+				"effect": "regeneration2",
+				"duration": 90
+			},
+			{
+				"effect": "protoimmunity",
+				"duration": 120
+			}
+		]
+	],
+	"blockingEffects": ["regeneration01"]
 }

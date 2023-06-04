@@ -1,0 +1,106 @@
+{
+  "itemName" : "reaperassault",
+  "price" : 600,
+  "inventoryIcon" : "reaperassault.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Fires super-cold dark matter infused rounds.
+^cyan;Spawns defensive drones^reset;",
+  "shortdescription" : "Tk-12 Akasha",
+  "category" : "assaultRifle",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Assault Rifle",
+  "itemTags" : ["weapon","ranged","assaultrifle", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "reaperassault.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlepurple.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/dkmarauder1.wav" ]
+    }
+  },
+
+  "baseOffset" : [0.8, 0.3],
+  "muzzleOffset" : [1.9, 0.1],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "hoarfrost",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.12,
+    "baseDps" : 8.7,
+    "energyUsage" : 20,
+    "inaccuracy" : 0.03,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "iceplasma",
+    "projectileParameters" : {
+      "speed" : 97,
+      "knockback" : 2,
+      "damageKind" : "hoarfrost",
+	  "statusEffects" : [ "slow" ]
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "smallfirecloud1", "offset" : [0.0, 0.0] },
+          { "particle" : "smallfirecloud2", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+
+  "critChance" : 1,
+  "critBonus" : 4,
+  "isAmmoBased" : 1,
+  "magazineSize" : 32,
+  "reloadTime" : 1.2,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 400,
+
+  "altAbilityType" : "fudronelauncherakasha",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

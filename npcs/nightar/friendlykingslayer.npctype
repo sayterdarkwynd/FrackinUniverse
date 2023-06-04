@@ -1,0 +1,122 @@
+{
+  "type" : "friendlykingslayer",
+  "baseType" : "friendlyguard",
+
+  "keepAlive" : true,
+
+  "damageTeamType" : "assistant",
+  "damageTeam" : 1,
+
+  "persistent" : true,
+
+  "identity" : {
+    "name" : "KingSlayer",
+    "gender" : "male",
+    "race" : "nightar"
+  },
+
+  "dropPools" : [ "money" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+
+      "attack" : {
+        "default" : {
+          "default" : [
+           "I guard the path set by the Matriarch."
+          ]
+        }
+      },
+      "reattack" : {
+        "default" : {
+          "default" : [
+            "Face my wrath, you wretch!"
+          ]
+        }
+      },
+      "killedTarget" : {
+        "default" : {
+          "default" : [
+            "The foe is slain. Thank you for your assistance, my friend. Until we meet again."
+          ]
+        }
+      },
+      "lostTarget" : {
+        "default" : {
+          "default" : [
+            "There is no where to hide."
+          ]
+        }
+      },
+      "outOfSight" : {
+        "default" : {
+          "default" : [
+            "It is pointless to hide!"
+          ]
+        }
+      },
+      "cheerOn" : {
+        "default" : {
+          "default" : [
+            "Show them no quarter!"
+          ]
+        }
+      },
+      "cantReach" : {
+        "default" : {
+          "default" : [
+            "The darkness will turn on you...!"
+          ]
+        }
+      }
+    },
+    "chatSounds" : {
+      "default" : {
+        "male" : [
+          "/sfx/humanoid/human_chatter_male1.ogg",
+          "/sfx/humanoid/human_chatter_male2.ogg",
+          "/sfx/humanoid/human_chatter_male3.ogg"
+        ]
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "fukingslayerface", "parameters" : { "colorIndex" : 1 } } ],
+            "chest" : [ { "name" : "fukingslayerchest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "fukingslayerpants", "parameters" : { "colorIndex" : 1 } } ],
+	          "back" : [ { "name" : "flexcape", "parameters" : { "colorIndex" : 1 } } ],
+            "primary" : [ "nightarshortsword" ],
+            "alt" : [ "nightardagger" ],
+            "sheathedprimary" : [ "nightarshortsword" ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 200.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 1.0
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "fireStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+      "lavaImmunity" : {
+        "baseValue" : 1.0
+      }
+    },
+	"statusProperties" : {
+      "effectDirectives" : "?replace=FEFFFFFF=FFFFFFFF?replace=9bd4ffFF=8af062FF?replace=31a6ffFF=40bf21FF"
+    }
+  }
+}

@@ -2,15 +2,16 @@
   "itemName" : "druidstaff",
   "price" : 1440,
   "maxStack" : 1,
-  "level" : 3,
-  "rarity" : "rare",
-  "description" : "Fashioned from bones and petrified wood.",
+  "level" : 4,
+  "rarity" : "Uncommon",
+  "description" : "Can ^yellow;slow^reset;, ^blue;electrify^reset; and ^green;poison^reset; foes.
+^cyan;Floran^reset;",
   "shortdescription" : "Druid Staff",
   "category" : "staff",
   "twoHanded" : true,
-  "itemTags" : ["weapon","staff"],
+  "itemTags" : ["weapon","staff","upgradeableWeapon","floran"],
   "tooltipKind" : "staff",
-
+ // "learnBlueprintsOnPickup" : [ "druidstaff2" ],
   "animation" : "/items/active/weapons/staff/staff.animation",
   "animationParts" : {
     "staff" : "druidstaff.png",
@@ -20,23 +21,19 @@
   "animationCustom" : {
     "lights" : {
       "glow" : {
-        "color" : [185, 24, 42]
+        "color" : [55, 124, 22]
       }
     },
     "particleEmitters" : {
-      "physicalcharge" : {
+      "poisoncharge" : {
         "active" : false,
         "transformationGroups" : ["weapon"],
-        "emissionRate" : 10,
+        "emissionRate" : 20,
         "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
         "particles" : [
-          {"particle" : "kluexstaff"}
+          {"particle" : "druidstaff"}
         ]
       }
-    },
-
-    "sounds" : {
-      "physicalactivate" : ["/sfx/npc/boss/cultistboss_recharge.ogg"]
     }
   },
 
@@ -54,7 +51,7 @@
       "allowFlip" : true
     },
     "charge" : {
-      "duration" : 1.1,
+      "duration" : 0.6,
       "armRotation" : 20,
       "weaponRotation" : -20,
       "twoHanded" : true,
@@ -80,7 +77,7 @@
       "allowFlip" : true
     },
     "cooldown" : {
-      "duration" : 0.5,
+      "duration" : 0.8,
       "armRotation" : -45,
       "weaponRotation" : 0,
       "twoHanded" : true,
@@ -90,14 +87,13 @@
     }
   },
 
-  "elementalType" : "physical",
+  "elementalType" : "poison",
 
-  "primaryAbilityType" : "guidedbolt",
+  "primaryAbilityType" : "druidwand",
   "primaryAbility" : {},
 
-  "altAbilityType" : "plasmabladebarrage",
+  "altAbilityType" : "healingzone",
   "altAbility" : {},
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
-

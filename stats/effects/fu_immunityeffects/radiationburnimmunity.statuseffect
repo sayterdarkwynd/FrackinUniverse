@@ -1,9 +1,13 @@
 {
-  "name" : "radiationburnimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "radiationburnimmunity.lua"
-  ]
+	"name": "radiationburnimmunity",
+	"effectConfig": {
+		"stats": [{
+			"stat": "radiationburnImmunity",
+			"amount": 1
+		}]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

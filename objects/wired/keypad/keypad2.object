@@ -1,0 +1,46 @@
+{
+  "objectName" : "keypad2",
+  "colonyTags" : ["electronic","wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A numeric security keypad that requires a specific combination.",
+  "shortdescription" : "Numeric Keypad",
+  "race" : "generic",
+  "category":"wire",
+
+  // "apexDescription" : "-todo-",
+  // "avianDescription" : "-todo-",
+  // "floranDescription" : "-todo-",
+  // "glitchDescription" : "-todo-",
+  // "humanDescription" : "-todo-",
+  // "hylotlDescription" : "-todo-",
+  // "novakidDescription" : "-todo-",
+
+  "inventoryIcon" : "keypad2icon.png",
+  "orientations" : [
+    {
+      "image" : "keypad2.png",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "health" : 5,
+  "rooting" : true,
+
+  "outputNodes" : [ [0, 0] ],
+
+  "scripts" : ["/objects/wired/keypad/keypad.lua"],
+  "scriptDelta" : 30,
+
+  "interactData" : {
+    "baseConfig" : "/interface/scripted/keypad2/keypadgui.config"
+  },
+
+  "combinationLength" : 4,
+  "combination" : null
+}

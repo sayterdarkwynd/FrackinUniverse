@@ -1,22 +1,23 @@
 {
   "itemName" : "warcleaver",
   "price" : 1500,
-  "level" : 4,
+  "level" : 5,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "A wonderful piece of bone honed into a blade.",
-  "shortdescription" : "Bone War Cleaver",
-  "tooltipKind" : "sword",
+  "description" : "A curious mix of organic and metallic.",
+  "shortdescription" : "Ferozium Cleaver",
+  "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword"],
+  "itemTags" : ["weapon","melee","broadsword", "upgradeableWeapon"],
 
   "inventoryIcon" : "warcleaver.png",
-
-  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  //"collectablesOnPickup" : { "fu_weaponbroadsword" : "warcleaver" },
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "warcleaver.png"
+    "blade" : "warcleaver.png",
+    "bladefullbright" : "warcleaverfullbright.png"
   },
   "animationCustom" : { },
 
@@ -32,5 +33,7 @@
 
   "altAbilityType" : "parry",
 
+  "critChance" : 3,
+  "critBonus" : 5,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

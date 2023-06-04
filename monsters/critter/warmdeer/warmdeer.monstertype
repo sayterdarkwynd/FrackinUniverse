@@ -1,0 +1,267 @@
+{
+  "type" : "warmdeer",
+  "shortdescription" : "Meliope",
+  "description" : "A majestic deer-like creature.",
+
+  "categories" : [ "warmdeer" ],
+  "parts" : [ "body" ],
+
+  "animation" : "warmdeer.animation",
+
+  "dropPools" : [
+    {
+      "default" : "empty",
+      "bow" : "huntingquadruped",
+      "brain" : "brain"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [ "/monsters/monster.lua" ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : false,
+
+      "queryTargets" : true,
+      "targetQueryRange" : 14,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 40,
+      "targetOutOfSightTime" : 4.5,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [],
+
+      "periodicActions" : [
+        {
+          "name" : "action-hop",
+          "cooldown" : 5.0,
+          "parameters" : {
+            "verticalSpeed" : 30,
+            "horizontalSpeed" : 20,
+            "hopSequence" : 1,
+            "timeBetweenHops" : 0.0,
+            "windupTime" : 0.1,
+            "landTime" : 0.1,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 45
+          }
+        }
+      ],
+
+      "approachActions" : [
+	    {
+          "name" : "thea-fleetarget",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 16,
+	    "jumpXVelocity": 25,
+	    "jumpYVelocity": 35,
+            "moveState" : "run",
+            "minXRange" : 25,
+            "run" : true
+          }
+        }
+      ],
+
+	  "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 16,
+	    "jumpXVelocity": 25,
+	    "jumpYVelocity": 35,
+            "moveState" : "walk",
+            "minXRange" : 10,
+            "run" : false
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 16,
+	    "jumpXVelocity": 25,
+	    "jumpYVelocity": 35,
+            "moveState" : "run",
+            "minXRange" : 10,
+            "run" : true
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "action-hop",
+          "cooldown" : 3.0,
+          "parameters" : {
+            "verticalSpeed" : 30,
+            "horizontalSpeed" : 20,
+            "hopSequence" : 1,
+            "timeBetweenHops" : 0.0,
+            "windupTime" : 0.1,
+            "landTime" : 0.1,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 45
+          }
+        },
+	    {
+          "name" : "wander-walk",
+          "cooldown" : 3.0,
+          "parameters" : {
+            "moveState" : "walk",
+            "wanderTime" : [2, 5]
+          }
+        },
+		{
+          "name" : "wander-walk",
+          "cooldown" : 8.0,
+          "parameters" : {
+            "moveState" : "run",
+            "wanderTime" : [0.5, 1],
+			"run": true
+          }
+        },
+		{
+          "name" : "action-animate",
+          "cooldown" : 12,
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "sound",
+            "animationTime" : 0.8
+          }
+        }
+      ]
+    },
+
+    "damageParts" : {
+      "body" : {
+        "damage" : 8,
+
+        "teamType" : "enemy",
+        "damageSourceKind" : "slash",
+        "knockback" : 20,
+        "statusEffects" : [ ]
+      }
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.75, 2], [2.5, 1], [2.5, -2.25], [0.75, -3.35], [-0.75, -3.35], [-2.5, -2.25], [-2.5, 1], [-0.75, 2]  ],
+      "damage" : 8,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.75, 2], [2.5, 1], [2.5, -2.25], [0.75, -3.35], [-0.75, -3.35], [-2.5, -2.25], [-2.5, 1], [-0.75, 2]  ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 6,
+      "runSpeed" : 20,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 80
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1
+        },
+	"iceslipImmunity" : {
+          "baseValue" : 1
+        },
+	"snowslowImmunity" : {
+          "baseValue" : 1
+        },
+	"liquidnitrogenImmunity" : {
+          "baseValue" : 1
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "capturedMonsterName" : "Meliope",
+    "nametagColor" : [64, 200, 255]
+  }
+}

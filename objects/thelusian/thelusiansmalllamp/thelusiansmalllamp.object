@@ -1,0 +1,40 @@
+{
+  "objectName" : "thelusiansmalllamp",
+  "colonyTags" : ["thelusian","light"],
+  "rarity" : "Common",
+  "description" : "This strange lamp emits a low green light.",
+  "shortdescription" : "Thelusian Lamp Bulb",
+  "race" : "apex",
+  "fullbright" : "true",
+
+  "category" : "light",
+  "price" : 45,
+  "lightColor" : [83, 153, 46],
+
+  "inventoryIcon" : "thelusiansmalllampicon.png",
+  "orientations" : [
+    {
+      "image" : "thelusiansmalllamp.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.3,
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "thelusiansmalllamp.png",
+    "fg" : "thelusiansmalllamplit.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ]
+}

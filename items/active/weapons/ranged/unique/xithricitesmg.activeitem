@@ -1,0 +1,100 @@
+{
+  "itemName" : "xithricitesmg",
+  "price" : 160,
+  "inventoryIcon" : "xithricitesmg.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Morse code except its cosmic bullets.
+^cyan;Cosmic blasts^reset;",
+    "shortdescription" : "Xithricite SMG",
+  "category" : "machinePistol",
+  "level" : 6,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","machinepistol", "energy", "upgradeableWeapon","xithricite"],
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "xithricitesmg.png",
+    "middlefullbright" : "xithricitesmgfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [-0.1075, 0.0625]
+		  }
+		}
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/marauder7.wav" ]
+    }
+  },
+
+  "baseOffset" : [-0.1075, 0.0625],
+  "muzzleOffset" : [1.1875, 0.375],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.08,
+    "baseDps" : 6.6,
+    "useEnergy" : true,
+    "energyUsage" : 25.5,
+    "inaccuracy" : 0.05,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+    "projectileType" : "xithshot",
+
+    "projectileParameters" : {
+      "knockback" : 3
+    },
+      "stances" : {
+        "idle" : {
+          "armRotation" : 0,
+          "weaponRotation" : 0,
+          "twoHanded" : false,
+
+          "allowRotate" : true,
+          "allowFlip" : true
+        },
+        "fire" : {
+          "duration" : 0,
+          "armRotation" : 4,
+          "weaponRotation" : 5,
+          "twoHanded" : false,
+
+          "allowRotate" : true,
+          "allowFlip" : true
+        },
+        "cooldown" : {
+          "duration" : 0.055,
+          "armRotation" : 4,
+          "weaponRotation" :5,
+          "twoHanded" : false,
+
+          "allowRotate" : false,
+          "allowFlip" : false
+        }
+    	  }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 6,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 200,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

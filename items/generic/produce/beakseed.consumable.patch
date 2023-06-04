@@ -1,0 +1,26 @@
+[
+	[
+		{
+			"op" : "add",
+			"path" : "/effects",
+			"value" : [ [ "plant_food" ] ]
+		},
+		{
+			"op" : "replace",
+			"path" : "/description",
+			"value" : "Beakseed. Mmm crunchy. ^green;Type: Vegetable^reset;"
+		}
+	],
+	[
+		{
+			"op" : "test",
+			"path" : "/maxStack"
+		},
+		{
+			"op" : "replace",
+			"path" : "/maxStack",
+			"value" : 20
+		}
+	],
+	[{"op":"test","path":"/learnBlueprintsOnPickup/0"},{"op":"remove","path":"/learnBlueprintsOnPickup/0"}]
+]

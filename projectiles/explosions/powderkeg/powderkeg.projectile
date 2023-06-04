@@ -1,26 +1,25 @@
 {
   "projectileName" : "powderkeg",
-  "image" : "powderkeg.png",
-  "animationCycle" : 0.01,
-  "level" : 4,
-  "frameNumber" : 5,
+  "physics" : "default",
+  "bounces" : -1,
   "speed" : 0,
-  "fallSpeed" : 0,
-  "animationLoops" : false,
-  "piercing" : true,
-  "flippable" : true,
-  "pointLight" : true,
-  "lightColor" : [168,175,155],
-  "universalDamage" : true,
-  "damageKind" : "default",
-  "timeToLive" : 0.01,
-  "knockback" : 60,
-  "knockbackDirectional" : true,
+  "damageKindImage" : "icon.png",
+  "image" : "powderkeg.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 5,
   "actionOnReap" : [
     {
       "action" : "config",
       "file" : "/projectiles/explosions/powderkeg/powderkeg.config"
-    }    
+    }
   ],
-  "power" : 12
+  "power" : 12,
+  "piercing" : true,
+  "damageKind" : "hidden",
+  "damageType" : "IgnoresDef",
+  "damagePoly" : [ [-5, -5], [-5, 5], [5, 5], [5, -5]  ],
+  "flippable" : true,
+  "damageTeam" : { "type" : "indiscriminate" },
+  "pointLight" : true,
+  "lightColor" : [168,175,155]
 }

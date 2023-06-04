@@ -3,14 +3,15 @@
   "price" : 1500,
   "level" : 4,
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Jagged and not-too-friendly.",
+  "rarity" : "rare",
+  "description" : "Jagged and not-too-friendly.
+^cyan;Inflicts Poison^reset;",
   "shortdescription" : "Coral Stingblade",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword"],
-
+  "itemTags" : ["weapon","melee","broadsword", "upgradeableWeapon","coral","poison"],
+  //"collectablesOnPickup" : { "fu_weaponbroadsword" : "coralstinger" },
   "inventoryIcon" : "coralstinger.png",
 
   "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
@@ -27,10 +28,14 @@
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
-    "baseDps" : 8.75
+    "baseDps" : 8.75,
+    "damageConfig" : {
+      "statusEffects" : [ "weakpoison" ]
+    }
   },
 
-  "altAbilityType" : "futravelingslash",
-
+  "altAbilityType" : "fuwaterslash",
+  "critChance" : 2,
+  "critBonus" : 3,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

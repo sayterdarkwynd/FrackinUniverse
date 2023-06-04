@@ -1,0 +1,43 @@
+{
+  "animatedParts": {
+    "stateTypes": {
+      "stage": {
+        "default": "rustic",
+        "states": {
+          "rustic": {},
+          "industrial": {
+            "frames": 4,
+            "cycle": 1,
+            "mode": "loop",
+            "properties": {}
+           }
+        }
+      }
+    },
+
+    "parts": {
+      "worktable": {
+        "properties": { "centered": true, "zLevel": 1 },
+        "partStates": {
+          "stage": {
+            "rustic"    : { "properties": { "image": "skathworktable1.png:<color>.<frame>" } },
+            "industrial": { "properties": { "image": "skathworktable2.png:<color>.<frame>" } }
+          }
+        }
+      }
+    }
+  },
+
+  "sounds": {
+    "fanfare": ["/sfx/cinematics/mission_unlock_event.ogg"]
+  },
+
+  "particleEmitters": {
+    "dust": {
+      "emissionRate": 0.0,
+      "burstCount": 10,
+      "offsetRegion": [-2, -2, 2, 2],
+      "particles": [{ "particle": "dust2" }]
+    }
+  }
+}

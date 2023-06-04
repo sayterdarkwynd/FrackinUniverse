@@ -1,0 +1,283 @@
+{
+  "kind" : "veluu",
+
+  "charCreationTooltip" : {
+      "title" : "Vel'uuish",
+      "subTitle" : "O3",
+      "description" : "A fractured race of sapient cats. Half are peace loving free-thinkers, while the rest are war-hungry monsters.
+
+  ^orange;Diet^reset;: Omnivore, can eat raw meat.
+
+^orange;Perks^reset;:
+  Health: x^green;1.05^reset;, Damage x^green;1.05^reset;
+  Gain ^green;13^reset;% Jump and ^green;6^reset;% Run Speed^reset;, Fall Damage x^green;0.8^reset;
+  ^green;Resist^reset;: +^cyan;15^reset;% Ice,+^cyan;5^reset;% Electric
+  ^cyan;Nightvision^reset;
+  Tech: ^green;Razor Claws^reset;
+  ^green;Immune^reset;: Jungle, Mud
+
+^orange;Environment^reset;:
+  ^green;Jungle, Primeval, Forest, Rainforest, Desert^reset;: Health x^green;1.1^reset;, Energy x^green;1.1^reset;
+  ^green;Barren, Sulphuric, Infernus^reset;: Health x^red;0.8^reset;, Energy x^red;0.8^reset;
+
+^orange;Weapons^reset;:
+  Fist Mastery: +^green;20^reset;%
+  Dagger Mastery: ^green;15^reset;%
+  Arm Cannon Mastery: +^green;15^reset;%
+
+^red;Weaknesses^reset;:
+  ^red;Resist^reset;: -^red;10^reset;% Fire, Poison, Radioactive, -^red;5^reset;% Physical"
+  },
+
+  "nameGen" : [ "/species/veluunamegen.config:names", "/species/veluunamegen.config:names" ],
+  "ouchNoises" : [ "/sfx/humanoid/veluuhurt_male.ogg", "/sfx/humanoid/veluuhurt_female.ogg" ],
+  "charGenTextLabels" : [ "Fur colour", "Hair", "Shirt", "Legwear", "Ears", "Hair colour", "Shirt colour", "Legwear colour", "VEL'UUISH", "Personality" ],
+  "skull" : "/humanoid/veluu/dead.png",
+  "effectDirectives" : "?replace=FEFFFFFF=C88FFCFF?replace=9bd4ffFF=8560FFFF?replace=31a6ffFF=6951E2FF",
+  "defaultBlueprints" : {
+    "tier1" : [
+
+// Empty Hands
+      { "item" : "flagfloran" },
+
+// Anvil
+      { "item" : "florantier1head" },
+      { "item" : "florantier1chest" },
+      { "item" : "florantier1pants" },
+      { "item" : "florantier2head" },
+      { "item" : "florantier2chest" },
+      { "item" : "florantier2pants" },
+      { "item" : "magnorbveluu" },
+      { "item" : "veluulongsword" },
+      { "item" : "fuveluushortsword" },
+      { "item" : "veluudagger" },
+      { "item" : "duskiline" },
+      { "item" : "veluupistol" },
+      { "item" : "armcannonveluu" },
+      { "item" : "armcannonveluubullet" },
+      { "item" : "armcannonveluupoison" },
+      { "item" : "armcannonveluufire" },
+      { "item" : "armcannonveluurocket" },
+      { "item" : "veluuclaws" },
+      { "item" : "veluurifle" },
+      { "item" : "florantier3head" },
+      { "item" : "florantier3chest" },
+      { "item" : "florantier3pants" },
+      { "item" : "florantier4head" },
+      { "item" : "florantier4chest" },
+      { "item" : "florantier4pants" },
+      { "item" : "florantier5ahead" },
+      { "item" : "florantier5achest" },
+      { "item" : "florantier5apants" },
+      { "item" : "florantier6ahead" },
+      { "item" : "florantier6achest" },
+      { "item" : "florantier6apants" },
+      { "item" : "florantier5mhead" },
+      { "item" : "florantier5mchest" },
+      { "item" : "florantier5mpants" },
+      { "item" : "florantier6mhead" },
+      { "item" : "florantier6mchest" },
+      { "item" : "florantier6mpants" },
+      { "item" : "florantier5shead" },
+      { "item" : "florantier5schest" },
+      { "item" : "florantier5spants" },
+      { "item" : "florantier6shead" },
+      { "item" : "florantier6schest" },
+      { "item" : "florantier6spants" },
+      { "item" : "floranstoragelocker" },
+      { "item" : "floranshipdoor" },
+      { "item" : "floranshiphatch" },
+      { "item" : "floranfurnivourchest" },
+      { "item" : "floranfurnivourlegs" },
+      { "item" : "floranhunterchest" },
+      { "item" : "floranhunterlegs" },
+      { "item" : "floranleafchest" },
+      { "item" : "floranleaflegs" },
+      { "item" : "floranpeltchest" },
+      { "item" : "floranpeltlegs" }
+    ]
+  },
+  "headOptionAsHairColor" : true,
+  "altOptionAsFacialMask" : true,
+  "hairColorAsBodySubColor" : true,
+  "bodyColorAsFacialMaskSubColor" : true,
+  "genders" : [
+    {
+      "name" : "male",
+      "image" : "/interface/title/male.png",
+      "characterImage" : "/interface/title/veluumale.png",
+      "hair" : [ "1", "2", "3", "4", "5", "6", "7","8", "9", "10", "11", "12", "13", "14", "15" ],
+      "shirt" : [ "floranfurnivourchest", "floranhunterchest", "floranleafchest", "floranpeltchest", "floransurvivalistchest", "protectorateshirtchest", "protectoratevestchest" ],
+      "pants" : [ "floranfurnivourlegs", "floranhunterlegs", "floranleaflegs", "floranpeltlegs", "floransurvivalistlegs" ],
+      "facialHairGroup" : "marking",
+      "facialHair" : [ "1" ],
+      "facialMaskGroup" : "ears",
+      "facialMask" : [ "1", "1clipping", "2", "2clipping", "3", "3clipping", "4", "4clipping", "5", "5clipping", "6", "6clipping", "7", "7clipping", "8", "8clipping", "9", "9clipping", "10", "10clipping", "11", "11clipping", "12", "12clipping" ]
+    },
+    {
+      "name" : "female",
+      "image" : "/interface/title/female.png",
+      "characterImage" : "/interface/title/veluufemale.png",
+      "hair" : [ "1", "2", "3", "4", "5", "6", "7","8", "9", "10", "11", "12", "13", "14", "15" ],
+      "shirt" : [ "floranfurnivourchest", "floranhunterchest", "floranleafchest", "floranpeltchest", "floransurvivalistchest", "protectorateshirtchest", "protectoratevestchest" ],
+      "pants" : [ "floranfurnivourlegs", "floranhunterlegs", "floranleaflegs", "floranpeltlegs", "floransurvivalistlegs" ],
+      "facialHairGroup" : "marking",
+      "facialHair" : [ "1" ],
+      "facialMaskGroup" : "ears",
+      "facialMask" : [ "1", "1clipping", "2", "2clipping", "3", "3clipping", "4", "4clipping", "5", "5clipping", "6", "6clipping", "7", "7clipping", "8", "8clipping", "9", "9clipping", "10", "10clipping", "11", "11clipping", "12", "12clipping" ]
+    }
+  ],
+  "bodyColor" : [
+    // Default     New      Default     New      Default     New      Default     New
+    // WHITE
+	{ "FFCA8A" : "ffffff", "E0975C" : "bec6c8", "A85636" : "989ea0", "6F2919" : "6f7578" },
+	// BLACK
+    { "FFCA8A" : "555555", "E0975C" : "424242", "A85636" : "303030", "6F2919" : "151515" },
+	// NEW CREAM
+    { "FFCA8A" : "ebcc8f", "E0975C" : "c4a568", "A85636" : "ac8d50", "6F2919" : "937437" },
+	// GRAY
+    { "FFCA8A" : "968f89", "E0975C" : "7e7770", "A85636" : "5c5957", "6F2919" : "4f4c49" },
+	// ORANGE
+    { "FFCA8A" : "d0a12f", "E0975C" : "bb8624", "A85636" : "96691f", "6F2919" : "82581d" },
+	// STARBOUND CREAM
+    { "FFCA8A" : "d7cdc1", "E0975C" : "afa69a", "A85636" : "978e82", "6F2919" : "7b7570" },
+	// LIGHT BLUE
+	{ "FFCA8A" : "98e0f8", "E0975C" : "70c0f8", "A85636" : "4890c8", "6F2919" : "2a587b" },
+    // MUTED GREEN
+    { "FFCA8A" : "c4d0a5", "E0975C" : "a3af83", "A85636" : "6c7256", "6F2919" : "3b3d2d" },
+    // MUTED PINK
+    { "FFCA8A" : "d08c9f", "E0975C" : "b27082", "A85636" : "874e62", "6F2919" : "4c2b3a" },
+    // MUTED YELLOW
+    { "FFCA8A" : "d8d695", "E0975C" : "b9b778", "A85636" : "908a56", "6F2919" : "544d30" },
+    // MUTED TURQUOISE
+    { "FFCA8A" : "a6cbd2", "E0975C" : "7ca7af", "A85636" : "547d81", "6F2919" : "2e504f" },
+    // PURPLE
+    { "FFCA8A" : "cb86d6", "E0975C" : "ac6ab7", "A85636" : "7e498c", "6F2919" : "41274c" },
+    // LIGHT GREEN
+    { "FFCA8A" : "b7d179", "E0975C" : "8eab59", "A85636" : "808a44", "6F2919" : "474c27" },
+	// EMERA
+	{ "FFCA8A" : "81C14B", "E0975C" : "2E933C", "A85636" : "297045", "6F2919" : "204E4A" },
+    // MUTED BROWN
+    { "FFCA8A" : "b9997a", "E0975C" : "9f7761", "A85636" : "764f42", "6F2919" : "50302a" },
+    // MUTED DARK TURQUOISE
+    { "FFCA8A" : "a8c2c4", "E0975C" : "8ba4a6", "A85636" : "607272", "6F2919" : "384543" },
+    // MUTED RED
+    { "FFCA8A" : "e47068", "E0975C" : "c54848", "A85636" : "952f45", "6F2919" : "65223a" },
+    // MUTED YELLOW
+    { "FFCA8A" : "e3da89", "E0975C" : "c5bd6d", "A85636" : "9a8d4c", "6F2919" : "705f32" },
+    // LIGHT RED
+    { "FFCA8A" : "E86D46", "E0975C" : "D1422E", "A85636" : "96201B", "6F2919" : "721814" },
+    // RED
+    { "FFCA8A" : "CD1C38", "E0975C" : "982441", "A85636" : "69243F", "6F2919" : "4b1a2d" },
+    // RUSTY RED
+    { "FFCA8A" : "BE471B", "E0975C" : "9B2F0C", "A85636" : "702710", "6F2919" : "561e0d" },
+	// EXONITE
+	{ "FFCA8A" : "851E3E", "E0975C" : "651E3E", "A85636" : "451E3E", "6F2919" : "251E3E" },
+    // LIGHT BROWN
+    { "FFCA8A" : "7f5a39", "E0975C" : "5b3523", "A85636" : "3b1f15", "6F2919" : "29160f" },
+    // DIRTY ORANGE
+    { "FFCA8A" : "a6671d", "E0975C" : "915622", "A85636" : "743e1d", "6F2919" : "572f16" },
+    // ORANGE
+    { "FFCA8A" : "efa838", "E0975C" : "be6d1d", "A85636" : "834012", "6F2919" : "61300e" },
+    //LIGHT GREEN
+    { "FFCA8A" : "A7D13D", "E0975C" : "83AD22", "A85636" : "627e09", "6F2919" : "3c4c08" },
+    // GREEN
+    { "FFCA8A" : "4ece61", "E0975C" : "34ae47", "A85636" : "228a38", "6F2919" : "144c20" },
+    // DARK GREEN
+    { "FFCA8A" : "3b7f44", "E0975C" : "2e6a38", "A85636" : "1d4b28", "6F2919" : "14331c" },
+	// ISKRA
+    { "FFCA8A" : "009391", "E0975C" : "007884", "A85636" : "005967", "6F2919" : "004956" },
+    // TURQUOISE
+    { "FFCA8A" : "5BD5B6", "E0975C" : "4AA9AD", "A85636" : "237082", "6F2919" : "104648" },
+    // LIGHT TURQUOISE
+    { "FFCA8A" : "82d9c5", "E0975C" : "46b89f", "A85636" : "1b8587", "6F2919" : "244e54" },
+    // LIGHT BLUE
+    { "FFCA8A" : "7eabd9", "E0975C" : "5583cf", "A85636" : "305ba6", "6F2919" : "22386b" },
+	// KESPAR
+    { "FFCA8A" : "2C70A5", "E0975C" : "534DA3", "A85636" : "59278C", "6F2919" : "4E0074" },
+    // DARK PURPLE
+    { "FFCA8A" : "894176", "E0975C" : "6a2e53", "A85636" : "502034", "6F2919" : "371523" },
+    // LIGHT PURPLE
+    { "FFCA8A" : "AD68E2", "E0975C" : "9142ab", "A85636" : "782b89", "6F2919" : "501e5b" }
+
+  ],
+
+  "undyColor" : [
+  ],
+
+  "hairColor" : [
+    // Default     New      Default     New      Default     New   || Default     New      Default     New
+    // WHITE                                                         Blue Grey
+	{ "DC1F00" : "ffffff", "BE1B00" : "bec6c8", "951500" : "989ea0", "FFD800" : "3E3F50", "D8B400" : "282731" },
+	// BLACK                                                         Kespar
+    { "DC1F00" : "555555", "BE1B00" : "424242", "951500" : "303030", "FFD800" : "2C70A5", "D8B400" : "534DA3" },
+	// BROWN                                                         Glow Blue
+    { "DC1F00" : "a47844", "BE1B00" : "8c6233", "951500" : "754c23", "FFD800" : "90F2D9", "D8B400" : "82E9E8" },
+	// GRAY                                                          Fire
+    { "DC1F00" : "968f89", "BE1B00" : "7e7770", "951500" : "5c5957", "FFD800" : "C70039", "D8B400" : "900C3E" },
+	// ORANGE                                                        Black
+    { "DC1F00" : "d0a12f", "BE1B00" : "bb8624", "951500" : "96691f", "FFD800" : "2D2D2D", "D8B400" : "101010" },
+	// NATURAL BLUE                                                  Emera
+    { "DC1F00" : "72829a", "BE1B00" : "596981", "951500" : "46566e", "FFD800" : "297045", "D8B400" : "204E4A" },
+	// BLUE                                                          Feya
+	{ "DC1F00" : "0000e8", "BE1B00" : "0000ba", "951500" : "000098", "FFD800" : "45209C", "D8B400" : "382077" },
+	// RED                                                           Exonite
+	{ "DC1F00" : "e80000", "BE1B00" : "ba0000", "951500" : "980000", "FFD800" : "851E3E", "D8B400" : "651E3E" },
+    // MUTED GREEN                                                   Green Glow
+    { "DC1F00" : "c4d0a5", "BE1B00" : "a3af83", "951500" : "6c7256", "FFD800" : "C8FEC8", "D8B400" : "A4FEC8" },
+    // MUTED PINK                                                    Red
+    { "DC1F00" : "d08c9f", "BE1B00" : "b27082", "951500" : "874e62", "FFD800" : "B22042", "D8B400" : "871132" },
+    // MUTED YELLOW                                                  Violet
+    { "DC1F00" : "d8d695", "BE1B00" : "b9b778", "951500" : "908a56", "FFD800" : "6D547B", "D8B400" : "543867" },
+    // MUTED TURQUOISE                                               Lime
+    { "DC1F00" : "a6cbd2", "BE1B00" : "7ca7af", "951500" : "547d81", "FFD800" : "1FD800", "D8B400" : "09BA09" },
+    // PURPLE                                                        Protocite
+    { "DC1F00" : "cb86d6", "BE1B00" : "ac6ab7", "951500" : "7e498c", "FFD800" : "B9C932", "D8B400" : "88A826" },
+    // LIGHT GREEN                                                   Gold
+    { "DC1F00" : "b7d179", "BE1B00" : "8eab59", "951500" : "808a44", "FFD800" : "FFD164", "D8B400" : "DF9C38" },
+	// EMERA                                                         Mint
+	{ "DC1F00" : "81C14B", "BE1B00" : "2E933C", "951500" : "297045", "FFD800" : "90FFA0", "D8B400" : "73E7BF" },
+    // MUTED BROWN                                                   Indigo
+    { "DC1F00" : "b9997a", "BE1B00" : "9f7761", "951500" : "764f42", "FFD800" : "BFB5F4", "D8B400" : "7964E0" },
+    // MUTED DARK TURQUOISE                                          Bright Teal
+    { "DC1F00" : "a8c2c4", "BE1B00" : "8ba4a6", "951500" : "607272", "FFD800" : "90F2D9", "D8B400" : "82E9E8" },
+    // MUTED RED                                                     Teal
+    { "DC1F00" : "e47068", "BE1B00" : "c54848", "951500" : "952f45", "FFD800" : "009391", "D8B400" : "007884" },
+    // MUTED YELLOW                                                  Peacock
+    { "DC1F00" : "e3da89", "BE1B00" : "c5bd6d", "951500" : "9a8d4c", "FFD800" : "67D4A0", "D8B400" : "33A4A0" },
+    // LIGHT RED                                                     Soft Blue
+    { "DC1F00" : "E86D46", "BE1B00" : "D1422E", "951500" : "96201B", "FFD800" : "525ED3", "D8B400" : "4953B6" },
+    // RED                                                           Ametrine
+    { "DC1F00" : "CD1C38", "BE1B00" : "982441", "951500" : "69243F", "FFD800" : "976429", "D8B400" : "793428" },
+    // RUSTY RED                                                     Light Blue
+    { "DC1F00" : "BE471B", "BE1B00" : "9B2F0C", "951500" : "702710", "FFD800" : "31BED3", "D8B400" : "2BA7B9" },
+	// EXONITE                                                       Thanatite
+	{ "DC1F00" : "851E3E", "BE1B00" : "651E3E", "951500" : "451E3E", "FFD800" : "FFD77F", "D8B400" : "FF9554" },
+    // LIGHT BROWN                                                   Orange
+    { "DC1F00" : "7f5a39", "BE1B00" : "5b3523", "951500" : "3b1f15", "FFD800" : "EA9931", "D8B400" : "AF4E00" },
+    // DIRTY ORANGE                                                  Brown
+    { "DC1F00" : "a6671d", "BE1B00" : "915622", "951500" : "743e1d", "FFD800" : "8E4F08", "D8B400" : "5E3200" },
+    // ORANGE                                                        Olive
+    { "DC1F00" : "efa838", "BE1B00" : "be6d1d", "951500" : "834012", "FFD800" : "9BBA3D", "D8B400" : "48832F" },
+    // LIGHT GREEN                                                   Steel
+    { "DC1F00" : "A7D13D", "BE1B00" : "83AD22", "951500" : "627e09", "FFD800" : "8D97B2", "D8B400" : "575984" },
+    // GREEN                                                         Forest
+    { "DC1F00" : "4ece61", "BE1B00" : "34ae47", "951500" : "228a38", "FFD800" : "5F8E48", "D8B400" : "366837" },
+    // DARK GREEN                                                    Slime
+    { "DC1F00" : "3b7f44", "BE1B00" : "2e6a38", "951500" : "1d4b28", "FFD800" : "48A075", "D8B400" : "2F746E" },
+	// ISKRA                                                         Soft Green
+    { "DC1F00" : "007884", "BE1B00" : "005967", "951500" : "004956", "FFD800" : "74CC88", "D8B400" : "57C288" },
+    // TURQUOISE                                                     Tangerine
+    { "DC1F00" : "5BD5B6", "BE1B00" : "4AA9AD", "951500" : "237082", "FFD800" : "F96A4A", "D8B400" : "DF474D" },
+    // LIGHT TURQUOISE                                               Blue
+    { "DC1F00" : "82d9c5", "BE1B00" : "46b89f", "951500" : "1b8587", "FFD800" : "0077FF", "D8B400" : "0045FF" },
+    // LIGHT BLUE                                                    Green
+    { "DC1F00" : "7eabd9", "BE1B00" : "5583cf", "951500" : "305ba6", "FFD800" : "18BC65", "D8B400" : "118949" },
+    // KESPAR                                                        Stardew
+    { "DC1F00" : "2C70A5", "BE1B00" : "534DA3", "951500" : "59278C", "FFD800" : "9F0FFF", "D8B400" : "650FD6" },
+    // DARK PURPLE                                                   Plum
+    { "DC1F00" : "894176", "BE1B00" : "6a2e53", "951500" : "502034", "FFD800" : "AC404D", "D8B400" : "792D52" },
+    // LIGHT PURPLE                                                  Purple
+    { "DC1F00" : "AD68E2", "BE1B00" : "9142ab", "951500" : "782b89", "FFD800" : "9622E5", "D8B400" : "6A01B1" }
+  ]
+}

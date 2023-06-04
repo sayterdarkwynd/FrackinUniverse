@@ -1,0 +1,106 @@
+{
+  "type" : "banditsniper",
+  "baseType" : "hostile",
+
+  "dropPools" : [ "banditTreasure" ],
+
+  "scriptConfig" : {
+    "behavior" : "hostileguard",
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Attack!"
+          ]
+        },
+        "human" : {
+          "default" : [
+            "Hey look, easy prey!",
+            "Don't think you're getting out of this one easily!",
+            "I bet you'll drop lots of pixels!",
+            "You've wandered right into the wolf's den!",
+            "Good, a fight! I was almost bored!",
+            "This isn't personal, I just love attacking people!",
+            "Surprise, you're about to get poked full of holes!"
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+              "npcsniperrifle"
+            ]
+          }
+        ] ],
+      [2, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+              "npcsniperrifle",
+			  "commonsniperrifle"
+            ]
+          }
+        ] ],
+      [3, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+              "npcsniperrifle",
+			  "commonsniperrifle",
+			  "uncommonsniperrifle",
+			  "swtjc_ewg_npcantimaterialrifle"
+            ]
+          }
+        ] ],
+      [4, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+              "npcsniperrifle",
+			  "commonsniperrifle",
+			  "uncommonsniperrifle",
+			  "raresniperrifle",
+			  "swtjc_ewg_commonantimaterialrifle"
+            ]
+          }
+        ] ],
+      [5, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+			  "uncommonsniperrifle",
+			  "raresniperrifle",
+			  "swtjc_ewg_uncommonantimaterialrifle"
+            ]
+          }
+        ] ],
+      [6, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+			  "raresniperrifle",
+			  "swtjc_ewg_rareantimaterialrifle"
+            ]
+          }
+        ] ]
+    ]
+  }
+}

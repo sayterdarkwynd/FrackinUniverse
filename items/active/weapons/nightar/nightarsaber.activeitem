@@ -1,0 +1,76 @@
+{
+  "itemName" : "nightarsaber",
+  "price" : 380,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "Rare",
+  "description" : "Said to be wielded by a legendary Nightar swordsman.",
+  "shortdescription" : "Nightar Saber",
+  "tooltipKind" : "sword2",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword","nightar", "upgradeableWeapon"],
+
+  "inventoryIcon" : "nightarsaber.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "nightarsaber.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.8,
+    "baseDps" : 22.5
+  },
+
+  "altAbilityType" : "risingslash",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "critChance" : 1.4,
+  "critBonus" : 1.5,
+
+  "improvedParameters" : {
+    "shortdescription" : "Honed Nightar Sabre",
+    "description" : "A fine, lethal edge.",
+    "critChance" : 1.7,
+    "critBonus" : 2,
+    "elementalType" : "silverweapon",
+    "primaryAbility" : {
+      "damageConfig" : {
+        "damageSourceKind" : "silverweapon"
+      }
+    }
+  },
+  "upgradeParameters" : {
+    "shortdescription" : "Peerless Nightar Sabre",
+    "description" : "The edge is superior to nearly any other.",
+    "critChance" : 2,
+    "critBonus" : 2.5,
+    "elementalType" : "silverweapon",
+    "primaryAbility" : {
+      "damageConfig" : {
+        "damageSourceKind" : "silverweapon"
+      }
+    }
+  },
+  "upgradeParameters2" : {
+    "shortdescription" : "Legendary Nightar Sabre",
+    "description" : "The finest edge possible.",
+    "critChance" : 2.25,
+    "critBonus" : 5,
+    "elementalType" : "silverweapon",
+    "primaryAbility" : {
+      "damageConfig" : {
+        "damageSourceKind" : "silverweapon"
+      }
+    }
+  }
+}

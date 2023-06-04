@@ -1,0 +1,34 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "firing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {}
+          },
+          "fire" : {
+            "frames" : 2,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {},
+            "frameProperties" : {
+              "stateNudge" : [ [-0.125, 0], [0, 0] ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "gun" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage>",
+          "offset" : [0.0, 0.0]
+        }
+      }
+    }
+  }
+}

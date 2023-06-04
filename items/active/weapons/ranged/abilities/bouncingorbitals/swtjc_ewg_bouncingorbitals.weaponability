@@ -1,0 +1,119 @@
+{
+	"animationCustom": {
+		"animatedParts": {
+			"parts": {
+				"grenadelauncher": {
+					"properties": {
+						"zLevel": -1,
+						"centered": true,
+						"offset": [-0.75, -0.375],
+						"transformationGroups": ["muzzle"],
+						"firePosition": [0.75, -0.125],
+						"image": ""
+					}
+				}
+			}
+		},
+		"particleEmitters": {
+			"altMuzzleFlash": {
+				"active": false,
+				"rotationGroup": "weapon",
+				"emissionRate": 8,
+				"offsetPart": "muzzleFlash",
+				"offsetRegion": [0.5, 1.0, 1.0, 1.5],
+				"particles": []
+			}
+		},
+		"sounds": {
+			"altFire": ["/sfx/gun/dragonhead_fire1.ogg"]
+		}
+	},
+
+	"ability": {
+		"name": "Bouncing Orbitals",
+		"type": "swtjc_ewg_bouncingorbitals",
+		"scripts": ["/items/active/weapons/ranged/abilities/altfire.lua"],
+		"class": "AltFireAttack",
+		"elementalConfig": {
+			"physical": {
+				"projectileType": "electricbouncer",
+				"projectileParameters": {
+					"damageKind": "default"
+				}
+			},
+			"silverweapon": {
+				"projectileType": "electricbouncer",
+				"projectileParameters": {
+					"damageKind": "silverweapon"
+				}
+			},
+			"fire": {
+				"projectileType": "firebouncer"
+			},
+			"hellfire": {
+				"projectileType": "firebouncer"
+			},
+			"electric": {
+				"projectileType": "electricbouncer"
+			},
+			"ice": {
+				"projectileType": "icebouncer"
+			},
+			"hoarfrost": {
+				"projectileType": "icebouncer"
+			},
+			"poison": {
+				"projectileType": "poisonbouncer"
+			},
+			"bioweapon": {
+				"projectileType": "bioweaponbouncer"
+			},
+			"radioactive": {
+				"projectileType": "radioactivebouncer"
+			},
+			"shadow": {
+				"projectileType": "shadowbouncer"
+			},
+			"cosmic": {
+				"projectileType": "cosmicbouncer"
+			},
+			"aether": {
+				"projectileType": "cosmicbouncer"
+			}
+		},
+		"projectileParameters": {
+			"speed": 50,
+			"timeToLive": [3.5, 4.5]
+		},
+		"projectileCount": 3,
+		"inaccuracy": 0.40,
+		"baseDps": 2.5,
+		"energyUsage": 70,
+		"fireTime": 3.0,
+		"fireType": "auto",
+
+		"firePositionPart": "grenadelauncher",
+		"hidePrimaryMuzzleFlash": false,
+
+		"stances": {
+			"fire": {
+				"duration": 0,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
+
+				"allowRotate": false,
+				"allowFlip": false
+			},
+			"cooldown": {
+				"duration": 0.11,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
+
+				"allowRotate": false,
+				"allowFlip": false
+			}
+		}
+	}
+}

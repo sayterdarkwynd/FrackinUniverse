@@ -1,0 +1,29 @@
+{
+  "itemName" : "glassball",
+  "rarity" : "Common",
+  "category" : "throwableItem",
+  "inventoryIcon" : "glassball.png",
+  "image" : "glassball.png",
+  "shortdescription" : "Glass Ball",
+  "description" : "Because we all know what cats like to do to ornaments...",
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 0.4,
+  "itemTags" : [ "thrown_grenade" ],
+  "projectileType" : "glassball",
+  "projectileConfig" : {
+    "speed" : 32,
+    "power" : 3,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+}

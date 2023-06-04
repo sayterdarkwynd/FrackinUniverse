@@ -1,0 +1,30 @@
+{
+  "projectileName" : "cockblock",
+  "image" : "cockblock.png",
+  "animationCycle" : 0.25,
+  "physics" : "paperplane",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "speed" : 50,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/fugoreexplosion/fugoreexplosion.config"
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/featherexplosion/featherexplosion.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/npc/monsters/hen_harvest1.ogg", "/sfx/npc/monsters/hen_harvest2.ogg", "/sfx/npc/monsters/hen_harvest3.ogg" ]
+    }
+  ],
+  "power" : 100.0,
+  "knockback" : 25,
+  "damageKind" : "freedom",
+  "emitters" : [ "defaultwhite" ],
+  "damagePoly" : [ [-12, -1], [14, -1], [14, 3], [-12, 3] ]
+}
+
+

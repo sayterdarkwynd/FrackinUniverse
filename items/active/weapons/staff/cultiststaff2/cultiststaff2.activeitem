@@ -2,41 +2,41 @@
   "itemName" : "cultiststaff2",
   "price" : 1440,
   "maxStack" : 1,
-  "level" : 3,
-  "rarity" : "uncommon",
+  "level" : 7,
+  "rarity" : "legendary",
   "description" : "Fashioned from bones and petrified wood.",
-  "shortdescription" : "Cultist's Staff",
+  "shortdescription" : "Eldritch Staff",
   "category" : "staff",
   "twoHanded" : true,
-  "itemTags" : ["weapon","staff"],
+  "itemTags" : ["weapon","staff","upgradeableWeapon","elder"],
   "tooltipKind" : "staff",
 
-  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animation" : "cultiststaff2.animation",
   "animationParts" : {
     "staff" : "cultiststaff2.png",
     "stone" : "",
-    "chargeEffect" : "cultiststaffglow.png"
+    "chargeEffect" : "cultiststaff2glow.png"
   },
   "animationCustom" : {
     "lights" : {
       "glow" : {
-        "color" : [185, 24, 42]
+        "color" : [23, 176, 0]
       }
     },
     "particleEmitters" : {
-      "physicalcharge" : {
+      "shadowcharge" : {
         "active" : false,
         "transformationGroups" : ["weapon"],
         "emissionRate" : 10,
         "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
         "particles" : [
-          {"particle" : "kluexstaff"}
+          {"particle" : "eldritchstaff"}
         ]
       }
     },
 
     "sounds" : {
-      "physicalactivate" : ["/sfx/npc/boss/cultistboss_recharge.ogg"]
+      "shadowactivate" : ["/sfx/npc/boss/cultistboss_recharge.ogg"]
     }
   },
 
@@ -44,60 +44,13 @@
 
   "scripts" : ["/items/active/weapons/staff/staff.lua"],
 
-  "stances" : {
-    "idle" : {
-      "armRotation" : -90,
-      "weaponRotation" : 0,
-      "twoHanded" : false,
+  "elementalType" : "shadow",
 
-      "allowRotate" : false,
-      "allowFlip" : true
-    },
-    "charge" : {
-      "duration" : 1.1,
-      "armRotation" : 20,
-      "weaponRotation" : -20,
-      "twoHanded" : true,
-
-      "allowRotate" : false,
-      "allowFlip" : true
-    },
-    "charged" : {
-      "armRotation" : 20,
-      "weaponRotation" : -20,
-      "twoHanded" : true,
-
-      "allowRotate" : false,
-      "allowFlip" : true
-    },
-    "discharge" : {
-      "duration" : 0.5,
-      "armRotation" : -10,
-      "weaponRotation" : -50,
-      "twoHanded" : true,
-
-      "allowRotate" : true,
-      "allowFlip" : true
-    },
-    "cooldown" : {
-      "duration" : 0.5,
-      "armRotation" : -45,
-      "weaponRotation" : 0,
-      "twoHanded" : true,
-
-      "allowRotate" : false,
-      "allowFlip" : true
-    }
-  },
-
-  "elementalType" : "ice",
-
-  "primaryAbilityType" : "elementorb",
+  "primaryAbilityType" : "eldritchblast",
   "primaryAbility" : {},
 
-  "altAbilityType" : "kluexzone",
+  "altAbilityType" : "entropicwarding",
   "altAbility" : {},
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
-

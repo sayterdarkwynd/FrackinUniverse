@@ -9,7 +9,7 @@
   "category" : "storage",
   "price" : 1000,
   "description" : "This should be perfect for your lab storage.",
-  "shortdescription" : "^#e43774;Gene Storage Chest^white;",
+  "shortdescription" : "^#e43774;Gene Storage Chest^reset;",
   "race" : "generic",
 
   "apexDescription" : "Man, I have slaughtered a lot of creatures.",
@@ -19,7 +19,7 @@
   "humanDescription" : "Sometimes I wonder why people like mayo.",
   "hylotlDescription" : "Water is nice.",
   "ponexDescription" : "Bronies are disgusting and should be killed! THEY RAPE MY KIND!",
-  
+
   "inventoryIcon" : "genestorageicon.png",
   "orientations" : [
     {
@@ -36,6 +36,12 @@
 
     }
   ],
+
+  "inputNodes" : [ [-1, 0] ],
+  "outputNodes" : [ [0, 0] ],
+  "acceptsItems" : true,
+  "scripts" : [ "/objects/smartbox/singular/singular.lua" ],
+  "scriptDelta" : 1,
 
   "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
   "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],

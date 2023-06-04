@@ -1,0 +1,125 @@
+{
+  "type" : "crewmemberfullama",
+  "baseType" : "fu_crewmember",
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "behavior" : "crewmembermute"
+    },
+
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "alpacaguardhead",
+        "chest" : "alpacaguardchest",
+        "legs" : "alpacaguardlegs"
+      },
+
+      "role" : {
+        "type" : "soldier",
+        "name" : "Berserker",
+        "field" : "Murderology",
+        "uniformColorIndex" : 2,
+
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "rage",
+            "duration" : 10
+          }
+		]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "offer" : {
+          "default" : {
+            "default" : [
+              "Oi' kin taste tha blood o' me enemies!",
+              "Fancy a bit o' murder?",
+              "We should CRUSH our foes together!",
+              "I'd join ye if ye'd have me, sir!"
+            ]
+          }
+        },
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "Oi'll be here for you if ye need someone to help ye fight baddies!",
+              "If ye need protection, ye know where to find me!",
+              "If ye need me in battle, Oi'll be here!"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Come at me, yeh craven bastards!",
+              "I'll mangle the lot o' ye!"
+            ]
+          }
+		},
+        "respawned" : {
+          "default" : {
+            "default" : [
+              "Wot just happened?",
+              "Oi'm back! And alive!",
+              "Oi'm back, and in one piece!",
+              "Oi'm alive again! That's good.",
+              "Oi' don't think I respawned properly...",
+              "Me head hurts.",
+              "What was oi doing just before I died?"
+            ]
+          }
+        },
+        "unfollow" : {
+          "default" : {
+            "default" : [
+              "Oi'll just wait here.",
+              "Oi'll stay here. Come back when ye need me, captain!",
+              "Oi'll stay here for now, captain.",
+              "Do ye need me to stay here?",
+              "Oi'll stay here for now, then.",
+              "Oi'll stay here."
+            ]
+          }
+        },
+        "follow" : {
+          "default" : {
+            "default" : [
+              "Aye, captain!",
+              "Captain!",
+              "Let's get going!",
+              "Let's go, captain!",
+              "Are we going somewhere?"
+            ]
+          }
+        },
+        "cantreach" : {
+          "default" : {
+            "default" : [
+              "Oi' can't reach you!",
+              "Ye too far!",
+              "Oi, wait up!",
+              "Don't go too far!",
+              "Let me catch up!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "carbonaxe", "advalloyaxe", "effigiumaxe" ],
+            "secondary" : [ "tungstenshield", "titaniumshield" ],
+            "sheathedprimary" : [ "carbonbow", "compoundbow" ]
+          }
+        ] ]
+    ]
+  }
+}

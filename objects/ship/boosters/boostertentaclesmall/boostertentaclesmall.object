@@ -1,0 +1,51 @@
+{
+  "objectName" : "boostertentaclesmall",
+  "colonyTags" : [],
+  "scannable" : false,
+  "rarity" : "Common",
+  "category" : "decorative",
+  "description" : "I wonder how quickly that would cook a burger.",
+  "shortdescription" : "Booster Flame",
+  "race" : "generic",
+
+  "apexDescription" : "A booster. These have been known to malfunction and explode.",
+  "avianDescription" : "A booster, the wings of a ship.",
+  "floranDescription" : "Ssscary fire.",
+  "glitchDescription" : "Analyse. Temperature too high to measure.",
+  "humanDescription" : "This thing eats through fuel.",
+  "hylotlDescription" : "Propulsion.",
+
+
+
+  "inventoryIcon" : "boostericon.png",
+  "orientations" : [
+    {
+      "image" : "boostertentacle.png:on.1",
+      "imagePosition" : [-160, -30],
+      "fullbright" : false,
+
+      "collision" : "solid",
+      "spaces" : [  [0, 0] ],
+      "anchors" : [ "background" ],
+      "direction" : "right"
+    }
+  ],
+
+  "animation" : "/objects/ship/boosters/boostertentacle.animation",
+  "animationParts" : {
+    "booster" : "boostertentacle.png"
+  },
+  "animationPosition" : [-160, -30],
+
+
+
+  "scripts" : ["/objects/ship/boosters/boosterflame.lua"],
+  "scriptDelta" : 10,
+
+  "flyingBoosterStates" : {
+    "none" : "off",
+    "disembarking" : "off",
+    "warp" : "turnOn",
+    "arriving" : "turnOff"
+  }
+}

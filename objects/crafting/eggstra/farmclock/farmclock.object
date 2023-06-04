@@ -1,0 +1,30 @@
+{
+  "objectName" : "eggstraclock",
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 750,
+  "description" : "Tick, tock, tick, tock.",
+  "shortdescription" : "Wall Clock",
+  "race" : "generic",
+
+  "inventoryIcon" : "farmclockicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "farmclock.png:default",
+      "imagePosition" : [-8, -12],
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "farmclock.animation",
+
+  "animationParts" : {
+    "face" : "farmclockhand.png",
+    "body" : "farmclock.png"
+  },
+
+  "scripts" : [ "farmclock.lua" ],
+  "scriptDelta" : 500,
+  "soundEffect" : "/sfx/objects/clock_loop.wav"
+}

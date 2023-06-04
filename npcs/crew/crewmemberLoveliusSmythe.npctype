@@ -1,0 +1,127 @@
+{
+  "type" : "crewmemberLoveliusSmythe",
+  "baseType" : "fu_crewmember",
+  "npcname" : "Lovelius Smythe",
+
+  "scriptConfig" : {
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "randolphcarterhat",
+        "chest" : "smartchest",
+        "legs" : "smartpants"
+      },
+
+      "role" : {
+        "type" : "chemist",
+        "name" : "Occult Scholar",
+        "field" : "Investigation",
+        "uniformColorIndex" : 3,
+
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "defense4",
+            "duration" : 300
+          },
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "insanityimmunity",
+            "duration" : 300
+          },
+	      {
+	        "type": "ShipUpgradeBenefit",
+	        "property": "maxFuel",
+	        "value": 450
+	      }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+		"offer" : {
+		  "default" : {
+			"default" : [
+			  "I'M FREE! AT LONG LAST! Sire, I would travel with you as thanks!",
+			  "Glorious, wonderful oxygen. Do yourself a favor: Don't be friends with Avians. That sucked. I'll follow you now, if you'll have me.",
+			  "Let us unravel secrets together, now that you've so graciously freed me.",
+			  "I suppose they meant it literally when they said they intended to keep me forever. Avian hospitality is rather poor."
+			]
+		  }
+		},
+		"roleDescription" : {
+		  "default" : {
+			"default" : [
+			  "I can shield you from damage, and from madness!",
+			  "You need not fear insanity if I'm around, sir!",
+			  "I can ward you against foul madness-inducing things!"
+			]
+		  }
+		},
+		"respawned" : {
+		  "default" : {
+			"default" : [
+			  "I'm back? Again? What madness is this?",
+			  "I am positive I just died. Did I?"
+			]
+		  }
+		},
+		"combatBenefit" : {
+		  "default" : {
+			"default" : [
+			  "To battle, <entityname>!",
+			  "<entityname>! Let us vanquish these cursed foes!",
+			  "Like a squallid hellhound, I engage Beast Mode!"
+			]
+		  }
+		},
+		"unfollow" : {
+		  "default" : {
+			"default" : [
+			  "I'll stay here. Come back when you need me, <entityname>!",
+			  "I'll stay here for now, <entityname>.",
+			  "Do you need me to stay here, <entityname>?"
+			]
+		  }
+		},
+		"follow" : {
+		  "default" : {
+			"default" : [
+			  "Good idea <entityname>!",
+			  "Let's get going, <entityname>!",
+			  "Let's go, <entityname>!"
+			]
+		  }
+		},
+		"cantreach" : {
+		  "default" : {
+			"default" : [
+			  "I can't reach you!",
+			  "You're too far!",
+			  "Hey, wait up!",
+			  "Don't go too far!",
+			  "Let me catch up!"
+            ]
+          }
+        }
+	  }
+    }
+  },
+
+  "movementParameters" : {
+    "runSpeed" : 18.0
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "protopistol","nitrogenpistol","durasteelrevolver","aegisaltpistol3","biopistol","blisterpistol","fusteampunkgun" ],
+            "secondary" : [ "fuflashlight" ]
+          }
+        ] ]
+    ]
+  }
+}

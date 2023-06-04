@@ -1,0 +1,36 @@
+{
+  "itemName" : "murdermachete",
+  "price" : 1500,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Smile and share.",
+  "shortdescription" : "Friendship Knife",
+  "tooltipKind" : "sword2",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword","shadow", "upgradeableWeapon"],
+
+  "inventoryIcon" : "murdermachete.png",
+  "animation" : "comboshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "murdermachete.png"
+  },
+
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 1.2,
+    "baseDps" : 6.478
+  },
+  "critChance" : 10,
+  "critBonus" : 15,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

@@ -1,0 +1,22 @@
+{
+  "projectileName" : "freezingrain",
+  "physics" : "rain",
+  "timeToLive" : 0.75,
+  "image" : "freezingrain.png",
+  "animationCycle" : 1,
+  "lightColor" : [60, 110, 110],
+  "frameNumber" : 1,
+  "fullbright" : true,
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/nitrogenrain_impact.ogg" ]
+    }
+  ],
+  "speed" : 25,
+  "power" : 30,
+  "damageKind" : "ice",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "freezefu" ],
+  "emitters" : [ "icetrail" ]
+}

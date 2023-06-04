@@ -4,13 +4,15 @@
   "inventoryIcon" : "gravitongun.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Launches micro-gravity disruptions.",
+  "description" : "Micro-gravity turned into a weapon.
+^yellow;Wave-burst primary^reset;
+Alt: ^green;Big knockback, Major Vulnerability^reset;",
   "shortdescription" : "Graviton Gun",
-  "level" : 4,
-  "category" : "uniqueWeapon",
-  "tooltipKind" : "gun",
-  "weaponType" : "Grav-Projector",
-  "itemTags" : ["weapon","ranged","rocketlauncher"],
+  "level" : 5,
+  "category" : "rocketLauncher",
+  "tooltipKind" : "gun2",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","rocketlauncher", "energy", "upgradeableWeapon","gravity"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -18,7 +20,7 @@
     "butt" : "",
     "middle" : "gravitongun.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlepurple.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -35,18 +37,18 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.55,
-    "baseDps" : 5.37,
+    "fireTime" : 0.45,
+    "baseDps" : 7.15,
     "energyUsage" : 34.0,
-    "inaccuracy" : 0.06,
+    "inaccuracy" : 0,
 
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "gravitonorb",
-    "projectileParameters" : { 
-      "speed" : 60,
-      "knockback" : 12
+    "projectileType" : "gravitonorbsmall4",
+    "projectileParameters" : {
+      "speed" : 42,
+      "knockback" : 24
     },
 	  "stances" : {
 	    "idle" : {
@@ -86,7 +88,10 @@
         ]
       }
     },
-    
+
+  "critChance" : 1,
+  "critBonus" : 10,
+
   "altAbilityType" : "gravitonaltshot",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

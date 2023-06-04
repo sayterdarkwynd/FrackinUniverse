@@ -1,5 +1,7 @@
 {
   "type" : "hunterbee",
+  "shortdescription" : "Hunter Bee",
+  "description" : "An omnivorous bee that preys on less fortunate insects.",
 
   "categories" : [ "hunterbee" ],
   "parts" : [ "body" ],
@@ -17,6 +19,7 @@
   "baseParameters" : {
     "scripts" : [
       "/monsters/bugs/bug.lua",
+      "/monsters/bees/bee.lua",
       "/scripts/util.lua",
       "/scripts/vec2.lua"
     ],
@@ -70,6 +73,7 @@
         "targetMaterialKind" : "organic"
       },
 
+      "appliesWeatherStatusEffects" : false,
       "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 

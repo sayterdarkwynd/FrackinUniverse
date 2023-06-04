@@ -1,0 +1,99 @@
+[
+	// SAIL currency list parameters:
+	//	sail_secret		- Set to 'true' if this currency should be displayed only if the player has the currency (more than 0)
+	//	sail_hidden		- Set to 'true' if this currency should not be displayed in the currency list (overrides 'sail_secret', so no point in defining them both)
+	//	sail_group		- A string for grouping resources together (because 'pairs' is not organized)
+	//						If no group is defined, the resource defaults to 'unsorted'
+	//						Their strings are defined in '\zb\newSail\data.config' inside the 'TextData.currencies' table
+	//	sail_group_order	- Defined only in 'money'(aka pixels), and used to order the groups. Not patching defined groups into this will result in random orders for those groups
+	//						'main' should not be on the list because it is added manually via script, and is always first (I suggest against touching their 'sail_group' value as well)
+	//						'unsorted' should not be on the list because it is added manually via script, and is always last
+
+	// Grouping vanilla currencies
+	{
+		"op": "add",
+		"path": "/money/sail_group_order",
+		"value": ["fu_research", "fu_tradegoods", "fu_madness"]
+	},
+
+	// Grouping vanilla currencies
+	{
+		"op": "add",
+		"path": "/money/sail_group",
+		"value": "main"
+	},
+	{
+		"op": "add",
+		"path": "/essence/sail_group",
+		"value": "main"
+	},
+
+	// Research currencies
+	{
+		"op": "add",
+		"path": "/fuscienceresource",
+		"value": { "representativeItem" : "fuscienceresource", "playerMax" : 999999, "sail_group" : "fu_research" }
+	},
+	{
+		"op": "add",
+		"path": "/fuprecursorresource",
+		"value": { "representativeItem" : "fuprecursorresource", "playerMax" : 5000, "sail_group" : "fu_research", "sail_secret" : true }
+	},
+	{
+		"op": "add",
+		"path": "/fumadnessresource",
+		"value": { "representativeItem" : "fumadnessresource", "playerMax" : 15000, "sail_group" : "fu_research" }
+	},
+	{
+		"op": "add",
+		"path": "/fugeneticmaterial",
+		"value": { "representativeItem" : "fugeneticmaterial", "playerMax" : 15000, "sail_group" : "fu_research" }
+	},
+
+	// Space station trading goods
+	{
+		"op": "add",
+		"path": "/fufoodgoods",
+		"value": { "representativeItem" : "fufoodgoods", "playerMax" : 99999, "sail_group" : "fu_tradegoods" }
+	},
+	{
+		"op": "add",
+		"path": "/fumilitarygoods",
+		"value": { "representativeItem" : "fumilitarygoods", "playerMax" : 99999, "sail_group" : "fu_tradegoods" }
+	},
+	{
+		"op": "add",
+		"path": "/fuelectronicgoods",
+		"value": { "representativeItem" : "fuelectronicgoods", "playerMax" : 99999, "sail_group" : "fu_tradegoods" }
+	},
+	{
+		"op": "add",
+		"path": "/fumedicalgoods",
+		"value": { "representativeItem" : "fumedicalgoods", "playerMax" : 99999, "sail_group" : "fu_tradegoods" }
+	},
+	{
+		"op": "add",
+		"path": "/fuchemicalgoods",
+		"value": { "representativeItem" : "fuchemicalgoods", "playerMax" : 99999, "sail_group" : "fu_tradegoods" }
+	},
+	{
+		"op": "add",
+		"path": "/fuluxurygoods",
+		"value": { "representativeItem" : "fuluxurygoods", "playerMax" : 99999, "sail_group" : "fu_tradegoods" }
+	},
+	{
+		"op": "add",
+		"path": "/fumineralgoods",
+		"value": { "representativeItem" : "fumineralgoods", "playerMax" : 99999, "sail_group" : "fu_tradegoods" }
+	},
+	{
+		"op": "add",
+		"path": "/fuemptygoods",
+		"value": { "representativeItem" : "fuemptygoods", "playerMax" : 99999, "sail_hidden" : true }
+	},
+	{
+		"op": "add",
+		"path": "/fucontrabandgoods",
+		"value": { "representativeItem" : "fucontrabandgoods", "playerMax" : 99999, "sail_group" : "fu_tradegoods" }
+	}
+]

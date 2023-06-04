@@ -1,0 +1,87 @@
+{
+  "itemName" : "elderhammer",
+  "price" : 1600,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "^#a5ff00;The yawning maw of infinity, forged into hateful wrath.^reset;",
+  "shortdescription" : "^#a5ff00;Elder Hammer^reset;",
+  "tooltipKind" : "hammerelder",
+  "category" : "hammer",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","hammer","elder", "upgradeableWeapon","shadow"],
+  "level" : 7,
+  "inventoryIcon" : "elderhammer.png",
+  //"collectablesOnPickup" : { "fu_weaponhammer" : "elderhammer" },
+  "animation" : "hammerglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "elderhammer.png",
+    "bladefullbright" : "elderhammerfullbright.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [-2.0, 1.5]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "shadow",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 1.2,
+    "baseDps" : 15,
+    "damageConfig" : {
+      "damageSourceKind" : "shadowhammer",
+      "statusEffects" : [ "shadowgasfx" ]
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -10,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0.5, 1.75]
+      },
+      "windup" : {
+        "duration" : 0.8,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0.4, 1.75],
+
+        // Windup animation
+        "idleHammerAngle" : -10,
+        "windupHammerAngle" : 0,
+        "dropHammerAngle" : 60,
+        "bounceHammerAngle" : 55,
+
+        "minWindup" : 0.7,
+        "windupBaseAngle" : -10,
+        "windupAngleRange" : 70
+      },
+      "preslash" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "weaponOffset" : [0.4, 2.0]
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -35,
+        "weaponRotation" : -55,
+        "smashTimer" : 1.5,
+        "weaponOffset" : [0.6, 2.0]
+      }
+    }
+  },
+
+  "altAbilityType" : "shockwave",
+  "altAbility" : { },
+  "critChance" : 5,
+  "critBonus" : 8,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "stunChance" : 7
+}

@@ -8,13 +8,19 @@
   "animation" : "largeflying.animation",
   "reversed" : true,
 
-  "dropPools" : [
-    {
-      "default" : "slimemonsterlargeTreasure",
-      "bow" : "huntingminiboss",
-      "brain" : "brain"
-    }
-  ],
+"dropPools" : [
+  {
+	"default" : "ffbasicTreasure",
+	"bow" : "huntingminiboss",
+	"firebow" : "huntingminiboss",
+	"icebow" : "huntingminiboss",
+	"poisonbow" : "huntingminiboss",
+	"electricbow" : "huntingminiboss",
+	"radioactivebow" : "huntingminiboss",
+	"cosmicbow" : "huntingminiboss",
+	"shadowbow" : "huntingminiboss"
+  }
+],
 
   "baseParameters" : {
     "scripts" : [
@@ -60,7 +66,8 @@
           "name" : "approach-fly",
           "parameters" : {
             "targetOffset" : [0,4],
-            "minRange" : 4
+            "minRange" : 4,
+            "maxRange" : 15
           }
         }
       ],
@@ -75,7 +82,8 @@
           "name" : "approach-fly",
           "parameters" : {
             "targetOffset" : [0,4],
-            "minRange" : 4
+            "minRange" : 4,
+            "maxRange" : 15
           }
         }
       ],
@@ -107,47 +115,49 @@
 
       "concurrentHostileActions" : [ ]
     },
-    "skillCount" : 2,
-    "baseSkills" : [ 
+    "skillCount" : 3,
+    "baseSkills" : [ "raptorswoopAttack", "divebombAttack" ],
+    "specialSkills" : [
     "flyingSwoopAttack",
-    "acidicSpitAttack", 
+    "pigeonSwoopAttack",
+    "acidicSpitAttack",
     "acidSprayAttack",
-    "beamBurstAttack", 
-    "bloodVomitAttack", 
+    "beamBurstAttack",
+    "bloodVomitAttack",
     "blueFlameAttack",
-    "boneRainAttack", 
+    "boneRainAttack",
     "bubbleBlastAttack",
     "burninghaloAttack",
-    "cellBlastAttack", 
+    "cellBlastAttack",
     "darkGravityBallAttack",
     "doubleBarbSprayAttack",
     "explosivePhlegmAttack",
     "eyeballShotAttack",
-    "eyeballSprayAttack", 
-    "fireballAttack", 
+    "eyeballSprayAttack",
+    "fireballAttack",
     "fireSwirlAttack",
-    "fishBreathAttack", 
-    "gasBelchAttack",    
-    "glitterAttack", 
-    "iceBlastAttack", 
+    "fishBreathAttack",
+    "gasBelchAttack",
+    "glitterAttack",
+    "iceBlastAttack",
     "icerockShotAttack",
     "leafyGustAttack",
-    "lightBallAttack", 
-    "miniDragonBreathAttack", 
+    "lightBallAttack",
+    "miniDragonBreathAttack",
     "mudBallAttack",
     "orbOfZotsAttack",
-    "plasmaSweepAttack", 
-    "plasmaTorpedoAttack", 
-    "putridWaveAttack", 
+    "plasmaSweepAttack",
+    "plasmaTorpedoAttack",
+    "putridWaveAttack",
     "rainbowVomitAttack",
-    "rockRollAttack", 
+    "rockRollAttack",
     "shardSprayAttack",
     "shockingBoltAttack",
-    "shockingWaveAttack", 
+    "shockingWaveAttack",
     "smokeRingAttack",
     "snotBubbleAttack",
-    "snotShotAttack", 
-    "staticDischargeAttack", 
+    "snotShotAttack",
+    "staticDischargeAttack",
     "waterGunAttack",
     "beetleSwarmAttack",
     "darkGasAttack",
@@ -159,7 +169,6 @@
     "sonicWaveAttack",
     "spiceCloudAttack",
     "tentacleShotAttack",
-// FU abilities
     "waveBlastAttack",
     "waveBlastAttack2",
     "waveBlastAttack3",
@@ -169,7 +178,28 @@
     "soundwaveAttack2",
     "windBlastAttack2",
     "windBlastAttack3",
-    "windBlastAttack4"
+    "windBlastAttack4",
+    "shadowbeastAttack",
+    "cageWall",
+    "crystalAttack",
+    "flamingAuraAttack",
+    "glowcritterAttack",
+    "glowcritterAttack2",
+    "goopAttack",
+    "gravAuraAttack",
+    "iceAuraAttack",
+    "iceBelchAttack",
+    "kluexAuraAttack",
+    "kluexBlastAttack",
+    "poisonAuraAttack",
+    "pullAuraAttack",
+    "pushAuraAttack",
+    "roarAttack",
+    "seedAttack",
+    "shitShowerAttack",
+    "shockAuraAttack",
+    "spinAssaultAttack",
+    "steamAttack"
     ],
 
     "metaBoundBox" : [-2.5, -2.5, 2.5, 2.5],
@@ -215,6 +245,7 @@
         "targetMaterialKind" : "organic"
       },
 
+      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
@@ -231,7 +262,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 124
+          "baseValue" : 164
         },
         "protection" : {
           "baseValue" : 0.0

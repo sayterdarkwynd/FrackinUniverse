@@ -1,28 +1,38 @@
 {
   "itemName" : "mechgun",
-  "price" : 160,
+  "price" : 2280,
   "inventoryIcon" : "mechgun.png",
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Rapid-fire death beam",
+  "rarity" : "rare",
+  "description" : "A rifle popular in ages long-past by those known as the Precursors.",
   "shortdescription" : "Precursor Rifle",
-  "level" : 3,
-  "tooltipKind" : "gun",
-  "weaponType" : "Rifle",
-  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "category" : "assaultRifle",
+  "level" : 5,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","assaultrifle", "energy", "precursor", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "mechgun.png",
+    "middlefullbright" : "mechgunfullbright.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/precursormuzzle.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },
   "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/gun/plasma_pistol3.ogg" ]
-    }
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.36, 0.26]
+		  }
+		}
+      }
+    },
+    "sounds" : { "fire" : [ "/sfx/gun/plasma_pistol3.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [44, 104, 164] } }
   },
 
   "baseOffset" : [1.36, 0.26],
@@ -30,23 +40,72 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "radioactive",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.2,
-    "baseDps" : 8,
-    "energyUsage" : 24.5,
-    "inaccuracy" : 0.01,
+    "baseDps" : 10.25,
+    "energyUsage" : 30,
+    "inaccuracy" : 0.03,
 
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "precursorshot",
-    "projectileParameters" : { 
-      "speed" : 50,
-      "knockback" : 2
+    "projectileType" : "precursorshot2a",
+    "projectileParameters" : {
+      "knockback" : 8
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 3,
+  "critBonus" : 13,
+
+  "altAbility" : {
+    "name" : "Spread Shot",
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.15,
+    "baseDps" : 12,
+    "energyUsage" : 54.5,
+    "inaccuracy" : 0.09,
+
+    "projectileCount" : 4,
+    "fireType" : "auto",
+
+    "projectileType" : "precursorshot2",
+    "projectileParameters" : {
+      "knockback" : 3,
+      "statusEffects" : [ "radiationburn" ]
     },
 	  "stances" : {
 	    "idle" : {
@@ -77,9 +136,6 @@
 	    }
 	  }
   },
-
-
-  "altAbilityType" : "mechgunmarkedshot",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

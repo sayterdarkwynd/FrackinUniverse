@@ -1,0 +1,27 @@
+{
+	"id" : "fuquest_powergeneration1",
+	"prerequisites" : [ "create_matterassembler", "create_electronics" ],
+	"title" : "Power Source",
+	"text" : "An ^orange;Alternator^reset; provides you with power. To fuel it, you'll need ^green;wood or coal^reset;. To wire it to things, you'll first need to unlock ^orange;Wiring^reset; on your ^orange;Matter Manipulator^reset; or build a ^orange;Mechanic's Wrench^reset;.",
+	"completionText" : "Try throwing some ^orange;Coal or Wood^reset; in there now to give your new ^orange;Alternator^reset; some life!",
+	"rewards" : [ [ [ "fuscienceresource", 100 ] ]	],
+	"moneyRange" : [10, 10],
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "player"
+		},
+
+		"requireTurnIn" : false,
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "fu_alternatorgenerator",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
+}

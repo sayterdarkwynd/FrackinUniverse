@@ -1,0 +1,66 @@
+{
+  "type" : "volcanobasehunter",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Attack!"
+          ]
+        },
+        "glitch" : {
+          "default" : [
+            "Cryptic. I owe you nothing but an arrow through the eye.",
+            "Menacing. Stay back, or I'll put one through your knee!",
+            "Grim. One shot, intruder. That's all I'll need."
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "plainhoodhead", "parameters" : { "colorIndex" : 1 } }
+            ],
+            "back" : [
+              { "name" : "simplecapeback", "parameters" : { "colorIndex" : 1 } }
+            ],
+            "chest" : [
+              { "name" : "glitchtier4chest", "parameters" : { "colorIndex" : 1 } }
+            ],
+            "legs" : [
+              { "name" : "glitchtier4pants", "parameters" : { "colorIndex" : 1 } }
+            ],
+            "primary" : [
+              "npcpetcapturepod"
+            ],
+            "sheathedprimary" : [ { "name" : "npctungstenbow", "parameters" : { "primaryAbility" : { "projectileType" : "flamearrow", "powerProjectileType" : "chargedflamearrow" } } } ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 100.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 1.8
+      },
+	  "maxEnergy" : {
+        "baseValue" : 400.0
+      }
+    }
+  }
+}

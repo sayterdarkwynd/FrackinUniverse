@@ -1,22 +1,18 @@
 {
-  "itemName" : "goldshroom",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "category" : "food",
-  "inventoryIcon" : "goldshroom.png",
-  "description" : "Provides glowing aura to the user.",
-  "shortdescription" : "Gold Shroom", 
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      {
-        "effect" : "glow",
-        "duration" : 90
-      }
-    ] ]
+	"itemName": "goldshroom",
+	"inventoryIcon": "goldshroom.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 10,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^#b3b398;Glow^reset;: 2m",
+	"shortdescription": "Gold Shroom",
+
+	"effects": [
+		[{
+			"effect": "glow",
+			"duration": 120
+		}]
+	]
 }

@@ -6,10 +6,16 @@
     "groups" : [
       {
         "select" : 2,
-        "pool" : [ 
-          [ 0.1111, "lumoth" ],     
+        "pool" : [
+          [ 0.03, "burrower_depth_selector" ],
+          [ 0.1111, "lumoth" ],
           [ 0.1111, "narfin" ],
-          [ 0.1111, "voltip" ]
+          [ 0.04, "chromabot" ],
+          [ 0.1111, "voltip" ],
+          [ 0.05, "glitchtop" ],
+          [ 0.05, "leadlit" ],
+          [ 0.1, "pandorasboxhummingbug"],
+          [ 0.1, "pandorasboxglofae"]
         ]
       },
       {
@@ -39,7 +45,7 @@
           },
           "ffextremecoldImmunity" : {
             "baseValue" : 1.0
-          }		  
+          }
         }
       }
     }
@@ -66,7 +72,7 @@
       "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 
@@ -74,17 +80,46 @@
     "grassMod" : [ "crystalgrass" ],
     "grassModDensity" : 0.9,
     "items" : [
+      {
+        "mode" : "background",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundFossils",
 
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.15, "dirtyfossil1" ], [0.15, "dirtyfossil2" ], [0.15, "dirtyfossil3" ], [0.15, "dirtyfossil4" ], [0.1, "dirtyfossil5" ], [0.1, "dirtyfossil6" ], [0.1, "dirtyfossil7" ], [0.1, "dirtyfossil8" ] ],
+            "parameters" : {  "materials" : ["mud", "cobblestone", "bonematerial"]}
+          }
+        ]
+      },
+           {
+             "mode" : "ceiling",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:ffunCommon",
+
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [
+              		[0.50, "wildlumivineseed" ]
+                 ],
+                 "parameters" : { "startingStage" : 3 }
+               }
+             ]
+           },
            {
              "mode" : "ceiling",
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
               [0.50, "greenceilingspike1" ],
               [0.50, "greenceilingspike2" ],
               [0.50, "greenceilingspike3" ],
@@ -99,11 +134,11 @@
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
               [0.50, "greengroundspike1" ],
               [0.50, "greengroundspike2" ],
               [0.50, "greengroundspike3" ],
@@ -118,23 +153,23 @@
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
               [0.50, "thorns1" ],
               [0.50, "thorns2" ],
               [0.50, "thorns3" ],
               [0.50, "thorns4" ],
-              [0.50, "copperrock" ], 
+              [0.50, "carbonrock" ],
+              [0.50, "carbonrocksmall" ],
+              [0.50, "copperrock" ],
               [0.50, "copperrocksmall" ],
               [0.50, "silverrock" ],
               [0.50, "silverrocksmall" ],
               [0.50, "goldrock" ],
               [0.50, "goldrocksmall" ],
-              
-              
               [0.50, "diamondrock" ],
               [0.50, "diamondrocksmall" ]
                  ],
@@ -150,6 +185,20 @@
 
         "type" : "treasureBox",
         "treasureBoxSets" : [ "rainbowChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChallengeDoors",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "challengedoor" ] ],
+            "parameters" : { }
+          }
+        ]
       },
         {
           "mode" : "floor",
@@ -212,7 +261,7 @@
           "distribution" : "/biomes/distributions.config:scatteredSmall",
 
           "type" : "grass",
-          "grasses" : [ "blueslime", "grass", "jungleflower1", "jungleflower2", "jungleflower3"  ] 
+          "grasses" : [ "blueslime", "grass", "jungleflower1", "jungleflower2", "jungleflower3"  ]
         },
         {
           "mode" : "ceiling",
@@ -220,7 +269,7 @@
           "distribution" : "/biomes/distributions.config:scatteredSmall",
 
           "type" : "grass",
-          "grasses" : [ "ceilingweedy", "ceilingcurlythorns", "ceilingflowers", "ceilingroots"  ] 
+          "grasses" : [ "ceilingweedy", "ceilingcurlythorns", "ceilingflowers", "ceilingroots"  ]
         },
         {
           "mode" : "ceiling",
@@ -231,9 +280,18 @@
           "type" : "tree",
           "treeFoliageHueShiftMax" : 180,
           "treeStemHueShiftMax" : 180,
-          "treeStemList" : [ "vineroot2", "vine2a", "floweryvine", "twistedvine2" ],
+          "treeStemList" : [ "vineroot2", "vine2a", "floweryvine2", "twistedvine2" ],
           "treeFoliageList" : [ "nofoliagevine", "starry2", "dreamy2", "starry2" ]
-        }
+        },
+      {
+        "mode" : "floor",
+        "priority" : 99.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:tiyDist",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "underground3dmicrodungeons" ]
+      }
     ]
   },
     "hueShiftOptions" : [0]

@@ -1,0 +1,82 @@
+{
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "dashing" : {
+          "default" : "off",
+          "states" : {
+            "off" : {},
+            "on" : {}
+          }
+        }
+      }
+    },
+
+    "particleEmitters" : {
+      "dashParticles" : {
+        "emissionRate" : 40.0,
+        "particles" : [
+		  {
+            "particle" : "sprint",
+            "offset" : [0, 0.0]
+          },
+          {
+            "particle" : "sprint",
+            "offset" : [0, -0.75]
+          }
+        ]
+      }
+    },
+
+    "sounds" : {
+      "startDash" : [ "/sfx/tech/tech_dash.ogg" ],
+      "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ]
+    }
+  },
+  "ability" : {
+    "name" : "Gravity Backpedal",
+    "type" : "rngbows_backpedal4",
+    "scripts" : ["/items/active/weapons/bow/abilities/rngbows/backpedal/neb-backpedal.lua"],
+    "class" : "FlipSlash",
+
+    "cooldownTime" : 0.68,
+
+    "flipMovementParameters" : {
+      "collisionPoly" : [ [-2.0, -1.0], [-1.0, -2.0], [1.0, -2.0], [2.0, -1.0], [2.0, 1.0], [1.0, 2.0], [-1.0, 2.0], [-2.0, 1.0] ]
+    },
+
+    "energyUsage" : 43.5,
+    "rotations" : 2,	//Max player rotation factor. From 1.0 (rotate full 360 degrees) to 0.0 (no rotation)
+    "rotationTime" : 0.25,
+
+    "jumpVelocity" : [-37.5, 15],
+    "jumpDuration" : 0.35,
+    "flipControlForce" : 0.5,
+
+    "stopAfterFlip" : false,
+    "slowAfterFlip" : true,
+    "slowDownFactor" : 0.65,
+    "groundOnly" : false,
+    "cooldownOnGroundOnly" : false,
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.1,
+        "armRotation" : 30,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "flip" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

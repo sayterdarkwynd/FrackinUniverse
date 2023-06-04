@@ -1,0 +1,75 @@
+{
+  "itemName" : "shadowstring",
+  "price" : 960,
+  "inventoryIcon" : "shadowstringicon.png",
+  "maxStack" : 1,
+  "rarity" : "Rare",
+  "tooltipKind" : "neb-randombow",
+  "category" : "bow",
+  "description" : "The darkest bow on the market",
+  "shortdescription" : "Shadowstring",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow","upgradeableWeapon","shadow"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "level" : 5,
+
+  "animation" : "/items/active/weapons/bow/fubow.animation",
+  "animationParts" : {
+    "bow" : "shadowstringfull.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0.25, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "shadow",
+  //"collectablesOnPickup" : { "fu_weaponbow" : "shadowstring" },
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : {
+    "drawTime" : 0.88,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"energyPerShot" : 33,
+	"holdEnergyUsage" : 9,
+	"airborneBonus" : 1.34,
+    "projectileType" : "shadowarrow",
+    "powerProjectileType" : "chargedshadowarrow",
+    "projectileParameters" : {
+      "power" : 6.5,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 7.25,
+      "piercing" : false
+    }
+  },
+
+  "altAbilityType" : "tripleshotshadow",
+  "altAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "drawFrameSelector" : "bowImageSelectorNoPower",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "chargedshadowarrow",
+    "projectileParameters" : {
+          "power" : 7.5,
+          "speed" : 90,
+          "piercing" : false
+    },
+    "splitDelay" : 0.04,
+    "splitAngle" : 5
+  },
+
+  "critChance" : 5,
+  "critBonus" : 13,
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
+}

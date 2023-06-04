@@ -1,0 +1,87 @@
+{
+  "type" : "crewmemberscuba",
+  "baseType" : "fu_crewmember",
+
+  "scriptConfig" : {
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "fudiverhead",
+        "chest" : "fudiverchest",
+        "legs" : "fudiverlegs"
+      },
+
+      "role" : {
+        "type" : "chemist",
+        "name" : "Diver",
+        "field" : "Harpooning",
+        "uniformColorIndex" : 6,
+
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "swimboost2",
+            "duration" : 300
+          },
+          {
+            "type" : "Regeneration",
+            "value" : 1
+          }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "fieldBenefit" : {
+          "default" : {
+            "default" : [
+              "Want to swim faster?!",
+              "Let me help you out!",
+              "Looks like you could use a little swim boost!",
+              "Jump right in, the water's fine!"
+            ]
+          }
+        },
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "Can we please get to some water?"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran wantsss go to water."
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Brave. I am prepared for submersion into water."
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Want to swim faster?!",
+              "Let me help you out!",
+              "Looks like you could use a little swim boost!",
+              "Jump right in, the water's fine!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "randomharpoongun" ],
+            "sheathedprimary" : [ "coralspear" ]
+          }
+        ] ]
+    ]
+  }
+}

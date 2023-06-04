@@ -1,0 +1,66 @@
+{
+  "objectName" : "irradiumdesklamp",
+  "colonyTags" : ["irradium", "light"],
+  "rarity" : "rare",
+  "category" : "light",
+  "lightColor" : [26, 240, 165],
+  "price" : 300,
+  "description" : "A desk lamp made from irradium.",
+  "shortdescription" : "Irradium Desk Lamp",
+  "race" : "generic",
+
+  "apexDescription" : "This lamp seems dangerous to use.",
+  "avianDescription" : "This can't be safe, can it?!",
+  "floranDescription" : "Odd lamp. Makesss Floran feel sssick!",
+  "glitchDescription" : "Wary. I really don't think this is safe.",
+  "humanDescription" : "I don't think I can use this lamp.",
+  "hylotlDescription" : "I'm not entirely sure how this is safe.",
+  "novakidDescription" : "This lamp seems mighty unsafe.",
+
+  "inventoryIcon" : "irradiumdesklampicon.png",
+  "orientations" : [
+    {
+      "image" : "irradiumdesklamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "irradiumdesklamp.png",
+        "fg" : "irradiumdesklamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "irradiumdesklamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "irradiumdesklamp.png",
+        "fg" : "irradiumdesklamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "irradiumdesklamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : true,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

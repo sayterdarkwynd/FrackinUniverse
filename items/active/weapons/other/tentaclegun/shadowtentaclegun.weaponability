@@ -7,19 +7,20 @@
     "scripts" : ["/items/active/weapons/other/tentaclegun/tentaclegun.lua"],
     "class" : "TentacleGun",
 
-    "baseDps" : 2.5,
+    "baseDps" : 3.5,
     "fireTime" : 0.5,
     "energyUsage" : 24,
     "inaccuracy" : 0.1,
 
     "fireSound" : "fire",
 
-    "maxProjectiles" : 4,
+    "maxProjectiles" : 5,
 
     "projectileCount" : 1,
     "projectileType" : "tentaclefist",
     "projectileParameters" : {
-      "knockback" : 20
+      "knockback" : 20,
+      "damageSourceKind" : "shadow"
     },
 
     "guideProjectiles" : false,
@@ -28,9 +29,9 @@
       "startOffset" : [0, 0],
       "segmentImage" : "/items/active/weapons/other/tentaclegun/shadowsegment.png",
       "endSegmentImage" : "/items/active/weapons/other/tentaclegun/shadowend.png",
-      "segmentSize" : 0.5,
+      "segmentSize" : 0.65,
       "taper" : 0,
-      "arcRadiusRatio" : [1, 3]
+      "arcRadiusRatio" : [1, 4]
     },
 
     "stances" : {

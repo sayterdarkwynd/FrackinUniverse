@@ -1,0 +1,38 @@
+{
+  "projectileName" : "floatydeathballelderbowcharged",
+  "physics" : "laser",
+  "speed" : 1,
+  "bounces" : 0,
+  "timeToLive" : 2,
+  "image" : "floatydeathballelder.png",
+  "animationCycle" : 1.5,
+  "animationLoops" : false,
+  "orientationLocked" : true,
+  "flippable" : true,
+  "fullbright" : true,
+  "scripts" : [ "homingarrow.lua" ],
+  "baseHomingControlForce" : 2,
+  "lightColor" : [25, 160, 0],
+  "frameNumber" : 2,
+  "emitters" : [ "defaultgreen", "shadowsmoke2" ],
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elder/protoboom.config"
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "astralteargun",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.5
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
+    }
+  ],
+  "power" : 1,
+  "damageKind" : "shadow"
+}

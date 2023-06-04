@@ -1,0 +1,88 @@
+{
+  "itemName" : "ironlmg",
+  "price" : 160,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "Dangerous, but inaccurate.",
+  "shortdescription" : "Iron LMG",
+  "tooltipKind" : "gun",
+  "category" : "assaultRifle",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","upgradeableWeapon","assaultrifle"],
+  "level" : 1,
+
+  "inventoryIcon" : "ironLMG7_finished_Valo.png",
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "ironLMG7_finished_Valo.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : ["/sfx/gun/rifle1.ogg"]
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 2,
+
+  "baseOffset" : [0.6, 0.1],
+  "muzzleOffset" : [2.5, 0.25],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.13,
+    "baseDps" : 9,
+    "energyUsage" : 25.5,
+    "inaccuracy" : 0.04,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "knockback" : 5
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.035,
+        "armRotation" : 4,
+        "weaponRotation" : 4,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "spray",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

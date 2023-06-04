@@ -1,0 +1,86 @@
+{
+  "type" : "alienjunglesavage",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Sstab it! Sstab it!",
+			"Tribe iss sstrongest!",
+            "Protect village!",
+            "Feel mighty powerss!",
+            "Sstab! Sstab! And then sstab again!"
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+      "runSpeed" : 14,
+	  "walkSpeed" : 14,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    },
+    "mass" : 2.0
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "goathead" }
+            ],
+            "back" : [
+              { "name" : "predatoryback" }
+            ],
+            "chest" : [
+              { "name" : "predatorychest" }
+            ],
+            "legs" : [
+              { "name" : "predatorypants" }
+            ],
+            "primary" : [ { "name" : "npcspear", "parameters" : { "primaryAbility" : { "damageConfig" : { "statusEffects" : ["healingpenalty3"] } } } },
+						  { "name" : "npcbroadsword", "parameters" : { "primaryAbility" : { "damageConfig" : { "statusEffects" : ["healingpenalty3"] } } } } ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+
+    "stats" : {
+	"knockbackStunTime" : {
+		"baseValue" : 0.0
+	},
+	"grit" : {
+		"baseValue" : 1.0
+	},
+	  "poisonResistance" : {
+        "baseValue" : 0.5
+      },
+      "fireResistance" : {
+        "baseValue" : -0.5
+      },
+ 	  "poisonStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	  "powerMultiplier" : {
+        "baseValue" : 4.0
+      },
+	"stunImmunity" : {
+		"baseValue" : 1.0
+	},
+      "maxHealth" : {
+        "baseValue" : 200.0
+      }
+    }
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "net" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+
+          },
+          "hang" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "end"
+          },
+          "swing" : {
+            "frames" : 2,
+            "cycle" : 0.25,
+            "mode" : "transition",
+            "transition" : "idle"
+          }
+        }
+      },
+      "swoosh" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {},
+          "fire" : {
+            "frames" : 3,
+            "cycle" : 0.15,
+            "mode" : "transition",
+            "transition" : "idle"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "bugnet" : {
+        "properties" : {
+          "zLevel" : 0,
+          "centered" : true,
+          "offset" : [-0.75, 1.0],
+          "transformationGroups" : ["weapon"]
+        },
+
+        "partStates" : {
+          "net" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+            "hang" : {
+              "properties" : {
+                "image" : "<partImage>:hang.<frame>"
+              }
+            },
+            "swing" : {
+              "properties" : {
+                "image" : "<partImage>:swing.<frame>"
+              }
+            }
+          }
+        }
+      },
+      "bugnetfullbright" : {
+        "properties" : {
+          "zLevel" : 1,
+          "centered" : true,
+          "offset" : [-0.75, 1.0],
+          "transformationGroups" : ["weapon"],
+          "fullbright" : true
+        },
+
+        "partStates" : {
+          "net" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+            "hang" : {
+              "properties" : {
+                "image" : "<partImage>:hang.<frame>"
+              }
+            },
+            "swing" : {
+              "properties" : {
+                "image" : "<partImage>:swing.<frame>"
+              }
+            }
+          }
+        }
+      },
+
+      "swoosh" : {
+        "properties" : {
+          "zLevel" : -2,
+          "centered" : true,
+          "offset" : [1.0, 1.75],
+          "transformationGroups" : ["swoosh"],
+          "rotationCenter" : [0, 0]
+        },
+
+        "partStates" : {
+          "swoosh" : {
+            "idle" : {
+              "properties" : {
+                "image" : ""
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:<frame>",
+                "damageArea" : [[-2.25, 1.75], [-1, 2.25], [0.25, 2.25], [2, 1.5], [3.0, -0.125], [3.0, -1.25], [2.5, -2.0], [1.0, -2.0]]
+              }
+            }
+          }
+        }
+      },
+      "swooshfullbright" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [1.0, 1.75],
+          "transformationGroups" : ["swoosh"],
+          "rotationCenter" : [0, 0],
+          "fullbright" : true
+        },
+
+        "partStates" : {
+          "swoosh" : {
+            "idle" : {
+              "properties" : {
+                "image" : ""
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:<frame>",
+                "damageArea" : [[-2.25, 1.75], [-1, 2.25], [0.25, 2.25], [2, 1.5], [3.0, -0.125], [3.0, -1.25], [2.5, -2.0], [1.0, -2.0]]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {},
+    "swoosh" : {}
+  },
+
+  "particleEmitters" : {
+    "physicalswoosh" : {
+      "particles" : []
+    }
+  },
+
+  "sounds" : {
+    "fire" : ["/sfx/melee/swing_broadsword.ogg"]
+  }
+}

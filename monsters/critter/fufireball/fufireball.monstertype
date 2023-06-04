@@ -1,7 +1,7 @@
 {
   "type" : "fufireball",
   "shortdescription" : "Fireballer",
-  "description" : "Hate Iceballers. It's mutual.",
+  "description" : "Hates Iceballers. It's mutual.",
   "categories" : [ "fufireball" ],
   "parts" : [ "body" ],
 
@@ -40,7 +40,7 @@
 
     "knockoutTime" : 0.1,
     "knockoutEffect" : "",
-
+"deathParticles" : "deathPoof",
     "damageTeamType" : "passive",
 
     "statusSettings" : {
@@ -48,6 +48,7 @@
         "targetMaterialKind" : "organic"
       },
 
+      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
@@ -81,6 +82,7 @@
     },
 
     "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -8]
+    "feetOffset" : [0, -8],
+    "relocatable" : true
   }
 }

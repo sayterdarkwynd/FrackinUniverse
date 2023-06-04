@@ -1,0 +1,128 @@
+{
+  "objectName": "skathworktable1",
+  "colonyTags": ["skath","crafting"],
+  "printable": false,
+  "rarity": "rare",
+  "description": "A rustic Skath-made workbench, used to craft furniture and farming supplies.",
+  "shortdescription": "^orange;Rustic Skath Workbench^reset;",
+  "race": "skath",
+  "category": "crafting",
+  "price": 25,
+  "inventoryIcon" : "skathworktable1icon.png",
+
+  "breakDropOptions": [],
+
+  "animation" : "skathworktable.animation",
+  "animationPosition" : [0, 13],
+
+  "scripts": [
+    "/scripts/npcToyObject.lua",
+    "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua"
+  ],
+
+  "apexDescription": "This table looks rather rustic, but is incredibly sturdy nonetheless.",
+  "avianDescription": "The surface of this table is quite streamlined.",
+  "floranDescription": "Waterdragon table. Floran cutsss meat on thisss.",
+  "glitchDescription": "Impressed. This table can be used to craft both farming supplies and furniture.",
+  "humanDescription": "The sort of workbench used for carpetry. I'm pretty handy with these.",
+  "hylotlDescription": "A crude station, for crafting crude furniture.",
+  "novakidDescription": "Not my kinda rustic, but it'll do.",
+  "skathDescription": "Although rustic, with this table I can craft furniture and farming supplies.",
+
+  "statusEffects": [],
+
+  "startingUpgradeStage": 1,
+  "maxUpgradeStage": 2,
+
+  "upgradeStages": [
+    {
+      "animationState": "rustic",
+      "itemSpawnParameters": {
+        "price": 350,
+        "inventoryIcon": "skathworktable1icon.png",
+        "placementImage": "skathworktable1.png:default.default",
+        "placementImagePosition": [-24, 0],
+        "description": "A rustic Skath-made workbench, used to craft furniture and farming supplies.",
+        "shortdescription": "^orange;Rustic Skath Workbench^reset;",
+
+        "apexDescription": "This table looks rather rustic, but is incredibly sturdy nonetheless.",
+        "avianDescription": "The surface of this table is quite streamlined.",
+        "floranDescription": "Waterdragon table. Floran cutsss meat on thisss.",
+        "glitchDescription": "Impressed. This table can be used to craft both farming supplies and furniture.",
+        "humanDescription": "The sort of workbench used for carpetry. I'm pretty handy with these.",
+        "hylotlDescription": "A crude station, for crafting crude furniture.",
+        "novakidDescription": "Not my kinda rustic, but it'll do.",
+        "skathDescription": "Although rustic, with this table I can craft furniture and farming supplies."
+      },
+      "interactData": {
+        "config": "/interface/windowconfig/skathworktablecrafting.config",
+        "paneLayoutOverride": {
+          "windowtitle": {
+            "title": " Rustic Skath Workbench",
+            "subtitle": " ^#b9b5b2;Furniture and Farming.",
+            "icon": { "file": "/interface/crafting/craftingfurniture2.png" }
+          }
+        },
+        "filter": ["skathfurnituretable1", "craftingfarm" ],
+        "upgradeMaterials": [
+          { "item": "durasteelbar", "count": 10 },
+          { "item": "hydrolium", "count": 10 },
+          { "item": "titaniumbar", "count": 5 }
+         ]
+      },
+      "upgradeSoundEffect": "fanfare",
+      "upgradeParticleEffect": "dust"
+    },
+    {
+      "animationState": "industrial",
+      "itemSpawnParameters": {
+        "price": 1000,
+        "rarity": "legendary",
+        "inventoryIcon": "skathworktable2icon.png",
+        "placementImage": "skathworktable2.png:default.default",
+        "placementImagePosition": [-24, 0],
+
+        "description": "An improved Skath Workbench, for crafting high-quality furniture and farming supplies.",
+        "shortdescription": "^orange;Skath Industrial Workbench^reset;",
+
+        "apexDescription": "An impressively high-tech workbench. I approve.",
+        "avianDescription": "I've never had a table with its own arm before.",
+        "floranDescription": "Waterdragon workbench hasss ssstrange arm. Floran sstronger than metal arm!",
+        "glitchDescription": "Impressed. The arm mounted on this workbench seems to assist in crafting.",
+        "humanDescription": "Now that's a high quality carpenter's workbench!",
+        "hylotlDescription": "The Skath appear to have a different definition of 'handmade' to the Hylotl.",
+        "novakidDescription": "A mighty strange lookin' workbench.",
+        "skathDescription": "With this top-of-the-line workbench I can even craft Impervium-based blocks. The arm assists in many ways."
+      },
+      "interactData": {
+        "config": "/interface/windowconfig/skathworktablecrafting.config",
+        "paneLayoutOverride": {
+          "windowtitle": {
+            "title": " Skath Industrial Workbench",
+            "subtitle": " ^#b9b5b2;Furniture and Farming.",
+            "icon": { "file": "/interface/crafting/craftingfurniture2.png" }
+          }
+        },
+        "filter": ["skathfurnituretable1", "skathfurnituretable2", "craftingfarm", "craftingfarm2"  ],
+        "craftingSound": "/sfx/interface/crafting_tech1.ogg"
+      }
+    }
+  ],
+  "orientations": [
+    {
+      "image": "skathworktable1.png",
+      "imagePosition": [-24, 0],
+      "direction": "left",
+      "flipImages": true,
+      "spaceScan": 0.1,
+      "anchors": ["bottom"]
+    },
+    {
+      "image": "skathworktable1.png",
+      "imagePosition": [-24, 0],
+      "direction": "right",
+      "spaceScan": 0.1,
+      "anchors": ["bottom"]
+    }
+  ]
+}

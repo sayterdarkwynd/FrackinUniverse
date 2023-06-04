@@ -1,0 +1,46 @@
+{
+  "objectName" : "wildtinselbush",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Uncommon",
+  "category" : "seed",
+  "description" : "While it looks like tinsel, it's as sharp as razors and packed with tungsten.",
+  "shortdescription" : "Tinselbush",
+  "objectType" : "farmable",
+  "printable" : false,
+//  "learnBlueprintsOnPickup" : [ "bladetree", "tinselbush" ],
+  "inventoryIcon" : "tinselbushicon.png",
+    "orientations" : [
+    {
+      "dualImage" : "tinselbush.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2] ],
+
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+"stages" : [
+    {
+      "alts" : 3,
+      "duration" : [60, 160]
+    },
+    {
+      "alts" : 3,
+      "duration" : [60, 160]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "tinselbush",
+      "resetToStage" : 0
+    }
+  ],
+  "maxImmersion" : 0.125,
+  "breakDropOptions" : [
+    [ [ "tinselbush", 1, { } ] ]
+  ]
+  }

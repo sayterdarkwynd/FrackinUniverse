@@ -1,0 +1,291 @@
+{
+  "type" : "fucaterpillar",
+  "shortdescription" : "Ravalok",
+  "description" : "This magnificently huge caterpillar must molt into something...",
+
+  "categories" : [ "fucaterpillar" ],
+  "parts" : [ "body" ],
+  "reversed" : true,
+  "animation" : "fucaterpillar.animation",
+
+  "dropPools" : [
+    {
+    "default" : "fucaterpillarLoot",
+    "bow" : "fucaterpillarLoot",
+    "firebow" : "fucaterpillarLoot",
+    "icebow" : "fucaterpillarLoot",
+    "poisonbow" : "fucaterpillarLoot",
+    "electricbow" : "fucaterpillarLoot",
+    "cosmicbow" : "fucaterpillarLoot",
+    "radioactivebow" : "fucaterpillarLoot",
+    "shadowbow" : "fucaterpillarLoot"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+	"damageTeam" : 1,
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+	  "cooldown" : 4,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 15,
+            "minimumRange" : 4,
+            "windupState" : "",
+            "windupTime" : 0.1,
+            "projectileType" : "bioblast4a",
+            "power" : 8,
+            "fireOffset" : [3.75, -0.15],
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.01,
+            "fireSound" : "fire",
+            "fireDelay" : 0.8,
+            "fireState" : "snotspew",
+            "winddownState" : "",
+            "winddownTime" : 0.8
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 1,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 15,
+            "minimumRange" : 4,
+            "windupState" : "idle",
+            "windupTime" : 0.1,
+            "projectileType" : "caterpillarspray",
+            "power" : 0,
+            "fireOffset" : [-3.75, -0.15],
+            "aimAtTarget" : false,
+            "aimDirection" : [0,-1],
+            "projectileCount" : 3,
+            "projectileInterval" : 0.01,
+            "fireSound" : "fire",
+            "fireDelay" : 0.8,
+            "fireState" : "fire",
+            "winddownState" : "",
+            "winddownTime" : 0.8
+          }
+        }
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 8,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 8,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 20]
+          }
+        }
+      ],
+
+      "concurrentActions" : [],
+
+      "concurrentHostileActions" : [],
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "fubugexplosion",
+            "projectileParameters" : { "speed" : 0 },
+            "power" : 0,
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        }
+      ],
+
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "pusdeath",
+            "projectileParameters" : {},
+            "power" : 0,
+            "aimDirection" : [0, -1],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 1]
+          }
+        },
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "fubugexplosion",
+            "projectileParameters" : { "speed" : 0 },
+            "power" : 3,
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-3.5,0.25], [-3.958,-0.417], [-3.917,-2.042], [-2.958,-2.875], [3.5,-2.917], [4.333,-2.25], [4.167,-0.542], [3.583,0.167] ],
+      "damage" : 8,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "poisonspear",
+      "knockback" : 10,
+      "statusEffects" : [ "weakpoison" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-3.5,0.25], [-3.958,-0.417], [-3.917,-2.042], [-2.958,-2.875], [3.5,-2.917], [4.333,-2.25], [4.167,-0.542], [3.583,0.167] ],
+
+      "mass" : 2.5,
+      "walkSpeed" : 2.0,
+      "runSpeed" : 5.0,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 0.0,
+        "jumpInitialPercentage" : 0.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "blink",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 102
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "pusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "biooozeImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : { "baseValue" : 0 },
+        "fireResistance" : { "baseValue" : -0.5 },
+        "iceResistance" : { "baseValue" : 0 },
+        "electricResistance" : { "baseValue" : 0 },
+        "physicalResistance" : { "baseValue" : 0 },
+        "shadowResistance" : { "baseValue" : 0 }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, 0],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "fucaterpillar" }
+  }
+}

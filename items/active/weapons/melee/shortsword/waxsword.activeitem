@@ -4,19 +4,20 @@
   "level" : 2,
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "Useless",
+  "description" : "Useless. Maybe with some upgrades...",
   "shortdescription" : "Wax Sword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "shortsword",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword"],
+  "itemTags" : ["weapon","melee","shortsword", "upgradeableWeapon", "bees"],
 
   "inventoryIcon" : "waxsword.png",
-
-  "animation" : "comboshortsword.animation",
+  //"collectablesOnPickup" : { "fu_weaponshortsword" : "waxsword" },
+  "animation" : "comboglowshortsword.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "waxsword.png"
+    "blade" : "waxsword.png",
+    "bladefullbright" : "waxsword.png"
   },
 
   "animationCustom" : { },
@@ -27,10 +28,42 @@
 
   "primaryAbilityType" : "shortswordcombo",
   "primaryAbility" : {
-    "fireTime" : 0.25,
-    "baseDps" : 2.5
+    "fireTime" : 0.43,
+    "baseDps" : 3.5
   },
+  "critChance" : 2,
+  "critBonus" : 1,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
 
+  "upgradeParameters" : {
+    "shortdescription" : "^cyan;Wax Slasher^reset; ^yellow;^reset;",
+  "description" : "Actually capable of cutting.^reset;",
+          "inventoryIcon" : "waxsword3.png",
+      	  "animationParts" : {
+      	    "blade" : "waxsword3.png",
+      	    "bladefullbright" : "waxsword3.png"
+      	  },
+      	  "primaryAbility" : {
+      	    "baseDps" : 7
+      	  },
+        "critChance" : 3,
+        "critBonus" : 8
+    },
+
+  "upgradeParameters2" : {
+    "shortdescription" : "^cyan;God Cleaver^reset; ^yellow;^reset;",
+  "description" : "Unsurpassed in lethality.
+^cyan;Gods fear it. Women crave it.^reset;",
+          "inventoryIcon" : "waxsword4.png",
+      	  "animationParts" : {
+      	    "blade" : "waxsword4.png",
+      	    "bladefullbright" : "waxsword4.png"
+      	  },
+      	    "critChance" : 14,
+      	    "critBonus" : 24,
+      	  "primaryAbility" : {
+      	    "baseDps" : 12
+      	  }
+    }
 }

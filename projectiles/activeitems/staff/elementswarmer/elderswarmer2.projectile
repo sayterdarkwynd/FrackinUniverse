@@ -1,0 +1,32 @@
+{
+  "projectileName" : "elderswarmer2",
+  "physics" : "laser",
+  "timeToLive" : 1,
+  "image" : "elderswarmer.png",
+  "animationCycle" : 0.2,
+  "lightColor" : [0, 180, 0],
+  "frameNumber" : 4,
+  "periodicActions" : [ ],
+  "piercing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elder/eldercarbineboom.config"
+    }
+  ],
+  "speed" : 10,
+  "power" : 30,
+  "damageKind" : "shadowplasma",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "insanity" ],
+
+  "fullbright" : true,
+  "emitters" : [ "defaultgreen" ],
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+
+  "controlMovement" : {
+    "maxSpeed" : 30,
+    "controlForce" : 1
+  }
+}

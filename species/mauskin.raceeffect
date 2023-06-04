@@ -1,0 +1,100 @@
+{
+	"stats": [
+		{
+			"stat": "foodDelta","baseMultiplier": 0.75
+		},
+		{
+			"stat": "electricResistance",
+			"amount": -0.3
+		},
+		{
+			"stat": "radioactiveResistance",
+			"amount": -0.3
+		},
+		{
+			"stat": "shadowResistance",
+			"amount": -0.3
+		},
+		{
+			"stat": "iceResistance",
+			"amount": 0.3
+		},
+		{
+			"stat": "poisonResistance",
+			"amount": 0.3
+		},
+		{
+			"stat": "cosmicResistance",
+			"amount": 0.3
+		},
+		{
+			"stat": "poisonStatusImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "beestingImmunity",
+			"amount": 1
+		}
+	],
+	"diet" : "omnivore",
+	"special": [],
+	"weaponScripts": [{
+			"script": "/scripts/fr_weaponscripts/combobonus.lua",
+			"contexts": [
+				"meleecombo-fire"
+			],
+			"args": {
+				"comboMult": 1.5,
+				"stats": [{
+					"stat": "protection",
+					"amount": 0
+				}]
+			}
+		},
+		{
+			"script": "/scripts/fr_weaponscripts/energybonus.lua",
+			"contexts": [
+				"meleecombo-fire"
+			],
+			"weapons": [
+				"rapier"
+			],
+			"args": {
+				"energyReq": 0.25,
+				"stats": [{
+					"stat": "critChance",
+					"amount": 1
+				}]
+			}
+		}
+	],
+	"weaponEffects": [{
+			"combos": [
+				[
+					"rapier",
+					"dagger"
+				]
+			],
+			"stats": [{
+				"stat": "protection",
+				"effectiveMultiplier": 1.25
+			}]
+		},
+		{
+			"weapons": [
+				"rapier",
+				"shortsword",
+				"mace"
+			],
+			"stats": [{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.1
+				},
+				{
+					"stat": "critChance",
+					"amount": 0.25
+				}
+			]
+		}
+	]
+}

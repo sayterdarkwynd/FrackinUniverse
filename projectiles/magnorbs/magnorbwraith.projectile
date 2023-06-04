@@ -1,0 +1,78 @@
+{
+  "projectileName" : "magnorbwraith",
+  "image" : "magnorbwraith.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 1.5,
+  "speed" : 35,
+  "damageKind" : "shadow",
+  "physics" : "illusion",
+  "fullbright" : true,
+  "bounces" : 0,
+  "piercing" : true,
+  "timeToLive" : 1,
+  "emitters" : [ "defaultgreen" ],
+
+  "lightColor" : [0, 55, 0],
+
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "astraltearstart2",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1
+    },
+    {
+      "action" : "projectile",
+      "type" : "magnorbwraith2",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.25
+    },
+    {
+      "action" : "projectile",
+      "type" : "magnorbwraith2",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.25
+    },
+    {
+      "action" : "projectile",
+      "type" : "magnorbwraith2",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.25
+    },
+    {
+      "action" : "projectile",
+      "type" : "magnorbwraith2",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.25
+    },
+    {
+      "action" : "projectile",
+      "type" : "magnorbwraith2",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.25
+    },
+    {
+      "action" : "projectile",
+      "type" : "magnorbwraith2",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.25
+    }
+  ],
+  "statusEffects" : [ ],
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/weapons/magnorbproto_impact1.ogg",
+        "/sfx/weapons/magnorbproto_impact2.ogg",
+        "/sfx/weapons/magnorbproto_impact3.ogg"
+      ]
+    }
+  ],
+
+  "scripts" : [ ]
+}

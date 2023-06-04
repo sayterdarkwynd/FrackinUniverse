@@ -1,13 +1,13 @@
 {
   "objectName" : "wildwretchelseed",
     "colonyTags" : [ "nature" ],
-  "rarity" : "Common",
+  "rarity" : "legendary",
   "category" : "seed",
-  "description" : "A true creation of weird science. Straddles dimensions.",
+  "description" : "Straddles dimensions and bends the laws of physics.",
   "shortdescription" : "Wretchel Seed",
   "objectType" : "farmable",
   "printable" : false,
-    "learnBlueprintsOnPickup" : [ "herrodbush" ],
+//    "learnBlueprintsOnPickup" : [ "herrodbush" ],
   "inventoryIcon" : "wretchelseedicon.png",
   "orientations" : [
     {
@@ -18,9 +18,11 @@
 
       "spaces" : [ [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7], [1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [1, 7] ],
       "requireTilledAnchors" : false,
-      "anchors" : [ "bottom" ]
+      "anchors" : [ "bottom" ],
+      "metaBoundBox" : [-5, -5, 5, 6]
     }
   ],
+
   "stages" : [
     {
       "duration" : [720, 1460]
@@ -38,7 +40,16 @@
       "resetToStage" : 2
     }
   ],
+
     "maxImmersion" : 0.125,
+          "touchDamage" : {
+            "poly" : [ [0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0] ],
+            "damage" : 0,
+
+            "damageType" : "IgnoresDef",
+            "damageSourceKind" : "cosmic",
+            "statusEffects" : [ "slowfall3", "gravrain" ]
+          },
   "breakDropOptions" : [
     [ [ "wretchelseed", 1, { } ] ]
   ]

@@ -1,0 +1,38 @@
+{
+	"materialId" : 6691,
+	"materialName" : "charredfleshmaterial",
+	"particleColor" : [151, 171, 126, 255],
+	"itemDrop" : "charredfleshmaterial",
+	"description" : "Charred, crisping flesh.",
+	"shortdescription" : "Charred Flesh",
+	"footstepSound" : "/sfx/blocks/footstep_brains.ogg",
+	"health" : 3,
+	"category": "materials",
+
+	"renderTemplate" : "/tiles/fuclassicnopaint.config",
+	"renderParameters" : {
+		"texture" : "charredfleshmaterial.png",
+		"variants" : 5,
+		"lightTransparent" : false,
+		"multiColored" : true,
+		"occludesBelow" : true,
+		"zLevel" : 0
+	},
+  "liquidInteractions" : [
+      {
+        "liquidId": 40,
+        "consumeLiquid": 0.15,
+        "transformMaterialId": 165
+      },
+      {
+        "liquidId": 6,
+        "consumeLiquid": 0.25,
+        "transformMaterialId": 165
+      },
+      {
+        "liquidId": 46,
+        "consumeLiquid": 0.25,
+        "transformMaterialId": 136
+      }
+  ]
+}

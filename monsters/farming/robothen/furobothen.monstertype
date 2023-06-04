@@ -1,6 +1,7 @@
 {
   "type" : "furobothen",
   "shortdescription" : "Robot Hen",
+  "description" : "A Robotic Hen, which lays AA batteries.",
 
   "categories" : [ "robothen" ],
   "parts" : [ "body", "spawn" ],
@@ -15,7 +16,13 @@
       "/monsters/monster.lua"
     ],
 
-    "persistent" : false,
+  "eggType" : "robothenegg",
+  "mateTime" : 60,
+  "diet" : "robo",
+  "hungerTime" : 20,
+  "canPoop" : 2,
+
+    "persistent" : true,
 
     "behavior" : "farmable",
 
@@ -48,6 +55,7 @@
         "targetMaterialKind" : "organic"
       },
 
+      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
@@ -64,7 +72,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 250
+          "baseValue" : 80
         },
         "protection" : {
           "baseValue" : 0.0
@@ -73,6 +81,12 @@
           "baseValue" : 4.0
         },
         "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "tarImmunity" : {
+          "baseValue" : 1.0
+        },
+        "blacktarImmunity" : {
           "baseValue" : 1.0
         }
       },
@@ -93,6 +107,9 @@
     "mouthOffset" : [4, 0],
     "feetOffset" : [0, -6],
     "capturable" : false,
+    "relocatable" : true,
+    "captureHealthFraction" : 0.5,
+    "capturedMonsterType" : "robothenbaby",
     "nametagColor" : [64, 200, 255]
   }
 }

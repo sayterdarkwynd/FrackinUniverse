@@ -1,0 +1,52 @@
+{
+  "objectName" : "barracksgenerator",
+  "colonyTags" : ["barracks","combat"],
+  "rarity" : "Common",
+  "price" : 0,
+  "category" : "decorative",
+  "printable" : false,
+  "description" : "A generator for powering a military base. It's making a gentle humming sound.",
+  "shortdescription" : "Barracks Generator",
+  "race" : "generic",
+
+  "apexDescription" : "It appears to be a generator. What could it be powering?",
+  "avianDescription" : "Mm. I suppose it functions similarly to a particularly large Avolite crystal?",
+  "floranDescription" : "What do buttons do? Floran sshould find out.",
+  "glitchDescription" : "Irritated. The sound this generator's making is more than a little agitating.",
+  "humanDescription" : "A generator, I guess. Could be anything, really.",
+  "hylotlDescription" : "Clearly a utilitarian type of generator.",
+  "novakidDescription" : "It's like a big ol' watermill! Sans the water, of course.",
+
+  "inventoryIcon" : "barracksgeneratoricon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "barracksgenerator.png:<color>", "fullbright" : true }, { "image" : "barracksgeneratorlit.png:<color>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+
+    },
+    {
+      "imageLayers" : [ { "image" : "barracksgenerator.png:<color>", "fullbright" : true }, { "image" : "barracksgeneratorlit.png:<color>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+
+    }
+  ],
+  "soundEffect" : "/sfx/objects/bunkerconsole.ogg",
+  "soundEffectRangeMultiplier" : 0.5
+}

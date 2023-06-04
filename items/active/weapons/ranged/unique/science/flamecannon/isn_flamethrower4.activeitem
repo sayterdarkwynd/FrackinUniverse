@@ -3,45 +3,49 @@
   "price" : 500,
   "inventoryIcon" : "isn_flamethrower4.png",
     "maxStack" : 1,
-    "rarity" : "uncommon",
-  "description" : "A nasty flame weapon guaranteed to cook, or your money back.",
-  "shortdescription" : "Inferno Gun",
-  "level" : 4,
-  "category" : "uniqueWeapon",
-  "itemTags" : ["weapon","ranged","flamethrower"],
-  "tooltipKind" : "gun",
-  "twoHanded" : false,
+    "rarity" : "rare",
+  "description" : "A rather large flame weapon.
+^yellow;Inflicts burning^reset;",
+  "shortdescription" : "Inferno",
+  "level" : 5,
+  "category" : "assaultRifle",
+  "weaponType" : "Flamethrower",
+  "itemTags" : ["weapon","ranged","assaultrifle","flamethrower", "upgradeableWeapon"],
+  "tooltipKind" : "gun2",
+  "twoHanded" : true,
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "isn_flamethrower4.png",
+    "middlefullbright" : "",
     "barrel" : "",
-    "muzzleFlash" : ""
-  },      
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
+  },
   "animationCustom" : {
-    "sounds" : { "fire" : [ "/items/active/weapons/ranged/unique/science/flamecannon/isn_flamethrower_deep.wav" ] },
-    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }  
+    "sounds" : { "fire" : [ "/items/active/weapons/ranged/unique/science/flamecannon/isn_flamethrower_deep.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }
   },
 
-  "baseOffset" : [1.4, 0.34],
-  "muzzleOffset" : [5, 0.125],
+  "baseOffset" : [1.0, 0.34],
+  "muzzleOffset" : [2.4, 0.125],
 
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+  "scripts" : [ "/items/active/weapons/ranged/gun.lua" ],
 
   "elementalType" : "fire",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.03,
-    "baseDps" : 10.7,
-    "energyUsage" : 20,
+    "fireTime" : 0.08,
+    "baseDps" : 8,
+    "energyUsage" : 50,
     "fireType" : "auto",
     "inaccuracy" : 0.02,
     "projectileCount" : 1,
-    "projectileType" : "isn_flamethrower4",
+    "projectileType" : "flamethrower",
     "projectileParameters" : {
-      "speed" : 32
+      "speed" : 32,
+      "timeToLive" : 1.0
     },
     "stances" : {
       "idle" : {
@@ -72,6 +76,24 @@
       }
     }
   },
+  "critChance" : 2,
+  "critBonus" : 4,
+  "isAmmoBased" : 1,
+  "reloadTime" : 2,
+  "magazineSize" : 40,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "altAbilityType" : "spatialcollapseblast",
+  "altAbility" : {
+    "fireTime" : 6,
+    "energyUsage" : 100,
+    "baseDps" : 8,
+    "name" : "Fireblast",
+    "projectileType" : "dragonprojectile"
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+    "upgradeParameters" : {
+      "shortdescription" : "^cyan;Fleshroaster^reset; ^yellow;^reset;"
+    }
 }

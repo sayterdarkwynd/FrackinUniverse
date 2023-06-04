@@ -1,0 +1,56 @@
+{
+  "objectName" : "elderbookstandrelic",
+  "colonyTags" : ["madness","insanity","elder"],
+  "rarity" : "rare",
+  "category":"crafting",
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/tomedais.config",
+    "filter" : [ "tomedais","tomedais1","tomedais2" ],
+		"paneLayoutOverride": {
+			"windowtitle": {
+				"title": "Ancient Texts"
+			}
+		}
+  },
+
+  "description" : "Seek answers for the present from the past.",
+  "shortdescription" : "Ancient Texts",
+"printable" : false,
+  "price" : 2120,
+  "lightColor" : [16, 23, 26],
+
+  "inventoryIcon" : "elderbookstandicon.png",
+  "orientations" : [
+    {
+
+      "imageLayers" : [ { "image" : "elderbookstandrelic.png:<color>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [0, 1.5],
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+
+      "imageLayers" : [  { "image" : "elderbookstandrelic.png:<color>" } ],
+      "direction" : "right",
+      "lightPosition" : [0, 1.5],
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ]
+}

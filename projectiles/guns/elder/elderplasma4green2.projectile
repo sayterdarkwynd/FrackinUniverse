@@ -1,0 +1,50 @@
+{
+  "projectileName" : "elderplasma4green2",
+  "physics" : "laser",
+  "bounces" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "elderplasma4green2.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 2,
+  "power" : 50,
+  "speed" : 75,
+  "supportsProcessing" : true,
+  "lightColor" : [79, 128, 78],
+    "fullbright" : true,
+  "damageKind" : "shadowplasma",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/eldercarbineexplosion/eldercarbineexplosionnospawn.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "shadowguardianpellet",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.5,
+      "config" : { "timeToLive" : 0.15}
+    },
+    {
+      "action" : "projectile",
+      "type" : "shadowguardianpellet",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.5,
+      "config" : { "timeToLive" : 0.15}
+    },
+    {
+      "action" : "projectile",
+      "type" : "shadowguardianpellet",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.5,
+      "config" : { "timeToLive" : 0.15}
+    },
+    {
+      "action" : "projectile",
+      "type" : "shadowguardianpellet",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.5,
+      "config" : { "timeToLive" : 0.15}
+    }
+  ],
+  "statusEffects" : [ "fuparalysis" ]
+}

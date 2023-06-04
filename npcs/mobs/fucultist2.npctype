@@ -1,23 +1,32 @@
 {
   "type" : "fucultist2",
-  "baseType" : "hostile",
+  "baseType" : "hostilefuhard",
 
   "levelVariance" : [0, 1],
 
   "dropPools" : [ "ffbanditTreasure" ],
-  
+  "scriptConfig" : {
+    "dialog" : {
+      "converse" : "/dialog/macready.config:attack",
+      "hail" : "/dialog/macready.config:attack",
+      "attack" : "/dialog/macready.config:attack",
+      "reattack" : "/dialog/macready.config:reattack",
+      "killedTarget" : "/dialog/macready.config:killedTarget",
+      "lostTarget" : "/dialog/macready.config:lostTarget",
+      "outOfSight" : "/dialog/macready.config:outOfSight",
+      "cheerOn" : "/dialog/macready.config:cheerOn",
+      "cantReach" : "/dialog/macready.config:cantReach"
+    }
+  },
   "items" : {
     "override" : [
       [0, [
           {
-            "head" : [ { "name" : "cultarmorhead", "parameters" : { "colorIndex" : 7 } } ],
-            "chest" : [ { "name" : "cultarmorchest", "parameters" : { "colorIndex" : 7 } } ],
-            "legs" : [ { "name" : "cultarmorpants", "parameters" : { "colorIndex" : 7 } } ],
+            "head" : [ { "name" : "caretakerhead" } ],
+            "chest" : [ { "name" : "caretakerchest" } ],
+            "legs" : [ { "name" : "caretaker2legs" } ],
             "primary" : [
-              "dblade"
-            ],
-            "alt" : [
-              "flashlight"
+              "flamingdemonsword2"
             ]
           },
           {
@@ -25,7 +34,17 @@
             "chest" : [ { "name" : "cultarmorchest", "parameters" : { "colorIndex" : 7 } } ],
             "legs" : [ { "name" : "cultarmorpants", "parameters" : { "colorIndex" : 7 } } ],
             "primary" : [
-              "coralspear"
+              "fucultistdagger",
+              "fucultistmace",
+              "fucultistspear",
+              "fucultistshortspear",
+              "fucultistkatana",
+              "fucultistshortsword",
+              "fucultistquarterstaff",
+              "fucultistbow",
+              "fucultistmace",
+              "fucultistbroadsword",
+              "fucultistaxe"
             ]
           },
           {
@@ -33,7 +52,18 @@
             "chest" : [ { "name" : "fudarkrobeschest", "parameters" : { "colorIndex" : 7 } } ],
             "legs" : [ { "name" : "fudarkrobespants", "parameters" : { "colorIndex" : 7 } } ],
             "primary" : [
-              "obsidianblade"
+              "obsidianblade",
+              "fucultistdagger",
+              "fucultistmace",
+              "fucultistspear",
+              "fucultistshortspear",
+              "fucultistkatana",
+              "fucultistshortsword",
+              "fucultistquarterstaff",
+              "fucultistbow",
+              "fucultistmace",
+              "fucultistbroadsword",
+              "fucultistaxe"
             ],
             "alt" : [
               "flashlight"
@@ -44,7 +74,10 @@
             "chest" : [ { "name" : "cultarmorchest", "parameters" : { "colorIndex" : 7 } } ],
             "legs" : [ { "name" : "cultarmorpants", "parameters" : { "colorIndex" : 7 } } ],
             "primary" : [
-              "bloodyknife"
+              "bloodyknife",
+              "cultiststaff1",
+              "cultiststaff2",
+              "cultiststaff3"
             ],
             "alt" : [
               "bloodyknife"
@@ -55,7 +88,9 @@
             "chest" : [ { "name" : "fubonearmorchest", "parameters" : { "colorIndex" : 7 } } ],
             "legs" : [ { "name" : "fubonearmorlegs", "parameters" : { "colorIndex" : 7 } } ],
             "primary" : [
-              "carbonblade","dblade","dbladelong"
+              "carbonblade",
+              "dblade",
+              "dbladelong"
             ],
             "alt" : [
               "flashlight"
@@ -77,17 +112,25 @@
             "chest" : [ { "name" : "cultarmorchest" } ],
             "legs" : [ { "name" : "cultarmorpants" } ],
             "primary" : [
-              "npcdagger",
-              "npcaxe",
-              "npcshortsword",
-              "npcbroadsword",
-              "npchammer",
-              "npcspear",
+              "fucultistdagger",
+              "fucultistmace",
+              "fucultistspear",
+              "fucultistshortspear",
+              "fucultistkatana",
+              "fucultistshortsword",
+              "fucultistquarterstaff",
+              "fucultistbow",
+              "fucultistmace",
+              "fucultistbroadsword",
+              "fucultistaxe",
               "npcassaultrifle",
               "npcpistol",
               "npcmachinepistol",
               "npcshotgun",
-              "npcsniperrifle"
+              "npcsniperrifle",
+              "cultiststaff1",
+              "cultiststaff2",
+              "cultiststaff3"
             ]
           }
         ] ]

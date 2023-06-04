@@ -1,0 +1,102 @@
+{
+  "itemName" : "swtjc_ewg_npcbeampistol",
+  "price" : 0,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A small handgun that fires streams of energy at distant targets with pinpoint accuracy, it's only as accurate as the one wielding it.",
+  "shortdescription" : "NPC Beam Pistol",
+  "tooltipKind" : "gun",
+  "category" : "swtjc_ewg_beamPistol",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","ranged","pistol"],
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : { },
+  "animationCustom" : { },
+  "baseOffset" : [-0.25, 0.25],
+  "muzzleOffset" : [0,0.375],
+
+
+  "magazineSize" : [4,12],
+  "reloadTime" : [1,2],
+  "isAmmoBased" : 1,
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.02,
+    "baseDps" : 6.25,
+    "energyUsage" : 9.375,
+    "inaccuracy" : 0.00,
+
+    "burstTime" : 0.005,
+    "burstCount" : 20,
+    "fireType" : "burst",
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "knockbackRange" : [0.1,0.2]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.1,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  },
+  "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/grenade2.ogg", "/sfx/gun/grapplegun.ogg" ],
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "animationParts" : {
+      "butt" : {
+        "path" : "/items/active/weapons/ranged/pistol/butt/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "middle" : {
+        "path" : "/items/active/weapons/ranged/rocketlauncher/middle/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "barrel" : {
+        "path" : "/items/active/weapons/ranged/pistol/barrel/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+    },
+    "gunParts" : ["butt", "middle", "barrel"],
+    "altAbilities" : [ ],
+    "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
+    "iconDrawables" : ["butt", "middle", "barrel"]
+  }]
+}

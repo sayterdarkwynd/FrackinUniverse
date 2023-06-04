@@ -1,0 +1,74 @@
+{
+  "objectName" : "c_recyclingcenter",
+  "rarity" : "Common",
+  "category" : "storage",
+  "price" : 500,
+  "objectType" : "container",
+  "description" : "Gives your tenants a place to dispose of their recyclable goods. \n^yellow;+1 Happiness^reset;",
+  "shortdescription" : "Recycling Center",
+  "race" : "generic",
+  "printable" : false,
+
+  "inventoryIcon" : "recyclingcentericon.png",
+
+  "orientations" : [
+		{
+			"dualImage" : "recyclingcenter.png:default",
+			"imagePosition" : [-16, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		}
+	],
+	"openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
+    "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
+
+	"scripts" : [ "/scripts/fupower.lua","/objects/colonysystem2/addons/recyclingcenter/recyclingcenter.lua"],
+    "scriptDelta" : 60,
+
+
+	"inputNodes" : [ [0, 2] ],
+	"outputNodes" : [ [1, 2] ],
+	"powertype" : "input",
+	"isn_requiredPower" : 0,
+	"isn_liquidCollector" : false,
+
+
+
+	"airWellRange":256,
+	"productionTime":3000,
+	"slotCount" : 24,
+    "uiConfig" : "/interface/chests/chest<slots>.config",
+    "frameCooldown" : 67,
+    "autoCloseCooldown" : 3600,
+
+	"happiness":1,
+
+    // Named weight categories (changing one will change all of the same weight)
+    // Numbered weights can be used instead of names for customization purposes
+
+   "namedWeights" : {
+
+        "common" : 79,
+        "uncommon" : 20,
+        "rare" : 1
+    },
+
+	"rarityInfoLevel":3,
+	"overrideScanTooltip":true,
+
+   "outputs" : {
+
+        "default" : [
+            { "weight" : "common",   "items" : [ "fu_mulch", "paper", "paper" ] },
+            { "weight" : "uncommon", "items" : [ "polymer", "glass", "paper" ] },
+            { "weight" : "rare",     "items" : [ "nicepaper", "ff_spareparts", "ff_plastic" ] }
+        ]
+
+	}
+
+
+
+
+
+}

@@ -1,22 +1,25 @@
 {
   "name" : "bloodstoneseafloor",
   "friendlyName" : "Blood Ocean",
+  "statusEffects" : [ "insanitynew2", "insanity2"  ],
   "airless" : true,
   "breathable" : false,
-  
+
   "spawnProfile" : {
     "groups" : [
       {
         "select" : 6,
         "pool" : [
-          [ 0.3111, "nautileech" ],     
-          [ 0.3111, "squeem" ],
+          [ 0.4, "nautileech" ],
+          [ 0.4, "squeem" ],
           [ 1, "smallFishOcean1" ],
           [ 1, "smallFishOcean2" ],
           [ 1, "passiveLargeFish" ],
           [ 1, "aggroLargeFish" ],
           [ 1, "squidcritter" ],
-          [ 1, "jellycritter" ]
+          [ 1, "jellycritter" ],
+          [ 0.1, "atropusfish" ],
+          [ 0.25, "atropuseye" ]
         ]
       }
     ],
@@ -32,7 +35,7 @@
   },
 
 
-  "parallax" : "/parallax/surface/bloodstoneseafloor.parallax",
+  "parallax" : "/parallax/surface/atropusbloodseafloor.parallax",
 
   "skyOptions" : [
 
@@ -102,7 +105,7 @@
       "nightLightColor" : [100, 12, 0]
     }
   ],
-  
+
   "ambientNoises" : {
     "day" : {
       "tracks" : [ "/sfx/environmental/ocean_underwater.ogg" ]
@@ -114,14 +117,14 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/ocean-exploration2.ogg","/music/atropusambiance1a.ogg", "/music/atropusambiance2a.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/ocean-exploration2.ogg","/music/atropusambiance3a.ogg", "/music/atropusambiance4a.ogg" ]
     }
   },
-  
-  "hueShiftOptions" : [ 0 ],
+
+  "hueShiftOptions" : [-20, -15, -10, -5, 0, 5, 10, 15, 20],
 
   "mainBlock" : "bloodsand",
   "subBlocks" : [ "fleshblock", "ff_bloodstone", "brainsblock" ],
@@ -142,7 +145,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.45, "wilderithianalgaeseed" ],
               [0.45, "wildpiruseed" ]
               ],
@@ -150,15 +153,6 @@
             }
           ]
         },
-        {
-          "mode" : "floor",
-          "priority" : 3.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:tiyDist",
-
-          "type" : "microdungeon",
-          "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
-        },         
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -180,13 +174,22 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "ffbasicChest2" ]
+          "treasureBoxSets" : [ "ffatropusChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -200,21 +203,11 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
         },
-        {
-          "mode" : "floor",
-          "priority" : 3.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
-
-          "type" : "microdungeon",
-          "microdungeons" : [ "canyonmini", "terrainfeatures", "rockclimb","rocktunnel",  "toxicmicrodungeons", "sandstone", "blockpile", "rockyshapes", "rods", "spikes" ]
-        },
-
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -241,7 +234,7 @@
 
           "type" : "grass",
           "grasses" : [ "bloodstoneplant" ]
-        },        
+        },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -250,49 +243,59 @@
 
           "type" : "grass",
           "grasses" : [ "bloodstonesprout" ]
-        },    
+        },
         {
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffCommon",
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ [1, "bloodstoneplant1" ] ]
-            },
-            {
-              "pool" : [ [1, "bloodstoneplant2" ] ]
-            },
-            {
-              "pool" : [ [1, "bloodstoneplant3" ] ]
-            },
-            {
-              "pool" : [ [1, "bloodstoneplant4" ] ]
-            },
-            {
-              "pool" : [ [1, "bloodstoneplant5" ] ]
-            },
-            {
-              "pool" : [ [1, "anemone1" ] ]
-            },
-            {
-	      "pool" : [ [1, "heartroot" ] ]
+              "pool" : [
+              [0.35, "bloodstoneplant1" ],
+              [0.35, "bloodstoneplant2" ],
+              [0.35, "bloodstoneplant3" ],
+              [0.35, "bloodstoneplant4" ],
+              [0.35, "bloodstoneplant5" ],
+              [0.35, "anemone1"],
+              [0.35, "heartroot" ]
+              ]
             }
           ]
         },
         {
-          "mode" : "ceiling",
+          "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseMedium",
+          "distribution" : "/biomes/distributions.config:ffAverage",
 
-          "type" : "tree",
-          "treeFoliageHueShiftMax" : 220,
-          "treeStemHueShiftMax" : 220,
-          "treeStemList" : [ "vein", "bluevein"],
-          "treeFoliageList" : [ "blueveiny", "veiny" ]
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "heckpillar1" ],
+              [0.35, "heckpillar2" ]
+              ]
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "hecklight1" ],
+              [0.35, "hecklight2" ]
+              ]
+            }
+          ]
         },
       {
         "mode" : "floor",
@@ -301,23 +304,11 @@
         "distribution" : "/biomes/distributions.config:denseMedium",
 
         "type" : "tree",
-        "treeFoliageHueShiftMax" : 0,
-        "treeStemHueShiftMax" : 0,
+        "treeFoliageHueShiftMax" : 15,
+        "treeStemHueShiftMax" : 15,
         "treeStemList" : [ "bloodkelp" ],
         "treeFoliageList" : [ "bloodkelpy" ]
       },
-        {
-          "mode" : "ceiling",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseMedium",
-
-          "type" : "tree",
-          "treeFoliageHueShiftMax" : 220,
-          "treeStemHueShiftMax" : 220,
-          "treeStemList" : [ "bloodvine", "fleshvine_atropus", "fleshvine2", "podvine" ],
-          "treeFoliageList" : [ "nofoliagevine"  ]
-        },
       {
         "mode" : "floor",
         "priority" : 2.0,
@@ -328,7 +319,7 @@
         "bushes" : [
           {
             "name" : "bloodsea",
-            "baseHueShiftMax" : 0,
+            "baseHueShiftMax" : 15,
             "modHueShiftMax" : 0
           }
         ]
@@ -342,27 +333,27 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : 
-              [ 
-              [0.55, "atropus1" ], 
-              [0.55, "atropus2" ], 
+              "pool" :
+              [
+              [0.55, "atropus1" ],
+              [0.55, "atropus2" ],
               [0.55, "atropus3" ],
-              [0.15, "fleshbush1" ], 
-              [0.15, "fleshbush2" ], 
-              [0.15, "fleshbush3" ], 
-              [0.15, "fleshbush4" ], 
-              [0.15, "fleshbush5" ], 
+              [0.15, "fleshbush1" ],
+              [0.15, "fleshbush2" ],
+              [0.15, "fleshbush3" ],
+              [0.15, "fleshbush4" ],
+              [0.15, "fleshbush5" ],
               [0.15, "fleshbush6" ],
-              [0.15, "heckaltar" ], 
-              [0.15, "heckbush1" ], 
-              [0.15, "heckbush2" ], 
-              [0.15, "heckbush3" ], 
-              [0.15, "heckbush4" ], 
+              [0.15, "heckaltar" ],
+              [0.15, "heckbush1" ],
+              [0.15, "heckbush2" ],
+              [0.15, "heckbush3" ],
+              [0.15, "heckbush4" ],
               [0.15, "heckbush5" ],
-              [0.15, "heckbush6" ], 
-              [0.15, "heckbush7" ], 
-              [0.15, "heckbush8" ], 
-              [0.15, "heckbush9" ], 
+              [0.15, "heckbush6" ],
+              [0.15, "heckbush7" ],
+              [0.15, "heckbush8" ],
+              [0.15, "heckbush9" ],
               [0.15, "heckbush10" ]
               ],
               "parameters" : { }

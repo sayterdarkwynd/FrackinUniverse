@@ -1,0 +1,182 @@
+{
+	"type": "fulostandfoundnpc",
+	"baseType": "merchant",
+	"damageTeamType": "friendly",
+
+	"npcname" : "Khe",
+	"identity" : {
+		"name" : "Khe",
+		"gender" : "female",
+		"hairGroup" : "hair",
+		"hairType" : "1",
+
+		//{ "FFCA8A" : "555555", "E0975C" : "424242", "A85636" : "303030", "6F2919" : "151515" },
+		"bodyDirectives" : "?replace=FFCA8A=555555?replace=E0975C=424242?replace=A85636=303030?replace=6F2919=151515?replace=FFD800=2D2D2D?replace=D8B400=101010?replace=FFCC00=555555?replace=56CC7B=555555",
+		//-annoying colors - FFCC00, 56CC7B
+		// ORANGE                                                        Black
+		//{ "DC1F00" : "d0a12f", "BE1B00" : "bb8624", "951500" : "96691f", "FFD800" : "2D2D2D", "D8B400" : "101010" },
+		// BLACK                                                         Kespar
+		//{ "DC1F00" : "555555", "BE1B00" : "424242", "951500" : "303030", "FFD800" : "2C70A5", "D8B400" : "534DA3" },
+		"hairDirectives" : "?replace=DC1F00=555555?replace=BE1B00=424242?replace=951500=303030?replace=FFD800=2D2D2D?replace=FFCC00=555555?replace=D8B400=101010?replace=56CC7B=555555",
+		"personalityIdle" : "idle.2",
+		"personalityArmIdle" : "idle.2",
+		"personalityHeadOffset" : [-1, 0],
+		"personalityArmOffset" : [0, 0]
+	},
+
+	"scriptConfig": {
+		"offeredQuests" : [
+			"khe_fabric","khe_lantern","mastermanipulator2"//,
+			//"fu_t10_initial"//disabled. quest will reward a beacon which is used to access the arena. each quest will reward ONE beacon to the next arena. more can be bought.
+		],
+		"turnInQuests": [
+			"kevin_feedkhe","khe_fabric","khe_lantern","mastermanipulator2",
+			"fu_t10_initial","fu_t10_gaterepair","fu_t10_human_mission1","fu_t10_floran_mission2",
+			"fu_t10_floranarena1","fu_t10_hylotl_mission2","fu_t10_floranarena2","fu_t10_avian_mission2",
+			"fu_t10_floranarena3","fu_t10_apex_mission2","fu_t10_precursor","fu_t10_glitch_mission2"
+			//df2 (7) -> ruin (6) -> swansong (6)
+		],
+		"merchant": {
+			"waitTime": 40,
+			"storeRadius": 8,
+			"poolsFile": "/npcs/merchantpools.config",
+
+			"categories": {
+				"override": ["fulostandfound"]
+			},
+			"buyFactorRange": [1.0, 1.0],
+			"sellFactorRange": [0.2, 0.2],
+			"numItems": 100,
+
+			"paneLayoutOverride": {
+				"windowtitle": {
+					"title": "Khe's Shinies",
+					"subtitle": "  Recover lost 'shinies'"
+				}
+			}
+		},
+
+		"dialog": {
+			"merchant": {
+				"start": {
+					"default": {
+						"default": [
+							"I'm Khe. I find shinies. Lose some?",
+							"I sell lost things. Check them out!"
+						]
+					}
+				},
+				"end": {
+					"default": {
+						"default": [
+							"Be well. Bring back shinies!",
+							"It's no small feat to sell such great things!"
+						]
+					}
+				},
+				"follow": {
+					"default": {
+						"default": [
+							"Follow me for shiny.",
+							"Follow me and we can do business."
+						]
+					}
+				},
+				"welcome": {
+					"default": {
+						"default": [
+							"We're here. Shiny?",
+							"Greetings."
+						]
+					}
+				},
+				"tout": {
+					"default": {
+						"default": [
+							"Shinies for sale! Lost some? Want some? Get some!",
+							"Mrowr. Looking to purchase things you've lost? I've got what you need."
+						]
+					}
+				}
+			}
+		}
+	},
+
+
+	"humanoidTiming": {
+		// Idle, Walk, Run, Jump, Fall, Swim, SwimIdle, Duck, Sit, Lay
+		"stateCycle": [1.0, 0.75, 0.75, 0.25, 0.25, 0.50, 0.50, 1.0, 1.0, 1.0],
+		"stateFrames": [1, 8, 8, 4, 4, 7, 2, 1, 1, 1],
+		// EmoteIdle, Blabbering, Shouting, Happy, Sad, NEUTRAL, Laugh, Annoyed, Oh, OOOH, Blink, Wink, Eat, Sleep
+		//          , normal    , caps    , :)   , :'(, :|     , :D   ,        , :o, :O  ,      , ;)
+		"emoteCycle": [1.0, 0.3, 0.3, 0.3, 1.0, 0.3, 0.5, 1.0, 1.0, 1.0, 1.0, 0.5, 0.3, 1],
+		"emoteFrames": [1, 2, 2, 2, 5, 2, 2, 2, 2, 3, 3, 5, 2, 2]
+	},
+	"items": {
+		"override": [
+			[0, [{
+				"head": ["densiniumheadkhe"],
+				"headCosmetic": [{"parameters":{"directives":"","colorIndex":1},"count":1,"name":"captainshead"}],
+				"chest": ["densiniumchestkhe"],
+				"legs": ["densiniumlegskhe"],
+				"back": ["battlepack3"],
+				"backCosmetic": ["hiderback"],
+				"primary": ["khetastrophae"]
+			}]]
+		]
+	},
+
+	"statusControllerSettings": {
+		"statusProperties": {
+			"targetMaterialKind": "organic"
+		},
+
+		"appliesEnvironmentStatusEffects": false,
+		"minimumLiquidStatusEffectPercentage": 0.1,
+
+		"primaryScriptSources": [
+			"/stats/npc_primary.lua"
+		],
+		"primaryScriptDelta": 5,
+
+		"stats": {
+			"maxHealth": {
+				"baseValue": 100.0
+			},
+			"maxEnergy": {
+				"baseValue": 100.0
+			},
+			"powerMultiplier": {
+				"baseValue": 1.0
+			},
+			"protection": {
+				"baseValue": 1.0
+			},
+			"healthRegen": {
+				"baseValue": 0.0
+			},
+			"energyRegen": {
+				"baseValue": 100.0
+			},
+			"shieldSuppressed": {
+				"baseValue": 0.0
+			},
+			"invulnerable": {
+				"baseValue": 0.0
+			}
+		},
+
+		"resources": {
+			"health": {
+				"maxStat": "maxHealth",
+				"deltaStat": "healthRegen",
+				"defaultPercentage": 100
+			},
+			"energy": {
+				"maxStat": "maxEnergy",
+				"deltaStat": "energyRegen",
+				"defaultPercentage": 100
+			}
+		}
+	}
+}

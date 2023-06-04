@@ -1,45 +1,34 @@
 {
   "type" : "crewmembergas",
-  "baseType" : "crewmember",
-
-  // This npctype is used just as a base for the other crewmemberchemist*
-  // npctypes. Don't use it directly for spawning NPCs.
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
-
     "crew" : {
-    "defaultUniform" : {
-	"head" : "ff_gasmask",
-    	"chest" : "scientistchest",
-   	"legs" : "scientistlegs"
-  	},
-        "benefits" : [
-          {
-            // Ephemeral effects gained upon leaving the ship
-            "type" : "EphemeralEffect",
-            "effect" : "helium3Immunity",
-            "duration" : 300
-          },  
-          {
-            // Ephemeral effects gained upon leaving the ship
-            "type" : "EphemeralEffect",
-            "effect" : "shadowgasImmunity",
-            "duration" : 300
-          },         
-          {
-            // Persistent effects are active while on the ship
-            "type" : "PersistentEffect",
-            "effect" : "regeneration01"
-          }
-        ],
+      "defaultUniform" : {
+        "head" : "ff_gasmask",
+        "chest" : "scientistchest",
+        "legs" : "scientistlegs"
+      },
+
       "role" : {
         "type" : "chemist",
         "name" : "Scientist",
         "field" : "Toxic Gas",
-        "uniformColorIndex" : 6
+        "uniformColorIndex" : 6,
+
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "gasimmunity",
+            "duration" : 300
+          },
+	      {
+	        "type": "ShipUpgradeBenefit",
+	        "property": "maxFuel",
+	        "value": 200
+	      }
+        ]
       }
     },
 
@@ -48,7 +37,17 @@
         "roleDescription" : {
           "default" : {
             "default" : [
-              "I'll give you a boost whenever we're on the ship!"
+              "I'll give you a fuel boost using special gas whenever we're on the ship!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran give you a fuel boossstss from special gass!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Friendly. I'll give you a fuel boost using special gas whenever we're on the ship!"
             ]
           }
         },
@@ -59,21 +58,6 @@
               "Let me help you out!",
               "Looks like you could use my assistance!",
               "I can help!"
-            ]
-          },
-          "floran" : {
-            "default" : [
-              "Floran hasss things to help you out!",
-              "Floran can help out!",
-              "Floran hasss things to help!"
-            ]
-          },
-          "glitch" : {
-            "default" : [
-              "Eager. I can help you out!",
-              "Excited. Perhaps you could do with a power-up!",
-              "Intrigued. I wonder if this will help you?",
-              "Helpful. Take this, it will help!"
             ]
           }
         }
@@ -86,7 +70,7 @@
       [0, [
           {
             "primary" : [ "dblade" ],
-            "sheathedprimary" : [ "laspistol" ]          
+            "sheathedprimary" : [ "laspistol" ]
           }
         ] ]
     ]

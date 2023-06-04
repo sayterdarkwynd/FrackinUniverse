@@ -1,0 +1,52 @@
+{
+  "objectName" : "atropusminifridge",
+  "colonyTags" : ["atropus","cooking","storage"],
+  "rarity" : "legendary",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "A small fridge made from flesh and organs.",
+  "shortdescription" : "Atropus Mini Fridge",
+  "race" : "generic",
+  "category" : "fridgeStorage",
+  "price" : 500,
+  "health" : 1.5,
+
+  "apexDescription" : "An awful looking fridge. I wouldn't store food here.",
+  "avianDescription" : "This makes me want to vomit.",
+  "floranDescription" : "Not fridge! Isss food!",
+  "glitchDescription" : "Wary. This fridge makes my circuits shake.",
+  "humanDescription" : "This fridge makes me want to throw up!",
+  "hylotlDescription" : "Food here would just become spoiled and rotten.",
+  "novakidDescription" : "I ain't using this.",
+
+  "inventoryIcon" : "atropusminifridgeicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "atropusminifridge.png:<color>.<key>",
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+
+    }
+  ],
+
+  "scripts" : [ "atropusfurniture.lua" ],
+  "scriptDelta" : 5,
+
+  "openSounds" : [ "/sfx/objects/fleshdoor_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/fleshdoor_close.ogg" ],
+  "slotCount" : 32,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+
+  "itemAgeMultiplier" : 0.0,
+
+  "soundEffect" : "/sfx/objects/fridge_hum.ogg"
+
+}

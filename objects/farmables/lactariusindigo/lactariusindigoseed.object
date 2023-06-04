@@ -1,0 +1,45 @@
+{
+  "objectName" : "lactariusindigoseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Rare",
+  "category" : "seed",
+  "description" : "Resistant to shadow effects.",
+  "shortdescription" : "Lactarius Indigo",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 12,
+//  "learnBlueprintsOnPickup" : [ "lactariusindigoseed" ],
+  "inventoryIcon" : "lactariusindigoseedicon.png",
+  "largeImage" : "lactariusindigoseed.png:default.2.1",
+  //"collectablesOnPickup" : { "fu_plant" : "lactariusindigo" },
+  "orientations" : [
+    {
+      "dualImage" : "lactariusindigoseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [1, 0], [2, 0], [0, 1], [1, 1], [2, 1], [0, 2], [1, 2], [2, 2] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [320, 560]
+    },
+    {
+      "duration" : [320, 560]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "lactariusindigoHarvest",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125,
+  "beeLikeness" : { "shrouded" : 1}
+}

@@ -1,0 +1,379 @@
+{
+  "type" : "starspawn",
+  "shortdescription" : "Star Spawn of Cthulhu",
+  "description" : "Ancient, and emanating malice.",
+
+  "categories" : [ "starspawn" ],
+  "parts" : [ "body" ],
+
+  "animation" : "starspawn.animation",
+
+  "dropPools" : [ "ffelderStarspawnTreasure" ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 22,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.5,
+      "hurtTime": 0.12,
+      "hurtWaitForGround": false,
+      "hurtWaitForGroundTime": 0.1,
+
+      "foundTargetActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+	    "moveState": "walk",
+	    "idleState": "fire3",
+	    "teleportMinDistance": 6,
+	    "targetXDelta": 5,
+	    "groundMinHeight": -10,
+	    "groundMaxHeight": 10
+          }
+        }
+      ],
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+	  "cooldown" : 5,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 15,
+            "minimumRange" : 3,
+            "windupState" : "",
+            "windupTime" : 0.4,
+
+            "projectileType" : "elderplasma4green",
+            "projectileParameters" : { "damageKind" : "shadow" },
+            "power" : 9,
+            "speed": 50,
+            "fireOffset" : [1.4, -1.4],
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
+            "fireSound" : "",
+            "fireDelay" : 0.2,
+            "range": 30,
+            "fireState" : "fire",
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        },
+        {
+          "name" : "action-fire",
+	  "cooldown" : 15,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 24,
+            "minimumRange" : 1,
+            "windupState" : "fire3",
+            "windupTime" : 0.4,
+
+            "projectileType" : "starspawntentacle1",
+            "projectileParameters" : { "statusEffects" : [ "superdarkstatlarge" ],  "damageKind" : "shadow" },
+            "power" : 12,
+            "fireOffset" : [1.75, -2],
+            "aimAtTarget" : true,
+            "fireSound" : "aggroHop",
+            "range": 12,
+            "fireDelay" : 0.2,
+            "fireState" : "",
+            "winddownState" : "firewinddown",
+            "winddownTime" : 0.4
+          }
+        },
+        {
+          "name" : "action-fire",
+	  "cooldown" : 9,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 12,
+            "minimumRange" : 3,
+            "windupState" : "fire2",
+            "windupTime" : 0.6,
+
+            "projectileType" : "elderblast1",
+            "projectileParameters" : { "damageKind" : "bioweapon" },
+            "power" : 8,
+            "speed": 50,
+            "fireOffset" : [1.75, -2],
+            "aimAtTarget" : true,
+            "fireSound" : "aggroHop",
+            "range": 8,
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 1.2
+          }
+        },
+        {
+          "name" : "action-fire",
+	  "cooldown" : 6,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 18,
+            "minimumRange" : 12,
+            "windupState" : "fire2",
+            "windupTime" : 0.6,
+
+            "projectileType" : "elderburst",
+            "projectileParameters" : { "damageKind" : "shadow" },
+            "power" : 8,
+            "speed": 50,
+            "fireOffset" : [1.75, -2],
+            "aimAtTarget" : true,
+            "projectileCount" : 3,
+            "projectileInterval" : 0.14,
+            "fireSound" : "aggroHop",
+            "range": 8,
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 1.2
+          }
+        },
+        {
+          "name" : "action-fire",
+	  "cooldown" : 12,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 22,
+            "minimumRange" : 12,
+            "windupState" : "fire3",
+            "windupTime" : 0.7,
+
+            "projectileType" : "poisonblast",
+            "projectileParameters" : { "damageKind" : "bioweapon" },
+            "power" : 12,
+            "fireOffset" : [1.75, -2],
+            "aimAtTarget" : true,
+            "fireSound" : "fire",
+            "range": 15,
+            "fireState" : "",
+            "winddownState" : "firewinddown",
+            "winddownTime" : 0.4
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+	    "moveState": "walk",
+	    "idleState": "idle",
+	    "teleportMinDistance": 9,
+	    "targetXDelta": 5,
+	    "groundMinHeight": -10,
+	    "groundMaxHeight": 10
+          }
+        }
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+	    "moveState": "walk",
+	    "idleState": "fire3",
+	    "teleportMinDistance": 8,
+	    "targetXDelta": 5,
+	    "groundMinHeight": -10,
+	    "groundMaxHeight": 10
+          }
+        },
+        {
+          "name" : "action-spawncompanions",
+          "cooldown" : 12,
+          "parameters" : {
+            "maxCount" : 2,
+            "spawnCooldown" : 15.0,
+            "monsterType" : "squidbeast",
+            "state" : "fire2"
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 15],
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "concurrentActions" : []
+
+    },
+
+
+    "damageParts" : {
+      "body" : {
+        "damage" : 16,
+
+        "teamType" : "enemy",
+        "damageSourceKind" : "shadow",
+        "knockback" : 30,
+        "statusEffects" : [ ]
+      }
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-1.625, -2.375], [1.75, -2.375], [1.75, 2.0], [-1.625, 2.0] ],
+      "damage" : 14,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "shadow",
+      "knockback" : 20,
+      "statusEffects" : [ "insanity" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-0.75, -3.5], [-0.35, -4], [0.35, -4], [0.75, -3.5], [0.75, -0.85], [0.35, -0.28], [-0.35, -0.28], [-0.75, -0.85] ],
+
+      "mass" : 2.5,
+      "walkSpeed" : 5,
+      "runSpeed" : 11,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 35.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.35
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 80
+        },
+        "protection" : {
+          "baseValue" : 35
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "insanityImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.25
+        },
+        "poisonResistance" : { "baseValue" : 0 },
+        "fireResistance" : { "baseValue" : 0 },
+        "iceResistance" : { "baseValue" : 0 },
+        "electricResistance" : { "baseValue" : 0 },
+        "physicalResistance" : { "baseValue" : 0 },
+        "shadowResistance" : { "baseValue" : 0.8 },
+        "bleedingImmunity" : { "baseValue" : 1 },
+        "linerifleResistance" : { "baseValue" : 0.9 },
+        "linerifleStatusImmunity" : { "baseValue" : 1 },
+        "centensianenergyResistance" : { "baseValue" : 0.9 },
+        "centensianenergyStatusImmunity" : { "baseValue" : 0.9 },
+        "xanafianResistance" : { "baseValue" : 0.9 },
+        "xanafianStatusImmunity" : { "baseValue" : 1 },
+        "akkimariacidResistance" : { "baseValue" : 0.9 },
+        "akkimariacidStatusImmunity" : { "baseValue" : 1 },
+        "ignoreInvisibilityEffects" : { "baseValue" : 1 }
+      },
+
+      "resources" : {
+        "damageAbsorption" : {
+          "deltaValue" : 0.0,
+          "initialValue" : 0.0
+        },
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false
+  }
+}

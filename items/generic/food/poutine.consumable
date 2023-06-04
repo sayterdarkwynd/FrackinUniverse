@@ -1,0 +1,24 @@
+{
+  "itemName": "poutine",
+  "rarity": "rare",
+  "price": 100,
+  "category": "preparedFood",
+  "inventoryIcon": "poutine.png",
+  "description": "The most important survivor of Earth.\n^red;-^white;35% ^red;Run^gray;, ^red;Jump ^gray;(^white;125s^gray;)^reset;",
+  "shortdescription": "Poutine",
+  "foodValue": 50,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1000,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 0.1,
+  "effects": [
+    [
+      {
+        "effect": "slow",
+        "duration": 125
+      }
+    ]
+  ],
+  "blockingEffects": ["wellfed"]
+}

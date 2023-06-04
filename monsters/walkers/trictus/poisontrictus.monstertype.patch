@@ -1,0 +1,136 @@
+[
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-charge",
+        "cooldown": 4,
+        "parameters": {
+          "maximumRange": 10,
+          "windupState": "",
+          "windupTime": 0,
+          "chargeTime": 0.4,
+          "aimAtTarget": true,
+          "aimDirection": [
+            1,
+            0.5
+          ],
+          "chargeSpeed": 5,
+          "chargeControlForce": 200,
+          "chargeState": "slash",
+          "wallCrashSound": "",
+          "wallCrashEmitter": "",
+          "winddownStopForce": 200,
+          "winddownState": "",
+          "winddownTime": 0.5
+        }
+      },
+      {
+        "name": "action-fire",
+        "cooldown": 3,
+        "parameters": {
+          "requireLineOfSight": true,
+          "maximumRange": 20,
+          "minimumRange": 2,
+          "windupState": "firewindup",
+          "windupTime": 0.8,
+          "windupStopForce": 200,
+          "aimAtTarget": true,
+          "aimDirection": [
+            0,
+            1
+          ],
+          "inaccuracy": 0.5,
+          "projectileType": "cactusthorns",
+          "projectileParameters": {
+            "timeToLive": 1
+          },
+          "fireOffset": [
+            0,
+            1
+          ],
+          "projectileCount": 6,
+          "projectileInterval": 0.05,
+          "fireSound": "fire",
+          "fireState": "fire",
+          "winddownState": "idle",
+          "winddownTime": 0.3
+        }
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/targetQueryRange",
+    "value": 15
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/targetQueryCooldown",
+    "value": 15
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/keepTargetInRange",
+    "value": 20
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/targetOutOfSightTime",
+    "value": 50.5
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/aimAtTarget",
+    "value": true
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/aimDirection",
+    "value": [
+      1,
+      0.5
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/physicalResistance/baseValue",
+    "value": 0.2
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/firebow",
+    "value": "trictusHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/icebow",
+    "value": "trictusHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/poisonbow",
+    "value": "trictusHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/electricbow",
+    "value": "trictusHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/radioactivebow",
+    "value": "trictusHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/cosmicbow",
+    "value": "trictusHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/shadowbow",
+    "value": "trictusHunting"
+  }
+]

@@ -1,0 +1,72 @@
+{
+  "objectName" : "mantizitechstation",
+  "colonyTags" : ["mantizi"],
+  "printable" : false,
+  "rarity" : "Common",
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/zb/newSail/newSail.config",
+
+  "category" : "decorative",
+  "lightColor" : [61, 88, 102],
+  "lightPosition" : [-1, 0],
+
+  "description" : "This tech station lets me talk to S.A.I.L., my personal AI servant.",
+  "shortdescription" : "S.A.I.L",
+  "race" : "fumantizi",
+
+  "apexDescription" : "A tech station. I can enable tech and talk to S.A.I.L through this.",
+  "avianDescription" : "I can use this station to enable tech and talk to S.A.I.L.",
+  "floranDescription" : "Floran use thisss for magiccc and talk to sshhip S.A.I.L!",
+  "glitchDescription" : "Informative. This tech station allows me to choose tech and talk to S.A.I.L.",
+  "humanDescription" : "A tech station. Allows me to communicate with S.A.I.L and enable tech!",
+  "hylotlDescription" : "This tech station enables tech and allows me to communicate with S.A.I.L.",
+  "novakidDescription" : "This here station let's me talk with SAIL.",
+  "fumantiziDescription" : "I can mess with my techs here, as well as talk to the AI, S.A.I.L.",
+
+  "inventoryIcon" : "mantizitechstationicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "mantizitechstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "mantizitechstationlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 32,
+      "animationCycle" : 3.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+
+    }
+  ],
+
+  "offeredQuests" : [ "gaterepair" ],
+
+  "animation" : "/objects/ship/techstation.animation",
+  "scripts" : [
+    "/objects/spawner/techstation.lua",
+    "/objects/scripts/customtechstation.lua"
+  ],
+  "scriptDelta" : 20,
+  "shipPetType" : "petslugbun",
+  "spawnOffset" : [2, -1],
+
+  "chatPortrait" : "/ai/portraits/mantiziportrait.png:yell.1",
+  "dialog" : {
+    "wakeUp" : [
+      [ "Rebooting...", "/ai/portraits/mantiziportrait.png:unique.1" ],
+      [ "I am S.A.I.L, your Ship-based Artificial Intelligence Lattice. I manage the maintainance of your ship.", "/ai/portraits/mantiziportrait.png:talk.0" ],
+      [ "I am also programmed to offer you information and advice.", "/ai/portraits/mantiziportrait.png:talk.0" ],
+      [ "Earth was attacked by an unknown force, and was subsequently annihilated.", "/ai/portraits/mantiziportrait.png:talk.1" ],
+      [ "The ship's navigation systems were damaged in our escape. Our location is currently unknown.", "/ai/portraits/mantiziportrait.png:talk.1" ]
+    ],
+    "wakePlayer" : [
+      [ "System is down, please reboot.", "/ai/portraits/mantiziportrait.png:unique.1"],
+      [ "Please reboot the system.", "/ai/portraits/mantiziportrait.png:unique.1"],
+      [ "Reboot process remains uninitiated.", "/ai/portraits/mantiziportrait.png:unique.1"],
+      [ "To make use of your S.A.I.L please reboot.", "/ai/portraits/mantiziportrait.png:unique.1" ],
+      [ "Rebooting has shown to improve ship interaction satisfaction levels by 73%.", "/ai/portraits/mantiziportrait.png:unique.1"],
+      [ "Rebooting requires a conscious entity to interact with the S.A.I.L console.", "/ai/portraits/mantiziportrait.png:unique.1" ]
+    ]
+  },
+
+  "uniqueId" : "techstation"
+}

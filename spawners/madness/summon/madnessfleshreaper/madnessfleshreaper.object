@@ -1,0 +1,32 @@
+{
+  "objectName" : "madnessfleshreaper",
+  "rarity" : "uncommon",
+  "description" : "Calling this thing forth is likely a terrible mistake. Enjoy!",
+  "shortdescription" : "Fleshreaper",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 850,
+  "printable" : false,
+
+  "inventoryIcon" : "madnessfleshreaper.png",
+  "orientations" : [
+    {
+      "dualImage" : "madnessfleshreaper.png:<color>",
+      "imagePosition" : [-10, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "spaces" : [  [0, 0], [-1, 0], [0, 1], [-1, 1]],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "botspawner" : {
+      "type" : "fleshreaper",
+	  "monsterImage":"/monsters/flyers/fleshreaper/fleshreaper.png:idle.1?"
+  },
+
+  "scripts" : [
+    "/spawners/fuminionspawner.lua"
+  ],
+  "scriptDelta" : 5
+}

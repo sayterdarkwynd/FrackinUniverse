@@ -1,0 +1,160 @@
+{
+  "name" : "freezestorm",
+  "icon" : "/interface/cockpit/weather/freezestorm.png",
+
+  "particles" : [
+     {
+       "density" : 0.15,
+       "particle" : {
+         "type" : "textured",
+         "image" : "/particles/snow/1.png",
+         "velocity" : [0, -1.5],
+         "angularVelocity" : 180,
+         "timeToLive" : 8,
+         "collidesForeground" : true,
+         "collidesLiquid" : true
+       }
+     },
+     {
+       "density" : 0.15,
+       "particle" : {
+         "type" : "textured",
+         "image" : "/particles/snow/2.png",
+         "velocity" : [0, -3.75],
+         "angularVelocity" : 180,
+         "timeToLive" : 8,
+         "collidesForeground" : true,
+         "collidesLiquid" : true
+       }
+     },
+     {
+       "density" : 0.15,
+       "particle" : {
+         "type" : "textured",
+         "image" : "/particles/snow/3.png",
+         "velocity" : [0, -2],
+         "angularVelocity" : 180,
+         "timeToLive" : 8,
+         "collidesForeground" : true,
+         "collidesLiquid" : true
+       }
+    },
+    {
+
+      "density" : 0.05,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/fog/1.png",
+        "velocity" : [0, -15],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 8,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.15,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/snow/1.png",
+        "velocity" : [0, -12],
+        "angularVelocity" : 180,
+        "timeToLive" : 8,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.15,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/snow/2.png",
+        "velocity" : [0, -11],
+        "angularVelocity" : 180,
+        "timeToLive" : 8,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.15,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/snow/3.png",
+        "velocity" : [0, -14],
+        "angularVelocity" : 180,
+        "timeToLive" : 8,
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    }
+  ],
+  "projectiles" : [
+    {
+      "projectile" : "icestorm",
+      "parameters" : {
+        "power" : 25
+      },
+      "velocity" : [0, -50],
+      "ratePerX" : 0.005,
+      "spawnAboveRegion" : 20,
+      "spawnHorizontalPad" : 10,
+      "windAffectAmount" : 1.0
+    },
+    {
+      "projectile" : "hail1",
+      "parameters" : {
+        "power" : 5
+      },
+      "velocity" : [0, -50],
+      "ratePerX" : 0.05,
+      "spawnAboveRegion" : 24,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    },
+    {
+      "projectile" : "hail2",
+      "parameters" : {
+        "power" : 3
+      },
+      "velocity" : [0, -50],
+      "ratePerX" : 0.05,
+      "spawnAboveRegion" : 22,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    },
+    {
+      "projectile" : "hail3",
+      "parameters" : {
+        "power" : 2
+      },
+      "velocity" : [0, -50],
+      "ratePerX" : 0.05,
+      "spawnAboveRegion" : 20,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    },
+    {
+      "projectile" : "hail4",
+      "parameters" : {
+        "power" : 1
+      },
+      "velocity" : [0, -50],
+      "ratePerX" : 0.05,
+      "spawnAboveRegion" : 15,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    }
+  ],
+
+  "duration" : [50, 400],
+  "maximumWind" : 60.0,
+  "weatherNoises" : [ "/sfx/weather/DesertMajor.ogg" ]
+}
+
+
+
+

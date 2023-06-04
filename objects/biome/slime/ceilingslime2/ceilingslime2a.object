@@ -1,0 +1,59 @@
+{
+  "objectName" : "ceilingslime2a",
+    "colonyTags" : ["slime", "slimeperson", "slimenpc", "slimenpchuman"],
+  "rarity" : "Common",
+  "category" : "Decoration",
+  "price" : 60,
+  "printable" : false,
+
+  "description" : "A glob of dripping slime.",
+  "shortdescription" : "Dripping Slime",
+  "race" : "generic",
+
+  "apexDescription" : "A slime deposit. It appears to be dripping.",
+  "avianDescription" : "A disgusting slime ball.",
+  "floranDescription" : "Floran wants to avoid touching ssslime.",
+  "glitchDescription" : "Disgusted. A viscous slime deposit.",
+  "humanDescription" : "Slime is so gross.",
+  "hylotlDescription" : "Slime isn't so bad when your skin is already slimy.",
+  "novakidDescription" : "Oozing slime.",
+
+  "lightColor" : [0, 50, 40],
+
+  "particleEmitter" : {
+    "emissionRate" : 0.2,
+    "emissionVariance" : 0.5,
+    "pixelOrigin" : [5, -10],
+
+    "particle" : {
+      "type" : "ember",
+      "size" : 1.0,
+      "color" : [90, 211, 133, 255],
+      "fade" : 0.9,
+      "initialVelocity" : [0.0, -2],
+      "finalVelocity" : [0.0, -5],
+      "approach" : [0, 10],
+      "timeToLive" : 4.0,
+      "layer" : "back"
+    }
+  },
+
+  "inventoryIcon" : "ceilingslime2aicon.png",
+  "orientations" : [
+    {
+
+      "dualImage" : "ceilingslime2.png:<color>",
+      "imagePosition" : [-3, -8],
+
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "smashable" : false,
+  "smashSounds" : [ "/sfx/blocks/water_swim.ogg" ],
+  "smashParticles" : [ { "count" : 8, "particle" : "slimeshard" } ],
+
+  "biomePlaced" : true
+}

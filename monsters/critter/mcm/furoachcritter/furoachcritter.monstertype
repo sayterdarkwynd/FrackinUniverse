@@ -1,0 +1,97 @@
+{
+  "type" : "furoachcritter",
+  "shortdescription" : "Roach",
+  "description" : "A small insect that seeks out unwatched food and garbage. They fear light.",
+
+  "categories" : [ "furoachcritter" ],
+  "parts" : [ "body" ],
+
+  "animation" : "furoachcritter.animation",
+
+  "dropPools" : [
+    {
+      "default" : "blackbeetle",
+      "bow" : "blackbeetle"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "walkingcritter",
+
+    "metaBoundBox" : [-0.5, -0.5, 0.5, 0.5],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-0.5, -0.5], [0.5, -0.5], [0.5, 0.5], [-0.5, 0.5] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 3.5,
+      "runSpeed" : 3.5,
+      "jumpSpeed" : 3.5
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "",
+"deathParticles" : "deathPoof",
+    "damageTeamType" : "passive",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 1
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "relocatable" : true,
+    "nametagColor" : [64, 200, 255]
+  }
+}

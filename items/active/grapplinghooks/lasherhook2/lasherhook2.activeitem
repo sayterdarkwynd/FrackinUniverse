@@ -4,7 +4,7 @@
   "inventoryIcon" : "lasherhookicon.png",
   "rarity" : "rare",
   "maxStack" : 1,
-  "description" : "A more advanced lasher hook.",
+  "description" : "A more advanced lasher hook that also deals more damage. Weighted.",
   "shortdescription" : "Lasher Hook II",
   "largeImage" : "lasherhookbig.png",
   "category" : "Tool",
@@ -19,13 +19,18 @@
   "fireOffset" : [0, 0],
   "ropeOffset" : [-1.2, 0],
   "ropeVisualOffset" : [0.75, 0],
-
+  "handGrip" : "wrap",
   "consumeOnUse" : false,
 
-  "projectileType" : "grapplehook",
+  "projectileType" : "lasherhook",
   "projectileParameters" : {
     "speed" : 100,
-    "timeToLive" : 0.55
+    "timeToLive" : 3,
+    "power" : 10,
+    "piercing" : true,
+    "onlyHitTerrain":false,
+    "actionOnCollide":[ {"options":["/sfx/projectiles/magnorb_impact1.ogg"],"action":"sound"} ],
+    "statusEffects" : [ "weakpoison" ]
   },
 
   "ropeWidth" : 0.8,
@@ -34,9 +39,9 @@
   "reelInDistance" : 2.5,
   "reelOutLength" : 50,
   "breakLength" : 150,
-  
-  "minSwingDistance" : 1.0, 
-  
+
+  "minSwingDistance" : 1.0,
+
   "reelSpeed" : 27,
   "controlForce" : 1300,
 

@@ -1,0 +1,37 @@
+{
+  "projectileName" : "firespinner",
+  "physics" : "hover",
+  "timeToLive" : 5,
+  "image" : "firespinner.png",
+  "animationCycle" : 0.3,
+  "lightColor" : [120, 60, 30],
+  "frameNumber" : 4,
+  "actionOnReap" : [
+    {
+      "action" : "loop",
+      "count" : 2,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "fireshard"
+        }
+      ]
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/fireball_spit.ogg" ]
+    }
+  ],
+  "speed" : 0,
+  "power" : 30,
+  "piercing" : true,
+  "damageKind" : "fire",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "burning" ],
+
+  "fullbright" : true,
+  "emitters" : [ "fireplasma" ],
+
+  "bounces" : -1
+
+}

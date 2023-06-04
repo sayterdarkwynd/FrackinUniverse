@@ -1,0 +1,103 @@
+{
+  "itemName" : "xithriciteassaultrifle",
+  "price" : 160,
+  "inventoryIcon" : "xithriciteassaultrifle.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Cosmic power stabilized into high powered shots.
+^cyan;Cosmic blasts^reset;",
+    "shortdescription" : "Xithricite Assault Rifle",
+  "category" : "assaultRifle",
+  "level" : 6,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon","xithricite"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "xithriciteassaultrifle.png",
+    "middlefullbright" : "xithriciteassaultriflefullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [-0.0625, 0.3125]
+		  }
+		}
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/marauder8.wav" ]
+    }
+  },
+
+  "baseOffset" : [-0.0625, 0.3125],
+  "muzzleOffset" : [2.625, 0.375],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
+    "fireTime" : 0.165,
+    "baseDps" : 7,
+    "useEnergy" : true,
+    "energyUsage" : 28,
+    "runSlowWhileShooting" : true,
+    "inaccuracy" : 0.01,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "xithshot",
+    "projectileParameters" : {
+      "knockback" : 6
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 4,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "cooldown" : {
+	      "duration" : 0.055,
+	      "armRotation" : 4,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 6,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300,
+
+  "altAbilityType" : "forcebubble",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

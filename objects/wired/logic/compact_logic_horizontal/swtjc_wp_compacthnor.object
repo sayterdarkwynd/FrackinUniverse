@@ -1,0 +1,43 @@
+{
+  "objectName" : "swtjc_wp_compacthnor",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A /'NOR'/ gate. Requires all inputs to be /'off'/ to work.",
+  "shortdescription" : "Compact NOR Gate",
+  "race" : "human",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "glitchDescription" : "Observation. A /'NOR'/ gate. Requires all inputs to be /'off'/ to work.",
+
+  "inventoryIcon" : "swtjc_wp_compacthnor.png:default.on",
+  "orientations" : [
+    {
+      "image" : "swtjc_wp_compacthnor.png:default.on",
+      "imagePosition" : [-0, -0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/logic/swtjc_wp_logic.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/wired/advancedlogic/swtjc_wp_advancedlogic.animation",
+
+  "animationParts" : {
+    "switch" : "swtjc_wp_compacthnor.png"
+  },
+  "animationPosition" : [-0, -0],
+
+  "inputNodes" : [ [0, 0], [2, 0] ],
+  "outputNodes" : [ [1, 0] ],
+
+  "gates" : 2,
+  "truthtable" : [ [ true, false ], [ false, false ] ]
+}

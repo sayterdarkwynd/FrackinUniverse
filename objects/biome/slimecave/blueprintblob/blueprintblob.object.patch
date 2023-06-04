@@ -1,0 +1,52 @@
+[
+  {
+    "op": "replace",
+    "path": "/lightColor",
+    "value": [0, 95, 76]
+  },
+ 
+  {
+    "op": "remove",
+    "path": "/orientations/0/image"
+  },
+ 
+  {
+    "op": "add",
+    "path": "/orientations/0/dualImage",
+    "value": "blueprintblob.png:<color>"
+  },
+ 
+  {
+    "op": "replace",
+    "path": "/smashSounds",
+    "value": [ "/sfx/objects/meat_break1.ogg", "/sfx/objects/meat_break3.ogg" ]
+  },
+ 
+  {
+    "op": "add",
+    "path": "/smashParticles",
+    "value": [ { "count" : 8, "particle" : "slimeshard" } ]
+  },
+  
+  {
+    "op": "remove",
+    "path": "/smashDropOptions"
+  },
+  
+  {
+    "op": "remove",
+    "path": "/breakDropOptions"
+  },
+  
+  {
+    "op": "add",
+    "path": "/smashDropPool",
+    "value": "slimeTreasure"
+  },
+  
+  {
+    "op": "add",
+    "path": "/breakDropPool",
+    "value": "slimeTreasure"
+  }
+]

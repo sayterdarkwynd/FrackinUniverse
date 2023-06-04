@@ -6,19 +6,19 @@
   "rarity" : "rare",
   "description" : "Burning with a need for blood.",
   "shortdescription" : "Molten Sword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "shortsword",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword"],
+  "itemTags" : ["weapon","melee","shortsword","hellfire", "upgradeableWeapon"],
 
   "inventoryIcon" : "moltenblade.png",
-
+  //"collectablesOnPickup" : { "fu_weaponshortsword" : "moltenblade" },
   "animation" : "comboshortsword.animation",
   "animationParts" : {
     "handle" : "",
     "blade" : "moltenblade.png"
   },
-  
+
   "animationCustom" : { },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
@@ -28,9 +28,10 @@
   "primaryAbilityType" : "shortswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.65,
-    "baseDps" : 7.5
+    "baseDps" : 6.4
   },
-  
+  "critChance" : 3,
+  "critBonus" : 2,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
-  
+
 }

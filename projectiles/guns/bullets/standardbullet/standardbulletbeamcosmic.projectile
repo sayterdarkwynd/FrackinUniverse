@@ -1,0 +1,38 @@
+{
+  "projectileName" : "standardbulletbeamcosmic",
+  "image" : "standardbulletbeamcosmic.png",
+  "physics" : "laser",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "damageKind" : "cosmic",
+  "pointLight" : false,
+  "flippable" : true,
+  "fullbright" : true,
+  "power" : 5.0,
+  "speed" : 150,
+  "knockback" : 0,
+  "timeToLive" : 0.6,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.006,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "cosmicplasmabeam",
+      "inheritDamageFactor" :0.1,
+      "fuzzAngle" : 0,
+      "projectileParameters" : {
+        "speed" : 0,
+        "damageSourceKind" :
+        "cosmicplasma",
+        "timeToLive" : 0.2
+        }
+      }
+    ],
+  "statusEffects" : [ "percentarmorboostneg2" ]
+}

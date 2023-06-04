@@ -1,0 +1,35 @@
+{
+  "objectName" : "sentrybotdeathdroid",
+  "rarity" : "legendary",
+  "description" : "A reliable sidekick. Will aggressively attack all foes.",
+  "shortdescription" : "Sentry Bot",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 550,
+  "printable" : false,
+
+  "inventoryIcon" : "sentrybotdeathdroidicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "sentrybotdeathdroid.png:<color>",
+
+      "imagePosition" : [-10, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaces" : [  [0, 0], [-1, 0], [0, 1], [-1, 1]],
+//      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "botspawner" : {
+      "type" : "deathdroidpet",
+	  "monsterImage":"/monsters/dungeon/serpentdroid/serpentdroid.png:idle.1?"
+  },
+
+  "scripts" : [
+    "/spawners/fubotspawner.lua"
+  ],
+  "scriptDelta" : 5
+}

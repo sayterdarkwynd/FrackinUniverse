@@ -1,0 +1,95 @@
+{
+  "itemName" : "radienstaff",
+  "price" : 4,
+  "maxStack" : 1,
+  "level" : 2,
+  "rarity" : "common",
+  "description" : "Fashioned from your own bulbs.",
+  "shortdescription" : "X'ian Rad-Staff",
+  "category" : "staff",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","staff","radien","upgradeableWeapon"],
+  "tooltipKind" : "staff",
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "radienstaff.png",
+    "stone" : "/items/active/weapons/staff/generated/stone/radienstaff.png",
+    "chargeEffect" : "radienstaffglow.png"
+  },
+  "animationCustom" : {
+    "lights" : {
+      "glow" : {
+        "color" : [55, 124, 22]
+      }
+    },
+    "particleEmitters" : {
+      "poisoncharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 20,
+        "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
+        "particles" : [
+          {"particle" : "druidstaff"}
+        ]
+      }
+    }
+  },
+
+  "inventoryIcon" : "radienstaff.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 0.6,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "duration" : 0.5,
+      "armRotation" : -10,
+      "weaponRotation" : -50,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "cooldown" : {
+      "duration" : 0.8,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "elementalType" : "radioactive",
+
+  "primaryAbilityType" : "thornburst",
+
+  "altAbilityType" : "entropicwarding",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

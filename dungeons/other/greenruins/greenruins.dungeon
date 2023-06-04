@@ -1,7 +1,7 @@
 {
 	"metadata" : {
 		"name" : "greenruins",
-		"species" : "dummy",
+		"species" : "floran",
 		"rules" : [],
 		"maxRadius" : 2000,
 		"maxParts" : 15,
@@ -252,13 +252,13 @@
 		{
 			"value" : [9, 230, 100, 255],
 			"comment" : "florancrate left 3x2 x-2",
-			"brush" : [ [ "clear" ], [ "object", "florancrate", { "direction" : "left" } ] ]
+			"brush" : [ [ "clear" ], [ "object", "florancrate", { "direction" : "left", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
 		},
 		
 		{
 			"value" : [10, 230, 100, 255],
 			"comment" : "florancrate  right 3x2 x-2",
-			"brush" : [ [ "clear" ], [ "object", "florancrate", { "direction" : "right" } ] ]
+			"brush" : [ [ "clear" ], [ "object", "florancrate", { "direction" : "right", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
 		},
 
 		{
@@ -392,7 +392,7 @@
 		{
 			"value" : [57, 155, 60, 255],
 			"comment" : "plantorb 4x3 x-3",
-			"brush" : [ [ "clear" ], [ "object", "plantorb", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicChestTreasure" ] } } ] ]
+			"brush" : [ [ "clear" ], [ "object", "plantorb", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
 		},
 		
 		{
@@ -440,7 +440,7 @@
 		{
 			"value" : [64, 128, 128, 255],
 			"comment" : "treasurechest 3x2 x-2",
-			"brush" : [ [ "clear" ], [ "object", "treasurechest", { "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
+			"brush" : [ [ "clear" ], [ "object", "treasurechest", { "parameters" : { "treasurePools" : [ "jungleChestTreasure" ] } } ] ]
 		},
 		
 		{
@@ -1095,7 +1095,7 @@
 			"brush" : [ [ "npc",
 			{
 				"kind" : "monster",
-				"typeName" : "rocktroll2",
+				"typeName" : "reptar",
 				"parameters" : {
 				"aggressive" : true,
 				"persistent" : true

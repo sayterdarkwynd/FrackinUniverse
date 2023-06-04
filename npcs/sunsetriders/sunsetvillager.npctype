@@ -1,0 +1,66 @@
+{
+  "type" : "sunsetvillager",
+  "baseType" : "base",
+
+  "damageTeamType" : "friendly",
+  "levelVariance" : [0, 0],
+
+  "persistent" : true,
+
+  "dropPools" : [ "villagertreasure" ],
+
+  "scriptConfig" : {
+    "behavior" : "spectator",
+
+    "dialog" : {
+      "converse" : {
+        "default" : {
+          "default" : [
+            "You shouldn't be seeing this."
+          ]
+        },
+        "novakid" : {
+          "default" : [
+            "Hawkeye Hank was a good man, but lean times turn good men bad.",
+            "Howdy, pardner! Are you new to Fort Nova?",
+            "You here 'bout the bounty? You should check in with the sheriff first.",
+            "Fort Nova's not very large, but some walls are better than none.",
+            "Hawkeye Hank's men are a bunch of ugly thugs.",
+            "We used to have a good mine here... until Hawkeye's men ruined it. Now how's a honest fellow to do any work?",
+            "Hank's men have dug themselves into the hillside, set down all kinds of traps. Now no one's crossing that there hill...",
+			"We don't serve your kind here...oh wait, we do. Forget I said anything.",
+			"You oughta check in with the sheriff before heading out anywhere, pardner.",
+			"The Screwbolt Mine's full of silver, but what really got Hank and his gang going was the miners striking diamonds. Now they want it all to themselves.",
+			"Two thousand for Hawkeye Hank, dead or alive. If I had more confidence in my abilities, I'd go for the bounty myself.",
+            "Have a drink at our saloon before you leave. Get one in you for the road.",
+			"We're pretty far out along the frontier. You might want to buy some trail rations from the chef in the saloon.",
+			"Hawkeye Hank's been terrorising the roads. We can't get our ore shipped out!",
+            "No one we've sent after Hawkeye Hank has returned...hopefully you won't meet the same fate."
+          ]
+        }
+      }
+    }
+  },
+
+  "matchColorIndices" : true,
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "chest" : [
+              { "name" : "novakidfancychest", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "novakidjacket", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "novakidsuspenders", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "novakidwaistcoat", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } }
+            ],
+            "legs" : [
+              { "name" : "novakidfancypants", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "novakidjacketpants", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "novakidsuspenderspants", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "novakidblackpants", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } }
+            ]
+          }
+        ] ]
+    ]
+  }
+}

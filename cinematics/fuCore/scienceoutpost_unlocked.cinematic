@@ -1,0 +1,129 @@
+{
+  "muteSfx" : false,
+  "muteMusic" : true,
+  "letterbox" : false,
+  "backgroundColor" : [0, 0, 0, 200],
+  "backgroundFadeTime" : 0.5,
+  "panels" : [
+    {
+      "drawables" : [
+        {
+          "image" : "/cinematics/screen.png"
+        }
+      ],
+      "keyframes" : [
+        {
+          "timecode" : 0.01,
+          "zoom" : 0,
+          "alpha" : 0,
+          "position" : [360, 330]
+        },
+        {
+          "timecode" : 0.1,
+          "zoom" : 0,
+          "alpha" : 1,
+          "position" : [360, 330]
+        },
+        {
+          "timecode" : 0.6,
+          "zoom" : 1,
+          "alpha" : 1,
+          "position" : [479, 280]
+        },
+        {
+          "timecode" : 5,
+          "zoom" : 1,
+          "alpha" : 1,
+          "position" : [479, 280]
+        },
+        {
+          "timecode" : 5.4,
+          "zoom" : 1,
+          "alpha" : 0,
+          "position" : [479, 280]
+        }
+      ]
+    },
+    {
+      "drawables" : [
+        {
+          //"image" : "/cinematics/fuCore/scienceoutpost_unlocked_item.png:<frame>"
+          "image" : "/cinematics/coordinates.png"
+        }
+      ],
+      "animationFrames" : 14,
+      "keyframes" : [
+        {
+          "timecode" : 0.6,
+          "zoom" : 2,
+          "alpha" : 0,
+          "position" : [479, 280],
+          "frame" : 0
+        },
+        {
+          "timecode" : 1.1,
+          "zoom" : 2,
+          "alpha" : 1,
+          "position" : [479, 280]
+        },
+        {
+          "timecode" : 5,
+          "zoom" : 2,
+          "alpha" : 1,
+          "position" : [479, 280]
+        },
+        {
+          "timecode" : 5.4,
+          "zoom" : 0.5,
+          "alpha" : 0,
+          "frame" : 42,
+          "position" : [479, 280]
+        }
+      ]
+    },
+   {
+      "drawables" : [
+        {
+          "image" : "/cinematics/fuCore/scienceoutpost_unlocked_name.png"
+        }
+      ],
+      "keyframes" : [
+        {
+          "timecode" : 0.01,
+          "zoom" : 1,
+          "alpha" : 0,
+          "position" : [480, 160]
+        },
+        {
+          "timecode" : 1.1,
+          "zoom" : 1,
+          "alpha" : 1,
+          "position" : [480, 160]
+        },
+        {
+          "timecode" : 4,
+          "zoom" : 1,
+          "alpha" : 1,
+          "position" : [480, 160]
+        },
+        {
+          "timecode" : 5,
+          "zoom" : 1,
+          "alpha" : 0.0,
+          "position" : [480, 160]
+        }
+      ]
+    }
+  ],
+  "audio" : [
+    {
+      "timecode" : 0.65,
+      //"resource" : "/sfx/cinematics/mission_unlock_event.ogg"
+      "resource" : "/sfx/tech/tricorder3.ogg"
+    },
+    {
+      "timecode" : 5.0,
+      "resource" : "/sfx/interface/item_holster.ogg"
+    }
+  ]
+}

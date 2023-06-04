@@ -1,0 +1,42 @@
+{
+  "itemName" : "elduukhartier9broadsword",
+  "level" : 6,
+  "price" : 945,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "The gold and gems on this sword are strictly for combat purposes.",
+  "shortdescription" : "Opul Broadsword",
+  "tooltipKind" : "sword2",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword","crystal", "upgradeableWeapon"],
+
+  "inventoryIcon" : "elduukhartier9broadsword.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "elduukhartier9broadsword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.9,
+    "baseDps" : 11.5,
+    "damageConfig" : {
+      "damageSourceKind" : "cosmic"
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 11,
+
+  "altAbilityType" : "superspinslash",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

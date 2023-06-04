@@ -1,0 +1,32 @@
+{
+  "name" : "stickywalljump",
+  "type" : "legs",
+
+  "scripts" : ["fuwalljump.lua"],
+  "animator" : "walljump.animation",
+
+  "description" : "Lets you stick to and jump off vertical walls!",
+  "shortDescription" : "Sticky Wall Jump",
+  "rarity" : "Legendary",
+  "icon" : "/tech/stickywalljump.png",
+
+  "chipCost" : 8,
+
+  "multiJumpCount" : 0,
+
+  "wallSensors" : [1.0, 1.75, 2.5],
+  "wallDetectThreshold" : 1,
+
+  "wallReleaseTime" : 0.15,
+
+  "wallGrabFreezeTime" : 9999,
+  "wallJumpXVelocity" : 10,
+  "wallJumpYVelocity" : 8,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 1.0
+    },
+    "airForce" : 0,
+    "airFriction" : 10.0
+  }
+}

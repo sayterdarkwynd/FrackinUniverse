@@ -1,0 +1,74 @@
+{
+	"stats": [
+		{
+			"stat": "grit",
+			"amount": 0.1
+		},
+		{
+			"stat": "biooozeImmunity",
+			"amount": 1
+		}
+	],
+	"diet" : "omnivore",
+	"controlParameters": {
+		"liquidJumpProfile": {
+			"jumpHoldTime": 0.275
+		}
+	},
+	"weaponEffects": [{
+			"weapons": [
+				"shortspear"
+			],
+			"stats": [{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.12
+				},
+				{
+					"stat": "grit",
+					"amount": 0.2
+				}
+			]
+		},
+		{
+			"weapons": [
+				"machinepistol"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.12
+			}]
+		}
+	],
+	"weaponScripts": [{
+			"script": "/scripts/fr_weaponscripts/freebonus.lua",
+			"contexts": [
+				"staff-init"
+			],
+			"args": {
+				"stats": [{
+					"stat": "maxEnergy",
+					"effectiveMultiplier": 1.15
+				}]
+			}
+		},
+		{
+			"script": "/scripts/fr_weaponscripts/perfectblockbonus.lua",
+			"contexts": [
+				"shield-perfectblock"
+			],
+			"args": {
+				"stats": [{
+					"stat": "powerMultiplier",
+					"amount": 0.02
+				}],
+				"statCombos": {
+					"powerMultiplier": {
+						"comboBase": 0.02,
+						"max": 30
+					}
+				},
+				"particles": "bonusBlock4"
+			}
+		}
+	]
+}

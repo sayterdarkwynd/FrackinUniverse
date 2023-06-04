@@ -1,0 +1,38 @@
+{
+	"id" : "create_matterassembler",
+	"mainQuest" : true,
+	"title" : "Ship Repairs",
+	"text" : "Perhaps this friendly creature can help me ^green;repair the ship^reset; and get away from this star system. I'll need to work at it either way, using my ^orange;Personal Tricorder^reset; to conduct research whenever I can.",
+	"completionText" : "Thanks to ^green;Vinalisj^reset;, you've managed your first steps towards escaping this planet. He's given you a key for a nearby ^orange;Dark Cavern^reset; and wants you to check it for ^green;Energy Sources^reset; that may prove vital in your repairs.",
+	"moneyRange" : [50, 50],
+	"canBeAbandoned" : false,
+	"invisible" : false,
+	"logOnly" : false,
+	"parameters" : {
+		"questGiver" : {
+			"type" : "entity",
+			"indicator" : "/interface/quests/questreceiver.animation"
+		}
+	},
+	"associatedMission" : "scienceoutpostfu",
+
+	"shipUpgrade" : {
+		"capabilities" : [ "planetTravel" ]
+	},
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/tutorial/fu_start.lua",
+	"scriptConfig" : {
+		"portraits" : { "default" : "player" },
+		"scienceoutpostCinema" : "/cinematics/fuCore/scienceoutpost_unlocked.cinematic",
+		"descriptions" : {
+			"makeFurnace":"Research ^cyan;Geology^reset; and create a ^orange;Furnace^reset;.",
+			"makeForaging":"Research ^cyan;Agriculture^reset; and create a ^orange;Foraging Station^reset;.",
+			"makeTable" : "Research ^cyan;Engineering^reset; and create a ^orange;Machining Table^reset;.",
+			"makeWire" : "Use a ^cyan;Machining Table^reset; to create ^orange;Wire^reset;",
+			"makeElectromagnet" : "Use a ^cyan;Machining Table^reset; to create an ^orange;Electromagnet^reset;",
+			"cavern" : "Find the cavern and investigate the ^cyan;Energy Source^reset;"
+		},
+		"completionRange" : 500
+	}
+}

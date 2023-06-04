@@ -1,0 +1,66 @@
+{
+  "objectName" : "skathfountain",
+  "colonyTags" : ["skath"],
+  "rarity" : "Common",
+  "price" : 270,
+  "description" : "A water fountain made by the Skath. It seems to have an internal power source.",
+  "shortdescription" : "Skath Fountain",
+  "race" : "skath",
+  "category" : "decorative",
+
+  "apexDescription" : "A fountain made from metal.",
+  "avianDescription" : "This fountain has large beautiful streams of water.",
+  "floranDescription" : "Floran likess clear water in fountain.",
+  "glitchDescription" : "Peaceful. The sound of water flowing trickles from this fountain.",
+  "humanDescription" : "I should make a wish while I'm here.",
+  "hylotlDescription" : "Metal shaped into a fountain. An odd choice of material, but the shape and function is pleasant enough.",
+  "novakidDescription" : "Some kinda fountain spoutin' water.",
+  "skathDescription" : "A tethyde fountain, reserved for civilian residential areas. It's filled with saltwater.",
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : false,
+
+  "inventoryIcon" : "skathfountainicon.png",
+  "orientations" : [
+    {
+      "image" : "skathfountain.png:<color>.<frame>",
+      "imagePosition" : [-32, 0],
+      "frames" : 4,
+      "animationCycle" : 0.4,
+      "direction" : "left",
+      "flipImages" : true,
+
+      "sitPositions" : [
+        // Positions from front to back.
+        [4, 24], // Right
+        [20, 24] // Left
+      ],
+
+      "interactiveSpaces" : [ [-4,0], [-4,1], [-3,0], [-3,1], [-2,0], [-2,1], [-1,0], [-1,1] ],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "skathfountain.png:<color>.<frame>",
+      "imagePosition" : [-32, 0],
+      "frames" : 4,
+      "animationCycle" : 0.4,
+      "direction" : "right",
+
+      "sitPositions" : [
+        // Positions from front to back.
+        [4, 24], // Left
+        [20, 24] // Right
+      ],
+
+      "interactiveSpaces" : [ [0,0], [0,1], [1,0], [1,1], [2,0], [2,1], [3,0], [3,1] ],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/fountain1.ogg"
+
+}

@@ -1,0 +1,106 @@
+{
+  "type" : "crewmemberghostbuster",
+  "baseType" : "fu_crewmember",
+
+  "scriptConfig" : {
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "goggles2",
+        "chest" : "tw_spacesuitchest",
+        "legs" : "tw_spacesuitlegs",
+        "back" : "tw_spacepunkback"
+      },
+
+      "role" : {
+        "name" : "Ghostbuster",
+        "field" : "Ghostbusting",
+        "uniformColorIndex" : 2,
+
+        "benefits" : [
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "maxFuel",
+            "value" : 340
+          },
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "erchiusimmunity",
+            "duration" : 900
+          },
+          {
+            "type" : "Regeneration",
+            "value" : 1
+          }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'll give you an ectoplasmic fuel boost whenever we're on the ship!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran will give you boostsss when we're on ship!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Helpful. I'll fill your tanks with ectoplasm whenever we're on the ship!"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Hey! We've got one!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran sstab sspook!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Excited. We've got one!"
+            ]
+          }
+        },
+		"fieldBenefit" : {
+          "default" : {
+            "default" : [
+              "Hey! We've got one!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran sstab sspook!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Excited. We've got one!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "fubeamgunghostbuster" ],
+            "sheathedprimary" : [ "penumbritespear" ]
+          }
+        ] ]
+    ]
+  }
+}

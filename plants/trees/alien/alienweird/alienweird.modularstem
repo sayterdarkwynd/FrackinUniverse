@@ -7,7 +7,7 @@
   "alwaysBranch" : false,
   "dropConfig" : {
     "drops" : [
-      [ { "item" : "alienweirdwood", "count" : 3 } ]
+      [ { "item" : "alienweirdwood", "count" : 3 },{ "item" : "alienwoodsap", "count" : 1 } ]
     ],
     "sounds" : {
       "breakTree" : [
@@ -18,15 +18,38 @@
       "damageTree" : [ { "file" : "/sfx/tools/axe_chop_normal.ogg" }, { "file" : "/sfx/tools/axe_chop_tough.ogg" }, { "file" : "/sfx/tools/axe_chop_light.ogg" } ]
     },
     "particles" : {
-      "breakTree" : {
+      "hitGround" : {
         "density" : 3,
         "options" : [ {
-            "image" : "/particles/treestems/alienpalm.png",
-            "timeToLive" : 10
-          } ]
+          "type" : "animated",
+          "animation" : "/animations/dusttest/dusttest.animation",
+          "timeToLive" : 3,
+          "destructionAction" : "shrink",
+          "destructionTime" : 1.0,
+          "variance" : {
+            "rotation" : 180,
+            "timeToLive" : 1.0,
+            "initialPosition" : [1.0, 1.0],
+            "initialVelocity" : [1.0, 1.0]
+          }
+        } ]
       },
-      "hitGround" : { "density" : 3, "options" : [ { "animation" : "/animations/dusttest/dusttest.animation", "initial" : "drift", "rotation" : 3.14, "timeToLive" : 3 } ] },
-      "damageTree" : { "density" : 1, "options" : [ { "image" : "/particles/treestems/something.png", "timeToLive" : 10 } ] }
+      "damageTree" : {
+        "density" : 1,
+        "options" : [ {
+          "type" : "ember",
+          "color" : [86, 76, 25],
+          "timeToLive" : 10,
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, -30],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialPosition" : [1.0, 1.0],
+              "initialVelocity" : [1.0, 1.0]
+            }
+        } ]
+      }
     }
   },
   "base" : {

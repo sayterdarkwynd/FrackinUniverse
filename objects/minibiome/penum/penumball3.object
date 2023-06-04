@@ -1,0 +1,45 @@
+{
+  "objectName" : "penumball3",
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 400,
+  "printable" : false,
+  "description" : "I wonder what causes it to glow?",
+  "shortdescription" : "Penumball Plant",
+  "race" : "apex",
+  "lightColor" : [22, 105, 50],
+
+  "inventoryIcon" : "penumball3.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "penumball3.png:<color>" }, { "image" : "penumball3fullbright.png:<color>", "fullbright" : true } ],
+      "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+	  
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "left",
+      "lightPosition" : [1, 4]
+    },
+    {
+      "imageLayers" : [ { "image" : "penumball3.png:<color>" }, { "image" : "penumball3fullbright.png:<color>", "fullbright" : true } ],
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "lightPosition" : [2.3, 4]
+    }
+  ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/bush_break1.ogg" ],
+  "smashParticles" : [ { "count" : 6, "particle" : "penumball1shard" }, { "count" : 4, "particle" : "penumball2shard" } ],
+  "smashDropOptions" : [
+    [ [ "energywood", 2, { } ] ]
+  ],
+  "biomePlaced" : true
+}

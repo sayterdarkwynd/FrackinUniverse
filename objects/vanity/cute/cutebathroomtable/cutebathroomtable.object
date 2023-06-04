@@ -1,0 +1,44 @@
+{
+  "objectName" : "cutebathroomtable",
+  "colonyTags" : ["fu","cute","storage","pretty"],
+  "printable" : false,
+  "rarity" : "Rare",
+  "description" : "A cute vanity, for a bathroom",
+  "shortdescription" : "Cute Bath Vanity",
+  "race" : "generic",
+  "category" : "furniture",
+  "price" : 15,
+
+
+  "inventoryIcon" : "cutebathroomtableicon.png",
+  "orientations" : [
+    {
+      "image" : "cutebathroomtable.png:default",
+      "imagePosition" : [-16, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "image" : "cutebathroomtable.png:default",
+      "imagePosition" : [-16, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/woodenbox_close.ogg" ],
+  "slotCount" : 9,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+}

@@ -1,0 +1,32 @@
+{
+	"itemName": "fierycandy",
+	"rarity": "common",
+	"price": 25,
+	"category": "preparedFood",
+	"inventoryIcon": "fierycandy.png",
+	"description": "The cinnamon treat that gives you a sugar rush! \n^cyan;+^reset;10%^green; Energy^reset;^cyan; +^reset;15%^green; Movement Speed^reset; ^green;Type: Sugar^reset;",
+	"shortdescription": "Fiery Candy",
+	"effects": [
+        [
+        {
+            "effect": "maxenergyscalingboostfood",
+            "duration": 30,
+            "energyModifier": 1.10
+        },
+        {
+            "effect": "runboost15",
+            "duration": 30
+        },
+        {
+            "effect": "sugar_food"
+        }
+        ]
+    ],
+	"foodValue": 10,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 99,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 0.05,
+	"blockingEffects": ["wellfed"]
+}

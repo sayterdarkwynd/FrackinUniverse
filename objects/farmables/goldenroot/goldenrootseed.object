@@ -1,0 +1,45 @@
+{
+  "objectName" : "goldenrootseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "common",
+  "category" : "seed",
+  "description" : "Flecks of gold adorn this health-restoring vine.",
+  "shortdescription" : "Golden Root Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 27,
+ //   "learnBlueprintsOnPickup" : [ "pinkloomseed" ],
+  "inventoryIcon" : "goldenrootseedicon.png",
+  "largeImage" : "goldenrootseed.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "goldenroot" },
+  "orientations" : [
+    {
+      "dualImage" : "goldenrootseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [320, 740]
+    },
+    {
+      "duration" : [320, 740]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "goldenrootHarvest",
+      "resetToStage" : 0
+    }
+  ],
+
+    "maxImmersion" : 0.125
+}

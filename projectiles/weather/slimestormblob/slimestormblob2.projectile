@@ -1,0 +1,24 @@
+{
+  "projectileName" : "slimestormblob2",
+  "image" : "slimestormblob.png",
+  "animationCycle" : 0.1,
+  "level" : 3,
+  "physics" : "grenadezbomb",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "speed" : 30,
+  "timeToLive" : 0.01,
+  "actionOnReap" : [
+    { "action" : "sound", "options" : [ "/sfx/projectiles/goocluster_pop.ogg" ] },
+    { "action" : "liquid", "liquid" : "slimeliquid",  "quantity" : 0.4 },
+    { "action" : "applySurfaceMod", "previousMod" : "metamod:none", "newMod" : "greenslimegrass", "radius" : 2 }
+  ],
+  "power" : 6.0,
+  "universalDamage" : true,
+  "damageType" : "IgnoresDef",
+  "damageKind" : "poison"
+}
+
+
+
+

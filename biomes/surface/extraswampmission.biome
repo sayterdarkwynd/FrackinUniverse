@@ -1,0 +1,136 @@
+{
+  "name" : "extraswampmission",
+  "friendlyName" : "extraswampmission",
+
+  "hueShiftOptions" : [-15, 0, 15],
+
+  "weather" : [
+    [0, [
+      "/weather.config:ocean"
+    ]]
+  ],
+
+  "skyOptions" : [
+    {
+      // light lavenderish + red night
+      "mainColor" : [255, 255, 255],
+
+      "morningColors" : [ [255, 151, 153], [255, 196, 197] ],
+      "dayColors" : [ [233, 179, 255], [245, 221, 225] ],
+      "eveningColors" : [ [195, 151, 255], [233, 217, 255] ],
+      "nightColors" : [ [50, 0, 0, 80], [50, 0, 0, 160] ],
+
+      "morningLightColor" : [176, 81, 83],
+      "dayLightColor" : [182, 137, 200],
+      "eveningLightColor" : [150, 115, 199],
+      "nightLightColor" : [56, 17, 17]
+    }
+  ],
+
+  "mainBlock" : "mud",
+  "subBlocks" : [ "wetdirt", "dirt", "clay", "plantmatter" ],
+  "ores" : "surface",
+
+  "parallax" : "/parallax/surface/jungle.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/jungle_day.ogg", "/sfx/environmental/jungle_day2.ogg" ]
+      },
+      "night" : {
+        "tracks" : [ "/sfx/environmental/jungle_night.ogg", "/sfx/environmental/jungle_night2.ogg" ]
+      }
+    },
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "junglegrass" ],
+    "grassModDensity" : 0.5,
+
+    "ceilingGrassMod" : [ "roots" ],
+    "ceilingGrassModDensity" : 0.9,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:minibiomeChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "swampChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "swampmicrodungeons" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 15,
+        "treeStemList" : [ "weeping" ],
+        "treeFoliageList" : [ "weepingleaves" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "vine" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "gasprimer" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "rootbush1" ], [0.35, "rootbush2" ], [0.35, "rootbush3" ], [0.35, "rootbush4" ], [0.35, "rootbush5" ], [0.35, "swamproot1" ], [0.35, "swamproot2" ], [0.35, "swamproot3" ], [0.35, "swamproot4" ], [0.35, "swamproot5" ], [0.35, "junglebush8" ], [0.35, "junglebush9" ], [0.35, "junglebush10" ], [0.35, "junglebush11" ], [0.35, "junglebush12" ], [0.35, "junglebush13" ], [0.35, "junglebush14" ], [0.35, "junglebush15" ], [0.35, "junglebush16" ], [0.35, "junglebush17" ], [0.35, "junglebush18" ] ],
+            "parameters" : { }
+          }
+        ]
+      }
+    ]
+  }
+}

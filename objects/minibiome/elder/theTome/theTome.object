@@ -1,0 +1,61 @@
+{
+  "objectName" : "theTome",
+  "colonyTags" : ["elder"],
+  "rarity" : "Rare",
+  "category" : "decorative",
+  "printable" : false,
+  "price" : 500,
+  "description" : "A horrifying book rests upon the altar.",
+  "shortdescription" : "Mysterious Lectern",
+  "race" : "ancient",
+
+  "health" : 5,
+
+  "lightColor" : [0, 40, 0],
+
+  "flickerPeriod" : 2.4,
+  "flickerMinIntensity" : 0.9,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.0,
+  "flickerIntensityVariance" : 0.025,
+
+  "inventoryIcon" : "theTomeicon.png",
+  "orientations" : [
+    {
+	  "imageLayers" : [ { "image" : "theTome.png:<color>.<frame>", "fullbright" : true }, { "image" : "theTomelit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [0, 0],
+      "frames" : 5,
+      "animationCycle" : 0.8,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [0, 2.5]
+
+    },
+    {
+	  "imageLayers" : [ { "image" : "theTome.png:<color>.<frame>", "fullbright" : true }, { "image" : "theTomelit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [0, 0],
+      "frames" : 5,
+      "animationCycle" : 0.8,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "lightPosition" : [0, 2.5]
+
+    }
+  ],
+
+  "scripts" : [ "/objects/scripts/fu-interactpickup.lua" ],
+  "scriptDelta" : 5,
+
+  "spawnableItem" : "fugrimoire",
+
+  "animation" : "theTome.animation",
+  "animationParts" : { "interactiveObject" : "theTome.png","interactiveObjectlit" : "theTomelit.png" },
+  "animationPosition" : [0, 0]
+}

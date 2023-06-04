@@ -1,0 +1,82 @@
+{
+  "itemName" : "fuexplorerlegs",
+  "inventoryIcon" : "icons.png:pants",
+  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;20^reset;% Jump
+^yellow;^reset; Assault Rifles, Energy: Damage x^green;1.2^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Gas, Moderate Cold, Liq.Nitrogen",
+  "shortdescription" : "Assault Greaves",
+  "category" : "legarmour",
+  "tooltipKind" : "armornew2",
+
+  "maleFrames" : "pants.png",
+  "femaleFrames" : "pants.png",
+
+//  "learnBlueprintsOnPickup" : [
+//    "xenochest",
+//    "xenolegs",
+//    "xenohead",
+//    "xenoshield"
+//  ],
+  "itemTags" : [ "upgradeableWeapon", "defensive" ],
+  "level" : 3,
+  //"collectablesOnPickup" : { "fu_armortank" : "fuexplorerlegs" },
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.05
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.3
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 1
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.03
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.025
+    }
+  ],
+
+  "statusEffects" : [
+    "assaultsetbonus",
+    {
+      "stat" : "fu_assaultset_legs",
+      "amount": 1
+    }
+  ],
+
+  "colorOptions" : [
+    { "ffca8a" : "727272", "e0975c" : "414141", "a85636" : "1c1c1c", "6f2919" : "060606" },
+    { "ffca8a" : "e9e9e9", "e0975c" : "727272", "a85636" : "333333", "6f2919" : "161616" },
+    { "ffca8a" : "e6a49e", "e0975c" : "ac3b37", "a85636" : "521010", "6f2919" : "200407" },
+    { "ffca8a" : "f3cea2", "e0975c" : "cf7d2c", "a85636" : "773611", "6f2919" : "221004" },
+    { "ffca8a" : "f8f6da", "e0975c" : "d3be46", "a85636" : "745d16", "6f2919" : "1e1705" },
+    { "ffca8a" : "bbe69d", "e0975c" : "5ba73c", "a85636" : "1d4e0f", "6f2919" : "051403" },
+    { "ffca8a" : "99bee5", "e0975c" : "3e65b7", "a85636" : "151f5f", "6f2919" : "040619" },
+    { "ffca8a" : "d29be8", "e0975c" : "933eb4", "a85636" : "47145b", "6f2919" : "0e0314" },
+    { "ffca8a" : "edb8ee", "e0975c" : "c94ac7", "a85636" : "6f1768", "6f2919" : "1e051c" },
+    { "ffca8a" : "ebd3c4", "e0975c" : "be8569", "a85636" : "763f28", "6f2919" : "1c0c06" }
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
+}

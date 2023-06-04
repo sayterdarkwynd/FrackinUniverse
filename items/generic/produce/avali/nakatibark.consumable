@@ -1,30 +1,42 @@
 {
-  "itemName" : "nakatibark",
-  "price" : 5,
-  "rarity" : "Common",
-  "inventoryIcon" : "avaliproduce2.png",
-  "description" : "The spicy bark of the Nakati plant. Increases defense and prevents Proto-Poison.",
-  "shortdescription" : "Nakati Bark",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 1,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-    "protoimmunity",
-    {
-        "effect" : "defense5",
-        "duration" : 45
-    },
-    {
-        "effect" : "wellfed",
-        "duration" : 75
-    }
-  ] ],
-  "blockingEffects" : [
-    "wellfed"
-  ]
+	"itemName": "nakatibark",
+	"inventoryIcon": "avaliproduce2.png",
+	"category": "food",
+	"rarity": "Legendary",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immune^reset;: Proto-Poison, ^cyan;+7 Defense^reset;: 2m",
+	"shortdescription": "Nakati Bark",
+	"effects": [
+		[{
+				"effect": "protoimmunity",
+				"duration": 120
+			},
+			{
+				"effect": "defense5",
+				"duration": 120
+			}
+		]
+	],
+
+	"blockingEffects": [
+		"defense1",
+		"defense2",
+		"defense3",
+		"defense4",
+		"defense6",
+		"defenseboost10",
+		"defenseboost20",
+		"defenseboost30",
+		"defenseboost60",
+		"defenseboost90",
+		"defenseboost120",
+		"defenseboost180",
+		"defenseboost210",
+		"defenseboost240",
+		"defenseboost270",
+		"defenseboost300",
+		"defenseboostgreg"
+	]
 }

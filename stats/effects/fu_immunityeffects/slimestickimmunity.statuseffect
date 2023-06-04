@@ -1,9 +1,22 @@
 {
-  "name" : "slimestickimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "slimestickimmunity.lua"
-  ]
+	"name": "slimestickimmunity",
+	"effectConfig": {
+		"stats": [{
+				"stat": "slimestickImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "slimeImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "slimefrictionImmunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

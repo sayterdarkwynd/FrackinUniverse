@@ -1,0 +1,51 @@
+{
+  "itemName" : "tungstendagger",
+  "price" : 200,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A hefty tungsten dagger.",
+  "shortdescription" : "Tungsten Dagger",
+  "tooltipKind" : "sword2",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","dagger"],
+  "inventoryIcon" : "tungstendagger.png",
+  //"collectablesOnPickup" : { "fu_weapondagger" : "tungstendagger" },
+  "animation" : "/items/active/weapons/melee/dagger/daggercombo.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "tungstendagger.png"
+  },
+
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "blade" : { "properties" : {"offset" : [0.4, 2.5]}},
+        "swoosh" : { "properties" : {"offset" : [1, 2]}}
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "aimOffset" : 0.0,
+  "primaryAbilityType" : "daggercombo",
+  "primaryAbility" : {
+    "fireTime" : 0.35,
+    "baseDps" : 9.0,
+    "damageConfig" : {
+      "damageSourceKind" : "dagger",
+      "statusEffects" : [ ],
+      "knockbackMode" : "aim",
+      "knockback" : 10,
+      "timeoutGroup" : "primary"
+    }
+  },
+  "fireSounds" : [ "/sfx/melee/swing_dagger.ogg" ],
+  "critChance" : 1,
+  "critBonus" : 2,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

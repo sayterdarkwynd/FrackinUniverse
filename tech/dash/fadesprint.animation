@@ -1,0 +1,62 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "dashing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {
+              "properties" : {
+                "persistentSound" : "/sfx/tech/tech_sprint_loop2.ogg",
+                "immediateSound" : "/sfx/weapons/plasmaexplosion2.ogg"
+              }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "dashParticles" : {
+      "emissionRate" : 40.0,
+      "particles" : [
+        {
+          "particle" : "sprintcombat",
+          "flip" : true,
+          "offset" : [0, 0.0]
+        },
+        {
+          "particle" : "sprintcombat",
+          "flip" : true,
+          "offset" : [0, 0.75]
+        },
+        {
+          "particle" : "sprintcombat",
+          "flip" : true,
+          "offset" : [0, -0.75]
+        },
+        {
+          "particle" : "soluskatana1",
+          "flip" : true,
+          "offset" : [0, 0.0]
+        },
+        {
+          "particle" : "soluskatana2",
+          "flip" : true,
+          "offset" : [0, 0.75]
+        },
+        {
+          "particle" : "soluskatana2",
+          "flip" : true,
+          "offset" : [0, -0.75]
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "startDash" : [ "/sfx/tech/tech_dash.ogg" ],
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
+    "chargebonus" : [ "/sfx/objects/crystaltrap_on2.ogg" ]
+  }
+}

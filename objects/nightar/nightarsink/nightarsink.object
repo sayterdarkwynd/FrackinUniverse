@@ -1,0 +1,64 @@
+{
+  "objectName" : "nightarsink",
+  "tags" : ["nightar"],
+  "rarity" : "legendary",
+  "description" : "Where does the water come from or go to? I will never know.",
+  "shortdescription" : "Nightar Sink",
+  "race" : "nightar",
+  "category" : "decorative",
+  "price" : 150,
+
+  "apexDescription" : "This sink has a built-in conservation system to help prevent wasting water.",
+  "avianDescription" : "This sink is just large enough for me to clean my feathers.",
+  "floranDescription" : "Clean water flowssss out.",
+  "humanDescription" : "Hylotl across the galaxy would probably clamor to use this.",
+  "hylotlDescription" : "Fancy-lookin' sink.",
+
+  "inventoryIcon" : "icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "nightarsink.png:<color>", "fullbright" : true }, { "image" : "nightarsinklit.png:<color>" } ],
+	  "direction" : "left",
+	  "flipImages" : true,
+
+      "imagePosition" : [-8, -8],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+
+    },
+	{
+      "imageLayers" : [ { "image" : "nightarsink.png:<color>", "fullbright" : true }, { "image" : "nightarsinklit.png:<color>" } ],
+	  "direction" : "right",
+
+      "imagePosition" : [-8, -8],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+
+    }
+  ],
+
+  "scripts" : [ "/scripts/npcToyObject.lua" ],
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "warmhands"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

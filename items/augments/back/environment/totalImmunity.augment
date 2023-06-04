@@ -1,21 +1,21 @@
 {
   "itemName" : "futotalimmunity1",
-  "price" : 5000,
+  "price" : 2000,
   "rarity" : "Uncommon",
   "category" : "eppAugment",
   "inventoryIcon" : "totalaugment1.png",
-  "description" : "Protects against heat, cold, proto and radiation of the common variety. ^cyan;Immune: Heat, Cold, Rads, Proto^reset;",
+  "description" : "Protects against heat, cold, proto, and radiation of the common variety. ^cyan;Immune: Moderate Heat/Cold/Radiation, Gas, Proto.^reset;",
   "shortdescription" : "Immunity I",
-
+"tooltipKind":"eppaugment",
   "augment" : {
     "type" : "back",
     "name" : "futotalimmunity1",
     "displayName" : "Immunity I",
     "displayIcon" : "/items/augments/back/environment/totalaugment1.png",
-    "effects" : [ "coldimmunity", "heatimmunity", "radiationimmunity", "protoimmunity" ]
+    "effects" : [ "coldimmunity", "heatimmunity", "radiationimmunity", "protoimmunity", "gasimmunity" ]
   },
 
-  "learnBlueprintsOnPickup" : [ "futotalimmunity2" ],
+ // "learnBlueprintsOnPickup" : [ "futotalimmunity2" ],
   "radioMessagesOnPickup" : [ "pickupaugment" ],
 
   "scripts" : [ "/scripts/augments/augment.lua" ]

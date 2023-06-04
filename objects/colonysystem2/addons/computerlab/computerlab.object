@@ -1,0 +1,41 @@
+{
+  "objectName" : "c_computerlab",
+  "rarity" : "Uncommon",
+  "category" : "decorative",
+  "price" : 500,
+  "description" : "A computer desk for your tenants. \n^yellow;+10 Happiness\n^blue;Requires 4J every 5s.^reset;",
+  "shortdescription" : "Computer Lab",
+  "race" : "generic",
+  "printable" : false,
+
+  "inventoryIcon" : "computerlabicon.png",
+
+  "orientations" : [
+		{
+			"dualImage" : "computerlab.png",
+			"imagePosition" : [-16, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		}
+	],
+
+
+	"scripts" : [ "/scripts/fupower.lua","/objects/colonysystem2/addons/computerlab/computerlab.lua"],
+    "scriptDelta" : 300,
+
+
+	"inputNodes" : [ [0, 2] ],
+	"powertype" : "input",
+	"isn_requiredPower" : 4,
+	"isn_liquidCollector" : false,
+
+
+
+	"airWellRange":256,
+	"productionTime":1000,
+    "frameCooldown" : 67,
+    "autoCloseCooldown" : 3600,
+
+	"happiness":10
+}

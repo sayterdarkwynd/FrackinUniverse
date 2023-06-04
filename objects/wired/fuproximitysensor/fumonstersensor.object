@@ -1,0 +1,42 @@
+{
+  "objectName" : "fumonstersensor",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+
+  "category" : "wire",
+  "price" : 15,
+  "description" : "Perfect for all your automated door needs! Watches for scary monsters.",
+  "shortdescription" : "Proximity Monster Scanner",
+  "race" : "generic",
+
+  "inventoryIcon" : "fuscannericon.png",
+  "orientations" : [
+    {
+      "image" : "fumonstersensor.png:<frame>.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/proximitysensor/proximitysensor.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/scanner/scanner.animation",
+  "animationParts" : {
+    "switch" : "fumonstersensor.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "outputNodes" : [ [0, 0] ],
+
+  "interactive" : false,
+
+  "detectDuration" : 3,
+  "detectEntityTypes" : [ "monster" ],
+  "detectArea" : [ [0.5, 0.5], 3 ]
+}

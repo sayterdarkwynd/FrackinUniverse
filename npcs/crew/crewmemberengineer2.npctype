@@ -1,0 +1,43 @@
+{
+  "type" : "crewmemberengineer2",
+  "baseType" : "fu_crewmember",
+
+  "scriptConfig" : {
+    "crew" : {
+      "defaultUniform" : {
+      },
+
+      "role" : {
+        "type" : "engineer",
+        "name" : "Chief Engineer",
+        "field" : "Engineering",
+        "uniformColorIndex" : 5,
+
+        "benefits" : [
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "shipSpeed",
+            "value" : 3.75
+          },
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "fuelEfficiency",
+            "value" : 0.2
+          }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'll keep your engines in good shape. Thrust velocity is up by 25% and fuel costs are down by 20%."
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+	"itemName": "erchiusomlette",
+	"rarity": "rare",
+	"price": 75,
+	"category": "preparedFood",
+	"inventoryIcon": "erchiusomlette.png",
+	"description": "Not the kind of fuel you need... \n^blue;Glow^reset; 120s ^blue;+^reset;40 ^blue;Fuel^reset; ^orange;Type: Cooked Meat + Vegetables + Dairy + Eggs^reset;",
+	"shortdescription": "Erchius Omlette",
+	"fuelAmount": 40,
+	"effects": [
+        ["madnessgain3", "bacon_pancakes_meal",
+        {
+            "effect": "glow",
+            "duration": 120
+        }
+        ]
+    ],
+	"foodValue": 40,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}

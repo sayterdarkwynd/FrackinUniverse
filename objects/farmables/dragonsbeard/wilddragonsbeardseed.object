@@ -1,0 +1,44 @@
+{
+  "objectName" : "wilddragonsbeardseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Legendary",
+  "category" : "seed",
+  "description" : "Nearly immune to all forms of heat.",
+  "shortdescription" : "Dragonsbeard",
+  "objectType" : "farmable",
+  "printable" : false,
+//    "learnBlueprintsOnPickup" : [ "dragonsbeardseed"],
+  "inventoryIcon" : "dragonsbeardseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "dragonsbeardseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [120, 360]
+    },
+    {
+      "duration" : [120, 360]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "dragonsbeardHarvest",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125,
+  "breakDropOptions" : [
+    [ [ "dragonsbeardseed", 1, { } ] ]
+  ]
+}

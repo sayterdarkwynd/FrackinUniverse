@@ -1,0 +1,43 @@
+{
+  "itemName" : "elduukhartier8broadsword",
+  "level" : 5,
+  "price" : 845,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A greatsword made with unusual love and care. I somehow feel safe wielding this.",
+  "shortdescription" : "Metal Broadsword",
+  "tooltipKind" : "sword2",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword", "crystal", "upgradeableWeapon"],
+
+  "inventoryIcon" : "elduukhartier8broadsword.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "elduukhartier8broadsword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 1.12,
+    "baseDps" : 12,
+    "damageConfig" : {
+      "damageSourceKind" : "ice"
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 10,
+
+  "altAbilityType" : "superspinslash",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

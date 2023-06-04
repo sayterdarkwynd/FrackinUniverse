@@ -1,0 +1,4035 @@
+{
+  "displayConfig" : {
+    "title" : "Protectorate Monster Field Guide",
+    "subtitle" : "An interactive field guide to identifying monsters.",
+    "textColor" : "#ffe34d",
+    "selFormat" : "^darkgreen;[%s]",
+    "unselFormat" : "^darkgray; %s ",
+    "textRate" : 80
+  },
+
+  "titleScene" : {
+    "background" : "titlewithbg"
+  },
+
+  "entryScene" : "intro0",
+
+  "scenes" : {
+    "intro0" : {
+      "background" : "titlewithbg",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Greetings Protector. This device is your personal field guide to monsters you will encounter in the universe.]",
+      "continue" : "intro1"
+    },
+
+    "intro1" : {
+      "background" : "titlewithbg",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[The next screen will populate with different monster categories. These categories include ground, flying, ghost, and crawling.]",
+      "continue" : "categoryselect0"
+    },
+
+
+    "categoryselect0" : {
+      "background" : "titlewithbg",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Select the category you wish to browse, or select MORE to view more categories.]",
+      "options" : [
+        ["GROUND MONSTERS", "groundintro0"],
+        ["FLYING MONSTERS", "flyingintro0"],
+        ["MORE", "categoryselect1"]
+      ]
+    },
+
+    "categoryselect1" : {
+      "background" : "titlewithbg",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading additional categories...]",
+      "options" : [
+        ["GHOST MONSTERS", "ghostintro0"],
+        ["CRAWLING MONSTERS", "crawlingintro0"],
+        ["BACK", "categoryselect0"]
+      ]
+    },
+
+
+    "groundendofdata" : {
+      "background" : "titlewithbg",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[You have reached the end of this monster's data. Returning to Ground Monster Selection Screen...]",
+      "continue" : "groundselectpoptop"
+    },
+
+    "flyingendofdata" : {
+      "background" : "titlewithbg",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[You have reached the end of this monster's data. Returning to Flying Monster Selection Screen...]",
+      "continue" : "flyingselectagrobat"
+    },
+
+    "ghostendofdata" : {
+      "background" : "titlewithbg",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[You have reached the end of this monster's data. Returning to Ghost Monster Selection Screen...]",
+      "continue" : "ghostselectgosmet"
+    },
+
+    "crawlingendofdata" : {
+      "background" : "titlewithbg",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[You have reached the end of this monster's data. Returning to Crawling Monster Selection Screen...]",
+      "continue" : "crawlingselectcrustoise"
+    },
+
+
+    "groundintro0" : {
+      "background" : "titlewithbg",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[This is the selection menu for Ground Monsters. The list will be populated with one option per screen. Click NEXT to view the next screen, or click BACK to return to a previous screen.]",
+      "continue" : "groundselectpoptop"
+    },
+
+    "flyingintro0" : {
+      "background" : "titlewithbg",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[This is the selection menu for Flying Monsters. The list will be populated with one option per screen. Click NEXT to view the next screen, or click BACK to return to a previous screen.]",
+      "continue" : "flyingselectagrobat"
+    },
+
+    "ghostintro0" : {
+      "background" : "titlewithbg",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[This is the selection menu for Ghost Monsters. The list will be populated with one option per screen. Click NEXT to view the next screen, or click BACK to return to a previous screen.]",
+      "continue" : "ghostselectgosmet"
+    },
+
+    "crawlingintro0" : {
+      "background" : "titlewithbg",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[This is the selection menu for Crawling Monsters. The list will be populated with one option per screen. Click NEXT to view the next screen, or click BACK to return to a previous screen.]",
+      "continue" : "crawlingselectcrustoise"
+    },
+
+
+
+    "groundselectpoptop" : {
+      "background" : "titlewithbg",
+      "foreground" : "poptopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectend"],
+        ["POPTOP", "poptop0"],
+        ["NEXT", "groundselectadultpoptop"]
+      ]
+    },
+
+    "groundselectadultpoptop" : {
+      "background" : "titlewithbg",
+      "foreground" : "adultpoptopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectpoptop"],
+        ["ADULT POPTOP", "adultpoptop0"],
+        ["NEXT", "groundselectsnorktop"]
+      ]
+    },
+
+    "groundselectsnorktop" : {
+      "background" : "titlewithbg",
+      "foreground" : "snorktopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectadultpoptop"],
+        ["SNORKTOP", "snorktop0"],
+        ["NEXT", "groundselectnocttop"]
+      ]
+    },
+
+    "groundselectnocttop" : {
+      "background" : "titlewithbg",
+      "foreground" : "nocttopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectsnorktop"],
+        ["NOCTTOP", "nocttop0"],
+        ["NEXT", "groundselectcaketop"]
+      ]
+    },
+
+    "groundselectcaketop" : {
+      "background" : "titlewithbg",
+      "foreground" : "caketopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectnocttop"],
+        ["CAKETOP", "caketop0"],
+        ["NEXT", "groundselectmushtop"]
+      ]
+    },
+
+    "groundselectmushtop" : {
+      "background" : "titlewithbg",
+      "foreground" : "mushtopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectcaketop"],
+        ["MUSHTOP", "mushtop0"],
+        ["NEXT", "groundselectoctotop"]
+      ]
+    },
+
+    "groundselectoctotop" : {
+      "background" : "titlewithbg",
+      "foreground" : "octotopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectmushtop"],
+        ["OCTOTOP", "octotop0"],
+        ["NEXT", "groundselectmagmatop"]
+      ]
+    },
+
+    "groundselectmagmatop" : {
+      "background" : "titlewithbg",
+      "foreground" : "magmatopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectoctotop"],
+        ["MAGMATOP", "magmatop0"],
+        ["NEXT", "groundselectmimetop"]
+      ]
+    },
+
+    "groundselectmimetop" : {
+      "background" : "titlewithbg",
+      "foreground" : "mimetopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectmagmatop"],
+        ["MIMETOP", "mimetop0"],
+        ["NEXT", "groundselectglitchtop"]
+      ]
+    },
+
+    "groundselectglitchtop" : {
+      "background" : "titlewithbg",
+      "foreground" : "glitchtopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectmimetop"],
+        ["GLITCHTOP", "glitchtop0"],
+        ["NEXT", "groundselectbulbop"]
+      ]
+    },
+
+    "groundselectbulbop" : {
+      "background" : "titlewithbg",
+      "foreground" : "bulbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectglitchtop"],
+        ["BULBOP", "bulbop0"],
+        ["NEXT", "groundselectcottonbop"]
+      ]
+    },
+
+    "groundselectcottonbop" : {
+      "background" : "titlewithbg",
+      "foreground" : "cottonbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectbulbop"],
+        ["COTTONTOP", "cottonbop0"],
+        ["NEXT", "groundselectshroombop"]
+      ]
+    },
+
+    "groundselectshroombop" : {
+      "background" : "titlewithbg",
+      "foreground" : "shroombopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectcottonbop"],
+        ["SHROOMBOP", "shroombop0"],
+        ["NEXT", "groundselectsummerbop"]
+      ]
+    },
+
+    "groundselectsummerbop" : {
+      "background" : "titlewithbg",
+      "foreground" : "summerbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectshroombop"],
+        ["SUMMERBOP", "summerbop0"],
+        ["NEXT", "groundselectautumnbop"]
+      ]
+    },
+
+    "groundselectautumnbop" : {
+      "background" : "titlewithbg",
+      "foreground" : "autumnbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectsummerbop"],
+        ["AUTUMNBOP", "autumnbop0"],
+        ["NEXT", "groundselectwinterbop"]
+      ]
+    },
+
+    "groundselectwinterbop" : {
+      "background" : "titlewithbg",
+      "foreground" : "winterbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectautumnbop"],
+        ["WINTERBOP", "winterbop0"],
+        ["NEXT", "groundselectspringbop"]
+      ]
+    },
+
+    "groundselectspringbop" : {
+      "background" : "titlewithbg",
+      "foreground" : "springbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectwinterbop"],
+        ["SPRINGBOP", "springbop0"],
+        ["NEXT", "groundselectcandybop"]
+      ]
+    },
+
+    "groundselectcandybop" : {
+      "background" : "titlewithbg",
+      "foreground" : "candybopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectspringbop"],
+        ["CANDYBOP", "candybop0"],
+        ["NEXT", "groundselectmallowbop"]
+      ]
+    },
+
+    "groundselectmallowbop" : {
+      "background" : "titlewithbg",
+      "foreground" : "mallowbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectcandybop"],
+        ["MALLOWBOP", "mallowbop0"],
+        ["NEXT", "groundselectmandraflora"]
+      ]
+    },
+
+    "groundselectmandraflora" : {
+      "background" : "titlewithbg",
+      "foreground" : "mandrafloraimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectmallowbop"],
+        ["MANDRAFLORA", "mandraflora0"],
+        ["NEXT", "groundselectgummi"]
+      ]
+    },
+
+    "groundselectgummi" : {
+      "background" : "titlewithbg",
+      "foreground" : "gummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectmandraflora"],
+        ["GUMMI", "gummi0"],
+        ["NEXT", "groundselectrockgummi"]
+      ]
+    },
+
+    "groundselectrockgummi" : {
+      "background" : "titlewithbg",
+      "foreground" : "rockgummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectgummi"],
+        ["ROCK GUMMI", "rockgummi0"],
+        ["NEXT", "groundselecttargummi"]
+      ]
+    },
+
+    "groundselecttargummi" : {
+      "background" : "titlewithbg",
+      "foreground" : "targummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectrockgummi"],
+        ["TAR GUMMI", "targummi0"],
+        ["NEXT", "groundselectfleshgummi"]
+      ]
+    },
+
+    "groundselectfleshgummi" : {
+      "background" : "titlewithbg",
+      "foreground" : "fleshgummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselecttargummi"],
+        ["FLESH GUMMI", "fleshgummi0"],
+        ["NEXT", "groundselectskullgummi"]
+      ]
+    },
+
+    "groundselectskullgummi" : {
+      "background" : "titlewithbg",
+      "foreground" : "skullgummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectfleshgummi"],
+        ["SKULL GUMMI", "skullgummi0"],
+        ["NEXT", "groundselecteyevalve"]
+      ]
+    },
+
+    "groundselecteyevalve" : {
+      "background" : "titlewithbg",
+      "foreground" : "eyevalveimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectskullgummi"],
+        ["EYEVALVE", "eyevalve0"],
+        ["NEXT", "groundselecttrapogo"]
+      ]
+    },
+
+    "groundselecttrapogo" : {
+      "background" : "titlewithbg",
+      "foreground" : "trapogoimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselecteyevalve"],
+        ["TRAPOGO", "trapogo0"],
+        ["NEXT", "groundselectfennix"]
+      ]
+    },
+
+    "groundselectfennix" : {
+      "background" : "titlewithbg",
+      "foreground" : "fenniximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselecttrapogo"],
+        ["FENNIX", "fennix0"],
+        ["NEXT", "groundselectfrostix"]
+      ]
+    },
+
+    "groundselectfrostix" : {
+      "background" : "titlewithbg",
+      "foreground" : "frostiximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectfennix"],
+        ["FROSTIX", "frostix0"],
+        ["NEXT", "groundselectelectrix"]
+      ]
+    },
+
+    "groundselectelectrix" : {
+      "background" : "titlewithbg",
+      "foreground" : "electriximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectfrostix"],
+        ["ELECTRIX", "electrix0"],
+        ["NEXT", "groundselecttoxix"]
+      ]
+    },
+
+    "groundselecttoxix" : {
+      "background" : "titlewithbg",
+      "foreground" : "toxiximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectelectrix"],
+        ["TOXIX", "toxix0"],
+        ["NEXT", "groundselectmysterix"]
+      ]
+    },
+
+    "groundselectmysterix" : {
+      "background" : "titlewithbg",
+      "foreground" : "mysteriximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselecttoxix"],
+        ["MYSTERIX", "mysterix0"],
+        ["NEXT", "groundselectnormix"]
+      ]
+    },
+
+    "groundselectnormix" : {
+      "background" : "titlewithbg",
+      "foreground" : "normiximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectmysterix"],
+        ["NORMIX", "normix0"],
+        ["NEXT", "groundselectcleaningbot"]
+      ]
+    },
+
+    "groundselectcleaningbot" : {
+      "background" : "titlewithbg",
+      "foreground" : "cleaningbotimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectmysterix"],
+        ["ROOMBA", "cleaningbot0"],
+        ["NEXT", "groundselectpeblit"]
+      ]
+    },
+
+    "groundselectpeblit" : {
+      "background" : "titlewithbg",
+      "foreground" : "peblitimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectcleaningbot"],
+        ["PEBLIT", "peblit0"],
+        ["NEXT", "groundselectorelit"]
+      ]
+    },
+
+    "groundselectorelit" : {
+      "background" : "titlewithbg",
+      "foreground" : "orelitimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectpeblit"],
+        ["ORELIT", "orelit0"],
+        ["NEXT", "groundselectnutmidge"]
+      ]
+    },
+
+    "groundselectnutmidge" : {
+      "background" : "titlewithbg",
+      "foreground" : "nutmidgeimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectorelit"],
+        ["NUTMIDGE", "nutmidge0"],
+        ["NEXT", "groundselectnutmidgeling"]
+      ]
+    },
+
+    "groundselectnutmidgeling" : {
+      "background" : "titlewithbg",
+      "foreground" : "nutmidgelingimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectnutmidge"],
+        ["NUTMIDGELING", "nutmidgeling0"],
+        ["NEXT", "groundselectkingnutmidgeling"]
+      ]
+    },
+
+    "groundselectkingnutmidgeling" : {
+      "background" : "titlewithbg",
+      "foreground" : "kingnutmidgelingimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectnutmidgeling"],
+        ["KING NUTMIDGELING", "kingnutmidgeling0"],
+        ["NEXT", "groundselecthelmidge"]
+      ]
+    },
+
+    "groundselecthelmidge" : {
+      "background" : "titlewithbg",
+      "foreground" : "helmidgeimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectkingnutmidgeling"],
+        ["HELMIDGE", "helmidge0"],
+        ["NEXT", "groundselectanglure"]
+      ]
+    },
+
+    "groundselectanglure" : {
+      "background" : "titlewithbg",
+      "foreground" : "anglureimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselecthelmidge"],
+        ["ANGLURE", "anglure0"],
+        ["NEXT", "groundselectbobot"]
+      ]
+    },
+
+    "groundselectbobot" : {
+      "background" : "titlewithbg",
+      "foreground" : "bobotimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectanglure"],
+        ["BOBOT", "bobot0"],
+        ["NEXT", "groundselectcapricoat"]
+      ]
+    },
+
+    "groundselectcapricoat" : {
+      "background" : "titlewithbg",
+      "foreground" : "capricoatimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectbobot"],
+        ["CAPRICOAT", "capricoat0"],
+        ["NEXT", "groundselectcrabcano"]
+      ]
+    },
+
+    "groundselectcrabcano" : {
+      "background" : "titlewithbg",
+      "foreground" : "crabcanoimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectcapricoat"],
+        ["CRABCANO", "crabcano0"],
+        ["NEXT", "groundselectcrutter"]
+      ]
+    },
+
+    "groundselectcrutter" : {
+      "background" : "titlewithbg",
+      "foreground" : "crutterimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectcrabcano"],
+        ["CRUTTER", "crutter0"],
+        ["NEXT", "groundselectgleap"]
+      ]
+    },
+
+    "groundselectgleap" : {
+      "background" : "titlewithbg",
+      "foreground" : "gleapimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectcrutter"],
+        ["GLEAP", "gleap0"],
+        ["NEXT", "groundselectaliep"]
+      ]
+    },
+
+    "groundselectaliep" : {
+      "background" : "titlewithbg",
+      "foreground" : "aliepimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectgleap"],
+        ["ALIEP", "aliep0"],
+        ["NEXT", "groundselectoculemic"]
+      ]
+    },
+
+    "groundselectoculemic" : {
+      "background" : "titlewithbg",
+      "foreground" : "oculemicimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectaliep"],
+        ["OCULEMIC", "oculemic0"],
+        ["NEXT", "groundselecthemogoblin"]
+      ]
+    },
+
+    "groundselecthemogoblin" : {
+      "background" : "titlewithbg",
+      "foreground" : "hemogoblinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectoculemic"],
+        ["HEMOGOBLIN", "hemogoblin0"],
+        ["NEXT", "groundselecthypnare"]
+      ]
+    },
+
+    "groundselecthypnare" : {
+      "background" : "titlewithbg",
+      "foreground" : "hypnareimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselecthemogoblin"],
+        ["HYPNARE", "hypnare0"],
+        ["NEXT", "groundselectlilodon"]
+      ]
+    },
+
+    "groundselectlilodon" : {
+      "background" : "titlewithbg",
+      "foreground" : "lilodonimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselecthypnare"],
+        ["LILODON", "lilodon0"],
+        ["NEXT", "groundselectmiasmop"]
+      ]
+    },
+
+    "groundselectmiasmop" : {
+      "background" : "titlewithbg",
+      "foreground" : "miasmopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectlilodon"],
+        ["MIASMOP", "miasmop0"],
+        ["NEXT", "groundselectnarfin"]
+      ]
+    },
+
+    "groundselectnarfin" : {
+      "background" : "titlewithbg",
+      "foreground" : "narfinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectmiasmop"],
+        ["NARFIN", "narfin0"],
+        ["NEXT", "groundselectoogler"]
+      ]
+    },
+
+    "groundselectoogler" : {
+      "background" : "titlewithbg",
+      "foreground" : "ooglerimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectnarfin"],
+        ["OOGLER", "oogler0"],
+        ["NEXT", "groundselectorbide"]
+      ]
+    },
+
+    "groundselectorbide" : {
+      "background" : "titlewithbg",
+      "foreground" : "orbideimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectoogler"],
+        ["ORBIDE", "orbide0"],
+        ["NEXT", "groundselectpetricub"]
+      ]
+    },
+
+    "groundselectpetricub" : {
+      "background" : "titlewithbg",
+      "foreground" : "petricubimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectorbide"],
+        ["PETRICUB", "petricub0"],
+        ["NEXT", "groundselectpipkin"]
+      ]
+    },
+
+    "groundselectpipkin" : {
+      "background" : "titlewithbg",
+      "foreground" : "pipkinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectpetricub"],
+        ["PIPKIN", "pipkin0"],
+        ["NEXT", "groundselectquagmutt"]
+      ]
+    },
+
+    "groundselectquagmutt" : {
+      "background" : "titlewithbg",
+      "foreground" : "quagmuttimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectpipkin"],
+        ["QUAGMUTT", "quagmutt0"],
+        ["NEXT", "groundselectringram"]
+      ]
+    },
+
+    "groundselectringram" : {
+      "background" : "titlewithbg",
+      "foreground" : "ringramimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectquagmutt"],
+        ["RINGRAM", "ringram0"],
+        ["NEXT", "groundselectscaveran"]
+      ]
+    },
+
+    "groundselectscaveran" : {
+      "background" : "titlewithbg",
+      "foreground" : "scaveranimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectringram"],
+        ["SCAVERAN", "scaveran0"],
+        ["NEXT", "groundselectsmoglin"]
+      ]
+    },
+
+    "groundselectsmoglin" : {
+      "background" : "titlewithbg",
+      "foreground" : "smoglinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectscaveran"],
+        ["SMOGLIN", "smoglin0"],
+        ["NEXT", "groundselectsnaunt"]
+      ]
+    },
+
+    "groundselectsnaunt" : {
+      "background" : "titlewithbg",
+      "foreground" : "snauntimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectsmoglin"],
+        ["SNAUNT", "snaunt0"],
+        ["NEXT", "groundselectsnuffish"]
+      ]
+    },
+
+    "groundselectsnuffish" : {
+      "background" : "titlewithbg",
+      "foreground" : "snuffishimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectsnaunt"],
+        ["SNUFFISH", "snuffish0"],
+        ["NEXT", "groundselectsporgus"]
+      ]
+    },
+
+    "groundselectsporgus" : {
+      "background" : "titlewithbg",
+      "foreground" : "sporgusimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectsnuffish"],
+        ["SPORGUS", "sporgus0"],
+        ["NEXT", "groundselecttaroni"]
+      ]
+    },
+
+    "groundselecttaroni" : {
+      "background" : "titlewithbg",
+      "foreground" : "taroniimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectsporgus"],
+        ["TARONI", "taroni0"],
+        ["NEXT", "groundselecttoumingo"]
+      ]
+    },
+
+    "groundselecttoumingo" : {
+      "background" : "titlewithbg",
+      "foreground" : "toumingoimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselecttaroni"],
+        ["TOUMINGO", "toumingo0"],
+        ["NEXT", "groundselecttrictus"]
+      ]
+    },
+
+    "groundselecttrictus" : {
+      "background" : "titlewithbg",
+      "foreground" : "trictusimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselecttoumingo"],
+        ["TRICTUS", "trictus0"],
+        ["NEXT", "groundselectvoltip"]
+      ]
+    },
+
+    "groundselectvoltip" : {
+      "background" : "titlewithbg",
+      "foreground" : "voltipimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselecttrictus"],
+        ["VOLTIP", "voltip0"],
+        ["NEXT", "groundselectyokat"]
+      ]
+    },
+
+    "groundselectyokat" : {
+      "background" : "titlewithbg",
+      "foreground" : "yokatimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectvoltip"],
+        ["YOKAT", "yokat0"],
+        ["NEXT", "groundselectmoontant"]
+      ]
+    },
+
+    "groundselectmoontant" : {
+      "background" : "titlewithbg",
+      "foreground" : "moontantimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectyokat"],
+        ["MOONTANT", "moontant0"],
+        ["NEXT", "groundselectixoling"]
+      ]
+    },
+
+    "groundselectixoling" : {
+      "background" : "titlewithbg",
+      "foreground" : "ixolingimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectmoontant"],
+        ["IXOLING", "ixoling0"],
+        ["NEXT", "groundselectkluextotem"]
+      ]
+    },
+
+    "groundselectkluextotem" : {
+      "background" : "titlewithbg",
+      "foreground" : "kluextotemimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "groundselectixoling"],
+        ["KLUEX TOTEM", "kluextotem0"],
+        ["NEXT", "groundselectend"]
+      ]
+    },
+
+    "groundselectend" : {
+      "background" : "titlewithbg",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[End of Monster datafiles reached. Loading navigation options...]",
+      "options" : [
+        ["BACK", "groundselectkluextotem"],
+        ["MENU", "categoryselect0"],
+        ["NEXT", "groundselectpoptop"]
+      ]
+    },
+
+
+    "flyingselectagrobat" : {
+      "background" : "titlewithbg",
+      "foreground" : "agrobatimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "flyingselectend"],
+        ["AGROBAT", "agrobat0"],
+        ["NEXT", "flyingselectbatong"]
+      ]
+    },
+
+    "flyingselectbatong" : {
+      "background" : "titlewithbg",
+      "foreground" : "batongimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "flyingselectagrobat"],
+        ["BATONG", "batong0"],
+        ["NEXT", "flyingselectbobfae"]
+      ]
+    },
+
+    "flyingselectbobfae" : {
+      "background" : "titlewithbg",
+      "foreground" : "bobfaeimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "flyingselectbatong"],
+        ["BOBFAE", "bobfae0"],
+        ["NEXT", "flyingselectmonopus"]
+      ]
+    },
+
+    "flyingselectmonopus" : {
+      "background" : "titlewithbg",
+      "foreground" : "monopusimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "flyingselectbobfae"],
+        ["MONOPUS", "monopus0"],
+        ["NEXT", "flyingselectparatail"]
+      ]
+    },
+
+    "flyingselectparatail" : {
+      "background" : "titlewithbg",
+      "foreground" : "paratailimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "flyingselectmonopus"],
+        ["PARATAIL", "paratail0"],
+        ["NEXT", "flyingselectpteropod"]
+      ]
+    },
+
+    "flyingselectpteropod" : {
+      "background" : "titlewithbg",
+      "foreground" : "pteropodimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "flyingselectparatail"],
+        ["PTEROPOD", "pteropod0"],
+        ["NEXT", "flyingselectscandroid"]
+      ]
+    },
+
+    "flyingselectscandroid" : {
+      "background" : "titlewithbg",
+      "foreground" : "scandroidimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "flyingselectpteropod"],
+        ["SCANDROID", "scandroid0"],
+        ["NEXT", "flyingselectminidrone"]
+      ]
+    },
+
+    "flyingselectminidrone" : {
+      "background" : "titlewithbg",
+      "foreground" : "minidroneimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "flyingselectscandroid"],
+        ["MINIDRONE", "minidrone0"],
+        ["NEXT", "flyingselectkluexsentry"]
+      ]
+    },
+
+    "flyingselectkluexsentry" : {
+      "background" : "titlewithbg",
+      "foreground" : "kluexsentryimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "flyingselectminidrone"],
+        ["KLUEX SENTRY", "kluexsentry0"],
+        ["NEXT", "flyingselectluminorb"]
+      ]
+    },
+
+    "flyingselectluminorb" : {
+      "background" : "titlewithbg",
+      "foreground" : "luminorbimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "flyingselectkluexsentry"],
+        ["LUMINORB", "luminorb0"],
+        ["NEXT", "flyingselecthummingbug"]
+      ]
+    },
+
+    "flyingselecthummingbug" : {
+      "background" : "titlewithbg",
+      "foreground" : "hummingbugimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "flyingselectluminorb"],
+        ["HUMMINGBUG", "hummingbug0"],
+        ["NEXT", "flyingselectglofae"]
+      ]
+    },
+
+    "flyingselectglofae" : {
+      "background" : "titlewithbg",
+      "foreground" : "glofaeimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "flyingselecthummingbug"],
+        ["GLOFAE", "glofae0"],
+        ["NEXT", "flyingselectskelecrow"]
+      ]
+    },
+
+    "flyingselectskelecrow" : {
+      "background" : "titlewithbg",
+      "foreground" : "skelecrowimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "flyingselectluminorb"],
+        ["SKELECROW", "skelecrow0"],
+        ["NEXT", "flyingselecttoxicskelecrow"]
+      ]
+    },
+
+    "flyingselecttoxicskelecrow" : {
+      "background" : "titlewithbg",
+      "foreground" : "toxicskelecrowimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "flyingselectskelecrow"],
+        ["TOXIC SKELECROW", "toxicskelecrow0"],
+        ["NEXT", "flyingselectshadowskelecrow"]
+      ]
+    },
+
+    "flyingselectshadowskelecrow" : {
+      "background" : "titlewithbg",
+      "foreground" : "shadowskelecrowimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "flyingselecttoxicskelecrow"],
+        ["SHADOW SKELECROW", "shadowskelecrow0"],
+        ["NEXT", "flyingselectend"]
+      ]
+    },
+
+    "flyingselectend" : {
+      "background" : "titlewithbg",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[End of Monster datafiles reached. Loading navigation options...]",
+      "options" : [
+        ["BACK", "flyingselectshadowskelecrow"],
+        ["MENU", "categoryselect0"],
+        ["NEXT", "flyingselectagrobat"]
+      ]
+    },
+
+
+    "ghostselectgosmet" : {
+      "background" : "titlewithbg",
+      "foreground" : "gosmetimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "ghostselectend"],
+        ["GOSMET", "gosmet0"],
+        ["NEXT", "ghostselectignome"]
+      ]
+    },
+
+    "ghostselectignome" : {
+      "background" : "titlewithbg",
+      "foreground" : "ignomeimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "ghostselectgosmet"],
+        ["IGNOME", "ignome0"],
+        ["NEXT", "ghostselectlumoth"]
+      ]
+    },
+
+    "ghostselectlumoth" : {
+      "background" : "titlewithbg",
+      "foreground" : "lumothimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "ghostselectignome"],
+        ["LUMOTH", "lumoth0"],
+        ["NEXT", "ghostselectnautileech"]
+      ]
+    },
+
+    "ghostselectnautileech" : {
+      "background" : "titlewithbg",
+      "foreground" : "nautileechimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "ghostselectlumoth"],
+        ["NAUTILEECH", "nautileech0"],
+        ["NEXT", "ghostselectpyromantle"]
+      ]
+    },
+
+    "ghostselectpyromantle" : {
+      "background" : "titlewithbg",
+      "foreground" : "pyromantleimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "ghostselectnautileech"],
+        ["PYROMANTLE", "pyromantle0"],
+        ["NEXT", "ghostselectskimbus"]
+      ]
+    },
+
+    "ghostselectskimbus" : {
+      "background" : "titlewithbg",
+      "foreground" : "skimbusimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "ghostselectpyromantle"],
+        ["SKIMBUS", "skimbus0"],
+        ["NEXT", "ghostselectspookit"]
+      ]
+    },
+
+    "ghostselectspookit" : {
+      "background" : "titlewithbg",
+      "foreground" : "spookitimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "ghostselectskimbus"],
+        ["SPOOKIT", "spookit0"],
+        ["NEXT", "ghostselectsqueem"]
+      ]
+    },
+
+    "ghostselectsqueem" : {
+      "background" : "titlewithbg",
+      "foreground" : "squeemimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "ghostselectspookit"],
+        ["SQUEEM", "squeem0"],
+        ["NEXT", "ghostselectwisper"]
+      ]
+    },
+
+    "ghostselectwisper" : {
+      "background" : "titlewithbg",
+      "foreground" : "wisperimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "ghostselectsqueem"],
+        ["WISPER", "wisper0"],
+        ["NEXT", "ghostselectend"]
+      ]
+    },
+
+    "ghostselectend" : {
+      "background" : "titlewithbg",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[End of Monster datafiles reached. Loading navigation options...]",
+      "options" : [
+        ["BACK", "ghostselectwisper"],
+        ["MENU", "categoryselect0"],
+        ["NEXT", "ghostselectgosmet"]
+      ]
+    },
+
+
+    "crawlingselectcrustoise" : {
+      "background" : "titlewithbg",
+      "foreground" : "crustoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "crawlingselectend"],
+        ["CRUSTOISE", "crustoise0"],
+        ["NEXT", "crawlingselectmagtoise"]
+      ]
+    },
+
+    "crawlingselectmagtoise" : {
+      "background" : "titlewithbg",
+      "foreground" : "magtoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "crawlingselectcrustoise"],
+        ["MAGTOISE", "magtoise0"],
+        ["NEXT", "crawlingselectnocttoise"]
+      ]
+    },
+
+    "crawlingselectnocttoise" : {
+      "background" : "titlewithbg",
+      "foreground" : "nocttoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "crawlingselectmagtoise"],
+        ["NOCTTOISE", "nocttoise0"],
+        ["NEXT", "crawlingselecthivetoise"]
+      ]
+    },
+
+    "crawlingselecthivetoise" : {
+      "background" : "titlewithbg",
+      "foreground" : "hivetoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "crawlingselectnocttoise"],
+        ["HIVETOISE", "hivetoise0"],
+        ["NEXT", "crawlingselectbeetoise"]
+      ]
+    },
+
+    "crawlingselectbeetoise" : {
+      "background" : "titlewithbg",
+      "foreground" : "beetoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "crawlingselecthivetoise"],
+        ["BEETOISE", "beetoise0"],
+        ["NEXT", "crawlingselectiguarmor"]
+      ]
+    },
+
+    "crawlingselectiguarmor" : {
+      "background" : "titlewithbg",
+      "foreground" : "iguarmorimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "crawlingselectbeetoise"],
+        ["IGUARMOR", "iguarmor0"],
+        ["NEXT", "crawlingselectoculob"]
+      ]
+    },
+
+    "crawlingselectoculob" : {
+      "background" : "titlewithbg",
+      "foreground" : "oculobimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "crawlingselectiguarmor"],
+        ["OCULOB", "oculob0"],
+        ["NEXT", "crawlingselectpulpin"]
+      ]
+    },
+
+    "crawlingselectpulpin" : {
+      "background" : "titlewithbg",
+      "foreground" : "pulpinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "crawlingselectoculob"],
+        ["PULPIN", "pulpin0"],
+        ["NEXT", "crawlingselectsnaggler"]
+      ]
+    },
+
+    "crawlingselectsnaggler" : {
+      "background" : "titlewithbg",
+      "foreground" : "snagglerimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "crawlingselectpulpin"],
+        ["SNAGGLER", "snaggler0"],
+        ["NEXT", "crawlingselecttintic"]
+      ]
+    },
+
+    "crawlingselecttintic" : {
+      "background" : "titlewithbg",
+      "foreground" : "tinticimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "crawlingselectsnaggler"],
+        ["TINTIC", "tintic0"],
+        ["NEXT", "crawlingselectsluirm"]
+      ]
+    },
+
+    "crawlingselectsluirm" : {
+      "background" : "titlewithbg",
+      "foreground" : "sluirmimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "crawlingselecttintic"],
+        ["SLUIRM", "sluirm0"],
+        ["NEXT", "crawlingselectshnail"]
+      ]
+    },
+
+    "crawlingselectshnail" : {
+      "background" : "titlewithbg",
+      "foreground" : "shnailimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[Loading Monster datafiles...]",
+      "options" : [
+        ["BACK", "crawlingselectsluirm"],
+        ["SHNAIL", "shnail0"],
+        ["NEXT", "crawlingselectend"]
+      ]
+    },
+
+    "crawlingselectend" : {
+      "background" : "titlewithbg",
+      "music" : "/music/planetarium.ogg",
+      "text" : "[End of Monster datafiles reached. Loading navigation options...]",
+      "options" : [
+        ["BACK", "crawlingselectsluirm"],
+        ["MENU", "categoryselect0"],
+        ["NEXT", "crawlingselectcrustoise"]
+      ]
+    },
+
+
+
+    "poptop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "poptopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Poptop - FAMILY: Poptop - BIOMES: Garden",
+      "continue" : "poptop1"
+    },
+    "poptop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "poptopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "A small, deceptively cute-looking monster found strolling in garden biomes. Their constant tendency to sing often causes uninformed adventurers to mistaken them for a docile creature.",
+      "continue" : "poptop2"
+    },
+    "poptop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "poptopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "This of course is a dangerous mistake for the unprepared. They're actually highly aggressive predators, and will actively snap at their prey.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "adultpoptop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "adultpoptopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Adult Poptop - FAMILY: Poptop - SPECIES: Poptop - BIOMES: Jungle",
+      "continue" : "adultpoptop1"
+    },
+    "adultpoptop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "adultpoptopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Few realize that the unassuming Poptop can grow up to be quite the ferocious monster. They attack with forceful sweeps of their huge clawed arms.",
+      "continue" : "adultpoptop2"
+    },
+    "adultpoptop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "adultpoptopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Most adults are found in jungles, but you will usually find a Mother Poptop somewhere on Lush planets...",
+      "continue" : "groundendofdata"
+    },
+
+
+    "snorktop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "snorktopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Snorktop - FAMILY: Poptop - SPECIES: Poptop - BIOMES: Ocean Floor",
+      "continue" : "snorktop1"
+    },
+    "snorktop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "snorktopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Snorktops are Poptops that have adapted to life at the bottom of the Ocean. No one knows where they got their masks.",
+      "continue" : "snorktop2"
+    },
+    "snorktop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "snorktopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Though their hunting strategy is similar to normal Poptops, they possess an amusing bubble beam ability.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "nocttop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "nocttopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Nocttop - FAMILY: Poptop - BIOMES: Midnight",
+      "continue" : "nocttop1"
+    },
+    "nocttop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "nocttopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "One of the most feared members of the Poptop family. They are extremely aggressive predators, and relentlessly chase their prey.",
+      "continue" : "nocttop2"
+    },
+    "nocttop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "nocttopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They possess a powerful Bite, and toxic spit they can fire at fleeing prey. Though native to Midnight planets, weaker forms have also been spotted on other worlds, during night cycles...",
+      "continue" : "groundendofdata"
+    },
+
+
+    "adultnocttop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "adultnocttopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Adult Nocttop - FAMILY: Poptop - SPECIES: Nocttop - BIOMES: Midnight",
+      "continue" : "adultnocttop1"
+    },
+    "adultnocttop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "adultnocttopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Fully grown Nocttops are an uncommon sight. They generally exist for the purpose of producing new Nocttops. They are, ironically, somewhat less dangerous than younger Nocttops.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "caketop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "caketopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Caketop - FAMILY: Poptop - BIOMES: Spring - Notes: Can be harvested",
+      "continue" : "caketop1"
+    },
+    "caketop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "caketopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "A peculiar member of the Poptop family. They are surprisingly one of the few members of the family that is completely docile. They have no known native biome, but they have been spotted in Spring biomes.",
+      "continue" : "caketop2"
+    },
+    "caketop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "caketopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They are famous for producing pasteries that are of low nutritional value, but very sweet. Caketops are raised by fertile Mama Caketops. At this state, they are called Cupcaketops.",
+      "continue" : "caketop3"
+    },
+    "caketop3" : {
+      "background" : "titlewithbg",
+      "foreground" : "caketopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Cupcaketops follow their mother until they grow brave enough to venture out on their own. Due to their appearance, other monsters often target Caketops as prey.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "mushtop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "mushtopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Mushtop - FAMILY: Poptop - BIOMES: Mushroom",
+      "continue" : "mushtop1"
+    },
+    "mushtop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "mushtopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Mushtops are a member of the Poptop family. They are aggressive, and attack with spore seeds, much like the Sporgus.",
+      "continue" : "mushtop2"
+    },
+    "mushtop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "mushtopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "It is speculated Mushtops were once normal Poptops that ventured too far into Mushroom biomes, and became infested by the local Fungi.",
+      "continue" : "mushtop3"
+    },
+    "mushtop3" : {
+      "background" : "titlewithbg",
+      "foreground" : "mushtopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Despite this grim theory, Mushtops seem to maintain a sense of freedom, and behave much like any other species of Poptop.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "octotop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "octotopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Octotop - FAMILY: Poptop - BIOMES: Ocean Floor",
+      "continue" : "octotop1"
+    },
+    "octotop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "octotopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Octotops are a highly predatory member of the Poptop family. Their singular eye is very sharp, and allows them to track distant fish.",
+      "continue" : "octotop2"
+    },
+    "octotop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "octotopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Octotops use their singing to lure nearby fish. Once their prey is within reach, they grab them with their tentacles to keep them from fleeing.",
+      "continue" : "octotop3"
+    },
+    "octotop3" : {
+      "background" : "titlewithbg",
+      "foreground" : "octotopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Though humanoids are too strong for Octotops to grab with their tentacles, they still try to snap at divers they happen upon beneath the waves.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "magmatop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "magmatopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Magmatop - FAMILY: Poptop - BIOMES: Magma, Volcanic",
+      "continue" : "magmatop1"
+    },
+    "magmatop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "magmatopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Magmatops are a fascinating member of the Poptop family. How the family adapted to such a harsh environment is a scientific mystery.",
+      "continue" : "magmatop2"
+    },
+    "magmatop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "magmatopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Whatever the case, Magmatops are fierce predators. They attack their prey by spitting magma rocks, as well as incorporating standard Poptop strategies.",
+      "continue" : "magmatop3"
+    },
+    "magmatop3" : {
+      "background" : "titlewithbg",
+      "foreground" : "magmatopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Curiously, Magmatops prefer their meals burned down to ashes. No one is sure why they do this.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "mimetop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "mimetopimage",
+      "text" : "MONSTER: Mimetop - FAMILY: Poptop - BIOMES: ???",
+      "continue" : "mimetop1"
+    },
+    "mimetop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "mimetopimage",
+      "text" : "These strange members of the Poptop family are completely silent. Though they appear to sing, nothing is capable of hearing them.",
+      "continue" : "mimetop2"
+    },
+    "mimetop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "mimetopimage",
+      "text" : "It is thought other Mimetops may be able to hear the songs of their own species. Mimetops do not like being disturbed, and will attempt to shoo away threats.",
+      "continue" : "mimetop3"
+    },
+    "mimetop3" : {
+      "background" : "titlewithbg",
+      "foreground" : "mimetopimage",
+      "text" : "They aren't capable of damaging their assailants. Even their bit is harmless. They can knock their foes around quite a bit though. Mimetops themselves are surprisingly hardy, and have an extreme resistance to pure physical damage.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "glitchtop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "glitchtopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Glitchtop - FAMILY: ??? - BIOMES: Underground",
+      "continue" : "glitchtop1"
+    },
+    "glitchtop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "glitchtopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "A strange, indescribable horror encountered uncommonly underground during night cycles. Their origins are unknown.",
+      "continue" : "glitchtop2"
+    },
+    "glitchtop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "glitchtopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The creatures resist most weaponry, and reportedly only have one elemental weakness. This weakness unfortunately is highly inconsistent.",
+      "continue" : "glitchtop3"
+    },
+    "glitchtop3" : {
+      "background" : "titlewithbg",
+      "foreground" : "glitchtopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "All that's been documented by survivors is that they are unpredictable and extremely dangerous. If you hear their ominous song underground, it is advised you head in the opposite direction.",
+      "continue" : "glitchtop4"
+    },
+    "glitchtop4" : {
+      "background" : "titlewithbgglitchy",
+      "foreground" : "glitchtopimage",
+      "music" : "/music/pandorasboxplanetariumglitched.ogg",
+      "text" : "Due to their building reputation, and witness reports, this monster has been given the nickname 'Glitchtop'. It is speculated they could be the product of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of of",
+      "continue" : "intro0"
+    },
+
+
+    "bulbop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "bulbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Bulbop - FAMILY: Bulbop - BIOMES: Giant Flower - Notes: Can be harvested",
+      "continue" : "bulbop1"
+    },
+    "bulbop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "bulbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "A small hopping plant-like organism. Since they bleed when they're cut, they're speculated to be a form of hybrid organism.",
+      "continue" : "bulbop2"
+    },
+    "bulbop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "bulbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They are often found in groups, and are remarkably aggressive. They are fast leapers.",
+      "continue" : "bulbop3"
+    },
+    "bulbop3" : {
+      "background" : "titlewithbg",
+      "foreground" : "bulbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Bulbops, on rare occasions, produce bulbs when they die. These can be used to cultivate them. Most Bulbop species can be farmed.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "cottonbop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "cottonbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Cottonbop - FAMILY: Bulbop - BIOMES: Garden - Notes: Can be harvested",
+      "continue" : "cottonbop1"
+    },
+    "cottonbop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "cottonbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Cottonbops are non-aggressive relatives to the Bulbop found in Garden biomes. They are capable of limited 'flight' due to their ability to trap air in their cotton fibres, and drift along wind currents.",
+      "continue" : "cottonbop2"
+    },
+    "cottonbop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "cottonbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "When threatened, they release a flurry of raw cotton spores into the air.",
+      "continue" : "groundendofdata"
+    },
+
+    "shroombop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "shroombopimage",
+      "text" : "MONSTER: Shroombop - FAMILY: Bulbop - BIOMES: Mushroom",
+      "continue" : "shroombop1"
+    },
+    "shroombop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "shroombopimage",
+      "text" : "Shroombops are a Bulbop species native to Mushroom biomes. They prefer to stay in groups for safety.",
+      "continue" : "shroombop2"
+    },
+    "shroombop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "shroombopimage",
+      "text" : "Staying in groups allows them to spread their spores without interference of predators. When harassed, they shed spore seeds into the air to scare them away.",
+      "continue" : "groundendofdata"
+    },
+
+    "summerbop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "summerbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Summerbop - FAMILY: Bulbop - BIOMES: Forest - Notes: Can be harvested",
+      "continue" : "summerbop1"
+    },
+    "summerbop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "summerbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Summerbops are a member of the seasonal Bulbop family. Summerbops are strong, but not quite as hardy as an Autumnbop.",
+      "continue" : "summerbop2"
+    },
+    "summerbop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "summerbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Curiously, they often alternate the reach of their hops. No one is sure why they do this.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "autumnbop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "autumnbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Autumnbop - FAMILY: Bulbop - BIOMES: Forest - Notes: Can be harvested",
+      "continue" : "autumnbop1"
+    },
+    "autumnbop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "autumnbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Autumnbops are a member of the seasonal Bulbop family. Autumnbops are hardy, but also somewhat sluggish.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "winterbop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "winterbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Winterbop - FAMILY: Bulbop - BIOMES: Snow, Tundra - Notes: Can be harvested",
+      "continue" : "winterbop1"
+    },
+    "winterbop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "winterbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Winterbops are a member of the seasonal Bulbop family. Winterbops always feel tired and sluggish.",
+      "continue" : "winterbop2"
+    },
+    "winterbop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "winterbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They have a tendency to fall asleep. They're even known to fall asleep in the middle of combat. Fortunately for the Winterbop, they regenerate health while sleeping.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "springbop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "springbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Springbop - FAMILY: Bulbop - BIOMES: Spring - Notes: Can be harvested",
+      "continue" : "springbop1"
+    },
+    "springbop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "springbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Springbops are a member of the seasonal Bulbop family. Their docile appearance is somewhat deceptive.",
+      "continue" : "springbop2"
+    },
+    "springbop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "springbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Though they are non-aggressive, they will fight back when attacked. They are arguably the strongest of the seasonal Bulbops.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "candybop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "candybopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Candybop - FAMILY: Bulbop - BIOMES: None - Notes: Can be harvested",
+      "continue" : "candybop1"
+    },
+    "candybop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "candybopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "A peculiar member of the Bulbop family that resemble candy corn. They're docile monsters.",
+      "continue" : "candybop2"
+    },
+    "candybop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "candybopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Candybops are capable of producing candy corn. Their candy corn is of low nutritional value.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "mallowbop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "mallowbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Mallowbop - FAMILY: Bulbop - BIOMES: None - Notes: Can be harvested",
+      "continue" : "mallowbop1"
+    },
+    "mallowbop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "mallowbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "A peculiar member of the Bulbop family that resemble marshmallows. They're docile monsters.",
+      "continue" : "mallowbop2"
+    },
+    "mallowbop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "mallowbopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Candybops are capable of producing marshmallows. Their marshmallows are of low nutritional value.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "mandraflora0" : {
+      "background" : "titlewithbg",
+      "foreground" : "mandrafloraimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Mandraflora - FAMILY: Mandraflora - BIOMES: Giant Flower - Notes: Can be harvested",
+      "continue" : "mandraflora1"
+    },
+    "mandraflora1" : {
+      "background" : "titlewithbg",
+      "foreground" : "mandrafloraimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Young Mandraflora spend their lives underground, feeding on the rich nutrients in the soil. This solitary lifestyle allows them to reach impressive sizes.",
+      "continue" : "mandraflora2"
+    },
+    "mandraflora2" : {
+      "background" : "titlewithbg",
+      "foreground" : "mandrafloraimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Once they are fully grown, they live the rest of their lives on the surface, basking in the sun. They aren't fond of intruders invading their space, and will spin like a top to scare them off.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "gummi0" : {
+      "background" : "titlewithbg",
+      "foreground" : "gummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Gummi - FAMILY: Gummi - BIOMES: Forest",
+      "continue" : "gummi1"
+    },
+    "gummi1" : {
+      "background" : "titlewithbg",
+      "foreground" : "gummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Gummis are a gelatinous monster native to forests. They get their name from a gelatinous substance produced in their bodies.",
+      "continue" : "gummi2"
+    },
+    "gummi2" : {
+      "background" : "titlewithbg",
+      "foreground" : "gummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Gummis are technically docile, but their inability to control their excitement when they meet new lifeforms makes them dangerous.",
+      "continue" : "gummi3"
+    },
+    "gummi3" : {
+      "background" : "titlewithbg",
+      "foreground" : "gummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "When a Gummi spots a new lifeform, they make an audible squeak. It's thought this squeak is a release of air bubbles trapped within their bodies.",
+      "continue" : "gummi4"
+    },
+    "gummi4" : {
+      "background" : "titlewithbg",
+      "foreground" : "gummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They are obsessed with making close physical contact with lifeforms, and aren't afraid to throw their bodies around to do so.",
+      "continue" : "gummi5"
+    },
+    "gummi5" : {
+      "background" : "titlewithbg",
+      "foreground" : "gummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "It is thought they may just simply want to make new friends. When captured, they make great pets.",
+      "continue" : "gummi6"
+    },
+    "gummi6" : {
+      "background" : "titlewithbg",
+      "foreground" : "gummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Gummis are asexual, and never stop growing. When they reach a certain size, they become capable of producing offspring. At this stage they are called Mama Gummis.",
+      "continue" : "gummi7"
+    },
+    "gummi7" : {
+      "background" : "titlewithbg",
+      "foreground" : "gummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The size of the Gummis produced depends on the size of the Mama. Mama Gummis behave like average Gummis, but are far more bulky, and can throw more weight around.",
+      "continue" : "gummi8"
+    },
+    "gummi8" : {
+      "background" : "titlewithbg",
+      "foreground" : "gummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The small gummis produced by Mamas of a standard-size are called Gumminis. The vibrant colors of the adults aren't as present in Gumminis. Their size often makes them a difficult target.",
+      "continue" : "gummi9"
+    },
+    "gummi9" : {
+      "background" : "titlewithbg",
+      "foreground" : "gummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "When a Gummi of any species is killed, bits of a substance called Gummi globules may be left behind. This substance is highly versatile, and can be cooked into a sweet glob at a campfire, or used in the creation of monster eggs.",
+      "continue" : "gummi10"
+    },
+    "gummi10" : {
+      "background" : "titlewithbg",
+      "foreground" : "gummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The latter is possible, due to the substance's incredible ability to replicate and mirror DNA of organic matter that comes into contact with it. This alone makes it a highly useful resource.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "rockgummi0" : {
+      "background" : "titlewithbg",
+      "foreground" : "rockgummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Rock Gummi - FAMILY: Gummi - BIOMES: Underground",
+      "continue" : "rockgummi1"
+    },
+    "rockgummi1" : {
+      "background" : "titlewithbg",
+      "foreground" : "rockgummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Rock Gummis are believed to be Gummis that fell into caves and chasms, and were unable get back out. They adapted to the subterranean environment.",
+      "continue" : "rockgummi2"
+    },
+    "rockgummi2" : {
+      "background" : "titlewithbg",
+      "foreground" : "rockgummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The exterior of their gelatinous bodies hardened a bit due to the cold temperatures underground. This increased their hardiness.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "targummi0" : {
+      "background" : "titlewithbg",
+      "foreground" : "targummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Tar Gummi - FAMILY: Gummi - BIOMES: Tar",
+      "continue" : "targummi1"
+    },
+    "targummi1" : {
+      "background" : "titlewithbg",
+      "foreground" : "targummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Likely one of the most fascinating properties of the Gummis, is their ability to adapt to nearly any environment.",
+      "continue" : "targummi2"
+    },
+    "targummi2" : {
+      "background" : "titlewithbg",
+      "foreground" : "targummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "As Gummis spread to other parts of the universe, properties of their bodies can change depending on what's taken in from the environment.",
+      "continue" : "targummi3"
+    },
+    "targummi3" : {
+      "background" : "titlewithbg",
+      "foreground" : "targummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Tar Gummis, for example, are Gummi's that have absorbed large amounts of tar. When they spot a lifeform, and become excited, they have a tendency to spit tar balls.",
+      "continue" : "targummi4"
+    },
+    "targummi4" : {
+      "background" : "titlewithbg",
+      "foreground" : "targummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "This tar-spitting is more of a reflex rather than an act of aggression. Simply keep your distance when dealing with them.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "skullgummi0" : {
+      "background" : "titlewithbg",
+      "foreground" : "skullgummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Skull Gummi - FAMILY: Gummi - BIOMES: Bones, Bonecaves",
+      "continue" : "skullgummi1"
+    },
+    "skullgummi1" : {
+      "background" : "titlewithbg",
+      "foreground" : "skullgummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These monsters may appear to be leaping skulls, but they are actually a species of Gummi. The species formed when Gummis leapt into Boneyards, and picked up the genetic material littering the environment.",
+      "continue" : "skullgummi2"
+    },
+    "skullgummi2" : {
+      "background" : "titlewithbg",
+      "foreground" : "skullgummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The skull that rests on their head is firmly planted, and doesn't come off naturally. Removing the skull inflicts too much pain on captured specimens, and success almost always results in the Gummi's death.",
+      "continue" : "skullgummi3"
+    },
+    "skullgummi3" : {
+      "background" : "titlewithbg",
+      "foreground" : "skullgummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The single successful report of a Skull Gummi skull removal provided no imagery of the Gummi underneath... However, the report did come with the resignations of those that performed the operation.",
+      "continue" : "skullgummi4"
+    },
+    "skullgummi4" : {
+      "background" : "titlewithbg",
+      "foreground" : "skullgummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They never elaborated on what they actually saw in the incident, and always avoided the subject matter entirely when questioned.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "fleshgummi0" : {
+      "background" : "titlewithbg",
+      "foreground" : "fleshgummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Flesh Gummi - FAMILY: Gummi - BIOMES: Flesh",
+      "continue" : "fleshgummi1"
+    },
+    "fleshgummi1" : {
+      "background" : "titlewithbg",
+      "foreground" : "fleshgummiimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Flesh Gummis are Gummis that have absorbed large amounts of... flesh, from their environment. Killing a Flesh Gummi causes it to split into Flesh Gumminis.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "eyevalve0" : {
+      "background" : "titlewithbg",
+      "foreground" : "eyevalveimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Eyevalve - FAMILY: Eyevalve - BIOMES: Ocean Floor",
+      "continue" : "eyevalve1"
+    },
+    "eyevalve1" : {
+      "background" : "titlewithbg",
+      "foreground" : "eyevalveimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Eyevalves are two separate monsters working together in a symbiotic relationship. The clam is blind, and has issues locating prey on their own. The Aqueye is highly vulnerable, but has excellent vision.",
+      "continue" : "eyevalve2"
+    },
+    "eyevalve2" : {
+      "background" : "titlewithbg",
+      "foreground" : "eyevalveimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The monsters overcome each other's weaknesses and shortcomings by teaming up. The Aqueye locates prey, and the clam provides the Aqueye with protection.",
+      "continue" : "eyevalve3"
+    },
+    "eyevalve3" : {
+      "background" : "titlewithbg",
+      "foreground" : "eyevalveimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "When an Eyevalve is defeated, the Aqueye is left behind. Aqueye are very weak, and virtually defenseless on their own",
+      "continue" : "eyevalve4"
+    },
+    "eyevalve4" : {
+      "background" : "titlewithbg",
+      "foreground" : "eyevalveimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "It would take quite a cruel person to destroy the symbiotic bond of an Eyevalve.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "trapogo0" : {
+      "background" : "titlewithbg",
+      "foreground" : "trapogoimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Trapogo - FAMILY: Trapogo - BIOMES: Mixed",
+      "continue" : "trapogo1"
+    },
+    "trapogo1" : {
+      "background" : "titlewithbg",
+      "foreground" : "trapogoimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Trapogos are quirky creatures that traverse their environment via a spring that extends into their bodies. This spring compresses and decompresses to launch the monsters where they want to go.",
+      "continue" : "trapogo2"
+    },
+    "trapogo2" : {
+      "background" : "titlewithbg",
+      "foreground" : "trapogoimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Trapogos are shy monsters, and like to convert containers they find into snug-housing to protect them from the elements. Their body colors even change to match their home.",
+      "continue" : "trapogo3"
+    },
+    "trapogo3" : {
+      "background" : "titlewithbg",
+      "foreground" : "trapogoimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They hoard the chest's previous contents for themselves. They possess a strong attachment to the items they claim, and grow agitated when travelers attempt to steal from them.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "fennix0" : {
+      "background" : "titlewithbg",
+      "foreground" : "fenniximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Fennix - FAMILY: Fennix - BIOMES: Mixed - Notes: Can be harvested",
+      "continue" : "fennix1"
+    },
+    "fennix1" : {
+      "background" : "titlewithbg",
+      "foreground" : "fenniximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These small fox-like creatures are capable of breathing fire. They utilize their flamethrowers to defend themselves, and roast their prey.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "frostix0" : {
+      "background" : "titlewithbg",
+      "foreground" : "frostiximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Frostix - FAMILY: Fennix - BIOMES: Snow - Notes: Can be harvested",
+      "continue" : "frostix1"
+    },
+    "frostix1" : {
+      "background" : "titlewithbg",
+      "foreground" : "frostiximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Frostix are members of the Fennix family. They are adapted to the cold, and possess a frigid, icy breath. Their bodies are often covered in ice crystals.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "electrix0" : {
+      "background" : "titlewithbg",
+      "foreground" : "electriximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Electrix - FAMILY: Fennix - BIOMES: Scorched, Scorched City - Notes: Can be harvested",
+      "continue" : "electrix1"
+    },
+    "electrix1" : {
+      "background" : "titlewithbg",
+      "foreground" : "electriximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Electrix are members of the Fennix family. They are often found in Scorched environments, hunting for abandoned sources of electricity that may still be active.",
+      "continue" : "electrix2"
+    },
+    "electrix2" : {
+      "background" : "titlewithbg",
+      "foreground" : "electriximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "When threatened, they can charge their breath with electricity, and shock their target.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "toxix0" : {
+      "background" : "titlewithbg",
+      "foreground" : "toxiximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Toxix - FAMILY: Fennix - BIOMES: Toxic - Notes: Can be harvested",
+      "continue" : "toxix1"
+    },
+    "toxix1" : {
+      "background" : "titlewithbg",
+      "foreground" : "toxiximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Toxix are members of the Fennix family. Toxix are known for feeding on small toxic creatures, which makes the Toxix themselves highly poisonous. Their toxic breath induces poison on contact.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "mysterix0" : {
+      "background" : "titlewithbg",
+      "foreground" : "mysteriximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Mysterix - FAMILY: Fennix - BIOMES: Midnight",
+      "continue" : "mysterix1"
+    },
+    "mysterix1" : {
+      "background" : "titlewithbg",
+      "foreground" : "mysteriximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Mysterix are members of the Fennix family. They are adapted to the dark environments of Midnight biomes. Their shadowy, cold breath is corrosive.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "normix0" : {
+      "background" : "titlewithbg",
+      "foreground" : "normiximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Normix - FAMILY: Fennix - BIOMES: Garden - Notes: Can be harvested",
+      "continue" : "normix1"
+    },
+    "normix1" : {
+      "background" : "titlewithbg",
+      "foreground" : "normiximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Normix are members of the Fennix family. Their DNA consists of a mix of most of the other members of the family. They don't possess any remarkable combat skills.",
+      "continue" : "normix2"
+    },
+    "normix2" : {
+      "background" : "titlewithbg",
+      "foreground" : "normiximage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "That said, they do at least have noteworthy resistance to elemental attacks.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "cleaningbot0" : {
+      "background" : "titlewithbg",
+      "foreground" : "cleaningbotimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Roomba - FAMILY: Roomba - BIOMES: Scorched City",
+      "continue" : "cleaningbot1"
+    },
+    "cleaningbot1" : {
+      "background" : "titlewithbg",
+      "foreground" : "cleaningbotimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These monsters are found cleaning away in Scorched City biomes. Since most of them have never received maintenance, their outer exterior has deteriorated quite a bit.",
+      "continue" : "cleaningbot2"
+    },
+    "cleaningbot2" : {
+      "background" : "titlewithbg",
+      "foreground" : "cleaningbotimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Despite this, they still miraculously carry on with their primary function. They don't tolerate anyone hindering their cleaning, and are prone to attacking anyone that gets too close.",
+      "continue" : "cleaningbot3"
+    },
+    "cleaningbot3" : {
+      "background" : "titlewithbg",
+      "foreground" : "cleaningbotimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Supposedly, some people have reported acquiring Roombas in mint-condition, though they never elaborate on where they caught them, and such units are likely fairly rare.",
+      "continue" : "groundendofdata"
+    },
+
+    "peblit0" : {
+      "background" : "titlewithbg",
+      "foreground" : "peblitimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Peblit - FAMILY: Peblit - BIOMES: Underground - Notes: Can be harvested",
+      "continue" : "peblit1"
+    },
+    "peblit1" : {
+      "background" : "titlewithbg",
+      "foreground" : "peblitimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The lowly Peblit isn't a particularly threatening foe. They're fairly sluggish, and incapable of running due to their large heads.",
+      "continue" : "peblit2"
+    },
+    "peblit2" : {
+      "background" : "titlewithbg",
+      "foreground" : "peblitimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They retract their body into their head when they feel threatened. They're as hard as a rock, and a decently defensive monster.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "orelit0" : {
+      "background" : "titlewithbg",
+      "foreground" : "orelitimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Blank - FAMILY: Blank - BIOMES: Blank - Notes: Can be harvested",
+      "continue" : "orelit1"
+    },
+    "orelit1" : {
+      "background" : "titlewithbg",
+      "foreground" : "orelitimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Orelits are a Peblit relative rich in various types of ore. Their hardiness varies depending on the ore their bodies contain.",
+      "continue" : "groundendofdata"
+    },
+
+    "nutmidge0" : {
+      "background" : "titlewithbg",
+      "foreground" : "nutmidgeimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Nutmidge - FAMILY: Nutmidge - BIOMES: Garden",
+      "continue" : "nutmidge1"
+    },
+    "nutmidge1" : {
+      "background" : "titlewithbg",
+      "foreground" : "nutmidgeimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Nutmidges are found in garden biomes. Though they look like an individual organism, Nutmidges are actually made up of three smaller creatures known as Nutmidgelings.",
+      "continue" : "nutmidge2"
+    },
+    "nutmidge2" : {
+      "background" : "titlewithbg",
+      "foreground" : "nutmidgeimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "When bothered, they attack their target by charging at them. If charging proves ineffective, the Nutmidgeling on top (Known as a King Nutmidgeling) tucks into the shell, and the trio braces for incoming damage.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "nutmidgeling0" : {
+      "background" : "titlewithbg",
+      "foreground" : "image",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Nutmidgeling - FAMILY: Nutmidge - BIOMES: None",
+      "continue" : "nutmidgeling1"
+    },
+    "nutmidgeling1" : {
+      "background" : "titlewithbg",
+      "foreground" : "nutmidgelingimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Nutmidgelings are small, relatively fragile creatures that live in garden biomes. Though they will try to leap at their target, their soft squishy bodies make them inefficient in combat.",
+      "continue" : "nutmidgeling2"
+    },
+    "nutmidgeling2" : {
+      "background" : "titlewithbg",
+      "foreground" : "nutmidgelingimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "To avoid getting trampled by bigger creatures, they often group together with other members of their species inside a shell to form a Nutmidge.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "kingnutmidgeling0" : {
+      "background" : "titlewithbg",
+      "foreground" : "kingnutmidgelingimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: King Nutmidgeling - FAMILY: Nutmidge - BIOMES: None",
+      "continue" : "kingnutmidgeling1"
+    },
+    "kingnutmidgeling1" : {
+      "background" : "titlewithbg",
+      "foreground" : "kingnutmidgelingimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "A Nutmidgeling with its head tuft still intact is an uncommon sight, as they usually get trampled and lose it.",
+      "continue" : "kingnutmidgeling2"
+    },
+    "kingnutmidgeling2" : {
+      "background" : "titlewithbg",
+      "foreground" : "kingnutmidgelingimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Nutmidgelings seem to regard these members of their species with respect, and always make them keep watch at the top of the stack in a Nutmidge.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "helmidge0" : {
+      "background" : "titlewithbg",
+      "foreground" : "helmidgeimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Helmidge - FAMILY: Nutmidge - BIOMES: Forest",
+      "continue" : "helmidge1"
+    },
+    "helmidge1" : {
+      "background" : "titlewithbg",
+      "foreground" : "helmidgeimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "On some occasions Nutmidgelings may be unable to find other members of their species. When this happens, they resort to other methods to protect themselves.",
+      "continue" : "helmidge2"
+    },
+    "helmidge2" : {
+      "background" : "titlewithbg",
+      "foreground" : "helmidgeimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "A lone Nutmidgeling dons a nut shell to protect their soft squishy noggin. This makes them more defensive, which increases their probability of survival.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "anglure0" : {
+      "background" : "titlewithbg",
+      "foreground" : "anglureimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Anglure - FAMILY: Anglure - BIOMES: Bioluminescent",
+      "continue" : "anglure1"
+    },
+    "anglure1" : {
+      "background" : "titlewithbg",
+      "foreground" : "anglureimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These large intimidating creatures stalk bioluminescent biomes. They attack their prey by spitting bioluminescent critters at them.",
+      "continue" : "anglure2"
+    },
+    "anglure2" : {
+      "background" : "titlewithbg",
+      "foreground" : "anglureimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Researchers wonder where the critters come from, but no one's ever had the courage to get close enough to study the aggressive creature.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "bobot0" : {
+      "background" : "titlewithbg",
+      "foreground" : "bobotimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Bobot - FAMILY: Bobot - BIOMES: Mixed",
+      "continue" : "bobot1"
+    },
+    "bobot1" : {
+      "background" : "titlewithbg",
+      "foreground" : "bobotimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "A peculiar robot of unknown origins. Their maker is unknown. They charge at anyone who get's too close.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "capricoat0" : {
+      "background" : "titlewithbg",
+      "foreground" : "capricoatimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Capricoat - FAMILY: Capricoat - BIOMES: Alpine",
+      "continue" : "capricoat1"
+    },
+    "capricoat1" : {
+      "background" : "titlewithbg",
+      "foreground" : "capricoatimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Ram-like creatures found in Alpine biomes. Their dense fur protects them from the cold environments they inhabit.",
+      "continue" : "capricoat2"
+    },
+    "capricoat2" : {
+      "background" : "titlewithbg",
+      "foreground" : "capricoatimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They're extremely territorial, and charge at intruders. No one like's being knocked off a mountain, so be cautious when dealing with Capricoats.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "crabcano0" : {
+      "background" : "titlewithbg",
+      "foreground" : "crabcanoimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Crabcano - FAMILY: Crabcano - BIOMES: Mixed",
+      "continue" : "crabcano1"
+    },
+    "crabcano1" : {
+      "background" : "titlewithbg",
+      "foreground" : "crabcanoimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These creatures seem to be in a perpetual state of anger. They erupt at the slightest confrontation, and should be dealt with cautiously.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "crutter0" : {
+      "background" : "titlewithbg",
+      "foreground" : "crutterimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Crutter - FAMILY: Crutter - BIOMES: Mixed",
+      "continue" : "crutter1"
+    },
+    "crutter1" : {
+      "background" : "titlewithbg",
+      "foreground" : "crutterimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Crutters possess an extremely potent toxin. Just a drop of Crutter toxin can inflict poison.",
+      "continue" : "crutter2"
+    },
+    "crutter2" : {
+      "background" : "titlewithbg",
+      "foreground" : "crutterimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They should be approached with caution, as they can utilize their toxin as a projectile.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "gleap0" : {
+      "background" : "titlewithbg",
+      "foreground" : "gleapimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Gleap - FAMILY: Gleap - BIOMES: Garden",
+      "continue" : "gleap1"
+    },
+    "gleap1" : {
+      "background" : "titlewithbg",
+      "foreground" : "gleapimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "A hopping creature made of a springy substance. Their primary method of movement and attack consists of leaping.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "aliep0" : {
+      "background" : "titlewithbg",
+      "foreground" : "aliepimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Aliep - FAMILY: Gleap - BIOMES: Alien",
+      "continue" : "aliep1"
+    },
+    "aliep1" : {
+      "background" : "titlewithbg",
+      "foreground" : "aliepimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Alieps are highly observant predators. Their primary tactics for dealing with prey involve abrupt leaps, and waiting for their opponent to make the first move. The more they are attacked, the more they retaliate. Be careful!",
+      "continue" : "groundendofdata"
+    },
+
+
+    "oculemic0" : {
+      "background" : "titlewithbg",
+      "foreground" : "oculemicimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Oculemic - FAMILY: Gleap - BIOMES: Eyepatch",
+      "continue" : "oculemic1"
+    },
+    "oculemic1" : {
+      "background" : "titlewithbg",
+      "foreground" : "oculemicimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "This peculiar monster is a distant relative to the Gleap. They generally feed on oculemons, but they are opportunistic predators as well.",
+      "continue" : "oculemic2"
+    },
+    "oculemic2" : {
+      "background" : "titlewithbg",
+      "foreground" : "oculemicimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Their mimicry allows them to blend in with their environment, waiting for prey to get close enough for them to attack!",
+      "continue" : "groundendofdata"
+    },
+
+
+
+    "hemogoblin0" : {
+      "background" : "titlewithbg",
+      "foreground" : "hemogoblinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Hemogoblin - FAMILY: Hemogoblin - BIOMES: Flesh - Notes: Can be harvested",
+      "continue" : "hemogoblin1"
+    },
+    "hemogoblin1" : {
+      "background" : "titlewithbg",
+      "foreground" : "hemogoblinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These red-skinned monsters are both creepy, and remarkable. They can survive being split in half, and will even continue attacking afterwards!",
+      "continue" : "hemogoblin2"
+    },
+    "hemogoblin2" : {
+      "background" : "titlewithbg",
+      "foreground" : "hemogoblinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "It is unknown if the two halves of a Hemogoblin can reunite in the wild. Such behavior has never been witnessed.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "hypnare0" : {
+      "background" : "titlewithbg",
+      "foreground" : "hypnareimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Hypnare - FAMILY: Hypnare - BIOMES: Spring",
+      "continue" : "hypnare1"
+    },
+    "hypnare1" : {
+      "background" : "titlewithbg",
+      "foreground" : "hypnareimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Hypnares are non-aggressive monsters found in Spring biomes. They spend most of their lives frolicking.",
+      "continue" : "hypnare2"
+    },
+    "hypnare2" : {
+      "background" : "titlewithbg",
+      "foreground" : "hypnareimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Hypnares will defend themselves from attackers. They typically utilize graceful leaps in combat.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "lilodon0" : {
+      "background" : "titlewithbg",
+      "foreground" : "lilodonimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Lilodon - FAMILY: Lilodon - BIOMES: Mixed",
+      "continue" : "lilodon1"
+    },
+    "lilodon1" : {
+      "background" : "titlewithbg",
+      "foreground" : "lilodonimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Though their ancestors used to be aquatic, Lilodons survive fine on land. Though they are small, they shouldn't be underestimated.",
+      "continue" : "lilodon2"
+    },
+    "lilodon2" : {
+      "background" : "titlewithbg",
+      "foreground" : "lilodonimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They still possess the powerful jaws of their ancestors. They often partially bury themselves underground until potential prey enters their territory.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "miasmop0" : {
+      "background" : "titlewithbg",
+      "foreground" : "miasmopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Miasmop - FAMILY: Miasmop - BIOMES: Mixed",
+      "continue" : "miasmop1"
+    },
+    "miasmop1" : {
+      "background" : "titlewithbg",
+      "foreground" : "miasmopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These fascinating creatures defend themselves, and subdue prey with pungent fumes they release from the tubes on their heads.",
+      "continue" : "miasmop2"
+    },
+    "miasmop2" : {
+      "background" : "titlewithbg",
+      "foreground" : "miasmopimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Miasmop fumes are highly toxic, and should be avoided while fighting them. Attacking them from a distance should make them much more manageable.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "narfin0" : {
+      "background" : "titlewithbg",
+      "foreground" : "narfinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Narfin - FAMILY: Narfin - BIOMES: Prism",
+      "continue" : "narfin1"
+    },
+    "narfin1" : {
+      "background" : "titlewithbg",
+      "foreground" : "narfinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The vibrant horn of the Narfin isn't just used for self defense. They utilize their horn like a prism, giving off vibrant displays of light in hopes of attracting a mate.",
+      "continue" : "narfin2"
+    },
+    "narfin2" : {
+      "background" : "titlewithbg",
+      "foreground" : "narfinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "During mating season, Narfin with the most elaborate displays of light pass on their genes to the next generation.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "oogler0" : {
+      "background" : "titlewithbg",
+      "foreground" : "ooglerimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Oogler - FAMILY: Oogler - BIOMES: Bone",
+      "continue" : "1"
+    },
+    "oogler1" : {
+      "background" : "titlewithbg",
+      "foreground" : "ooglerimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These unsettling creatures are fascinated with new life forms. They persistently observe specific lifeforms to determine if they may be potential prey.",
+      "continue" : "oogler2"
+    },
+    "oogler2" : {
+      "background" : "titlewithbg",
+      "foreground" : "ooglerimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "When an Oogler finds potential prey, they will lunge at their target with little warning. Be on your guard when traveling through Oogler territory...",
+      "continue" : "groundendofdata"
+    },
+
+
+    "orbide0" : {
+      "background" : "titlewithbg",
+      "foreground" : "orbideimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Orbide - FAMILY: Orbide - BIOMES: Hive",
+      "continue" : "orbide1"
+    },
+    "orbide1" : {
+      "background" : "titlewithbg",
+      "foreground" : "orbideimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The Orbide is one of the most unsettling creatures in the universe. They spend most of their time retracted into the orb-like structure encasing their head.",
+      "continue" : "orbide2"
+    },
+    "orbide2" : {
+      "background" : "titlewithbg",
+      "foreground" : "orbideimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Don't let their sluggish movement fool you. They are highly aggressive, and attack with astonishing agility. They slash at their targets with the blades on their arms.",
+      "continue" : "orbide3"
+    },
+    "orbide3" : {
+      "background" : "titlewithbg",
+      "foreground" : "orbideimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Orbides are remarkably invasive. Though their hives are usually found on Midnight planets, they have spread to many other parts of the universe.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "petricub0" : {
+      "background" : "titlewithbg",
+      "foreground" : "petricubimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Petricub - FAMILY: Petricub - BIOMES: Mixed",
+      "continue" : "petricub1"
+    },
+    "petricub1" : {
+      "background" : "titlewithbg",
+      "foreground" : "petricubimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These strange creatures observe the movements of their prey. When they feel an opening is available, they lunge at their target.",
+      "continue" : "petricub2"
+    },
+    "petricub2" : {
+      "background" : "titlewithbg",
+      "foreground" : "petricubimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Due to the fascinating way Petricubs die, researchers wonder if they may be ethereal.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "pipkin0" : {
+      "background" : "titlewithbg",
+      "foreground" : "pipkinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Pipkin - FAMILY: Pipkin - BIOMES: Steamspring",
+      "continue" : "pipkin1"
+    },
+    "pipkin1" : {
+      "background" : "titlewithbg",
+      "foreground" : "pipkinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These robotic monsters defend themselves with hot steam. Despite their friendly appearance, they don't seem to interact with each other.",
+      "continue" : "pipkin2"
+    },
+    "pipkin2" : {
+      "background" : "titlewithbg",
+      "foreground" : "pipkinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Due to this, researchers speculate they may simply be constructs designed to protect the area.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "quagmutt0" : {
+      "background" : "titlewithbg",
+      "foreground" : "quagmuttimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Quagmutt - FAMILY: Quagmutt - BIOMES: Swamp",
+      "continue" : "quagmutt1"
+    },
+    "quagmutt1" : {
+      "background" : "titlewithbg",
+      "foreground" : "quagmuttimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The unhygienic lifestyle of the Quagmutt makes their bite toxic. They're not afraid of people, and will lunge at potential prey.",
+      "continue" : "quagmutt2"
+    },
+    "quagmutt2" : {
+      "background" : "titlewithbg",
+      "foreground" : "quagmuttimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "There are rumors some Floran tribes keep them as pets. These rumors have neither been confirmed or denied, but the nature of Floran makes it highly unlikely.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "ringram0" : {
+      "background" : "titlewithbg",
+      "foreground" : "ringramimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Ringram - FAMILY: Ringram - BIOMES: Alpine",
+      "continue" : "ringram1"
+    },
+    "ringram1" : {
+      "background" : "titlewithbg",
+      "foreground" : "ringramimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The horns of a Ringram never stop growing. They utilize rolling both to get around quickly, and keep their horns ground down to a manageable length.",
+      "continue" : "ringram2"
+    },
+    "ringram2" : {
+      "background" : "titlewithbg",
+      "foreground" : "ringramimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Despite their size, they are highly territorial, and aren't afraid to chase trespassers away with their rolling charge.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "scaveran0" : {
+      "background" : "titlewithbg",
+      "foreground" : "scaveranimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Scaveran - FAMILY: Scaveran - BIOMES: Mixed",
+      "continue" : "scaveran1"
+    },
+    "scaveran1" : {
+      "background" : "titlewithbg",
+      "foreground" : "scaveranimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The flightless Scaveran feed on the carcasses of dead monsters. The substance they propel from their beak is highly acidic, and likely used to soften their meal.",
+      "continue" : "scaveran2"
+    },
+    "scaveran2" : {
+      "background" : "titlewithbg",
+      "foreground" : "scaveranimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "If their natural food source is scarce, these birds aren't afraid to turn to live prey...",
+      "continue" : "groundendofdata"
+    },
+
+
+    "smoglin0" : {
+      "background" : "titlewithbg",
+      "foreground" : "smoglinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Smoglin - FAMILY: Smoglin - BIOMES: Mixed",
+      "continue" : "smoglin1"
+    },
+    "smoglin1" : {
+      "background" : "titlewithbg",
+      "foreground" : "smoglinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These monsters get their name from the hot toxic smog they breathe to attack prey. The smog is formed by a chemical reaction that occurs in their belly.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "snaunt0" : {
+      "background" : "titlewithbg",
+      "foreground" : "snauntimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Snaunt - FAMILY: Snaunt - BIOMES: Mixed",
+      "continue" : "snaunt1"
+    },
+    "snaunt1" : {
+      "background" : "titlewithbg",
+      "foreground" : "snauntimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Though the Snaunt is often considered a mere garden pest, their ancestors were once huge predators.",
+      "continue" : "snaunt2"
+    },
+    "snaunt2" : {
+      "background" : "titlewithbg",
+      "foreground" : "snauntimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Snaunt defend themselves by spitting a toxic substance at their attackers.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "snuffish0" : {
+      "background" : "titlewithbg",
+      "foreground" : "snuffishimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Snuffish - FAMILY: Snuffish - BIOMES: Ocean",
+      "continue" : "snuffish1"
+    },
+    "snuffish1" : {
+      "background" : "titlewithbg",
+      "foreground" : "snuffishimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Due to being the prey species for some organisms, Snuffish are always alert, and easily startled.",
+      "continue" : "snuffish2"
+    },
+    "snuffish2" : {
+      "background" : "titlewithbg",
+      "foreground" : "snuffishimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "A startled Snuffish spits a cold substance from their body to ward off potential attackers.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "sporgus0" : {
+      "background" : "titlewithbg",
+      "foreground" : "sporgusimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Sporgus - FAMILY: Sporgus - BIOMES: Mushroom",
+      "continue" : "sporgus1"
+    },
+    "sporgus1" : {
+      "background" : "titlewithbg",
+      "foreground" : "sporgusimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The Sporgus are fast growing fungal creatures that thrive in warm, moist environments. They fire spore seeds at potential prey.",
+      "continue" : "sporgus2"
+    },
+    "sporgus2" : {
+      "background" : "titlewithbg",
+      "foreground" : "sporgusimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Neither the Sporgus, or their spores are edible. In fact, they're highly hallucinogenic. (A group of space-faring Floran hunters infamously discovered this the hard way.)",
+      "continue" : "groundendofdata"
+    },
+
+
+    "taroni0" : {
+      "background" : "titlewithbg",
+      "foreground" : "taroniimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Taroni - FAMILY: Taroni - BIOMES: Tar - Notes: Can be harvested",
+      "continue" : "taroni1"
+    },
+    "taroni1" : {
+      "background" : "titlewithbg",
+      "foreground" : "taroniimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The easiest way to describe the Taroni, is with one word: Tar. These monsters eat tar, live in tar, sleep in tar, and even excrete tar.",
+      "continue" : "taroni2"
+    },
+    "taroni2" : {
+      "background" : "titlewithbg",
+      "foreground" : "taroniimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They are highly territorial, and possessive of their tar. They will attempt to drive away intruders by pelting them with balls of tar.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "toumingo0" : {
+      "background" : "titlewithbg",
+      "foreground" : "toumingoimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Toumingo - FAMILY: Toumingo - BIOMES: Oasis",
+      "continue" : "toumingo1"
+    },
+    "toumingo1" : {
+      "background" : "titlewithbg",
+      "foreground" : "toumingoimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These flightless birds spend most of their days hunting for fish in Oasis biomes. They wade through water with their long legs, and snap up prey with their beaks.",
+      "continue" : "toumingo2"
+    },
+    "toumingo2" : {
+      "background" : "titlewithbg",
+      "foreground" : "toumingoimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Though non-aggressive, they defend themselves by quite literally falling on their attacker. This seems inefficient, but their beaks are hard, and actually pretty dangerous!",
+      "continue" : "groundendofdata"
+    },
+
+
+    "trictus0" : {
+      "background" : "titlewithbg",
+      "foreground" : "trictusimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Trictus - FAMILY: Trictus - BIOMES: Desert",
+      "continue" : "trictus1"
+    },
+    "trictus1" : {
+      "background" : "titlewithbg",
+      "foreground" : "trictusimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Uninformed adventurers often mistake buried these monsters for desert flowers. Trictus are solitary creatures, spending most of their time partially buried.",
+      "continue" : "trictus2"
+    },
+    "trictus2" : {
+      "background" : "titlewithbg",
+      "foreground" : "trictusimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "If disturbed, they attack with sharp claws, and can also defend themselves by firing off the cactus needles attached to their bodies.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "voltip0" : {
+      "background" : "titlewithbg",
+      "foreground" : "voltipimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Voltip - FAMILY: Voltip - BIOMES: Underground",
+      "continue" : "voltip1"
+    },
+    "voltip1" : {
+      "background" : "titlewithbg",
+      "foreground" : "voltipimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These creatures are supposedly the result of an experiment gone horribly wrong. Whatever their origins may be, Voltops can be found across the universe.",
+      "continue" : "voltip2"
+    },
+    "voltip2" : {
+      "background" : "titlewithbg",
+      "foreground" : "voltipimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They aren't fond of humanoid lifeforms for some peculiar reason, and will shock anyone who gets too close.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "yokat0" : {
+      "background" : "titlewithbg",
+      "foreground" : "yokatimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Yokat - FAMILY: Yokat - BIOMES: Eyepile",
+      "continue" : "yokat1"
+    },
+    "yokat1" : {
+      "background" : "titlewithbg",
+      "foreground" : "yokatimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These sneaky monsters stalk eye biomes. If their sneaking is disturbed, they will attempt to scare off observers with their creepy bulging eye...",
+      "continue" : "yokat2"
+    },
+    "yokat2" : {
+      "background" : "titlewithbg",
+      "foreground" : "yokatimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They are very greedy, and reportedly sneak into villages near their habitat during the night to rob them of their pixels, and shiny objects.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "moontant0" : {
+      "background" : "titlewithbg",
+      "foreground" : "moontantimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Moontant - FAMILY: Moontant - BIOMES: Moon",
+      "continue" : "moontant1"
+    },
+    "moontant1" : {
+      "background" : "titlewithbg",
+      "foreground" : "moontantimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Moontants are grotesque mutants that inhabit moons. They were once humanoids, but underwent harsh mutations from extended contact with erchius crystals.",
+      "continue" : "moontant2"
+    },
+    "moontant2" : {
+      "background" : "titlewithbg",
+      "foreground" : "moontantimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Moontants should be dealt with cautiously. They fire a liquid from their arms to attack their target.",
+      "continue" : "moontant3"
+    },
+    "moontant3" : {
+      "background" : "titlewithbg",
+      "foreground" : "moontantimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Don't allow their origins to cause you to drop your guard. They are nothing more than monsters now.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "ixoling0" : {
+      "background" : "titlewithbg",
+      "foreground" : "ixolingimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Ixoling - FAMILY: Ixoling - BIOMES: Underground",
+      "continue" : "ixoling1"
+    },
+    "ixoling1" : {
+      "background" : "titlewithbg",
+      "foreground" : "ixolingimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Ixolings are juvenile Ixodooms. It takes roughly 200 years for them to potentially pupate, so they wait out this period hunting underground.",
+      "continue" : "ixoling2"
+    },
+    "ixoling2" : {
+      "background" : "titlewithbg",
+      "foreground" : "ixolingimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Their venom glands aren't developed at this stage, so they instead rely on their jaws to subdue potential prey. Keep your distance when fighting them, as they pounce their prey.",
+      "continue" : "groundendofdata"
+    },
+
+
+    "kluextotem0" : {
+      "background" : "titlewithbg",
+      "foreground" : "kluextotemimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Kluex Totem - FAMILY: Kluex Totem - BIOMES: Desert",
+      "continue" : "kluextotem1"
+    },
+    "kluextotem1" : {
+      "background" : "titlewithbg",
+      "foreground" : "kluextotemimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Kluex Totems are ancient constructs created by Avians. They were generally designed to protected Avian settlements, important structures and burial planets.",
+      "continue" : "kluextotem2"
+    },
+    "kluextotem2" : {
+      "background" : "titlewithbg",
+      "foreground" : "kluextotemimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Today, most Kluex Totems have gone haywire, and attack virtually anyone that gets too close.",
+      "continue" : "groundendofdata"
+    },
+
+
+
+    "agrobat0" : {
+      "background" : "titlewithbg",
+      "foreground" : "agrobatimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Agrobat - FAMILY: Agrobat - BIOMES: Underground",
+      "continue" : "agrobat1"
+    },
+    "agrobat1" : {
+      "background" : "titlewithbg",
+      "foreground" : "agrobatimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The Agrobat has sensitive eyes, and prefers dark environments. The slightest glow or reflection can agitate them.",
+      "continue" : "agrobat2"
+    },
+    "agrobat2" : {
+      "background" : "titlewithbg",
+      "foreground" : "agrobatimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They attack by swooping at their target. Generally, Agrobats should be left to their own devices if possible.",
+      "continue" : "flyingendofdata"
+    },
+
+    "batong0" : {
+      "background" : "titlewithbg",
+      "foreground" : "batongimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Batong - FAMILY: Batong - BIOMES: Underground",
+      "continue" : "batong1"
+    },
+    "batong1" : {
+      "background" : "titlewithbg",
+      "foreground" : "batongimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These bat-like creatures are nearly blind, and get a sense of where they are going through taste.",
+      "continue" : "batong2"
+    },
+    "batong2" : {
+      "background" : "titlewithbg",
+      "foreground" : "batongimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They don't like being disturbed, and will defend themselves if attacked. They often retaliate to attacks with a swoop.",
+      "continue" : "flyingendofdata"
+    },
+
+    "bobfae0" : {
+      "background" : "titlewithbg",
+      "foreground" : "bobfaeimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Bobfae - FAMILY: Bobfae - BIOMES: Forest",
+      "continue" : "bobfae1"
+    },
+    "bobfae1" : {
+      "background" : "titlewithbg",
+      "foreground" : "bobfaeimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Though classified as flying monsters, Bobfae are one of the weakest fliers in the universe. The act is so tiring, they periodically have to rest.",
+      "continue" : "bobfae2"
+    },
+    "bobfae2" : {
+      "background" : "titlewithbg",
+      "foreground" : "bobfaeimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They will attack potential threats, but they don't particularly excel in combat.",
+      "continue" : "flyingendofdata"
+    },
+
+    "monopus0" : {
+      "background" : "titlewithbg",
+      "foreground" : "image",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Monopus - FAMILY: Monopus - BIOMES: Mixed",
+      "continue" : "monopus1"
+    },
+    "monopus1" : {
+      "background" : "titlewithbg",
+      "foreground" : "monopusimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The ancient Monopus are highly intelligent. They also happen to be mischievous, and attack people that get too close.",
+      "continue" : "monopus2"
+    },
+    "monopus2" : {
+      "background" : "titlewithbg",
+      "foreground" : "monopusimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "No one knows whether their hostility is out of malice, or just simply their way of being playful.",
+      "continue" : "flyingendofdata"
+    },
+
+    "paratail0" : {
+      "background" : "titlewithbg",
+      "foreground" : "paratailimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Paratail - FAMILY: Paratail - BIOMES: Mixed",
+      "continue" : "paratail1"
+    },
+    "paratail1" : {
+      "background" : "titlewithbg",
+      "foreground" : "paratailimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These balloon-like, flying monsters contain volatile gases, which explode when the creature feels threatened.",
+      "continue" : "paratail2"
+    },
+    "paratail2" : {
+      "background" : "titlewithbg",
+      "foreground" : "paratailimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Paratail are only capable of exploding once, so they have to make this dangerous defensive maneuver count.",
+      "continue" : "flyingendofdata"
+    },
+
+    "pteropod0" : {
+      "background" : "titlewithbg",
+      "foreground" : "pteropodimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Pteropod - FAMILY: Pteropod - BIOMES: Swamp",
+      "continue" : "pteropod1"
+    },
+    "pteropod1" : {
+      "background" : "titlewithbg",
+      "foreground" : "pteropodimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The berries this flying monster eats are highly toxic. They provide the monster with nourishment, and also serve as a defensive attack.",
+      "continue" : "pteropod2"
+    },
+    "pteropod2" : {
+      "background" : "titlewithbg",
+      "foreground" : "pteropodimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Pteropod attack their target by spitting the poisonous substance left over from their digested berries.",
+      "continue" : "flyingendofdata"
+    },
+
+    "scandroid0" : {
+      "background" : "titlewithbg",
+      "foreground" : "scandroidimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Scandroid - FAMILY: Scandroid - BIOMES: Mixed",
+      "continue" : "scandroid1"
+    },
+    "scandroid1" : {
+      "background" : "titlewithbg",
+      "foreground" : "scandroidimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These robots are constantly searching for something (or someone?). No one knows who created the Scandroids, or what they're searching for.",
+      "continue" : "scandroid2"
+    },
+    "scandroid2" : {
+      "background" : "titlewithbg",
+      "foreground" : "scandroidimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Whatever it may be, they are highly aggressive. They shock anyone that interrupts their endless search.",
+      "continue" : "flyingendofdata"
+    },
+
+    "minidrone0" : {
+      "background" : "titlewithbg",
+      "foreground" : "minidroneimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Minidrone - FAMILY: Minidrone - BIOMES: Scorched",
+      "continue" : "minidrone1"
+    },
+    "minidrone1" : {
+      "background" : "titlewithbg",
+      "foreground" : "minidroneimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Minidrones are flying robots created by the Miniknog. While experimental models exist in some strongholds, the finished product patrols Scorched biomes.",
+      "continue" : "minidrone2"
+    },
+    "minidrone2" : {
+      "background" : "titlewithbg",
+      "foreground" : "minidroneimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Minidrones are either set to scout, or to kill. They're generally looking Apex rebels, but do not discriminate them from normal adventurers very well.",
+      "continue" : "flyingendofdata"
+    },
+
+    "kluexsentry0" : {
+      "background" : "titlewithbg",
+      "foreground" : "kluexsentryimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Kluex Sentry - FAMILY: Kluex Sentry - BIOMES: Desert",
+      "continue" : "kluexsentry1"
+    },
+    "kluexsentry1" : {
+      "background" : "titlewithbg",
+      "foreground" : "kluexsentryimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Kluex Sentries are ancient flying constructs created by Avians. They were created to patrol planets suitable for Avian settlement.",
+      "continue" : "kluexsentry2"
+    },
+    "kluexsentry2" : {
+      "background" : "titlewithbg",
+      "foreground" : "kluexsentryimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Today, most Kluex Sentries have gone haywire, and attack virtually anyone that gets too close. Some Kluex Sentries can also be found in important Avian temples.",
+      "continue" : "flyingendofdata"
+    },
+
+    "luminorb0" : {
+      "background" : "titlewithbg",
+      "foreground" : "luminorbimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Luminorb - FAMILY: Luminorb - BIOMES: Atmosphere",
+      "continue" : "luminorb1"
+    },
+    "luminorb1" : {
+      "background" : "titlewithbg",
+      "foreground" : "luminorbimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Luminorbs are mysterious flying monsters that light up the atmospheres of planets during night cycles.",
+      "continue" : "luminorb2"
+    },
+    "luminorb2" : {
+      "background" : "titlewithbg",
+      "foreground" : "luminorbimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Their origins are properties are unknown. They are generally non-aggressive, but will attempt to defend themselves if attacked.",
+      "continue" : "luminorb3"
+    },
+    "luminorb3" : {
+      "background" : "titlewithbg",
+      "foreground" : "luminorbimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "There have also been Luminorb sightings reported in bioluminescent biomes, where they spawn in swarms.",
+      "continue" : "flyingendofdata"
+    },
+
+    "hummingbug0" : {
+      "background" : "titlewithbg",
+      "foreground" : "hummingbugimage",
+      "text" : "MONSTER: Hummingbug - FAMILY: Hummingbug - BIOMES: Swamp",
+      "continue" : "hummingbug1"
+    },
+    "hummingbug1" : {
+      "background" : "titlewithbg",
+      "foreground" : "hummingbugimage",
+      "text" : "Hummingbugs are tenacious insects often found in swarms. They are hostile, and attempt to feed on anything that entires their territory.",
+      "continue" : "hummingbug2"
+    },
+    "hummingbug2" : {
+      "background" : "titlewithbg",
+      "foreground" : "hummingbugimage",
+      "text" : "They are relatively harmless physically, but their bite passes on a virus to victims. This virus can last a long time, and can be fatal if left untreated.",
+      "continue" : "hummingbug3"
+    },
+    "hummingbug3" : {
+      "background" : "titlewithbg",
+      "foreground" : "hummingbugimage",
+      "text" : "To avoid a fatal encounter with these insects, be sure to pack antidotes when traveling through swamps.",
+      "continue" : "flyingendofdata"
+    },
+
+
+    "glofae0" : {
+      "background" : "titlewithbg",
+      "foreground" : "glofaeimage",
+      "text" : "MONSTER: Glofae - FAMILY: Glofae - BIOMES: Bioluminescent, Spring",
+      "continue" : "glofae1"
+    },
+    "glofae1" : {
+      "background" : "titlewithbg",
+      "foreground" : "glofaeimage",
+      "text" : "Glofae are bioluminescent insects of high intelligence. They are generally non-aggressive, but also a bit mischievous.",
+      "continue" : "glofae2"
+    },
+    "glofae2" : {
+      "background" : "titlewithbg",
+      "foreground" : "glofaeimage",
+      "text" : "They are found throughout the universe, and there are rumors that some groups even existed on Earth at one point in time.",
+      "continue" : "glofae3"
+    },
+    "glofae3" : {
+      "background" : "titlewithbg",
+      "foreground" : "glofaeimage",
+      "text" : "Glofae prefer pristine and beautiful environments, and don't like being disturbed. Though they are small and physically weak, they aren't afraid to take on threats.",
+      "continue" : "flyingendofdata"
+    },
+
+
+    "skelecrow0" : {
+      "background" : "titlewithbg",
+      "foreground" : "skelecrowimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Skelecrow - FAMILY: Skelecrow - BIOMES: Bone",
+      "continue" : "skelecrow1"
+    },
+    "skelecrow1" : {
+      "background" : "titlewithbg",
+      "foreground" : "skelecrowimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The skeletal remains of these birds are manipulated by microscopic organisms. They attack prey by firing bones at them.",
+      "continue" : "flyingendofdata"
+    },
+
+    "toxicskelecrow0" : {
+      "background" : "titlewithbg",
+      "foreground" : "toxicskelecrowimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Toxic Skelecrow - FAMILY: Skelecrow - BIOMES: Toxic",
+      "continue" : "toxicskelecrow1"
+    },
+    "toxicskelecrow1" : {
+      "background" : "titlewithbg",
+      "foreground" : "toxicskelecrowimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The microbes manipulating this skelecrow are highly toxic. Thus, their bones inflict poison on contact.",
+      "continue" : "flyingendofdata"
+    },
+
+    "shadowskelecrow0" : {
+      "background" : "titlewithbg",
+      "foreground" : "shadowskelecrowimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Shadow Skelecrow - FAMILY: Skelecrow - BIOMES: Midnight",
+      "continue" : "shadowskelecrow1"
+    },
+    "shadowskelecrow1" : {
+      "background" : "titlewithbg",
+      "foreground" : "shadowskelecrowimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The microbes that manipulate these corpses thrive in the dark environments of Midnight biomes. Their presence has inspired many ghost stories!",
+      "continue" : "flyingendofdata"
+    },
+
+
+
+    "crustoise0" : {
+      "background" : "titlewithbg",
+      "foreground" : "crustoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Crustoise - FAMILY: Crustoise - BIOMES: Underground",
+      "continue" : "crustoise1"
+    },
+    "crustoise1" : {
+      "background" : "titlewithbg",
+      "foreground" : "crustoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These monsters are covered in painfully sharp rocks. Though they look cute, they're highly territorial.",
+      "continue" : "crustoise2"
+    },
+    "crustoise2" : {
+      "background" : "titlewithbg",
+      "foreground" : "crustoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These little guys are famous for raising up on their hind-legs and charging at their targets. It's thought they do this to scare off intruders.",
+      "continue" : "crawlingendofdata"
+    },
+
+
+    "magtoise0" : {
+      "background" : "titlewithbg",
+      "foreground" : "magtoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Magtoise - FAMILY: Crustoise - BIOMES: Magma, Volcanic",
+      "continue" : "magtoise1"
+    },
+    "magtoise1" : {
+      "background" : "titlewithbg",
+      "foreground" : "magtoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These Crustoise relatives prefer hot environments. Their shell is extremely hot, and capable of inflicting fourth degree burns if touched.",
+      "continue" : "magtoise2"
+    },
+    "magtoise2" : {
+      "background" : "titlewithbg",
+      "foreground" : "magtoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They are capable of surviving in high temperatures, and have even been reported to reside at the core layer of some planets.",
+      "continue" : "crawlingendofdata"
+    },
+
+
+    "nocttoise0" : {
+      "background" : "titlewithbg",
+      "foreground" : "nocttoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Nocttoise - FAMILY: Crustoise - BIOMES: Midnight",
+      "continue" : "nocttoise1"
+    },
+    "nocttoise1" : {
+      "background" : "titlewithbg",
+      "foreground" : "nocttoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These Crustoise relatives prefer sitting in the shadows, waiting for potential prey to come within reach.",
+      "continue" : "nocttoise2"
+    },
+    "nocttoise2" : {
+      "background" : "titlewithbg",
+      "foreground" : "nocttoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "While native to Midnight biomes, they are also found on the surface of some other biomes during the night.",
+      "continue" : "crawlingendofdata"
+    },
+
+
+    "hivetoise0" : {
+      "background" : "titlewithbg",
+      "foreground" : "hivetoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Hivetoise - FAMILY: Crustoise - BIOMES: Hive",
+      "continue" : "hivetoise1"
+    },
+    "hivetoise1" : {
+      "background" : "titlewithbg",
+      "foreground" : "hivetoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These distant relatives to the Crustoise are native to Hive biomes. They act as worker drones, maintaining and caring for the Hive.",
+      "continue" : "hivetoise2"
+    },
+    "hivetoise2" : {
+      "background" : "titlewithbg",
+      "foreground" : "nocttoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Due to their awkward round shells, they are incapable of standing up on their hind-legs, and thus cannot charge intruders.",
+      "continue" : "crawlingendofdata"
+    },
+
+
+    "beetoise0" : {
+      "background" : "titlewithbg",
+      "foreground" : "beetoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Beetoise - FAMILY: Crustoise - BIOMES: Jungle, Mushroom",
+      "continue" : "beetoise1"
+    },
+    "beetoise1" : {
+      "background" : "titlewithbg",
+      "foreground" : "beetoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These Crustoise relatives possess one of the strongest shells in the world of monsters. Pure physical attacks do next to nothing to them, so elemental weapons are a must.",
+      "continue" : "beetoise2"
+    },
+    "beetoise2" : {
+      "background" : "titlewithbg",
+      "foreground" : "beetoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Be mindful of their shell-spin attack. The attack is hard for the monster to stop, but very fast. If you have good reflexes, you may be able to leap over a Beetoise as they go sailing past you.",
+      "continue" : "beetoise3"
+    },
+    "beetoise3" : {
+      "background" : "titlewithbg",
+      "foreground" : "beetoiseimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Beetoise generally feed on vegetation, but populations in Mushroom biomes are also known to feed on fungi.",
+      "continue" : "crawlingendofdata"
+    },
+
+    "iguarmor0" : {
+      "background" : "titlewithbg",
+      "foreground" : "iguarmorimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Iguarmor - FAMILY: Iguarmor - BIOMES: Mixed",
+      "continue" : "iguarmor1"
+    },
+    "iguarmor1" : {
+      "background" : "titlewithbg",
+      "foreground" : "iguarmorimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Iguarmor are non-aggressive reptiles equipped with a spiked shell attached to their tail. They use this shell for protection.",
+      "continue" : "crawlingendofdata"
+    },
+
+    "oculob0" : {
+      "background" : "titlewithbg",
+      "foreground" : "oculobimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Oculob - FAMILY: Oculob - BIOMES: Slime",
+      "continue" : "oculob1"
+    },
+    "oculob1" : {
+      "background" : "titlewithbg",
+      "foreground" : "oculobimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Oculobs are gelatinous organisms that inhabit slime biomes. Their slime acts as an adhesive, firmly anchoring them to the surface they're attached to.",
+      "continue" : "oculob2"
+    },
+    "oculob2" : {
+      "background" : "titlewithbg",
+      "foreground" : "oculobimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They will attempt to attack intruders, but do not possess any noteworthy combat skills.",
+      "continue" : "crawlingendofdata"
+    },
+
+    "pulpin0" : {
+      "background" : "titlewithbg",
+      "foreground" : "pulpinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Pulpin - FAMILY: Pulpin - BIOMES: Mixed",
+      "continue" : "pulpin1"
+    },
+    "pulpin1" : {
+      "background" : "titlewithbg",
+      "foreground" : "pulpinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These fascinating lifeforms appear to be water-based. Their sticky texture allows them to easily climb surfaces.",
+      "continue" : "pulpin2"
+    },
+    "pulpin2" : {
+      "background" : "titlewithbg",
+      "foreground" : "pulpinimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They defend themselves by firing cold bubbles from an orifice on their head.",
+      "continue" : "crawlingendofdata"
+    },
+
+    "snaggler0" : {
+      "background" : "titlewithbg",
+      "foreground" : "snagglerimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Snaggler - FAMILY: Snaggler - BIOMES: Underground",
+      "continue" : "snaggler1"
+    },
+    "snaggler1" : {
+      "background" : "titlewithbg",
+      "foreground" : "snagglerimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "This gastropod is essentially a predatory snail. They are surprisingly fast, and relentlessly chase down prey. They care little about their prey's size.",
+      "continue" : "snaggler2"
+    },
+    "snaggler2" : {
+      "background" : "titlewithbg",
+      "foreground" : "snagglerimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "When attacked, they tuck their body into their shell to try to endure damage.",
+      "continue" : "crawlingendofdata"
+    },
+
+    "tintic0" : {
+      "background" : "titlewithbg",
+      "foreground" : "image",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Tintic - FAMILY: Tintic - BIOMES: Underground",
+      "continue" : "tintic1"
+    },
+    "tintic1" : {
+      "background" : "titlewithbg",
+      "foreground" : "tinticimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "No one knows whether this monster is organic, or inorganic. They never seem to eat or sleep.",
+      "continue" : "tintic2"
+    },
+    "tintic2" : {
+      "background" : "titlewithbg",
+      "foreground" : "tinticimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Their most valuable tool is their silk. They fashion their own armor from this silk, and even spit webshots at potential prey.",
+      "continue" : "crawlingendofdata"
+    },
+
+    "sluirm0" : {
+      "background" : "titlewithbg",
+      "foreground" : "sluirmimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Sluirm - FAMILY: Sluirm - BIOMES: Underground",
+      "continue" : "sluirm1"
+    },
+    "sluirm1" : {
+      "background" : "titlewithbg",
+      "foreground" : "sluirmimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Description: Sluirms are non-aggressive, worm-like monsters that live underground. Their bodies are covered in a stretchy, leathery hide that's resistant to elemental attacks.",
+      "continue" : "sluirm2"
+    },
+    "sluirm2" : {
+      "background" : "titlewithbg",
+      "foreground" : "sluirmimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Since they are mostly made up of muscles, they can stretch and contort across most surfaces. Since they aren't particularly strong, they usually group together for safety.",
+      "continue" : "crawlingendofdata"
+    },
+
+    "shnail0" : {
+      "background" : "titlewithbg",
+      "foreground" : "shnailimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Shnail - FAMILY: Shnail - BIOMES: Underground",
+      "continue" : "shnail1"
+    },
+    "shnail1" : {
+      "background" : "titlewithbg",
+      "foreground" : "shnailimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Snhails are non-aggressive, worm-like monsters closely related to the Sluirm. They possess a highly sturdy shell, which protects them from physical force.",
+      "continue" : "shnail2"
+    },
+    "shnail2" : {
+      "background" : "titlewithbg",
+      "foreground" : "shnailimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Snhail bodies aren't as thick as a Sluirm, so they resort to tucking into their shell to endure most damage.",
+      "continue" : "crawlingendofdata"
+    },
+
+
+
+    "gosmet0" : {
+      "background" : "titlewithbg",
+      "foreground" : "gosmetimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Gosmet - FAMILY: Gosmet - BIOMES: Abandoned Hylotl Structures",
+      "continue" : "gosmet1"
+    },
+    "gosmet1" : {
+      "background" : "titlewithbg",
+      "foreground" : "gosmetimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These ghostly monsters mould their armor from their own ethereal bodies. They are reported to dwell within abandoned Hylotl structures.",
+      "continue" : "gosmet2"
+    },
+    "gosmet2" : {
+      "background" : "titlewithbg",
+      "foreground" : "gosmetimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Why they are drawn to Hylotl architecture is unknown, but they don't like intruders, and will attack on sight.",
+      "continue" : "ghostendofdata"
+    },
+
+    "ignome0" : {
+      "background" : "titlewithbg",
+      "foreground" : "ignomeimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Ignome - FAMILY: Ignome - BIOMES: Mixed",
+      "continue" : "ignome1"
+    },
+    "ignome1" : {
+      "background" : "titlewithbg",
+      "foreground" : "ignomeimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "These strange ghostly monsters like hot environments. They are highly resistant to fire despite their charred appearance.",
+      "continue" : "ignome2"
+    },
+    "ignome2" : {
+      "background" : "titlewithbg",
+      "foreground" : "ignomeimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The Ignome are very hostile, and charge at anyone they catch within their territory.",
+      "continue" : "ghostendofdata"
+    },
+
+    "lumoth0" : {
+      "background" : "titlewithbg",
+      "foreground" : "lumothimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Lumoth - FAMILY: Lumoth - BIOMES: Steamspring",
+      "continue" : "lumoth1"
+    },
+    "lumoth1" : {
+      "background" : "titlewithbg",
+      "foreground" : "lumothimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The bulbs attached to the heads of Lumoths are powered by their flight. Their light would go out if they ever stopped flying.",
+      "continue" : "ghostendofdata"
+    },
+
+    "nautileech0" : {
+      "background" : "titlewithbg",
+      "foreground" : "nautileechimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Nautileech - FAMILY: Nautileech - BIOMES: Ocean",
+      "continue" : "nautileech1"
+    },
+    "nautileech1" : {
+      "background" : "titlewithbg",
+      "foreground" : "nautileechimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "This semi-aquatic parasitic lifeform is a pest to deep sea divers. They persistently chase prey in an attempt to drain their health.",
+      "continue" : "ghostendofdata"
+    },
+
+    "pyromantle0" : {
+      "background" : "titlewithbg",
+      "foreground" : "pyromantleimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Pyromantle - FAMILY: Pyromantle - BIOMES: Magma, Volcanic, Core",
+      "continue" : "pyromantle1"
+    },
+    "pyromantle1" : {
+      "background" : "titlewithbg",
+      "foreground" : "pyromantleimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Pyromantle appear to be some sort of ethereal golem. They attack people who stumble into their territory.",
+      "continue" : "pyromantle2"
+    },
+    "pyromantle2" : {
+      "background" : "titlewithbg",
+      "foreground" : "pyromantleimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They defend themselves with bursts of heat and smoke, and propel magma rocks at their target.",
+      "continue" : "ghostendofdata"
+    },
+
+    "skimbus0" : {
+      "background" : "titlewithbg",
+      "foreground" : "skimbusimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Skimbus - FAMILY: Skimbus - BIOMES: Asteroid belts",
+      "continue" : "skimbus1"
+    },
+    "skimbus1" : {
+      "background" : "titlewithbg",
+      "foreground" : "skimbusimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "It is thought these ethereal monsters generally reside in space due to being easily blown by the slightest wind.",
+      "continue" : "skimbus2"
+    },
+    "skimbus2" : {
+      "background" : "titlewithbg",
+      "foreground" : "skimbusimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "They are territorial, and will charge anyone who invades their space. Why they are drawn to asteroids in particular remains a mystery.",
+      "continue" : "ghostendofdata"
+    },
+
+    "spookit0" : {
+      "background" : "titlewithbg",
+      "foreground" : "spookitimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Spookit - FAMILY: Spookit - BIOMES: Forest, Underground",
+      "continue" : "spookit1"
+    },
+    "spookit1" : {
+      "background" : "titlewithbg",
+      "foreground" : "spookitimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "Spookits are cat-like ethereal monsters. They can enter a different plane of existence if attacked.",
+      "continue" : "spookit2"
+    },
+    "spookit2" : {
+      "background" : "titlewithbg",
+      "foreground" : "spookitimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "It's speculated that their defensive maneuver may actually be involuntary. Spookits will pass into the different plane whenever they blink.",
+      "continue" : "ghostendofdata"
+    },
+
+    "squeem0" : {
+      "background" : "titlewithbg",
+      "foreground" : "squeemimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Squeem - FAMILY: Squeem - BIOMES: Mixed",
+      "continue" : "squeem1"
+    },
+    "squeem1" : {
+      "background" : "titlewithbg",
+      "foreground" : "squeemimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The movements of the floaty Squeem are determined by atmospheric temperature. It is speculated Squeem 'attack' people due to their body heat.",
+      "continue" : "ghostendofdata"
+    },
+
+    "wisper0" : {
+      "background" : "titlewithbg",
+      "foreground" : "wisperimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "MONSTER: Wisper - FAMILY: Wisper - BIOMES: Mixed",
+      "continue" : "wisper1"
+    },
+    "wisper1" : {
+      "background" : "titlewithbg",
+      "foreground" : "wisperimage",
+      "music" : "/music/planetarium.ogg",
+      "text" : "The glow of this monster seems to be caused by a cold ethereal liquid. Wispers attack threats by freezing and firing this liquid at their target.",
+      "continue" : "ghostendofdata"
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    "0" : {
+      "background" : "titlewithbg",
+      "foreground" : "image",
+      "text" : "MONSTER: Blank - FAMILY: Blank - BIOMES: Blank",
+      "continue" : "1"
+    },
+    "1" : {
+      "background" : "titlewithbg",
+      "foreground" : "image",
+      "text" : "Text.",
+      "continue" : "2"
+    },
+    "2" : {
+      "background" : "titlewithbg",
+      "foreground" : "image",
+      "text" : "Text.",
+      "continue" : "3"
+    },
+    "3" : {
+      "background" : "titlewithbg",
+      "foreground" : "image",
+      "text" : "Text.",
+      "continue" : "groundendofdata"
+    }
+
+
+  }
+}

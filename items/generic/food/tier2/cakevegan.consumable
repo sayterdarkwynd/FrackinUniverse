@@ -1,0 +1,27 @@
+{
+  "itemName" : "cakevegan",
+  "rarity" : "Common",
+  "price" : 240,
+  "category" : "preparedFood",
+  "inventoryIcon" : "cake.png",
+  "description" : "It's a delicious vegan cake! Like the original, but for ^green;herbivores^reset;. ^green;Type: Vegetable Dessert^reset;",
+  "shortdescription" : "Vegan Cake",
+  "effects" : [ [
+    {
+        "effect" : "maxenergyscalingboostfood",
+        "duration" : 405
+    },
+    {
+        "effect" : "plant_dessert"
+    }
+  ] ],
+  "foodValue" : 45,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

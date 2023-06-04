@@ -1,11 +1,11 @@
 {
   "metadata" : {
     "name" : "fuscifidungeon",
-    "species" : "dummy",
+    "species" : "generic",
     "rules" : [
     ],
     "anchor" : [ "entrance1" ],
-    "gravity" : 30,
+    //"gravity" : 50,
     "maxRadius" : 2000,
     "maxParts" : 100
   },
@@ -33,7 +33,7 @@
     {
       "value" : [225, 225, 255, 255],
       "rules" : [ [ "worldGenMustContainSolidBackground" ], [ "allowOverdrawing" ] ],
-      "brush" : [ [ "clear" ], [ "back", "apexshipwall" ], [ "front", "apexshipwall" ] ]
+      "brush" : [ [ "clear" ], [ "front", "slopedtelebriumpanel" ] ]
     },
 
     {
@@ -73,119 +73,119 @@
 
     {
       "value" : [196, 175, 113, 255],
-      "comment" : "steel stairs/platform",
-      "brush" : [ [ "clear" ], [ "front", "tungstenplatform" ] ]
+      "comment" : "telebrium stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "telebriumplatform" ] ]
     },
 
     {
       "value" : [218, 174, 116, 255],
-      "comment" : "wooden stairs/platform",
-      "brush" : [ [ "clear" ], [ "front", "modernplatform" ] ]
+      "comment" : "telebrium stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "telebriumplatform" ] ]
     },
 
     {
       "value" : [255, 128, 191, 255],
-      "comment" : "background junktech",
-      "brush" : [ [ "clear" ], [ "back", "junktech" ] ]
+      "comment" : "background pressuriseddurasteel",
+      "brush" : [ [ "clear" ], [ "back", "pressuriseddurasteel" ] ]
     },
 
     {
       "value" : [153, 76, 113, 255],
-      "comment" : "foreground junktech overwritable",
+      "comment" : "foreground pressuriseddurasteel overwritable",
       "rules" : [ [ "allowOverdrawing" ] ],
-      "brush" : [ [ "clear" ], [ "back", "junktech" ], [ "front", "junktech" ] ]
+      "brush" : [ [ "clear" ], [ "back", "pressuriseddurasteel" ], [ "front", "pressuriseddurasteel" ] ]
     },
 
     {
       "value" : [204, 102, 151, 255],
-      "comment" : "foreground junktech",
-      "brush" : [ [ "clear" ], [ "back", "junktech" ], [ "front", "junktech" ] ]
+      "comment" : "foreground pressuriseddurasteel",
+      "brush" : [ [ "clear" ], [ "back", "pressuriseddurasteel" ], [ "front", "pressuriseddurasteel" ] ]
     },
 
     {
       "value" : [128, 255, 217, 255],
-      "comment" : "background lightmetal",
-      "brush" : [ [ "clear" ], [ "back", "lightmetal" ] ]
+      "comment" : "background fuokeahitechwall2",
+      "brush" : [ [ "clear" ], [ "back", "fuokeahitechwall2" ] ]
     },
 
     {
       "value" : [76, 153, 130, 255],
-      "comment" : "foreground lightmetal overwritable",
+      "comment" : "foreground fuokeahitechwall2 overwritable",
       "rules" : [ [ "allowOverdrawing" ] ],
-      "brush" : [ [ "clear" ], [ "back", "lightmetal" ], [ "front", "lightmetal" ] ]
+      "brush" : [ [ "clear" ], [ "back", "fuokeahitechwall2" ], [ "front", "fuokeahitechwall2" ] ]
     },
 
     {
       "value" : [102, 204, 173, 255],
-      "comment" : "foreground lightmetal",
-      "brush" : [ [ "clear" ], [ "back", "lightmetal" ], [ "front", "lightmetal" ] ]
+      "comment" : "foreground fuokeahitechwall2",
+      "brush" : [ [ "clear" ], [ "back", "fuokeahitechwall2" ], [ "front", "fuokeahitechwall2" ] ]
     },
 
     {
       "value" : [128, 140, 255, 255],
-      "comment" : "background apexshipwall",
-      "brush" : [ [ "clear" ], [ "back", "apexshipwall" ] ]
+      "comment" : "background slopedtelebriumpanel",
+      "brush" : [ [ "clear" ], [ "back", "slopedtelebriumpanel" ] ]
     },
 
     {
       "value" : [89, 98, 179, 255],
-      "comment" : "background apexshipwall overwritable",
+      "comment" : "background slopedtelebriumpanel overwritable",
       "rules" : [ [ "allowOverdrawing" ] ],
-      "brush" : [ [ "clear" ], [ "back", "apexshipwall" ] ]
+      "brush" : [ [ "clear" ], [ "back", "slopedtelebriumpanel" ] ]
     },
 
     {
       "value" : [76, 84, 153, 255],
-      "comment" : "foreground apexshipwall overwritable",
+      "comment" : "foreground slopedtelebriumpanel overwritable",
       "rules" : [ [ "allowOverdrawing" ] ],
-      "brush" : [ [ "clear" ], [ "back", "apexshipwall" ], [ "front", "apexshipwall" ] ]
+      "brush" : [ [ "clear" ], [ "front", "slopedtelebriumpanel" ] ]
     },
 
     {
       "value" : [102, 112, 204, 255],
-      "comment" : "foreground apexshipwall",
-      "brush" : [ [ "clear" ], [ "back", "apexshipwall" ], [ "front", "apexshipwall" ] ]
+      "comment" : "foreground slopedtelebriumpanel",
+      "brush" : [ [ "clear" ], [ "front", "slopedtelebriumpanel" ] ]
     },
 
     {
       "value" : [111, 98, 90, 255],
-      "comment" : "background apexshipsupport",
-      "brush" : [ [ "clear" ], [ "back", "apexshipsupport" ] ]
+      "comment" : "background telepillarblock",
+      "brush" : [ [ "clear" ], [ "back", "telepillarblock" ] ]
     },
 
     {
       "value" : [251, 255, 128, 255],
-      "comment" : "background cheapwallpaper",
-      "brush" : [ [ "clear" ], [ "back", "cheapwallpaper" ] ]
+      "comment" : "background fuokeahitechwall1",
+      "brush" : [ [ "clear" ], [ "back", "fuokeahitechwall1" ] ]
     },
     {
       "value" : [201, 204, 102, 255],
-      "comment" : "foreground cheapwallpaper",
-      "brush" : [ [ "clear" ], [ "back", "cheapwallpaper" ], [ "front", "cheapwallpaper" ] ]
+      "comment" : "foreground fuokeahitechwall1",
+      "brush" : [ [ "clear" ], [ "back", "fuokeahitechwall1" ], [ "front", "fuokeahitechwall1" ] ]
     },
 
     {
       "value" : [255, 187, 128, 255],
-      "comment" : "background woodpanelling",
-      "brush" : [ [ "clear" ], [ "back", "woodpanelling" ] ]
+      "comment" : "background fuokeahitechwall1",
+      "brush" : [ [ "clear" ], [ "back", "fuokeahitechwall1" ] ]
     },
 
     {
       "value" : [204, 150, 102, 255],
-      "comment" : "foreground woodpanelling",
-      "brush" : [ [ "clear" ], [ "back", "woodpanelling" ], [ "front", "woodpanelling" ] ]
+      "comment" : "foreground fuokeahitechwall1",
+      "brush" : [ [ "clear" ], [ "back", "fuokeahitechwall1" ], [ "front", "fuokeahitechwall1" ] ]
     },
 
     {
       "value" : [205, 255, 128, 255],
-      "comment" : "background glass",
-      "brush" : [ [ "clear" ], [ "back", "glass" ] ]
+      "comment" : "background slopedteleglass",
+      "brush" : [ [ "clear" ], [ "back", "slopedteleglass" ] ]
     },
 
     {
       "value" : [165, 204, 102, 255],
-      "comment" : "foreground glass",
-      "brush" : [ [ "clear" ], [ "front", "glass" ] ]
+      "comment" : "foreground slopedteleglass",
+      "brush" : [ [ "clear" ], [ "front", "slopedteleglass" ] ]
     },
 
     {
@@ -238,26 +238,26 @@
 
     {
       "value" : [21, 75, 185, 255],
-      "comment" : "background pressurizedbeam",
+      "comment" : "background pressurisedbeam",
       "brush" : [ [ "clear" ], [ "back", "pressurisedbeam" ] ]
     },
 
     {
       "value" : [21, 94, 185, 255],
-      "comment" : "foreground pressurizedbeam",
+      "comment" : "foreground pressurisedbeam",
       "brush" : [ [ "clear" ], [ "front", "pressurisedbeam" ] ]
     },
 
     {
       "value" : [56, 21, 185, 255],
-      "comment" : "background pressurizedsteel",
-      "brush" : [ [ "clear" ], [ "back", "pressuriseddurasteel" ] ]
+      "comment" : "background pressurisedsteel",
+      "brush" : [ [ "clear" ], [ "back", "telebriumblock" ] ]
     },
 
     {
       "value" : [21, 56, 185, 255],
-      "comment" : "foreground pressurizedsteel",
-      "brush" : [ [ "clear" ], [ "front", "pressuriseddurasteel" ] ]
+      "comment" : "foreground pressurisedsteel",
+      "brush" : [ [ "clear" ], [ "front", "telebriumblock" ] ]
     },
 
     {
@@ -409,37 +409,37 @@
     {
       "value" : [255, 236, 30, 255],
       "comment" : "techchest facing left",
-      "brush" : [ [ "clear" ], [ "object", "techchest", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicChestTreasure" ] } } ] ]
+      "brush" : [ [ "clear" ], [ "object", "techchest", { "direction" : "left", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
     },
 
     {
       "value" : [229, 213, 28, 255],
       "comment" : "techchest facing right",
-      "brush" : [ [ "clear" ], [ "object", "techchest", { "direction" : "right", "parameters" : { "treasurePools" : [ "basicChestTreasure" ] } } ] ]
+      "brush" : [ [ "clear" ], [ "object", "techchest", { "direction" : "right", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
     },
 
     {
       "value" : [255, 191, 64, 255],
       "comment" : "apexcoolcupboard facing left",
-      "brush" : [ [ "clear" ], [ "object", "apexcoolcupboard", { "direction" : "left", "parameters" : { "treasurePools" : [ "apexstimtreasure" ] } } ] ]
+      "brush" : [ [ "clear" ], [ "object", "apexcoolcupboard", { "direction" : "left", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
     },
 
     {
       "value" : [229, 172, 57, 255],
       "comment" : "apexcoolcupboard facing right",
-      "brush" : [ [ "clear" ], [ "object", "apexcoolcupboard", { "direction" : "right", "parameters" : { "treasurePools" : [ "apexstimtreasure" ] } } ] ]
+      "brush" : [ [ "clear" ], [ "object", "apexcoolcupboard", { "direction" : "right", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
     },
 
     {
       "value" : [255, 207, 64, 255],
       "comment" : "apexcooldesk facing left",
-      "brush" : [ [ "clear" ], [ "object", "apexcooldesk", { "direction" : "left", "parameters" : { "treasurePools" : [ "apexLabLore" ] } } ] ]
+      "brush" : [ [ "clear" ], [ "object", "apexcooldesk", { "direction" : "left", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
     },
 
     {
       "value" : [229, 186, 57, 255],
       "comment" : "apexcooldesk facing right",
-      "brush" : [ [ "clear" ], [ "object", "apexcooldesk", { "direction" : "right", "parameters" : { "treasurePools" : [ "apexLabLore" ] } } ] ]
+      "brush" : [ [ "clear" ], [ "object", "apexcooldesk", { "direction" : "right", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
     },
 
     {
@@ -603,11 +603,16 @@
       "comment" : "apexcooldoor",
       "brush" : [ [ "clear" ], [ "object", "apexcooldoor" ] ]
     },
-
+    {
+      "value" : [95, 240, 106, 255],
+      "comment" : "bossdoor",
+      "brush" : [ [ "clear" ], [ "object", "bossdoor" ] ]
+    },
+    
     {
       "value" : [138, 213, 114, 255],
-      "comment" : "apexshipdoor",
-      "brush" : [ [ "clear" ], [ "object", "apexshipdoor" ] ]
+      "comment" : "tier4door",
+      "brush" : [ [ "clear" ], [ "object", "tier4door" ] ]
     },
 
     {
@@ -1140,12 +1145,67 @@
 
     {
       "value" : [250, 200, 250, 255],
-      "comment" : "dungeonpod",
-      "brush" : [ [ "clear" ], [ "object", "dungeonpod" ] ]
+      "comment" : "spacetimeobelisk",
+      "brush" : [ [ "clear" ], [ "object", "spacetimeobelisk" ] ]
     },
 
     // NPC MONSTER SPAWN BRUSHES //
+    {
+      "value" : [221, 210, 112, 255],
+      "comment" : "evil FU guy",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "apex",
+            "typeName" : "furaider",
+            "parameters" : {
+              "scriptConfig" : {
+                "sit" : {
+                  "moveTimeLimit" : 30,
+                  "searchRadius" : 25
+                },
 
+                "sleep" : {
+                  "searchRadius" : 15,
+                  "moveToBedTimeLimit" : 30.0
+                },
+
+                "work" : {
+                  "searchDistance" : -1.0
+                }
+              }
+            }
+          }
+        ] ]
+    },    
+    {
+      "value" : [221, 200, 112, 255],
+      "comment" : "evil FU guy",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "apex",
+            "typeName" : "fuwastelandraider",
+            "parameters" : {
+              "scriptConfig" : {
+                "sit" : {
+                  "moveTimeLimit" : 30,
+                  "searchRadius" : 25
+                },
+
+                "sleep" : {
+                  "searchRadius" : 15,
+                  "moveToBedTimeLimit" : 30.0
+                },
+
+                "work" : {
+                  "searchDistance" : -1.0
+                }
+              }
+            }
+          }
+        ] ]
+    },
     {
       "value" : [0, 200, 0, 255],
       "comment" : "apex villager npc",
@@ -1208,7 +1268,7 @@
           {
             "kind" : "npc",
             "species" : "apex",
-            "typeName" : "villageguard"
+            "typeName" : "fubandit1"
           }
         ] ]
     },
@@ -1220,7 +1280,7 @@
           {
             "kind" : "npc",
             "species" : "apex",
-            "typeName" : "villageguardcaptain"
+            "typeName" : "furaider"
           }
         ] ]
     },
@@ -1244,7 +1304,7 @@
           {
             "kind" : "npc",
             "species" : "apex",
-            "typeName" : "villageguard"
+            "typeName" : "fubandit1"
           }
         ] ]
     },
@@ -1256,7 +1316,7 @@
           {
             "kind" : "npc",
             "species" : "apex",
-            "typeName" : "labguard",
+            "typeName" : "fumadscientist",
             "parameters" : {
               "scriptConfig" : {
                 "guard" : {
@@ -1272,6 +1332,17 @@
         ] ]
     },
 
+    {
+      "value" : [87, 48, 87, 255],
+      "comment" : "apex super ape",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "gorillaking"
+          }
+        ] ]
+    },
+    
     {
       "value" : [200, 0, 200, 255],
       "comment" : "apex mutant npc",

@@ -1,0 +1,569 @@
+{
+  "metadata" : {
+    "name" : "arborealmini",
+    "species" : "dummy",
+    "rules" : [
+    ],
+    "anchor" : [ "arborealmini1", "arborealmini3", "arborealmini4", "arborealmini6" ],
+
+    "maxRadius" : 2000,
+    "maxParts" : 15
+  },
+  "tiles" : [
+    {
+      "value" : [21, 98, 36, 255],
+      "comment" : "background ",
+      "brush" : [ [ "clear" ], [ "back", "plantmatter" ] ]
+    },
+    {
+      "value" : [0, 131, 41, 255],
+      "comment" : "background ",
+      "brush" : [ [ "clear" ], [ "back", "plantmatter" ], [ "front", "plantmatter" ] ]
+    },
+    {
+      "value" : [73, 53, 41, 255],
+      "comment" : "background ",
+      "brush" : [ [ "clear" ], [ "back", "fullwood2" ] ]
+    },
+    {
+      "value" : [73, 62, 41, 255],
+      "comment" : "background ",
+      "brush" : [ [ "clear" ], [ "back", "fullwood2" ] ]
+    },
+    {
+      "value" : [117, 85, 66, 255],
+      "comment" : "background ",
+      "brush" : [ [ "clear" ], [ "back", "fullwood2" ], [ "front", "fullwood2" ] ]
+    },
+    {
+      "value" : [167, 149, 113, 255],
+      "comment" : "background ",
+      "brush" : [ [ "clear" ], [ "back", "fence" ] ]
+    },
+    {
+      "value" : [73, 72, 41, 255],
+      "comment" : "background ",
+      "brush" : [ [ "clear" ], [ "back", "woodbridge" ] ]
+    },
+    {
+      "value" : [114, 96, 62, 255],
+      "comment" : "foreground ",
+      "brush" : [ [ "clear" ], [ "back", "woodbridge" ], [ "front", "woodbridge" ] ]
+    },
+    {
+      "value" : [26, 77, 0, 255],
+      "comment" : "biome tree",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "biometree" ] ]
+    },
+
+    {
+      "value" : [34, 102, 0, 255],
+      "comment" : "biome flora",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "biomeitems" ] ]
+    },
+    {
+      "value" : [255, 0, 220, 255],
+      "comment" : "magic pinkppp, a no-op value"
+    },
+    {
+      "value" : [255, 0, 225, 255],
+      "comment" : "magic pinkppp, a no-op value"
+    },
+    {
+      "value" : [0, 0, 0, 255],
+      "rules" : [ [ "worldGenMustContainAirBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ] ]
+    },
+    {
+      "value" : [255, 255, 255, 255],
+      "rules" : [ [ "worldGenMustContainSolidBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface", { "variant" : 0 } ] ]
+    },
+    {
+      "value" : [0, 38, 255, 255],
+      "comment" : "bright blue, entrance coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [0, 255, 186, 255],
+      "comment" : "bright aqua, empty cave coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [240, 255, 0, 255],
+      "comment" : "bright yellow, entrance piece coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [32, 32, 32, 255],
+      "comment" : "Empty hole",
+      "brush" : [ [ "clear" ] ]
+    },
+
+    {
+      "value" : [128, 128, 128, 255],
+      "comment" : "Biome tile brush",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface" ] ]
+    },
+    {
+      "value" : [130, 130, 130, 255],
+      "comment" : "Biome tile brush",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface" ] ]
+    },
+    {
+      "value" : [100, 100, 100, 255],
+      "comment" : "Biome tile brush non-overwritable",
+      "brush" : [ [ "surfacebackground" ] ]
+    },
+
+    {
+      "value" : [200, 200, 200, 255],
+      "comment" : "Biome tile background brush",
+      "brush" : [ [ "clear" ], [ "surfacebackground" ] ]
+    },
+
+    {
+      "value" : [54, 63, 105, 255],
+      "comment" : "water pool foreground",
+      "brush" : [ [ "clear" ], [ "liquid", "water" ] ]
+    },
+
+    {
+      "value" : [255, 232, 178, 255],
+      "comment" : "background main biome block",
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 0 } ] ]
+    },
+
+    {
+      "value" : [255, 222, 178, 255],
+      "comment" : "overwritable background main biome block",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 0 } ] ]
+    },
+
+    {
+      "value" : [204, 186, 143, 255],
+      "comment" : "foreground main biome block",
+      "brush" : [ [ "surface", { "variant" : 0 } ] ]
+    },
+
+    {
+      "value" : [204, 176, 143, 255],
+      "comment" : "overwritable foreground main biome block",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface", { "variant" : 0 } ] ]
+    },
+
+    {
+      "value" : [178, 232, 255, 255],
+      "comment" : "background sub biome block #1",
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 1 } ] ]
+    },
+
+    {
+      "value" : [178, 222, 255, 255],
+      "comment" : "overwritable background sub biome block #1",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 1 } ] ]
+    },
+
+    {
+      "value" : [143, 186, 204, 255],
+      "comment" : "foreground sub biome block #1",
+      "brush" : [ [ "surface", { "variant" : 1 } ] ]
+    },
+
+    {
+      "value" : [143, 176, 204, 255],
+      "comment" : "overwritable foreground sub biome block #1",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface", { "variant" : 1 } ] ]
+    },
+
+    {
+      "value" : [222, 255, 178, 255],
+      "comment" : "background sub biome block #2",
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 2 } ] ]
+    },
+
+    {
+      "value" : [222, 245, 178, 255],
+      "comment" : "overwritable background sub biome block #2",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 2 } ] ]
+    },
+
+    {
+      "value" : [177, 204, 143, 255],
+      "comment" : "foreground sub biome block #2",
+      "brush" : [ [ "surface", { "variant" : 2 } ] ]
+    },
+
+    {
+      "value" : [177, 194, 143, 255],
+      "comment" : "overwritable foreground sub biome block #2",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface", { "variant" : 2 } ] ]
+    },
+
+    {
+      "value" : [185, 179, 21, 255],
+      "comment" : "background crosshatch",
+      "brush" : [ [ "clear" ], [ "back", "crosshatch" ] ]
+    },
+
+    {
+      "value" : [63, 185, 21, 255],
+      "comment" : "background frozenwater",
+      "brush" : [ [ "clear" ], [ "back", "frozenwater" ] ]
+    },
+
+    {
+      "value" : [117, 185, 21, 255],
+      "comment" : "foreground frozenwater",
+      "brush" : [ [ "clear" ], [ "back", "frozenwater" ], [ "front", "frozenwater" ] ]
+    },
+
+    {
+      "value" : [186, 20, 145, 255],
+      "comment" : "background darkwood",
+      "brush" : [ [ "clear" ], [ "back", "darkwood" ] ]
+    },
+    {
+      "value" : [118, 85, 66, 255],
+      "comment" : "background darkwood",
+      "brush" : [ [ "clear" ], [ "back", "darkwood" ], [ "front", "darkwood" ] ]
+    },
+    {
+      "value" : [237, 26, 184, 255],
+      "comment" : "foreground darkwood",
+      "brush" : [ [ "clear" ], [ "back", "darkwood" ], [ "front", "darkwood" ] ]
+    },
+
+    {
+      "value" : [217, 26, 184, 255],
+      "comment" : "foreground darkwood overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "darkwood" ], [ "front", "darkwood" ] ]
+    },
+
+    {
+      "value" : [137, 124, 76, 255],
+      "comment" : "old wood stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "platform" ] ]
+    },
+
+    {
+      "value" : [160, 163, 169, 255],
+      "comment" : "stone platform",
+      "brush" : [ [ "clear" ], [ "front", "stoneplatform" ] ]
+    },
+
+    {
+      "value" : [184, 145, 101, 255],
+      "comment" : "wooden stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "woodenplatform" ] ]
+    },
+
+    {
+      "value" : [166, 148, 136, 255],
+      "comment" : "wreck stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "wreckplatform" ] ]
+    },
+
+    {
+      "value" : [119, 182, 124, 255],
+      "comment" : "tent1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tent1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [80, 149, 91, 255],
+      "comment" : "tent1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tent1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [123, 181, 118, 255],
+      "comment" : "tent2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tent2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [80, 148, 80, 255],
+      "comment" : "tent2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tent2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 57, 94, 255],
+      "comment" : "woodencrate1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [229, 50, 83, 255],
+      "comment" : "woodencrate1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 56, 136, 255],
+      "comment" : "woodencrate2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [229, 50, 122, 255],
+      "comment" : "woodencrate2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [196, 56, 255, 255],
+      "comment" : "bunkercrate facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkercrate", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [176, 50, 229, 255],
+      "comment" : "bunkercrate facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkercrate", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [140, 56, 255, 255],
+      "comment" : "metalbarrel1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "metalbarrel1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [125, 50, 229, 255],
+      "comment" : "metalbarrel1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "metalbarrel1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [84, 56, 255, 255],
+      "comment" : "prisongirderv facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisongirderv", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [74, 50, 229, 255],
+      "comment" : "prisongirderv facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisongirderv", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [56, 103, 255, 255],
+      "comment" : "prisongirderh",
+      "brush" : [ [ "clear" ], [ "object", "prisongirderh" ] ]
+    },
+
+    {
+      "value" : [56, 154, 255, 255],
+      "comment" : "woodsupport",
+      "brush" : [ [ "clear" ], [ "object", "woodsupport" ] ]
+    },
+
+    {
+      "value" : [66, 154, 255, 255],
+      "comment" : "underwater woodsupport",
+      "brush" : [ [ "clear" ], [ "liquid", "water" ], [ "object", "woodsupport" ] ]
+    },
+
+    {
+      "value" : [56, 187, 255, 255],
+      "comment" : "barbedwire facing left",
+      "brush" : [ [ "clear" ], [ "object", "barbedwire", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [50, 170, 229, 255],
+      "comment" : "barbedwire facing right",
+      "brush" : [ [ "clear" ], [ "object", "barbedwire", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [56, 253, 255, 255],
+      "comment" : "prisonpipefence",
+      "brush" : [ [ "clear" ], [ "object", "prisonpipefence" ] ]
+    },
+
+    {
+      "value" : [56, 255, 206, 255],
+      "comment" : "tungstenchair facing left",
+      "brush" : [ [ "clear" ], [ "object", "tungstenchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [50, 229, 185, 255],
+      "comment" : "tungstenchair facing right",
+      "brush" : [ [ "clear" ], [ "object", "tungstenchair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [56, 255, 168, 255],
+      "comment" : "woodenchair facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodenchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [50, 229, 152, 255],
+      "comment" : "woodenchair facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodenchair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [56, 255, 126, 255],
+      "comment" : "woodstool",
+      "brush" : [ [ "clear" ], [ "object", "woodstool" ] ]
+    },
+
+    {
+      "value" : [56, 255, 70, 255],
+      "comment" : "talljar1",
+      "brush" : [ [ "clear" ], [ "object", "talljar1" ] ]
+    },
+
+    {
+      "value" : [98, 255, 56, 255],
+      "comment" : "talljar2",
+      "brush" : [ [ "clear" ], [ "object", "talljar2" ] ]
+    },
+
+    {
+      "value" : [154, 255, 56, 255],
+      "comment" : "midjar1",
+      "brush" : [ [ "clear" ], [ "object", "midjar1" ] ]
+    },
+
+    {
+      "value" : [201, 255, 56, 255],
+      "comment" : "smalljar1",
+      "brush" : [ [ "clear" ], [ "object", "smalljar1" ] ]
+    },
+
+    {
+      "value" : [236, 200, 94, 255],
+      "comment" : "floodlights facing left",
+      "brush" : [ [ "clear" ], [ "object", "floodlights", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [217, 184, 87, 255],
+      "comment" : "floodlights facing right",
+      "brush" : [ [ "clear" ], [ "object", "floodlights", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [218, 83, 2, 255],
+      "comment" : "prisonbarrelfire facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonbarrelfire", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [204, 79, 2, 255],
+      "comment" : "prisonbarrelfire facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonbarrelfire", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [253, 143, 77, 255],
+      "comment" : "campfire",
+      "brush" : [ [ "clear" ], [ "object", "campfire" ] ]
+    },
+
+    {
+      "value" : [254, 233, 129, 255],
+      "comment" : "oillantern1",
+      "brush" : [ [ "clear" ], [ "object", "oillantern1" ] ]
+    },
+
+    {
+      "value" : [253, 209, 77, 255],
+      "comment" : "torch",
+      "brush" : [ [ "clear" ], [ "object", "torch" ] ]
+    },
+
+    {
+      "value" : [177, 128, 80, 255],
+      "comment" : "woodendoor",
+      "brush" : [ [ "clear" ], [ "object", "woodendoor" ] ]
+    },
+
+    {
+      "value" : [241, 45, 0, 255],
+      "comment" : "ceilingspikes",
+      "brush" : [ [ "random", [ [ "object", "ceilingspike1" ], [ "object", "ceilingspike2" ], [ "object", "ceilingspike3" ], [ "object", "ceilingspike4" ] ] ] ]
+    },
+
+    {
+      "value" : [185, 35, 0, 255],
+      "comment" : "thorns",
+      "brush" : [ [ "random", [ [ "object", "thorns1" ], [ "object", "thorns2" ], [ "object", "thorns3" ], [ "object", "thorns4" ] ] ] ]
+    },
+
+		{
+			"value" : [232, 242, 242, 255],
+			"comment" : "foreground ice",
+			"brush" : [ [ "clear" ], [ "front", "ice" ] ]
+		},
+		{
+			"value" : [222, 222, 222, 255],
+			"comment" : "background ice",
+			"brush" : [ [ "clear" ], [ "back", "ice" ] ]
+		},
+		{
+			"value" : [179, 234, 255, 255],
+			"comment" : "background iceblock1",
+			"brush" : [ [ "clear" ], [ "front", "iceblock1" ], [ "back", "iceblock1" ] ]
+		},
+		{
+			"value" : [138, 196, 218, 255],
+			"comment" : "background iceblock1",
+			"brush" : [ [ "clear" ], [ "back", "iceblock1" ] ]
+		},
+		{
+			"value" : [234, 240, 242, 255],
+			"comment" : "foreground iceblock2",
+			"brush" : [ [ "clear" ], [ "front", "iceblock2" ] ]
+		},
+		{
+			"value" : [234, 240, 242, 255],
+			"comment" : "foreground iceblock2",
+			"brush" : [ [ "clear" ], [ "back", "iceblock2" ] ]
+		}
+  ],
+
+  "parts" : [
+    {
+      "name" : "arborealmini1",
+      "rules" : [ ],
+      "def" : [ "image", [ "arborealmini1.png", "arborealmini1-objects.png" ] ]
+    },
+    {
+      "name" : "arborealmini3",
+      "rules" : [ ],
+      "def" : [ "image", [ "arborealmini3.png", "arborealmini3-objects.png" ] ]
+    },
+    {
+      "name" : "arborealmini4",
+      "rules" : [ ],
+      "def" : [ "image", [ "arborealmini4.png", "arborealmini4-objects.png" ] ]
+    },
+    {
+      "name" : "arborealmini6",
+      "rules" : [ ],
+      "def" : [ "image", [ "arborealmini6.png", "arborealmini6-objects.png" ] ]
+    }
+  ]
+}

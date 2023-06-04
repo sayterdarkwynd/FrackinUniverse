@@ -1,0 +1,80 @@
+{
+	"objectName": "bothealingstationauto",
+	"colonyTags": [],
+	"rarity": "Legendary",
+	"printable": false,
+	"description": "This bot repair station is used to repair compressed robots, and is automated and Item Network capable.",
+	"shortdescription": "^orange;Automatic Bot Healer^reset;",
+	"race": "generic",
+	"category": "storage",
+	"price": 1000,
+	"health": 1.5,
+
+	"objectType": "container",
+	"slotCount": 2,
+	"uiConfig": "/interface/objectcrafting/pethealingauto.config",
+	"subtitle": "For broken robots",
+	"frameCooldown": 5,
+	"autoCloseCooldown": 3600,
+	"scripts": ["pethealingstationauto.lua"],
+
+	"lightColor": [38, 114, 128],
+	"lightPosition": [0, 1],
+
+	"flickerPeriod": 1.2,
+	"flickerMinIntensity": 0.95,
+	"flickerMaxIntensity": 1.00,
+	"flickerPeriodVariance": 0.0,
+	"flickerIntensityVariance": 0.0,
+
+	"inventoryIcon": "pethealingstationicon.png",
+
+	"animation": "/objects/crafting/pethealingstation/pethealingstation.animation",
+	"animationParts": {
+		"pethealingstation": "pethealingstation.png",
+		"pethealingstationlit": "pethealingstationlit.png"
+	},
+	"animationPosition": [-6, 0],
+	"inputNodes": [
+		[-1, 0]
+	],
+	"outputNodes": [
+		[0, 0]
+	],
+	"kheAA_inDataNode": 0,
+	"kheAA_outDataNode": 0,
+	"orientations": [{
+			"imageLayers": [{
+				"image": "pethealingstation.png:off.<frame>",
+				"fullbright": true
+			}, {
+				"image": "pethealingstationlit.png:off.<frame>"
+			}],
+			"imagePosition": [-6, 0],
+
+			"direction": "left",
+			"flipImages": true,
+
+			"frames": 1,
+
+			"spaceScan": 0.1,
+			"anchors": ["bottom"]
+		},
+		{
+			"imageLayers": [{
+				"image": "pethealingstation.png:off.<frame>",
+				"fullbright": true
+			}, {
+				"image": "pethealingstationlit.png:off.<frame>"
+			}],
+			"imagePosition": [-6, 0],
+
+			"direction": "right",
+
+			"frames": 1,
+
+			"spaceScan": 0.1,
+			"anchors": ["bottom"]
+		}
+	]
+}

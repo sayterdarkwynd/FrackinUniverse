@@ -1,19 +1,17 @@
 {
-  "itemName" : "nyanifruit",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "nyanifruit.png",
-  "description" : "Surprisingly filling. Heals 15% health.",
-  "shortdescription" : "Nyani String",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      "heal_15"
-    ] ]
+	"itemName": "nyanifruit",
+	"inventoryIcon": "nyanifruit.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immune: Poison & +10% Poison Res^reset;: 2m",
+	"shortdescription": "Nyani String",
+	"effects": [
+		[{
+			"effect": "poisonblock1",
+			"duration": 120
+		}]
+	]
 }

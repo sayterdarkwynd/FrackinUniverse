@@ -1,0 +1,41 @@
+{
+  "itemName" : "elduukhartier3shortsword",
+  "price" : 350,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "A simple blade crafted with crystal and metal.",
+  "shortdescription" : "Feya Shortsword",
+  "tooltipKind" : "sword2",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword","crystal", "upgradeableWeapon"],
+
+  "inventoryIcon" : "elduukhartier3shortsword.png",
+
+  "animation" : "/items/active/weapons/melee/shortsword/comboshortsword.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "elduukhartier3shortsword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.625,
+    "baseDps" : 7.5,
+    "damageConfig" : {
+      "damageSourceKind" : "electric"
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 5,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

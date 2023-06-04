@@ -1,0 +1,24 @@
+{
+  "projectileName" : "chainshadowplasma2",
+  "physics" : "illusion",
+  "damageKindImage" : "icon.png",
+  "image" : "shadowplasma.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 3,
+  "power" : 50,
+  "speed" : 100,
+  "supportsProcessing" : true,
+  "emitters" : [ "shadowsmoke2" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmabulletexplosion/plasmabulletexplosion.config"
+    }
+  ],
+  "statusEffects" : [ "shadowgasfx" ],
+  "lightColor" : [150, 150, 32],
+  "damageKind" : "shadowplasma",
+  "piercing" : true,
+
+  "scripts" : [ "/scripts/projectiles/chainbullet.lua" ]
+}

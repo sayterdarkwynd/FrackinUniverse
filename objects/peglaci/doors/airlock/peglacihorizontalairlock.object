@@ -1,0 +1,68 @@
+{
+  "objectName" : "peglacihorizontalairlock",
+  "colonyTags" : [ "peglaci", "door" ],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 125,
+  "printable" : true,
+  "description" : "An airlock - protects from water and closes automatically after a moment.",
+  "shortdescription" : "Alloy Airlock Door",
+  "race" : "peglaci",
+
+  "apexDescription" : "This door looks watertight and heavy.",
+  "avianDescription" : "This looks like it could stop water from getting through.",
+  "floranDescription" : "Heavy, wet door.",
+  "glitchDescription" : "Statement. A waterproof door with automated sealing procedures.",
+  "humanDescription" : "Nice door - heavy duty.",
+  "hylotlDescription" : "We use doors like this in our domiciles - ours are much finer, of course.",
+  "novakidDescription" : "This looks like it could stop water from getting through.",
+  "fupeglaciDescription" : "We use these doors in our settlements to prevent water infiltration into our homes. Water's nice, but being dry has its perks!",
+
+  "inventoryIcon" : "peglacihorizontalairlockicon.png",
+  "orientations" : [
+    {
+      "image" : "peglacihorizontalairlock.png:default",
+      "flipImages" : true,
+      "imagePosition" : [-20, 0],
+      "renderLayer" : "Object+5",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "direction" : "left"
+    },
+    {
+      "image" : "peglacihorizontalairlock.png:default",
+      "imagePosition" : [-20, 0],
+      "renderLayer" : "Object+5",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "sensorConfig" : {},
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "peglacihorizontalairlock.png"
+  },
+  "animationPosition" : [-20, 0],
+
+  "inputNodes" : [ [-1, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

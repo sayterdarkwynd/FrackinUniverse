@@ -1,0 +1,249 @@
+{
+  "type" : "wormmass",
+  "shortdescription" : "Putrid Worm",
+  "description" : "A repulsive, gore-spewing worm.",
+
+  "categories" : [ "wormmass" ],
+  "parts" : [ "body" ],
+  "reversed" : true,
+
+  "animation" : "wormmass.animation",
+
+  "dropPools" : [
+    {
+      "default" : "poptopTreasure",
+      "bow" : "meatlumpLoot",
+      "firebow" : "meatlumpLoot",
+      "icebow" : "meatlumpLoot",
+      "poisonbow" : "meatlumpLoot",
+      "electricbow" : "meatlumpLoot",
+      "cosmicbow" : "meatlumpLoot",
+      "radioactivebow" : "meatlumpLoot",
+      "shadowbow" : "meatlumpLoot"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-landing-projectile-hop",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "verticalSpeed" : 30,
+            "horizontalSpeed" : 25,
+            "hopSequence" : 3,
+            "windupTime" : 0.2,
+            "landTime" : 0.2,
+            "timeBetweenHops" : 0.05,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 35,
+            "aimDirection" : [0, -1],
+            "projectileType" : "fubloodexplosionfast",
+            "power" : 4,
+            "fireOffset" : [0,0]
+          }
+        }
+      ],
+
+      "concurrentHostileActions" : [],
+
+      "periodicActions" : [
+        {
+          "name" : "action-landing-projectile-hop",
+          "cooldown" : 10.0,
+          "parameters" : {
+            "verticalSpeed" : 15,
+            "horizontalSpeed" : 25,
+            "hopSequence" : 3,
+            "windupTime" : 0.2,
+            "landTime" : 0.2,
+            "timeBetweenHops" : 0.01,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 35,
+            "aimDirection" : [0, -1],
+            "projectileType" : "fubloodexplosionfast",
+            "power" : 4,
+            "fireOffset" : [0,0]
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "resetHeading" : false
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "parameters" : {
+            "wanderTime" : [5, 15]
+          }
+        }
+      ],
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-landing-projectile-hop",
+          "cooldown" : 1.0,
+          "parameters" : {
+            "verticalSpeed" : 60,
+            "horizontalSpeed" : 15,
+            "hopSequence" : 1,
+            "windupTime" : 0.2,
+            "landTime" : 0.2,
+            "timeBetweenHops" : 0.04,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 35,
+            "aimDirection" : [0, -1],
+            "projectileType" : "fubloodexplosionfast",
+            "power" : 4,
+            "fireOffset" : [0,0]
+          }
+        }
+      ],
+
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "fugoreexplosionfast",
+            "projectileParameters" : {},
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 2]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-1.5, -1], [-0.8, -1.5], [0.8, -1.5], [1.5, -1], [1.5, 0.15], [0.8, 0.3], [-0.8, 0.3], [-1.5, 0.15] ],
+      "damage" : 10,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 20,
+      "statusEffects" : [ "insanity" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.5, -1], [-0.8, -1.5], [0.8, -1.5], [1.5, -1], [1.5, 0.15], [0.8, 0.3], [-0.8, 0.3], [-1.5, 0.15] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 5,
+      "runSpeed" : 10,
+      "jumpSpeed" : 15
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 40
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "shadowImmunity" : {
+          "baseValue" : 1.0
+        },
+        "pusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "bleedingImmunity" : {
+          "baseValue" : 1.0
+        },
+        "stunImmunity" : {
+          "baseValue" : 1.0
+        },
+        "insanityImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.25,
+    "nametagColor" : [255, 30, 10]//,
+    //"captureCollectables" : { "fu_monster" : "wormmass" }
+  }
+}

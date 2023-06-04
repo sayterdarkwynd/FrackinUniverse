@@ -1,20 +1,35 @@
 {
-  "itemName" : "lasherstem",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "lasherstem.png",
-  "description" : "A stem loaded with concentrated rage. Will make you berserk.",
-  "shortdescription" : "Lasher Stem",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 4,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "learnBlueprintsOnPickup" : [ "lasherhook" ],
-  "effects" : [ [
-      "rage40"
-    ] ]
+	"itemName": "lasherstem",
+	"inventoryIcon": "lasherstem.png",
+	"category": "food",
+	"rarity": "Rare",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Damage x1.2^reset;: 1m",
+	"shortdescription": "Lasher Stem",
+
+	//"learnBlueprintsOnPickup": ["lasherhook"],
+	"effects": [
+		[{
+			"effect": "rage20fu",
+			"duration": 60
+		}]
+	],
+	"blockingEffects": [
+		"rage",
+		"rage_base",
+		"rage30",
+		"rage30",
+		"rage50",
+		"rage60",
+		"rage75",
+		"rage100",
+		"damagebonus01",
+		"damagebonus2",
+		"damagebonus3",
+		"damagebonus4",
+		"damagebonus5",
+		"damagebonus6"
+	]
 }

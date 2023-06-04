@@ -1,0 +1,80 @@
+{
+  "type" : "slimenpchumanvillager",
+  "baseType" : "villager",
+
+  "statusControllerSettings" : {
+    "statusProperties" : {
+      "effectDirectives" : ""
+    }
+  },
+
+  "scriptConfig" : {
+    "questGenerator" : { "pools" : ["common"], "enableParticipation" : true },
+
+    "behaviorConfig" : {
+      "greetingChance" : 0.5
+    },
+
+    "dialog" : {
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/slimenpchuman.config:tagCriteria",
+          "enclosedArea" : "/dialog/slimenpchuman.config:enclosedArea",
+          "otherDeed" : "/dialog/slimenpchuman.config:otherDeed",
+          "severe" : "/dialog/slimenpchuman.config:severe",
+          "final" : "/dialog/slimenpchuman.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/slimenpchuman.config:beacon",
+          "rent" : "/dialog/slimenpchuman.config:rent"
+        }
+      },
+
+      "flee" : {
+        "helpme" : "/dialog/slimenpchuman.config:helpme",
+        "helpthem" : "/dialog/slimenpchuman.config:helpthem",
+        "encourage" : "/dialog/slimenpchuman.config:encourage",
+        "safe" : "/dialog/slimenpchuman.config:safe"
+      },
+
+      "converse" : "/dialog/slimenpchuman.config:converse",
+      "accuse" : "/dialog/slimenpchuman.config:accuse",
+      "alert" : "/dialog/slimenpchuman.config:alert",
+
+      "attack" : "/dialog/fenerox.config:attack",
+      "reattack" : "/dialog/fenerox.config:reattack",
+      "killedTarget" : "/dialog/fenerox.config:killedTarget",
+      "lostTarget" : "/dialog/fenerox.config:lostTarget",
+      "outOfSight" : "/dialog/fenerox.config:outOfSight",
+      "cheerOn" : "/dialog/fenerox.config:cheerOn",
+      "cantReach" : "/dialog/fenerox.config:cantReach"
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "chest" : [
+              { "name" : "workoutchest", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "coolchest", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "conceptchest", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "sweatervestchest", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "hoodiechest", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "hoodiechest2", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } }
+
+            ],
+            "legs" : [
+              { "name" : "workoutlegs", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "coollegs", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "conceptlegs", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "sweatervestlegs", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "jeans1legs", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "jeans2legs", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "jeans3legs", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } }
+            ]
+          }
+        ] ]
+    ]
+  }
+}

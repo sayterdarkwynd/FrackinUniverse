@@ -1,0 +1,26 @@
+{
+  "itemName" : "horkulsausage",
+  "rarity" : "rare",
+  "price" : 255,
+  "category" : "preparedFood",
+  "inventoryIcon" : "horkulsausage.png",
+  "description" : "A rare meat with potent nutrients\n^cyan;+^white;15% ^cyan;HP ^gray;(^white;125s^gray;)^reset; \n^orange;Type: Cooked Meat^reset;",
+  "shortdescription" : "Horkulbeast Sausage",
+  "effects" : [ [
+    { "effect" : "meat_cooked" },
+    {
+      "effect" : "maxhealthscalingboostfood",
+      "duration" : 125,
+	    "healthModifier" : 1.15
+    }
+  ] ],
+  "foodValue" : 22,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.5,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

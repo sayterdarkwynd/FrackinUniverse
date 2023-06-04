@@ -1,27 +1,59 @@
 [
+
+  {
+    "op": "replace",
+    "path": "/statusEffects",
+    "value": [
+      "jungleweathernew", "radioactiveweathernew"
+    ]
+  },
+
 {"op":"add","path":"/spawnProfile/groups/-",
-"value":{ 
-      
+"value":{
+
         "select" : 4,
-        "pool" : [ 
-          [ 0.111, "brightstripe" ],          
-          [ 0.111, "vineclimber" ],
-          [ 0.111, "junglebee" ],
-          [ 0.111, "normalbee" ]
+        "pool" : [
+          [ 0.15, "pandorasboxcottonbop" ],
+          [ 0.06, "fumonkeycritter" ],
+          [ 0.09, "fumothcritter" ],
+          [ 0.09, "fublackbunnycritter" ],
+          [ 0.111, "fuhummingbirdcritter" ],
+          [ 0.111, "fuplantsnakecritter" ],
+          [ 0.111, "fuspidercritter" ],
+          [ 0.111, "fufoxcritter" ],
+          [ 0.111, "furaccooncritter" ],
+          [ 0.111, "fuamazoncritter" ]
+        ]
+      }
+},
+{"op":"add","path":"/spawnProfile/groups/-",
+"value":{
+
+        "select" : 2,
+        "pool" : [
+	  [ 0.20, "bee_cuckoo" ],
+          [ 0.20, "bee_honey" ],
+	  [ 0.20, "bee_bumblebee" ],
+          [ 0.20, "bee_redbanded" ]
         ]
       }
 },
 
-	{"op":"add","path":"/surfacePlaceables/items/-","value":{
-			"mode" : "floor",
-			"priority" : 3.0,
-			"variants" : 1,
-			"distribution" : "/biomes/distributions.config:randomEncounter",
+ {
+   "op": "add",
+   "path": "/surfacePlaceables/items/-",
+   "value":
+   {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
 
-			"type" : "microdungeon",
-			"microdungeons" : [ "newavianmicro", "minigreenruins" ]
-		} 
-	},
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+   }
+ },
+
 {"op":"add","path":"/surfacePlaceables/items/-","value":{
           "mode" : "floor",
           "priority" : 1.0,
@@ -31,10 +63,10 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
           [0.35, "wilditaseed" ],
-          [0.35, "wildbrackentreeseed" ], 
-          [0.35, "wildmutaviskseed" ], 
+          [0.35, "wildbrackentreeseed" ],
+          [0.35, "wildmutaviskseed" ],
           [0.35, "wildcaprioleplantseed" ],
           [0.35, "wildbananaseed" ],
           [0.35, "wildwartweedseed" ],
@@ -48,5 +80,69 @@
             }
           ]
         }
-	}	
+	},
+
+{"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "fu_dae_microdungeons", "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "newavianmicro", "minigreenruins", "fuencounters", "fulabs", "fubandits", "newhumanmicro", "newavianmicro", "minigreenruins", "fuhives", "furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter" ]
+  }
+},
+
+ {
+   "op": "add",
+   "path": "/undergroundPlaceables/items/0/treasureBoxSets/-",
+   "value": "ffbasicChest"
+ },
+
+ {
+   "op": "add",
+   "path": "/undergroundPlaceables/items/0/treasureBoxSets/-",
+   "value": "ffbasicChest2"
+ },
+
+ {
+   "op": "add",
+   "path": "/undergroundPlaceables/items/-",
+   "value":
+   {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "jungleChest" ]
+   }
+ },
+
+ {
+   "op": "add",
+   "path": "/undergroundPlaceables/items/-",
+   "value":
+   {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "jungleflower1", "jungleflower2", "jungleflower3" ]
+   }
+ },
+
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
+  }
+}
 ]

@@ -1,0 +1,99 @@
+{
+  "itemName" : "npcpistol",
+  "price" : 0,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A small semi-automatic handgun with a decent rate-of-fire and accuracy.",
+  "shortdescription" : "NPC Semi-Automatic Pistol",
+  "tooltipKind" : "gun",
+  "category" : "pistol",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","ranged","pistol"],
+  // "level" : 1,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : { },
+  "animationCustom" : { },
+  "baseOffset" : [-0.25, 0.25],
+  "muzzleOffset" : [0,0.375],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+
+  "magazineSize" : [6,16],
+  "reloadTime" : [0.75,1.5],
+  "isAmmoBased" : 1,
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.25,
+    "baseDps" : 5.75,
+    "energyUsage" : 8.625,
+    "inaccuracy" : 0.02,
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "knockbackRange" : [4,8]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 10,
+        "weaponRotation" : 10,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 10,
+        "weaponRotation" : 10,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  },
+  "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/uzi1.ogg", "/sfx/gun/uzi2.ogg", "/sfx/gun/uzi3.ogg", "/sfx/gun/grapplegun.ogg" ],
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "animationParts" : {
+      "butt" : {
+        "path" : "/items/active/weapons/ranged/pistol/butt/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "middle" : {
+        "path" : "/items/active/weapons/ranged/pistol/middle/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "barrel" : {
+        "path" : "/items/active/weapons/ranged/pistol/barrel/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+    },
+    "gunParts" : ["butt", "middle", "barrel"],
+    "altAbilities" : [ ],
+    "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
+    "iconDrawables" : ["butt", "middle", "barrel"]
+  }]
+}

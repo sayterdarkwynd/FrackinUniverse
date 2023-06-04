@@ -1,63 +1,57 @@
 {
-  "animationCustom" : {
-    "sounds" : {
-      "altFire" : [ "/sfx/weapons/enchant-frost1.wav" ]
-    },
-    "particleEmitters" : {
-      "altMuzzleFlash" : {
-        "active" : false,
-        "emissionRate" : 8,
-        "transformationGroups" : ["muzzle"],
-        "offsetRegion" : [0, 0, 0, 0],
-        "particles" : [ ]
-      }
-    }
-  },
+	"animationCustom": {
+		"sounds": {
+			"altFire": ["/sfx/weapons/enchant-frost1.wav"]
+		},
+		"particleEmitters": {
+			"altMuzzleFlash": {
+				"active": false,
+				"emissionRate": 8,
+				"transformationGroups": ["muzzle"],
+				"offsetRegion": [0, 0, 0, 0],
+				"particles": []
+			}
+		}
+	},
 
-  "ability" : {
-    "name" : "Ice Mist",
-    "type" : "icemist",
-    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
-    "class" : "AltFireAttack",
+	"ability": {
+		"name": "Ice Mist",
+		"type": "icemist",
+		"scripts": ["/items/active/weapons/ranged/abilities/altfire.lua"],
+		"class": "AltFireAttack",
+		"projectileType": "fuicebreath3",
 
-    "elementalConfig" : {
-      "physical" : { "projectileType" : "fuicebreath3" },
-      "fire" : { "projectileType" : "fuicebreath3" },
-      "electric" : { "projectileType" : "fuicebreath3" },
-      "ice" : { "projectileType" : "fuicebreath3" },
-      "poison" : { "projectileType" : "fuicebreath3" }
-    },
-    "projectileParameters" : {
-      "knockback" : 1,
-      "statusEffects" : [ ] // don't inherit from primary fire
-    },
-    "projectileCount" : 1,
-    "inaccuracy" : 0,
-    "baseDps" : 7,
-    "energyUsage" : 50.0,
-    "fireTime" : 0.1,
-    "speed" : 50,
-    "fireType" : "auto",
+		"projectileParameters": {
+			"knockback": 1,
+			"statusEffects": []
+		},
+		"projectileCount": 1,
+		"inaccuracy": 0,
+		"baseDps": 7,
+		"energyUsage": 50.0,
+		"fireTime": 0.1,
+		"speed": 50,
+		"fireType": "auto",
 
-    "stances" : {
-      "fire" : {
-        "duration" : 0,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "twoHanded" : true,
+		"stances": {
+			"fire": {
+				"duration": 0,
+				"armRotation": 0,
+				"weaponRotation": 0,
+				"twoHanded": true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "cooldown" : {
-        "duration" : 0.0,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "twoHanded" : true,
+				"allowRotate": false,
+				"allowFlip": false
+			},
+			"cooldown": {
+				"duration": 0.0,
+				"armRotation": 0,
+				"weaponRotation": 0,
+				"twoHanded": true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      }
-    }
-  }
+				"allowRotate": false,
+				"allowFlip": false
+			}
+		}
+	}
 }

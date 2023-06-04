@@ -1,0 +1,52 @@
+{
+  "name" : "fugroundHazard",
+  "preconditions" : [
+    ["!FloorIn", [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]]],
+    ["Move"],
+    ["!Danger", 0, 0],
+    ["!Danger", 1, 0],
+    ["!Danger", 2, 0],
+    ["!Danger", 3, 0],
+    ["!Danger", 4, 0],
+    ["!Danger", 5, 0],
+    ["!Danger", 6, 0],
+    ["!Danger", 7, 0],
+    ["Ability", "MovingAbility"]
+  ],
+  "postconditions" : [
+    ["Ability", "StaticAbility"],
+    ["!Ability", "MovingAbility"],
+    ["!Move"]
+  ],
+  "statemodifiers" : [
+    ["Danger", 0, 0],
+    ["Danger", 1, 0],
+    ["Danger", 2, 0],
+    ["Danger", 3, 0],
+    ["Danger", 4, 0],
+    ["Danger", 5, 0],
+    ["Danger", 6, 0],
+    ["Danger", 7, 0],
+    ["Ability", "LongRange"]
+  ],
+
+  "actions" : [ "floorprojectiles" ], // actions to apply the binding to
+  "behaviorHandler" : "groundHazardConfig",
+
+  "sequenceActions" : [
+    {
+      "name" : "floorprojectiles",
+      "parameters" : {
+        "projectileType" : "<element>floorhazard",
+        "spawnHeight" : -1,
+        "power" : 10,
+        "duration" : 4,
+        // set by handler
+        "center" : null,
+        "segmentWidth" : null,
+        "areaWidth" : null,
+        "projectileCount" : null
+      }
+    }
+  ]
+}

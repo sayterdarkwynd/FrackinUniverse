@@ -1,0 +1,20 @@
+{
+  "projectileName" : "nuclearblast",
+  "physics" : "nocollision",
+  "timeToLive" : 0.01,
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "speed" : 0,
+  "power" : 30,
+  "damageKind" : "radioactive",
+  "damageType" : "NoDamage",
+  "damagePoly" : [ ],
+  "orientationLocked" : true,
+  "bounces" : -1,
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/nuclearexplosion/nuclearexplosionnofriendly.config"
+    }
+  ]
+}

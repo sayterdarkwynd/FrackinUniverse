@@ -1,0 +1,80 @@
+{
+  "projectileName" : "freedombeam",
+  "image" : "energybeam.png",
+  "animationCycle" : 0.2,
+  "lightColor" : [150, 150, 100],
+  "frameNumber" : 4,
+  "flippable" : false,
+  "fullbright" : true,
+  "physics" : "bullet",
+  "bounces" : 0,
+  "emitters" : [ ],
+  "actionOnReap" : [
+    {
+      "action" : "spark"
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/vsmallregularexplosion/vsmallregularexplosion.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/gun/impact_plasma.ogg" ]
+    },
+    {
+      "action" : "loop",
+      "count" : 15,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "ember",
+            "size" : 1.0,
+            "color" : [222, 222, 222, 255],
+            "light" : [170, 170, 170],
+            "fullbright" : true,
+            "fade" : 0.9,
+            "initialVelocity" : [0, 0],
+            "timeToLive" : 0.3,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [10, 10],
+              "timeToLive" : 0.15
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.01,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/animations/energybeamtrail/energybeamtrail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.1,
+        "layer" : "middle",
+        "position" : [0.0, 0.0]
+      }
+    }
+  ],
+  "damagePoly" : [ [-8, 0], [2, 3], [8, 0], [2, -3] ],
+  "damageKind" : "freedom",
+  "knockback" : 2,
+  "knockbackDirectional" : true,
+
+  "speed" : 60,
+
+  "scripts" : ["/scripts/projectiles/sinewaveprojectile.lua"],
+  "scriptDelta" : 1,
+
+  "wavePeriod" : 0.2,
+  "waveAmplitude" : 1,
+
+  "persistentAudio" : "/sfx/projectiles/mech_wobbleshot_loop.ogg"
+
+}

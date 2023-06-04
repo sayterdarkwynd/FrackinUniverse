@@ -1,0 +1,57 @@
+{
+  "projectileName" : "futranslocatebomb5",
+  "image" : "regularexplosion.png",
+  "animationCycle" : 0,
+  "frameNumber" : 1,
+  "timeToLive" : 0.01,
+  "speed" : 0,
+  "power" : 0,
+  "damagePoly" : [ [-64, 0], [-56, -56], [0, -64], [56, -56], [64, 0], [56, 56], [0, 64], [-56, 56] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "flippable" : true,
+  "damageTeam" : { "type" : "indiscriminate" },
+  "damageKind" : "default",
+
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "inheritDamageFactor" : 0.5,
+      "type" : "hellfireexplosion"
+    },
+    {
+      "action" : "projectile",
+      "inheritDamageFactor" : 0,
+      "type" : "fudebrisexplosive",
+      "fuzzAngle" : 360
+    },
+    {
+      "action" : "projectile",
+      "type" : "radioactiveproximitymine",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 1
+    },
+    {
+      "action" : "projectile",
+      "type" : "smallradioactivecloud",
+      "inheritDamageFactor" : 1
+    },
+    {
+      "action" : "projectile",
+      "type" : "forcecage2",
+      "inheritDamageFactor" : 1
+    },
+    {
+      "action" : "explosion",
+      "foregroundRadius" : 9,
+      "backgroundRadius" : 5,
+      "explosiveDamageAmount" : 100,
+      "harvestLevel" : 99,
+      "delaySteps" : 2
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/explosion-large01.ogg" ]
+    }
+  ]
+}

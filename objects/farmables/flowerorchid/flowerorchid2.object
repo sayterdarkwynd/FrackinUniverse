@@ -1,0 +1,40 @@
+{
+  "objectName" : "flowerorchid2",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "That's a nice rich purple, right there.",
+  "shortdescription" : "Purple Orchid",
+  "objectType" : "farmable",
+  "printable" : false,
+
+  "inventoryIcon" : "flowericon.png",
+  "largeImage" : "flowerorchid2.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "flowerorchid2" },
+  "orientations" : [
+    {
+      "dualImage" : "flowerorchid2.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [570, 630]
+    },
+    {
+      "duration" : [570, 630]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "flowerorchid2Harvest",
+      "resetToStage" : 1
+    }
+  ],
+  "consumeSoilMoisture" : false,
+  "beeLikeness" : { "orchid" : 1}
+}

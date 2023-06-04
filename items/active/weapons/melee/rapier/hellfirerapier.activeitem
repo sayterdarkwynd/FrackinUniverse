@@ -1,0 +1,41 @@
+{
+  "itemName" : "hellfirerapier",
+  "price" : 800,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Brightly burns with hatred and fire.
+^cyan;Causes Burning^reset;",
+  "shortdescription" : "Hellfire Rapier",
+  "tooltipKind" : "sword2",
+  "category" : "Rapier",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "melee", "rapier", "hellfire", "upgradeableWeapon" ],
+
+  "inventoryIcon" : "hellfireRapier_ycar.png",
+
+  "animation" : "piercecomboglow.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "hellfireRapier_ycar.png",
+    "bladefullbright" : "hellfireRapierfullbright.png"
+  },
+  "animationCustom" : { },
+  "critChance" : 1,
+  "critBonus" : 3,
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "hellfire",
+
+  "primaryAbilityType" : "piercecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.41,
+    "baseDps" : 5.78,
+    "damageConfig" : {
+      "damageSourceKind":"hellfire",
+      "statusEffects":["burning"]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

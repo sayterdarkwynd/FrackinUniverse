@@ -1,0 +1,218 @@
+{
+  "metadata" : {
+    "name" : "hylotlruinedcityaether",
+    "species" : "hylotl",
+    "rules" : [
+    ],
+    "anchor" : [ "hylotlruinedcitybase1_aether", "hylotlruinedcitybase2_aether" ],
+    "maxRadius" : 1000000,
+    "maxParts" : 65,
+    "protected" : false
+  },
+
+  "parts" : [
+    {
+      "name" : "hylotlruinedcitybase1_aether",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "hylotlruinedcitybase2_aether", "hylotlruinedcity2a", "hylotlruinedcity2b" ] ]
+
+      ],
+      "def" : [ "tmx", "hylotlruinedcitybase1_aether.json" ]
+    },
+    {
+      "name" : "hylotlruinedcitybase2_aether",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "hylotlruinedcitybase1_aether", "hylotlruinedcity2a", "hylotlruinedcity2b" ] ]
+
+      ],
+      "def" : [ "tmx", "hylotlruinedcitybase2_aether.json" ]
+    },
+    {
+      "name" : "hylotlruinedcity1a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "hylotlruinedcity1a", "hylotlruinedcity1b" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcity1a.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcity1b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "hylotlruinedcity1a", "hylotlruinedcity1b" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcity1b.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcity1bclue",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "hylotlruinedcity1a", "hylotlruinedcity1bclue" ] ],
+        [ "doNotCombineWith", [ "hylotlruinedcity1b", "hylotlruinedcity2bclue", "hylotlruinedcity3bclue", "hylotlruinedcityside2clue", "hylotlruinedcityside6clue" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcity1bclue.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcity2a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "hylotlruinedcity2a", "hylotlruinedcity2b" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcity2a.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcity2b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "hylotlruinedcity2a", "hylotlruinedcity2b" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcity2b.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcity2bclue",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "hylotlruinedcity2a", "hylotlruinedcity2bclue" ] ],
+        [ "doNotCombineWith", [ "hylotlruinedcity2b", "hylotlruinedcity1bclue", "hylotlruinedcity3bclue", "hylotlruinedcityside2clue", "hylotlruinedcityside6clue" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcity2bclue.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcity3a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "hylotlruinedcity3a", "hylotlruinedcity3b" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcity3a.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcity3b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "hylotlruinedcity3a", "hylotlruinedcity3b" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcity3b.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcity3bclue",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "hylotlruinedcity3a", "hylotlruinedcity3bclue" ] ],
+        [ "doNotCombineWith", [ "hylotlruinedcity3b", "hylotlruinedcity1bclue", "hylotlruinedcity2bclue", "hylotlruinedcityside2clue", "hylotlruinedcityside6clue" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcity3bclue.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcity4a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "hylotlruinedcity4a" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcity4a.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcityside1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "hylotlruinedcityside1", "hylotlruinedcityside2", "hylotlruinedcityside3", "hylotlruinedcityside4", "hylotlruinedcityside5", "hylotlruinedcityside6" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcityside1.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcityside2",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "hylotlruinedcityside1", "hylotlruinedcityside2", "hylotlruinedcityside3", "hylotlruinedcityside4", "hylotlruinedcityside5", "hylotlruinedcityside6" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcityside2.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcityside2clue",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "hylotlruinedcityside1", "hylotlruinedcityside2clue", "hylotlruinedcityside3", "hylotlruinedcityside4", "hylotlruinedcityside5", "hylotlruinedcityside6" ] ],
+        [ "doNotCombineWith", [ "hylotlruinedcityside2", "hylotlruinedcity1bclue", "hylotlruinedcity2bclue", "hylotlruinedcity3bclue", "hylotlruinedcityside6clue" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcityside2clue.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcityside3",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "hylotlruinedcityside1", "hylotlruinedcityside2", "hylotlruinedcityside3", "hylotlruinedcityside4", "hylotlruinedcityside5", "hylotlruinedcityside6" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcityside3.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcityside4",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "hylotlruinedcityside1", "hylotlruinedcityside2", "hylotlruinedcityside3", "hylotlruinedcityside4", "hylotlruinedcityside5", "hylotlruinedcityside6" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcityside4.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcityside5",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "hylotlruinedcityside1", "hylotlruinedcityside2", "hylotlruinedcityside3", "hylotlruinedcityside4", "hylotlruinedcityside5", "hylotlruinedcityside6" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcityside5.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcityside6",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "hylotlruinedcityside1", "hylotlruinedcityside2", "hylotlruinedcityside3", "hylotlruinedcityside4", "hylotlruinedcityside5", "hylotlruinedcityside6" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcityside6.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcityside6clue",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "hylotlruinedcityside1", "hylotlruinedcityside2", "hylotlruinedcityside3", "hylotlruinedcityside4", "hylotlruinedcityside5", "hylotlruinedcityside6clue" ] ],
+        [ "doNotCombineWith", [ "hylotlruinedcityside6", "hylotlruinedcity1bclue", "hylotlruinedcity2bclue", "hylotlruinedcity3bclue", "hylotlruinedcityside2clue" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcityside6clue.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "hylotlruinedcitysidetunnel",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "hylotlruinedcitysidetunnel" ] ]
+      ],
+      "def" : [ "tmx", "hylotlruinedcitysidetunnel.json" ],
+      "chance" : 1
+    }
+  ]
+}

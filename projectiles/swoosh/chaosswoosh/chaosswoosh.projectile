@@ -3,13 +3,14 @@
   "image" : "chaosswoosh.png",
   "animationCycle" : 0.07,
   "frameNumber" : 3,
+  "timeToLive" : 0.3,
   "speed" : 0,
   "orientationLocked" : true,
   "damagePoly" : [ [-27, 24.5], [2.5, 24.5], [16.5, 18.5], [23.5, 11.5], [28.5, 0], [28.5, -13.5], [23.5, -24.5], [-12, -24.5] ],
   "animationLoops" : false,
   "piercing" : true,
   "flippable" : true,
-  "damageKind" : "default",
+  "damageKind" : "shadowplasma",
   "physics" : "grenade",
   "actionOnReap" : [
     {
@@ -18,19 +19,19 @@
     },
 	    {
       "action" : "projectile",
-      "type" : "bone", 
+      "type" : "bone",
       "inheritDamageFactor" : 1,
       "angleAdjust" : 20
     },
 	    {
       "action" : "projectile",
-      "type" : "bone", 
+      "type" : "bone",
       "inheritDamageFactor" : 1,
       "angleAdjust" : -20
     },
 	    {
       "action" : "projectile",
-      "type" : "bone", 
+      "type" : "bone",
       "inheritDamageFactor" : 1,
       "angleAdjust" : 0
     }

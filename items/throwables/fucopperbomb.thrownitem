@@ -1,0 +1,30 @@
+{
+  "itemName" : "fucopperbomb",
+  "price" : 50,
+  "rarity" : "Common",
+  "category" : "throwableItem",
+  "inventoryIcon" : "fucopperbomb.png",
+  "image" : "fucopperbomb.png",
+  "shortdescription" : "Copper Bomb",
+  "description" : "Alchemical creation! Turn tiles into copper!",
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.5,
+  "cooldown" : 0.7,
+  "itemTags" : [ "thrown_grenade" ],
+  "projectileType" : "copperbomb",
+  "projectileConfig" : {
+    "speed" : 25,
+    "power" : 8,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item.ogg" ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "objectName" : "darklightflower",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "rare",
+  "category" : "seed",
+  "description" : "Beautifully gleaming flowers that cure insanity.",
+  "shortdescription" : "Darklight Flower",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 20,
+  "inventoryIcon" : "darklightflowericon.png",
+//  "learnBlueprintsOnPickup" : [ "bellamorte", "darklightflower" ],
+  "largeImage" : "darklightflower.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "darklightflower" },
+  "lightColor" : [20, 58, 60],
+  "orientations" : [
+	{
+      "imageLayers" : [ { "image" : "darklightflower.png:<color>.<stage>.<alt>", "fullbright" : true }, { "image" : "darklightflowerlit.png:<color>.<stage>.<alt>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+	  "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+	  "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ],
+      "lightPosition" : [0, 1]
+    },
+	{
+      "imageLayers" : [ { "image" : "darklightflower.png:<color>.<stage>.<alt>", "fullbright" : true }, { "image" : "darklightflowerlit.png:<color>.<stage>.<alt>" } ],
+      "direction" : "right",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ],
+      "lightPosition" : [0, 1]
+    }
+  ],
+
+"stages" : [
+    {
+      "alts" : 3,
+      "duration" : [321, 520]
+    },
+    {
+      "alts" : 3,
+      "duration" : [321, 520]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "darklightflower",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125
+  }

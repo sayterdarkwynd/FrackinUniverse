@@ -1,27 +1,37 @@
 {
   "itemName" : "mechpistol",
-  "price" : 500,
+  "price" : 2040,
   "inventoryIcon" : "mechpistol.png",
     "maxStack" : 1,
     "rarity" : "rare",
-  "description" : "Sidearm of a long-forgotten ancient race.",
+  "description" : "Sidearm of the ancient Precursor race.",
   "shortdescription" : "Precursor Pistol",
-      "learnBlueprintsOnPickup" : [ "protominer" ],
-  "level" : 4,
-  "category" : "uniqueWeapon",
-  "itemTags" : ["weapon","ranged","machinepistol"],
-  "tooltipKind" : "gun",
-  "weaponType" : "Pistol",
+
+  "level" : 5,
+  "category" : "machinePistol",
+  "itemTags" : ["weapon","ranged","machinepistol", "energy", "precursor", "upgradeableWeapon"],
+  "tooltipKind" : "gun2",
+  "weaponType" : "Energy",
   "twoHanded" : false,
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "mechpistol.png",
+    "middlefullbright" : "mechpistolfullbright.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/precursormuzzle.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },
   "animationCustom" : {
-    "sounds" : { "fire" : [ "/sfx/projectiles/swing_electric1.ogg" ] },
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.7, 0.34]
+		  }
+		}
+      }
+    },
+    "sounds" : { "fire" : [ "/sfx/gun/plasma_pistol3.ogg" ] },
     "lights" : { "muzzleFlash" : {"color" : [44, 104, 164] } }
   },
 
@@ -30,20 +40,21 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "radioactive",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.12,
-    "baseDps" : 6.4,
-    "energyUsage" : 22,
+    "fireTime" : 0.15,
+    "baseDps" : 7,
+    "energyUsage" : 20,
     "fireType" : "auto",
-    "inaccuracy" : 0.001,
+    "inaccuracy" : 0.02,
     "projectileCount" : 1,
     "projectileType" : "precursorshotsmall",
     "projectileParameters" : {
-      "speed" : 60
+      "knockback" : 3,
+      "statusEffects" : [ "radiationburn" ]
     },
     "stances" : {
       "idle" : {
@@ -75,5 +86,7 @@
     }
   },
 
+  "critChance" : 3,
+  "critBonus" : 13,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

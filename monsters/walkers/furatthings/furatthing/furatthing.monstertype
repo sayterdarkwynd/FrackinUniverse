@@ -1,0 +1,212 @@
+{
+  "type" : "furatthing",
+  "shortdescription" : "Wretched Rat",
+  "description" : "What ARE these things? Devolved Elder beings? Ugh.",
+
+  "categories" : [ "furatthing" ],
+  "parts" : [ "body" ],
+  "reversed" : true,
+  "animation" : "furatthing.animation",
+
+  "dropPools" : [
+    {
+    "default" : "ratthingLoot",
+    "bow" : "alienWoodSapTreasure",
+    "firebow" : "alienWoodSapTreasure",
+    "icebow" : "alienWoodSapTreasure",
+    "poisonbow" : "alienWoodSapTreasure",
+    "electricbow" : "alienWoodSapTreasure",
+    "cosmicbow" : "alienWoodSapTreasure",
+    "radioactivebow" : "alienWoodSapTreasure",
+    "shadowbow" : "alienWoodSapTreasure"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+	"damageTeam" : 1,
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+		  "cooldown" : 1,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 5,
+            "minimumRange" : 0,
+            "windupState" : "fire",
+            "windupTime" : 0.2,
+
+            "projectileType" : "chomp",
+            "power" : 5,
+            "fireOffset" : [3.5, 0],
+            "aimAtTarget" : false,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.01,
+            "fireSound" : "fire",
+            "range": 5,
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        }
+      ],
+
+      "periodicActions" : [],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 8,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 8,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 20]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-0.708,0.167], [-1.292,-0.5], [-1.083,-0.9], [-0.667,-1.2], [0.625,-1.2], [1.042,-0.9], [1.042,-0.542], [0.708,-0] ],
+      "damage" : 8,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "poisonspear",
+      "knockback" : 10,
+      "statusEffects" : [ "bizarreglow" ]
+    },
+
+    "metaBoundBox" : [-2, -2, 2, 2],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-0.708,0.167], [-1.292,-0.5], [-1.083,-0.9], [-0.667,-1.2], [0.625,-1.2], [1.042,-0.9], [1.042,-0.542], [0.708,-0] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 6.0,
+      "runSpeed" : 8.0,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 15.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "blink",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 47
+        },
+        "protection" : {
+          "baseValue" : 1.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "furatthing" }
+  }
+}

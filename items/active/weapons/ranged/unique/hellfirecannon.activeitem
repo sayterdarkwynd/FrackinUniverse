@@ -3,16 +3,19 @@
   "price" : 160,
   "inventoryIcon" : "hellfirecannon.png",
   "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Built to incinerate.",
+  "rarity" : "legendary",
+  "description" : "This might in some way be related to fire.
+^yellow;Inflicts burning^reset;
+^green;Awesome^reset;",
   "shortdescription" : "Hellfire Ejector",
-  "level" : 5,
-  "tooltipKind" : "gun",
+  "category" : "rocketLauncher",
+  "level" : 6,
+  "tooltipKind" : "gun2",
   "weaponType" : "Incendiary Cannon",
-  "itemTags" : ["weapon","ranged","rocketlauncher"],
+  "itemTags" : ["weapon","ranged","rocketlauncher", "hellfire", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/unique/hellfirecannon.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "hellfirecannon.png",
@@ -21,6 +24,15 @@
     "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+      "properties" : {
+        "offset" : [1.7, 0.2]
+      }
+    }
+      }
+    },
     "sounds" : {
       "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
     },
@@ -63,11 +75,12 @@
     "fireType" : "auto",
 
     "projectileType" : "phoenixblast",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 52,
-      "knockback" : 20
+      "knockback" : 20,
+      "statusEffects" : [ "burningnapalm" ]
     },
-    
+
   "stances" : {
     "idle" : {
       "armRotation" : 0,
@@ -96,10 +109,16 @@
       "allowFlip" : false
     }
   }
-  
+
   },
 
 
+  "critChance" : 6,
+  "critBonus" : 8,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 1300,
 
   "altAbilityType" : "hellfireblast",
 

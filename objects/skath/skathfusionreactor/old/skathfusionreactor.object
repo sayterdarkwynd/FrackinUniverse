@@ -1,0 +1,68 @@
+{
+  "objectName" : "skathfusionreactorold",
+  "colonyTags" : ["skath"],
+  "printable" : false,
+  "rarity" : "Rare",
+  "category" : "wire",
+  "price" : 400,
+  "lightColor" : [0, 240, 255],
+  "flickerDistance" : 10.2,
+  "flickerStrength" : 1.55,
+  "flickerTiming" : 5,
+  "description" : "A fusion reactor made by the skath. It provides a huge amount of energy.",
+  "shortdescription" : "Skath Fusion Reactor",
+  "race" : "skath",
+
+  "apexDescription" : "Inside this magnetic bottle, the power of stars is harnessed.",
+  "avianDescription" : "That beam of light looks really dangerous. I should keep my distance.",
+  "floranDescription" : "Bright light hurtsss Floransss eyes!",
+  "glitchDescription" : "Intrigued. This fusion reactor generates a huge amount of power.",
+  "humanDescription" : "I heard on Earth people tried to harness fusion reactors, too. It didn't end well.",
+  "hylotlDescription" : "An impressive effort to the future of this world. If only all energy were so clean.",
+  "novakidDescription" : "Gettin' a mighty comfortable feeling around this thing. Feels familiar somehow.",
+  "skathDescription" : "A fusion reactor, for powering whole cities. Its power output is fantastic.",
+
+  "inventoryIcon" : "skathfusionreactoricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "skathfusionreactor.png:<color>.<4>",
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top", "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/terraforge_loop1.ogg",
+  "soundEffectRangeMultiplier" : 2.0,
+
+  "scripts" : [
+    "/objects/wired/switch/switch.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switch3.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "switch" : "skathfusionreactor.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "outputNodes" : [ [0, 0] ],
+
+  "npcToy" : {
+    "ownerOnly" : true,
+    "influence" : [
+      "wallbutton"
+    ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

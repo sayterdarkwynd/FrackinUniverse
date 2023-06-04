@@ -1,0 +1,104 @@
+[
+{
+    "op": "add",
+    "path": "/feneroxDescription",
+    "value": "How is plants ded?"
+  },
+  {
+    "op": "add",
+    "path": "/thelusianDescription",
+    "value": "Murderous creature is murdered."
+  },
+  {
+  "op":"add",
+  "path":"/slimepersonDescription",
+  "value":"This isn't happening..."
+  },
+  {
+    "op": "add",
+    "path": "/smashable",
+    "value": true
+  },
+  {
+    "op": "add",
+    "path": "/smashSounds",
+    "value": [
+        "/sfx/blocks/footstep_brains.ogg",
+        "/sfx/projectiles/goo_spit1.ogg",
+        "/sfx/projectiles/goo_spit2.ogg",
+        "/sfx/projectiles/goocluster_pop.ogg",
+        "/sfx/projectiles/bonebounce1.ogg",
+        "/sfx/projectiles/bonebounce3.ogg",
+        "/sfx/projectiles/bonebounce5.ogg"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/smashParticles",
+    "value": [
+      {
+        "count": 1,
+        "particle": "corpseburst"
+      },
+      {
+        "count": 3,
+        "particle": "corpseburst"
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/smashDropPool",
+    "value": "deadloot"
+  },
+  {
+    "op": "add",
+    "path": "/breakDropPool",
+    "value": "deadloot"
+  },
+  {
+    "op": "add",
+    "path": "/scripts",
+    "value": [
+      "/scripts/npcToyObject.lua"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/npcToy",
+    "value": {
+      "influence": [
+        "tombstone",
+        "tombstoneComplete"
+      ],
+      "defaultReactions": {
+        "tombstone": [
+          [
+            1,
+            "mourn"
+          ]
+        ],
+        "tombstoneComplete": [
+          [
+            1,
+            "cry"
+          ]
+        ]
+      },
+      "preciseStandPositionLeft": [
+        -3,
+        0
+      ],
+      "preciseStandPositionRight": [
+        3,
+        0
+      ],
+      "maxNpcs": 1
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/description",
+    "value": "A dead Floran Protector, mangled beyond any hope of revival."
+  }
+]

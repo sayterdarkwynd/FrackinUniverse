@@ -1,0 +1,82 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "railState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {
+            "frames" : 4,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "railhook" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [0.5, 0.0],
+          "rotationGroup" : "railhook"
+        },
+
+        "partStates" : {
+          "railState" : {
+            "off" : {
+              "properties" : {
+                "image" : "railhook3.png:1"
+              }
+            },
+            "on" : {
+              "properties" : {
+                "image" : "railhook3.png:<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "rotationGroups" : {
+    "railhook" : {}
+  },
+
+  "sounds" : {
+    "engage" : [ "/sfx/blocks/footstep_composite.ogg" ],
+    "grind" : [ "/sfx/rails/rail_grind_loop.ogg" ],
+    "maxSpeed" : [ "/sfx/interface/nav_examine_on.ogg" ],
+    "minSpeed" : [ "/sfx/interface/nav_examine_off.ogg" ]
+  },
+
+  "particleEmitters" : {
+    "sparks" : {
+      "emissionRate" : 40,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "ember",
+            "size" : 1.0,
+            "color" : [226, 255, 0, 255],
+            "light" : [120, 191, 181],
+            "fade" : 0.5,
+            "position" : [0.75, 0],
+            "initialVelocity" : [2.0, 0.0],
+            "finalVelocity" : [0.0, -50.0],
+            "approach" : [1, 20],
+            "timeToLive" : 0.75,
+            "layer" : "front",
+            "fullbright" : true,
+            "variance" : {
+              "initialVelocity" : [4, 3],
+              "position" : [0.25, 0.25],
+              "timeToLive" : 0.5
+            }
+          }
+        }
+      ]
+    }
+  }
+}

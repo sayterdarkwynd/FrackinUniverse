@@ -15,7 +15,12 @@
       "/monsters/monster.lua"
     ],
 
-    "persistent" : false,
+  "eggType" : "henegg",
+  "mateTime" : 60,
+  "diet" : "omnivore",
+  "hungerTime" : 20,
+
+    "persistent" : true,
 
     "behavior" : "farmable",
 
@@ -48,6 +53,7 @@
         "targetMaterialKind" : "organic"
       },
 
+      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
@@ -64,7 +70,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 250
+          "baseValue" : 60
         },
         "protection" : {
           "baseValue" : 0.0
@@ -93,6 +99,30 @@
     "mouthOffset" : [4, 0],
     "feetOffset" : [0, -6],
     "capturable" : false,
+    "relocatable" : true,
+    "captureHealthFraction" : 0.5,
+    "capturedMonsterType" : "henbaby",
     "nametagColor" : [64, 200, 255]
-  }
+  },
+
+    "tamedParameters" : {
+      "hunger" : 0.05,
+      "generations" : 10,
+      "stages" : [48, 86400],
+      "span" : 300,
+      "birthCost" : [100, 0],
+      "birthItem" : "egg",
+      "birthTime" : [3.0, 5.0],
+      "feedTime" : [3.0, 5.0],
+      "feedRange" : 1.5,
+      "feedCooldown" : 180,
+      "searchRange" : 15,
+      "cooldown" : 15,
+      "mutator" : "golden",
+      "sex" : [1, 2]
+    },
+    "tamedFeedType" : ["animalfeed", "seed"],
+    "tamedFibreType" : [ ],
+    "slaughterPool" : [ {"name" : "rawpoultry", "count" : 2} ]
+
 }

@@ -1,9 +1,10 @@
 {
-   "metalqueen" : [
+//FU Beetles
+   "elderBee" : [
     [0, {
       "pool" : [
-        {"weight" : 0.75, "item" : [ "metaldrone", 1]},
-        {"weight" : 0.25, "item" : [ "metalqueen", 1]}
+        {"weight" : 0.65, "item" : [ "bee_xenodaemonae_drone", 1]},
+        {"weight" : 0.35, "item" : [ "bee_xenodaemonae_queen", 1]}
       ],
       "poolRounds" : [
         [1, 1]
@@ -11,11 +12,10 @@
       "allowDuplication" : false
     }]
   ],
-//FU Beetles
    "elderbeetle" : [
     [0, {
       "pool" : [
-        {"weight" : 0.6, "item" : [ "bugshell", 2]},
+        {"weight" : 0.6, "item" : [ "liquidelderfluid", 1]},
         {"weight" : 0.1, "item" : [ "mutagene1", 1]},
         {"weight" : 0.1, "item" : [ "mutagene2", 1]},
         {"weight" : 0.1, "item" : [ "mutagene3", 1]},
@@ -27,10 +27,59 @@
       "allowDuplication" : false
     }]
   ],
+   "erchiusBee" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.75, "item" : [ "liquidfuel", 5]},
+        {"weight" : 0.20, "item" : [ "money", 25]},
+        {"weight" : 0.05, "item" : [ "dubloon", 1]}
+      ],
+      "poolRounds" : [
+        [1, 1]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+   "metalqueen" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.75, "item" : [ "bee_cybernetic_drone", 1]},
+        {"weight" : 0.25, "item" : [ "bee_cybernetic_queen", 1]}
+      ],
+      "poolRounds" : [
+        [1, 1]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+
+
+   "fumoth" : [
+    [0, {
+      "pool" : [
+        {"weight" : 1.0, "item" : [ "silkfibre", 1]}
+      ],
+      "poolRounds" : [
+        [1, 1]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
    "blackbeetle" : [
     [0, {
       "pool" : [
         {"weight" : 1.0, "item" : [ "bugshell", 1]}
+      ],
+      "poolRounds" : [
+        [1, 1]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+   "blackbeetlerare" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.4, "item" : [ "bugshell", 1]}
       ],
       "poolRounds" : [
         [1, 1]
@@ -55,8 +104,8 @@
    "normalqueen" : [
     [0, {
       "pool" : [
-        {"weight" : 0.5, "item" : [ "normalqueen", 1]},
-        {"weight" : 0.5, "item" : [ "normaldrone", 1]}
+        {"weight" : 0.5, "item" : [ "bee_honey_queen", 1]},
+        {"weight" : 0.5, "item" : [ "bee_honey_drone", 1]}
       ],
       "poolRounds" : [
         [1, 1]
@@ -64,12 +113,12 @@
       "allowDuplication" : false
     }]
   ],
-  
+
   "hunterqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 0.5, "item" : [ "hunterqueen", 1]},
-          {"weight" : 0.5, "item" : [ "hunterdrone", 1]}
+          {"weight" : 0.5, "item" : [ "bee_pesterer_queen", 1]},
+          {"weight" : 0.5, "item" : [ "bee_pesterer_drone", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -80,8 +129,8 @@
   "adaptivequeen" : [
     [0, {
         "pool" : [
-          {"weight" : 0.5, "item" : [ "adaptivequeen", 1]},
-          {"weight" : 0.5, "item" : [ "adaptivedrone", 1]}
+          {"weight" : 0.5, "item" : [ "bee_crystalwing_queen", 1]},
+          {"weight" : 0.5, "item" : [ "bee_crystalwing_drone", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -92,8 +141,8 @@
   "minerqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 0.5, "item" : [ "minerqueen", 1]},
-          {"weight" : 0.5, "item" : [ "minerdrone", 1]}
+          {"weight" : 0.5, "item" : [ "bee_digger_queen", 1]},
+          {"weight" : 0.5, "item" : [ "bee_digger_drone", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -104,8 +153,8 @@
   "aridqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 0.5, "item" : [ "aridqueen", 1]},
-          {"weight" : 0.5, "item" : [ "ariddrone", 1]}
+          {"weight" : 0.5, "item" : [ "bee_sandprowler_queen", 1]},
+          {"weight" : 0.5, "item" : [ "bee_sandprowler_drone", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -116,8 +165,8 @@
   "exceptionalqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 0.5, "item" : [ "exceptionalqueen", 1]},
-          {"weight" : 0.5, "item" : [ "exceptionaldrone", 1]}
+          {"weight" : 0.5, "item" : [ "bee_artisan_queen", 1]},
+          {"weight" : 0.5, "item" : [ "bee_artisan_drone", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -128,8 +177,8 @@
   "flowerqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 0.5, "item" : [ "flowerqueen", 1]},
-          {"weight" : 0.5, "item" : [ "flowerdrone", 1]}
+          {"weight" : 0.5, "item" : [ "bee_orchid_queen", 1]},
+          {"weight" : 0.5, "item" : [ "bee_orchid_drone", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -140,8 +189,8 @@
   "forestqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 0.5, "item" : [ "forestqueen", 1]},
-          {"weight" : 0.5, "item" : [ "forestdrone", 1]}
+          {"weight" : 0.5, "item" : [ "bee_carpenter_queen", 1]},
+          {"weight" : 0.5, "item" : [ "bee_carpenter_drone", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -152,8 +201,8 @@
   "morbidqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 0.5, "item" : [ "morbidqueen", 1]},
-          {"weight" : 0.5, "item" : [ "morbiddrone", 1]}
+          {"weight" : 0.5, "item" : [ "bee_pesterer_queen", 1]},
+          {"weight" : 0.5, "item" : [ "bee_pesterer_drone", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -164,8 +213,8 @@
   "junglequeen" : [
     [0, {
         "pool" : [
-          {"weight" : 0.5, "item" : [ "junglequeen", 1]},
-          {"weight" : 0.5, "item" : [ "jungledrone", 1]}
+          {"weight" : 0.5, "item" : [ "bee_squash_queen", 1]},
+          {"weight" : 0.5, "item" : [ "bee_squash_drone", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -176,8 +225,8 @@
   "moonqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 0.5, "item" : [ "moonqueen", 1]},
-          {"weight" : 0.5, "item" : [ "moondrone", 1]}
+          {"weight" : 0.5, "item" : [ "bee_stellar_queen", 1]},
+          {"weight" : 0.5, "item" : [ "bee_stellar_drone", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -188,8 +237,8 @@
   "mythicalqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 0.5, "item" : [ "mythicalqueen", 1]},
-          {"weight" : 0.5, "item" : [ "mythicaldrone", 1]}
+          {"weight" : 0.5, "item" : [ "bee_exspiravit_queen", 1]},
+          {"weight" : 0.5, "item" : [ "bee_exspiravit_drone", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -200,8 +249,8 @@
   "nocturnalqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 0.5, "item" : [ "nocturnalqueen", 1]},
-          {"weight" : 0.5, "item" : [ "nocturnaldrone", 1]}
+          {"weight" : 0.5, "item" : [ "bee_reaper_queen", 1]},
+          {"weight" : 0.5, "item" : [ "bee_reaper_drone", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -212,7 +261,7 @@
   "plutoniumqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 1, "item" : [ "plutoniumqueen", 1]}
+          {"weight" : 1, "item" : [ "bee_pordratetch_queen", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -223,7 +272,7 @@
   "radioactivequeen" : [
     [0, {
         "pool" : [
-          {"weight" : 1, "item" : [ "radioactivequeen", 1]}
+          {"weight" : 1, "item" : [ "bee_tunguskudae_queen", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -234,7 +283,7 @@
   "redqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 1, "item" : [ "redqueen", 1]}
+          {"weight" : 1, "item" : [ "bee_redbanded_queen", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -245,8 +294,8 @@
   "aggressivequeen" : [
     [0, {
         "pool" : [
-          {"weight" : 0.5, "item" : [ "aggressivequeen", 1]},
-          {"weight" : 0.5, "item" : [ "aggressivedrone", 1]}
+          {"weight" : 0.5, "item" : [ "bee_assassin_queen", 1]},
+          {"weight" : 0.5, "item" : [ "bee_assassin_drone", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -257,8 +306,8 @@
   "arcticqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 0.5, "item" : [ "arcticqueen", 1]},
-          {"weight" : 0.5, "item" : [ "arcticdrone", 1]}
+          {"weight" : 0.5, "item" : [ "bee_rimewing_queen", 1]},
+          {"weight" : 0.5, "item" : [ "bee_rimewing_drone", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -269,7 +318,7 @@
   "solariumqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 1, "item" : [ "solariumqueen", 1]}
+          {"weight" : 1, "item" : [ "bee_cuckoo_queen", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -280,8 +329,8 @@
   "hardyqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 0.5, "item" : [ "hardyqueen", 1]},
-          {"weight" : 0.5, "item" : [ "hardydrone", 1]}
+          {"weight" : 0.5, "item" : [ "bee_sweat_queen", 1]},
+          {"weight" : 0.5, "item" : [ "bee_sweat_drone", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -292,7 +341,7 @@
   "sunqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 1, "item" : [ "sunqueen", 1]}
+          {"weight" : 1, "item" : [ "bee_inventor_queen", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -300,11 +349,23 @@
         "allowDuplication" : false
       } ]
   ],
-	"volcanicqueen" : [
+  "magmaqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 0.5, "item" : [ "volcanicqueen", 1]},
-          {"weight" : 0.5, "item" : [ "volcanicdrone", 1]}
+          {"weight" : 0.5, "item" : [ "bee_gelidburrower_queen", 1]},
+          {"weight" : 0.5, "item" : [ "bee_gelidburrower_drone", 1]}
+        ],
+      "poolRounds" : [
+        [1, 1]
+      ],
+        "allowDuplication" : false
+      } ]
+  ],
+  "volcanicqueen" : [
+    [0, {
+        "pool" : [
+          {"weight" : 0.5, "item" : [ "bee_plasterer_queen", 1]},
+          {"weight" : 0.5, "item" : [ "bee_plasterer_drone", 1]}
         ],
       "poolRounds" : [
         [1, 1]
@@ -315,7 +376,7 @@
   "godlyqueen" : [
     [0, {
         "pool" : [
-          {"weight" : 1, "item" : [ "godlyqueen", 1]}
+          {"weight" : 1, "item" : [ "bee_goldensaint_queen", 1]}
         ],
       "poolRounds" : [
         [1, 1]

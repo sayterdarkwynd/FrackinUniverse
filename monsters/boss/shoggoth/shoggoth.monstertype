@@ -1,205 +1,394 @@
 {
-  "type" : "shoggoth",
-  "shortdescription" : "The Shoggoth",
-  "description" : "Enormous, malign and unknowable.",
-  "categories" : [ "shoggoth" ],
-  "parts" : [  "chest", "eyebeam", "eyeglow" ],
+	"type": "shoggoth",
+	"shortdescription": "The Shoggoth",
+	"description": "Enormous, malign and unknowable.",
+	"categories": ["shoggoth"],
+	"parts": ["chest", "eyeglow"],
 
-  "animation" : "shoggoth.animation",
-  "colors" : "/monsters/colors.config",
-  "reversed" : true,
-  "dropPools" : [ "shoggothFlesh" ],
+	"animation": "shoggoth.animation",
+	"colors": "/monsters/colors.config",
+	"reversed": true,
+	"dropPools": ["shoggothFlesh"],
 
-  "baseParameters" : {
-    "scripts" : [
-      "/monsters/boss/shoggoth/bossmonster.lua",
-      "/scripts/stateMachine.lua",
-      "/scripts/util.lua",
-      "/scripts/vec2.lua",
-      "/monsters/simpleRangedAttack.lua",
-      "/monsters/boss/shoggoth/diestate.lua",
-      "/monsters/boss/shoggoth/idlestate.lua"
-    ],
+	"baseParameters": {
+		"scripts": [
+			"/monsters/boss/shoggoth/bossmonster.lua",
+			"/scripts/stateMachine.lua",
+			"/scripts/util.lua",
+			"/scripts/vec2.lua",
+			"/monsters/simpleRangedAttack.lua",
+			"/monsters/boss/shoggoth/diestate.lua",
+			"/monsters/boss/shoggoth/idlestate.lua",
+			"/monsters/fu_bossExtraResistsHandler.lua"
+		],
+		"bossExtraResistsValue": 0.9,
 
-    "skillCount" : 6,
-    "skills" : ["tentacleSwipeAttack", "fleshBombAttack", "eyeBeamAttack", "shoggothAcidAttack", "miniShoggothSpawnAttack", "shoggothChargeAttack"],
+		"skillCount": 8,
+		"skills": ["tentacleSwipeAttack", "fleshBombAttack", "eyeBeamAttack", "shoggothAcidAttack", "miniShoggothSpawnAttack", "miniShoggothSpawnAttack2", "shoggothChargeAttack", "shoggothAcidAttack2"],
 
-    "phases" : [
-      {
-        "skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack" ]
-      },
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.75,
-        "skills" : [ "eyeBeamAttack", "tentacleSwipeAttack", "shoggothAcidAttack" ]
-      },
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.60,
-        "skills" : [ "fleshBombAttack" ]
-      },      
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.5,
-        "enterPhase" : "miniShoggothSpawnAttack",
-        "skills" : [ "eyeBeamAttack", "fleshBombAttack", "tentacleSwipeAttack", "shoggothAcidAttack" ]
-      },
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.35,
-        "skills" : [ "eyeBeamAttack", "shoggothChargeAttack", "tentacleSwipeAttack" ]
-      },
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.25,
-        "skills" : [ "shoggothChargeAttack" ]
-      }
-    ],
+		"phases" : [
+			{
+				"skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack","fleshBombAttack" ]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.95,
+				"skills" : [ "shoggothChargeAttack" ]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.90,
+				"skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack","fleshBombAttack"	]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.85,
+				"skills" : [ "shoggothChargeAttack","tentacleSwipeAttack" ]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.80,
+				"skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack","fleshBombAttack", "miniShoggothSpawnAttack"	]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.75,
+				"skills" : [ "shoggothChargeAttack","tentacleSwipeAttack" ]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.70,
+				"skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack2" ]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.60,
+				"skills" : [ "eyeBeamAttack", "tentacleSwipeAttack", "shoggothAcidAttack2","fleshBombAttack", "miniShoggothSpawnAttack" ]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.55,
+				"skills" : [ "shoggothChargeAttack","tentacleSwipeAttack" ]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.50,
+				"skills" : [ "eyeBeamAttack", "tentacleSwipeAttack", "shoggothAcidAttack2","fleshBombAttack", "miniShoggothSpawnAttack" ]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.45,
+				"skills" : [ "shoggothChargeAttack","tentacleSwipeAttack" ]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.40,
+				"skills" : [ "eyeBeamAttack", "tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2","miniShoggothSpawnAttack"	]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.35,
+				"skills" : [ "shoggothChargeAttack","tentacleSwipeAttack" ]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.30,
+				"skills" : [ "eyeBeamAttack", "tentacleSwipeAttack", "shoggothAcidAttack2","shoggothAcidAttack", "fleshBombAttack" ]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.25,
+				"skills" : [ "shoggothChargeAttack","tentacleSwipeAttack" ]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.20,
+				"skills" : [ "tentacleSwipeAttack", "eyeBeamAttack", "shoggothAcidAttack","miniShoggothSpawnAttack2" ]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.15,
+				"skills" : [ "shoggothChargeAttack","tentacleSwipeAttack" ]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.10,
+				"skills" : [ "tentacleSwipeAttack", "eyeBeamAttack" ]
+			},
+			{
+				"trigger" : "healthPercentage",
+				"healthPercentage" : 0.05,
+				"skills" : [ "eyeBeamAttack", "miniShoggothSpawnAttack2" ]
+			}
+		],
+		"scale": 1,
 
-    "scale" : 1,
+		"movementSettings": {
+			"collisionPoly": [
+				[-14, -16],
+				[14, -16],
+				[14, 0],
+				[-14, 0]
+			],
+			"mass": 10,
+			"walkSpeed": 3,
+			"runSpeed": 5,
+			"jumpSpeed": 0,
+			"airforce": 0
+		},
 
-    "movementSettings" : {
-      "collisionPoly" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
-      "mass" : 1,
-      "walkSpeed" : 6,
-      "runSpeed" : 8,
-      "jumpSpeed" : 20,
-      "airforce" : 10
-    },
+		"projectileSourcePosition": [-2.5, -1.25],
+		"projectileSourceOffset": [7, 0],
 
-    "projectileSourcePosition" : [-2.5, -1.25],
-    "projectileSourceOffset" : [7, 0],
-
-    "trackTargetDistance" : 100.0,
-    "switchTargetDistance" : 0,
-    "keepTargetInSight" : false,
-
-    "knockoutTime" : 0.5,
-    "knockoutEffect" : "blink",
-    "deathParticles" : "deathPoof",
-
-    "alwaysAggressive" : true,
+		"trackTargetDistance": 180.0,
+		"switchTargetDistance": 180,
+		"targetQueryRange": 180,
+		"targetOnDamage": true,
+		"keepTargetInSight": true,
+		"keepTargetInRange": 10,
+		"targetOutOfSightTime": 180.0,
 
 
-    "jumpTargetDistance" : 0,
-    "jumpTime" : [30000, 30000],
+		"knockoutTime": 0.5,
+		"knockoutEffect": "blink",
+		"deathParticles": "deathPoof",
 
-    "metaBoundBox" : [-16, -16, 10, 10],
+		"alwaysAggressive": true,
 
-    "blockedSensors" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
-    "fallSensors" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
 
-    "touchDamage" : {
-      "poly" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
-      "damage" : 140,
+		"jumpTargetDistance": 0,
+		"jumpTime": [0, 0],
 
-      "teamType" : "enemy",
-      "damageSourceKind" : "fu_shadow",
-      "statusEffects" : [ "slimefriction", "insanity" ]
-    },
+		"metaBoundBox": [-16, -16, 10, 10],
 
-    "statusSettings" : {
-      "statusProperties" : {
-        "targetMaterialKind" : "organic"
-      },
+		"blockedSensors": [
+			[-14, -16],
+			[14, -16],
+			[14, 0],
+			[-14, 0]
+		],
+		"fallSensors": [
+			[-14, -16],
+			[14, -16],
+			[14, 0],
+			[-14, 0]
+		],
 
-      "appliesEnvironmentStatusEffects" : false,
-      "minimumLiquidStatusEffectPercentage" : 0.1,
+		"touchDamage": {
+			"poly": [
+				[-14, -16],
+				[14, -16],
+				[14, 0],
+				[-14, 0]
+			],
+			"damage": 32,
 
-      "primaryScriptSources" : [
-        "/stats/monster_primary.lua"
-      ],
-      "primaryScriptDelta" : 0,
+			"teamType": "enemy",
+			"damageSourceKind": "cosmic",
+			"statusEffects": ["percentarmorboostneg3", "madnessgain3"]
+		},
 
-      "stats" : {
-        "grit" : {
-          "baseValue" : 1.0
-        },
-        "maxHealth" : {
-          "baseValue" : 2000
-        },
-        "protection" : {
-          "baseValue" : 1.0
-        },
-        "healthRegen" : {
-          "baseValue" : 0.0
-        },
-        "poisonStatusImmunity" : {
-          "baseValue" : 1.0
-        },
-        "fireStatusImmunity" : {
-          "baseValue" : 1.0
-        },
-        "insanityImmunity" : {
-          "baseValue" : 1.0
-        }
-      },
-      
-      "resources" : {
-        "health" : {
-          "maxStat" : "maxHealth",
-          "deltaStat" : "healthRegen",
-          "defaultPercentage" : 100
-        }
-      }
-    },
+		"statusSettings": {
+			"statusProperties": {
+				"targetMaterialKind": "organic"
+			},
 
-    "mouthOffset" : [1.0, -1.5],
-    "feetOffset" : [0, -21],
-    
-    
-    
-    "projectiles" : {
-      "deathexplosion" : {
-        "type" : "darkmatterexplosion",
-        "config" : {
-          "speed" : 0.1,
-          "power" : 2,
+			"appliesWeatherStatusEffects": true,
+			"appliesEnvironmentStatusEffects": false,
+			"minimumLiquidStatusEffectPercentage": 0.1,
 
-          "actionOnReap" : [
-            {
-              "action" : "config",
-              "file" : "/projectiles/explosions/darkmatterexplosion/darkmatterexplosion.config"
-            },
-            {
-              "action" : "projectile",
-              "type" : "shoggothflesh",
-              "inheritDamageFactor" : 0.2,
-              "fuzzAngle" : 30,
-              "angleAdjust" : 0
-            },
-            {
-              "action" : "projectile",
-              "type" : "shoggothflesh",
-              "inheritDamageFactor" : 0.2,
-              "fuzzAngle" : 30,
-              "angleAdjust" : 45
-            },
-            {
-              "action" : "projectile",
-              "type" : "shoggothflesh",
-              "inheritDamageFactor" : 0.2,
-              "fuzzAngle" : 30,
-              "angleAdjust" : -45
-            }
-          ]
-        },
+			"primaryScriptSources": [
+				"/stats/monster_primary.lua"
+			],
+			"primaryScriptDelta": 0,
 
-        "fireTime" : 5.0,
-        "fireInterval" : 0.2,
-        "cooldown" : 0.1
-      }
-    },
-    "capturable" : false    
-    
-  }
+			"stats": {
+				"grit": {
+					"baseValue": 1.0
+				},
+				"maxHealth": {
+					"baseValue": 2100
+				},
+				"protection": {
+					"baseValue": 0.0
+				},
+				"healthRegen": {
+					"baseValue": 2.8
+				},
+				"poisonStatusImmunity": {
+					"baseValue": 1.0
+				},
+				"fireStatusImmunity": {
+					"baseValue": 1.0
+				},
+				"biooozeImmunity": {
+					"baseValue": 1.0
+				},
+				"electricStatusImmunity": {
+					"baseValue": 1.0
+				},
+				"insanityImmunity": {
+					"baseValue": 1.0
+				},
+				"protoImmunity": {
+					"baseValue": 1.0
+				},
+				"gasImmunity": {
+					"baseValue": 1.0
+				},
+				"shadowImmunity": {
+					"baseValue": 1.0
+				},
+				"radiationburnImmunity": {
+					"baseValue": 1.0
+				},
+				"sulphuricImmunity": {
+					"baseValue": 1.0
+				},
+				"ffextremeheatImmunity": {
+					"baseValue": 1.0
+				},
+				"captureImmunity": {
+					"baseValue": 1.0
+				},
+				"penaltyBlock": {
+					"baseValue": 1.0
+				},
+				"critImmunity": {
+					"baseValue": 1.0
+				},
+				"stunImmunity": {
+					"baseValue": 1.0
+				},
+				"poisonResistance": {
+					"baseValue": 0.4
+				},
+				"fireResistance": {
+					"baseValue": 0.5
+				},
+				"iceResistance": {
+					"baseValue": 0.5
+				},
+				"electricResistance": {
+					"baseValue": 0.9
+				},
+				"physicalResistance": {
+					"baseValue": 0.6
+				},
+				"shadowResistance": {
+					"baseValue": 0.99
+				},
+				"cosmicResistance": {
+					"baseValue": 0.99
+				},
+				"radioactiveResistance": {
+					"baseValue": 0.65
+				},
+				"bleedingImmunity": {
+					"baseValue": 1
+				},
+				"beestingImmunity": {
+					"baseValue": 1
+				},
+				"linerifleResistance": {
+					"baseValue": 0.9
+				},
+				"slagStatusImmunity": {
+					"baseValue": 1
+				},
+				"bluoplasmaStatusImmunity": {
+					"baseValue": 1
+				},
+				"linerifleStatusImmunity": {
+					"baseValue": 1
+				},
+				"centensianenergyResistance": {
+					"baseValue": 0.9
+				},
+				"centensianenergyStatusImmunity": {
+					"baseValue": 0.9
+				},
+				"xanafianResistance": {
+					"baseValue": 0.9
+				},
+				"xanafianStatusImmunity": {
+					"baseValue": 1
+				},
+				"akkimariacidResistance": {
+					"baseValue": 0.9
+				},
+				"akkimariacidStatusImmunity": {
+					"baseValue": 1
+				},
+				"ucObliteratingBurnImmunity": {
+					"baseValue": 1
+				},
+				"specialStatusImmunity": {
+					"baseValue": 1.0
+				},
+				"ignoreInvisibilityEffects": {
+					"baseValue": 1
+				},
+				"silverResistance": {
+					"baseValue": 0.5
+				}
+			},
+
+			"resources": {
+				"health": {
+					"maxStat": "maxHealth",
+					"deltaStat": "healthRegen",
+					"defaultPercentage": 100
+				}
+			}
+		},
+
+		"mouthOffset": [1.0, -1.5],
+		"feetOffset": [0, -8],
+
+
+
+		"projectiles": {
+			"deathexplosion": {
+				"type": "darkmatterexplosion",
+				"config": {
+					"speed": 0.1,
+					"power": 2,
+
+					"actionOnReap": [{
+							"action": "config",
+							"file": "/projectiles/explosions/darkmatterexplosion/darkmatterexplosion.config"
+						},
+						{
+							"action": "projectile",
+							"type": "shoggothflesh",
+							"inheritDamageFactor": 0.2,
+							"fuzzAngle": 30,
+							"angleAdjust": 0
+						},
+						{
+							"action": "projectile",
+							"type": "shoggothflesh",
+							"inheritDamageFactor": 0.2,
+							"fuzzAngle": 30,
+							"angleAdjust": 45
+						},
+						{
+							"action": "projectile",
+							"type": "shoggothflesh",
+							"inheritDamageFactor": 0.2,
+							"fuzzAngle": 30,
+							"angleAdjust": -45
+						}
+					]
+				},
+
+				"fireTime": 5.0,
+				"fireInterval": 0.2,
+				"cooldown": 0.1
+			}
+		},
+		"capturable": false
+
+	}
 }
-
-
-
-
-
-
-
-    
-    

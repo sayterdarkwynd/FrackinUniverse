@@ -1,0 +1,246 @@
+{
+  "globalTagDefaults" : {
+    "paletteSwaps" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "drill" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {},
+          "active1" : {
+            "frames" : 3,
+            "cycle" : 0.18,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/melee/drillspear_active_loop1.ogg",
+              "persistentSoundStopTime" : 0.25
+            }
+          },
+          "active2" : {
+            "frames" : 3,
+            "cycle" : 0.18,
+            "mode" : "loop"
+          }
+        }
+      },
+      "energy" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {},
+          "windup1" : {
+            "frames" : 3,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "windup2" : {
+            "frames" : 3,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "active1" : {},
+          "active2" : {
+            "frames" : 3,
+            "cycle" : 0.18,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/melee/swing_spear.ogg",
+              "persistentSound" : "/sfx/melee/drillspear_active_loop2.ogg",
+              "persistentSoundStopTime" : 0.1
+            }
+          }
+        }
+      },
+      "swoosh" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+          },
+          "fire" : {
+            "frames" : 3,
+            "cycle" : 0.12,
+            "mode" : "transition",
+            "transition" : "idle"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "drillenergy" : {
+        "properties" : {
+          "zLevel" : 2,
+          "centered" : true,
+          "fullbright" : true,
+          "offset" : [0.0, 0.0],
+          "transformationGroups" : ["weapon"],
+
+          "drillTip" : [0.0, 4.5],
+          "drillSource1" : [-1.5, 1.0],
+          "drillSource2" : [0.0, 0.0],
+          "drillSource3" : [1.5, 1.0]
+        },
+
+        "partStates" : {
+          "energy" : {
+            "windup1" : {
+              "properties" : {
+                "image" : "drillenergy.png:windup1.<frame>"
+              }
+            },
+            "windup2" : {
+              "properties" : {
+                "image" : "drillenergy.png:windup2.<frame>"
+              }
+            },
+            "active1" : {
+              "properties" : {
+                "image" : "drillenergy.png:active.<frame>",
+                "damageArea" : [[0.0625, 0.5], [-1.375, 2.25], [0.0625, 4.25], [1.25, 2.25]]
+              }
+            },
+            "active2" : {
+              "properties" : {
+                "image" : "drillenergy.png:active.<frame>",
+                "damageArea" : [[0.0625, 0.5], [-1.375, 2.25], [0.0625, 4.25], [1.25, 2.25]]
+              }
+            }
+          }
+        }
+      },
+      "spearfullbright" : {
+        "properties" : {
+          "zLevel" : 1,
+          "centered" : true,
+          "fullbright" : true,
+          "offset" : [0.0, 0.0],
+          "transformationGroups" : ["weapon"]
+        },
+
+        "partStates" : {
+          "drill" : {
+            "idle" : {
+              "properties" : {
+                "image" : "fushovelspear_fullbright.png:1"
+              }
+            },
+            "active1" : {
+              "properties" : {
+                "image" : "fushovelspear_fullbright.png:<frame>"
+              }
+            },
+            "active2" : {
+              "properties" : {
+                "image" : "fushovelspear_fullbright.png:<frame>"
+              }
+            }
+          }
+        }
+      },
+      "spear" : {
+        "properties" : {
+          "zLevel" : 0,
+          "centered" : true,
+          "offset" : [0.0, 0.0],
+          "transformationGroups" : ["weapon"],
+          "damageArea" : [[0, -0.5], [-0.75, 1.0], [-0.75, 2.75], [0, 4.25], [0.75, 2.75], [0.75, 1.0]]
+        },
+
+        "partStates" : {
+          "drill" : {
+            "idle" : {
+              "properties" : {
+                "image" : "fushovelspear.png:1"
+              }
+            },
+            "active1" : {
+              "properties" : {
+                "image" : "fushovelspear.png:<frame>"
+              }
+            },
+            "active2" : {
+              "properties" : {
+                "image" : "fushovelspear.png:<frame>"
+              }
+            }
+          }
+        }
+      },
+
+      "swoosh" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [3.0, 0.0],
+          "transformationGroups" : ["swoosh"]
+        },
+
+        "partStates" : {
+          "swoosh" : {
+            "idle" : {
+              "properties" : {
+                "image" : ""
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "/items/active/weapons/melee/spear/swoosh/physicalswoosh.png:<frame>",
+                "damageArea" : [[-3.5, 0], [-1, 1], [1, 1], [4, 0], [1, -1], [-1, -1]]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {},
+    "swoosh" : {}
+  },
+
+  "particleEmitters" : {
+    "physicalswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [3.5, -1.0, 7.5, 1.0],
+      "particles" : [ ]
+    },
+    "charge" : {
+      "active" : false,
+      "transformationGroups" : ["weapon"],
+      "emissionRate" : 20,
+      "offsetRegion" : [-0.25, -3.125, 0.25, -2.875],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/dust2/dust2.animation",
+            "position" : [0, 6],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [-1, 2],
+            "approach" : [0, 0],
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.65,
+            "fade" : 1,
+            "size" : 1,
+            "layer" : "front",
+            "timeToLive" : 0.25,
+            "variance" : {
+              "initialVelocity" : [0.5, 1.0],
+              "rotation" : 180
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "fire" : [ "/sfx/melee/swing_spear.ogg" ],
+    "windup" : [ "/sfx/melee/drillspear_windup3.ogg" ],
+    "winddown" : [ "/sfx/melee/drillspear_winddown2.ogg" ]
+  }
+}

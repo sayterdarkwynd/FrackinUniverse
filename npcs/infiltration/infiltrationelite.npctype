@@ -1,0 +1,76 @@
+{
+  "type" : "infiltrationelite",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [3, 3],
+
+  "dropPools" : [ "guardtreasure" ],
+
+    "behaviorConfig" : {
+      "leapWindup" : 0.75,
+      "rangedAimTime" : 0.5,
+      "rangedWindupTime" : 0.01
+    },
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "You made a big mistake coming here!",
+			"You cannot hurt me! I am bulletproof!",
+			"Intruder spotted! Isolate. Destroy."
+          ],
+		  "apex" : [
+		    "Rebel scum! Today, you die!",
+			"Opposing Big Ape is a mistake!",
+			"Why do you fight? You cannot hope to win.",
+			"You cannot hurt me! I am bulletproof!"
+		  ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [  {"name" : "visorhead" , "parameters" : { "colorIndex" : 1 } } ],
+            "chest" : [ { "name" : "miniknogchest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "miniknogpants", "parameters" : { "colorIndex" : 1 } } ],
+            "primary" : [ { "name" : "npcassaultrifle", "parameters" : { "primaryAbility" : { "projectileParameters" : { "statusEffects" : ["vulnerability"] } } } } ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+	"poisonStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"electricStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"iceStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"fireStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"stunImmunity" : {
+		"baseValue" : 1.0
+	},
+	"protection" : {
+        "baseValue" : 10.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 1.0
+      },
+	  "maxEnergy" : {
+        "baseValue" : 400.0
+      }
+    }
+  }
+}

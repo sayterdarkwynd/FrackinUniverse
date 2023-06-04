@@ -1,0 +1,92 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "boothState" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 1,
+            "cycle" : 3.0,
+            "mode" : "transition",
+            "transition" : "blink"
+          },
+          "blink" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "idle"
+          },
+          "wave" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" : "transition",
+            "transition" : "idle"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "booth" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "boothState" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+            "blink" : {
+              "properties" : {
+                "image" : "<partImage>:blink"
+              }
+            },
+            "wave" : {
+              "properties" : {
+                "image" : "<partImage>:wave.<frame>"
+              }
+            }
+          }
+        }
+      },
+      "sign" : {
+        "properties" : {
+          "zLevel" : 1,
+          "fullbright" : true,
+          "centered" : false
+        },
+
+        "partStates" : {
+          "boothState" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+            "blink" : {
+              "properties" : {
+                "image" : "<partImage>:blink"
+              }
+            },
+            "wave" : {
+              "properties" : {
+                "image" : "<partImage>:wave.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "sounds" : {
+    "chatter" : [
+      "/sfx/humanoid/hylotl_chatter_female1.ogg",
+      "/sfx/humanoid/hylotl_chatter_female2.ogg",
+      "/sfx/humanoid/hylotl_chatter_female3.ogg"
+    ]
+  }
+}

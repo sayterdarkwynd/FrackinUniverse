@@ -2,7 +2,7 @@ require "/scripts/vec2.lua"
 
 function init()
   storage.timer = storage.timer or 0
-  
+
   if storage.active == nil then
     updateActive()
   end

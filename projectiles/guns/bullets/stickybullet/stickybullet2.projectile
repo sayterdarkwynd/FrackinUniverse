@@ -1,0 +1,29 @@
+{
+  "projectileName" : "stickybullet2",
+  "image" : "stickybullet.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "physics" : "stickybullet",
+  "pointLight" : false,
+  "timeToLive" : 4,
+  "bounces" : 1,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/vsmallregularexplosion/vsmallregularexplosionknockback.config"
+    }
+  ],
+  "power" : 5.0,
+  "speed" : 75,
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/gun/impact_bullet.ogg"
+      ]
+    }
+  ]
+}

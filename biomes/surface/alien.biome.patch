@@ -1,0 +1,111 @@
+[
+	[{
+		"op": "replace",
+		"path": "/statusEffects",
+		"value": [
+			"radioactiveweathernew"
+		]
+	},
+	{
+		"op": "replace",
+		"path": "/hueShiftOptions",
+		"value": [-15, -10, -5, 0, 5, 10, 15]
+	},
+	{
+		"op": "replace",
+		"path": "/subBlocks/0",
+		"value": "rock04"
+	}],
+	[
+
+		{
+			"op": "test",
+			"path": "/surfacePlaceables",
+			"inverse": true
+		},
+		{
+			"op": "add",
+			"path": "/surfacePlaceables/items/-",
+			"value":
+			{
+				"mode" : "floor",
+				"priority" : 0,
+				"variants" : 1,
+				"distribution" : "/biomes/distributions.config:overgroundChests",
+
+				"type" : "treasureBox",
+				"treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+			}
+		},
+		{
+			"op": "add",
+			"path": "/surfacePlaceables/items/-",
+			"value":
+			{
+				"mode" : "floor",
+				"priority" : 0,
+				"variants" : 1,
+				"distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+				"type" : "treasureBox",
+				"treasureBoxSets" : [ "weaponChest" ]
+			}
+		},
+		{
+			"op": "add",
+			"path": "/surfacePlaceables/items/-",
+			"value": {
+				"mode": "floor",
+				"priority": 1,
+				"variants": 1,
+				"distribution": "/biomes/distributions.config:randomEncounter",
+
+				"type": "microdungeon",
+				"microdungeons": [ "fu_dae_microdungeons", "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "fulabs", "fubandits", "newhumanmicro", "newavianmicro", "fuhives", "furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter"]
+			}
+		}
+	],
+
+	[{
+		"op": "add",
+		"path": "/undergroundPlaceables/items/0/treasureBoxSets/-",
+		"value": "ffbasicChest"
+	},
+	{
+		"op": "add",
+		"path": "/undergroundPlaceables/items/0/treasureBoxSets/-",
+		"value": "ffbasicChest2"
+	},
+	{
+		"op": "replace",
+		"path": "/undergroundPlaceables/items/5/distribution",
+		"value": "/biomes/distributions.config:denseMedium"
+	},
+	{
+		"op": "add",
+		"path": "/undergroundPlaceables/items/-",
+		"value":
+		{
+			"mode" : "floor",
+			"priority" : 0,
+			"variants" : 1,
+			"distribution" : "/biomes/distributions.config:undergroundChests",
+
+			"type" : "treasureBox",
+			"treasureBoxSets" : [ "alienChest" ]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/undergroundPlaceables/items/-",
+		"value": {
+			"mode": "floor",
+			"priority": 1,
+			"variants": 1,
+			"distribution": "/biomes/distributions.config:ultraRare",
+
+			"type": "microdungeon",
+			"microdungeons": ["outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter", "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
+		}
+	}]
+]

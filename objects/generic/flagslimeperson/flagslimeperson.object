@@ -1,0 +1,55 @@
+{
+  "objectName" : "flagslimeperson",
+  "colonyTags" : ["slimeperson", "slimenpc", "slimenpchuman"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "teleporter",
+  "category" : "teleportMarker",
+  "price" : 70,
+  "twoHanded" : false,
+  "radioMessagesOnPickup" : [ "pickupflag" ],
+
+  "description" : "A flag made of slime.  Interact to set a name and add it to your teleporter's list of destinations.",
+  "shortdescription" : "Slime Flag",
+//  "learnBlueprintsOnPickup" : [ "flagslimeperson" ],
+  "race" : "slimeperson",
+
+  "slimepersonDescription" : "This'll be useful.  I better make sure it's linked to my teleporter.",
+  "apexDescription" : "A slime flag. I can use this as a waypoint for teleportation.",
+  "avianDescription" : "This slime flag can be bookmarked as a destination for my ship teleporter.",
+  "floranDescription" : "Slime flag makess good point to teleport back to ussing teleporter!",
+  "glitchDescription" : "Observant. A small locator module attached to this slime flag allows it to be bookmarked for teleportation.",
+  "humanDescription" : "This slime flag can be saved as a location for my teleporter. Then I can return to it at any time.",
+  "hylotlDescription" : "This slime flag can act as a way point, enabling me to return to this point using a teleporter.",
+  "novakidDescription" : "I can bookmark this slime flag for quick teleportin'.",
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/destinationonly.config",
+
+  "inventoryIcon" : "flagslimepersonicon.png",
+  "orientations" : [
+    {
+      "image" : "flagslimeperson.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+      "imagePosition" : [-17, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "flagslimeperson.png:<color>.<frame>",
+      "direction" : "right",
+      "imagePosition" : [1, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+
+  //"soundEffect" : "/sfx/objects/flag_flap_loop.ogg"
+}

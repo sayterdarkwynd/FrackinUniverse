@@ -1,82 +1,128 @@
 {
-  "animationCustom" : {
-    "animatedParts" : { "parts" : {
-      "grenadelauncher" : {
-        "properties" : {
-          "zLevel" : -1,
-          "centered" : true,
-          "offset" : [0, 0],
-          "transformationGroups" : ["muzzle"],
-          "firePosition" : [0, 0],
-          "image" : "/items/active/weapons/ranged/abilities/shockburstshot/grenadelauncher.png"
-        }
-      }
-    }},
-    "sounds" : {
-      "altFire" : [ "/sfx/weapons/teslagun.ogg" ]
-    },
-    "particleEmitters" : {
-      "altMuzzleFlash" : {
-        "active" : false,
-        "emissionRate" : 8,
-        "transformationGroups" : ["muzzle"],
-        "offsetRegion" : [-0.25, -0.5, -0.25, -0.5],
-        "particles" : [
-          { "particle" : "smallelectriccloud1", "offset" : [0.0, 0.0] },
-          { "particle" : "smallelectriccloud2", "offset" : [0.0, 0.0] },
-          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
-        ]
-      }
-    }
-  },
+	"animationCustom": {
+		"animatedParts": {
+			"parts": {
+				"grenadelauncher": {
+					"properties": {
+						"zLevel": -1,
+						"centered": true,
+						"offset": [0, 0],
+						"transformationGroups": ["muzzle"],
+						"firePosition": [0, 0],
+						"image": "/items/active/weapons/ranged/abilities/shockburstshot/grenadelauncher.png"
+					}
+				}
+			}
+		},
+		"sounds": {
+			"altFire": ["/sfx/weapons/teslagun.ogg"]
+		},
+		"particleEmitters": {
+			"altMuzzleFlash": {
+				"active": false,
+				"emissionRate": 8,
+				"transformationGroups": ["muzzle"],
+				"offsetRegion": [-0.25, -0.5, -0.25, -0.5],
+				"particles": [{
+						"particle": "smallelectriccloud1",
+						"offset": [0.0, 0.0]
+					},
+					{
+						"particle": "smallelectriccloud2",
+						"offset": [0.0, 0.0]
+					},
+					{
+						"particle": "rocketbarrelpuff",
+						"offset": [0.0, 0.0]
+					}
+				]
+			}
+		}
+	},
 
-  "ability" : {
-    "name" : "Shock Blast",
-    "type" : "shockburstshot",
-    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
-    "class" : "AltFireAttack",
-    
-    "elementalConfig" : {
-      "physical" : { "projectileType" : "gravblast" },
-      "fire" : { "projectileType" : "firecloudgrenade" },
-      "electric" : { "projectileType" : "shockburst" },
-      "ice" : { "projectileType" : "icecloudgrenade" },
-      "poison" : { "projectileType" : "poisoncloudgrenade" }
-    },
-    "elementalType" : "electric",
-    "projectileParameters" : {
-      "piercing" : true,
-      "speed" : 100
-    },
-    "projectileCount" : 1,
-    "inaccuracy" : 0,
-    "baseDamage" : 9.45,
-    "energyUsage" : 70,
-    "fireTime" : 2.0,
-    "fireType" : "auto",
+	"ability": {
+		"name": "Shock Blast",
+		"type": "shockburstshot",
+		"scripts": ["/items/active/weapons/ranged/abilities/altfire.lua"],
+		"class": "AltFireAttack",
 
-    "firePositionPart" : "grenadelauncher",
-    "hidePrimaryMuzzleFlash" : false,
+		"elementalConfig": {
+			"physical": {
+				"projectileType": "fubeamgunblob"
+			},
+			"silverweapon": {
+				"projectileType": "fubeamgunblob",
+				"projectileParameters": {
+					"damageKind": "silverweapon"
+				}
+			},
+			"fire": {
+				"projectileType": "firecloudgrenade"
+			},
+			"hellfire": {
+				"projectileType": "firecloudgrenade"
+			},
+			"electric": {
+				"projectileType": "shockburst"
+			},
+			"ice": {
+				"projectileType": "icecloudgrenade"
+			},
+			"hoarfrost": {
+				"projectileType": "icecloudgrenade"
+			},
+			"poison": {
+				"projectileType": "poisoncloudgrenade"
+			},
+			"bioweapon": {
+				"projectileType": "poisoncloudgrenade"
+			},
+			"shadow": {
+				"projectileType": "shadowcloudgrenade"
+			},
+			"radioactive": {
+				"projectileType": "radioactivecloudgrenade"
+			},
+			"cosmic": {
+				"projectileType": "gravblast"
+			},
+			"aether": {
+				"projectileType": "gravblast"
+			}
+		},
+		"elementalType": "electric",
+		"projectileParameters": {
+			"piercing": true
+		},
+		"projectileCount": 1,
+		"inaccuracy": 0,
+		"baseDamage": 9.45,
+		"energyUsage": 70,
+		"fireTime": 2.0,
+		"fireType": "auto",
 
-    "stances" : {
-      "fire" : {
-        "duration" : 0.15,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
+		"firePositionPart": "grenadelauncher",
+		"hidePrimaryMuzzleFlash": false,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "cooldown" : {
-        "duration" : 0.15,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
+		"stances": {
+			"fire": {
+				"duration": 0.15,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      }
-    }
-  }
+				"allowRotate": false,
+				"allowFlip": false
+			},
+			"cooldown": {
+				"duration": 0.15,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
+
+				"allowRotate": false,
+				"allowFlip": false
+			}
+		}
+	}
 }

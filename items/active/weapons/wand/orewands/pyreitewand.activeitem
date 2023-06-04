@@ -1,0 +1,148 @@
+{
+  "itemName" : "pyreitewand",
+  "level" : 6,
+  "price" : 960,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Sufficiently Advanced Technology.",
+  "shortdescription" : "Pyreite Wand",
+  "category" : "wand",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","wand","pyreite","upgradeableWeapon"],
+  "tooltipKind" : "staff",
+
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "pyreitewand.png",
+    "stone" : "/items/active/weapons/wand/generated/stone/pyreitewand.png",
+    "chargeEffect" : "/items/active/weapons/staff/generated/glow/fire.png"
+  },
+
+  "inventoryIcon" : "pyreitewand.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "baseDamageFactor" : 0.5,
+
+  "stances" : {
+    "idle" : {
+      "weaponOffset" : [0, 1.0],
+
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "chargerotate" : {
+      "weaponOffset" : [0, 1.5],
+
+      "duration" : 1.0,
+      "armRotation" : -110,
+      "weaponRotation" : 20,
+      "twoHanded" : false,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "chargedrotate" : {
+      "weaponOffset" : [0, 1.5],
+
+      "armRotation" : -110,
+      "weaponRotation" : 20,
+      "twoHanded" : false,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "dischargerotate" : {
+      "weaponOffset" : [0, 1.5],
+
+      "duration" : 0.5,
+      "armRotation" : -20,
+      "weaponRotation" : -70,
+      "twoHanded" : false,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "cooldownrotate" : {
+      "weaponOffset" : [0, 1.0],
+
+      "duration" : 0.5,
+      "armRotation" : -110,
+      "weaponRotation" : 20,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "elementalType" : "fire",
+
+  "primaryAbility" : {
+    "type" : "elementblast",
+    "name" : "Fire Blast",
+    "scripts" : ["/items/active/weapons/staff/abilities/aimedprojectile/aimedprojectile.lua"],
+    "class" : "AimedProjectile",
+
+    "energyCost" : 60,
+
+    "maxCastRange" : 25,
+
+    "projectileType" : "fireblast2",
+    "projectileParameters" : {
+      "baseDamage" : 8
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "weaponOffset" : [0,0.5],
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "charge" : {
+        "duration" : 1.1,
+        "armRotation" : -110,
+        "weaponRotation" : 20,
+        "twoHanded" : false,
+        "weaponOffset" : [0,0.5],
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "charged" : {
+        "armRotation" : -110,
+        "weaponRotation" : 20,
+        "twoHanded" : false,
+        "weaponOffset" : [0,0.5],
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "discharge" : {
+        "duration" : 0.5,
+        "armRotation" : -20,
+        "weaponRotation" : -70,
+        "twoHanded" : false,
+        "weaponOffset" : [0,0.5],
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.5,
+        "armRotation" : -110,
+        "weaponRotation" : 20,
+        "twoHanded" : false,
+        "weaponOffset" : [0,0.5],
+        "allowRotate" : true,
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,43 @@
+{
+  "itemName" : "titaniumhammer",
+  "price" : 500,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "An extremely durable titanium hammer.",
+  "shortdescription" : "Titanium Hammer",
+  "tooltipKind" : "sword2",
+  "category" : "hammer",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon"],
+
+  "inventoryIcon" : "titaniumhammer.png",
+  //"collectablesOnPickup" : { "fu_weaponhammer" : "titaniumhammer" },
+  "animation" : "/items/active/weapons/melee/hammer/hammer.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "titaniumhammer.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 1.2,
+    "baseDps" : 11.5
+  },
+
+  "palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
+
+  "altAbilityType" : "physicalshockwave",
+  "critChance" : 2,
+  "critBonus" : 4,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

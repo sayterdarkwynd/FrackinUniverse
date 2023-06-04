@@ -1,0 +1,50 @@
+{
+  "objectName" : "gooshoategg",
+  "colonyTags" : [],
+  "printable" : false,
+  "rarity" : "Rare",
+  "category" : "farmBeastEgg",
+  "price" : 160,
+
+  "description" : "Hatches into a vulnerable shoat lamb.",
+  "shortdescription" : "Shoat Egg",
+  "race" : "generic",
+
+  "apexDescription" : "The egg of a shoat. A mature one oozes out slime.",
+  "avianDescription" : "It's a shoat egg. They can be very disgusting.",
+  "floranDescription" : "Shoat egg! Floran lovesss to play with ssshoats!",
+  "glitchDescription" : "Curious. I wonder if I can stick my hand in it.",
+  "humanDescription" : "A big slimy egg! It'll hatch a shoat lamb soon!",
+  "hylotlDescription" : "A slimy egg that will create a shoat.",
+  "novakidDescription" : "A shoat egg. Wonder if slimes are similar to us?",
+  "slimepersonDescription" : "A shoat will hatch!",
+
+  "inventoryIcon" : "greenshoategg.png:idle.1",
+  "orientations" : [
+    {
+      "image" : "greenshoategg.png:idle.1",
+      "imagePosition" : [-7, -3],
+
+      "spaces" : [ [-1, 0], [-1, 1], [0, 0], [0, 1], [1, 0], [1, 1] ],
+      "anchors" : [ "bottom" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "animation" : "/objects/farmables/eggs/farmableegg.animation",
+  "animationPosition" : [-7, -3],
+  "animationParts" : {
+    "egg" : "greenshoategg.png"
+  },
+
+  "scripts" : ["/objects/farmables/eggs/farmableegg.lua"],
+  "scriptDelta" : 60,
+
+  "hatchTime" : 900,
+  "forceHatchTime" : 900,
+
+  "spawnMonster" : "gooshoatbaby",
+  "spawnOffset" : [0.5, 0.5]
+
+}

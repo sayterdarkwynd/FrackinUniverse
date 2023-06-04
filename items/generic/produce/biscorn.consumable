@@ -1,19 +1,34 @@
 {
-  "itemName" : "biscorn",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "biscornicon.png",
-  "description" : "Boosts energy and health.",
-  "shortdescription" : "Biscorn",
-    "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      "maxhealthboost1", "maxenergyboost1"
-    ] ]
+	"itemName": "biscorn",
+	"inventoryIcon": "biscornicon.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 5,
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+5 HP^reset;, ^cyan;+6 EP^reset;: 3m",
+	"shortdescription": "Biscorn",
+	"effects": [
+		[
+			{
+				"effect": "maxhealthboost1",
+				"duration": 180
+			},
+			{
+				"effect": "maxenergyboost1",
+				"duration": 180
+			}
+		]
+	],
+	"blockingEffects": [
+		"maxhealthboost2",
+		"maxhealthboost3",
+		"maxhealthboost4",
+		"maxhealthboost5",
+		"maxenergyboost2",
+		"maxenergyboost3",
+		"maxenergyboost4",
+		"maxenergyboost5",
+		"maxenergyboost6",
+		"maxenergyboost145"
+	]
 }

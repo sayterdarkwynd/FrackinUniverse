@@ -1,0 +1,56 @@
+{
+  "objectName" : "thelusianceilinglamp",
+  "colonyTags" : ["thelusian", "light"],
+  "rarity" : "common",
+  "category" : "light",
+  "lightColor" : [122, 255, 126],
+  "price" : 160,
+  "description" : "A ceiling light made from bioluminescent material.",
+  "shortdescription" : "Thelusian Ceiling Lamp",
+  "race" : "elduukhar",
+
+  "apexDescription" : "This light doesn't seem practical.",
+  "avianDescription" : "A pretty light.",
+  "floranDescription" : "Light isss bright, isss pretty.",
+  "glitchDescription" : "Happy. This light is beautiful.",
+  "humanDescription" : "A pretty light.",
+  "hylotlDescription" : "A pretty light, made for form more than function.",
+  "novakidDescription" : "A mighty fancy light.",
+
+  "inventoryIcon" : "thelusianceilinglampicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "thelusianceilinglamp.png:<color>.<frame>", "fullbright" : true }, { "image" : "thelusianceilinglamplit.png:<color>.<frame>" } ],
+      "imagePosition" : [-8, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "thelusianceilinglamp.png:<color>.<frame>", "fullbright" : true }, { "image" : "thelusianceilinglamplit.png:<color>.<frame>" } ],
+      "imagePosition" : [-8, 0],
+
+      "flipImages" : true,
+      "direction" : "left",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "thelusianceilinglamp.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

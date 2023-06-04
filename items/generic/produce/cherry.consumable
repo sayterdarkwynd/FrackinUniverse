@@ -1,0 +1,20 @@
+{
+  "itemName" : "cherry",
+  "inventoryIcon" : "cherry.png",
+  "category" : "food",
+  "price" : 3,
+  "rarity" : "Common",
+  "maxStack" : 100,
+  "foodValue" : 1,
+
+  "tooltipKind": "food",
+  "description" : "A fresh cherry, red and delicious! ^green;Type: Fruit^reset;",
+  "shortdescription" : "Cherry",
+  "effects" : [ [ "fruit_food" ] ],
+  "eventCategory" : "eventCrop",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [ "wellfed" ],
+  "learnBlueprintsOnPickup" : [ "cherryschnapps", "cherrycrumble", "cherrymash", "cherryjam", "cherrypie", "cherryjuice" ]
+}

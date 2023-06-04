@@ -1,0 +1,33 @@
+{
+  "projectileName" : "energyburstexplosionweather",
+  "image" : "energyburstexplosionweather.png",
+  "animationCycle" : 0.3,
+  "level" : 1,
+  "frameNumber" : 3,
+  "speed" : 0,
+  "fallSpeed" : 0,
+  "animationLoops" : true,
+  "fullbright" : true,
+  "piercing" : true,
+  "flippable" : true,
+  "pointLight" : true,
+  "lightColor" : [25,100,155],
+  "universalDamage" : true,
+  "timeToLive" : 8,
+
+  "emitters" : [ ],
+  "statusEffects" : [ "electrified" ],
+  "damagePoly" : [ [-36, 0], [-24, -24], [0, -36], [24, -24], [36, 0], [24, 24], [0, 36], [-24, 24] ],
+  "damageKind" : "electric",
+  "damageTeam" : { "type" : "indiscriminate" },
+  "damageType" : "ignoresDef",
+
+  "periodicActions" : [
+    {
+      "time" : 0.15,
+      "loop" : true,
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
+    }
+  ]
+}

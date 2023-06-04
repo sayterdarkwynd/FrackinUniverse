@@ -1,0 +1,91 @@
+{
+  "itemName" : "skathtier3spear",
+  "price" : 1250,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "A powerful Plasmablade forged by the Skath.",
+  "shortdescription" : "Skath Plasmaspear",
+  "tooltipKind" : "sword2",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear","upgradeableWeapon"],
+
+  "inventoryIcon" : "skathtier3spearicon.png",
+
+  "animation" : "/items/active/weapons/protectorate/protectoratebroadsword/protectoratebroadsword.animation",
+  "animationParts" : {
+    "sword" : "skathtier3spear.png",
+    "swordfullbright" : "skathtier3spearfullbright.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/protectorate/protectoratebroadsword/protectoratebroadsword.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 1,
+    "baseDps" : 9,
+	"stances" : {
+      "idle" : {
+        "allowRotate" : true
+      }},
+    "animKeyPrefix" : "inactive"
+  },
+
+  "inactiveBaseDps" : 8,
+  "activeBaseDps" : 10,
+
+  "altAbility" : {
+    "name" : "Empowerment",
+    "type" : "empowerment",
+    "scripts" : ["/items/active/weapons/protectorate/protectoratebroadsword/empowerment.lua"],
+    "class" : "Empowerment",
+
+    "energyPerSecond" : 8,
+
+    "projectileOffset" : [1, 0],
+    "projectileType" : "energytravelingswoosh",
+    "baseDamage" : 8,
+
+    "cooldownTime" : 1.0,
+
+    "stances" : {
+      "empower" : {
+        "durationBefore" : 0.2,
+        "durationAfter" : 0.5,
+        "armRotation" : 90,
+        "weaponRotation" : -90,
+        "twoHanded" : true,
+
+        "weaponOffset" : [0.5, -0.375],
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "windup" : {
+        "duration" : 0.25,
+        "armRotation" : 70,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  },
+  "critChance" : 2,
+  "critBonus" : 8,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

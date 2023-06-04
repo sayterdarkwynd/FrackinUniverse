@@ -1,0 +1,51 @@
+{
+	"objectName": "fu_byosstatreset",
+	"colonyTags": ["science"],
+	"printable": false,
+	"rarity": "Common",
+	"category": "other",
+	"description": "^red;EMERGENCY USE ONLY!^reset;\nRemove all objects from ship, then place this and break it to reset ship stats.",
+	"shortdescription": "FUBYOS Ship Stat Resetter",
+	"race": "generic",
+	"lightColor": [99, 132, 153],
+
+	"inventoryIcon": "fu_sciencefuelhatchicon.png",
+	"orientations": [{
+		"imageLayers": [{
+			"image": "fu_sciencefuelhatch.png:<color>.<frame>",
+			"fullbright": true
+		}, {
+			"image": "fu_sciencefuelhatchlit.png:<color>.<frame>"
+		}],
+
+		"imagePosition": [-8, -16],
+		"frames": 4,
+		"animationCycle": 0.7,
+
+		"spaceScan": 0.1,
+		"anchors": ["background"]
+	}],
+
+	"hasWindowIcon": false,
+
+	"itemTags": [],
+
+	"scripts": ["/objects/ship/fu_shipstatreset.lua"],
+	"scriptDelta": 30,
+	"broadcastArea": [-5, -5, 5, 5],
+
+	"stats": {
+		"shipSpeed": 0,
+		"shipMass": 0,
+		"fuelEfficiency" : 0.0,
+		"maxFuel" : 0,
+		"crewSize" : 0
+	},
+	"capabilities": [
+		"systemTravel",
+		"planetTravel"
+	],
+	"maxAmountGroups": {
+		"ftlDrive": 0
+	}
+}

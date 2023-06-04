@@ -1,0 +1,91 @@
+{
+  "itemName" : "skathtier3minigun",
+  "price" : 1080,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "'A high tech minigun that fires plasma rounds.'",
+  "shortdescription" : "Skath Plasma Minigun",
+  "tooltipKind" : "gun",
+  "category" : "Minigun",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","assaultrifle","upgradeableWeapon"],
+  "level" : 6,
+
+  "inventoryIcon" : [
+    { "image" : "skathtier3minigun.png" }
+  ],
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "skathtier3minigun.png",
+    "barrel" : "",
+	"muzzleFlash" : "plasmamuzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : ["/sfx/gun/plasma_ar1.ogg"]
+    },
+    "lights" : {
+      "muzzleFlash" : {
+        "color" : [0, 142, 255]
+      }
+    }
+  },
+
+		"baseOffset": [0.700, -0.725],
+		"muzzleOffset": [2.6, -0.100],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.075,
+    "baseDps" : 5.5,
+    "energyUsage" : 30,
+    "projectileCount" : 1,
+    "inaccuracy" : 0.02,
+    "fireType" : "auto",
+
+    "projectileType" : "skathplasma1",
+    "projectileParameters" : {
+      "knockback" : 6
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.01,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+	 }
+  },
+  "altAbilityType": "explosiveburst",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

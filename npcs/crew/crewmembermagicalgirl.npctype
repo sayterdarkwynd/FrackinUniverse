@@ -1,0 +1,100 @@
+{
+  "type" : "crewmembermagicalgirl",
+  "baseType" : "fu_crewmember",
+
+  "scriptConfig" : {
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "cutehead",
+        "chest" : "cutechest",
+        "legs" : "cutelegs",
+        "cosmeticback" : "cutewings"
+      },
+
+      "role" : {
+        "type" : "soldier",
+        "name" : "Magical Girl",
+        "field" : "Magical Girl",
+        "uniformColorIndex" : 1,
+
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "shadowimmunity",
+            "duration" : 300
+          },
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "shadowblock",
+            "duration" : 300
+          },
+	        {
+            "type": "ShipUpgradeBenefit",
+            "property": "fuelEfficiency",
+            "value": 0.05
+          }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "My powers of love will protect you from the powers of shadow."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran'ss power of love will protect you from the powerss of shadow!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Valiant. My powers of love will protect you from the powers of shadow."
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Darkness be gone!",
+              "Let me help you out!",
+              "Looks like you could use some love!",
+              "I can help!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran knowss only love!",
+              "Floran can banish this evil!",
+              "Floran hasss the power of kindnesss!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Valiant. Darkness be gone!",
+              "Caring. Looks like you could use some love!",
+              "Brave. Let me help you out!"
+            ]
+          }
+        }
+	  }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "cutestaff" ],
+            "sheathedprimary" : [ "cuterapier" ],
+            "sheathedalt" : [ "cuteshield" ]
+          }
+        ] ]
+    ]
+  }
+}

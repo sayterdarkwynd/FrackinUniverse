@@ -1,0 +1,33 @@
+{
+	"id" : "scienceoutpost_floranShop",
+	"prerequisites" : [ "create_matterassembler" ],
+	"title" : "Ssad losst thingss.",
+	"text" : "Floran hass losst fatherss ^orange;Greenfinger Medal^reset;. Iss sspecial becausse father hunted besst in tribe and killed many Hylotl in war. Perhapss you iss find in ^green;Verdant Ruins^reset;?",
+	"completionText" : "Oooooh! Floran thankss! Iss family heirloom! Floran givess friend reward! I ssteal thesse from Kevin when him not lookss because Kevin sstealss my pantss every week.",
+	"moneyRange" : [0, 0],
+	"rewards" : [ [ [ "murdermask", 1 ] ] ],
+	"speaker" : "questGiver",
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
+
+		"requireTurnIn" : true,
+
+		"turnInDescription" : "Bring a ^orange;Greenfinger Medal^reset; to the ^green;Floran Meat Shop^reset; at the ^orange;Science Outpost^reset;",
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "greenfinger_trophy",
+				"count" : 1,
+				"consume" : true
+			}
+		]
+	}
+}

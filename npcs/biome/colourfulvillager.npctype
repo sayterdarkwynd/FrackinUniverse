@@ -1,0 +1,61 @@
+{
+  "type" : "colourfulvillager",
+  "baseType" : "villager",
+
+  "scriptConfig" : {
+    "questGenerator" : {
+      "pools" : ["common"]
+    },
+
+    "dialog" : {
+      "converse" : {
+        "default" : {
+          "default" : [
+            "What... have I become?"
+          ]
+        },
+        "apex" : {
+          "default" : [
+            "What... have I become?",
+            "My fur, it's... colourful.",
+            "I remember... bananas.",
+            "My dreams are haunted by a giant ape. What does this mean?",
+            "I fell asleep at my desk and when I awoke, I'd written the word 'Miniknog' over and over.",
+            "What colourful fur I have! So strange.",
+            "I feel like everything has changed overnight."
+          ],
+          "apex" : [
+            "You... your face is familiar, somehow.",
+            "Were we once alike, Ape?",
+            "Tell me what you know of the name Greenfinger.",
+            "Why do you seem so familiar? It is like... no, I can't think.",
+            "Have we met before, Ape?",
+            "Seeing you makes me feel an alarming nostalgia. Why?",
+            "Outside I am colourful, inside I am grey.",
+            "I had... a family, once. They were like you."
+          ]
+        }
+      }
+    }
+  },
+
+  "matchColorIndices" : true,
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "chest" : [
+              { "name" : "colourfulchest", "parameters" : { "colorIndex" : [1, 2, 3] } }
+            ],
+            "legs" : [
+              { "name" : "colourfullegs", "parameters" : { "colorIndex" : [1, 2, 3] } }
+            ],
+            "head" : [
+              { "name" : "colourfulhead", "parameters" : { "colorIndex" : [1, 2, 3] } },
+              { "name" : "colourful2head", "parameters" : { "colorIndex" : [1, 2, 3] } }
+            ]
+          }
+        ] ]
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "objectName" : "densealloylamp",
+  "colonyTags" : ["densealloy", "light"],
+  "rarity" : "rare",
+  "category" : "light",
+  "lightColor" : [176, 232, 255],
+  "price" : 300,
+  "description" : "A standing lamp made from dense alloy.",
+  "shortdescription" : "Dense Alloy Lamp",
+  "race" : "generic",
+
+  "apexDescription" : "An extremely heavy lamp.",
+  "avianDescription" : "I don't think I could possibly lift this.",
+  "floranDescription" : "Floran ssstrong! Floran will lift heavy thing.",
+  "glitchDescription" : "Frustrated. Even I cannot lift this.",
+  "humanDescription" : "This lamp is far too heavy for me to move.",
+  "hylotlDescription" : "This is far too heavy for my tastes.",
+  "novakidDescription" : "This is mighty heavy. It'll be a doozy of a job to lift.",
+
+  "inventoryIcon" : "densealloylampicon.png",
+  "orientations" : [
+    {
+      "image" : "densealloylamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "densealloylamp.png",
+        "fg" : "densealloylamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "densealloylamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "densealloylamp.png",
+        "fg" : "densealloylamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "densealloylamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : true,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

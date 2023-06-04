@@ -1,0 +1,106 @@
+{
+  "type" : "nightarblacksmith",
+  "baseType" : "merchanttenant",
+
+  "damageTeam" : 1,
+
+  "disableWornArmor" : true,
+
+  "scripts" : [
+    "/npcs/bmain.lua"
+  ],
+  "initialScriptDelta" : 5,
+  "scriptConfig" : {
+    "merchant" : {
+      "waitTime" : 180,
+      "storeRadius" : 8,
+      "categories" : {
+        "default" : ["nightarblacksmith" ],
+        "nightar" : ["nightarblacksmith" ]
+      },
+      "buyFactorRange" : [ 10.0, 10.0 ],
+      "sellFactorRange" : [ 0.2, 0.2 ],
+      "numItems" : 14,
+      "paneLayoutOverride" : {
+        "windowtitle" : {
+          "title" : "  Nightar Blacksmith",
+          "subtitle" : "  Lethally crafted penumbrite."
+        }
+      }
+    },
+
+    "questGenerator" : {
+      "pools" : ["common", "tenant", "shady"]
+    },
+
+    "dialog" : {
+      "merchant" : {
+        "start" : {
+          "nightar" : {
+            "default" : [
+              "Buy a sword, save your life.",
+              "The finest weapons here.",
+              "Blades, blessed by the Matriarch!",
+              "My skill is supreme. Puruse my wares."
+            ]
+          }
+        },
+        "end" : {
+          "nightar" : {
+            "default" : [
+              "You will come again, yes?",
+              "Slay something for me.",
+              "Tarnish not my masterwork in your battles."
+            ]
+          }
+        },
+        "follow" : {
+          "nightar" : {
+            "default" : [
+              "Follow if you wish to purchase.",
+              "My creations are in my shop."
+            ]
+          }
+        },
+        "welcome" : {
+          "nightar" : {
+            "default" : [
+              "What wares seeketh thee?",
+              "My craftsmanship is sublime.",
+              "Make your purchase."
+            ]
+          }
+        },
+        "tout" : "/dialog/merchant.config:tout"
+      },
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/merchant.config:tagCriteria",
+          "enclosedArea" : "/dialog/merchant.config:enclosedArea",
+          "otherDeed" : "/dialog/merchant.config:otherDeed",
+          "severe" : "/dialog/merchant.config:severe",
+          "final" : "/dialog/merchant.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/merchant.config:beacon",
+          "rent" : "/dialog/merchant.config:rent"
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "chest" : [
+              { "name" : "craftsmenchest", "parameters" : { "colorIndex" : 1 } }
+            ],
+            "legs" : [
+              { "name" : "craftsmenlegs", "parameters" : { "colorIndex" : 1 } }
+            ]
+          }
+      ]]
+    ]
+  }
+}

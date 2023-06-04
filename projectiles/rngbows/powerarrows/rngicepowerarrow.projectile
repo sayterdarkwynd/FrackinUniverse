@@ -1,0 +1,54 @@
+{
+  "projectileName" : "rngicepowerarrow",
+  "physics" : "nebsrngarrow",
+  "bounces" : 0,
+  "image" : "rngicepowerarrow.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "emitters" : [ "icetrailfast", "iceplasma"  ],
+  "power" : 20,
+  "speed" : 110,
+  "knockback" : 10,
+  "piercing" : false,
+  "knockbackDirectional" : true,
+  "timeToLive" : 30,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+    },
+	{
+      "action" : "projectile",
+      "type" : "rngicepowerarrowsticking",
+      "inheritDamageFactor" : 0.3,
+      "inheritSpeedFactor" : 0.6,
+      "angleAdjust" : 0
+    }
+  ],
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/ropehook_impact1.ogg",
+        "/sfx/projectiles/ropehook_impact2.ogg",
+        "/sfx/projectiles/ropehook_impact3.ogg",
+        "/sfx/projectiles/ropehook_impact4.ogg",
+        "/sfx/projectiles/ropehook_impact5.ogg",
+        "/sfx/projectiles/ropehook_impact6.ogg",
+        "/sfx/projectiles/ropehook_impact7.ogg",
+        "/sfx/projectiles/ropehook_impact8.ogg",
+        "/sfx/projectiles/ropehook_impact9.ogg",
+        "/sfx/projectiles/ropehook_impact10.ogg",
+        "/sfx/projectiles/ropehook_impact11.ogg",
+        "/sfx/projectiles/ropehook_impact12.ogg"
+      ]
+    }
+  ],
+  "statusEffects" : [
+    "frostslow"
+  ],
+  "damageKind" : "icebow",
+  "damagePoly" : [ [-5, 2.5], [12, 0], [-5, -2.5], [-8, 0] ],
+  "hydrophobic" : false
+}

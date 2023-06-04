@@ -1,0 +1,70 @@
+{
+  "type" : "crewmembercollector",
+  "baseType" : "fu_crewmember",
+
+  "scriptConfig" : {
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "fancaphead",
+        "chest" : "sciencefuchestnpc",
+        "legs" : "sciencefulegsnpc"
+      },
+
+      "role" : {
+        "type" : "soldier",
+        "name" : "Creature Hunter",
+        "field" : "Collector",
+        "uniformColorIndex" : 4,
+
+        "benefits" : [
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "fuelEfficiency",
+            "value" : 0.02
+          },
+          {
+            "type" : "EphemeralEffect",
+            "effect" : "thornsstranglevine",
+            "duration" : 120
+          },
+          {
+            "type" : "Regeneration",
+            "value" : 1
+          }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'll give you a 2% fuel cost reduction whenever we're on the ship!"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "If we make eye contact, we must do battle!",
+              "What starter FrakinMon did you pick?",
+              "I shall capture them all!",
+              "I'll add you to my collection, you putrid aberration!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "capturegun" ]
+          }
+        ] ]
+    ]
+  }
+}

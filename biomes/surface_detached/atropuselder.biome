@@ -1,0 +1,457 @@
+{
+  "name" : "atropuselder",
+  "friendlyName" : "Eldritch Field",
+
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 3,
+        "pool" : [
+          [ 0.111, "starspawn" ],
+          [ 0.111, "deepone" ],
+          [ 0.111, "doomspirit" ],
+          [ 0.111, "fleshreaper" ],
+          [ 0.111, "ravager" ],
+          [ 0.111, "fleshleech" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      },
+      {
+        "select" : 2,
+        "pool" : [
+          [ 0.4, "elderbeetle" ],
+          [ 0.3, "glowingball2critter" ],
+          [ 0.4, "fubat" ],
+          [ 0.3, "wurmcritter" ]  ,
+          [ 0.01, "bee_xenodaemonae" ]
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "statusSettings" : {
+        "stats" : {
+          "insanityImmunity" : {
+            "baseValue" : 1.0
+          },
+          "poisonStatusImmunity" : {
+            "baseValue" : 1.0
+          },
+          "pusImmunity" : {
+            "baseValue" : 1.0
+          },
+          "biooozeImmunity" : {
+            "baseValue" : 1.0
+          },
+            "tarImmunity" : {
+              "baseValue" : 1.0
+            },
+            "slimestickImmunity" : {
+              "baseValue" : 1.0
+            },
+            "slimefrictionImmunity" : {
+              "baseValue" : 1.0
+            }
+        }
+      }
+    }
+  },
+  "parallax" : "/parallax/surface/lightless.parallax",
+
+    "ambientNoises" : {
+      "day" : {
+        "tracks" : [ "/sfx/ambiance/atropusambiance2.ogg", "/sfx/ambiance/atropusambiance5.ogg", "/sfx/ambiance/atropusambiance6.ogg" ]
+      },
+      "night" : {
+        "tracks" : [ "/sfx/ambiance/atropusambiance.ogg", "/sfx/ambiance/atropusambiance2.ogg", "/sfx/ambiance/atropusambiance4.ogg" ]
+      }
+    },
+
+    "musicTrack" : {
+      "day" : {
+        "tracks" : [ "/music/atropusambiance1a.ogg", "/music/atropusambiance2a.ogg" ]
+      },
+      "night" : {
+        "tracks" : [ "/music/atropusambiance3a.ogg", "/music/atropusambiance4a.ogg" ]
+      }
+    },
+  "hueShiftOptions" : [-20, -10, 0, 10, 20],
+    "mainBlock" : "elderstone",
+    "subBlocks" : [ "elderstone2", "rottingflesh", "hellstone" ],
+    "ores" : "ff_elderOres",
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "blackslimegrass" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "wildalgaeseed" ],
+              [0.35, "wildtoxictopseed" ],
+              [0.35, "wildoonfortaseed" ],
+              [0.35, "wilddeathblossomseed" ],
+              [0.35, "wildvashtaplantseed" ],
+              [0.35, "wildalgaeseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+        "pool" : [
+              [0.35, "elderidol" ],
+              [0.35, "elderstatue" ],
+              [0.35, "mound3" ],
+              [0.35, "mound4" ],
+              [0.35, "monolith1" ],
+              [0.35, "monolith2" ],
+              [0.35, "monolith3" ],
+              [0.35, "monolith4" ],
+              [0.35, "plynth1" ],
+              [0.35, "plynth2" ]
+              ],
+              "parameters" : {  }
+            }
+          ]
+        },
+
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "ffelderChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:mainBiomeRareMicrodungeon",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "fuelders" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 0,
+          "treeStemHueShiftMax" : 15,
+          "treeStemList" : [ "energyorbstem" ],
+          "treeFoliageList" : [ "energyorbfoliage" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 180,
+          "treeStemHueShiftMax" : 20,
+          "treeStemList" : [ "edelwood" ],
+          "treeFoliageList" : [ "edelwoodleaves", "edelwoodleaves2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ], [0.01, "elderaltar" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDist",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
+        },
+
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "terrainfeatures" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "testbush2",
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "eyebush",
+              "baseHueShiftMax" : 35,
+              "modHueShiftMax" : 35
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "grass",
+          "grasses" : [ "eldergrass" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "grass",
+          "grasses" : [ "fleshbone" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.50, "wildtentacleplant" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        }
+    ]
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "blackslimegrass" ],
+    "grassModDensity" : 0.5,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "ffelderChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ], [0.01, "elderaltar" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 0,
+        "treeStemHueShiftMax" : 10,
+        "treeStemList" : [ "hivevine" ],
+        "treeFoliageList" : [ "" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "grass",
+        "grasses" : [ "eldergrass" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "grass",
+        "grasses" : [ "fleshbone" ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "grass",
+        "grasses" : [ "ceilingfleshbone" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "eyebush",
+            "baseHueShiftMax" : 35,
+            "modHueShiftMax" : 35
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "ceilingeye",
+            "baseHueShiftMax" : 35,
+            "modHueShiftMax" : 35
+          }
+        ]
+      }
+    ]
+  }
+}
+
+
+
+
+
+

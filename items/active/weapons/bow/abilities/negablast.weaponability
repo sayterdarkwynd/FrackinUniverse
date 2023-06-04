@@ -1,0 +1,172 @@
+{
+  "ability" : {
+    "type" : "negablast",
+    "class" : "ZenShot",
+    "name" : "Negablast",
+    "scripts" : ["/items/active/weapons/bow/abilities/negablast.lua"],
+
+    "walkWhileFiring" : false,
+
+    "fireOffset" : [1.75, 0],
+
+    "energyPerShot" : 100,
+
+    "cooldownTime" : 0.55,
+
+    "drawFrameSelector" : "bowImageSelectorNoPower",
+    "drawPowerMultiplier" : "normalizedDrawTimeMultiplier",
+    "drawSpeedMultiplier" : "normalizedDrawTimeMultiplier",
+
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+
+    "projectileType" : "fuplasmashot",
+    "projectileParameters" : {
+      "speed" : 75,
+      "power" : 8,
+      "damageSourceKind": "cosmic",
+	   "actionOnReap" : [
+		{
+		  "action" : "projectile",
+		  "type" : "chargedcosmicarrow",
+		  "angleAdjust" : -50,
+		  "inheritDamageFactor" : 0.2,
+		  "inheritSpeedFactor" : 1
+		},
+		{
+		  "action" : "projectile",
+		  "type" : "chargedcosmicarrow",
+		  "angleAdjust" : -25,
+		  "inheritDamageFactor" : 0.2,
+		  "inheritSpeedFactor" : 1
+		},
+		{
+		  "action" : "projectile",
+		  "type" : "chargedcosmicarrow",
+		  "angleAdjust" : 0,
+		  "inheritDamageFactor" : 0.2,
+		  "inheritSpeedFactor" : 1
+		},
+		{
+		  "action" : "projectile",
+		  "type" : "chargedcosmicarrow",
+		  "angleAdjust" : 25,
+		  "inheritDamageFactor" : 0.2,
+		  "inheritSpeedFactor" : 1
+		},
+		{
+		  "action" : "projectile",
+		  "type" : "chargedcosmicarrow",
+		  "angleAdjust" : 50,
+		  "inheritDamageFactor" : 0.2,
+		  "inheritSpeedFactor" : 1
+		},
+		    {
+		      "action" : "loop",
+		      "count" : 3,
+		      "body" : [
+			{
+			  "action" : "option",
+			  "options" : [
+			    {
+			      "action" : "particle",
+			      "specification" : {
+				"animation" : "/animations/coldbreath/coldbreath.animation",
+				"size" : 0.2,
+				"initial" : "drift",
+				"rotation" : 0.14,
+				"timeToLive" : 0.2
+			      }
+			    }
+			  ]
+			},
+			{
+			  "action" : "spark"
+			}
+		      ]
+		    },
+		    {
+		      "action" : "loop",
+		      "count" : 7,
+		      "body" : [
+			{
+			  "action" : "option",
+			  "options" : [
+			    {
+			      "action" : "particle",
+			      "specification" : {
+				"animation" : "/animations/plasmapoof/plasmapoof.animation",
+				"size" : 0.1,
+				"initial" : "drift",
+				"rotation" : 0.14,
+				"timeToLive" : 0.3
+			      }
+			    }
+			  ]
+			}
+		      ]
+		    },
+		    {
+		      "action" : "loop",
+		      "count" : 7,
+		      "body" : [
+			{
+			  "action" : "option",
+			  "options" : [
+			    {
+			      "action" : "particle",
+			      "specification" : {
+				"animation" : "/animations/coldbreath/coldbreath.animation",
+				"size" : 0.2,
+				"rotation" : 0.14,
+				"timeToLive" : 5
+			      }
+			    }
+			  ]
+			}
+		      ]
+		    },
+		    {
+		      "action" : "projectile",
+		      "inheritDamageFactor" : 0,
+		      "type" : "zapsplosion"
+		    },
+		    {
+		      "action" : "sound",
+		      "options" : [ "/sfx/gun/grenadeblast1.ogg", "/sfx/gun/grenadeblast2.ogg", "/sfx/gun/grenadeblast3.ogg" ]
+		    }
+	   ]
+
+    },
+
+    "splitDelay" : 1.0,
+    "splitAngle" : 10,
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.5,
+        "armRotation" : -30,
+        "weaponRotation" : 0,
+        "allowRotate" : true,
+        "allowFlip" : true,
+        "twoHanded" : true
+      },
+      "draw" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "allowRotate" : true,
+        "allowFlip" : true,
+        "twoHanded" : true
+      },
+      "fire" : {
+        "duration" : 0.3,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "allowRotate" : false,
+        "allowFlip" : true,
+        "twoHanded" : true,
+
+        "frontArmFrame" : "idle.3"
+      }
+    }
+  }
+}

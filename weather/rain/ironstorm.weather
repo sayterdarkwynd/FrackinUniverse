@@ -1,0 +1,109 @@
+{
+  "name" : "ironstorm",
+  "icon" : "/interface/cockpit/weather/firestorm.png",
+
+  "particles" : [
+    {
+      "density" : 0.07,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/ironrain/rain1.png",
+        "velocity" : [0, -35.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 100,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/ironrain/splash1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.035,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/ironrain/rain1.png",
+        "velocity" : [0, -25.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 100,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/ironrain/splash1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.035,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/ironrain/rain2.png",
+        "velocity" : [0, -25.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 100,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/ironrain/splash1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.035,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/ironrain/rain3.png",
+        "velocity" : [0, -25.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 100,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/ironrain/splash1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    }
+  ],
+
+  "projectiles" : [
+    {
+      "projectile" : "ironbubblestorm",
+      "parameters" : {
+        "power" : 1
+      },
+      "velocity" : [30, -30],
+      "ratePerX" : 0.03,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 0.15
+    },
+    {
+      "projectile" : "ironrain",
+      "parameters" : {
+        "power" : 3
+      },
+      "velocity" : [0, -30],
+      "ratePerX" : 0.05,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 0.23
+    }
+  ],
+
+  "duration" : [120, 800],
+  "lightningFrequency" : 2,
+  "maximumWind" : 45.0,
+  "weatherNoises" : [ "/sfx/weather/Downpour.ogg" ]
+}

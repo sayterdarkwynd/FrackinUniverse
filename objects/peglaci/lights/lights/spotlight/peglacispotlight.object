@@ -1,0 +1,69 @@
+{
+  "objectName" : "peglacispotlight",
+  "colonyTags" : [ "peglaci", "peglacivillage", "light" ],
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 170,
+  "printable" : true,
+
+  "description" : "A fixed light device, to highlight anything on the wall over it.",
+  "shortdescription" : "Alloy Spotlight",
+  "race" : "peglaci",
+
+  "apexDescription" : "This device uses a glowing crystal to highlight something over it.",
+  "avianDescription" : "This device uses a glowing crystal to highlight something over it.",
+  "floranDescription" : "A shinny sstone to show thingss.",
+  "glitchDescription" : "Interested. The cold light from the glowing crystal could be usefull to light paintings.",
+  "humanDescription" : "This device uses a glowing crystal to highlight something over it.",
+  "hylotlDescription" : "This device would be useful for a museum.",
+  "novakidDescription" : "Why someone may want to stare at a wall?",
+  "fupeglaciDescription" : "We love to decorate our walls with words and geometry. This device help us to appreciate our decorations even more.",
+
+  "statusEffects" : [ ],
+
+  "lightColor" : [100, 200, 255],
+  "flickerPeriod" : 0.5,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+  "pointLight" : true,
+  "pointBeam" : 1,
+  "beamAmbience" : 0.4,
+
+  "inventoryIcon" : "peglacispotlighticon.png",
+  "orientations" : [
+    {
+      "dualImage" : "peglacispotlight.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+
+      "lightPosition" : [1, 1],
+      "beamAngle" : 90
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/oillantern.ogg",
+
+  "animation" : "peglacispotlight.animation",
+  "animationParts" : {
+    "bg" : "peglacispotlight.png",
+    "fg" : "peglacispotlightlit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/oillantern_on.ogg" ],
+      "off" : [ "/sfx/objects/oillantern_off.ogg" ]
+    }
+  },
+  "animationPosition" : [-8, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

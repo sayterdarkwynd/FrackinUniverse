@@ -1,0 +1,93 @@
+{
+  "projectileName" : "shadowstickyspikes",
+  "physics" : "wallsticky",
+  "timeToLive" : 5,
+  "image" : "shadowspikes.png",
+  "animationCycle" : 0.30,
+  "lightColor" : [0, 0, 0],
+  "frameNumber" : 4,
+  "windupFrames" : 6,
+  "periodicActions" : [
+    {
+      "time" : 0.3,
+      "action" : "loop",
+      "count" : 2,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/shadowsmoke/shadowsmoke.animation",
+            "initialVelocity" : [0.0, 7.0],
+            "finalVelocity" : [0.0, 3.0],
+            "approach" : [0.3, 60],
+            "timeToLive" : 0.7,
+            "layer" : "back",
+            "size" : 0.8,
+            "collidesForeground" : true,
+            "variance" : {
+            "position" : [0.5, 0.5],
+            "size" : 0.2,
+            "initialVelocity" : [5, 3],
+            "finalVelocity" : [0, 0],
+            "rotation" : 180,
+            "angularVelocity" : 180
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/shadowsmoke/shadowsmoke.animation",
+            "initialVelocity" : [0.0, 7.0],
+            "finalVelocity" : [0.0, 3.0],
+            "approach" : [0.3, 60],
+            "timeToLive" : 0.5,
+            "layer" : "middle",
+            "size" : 0.8,
+            "collidesForeground" : true,
+            "variance" : {
+            "position" : [0.5, 0.5],
+            "size" : 0.2,
+            "initialVelocity" : [5, 3],
+            "finalVelocity" : [0, 0],
+            "rotation" : 180,
+            "angularVelocity" : 180
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "loop",
+      "count" : 4,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "shadowrockshard"
+        }
+      ]
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/elementcloud_break2.ogg" ]
+    }
+  ],
+  "speed" : 0,
+  "power" : 30,
+  "damageKind" : "shadowbarrier",
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "damageRepeatTimeout" : 0.5,
+  "statusEffects" : [ "shadowgasfx" ],
+
+  "fullbright" : true,
+  "emitters" : [ "shadowsmoke2" ],
+
+  "bounces" : -1,
+  "piercing" : true,
+
+  "persistentAudio" : "/sfx/objects/torch.ogg"
+}

@@ -1,0 +1,47 @@
+{
+  "itemName" : "theluslongsword",
+  "price" : 200,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "A lethal edged weapon of the Thelusians.
+^cyan;Counts as Hunting weapon^reset;",
+  "shortdescription" : "Thelusian Longsword",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","longsword", "upgradeableWeapon","thelusian"],
+  "inventoryIcon" : "theluslongsword.png",
+
+  "animation" : "combolongsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "theluslongsword.png"
+  },
+  "animationCustom" : {
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.91,
+    "baseDps" : 6.6,
+    "damageConfig" : {
+      "damageSourceKind" : "bow"
+    }
+  },
+
+  "critChance" : 0.8,
+  "critBonus" : 11,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

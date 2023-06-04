@@ -1,0 +1,36 @@
+{
+  "itemName" : "obsidianmace",
+  "price" : 200,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Specially formed with Pharitu methods.",
+  "shortdescription" : "Obsidian Mace",
+  "tooltipKind" : "hammer",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "obsidianmace.png",
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "obsidianmace.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1,
+    "baseDps":7.22
+  },
+  "critChance" : 1,
+  "critBonus" : 2,
+  "stunChance" : 40,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

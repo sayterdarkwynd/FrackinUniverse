@@ -1,0 +1,34 @@
+{
+  "name" : "fumeleeStab",
+  "preconditions" : [
+    ["Ability", "StaticAbility"]
+  ],
+  "postconditions" : [
+    ["!Ability", "StaticAbility"],
+    ["Ability", "MovingAbility"]
+  ],
+  "statemodifiers" : [
+    ["Boss", 0, 0, "GuidedPosition"],
+    ["Boss", 1, 0, "GuidedPosition"],
+    ["Boss", 2, 0, "GuidedPosition"],
+    ["Boss", 3, 0, "GuidedPosition"],
+    ["Boss", 4, 0, "GuidedPosition"],
+    ["Boss", 5, 0, "GuidedPosition"],
+    ["Boss", 6, 0, "GuidedPosition"],
+    ["Boss", 7, 0, "GuidedPosition"],
+    ["WeaponEquipped"],
+    ["Ability", "CloseRange"]
+  ],
+  "objectives" : [
+    ["Ability", "MovingAbility"],
+    ["Ability", "CloseRange"]
+  ],
+
+  "sequenceActions" : [
+    {
+      "name" : "guardian-meleestab",
+      "parameters" : {
+      }
+    }
+  ]
+}

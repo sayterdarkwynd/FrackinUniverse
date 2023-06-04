@@ -1,26 +1,37 @@
 local recipes =
 {
-
---liquids
+{inputs = { wrappedbody=1 }, outputs = { brain=1,fuscienceresource=120,bone=8,leather=1,alienmeat=4,faceskin=1,rawribmeat=2,liquidblood=40 }, time = 5.0},
+{inputs = { wrappedbodyputrid=1 }, outputs = { brain=1,fumadnessresource=5,bone=8,leather=1,rottingfleshmaterial=4,slew2=12,biospore=2,liquidbioooze=40 }, time = 5.0},
+{inputs = { wrappedbodyalien=1 }, outputs = { brain=1,fuprecursorresource=5,bone=8,leather=1,slew4=12,rawribmeat=2,cellmateria=4,liquidalienjuice=40 }, time = 5.0},
 {inputs = { cthulureward=1,elderrelic7=1,elderrelic11=1 }, outputs = { elderripper=1 }, time = 15.0},
 {inputs = { cthulureward=1, elderrelic5=1, elderrelic11=1 }, outputs = { eldercarbine=1 }, time = 15.0},
 {inputs = { cthulureward=1, elderrelic12=1, elderrelic11=1 }, outputs = { elderpistol=1 }, time = 15.0 },
+{inputs = { cthulureward=1, elderrelic6=1, elderrelic8=1 }, outputs = { elderrepeater=1 }, time = 15.0 },
 {inputs = { eldertome=1,elderrelic7=1,elderrelic3=3 }, outputs = { elderspear=1 }, time = 15.0},
 {inputs = { eldertome=1, elderrelic2=1, elderrelic3=5 }, outputs = { elderblade=1 }, time = 15.0},
+{inputs = { elderrelic3=6, elderrelic5=2, elderrelic7=1 }, outputs = { elderbroadsword=1 }, time = 15.0 },
+{inputs = { cthulureward=1, eldertome=1, elderrelic3=5 }, outputs = { elderbow=1 }, time = 15.0},
+{inputs = { nocxiumbar=5, elderrelic2=1, elderrelic7=1 }, outputs = { elderwhip=1 }, time = 15.0 },
+{inputs = { eldertome=1, elderrelic7=2, cthulureward=1 }, outputs = { cultiststaff1=1 }, time = 15.0 },
+{inputs = { eldertome=1, elderrelic6=2, elderrelic9=1 }, outputs = { cultiststaff2=1 }, time = 15.0 },
+{inputs = { eldertome=1, elderrelic12=2, elderrelic14=1 }, outputs = { cultiststaff3=1 }, time = 15.0 },
+{inputs = { nocxiumbar=5, elderrelic6=1, elderrelic3=4 }, outputs = { elderaxe=1 }, time = 15.0 },
+{inputs = { cthulureward=1, elderrelic8=1, elderrelic12=1 }, outputs = { eldergrappler=1 }, time = 15.0},
+{inputs = { nocxiumbar=5, eldertome=1, elderrelic12=5 }, outputs = { eldershield=1 }, time = 15.0 },
 {inputs = { nocxiumbar=6, elderrelic12=1, elderrelic6=1 }, outputs = { elderarmorhead=1 }, time = 15.0 },
 {inputs = { nocxiumbar=7, elderrelic2=1, elderrelic14=1 }, outputs = { elderarmorchest=1 }, time = 15.0},
 {inputs = { nocxiumbar=5, elderrelic1=1, elderrelic5=1 }, outputs = { elderarmorpants=1 }, time = 15.0 },
-{inputs = { nocxiumbar=5, eldertome=1, elderrelic14=1 }, outputs = { eldershield=1 }, time = 15.0 },
-{inputs = { cthulureward=1, elderrelic8=1, elderrelic12=1 }, outputs = { eldergrappler=1 }, time = 15.0},
-{inputs = { nocxiumbar=5, elderrelic6=1, elderrelic3=1 }, outputs = { elderaxe=1 }, time = 15.0 },
-{inputs = { cthulureward=1, eldertome=1, elderrelic14=1 }, outputs = { deathbringer=1 }, time = 15.0 },
-{inputs = { cthulureward=1, eldertome=1, elderrelic7=1 }, outputs = { shadowburst=1 }, time = 15.0 },
-{inputs = { cthulureward=1, elderrelic6=1, elderrelic8=1 }, outputs = { elderrepeater=1 }, time = 15.0 },
-{inputs = { nocxiumbar=5, elderrelic2=1, elderrelic7=1 }, outputs = { elderwhip=1 }, time = 15.0 }
+{inputs = { nocxiumbar=6, elderrelic6=1, elderrelic11=1 }, outputs = { cultarmorhead=1 }, time = 15.0 },
+{inputs = { nocxiumbar=7, elderrelic7=1, elderrelic12=1 }, outputs = { cultarmorchest=1 }, time = 15.0 },
+{inputs = { nocxiumbar=5, elderrelic8=1, elderrelic14=1 }, outputs = { cultarmorpants=1 }, time = 15.0 },
+{inputs = { cthulureward=1, elderrelic3=2, elderrelic14=1 }, outputs = { eldermace=1 }, time = 15.0 },
+{inputs = { elderrelic12=5, elderrelic4=1, elderrelic8=1 }, outputs = { eldershotgun=1 }, time = 15.0 },
+{inputs = { cthulureward=1, elderrelic1=3, elderrelic11=2 }, outputs = { eldergrenadelauncher=1 }, time = 15.0 },
+{inputs = { shoggothessence=5}, outputs = { shoggothflesh=1 }, time = 1.0 },
+{inputs = { shoggothflesh=1}, outputs = { essence=1000,fuscienceresource=1000 }, time = 1.0 }
 }
 
-function init(args)
-    if args then return end
+function init()
     self.timer = 1
     self.mintick = 1
     self.crafting = false
@@ -29,10 +40,10 @@ end
 
 function getInputContents()
         local id = entity.id()
-      
+
         local contents = {}
         for i=0,2 do
-            local stack = world.containerItemAt(entity.id(),i)
+            local stack = world.containerItemAt(id, i)
             if stack ~=nil then
                 if contents[stack.name] ~= nil then
                   contents[stack.name] = contents[stack.name] + stack.count
@@ -41,7 +52,7 @@ function getInputContents()
                 end
             end
         end
-      
+
         return contents
     end
 
@@ -60,15 +71,15 @@ end
 function getValidRecipes(query)
 
     local function subset(t1,t2)
-        if next(t2) == nil then 
-          return false 
+        if next(t2) == nil then
+          return false
         end
-        if t1 == t2 then 
+        if t1 == t2 then
           return true
         end
             for k,_ in pairs(t1) do
-                if not t2[k] or t1[k] > t2[k] then 
-                  return false 
+                if not t2[k] or t1[k] > t2[k] then
+                  return false
                 end
             end
         return true
@@ -123,6 +134,7 @@ function update(dt)
             self.output = {}
             self.timer = self.mintick --reset timer to a safe minimum
             animator.setAnimationState("samplingarrayanim", "idle")
+            animator.playSound("active")
         end
 
         if not self.crafting and self.timer <= 0 then --make sure we didn't just finish crafting
@@ -134,9 +146,9 @@ end
 
 
 function startCrafting(result)
+
     if next(result) == nil then return false
     else _,result = next(result)
-
         for k,v in pairs(result.inputs) do
             if not world.containerConsume(entity.id(), {item = k , count = v}) then return false end
         end
@@ -145,7 +157,6 @@ function startCrafting(result)
         self.timer = result.time
         self.output = result.outputs
         animator.setAnimationState("samplingarrayanim", "working")
-
         return true
-    end              
+    end
 end

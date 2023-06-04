@@ -1,0 +1,81 @@
+{
+  "particleEmitters" : {
+    "smoke" : {
+      "active" : false,
+      "emissionRate" : 0.0,
+      "offsetRegion" : [-1.0, -1.0, 1.0, 1.0],
+      "transformationGroups" : ["smoke"],
+      "particles" : [
+        {
+          "particle" : "darkpurplephaseparticle"
+        }
+      ]
+    },
+    "statustext" : {
+      "enabled" : true,
+      "emissionRate" : 1.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "text",
+            "text" : "Insanity!",
+            "size" : 0.75,
+            "color" : [0, 255, 125, 205],
+            "fade" : 1,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 4],
+            "finalVelocity" : [0, 1],
+            "approach" : [0, 10],
+            "timeToLive" : 1,
+            "variance" : {
+            }
+          }
+        }
+      ]
+    },
+    "statustext2" : {
+      "enabled" : true,
+      "emissionRate" : 1.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "text",
+            "text" : "^red;- Armor -^reset;",
+            "size" : 0.75,
+            "color" : [0, 255, 125, 205],
+            "fade" : 1,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 4],
+            "finalVelocity" : [0, 1],
+            "approach" : [0, 10],
+            "timeToLive" : 1,
+            "variance" : {
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "transformationGroups" : {
+    "smoke" : { "interpolated" : true }
+  },
+
+  "lights" : {
+    "glow" : {
+      "active" : false,
+      "position" : [0, 0],
+      "color" : [70, 35, 70]
+    }
+  },
+
+  "sounds" : {
+    "burn" : [ ]
+  }
+}

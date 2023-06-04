@@ -1,0 +1,139 @@
+[
+  {
+    "op": "add",
+    "path": "/baseParameters/tickEvoTime",
+    "value": 3
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/agingEvoTime",
+    "value": 900
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/evolutions",
+    "value": [
+      "/scripts/golemancer/evolutions/poptopgrow2.evo"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/scripts/-",
+    "value": "/scripts/golemancer/gol_monstermain.lua"
+  },
+
+  {
+    "op": "add",
+    "path": "/dropPools/0/firebow",
+    "value": "poptopHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/icebow",
+    "value": "poptopHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/poisonbow",
+    "value": "poptopHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/electricbow",
+    "value": "poptopHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/radioactivebow",
+    "value": "poptopHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/cosmicbow",
+    "value": "poptopHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/shadowbow",
+    "value": "poptopHunting"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-charge",
+        "cooldown": 5,
+        "parameters": {
+          "maximumRange": 12,
+          "windupTime": 0.4,
+          "aimAtTarget": true,
+          "aimDirection": [1,1],
+          "chargeTime": [0.3,0.4],
+          "chargeSpeed": 30,
+          "chargeControlForce": 220,
+          "wallCrashSound": "",
+          "wallCrashEmitter": "",
+          "winddownTime": 0.5
+        }
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/movementSettings/runSpeed",
+    "value": 8
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/colors",
+    "value": "pandorasboxvibrantfull"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/physicalResistance/baseValue",
+    "value": 0.1
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/fireResistance/baseValue",
+    "value": 0.1
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/iceResistance/baseValue",
+    "value": 0.1
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/electricResistance/baseValue",
+    "value": 0.1
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/poisonResistance/baseValue",
+    "value": 0.1
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/pandorasboxSpecialColors",
+    "value": {
+      "colorPool": [
+        [
+          0.9, { "type": "color", "color": "default" }
+        ],
+        [
+          0.01, { "type": "colorPool", "colorPool": "/monsters/pandorasboxuniquemonstercolors/colors/pandorasboxrarecolors.config" }
+        ],
+        [
+          0.001, { "type": "colorPool", "colorPool": [[0.001, { "type": "color", "color": "albino" }]] }
+        ]
+      ],
+      "colors": [
+        "/monsters/pandorasboxuniquemonstercolors/colors/pandorasboxrarecolors.config",
+        { "albino": "/monsters/walkers/poptop/pandorasboxaltcolors/pandorasboxpoptopaltalbino.png" }
+      ],
+      "paletteSwapBaseImage": "/monsters/walkers/poptop/pandorasboxaltcolors/pandorasboxpoptopaltrare.png"
+    }
+  }
+]

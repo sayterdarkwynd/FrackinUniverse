@@ -1,0 +1,71 @@
+{
+  "objectName" : "peglaciwaterlight",
+  "colonyTags" : ["peglaci","peglacivillage","light"],
+  "rarity" : "Common",
+  "printable" : true,
+  "category" : "light",
+  "lightColor" : [100, 200, 255],
+  "lightPosition" : [0, 0],
+  "price" : 45,
+  "description" : "The crystal embedded into this fixture glows with a cold light.",
+  "shortdescription" : "Crystal Light",
+  "race" : "peglaci",
+
+  "apexDescription" : "A light to see by, perhaps a little flashy in design...",
+  "avianDescription" : "Crystals are useful for everything. But this one feels really cold.",
+  "floranDescription" : "A shining light fashioned from ssstone.",
+  "glitchDescription" : "Appreciative. What a nice light.",
+  "humanDescription" : "As far as lamps go, this is a real gem.",
+  "hylotlDescription" : "What an intriguing lamp fashioned from an exemplary gem.",
+  "novakidDescription" : "This crazy light looks like it's made from rock.",
+  "fupeglaciDescription" : "This light is perfect to see in the cold depths of our flooded passages.",
+
+  "inventoryIcon" : "peglaciwaterlighticon.png",
+  "orientations" : [
+    {
+      "image" : "peglaciwaterlight.png:<color>.<frame>",
+      "imagePosition" : [-3, -5],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "animationParts" : {
+        "bg" : "peglaciwaterlight.png",
+        "fg" : "peglaciwaterlightlit.png"
+      },
+      "animationPosition" : [-3, -5],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "peglaciwaterlight.png:<color>.<frame>",
+      "imagePosition" : [-3, -5],
+
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "peglaciwaterlight.png",
+        "fg" : "peglaciwaterlightlit.png"
+      },
+      "animationPosition" : [-3, -5],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "peglaciwaterlight.png",
+    "fg" : "peglaciwaterlightlit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

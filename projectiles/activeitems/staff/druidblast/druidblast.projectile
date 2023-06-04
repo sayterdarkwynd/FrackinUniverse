@@ -1,0 +1,59 @@
+{
+  "projectileName" : "druidblast",
+  "physics" : "default",
+  "timeToLive" : 20,
+  "image" : "druidblast.png",
+  "animationCycle" : 0.2,
+  "lightColor" : [80, 20, 10],
+  "frameNumber" : 1,
+  "speed" : 0,
+  "power" : 10,
+  "level" : 4,
+  "damageKind" : "poison",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "weakpoison", "shocked", "slow" ],
+  "fullbright" : true,
+  "emitters" : [ "sparklesunicorn" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/acidexplosion3/acidexplosiondruid.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/weapons/firearrow_quiet.ogg"
+      ]
+    },
+    {
+      "action" : "loop",
+      "count" : 5,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "froth1",
+          "time" : 0.45,
+          "repeat" : true
+        },
+        {
+          "action" : "particle",
+          "specification" : "froth2",
+          "time" : 0.45,
+          "repeat" : true
+        }
+      ]
+    }
+  ],
+
+  "bounces" : 1,
+
+  "scripts" : [ "/projectiles/activeitems/staff/druidblast/druidblast.lua" ],
+
+  "triggerSpeed" : 70,
+
+  "controlRotation" : {
+    "maxSpeed" : 36,
+    "controlForce" : 120,
+    "friction" : 3
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "objectName" : "slimepersonteleporter",
+  "colonyTags" : ["slimeperson"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "Trusty teleporter, what would we do without you?",
+  "shortdescription" : "Teleporter",
+  "race" : "slimeperson",
+
+  "slimepersonDescription" : "Warm ball, reassembles me.",
+  "apexDescription" : "The ship's teleporter. Teleporting feels like riding a rollercoaster at the speed of light.",
+  "avianDescription" : "The teleporter! Teleporting feels like flying.",
+  "floranDescription" : "Ship teleporter. Floran feel confusssed during teleport.",
+  "glitchDescription" : "Smug. A teleporter. I am able to enter a sleep mode during the teleport process.",
+  "humanDescription" : "The teleporter! Teleporting is such a rush.",
+  "hylotlDescription" : "A teleporter. Teleporting feels like diving into the ocean from a mountain top.",
+  "novakidDescription" : "Ship's teleporter. Let's take her for a spin!",
+
+  "category" : "light",
+  "lightColor" : [52, 115, 84],
+  "flickerDistance" : 0.2,
+  "flickerStrength" : 0.05,
+  "flickerTiming" : 4,
+
+  "particleEmitter" : {
+    "emissionRate" : 0.1,
+    "emissionVariance" : 0,
+
+    "particle" : {
+      "type" : "textured",
+    "image" : "slimepersonteleporterfront.png",
+"size" : 1,
+"fade" : 0,
+"position" : [-0.5, 4.5],
+"initialVelocity" : [0, 0],
+"finalVelocity" : [0.0, 0.0],
+"timeToLive" : 10,
+"approach" : [0, 1],
+"layer" : "front",
+"variance" : {
+      "initialVelocity" : [0, 0],
+      "size" : 0.0,
+      "rotation" : 0,
+      "angularVelocity" : 0}
+
+
+    },
+
+    "particleVariance" : {
+      "initialVelocity" : [0, 0],
+      "finalVelocity" : [0, 0],
+      "position" : [0, 0],
+      "size" : 0
+    }
+  },
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/shipteleporter.config",
+
+  "inventoryIcon" : "teleportericon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "slimepersonteleporter.png:<color>", "fullbright" : true }, { "image" : "slimepersonteleporterlit.png:<color>" }
+ ],
+
+      "imagePosition" : [-32, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "solid",
+      "collisionSpaces" : [ [-2, 0], [-1, 0], [0, 0], [1, 0], [-2, 9], [-1, 9], [0, 9], [1, 9] ]
+    }
+  ]
+}

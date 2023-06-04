@@ -1,0 +1,62 @@
+{
+	"stats": [
+		{ "stat": "fuCharisma", "baseMultiplier": 1.05 },
+
+		{ "stat": "mentalProtection", "amount": 0.15 },
+		{ "stat": "iceResistance", "amount": 0.20 },
+		{ "stat": "poisonResistance", "amount": 0.08 },
+		{ "stat": "electricResistance", "amount": -0.20 },
+		{ "stat": "radioactiveResistance", "amount": 0.12 },
+		{ "stat": "shadowResistance", "amount": -0.10 },
+
+		{ "stat": "katanaMastery", "amount": 0.25 }
+	],
+	"diet" : [ { "ORGANIC" : false, "FISH" : true }, { "MEAT_RAW" : true } ],
+	"envEffects": [
+		{
+			"biomes": [ "ocean" ],
+			"stats": [
+				{ "stat": "maxHealth", "effectiveMultiplier": 1.25 }
+			]
+		},
+		{
+			"biomes" : [ "desert", "desertwastes", "desertwastesdark" ],
+			"stats": [
+				{ "stat": "maxHealth", "effectiveMultiplier": 0.80 },
+				{ "stat": "protection", "effectiveMultiplier": 0.80 }
+			]
+		}
+	],
+
+	"weaponEffects": [
+		{
+			"weapons": [ "shortsword","broadsword","katana","longsword", "rapier" ],
+			"scripts": [
+				{
+					"script": "/scripts/fr_weaponscripts/healthybonus.lua",
+					"contexts": [ "healthyBonus" ],
+					"args": {
+						"healthReq": 0.75,
+						"stats": [
+							{ "stat": "critChance", "amount": 2 }
+						]
+					}
+				}
+			]
+		}
+	],
+
+	"special" : ["swimboost1"],
+
+	"liquidEffects": [
+		{
+			"liquids": [ "water", "fusaltwater","healingliquid", "wastewater", "swampwater" ],
+			"stats": [
+				{ "stat": "maxHealth", "effectiveMultiplier": 1.12 },
+				{ "stat": "physicalResistance", "amount": 0.08 },
+				{ "stat": "perfectBlockLimit", "amount": 2 },
+				{ "stat": "maxBreath", "amount": 1500 }
+			]
+		}
+	]
+}

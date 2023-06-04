@@ -1,10 +1,10 @@
 {
   "metadata": {
     "name": "apexspaceelevator",
-    "species": "dummy",
+    "species": "apex",
     "rules": [],
     "maxRadius": 4500,
-    "maxParts": 100,
+    "maxParts": 50,
     "anchor": [
       "entrance"
     ],
@@ -498,14 +498,14 @@
         255,
         255
       ],
-      "comment": "moderntable1",
+      "comment": "fuokeahitechtable",
       "brush": [
         [
           "clear"
         ],
         [
           "object",
-          "moderntable1"
+          "fuokeahitechtable"
         ]
       ],
       "connector": false,
@@ -1149,7 +1149,7 @@
             "direction": "left",
             "parameters": {
               "treasurePools": [
-                "techTreasure"
+                "fuspaceElevatorChest","fuspaceElevatorChest","fuspaceElevatorChest"
               ]
             }
           }
@@ -1182,7 +1182,7 @@
             "direction": "right",
             "parameters": {
               "treasurePools": [
-                "techTreasure"
+                "fuspaceElevatorChest","fuspaceElevatorChest","fuspaceElevatorChest"
               ]
             }
           }
@@ -2553,7 +2553,7 @@
             "direction": "left",
             "parameters": {
               "treasurePools": [
-                "apexLabLore"
+                "ffbasicTreasure"
               ]
             }
           }
@@ -2586,7 +2586,7 @@
             "direction": "right",
             "parameters": {
               "treasurePools": [
-                "apexLabLore"
+                "ffbasicTreasure"
               ]
             }
           }
@@ -2756,7 +2756,7 @@
             "direction": "left",
             "parameters": {
               "treasurePools": [
-                "apexlockertreasure"
+                "fuspaceElevatorChest","fuspaceElevatorChest"
               ]
             }
           }
@@ -2789,7 +2789,7 @@
             "direction": "right",
             "parameters": {
               "treasurePools": [
-                "apexlockertreasure"
+                "fuspaceElevatorChest","fuspaceElevatorChest"
               ]
             }
           }
@@ -2855,7 +2855,7 @@
             "direction": "right",
             "parameters": {
               "treasurePools": [
-                "apexstimtreasure"
+                "ffchemTreasure"
               ]
             }
           }
@@ -2888,7 +2888,7 @@
             "direction": "left",
             "parameters": {
               "treasurePools": [
-                "apexLabLore"
+                "ffbasicTreasure"
               ]
             }
           }
@@ -2921,7 +2921,7 @@
             "direction": "right",
             "parameters": {
               "treasurePools": [
-                "apexLabLore"
+                "ffbasicTreasure"
               ]
             }
           }
@@ -3191,14 +3191,14 @@
         175,
         255
       ],
-      "comment": "pipes1 facing left",
+      "comment": "apexpod facing left",
       "brush": [
         [
           "clear"
         ],
         [
           "object",
-          "pipes1",
+          "apexpod",
           {
             "direction": "left"
           }
@@ -3219,14 +3219,14 @@
         158,
         255
       ],
-      "comment": "pipes1 facing right",
+      "comment": "apexpod facing right",
       "brush": [
         [
           "clear"
         ],
         [
           "object",
-          "pipes1",
+          "apexpod",
           {
             "direction": "right"
           }
@@ -3247,14 +3247,14 @@
         159,
         255
       ],
-      "comment": "pipes2 facing left",
+      "comment": "apexofficechair facing left",
       "brush": [
         [
           "clear"
         ],
         [
           "object",
-          "pipes2",
+          "apexofficechair",
           {
             "direction": "left"
           }
@@ -3275,14 +3275,14 @@
         143,
         255
       ],
-      "comment": "pipes2 facing right",
+      "comment": "apexofficechair facing right",
       "brush": [
         [
           "clear"
         ],
         [
           "object",
-          "pipes2",
+          "apexofficechair",
           {
             "direction": "right"
           }
@@ -3303,14 +3303,14 @@
         143,
         255
       ],
-      "comment": "pipes3",
+      "comment": "apexlocker",
       "brush": [
         [
           "clear"
         ],
         [
           "object",
-          "pipes3"
+          "apexlocker"
         ]
       ],
       "connector": false,
@@ -3328,14 +3328,14 @@
         128,
         255
       ],
-      "comment": "pipes4",
+      "comment": "apexlamp1",
       "brush": [
         [
           "clear"
         ],
         [
           "object",
-          "pipes4"
+          "apexlamp1"
         ]
       ],
       "connector": false,
@@ -3353,14 +3353,14 @@
         112,
         255
       ],
-      "comment": "pipes5 facing left",
+      "comment": "apexpod2 facing left",
       "brush": [
         [
           "clear"
         ],
         [
           "object",
-          "pipes5",
+          "apexpod2",
           {
             "direction": "left"
           }
@@ -3381,14 +3381,14 @@
         100,
         255
       ],
-      "comment": "pipes5 facing right",
+      "comment": "apexpod2 facing right",
       "brush": [
         [
           "clear"
         ],
         [
           "object",
-          "pipes5",
+          "apexpod2",
           {
             "direction": "right"
           }
@@ -5832,31 +5832,7 @@
         0
       ]
     },
-    {
-      "value": [
-        232,
-        1,
-        59,
-        255
-      ],
-      "comment": "apexbigalarm",
-      "brush": [
-        [
-          "clear"
-        ],
-        [
-          "object",
-          "apexbigalarm"
-        ]
-      ],
-      "connector": false,
-      "connector-value": [
-        0,
-        0,
-        0,
-        0
-      ]
-    },
+
     {
       "value": [
         206,
@@ -6244,9 +6220,7 @@
                 "noticePlayersRadius": 20.0,
                 "merchant": {
                   "storeRadius": 2,
-                  "categories": [
-                    "apexingredients"
-                  ],
+                  "categories": {"default":["apexingredients"]},
                   "priceVarianceRange": [
                     0.8,
                     1.2

@@ -1,0 +1,63 @@
+{
+  "objectName" : "clothingfabricator",
+  "rarity" : "Essential",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/fuempty.config"
+  },
+  "price" : 450,
+  "description" : "Fabricates clothing and complex fabric-based armors. Use the Armory for Weapons and Ore-based armors.",
+  "shortdescription" : "^orange;Clothing Fabricator^reset;",
+  "race" : "generic",
+  "category" : "crafting",
+  "lightColor" : [20, 90, 140],
+  "inventoryIcon" : "clothingfabricatoricon.png",
+  "orientations" : [
+    {
+
+      "imageLayers" : [ { "image" : "clothingfabricator.png:<color>", "fullbright" : true }, { "image" : "clothingfabricatorlit.png:<color>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [-1, 1],
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+
+      "imageLayers" : [ { "image" : "clothingfabricator.png:<color>", "fullbright" : true }, { "image" : "clothingfabricatorlit.png:<color>" } ],
+      "direction" : "right",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+  "scripts" : [ "/scripts/npcToyObject.lua" ],
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "typing"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 2
+  }
+}
+

@@ -1,18 +1,26 @@
 {
   "name" : "sulphuricunderground",
-  "friendlyName" : "Deadly caverns",
+  "friendlyName" : "Deadly Caverns",
 
   "spawnProfile" : {
     "groups" : [
       {
-        "select" : 1,
-        "pool" : [ 
-          [ 0.1111, "sulphurtroll" ]
+        "select" : 3,
+        "pool" : [
+          [ 0.09, "sulphurtroll" ],
+          [ 0.09, "furatthing2" ],
+          [ 0.09, "glump" ],
+          [ 0.09, "ixolingsulphuric" ],
+          [ 0.05, "megaburrower" ],
+          [ 0.09, "fureptar" ],
+          [ 0.05, "leadlit" ]
         ]
       },
       {
         "select" : 2,
         "pool" : [
+          [ 0.03, "burrower_depth_selector" ],
+          [ 0.03, "burrower_depth_selector" ],
           [ 0.4, "fuscorpion" ],
           [ 0.3, "funewt" ]
         ]
@@ -33,7 +41,7 @@
             },
             "blacktarImmunity" : {
               "baseValue" : 1.0
-            },            
+            },
             "breathProtection" : {
               "baseValue" : 1.0
             }
@@ -62,7 +70,7 @@
       "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 
@@ -74,16 +82,24 @@
              "mode" : "ceiling",
              "priority" : 1.0,
              "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
-   
+             "distribution" : "/biomes/distributions.config:ffCommon",
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
+              [0.50, "savannahceilingspike1" ],
+              [0.50, "savannahceilingspike2" ],
+              [0.50, "savannahceilingspike3" ],
+              [0.50, "savannahceilingspike4" ],
               [0.50, "desertceilingspike1" ],
               [0.50, "desertceilingspike2" ],
               [0.50, "desertceilingspike3" ],
-              [0.50, "desertceilingspike4" ]
+              [0.50, "desertceilingspike4" ],
+              [0.50, "magmaceilingspike1" ],
+              [0.50, "magmaceilingspike2" ],
+              [0.50, "magmaceilingspike3" ]
+
                  ],
                  "parameters" : { "startingStage" : 3 }
                }
@@ -93,26 +109,23 @@
              "mode" : "floor",
              "priority" : 1.0,
              "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
-   
+             "distribution" : "/biomes/distributions.config:ffCommon",
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
+              [0.50, "savannahgroundspike1" ],
+              [0.50, "savannahgroundspike2" ],
+              [0.50, "savannahgroundspike3" ],
+              [0.50, "savannahgroundspike4" ],
               [0.50, "desertgroundspike1" ],
               [0.50, "desertgroundspike2" ],
               [0.50, "desertgroundspike3" ],
               [0.50, "desertgroundspike4" ],
-              [0.50, "copperrock" ], 
-              [0.50, "copperrocksmall" ],
-              [0.50, "silverrock" ],
-              [0.50, "silverrocksmall" ],
-              [0.50, "goldrock" ],
-              [0.50, "goldrocksmall" ],
-              
-              
-              [0.50, "diamondrock" ],
-              [0.50, "diamondrocksmall" ]
+              [0.50, "magmagroundspike1" ],
+              [0.50, "magmagroundspike2" ],
+              [0.50, "magmagroundspike3" ]
                  ],
                  "parameters" : { "startingStage" : 3 }
                }
@@ -123,7 +136,7 @@
            "priority" : 1.0,
            "variants" : 1,
            "distribution" : "/biomes/distributions.config:undergroundChests",
- 
+
            "type" : "object",
            "objectSets" : [
              {
@@ -137,7 +150,7 @@
            "priority" : 1.0,
            "variants" : 1,
            "distribution" : "/biomes/distributions.config:scatteredPots",
- 
+
            "type" : "object",
            "objectSets" : [
              {
@@ -151,11 +164,11 @@
            "priority" : 1.0,
            "variants" : 1,
            "distribution" : "/biomes/distributions.config:potsRare",
- 
+
            "type" : "object",
            "objectSets" : [
              {
-               "pool" : [ 
+               "pool" : [
                [0.65, "plynth1" ],
                [0.65, "plynth2" ],
                [0.65, "monolith1" ],
@@ -167,7 +180,144 @@
                "parameters" : { }
              }
            ]
-        }
+        },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundOreRocks",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [
+              [0.50, "carbonrock" ],
+              [0.50, "carbonrocksmall" ],
+              [0.50, "copperrock" ],
+              [0.50, "copperrocksmall" ],
+              [0.50, "silverrock" ],
+              [0.50, "silverrocksmall" ],
+              [0.50, "goldrock" ],
+              [0.50, "goldrocksmall" ],
+              [0.50, "diamondrock" ],
+              [0.50, "diamondrocksmall" ]
+            ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundBiomeEncounterDungeon",
+	"type" : "microdungeon",
+        "microdungeons" : [ "undergroundencounterdungeons" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 99.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:tiyDist",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "underground3cmicrodungeons" ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundVines",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 180,
+        "treeStemList" : [ "twistedvine2" ],
+        "treeFoliageList" : [ "dreamy2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChallengeDoors",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "challengedoor" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:layer1Chests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:layer1Chests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChallengeDoors",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "challengedoor" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+        {
+        "mode" : "background",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundFossils",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.15, "dirtyfossil1" ], [0.15, "dirtyfossil2" ], [0.15, "dirtyfossil3" ], [0.15, "dirtyfossil4" ], [0.1, "dirtyfossil5" ], [0.1, "dirtyfossil6" ], [0.1, "dirtyfossil7" ], [0.1, "dirtyfossil8" ] ],
+            "parameters" : {  "materials" : ["rock20", "sulphurdirt", "meteoriterock"]}
+          }
+        ]
+        },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:tiyDist",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "fuunderground" ]
+      }
     ]
   },
     "hueShiftOptions" : [0]

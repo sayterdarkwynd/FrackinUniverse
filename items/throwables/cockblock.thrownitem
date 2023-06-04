@@ -1,0 +1,29 @@
+{
+  "itemName" : "cockblock",
+  "rarity" : "Common",
+  "category" : "throwableItem",
+  "inventoryIcon" : "cockblock.png",
+  "image" : "cockblock.png",
+  "shortdescription" : "Cock Block",
+  "description" : "Throw at friends trying to pick up chicks.",
+
+  "ammoUsage" : 1,
+  "itemTags" : [ "thrown" ],
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 1.4,
+  "projectileType" : "cockblock",
+  "projectileConfig" : {
+    "speed" : 55,
+    "power" : 50,
+    "knockback" : 25,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/npc/monsters/hen_harvest1.ogg", "/sfx/npc/monsters/hen_harvest2.ogg", "/sfx/npc/monsters/hen_harvest3.ogg" ]
+      }
+    ]
+  }
+}

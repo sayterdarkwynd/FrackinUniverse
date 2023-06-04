@@ -4,8 +4,10 @@
     "species" : "dummy",
     "rules" : [
     ],
-    "maxRadius" : 1000,
-    "anchor" : [ "entrance" ]
+    "maxRadius" : 2500,
+    "anchor" : [ "entrance" ],
+    "maxParts" : 12,
+    "extendSurfaceFreeSpace" : 100
   },
   "tiles" : [
     {
@@ -110,7 +112,7 @@
     {
       "value" : [27, 2, 218, 255],
       "comment" : "rustymetal background tiles, with wreckcrate1",
-      "brush" : [ [ "clear" ], [ "back", "rustymetal" ], [ "object", "wreckcrate1" ] ]
+      "brush" : [ [ "clear" ], [ "back", "rustymetal" ], [ "object", "wreckcrate1", { "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
     },
 
     {
@@ -194,7 +196,7 @@
     {
       "value" : [23, 87, 38, 255],
       "comment" : "rustymetal background tiles, with wrecklocker",
-      "brush" : [ [ "clear" ], [ "back", "rustymetal" ], [ "object", "wrecklocker", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicChestTreasure" ] } } ] ]
+      "brush" : [ [ "clear" ], [ "back", "rustymetal" ], [ "object", "wrecklocker" ] ]
     },
 
     {
@@ -233,25 +235,49 @@
       "brush" : [ [ "clear" ], [ "back", "rustymetal" ], [ "object", "wreckboiler" ] ]
     },
 
+    // STAGEHANDS
+
     {
-      "value" : [69, 69, 69, 255],
-      "comment" : "rustymetal background tiles, with wreckboiler",
-      "brush" : [ [ "clear" ], [ "back", "rustymetal" ], [ "object", "tetrapod" ] ]
+      "value" : [166, 76, 255, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "clear" ], [ "back", "rustymetal" ], [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "wreck.cockpit"
+          }
+        }
+      ] ]
     },
 
     {
-      "value" : [69, 69, 68, 255],
-      "comment" : "rustymetal background tiles, with wreckboiler",
-      "brush" : [ [ "npc",
-          {
-            "kind" : "npc",
-            "species" : "glitch",
-            "typeName" : "tombzombie"
+      "value" : [166, 76, 254, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "clear" ], [ "back", "rustymetal" ], [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "wreck.engineroom"
           }
-        ] ]
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 253, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "clear" ], [ "back", "rustymetal" ], [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "wreck.interior"
+          }
+        }
+      ] ]
     }
-
-
   ],
 
   "parts" : [
@@ -301,7 +327,8 @@
       "name" : "7",
       "rules" : [
       ],
-      "def" : [ "image", [ "7.png" ] ]
+      "def" : [ "image", [ "7.png" ] ],
+      "chance" : 0
     }
   ]
 }

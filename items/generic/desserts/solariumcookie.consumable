@@ -1,0 +1,28 @@
+{
+  "itemName" : "solariumcookie",
+  "rarity" : "Legendary",
+  "price" : 255,
+  "category" : "preparedFood",
+  "inventoryIcon" : "solariumcookie.png",
+  "description" : "These cookies shine with light. Surprisingly cool.\n^pink;Lava^gray;, ^pink;Moderate Heat ^cyan;Immunity ^gray;(^white;5m^gray;)^reset;",
+  "shortdescription" : "Solarium Cookie",
+  "effects" : [ [
+    {
+      "effect" : "lavaimmunity",
+      "duration" : 300
+    },
+    {
+      "effect" : "heatimmunity",
+      "duration" : 300
+    }
+  ] ],
+  "foodValue" : 55,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

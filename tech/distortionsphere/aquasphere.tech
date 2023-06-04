@@ -1,0 +1,58 @@
+{
+  "name" : "aquasphere",
+  "type" : "head",
+
+  "scripts" : ["aquasphere.lua"],
+  "animator" : "distortionsphere.animation",
+
+  "description" : "Turn into a sphere and move quickly across liquids! ^green;[F]^reset;",
+  "shortDescription" : "Aqua Sphere",
+  "rarity" : "Legendary",
+  "icon" : "/tech/aquasphere.png",
+
+  "chipCost" : 8,
+
+  "animationParts" : {
+    "ballGlow" : "aquasphereglow.png",
+    "ball" : "aquasphere.png"
+  },
+
+  "transformedMovementParameters" : {
+    "collisionPoly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
+
+    "liquidForce" : 350,
+    "liquidFriction" : 0,
+    "minimumLiquidPercentage" : 0.1,
+    "liquidImpedance" : 0.01,
+    "liquidBuoyancy" : 2.0,
+    "gravityMultiplier" : 2,
+
+    "groundForce" : 450.0,
+    "normalGroundFriction" : 1.5,
+    "ambulatingGroundFriction" : 0.2,
+    "slopeSlidingFactor" : 3.0,
+
+    "airJumpProfile" : {
+      "jumpSpeed" : 16.0,
+      "jumpControlForce" : 800.0,
+      "jumpInitialPercentage" : 1.0,
+      "jumpHoldTime" : 0.1
+    },
+
+    "liquidJumpProfile" : {
+      "jumpSpeed" : 0.0,
+      "jumpControlForce" : 0.0,
+
+      "multiJump" : false,
+      "autoJump" : false
+    }
+  },
+
+  "ballSpeed" : 14,
+  "ballLiquidSpeed" : 35,
+
+  "energyCost" : 30,
+
+  "ballRadius" : 1,
+  "ballFrames" : 8
+}

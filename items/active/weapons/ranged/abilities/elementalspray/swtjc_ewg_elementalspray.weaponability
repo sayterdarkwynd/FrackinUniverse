@@ -1,0 +1,121 @@
+{
+	"animationCustom": {
+		"animatedParts": {
+			"parts": {
+				"grenadelauncher": {
+					"properties": {
+						"zLevel": -1,
+						"centered": true,
+						"offset": [-0.75, -0.375],
+						"transformationGroups": ["muzzle"],
+						"firePosition": [0.75, -0.125],
+						"image": "/items/active/weapons/ranged/abilities/grenadelauncher/grenadelauncher.png"
+					}
+				}
+			}
+		},
+		"sounds": {
+			"altFire": ["/sfx/gun/fireblast.ogg"]
+		},
+		"particleEmitters": {
+			"altMuzzleFlash": {
+				"active": false,
+				"emissionRate": 8,
+				"transformationGroups": ["muzzle"],
+				"offsetRegion": [-0.25, -0.5, -0.25, -0.5],
+				"particles": [{
+						"particle": "rocketbarrelpuff",
+						"offset": [0.0, 0.0]
+					},
+					{
+						"particle": "rocketbarrelpuff",
+						"offset": [0.0, 0.0]
+					},
+					{
+						"particle": "rocketbarrelpuff",
+						"offset": [0.0, 0.0]
+					}
+				]
+			}
+		}
+	},
+
+	"ability": {
+		"name": "Energy Spray",
+		"type": "swtjc_ewg_elementalspray",
+		"scripts": ["/items/active/weapons/ranged/abilities/altfire.lua"],
+		"class": "AltFireAttack",
+		"projectileType": "flamethrower",
+		"elementalConfig": {
+			"physical": {},
+			"silverweapon": {},
+			"fire": {
+				"projectileType": "flamethrower"
+			},
+			"hellfire": {
+				"projectileType": "flamethrower"
+			},
+			"ice": {
+				"projectileType": "icethrower"
+			},
+			"hoarfrost": {
+				"projectileType": "icethrower"
+			},
+			"poison": {
+				"projectileType": "poisonthrower"
+			},
+			"bioweapon": {
+				"projectileType": "poisonthrower"
+			},
+			"electric": {
+				"projectileType": "lightningthrower"
+			},
+			"radioactive": {
+				"projectileType": "fusionflame"
+			},
+			"shadow": {
+				"projectileType": "deaththrower"
+			},
+			"cosmic": {
+				"projectileType": "elderflamethrowerflameff"
+			},
+			"aether": {
+				"projectileType": "elderflamethrowerflameff"
+			}
+		},
+		"projectileParameters": {
+			"speed": 20,
+			"knockback": 1
+		},
+		"projectileCount": 1,
+		"inaccuracy": 0.05,
+		"energyUsage": 45,
+		"baseDps": 15.0,
+		"fireTime": 0.065,
+		"fireType": "auto",
+
+		"firePositionPart": "grenadelauncher",
+		"hidePrimaryMuzzleFlash": true,
+
+		"stances": {
+			"fire": {
+				"duration": 0.0,
+				"armRotation": 0,
+				"weaponRotation": 0,
+				"twoHanded": true,
+
+				"allowRotate": false,
+				"allowFlip": false
+			},
+			"cooldown": {
+				"duration": 0.0,
+				"armRotation": 0,
+				"weaponRotation": 0,
+				"twoHanded": true,
+
+				"allowRotate": false,
+				"allowFlip": false
+			}
+		}
+	}
+}

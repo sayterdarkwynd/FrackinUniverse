@@ -1,0 +1,66 @@
+{
+  "objectName" : "lunariwalllamp",
+  "colonyTags" : ["lunari", "light"],
+  "rarity" : "rare",
+  "category" : "light",
+  "lightColor" : [255, 162, 0],
+  "price" : 300,
+  "description" : "A wall mounted lamp made from lunari.",
+  "shortdescription" : "Lunari Wall Lamp",
+  "race" : "generic",
+
+  "apexDescription" : "An extremely bright wall lamp.",
+  "avianDescription" : "This reminds me of the sun.",
+  "floranDescription" : "Sssunssshine lightsss!",
+  "glitchDescription" : "Uncomfortable. This lamp almost fries my optics.",
+  "humanDescription" : "This wall lamp is like a star!",
+  "hylotlDescription" : "This lamp almost reminds me of the sun.",
+  "novakidDescription" : "This wall lamp is brighter than me!",
+
+  "inventoryIcon" : "lunariwalllampicon.png",
+  "orientations" : [
+    {
+      "image" : "lunariwalllamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "lunariwalllamp.png",
+        "fg" : "lunariwalllamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "lunariwalllamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "lunariwalllamp.png",
+        "fg" : "lunariwalllamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "lunariwalllamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : true,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

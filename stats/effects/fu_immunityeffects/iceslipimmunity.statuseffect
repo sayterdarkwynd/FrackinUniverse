@@ -1,9 +1,13 @@
 {
-  "name" : "iceslipimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "iceslipimmunity.lua"
-  ]
+	"name": "iceslipimmunity",
+	"effectConfig": {
+		"stats": [{
+			"stat": "iceslipImmunity",
+			"amount": 1
+		}]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

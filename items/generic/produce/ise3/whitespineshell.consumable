@@ -1,19 +1,17 @@
 {
-  "itemName" : "whitespineshell",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "whitespineshell.png",
-  "description" : "Immune to acid.",
-  "shortdescription" : "Whitespine Shell",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 1,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-          "sulphuricacidimmunity"
-    ] ]
+	"itemName": "whitespineshell",
+	"inventoryIcon": "whitespineshell.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immune^reset;: Sulphuric Acid: 2m",
+	"shortdescription": "Whitespine Shell",
+	"effects": [
+		[{
+			"effect": "sulphuricimmunitywhitespine",
+			"duration": 120
+		}]
+	]
 }

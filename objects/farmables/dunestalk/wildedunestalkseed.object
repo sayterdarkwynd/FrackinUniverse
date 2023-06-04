@@ -1,0 +1,65 @@
+{
+  "objectName" : "wilddunestalkseed",
+  "colonyTags" : ["nature"],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "Hardy dunestalk, a wheat-like plant found growing in arid locations.",
+  "shortdescription" : "Dunestalk Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 10,
+  "hasObjectItem" : false,
+
+  "apexDescription" : "This looks like wheat, but it's far sturdier and drier.",
+  "avianDescription" : "A tough plant, somewhat similar to wheat. The seeds don't taste as good, though.",
+  "floranDescription" : "Floran iss confused... Iss this wheat?",
+  "glitchDescription" : "Curious. Does dunestalk have as many uses as wheat does?",
+  "humanDescription" : "I wonder if I can use this to bake some sort of alien bread?",
+  "hylotlDescription" : "This plant is incredibly dry. I'm not even sure water would do it much good.",
+  "novakidDescription" : "Some odd form o' wheat, perhaps?",
+
+  "aegiDescription" : "Dunestalk is the equivalent of wheat on the Avikan homeplanet.",
+  "avikanDescription" : "I could prepare some traditional food using this dunestalk.",
+  "erixianDescription" : "This plant is so dry, itreminds me a bit of plants on Heragon.",
+  "trinkDescription" : "Dunestalk and wheat are similar in many ways, although dunestalk doesn't have quite as many uses.",
+  "hymidDescription" : "This plant looks like it hasn't ever seen any water.",
+  "notixDescription" : "A sturdy and tough plant. It is perfect for arid climates.",
+  "jorgasianDescription" : "This plant is far too dry for my liking.",
+  "drodenDescription" : "Detected native Kadavan flora. Dunestalk confirmed.",
+
+  "inventoryIcon" : "dunestalkseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "dunestalkseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "radioMessagesOnPickup" : [ "pickupseed" ],
+
+  "stages" : [
+    {
+      "duration" : [640, 720]
+    },
+    {
+      "duration" : [640, 720]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "dunestalkHarvest"
+    }
+  ],
+
+  "breakDropOptions" : [
+    [ [ "dunestalkseed", 1, { } ] ]
+  ],
+
+  "maxImmersion" : 0.125
+}

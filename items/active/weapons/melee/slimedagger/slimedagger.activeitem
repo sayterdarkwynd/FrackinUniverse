@@ -1,0 +1,57 @@
+{
+  "itemName" : "slimedagger",
+  "price" : 960,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Through concentration, you're able to produce a light blade of slime.",
+  "shortdescription" : "Slime Leeching Dagger",
+  "tooltipKind" : "sword2",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "melee", "slime", "bioweapon", "shortsword", "upgradeableWeapon"],
+
+  "inventoryIcon" : "slimedaggericon.png",
+
+
+  "critChance" : 1,
+  "critBonus" : 2,
+  "animation" : "/items/active/weapons/melee/slimedagger/slimedagger.animation",
+  "animationParts" : {
+    "blade" : "blade.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_broadsword_water1.ogg", "/sfx/melee/swing_broadsword_poison1.ogg", "/sfx/melee/swing_broadsword_poison2.ogg" ],
+      "fire2" : [ "/sfx/melee/swing_broadsword_water1.ogg", "/sfx/melee/swing_broadsword_poison1.ogg", "/sfx/melee/swing_broadsword_poison2.ogg" ],
+      "fire3" : [ "/sfx/melee/swing_broadsword_water1.ogg", "/sfx/melee/swing_broadsword_poison1.ogg", "/sfx/melee/swing_broadsword_poison2.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/slimedagger/slimedagger.lua"],
+
+  "activeTime" : 3.0,
+
+  "handGrip" : "wrap",
+  "elementalType" : "physical",
+  "primaryAbilityType" : "slimedaggerstab",
+  "primaryAbility" : {
+    "fireTime" : 0.52,
+    "baseDps" : 7.5,
+	"damageConfig" : {
+	"statusEffects" : [
+{"effect" : "slimeslow", "duration" : 0.5 },
+{"effect" : "slimeleech", "duration" : 0.1 }
+  ]},
+
+	"flashDirectives" : "",
+    "stances" : {
+      "windup1" : {
+        "duration" : 0.15
+      }
+    }
+
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

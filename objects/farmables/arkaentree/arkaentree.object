@@ -1,0 +1,46 @@
+{
+  "objectName" : "arkaentree",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "rare",
+  "category" : "seed",
+  "description" : "Sprouts odd, dangerous dimensional darts.",
+  "shortdescription" : "Arkaen Bush",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 300,
+  "inventoryIcon" : "arkaentreeicon.png",
+  "largeImage" : "arkaentree.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "arkaen" },
+  "orientations" : [
+    {
+      "dualImage" : "arkaentree.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2] ],
+
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+"stages" : [
+    {
+      "alts" : 3,
+      "duration" : [300, 600]
+    },
+    {
+      "alts" : 3,
+      "duration" : [300, 600]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "arkaentree",
+      "resetToStage" : 0
+    }
+  ],
+  "maxImmersion" : 0.125,
+  "beeLikeness" : { "carpenter":1}
+  }

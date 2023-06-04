@@ -1,0 +1,43 @@
+{
+  "objectName" : "fuenemysensor",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+
+  "category" : "wire",
+  "price" : 15,
+  "description" : "Perfect for all your automated door needs! Keeps a baleful eye out for your foes.",
+  "shortdescription" : "Proximity Enemy Scanner",
+  "race" : "generic",
+
+  "inventoryIcon" : "fuscannericon.png",
+  "orientations" : [
+    {
+      "image" : "fuenemysensor.png:<frame>.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/proximitysensor/proximitysensor.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/scanner/scanner.animation",
+  "animationParts" : {
+    "switch" : "fuenemysensor.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "outputNodes" : [ [0, 0] ],
+
+  "interactive" : false,
+
+  "detectDuration" : 3,
+  "detectDamageTeam" : { "type" : "enemy" },
+  "detectEntityTypes" : [ "creature" ],
+  "detectArea" : [ [0.5, 0.5], 3 ]
+}

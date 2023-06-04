@@ -1,0 +1,78 @@
+{
+  "objectName" : "nightarchandelier",
+  "colonyTags" : ["nightar","light"],
+  "rarity" : "legendary",
+  "category" : "light",
+  "price" : 200,
+
+  "description" : "An Nightar chandelier. A good way to light a large castle room.",
+  "shortdescription" : "Nightar Chandelier",
+
+  "maximumLiquidLevel" : 0.2,
+
+  "apexDescription" : "This chandelier's flames are strangely calming.",
+  "avianDescription" : "A modern touch to a classic design.",
+  "floranDescription" : "Sssstrange fire makesss Floran nervouss.",
+  "glitchDescription" : "Comforted. A chandelier; this simple light source feels like home.",
+  "humanDescription" : "This could fall down and crush someone.",
+  "hylotlDescription" : "This chandelier bathes its surroundings in a cool glow.",
+  "novakidDescription" : "Are those even flames?",
+
+
+  "statusEffects" : [ ],
+
+  "lightColor" : [130, 217, 232],
+  "lightPosition" : [0, -1],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "inventoryIcon" : "nightarchandeliericon.png",
+  "orientations" : [
+
+    {
+      "image" : "nightarchandelier.png:<color>.<frame>",
+      "imagePosition" : [-16, -16],
+      "animationPosition" : [-16, -16],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "image" : "nightarchandelier.png:<color>.<frame>",
+      "imagePosition" : [-16, -16],
+      "animationPosition" : [-16, -16],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/torch.ogg",
+  "soundEffectRangeMultiplier" : 0.5,
+
+  "animation" : "nightarchandelier.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/torch_on1.ogg", "/sfx/objects/torch_on2.ogg" ],
+      "off" : [ "/sfx/objects/torch_off1.ogg", "/sfx/objects/torch_off2.ogg", "/sfx/objects/torch_off3.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "bg" : "nightarchandelier.png",
+    "fg" : "nightarchandelierlit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, -1] ],
+
+  "interactive" : false
+}

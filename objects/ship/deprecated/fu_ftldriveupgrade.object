@@ -1,0 +1,43 @@
+{
+  "objectName" : "fu_ftldriveupgrade",
+  "rarity" : "essential",
+  "colonyTags" : [ "science" ],
+  "category" : "furniture",
+  "description" : "^red;This item was deprecated. Place and break to get the items used to make this back.^reset;",
+  "shortdescription" : "^red;DEPRECATED^reset; FTL Drive (Upgraded)",
+  "race" : "generic",
+  "printable" : false,
+
+  "inventoryIcon" : "/objects/ship/fu_ftldriveicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "/objects/ship/fu_ftldrive/fu_ftldrive.png",
+      "imagePosition" : [-44, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/ship/fu_ftldrive/fu_ftldrive.animation",
+  "animationParts" : {
+    "base" : "/objects/ship/fu_ftldrive/fu_ftldrive.png",
+	"fullbright" : "/objects/ship/fu_ftldrive/fu_ftldrivefullbright.png"
+  },
+  "animationPosition" : [-44, 0],
+
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua", "/objects/ship/fu_ftldriveanimation.lua","/objects/ship/deprecated/fu_deprecatedbyosobject.lua"  ],
+  "scriptDelta" : 60,
+
+  "stats" : {
+    "shipSpeed" : 25,
+    "shipMass" : 3
+  },
+  "capabilities" : [
+    "systemTravel",
+    "planetTravel"
+  ],
+  "maxAmountGroups" : {
+    "ftlDrive" : 1
+  },
+  "byosOnly" : true
+}

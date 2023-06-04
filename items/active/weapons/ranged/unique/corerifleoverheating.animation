@@ -1,0 +1,175 @@
+{
+  "globalTagDefaults" : {
+    "paletteSwaps" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "weapon" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {},
+          "low" : {},
+          "med" : {},
+          "high" : {},
+          "overheat" : {}
+          }
+        },
+      "firing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "fire" : {
+            "frames" : 2,
+            "cycle" : 0.07,
+            "mode" : "transition",
+            "transition" : "off"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "middle" : {
+        "properties" : {
+          "zLevel" : 0,
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0, 0], // x offset is set dynamically
+          "transformationGroups" : ["weapon"]
+        },
+        "partStates" : {
+          "weapon" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+	    "low" : {
+              "properties" : {
+                "image" : "<partImage>:low"
+              }
+            },
+	    "med" : {
+              "properties" : {
+                "image" : "<partImage>:med"
+              }
+            },
+	    "high" : {
+              "properties" : {
+                "image" : "<partImage>:high"
+              }
+            },
+	    "overheat" : {
+              "properties" : {
+                "image" : "<partImage>:overheat"
+              }
+            }
+          }
+        }
+      },
+      "middlefullbright" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0, 0], // x offset is set dynamically
+          "transformationGroups" : ["weapon"],
+          "fullbright" : true,
+          "zLevel" : 2
+        },
+        "partStates" : {
+          "weapon" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+	    "low" : {
+              "properties" : {
+                "image" : "<partImage>:low"
+              }
+            },
+	    "med" : {
+              "properties" : {
+                "image" : "<partImage>:med"
+              }
+            },
+	    "high" : {
+              "properties" : {
+                "image" : "<partImage>:high"
+              }
+            },
+	    "overheat" : {
+              "properties" : {
+                "image" : "<partImage>:overheat"
+              }
+            }
+          }
+        }
+      },
+
+      "muzzleFlash" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [0.75, 0],
+          "fullbright" : true,
+          "transformationGroups" : ["muzzle"]
+        },
+
+        "partStates" : {
+          "firing" : {
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:<variant>.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "rotationGroups" : {
+    "weapon" : {
+      "angularVelocity" : 0
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {},
+    "muzzle" : {}
+  },
+
+  "particleEmitters" : {
+    "muzzleFlash" : {
+      "transformationGroups" : ["muzzle"],
+      "offsetRegion" : [0, 0, 0, 0],
+      "particles" : [ ]
+    },
+    "heatVenting" : {
+      "emissionRate" : 16.0,
+      "transformationGroups" : ["muzzle"],
+      "offsetRegion" : [-0.175, 0.125, -0.175, 0.125],
+      "particles" : [ { "particle" : "smallfirecloud1" } ]
+    }
+  },
+
+  "lights" : {
+    "muzzleFlash" : {
+      "active" : false,
+      "position" : [0, 0],
+      "color" : [90, 90, 0]
+    }
+  },
+
+  "sounds" : {
+	     "fire" : [],
+	     "reload" : [],
+	     "fire1" : [],
+	     "fire2" : [],
+	     "fire3" : [],
+	     "cooldown" : [],
+	     "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+  }
+}

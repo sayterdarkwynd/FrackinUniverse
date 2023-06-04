@@ -1,0 +1,35 @@
+{
+  "objectName" : "sentrybottriplod",
+  "rarity" : "common",
+  "description" : "A reliable sidekick to protect you.",
+  "shortdescription" : "Triplod Guard",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 350,
+  "printable" : false,
+  //"learnBlueprintsOnPickup" : [ "sentrybottriplod2" ],
+  "inventoryIcon" : "sentrybottriplodicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "sentrybottriplod.png:<color>",
+
+      "imagePosition" : [-10, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaces" : [  [0, 0], [-1, 0], [0, 1], [-1, 1]],
+//      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "botspawner" : {
+      "type" : "triplodpet",
+	  "monsterImage":"/monsters/crawlers/triplod/triplod.png:idle.1?"
+  },
+
+  "scripts" : [
+    "/spawners/fubotspawner.lua"
+  ],
+  "scriptDelta" : 5
+}

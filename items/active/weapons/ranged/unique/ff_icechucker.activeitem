@@ -3,14 +3,15 @@
   "price" : 500,
   "inventoryIcon" : "ff_icechuckericon.png",
     "maxStack" : 1,
-    "rarity" : "rare",
-  "description" : "An Ice Chucker. A gun that fires ice. Freeze!",
+    "rarity" : "common",
+  "description" : "Be cruel and shoot freezing icicles at enemies.
+^yellow;Icy fun!^reset;",
   "shortdescription" : "Ice Blaster",
 
-  "level" : 3,
-  "category" : "uniqueWeapon",
-  "itemTags" : ["weapon","ranged","tool"],
-    "tooltipKind" : "gun",
+  "level" : 2,
+  "category" : "pistol",
+  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon","ice"],
+    "tooltipKind" : "gun2",
   "twoHanded" : false,
   "classMultiplier" : 0.007,
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -18,7 +19,7 @@
     "butt" : "",
     "middle" : "ff_icechucker.png",
     "barrel" : "",
-    "muzzleFlash" : ""
+    "muzzleFlash" : "/animations/muzzleflash/icemuzzle.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -36,7 +37,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "ice",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -80,6 +81,9 @@
       }
     }
   },
+
+  "critChance" : 5,
+  "critBonus" : 2,
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

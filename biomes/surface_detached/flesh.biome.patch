@@ -1,0 +1,369 @@
+[
+{"op" : "add", "path" : "/parallax", "value" : "/parallax/surface/forestsub.parallax" },
+      {
+        "op": "add",
+        "path": "/ambientNoises",
+        "value": {
+          "day" : {
+            "tracks" : [ "/sfx/environmental/forest_day.ogg" ]
+          },
+          "night" : {
+            "tracks" : [ "/sfx/environmental/forest_night.ogg" ]
+          }
+        }
+      },
+      {
+        "op": "add",
+        "path": "/musicTrack",
+        "value": {
+          "day" : {
+            "tracks" : [ "/music/fog.ogg","/music/atropusambiance1a.ogg", "/music/atropusambiance2a.ogg" ]
+          },
+          "night" : {
+            "tracks" : [ "/music/atropusambiance3a.ogg", "/music/atropusambiance4a.ogg" ]
+          }
+        }
+      },
+  {
+    "op": "replace",
+    "path": "/subBlocks",
+    "value": [ "corruptdirt", "magmarock" ]
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 1,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundRareChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "heckflower" ]
+    }
+  },
+{"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "apexencounter" ]
+  }
+},
+{"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "avianencounter" ]
+  }
+},
+{"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "floranencounter" ]
+  }
+},
+{"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "glitchencounter" ]
+  }
+},
+{"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "humanencounter" ]
+  }
+},
+{"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "boneencounter" ]
+  }
+},
+{"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "colourfulencounter" ]
+  }
+},
+{"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "eyeencounter" ]
+  }
+},
+{"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "shroomencounter" ]
+  }
+},
+{"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "randomencounter" ]
+  }
+},
+  {
+    "op": "replace",
+    "path": "/undergroundPlaceables/grassModDensity",
+    "value": 0.3
+  },
+  {
+    "op": "replace",
+    "path": "/undergroundPlaceables/ceilingGrassModDensity",
+    "value": 0.3
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 1,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "heckflower" ]
+    }
+  },
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "undergroundencounter" ]
+  }
+},
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "treasureroom" ]
+  }
+},
+
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "genericundergroundencounter" ]
+  }
+},
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "apexundergroundencounter" ]
+  }
+},
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "avianundergroundencounter" ]
+  }
+},
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "floranundergroundencounter" ]
+  }
+},
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "glitchundergroundencounter" ]
+  }
+},
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "humanundergroundencounter" ]
+  }
+},
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "outpostundergroundencounter" ]
+  }
+}
+]

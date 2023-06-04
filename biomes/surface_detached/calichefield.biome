@@ -5,11 +5,11 @@
     "groups" : [
       {
         "select" : 3,
-        "pool" : [ 
-          [ 0.111, "peblit" ],          
+        "pool" : [
+          [ 0.111, "peblit" ],
           [ 0.111, "crustoise" ],
           [ 0.111, "iguarmor" ],
-          [ 0.111, "batong" ],
+          [ 0.111, "fublackbat" ],
           [ 0.111, "voltip" ],
           [ 0.111, "fennix" ],
           [ 0.111, "ignome" ],
@@ -17,11 +17,12 @@
         ]
       },
       {
-        "select" : 1,
+        "select" : 3,
         "pool" : [
-          [ 0.4, "sunskipper" ],
-          [ 0.3, "goldbuck" ],
-          [ 0.3, "sandclown" ]
+          [ 0.25, "bee_harlequin" ],
+          [ 0.25, "sunskipper" ],
+          [ 0.25, "goldbuck" ],
+          [ 0.25, "sandclown" ]
         ]
       },
       {
@@ -35,18 +36,39 @@
           [ 1, "mousecritter" ],
           [ 1, "groopcritter" ],
           [ 1, "ravencritter" ],
-          [ 1, "wurmcritter" ]   
+          [ 1, "wurmcritter" ]
         ]
       }
     ],
     "monsterParameters" : {
       "colors" : "desert"
     }
-  },  
-  "hueShiftOptions" : [-165, -70, -25, 0, 25, 70, 165],
+  },
+
+  "parallax" : "/parallax/surface/desert.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/desert_day.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/desert_night.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+
+  "hueShiftOptions" : [-50, -40, -30, -20, -10, 0, 10, 20, 30, 40],
 
     "mainBlock" : "calichestone",
-    "subBlocks" : [ "retexsandstone01" ],
+    "subBlocks" : [ "retexsandstone01", "rock17" ],
     "ores" : "surface",
 
   "surfacePlaceables" : {
@@ -58,12 +80,12 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:minibiomeChests",
+          "distribution" : "/biomes/distributions.config:ultraRare",
 
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ [0.35, "sandstonestatueapex" ], [0.35, "sandstonestatueavian" ], [0.35, "sandstonestatuefloran" ], [0.35, "sandstonestatueglitch" ], [0.35, "sandstonestatuehuman" ], [0.35, "sandstonestatuehylotl" ] ],
+              "pool" : [ [0.35, "wormstatue" ], [0.35, "sandstonestatueapex" ], [0.35, "sandstonestatueavian" ], [0.35, "sandstonestatuefloran" ], [0.35, "sandstonestatueglitch" ], [0.35, "sandstonestatuehuman" ], [0.35, "sandstonestatuehylotl" ] ],
               "parameters" : { }
             }
           ]
@@ -77,11 +99,11 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "wildbrackentreeseed" ],
               [0.35, "wildmireurchinseed" ],
               [0.35, "thornplant" ],
-              [0.35, "wildnissseed" ] 
+              [0.35, "wildnissseed" ]
               ],
               "parameters" : { "startingStage" : 3 }
             }
@@ -91,10 +113,101 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:minibiomeChests",
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "fudesertrock1"],
+              [0.35, "fudesertrock2" ],
+              [0.35, "fudesertrock3" ],
+              [0.35, "fudesertrock4"],
+              [0.35, "fudesertrock5" ],
+              [0.35, "fudesertrock6" ],
+              [0.35, "fudesertrock7"]
+              ]
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "sandstoneChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "desertChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "grass",
+          "grasses" : [ "pebbles" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "desertrocks",
+              "baseHueShiftMax" : 15,
+              "modHueShiftMax" : 0
+            }
+          ]
         },
         {
           "mode" : "floor",
@@ -104,7 +217,161 @@
 
           "type" : "microdungeon",
           "microdungeons" : [ "sandstone" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDist",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
         }
+    ]
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "sand" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "desertChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ultraRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "wormstatue" ], [0.35, "sandstonestatueapex" ], [0.35, "sandstonestatueavian" ], [0.35, "sandstonestatuefloran" ], [0.35, "sandstonestatueglitch" ], [0.35, "sandstonestatuehuman" ], [0.35, "sandstonestatuehylotl" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "pebbles" ]
+      },
+	  {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "desertrocks",
+            "baseHueShiftMax" : 15,
+            "modHueShiftMax" : 0
+          }
+        ]
+      },
+	  {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "ceilingdesertrocks2",
+            "baseHueShiftMax" : 15,
+            "modHueShiftMax" : 0
+          }
+        ]
+      },
+	  {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [
+            [0.35, "fudesertrock1"],
+            [0.35, "fudesertrock2" ],
+            [0.35, "fudesertrock3" ],
+            [0.35, "fudesertrock4" ],
+            [0.35, "fudesertrock5" ],
+            [0.35, "fudesertrock6" ]
+            ]
+          }
+        ]
+      }
     ]
   }
 }

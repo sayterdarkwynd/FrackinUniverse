@@ -1,18 +1,19 @@
 {
   "itemName" : "irradiumspear",
-  "price" : 0,
+  "price" : 100,
   "level" : 4,
   "maxStack" : 1,
-  "rarity" : "Uncommon",
-  "description" : "Infused with toxic Irradium radiation. That's kind of you",
+  "rarity" : "rare",
+  "description" : "Infused with toxic Irradium radiation. That's kind of you.
+^cyan;Hunting weapon^reset;",
   "shortdescription" : "Irradium Spear",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "spear",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear"],
+  "itemTags" : ["weapon","melee","spear","irradium", "upgradeableWeapon","radioactive"],
 
   "inventoryIcon" : "irradiumspear.png",
-
+  //"collectablesOnPickup" : { "fu_weaponspear" : "irradiumspear" },
   "animation" : "/items/active/weapons/melee/spear/spear.animation",
   "animationParts" : {
     "handle" : "",
@@ -26,72 +27,26 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "radioactive",
 
   "aimOffset" : -1.0,
   "primaryAbilityType" : "spearstab",
   "primaryAbility" : {
     "scripts" : [],
-    "class" : "SpearStab",
 
     "fireTime" : 0.92,
     "baseDps" : 9.92,
     "damageConfig" : {
-      "damageSourceKind" : "spear",
-      "statusEffects" : [ ],
-      "knockbackMode" : "aim",
-      "knockback" : 10,
-      "timeoutGroup" : "primary"
-    },
-    "holdDamageMultiplier" : 0.1,
-    "holdDamageConfig" : {
-      "timeoutGroup" : "hold",
-      "timeout" : 0.5
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : 0,
-        "twoHanded" : false,
-        "weaponOffset" : [0, 0.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "windup" : {
-        "hold" : true,
-        "duration" : 0.55,
-        "armRotation" : -110,
-        "weaponRotation" : 20,
-        "twoHanded" : true,
-        "weaponOffset" : [0, 0.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "fire" : {
-        "duration" : 0.3,
-        "armRotation" : -20,
-        "weaponRotation" : -70,
-        "twoHanded" : true,
-        "weaponOffset" : [0.3, 2.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "hold" : {
-        "armRotation" : -30,
-        "weaponRotation" : -60,
-        "twoHanded" : true,
-        "weaponOffset" : [-0.3, 2.0],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      }
+      "damageSourceKind" : "radioactivebow",
+      "statusEffects" : [ "radiationburn" ],
+      "knockback" : 10
     }
   },
   "altAbilityType" : "rocketspear",
   "altAbility" : { },
-  
+
+  "critChance" : 1,
+  "critBonus" : 8,
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

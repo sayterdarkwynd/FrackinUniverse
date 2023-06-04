@@ -1,0 +1,44 @@
+{
+  "objectName" : "naileryseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "Nailery, a Glitch delight. A delicacy filled with valuable iron. Can be made into bombs in a lab.",
+  "shortdescription" : "Nailery Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 11,
+  "inventoryIcon" : "naileryseedicon.png",
+  "largeImage" : "naileryseed.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "nailery" },
+  "orientations" : [
+    {
+      "dualImage" : "naileryseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [260, 320]
+    },
+    {
+      "duration" : [260, 320]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "naileryHarvest",
+      "resetToStage" : 0
+    }
+  ],
+//  "learnBlueprintsOnPickup" : [ "tinselbush" ],
+    "maxImmersion" : 0.125
+}

@@ -1,0 +1,62 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "drainState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1
+          },
+          "opening" : {
+            "frames" : 3,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "on"
+          },
+          "on" : {
+            "frames" : 1
+          },
+          "closing" : {
+            "frames" : 3,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "off"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "drain" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "drainState" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:off"
+              }
+            },
+            "opening" : {
+              "properties" : {
+                "image" : "<partImage>:opening.<frame>"
+              }
+            },
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:on"
+              }
+            },
+            "closing" : {
+              "properties" : {
+                "image" : "<partImage>:closing.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

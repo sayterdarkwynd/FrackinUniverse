@@ -1,0 +1,81 @@
+{
+  "objectName" : "swtjc_wp_advancedliquidsensor",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "objectType" : "container",
+  "rarity" : "Common",
+  "description" : "This can detect the presence of a specific liquid.",
+  "shortdescription" : "Advanced Liquid Sensor",
+  "race" : "generic",
+  "category" : "wire",
+  "price" : 10,
+
+  "floranDescription" : "Thiss detectss the pressence of a sspecific liquid.",
+  "glitchDescription" : "Impressed. This can detect the presence of a specific liquid.",
+
+  "inventoryIcon" : "liquidsensoricon.png",
+
+  "orientations" : [
+    {
+      "image" : "liquidsensor.png:default.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+      "direction" : "right"
+    },
+    {
+      "image" : "liquidsensor.png:default.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
+    },
+    {
+      "image" : "liquidsensor.png:default.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ],
+      "direction" : "right"
+    },
+    {
+      "image" : "liquidsensor.png:default.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "left" ],
+      "direction" : "right"
+    },
+    {
+      "image" : "liquidsensor.png:default.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "right" ],
+      "direction" : "right"
+    }
+  ],
+
+  "inputSlot" : 1,
+  "acceptsItems" : true,
+  "itemAgeMultiplier" : 0.0,
+
+  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+	"slotCount" : 1,
+  "uiConfig" : "/interface/swtjc_wp_advancedliquidsensor/swtjc_wp_advancedliquidsensor.config",
+  "frameCooldown" : 67,
+	"autoCloseCooldown" : 3600,
+
+  "scripts" : [ "swtjc_wp_advancedliquidsensor.lua" ],
+  "scriptDelta" : 2,
+
+  "animation" : "liquidsensor.animation",
+  "animationParts" : {
+    "sensor" : "liquidsensor.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "outputNodes" : [ [0, 0] ]
+}

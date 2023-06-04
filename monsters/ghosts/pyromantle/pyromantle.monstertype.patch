@@ -1,0 +1,173 @@
+[
+  {
+    "op": "add",
+    "path": "/dropPools/0/firebow",
+    "value": "pyromantleHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/icebow",
+    "value": "pyromantleHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/poisonbow",
+    "value": "pyromantleHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/electricbow",
+    "value": "pyromantleHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/radioactivebow",
+    "value": "pyromantleHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/cosmicbow",
+    "value": "pyromantleHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/shadowbow",
+    "value": "pyromantleHunting"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions/-",
+    "value": {
+      "name": "action-fire",
+      "cooldown": 4,
+      "parameters": {
+        "requireLineOfSight": true,
+        "maximumRange": 5,
+        "minimumRange": 1,
+        "onGround": false,
+        "windupStopForce": 50,
+        "windupState": "fire",
+        "windupTime": 0.5,
+        "projectileType": "largefirecloud",
+        "projectileParameters": {
+          "speed": 7.5,
+          "timeToLive": 1
+        },
+        "fireOffset": [
+          0,
+          0
+        ],
+        "aimAtTarget": false,
+        "inaccuracy": 3.14,
+        "projectileCount": 8,
+        "projectileInterval": 0,
+        "fireState": "",
+        "fireDelay": 0,
+        "fireSound": "fire",
+        "winddownState": "fly",
+        "winddownTime": 0.5
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/cooldown",
+    "value": 5
+  },
+  {
+    "op": "remove",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/windupState"
+  },
+  {
+    "op": "remove",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/projectileCount"
+  },
+  {
+    "op": "remove",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/projectileInterval"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/maximumRange",
+    "value": 20
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/minimumRange",
+    "value": 4
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/windupTime",
+    "value": 0.8
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/projectileType",
+    "value": "pandorasboxpyromantleshot"
+  },
+  {
+    "op": "remove",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/projectileParameters/timeToLive"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/projectileParameters/speed",
+    "value": 40
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/aimAtTarget",
+    "value": true
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/inaccuracy",
+    "value": 0
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/fireState",
+    "value": "fire"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/fireDelay",
+    "value": 0.1
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/fireSound",
+    "value": "fire"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/winddownState",
+    "value": ""
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/touchDamage/statusEffects/-",
+    "value": "burning"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/colors",
+    "value": "pandorasboxrock"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 88
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/physicalResistance/baseValue",
+    "value": 0.5
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/fireResistance/baseValue",
+    "value": 0.95
+  }
+]

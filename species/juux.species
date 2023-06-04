@@ -1,0 +1,309 @@
+{
+  "kind" : "juux",
+
+  "charCreationTooltip" : {
+      "title" : "Pharitu",
+      "subTitle" : "O8",
+      "description" : "An unusual psionic species of extremophiles. Can generate a powerful psionic vibration through sheer willpower.
+
+  ^orange;Diet^reset;: Any (including prepared Isotopes)
+
+^orange;Perks^reset;:
+  Energy x^green;1.1^reset;
+  ^green;Resist^reset;: +^cyan;30^reset;% Mental, +^cyan;20^reset;% Fire & Electric, +^cyan;15^reset;% Cosmic & Radioactive
+  ^cyan;Immune^reset;: Burning
+  Tech: ^green;Psionic Wave^reset;
+
+^orange;Environment^reset;:
+  ^green;Electrically charged or crystal^reset; biomes: +^green;5% speed^reset;
+  ^red;Cold^reset; biomes: Defense x^green;0.9^reset;
+
+^orange;Weapons^reset;:
+  Precognition: +^cyan;8%^reset; to ^green;all^reset; damage
+  Psionic Ejector:  Damage x^green;1.2^reset;
+  Magnorb Mastery: +^green;20^reset;%
+
+^red;Weaknesses^reset;:
+  Health: x^red;0.88^reset;
+  ^red;Resist^reset;:  -^red;12^reset;% Physical, -^red;20^reset;% Poison, -^red;5^reset;% Ice
+  -^red;10^reset;% Charisma"
+  },
+
+  "nameGen" : [ "/species/pharitumalenamegen.config:names", "/species/pharitufemalenamegen.config:names" ],
+  "ouchNoises" : [ "/sfx/humanoid/juuxhurtmale.ogg", "/sfx/humanoid/juuxhurtfemale.ogg" ],
+  "charGenTextLabels" : [ "Body colour", "Gem", "Shirt", "Legwear", "Marking Colour", "Gem colour", "Shirt colour", "Legwear colour", "PHARITU", "Personality" ],
+  "skull" : "/humanoid/juux/dead.png",
+  "effectDirectives" : "?replace=FEFFFFFF=EDCD74FF?replace=9bd4ffFF=EDAF74FF?replace=31a6ffFF=ED9074FF",
+  "defaultBlueprints" : {
+    "tier1" : [
+
+      { "item" : "flagjuux" },
+      { "item" : "obsidianmace" },
+      { "item" : "arbiterhead" },
+      { "item" : "centurionhead" },
+      { "item" : "treyarchhead" },
+      { "item" : "flamebreakerhead" },
+      { "item" : "scrapperhead" },
+      { "item" : "waypointerhead" },
+      { "item" : "florantier1head" },
+      { "item" : "florantier1chest" },
+      { "item" : "florantier1pants" },
+      { "item" : "florantier2head" },
+      { "item" : "florantier2chest" },
+      { "item" : "florantier2pants" },
+      { "item" : "florantier3head" },
+      { "item" : "florantier3chest" },
+      { "item" : "florantier3pants" },
+      { "item" : "florantier4head" },
+      { "item" : "florantier4chest" },
+      { "item" : "florantier4pants" },
+      { "item" : "florantier5ahead" },
+      { "item" : "florantier5achest" },
+      { "item" : "florantier5apants" },
+      { "item" : "florantier6ahead" },
+      { "item" : "florantier6achest" },
+      { "item" : "florantier6apants" },
+      { "item" : "florantier5mhead" },
+      { "item" : "florantier5mchest" },
+      { "item" : "florantier5mpants" },
+      { "item" : "florantier6mhead" },
+      { "item" : "florantier6mchest" },
+      { "item" : "florantier6mpants" },
+      { "item" : "florantier5shead" },
+      { "item" : "florantier5schest" },
+      { "item" : "florantier5spants" },
+      { "item" : "florantier6shead" },
+      { "item" : "florantier6schest" },
+      { "item" : "florantier6spants" },
+      { "item" : "floranstoragelocker" },
+      { "item" : "floranshipdoor" },
+      { "item" : "floranshiphatch" },
+      { "item" : "floranfurnivourchest" },
+      { "item" : "floranfurnivourlegs" },
+      { "item" : "floranhunterchest" },
+      { "item" : "floranhunterlegs" },
+      { "item" : "floranleafchest" },
+      { "item" : "floranleaflegs" },
+      { "item" : "floranpeltchest" },
+      { "item" : "floranpeltlegs" }
+    ]
+  },
+  "altOptionAsUndyColor" : true,
+  "headOptionAsHairColor" : true,
+  "altOptionAsHairColor" : true,
+  "hairColorAsBodySubColor" : true,
+  "genders" : [
+    {
+      "name" : "male",
+      "image" : "/interface/title/juuxmaleicon.png",
+      "characterImage" : "/interface/title/juuxmale.png",
+      "hair" : [ "1", "2", "3", "4", "5", "6", "7","8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21" ],
+      "shirt" : [ "floranfurnivourchest", "floranhunterchest", "floranleafchest", "floranpeltchest", "floransurvivalistchest", "protectorateshirtchest", "protectoratevestchest" ],
+      "pants" : [ "floranfurnivourlegs", "floranhunterlegs", "floranleaflegs", "floranpeltlegs", "floransurvivalistlegs" ],
+      "facialHairGroup" : "",
+      "facialHair" : [ ],
+      "facialMaskGroup" : "",
+      "facialMask" : [ ]
+    },
+    {
+      "name" : "female",
+      "image" : "/interface/title/juuxfemaleicon.png",
+      "characterImage" : "/interface/title/juuxfemale.png",
+      "hair" : [ "1", "2", "3", "4", "5", "6", "7","8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21" ],
+      "shirt" : [ "floranfurnivourchest", "floranhunterchest", "floranleafchest", "floranpeltchest", "floransurvivalistchest", "protectorateshirtchest", "protectoratevestchest" ],
+      "pants" : [ "floranfurnivourlegs", "floranhunterlegs", "floranleaflegs", "floranpeltlegs", "floransurvivalistlegs" ],
+      "facialHairGroup" : "",
+      "facialHair" : [ ],
+      "facialMaskGroup" : "",
+      "facialMask" : [ ]
+    }
+  ],
+  "bodyColor" : [
+    // Default     New      Default     New      Default     New      Default     New
+        // Green
+	{ "FFCA8A" : "009E0D", "E0975C" : "00840B", "A85636" : "006B08", "6F2919" : "005106" },
+	// Lavender
+	{ "FFCA8A" : "9CA4D1", "E0975C" : "8990B7", "A85636" : "767C9E", "6F2919" : "636884" },
+	// Purple
+	{ "FFCA8A" : "7D64C9", "E0975C" : "6D57AF", "A85636" : "5E4B96", "6F2919" : "503F7F" },
+	// Grey
+	{ "FFCA8A" : "A0A0A0", "E0975C" : "878787", "A85636" : "6D6D6D", "6F2919" : "545454" },
+	// Brown
+	{ "FFCA8A" : "918775", "E0975C" : "776F61", "A85636" : "5E574C", "6F2919" : "474239" },
+	// Sand
+	{ "FFCA8A" : "D8BA7D", "E0975C" : "BFA46E", "A85636" : "A58E60", "6F2919" : "8C7851" },
+	// Tan
+	{ "FFCA8A" : "D6BE91", "E0975C" : "BCA780", "A85636" : "A3906E", "6F2919" : "897A5D" },
+	// White
+	{ "FFCA8A" : "FEFFFF", "E0975C" : "E0E0E0", "A85636" : "C1C1C1", "6F2919" : "A9A9A9" },
+	// Pink
+	{ "FFCA8A" : "C96492", "E0975C" : "AF577F", "A85636" : "964B6D", "6F2919" : "7F3F5B" },
+	// Salmon
+	{ "FFCA8A" : "C67D9E", "E0975C" : "AD6D8A", "A85636" : "935D75", "6F2919" : "7A4D61" },
+	// Grape
+	{ "FFCA8A" : "855E87", "E0975C" : "694A6B", "A85636" : "4D374F", "6F2919" : "322333" },
+	// Teal
+	{ "FFCA8A" : "01AAAF", "E0975C" : "019DA3", "A85636" : "0193A3", "6F2919" : "017F8F" },
+	// Sea Foam
+	{ "FFCA8A" : "56ABAD", "E0975C" : "52A2A5", "A85636" : "5099A0", "6F2919" : "47878E" },
+	// Red
+	{ "FFCA8A" : "C95000", "E0975C" : "AF4600", "A85636" : "963C00", "6F2919" : "7F3300" },
+	// Midnight
+	{ "FFCA8A" : "524389", "E0975C" : "433670", "A85636" : "342A56", "6F2919" : "251E3E" },
+	// Dark Grey
+	{ "FFCA8A" : "6C6587", "E0975C" : "58526D", "A85636" : "433F54", "6F2919" : "312D3D" },
+	// Cherry
+	{ "FFCA8A" : "D10000", "E0975C" : "BF0000", "A85636" : "A80000", "6F2919" : "8F0000" },
+	// Ice
+	{ "FFCA8A" : "93B2C4", "E0975C" : "87A4B5", "A85636" : "748FA5", "6F2919" : "5E7487" },
+	// Moon
+	{ "FFCA8A" : "8EBAED", "E0975C" : "86A6E0", "A85636" : "7184BC", "6F2919" : "5D649B" },
+	// Grass
+	{ "FFCA8A" : "D4E09D", "E0975C" : "A0BF85", "A85636" : "65916B", "6F2919" : "4C6D59" },
+	// WHITE
+	{ "FFCA8A" : "ffffff", "E0975C" : "bec6c8", "A85636" : "989ea0", "6F2919" : "6f7578" },
+	// BLACK
+    { "FFCA8A" : "555555", "E0975C" : "424242", "A85636" : "303030", "6F2919" : "151515" },
+	// NEW CREAM
+    { "FFCA8A" : "ebcc8f", "E0975C" : "c4a568", "A85636" : "ac8d50", "6F2919" : "937437" },
+	// GRAY
+    { "FFCA8A" : "968f89", "E0975C" : "7e7770", "A85636" : "5c5957", "6F2919" : "4f4c49" },
+	// ORANGE
+    { "FFCA8A" : "d0a12f", "E0975C" : "bb8624", "A85636" : "96691f", "6F2919" : "82581d" },
+	// STARBOUND CREAM
+    { "FFCA8A" : "d7cdc1", "E0975C" : "afa69a", "A85636" : "978e82", "6F2919" : "7b7570" },
+	// LIGHT BLUE
+	{ "FFCA8A" : "98e0f8", "E0975C" : "70c0f8", "A85636" : "4890c8", "6F2919" : "2a587b" },
+	// EMERA
+	{ "FFCA8A" : "81C14B", "E0975C" : "2E933C", "A85636" : "297045", "6F2919" : "204E4A" },
+    // MUTED RED
+    { "FFCA8A" : "e47068", "E0975C" : "c54848", "A85636" : "952f45", "6F2919" : "65223a" },
+    // MUTED YELLOW
+    { "FFCA8A" : "e3da89", "E0975C" : "c5bd6d", "A85636" : "9a8d4c", "6F2919" : "705f32" },
+    // LIGHT RED
+    { "FFCA8A" : "E86D46", "E0975C" : "D1422E", "A85636" : "96201B", "6F2919" : "721814" },
+    // RED
+    { "FFCA8A" : "CD1C38", "E0975C" : "982441", "A85636" : "69243F", "6F2919" : "4b1a2d" },
+    // RUSTY RED
+    { "FFCA8A" : "BE471B", "E0975C" : "9B2F0C", "A85636" : "702710", "6F2919" : "561e0d" },
+    //LIGHT GREEN
+    { "FFCA8A" : "A7D13D", "E0975C" : "83AD22", "A85636" : "627e09", "6F2919" : "3c4c08" },
+    // TURQUOISE
+    { "FFCA8A" : "5BD5B6", "E0975C" : "4AA9AD", "A85636" : "237082", "6F2919" : "104648" },
+    // LIGHT TURQUOISE
+    { "FFCA8A" : "82d9c5", "E0975C" : "46b89f", "A85636" : "1b8587", "6F2919" : "244e54" },
+    // LIGHT BLUE
+    { "FFCA8A" : "7eabd9", "E0975C" : "5583cf", "A85636" : "305ba6", "6F2919" : "22386b" },
+	// KESPAR
+    { "FFCA8A" : "2C70A5", "E0975C" : "534DA3", "A85636" : "59278C", "6F2919" : "4E0074" }
+  ],
+
+  "undyColor" : [
+    // Default     New      Default     New      Default     New
+	// Oceanite
+	{ "FFD800" : "67BFA6", "D8B400" : "26A4AA", "BF9F00" : "256FA1" },
+	// Feya
+	{ "FFD800" : "382077", "D8B400" : "38065E", "BF9F00" : "380647" },
+	// Emera
+	{ "FFD800" : "2E933C", "D8B400" : "297045", "BF9F00" : "204E4A" },
+	// Thanatite
+	{ "FFD800" : "FF9554", "D8B400" : "F96A4A", "BF9F00" : "DF474D" },
+	// Rekite
+	{ "FFD800" : "793428", "D8B400" : "530E27", "BF9F00" : "390026" },
+	// Nhydri
+	{ "FFD800" : "00A5FF", "D8B400" : "0077FF", "BF9F00" : "0045FF" },
+	// Opul
+	{ "FFD800" : "E0FEFE", "D8B400" : "D1F8FD", "BF9F00" : "B7EAFF" },
+	// Kespar
+	{ "FFD800" : "534DA3", "D8B400" : "59278C", "BF9F00" : "4E0074" },
+	// Sivite
+	{ "FFD800" : "9AB87A", "D8B400" : "709E78", "BF9F00" : "4D7F76" },
+	// Koanite
+	{ "FFD800" : "00A795", "D8B400" : "017F8F", "BF9F00" : "05668D" },
+	// Duskiline
+	{ "FFD800" : "1D61E2", "D8B400" : "183FBF", "BF9F00" : "14229E" },
+	// Rasiline
+	{ "FFD800" : "C80084", "D8B400" : "960084", "BF9F00" : "6E0084" },
+	// Apalite
+	{ "FFD800" : "16BCCC", "D8B400" : "1197A3", "BF9F00" : "0F7F89" },
+	// Sahkite
+	{ "FFD800" : "52F2A6", "D8B400" : "18BC9C", "BF9F00" : "3A8686" },
+	// Tokanite
+	{ "FFD800" : "CCCC51", "D8B400" : "8FB258", "BF9F00" : "5D994C" },
+	// Phosite
+	{ "FFD800" : "EDCD74", "D8B400" : "EDAF74", "BF9F00" : "ED9074" },
+	// Upilite
+	{ "FFD800" : "E0E0E0", "D8B400" : "C1C1C1", "BF9F00" : "A9A9A9" },
+	// Rukar
+	{ "FFD800" : "BD1111", "D8B400" : "8F0000", "BF9F00" : "570000" },
+	// Exonite
+	{ "FFD800" : "651E3E", "D8B400" : "451E3E", "BF9F00" : "251E3E" },
+	// Zerchesium
+	{ "FFD800" : "8E4D54", "D8B400" : "66174A", "BF9F00" : "340C35" },
+	// Plutonium
+	{ "FFD800" : "FFA3F5", "D8B400" : "E30ECF", "BF9F00" : "9F0088" },
+	// Uranium
+	{ "FFD800" : "1FD800", "D8B400" : "09BA09", "BF9F00" : "098122" },
+	// Neptunium
+	{ "FFD800" : "E1C4ED", "D8B400" : "A261C0", "BF9F00" : "7F4B92" },
+	// Thorium
+	{ "FFD800" : "C3DEF0", "D8B400" : "60A0C7", "BF9F00" : "4C7898" },
+	// Solarium
+	{ "FFD800" : "F8EC20", "D8B400" : "D28000", "BF9F00" : "984700" }
+
+  ],
+
+  "hairColor" : [
+    // Default     New      Default     New      Default     New     Default     New
+    // Oceanite
+	{ "F22000" : "AEDEBF", "DC1F00" : "67BFA6", "BE1B00" : "26A4AA", "951500" : "256FA1" },
+	// Feya
+	{ "F22000" : "45209C", "DC1F00" : "382077", "BE1B00" : "38065E", "951500" : "380647" },
+	// Emera
+	{ "F22000" : "81C14B", "DC1F00" : "2E933C", "BE1B00" : "297045", "951500" : "204E4A" },
+	// Thanatite
+	{ "F22000" : "FFD77F", "DC1F00" : "FF9554", "BE1B00" : "F96A4A", "951500" : "DF474D" },
+	// Rekite
+	{ "F22000" : "976429", "DC1F00" : "793428", "BE1B00" : "530E27", "951500" : "390026" },
+	// Nhydri
+	{ "F22000" : "00D1FF", "DC1F00" : "00A5FF", "BE1B00" : "0077FF", "951500" : "0045FF" },
+	// Opul
+	{ "F22000" : "FEFFFF", "DC1F00" : "E0FEFE", "BE1B00" : "D1F8FD", "951500" : "B7EAFF" },
+	// Kespar
+	{ "F22000" : "2C70A5", "DC1F00" : "534DA3", "BE1B00" : "59278C", "951500" : "4E0074" },
+	// Sivite
+	{ "F22000" : "F7F891", "DC1F00" : "9AB87A", "BE1B00" : "709E78", "951500" : "4D7F76" },
+	// Koanite
+	{ "F22000" : "01C299", "DC1F00" : "00A795", "BE1B00" : "017F8F", "951500" : "05668D" },
+	// Duskiline
+	{ "F22000" : "1D77E2", "DC1F00" : "1D61E2", "BE1B00" : "183FBF", "951500" : "14229E" },
+	// Rasiline
+	{ "F22000" : "E70084", "DC1F00" : "C80084", "BE1B00" : "960084", "951500" : "6E0084" },
+	// Apalite
+	{ "F22000" : "1CECFF", "DC1F00" : "16BCCC", "BE1B00" : "1197A3", "951500" : "0F7F89" },
+	// Sahkite
+	{ "F22000" : "9AFFDF", "DC1F00" : "52F2A6", "BE1B00" : "18BC9C", "951500" : "3A8686" },
+	// Tokanite
+	{ "F22000" : "FED833", "DC1F00" : "CCCC51", "BE1B00" : "8FB258", "951500" : "5D994C" },
+	// Phosite
+	{ "F22000" : "F3E995", "DC1F00" : "EDCD74", "BE1B00" : "EDAF74", "951500" : "ED9074" },
+	// Upilite
+	{ "F22000" : "ECECEC", "DC1F00" : "E0E0E0", "BE1B00" : "C1C1C1", "951500" : "A9A9A9" },
+	// Rukar
+	{ "F22000" : "E8003D", "DC1F00" : "BD1111", "BE1B00" : "8F0000", "951500" : "570000" },
+	// Exonite
+	{ "F22000" : "851E3E", "DC1F00" : "651E3E", "BE1B00" : "451E3E", "951500" : "251E3E" },
+	// Zerchesium
+	{ "F22000" : "E3DF7B", "DC1F00" : "8E4D54", "BE1B00" : "66174A", "951500" : "340C35" },
+	// Plutonium
+	{ "F22000" : "FFF0FF", "DC1F00" : "FFA3F5", "BE1B00" : "E30ECF", "951500" : "9F0088" },
+	// Uranium
+	{ "F22000" : "D7FFB7", "DC1F00" : "1FD800", "BE1B00" : "09BA09", "951500" : "098122" },
+	// Neptunium
+	{ "F22000" : "F5F5FC", "DC1F00" : "E1C4ED", "BE1B00" : "A261C0", "951500" : "7F4B92" },
+	// Thorium
+	{ "F22000" : "F5FAFC", "DC1F00" : "C3DEF0", "BE1B00" : "60A0C7", "951500" : "4C7898" },
+	// Solarium
+	{ "F22000" : "FFFFFF", "DC1F00" : "F8EC20", "BE1B00" : "D28000", "951500" : "984700" }
+  ]
+}

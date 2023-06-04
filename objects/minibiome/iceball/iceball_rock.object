@@ -1,0 +1,31 @@
+{
+  "objectName" : "iceball_rock",
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 400,
+  "printable" : false,
+  "description" : "Volcanic rock",
+  "shortdescription" : "Volcanic Rock",
+  "race" : "apex",
+
+  "inventoryIcon" : "iceball_rock.png",
+  "orientations" : [
+    {
+      "dualImage" : "iceball_rock.png:<color>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/rock_break1.ogg", "/sfx/objects/rock_break2.ogg", "/sfx/objects/rock_break3.ogg", "/sfx/objects/rock_break4.ogg", "/sfx/objects/rock_break5.ogg" ],
+  "smashParticles" : [ { "count" : 5, "particle" : "iceshard" } ],
+  "smashDropOptions" : [
+    [ [ "ice", 20, { } ] ]
+  ],
+  "biomePlaced" : true
+}

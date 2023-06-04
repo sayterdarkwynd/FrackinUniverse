@@ -1,0 +1,45 @@
+{
+  "projectileName" : "fudebrisscatterboom",
+  "physics" : "grenade",
+  "bounces" : 1,
+  "damageKindImage" : "icon.png",
+  "image" : "fudebrisscatter.png",
+  "animationCycle" : 0.3,
+  "frameNumber" : 4,
+  "onlyHitTerrain" : true,
+  "emitters" : [ "fufiretrail" ],
+  "power" : 0,
+  "speed" : 25,
+  "timeToLive" : 0.3,
+  "supportsProcessing" : true,
+  "lightColor" : [100, 65, 0],
+  "fullbright" : true,
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+  "hydrophobic" : true,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "fudebrisscatter",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.5
+    },
+    {
+      "action" : "projectile",
+      "inheritDamageFactor" : 0.25,
+      "type" : "crudebombnoblast"
+    },
+    {
+      "action" : "explosion",
+      "foregroundRadius" : 4,
+      "backgroundRadius" : 0,
+      "explosiveDamageAmount" : 12,
+      "harvestLevel" : 99,
+      "delaySteps" : 2
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/goop.ogg" ]
+    }
+  ]
+}

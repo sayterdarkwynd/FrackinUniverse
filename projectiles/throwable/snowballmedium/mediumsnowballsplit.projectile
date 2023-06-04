@@ -1,0 +1,41 @@
+{
+  "projectileName" : "mediumsnowballsplit",
+  "speed" : 11,
+  "physics" : "grenade",
+  "image" : "mediumsnowball.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "damageKind" : "snowball",
+  "damagePoly" : [ [-4.5, 0], [-3, -3], [0, -4.5], [3, -3], [4.5, 0], [3, 3], [0, 4.5], [-3, 3] ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/mediumsnowballexplosion/mediumsnowballexplosion.config"
+    },
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : "metamod:none",
+      "newMod" : "snow",
+      "radius" : 2
+    },
+    {
+      "action" : "projectile",
+      "type" : "snowballsplit",
+      "angle" : 0,
+	  "inheritDamageFactor" : 0.75
+    },
+    {
+      "action" : "projectile",
+      "type" : "snowballsplit",
+      "angle" : 90,
+	  "inheritDamageFactor" : 0.75
+    },
+    {
+      "action" : "projectile",
+      "type" : "snowballsplit",
+      "angle" : 270,
+	  "inheritDamageFactor" : 0.75
+    }
+  ],
+  "emitters" : [ "defaultwhite" ]
+}

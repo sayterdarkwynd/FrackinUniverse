@@ -1,22 +1,23 @@
 {
-  "itemName" : "ghostmushroom",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "ghostmushroom.png",
-  "description" : "Provides invisibility to the eater of this fungus.",
-  "shortdescription" : "Ghost Mushroom",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 5,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      {
-        "effect" : "invisible",
-	      "duration" : 60
-      }
-    ] ]
+	"itemName": "ghostmushroom",
+	"inventoryIcon": "ghostmushroom.png",
+	"category": "food",
+	"rarity": "Rare",
+	"price": 20,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Invisible to Erchius Horrors^reset;: 5m",
+	"shortdescription": "Ghost Mushroom Spore",
+
+	"effects": [
+		[{
+				"effect": "camouflage55",
+				"duration": 300
+			},
+			{
+				"effect": "erchiusimmunity",
+				"duration": 300
+			}
+		]
+	]
 }

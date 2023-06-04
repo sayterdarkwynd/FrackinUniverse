@@ -1,14 +1,14 @@
 {
   "projectileName" : "hellfireburst2",
   "image" : "hellfireburst.png",
-  "animationCycle" : 0.9,
+  "animationCycle" : 0.76,
   "physics" : "bullet",
   "level" : 7,
   "damageKindImage" : "icon.png",
   "frameNumber" : 9,
   "speed" : 20,
-  "lightColor" : [255,141,40],
-  "timeToLive" : 0.9,
+  "lightColor" : [200,121,10],
+  "timeToLive" : 0.76,
   "piercing" : false,
   "damagePoly" : [ [-9, 0], [-6, -6], [0, -27], [6, -6], [9, 0], [6, 6], [0, 27], [-6, 6] ],
   "damageKind" : "fireplasma",
@@ -16,6 +16,37 @@
     {
       "action" : "config",
       "file" : "/projectiles/explosions/hellfireexplosion/hellfireexplosion.config"
+    },
+    {
+      "action" : "explosion",
+      "foregroundRadius" : 8,
+      "backgroundRadius" : 4,
+      "explosiveDamageAmount" : 32,
+      "delaySteps" : 2
+    },
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectilegrenade",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.08
+    },
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectilegrenade",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.08
+    },
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectilegrenade",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.08
+    },
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectilegrenade",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.08
     },
     {
       "action" : "projectile",

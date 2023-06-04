@@ -4,12 +4,15 @@
   "inventoryIcon" : "fufreezecannonicon.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Blasts a cloud of ice that hangs in the air, freezing and damaging foes.",
+  "description" : "A cloud-laying ice weapon.
+^yellow;Blasts cause targets to slip^reset;
+^cyan;Alt-fire freezes enemies^reset;",
   "shortdescription" : "Coldsnap",
-  "level" : 4,
-  "tooltipKind" : "gun",
+  "category" : "shotgun",
+  "level" : 5,
+  "tooltipKind" : "gun2",
   "weaponType" : "Ice Cannon",
-  "itemTags" : ["weapon","ranged","rocketlauncher"],
+  "itemTags" : ["weapon","ranged","shotgun", "isogen", "upgradeableWeapon" ],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -27,26 +30,27 @@
 
   "baseOffset" : [1.0, 0.120],
   "muzzleOffset" : [1.645, 0.125],
-  
+
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "hoarfrost",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 1,
-    "baseDps" : 6.8,
-    "energyUsage" : 74.0,
-    "inaccuracy" : 0,
+    "fireTime" : 0.8,
+    "baseDps" : 8.8,
+    "energyUsage" : 40.0,
+    "inaccuracy" : 0.08,
 
-    "projectileCount" : 1,
+    "projectileCount" : 8,
     "fireType" : "auto",
 
-    "projectileType" : "fufreezecannonshot",
-    "projectileParameters" : { 
-      "speed" : 50,
-      "knockback" : 5
+    "projectileType" : "iceshardsmall",
+    "projectileParameters" : {
+      "speed" : 55,
+      "knockback" : 8,
+      "damageKind" : "hoarfrost"
     },
 	  "stances" : {
 	    "idle" : {
@@ -75,7 +79,7 @@
 	      "allowRotate" : false,
 	      "allowFlip" : false
 	    }
-	  }    
+	  }
   },
     "particleEmitters" : {
       "muzzleFlash" : {
@@ -86,8 +90,15 @@
         ]
       }
     },
-
-  "altAbilityType" : "freezecannon",
+  "critChance" : 5,
+  "critBonus" : 6,
+  "altAbilityType" : "piercingshot",
+  "altAbility" : {
+    "name" : "Freeze Ball Blast",
+    "projectileType" : "iceguardianbullet",
+    "projectileCount" : 12,
+    "inaccuracy" : 0.5
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

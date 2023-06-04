@@ -1,0 +1,46 @@
+{
+  "objectName" : "xishiplight",
+  "colonyTags" : ["light", "xi"],
+  "rarity" : "Common",
+  "category" : "light",
+  "lightColor" : [236, 255, 88],
+  "price" : 60,
+  "description" : "A common ship light.",
+  "shortdescription" : "Ship Light",
+  "race" : "xi",
+
+  "apexDescription" : "These lights are commonly used on ships.",
+  "avianDescription" : "A vibrant light.",
+  "floranDescription" : "Ship light is harsh on Floran eyesss.",
+  "glitchDescription" : "Impressed. This lighting fixture generates more light than heat.",
+  "humanDescription" : "A bright, white light.",
+  "hylotlDescription" : "A bright, white light. It creates a neutral atmosphere.",
+  "novakidDescription" : "That's one bright lightbulb.",
+
+  "inventoryIcon" : "xishiplighticon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "xishiplight.png:<color>.<frame>", "fullbright" : true }, { "image" : "xishiplightlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-8, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "xishiplight.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

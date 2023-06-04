@@ -1,0 +1,120 @@
+{
+  "itemName" : "swtjc_ewg_npcminirocketlauncher",
+  "price" : 0,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "Launches smaller anti-personnel rockets in fairly quick succession (by rocket launcher standards).",
+  "shortdescription" : "NPC Mini-Rocket Launcher",
+  "tooltipKind" : "gun",
+  "category" : "swtjc_ewg_miniRocketLauncher",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","rocketlauncher"],
+
+
+  "magazineSize" : [1,4],
+  "reloadTime" : [2,3],
+  "isAmmoBased" : 1,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : { },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "rocketbarrelpuff" }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/gun/rocket1.ogg" ]
+    }
+  },
+  "baseOffset" : [-2.5, 0.375],
+  "muzzleOffset" : [0.0, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.5,
+    "baseDps" : 8.5,
+    "energyUsage" : 17,
+    "inaccuracy" : 0.04,
+
+    "projectileType" : "rocketshell",
+    "projectileParameters" : {
+      "knockback" : 20
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [0, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.1, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.3,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.1, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "fireSounds" : [ "/sfx/gun/rocket2.ogg" ],
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "animationParts" : {
+      "butt" : {
+        "path" : "/items/active/weapons/ranged/rocketlauncher/butt/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "middle" : {
+        "path" : "/items/active/weapons/ranged/rocketlauncher/middle/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "barrel" : {
+        "path" : "/items/active/weapons/ranged/grenadelauncher/barrel/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "muzzleFlash" : ""
+    },
+    "gunParts" : ["butt", "middle", "barrel"],
+    "elementalFireSounds" : {
+      "physical" : [ "/sfx/gun/rocket2.ogg" ],
+      "fire" : [ "/sfx/gun/rocket_fire1.ogg" ],
+      "electric" : [ "/sfx/gun/rocket_electric1.ogg" ],
+      "ice" : [ "/sfx/gun/rocket_ice1.ogg" ],
+      "poison" : [ "/sfx/gun/rocket_poison1.ogg" ]
+    },
+    "altAbilities" : [ ],
+    "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
+    "iconDrawables" : ["butt", "middle", "barrel"]
+  }]
+}

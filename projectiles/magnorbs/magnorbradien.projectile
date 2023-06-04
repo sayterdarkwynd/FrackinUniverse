@@ -1,0 +1,33 @@
+{
+  "projectileName" : "magnorbradien",
+  "image" : "magnorbradien.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [[-2, 0], [0, 2], [2, 0], [0, -2]],
+  "power" : 1,
+  "speed" : 55,
+  "damageKind" : "radioactive",
+  "physics" : "laser",
+  "fullbright" : true,
+  "bounces" : 0,
+  "piercing" : false,
+  "timeToLive" : 2,
+  "lightColor" : [45, 55, 24],
+  "statusEffects" : [],
+  "actionOnReap" : [ ],
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/precursorexplosion/precursorexplosionsmall2.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/weapons/magnorbproto_impact1.ogg",
+        "/sfx/weapons/magnorbproto_impact2.ogg",
+        "/sfx/weapons/magnorbproto_impact3.ogg"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+[
+	[{
+			"op": "test",
+			"path": "/itemTags",
+			"inverse": true
+		},
+		{
+			"op": "add",
+			"path": "/itemTags",
+			"value": []
+		},
+		{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "upgradeableWeapon"
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/itemTags"
+		},
+		{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "upgradeableWeapon"
+		},
+		{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "balanced"
+		}
+
+	],
+	[{
+			"op": "replace",
+			"path": "/description",
+			"value": "^orange;Set Bonuses^reset;:
+^yellow;^reset; Striker: +^green;5^reset;% Crit
+^yellow;^reset; ^green;30^reset;% Knockback Resist
+^yellow;^reset; +^green;15^reset;% Charisma"
+		},
+		{
+			"op": "add",
+			"path": "/statusEffects",
+			"value": [
+				    "goldarmorsetbonusnew",
+				{
+					"stat" : "fu_goldarmorsetnew_head",
+					"amount" : 1
+				}
+			]
+		},
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "poisonResistance",
+				"amount": 0.04
+			}
+		},
+		{
+			"op": "replace",
+			"path": "/tooltipKind",
+			"value": "armornew2"
+		}, {
+			"op": "add",
+			"path": "/builder",
+			"value": "/items/buildscripts/fubuildarmor.lua"
+		}
+	]
+]

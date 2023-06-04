@@ -1,0 +1,110 @@
+{
+  "type" : "hostilefu",
+  "baseType" : "base",
+
+  "persistent" : true,
+
+  "damageTeam" : 2,
+  //"disableWornArmor" : true,
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "behavior" : "hostileguard",
+
+    "behaviorConfig" : {
+      "leapWindup" : 0.45,
+      "rangedAimTime" : 0.05,
+      "rangedWindupTime" : 0.1,
+      "rangedMinFireTime": 0.1,
+      "rangedMaxFireTime": 0.7
+    },
+
+    "aggressive" : true,
+
+    "personalities" : [
+        [1.0, { "personality" : "normal", "reactions" : {} }]
+    ],
+
+    "reactions" : {
+      "spontaneous" : [
+        [5.0, "sleep", { "timeRange" : [0.7, 0.9] }],
+        [1.0, "patrol"]
+      ]
+    },
+
+    "dialog" : {
+      "converse" : "/dialog/combat.config:attack",
+      "hail" : "/dialog/combat.config:attack",
+      "attack" : "/dialog/combat.config:attack",
+      "reattack" : "/dialog/combat.config:reattack",
+      "killedTarget" : "/dialog/combat.config:killedTarget",
+      "lostTarget" : "/dialog/combat.config:lostTarget",
+      "outOfSight" : "/dialog/combat.config:outOfSight",
+      "cheerOn" : "/dialog/combat.config:cheerOn",
+	  "cantReach" : "/dialog/combat.config:cantReach"
+    },
+
+    "combat" : {
+      "meleeWeaponWindups" : {
+        "default" : 0.35,
+        "broadsword" : 0.35,
+        "dagger" : 0.25,
+        "axe" : 0.35,
+        "hammer" : 0.5,
+        "shortsword" : 0.25,
+        "spear" : 0.45
+      },
+      "meleeWeaponCooldowns" : {
+        "default" : 1.0,
+        "broadsword" : 1.7,
+        "dagger" : 0.7,
+        "axe" : 1.4,
+        "hammer" : 2.0,
+        "shortsword" : 1.0,
+        "spear" : 1.4
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "head" : [ { "name" : "humantier1head" } ],
+            "chest" : [ { "name" : "humantier1chest" } ],
+            "legs" : [ { "name" : "humantier1pants" } ],
+            "primary" : [ "npcassaultrifle" ],
+            "sheathedprimary" : [ "npcbroadsword" ]
+          }
+        ] ]
+    ]
+  },
+
+  "touchDamage" : {
+    "damage" : 0,
+    "teamType" : "enemy",
+    "damageType" : "knockback",
+    "damageSourceKind" : "nodamage",
+    "damageRepeatGroup" : "npcTouchKnockback",
+    "damageRepeatTimeout" : 0.5,
+    "knockback" : 20,
+    "statusEffects" : [ ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 70.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 90.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.65
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      }
+    }
+  }
+}

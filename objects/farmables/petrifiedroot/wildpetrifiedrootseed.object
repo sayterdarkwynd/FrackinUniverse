@@ -1,0 +1,44 @@
+{
+  "objectName" : "wildpetrifiedrootseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Legendary",
+  "category" : "seed",
+  "description" : "Dark matter meets flora. Increases defenses.",
+  "shortdescription" : "Umbral Root Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+//    "learnBlueprintsOnPickup" : [ "petrifiedrootseed" ],
+  "inventoryIcon" : "petrifiedrootseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "petrifiedrootseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [300, 600]
+    },
+    {
+      "duration" : [300, 600]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "petrifiedrootHarvest",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125,
+  "breakDropOptions" : [
+    [ [ "petrifiedrootseed", 1, { } ] ]
+  ]
+}

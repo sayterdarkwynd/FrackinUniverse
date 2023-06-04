@@ -1,0 +1,73 @@
+{
+  "objectName" : "fuaetherwallconsole",
+  "colonyTags" : ["fu","aether","pretty","valuable","wired","electronic"],
+  "rarity" : "Legendary",
+  "description" : "A wall-mounted aether computer.",
+  "shortdescription" : "Aether Wall Console",
+  "race" : "generic",
+  "category" : "wire",
+  "price" : 50,
+  "lightColor" : [120, 20, 180],
+
+  "inventoryIcon" : "fuaetherwallconsoleicon.png",
+  "orientations" : [
+    {
+      "image" : "fuaetherwallconsole.png:<color>.on",
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-6, 0],
+      "frames" : 32,
+      "animationCycle" : 4,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "fuaetherwallconsole.png:<color>.on",
+      "direction" : "right",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-6, 0],
+      "frames" : 32,
+      "animationCycle" : 4,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/switch/switch.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "fuaetherwallconsole.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "bg" : "fuaetherwallconsole.png",
+    "fg" : "fuaetherwallconsolelit.png"
+  },
+  "animationPosition" : [-6, 0],
+
+  "outputNodes" : [ [0, 0] ],
+
+  "npcToy" : {
+    "ownerOnly" : true,
+    "influence" : [
+      "console"
+    ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-0.5, 0.0],
+    "preciseStandPositionRight" : [2.0, 0.0],
+    "maxNpcs" : 1
+  }
+
+}

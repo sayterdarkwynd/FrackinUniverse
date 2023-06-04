@@ -1,0 +1,65 @@
+{
+  "objectName" : "skathbench",
+  "rarity" : "Common",
+  "colonyTags" : ["skath"],
+  "category" : "furniture",
+  "price" : 140,
+  "description" : "A comfortable bench made by the Skath.",
+  "shortdescription" : "Skath Bench",
+  "race" : "skath",
+  "printable" : false,
+
+  "apexDescription" : "Ah! Finally, a bench to relax and put my feet up!",
+  "avianDescription" : "The fabric on this bench is pretty comfy. I wonder what it's made of?",
+  "floranDescription" : "Floran sssits on waterdragon bench. Becomes sssleepy.",
+  "glitchDescription" : "Observant. The kelp fabric used in this bench makes it very comfortable to sit on.",
+  "humanDescription" : "This bench is long and comfy enough to work as a bed! Maybe I could take a little nap...",
+  "hylotlDescription" : "Real kelp fabric! How I miss home.",
+  "novakidDescription" : "This'd be a good place to rest my tired ol' legs, if I weren't in such a rush.",
+  "skathDescription" : "Even the Skath want to rest sometimes, and enjoy an ocean view.",
+
+  "inventoryIcon" : "skathbenchicon.png",
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : false,
+
+  "orientations" : [
+    {
+      "image" : "skathbench.png:<color>",
+      "imagePosition" : [-36, 0],
+      "flipImages" : true,
+      "direction" : "left",
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "sitPositions" : [
+        // Positions from front to back.
+        [-15, 21], // Right
+        [-2, 21], // Middle Right
+        [11, 21], // Middle Left
+        [24, 21] // Left
+      ],
+
+      "spaceScan" : 0.1,
+      "anchors" : ["bottom"]
+    },
+    {
+      "image" : "skathbench.png:<color>",
+      "imagePosition" : [-36, 0],
+      "direction" : "right",
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "sitPositions" : [
+        // Positions from front to back.
+        [-23, 21], // Left
+        [-10, 21], // Middle Left
+        [3, 21], // Middle Right
+        [16, 21] // Right
+      ],
+
+      "spaceScan" : 0.1,
+      "anchors" : ["bottom"]
+    }
+  ]
+}

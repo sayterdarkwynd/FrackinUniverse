@@ -1,0 +1,44 @@
+{
+  "projectileName" : "fuenergyshardplayer_r",
+  "image" : "fuenergyshardplayer_r.png",
+  "animationCycle" : 0.2,
+  "lightColor" : [150, 105, 100],
+  "frameNumber" : 1,
+  "flippable" : false,
+  "fullbright" : true,
+  "damageKindImage" : "icon.png",
+  "physics" : "sticky",
+  "emitters" : [ ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/fuenergyshardexplosion_r/fuplayerenergyshardexplosion_r.config"
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.066,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "textured",
+        "image" : "/projectiles/activeitems/fuenergyshardplayer/fuenergyshardplayer_r.png",
+        "position" : [0, 0],
+        "layer" : "back",
+        "timeToLive" : 0.0,
+        "destructionTime" : 0.2,
+        "destructionAction" : "fade",
+        "fullbright" : true
+      }
+    }
+  ],
+  "damagePoly" : [ [-8, 0], [2, 3], [8, 0], [2, -3] ],
+  "damageKind" : "slash",
+
+  "speed" : 65,
+  "timeToLive" : 2.5,
+
+  "scripts" : [ "/projectiles/tracksourcestatus.lua" ],
+  "scriptDelta" : 1
+}

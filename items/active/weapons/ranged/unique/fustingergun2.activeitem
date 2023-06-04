@@ -1,0 +1,91 @@
+{
+  "itemName" : "fustingergun2",
+  "price" : 1600,
+  "inventoryIcon" : "fustingergun2.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Sting the living hell out of your foes.
+^yellow;Lots of stingy fun, ^cyan;Floran^reset;^reset;",
+  "shortdescription" : "Stinger Burstrifle",
+  "category" : "assaultRifle",
+  "level" : 6,
+  "tooltipKind" : "gun2",
+  "weaponType" : "assaultRifle",
+  "itemTags" : ["weapon","ranged","assaultrifle", "bioweapon", "floran", "upgradeableWeapon", "bees"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "fustingergun2.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/needler1.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.26, 0.35],
+  "muzzleOffset" : [1.26, -0.225],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.17,
+    "baseDps" : 5.95,
+    "energyUsage" : 25.0,
+    "inaccuracy" : 0.02,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "honeystingergunsting",
+    "projectileParameters" : {
+      "speed" : 62,
+      "knockback" : 1.5
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+  "altAbilityType" : "burstshot",
+
+  "critChance" : 4,
+  "critBonus" : 12,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

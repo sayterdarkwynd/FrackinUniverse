@@ -1,0 +1,37 @@
+{
+  "itemName" : "brokennightarsaber",
+  "price" : 500,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A very nice sword in very poor condition.",
+  "shortdescription" : "Broken Nightar Saber",
+  "tooltipKind" : "sword2",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword","nightar"],
+  "learnBlueprintsOnPickup" : [ "nightarsaber" ],
+
+  "inventoryIcon" : "brokennightarsaber.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "brokennightarsaber.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.84,
+    "baseDps" : 7
+  },
+
+  "altAbilityType" : "spinslash",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

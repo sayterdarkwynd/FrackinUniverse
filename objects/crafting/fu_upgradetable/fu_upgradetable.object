@@ -1,0 +1,30 @@
+{
+  "objectName" : "fu_upgradetable",
+  "colonyTags" : ["crafting","science"],
+  "rarity" : "Rare",
+  "printable" : false,
+  "description" : "Can be used to access your tricorder's upgrade interface. Largely cosmetic.",
+  "shortdescription" : "^cyan;Upgrade Table^reset;",
+  "race" : "generic",
+  "category" : "crafting",
+
+  "inventoryIcon" : "fu_upgradetableicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fu_upgradetable.png:<color>", "fullbright" : true }, { "image" : "fu_upgradetablefullbright.png:<color>" } ],
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+  "soundEffect" : "/sfx/objects/scififurnace.ogg",
+  "soundEffectRangeMultiplier" : 1.0,
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/interface/scripted/fu_upgradetable/fu_upgradetable.config"
+}

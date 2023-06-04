@@ -1,0 +1,145 @@
+{
+  "itemName" : "neb-commonbow",
+  "price" : 300,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A powerful bow.",
+  "shortdescription" : "Common Bow",
+  "tooltipKind" : "neb-randombow",
+  "weaponType" : "Bow",
+  "category" : "bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","bow","upgradeableWeapon"],
+  "level" : 1,
+  "fixedLevel" : false,
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "animation" : "generatedbow.animation",
+  "animationParts" : { },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/bow/randomlygenerated/rngbow.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/bow/abilities/rngbows/rngbowshot.lua"],
+    "class" : "NebRNGBowShot",
+
+		"fireOffset" : [0.75, 0],
+
+		//Config for animated cursor
+		"cursorFrames" : [
+			"/cursors/animated/rngbowsrotate/neb-rngbowreticle1.cursor",
+			"/cursors/animated/rngbowsrotate/neb-rngbowreticle2.cursor",
+			"/cursors/animated/rngbowsrotate/neb-rngbowreticle3.cursor",
+			"/cursors/animated/rngbowsrotate/neb-rngbowreticle4.cursor",
+			"/cursors/animated/rngbowsrotate/neb-rngbowreticle5.cursor",
+			"/cursors/animated/rngbowsrotate/neb-rngbowreticle6.cursor",
+			"/cursors/animated/rngbowsrotate/neb-rngbowreticle7.cursor"
+		],
+
+    "drawTime" : [0.55, 1.65],				//Time to fully draw the bow
+	"powerProjectileTime" : [0.105, 0.30],	//After fully drawing, the bow is super-charged for this long
+	"energyPerShot" : [25, 40],			//Total energy consumption for a full draw
+	"holdEnergyUsage" : [2.5, 18],			//Energy consumption per second while fully drawn
+	"airborneBonus" : 1.20,			//A dmg multiplier for when airborne
+
+    "cooldownTime" : 0.2,			//Time between firing and drawing the next arrow
+    "inaccuracy" : 0.0,				//Inaccuracy of the shot
+
+	"walkWhileFiring" : true,		//If true, prevents the player from running while drawing the bow
+	"useQuiverDamageBonus" : true,	//If true, allows this bow to use quiver damage bonuses
+
+	"drainEnergyWhilePowerful" : false,	//If true, consume energy while at max power
+	"staticDamageMultiplier" : null,	//If this value is set, arrow damage is independent of draw time and is instead multiplied by this value
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+
+    "drawArmFrames" : ["rotation", "run.2", "swim.2", "swimIdle.1", "swim.1", "swim.1"],
+
+    "projectileCount" : 1,	//Amount of arrows to shoot at once
+    "projectileParameters" : {
+      "knockbackRange" : [2,4],
+      "speed" : 85,
+      "power" : 6
+    },
+    "powerProjectileType" : "rng<elementalType>powerarrow",
+    "powerProjectileParameters" : {
+      "knockbackRange" : [2,4],
+      "speed" : 100,
+      "power" : 8
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : -30,
+        "weaponRotation" : 0,
+        "allowRotate" : true,
+        "allowFlip" : true,
+        "twoHanded" : true
+      },
+      "draw" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "allowRotate" : true,
+        "allowFlip" : true,
+        "twoHanded" : true
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "allowRotate" : false,
+        "allowFlip" : true,
+        "twoHanded" : true,
+
+        "frontArmFrame" : "idle.3"
+      }
+    }
+  },
+
+  "critChance" : 3,
+  "critBonus" : 5,
+
+  "builder" : "/items/buildscripts/neb-buildrandombow.lua",
+  "builderConfig" : [{
+    "nameGenerator" : "bownames.config:nameGen",
+    "animationParts" : {
+      "topLimb" : {
+        "path" : "limbs/<variant>.png",
+        "variants" : 24,
+        "paletteSwap" : false
+      },
+      "bottomLimb" : {
+        "path" : "limbs/<variant>.png",
+        "variants" : 24,
+        "paletteSwap" : false
+      },
+      "string" : {
+        "path" : "strings/<variant>.png",
+        "variants" : 2,
+        "paletteSwap" : false
+      },
+      "arrow" : {
+        "path" : "arrows/<variant>.png",
+        "variants" : 9,
+        "paletteSwap" : false
+      }
+    },
+    "altAbilities" : [
+      "rngbows_reboundingarrow",
+      "rngbows_shotbowarrow",
+      "rngbows_backpedal",
+      "rngbows_aimprediction",
+      "rngbows_flip",
+      "rngbows_healarrow",
+      "rngbows_arrowrain",
+      "rngbows_energyarrow",
+      "rngbows_volatilearrow",
+      "rngbows_blastarrow"
+    ],
+    "palette" : "/items/active/weapons/colors/melee.weaponcolors",
+    "iconDrawables" : [ "topLimb", "bottomLimb", "string", "arrow" ]
+  }]
+}

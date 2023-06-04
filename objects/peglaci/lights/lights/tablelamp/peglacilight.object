@@ -1,0 +1,84 @@
+{
+  "objectName" : "peglacilight",
+  "colonyTags" : [ "peglaci", "peglacivillage", "light" ],
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 60,
+  "printable" : true,
+
+  "description" : "A small table lantern lit by a glowing crystal.",
+  "shortdescription" : "Alloy Lantern",
+  "race" : "peglaci",
+
+  "apexDescription" : "A small, glowing crystal lantern.",
+  "avianDescription" : "The light it gives off is so cold...",
+  "floranDescription" : "Why isss light not hot? Light isss fire, yes?",
+  "glitchDescription" : "Statement. A simple crystal lantern.",
+  "humanDescription" : "Like a camping lantern, but made of crystal.",
+  "hylotlDescription" : "Waterproof, and efficient if bland construction.",
+  "novakidDescription" : "The light it gives off is so cold...",
+  "fupeglaciDescription" : "Waterproof, and efficient if bland construction.",
+
+  "statusEffects" : [ ],
+
+  "lightColor" : [100, 200, 255],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "inventoryIcon" : "peglacilighticon.png",
+  "orientations" : [
+    {
+      "image" : "peglacilight.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "fgAnchors" : [ [0, -1] ]
+    },
+
+    {
+      "image" : "peglacilight.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "bgAnchors" : [ [0, 1] ]
+    },
+
+    {
+      "image" : "peglacilight.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "bgAnchors" : [ [0, 0] ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/oillantern.ogg",
+
+  "animation" : "peglacilight.animation",
+  "animationParts" : {
+    "bg" : "peglacilight.png",
+    "fg" : "peglacilightlit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/oillantern_on.ogg" ],
+      "off" : [ "/sfx/objects/oillantern_off.ogg" ]
+    }
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

@@ -1,0 +1,57 @@
+{
+  "objectName" : "extraavianaugments",
+  "colonyTags" : ["avian","avianvillage","commerce"],
+  "rarity" : "Common",
+  "printable" : false,
+  "description" : "A small stall. It seems to be offering various items in exchange for ancient essence.",
+  "shortdescription" : "Svetlana's Stall!",
+  "race" : "avian",
+  "category" : "decorative",
+  "price" : 90,
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/craftingmerchant.config",
+	"requiresBlueprint" : true,
+    "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : "Svetlana's Stall",
+        "subtitle" : "Repurchase Past Rewards!",
+        "icon" : {
+          "file" : "/interface/merchant/merchanticon.png"
+        }
+      },
+      "imgPlayerMoneyIcon" : {
+        "visible" : false
+      },
+      "lblPlayerMoney" : {
+        "visible" : false
+      }
+    },
+    "filter" : [ "extraavianaugments" ]
+  },
+
+  "apexDescription" : "No Apex would dare leave their store unattended like this.",
+  "avianDescription" : "Buying and selling on the honour system is something the grounded take pride in.",
+  "floranDescription" : "Floran would not ssteal from sstall. No meatss.",
+  "glitchDescription" : "Interested. The goods displayed on this stall are remarkably rare.",
+  "humanDescription" : "The stuff here looks like it ought to be in the hands of a statue...",
+  "hylotlDescription" : "Shops operating on the honour system denote a high level of societal trust.",
+  "novakidDescription" : "These here wares certainly are catching my interest.",
+
+  "inventoryIcon" : "extraavianaugments.png",
+  "orientations" : [
+    {
+      "dualImage" : "extraavianaugments.png:<color>",
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+
+    }
+  ]
+}

@@ -34,7 +34,7 @@
   "mainBlock" : "frozenstone",
   "subBlocks" : [ "ice", "frozendirt", "iceblock2" ],
   "ores" : "ff_deepicemoonOres",
-    
+
   "parallax" : "/parallax/underground/icewasteunderground.parallax",
 
 
@@ -52,7 +52,7 @@
       "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 
@@ -60,6 +60,48 @@
     "grassMod" : [ "icegrass2" ],
     "grassModDensity" : 0.9,
     "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "icefloor1" ],
+              [0.35, "icefloor2" ],
+              [0.35, "icefloor3" ],
+              [0.35, "icefloor4" ],
+              [0.35, "icepillar1" ],
+              [0.35, "icepillar2" ],
+              [0.35, "icepillar3" ],
+              [0.35, "icepillar4" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "iceceiling1" ],
+              [0.35, "iceceiling2" ],
+              [0.35, "iceceiling3" ],
+              [0.35, "iceceiling4" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -82,7 +124,7 @@
               "parameters" : { }
             }
           ]
-        },        
+        },
         {
           "mode" : "floor",
           "priority" : 2.0,
@@ -117,10 +159,10 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "icestalk" ],
               [0.35, "iceball_rock" ],
-              [0.35, "icespikeff" ], 
+              [0.35, "icespikeff" ],
               [0.35, "frozencritter1" ]
               ],
               "parameters" : { }
@@ -192,7 +234,8 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
+              [0.05, "timeobelisk" ],
               [0.35, "plynth1" ],
               [0.35, "plynth2" ],
               [0.35, "monolith1" ],
@@ -204,7 +247,30 @@
               "parameters" : { }
             }
           ]
-        }
+        },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChallengeDoors",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "challengedoor" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:tiyDist",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "underground1amicrodungeons", "fu_geode" ]
+      }
     ]
   },
     "hueShiftOptions" : [0]

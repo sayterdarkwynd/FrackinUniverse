@@ -1,0 +1,359 @@
+{
+  "type" : "aquamantle",
+  "shortdescription" : "Aquamantle",
+  "description" : "Its liquid core produces a constant flow of water. It hates you.",
+
+  "categories" : [ "aquamantle" ],
+  "parts" : [ "body" ],
+
+  "animation" : "aquamantle.animation",
+
+  "dropPools" : [
+    {
+      "default" : "extraMonsterIce",
+      "bow" : "extraMonsterIceHunting",
+      "firebow" : "extraMonsterIceHunting",
+      "icebow" : "extraMonsterIceHunting",
+      "poisonbow" : "extraMonsterIceHunting",
+      "electricbow" : "extraMonsterIceHunting",
+      "cosmicbow" : "extraMonsterIceHunting",
+      "radioactivebow" : "extraMonsterIceHunting",
+      "shadowbow" : "extraMonsterIceHunting"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 30,
+      "targetOnDamage" : true,
+
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "hurtTime" : 0.25,
+      "hurtWaitForGround" : false,
+
+      "damageTakenActions" : [],
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 15,
+            "minimumRange" : 7,
+            "onGround" : false,
+            "windupStopForce" : 50,
+            "windupState" : "fire",
+            "windupTime" : 0.5,
+
+            "projectileType" : "waterblast",
+            "projectileParameters" : {
+              "timeToLive" : 1.0
+            },
+            "power" : 4,
+            "fireOffset" : [0.0, 0.0],
+            "aimAtTarget" : true,
+            "inaccuracy" : 0.05,
+            "projectileCount" : 5,
+            "projectileInterval" : 0.05,
+            "fireState" : "",
+            "fireDelay" : 0.0,
+            "fireSound" : "",
+
+            "winddownState" : "fly",
+            "winddownTime" : 0.5
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 5.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 7,
+            "minimumRange" : 2,
+            "onGround" : false,
+            "windupStopForce" : 50,
+            "windupState" : "fire",
+            "windupTime" : 0.5,
+
+            "projectileType" : "waterblast",
+            "projectileParameters" : {
+              "timeToLive" : 1.0
+            },
+            "power" : 2,
+            "fireOffset" : [0.0, 0.0],
+            "aimAtTarget" : false,
+            "inaccuracy" : 3.14,
+            "projectileCount" : 10,
+            "projectileInterval" : 0.0,
+            "fireState" : "",
+            "fireDelay" : 0.0,
+            "fireSound" : "",
+
+            "winddownState" : "fly",
+            "winddownTime" : 0.5
+          }
+        }
+      ],
+
+      "periodicActions" : [],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "usePathfinding" : false,
+          "parameters" : {
+            "minRange" : 6,
+            "maxRange" : 15
+          }
+        },
+        {
+          "name" : "action-charge",
+          "cooldown" : 0.5,
+          "parameters" : {
+            "minimumRange" : 10,
+            "maximumRange" : 30,
+            "windupStopForce" : 25,
+            "windupTime" : 1,
+
+            "onGround" : false,
+            "wallCollide" : true,
+            "aimAtTarget" : true,
+            "chargeTime" : 1.5,
+            "chargeSpeed" : 15,
+            "chargeControlForce" : 150,
+
+            "winddownState" : "fly",
+            "winddownStopForce" : 25,
+            "winddownTime" : 0.05
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "usePathfinding": true,
+          "parameters" : {
+            "minRange" : 6,
+            "maxRange" : 25
+          }
+        },
+        {
+          "name" : "action-charge",
+          "cooldown" : 0.5,
+          "parameters" : {
+            "minimumRange" : 10,
+            "maximumRange" : 30,
+            "windupStopForce" : 25,
+            "windupTime" : 1,
+
+            "onGround" : false,
+            "wallCollide" : true,
+            "aimAtTarget" : true,
+            "chargeTime" : 1.5,
+            "chargeSpeed" : 15,
+            "chargeControlForce" : 150,
+
+            "winddownState" : "fly",
+            "winddownStopForce" : 25,
+            "winddownTime" : 0.05
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "emerge-fly"
+        },
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "usePathfinding": true,
+            "wanderTime" : [6,15],
+            "groundDistance" : 8,
+            "ceilingDistance" : 12,
+            "xVelocity" : 4,
+            "yVelocity" : 8
+          }
+        }
+      ],
+
+      "concurrentActions" : [ ],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 0.5,
+          "parameters" : {
+            "minimumRange" : 1,
+            "maximumRange" : 20,
+            "windupStopForce" : 25,
+            "windupTime" : 1,
+
+            "onGround" : false,
+            "wallCollide" : false,
+            "aimAtTarget" : true,
+            "chargeTime" : 1.5,
+            "chargeSpeed" : 15,
+            "chargeControlForce" : 150,
+
+            "winddownState" : "fly",
+            "winddownStopForce" : 25,
+            "winddownTime" : 0.05
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.125, 1.375], [0.875, 0.625], [0.875, -0.625], [0.125, -1.375], [-0.125, -1.375], [-0.875, -0.625], [-0.875, 0.625], [-0.125, 1.375] ],
+      "damage" : 1,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ "wet" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "selfDamagePoly" : [ [0.125, 1.375], [0.875, 0.625], [0.875, -0.625], [0.125, -1.375], [-0.125, -1.375], [-0.875, -0.625], [-0.875, 0.625], [-0.125, 1.375] ],
+
+    "movementSettings" : {
+      "collisionEnabled" : true,
+      "collisionPoly" : [ [0.125, 1.375], [0.875, 0.625], [0.875, -0.625], [0.125, -1.375], [-0.125, -1.375], [-0.875, -0.625], [-0.875, 0.625], [-0.125, 1.375] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 9,
+      "gravityEnabled" : false,
+      "liquidBuoyancy" : 1.0,
+      "liquidFriction" : 2.0,
+      "liquidForce" : 150.0,
+      "airFriction" : 2.0,
+      "airForce" : 50,
+      "flySpeed" : 6
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 48
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "lavaImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.25
+        },
+        "fireResistance" : {
+          "baseValue" : 1.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceResistance" : {
+          "baseValue" : -0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : -0.35
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 0.5
+        },
+        "shadowResistance" : { "baseValue" : 1.0 },
+        "cosmicResistance" : { "baseValue" : -1.0 }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "aquamantle" }
+  }
+}

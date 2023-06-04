@@ -2,15 +2,15 @@
   "name" : "ashgarden",
   "friendlyName" : "Ash Garden",
 
-  "hueShiftOptions" : [-165, -70, -25, 0, 25, 70, 165],
+  "hueShiftOptions" : [0],
     "spawnProfile" : {
     "groups" : [
       {
         "select" : 2,
-        "pool" : [ 
-          [ 0.1111, "tintix" ],     
+        "pool" : [
+          [ 0.1111, "tintix" ],
           [ 0.1111, "triplod" ],
-          [ 0.1111, "scandroid" ],        
+          [ 0.1111, "scandroid" ],
           [ 0.1111, "bobot" ]
         ]
       },
@@ -27,37 +27,240 @@
       }
     ]
   },
-  
+  "parallax" : "/parallax/surface/volcanic.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/volcanic_day.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/volcanic_night.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/forsaken-grotto.ogg", "/music/lava-exploration1.ogg", "/music/drosera.ogg", "/music/crystal-exploration1.ogg", "/music/inviolate-loop.ogg", "/music/body-electric-loop.ogg", "/music/europa.ogg", "/music/haiku.ogg","/music/mira.ogg","/music/ultramarine.ogg", "/music/desert-exploration1.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mira.ogg", "/music/crystal-exploration1.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg","/music/lava-exploration2.ogg", "/music/Nomads.ogg", "/music/ultramarine.ogg", "/music/forsaken-grotto.ogg", "/music/desert-exploration2.ogg" ]
+    }
+  },
     "mainBlock" : "magmatile3",
-    "subBlocks" : [ "ash" ],
+    "subBlocks" : [ "ash", "magmatile4" ],
     "ores" : "surface",
 
   "surfacePlaceables" : {
-    "grassMod" : [ "ash" ],
+    "grassMod" : [ "ash", "blackash" ],
     "grassModDensity" : 0.9,
 
     "items" : [
-        {
-          "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredLarge",
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
 
-          "type" : "tree",
-          "treeFoliageHueShiftMax" : 0,
-          "treeStemHueShiftMax" : 0,
-          "treeStemList" : [ "barren" ],
-          "treeFoliageList" : [ "aridblank" ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 4.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseSmall",
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
-          "type" : "grass",
-          "grasses" : [ "ashlion" ]
-        }       
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundRareChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:tiyDist",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "terrainfeatures" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "grass",
+        "grasses" : [ "testflower8" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "magmaflower", "magmaflower2", "magmaflower3", "magmaflower4", "magmaflower5" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "testbush2",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 15,
+        "treeStemHueShiftMax" : 15,
+        "treeStemList" : [ "ashy", "coal" ],
+        "treeFoliageList" : [ "grey" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "wildchiliseed" ] ],
+            "parameters" : {
+              "startingStage" : 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "ash", "blackash" ],
+    "grassModDensity" : 0.8,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "testflower8" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "grass",
+        "grasses" : [ "magmaflower", "magmaflower2", "magmaflower3", "magmaflower4", "magmaflower5" ]
+      }
     ]
   }
 }

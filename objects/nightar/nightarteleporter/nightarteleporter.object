@@ -1,0 +1,65 @@
+{
+  "objectName" : "nightarteleporter",
+  "colonyTags" : ["misc","nightar"],
+  "objectType" : "teleporter",
+  "rarity" : "Legendary",
+  "description" : "A personal teleporter, connects to bookmarked locations. \n^red;Destroyed when broken.^reset;",
+  "shortdescription" : "Nightar Teleporter",
+  "price" : 300,
+  "printable" : false,
+
+  "apexDescription" : "A personal teleporter. A functional but fun piece of equipment.",
+  "avianDescription" : "I love the whoosh of my feathers when I teleport!",
+  "floranDescription" : "Perssonal teleporter is fancy!",
+  "glitchDescription" : "Enticed. A personal teleporter, with a custom design.",
+  "humanDescription" : "A personal teleporter! Now this is travelling in style.",
+  "hylotlDescription" : "A personal teleporter, it sports a custom design.",
+  "novakidDescription" : "As teleporters go, this sure is fancy lookin'!",
+
+  "category" : "teleporter",
+  "lightColor" : [40, 80, 100],
+  "lightPosition" : [0, 1],
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/remoteteleporter.config",
+  "breakDropPool" : "remoteteleporter",
+  "inventoryIcon" : "nightarteleportericon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "nightarteleporter.png:<color>", "fullbright" : true }, { "image" : "nightarteleporterlit.png:<color>" } ],
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "solid",
+      "collisionSpaces" : [ [-2, 0], [-1, 0], [0, 0], [1, 0] ]
+    }
+  ],
+
+  "health" : 20,
+
+  "teleporterFootPosition" : [0, 1],
+
+  "scripts" : [ "/scripts/npcToyObject.lua"],
+  "npcToy" : {
+    "influence" : [
+      "teleporter",
+      "teleporterComplete"
+    ],
+    "defaultReactions" : {
+      "teleporter" : [
+        [1.0, "beamaway"]
+      ],
+      "teleporterComplete" : [
+        [1.0, "vomit"],
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [0, 0.0],
+    "preciseStandPositionRight" : [0, 0.0],
+    "maxNpcs" : 1
+  }
+}

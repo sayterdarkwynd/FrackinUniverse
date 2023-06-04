@@ -1,0 +1,134 @@
+{
+  "itemName" : "eldercarbine",
+  "price" : 160,
+  "inventoryIcon" : "eldercarbineicon.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "^#a5ff00;Infused with strange energies, this alien weapon radiates menace.^reset;",
+  "shortdescription" : "^#a5ff00;Disruptor Rifle^reset;",
+  "category" : "assaultRifle",
+  "level" : 7,
+  "tooltipKind" : "gun2overheatelder",
+  "weaponType" : "Disruptor",
+  "itemTags" : ["weapon","ranged","plasma", "upgradeableWeapon", "elder","shadow", "assaultrifle"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugunoverheatingelder.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "eldercarbine.png",
+    "middlefullbright" : "eldercarbinefullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/precursormuzzle.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.9, 0.1]
+		  }
+		}
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/eldercarbine.ogg" ],
+      "cooldown" : [ "/sfx/weapons/chargereload1.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.9, 0.1],
+  "muzzleOffset" : [1.7, 0.315],
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "shadow",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
+    "class" : "FUOverHeating",
+    "fireTime" : 0.10,
+    "baseDps" : 11,
+    "energyUsage" : 40.0,
+    "inaccuracy" : 0.005,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+	//Overheating Weapon Values (based heavily on elithian races version)
+	"heatGain" : 10,					//Heat generated per shot
+	"coolingTime" : 0.25,				//Time before passive cooling kicks in
+	"heatLossLevel" : 50,				//Heat lost per second while not overheated
+	"heatLossRateMax" : 30,				//Heat lost per second while overheated
+	"lowLevel" : 50,					//Value required to reach Low heat
+	"medLevel" : 100,				//Value required to reach Medium heat
+	"highLevel" : 150,				//Value required to reach High heat
+	"overheatLevel" : 200,				//Overheat at this value
+
+    "projectileType" : "elderplasma4green",
+    "projectileParameters" : {
+      "speed" : 65,
+      "knockback" : 3
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 3,
+	      "weaponRotation" : 3,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.14,
+	      "armRotation" : 5,
+	      "weaponRotation" : 4,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "overheat" : {
+		"armRotation" : -22,
+		"weaponRotation" : 56,
+		"twoHanded" : false,
+
+		"allowRotate" : false,
+		"allowFlip" : true
+	    }
+	  }
+  },
+
+  "critChance" : 3,
+  "critBonus" : 8,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 200,
+
+  "altAbilityType" : "eldergrenadelauncher",
+  "altAbility" : {
+    "name" : "Unfocused Blast",
+    "fireTime" : 3,
+    "baseDps" : 16,
+    "elementalConfig" : {
+      "physical" : { "projectileType" : "impactgrenade" },
+      "fire" : { "projectileType" : "firecloudgrenade" },
+      "electric" : { "projectileType" : "bubbleblast" }, //needs to remain as is for backwards compatibility.
+      "ice" : { "projectileType" : "icecloudgrenade" },
+      "poison" : { "projectileType" : "tentacleburst" },
+      "shadow" : { "projectileType" : "floatydeathballeldergun" }        // apperantly don't need more elements
+    },
+    "projectileCount" : 1,
+    "projectileParameters" : { "speed" : 15}
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -4,12 +4,13 @@
   "inventoryIcon" : "shoggothgun.png",
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Fires organic drones and biomorphic fire.",
+  "description" : "Fires organic drones and biomorphic fire from a strange flesh casing",
   "shortdescription" : "Biomorphic Cannon",
+  "category" : "bioweapon",
   "level" : 7,
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gununique",
   "weaponType" : "Bio-Weapon",
-  "itemTags" : [ "weapon","ranged","assaultrifle" ],
+  "itemTags" : [ "weapon","ranged","assaultrifle", "elder", "bioweapon", "upgradeableWeapon"  ],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -29,7 +30,7 @@
   "muzzleOffset" : [1.445, 0.0],
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "bioweapon",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -43,17 +44,17 @@
     "fireType" : "auto",
 
     "projectileType" : "shoggothbeamgun",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 62,
       "knockback" : 7,
-    "statusEffects" : [ "weakpoison", "weakenweather2" ],
+	    "statusEffects" : [ "weakpoison", "defenseboostneg30" ],
 
-    "ignoreTerrain" : false,
-    "controlForce" : 50,
-    "pickupDistance" : 1.5,
-    "snapDistance" : 2.0,
+	    "ignoreTerrain" : false,
+	    "controlForce" : 50,
+	    "pickupDistance" : 1.5,
+	    "snapDistance" : 2.0,
 
-    "wobbleRate" : 2.0,
+	    "wobbleRate" : 2.0,
     "wobbleIntensity" : 2.4
     },
   "stances" : {
@@ -92,7 +93,10 @@
         ]
       }
     },
-    
+
+  "critChance" : 4,
+  "critBonus" : 11,
+
   "altAbilityType" : "shoggothburst",
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

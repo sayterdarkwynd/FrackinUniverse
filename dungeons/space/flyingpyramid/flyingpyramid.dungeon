@@ -1,0 +1,515 @@
+{
+  "metadata" : {
+    "name" : "flyingpyramid",
+    "species" : "generic",
+    "rules" : [
+    ],
+    "anchor" : [ "base1", "base2" ],
+    "gravity" : 80,
+    "maxRadius" : 1000000,
+    "maxParts" : 3,
+    "protected" : true
+},
+
+  "parts" : [
+
+  	//Hazard groups
+	
+{
+      "name" : "smallgroup-low1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/smallgroup-low1.json" ],
+      "maximumThreatLevel" : 3.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "smallgroup-low2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/smallgroup-low2.json" ],
+      "maximumThreatLevel" : 3.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "smallgroup-low3",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/smallgroup-low3.json" ],
+      "maximumThreatLevel" : 3.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "smallgroup-low4",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/smallgroup-low4.json" ],
+      "maximumThreatLevel" : 3.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "smallgroup-low5",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/smallgroup-low5.json" ],
+      "maximumThreatLevel" : 3.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "smallgroup-mid1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/smallgroup-mid1.json" ],
+      "minimumThreatLevel" : 4,
+      "maximumThreatLevel" : 4.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "smallgroup-mid2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/smallgroup-mid2.json" ],
+      "minimumThreatLevel" : 4,
+      "maximumThreatLevel" : 4.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "smallgroup-mid3",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/smallgroup-mid3.json" ],
+      "minimumThreatLevel" : 4,
+      "maximumThreatLevel" : 4.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "smallgroup-mid4",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/smallgroup-mid4.json" ],
+      "minimumThreatLevel" : 4,
+      "maximumThreatLevel" : 4.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "smallgroup-mid5",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/smallgroup-mid5.json" ],
+      "minimumThreatLevel" : 4,
+      "maximumThreatLevel" : 4.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "smallgroup-high1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/smallgroup-high1.json" ],
+      "minimumThreatLevel" : 5,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "smallgroup-high2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/smallgroup-high2.json" ],
+      "minimumThreatLevel" : 5,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "smallgroup-high3",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/smallgroup-high3.json" ],
+      "minimumThreatLevel" : 5,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "smallgroup-high4",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/smallgroup-high4.json" ],
+      "minimumThreatLevel" : 5,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "smallgroup-high5",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/smallgroup-high5.json" ],
+      "minimumThreatLevel" : 5,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+
+    {
+      "name" : "largegroup-low1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/largegroup-low1.json" ],
+      "maximumThreatLevel" : 3.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "largegroup-low2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/largegroup-low2.json" ],
+      "maximumThreatLevel" : 3.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "largegroup-low3",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/largegroup-low3.json" ],
+      "maximumThreatLevel" : 3.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "largegroup-low4",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/largegroup-low4.json" ],
+      "maximumThreatLevel" : 3.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "largegroup-low5",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/largegroup-low5.json" ],
+      "maximumThreatLevel" : 3.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "largegroup-mid1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/largegroup-mid1.json" ],
+      "minimumThreatLevel" : 4,
+      "maximumThreatLevel" : 4.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "largegroup-mid2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/largegroup-mid2.json" ],
+      "minimumThreatLevel" : 4,
+      "maximumThreatLevel" : 4.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "largegroup-mid3",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/largegroup-mid3.json" ],
+      "minimumThreatLevel" : 4,
+      "maximumThreatLevel" : 4.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "largegroup-mid4",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/largegroup-mid4.json" ],
+      "minimumThreatLevel" : 4,
+      "maximumThreatLevel" : 4.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "largegroup-mid5",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/largegroup-mid5.json" ],
+      "minimumThreatLevel" : 4,
+      "maximumThreatLevel" : 4.9,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "largegroup-high1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/largegroup-high1.json" ],
+      "minimumThreatLevel" : 5,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "largegroup-high2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/largegroup-high2.json" ],
+      "minimumThreatLevel" : 5,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "largegroup-high3",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/largegroup-high3.json" ],
+      "minimumThreatLevel" : 5,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "largegroup-high4",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/largegroup-high4.json" ],
+      "minimumThreatLevel" : 5,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "largegroup-high5",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/monstergroups/largegroup-high5.json" ],
+      "minimumThreatLevel" : 5,
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+	
+    // HAZARD ZONE
+    {
+      "name" : "hazard-pirate1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/hazard-pirate1.json" ],
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "hazard-pirate2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/hazard-pirate2.json" ],
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+    {
+      "name" : "hazard-pirate3",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/hazards/hazard-pirate3.json" ],
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+	
+	//Energy
+
+    {
+      "name" : "energycanister",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "/dungeons/space/extrahazards/energycanister.json" ],
+      "chance" : 1,
+      "markDungeonId" : false
+    },
+  
+	//Rooms
+
+    {
+      "name" : "room1",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room1.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room2",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room2.json" ],
+      "chance" : 0
+    },
+	    {
+      "name" : "room3",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room3.json" ],
+      "chance" : 0
+    },
+	    {
+      "name" : "room4",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room4.json" ],
+      "chance" : 0
+    },
+	    {
+      "name" : "room5",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room5.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "room6",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room6.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "room7",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room7.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "room8",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room8.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "room9",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room9.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "room10",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room10.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "mapancienttemple",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "mapskyboulevard", "maphydro" ] ]
+      ],
+      "def" : [ "tmx", "mapancienttemple.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "mapskyboulevard",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "mapancienttemple", "maphydro" ] ]
+      ],
+      "def" : [ "tmx", "mapskyboulevard.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "maphydro",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "mapancienttemple", "mapskyboulevard" ] ]
+      ],
+      "def" : [ "tmx", "maphydro.json" ],
+      "chance" : 0
+    },
+	
+    //Pyramid Bases
+	
+    {
+      "name" : "base1",
+      "rules" : [
+        [ "doNotCombineWith", [ "base1", "base2" ] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "base1.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "base2",
+      "rules" : [
+        [ "doNotCombineWith", [ "base1", "base2" ] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "base2.json" ],
+      "chance" : 0
+    }
+  ]
+}

@@ -1,40 +1,39 @@
 {
   "type" : "crewmemberbiohazard",
-  "baseType" : "crewmember",
-
-  // This npctype is used just as a base for the other crewmemberchemist*
-  // npctypes. Don't use it directly for spawning NPCs.
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
-
     "crew" : {
-    "defaultUniform" : {
-	"head" : "hazmathead",
-    	"chest" : "hazmatchest",
-   	"legs" : "hazmatlegs",
-   	"back" : "hazmatback"
-  	},
-        "benefits" : [       
-          {
-            // Ephemeral effects gained upon leaving the ship
-            "type" : "EphemeralEffect",
-            "effect" : "biomeradiationImmunity",
-            "duration" : 300
-          },         
-          {
-            // Persistent effects are active while on the ship
-            "type" : "PersistentEffect",
-            "effect" : "regeneration01"
-          }
-        ],
+      "defaultUniform" : {
+        "head" : "hazmathead",
+        "chest" : "hazmatchest",
+        "legs" : "hazmatlegs",
+        "back" : "hazmatback"
+      },
+
       "role" : {
         "type" : "chemist",
         "name" : "Radiologist",
         "field" : "Radiologist",
-        "uniformColorIndex" : 6
+        "uniformColorIndex" : 6,
+
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "radioactiveblock3",
+            "duration" : 900
+          },
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "maxFuel",
+            "value" : 340
+          },
+          {
+            "type" : "Regeneration",
+            "value" : 1
+          }
+        ]
       }
     },
 
@@ -43,7 +42,17 @@
         "roleDescription" : {
           "default" : {
             "default" : [
-              "I'll give you a boost whenever we're on the ship!"
+              "I'll give you a radioactive fuel boost whenever we're on the ship!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran will give you boostsss when we are on ship!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Friendly. I'll give you a radioactive fuel boost whenever we're on the ship!"
             ]
           }
         },
@@ -66,7 +75,32 @@
           "glitch" : {
             "default" : [
               "Eager. I can help you out!",
-              "Excited. Perhaps you could do with a power-up!",
+              "Excited. Perhaps you could do with an anti-rad pill!",
+              "Intrigued. I wonder if this will help you?",
+              "Helpful. Take this, it will help!"
+            ]
+          }
+        },
+		"fieldBenefit" : {
+          "default" : {
+            "default" : [
+              "Here's an anti-rad pill!",
+              "Let me help you out!",
+              "Looks like you could use my assistance!",
+              "I can help!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran hasss things to help you out!",
+              "Floran can help out!",
+              "Floran hasss things to help!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Eager. I can help you out!",
+              "Excited. Perhaps you could do with an anti-rad pill!",
               "Intrigued. I wonder if this will help you?",
               "Helpful. Take this, it will help!"
             ]
@@ -80,8 +114,8 @@
     "default" : [
       [0, [
           {
-            "primary" : [ "irradiumdagger" ],
-            "sheathedprimary" : [ "biopistol" ]          
+            "primary" : [ "rifleirradiumfu" ],
+            "sheathedprimary" : [ "irradiumblade" ]
           }
         ] ]
     ]

@@ -1,0 +1,125 @@
+{
+  "type" : "aviangravedigger",
+  "baseType" : "merchanttenant",
+
+  "damageTeam" : 1,
+
+  "disableWornArmor" : true,
+
+  "scripts" : [
+    "/npcs/bmain.lua"
+  ],
+  "initialScriptDelta" : 5,
+  "scriptConfig" : {
+    "merchant" : {
+      "waitTime" : 180,
+      "storeRadius" : 8,
+      "categories" : {
+        "default" : ["aviangravedigger" ],
+        "avian" : ["aviangravedigger" ]
+      },
+      "buyFactorRange" : [ 1.0, 1.0 ],
+      "sellFactorRange" : [ 0.2, 0.2 ],
+      "numItems" : 4,
+      "paneLayoutOverride" : {
+        "windowtitle" : {
+          "title" : "  Avian Gravedigger",
+          "subtitle" : "  The Igor to your Frankenstein."
+        }
+      }
+    },
+
+    "questGenerator" : {
+      "pools" : ["common", "tenant", "shady"]
+    },
+
+    "dialog" : {
+      "merchant" : {
+        "start" : {
+          "avian" : {
+            "default" : [
+              "Live a little, buy a corpse!",
+              "Got some extra dead stuff!",
+              "Hey there... want some corpses?"
+            ]
+          }
+        },
+        "end" : {
+          "avian" : {
+            "default" : [
+              "OK, that's a few more corpses 'buried'...",
+              "I hope the Stargazers don't find out about this.",
+              "Whatever you're going to do with them, I don't wanna know."
+            ]
+          }
+        },
+        "follow" : {
+          "avian" : {
+            "default" : [
+              "This way, this way!",
+              "Gotta keep my secrets. Follow me."
+            ]
+          }
+        },
+        "welcome" : {
+          "avian" : {
+            "default" : [
+              "These weren't going to Kluex anyways.",
+              "Ooh - I think that one's brain is still good.",
+              "Plenty of corpses. Got some royal stuff too."
+            ]
+          }
+        },
+        "tout" : {
+          "avian" : {
+            "default" : [
+              "Live a little, buy a corpse!",
+              "Got some extra dead stuff!",
+              "Hey there... want some corpses?"
+            ]
+          }
+        },
+        "converse" : {
+          "avian" : {
+            "default" : [
+              "Live a little, buy a corpse!",
+              "Got some extra dead stuff!",
+              "Hey there... want some corpses?"
+            ]
+          }
+        }
+      },
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/merchant.config:tagCriteria",
+          "enclosedArea" : "/dialog/merchant.config:enclosedArea",
+          "otherDeed" : "/dialog/merchant.config:otherDeed",
+          "severe" : "/dialog/merchant.config:severe",
+          "final" : "/dialog/merchant.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/merchant.config:beacon",
+          "rent" : "/dialog/merchant.config:rent"
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "plaguedoctorhead", "parameters" : { "colorIndex" : 1 } }
+            ],
+            "chest" : [
+              { "name" : "avianworkershirt", "parameters" : { "colorIndex" : 1 } }
+            ],
+            "legs" : [
+              { "name" : "avianworkerpants", "parameters" : { "colorIndex" : 1 } }
+            ]
+          }
+      ]]
+    ]
+  }
+}

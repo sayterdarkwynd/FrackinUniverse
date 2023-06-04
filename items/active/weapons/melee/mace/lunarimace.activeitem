@@ -1,0 +1,42 @@
+{
+  "itemName" : "lunarimace",
+  "price" : 200,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Bludgeon with style.",
+  "shortdescription" : "Lunari Mace",
+  "tooltipKind" : "hammer",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "lunari", "upgradeableWeapon"],
+
+  "inventoryIcon" : "lunarimace.png",
+
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "lunarimace.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1,
+    "baseDps":7,
+    "damageConfig" : {
+      "damageSourceKind" : "iceplasma",
+      "statusEffects" : [ "slow" ]
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 2,
+  "stunChance" : 65,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

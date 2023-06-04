@@ -1,18 +1,18 @@
 {
   "itemName" : "quietusknight",
   "price" : 1500,
-  "level" : 5,
+  "level" : 4,
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Heavy-duty quietus weapon",
+  "rarity" : "rare",
+  "description" : "Heavy-duty quietus weapon.",
   "shortdescription" : "Knight Blade",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword"],
+  "itemTags" : ["weapon","melee","broadsword","quietus", "upgradeableWeapon"],
 
   "inventoryIcon" : "quietusknight.png",
-
+  //"collectablesOnPickup" : { "fu_weaponbroadsword" : "quietusknight" },
   "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
   "animationParts" : {
     "handle" : "",
@@ -26,11 +26,56 @@
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
-    "fireTime" : 0.63,
-    "baseDps" : 11.12
+    "fireTime" : 0.82,
+    "baseDps" : 11.12,
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "aimAngle" : 0,
+        "allowRotate" : false,
+        "allowFlip" : true,
+        "weaponOffset":[0,0.8]
+      },
+      "windup" : {
+        "duration" : 0.1,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : true,
+        "weaponOffset":[0,0.8]
+      },
+      "preslash" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : false,
+        "weaponOffset":[0,0.8]
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : false,
+        "weaponOffset":[0,0.8]
+      }
+    }
   },
 
-  "altAbilityType" : "flurry",
-
+  "altAbilityType" : "flamethrowersword",
+  "altAbility" : {"name" : "Poison Spout"},
+  "critChance" : 1,
+  "critBonus" : 15,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

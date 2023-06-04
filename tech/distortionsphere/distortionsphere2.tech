@@ -1,0 +1,50 @@
+{
+  "name" : "distortionsphere2",
+  "type" : "head",
+
+  "scripts" : ["distortionsphere2.lua"],
+  "animator" : "distortionsphere2.animation",
+
+  "description" : "Now your Sphere ^green;[F]^reset; can drop bombs with ^red;[Fire]^reset;!",
+  "shortDescription" : "Distortion Sphere II",
+  "rarity" : "Uncommon",
+  "icon" : "/tech/distortionsphere2.png",
+
+  "chipCost" : 4,
+
+  "animationParts" : {
+    "ballGlow" : "distortionsphereglow.png",
+    "ball" : "distortionsphere2.png"
+  },
+
+  "transformedMovementParameters" : {
+    "collisionPoly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
+
+    "groundForce" : 450.0,
+    "normalGroundFriction" : 1.5,
+    "ambulatingGroundFriction" : 0.2,
+    "slopeSlidingFactor" : 3.0,
+
+    "airJumpProfile" : {
+      "jumpSpeed" : 25,
+      "jumpControlForce" : 850.0,
+      "jumpInitialPercentage" : 1.0,
+      "jumpHoldTime" : 0.1
+    },
+
+    "liquidJumpProfile" : {
+      "jumpSpeed" : 56.0,
+      "jumpControlForce" : 120.0,
+
+      "multiJump" : false,
+      "autoJump" : false
+    }
+  },
+
+  "ballSpeed" : 14,
+
+  "energyCost" : 30,
+
+  "ballRadius" : 1,
+  "ballFrames" : 8
+}

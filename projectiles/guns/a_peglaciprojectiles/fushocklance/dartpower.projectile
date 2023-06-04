@@ -4,19 +4,20 @@
   "animationCycle" : 1.9,
   "physics" : "laser",
   "bounces" : 2,
-  "frameNumber" : 8,  
+  "frameNumber" : 8,
   "timeToLive" : 2,
   "piercing" : true,
   "pointLight" : false,
-  "speed" :45,    
+  "speed" :45,
    "lightColor" : [40, 40, 70],
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/pulsecannonexplosion/pulsecannonexplosion.config"
+      "file" : "/projectiles/explosions/zapsplosion/zapsplosion.config"
     }
   ],
-  "damageKind" : "slash",
-  "emitters" : [ "peglacitraillong" ]
+  "damageKind" : "electric",
+  "emitters" : [ "peglacitraillong" ],
+  "statusEffects" : [ "electrified" ]
 }
 

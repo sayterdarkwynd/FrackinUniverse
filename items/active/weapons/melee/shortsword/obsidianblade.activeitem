@@ -6,19 +6,19 @@
   "rarity" : "rare",
   "description" : "Volcanic glass is so lovely and sharp.",
   "shortdescription" : "Obsidian Sword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "shortsword",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword"],
+  "itemTags" : ["weapon","melee","shortsword","hellfire", "upgradeableWeapon"],
 
   "inventoryIcon" : "obsidianblade.png",
-
+  //"collectablesOnPickup" : { "fu_weaponshortsword" : "obsidianblade" },
   "animation" : "comboshortsword.animation",
   "animationParts" : {
     "handle" : "",
     "blade" : "obsidianblade.png"
   },
-  
+
   "animationCustom" : { },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
@@ -28,9 +28,10 @@
   "primaryAbilityType" : "shortswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.695,
-    "baseDps" : 7.5
+    "baseDps" : 7.25
   },
-  
+  "critChance" : 2,
+  "critBonus" : 2,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
-  
+
 }

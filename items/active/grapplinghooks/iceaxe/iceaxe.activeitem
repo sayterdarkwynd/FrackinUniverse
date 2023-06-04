@@ -1,0 +1,49 @@
+{
+  "itemName" : "iceaxe",
+  "price" : 120,
+  "inventoryIcon" : "iceaxe.png",
+  "rarity" : "rare",
+  "maxStack" : 1,
+  "description" : "Useful for extremely short-ranged grappling. Survival tool. Can also do 5 damage.",
+  "shortdescription" : "Ice Axe",
+  "largeImage" : "iceaxe.png",
+  "category" : "Tool",
+  "fireTime" : 0,
+  "twoHanded" : false,
+
+  "scripts" : ["/items/active/grapplinghooks/grapplinghook.lua"],
+    "animationScripts" : ["/items/active/effects/renderrope.lua"],
+
+  "animation" : "iceaxe.animation",
+
+  "fireOffset" : [0, 0],
+  "ropeOffset" : [-1.2, 0],
+  "ropeVisualOffset" : [0.75, 0],
+  "handGrip" : "wrap",
+  "consumeOnUse" : false,
+
+  "projectileType" : "iceaxe",
+  "projectileParameters" : {
+    "speed" : 120,
+    "timeToLive" : 0.45,
+    "power" : 5,
+    "piercing" : true,
+    "onlyHitTerrain":false,
+    "actionOnCollide":[ {"options":["/sfx/projectiles/magnorb_impact2.ogg"],"action":"sound"} ],
+    "statusEffects" : [ "bleedingshort" ]
+  },
+
+  "ropeWidth" : 0.01,
+  "ropeColor" : [122, 112, 110, 225],
+
+  "reelInDistance" : 2,
+  "reelOutLength" : 2,
+  "breakLength" : 3,
+
+  "minSwingDistance" : 0,
+
+  "reelSpeed" : 70,
+  "controlForce" : 2000,
+
+  "groundLagTime" : 0
+}

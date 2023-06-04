@@ -1,25 +1,26 @@
 {
   "itemName" : "perry",
   "rarity" : "Common",
-  "price" : 100,
+  "price" : 500,
   "category" : "drink",
   "inventoryIcon" : "perry.png",
-  "description" : "A bottle of sweet perry!",
+  "description" : "A bottle of sweet perry!\n^cyan;+^white;3 ^cyan;Defense ^gray;(^white;45s^gray;)\n^white;35% ^red;Slow^gray;, ^red;Drunk ^gray;(^white;1m^gray;)^reset;",
   "shortdescription" : "Perry",
   "handPosition" : [0, -2],
+  "tooltipKind" : "food",
   "effects" : [ [
-        {
-        "effect" : "defense2",
-	"duration" : 45
-         },
+    {
+      "effect" : "defense2",
+      "duration" : 45
+    },
 		{
-        "effect" : "slow",
-        "duration" : 60
+      "effect" : "slow",
+      "duration" : 60
 		},
 		{
-		"effect" : "booze",
-		"amount" : 1,
-		"duration" : 60
-        }
-    ] ]
+      "effect" : "booze",
+      "duration" : 60
+    }
+  ] ],
+  "emitters" : [ "drinking" ]
 }

@@ -1,0 +1,23 @@
+{
+  "itemName" : "deliciousmeat",
+  "rarity" : "Common",
+  "price" : 30,
+  "category" : "preparedFood",
+  "inventoryIcon" : "deliciousmeat.png",
+  "description" : "A wonderfully tasty looking morsel which you should *definitely* eat.\n^red;Bleeding ^gray;(^white;20s^gray;)^reset; ^orange;Type: Cooked Meat^reset;",
+  "shortdescription" : "Delicious Mystery Meat",
+  "effects" : [ [
+    "eatself",
+	{ "effect" : "meat_cooked" },
+    {
+        "effect" : "bleedinglong2",
+        "duration" : 20
+    }
+  ] ],
+  "foodValue" : 45,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0
+}

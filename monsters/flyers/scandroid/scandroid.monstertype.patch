@@ -1,0 +1,79 @@
+[
+  {
+    "op": "add",
+    "path": "/dropPools/0/firebow",
+    "value": "scandroidHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/icebow",
+    "value": "scandroidHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/poisonbow",
+    "value": "scandroidHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/electricbow",
+    "value": "scandroidHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/radioactivebow",
+    "value": "scandroidHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/cosmicbow",
+    "value": "scandroidHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/shadowbow",
+    "value": "scandroidHunting"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-fire",
+        "cooldown": 4,
+        "parameters": {
+          "requireLineOfSight": true,
+          "maximumRange": 10,
+          "minimumRange": 3,
+          "windupStopForce": 50,
+          "windupState": "fire",
+          "windupTime": 0.4,
+          "projectileType": "shock",
+          "projectileParameters": {
+            "speed": 25
+          },
+          "fireOffset": [
+            0,
+            0
+          ],
+          "aimAtTarget": true,
+          "onGround": false,
+          "fireState": "",
+          "fireSound": "",
+          "winddownState": "",
+          "winddownTime": 0.5
+        }
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 70
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/poisonResistance/baseValue",
+    "value": 0.95
+  }
+]

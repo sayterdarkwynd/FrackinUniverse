@@ -1,19 +1,37 @@
 {
-  "itemName" : "leafshell",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "leafshellicon.png",
-  "description" : "Provides a leafy barrier from harm.",
-  "shortdescription" : "Leafshell",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      "defense3"
-    ] ]
+	"itemName": "leafshell",
+	"inventoryIcon": "leafshellicon.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+4 ^cyan;Defense^reset;: 3m",
+	"shortdescription": "Leafshell",
+	"effects": [
+		[{
+			"effect": "defense3",
+			"duration": 180
+		}]
+	],
+
+	"blockingEffects": [
+		"defense1",
+		"defense2",
+		"defense4",
+		"defense5",
+		"defense6",
+		"defenseboost10",
+		"defenseboost20",
+		"defenseboost30",
+		"defenseboost60",
+		"defenseboost90",
+		"defenseboost120",
+		"defenseboost180",
+		"defenseboost210",
+		"defenseboost240",
+		"defenseboost270",
+		"defenseboost300",
+		"defenseboostgreg"
+	]
 }

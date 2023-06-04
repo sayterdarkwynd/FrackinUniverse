@@ -1,0 +1,27 @@
+{
+  "projectileName" : "miasmaflower",
+  "physics" : "nocollision",
+  "timeToLive" : 4,
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "speed" : 3,
+  "power" : 3,
+  "damageKind" : "poison",
+  "damagePoly" : [ ],
+  "orientationLocked" : true,
+  "bounces" : -1,
+  "scripts" : ["/projectiles/activeitems/staff/staffprojectile.lua"],
+  "scriptDelta" : 1,
+  "statusEffects": ["weakpoison"],
+  "periodicActions": [
+    {
+      "time" : 0.14,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "largepoisoncloud",
+      "inheritDamageFactor" :0.5,
+      "fuzzAngle" : 360,
+      "projectileCount" : 1,
+      "projectileParameters" : { "damageSourceKind" : "bioweapon"}
+   }
+  ]
+}

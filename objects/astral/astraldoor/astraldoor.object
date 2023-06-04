@@ -1,0 +1,50 @@
+{
+  "objectName" : "astraldoor",
+  "colonyTags" : ["fu","aether","pretty","valuable","door"],
+  "rarity" : "Legendary",
+
+  "category" : "door",
+  "price" : 95,
+  "description" : "A stellar door, to keep out cosmic entities that want to take your life.",
+  "shortdescription" : "Aen Door",
+  "race" : "generic",
+  "closedLight" : [120, 20, 180],
+  "inventoryIcon" : "icon.png",
+
+  "tooltipKind" : "door",
+  "largeImage" : "astraldoor.png:right",
+
+  "orientations" : [
+    {
+      "image" : "astraldoor.png:default",
+      "imagePosition" : [-16, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/doorglow.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/birddoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/birddoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {"door" : "astraldoor.png",
+  "doorfullbright" : "astraldoorfullbright.png"},
+  "animationPosition" : [-16, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

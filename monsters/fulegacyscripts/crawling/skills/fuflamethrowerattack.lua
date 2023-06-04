@@ -4,8 +4,8 @@ fuFlameThrowerAttack = {}
 function fuFlameThrowerAttack.enterWith(args)
   if not args.fuFlameThrowerAttack then return nil end
 
-  return { 
-    didAttack = false, 
+  return {
+    didAttack = false,
     wasInRange = false,
     windupTimer = config.getParameter("fuFlameThrowerAttack.windupTime"),
     winddownTimer = config.getParameter("fuFlameThrowerAttack.windDownTime"),
@@ -17,8 +17,8 @@ end
 function fuFlameThrowerAttack.enter()
   if not canStartSkill("fuFlameThrowerAttack") then return nil end
 
-  return { 
-    didAttack = false, 
+  return {
+    didAttack = false,
     wasInRange = false,
     windupTimer = config.getParameter("fuFlameThrowerAttack.windupTime"),
     winddownTimer = config.getParameter("fuFlameThrowerAttack.winddownTime"),
@@ -82,5 +82,5 @@ function fuFlameThrowerAttack.update(dt, stateData)
 end
 
 function fuFlameThrowerAttack.leavingState(stateData)
-  
+
 end

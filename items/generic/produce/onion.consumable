@@ -1,19 +1,18 @@
 {
-  "itemName" : "onion",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "onionicon.png",
-  "description" : "A gurn onion. Tasty! Regenerates when well lit!",
-  "shortdescription" : "Gurn Onion",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      "lightregenproduce"
-    ] ]
+	"itemName": "onion",
+	"inventoryIcon": "onionicon.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^Cyan;Heal in Light 250.2-252.5% HP^reset;: 5m",
+	"shortdescription": "Gurn Onion",
+
+	"effects": [
+		[{
+			"effect": "lightregenproduce",
+			"duration": 300
+		}]
+	]
 }

@@ -1,0 +1,30 @@
+{
+	"itemName": "violiroot",
+	"inventoryIcon": "violiroot.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 40,
+	"foodValue": 7,
+	"maxStack": 20,
+
+	"tooltipKind": "food",
+	"description": "Both tasty and useful! Not!\n^yellow;^reset;^cyan;Health x1.2^reset;: 1m\n^yellow;^reset;^red;Burning^reset;: 10s",
+	"shortdescription": "Violiroot",
+
+	"eventCategory": "eventCrop",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 5,
+	"effects": [
+		[{
+				"effect": "maxhealthscalingboostfood",
+				"duration": 60
+			},
+			{
+				"effect": "burning",
+				"duration": 10
+			}
+		]
+	],
+	"blockingEffects": ["wellfed"]
+}

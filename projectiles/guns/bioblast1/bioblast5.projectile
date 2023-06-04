@@ -1,0 +1,54 @@
+{
+  "projectileName" : "bioblast5",
+  "image" : "bioblast5.png",
+  "animationCycle" : 0.8,
+  "level" : 6,
+  "frameNumber" : 12,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [42,127,147],
+  "power" : 4,
+  "speed" : 5,
+  "fullbright" : true,
+  "timeToLive" : 6,
+  "damagePoly" : [ [-15, 0], [-15, -5], [0, -5], [15, -5], [15, 0], [15, 5], [0, 5], [-15, 5] ],
+  "damageKind" : "poison",
+  "physics" : "gas",
+  "actionOnReap" : [
+    { "action" : "config", "file" : "/projectiles/explosions/elementimpact/electricimpact2.config" },
+    { "action" : "sound", "options" : ["/sfx/weapons/soundwave.ogg" ] },
+    {
+      "action" : "projectile",
+      "type" : "roar",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.33
+    },
+     {
+       "action" : "loop",
+       "count" : 5,
+       "body" : [
+         {
+           "action" : "particle",
+           "specification" : "poisondrip1",
+           "time" : 0.1,
+           "repeat" : true
+         },
+         {
+           "action" : "particle",
+           "specification" : "froth1",
+           "time" : 0.1,
+           "repeat" : true
+         }
+       ]
+     }
+  ],
+  "emitters" : [ "electricplasma", "froth" ],
+  "statusEffects" : [ "insanity" ],
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+
+  "controlMovement" : {
+    "maxSpeed" : 15,
+    "controlForce" : 80
+  },
+  "persistentAudio" : "/sfx/projectiles/fireball_loop.ogg"
+}

@@ -1,0 +1,96 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "parasol" : {
+        "default" : "closed",
+        "states" : {
+          "closed" : {},
+          "open" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "end"
+          },
+          "close" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "end"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "parasol" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [0, 1.375],
+          "rotationGroup" : "parasol",
+          "rotationCenter" : [0, 0]
+        },
+
+        "partStates" : {
+          "parasol" : {
+            "closed" : {
+              "properties" : {
+                "image" : "parasol3.png:close.2"
+              }
+            },
+            "open" : {
+              "properties" : {
+                "image" : "parasol3.png:open.<frame>"
+              }
+            },
+            "close" : {
+              "properties" : {
+                "image" : "parasol3.png:close.<frame>"
+              }
+            }
+          }
+        }
+      },
+
+     "parasolfullbright" : {
+        "properties" : {
+          "zLevel" : 2,
+          "centered" : true,
+          "offset" : [0, 1.375],
+          "rotationGroup" : "parasol",
+          "rotationCenter" : [0, 0],
+          "fullbright" : true
+        },
+
+        "partStates" : {
+          "parasol" : {
+            "closed" : {
+              "properties" : {
+                "image" : "parasol3fullbright.png:close.2"
+              }
+            },
+            "open" : {
+              "properties" : {
+                "image" : "parasol3fullbright.png:open.<frame>"
+              }
+            },
+            "close" : {
+              "properties" : {
+                "image" : "parasol3fullbright.png:close.<frame>"
+              }
+            }
+          }
+        }
+      }
+
+    }
+  },
+
+  "rotationGroups" : {
+    "parasol" : {
+      "angularVelocity" : 8
+    }
+  },
+
+  "sounds" : {
+    "open" : [ ]
+  }
+}

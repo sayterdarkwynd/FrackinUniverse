@@ -1,0 +1,32 @@
+{
+  "objectName" : "madnessderrick",
+  "rarity" : "common",
+  "description" : "Can heal you with a musk-ridden aura.",
+  "shortdescription" : "Psilamander",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 850,
+  "printable" : false,
+
+  "inventoryIcon" : "madnessderrick.png",
+  "orientations" : [
+    {
+      "dualImage" : "madnessderrick.png:<color>",
+      "imagePosition" : [-14, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "spaces" : [  [0, 0], [-1, 0], [0, 1], [-1, 1]],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "botspawner" : {
+      "type" : "derrickmadnesspet",
+	  "monsterImage":"/monsters/derrickish/base/derrickmadnesspet.png:idle.1?"
+  },
+
+  "scripts" : [
+    "/spawners/fuminionspawner.lua"
+  ],
+  "scriptDelta" : 5
+}

@@ -1,13 +1,21 @@
 {
   "objectName" : "fu_solararrayadv",
-  "rarity" : "Common",
-    "colonyTags" : [ "science" ],
+  "rarity" : "common",
+  "colonyTags" : [ "science" ],
   "category" : "wire",
-  "price" : 2500,
-  "description" : "The ultimate in solar generation technology. In ideal conditions this can generate over 9u!",
-  "shortdescription" : "^cyan;Solar Tower^white;",
+  "price" : 600,
+  "description" : "The ultimate in solar generation technology. In ideal conditions this can generate over ^orange;24W^reset; of power.",
+  "shortdescription" : "^cyan;Solar Tower^reset;",
   "race" : "generic",
   "printable" : false,
+  "tooltipKind" : "base",
+
+  "apexDescription" : "The Miniknog tends not to care about renewable energy. There are all manner of theories as to why.",
+  "avianDescription" : "Just one of the many uses of the sun.",
+  "floranDescription" : "Machine get power from sssun like plant. Floran like it.",
+  "glitchDescription" : "Analytical. Atmospheric interference means this panel will generate less power at low altitudes.",
+  "humanDescription" : "I hope it doesn't rain. That'd block out the sun!",
+  "hylotlDescription" : "Only structures close to the surface of the ocean can use these. A pity.",
 
   "inventoryIcon" : "fu_solararrayadv_icon.png",
   "orientations" : [
@@ -25,13 +33,13 @@
     "base" : "fu_solararrayadv_base.png"
   },
   "animationPosition" : [0, 0],
-  
-  "scripts" : [ "/objects/power/fu_solararrayadv/fu_solararrayadv.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 50,
-  
+
+  "scripts" : [ "/scripts/fupower.lua","/objects/power/isn_solarpanel.lua" ],
+  "scriptDelta" : 60,
+
   "outputNodes" : [ [2, 1] ],
-  
-  "isn_powerSupplier" : true
+
+  "isn_powerSupplier" : true,
+  "powertype" : "output",
+  "powerLevel" : 6.0
 }

@@ -1,19 +1,39 @@
 {
-  "itemName" : "batterystemcharge",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "batterystemcharge.png",
-  "description" : "Increase your energy for a while.",
-  "shortdescription" : "Battery Stem Charge",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-       "maxenergyboost5", "energyregenfu05" 
-    ] ]
+	"itemName": "batterystemcharge",
+	"inventoryIcon": "batterystemcharge.png",
+	"category": "food",
+	"rarity": "Rare",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+40 EP^reset;, ^cyan;+2.5% E Regen & -1.25% E. Block^reset;: 2m",
+	"shortdescription": "Battery Stem Charge",
+
+	"effects": [
+		[
+			{
+				"effect": "maxenergyboost5",
+				"duration": 120
+			},
+			{
+				"effect": "energyregenfu05",
+				"duration": 120
+			}
+		]
+	],
+	"blockingEffects": [
+		"maxenergyboost1",
+		"maxenergyboost2",
+		"maxenergyboost3",
+		"maxenergyboost4",
+		"maxenergyboost6",
+		"maxenergyboost145",
+		"energyregenfu50",
+		"energyregenfu10",
+		"energyregenfu60",
+		"energyregenfu25",
+		"energyregenfu35",
+		"energyregenfu20",
+		"energyregenfu40"
+	]
 }

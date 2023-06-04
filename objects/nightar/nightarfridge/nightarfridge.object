@@ -1,0 +1,64 @@
+{
+  "objectName" : "nightarfridge",
+  "colonyTags" : ["nightar","cooking","storage"],
+  "rarity" : "legendary",
+  "category" : "fridgeStorage",
+
+
+  "printable" : false,
+  "description" : "Perfect for storing a lot of food and keeping it fresh.",
+  "shortdescription" : "Nightar Fridge",
+  "race" : "nightar",
+  "price" : 200,
+  "health" : 1.5,
+
+  "apexDescription" : "A fridge. Hopefully it contains a banana milkshake.",
+  "avianDescription" : "A fridge. Ideally filled with drinks and snacks.",
+  "floranDescription" : "Floran can sssmell meat inside.",
+  "glitchDescription" : "Pleased. This fridge is operating at the optimal temperature.",
+  "humanDescription" : "I'm practically vibrating with excitement thinking about the possible contents.",
+  "hylotlDescription" : "Underwater, refrigeration is easier. These devices are a clever substitute.",
+  "novakidDescription" : "A plain ol' fridge.",
+
+  "inventoryIcon" : "nightarfridgeicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "nightarfridge.png:<color>.<frame>", "fullbright" : true }, { "image" : "nightarfridgelit.png:<color>.<frame>"} ],
+	  "direction" : "left",
+	  "flipImages" : true,
+
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+	{
+      "imageLayers" : [ { "image" : "nightarfridge.png:<color>.<frame>", "fullbright" : true }, { "image" : "nightarfridgelit.png:<color>.<frame>"} ],
+	  "direction" : "right",
+
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "openSounds" : [ "/sfx/objects/fridge_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/fridge_close.ogg" ],
+  "slotCount" : 32,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+
+  "itemAgeMultiplier" : 0.0,
+
+  "soundEffect" : "/sfx/objects/fridge_hum.ogg"
+}

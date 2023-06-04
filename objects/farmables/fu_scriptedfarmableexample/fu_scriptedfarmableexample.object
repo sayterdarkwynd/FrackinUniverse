@@ -1,0 +1,66 @@
+{
+  "objectName" : "fu_scriptedfarmableexample",
+  "colonyTags" : ["nature"],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "Wheat, a staple crop with many uses.",
+  "shortdescription" : "Wheat Seed",
+  "objectType" : "object",		//Can just remove this if you want
+  "printable" : false,
+  "price" : 10,
+
+  "apexDescription" : "Wheat is unpleasant when unprocressed, but can be used to make all manner of dishes.",
+  "avianDescription" : "Wheat is delicious on its own, or when used to make breadcrumbs.",
+  "floranDescription" : "Wheat has earsss. Floran pull off earsss for fun.",
+  "glitchDescription" : "Thoughtful. I wonder if all the possible uses for wheat have been found.",
+  "humanDescription" : "Wheat, perfect for baking some fresh bread.",
+  "hylotlDescription" : "On land, wheat has many uses. Underwater, almost none.",
+  "novakidDescription" : "I get a hankerin' for fresh bread whenever I see wheat.",
+
+  "inventoryIcon" : "fu_scriptedfarmableexampleicon.png",
+
+  "tooltipKind" : "seed",
+  "largeImage" : "fu_scriptedfarmableexample.png:default.2.0",
+
+  "orientations" : [
+    {
+      "dualImage" : "fu_scriptedfarmableexample.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "radioMessagesOnPickup" : [ "pickupseed" ],
+
+  "stages" : [
+    {
+      "duration" : [570, 630]
+    },
+    {
+      "duration" : [570, 630]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "wheatHarvest"
+    }
+  ],
+
+  "maxImmersion" : 0.125,
+
+  "animation" : "/scripts/fu_farmableobject.animation",
+
+  "animationParts" : {
+    "base" : "fu_scriptedfarmableexample.png"
+  },
+
+  "scripts" : [ "/scripts/fu_farmableobject.lua" ],
+  "scriptDelta" : 60,
+
+  "scriptedFarmable" : true,		//So that scripts can know that this object is a scripted farmable
+
+  "breakDropPool" : "empty",		//To fix an issue where it would drop the seed when it shouldn't if you harvest a non-perennial crop
+  "dropSeed" : true					//If set to false, makes it so that the seed won't drop when broken, if set to a string, makes the crop drop that item when broken, can be removed if set to true
+}

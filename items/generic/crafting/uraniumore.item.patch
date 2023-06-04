@@ -1,5 +1,13 @@
 [
-	{"op":"add","path":"/fuelAmount",
-	"value": 50
-	}
+    [
+        { "op": "add", "path": "/fuelAmount", "value": 7 },
+        { "op": "replace", "path": "/category", "value": "craftingOre" },
+        { "op": "replace", "path": "/price", "value": 120 },
+        //{ "op": "add", "path": "/collectablesOnPickup", "value": { "fu_isotopes": "uraniumore" }},
+        { "op": "replace", "path": "/description", "value": "Uranium has many highly radioactive isotopes.\n^blue;+^white;7 ^blue;Fuel^reset;"}
+    ],
+    [
+        {"op":"test","path":"/learnBlueprintsOnPickup/0"},
+        {"op":"remove","path":"/learnBlueprintsOnPickup/0"}
+    ]
 ]

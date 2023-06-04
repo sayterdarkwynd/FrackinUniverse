@@ -4,11 +4,69 @@
   "airless" : true,
   "breathable" : false,
 
-  "hueShiftOptions" : [-180, -135, -90, -45, 0, 45, 90, 135, 180],
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 1,
+        "pool" : [
+          [ 0.111, "peblit" ],
+          [ 0.111, "crustoiseish" ],
+          [ 0.111, "iguarmor" ],
+          [ 0.111, "batong" ],
+          [ 0.111, "voltip" ],
+          [ 0.111, "fennix" ],
+          [ 0.1111, "fugianterchiusbee" ],
+          [ 0.111, "ignome" ],
+          [ 0.111, "bobot" ]
+        ]
+      },
+      {
+        "select" : 1,
+        "pool" : [
+          [ 0.4, "sunskipper" ],
+          [ 0.3, "goldbuck" ],
+          [ 0.3, "sandclown" ]
+        ]
+      },
+      {
+        "select" : 1,
+        "pool" : "generatedGroundAggroDay"
+      },
+      {
+        "select" : 3,
+        "pool" : "nightTerrors"
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedFlying"
+      },
+      {
+        "select" : 2,
+        "pool" : [
+          [ 1, "armadillocritter" ],
+          [ 1, "mousecritter" ],
+          [ 1, "groopcritter" ],
+          [ 1, "ravencritter" ],
+          [ 1, "wurmcritter" ]
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "colors" : "desert"
+    }
+  },
+
+
+  "statusEffects" : [ "biomepoison2", "biomeairless" ],
+  "hueShiftOptions" : [70, 75, 80, 85, 90],
 
   "weather" : [
     [0, [
-      "/weather.config:moon"
+      "/weather.config:moon_toxic"
     ]]
   ],
 
@@ -134,8 +192,8 @@
     }
   ],
 
-  "mainBlock" : "moonstone",
-  "subBlocks" : [ "sewage", "moonrock", "moondust" ],
+  "mainBlock" : "moonrock",
+  "subBlocks" : [ "sewage", "mud" ],
   "ores" : "moon",
 
   "parallax" : "/parallax/surface/moon.parallax",
@@ -151,17 +209,49 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/MelodyofMisery.ogg","/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/SomethingIntoDarkness.ogg","/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 
   "surfacePlaceables" : {
-    "grassMod" : [ "sand" ],
-    "grassModDensity" : 0.2,
+    "grassMod" : [ "moondust" ],
+    "grassModDensity" : 0.3,
     "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
       {
         "mode" : "floor",
         "priority" : 1.0,
@@ -193,13 +283,21 @@
 
         "type" : "microdungeon",
         "microdungeons" : [ "terrainfeatures" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "grass",
+        "grasses" : [ "pebbles" ]
       }
     ]
-
   },
 
   "undergroundPlaceables" : {
-    "grassMod" : [ "sand" ],
+    "grassMod" : [ "moondust" ],
     "grassModDensity" : 0.2,
 
     "items" : [
@@ -221,7 +319,7 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [
@@ -230,6 +328,42 @@
             "parameters" : { }
           }
         ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "grass",
+        "grasses" : [ "pebbles" ]
       }
     ]
   }

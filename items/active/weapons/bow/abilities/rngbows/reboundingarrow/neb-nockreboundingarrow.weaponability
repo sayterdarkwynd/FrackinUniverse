@@ -1,0 +1,135 @@
+//This file is a template! Don't use this for actual weapon - create a copy instead!
+
+{
+  "animationParts" : {
+    "specialArrow" : "/items/active/weapons/bow/abilities/rngbows/reboundingarrow/reboundingarrow.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+	  "stateTypes" : {
+		"specialArrow" : {
+		  "priority" : -1,
+		  "default" : "hidden",
+		  "states" : {
+			"hidden" : {},
+			"visible" : {}
+		  }
+		}
+	  },
+	  "parts" : {
+		"specialArrow" : {
+		  "properties" : {
+			"zLevel" : 5,
+			"centered" : true,
+		    "offset" : [0.625, 0.0],
+			"transformationGroups" : ["weapon"]
+		  },
+		  "partStates" : {
+			"specialArrow" : {
+			  "hidden" : {
+				"properties" : {
+				  "image" : ""
+				}
+			  },
+			  "visible" : {
+				"properties" : {
+				  "image" : "<partImage>:<drawFrame><paletteSwaps><directives>"
+				}
+			  }
+			},
+			"bow" : {
+			  "loosed" : {
+				"properties" : {
+				  "image" : ""
+				}
+			  }
+			}
+		  }
+		}
+	  }
+	},
+    "sounds" : {
+      "nockArrow" : [ "/sfx/gun/reload/grenade_reload_clip1.ogg" ]
+    },
+    "particleEmitters" : {
+      "specialArrow" : {
+        "active" : false,
+        "emissionRate" : 5,
+        "transformationGroups" : ["weapon"],
+        "offsetRegion" : [0, 0, 0, 0],
+        "particles" : []
+      }
+    }
+  },
+
+  "ability" : {
+    "name" : "Nock Rebounding Arrow",
+    "type" : "rngbows_reboundingarrow",
+    "scripts" : ["/items/active/weapons/bow/abilities/rngbows/nockaltarrow/neb-nockaltarrow.lua"],
+    "class" : "NebNockedArrow",
+
+	"adaptedAbilityIndex" : 1,	//Which ability to adapt (1 = primary, 2 = secondary)
+	"cooldownTime" : 0.33,		//Cooldown time in between arrow switches
+	"customArrow" : true,
+
+	//Which stats to adapt when nocking the new arrow
+	"adaptedStats" : {
+	  "projectileType" : true,
+	  "powerProjectileType" : true,
+	  "projectileCount" : true,
+	  "drawTime" : true,
+	  "energyPerShot" : true,
+	  "holdEnergyUsage" : true,
+	  "inaccuracy" : true,
+	  "staticDamageMultiplier" : true,
+	  "dynamicDamageMultiplier" : true
+	},
+
+	//The new stats which will overwrite the primary ability
+	"specialAbility" : {
+	  "projectileType" : "rngbouncingarrow",
+	  "powerProjectileType" : "rngbouncingarrow",
+	  "projectileCount" : 1,
+
+	  "drawTime" : 1.4,
+	  "energyPerShot" : 55,
+	  "holdEnergyUsage" : 15,
+	  "inaccuracy" : 0.03,
+	  "staticDamageMultiplier" : 1.0,
+	  "dynamicDamageMultiplier" : 1.0
+	},
+
+    "stances" : {
+      "unnock" : {
+        "aimAngle" : 0,
+        "armRotation" : -25,
+        "weaponRotation" : -20,
+        "weaponAngularVelocity" : 0,
+        "armAngularVelocity" : 0,
+		"weaponOffset" : [-0.5, 0],
+        "twoHanded" : true,
+        "duration" : 0.2,
+
+        "allowRotate" : false,
+        "allowFlip" : true,
+
+        "frontArmFrame" : "idle.3"
+      },
+      "nock" : {
+        "aimAngle" : 0,
+        "armRotation" : -20,
+        "weaponRotation" : -30,
+        "weaponAngularVelocity" : 0,
+        "armAngularVelocity" : 0,
+		"weaponOffset" : [-0.5, 0],
+        "twoHanded" : true,
+        "duration" : 0.2,
+
+        "allowRotate" : false,
+        "allowFlip" : true,
+
+        "frontArmFrame" : "swim.2"
+      }
+    }
+  }
+}

@@ -5,12 +5,12 @@
   "scripts" : ["bouncesphere.lua"],
   "animator" : "bouncesphere.animation",
 
-  "description" : "A mobile ball capable of great jumping! ^green;[F]",
+  "description" : "A mobile Sphere ^green;[F]^reset; capable of great jumping!",
   "shortDescription" : "Bounce Sphere",
   "rarity" : "Uncommon",
-  "icon" : "/tech/distortionsphere.png",
+  "icon" : "/tech/bouncesphere.png",
 
-  "chipCost" : 8,
+  "chipCost" : 4,
 
   "animationParts" : {
     "ballGlow" : "bouncesphereglow.png",
@@ -25,7 +25,7 @@
     "ambulatingGroundFriction" : 0.45,
     "slopeSlidingFactor" : 2.5,
     "bounceFactor" : 0.45,
-    
+
     "airJumpProfile" : {
       "jumpSpeed" : 36,
       "jumpControlForce" : 1200.0,
@@ -34,11 +34,11 @@
     },
 
     "liquidJumpProfile" : {
-      "jumpSpeed" : 1.0,
-      "jumpControlForce" : 0.5,
-
-      "multiJump" : false,
-      "autoJump" : false
+      "jumpSpeed" : 56.0,
+      "jumpControlForce" : 160.5,
+      "liquidImpedance" : 0,
+      "multiJump" : true,
+      "autoJump" : true
     }
   },
 

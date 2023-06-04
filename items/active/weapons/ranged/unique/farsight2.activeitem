@@ -1,0 +1,120 @@
+{
+  "itemName" : "farsight2",
+  "price" : 1600,
+  "inventoryIcon" : "farsight2.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Superior brutal long ranged rifle.
+^yellow;Inflicts bleeding^reset;",
+  "shortdescription" : "FarSight XR-72",
+  "category" : "sniperRifle",
+  "level" : 5,
+  "tooltipKind" : "gun2",
+  "weaponType" : "sniperRifle",
+  "itemTags" : ["weapon","ranged","sniperrifle", "energy", "upgradeableWeapon" ],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "farsight2.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/fuplastmamuzzleblue1.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "shadowsmoke", "offset" : [0.05, -0.4] },
+          { "particle" : "electricalburn", "offset" : [0.05, -0.4] },
+          { "particle" : "soluskatana1", "offset" : [0.05, -0.4] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/farsight.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.7, 0.02],
+  "muzzleOffset" : [2.8, 0.25],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "shadow",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1.5,
+    "baseDps" : 10.2,
+    "energyUsage" : 52.5,
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "farsightshot",
+    "projectileParameters" : {
+      "speed" : 120,
+      "knockback" : 16,
+      "knockbackDirectional" : true,
+      "lightColor" : [30, 120, 170],
+      "statusEffects" : [ "bleedingshort" ],
+      "emitters" : [ "defaultblue" ]
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 5,
+  "critBonus" : 5,
+  "isSniper" : 1,
+  "altAbilityType" : "sparkles2",
+  "altAbility" : {
+    "name" : "Rad-Shredder",
+    "energyUsage" : 30,
+    "baseDps" : 7.5,
+    "projectileType" : "poisonguardianpellet",
+    "projectileParameters" : {
+      "damageKind" : "radioactive",
+      "lightColor" : [30, 120, 170],
+      "statusEffects" : [ "bleedingshort" ],
+      "speed" : 22,
+      "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elementimpact/shadowimpact.config"
+	    }
+      ],
+      "emitters" : [ "defaultblue" ]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

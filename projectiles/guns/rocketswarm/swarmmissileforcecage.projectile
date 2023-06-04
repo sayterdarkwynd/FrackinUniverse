@@ -1,0 +1,24 @@
+{
+	"projectileName": "fuswarmmissileforcecage",
+	"image": "swarmmissile.png",
+	"physics": "boomerang",
+	"animationCycle": 0.25,
+	"speed": 25,
+	"frameNumber": 1,
+	"damageKindImage": "icon.png",
+	"fallSpeed": 0,
+	"lightColor": [255, 255, 128],
+	"pointLight": true,
+	"scripts": ["homingarrowproxdie.lua"],
+	"baseHomingControlForce": 3,
+	"actionOnReap": [{
+		"action": "projectile",
+		"type": "forcecage",
+		"angleAdjust": -25,
+		"inheritDamageFactor": 0.0,
+		"inheritSpeedFactor": 0
+	}],
+	"power": 0.0,
+	"damageKind": "nodamage",
+	"emitters": ["smoke", "fireplasma"]
+}

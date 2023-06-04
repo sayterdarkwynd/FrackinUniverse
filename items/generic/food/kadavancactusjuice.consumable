@@ -1,0 +1,27 @@
+{
+  "itemName": "kadavancactusjuice",
+  "rarity": "Common",
+  "price": 90,
+  "category": "drink",
+  "inventoryIcon": "kadavancactusjuice.png",
+  "description": "Prickly, somewhat bland cactus juice.\n^cyan;+^white;100% ^pink;Physical ^cyan;Thorns ^gray;(^white;90s^gray;)^reset; ^green;Type: Vegetable^reset;",
+  "shortdescription": "Kadavan Cactus Juice",
+  "effects": [
+    [
+	  {"effect": "plant_food"},
+      {
+        "effect": "thorns",
+        "duration": 90
+      }
+    ]
+  ],
+  "foodValue": 15,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1.0,
+  "blockingEffects": ["wellfed"],
+  //"learnBlueprintsOnPickup": ["kadavanmeatjuice"],
+  "emitters": ["drinking"]
+}

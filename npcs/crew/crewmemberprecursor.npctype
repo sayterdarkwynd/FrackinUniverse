@@ -1,0 +1,110 @@
+{
+  "type" : "crewmemberprecursor",
+  "baseType" : "fu_crewmember",
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "behavior" : "crewmembermute"
+    },
+
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "fuprecursorhead",
+        "chest" : "fuprecursorchest",
+        "legs" : "fuprecursorpants"
+      },
+
+      "role" : {
+        "type" : "soldier",
+        "name" : "Precursor Drone",
+        "field" : "Precursor Drone",
+        "uniformColorIndex" : 2,
+
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "researchBonus2",
+            "duration" : 300
+          },
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "shadowblock3",
+            "duration" : 300
+          },
+		  {
+			"type": "ShipUpgradeBenefit",
+			"property": "fuelEfficiency",
+			"value": 0.1
+		  }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "offer" : {
+          "default" : {
+            "default" : [
+              "ERROR: IFF SYSTEMS DAMAGED. REQUESTING REBOOT."
+            ]
+          }
+        },
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "CAUTION: VESSEL ENGINE DOES NOT CONFORM TO HEGEMONY STANDARDS. RECALIBRATING FUEL INJECTORS."
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "DANGER: FOREIGN ELEMENTS DETECTED. REINFORCING BIOSTRUCTURE AGAINST UNKNOWN QUANTITIES."
+            ]
+          }
+        },
+        "respawned" : {
+          "default" : {
+            "default" : [
+              "REPORT: UNIT SUCCESSFULLY RECONSTRUCTED. READY TO DEPLOY."
+            ]
+          }
+        },
+        "follow" : {
+          "default" : {
+            "default" : [
+              "ACKNOWLEDGEMENT: UNIT READY TO DEPLOY. AWAITING FURTHER COMMANDS."
+            ]
+          }
+        },
+        "unfollow" : {
+          "default" : {
+            "default" : [
+              "ACKNOWLEDGEMENT: FOLLOW MODE DISENGAGED. UNIT WILL REMAIN IN PLACE AWAITING FURTHER COMMANDS."
+            ]
+          }
+        },
+        "cantreach" : {
+          "default" : {
+            "default" : [
+              "ERROR: UNABLE TO REACH TARGET LOCATION."
+            ]
+          }
+        }
+	  }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "precursorcannon" ],
+            "sheathedprimary" : [ "precursorbroadsword" ]
+          }
+        ] ]
+    ]
+  }
+}

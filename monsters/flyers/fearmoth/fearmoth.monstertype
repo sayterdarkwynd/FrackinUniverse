@@ -1,0 +1,235 @@
+{
+  "type" : "fearmoth",
+  "shortdescription" : "Fear Moth",
+  "description" : "A huge, annoying moth. Likes to eat flesh.",
+
+  "categories" : [ "fearmoth" ],
+  "parts" : [ "body" ],
+
+  "animation" : "fearmoth.animation",
+
+  "dropPools" : [
+    {
+      "default" : "bobfaeTreasure",
+      "bow" : "huntingflyingchitin",
+      "firebow" : "huntingflyingchitin",
+      "icebow" : "huntingflyingchitin",
+      "poisonbow" : "huntingflyingchitin",
+      "electricbow" : "huntingflyingchitin",
+      "cosmicbow" : "huntingflyingchitin",
+      "radioactivebow" : "huntingflyingchitin",
+      "shadowbow" : "huntingflyingchitin"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "seeThroughLiquid" : false,
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 30,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [ ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "cooldown" : 0.5,
+          "parameters" : {
+            "approachTime" : 4.0
+          }
+        },
+        {
+          "name" : "land-fly",
+          "cooldown" : 2,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 16,
+            "flyControlForce" : 30,
+            "idleTime" : [1,12],
+            "landState" : "idle"
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "approachTime" : 4.0
+          }
+        },
+        {
+          "name" : "land-fly",
+          "cooldown" : 5,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 15,
+            "flyControlForce" : 30,
+            "idleTime" : [1,2],
+            "landState" : "idle"
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "land-fly",
+          "cooldown" : 2,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 15,
+            "flyControlForce" : 40,
+            "idleTime" : [2,4],
+            "landState" : "idle"
+          }
+        },
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "wanderTime" : [4,12],
+            "groundDistance" : 4,
+            "ceilingDistance" : 2,
+            "xVelocity" : 4,
+            "yVelocity" : 4
+          }
+        }
+      ],
+
+      "deathActions" : [],
+
+      "concurrentActions" : [ ],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 5,
+          "parameters" : {
+          "effect" : "thorns",
+          "duration" : 5
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
+      "damage" : 10,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 4,
+      "runSpeed" : 14,
+      "gravityEnabled" : false,
+
+      "airFriction" : 4,
+      "airForce" : 40,
+      "flySpeed" : 15
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.5
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 65
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "shadowResistance" : { "baseValue" : 1.0 },
+        "poisonResistance" : { "baseValue" : 0.2 },
+        "cosmicResistance" : { "baseValue" : 0.25 },
+        "radioactiveResistance" : { "baseValue" : -0.2 },
+        "iceResistance" : { "baseValue" : 0.2 },
+        "fireResistance" : { "baseValue" : -0.4 },
+        "physicalResistance" : { "baseValue" : -0.2 },
+        "electricResistance" : { "baseValue" : 0.7 }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "fearmoth" }
+  }
+}

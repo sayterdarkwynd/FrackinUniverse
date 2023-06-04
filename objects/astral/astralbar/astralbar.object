@@ -1,0 +1,54 @@
+{
+  "objectName" : "astralbar",
+  "colonyTags" : ["fu","aether","pretty","valuable","commerce"],
+  "rarity" : "Legendary",
+  "description" : "A stellar bar, its barely corporeal counter never needs to be cleaned.",
+  "shortdescription" : "Aen Bar Counter",
+  "race" : "generic",
+  "category" : "furniture",
+  "price" : 110,
+  "lightColor" : [120, 20, 180],
+  "objectType" : "loungeable",
+  "sitFlipDirection" : false,
+
+  "inventoryIcon" : "icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "astralbar.png" }, { "image" : "astralbarfullbright.png", "fullbright" : true } ],
+      "imagePosition" : [-40, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "direction" : "left",
+      "flipImages" : true,
+
+      "sitPositions" : [
+        // Positions from front to back.
+        [-18, 24], // Right
+        [7, 24], // Middle
+        [32, 24] // Left
+      ],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "astralbar.png" }, { "image" : "astralbarfullbright.png", "fullbright" : true } ],
+      "imagePosition" : [-40, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "direction" : "right",
+
+      "sitPositions" : [
+        // Positions from front to back.
+        [-18, 24], // Left
+        [7, 24], // Middle
+        [32, 24] // Right
+      ],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ]
+}

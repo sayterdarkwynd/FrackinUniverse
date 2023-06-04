@@ -1,19 +1,34 @@
 {
-  "itemName" : "melodistar",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "melodistaricon.png",
-  "description" : "A star plant from space! Increases energy and health maximum.",
-  "shortdescription" : "Melodistar",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-        "maxenergyboost5", "maxhealthboost4"
-    ] ]
+	"itemName": "melodistar",
+	"inventoryIcon": "melodistaricon.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+17 HP^reset;, ^cyan;+40 EP^reset;: 2m",
+	"shortdescription": "Melodistar",
+	"effects": [
+		[{
+				"effect": "maxenergyboost5",
+				"duration": 120
+			},
+			{
+				"effect": "maxhealthboost4",
+				"duration": 120
+			}
+		]
+	],
+	"blockingEffects": [
+		"maxhealthboost1",
+		"maxhealthboost2",
+		"maxhealthboost3",
+		"maxhealthboost5",
+		"maxenergyboost1",
+		"maxenergyboost2",
+		"maxenergyboost3",
+		"maxenergyboost4",
+		"maxenergyboost6",
+		"maxenergyboost145"
+	]
 }

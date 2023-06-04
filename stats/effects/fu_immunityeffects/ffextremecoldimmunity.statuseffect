@@ -1,11 +1,18 @@
 {
-  "name" : "ffextremecoldimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 60,
-
-  "scripts" : [
-    "ffextremecoldimmunity.lua"
-  ],
-  "label" : "Cold Immunity",
-  "icon" : "/interface/statuses/biomecold.png"
+	"name": "ffextremecoldimmunity",
+	"effectConfig": {
+		"stats": [{
+				"stat": "ffextremecoldImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "biomecoldImmunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

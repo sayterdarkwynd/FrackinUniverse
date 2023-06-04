@@ -1,0 +1,45 @@
+{
+  "projectileName" : "madnessshard",
+  "image" : "vashtashard.png",
+  "animationCycle" : 0.3,
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "flippable" : false,
+  "orientationLocked" : true,
+  "statusEffects" : [ "weakpoison" ],
+  "damagePoly" : [[-4, 2], [-2, 4], [2, 4], [4, 2], [4, -2], [2, -4], [-2, -4], [-4, -2]],
+  "power" : 4.0,
+  "speed" : 5,
+  "damageKind" : "shadow",
+  "physics" : "illusion",
+  "bounces" : -1,
+  "piercing" : true,
+  "timeToLive" : 12,
+  "emitters" : [ "blood" ],
+  "persistentAudio" : "/sfx/weapons/branchswoosh.ogg",
+
+  "scripts" : [ "boomerangprojectile.lua" ],
+
+  "ignoreTerrain" : false,
+  "controlForce" : 50,
+  "pickupDistance" : 1.5,
+  "snapDistance" : 3.5,
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 5,
+      "innerRadius" : 0,
+      "targetRadialVelocity" : -50,
+      "controlForce" : 1500,
+      "categoryWhitelist" : ["itemdrop"]
+    }
+  },
+
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/fugoreexplosion/fugoreexplosionmadness.config"
+    }
+  ]
+}

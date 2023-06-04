@@ -1,0 +1,46 @@
+{
+	"name": "ffbiomecold0",
+
+	"effectConfig": {
+		"resistanceTypes": {
+			"iceResistance": 1.0
+		},
+		"resistanceThreshold": 0.15,
+		"immunityStats": [
+			"biomecoldImmunity",
+			"ffextremecoldImmunity"
+		],
+
+		"healthDrain": 1,
+		"hungerDrain": 0.2,
+		"energyDrain": 0,
+		"speedPenalty": 0.1,
+		"jumpPenalty": 0.1,
+
+		"debuffRate": 5,
+		"debuffStartDelay": 0,
+		"debuffs": {},
+
+		"modifiers": {
+			"night": 1.1,
+			"wet": 1.1,
+			"windy": 1.2
+		},
+
+		"messages": {
+			"intro": "ffbiomegenericmildcold"
+		},
+
+		"configPath": "/stats/effects/fu_weathereffects/new/cold/ffbiomecold0.statuseffect"
+	},
+	"defaultDuration": 5,
+
+	"scripts": [
+		"coldweathernew.lua"
+	],
+
+	"animationConfig": "coldweathernew.animation",
+
+	"label": "Chilled (Resist: ^#77f4ff;Ice^reset;)",
+	"icon": "/interface/statuses/biomecold.png"
+}

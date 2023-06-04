@@ -1,0 +1,25 @@
+{
+  "itemName": "irradiumroll",
+  "rarity": "rare",
+  "price": 95,
+  "category": "preparedFood",
+  "inventoryIcon": "irradiumroll.png",
+  "description": "Not recommended for carbon-based lifeforms.\n^cyan;+^white;10% ^cyan;HP ^gray;(^white;45s^gray;)^reset;",
+  "shortdescription": "Irradium Roll",
+  "effects": [
+    [
+      {
+        "effect": "maxhealthscalingboostfood",
+        "duration": 45,
+        "healthModifier": 1.1
+      }
+    ]
+  ],
+  "foodValue": 20,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1000,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 0.5,
+  "blockingEffects": ["wellfed"]
+}

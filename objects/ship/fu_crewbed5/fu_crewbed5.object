@@ -1,0 +1,64 @@
+{
+  "objectName" : "fu_crewbed5",
+  "colonyTags" : ["misc", "bed"],
+  "rarity" : "Legendary",
+  "description" : "Lovely wall-recessed sleepy spots. ^yellow;Crew +1^reset;. Counts as a deed. ^red;BYOS Only^reset;",
+  "shortdescription" : "Crew Bunk (Wall)",
+  "race" : "generic",
+  "category" : "furniture",
+  "printable" : false,
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : true,
+
+  "sitOrientation" : "lay",
+  "sitAngle" : 90,
+  "sitCoverImage" : "/objects/ship/fu_crewbed5/fu_crewbed5cover.png",
+  "sitEmote" : "sleep",
+  "sitStatusEffects" : [
+    "bed1"
+  ],
+  "sitEffectEmitters" : [ "sleepbubbles" ],
+
+  "inventoryIcon" : "fu_crewbed5icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fu_crewbed5.png:<color>"} ],
+      "flipImages" : true,
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "lightPosition" : [-3, 1],
+
+      "sitPosition" : [-4, 14.3],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+      "direction" : "left"
+    },
+    {
+      "imageLayers" : [ { "image" : "fu_crewbed5.png:<color>"} ],
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "lightPosition" : [3, 1],
+
+      "sitPosition" : [-12, 14.3],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+      "direction" : "right"
+    }
+
+  ],
+
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua" ],
+  "scriptDelta" : 60,
+  "stats" : {
+    "crewSize" : 1
+  },
+  "byosOnly" : true,
+  "isDeed" : true
+}

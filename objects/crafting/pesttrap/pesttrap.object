@@ -1,0 +1,42 @@
+{
+  "objectName" : "pesttrap",
+  "rarity" : "Common",
+  "description" : "Great for catching smaller sources of meat. Holds 1 rat. Scan for Info.",
+  "shortdescription" : "Pest Trap",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 20,
+  "printable" : false,
+  "objectType" : "container",
+
+  "inventoryIcon" : "pesttrap.png",
+  "orientations" : [
+    {
+      "dualImage" : "pesttrap.png:<color>",
+
+      "imagePosition" : [-12, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+  "outputNodes" : [ [0, 0] ],
+  "scripts" : [ "/scripts/fupesttrap.lua" ],
+  "scriptDelta" : 60,
+  "slotCount" : 1,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  //pest trap general params
+  "wellConfig":{
+    "range":8,
+	"type":"pesttrap",
+    "isLiquidBased" : 0,
+	"timeRange":{"min":300,"max":1200},
+	"extraSpawn":{"chance":2,"spawns":["squeekcritter","mousecritter"]},
+    "wellSlots" : [ {"name" : "fupest","ratio" : 1,"max" : 1} ]
+  }
+}

@@ -3,18 +3,19 @@
   "price" : 640,
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Sinister and ancient.",
-  "shortdescription" : "Elder Axe",
-  "tooltipKind" : "sword",
+  "description" : "^#a5ff00;A sinister looking edge, and glowing with unknowable intent.^reset;",
+  "shortdescription" : "^#a5ff00;Elder Axe^reset;",
+  "tooltipKind" : "swordelder",
   "category" : "axe",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","axe"],
-"level" : 7,
+  "itemTags" : ["weapon","melee","axe", "elder", "upgradeableWeapon","shadow"],
+  "level" : 7,
   "inventoryIcon" : "elderaxe.png",
-
-  "animation" : "axe.animation",
+  //"collectablesOnPickup" : { "fu_weaponaxe" : "elderaxe" },
+  "animation" : "elderaxe.animation",
   "animationParts" : {
     "blade" : "elderaxe.png",
+    "bladefullbright" : "elderaxefullbright.png",
     "handle" : ""
   },
   "animationCustom" : {
@@ -28,17 +29,20 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "shadow",
 
   "aimOffset" : -1.0,
 
   "primaryAbilityType" : "axecleave",
   "primaryAbility" : {
-    "fireTime" : 0.5,
+    "fireTime" : 0.45,
     "baseDps" : 13,
+
     "damageConfig" : {
-      "damageSourceKind" : "electricaxe",
-      "knockback" : 15
+      "damageSourceKind" : "shadowaxe",
+      "statusEffects" : [ "insanity" ],
+      "knockback" : 20,
+      "knockbackMode" : "facing"
     },
     "stances" : {
       "idle" : {
@@ -66,6 +70,7 @@
       }
     }
   },
-
+  "critChance" : 4,
+  "critBonus" : 12,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

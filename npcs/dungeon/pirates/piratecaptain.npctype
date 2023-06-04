@@ -1,0 +1,51 @@
+{
+  "type" : "piratecaptain",
+  "baseType" : "hostile",
+
+  "dropPools" : [ "airshipcaptaintreasure" ],
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "greetingChance" : 0
+    },
+    "dialog" : {
+      "converse" : "/dialog/airship.config:converse"
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "buccaneerhead" } ],
+            "chest" : [ { "name" : "buccaneerchest" } ],
+            "legs" : [ { "name" : "buccaneerlegs" } ],
+            "back" : [ { "name" : "simplecapeback", "parameters" : { "colorIndex" : 1 } } ],
+            "primary" : [
+              "fuenergymachinegun"
+            ],
+            "sheathedprimary" : [
+              "blooddiamondkatana"
+            ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 130.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 1.0
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      }
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "itemName" : "swtjc_ewg_commonminirocketlauncher",
+  "price" : 1200,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "Launches smaller anti-personnel rockets in fairly quick succession.",
+  "shortdescription" : "Common Mini-Rocket Launcher",
+  "tooltipKind" : "gun2",
+  "category" : "swtjc_ewg_miniRocketLauncher",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","rocketlauncher","upgradeableWeapon","explosive"],
+  "level" : 1,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : { },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "rocketbarrelpuff" }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/gun/rocket1.ogg" ]
+    }
+  },
+  "baseOffset" : [-2.5, 0.375],
+  "muzzleOffset" : [0.0, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : [0.5, 1.5],
+    "baseDps" : [7, 9.7],
+    "energyUsage" : [32, 36],
+    "inaccuracy" : 0.04,
+
+    "projectileType" : "rocketshell",
+    "projectileParameters" : {
+      "knockback" : 20
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [0, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.1, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.3,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.1, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "fireSounds" : [ "/sfx/gun/rocket2.ogg" ],
+
+
+  "critChance" : 1,
+  "critBonus" : 4,
+
+  "isAmmoBased": [0,1],
+  "magazineSize" : [2,6],
+  "reloadTime" : [1.3,2.7],
+  "isRocketLauncher" : 1,
+
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "nameGenerator" : "swtjc_ewg_minirocketnames.config:nameGen",
+    "animationParts" : {
+      "butt" : {
+        "path" : "/items/active/weapons/ranged/rocketlauncher/butt/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "middle" : {
+        "path" : "/items/active/weapons/ranged/rocketlauncher/middle/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "barrel" : {
+        "path" : "/items/active/weapons/ranged/grenadelauncher/barrel/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "muzzleFlash" : ""
+    },
+    "gunParts" : ["butt", "middle", "barrel"],
+    "elementalFireSounds" : {
+      "physical" : [ "/sfx/gun/rocket2.ogg" ],
+      "fire" : [ "/sfx/gun/rocket_fire1.ogg" ],
+      "electric" : [ "/sfx/gun/rocket_electric1.ogg" ],
+      "ice" : [ "/sfx/gun/rocket_ice1.ogg" ],
+      "poison" : [ "/sfx/gun/rocket_poison1.ogg" ],
+      "cosmic" : [ "/sfx/gun/rocket_electric1.ogg" ],
+      "shadow" : [ "/sfx/gun/rocket_fire1.ogg" ],
+      "radioactive" : [ "/sfx/gun/rocket_poison1.ogg" ]
+    },
+    "altAbilities" : [
+      "burstshot",
+      "explosiveburst",
+      "flashlight",
+      "grenadelauncher",
+      "rocketburst",
+      "shrapnelbomb",
+
+      "swtjc_ewg_clusterbomb",
+      "swtjc_ewg_exmachinarocketfast",
+      "swtjc_ewg_guidedrocketfast",
+      "swtjc_ewg_homingrocketfast",
+      "swtjc_ewg_proximitymines",
+      "swtjc_ewg_railgun",
+
+      "swtjc_ewg_cellspray",
+      "swtjc_ewg_cellspread",
+      "swtjc_ewg_darkplasma",
+
+      "swtjc_ewg_forceshield",
+      "swtjc_ewg_globelauncher",
+      "swtjc_ewg_phaseburst",
+      "swtjc_ewg_rocketjump",
+      "swtjc_ewg_shattershot",
+      "forcebubble"
+    ],
+    "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
+    "iconDrawables" : ["butt", "middle", "barrel"]
+  }]
+}

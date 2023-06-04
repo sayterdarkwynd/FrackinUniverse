@@ -1,0 +1,154 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 12,
+            "mode" : "loop",
+            "cycle" : 1.2
+          },
+          "walk" : {
+            "frames" : 4,
+            "mode" : "loop",
+            "cycle" : 0.4
+          },
+          "windup" : {
+            "frames" : 9,
+            "cycle" : 0.9
+          },
+          "invulnerable" : {
+            "frames" : 14,
+            "cycle" : 1.4
+          },
+          "winddown" : {
+            "frames" : 5,
+            "cycle" : 0.5
+          },
+          "fire" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "mode" : "loop"
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "zLevel" : 1,
+          "transformationGroups" : [ "body" ]
+        },
+
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>?flipx"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>?flipx"
+              }
+            },
+            "windup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>?flipx"
+              }
+            },
+            "invulnerable" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerable.<frame>?flipx"
+              }
+            },
+            "winddown" : {
+              "properties" : {
+                "image" : "<partImage>:winddown.<frame>?flipx"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>?flipx"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>?flipx"
+              }
+            }
+          }
+        }
+      },
+      "arm" : {
+        "properties" : {
+          "image" : "<partImage>:arm?flipx",
+          "transformationGroups" : [ "aim", "body" ],
+          "rotationCenter" : [-1.25, -0.5],
+          "zLevel" : 2
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true },
+    "aim" : { "interpolated" : true }
+  },
+
+  "particleEmitters" : {
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0.25,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
+    "fire2" : [ "/sfx/gun/mech_gun.ogg", "/sfx/npc/boss/robotboss_pain1.ogg", "/sfx/npc/boss/robotboss_attack1.ogg"  ],
+    "fire" : [ "/sfx/gun/mech_gun.ogg", "/sfx/npc/boss/robotboss_pain1.ogg", "/sfx/npc/boss/robotboss_attack1.ogg"  ]
+  }
+}

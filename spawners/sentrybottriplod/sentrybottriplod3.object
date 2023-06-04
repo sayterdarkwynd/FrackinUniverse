@@ -1,0 +1,35 @@
+{
+  "objectName" : "sentrybottriplod3",
+  "rarity" : "common",
+  "description" : "A reliable sidekick to protect you.",
+  "shortdescription" : "Deathbeam Guard",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 750,
+  "printable" : false,
+
+  "inventoryIcon" : "sentrybottriplod2icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "sentrybottriplod2.png:<color>",
+
+      "imagePosition" : [-10, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaces" : [  [0, 0], [-1, 0], [0, 1], [-1, 1]],
+//      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "botspawner" : {
+      "type" : "spiderwalker2pet",
+	  "monsterImage":"/monsters/crawlers/triplodish/spiderwalker/spiderwalker.png:idle.1?"
+  },
+
+  "scripts" : [
+    "/spawners/fubotspawner.lua"
+  ],
+  "scriptDelta" : 5
+}

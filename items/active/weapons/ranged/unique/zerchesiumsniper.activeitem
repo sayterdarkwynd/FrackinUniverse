@@ -1,0 +1,102 @@
+{
+  "itemName" : "zerchesiumsniper",
+  "price" : 160,
+  "inventoryIcon" : "zerchesiumsniper.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Put your enemies on ice.
+^green;Generate drones^reset;
+^cyan;Slows enemies^reset;",
+    "shortdescription" : "Zerchesium Sniper Rifle",
+  "category" : "sniperRifle",
+  "level" : 3,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Sniper Rifle",
+  "itemTags" : ["weapon","ranged","sniperrifle", "energy", "upgradeableWeapon","zerchesium"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "zerchesiumsniper.png",
+	"middlefullbright":"",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.375, 0.25]
+		  }
+		}
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/marauder6.wav" ]
+    }
+  },
+
+  "baseOffset" : [1.375, 0.25],
+  "muzzleOffset" : [3.5, 0.3125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1.11,
+    "baseDps" : 9.8,
+    "useEnergy" : true,
+    "energyUsage" : 36.2,
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "fuicebulletzerch",
+    "projectileParameters" : {
+      "knockback" : 8
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 3,
+	      "weaponRotation" : 3,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "cooldown" : {
+	      "duration" : 0.04,
+	      "armRotation" : 3,
+	      "weaponRotation" : 3,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 4,
+  "isSniper" : 1,
+  "isAmmoBased" : 1,
+  "magazineSize" : 7,
+  "reloadTime" : 2.5,
+  "altAbilityType" : "fudronelauncher",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

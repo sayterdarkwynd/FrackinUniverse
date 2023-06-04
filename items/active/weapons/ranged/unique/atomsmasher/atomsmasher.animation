@@ -1,0 +1,242 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "gnome" : {
+        "default" : "squirm",
+        "states" : {
+          "idle" : {
+            "properties" : {
+              "lightsOff" : ["red", "green", "blue"]
+            }
+          },
+          "squirm" : {
+            "frames" : 8,
+            "cycle" : 1.0,
+            "mode" : "loop",
+            "properties" : {
+              "lightsOff" : ["red", "green", "blue"]
+            }
+          },
+          "fire" : {
+            "frames" : 4,
+            "cycle" : 0.25,
+            "mode" : "loop",
+            "properties" : {
+              "lightsOn" : ["red", "green", "blue"]
+            }
+          }
+        }
+      },
+      "gnomefullbright" : {
+        "default" : "squirm",
+        "states" : {
+          "idle" : {
+            "properties" : {
+              "lightsOff" : ["red", "green", "blue"]
+            }
+          },
+          "squirm" : {
+            "frames" : 8,
+            "cycle" : 1.0,
+            "mode" : "loop",
+            "properties" : {
+              "lightsOff" : ["red", "green", "blue"]
+            }
+          },
+          "fire" : {
+            "frames" : 4,
+            "cycle" : 0.25,
+            "mode" : "loop",
+            "properties" : {
+              "lightsOn" : ["red", "green", "blue"]
+            }
+          }
+        }
+      },
+      "firing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "fire" : {
+            "frames" : 2,
+            "cycle" : 0.07,
+            "mode" : "transition",
+            "transition" : "off"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "gnome" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 0,
+          "fullbright" : true,
+          "offset" : [0.9, 1.2],
+          "transformationGroups" : ["weapon"]
+        },
+
+        "partStates" : {
+          "gnome" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+            "squirm" : {
+              "properties" : {
+                "image" : "<partImage>:squirm.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire"
+              }
+            }
+          }
+        }
+      },
+      "gnomefullbright" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [0.9, 1.2],
+          "zLevel" : 1,
+
+          "transformationGroups" : ["weapon"]
+        },
+
+        "partStates" : {
+          "gnome" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+            "squirm" : {
+              "properties" : {
+                "image" : "<partImage>:squirm.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire"
+              }
+            }
+          }
+        }
+      },
+      "beamorigin" : {
+        "properties" : {
+          "zLevel" : 2,
+          "centered" : true,
+          "offset" : [4.5, 0.85],
+          "fullbright" : true,
+          "transformationGroups" : ["weapon"]
+        },
+
+        "partStates" : {
+          "gnome" : {
+            "idle" : {},
+            "squirm" : {},
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:<frame>"
+              }
+            }
+          },
+          "gnomefullbright" : {
+            "idle" : {},
+            "squirm" : {},
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {},
+    "beamEnd" : {},
+    "muzzle" : {}
+  },
+
+  "lights" : {
+    "red" : {
+      "active" : false,
+      "color" : [0, 150, 255],
+      "position" : [0, 0],
+
+      "flickerPeriod" : 0.75,
+      "flickerPeriodVariance" : 0.0,
+      "flickerMinIntensity" : 0.1,
+      "flickerMaxIntensity" : 0.6,
+      "flickerIntensityVariance" : 0.0
+    },
+    "green" : {
+      "active" : false,
+      "color" : [0, 90, 220],
+      "position" : [0, 0],
+
+      "flickerPeriod" : 0.5,
+      "flickerPeriodVariance" : 0.0,
+      "flickerMinIntensity" : 0.1,
+      "flickerMaxIntensity" : 0.6,
+      "flickerIntensityVariance" : 0.0
+    },
+    "blue" : {
+      "active" : false,
+      "color" : [0, 66, 200],
+      "position" : [0, 0],
+
+      "flickerPeriod" : 0.75,
+      "flickerPeriodVariance" : 0.0,
+      "flickerMinIntensity" : 0.6,
+      "flickerMaxIntensity" : 0.1,
+      "flickerIntensityVariance" : 0.0
+    }
+  },
+
+  "particleEmitters" : {
+    "beamCollision" : {
+      "active" : false,
+      "transformationGroups" : ["muzzle", "beamEnd"],
+      "emissionRate" : 30,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/plasmapoof/plasmapoof.animation",
+            "position" : [0, 0],
+            "initialVelocity" : [0, 1.0],
+            "finalVelocity" : [0, -1.0],
+            "approach" : [0, 10],
+            "fade" : 0.3,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.1,
+            "size" : 1.2,
+            "timeToLive" : 0.1,
+            "fullbright" : true,
+            "layer" : "front",
+            "collidesForeground" : false,
+            "variance" : {
+              "position" : [0.5, 0.5],
+              "initialVelocity" : [2, 2]
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "fireStart" : [],
+    "fireLoop" : [],
+    "fireEnd" : [],
+    "beamImpact" : []
+  }
+}

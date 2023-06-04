@@ -1,0 +1,143 @@
+{
+	"stats": [
+		{
+			"stat": "foodDelta",
+			"baseMultiplier": 0.8
+		},
+		{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 1.2
+		},
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 0.88
+		},
+		{
+			"stat": "iceResistance",
+			"amount": 0.2
+		},
+		{
+			"stat": "fireResistance",
+			"amount": -0.25
+		},
+		{
+			"stat": "cosmicResistance",
+			"amount": 0.10
+		},
+		{
+			"stat": "shadowResistance",
+			"amount": 0.25
+		},
+		{
+			"stat": "shieldRegen",
+			"amount": 2
+		},
+		{
+			"stat": "perfectBlockLimitRegen",
+			"amount": 0.65
+		}
+	],
+	"diet" : "omnivore",
+	"controlModifiers": {
+		"speedModifier": 1.1,
+		"airJumpModifier": 1.1
+	},
+	"envEffects": [{
+			"biomes": [
+				"forest",
+				"jungle",
+				"rainforest",
+				"arboreal",
+				"arborealdark",
+				"arboreal2",
+				"tundra",
+				"snow",
+				"lush"
+			],
+			"stats": [{
+				"stat": "protection",
+				"effectiveMultiplier": 1.10
+			},
+			{
+				"stat": "maxHealth",
+				"effectiveMultiplier": 1.15
+			}
+			]
+		}
+	],
+	"weaponEffects": [
+
+		{
+			"weapons": ["dagger","shortsword" ],
+			"stats": [
+				{
+				"stat": "critChance",
+				"amount": 3
+				}
+			]
+		},
+		{
+			"weapons": [ "quarterstaff" ],
+			"stats": [
+			{
+				"stat": "protection",
+				"effectiveMultiplier": 1.2
+			},
+			{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.15
+			}
+			]
+		},
+		{
+			"weapons": [ "hammer" ],
+			"stats": [
+				{
+				"stat": "stunChance",
+				"amount": 15
+				}
+			]
+		}
+	],
+	"weaponScripts": [{
+			"script": "/scripts/fr_weaponscripts/combobonus.lua",
+			"contexts": [
+				"meleecombo-fire"
+			],
+			"args": {
+				"stats": [{
+					"stat": "protection",
+					"amount": 3
+				}]
+			}
+		},
+		{
+			"script": "/scripts/fr_weaponscripts/perfectblockbonus.lua",
+			"contexts": [
+				"shield-perfectblock"
+			],
+			"args": {
+				"stats": [{
+						"stat": "powerMultiplier",
+						"effectiveMultiplier": 1.02
+					},
+					{
+						"stat": "protection",
+						"amount": 0
+					}
+				],
+				"statCombos": {
+					"powerMultiplier": {
+						"comboBase": 0.02,
+						"max": 0.3
+					},
+					"protection": {
+						"comboBase": 2,
+						"max": 16
+					}
+				}
+			}
+		}
+	]
+
+}

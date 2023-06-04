@@ -1,0 +1,27 @@
+[
+	[
+		{
+			"op" : "add",
+			"path" : "/effects",
+			"value" : [ [ "plant_food" ] ]
+		},
+		{
+			"op" : "replace",
+			"path" : "/description",
+			"value" : "Kind of squidgy and a bit tasteless. ^green;Type: Vegetable^reset;"
+		}
+	],
+	[
+		{
+			"op" : "test",
+			"path" : "/maxStack"
+		},
+		{
+			"op" : "replace",
+			"path" : "/maxStack",
+			"value" : 20
+		}
+	],
+	[{"op":"test","path":"/learnBlueprintsOnPickup/1"},{"op":"remove","path":"/learnBlueprintsOnPickup/1"}],
+	[{"op":"test","path":"/learnBlueprintsOnPickup/0"},{"op":"remove","path":"/learnBlueprintsOnPickup/0"}]
+]

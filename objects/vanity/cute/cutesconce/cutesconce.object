@@ -1,0 +1,81 @@
+{
+  "objectName" : "cutesconce",
+  "colonyTags" : ["fu","cute","pretty","light"],
+  "rarity" : "Rare",
+  "description" : "A cute wall-mounted sconce with a pink light.",
+  "shortdescription" : "Cute Sconce",
+  "race" : "generic",
+
+  "category" : "light",
+  "price" : 90,
+  "lightColor" : [255, 223, 252],
+
+  "inventoryIcon" : "cutesconceicon.png",
+  "orientations" : [
+    {
+      "image" : "cutesconce_left.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+
+      "animationParts" : {
+        "bg" : "cutesconce_left.png",
+        "fg" : "cutesconce_leftlit.png"
+      },
+      "animationPosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "fgAnchors" : [ [-1, 0] ],
+
+      "direction" : "right"
+    },
+
+    {
+      "image" : "cutesconce_right.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+
+      "animationParts" : {
+        "bg" : "cutesconce_right.png",
+        "fg" : "cutesconce_rightlit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "fgAnchors" : [ [1, 0] ],
+
+      "direction" : "right"
+    },
+
+    {
+      "image" : "cutesconce_back.png:<color>.<frame>",
+      "imagePosition" : [-4, 0],
+
+      "animationParts" : {
+        "bg" : "cutesconce_back.png",
+        "fg" : "cutesconce_backlit.png"
+      },
+      "animationPosition" : [-4, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "bgAnchors" : [ [0, 0] ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "cutesconce_back.png",
+    "fg" : "cutesconce_backlit.png"
+  },
+
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallswitch.ogg" ],
+      "off" : [ "/sfx/objects/tinywallswitch.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 1] ]
+}

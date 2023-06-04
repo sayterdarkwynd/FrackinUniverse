@@ -1,0 +1,62 @@
+{
+  "objectName" : "astrallamp",
+  "colonyTags" : ["fu","aether","pretty","valuable","light"],
+  "rarity" : "Legendary",
+  "description" : "A stellar lamp, uses interdimensional mojo to make light, complicated stuff.",
+  "shortdescription" : "Aen Wall Light",
+  "race" : "generic",
+  "category" : "light",
+  "price" : 85,
+  "printable" : false,
+
+  "lightColor" : [120, 20, 180],
+
+  "inventoryIcon" : "icon.png",
+  "orientations" : [
+    {
+      "image" : "astrallamp.png:<color>.<frame>",
+      "imagePosition" : [0, 2],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "animationParts" : {
+        "bg" : "astrallamp.png",
+        "fg" : "astrallampfullbright.png"
+      },
+      "animationPosition" : [0, 2],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "astrallamp.png:<color>.<frame>",
+      "imagePosition" : [0, 2],
+
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "astrallamp.png",
+        "fg" : "astrallampfullbright.png"
+      },
+      "animationPosition" : [0, 2],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "astrallamp.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallswitch.ogg" ],
+      "off" : [ "/sfx/objects/tinywallswitch.ogg" ]
+    }
+  },
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 1] ]
+
+  // "interactive" : false
+}

@@ -1,0 +1,76 @@
+{
+  "projectileName" : "peglacitier7knife",
+  "image" : "knife7.png",
+  "animationCycle" : 0.5,
+  "armorPenetration" : 3,
+  "physics" : "bullet",
+  "bounces" : 0,
+  "frameNumber" : 4,
+  "lightColor" : [0, 155, 200],
+  "speed" : 50,
+  "timeToLive" : 0.01,
+  "actionOnReap" : [
+	  {
+      "action" : "config",
+      "file" : "/projectiles/throwable/knife7burst.config"
+    },
+	  {
+      "action" : "projectile",
+      "type" : "fuicecloud3",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 10
+    },
+	  {
+      "action" : "projectile",
+      "type" : "fuicecloud3",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : -10
+    },
+	  {
+      "action" : "projectile",
+      "type" : "fuicecloud3",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 30
+    },
+	  {
+      "action" : "projectile",
+      "type" : "fuicecloud3",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : -30
+    },
+    {
+      "action" : "projectile",
+      "type" : "fuicecloud3",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 50
+    },
+	  {
+      "action" : "projectile",
+      "type" : "fuicecloud3",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : -50
+    },
+	  {
+      "action" : "projectile",
+      "type" : "fuicecloud3",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 70
+    },
+	  {
+      "action" : "projectile",
+      "type" : "fuicecloud3",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : -70
+    },
+	  {
+      "action" : "projectile",
+      "type" : "peglacitier7knife-2",
+      "inheritDamageFactor" : 0.25,
+      "angleAdjust" : 0
+    }
+  ],
+  "damageKind" : "meow",
+  "emitters" : [ "peglacitrail" ]
+}
+
+

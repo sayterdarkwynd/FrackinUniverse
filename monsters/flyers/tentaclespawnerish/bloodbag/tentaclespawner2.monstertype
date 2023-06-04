@@ -1,0 +1,256 @@
+{
+  "type" : "tentaclespawner2",
+  "shortdescription" : "Blood Bag",
+  "description" : "A bizarre hovering bag of blood and eyes.",
+
+  "categories" : [ "tentaclespawner2" ],
+  "parts" : [ "body" ],
+
+  "animation" : "tentaclespawner2.animation",
+
+  "dropPools" : [ ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+    "seeThroughLiquid" : false,
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ ],
+      "fleeActions" : [ ],
+      "hostileActions" : [ ],
+      "approachActions" : [
+	{
+          "name":"approach-swarm",
+          "parameters":{ "usePathfinding": true }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+	{
+          "name":"approach-swarm",
+          "parameters":{ "usePathfinding": true }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-fly"
+        }
+      ],
+
+      "periodicActions" : [
+        {
+         "name":"action-projectile",
+         "cooldown" : 1,
+         "parameters" : {
+          "projectileType" : "bloodrain2",
+          "projectileParameters" : { "damageSourceKind" : "shadow" },
+          "aimDirection" : [0,-1],
+          "aimAtTarget" : false,
+          "power" : 5
+         }
+        }
+      ],
+
+      "concurrentActions" : [
+        {
+         "name":"action-projectile",
+         "cooldown" : 1,
+         "parameters" : {
+          "projectileType" : "bloodrain2",
+          "projectileParameters" : { "damageSourceKind" : "shadow" },
+          "aimDirection" : [0,-1],
+          "aimAtTarget" : false,
+          "power" : 5
+         }
+        }
+      ],
+
+      "concurrentHostileActions" : [
+        {
+         "name":"action-projectile",
+         "cooldown" : 1,
+         "parameters" : {
+          "projectileType" : "bloodrain2",
+          "projectileParameters" : { "damageSourceKind" : "cosmic" },
+          "aimDirection" : [0,-1],
+          "aimAtTarget" : false,
+          "power" : 5
+         }
+        }
+      ],
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "fubloodexplosion",
+            "power" : 6,
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        }
+      ],
+
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "bloodrain3",
+            "power" : 6,
+            "aimDirection" : [0, 1],
+            "fireOffset" : [0, 0]
+          }
+        }
+      ]
+
+    },
+
+    "touchDamage" : {
+      "poly" : [ [1,1.5],[1.5,0.5],[1.5,-0.25],[1,-0.75],[-0.25,-0.75],[-1.0,-0.25],[-1.0,0.5],[-0.25,1.5] ],
+      "damage" : 8,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 20,
+      "statusEffects" : [ "insanitynew" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [1,1.5],[1.5,0.5],[1.5,-0.25],[1,-0.75],[-0.25,-0.75],[-1.0,-0.25],[-1.0,0.5],[-0.25,1.5] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 1,
+      "runSpeed" : 2,
+      "gravityEnabled" : false,
+
+      "airFriction" : 4,
+      "airForce" : 7,
+      "flySpeed" : 3
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.05
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 95
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : -0.35
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.5
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 1.0
+        },
+        "pusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "shadowResistance" : {
+          "baseValue" : 0.7
+        },
+        "insanityImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "fallDamageMultiplier" : {
+          "baseValue" : 0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
+  }
+}

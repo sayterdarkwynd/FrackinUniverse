@@ -1,0 +1,32 @@
+{
+  "objectName" : "madnessjellyking",
+  "rarity" : "uncommon",
+  "description" : "A pleasant-smelling creation that can liquify flesh.",
+  "shortdescription" : "Gelatinous Eye",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 850,
+  "printable" : false,
+
+  "inventoryIcon" : "madnessjellyking.png",
+  "orientations" : [
+    {
+      "dualImage" : "madnessjellyking.png:<color>",
+      "imagePosition" : [-70, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "spaces" : [  [0, 0], [-1, 0], [0, 1], [-1, 1]],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "botspawner" : {
+      "type" : "eyejellykingpet",
+	  "monsterImage":"/monsters/flyers/eyejelly/eyejellyking-body.png:idle.1?"
+  },
+
+  "scripts" : [
+    "/spawners/fuminionspawner.lua"
+  ],
+  "scriptDelta" : 5
+}

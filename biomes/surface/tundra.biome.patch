@@ -1,25 +1,157 @@
 [
+  {
+    "op": "replace",
+    "path": "/statusEffects",
+    "value": [
+      "ffbiomecold1"
+    ]
+  },
 
 {"op":"add","path":"/spawnProfile/groups/-",
-"value":{ 
-      
+"value":{
+
         "select" : 3,
-        "pool" : [ 
-          [ 0.111, "aurorabee" ],          
+        "pool" : [
+          [ 0.111, "aurorabee" ],
+          [ 0.3, "snowdeer" ],
           [ 0.111, "driftbell" ],
-          [ 0.111, "arcticbee" ]
+          [ 0.211, "bee_loamzipper" ],
+          [ 0.111, "fuwolf" ],
+          [ 0.111, "fublackbunnycritter" ],
+          [ 0.111, "fusnowowlcritter" ],
+          [ 0.111, "fusnowgoosecritter" ],
+          [ 0.111, "fusnowfoxcritter" ]
         ]
       }
 },
 
-	{"op":"add","path":"/surfacePlaceables/items/-","value":{
-			"mode" : "floor",
-			"priority" : 3.0,
-			"variants" : 1,
-			"distribution" : "/biomes/distributions.config:randomEncounter",
+  {
+    "op": "replace",
+    "path": "/surfacePlaceables/items/16/treeFoliageList/0",
+    "value": "geometricfoliage"
+  },
 
-			"type" : "microdungeon",
-			"microdungeons" : [ "newavianmicro", "minigreenruins" ]
-		} 
-	}
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/16/treeFoliageList/-",
+    "value": "icespherefoliage"
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:veryRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "snowman" ] ],
+            "parameters" : { }
+          }
+        ]
+    }
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.15, "icicleshoot1" ],
+              [0.15, "icicleshoot2" ],
+              [0.15, "icicleshoot3" ],
+              [0.15, "icicleshoot4" ],
+              [0.15, "icicleshoot5" ],
+              [0.15, "icicleshoot6" ],
+              [0.15, "icebloom" ],
+              [0.15, "iceplant2" ],
+              [0.15, "icespikeff" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+    }
+  },
+
+{"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "fulabs", "fubandits", "newhumanmicro", "newavianmicro", "furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter" ]
+  }
+},
+
+  {
+    "op": "replace",
+    "path": "/undergroundPlaceables/items/2/distribution",
+    "value": "/biomes/distributions.config:denseLarge"
+  },
+
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "iceshard1" ], [0.35, "iceshard2" ], [0.35, "iceshard3" ], [0.35, "iceshard4" ], [0.35, "iceshard5" ] ],
+            "parameters" : { }
+          }
+        ]
+    }
+  },
+
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "geometricshard1" ], [0.35, "geometricshard2" ], [0.35, "geometricshard3" ], [0.35, "geometricshard4" ], [0.35, "geometricshard5" ] ],
+            "parameters" : { }
+          }
+        ]
+    }
+  },
+
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
+  }
+}
 ]

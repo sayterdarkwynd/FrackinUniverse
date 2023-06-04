@@ -1,0 +1,36 @@
+{
+  "objectName" : "frontierwatertower",
+  "colonyTags" : ["novakid","novakidvillage"],
+  "rarity" : "Common",
+  "description" : "Emergency water storage at your fingertips! Stores up to 800 water. Scan for info.",
+  "shortdescription" : "Wooden Water Tower",
+  "race" : "novakid",
+  "category" : "decorative",
+  "price" : 350,
+  "objectType" : "container",
+  "floranDescription" : "Tank iss high up!",
+  "glitchDescription" : "Neutral. A wooden water tower.",
+//  "learnBlueprintsOnPickup" : [ "liquidpumpwell" ],
+  "inventoryIcon" : "frontierwatertowericon.png",
+  "orientations" : [
+    {
+      "dualImage" : "frontierwatertower.png:<color>",
+      "imagePosition" : [-20, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform",
+      "collisionSpaces" : [ [-1,5], [0,5], [1,5] ]
+    }
+  ],
+  "outputNodes" : [ [2, 1] ],
+  "scripts" : [ "/scripts/fuwell.lua" ],
+  "scriptDelta" : 60,
+  "slotCount" : 1,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  "wellslots" : [
+    {"name" : "liquidwater","ratio" : 4,"max" : 800}
+  ],
+  "wellRange":24
+}

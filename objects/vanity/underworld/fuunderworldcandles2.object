@@ -1,0 +1,56 @@
+{
+  "objectName" : "fuunderworldcandles2",
+  "colonyTags" : [ "atropus", "creepy", "flesh", "valuable","light"],
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 125,
+
+  "description" : "A cheery cult-sacrifice vibe personifies these little darlings.",
+  "shortdescription" : "Black Candles",
+  "race" : "glitch",
+
+  "maximumLiquidLevel" : 0.2,
+
+  "statusEffects" : [ ],
+
+  "lightColor" : [229, 129, 107],
+  "lightPosition" : [0, 4],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.85,
+  "flickerMaxIntensity" : 0.9,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "inventoryIcon" : "fuunderworldcandles2icon.png",
+  "orientations" : [
+    {
+      "image" : "fuunderworldcandles2.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationPosition" : [-8, 0],
+      "direction" : "left",
+      "flipImages" : true,
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, -1], [0, -1] ]
+    },
+    {
+      "image" : "fuunderworldcandles2.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationPosition" : [-8, 0],
+      "direction" : "right",
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, -1], [0, -1] ]
+    }
+  ],
+
+  "animation" : "fuunderworldcandles2.animation",
+  "animationParts" : {
+    "bg" : "fuunderworldcandles2.png",
+    "fg" : "fuunderworldcandles2lit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 3] ]
+}

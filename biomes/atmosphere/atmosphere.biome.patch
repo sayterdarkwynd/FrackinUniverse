@@ -1,0 +1,48 @@
+[
+	[{
+		"op": "test",
+		"path": "/mainBlock",
+		"inverse": true
+	}, {
+		"op": "add",
+		"path": "/mainBlock",
+		"value": "cloudblock"
+	}],
+	[{
+		"op": "test",
+		"path": "/subBlocks",
+		"inverse": true
+	}, {
+		"op": "add",
+		"path": "/subBlocks",
+		"value": ["cloudblock"]
+	}],
+	[{
+		"op": "test",
+		"path": "/surfacePlaceables",
+		"inverse": true
+	}, {
+		"op": "add",
+		"path": "/surfacePlaceables",
+		"value": {
+			"grassMod": ["sand"],
+			"grassModDensity": 0.0,
+
+			"items": []
+		}
+	}],
+	[{
+		"op": "test",
+		"path": "/undergroundPlaceables",
+		"inverse": true
+	}, {
+		"op": "add",
+		"path": "/undergroundPlaceables",
+		"value": {
+			"grassMod": ["sand"],
+			"grassModDensity": 0.0,
+
+			"items": []
+		}
+	}]
+]

@@ -1,0 +1,144 @@
+{
+  "name" : "icepinestem",
+  "shape" : "pinetree",
+  "health" : 10,
+  "middleMinSize" : 1,
+  "middleMaxSize" : 2,
+  "dropConfig" : {
+    "drops" : [
+      [ { "item" : "iceblock", "count" : 3 } ]
+    ],
+    "sounds" : {
+      "breakTree" : [
+        { "file" : "/sfx/environmental/tree_crystal_breaking.ogg" }
+      ],
+      "hitGround" : [ { "file" : "/sfx/environmental/tree_crystal_hitground.ogg" } ],
+      "damageTree" : [ { "file" : "/sfx/tools/axe_chop_crystal1.ogg" }, { "file" : "/sfx/tools/axe_chop_crystal2.ogg" }, { "file" : "/sfx/tools/axe_chop_crystal3.ogg" } ]
+    },
+    "particles" : {
+      "hitGround" : {
+        "density" : 3,
+        "options" : [ {
+          "type" : "animated",
+          "animation" : "/animations/dusttest/dusttest.animation",
+          "timeToLive" : 3,
+          "destructionAction" : "shrink",
+          "destructionTime" : 1.0,
+          "variance" : {
+            "rotation" : 180,
+            "timeToLive" : 1.0,
+            "initialPosition" : [1.0, 1.0],
+            "initialVelocity" : [1.0, 1.0]
+          }
+        } ]
+      },
+      "damageTree" : {
+        "density" : 1,
+        "options" : [ {
+          "type" : "ember",
+          "color" : [88, 151, 199],
+          "timeToLive" : 10,
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, -30],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialPosition" : [1.0, 1.0],
+              "initialVelocity" : [1.0, 1.0]
+            }
+        } ]
+      }
+    }
+  },
+  "base" : {
+    "base1" : {
+      "image" : "base1.png",
+      "attachment" : {
+        "bx" : -2,
+        "by" : 0,
+        "x" : 5,
+        "y" : 23
+      }
+    },
+    "base2" : {
+      "image" : "base2.png",
+      "attachment" : {
+        "bx" : -2,
+        "by" : 0,
+        "x" : 5,
+        "y" : 23
+      }
+    },
+    "base3" : {
+      "image" : "base3.png",
+      "attachment" : {
+        "bx" : -2,
+        "by" : 0,
+        "x" : 5,
+        "y" : 23
+      }
+    }
+  },
+  "crown" : {
+    "crown1" : {
+      "image" : "crown1.png",
+      "attachment" : {
+        "bx" : -84,
+        "by" : -20
+      }
+    },
+    "crown2" : {
+      "image" : "crown2.png",
+      "attachment" : {
+        "bx" : -84,
+        "by" : -20
+      }
+    },
+    "crown3" : {
+      "image" : "crown3.png",
+      "attachment" : {
+        "bx" : -84,
+        "by" : -20
+      }
+    }
+  },
+  "middle" : {
+    "middle1" : {
+      "image" : "middle1.png",
+      "attachment" : {
+        "bx" : -4,
+        "by" : 0,
+        "x" : 4,
+        "y" : 23
+      }
+    },
+    "middle2" : {
+      "image" : "middle2.png",
+      "attachment" : {
+        "bx" : -4,
+        "by" : 0,
+        "x" : 4,
+        "y" : 23
+      }
+    },
+    "middle3" : {
+      "image" : "middle3.png",
+      "attachment" : {
+        "bx" : -4,
+        "by" : 0,
+        "x" : 4,
+        "y" : 18
+      }
+    },
+    "middle4" : {
+      "image" : "middle4.png",
+      "attachment" : {
+        "bx" : -4,
+        "by" : 0,
+        "x" : 4,
+        "y" : 20
+      }
+    }
+  }
+}
+

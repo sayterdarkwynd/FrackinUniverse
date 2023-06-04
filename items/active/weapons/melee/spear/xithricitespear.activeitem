@@ -1,0 +1,54 @@
+{
+  "itemName" : "xithricitespear",
+  "price" : 900,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Oh my god. It's made of stars...
+^cyan;Inflicts Minor Vulnerability^reset;
+^cyan;Hunting weapon^reset;",
+  "shortdescription" : "Cosmic Spear",
+  "tooltipKind" : "sword2",
+  "category" : "lance",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear","xithricite", "upgradeableWeapon"],
+
+  "inventoryIcon" : "xithricitespear.png",
+  //"collectablesOnPickup" : { "fu_weaponspear" : "xithricitespear" },
+  "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "xithricitespear.png",
+    "bladefullbright" : "xithricitespearfullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "heavyspearcomboshadow",
+  "primaryAbility" : {
+    "scripts" : [],
+
+    "fireTime" : 0.872,
+    "baseDps" : 12.0,
+    "damageConfig" : {
+      "statusEffects" : [ "defenseboostneg20" ],
+      "knockback" : 35,
+       "damageSourceKind" : "cosmicbow"
+    }
+  },
+  "altAbilityType" : "elementalspin",
+  "altAbility" : { },
+
+  "critChance" : 2,
+  "critBonus" : 9,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

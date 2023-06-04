@@ -1,61 +1,43 @@
 {
-  "name" : "sulphuricacid",
-  "liquidId" : 46,
-  "description" : "Sulphuric acid pools are best avoided.",
-	"tickDelta" : 1,
-	"color" : [242, 205, 73, 200],
-        "statusEffects" : [ "swimming", "sulphuricacideffect" ],
-        "itemDrop" : "liquidsulphuricacid",
-        "interactions" : [
-          {
-            "liquid" : 1,
-            "liquidResult" : 46
-          },
-          {
-            "liquid" : 3,
-            "liquidResult" : 46
-          },
-          {
-            "liquid" : 8,
-            "liquidResult" : 0
-          },
-          {
-          //bioooze
-            "liquid" : 41,
-            "materialResult" : "wastestone"
-          },  
-          {
-          //black tar
-            "liquid" : 42,
-            "materialResult" : "tarstone"
-          },      
-          {
-          //soup
-            "liquid" : 43,
-            "liquidResult" : 42
-          },  
-          {
-          //proto
-            "liquid" : 44,
-            "materialResult" : "wastestone"
-          }, 
-          {
-          //elder
-            "liquid" : 45,
-            "liquidResult" : 45
-          },           
-          {
-          //irradium
-            "liquid" : 47,
-            "liquidResult" : 46
-          },   
-          {
-          //mercury
-            "liquid" : 47,
-            "materialResult" : "wastestone"
-          }
-        ],
-        "texture" : "/liquids/watertex.png",
-        "bottomLightMix" : [0, 0, 0],
-        "textureMovementFactor" : 2.6  
+  "name": "sulphuricacid",
+  "liquidId": 46,
+  "description": "Sulphuric acid pools are best avoided.",
+  "tickDelta": 1,
+  "color": [242, 205, 73, 200],
+  "statusEffects": ["swimming", "sulphuricacideffect"],
+  "itemDrop": "liquidsulphuricacid",
+  "interactions": [
+    {
+      "liquid": 8,
+      "liquidResult": 0
+    },
+    {
+      //bioooze
+      "liquid": 41,
+      "materialResult": "wastestone"
+    },
+    {
+      //black tar
+      "liquid": 42,
+      "materialResult": "tarstone"
+    },
+    {
+      //soup
+      "liquid": 43,
+      "liquidResult": 42
+    },
+    {
+      //proto
+      "liquid": 44,
+      "materialResult": "wastestone"
+    },
+    {
+      //irradiumliquid
+      "liquid": 47,
+      "liquidResult" : 46
+    }
+  ],
+  "texture": "/liquids/watertex.png",
+  "bottomLightMix": [0, 0, 0],
+  "textureMovementFactor": 2.6
 }

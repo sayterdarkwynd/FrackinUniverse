@@ -1,0 +1,85 @@
+{
+  "objectName" : "tw_hylotltechstation",
+  "colonyTags" : [ "science" ],
+  "printable" : false,
+  "rarity" : "Common",
+
+  "interactAction" : "ScriptPane",
+
+  "planetInteractAction" : "ScriptPane",
+  "planetInteractData" : "/interface/scripted/fu_planetsail/fu_planetsail.config",
+
+  "category" : "decorative",
+
+  "description" : "Ship-based Artificial Intelligence Lattice, or S.A.I.L for short. Comes with a pet.",
+  "shortdescription" : "S.A.I.L Interface",
+  "race" : "hylotl",
+
+  "apexDescription" : "I can talk to SAIL through this console.",
+  "avianDescription" : "I can use this station to talk to S.A.I.L..",
+  "floranDescription" : "Floran use thisss magic panel to talk to S.A.I.L.!",
+  "glitchDescription" : "Happy. This station allows me to talk to S.A.I.L..",
+  "humanDescription" : "This station allows me to communicate with S.A.I.L..",
+  "hylotlDescription" : "This console allows me to communicate with S.A.I.L..",
+  "novakidDescription" : "This here station lets me talk with S.A.I.L..",
+  "fukirhosDescription" : "I can use this to load up on augs or chat with S.A.I.L., if I get lonely.",
+  "fumantiziDescription" : "I can mess with my techs here, as well as talk to the AI, S.A.I.L.",
+  "fupeglaciDescription" : "A tech station - S.A.I.L displays data in both 'visible' and infrared light best suited for Peglaci eyes.",
+  "shadowDescription" : "This reminds me of the One.",
+  "slimepersonDescription" : "My friend.",
+
+  "aegiDescription" : "This panel allows for interaction with S.A.I.L., the ship-based AI.",
+  "avikanDescription" : "The Nomada doesn't like AIs like S.A.I.L., but the Protectorate insisted on installing it.",
+  "draunaarDescription" : "A station for interacting with S.A.I.L..",
+  "trinkDescription" : "I can speak to S.A.I.L. using this console. It's good to have another AI on the ship.",
+  "hymidDescription" : "This console allows for interaction with S.A.I.L.. It's nice to have someone to talk to.",
+  "notixDescription" : "S.A.I.L. is one companion who will never fail you.",
+  "jorgasianDescription" : "A console for communicating with S.A.I.L..",
+  "drodenDescription" : "Detected S.A.I.L. interface. Console enables communication with S.A.I.L..",
+  "akkimariDescription" : "Interface-S.A.I.L.. Akki talk to ship here.",
+
+  "inventoryIcon" : "tw_hylotltechstationicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "tw_hylotltechstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "tw_hylotltechstationlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 6,
+      "animationCycle" : 0.7,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+
+    }
+  ],
+
+  "offeredQuests" : [ "gaterepair" ],
+  "animation" : "/objects/ship/techstation.animation",
+
+
+
+
+  "interactData" : "/zb/newSail/newSail.config",
+
+  "scripts" : [ "/objects/scripts/customtechstation.lua", "/objects/ship/fu_shipobjectplanetinteraction.lua" ],
+
+
+
+  "chatPortrait" : "/ai/portraits/hylotlportrait.png:yell.1",
+  "dialog" : {
+    "wakeUp" : [
+      [ "Rebooting...", "/ai/portraits/hylotlportrait.png:unique.1" ],
+      [ "I am S.A.I.L, your Ship-based Artificial Intelligence Lattice. I manage the maintainance of your ship.", "/ai/portraits/hylotlportrait.png:talk.0" ],
+      [ "I am also programmed to offer you information and advice.", "/ai/portraits/hylotlportrait.png:talk.1" ],
+      [ "Earth was attacked by an unknown force, and was subsequently annihilated.", "/ai/portraits/hylotlportrait.png:talk.0" ],
+      [ "The ship's navigation systems were damaged in our escape. Our location is currently unknown.", "/ai/portraits/hylotlportrait.png:talk.1" ]
+    ],
+    "wakePlayer" : [
+      [ "System is down, please reboot.", "/ai/portraits/hylotlportrait.png:unique.1"],
+      [ "Please reboot the system.", "/ai/portraits/hylotlportrait.png:unique.1"],
+      [ "Reboot process remains uninitiated.", "/ai/portraits/hylotlportrait.png:unique.1"],
+      [ "To make use of your S.A.I.L please reboot.", "/ai/portraits/hylotlportrait.png:unique.1" ],
+      [ "Rebooting has shown to improve ship interaction satisfaction levels by 73%.", "/ai/portraits/hylotlportrait.png:unique.1"],
+      [ "Rebooting requires a conscious entity to interact with the S.A.I.L console.", "/ai/portraits/hylotlportrait.png:unique.1" ]
+    ]
+  }
+}

@@ -1,39 +1,38 @@
 {
   "type" : "crewmemberarctic",
-  "baseType" : "crewmember",
-
-  // This npctype is used just as a base for the other crewmemberchemist*
-  // npctypes. Don't use it directly for spawning NPCs.
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
-
     "crew" : {
-    "defaultUniform" : {
-	"head" : "sciencefuheadnpc",
-    	"chest" : "sciencefuchestnpc",
-   	"legs" : "sciencefulegsnpc"
-  	},
-        "benefits" : [
-          {
-            // Ephemeral effects gained upon leaving the ship
-            "type" : "EphemeralEffect",
-            "effect" : "biomecoldImmunity",
-            "duration" : 300
-          },         
-          {
-            // Persistent effects are active while on the ship
-            "type" : "PersistentEffect",
-            "effect" : "regeneration01"
-          }
-        ],
+      "defaultUniform" : {
+        "head" : "sciencefuheadnpc",
+        "chest" : "sciencefuchestnpc",
+        "legs" : "sciencefulegsnpc"
+      },
+
       "role" : {
         "type" : "chemist",
         "name" : "Arctic Explorer",
         "field" : "Arctic Explorer",
-        "uniformColorIndex" : 4
+        "uniformColorIndex" : 4,
+
+        "benefits" : [
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "fuelEfficiency",
+            "value" : 0.08
+          },
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "iceblock3",
+            "duration" : 900
+          },
+          {
+            "type" : "Regeneration",
+            "value" : 1
+          }
+        ]
       }
     },
 
@@ -42,7 +41,17 @@
         "roleDescription" : {
           "default" : {
             "default" : [
-              "I'll give you a boost whenever we're on the ship!"
+              "I'll give you an 8% fuel cost reduction whenever we're on the ship!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran will give ship fuel boostsss when we are on ship!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Friendly. I'll give you an 8% fuel cost reduction whenever we're on the ship!"
             ]
           }
         },
@@ -80,7 +89,7 @@
       [0, [
           {
             "primary" : [ "fucarbonhammer" ],
-            "sheathedprimary" : [ "chargepistol" ]          
+            "sheathedprimary" : [ "frostcannonarm" ]
           }
         ] ]
     ]

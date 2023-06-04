@@ -1,0 +1,59 @@
+{
+  "itemName" : "electricslimewhip",
+  "price" : 1000,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "A whip made of sticky, electrically-charged slime.",
+  "shortdescription" : "Electric Slime Whip",
+  "tooltipKind" : "sword2",
+//  "learnBlueprintsOnPickup" : [ "electricslimewhip2" ],
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "whip", "upgradeableWeapon", "slime","electric","energy"],
+
+  "inventoryIcon" : "electricslimewhip.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "electricslimewhip.png",
+    "weaponFullbright" : ""
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : {
+      "burstCount" : 3,
+      "particles" : [{"particle" : "electricswoosh1"}]
+    }},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/whip_swing1.ogg", "/sfx/melee/whip_swing2.ogg", "/sfx/melee/whip_swing3.ogg" ],
+      "crack" : [ "/sfx/melee/whip_impact1.ogg", "/sfx/melee/whip_impact2.ogg", "/sfx/melee/whip_impact3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [0.625, 0.0625],
+    "length" : [3, 15],
+    "segmentImage" : "/items/active/weapons/whip/electricslimewhiplink.png",
+    "endSegmentImage" : "/items/active/weapons/whip/electricslimewhipend.png",
+    "segmentSize" : 0.375
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "electric",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 1.2,
+    "chainDps" : 1.5,
+    "crackDps" : 6.0,
+
+    "damageConfig" : {
+      "damageSourceKind" : "electric"
+    },
+
+    "projectileType" : "whipcrackelectric"
+  },
+  "critChance" : 2,
+  "critBonus" : 4,
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}

@@ -1,0 +1,57 @@
+{
+  "itemName" : "zerchesiumwhip",
+  "price" : 600,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "A whip with an ice cold tip. Swings with a zip.",
+  "shortdescription" : "Zerchesium Whip",
+  "tooltipKind" : "sword2",
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","whip","upgradeableWeapon","zerchesium"],
+
+  "inventoryIcon" : "zerchesiumwhip.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "zerchesiumwhip.png",
+	"weaponFullbright" : ""
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : { "particles" : [ ]}},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/whip_swing1.ogg", "/sfx/melee/whip_swing2.ogg", "/sfx/melee/whip_swing3.ogg" ],
+      "crack" : [ "/sfx/melee/whip_impact1.ogg", "/sfx/melee/whip_impact2.ogg", "/sfx/melee/whip_impact3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [0.625, 0],
+    "length" : [3, 12],
+    "segmentImage" : "/items/active/weapons/whip/zerchesiumwhiplink.png",
+    "endSegmentImage" : "/items/active/weapons/whip/zerchesiumwhipend.png",
+    "segmentSize" : 0.375,
+    "fullbright" : false
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 1.1,
+    "chainDps" : 1.5,
+    "crackDps" : 5.5,
+
+    "damageConfig" : {
+       "damageSourceKind" : "ice"
+    },
+
+    "projectileType" : "whipcrackice"
+  },
+
+  "critChance" : 2,
+  "critBonus" : 3,
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}

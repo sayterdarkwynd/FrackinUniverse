@@ -1,0 +1,85 @@
+{
+	"objectName": "elderhealingstationauto",
+	"colonyTags": [],
+	"rarity": "Legendary",
+	"printable": false,
+	"description": "A station to heal pets, robots and...others.\nAutomated and Item Network capable.",
+	"shortdescription": "^orange;Mutari Automatic Healer^reset;",
+	"race": "generic",
+	"category": "storage",
+	"price": 1250,
+	"health": 1.5,
+
+	"objectType": "container",
+	"slotCount": 2,
+	"uiConfig": "/interface/objectcrafting/pethealingauto.config",
+	"subtitle": "For dead pets, broken bots, and more.",
+	"frameCooldown": 5,
+	"autoCloseCooldown": 3600,
+	"scripts": ["pethealingstationauto.lua"],
+
+	"lightColor": [38, 114, 128],
+	"lightPosition": [0, 1],
+
+	"flickerPeriod": 1.2,
+	"flickerMinIntensity": 0.95,
+	"flickerMaxIntensity": 1.00,
+	"flickerPeriodVariance": 0.0,
+	"flickerIntensityVariance": 0.0,
+
+	"inventoryIcon": "elderhealingstationicon.png",
+
+	"animation": "/objects/crafting/elderhealingstation/elderhealingstation.animation",
+	"animationParts": {
+		"pethealingstation": "elderhealingstation.png",
+		"pethealingstationlit": "elderhealingstation.png"
+	},
+	"animationPosition": [-6, 0],
+	"inputNodes": [
+		[-1, 0]
+	],
+	"outputNodes": [
+		[0, 0]
+	],
+	"kheAA_inDataNode": 0,
+	"kheAA_outDataNode": 0,
+	"orientations": [{
+			"imageLayers": [{
+				"image": "elderhealingstation.png:off.<frame>",
+				"fullbright": true
+			}, {
+				"image": "elderhealingstationlit.png:off.<frame>"
+			}],
+			"imagePosition": [-6, 0],
+
+			"direction": "left",
+			"flipImages": true,
+
+			"frames": 1,
+
+			"spaceScan": 0.1,
+			"anchors": ["bottom"]
+		},
+		{
+			"imageLayers": [{
+				"image": "elderhealingstation.png:off.<frame>",
+				"fullbright": true
+			}, {
+				"image": "elderhealingstationlit.png:off.<frame>"
+			}],
+			"imagePosition": [-6, 0],
+
+			"direction": "right",
+
+			"frames": 1,
+
+			"spaceScan": 0.1,
+			"anchors": ["bottom"]
+		}
+	],
+	"acceptedPods": {
+		"filledcapturepod": true,
+		"botpod": true,
+		"elderpod": true
+	}
+}

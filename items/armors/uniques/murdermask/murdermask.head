@@ -1,0 +1,54 @@
+{
+  "itemName" : "murdermask",
+  "price" : 3000,
+  "inventoryIcon" : "icons.png:head",
+  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Brings merriment and joy ^red;(not murder)^reset; to young camp counsellors everywhere.
++^green;5^reset;% Crit Chance
++^green;20^reset;% Phys. Resist
+-^red;20^reset;% Electric Resist",
+  "shortdescription" : "Friendship Mask",
+  "category" : "headarmour",
+  "tooltipKind" : "armornew2",
+
+  "maleFrames" : "head.png",
+  "femaleFrames" : "head.png",
+  "mask" : "mask.png",
+  "level" : 4,
+  "itemTags" : [ "upgradeableWeapon", "offensive", "melee" ],
+
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.25
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.35
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 6
+    }
+  ],
+  "statusEffects" : [
+    {
+      "stat" : "critChance",
+      "amount" : 5
+    },
+    {
+      "stat" : "physicalResistance",
+      "amount" : 0.2
+    },
+    {
+      "stat" : "electricResistance",
+      "amount" : -0.2
+    }
+  ],
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
+}

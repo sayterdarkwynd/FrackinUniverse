@@ -1,0 +1,59 @@
+{
+  "objectName" : "roundeddoor",
+  "colonyTags" : ["rounded","door"],
+  "printable" : false,
+  "rarity" : "Uncommon",
+  "category" : "door",
+  "price" : 0,
+  "description" : "A minimalistic door, stylistically limited in palette and rounded at the edges.",
+  "shortdescription" : "Rounded Door",
+  "race" : "generic",
+
+  "apexDescription" : "A rather bright and modern looking door.",
+  "avianDescription" : "This door is rather tame, considering the rest of the furniture set it comes from.",
+  "floranDescription" : "Round door hass window down the middle. Not good for ssneak attacks at all!",
+  "glitchDescription" : "Pleased. A bright and modern door.",
+  "humanDescription" : "A door with nicely rounded corners. Modern!",
+  "hylotlDescription" : "Simple, but very effective.",
+  "novakidDescription" : "A round lookin' door.",
+
+  "inventoryIcon" : "roundeddooricon.png",
+
+  "tooltipKind" : "door",
+  "largeImage" : "roundeddoor.png:right",
+
+  "orientations" : [
+    {
+      "dualImage" : "roundeddoor.png:default",
+      "imagePosition" : [-16, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/wooddoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/wooddoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "roundeddoor.png"
+  },
+  "animationPosition" : [-16, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

@@ -4,12 +4,12 @@
   "price" : 1500,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Cerulium rounds fracture and then fracture again to cover a wide area. Charge to launch in grenade form.",
+  "description" : "The Peglaci honed them, but you perfected them. A devastating weapon.",
   "shortdescription" : "Fissure Splitrifle",
-  "tooltipKind" : "gun",
-  "category" : "assaultRifle",
+  "tooltipKind" : "gun2",
+  "category" : "shotgun",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","machinePistol"],
+  "itemTags" : ["weapon","ranged","shotgun", "energy", "upgradeableWeapon"],
 
   "inventoryIcon" : [
     { "image" : "splittergun.png:idle.1" }
@@ -38,24 +38,23 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "electric",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 0.63,
-    "baseDps" : 4.756,
+    "fireTime" : 1.2,
+    "baseDps" : 6.55,
     "energyUsage" : 30,
-    "inaccuracy" : 0,
+    "inaccuracy" : 0.1,
     "fireType" : "auto",
 
     "projectileType" : "splittergunshot1",
     "projectileParameters" : {
-      "knockback" : 4,
-      "speed" : 60
+      "knockback" : 15
     },
-    "projectileCount" : 3,
+    "projectileCount" : 10,
 
     "stances" : {
       "idle" : {
@@ -86,8 +85,15 @@
       }
     }
   },
+  "critChance" : 4,
+  "critBonus" : 6,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 200,
 
   "altAbilityType" : "splittergunshotpower",
+
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

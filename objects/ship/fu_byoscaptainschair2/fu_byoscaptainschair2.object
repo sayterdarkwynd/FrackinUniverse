@@ -1,0 +1,114 @@
+{
+  "objectName" : "fu_byoscaptainschair2",
+  "colonyTags" : ["misc"],
+  "itemTags" : ["captainschair"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "loungeable",
+
+  "description" : "The Captain sits here to fly the ship.",
+  "shortdescription" : "Captain's Chair",
+  "race" : "generic",
+  "category" : "furniture",
+
+  "apexDescription" : "Ahh... Sweet freedom. I can use the ship's navigator from this chair.",
+  "avianDescription" : "The Captain's chair. That's me! I can use the ship's navigator from this chair.",
+  "floranDescription" : "Best chair on ship. Floran can sit here to ussse navigator and fly ship!",
+  "glitchDescription" : "Excited. Sitting on the Captain's chair allows me to fly this ship. Where to next?",
+  "humanDescription" : "The Captain's chair. The person sitting here decides where the ship goes!",
+  "hylotlDescription" : "Sitting on the Captain's chair allows me to fly this ship.",
+  "novakidDescription" : "The Captain's chair. The guy who sits here decides where the ship goes! That's me!",
+  "fukirhosDescription" : "Let's see what this babe can do.",
+  "fumantiziDescription" : "It's not solid gold, but it will do.",
+  "fupeglaciDescription" : "The captain's seat of every Peacekeeper ship comes equipped with a life support system. Very nice for those long voyages.",
+  "shadowDescription" : "Chair.",
+  "slimepersonDescription" : "Looks like a captain's chair.  I could navigate the ship from here.",
+
+  "aegiDescription" : "This Captain's chair grants access to the navigation console.",
+  "avikanDescription" : "The Captain's chair - it is a true honour to sit on one of these.",
+  "draunaarDescription" : "The Captain's chair. It grants access to the navigation console and flight controls.",
+  "trinkDescription" : "This Captain's chair has specialized sensors, allowing only its owner to use the navigator.",
+  "hymidDescription" : "A Captain's chair. The ship's navigation console is linked to it.",
+  "notixDescription" : "The Captain's chair, granting access to the starship's navigator.",
+  "jorgasianDescription" : "The ship's navigation console can be accessed from this Captain's chair.",
+  "drodenDescription" : "Detected Captain's chair. Grants access to navigation console.",
+  "akkimariDescription" : "Chair-captain. Linked to console-navigation.",
+
+  "inventoryIcon" : "/objects/ship/fu_byoscaptainschair2/fu_byoscaptainschairicon.png",
+  "placementImage" : "/objects/ship/fu_byoscaptainschair2/fu_byoscaptainschair2.png:default",
+  "placementImagePosition" : [-12, 0],
+  "orientations" : [
+    {
+      "image" : "/objects/ship/fu_byoscaptainschair2/fu_byoscaptainschair2.png:<color>",
+      "imagePosition" : [-12, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "flipImages" : true,
+      "direction" : "left",
+      "sitPosition" : [1.6, 22.5],
+	  "spaces" : [
+	  [-1,2],  [0,2],
+	  [-1,1],  [0,1],
+	  [-1,0], [0,0]
+	  ]
+    },
+    {
+      "image" : "/objects/ship/fu_byoscaptainschair2/fu_byoscaptainschair2.png:<color>",
+      "imagePosition" : [-12, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "sitPosition" : [1.6, 22.5],
+	  "spaces" : [
+	  [-1,2], [0,2],
+	  [-1,1], [0,1],
+	  [-1,0], [0,0]
+	  ]
+    }
+  ],
+  "defaultImageConfig" : [
+    {
+      "image" : "/objects/ship/fu_byoscaptainschair2/fu_byoscaptainschair2.png:<color>",
+      "imagePosition" : [-12, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "flipImages" : true,
+      "direction" : "left",
+      "sitPosition" : [1.6, 22.5]
+    },
+    {
+      "image" : "/objects/ship/fu_byoscaptainschair2/fu_byoscaptainschair2.png:<color>",
+      "imagePosition" : [-12, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "sitPosition" : [1.6, 22.5]
+    }
+  ],
+
+  "scripts" : [ "/objects/ship/fu_shipobjectplanetinteraction.lua", "/objects/ship/fu_byosobjectdeath.lua" ],
+  "animationScripts" : ["/objects/ship/fu_byosobjectanimation.lua"],
+  "scriptDelta" : 20,
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/interface/cockpit/cockpit.config",
+
+  "planetInteractAction" : "ScriptPane",
+  "planetInteractData" : "/interface/scripted/fu_planetcockpit/fu_planetcockpit.config",
+
+  "sitFlipDirection" : false,
+  "racialiserType" : "captainschair",
+  "retainObjectParametersInItem" : true
+}

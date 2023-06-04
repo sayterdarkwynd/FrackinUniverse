@@ -1,0 +1,82 @@
+{
+	"stats": [{
+			"stat": "protection",
+			"effectiveMultiplier": 0.85
+		},
+		{
+			"stat": "energyRegenPercentageRate",
+			"baseMultiplier": 1.1
+		},
+		{
+			"stat": "radioactiveResistance",
+			"amount": 0.15
+		},
+		{
+			"stat": "poisonResistance",
+			"amount": 0.15
+		},
+		{
+			"stat": "shadowResistance",
+			"amount": -0.2
+		},
+		{
+			"stat": "cosmicResistance",
+			"amount": -0.2
+		},
+		{
+			"stat": "fireResistance",
+			"amount": -1.0
+		},
+		{
+			"stat": "biomeradiationImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "radiationburnImmunity",
+			"amount": 1
+		}
+	],
+	"diet": "herbivore",
+	"controlModifiers": {
+		"speedModifier": 1.05
+	},
+	"envEffects": [{
+		"biomes": ["irradiated"],
+		"stats": [{
+				"stat": "maxEnergy",
+				"effectiveMultiplier": 1.15
+			},
+			{
+				"stat": "energyRegenPercentageRate",
+				"baseMultiplier": 1.25
+			},
+			{
+				"stat": "protection",
+				"effectiveMultiplier": 0.95
+			},
+			{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 0.95
+			}
+		]
+	}],
+	"weaponEffects": [{
+			"weapon": ["yoyo"],
+			"controlModifiers": {
+				"speedModifier": 1.15
+			}
+		},
+		{
+			"weapon": ["dagger", "shortsword", "rapier", "katana", "longsword", "broadsword"],
+			"stats": [{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.125
+				},
+				{
+					"stat": "critChance",
+					"amount": 2.5
+				}
+			]
+		}
+	]
+}

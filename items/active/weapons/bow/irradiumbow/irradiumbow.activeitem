@@ -1,0 +1,74 @@
+{
+  "itemName" : "irradiumbow",
+  "price" : 640,
+  "inventoryIcon" : "irradiumbowicon.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "tooltipKind" : "bow2",
+  "category" : "bow",
+  "description" : "Radioactive Hunting.",
+  "shortdescription" : "Irradium Bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow","upgradeableWeapon","irradium","radioactive"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "level" : 4,
+
+  "animation" : "/items/active/weapons/bow/fubow.animation",
+  "animationParts" : {
+    "bow" : "irradiumbowfull.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0.125, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "radioactive",
+  //"collectablesOnPickup" : { "fu_weaponbow" : "irradiumbow" },
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : {
+    "drawTime" : 0.9,        //Time to fully draw the bow
+  "powerProjectileTime" : 0.31,  //After fully drawing, the bow is super-charged for this long
+  "dynamicDamageMultiplier" : 1.0,  //All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+  "energyPerShot" : 42,
+  "holdEnergyUsage" : 15,
+  "airborneBonus" : 1.20,
+    "projectileType" : "irradiumarrow",
+    "powerProjectileType" : "chargedirradiumarrow",
+    "projectileParameters" : {
+      "power" : 8.5,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 9.5,
+      "piercing" : false
+    }
+  },
+
+  "altAbilityType" : "rngbows_enhancedbowshot",
+  "altAbility" : {
+    "drawTime" : 1.5,        //Time to fully draw the bow
+    "powerProjectileTime" : 0.325,  //After fully drawing, the bow is super-charged for this long
+    "name" : "Debilitator",
+    "projectileType" : "irradiumarrow",
+    "powerProjectileType" : "farsightshotbow",
+    "projectileParameters" : {
+      "power" : 11,
+      "piercing" : false
+    }
+  },
+
+  "critChance" : 4,
+  "critBonus" : 9,
+
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
+}

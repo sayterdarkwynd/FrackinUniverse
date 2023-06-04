@@ -1,0 +1,29 @@
+{
+	"itemName": "horchata",
+	"rarity": "uncommon",
+	"price": 30,
+	"category": "preparedFood",
+	"inventoryIcon": "horchata.png",
+	"description": "A type of milk made of rice, and seasoned with cinnamon. \n^cyan;+^reset;10%^green; HP^reset;^cyan; +^reset;5%^green; Energy^reset; \n^orange;Type: Dairy + Grain^reset;",
+	"shortdescription": "Horchata",
+	"effects": [
+        ["plant_dairy_meal",
+        {
+            "effect": "maxenergyscalingboostfood",
+            "duration": 120,
+            "energyModifier": 1.05
+        },
+        { "effect" : "maxhealthscalingboostfood",
+            "duration": 120,
+            "healthModifier": 1.10
+        }
+        ]
+    ],
+	"foodValue": 20,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}

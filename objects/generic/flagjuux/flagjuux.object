@@ -1,0 +1,43 @@
+{
+  "objectName" : "flagjuux",
+  "colonyTags" : ["juux"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "teleporter",
+  "category" : "teleportMarker",
+  "price" : 70,
+  "twoHanded" : false,
+  "radioMessagesOnPickup" : [ "pickupflag" ],
+
+  "description" : "A flag marking Pharitu territory.",
+  "shortdescription" : "Pharitu Flag",
+  "race" : "juux",
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/destinationonly.config",
+
+  "inventoryIcon" : "flagjuuxicon.png",
+  "orientations" : [
+    {
+      "image" : "flagjuux.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+      "imagePosition" : [-17, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "flagjuux.png:<color>.<frame>",
+      "direction" : "right",
+      "imagePosition" : [1, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "type" : "barkeep",
+  "baseType" : "merchant",
+
+  "scriptConfig" : {
+    "merchant" : {
+      "waitTime" : 10,
+      "storeRadius" : -1,
+      "categories" : {
+        "default" : [ "barkeep" ],
+        "human" : ["barkeep" ],
+        "apex" : ["barkeep" ],
+        "hylotl" : ["barkeep" ],
+        "floran" : ["barkeep" ],
+        "glitch" : ["barkeep" ],
+        "avian" : ["barkeep" ],
+        "novakid" : ["barkeep" ]
+      },
+      "buyFactorRange" : [ 1.0, 1.0 ],
+      "sellFactorRange" : [ 0.2, 0.2 ],
+      "numItems" : 20,
+      "paneLayoutOverride" : {
+        "windowtitle" : {
+          "title" : "  Barkeep",
+          "subtitle" : "  Marty's Place"
+        }
+      }
+    },
+
+    "dialog" : {
+      "merchant" : {
+        "start" : {
+          "default" : {
+            "default" : [
+              "Thirsty, friend? Come have a seat. Take a load off and relax.",
+              "Looks like you've had a hell of a day, friend. Why don't you have a seat and let me serve you up some refreshment.",
+              "Need to take a break...take the edge off? Maybe a vodka will do the trick."
+            ]
+          }
+        },
+        "end" : {
+          "default" : {
+            "default" : [
+              "Come back anytime!",
+              "Have a great day. Thanks for the patronage, good sir."
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ "bmcglowscoutvisor" ],
+            "chest" : [ "fumantizimerchchest" ],
+            "legs" : [ "fumantizimerchlegs" ]
+          }
+        ] ]
+    ]
+  }
+}

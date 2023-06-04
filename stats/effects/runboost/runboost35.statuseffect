@@ -1,14 +1,18 @@
 {
   "name" : "runboost35",
-  "effectConfig" : {},
-  "defaultDuration" : 30,
+	"effectConfig": {
+		"controlModifiers": {
+			"speedModifier": 1.35
+		}
+	},
+	"defaultDuration": 30,
 
-  "scripts" : [
-    "runboost35.lua"
-  ],
+	"scripts": [
+		"/stats/effects/fu_genericControlModifiers.lua"
+	],
 
   "animationConfig" : "runboost.animation",
 
-  "label" : "+Run",
+  "label" : "+35% Run",
   "icon" : "/interface/statuses/haste.png"
 }

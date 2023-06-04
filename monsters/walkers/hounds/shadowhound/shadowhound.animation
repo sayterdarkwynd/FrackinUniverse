@@ -1,0 +1,303 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 8,
+            "cycle" : 1
+          },
+          "hurt" : {
+            "frames" : 1,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "walk" : {
+            "frames" : 5,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "jump" : {
+            "frames" : 2,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "leap" : {
+            "frames" : 2,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "fall" : {
+            "frames" : 2,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "chargewindup" : {
+            "frames" : 5,
+            "cycle" : 1,
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/arrowhead_pain1.ogg"
+            }
+          },
+          "chargewinddown" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/arrowhead_idle2.ogg"
+            }
+          },
+          "charge" : {
+            "frames" : 5,
+            "cycle" : 0.5,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/quadruped/arrowhead_attack2.ogg"
+            }
+          },
+           "fire" : {
+            "frames" : 5,
+            "cycle" : 0.5,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/quadruped/arrowhead_attack2.ogg"
+            }
+          },
+          "firewindup" : {
+            "frames" : 2,
+            "cycle" : 0.5,
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/lion_attack2.ogg"
+            }
+          },
+          "firewinddown" : {
+            "frames" : 2,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/lion_idle2.ogg"
+            }
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ]
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:move.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "leap" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:move.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:move.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:attack.<frame>"
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:fall.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:attack.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "particleEmitters" : {
+    "spindust" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [ 1.0, -1.0, 2.0, -0.0 ],
+      "particles" : [
+        { "particle" : "mandrafloradust" }
+      ]
+    },
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ "/sfx/npc/quadruped/arrowhead_pain2.ogg" ],
+    "deathPuff" : [ "/sfx/npc/quadruped/arrowhead_pain1.ogg" ],
+    "wallCrashSound" : [ "/sfx/npc/quadruped/arrowhead_attack1.ogg" ],
+    "turnHostile" : [ "/sfx/npc/quadruped/arrowhead_turnhostile.ogg" ],
+    "attackSound" : [ "/sfx/npc/quadruped/arrowhead_attack1.ogg" ],
+    "fire" : [ "/sfx/npc/quadruped/arrowhead_idle2.ogg" ]
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

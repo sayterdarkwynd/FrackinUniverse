@@ -1,0 +1,43 @@
+{
+  "objectName" : "jillyrootseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Uncommon",
+  "category" : "seed",
+  "description" : "Able to help speed healing of wounds.",
+  "shortdescription" : "Jilly Root Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 16,
+  "inventoryIcon" : "jillyrootseedicon.png",
+  "largeImage" : "jillyrootseed.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "jillyroot" },
+  "orientations" : [
+    {
+      "dualImage" : "jillyrootseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [300, 520]
+    },
+    {
+      "duration" : [300, 520]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "jillyrootHarvest",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125
+}

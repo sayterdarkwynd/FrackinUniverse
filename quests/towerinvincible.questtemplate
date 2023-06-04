@@ -1,0 +1,29 @@
+{
+	"id": "towerinvincible.gearup",
+	"title": "^green;The Tower Invincible",
+	"text": "A dread Glitch warlord has been terrorising nearby planets from his tower on a far-off planet. I should do something about this.",
+	"completionText": "Ha ha! A true test and proof of my stremf! Now time to help myself to all this sweet, sweet loot!",
+	"speaker": "player",
+	"moneyRange": [5000, 5000],
+	"rewards": [
+		[
+			["hellfirechest"],
+			["hellfirehelm"],
+			["hellfirelegs"],
+			["hellfiregun"],
+			["fuscienceresource", 1000]
+		]
+	],
+
+	"updateDelta": 10,
+	"script": "/quests/scripts/main.lua",
+	"scriptConfig": {
+		"giveBlueprints": ["fireboomerang"],
+		"portraits": {
+			"default": "player"
+		},
+		"associatedMission": "towerinvincible",
+		"turnInDescription": "Defeat the dread warlord of the Tower Invincible.",
+		"requireTurnIn": true
+	}
+}

@@ -1,0 +1,49 @@
+{
+	"objectName": "fuaetherstarbookcase",
+	"colonyTags": ["fu", "aether", "pretty", "valuable", "knowledge", "storage"],
+	"rarity": "Legendary",
+	"objectType": "container",
+	"tooltipKind": "container",
+	"description": "A shiny bookcase for storing books!",
+	"shortdescription": "Cosmic Aether Bookcase",
+	"race": "generic",
+	"category": "storage",
+	"price": 110,
+	"health": 1.5,
+	"lightColor" : [120, 20, 180],
+
+	"inventoryIcon": "fuaetherstarbookcaseicon.png",
+	"orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fuaetherstarbookcase.png:<color>" }, { "image" : "fuaetherstarbookcase_fullbright.png:<color>", "fullbright" : true } ],
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "fuaetherstarbookcase.png:<color>" }, { "image" : "fuaetherstarbookcase_fullbright.png:<color>", "fullbright" : true } ],
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+	"openSounds": ["/sfx/objects/bookcase_open.ogg"],
+	"closeSounds": ["/sfx/objects/bookcase_close.ogg"],
+	"slotCount": 32,
+	"uiConfig" : "/interface/chests/cdx/chest<slots>.config",
+	"frameCooldown": 5,
+	"autoCloseCooldown": 3600
+
+}

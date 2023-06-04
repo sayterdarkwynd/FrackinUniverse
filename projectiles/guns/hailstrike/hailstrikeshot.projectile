@@ -1,0 +1,32 @@
+{
+  "projectileName" : "fuhailstrikeshot",
+  "image" : "fuhailstrikeshot.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "timeToLive" : 0.5,
+  "speed" :50,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "lightColor" : [0, 120, 120],
+  "fullbright" : true,
+  "power" : 5,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "fuhailstrikeshotback",
+      "inheritDamageFactor" : 0.5,
+	  "angleAdjust" : -170
+    },
+	{
+      "action" : "projectile",
+      "type" : "fuhailstrikeshotback",
+      "inheritDamageFactor" : 0.5,
+	  "angleAdjust" : -190
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/burstexplosion/cosmicburstexplosionnoblast.config"
+    }
+  ],
+  "damageKind" : "cosmic"
+}

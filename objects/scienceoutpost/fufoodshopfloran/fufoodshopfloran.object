@@ -1,0 +1,54 @@
+{
+  "objectName" : "fufoodshopfloran",
+  "colonyTags" : [ "crafting", "floran" ],
+  "rarity" : "rare",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/fufoodshopfloran.config",
+    "filter" : [ "fufoodshopfloran" ]
+  },
+  "printable" : false,
+      "shortdescription" : "^orange;Sstabbed-Thingss Emporium^reset;",
+      "description" : "A meat shop.",
+  "race" : "floran",
+  "category" : "crafting",
+  "price" : 0,
+  "inventoryIcon" : "fufoodshopfloran.png",
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fufoodshopfloran.png:<color>.<frame>"} ],
+      "imagePosition" : [-60, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "frames" : 1,
+      "animationCycle" : 7.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "fufoodshopfloran.png:<color>.<frame>"} ],
+      "imagePosition" : [-60, 0],
+
+      "direction" : "right",
+
+      "frames" : 1,
+      "animationCycle" : 7.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/aquarium1.ogg",
+  "offeredQuests" : [
+    "scienceoutpost_floranShop"
+  ],
+  "turnInQuests" : [
+    "scienceoutpost_floranShop"
+  ]
+
+}

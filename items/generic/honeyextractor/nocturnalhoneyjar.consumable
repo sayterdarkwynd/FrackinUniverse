@@ -1,21 +1,25 @@
 {
-  "itemName" : "nocturnalhoneyjar",
-  "rarity" : "Common",
-  "category" : "food",
-  "price" : 200,
-  "inventoryIcon" : "nocturnalhoneyjar.png",
-  "description" : "A dark jar of honey!",
-  "shortdescription" : "Dark Honey Jar",
-  "effects" : [ [
-    {
-        "effect" : "honeyheal4",
-        "duration" :180  },
-    {
-        "effect" : "fedhoney",
-        "duration" : 180
-    }
-  ] ],
-  "blockingEffects" : [
-     "fedhoney"
-  ]
+  "itemName": "nocturnalhoneyjar",
+  "rarity": "Common",
+  "category": "food",
+  "price": 35,
+  "inventoryIcon": "nocturnalhoneyjar.png",
+  "description": "A dark jar of honey!\n^cyan;+^white;30% ^pink;Shadow ^cyan;Resistance ^gray;(^white;5m^gray;)\n^green;Heal ^white;57.5 ^gray;(^white;30s^gray;)^reset;",
+  "shortdescription": "Dark Honey Jar",
+  //"learnBlueprintsOnPickup": ["gygaxjuice"],
+  "tooltipKind": "food",
+  "effects": [
+    [
+      "fushadowresistance3",
+      {
+        "effect": "honeyheal4",
+        "duration": 30
+      },
+      {
+        "effect": "fedhoney",
+        "duration": 300
+      }
+    ]
+  ],
+  "blockingEffects": ["fedhoney"]
 }

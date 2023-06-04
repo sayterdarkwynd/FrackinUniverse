@@ -1,0 +1,72 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "bow" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {},
+          "loosed" : {}
+        }
+      }
+    },
+
+    "parts" : {
+      "bow" : {
+        "properties" : {
+          "zLevel" : 1,
+          "centered" : true,
+	  "offset" : [0.625, 0.0],
+          "transformationGroups" : ["weapon"]
+        },
+        "partStates" : {
+          "bow" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:<drawFrame>"
+              }
+            },
+            "loosed" : {
+              "properties" : {
+                "image" : "<partImage>:1"
+              }
+            }
+          }
+        }
+			},
+			"bowFullbright" : {
+				"properties" : {
+					"zLevel" : 2,
+					"centered" : true,
+					"fullbright" : true,
+					"offset" : [0.625, 0.0],
+					"transformationGroups" : ["weapon"]
+        },
+        "partStates" : {
+          "bow" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:<drawFrame>"
+              }
+            },
+            "loosed" : {
+              "properties" : {
+                "image" : "<partImage>:1"
+              }
+            }
+          }
+        }
+			}
+	  }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {}
+  },
+
+  "sounds" : {
+    "draw" : [ "/sfx/gun/nebsrngbows_draw1.ogg", "/sfx/gun/nebsrngbows_draw2.ogg", "/sfx/gun/nebsrngbows_draw3.ogg", "/sfx/gun/nebsrngbows_draw4.ogg", "/sfx/gun/nebsrngbows_draw5.ogg", "/sfx/gun/nebsrngbows_draw6.ogg" ],
+    "ready" : [ "/sfx/gun/randombow_fulltensionping.ogg" ],
+    "release" : [ "/sfx/gun/bow_loose.ogg" ],
+    "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+  }
+}

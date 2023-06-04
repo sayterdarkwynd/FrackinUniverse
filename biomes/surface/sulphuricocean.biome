@@ -1,19 +1,19 @@
 {
   "name" : "sulphuricocean",
   "friendlyName" : "Sulphuric",
-  "statusEffects" : [ "ffextremesulphuric"  ],
-  "airless" : true,
+  "statusEffects" : [ "sulphuricweathernew", "biomeairless" ],
   "breathable" : false,
   "spawnProfile" : {
     "groups" : [
       {
-        "select" : 1,
-        "pool" : [ 
-          [ 0.1111, "sulphurtroll" ]
+        "select" : 2,
+        "pool" : [
+          [ 0.1111, "sulphurtroll" ],
+          [ 0.09, "ixolingsulphuric" ]
         ]
       },
       {
-        "select" : 1,
+        "select" : 2,
         "pool" : [
           [ 0.4, "fuscorpion" ],
           [ 0.3, "funewt" ]
@@ -43,7 +43,7 @@
             },
             "blacktarImmunity" : {
               "baseValue" : 1.0
-            },            
+            },
             "breathProtection" : {
               "baseValue" : 1.0
             }
@@ -53,7 +53,7 @@
   },
 
   "hueShiftOptions" : [ 0 ],
-  
+
   "weather" : [
     [0, [
       "/weather.config:sulphuric"
@@ -77,12 +77,12 @@
     },
      {
        "mainColor" : [255, 0, 255],
- 
+
        "morningColors" : [ [255, 224, 129], [252, 230, 164] ],
        "dayColors" : [ [255, 152, 107], [255, 183, 152] ],
        "eveningColors" : [ [254, 121, 69], [254, 165, 129] ],
        "nightColors" : [ [60, 0, 0], [20, 0, 0] ],
- 
+
        "morningLightColor" : [202, 177, 100],
        "dayLightColor" : [202, 138, 100],
        "eveningLightColor" : [202, 100, 100],
@@ -115,29 +115,29 @@
       "nightLightColor" : [40, 17, 17]
     }
   ],
-  
-  
+
+
     "mainBlock" : "sulphurdirt",
     "subBlocks" : [ "sulphurstone", "drydirt", "rock20" ],
     "ores" : "ff_surfacesulfurOres",
 
-  "parallax" : "/parallax/surface/sulphuric.parallax",
+  "parallax" : "/parallax/surface/sulphurocean.parallax",
 
   "ambientNoises" : {
     "day" : {
-      "tracks" : [ "/sfx/ambiance/sulphuricambiance2.ogg" ]
+      "tracks" : [ "/sfx/environmental/ocean_surface_calm.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/sfx/ambiance/sulphuricambiance2.ogg" ]
+      "tracks" : [ "/sfx/environmental/ocean_surface_calm.ogg" ]
     }
   },
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/Pure.ogg","/music/MelodyofMisery.ogg","/music/ocean-exploration2.ogg","/music/crystal-exploration1.ogg", "/music/drosera.ogg", "/music/inviolate-loop.ogg", "/music/lava-exploration1.ogg", "/music/ultramarine.ogg", "/music/arctic-constellation1.ogg", "/music/body-electric-loop.ogg", "/music/mercury.ogg", "/music/Nomads.ogg", "/music/psyche.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/Pure.ogg","/music/SomethingIntoDarkness.ogg","/music/ocean-exploration2.ogg","/music/crystal-exploration2.ogg", "/music/desert-exploration2.ogg", "/music/lava-exploration2.ogg", "/music/mira.ogg", "/music/tranquility-base.ogg", "/music/arctic-constellation1.ogg", "/music/body-electric-loop.ogg", "/music/mercury.ogg", "/music/Nomads.ogg", "/music/casiopeia.ogg" ]
     }
   },
 
@@ -154,35 +154,54 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ [0.35, "wildwhitespine" ] ],
+              "pool" : [
+              [0.3, "wildwhitespine" ],
+              [0.2, "emeraseed" ],
+              [0.2, "duskilineseed" ],
+              [0.2, "apaliteseed" ],
+              [0.1, "thanatiteseed" ]
+              ],
               "parameters" : { "startingStage" : 3 }
             }
           ]
         },
-           {
-             "mode" : "floor",
-             "priority" : 1.0,
-             "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
-   
-             "type" : "object",
-             "objectSets" : [
-               {
-                 "pool" : [ 
-              [0.50, "groundspike1" ],
-              [0.50, "groundspike2" ],
-              [0.50, "groundspike3" ],
-              [0.50, "groundspike4" ]
-                 ],
-                 "parameters" : { "startingStage" : 3 }
-               }
-             ]
-           },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -212,6 +231,15 @@
         },
         {
           "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "grass",
+          "grasses" : [ "sulphurpebbles" ]
+        },
+        {
+          "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:ffunCommon",
@@ -237,6 +265,35 @@
         },
         {
           "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "sulphurrocks",
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
+            }
+          ]
+        },
+           {
+             "mode" : "floor",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:ffAverage",
+
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [ [0.20, "sulphuricgroundspike1" ], [0.20, "sulphuricgroundspike2" ], [0.20, "sulphuricgroundspike3" ], [0.20, "sulphuricgroundspike4" ] ],
+                 "parameters" : { }
+               }
+             ]
+           },
+        {
+          "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:potsRare",
@@ -244,8 +301,30 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.65, "geyser_small" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.65, "plynth1" ],
+              [0.65, "plynth2" ],
+              [0.65, "monolith1" ],
+              [0.65, "monolith2" ],
+              [0.65, "monolith3" ],
+              [0.65, "monolith4" ],
+              [0.65, "elderidol" ]
               ],
               "parameters" : { }
             }
@@ -255,6 +334,33 @@
     },
     "undergroundPlaceables" : {
       "items" : [
+           {
+             "mode" : "ceiling",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:ffCommon",
+
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [
+              [0.50, "savannahceilingspike1" ],
+              [0.50, "savannahceilingspike2" ],
+              [0.50, "savannahceilingspike3" ],
+              [0.50, "savannahceilingspike4" ],
+              [0.50, "desertceilingspike1" ],
+              [0.50, "desertceilingspike2" ],
+              [0.50, "desertceilingspike3" ],
+              [0.50, "desertceilingspike4" ],
+              [0.50, "magmaceilingspike1" ],
+              [0.50, "magmaceilingspike2" ],
+              [0.50, "magmaceilingspike3" ]
+
+                 ],
+                 "parameters" : { "startingStage" : 3 }
+               }
+             ]
+           },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -292,7 +398,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.65, "plynth1" ],
               [0.65, "plynth2" ],
               [0.65, "monolith1" ],

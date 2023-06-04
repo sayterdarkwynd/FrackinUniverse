@@ -1,0 +1,27 @@
+[
+	[
+		{ "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+		{ "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+	],
+	[
+	//	{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "tentacleblock" },
+	//	{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "tentaclepipe" },
+	//	{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "cookedtentacle" },
+		{ "op": "replace", "path": "/maxStack", "value": 99 },
+		{
+			"op" : "replace",
+			"path" : "/effects",
+			"value" : [ [ { "effect" : "meat_raw" } ] ]
+		},
+		{
+			"op" : "replace",
+			"path" : "/foodValue",
+			"value" : 20
+		},
+		{
+			"op" : "replace",
+			"path" : "/description",
+			"value" : "A raw tentacle. Might be more edible if it's cooked... ^red;Type: Raw Meat^reset;"
+		}
+	]
+]

@@ -3,18 +3,20 @@
   "animationCustom" : { },
 
   "ability" : {
-    "name" : "Stab",
+    "name" : "Hunter's Thrust",
     "type" : "huntspearstab",
     "scripts" : ["/items/active/weapons/melee/abilities/spear/spearstab.lua"],
     "class" : "SpearStab",
 
-    "fireTime" : 1.0,
-    "baseDps" : 9.5,
+    "fireTime" : 0.5,
+    "baseDps" : 16.5,
+    "energyUsage" : 100.0,
+
     "damageConfig" : {
       "damageSourceKind" : "bow",
-      "statusEffects" : [ ],
+      "statusEffects" : [ "bleedinglong" ],
       "knockbackMode" : "aim",
-      "knockback" : 30,
+      "knockback" : 12,
       "timeoutGroup" : "primary"
     },
     "holdDamageMultiplier" : 0.1,

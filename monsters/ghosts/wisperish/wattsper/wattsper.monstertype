@@ -1,0 +1,241 @@
+{
+  "type" : "wattsper",
+  "shortdescription" : "Wattsper",
+  "description" : "Some believe wattspers are lost spirits. At night their glow can lead explorers astray.",
+
+  "categories" : [ "wattsper" ],
+  "parts" : [ "body" ],
+
+  "animation" : "wattsper.animation",
+
+  "dropPools" : [
+    {
+      "default" : "extraMonsterElectric",
+      "bow" : "extraMonsterElectricHunting",
+      "firebow" : "extraMonsterElectricHunting",
+      "icebow" : "extraMonsterElectricHunting",
+      "poisonbow" : "extraMonsterElectricHunting",
+      "electricbow" : "extraMonsterElectricHunting",
+      "cosmicbow" : "extraMonsterElectricHunting",
+      "radioactivebow" : "extraMonsterElectricHunting",
+      "shadowbow" : "extraMonsterElectricHunting"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "renderLayer" : "foregroundEntity",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 35,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "hurtTime" : 0.25,
+      "hurtWaitForGround" : false,
+
+      "damageTakenActions" : [
+      ],
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 5,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 35,
+            "minimumRange" : 4,
+            "onGround" : false,
+            "windupStopForce" : 50,
+            "windupTime" : 0.8,
+            "projectileType" : "electrocaltrop",
+            "power" : 8,
+            "fireOffset" : [0.0, 0.0],
+            "aimAtTarget" : true,
+            "inaccuracy" : 0.2,
+            "fireState" : "fire",
+            "fireDelay" : 0.1,
+            "winddownState" : "",
+            "winddownTime" : 0.5
+          }
+        }
+
+      ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "usePathfinding" : false,
+            "minRange": 12,
+            "maxRange": 12
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "usePathfinding" : false
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "emerge-fly"
+        }
+      ],
+
+      "concurrentActions" : [ ],
+
+      "concurrentHostileActions" : [
+
+
+       ]
+    },
+
+
+    "touchDamage" : {
+      "poly" : [ [0.25, 0.75], [0.625, 0.375], [0.625, -0.375], [0.25, -0.75], [-0.25, -0.75], [-0.625, -0.375], [-0.625, 0.375], [-0.25, 0.75] ],
+      "damage" : 9,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "electric",
+      "knockback" : 30,
+      "statusEffects" : [ {"effect" : "levitation","duration" : 0.75},{"effect" : "lowgrav", "duration" : 1.5}]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionEnabled" : false,
+      "collisionPoly" : [ [0.25, 0.75], [0.625, 0.375], [0.625, -0.375], [0.25, -0.75], [-0.25, -0.75], [-0.625, -0.375], [-0.625, 0.375], [-0.25, 0.75] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 2.0,
+      "airForce" : 25,
+      "flySpeed" : 8
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 48
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.55
+        },
+        "fireResistance" : {
+          "baseValue" : 0.55
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.2
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0
+        },
+        "shadowResistance" : { "baseValue" : -0.5 },
+        "radioactiveResistance" : { "baseValue" : 0.1 },
+        "cosmicResistance" : { "baseValue" : -0.2 }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "wattsper" }
+  }
+}

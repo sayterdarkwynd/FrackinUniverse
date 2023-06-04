@@ -1,0 +1,28 @@
+{
+  "itemName": "plutoniumcookie",
+  "rarity": "Legendary",
+  "price": 255,
+  "category": "preparedFood",
+  "inventoryIcon": "plutoniumcookie.png",
+  "description": "Plutonium-enriched cookies. Probably dangerous. \n^pink;Extreme Radiation ^cyan;Immunity ^gray;(^white;5m^gray;)\n^green;Heal ^white;575 ^gray;(^white;5m^gray;)^reset;",
+  "shortdescription": "Plutonium Cookie",
+  "effects": [
+    [
+      {
+        "effect": "honeyheal4",
+        "duration": 300
+      },
+      {
+        "effect": "ffextremeradiationimmunityicon",
+        "duration": 300
+      }
+    ]
+  ],
+  "foodValue": 55,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1.0,
+  "blockingEffects": ["wellfed"]
+}

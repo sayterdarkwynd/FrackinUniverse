@@ -1,0 +1,98 @@
+{
+  "itemName" : "penumbritehammer",
+  "price" : 140,
+  "maxStack" : 1,
+  "level" : 3,
+  "rarity" : "uncommon",
+  "description" : "Shadowy impacts, deadly fun.
+^cyan;Universal Damage^reset;",
+  "shortdescription" : "Penumbral Hammer",
+  "tooltipKind" : "sword2",
+  "category" : "hammer",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","hammer","penumbrite","upgradeableWeapon","silver"],
+  "inventoryIcon" : "penumbritehammer.png",
+  "animation" : "hammerglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "penumbritehammer.png",
+    "bladefullbright" : "penumbritehammerfullbright.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+	      "swoosh" : {
+		"properties" : {"offset" : [-1, 2]}
+	      },
+	      "blade" : {
+		"properties" : {"offset" : [-1, 0]}
+	      },
+	      "bladefullbright" : {
+		"properties" : {"offset" : [-1, 0]}
+	      }
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "silverweapon",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 0.75,
+    "baseDps" : 13,
+    "damageConfig" : {
+       "damageSourceKind" : "silverweapon"
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -10,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0.5, 1.75]
+      },
+      "windup" : {
+        "duration" : 0.8,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0.4, 1.75],
+
+        // Windup animation
+        "idleHammerAngle" : -10,
+        "windupHammerAngle" : 0,
+        "dropHammerAngle" : 60,
+        "bounceHammerAngle" : 55,
+
+        "minWindup" : 0.7,
+        "windupBaseAngle" : -10,
+        "windupAngleRange" : 70
+      },
+      "preslash" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "weaponOffset" : [0.4, 2.0]
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -35,
+        "weaponRotation" : -55,
+        "smashTimer" : 1.5,
+        "weaponOffset" : [0.6, 2.0]
+      }
+    }
+  },
+
+  "altAbilityType" : "elementalaura",
+  "altAbility" : { },
+
+  "critChance" : 4,
+  "critBonus" : 7,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "stunChance" :15
+}

@@ -1,0 +1,214 @@
+[
+  {
+    "op": "add",
+    "path": "/dropPools/0/firebow",
+    "value": "snuffishHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/icebow",
+    "value": "snuffishHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/poisonbow",
+    "value": "snuffishHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/electricbow",
+    "value": "snuffishHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/radioactivebow",
+    "value": "snuffishHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/cosmicbow",
+    "value": "snuffishHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/shadowbow",
+    "value": "snuffishHunting"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-fire",
+        "cooldown": 4,
+        "parameters": {
+          "requireLineOfSight": true,
+          "maximumRange": 20,
+          "minimumRange": 5,
+          "windupState": "",
+          "windupTime": 0,
+          "projectileType": "pandorasboxsnuffishspit2",
+          "projectileCount": 3,
+          "fireOffset": [
+            0.6,
+            0.125
+          ],
+          "aimAtTarget": true,
+          "fireState": "fire",
+          "fireDelay": 0.3,
+          "projectileInterval": 0.4,
+          "fireSound": "fire",
+          "projectileSpeed": 50,
+          "winddownState": "",
+          "winddownTime": 2
+        }
+      },
+      {
+        "name": "action-hop",
+        "cooldown": 4.5,
+        "parameters": {
+          "verticalSpeed": 20,
+          "horizontalSpeed": 45,
+          "hopSequence": 1,
+          "windupTime": 0.1,
+          "landTime": 0.1,
+          "hopAwayFromWall": false,
+          "wallVerticalSpeed": 35
+        }
+      }
+    ]
+  },
+  {
+    "op": "remove",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/fireArc"
+  },
+  {
+    "op": "remove",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/gravityMultiplier"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/minimumRange",
+    "value": 5
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/projectileType",
+    "value": "pandorasboxsnuffishspit2"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/1/cooldown/0",
+    "value": 1
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/1/cooldown/1",
+    "value": 2.5
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/1/parameters/verticalSpeed",
+    "value": 40
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/1/parameters/horizontalSpeed",
+    "value": 15
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/hostileActions/-",
+    "value": {
+      "name": "action-hop",
+      "cooldown": [
+        1,
+        1.5
+      ],
+      "parameters": {
+        "verticalSpeed": 25,
+        "horizontalSpeed": 15,
+        "hopSequence": 2,
+        "windupTime": 0.1,
+        "landTime": 0.1,
+        "hopAwayFromWall": false,
+        "wallVerticalSpeed": 35
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/hostileActions/-",
+    "value": {
+      "name": "action-hop",
+      "cooldown": [
+        0,
+        0.05
+      ],
+      "parameters": {
+        "verticalSpeed": 20,
+        "horizontalSpeed": 10,
+        "hopSequence": 3,
+        "windupTime": 0.1,
+        "landTime": 0.1,
+        "hopAwayFromWall": false,
+        "wallVerticalSpeed": 35
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/periodicActions/0/cooldown/0",
+    "value": 0.1
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/periodicActions/-",
+    "value": {
+      "name": "action-hop",
+      "cooldown": [
+        0.15,
+        0.2
+      ],
+      "parameters": {
+        "verticalSpeed": 25,
+        "horizontalSpeed": 15,
+        "hopSequence": 2,
+        "windupTime": 0.1,
+        "landTime": 0.1,
+        "hopAwayFromWall": false,
+        "wallVerticalSpeed": 35
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/touchDamage/damage",
+    "value": 8
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/movementSettings/liquidImpedance",
+    "value": 0
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/colors",
+    "value": "pandorasboxvibrant"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 60
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/physicalResistance/baseValue",
+    "value": 0.4
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/iceResistance/baseValue",
+    "value": 0.95
+  }
+]

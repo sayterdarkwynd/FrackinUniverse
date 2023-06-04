@@ -1,0 +1,57 @@
+{
+  "objectName" : "zerchesiumdesk",
+  "colonyTags" : ["storage","commerce", "zerchesium"],
+  "rarity" : "Common",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "A desk made from Zerchesium. It's very cold.",
+  "shortdescription" : "Zerchesium Desk",
+  "race" : "generic",
+  "category" : "storage",
+  "price" : 120,
+  "lightColor" : [255, 249, 140],
+  "health" : 1.5,
+
+  "apexDescription" : "A desk. It seems functional.",
+  "avianDescription" : "A nice enough looking desk.",
+  "floranDescription" : "A dessk!",
+  "glitchDescription" : "Impassive. It is a desk.",
+  "humanDescription" : "A desk. It seems okay.",
+  "hylotlDescription" : "A basic desk. It is not to my tastes.",
+  "novakidDescription" : "A desk. For those who like to sit down and write stuff.",
+
+  "inventoryIcon" : "zerchesiumdeskicon.png",
+	"orientations" : [
+    {
+      "imageLayers" : [ { "image" : "zerchesiumdesk.png:<color>", "fullbright" : true }, { "image" : "zerchesiumdesklit.png:<color>" } ],
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "zerchesiumdesk.png:<color>", "fullbright" : true }, { "image" : "zerchesiumdesklit.png:<color>" } ],
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/bunkercabinet_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/bunkercabinet_close.ogg" ],
+  "slotCount" : 9,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+
+}

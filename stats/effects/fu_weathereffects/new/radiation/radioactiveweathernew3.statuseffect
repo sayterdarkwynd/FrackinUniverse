@@ -1,0 +1,52 @@
+{
+	"name" : "radioactiveweathernew3",
+
+	"effectConfig" : {
+		"resistanceTypes" : {
+			"radioactiveResistance" : 1.0
+		},
+		"resistanceThreshold" : 0.6,
+		"immunityStats" : [
+			"ffextremeradiationImmunity"
+		],
+
+		"healthDrain" : 5,
+		"hungerDrain" : 0,
+		"energyDrain" : 0,
+		"speedPenalty" : 0,
+		"jumpPenalty" : 0,
+
+		"debuffRate" : 3,
+		"debuffStartDelay" : 0,
+		"debuffs" : {
+			"maxHealth" : {
+				"amount" : -7.0
+			},
+			"maxEnergy" : {
+				"amount" : -7.0,
+				"cap" : -1
+			}
+		},
+
+		"modifiers" : {
+			"windy" : 1.2
+		},
+
+		"messages" : {
+			"intro" : "biomeradiation",
+			"windy" : "ffbiomeradiationwind"
+		},
+
+		"configPath" : "/stats/effects/fu_weathereffects/new/radiation/radioactiveweathernew3.statuseffect"
+	},
+	"defaultDuration" : 20,
+
+	"scripts" : [
+		"radioactiveweathernew.lua"
+	],
+
+	"animationConfig" : "radioactiveweathernew.animation",
+
+	"label" : "Extreme Radiation (Resist: ^#83bb1d;Radioactive^reset;)",
+	"icon" : "/interface/statuses/radiation3.png"
+}

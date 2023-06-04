@@ -1,0 +1,45 @@
+{
+  "objectName" : "hiddenproximityscanner",
+  "colonyTags" : ["wired"],
+  "printable" : true,
+  "rarity" : "Common",
+  "category" : "wire",
+  "price" : 80,
+  "description" : "Stealthily watch for anything nearby",
+  "shortdescription" : "Hidden Proximity Scanner",
+  "race" : "generic",
+
+  "apexDescription" : "It's a proximity device. It'll sense when I get close to it.",
+  "avianDescription" : "A hidden proximity device. It could trigger something if I'm near.",
+  "floranDescription" : "Sssecret eye on the wall. It can ssee!",
+  "glitchDescription" : "Suspicious. This proximity scanner might be aware of me.",
+  "humanDescription" : "A proximity sensor. It can tell when I'm near.",
+  "hylotlDescription" : "This scanning device can tell when I'm present.",
+  "novakidDescription" : "A proximity scanner. Is it watching me right now?",
+
+  "inventoryIcon" : "scannericon.png",
+  "orientations" : [
+    {
+      "image" : "hiddenproximityscanner.png:<color>.off",
+      "imagePosition" : [0, 0],
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/proximitysensor/proximitysensor.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle.animation",
+  "animationParts" : {
+    "switch" : "hiddenproximityscanner.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "outputNodes" : [ [0, 0] ],
+
+  "interactive" : false,
+
+  "detectDuration" : 3,
+  "detectEntityTypes" : [ "creature" ],
+  "detectArea" : [ [0.5, 0.5], 3 ]
+}

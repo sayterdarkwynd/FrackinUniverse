@@ -1,0 +1,72 @@
+[
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/idle/properties",
+    "value": {
+      "persistentSound": "/sfx/npc/monsters/pandorasboxpyromantle_idle_loop.ogg"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/fly/properties",
+    "value": {
+      "persistentSound": "/sfx/npc/monsters/pandorasboxpyromantle_idle_loop.ogg"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/firewindup",
+    "value": {
+      "frames": 4,
+      "cycle": 0.25,
+      "mode": "loop"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/fire/properties",
+    "value": {
+      "persistentSound": "/sfx/npc/monsters/pandorasboxpyromantle_idle_loop.ogg"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/sounds/fire",
+    "value": [
+      "/sfx/npc/monsters/pandorasboxpyromantle_fire.ogg"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/body/properties/fullbright",
+    "value": true
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/body/partStates/body/firewindup",
+    "value": {
+      "properties": {
+        "image": "<partImage>:fly.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/lights",
+    "value": {
+      "glow": {
+        "active": true,
+        "position": [
+          0,
+          0
+        ],
+        "color": [
+          255,
+          166,
+          52
+        ],
+        "pointLight": true
+      }
+    }
+  }
+]

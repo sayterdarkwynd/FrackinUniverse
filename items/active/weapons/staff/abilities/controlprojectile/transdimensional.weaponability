@@ -1,0 +1,24 @@
+{
+  "ability" : {
+    "type" : "transdimensional",
+    "name" : "Shadow Blades",
+    "scripts" : ["/items/active/weapons/staff/abilities/controlprojectile/plasmabarrage.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 100,
+
+    "maxCastRange" : 50,
+
+    "projectileCount" : 24,
+    "projectileDistance" : 2.45,
+    "projectileType" : "shadowblade",
+    "projectileParameters" : {
+      "baseDamage" : 20,
+	  "statusEffects":["bleeding05","shadowgasfx"]
+    },
+    "triggerSound" : ["/sfx/weapons/darknessblast.ogg"],
+
+    "projectileDelayFirst" : 1,
+    "projectileDelayEach" : 0.05
+  }
+}

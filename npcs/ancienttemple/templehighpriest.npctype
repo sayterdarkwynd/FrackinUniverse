@@ -1,0 +1,71 @@
+{
+  "type" : "templehighpriest",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "templeguardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "A sacrifice presents itself!",
+            "How fortuitous. Usually a sacrifice won't present itself so readily!",
+            "You dishonour Kluex!",
+            "You are unwelcome, stranger!",
+            "Today, Kluex claims another soul!",
+            "The wrath of Kluex will fall upon you!",
+            "The power of Kluex compels me to slay you!"
+          ]
+        },
+        "avian" : {
+          "default" : [
+            "Filthy Grounded scum! Today, you die!",
+            "Rend the unbeliever limb from limb!",
+            "Your disbelief will be your undoing!",
+            "I’ll kill you myself, scum!",
+            "Your disregard towards our mighty Kluex is despicable!",
+            "By Kluex be purged!",
+            "I... I must destroy you, heretic! I have no choice!"
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+    "runSpeed" : 18,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    }
+  },
+
+    "statusControllerSettings" : {
+    "stats" : {
+	      "powerMultiplier" : {
+        "baseValue" : 2.0
+      },
+      "maxHealth" : {
+        "baseValue" : 200.0
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "aviantier6mhead", "parameters" : { "colorIndex" : 6 } } ],
+            "chest" : [ { "name" : "aviantier6mchest", "parameters" : { "colorIndex" : 6 } } ],
+            "legs" : [ { "name" : "aviantier6mpants", "parameters" : { "colorIndex" : 6 } } ],
+			"back" : [ { "name" : "aviangodwingsback", "parameters" : { "colorIndex" : 6 } } ],
+            "primary" : [
+              "npcspear"
+            ]
+          }
+        ] ]
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "itemName" : "penumbriterapier",
+  "price" : 110,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Swiftly kills with shadowy promise.
+^cyan;Universal Damage^reset;",
+  "shortdescription" : "Penumbral Rapier",
+  "tooltipKind" : "sword2",
+  "category" : "Rapier",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "melee", "rapier", "penumbrite", "upgradeableWeapon" ,"silver"],
+ // "handGrip" : "wrap",
+  "inventoryIcon" : "penumbriterapier.png",
+
+  "animation" : "piercecomboglow.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "penumbriterapier.png",
+    "bladefullbright" : "penumbriterapierfullbright.png"
+  },
+  "animationCustom" : { },
+  "critChance" : 1,
+  "critBonus" : 1,
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "silverweapon",
+
+  "primaryAbilityType" : "piercecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.4,
+    "baseDps" : 5,
+    "damageConfig" : {
+      "damageSourceKind":"silverweapon"
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,15 +1,16 @@
 {
   "itemName" : "bonespur",
-  "price" : 100,
+  "price" : 10,
   "maxStack" : 1,
-  "rarity" : "rare",
+  "rarity" : "common",
   "category" : "boomerang",
-  "description" : "A cheery little maiming device. Keep out of children.",
+  "description" : "A cheery little maiming device. Keep out of children.
+^cyan;Floran^reset;",
   "shortdescription" : "Bone Spur",
-  "tooltipKind" : "base",
+  "tooltipKind" : "boomerang",
   "twoHanded" : false,
-  "itemTags" : ["weapon"],
-
+  "itemTags" : ["weapon","boomerang", "upgradeableWeapon","bone","floran"],
+  //"collectablesOnPickup" : { "fu_weaponbomerang" : "bonespur" },
   "inventoryIcon" : "bonespur.png",
   "animation" : "boomerang.animation",
   "animationParts" : {
@@ -20,9 +21,12 @@
   "fireOffset" : [1.25, 0.5],
   "fireAngleOffset" : 5,
 
+  "critChance" : 5,
+  "critBonus" : 6,
+
   "projectileType" : "bonespur",
   "projectileParameters" : {
-    "power" : 4.2,
+    "power" : 5,
     "knockback" : 12,
 
     "ignoreTerrain" : false,
@@ -70,5 +74,6 @@
       "allowRotate" : false,
       "allowFlip" : true
     }
-  }
+  },
+  "builder" : "/items/buildscripts/buildboomerang.lua"
 }

@@ -1,23 +1,19 @@
 {
-  "itemName" : "kirifruit",
-  "price" : 5,
-  "rarity" : "Common",
-  "inventoryIcon" : "avaliproduce1.png",
-  "description" : "The fruiting body of a subterranean slime mold. Heals in darkness.",
-  "shortdescription" : "Kiri Fruit",
-  "handPosition" : [3, 0],
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 1,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-    "darkregenproduce"
-  ] ],
-  "blockingEffects" : [
-    "wellfed"
-  ]
+	"itemName": "kirifruit",
+	"inventoryIcon": "avaliproduce1.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "The fruiting body of a subterranean slime mold.\n^yellow;^reset;^cyan;Heal in Darkness 250.25%-252.5% HP^reset;: 5m",
+	"shortdescription": "Kiri Fruit [FU]",
+
+	"handPosition": [3, 0],
+	"effects": [
+		[{
+			"effect": "darkregenproduce",
+			"duration": 300
+		}]
+	]
 }

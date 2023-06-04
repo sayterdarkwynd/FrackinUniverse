@@ -1,9 +1,15 @@
 {
-  "name" : "shadowgasimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "shadowgasimmunity.lua"
-  ]
+  "name" : "shadowgasImmunity",
+ 	"effectConfig": {
+		"stats": [
+			{
+				"stat": "shadowgasImmunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

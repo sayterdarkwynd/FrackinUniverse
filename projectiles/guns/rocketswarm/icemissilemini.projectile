@@ -1,0 +1,29 @@
+{
+  "projectileName" : "icemissilemini",
+  "image" : "icemissilemini.png",
+  "physics" : "rocket",
+  "animationCycle" : 0.25,
+  "speed" : 65,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "fallSpeed" : 0,
+  "lightColor" : [25, 25, 180],
+  "pointLight" : true,
+  "power" : 0,
+  "level" : 3,
+  "damageKind" : "ice",
+  "piercing" : false,
+  "emitters" : [ "iceplasma" ],
+  "knockback" : 15,
+  "knockbackDirectional" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/iceexplosion1/iceexplosion1z.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/beamex2.wav" ]
+    }
+  ]
+}

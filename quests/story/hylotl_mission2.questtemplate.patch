@@ -1,0 +1,13 @@
+[
+	[
+		{"op": "add","path": "/rewards/0/-","value": ["hylotlartifactaugment",1]}
+	],
+	[
+		{"op": "test","path": "/scriptConfig/giveBlueprints","inverse":true},
+		{"op": "add","path": "/scriptConfig/giveBlueprints","value":[]}
+	],
+	[
+		{"op": "test","path": "/scriptConfig/giveBlueprints"},
+		{"op": "add","path": "/scriptConfig/giveBlueprints/-","value":"hylotlartifactaugment"}
+	]
+]

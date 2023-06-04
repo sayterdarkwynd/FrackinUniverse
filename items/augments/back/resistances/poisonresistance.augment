@@ -1,0 +1,22 @@
+{
+  "itemName" : "poisonresistanceaugment",
+  "price" : 500,
+  "rarity" : "Uncommon",
+  "category" : "eppAugment",
+  "inventoryIcon" : "poisonresist.png",
+  "description" : "An EPP module that resists various Poisons.\n^green;+25% Poison Resist.\nPoison, Proto-Poison, and Bio-ooze Immunity^reset;.",
+  "shortdescription" : "Poison Barrier",
+  "tooltipKind" : "eppaugment",
+  "tooltipFields" : {"instructionLabel":""},
+  "augment" : {
+    "type" : "back",
+    "name" : "poisonresistanceaugment",
+    "displayName" : "Poison Barrier",
+    "displayIcon" : "/items/augments/back/resistances/poisonresist.png",
+    "effects" : [ "poisonblock","protoimmunity","biooozeimmunity" ]
+  },
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/scripts/augments/augment.lua" ]
+}

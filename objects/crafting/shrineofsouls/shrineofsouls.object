@@ -1,0 +1,39 @@
+{
+	"objectName" : "shrineoflostsouls",
+	"colonyTags" : ["effigium","odd"],
+	"printable" : false,
+	"rarity" : "legendary",
+	"category" : "crafting",
+	"price" : 125,
+	"description" : "An altar dedicated to the souls of the lost.",
+	"shortdescription" : "Shrine of Lost Souls",
+	"race":"generic",
+
+	"interactAction": "OpenCraftingInterface",
+	"interactData": {
+		"config": "/interface/windowconfig/craftingesoteric.config",
+		"filter": ["shrineofsouls"],
+		"paneLayoutOverride": {
+			"windowtitle": {
+				"title": "Shrine of Lost Souls"
+			}
+		}
+	},
+	"inventoryIcon" : "shrineofsouls.png:default.0",
+	"orientations" : [
+		{
+			"dualImage" : "shrineofsouls.png:<color>.<frame>",
+			"imagePosition" : [-24, 0],
+			"frames" : 3,
+			"animationCycle" : 0.4,
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+
+		}
+	],
+	"scripts":["shrinepetspawn.lua"],
+	"shrineSpawnList":["fughostlostcat","fughostlostbunny","fughostlostcrasberry","fughostlostorbis","fughostpiglett","fughostlostsnake","fughostlostsnugget","fughostlostweasel"],
+	"shrineSpawnChance":10,
+	"shrineSpawnInterval":60
+}

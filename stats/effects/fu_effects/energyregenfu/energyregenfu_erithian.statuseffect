@@ -1,17 +1,19 @@
 {
-  "name" : "energyregenfu_erithian",
-  "effectConfig" : {
-    "regenAmount" : 1.3,
-    "regenBlockAmount" : 8
-  },
-  "defaultDuration" : 1,
-
-  "scripts" : [
-    "energyregenfu.lua"
-  ],
-
-  "animationConfig" : "energyregenfu.animation",
-
-  "label" : "E.Regen 7",
-  "icon" : "/interface/statuses/energyregen2.png"
+	"name": "energyregenfu_erithian",
+	"effectConfig": {
+		"stats": [{
+				"stat": "energyRegenPercentageRate",
+				"baseMultiplier": 1.1
+			},
+			{
+				"stat": "energyRegenBlockTime",
+				"baseMultiplier": 0.95
+			}
+		]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
+	"animationConfig": "energyregenfu.animation"
 }

@@ -1,0 +1,24 @@
+{
+  "projectileName" : "precursorstarterb5bow",
+  "image" : "isn_plasmabeamshot2.png",
+  "physics" : "laser",
+  "animationCycle" : 0.3,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 5,
+  "fullbright" : true,
+  "speed" : 125,
+  "timeToLive" : 0.25,
+  "piercing" : false,
+  "supportsProcessing" : true,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [11, 159, 205],
+  "damageKind" : "electricbow",
+
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/fublueorbBoom/fublueorbboom.config"
+    }
+  ],
+  "emitter" : [ "electricplasma" ]
+}

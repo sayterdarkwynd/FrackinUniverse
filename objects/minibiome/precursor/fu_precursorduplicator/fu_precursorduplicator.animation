@@ -1,0 +1,63 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "base" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1
+          },
+          "on" : {
+            "frames" : 80,
+            "cycle" : 3,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/objects/mechcrafting_loop.ogg",
+              "persistentSoundRangeMultiplier" : 0.5,
+              "persistentSoundStopTime" : 0.25,
+              "immediateSoundRangeMultiplier" : 0.5
+            },
+            "frameProperties" : {
+              "immediateSound" : [
+
+              "", "", "", "", "", "", "", "", "","",
+              "", "", "", "", "/sfx/tech/mech_activate2.ogg", "/sfx/interface/beep-attention.ogg", "", "", "","",
+              "", "", "", "", "", "", "", "", "","",
+              "", "", "", "", "", "", "", "", "","",
+              "", "", "", "", "", "", "", "", "","",
+              "", "", "", "", "", "", "", "", "","",
+              "/sfx/tech/mech_activate4.ogg", "", "", "", "", "", "", "", "","/sfx/tech/mech_deactivate.ogg",
+              "", "", "", "", "", "", "", "", "","",""]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+
+      "base" : {
+	"properties" : {
+	  "centered" : false,
+	  "zLevel" : 1,
+	  "fullbright" : false
+	},
+        "partStates" : {
+          "base" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:default.default"
+              }
+            },
+
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:default.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

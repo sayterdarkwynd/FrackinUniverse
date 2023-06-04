@@ -1,0 +1,37 @@
+{
+  "name" : "longjump2",
+  "type" : "legs",
+
+  "scripts" : ["longjump2.lua"],
+  "animator" : "longjump2.animation",
+
+  "description" : "Stronger Power Jump with post-jump microbursts.",
+  "shortDescription" : "Flutter Jump",
+  "rarity" : "rare",
+  "icon" : "/tech/longjump2.png",
+
+  "chipCost" : 4,
+
+  "multiJumpCount" : 1,
+
+  "jumpSpeedMultiplier" : 1.75,
+  "fallGravityMultiplier" : 0.7,
+  "fallDamageMultiplier" : 0.7,
+  "flutterXVelocity" : 20,
+  "flutterYVelocity" : 20,
+  "flutterTime": 0.1,
+  "flutterAfterFall" : false,
+  "flutterFall" : true,
+  "wallJumpXVelocity" : 9,
+  "wallGrabFreezeTime" : 0.10,
+  "wallSensors" : [ 1.0, 1.75, 2.5 ],
+  "wallDetectThreshold" : 1,
+  "wallReleaseTime" : 0.15,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 1,
+      "airForce" : 0,
+      "airFriction" : 10
+    }
+  }
+}

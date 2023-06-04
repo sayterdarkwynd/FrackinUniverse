@@ -1,0 +1,55 @@
+{
+  "objectName" : "rasilineseed",
+  "colonyTags" : ["nature"],
+  "rarity" : "Common",
+  "description" : "A holy gem to the Eld'uukhar. Produces severe hallucinations when consumed.",
+  "category" : "seed",
+  "shortdescription" : "Rasiline Crystal Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 360,
+
+  "apexDescription" : "These crystals are incredibly brittle. It would be wise to handle them with care.",
+  "avianDescription" : "These crystals remind me of the ones in our temples.",
+  "floranDescription" : "Floran likesss the pretty gemsss.",
+  "glitchDescription" : "Curious. These crystals are more fragile than they look.",
+  "humanDescription" : "These look pretty.",
+  "hylotlDescription" : "The way they catch the light is beautiful.",
+  "elduukharDescription" : "I shouldn't even be growing this, it's insulting.",
+
+  "lightColor" : [200, 0, 132],
+
+  "inventoryIcon" : "rasilineseedicon.png",
+
+  "tooltipKind" : "seed",
+  "largeImage" : "rasilineseed.png:default.2.4",
+  "orientations" : [
+    {
+      "dualImage" : "rasilineseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+"stages" : [
+    {
+      "duration" : [220, 620]
+    },
+    {
+      "duration" : [920, 1220]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "rasilineHarvest"
+    }
+  ],
+
+  "consumeSoilMoisture" : false
+
+}

@@ -1,0 +1,40 @@
+{
+  "objectName" : "flowerpurple",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "Happy little flowers of purple hue",
+  "shortdescription" : "Purple Flower",
+  "objectType" : "farmable",
+  "printable" : false,
+
+  "inventoryIcon" : "flowericon.png",
+  "largeImage" : "flowerpurple.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "flowerpurple" },
+  "orientations" : [
+    {
+      "dualImage" : "flowerpurple.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [570, 630]
+    },
+    {
+      "duration" : [570, 630]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "flowerpurpleHarvest",
+      "resetToStage" : 1
+    }
+  ],
+  "consumeSoilMoisture" : false,
+  "beeLikeness" : {"bumblebee":1,"oremason":1,"leafcutter":1}
+}

@@ -1,0 +1,65 @@
+{
+  "objectName" : "fu_alternatorgenerator",
+  "rarity" : "common",
+  "colonyTags" : [ "science", "power" ],
+  "category" : "wire",
+  "objectType" : "container",
+  "price" : 200,
+  "description" : "A wood, coal or energiwood burning power source. Generates up to ^orange;4W^reset; power, fuel type determines consumption rate. ^blue;Left Input^reset;: On/Off Switch",
+  "shortdescription" : "^cyan;Alternator Generator^reset;",
+  "race" : "generic",
+  "printable" : false,
+  "tooltipKind" : "base",
+//  "learnBlueprintsOnPickup" : [  "isn_thermalgenerator" ],
+
+  "inventoryIcon" : "fu_alternatorgeneratoricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_alternatorgenerator_base.png",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "fu_alternatorgenerator.animation",
+  "animationParts" : {
+    "screen" : "fu_alternatorgenerator_screen.png",
+    "fans" : "fu_alternatorgenerator_fans.png",
+    "base" : "fu_alternatorgenerator_base.png"
+  },
+  "animationPosition" : [0, 0],
+  "soundEffect" : "/objects/power/fu_alternatorgenerator/fu_alternatorgenerator.wav",
+
+  "slotCount" : 1,
+  "uiConfig" : "/objects/power/fu_alternatorgenerator/fu_alternatorgenerator.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "scripts" : [ "/scripts/fupower.lua","/scripts/fugenerator.lua"],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [2, 2],[0, 2] ],
+  "outputNodes" : [ [2, 1] ],
+
+  "powertype" : "output",
+  "acceptablefuel" : {
+	  "coalore" : 16,
+	  "logblock" : 10,
+	  "energywood" : 50,
+	  "goldenwood" : 20,
+	  "schrodingerscat" : 120000,
+    "alienweirdwood" : 40,
+    "astralwood" : 60,
+    "redwoodbark" : 20,
+    "penumbralbark" : 30
+  },
+  "heat" : [
+    {"minheat" : 90,"animator" : {"screen" : "on","fans" : "on"},"sound" : true,"power" : 4,"light" : [166,166,166]},
+    {"minheat" : 70,"animator" : {"screen" : "on","fans" : "on"},"sound" : true,"power" : 3,"light" : [100,100,100]},
+    {"minheat" : 50,"animator" : {"screen" : "on","fans" : "on"},"sound" : true,"power" : 2,"light" : [100,100,100]},
+    {"minheat" : 30,"animator" : {"screen" : "on","fans" : "on"},"sound" : false,"power" : 1,"light" : [50,50,50]},
+    {"minheat" : 10,"animator" : {"screen" : "on","fans" : "on"},"sound" : false,"power" : 0,"light" : [50,50,50]},
+    {"minheat" : 0,"animator" : {"screen" : "off","fans" : "off"},"sound" : false,"power" : 0,"light" : [0,0,0]}
+  ]
+}

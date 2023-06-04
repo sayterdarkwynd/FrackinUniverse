@@ -4,7 +4,7 @@
   "image" : "/monsters/generated/skills/defaultice.png",
 
   "config" : {
-    "hostileActions" : [ 
+    "hostileActions" : [
       {
         "name" : "action-fire",
         "cooldown" : 4,
@@ -14,13 +14,14 @@
           "maximumRange" : 8,
           "minimumRange" : 2,
           "windupEffect" : "castice",
-          
+
           "fireDelay" : 0.27,
           "projectileType" : "icebreath",
           "projectileParameters" : {
-            "speed" : 20
+            "speed" : 20,
+            "power" : 3
           },
-          "power" : 6,
+          "power" : 3,
           "aimAtTarget" : true,
 
           "projectileCount" : 8,
@@ -32,7 +33,7 @@
 
   "animationParameters" : {
     "sounds" : {
-      "fire" : [ ]
+      "fire" : [ "/sfx/projectiles/ice_barrier_break4.ogg" ]
     }
   }
 }

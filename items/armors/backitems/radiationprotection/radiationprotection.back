@@ -6,23 +6,20 @@
   "rarity" : "Uncommon",
   "pickupQuestTemplates" : [ ],
   "category" : "enviroProtectionPack",
-  "description" : "This upgrade adds radiation neutralization to your EPP's capabilities. Use it on planets with ^red;high radiation levels^reset;.",
+  "description" : "+20% Radiation Resist. Use it on planets with ^cyan;mild radiation levels^reset;.",
   "shortdescription" : "Radiation EPP",
-
+ // "learnBlueprintsOnPickup" : [ "radiationprotectionback2" ],
   "maleFrames" : "back.png",
   "femaleFrames" : "back.png",
   "maxStack" : 1,
-
   "statusEffects" : [
     {
-      "stat" : "biomeradiationImmunity",
-      "amount" : 1.0
+      "stat" : "radioactiveResistance",
+      "amount" : 0.2
     }
   ],
-
   "acceptsAugmentType" : "back",
   "radioMessagesOnPickup" : [ "pickupepp" ],
-
   "colorOptions" : [
     // BLACK
     { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },

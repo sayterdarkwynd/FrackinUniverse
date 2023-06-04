@@ -35,7 +35,7 @@ function turnState.update(dt, stateData)
   -- local toTarget = entity.distanceToEntity(self.target)
   -- toTarget[2] = toTarget[2] + stateData.yOffset
 
-  
+
 
   -- local x = stateData.a * math.cos(phase)
   -- local y = stateData.b * math.sin(phase)

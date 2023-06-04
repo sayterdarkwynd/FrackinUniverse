@@ -1,0 +1,88 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "boosting" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+          },
+          "on" : {
+            "properties" : {
+              "persistentSound" : "/sfx/tech/tech_particlethrust.ogg"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "bulbStance" : {
+      "enabled" : false,
+      "emissionRate" : 0.05,
+      "emissionRateVariance" : 1.5,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "textured",
+            "image" : "/interface/statuses/juuxcharge.png",
+            "size" : 1,
+            "color" : [55, 255, 55, 255],
+            "fade" : 1,
+            "initialVelocity" : [0.0, 0.5],
+            "rotation" : 0,
+            "angularVelocity" : 0,
+            "timeToLive" : 2,
+            "destructionAction" : "shrink",
+            "destructionTime" : 1,
+            "layer" : "back",
+            "variance" : {
+              "initialVelocity" : [1, 0.5],
+              "size" : 0.3,
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          }
+        }
+      ]
+    },
+    "dashParticles" : {
+      "enabled" : false,
+      "emissionRate" : 40.0,
+      "emissionRateVariance" : 7.5,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "textured",
+            "image" : "/interface/statuses/juuxcharge.png",
+            "size" : 1,
+            "color" : [255, 255, 255, 255],
+            "fade" : 0.9,
+            "initialVelocity" : [0.0, 2],
+            "rotation" : 0,
+            "angularVelocity" : 0,
+            "timeToLive" : 1,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.5,
+            "layer" : "back",
+            "variance" : {
+              "initialVelocity" : [1, 0.5],
+              "size" : 0.2,
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "activate" : [ "/sfx/objects/ancientconsole_on.ogg" ],
+    "xibulbActivate" : [ "/sfx/tech/tech_sonicsphere_launch.ogg" ],
+    "xibulbCharge" : [ "/sfx/objects/ancientconsole_on.ogg" ],
+    "recharge" : [ "/sfx/gun/flamethrower_stop.ogg" ]
+  }
+
+}
+

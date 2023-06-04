@@ -1,19 +1,19 @@
 {
-  "itemName" : "jillyroot",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "jillyroot.png",
-  "description" : "Delicious, and healthy. Heals 10% health.",
-  "shortdescription" : "Jilly Root",
-   "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-        "heal_10"
-    ] ]
+	"itemName": "jillyroot",
+	"inventoryIcon": "jillyroot.png",
+	"category": "food",
+	"rarity": "uncommon",
+	"price": 10,
+
+	"description": "^yellow;^reset;^cyan;Heal 30^reset;: 2s",
+	"shortdescription": "Jilly Root",
+
+	"tooltipKind": "food",
+	"effects": [
+		[{
+			"effect": "heal_tier2",
+			"duration": 2
+		}]
+	],
+	"blockingEffects": ["heal_tier2"]
 }

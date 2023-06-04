@@ -1,0 +1,57 @@
+{
+  "objectName" : "weaponupgradeanvil2",
+  "colonyTags" : ["ancient"],
+  "printable" : false,
+  "rarity" : "Legendary",
+  "description" : "Ancient technology capable of enhancing weapons, armor and equipment.",
+  "shortdescription" : "Cosmic Crucible",
+  "race" : "ancient",
+  "category" : "other",
+  "price" : 0,
+  "lightColor" : [186, 20, 188],
+  "hasObjectItem" : false,
+  "unbreakable" : true,
+  "health" : 100000,
+  "smashOnBreak" : true,
+  "consumeOnPickup" : true,
+  "flickerPeriod" : 0.5,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.0,
+  "flickerIntensityVariance" : 0.0,
+
+  "inventoryIcon" : "icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "weaponupgradeanvil.png:<frame>", "fullbright" : true }, { "image" : "weaponupgradeanvillit.png:<frame>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-44, 0],
+      "frames" : 12,
+      "animationCycle" : 2.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "weaponupgradeanvil.png:<frame>", "fullbright" : true }, { "image" : "weaponupgradeanvillit.png:<frame>" } ],
+      "direction" : "right",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-44, 0],
+      "frames" : 12,
+      "animationCycle" : 2.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "rooting" : true,
+  "soundEffect" : "/sfx/objects/scififurnace.ogg",
+  "soundEffectRangeMultiplier" : 1.0,
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/interface/scripted/fu_upgradetable/fu_upgradetable2.config"
+}

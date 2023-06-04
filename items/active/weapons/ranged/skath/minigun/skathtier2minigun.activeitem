@@ -1,0 +1,86 @@
+{
+  "itemName" : "skathtier2minigun",
+  "price" : 250,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "'A high tech minigun that fires plasma rounds.'",
+  "shortdescription" : "Reinforced Skath Minigun",
+  "tooltipKind" : "gun",
+  "category" : "Minigun",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","assaultrifle","upgradeableWeapon"],
+  "level" : 4,
+
+  "inventoryIcon" : [
+    { "image" : "skathtier2minigun.png" }
+  ],
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "skathtier2minigun.png",
+    "barrel" : "",
+			"muzzleFlash": "muzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : ["/sfx/gun/shotgun1.ogg"]
+    }
+  },
+
+		"baseOffset": [0.700, -0.725],
+		"muzzleOffset": [2.4, -0.100],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.075,
+    "baseDps" : 11,
+    "energyUsage" : 25,
+    "projectileCount" : 1,
+    "inaccuracy" : 0.02,
+    "fireType" : "auto",
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "knockback" : 6
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.01,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+	 }
+  },
+  "altAbilityType": "explosiveshot",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

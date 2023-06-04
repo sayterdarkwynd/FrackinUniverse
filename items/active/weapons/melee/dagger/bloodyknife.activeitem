@@ -5,24 +5,25 @@
   "rarity" : "Common",
   "description" : "Covered in blood and creepy carvings",
   "shortdescription" : "Sacrificial Blade",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "dagger",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger"],
+  "itemTags" : ["weapon","melee","dagger","elder", "upgradeableWeapon"],
   "level" : 3,
   "inventoryIcon" : "bloodyknife.png",
-
-  "animation" : "dagger.animation",
+  //"collectablesOnPickup" : { "fu_weapondagger" : "bloodyknife" },
+  "animation" : "daggercombo.animation",
   "animationParts" : {
-    "blade" : "bloodyknife.png",
-    "handle" : ""
+    "handle" : "",
+    "blade" : "bloodyknife.png"
   },
+
   "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [0, 1.75]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_dagger.ogg" ]
+    "animatedParts" : {
+      "parts" : {
+        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "swoosh" : { "properties" : {"offset" : [1, 2]}}
+      }
     }
   },
 
@@ -31,44 +32,17 @@
   "elementalType" : "physical",
 
   "aimOffset" : -1.0,
-
+  "primaryAbilityType" : "daggercombo",
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
-    "class" : "MeleeSlash",
     "fireTime" : 0.3,
     "baseDps" : 9,
     "damageConfig" : {
       "knockback" : 10
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : -10,
-        "weaponOffset" : [0.8, 2.25],
-
-        "allowFlip" : true,
-        "allowRotate" : true
-      },
-      "windup" : {
-        "duration" : 0.05,
-        "armRotation" : -20,
-        "weaponRotation" : -20,
-        "weaponOffset" : [0.8, 2.25],
-
-        "allowFlip" : true,
-        "allowRotate" : false
-      },
-      "fire" : {
-        "duration" : 0.2,
-        "armRotation" : -135,
-        "weaponRotation" : 40,
-        "weaponOffset" : [0.8, 2.5],
-
-        "allowFlip" : true,
-        "allowRotate" : false
-      }
     }
   },
 
+  "critChance" : 2,
+  "critBonus" : 6,
+  "stunChance" : 50,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

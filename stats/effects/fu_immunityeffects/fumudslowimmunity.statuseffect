@@ -1,9 +1,13 @@
 {
-  "name" : "fumudslowimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "fumudslowimmunity.lua"
-  ]
+	"name": "fumudslowimmunity",
+	"effectConfig": {
+		"stats": [{
+			"stat": "fumudslowImmunity",
+			"amount": 1
+		}]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

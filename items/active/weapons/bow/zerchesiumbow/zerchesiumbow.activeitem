@@ -1,0 +1,90 @@
+{
+  "itemName" : "zerchesiumbow",
+  "level" : 3,
+  "price" : 350,
+  "inventoryIcon" : "zerchesiumbowicon.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "tooltipKind" : "bow2",
+  "weaponType" : "Bow",
+  "description" : "Full of frosty menace.
+^cyan;Slows enemies^reset;",
+  "shortdescription" : "Zerchesium Bow",
+  "category" : "bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow", "zerchesium", "upgradeableWeapon"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+  "baseOffset" : [1.0, 1.0],
+  "animation" : "/items/active/weapons/bow/bowglow.animation",
+  "animationParts" : {
+    "bow" : "zerchesiumbowfull.png",
+    "bowFullbright" : "zerchesiumbowfullfullbright.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "bow" : { "properties" : {"offset" : [0, 0]}},
+        "bowFullbright" : { "properties" : { "offset" : [0, 0]}}
+      }
+    },
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    },
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [66, 20, 66],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    }}
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : {
+    "drawTime" : 0.9,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.195,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"energyPerShot" : 32,
+	"holdEnergyUsage" : 12,
+	"airborneBonus" : 1.08,
+    "projectileType" : "zerchesiumarrow",
+    "powerProjectileType" : "chargedzerchesiumarrow",
+    "projectileParameters" : {
+      "power" : 7.2,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 8.25,
+      "piercing" : false
+    }
+  },
+
+  "altAbilityType" : "rngbows_enhancedbowshot",
+  "altAbility" : {
+    "drawTime" : 1.2,				//Time to fully draw the bow
+    "powerProjectileTime" : 0.25,	//After fully drawing, the bow is super-charged for this long
+    "name" : "Ice Beam",
+    "projectileType" : "zerchesiumarrow",
+    "powerProjectileType" : "coldblast2",
+    "projectileParameters" : {
+      "power" : 8.2,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "piercing" : false
+    }
+  },
+  "critChance" : 3,
+  "critBonus" : 6,
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
+}

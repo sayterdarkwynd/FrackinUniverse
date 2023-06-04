@@ -1,0 +1,56 @@
+{
+	"objectName" : "thelusianbox",
+	"colonyTags" : ["thelusian", "musical"],
+	"rarity" : "Common",
+	"category" : "decorative",
+//    "lightColor" : [108, 173, 0],
+	"description" : "A music player, for playing music.",
+	"shortdescription" : "Thelusian Music Player",
+	"race" : "generic",
+
+	"inventoryIcon" : "thelusianboxicon.png",
+	"orientations" : [
+		{
+			"image" : "thelusianbox.png:<color>.<frame>",
+			"imagePosition" : [-12, 0],
+			"animationPosition" : [-12, 0],
+			"animationParts" : {
+				"bg" : "thelusianbox.png",
+				"fg" : "thelusianboxlit.png"
+			},
+			"direction" : "left",
+			"flipImages" : true,
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		},
+		{
+			"image" : "thelusianbox.png:<color>.<frame>",
+			"imagePosition" : [-12, 0],
+			"animationPosition" : [-12, 0],
+			"animationParts" : {
+				"bg" : "thelusianbox.png",
+				"fg" : "thelusianboxlit.png"
+			},
+			"direction" : "right",
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		}
+	],
+
+	"animation" : "racialmboxanimated.animation",
+	"animationParts" : {
+		"bg" : "thelusianbox.png",
+		"fg" : "thelusianboxlit.png"
+	},
+	"animationPosition" : [-8, 0],
+	"interactAction" : "ScriptPane",
+	"interactData" : "/interface/scripted/fm_musicplayer/fm_musicplayer.config",
+
+	"inputNodes" : [ [-1, 0] ],
+	"outputNodes" : [ [1, 0] ],
+
+	"scripts" : [ "/objects/generic/fm_musicplayer/fm_musicplayer.lua"],
+	"scriptDelta" : 7,
+
+	"musicRadius" : 30
+}

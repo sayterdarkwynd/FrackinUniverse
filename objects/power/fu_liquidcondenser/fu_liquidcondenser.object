@@ -1,0 +1,78 @@
+{
+	"objectName": "fu_liquidcondenser",
+	"rarity": "rare",
+	"colonyTags": ["science", "wired", "lab"],
+	"description": "Condenses liquid from biome atmosphere. ^cyan;Requires ^orange;15J^cyan; per action^reset;. ^red;Slower production when stacked^reset;. Scan for Info.",
+	"shortdescription": "^cyan;Liquid Collector^reset;",
+	"race": "generic",
+	"category": "wire",
+	"price": 500,
+	"printable": false,
+//	"learnBlueprintsOnPickup": ["isn_atmoscondenser", "fu_liquidmixer"],
+
+	"scripts": ["isn_resource_generator.lua"],
+	"scriptDelta": 10,
+
+	"animation": "/objects/power/fu_liquidcondenser/isn_resource_generator.animation",
+
+	"animationParts": {
+		"basemachine": "fu_liquidcondenser.png"
+	},
+	"animationPosition": [0, 0],
+
+	"inputNodes": [
+		[1, 1],
+		[2, 1]
+	],
+	"powertype": "input",
+	"isn_requiredPower": 15,
+	"isn_liquidCollector": true,
+	"airWellRange":12,
+
+	"inventoryIcon": "fu_liquidcondenser_inv.png",
+	"orientations": [{
+		"dualImage": "fu_liquidcondenser.png:<color>.idle",
+		"imagePosition": [0, 0],
+		"spaceScan": 0.1,
+		"anchors": ["bottom"],
+		"collision": "platform"
+	}],
+
+	// Outputs per biome
+	"liquids" : {
+		"aethersea": { "liquid": 100, "cooldown": 2 },
+		"astral": { "liquid": 100, "cooldown": 2 },
+		"moon": { "liquid": 49, "cooldown": 2 },
+		"moon_desert": { "liquid": 49, "cooldown": 2 },
+		"moon_shadow": { "liquid": 49, "cooldown": 2 },
+		"moon_stone": { "liquid": 49, "cooldown": 2 },
+		"moon_volcanic": { "liquid": 49, "cooldown": 2 },
+		"moon_toxic": { "liquid": 49, "cooldown": 2 },
+		"atropus": { "liquid": 53, "cooldown": 2 },
+		"atropusdark": { "liquid": 53, "cooldown": 2 },
+		"fugasgiant": { "liquid": 62, "cooldown": 2 },
+		"fugasgiant2": { "liquid": 62, "cooldown": 2 },
+		"fugasgiant3": { "liquid": 62, "cooldown": 2 },
+		"fugasgiant4": { "liquid": 62, "cooldown": 2 },
+		"fugasgiant5": { "liquid": 62, "cooldown": 2 },
+		"bog": { "liquid": 12, "cooldown": 2 },
+		"chromatic": { "liquid": 69, "cooldown": 2 },
+		"crystalmoon": { "liquid": 43, "cooldown": 2 },
+		"nitrogensea": { "liquid": 56, "cooldown": 2 },
+		"infernus": { "liquid": 2, "cooldown": 2 },
+		"infernusdark": { "liquid": 2, "cooldown": 2 },
+		"slimeworld": { "liquid": 13, "cooldown": 2 },
+		"strangesea": { "liquid": 41, "cooldown": 2 },
+		"sulphuric": { "liquid": 46, "cooldown": 2 },
+		"tarball": { "liquid": 42, "cooldown": 2 },
+		"toxic": { "liquid": 3, "cooldown": 2 },
+		"metallicmoon": { "liquid": 52, "cooldown": 3 },
+		"lightless": { "liquid": 100, "cooldown": 3 },
+		"penumbra": { "liquid": 60, "cooldown": 4 },
+		"protoworld": { "liquid": 44, "cooldown": 5 },
+		"irradiated": { "liquid": 47, "cooldown": 2 },
+
+		// Default for any biome that is not supported:
+		"other": { "liquid": 1, "cooldown": 2 }
+	}
+}

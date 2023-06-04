@@ -62,7 +62,43 @@
     }
   },
 
+
   "particleEmitters" : {
+     "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+
+
+    "captureParticles":{
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles":{
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut":{
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn":{
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    }
   },
 
   "effects" : {
@@ -70,6 +106,15 @@
       "type" : "flash",
       "time" : 0,
       "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "lights" : {
+    "glow" : {
+      "active" : true,
+      "position" : [0, 0],
+      "color" : [134, 138, 40],
+      "pointLight" : true
     }
   },
 

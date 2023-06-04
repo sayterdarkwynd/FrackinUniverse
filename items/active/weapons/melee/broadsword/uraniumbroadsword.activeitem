@@ -1,0 +1,43 @@
+{
+  "itemName" : "uraniumbroadsword",
+  "price" : 1600,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Well this seems like a good idea!",
+  "shortdescription" : "Uranium Blade",
+  "tooltipKind" : "sword2",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword","radioactive", "upgradeableWeapon","uranium"],
+
+  "inventoryIcon" : "uraniumbroadsword.png",
+  //"collectablesOnPickup" : { "fu_weaponbroadsword" : "uraniumbroadsword" },
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "uraniumbroadsword.png",
+    "bladefullbright" : "uraniumbroadswordfullbright.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.93,
+    "baseDps" : 10.37,
+    "damageConfig" : {
+      "damageSourceKind": "radioactivebroadsword",
+      "statusEffects" : [ "radiationburn" ]
+    }
+  },
+
+  "altAbilityType" : "travelingslash",
+
+  "critChance" : 2,
+  "critBonus" : 8,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

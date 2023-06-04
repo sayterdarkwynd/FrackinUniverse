@@ -1,0 +1,114 @@
+{
+  "type" : "fubossplanner",
+
+  "scripts" : [
+  	"/stagehands/fubossplanner/fubossplanner.lua"
+  ],
+  "scriptDelta" : 1,
+
+  "dungeonParts" : "/stagehands/bossplanner/dungeonparts.config",
+
+  "bossAbilities" : [
+    "/stagehands/fubossplanner/bossabilities/miniontriggergroup.bossability",
+    "/stagehands/fubossplanner/bossabilities/spawnminiongroup.bossability",
+    "/stagehands/fubossplanner/bossabilities/platformbumpers.bossability",
+    "/stagehands/fubossplanner/bossabilities/grounddash.bossability",
+    "/stagehands/fubossplanner/bossabilities/targeteddash.bossability",
+    "/stagehands/fubossplanner/bossabilities/meleestab.bossability",
+    "/stagehands/fubossplanner/bossabilities/groundhazard.bossability",
+    "/stagehands/fubossplanner/bossabilities/groundslam.bossability",
+    "/stagehands/fubossplanner/bossabilities/targetedprojectile.bossability",
+    "/stagehands/fubossplanner/bossabilities/projectilecircle.bossability",
+    "/stagehands/fubossplanner/bossabilities/beamspin.bossability",
+    "/stagehands/fubossplanner/bossabilities/targetedbeam.bossability",
+    "/stagehands/fubossplanner/bossabilities/bouncingbeam.bossability",
+    "/stagehands/fubossplanner/bossabilities/pogobeam.bossability",
+    "/stagehands/fubossplanner/bossabilities/doublegroundbeam.bossability",
+    "/stagehands/fubossplanner/bossabilities/lowgroundbeam.bossability"
+  ],
+
+  "musicStagehands" : [ "bossmusic" ],
+
+  "vulnerabilityChance" : 0.75,
+
+  "weaponHands" : [
+    "club",
+    "scythe",
+    "sword"
+  ],
+
+  "colorSwaps" : {
+    "fire" : { },
+    "ice" : { "da5302" : "549ec6", "fd8f4d" : "73bad8", "fdd14d" : "99e2f3" },
+    "poison" : { "da5302" : "869e45", "fd8f4d" : "bcd773", "fdd14d" : "e3f4b7" },
+    "electric" : { "da5302" : "6060d6", "fd8f4d" : "8890e3", "fdd14d" : "a1acf7" },
+    "shadow" : { "da5302" : "000000", "fd8f4d" : "444444", "fdd14d" : "111111","634d36" : "111111", "856641" : "222222","a88d62" : "333333", "ded6bf" : "555555", "f6f6f6" : "777777"},
+    "radioactive" : { "da5302" : "869e45", "fd8f4d" : "bcd773", "fdd14d" : "e3f4b7" },
+    "cosmic" : { "da5302" : "6060d6", "fd8f4d" : "8890e3", "fdd14d" : "a1acf7" },
+    "physical" : { }
+  },
+
+  "operators" : {
+    "damageBoost" : {
+      "preconditions" : [
+        ["PlayerBuffed", ["damage"]]
+      ],
+      "postconditions" : [
+        ["Vulnerability", "DamageVulnerability"]
+      ]
+    }
+  },
+
+  "triggers" : {
+    "killMinions" : {
+      "preconditions" : [
+        ["Minion", ["kill"]]
+      ],
+      "postconditions" : [
+        ["!Minion", ["kill"]]
+      ]
+    },
+    "collideMinions" : {
+      "preconditions" : [
+        ["Minion", ["collide"]]
+      ],
+      "postconditions" : [
+        ["!Minion", ["collide"]]
+      ]
+    }
+  },
+
+  "triggerReactions" : {
+    "spawnMinion" : {
+      "scripts" : [ "/stagehands/fubossplanner/minions.lua" ],
+      "callback" : "reactionSpawnMinion",
+      "preconditions" : [
+        ["!Minion", ["kill"]]
+      ],
+      "postconditions" : [
+        ["Minion", ["kill"]]
+      ]
+    },
+    "buffCloud" : {
+      "scripts" : [ "/stagehands/fubossplanner/reactions.lua" ],
+      "callback" : "reactionBuffCloud",
+      "preconditions" : [
+        ["!PlayerBuffed", "buffType"]
+      ],
+      "postconditions" : [
+        ["PlayerBuffed", "buffType"]
+      ]
+    },
+    "spawnPiercingProjectile" : {
+      "scripts" : [ "/stagehands/fubossplanner/reactions.lua" ],
+      "callback" : "reactionSpawnPiercingProjectile",
+      "preconditions" : [
+        ["!Vulnerability", ["piercing"]],
+        ["FloorIn", [[2,1],[3,1],[4,1],[5,1]]]
+      ],
+      "postconditions" : [
+        ["Vulnerability", "PiercingVulnerability"]
+      ]
+    }
+  }
+}

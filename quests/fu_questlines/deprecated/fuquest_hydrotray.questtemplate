@@ -1,0 +1,28 @@
+{
+	"id" : "fuquest_hydrotray",
+	"title" : "Growing Up",
+	"text" : "Let's build a ^orange;Hydroponics Tray^reset; next. You can build it in the ^orange;Power Station^reset; and use it to ^green;quickly grow plants^reset;.",
+	"completionText" : "Set up the lab next. Then, put some ^orange;Water^reset;, a ^green;seed^reset; and a ^green;fertilizer^reset; in the ^orange;Hydroponics Tray^reset; and wait a while for ^green;useful produce^reset;.",
+	"rewards" : [
+		[ [ "cinnabarore", 4] ]
+	],
+	"moneyRange" : [10, 10],
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "player"
+		},
+
+		"requireTurnIn" : false,
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "isn_hydroponicstray",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
+}

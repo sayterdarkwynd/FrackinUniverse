@@ -2,27 +2,28 @@
   "itemName" : "quietusrogue",
   "price" : 640,
   "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "A fine quietus weapon",
+  "rarity" : "rare",
+  "description" : "A fine quietus weapon.",
   "shortdescription" : "Rogue's Blade",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "dagger",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger"],
+  "itemTags" : ["weapon","melee","dagger","quietus", "upgradeableWeapon"],
   "level" : 4,
   "inventoryIcon" : "quietusrogue.png",
-
-  "animation" : "dagger.animation",
+  //"collectablesOnPickup" : { "fu_weapondagger" : "quietusrogue" },
+  "animation" : "daggercombo.animation",
   "animationParts" : {
-    "blade" : "quietusrogue.png",
-    "handle" : ""
+    "handle" : "",
+    "blade" : "quietusrogue.png"
   },
+
   "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [0.0, 1.75]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_dagger.ogg" ]
+    "animatedParts" : {
+      "parts" : {
+        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "swoosh" : { "properties" : {"offset" : [1, 2]}}
+      }
     }
   },
 
@@ -31,44 +32,16 @@
   "elementalType" : "physical",
 
   "aimOffset" : -1.0,
-
+  "primaryAbilityType" : "daggercombo",
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
-    "class" : "MeleeSlash",
-    "fireTime" : 0.25,
+    "fireTime" : 0.3,
     "baseDps" : 8,
     "damageConfig" : {
       "knockback" : 10
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : -10,
-        "weaponOffset" : [0.1, 2.25],
-
-        "allowFlip" : true,
-        "allowRotate" : true
-      },
-      "windup" : {
-        "duration" : 0.05,
-        "armRotation" : -20,
-        "weaponRotation" : -20,
-        "weaponOffset" : [0.1, 2.25],
-
-        "allowFlip" : true,
-        "allowRotate" : false
-      },
-      "fire" : {
-        "duration" : 0.2,
-        "armRotation" : -135,
-        "weaponRotation" : 40,
-        "weaponOffset" : [0.1, 2.5],
-
-        "allowFlip" : true,
-        "allowRotate" : false
-      }
     }
   },
-
+  "critChance" : 2,
+  "critBonus" : 3,
+  "stunChance" : 50,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

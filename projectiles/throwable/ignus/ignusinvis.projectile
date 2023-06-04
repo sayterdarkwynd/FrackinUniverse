@@ -1,0 +1,44 @@
+{
+  "projectileName" : "ignusinvis",
+  "image" : "ignusinvis.png",
+  "animationCycle" : 0.25,
+  "level" : 2,
+  "timeToLive" : 0.01,
+  "physics" : "grenadezbomb",
+  "frameNumber" : 4,
+  "pointLight" : false,
+  "universalDamage" : false,
+  "speed" : 180,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflamemonster",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.2,
+      "angleAdjust" : 35
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflamemonster",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.2,
+      "angleAdjust" : -35
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflamemonster",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.2,
+      "angleAdjust" : 1
+    }
+  ],
+  "statusEffects" : [ "burning" ],
+  "power" : 5.0,
+  "damageKind" : "fire"
+}
+
+

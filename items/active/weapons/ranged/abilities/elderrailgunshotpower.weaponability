@@ -1,0 +1,44 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "altFire" : [ "/sfx/weapons/darknessblast.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Focused Blast",
+    "type" : "elderrailgunshotpower",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "energyUsage" : 100,
+    "baseDps" : 1.6,
+    "fireTime" : 3.0,
+    "inaccuracy" : 0,
+    "fireType" : "auto",
+
+    "projectileType" : [ "elderrailgunshotpower" ],
+    "projectileParameters" : {
+      "speed" : 500,
+      "knockback" : 50
+    },
+
+    "usePrimaryFireSound" : false,
+    "useParticleEmitter" : false,
+    "stances" : {
+      "fire" : {
+        "duration" : 0.02,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true
+      },
+      "cooldown" : {
+        "duration" : 0.02,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true
+      }
+    }
+  }
+}

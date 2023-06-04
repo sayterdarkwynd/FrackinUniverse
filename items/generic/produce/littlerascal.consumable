@@ -1,19 +1,35 @@
 {
-  "itemName" : "littlerascal",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "littlerascal.png",
-  "description" : "Increases health and energy stores.",
-  "shortdescription" : "Little Rascal Herb",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      "maxhealthboost3", "maxenergyboost3"
-    ] ]  
+	"itemName": "littlerascal",
+	"inventoryIcon": "littlerascal.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 10,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+12 HP^reset;, ^cyan;+20 EP^reset;: 3m",
+	"shortdescription": "Little Rascal Herb",
+
+	"effects": [
+		[{
+				"effect": "maxhealthboost3",
+				"duration": 180
+			},
+			{
+				"effect": "maxenergyboost3",
+				"duration": 180
+			}
+		]
+	],
+	"blockingEffects": [
+		"maxhealthboost1",
+		"maxhealthboost2",
+		"maxhealthboost4",
+		"maxhealthboost5",
+		"maxenergyboost1",
+		"maxenergyboost2",
+		"maxenergyboost5",
+		"maxenergyboost4",
+		"maxenergyboost6",
+		"maxenergyboost145"
+	]
 }

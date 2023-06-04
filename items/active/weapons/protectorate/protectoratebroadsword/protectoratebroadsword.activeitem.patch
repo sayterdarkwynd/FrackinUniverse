@@ -1,0 +1,72 @@
+[
+	{"op": "add","path": "/critChance","value": 2},
+	{"op": "add","path": "/critBonus","value": 7},
+	{"op": "replace","path": "/tooltipKind","value": "swordunique"},
+	{"op": "replace","path": "/level","value": 5},
+	{"op": "add","path": "/itemTags/-","value": "upgradeableWeapon"},
+	{"op": "add","path": "/itemTags/-","value": "protectorate"},
+
+	{
+		"op": "add",
+		"path": "/upgradeParameters",
+		"value": {
+			"shortdescription": "^cyan;Master Sword^reset; ^yellow;^reset;",
+			"description": "An exquisite sword.",
+			"animationParts": {
+				"sword": "protectoratebroadsword2.png",
+				"swordfullbright": "protectoratebroadsword2fullbright.png"
+			},
+			"inventoryIcon": [{"image": "protectoratebroadsword2.png:inactive"}],
+			"critChance": 3,
+			"critBonus": 8,
+			"inactiveBaseDps": 11,
+			"activeBaseDps": 15,
+			"primaryAbility": {
+				"fireTime": 0.8,
+				"baseDps": 11
+			}
+		}
+	},
+	{
+		"op": "add",
+		"path": "/upgradeParameters2",
+		"value": {
+			"shortdescription": "^cyan;Power Sword^reset; ^yellow;^reset;",
+			"description": "An exquisite sword.",
+			"animationParts": {
+				"sword": "protectoratebroadsword3.png",
+				"swordfullbright": "protectoratebroadsword3fullbright.png"
+			},
+			"inventoryIcon": [{"image": "protectoratebroadsword3.png:inactive"}],
+			"critChance": 3.5,
+			"critBonus": 10,
+			"primaryAbility": {
+				"fireTime": 0.8,
+				"baseDps": 12
+			},
+			"scripts": ["/items/active/weapons/protectorate/protectoratebroadsword/protectoratebroadsword3.lua"],
+
+			"inactiveFireTime": 0.8,
+			"activeFireTime": 0.45,
+			"inactiveBaseDps": 12,
+			"activeBaseDps": 20,
+			"inactiveDamageSourceKind":"broadsword",
+			"activeDamageSourceKind":"silverweapon",
+
+			"altAbility": {
+				"name": "True Empowerment",
+				"type": "empowerment",
+				"scripts": ["/items/active/weapons/protectorate/protectoratebroadsword/empowerment.lua"],
+				"class": "Empowerment",
+
+				"energyPerSecond": 25,
+
+				"projectileOffset": [1, 0],
+				"projectileType": "energytravelingswoosh",
+				"baseDamage": 30,
+
+				"cooldownTime": 1.0
+			}
+		}
+	}
+]

@@ -1,0 +1,36 @@
+{
+  "objectName" : "pumpinfuelder",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "^cyan;Blue - Connect to signal^reset; ^red;Red - connect to Liquid Outlet^reset;",
+  "shortdescription" : "Elder Mover Input",
+  "race" : "generic",
+  "health" : 2.5,
+  "category" : "wire",
+  "price" : 100,
+
+    "inventoryIcon" : "pumpinfuicon.png",
+    "orientations" : [
+        {
+            "image" : "pumpinfuelder.png:<color>.off",
+            "imagePosition" : [0, 0],
+            "spaceScan" : 0.1,
+            "anchors" : [ "background" ]
+        }
+    ],
+
+  "scripts" : [ "/objects/wired/pumps/fuPumpInput.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/pumps/fuPumpInput.animation",
+
+  "animationParts" : {
+    "inputPump" : "pumpinfuelder.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [0, 0] ],
+  "outputNodes" : [ [1, 0] ],
+  "interval" : 5
+}

@@ -1,0 +1,98 @@
+{
+  "projectileName" : "radioactiveorb",
+  "physics" : "laser",
+  "timeToLive" : 6,
+  "image" : "radioactiveorb.png",
+  "animationCycle" : 0.3,
+  "lightColor" : [150, 150, 0],
+  "frameNumber" : 4,
+    "periodicActions" : [
+    {
+      "time" : 0.4,
+      "action" : "loop",
+      "count" : 5,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/radioactivefx/radioactivefx.animation",
+            "initialVelocity" : [0.0, 7.0],
+            "finalVelocity" : [0.0, 3.0],
+            "approach" : [0.3, 60],
+            "timeToLive" : 0.8,
+            "layer" : "front",
+            "size" : 1.0,
+            "collidesForeground" : true,
+            "variance" : {
+            "position" : [0.5, 0.5],
+            "initialVelocity" : [5, 3],
+            "finalVelocity" : [0, 0],
+            "rotation" : 180,
+            "angularVelocity" : 180
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/statuseffects/radiationburn/radiationburnshort.animation",
+            "initialVelocity" : [0.0, 7.0],
+            "finalVelocity" : [0.0, 3.0],
+            "approach" : [0.3, 60],
+            "timeToLive" : 0.7,
+            "layer" : "back",
+            "size" : 0.7,
+            "collidesForeground" : true,
+            "variance" : {
+            "position" : [0.5, 0.5],
+            "size" : 0.2,
+            "initialVelocity" : [5, 3],
+            "finalVelocity" : [0, 0],
+            "rotation" : 180,
+            "angularVelocity" : 180
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "loop",
+      "count" : 4,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "radioactiveshard"
+        }
+      ]
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/poisonorb_break1.ogg", "/sfx/projectiles/poisonorb_break2.ogg" ]
+    }
+  ],
+  "speed" : 0,
+  "power" : 30,
+  "damageKind" : "radioactiveplasma",
+  "damagePoly" : [ [-10, 0], [-7, -7], [0, -10], [7, -7], [10, 0], [7, 7], [0, 10], [-7, 7] ],
+  "statusEffects" : [ "radiationburn" ],
+  "damageRepeatTimeout" : 0.25,
+
+  "orientationLocked" : true,
+  "fullbright" : true,
+  "emitters" : [ "radioactiveplasma" ],
+
+  "piercing" : true,
+  "bounces" : -1,
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+
+  "controlMovement" : {
+    "maxSpeed" : 15,
+    "controlForce" : 80
+  },
+  "persistentAudio" : "/sfx/projectiles/poisonorb_loop2.ogg"
+}

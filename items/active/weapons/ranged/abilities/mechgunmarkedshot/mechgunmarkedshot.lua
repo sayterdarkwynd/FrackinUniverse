@@ -51,7 +51,7 @@ function setupAltAbility(altAbilityConfig)
   end
 
   function markedShot:fire()
-    local projectileId = self:fireProjectile(self.projectileType, {targets = self.targets})
+    self:fireProjectile(self.projectileType, {targets = self.targets})
 
     self:muzzleFlash()
 
@@ -78,7 +78,7 @@ function setupAltAbility(altAbilityConfig)
     local nearEntities = world.entityQuery(activeItem.ownerAimPosition(), self.targetQueryDistance, { includedTypes = {"monster", "npc", "player"} })
     nearEntities = util.filter(nearEntities, function(entityId)
       if contains(self.targets, entityId) then
-        return false 
+        return false
       end
 
       if not world.entityCanDamage(activeItem.ownerEntityId(), entityId) then

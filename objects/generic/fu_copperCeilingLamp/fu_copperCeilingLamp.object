@@ -1,0 +1,49 @@
+{
+  "objectName" : "fu_copperCeilingLamp",
+  "colonyTags" : ["light"],
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 50,
+  "description" : "A wide ceiling lamp made from copper.",
+  "shortdescription" : "Copper Ceiling Lamp",
+  "race" : "generic",
+
+  "statusEffects" : [ ],
+
+  "lightColor" : [255, 200, 125],
+  "lightPosition" : [0,0],
+  "flickerPeriod" : 0.50,
+  "flickerMinIntensity" : 0.85,
+  "flickerMaxIntensity" : 0.86,
+  "flickerPeriodVariance" : 0.25,
+  "flickerIntensityVariance" : 0.005,
+
+  "inventoryIcon" : "fu_copperCeilingLamp.png:on.1",
+  "orientations" : [
+    {
+      "image" : "fu_copperCeilingLamp.png:off.1",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+
+  "animation" : "/objects/wired/light/lightToggle2.animation",
+  "animationParts" : {
+   "light" : "fu_copperCeilingLamp.png"
+  },
+  "animationPosition" : [ 0,0 ],
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/mechanical_elevator_hit3.ogg" ],
+      "off" : [ "/sfx/objects/mechanical_elevator_hit4.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [1.5, 0.5] ]
+}

@@ -1,0 +1,66 @@
+{
+  "objectName" : "lunaridesklamp",
+  "colonyTags" : ["lunari", "light"],
+  "rarity" : "rare",
+  "category" : "light",
+  "lightColor" : [255, 162, 0],
+  "price" : 300,
+  "description" : "A desk lamp made from lunari.",
+  "shortdescription" : "Lunari Desk Lamp",
+  "race" : "generic",
+
+  "apexDescription" : "An extremely bright desk lamp.",
+  "avianDescription" : "This reminds me of the sun.",
+  "floranDescription" : "Sssunssshine lightsss!",
+  "glitchDescription" : "Uncomfortable. This lamp almost fries my optics.",
+  "humanDescription" : "This desk lamp is like a star!",
+  "hylotlDescription" : "This lamp almost reminds me of the sun.",
+  "novakidDescription" : "This desk lamp is brighter than me!",
+
+  "inventoryIcon" : "lunaridesklampicon.png",
+  "orientations" : [
+    {
+      "image" : "lunaridesklamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "lunaridesklamp.png",
+        "fg" : "lunaridesklamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "lunaridesklamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "lunaridesklamp.png",
+        "fg" : "lunaridesklamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "lunaridesklamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : true,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

@@ -1,0 +1,284 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 1,
+            "cycle" : 0.8,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeup" ],
+              "immediateSound" : "/sfx/npc/monsters/scaveran_idle1.ogg",
+              "immediateSoundRangeMultiplier" : 0.5
+            }
+          },
+          "walk" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeup" ]
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "/sfx/npc/monsters/lilodon_step1.ogg", "", "/sfx/npc/monsters/lilodon_step2.ogg", "", "/sfx/npc/monsters/lilodon_step1.ogg", "", "/sfx/npc/monsters/lilodon_step2.ogg", "" ]
+            }
+          },
+          "jump" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "chargeup" ],
+              "immediateSound" : "/sfx/npc/monsters/scaveran_hop.ogg",
+              "immediateSoundRangeMultiplier" : 0.5
+            }
+          },
+          "hurt" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "chargeup" ]
+            }
+          },
+          "fall" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "chargeup" ]
+            }
+          },
+          "windup" : {
+            "frames" : 4,
+            "cycle" : 2,
+            "properties" : {
+              "particleEmittersOn" : [ "chargeup" ],
+              "immediateSound" : "/sfx/npc/monsters/scaveran_attack.ogg",
+              "immediateSoundRangeMultiplier" : 0.5
+            }
+          },
+          "chargewindup" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "properties" : {
+              "particleEmittersOff" : [ "chargeup" ],
+              "immediateSound" : "/sfx/npc/monsters/scaveran_attack.ogg",
+              "immediateSoundRangeMultiplier" : 0.5
+            } ,
+            "frameProperties" : {
+              "immediateSound" : [ "/sfx/npc/monsters/lilodon_step1.ogg", "", "/sfx/npc/monsters/lilodon_step2.ogg", "" ]
+            }
+          },
+          "charge" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" : "transition",
+            "transition" : "chargewinddown",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeup" ]
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "/sfx/npc/monsters/lilodon_step1.ogg", "", "/sfx/npc/monsters/lilodon_step2.ogg", "" ]
+            }
+          },
+          "chargewinddown" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeup" ]
+            }
+          },
+          "melee" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeup" ]
+            }
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "offset" : [0, 0]
+        },
+        "partStates" : {
+          "body" : {
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:fall.<frame>"
+              }
+            },
+            "windup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:melee.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "particleEmitters" : {
+    "chargeup" : {
+      "emissionRate" : 7,
+      "offsetRegion" : [ -0.4, 0.5, 0.4, 0.2],
+      "particles" : [
+        { "particle" : "firefly" },
+        { "particle" : "firefly" },
+        { "particle" : "firefly" },
+        { "particle" : "castelectric" },
+        { "particle" : "castelectric" }
+      ]
+    },
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
+    "wallCrash" : [ "/sfx/npc/monsters/peblit_drop1.ogg" ],
+    "charge" : [ "/sfx/npc/monsters/scaveran_attack.ogg" ]
+  }
+}

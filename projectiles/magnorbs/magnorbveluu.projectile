@@ -1,0 +1,41 @@
+{
+  "projectileName" : "magnorbveluu",
+  "image" : "magnorbveluu.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 1.5,
+  "speed" : 55,
+  "damageKind" : "electric",
+  "fullbright":true,
+  "physics" : "laser",
+  "bounces" : 0,
+  "piercing" : false,
+  "timeToLive" : 4,
+  "emitters" : [ ],
+  "statusEffects" : [ "slow" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/gun/gristlegun1.ogg","/sfx/gun/gristlegun2.ogg","/sfx/gun/gristlegun3.ogg","/sfx/gun/gristlegun4.ogg" ]
+    }
+  ],
+
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/gun/gristlegun1.ogg","/sfx/gun/gristlegun2.ogg","/sfx/gun/gristlegun3.ogg","/sfx/gun/gristlegun4.ogg" ]
+    }
+  ],
+
+  "scripts" : [ "/projectiles/activeitems/boomerang/boomerangprojectile.lua" ]
+}

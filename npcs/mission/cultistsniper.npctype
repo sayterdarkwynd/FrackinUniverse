@@ -1,0 +1,68 @@
+{
+  "type" : "cultistsniper",
+  "baseType" : "hostile",
+
+  "persistent" : true,
+
+  "dropPools" : [ "cultisttreasure" ],
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+	  "queryRange": 70,
+	  "trackingRange": 70
+    },
+    "dialog" : {
+      "attack" : "/dialog/cultist.config:attack"
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "cultisthead" } ],
+            "chest" : [ { "name" : "cultistchest" } ],
+            "legs" : [ { "name" : "cultistlegs" } ],
+            "primary" : [ "npcsniperrifle" ],
+            "sheathedprimary" : [  "npccultistbroadsword", "npccultistshortsword" ]
+          }
+        ] ],
+      [2, [
+          {
+            "head" : [ { "name" : "cultisthead" } ],
+            "chest" : [ { "name" : "cultistchest" } ],
+            "legs" : [ { "name" : "cultistlegs" } ],
+            "primary" : [ "npcsniperrifle" ],
+            "sheathedprimary" : [  "npccultistbroadsword", "npccultistbroadsword", "fucultistaxe", "fucultistdagger" ]
+          }
+        ] ],
+      [3, [
+          {
+            "head" : [ { "name" : "cultisthead" } ],
+            "chest" : [ { "name" : "cultistchest" } ],
+            "legs" : [ { "name" : "cultistlegs" } ],
+            "primary" : [ "thornrifle" ],
+            "sheathedprimary" : [  "npccultistbroadsword", "npccultistbroadsword", "fucultistaxe", "fucultistdagger", "fucultistspear", "fucultistmace", "spikesword", "quietusrapier", "quietusmace", "quietusaxe" ]
+          }
+        ] ],
+      [4, [
+          {
+            "head" : [ { "name" : "cultisthead" } ],
+            "chest" : [ { "name" : "cultistchest" } ],
+            "legs" : [ { "name" : "cultistlegs" } ],
+            "primary" : [ "thornrifle", "riflequietusfu", "quietussniper" ],
+            "sheathedprimary" : [  "npccultistbroadsword", "npccultistbroadsword", "fucultistaxe", "fucultistdagger", "fucultistspear", "fucultistmace", "spikesword", "quietusrapier", "quietusmace", "quietusaxe", "quietusspear" ]
+          }
+        ] ],
+      [5, [
+          {
+            "head" : [ { "name" : "cultisthead" } ],
+            "chest" : [ { "name" : "cultistchest" } ],
+            "legs" : [ { "name" : "cultistlegs" } ],
+            "primary" : [ "thornrifle", "riflequietusfu", "quietussniper" ],
+            "sheathedprimary" : [  "npccultistbroadsword", "npccultistbroadsword", "fucultistaxe", "fucultistdagger", "fucultistspear", "fucultistmace", "spikesword", "quietusrapier", "quietusmace", "quietusaxe", "quietusspear", "quietusscythe",  "fuatropusbroadsword", "fuatropusdagger", "fuatropusgreataxenpc", "fuatropushammer", "fuatropusscythe", "fuatropusshortsword", "fuatropusspear",  "fucultistscythe" ]
+          }
+        ] ]
+    ]
+  }
+}

@@ -1,18 +1,26 @@
 {
   "name" : "icewastedark",
   "friendlyName" : "Frozen Wastes",
-  "statusEffects" : [ "ffextremecold" ],
-  "airless" : true,
+  "statusEffects" : [ "biomeairless", "ffbiomecold3", "superdarkstatlarge" ],
+
   "breathable" : false,
-  
+  "airless" : true,
+
   "spawnProfile" : {
     "groups" : [
       {
-        "select" : 1,
-        "pool" : [ 
-          [ 0.05, "orbide" ],
-          [ 0.05, "icecrab" ],
-          [ 0.05, "frostgiantscorpion" ]
+        "select" : 2,
+        "pool" : [
+          [ 0.1, "frosttop" ],
+          [ 0.1, "icetroll" ],
+          [ 0.1, "orbide" ],
+          [ 0.1, "frostrotter" ],
+          [ 0.1, "icecrab" ],
+          [ 0.1, "cryopod" ],
+          [ 0.1, "frostlit"],
+          [ 0.1, "coldalabra"],
+          [ 0.2, "glitchtop" ],
+          [ 0.111, "fusnowfennix" ]
         ]
       },
       {
@@ -49,23 +57,25 @@
     }
   },
 
-  "hueShiftOptions" : [ -50, -25, 0, 25, 50 ],
+  "hueShiftOptions" : [0],
 
   "weather" : [
     [0, [
-      "/weather.config:icewaste"
+      "/weather.config:icewaste",
+      "/weather.config:snowywindy",
+      "/weather.config:snowyfrozen",
+      "/weather.config:snowyfrozensevere"
     ]]
   ],
 
   "skyOptions" : [
-//blue tinted, in most cases. some are "very" blue, or "very" white.
     {
       "mainColor" : [45, 45, 85],
 
-      "morningColors" : [ [124, 124, 200], [134, 134, 225] ],
-      "dayColors" : [ [70, 70, 150], [70, 70, 170] ],
-      "eveningColors" : [ [30, 30, 100], [30, 30, 120] ],
-      "nightColors" : [ [14, 14, 75], [14, 14, 90] ],
+      "morningColors" : [ [80, 80, 100], [90, 90, 225] ],
+      "dayColors" : [ [40, 40, 90], [50, 40, 90] ],
+      "eveningColors" : [ [10, 10, 60], [20, 20, 60] ],
+      "nightColors" : [ [0, 0, 25], [0, 0, 40] ],
 
       "morningLightColor" : [50, 50, 50],
       "dayLightColor" : [30, 30, 30],
@@ -73,8 +83,8 @@
       "nightLightColor" : [0, 0, 0]
     }
   ],
-  
-  
+
+
   "mainBlock" : "iceblock3",
   "subBlocks" : [ "iceblock4", "frozenwater", "iceblock1" ],
   "ores" : "ff_deepicemoonOres",
@@ -92,10 +102,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/MelodyofMisery.ogg","/music/frost.ogg","/music/GlacialHorizon.ogg","/music/ViaAurora.ogg","/music/ambient_dark.ogg","/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/arctic-exploration1.ogg", "/music/arctic-exploration2.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/SomethingIntoDarkness.ogg","/music/frost.ogg","/music/GlacialHorizon.ogg","/music/ViaAurora.ogg","/music/darkambient2a.ogg","/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 
@@ -111,7 +121,7 @@
 
           "type" : "microdungeon",
           "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none", "ice" ]
-        },      
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -121,14 +131,10 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
-              [0.35, "icesphere1" ],
-              [0.35, "icesphere2" ],
-              [0.35, "icesphere3" ],
-              [0.35, "icesphere4" ],
+              "pool" : [
               [0.35, "icestalk" ],
               [0.35, "iceball_rock" ],
-              [0.35, "icespikeff" ], 
+              [0.35, "icespikeff" ],
               [0.35, "frozencritter1" ]
               ],
               "parameters" : { }
@@ -144,43 +150,12 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "snowdrift1" ],
               [0.35, "snowdrift2" ],
-              [0.35, "snowdrift3" ], 
+              [0.35, "snowdrift3" ],
               [0.35, "snowdrift4" ]
               ],
-              "parameters" : { }
-            }
-          ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:potsRare",
-
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : [ 
-              [0.35, "plynth1" ],
-              [0.35, "plynth2" ]
-              ],
-              "parameters" : { }
-            }
-          ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:potsRare",
-
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : [ [0.35, "snowdrift1" ], [0.35, "snowdrift2" ], [0.35, "snowdrift3" ], [0.35, "snowdrift4" ] ],
               "parameters" : { }
             }
           ]
@@ -198,7 +173,7 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -212,7 +187,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -238,7 +213,7 @@
           "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "canyonmini", "icespikes", "icemini", "terrainfeatures", "icewastemini" ]
+          "microdungeons" : [ "canyonmini", "icespikes", "icemini", "terrainfeatures", "ice" ]
         },
         {
           "mode" : "floor",
@@ -256,13 +231,13 @@
           "distribution" : "/biomes/distributions.config:scatteredSmall",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "ice", "fuelders", "icewastemini" ]
+          "microdungeons" : [ "icespikes", "icemini", "fuelders", "icewastemini" ]
         },
         {
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:minibiomeChests",
+          "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "iceChest" ]
@@ -276,33 +251,8 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ [0.35, "castlevaniaice" ], [0.35, "iceshard1" ], [0.35, "iceshard2" ], [0.35, "iceshard3" ], [0.35, "iceshard4" ], [0.35, "iceshard5" ] ],
+              "pool" : [ [0.35, "iceshard1" ], [0.35, "iceshard2" ], [0.35, "iceshard3" ], [0.35, "iceshard4" ], [0.35, "iceshard5" ] ],
               "parameters" : { }
-            }
-          ]
-        },        
-        {
-          "mode" : "floor",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "iceblocks",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "icebush",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "crystals",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
             }
           ]
         },
@@ -315,7 +265,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "plynth1" ],
               [0.35, "plynth2" ],
               [0.35, "monolith1" ],
@@ -329,7 +279,7 @@
             }
           ]
         }
-        
+
       ]
     },
     "undergroundPlaceables" : {
@@ -345,8 +295,80 @@
           "type" : "object",
           "objectSets" : [
             {
+              "pool" : [
+              [0.35, "icefloor1" ],
+              [0.35, "icefloor2" ],
+              [0.35, "icefloor3" ],
+              [0.35, "icefloor4" ],
+              [0.35, "icepillar1" ],
+              [0.35, "icepillar2" ],
+              [0.35, "icepillar3" ],
+              [0.35, "icepillar4" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "iceceiling1" ],
+              [0.35, "iceceiling2" ],
+              [0.35, "iceceiling3" ],
+              [0.35, "iceceiling4" ],
+              [0.35, "icepillar1" ],
+              [0.35, "icepillar2" ],
+              [0.35, "icepillar3" ],
+              [0.35, "icepillar4" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
               "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
               "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.20, "icestalactite1" ], [0.20, "icestalactite2" ], [0.20, "icestalactite3" ], [0.20, "icestalactite4" ] ]
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.20, "icestalagmite1" ], [0.20, "icestalagmite2" ], [0.20, "icestalagmite3" ], [0.20, "icestalagmite4" ] ]
             }
           ]
         },
@@ -358,6 +380,15 @@
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "basicChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "iceChest" ]
         },
         {
           "mode" : "floor",
@@ -388,7 +419,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:undergroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -396,7 +427,7 @@
         {
           "mode" : "ceiling",
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseSmall",
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
 
           "type" : "grass",
           "grasses" : [ "ceilingice", "ceilingthinice", "ceilingiceballs", "ceilingsnow" ]
@@ -405,34 +436,48 @@
           "mode" : "ceiling",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "bush",
           "bushes" : [
             {
               "name" : "ceilingicespikes",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             },
             {
               "name" : "ceilingthinice",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             },
             {
               "name" : "ceilingicepolys",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             },
             {
               "name" : "ceilingiceblocks",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             },
             {
               "name" : "ceilingicicle",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "iceshard1" ], [0.35, "iceshard2" ], [0.35, "iceshard3" ], [0.35, "iceshard4" ], [0.35, "iceshard5" ] ],
+              "parameters" : { }
             }
           ]
         },
@@ -445,13 +490,14 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "plynth1" ],
               [0.35, "plynth2" ],
               [0.35, "monolith1" ],
               [0.35, "monolith2" ],
               [0.35, "monolith3" ],
               [0.35, "monolith4" ],
+			  [0.35, "frozencritter1" ],
               [0.35, "elderidol" ]
               ],
               "parameters" : { }

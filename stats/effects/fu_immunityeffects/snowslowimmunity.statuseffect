@@ -1,9 +1,13 @@
 {
-  "name" : "snowslowimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 60,
-
-  "scripts" : [
-    "snowslowimmunity.lua"
-  ]
+	"name": "snowslowimmunity",
+	"effectConfig": {
+		"stats": [{
+			"stat": "snowslowImmunity",
+			"amount": 1
+		}]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

@@ -1,0 +1,145 @@
+{
+  "itemName" : "swtjc_ewg_uncommonbeampistol",
+  "price" : 770,
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "A small handgun that fires streams of energy at distant targets with pinpoint accuracy.",
+  "shortdescription" : "Uncommon Beam Pistol",
+  "tooltipKind" : "gun",
+  "category" : "swtjc_ewg_beamPistol",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","ranged","pistol","upgradeableWeapon"],
+  "level" : 1,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : { },
+  "animationCustom" : { },
+  "baseOffset" : [-0.25, 0.25],
+  "muzzleOffset" : [0,0.375],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : [0.25, 0.6],
+    "baseDps" : [4.2, 5.3],
+    "energyUsage" : [25, 35],
+    "fireType" : "auto",
+    "inaccuracy" : 0.00,
+
+    "projectileParameters" : {
+      "knockbackRange" : [0.1,0.2],
+      "fullbright" : true,
+      "timeToLive" : 0.05,
+      "speed" : 90
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.1,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "nameGenerator" : "swtjc_ewg_beampistolnames.config:nameGen",
+    "elementalType" : [
+      "physical",
+      "fire",
+      "ice",
+      "electric",
+      "poison",
+      "radioactive",
+      "shadow",
+      "cosmic"
+    ],
+    "elementalConfig" : {
+      "physical" : {
+        "primaryAbility" : { "projectileType" : "standardbulletbeamphysical"},
+        "fireSounds" : [ "/sfx/weapons/laserblast.ogg" ]
+      },
+      "fire" : {
+        "primaryAbility" : { "projectileType" : "standardbulletbeamfire"},
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
+      },
+      "ice" : {
+        "primaryAbility" : { "projectileType" : "standardbulletbeamice"},
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
+      },
+      "poison" : {
+        "primaryAbility" : { "projectileType" : "standardbulletbeampoison"},
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
+      },
+      "electric" : {
+        "primaryAbility" : { "projectileType" : "standardbulletbeamelectric"},
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
+      },
+      "radioactive" : {
+        "primaryAbility" : { "projectileType" : "standardbulletbeamradioactive"},
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
+      },
+      "shadow" : {
+        "primaryAbility" : { "projectileType" : "standardbulletbeamshadow"},
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
+      },
+      "cosmic" : {
+        "primaryAbility" : { "projectileType" : "standardbulletbeamcosmic"},
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
+      }
+    },
+    "animationParts" : {
+      "butt" : {
+        "path" : "/items/active/weapons/ranged/pistol/butt/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "middle" : {
+        "path" : "/items/active/weapons/ranged/rocketlauncher/middle/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "barrel" : {
+        "path" : "/items/active/weapons/ranged/pistol/barrel/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+    },
+    "gunParts" : ["butt", "middle", "barrel"],
+    "altAbilities" : [ ],
+    "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
+    "iconDrawables" : ["butt", "middle", "barrel"]
+  }],
+  "critChance": 1,
+  "critBonus" : 3,
+
+  "magazineSize" : [5,9],
+  "reloadTime" : [0.4,1.4],
+  "isAmmoBased": [0,1]
+}

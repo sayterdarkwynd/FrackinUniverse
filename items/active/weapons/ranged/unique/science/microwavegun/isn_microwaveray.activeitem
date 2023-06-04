@@ -1,15 +1,17 @@
 {
   "itemName" : "isn_microwaveray",
-  "level" : 5,
+  "level" : 4,
   "price" : 1500,
   "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "A weapon that fires heat waves which ignore armor.",
+  "rarity" : "uncommon",
+  "description" : "Fires waves of sound that look spiffy!
+^yellow;It's okay I guess^reset;
+^green;You might like it?^reset;",
   "shortdescription" : "Sonic Cannon",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "assaultRifle",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon"],
   "inventoryIcon" : "isn_microwaverayicon.png",
   "animation" : "isn_microwaveray.animation",
   "animationParts" : {
@@ -49,11 +51,11 @@
     "burstTime" : 0.065,
     "burstCount" : 8,
     "projectileCount" : 1,
-    
+
     "projectileType" : "fusoundwave",
     "projectileParameters" : {
       "knockback" : 1.3,
-      "speed" : 14.5
+      "speed" : 34.5
     },
 
     "stances" : {
@@ -85,8 +87,9 @@
       }
     }
   },
-
-  "altAbilityType" : "splittergunshotpower",
+  "critChance" : 4,
+  "critBonus" : 5,
+  "altAbilityType" : "furocketboom",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

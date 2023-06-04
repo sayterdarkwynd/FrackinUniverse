@@ -1,0 +1,28 @@
+{
+  "name": "fuguard_pyreite",
+  "priority": 10,
+
+  "colonyTagCriteria": {
+    "light": 1,
+    "door": 1,
+    "combat" : 8,
+    "pyreite" : 9
+  },
+
+  "tenants": [
+    {
+      "spawn": "npc",
+      "species": ["human", "apex", "glitch"],
+      "level": 6,
+      "type": "fupyreiteguard",
+      "overrides": {
+        "damageTeamType" : "friendly"
+       }
+     }
+   ],
+
+  "rent": {
+    "periodRange": [900.0, 1800.0],
+    "pool": "villagerGift"
+  }
+}

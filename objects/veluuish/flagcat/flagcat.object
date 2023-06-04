@@ -1,0 +1,53 @@
+{
+  "objectName" : "flagcat",
+  "colonyTags" : ["cat"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "teleporter",
+  "category" : "teleportMarker",
+  "price" : 70,
+  "radioMessagesOnPickup" : [ "pickupflag" ],
+
+  "description" : "Cats find the waving flag to be a little TOO enticing, so they tend to use scratching posts as markers instead.",
+  "shortdescription" : "Scratching Post",
+  "race" : "cat",
+
+  "apexDescription" : "A scratching post? Looks I can use this as a waypoint for teleportation.",
+  "avianDescription" : "This scratching post must mean there are cats about. Looks like it can be bookmarked as a destination for my ship teleporter.",
+  "floranDescription" : "Ssscratching posst makess good point to teleport back to ussing teleporter!",
+  "glitchDescription" : "Observant. A small locator module attached to this scratching post allows it to be bookmarked for teleportation.",
+  "humanDescription" : "This scratching post can be saved as a location for my teleporter. Then I can return to it at any time.",
+  "hylotlDescription" : "This scratching post can act as a way point, enabling me to return to this point using a teleporter.",
+  "novakidDescription" : "I can bookmark this scratching post for quick teleportin'.",
+  "catDescription" : "This scratching post can serve as a place to sharpen nails, and it allows mew to bookmark it for teleportation!",
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/destinationonly.config",
+
+  "inventoryIcon" : "flagcaticon.png",
+  "orientations" : [
+    {
+      "image" : "flagcat.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+      "imagePosition" : [-17, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "flagcat.png:<color>.<frame>",
+      "direction" : "right",
+      "imagePosition" : [1, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+
+  //"soundEffect" : "/sfx/objects/flag_flap_loop.ogg"
+}

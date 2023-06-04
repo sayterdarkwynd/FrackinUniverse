@@ -1,0 +1,293 @@
+{
+  "name" : "fleshasteroid",
+  "friendlyName" : "Flesh Blobs",
+
+  "mainBlock" : "fleshblock",
+  "subBlocks" : [ "brainsblock", "rottingflesh", "boneyflesh", "hellstone" ],
+  "ores" : "ff_deepsurfaceatropusOres",
+
+
+    "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 3,
+        "pool" : [
+          [ 0.06, "fleshleech" ],
+          [ 0.06, "fleshleech2" ],
+          [ 0.06, "pteropod3" ],
+          [ 0.08, "horror" ],
+	  [ 0.08, "fleshreaper" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedFlying"
+      }
+    ],
+    "monsterParameters" : {
+      "statusSettings" : {
+        "stats" : {
+          "insanityImmunity" : {
+            "baseValue" : 1.0
+          },
+          "pusImmunity" : {
+            "baseValue" : 1.0
+          },
+          "biooozeImmunity" : {
+            "baseValue" : 1.0
+          }
+        }
+      }
+    }
+  },
+
+
+  "parallax" : "/parallax/space/asteroids.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/space_loop1.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/space_loop1.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+
+  "hueShiftOptions" : [0],
+
+
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "tentaclegrass" ],
+    "grassModDensity" : 0.9,
+      "ceilingGrassMod" : [ "tentaclegrass" ],
+      "ceilingGrassModDensity" : 0.5,
+    "items" : [
+
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 0,
+        "treeStemHueShiftMax" : 0,
+        "treeStemList" : [ "tentacle" ],
+        "treeFoliageList" : [ "" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [
+            [2.0, "tentaclepopbig" ],
+            [0.8, "tentaclepopmed" ],
+            [0.8, "tentaclepopsmall" ],
+            [0.8, "tentacleegg" ],
+            [0.4, "tentaclespawner1" ]
+            ]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclepart1" ], [0.8, "tentaclepart2" ], [0.8, "tentaclepart3" ], [0.4, "tentaclespawner1" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclepart1" ], [0.8, "tentaclepart2" ], [0.8, "tentaclepart3" ], [0.4, "tentaclespawner1" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:tiyDist",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "none" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "terrainfeatures" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 45,
+        "treeStemList" : [ "tentacletree", "tentacletreetwo" ],
+        "treeFoliageList" : [ "tentacletreeblank" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclespike" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclespike" ] ],
+            "parameters" : { }
+          }
+        ]
+      }
+    ]
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "tentaclegrass" ],
+    "grassModDensity" : 0.9,
+      "ceilingGrassMod" : [ "tentaclegrass" ],
+      "ceilingGrassModDensity" : 0.5,
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [
+            [2.0, "tentaclepopbig" ],
+            [0.8, "tentaclepopmed" ],
+            [0.8, "tentaclepopsmall" ],
+            [0.8, "tentacleegg" ],
+            [0.4, "tentaclespawner1" ]
+            ]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclepart1" ], [0.8, "tentaclepart2" ], [0.8, "tentaclepart3" ], [0.4, "tentaclespawner1" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclespike" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclespike" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclepart1" ], [0.8, "tentaclepart2" ], [0.8, "tentaclepart3" ], [0.4, "tentaclespawner1" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 0,
+        "treeStemHueShiftMax" : 0,
+        "treeStemList" : [ "tentacle" ],
+        "treeFoliageList" : [ "" ]
+      }
+    ]
+  }
+
+
+}

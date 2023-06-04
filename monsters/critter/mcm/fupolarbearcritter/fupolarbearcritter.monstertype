@@ -1,0 +1,99 @@
+{
+  "type" : "fupolarbearcritter",
+  "shortdescription" : "Polar Bear",
+  "description" : "A huge predatory mammal covered in white hair. It hunts the shores along tundra and glaciers.",
+
+  "categories" : [ "fupolarbearcritter" ],
+  "parts" : [ "body" ],
+
+  "animation" : "fupolarbearcritter.animation",
+  "reversed" : false,
+
+  "dropPools" : [
+    {
+      "default" : "empty",
+      "bow" : "huntingbear"
+    }
+  ],
+
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "walkingcritter",
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-2.458,1.208], [-2.458,-1.875], [1.792,-1.917], [1.708,1.292] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 5,
+      "runSpeed" : 5,
+      "jumpSpeed" : 5
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "",
+"deathParticles" : "deathPoof",
+    "damageTeamType" : "passive",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.9,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 0,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 60
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "relocatable" : true,
+    "nametagColor" : [64, 200, 255]
+  }
+}

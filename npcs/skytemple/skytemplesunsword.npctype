@@ -1,0 +1,79 @@
+{
+  "type" : "skytemplesunsword",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Protect the temple!",
+			"You dare intrude upon the most holy of places?",
+            "The divine light of Kluex empowers me to slay you!",
+            "Feel the burning wrath of the sun!",
+            "Praise the sun, light of Kluex!"
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+      "runSpeed" : 18,
+	  "walkSpeed" : 18,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    },
+    "mass" : 2.0
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "aviantier4head", "parameters" : { "colorIndex" : 5 } }
+            ],
+            "back" : [
+              { "name" : "falconwingsback", "parameters" : { "colorIndex" : 5 } }
+            ],
+            "chest" : [
+              { "name" : "aviantier4chest", "parameters" : { "colorIndex" : 5 } }
+            ],
+            "legs" : [
+              { "name" : "aviantier4pants", "parameters" : { "colorIndex" : 5 } }
+            ],
+            "primary" : [ { "name" : "soluskatana", "parameters" : { "primaryAbility" : { "damageConfig" : { "statusEffects" : ["burning"] } } } } ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+
+    "stats" : {
+	"knockbackStunTime" : {
+		"baseValue" : 0.0
+	},
+	"grit" : {
+		"baseValue" : 1.0
+	},
+ 	  "fireStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	  "powerMultiplier" : {
+        "baseValue" : 4.5
+      },
+	"stunImmunity" : {
+		"baseValue" : 1.0
+	},
+      "maxHealth" : {
+        "baseValue" : 200.0
+      }
+    }
+  }
+}

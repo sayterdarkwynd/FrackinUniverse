@@ -1,0 +1,25 @@
+{
+  "projectileName" : "chainradioactiveplasma",
+  "physics" : "laser",
+  "damageKindImage" : "icon.png",
+  "image" : "radioactiveplasma.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 3,
+  "power" : 50,
+  "speed" : 100,
+  "supportsProcessing" : true,
+  "emitters" : [ "radioactiveplasma" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmabulletexplosion/plasmabulletexplosion.config"
+    }
+  ],
+  "statusEffects" : [ "radiationburn" ],
+  "lightColor" : [150, 150, 32],
+  "damageKind" : "radioactiveplasma",
+  "piercing" : true,
+
+  "scripts" : [ "/scripts/projectiles/chainbullet.lua" ],
+  "chainProjectile" : "chainradioactiveplasma2"
+}

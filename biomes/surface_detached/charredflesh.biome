@@ -1,0 +1,178 @@
+{
+  "name" : "charredflesh",
+  "friendlyName" : "Charred Flesh",
+
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 1,
+        "pool" : [
+          [ 1.0, "hemogoblin" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : [
+          [ 1, "bloodtoadcritter" ],
+          [ 1, "vulturecritter" ],
+          [ 1, "maggotcritter" ]
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "colors" : "alien"
+    }
+  },
+
+  "parallax" : "/parallax/surface/atropus.parallax",
+
+    "ambientNoises" : {
+      "day" : {
+        "tracks" : [ "/sfx/ambiance/atropusambiance2.ogg", "/sfx/ambiance/atropusambiance5.ogg", "/sfx/ambiance/atropusambiance6.ogg" ]
+      },
+      "night" : {
+        "tracks" : [ "/sfx/ambiance/atropusambiance.ogg", "/sfx/ambiance/atropusambiance2.ogg", "/sfx/ambiance/atropusambiance4.ogg" ]
+      }
+    },
+
+    "musicTrack" : {
+      "day" : {
+        "tracks" : [ "/music/atropusambiance1a.ogg", "/music/atropusambiance2a.ogg" ]
+      },
+      "night" : {
+        "tracks" : [ "/music/atropusambiance3a.ogg", "/music/atropusambiance4a.ogg" ]
+      }
+    },
+
+  "hueShiftOptions" : [0],
+
+  "mainBlock" : "charredfleshmaterial",
+  "subBlocks" : [ "rottingflesh", "charredbonematerial" ],
+  "ores" : "surface",
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "fleshgrass" ],
+    "grassModDensity" : 0.95,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "fleshmicrodungeons" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.15, "fleshbush1" ], [0.15, "fleshbush2" ], [0.15, "fleshbush3" ], [0.15, "fleshbush4" ], [0.15, "fleshbush5" ], [0.15, "fleshbush6" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:minibiomeChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "fleshChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 0,
+        "treeStemList" : [ "fleshstem" ],
+        "treeFoliageList" : [ "fleshfoliage" ]
+      }
+    ]
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "fleshgrass" ],
+    "grassModDensity" : 0.8,
+
+    "ceilingGrassMod" : [ "veingrowth" ],
+    "ceilingGrassModDensity" : 0.8,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 2.5,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 0,
+        "treeStemHueShiftMax" : 0,
+        "treeStemList" : [ "vein", "bluevein" ],
+        "treeFoliageList" : [ "veiny", "blueveiny" ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "dripblood1" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:minibiomeChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "fleshChest" ]
+      }
+    ]
+  }
+}

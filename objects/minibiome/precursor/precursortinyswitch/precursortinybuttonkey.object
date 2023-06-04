@@ -1,0 +1,44 @@
+{
+	"objectName": "precursortinybuttonkey",
+	"colonyTags": ["wired", "precursor"],
+	"printable": true,
+	"rarity": "Common",
+	"description": "Some sort of ancient button, it ignores your touch but has a key icon.",
+	"shortdescription": "Tiny Keyed Button",
+	"race": "precursor",
+
+	"category": "wire",
+	"price": 20,
+
+	"inventoryIcon": "precursortinyswitchicon.png",
+	"orientations": [{
+		"image": "precursortinyswitch.png:<color>.off",
+		"imagePosition": [0,-4],
+
+		"spaceScan": 0.1,
+		"anchors": ["background"]
+	}],
+
+	"scripts": [
+		"button.lua"
+	],
+	"scriptDelta": 5,
+
+	"animation": "/objects/wired/switch/switchtoggle4.animation",
+	"animationCustom": {
+		"sounds": {
+			"on": ["/sfx/objects/precursorbuzz1.ogg"]
+		}
+	},
+	"animationParts": {
+		"switch": "precursortinyswitch.png"
+	},
+	"animationPosition": [0, -4],
+
+	"outputNodes": [
+		[0, 0]
+	],
+
+	"interval": 1,
+	"acceptsprecursorkey": true
+}

@@ -1,0 +1,377 @@
+{
+  "kind" : "cat",
+	"charCreationTooltip" : {
+	"title" : "Tiknass'uut",
+	"subTitle" : "O3",
+	"description":"An uplifted species by the Vel'uuish. This telepathic and telekinetic species follows their uplifters in their culture and use of technology. They love making terrible cat-based puns.
+
+  ^orange;Diet^reset;: Carnivore
+
+^orange;Perks^reset;:
+  Very nimble. Gain ^green;20^reset;% Jump and ^green;8^reset;% Run Speed^reset;. Fall Damage x^green;0.2^reset;
+  ^green;Resist^reset;: +^green;20^reset;% Cold Resist
+  Night Vision
+  Tech: ^green;Razor Claws^reset;
+  ^cyan;Immune^reset;: Jungle Dirt and Mud
+
+^orange;Environment^reset;:
+  ^green;Jungle, Primeval, Forest, Rainforest, Desert^reset;:
+    Health x^green;1.1^reset;, Energy x^green;1.15^reset;
+
+^orange;Weapons^reset;:
+  Fists, Daggers, Shortswords: +^green;1^reset;% Crit Chance
+  Thrown Weapons/Grenades: Damage x^green;1.25^reset;
+  Magnorb: +^green;2^reset;% Crit Chance
+  Arm Cannon: Defense & Damage  x^green;1.15^reset;
+
+^red;Weaknesses^reset;:
+  ^red;Resist^reset;: -^red;20^reset;% Cosmic and Electric"
+	},
+
+	// Didn't know what to use for subtitle, so just went with a dumb emote.
+	// StatusEffects is supposed to give the species a bit of racial difference.
+	// IRL, cats can run very fast, but only in very short bursts. Can't do that in-game.
+
+
+  "humanoidOverrides" : {
+    "bodyFullbright" : false
+  },
+
+    // Was a direct copy from Novakid, obviously.
+
+  "humanoidConfig" : "/species/catoid.config",
+  "nameGen" : [ "/species/catnamegen.config:names", "/species/catnamegen.config:names" ],
+  "ouchNoises" : [ "/sfx/humanoid/cathurt_male.ogg", "/sfx/humanoid/cathurt_female.ogg" ],
+  "charGenTextLabels" : [ "Fur Color 1", "N/A", "N/A", "N/A", "Eye Color", "Fur Color 2", "N/A", "N/A", "TIKNASS'UUT", "Personality" ],
+  "skull" : "/humanoid/cat/dead.png",
+  "effectDirectives" : "?replace=FEFFFFFF=FFFFFFFF?replace=9bd4ffFF=80b3ffFF?replace=31a6ffFF=5476f0FF",
+  "defaultBlueprints" : {
+    "tier1" : [
+
+  // Empty Hands
+      { "item" : "flagcat" },
+	  { "item" : "glassball" },
+
+// Anvil
+      { "item" : "veluutier1chest" },
+      { "item" : "veluutier2chest" },
+
+      { "item" : "veluushortsword" },
+	  { "item" : "veluushortsword2" },
+      { "item" : "ironshortsword" },
+      { "item" : "ironbroadsword" },
+      { "item" : "tungstenaxe" },
+      { "item" : "tungstenhammer" },
+
+// Anvil2
+      { "item" : "veluushortsword3" },
+      { "item" : "veluutier3chest" },
+      { "item" : "veluutier4chest" },
+
+      { "item" : "titaniumdagger" },
+      { "item" : "titaniumspear" },
+      { "item" : "durasteelbroadsword" },
+      { "item" : "durasteelshortsword" },
+
+// Anvil3
+//             ACCELERATOR
+      { "item" : "veluutier5achest" },
+      { "item" : "veluutier6achest" },
+//             MANIPULATOR
+      { "item" : "veluutier5mchest" },
+      { "item" : "veluutier6mchest" },
+//             SEPERATOR
+	  { "item" : "veluushortsword4" },
+      { "item" : "veluutier5schest" },
+      { "item" : "veluutier6schest" },
+
+      { "item" : "aegisaltpistol" },
+      { "item" : "aegisaltbow" },
+      { "item" : "feroziumwand" },
+      { "item" : "feroziumstaff" },
+      { "item" : "violiumshortsword" },
+      { "item" : "violiumbroadsword" },
+
+// Furniture Table 2
+      { "item" : "hylotlstoragelocker" },
+      { "item" : "hylotlshipdoor" },
+      { "item" : "hylotlshiphatch" },
+	  { "item" : "wreckedplant" },
+
+// Spinning Wheel
+      { "item" : "hiderchest" },
+      { "item" : "hiderlegs" },
+      { "item" : "hiderback" },
+      { "item" : "hiderhead" },
+	  { "item" : "catbutterflywingsback" }
+	  ]
+  },
+
+  "altOptionAsUndyColor" : true,
+  "headOptionAsHairColor" : true,
+  "altOptionAsHairColor" : true,
+  "hairColorAsBodySubColor" : true,
+  "genders" : [
+    {
+       "name" : "male",
+      "image" : "/interface/title/catmale.png",
+      "characterImage" : "/interface/title/catmale.png",
+      "hair" : [ "male0" ],
+      "shirt" : [ "hiderchest", "hiderchest", "hiderchest", "hiderchest" ],
+      "pants" : [ "hiderlegs", "hiderlegs", "hiderlegs", "hiderlegs" ],
+      "facialHairGroup" : "",
+      "facialHair" : [ ],
+      "facialMaskGroup" : "",
+      "facialMask" : [ ]
+    },
+    {
+      "name" : "female",
+      "image" : "/interface/title/catfemale.png",
+      "characterImage" : "/interface/title/catfemale.png",
+      "hair" : [ "fem0" ],
+      "shirt" : [ "hiderchest", "hiderchest", "hiderchest", "hiderchest" ],
+      "pants" : [ "hiderlegs", "hiderlegs", "hiderlegs", "hiderlegs" ],
+      "facialHairGroup" : "",
+      "facialHair" : [ ],
+      "facialMaskGroup" : "",
+      "facialMask" : [ ]
+    }
+  ],
+  "bodyColor" : [
+    // BODY COLOR -- DEFAULT WHITE
+	// DEFAULT    NEW       DEFAULT   NEW        DEFAULT   NEW        DEFAULT    NEW
+	{ "ffffff" : "ffffff", "bec6c8" : "bec6c8", "989ea0" : "989ea0", "6f7578" : "6f7578" },
+	// BLACK
+    { "ffffff" : "555555", "bec6c8" : "424242", "989ea0" : "303030", "6f7578" : "151515" },
+	// NEW CREAM
+    { "ffffff" : "ebcc8f", "bec6c8" : "c4a568", "989ea0" : "ac8d50", "6f7578" : "937437" },
+	// GRAY
+    { "ffffff" : "968f89", "bec6c8" : "7e7770", "989ea0" : "5c5957", "6f7578" : "4f4c49" },
+	// ORANGE
+    { "ffffff" : "d0a12f", "bec6c8" : "bb8624", "989ea0" : "96691f", "6f7578" : "82581d" },
+	// STARBOUND CREAM
+	// I don't consider starbound's cream as truly cream. More of a gray.
+    { "ffffff" : "d7cdc1", "bec6c8" : "afa69a", "989ea0" : "978e82", "6f7578" : "7b7570" },
+	// BLUE LEAFEON'S FAVORITE LIGHT BLUE COLOR:
+	{ "ffffff" : "98e0f8", "bec6c8" : "70c0f8", "989ea0" : "4890c8", "6f7578" : "2a587b" },
+	// FURLESS
+    { "ffffff" : "eccede", "bec6c8" : "d7a5ba", "989ea0" : "bb718f", "6f7578" : "86475d" },
+	// GOLD
+    { "ffffff" : "fff8b5", "bec6c8" : "fde03f", "989ea0" : "f6b919", "6f7578" : "352b12" },
+    // BRONZE
+    { "ffffff" : "ffedc4", "bec6c8" : "feb05c", "989ea0" : "fa8131", "6f7578" : "40110a" },
+    // COPPER
+    { "ffffff" : "ffe2c9", "bec6c8" : "fe9875", "989ea0" : "ef5443", "6f7578" : "4f160d" },
+    //MUTED GREEN
+    { "ffffff" : "c4d0a5", "bec6c8" : "a3af83", "989ea0" : "6c7256", "6f7578" : "3b3d2d" },
+    //MUTED PINK
+    { "ffffff" : "d08c9f", "bec6c8" : "b27082", "989ea0" : "874e62", "6f7578" : "4c2b3a" },
+    //MUTED YELLOW
+    { "ffffff" : "d8d695", "bec6c8" : "b9b778", "989ea0" : "908a56", "6f7578" : "544d30" },
+    // MUTED TURQUOISE
+    { "ffffff" : "a6cbd2", "bec6c8" : "7ca7af", "989ea0" : "547d81", "6f7578" : "2e504f" },
+    //PURPLE
+    { "ffffff" : "cb86d6", "bec6c8" : "ac6ab7", "989ea0" : "7e498c", "6f7578" : "41274c" },
+    //LIGHT GREEN
+    { "ffffff" : "b7d179", "bec6c8" : "8eab59", "989ea0" : "808a44", "6f7578" : "474c27" },
+    //MUTED BROWN
+    { "ffffff" : "b9997a", "bec6c8" : "9f7761", "989ea0" : "764f42", "6f7578" : "50302a" },
+    // MUTED DARK TURQUOISE
+    { "ffffff" : "a8c2c4", "bec6c8" : "8ba4a6", "989ea0" : "607272", "6f7578" : "384543" },
+    //MUTED RED
+    { "ffffff" : "e47068", "bec6c8" : "c54848", "989ea0" : "952f45", "6f7578" : "65223a" },
+    //MUTED YELLOW
+    { "ffffff" : "e3da89", "bec6c8" : "c5bd6d", "989ea0" : "9a8d4c", "6f7578" : "705f32" },
+    //LIGHT RED
+    { "ffffff" : "E86D46", "bec6c8" : "D1422E", "989ea0" : "96201B", "6f7578" : "721814" },
+    //RED
+    { "ffffff" : "CD1C38", "bec6c8" : "982441", "989ea0" : "69243F", "6f7578" : "4b1a2d" },
+    //RUSTY RED
+    { "ffffff" : "BE471B", "bec6c8" : "9B2F0C", "989ea0" : "702710", "6f7578" : "561e0d" },
+    //LIGHT BROWN
+    { "ffffff" : "7f5a39", "bec6c8" : "5b3523", "989ea0" : "3b1f15", "6f7578" : "29160f" },
+    //DIRTY ORANGE
+    { "ffffff" : "a6671d", "bec6c8" : "915622", "989ea0" : "743e1d", "6f7578" : "572f16" },
+    //ORANGE
+    { "ffffff" : "efa838", "bec6c8" : "be6d1d", "989ea0" : "834012", "6f7578" : "61300e" },
+    //LIGHT GREEN
+    { "ffffff" : "A7D13D", "bec6c8" : "83AD22", "989ea0" : "627e09", "6f7578" : "3c4c08" },
+    //GREEN
+    { "ffffff" : "4ece61", "bec6c8" : "34ae47", "989ea0" : "228a38", "6f7578" : "144c20" },
+    //DARK GREEN
+    { "ffffff" : "3b7f44", "bec6c8" : "2e6a38", "989ea0" : "1d4b28", "6f7578" : "14331c" },
+    //TORQUOISE
+    { "ffffff" : "5BD5B6", "bec6c8" : "4AA9AD", "989ea0" : "237082", "6f7578" : "104648" },
+    //LIGHT TURQUOISE
+    { "ffffff" : "82d9c5", "bec6c8" : "46b89f", "989ea0" : "1b8587", "6f7578" : "244e54" },
+    //LIGHT BLUE
+    { "ffffff" : "7eabd9", "bec6c8" : "5583cf", "989ea0" : "305ba6", "6f7578" : "22386b" },
+    //DARK PURPLE
+    { "ffffff" : "894176", "bec6c8" : "6a2e53", "989ea0" : "502034", "6f7578" : "371523" },
+    //LIGHT PURPLE
+    { "ffffff" : "AD68E2", "bec6c8" : "9142ab", "989ea0" : "782b89", "6f7578" : "501e5b" }
+  ],
+    "undyColor" : [
+    // THIS IS EYE COLOR. EXTRA BLUES FOR SIAMESE.
+    // DEFAULT BLUE
+    { "2290d3" : "2290d3", "be1b00" : "395187", "951500" : "20325b" },
+	// ULTRAMARINE
+	{ "2290d3" : "00aef5", "be1b00" : "395187", "951500" : "20325b" },
+	// COLBALT
+	{ "2290d3" : "1a1dac", "be1b00" : "395187", "951500" : "20325b" },
+	// CYAN
+	{ "2290d3" : "00ffff", "be1b00" : "395187", "951500" : "20325b" },
+	// GREEN
+    { "2290d3" : "5bea3d", "be1b00" : "6c2f90", "951500" : "471962" },
+	// BRIGHT GREEN
+	{ "2290d3" : "00ff00", "be1b00" : "6c2f90", "951500" : "471962" },
+	// AMBER
+    { "2290d3" : "ffac29", "be1b00" : "9b2724", "951500" : "6a1210" },
+	// PURPLE
+    { "2290d3" : "c167e7", "be1b00" : "b47020", "951500" : "834a0c" },
+	// BLACK
+    { "2290d3" : "101010", "be1b00" : "a8a614", "951500" : "848008" },
+	// GRAY
+    { "2290d3" : "b8c8e0", "be1b00" : "45902f", "951500" : "296219" },
+	// TEAL
+    { "2290d3" : "22c2c0", "be1b00" : "363636", "951500" : "111111" },
+	// YELLOW-GREEN
+    { "2290d3" : "7dc222", "be1b00" : "979797", "951500" : "6f6f6f" },
+	// YELLOW
+    { "2290d3" : "ffff00", "be1b00" : "6e6e6e", "951500" : "434343" },
+	// RED
+    { "2290d3" : "ff0000", "be1b00" : "d355c1", "951500" : "b72c95" },
+	// WHITE
+	{ "2290d3" : "ffffff", "be1b00" : "d355c1", "951500" : "b72c95" },
+	//LIGHT RED
+    { "2290d3" : "E86D46", "be1b00" : "D1422E", "951500" : "96201B" },
+    //DARK RED
+    { "2290d3" : "ad2716", "be1b00" : "8f1f1b", "951500" : "731a1a" },
+    //RUSTY RED
+    { "2290d3" : "BE471B", "be1b00" : "9B2F0C", "951500" : "702710" },
+    //BROWN
+    { "2290d3" : "7d3c1c", "be1b00" : "4d240b", "951500" : "2d1606" },
+    //LIGHT BROWN
+    { "2290d3" : "7f5a39", "be1b00" : "5b3523", "951500" : "3b1f15" },
+    //DIRTY ORANGE
+    { "2290d3" : "a6671d", "be1b00" : "915622", "951500" : "743e1d" },
+    //ORANGE
+    { "2290d3" : "efa838", "be1b00" : "be6d1d", "951500" : "834012" },
+    //DIRTY BLONDE
+    { "2290d3" : "eaa758", "be1b00" : "cd8b3d", "951500" : "93682c" },
+    //YELLOW
+    { "2290d3" : "e6e756", "be1b00" : "c7ac3f", "951500" : "a9882f" },
+    //BLONDE
+    { "2290d3" : "f1d992", "be1b00" : "daba5e", "951500" : "b59a4d" },
+    //LIGHT YELLOW
+    { "2290d3" : "f2eba3", "be1b00" : "dcd28c", "951500" : "c2b677" },
+    //LIGHT GREEN
+    { "2290d3" : "A7D13D", "be1b00" : "83AD22", "951500" : "6B880B" },
+    //GREEN
+    { "2290d3" : "4ece61", "be1b00" : "34ae47", "951500" : "228a38" },
+    //DARK GREEN
+    { "2290d3" : "3b7f44", "be1b00" : "2e6a38", "951500" : "1d4b28" },
+    //TORQUOISE
+    { "2290d3" : "5BD5B6", "be1b00" : "4AA9AD", "951500" : "237082" },
+    //LIGHT TURQUOISE
+    { "2290d3" : "49E193", "be1b00" : "3BA380", "951500" : "197C81" },
+    //LIGHT BLUE
+    { "2290d3" : "61BCDE", "be1b00" : "5381CC", "951500" : "2C489E" },
+    //BLUE
+    { "2290d3" : "5d8bc7", "be1b00" : "4d55b0", "951500" : "2e2a73" },
+    //DARK BLUE
+    { "2290d3" : "425879", "be1b00" : "343965", "951500" : "242247" },
+    //DARK PURPLE
+    { "2290d3" : "7f3b6d", "be1b00" : "6a2e53", "951500" : "4b1d30" },
+    //HOT PINK
+    { "2290d3" : "cd72d9", "be1b00" : "ac4da6", "951500" : "913b86" },
+    //PINK
+    { "2290d3" : "D26BA4", "be1b00" : "A54669", "951500" : "89334D" },
+    //LIGHT PURPLE
+    { "2290d3" : "ad68e2", "be1b00" : "8d41b0", "951500" : "6a2980" },
+    //BROWN GREY
+    { "2290d3" : "50422f", "be1b00" : "36261e", "951500" : "170f0d" },
+    // DARK GREY
+    { "2290d3" : "525252", "be1b00" : "363636", "951500" : "161616" },
+    // GREY
+    { "2290d3" : "74726f", "be1b00" : "53504d", "951500" : "2a251e" },
+    // GREY BLUE
+    { "2290d3" : "6f6d85", "be1b00" : "525269", "951500" : "3e4352" },
+    // LIGHT GREY
+    { "2290d3" : "b8b8b8", "be1b00" : "828282", "951500" : "555555" }
+  ],
+  "hairColor" : [
+    // MARKING COLOR COLOR -- WHITE
+	{ "d0a12f" : "ffffff", "bb8624" : "bec6c8", "96691f" : "989ea0", "82581d" : "6f7578" },
+	// BLACK
+    { "d0a12f" : "555555", "bb8624" : "424242", "96691f" : "303030", "82581d" : "151515" },
+	// BROWN
+    { "d0a12f" : "a47844", "bb8624" : "8c6233", "96691f" : "754c23", "82581d" : "472b13" },
+	// GRAY
+    { "d0a12f" : "968f89", "bb8624" : "7e7770", "96691f" : "5c5957", "82581d" : "4f4c49" },
+	// ORANGE
+    { "d0a12f" : "d0a12f", "bb8624" : "bb8624", "96691f" : "96691f", "82581d" : "82581d" },
+	// NATURAL BLUE
+    { "d0a12f" : "72829a", "bb8624" : "596981", "96691f" : "46566e", "82581d" : "23334b" },
+	// FURLESS
+    { "d0a12f" : "eccede", "bb8624" : "d7a5ba", "96691f" : "bb718f", "82581d" : "86475d" },
+	// BLUE LEAFEON'S FAVORITE BLUE COLOR
+	{ "d0a12f" : "0000e8", "bb8624" : "0000ba", "96691f" : "000098", "82581d" : "00005a" },
+	// RED
+	{ "d0a12f" : "e80000", "bb8624" : "ba0000", "96691f" : "980000", "82581d" : "5a0000" },
+	// GOLD
+    { "d0a12f" : "fff8b5", "bb8624" : "fde03f", "96691f" : "f6b919", "82581d" : "352b12" },
+    // BRONZE
+    { "d0a12f" : "ffedc4", "bb8624" : "feb05c", "96691f" : "fa8131", "82581d" : "40110a" },
+    // COPPER
+    { "d0a12f" : "ffe2c9", "bb8624" : "fe9875", "96691f" : "ef5443", "82581d" : "4f160d" },
+    //MUTED GREEN
+    { "d0a12f" : "c4d0a5", "bb8624" : "a3af83", "96691f" : "6c7256", "82581d" : "3b3d2d" },
+    //MUTED PINK
+    { "d0a12f" : "d08c9f", "bb8624" : "b27082", "96691f" : "874e62", "82581d" : "4c2b3a" },
+    //MUTED YELLOW
+    { "d0a12f" : "d8d695", "bb8624" : "b9b778", "96691f" : "908a56", "82581d" : "544d30" },
+    // MUTED TURQUOISE
+    { "d0a12f" : "a6cbd2", "bb8624" : "7ca7af", "96691f" : "547d81", "82581d" : "2e504f" },
+    //PURPLE
+    { "d0a12f" : "cb86d6", "bb8624" : "ac6ab7", "96691f" : "7e498c", "82581d" : "41274c" },
+    //LIGHT GREEN
+    { "d0a12f" : "b7d179", "bb8624" : "8eab59", "96691f" : "808a44", "82581d" : "474c27" },
+    //MUTED BROWN
+    { "d0a12f" : "b9997a", "bb8624" : "9f7761", "96691f" : "764f42", "82581d" : "50302a" },
+    // MUTED DARK TURQUOISE
+    { "d0a12f" : "a8c2c4", "bb8624" : "8ba4a6", "96691f" : "607272", "82581d" : "384543" },
+    //MUTED RED
+    { "d0a12f" : "e47068", "bb8624" : "c54848", "96691f" : "952f45", "82581d" : "65223a" },
+    //MUTED YELLOW
+    { "d0a12f" : "e3da89", "bb8624" : "c5bd6d", "96691f" : "9a8d4c", "82581d" : "705f32" },
+    //LIGHT RED
+    { "d0a12f" : "E86D46", "bb8624" : "D1422E", "96691f" : "96201B", "82581d" : "721814" },
+    //RED
+    { "d0a12f" : "CD1C38", "bb8624" : "982441", "96691f" : "69243F", "82581d" : "4b1a2d" },
+    //RUSTY RED
+    { "d0a12f" : "BE471B", "bb8624" : "9B2F0C", "96691f" : "702710", "82581d" : "561e0d" },
+    //LIGHT BROWN
+    { "d0a12f" : "7f5a39", "bb8624" : "5b3523", "96691f" : "3b1f15", "82581d" : "29160f" },
+    //DIRTY ORANGE
+    { "d0a12f" : "a6671d", "bb8624" : "915622", "96691f" : "743e1d", "82581d" : "572f16" },
+    //ORANGE
+    { "d0a12f" : "efa838", "bb8624" : "be6d1d", "96691f" : "834012", "82581d" : "61300e" },
+    //LIGHT GREEN
+    { "d0a12f" : "A7D13D", "bb8624" : "83AD22", "96691f" : "627e09", "82581d" : "3c4c08" },
+    //GREEN
+    { "d0a12f" : "4ece61", "bb8624" : "34ae47", "96691f" : "228a38", "82581d" : "144c20" },
+    //DARK GREEN
+    { "d0a12f" : "3b7f44", "bb8624" : "2e6a38", "96691f" : "1d4b28", "82581d" : "14331c" },
+    //TORQUOISE
+    { "d0a12f" : "5BD5B6", "bb8624" : "4AA9AD", "96691f" : "237082", "82581d" : "104648" },
+    //LIGHT TURQUOISE
+    { "d0a12f" : "82d9c5", "bb8624" : "46b89f", "96691f" : "1b8587", "82581d" : "244e54" },
+    //LIGHT BLUE
+    { "d0a12f" : "7eabd9", "bb8624" : "5583cf", "96691f" : "305ba6", "82581d" : "22386b" },
+    //DARK PURPLE
+    { "d0a12f" : "894176", "bb8624" : "6a2e53", "96691f" : "502034", "82581d" : "371523" },
+    //LIGHT PURPLE
+    { "d0a12f" : "AD68E2", "bb8624" : "9142ab", "96691f" : "782b89", "82581d" : "501e5b" }
+  ]
+}

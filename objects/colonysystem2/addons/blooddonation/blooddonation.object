@@ -1,0 +1,75 @@
+{
+  "objectName" : "c_blooddonation",
+  "rarity" : "Common",
+  "category" : "storage",
+  "price" : 750,
+  "objectType" : "container",
+  "description" : "Encourage your tenants to donate blood and other stuff. For science, of course.\n^red;-1 Happiness^reset;",
+  "shortdescription" : "Blood Drive",
+  "race" : "generic",
+  "printable" : false,
+
+  "inventoryIcon" : "blooddonationicon.png",
+
+  "orientations" : [
+		{
+			"dualImage" : "blooddonation.png",
+			"imagePosition" : [-16, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ],
+			"collision" : "platform"
+		}
+	],
+	"openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
+    "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
+
+	"scripts" : [ "/scripts/fupower.lua","/objects/colonysystem2/addons/blooddonation/blooddonation.lua"],
+    "scriptDelta" : 60,
+
+
+	"inputNodes" : [ [0, 2] ],
+	"outputNodes" : [ [1, 2] ],
+	"powertype" : "input",
+	"isn_requiredPower" : 0,
+	"isn_liquidCollector" : false,
+
+	"soundEffect" : "/sfx/objects/fridge_hum.ogg",
+
+	"airWellRange":256,
+	"productionTime":4000,
+	"slotCount" : 24,
+    "uiConfig" : "/interface/chests/chest<slots>.config",
+    "frameCooldown" : 67,
+    "autoCloseCooldown" : 3600,
+
+	"happiness":-1,
+
+    // Named weight categories (changing one will change all of the same weight)
+    // Numbered weights can be used instead of names for customization purposes
+
+   "namedWeights" : {
+
+        "common" : 79,
+        "uncommon" : 20,
+        "rare" : 1
+    },
+
+	"rarityInfoLevel":3,
+	"overrideScanTooltip":true,
+
+   "outputs" : {
+
+        "default" : [
+            { "weight" : "common",   "items" : [ "liquidblood", "fuscienceresource" ] },
+            { "weight" : "uncommon", "items" : [ "cellmatter", "fleshstrand", "fugeneticmaterial" ] },
+            { "weight" : "rare",     "items" : [ "fuhair", "fugeneticmaterial", "liquidpus" ] }
+        ]
+
+	}
+
+
+
+
+
+}

@@ -1,0 +1,286 @@
+{
+	"objectName" : "aex",
+	"colonyTags" : [],
+	"rarity" : "Legendary",
+	"printable" : false,
+	"description" : "Pull the augments right out. Removes your pet's collar, too.",
+	"shortdescription" : "^orange;Augment Extractor^reset;",
+	"race" : "generic",
+	"category" : "storage",
+	"price" : 750,
+	"health" : 1.5,
+
+	"objectType" : "container",
+	"slotCount" : 2,
+	"uiConfig" : "/interface/objectcrafting/aex.config",
+	"subtitle" : "For augments",
+	"frameCooldown" : 5,
+	"autoCloseCooldown" : 3600,
+	"scripts" : [ "aex.lua"],
+
+	"apexDescription" : "Machines like these are used to extract augments and collars.",
+	"avianDescription" : "How useful, I can extract any augment or collar I want with this.",
+	"floranDescription" : "Floran can exsstract augmentss and collarss with this.",
+	"glitchDescription" : "Impressed. This device can extract any augment or collar.",
+	"humanDescription" : "I can use this to extract any augment or collar. Neat!",
+	"hylotlDescription" : "Such things are useful for extracting augments and collars.",
+	"novakidDescription" : "I can use this here gadget to get back my augments and collars.",
+
+	"lightColor" : [38, 114, 128],
+	"lightPosition" : [0, 1],
+
+	"flickerPeriod" : 1.2,
+	"flickerMinIntensity" : 0.95,
+	"flickerMaxIntensity" : 1.00,
+	"flickerPeriodVariance" : 0.0,
+	"flickerIntensityVariance" : 0.0,
+
+	"inventoryIcon" : "aexicon.png",
+
+	"animation" : "/objects/augmentextractor/aex.animation",
+	"animationParts" : {
+		"aex" : "aex.png",
+		"aexlit" : "aexlit.png"
+	},
+	"animationPosition" : [-6, 0],
+
+	"orientations" : [
+		{
+			"imageLayers" : [ { "image" : "aex.png:off.<frame>", "fullbright" : true }, { "image" : "aexlit.png:off.<frame>" } ],
+			"imagePosition" : [-6, 0],
+
+			"direction" : "left",
+			"flipImages" : true,
+
+			"frames" : 1,
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		},
+		{
+			"imageLayers" : [ { "image" : "aex.png:off.<frame>", "fullbright" : true }, { "image" : "aexlit.png:off.<frame>" } ],
+			"imagePosition" : [-6, 0],
+
+			"direction" : "right",
+
+			"frames" : 1,
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		}
+	],
+
+	"augmentMap" : {
+		//parameters.augment.name:itemName
+		"energy1": "energyaugment1",
+		"energy2": "energyaugment2",
+		"energy3": "energyaugment3",
+
+		"healing1": "healingaugment1",
+		"healing2": "healingaugment2",
+		"healing": "healingaugment3",
+
+		"light1": "lightaugment1",
+		"light2": "lightaugment2",
+		"light3": "lightaugment3",
+
+		"damage1": "damageaugment1",
+		"damage2": "damageaugment2",
+		"damage3": "damageaugment3",
+
+		"health1": "healthaugment1",
+		"health2": "healthaugment2",
+		"health3": "healthaugment3",
+
+		"poisonblock": "poisonblockaugment",
+		"electricblock": "electricblockaugment",
+		"fireblock": "fireblockaugment",
+		"iceblock": "iceblockaugment",
+
+		"mobility": "mobilityaugment",
+		"speed": "speedaugment",
+		"swimming": "swimaugment",
+		"thorns": "thornsaugment",
+		"lowgrav": "gravityaugment",
+		"jump": "jumpaugment",
+
+		"fuacidaugment1": "fuacidaugment1",
+		"fubreathaugment1": "fubreathaugment1",
+		"fucoldaugment1": "fucoldaugment1",
+		"fucoldaugment2": "fucoldaugment2",
+		"fuheataugment1": 	"fuheataugment1",
+		"fuheataugment2": "fuheataugment2",
+		"insanityimmunityaug" : "insanityimmunityaug",
+		"biooozeprotection": "biooozeprotection",
+		"furadaugment1": "furadaugment1",
+		"furadaugment2": "furadaugment2",
+		"fupoisonaugment1": "fupoisonaugment1",
+		"futotalimmunity1": "futotalimmunity1",
+		"futotalimmunity2": "futotalimmunity2",
+		"fuaetherimmunityaugment": "fuaetherimmunityaugment",
+		"shadowimmunityaug": "shadowimmunity1",
+		"darknessimmunityaug": "darknessimmunityaug",
+		"protoimmunityaugment":	"protoimmunityaugment",
+		"ghostimmunityaug": "ghostimmunityaug",
+
+		"fuelectricresistanceaugment": "fuelectricresistanceaugment",
+		"fucosmicresistanceaugment": "fucosmicresistanceaugment",
+		"fucosmicresistanceaugment2": "fucosmicresistanceaugment2",
+		"fucosmicresistanceaugment3": "fucosmicresistanceaugment3",
+		"fufireresistanceaugment": "fufireresistanceaugment",
+		"fuiceresistaugment": "fuiceresistaugment",
+		"fupoisonresistanceaugment": "fupoisonresistanceaugment",
+		"furadioactiveresistanceaugment": "furadioactiveresistanceaugment",
+		"fushadowresistanceaugment": "fushadowresistanceaugment",
+		"cosmicresistanceaugment": "cosmicresistanceaugment",
+		"electricresistanceaugment": "electricresistanceaugment",
+		"fireresistanceaugment": "fireresistanceaugment",
+		"iceresistanceaugment": "iceresistanceaugment",
+		"physicalresistanceaugment": "physicalresistanceaugment",
+		"poisonresistanceaugment": "poisonresistanceaugment",
+		"radioactiveresistanceaugment": "radioactiveresistanceaugment",
+		"shadowresistanceaugment": "shadowresistanceaugment",
+
+		"feedaugment1": "feedaugment1",
+		"feedaugment2": "feedaugment2",
+		"feedaugment3": "feedaugment3",
+		"foodimmunityaugment": "foodimmunityaugment",
+
+		"furegenaugment1": "furegenaugment1",
+		"furegenaugment2": "furegenaugment2",
+		"furegenaugment3": "furegenaugment3",
+
+		"fumobility1": "fumobility1",
+		"fumobility2": "fumobility2",
+		"fumobility3": "fumobility3",
+
+		"fuwaterwalk": "fuwaterwalk",
+		"fuglideaugment": "fuglideaugment",
+		"berserkeraugment": "berserkeraugment",
+		"8bitpowerup": "8bitpowerup",
+
+		"fudefenseaugment1": "fudefenseaugment1",
+		"fudefenseaugment2": "fudefenseaugment2",
+		"fudefenseaugment3": "fudefenseaugment3",
+		"fudefenseaugment4": "fudefenseaugment4",
+
+		"floranartifactaugment": "floranartifactaugment",
+		"hylotlartifactaugment": "hylotlartifactaugment",
+		"avianartifactaugment": "avianartifactaugment",
+		"apexartifactaugment": "apexartifactaugment",
+		"glitchartifactaugment": "glitchartifactaugment",
+		"humanartifactaugment": "humanartifactaugment",
+		"novakidartifactaugment": "novakidartifactaugment",
+		"erchiusartifactaugment": "erchiusartifactaugment",
+		"warbotartifact": "warbotartifact",
+
+		"severedhandinabagaugment": "severedhandinabagaugment",
+		"roadkillaugment": "roadkillaugment",
+		"charmbracelet": "charmbracelet",
+		"fleamarketspecial": "fleamarketspecial",
+		"eyeofyokar": "eyeofyokar",
+		"strangetome": "strangetome",
+		"jellylump": "jellylump",
+		"luckyseveredtoe": "luckyseveredtoe",
+
+		"pushbackaugment": "pushbackaugment",
+		"pushbackaugment2": "pushbackaugment2",
+		"pushbackaugment3": "pushbackaugment3",
+
+		"fu_pickuprangeaugment1": "fu_pickuprangeaugment1",
+		"fu_pickuprangeaugment2": "fu_pickuprangeaugment2",
+		"fu_pickuprangeaugment3": "fu_pickuprangeaugment3",
+
+		"extraenergising": "extraenergisingaugment",
+		"extraspring": "extraspringaugment",
+		"extraresistance": "extraresistanceaugment",
+		"extragravity": "extragravityaugment",
+
+		"fuammoaugment": "fuammoaugment",
+		"fuammoaugment2": "fuammoaugment2",
+		"fuammoaugment3": "fuammoaugment3",
+		"fuammoaugment4": "fuammoaugment4",
+		"fuammoaugment5": "fuammoaugment5",
+
+		"fureloadaugment": "fureloadaugment",
+		"fureloadaugment2": "fureloadaugment2",
+		"fureloadaugment3": "fureloadaugment3",
+		"fureloadaugment4": "fureloadaugment4",
+		"fureloadaugment5": "fureloadaugment5"
+
+	},
+
+	"collarMap" : {
+		"bouncycollar": "bouncycollar",
+
+		"healing1": "healingcollar1",
+		"healing2": "healingcollar2",
+		"healing3": "healingcollar3",
+
+		"health1": "healthcollar1",
+		"health2": "healthcollar2",
+		"health3": "healthcollar3",
+
+		"damage1": "damagecollar1",
+		"damage2": "damagecollar2",
+		"damage3": "damagecollar3",
+
+		"icebomb": "icebombcollar",
+		"poisonbomb": "poisonbombcollar",
+		"electricbomb": "electricbombcollar",
+		"firebomb": "firebombcollar",
+
+		"ghostly": "ghostlycollar",
+		"oblivious": "obliviouscollar",
+		"weee" : "weee",
+		"partytimecollar" : "partytimecollar",
+		"lowgravcollar": "lowgravcollar",
+		"shadowcollar": "shadowcollar",
+		"swimcollar": "swimcollar",
+
+		"slaughterbite": "slaughterbite",
+		"glitchtopcollar" : "glitchtopcollar",
+		"glitchtopcollarbroken" : "glitchtopcollarbroken",
+
+		"fireauracollar" : "fireauracollar",
+		"fireauracollar2" : "fireauracollar2",
+		"fireauracollar3" : "fireauracollar3",
+
+		"iceauracollar" : "iceauracollar",
+		"iceauracollar2" : "iceauracollar2",
+		"iceauracollar3" : "iceauracollar3",
+
+		"poisonauracollar" : "poisonauracollar",
+		"poisonauracollar2" : "poisonauracollar",
+		"poisonauracollar3" : "poisonauracollar",
+
+		"electricauracollar" : "electricauracollar",
+		"electricauracollar2" : "electricauracollar2",
+		"electricauracollar3" : "electricauracollar3",
+
+		"shadowauracollar" : "shadowauracollar",
+		"shadowauracollar2" : "shadowauracollar2",
+		"shadowauracollar3" : "shadowauracollar3",
+
+		"radioactiveauracollar" : "radioactiveauracollar",
+		"radioactiveauracollar2" : "radioactiveauracollar2",
+		"radioactiveauracollar3" : "radioactiveauracollar3",
+
+		"cosmicauracollar" : "cosmicauracollar",
+		"cosmicauracollar2" : "cosmicauracollar2",
+		"cosmicauracollar3" : "cosmicauracollar3"
+	},
+
+	"reelMap" : {
+		"fast" : "fishingreelfast",
+		"strong": "fishingreelstrong",
+		"long": "fishingreellong"
+	},
+
+	"lureMap" :{
+		"control": "fishinglurecontrol",
+		"light": "fishinglurelight",
+		"sinking": "fishingluresinking"
+	}
+
+}

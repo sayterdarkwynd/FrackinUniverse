@@ -1,0 +1,57 @@
+{
+  "objectName" : "veluushiplightBroken",
+  "colonyTags" : ["misc"],
+  "rarity" : "Common",
+  "category" : "light",
+  "lightColor" : [24, 31, 171],
+
+  "flickerPeriod" : 0.01,
+  "flickerMinIntensity" : 0.25,
+  "flickerMaxIntensity" : 0.75,
+  "flickerPeriodVariance" : 0.8,
+  "flickerIntensityVariance" : 0.25,
+
+  "price" : 50,
+  "description" : "A malfunctioning light.",
+  "shortdescription" : "Broken Ship Light",
+  "race" : "veluu",
+
+  "apexDescription" : "This light isn't getting enough power.",
+  "avianDescription" : "A flickering light.",
+  "floranDescription" : "Broken light makesss Floran dizzy.",
+  "glitchDescription" : "Concerned. This light is malfunctioning.",
+  "humanDescription" : "This light's on the blink.",
+  "hylotlDescription" : "An underpowered light.",
+  "novakidDescription" : "This light ain't gettin' enough power.",
+
+  "inventoryIcon" : "veluushiplightBrokenicon.png",
+  "orientations" : [
+    {
+      "image" : "veluushiplight.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationCycle" : 0.5,
+
+      "lightPosition" : [-1, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/fluorescent_light_quiet.ogg",
+  "soundEffectRangeMultiplier" : 0.5,
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "veluushiplight.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+}

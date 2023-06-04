@@ -1,0 +1,96 @@
+{
+  "itemName" : "npcfloranassaultrifle",
+  "price" : 0,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "An automatic rifle made of organic material.",
+  "shortdescription" : "NPC Floran Assault Rifle",
+  "tooltipKind" : "gun",
+  "category" : "assaultRifle",
+  "twoHanded" : true,
+  "itemTags" : ["floran", "weapon","ranged","assaultrifle","floran"],
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : { },
+  "animationCustom" : { },
+  "baseOffset" : [-1.0, 0.25],
+  "muzzleOffset" : [0.0, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+  "scriptDelta" : 2,
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.15,
+    "baseDps" : 9.5,
+    "energyUsage" : 15,
+    "inaccuracy" : 0.02,
+
+    "fireType" : "auto",
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "knockbackRange" : [4,8]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.075,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "fireSounds" : [ "/sfx/gun/needler1.ogg" ],
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "animationParts" : {
+      "butt" : {
+        "path" : "/items/active/weapons/ranged/assaultrifle/floran/butt/<variant>.png",
+        "variants" : 4,
+        "paletteSwap" : true
+      },
+      "middle" : {
+        "path" : "/items/active/weapons/ranged/assaultrifle/floran/middle/<variant>.png",
+        "variants" : 4,
+        "paletteSwap" : true
+      },
+      "barrel" : {
+        "path" : "/items/active/weapons/ranged/assaultrifle/floran/barrel/<variant>.png",
+        "variants" : 4,
+        "paletteSwap" : true
+      },
+      "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+    },
+    "gunParts" : ["butt", "middle", "barrel"],
+    "altAbilities" : [ ],
+    "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
+    "iconDrawables" : ["butt", "middle", "barrel"]
+  }]
+}

@@ -1,0 +1,100 @@
+{
+  "type" : "crewmemberagaran",
+  "baseType" : "fu_crewmember",
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "behavior" : "crewmembermute"
+    },
+
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "shroomhead3",
+        "chest" : "florantier2chest",
+        "legs" : "florantier2pants"
+      },
+
+      "role" : {
+        "type" : "soldier",
+        "name" : "Agaran Sellsword",
+        "field" : "Sellsword",
+        "uniformColorIndex" : 11,
+
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "fupoisonresistance",
+            "duration" : 300
+          }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "offer" : {
+          "default" : {
+            "default" : [
+              "Hoom! Hoom hoom shroomboss! Clink clink chop bang?"
+            ]
+          }
+        },
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "Hoom haba cantara!"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Halhoom nab chop! Carpa!"
+            ]
+          }
+        },
+        "respawned" : {
+          "default" : {
+            "default" : [
+              "Clink clink! Clink clink mushroom!"
+            ]
+          }
+        },
+        "follow" : {
+          "default" : {
+            "default" : [
+              "Hoom!"
+            ]
+          }
+        },
+        "unfollow" : {
+          "default" : {
+            "default" : [
+              "Hoom weepa? Nab!"
+            ]
+          }
+        },
+        "cantreach" : {
+          "default" : {
+            "default" : [
+              "Hoomay mesti, plesta!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "mushroomgun" ],
+            "sheathedprimary" : [ "fushroomsword" ],
+            "sheathedalt" : [ "mushroomshield" ]
+          }
+        ] ]
+    ]
+  }
+}

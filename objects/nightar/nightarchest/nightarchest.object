@@ -1,0 +1,45 @@
+{
+  "objectName" : "nightarchest",
+  "colonyTags" : ["nightar","storage"],
+  "rarity" : "common",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "race" : "nightar",
+  "health" : 1.5,
+
+  "category" : "storage",
+  "price" : 75,
+  "printable" : false,
+  "description" : "A small Nightarian chest.",
+  "shortdescription" : "Nightarian Chest",
+
+  "inventoryIcon" : "nightarchesticon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "nightarchest.png:<color>.<key>", "fullbright" : true }, { "image" : "nightarchestlit.png:<color>.<key>" } ],
+      "imagePosition" : [-16, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "nightarchest.png:<color>.<key>", "fullbright" : true }, { "image" : "nightarchestlit.png:<color>.<key>" } ],
+      "imagePosition" : [-16, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/chest_small_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/chest_small_close.ogg" ],
+  "slotCount" : 32,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+}

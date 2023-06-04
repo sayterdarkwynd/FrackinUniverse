@@ -6,7 +6,7 @@
   "description" : "A hideous, cooked block made of some kind of flesh.",
   "shortdescription" : "Cooked Flesh Block",
   "glitchDescription" : "Disgust. A block made of flesh.",
-  "floranDescription" : "Sssquishy meat block.",
+  "floranDescription" : "Sssquishy pre-cooked meat block.",
   "footstepSound" : "/sfx/blocks/footstep_brains.ogg",
   "health" : 4.6,
   "category": "materials",
@@ -16,20 +16,25 @@
     "texture" : "cookedflesh.png",
     "variants" : 5,
     "lightTransparent" : false,
-    "multiColored" : false,
+    "multiColored" : true,
     "occludesBelow" : true,
     "zLevel" : 0
   },
   "liquidInteractions" : [
       {
+        "liquidId": 2,
+        "consumeLiquid": 0.05,
+        "transformMaterialId": 6691
+      },
+      {
         "liquidId": 3,
-        "consumeLiquid": 0.45,
+        "consumeLiquid": 0.25,
         "transformMaterialId": 6583
       },
       {
         "liquidId": 40,
-        "consumeLiquid": 0.45,
+        "consumeLiquid": 0.25,
         "transformMaterialId": 165
-      }  
-  ]  
+      }
+  ]
 }

@@ -1,0 +1,102 @@
+{
+  "animationCustom" : {
+    "animatedParts" : { "parts" : {
+      "grenadelauncher" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [0, 0],
+          "transformationGroups" : ["muzzle"],
+          "firePosition" : [0, 0],
+          "image" : ""
+        }
+      }
+    }},
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "rotationGroup" : "weapon",
+        "emissionRate" : 8,
+        "offsetPart" : "muzzleFlash",
+        "offsetRegion" : [0.5, 1.0, 1.0, 1.5],
+        "particles" : [
+        ]
+      }
+    },
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/grenade2.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Energy Platform",
+    "type" : "energyplatform",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "projectileType" : "fuplatformprojectile",
+    "projectileParameters" : {
+      "timeToLive" : 3,
+      "speed" : 5,
+	"periodicActions" : [
+	    {
+	      "action" : "projectile",
+	      "time" : 0.3,
+	      "type" : "icegas",
+	      "fuzzAngle" : 360,
+	      "inheritDamageFactor" : 0.05,
+	      "angleAdjust" : 0,
+	      "config" : {
+		"timeToLive" : 1.15,
+		"speed" : 5,
+		"statusEffects" : [ "stun" ]
+	      }
+	    },
+	    {
+	      "time" : 0,
+	      "repeat" : false,
+	      "action" : "sound",
+	      "options" : [ "/sfx/tech/vehicle_appear2.ogg" ]
+	    },
+	    {
+	      "time" : 4,
+	      "repeat" : false,
+	      "action" : "sound",
+	      "options" : [ "/sfx/tech/vehicle_disappear2.ogg" ]
+	    }
+	]
+    },
+
+    "projectileCount" : 1,
+
+    "inaccuracy" : 0,
+    "baseDps" : 5,
+    "energyUsage" : 17,
+    "fireTime" : 1.5,
+    "fireType" : "auto",
+
+    "firePositionPart" : "grenadelauncher",
+    "hidePrimaryMuzzleFlash" : true,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

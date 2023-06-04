@@ -1,0 +1,106 @@
+{
+  "itemName" : "penumbriteassaultrifle",
+  "price" : 300,
+  "inventoryIcon" : "penumbriteassaultrifle.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Specially treated rounds harm any element equally.
+^yellow;Universal Damage^reset;",
+  "shortdescription" : "Penumbrite Assault Rifle",
+  "level" : 3,
+  "category" : "assaultRifle",
+  "itemTags" : ["weapon","ranged","assaultrifle","silver", "upgradeableWeapon","penumbrite"],
+  "tooltipKind" : "gun2",
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "penumbriteassaultrifle.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+  },
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/weapons/darkbeam.wav" ] },
+    "lights" : { "muzzleFlash" : {"color" : [55, 55, 95] } },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "snowflakeshurikentrail", "offset" : [0.0, 0.0] }
+        ]
+      }
+    }
+  },
+
+  "baseOffset" : [0.8, 0.54],
+  "muzzleOffset" : [1.7, 0.15],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "silverweapon",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
+    "fireTime" : 0.3,
+    "baseDps" : 4.0,
+    "useEnergy" : true,
+    "energyUsage" : 30,
+    "runSlowWhileShooting" : true,
+    "fireType" : "burst",
+
+    "inaccuracy" : 0.004,
+    "burstCooldown" : 0.1,
+    "burstTime" : 0.055,
+    "burstCount" : 2,
+
+    "projectileCount" : 1,
+    "projectileType" : "penumbrashotgunbullet",
+    "projectileParameters" : {
+      "speed" : 64
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0.01,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.01,
+        "armRotation" : 2,
+        "weaponRotation" : 3,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 4,
+  "isAmmoBased" : 1,
+  "magazineSize" : 10,
+  "reloadTime" : 1.125,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 400,
+
+  "altAbilityType" : "grenadelauncher",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

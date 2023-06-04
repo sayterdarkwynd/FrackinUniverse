@@ -1,0 +1,56 @@
+{
+  "objectName" : "slimepersonshipdoor",
+  "colonyTags" : ["slimeperson","door","slimenpc","slimenpchuman"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 125,
+  "description" : "A door suitable for a spaceship.",
+  "shortdescription" : "Slime Ship Door",
+  "race" : "slimeperson",
+
+  "slimepersonDescription" : "Just a typical spaceship door.",
+  "apexDescription" : "These doors are used on all our ships.",
+  "avianDescription" : "A spaceship door.",
+  "floranDescription" : "Ssspaceship door.",
+  "glitchDescription" : "Proud. A ship door.",
+  "humanDescription" : "Cool door.",
+  "hylotlDescription" : "A basic spaceship door.",
+  "novakidDescription" : "A door.",
+
+  "inventoryIcon" : "slimepersonshipdooricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "slimepersonshipdoor.png:default",
+      "imagePosition" : [-20, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/slimeshipdooropen.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/slimeshipdoorclose.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "slimepersonshipdoor.png"
+  },
+  "animationPosition" : [-20, 0],
+
+  "inputNodes" : [ [-1, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

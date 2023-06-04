@@ -1,0 +1,24 @@
+{
+  "projectileName" : "bioblastwand",
+  "image" : "bioblastwand.png",
+  "physics" : "laser",
+  "animationCycle" : 0.7,
+  "frameNumber" : 11,
+  "power" : 5,
+  "level" : 4,
+  "speed" : 8,
+  "fullbright": true,
+  "timeToLive" : 0.7,
+  "lightColor" : [17,77,83],
+  "damageKind" : "electric",
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "roar",
+      "inheritDamageFactor" : 0.05,
+      "fuzzAngle" : 0
+    }
+  ],
+  "emitters" : [ "corrosive" ],
+  "statusEffects" : [ "burn" ]
+}

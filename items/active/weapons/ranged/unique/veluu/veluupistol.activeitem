@@ -1,0 +1,139 @@
+{
+  "itemName" : "veluupistol",
+  "price" : 40,
+  "inventoryIcon" : "veluupistol.png",
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "A dangerously purrfect pistol.
+^yellow;Counts as 'electric' for set bonuses^reset;",
+  "shortdescription" : "Vel'uuish Recoiler",
+  "category" : "machinePistol",
+  "level" : 2,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Plasma",
+  "itemTags" : ["weapon","ranged","machinepistol","electric","upgradeableWeapon","veluu"],
+  "twoHanded" : false,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "veluupistol.png",
+    "middlefullbright" : "",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastlightblue.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.5, 0.0]//Same as BaseOffset
+		  }
+		}
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/gun/plasma_ar4.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.5, 0.0],
+  "muzzleOffset" : [0.3, 0.25],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.15,
+    "baseDps" : 6.3,
+    "energyUsage" : 21.0,
+    "inaccuracy" : 0.04,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "electricguardianpellet",
+    "projectileParameters" : {
+      "speed" : 60,
+      "knockback" : 3.5,
+      "statusEffects" : [ "electrified" ]
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : false,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.011,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+
+  "critChance" : 1,
+  "critBonus" : 3,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 200,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+    "upgradeParameters" : {
+  "description" : "A dangerously purrfect pistol.",
+  "shortdescription" : "^cyan;Veluuish Recoiler II^reset; ^yellow;^reset;",
+  "animationParts" : {
+    "middle" : "veluupistol2.png"
+    },
+    "inventoryIcon" : [ { "image" : "veluupistol2.png" } ],
+	  "primaryAbility" : {
+	    "projectileType" : "electricguardianpellet",
+	    "projectileParameters" : {
+	      "bounces" : 2,
+	      "speed" : 64,
+	      "knockback" : 7.5,
+      	      "statusEffects" : [ "electrified" ]
+	    }
+	  }
+      },
+    "upgradeParameters2" : {
+  "description" : "A dangerously purrfect pistol.",
+  "shortdescription" : "^cyan;Veluuish Recoiler III^reset; ^yellow;^reset;",
+  "animationParts" : {
+    "middle" : "veluupistol3.png"
+    },
+    "inventoryIcon" : [ { "image" : "veluupistol3.png" } ],
+	  "primaryAbility" : {
+	    "projectileType" : "electricguardianpellet",
+	    "projectileParameters" : {
+	      "bounces" : 4,
+	      "speed" : 64,
+	      "knockback" : 8.5,
+      	      "statusEffects" : [ "electrified" ]
+	    }
+	  }
+      }
+
+}

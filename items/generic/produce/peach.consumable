@@ -1,0 +1,20 @@
+{
+	"itemName": "peach",
+	"inventoryIcon": "peach.png",
+	"category": "food",
+	"price": 3,
+	"rarity": "Common",
+	"foodValue": 4,
+	"maxStack": 100,
+
+	"tooltipKind": "food",
+	"description": "A fresh, juicy peach, ripe for baking or consuming with my face! ^green;Type: Fruit^reset;",
+	"shortdescription": "Peach",
+    "effects" : [ [ "fruit_food" ] ],
+	"eventCategory": "eventCrop",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1.0,
+	"blockingEffects" : [ "wellfed" ]//,
+	//"learnBlueprintsOnPickup": ["fupeachpie"]
+}

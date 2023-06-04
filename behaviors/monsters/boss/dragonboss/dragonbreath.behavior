@@ -1,0 +1,2448 @@
+{
+  "name": "dragonboss-breath",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/projectiles.lua"
+  ],
+  "parameters": {
+    "headRotationCenter": [4.125, 2.5],
+    "projectileSpawnOffset": [3.75, -3.5],
+    "headAngleOffset": 0.7
+  },
+  "root": {
+    "title": "Reset",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "faceEntity",
+        "type": "action",
+        "name": "faceEntity",
+        "parameters": {
+          "entity": {"key": "target"}
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": -1},
+          "success": {"value": -1}
+        },
+        "children": [
+          {
+            "title": "controlApproachVelocity",
+            "type": "action",
+            "name": "controlApproachVelocity",
+            "parameters": {
+              "force": {"value": 20},
+              "velocity": {"value": [0, 0]}
+            }
+          },
+          {
+            "title": "timer",
+            "type": "action",
+            "name": "timer",
+            "parameters": {
+              "time": {"value": 0.5}
+            }
+          }
+        ]
+      },
+      {
+        "title": "vecMultiply",
+        "type": "action",
+        "name": "vecMultiply",
+        "parameters": {
+          "first": {"key": "<headRotationCenter>"},
+          "second": {"value": ["facingDirection", 1]}
+        },
+        "output": {
+          "vector": "headRotationCenter"
+        }
+      },
+      {
+        "title": "entityDirection",
+        "type": "action",
+        "name": "entityDirection",
+        "parameters": {
+          "entity": {"key": "self"},
+          "offset": {"key": "headRotationCenter"},
+          "target": {"key": "target"}
+        },
+        "output": {
+          "vector": "aimVector"
+        }
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "aimVector"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "facingVector"
+            }
+          },
+          {
+            "title": "vecAngle",
+            "type": "action",
+            "name": "vecAngle",
+            "parameters": {
+              "vector": {"key": "facingVector"}
+            },
+            "output": {
+              "angle": "targetAngle"
+            }
+          },
+          {
+            "title": "add",
+            "type": "action",
+            "name": "add",
+            "parameters": {
+              "addend": {"key": "<headAngleOffset>"},
+              "number": {"key": "targetAngle"}
+            },
+            "output": {
+              "result": "targetAngle"
+            }
+          }
+        ]
+      },
+
+
+
+
+      //***************************new
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecRotate",
+            "type": "action",
+            "name": "vecRotate",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "vector": {"key": "<projectileSpawnOffset>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecAdd",
+            "type": "action",
+            "name": "vecAdd",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"key": "<headRotationCenter>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "resetTransformationGroup",
+            "type": "action",
+            "name": "resetTransformationGroup",
+            "parameters": {
+              "transformationGroup": {"value": "head"}
+            }
+          },
+          {
+            "title": "rotateTransformationGroup",
+            "type": "action",
+            "name": "rotateTransformationGroup",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "rotationCenter": {"key": "<headRotationCenter>"},
+              "transformationGroup": {"value": "head"}
+            }
+          }
+        ]
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "attack"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "playSound",
+        "type": "action",
+        "name": "playSound",
+        "parameters": {
+          "sound": {"value": "flameBreath"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "spawnProjectile",
+        "type": "action",
+        "name": "spawnProjectile",
+        "parameters": {
+          "aimVector": {"key": "aimVector"},
+          "offset": {"key": "projectileOffset"},
+          "position": {"key": "self"},
+          "projectileConfig": {"value": {}},
+          "projectileType": {"value": "magnorbhellfire"},
+          "scalePower": {"value": true},
+          "sourceEntity": {"key": "self"},
+          "trackSource": {"value": false}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.22}
+        }
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "winddown"},
+          "type": {"value": "attack"}
+        }
+      },
+
+      //***************************new
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecRotate",
+            "type": "action",
+            "name": "vecRotate",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "vector": {"key": "<projectileSpawnOffset>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecAdd",
+            "type": "action",
+            "name": "vecAdd",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"key": "<headRotationCenter>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "resetTransformationGroup",
+            "type": "action",
+            "name": "resetTransformationGroup",
+            "parameters": {
+              "transformationGroup": {"value": "head"}
+            }
+          },
+          {
+            "title": "rotateTransformationGroup",
+            "type": "action",
+            "name": "rotateTransformationGroup",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "rotationCenter": {"key": "<headRotationCenter>"},
+              "transformationGroup": {"value": "head"}
+            }
+          }
+        ]
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "attack"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "playSound",
+        "type": "action",
+        "name": "playSound",
+        "parameters": {
+          "sound": {"value": "flameBreath"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "spawnProjectile",
+        "type": "action",
+        "name": "spawnProjectile",
+        "parameters": {
+          "aimVector": {"key": "aimVector"},
+          "offset": {"key": "projectileOffset"},
+          "position": {"key": "self"},
+          "projectileConfig": {"value": {}},
+          "projectileType": {"value": "magnorbhellfire"},
+          "scalePower": {"value": true},
+          "sourceEntity": {"key": "self"},
+          "trackSource": {"value": false}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.22}
+        }
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "winddown"},
+          "type": {"value": "attack"}
+        }
+      },
+
+      //***************************new
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecRotate",
+            "type": "action",
+            "name": "vecRotate",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "vector": {"key": "<projectileSpawnOffset>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecAdd",
+            "type": "action",
+            "name": "vecAdd",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"key": "<headRotationCenter>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "resetTransformationGroup",
+            "type": "action",
+            "name": "resetTransformationGroup",
+            "parameters": {
+              "transformationGroup": {"value": "head"}
+            }
+          },
+          {
+            "title": "rotateTransformationGroup",
+            "type": "action",
+            "name": "rotateTransformationGroup",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "rotationCenter": {"key": "<headRotationCenter>"},
+              "transformationGroup": {"value": "head"}
+            }
+          }
+        ]
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "attack"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "playSound",
+        "type": "action",
+        "name": "playSound",
+        "parameters": {
+          "sound": {"value": "flameBreath"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "spawnProjectile",
+        "type": "action",
+        "name": "spawnProjectile",
+        "parameters": {
+          "aimVector": {"key": "aimVector"},
+          "offset": {"key": "projectileOffset"},
+          "position": {"key": "self"},
+          "projectileConfig": {"value": {}},
+          "projectileType": {"value": "magnorbhellfire"},
+          "scalePower": {"value": true},
+          "sourceEntity": {"key": "self"},
+          "trackSource": {"value": false}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 2}
+        }
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "winddown"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "resetTransformationGroup",
+        "type": "action",
+        "name": "resetTransformationGroup",
+        "parameters": {
+          "transformationGroup": {"value": "head"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+
+      {
+        "title": "vecMultiply",
+        "type": "action",
+        "name": "vecMultiply",
+        "parameters": {
+          "first": {"key": "<headRotationCenter>"},
+          "second": {"value": ["facingDirection", 1]}
+        },
+        "output": {
+          "vector": "headRotationCenter"
+        }
+      },
+      {
+        "title": "entityDirection",
+        "type": "action",
+        "name": "entityDirection",
+        "parameters": {
+          "entity": {"key": "self"},
+          "offset": {"key": "headRotationCenter"},
+          "target": {"key": "target"}
+        },
+        "output": {
+          "vector": "aimVector"
+        }
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "aimVector"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "facingVector"
+            }
+          },
+          {
+            "title": "vecAngle",
+            "type": "action",
+            "name": "vecAngle",
+            "parameters": {
+              "vector": {"key": "facingVector"}
+            },
+            "output": {
+              "angle": "targetAngle"
+            }
+          },
+          {
+            "title": "add",
+            "type": "action",
+            "name": "add",
+            "parameters": {
+              "addend": {"key": "<headAngleOffset>"},
+              "number": {"key": "targetAngle"}
+            },
+            "output": {
+              "result": "targetAngle"
+            }
+          }
+        ]
+      },
+
+
+
+
+      //***************************new
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecRotate",
+            "type": "action",
+            "name": "vecRotate",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "vector": {"key": "<projectileSpawnOffset>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecAdd",
+            "type": "action",
+            "name": "vecAdd",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"key": "<headRotationCenter>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "resetTransformationGroup",
+            "type": "action",
+            "name": "resetTransformationGroup",
+            "parameters": {
+              "transformationGroup": {"value": "head"}
+            }
+          },
+          {
+            "title": "rotateTransformationGroup",
+            "type": "action",
+            "name": "rotateTransformationGroup",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "rotationCenter": {"key": "<headRotationCenter>"},
+              "transformationGroup": {"value": "head"}
+            }
+          }
+        ]
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "attack"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "playSound",
+        "type": "action",
+        "name": "playSound",
+        "parameters": {
+          "sound": {"value": "flameBreath"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "spawnProjectile",
+        "type": "action",
+        "name": "spawnProjectile",
+        "parameters": {
+          "aimVector": {"key": "aimVector"},
+          "offset": {"key": "projectileOffset"},
+          "position": {"key": "self"},
+          "projectileConfig": {"value": {}},
+          "projectileType": {"value": "fireblastdragon"},
+          "scalePower": {"value": true},
+          "sourceEntity": {"key": "self"},
+          "trackSource": {"value": false}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.3}
+        }
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "winddown"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "resetTransformationGroup",
+        "type": "action",
+        "name": "resetTransformationGroup",
+        "parameters": {
+          "transformationGroup": {"value": "head"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      //***************************new
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecRotate",
+            "type": "action",
+            "name": "vecRotate",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "vector": {"key": "<projectileSpawnOffset>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecAdd",
+            "type": "action",
+            "name": "vecAdd",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"key": "<headRotationCenter>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "resetTransformationGroup",
+            "type": "action",
+            "name": "resetTransformationGroup",
+            "parameters": {
+              "transformationGroup": {"value": "head"}
+            }
+          },
+          {
+            "title": "rotateTransformationGroup",
+            "type": "action",
+            "name": "rotateTransformationGroup",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "rotationCenter": {"key": "<headRotationCenter>"},
+              "transformationGroup": {"value": "head"}
+            }
+          }
+        ]
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "attack"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.3}
+        }
+      },
+      {
+        "title": "playSound",
+        "type": "action",
+        "name": "playSound",
+        "parameters": {
+          "sound": {"value": "flameBreath"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "spawnProjectile",
+        "type": "action",
+        "name": "spawnProjectile",
+        "parameters": {
+          "aimVector": {"key": "aimVector"},
+          "offset": {"key": "projectileOffset"},
+          "position": {"key": "self"},
+          "projectileConfig": {"value": {}},
+          "projectileType": {"value": "fireblastdragon"},
+          "scalePower": {"value": true},
+          "sourceEntity": {"key": "self"},
+          "trackSource": {"value": false}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.3}
+        }
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "winddown"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "resetTransformationGroup",
+        "type": "action",
+        "name": "resetTransformationGroup",
+        "parameters": {
+          "transformationGroup": {"value": "head"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      //***************************new
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecRotate",
+            "type": "action",
+            "name": "vecRotate",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "vector": {"key": "<projectileSpawnOffset>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecAdd",
+            "type": "action",
+            "name": "vecAdd",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"key": "<headRotationCenter>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "resetTransformationGroup",
+            "type": "action",
+            "name": "resetTransformationGroup",
+            "parameters": {
+              "transformationGroup": {"value": "head"}
+            }
+          },
+          {
+            "title": "rotateTransformationGroup",
+            "type": "action",
+            "name": "rotateTransformationGroup",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "rotationCenter": {"key": "<headRotationCenter>"},
+              "transformationGroup": {"value": "head"}
+            }
+          }
+        ]
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "attack"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "playSound",
+        "type": "action",
+        "name": "playSound",
+        "parameters": {
+          "sound": {"value": "flameBreath"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "spawnProjectile",
+        "type": "action",
+        "name": "spawnProjectile",
+        "parameters": {
+          "aimVector": {"key": "aimVector"},
+          "offset": {"key": "projectileOffset"},
+          "position": {"key": "self"},
+          "projectileConfig": {"value": {}},
+          "projectileType": {"value": "fireblastdragon"},
+          "scalePower": {"value": true},
+          "sourceEntity": {"key": "self"},
+          "trackSource": {"value": false}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 3}
+        }
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "winddown"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "resetTransformationGroup",
+        "type": "action",
+        "name": "resetTransformationGroup",
+        "parameters": {
+          "transformationGroup": {"value": "head"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "vecMultiply",
+        "type": "action",
+        "name": "vecMultiply",
+        "parameters": {
+          "first": {"key": "<headRotationCenter>"},
+          "second": {"value": ["facingDirection", 1]}
+        },
+        "output": {
+          "vector": "headRotationCenter"
+        }
+      },
+      {
+        "title": "entityDirection",
+        "type": "action",
+        "name": "entityDirection",
+        "parameters": {
+          "entity": {"key": "self"},
+          "offset": {"key": "headRotationCenter"},
+          "target": {"key": "target"}
+        },
+        "output": {
+          "vector": "aimVector"
+        }
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "aimVector"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "facingVector"
+            }
+          },
+          {
+            "title": "vecAngle",
+            "type": "action",
+            "name": "vecAngle",
+            "parameters": {
+              "vector": {"key": "facingVector"}
+            },
+            "output": {
+              "angle": "targetAngle"
+            }
+          },
+          {
+            "title": "add",
+            "type": "action",
+            "name": "add",
+            "parameters": {
+              "addend": {"key": "<headAngleOffset>"},
+              "number": {"key": "targetAngle"}
+            },
+            "output": {
+              "result": "targetAngle"
+            }
+          }
+        ]
+      },
+
+
+
+      //********************** original
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecRotate",
+            "type": "action",
+            "name": "vecRotate",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "vector": {"key": "<projectileSpawnOffset>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecAdd",
+            "type": "action",
+            "name": "vecAdd",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"key": "<headRotationCenter>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "resetTransformationGroup",
+            "type": "action",
+            "name": "resetTransformationGroup",
+            "parameters": {
+              "transformationGroup": {"value": "head"}
+            }
+          },
+          {
+            "title": "rotateTransformationGroup",
+            "type": "action",
+            "name": "rotateTransformationGroup",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "rotationCenter": {"key": "<headRotationCenter>"},
+              "transformationGroup": {"value": "head"}
+            }
+          }
+        ]
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "attack"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.35}
+        }
+      },
+      {
+        "title": "playSound",
+        "type": "action",
+        "name": "playSound",
+        "parameters": {
+          "sound": {"value": "flameBreath"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "spawnProjectile",
+        "type": "action",
+        "name": "spawnProjectile",
+        "parameters": {
+          "aimVector": {"key": "aimVector"},
+          "offset": {"key": "projectileOffset"},
+          "position": {"key": "self"},
+          "projectileConfig": {"value": {}},
+          "projectileType": {"value": "fudragonprojectile"},
+          "scalePower": {"value": true},
+          "sourceEntity": {"key": "self"},
+          "trackSource": {"value": false}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 2}
+        }
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "winddown"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "vecMultiply",
+        "type": "action",
+        "name": "vecMultiply",
+        "parameters": {
+          "first": {"key": "<headRotationCenter>"},
+          "second": {"value": ["facingDirection", 1]}
+        },
+        "output": {
+          "vector": "headRotationCenter"
+        }
+      },
+      {
+        "title": "entityDirection",
+        "type": "action",
+        "name": "entityDirection",
+        "parameters": {
+          "entity": {"key": "self"},
+          "offset": {"key": "headRotationCenter"},
+          "target": {"key": "target"}
+        },
+        "output": {
+          "vector": "aimVector"
+        }
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "aimVector"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "facingVector"
+            }
+          },
+          {
+            "title": "vecAngle",
+            "type": "action",
+            "name": "vecAngle",
+            "parameters": {
+              "vector": {"key": "facingVector"}
+            },
+            "output": {
+              "angle": "targetAngle"
+            }
+          },
+          {
+            "title": "add",
+            "type": "action",
+            "name": "add",
+            "parameters": {
+              "addend": {"key": "<headAngleOffset>"},
+              "number": {"key": "targetAngle"}
+            },
+            "output": {
+              "result": "targetAngle"
+            }
+          }
+        ]
+      },
+
+
+
+      //***************************new
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecRotate",
+            "type": "action",
+            "name": "vecRotate",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "vector": {"key": "<projectileSpawnOffset>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecAdd",
+            "type": "action",
+            "name": "vecAdd",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"key": "<headRotationCenter>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "resetTransformationGroup",
+            "type": "action",
+            "name": "resetTransformationGroup",
+            "parameters": {
+              "transformationGroup": {"value": "head"}
+            }
+          },
+          {
+            "title": "rotateTransformationGroup",
+            "type": "action",
+            "name": "rotateTransformationGroup",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "rotationCenter": {"key": "<headRotationCenter>"},
+              "transformationGroup": {"value": "head"}
+            }
+          }
+        ]
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "attack"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "playSound",
+        "type": "action",
+        "name": "playSound",
+        "parameters": {
+          "sound": {"value": "flameBreath"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "spawnProjectile",
+        "type": "action",
+        "name": "spawnProjectile",
+        "parameters": {
+          "aimVector": {"key": "aimVector"},
+          "offset": {"key": "projectileOffset"},
+          "position": {"key": "self"},
+          "projectileConfig": {"value": {}},
+          "projectileType": {"value": "magnorbhellfire"},
+          "scalePower": {"value": true},
+          "sourceEntity": {"key": "self"},
+          "trackSource": {"value": false}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.22}
+        }
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "winddown"},
+          "type": {"value": "attack"}
+        }
+      },
+      //***************************new
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecRotate",
+            "type": "action",
+            "name": "vecRotate",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "vector": {"key": "<projectileSpawnOffset>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecAdd",
+            "type": "action",
+            "name": "vecAdd",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"key": "<headRotationCenter>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "resetTransformationGroup",
+            "type": "action",
+            "name": "resetTransformationGroup",
+            "parameters": {
+              "transformationGroup": {"value": "head"}
+            }
+          },
+          {
+            "title": "rotateTransformationGroup",
+            "type": "action",
+            "name": "rotateTransformationGroup",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "rotationCenter": {"key": "<headRotationCenter>"},
+              "transformationGroup": {"value": "head"}
+            }
+          }
+        ]
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "attack"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "playSound",
+        "type": "action",
+        "name": "playSound",
+        "parameters": {
+          "sound": {"value": "flameBreath"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "spawnProjectile",
+        "type": "action",
+        "name": "spawnProjectile",
+        "parameters": {
+          "aimVector": {"key": "aimVector"},
+          "offset": {"key": "projectileOffset"},
+          "position": {"key": "self"},
+          "projectileConfig": {"value": {}},
+          "projectileType": {"value": "magnorbhellfire"},
+          "scalePower": {"value": true},
+          "sourceEntity": {"key": "self"},
+          "trackSource": {"value": false}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 2}
+        }
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "winddown"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "resetTransformationGroup",
+        "type": "action",
+        "name": "resetTransformationGroup",
+        "parameters": {
+          "transformationGroup": {"value": "head"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "vecMultiply",
+        "type": "action",
+        "name": "vecMultiply",
+        "parameters": {
+          "first": {"key": "<headRotationCenter>"},
+          "second": {"value": ["facingDirection", 1]}
+        },
+        "output": {
+          "vector": "headRotationCenter"
+        }
+      },
+      {
+        "title": "entityDirection",
+        "type": "action",
+        "name": "entityDirection",
+        "parameters": {
+          "entity": {"key": "self"},
+          "offset": {"key": "headRotationCenter"},
+          "target": {"key": "target"}
+        },
+        "output": {
+          "vector": "aimVector"
+        }
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "aimVector"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "facingVector"
+            }
+          },
+          {
+            "title": "vecAngle",
+            "type": "action",
+            "name": "vecAngle",
+            "parameters": {
+              "vector": {"key": "facingVector"}
+            },
+            "output": {
+              "angle": "targetAngle"
+            }
+          },
+          {
+            "title": "add",
+            "type": "action",
+            "name": "add",
+            "parameters": {
+              "addend": {"key": "<headAngleOffset>"},
+              "number": {"key": "targetAngle"}
+            },
+            "output": {
+              "result": "targetAngle"
+            }
+          }
+        ]
+      },
+
+      //***************************new
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecRotate",
+            "type": "action",
+            "name": "vecRotate",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "vector": {"key": "<projectileSpawnOffset>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecAdd",
+            "type": "action",
+            "name": "vecAdd",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"key": "<headRotationCenter>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "resetTransformationGroup",
+            "type": "action",
+            "name": "resetTransformationGroup",
+            "parameters": {
+              "transformationGroup": {"value": "head"}
+            }
+          },
+          {
+            "title": "rotateTransformationGroup",
+            "type": "action",
+            "name": "rotateTransformationGroup",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "rotationCenter": {"key": "<headRotationCenter>"},
+              "transformationGroup": {"value": "head"}
+            }
+          }
+        ]
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "attack"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "playSound",
+        "type": "action",
+        "name": "playSound",
+        "parameters": {
+          "sound": {"value": "flameBreath"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "spawnProjectile",
+        "type": "action",
+        "name": "spawnProjectile",
+        "parameters": {
+          "aimVector": {"key": "aimVector"},
+          "offset": {"key": "projectileOffset"},
+          "position": {"key": "self"},
+          "projectileConfig": {"value": {}},
+          "projectileType": {"value": "fireblastdragon"},
+          "scalePower": {"value": true},
+          "sourceEntity": {"key": "self"},
+          "trackSource": {"value": false}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.3}
+        }
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "winddown"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "resetTransformationGroup",
+        "type": "action",
+        "name": "resetTransformationGroup",
+        "parameters": {
+          "transformationGroup": {"value": "head"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      //***************************new
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecRotate",
+            "type": "action",
+            "name": "vecRotate",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "vector": {"key": "<projectileSpawnOffset>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecAdd",
+            "type": "action",
+            "name": "vecAdd",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"key": "<headRotationCenter>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "resetTransformationGroup",
+            "type": "action",
+            "name": "resetTransformationGroup",
+            "parameters": {
+              "transformationGroup": {"value": "head"}
+            }
+          },
+          {
+            "title": "rotateTransformationGroup",
+            "type": "action",
+            "name": "rotateTransformationGroup",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "rotationCenter": {"key": "<headRotationCenter>"},
+              "transformationGroup": {"value": "head"}
+            }
+          }
+        ]
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "attack"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.3}
+        }
+      },
+      {
+        "title": "playSound",
+        "type": "action",
+        "name": "playSound",
+        "parameters": {
+          "sound": {"value": "flameBreath"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "spawnProjectile",
+        "type": "action",
+        "name": "spawnProjectile",
+        "parameters": {
+          "aimVector": {"key": "aimVector"},
+          "offset": {"key": "projectileOffset"},
+          "position": {"key": "self"},
+          "projectileConfig": {"value": {}},
+          "projectileType": {"value": "fireblastdragon"},
+          "scalePower": {"value": true},
+          "sourceEntity": {"key": "self"},
+          "trackSource": {"value": false}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.3}
+        }
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "winddown"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "resetTransformationGroup",
+        "type": "action",
+        "name": "resetTransformationGroup",
+        "parameters": {
+          "transformationGroup": {"value": "head"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      //***************************new
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecRotate",
+            "type": "action",
+            "name": "vecRotate",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "vector": {"key": "<projectileSpawnOffset>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecAdd",
+            "type": "action",
+            "name": "vecAdd",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"key": "<headRotationCenter>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "resetTransformationGroup",
+            "type": "action",
+            "name": "resetTransformationGroup",
+            "parameters": {
+              "transformationGroup": {"value": "head"}
+            }
+          },
+          {
+            "title": "rotateTransformationGroup",
+            "type": "action",
+            "name": "rotateTransformationGroup",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "rotationCenter": {"key": "<headRotationCenter>"},
+              "transformationGroup": {"value": "head"}
+            }
+          }
+        ]
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "attack"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "playSound",
+        "type": "action",
+        "name": "playSound",
+        "parameters": {
+          "sound": {"value": "flameBreath"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "spawnProjectile",
+        "type": "action",
+        "name": "spawnProjectile",
+        "parameters": {
+          "aimVector": {"key": "aimVector"},
+          "offset": {"key": "projectileOffset"},
+          "position": {"key": "self"},
+          "projectileConfig": {"value": {}},
+          "projectileType": {"value": "fireblastdragon"},
+          "scalePower": {"value": true},
+          "sourceEntity": {"key": "self"},
+          "trackSource": {"value": false}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 3}
+        }
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "winddown"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "resetTransformationGroup",
+        "type": "action",
+        "name": "resetTransformationGroup",
+        "parameters": {
+          "transformationGroup": {"value": "head"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "vecMultiply",
+        "type": "action",
+        "name": "vecMultiply",
+        "parameters": {
+          "first": {"key": "<headRotationCenter>"},
+          "second": {"value": ["facingDirection", 1]}
+        },
+        "output": {
+          "vector": "headRotationCenter"
+        }
+      },
+      {
+        "title": "entityDirection",
+        "type": "action",
+        "name": "entityDirection",
+        "parameters": {
+          "entity": {"key": "self"},
+          "offset": {"key": "headRotationCenter"},
+          "target": {"key": "target"}
+        },
+        "output": {
+          "vector": "aimVector"
+        }
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "aimVector"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "facingVector"
+            }
+          },
+          {
+            "title": "vecAngle",
+            "type": "action",
+            "name": "vecAngle",
+            "parameters": {
+              "vector": {"key": "facingVector"}
+            },
+            "output": {
+              "angle": "targetAngle"
+            }
+          },
+          {
+            "title": "add",
+            "type": "action",
+            "name": "add",
+            "parameters": {
+              "addend": {"key": "<headAngleOffset>"},
+              "number": {"key": "targetAngle"}
+            },
+            "output": {
+              "result": "targetAngle"
+            }
+          }
+        ]
+      },
+
+
+
+
+      //********************** new
+
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecRotate",
+            "type": "action",
+            "name": "vecRotate",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "vector": {"key": "<projectileSpawnOffset>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecAdd",
+            "type": "action",
+            "name": "vecAdd",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"key": "<headRotationCenter>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "resetTransformationGroup",
+            "type": "action",
+            "name": "resetTransformationGroup",
+            "parameters": {
+              "transformationGroup": {"value": "head"}
+            }
+          },
+          {
+            "title": "rotateTransformationGroup",
+            "type": "action",
+            "name": "rotateTransformationGroup",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "rotationCenter": {"key": "<headRotationCenter>"},
+              "transformationGroup": {"value": "head"}
+            }
+          }
+        ]
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "attack"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.2}
+        }
+      },
+      {
+        "title": "playSound",
+        "type": "action",
+        "name": "playSound",
+        "parameters": {
+          "sound": {"value": "flameBreath"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.15}
+        }
+      },
+      {
+        "title": "spawnProjectile",
+        "type": "action",
+        "name": "spawnProjectile",
+        "parameters": {
+          "aimVector": {"key": "aimVector"},
+          "offset": {"key": "projectileOffset"},
+          "position": {"key": "self"},
+          "projectileConfig": {"value": {}},
+          "projectileType": {"value": "hellfireburst2"},
+          "scalePower": {"value": true},
+          "sourceEntity": {"key": "self"},
+          "trackSource": {"value": false}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.25}
+        }
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "winddown"},
+          "type": {"value": "attack"}
+        }
+      },
+      {
+        "title": "resetTransformationGroup",
+        "type": "action",
+        "name": "resetTransformationGroup",
+        "parameters": {
+          "transformationGroup": {"value": "head"}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.5}
+        }
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "aimVector"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "facingVector"
+            }
+          },
+          {
+            "title": "vecAngle",
+            "type": "action",
+            "name": "vecAngle",
+            "parameters": {
+              "vector": {"key": "facingVector"}
+            },
+            "output": {
+              "angle": "targetAngle"
+            }
+          },
+          {
+            "title": "add",
+            "type": "action",
+            "name": "add",
+            "parameters": {
+              "addend": {"key": "<headAngleOffset>"},
+              "number": {"key": "targetAngle"}
+            },
+            "output": {
+              "result": "targetAngle"
+            }
+          }
+        ]
+      }
+
+
+    ]
+  }
+}

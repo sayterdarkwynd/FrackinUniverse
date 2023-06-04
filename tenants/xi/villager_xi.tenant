@@ -1,0 +1,25 @@
+{
+  "name" : "villager_xi",
+  "priority" : 2,
+
+  "colonyTagCriteria": {
+    "light" : 1,
+    "door" : 1,
+    "radien" : 6
+  },
+
+  "tenants" : [{
+      "spawn" : "npc",
+      "species" : "radien",
+      "type" : "villager",
+      "overrides" : {
+	     "damageTeamType" : "friendly"
+       }
+     }
+   ],
+
+  "rent" : {
+    "periodRange" : [900.0, 1800.0],
+    "pool" : "villagerGift"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "fireKunai" : [ "/sfx/gun/wormgun1.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Cellular Slash",
+    "type" : "fucellslash",
+    "scripts" : ["/items/active/weapons/melee/abilities/broadsword/fuwaterslash/fuwaterslash.lua"],
+    "class" : "KunaiBlast",
+
+    // timing and angle adjust to launch projectiles during fire stance
+    "projectileTimesAndAngles" : [
+      [0.005, 40],
+      [0.013, 20],
+      [0.021, 10],
+      [0.025, 0],
+      [0.029, -10],
+      [0.037, -20],
+      [0.045, -40]
+    ],
+    "projectileOffset" : [2.05, 0.0],
+    "projectileType" : "irradiumpistolshot",
+    "projectileParameters" : {
+      "baseDamage" : 1
+    },
+
+    "baseDamage" : 2,
+    "energyUsage" : 70,
+    "cooldownTime" : 1.5,
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.2,
+        "armRotation" : 70,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.25,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

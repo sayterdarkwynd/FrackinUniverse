@@ -1,0 +1,65 @@
+{
+  "objectName" : "nightarcomputer",
+  "colonyTags" : ["wired","nightar"],
+  "printable" : false,
+  "rarity" : "Legendary",
+  "category" : "wire",
+  "price" : 200,
+  "lightColor" : [38, 122, 128],
+  "flickerDistance" : 0.2,
+  "flickerStrength" : 0.05,
+  "flickerTiming" : 4,
+  "description" : "A complex computer made by the Nightar.",
+  "shortdescription" : "Nightar Computer",
+  "race" : "nightar",
+
+  "apexDescription" : "They call this shiny thing a computer..",
+  "avianDescription" : "Dont know what is this.",
+  "floranDescription" : "Floran likess shiny sstuff.",
+  "glitchDescription" : "Admiration. An advanced computer made with Nightar technologies.",
+  "humanDescription" : "Hmm, a computer, but not like anythign i've seen on Earth.",
+  "hylotlDescription" : "An advanced computer",
+  "novakidDescription" : "A neat lookin' shiny computer!",
+
+  "inventoryIcon" : "nightarcomputericon.png",
+  "orientations" : [
+    {
+      "dualImage" : "nightarcomputer.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/switch/switch.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switch3.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "switch" : "nightarcomputer.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "outputNodes" : [ [0, 0] ],
+
+  "npcToy" : {
+    "ownerOnly" : true,
+    "influence" : [
+      "wallbutton"
+    ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

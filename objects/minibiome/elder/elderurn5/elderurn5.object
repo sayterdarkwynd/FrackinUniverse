@@ -1,7 +1,7 @@
 {
   "objectName" : "elderurn5",
   "rarity" : "Common",
-  "category" : "pot",
+  "category" : "decorative",
   "price" : 200,
   "description" : "An urn. Adorably smashable.",
   "shortdescription" : "An Ancient Urn",
@@ -21,13 +21,10 @@
     }
   ],
 
-
+  "smashable" : true,
   "smashSounds" : [ "/sfx/objects/pot_break_medium1.ogg", "/sfx/objects/pot_break_medium2.ogg" ],
 
-  "smashDropOptions" : [
-    [ [ "money", 1, { } ], [ "money", 1, { } ], [ "money", 1, { } ], [ "money", 1, { } ], [ "money", 1, { } ], [ "money", 1, { } ] ]
-  ],
-  "breakDropOptions" : [
-    [ [ "money", 1, { } ], [ "money", 1, { } ], [ "money", 1, { } ], [ "money", 1, { } ], [ "money", 1, { } ], [ "money", 1, { } ] ]
-  ]
+  "smashParticles" : [ { "count" : 3, "particle" : "eldershard" }, { "count" : 3, "particle" : "shadowrockshard" } ],
+  "smashDropPool" : "capsule",
+  "breakDropPool" : "capsule"
 }

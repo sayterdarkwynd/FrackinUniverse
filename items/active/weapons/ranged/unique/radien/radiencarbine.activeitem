@@ -1,0 +1,127 @@
+{
+  "itemName" : "radiencarbine",
+  "price" : 20,
+  "inventoryIcon" : "radiencarbine.png",
+    "maxStack" : 1,
+    "rarity" : "uncommon",
+  "shortdescription" : "X'ian Arm Blaster",
+  "description" : "A strange X'i-formed weapon.
+^cyan;Slows targets^reset;",
+  "level" : 2,
+  "category" : "bioweapon",
+  "itemTags" : ["weapon","ranged","pistol","radien","bioweapon","upgradeableWeapon"],
+  "tooltipKind" : "gun2",
+  "twoHanded" : false,
+  "piercing" : false,
+  "weaponType" : "Bio Pistol",
+  "handGrip" : "wrap",
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "radiencarbine.png",
+    "middlefullbright" : "radiencarbinefullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
+  },
+
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.7, 0.2]
+		  }
+		}
+      }
+    },
+    "sounds" : { "fire" : [ "/sfx/weapons/radienpistol.ogg" ] },
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [98, 98, 42],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    }}
+  },
+
+  "baseOffset" : [0.7, 0.2],
+  "muzzleOffset" : [0.3, -0.25],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.15,
+    "baseDps" : 7,
+    "energyUsage" : 30,
+    "inaccuracy" : 0.02,
+    "fireType" : "auto",
+    "projectileCount" : 1,
+    "projectileType" : "radiationguardianpellet",
+    "projectileParameters" : {
+      "speed" : 50,
+      "damageKind" : "radioactive",
+      "knockback": 2,
+      "statusEffects" : [ "slow" ],
+      "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "inheritDamageFactor" : 0.05,
+	      "type" : "radiengas",
+	      "config" : { "timeToLive" : 0.3  }
+	    },
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
+	    },
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 1,
+	      "backgroundRadius" : 1,
+	      "explosiveDamageAmount" : 1,
+	      "harvestLevel" : 99,
+	      "delaySteps" : 2
+	    }
+      ]
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 3,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

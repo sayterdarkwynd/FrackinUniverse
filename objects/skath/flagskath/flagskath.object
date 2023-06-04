@@ -1,0 +1,55 @@
+{
+  "objectName" : "flagskath",
+  "colonyTags" : ["skath"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "teleporter",
+  "category" : "teleportMarker",
+  "price" : 70,
+  "twoHanded" : false,
+  "radioMessagesOnPickup" : [ "pickupflag" ],
+
+  "description" : "The Skath flag. Use ^green;[E]^reset; to bookmark a teleportation location.",
+  "shortdescription" : "Skath Flag",
+  "race" : "skath",
+
+  "apexDescription" : "A Skath flag. I can use this as a waypoint for teleportation.",
+  "avianDescription" : "This Skath flag can be bookmarked as a destination for my ship teleporter.",
+  "floranDescription" : "Skath flag makess good point to teleport back to ussing teleporter!",
+  "glitchDescription" : "Observant. A small locator module attached to this Skath flag allows it to be bookmarked for teleportation.",
+  "humanDescription" : "This Skath flag can be saved as a location for my teleporter. Then I can return to it at any time.",
+  "hylotlDescription" : "This Skath flag can act as a way point, enabling me to return to this point using a teleporter.",
+  "novakidDescription" : "I can bookmark this Skath flag for quick teleportin'.",
+
+  "skathDescription": "The flag of our kind, the emblem of so much history and honour. I can use it as a teleportation waypoint.",
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/destinationonly.config",
+
+  "inventoryIcon" : "flagskathicon.png",
+  "orientations" : [
+    {
+      "image" : "flagskath.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+      "imagePosition" : [-17, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "flagskath.png:<color>.<frame>",
+      "direction" : "right",
+      "imagePosition" : [1, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+
+  //"soundEffect" : "/sfx/objects/flag_flap_loop.ogg"
+}

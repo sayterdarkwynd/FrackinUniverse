@@ -1,0 +1,47 @@
+{
+  "particleEmitters" : {
+    "smoke" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [ 0, 2.0, 0, 2.0 ],
+      "particles" : [
+        { "particle" : "bouncyspark" },
+        { "particle" : "bouncyspark" },
+        { "particle" : "bouncyspark" },
+        { "particle" : "bouncyspark" }
+      ]
+    },
+    "reloadText" : {
+      "enabled" : true,
+      "emissionRate" : 1.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "text",
+            "text" : "Reload",
+            "size" : 0.3,
+            "color" : [255, 255, 255, 255],
+            "fade" : 0.4,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.5,
+            "position" : [0.0, 2.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [0, 10],
+            "timeToLive" : 0.5,
+            "variance" : {}
+          }
+        }
+      ]
+    }
+  },
+
+  "transformationGroups" : {
+    "smoke" : { "interpolated" : true }
+  },
+
+
+  "sounds" : {
+    "burn" : [ "/sfx/statuseffects/powerup.ogg" ]
+  }
+}

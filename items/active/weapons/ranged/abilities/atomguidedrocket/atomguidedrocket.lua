@@ -24,7 +24,7 @@ function setupAltAbility(altAbilityConfig, elementalType)
 
     if self.fireMode == "alt"
        and not self.weapon.currentAbility
-       and self.cooldownTimer == 0 
+       and self.cooldownTimer == 0
        and not world.lineTileCollision(mcontroller.position(), self:firePosition())
        and status.overConsumeResource("energy", self:energyPerShot())  then
       self:setState(self.fire)

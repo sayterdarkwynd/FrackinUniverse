@@ -1,5 +1,7 @@
 {
   "type" : "mythicalbee",
+  "shortdescription" : "Mythical Bee",
+  "description" : "A mythical bee.",
 
   "categories" : [ "mythicalbee" ],
   "parts" : [ "body" ],
@@ -17,6 +19,7 @@
   "baseParameters" : {
     "scripts" : [
       "/monsters/bugs/bug.lua",
+      "/monsters/bees/bee.lua",
       "/scripts/util.lua",
       "/scripts/vec2.lua"
     ],
@@ -70,6 +73,7 @@
         "targetMaterialKind" : "organic"
       },
 
+      "appliesWeatherStatusEffects" : false,
       "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
@@ -90,6 +94,9 @@
         },
         "healthRegen" : {
           "baseValue" : 0
+        },
+        "cosmicResistance" : {
+          "baseValue" : 1
         }
       },
 

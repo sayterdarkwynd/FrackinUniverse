@@ -1,0 +1,73 @@
+{
+  "itemName" : "nigtarbow",
+  "price" : 440,
+  "inventoryIcon" : "nigtarbowicon.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "tooltipKind" : "bow2",
+  "category" : "bow",
+  "description" : "Specially constructed arrows damage all elements equally, but still work for hunting.",
+  "shortdescription" : "Brightsteel Bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow", "nightar", "silver", "upgradeableWeapon"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "level" : 4,
+
+  "animation" : "/items/active/weapons/bow/fubow.animation",
+  "animationParts" : {
+    "bow" : "nigtarbowfull.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0.125, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "silverweapon",
+
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : {
+    "drawTime" : 0.9,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.305,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.1,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"energyPerShot" : 20,
+	"holdEnergyUsage" : 10,
+	"airborneBonus" : 1.50,
+    "projectileType" : "silverarrow",
+    "powerProjectileType" : "chargedsilverarrow",
+    "projectileParameters" : {
+      "power" : 6.65,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 7.65,
+      "piercing" : false
+    }
+  },
+
+  "altAbilityType" : "rngbows_enhancedbowshot",
+  "altAbility" : {
+    "energyPerShot" : 35,
+    "projectileType" : "chargedsilverarrow",
+    "powerProjectileType" : "rimewindarrow",
+    "projectileParameters" : {
+      "power" : 9,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 7.65,
+      "piercing" : true
+    }
+  },
+
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
+}

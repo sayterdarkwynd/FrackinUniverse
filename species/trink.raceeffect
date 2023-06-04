@@ -1,0 +1,89 @@
+{//ERM-native status: "trinkeyelight", built-in headlights
+	"stats": [
+		{
+			"stat": "foodDelta",
+			"baseMultiplier": 0.03
+		},
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 1.3
+		},
+		{
+			"stat": "physicalResistance",
+			"amount": 0.2
+		},
+		{
+			"stat": "electricResistance",
+			"amount": -1
+		},
+		{
+			"stat": "iceResistance",
+			"amount": 0.3
+		},
+		{
+			"stat": "poisonResistance",
+			"amount": 0.5
+		},
+		{
+			"stat": "radioactiveResistance",
+			"amount": 0.5
+		},
+		{
+			"stat": "poisonStatusImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "breathProtection",
+			"amount": 1
+		},
+		{
+			"stat": "waterbreathProtection",
+			"amount": 1
+		},
+		{
+			"stat": "iceStatusImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "iceslipImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "snowslowImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "slushslowImmunity",
+			"amount": 1
+		}
+	],
+	"diet" : "robot",
+	"envEffects": [{
+			"biomes": "cold",
+			"stats": [{
+				"stat": "energyRegenPercentageRate",
+				"baseMultiplier": 1.25
+			}]
+		},
+		{
+			"biomes": "hot",
+			"stats": [{
+				"stat": "energyRegenPercentageRate",
+				"baseMultiplier": 0.5
+			}]
+		}
+	],
+	"weaponScripts": [{
+		"script": "/scripts/fr_weaponscripts/perfectblockbonus.lua",
+		"contexts": [
+			"shield-perfectblock"
+		],
+		"args": {
+			"resources": {
+				"energy": {
+					"base": 1
+				}
+			}
+		}
+	}]
+}

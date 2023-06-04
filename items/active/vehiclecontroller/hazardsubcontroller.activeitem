@@ -1,0 +1,34 @@
+{
+  "itemName" : "hazardsubcontroller",
+  "level" : 1,
+  "price" : 5000,
+  "rarity" : "legendary",
+  "category" : "vehicleController",
+  "shortdescription" : "Poseidon Sub Controller",
+  "description" : "Create a super-tough submarine from stored nanites.",
+  "twoHanded" : false,
+  "maxStack" : 1,
+  "itemTags" : ["vehiclecontroller"],
+
+  "animation" : "vehiclecontroller.animation",
+  "scripts" : ["vehiclecontroller.lua"],
+  "animationScripts" : ["vehiclecursor.lua"],
+  "filled" : true,
+  "tooltipKind" : "vehicle",
+  "largeImage" : "hazardsub.png",
+
+  "respawnTime" : 1.0,
+
+  //=============Item specifc bits.
+  "vehicleType" : "hazardsub",
+  "vehicleBoundingBox" : [-8, -4, 8, 4],
+  "vehicleImage" : "/vehicles/sub/fusubwarp.png:warp.7",
+
+  "animationParts" : {
+    "casing" : "hazardsubcontroller.png"
+  },
+
+  "inventoryIcon" : "hazardsubcontroller.png:full",
+  "emptyInventoryIcon" : "/items/active/vehiclecontroller/hazardsubcontroller.png:empty",
+  "filledInventoryIcon" : "/items/active/vehiclecontroller/hazardsubcontroller.png:full"
+}

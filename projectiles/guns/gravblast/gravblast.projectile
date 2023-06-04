@@ -5,8 +5,9 @@
   "animationCycle" : 0.4,
   "level" : 7,
   "frameNumber" : 4,
-  "power" : 1,
-  "speed" : 25,
+  "power" : 5,
+    "fullbright" : true,
+  "speed" : 2,
   "timeToLive" : 2,
   "pointLight" : true,
   "bounces" : 1,
@@ -14,13 +15,27 @@
   "piercing" : true,
 
   "lightColor" : [120,0,0],
-  "damageKind" : "fireplasma",
-  "statusEffects" : [ "gravgun" ],
+  "damageKind" : "cosmicplasma",
+  "statuseffects" : [ "gravgun" ],
   "emitters" : [ "fireplasma" ],
+
   "actionOnReap" : [
     {
       "action" : "config",
       "file" : "/projectiles/explosions/gravexplosion/gravexplosion.config"
     }
-  ]
+  ],
+
+  "orientationLocked" : true,
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 20,
+      "innerRadius" : 8,
+      "targetRadialVelocity" : 120,
+      "controlForce" : 1500,
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop"]
+    }
+  },
+  "clientEntityMode" : "ClientSlaveOnly"
 }

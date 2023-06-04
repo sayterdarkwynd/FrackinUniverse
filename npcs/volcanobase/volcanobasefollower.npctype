@@ -1,0 +1,105 @@
+{
+  "type" : "volcanobasefollower",
+  "baseType" : "follower",
+
+  "levelVariance" : [0, 0],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "follower" : {
+        "attack" : {
+          "default" : {
+            "default" : [
+              "Valorous. Into the fray!",
+			  "Enraged. Your blood will soil the land!",
+              "Grim. To battle!"
+            ]
+          }
+        },
+        "join" : {
+          "default" : {
+            "default" : [
+              "Grateful. Thank you for rescuing me.",
+			  "Eager. Allow me to do my duty as a knight and join you.",
+              "Vengeful. Let me after those who locked me in here!"
+            ]
+          }
+        },
+        "returnFromCombat" : {
+          "default" : {
+            "default" : [
+              "Victorious. You are no match for me!",
+              "Dark. You are weak!",
+              "Smug. Is this the best of the Warlord's lackeys?",
+              "Pumped. Is that all they have to throw at us?",
+              "Calm. Rest in peace."
+            ]
+          }
+        },
+        "wait" : {
+          "default" : {
+            "default" : [
+              "Unhappy. Must you go on without me? I wish to fight for glory!",
+              "Thankful. You are kind to scout ahead.",
+			  "Bored. Guard duty, eh?",
+              "Questioning. Do you need a moment?"
+            ]
+          }
+        },
+        "returnFromWait" : {
+          "default" : {
+            "default" : [
+              "Acknowledgement. Greetings once more.",
+              "Excited. Let's head off together!",
+              "Eager. You ready to move on?"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+    "movementParameters" : {
+      "runSpeed" : 20,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    },
+    "mass" : 2.0
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+		    "head" : [ { "name" : "glitchtier3head" } ],
+            "chest" : [ { "name" : "glitchtier3chest" } ],
+            "legs" : [ { "name" : "glitchtier3pants" } ],
+            "primary" : [
+              "npcbroadsword",
+              "npcshortsword"
+            ],
+            "sheathedprimary" : [
+              "npctungstenbow"
+            ],
+            "alt" : [
+              { "name" : "commonsmallshield" },
+              { "name" : "commonlargeshield" }
+            ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+
+	  "powerMultiplier" : {
+        "baseValue" : 1.5
+      },
+      "maxHealth" : {
+        "baseValue" : 500.0
+      },
+	  "maxEnergy" : {
+        "baseValue" : 100.0
+      }
+    }
+}

@@ -1,0 +1,151 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 1,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 8,
+            "cycle" : 0.3,
+            "mode" : "loop"
+          },
+          "fly" : {
+            "frames" : 8,
+            "cycle" : 0.3,
+            "mode" : "loop"
+          },
+          "throw" : {
+            "frames" : 8,
+            "cycle" : 0.3,
+            "mode" : "loop"
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "offset" : [0.0, 0.0],
+          "zLevel" : 1
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "fly" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "throw" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+  },
+
+  "lights" : {
+    "glow" : {
+      "active" : true,
+      "position" : [0, 0],
+      "color" : [255, 80, 40],
+      "pointLight" : true
+    }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "particleEmitters" : {
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+    "woodShards" : {
+      "burstCount" : 30,
+      "offsetRegion" : [-1, -5, 1, 5],
+      "particles" : [
+        { "particle" : "woodshard" }
+      ]
+    },
+    "flames" : {
+      "enabled" : true,
+      "emissionRate" : 15.0,
+      "offsetRegion" : [-4, -5, 4, 5],
+      "particles" : [
+        { "particle" : "burningdust" },
+        {
+          "particle" : {
+            "type" : "ember",
+            "size" : 1.0,
+            "color" : [253, 143, 77, 255],
+            "light" : [253, 143, 77],
+            "fade" : 0.9,
+            "initialVelocity" : [0, 3],
+            "finalVelocity" : [0, 4],
+            "approach" : [0, 20],
+            "timeToLive" : 0.8,
+            "layer" : "back",
+            "variance" : {
+              "initialVelocity" : [2, 2],
+              "size" : 0.5
+            }
+          }
+        },
+        { "particle" : "campfireflames" },
+        { "particle" : "dust2" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "fire" : [],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
+  }
+}

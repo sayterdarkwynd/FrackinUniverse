@@ -1,0 +1,43 @@
+{
+  "type" : "sunsetsheriff",
+  "baseType" : "base",
+
+  "damageTeamType" : "friendly",
+  "levelVariance" : [0, 0],
+
+  "persistent" : true,
+
+  "dropPools" : [ "villagertreasure" ],
+
+  "scriptConfig" : {
+    "behavior" : "spectator",
+
+    "dialog" : {
+      "converse" : {
+        "default" : {
+          "default" : [
+            "You shouldn't be seeing this."
+          ]
+        },
+        "novakid" : {
+          "default" : [
+            "Howdy, stranger. You're after the bounty, aren't you? Hawkeye Hank's place is on the other side of the hill...his men are thick as thieves on it, though. You could fight your way through them, or you could make your way through the mines...choice's up to you. Just come back safely, okay?"
+          ]
+        }
+      }
+    }
+  },
+
+  "matchColorIndices" : true,
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "cowboyhead" } ],
+            "chest" : [ { "name" : "novatier4chest" } ],
+            "legs" : [ { "name" : "novatier4pants" } ]
+          }
+        ] ]
+    ]
+  }
+}

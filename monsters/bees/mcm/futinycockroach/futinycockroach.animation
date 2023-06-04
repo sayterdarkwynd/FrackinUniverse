@@ -1,0 +1,58 @@
+{
+  "animatedParts" : {
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "rotationGroup" : "body",
+          "image" : "<partImage>"
+        }
+      }
+    }
+  },
+
+  "rotationGroups" : {
+    "body" : {
+      "rotationCenter" : [0, 0],
+      "angularVelocity" : 5
+    }
+  },
+
+  "particleEmitters" : {
+    "trail" : {
+      "active" : true,
+      "emissionRate" : 10.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/fizz2/fizz2.animation",
+            "size" : 0.5,
+            "angularVelocity" : 20,
+            "fade" : 1,
+            "destructionTime" : 0,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "timeToLive" : 4,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [1, 1]
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "sounds" : {
+    "turnHostile" : [ ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "itemName" : "armcannonveluuice",
+  "price" : 100,
+  "inventoryIcon" : "armcannonveluuice.png",
+    "maxStack" : 1,
+    "rarity" : "common",
+  "description" : "Attaches to the forearm. Fires ice blasts.
+^cyan;Freeze-burns enemies^reset;",
+  "shortdescription" : "Vel'uuish Gigant",
+  "level" : 2,
+  "category" : "armcannon",
+  "itemTags" : ["weapon","ranged","upgradeableWeapon","armcannon","veluu","ice"],
+  "tooltipKind" : "gun2",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "armcannonveluuice.png",
+    "middlefullbright" : "armcannonveluuicefullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.0, 0.27]//Same as BaseOffset
+		  }
+		}
+      }
+    },
+    "sounds" : { "fire" : [ "/sfx/gun/grenadeblast_fire1.ogg","/sfx/gun/grenadeblast_fire2.ogg","/sfx/gun/grenadeblast_fire3.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [42, 42, 42] } }
+  },
+
+  "baseOffset" : [0.0, 0.27],
+  "muzzleOffset" : [1.4, 0.35],
+  "handGrip" : "wrap",
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.8,
+    "baseDps" : 5.5,
+    "energyUsage" : 24,
+    "fireType" : "auto",
+    "inaccuracy" : 0.01,
+    "projectileCount" : 1,
+    "projectileType" : "iceshardsmall",
+
+    "projectileParameters" : {
+      "speed" : 90,
+      "knockback" : 12,
+      "actionOnReap" : [
+	     {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/iceexplosion4/iceexplosionreaper.config"
+	     }
+      ]
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "critChance" : 1,
+  "critBonus" : 2,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

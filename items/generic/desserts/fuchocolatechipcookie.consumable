@@ -1,0 +1,30 @@
+{
+  "itemName": "fuchocolatechipcookie",
+  "rarity": "Uncommon",
+  "price": 255,
+  "category": "preparedFood",
+  "inventoryIcon": "fuchocolatechipcookie.png",
+  "description": "Delicious chocolate chip cookies.\n^cyan;+^white;20% ^cyan;EP ^gray;(^white;150s^gray;), ^green;Heal ^white;1500 ^gray;(^white;150s^gray;)^reset; ^orange;Type: Grain + Dairy + Eggs + Sugar^reset;",
+  "shortdescription": "Chocolate Honey Cookies",
+  "effects": [
+    [
+	"cake_meal",
+      {
+        "effect": "medkitheal",
+        "duration": 150
+      },
+      {
+        "effect": "maxenergyscalingboostfood",
+        "duration": 150
+      }
+    ]
+  ],
+  "foodValue": 55,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1.0,
+  "blockingEffects": ["wellfed"]//,
+  //"learnBlueprintsOnPickup": ["fuchocolatechipcookie2"]
+}

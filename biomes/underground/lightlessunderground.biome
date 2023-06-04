@@ -6,27 +6,38 @@
     "groups" : [
       {
         "select" : 3,
-        "pool" : [ 
-          [ 0.1111, "fugiantbee" ],
-          [ 0.1111, "pteropod2" ],
-          [ 0.1111, "seedspawn2" ],        
-          [ 0.1111, "furatthing2" ],    
-          [ 0.1111, "crutter2" ],
-          [ 0.1111, "fleshreaper" ],
-          [ 0.1111, "fleshreaper2" ],
-          [ 0.1111, "fleshreaper3" ],
-          [ 0.1111, "futoxicgolem" ],
-          [ 0.1111, "futoxicfly" ],          
-          [ 0.1111, "blackgiantscorpion" ],
-          [ 0.1, "orbide" ]
+        "pool" : [
+          [ 0.03, "burrower_depth_selector" ],
+          [ 0.1, "anglure5" ],
+          [ 0.1111, "anglure6" ],
+          [ 0.08, "pteropod2" ],
+          [ 0.1, "seedspawn2" ],
+          [ 0.1, "furatthing2" ],
+          [ 0.05, "crutter2" ],
+          [ 0.05, "fublackbat" ],
+          [ 0.1, "illumitop" ],
+          [ 0.2, "fearmoth" ],
+          [ 0.1, "shadowtop" ],
+          [ 0.05, "adultshadowtop" ],
+          [ 0.05, "blackgiantscorpion" ],
+          [ 0.1, "orbide" ],
+          [ 0.3, "shadowmoth" ]
         ]
       },
       {
-        "select" : 2,
+        "select" : 1,
         "pool" : [
-          [ 0.4, "slugbluecritter" ],
-          [ 0.3, "sackbagcritter" ],
-          [ 0.3, "shadowmoth" ]
+          [ 0.20, "bighairyfrank" ],
+          [ 0.05, "bighairyfrankboss" ]
+        ]
+      },
+      {
+        "select" : 3,
+        "pool" : [
+          [ 0.25, "widow" ],
+          [ 0.25, "slugbluecritter" ],
+          [ 0.25, "sackbagcritter" ],
+          [ 0.25, "shadowmoth" ]
         ]
       },
       {
@@ -52,7 +63,7 @@
     "mainBlock" : "darkstone",
     "subBlocks" : [ "darkness", "hiveold" ],
     "ores" : "ff_deepsurfaceshadowOres",
-    
+
   "parallax" : "/parallax/underground/penumbraunderground.parallax",
 
   "ambientNoises" : {
@@ -69,7 +80,7 @@
       "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 
@@ -77,16 +88,46 @@
     "grassMod" : [ "darkgrass" ],
     "grassModDensity" : 0.9,
     "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.30, "exoniteseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },
+      {
+        "mode" : "background",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundFossils",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.15, "dirtyfossil1" ], [0.15, "dirtyfossil2" ], [0.15, "dirtyfossil3" ], [0.15, "dirtyfossil4" ], [0.1, "dirtyfossil5" ], [0.1, "dirtyfossil6" ], [0.1, "dirtyfossil7" ], [0.1, "dirtyfossil8" ] ],
+            "parameters" : {  "materials" : ["mud", "cobblestone", "bonematerial"]}
+          }
+        ]
+      },
            {
              "mode" : "floor",
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
               [0.50, "groundspike1" ],
               [0.50, "groundspike2" ],
               [0.50, "groundspike3" ],
@@ -95,17 +136,17 @@
                  "parameters" : { "startingStage" : 3 }
                }
              ]
-           },    
+           },
            {
              "mode" : "ceiling",
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
               [0.50, "ceilingspike1" ],
               [0.50, "ceilingspike2" ],
               [0.50, "ceilingspike3" ],
@@ -120,18 +161,19 @@
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
-              [0.50, "wilddarklightflower" ],    
-              [0.50, "copperrock" ], 
+                 "pool" : [
+              [0.50, "wilddarklightflower" ],
+              [0.50, "copperrock" ],
               [0.50, "copperrocksmall" ],
               [0.50, "silverrock" ],
               [0.50, "silverrocksmall" ],
               [0.50, "goldrock" ],
-              [0.50, "goldrocksmall" ]           
+              [0.05, "timeobelisk" ],
+              [0.50, "goldrocksmall" ]
                  ],
                  "parameters" : { "startingStage" : 3 }
                }
@@ -151,6 +193,20 @@
             }
           ]
         },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChallengeDoors",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "challengedoor" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -215,7 +271,25 @@
           "treeStemHueShiftMax" : 180,
           "treeStemList" : [ "vine", "shadowvine" ],
           "treeFoliageList" : [ "flowery", "starry", "dreamy" ]
-        }
+        },
+      {
+        "mode" : "floor",
+        "priority" : 99.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:tiyDist",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "underground0amicrodungeons" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:tiyDist",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "fuunderground" ]
+      }
     ]
   },
     "hueShiftOptions" : [0]

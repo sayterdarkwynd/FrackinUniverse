@@ -1,0 +1,68 @@
+{
+  "itemName" : "cutedagger",
+  "level" : 4,
+  "price" : 400,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Favorite weapon of colorful assassins.
+^yellow;Counts as 'energy' for set bonuses^reset;",
+  "shortdescription" : "Prismatic Dagger",
+  "tooltipKind" : "sword2",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","dagger","energy","upgradeableWeapon", "cute","cosmic"],
+
+  "inventoryIcon" : "cutedagger.png",
+
+  "animation" : "daggercomboglow.animation",
+  "animationParts" : {
+    "blade" : "cutedagger.png",
+    "bladefullbright" : "cutedaggerfullbright.png",
+    "handle" : ""
+  },
+
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "swoosh" : { "properties" : {"offset" : [1, 2]}}
+      }
+    },
+    "particleEmitters" : {
+      "cosmicswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "emissionRate" : 40,
+        "particles" : [
+          { "particle" : "cuteswoosh1"},
+          { "particle" : "cuteswoosh2"},
+          { "particle" : "cuteswoosh3"}
+        ]
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "aimOffset" : 0.0,
+  "primaryAbilityType" : "daggercombo",
+  "primaryAbility" : {
+    "fireTime" : 0.42,
+    "baseDps" : 8.2,
+    "damageConfig" : {
+      "damageSourceKind" : "cosmicdagger",
+      "statusEffects" : [ ],
+      "knockbackMode" : "aim",
+      "knockback" : 15,
+      "timeoutGroup" : "primary"
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 3,
+  "stunChance" : 50,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

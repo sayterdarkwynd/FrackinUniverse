@@ -1,0 +1,27 @@
+{
+  "name" : "merchant_elduukhar",
+  "priority" : 4,
+
+  "colonyTagCriteria": {
+    "light" : 1,
+    "door" : 1,
+    "storage": 8,
+    "commerce": 8,
+    "elduukhar" : 6
+  },
+
+  "tenants" : [{
+      "spawn" : "npc",
+      "species" : "elduukhar",
+      "type" : "elduukharmerchant",
+      "overrides" : {
+	     "damageTeamType" : "friendly"
+       }
+     }
+   ],
+
+  "rent" : {
+    "periodRange" : [900.0, 1800.0],
+    "pool" : "villagerGift"
+  }
+}

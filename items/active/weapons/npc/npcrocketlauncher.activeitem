@@ -1,0 +1,130 @@
+{
+  "itemName" : "npcrocketlauncher",
+  "price" : 0,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "The ideal man-portable weapon of choice for taking down rampaging tanks, mecha, and giant monsters, if you can handle the long reload time.",
+  "shortdescription" : "NPC Rocket Launcher",
+  "tooltipKind" : "gun",
+  "category" : "rocketLauncher",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","rocketlauncher"],
+  // "level" : 1,
+
+
+  "magazineSize" : [1,5],
+  "reloadTime" : [2,3],
+  "isAmmoBased" : 1,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : { },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "muzzleFlash" : {
+          "partStates" : {
+            "firing" : {
+              "fire" : {
+                "properties" : {
+                  "image" : ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/gun/rocket1.ogg" ]
+    }
+  },
+  "baseOffset" : [-2.5, 0.375],
+  "muzzleOffset" : [0.0, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 4.0,
+    "baseDps" : 9.5,
+    "energyUsage" : 19,
+    "inaccuracy" : 0.01,
+
+    "projectileType" : "rocketshell",
+    "projectileParameters" : {
+      "knockback" : 40
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [0, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.2, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.4,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [-0.2, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "fireSounds" : [ "/sfx/gun/rocket2.ogg" ],
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "animationParts" : {
+      "butt" : {
+        "path" : "/items/active/weapons/ranged/rocketlauncher/butt/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "middle" : {
+        "path" : "/items/active/weapons/ranged/rocketlauncher/middle/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "barrel" : {
+        "path" : "/items/active/weapons/ranged/rocketlauncher/barrel/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+    },
+    "gunParts" : ["butt", "middle", "barrel"],
+    "altAbilities" : [ ],
+    "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
+    "iconDrawables" : ["butt", "middle", "barrel"]
+  }]
+}

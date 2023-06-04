@@ -1,0 +1,91 @@
+{
+  "type" : "crewmemberresearcher",
+  "baseType" : "fu_crewmember",
+
+  "scriptConfig" : {
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "scientisthead",
+        "chest" : "scientistchest",
+        "legs" : "scientistlegs"
+      },
+
+      "role" : {
+        "type" : "medic",
+        "name" : "Researcher",
+        "field" : "Researcher",
+        "uniformColorIndex" : 3,
+
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "researchBonus",
+            "duration" : 300
+          },
+          {
+            "type" : "Regeneration",
+            "value" : 1
+          }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'd love to come along and observe a field mission, sometime."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran wantss to sstudy the sstarss!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Intrigued. Do take me along next time you explore an alien world, won't you?"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Simply fascinating!",
+              "Exactly as I hypothesised!",
+              "Such intriguing alien fauna!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran iss taking notess!",
+              "Floran wantss to sstab with sscalpel!",
+              "Floran learning sso much!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Sympathetic. That must have hurt.",
+              "Excited. I can't wait to return to the lab!",
+              "Intrigued. I wonder if I could replicate that?",
+              "Curious. Could you do that again?"
+            ]
+          }
+        }
+	  }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "penumbritepistol" ],
+            "sheathedprimary" : [ "lunaridagger" ]
+          }
+        ] ]
+    ]
+  }
+}

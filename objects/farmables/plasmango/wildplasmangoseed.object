@@ -1,0 +1,61 @@
+{
+  "objectName" : "wildplasmangoseed",
+  "colonyTags" : ["nature"],
+  "rarity" : "Uncommon",
+  "category" : "seed",
+  "description" : "Plasmango, the galaxy's most dangerous fruit.",
+  "shortdescription" : "Plasmango Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 65,
+  "lightColor" : [140, 40, 20],
+
+  "apexDescription" : "Once, my old friend tried to power a laboratory with a plasmango plantation. He has burned it down.",
+  "avianDescription" : "This fruit looks like it's obsessed.",
+  "floranDescription" : "It can ssset me on fire, Floran don't find plasssmango acceptable.",
+  "glitchDescription" : "Phylosophic. Does plasmango look like mango or does mango look like plasmango?",
+  "humanDescription" : "Oh man, it's a bad idea to grow this.",
+  "hylotlDescription" : "A shining plasma fruit. Good for adding 'a little' flavour.",
+  "novakidDescription" : "Well, nice to see this again.",
+
+  "inventoryIcon" : "plasmangoseedicon.png",
+
+  "tooltipKind" : "seed",
+  "largeImage" : "plasmangoseed.png:default.2.0",
+
+
+  "orientations" : [
+    {
+      "imageLayers" : [{ "image" : "plasmangoseed.png:<color>.<stage>.<alt>", "fullbright" : true}, { "image" : "plasmangoseedlit.png:<color>.<stage>.<alt>"}],
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "radioMessagesOnPickup" : [ "pickupseed" ],
+
+  "stages" : [
+    {
+      "duration" : [870, 930]
+    },
+    {
+      "duration" : [870, 930]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "plasmangoHarvest"
+      //"resetToStage" : 1
+    }
+  ],
+
+  "maxImmersion" : 0.25,
+  "breakDropOptions" : [
+    [ [ "plasmangoseed", 1, { } ] ]
+  ]
+}

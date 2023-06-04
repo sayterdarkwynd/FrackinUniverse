@@ -1,0 +1,185 @@
+{
+  "objectName" : "scb-sewerpipe-end",
+  "objectType" : "physics",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "common",
+  "description" : "A sewer pipe used for transporting waste.",
+  "glitchDescription" : "Disgusted. This pipe is filthy, I would hate to see what is inside it.",
+  "floranDescription" : "Sssmelly ssewer pipess.",
+  "novakidDescription" : "Filthy, dirty lookin' sewer pipes.",
+  "shortdescription" : "SCB Sewerpipe End",
+  "race" : "generic",
+
+  "category" : "trap",
+  "price" : 0,
+
+  "inventoryIcon" : "scb-sewerpipe-end-icon.png",
+
+  "orientations" : [
+    {
+      "image" : "scb-sewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "scb-sewerpipe-end-bg.png:down",
+        "fg" : "scb-sewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [0, -1] ]
+    },
+    {
+      "image" : "scb-sewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "scb-sewerpipe-end-bg.png:left",
+        "fg" : "scb-sewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, 0] ]
+    },
+    {
+      "image" : "scb-sewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "scb-sewerpipe-end-bg.png:up",
+        "fg" : "scb-sewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [0, 1] ]
+    },
+    {
+      "image" : "scb-sewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "scb-sewerpipe-end-bg.png:right",
+        "fg" : "scb-sewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [1, 0] ]
+    },
+    {
+      "image" : "scb-sewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "scb-sewerpipe-end-bg.png:lr",
+        "fg" : "scb-sewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [1, -1] ]
+    },
+    {
+      "image" : "scb-sewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "scb-sewerpipe-end-bg.png:ll",
+        "fg" : "scb-sewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, -1] ]
+    },
+    {
+      "image" : "scb-sewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "scb-sewerpipe-end-bg.png:ul",
+        "fg" : "scb-sewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, 1] ]
+    },
+    {
+      "image" : "scb-sewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "scb-sewerpipe-end-bg.png:ur",
+        "fg" : "scb-sewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [1, 1] ]
+    },
+    {
+      "image" : "scb-sewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "scb-sewerpipe-end-bg.png:back",
+        "fg" : "scb-sewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "bgAnchors" : [ [0, 0] ]
+    }
+  ],
+
+  "physicsCollisions" : {
+    "oneTile" : {
+      "collision" : [
+        [0, 0],
+        [1, 0],
+        [1, 1],
+        [0, 1]
+      ],
+      "collisionKind" : "slippery",
+//      "categoryWhitelist" : ["monster", "npc"],
+      "enabled" : false
+    }
+  },
+
+  "enableCollision" : "oneTile",
+
+  "scripts" : [ "scb-sewerpipe-end.lua" ],
+  "scriptDelta" : 2,
+
+  "animation" : "scb-sewerpipe-end.animation",
+
+  "inputNodes" : [ [0, 0] ],
+
+  "inactiveLightColor" : [0, 0, 0], // light color to emit when the object is 'off'
+  "activeLightColor" : [0, 0, 0], // light color to emit when the object is 'on'
+
+  "health" : 5
+
+}

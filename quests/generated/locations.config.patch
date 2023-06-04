@@ -1,37 +1,906 @@
 [
-  {"op" : "add", 
-  "path" : "/fuencounters",
-  "value" : 
-	  {
-	    "deathcamp1" : {
-	      "name" : "execution wagon",
-	      "tags" : [ "generic" ],
-	      "range" : 600
-	    }
-	  }
+  {
+    "op" : "add",
+    "path" : "/fuencounters",
+    "value" : {
+      "deathcamp1" : {
+        "name" : "execution wagon",
+        "tags" : [ "generic" ],
+        "range" : 600
+      },
+      "deathcamp2" : {
+        "name" : "gallows",
+        "tags" : [ "generic" ],
+        "range" : 600
+      },
+      "deathcamp3" : {
+        "name" : "prisoner camp",
+        "tags" : [ "generic" ],
+        "range" : 600
+      }
+    }
   },
-  
-  {"op" : "add", 
-  "path" : "/fuencounters",
-  "value" : 
-	  {
-	    "deathcamp2" : {
-	      "name" : "gallows",
-	      "tags" : [ "generic" ],
-	      "range" : 600
-	    }
-	  }
-  },  
-  
-  {"op" : "add", 
-  "path" : "/fuencounters",
-  "value" : 
-	  {
-	    "deathcamp3" : {
-	      "name" : "prisoner camp",
-	      "tags" : [ "generic" ],
-	      "range" : 600
-	    }
-	  }
-  }  
+
+  {
+    "op" : "add",
+    "path" : "/apexencounter",
+    "value" : {
+      "abandoned" : {
+        "name" : "abandoned Apex facility",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "ruins" : {
+        "name" : "ruined Apex tunnels",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "bridge" : {
+        "name" : "bright metal bridge",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "infested" : {
+        "name" : "overgrown Apex facility",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/avianencounter",
+    "value" : {
+      "graveyard" : {
+        "name" : "Avian graveyard",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "house" : {
+        "name" : "Avian house",
+        "tags" : [ "generic", "friendly" ],
+        "range" : 600
+      },
+      "hut" : {
+        "name" : "Avian hut",
+        "tags" : [ "generic", "friendly" ],
+        "range" : 600
+      },
+      "cave" : {
+        "name" : "cave with Avian market stalls",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "dock" : {
+        "name" : "dock",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/floranencounter",
+    "value" : {
+      "caged" : {
+        "name" : "Floran hunting stand",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "hut" : {
+        "name" : "Floran hut",
+        "tags" : [ "generic", "friendly" ],
+        "range" : 600
+      },
+      "nomad" : {
+        "name" : "wide clearing",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "pincave" : {
+        "name" : "frog merchant's cave",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "pinfriend" : {
+        "name" : "wide clearing",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/glitchencounter",
+    "value" : {
+      "house" : {
+        "name" : "secluded house",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "wizard" : {
+        "name" : "Glitch wizard's tower",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "lord" : {
+        "name" : "Glitch lord's tower",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "caged" : {
+        "name" : "large clearing with the cage next to it",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/humanencounter",
+    "value" : {
+      "cave" : {
+        "name" : "cave with the abandoned campsite",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "camp" : {
+        "name" : "campsite next to the pond",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "facility" : {
+        "name" : "abandoned U.S.C.M. facility",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "tower" : {
+        "name" : "old prison tower",
+        "tags" : [ "generic", "friendly" ],
+        "range" : 600
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/boneencounter",
+    "value" : {
+      "spires" : {
+        "name" : "bone spires",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "house" : {
+        "name" : "fortified house",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "ruins" : {
+        "name" : "old ruins",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "clearing1" : {
+        "name" : "clearing",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "clearing2" : {
+        "name" : "clearing",
+        "tags" : [ "generic", "friendly" ],
+        "range" : 600
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/colourfulencounter",
+    "value" : {
+      "house" : {
+        "name" : "strange house",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "clearing1" : {
+        "name" : "clearing",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "clearing2" : {
+        "name" : "clearing",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "hill" : {
+        "name" : "hill",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/eyeencounter",
+    "value" : {
+      "ruinedtower" : {
+        "name" : "ruined tower",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "ruinwell" : {
+        "name" : "well next to the old ruins",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "ruins" : {
+        "name" : "old ruins",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "ruinedbridge" : {
+        "name" : "old broken bridge",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "clearing" : {
+        "name" : "clearing",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/agaranencounter",
+    "value" : {
+      "giantpod" : {
+        "name" : "huge plant pod",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "hut" : {
+        "name" : "Agaran hut",
+        "tags" : [ "generic", "friendly" ],
+        "range" : 600
+      },
+      "plantvolcano" : {
+        "name" : "plant-covered volcano",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "pond" : {
+        "name" : "pond",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "cave" : {
+        "name" : "mushroom cave",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "shroompatch" : {
+        "name" : "mushroom patch",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "cauldron" : {
+        "name" : "plant-covered cauldron",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "cauldronwater" : {
+        "name" : "plant-covered water-filled cauldron",
+        "tags" : [ "generic", "friendly" ],
+        "range" : 600
+      },
+      "cauldronlava" : {
+        "name" : "plant-covered lava-filled cauldron",
+        "tags" : [ "generic", "friendly" ],
+        "range" : 600
+      },
+      "shroomhouse" : {
+        "name" : "mushroom house",
+        "tags" : [ "generic", "friendly" ],
+        "range" : 600
+      },
+      "farm" : {
+        "name" : "crop field",
+        "tags" : [ "generic", "friendly" ],
+        "range" : 600
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/randomencounter",
+    "value" : {
+      "blacksmith" : {
+        "name" : "Glitch blacksmith's house",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "cropfield" : {
+        "name" : "crop field",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "cultistaltar" : {
+        "name" : "cultist ruins",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "farm" : {
+        "name" : "farmstead",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "sewerdrain" : {
+        "name" : "old sewer drain",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "facility" : {
+        "name" : "abandoned U.S.C.M. facility",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "house" : {
+        "name" : "wooden house",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "tower" : {
+        "name" : "stone tower",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/genericunderground",
+    "value" : {
+      "sheltersmall" : {
+        "name" : "small underground shelter",
+        "tags" : [ "generic", "friendly" ],
+        "range" : 200
+      },
+      "shelterlarge" : {
+        "name" : "underground shelter",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "minesmall" : {
+        "name" : "small abandoned mine shaft",
+        "tags" : [ "generic", "friendly" ],
+        "range" : 200
+      },
+      "minelarge" : {
+        "name" : "abandoned mine shaft",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "mineflooded" : {
+        "name" : "flooded abandoned mine shaft",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/apexunderground",
+    "value" : {
+      "facility" : {
+        "name" : "underground Apex facility",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "treasure" : {
+        "name" : "underground vault",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/avianunderground",
+    "value" : {
+      "tomb" : {
+        "name" : "underground Avian tomb",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "room" : {
+        "name" : "underground store room",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "treasure" : {
+        "name" : "underground Avian ruins",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/floranunderground",
+    "value" : {
+      "chamber" : {
+        "name" : "underground plant-covered chamber",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "mossy" : {
+        "name" : "underground moss-covered room",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/glitchunderground",
+    "value" : {
+      "room" : {
+        "name" : "underground stone room",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "dungeon" : {
+        "name" : "large underground room",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "hideout" : {
+        "name" : "large underground room",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "house" : {
+        "name" : "underground shelter",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "ruins" : {
+        "name" : "underground stone ruins",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "sewer" : {
+        "name" : "underground sewer",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "traproom1" : {
+        "name" : "spike-laden underground room",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "traproom2" : {
+        "name" : "poison-filled underground room",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "traproom3" : {
+        "name" : "underground chess room",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "treasure" : {
+        "name" : "underground treasure room",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/humanunderground",
+    "value" : {
+      "arcade" : {
+        "name" : "underground arcade",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "bunker" : {
+        "name" : "underground U.S.C.M. bunker",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "prison" : {
+        "name" : "underground prison cell",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/outpostunderground",
+    "value" : {
+      "bunker" : {
+        "name" : "underground outpost",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 200
+      },
+      "greenhouse" : {
+        "name" : "underground greenhouse",
+        "tags" : [ "generic", "friendly" ],
+        "range" : 200
+      },
+      "shelter" : {
+        "name" : "small underground outpost",
+        "tags" : [ "generic", "friendly" ],
+        "range" : 200
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/apexresearchlab",
+    "value" : {
+      "entrance" : {
+        "name" : "entrance to the Miniknog Laboratory",
+        "tags" : [ "apex", "friendly" ]
+      },
+      "roof" : {
+        "name" : "roof of the Miniknog Laboratory",
+        "tags" : [ "apex", "friendly" ]
+      },
+      "interior" : {
+        "name" : "Miniknog Laboratory",
+        "tags" : [ "apex", "friendly" ]
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/apextestchamber",
+    "value" : {
+      "entrance" : {
+        "name" : "entrance to the Miniknog Testing Chambers",
+        "tags" : [ "apex", "friendly" ]
+      },
+      "generator" : {
+        "name" : "generator room of the Miniknog Testing Chambers",
+        "tags" : [ "apex", "friendly" ]
+      },
+      "westroom" : {
+        "name" : "western side of the Miniknog Testing Chambers",
+        "tags" : [ "apex", "friendly" ]
+      },
+      "eastroom" : {
+        "name" : "eastern side of the Miniknog Testing Chambers",
+        "tags" : [ "apex", "friendly" ]
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/aviantower",
+    "value" : {
+      "base" : {
+        "name" : "base of the Avian Tower",
+        "tags" : [ "avian", "friendly" ]
+      },
+      "top" : {
+        "name" : "top of the Avian Tower",
+        "tags" : [ "avian", "friendly" ]
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/floranhell",
+    "value" : {
+      "entrance" : {
+        "name" : "entrance to the Floran Prison",
+        "tags" : [ "floran", "friendly" ]
+      },
+      "cellblock" : {
+        "name" : "cell block of the Floran Prison",
+        "tags" : [ "floran", "friendly" ]
+      },
+      "lavabonepile" : {
+        "name" : "bone pile within the Floran Prison",
+        "tags" : [ "floran", "friendly" ]
+      },
+      "depths" : {
+        "name" : "depths of the Floran Prison",
+        "tags" : [ "floran", "friendly" ]
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/humanbunker",
+    "value" : {
+      "entrance" : {
+        "name" : "entrance to the U.S.C.M. Bunker",
+        "tags" : [ "human", "friendly" ]
+      },
+      "17" : {
+        "name" : "U.S.C.M. Bunker",
+        "tags" : [ "human", "friendly" ]
+      },
+      "11" : {
+        "name" : "U.S.C.M. Bunker",
+        "tags" : [ "human", "friendly" ]
+      },
+      "5" : {
+        "name" : "U.S.C.M. Bunker",
+        "tags" : [ "human", "friendly" ]
+      },
+      "14" : {
+        "name" : "U.S.C.M. Bunker",
+        "tags" : [ "human", "friendly" ]
+      },
+      "deadend" : {
+        "name" : "U.S.C.M. Bunker",
+        "tags" : [ "human", "friendly" ]
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/scifidungeon",
+    "value" : {
+      "entrance" : {
+        "name" : "entrance to the mysterious high-tech dungeon",
+        "tags" : [ "generic", "friendly" ]
+      },
+      "treasureroom" : {
+        "name" : "treasure room within the mysterious high-tech dungeon",
+        "tags" : [ "generic", "friendly" ]
+      },
+      "deadend" : {
+        "name" : "dead-end room within the mysterious high-tech dungeon",
+        "tags" : [ "generic", "friendly" ]
+      },
+      "chamber" : {
+        "name" : "large chamber within the mysterious high-tech dungeon",
+        "tags" : [ "generic", "friendly" ]
+      },
+      "verticalshaft" : {
+        "name" : "vertical shaft within the mysterious high-tech dungeon",
+        "tags" : [ "generic", "friendly" ]
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/wreck",
+    "value" : {
+      "cockpit" : {
+        "name" : "cockpit of the wrecked spaceship",
+        "tags" : [ "generic", "friendly" ]
+      },
+      "engineroom" : {
+        "name" : "engine room of the wrecked spaceship",
+        "tags" : [ "generic", "friendly" ]
+      },
+      "interior" : {
+        "name" : "interior of the wrecked spaceship",
+        "tags" : [ "generic", "friendly" ]
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/wreckunderwater",
+    "value" : {
+      "cockpit" : {
+        "name" : "cockpit of the sunken spaceship",
+        "tags" : [ "ocean" ]
+      },
+      "engineroom" : {
+        "name" : "engine room of the sunken spaceship",
+        "tags" : [ "ocean" ]
+      },
+      "interior" : {
+        "name" : "interior of the sunken spaceship",
+        "tags" : [ "ocean" ]
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/wreckunderpoison",
+    "value" : {
+      "cockpit" : {
+        "name" : "cockpit of the sunken spaceship",
+        "tags" : [ "toxicocean" ]
+      },
+      "engineroom" : {
+        "name" : "engine room of the sunken spaceship",
+        "tags" : [ "toxicocean" ]
+      },
+      "interior" : {
+        "name" : "interior of the sunken spaceship",
+        "tags" : [ "toxicocean" ]
+      }
+    }
+  },
+
+
+  {
+    "op" : "add",
+    "path" : "/volcanic/towerinvinciblemap1",
+    "value" : {
+      "name" : "old abandoned well",
+      "tags" : [ "generic", "friendly" ],
+      "range" : 600
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/volcanic/towerinvinciblemap2",
+    "value" : {
+      "name" : "strange foundry",
+      "tags" : [ "generic", "friendly" ],
+      "range" : 600
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/volcanic/towerinvinciblemap3",
+    "value" : {
+      "name" : "thugs' outpost",
+      "tags" : [ "generic", "friendly" ],
+      "range" : 600
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/toxic/infiltrationmap1",
+    "value" : {
+      "name" : "Miniknog outpost",
+      "tags" : [ "generic", "friendly" ],
+      "range" : 600
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/toxic/infiltrationmap2",
+    "value" : {
+      "name" : "Miniknog outpost",
+      "tags" : [ "generic", "friendly" ],
+      "range" : 600
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/toxic/infiltrationmap3",
+    "value" : {
+      "name" : "Miniknog outpost",
+      "tags" : [ "generic", "friendly" ],
+      "range" : 600
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/alpine/magickaforestmap1",
+    "value" : {
+      "name" : "grassy barrow",
+      "tags" : [ "generic", "friendly" ],
+      "range" : 600
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/alpine/magickaforestmap2",
+    "value" : {
+      "name" : "mountain lake",
+      "tags" : [ "generic", "friendly" ],
+      "range" : 600
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/alpine/magickaforestmap3",
+    "value" : {
+      "name" : "cliffside hut",
+      "tags" : [ "generic", "friendly" ],
+      "range" : 600
+    }
+  },
+
+
+  {
+    "op" : "add",
+    "path" : "/ancientjungleruins",
+    "value" : {
+      "entrance" : {
+        "name" : "base of the ancient ruins",
+        "tags" : [ "generic", "friendly"]
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/apexunderwaterlabs",
+    "value" : {
+      "entrance" : {
+        "name" : "underwater Miniknog facility",
+        "tags" : [ "generic", "friendly"]
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/novakidoutlawcamp",
+    "value" : {
+      "entrance" : {
+        "name" : "Novakid outlaw camp",
+        "tags" : [ "generic", "friendly"]
+      }
+    }
+  },
+
+  {
+    "op" : "add",
+    "path" : "/humanapartments",
+    "value" : {
+      "entrance" : {
+        "name" : "Human apartment colony",
+        "tags" : [ "generic", "friendly"]
+      }
+    }
+  },
+
+  {
+    "op" : "add",
+    "path" : "/tundra/buildingfupeglaci",
+    "value" : {
+      "name" : "Peglaci research station",
+      "tags" : [ "generic", "friendly" ],
+      "range" : 600
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/fupeglacipeacekeeper",
+    "value" : {
+      "west" : {
+        "name" : "west entrance of the Peglaci Peacekeeper outpost",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      },
+      "east" : {
+        "name" : "east entrance of the Peglaci Peacekeeper outpost",
+        "tags" : [ "generic", "friendly", "largespace" ],
+        "range" : 600
+      }
+    }
+  },
+
+  {
+    "op" : "add",
+    "path" : "/fuasteroidbelt",
+    "value" : {
+      "mechbay" : {
+        "name" : "mech maintainence station",
+        "tags" : [ "friendly", "largespace" ],
+        "range" : 1000
+      },
+      "fastfood" : {
+        "name" : "Burger Fool",
+        "tags" : [ "glitch", "friendly" ],
+        "range" : 1000
+      },
+      "stabbedthings" : {
+        "name" : "'Stabbed Things Emporium'",
+        "tags" : [ "floran", "friendly" ],
+        "range" : 1000
+      },
+      "apexmining" : {
+        "name" : "Miniknog black site",
+        "tags" : [ "apex", "generic", "friendly" ],
+        "range" : 1000
+      }
+    }
+  }
 ]

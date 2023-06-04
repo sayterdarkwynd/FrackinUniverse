@@ -1,9 +1,14 @@
 {
-  "name" : "heatimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "heatimmunity.lua"
-  ]
+	"name": "heatimmunity",
+	"effectConfig": {
+		"stats": [{
+				"stat": "biomeheatImmunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

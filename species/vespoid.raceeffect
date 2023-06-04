@@ -1,0 +1,63 @@
+{
+	"stats": [
+		{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 1.15
+		},
+		{
+			"stat": "fallDamageMultiplier",
+			"effectiveMultiplier": 0.8
+		},
+		{
+			"stat": "fireResistance",
+			"amount": -0.5
+		},
+		{
+			"stat": "iceResistance",
+			"amount": -0.3
+		},
+		{
+			"stat": "poisonResistance",
+			"amount": 0.5
+		},
+		{
+			"stat": "beestingImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "honeyslowImmunity",
+			"amount": 1
+		}
+	],
+	"diet" : [ { "ORGANIC" : false, "PLANT" : true, "HIGH_GLUCOSE" : true }, { "MEAT" : true } ],
+	"controlModifiers": {
+		"speedModifier": 1.1,
+		"stickyForce": 2,
+		"airForce": 65,
+		"liquidForce": 20
+	},
+	"weaponEffects": [{
+			"weapons": [
+				"machinepistol",
+				"sniperrifle",
+				"rifle"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.15
+			}]
+		},
+		{
+			"combos": [
+				[
+					"machinepistol",
+					"machinepistol"
+				]
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.15
+			}]
+		}
+	]
+}

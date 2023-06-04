@@ -3,13 +3,14 @@
   "price" : 160,
   "inventoryIcon" : "fucellgun.png",
   "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Eradicates cellular matter.",
+  "rarity" : "uncommon",
+  "description" : "A truly unique long-ranged rifle, firing freezing blasts of cellular matter.",
   "shortdescription" : "Cellular Rifle",
+  "category" : "bioweapon",
   "level" : 4,
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "weaponType" : "Bio-Weaopn",
-  "itemTags" : ["weapon","ranged","sniperrifle"],
+  "itemTags" : ["weapon","ranged","sniperrifle", "energy", "bioweapon", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -30,13 +31,13 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "bioweapon",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.7,
-    "baseDps" : 9.214,
+    "baseDps" : 8.214,
     "energyUsage" : 20.5,
     "inaccuracy" : 0,
 
@@ -44,39 +45,43 @@
     "fireType" : "auto",
 
     "projectileType" : "cellblast",
-    "projectileParameters" : { 
-      "speed" : 50,
-      "knockback" : 5
+    "projectileParameters" : {
+      "speed" : 30,
+      "knockback" : 5,
+      "statusEffects" : [ "weakpoison" ]
     },
-	  "stances" : {
-	    "idle" : {
-	      "armRotation" : 0,
-	      "weaponRotation" : 0,
-	      "twoHanded" : true,
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
 
-	      "allowRotate" : true,
-	      "allowFlip" : true
-	    },
-	    "fire" : {
-	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    },
-	    "cooldown" : {
-	      "duration" : 0.075,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.075,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    }
-	  }
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
   },
+
+  "critChance" : 3,
+  "critBonus" : 8,
 
   "altAbilityType" : "explosiveburst",
 

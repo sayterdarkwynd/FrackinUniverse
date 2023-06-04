@@ -1,17 +1,32 @@
 {
-  "name" : "swimboost2",
-  "effectConfig" : {
-    "boostAmount" : 2,
-    "riseAmount" : 1.5
-  },
-  "defaultDuration" : 60,
+	"name" : "swimboost2",
+	"effectConfig": {
+		"stats": [
+			//{"stat": "boostAmount","amount": 1},
+			{"stat": "boostAmount","effectiveMultiplier": 1.2},
+			{"stat": "riseAmount","effectiveMultiplier": 1.2}
+		],
+		"statusApplierValues": {
+			"init": [
+				[
+					"swimboostbase",1.1
+				]
+			],
+			"update": [
+				[
+					"swimboostbase",1.1
+				]
+			],
+			"updateRate":1
+		}
+	},
+	"defaultDuration" : 220,
 
-  "scripts" : [
-    "swimboost1.lua"
-  ],
-
-  "animationConfig" : "swimboost1.animation",
-  
-  "label" : "Swim +",
-  "icon" : "/interface/statuses/wet.png"
+	"scripts" : [
+		"/stats/effects/fu_genericStatApplier.lua",
+		"/stats/effects/fu_genericStatusApplier.lua"
+	],
+	"animationConfig" : "swimboost1.animation",
+	"label" : "Swim Boost 2",
+	"icon" : "/interface/statuses/swimboost.png"
 }

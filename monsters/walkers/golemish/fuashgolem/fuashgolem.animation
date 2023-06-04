@@ -1,0 +1,150 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 4,
+            "mode" : "loop"
+          },
+          "jump" : {
+            "frames" : 4,
+            "mode" : "loop"
+          },
+          "fall" : {
+            "frames" : 4,
+            "mode" : "loop"
+          },
+          "fire" : {
+            "frames" : 4,
+            "cycle" : 0.4
+          },
+          "walk" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" : "loop"
+          },
+          "roar" : {
+            "frames" : 8,
+            "cycle" : 2.0,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/oogler_charge.ogg"
+            }
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "loop"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "centered" : true,
+          "transformationGroups" : [ "body" ],
+          "offset" : [0, 0.375]
+        },
+        "partStates" : {
+          "body" : {
+            "roar" : {
+              "properties" : {
+                "image" : "<partImage>:roar.<frame>"
+              }
+            },
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "particleEmitters" : {
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "spit" : [ "/sfx/projectiles/goo_spit1.ogg", "/sfx/projectiles/goo_spit2.ogg" ],
+    "puke" : [ "/sfx/npc/monsters/orbide_wakeup.ogg","/sfx/projectiles/bloodvomit1.ogg","/sfx/projectiles/bloodvomit2.ogg","/sfx/projectiles/bloodvomit3.ogg","/sfx/projectiles/bloodvomit4.ogg","/sfx/projectiles/bloodvomit5.ogg","/sfx/projectiles/bloodvomit6.ogg","/sfx/projectiles/bloodvomit7.ogg" ],
+    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0.25,
+      "directives" : "fade=ffffff;0.5"
+    }
+  }
+}

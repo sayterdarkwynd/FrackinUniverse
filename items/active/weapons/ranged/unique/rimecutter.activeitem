@@ -3,13 +3,15 @@
   "price" : 160,
   "inventoryIcon" : "rimecutter.png",
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Fires icy death spikes.",
+  "rarity" : "legendary",
+  "description" : "Freezing rounds mince enemies good.
+^yellow;Inflicts freezing^reset;",
   "shortdescription" : "Rime Cutter",
-  "level" : 4,
-  "tooltipKind" : "gun",
+  "category" : "assaultRifle",
+  "level" : 6,
+  "tooltipKind" : "gun2",
   "weaponType" : "Rifle",
-  "itemTags" : ["weapon","ranged","rifle"],
+  "itemTags" : ["weapon","ranged","assaultrifle", "isogen", "upgradeableWeapon" ],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -30,7 +32,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "ice",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -44,7 +46,7 @@
     "fireType" : "auto",
 
     "projectileType" : "snowflakeshuriken",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 50,
       "knockback" : 2
     },
@@ -78,7 +80,73 @@
   }
   },
 
+  "critChance" : 3,
+  "critBonus" : 3,
+
   "altAbilityType" : "rimecutteraltshot",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters" : {
+    "shortdescription" : "^cyan;Ice Slicer^reset; ^yellow;^reset;",
+  "description" : "Faster and more dangerous.
+^yellow;Inflicts freezing^reset;",
+  "animationParts" : {
+    "middle" : "rimecutter2.png"
+    },
+    "inventoryIcon" : [
+    { "image" : "rimecutter2.png:" }
+    ],
+    "critChance" : 3,
+    "critBonus" : 4,
+    "primaryAbility" : {
+      "fireTime" : 0.12,
+      "baseDps" : 8.62,
+      "energyUsage" : 25,
+      "inaccuracy" : 0.008,
+
+      "projectileParameters" : {
+        "speed" : 60,
+        "knockback" : 4,
+        "fullbright" :true,
+        "actionOnCollide" : [
+        {
+          "action" : "projectile",
+          "inheritDamageFactor" : 0.1,
+          "type" : "chargeshotboom"
+        },
+        {
+          "action" : "sound",
+          "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
+        },
+        {
+          "action" : "light",
+          "color" : "blue"
+        }
+        ],
+        "actionOnReap" : [
+        {
+          "action" : "projectile",
+          "inheritDamageFactor" : 0.1,
+          "type" : "chargeshotboom"
+        },
+        {
+          "action" : "sound",
+          "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
+        },
+        {
+          "action" : "light",
+          "color" : "blue"
+        },
+        {
+          "action" : "explosion",
+          "foregroundRadius" : 2,
+          "backgroundRadius" : 0,
+          "explosiveDamageAmount" : 0.1,
+          "delaySteps" : 2
+        }
+        ]
+      }
+    }
+  }
 }

@@ -1,0 +1,240 @@
+[
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/firewindup",
+    "value": {
+      "frames": 1
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/fire",
+    "value": {
+      "frames": 1,
+      "cycle": 1,
+      "mode": "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/melee/bite.ogg",
+              "persistentSoundStopTime" : 0.25,
+              "persistentSoundRangeMultiplier" : 0.15
+            }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/firewinddown",
+    "value": {
+      "frames": 1
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/melee",
+    "value": {
+      "frames": 4,
+      "cycle": 0.4,
+      "mode": "transition",
+      "transition": "idle",
+            "properties" : {
+                "persistentSound": "",
+	        "persistentSoundStopTime": 0.25,
+      		"persistentSoundRangeMultiplier": 0.5
+            }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/animatedParts/stateTypes/body/states/chargewindup/cycle",
+    "value": 0.5
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/backArm/partStates/body/firewindup",
+    "value": {
+      "properties": {
+        "image": "<partImage>:idle"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/backArm/partStates/body/fire",
+    "value": {
+      "properties": {
+        "image": "<partImage>:idle"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/backArm/partStates/body/firewinddown",
+    "value": {
+      "properties": {
+        "image": "<partImage>:idle"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/backArm/partStates/body/melee",
+    "value": {
+      "properties": {
+        "image": "<partImage>:walk.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/frontArm/partStates/body/firewindup",
+    "value": {
+      "properties": {
+        "image": "<partImage>:rotation"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/frontArm/partStates/body/fire",
+    "value": {
+      "properties": {
+        "image": "<partImage>:rotation"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/frontArm/partStates/body/firewinddown",
+    "value": {
+      "properties": {
+        "image": "<partImage>:rotation"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/frontArm/partStates/body/melee",
+    "value": {
+      "properties": {
+        "image": "<partImage>:melee.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/chest/partStates/body/firewindup",
+    "value": {
+      "properties": {
+        "image": "<partImage>:idle"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/chest/partStates/body/fire",
+    "value": {
+      "properties": {
+        "image": "<partImage>:idle"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/chest/partStates/body/firewinddown",
+    "value": {
+      "properties": {
+        "image": "<partImage>:idle"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/chest/partStates/body/melee",
+    "value": {
+      "properties": {
+        "image": "<partImage>:walk.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/tail/partStates/body/firewindup",
+    "value": {
+      "properties": {
+        "image": "<partImage>:idle"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/tail/partStates/body/fire",
+    "value": {
+      "properties": {
+        "image": "<partImage>:idle"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/tail/partStates/body/firewinddown",
+    "value": {
+      "properties": {
+        "image": "<partImage>:idle"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/tail/partStates/body/melee",
+    "value": {
+      "properties": {
+        "image": "<partImage>:walk.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/head/partStates/body/firewindup",
+    "value": {
+      "properties": {
+        "image": "<partImage>:rotation"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/head/partStates/body/fire",
+    "value": {
+      "properties": {
+        "image": "<partImage>:rotation"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/head/partStates/body/firewinddown",
+    "value": {
+      "properties": {
+        "image": "<partImage>:rotation"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/head/partStates/body/melee",
+    "value": {
+      "properties": {
+        "image": "<partImage>:melee.<frame>"
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/animatedParts/parts/head/partStates/body/charge/properties/image",
+    "value": "<partImage>:melee.1"
+  },
+  {
+    "op": "replace",
+    "path": "/animatedParts/parts/head/partStates/damage/stunned/properties/image",
+    "value": "<partImage>:melee.2"
+  }
+]

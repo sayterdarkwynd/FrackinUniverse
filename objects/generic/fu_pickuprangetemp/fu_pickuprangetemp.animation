@@ -1,0 +1,41 @@
+{
+	"animatedParts" : {
+		"stateTypes" : {
+			"grabberState" : {
+				"default" : "off",
+				"states" : {
+					"off" : {
+						"frames" : 1
+					},
+					"on" : {
+						"frames" : 1
+					}
+				}
+			}
+		},
+
+		"parts" : {
+			"grabber" : {
+				"properties" : {
+					"centered" : false
+				},
+
+				"partStates" : {
+					"grabberState" : {
+						"off" : {
+							"properties" : {
+								"image" : "<partImage>:<color>.off"
+							}
+						},
+
+						"on" : {
+							"properties" : {
+								"image" : "<partImage>:<color>.on"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

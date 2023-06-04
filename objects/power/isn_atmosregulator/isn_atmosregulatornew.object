@@ -1,0 +1,73 @@
+{
+  "objectName" : "isn_atmosregulatornew",
+  "rarity" : "legendary",
+    "colonyTags" : [ "science" ],
+  "description" : "Generates a field that protects against environmental hazards. ^cyan;Requires ^orange;220W^cyan; of power^reset;.",
+  "shortdescription" : "^cyan;Atmospheric Regulator^reset;",
+  "race" : "generic",
+  "price" : 412000,
+  "category" : "wire",
+  "printable" : false,
+  "health" : 30,
+  "rooting" : true,
+
+  "inventoryIcon" : "isn_atmosregulator_inv.png",
+  "orientations" : [
+    {
+      "image" : "isn_atmosregulatornew_base.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+
+      "imagePosition" : [-80, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "lightPosition" : [-2, 2],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "isn_atmosregulatornew_base.png:<color>.<frame>",
+      "direction" : "right",
+
+      "imagePosition" : [-80, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "lightPosition" : [1, 2],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [ "/scripts/fupower.lua","/objects/power/fu_atmosfilter/fu_atmosfilter.lua" ],
+  "scriptDelta" : 60,
+
+  "objectType" : "container",
+  "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
+  "slotCount" : 3,
+  "uiConfig" : "/interface/objectcrafting/fu_warped<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+
+  "atmos" : {
+	"range" : 500,
+	"objectEffects" : ["isn_atmosprotection"]
+  },
+
+  "animation" : "isn_atmosregulatornew.animation",
+
+  "animationParts" : {
+    "fg" : "isn_atmosregulatornew_base.png",
+    "bg" : "isn_atmosregulatornew_lit.png"
+  },
+
+  "animationPosition" : [-80, 0],
+
+  "inputNodes" : [ [1, 2] ],
+  "powertype" : "input",
+  "isn_requiredPower" : 220
+}

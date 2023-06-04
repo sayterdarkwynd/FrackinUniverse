@@ -1,0 +1,57 @@
+{
+  "objectName" : "tenebrhaeshipdoor",
+  "colonyTags" : ["shadow","door"],
+  "printable" : false,
+  "rarity" : "common",
+
+  "category" : "door",
+  "price" : 0,
+  "description" : "A rather sleek and dark door.",
+  "shortdescription" : "Tenebrhae Door",
+  "race" : "shadow",
+
+  "inventoryIcon" : "tenebrhaeshipdooricon.png",
+  "orientations" : [
+    {
+      "image" : "tenebrhaeshipdoor.png:default",
+      "imagePosition" : [-20, 0],
+      "renderLayer" : "Object+5",
+      "flipImages" : true,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "direction" : "left"
+    },
+    {
+      "image" : "tenebrhaeshipdoor.png:default",
+      "imagePosition" : [-20, 0],
+      "renderLayer" : "Object+5",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/airlock_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/airlock_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "tenebrhaeshipdoor.png"
+  },
+  "animationPosition" : [-20, 0],
+
+  "inputNodes" : [ [-1, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

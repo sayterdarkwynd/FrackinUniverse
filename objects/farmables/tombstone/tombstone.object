@@ -1,0 +1,70 @@
+{
+  "objectName" : "futombstone",
+  "colonyTags" : [ "death", "macabre", "creepy" ],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "A grave.",
+  "shortdescription" : "Grave",
+  "objectType" : "farmable",
+  "printable" : false,
+
+  "inventoryIcon" : "tombstoneicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "tombstone.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 2], [0, 2], [1, 2], [0, 2] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "particleEmitter" : {
+    "emissionRate" : 0.25,
+    "emissionVariance" : 0.05,
+    "pixelOrigin" : [0, 0],
+
+    "particle" : {
+      "type" : "textured",
+      "image" : "/animations/alpinefog/alpinefog.png",
+      "size" : 1.0,
+      "color" : [175, 175, 175, 255],
+      "destructionAction" : "fade",
+      "destructionTime" : 3,
+      "initialVelocity" : [0, 0],
+      "timeToLive" : 15,
+      "layer" : "front",
+      "position" : [2, 3],
+      "collidesForeground" : false
+    },
+    "particleVariance" : {
+      "initialVelocity" : [3.0, 0.0],
+      "position" : [1, 1]
+    }
+  },
+
+  "stages" : [
+    {
+      "duration" : [2, 4]
+    },
+    {
+      "duration" : [2, 4]
+    },
+    {
+      "alts" : 5,
+      "duration" : [2, 3]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "tombstoneHarvest"
+    }
+  ],
+
+  "breakDropOptions" : [
+    [ [ "cobblestonematerial", 3, { } ] ]
+  ],
+  "consumeSoilMoisture" : false,
+  "maxImmersion" : 2
+}

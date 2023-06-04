@@ -1,0 +1,27 @@
+{
+	"itemName": "spidercotton",
+	"rarity": "common",
+	"price": 5,
+	"category": "preparedFood",
+	"inventoryIcon": "spidercotton.png",
+	"description": "Woven for consumption. \n^red;+Slow^reset; (60s) \n^green;Type: Sugar^reset;",
+	"shortdescription": "Spider Cotton",
+	"effects": [
+        [
+        {
+            "effect": "slow",
+            "duration": 60
+        },
+        {
+            "effect" : "sugar_food"
+        }
+        ]
+    ],
+	"foodValue": 20,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 0.25,
+	"blockingEffects": ["wellfed"]
+}

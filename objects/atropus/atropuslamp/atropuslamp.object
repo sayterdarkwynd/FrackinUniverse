@@ -1,0 +1,66 @@
+{
+  "objectName" : "atropuslamp",
+  "colonyTags" : ["atropus", "light"],
+  "rarity" : "legendary",
+  "category" : "light",
+  "lightColor" : [125, 32, 31],
+  "price" : 100,
+  "description" : "A standing lamp made from flesh and organs.",
+  "shortdescription" : "Atropus Lamp",
+  "race" : "generic",
+
+  "apexDescription" : "Some sort of vile looking lamp.",
+  "avianDescription" : "This makes me want to vomit.",
+  "floranDescription" : "Not lamp! Isss food!",
+  "glitchDescription" : "Wary. This lamp makes my circuits shake.",
+  "humanDescription" : "This lamp makes me feel sick! It's looking at me.",
+  "hylotlDescription" : "This is simply disgusting.",
+  "novakidDescription" : "There ain't no way I'm usin' this.",
+
+  "inventoryIcon" : "atropuslampicon.png",
+  "orientations" : [
+    {
+      "image" : "atropuslamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "atropuslamp.png",
+        "fg" : "atropuslamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "atropuslamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "atropuslamp.png",
+        "fg" : "atropuslamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "atropuslamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua", "/objects/atropus/atropusfurniture.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : true,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

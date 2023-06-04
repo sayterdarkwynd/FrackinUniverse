@@ -1,0 +1,31 @@
+{
+  "objectName" : "fu_ftl_humanDeco",
+  "rarity" : "uncommon",
+  "colonyTags" : [ "science", "decorative","decor" ],
+  "category" : "furniture",
+  "description" : "Replica of a Human FTL drive. ^yellow;Does nothing.^reset;",
+  "shortdescription" : "^cyan;Replica Human FTL Drive^reset;",
+  "race" : "human",
+  "printable" : true,
+  "scannable" : true,
+
+  "inventoryIcon" : "/objects/ship/fu_ftldriveicon.png",
+  "orientations" : [
+      {
+         "dualImage" : "fu_ftl_human.png:off",
+         "imagePosition" : [0, 0],
+         "animationParts" : {
+            "base" : "fu_ftl_human.png",
+            "fullbright" : "fu_ftl_humanFullbright.png"
+         },
+         "animationPosition" : [36, 16],
+         "spaceScan" : 0.1,
+         "anchors" : [ "background" ]
+      }
+   ],
+
+  "animation" : "fu_ftl_human.animation",
+
+  "scripts" : [ "/objects/ship/fu_ftldriveanimation.lua" ],
+  "scriptDelta" : 60
+}

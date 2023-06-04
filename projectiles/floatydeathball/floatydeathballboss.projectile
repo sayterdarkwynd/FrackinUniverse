@@ -1,0 +1,51 @@
+{
+  "projectileName" : "floatydeathballboss",
+  "physics" : "laser",
+  "speed" : 10,
+  "timeToLive" : 5,
+  "image" : "floatydeathball.png",
+  "animationCycle" : 1.5,
+  "animationLoops" : false,
+  "orientationLocked" : true,
+  "flippable" : true,
+  "fullbright" : true,
+  "scripts" : [ "homingarrow.lua" ],
+  "baseHomingControlForce" : 7,
+  "lightColor" : [160, 160, 0],
+  "frameNumber" : 2,
+  "emitters" : [ "tinyrocketsmoke" ],
+  "periodicActions" : [
+    {
+      "time" : 0.14,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "flamethrowerflameff",
+      "inheritDamageFactor" :1,
+      "fuzzAngle" : 360,
+      "projectileCount" : 4,
+      "projectileParameters" : { "damageSourceKind" : "fireplasma", "speed" : 25 }
+   },
+    {
+      "time" : 0.25,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "magnorbhellfire2",
+      "inheritDamageFactor" :0.15,
+      "fuzzAngle" : 360,
+      "projectileParameters" : { "speed" : 15, "damageSourceKind" : "fireplasma" }
+   }
+  ],
+
+  "actionOnReap" : [
+    {
+          "action" : "config",
+          "file" : "/projectiles/explosions/hellfireexplosion/hellfireexplosion.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
+    }
+  ],
+  "power" : 3,
+  "damageKind" : "fireplasma"
+}

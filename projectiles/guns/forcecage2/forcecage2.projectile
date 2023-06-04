@@ -1,0 +1,85 @@
+{
+  "projectileName" : "forcecage2",
+  "physics" : "default",
+  "timeToLive" : 5,
+  "image" : "forcecage.png",
+  "animationCycle" : 0.1,
+  "frameNumber" : 3,
+  "windupFrames" : 3,
+  "winddownFrames" : 3,
+  "periodicActions" : [
+    {
+      "time" : 4.8,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/tech/vehicle_disappear2.ogg" ]
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "pinkplasmaballs",
+      "inheritDamageFactor" : 0.25,
+      "angle" : 35
+    },
+    {
+      "action" : "projectile",
+      "type" : "pinkplasmaballs",
+      "inheritDamageFactor" : 0.25,
+      "angle" : -35
+    },
+    {
+      "action" : "projectile",
+      "type" : "pinkplasmaballs",
+      "inheritDamageFactor" : 0.25,
+      "angle" : 70
+    },
+    {
+      "action" : "projectile",
+      "type" : "pinkplasmaballs",
+      "inheritDamageFactor" : 0.25,
+      "angle" : -70
+    }
+  ],
+
+  "speed" : 0,
+  "power" : 8,
+
+  "onlyHitTerrain" : true,
+
+  "physicsCollisions" : {
+    "piece1" : {
+      "platform" : false,
+      "collision" : [ [-3.0, 0], [0, 3.0] ],
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop", "projectile"]
+    },
+    "piece2" : {
+      "platform" : false,
+      "collision" : [ [0, 3.0], [3.0, 0] ],
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop", "projectile"]
+    },
+    "piece3" : {
+      "platform" : false,
+      "collision" : [ [3.0, 0], [0, -3.0] ],
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop", "projectile"]
+    },
+    "piece4" : {
+      "platform" : false,
+      "collision" : [ [0, -3.0], [-3.0, 0] ],
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop", "projectile"]
+    }
+  },
+
+  "renderLayer" : "ItemDrop+1",
+  "orientationLocked" : true,
+  "fullbright" : true,
+  "emitters" : [ ],
+  "lightColor" : [110, 60, 130],
+
+  "piercing" : true,
+  "bounces" : -1,
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+
+  "persistentAudio" : "/sfx/projectiles/forcecage_loop.ogg"
+}

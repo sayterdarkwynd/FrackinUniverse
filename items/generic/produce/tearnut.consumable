@@ -1,19 +1,29 @@
 {
-  "itemName" : "tearnut",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "tearnut.png",
-  "description" : "Extremely protein rich! Heals 10% health.",
-  "shortdescription" : "Tearnut",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      "heal_10"
-    ] ]
+	"itemName": "tearnut",
+	"inventoryIcon": "tearnut.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+	"foodValue": 10,
+	"maxStack": 1000,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Heal 20^reset;: 2s \n^green;Type: Nut^reset;",
+	"shortdescription": "Tearnut",
+
+	"eventCategory": "eventCrop",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 5.0,
+	"effects": [
+		[{
+			"effect": "heal_tier1",
+			"duration": 2
+		},
+		{
+			"effect": "plant_food"
+		}]
+	],
+	"blockingEffects": ["wellfed", "heal_tier1"],
+	"learnBlueprintsOnPickup": ["tearnutbutter"]
 }

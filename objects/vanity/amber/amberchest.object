@@ -1,0 +1,45 @@
+{
+  "objectName" : "amberchest",
+  "colonyTags" : ["bees","storage"],
+  "rarity" : "common",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "race" : "ancient",
+  "health" : 1.5,
+
+  "category" : "storage",
+  "price" : 60,
+  "printable" : false,
+  "description" : "A beautiful amber chest.",
+  "shortdescription" : "Amber Chest",
+
+  "inventoryIcon" : "amberchesticon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "amberchest.png:<color>.<key>" } ],
+      "imagePosition" : [-16, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "amberchest.png:<color>.<key>" } ],
+      "imagePosition" : [-16, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/chest_small_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/chest_small_close.ogg" ],
+  "slotCount" : 16,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+}

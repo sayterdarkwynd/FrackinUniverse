@@ -1,19 +1,43 @@
 {
-  "itemName" : "slimeleaf",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "slimeleaf.png",
-  "description" : "Tastes like garbage. Upside? 30 Protection and Slime immunity.",
-  "shortdescription" : "Slime Leaf",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-          "defense1","slimestickimmunity"
-    ] ]
+	"itemName": "slimeleaf",
+	"inventoryIcon": "slimeleaf.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+2 Defense^reset;, ^cyan;Immune^reset;: Slime: 2m",
+	"shortdescription": "Slime Leaf",
+
+	"effects": [
+		[
+			{
+				"effect": "defense1",
+				"duration": 120
+			},
+			{
+				"effect": "slimestickimmunity",
+				"duration": 120
+			}
+		]
+	],
+	"blockingEffects": [
+		"defense4",
+		"defense2",
+		"defense3",
+		"defense5",
+		"defense6",
+		"defenseboost10",
+		"defenseboost20",
+		"defenseboost30",
+		"defenseboost60",
+		"defenseboost90",
+		"defenseboost120",
+		"defenseboost180",
+		"defenseboost210",
+		"defenseboost240",
+		"defenseboost270",
+		"defenseboost300",
+		"defenseboostgreg"
+	]
 }

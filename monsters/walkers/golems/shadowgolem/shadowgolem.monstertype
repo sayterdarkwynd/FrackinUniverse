@@ -1,0 +1,270 @@
+{
+  "type" : "shadowgolem",
+  "shortdescription" : "Shadow Brute",
+  "description" : "Somehow, the very essence of darkness has taken shape into a living being.",
+  "categories" : [ "shadowgolem" ],
+  "parts" : [ "body" ],
+
+  "animation" : "shadowgolem.animation",
+  "reversed" : true,
+
+  "dropPools" : [ "shadowgolemLoot" ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-animate",
+          "cooldown" : 6,
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "roar",
+            "animationTime" : 2.2
+          }
+        },
+        {
+          "name" : "action-leap",
+          "cooldown" : 2,
+          "parameters" : {
+            "maximumRange" : 30,
+            "minimumRange" : 0,
+
+            "maxXRange" : 10,
+            "windupTime" : 0.3,
+            "windupState" : "idle",
+
+            "leapVelocity" : 30,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 1.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 30,
+            "minimumRange" : 8,
+            "maxYRange" : 4,
+            "windupState" : "",
+            "windupTime" : 0.0,
+
+            "projectileType" : "fuwobbleshot",
+            "power" : 12,
+            "fireOffset" : [3.65, 1],
+            "aimAtTarget" : false,
+            "fireState" : "fire",
+            "fireDelay" : 0.2,
+            "fireSound" : "spit",
+
+            "winddownState" : "",
+            "winddownTime" : 0.5
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 3.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 8,
+            "minimumRange" : 1,
+            "maxYRange" : 16,
+            "windupState" : "",
+            "windupTime" : 0.0,
+
+            "projectileType" : "deathbreath",
+            "power" : 8,
+            "fireOffset" : [1.0, 1],
+            "projectileCount" : 8,
+            "projectileInterval" : 0.01,
+            "aimAtTarget" : false,
+            "fireState" : "roar",
+            "fireDelay" : 0.15,
+            "fireSound" : "puke",
+
+            "winddownState" : "",
+            "winddownTime" : 0.5
+          }
+        }
+      ],
+
+      "periodicActions" : [],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 6,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 6,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        },
+        {
+          "name" : "action-leap",
+          "cooldown" : 2,
+          "parameters" : {
+            "minimumRange" : 0,
+            "maximumRange" : 10,
+            "maxXRange" : 9,
+            "windupTime" : 0.3,
+            "windupState" : "idle",
+
+            "leapVelocity" : 25,
+            "collisionCheck" : true,
+            "highArc" : true,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [3, 6]
+          }
+        }
+      ]
+    },
+
+    "metaBoundBox" : [-1.625, -2.375, 1.75, 2.0],
+    "scale" : 1.0,
+
+    "touchDamage" : {
+      "poly" : [ [0.6875, 1.9375], [1.1875, 1.4375], [1.1875, -1.4375], [0.6875, -1.9375], [-0.6875, -1.9375], [-1.1875, -1.4375], [-1.1875, 1.4375], [-0.6875, 1.9375] ],
+      "damage" : 15,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 20,
+      "statusEffects" : [ "darkstalker" ]
+    },
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.6875, 1.9375], [1.1875, 1.4375], [1.1875, -1.4375], [0.6875, -1.9375], [-0.6875, -1.9375], [-1.1875, -1.4375], [-1.1875, 1.4375], [-0.6875, 1.9375] ],
+
+      "mass" : 1.6,
+      "walkSpeed" : 3,
+      "runSpeed" : 6,
+      "flySpeed" : 15,
+      "airForce" : 50.0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 15.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathPoof",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 122
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8]
+  }
+}

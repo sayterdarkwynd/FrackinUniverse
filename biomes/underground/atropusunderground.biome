@@ -6,24 +6,22 @@
     "groups" : [
       {
         "select" : 3,
-        "pool" : [ 
-          [ 0.1111, "fubloodgolem" ],     
-          [ 0.1111, "wormmass" ],
-          [ 0.1111, "anglure2" ],
-          [ 0.1111, "fleshleech" ],     
-          [ 0.1111, "pteropod3" ],
-	  [ 0.1111, "snaunt2" ],
-	  [ 0.1111, "fleshreaper" ],
-	  [ 0.1111, "fleshreaper2" ],
-	  [ 0.1111, "fleshreaper3" ],
-          [ 0.11, "tentaclecrawler" ],
-          [ 0.11, "tentaclegnat" ],
-          [ 0.11, "tentaclespawner" ],
-          [ 0.11, "tentaclebomb" ],
-          [ 0.11, "tentacleghost" ],
-          [ 0.11, "tentacleclam" ]
+        "pool" : [
+          [ 0.03, "burrower_depth_selector" ],
+          [ 0.07, "fubloodgolem" ],
+          [ 0.07, "wormmass" ],
+          [ 0.07, "anglure2" ],
+          [ 0.07, "fleshleech" ],
+          [ 0.07, "pteropod3" ],
+	  [ 0.05, "ravager" ],
+          [ 0.03, "fleshreaper" ],
+          [ 0.07, "tentaclegnat" ],
+          [ 0.07, "tentaclespawner2" ],
+          [ 0.07, "tentaclebomb" ],
+          [ 0.07, "tentacleghost" ],
+          [ 0.07, "tentacleclam" ]
         ]
-      },  
+      },
 
       {
         "select" : 2,
@@ -77,20 +75,20 @@
         }
       }
     }
-  }, 
+  },
 
     "mainBlock" : "fleshblock",
-    "subBlocks" : [ "boneyflesh", "hellstone", "rottingflesh" ],
+    "subBlocks" : [ "brainsblock", "hellstone" ],
     "ores" : "ff_deepsurfaceatropusOres",
 
   "parallax" : "/parallax/underground/atropusunderground.parallax",
 
   "ambientNoises" : {
       "day" : {
-        "tracks" : [ "/sfx/ambiance/atropusambiance2.ogg" ]
+        "tracks" : [ "/sfx/ambiance/atropusambiance2.ogg", "/sfx/ambiance/atropusambiance4.ogg", "/sfx/ambiance/atropusambiance6.ogg" ]
       },
       "night" : {
-        "tracks" : [ "/sfx/ambiance/atropusambiance3.ogg" ]
+        "tracks" : [ "/sfx/ambiance/atropusambiance3.ogg", "/sfx/ambiance/atropusambiance4.ogg" ]
       }
   },
 
@@ -99,7 +97,7 @@
       "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 
@@ -109,6 +107,20 @@
       "ceilingGrassMod" : [ "veingrowth" ],
       "ceilingGrassModDensity" : 0.5,
     "items" : [
+      {
+        "mode" : "background",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundFossils",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.15, "dirtyfossil1" ], [0.15, "dirtyfossil2" ], [0.15, "dirtyfossil3" ], [0.15, "dirtyfossil4" ], [0.1, "dirtyfossil5" ], [0.1, "dirtyfossil6" ], [0.1, "dirtyfossil7" ], [0.1, "dirtyfossil8" ] ],
+            "parameters" : {  "materials" : ["mud", "cobblestone", "bonematerial"]}
+          }
+        ]
+      },
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -170,7 +182,7 @@
             "priority" : 1.0,
             "variants" : 1,
             "distribution" : "/biomes/distributions.config:potsRare",
-  
+
             "type" : "object",
             "objectSets" : [
               {
@@ -187,7 +199,7 @@
 
           "type" : "grass",
           "grasses" : [ "freebone", "fleshbone", "fleshplant", "heckflower", "atropusgrass1"  ]
-        },   
+        },
         {
           "mode" : "ceiling",
           "priority" : 3.0,
@@ -206,7 +218,7 @@
           "type" : "tree",
           "treeFoliageHueShiftMax" : 220,
           "treeStemHueShiftMax" : 220,
-          "treeStemList" : [ "fleshvine_atropus", "fleshvine2", "podvine", "bloodvine"],
+          "treeStemList" : [ "fleshvine_atropus", "fleshvine2", "podvine2", "bloodvine"],
           "treeFoliageList" : [ "nofoliagevine" ]
         },
         {
@@ -233,6 +245,7 @@
           "treeStemList" : [ "vein", "bluevein"],
           "treeFoliageList" : [ "blueveiny", "veiny" ]
         },
+
         {
           "mode" : "floor",
           "priority" : 2.0,
@@ -247,7 +260,7 @@
               "modHueShiftMax" : 35
             }
           ]
-        },   
+        },
         {
           "mode" : "floor",
           "priority" : 2.0,
@@ -262,7 +275,7 @@
               "modHueShiftMax" : 35
             }
           ]
-        }, 
+        },
         {
           "mode" : "floor",
           "priority" : 2.0,
@@ -277,7 +290,7 @@
               "modHueShiftMax" : 35
             }
           ]
-        }, 
+        },
         {
           "mode" : "floor",
           "priority" : 2.0,
@@ -327,7 +340,7 @@
               "modHueShiftMax" : 35
             }
           ]
-        },     
+        },
         {
           "mode" : "floor",
           "priority" : 2.0,
@@ -337,31 +350,31 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : 
-              [ 
-              [0.15, "atropus1" ], 
-              [0.15, "atropus2" ], 
+              "pool" :
+              [
+              [0.15, "atropus1" ],
+              [0.15, "atropus2" ],
               [0.15, "atropus3" ],
-              [0.15, "fleshbush1" ], 
-              [0.15, "fleshbush2" ], 
-              [0.15, "fleshbush3" ], 
-              [0.15, "fleshbush4" ], 
-              [0.15, "fleshbush5" ], 
-              [0.15, "fleshbush6" ],              
-              [0.15, "heckaltar" ], 
-              [0.15, "heckbush1" ], 
-              [0.15, "heckbush2" ], 
-              [0.15, "heckbush3" ], 
-              [0.15, "heckbush4" ], 
+              [0.15, "fleshbush1" ],
+              [0.15, "fleshbush2" ],
+              [0.15, "fleshbush3" ],
+              [0.15, "fleshbush4" ],
+              [0.15, "fleshbush5" ],
+              [0.15, "fleshbush6" ],
+              [0.15, "heckaltar" ],
+              [0.15, "heckbush1" ],
+              [0.15, "heckbush2" ],
+              [0.15, "heckbush3" ],
+              [0.15, "heckbush4" ],
               [0.15, "heckbush5" ],
-              [0.15, "heckbush6" ], 
-              [0.15, "heckbush7" ], 
-              [0.15, "heckbush8" ], 
-              [0.15, "heckbush9" ], 
+              [0.15, "heckbush6" ],
+              [0.15, "heckbush7" ],
+              [0.15, "heckbush8" ],
+              [0.15, "heckbush9" ],
               [0.15, "heckbush10" ],
-              [0.15, "hecklight1" ], 
-              [0.15, "hecklight2" ], 
-              [0.15, "heckpillar1" ], 
+              [0.15, "hecklight1" ],
+              [0.15, "hecklight2" ],
+              [0.15, "heckpillar1" ],
               [0.15, "heckpillar2" ]
               ],
               "parameters" : { }
@@ -397,7 +410,16 @@
               "modHueShiftMax" : 35
             }
           ]
-        }    
+        },
+      {
+        "mode" : "floor",
+        "priority" : 99.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:tiyDist",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "underground5bmicrodungeons" ]
+      }
     ]
   },
     "hueShiftOptions" : [0]

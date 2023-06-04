@@ -1,0 +1,29 @@
+{
+  "itemName": "plasmangoicecream",
+  "rarity": "Rare",
+  "price": 320,
+  "category": "preparedFood",
+  "inventoryIcon": "plasmangoicecream.png",
+  "description": "I scream, you scream.\n^cyan;+^white;20% ^cyan;EP ^gray;(^white;366s^gray;)\n^red;Burning ^gray;(^white;10s^gray;)^reset;",
+  "shortdescription": "Plasmango Ice Cream",
+  "effects": [
+    [
+      {
+        "effect": "maxenergyscalingboostfood",
+        "duration": 366
+      },
+      {
+        "effect": "burning",
+        "duration": 10
+      }
+    ]
+  ],
+  "foodValue": 35,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 3,
+  "blockingEffects": ["wellfed"]//,
+  //"learnBlueprintsOnPickup": ["solstew"]
+}

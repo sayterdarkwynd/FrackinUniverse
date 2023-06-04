@@ -1,16 +1,26 @@
 {
-  "itemName" : "ricewine",
-  "rarity" : "Common",
-  "category" : "drink",
-  "inventoryIcon" : "ricewine.png",
-  "description" : "A bitter, low quality wine. But it works.",
-  "shortdescription" : "Rice Wine",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 10,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 100,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 3.0,
-  "effects" : [ [ "heal_5"  ] ]
+  "itemName": "ricewine",
+  "rarity": "Common",
+  "category": "drink",
+  "inventoryIcon": "ricewine.png",
+  "description": "A bitter, low quality wine. But it works.\n^green;Heal ^white;10 ^gray;(^white;2s^gray;)^reset;, 35% ^red;Slow^reset;, ^red;Drunk^gray; (^white;30s^gray;)^reset;",
+  "shortdescription": "Rice Wine",
+  "eventCategory": "eventCrop",
+  "price": 600,
+  "tooltipKind": "food",
+  "maxStack": 100,
+  "effects": [ [
+    {
+        "effect" : "heal_tier0"
+    },
+    {
+        "effect" : "slow",
+        "duration" : 30
+    },
+    {
+        "effect" : "booze",
+        "duration" : 30
+    }
+  ] ],
+  "emitters" : [ "drinking" ]
 }

@@ -1,0 +1,47 @@
+{
+  "objectName" : "fuunderworldfountain",
+  "colonyTags" : [ "atropus", "creepy", "flesh" ],
+  "rarity" : "Legendary",
+  "printable" : false,
+  "description" : "Cheery and uplifting",
+  "shortdescription" : "Flesh Fountain",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 450,
+
+  "lightColor" : [60, 60, 100],
+  "soundEffect" : "/sfx/objects/fridge_hum.ogg",
+  "inventoryIcon" : "fuunderworldfountainicon.png",
+  "orientations" : [
+
+    {
+      "dualImage" : "fuunderworldfountain.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "frames" : 3,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [0, -1] ]
+    }
+  ],
+
+  "scripts" : [ "/scripts/npcToyObject.lua" ],
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "typing"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 2
+  }
+
+}

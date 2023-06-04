@@ -1,0 +1,36 @@
+{
+  "itemName" : "lunarirapier",
+  "price" : 120,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "Purified crystalline stabber.",
+  "shortdescription" : "Lunari Rapier",
+  "tooltipKind" : "sword2",
+  "category" : "Rapier",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "melee", "rapier", "lunari", "upgradeableWeapon"],
+  "inventoryIcon" : "lunarirapier.png",
+  "animation" : "piercecombo.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "lunarirapier.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "piercecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.42,
+    "baseDps" : 5.87,
+    "damageConfig" : {
+      "damageSourceKind" : "iceplasma",
+      "statusEffects" : [ "slow" ]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

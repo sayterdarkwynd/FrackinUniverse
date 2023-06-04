@@ -1,19 +1,18 @@
 {
-  "itemName" : "bloodroot",
-  "rarity" : "uncommon",
-  "price" : 10,
-    "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 5,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "inventoryIcon" : "bloodroot.png",
-  "description" : "Increases your maximum health.",
-  "shortdescription" : "Blood Root",
-  "effects" : [ [
-    "maxhealthboost1"
-    ] ]
+	"itemName": "bloodroot",
+	"inventoryIcon": "bloodroot.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 10,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+10% Physical & Knockback Res.^reset;: 2m",
+	"shortdescription": "Blood Root",
+
+	"effects": [
+		[{
+			"effect": "physicalblock",
+			"duration": 120
+		}]
+	]
 }

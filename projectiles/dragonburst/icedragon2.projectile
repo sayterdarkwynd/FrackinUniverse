@@ -2,19 +2,24 @@
   "projectileName" : "icedragon2",
   "image" : "icedragon2.png",
   "animationCycle" : 0.5,
-  "timeToLive" : 2,
+  "timeToLive" : 12,
   "frameNumber" : 3,
   "power" : 5,
-  "speed" : 50,
+  "speed" : 10,
   "physics" : "laser",
   "flippable" : true,
   "lightColor" : [40, 62, 178],
+  "damagePoly" : [ [-28, 0], [0, 12], [16, 16], [28, 0], [-16, -16], [0, -12] ],
   "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/npc/monsters/dino1.ogg","/sfx/npc/monsters/dino2.ogg","/sfx/npc/monsters/dino3.ogg","/sfx/npc/monsters/dino4.ogg" ]
+    },
     {
       "action" : "projectile",
       "type" : "icedragon3",
-      "inheritDamageFactor" : 1,
-      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.5,
+      "fuzzAngle" : 360,
       "angleAdjust" : 0
     }
   ],
@@ -22,12 +27,15 @@
   "statusEffects" : [ "freeze" ],
   "periodicActions" : [
     {
-      "time" : 0.35,
+      "time" : 0.1,
       "loop" : true,
       "action" : "projectile",
       "type" : "icecloudburst",
+      "inheritDamageFactor" : 0.1,
       "fuzzAngle" : 360
    }
   ],
-  "emitters" : [ "largeicecloud" ]
+  "emitters" : [ "largeicecloud" ],
+  "scripts" : ["/projectiles/activeitems/staff/crystalstorm/crystalstorm.lua"],
+  "scriptDelta" : 1
 }

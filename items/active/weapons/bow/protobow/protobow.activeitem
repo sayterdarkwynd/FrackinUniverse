@@ -1,27 +1,32 @@
 {
   "itemName" : "protobow",
-  "level" : 4,
+  "level" : 3,
   "price" : 150,
   "inventoryIcon" : "protobowicon.png",
   "maxStack" : 1,
-  "rarity" : "rare",
-  "tooltipKind" : "bow",
+  "rarity" : "uncommon",
+  "tooltipKind" : "bow2",
   "weaponType" : "Bow",
-  "description" : "Protocite, and other high quality materials. Awesome.",
+  "description" : "Made of protocite and other high quality materials.",
   "shortdescription" : "Protocite Bow",
+  "category" : "bow",
   "twoHanded" : true,
-  "itemTags" : ["weapon", "ranged", "bow"],
+  "itemTags" : ["weapon", "ranged", "bow", "proto", "upgradeableWeapon"],
 
   "radioMessagesOnPickup" : [ "pickupbow" ],
 
-  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animation" : "/items/active/weapons/bow/bowglow.animation",
   "animationParts" : {
-    "bow" : "protobow.png"
+    "bow" : "protobow.png",
+    "bowFullbright" : "protobowfullbright.png"
   },
   "animationCustom" : {
-    "animatedParts" : { "parts" : { "bow" : { "properties" : {
-      "offset" : [0.25, 0]
-    }}}},
+    "animatedParts" : {
+      "parts" : {
+        "bow" : { "properties" : {"offset" : [0.25, 0]}},
+        "bowFullbright" : { "properties" : { "offset" : [0.25, 0]}}
+      }
+    },
     "sounds" : {
       "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
       "release" : [ "/sfx/gun/bow_loose.ogg" ],
@@ -31,33 +36,49 @@
 
   "scripts" : ["/items/active/weapons/bow/bow.lua"],
 
-  "elementalType" : "physical",
-
-  "primaryAbilityType" : "bowshot",
+  "elementalType" : "electric",
+  //"collectablesOnPickup" : { "fu_weaponbow" : "protobow" },
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
   "primaryAbility" : {
-    "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "bowImageSelector",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "drawTime" : 0.75,        //Time to fully draw the bow
+  "powerProjectileTime" : 0.322,  //After fully drawing, the bow is super-charged for this long
+  "dynamicDamageMultiplier" : 1.05,  //All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+  "energyPerShot" : 40,
+  "holdEnergyUsage" : 12,
+  "airborneBonus" : 1.21,
     "projectileType" : "lesserprotoarrow",
     "powerProjectileType" : "protoarrow",
     "projectileParameters" : {
-      "power" : 7
+      "power" : 7,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 8.65,
+      "piercing" : false
     }
   },
 
-  "altAbilityType" : "zenshot",
+  "altAbilityType" : "rngbows_enhancedbowshot",
   "altAbility" : {
-    "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "bowImageSelectorNoPower",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
-    "projectileCount" : 3,
+    "name" : "Energy Blast",
+    "drawTime" : 1.5,
+    "powerProjectileTime" : 0.5,  //After fully drawing, the bow is super-charged for this long
+    "energyPerShot" : 50,
     "projectileType" : "protoarrow",
+    "powerProjectileType" : "protostarterbow",
     "projectileParameters" : {
-      "power" : 8.325
+      "power" : 4,
+      "speed" : 60,
+      "piercing" : false
     },
-    "splitDelay" : 0.2,
-    "splitAngle" : 2
+    "powerProjectileParameters" : {
+      "power" : 4.5,
+      "speed" : 70,
+      "piercing" : true
+    }
   },
 
-  "builder" : "/items/buildscripts/buildbow.lua"
+  "critChance" : 4,
+  "critBonus" : 15,
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

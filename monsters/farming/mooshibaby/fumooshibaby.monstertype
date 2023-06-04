@@ -1,7 +1,7 @@
 {
   "type" : "fumooshibaby",
-  "shortdescription" : "Fluffalo Calf",
-  "description" : "A newborn fluffalo's diet determines the type it grows into.",
+  "shortdescription" : "Mooshi Calf",
+  "description" : "A newborn mooshi! It'll eat most fruits and vegetables.",
 
   "categories" : [ "mooshibaby" ],
   "parts" : [ "body" ],
@@ -9,21 +9,29 @@
   "animation" : "mooshibaby.animation",
   "reversed" : false,
 
+  "diet" : "herbivore",
+  "hungerTime" : 10,
+
   "dropPools" : [ { "default" : "hunting" } ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"
+      "/monsters/monster.lua",
+      "/scripts/golemancer/gol_monstermain.lua"
     ],
+  "diet" : "herbivore",
+  "hungerTime" : 10,
+  "tickEvoTime" : 5,
+  "evolutions" : [ "/scripts/golemancer/evolutions/mooshibabygrow.evo" ],
 
-    "persistent" : false,
+    "persistent" : true,
 
     "behavior" : "farmablebaby",
 
-    "evolveType" : "mooshi",
+    "evolveType" : "fumooshi",
     "spawnOffset" : [0.0, 0.625],
     "spawnPoly" : [ [0.875, 1.375], [1.625, 0.625], [1.625, -0.625], [0.875, -1.375], [-0.875, -1.375], [-1.625, -0.625], [-1.625, 0.625], [-0.875, 1.375] ],
-    "evolveTime" : 100,
+    "evolveTime" : 1000,
 
     "metaBoundBox" : [-2.0, -2.0, 2.0, 2.0],
     "scale" : 1.0,
@@ -50,6 +58,7 @@
         "targetMaterialKind" : "organic"
       },
 
+      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
@@ -66,7 +75,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 100
+          "baseValue" : 30
         },
         "protection" : {
           "baseValue" : 0.0
@@ -95,6 +104,9 @@
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : false,
+    "relocatable" : true,
+    "captureHealthFraction" : 0.5,
+    "capturedMonsterType" : "mooshibaby",
     "nametagColor" : [64, 200, 255]
   }
 }

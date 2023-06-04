@@ -1,0 +1,66 @@
+{
+	"itemName" : "ff_scouthelm_melee",
+	"inventoryIcon" : "icons.png:head",
+	"dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Health & Speed x^green;1.1^reset;
+^yellow;^reset; Melee: Damage x^green;1.1^reset;",
+	"shortdescription" : "Warrior Helm",
+	"category" : "headarmour",
+	"tooltipKind" : "armornew2",
+
+	"maleFrames" : "head.png",
+	"femaleFrames" : "head.png",
+	"mask" : "mask.png",
+
+	"level" : 4,
+	//"collectablesOnPickup" : { "fu_armorbalanced" : "ff_scouthelm_melee" },
+	"leveledStatusEffects" : [
+		{
+			"levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+			"stat" : "powerMultiplier",
+			"baseMultiplier" : 1.15
+		},
+		{
+			"levelFunction" : "standardArmorLevelProtectionMultiplier",
+			"stat" : "protection",
+			"amount" : 0.3
+		},
+		{
+			"levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+			"stat" : "maxEnergy",
+			"amount" : 3
+		},
+		{
+			"levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+			"stat" : "maxHealth",
+			"amount" : 3
+		},
+		{
+			"levelFunction" : "fuArmorResistMultiplier",
+			"stat" : "physicalResistance",
+			"amount" : 0.016
+		},
+		{
+			"levelFunction" : "fuArmorResistMultiplier",
+			"stat" : "electricResistance",
+			"amount" : 0.012
+		}
+	],
+	"itemTags" : [ "upgradeableWeapon", "balanced", "melee" ],
+	"statusEffects" : [
+		"warriorsetbonus",
+		{
+			"stat" : "fu_warriorset_head",
+			"amount" : 1
+		},
+		{
+			"stat" : "fu_scoutset_head",
+			"amount" : 1
+		}
+	],
+	//"upgrades" : 1 ,
+	"builder" : "/items/buildscripts/fubuildarmor.lua"
+}

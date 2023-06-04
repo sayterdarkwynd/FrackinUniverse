@@ -28,7 +28,7 @@ function init()
 
   self.targetSearchTimer = 0
   self.targetHoldTimer = 0
-  
+
   self.lastAggressGroundPosition = {0, 0}
   self.stuckCount = 0
   self.stuckPosition = {0, 0}
@@ -99,7 +99,7 @@ function init()
     monster.setActiveSkillName(nil)
     if isSkillState(stateName) then
       setAggressive(true, false)
-      for k,v in pairs(self.skillCooldownTimers) do
+      for k in pairs(self.skillCooldownTimers) do
         if k == stateName then
           self.skillCooldownTimers[k] = self.skillParameters[k].cooldownTime
         else
@@ -111,7 +111,7 @@ function init()
 
   animator.setAnimationState("movement", "idle")
   monster.setDeathParticleBurst("deathPoof")
-  
+
   self.debug = false
 end
 
@@ -120,7 +120,7 @@ function update(dt)
   if self.groundDirection[2] ~= -1 and (onGround() or self.groundChangeCooldownTimer > 0) then
     mcontroller.controlFly({0,0})
     mcontroller.controlParameters({
-      gravityEnabled = false  
+      gravityEnabled = false
     })
   end
 
@@ -137,7 +137,7 @@ function update(dt)
   self.state.autoPickState = not hasTarget()
 
   --execute skill onUpdate hooks
-  for skillName, params in pairs(self.skillParameters) do
+  for skillName in pairs(self.skillParameters) do
     if type(_ENV[skillName].onUpdate) == "function" then
       _ENV[skillName].onUpdate(dt)
     end
@@ -147,19 +147,18 @@ function update(dt)
   local slows = status.statusProperty("slows", {})
 
   local stunned = false
-  for k, v in pairs(stuns) do
+  if next(stuns) then
     stunned = true
     animator.setAnimationRate(0)
-    break
   end
   if not stunned then
     local animSpeed = 1.0
-    for k, v in pairs(slows) do
+    for _, v in pairs(slows) do
       animSpeed = animSpeed * v
     end
     animator.setAnimationRate(animSpeed)
   end
-  
+
   if stunned then
     --do nothin
   elseif inState == "stunState" or inState == "fleeState" then
@@ -171,7 +170,7 @@ function update(dt)
     if not inSkill() and hasTarget() then
       --calculate skill positions relative to target
       updateSkillOptions()
-      
+
       --this should end up in skills, approach, or fall back into flee
       if inState ~= "approachState" then self.state.pickState() end
     end
@@ -196,7 +195,7 @@ function update(dt)
   end
 
   decrementTimers()
-  
+
   script.setUpdateDelta(hasTarget() and 1 or 10)
 end
 
@@ -259,7 +258,7 @@ function damage(args)
   end
 
   --execute skill onDamage hooks
-  for skillName, params in pairs(self.skillParameters) do
+  for skillName in pairs(self.skillParameters) do
     if type(_ENV[skillName].onDamage) == "function" then
       _ENV[skillName].onDamage(args)
     end
@@ -808,7 +807,7 @@ function updateSkillOptions()
   for _, option in pairs(self.skillOptions) do
     option.approachDelta = world.distance(option.approachPoint, mcontroller.position())
     option.approachDistance = world.magnitude(option.approachDelta)
-    
+
     --score with custom hook or default method
     if type(_ENV[option.skillName].scoreOption) == "function" then
       option.score = _ENV[option.skillName].scoreOption(option)
@@ -821,7 +820,7 @@ function updateSkillOptions()
       option.score = option.score - self.skillChains[option.skillName]
     end
   end
-  
+
   --rank options
   table.sort(self.skillOptions, function(a,b) return a.score > b.score end)
 end

@@ -1,0 +1,43 @@
+{
+  "itemName" : "skathtier1spear",
+  "price" : 200,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A spear made for keeping enemies at bay.",
+  "shortdescription" : "Rustic Skath Spear",
+  "tooltipKind" : "sword2",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear","upgradeableWeapon"],
+
+  "inventoryIcon" : "skathtier1spear.png",
+
+  "animation" : "/items/active/weapons/melee/spear/spear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "skathtier1spear.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "fireTime" : 0.95,
+    "baseDps" : 10.5
+  },
+
+  "altAbilityType" : "spearspin",
+  "critChance" : 2,
+  "critBonus" : 8,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

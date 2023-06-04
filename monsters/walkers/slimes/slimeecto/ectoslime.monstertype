@@ -1,0 +1,232 @@
+{
+  "type" : "ectoslime",
+  "shortdescription" : "Ecto Slime",
+  "description" : "It's all sticky and warm...ew.",
+
+  "categories" : [ "ectoslime" ],
+  "parts" : [ "body" ],
+
+  "animation" : "ectoslime.animation",
+
+  "dropPools" : [
+    {
+    "default" : "slimemonsterectoTreasure"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 0.2,
+          "parameters" : {
+
+            "maximumRange" : 30,
+            "minimumRange" : 3,
+
+            "windupState" : "hopfull",
+            "windupTime" : 0.1,
+            "projectileType" : "darkwatervomit",
+            "fireSound" : "deathPuff",
+            "fireState" : "fall",
+            "winddownState" : "land",
+            "winddownTime" : 0.05,
+            "aimAtTarget" : false,
+            "aimDirection" : [0,0],
+            "onGround" : true,
+            "fireDelay" : 0.05
+          }
+        },
+        {
+          "name" : "action-hop",
+          "cooldown" : 1.0,
+          "parameters" : {
+            "verticalSpeed" : 20,
+            "horizontalSpeed" : 10,
+            "hopSequence" : 1,
+            "timeBetweenHops" : 0.0,
+            "windupTime" : 0.1,
+            "landTime" : 0.1,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 35
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-hop",
+          "cooldown" : 0.0,
+          "parameters" : {
+            "verticalSpeed" : 25,
+            "horizontalSpeed" : 10,
+            "hopSequence" : 3,
+            "timeBetweenHops" : 0.25,
+            "hopAwayFromWall" : true
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "action-hop",
+          "cooldown" : 0.0,
+          "parameters" : {
+            "verticalSpeed" : 20,
+            "horizontalSpeed" : 10,
+            "hopSequence" : 1,
+            "timeBetweenHops" : 0.0,
+            "windupTime" : 0.1,
+            "landTime" : 0.1,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 35
+          }
+        }
+      ],
+
+      "deathActions" : [
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [0.5,0],
+            "monsterType" : "ectomicroslime",
+            "replacement" : true
+          }
+        },
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [-0.5,0],
+            "monsterType" : "ectomicroslime",
+            "replacement" : true
+          }
+        }
+      ]
+
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-0.6875, -0.375], [-0.4375, -0.625], [0.4375, -0.625], [0.6875, -0.375], [0.6875, 0.25], [0.4375, 0.5], [-0.4375, 0.5], [-0.6875, 0.25] ],
+      "damage" : 12,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 20,
+      "statusEffects" : [ "weakpoison" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-0.6875, -0.375], [-0.4375, -0.625], [0.4375, -0.625], [0.6875, -0.375], [0.6875, 0.25], [0.4375, 0.5], [-0.4375, 0.5], [-0.6875, 0.25] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 5,
+      "runSpeed" : 5,
+      "jumpSpeed" : 5
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 4
+        },
+        "protection" : {
+          "baseValue" : 20
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "slimestickImmunity" : {
+          "baseValue" : 1.0
+        },
+        "slimeImmunity" : {
+          "baseValue" : 1.0
+        },
+        "blacktarImmunity" : {
+          "baseValue" : 1.0
+        },
+        "lavaImmunity" : {
+          "baseValue" : 1.0
+        },
+        "tarImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "ectoslime" }
+  }
+}

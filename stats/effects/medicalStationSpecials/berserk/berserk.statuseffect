@@ -1,0 +1,19 @@
+{
+	"name" : "medicalberserk",
+	"label" : "^orange;[E]^reset; Berserker Rage",
+	"icon" : "/interface/statuses/medicalStationSpecials/berserk.png",
+
+	"defaultDuration" : 5,
+	"scripts" : [ "/stats/effects/medicalStationSpecials/medicalStatusBase.lua","/stats/effects/fu_genericStatApplier.lua","/stats/effects/fu_genericControlModifiers.lua" ],
+
+	"effectConfig" : {
+		"stats": [
+			{"stat": "protection","amount": -35},
+			{"stat": "grit","amount": -0.5},
+			{"stat": "powerMultiplier","effectiveMultiplier": 1.25}
+		],
+		"controlModifiers": {
+			"speedModifier": 1.25
+		}
+	}
+}

@@ -4,10 +4,10 @@
   "price" : 200,
   "category" : "medicine",
   "inventoryIcon" : "thesauce.png",
-  "description" : "Protects you from the ravages of pain.",
+  "description" : "Protects you from damage via some sort of...weird mojo.\n^cyan;+^white;30% ^cyan;Defense ^gray;(^white;2m^gray;)\n^blue;+^white;3 ^blue;Madness^reset;",
   "shortdescription" : "The Sauce",
-  "effects" : [ [
-     "percentarmorboost30"
-    ] ],
-  "learnBlueprintsOnPickup" : [ "thesauce", "fflagoonchest", "fflagoonlegs", "fflagoonhead" ]
+  "tooltipKind" : "food",
+  "effects" : [ ["madnessgain3","percentarmorboost30"] ],
+  "emitters" : [ "stimuse" ],
+  "blockingEffects" : [ "percentarmorboost30" ]
 }

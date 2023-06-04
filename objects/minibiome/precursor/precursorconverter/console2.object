@@ -1,0 +1,106 @@
+{
+  "objectName" : "precursorconverter2",
+  "colonyTags" : [ "fu", "science", "precursor" ],
+  "rarity" : "rare",
+  "race" : "precursor",
+  "category" : "^orange;Extraction Device^reset;",
+  "printable" : false,
+  "objectType" : "container",
+  "price" : 450,
+  "inventoryIcon" : "extractionlabicon.png",
+  "description" : "Converts stuff into other stuff.",
+  "shortdescription" : "^cyan;Faulty Erchius Converter^reset;",
+  "subtitle" : "Resource converter",
+  "orientations" : [
+     {
+      "imageLayers" : [ { "image" : "console.png:<color>.<frame>", "fullbright" : true }, { "image" : "consolelit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+      "animationParts" : {
+          "samplingarrayanim" : "console.png",
+          "samplingarrayanimlit" : "consolelit.png"
+        },
+      "imagePosition" : [0, 0],
+      "frames" : 3,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "console.png:<color>.<frame>", "fullbright" : true }, { "image" : "consolelit.png:<color>.<frame>" } ],
+      "direction" : "right",
+      "animationParts" : {
+          "samplingarrayanim" : "console.png",
+          "samplingarrayanimlit" : "consolelit.png"
+        },
+      "imagePosition" : [0, 0],
+      "frames" : 3,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "console.animation",
+  "animationParts" : {
+    "samplingarrayanim" : "console.png",
+    "samplingarrayanimlit" : "consolelit.png"
+  },
+  "scripts" : [ "/objects/minibiome/precursor/precursorconverter/converter.lua",
+                "/scripts/npcToyObject.lua" ],
+  "scriptDelta" : 200,
+  "recipeGroup" : "converter",
+  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+  "slotCount" : 11,
+  "uiConfig" : "/interface/extractor/extractor.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "outputNodes" : [ [0, 1] ],
+  "inputNodes" : [ [0, 0] ],
+  "kheAA_inDataNode":0,
+  "kheAA_outDataNode":0,
+
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "crouchcollect"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  },
+
+  "fu_mintick" : 1,
+  "fu_stationTechLevel" : 1,
+  "fu_timerMod" : 4,
+  "recipeTable":
+	[
+		{"inputs" : { "solidfuel":100 }, "outputs" : { "bagoffarts":1 }, "time" : 20.0},
+		{"inputs" : { "liquidfuel":200 }, "outputs" : { "bagoffarts":1 }, "time" : 20.0},
+		{"inputs" : { "toxicwaste":100 }, "outputs" : { "bagoffarts":1 }, "time" : 20.0},
+		{"inputs" : { "irradiumore":25 }, "outputs" : { "bagoffarts":1 }, "time" : 20.0},
+		{"inputs" : { "irradiumbar":10 }, "outputs" : { "bagoffarts":1 }, "time" : 20.0},
+		{"inputs" : { "supermatter":50 }, "outputs" : { "bagoffarts":2 }, "time" : 20.0},
+		{"inputs" : { "uraniumrod":1 }, "outputs" : { "bagoffarts":2 }, "time" : 20.0},
+		{"inputs" : { "plutoniumrod":1 }, "outputs" : { "bagoffarts":3 }, "time" : 20.0},
+		{"inputs" : { "neptuniumrod":1 }, "outputs" : { "bagoffarts":3 }, "time" : 20.0},
+		{"inputs" : { "thoriumrod":1 }, "outputs" : { "bagoffarts":3 }, "time" : 20.0},
+		{"inputs" : { "solariumstar":5 }, "outputs" : { "bagoffarts":4 }, "time" : 20.0},
+		{"inputs" : { "enricheduranium":1 }, "outputs" : { "bagoffarts":4 }, "time" : 20.0},
+		{"inputs" : { "enrichedplutonium":1}, "outputs" : { "bagoffarts":4 }, "time" : 20.0},
+		{"inputs" : { "ultronium":1 }, "outputs" : { "bagoffarts":4 }, "time" : 20.0},
+		{"inputs" : { "precursorfluid":50 }, "outputs" : { "bagoffarts":4 }, "time" : 20.0},
+		{"inputs" : { "bagoffarts":1 }, "outputs" : { "crunchychick":1 }, "time" : 8.0}
+	]
+}

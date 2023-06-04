@@ -1,0 +1,121 @@
+{
+	"type" : "tentaclecomet",
+
+	"categories" : [ "tentaclecomet" ],
+	"parts" : [
+		"background", "foreground",
+		"eyelarge", "eyemedium", "eyesmall",
+		"tentacle1", "tentacle2", "tentacle3", "tentacle4",
+		"tentacle5", "tentacle6", "tentacle7", "tentacle8",
+		"flames"
+	],
+
+	"animation" : "tentaclecomet.animation",
+	"reversed" : false,
+
+	"dropPools" : [ "basicMonsterTreasure" ],
+
+	"baseParameters" : {
+		"scripts" : [
+			"/monsters/clef/boss/tentaclecomet/behavior.lua",
+			"/scripts/stateMachine.lua",
+			"/npcs/timers.lua",
+			"/scripts/util.lua",
+			"/scripts/vec2.lua"
+		],
+
+		"metaBoundBox" : [-6.0, -5.75, 6.0, 5.75],
+		"scale" : 1.0,
+
+		"movementSettings" : {
+			"collisionPoly" : [ [-6, 0], [-4.625, -3.625], [0, -5.75], [4.75, -3.625], [6, 0], [4.625, 3.625], [0, 5.75], [-5.125, 3.625] ],
+
+			"mass" : 0.1,
+			"walkSpeed" : 3,
+			"runSpeed" : 6,
+			"jumpSpeed" : 5,
+			"flySpeed" : 8,
+			"airFriction" : 0.1,
+			"airForce" : 50.0
+		},
+
+		"bodyMaterialKind" : "organic",
+
+		"knockoutTime" : 0.1,
+		"knockoutEffect" : "blink",
+		"deathParticles" : "deathPoof",
+
+		"touchDamage" : {
+			"poly" : [ [-6, 0], [-4.625, -3.625], [0, -5.75], [4.75, -3.625], [6, 0], [4.625, 3.625], [0, 5.75], [-5.125, 3.625] ],
+			"damage" : 30,
+
+			"teamType" : "enemy",
+			"damageSourceKind" : "bite",
+			"statusEffects" : [ ]
+		},
+
+		"statusSettings" : {
+			"statusProperties" : {
+				"targetMaterialKind" : "organic"
+			},
+
+			"appliesEnvironmentStatusEffects" : false,
+			"minimumLiquidStatusEffectPercentage" : 0.1,
+
+			"primaryScriptSources" : [
+				"/stats/monster_primary.lua"
+			],
+			"primaryScriptDelta" : 0,
+
+			"stats" : {
+				"knockbackStunTime" : {
+					"baseValue" : 0.25
+				},
+				"maxHealth" : {
+					"baseValue" : 600
+				},
+				"protection" : {
+					"baseValue" : 1.0
+				},
+				"specialStatusImmunity" : {"baseValue" : 1.0},
+				"bluoplasmaStatusImmunity" : {"baseValue" : 1.0},
+				"slagStatusImmunity" : {"baseValue" : 1.0},
+				"healthRegen" : {
+					"baseValue" : 0.0
+				}
+			},
+
+			"resources" : {
+				"stunned" : {
+					"deltaValue" : -1.0,
+					"initialValue" : 0.0
+				},
+				"health" : {
+					"maxStat" : "maxHealth",
+					"deltaStat" : "healthRegen",
+					"defaultPercentage" : 100
+				}
+			}
+		},
+
+		"mouthOffset" : [0, 0],
+		"feetOffset" : [0, -8],
+
+		"blinkTimeRange" : [2.0, 4.0],
+
+		// These are in the same order as the tentacleN.png images
+		"craterOffsets" : [
+			[2.625, 5.0],
+			[5.125, 2.5],
+			[5.75, -1.125],
+			[3.0, -4.25],
+			[-2.875, -5.25],
+			[-5.375, -1.25],
+			[-5.125, 2.625],
+			[-3.0, 5.125]
+		],
+
+		"hoverAmplitude" : 0.15,
+		"hoverFrequency" : 0.8
+	}
+}

@@ -1,0 +1,119 @@
+{
+  "itemName" : "blastcannoncustom",
+  "price" : 1800,
+  "inventoryIcon" : "blastcannoncustom.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "^cyan;Counts as 'plasma' (set bonuses)^reset;
+^yellow;Stun^reset; and ^cyan;Weaken^reset; foes.",
+  "shortdescription" : "Veritas Cannon",
+  "level" : 6,
+  "tooltipKind" : "gun2",
+  "category" : "rocketLauncher",
+  "itemTags" : ["weapon","ranged","rocketlauncher","plasma","upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "blastcannoncustom.png",
+    "middleunlit" : "",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middleunlit" : {
+          "properties" : {
+            "centered" : true,
+            "image" : "<partImage><paletteSwaps>",
+            "offset" : [0.30, 0.385],
+            "transformationGroups" : ["weapon"],
+            "fullbright" : true,
+            "zLevel" : 1
+          }
+        }
+      }
+    },
+    "lights" : { "muzzleFlash" : {"color" : [222, 44, 44] } },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
+          { "particle" : "shadowsmoke2", "offset" : [0.0, 0.0] },
+          { "particle" : "fufiretrail", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/blastcannon.ogg" ]
+    }
+  },
+
+
+  "baseOffset" : [0.05, 0.6],
+  "muzzleOffset" : [3, 0.15],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 2,
+    "baseDps" : 7,
+    "energyUsage" : 40,
+    "inaccuracy" : 0.05,
+
+    "projectileCount" : 2,
+    "fireType" : "auto",
+
+    "projectileType" : "fuplasmatorpedo2",
+    "projectileParameters" : {
+      "knockback" : 40,
+      "statusEffects" : [ "slow","defenseboostneg20" ]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.25,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "fu_darkplasma",
+  "critChance" : 2,
+  "critBonus" : 20,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 300,
+  "recoilForce" : 2500,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

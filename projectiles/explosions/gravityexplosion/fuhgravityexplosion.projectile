@@ -1,0 +1,30 @@
+{
+  "projectileName" : "fuhgravityexplosion",
+  "image" : "hgravityexplosion.png",
+  "animationCycle" : 0.7,
+  "animationLoops" : false,
+  "physics" : "illusion",
+  "frameNumber" : 6,
+  "pointLight" : false,
+  "speed" : 0,
+  "power" : 0,
+  "level" : 0,
+  "bounces" : -1,
+
+  "timeToLive" : 0.01,
+
+  "orientationLocked" : true,
+
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 3,
+      "innerRadius" : 2.5,
+      "targetRadialVelocity" : -50,
+      "controlForce" : 1500,
+      "categoryWhitelist" : [ "monster", "player", "npc" ]
+    }
+  },
+
+  "clientEntityMode" : "ClientSlaveOnly"
+}

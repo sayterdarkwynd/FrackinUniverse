@@ -1,0 +1,65 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "firing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "confetti" ]
+            }
+          },
+          "fire" : {
+            "frames" : 2,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "confetti",
+            "properties" : {
+              "immediateSound" : "/sfx/tools/elderaltar.ogg",
+              "particleEmittersOff" : [ "confetti" ]
+            },
+            "frameProperties" : {
+              "stateNudge" : [ [-0.125, 0], [0, 0] ]
+            }
+          },
+          "confetti" : {
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "confetti" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "gun" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "madnesstoken.png",
+          "offset" : [0.0, 0.0]
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+
+    "confetti" : {
+      "emissionRate" : 500,
+      "offsetRegion" : [ 1.0, -1.0, 2.0, -0.0 ],
+      "active" : true,
+      "particles" : [
+        { "particle" : "smallshadowcloud1" },
+        { "particle" : "smallshadowcloud2" },
+        { "particle" : "shadowaura" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "active" : [ "/sfx/tools/elderaltar.ogg","/sfx/tools/elderaltar2.ogg" ]
+  }
+}

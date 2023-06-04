@@ -1,0 +1,32 @@
+{
+  "objectName" : "madnessmaggot",
+  "rarity" : "common",
+  "description" : "Ew. Why?",
+  "shortdescription" : "Maggot",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 50,
+  "printable" : false,
+
+  "inventoryIcon" : "madnessmaggot.png",
+  "orientations" : [
+    {
+      "dualImage" : "madnessmaggot.png:<color>",
+      "imagePosition" : [-10, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "spaces" : [  [0, 0], [-1, 0], [0, 1], [-1, 1]],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "botspawner" : {
+      "type" : "maggot",
+	  "monsterImage":"/monsters/walkers/maggot/maggot.png:idle.1?"
+  },
+
+  "scripts" : [
+    "/spawners/fuminionspawner.lua"
+  ],
+  "scriptDelta" : 5
+}

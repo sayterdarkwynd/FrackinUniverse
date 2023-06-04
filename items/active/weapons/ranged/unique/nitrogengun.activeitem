@@ -4,13 +4,14 @@
   "inventoryIcon" : "nitrogengun.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Freezes enemies in place.",
+  "description" : "Effective in most situations, though somewhat chilling.
+^yellow;Inflicts freezing^reset;",
   "shortdescription" : "Nitrogen Cannon",
-  "level" : 4,
-  "tooltipKind" : "gun",
-  "learnBlueprintsOnPickup" : [ "fuvaporizer" ],   
+  "category" : "assaultRifle",
+  "level" : 5,
+  "tooltipKind" : "gun2",
   "weaponType" : "Ice Rifle",
-  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "itemTags" : ["weapon","ranged","assaultrifle", "isogen", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -44,7 +45,7 @@
     "fireType" : "auto",
 
     "projectileType" : "funitrogencannonshot",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 50,
       "knockback" : 2
     },
@@ -78,6 +79,8 @@
 	  }
   },
 
+  "critChance" : 5,
+  "critBonus" : 5,
   "altAbilityType" : "icemist",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

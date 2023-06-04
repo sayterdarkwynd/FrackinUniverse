@@ -1,11 +1,21 @@
 {
   "type" : "furaider",
-  "baseType" : "hostile",
+  "baseType" : "hostilefu",
 
   "levelVariance" : [0, 1],
 
   "dropPools" : [ "ffbanditTreasure" ],
-  
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "leapWindup" : 0.55,
+      "rangedAimTime" : 0.2,
+      "rangedWindupTime" : 0.01,
+      "rangedMinFireTime": 0.15,
+      "rangedMaxFireTime": 5
+    }
+  },
+
   "items" : {
     "override" : [
       [0, [
@@ -15,6 +25,9 @@
             "legs" : [ { "name" : "blisterpants", "parameters" : { "colorIndex" : 1 } } ],
             "primary" : [
               "blistergun"
+            ],
+            "alt" : [
+              "bowlingball"
             ]
           },
           {
@@ -22,7 +35,12 @@
             "chest" : [ { "name" : "fubountyhunterchest", "parameters" : { "colorIndex" : 1 } } ],
             "legs" : [ { "name" : "fubountyhunterpants", "parameters" : { "colorIndex" : 1 } } ],
             "primary" : [
-              "fugaussrifle"
+              "flamethrower",
+              "commonrocketlauncher",
+              "commongrenadelauncher"
+            ],
+            "alt" : [
+              "thorngrenade"
             ]
           },
           {
@@ -30,10 +48,12 @@
             "chest" : [ { "name" : "fubonusarmorchest", "parameters" : { "colorIndex" : 1 } } ],
             "legs" : [ { "name" : "fubonusarmorpants", "parameters" : { "colorIndex" : 1 } } ],
             "primary" : [
-              "protopistol"
+              "protopistol",
+              "curvepistol",
+              "curvesmg"
             ],
             "alt" : [
-              "flashlight"
+              "lunarishield"
             ]
           },
           {
@@ -41,7 +61,12 @@
             "chest" : [ { "name" : "fuexplorerchest", "parameters" : { "colorIndex" : 7 } } ],
             "legs" : [ { "name" : "fuexplorerlegs", "parameters" : { "colorIndex" : 7 } } ],
             "primary" : [
-              "minirocketlauncher"
+              "energyassault",
+              "protogun",
+              "carvelle"
+            ],
+            "alt" : [
+              "energyjavelin"
             ]
           },
           {
@@ -49,10 +74,10 @@
             "chest" : [ { "name" : "ff_slimechest2", "parameters" : { "colorIndex" : 1 } } ],
             "legs" : [ { "name" : "ff_slimelegs2", "parameters" : { "colorIndex" : 1 } } ],
             "primary" : [
-              "slimelauncher"
+              "slimelauncher","futritaniumpistol","fuhuntingrifle2"
             ],
             "alt" : [
-              "flashlight"
+              "energylance"
             ]
           },
           {
@@ -60,25 +85,67 @@
             "chest" : [ { "name" : "wretchelchest", "parameters" : { "colorIndex" : 1 } } ],
             "legs" : [ { "name" : "wretchelpants", "parameters" : { "colorIndex" : 1 } } ],
             "primary" : [
-              "npcdagger",
-              "npcaxe",
-              "npcshortsword",
-              "npcbroadsword",
-              "npchammer",
-              "npcspear",
-              "npcassaultrifle",
-              "npcpistol",
-              "npcmachinepistol",
-              "npcshotgun",
-              "npcsniperrifle"
+              "armcannonfire",
+              "armcannon",
+              "armcannonexplosive",
+              "armcannonice",
+              "armcannonproto",
+              "armcannonshock"
+            ],
+            "alt" : [
+              "armcannonfire",
+              "armcannon",
+              "armcannonexplosive",
+              "armcannonice",
+              "armcannonproto",
+              "armcannonshock"
             ]
           },
           {
-            "head" : [ { "name" : "agilitysuithead", "parameters" : { "colorIndex" : 1 } } ],
-            "chest" : [ { "name" : "agilitysuitchest", "parameters" : { "colorIndex" : 1 } } ],
-            "legs" : [ { "name" : "agilitysuitlegs", "parameters" : { "colorIndex" : 1 } } ],
+            "head" : [ { "name" : "agilitysuithead", "parameters" : { "colorIndex" : 4 } } ],
+            "chest" : [ { "name" : "agilitysuitchest", "parameters" : { "colorIndex" : 4 } } ],
+            "legs" : [ { "name" : "agilitysuitlegs", "parameters" : { "colorIndex" : 4 } } ],
             "primary" : [
-              "energyassault"
+              "gravitonpistol",
+              "randomharpoongun",
+              "lunaripistol"
+            ],
+            "alt" : [
+              "lunaripistol",
+              "gravitonpistol"
+            ]
+          },
+          {
+            "head" : [ { "name" : "fuwarphunterhead", "parameters" : { "colorIndex" : 3 } } ],
+            "chest" : [ { "name" : "fuwarphunterchest", "parameters" : { "colorIndex" : 3 } } ],
+            "legs" : [ { "name" : "fuwarphunterpants", "parameters" : { "colorIndex" : 3 } } ],
+            "primary" : [
+              "laspistol",
+              "lasrifle",
+              "flaregun",
+              "ff_bubblegun",
+              "ff_icechucker",
+              "fuhuntingrifle",
+              "fugaussrifle",
+              "gravitonpistol",
+              "fustingergun",
+              "furainbowgun",
+              "fucellgun",
+              "irradiumrifle",
+              "longarm",
+              "longarmpistol",
+              "lunaripistol",
+              "lunaririfle"
+            ]
+          },
+          {
+            "head" : [ { "name" : "xenohead", "parameters" : { "colorIndex" : 3 } } ],
+            "chest" : [ { "name" : "xenochest", "parameters" : { "colorIndex" : 3 } } ],
+            "legs" : [ { "name" : "xenolegs", "parameters" : { "colorIndex" : 3 } } ],
+            "primary" : [
+              "lasrifle",
+              "densiniumrifle",
+              "fugaussrifle"
             ]
           },
           {
@@ -86,10 +153,35 @@
             "chest" : [ { "name" : "densiniumchest", "parameters" : { "colorIndex" : 1 } } ],
             "legs" : [ { "name" : "densiniumlegs", "parameters" : { "colorIndex" : 1 } } ],
             "primary" : [
-              "mechgun"
+              "mechgun",
+              "densiniumrifle",
+              "nitrogenpistol",
+              "mobiuspistol"
+            ],
+            "alt" : [
+              "densiniumsword"
             ]
           }
         ] ]
     ]
+  },
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 70.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 100.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.65
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      }
+    }
   }
 }

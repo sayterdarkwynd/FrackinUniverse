@@ -1,0 +1,53 @@
+{
+  "objectName" : "extrajumppad",
+  "objectType" : "physics",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "An extra powerful jump pad. Repels objects with a strong elastic force",
+  "shortdescription" : "Extra Jump Pad",
+  "race" : "generic",
+
+  "category" : "wire",
+  "price" : 100,
+
+  "floranDescription" : "Repelss objectss with a ssstrong elastic force",
+  "glitchDescription" : "Impressed. Repels objects with a strong elastic force",
+
+  "inventoryIcon" : "extrajumppadicon.png",
+  "orientations" : [
+    {
+      "image" : "extrajumppad.png:<color>.off",
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/extraforcepad/extraforcepad.lua" ],
+  "scriptDelta" : 0,
+
+  "animation" : "/objects/wired/extraforcepad/extraforcepad.animation",
+
+  "animationParts" : {
+    "forcepad" : "extrajumppad.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "health" : 5,
+
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/rock_break1.ogg", "/sfx/objects/rock_break2.ogg", "/sfx/objects/rock_break3.ogg", "/sfx/objects/rock_break4.ogg", "/sfx/objects/rock_break5.ogg", "/sfx/objects/rock_crumble1.ogg", "/sfx/objects/rock_crumble2.ogg", "/sfx/objects/rock_crumble3.ogg", "/sfx/objects/rock_crumble4.ogg", "/sfx/objects/rock_crumble5.ogg" ],
+  "smashParticles" : [ { "count" : 10, "particle" : "potshard" } ],
+
+  "inputNodes" : [ [-1, 0] ],
+  "physicsForces" : {
+    "jumpForce" : {
+      "type" : "DirectionalForceRegion",
+      "rectRegion" : [-2, 0, 2, 4],
+      "yTargetVelocity" : 20000,
+      "controlForce" : 20000
+    }
+  }
+}

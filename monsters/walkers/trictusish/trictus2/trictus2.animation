@@ -1,0 +1,247 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "chargeup" ]
+            }
+          },
+          "windup" : {
+            "frames" : 14,
+            "cycle" : 0.9,
+            "properties" : {
+	      "particleEmittersOff" : [ "chargeup" ]
+            }
+          },
+          "winddown" : {
+            "frames" : 14,
+            "cycle" : 0.5,
+            "properties" : {
+	                  "particleEmittersOff" : [ "chargeup" ]
+            }
+          },
+          "slash" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+	                  "particleEmittersOff" : [ "chargeup" ]
+            }
+          },
+          "chargewindup" : {
+            "frames" : 14,
+            "cycle" : 1.8,
+            "properties" : {
+	                  "particleEmittersOn" : [ "chargeup" ]
+            }
+          },
+          "chargewinddown" : {
+            "frames" : 14,
+            "cycle" : 0.5,
+            "properties" : {
+	                  "particleEmittersOn" : [ "chargeup" ]
+            }
+          },
+          "charge" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "properties" : {
+	                  "particleEmittersOn" : [ "chargeup" ]
+            }
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "offset" : [1.375, 1.125]
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:slash.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:slash.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:chargewindup.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:chargewinddown.<frame>"
+              }
+            },
+            "windup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },
+            "winddown" : {
+              "properties" : {
+                "image" : "<partImage>:winddown.<frame>"
+              }
+            },
+            "slash" : {
+              "properties" : {
+                "image" : "<partImage>:slash.<frame>"
+              },
+              "frameProperties" : {
+                "damageArea" : [
+                  null,
+                  [ [-0.0625, 0.75], [0.8125, 2.25], [1.4395, 2.25], [2.25, 1.25], [2.25, -1.5], [1.75, -2.375], [1.25, -2.375] ],
+                  [ [-0.0625, 0.75], [0.8125, 2.25], [1.4395, 2.25], [2.25, 1.25], [2.25, -1.5], [1.75, -2.375], [1.25, -2.375] ],
+                  [ [-0.0625, 0.75], [0.8125, 2.25], [1.4395, 2.25], [2.25, 1.25], [2.25, -1.5], [1.75, -2.375], [1.25, -2.375] ]
+                ]
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "particleEmitters" : {
+    "chargeup" : {
+      "emissionRate" : 7,
+      "offsetRegion" : [ -0.4, 0.5, 0.4, 0.2],
+      "particles" : [
+        { "particle" : "erchiussmoke" },
+        { "particle" : "erchiussmoke" },
+        { "particle" : "erchiussmoke" },
+        { "particle" : "erchiussmoke" },
+        { "particle" : "firefly" },
+        { "particle" : "firefly" },
+        { "particle" : "firefly" },
+        { "particle" : "firefly" },
+        { "particle" : "kluexstaff" },
+        { "particle" : "kluexstaff" },
+        { "particle" : "kluexstaff" },
+        { "particle" : "kluexstaff" }
+      ]
+    },
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
+    "fire" : [ "/sfx/projectiles/bloodvomit1.ogg", "/sfx/projectiles/bloodvomit2.ogg", "/sfx/projectiles/bloodvomit3.ogg", "/sfx/projectiles/bloodvomit4.ogg", "/sfx/projectiles/bloodvomit5.ogg", "/sfx/projectiles/bloodvomit6.ogg", "/sfx/projectiles/bloodvomit7.ogg" ]
+  }
+}

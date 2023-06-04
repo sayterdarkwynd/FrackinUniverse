@@ -1,0 +1,67 @@
+{
+  "type" : "svetlana",
+  "baseType" : "base",
+
+  "identity" : {
+    "name" : "Svetlana",
+    "gender" : "female",
+    "race" : "avian"
+  },
+
+  "persistent" : true,
+
+  "damageTeamType" : "ghostly",
+
+  "dropPools" : [ "villagertreasure" ],
+
+  "scriptConfig" : {
+    "behavior" : "spectator",
+
+	"dialogMode" : "sequence",
+
+    "dialog" : {
+
+      "speak" : {
+        "default" : {
+          "default" : [
+            "Oh hey, you managed to find me!"
+          ]
+        }
+      },
+
+      "converse" : {
+        "default" : {
+          "default" : [
+            "Hello! My name is Svetlana Twofeather. I'm The Observer's main character, so to speak.",
+			"He usually hides me in places that're way hard to find! I don't appear in all dungeons, but I am in this one!",
+			"That you managed to find me shows your dedication towards finding all the little secrets he's hidden in his work, and I commend you for taking the time to search every nook and cranny of his dungeons!",
+			"Bonus points if you didn't open up the mod and cheat...but I know not too many people do that, right? It's much more fun to explore like this.",
+			"Take a moment to rest up before you continue with your adventure! I have some supplies you might find handy, and thank you for playing Extra Dungeons again!"
+          ]
+        }
+      }
+    }
+  },
+
+  "matchColorIndices" : true,
+  "items" : {
+    "override" : [
+      [0, [
+          {
+		    "head" : [
+              { "name" : "aviantier2head" }
+            ],
+            "back" : [
+              { "name" : "cupidsback" }
+            ],
+            "chest" : [
+              { "name" : "aviancommonershirt", "parameters" : { "colorIndex" : 4 } }
+            ],
+            "legs" : [
+              { "name" : "aviancommonerlegs", "parameters" : { "colorIndex" : 4 } }
+            ]
+          }
+        ] ]
+    ]
+  }
+}

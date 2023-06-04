@@ -1,0 +1,131 @@
+[
+  {
+    "op": "add",
+    "path": "/dropPools/0/firebow",
+    "value": "spookitHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/icebow",
+    "value": "spookitHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/poisonbow",
+    "value": "spookitHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/electricbow",
+    "value": "spookitHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/radioactivebow",
+    "value": "spookitHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/cosmicbow",
+    "value": "spookitHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/shadowbow",
+    "value": "spookitHunting"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions/0/cooldown",
+    "value": 8
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions/-",
+    "value": {
+      "name": "action-invulnerable",
+      "cooldown": 1,
+      "parameters": {
+        "windupTime": 0,
+        "windupState": "",
+        "winddownTime": 0,
+        "winddownState": "eye",
+        "invulnerableTime": 0.5
+      }
+    }
+  },       
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/hostileActions/-",
+    "value": {
+          "name" : "action-fire",
+          "cooldown" : 3,
+          "parameters" : {
+            "requireLineOfSight" : false,
+            "maximumRange" : 30,
+            "minimumRange" : 5,
+            "onGround" : false,
+            "windupState" : "eye",
+            "windupStopForce" : 150,
+            "windupTime" : 0.4,
+            "faceTarget" : true,
+            "holdAim" : true,     
+            "aimAtTarget" : true,
+            "inaccuracy" : 0,                   
+            "projectileCount": 1,		
+            "projectileType" : "fuwobbleshot",
+            "projectileParameters" : { "speed" : 37, "damageKind" : "shadow", "statusEffects" : ["slow"] },
+            "power" : 3,
+            "fireOffset" : [0.0, 0.0],
+            "fireState" : "eye",
+            "fireDelay" : 0.7,
+            "fireSound" : "eyeCharge",
+
+            "winddownState" : "invulnerable",
+            "winddownTime" : 0.4
+        }
+    }
+  },   
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/hostileActions/-",
+    "value": {
+        "name" : "action-swoop",
+        "cooldown" : 9,
+        "parameters" : {
+          "minimumRange" : 0,
+          "maximumRange" : 30,
+          "onGround" : false,
+          "windupTime" : 0.5,
+          "windupState" : "eye",
+          "windupStopForce" : 70,
+
+          "swoopState" : "idle",
+          "gravityMultiplier" : -0.15,
+          "collisionCheck" : false,
+          "highArc" : false,
+	      "swoopVelocity": 35,
+          "swoopTime" : 0.85,
+
+          "winddownTime" : 0.6,
+          "winddownState" : "invulnerable",
+          "winddownStopForce" : 70
+        }
+    }
+  },    
+  {
+    "op": "replace",
+    "path": "/baseParameters/touchDamage/damage",
+    "value": 6
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 65
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/healthRegen/baseValue",
+    "value": 0.5
+  }
+]

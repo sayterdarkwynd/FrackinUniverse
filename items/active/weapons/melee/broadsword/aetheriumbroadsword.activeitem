@@ -1,0 +1,145 @@
+{
+	"itemName" : "aetheriumbroadsword",
+	"price" : 1200,
+	"level" : 7,
+	"maxStack" : 1,
+	"rarity" : "legendary",
+	"description" : "Nothing is more deadly and beautiful.
+^cyan;Annihilating Alt-Fire^reset;",
+	"shortdescription" : "Aetherium Broadsword",
+	"tooltipKind" : "swordaetherium",
+	"category" : "broadsword",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","broadsword","aetherium","cosmic", "upgradeableWeapon"],
+	"inventoryIcon" : "aetheriumbroadsword.png",
+	//"collectablesOnPickup" : { "fu_weaponbroadsword" : "aetheriumbroadsword" },
+	"animation" : "/items/active/weapons/melee/broadsword/comboaetheriumbroadsword.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "aetheriumbroadsword.png",
+		"bladefullbright" : "aetheriumbroadswordfullbright.png"
+	},
+	"animationCustom":{ },
+
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+	"elementalType" : "aether",
+
+	"primaryAbilityType" : "broadswordcombo",
+	"primaryAbility":{
+		"fireTime":0.82,
+		"baseDps":10.25,
+		"damageConfig":{
+			"knockback":20,
+			"statusEffects":["defenseboostneg20"],
+			"damageSourceKind":"aetherbroadsword"},
+			"comboSteps":6,
+			"swooshOffsetRegions":[
+				[0.75, 0.0, 4.25, 5.0],
+				[0, -4.25, 5, 0],
+				[3.0, -0.5, 6.5, 2.0],
+				[1.5, -1.0, 5.5, 1.0],
+				[0, -4.25, 5, 0],
+				[1.5, -1.0, 5.5, 1.0]
+			],
+			"stepDamageConfig":[
+				{"baseDamageFactor":1.0, "knockback":15},
+				{"baseDamageFactor":1.0, "knockback":15},
+				{"baseDamageFactor":0.5, "knockback":10},
+				{"baseDamageFactor":0.7, "knockback":10},
+				{"baseDamageFactor":0.7, "knockback":10},
+				{"baseDamageFactor":1.2, "knockback":30}
+				],
+			"stances":{
+				"idle":{
+					"armRotation":-20,
+					"weaponRotation":50,
+					"twoHanded":false,
+					"weaponOffset":[0,1],
+					"allowRotate":false,
+					"allowFlip":true, "aimAngle":0
+				},
+				"windup1":{
+					"duration":0.1,
+					"armRotation":90,
+					"weaponRotation":-10,
+					"twoHanded":true,
+					"weaponOffset":[0,1],
+					"allowRotate":false,
+					"allowFlip":true
+					},
+				"preslash1":{
+					"duration":0.025,
+					"armRotation":55,
+					"weaponRotation":-45,
+					"twoHanded":true,
+					"weaponOffset":[0,1],
+					"allowRotate":false,
+					"allowFlip":false
+					},
+				"fire1":{
+					"duration":0.15,
+					"armRotation":-45,
+					"weaponRotation":-55,
+					"twoHanded":true,
+					"weaponOffset":[0,1],
+					"allowRotate":false,
+					"allowFlip":false
+					},
+				"wait1":{
+					"duration":1.2,
+					"armRotation":-85,
+					"weaponRotation":-5,
+					"allowRotate":false,
+					"allowFlip":true,
+					"twoHanded":true,
+					"weaponOffset":[0,1]
+				},
+				"windup2":{
+					"duration":0.1,
+					"armRotation":-100,
+					"weaponRotation":-150,
+					"weaponOffset":[0,1],
+					"twoHanded":true,
+					"allowRotate":false,
+					"allowFlip":true
+				},
+				"preslash2":{
+					"duration":0.025,
+					"armRotation":-40,
+					"weaponRotation":-130,
+					"weaponOffset":[0,1],
+					"twoHanded":true,
+					"allowRotate":false,
+					"allowFlip":true
+				},
+				"fire2":{
+					"duration":0.15,
+					"armRotation":40,
+					"weaponRotation":-100,
+					"weaponOffset":[0,1],
+					"twoHanded":true,
+					"allowRotate":false,
+					"allowFlip":true
+					},
+				"wait2":{"duration":1.2, "armRotation":-85, "weaponRotation":-5, "allowRotate":false, "allowFlip":true, "twoHanded":true, "weaponOffset":[0,1]},
+				"windup3":{"duration":0.1, "armRotation":0, "weaponRotation":-60, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true},
+				"preslash3":{"duration":0}, "fire3":{"duration":0.1, "armRotation":-110, "weaponRotation":30, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true},
+				"wait3":{"duration":1.2, "armRotation":-110, "weaponRotation":30, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true},
+				"windup4":{"duration":0.1, "armRotation":-140, "weaponRotation":50, "weaponOffset":[0,0], "twoHanded":true, "allowRotate":false, "allowFlip":true},
+				"preslash4":{"duration":0}, "fire4":{"duration":0.2, "armRotation":-20, "weaponRotation":-70, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true},
+				"wait4":{"duration":1.2, "armRotation":-85, "weaponRotation":-5, "allowRotate":false, "allowFlip":true, "twoHanded":true, "weaponOffset":[0,1]},
+				"windup5":{"duration":0.1, "armRotation":-40, "weaponRotation":-70, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true},
+				"preslash5":{"duration":0.025, "armRotation":-10, "weaponRotation":-75, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true},
+				"fire5":{"duration":0.1, "armRotation":50, "weaponRotation":-80, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true},
+				"wait5":{"duration":1.2, "armRotation":-85, "weaponRotation":-5, "allowRotate":false, "allowFlip":true, "twoHanded":true, "weaponOffset":[0,1]},
+				"windup6":{"duration":0.2, "armRotation":170, "weaponRotation":90, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true},
+				"preslash6":{"duration":0}, "fire6":{"duration":0.4, "armRotation":0, "weaponRotation":-90, "weaponOffset":[0,1], "twoHanded":true, "allowRotate":false, "allowFlip":true},
+				"wait6":{"duration":1.2, "armRotation":-85, "weaponRotation":-5, "allowRotate":false, "allowFlip":true, "twoHanded":true, "weaponOffset":[0,1]}}},
+
+	"altAbilityType":"travelingslash",
+
+	"critChance" : 5,
+	"critBonus" : 12,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

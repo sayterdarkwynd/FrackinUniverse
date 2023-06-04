@@ -1,0 +1,53 @@
+{
+  "objectName" : "fuprotectorateflag",
+  "colonyTags" : ["fu"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "teleporter",
+  "category" : "teleportMarker",
+  "price" : 70,
+  "twoHanded" : false,
+  "radioMessagesOnPickup" : [ "pickupflag" ],
+
+  "description" : "The Protectorate flag. Use ^green;[E]^reset; to bookmark a teleportation location.",
+  "shortdescription" : "Protectorate Flag",
+  "race" : "generic",
+
+  "apexDescription" : "A Protectorate flag. I can use this as a waypoint for teleportation.",
+  "avianDescription" : "This Protectorate flag can be bookmarked as a destination for my ship teleporter.",
+  "floranDescription" : "Protectorate flag makesss good point to teleport back to usssing teleporter!",
+  "glitchDescription" : "Observant. A small locator module attached to this Protectorate flag allows it to be bookmarked for teleportation.",
+  "humanDescription" : "This Protectorate flag can be saved as a location for my teleporter. Then I can return to it at any time.",
+  "hylotlDescription" : "This Protectorate flag can act as a way point, enabling me to return to this point using a teleporter.",
+  "novakidDescription" : "I can bookmark this Protectorate flag for quick teleportin'.",
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/destinationonly.config",
+
+  "inventoryIcon" : "fuprotectorateflagicon.png",
+  "orientations" : [
+    {
+      "image" : "fuprotectorateflag.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+      "imagePosition" : [-17, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "fuprotectorateflag.png:<color>.<frame>",
+      "direction" : "right",
+      "imagePosition" : [1, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+
+  //"soundEffect" : "/sfx/objects/flag_flap_loop.ogg"
+}

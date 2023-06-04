@@ -1,19 +1,33 @@
 {
-  "itemName" : "vashtaclaw",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "vashtaclaw.png",
-  "description" : "Grants +50% Rage",
-  "shortdescription" : "Vashta Claw",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 1,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-      "rage50"
-    ] ]
+	"itemName": "vashtaclaw",
+	"inventoryIcon": "vashtaclaw.png",
+	"category": "food",
+	"rarity": "Legendary",
+	"price": 5,
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Damage x1.3^reset;: 1m",
+	"shortdescription": "Vashta Claw",
+	//"learnBlueprintsOnPickup": ["vashtagun"],
+	"effects": [
+		[{
+			"effect": "rage30",
+			"duration": 60
+		}]
+	],
+	"blockingEffects": [
+		"rage",
+		"rage_base",
+		"rage20fu",
+		"rage50",
+		"rage40",
+		"rage60",
+		"rage75",
+		"rage100",
+		"damagebonus01",
+		"damagebonus2",
+		"damagebonus3",
+		"damagebonus4",
+		"damagebonus5",
+		"damagebonus6"
+	]
 }

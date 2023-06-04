@@ -1,0 +1,86 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "switchState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1
+          },
+          "on" : {
+            "frames" : 3,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "bg" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 0,
+          "fullbright" : true
+        },
+
+        "partStates" : {
+          "switchState" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.off"
+              }
+            },
+
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.<frame>",
+                "fullbright" : true
+              }
+            }
+          }
+        }
+      },
+      "fg" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 1
+        },
+
+        "partStates" : {
+          "switchState" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.off"
+              }
+            },
+
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "teleportOut" : {
+      "burstCount" : 5,
+      "emissionRate" : 50,
+      "particles" : [
+        { "particle" : "castpoison","offset" : [ 0,7 ] },
+        { "particle" : "castpoison","offset" : [ 0,5 ] },
+        { "particle" : "castpoison","offset" : [ 0,3 ] },
+        { "particle" : "castelectric","offset" : [ 0,6 ] },
+        { "particle" : "castelectric","offset" : [ 0,4 ] },
+        { "particle" : "castelectric","offset" : [ 0,2 ] }
+      ]
+    }
+  },
+  "sounds" : {
+    "deathPuff" : [ "/sfx/tools/area_scan2.ogg" ]
+  }
+}

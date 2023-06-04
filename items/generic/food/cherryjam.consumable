@@ -1,0 +1,25 @@
+{
+  "itemName" : "cherryjam",
+  "rarity" : "Common",
+  "price" : 15,
+  "category" : "preparedFood",
+  "inventoryIcon" : "cherryjam.png",
+  "description" : "Super sweet. Great on toast.\n^cyan;+^white;20% ^cyan;EP ^gray;(^white;150s^gray;)\n^green;Type: Fruit Dessert^reset;",
+  "shortdescription" : "Cherry Jam",
+  "foodValue" : 30,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1,
+  "blockingEffects" : ["wellfed"],
+  "effects" : [ [
+    {
+        "effect" : "maxenergyscalingboostfood",
+        "duration" : 150
+    },
+    {
+        "effect" : "fruit_dessert"
+    }
+  ] ]
+}

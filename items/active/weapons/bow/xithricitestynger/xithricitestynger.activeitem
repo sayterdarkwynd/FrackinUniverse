@@ -1,0 +1,98 @@
+{
+  "itemName" : "xithricitestynger",
+  "price" : 380,
+  "inventoryIcon" : "xithricitestynger.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Makes people think they've been hit with 10 gamma ray bursts at once.",
+  "shortdescription" : "Cosmic Stynger",
+  "level" : 6,
+  "tooltipKind" : "gun2",
+  "category" : "crossbow",
+  "itemTags" : ["weapon","ranged","crossbow","pistol","xithricite","upgradeableWeapon"],
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "xithricitestynger.png",
+    "middlefullbright" : "xithricitestyngerfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+  "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.40, 0.40]
+		  }
+		}
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/tinydancer.ogg" ],
+      "cooldown":[  "/sfx/weapons/shotgunreload.ogg"]
+    }
+  },
+
+  "baseOffset" : [0.40, 0.40],
+  "muzzleOffset" : [1.0, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.2,
+    "baseDps" : 3.6,
+    "energyUsage" : 20,
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "xithshot",
+    "projectileParameters" : {
+      "speed" : 70,
+      "knockback" : 10
+    },
+    "stances" : {
+      "idle":{
+        "armRotation":0,
+        "weaponRotation":0,
+        "twoHanded":false,
+        "allowRotate":true,
+        "allowFlip":true
+      },
+      "fire":{
+        "duration":0.1,
+        "armRotation":3,
+        "weaponRotation":8,
+        "twoHanded":false,
+        "allowRotate":false,
+        "allowFlip":true
+      },
+      "cooldown":{
+        "duration":0.3,
+        "armRotation":-7,
+        "weaponRotation":-360,
+        "twoHanded":false,
+        "allowRotate":false,
+        "allowFlip":true
+      }
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 8,
+  "isCrossbow" : 1,
+  "isAmmoBased" : 1,
+  "magazineSize" : 8,
+  "reloadTime" : 2,
+  "isReloader" : 1,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,96 @@
+{
+  "objectName" : "gothicorgan",
+  "colonyTags" : ["evil","gothic","mechanical","musical","rust","valuable","odd" , "spooky"],
+  "rarity" : "Rare",
+  "category" : "decorative",
+  "description" : "An antique-looking Gothic-style organ. It looks suspiciously disused.",
+  "shortdescription" : "Gothic Organ",
+  "race" : "novakid",
+  "price" : 1600,
+
+  "bothanDescription" : "An intimidatingly loud musical instrument operated by the use of keys, pedals and switchboards.",
+  "feneroxDescription" : "Gothic organ. Very loud. Awful music. Auditory assault!",
+  "rodianDescription" : "A large hulking pipe organ. I'd rather listen to the worst cantina singing than a recital on this .... device.",
+  "zabrakDescription" : "I'm too afraid to even consider what tunes should be played on this device.",
+  "togrutaDescription" : "Is this a machine? or a musical instrument?",
+  "tuskanDescription" : "Not many of my kind on my own planet have had the chance to practise working with these machines.",
+  "sithDescription" : "There must be a way to convert the discordant and jarring sounds of this instrument into a sonic-based weapon.",
+  "diathimDescription" : "I've never understood how these devices work.",
+  "avianDescription" : "Never have I ever in my life ever heard such an awful cacophony.",
+  "floranDescription" : "Ssso many different coloured butonssss. Floran afraid to presssss one!",
+  "glitchDescription" : "Thoughtful. Humans say that devices like these were once native to them -- how did the Glitch begin building these then?",
+  "humanDescription" : "I've heard of organs like these but this is the first time I've ever seen one. And one built by Glitch at that.",
+  "felinDescription" : "Anyone who plays so grim and aberrant an instrument like this needs to be shot on sight.",
+  "hylotlDescription" : "Its music is every bit as lugubrious and monstrous as its appearance.",
+  "apexDescription" : "Pipe organs do exist in Apex society, but they are very rare.",
+  "mawgDescription" : "I'm gettin' a lotta bad vibes simply by listenin' to a single note from this monster.",
+  "novakidDescription" : "Now there's some music fer the crazed souls o' the universe.",
+"printable" : false
+,
+  "inventoryIcon" : "gothicorgan_icon.png",
+  "orientations" : [
+    {
+      "image" : "gothicorganleft.png:<color>",
+      "imagePosition" : [-40, 0],
+      "direction" : "left",
+      "flipImages" : false,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "gothicorganright.png:<color>",
+      "imagePosition" : [-40, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/noisy/noisy.animation",
+
+  "scripts" : [
+    "/objects/noisy/noisy.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+
+  "sounds" : [
+
+    "/sfx/instruments/baptism3.ogg",
+    "/sfx/instruments/baptism2.ogg",
+    "/sfx/instruments/baptism.ogg",
+ "/sfx/instruments/portative_elvis2.ogg",
+    "/sfx/instruments/glass_org1.ogg",
+    "/sfx/instruments/glass_org2.ogg",
+
+    "/sfx/instruments/gothic_organ.ogg",
+    "/sfx/instruments/gothic_organ3.ogg",
+    "/sfx/instruments/gothic_organ4.ogg",
+    "/sfx/instruments/gothic_organ5.ogg",
+    "/sfx/instruments/gothic_organ6.ogg",
+    "/sfx/instruments/gothic_organ7.ogg",
+    "/sfx/instruments/gothic_organ11a.ogg",
+    "/sfx/instruments/gothic_organ11b.ogg",
+    "/sfx/instruments/gothic_organ9.ogg",
+    "/sfx/instruments/gothic_organ10.ogg",
+    "/sfx/instruments/gothic_organ12.ogg"
+  ],
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : true,
+  "sitPosition" : [-21, 21],
+
+  "npcToy" : {
+    "influence" : [
+      "piano"
+    ],
+    "defaultReactions" : {
+      "piano" : [
+        [1.0, "pianoparty"]
+      ]
+    },
+    "interactOnNpcPlayStart": false,
+    "randomStandXRange" : [-8, 8]
+  }
+}

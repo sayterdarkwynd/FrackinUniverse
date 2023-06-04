@@ -1,0 +1,178 @@
+{
+  "metadata" : {
+    "name" : "novakidoutlawcamp",
+    "species" : "novakid",
+    "rules" : [
+    ],
+    "anchor" : [ "anchormine" ],
+    "gravity" : 80,
+    "maxRadius" : 1000000,
+    "maxParts" : 20,
+    "protected" : true
+  },
+
+  "parts" : [
+    {
+      "name" : "anchormine",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "anchormine.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "mealshack",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "mealshack.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "pasture",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "pasture.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "wheatfield",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "wheatfield.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "saloon",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "saloon.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "miningbarracks1",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "miningbarracks1" ] ]
+      ],
+      "def" : [ "tmx", "miningbarracks1.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "miningbarracks2",
+      "rules" : [
+		[ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "miningbarracks2" ] ]
+      ],
+      "def" : [ "tmx", "miningbarracks2.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "minegraves",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "minegraves" ] ]
+      ],
+      "def" : [ "tmx", "minegraves.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "mineopenpit",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "mineopenpit" ] ]
+      ],
+      "def" : [ "tmx", "mineopenpit.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "mineshaft",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "mineshaft" ] ]
+      ],
+      "def" : [ "tmx", "mineshaft.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "minewaterwheel",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "minewaterwheel" ] ]
+      ],
+      "def" : [ "tmx", "minewaterwheel.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "minetfork1",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "minetfork1", "minetfork2" ] ]
+      ],
+      "def" : [ "tmx", "minetfork1.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "minetfork2",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "minetfork2", "minetfork1" ] ]
+      ],
+      "def" : [ "tmx", "minetfork2.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "mineconnector1",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "minetconnector1" ] ]
+      ],
+      "def" : [ "tmx", "mineconnector1.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "mineendleft",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "mineendleft.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "mineendright",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "mineendright.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "campendleft",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "campendleft.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "campendright",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "campendright.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "mineradar",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "mineradar.json" ],
+      "chance" : 10
+    }
+  ]
+}

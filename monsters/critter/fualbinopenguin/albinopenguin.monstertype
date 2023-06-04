@@ -1,0 +1,86 @@
+{
+  "type" : "albinopenguin",
+  "shortdescription" : "Albino Penguin",
+  "description" : "Strange, eyeless penguins.",
+  "categories" : [ "albinopenguin" ],
+  "parts" : [ "body" ],
+  "reversed" : true,
+  "animation" : "albinopenguin.animation",
+
+
+  "dropPools" : [
+    {
+      "default" : "empty",
+      "bow" : "huntingflying"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "walkingcritter",
+
+    "metaBoundBox" : [-2.5, -2.5, 2.5, 2.5],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-0.5, -1.5], [0.5, -1.5], [0.5, 0.0], [-0.5, 0.0] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 2,
+      "runSpeed" : 4,
+      "jumpSpeed" : 5
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "",
+"deathParticles" : "deathPoof",
+    "damageTeamType" : "passive",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : false,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 0,
+
+      "stats" : {
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 25
+        },
+        "protection" : {
+          "baseValue" : 1.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "relocatable" : true
+  }
+}

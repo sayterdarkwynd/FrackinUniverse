@@ -1,0 +1,38 @@
+{
+  "objectName" : "wagnerthree",
+  "colonyTags" : ["fu","elder","evil","storage"],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "price" : 145,
+  "printable" : false,
+  "description" : "I don't even know what I am looking at. This is ghastly beyond words. Something is his pocket is shining...",
+  "shortdescription" : "Wagner",
+
+  "inventoryIcon" : "wagnericon.png",
+  "orientations" : [
+    {
+      "dualImage" : "wagnerthree.png:<color>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/bookcase_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/bookcase_close.ogg" ],
+  "slotCount" : 16,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+
+  "scripts" : [ "/objects/scripts/fuautofillonce.lua" ],
+  "scriptDelta" : 240,
+  "statusEffects"  : [ "madnessgainelder2" ]
+
+}

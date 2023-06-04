@@ -1,0 +1,52 @@
+{
+  "objectName" : "aetherlavalamp2",
+  "colonyTags" : ["aether","light"],
+  "rarity" : "legendary",
+  "category" : "light",
+  "price" : 200,
+  "description" : "A lamp filled with liquid aether.",
+  "shortdescription" : "Liquid Aether Lava Lamp",
+  "race" : "generic",
+
+  "lightColor" : [120, 20, 180],
+  "lightPosition" : [0, 1],
+
+  "flickerPeriod" : 0.5,
+  "flickerMinIntensity" : 0.725,
+  "flickerMaxIntensity" : 0.8,
+  "flickerPeriodVariance" : 0,
+  "flickerIntensityVariance" : 0,
+
+  "inventoryIcon" : "aetherlavalamp2icon.png",
+  "orientations" : [
+    {
+      "image" : "aetherlavalamp2.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "aetherlavalamp2.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "default.animation",
+  "animationParts" : {
+    "bg" : "aetherlavalamp2.png",
+    "fg" : "aetherlavalamp2lit.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ]
+}

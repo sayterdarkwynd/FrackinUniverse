@@ -1,0 +1,56 @@
+{
+  "objectName" : "fuaetherlamp",
+  "colonyTags" : ["fu","aether","pretty","valuable","light"],
+  "rarity" : "Legendary",
+  "description" : "A tall pretty lamp with a purple light.",
+  "shortdescription" : "Aether Floor Lamp",
+  "race" : "generic",
+
+  "category" : "light",
+  "price" : 90,
+  "lightColor" : [120, 20, 180],
+
+  "inventoryIcon" : "fuaetherlampicon.png",
+  "orientations" : [
+    {
+      "image" : "fuaetherlamp.png:<color>.<frame>",
+      "imagePosition" : [-6, 0],
+      "frames" : 1,
+      "animationCycle" : 0.3,
+      "direction" : "left",
+      "flipImages" : true,
+      "lightPosition" : [0, 3],
+      "animationPosition" : [-6, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "fuaetherlamp.png:<color>.<frame>",
+      "imagePosition" : [-6, 0],
+      "frames" : 1,
+      "animationCycle" : 0.3,
+      "direction" : "right",
+      "lightPosition" : [0, 3],
+      "animationPosition" : [-6, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "fuaetherlamp.png",
+    "fg" : "fuaetherlamplit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallswitch.ogg" ],
+      "off" : [ "/sfx/objects/tinywallswitch.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 3] ]
+}

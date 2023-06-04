@@ -1,0 +1,101 @@
+{
+  "projectileName" : "thornburst",
+  "image" : "thornburst.png",
+  "animationCycle" : 0.3,
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "physics" : "hover",
+  "emitters" : [ ],
+  "orientationLocked" : true,
+  "onlyHitTerrain" : true,
+  "damagePoly" : [],
+  "damageKind" : "poisonplasma",
+
+  "speed" : 0,
+  "timeToLive" : 1.5,
+
+  "scripts" : [ "thornburst.lua" ],
+  "scriptDelta" : 1,
+
+  "explosionAction" : {
+    "action" : "actions",
+    "list" : [
+      {
+        "action" : "config",
+        "file" : "/projectiles/explosions/thorngrenadeexplosion/thorngrenadeexplosionnofriendly.config"
+      },
+      {
+        "action" : "projectile",
+        "type" : "thornburststinger",
+        "inheritDamageFactor" : 0.2,
+        "angle" : 0
+      },
+      {
+        "action" : "projectile",
+        "type" : "thornburststinger",
+        "inheritDamageFactor" : 0.2,
+        "angle" : 30
+      },
+      {
+        "action" : "projectile",
+        "type" : "thornburststinger",
+        "inheritDamageFactor" : 0.2,
+        "angle" : 60
+      },
+      {
+        "action" : "projectile",
+        "type" : "thornburststinger",
+        "inheritDamageFactor" : 0.2,
+        "angle" : 90
+      },
+      {
+        "action" : "projectile",
+        "type" : "thornburststinger",
+        "inheritDamageFactor" : 0.2,
+        "angle" : 120
+      },
+      {
+        "action" : "projectile",
+        "type" : "thornburststinger",
+        "inheritDamageFactor" : 0.2,
+        "angle" : 150
+      },
+      {
+        "action" : "projectile",
+        "type" : "thornburststinger",
+        "inheritDamageFactor" : 0.2,
+        "angle" : 180
+      },
+      {
+        "action" : "projectile",
+        "type" : "thornburststinger",
+        "inheritDamageFactor" : 0.2,
+        "angle" : 210
+      },
+      {
+        "action" : "projectile",
+        "type" : "thornburststinger",
+        "inheritDamageFactor" : 0.2,
+        "angle" : 240
+      },
+      {
+        "action" : "projectile",
+        "type" : "thornburststinger",
+        "inheritDamageFactor" : 0.2,
+        "angle" : 270
+      },
+      {
+        "action" : "projectile",
+        "type" : "thornburststinger",
+        "inheritDamageFactor" : 0.2,
+        "angle" : 300
+      },
+      {
+        "action" : "projectile",
+        "type" : "thornburststinger",
+        "inheritDamageFactor" : 0.2,
+        "angle" : 330
+      }
+    ]
+  }
+}

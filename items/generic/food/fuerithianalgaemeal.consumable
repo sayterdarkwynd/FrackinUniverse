@@ -1,0 +1,27 @@
+{
+  "itemName": "fuerithianalgaemeal",
+  "rarity": "Uncommon",
+  "category": "food",
+  "price": 40,
+  "inventoryIcon": "ealgae_meal.png",
+  "description": "Holy !@#!$!%!, I never thought it could get worse!\n^red;-^white;15% ^red;HP ^gray;(^white;20s^gray;)^reset; \n^green;Type: Vegetable^reset;",
+  "shortdescription": "Compressed Erithian Algae",
+  "maxStack": 1000,
+  "foodValue": 40,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 30,
+  "effects": [
+    [
+      {
+        "effect": "negativehealth",
+        "duration": 20
+      },
+      {
+        "effect": "plant_food"
+      }
+    ]
+  ],
+  "blockingEffects": ["wellfed"]
+}

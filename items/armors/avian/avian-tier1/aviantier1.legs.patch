@@ -1,0 +1,88 @@
+[
+	[{
+			"op": "test",
+			"path": "/itemTags",
+			"inverse": true
+		},
+		{
+			"op": "add",
+			"path": "/itemTags",
+			"value": []
+		},
+		{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "upgradeableWeapon"
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/itemTags"
+		},
+		{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "upgradeableWeapon"
+		},
+		{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "balanced"
+		},
+		{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "ranged"
+		}
+
+	],
+	[{
+			"op": "replace",
+			"path": "/description",
+			"value": "^orange;Set Bonuses^reset;:
+^yellow;^reset; Wand/Staff: Damage x^green;1.1^reset;"
+		},
+		{
+			"op": "replace",
+			"path": "/tooltipKind",
+			"value": "armornew2"
+		},
+		{
+			"op": "add",
+			"path": "/statusEffects",
+			"value": [
+				    "aviantier1setbonusnew",
+				{
+					"stat" : "fu_aviantier1setnew_legs",
+					"amount" : 1
+				}
+			]
+		},
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "iceResistance",
+				"amount": 0.033334
+			}
+		},
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "poisonResistance",
+				"amount": 0.033334
+			}
+		},
+
+
+
+		{
+			"op": "add",
+			"path": "/builder",
+			"value": "/items/buildscripts/fubuildarmor.lua"
+		}
+	]
+]

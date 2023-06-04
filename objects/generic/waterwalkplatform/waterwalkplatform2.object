@@ -1,0 +1,69 @@
+{
+	"objectName": "waterwalkplatform2",
+	"colonyTags": ["ancient"],
+	"rarity": "Legendary",
+
+	"category": "door",
+	"price": 0,
+	"printable": false,
+	"description": "A beam of hard light creating a platform.",
+	"shortdescription": "Ancient Light Platform",
+	"race": "ancient",
+	"smashOnBreak": true,
+	"consumeOnPickup": true,
+
+	"closedLight": [103, 250, 255],
+
+	"inventoryIcon": "waterwalkplatformicon.png",
+
+	"scripts": ["/objects/wired/secretdoor/secretdoor.lua", "/objects/generic/waterwalkplatform/waterwalkplatform.lua"],
+	"scriptDelta": 5,
+
+	"animation": "waterwalkplatform.animation",
+	"animationCustom": {
+		"sounds": {
+			"open": ["/sfx/objects/ancientlightplatform_off.ogg"],
+			"close": ["/sfx/objects/ancientlightplatform_on.ogg"]
+		}
+	},
+	"animationParts": {
+		"door": "waterwalkplatform2.png"
+	},
+
+	"orientations": [{
+			"image": "waterwalkplatform2.png:default",
+			"imagePosition": [-4, -1],
+			"renderLayer": "Object+5",
+			"animationPosition": [-4, -1],
+			"flipImages": true,
+			"direction": "left",
+
+			"spaceScan": 0.1,
+			"anchors": [],
+			"collision": "platform"
+		},
+		{
+			"image": "waterwalkplatform2.png:default",
+			"imagePosition": [-4, -1],
+			"renderLayer": "Object+5",
+			"animationPosition": [-4, -1],
+			"direction": "right",
+
+			"spaceScan": 0.1,
+			"anchors": [],
+			"collision": "platform"
+		}
+	],
+
+	"detectDuration": 0.5,
+	"detectEntityTypes": ["creature"],
+	"detectArea": [
+		[-1, 0],
+		[1, 1]
+	],
+
+	"breakDropOptions": [],
+	"smashDropOptions": []
+
+
+}

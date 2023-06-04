@@ -1,0 +1,43 @@
+{
+  "objectName" : "sloppylamp",
+  "colonyTags" : ["sloppy","light"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "This lamp looks wasted.",
+  "shortdescription" : "Sloppy Lamp",
+  "race" : "generic",
+  "category" : "light",
+  "price" : 0,
+
+  "apexDescription" : "Oh dear. Let's tilt this lampshade jusssst a bit...",
+  "avianDescription" : "The lampshade on this light has gone very crooked.",
+  "floranDescription" : "The other lamp issn't even working at all...",
+  "glitchDescription" : "Dissapointd. Come now, is it really so hard to tilt the lampshade back into place?",
+  "humanDescription" : "Maybe somebody had a party around here last night?",
+  "hylotlDescription" : "A crooked, faulty lamp. Honestly, I don't know why its still around.",
+  "novakidDescription" : "A crooked lamp's a mighty sad sight.",
+
+  "inventoryIcon" : "sloppylampicon.png",
+  "orientations" : [
+    {
+      "image" : "sloppylamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
+    }
+  ],
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "sloppylamp.png",
+    "fg" : "sloppylamplit.png"
+  },
+
+  "lightColor" : [115, 185, 196],
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "animationPosition" : [-8, 0],
+  "interactive" : true,
+  "inputNodes" : [ [0, 0] ]
+}

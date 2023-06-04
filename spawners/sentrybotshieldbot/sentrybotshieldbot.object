@@ -1,0 +1,34 @@
+{
+  "objectName" : "sentrybotshieldbot",
+  "rarity" : "common",
+  "description" : "A well protected little buddy.",
+  "shortdescription" : "Shield Bot",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 450,
+  "printable" : false,
+
+  "inventoryIcon" : "sentrybotshieldboticon.png",
+  "orientations" : [
+    {
+      "dualImage" : "sentrybotshieldbot.png:<color>",
+
+      "imagePosition" : [-10, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaces" : [  [0, 0], [-1, 0], [0, 1], [-1, 1]],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "botspawner" : {
+      "type" : "sentryminidrone2",
+	  "monsterImage":"/monsters/flyers/sentryminidrone2/sentryminidrone2.png:idle.1?"
+  },
+
+  "scripts" : [
+    "/spawners/fubotspawner.lua"
+  ],
+  "scriptDelta" : 5
+}

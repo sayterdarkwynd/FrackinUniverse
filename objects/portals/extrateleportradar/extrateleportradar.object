@@ -1,0 +1,60 @@
+{
+  "objectName" : "extrateleportradar",
+  "colonyTags" : ["outpost","electronic","mechanical"],
+  "rarity" : "Common",
+  "description" : "An unstable radar dish for going to mysterious places. It's still emitting a signal.",
+  "shortdescription" : "Teleporter Radar",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 170,
+  "lightColor" : [76, 60, 86],
+  "printable" : false,
+
+  "apexDescription" : "Do I really want to see where this will take me?",
+  "avianDescription" : "The signal emitted by this unstable dish is ruffling my feathers.",
+  "floranDescription" : "Floran not meant to touch any radar after last time.",
+  "glitchDescription" : "Wary. The signal emitted by this dish is unidentified.",
+  "humanDescription" : "This thing looks like it could fall apart any second.",
+  "hylotlDescription" : "It would be most unwise to rush headlong into danger.",
+  "novakidDescription" : "This here dish looks like it's gonna fall apart any second.",
+
+  "inventoryIcon" : "icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "extrateleportradar.png:<color>" }, { "image" : "extrateleportradarlit.png:<color>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-26, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "detectArea" : [ [-3, 0], [3, 5] ]
+    },
+    {
+      "imageLayers" : [ { "image" : "extrateleportradar.png:<color>" }, { "image" : "extrateleportradarlit.png:<color>" } ],
+      "direction" : "right",
+      "lightPosition" : [-1, 1],
+
+      "imagePosition" : [-22, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "detectArea" : [ [-3, 0], [3, 5] ]
+    }
+  ],
+  "scripts" : [ "/objects/portals/extrateleportradar/extrateleportradar.lua" ],
+  "scriptDelta" : 20,
+  "health" : 10,
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/metalbarrel_break3.ogg" ],
+  "smashParticles" : [ { "count" : 10, "particle" : "generatorshard" } ],
+
+  "destination" : "InstanceWorld:extrachallengelabs:%s:%s",
+  "vanishTime" : 15
+}

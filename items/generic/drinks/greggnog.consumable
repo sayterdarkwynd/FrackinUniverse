@@ -1,0 +1,32 @@
+{
+  "itemName" : "greggnog",
+  "rarity" : "rare",
+  "price" : 3000,
+  "category" : "drink",
+  "inventoryIcon" : "greggnog.png",
+  "description" : "An alcoholic drink made of eggs and Gregs. It's god-damned delicious!\n^green;Heal ^white;50% ^green;HP ^gray;(^white;30s^gray;)^reset;, 35% ^red;Slow^reset;, ^red;Drunk^gray; (^white;30s^gray;)^reset;",
+  "shortdescription" : "Greggnog",
+  "handPosition" : [-1, 3],
+  "tooltipKind" : "food",
+  "armFrameOverride" : "run.3",
+  "effects" : [ [
+      {
+        "effect" : "regeneration1",
+        "duration" : 30
+      },
+      {
+        "effect" : "slow",
+        "duration" : 30
+      },
+      {
+        "effect" : "booze",
+        "duration" : 30
+      }
+    ] ],
+  "foodValue" : 40,
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [ "wellfed" ],
+  "emitters" : [ "drinking" ]
+}

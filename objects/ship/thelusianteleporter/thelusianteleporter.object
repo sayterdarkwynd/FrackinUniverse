@@ -1,0 +1,68 @@
+{
+  "objectName" : "thelusianteleporter",
+  "colonyTags" : ["thelusian"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "Thelusian teleporter technology is not understood by other races.",
+  "shortdescription" : "Teleporter",
+  "race" : "thelusian",
+
+  "thelusianDescription" : "Links minds and places, one and the same.",
+
+  "category" : "teleporter",
+  "lightColor" : [103, 191, 166],
+  "flickerDistance" : 0.2,
+  "flickerStrength" : 0.05,
+  "flickerTiming" : 4,
+
+  "particleEmitter" : {
+    "emissionRate" : 3,
+    "emissionVariance" : 0.5,
+
+    "particle" : {
+      "type" : "ember",
+      "position" : [-0.5, 5],
+      "size" : 1.0,
+      "color" : [238, 255, 186, 255],
+      "light" : [37, 111, 161],
+      "fade" : 0.9,
+      "destructionAction" : "shrink",
+      "destructionTime" : 0.5,
+      "initialVelocity" : [0.0, 0.0],
+      "finalVelocity" : [0.0, 0.0],
+      "approach" : [0, 1],
+      "timeToLive" : 1.5,
+      "layer" : "middle"
+    },
+
+    "particleVariance" : {
+      "initialVelocity" : [0, 5],
+      "finalVelocity" : [0, 1],
+      "position" : [1.5, 0],
+      "size" : 0.5
+    }
+  },
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/shipteleporter.config",
+
+  "soundEffect" : "/sfx/objects/shipengine.ogg",
+  "soundEffectRangeMultiplier" : 1.5,
+
+  "inventoryIcon" : "thelusianteleportericon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "thelusianteleporter.png:<color>.<frame>", "fullbright" : true }, { "image" : "thelusianteleporterlit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1,
+
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "solid",
+      "collisionSpaces" : [ [-2, 0], [-1, 0], [0, 0], [1, 0] ]
+    }
+  ]
+}

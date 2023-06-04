@@ -1,0 +1,92 @@
+{
+	"objectName": "corsairsshelf",
+	"colonyTags": ["corsair", "storage", "avianairship", "traveller"],
+	"rarity": "Uncommon",
+	"description": "A barrel wood shelf stocked with all kinds of rum and booze. Actually I lied, it's mostly rum.",
+	"shortdescription": "Corsair's Minibar",
+	"race": "generic",
+	"category": "decorative",
+	"price": 200,
+
+	"printable": false,
+
+	"apexDescription": "A vending machine. No banana-flavoured snacks, sadly.",
+	"avianDescription": "That is... a worrying amount of alcohol.",
+	"floranDescription": "Clever machine gives Floran treatsss.",
+	"glitchDescription": "Indecisive. I can't decide what to buy.",
+	"humanDescription": "Where's the rum gone?",
+	"hylotlDescription": "A vending machine for strong drinks. They will have to do.",
+	"novakidDescription": "I might as well help myself to a few drinks while I'm here.",
+
+	"interactAction": "OpenMerchantInterface",
+	"interactData": {
+		"config": "/interface/windowconfig/vendingmachine.config",
+		"paneLayoutOverride": {
+			"windowtitle": {
+				"title": " Corsair's Minibar",
+				"subtitle": "Rum ahoy!"
+			}
+		},
+		"buyFactor": 1.0,
+		"sellFactor": 0.2,
+		"items": [{
+				"item": "agedrum"
+			},
+			{
+				"item": "amberrum"
+			},
+			{
+				"item": "darkrum"
+			},
+			{
+				"item": "whiterum"
+			},
+			{
+				"item": "dubloon"
+			}
+		]
+	},
+
+	"inventoryIcon": "corsairsshelficon.png",
+	"orientations": [{
+		"dualImage": "corsairsshelf.png:<color>",
+		"imagePosition": [-12, 0],
+		"spaceScan": 0.1,
+		"anchors": ["bottom"]
+	}],
+
+	"scripts": [
+		"/scripts/npcToyObject.lua"
+	],
+	"scriptDelta": 60,
+
+	"soundEffect": "/sfx/objects/fluorescent_light_loud.ogg",
+	"soundEffectRangeMultiplier": 0.5,
+
+	"npcToy": {
+		"influence": [
+			"vendingmachineActivate",
+			"vendingmachineCollect",
+			"vendingmachineConsume",
+			"vendingmachineComplete"
+		],
+		"defaultReactions": {
+			"vendingmachineActivate": [
+				[1.0, "pressbutton"]
+			],
+			"vendingmachineCollect": [
+				[1.0, "crouchcollect"]
+			],
+			"vendingmachineConsume": [
+				[1.0, "drink"]
+			],
+			"vendingmachineComplete": [
+				[1.0, "smile"],
+				[0.1, "vomit"]
+			]
+		},
+		"preciseStandPositionLeft": [-0.5, 0.0],
+		"preciseStandPositionRight": [2.0, 0.0],
+		"maxNpcs": 1
+	}
+}

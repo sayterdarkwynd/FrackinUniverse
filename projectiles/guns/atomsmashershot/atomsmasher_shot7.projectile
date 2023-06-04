@@ -2,7 +2,7 @@
   "projectileName" : "atomsmasher_shot7",
   "image" : "atomsmasher_shot.png",
   "animationCycle" : 1.0,
-  "level" : 1,
+  "level" : 6,
   "physics" : "atomsmasher",
   "frameNumber" : 6,
   "pointLight" : true,
@@ -10,6 +10,7 @@
   "lightColor" : [60, 113, 255],
   "speed" : 50,
   "timeToLive" : 0.08,
+  "universalDamage" : true,
   "actionOnReap" : [
     {
       "action" : "config",
@@ -21,9 +22,11 @@
       "fuzzAngle" : 0,
       "inheritDamageFactor" : 0.65,
       "angleAdjust" : 0
-    }    
+    }
   ],
-  "damageKind" : "default",
+  "damageKind" : "cosmic",
+  "power" : 40,
+  "damageType" : "IgnoresDef",
   "emitters" : [ "defaultblue" ]
 }
 

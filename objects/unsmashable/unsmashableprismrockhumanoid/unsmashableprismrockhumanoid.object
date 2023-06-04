@@ -1,0 +1,51 @@
+{
+  "objectName" : "unsmashableprismrockhumanoid",
+  "colonyTags" : ["prism"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "decorative",
+  "description" : "A highly refractive prism. There appears to be something inside. Unbreakable!",
+  "shortdescription" : "Prism Crystal",
+  "race" : "generic",
+
+  "apexDescription" : "There appears to be a humanoid figure inside this crystal.",
+  "avianDescription" : "Someone, or something, is trapped inside this prism.",
+  "floranDescription" : "What is inssside? Is it alive?",
+  "glitchDescription" : "Horrified. There appears to be a person inside this prism.",
+  "humanDescription" : "There's someone inside. It's a prism prison!",
+  "hylotlDescription" : "An ominous dark shape resides within this crystal.",
+  "novakidDescription":  "If I'm not mistaken, there's a guy in there!",
+
+  "inventoryIcon" : "unsmashableprismrockhumanoidicon.png",
+  "orientations" : [
+    {
+      "image" : "unsmashableprismrockhumanoid.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "unsmashableprismrockhumanoid.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/lightsensor/unwiredlightsensor.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "unsmashableprismrockhumanoid.animation",
+  "animationParts" : {
+    "prism" : "unsmashableprismrockhumanoid.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "detectThresholdLow" : 10,
+  "detectThresholdHigh" : 30
+}

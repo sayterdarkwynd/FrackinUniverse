@@ -1,0 +1,28 @@
+{
+  "name": "action-statuseffect",
+  "description": null,
+  "scripts": [
+    "/scripts/actions/status.lua"
+  ],
+  "parameters": {
+    "effect": "",
+    "duration": 1
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "addEphemeralEffect",
+        "type": "action",
+        "name": "addEphemeralEffect",
+        "parameters": {
+          "duration": {"key": "<duration>"},
+          "name": {"key": "<effect>"}
+        }
+      }
+    ]
+  }
+}

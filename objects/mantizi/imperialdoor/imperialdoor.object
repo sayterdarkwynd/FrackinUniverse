@@ -1,0 +1,56 @@
+{
+  "objectName" : "imperialdoor",
+  "colonyTags" : ["mantizi","mantizivillage","door"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 95,
+  "description" : "A sturdy, simple wooden door.",
+  "shortdescription" : "Mantizi Door",
+  "race" : "mantizi",
+
+  "apexDescription" : "Though wooden, this door is strong.",
+  "avianDescription" : "This door is much stronger than it looks.",
+  "floranDescription" : "Door sso sstrong.",
+  "glitchDescription" : "Educate. The Mantizi reinforce their doors to secure their valuables.",
+  "humanDescription" : "A heavy, imposing door.",
+  "hylotlDescription" : "A great door for a defensive structure.",
+  "novakidDescription" : "Tough to get past, like the bugs themselves.",
+  "fumantiziDescription" : "Not enough locks.",
+
+  "inventoryIcon" : "imperialdooricon.png",
+  "orientations" : [
+    {
+      "image" : "imperialdoor.png:default",
+      "imagePosition" : [-16, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/woodendoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/woodendoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "imperialdoor.png"
+  },
+  "animationPosition" : [-16, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

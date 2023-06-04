@@ -1,22 +1,18 @@
 {
-  "itemName" : "thornitox",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "thornitox.png",
-  "description" : "Poisonous. Do not eat. Makes weapons.",
-  "shortdescription" : "Thornitox Dongle",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 1,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-      {
-        "effect" : "weakpoison",
-        "duration" : 12
-      }
-    ] ]
+	"itemName": "thornitox",
+	"inventoryIcon": "thornitox.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "Makes useful weapons.\n^yellow;^reset;^red;Poisoned^reset;: 12s",
+	"shortdescription": "Thornitox Dongle",
+
+	"effects": [
+		[{
+			"effect": "weakpoison",
+			"duration": 12
+		}]
+	]
 }

@@ -1,79 +1,95 @@
 {
-  "animationCustom" : {
-    "animatedParts" : { "parts" : {
-      "erchiuslauncher" : {
-        "properties" : {
-          "zLevel" : -1,
-          "centered" : true,
-          "offset" : [-0.75, -0.375],
-          "transformationGroups" : ["muzzle"],
-          "firePosition" : [1, 0.375],
-          "image" : "/items/active/weapons/ranged/abilities/fuerchiuslauncher/fuerchiuslauncher.png"
-        }
-      }
-    }},
-    "sounds" : {
-      "altFire" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
-    },
-    "particleEmitters" : {
-      "altMuzzleFlash" : {
-        "active" : false,
-        "emissionRate" : 8,
-        "transformationGroups" : ["muzzle"],
-        "offsetRegion" : [0, 0, 0, 0],
-        "particles" : [
-          { "particle" : "barriericeaura", "offset" : [0.0, 0.0] },
-          { "particle" : "barriericeaura", "offset" : [0.0, 0.0] },
-          { "particle" : "barriericeaura", "offset" : [0.0, 0.0] }
-        ]
-      }
-    }
-  },
+	"animationCustom": {
+		"animatedParts": {
+			"parts": {
+				"erchiuslauncher": {
+					"properties": {
+						"zLevel": -1,
+						"centered": true,
+						"offset": [-0.75, -0.375],
+						"transformationGroups": ["muzzle"],
+						"firePosition": [1, 0.375],
+						"image": "/items/active/weapons/ranged/abilities/fuerchiuslauncher/fuerchiuslauncher.png"
+					}
+				}
+			}
+		},
+		"sounds": {
+			"altFire": ["/sfx/gun/pulsecannon_blast1.ogg"]
+		},
+		"particleEmitters": {
+			"altMuzzleFlash": {
+				"active": false,
+				"emissionRate": 8,
+				"transformationGroups": ["muzzle"],
+				"offsetRegion": [0, 0, 0, 0],
+				"particles": [{
+						"particle": "barriericeaura",
+						"offset": [0.0, 0.0]
+					},
+					{
+						"particle": "barriericeaura",
+						"offset": [0.0, 0.0]
+					},
+					{
+						"particle": "barriericeaura",
+						"offset": [0.0, 0.0]
+					}
+				]
+			}
+		}
+	},
 
-  "ability" : {
-    "name" : "Condensed Matter",
-    "type" : "fuerchiuslauncher",
-    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
-    "class" : "AltFireAttack",
+	"ability": {
+		"name": "Condensed Matter",
+		"type": "fuerchiuslauncher",
+		"scripts": ["/items/active/weapons/ranged/abilities/altfire.lua"],
+		"class": "AltFireAttack",
+		"projectileType": "fubeamgunshot",
+		"elementalConfig": {
+			"physical": {},
+			"fire": {},
+			"electric": {},
+			"ice": {},
+			"poison": {},
+			"shadow": {},
+			"radioactive": {},
+			"cosmic": {}
+		},
+		"projectileParameters": {
+			"damageSourceKind": "electric",
+			"damageKind":"<elementalType>"
+		},
+		"projectileCount": 3,
+		"inaccuracy": 0.08,
+		"baseDamage": 2.75,
+		"energyUsage": 75,
+		"fireTime": 1,
+		"fireType": "auto",
+		"speed": 50,
 
-    "elementalConfig" : {
-      "physical" : { "projectileType" : "fubeamgunshot" },
-      "fire" : { "projectileType" : "fubeamgunshot" },
-      "electric" : { "projectileType" : "fubeamgunshot" },
-      "ice" : { "projectileType" : "fubeamgunshot" },
-      "poison" : { "projectileType" : "fubeamgunshot" }
-    },
-    "projectileParameters" : {},
-    "projectileCount" : 3,
-    "inaccuracy" : 0.08,
-    "baseDamage" : 6.75,
-    "energyUsage" : 45,
-    "fireTime" : 0.33,
-    "fireType" : "auto",
-    "speed" : 50,
+		"firePositionPart": "erchiuslauncher",
+		"hidePrimaryMuzzleFlash": true,
 
-    "firePositionPart" : "erchiuslauncher",
-    "hidePrimaryMuzzleFlash" : true,
+		"stances": {
+			"fire": {
+				"duration": 0,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
 
-    "stances" : {
-      "fire" : {
-        "duration" : 0,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
+				"allowRotate": false,
+				"allowFlip": false
+			},
+			"cooldown": {
+				"duration": 0.11,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "cooldown" : {
-        "duration" : 0.11,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
-
-        "allowRotate" : false,
-        "allowFlip" : false
-      }
-    }
-  }
+				"allowRotate": false,
+				"allowFlip": false
+			}
+		}
+	}
 }

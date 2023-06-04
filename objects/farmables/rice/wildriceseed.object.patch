@@ -1,3 +1,25 @@
 [
-  {"op":"add","path":"/learnBlueprintsOnPickup","value": [ "stranglevineseed" ] }
+//  [
+//    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+//    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+//  ],
+//  [
+//    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "stranglevineseed" }
+//  ],
+  [
+	{ "op": "test", "path": "/maxImmersion", "inverse": true },
+	{ "op": "add", "path": "/maxImmersion", "value": 0.5 }
+  ],
+  [
+	{ "op": "test", "path": "/maxImmersion" },
+	{ "op": "replace", "path": "/maxImmersion", "value": 0.5 }
+  ],
+  [
+	{ "op": "test", "path": "/consumeSoilMoisture", "inverse": true },
+	{ "op": "add", "path": "/consumeSoilMoisture", "value": false }
+  ],
+  [
+	{ "op": "test", "path": "/consumeSoilMoisture" },
+	{ "op": "replace", "path": "/consumeSoilMoisture", "value": false }
+  ]
 ]

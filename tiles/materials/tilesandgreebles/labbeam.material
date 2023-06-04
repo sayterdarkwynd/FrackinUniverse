@@ -1,20 +1,22 @@
 {
   "materialId" : 6748,
   "materialName" : "labbeam",
-  "particleColor" : [20, 20, 20, 255],
+  "particleColor" : [110, 110, 110, 255],
   "itemDrop" : "labbeam",
   "description" : "Advanced metals form a fantastic building alloy.",
   "shortdescription" : "Plasteel Beam",
-  "health" : 20,
-  "category": "materials",
-  
-  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+ // "learnBlueprintsOnPickup" : [ "labbeam" ],
+  "footstepSound" : "/sfx/blocks/footstep_composite.ogg",
+  "health" : 10,
+  "category" : "materials",
+
+  "renderTemplate" : "/tiles/girdertemplate.config",
   "renderParameters" : {
     "texture" : "labbeam.png",
-    "variants" : 4,
+    "variants" : 2,
     "lightTransparent" : false,
-    "multiColored" : false,
     "occludesBelow" : true,
-    "zLevel" : 50
+    "multiColored" : false,
+    "zLevel" : 3300
   }
 }

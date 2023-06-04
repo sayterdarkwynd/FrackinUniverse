@@ -1,0 +1,100 @@
+{
+  "type" : "volcanobaselord",
+  "baseType" : "hostilefu",
+
+    "identity" : {
+    "gender" : "male"
+  },
+
+  "levelVariance" : [1, 1],
+
+  "dropPools" : [ "challengeChestTreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Attack!"
+          ]
+        },
+        "glitch" : {
+          "default" : [
+            "Furious. I'll slaughter you and use your loot to replace the guards you killed!",
+            "Eager. And so the hero arrives! Brave and foolish, my favourite type. I will break you and relish every moment of it.",
+			"Haughty. A protector to slaughter, just for me! This will be a crowning achievement; today my legend grows ever larger!",
+            "Smug. My, my! If a protector feels the need to challenge me, I must be doing something right. Step up and lend your head to one of my many pikes."
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+      "runSpeed" : 20,
+	  "walkSpeed" : 20,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    },
+    "mass" : 2.5
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "firelordhead", "parameters" : { "colorIndex" : 1 } }
+            ],
+            "back" : [
+              { "name" : "firelordback", "parameters" : { "colorIndex" : 1 } }
+            ],
+            "chest" : [
+              { "name" : "glitchtier5schest", "parameters" : { "colorIndex" : 1 } }
+            ],
+            "legs" : [
+              { "name" : "glitchtier5spants", "parameters" : { "colorIndex" : 1 } }
+            ],
+            "primary" : [
+			  { "name" : "legendblade", "parameters" : { "primaryAbility" : { "damageConfig" : { "statusEffects" : ["burning"] } } } }
+			],
+            "sheathedprimary" : [
+			  { "name" : "npctungstenbow", "parameters" : { "primaryAbility" : { "projectileType" : "explosivebolt", "powerProjectileType" : "explosivebolt" } } }
+			]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+	"poisonStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"electricStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"iceStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"fireStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"specialStatusImmunity" : {
+		"baseValue" : 1.0
+	},
+	"stunImmunity" : {
+		"baseValue" : 1.0
+	},
+	  "maxHealth" : {
+        "baseValue" : 500.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 1.5
+      },
+	  "maxEnergy" : {
+        "baseValue" : 100.0
+      }
+    }
+  }
+}

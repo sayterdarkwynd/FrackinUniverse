@@ -61,7 +61,7 @@ function meleeAttack.update(dt, stateData)
     moveX(-self.toTarget[1], true)
   end
   mcontroller.controlFace(self.toTarget[1])
-  
+
   if stateData.didAttack == false and attackCompletion >= 0.25 then
     local projectileStartPosition = monster.toAbsolutePosition(stateData.projectileSourcePosition)
     local projectileName = config.getParameter("meleeProjectile") or config.getParameter("meleeAttack.projectile")
@@ -74,5 +74,5 @@ function meleeAttack.update(dt, stateData)
 end
 
 function meleeAttack.leavingState(stateData)
-  
+
 end

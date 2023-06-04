@@ -1,0 +1,25 @@
+{
+  "itemName": "stuffeddunebun",
+  "rarity": "Uncommon",
+  "price": 150,
+  "category": "preparedFood",
+  "inventoryIcon": "stuffeddunebun.png",
+  "description": "A dunebun stuffed full of meat and bolbohn. An acquired taste.\n^cyan;+^white;20% ^cyan;HP ^gray;(^white;210s^gray;)^reset; ^orange;Type: Cooked Meat + Vegetables^reset;",
+  "shortdescription": "Stuffed Dunebun",
+  "effects": [
+    [
+	  { "effect": "meatc_plant_meal" } ,
+      {
+        "effect": "maxhealthscalingboostfood",
+        "duration": 210
+      }
+    ]
+  ],
+  "foodValue": 50,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1.0,
+  "blockingEffects": ["wellfed"]
+}

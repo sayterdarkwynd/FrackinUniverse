@@ -1,0 +1,93 @@
+{
+  "type" : "fuspidercritter",
+  "shortdescription" : "Jumping Spider",
+  "description" : "A tiny brown bug that lacks a web but can leap short distances.",
+
+  "categories" : [ "fuspidercritter" ],
+  "parts" : [ "body" ],
+
+  "animation" : "fuspidercritter.animation",
+  "reversed" : false,
+
+  "dropPools" : [ {"default" : "empty"} ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "walkingcritter",
+
+    "metaBoundBox" : [-0.5, -0.5, 0.5, 0.5],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-0.5, -0.5], [0.5, -0.5], [0.5, 0.5], [-0.5, 0.5] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 5,
+      "runSpeed" : 5,
+      "jumpSpeed" : 5
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "",
+"deathParticles" : "deathPoof",
+    "damageTeamType" : "passive",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 1
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "relocatable" : true,
+    "nametagColor" : [64, 200, 255]
+  }
+}

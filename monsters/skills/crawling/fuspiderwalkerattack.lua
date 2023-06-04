@@ -4,8 +4,8 @@ fuspiderwalkerAttack = {}
 function fuspiderwalkerAttack.enterWith(args)
   if not args.fuspiderwalkerAttack then return nil end
 
-  return { 
-    didAttack = false, 
+  return {
+    didAttack = false,
     wasInRange = false,
     windupTimer = config.getParameter("fuspiderwalkerAttack.windupTime"),
     winddownTimer = config.getParameter("fuspiderwalkerAttack.windDownTime"),
@@ -17,8 +17,8 @@ end
 function fuspiderwalkerAttack.enter()
   if not canStartSkill("fuspiderwalkerAttack") then return nil end
 
-  return { 
-    didAttack = false, 
+  return {
+    didAttack = false,
     wasInRange = false,
     windupTimer = config.getParameter("fuspiderwalkerAttack.windupTime"),
     winddownTimer = config.getParameter("fuspiderwalkerAttack.winddownTime"),
@@ -41,9 +41,6 @@ end
 
 function fuspiderwalkerAttack.update(dt, stateData)
   if not canContinueSkill() or not hasTarget() then return true end
-
-  local targetPosition = world.entityPosition(self.target)
-  local toTarget = world.distance(targetPosition, mcontroller.position())
 
   local projectileName = config.getParameter("fuspiderwalkerAttack.projectile")
   local power = root.evalFunction("monsterLevelPowerMultiplier", monster.level()) * config.getParameter("fuspiderwalkerAttack.power")
@@ -82,5 +79,5 @@ function fuspiderwalkerAttack.update(dt, stateData)
 end
 
 function fuspiderwalkerAttack.leavingState(stateData)
-  
+
 end

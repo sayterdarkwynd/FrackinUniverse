@@ -1,20 +1,23 @@
 {
-  "itemName" : "bluemelon",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "bluemelon.png",
-  "description" : "Soft texture and sweet flavour, yummm.",
-  "shortdescription" : "Blue Melon",
-    "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 4,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-          "maxhealthboost3"
-    ] ]
+	"itemName": "bluemelon",
+	"category": "food",
+	"inventoryIcon": "bluemelon.png",
+	"rarity": "Uncommon",
+	"price": 5,
 
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Water Walking^reset;, ^cyan;Immune: Freeze & +25% Ice Res^reset;: 1m",
+	"shortdescription": "Blue Melon",
+	"effects": [
+		[
+			{
+				"effect": "waterwalk",
+				"duration": 60
+			},
+			{
+				"effect": "iceblock",
+				"duration": 60
+			}
+		]
+	]
 }

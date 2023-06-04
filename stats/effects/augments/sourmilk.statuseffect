@@ -1,0 +1,26 @@
+{
+	"name": "sourmilk",
+	"effectConfig": {
+		"controlModifiers": {
+			"airForce": 60,
+			"speedModifier": 1.05,
+			"airJumpModifier": 1.08
+		},
+		"stats": [{
+			"stat": "maxHealth",
+			"baseMultiplier": 0.95
+		}, {
+			"stat": "powerMultiplier",
+			"baseMultiplier": 0.95
+		}]
+	},
+	"defaultDuration": 60,
+
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua",
+		"/stats/effects/fu_genericControlModifiers.lua"
+	],
+
+	"label": "+5% Speed and 8% Jump, Increased Air Force, -5% damage and health",
+	"icon": "/items/generic/food/sourmilkandbees.png"
+}

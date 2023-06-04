@@ -1,0 +1,26 @@
+{
+  "itemName" : "psionichealmagammo",
+  "price" : 300,
+  "rarity" : "rare",
+  "tooltipKind" : "fuammoitem",
+  "category" : "uniqueWeapon",
+  "inventoryIcon" : "icon.png",
+  "description" : "Can contain enough energy for up to 10 uses.",
+  "shortdescription" : "Healing Focus",
+
+  "ammoType" : "psionichealammo",									//type of ammo, has to be same as itemname since it's used for giving the ammo back in case of unloading
+  "ammoTag"  : "psionicheal",											//ammo tag, has to match one of the tags in weapons "ammoTags" list
+  "ammoCasing" : "",									//casing item spawned on firing the weapon
+  "ammoName" : "Psionic Heal",										//used for the tooltip?
+  "ammoIcon" : "/items/augments/ammo/psionicmagammo/icon.png",	//used for the tooltip?
+  "ammoProjectile" : "healingzonepsionic",								//overrides projectile for the primary attack
+  "ammoProjectileCount" : 1,										//overrides projectile count for the primary. Damage is divided evenly across the projectiles
+  "ammoCount" : 0,													//determines how much ammo this item restores. The excess will be returned in items specified in "ammoType"
+  "ammoDamage" : 0,													//damage per shot added by this type of ammo. This damage is split between all projectiles if projectile count is not 1
+  "magazineType" : "psionichealmagammo",									//type of magazine used. put name of "empty magazine" item here, it will be used for spawning one
+  "ammoMax" : 10,													//for use with magazines. Replace "false" with number of ammo per magazine
+  "ammoFireRate" : 4, //how fast does the weapon fire with this ammo?
+
+  "scripts" : [ "/items/augments/ammo/fuammo.lua" ],
+  "builder" : "/items/buildscripts/fubuildammo.lua"
+}

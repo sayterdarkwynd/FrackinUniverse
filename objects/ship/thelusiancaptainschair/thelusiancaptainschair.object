@@ -1,0 +1,46 @@
+{
+  "objectName" : "thelusiancaptainschair",
+  "colonyTags" : ["thelusian"],
+  "itemTags" : ["captainschair"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "loungeable",
+
+  "description" : "The Captain sits here to fly the ship.",
+  "shortdescription" : "Thelusian Captain's Chair",
+  "race" : "thelusian",
+  "category" : "furniture",
+
+
+  "inventoryIcon" : "thelusiancaptainschairicon.png",
+  "orientations" : [
+    {
+      "image" : "thelusiancaptainschair.png:<color>",
+      "imagePosition" : [-12, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "flipImages" : true,
+      "direction" : "left",
+      "sitPosition" : [1.6, 22.5]
+    },
+    {
+      "image" : "thelusiancaptainschair.png:<color>",
+      "imagePosition" : [-12, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "sitPosition" : [1.6, 22.5]
+    }
+  ],
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/interface/cockpit/cockpit.config",
+
+  "sitFlipDirection" : false
+}

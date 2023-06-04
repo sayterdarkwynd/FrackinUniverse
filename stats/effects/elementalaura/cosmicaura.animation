@@ -1,0 +1,58 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "aura" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "windup" : {
+            "frames" : 3,
+            "cycle" : 0.5,
+            "mode" : "transition",
+            "transition" : "on"
+          },
+          "on" : {
+            "frames" : 10,
+            "cycle" : 0.9,
+            "mode" : "loop"
+          }
+        }
+      }
+    },
+    "parts" : {
+      "aura" : {
+        "properties" : {
+          "zLevel" : 0
+        },
+        "partStates" : {
+          "aura" : {
+            "windup" : {
+              "properties" : {
+                "image" : "cosmicaura.png:windup.<frame>"
+              }
+            },
+            "on" : {
+              "properties" : {
+                "image" : "cosmicaura.png:on.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "particleEmitters" : {
+    "cosmicAura" : {
+      "active" : true,
+      "emissionRate" : 20,
+      "offsetRegion" : [-3.0, -3.0, 3.0, 3.0],
+      "particles" : [
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"},
+        { "particle" : "fastrisingcosmic"},
+        { "particle" : "cosmicaura"}
+      ]
+    }
+  }
+}

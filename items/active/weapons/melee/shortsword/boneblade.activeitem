@@ -4,15 +4,16 @@
   "level" : 1,
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "Roughly hewn. Causes slight bleeding.",
+  "description" : "Roughly-hewn. Causes slight bleeding.
+^cyan;Floran^reset;",
   "shortdescription" : "Bone Sword",
   "tooltipKind" : "sword",
   "category" : "shortsword",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","broadsword"],
+  "itemTags" : ["weapon","melee","shortsword", "upgradeableWeapon","bone","floran"],
 
   "inventoryIcon" : "boneblade.png",
-
+  //"collectablesOnPickup" : { "fu_weaponshortsword" : "boneblade" },
   "animation" : "comboshortsword.animation",
   "animationParts" : {
     "handle" : "",
@@ -27,13 +28,16 @@
   "primaryAbilityType" : "shortswordcombo2",
   "primaryAbility" : {
     "fireTime" : 0.60,
-    "baseDps" : 7.6
+    "baseDps" : 6.6
   },
 
   //"altAbilityType" : "risingslash",
 
+  "critChance" : 2,
+  "critBonus" : 1,
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
-  
-  
-  
+
+
+
 }

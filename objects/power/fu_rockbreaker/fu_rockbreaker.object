@@ -1,0 +1,61 @@
+{
+  "objectName" : "fu_rockbreaker",
+  "colonyTags" : [ "science", "machines" ],
+  "printable" : false,
+  "rarity" : "common",
+  "description" : "Slowly breaks up rocky materials into useful items. ^cyan;Requires ^orange;6W ^cyan;power.^reset;",
+  "shortdescription" : "^cyan;Rock Breaker^reset;",
+  "race" : "generic",
+  "category" : "^orange;Extraction Device^reset;",
+  "price" : 250,
+  "objectType" : "container",
+  "hydrophobic" : false,
+
+  "inventoryIcon" : "fu_rockbreakericon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_rockbreaker.png:<color>.<frame>",
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "animation" : "fu_rockbreaker.animation",
+  "animationParts" : {
+    "centrifuge" : "",
+    "centrifugefullbright" : "fu_rockbreaker.png"
+  },
+
+  "scripts" : [ "/scripts/fupower.lua", "/objects/bees/centrifuge.lua" ],
+
+  "scriptDelta" : 20,
+  "recipeGroup" : "centrifuge",
+  "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
+  "slotCount" : 25,
+  "uiConfig" : "/objects/power/isn_powdersifter/fu_woodensifter.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "craftDelay": 0.75,
+  "itemChances": {
+    "rarest": 0.002,
+    "rare": 0.008,
+    "uncommon": 0.02,
+    "normal": 0.05,
+    "common": 0.07
+  },
+
+  "inputSlot": 1,
+
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
+
+  "centrifugeType" : "rocks",
+  "powertype" : "input",
+  "isn_requiredPower" : 6
+}

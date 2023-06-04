@@ -1,0 +1,47 @@
+{
+  "objectName" : "cutedresser1",
+  "colonyTags" : ["fu","cute","storage","pretty"],
+  "printable" : false,
+  "rarity" : "Rare",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "A cute dresser",
+  "shortdescription" : "Cute Dresser",
+  "race" : "generic",
+  "category" : "storage",
+  "price" : 120,
+  "health" : 1.5,
+
+
+  "inventoryIcon" : "cutedresser1icon.png",
+  "orientations" : [
+    {
+      "image" : "cutedresser1.png:default",
+      "imagePosition" : [0, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "image" : "cutedresser1.png:default",
+      "imagePosition" : [0, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/woodenbox_close.ogg" ],
+  "slotCount" : 32,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+}

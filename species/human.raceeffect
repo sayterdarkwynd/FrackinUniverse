@@ -1,0 +1,44 @@
+{
+	"stats": [
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.05 },
+		{ "stat": "maxFood", "baseMultiplier": 1.15 },
+		{ "stat": "fuCharisma", "baseMultiplier": 1.10 },
+
+		{ "stat": "mentalProtection", "amount": 0.12 },
+		{ "stat": "fireResistance", "amount": 0.10 },
+		{ "stat": "iceResistance", "amount": 0.10 },
+		{ "stat": "poisonResistance", "amount": 0.10 },
+		{ "stat": "electricResistance", "amount": 0.11 },
+		{ "stat": "cosmicResistance", "amount": 0.10 },
+		{ "stat": "radioactiveResistance", "amount": -0.15 },
+		{ "stat": "shadowResistance", "amount": -0.15 },
+
+		{ "stat": "ammoMastery", "amount": 0.25 },
+		{ "stat": "shortswordMastery", "amount": 0.15 }
+	],
+	"diet" : "omnivore",
+	"controlModifiers" : {
+		"airJumpModifier" : 1.02
+	},
+
+	"weaponEffects": [],
+
+	"weaponScripts": [
+		{
+			"script": "/scripts/fr_weaponscripts/perfectblockbonus.lua",
+			"contexts": [ "shield-perfectblock" ],
+			"args": {
+				"stats": [
+					{ "stat": "protection", "amount": 0 }
+				],
+				"statCombos": {
+					"powerMultiplier": {
+						"comboBase": 2,
+						"max": 16
+					}
+				},
+				"particles": "bonusBlock4"
+			}
+		}
+	]
+}

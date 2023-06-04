@@ -1,0 +1,312 @@
+{
+  "metadata" : {
+    "name" : "greentower",
+    "species" : "floran",
+    "rules" : [
+    ],
+    "anchor" : [ "anchor1", "anchor2" ],
+    "gravity" : 80,
+    "maxRadius" : 1000000,
+    "maxParts" : 15,
+    "protected" : true
+  },
+
+  "parts" : [
+    {
+      "name" : "anchor1",
+      "rules" : [
+		[ "doNotCombineWith", [ "anchor2" ] ],
+	    [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "anchor1.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "anchor2",
+      "rules" : [
+		[ "doNotCombineWith", [ "anchor1" ] ],
+	    [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "anchor1.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "ascent1",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "ascent1" ] ]
+      ],
+      "def" : [ "tmx", "ascent1.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "ascent2",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "ascent2" ] ]
+      ],
+      "def" : [ "tmx", "ascent2.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "ascent3",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "ascent3" ] ]
+      ],
+      "def" : [ "tmx", "ascent3.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "ascent4",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "ascent4" ] ]
+      ],
+      "def" : [ "tmx", "ascent4.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "ascent5",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "ascent5" ] ]
+      ],
+      "def" : [ "tmx", "ascent5.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "approach1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "approach1.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "approach2",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "approach2.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "approach3",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "approach3.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "ascentcap",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "ascentcap.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "room1.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room1right",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "room1right.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "room2.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room2right",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "room2right.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room3",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "room3.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room3right",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "room3right.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room4",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "room4.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room4right",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "room4right.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room5",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "room5.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room5right",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "room5right.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room6",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "room6.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room6right",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "room6right.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room7",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "room7.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room7right",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "room7right.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room8",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "room8.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room8right",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "room8right.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "mapbrinestar",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "mapbrinestar.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "mapevernight",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "mapevernight.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "mapgrandarena",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "mapgrandarena.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "maphome",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "maphome.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "maphydro",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "maphydro.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "mapverdantruins",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "mapverdantruins.json" ],
+      "chance" : 0
+    }
+  ]
+}

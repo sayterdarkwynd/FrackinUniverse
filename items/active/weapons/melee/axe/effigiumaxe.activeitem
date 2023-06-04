@@ -1,0 +1,74 @@
+{
+  "itemName" : "effigiumaxe",
+  "price" : 640,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Ghostly as a spirit.",
+  "shortdescription" : "Phantasm Axe",
+  "tooltipKind" : "sword2",
+  "category" : "axe",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","axe", "upgradeableWeapon","effigium","shadow"],
+  "level" : 5,
+  "inventoryIcon" : "effigiumaxe.png",
+  //"collectablesOnPickup" : { "fu_weaponaxe" : "effigiumaxe" },
+  "animation" : "axeglow.animation",
+  "animationParts" : {
+    "blade" : "effigiumaxe.png",
+    "bladefullbright" : "effigiumaxefullbright.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [-1.0, 1.75]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_axe.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "shadow",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbilityType" : "axecleave",
+  "primaryAbility" : {
+    "fireTime" : 0.55,
+    "baseDps" : 10,
+    "damageConfig" : {
+      "damageSourceKind" : "shadowaxe",
+      "statusEffects" : [ "shadowgasfx" ],
+      "knockback" : 15
+    },
+    "stances" : {
+      "idle" : {
+        "weaponOffset" : [0.25, 1.5]
+      },
+      "windup" : {
+        "duration" : 0.7,
+        "weaponOffset" : [0.25, 1.5],
+
+        "minWindup" : 0.6,
+
+        "weaponAngle" : [
+          [0.7, "linear", -20, 0],
+          [0.85, "linear", 0, 50],
+          [0.925, "sin", 50, 45],
+          [1.0, "cos", 50, 45]
+        ],
+
+        "armAngle" : [
+          [1.0, "sin", -90, 50]
+        ]
+      },
+      "fire" : {
+        "weaponOffset" : [0.25, 1.5]
+      }
+    }
+  },
+  "critChance" : 2,
+  "critBonus" : 6,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

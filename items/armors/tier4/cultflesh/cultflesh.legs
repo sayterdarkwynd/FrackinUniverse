@@ -1,0 +1,55 @@
+{
+  "itemName" : "cultfleshlegs",
+  "inventoryIcon" : "icons.png:pants",
+  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Scythe/Bio-Weapon: +^green;3^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Insanity",
+  "shortdescription" : "Flesh Leggings",
+  "category" : "legarmour",
+  "tooltipKind" : "armornew2",
+
+  "maleFrames" : "pants.png",
+  "femaleFrames" : "pants.png",
+  "itemTags" : [ "upgradeableWeapon", "balanced" ],
+  "level" : 4,
+  //"collectablesOnPickup" : { "fu_armorranged" : "cultfleshlegs" },
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.05
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.2
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 6
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 1
+    },
+  {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.02
+    }
+  ],
+  "statusEffects" : [
+    "fleshsetbonus",
+    {
+      "stat" : "fu_fleshset_legs",
+      "amount" : 1
+    }
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
+}

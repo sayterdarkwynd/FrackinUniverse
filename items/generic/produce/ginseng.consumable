@@ -1,19 +1,35 @@
 {
-  "itemName" : "ginseng",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "ginseng.png",
-  "description" : "Known for healing and revitalizing properties.",
-  "shortdescription" : "Heartroot",
-   "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      "maxenergyboost2", "maxhealthboost2"
-    ] ]
+	"itemName": "ginseng",
+	"inventoryIcon": "ginseng.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 10,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+8 HP^reset;, ^cyan;+12 EP^reset;: 3m",
+	"shortdescription": "Heartroot",
+
+	"effects": [
+		[{
+				"effect": "maxenergyboost2",
+				"duration": 300
+			},
+			{
+				"effect": "maxhealthboost2",
+				"duration": 300
+			}
+		]
+	],
+	"blockingEffects": [
+		"maxhealthboost1",
+		"maxhealthboost3",
+		"maxhealthboost4",
+		"maxhealthboost5",
+		"maxenergyboost1",
+		"maxenergyboost3",
+		"maxenergyboost4",
+		"maxenergyboost5",
+		"maxenergyboost6",
+		"maxenergyboost145"
+	]
 }

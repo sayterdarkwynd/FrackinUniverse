@@ -1,18 +1,19 @@
 {
   "itemName" : "flightfire",
-  "price" : 0,
+  "price" : 100,
   "level" : 2,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Well, this is super-fun!",
+  "description" : "Well, this is super-fun!
+^cyan;Hunting weapon^reset;",
   "shortdescription" : "Flightfire",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "spear",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear"],
+  "itemTags" : ["weapon","melee","spear", "upgradeableWeapon"],
 
   "inventoryIcon" : "flightfire.png",
-
+  //"collectablesOnPickup" : { "fu_weaponspear" : "flightfire" },
   "animation" : "/items/active/weapons/melee/spear/spear.animation",
   "animationParts" : {
     "handle" : "",
@@ -32,66 +33,20 @@
   "primaryAbilityType" : "spearstab",
   "primaryAbility" : {
     "scripts" : [],
-    "class" : "SpearStab",
 
     "fireTime" : 1.2,
     "baseDps" : 5.5,
     "damageConfig" : {
-      "damageSourceKind" : "spear",
+      "damageSourceKind" : "firebow",
       "statusEffects" : [ ],
-      "knockbackMode" : "aim",
-      "knockback" : 10,
-      "timeoutGroup" : "primary"
-    },
-    "holdDamageMultiplier" : 0.1,
-    "holdDamageConfig" : {
-      "timeoutGroup" : "hold",
-      "timeout" : 0.5
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : 0,
-        "twoHanded" : false,
-        "weaponOffset" : [0, 0.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "windup" : {
-        "hold" : true,
-        "duration" : 0.55,
-        "armRotation" : -110,
-        "weaponRotation" : 20,
-        "twoHanded" : true,
-        "weaponOffset" : [0, 0.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "fire" : {
-        "duration" : 0.3,
-        "armRotation" : -20,
-        "weaponRotation" : -70,
-        "twoHanded" : true,
-        "weaponOffset" : [0.3, 2.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "hold" : {
-        "armRotation" : -30,
-        "weaponRotation" : -60,
-        "twoHanded" : true,
-        "weaponOffset" : [-0.3, 2.0],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      }
+      "knockback" : 10
     }
   },
   "altAbilityType" : "rocketspear4",
   "altAbility" : { },
-  
+
+  "critChance" : 1,
+  "critBonus" : 1,
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

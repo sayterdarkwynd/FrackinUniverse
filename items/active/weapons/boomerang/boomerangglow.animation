@@ -1,0 +1,71 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "weapon" : {
+        "default" : "visible",
+        "states" : {
+          "visible" : {},
+          "hidden" : {}
+        }
+      }
+    },
+
+    "parts" : {
+      "boomerang" : {
+        "properties" : {
+          "centered" : true,
+		      "fullbright" : true,
+          "offset" : [0.625, 0.75],
+          "transformationGroups" : [ "weapon" ]
+        },
+
+        "partStates" : {
+          "weapon" : {
+            "visible" : {
+              "properties" : {
+                "image" : "<partImage>"
+              }
+            },
+            "hidden" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      },
+	    "boomerangfullbright" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 2,
+          "offset" : [0.625, 0.75],
+          "transformationGroups" : [ "weapon" ]
+        },
+
+        "partStates" : {
+          "weapon" : {
+            "visible" : {
+              "properties" : {
+                "image" : "<partImage>"
+              }
+            },
+            "hidden" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {}
+  },
+
+  "sounds" : {
+    "throw" : [ "/sfx/melee/swing_dagger.ogg" ],
+    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+  }
+}

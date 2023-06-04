@@ -1,0 +1,105 @@
+{
+  "objectName" : "shiphatch",
+  "colonyTags" : ["fu","science","door"],
+  "rarity" : "uncommon",
+
+  "category" : "door",
+  "price" : 2000,
+  "description" : "This gargantuan ship hatch is made of some sort of bulletproof material.",
+  "shortdescription" : "Ship Hatch",
+  "race" : "generic",
+
+  "inventoryIcon" : "shiphatchicon.png",
+  "orientations" : [
+    {
+      "image" : "shiphatch.png:default",
+      "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "left", "right" ],
+      "direction" : "left"
+    },
+    {
+      "image" : "shiphatch.png:default",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "left", "right" ],
+      "direction" : "right"
+    }
+  ],
+
+
+
+
+
+  "platformDoors" : true,
+  "openMaterials" : [ ],
+
+
+  "openMaterialSpaces" : [
+	  [[0,4],"metamaterial:objectplatform"],
+	  [[1,4],"metamaterial:objectplatform"],
+	  [[2,4],"metamaterial:objectplatform"],
+	  [[3,4],"metamaterial:objectplatform"],
+	  [[4,4],"metamaterial:objectplatform"],
+	  [[5,4],"metamaterial:objectplatform"],
+	  [[6,4],"metamaterial:objectplatform"],
+	  [[7,4],"metamaterial:objectplatform"],
+	  [[8,4],"metamaterial:objectplatform"],
+	  [[9,4],"metamaterial:objectplatform"],
+	  [[10,4],"metamaterial:objectplatform"],
+	  [[11,4],"metamaterial:objectplatform"],
+	  [[12,4],"metamaterial:objectplatform"],
+	  [[13,4],"metamaterial:objectplatform"],
+	  [[14,4],"metamaterial:objectplatform"],
+	  [[15,4],"metamaterial:objectplatform"],
+	  [[16,4],"metamaterial:objectplatform"],
+	  [[17,4],"metamaterial:objectplatform"],
+	  [[18,4],"metamaterial:objectplatform"],
+	  [[19,4],"metamaterial:objectplatform"],
+	  [[20,4],"metamaterial:objectplatform"],
+	  [[21,4],"metamaterial:objectplatform"],
+	  [[22,4],"metamaterial:objectplatform"],
+	  [[23,4],"metamaterial:objectplatform"],
+	  [[24,4],"metamaterial:objectplatform"],
+	  [[25,4],"metamaterial:objectplatform"],
+	  [[26,4],"metamaterial:objectplatform"],
+	  [[27,4],"metamaterial:objectplatform"],
+	  [[28,4],"metamaterial:objectplatform"],
+	  [[29,4],"metamaterial:objectplatform"],
+	  [[30,4],"metamaterial:objectplatform"],
+	  [[31,4],"metamaterial:objectplatform"],
+	  [[32,4],"metamaterial:objectplatform"],
+	  [[33,4],"metamaterial:objectplatform"],
+	  [[34,4],"metamaterial:objectplatform"],
+	  [[35,4],"metamaterial:objectplatform"],
+	  [[36,4],"metamaterial:objectplatform"],
+	  [[37,4],"metamaterial:objectplatform"],
+	  [[38,4],"metamaterial:objectplatform"],
+	  [[39,4],"metamaterial:objectplatform"]
+  ],
+
+
+
+
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/generic/labfurniture/shiphatch/shiphatch.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+      "close" : [ "/sfx/objects/apexcooldoor_close.ogg" ],
+      "opening" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+      "closing" : [ "/sfx/objects/apexcooldoor_close.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "door" : "shiphatch.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [39, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

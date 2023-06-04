@@ -1,0 +1,1700 @@
+{
+  "metadata" : {
+    "name" : "gregbase",
+    "species" : "human",
+    "rules" : [
+    ],    
+    "anchor" : [ "5" ],	
+	"maxRadius" : 2000,
+	"maxParts" : 5
+  },
+ "tiles" : [
+    {
+      "value" : [255, 0, 220, 255],
+      "comment" : "magic pinkppp, a no-op value"
+    },
+	{
+      "value" : [53, 63, 105, 255],
+      "comment" : "acid pool foreground",
+      "brush" : [ [ "clear" ], [ "liquid", "sulphuricacid" ] ]
+    },
+    {
+      "value" : [0, 0, 0, 255],
+      "rules" : [ [ "worldGenMustContainAirBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ] ]
+    },
+    {
+      "value" : [255, 255, 255, 255],
+      "rules" : [ [ "worldGenMustContainSolidBackground" ], [ "allowOverdrawing" ] ]
+    },
+    {
+      "value" : [0, 38, 255, 255],
+      "comment" : "bright blue, room coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [0, 255, 186, 255],
+      "comment" : "bright aqua, alternate coupler",
+      "connector" : true
+    },
+	
+	{
+      "value" : [251, 255, 128, 255],
+      "comment" : "background cheapwallpaper",
+      "brush" : [ [ "clear" ], [ "back", "cheapwallpaper" ] ]
+    },
+    {
+      "value" : [201, 204, 102, 255],
+      "comment" : "foreground cheapwallpaper",
+      "brush" : [ [ "clear" ], [ "back", "cheapwallpaper" ], [ "front", "cheapwallpaper" ] ]
+    },
+
+    {
+      "value" : [255, 187, 128, 255],
+      "comment" : "background cobblestonebrick",
+      "brush" : [ [ "clear" ], [ "back", "cobblestonebrick" ] ]
+    },
+
+    {
+      "value" : [204, 150, 102, 255],
+      "comment" : "foreground cobblestonebrick",
+      "brush" : [ [ "clear" ], [ "back", "cobblestonebrick" ], [ "front", "cobblestonebrick" ] ]
+    },
+
+    {
+      "value" : [168, 255, 0, 255],
+      "comment" : "bright green, alternate coupler #2",
+      "connector" : true
+    },
+
+    {
+      "value" : [255, 168, 0, 255],
+      "comment" : "bright orange, alternate coupler #3",
+      "connector" : true
+    },
+
+    {
+      "value" : [32, 32, 32, 255],
+      "comment" : "Empty hole",
+      "brush" : [ [ "clear" ] ]
+    },
+
+    {
+      "value" : [48, 48, 48, 255],
+      "comment" : "Empty hole overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ] ]
+    },
+
+    {
+      "value" : [128, 128, 128, 255],
+      "comment" : "Biome tile brush",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [100, 100, 100, 255],
+      "comment" : "Biome tile brush non-overwritable",
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [200, 200, 200, 255],
+      "comment" : "Biome tile background brush",
+      "brush" : [ [ "clear" ], [ "surfacebackground" ] ]
+    },
+
+    {
+      "value" : [146, 165, 247, 255],
+      "comment" : "background composite01",
+      "brush" : [ [ "clear" ], [ "back", "composite01" ] ]
+    },
+
+    {
+      "value" : [170, 146, 247, 255],
+      "comment" : "foreground composite01",
+      "brush" : [ [ "clear" ], [ "back", "composite01" ], [ "front", "composite01" ] ]
+    },
+
+    {
+      "value" : [120, 96, 197, 255],
+      "comment" : "endcap smoothmetal",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "smoothmetal" ], [ "front", "smoothmetal" ] ]
+    },
+	
+	{
+      "value" : [255, 236, 30, 255],
+      "comment" : "techchest facing left",
+      "brush" : [ [ "clear" ], [ "object", "techchest", { "direction" : "left", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [229, 213, 28, 255],
+      "comment" : "techchest facing right",
+      "brush" : [ [ "clear" ], [ "object", "techchest", { "direction" : "right", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [179, 141, 89, 255],
+      "comment" : "stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "platform" ] ]
+    },
+
+    {
+      "value" : [137, 124, 76, 255],
+      "comment" : "modern stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "modernplatform" ] ]
+    },
+
+    {
+      "value" : [179, 173, 142, 255],
+      "comment" : "wreck stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "wreckplatform" ] ]
+    },
+
+    {
+      "value" : [148, 143, 117, 255],
+      "comment" : "overwritable wreck stairs/platform",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "front", "wreckplatform" ] ]
+    },
+
+    {
+      "value" : [255, 0, 0, 255],
+      "comment" : "wire #1 Red",
+      "brush" : [ [ "wire", { "group" : "group1", "local" : true } ] ]
+    },
+
+    {
+      "value" : [0, 255, 0, 255],
+      "comment" : "wire #2 Green",
+      "brush" : [ [ "wire", { "group" : "group2", "local" : true } ] ]
+    },
+
+    {
+      "value" : [0, 0, 255, 255],
+      "comment" : "wire #3 Blue",
+      "brush" : [ [ "wire", { "group" : "group3", "local" : true } ] ]
+    },
+
+    {
+      "value" : [146, 247, 241, 255],
+      "comment" : "background concrete",
+      "brush" : [ [ "clear" ], [ "back", "concrete" ] ]
+    },
+
+    {
+      "value" : [106, 176, 216, 255],
+      "comment" : "foreground concrete overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "concrete" ], [ "front", "concrete" ] ]
+    },
+
+    {
+      "value" : [146, 210, 247, 255],
+      "comment" : "foreground concrete",
+      "brush" : [ [ "clear" ], [ "back", "concrete" ], [ "front", "concrete" ] ]
+    },
+
+    {
+      "value" : [146, 247, 151, 255],
+      "comment" : "background plate",
+      "brush" : [ [ "clear" ], [ "back", "plate" ] ]
+    },
+
+    {
+      "value" : [146, 247, 203, 255],
+      "comment" : "foreground plate",
+      "brush" : [ [ "clear" ], [ "back", "plate" ], [ "front", "plate" ] ]
+    },
+
+    {
+      "value" : [224, 247, 146, 255],
+      "comment" : "background metallic",
+      "brush" : [ [ "clear" ], [ "back", "metallic" ] ]
+    },
+    {
+      "value" : [186, 247, 146, 255],
+      "comment" : "foreground metallic",
+      "brush" : [ [ "clear" ], [ "back", "metallic" ], [ "front", "metallic" ] ]
+    },
+
+    {
+      "value" : [251, 209, 209, 255],
+      "comment" : "background smoothmetal",
+      "brush" : [ [ "clear" ], [ "back", "smoothmetal" ] ]
+    },
+
+    {
+      "value" : [255, 142, 142, 255],
+      "comment" : "foreground smoothmetal",
+      "brush" : [ [ "clear" ], [ "back", "smoothmetal" ], [ "front", "smoothmetal" ] ]
+    },
+
+    {
+      "value" : [197, 182, 219, 255],
+      "comment" : "overwritable background rustymetal",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "rustymetal" ] ]
+    },
+
+    {
+      "value" : [226, 209, 251, 255],
+      "comment" : "background rustymetal",
+      "brush" : [ [ "clear" ], [ "back", "rustymetal" ] ]
+    },
+
+    {
+      "value" : [145, 131, 212, 255],
+      "comment" : "overwritable foreground rustymetal",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "rustymetal" ], [ "front", "rustymetal" ] ]
+    },
+
+    {
+      "value" : [165, 149, 241, 255],
+      "comment" : "foreground rustymetal",
+      "brush" : [ [ "clear" ], [ "back", "rustymetal" ], [ "front", "rustymetal" ] ]
+    },
+
+    {
+      "value" : [206, 146, 247, 255],
+      "comment" : "background bars",
+      "brush" : [ [ "clear" ], [ "back", "bars" ] ]
+    },
+
+    {
+      "value" : [247, 146, 240, 255],
+      "comment" : "foreground bars",
+      "brush" : [ [ "clear" ], [ "front", "bars" ] ]
+    },
+
+    {
+      "value" : [255, 254, 145, 255],
+      "comment" : "background glass",
+      "brush" : [ [ "clear" ], [ "back", "glass" ] ]
+    },
+
+    {
+      "value" : [221, 220, 67, 255],
+      "comment" : "foreground glass",
+      "brush" : [ [ "clear" ], [ "front", "glass" ] ]
+    },
+
+    {
+      "value" : [54, 63, 105, 255],
+      "comment" : "water pool foreground",
+      "brush" : [ [ "clear" ], [ "liquid", "water" ] ]
+    },
+
+    {
+      "value" : [212, 177, 102, 255],
+      "comment" : "overwritable background darksmoothstone",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "darksmoothstone" ] ]
+    },
+
+    {
+      "value" : [243, 203, 117, 255],
+      "comment" : "background darksmoothstone",
+      "brush" : [ [ "clear" ], [ "back", "darksmoothstone" ] ]
+    },
+
+    {
+      "value" : [191, 131, 0, 255],
+      "comment" : "overwritable foreground darksmoothstone",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "darksmoothstone" ], [ "front", "darksmoothstone" ] ]
+    },
+
+    {
+      "value" : [223, 152, 0, 255],
+      "comment" : "foreground darksmoothstone",
+      "brush" : [ [ "clear" ], [ "back", "darksmoothstone" ], [ "front", "darksmoothstone" ] ]
+    },
+
+    {
+      "value" : [243, 138, 117, 255],
+      "comment" : "background darkwood",
+      "brush" : [ [ "clear" ], [ "back", "darkwood" ] ]
+    },
+
+    {
+      "value" : [255, 70, 33, 255],
+      "comment" : "foreground darkwood",
+      "brush" : [ [ "clear" ], [ "back", "darkwood" ], [ "front", "darkwood" ] ]
+    },
+
+    {
+      "value" : [209, 219, 251, 255],
+      "comment" : "electriclight",
+      "brush" : [ [ "clear" ], [ "object", "electriclight" ] ]
+    },
+
+    {
+      "value" : [199, 229, 251, 255],
+      "comment" : "fluorescentlight",
+      "brush" : [ [ "clear" ], [ "object", "fluorescentlight" ] ]
+    },
+
+    {
+      "value" : [209, 247, 251, 255],
+      "comment" : "vendingmachine facing left",
+      "brush" : [ [ "clear" ], [ "object", "vendingmachine", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [199, 247, 251, 255],
+      "comment" : "vendingmachine facing right",
+      "brush" : [ [ "clear" ], [ "object", "vendingmachine", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [209, 251, 227, 255],
+      "comment" : "modernchair1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "fuokeahitechvrchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [231, 251, 209, 255],
+      "comment" : "modernchair1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "fuokeahitecharmchair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [221, 251, 209, 255],
+      "comment" : "eggchair facing left",
+      "brush" : [ [ "clear" ], [ "object", "eggchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [249, 251, 209, 255],
+      "comment" : "eggchair facing right",
+      "brush" : [ [ "clear" ], [ "object", "eggchair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [111, 24, 255, 255],
+      "comment" : "moderntable1",
+      "brush" : [ [ "clear" ], [ "object", "fuokeahitechtable" ] ]
+    },
+
+    {
+      "value" : [255, 24, 24, 255],
+      "comment" : "dangersignv",
+      "brush" : [ [ "clear" ], [ "object", "dangersignv" ] ]
+    },
+
+    {
+      "value" : [255, 24, 209, 255],
+      "comment" : "dangersignh",
+      "brush" : [ [ "clear" ], [ "object", "dangersignh" ] ]
+    },
+
+    {
+      "value" : [198, 24, 255, 255],
+      "comment" : "marinesign",
+      "brush" : [ [ "clear" ], [ "object", "marinesign" ] ]
+    },
+
+    {
+      "value" : [57, 24, 255, 255],
+      "comment" : "glasspanel",
+      "brush" : [ [ "clear" ], [ "object", "glasspanel" ] ]
+    },
+
+    {
+      "value" : [251, 241, 209, 255],
+      "comment" : "watermachine facing left",
+      "brush" : [ [ "clear" ], [ "object", "watermachine", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [241, 241, 209, 255],
+      "comment" : "watermachine facing right",
+      "brush" : [ [ "clear" ], [ "object", "watermachine", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [125, 47, 255, 255],
+      "comment" : "tungstenchair facing left",
+      "brush" : [ [ "clear" ], [ "object", "tungstenchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [115, 47, 255, 255],
+      "comment" : "tungstenchair facing right",
+      "brush" : [ [ "clear" ], [ "object", "tungstenchair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [24, 144, 255, 255],
+      "comment" : "lightbulb2",
+      "brush" : [ [ "clear" ], [ "object", "lightbulb2" ] ]
+    },
+
+    {
+      "value" : [47, 213, 255, 255],
+      "comment" : "fridge facing left",
+      "brush" : [ [ "clear" ], [ "object", "fridge", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [37, 213, 255, 255],
+      "comment" : "fridge facing right",
+      "brush" : [ [ "clear" ], [ "object", "fridge", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [47, 255, 243, 255],
+      "comment" : "woodenbed2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodenbed2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [37, 255, 243, 255],
+      "comment" : "woodenbed2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodenbed2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [47, 255, 150, 255],
+      "comment" : "woodencabinet2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodencabinet2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [37, 255, 150, 255],
+      "comment" : "woodencabinet2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodencabinet2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [174, 255, 47, 255],
+      "comment" : "woodenendtable facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodenendtable", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [164, 255, 47, 255],
+      "comment" : "woodenendtable facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodenendtable", { "direction" : "right", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [228, 255, 47, 255],
+      "comment" : "woodencrate1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate1", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [218, 255, 47, 255],
+      "comment" : "woodencrate1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate1", { "direction" : "right", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [255, 228, 47, 255],
+      "comment" : "woodencrate2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate2", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [245, 228, 47, 255],
+      "comment" : "woodencrate2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate2", { "direction" : "right", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [4, 46, 7, 255],
+      "comment" : "woodencouch2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodencouch2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [14, 46, 7, 255],
+      "comment" : "woodencouch2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodencouch2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [4, 46, 46, 255],
+      "comment" : "woodenarmchair2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodenarmchair2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [14, 46, 46, 255],
+      "comment" : "woodenarmchair2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodenarmchair2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [46, 8, 4, 255],
+      "comment" : "woodenchair facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodenchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [56, 8, 4, 255],
+      "comment" : "woodenchair facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodenchair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [24, 236, 255, 255],
+      "comment" : "metalbarrel1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "metalbarrel1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [23, 224, 255, 255],
+      "comment" : "metalbarrel1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "metalbarrel1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [24, 255, 160, 255],
+      "comment" : "metalbarrel2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "metalbarrel2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [23, 255, 170, 255],
+      "comment" : "metalbarrel2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "metalbarrel2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [84, 255, 24, 255],
+      "comment" : "arcademachine facing left",
+      "brush" : [ [ "clear" ], [ "object", "arcademachine", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [220, 255, 24, 255],
+      "comment" : "arcademachine facing right",
+      "brush" : [ [ "clear" ], [ "object", "arcademachine", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [84, 146, 24, 255],
+      "comment" : "barbedwire facing left",
+      "brush" : [ [ "clear" ], [ "object", "barbedwire", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [103, 146, 24, 255],
+      "comment" : "barbedwire facing right",
+      "brush" : [ [ "clear" ], [ "object", "barbedwire", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [200, 220, 24, 255],
+      "comment" : "loudspeaker facing left",
+      "brush" : [ [ "clear" ], [ "object", "loudspeaker", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [220, 220, 24, 255],
+      "comment" : "loudspeaker facing right",
+      "brush" : [ [ "clear" ], [ "object", "loudspeaker", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [47, 232, 81, 255],
+      "comment" : "floodlights facing left",
+      "brush" : [ [ "clear" ], [ "object", "floodlights", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [111, 232, 47, 255],
+      "comment" : "floodlights facing right",
+      "brush" : [ [ "clear" ], [ "object", "floodlights", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [241, 46, 95, 255],
+      "comment" : "tent1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tent1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [201, 46, 231, 255],
+      "comment" : "tent1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tent1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [241, 86, 95, 255],
+      "comment" : "tent2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tent2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [201, 86, 231, 255],
+      "comment" : "tent2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tent2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [241, 136, 95, 255],
+      "comment" : "oven1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "oven1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [201, 136, 95, 255],
+      "comment" : "oven1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "oven1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [109, 190, 8, 255],
+      "comment" : "hazardtapeh",
+      "brush" : [ [ "clear" ], [ "object", "hazardtapeh" ] ]
+    },
+
+    {
+      "value" : [139, 190, 8, 255],
+      "comment" : "hazardtapev",
+      "brush" : [ [ "clear" ], [ "object", "hazardtapev" ] ]
+    },
+
+    {
+      "value" : [8, 190, 111, 255],
+      "comment" : "woodenlamp1",
+      "brush" : [ [ "clear" ], [ "object", "woodenlamp1" ] ]
+    },
+
+    {
+      "value" : [69, 185, 134, 255],
+      "comment" : "basictoilet facing left",
+      "brush" : [ [ "clear" ], [ "object", "basictoilet", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [69, 185, 118, 255],
+      "comment" : "basictoilet facing right",
+      "brush" : [ [ "clear" ], [ "object", "basictoilet", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [134, 185, 69, 255],
+      "comment" : "basicbath facing left",
+      "brush" : [ [ "clear" ], [ "object", "basicbath", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [156, 203, 96, 255],
+      "comment" : "basicbath facing right",
+      "brush" : [ [ "clear" ], [ "object", "basicbath", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [109, 90, 8, 255],
+      "comment" : "bunkerbigpanel",
+      "brush" : [ [ "clear" ], [ "object", "bunkerbigpanel" ] ]
+    },
+
+    {
+      "value" : [228, 47, 255, 255],
+      "comment" : "bunkerbookcase facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkerbookcase", { "direction" : "left","parameters" : { "treasurePools" : [ "gregbookTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [204, 47, 255, 255],
+      "comment" : "bunkerbookcase facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkerbookcase", { "direction" : "right","parameters" : { "treasurePools" : [ "gregbookTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [47, 255, 81, 255],
+      "comment" : "bunkercabinet1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkercabinet1", { "direction" : "left", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [111, 255, 47, 255],
+      "comment" : "bunkercabinet1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkercabinet1", { "direction" : "right", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [85, 109, 8, 255],
+      "comment" : "bunkerceilinglight1",
+      "brush" : [ [ "clear" ], [ "object", "bunkerceilinglight1" ] ]
+    },
+
+    {
+      "value" : [222, 144, 233, 255],
+      "comment" : "bunkerceilinglight2",
+      "brush" : [ [ "clear" ], [ "object", "bunkerceilinglight2" ] ]
+    },
+
+    {
+      "value" : [255, 189, 47, 255],
+      "comment" : "bunkercomputer facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkercomputer", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [255, 160, 47, 255],
+      "comment" : "bunkercomputer facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkercomputer", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 67, 47, 255],
+      "comment" : "bunkerconsole1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkerconsole1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [255, 47, 47, 255],
+      "comment" : "bunkerconsole1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkerconsole1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [46, 36, 4, 255],
+      "comment" : "bunkerconsole2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkerconsole2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [29, 46, 4, 255],
+      "comment" : "bunkerconsole2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkerconsole2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [46, 4, 28, 255],
+      "comment" : "bunkerconsole3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkerconsole3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [24, 4, 46, 255],
+      "comment" : "bunkerconsole3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkerconsole3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [231, 111, 0, 255],
+      "comment" : "bunkerconsole4 facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkerconsole4", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [241, 111, 0, 255],
+      "comment" : "bunkerconsole4 facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkerconsole4", { "direction" : "right" } ] ] },
+
+    {
+      "value" : [222, 134, 173, 255],
+      "comment" : "bunkercorner",
+      "brush" : [ [ "clear" ], [ "object", "bunkercorner" ] ]
+    },
+	
+	{
+      "value" : [7, 5, 22, 255],
+      "comment" : "shippingcontainer",
+      "brush" : [ [ "clear" ], [ "object", "shippingcontainer", { "direction" : "left", "parameters" : { "treasurePools" : [ "ffbasicTreasure", "ffbasicTreasure", "ffbasicTreasure"  ] } } ] ]
+    },
+
+    {
+      "value" : [6, 4, 46, 255],
+      "comment" : "bunkercrate facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkercrate", { "direction" : "left", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [4, 14, 46, 255],
+      "comment" : "bunkercrate facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkercrate", { "direction" : "right", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [100, 231, 231, 255],
+      "comment" : "bunkerdesk facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkerdesk", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [0, 231, 231, 255],
+      "comment" : "bunkerdesk facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkerdesk", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [0, 231, 46, 255],
+      "comment" : "bunkerdisplay1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkerdisplay1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [57, 231, 0, 255],
+      "comment" : "bunkerdisplay1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkerdisplay1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [198, 231, 0, 255],
+      "comment" : "bunkerdisplay2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkerdisplay2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [208, 231, 0, 255],
+      "comment" : "bunkerdisplay2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkerdisplay2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [109, 8, 14, 255],
+      "comment" : "bunkerdisplay3",
+      "brush" : [ [ "clear" ], [ "object", "bunkerdisplay3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [109, 45, 8, 255],
+      "comment" : "bunkerdisplay4",
+      "brush" : [ [ "clear" ], [ "object", "bunkerdisplay4" ] ]
+    },
+
+    {
+      "value" : [61, 121, 139, 255],
+      "comment" : "bunkereyescanner",
+      "brush" : [ [ "clear" ], [ "object", "bunkereyescanner" ] ]
+    },
+
+    {
+      "value" : [109, 8, 104, 255],
+      "comment" : "bunkerhandscanner",
+      "brush" : [ [ "clear" ], [ "object", "bunkerhandscanner" ] ]
+    },
+
+    {
+      "value" : [241, 0, 95, 255],
+      "comment" : "bunkerheater1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkerheater1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [171, 0, 231, 255],
+      "comment" : "bunkerheater1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkerheater1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [109, 8, 52, 255],
+      "comment" : "bunkerlighth",
+      "brush" : [ [ "clear" ], [ "object", "bunkerlighth" ] ]
+    },
+
+    {
+      "value" : [31, 8, 109, 255],
+      "comment" : "bunkerlightv",
+      "brush" : [ [ "clear" ], [ "object", "bunkerlightv" ] ]
+    },
+
+    {
+      "value" : [69, 8, 109, 255],
+      "comment" : "bunkerpanel1",
+      "brush" : [ [ "clear" ], [ "object", "bunkerpanel1" ] ]
+    },
+
+    {
+      "value" : [8, 60, 109, 255],
+      "comment" : "bunkerpanel2",
+      "brush" : [ [ "clear" ], [ "object", "bunkerpanel2" ] ]
+    },
+
+    {
+      "value" : [8, 29, 109, 255],
+      "comment" : "bunkerpanel3",
+      "brush" : [ [ "clear" ], [ "object", "bunkerpanel3" ] ]
+    },
+
+    {
+      "value" : [49, 109, 8, 255],
+      "comment" : "bunkerposter1",
+      "brush" : [ [ "clear" ], [ "object", "bunkerposter1" ] ]
+    },
+
+    {
+      "value" : [8, 109, 15, 255],
+      "comment" : "bunkerposter2",
+      "brush" : [ [ "clear" ], [ "object", "bunkerposter2" ] ]
+    },
+
+    {
+      "value" : [75, 0, 231, 255],
+      "comment" : "bunkerserver facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkerserver", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [35, 0, 231, 255],
+      "comment" : "bunkerserver facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkerserver", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [208, 30, 12, 255],
+      "comment" : "bunkerslidingdoor",
+      "brush" : [ [ "clear" ], [ "object", "bunkerslidingdoor" ] ]
+    },
+
+    {
+      "value" : [45, 0, 231, 255],
+      "comment" : "bunkertable1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkertable1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [79, 45, 219, 255],
+      "comment" : "bunkertable1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkertable1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [140, 208, 0, 255],
+      "comment" : "bunkertable2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkertable2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [27, 208, 0, 255],
+      "comment" : "bunkertable2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkertable2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [208, 81, 0, 255],
+      "comment" : "bunkertable3",
+      "brush" : [ [ "clear" ], [ "object", "bunkertable3" ] ]
+    },
+
+    {
+      "value" : [218, 81, 0, 255],
+      "comment" : "bunkertv",
+      "brush" : [ [ "clear" ], [ "object", "bunkertv" ] ]
+    },
+
+    {
+      "value" : [208, 42, 0, 255],
+      "comment" : "bunkertv2",
+      "brush" : [ [ "clear" ], [ "object", "bunkertv2" ] ]
+    },
+
+    {
+      "value" : [218, 42, 0, 255],
+      "comment" : "bunkervent",
+      "brush" : [ [ "clear" ], [ "object", "bunkervent" ] ]
+    },
+
+    {
+      "value" : [208, 0, 105, 255],
+      "comment" : "bunkerwires facing left",
+      "brush" : [ [ "clear" ], [ "object", "bunkerwires", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [218, 0, 105, 255],
+      "comment" : "bunkerwires facing right",
+      "brush" : [ [ "clear" ], [ "object", "bunkerwires", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 27, 27, 255],
+      "comment" : "prisonarch",
+      "brush" : [ [ "clear" ], [ "object", "prisonarch" ] ]
+    },
+
+    {
+      "value" : [255, 66, 28, 255],
+      "comment" : "prisonbarrelfire facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonbarrelfire", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [255, 85, 28, 255],
+      "comment" : "prisonbarrelfire facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonbarrelfire", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 123, 28, 255],
+      "comment" : "prisonbars",
+      "brush" : [ [ "clear" ], [ "object", "prisonbars" ] ]
+    },
+
+    {
+      "value" : [255, 160, 28, 255],
+      "comment" : "prisonbed facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonbed", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [255, 179, 28, 255],
+      "comment" : "prisonbed facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonbed", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 217, 28, 255],
+      "comment" : "prisonbench facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonbench", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [255, 236, 28, 255],
+      "comment" : "prisonbench facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonbench", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [236, 255, 28, 255],
+      "comment" : "prisoncabinet1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisoncabinet1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [217, 255, 28, 255],
+      "comment" : "prisoncabinet1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisoncabinet1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [179, 255, 28, 255],
+      "comment" : "prisoncontrolpanel facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisoncontrolpanel", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [160, 255, 28, 255],
+      "comment" : "prisoncontrolpanel facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisoncontrolpanel", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [123, 255, 28, 255],
+      "comment" : "prisoncorner",
+      "brush" : [ [ "clear" ], [ "object", "prisoncorner" ] ]
+    },
+
+    {
+      "value" : [85, 255, 28, 255],
+      "comment" : "prisonexitsign facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonexitsign", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [66, 255, 28, 255],
+      "comment" : "prisonexitsign facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonexitsign", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [28, 255, 28, 255],
+      "comment" : "prisonfence1",
+      "brush" : [ [ "clear" ], [ "object", "prisonfence1" ] ]
+    },
+
+    {
+      "value" : [28, 255, 66, 255],
+      "comment" : "prisonfence2",
+      "brush" : [ [ "clear" ], [ "object", "prisonfence2" ] ]
+    },
+
+    {
+      "value" : [28, 255, 104, 255],
+      "comment" : "prisonfile1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonfile1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [28, 255, 123, 255],
+      "comment" : "prisonfile1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonfile1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [28, 255, 160, 255],
+      "comment" : "prisonfile2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonfile2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [28, 255, 179, 255],
+      "comment" : "prisonfile2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonfile2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [28, 255, 217, 255],
+      "comment" : "prisonfloodlight",
+      "brush" : [ [ "clear" ], [ "object", "prisonfloodlight" ] ]
+    },
+
+    {
+      "value" : [28, 255, 255, 255],
+      "comment" : "prisonforcecell facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonforcecell", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [28, 236, 255, 255],
+      "comment" : "prisonforcecell facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonforcecell", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [28, 198, 255, 255],
+      "comment" : "prisongirderh",
+      "brush" : [ [ "clear" ], [ "object", "prisongirderh" ] ]
+    },
+
+    {
+      "value" : [28, 160, 255, 255],
+      "comment" : "prisongirderv facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisongirderv", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [28, 142, 255, 255],
+      "comment" : "prisongirderv facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisongirderv", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [28, 104, 255, 255],
+      "comment" : "prisongraffiti1",
+      "brush" : [ [ "clear" ], [ "object", "prisongraffiti1" ] ]
+    },
+
+    {
+      "value" : [28, 66, 255, 255],
+      "comment" : "prisongraffiti2",
+      "brush" : [ [ "clear" ], [ "object", "prisongraffiti2" ] ]
+    },
+
+    {
+      "value" : [28, 28, 255, 255],
+      "comment" : "prisongrateh",
+      "brush" : [ [ "clear" ], [ "object", "prisongrateh" ] ]
+    },
+
+    {
+      "value" : [66, 28, 255, 255],
+      "comment" : "prisongratev",
+      "brush" : [ [ "clear" ], [ "object", "prisongratev" ] ]
+    },
+
+    {
+      "value" : [104, 28, 255, 255],
+      "comment" : "prisonlocker1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonlocker1", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [123, 28, 255, 255],
+      "comment" : "prisonlocker1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonlocker1", { "direction" : "right", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [160, 28, 255, 255],
+      "comment" : "prisonlocker2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonlocker2", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [179, 28, 255, 255],
+      "comment" : "prisonlocker2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonlocker2", { "direction" : "right", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [217, 28, 255, 255],
+      "comment" : "prisonmattress facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonmattress", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [236, 28, 255, 255],
+      "comment" : "prisonmattress facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonmattress", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 28, 236, 255],
+      "comment" : "prisonmirror1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonmirror1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [255, 28, 217, 255],
+      "comment" : "prisonmirror1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonmirror1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 28, 179, 255],
+      "comment" : "prisonmirror2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonmirror2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [255, 28, 160, 255],
+      "comment" : "prisonmirror2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonmirror2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 28, 123, 255],
+      "comment" : "prisonpanel facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonpanel", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [255, 28, 104, 255],
+      "comment" : "prisonpanel facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonpanel", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [154, 184, 213, 255],
+      "comment" : "prisondoor",
+      "brush" : [ [ "clear" ], [ "object", "prisondoor" ] ]
+    },
+
+    {
+      "value" : [255, 28, 66, 255],
+      "comment" : "prisonpaper1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonpaper1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [255, 28, 47, 255],
+      "comment" : "prisonpaper1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonpaper1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 56, 38, 255],
+      "comment" : "prisonpaper2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonpaper2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [255, 74, 38, 255],
+      "comment" : "prisonpaper2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonpaper2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 111, 38, 255],
+      "comment" : "prisonpaper3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonpaper3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [255, 129, 38, 255],
+      "comment" : "prisonpaper3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonpaper3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 165, 38, 255],
+      "comment" : "prisonpipefence",
+      "brush" : [ [ "clear" ], [ "object", "prisonpipefence" ] ]
+    },
+
+    {
+      "value" : [255, 201, 38, 255],
+      "comment" : "prisonradiator facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonradiator", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [255, 219, 38, 255],
+      "comment" : "prisonradiator facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonradiator", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 255, 38, 255],
+      "comment" : "prisonsign1",
+      "brush" : [ [ "clear" ], [ "object", "prisonsign1" ] ]
+    },
+
+    {
+      "value" : [219, 255, 38, 255],
+      "comment" : "prisonsign2",
+      "brush" : [ [ "clear" ], [ "object", "prisonsign2" ] ]
+    },
+
+    {
+      "value" : [183, 255, 38, 255],
+      "comment" : "prisonstonesign facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonstonesign", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [165, 255, 38, 255],
+      "comment" : "prisonstonesign facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonstonesign", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [129, 255, 38, 255],
+      "comment" : "prisontable facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisontable", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [111, 255, 38, 255],
+      "comment" : "prisontable facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisontable", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [74, 255, 38, 255],
+      "comment" : "prisontoilet facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisontoilet", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [56, 255, 38, 255],
+      "comment" : "prisontoilet facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisontoilet", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [38, 255, 56, 255],
+      "comment" : "prisontorturebed1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisontorturebed1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [38, 255, 74, 255],
+      "comment" : "prisontorturebed1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisontorturebed1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [38, 255, 110, 255],
+      "comment" : "prisontorturebed2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisontorturebed2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [38, 255, 129, 255],
+      "comment" : "prisontorturebed2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisontorturebed2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [38, 255, 165, 255],
+      "comment" : "prisonturbine facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonturbine", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [38, 255, 183, 255],
+      "comment" : "prisonturbine facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonturbine", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [38, 255, 219, 255],
+      "comment" : "prisongraffiti3",
+      "brush" : [ [ "clear" ], [ "object", "prisongraffiti3" ] ]
+    },
+
+    {
+      "value" : [38, 237, 255, 255],
+      "comment" : "prisongraffiti4",
+      "brush" : [ [ "clear" ], [ "object", "prisongraffiti4" ] ]
+    },
+
+    {
+      "value" : [38, 183, 255, 255],
+      "comment" : "prisongraffiti5",
+      "brush" : [ [ "clear" ], [ "object", "prisongraffiti5" ] ]
+    },
+
+    {
+      "value" : [38, 129, 255, 255],
+      "comment" : "prisongraffiti6",
+      "brush" : [ [ "clear" ], [ "object", "prisongraffiti6" ] ]
+    },
+
+    {
+      "value" : [38, 74, 255, 255],
+      "comment" : "prisongraffiti7",
+      "brush" : [ [ "clear" ], [ "object", "prisongraffiti7" ] ]
+    },
+
+    {
+      "value" : [192, 37, 219, 255],
+      "comment" : "microwave facing left",
+      "brush" : [ [ "clear" ], [ "object", "microwave", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [170, 33, 194, 255],
+      "comment" : "microwave facing right",
+      "brush" : [ [ "clear" ], [ "object", "microwave", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [229, 11, 11, 255],
+      "comment" : "alertlight",
+      "brush" : [ [ "clear" ], [ "object", "alertlight" ] ]
+    },
+
+    {
+      "value" : [56, 38, 255, 255],
+      "comment" : "prisonsecuritycamera facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonsecuritycamera", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [26, 77, 0, 255],
+      "comment" : "biome tree",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "biometree" ] ]
+    },
+
+    {
+      "value" : [255, 56, 26, 255],
+      "comment" : "chest facing left",
+      "brush" : [ [ "clear" ], [ "object", "chestavian2", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [74, 38, 255, 255],
+      "comment" : "prisonsecuritycamera facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonsecuritycamera", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [111, 38, 255, 255],
+      "comment" : "prisoncamerastation facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisoncamerastation", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [129, 38, 255, 255],
+      "comment" : "prisoncamerastation facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisoncamerastation", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [165, 38, 255, 255],
+      "comment" : "prisonshower facing left",
+      "brush" : [ [ "clear" ], [ "object", "prisonshower", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [183, 38, 255, 255],
+      "comment" : "prisonshower facing right",
+      "brush" : [ [ "clear" ], [ "object", "prisonshower", { "direction" : "right" } ] ]
+    },
+
+    // NPC MONSTER SPAWN BRUSHES //
+
+    {
+      "value" : [200, 0, 0, 255],
+      "comment" : "deathdroid npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "deathdroid",
+            "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [0, 200, 0, 255],
+      "comment" : "repairbot npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "cleaningbot",
+            "seed" : "stable",
+            "parameters" : {
+              "aggressive" : false
+            }
+          }
+        ] ]
+    },
+	
+	{
+      "value" : [200, 0, 200, 255],
+      "comment" : "human bunker guard npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "human",
+            "typeName" : "greg"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [160, 0, 200, 255],
+      "comment" : "cultist",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "human",
+            "typeName" : "greg",
+            // "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [0, 0, 200, 255],
+      "comment" : "cleaningbot npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "cleaningbot",
+            "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true
+            }
+          }
+        ] ]
+    },
+	
+	{
+      "value" : [225, 0, 225, 255],
+      "comment" : "human bunker pyro npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "human",
+            "typeName" : "greg"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [200, 0, 200, 255],
+      "comment" : "placeholder humanoid npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "human",
+            "typeName" : "greg",
+            // "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true
+            }
+          }
+        ] ]
+    }
+  ],
+
+  "parts" : [
+	{
+      "name" : "1",
+      "rules" : [
+	  [ "ignorePartMaximumRule" ],
+      [ "doNotConnectToPart", [ "5" ] ] 
+	  ],
+      "def" : [ "image", [ "1.png", "1a.png" ] ]
+    },
+	{
+      "name" : "2",
+      "rules" : [
+	  [ "maxSpawnCount", [2] ],		
+	  [ "doNotConnectToPart", [ "2" ] ] 
+	  ],
+      "def" : [ "image", [ "2.png", "2a.png" ] ]
+    },
+	{
+      "name" : "3",
+      "rules" : [
+	  [ "maxSpawnCount", [2] ],		
+	  [ "doNotConnectToPart", [ "3" ] ] 
+	  ],
+      "def" : [ "image", [ "3.png", "3a.png" ] ]
+    },
+	{
+      "name" : "4",
+      "rules" : [
+	  [ "maxSpawnCount", [2] ],		
+	  [ "doNotConnectToPart", [ "4" ] ] 
+	  ],
+      "def" : [ "image", [ "4.png", "4a.png" ] ]
+    },
+	{
+      "name" : "5",
+      "rules" : [		
+	  [ "maxSpawnCount", [1] ],
+	  [ "doNotConnectToPart", [ "1, 10" ] ] 
+	  ],
+      "def" : [ "image", [ "5.png", "5a.png" ] ]
+    },
+	{
+      "name" : "6",
+      "rules" : [
+	  [ "maxSpawnCount", [2] ],		
+	  [ "doNotConnectToPart", [ "6" ] ] 
+	  ],
+      "def" : [ "image", [ "6.png", "6a.png" ] ]
+    },
+    {
+      "name" : "7",
+      "rules" : [
+	  [ "maxSpawnCount", [2] ],		
+	  [ "doNotConnectToPart", [ "7" ] ] 
+	  ],
+      "def" : [ "image", [ "7.png", "7a.png" ] ]
+    },
+    {
+      "name" : "8",
+      "rules" : [
+	  [ "maxSpawnCount", [2] ],		
+	  [ "doNotConnectToPart", [ "8" ] ] 
+	  ],
+      "def" : [ "image", [ "8.png", "8a.png" ] ]
+    },
+    {
+      "name" : "9",
+     "rules" : [
+	  [ "maxSpawnCount", [2] ],		
+	  [ "doNotConnectToPart", [ "9" ] ] 
+	  ],
+      "def" : [ "image", [ "9.png", "9a.png" ] ]
+    },
+    {
+      "name" : "10",
+      "rules" : [
+	  [ "ignorePartMaximumRule" ],
+      [ "doNotConnectToPart", [ "5" ] ] 
+	  ],
+      "def" : [ "image", [ "10.png", "10a.png" ] ]
+    }
+  ]
+}
+

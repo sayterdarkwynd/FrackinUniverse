@@ -1,0 +1,43 @@
+{
+  "itemName" : "elduukhartier2broadsword",
+  "price" : 280,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "A greatsword crafted from crystal. The quality is not the best, but it gets the job done.",
+  "shortdescription" : "Emera Broadsword",
+  "tooltipKind" : "sword2",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword","crystal", "upgradeableWeapon"],
+
+  "inventoryIcon" : "elduukhartier2broadsword.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "elduukhartier2broadsword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.88,
+    "baseDps" : 11,
+    "damageConfig" : {
+      "damageSourceKind" : "poison"
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 5,
+
+  "altAbilityType" : "risingslash",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

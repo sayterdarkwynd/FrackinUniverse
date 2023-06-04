@@ -1,0 +1,81 @@
+{
+	"objectName": "electronmicroscope2",
+	"colonyTags": ["fu", "science", "research", "bees"],
+	"rarity": "Common",
+	"printable": false,
+	"description": "Examine things really, really close up.\nScan after placement for info.",
+	"shortdescription": "N. Electron Microscope",
+	"subtitle": "Inspect Bees & Items",
+	"race": "generic",
+	"category": "crafting",
+	"price": 450,
+	"objectType": "container",
+	"health": 0.1,
+
+	"lightColor": [60, 60, 60],
+	"inventoryIcon": "electronmicroscope2icon.png",
+	"orientations": [
+
+		{
+			"leftImage": "electronmicroscope2left.png",
+			"rightImage": "electronmicroscope2right.png",
+
+			"imagePosition": [-8, 0],
+			"frames": 1,
+			"animationCycle": 0.5,
+
+			"spaceScan": 0.1,
+			"anchors": ["bottom"],
+			"collision": "platform"
+
+		}
+	],
+	"scripts": ["/scripts/npcToyObject.lua", "/bees/beeExaminerITNShell.lua"],
+
+	"recipeGroup": "beetrap",
+	"openSounds": ["/sfx/objects/woodenbox_open.ogg"],
+
+	"frameCooldown": 67,
+	"autoCloseCooldown": 3600,
+
+	"selfWorking": true, // Whether it can work while the player is not interacting with it
+	"selfWorkingEfficiency": 15, // 5 per sec up to 100
+	"playerWorkingEfficiency": 26, // 10 per sec up to 100
+
+	"uiConfig": "/bees/interface/beeexaminer/beeexaminer3.config",
+	"slotCount": 5,
+	"bonusResearch": 10,
+	"scriptDelta": 10,
+
+	"npcToy": {
+		"influence": [
+			"sink",
+			"sinkComplete"
+		],
+		"defaultReactions": {
+			"sink": [
+				[1.0, "typing"]
+			],
+			"sinkComplete": [
+				[1.0, "smile"]
+			]
+		},
+		"preciseStandPositionLeft": [-1.0, 0.0],
+		"preciseStandPositionRight": [1.0, 0.0],
+		"maxNpcs": 2
+	},
+	"inputNodes": [
+		[0, 0]
+	],
+	"outputNodes": [
+		[1, 0],
+		[0, 1],
+		[1, 1],
+		[0, 2]
+	],
+	"kheAA_inDataNode": 0,
+	"kheAA_outDataNode": 0,
+	"kheAA_outPartialFillNode": 1,
+	"kheAA_outCompleteFillNode": 2,
+	"productionOutDataNode":3
+}

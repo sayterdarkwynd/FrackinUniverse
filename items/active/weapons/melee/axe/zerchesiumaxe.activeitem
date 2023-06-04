@@ -5,13 +5,13 @@
   "rarity" : "uncommon",
   "description" : "Nearly unbreakable.",
   "shortdescription" : "Zerchesium Axe",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "axe",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","axe"],
-  "level" : 4,
+  "itemTags" : ["weapon","melee","axe","zerchesium", "upgradeableWeapon"],
+  "level" : 3,
   "inventoryIcon" : "zerchesiumaxe.png",
-
+  //"collectablesOnPickup" : { "fu_weaponaxe" : "zerchesiumaxe" },
   "animation" : "axe.animation",
   "animationParts" : {
     "blade" : "zerchesiumaxe.png",
@@ -34,7 +34,7 @@
 
   "primaryAbilityType" : "axecleave",
   "primaryAbility" : {
-    "fireTime" : 0.7,
+    "fireTime" : 0.5,
     "baseDps" : 11,
     "damageConfig" : {
       "damageSourceKind" : "iceaxe",
@@ -67,5 +67,7 @@
     }
   },
 
+  "critChance" : 1,
+  "critBonus" : 6,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

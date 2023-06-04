@@ -1,0 +1,108 @@
+{
+  "itemName" : "radienpistol",
+  "price" : 80,
+  "inventoryIcon" : "radienpistol.png",
+    "maxStack" : 1,
+    "rarity" : "uncommon",
+  "shortdescription" : "X'ian Diffuse Burst",
+  "description" : "A strange X'i-formed weapon.
+^cyan;Slows targets^reset;
+^yellow;Wide, piercing shots^reset;",
+  "level" : 2,
+  "category" : "bioweapon",
+  "itemTags" : ["weapon","ranged","pistol","radien","bioweapon","upgradeableWeapon"],
+  "tooltipKind" : "gun2",
+  "twoHanded" : false,
+  "piercing" : true,
+  "weaponType" : "Bio Pistol",
+  "handGrip" : "wrap",
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "radienpistol.png",
+    "middlefullbright" : "radienpistolfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
+  },
+
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.7, 0.2]
+		  }
+		}
+      }
+    },
+    "sounds" : { "fire" : [ "/sfx/weapons/radienpistol.ogg" ] },
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [98, 98, 42],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    }}
+  },
+
+  "baseOffset" : [0.7, 0.2],
+  "muzzleOffset" : [1.2, 0.13],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.25,
+    "baseDps" : 6.5,
+    "energyUsage" : 25,
+    "inaccuracy" : 0.0,
+    "fireType" : "auto",
+    "projectileCount" : 1,
+    "projectileType" : "mechchainsawswoosh",
+    "projectileParameters" : {
+      "speed" : 50,
+      "damageKind" : "radioactive",
+      "knockback": 5,
+      "statusEffects" : [ "slow" ]
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "critChance" : 5,
+  "critBonus" : 3,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,61 @@
+{
+  "objectName" : "fu_rockcrusher",
+  "colonyTags" : [ "science", "machines" ],
+  "printable" : false,
+  "rarity" : "common",
+  "description" : "A device for pulverizing rocky material into useful items. ^cyan;Requires ^orange;30W ^cyan;power.^reset;",
+  "shortdescription" : "^cyan;Rock Crusher^reset;",
+  "race" : "generic",
+  "category" : "^orange;Extraction Device^reset;",
+  "price" : 500,
+  "objectType" : "container",
+  "hydrophobic" : false,
+
+  "inventoryIcon" : "fu_rockcrushericon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_rockcrusher.png:<color>.<frame>",
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "animation" : "fu_rockcrusher.animation",
+  "animationParts" : {
+    "centrifuge" : "",
+    "centrifugefullbright" : "fu_rockcrusher.png"
+  },
+
+  "scripts" : [ "/scripts/fupower.lua", "/objects/bees/centrifuge.lua" ],
+
+  "scriptDelta" : 20,
+  "recipeGroup" : "centrifuge",
+  "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
+  "slotCount" : 25,
+  "uiConfig" : "/objects/power/isn_powdersifter/fu_woodensifter.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "craftDelay": 0.25,
+  "itemChances": {
+    "rarest": 0.006,
+    "rare": 0.025,
+    "uncommon": 0.055,
+    "normal": 0.12,
+    "common": 0.20
+  },
+
+  "inputSlot": 1,
+
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
+
+  "centrifugeType" : "rocks",
+  "powertype" : "input",
+  "isn_requiredPower" : 30
+}

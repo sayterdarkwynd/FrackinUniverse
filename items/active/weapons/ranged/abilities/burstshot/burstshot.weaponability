@@ -1,0 +1,86 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "burstShotFire" : {
+          "default" : "idle",
+          "states" : {
+            "idle" : {},
+            "fire" : {
+              "frames" : 6,
+              "cycle" : 0.2,
+              "mode" : "transition",
+              "transition" : "idle"
+            }
+          }
+        }
+      },
+      "parts" : {
+        "burstShotExplosion" : {
+          "properties" : {
+            "offset" : [6.0, 0.0],
+            "transformationGroups" : ["muzzle"],
+            "damageArea" : [ [-6.0, 1.0], [6.0, 1.0], [6.0, -1.0], [-6.0, -1.0] ]
+          },
+          "partStates" : {
+            "burstShotFire" : {
+              "fire" : {
+                "properties" : {
+                  "fullbright" : true,
+                  "image" : "/items/active/weapons/ranged/abilities/burstshot/burstshot.png:<frame>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "particleEmitters" : {
+      "burstShotSmoke" : {
+        "active" : false,
+        "emissionRate" : 20,
+        "transformationGroups" : ["muzzle"],
+        "offsetRegion" : [0.0, -1.0, 2.5, 1.0],
+        "particles" : [
+         { "particle" : "smoke"},
+         { "particle" : "rocketsmoke"},
+         { "particle" : "rocketbarrelpuff"}
+        ]
+      }
+    },
+    "sounds" : {
+      "burstshot" : [ "/sfx/gun/burstshot1.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Burst Shot",
+    "type" : "burstshot",
+    "scripts" : ["/items/active/weapons/ranged/abilities/burstshot/burstshot.lua"],
+    "class" : "BurstShot",
+
+    "energyUsage" : 50.0,
+    "cooldownTime" : 4.0,
+    "damageConfig" : {
+      "baseDamage" : 20,
+      "damageSourceKind" : "standardbullet",
+      "knockback" : 40,
+      "knockbackMode" : "aim",
+      "timeout" : 0.5,
+      "timeoutGroup" : "alt"
+    },
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0.20,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

@@ -1,0 +1,420 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+
+        "states" : {
+          "idle" : {
+            "frames" : 7,
+            "cycle" : 0.25,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/droid1.ogg"
+            }
+          },
+          "hurt" : {
+            "frames" : 7,
+            "cycle" : 0.4,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/droid2.ogg"
+            }
+          },
+          "move" : {
+            "frames" : 4,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "walk" : {
+            "frames" : 4,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "run" : {
+            "frames" : 4,
+            "cycle" : 0.15,
+            "mode" : "loop"
+          },
+          "repairStart" : {
+            "frames" : 5,
+            "cycle" : 0.5,
+            "mode" : "transition",
+            "transition" : "repair",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/droid4.ogg"
+            }
+          },
+          "repair" : {
+            "frames" : 13,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "repairEnd" : {
+            "frames" : 5,
+            "cycle" : 0.25,
+            "mode" : "transition",
+            "transition" : "move"
+          },
+          "firewindup" : {
+            "frames" : 3,
+            "cycle" : 0.25,
+            "mode" : "transition",
+            "transition" : "attack",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/droid3.ogg"
+            }
+          },
+          "fire" : {
+            "frames" : 2,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "firewinddown" : {
+            "frames" : 2,
+            "cycle" : 0.25,
+            "mode" : "transition",
+            "transition" : "idle"
+          },
+          "attackStart" : {
+            "frames" : 3,
+            "cycle" : 0.25,
+            "mode" : "transition",
+            "transition" : "attack",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/droid3.ogg"
+            }
+          },
+          "jump" : {
+            "frames" : 2,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "fall" : {
+            "frames" : 2,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "attack" : {
+            "frames" : 2,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "attackEnd" : {
+            "frames" : 2,
+            "cycle" : 0.25,
+            "mode" : "transition",
+            "transition" : "idle"
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "move" : {
+              "properties" : {
+                "image" : "<partImage>:move.<frame>"
+              }
+            },
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:attack.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:attack.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:move.<frame>"
+              }
+            },
+            "run" : {
+              "properties" : {
+                "image" : "<partImage>:move.<frame>"
+              }
+            },
+            "repairStart" : {
+              "properties" : {
+                "image" : "<partImage>:repairStart.<frame>"
+              }
+            },
+            "repair" : {
+              "properties" : {
+                "image" : "<partImage>:repair.<frame>"
+              }
+            },
+            "repairEnd" : {
+              "properties" : {
+                "image" : "<partImage>:repairEnd.<frame>"
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:attackStart.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:attack.<frame>"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:attackEnd.<frame>"
+              }
+            },
+            "attackStart" : {
+              "properties" : {
+                "image" : "<partImage>:attackStart.<frame>"
+              }
+            },
+            "attack" : {
+              "properties" : {
+                "image" : "<partImage>:attack.<frame>"
+              }
+            },
+            "attackEnd" : {
+              "properties" : {
+                "image" : "<partImage>:attackEnd.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "deathPoof" : {
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/puff2c/puff2c.animation",
+            "size" : 1,
+            "angularVelocity" : 35,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 0.4,
+            "layer" : "middle"
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/fizz1/fizz1.animation",
+            "size" : 1,
+            "angularVelocity" : 20,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [-8, 8],
+            "finalVelocity" : [-3, -4],
+            "approach" : [15, 15],
+            "timeToLive" : 3.45,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [-4, 2],
+              "finalVelocity" : [-3, -4]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/fizz1/fizz1.animation",
+            "size" : 1,
+            "angularVelocity" : 20,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [8, 8],
+            "finalVelocity" : [3, -4],
+            "approach" : [15, 15],
+            "timeToLive" : 3.45,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [4, 2],
+              "finalVelocity" : [3, -4]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/fizz2/fizz2.animation",
+            "size" : 1,
+            "angularVelocity" : 20,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [-8, 8],
+            "finalVelocity" : [-3, -4],
+            "approach" : [15, 15],
+            "timeToLive" : 3.45,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [-4, 2],
+              "finalVelocity" : [-3, -4]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/fizz2/fizz2.animation",
+            "size" : 1,
+            "angularVelocity" : 20,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [8, 8],
+            "finalVelocity" : [3, -4],
+            "approach" : [15, 15],
+            "timeToLive" : 3.45,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [4, 2],
+              "finalVelocity" : [3, -4]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/fizz3/fizz3.animation",
+            "size" : 1,
+            "angularVelocity" : 20,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [-8, 8],
+            "finalVelocity" : [-3, -4],
+            "approach" : [15, 15],
+            "timeToLive" : 3.45,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [-4, 2],
+              "finalVelocity" : [-3, -4]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/fizz3/fizz3.animation",
+            "size" : 1,
+            "angularVelocity" : 20,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [8, 8],
+            "finalVelocity" : [3, -4],
+            "approach" : [15, 15],
+            "timeToLive" : 3.45,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [4, 2],
+              "finalVelocity" : [3, -4]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/fizz4/fizz4.animation",
+            "size" : 1,
+            "angularVelocity" : 20,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [-8, 8],
+            "finalVelocity" : [-3, -4],
+            "approach" : [15, 15],
+            "timeToLive" : 3.45,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [-4, 2],
+              "finalVelocity" : [-3, -4]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/fizz4/fizz4.animation",
+            "size" : 1,
+            "angularVelocity" : 20,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [8, 8],
+            "finalVelocity" : [3, -4],
+            "approach" : [15, 15],
+            "timeToLive" : 3.45,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [4, 2],
+              "finalVelocity" : [3, -4]
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0.25,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ "/sfx/npc/droid2.ogg" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
+    "fire" : [ "/sfx/gun/plasma_mp2.ogg" ]
+  }
+}

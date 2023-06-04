@@ -1,123 +1,62 @@
 {
   "objectName" : "centrifuge2",
-  "rarity" : "rare",
-  "colonyTags" : [ "science" ],
-  "description" : "A step up from the lesser Centrifuge. Can process radioactive ores. Needs 3u power.",
-  "shortdescription" : "^cyan;Advanced Centrifuge^white;",
-  "race" : "generic",
-  "category" : "storage",
-  "price" : 1500,
-  "objectType" : "container",
+  "colonyTags" : [ "science", "machines" ],
   "printable" : false,
+  "rarity" : "legendary",
+  "description" : "The ultimate centrifuge, capable of extracting from gasses and processing radioactive isotopes. ^cyan;Requires ^orange;36W^cyan; power.^reset;",
+  "shortdescription" : "^cyan;Gas Centrifuge^reset;",
+  "subtitle" : "Extract items from resources",
+  "race" : "generic",
+  "category" : "^orange;Centrifuge^reset;",
+  "price" : 2200,
+  "objectType" : "container",
 
-  "scripts" : [ "/objects/power/centrifuge2/centrifuge2.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 5,
-  
-  "openSounds" : [ "/sfx/objects/campfire_use.ogg" ],
-  "slotCount" : 15,
-  "uiConfig" : "/objects/power/centrifuge2/centrifuge2.config",
-  "frameCooldown" : 67,
-  "autoCloseCooldown" : 3600,
-  
-  "animation" : "/objects/power/centrifuge2/centrifuge2.animation",
+  "hydrophobic" : false,
 
-  "animationParts" : {
-    "centrifuge" : "centrifuge2.png"
-  },
-  "animationPosition" : [0, 0],
-  
-  "inventoryIcon" : "centrifuge_inv2.png",
+  "inventoryIcon" : "centrifuge2icon.png",
   "orientations" : [
     {
-      "dualImage" : "centrifuge2.png:<color>.<frame>",
+      "dualImage" : "centrifuge2a.png:<color>.<frame>",
+
       "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.4,
+
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     }
   ],
-  
-  "inputNodes" : [ [2, 2] ],
-  "isn_powerReciever" : true,
-  "isn_requiredPower" : 3,
-  
-  "inputsToOutputs" : {
-// vanilla liquids  
-	  "liquidwater" : "liquidwastewater",
-	  "liquidpoison" : "liquidwastewater",
-	  "liquidlava" : "liquidwastewater",
-	  "liquidslime" : "liquidwastewater",
-	  "liquidoil" : "liquidwastewater",
-	  "liquidfuel" : "liquidwastewater",
-	  "liquidhealing" : "liquidwastewater",
-	  "swampwater" : "liquidwastewater",
-//fu liquids
-	  "liquidblood" : "liquidwastewater",
-	  "liquidbioooze" : "liquidwastewater",
-	  "liquidblacktar" : "liquidwastewater",
-	  "liquidorganicsoup" : "liquidwastewater",
-	  "vialproto" : "liquidwastewater",
-	  "liquidelderfluid" : "liquidwastewater",
-	  "liquidsulphuricacid" : "liquidwastewater",
-	  "liquidirradium" : "liquidwastewater",
-	  "ff_mercury" : "liquidwastewater",
-	  "liquidgravrain" : "liquidwastewater",
-	  "liquidironfu" : "liquidwastewater",
-	  "liquidpus" : "liquidwastewater",
-	  "fu_liquidhoney" : "liquidwastewater",
-	  "liquidalienjuice" : "liquidwastewater",
-    "liquidnitrogenitem" : "liquidwastewater",
-    "liquiddarkwater" : "liquidwastewater",
-    "liquidwastewater" : "liquidwater",
-    "liquidaether" : "vialproto",
-//isotopes (only for advanced centrifuges)
-    "toxicwaste" : "uraniumore",
-    "uraniumrod" : "enricheduranium",
-    "neptuniumrod" : "toxicwaste",
-    "thoriumrod" : "toxicwaste",
-    "plutoniumrod" : "enrichedplutonium",
-    "solariumstar" : "ultronium"
+
+  "animation" : "centrifuge2.animation",
+  "animationParts" : {
+    "centrifuge" : "centrifuge2a.png",
+    "centrifugefullbright" : "centrifuge2afullbright.png"
   },
-  
-  "bonusOutputs" : {
-    "liquidwater" : { "fu_hydrogen" : 15,"fu_oxygen" : 15, "deuterium" : 15 },
-    "liquidpoison" : { "toxicwaste" : 15,"fu_carbon" : 15 },
-    "liquidlava" : { "corefragmentore" : 6,"fu_carbon" : 15 },
-    "liquidslime" : { "greenslime" : 25, "endomorphicjelly" : 5 },
-    "liquidoil" : { "fu_carbon" : 15 },
-    "liquidfuel" : { "toxicwaste" : 9, "ff_silicon" : 15 },
-    "liquidhealing" : { "fu_oxygen" : 25, "ff_silicon" : 9 },
-//fu liquids
-    "liquidblood" : { "geneticmaterial" : 13,"tissueculture" : 11, "dnasample" : 5 },
-    "liquidbioooze" : { "liquidpoison" : 11,"ff_silicon" : 6 },
-    "liquidblacktar" : { "liquidoil" : 46,"fu_carbon" : 21 },
-    "liquidorganicsoup" : { "geneticmaterial" : 12,"tissueculture" : 12, "dnasample" : 5 },
-    "vialproto" : { "protociteore" : 6,"rawminerals" : 22,"nutrientpaste" : 15  },
-    "liquidelderfluid" : { "plutoniumore" : 11,"rawminerals" : 15, "aliencompound" : 4 },
-    "liquidsulphuricacid" : { "sulphur" : 17,"fu_carbon" : 9 },
-    "liquidirradium" : { "sulphur" : 14,"fu_nitrogen" : 18 },
-    "ff_mercury" : { "ironore" : 22,"coalore" : 20 },
-    "liquidgravrain" : { "sulphur" : 8,"ff_silicon" : 14,"rawminerals" : 14  },
-    "liquidironfu" : { "ironore" : 22,"fu_carbon" : 12 },
-    "liquidpus" : { "nutrientpaste" : 7,"tissueculture" : 15,"dnasample" : 4  },
-    "fu_liquidhoney" : { "geneticmaterial" : 12,"nutrientpaste" : 12 },
-    "liquidalienjuice" : { "geneticmaterial" : 12,"ff_silicon" : 11 },
-    "liquidnitrogenitem" : { "fu_nitrogen" : 12,"icecrystal" : 3 },
-    "liquiddarkwater" : { "nutrientpaste" : 12,"liquidpoison" : 12,"rawminerals" : 9  },
-    "toxicwaste" : { "uraniumore" : 5  },
-    "uraniumore" : { "toxicwaste" : 72,"fu_hydrogen" : 22 },
-    "uraniumrod" : { "toxicwaste" : 72,"fu_hydrogen" : 22 },
-    "neptuniumore" : { "toxicwaste" : 50,"fu_hydrogen" : 22 },
-    "neptuniumrod" : { "ultronium" : 72,"fu_hydrogen" : 22 },
-    "thoriumore" : { "toxicwaste" : 72,"fu_hydrogen" : 22  },
-    "thoriumrod" : { "ultronium" : 78,"fu_hydrogen" : 22  },
-    "plutoniumore" : { "toxicwaste" : 72,"fu_hydrogen" : 22 },
-    "plutoniumrod" : { "toxicwaste" : 72,"fu_hydrogen" : 22  },
-    "solariumore" : { "toxicwaste" : 72,"fu_hydrogen" : 22  },
-    "solariumstar" : { "toxicwaste" : 72,"fu_hydrogen" : 22 },
-    "swampwater" : { "algaegreen" : 22, "nutrientpaste" : 22, "dnasample" : 5, "geneticmaterial" : 12 },
-    "liquidwastewater" : { "nutrientpaste" : 12, "liquidpoison" : 12,"rawminerals" : 9 },
-    "liquidaether" : { "aliencompound" : 60,"fu_hydrogen" : 52,"fu_carbon" : 22 }
-  }
+
+  "scripts" : [ "/scripts/fupower.lua", "/objects/bees/centrifuge.lua" ],
+  "scriptDelta" : 5,
+  "recipeGroup" : "centrifuge",
+  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+  "slotCount" : 20,
+  "uiConfig" : "/interface/bees/industrialcentrifuge/industrialcentrifuge3.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "craftDelay": 0.52,
+  "itemChances": {
+    "rarest": 0.012,
+    "rare": 0.032,
+    "uncommon": 0.09,
+    "normal": 0.22,
+    "common": 0.32
+  },
+
+  "inputSlot": 4,
+
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
+
+  "centrifugeType" : "isotope",
+  "powertype" : "input",
+  "isn_requiredPower" : 36
 }

@@ -3,13 +3,16 @@
   "price" : 160,
   "inventoryIcon" : "thornrifle.png",
   "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Ejects thornitox spikes at high velocity.",
+  "rarity" : "uncommon",
+  "description" : "Stab the hell out of your foolish foes.
+^yellow;Inflicts poison,^reset;
+^cyan;Summons Pterobombs, Floran^reset;",
   "shortdescription" : "Thorn Rifle",
+  "category" : "sniperRifle",
   "level" : 3,
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "weaponType" : "Sniper Rifle",
-  "itemTags" : ["weapon","ranged","sniperrifle"],
+  "itemTags" : ["weapon","ranged","sniperrifle","bioweapon", "upgradeableWeapon","floran"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -17,16 +20,16 @@
     "butt" : "",
     "middle" : "thornrifle.png",
     "barrel" : "",
-    "muzzleFlash" : "/items/active/weapons/ranged/bulletmuzzle.png"
+    "muzzleFlash" : "/animations/muzzleflash/greenburstmuzzle.png"
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/projectiles/thorn.ogg" ]
+      "fire" : [ "/sfx/weapons/thornrifle.ogg" ]
     }
   },
 
-  "baseOffset" : [1.3, 0.2],
-  "muzzleOffset" : [2.445, 0.325],
+  "baseOffset" : [1.3, 0.34],
+  "muzzleOffset" : [3, 0.225],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -44,7 +47,7 @@
     "fireType" : "auto",
 
     "projectileType" : "thornriflebullet",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 90,
       "knockback" : 5
     },
@@ -78,7 +81,57 @@
   }
   },
 
-  "altAbilityType" : "markedshot",
+  "critChance" : 6,
+  "critBonus" : 7,
+  "isSniper" : 1,
+  "altAbilityType" : "explosiveshot",
+  "altAbility" : {
+    "name" : "Bio-Spawn",
+    "baseDps" : 5,
+    "fireTime" : 5,
+    "energyUsage" : 20,
+    "projectileParameters" : {
+      "timeToLive" : 0.2,
+      "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/fubloodexplosion/fubloodexplosion.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/blocks/footstep_brains.ogg",
+        "/sfx/projectiles/goocluster_pop.ogg"
+      ]
+    },
+ 	{
+ 	  "action":"spawnmonster",
+ 	  "type":"pteropodsummoned",
+ 	  "offset":[0,0],
+ 	  "arguments":{
+ 	    "damageTeamType":"friendly", "damageTeam":0
+ 	  }
+ 	}
+      ]
+    }
+  },
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+    "upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "shortdescription" : "^cyan;Thornrage^reset; ^yellow;^reset;",
+    "description" : "What greater joy than cooking flesh?
+^yellow;Inflicts poison^reset;
+^cyan;Summons Pterobombs^reset;",
+    "animationParts" : {"middle" : "thornrifle2.png"},
+    "inventoryIcon" : [ { "image" : "thornrifle2.png" } ],
+	  "primaryAbility" : {
+	    "baseDps" : 8.4,
+	    "projectileParameters" : {
+	      "speed" : 110,
+	      "knockback" : 10
+	    }
+	  }
+      }
 }

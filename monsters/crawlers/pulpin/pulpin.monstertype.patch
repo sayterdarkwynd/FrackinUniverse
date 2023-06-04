@@ -1,0 +1,99 @@
+[
+  {
+    "op": "add",
+    "path": "/dropPools/0/firebow",
+    "value": "pulpinHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/icebow",
+    "value": "pulpinHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/poisonbow",
+    "value": "pulpinHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/electricbow",
+    "value": "pulpinHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/radioactivebow",
+    "value": "pulpinHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/cosmicbow",
+    "value": "pulpinHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/shadowbow",
+    "value": "pulpinHunting"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-fire",
+        "cooldown": 4,
+        "parameters": {
+          "requireLineOfSight": true,
+          "maximumRange": 20,
+          "minimumRange": 2,
+          "windupState": "firewindup",
+          "windupTime": 0.8,
+          "windupStopForce": 200,
+          "aimAtTarget": false,
+          "aimDirection": [
+            0,
+            1
+          ],
+          "projectileType": "bubbles",
+          "fireOffset": [
+            0,
+            1
+          ],
+          "projectileCount": 16,
+          "inaccuracy": 2,
+          "projectileInterval": 0.05,
+          "fireSound": "fire",
+          "fireState": "fire",
+          "winddownState": "idle",
+          "winddownTime": 0.6
+        }
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/grit",
+    "value": {
+      "baseValue": 1
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/colors",
+    "value": "pandorasboxvibrant"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 70
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/fireResistance/baseValue",
+    "value": 0.95
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/poisonResistance/baseValue",
+    "value": -0.5
+  }
+]

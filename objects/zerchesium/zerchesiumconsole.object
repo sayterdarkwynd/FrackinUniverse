@@ -1,0 +1,60 @@
+{
+  "objectName" : "zerchesiumconsole",
+  "colonyTags" : ["zerchesium","wired"],
+  "rarity" : "Common",
+  "description" : "A keypad made from Zerchesium. Freezes your fingers if you get the code wrong.",
+  "shortdescription" : "Zerchesium Keypad",
+  "race" : "generic",
+
+  "apexDescription" : "A keypad. Keeps people from nosing around.",
+  "avianDescription" : "A keypad. Most Avian have little use for these.",
+  "floranDescription" : "Floran type rude wordss on keypad. Nothing happenss...",
+  "glitchDescription" : "Excited. A keypad, can I crack the code?",
+  "humanDescription" : "A keypad! Can I crack the code?",
+  "hylotlDescription" : "A keypad. Can be an effective locking device when used correctly.",
+  "novakidDescription" : "Does this keypad do anything?",
+
+  "category" : "wire",
+  "price" : 90,
+
+  "inventoryIcon" : "zerchesiumconsoleicon.png",
+  "orientations" : [
+    {
+      "image" : "zerchesiumconsole.png:<color>.off",
+      "imagePosition" : [-8, -8],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "zerchesiumconsole.png:<color>.off",
+      "imagePosition" : [-8, -8],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/switch/switch.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/outpostbutton.ogg" ],
+      "off" : [ "/sfx/objects/outpostbutton.ogg" ]
+    }
+  },
+
+  "animationParts" : {
+    "switch" : "zerchesiumconsole.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "outputNodes" : [ [0, -1] ],
+
+  "interval" : 13
+}

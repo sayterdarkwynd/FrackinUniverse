@@ -1,0 +1,31 @@
+{
+	"id" : "2brew_d",
+	"prerequisites" : [ "2brew_c" ],
+	"title" : "Brewing IV",
+	"text" : "And now let's make some ^green;Wartwine^reset;. Combine a ^orange;Bottle^reset;, ^orange;Yeast Water^reset;, 2 ^orange;Wartweed^reset;, and 2 ^orange;Grape Mash^reset; in the ^orange;Fermenter^reset;.",
+	"completionText" : "Excellent! It looks tasty, doesn't it? But this is just the beginning. You'll craft even more glorious alcohol soon!",
+	"moneyRange" : [120, 220],
+	"rewards" : [ ],
+	"speaker" : "questGiver",
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
+
+		"requireTurnIn" : false,
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "wartwine",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
+}

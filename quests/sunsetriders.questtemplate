@@ -1,0 +1,27 @@
+{
+	"id": "sunsetriders.gearup",
+	"title": "^green;Sunset Riders",
+	"text": "Along with the map is a bounty for a certain Hank 'Hawkeye' Hatfield, worth 2000 pixels. I might follow these coordinates to the fort mentioned and check in first.",
+	"completionText": "Now that was a fight! The bounty should be wired to my ship any time now.",
+	"speaker": "player",
+	"moneyRange": [2000, 2000],
+	"rewards": [
+		[
+			["pistoltitaniumfucustom", 1],
+			["novakidartifactaugment", 1],
+			["fuscienceresource", 3000]
+		]
+	],
+
+	"updateDelta": 10,
+	"script": "/quests/scripts/main.lua",
+	"scriptConfig": {
+		"giveBlueprints": ["hardchakram", "novatier1chest", "novatier1head", "novatier1pants","novakidartifactaugment"],
+		"portraits": {
+			"default": "player"
+		},
+		"associatedMission": "sunsetriders",
+		"turnInDescription": "Claim the bounty on Hank 'Hawkeye' Hatfield.",
+		"requireTurnIn": true
+	}
+}

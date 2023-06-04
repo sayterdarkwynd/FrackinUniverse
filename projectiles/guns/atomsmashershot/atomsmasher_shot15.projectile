@@ -2,13 +2,14 @@
   "projectileName" : "atomsmasher_shot15",
   "image" : "atomsmasher_shot.png",
   "animationCycle" : 1.0,
-  "level" : 1,
+  "level" : 6,
   "physics" : "atomsmasher",
   "frameNumber" : 6,
   "pointLight" : true,
   "damagePoly" : [ [-28, 0], [0, 12], [16, 16], [28, 0], [-16, -16], [0, -12] ],
   "lightColor" : [60, 113, 255],
   "speed" : 50,
+  "universalDamage" : true,
   "timeToLive" : 0.4,
   "actionOnReap" : [
     {
@@ -44,7 +45,9 @@
       "angleAdjust" : 0
     }
   ],
-  "damageKind" : "default",
+  "damageKind" : "cosmic",
+  "power" : 40,
+  "damageType" : "IgnoresDef",
   "emitters" : [ "defaultblue" ]
 }
 

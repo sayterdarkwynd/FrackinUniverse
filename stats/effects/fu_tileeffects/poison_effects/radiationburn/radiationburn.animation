@@ -1,0 +1,72 @@
+{
+  "particleEmitters" : {
+    "fx" : {
+      "enabled" : true,
+      "emissionRate" : 3.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "mode" : "LoopForever",
+            "animation" : "/animations/shadowcloudpuff/shadowcloudpuff.animation",
+            "size" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 1.0],
+            "finalVelocity" : [0, 5.0],
+            "approach" : [0, 10],
+            "timeToLive" : 0.85,
+            "variance" : {
+              "initialVelocity" : [0.5, 1.0],
+              "size" : 0.3
+            }
+          }
+        }
+      ]
+    },
+    "fx1" : {
+      "enabled" : true,
+      "emissionRate" : 1.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "text",
+            "text" : "Radiation Burn",
+            "size" : 0.75,
+            "color" : [25, 200, 20, 255],
+            "fade" : 1,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 4],
+            "finalVelocity" : [0, 1],
+            "approach" : [0, 10],
+            "timeToLive" : 1,
+            "variance" : {
+            }
+          }
+        }
+      ]
+    },
+    "flames" : {
+      "enabled" : true,
+      "emissionRate" : 7.0,
+      "particles" : [
+        {
+          "particle" : "radiationburndust"
+        }
+      ]
+    }
+  },
+  "lights" : {
+    "glow" : {
+      "active" : true,
+      "position" : [0, 0],
+      "color" : [75, 75, 30]
+    }
+  },
+  "sounds" : {
+    "burn" : [ "/sfx/projectiles/flame_burning.ogg" ]
+  }
+}

@@ -3,16 +3,19 @@
   "price" : 160,
   "inventoryIcon" : "blistergun.png",
   "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Fires repulsive glowy goo-globs.",
+  "rarity" : "uncommon",
+  "description" : "Fires repulsive glowy goo-globs.
+^green;Targets glow
+^yellow;+Pus effect^reset;",
   "shortdescription" : "Blister Gun",
+  "category" : "bioweapon",
   "level" : 3,
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "weaponType" : "Grenade Launcher",
-  "itemTags" : ["weapon","ranged","grenadelauncher"],
+  "itemTags" : ["weapon","ranged","grenadelauncher","bioweapon","blister", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/unique/blistergun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "blistergun.png",
@@ -21,8 +24,17 @@
     "muzzleFlash" : "/animations/muzzleflash/purplemuzzle.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.5, 0.0]
+		  }
+		}
+      }
+    },
     "sounds" : {
-      "fire" : [ "/sfx/gun/burstshot1.ogg" ]
+      "fire" : [ "/sfx/projectiles/goo_spit2.ogg" ]
     },
     "lights" : { "glow" : {
       "active" : true,
@@ -41,7 +53,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "bioweapon",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -55,10 +67,11 @@
     "fireType" : "auto",
 
     "projectileType" : "blistergunshot",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 50,
       "bounces" : 1,
-      "knockback" : 10
+      "knockback" : 10,
+      "statusEffects" : [ "weakpoison" ]
     },
 	  "stances" : {
 	    "idle" : {
@@ -90,7 +103,18 @@
 	  }
   },
 
-  "altAbilityType" : "blisteraltshot",
 
+  "critChance" : 5,
+  "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : 12,
+  "reloadTime" : 1,
+
+  "altAbilityType" : "blisteraltshot",
+  "altAbility" : {
+	  "isAmmoBased" : 1,
+	  "magazineSize" : 2,
+	  "reloadTime" : 1
+  },
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

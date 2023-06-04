@@ -1,0 +1,156 @@
+{
+  "name" : "atropusfleshcaves",
+  "friendlyName" : "Flesh Caves (Atropus)",
+
+    "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 3,
+        "pool" : [
+          [ 0.1111, "fleshleech" ],
+          [ 0.1111, "paratail" ],
+	  [ 0.1111, "hemogoblin" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : [
+          [ 0.4, "shardwing" ],
+          [ 0.3, "stinkjack" ],
+	  [ 0.3, "xenofly" ]
+        ]
+      },
+      {
+        "select" : 3,
+        "pool" : [
+	  [ 0.3, "apexscabcritter" ],
+          [ 0.4, "avianscabcritter" ],
+          [ 0.3, "eyefriendcritter" ],
+          [ 0.3, "eyepodcritter" ],
+	  [ 0.3, "floranscabcritter" ],
+	  [ 0.3, "glitchscabcritter" ],
+	  [ 0.3, "humanscabcritter" ],
+	  [ 0.3, "hylotlscabcritter" ],
+	  [ 0.3, "maggotcritter" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      }
+    ],
+    "monsterParameters" : {
+      "colors" : "magma",
+      "statusSettings" : {
+        "stats" : {
+          "insanityImmunity" : {
+            "baseValue" : 1.0
+          },
+          "pusImmunity" : {
+            "baseValue" : 1.0
+          },
+          "biooozeImmunity" : {
+            "baseValue" : 1.0
+          }
+        }
+      }
+    }
+  },
+
+  "mainBlock" : "fleshblock",
+  "subBlocks" : [ "corruptdirt", "bonematerial" ],
+  "ores" : "ff_deepsurfaceatropusOres",
+
+  "parallax" : "/parallax/underground/atropusunderground.parallax",
+
+  "ambientNoises" : {
+      "day" : {
+        "tracks" : [ "/sfx/ambiance/atropusambiance2.ogg", "/sfx/ambiance/atropusambiance4.ogg", "/sfx/ambiance/atropusambiance6.ogg" ]
+      },
+      "night" : {
+        "tracks" : [ "/sfx/ambiance/atropusambiance3.ogg", "/sfx/ambiance/atropusambiance4.ogg" ]
+      }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+  "undergroundPlaceables" : {
+    "grassMod" : [ "tentaclegrass" ],
+    "grassModDensity" : 1,
+
+    "items" : [
+      {
+        "mode" : "background",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundFossils",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.15, "dirtyfossil1" ], [0.15, "dirtyfossil2" ], [0.15, "dirtyfossil3" ], [0.15, "dirtyfossil4" ], [0.1, "dirtyfossil5" ], [0.1, "dirtyfossil6" ], [0.1, "dirtyfossil7" ], [0.1, "dirtyfossil8" ] ],
+            "parameters" : {  "materials" : ["mud", "cobblestone", "bonematerial"]}
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.15, "fleshbush1" ], [0.15, "fleshbush2" ], [0.15, "fleshbush3" ], [0.15, "fleshbush4" ], [0.15, "fleshbush5" ], [0.15, "fleshbush6" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:minibiomeChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "fleshChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 15,
+        "treeStemList" : [ "fleshstem" ],
+        "treeFoliageList" : [ "fleshfoliage" ]
+      },
+
+      {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundCrops",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "wildpussplumseed" ] ],
+            "parameters" : {
+              "startingStage" : 3
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

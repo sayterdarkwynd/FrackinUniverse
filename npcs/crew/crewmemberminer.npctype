@@ -1,0 +1,115 @@
+{
+  "type" : "crewmemberminer",
+  "baseType" : "fu_crewmember",
+
+  "scriptConfig" : {
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "mininghathead",
+        "chest" : "minerchest",
+        "legs" : "humantier2pants"
+      },
+
+      "role" : {
+        "type" : "soldier",
+        "name" : "Lunar Miner",
+        "field" : "Mining",
+        "uniformColorIndex" : 0,
+
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "nofalldamage",
+            "duration" : 90
+          },
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "fu_pickuprange2",
+            "duration" : 120
+          }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "offer" : {
+          "default" : {
+            "default" : [
+              "You saved me! I thought I was done for when that thing captured me. Are you looking for any crew? I don't think my job with Letheia exists anymore..."
+            ]
+          }
+        },
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "Let me know when you want to head out, Captain! I'm not much of a fighter, but there aren't many better than me at mining!"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Safety first, Captain!"
+            ]
+          }
+        },
+        "respawned" : {
+          "default" : {
+            "default" : [
+              "What just happened?"
+            ]
+          }
+        },
+        "attack" : {
+          "default" : {
+            "default" : [
+              "Let's teach these things a lesson!"
+            ]
+          }
+        },
+        "returnFromCombat" : {
+          "default" : {
+            "default" : [
+              "Phew, good work sir."
+            ]
+          }
+        },
+        "follow" : {
+          "default" : {
+            "default" : [
+              "Yes, sir!"
+            ]
+          }
+        },
+        "unfollow" : {
+          "default" : {
+            "default" : [
+              "Got it, Captain. I'll wait here till you come back."
+            ]
+          }
+        },
+        "cantreach" : {
+          "default" : {
+            "default" : [
+              "Hey, I can't reach you! It's dangerous to split up!"
+            ]
+          }
+        }
+	  }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+			"primary" : [ "laspistol" ],
+			"alt" : [ "fuflashlight" ]
+          }
+        ] ]
+    ]
+  }
+}

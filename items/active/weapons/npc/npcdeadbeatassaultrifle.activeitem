@@ -1,0 +1,101 @@
+{
+  "itemName" : "npcdeadbeatassaultrifle",
+  "price" : 0,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A rusty military grade rifle.",
+  "shortdescription" : "NPC Deadbeat Assault Rifle",
+  "tooltipKind" : "gun",
+  "category" : "assaultRifle",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","assaultrifle"],
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : { },
+  "animationCustom" : { },
+  "baseOffset" : [-1.0, 0.25],
+  "muzzleOffset" : [0.0, 0.3125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+
+  "magazineSize" : [12,24],
+  "reloadTime" : [0.75,2],
+  "isAmmoBased" : 1,
+
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.09,
+    "baseDps" : 10.5,
+    "energyUsage" : 16.5,
+    "inaccuracy" : 0.04,
+
+    "fireType" : "auto",
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "knockbackRange" : [4,8]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.075,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/ar1.ogg", "/sfx/gun/ar2.ogg", "/sfx/gun/ar3.ogg", "/sfx/gun/ar4.ogg", "/sfx/gun/ar5.ogg", "/sfx/gun/ar6.ogg", "/sfx/gun/grenade2.ogg", "/sfx/gun/uzi1.ogg", "/sfx/gun/uzi2.ogg", "/sfx/gun/uzi3.ogg" ],
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "animationParts" : {
+      "butt" : {
+        "path" : "/items/active/weapons/ranged/assaultrifle/deadbeat/butt/<variant>.png",
+        "variants" : 3,
+        "paletteSwap" : false
+      },
+      "middle" : {
+        "path" : "/items/active/weapons/ranged/assaultrifle/deadbeat/middle/<variant>.png",
+        "variants" : 3,
+        "paletteSwap" : false
+      },
+      "barrel" : {
+        "path" : "/items/active/weapons/ranged/assaultrifle/deadbeat/barrel/<variant>.png",
+        "variants" : 3,
+        "paletteSwap" : false
+      },
+      "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+    },
+    "gunParts" : ["butt", "middle", "barrel"],
+    "altAbilities" : [ ],
+    "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
+    "iconDrawables" : ["butt", "middle", "barrel"]
+  }]
+}

@@ -1,0 +1,23 @@
+{
+  "projectileName" : "shadowblast2",
+  "image" : "shadowblast2.png",
+  "physics" : "laser",
+  "animationCycle" : 0.25,
+  "frameNumber" : 4,
+  "windupFrames" : 8,
+  "fullbright" : true,
+  "lightColor" : [28,28,28],
+  "power" : 10,
+  "speed" : 35,
+  "damageKind" : "shadowplasma",
+  "damagePoly" : [ [-15, 0], [-15, -5], [0, -5], [15, -5], [15, 0], [15, 5], [0, 5], [-15, 5] ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/shadowexplosionknockbackstatus.config"
+    }
+  ],
+  "emitters" : ["shadowsmoke2"],
+  "statusEffects" : ["shadowgasfx"],
+  "bounces" : 0
+}

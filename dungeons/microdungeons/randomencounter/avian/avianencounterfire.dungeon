@@ -1,0 +1,2115 @@
+{
+  "metadata" : {
+    "name" : "avianencounterfire",
+    "species" : "avian",
+    "rules" : [
+    ],
+    "anchor" : [ "aviancave", "aviandock", "aviangrave", "avianluxury", "avianhunter", "villagerhouse1", "villagerhouse2" ],
+    "maxRadius" : 500,
+    "maxParts" : 50
+  },
+  "tiles" : [
+    {
+      "value" : [255, 0, 220, 255],
+      "comment" : "magic pinkppp, a no-op value"
+    },
+
+    {
+      "value" : [0, 0, 0, 255],
+      "rules" : [ [ "worldGenMustContainAirBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ] ]
+    },
+
+    {
+      "value" : [255, 255, 255, 255],
+      "rules" : [ [ "worldGenMustContainSolidBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [0, 38, 255, 255],
+      "comment" : "bright blue, entrance coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [0, 255, 186, 255],
+      "comment" : "bright aqua, water coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [186, 255, 0, 255],
+      "comment" : "bright green, pyramid entrance coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [32, 32, 32, 255],
+      "comment" : "Empty hole",
+      "brush" : [ [ "clear" ] ]
+    },
+
+    {
+      "value" : [128, 128, 128, 255],
+      "comment" : "Biome tile brush",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [100, 100, 100, 255],
+      "comment" : "Biome tile brush non-overwritable",
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [200, 200, 200, 255],
+      "comment" : "Biome tile background brush",
+      "brush" : [ [ "clear" ], [ "surfacebackground" ] ]
+    },
+
+    {
+      "value" : [54, 63, 105, 255],
+      "comment" : "water pool foreground",
+      "brush" : [ [ "clear" ], [ "liquid", "water" ] ]
+    },
+
+    {
+      "value" : [146, 165, 247, 255],
+      "comment" : "background temple1",
+      "brush" : [ [ "clear" ], [ "back", "temple1" ] ]
+    },
+
+    {
+      "value" : [170, 146, 247, 255],
+      "comment" : "foreground temple1",
+      "brush" : [ [ "clear" ], [ "back", "temple1" ], [ "front", "temple1" ] ]
+    },
+
+    {
+      "value" : [120, 96, 197, 255],
+      "comment" : "endcap temple1",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "temple1" ], [ "front", "temple1" ] ]
+    },
+
+    {
+      "value" : [146, 247, 241, 255],
+      "comment" : "background temple2",
+      "brush" : [ [ "clear" ], [ "back", "temple2" ] ]
+    },
+
+    {
+      "value" : [146, 210, 247, 255],
+      "comment" : "foreground temple2",
+      "brush" : [ [ "clear" ], [ "back", "temple2" ], [ "front", "temple2" ] ]
+    },
+
+    {
+      "value" : [196, 228, 246, 255],
+      "comment" : "overwritable foreground temple2 for pyramid entrance",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "temple2" ], [ "front", "temple2" ] ]
+    },
+
+    {
+      "value" : [96, 160, 197, 255],
+      "comment" : "endcap temple2 for water pools",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "temple2" ], [ "front", "temple2" ] ]
+    },
+
+    {
+      "value" : [146, 247, 151, 255],
+      "comment" : "background temple3",
+      "brush" : [ [ "clear" ], [ "back", "temple3" ] ]
+    },
+
+    {
+      "value" : [146, 247, 203, 255],
+      "comment" : "foreground temple3",
+      "brush" : [ [ "clear" ], [ "back", "temple3" ], [ "front", "temple3" ] ]
+    },
+
+    {
+      "value" : [224, 247, 146, 255],
+      "comment" : "background temple4",
+      "brush" : [ [ "clear" ], [ "back", "temple4" ] ]
+    },
+    {
+      "value" : [186, 247, 146, 255],
+      "comment" : "foreground temple4",
+      "brush" : [ [ "clear" ], [ "back", "temple4" ], [ "front", "temple4" ] ]
+    },
+    {
+      "value" : [206, 146, 247, 255],
+      "comment" : "background crosshatch",
+      "brush" : [ [ "clear" ], [ "back", "bars" ] ]
+    },
+
+    {
+      "value" : [247, 146, 240, 255],
+      "comment" : "foreground crosshatch",
+      "brush" : [ [ "clear" ], [ "front", "bars" ] ]
+    },
+
+    {
+      "value" : [137, 124, 76, 255],
+      "comment" : "wooden stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "platform" ] ]
+    },
+
+    {
+      "value" : [175, 168, 143, 255],
+      "comment" : "birddoor",
+      "brush" : [ [ "clear" ], [ "object", "birddoor" ] ]
+    },
+
+    {
+      "value" : [251, 209, 248, 255],
+      "comment" : "ashjar1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "ashjar1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [241, 209, 248, 255],
+      "comment" : "ashjar1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "ashjar1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [251, 209, 209, 255],
+      "comment" : "ashjar2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "ashjar2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [241, 209, 209, 255],
+      "comment" : "ashjar2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "ashjar2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [226, 209, 251, 255],
+      "comment" : "ashjar3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "ashjar3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [216, 209, 251, 255],
+      "comment" : "ashjar3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "ashjar3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [209, 219, 251, 255],
+      "comment" : "bigjar1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "bigjar1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [199, 219, 251, 255],
+      "comment" : "bigjar1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "bigjar1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [209, 247, 251, 255],
+      "comment" : "goldenducky facing left",
+      "brush" : [ [ "clear" ], [ "object", "goldenducky", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [199, 247, 251, 255],
+      "comment" : "goldenducky facing right",
+      "brush" : [ [ "clear" ], [ "object", "goldenducky", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [209, 251, 227, 255],
+      "comment" : "goldenjar1",
+      "brush" : [ [ "clear" ], [ "object", "goldenjar1" ] ]
+    },
+
+    {
+      "value" : [231, 251, 209, 255],
+      "comment" : "lamp facing left",
+      "brush" : [ [ "clear" ], [ "object", "lamp", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [221, 251, 209, 255],
+      "comment" : "lamp facing right",
+      "brush" : [ [ "clear" ], [ "object", "lamp", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [249, 251, 209, 255],
+      "comment" : "midjar1",
+      "brush" : [ [ "clear" ], [ "object", "midjar1" ] ]
+    },
+
+    {
+      "value" : [251, 241, 209, 255],
+      "comment" : "sacrificialaltar facing left",
+      "brush" : [ [ "clear" ], [ "object", "sacrificialaltar", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [241, 241, 209, 255],
+      "comment" : "sacrificialaltar facing right",
+      "brush" : [ [ "clear" ], [ "object", "sacrificialaltar", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [111, 24, 255, 255],
+      "comment" : "screen",
+      "brush" : [ [ "clear" ], [ "object", "screen1" ] ]
+    },
+
+    {
+      "value" : [255, 24, 24, 255],
+      "comment" : "screen2",
+      "brush" : [ [ "clear" ], [ "object", "screen2" ] ]
+    },
+
+    {
+      "value" : [255, 24, 209, 255],
+      "comment" : "screen3",
+      "brush" : [ [ "clear" ], [ "object", "screen3" ] ]
+    },
+
+    {
+      "value" : [198, 24, 255, 255],
+      "comment" : "screen4",
+      "brush" : [ [ "clear" ], [ "object", "screen4" ] ]
+    },
+
+    {
+      "value" : [57, 24, 255, 255],
+      "comment" : "screen5",
+      "brush" : [ [ "clear" ], [ "object", "screen5" ] ]
+    },
+
+    {
+      "value" : [24, 144, 255, 255],
+      "comment" : "smalljar1",
+      "brush" : [ [ "clear" ], [ "object", "smalljar1" ] ]
+    },
+
+    {
+      "value" : [24, 236, 255, 255],
+      "comment" : "sundecor",
+      "brush" : [ [ "clear" ], [ "object", "sundecor" ] ]
+    },
+
+    {
+      "value" : [24, 255, 160, 255],
+      "comment" : "talljar1",
+      "brush" : [ [ "clear" ], [ "object", "talljar1" ] ]
+    },
+
+    {
+      "value" : [84, 255, 24, 255],
+      "comment" : "talljar2",
+      "brush" : [ [ "clear" ], [ "object", "talljar2" ] ]
+    },
+
+    {
+      "value" : [220, 255, 24, 255],
+      "comment" : "torch",
+      "brush" : [ [ "clear" ], [ "object", "torch" ] ]
+    },
+
+    {
+      "value" : [125, 47, 255, 255],
+      "comment" : "featherybird facing left",
+      "brush" : [ [ "clear" ], [ "object", "featherybird", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [115, 47, 255, 255],
+      "comment" : "featherybird facing right",
+      "brush" : [ [ "clear" ], [ "object", "featherybird", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [228, 47, 255, 255],
+      "comment" : "goldenurn",
+      "brush" : [ [ "clear" ], [ "object", "goldenurn" ] ]
+    },
+
+    {
+      "value" : [47, 174, 255, 255],
+      "comment" : "wingedurn",
+      "brush" : [ [ "clear" ], [ "object", "wingedurn" ] ]
+    },
+
+    {
+      "value" : [47, 213, 255, 255],
+      "comment" : "birdtable facing left",
+      "brush" : [ [ "clear" ], [ "object", "birdtable", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [37, 213, 255, 255],
+      "comment" : "birdtable facing right",
+      "brush" : [ [ "clear" ], [ "object", "birdtable", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [47, 255, 243, 255],
+      "comment" : "birdbed facing left",
+      "brush" : [ [ "clear" ], [ "object", "birdbed", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [37, 255, 243, 255],
+      "comment" : "birdbed facing right",
+      "brush" : [ [ "clear" ], [ "object", "birdbed", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [47, 255, 150, 255],
+      "comment" : "birdthrone facing left",
+      "brush" : [ [ "clear" ], [ "object", "birdthrone", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [37, 255, 150, 255],
+      "comment" : "birdthrone facing right",
+      "brush" : [ [ "clear" ], [ "object", "birdthrone", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [47, 255, 81, 255],
+      "comment" : "birdgong1",
+      "brush" : [ [ "clear" ], [ "object", "birdgong1" ] ]
+    },
+
+    {
+      "value" : [111, 255, 47, 255],
+      "comment" : "birdgong2",
+      "brush" : [ [ "clear" ], [ "object", "birdgong2" ] ]
+    },
+
+    {
+      "value" : [174, 255, 47, 255],
+      "comment" : "birdaltar2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "birdaltar2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [164, 255, 47, 255],
+      "comment" : "birdaltar2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "birdaltar2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [228, 255, 47, 255],
+      "comment" : "feathers1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "feathers1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [218, 255, 47, 255],
+      "comment" : "feathers1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "feathers1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 228, 47, 255],
+      "comment" : "feathers2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "feathers2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [245, 228, 47, 255],
+      "comment" : "feathers2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "feathers2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 189, 47, 255],
+      "comment" : "birdjar1",
+      "brush" : [ [ "clear" ], [ "object", "birdjar1" ] ]
+    },
+
+    {
+      "value" : [255, 160, 47, 255],
+      "comment" : "birdjar2",
+      "brush" : [ [ "clear" ], [ "object", "birdjar2" ] ]
+    },
+
+    {
+      "value" : [255, 67, 47, 255],
+      "comment" : "birdgroundlantern",
+      "brush" : [ [ "clear" ], [ "object", "birdgroundlantern" ] ]
+    },
+
+    {
+      "value" : [255, 47, 47, 255],
+      "comment" : "woodsupport",
+      "brush" : [ [ "clear" ], [ "object", "woodsupport" ] ]
+    },
+
+    {
+      "value" : [175, 189, 23, 255],
+      "comment" : "sawblade",
+      "brush" : [ [ "clear" ], [ "object", "sawblade", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [174, 189, 17, 255],
+      "comment" : "sawblade",
+      "brush" : [ [ "clear" ], [ "object", "sawblade", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 0, 0, 255],
+      "comment" : "wire #1 Red",
+      "brush" : [ [ "wire", { "group" : "group1", "local" : true } ] ]
+    },
+
+    {
+      "value" : [0, 255, 0, 255],
+      "comment" : "wire #2 Green",
+      "brush" : [ [ "wire", { "group" : "group2", "local" : true } ] ]
+    },
+
+    {
+      "value" : [0, 0, 255, 255],
+      "comment" : "wire #3 Blue",
+      "brush" : [ [ "wire", { "group" : "group3", "local" : true } ] ]
+    },
+
+    {
+      "value" : [109, 90, 8, 255],
+      "comment" : "background tombbrick",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick" ] ]
+    },
+
+    {
+      "value" : [26, 77, 0, 255],
+      "comment" : "biome tree",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "biometree" ] ]
+    },
+
+    {
+      "value" : [85, 109, 8, 255],
+      "comment" : "foreground tombbrick",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick" ], [ "front", "tombbrick" ] ]
+    },
+
+    {
+      "value" : [109, 8, 14, 255],
+      "comment" : "background tombbrick2",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick2" ] ]
+    },
+
+    {
+      "value" : [109, 45, 8, 255],
+      "comment" : "foreground tombbrick2",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick2" ], [ "front", "tombbrick2" ] ]
+    },
+
+    {
+      "value" : [109, 8, 104, 255],
+      "comment" : "background tombbrick3",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick3" ] ]
+    },
+
+    {
+      "value" : [109, 8, 52, 255],
+      "comment" : "foreground tombbrick3",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick3" ], [ "front", "tombbrick3" ] ]
+    },
+
+    {
+      "value" : [31, 8, 109, 255],
+      "comment" : "background tombbrick4",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick4" ] ]
+    },
+
+    {
+      "value" : [69, 8, 109, 255],
+      "comment" : "foreground tombbrick4",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick4" ], [ "front", "tombbrick4" ] ]
+    },
+
+    {
+      "value" : [8, 60, 109, 255],
+      "comment" : "background tombbrick5",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick5" ] ]
+    },
+
+    {
+      "value" : [8, 29, 109, 255],
+      "comment" : "foreground tombbrick5",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick5" ], [ "front", "tombbrick5" ] ]
+    },
+
+    {
+      "value" : [222, 144, 233, 255],
+      "comment" : "tribal stairs & platform",
+      "brush" : [ [ "clear" ], [ "front", "tribalplatform" ] ]
+    },
+
+    {
+      "value" : [222, 134, 173, 255],
+      "comment" : "wooden stairs & platform",
+      "brush" : [ [ "clear" ], [ "front", "woodenplatform" ] ]
+    },
+
+    {
+      "value" : [49, 109, 8, 255],
+      "comment" : "background bars",
+      "brush" : [ [ "clear" ], [ "back", "bars" ] ]
+    },
+
+    {
+      "value" : [8, 109, 15, 255],
+      "comment" : "foreground bars",
+      "brush" : [ [ "clear" ], [ "front", "bars" ] ]
+    },
+
+    {
+      "value" : [4, 46, 7, 255],
+      "comment" : "altaravian facing left",
+      "brush" : [ [ "clear" ], [ "object", "altaravian", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [14, 46, 7, 255],
+      "comment" : "altaravian facing right",
+      "brush" : [ [ "clear" ], [ "object", "altaravian", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [4, 46, 46, 255],
+      "comment" : "altarbunny facing left",
+      "brush" : [ [ "clear" ], [ "object", "altarbunny", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [14, 46, 46, 255],
+      "comment" : "altarbunny facing right",
+      "brush" : [ [ "clear" ], [ "object", "altarbunny", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [29, 46, 4, 255],
+      "comment" : "consoletribal1",
+      "brush" : [ [ "clear" ], [ "object", "consoletribal1" ] ]
+    },
+
+    {
+      "value" : [46, 36, 4, 255],
+      "comment" : "consoletribal2",
+      "brush" : [ [ "clear" ], [ "object", "consoletribal2" ] ]
+    },
+
+    {
+      "value" : [46, 8, 4, 255],
+      "comment" : "consoletribal3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "consoletribal3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [56, 8, 4, 255],
+      "comment" : "consoletribal3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "consoletribal3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [46, 4, 28, 255],
+      "comment" : "consoletribal4",
+      "brush" : [ [ "clear" ], [ "object", "consoletribal4" ] ]
+    },
+
+    {
+      "value" : [24, 4, 46, 255],
+      "comment" : "consoletribalwall",
+      "brush" : [ [ "clear" ], [ "object", "consoletribalwall" ] ]
+    },
+
+    {
+      "value" : [231, 111, 0, 255],
+      "comment" : "birdgodemblem",
+      "brush" : [ [ "clear" ], [ "object", "birdgodemblem" ] ]
+    },
+
+    {
+      "value" : [241, 111, 0, 255],
+      "comment" : "birdgodemblem facing right",
+      "brush" : [ [ "clear" ], [ "object", "birdgodemblem", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [6, 4, 46, 255],
+      "comment" : "mask1",
+      "brush" : [ [ "clear" ], [ "object", "mask1" ] ]
+    },
+
+    {
+      "value" : [4, 14, 46, 255],
+      "comment" : "mask2",
+      "brush" : [ [ "clear" ], [ "object", "mask2" ] ]
+    },
+
+    {
+      "value" : [144, 231, 0, 255],
+      "comment" : "mask3",
+      "brush" : [ [ "clear" ], [ "object", "mask3" ] ]
+    },
+
+    {
+      "value" : [0, 231, 231, 255],
+      "comment" : "mask4",
+      "brush" : [ [ "clear" ], [ "object", "mask4" ] ]
+    },
+
+    {
+      "value" : [0, 231, 46, 255],
+      "comment" : "mask5",
+      "brush" : [ [ "clear" ], [ "object", "mask5" ] ]
+    },
+
+    {
+      "value" : [57, 231, 0, 255],
+      "comment" : "mask6",
+      "brush" : [ [ "clear" ], [ "object", "mask6" ] ]
+    },
+
+    {
+      "value" : [198, 231, 0, 255],
+      "comment" : "mask7",
+      "brush" : [ [ "clear" ], [ "object", "mask7" ] ]
+    },
+
+    {
+      "value" : [231, 19, 0, 255],
+      "comment" : "moonemblem",
+      "brush" : [ [ "clear" ], [ "object", "moonemblem" ] ]
+    },
+
+    {
+      "value" : [231, 0, 95, 255],
+      "comment" : "sarcoavian1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "sarcoavian1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [241, 0, 95, 255],
+      "comment" : "sarcoavian1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "sarcoavian1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [171, 0, 231, 255],
+      "comment" : "sarcoavian2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "sarcoavian2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [181, 0, 231, 255],
+      "comment" : "sarcoavian2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "sarcoavian2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [35, 0, 231, 255],
+      "comment" : "sarcobunny facing left",
+      "brush" : [ [ "clear" ], [ "object", "sarcobunny", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [45, 0, 231, 255],
+      "comment" : "sarcobunny facing right",
+      "brush" : [ [ "clear" ], [ "object", "sarcobunny", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [130, 208, 0, 255],
+      "comment" : "sarcohuman facing left",
+      "brush" : [ [ "clear" ], [ "object", "sarcohuman", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [140, 208, 0, 255],
+      "comment" : "sarcohuman facing right",
+      "brush" : [ [ "clear" ], [ "object", "sarcohuman", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [130, 208, 10, 255],
+      "comment" : "sarcohumanalive facing left",
+      "brush" : [ [ "clear" ], [ "object", "sarcohumanalive", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [140, 208, 10, 255],
+      "comment" : "sarcohumanalive facing right",
+      "brush" : [ [ "clear" ], [ "object", "sarcohumanalive", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [27, 208, 0, 255],
+      "comment" : "spearrack",
+      "brush" : [ [ "clear" ], [ "object", "spearrack" ] ]
+    },
+
+    {
+      "value" : [208, 81, 0, 255],
+      "comment" : "tombstone1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [218, 81, 0, 255],
+      "comment" : "tombstone1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [208, 42, 0, 255],
+      "comment" : "tombstone2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [218, 42, 0, 255],
+      "comment" : "tombstone2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [208, 0, 105, 255],
+      "comment" : "tombstone3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [218, 0, 105, 255],
+      "comment" : "tombstone3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [208, 0, 174, 255],
+      "comment" : "tombstone4 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone4", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [218, 0, 174, 255],
+      "comment" : "tombstone4 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone4", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [144, 0, 208, 255],
+      "comment" : "tombstone5 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone5", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [154, 0, 208, 255],
+      "comment" : "tombstone5 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone5", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [81, 0, 208, 255],
+      "comment" : "tombstone6 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone6", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [91, 0, 208, 255],
+      "comment" : "tombstone6 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone6", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [27, 0, 208, 255],
+      "comment" : "tombstone7 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone7", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [37, 0, 208, 255],
+      "comment" : "tombstone7 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone7", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [0, 27, 208, 255],
+      "comment" : "tombstone8 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone8", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 27, 208, 255],
+      "comment" : "tombstone8 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone8", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [0, 66, 208, 255],
+      "comment" : "tombstone9 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone9", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 66, 208, 255],
+      "comment" : "tombstone9 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone9", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [0, 95, 208, 255],
+      "comment" : "tombstone10 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone10", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 95, 208, 255],
+      "comment" : "tombstone10 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone10", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [0, 188, 208, 255],
+      "comment" : "tombstone11 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone11", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 188, 208, 255],
+      "comment" : "tombstone11 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone11", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [208, 0, 12, 255],
+      "comment" : "redalert",
+      "brush" : [ [ "clear" ], [ "object", "redalert" ] ]
+    },
+
+    {
+      "value" : [0, 208, 208, 255],
+      "comment" : "tombstatueavian facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstatueavian", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 208, 208, 255],
+      "comment" : "tombstatueavian facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstatueavian", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [118, 131, 179, 255],
+      "comment" : "tombstatuebunny facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstatuebunny", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [128, 131, 179, 255],
+      "comment" : "tombstatuebunny facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstatuebunny", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [80, 87, 112, 255],
+      "comment" : "idolsupport",
+      "brush" : [ [ "clear" ], [ "object", "idolsupport" ] ]
+    },
+
+    {
+      "value" : [222, 134, 134, 255],
+      "comment" : "tesla",
+      "brush" : [ [ "clear" ], [ "object", "tesla" ] ]
+    },
+
+    {
+      "value" : [222, 175, 134, 255],
+      "comment" : "crystaltorch",
+      "brush" : [ [ "clear" ], [ "object", "crystaltorch" ] ]
+    },
+
+    {
+      "value" : [222, 202, 134, 255],
+      "comment" : "barvent",
+      "brush" : [ [ "clear" ], [ "object", "barvent" ] ]
+    },
+
+    {
+      "value" : [221, 222, 134, 255],
+      "comment" : "bardoor",
+      "brush" : [ [ "clear" ], [ "object", "bardoor" ] ]
+    },
+
+    {
+      "value" : [190, 222, 134, 255],
+      "comment" : "bardoor2",
+      "brush" : [ [ "clear" ], [ "object", "bardoor2" ] ]
+    },
+
+    {
+      "value" : [220, 125, 185, 255],
+      "comment" : "tombthing1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombthing1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [230, 125, 185, 255],
+      "comment" : "tombthing1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombthing1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [203, 125, 220, 255],
+      "comment" : "tombthing2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombthing2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [213, 125, 220, 255],
+      "comment" : "tombthing2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombthing2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [138, 125, 220, 255],
+      "comment" : "tombthing3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombthing3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [148, 125, 220, 255],
+      "comment" : "tombthing3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombthing3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [125, 161, 220, 255],
+      "comment" : "tombthing4 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombthing4", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [135, 161, 220, 255],
+      "comment" : "tombthing4 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombthing4", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [125, 192, 220, 255],
+      "comment" : "tribalbed2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribalbed2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [135, 192, 220, 255],
+      "comment" : "tribalbed2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribalbed2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [125, 220, 212, 255],
+      "comment" : "tribalbookcase1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribalbookcase1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [135, 220, 212, 255],
+      "comment" : "tribalbookcase1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribalbookcase1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [125, 220, 159, 255],
+      "comment" : "tribalbookcase2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribalbookcase2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [135, 220, 159, 255],
+      "comment" : "tribalbookcase2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribalbookcase2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [174, 220, 125, 255],
+      "comment" : "tribalcabinet1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribalcabinet1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [184, 220, 125, 255],
+      "comment" : "tribalcabinet1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribalcabinet1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [163, 222, 134, 255],
+      "comment" : "tribalcloset1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribalcloset1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [173, 222, 134, 255],
+      "comment" : "tribalcloset1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribalcloset1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [134, 222, 151, 255],
+      "comment" : "tribalcounter1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribalcounter1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [144, 222, 151, 255],
+      "comment" : "tribalcounter1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribalcounter1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [134, 222, 209, 255],
+      "comment" : "tribaldoor",
+      "brush" : [ [ "clear" ], [ "object", "tribaldoor" ] ]
+    },
+
+    {
+      "value" : [134, 213, 222, 255],
+      "comment" : "tribaltable facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribaltable", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [144, 213, 222, 255],
+      "comment" : "tribaltable facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribaltable", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [134, 196, 222, 255],
+      "comment" : "tribalserver facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribalserver", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [144, 196, 222, 255],
+      "comment" : "tribalserver facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribalserver", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [148, 185, 21, 255],
+      "comment" : "background aztectech",
+      "brush" : [ [ "clear" ], [ "back", "aztectech" ] ]
+    },
+
+    {
+      "value" : [175, 185, 21, 255],
+      "comment" : "foreground aztectech",
+      "brush" : [ [ "clear" ], [ "back", "aztectech" ], [ "front", "aztectech" ] ]
+    },
+
+    {
+      "value" : [63, 185, 21, 255],
+      "comment" : "background fullwood1",
+      "brush" : [ [ "clear" ], [ "back", "temple3" ] ]
+    },
+
+    {
+      "value" : [117, 185, 21, 255],
+      "comment" : "foreground fullwood1",
+      "brush" : [ [ "clear" ], [ "back", "temple3" ], [ "front", "temple3" ] ]
+    },
+
+    {
+      "value" : [21, 185, 148, 255],
+      "comment" : "background fadedblocks",
+      "brush" : [ [ "clear" ], [ "back", "fadedblocks" ] ]
+    },
+
+    {
+      "value" : [21, 185, 79, 255],
+      "comment" : "foreground fadedblocks",
+      "brush" : [ [ "clear" ], [ "back", "fadedblocks" ], [ "front", "fadedblocks" ] ]
+    },
+
+    {
+      "value" : [21, 152, 185, 255],
+      "comment" : "background homewalls1",
+      "brush" : [ [ "clear" ], [ "back", "homewalls1" ] ]
+    },
+
+    {
+      "value" : [21, 179, 185, 255],
+      "comment" : "foreground homewalls1",
+      "brush" : [ [ "clear" ], [ "back", "homewalls1" ], [ "front", "homewalls1" ] ]
+    },
+
+    {
+      "value" : [21, 114, 185, 255],
+      "comment" : "background woodbridge",
+      "brush" : [ [ "clear" ], [ "back", "rustymetal" ] ]
+    },
+
+    {
+      "value" : [21, 129, 185, 255],
+      "comment" : "foreground woodbridge",
+      "brush" : [ [ "clear" ], [ "back", "rustymetal" ], [ "front", "rustymetal" ] ]
+    },
+
+    {
+      "value" : [148, 21, 185, 255],
+      "comment" : "background brick",
+      "brush" : [ [ "clear" ], [ "back", "brick" ] ]
+    },
+
+    {
+      "value" : [106, 21, 185, 255],
+      "comment" : "foreground brick",
+      "brush" : [ [ "clear" ], [ "back", "brick" ], [ "front", "brick" ] ]
+    },
+
+    {
+      "value" : [21, 75, 185, 255],
+      "comment" : "background woodenwindow1",
+      "brush" : [ [ "clear" ], [ "back", "bars" ] ]
+    },
+
+    {
+      "value" : [21, 94, 185, 255],
+      "comment" : "foreground woodenwindow1",
+      "brush" : [ [ "clear" ], [ "front", "bars" ] ]
+    },
+
+    {
+      "value" : [56, 21, 185, 255],
+      "comment" : "background woodenwindow2",
+      "brush" : [ [ "clear" ], [ "back", "bars" ] ]
+    },
+
+    {
+      "value" : [21, 56, 185, 255],
+      "comment" : "foreground woodenwindow2",
+      "brush" : [ [ "clear" ], [ "front", "bars" ] ]
+    },
+
+    {
+      "value" : [186, 20, 145, 255],
+      "comment" : "background darkwood",
+      "brush" : [ [ "clear" ], [ "back", "temple3" ] ]
+    },
+
+    {
+      "value" : [237, 26, 184, 255],
+      "comment" : "foreground darkwood",
+      "brush" : [ [ "clear" ], [ "back", "temple3" ], [ "front", "temple3" ] ]
+    },
+
+    {
+      "value" : [134, 185, 222, 255],
+      "comment" : "woodenbed facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodenbed", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [144, 185, 222, 255],
+      "comment" : "woodenbed facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodenbed", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [134, 173, 222, 255],
+      "comment" : "woodendoor",
+      "brush" : [ [ "clear" ], [ "object", "woodendoor" ] ]
+    },
+
+    {
+      "value" : [134, 157, 222, 255],
+      "comment" : "woodtable facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodtable", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [144, 157, 222, 255],
+      "comment" : "woodtable facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodtable", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [134, 136, 222, 255],
+      "comment" : "windchicken facing left",
+      "brush" : [ [ "clear" ], [ "object", "windchicken", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [144, 136, 222, 255],
+      "comment" : "windchicken facing right",
+      "brush" : [ [ "clear" ], [ "object", "windchicken", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [167, 134, 222, 255],
+      "comment" : "box1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "box1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [177, 134, 222, 255],
+      "comment" : "box1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "box1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [188, 134, 222, 255],
+      "comment" : "box2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "box2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [198, 134, 222, 255],
+      "comment" : "box2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "box2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [206, 134, 222, 255],
+      "comment" : "cardboard1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "cardboard1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [216, 134, 222, 255],
+      "comment" : "cardboard1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "cardboard1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 134, 222, 255],
+      "comment" : "cardboard2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "cardboard2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [227, 134, 222, 255],
+      "comment" : "cardboard2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "cardboard2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [222, 134, 196, 255],
+      "comment" : "cardboard3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "cardboard3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [232, 134, 196, 255],
+      "comment" : "cardboard3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "cardboard3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [149, 134, 222, 255],
+      "comment" : "electriclight",
+      "brush" : [ [ "clear" ], [ "object", "electriclight" ] ]
+    },
+
+    {
+      "value" : [189, 50, 23, 255],
+      "comment" : "campfire",
+      "brush" : [ [ "clear" ], [ "object", "campfire" ] ]
+    },
+
+    {
+      "value" : [189, 78, 23, 255],
+      "comment" : "curtain1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "curtain1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [189, 92, 23, 255],
+      "comment" : "curtain1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "curtain1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [189, 106, 23, 255],
+      "comment" : "decorativewallrug1",
+      "brush" : [ [ "clear" ], [ "object", "decorativewallrug1" ] ]
+    },
+
+    {
+      "value" : [189, 120, 23, 255],
+      "comment" : "decorativewallrug2",
+      "brush" : [ [ "clear" ], [ "object", "decorativewallrug2" ] ]
+    },
+
+    {
+      "value" : [189, 147, 23, 255],
+      "comment" : "oillanterntall",
+      "brush" : [ [ "clear" ], [ "object", "oillanterntall" ] ]
+    },
+
+    {
+      "value" : [189, 175, 23, 255],
+      "comment" : "oillantern1",
+      "brush" : [ [ "clear" ], [ "object", "oillantern1" ] ]
+    },
+
+    {
+      "value" : [147, 189, 23, 255],
+      "comment" : "triballamp",
+      "brush" : [ [ "clear" ], [ "object", "triballamp" ] ]
+    },
+
+    {
+      "value" : [120, 189, 23, 255],
+      "comment" : "rusticoven facing left",
+      "brush" : [ [ "clear" ], [ "object", "rusticoven", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [106, 189, 23, 255],
+      "comment" : "rusticoven facing right",
+      "brush" : [ [ "clear" ], [ "object", "rusticoven", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 189, 23, 255],
+      "comment" : "tribalwallcabinet facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribalwallcabinet", { "direction" : "left", "parameters" : { "treasurePools" : [ "avianvillageLore" ] } } ] ]
+    },
+
+    {
+      "value" : [50, 189, 23, 255],
+      "comment" : "tribalwallcabinet facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribalwallcabinet", { "direction" : "right", "parameters" : { "treasurePools" : [ "avianvillageLore" ] } } ] ]
+    },
+
+    {
+      "value" : [23, 189, 36, 255],
+      "comment" : "woodchair facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [23, 189, 50, 255],
+      "comment" : "woodchair facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodchair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [23, 189, 78, 255],
+      "comment" : "woodenarmchair1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodenarmchair1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [23, 189, 92, 255],
+      "comment" : "woodenarmchair1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodenarmchair1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [23, 189, 161, 255],
+      "comment" : "woodenbed2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodenbed2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [23, 189, 175, 255],
+      "comment" : "woodenbed2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodenbed2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [23, 189, 189, 255],
+      "comment" : "woodencouch1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodencouch1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [23, 175, 189, 255],
+      "comment" : "woodencouch1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodencouch1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [23, 147, 189, 255],
+      "comment" : "woodentalllantern",
+      "brush" : [ [ "clear" ], [ "object", "woodentalllantern" ] ]
+    },
+
+    {
+      "value" : [23, 120, 189, 255],
+      "comment" : "woodstool",
+      "brush" : [ [ "clear" ], [ "object", "woodstool", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [23, 92, 189, 255],
+      "comment" : "woodtoilet facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodtoilet", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [44, 92, 189, 255],
+      "comment" : "woodtoilet facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodtoilet", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 184, 153, 255],
+      "comment" : "chestavian1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "chestavian1", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [245, 184, 153, 255],
+      "comment" : "chestavian1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "chestavian1", { "direction" : "right", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [255, 208, 153, 255],
+      "comment" : "chestavian2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "chestavian2", { "direction" : "left", "parameters" : { "treasurePools" : [ "avianvillageLore" ] } } ] ]
+    },
+
+    {
+      "value" : [245, 208, 153, 255],
+      "comment" : "chestavian2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "chestavian2", { "direction" : "right", "parameters" : { "treasurePools" : [ "avianvillageLore" ] } } ] ]
+    },
+
+    {
+      "value" : [255, 225, 153, 255],
+      "comment" : "chestmedavian1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "chestmedavian1", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [245, 225, 153, 255],
+      "comment" : "chestmedavian1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "chestmedavian1", { "direction" : "right", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [255, 244, 153, 255],
+      "comment" : "chestmedavian2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "chestmedavian2", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [245, 244, 153, 255],
+      "comment" : "chestmedavian2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "chestmedavian2", { "direction" : "right", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [228, 255, 87, 255],
+      "comment" : "woodencrate1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [218, 255, 87, 255],
+      "comment" : "woodencrate1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 228, 87, 255],
+      "comment" : "woodencrate2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [245, 228, 87, 255],
+      "comment" : "woodencrate2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [215, 99, 156, 255],
+      "comment" : "propeller",
+      "brush" : [ [ "clear" ], [ "object", "propeller" ] ]
+    },
+
+    {
+      "value" : [132, 198, 183, 255],
+      "comment" : "anchor",
+      "brush" : [ [ "clear" ], [ "object", "anchor" ] ]
+    },
+
+    {
+      "value" : [120, 128, 103, 255],
+      "comment" : "background chain",
+      "brush" : [ [ "clear" ], [ "back", "chain" ] ]
+    },
+
+    {
+      "value" : [154, 164, 133, 255],
+      "comment" : "foreground chain",
+      "brush" : [ [ "clear" ], [ "front", "chain" ] ]
+    },
+
+    {
+      "value" : [116, 219, 211, 255],
+      "comment" : "shipwheel facing left",
+      "brush" : [ [ "clear" ], [ "object", "shipwheel", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [103, 194, 186, 255],
+      "comment" : "shipwheel facing right",
+      "brush" : [ [ "clear" ], [ "object", "shipwheel", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [212, 170, 245, 255],
+      "comment" : "fireflowerpot facing left",
+      "brush" : [ [ "clear" ], [ "object", "fireflowerpot", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [201, 160, 232, 255],
+      "comment" : "fireflowerpot facing right",
+      "brush" : [ [ "clear" ], [ "object", "fireflowerpot", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [169, 178, 245, 255],
+      "comment" : "wflowerpot facing left",
+      "brush" : [ [ "clear" ], [ "object", "wflowerpot", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [160, 169, 232, 255],
+      "comment" : "wflowerpot facing right",
+      "brush" : [ [ "clear" ], [ "object", "wflowerpot", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [169, 219, 245, 255],
+      "comment" : "cactiflowerpot facing left",
+      "brush" : [ [ "clear" ], [ "object", "cactiflowerpot", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [160, 208, 232, 255],
+      "comment" : "cactiflowerpot facing right",
+      "brush" : [ [ "clear" ], [ "object", "cactiflowerpot", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [18, 103, 231, 255],
+      "comment" : "fountain1",
+      "brush" : [ [ "clear" ], [ "object", "fountain1" ] ]
+    },
+
+    {
+      "value" : [20, 110, 245, 255],
+      "comment" : "fountain2",
+      "brush" : [ [ "clear" ], [ "object", "fountain2" ] ]
+    },
+
+    {
+      "value" : [255, 56, 26, 255],
+      "comment" : "chest facing left",
+      "brush" : [ [ "clear" ], [ "object", "chestavian2", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [14, 51, 97, 255],
+      "comment" : "avianbanner1",
+      "brush" : [ [ "clear" ], [ "object", "avianbanner1" ] ]
+    },
+
+    {
+      "value" : [97, 14, 14, 255],
+      "comment" : "avianbanner2",
+      "brush" : [ [ "clear" ], [ "object", "avianbanner2" ] ]
+    },
+
+    {
+      "value" : [14, 97, 43, 255],
+      "comment" : "avianbanner3",
+      "brush" : [ [ "clear" ], [ "object", "avianbanner3" ] ]
+    },
+
+    {
+      "value" : [97, 88, 14, 255],
+      "comment" : "avianbanner4",
+      "brush" : [ [ "clear" ], [ "object", "avianbanner4" ] ]
+    },
+
+    {
+      "value" : [205, 176, 113, 255],
+      "comment" : "treasuremap facing left",
+      "brush" : [ [ "clear" ], [ "object", "treasuremap", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [217, 186, 119, 255],
+      "comment" : "treasuremap facing right",
+      "brush" : [ [ "clear" ], [ "object", "treasuremap", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [135, 77, 110, 255],
+      "comment" : "marketstall1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "marketstall1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [135, 77, 127, 255],
+      "comment" : "marketstall1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "marketstall1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [130, 77, 135, 255],
+      "comment" : "marketstall2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "marketstall2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [111, 77, 135, 255],
+      "comment" : "marketstall2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "marketstall2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [100, 77, 135, 255],
+      "comment" : "marketstall3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "marketstall3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [86, 77, 135, 255],
+      "comment" : "marketstall3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "marketstall3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [77, 81, 135, 255],
+      "comment" : "marketstall4 facing left",
+      "brush" : [ [ "clear" ], [ "object", "marketstall4", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [77, 93, 135, 255],
+      "comment" : "marketstall4 facing right",
+      "brush" : [ [ "clear" ], [ "object", "marketstall4", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [77, 107, 135, 255],
+      "comment" : "marketstall5 facing left",
+      "brush" : [ [ "clear" ], [ "object", "marketstall5", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [77, 119, 135, 255],
+      "comment" : "marketstall5 facing right",
+      "brush" : [ [ "clear" ], [ "object", "marketstall5", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [51, 89, 66, 255],
+      "comment" : "avianbench1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "avianbench1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [58, 102, 76, 255],
+      "comment" : "avianbench1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "avianbench1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [66, 89, 51, 255],
+      "comment" : "avianbench2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "avianbench2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [75, 102, 58, 255],
+      "comment" : "avianbench2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "avianbench2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [77, 135, 112, 255],
+      "comment" : "owlclock facing left",
+      "brush" : [ [ "clear" ], [ "object", "owlclock", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [75, 135, 87, 255],
+      "comment" : "owlclock facing right",
+      "brush" : [ [ "clear" ], [ "object", "owlclock", { "direction" : "right" } ] ]
+    },
+
+    // NPC MONSTER SPAWN BRUSHES //
+
+    {
+      "value" : [0, 200, 0, 255],
+      "comment" : "avian villager npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "villager"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [160, 0, 200, 255],
+      "comment" : "cultist",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "human",
+            "typeName" : "cultist",
+            // "seed" : "stable",
+            "parameters" : {
+              "aggressive" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [175, 0, 0, 255],
+      "comment" : "avian food merchant npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "merchant",
+            "parameters" : {
+              "scriptConfig" : {
+                "noticePlayersRadius" : 20.0,
+                "merchant" : {
+                  "storeRadius" : 2,
+                  "categories" :{"default": [ "avianingredients" ]},
+                  "priceVarianceRange" : [0.8, 1.2],
+                  "numItems" : 6
+                },
+                "sit" : {
+                  "searchRadius" : 8
+                }
+              }
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [200, 0, 0, 255],
+      "comment" : "avian weapons merchant npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "merchant",
+            "parameters" : {
+              "scriptConfig" : {
+                "noticePlayersRadius" : 20.0,
+                "merchant" : {
+                  "storeRadius" : 2,
+                  "categories" : {"default":[ "avianweaponblueprints", "randomswords" ]},
+                  "priceVarianceRange" : [0.8, 1.2],
+                  "numItems" : 10
+                },
+                "sit" : {
+                  "searchRadius" : 8
+                }
+              }
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [225, 0, 0, 255],
+      "comment" : "avian armor/clothes merchant npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "merchant",
+            "parameters" : {
+              "scriptConfig" : {
+                "noticePlayersRadius" : 20.0,
+                "merchant" : {
+                  "storeRadius" : 2,
+                  "categories" :{ "default":[ "avianarmour", "avianclothes" ]},
+                  "priceVarianceRange" : [0.8, 1.2],
+                  "numItems" : 20
+                },
+                "sit" : {
+                  "searchRadius" : 8
+                }
+              }
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [0, 0, 200, 255],
+      "comment" : "avian guard npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "villageguard"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [0, 0, 225, 255],
+      "comment" : "avian guard captain npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "villageguardcaptain"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [0, 0, 75, 255],
+      "comment" : "airship quartermaster merchant npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "airshipquartermaster",
+            "parameters" : {
+              "scriptConfig" : {
+                "noticePlayersRadius" : 20.0,
+                "merchant" : {
+                  "categories" :{"default":[ "avianweaponblueprints", "avianarmour", "randomguns", "randomswords" ]},
+                  "priceVarianceRange" : [0.8, 1]
+                }
+              }
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [0, 75, 0, 255],
+      "comment" : "avian airship crew",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "airshipcrew"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [75, 75, 0, 255],
+      "comment" : "avian airship guard",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "airshipguard"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [75, 0, 0, 255],
+      "comment" : "avian airship captain npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "airshipcaptain"
+          }
+        ] ]
+    },
+
+    // STAGEHANDS
+
+    {
+      "value" : [166, 76, 255, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "avianencounter.graveyard"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 254, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "avianencounter.house"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 253, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "avianencounter.hut"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 252, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "avianencounter.cave"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 251, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "avianencounter.dock"
+          }
+        }
+      ] ]
+    }
+  ],
+
+  "parts" : [
+    {
+      "name" : "aviancave",
+      "rules" : [ ],
+      "def" : [ "image", [ "aviancave.png", "aviancaveobjects.png" ] ]
+    },
+    {
+      "name" : "aviandock",
+      "rules" : [ ],
+      "def" : [ "image", [ "aviandock.png", "aviandockobjects.png" ] ]
+    },
+    {
+      "name": "aviangrave",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "aviangrave.json"
+      ]
+    },
+    {
+      "name": "avianluxury",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "avianluxury.json"
+      ]
+    },
+    {
+      "name": "avianhunter",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "avianhunterfire.json"
+      ]
+    },
+    {
+      "name": "villagerhouse1",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "villagerhouse1fire.json"
+      ]
+    },
+    {
+      "name": "villagerhouse2",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "villagerhouse2fire.json"
+      ]
+    }
+  ]
+}

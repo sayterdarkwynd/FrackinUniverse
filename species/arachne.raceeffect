@@ -1,0 +1,61 @@
+{
+	"stats" : [
+		{ "stat" : "poisonResistance", "amount" : 0.4 },
+		{ "stat" : "fireResistance", "amount" : -0.2 },
+		{ "stat" : "shadowResistance", "amount" : 0.2 },
+		{ "stat" : "cosmicResistance", "amount" : -0.2 },
+		{ "stat" : "insanityImmunity", "amount" : 1 },
+		{ "stat" : "webstickImmunity", "amount" : 1 }
+	],
+	"diet" : "raw_omnivore",
+	"controlModifiers" : {
+		"speedModifier" : 1.15
+	},
+	"envEffects" : [
+		{
+			"biomes" : [ "midnight", "lightless", "penumbra" ],
+			"stats" : [
+				{ "stat" : "maxHealth", "effectiveMultiplier" : 1.15 },
+				{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.15 }
+			]
+		}
+	],
+	"weaponEffects" : [
+		{
+			"combos" : [ [ "spear" ] ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.25 },
+				{ "stat" : "critDamage", "amount" : 0.15 }
+			]
+		},
+		{
+			"combos" : [
+				[ "shortspear", "dagger" ],
+				[ "shortspear", "shortspear" ],
+				[ "shortspear", "shortsword" ],
+				[ "shortspear", "katana" ],
+				[ "shortspear", "rapier" ],
+				[ "shortspear", "longsword" ],
+				[ "shortsword", "shortsword" ],
+				[ "shortsword", "dagger" ],
+				[ "shortsword", "katana" ],
+				[ "shortsword", "rapier" ],
+				[ "shortsword", "longsword" ],
+				[ "dagger", "dagger" ],
+				[ "dagger", "katana" ],
+				[ "dagger", "rapier" ],
+				[ "dagger", "longsword" ],
+				[ "katana", "katana" ],
+				[ "katana", "rapier" ],
+				[ "katana", "longsword" ],
+				[ "rapier", "rapier" ],
+				[ "rapier", "longsword" ],
+				[ "longsword", "longsword" ]
+			],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.1 },
+				{ "stat" : "critChance", "amount" : 1 }
+			]
+		}
+	]
+}

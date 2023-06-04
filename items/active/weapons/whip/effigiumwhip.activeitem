@@ -1,0 +1,58 @@
+{
+  "itemName" : "effigiumwhip",
+  "price" : 300,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "Rare",
+  "description" : "A ghostly lash. Rather short but swings fast.
+^cyan;Inflicts Caliginous Gas^reset;",
+  "shortdescription" : "Effigium Whip",
+  "tooltipKind" : "sword2",
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","whip","upgradeableWeapon","effigium","shadow"],
+
+  "inventoryIcon" : "effigiumwhip.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "effigiumwhip.png",
+	"weaponFullbright" : ""
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : { "particles" : [ ]}},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/whip_swing1.ogg", "/sfx/melee/whip_swing2.ogg", "/sfx/melee/whip_swing3.ogg" ],
+      "crack" : [ "/sfx/melee/whip_impact1.ogg", "/sfx/melee/whip_impact2.ogg", "/sfx/melee/whip_impact3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [1, 0],
+    "length" : [2, 9],
+    "segmentImage" : "/items/active/weapons/whip/effigiumwhiplink.png",
+    "endSegmentImage" : "/items/active/weapons/whip/effigiumwhipend.png",
+    "segmentSize" : 0.375,
+    "fullbright" : false
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "shadow",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 0.8,
+    "chainDps" : 1.5,
+    "crackDps" : 5.5,
+
+    "damageConfig" : {
+      "statusEffects" : [ "shadowgasfx" ]
+    },
+
+    "projectileType" : "whipcrackshadow"
+  },
+
+  "critChance" : 2,
+  "critBonus" : 2,
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}

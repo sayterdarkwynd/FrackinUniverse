@@ -1,14 +1,15 @@
 {
   "objectName" : "fu_quantumgenerator",
   "rarity" : "legendary",
-    "colonyTags" : [ "science" ],
+  "colonyTags" : [ "science" ],
   "category" : "wire",
   "objectType" : "container",
   "price" : 2500,
-  "description" : "A hi-tech power solution. Unmatched power at 40u. Bio-fuels or high-end fuels required to operate efficiently.",
-  "shortdescription" : "^cyan;Quantum Reactor^white;",
+  "description" : "Unmatched clean energy up to ^orange;620W^reset;. Fuel type will decide power output. ^orange;Heats up, heat increases output.^reset; ^blue;Left Input^reset;: On/Off Switch",
+  "shortdescription" : "^cyan;Quantum Reactor^reset;",
   "race" : "generic",
   "printable" : false,
+  "tooltipKind" : "base",
 
   "inventoryIcon" : "fu_quantumgeneratoricon.png",
   "orientations" : [
@@ -28,33 +29,49 @@
   },
   "animationPosition" : [0, 0],
   "soundEffect" : "/objects/power/fu_quantumgenerator/fu_quantumgenerator.ogg",
-  
+
   "slotCount" : 1,
   "uiConfig" : "/objects/power/fu_quantumgenerator/fu_quantumgenerator.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
-  
-  "scripts" : [ "/objects/power/fu_quantumgenerator/fu_quantumgenerator.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 90,
-  
-  "inputNodes" : [ [2, 4] ],
+
+  "scripts" : [ "/scripts/fupower.lua","fu_quantumgenerator.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [2, 4],[0, 4] ],
   "outputNodes" : [ [2, 2] ],
-  
-  "isn_powerSupplier" : true,
+
+  "powertype" : "output",
   "acceptablefuel" : {
-    "biofuelcannister" : 20,
-    "biofuelcannisteradv" : 30,
-    "uraniumrod" : 30,
-    "energiflower" : 40,
-    "plutoniumrod" : 40,
-    "vialproto" : 50,
-    "neptuniumrod" : 50,
-    "thoriumrod" : 60,
-    "biofuelcannistermax" : 60,
-    "solariumstar" : 70,    
-    "ultronium" : 90,
-    "liquidelderfluid" : 140
-  }
+    "biofuelcannister" : 40,
+    "biofuelcannisteradv" : 50,
+    "uraniumrod" : 50,
+    "energiflower" : 60,
+    "plutoniumrod" : 60,
+    "helium3gasliquid" : 70,
+    "vialproto" : 80,
+    "neptuniumrod" : 90,
+    "enricheduranium" : 130,
+    "energywood" : 105,
+    "thoriumrod" : 90,
+    "fu_hydrogenmetallic" : 255,
+    "biofuelcannistermax" : 200,
+    "enrichedplutonium" : 220,
+    "liquidelderfluid" : 150,
+    "deuterium" : 280,
+    "tritium" : 300,
+    "solariumstar" : 450,
+    "ultronium" : 500,
+    "liquidmetallichydrogen" : 550,
+    "liquiddeuterium" : 600,
+    "schrodingerscat" : 900
+  },
+  "heat" : [
+    {"minheat" : 70,"animator" : {"screen" : "slow","fans" : "slow"},"sound" : true,"power" : 20,"light" : [126,206,255]},
+    {"minheat" : 50,"animator" : {"screen" : "slow","fans" : "slow"},"sound" : true,"power" : 16,"light" : [126,206,255]},
+    {"minheat" : 30,"animator" : {"screen" : "slow","fans" : "slow"},"sound" : true,"power" : 12,"light" : [126,206,255]},
+    {"minheat" : 20,"animator" : {"screen" : "slow","fans" : "slow"},"sound" : true,"power" : 9,"light" : [126,206,255]},
+    {"minheat" : 5,"animator" : {"screen" : "slow","fans" : "slow"},"sound" : true,"power" : 5,"light" : [126,206,255]},
+    {"minheat" : 0,"animator" : {"screen" : "off","fans" : "off"},"sound" : false,"power" : 0,"light" : [0,0,0]}
+  ]
 }

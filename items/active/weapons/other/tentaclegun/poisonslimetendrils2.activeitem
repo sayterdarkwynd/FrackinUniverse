@@ -1,0 +1,68 @@
+{
+  "itemName" : "poisonslimetendrils2",
+  "level" : 3,
+  "price" : 750,
+  "maxStack" : 1,
+  "rarity" : "Rare",
+  "description" : "Reach out and hit somebody.",
+  "shortdescription" : "Poison Slime Tendrils II",
+  "tooltipKind" : "gun",
+//  "learnBlueprintsOnPickup" : [ "poisonslimetendrils2", "poisonslimetendrils3" ],
+  "category" : "uniqueWeapon",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","ranged","livingweapon","upgradeableWeapon","slime","poison"],
+
+  "inventoryIcon" : "poisonslimetendrilsicon.png",
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "slimetendrils.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/slimetendril1.ogg", "/sfx/gun/slimetendril2.ogg", "/sfx/gun/slimetendril3.ogg" ]
+    }
+  },
+  "baseOffset" : [0, 0],
+  "muzzleOffset" : [0, 0],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "tentaclegun",
+  "primaryAbility" : {
+    "chain" : {
+      "taper" : 0.3,
+      "segmentImage" : "/items/active/weapons/other/tentaclegun/poisonslimetendrilsegment.png",
+      "endSegmentImage" : "/items/active/weapons/other/tentaclegun/poisonslimetendrilend.png",
+      "segmentSize" : 1.0
+    },
+
+    "guideProjectiles" : true,
+    "maxLength" : 25,
+
+    "baseDps" : 5.4,
+    "fireTime" : 0.2,
+    "maxProjectiles" : 4,
+    "energyUsage" : 40,
+    "inaccuracy" : 0.01,
+
+    "projectileType" : "invisiblepoisontentaclefist",
+    "projectileParameters" : {
+      "knockback" : 0,
+      "speed" : 40,
+      "timeToLive" : 10,
+  "statusEffects" : [
+{"effect" : "weakpoison", "duration" : 7 }
+  ]
+    }
+
+  },
+  "critChance" : 2,
+  "critBonus" : 4,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,54 @@
+{
+	"stats": [
+		{ "stat": "foodDelta", "baseMultiplier": 0.75 },
+		{ "stat": "maxHealth", "effectiveMultiplier": 0.9 },
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.2 },
+		{ "stat": "protection", "amount": 2 },
+		{ "stat": "electricResistance", "amount": 0.25 },
+		{ "stat": "fireResistance", "amount": -0.75 },
+		{ "stat": "iceResistance", "amount": 0.5 },
+		{ "stat": "shadowResistance", "amount": 0.5 },
+		{ "stat": "poisonStatusImmunity", "amount": 1 }
+	],
+	"liquidEffects": [
+		{
+			"liquids": [ 1, 2, 3, 5, 6, 7, 8, 12, 13, 17, 41, 42, 43, 44, 45, 47, 48, 51, 52, 53, 54, 55, 56, 57, 58, 61, 62, 63, 65, 66, 67, 68, 69, 70 ],
+			"stats": [ { "stat": "protection", "effectiveMultiplier": 0.75 } ],
+			"status" : [ "waterWeight" ]
+		}
+	],
+	// Is there a way to increase liquid effect durations?
+	// Water Weight should expire, not vansih after leaving the liquid
+	"diet" : "omnivore",
+	"envEffects": [
+		{
+			"biomes": [ "bones", "flesh" ],
+			"stats": [
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.3 }
+			]
+		}
+	],
+	"weaponEffects": [
+		{
+			"weapons": [ "wand", "staff" ],
+			"stats": [
+				{ "stat": "protection", "effectiveMultiplier": 1.15 },
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.1 }
+			]
+		},
+		{
+			"weapons": [ "livingweapon", "bioweapon" ],
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.2 },
+				{ "stat": "protection", "effectiveMultiplier": 1.10 }
+			]
+		}
+	],
+	"scripts" : [
+		{
+			"script" : "/scripts/fr_scripts/healthRegen.lua",
+			"args" : { "healingRate" : 0.01 }
+		}
+	],
+	"special": [ "headlampveluu"]
+}

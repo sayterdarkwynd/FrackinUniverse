@@ -1,0 +1,246 @@
+{
+  "type" : "doll",
+  "shortdescription" : "Creepy Doll",
+  "description" : "Possessed by an evil spirit",
+
+  "categories" : [ "doll" ],
+  "parts" : [ "body" ],
+
+  "animation" : "doll.animation",
+
+  "dropPools" : [{ "default" : "toyTreasure" }],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua",
+      "/stats/monstereffects/monsterstatus_ghostlyglow.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "renderLayer" : "foregroundEntity",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 50,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 10.0,
+
+      "hurtTime" : 0.25,
+      "hurtWaitForGround" : false,
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-invulnerable",
+          "parameters" : {
+            "windupTime" : 0,
+            "windupState" : "",
+            "winddownTime" : 0.6,
+            "winddownState" : "",
+
+            "invulnerableTime" : 1
+          }
+        }
+      ],
+
+      // Special hook for behavior during the invulnerable action
+      // If this behavior succeeds, invulnerability ends
+      "invulnerableActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "usePathfinding" : false,
+            "flyState" : ""
+          }
+        }
+      ],
+
+      "foundTargetActions" : [
+        {
+          "name" : "action-aggrohop",
+          "parameters" : {
+            "aggroHopSpeed": 0,
+            "aggroHopWait": 0.5,
+            "aggroHopState": "idle",
+            "onGround": false
+          }
+        }
+      ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 3.0,
+          "parameters" : {
+            "maximumRange" : 50,
+            "requireLineOfSight" : false,
+            "windupState" : "charge",
+            "windupTime" : 0.5,
+            "aimAtTarget" : true,
+            "chargeTime" : 0.5,
+            "chargeSpeed" : 60,
+            "chargeControlForce" : 400,
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+            "wallCollide": false,
+            "winddownStopForce" : 1000,
+            "winddownState" : "fly"
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "emerge-fly"
+        }
+      ],
+
+
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "usePathfinding" : false
+          }
+        }
+      ],
+
+      "concurrentActions" : [],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "icegas",
+            "projectileParameters" : {"power" : 4,"timeToLive" : 0.4},
+            "aimDirection" : [0, 1],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-1.75,0.5], [-0.5,2.0], [0.5,2.0], [1.75,0.5], [1.75,-0.5], [0.5,-2.0], [-0.5,-2.0], [-1.75,-0.5] ],
+      "damage" : 8,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "ice",
+      "knockback" : 10,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionEnabled" : false,
+      "collisionPoly" : [ [-1.75,0.5], [-0.5,2.0], [0.5,2.0], [1.75,0.5], [1.75,-0.5], [0.5,-2.0], [-0.5,-2.0], [-1.75,-0.5] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 0.5,
+      "airForce" : 10,
+      "flySpeed" : 12
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 60
+        },
+        "protection" : {
+          "baseValue" : 25
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "insanityImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "biooozeImmunity" : {
+          "baseValue" : 1.0
+        },
+        "sulphuricImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : { "baseValue" : 1.0 },
+        "shadowResistance" : { "baseValue" : 1.0 },
+        "poisonResistance" : { "baseValue" : 0.8 },
+        "iceResistance" : { "baseValue" : 0.8 },
+        "radioactiveResistance" : { "baseValue" : 0.8 },
+        "electricResistance" : { "baseValue" : 0.8 },
+        "fireResistance" : { "baseValue" : -0.5 },
+        "cosmicResistance" : { "baseValue" : -1.0 }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false
+  }
+}

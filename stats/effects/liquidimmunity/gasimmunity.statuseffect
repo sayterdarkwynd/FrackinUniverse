@@ -1,11 +1,29 @@
 {
   "name" : "gasimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 60,
-
-  "scripts" : [
-    "gasimmunity.lua"
-  ]//,
-  //"label" : "Gas Immunity",
-  //"icon" : "/interface/statuses/biomecold.png"
+ 	"effectConfig": {
+		"stats": [
+			{
+				"stat": "helium3Immunity",
+				"amount": 1
+			},
+			{
+				"stat": "shadowgasImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "metallichydrogengasImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "poisongasImmunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 60,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
+  "label" : "X-Gas",
+  "icon" : "/interface/statuses/gas.png"
 }

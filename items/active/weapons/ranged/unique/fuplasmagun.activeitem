@@ -4,15 +4,18 @@
   "inventoryIcon" : "fuplasmagun.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "A lovely friend to bring to a party.",
+  "description" : "Focuses energy for supreme damage output.
+^cyan;Counts as plasma weapon for set bonuses^reset;
+^yellow;Destroys tiles^reset;",
   "shortdescription" : "Plasma Rifle",
-  "level" : 4,
-  "tooltipKind" : "gun",
+  "category" : "energy",
+  "level" : 5,
+  "tooltipKind" : "gun2",
   "weaponType" : "Plasma",
-  "itemTags" : ["weapon","ranged","plasma"],
+  "itemTags" : ["weapon","ranged","assaultrifle", "plasma", "energy", "upgradeableWeapon" ],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/unique/fuplasmagun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "fuplasmagun.png",
@@ -21,6 +24,15 @@
     "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3blue.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.55, 0.2]
+		  }
+		}
+      }
+    },
     "sounds" : {
       "fire" : [ "/sfx/weapons/shock_impact3.ogg" ]
     },
@@ -53,7 +65,7 @@
     "fireType" : "auto",
 
     "projectileType" : "fuplasmarifleblastsmall",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 60,
       "knockback" : 4
     },
@@ -95,7 +107,10 @@
         ]
       }
     },
-    
+
+  "critChance" : 2,
+  "critBonus" : 12,
+
   "altAbilityType" : "fuplasmaburst",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

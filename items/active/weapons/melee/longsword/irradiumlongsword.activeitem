@@ -1,0 +1,46 @@
+{
+  "itemName" : "irradiumlongsword",
+  "price" : 1400,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A honed irradium edge makes this rather...reactive.",
+  "shortdescription" : "Irradium Longsword",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","longsword", "upgradeableWeapon","irradium","radioactive"],
+  "inventoryIcon" : "irradiumlongsword.png",
+
+  "animation" : "combolongsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "irradiumlongsword.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+      "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+      "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+      "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.92,
+    "baseDps" : 6.6,
+    "damageConfig" : {
+      "damageSourceKind": "radioactivebroadsword",
+      "statusEffects" : [ "radiationburn" ]
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 8,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

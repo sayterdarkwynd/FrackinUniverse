@@ -1,0 +1,41 @@
+{
+  "itemName" : "xithriciterapier",
+  "price" : 900,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Cosmic power in slim, dangerous styling.
+^cyan;Inflicts Minor Vulnerability^reset;",
+  "shortdescription" : "Xithricite Rapier",
+  "tooltipKind" : "sword2",
+  "category" : "Rapier",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon","xithricite" ],
+  "handGrip" : "wrap",
+  "inventoryIcon" : "xithriciterapier_ycar.png",
+
+  "animation" : "piercecomboglow.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "xithriciterapier_ycar.png",
+    "bladefullbright" : "xithriciterapierfullbright.png"
+  },
+  "animationCustom" : { },
+  "critChance" : 1,
+  "critBonus" : 5,
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "piercecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.41,
+    "baseDps" : 5.45,
+    "damageConfig" : {
+      "damageSourceKind":"cosmic",
+      "statusEffects":["defenseboostneg20"]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

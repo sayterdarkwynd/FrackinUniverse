@@ -3,34 +3,36 @@
   "price" : 150,
   "level" : 5,
   "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "A legendary weapon",
+  "rarity" : "rare",
+  "description" : "A soul-cleaver of ageless, unknown materials.",
   "shortdescription" : "Shadow Reaper",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "shortsword",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword"],
+  "itemTags" : ["weapon","melee","shortsword","shadow", "upgradeableWeapon"],
 
   "inventoryIcon" : "shadowburst.png",
-
-  "animation" : "comboshortsword.animation",
+  //"collectablesOnPickup" : { "fu_weaponshortsword" : "shadowburst" },
+  "animation" : "comboeldershortsword.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "shadowburst.png"
+    "blade" : "shadowburst.png",
+    "bladefullbright" : "shadowburstfullbright.png"
   },
-  
+
   "animationCustom" : { },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
   "elementalType" : "electric",
 
-  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbilityType" : "shortswordcombo3",
   "primaryAbility" : {
     "fireTime" : 0.7,
-    "baseDps" : 7.5
+    "baseDps" :  7.3
   },
-  
+  "critChance" : 3,
+  "critBonus" : 3,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
-  
+
 }

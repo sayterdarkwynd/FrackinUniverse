@@ -1,0 +1,52 @@
+{
+	"objectName" : "ojsecuritygate",
+	"colonyTags" : ["door"],
+	"rarity" : "Common",
+
+	"category" : "door",
+	"price" : 200,
+	"description" : "An impenetrable locked gate.",
+	"shortdescription" : "High-Tech Security Gate",
+	"race" : "generic",
+
+	"apexDescription" : "...",
+	"avianDescription" : "...",
+	"floranDescription" : "...",
+	"glitchDescription" : "...",
+	"humanDescription" : "...",
+	"hylotlDescription" : "...",
+	"novakidDescription" : "...",
+
+	"inventoryIcon" : "ojsecuritygateicon.png",
+//	"learnBlueprintsOnPickup" : [ "hazard", "ojsecuritygate" ],
+
+	"orientations" : [
+    {
+      "imageLayers" : [ { "image" : "ojsecuritygate.png:default", "fullbright" : true }, { "image" : "ojsecuritygatelit.png:default" } ],
+      "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "direction" : "left"
+    },
+    {
+      "imageLayers" : [ { "image" : "ojsecuritygate.png:default", "fullbright" : true }, { "image" : "ojsecuritygatelit.png:default" } ],
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "direction" : "right"
+    }
+  ],
+
+	"scripts" : [ "/objects/wired/door/lockdoor.lua" ],
+  "scriptDelta" : 5,
+
+	"animation" : "/objects/wired/door/4frameglowdoor.animation",
+	"animationParts" : {
+    "door" : "ojsecuritygatelit.png",
+    "doorfullbright" : "ojsecuritygate.png"
+  },
+
+  "inputNodes" : [ [0, 5] ],
+	"outputNodes" : [ [0, 0] ]
+}

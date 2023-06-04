@@ -1,0 +1,63 @@
+{
+	"objectName" : "racialspacestationconsole_scientific",
+	"colonyTags" : ["misc"],
+	"rarity" : "Common",
+	"description" : "A terminal used to interact with this space station.",
+	"shortdescription" : "Racial Space Station Terminal (scientific)",
+	"race" : "generic",
+	"category" : "other",
+
+//	"health" : 100000,
+	"printable" : false,
+//	"unbreakable" : true,
+	"smashOnBreak" : true,
+//	"consumeOnPickup" : true,
+//	"rooting" : true,
+	"price" : 0,
+
+	"lightColor" : [21, 40, 51],
+	"lightPosition" : [0, 3],
+
+	"flickerPeriod" : 0.3,
+	"flickerMinIntensity" : 0.95,
+	"flickerMaxIntensity" : 1,
+	"flickerPeriodVariance" : 0.1,
+	"flickerIntensityVariance" : 0.0,
+
+	"inventoryIcon" : "icon.png",
+	"orientations" : [
+		{
+			"imageLayers" : [ { "image" : "base.png:scientific" }, { "image" : "baseFullbright.png:scientific", "fullbright" : true } ],
+			"imagePosition" : [-8, 0],
+			"animationPosition" : [-8, 0],
+
+			"flipImages" : true,
+			"direction" : "left",
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		},
+		{
+			"imageLayers" : [ { "image" : "base.png:scientific" }, { "image" : "baseFullbright.png:scientific", "fullbright" : true } ],
+			"imagePosition" : [-8, 0],
+			"animationPosition" : [-8, 0],
+
+			"direction" : "right",
+			"lightPosition" : [0, 3],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		}
+	],
+
+	"animation" : "racialspacestationconsole.animation",
+	"animationParts" : {
+		"base" : "base.png",
+		"baseFullbright" : "baseFullbright.png",
+		"race" : "racialspacestationconsole.png"
+	},
+
+	"scripts" : [ "racialspacestationconsole.lua" ],
+	"interactAction" : "ScriptPane",
+	"interactData" : "/interface/scripted/spaceStation/spaceStation.config"
+}

@@ -1,0 +1,107 @@
+{
+  "type" : "nightarvillagerking",
+  "baseType" : "base",
+
+  "levelVariance" : [3, 3],
+  "persistent" : true,
+
+  "damageTeamType" : "friendly",
+
+  "scriptConfig" : {
+    "behavior" : "villager",
+
+    "behaviorConfig" : {
+      "greetingChance" : 0.5,
+      "hostileDamageTeam" : { "type" : "enemy", "team" : 1 }
+    },
+
+    "questGenerator" : {
+      "pools" : ["common"],
+      "enableParticipation" : true,
+      "timeLimit" : 30,
+      "nearbyQuestLimit" : 2,
+      "nearbyQuestRange" : 50,
+	    "questCountRange" : [1, 4],
+
+      "graduation" : {
+        "nextNpcType" : [
+          [0.5, "crewmembercounsellor"],
+          [0.35, "crewmembercounsellor2"],
+          [0.15, "crewmembercounsellor3"],
+          [0.5, "crewmemberchef"],
+          [0.35, "crewmemberchef2"],
+          [0.15, "crewmemberchef3"],
+          [0.5, "crewmemberwarrior"],
+          [0.35, "crewmemberwarrior2"],
+          [0.15, "crewmemberwarrior3"],
+          [1, "crewmembergeologist"],
+          [1, "crewmember_spacestationcaptain"],
+          [1, "crewmemberguardian"],
+          [1, "crewmembertailor"]
+        ]
+      }
+    },
+
+    "reactions" : {
+      "spontaneous" : [
+        [5.0, "sleep", { "timeRange" : [0.7, 0.9] }],
+        [1.0, "sit", { "timeRange" : [0.6,0.2]}],
+        [1.0, "wander"]
+      ]
+    },
+
+    "dialog" : {
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/grumble.config:tagCriteria",
+          "enclosedArea" : "/dialog/grumble.config:enclosedArea",
+          "otherDeed" : "/dialog/grumble.config:otherDeed",
+          "severe" : "/dialog/grumble.config:severe",
+          "final" : "/dialog/grumble.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/arrivedhome.config:beacon",
+          "rent" : "/dialog/arrivedhome.config:rent"
+        }
+      },
+      "flee" : {
+        "helpme" : "/dialog/flee.config:helpme",
+        "safe" : "/dialog/flee.config:safe"
+      },
+      "breakObject" : "/dialog/converse.config:breakObject",
+      "greeting" : "/dialog/converse.config:greeting",
+      "converse" : "/dialog/converse.config:converse",
+      "accuse" : "/dialog/thief.config:accuse",
+      "alert" : "/dialog/thief.config:alert"
+    }
+  },
+
+  "items" : {
+    "nightar" : [
+      [0, [
+          {
+            "head" : [{ "name" : "funightarcrown", "parameters" : { "colorIndex" : [1, 2] } }],
+            "chest" : [ { "name" : "fukingslayerchest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "fukingslayerpants", "parameters" : { "colorIndex" : 1 } } ]
+	  }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 150.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.0
+      },
+      "protection" : {
+        "baseValue" : 1.2
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      }
+    }
+  }
+}

@@ -1,340 +1,463 @@
 {
-  "type" : "warbot",
-  "shortdescription" : "War Bot",
-  "description" : "Resilient robot built for the battlefield.",
+	"type": "warbot",
+	"shortdescription": "War Bot",
+	"description": "Resilient robot built for the battlefield.",
 
-  "categories" : [ "warbot" ],
-  "parts" : [ "body" ],
+	"categories": ["warbot"],
+	"parts": ["body"],
 
-  "animation" : "warbot.animation",
+	"animation": "warbot.animation",
 
-  "dropPools" : [ "ffmetallicbossChest", "furobotTreasure" ],
+	"dropPools": ["warbotTreasure"],
 
-  "baseParameters" : {
-    "scripts" : [
-      "/monsters/monster.lua"
-    ],
+	"baseParameters": {
+		"scripts": [
+			"/monsters/boss/warbot/monster.lua",
+			"/monsters/fu_bossExtraResistsHandler.lua"
+		],
+		"bossExtraResistsValue":0.5,
 
-    "behavior" : "monster",
+		"behavior": "monster",
 
-    "behaviorConfig" : {
-      "damageOnTouch" : true,
+		"behaviorConfig": {
+			"damageOnTouch": true,
 
-      "targetQueryRange" : 20,
-      "targetOnDamage" : true,
-      "keepTargetInSight" : true,
-      "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 2.5,
-      "hurtTime": 0.10,
-      "hurtWaitForGround": false,
-      "hurtWaitForGroundTime": 0.1,
+			"targetQueryRange": 20,
+			"targetOnDamage": true,
+			"keepTargetInSight": true,
+			"keepTargetInRange": 50,
+			"targetOutOfSightTime": 2.5,
+			"hurtTime": 0.10,
+			"hurtWaitForGround": false,
+			"hurtWaitForGroundTime": 0.1,
 
-      "foundTargetActions" : [],
-      "fleeActions" : [],
+			"foundTargetActions": [],
+			"fleeActions": [],
 
-      "hostileActions" : [
-        {
-          "name" : "action-charge",
-          "cooldown" : 7,
-          "parameters" : {
-            "maximumRange" : 20,
-            "windupState" : "chargewindup",
-            "windupTime" : 0.3,
+			"hostileActions": [{
+					"name": "action-charge",
+					"cooldown": 5,
+					"parameters": {
+						"maximumRange": 20,
+						"windupState": "chargewindup",
+						"windupTime": 0.3,
 
-            "chargeTime" : 0.3,
-            "chargeSpeed" : 30,
-            "chargeControlForce" : 800,
-            "chargeState" : "charge",
-            "wallCrashSound" : "",
-            "wallCrashEmitter" : "",
+						"chargeTime": 0.3,
+						"chargeSpeed": 20,
+						"chargeControlForce": 900,
+						"chargeState": "charge",
+						"wallCrashSound": "",
+						"wallCrashEmitter": "",
 
-            "winddownTime" : 0.2,
-            "winddownStopForce" : 600,
-            "winddownState" : "chargewinddown"
-          }
-        },
-        {
-          "name" : "action-charge",
-          "cooldown" : 8,
-          "parameters" : {
-            "maximumRange" : 20,
-            "windupState" : "chargewindup2",
-            "windupTime" : 0.3,
+						"winddownTime": 0.2,
+						"winddownStopForce": 800,
+						"winddownState": "chargewinddown"
+					}
+				},
+				{
+					"name": "action-charge",
+					"cooldown": 6,
+					"parameters": {
+						"maximumRange": 20,
+						"windupState": "chargewindup2",
+						"windupTime": 0.3,
 
-            "chargeTime" : 0.3,
-            "chargeSpeed" : 30,
-            "chargeControlForce" : 800,
-            "chargeState" : "charge2",
-            "wallCrashSound" : "",
-            "wallCrashEmitter" : "",
+						"chargeTime": 0.3,
+						"chargeSpeed": 20,
+						"chargeControlForce": 900,
+						"chargeState": "charge2",
+						"wallCrashSound": "",
+						"wallCrashEmitter": "",
 
-            "winddownTime" : 0.2,
-            "winddownStopForce" : 600,
-            "winddownState" : "chargewinddown2"
-          }
-        }, 
-        {
-          "name" : "action-leap", 
-          "cooldown" : 8,
-          "parameters" : {
-            "minimumRange" : 5,
-            "maximumRange" : 20,
-            "windupTime" : 0.25,
-            "windupState" : "jumpwindup",
+						"winddownTime": 0.2,
+						"winddownStopForce": 800,
+						"winddownState": "chargewinddown2"
+					}
+				},
+				{
+					"name": "action-fire",
+					"cooldown": 15,
+					"parameters": {
+						"requireLineOfSight": true,
+						"maximumRange": 25,
+						"minimumRange": 10,
+						"windupState": "chestcharge",
+						"windupTime": 1.5,
 
-            "leapVelocity" : 45,
-            "collisionCheck" : true,
-            "highArc" : true,
-            "leapState" : "jump",
-            "fallState" : "fall",
+						"projectileType": "mobiusrgun",
+						"power": 12,
 
-            "winddownTime" : 0.25,
-            "winddownState" : "idle"
-          }
-        },        
-        {
-          "name" : "action-fire",
-	  "cooldown" : 14,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 30,
-            "minimumRange" : 3,
-            "windupState" : "fire",
-            "windupTime" : 0.4,
+						"fireOffset": [5.2, 0],
+						"aimAtTarget": true,
+						"projectileCount": 1,
+						"projectileParameters": {
+							"speed": 25
+						},
+						"fireSound": "chestgun",
+						"fireState": "chestgun",
+						"fireDelay": 0.5,
+						"winddownState": "winddownfire2",
+						"winddownTime": 0.2
+					}
+				},
+				{
+					"name": "action-fire",
+					"cooldown": 9,
+					"parameters": {
+						"requireLineOfSight": true,
+						"maximumRange": 50,
+						"minimumRange": 12,
+						"windupState": "",
+						"windupTime": 0.60,
 
-            "projectileType" : "rocketswarm",
-            "power" : 25,
-            "speed": 50,
-            "fireOffset" : [6, 0],
-            "aimAtTarget" : true,
-            "projectileCount" : 1,
-            "fireSound" : "fire",
-            "range": 30,
-            "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 0.2
-          }
-        },        
-        {
-          "name" : "action-fire",
-	  "cooldown" : 9,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 8,
-            "minimumRange" : 1,
-            "windupState" : "chestgun",
-            "windupTime" : 0.7,
+						"projectileType": "minirocketflyer",
+						"power": 6,
 
-            "projectileType" : "ionrifleshot",
-            "power" : 8,
-            "speed": 50,
-            "fireOffset" : [3.8, 0],
-            "aimAtTarget" : true,
-            "projectileCount" : 3,
-            "projectileInterval" : 0.14,
-            "fireSound" : "chestgun",
-            "range": 8,
-            "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 0.2
-          }
-        },        
-        {
-          "name" : "action-fire",
-	  "cooldown" : 2,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 15,
-            "minimumRange" : 0,
-            "windupState" : "dualgun",
-            "windupTime" : 0.4,
+						"fireOffset": [5.2, 0],
+						"aimAtTarget": true,
+						"projectileCount": 3,
+						"projectileInterval": 0.16,
+						"fireSound": "fire",
+						"fireState": "fire",
+						"fireDelay": 0.5,
+						"winddownState": "winddownfire1",
+						"winddownTime": 0.4
+					}
+				},
+				{
+					"name": "action-fire",
+					"cooldown": 1.4,
+					"parameters": {
+						"requireLineOfSight": true,
+						"maximumRange": 15,
+						"minimumRange": 5,
+						"windupState": "",
+						"windupTime": 0.85,
 
-            "projectileType" : "gausspistolshot",
-            "power" : 5,
-            "fireOffset" : [4.5, 1.3],
-            "aimAtTarget" : true,
-            "projectileCount" : 4,
-            "projectileInterval" : 0.01,
-            "fireSound" : "dualgun",
-            "range": 15,
-            "fireState" : "",
-            "winddownState" : "",
-            "winddownTime" : 0.4
-          }
-        }       
-      ],
+						"projectileType": "gausspistolshot",
+						"power": 5,
 
-      "periodicActions" : [],
+						"fireOffset": [5.3, 1.3],
+						"aimAtTarget": true,
+						"projectileCount": 6,
+						"projectileInterval": 0.03,
+						"fireSound": "dualgun",
+						"range": 15,
+						"fireState": "dualgun",
+						"fireDelay": 0.6,
+						"winddownState": "winddownfire3",
+						"winddownTime": 0.4
+					}
+				}
+			],
 
-      "approachActions" : [
-        {
-          "name" : "approach-walk",
-          "parameters" : {
-            "canJump" : true,
-            "maxJumps" : 5,
-            "jumpXVelocity" : 12,
-            "jumpYVelocity" : 30,
-            "jumpXControlForce" : 50,
-            "minXRange" : 10
-          }
-        }
-      ],
+			"periodicActions": [
 
-      "followActions" : [
-        {
-          "name" : "approach-teleport",
-          "parameters" : {
-          }
-        },
-        {
-          "name" : "approach-walk",
-          "parameters" : {
-            "canJump" : true,
-            "maxJumps" : 5,
-            "jumpXVelocity" : 12,
-            "jumpYVelocity" : 30,
-            "jumpXControlForce" : 50,
-            "minXRange" : 10
-          }
-        }
-      ],
+			],
 
-      "wanderActions" : [
-        {
-          "name" : "wander-walk",
-          "cooldown" : 6.0,
-          "parameters" : {
-            "wanderTime" : [5, 15],
-            "canJump" : true,
-            "maxJumps" : 5,
-            "jumpXVelocity" : 12,
-            "jumpYVelocity" : 30,
-            "jumpXControlForce" : 50,
-            "minXRange" : 10
-          }
-        }
-      ],
+			"approachActions": [{
+				"name": "approach-walk",
+				"parameters": {
+					"canJump": true,
+					"maxJumps": 5,
+					"jumpXVelocity": 12,
+					"jumpYVelocity": 30,
+					"jumpXControlForce": 50,
+					"minXRange": 10
+				}
+			}],
 
-      "concurrentActions" : [
-        {
-          "name" : "action-spawncompanions",
-          "parameters" : {
-            "maxCount" : 3,
-            "spawnCooldown" : 25.0,
-            "monsterType" : "triplod",
-            "state" : "idle"
-          }
-        }
-      ]     
-      
-    },
+			"followActions": [{
+					"name": "approach-teleport",
+					"parameters": {}
+				},
+				{
+					"name": "approach-walk",
+					"parameters": {
+						"canJump": true,
+						"maxJumps": 5,
+						"jumpXVelocity": 12,
+						"jumpYVelocity": 30,
+						"jumpXControlForce": 50,
+						"minXRange": 10
+					}
+				},
+				{
+					"name": "action-leap",
+					"cooldown": 8,
+					"parameters": {
+						"minimumRange": 5,
+						"maximumRange": 20,
+						"windupTime": 0.25,
+						"windupState": "jumpwindup",
+
+						"leapVelocity": 55,
+						"collisionCheck": true,
+						"highArc": true,
+						"leapState": "jump",
+						"fallState": "fall",
+
+						"winddownTime": 0.25,
+						"winddownState": "idle"
+					}
+				}
+			],
+
+			"wanderActions": [{
+				"name": "wander-walk",
+				"cooldown": 6.0,
+				"parameters": {
+					"wanderTime": [5, 15],
+					"canJump": true,
+					"maxJumps": 5,
+					"jumpXVelocity": 12,
+					"jumpYVelocity": 30,
+					"jumpXControlForce": 50,
+					"minXRange": 10
+				}
+			}],
+
+			"concurrentActions": [{
+				"name": "action-spawncompanions",
+				"parameters": {
+					"maxCount": 3,
+					"spawnCooldown": 25.0,
+					"monsterType": "triplod",
+					"state": "idle"
+				}
+			}],
+
+			"concurrentHostileActions": [{
+				"name": "action-leap",
+				"cooldown": 8,
+				"parameters": {
+					"minimumRange": 5,
+					"maximumRange": 20,
+					"windupTime": 0.25,
+					"windupState": "jumpwindup",
+
+					"leapVelocity": 45,
+					"collisionCheck": true,
+					"highArc": true,
+					"leapState": "jump",
+					"fallState": "fall",
+
+					"winddownTime": 0.25,
+					"winddownState": "idle"
+				}
+			}],
+			"damageTakenActions": [{
+				"name": "action-fire",
+				"cooldown": 5,
+				"parameters": {
+					"requireLineOfSight": true,
+					"maximumRange": 25,
+					"minimumRange": 10,
+					"windupState": "chestcharge",
+					"windupTime": 1.5,
+
+					"projectileType": "ffteslasmall",
+					"power": 3,
+
+					"fireOffset": [5.2, 0],
+					"aimAtTarget": false,
+					"projectileCount": 4,
+					"inaccuracy": 3.14,
+					"projectileInterval": 0,
+					"fireSound": "aggroHop",
+					"fireState": "chestgun",
+					"fireDelay": 0.5,
+					"winddownState": "winddownfire2",
+					"winddownTime": 0.2
+				}
+			}]
+
+		},
 
 
-    "damageParts" : {
-      "body" : {
-        "damage" : 16,
+		"damageParts": {
+			"body": {
+				"damage": 16,
 
-        "teamType" : "enemy",
-        "damageSourceKind" : "slash",
-        "knockback" : 30,
-        "statusEffects" : [ ]
-      }
-    },
+				"teamType": "enemy",
+				"damageSourceKind": "slash",
+				"knockback": 30,
+				"statusEffects": []
+			}
+		},
 
-    "touchDamage" : {
-      "poly" : [ [-4.75,2.25], [-4.625,-3.75], [3.25,-4], [3.25,2.25] ],
-      "damage" : 14,
+		"touchDamage": {
+			"poly": [
+				[-1.5, 1.75],
+				[-2, 1.0],
+				[-2.5, -4.2],
+				[-2.208, -5],
+				[2.2, -5],
+				[2.5, -4.2],
+				[2, 1.0],
+				[1.5, 1.75]
+			],
+			"damage": 14,
 
-      "teamType" : "enemy",
-      "damageSourceKind" : "slash",
-      "knockback" : 20,
-      "statusEffects" : [ ]
-    },
+			"teamType": "enemy",
+			"damageSourceKind": "slash",
+			"knockback": 20,
+			"statusEffects": []
+		},
 
-    "metaBoundBox" : [-4, -4, 4, 4],
-    "scale" : 1.0,
+		"metaBoundBox": [-4, -4, 4, 4],
+		"scale": 1.0,
 
-    "movementSettings" : {
-      "collisionPoly" : [ [-3.25,2.25], [-3.125,-3.625], [2.625,-4], [2.375,2.125] ],
+		"movementSettings": {
+			"collisionPoly": [
+				[-1.5, 1.75],
+				[-2, 1.0],
+				[-2.5, -4.2],
+				[-2.208, -5],
+				[2.2, -5],
+				[2.5, -4.2],
+				[2, 1.0],
+				[1.5, 1.75]
+			],
 
-      "mass" : 2.5,
-      "walkSpeed" : 5,
-      "runSpeed" : 11,
+			"mass": 2.5,
+			"walkSpeed": 4,
+			"runSpeed": 8
+		},
 
-      "airFriction" : 0,
+		"bodyMaterialKind": "organic",
 
-      "airJumpProfile" : {
-        "jumpSpeed" : 35.0,
-        "jumpInitialPercentage" : 1.0,
-        "jumpHoldTime" : 0.35
-      }
-    },
+		"knockoutTime": 0.3,
+		"knockoutAnimationStates": {
+			"damage": "stunned"
+		},
+		"deathParticles": "deathPoof",
+		"knockoutEffect": "",
 
-    "bodyMaterialKind" : "organic",
+		"statusSettings": {
+			"statusProperties": {
+				"targetMaterialKind": "organic"
+			},
 
-    "knockoutTime" : 0.3,
-    "knockoutAnimationStates" : {
-      "damage" : "stunned"
-    },
-    "deathParticles" : "deathPoof",
-    "knockoutEffect" : "",
+			"appliesWeatherStatusEffects": true,
+			"appliesEnvironmentStatusEffects": false,
+			"minimumLiquidStatusEffectPercentage": 0.1,
 
-    "statusSettings" : {
-      "statusProperties" : {
-        "targetMaterialKind" : "organic"
-      },
+			"primaryScriptSources": [
+				"/stats/monster_primary.lua"
+			],
+			"primaryScriptDelta": 5,
 
-      "appliesEnvironmentStatusEffects" : false,
-      "minimumLiquidStatusEffectPercentage" : 0.1,
+			"stats": {
+				"knockbackStunTime": {
+					"baseValue": 0.25
+				},
+				"knockbackThreshold": {
+					"baseValue": 9
+				},
+				"maxHealth": {
+					"baseValue": 520
+				},
+				"protection": {
+					"baseValue": 25
+				},
+				"fireStatusImmunity": {
+					"baseValue": 1.0
+				},
+				"poisonStatusImmunity": {
+					"baseValue": 1.0
+				},
+				"powerMultiplier": {
+					"baseValue": 1.0
+				},
+				"penaltyBlock": {
+					"baseValue": 1.0
+				},
+				"captureImmunity": {
+					"baseValue": 1.0
+				},
+				"critImmunity": {
+					"baseValue": 1.0
+				},
+				"specialStatusImmunity": {
+					"baseValue": 1.0
+				},
+				"poisonResistance": {
+					"baseValue": 1
+				},
+				"fireResistance": {
+					"baseValue": 0.8
+				},
+				"iceResistance": {
+					"baseValue": 0.8
+				},
+				"electricResistance": {
+					"baseValue": -0.3
+				},
+				"physicalResistance": {
+					"baseValue": 0.8
+				},
+				"shadowResistance": {
+					"baseValue": 0.5
+				},
+				"cosmicResistance": {
+					"baseValue": -0.3
+				},
+				"radioactiveResistance": {
+					"baseValue": 1
+				},
+				"stunImmunity": {
+					"baseValue": 1
+				},
+				"bleedingImmunity": {
+					"baseValue": 1
+				},
+				"linerifleStatusImmunity": {
+					"baseValue": 1
+				},
+				"centensianenergyStatusImmunity": {
+					"baseValue": 0.9
+				},
+				"xanafianStatusImmunity": {
+					"baseValue": 1
+				},
+				"akkimariacidStatusImmunity": {
+					"baseValue": 1
+				},
+				"slagStatusImmunity": {
+					"baseValue": 1
+				},
+				"bluoplasmaStatusImmunity": {
+					"baseValue": 1
+				},
+				"ucObliteratingBurnImmunity": {
+					"baseValue": 1
+				},
+				"ignoreInvisibilityEffects": {
+					"baseValue": 1
+				}
+			},
 
-      "primaryScriptSources" : [
-        "/stats/monster_primary.lua"
-      ],
-      "primaryScriptDelta" : 5,
+			"resources": {
+				"stunned": {
+					"deltaValue": -1.0,
+					"initialValue": 0.0
+				},
+				"health": {
+					"maxStat": "maxHealth",
+					"deltaStat": "healthRegen",
+					"defaultPercentage": 100
+				}
+			}
+		},
 
-      "stats" : {
-        "knockbackStunTime" : {
-          "baseValue" : 0.25
-        },
-        "knockbackThreshold" : {
-          "baseValue" : 9
-        },
-        "maxHealth" : {
-          "baseValue" : 220
-        },
-        "protection" : {
-          "baseValue" : 0.2
-        },
-        "fireStatusImmunity" : {
-          "baseValue" : 1.0
-        },          
-        "poisonStatusImmunity" : {
-          "baseValue" : 1.0
-        },        
-        "powerMultiplier" : {
-          "baseValue" : 1.45
-        }
-      },
-
-      "resources" : {
-        "stunned" : {
-          "deltaValue" : -1.0,
-          "initialValue" : 0.0
-        },
-        "health" : {
-          "maxStat" : "maxHealth",
-          "deltaStat" : "healthRegen",
-          "defaultPercentage" : 100
-        }
-      }
-    },
-
-    "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -8],
-    "capturable" : true,
-    "captureHealthFraction" : 0.15,
-    "capturedMonsterName" : "War Bot",
-    "capturedMonsterType" : "warbot", // turn into an adultpoptop when captured
-    "nametagColor" : [64, 200, 255]
-  }
+		"mouthOffset": [0, 0],
+		"feetOffset": [0, -8],
+		"capturable": false,
+		"captureHealthFraction": 0.15,
+		"capturedMonsterName": "War Bot",
+		"capturedMonsterType": "warbot2", // if captured, turns into a slightly weaker variant
+		"nametagColor": [64, 200, 255]//,
+		//"captureCollectables": {"fu_monster": "warbot"}
+	}
 }

@@ -1,0 +1,49 @@
+{
+  "projectileName" : "fuwidebeamshote",
+  "physics" : "laser",
+  "piercing" : false,
+  "bounces" : 2,
+  "level" : 3,
+  "damageKindImage" : "widebeamshoticon.png",
+  "image" : "widebeamshot.png",
+  "animationCycle" : 0.1,
+  "frameNumber" : 2,
+  "power" : 40,
+  "timeToLive" : 8,
+
+  "emitters" : [ "sparklesunicorn" ],
+  "fullbright" : true,
+  "actionOnHit" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/prismaticexplosion/prismaticexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "fuwidebeamcharx",
+      "timeToLive" : 0.5,
+      "fuzzAngle" : 1,
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 0
+
+    },
+    {
+      "action" : "projectile",
+      "type" : "fuwidebeamcharx",
+      "timeToLive" : 0.5,
+      "fuzzAngle" : 1,
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 35
+
+    },
+    {
+      "action" : "projectile",
+      "type" : "fuwidebeamcharx",
+      "timeToLive" : 0.5,
+      "fuzzAngle" : -1,
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : -35
+     }
+   ],
+  "damageKind" : "cosmicplasma"
+}

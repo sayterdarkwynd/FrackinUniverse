@@ -8,14 +8,15 @@
   "objectType" : "farmable",
   "printable" : false,
   "price" : 15,
-  
-  "lightColor" : [255, 0, 255],
- 
-  "learnBlueprintsOnPickup" : [ "ff_blisterlight1", "ff_blisterlight2", "ff_blisterlight3", "blisterhelm","blisterchest","blisterpants", "neuropodseed" ],
 
+  "lightColor" : [255, 0, 255],
+
+//  "learnBlueprintsOnPickup" : [ "ff_blisterlight1", "ff_blisterlight2", "ff_blisterlight3", "blisterhelm","blisterchest","blisterpants", "neuropodseed" ],
+  "largeImage" : "blisterbushplantseed.png:default.3.0",
   "inventoryIcon" : "blisterbushseedicon.png",
+  //"collectablesOnPickup" : { "fu_plant" : "blisterbush" },
   "orientations" : [
-  
+
 	{
       "imageLayers" : [ { "image" : "blisterbushplantseed.png:<color>.<stage>.<alt>", "fullbright" : true }, { "image" : "blisterbushplantseedlit.png:<color>.<stage>.<alt>" } ],
       "direction" : "left",
@@ -37,7 +38,7 @@
       "spaces" : [ [-1, 0], [-1, 1], [-1, 2], [-1, 3], [-1, 4], [-1, 5], [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5] ],
       "requireTilledAnchors" : true,
       "anchors" : [ "bottom" ]
-    }  
+    }
   ],
   "stages" : [
     {
@@ -57,5 +58,6 @@
     }
   ],
     "maxImmersion" : 1.0,
-    "consumeSoilMoisture" : false
+    "consumeSoilMoisture" : false,
+  "beeLikeness" : { "isovapitdae" : 1}
 }

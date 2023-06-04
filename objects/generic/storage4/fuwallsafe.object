@@ -1,0 +1,50 @@
+{
+  "objectName" : "fuwallsafe",
+  "colonyTags" : [ "fu", "science", "scienceoutpost", "storage" ],
+  "printable" : false,
+  "rarity" : "uncommon",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+
+  "category" : "storage",
+  "price" : 1000,
+  "description" : "This should be perfect for your lab storage.",
+  "shortdescription" : "^#e43774;Wall Storage^reset;",
+  "race" : "generic",
+
+  "inventoryIcon" : "fuwallsafeicon.png",
+  "orientations" : [
+     {
+      "imageLayers" : [ { "image" : "fuwallsafe.png", "fullbright" : true }, { "image" : "fuwallsafelit.png" } ],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "fuwallsafe.png", "fullbright" : true }, { "image" : "fuwallsafelit.png" } ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "inputNodes" : [ [0, 0] ],
+  "outputNodes" : [ [1, 0] ],
+  "acceptsItems" : true,
+  "scripts" : [ "/objects/smartbox/singular/singular.lua" ],
+  "scriptDelta" : 1,
+
+  "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
+  "slotCount" : 128,
+  "uiConfig" : "/interface/chests/genechest128.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600
+}

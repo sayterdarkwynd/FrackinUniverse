@@ -1,16 +1,26 @@
 {
-  "itemName" : "wartwine",
-  "rarity" : "Common",
-  "category" : "drink",
-  "inventoryIcon" : "wartwine.png",
-  "description" : "Mmm. Warty alcohol. That sounds...tasty?",
-  "shortdescription" : "Wart Wine",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 10,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 100,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 3.0,
-  "effects" : [ [ "heal_5"  ] ]
+  "itemName": "wartwine",
+  "rarity": "Common",
+  "category": "drink",
+  "inventoryIcon": "wartwine.png",
+  "description": "Mmm. Warty alcohol. That sounds... tasty?\n^green;Heal ^white;10 ^gray;(^white;2s^gray;)^reset;, 35% ^red;Slow^reset;, ^red;Drunk^gray; (^white;30s^gray;)^reset;",
+  "shortdescription": "Wart Wine",
+  "eventCategory": "eventCrop",
+  "price": 1000,
+  "tooltipKind": "food",
+  "maxStack": 100,
+  "effects": [ [
+    {
+        "effect" : "heal_tier0"
+    },
+    {
+        "effect" : "slow",
+        "duration" : 30
+    },
+    {
+        "effect" : "booze",
+        "duration" : 30
+    }
+  ] ],
+  "emitters" : [ "drinking" ]
 }

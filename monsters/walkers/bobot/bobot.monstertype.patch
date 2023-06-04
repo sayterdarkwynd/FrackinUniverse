@@ -1,0 +1,90 @@
+[
+  {
+    "op": "add",
+    "path": "/dropPools/0/firebow",
+    "value": "bobotHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/icebow",
+    "value": "bobotHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/poisonbow",
+    "value": "bobotHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/electricbow",
+    "value": "bobotHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/radioactivebow",
+    "value": "bobotHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/cosmicbow",
+    "value": "bobotHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/shadowbow",
+    "value": "bobotHunting"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-charge",
+        "cooldown": 4,
+        "parameters": {
+          "maximumRange": 10,
+          "windupTime": 0.75,
+          "windupState": "charge",
+          "aimAtTarget": false,
+          "chargeTime": 1.5,
+          "chargeSpeed": 15,
+          "chargeControlForce": 300,
+          "wallKnockback": true,
+          "wallCrashSound": "wallCrash",
+          "wallCrashEmitter": "",
+          "winddownTime": 0.5,
+          "winddownState": "idle"
+        }
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/physicalResistance/baseValue",
+    "value": 0.5
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/poisonResistance/baseValue",
+    "value": 0.95
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/fireResistance/baseValue",
+    "value": 0.55
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/shadowResistance",
+    "value": {
+      "baseValue": 0.95
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/radioactiveResistance",
+    "value": {
+      "baseValue": 0.95
+    }
+  }
+]

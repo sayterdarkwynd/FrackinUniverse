@@ -1,0 +1,71 @@
+{
+  "objectName" : "fupeglacitechstation",
+  "colonyTags" : ["peglaci"],
+  "printable" : false,
+  "rarity" : "Common",
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/zb/newSail/newSail.config",
+
+  "category" : "decorative",
+
+  "description" : "Ship-based Artificial Intelligence Lattice, or S.A.I.L for short.",
+  "shortdescription" : "S.A.I.L",
+  "race" : "fupeglaci",
+
+  "apexDescription" : "A S.A.I.L console - the display is oddly hard to see, though.",
+  "avianDescription" : "This looks like a S.A.I.L console, but it gives me a headache to look at it.",
+  "floranDescription" : "SSS.A.I.L ssstation! Nice red ssscreen!",
+  "glitchDescription" : "Observant. This screen is outputting data in visible red light as well as near and far infrared.",
+  "humanDescription" : "Classy drop down screen for a S.A.I.L station. The screen kinda reminds me of a Virtual Boy.",
+  "hylotlDescription" : "While the S.A.I.L console is seemingly quite advanced, the screen is decidely quite difficult to operate.",
+  "novakidDescription" : "Woah. Seein' a lot of red on this here S.A.I.L screen.",
+  "peglaciDescription" : "A tech station - S.A.I.L displays data in both 'visible' and infrared light best suited for Peglaci eyes.",
+  "fupeglaciDescription" : "A tech station - S.A.I.L displays data in both 'visible' and infrared light best suited for Peglaci eyes.",
+
+  "inventoryIcon" : "techstationicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "techstation.png:<color>",
+      "imagePosition" : [-12, 2],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+
+    }
+  ],
+
+  "offeredQuests" : [ "gaterepair" ],
+
+  "animation" : "/objects/ship/techstation.animation",
+  "scripts" : [
+    "/objects/spawner/techstation.lua",
+    "/objects/scripts/customtechstation.lua"
+  ],
+  "scriptDelta" : 20,
+  "shipPetType" : "juvpeg",
+  "spawnOffset" : [2, -1],
+
+  "chatPortrait" : "/ai/portraits/peglaciportrait.png:yell.1",
+  "dialog" : {
+    "wakeUp" : [
+      [ "Rebooting...", "/ai/portraits/peglaciportrait.png:unique.1" ],
+      [ "I am S.A.I.L, your Ship-based Artificial Intelligence Lattice. I manage the maintainance of your ship.",       "/ai/portraits/peglaciportrait.png:talk.0" ],
+      [ "I am also programmed to offer you information and advice.", "/ai/portraits/peglaciportrait.png:talk.1" ],
+      [ "Earth was attacked by an unknown force, and was subsequently annihilated.", "/ai/portraits/peglaciportrait.png:talk.0" ],
+      [ "The ship's navigation systems were damaged in our escape. Our location is currently unknown.", "/ai/portraits/peglaciportrait.png:talk.1" ]
+    ],
+    "wakePlayer" : [
+      [ "System is down, please reboot.", "/ai/portraits/peglaciportrait.png:unique.1"],
+      [ "Please reboot the system.", "/ai/portraits/peglaciportrait.png:unique.1"],
+      [ "Reboot process remains uninitiated.", "/ai/portraits/peglaciportrait.png:unique.1"],
+      [ "To make use of your S.A.I.L please reboot.", "/ai/portraits/peglaciportrait.png:unique.1" ],
+      [ "Rebooting has shown to improve ship interaction satisfaction levels by 73%.", "/ai/portraits/peglaciportrait.png:unique.1"],
+      [ "Rebooting requires a conscious entity to interact with the S.A.I.L console.", "/ai/portraits/peglaciportrait.png:unique.1" ]
+    ]
+  },
+
+  "uniqueId" : "techstation"
+}

@@ -1,0 +1,93 @@
+{
+  "objectName" : "mfgstation",
+  "colonyTags" : [ "machines" ],
+  "printable" : false,
+  "rarity" : "rare",
+  "description" : "An assembly line for processing raw materials into finished products.\nRequires ^orange;140J^cyan; of power per craft.^reset;",
+  "shortdescription" : "^cyan;Manufacturing Station^reset;",
+  "subtitle" : "",
+  "race" : "generic",
+  "category" : "crafting",
+  "price" : 0,
+  "objectType" : "container",
+  "hydrophobic" : false,
+  "rooting" : true,
+  "inventoryIcon" : "mfgstationicon.png",
+
+  "lightColor" : [62, 89, 89],
+
+  "flickerPeriod" : 0.5,
+  "flickerMinIntensity" : 0.9,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.0,
+  "flickerIntensityVariance" : 0,
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "mfgstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "mfgstationlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-63, 0],
+      "animationPosition" : [-63, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "frames" : 12,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+
+    {
+      "imageLayers" : [ { "image" : "mfgstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "mfgstationlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-63, 0],
+      "animationPosition" : [-63, 0],
+      "direction" : "right",
+
+      "frames" : 12,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "mfgstation.animation",
+  "animationParts" : {
+    "samplingarrayanim" : "mfgstation.png"
+  },
+
+
+  "scripts" : [ "/scripts/fupower.lua", "mfgstation.lua", "/scripts/npcToyObject.lua"],
+  "scriptDelta" : 5,
+  "recipeGroup" : "mfgstation",
+  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+  "slotCount" : 16,
+  "uiConfig" : "/interface/mfgstation.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
+
+  "powertype" : "input",
+  "isn_requiredPower" : 140,
+  "soundEffectRangeMultiplier" : 0.05,
+
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "crouchcollect"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 2
+  }
+}

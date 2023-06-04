@@ -1,5 +1,15 @@
 [
-	{"op":"replace","path":"/description","value":"An unusually malleable, yet resilient metal."},
-	{"op":"add","path":"/learnBlueprintsOnPickup","value": [ "moonstonebar", "phasematter" ] },
-	{"op":"add","path":"/radioMessagesOnPickup","value": [ "pickupMoonstone" ] }
+  [
+    { "op": "test", "path": "/radioMessagesOnPickup", "inverse": true },
+    { "op": "add", "path": "/radioMessagesOnPickup", "value": [] }
+  ],
+  [
+    {"op": "add","path": "/radioMessagesOnPickup/-", "value": "pickupMoonstone"},
+    {"op": "replace","path": "/description","value": "An unusually conductive crystal that channels energy even better than Quartz."},
+    { "op": "replace", "path": "/rarity", "value": "common" },
+    { "op": "replace", "path": "/price", "value": 60 },
+    {"op": "replace","path": "/shortdescription","value": "Telebrium Crystal"},
+    //{"op": "add","path": "/collectablesOnPickup","value": { "fu_geology": "moonstoneore" }},
+    { "op": "replace", "path": "/category", "value": "craftingOre" }
+  ]
 ]

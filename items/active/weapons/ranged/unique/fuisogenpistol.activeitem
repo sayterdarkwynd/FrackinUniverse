@@ -1,0 +1,102 @@
+{
+	"itemName": "fuisogenpistol",
+	"price": 460,
+	"inventoryIcon": "isogenmachinepistol.png",
+	"maxStack": 1,
+	"rarity": "legendary",
+	"description": "Reap foes with icey death.
+^cyan;Slows targets ^reset;",
+	"shortdescription": "Icer",
+	"category": "machinePistol",
+	"level": 6,
+	"tooltipKind": "gun2",
+
+	"itemTags": ["weapon", "ranged", "machinepistol", "upgradeableWeapon", "isogen", "ice"],
+	"twoHanded": false,
+	"weaponType": "machinePistol",
+	"animation": "/items/active/weapons/ranged/unique/fugun.animation",
+	"animationParts": {
+		"butt": "",
+		"middle": "isogenmachinepistol.png",
+		"middlefullbright": "isogenmachinepistolfullbright.png",
+		"barrel": "",
+		"muzzleFlash": "/animations/muzzleflash/matterblastmuzzleblue.png"
+	},
+	"animationCustom": {
+		"animatedParts": {
+			"parts": {
+				"middlefullbright": {
+					"properties": {
+						"offset": [1.4, 0.55]
+					}
+				}
+			}
+		},
+		"sounds": {
+			"fire": ["/sfx/gun/mp3.ogg"]
+		}
+	},
+
+	"baseOffset": [1.4, 0.55],
+	"muzzleOffset": [0.9, 0.3],
+
+	"scripts": ["/items/active/weapons/ranged/gun.lua"],
+
+	"elementalType": "ice",
+
+	"primaryAbility": {
+		"scripts": ["/items/active/weapons/ranged/gunfire.lua"],
+		"class": "GunFire",
+		"fireTime": 0.1,
+		"baseDps": 6.65,
+		"energyUsage": 32,
+		"inaccuracy": 0.031,
+		"projectileCount": 1,
+		"fireType": "auto",
+
+		"projectileType": "iceplasma",
+		"projectileParameters": {
+			"damageKind": "iceplasma",
+			"statusEffects": ["slow"]
+		},
+
+		"stances": {
+			"idle": {
+				"armRotation": 0,
+				"weaponRotation": 0,
+				"twoHanded": false,
+				"weaponOffset": [-0.2, 0],
+
+				"allowRotate": true,
+				"allowFlip": true
+			},
+			"fire": {
+				"duration": 0,
+				"armRotation": 1,
+				"weaponRotation": 1,
+				"twoHanded": false,
+
+				"allowRotate": true,
+				"weaponOffset": [-0.5, 0],
+				"allowFlip": true
+			},
+			"cooldown": {
+				"duration": 0.08,
+				"armRotation": 0,
+				"weaponRotation": 0,
+				"twoHanded": false,
+
+				"allowRotate": true,
+				"weaponOffset": [-0.5, 0],
+				"allowFlip": true
+			}
+		}
+	},
+
+	"critChance": 1,
+	"critBonus": 1,
+	"hasRecoil": 1,
+	"recoilSpeed": 200,
+	"recoilForce": 300,
+	"builder": "/items/buildscripts/buildunrandweapon.lua"
+}

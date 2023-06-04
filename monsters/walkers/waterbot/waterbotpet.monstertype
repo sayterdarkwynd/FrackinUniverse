@@ -1,0 +1,205 @@
+{
+  "type" : "waterbotpet",
+  "shortdescription" : "Water Bot",
+  "description" : "This robot serves one purpose: Moisten.",
+  "categories" : [ "waterbot" ],
+  "parts" : [ "body" ],
+  "reversed" : true,
+  "animation" : "waterbot.animation",
+
+  "dropPools" : [],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : false,
+    "aggressive" : false,
+    "damageTeam" : 1,
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "targetEntityTypes" : [ "player", "npc", "monster" ],
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [],
+
+      "periodicActions" : [
+        {
+          "name" : "action-projectile",
+          "cooldown" : 2,
+          "parameters" : {
+            "projectileCount" : 2,
+            "projectileType" : "fusquirtwater",
+            "projectileParameters" : {
+    		"damageTeam" : { "type" : "friendly" },
+    		"speed" : 30
+            },
+            "power" : 0,
+            "aimDirection" : [0,1],
+            "inaccuracy" : 0.2,
+            "fireOffset" : [0, 0.4]
+          }
+        }
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : false
+          }
+        }
+      ],
+
+      "concurrentActions" : [
+
+      ],
+      "wanderActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 4,
+          "parameters" : {
+            "maximumRange" : 12,
+            "minimumRange" : 1,
+            "windupState" : "firewindup",
+            "windupTime" : 0.5,
+
+            "projectileType" : "fusquirtwater",
+            "fireOffset" : [0, 0.75],
+
+            "aimAtTarget" : false,
+            "projectileCount" : 2,
+            "projectileInterval" : 0.05,
+            "inaccuracy" : 0.2,
+            "aimDirection" : [0,1],
+            "power" : 0,
+            "fireSound" : "fire",
+            "fireState" : "fire",
+
+
+            "winddownState" : ""
+          }
+        },
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [0.5, 2.5]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-1.375,1.625], [-1.792,-1.875], [1.75,-1.833], [1.542,1.583] ],
+      "damage" : 0,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.375,1.625], [-1.792,-1.875], [1.75,-1.833], [1.542,1.583] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 5,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 12
+        },
+        "maxHealth" : {
+          "baseValue" :180
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "liquidnitrogenImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : { "baseValue" : 0 },
+        "fireResistance" : { "baseValue" : 0.8 },
+        "iceResistance" : { "baseValue" : 0 },
+        "electricResistance" : { "baseValue" : -0.45 },
+        "physicalResistance" : { "baseValue" : 0 },
+        "shadowResistance" : { "baseValue" : 0 }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.8,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "waterbotpet" }
+  }
+}

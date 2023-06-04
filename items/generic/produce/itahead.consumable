@@ -1,18 +1,36 @@
 {
-  "itemName" : "itahead",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "itahead.png",
-  "description" : "Possesses potent anti-toxins. Cures poisons and pus infections.",
-  "shortdescription" : "Ita Flower Head",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,    
-  "effects" : [ [ "poisonStatusImmunity", "beestingimmunity", "biooozeimmunity", "pusimmunity", "slimestickimmunity" ] ],
-  "blockingEffects" : [ "antidote" ]
+	"itemName": "itahead",
+	"inventoryIcon": "itahead.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immune: Poison & 25% Poison Res^reset;, ^cyan;Immunity ^reset;: Bee Stings, Bio-Ooze, Pus, Slime: 1m",
+	"shortdescription": "Ita Flower Head",
+
+	"effects": [
+		[{
+				"effect": "poisonblock",
+				"duration": 60
+			},
+			{
+				"effect": "beestingimmunity",
+				"duration": 60
+			},
+			{
+				"effect": "biooozeimmunity",
+				"duration": 60
+			},
+			{
+				"effect": "pusimmunity",
+				"duration": 60
+			},
+			{
+				"effect": "slimestickimmunity",
+				"duration": 60
+			}
+		]
+	],
+	"blockingEffects": ["antidote"]
 }

@@ -1,73 +1,169 @@
 {
-  "background" : {
-    "type" : "background",
-    "fileHeader" : "/interface/tooltips/fuheader.png",
-    "fileBody" : "/interface/tooltips/fuarmorbody2.png",
-    "fileFooter" : "/interface/tooltips/fufooter.png"
-  },
-  "rarityLabel" : {
-    "type" : "label",
-    "position" : [7, 23],
-    "hAnchor" : "left",
-    "centered" : true,
-    "wrapWidth" : 126
-  },
-  "moneyIcon" : {
-    "type" : "image",
-    "position" : [97, 23],
-    "file" : "/interface/money.png"
-  },
-  "priceLabel" : {
-    "type" : "label",
-    "position" : [110, 23],
-    "hAnchor" : "left",
-    "value" : "0"
-  },
-  "objectImage" : {
-    "type" : "image",
-    "position" : [30, 148],
-    "file" : "",
-    "centered" : true,
-    "scale" : 2,
-    "maxSize" : [ 46, 59 ],
-    "minSize" : [ 46, 59 ]
+	"levelLabelTitle": {
+		"type": "label",
+		"position": [12, 152],
+		"hAnchor": "left",
+		"vAnchor": "top",
+		"value": "^yellow;Tier^reset;"
+	},
+	"levelLabel": {
+		"type": "label",
+		"position": [50, 152],
+		"hAnchor": "right",
+		"vAnchor": "top",
+		"color": [255, 255, 0],
+		"zlevel":1
+	},
+	"physicalResLabel": {
+		"type": "label",
+		"position": [39, 48],
+		"hAnchor": "right",
+		"vAnchor": "top",
+		"fontSize":6,
+		"color": [255, 255, 255]
+	},
+	"iceResLabel": {
+		"type": "label",
+		"position": [74, 48],
+		"hAnchor": "right",
+		"vAnchor": "top",
+		"fontSize":6,
+		"color": [255, 255, 255]
+	},
+	"fireResLabel": {
+		"type": "label",
+		"position": [109, 48],
+		"hAnchor": "right",
+		"vAnchor": "top",
+		"fontSize":6,
+		"color": [255, 255, 255]
+	},
+	"electricResLabel": {
+		"type": "label",
+		"position": [144, 48],
+		"hAnchor": "right",
+		"vAnchor": "top",
+		"fontSize":6,
+		"color": [255, 255, 255]
+	},
+	"poisonResLabel": {
+		"type": "label",
+		"position": [179, 48],
+		"hAnchor": "right",
+		"vAnchor": "top",
+		"fontSize":6,
+		"color": [255, 255, 255]
+	},
+	"radiationResLabel": {
+		"type": "label",
+		"position": [214, 48],
+		"hAnchor": "right",
+		"vAnchor": "top",
+		"fontSize":6,
+		"color": [255, 255, 255]
+	},
+	"cosmicResLabel": {
+		"type": "label",
+		"position": [249, 48],
+		"hAnchor": "right",
+		"vAnchor": "top",
+		"fontSize":6,
+		"color": [255, 255, 255]
+	},
+	"shadowResLabel": {
+		"type": "label",
+		"position": [284, 48],
+		"hAnchor": "right",
+		"vAnchor": "top",
+		"fontSize":6,
+		"color": [255, 255, 255]
+	},
+	"background": {
+		"type": "background",
+		"fileHeader": "/interface/tooltips/fuheaderlong.png",
+		"fileBody": "/interface/tooltips/fuarmorbody2b.png",
+		"fileFooter": "/interface/tooltips/fufooterlong.png"
+	},
+	"moneyIcon": {
+		"type": "image",
+		"position": [11, 25],
+		"file": "/interface/money.png"
+	},
+	"priceLabel": {
+		"type": "label",
+		"position": [24, 25],
+		"hAnchor": "left",
+		"value": "0"
+	},
+	"objectImage": {
+		"type": "image",
+		"position": [30, 98],
+		"file": "",
+		"centered": true,
+		"scale": 2,
+		"maxSize": [46, 59],
+		"minSize": [46, 59]
 
-  },
-  "descriptionLabel" : {
-    "type" : "label",
-    "position" : [9, 88],
-    "wrapWidth" : 136,
-    "hAnchor" : "left",
-    "vAnchor" : "top"
-  },
-  "statusList" : {
-    "scissoring" : false,
-    "type" : "list",
-    "fillDown" : true,
-    "position" : [0, 188],
-    "schema" : {
-      "spacing" : [0, 3],
-      "memberSize" : [999, 12],
-      "listTemplate" : {
-        "statusLabel" : {
-          "type" : "label",
-          "position" : [90, 2],
-          "hAnchor" : "left"
-        },
-        "statusImage" : {
-          "scissoring" : false,
-          "type" : "image",
-          "position" : [62, -1],
-          "file" : "",
-          "zlevel" : 8
-        },
-        "backgroundImage" : {
-          "scissoring" : false,
-          "type" : "image",
-          "position" : [61, 0],
-          "file" : "/interface/tooltips/fustatlistback.png"
-        }
-      }
-    }
-  }
+	},
+	"armorClassLabel": {
+		"type": "label",
+		"position": [142, 168],
+		"wrapWidth": 136,
+		"hAnchor": "left",
+		"vAnchor": "top",
+		"lineSpacing": 1.2,
+		"fontSize": 6,
+		"visible":true
+	},
+	"descriptionLabel": {
+		"type": "label",
+		"position": [142, 152],
+		"wrapWidth": 136,
+		"hAnchor": "left",
+		"vAnchor": "top",
+		"lineSpacing": 1.2,
+		"fontSize": 7,
+		"visible":false
+	},
+	"monkeyLabel": {
+		"type": "label",
+		"position": [142, 152],
+		"wrapWidth": 136,
+		"hAnchor": "left",
+		"vAnchor": "top",
+		"lineSpacing": 1.2,
+		"fontSize": 7,
+		"visible":true
+	},
+
+	"statusList": {
+		"scissoring": false,
+		"type": "list",
+		"fillDown": true,
+		"position": [3, 152],
+		"schema": {
+			"spacing": [0, 3],
+			"memberSize": [999, 12],
+			"listTemplate": {
+				"statusLabel": {
+					"type": "label",
+					"position": [90, 2],
+					"hAnchor": "left"
+				},
+				"statusImage": {
+					"scissoring": false,
+					"type": "image",
+					"position": [62, -1],
+					"file": "",
+					"zlevel": 8
+				},
+				"backgroundImage": {
+					"scissoring": false,
+					"type": "image",
+					"position": [61, 0],
+					"file": ""
+				}
+			}
+		}
+	}
 }

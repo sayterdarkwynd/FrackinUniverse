@@ -1,0 +1,68 @@
+{
+  "projectileName" : "fushadowbeam",
+  "image" : "fushadowbeam.png",
+  "animationCycle" : 0.2,
+  "lightColor" : [150, 150, 100],
+  "frameNumber" : 4,
+  "flippable" : false,
+  "fullbright" : true,
+  "physics" : "bullet",
+  "bounces" : 0,
+  "emitters" : [ "shadowdrip" ],
+  "actionOnReap" : [
+    {
+      "action" : "spark"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/gun/impact_plasma.ogg" ]
+    },
+    {
+      "action" : "loop",
+      "count" : 15,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "ember",
+            "size" : 1.0,
+            "color" : [25, 25, 25, 255],
+            "light" : [25, 25, 25],
+            "fullbright" : true,
+            "fade" : 0.9,
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0.0, -50.0],
+            "approach" : [0, 30],
+            "timeToLive" : 0.7,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [10, 10],
+              "timeToLive" : 0.3
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.015,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/animations/heatbeamtrail/fushadowbeamtrail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.2,
+        "layer" : "middle",
+        "position" : [0.0, 0.0]
+      }
+    }
+  ],
+  "damagePoly" : [ [-8, 0], [2, 3], [8, 0], [2, -3] ],
+  "damageKind" : "shadowbow",
+  "knockback" : 20,
+
+  "speed" : 70
+}

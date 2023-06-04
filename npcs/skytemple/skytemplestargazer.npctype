@@ -1,0 +1,102 @@
+{
+  "type" : "skytemplestargazer",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "challengeSmallChestTreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Attack!"
+          ]
+        },
+        "avian" : {
+          "default" : [
+            "Fool! The might of Kluex will crush you for intruding upon our most sacred site!",
+			"You are not worthy of ascending to the aether!",
+            "Begone, fool!",
+            "The light of Kluex shall sear you from existence!"
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+      "runSpeed" : 18,
+	  "walkSpeed" : 18,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    },
+    "mass" : 2.0
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "aviantier5mhead", "parameters" : { "colorIndex" : 6 } }
+            ],
+            "back" : [
+              { "name" : "aviangodwingsback", "parameters" : { "colorIndex" : 6 } }
+            ],
+            "chest" : [
+              { "name" : "aviantier5mchest", "parameters" : { "colorIndex" : 6 } }
+            ],
+            "legs" : [
+              { "name" : "aviantier5mpants", "parameters" : { "colorIndex" : 6 } }
+            ],
+            "primary" : [
+			  { "name" : "violiumbroadsword" }
+			],
+            "sheathedprimary" : [
+			  { "name" : "electricrailgun" }
+			]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+	"knockbackStunTime" : {
+		"baseValue" : 0.0
+	},
+	"grit" : {
+		"baseValue" : 1.0
+	},
+	"poisonStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"electricStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"iceStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"fireStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"specialStatusImmunity" : {
+		"baseValue" : 1.0
+	},
+	"stunImmunity" : {
+		"baseValue" : 1.0
+	},
+      "maxHealth" : {
+        "baseValue" : 450.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 3.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 75.0
+      }
+    }
+  }
+}

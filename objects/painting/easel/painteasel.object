@@ -1,0 +1,65 @@
+{
+  "objectName" : "painteasel",
+  "colonyTags" : ["painting","art","madness"],
+  "printable" : false,
+  "price" : 30,
+  "rarity" : "Uncommon",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/craftingeasel.config",
+    "filter" : [ "paintingeasel" ]
+  },
+ // "learnBlueprintsOnPickup": ["paintingrandom"],
+  "description" : "Express yourself through art.",
+  "shortdescription" : "^orange;Painting Easel^reset;",
+  "race" : "generic",
+  "category" : "crafting",
+
+  "maximumLiquidLevel" : 0.2,
+
+  "inventoryIcon" : "painteasel.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "painteasel.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "painteasel.png:<color>.<frame>"} ],
+      "direction" : "right",
+
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "",
+  "soundEffectRangeMultiplier" : 0.5,
+
+  "statusEffects" : [  ],
+
+  "scripts" : [ "/scripts/npcToyObject.lua"],
+  "npcToy" : {
+    "influence" : ["campfire"],
+    "defaultReactions" : {
+      "campfire" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-2.5, 0.0],
+    "preciseStandPositionRight" : [2.5, 0.0],
+    "maxNpcs" : 1
+  }
+}

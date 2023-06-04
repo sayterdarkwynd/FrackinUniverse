@@ -3,13 +3,15 @@
     "colonyTags" : [ "nature" ],
   "rarity" : "Common",
   "category" : "seed",
-  "description" : "Bracken provide essential Resin and Silk.",
+  "description" : "Bracken provide essential Silk.",
   "shortdescription" : "Bracken Tree Seed",
   "objectType" : "farmable",
   "printable" : false,
   "price" : 11,
 
   "inventoryIcon" : "brackentreeicon.png",
+  "largeImage" : "brackentreeseed.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "brackentree" },
   "orientations" : [
     {
       "dualImage" : "brackentreeseed.png:<color>.<stage>.<alt>",
@@ -24,14 +26,14 @@
   ],
   "stages" : [
     {
-      "duration" : [220, 340]
+      "duration" : [280, 320]
     },
     {
-      "duration" : [220, 340]
+      "duration" : [280, 320]
     },
     {
       "alts" : 5,
-      "duration" : [220, 330]
+      "duration" : [1170, 1230]
     },
     {
       "alts" : 5,
@@ -39,6 +41,7 @@
       "resetToStage" : 2
     }
   ],
-  "learnBlueprintsOnPickup" : [ "diodiahybridseed" ],
-    "maxImmersion" : 0.125
+ // "learnBlueprintsOnPickup" : [ "diodiahybridseed" ],
+    "maxImmersion" : 0.125,
+  "beeLikeness" : { "sandprowler" : 1, "artisan" : 1,"carpenter" : 1}
 }

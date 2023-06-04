@@ -12,10 +12,31 @@
   "flippable" : true,
   "lightColor" : [80, 0, 90],
   "frameNumber" : 24,
+
+
+  "periodicActions" : [
+    {
+      "time" : 0.04,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "hiveswarm3",
+      "config" : {
+	"statusEffects" : [ "biooozepoison" ]
+      },
+      "inheritDamageFactor" : 0.05,
+      "fuzzAngle" : 360
+   }
+  ],
+
   "actionOnReap" : [
     {
       "action" : "sound",
-      "options" : [ "/sfx/npc/smallbiped/bulbouseyehead_small_idle1.ogg", "/sfx/npc/smallbiped/bulbouseyehead_small_idle2.ogg", "/sfx/npc/smallbiped/bulbouseyehead_small_attack1.ogg", "/sfx/npc/smallbiped/bulbouseyehead_small_attack2.ogg" ]
+      "options" : [
+        "/sfx/npc/smallbiped/bulbouseyehead_small_idle1.ogg",
+        "/sfx/npc/smallbiped/bulbouseyehead_small_idle2.ogg",
+        "/sfx/npc/smallbiped/bulbouseyehead_small_attack1.ogg",
+        "/sfx/npc/smallbiped/bulbouseyehead_small_attack2.ogg"
+      ]
     },
     {
       "action" : "projectile",
@@ -40,7 +61,7 @@
       "fuzzAngle" : 180,
       "inheritDamageFactor" : 0.15,
       "angleAdjust" : 0
-    },    
+    },
     {
       "action" : "projectile",
       "type" : "fuhiveclusterx",

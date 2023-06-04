@@ -1,15 +1,17 @@
 {
   "objectName" : "isn_solarpanel",
-  "rarity" : "Common",
-    "colonyTags" : [ "science" ],
+  "rarity" : "common",
+  "colonyTags" : [ "science" ],
   "category" : "wire",
-  "price" : 2500,
-  "description" : "Uses sunlight to generate electricity. It can generate up to 2u of power in optimal conditions.",
+  "price" : 100,
+  "description" : "Uses sunlight to generate electricity. It can generate over ^orange;4W^reset; of power in optimal conditions.",
   "shortdescription" : "^cyan;Solar Panel^reset;",
   "race" : "generic",
   "printable" : false,
-  "learnBlueprintsOnPickup" : [ "fu_solararray", "isn_thermalgenerator", "isn_powdersifter", "fu_conduit" ],
-  "apexDescription" : "The MiniKnog tends not to care about renewable energy. There are all manner of theories as to why.",
+  "tooltipKind" : "base",
+//  "learnBlueprintsOnPickup" : [ "fu_solararray", "isn_thermalgenerator", "isn_powdersifter", "fu_conduit" ],
+
+  "apexDescription" : "The Miniknog tends not to care about renewable energy. There are all manner of theories as to why.",
   "avianDescription" : "Just one of the many uses of the sun.",
   "floranDescription" : "Machine get power from sssun like plant. Floran like it.",
   "glitchDescription" : "Analytical. Atmospheric interference means this panel will generate less power at low altitudes.",
@@ -32,13 +34,13 @@
     "base" : "isn_solarpanel_base.png"
   },
   "animationPosition" : [0, 0],
-  
-  "scripts" : [ "/objects/power/isn_solarpanel/isn_solarpanel.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 50,
-  
+
+  "scripts" : [ "/scripts/fupower.lua","/objects/power/isn_solarpanel.lua" ],
+  "scriptDelta" : 60,
+
   "outputNodes" : [ [2, 1] ],
-  
-  "isn_powerSupplier" : true
+
+  "isn_powerSupplier" : true,
+  "powertype" : "output",
+  "powerLevel" : 1.0
 }

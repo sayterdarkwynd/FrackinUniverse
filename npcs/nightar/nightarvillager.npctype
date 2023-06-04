@@ -1,0 +1,160 @@
+{
+  "type" : "nightarvillager",
+  "baseType" : "base",
+
+  "levelVariance" : [3, 3],
+  "persistent" : true,
+
+  "damageTeamType" : "friendly",
+
+  "scriptConfig" : {
+    "behavior" : "villager",
+
+    "behaviorConfig" : {
+      "greetingChance" : 0.5,
+
+      "hostileDamageTeam" : { "type" : "enemy", "team" : 1 }
+    },
+
+    "questGenerator" : {
+      "pools" : ["common"],
+      "enableParticipation" : true,
+      "timeLimit" : 30,
+      "nearbyQuestLimit" : 2,
+      "nearbyQuestRange" : 50,
+	    "questCountRange" : [1, 4],
+
+      "graduation" : {
+        "nextNpcType" : [
+          [1, "crewmember"],
+          [0.25, "crewmemberchemistblue"],
+          [0.25, "crewmemberchemistgreen"],
+          [0.25, "crewmemberchemistyellow"],
+          [0.25, "crewmemberchemistorange"],
+          [1, "crewmemberengineer"],
+          [1, "crewmembermechanic"],
+          [1, "crewmembermedic"],
+          [1, "crewmemberjanitor"],
+          [1, "crewmembertailor"],
+          [0.5, "crewmember_spacestationassassin"],
+          [0.5, "crewmember_spacestationcaptain"],
+          [0.5, "crewmember_spacestationcommander"],
+          [0.5, "crewmember_spacestationdevastator"],
+          [0.5, "crewmember_spacestationmercenary"],
+          [0.5, "crewmember_spacestationwarmonger"],
+          [1, "crewmemberarctic"],
+          [1, "crewmemberbiohazard"],
+          [1, "crewmemberbountyhunter"],
+          [0.5, "crewmemberchef"],
+          [0.35, "crewmemberchef2"],
+          [0.15, "crewmemberchef3"],
+          [0.5, "crewmembercollector"],
+          [0.5, "crewmembercounsellor"],
+          [0.35, "crewmembercounsellor2"],
+          [0.15, "crewmembercounsellor3"],
+          [1, "crewmembercultist"],
+          [0.5, "crewmembercyborg"],
+          [0.8, "crewmemberengineer2"],
+          [0.2, "crewmemberbees"],
+          [1, "crewmemberfuhunter"],
+          [1, "crewmembergas"],
+          [0.3, "crewmembergeologist"],
+          [0.3, "crewmemberghostbuster"],
+          [0.05, "crewmembergreg"],
+          [1, "crewmemberguardian"],
+          [0.6, "crewmemberhobo"],
+          [0.3, "crewmembermagicalgirl"],
+          [0.8, "crewmembermechanic2"],
+          [0.8, "crewmembermedic2"],
+          [0.4, "crewmembermetalhead"],
+          [1, "crewmemberoceanographer"],
+          [0.5, "crewmemberoutlaw"],
+          [0.3, "crewmemberplur"],
+          [1, "crewmemberresearcher"],
+          [1, "crewmembersciencedrug"],
+          [1, "crewmemberscuba"],
+          [0.4, "crewmembershadow"],
+          [1, "crewmemberstealth"],
+          [1, "crewmembervolcanologist"],
+          [1, "crewmemberwarrior"],
+          [1, "crewmemberwarrior2"],
+          [1, "crewmemberwarrior3"]
+        ]
+      }
+    },
+
+    "reactions" : {
+      "spontaneous" : [
+        [5.0, "sleep", { "timeRange" : [0.7, 0.9] }],
+        [1.0, "sit", { "timeRange" : [0.6,0.2]}],
+        [1.0, "wander"]
+      ]
+    },
+
+    "dialog" : {
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/grumble.config:tagCriteria",
+          "enclosedArea" : "/dialog/grumble.config:enclosedArea",
+          "otherDeed" : "/dialog/grumble.config:otherDeed",
+          "severe" : "/dialog/grumble.config:severe",
+          "final" : "/dialog/grumble.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/arrivedhome.config:beacon",
+          "rent" : "/dialog/arrivedhome.config:rent"
+        }
+      },
+      "flee" : {
+        "helpme" : "/dialog/flee.config:helpme",
+        "safe" : "/dialog/flee.config:safe"
+      },
+      "breakObject" : "/dialog/converse.config:breakObject",
+      "greeting" : "/dialog/converse.config:greeting",
+      "converse" : "/dialog/converse.config:converse",
+      "accuse" : "/dialog/thief.config:accuse",
+      "alert" : "/dialog/thief.config:alert"
+    }
+  },
+
+  "items" : {
+    "nightar" : [
+      [0, [
+          {
+            "head" : [
+			  { "name" : "funightar_suithead", "parameters" : { "colorIndex" : [1, 2] } },
+			  { "name" : "funightar_emptyhead", "parameters" : { "colorIndex" : [1, 2] } }
+
+			],
+				"chest" : [
+				{ "name" : "funightar_suitchest", "parameters" : { "colorIndex" : [1, 2] } },
+				{ "name" : "peasantchest", "parameters" : { "colorIndex" : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] } },
+				{ "name" : "noblechest", "parameters" : { "colorIndex" : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] } }
+			],
+				"legs" : [
+				{ "name" : "funightar_suitlegs", "parameters" : { "colorIndex" : [1, 2] } },
+				{ "name" : "peasantlegs", "parameters" : { "colorIndex" : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] } },
+				{ "name" : "noblelegs", "parameters" : { "colorIndex" : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] } }
+			]
+			}
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 50.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.0
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      }
+    }
+  }
+}

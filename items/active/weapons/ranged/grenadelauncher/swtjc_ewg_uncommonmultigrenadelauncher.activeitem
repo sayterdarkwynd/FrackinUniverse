@@ -1,0 +1,185 @@
+{
+  "itemName" : "swtjc_ewg_uncommonmultigrenadelauncher",
+  "price" : 1100,
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "For when you need to quickly lob multiple grenades the extra distance.",
+  "shortdescription" : "Uncommon Multi-Grenade Launcher",
+  "tooltipKind" : "gun2",
+  "category" : "swtjc_ewg_multiGrenadeLauncher",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","grenadelauncher","upgradeableWeapon","explosive"],
+  "level" : 1,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : { },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "muzzleFlash" : {
+          "partStates" : {
+            "firing" : {
+              "fire" : {
+                "properties" : {
+                  "image" : ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    }
+  },
+  "baseOffset" : [-1.75, 0.5],
+  "muzzleOffset" : [0.0, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : [0.3, 1.0],
+    "baseDps" : [5.5, 6.2],
+    "energyUsage" : [40.25, 43.75],
+    "inaccuracy" : 0.04,
+
+    "projectileParameters" : {
+      "knockback" : 20
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.25,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  },
+  "fireSounds" : [ "/sfx/gun/grenade1.ogg", "/sfx/gun/grenade2.ogg" ],
+
+  "critChance" : 2,
+  "critBonus" : 7,
+  "isAmmoBased": [0,1],
+  "magazineSize" : [4,7],
+  "reloadTime" : [1.9,2.8],
+  "isGrenadeLauncher" : 1,
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "nameGenerator" : "swtjc_ewg_multigrenadenames.config:nameGen",
+    "elementalType" : [
+      "fire",
+      "ice",
+      "electric",
+      "poison",
+      "radioactive",
+      "shadow",
+      "cosmic"
+    ],
+    "elementalConfig" : {
+      "fire" : {
+        "primaryAbility" : { "projectileType" : [ "fireplasmagrenade", "fireplasmaimpactgrenade", "firestickygrenade", "fireproximitymine" ] }
+      },
+      "ice" : {
+        "primaryAbility" : { "projectileType" : [ "iceplasmagrenade", "iceplasmaimpactgrenade", "icestickygrenade", "iceproximitymine" ] }
+      },
+      "poison" : {
+        "primaryAbility" : { "projectileType" : [ "poisonplasmagrenade", "poisonplasmaimpactgrenade", "poisonstickygrenade", "poisonproximitymine" ] }
+      },
+      "electric" : {
+        "primaryAbility" : { "projectileType" : [ "electricplasmagrenade", "electricplasmaimpactgrenade", "electricstickygrenade", "electricproximitymine" ] }
+      },
+      "radioactive" : {
+        "primaryAbility" : { "projectileType" : [ "radioactiveplasmagrenade", "radioactiveplasmaimpactgrenade", "radioactivestickygrenade", "radioactiveproximitymine" ] }
+      },
+      "shadow" : {
+        "primaryAbility" : { "projectileType" : [ "shadowplasmagrenade", "shadowplasmaimpactgrenade", "shadowstickygrenade", "shadowproximitymine" ] }
+      },
+      "cosmic" : {
+        "primaryAbility" : { "projectileType" : [ "cosmicplasmagrenade", "cosmicplasmaimpactgrenade", "cosmicstickygrenade", "cosmicproximitymine" ] }
+      }
+    },
+    "animationParts" : {
+      "butt" : {
+        "path" : "/items/active/weapons/ranged/grenadelauncher/butt/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "middle" : {
+        "path" : "/items/active/weapons/ranged/grenadelauncher/middle/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "barrel" : {
+        "path" : "/items/active/weapons/ranged/grenadelauncher/barrel/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+    },
+    "gunParts" : ["butt", "middle", "barrel"],
+    "altAbilities" : [
+      "deathbomb",
+      "explosiveburst",
+      "lance",
+      "shrapnelbomb",
+
+      "swtjc_ewg_bouncingspray",
+      "swtjc_ewg_bouncingspread",
+      "swtjc_ewg_explosivespray",
+      "swtjc_ewg_explosivespread",
+      "swtjc_ewg_piercingspray",
+      "swtjc_ewg_piercingspread",
+      "swtjc_ewg_railgun",
+      "swtjc_ewg_stickyspray",
+      "swtjc_ewg_stickyspread",
+
+      "swtjc_ewg_clusterbomb",
+
+      "swtjc_ewg_bouncingorbitals",
+      "swtjc_ewg_cellspray",
+      "swtjc_ewg_cellspread",
+      "swtjc_ewg_darkplasma",
+      "swtjc_ewg_elementalspray",
+      "swtjc_ewg_explosivebubbles",
+      "swtjc_ewg_forceshield",
+      "swtjc_ewg_globelauncher",
+      "swtjc_ewg_phaseburst",
+      "swtjc_ewg_rocketjump",
+      "swtjc_ewg_shattershot"
+    ],
+    "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
+    "iconDrawables" : ["butt", "middle", "barrel"]
+  }]
+}

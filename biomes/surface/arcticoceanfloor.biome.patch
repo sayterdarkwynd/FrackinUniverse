@@ -1,0 +1,29 @@
+[
+	[{
+		"op": "test",
+		"path": "/undergroundPlaceables",
+		"inverse": true
+	}, {
+		"op": "add",
+		"path": "/undergroundPlaceables",
+		"value": {
+			"grassMod": ["snow"],
+			"grassModDensity": 0.9,
+
+			"items": []
+		}
+	}],
+	[{
+		"op": "add",
+		"path": "/undergroundPlaceables/items/-",
+		"value": {
+			"mode": "floor",
+			"priority": 1,
+			"variants": 1,
+			"distribution": "/biomes/distributions.config:ultraRare",
+
+			"type": "microdungeon",
+			"microdungeons": ["outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter", "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
+		}
+	}]
+]

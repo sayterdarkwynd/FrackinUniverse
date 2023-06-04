@@ -1,0 +1,26 @@
+{
+    "itemName" : "fu_monsterinspector",
+    "price" : 800,
+    "inventoryIcon" : "inspectionmode.png",
+    "maxStack" : 1,
+    "rarity" : "Uncommon",
+    "description" : "Inspects monsters.",
+    "shortdescription" : "Monster Inspector",
+    "category" : "Tool",
+
+    "twoHanded" : false,
+
+	"animation" : "fu_monsterinspector.animation",
+	"animationCustom":{
+		"sounds":{
+			"fire":["/sfx/interface/scan.ogg"],
+			"error":["/sfx/interface/clickon_error_single.ogg"]
+		}
+	},
+
+    "scripts" : ["inspector.lua"],
+	"scanSettings":{
+		"maxRange":15,
+		"cooldownTime":1
+	}
+}

@@ -1,0 +1,39 @@
+{
+  "objectName" : "eggstracowbell",
+  "rarity" : "Common",
+  "description" : "This bell calls the livestock home.",
+  "shortdescription" : "Dinner Bell",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 2500,
+
+  "apexDescription" : "An iron bell. How Pavlovian.",
+  "avianDescription" : "Dinner time!",
+  "floranDescription" : "Big bell go ding dong!",
+  "glitchDescription" : "Informative. This bell signals food.",
+  "humanDescription" : "A dinner bell. Can I ring it? Please!",
+  "hylotlDescription" : "The sound of bells is something most Hylotl have never heard.",
+
+  "inventoryIcon" : "cowbellicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "cowbell.png:<color>",
+
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "animationCustom" : {
+    "sounds" : {
+      "cowbell" : [ "/sfx/objects/dinner_bell.ogg" ]
+    }
+  },
+
+  "scripts" : [ "cowbell.lua" ]
+}

@@ -1,0 +1,76 @@
+{
+  "itemName" : "fucultistbow",
+  "level" : 4,
+  "price" : 450,
+  "inventoryIcon" : "fucultistbowicon.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "tooltipKind" : "bow2",
+  "weaponType" : "Bow",
+  "description" : "Because who doesn't want a bow that can aim with its own eye?",
+  "shortdescription" : "Cultist Bow",
+  "category" : "bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow", "upgradeableWeapon"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "animation" : "/items/active/weapons/bow/fubow.animation",
+  "animationParts" : {
+    "bow" : "fucultistbowfull.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0.25, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "physical",
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : {
+    "drawTime" : 1.2,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.425,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"energyPerShot" : 38,
+	"holdEnergyUsage" : 6,
+	"airborneBonus" : 1.22,
+    "projectileType" : "cultisarrow",
+    "powerProjectileType" : "cultisarrow",
+    "projectileParameters" : {
+      "power" : 8.5,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 9.25,
+      "piercing" : false
+    }
+  },
+
+  "altAbilityType" : "tripleshot",
+  "altAbility" : {
+    "name" : "Shadow Wave",
+    "fireOffset" : [1.75, 0.125],
+    "drawSpeedMultiplier" : "constant",
+    "drawFrameSelector" : "bowImageSelectorNoPower",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "shadowtravelingswoosh",
+    "projectileParameters" : {
+      "emitters" : [ "shadowsmoke"],
+      "power" : 7.0,
+      "piercing" : true
+    },
+    "splitDelay" : 0.04,
+    "splitAngle" : 5
+  },
+
+  "critChance" : 7,
+  "critBonus" : 4,
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
+}

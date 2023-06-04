@@ -1,0 +1,105 @@
+[
+  {
+    "op": "add",
+    "path": "/spawnItem",
+    "value": {
+      "type": "action",
+      "name": "spawnItem",
+      "title": "",
+      "properties": {
+        "item": {
+          "type": "table",
+          "value": null
+        },
+        "position": {
+          "type": "position",
+          "value": null
+        },
+        "count": {
+          "type": "number",
+          "value": null
+        },
+        "parameters": {
+          "type": "table",
+          "value": null
+        },
+        "velocity": {
+          "type": "vec2",
+          "value": null
+        },
+        "intangibleTime": {
+          "type": "number",
+          "value": null
+        }
+      },
+      "category": "world",
+      "script": "/scripts/actions/world.lua",
+      "output": {}
+    }
+  },
+  {
+    "op": "add",
+    "path": "/playerConfirm",
+    "value": {
+      "type": "action",
+      "name": "playerConfirm",
+      "title": "",
+      "properties": {
+        "player": {
+          "type": "entity",
+          "value": null
+        },
+        "title": {
+          "type": "string",
+          "value": null
+        },
+        "subtitle": {
+          "type": "string",
+          "value": null
+        },
+        "icon": {
+          "type": "string",
+          "value": null
+        },
+        "message": {
+          "type": "string",
+          "value": null
+        },
+        "okCaption": {
+          "type": "string",
+          "value": null
+        },
+        "cancelCaption": {
+          "type": "string",
+          "value": null
+        }
+      },
+      "category": "world",
+      "script": "/scripts/actions/world.lua",
+      "output": {}
+    }
+  },
+  {
+    "op": "add",
+    "path": "/dungeonId",
+    "value": {
+      "type": "action",
+      "name": "dungeonId",
+      "title": "dungeonId",
+      "properties": {
+        "position": {
+          "type": "number",
+          "value": null
+        }
+      },
+      "category": "world",
+      "script": "/scripts/actions/world.lua",
+      "output": {
+        "dungeonId": {
+          "type": "number",
+          "key": null
+        }
+      }
+    }
+  }
+]

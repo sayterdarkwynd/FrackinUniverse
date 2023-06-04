@@ -1,0 +1,204 @@
+{
+  "metadata" : {
+    "name" : "apextestfacility",
+    "species" : "apex",
+    "rules" : [
+    ],
+    "anchor" : [ "apextestfacilitybase1" ],
+    "maxRadius" : 1000000,
+    "maxParts" : 65,
+    "extendSurfaceFreeSpace" : 100,
+    "protected" : false
+  },
+
+  "parts" : [
+    {
+      "name" : "apextestfacilitybase1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apextestfacilitybase2", "apextestfacility2a", "apextestfacility2b" ] ]
+
+      ],
+      "def" : [ "tmx", "apextestfacilitybase1.json" ]
+    },
+    {
+      "name" : "apextestfacilitybase2",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apextestfacilitybase1", "apextestfacility2a", "apextestfacility2b" ] ]
+
+      ],
+      "def" : [ "tmx", "apextestfacilitybase2.json" ]
+    },
+    {
+      "name" : "apextestfacility1a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apextestfacility1a", "apextestfacility1b" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacility1a.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "apextestfacility1b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apextestfacility1a", "apextestfacility1b" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacility1b.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "apextestfacility2a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apextestfacility2a", "apextestfacility2b" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacility2a.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "apextestfacility2b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apextestfacility2a", "apextestfacility2b" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacility2b.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "apextestfacility3a",
+      "rules" : [
+        [ "maxSpawnCount", [0] ],
+        [ "doNotConnectToPart", [ "apextestfacility3a", "apextestfacility3b" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacility3a.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "apextestfacility3b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apextestfacility3a", "apextestfacility3b" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacility3b.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "apextestfacility4a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apextestfacility4a", "apextestfacility4b", "apextestfacility4c", "apextestfacility4d" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacility4a.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "apextestfacility4b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apextestfacility4a", "apextestfacility4b", "apextestfacility4c", "apextestfacility4d" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacility4b.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "apextestfacility4c",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apextestfacility4a", "apextestfacility4b", "apextestfacility4c", "apextestfacility4d" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacility4c.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "apextestfacility4d",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apextestfacility4a", "apextestfacility4b", "apextestfacility4c", "apextestfacility4d" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacility4d.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "apextestfacilityside1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "apextestfacilityside1", "apextestfacilityside2", "apextestfacilityside3", "apextestfacilityside4", "apextestfacilityside5", "apextestfacilityside6" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacilityside1.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "apextestfacilityside2",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "apextestfacilityside1", "apextestfacilityside2", "apextestfacilityside3", "apextestfacilityside4", "apextestfacilityside5", "apextestfacilityside6" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacilityside2.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "apextestfacilityside3",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "apextestfacilityside1", "apextestfacilityside2", "apextestfacilityside3", "apextestfacilityside4", "apextestfacilityside5", "apextestfacilityside6" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacilityside3.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "apextestfacilityside4",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "apextestfacilityside1", "apextestfacilityside2", "apextestfacilityside3", "apextestfacilityside4", "apextestfacilityside5", "apextestfacilityside6" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacilityside4.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "apextestfacilityside5",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "apextestfacilityside1", "apextestfacilityside2", "apextestfacilityside3", "apextestfacilityside4", "apextestfacilityside5", "apextestfacilityside6" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacilityside5.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "apextestfacilityside6",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "apextestfacilityside1", "apextestfacilityside2", "apextestfacilityside3", "apextestfacilityside4", "apextestfacilityside5", "apextestfacilityside6" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacilityside6.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "apextestfacilityside6b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "apextestfacilityside1", "apextestfacilityside2", "apextestfacilityside3", "apextestfacilityside4", "apextestfacilityside5", "apextestfacilityside6" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacilityside6.json" ],
+      "chance" : 1
+    },    
+    {
+      "name" : "apextestfacilitysidetunnel",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "apextestfacilitysidetunnel" ] ]
+      ],
+      "def" : [ "tmx", "apextestfacilitysidetunnel.json" ],
+      "chance" : 0
+    }
+  ]
+}

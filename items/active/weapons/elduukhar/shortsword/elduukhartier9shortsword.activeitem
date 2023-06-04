@@ -1,0 +1,41 @@
+{
+  "itemName" : "elduukhartier9shortsword",
+  "level" : 6,
+  "price" : 1080,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "This blade is useful, but it seems to have been made more for vanity.",
+  "shortdescription" : "Opul Shortsword",
+  "tooltipKind" : "sword2",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword","crystal", "upgradeableWeapon"],
+
+  "inventoryIcon" : "elduukhartier9shortsword.png",
+
+  "animation" : "/items/active/weapons/melee/shortsword/comboshortsword.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "elduukhartier9shortsword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.625,
+    "baseDps" : 7.5,
+    "damageConfig" : {
+      "damageSourceKind" : "cosmic"
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 10,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

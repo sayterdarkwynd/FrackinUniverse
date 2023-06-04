@@ -1,0 +1,58 @@
+{
+  "itemName" : "aetheriumshortsword",
+  "price" : 1500,
+  "level" : 7,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "A perfect weapon.",
+  "shortdescription" : "Aetherium Scimitar",
+  "tooltipKind" : "swordaetherium",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword","aetherium","cosmic", "upgradeableWeapon"],
+
+  "inventoryIcon" : "aetheriumscimitar.png",
+  //"collectablesOnPickup" : { "fu_weaponshortsword" : "aetheriumshortsword" },
+  "animation" : "comboglowshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "aetheriumscimitar.png",
+    "bladefullbright" : "aetheriumscimitarfullbright.png"
+  },
+
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "aether",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.56,
+    "baseDps" : 6.96,
+    "damageConfig" : {
+      "damageSourceKind" : "aethershortsword",
+      "statusEffects" : [ "defenseboostneg20" ],
+      "knockback" : 4,
+      "knockbackMode" : "facing",
+      "timeoutGroup" : "primary"
+    }
+  },
+  "critChance" : 3,
+  "critBonus" : 1,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters" : {
+	  "animationParts" : {
+	    "handle" : "",
+	    "blade" : "aetheriumscimitart8.png",
+	    "bladefullbright" : "aetheriumscimitarfullbrightt8.png"
+	  },
+	  "inventoryIcon" : "aetheriumscimitart8.png",
+	  "shortdescription" : "Aetherium Beheader",
+	  "description" : "Justice be thy blade.",
+	  "critChance" : 12,
+	  "critBonus" : 12
+  }
+
+}

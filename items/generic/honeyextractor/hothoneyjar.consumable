@@ -1,21 +1,20 @@
 {
-  "itemName" : "hothoneyjar",
-  "rarity" : "Common",
-  "price" : 200,
-  "category" : "food",
-  "inventoryIcon" : "hothoneyjar.png",
-  "description" : "A jar of extra hot honey!",
-  "shortdescription" : "Hot Honey Jar",
-  "effects" : [ [
-    {
-        "effect" : "honeyheal4",
-        "duration" :180  },
-    {
-        "effect" : "fedhoney",
-        "duration" : 180
-    }
-  ] ],
-  "blockingEffects" : [
-     "fedhoney"
-  ]
+  "itemName": "hothoneyjar",
+  "rarity": "Common",
+  "price": 40,
+  "category": "food",
+  "inventoryIcon": "hothoneyjar.png",
+  "description": "A delicious jar of hot honey.^cyan;+^white;30% ^pink;Fire ^cyan;Resistance ^gray;(^white;5m^gray;)^reset;",
+  "shortdescription": "Inferno Honey",
+  "tooltipKind": "food",
+  "effects": [
+    [
+      "fufireresistance3",
+      {
+        "effect": "fedhoney",
+        "duration": 300
+      }
+    ]
+  ],
+  "blockingEffects": ["fedhoney"]
 }

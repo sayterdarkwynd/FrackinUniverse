@@ -1,0 +1,108 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_shortsword.ogg" ],
+      "fire2" : [ "/sfx/melee/swing_spear.ogg" ],
+      "fire3" : [ "/sfx/melee/swing_shortsword.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Combo Slash",
+    "type" : "shortswordcomboshadow",
+    "scripts" : ["/items/active/weapons/melee/meleecombo.lua"],
+    "class" : "MeleeCombo",
+
+    "comboSteps" : 2,
+
+    "flashTime" : 0.25,
+    "flashDirectives" : "fade=FF0000FF=0.15",
+
+    "swooshOffsetRegions" : [
+      [-1.0, -0.25, 2.5, 2.0],
+      [0, -0.5, 2.5, 1.0]
+    ],
+
+    // cooldown time multiplier for steps after the first, compounded per combo step
+    "comboSpeedFactor" : 0.17,
+
+    "edgeTriggerGrace" : 0.23,
+
+    "fireTime" : 0.225,
+    "baseDps" : 7.5,
+
+    "damageConfig" : {
+      "damageSourceKind" : "shadow",
+      "knockbackMode" : "facing",
+      "timeout" : 0.5
+    },
+    "stepDamageConfig" : [
+      {
+        "baseDamageFactor" : 1.0,
+        "knockback" : 10
+      },
+      {
+        "baseDamageFactor" : 1.4,
+        "statusEffects" : [ "bleedingshort" ],
+        "knockback" : 20
+      }
+    ],
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "windup1" : {
+        "duration" : 0.05,
+        "armRotation" : -15,
+        "weaponRotation" : -60,
+        "weaponOffset" : [0, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "fire1" : {
+        "duration" : 0.2,
+        "armRotation" : -135,
+        "weaponRotation" : 40,
+        "weaponOffset" : [0, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "wait1" : {
+        "duration" : 0.3,
+        "armRotation" : -135,
+        "weaponRotation" : 40,
+        "weaponOffset" : [0, 2.25],
+        "allowRotate" : true,
+        "allowFlip" : true,
+        "twoHanded" : false
+      },
+      "windup2" : {
+        "duration" : 0.1,
+        "armRotation" : -135,
+        "weaponRotation" : 40,
+        "weaponOffset" : [0, 2.25],
+        "twoHanded" : false,
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "fire2" : {
+        "duration" : 0.3,
+        "armRotation" : 0,
+        "weaponRotation" : -90,
+        "weaponOffset" : [0, 2.25],
+        "twoHanded" : false,
+        "allowFlip" : true,
+        "allowRotate" : true
+      }
+    }
+  }
+}

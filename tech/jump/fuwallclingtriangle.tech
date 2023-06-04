@@ -1,0 +1,32 @@
+{
+  "name" : "fuwallclingtriangle",
+  "type" : "legs",
+
+  "scripts" : ["wallcling.lua"],
+  "animator" : "walljump.animation",
+
+  "description" : "Wall Slide, Double and Triangle-Jump",
+  "shortDescription" : "Triangle Jump",
+  "rarity" : "rare",
+  "icon" : "/tech/magnetgrip.png",
+
+  "chipCost" : 3,
+  "energyCost" : 20,
+  "multiJumpCount" : 1,
+
+  "wallSensors" : [1.0, 1.75, 2.5],
+  "wallDetectThreshold" : 1,
+
+  "wallReleaseTime" : 0.15,
+  "wallGrabIsTriangle" : 1,
+  "wallGrabFreezeTime" : 0.15,
+  "wallJumpXVelocity" : 26,
+  "wallJumpYVelocity" : 70,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 0.6
+    },
+    "airForce" : 0,
+    "airFriction" : 10.0
+  }
+}

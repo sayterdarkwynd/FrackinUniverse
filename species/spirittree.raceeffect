@@ -1,0 +1,56 @@
+{
+	"stats": [
+		{ "stat": "foodDelta", "baseMultiplier": 0.8 },
+		{ "stat": "maxHealth", "effectiveMultiplier": 0.8 },
+		{ "stat": "physicalResistance", "amount": -0.3 },
+		{ "stat": "fireResistance", "amount": 0.1 },
+		{ "stat": "poisonResistance", "amount": -0.3 },
+		{ "stat": "shadowResistance", "amount": 0.1 },
+		{ "stat": "cosmicResistance", "amount": 0.1 },
+		{ "stat": "jungleslowImmunity", "amount": 1 },
+		{ "stat": "fumudslowImmunity", "amount": 1 },
+		{ "stat": "fallDamageMultiplier", "effectiveMultiplier": 0 }
+	],
+	"diet" : "herbivore",
+	"controlModifiers": {
+		"speedModifier": 1.2,
+		"airJumpModifier": 1.2
+	},
+	"envEffects": [
+		{
+			"biomes": [ "garden", "thickjungle", "forest", "jungle", "bog", "arboreal", "arborealdark" ],
+			"stats": [
+				{ "stat": "protection", "effectiveMultiplier": 1.15 },
+				{ "stat": "maxHealth", "effectiveMultiplier": 1.15 }
+			]
+		}
+	],
+	"weaponEffects": [
+		{ "weapons": [ "wand", "staff" ],
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.2 },
+				{ "stat": "protection", "effectiveMultiplier": 1.1 }
+			]
+		}
+	],
+	"scripts" : [
+		{
+			"script" : "/scripts/fr_scripts/spirittreeStuff.lua",
+			"args" : {
+				"daytimeConfig" : {
+					"stats" : [ // Applied during the day
+						{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.2 },
+						{ "stat": "powerMultiplier", "effectiveMultiplier": 1.2 },
+						{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 1.10 }
+					]
+				},
+				"nightConfig" : {
+					"stats" : [ // Applied at night
+						{ "stat" : "maxEnergy", "effectiveMultiplier" : 0.85 },
+						{ "stat": "powerMultiplier", "effectiveMultiplier": 0.85 }
+					]
+				}
+			}
+		}
+	]
+}

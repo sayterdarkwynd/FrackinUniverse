@@ -1,22 +1,19 @@
 {
-  "itemName" : "guam",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "guam.png",
-  "description" : "Repels extreme radiation, which is rather useful.",
-  "shortdescription" : "Rad-Leaf",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-   "ffextremeradiationimmunity"
-    ] ],
-  "blockingEffects" : [
-    "ffextremeradiationimmunity"
-  ]
+	"itemName": "guam",
+	"inventoryIcon": "guam.png",
+	"category": "food",
+	"rarity": "Legendary",
+	"price": 10,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immune^reset;: Extreme Radiation: 3m",
+	"shortdescription": "Rad-Leaf",
+
+	"effects": [
+		[{
+			"effect": "ffextremeradiationimmunityicon",
+			"duration": 180
+		}]
+	],
+	"blockingEffects": ["ffextremeradiationimmunity"]
 }

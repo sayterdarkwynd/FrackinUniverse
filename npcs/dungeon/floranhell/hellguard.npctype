@@ -1,0 +1,51 @@
+{
+  "type" : "hellguard",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "hellguardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Intruder!"
+          ]
+        },
+        "floran" : {
+          "default" : [
+            "Prisssoner mussst be dealt with!",
+            "I senssse an essscape!",
+            "Prisssoner will be ssstabbed to death!",
+            "Floran know nothing but ssstab and ssssslice...",
+            "Prisssoner's death is no sssacrifice...",
+            "There isss no escape!",
+            "It isss either Floran or ssstarvation which will kill you..."
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "florantier4head" } ],
+            "chest" : [ { "name" : "florantier4chest" } ],
+            "legs" : [ { "name" : "florantier4pants" } ],
+            "back" : [ { "name" : "hunterback" } ],
+            "primary" : [
+              "npcassaultrifle",
+              "npcsniperrifle"
+            ],
+            "sheathedprimary" : [
+              "npcspear"
+            ]
+          }
+        ] ]
+    ]
+  }
+}

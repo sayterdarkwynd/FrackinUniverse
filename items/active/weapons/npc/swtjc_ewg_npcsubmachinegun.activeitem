@@ -1,0 +1,100 @@
+{
+  "itemName" : "swtjc_ewg_npcsubmachinegun",
+  "price" : 0,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "The power of an assault rifle in a compact one-handed package. Shame that it isn't anywhere nearly as accurate...",
+  "shortdescription" : "NPC Submachine Gun",
+  "tooltipKind" : "gun",
+  "category" : "swtjc_ewg_submachineGun",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","ranged","machinepistol"],
+
+
+  "magazineSize" : [12,36],
+  "reloadTime" : [0.5,1],
+  "isAmmoBased" : 1,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : { },
+  "animationCustom" : { },
+  "baseOffset" : [-0.375, 0.125],
+  "muzzleOffset" : [0.0, 0.375],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.09,
+    "baseDps" : 8.5,
+    "energyUsage" : 12.75,
+    "inaccuracy" : 0.15,
+
+    "fireType" : "auto",
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "knockbackRange" : [4,8]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  },
+  "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/ar1.ogg", "/sfx/gun/ar2.ogg", "/sfx/gun/ar3.ogg", "/sfx/gun/ar4.ogg", "/sfx/gun/ar5.ogg", "/sfx/gun/ar6.ogg", "/sfx/gun/grenade2.ogg" ],
+
+  "elementalType" : "physical",
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "animationParts" : {
+      "butt" : {
+        "path" : "/items/active/weapons/ranged/pistol/butt/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "middle" : {
+        "path" : "/items/active/weapons/ranged/assaultrifle/middle/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "barrel" : {
+        "path" : "/items/active/weapons/ranged/pistol/barrel/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+    },
+    "gunParts" : ["butt", "middle", "barrel"],
+    "altAbilities" : [ ],
+    "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
+    "iconDrawables" : ["butt", "middle", "barrel"]
+  }]
+}

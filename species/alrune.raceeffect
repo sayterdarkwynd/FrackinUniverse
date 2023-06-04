@@ -1,0 +1,76 @@
+{
+	"stats" : [
+		{ "stat" : "fireResistance", "amount" : 0.4},
+		{ "stat" : "poisonResistance", "amount" : 0.3 },
+		{ "stat" : "shadowResistance", "amount" : 0.4 },
+		{ "stat" : "darknessResistance", "amount" : 0.4 },
+		{ "stat" : "maxHealth", "effectiveMultiplier" : 0.95 },
+		{ "stat" : "electricResistance", "amount" : -0.05 },
+		{ "stat" : "iceResistance", "amount" : -0.3 },
+		{ "stat" : "insanityImmunity", "amount" : 1 }
+    ],
+    "diet" : "carnivore",
+    "envEffects": [
+		{
+			"biomes" : [ "atropus", "tentacle", "bloodstonesea", "bloodstoneseafloor", "strangesea", "strangeseafloor" ],
+			"stats" : [
+				{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 1.4 }
+			],
+			"controlModifiers": {
+				"speedModifier": 1.05
+			}
+		},
+		{
+			"biomes": [ "midnight", "penumbra", "lightless", "tidewaterfloor", "tidewater", "tundradark", "sulphuricdark", "icewastedark", "infernusdark" ],
+			"stats" : [
+				{ "stat" : "maxHealth", "effectiveMultiplier" : 1.1 },
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.1 }
+			]
+		},
+		{
+			"biomes": [ "atropusdark" ],
+			"stats" : [
+				{ "stat" : "maxHealth", "effectiveMultiplier" : 1.1 },
+				{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 1.4 },
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.1 }
+			],
+			"controlModifiers": {
+				"speedModifier": 1.05
+			}
+		},
+		{
+			"biomes": [ "eden" ],
+			"stats" : [
+				{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 0.5}
+			]
+		}
+	],
+	"WeaponEffects" : [
+		{
+			"weapons" : [ "whip" ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 0.9 },
+				{ "stat" : "critChance", "amount" : 10 },
+				{ "stat" : "critDamage", "amount" : 0.15}
+			]
+		},
+		{
+			"weapons" : [ "magnorb" ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.05 },
+				{ "stat" : "protection", "effectiveMultiplier" : 1.1 }
+			]
+		},
+		{
+			"weapons": [ "wand", "staff" ],
+			"stats": [
+				{ "stat": "protection", "effectiveMultiplier": 0.95	},
+				{ "stat": "maxEnergy", "baseMultiplier": 1.2},
+				{ "stat": "energyRegenPercentageRate", "baseMultiplier": 1.1}
+			],
+			"controlModifiers":{
+				"speedModifier": 1.1
+			}
+		}
+	]
+}

@@ -1,0 +1,23 @@
+{
+  "projectileName" : "corerifleshot",
+  "physics" : "bullet",
+  "image" : "firelasershot.png",
+  "damageKindImage" : "icon.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 2,
+  "fullbright": true,
+  "emitters" : [ "defaultred","fireflames" ],
+  "damageKind" : "fire",
+  "lightColor" : [218, 103, 0],
+
+  "speed" : 72,
+  "power" : 1,
+
+  "statusEffects" : [ "burning" ],
+      "actionOnReap" : [
+        {
+          "action" : "config",
+          "file" : "/projectiles/explosions/explosivebolt/coreblastexplosion.config"
+        }
+      ]
+}

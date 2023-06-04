@@ -6,26 +6,26 @@
   "description" : "Stone covered in vines and roots.",
   "shortdescription" : "Jungle Stone",
   "footstepSound" : "/sfx/blocks/footstep_stone.ogg",
-  "health" : 8,
+  "health" : 4,
   "category": "materials",
 
-  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderTemplate" : "/tiles/fuclassicnopaint.config",
   "renderParameters" : {
     "texture" : "junglestone.png",
     "variants" : 5,
     "lightTransparent" : false,
     "occludesBelow" : true,
-    "multiColored" : false
+    "multiColored" : true
   },
   "liquidInteractions" : [
       {
         "liquidId": 54,
-        "consumeLiquid": 0.45,
+        "consumeLiquid": 0.25,
         "transformMaterialId": 6517
       },
       {
         "liquidId": 57,
-        "consumeLiquid": 0.45,
+        "consumeLiquid": 0.25,
         "transformMaterialId": 6518
       },
     {
@@ -42,7 +42,7 @@
         "liquidId": 56,
         "consumeLiquid": 0.15,
         "transformMaterialId": 6533
-      } 
+      }
   ]
 }
 

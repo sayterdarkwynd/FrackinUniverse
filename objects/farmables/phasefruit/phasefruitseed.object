@@ -1,0 +1,56 @@
+{
+  "objectName" : "phasefruitseed",
+  "tags" : ["nature"],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "A plant that somehow phases between dimensions.",
+  "shortdescription" : "Phasefruit Seeds",
+  "objectType" : "farmable",
+  "printable" : false,
+  "lightColor" : [36, 159, 184],
+  "price" : 100,
+
+  "apexDescription" : "A truly amazing plant! I need to do some research.",
+  "avianDescription" : "Is it real? Very strange combination...",
+  "floranDescription" : "Thiss plant isss ssso sssstrange!",
+  "glitchDescription" : "Interested. This looks delicious.",
+  "humanDescription" : "Eating this would probably be fatal. Let's give it a try!",
+  "hylotlDescription" : "Wonderful harmony of technology and nature!",
+"novakidDescription" : "A good old phasefruit!",
+
+  "inventoryIcon" : "phasefruitseedicon.png",
+
+  "tooltipKind" : "seed",
+  "largeImage" : "phasefruitseed.png:default.3.0",
+
+  "orientations" : [
+    {
+      "imageLayers" : [{ "image" : "phasefruitseed.png:<color>.<stage>.<alt>", "fullbright" : true}, { "image" : "phasefruitseedlit.png:<color>.<stage>.<alt>"}],
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "stages" : [
+    {
+      "duration" : [100, 105]
+    },
+    {
+      "duration" : [100, 105]
+    },
+    {
+      "alts" : 5,
+      "duration" : [400, 440]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "phasefruitHarvest",
+      "resetToStage" : 2
+    }
+  ],
+  "maxImmersion" : 0.25
+}

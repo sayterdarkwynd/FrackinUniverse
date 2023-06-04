@@ -6,7 +6,9 @@
     "groups" : [
       {
         "select" : 3,
-        "pool" : [ 
+        "pool" : [
+          [ 0.03, "burrower_depth_selector" ],
+          [ 0.3, "fuallergen" ],
           [ 0.3, "batong" ],
           [ 0.3, "adultpoptop" ],
           [ 0.4, "poptop" ],
@@ -18,7 +20,8 @@
           [ 0.4, "toumingo" ],
           [ 0.3, "swarpion" ],
           [ 0.3, "seedspawn2" ],
-          [ 0.3, "fugiantscorpion" ]
+          [ 0.3, "fugiantscorpion" ],
+          [ 0.4, "bighairyfrank" ]
         ]
       },
       {
@@ -35,7 +38,8 @@
           [ 0.3, "hedgehogcritter" ],
           [ 0.4, "petalcritter" ],
           [ 0.3, "snakecritter" ],
-          [ 0.3, "tritrotscritter" ]
+          [ 0.3, "tritrotscritter" ],
+          [ 0.4, "widow" ]
         ]
       },
       {
@@ -65,7 +69,7 @@
       "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 
@@ -73,17 +77,30 @@
     "grassMod" : [ "thickjunglegrass" ],
     "grassModDensity" : 0.9,
     "items" : [
+      {
+        "mode" : "background",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundFossils",
 
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.15, "dirtyfossil1" ], [0.15, "dirtyfossil2" ], [0.15, "dirtyfossil3" ], [0.15, "dirtyfossil4" ], [0.1, "dirtyfossil5" ], [0.1, "dirtyfossil6" ], [0.1, "dirtyfossil7" ], [0.1, "dirtyfossil8" ] ],
+            "parameters" : {  "materials" : ["mud", "cobblestone", "bonematerial"]}
+          }
+        ]
+      },
            {
              "mode" : "ceiling",
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
               [0.50, "greenceilingspike1" ],
               [0.50, "greenceilingspike2" ],
               [0.50, "greenceilingspike3" ],
@@ -98,11 +115,11 @@
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
               [0.50, "greengroundspike1" ],
               [0.50, "greengroundspike2" ],
               [0.50, "greengroundspike3" ],
@@ -116,24 +133,24 @@
              "mode" : "floor",
              "priority" : 1.0,
              "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
-   
+             "distribution" : "/biomes/distributions.config:undergroundOreRocks",
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
               [0.50, "thorns1" ],
               [0.50, "thorns2" ],
               [0.50, "thorns3" ],
               [0.50, "thorns4" ],
-              [0.50, "copperrock" ], 
+              [0.50, "carbonrock" ],
+              [0.50, "carbonrocksmall" ],
+              [0.50, "copperrock" ],
               [0.50, "copperrocksmall" ],
               [0.50, "silverrock" ],
               [0.50, "silverrocksmall" ],
               [0.50, "goldrock" ],
               [0.50, "goldrocksmall" ],
-              
-              
               [0.50, "diamondrock" ],
               [0.50, "diamondrocksmall" ]
                  ],
@@ -141,6 +158,7 @@
                }
              ]
            },
+
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -202,7 +220,7 @@
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:potsRare",
-   
+
              "type" : "object",
              "objectSets" : [
                {
@@ -217,7 +235,7 @@
           "distribution" : "/biomes/distributions.config:scatteredSmall",
 
           "type" : "grass",
-          "grasses" : [ "curlythorns", "grass", "jungleflower1", "jungleflower2", "jungleflower3"  ] 
+          "grasses" : [ "curlythorns", "grass", "jungleflower1", "jungleflower2", "jungleflower3"  ]
         },
         {
           "mode" : "ceiling",
@@ -225,7 +243,7 @@
           "distribution" : "/biomes/distributions.config:scatteredSmall",
 
           "type" : "grass",
-          "grasses" : [ "ceilingweedy", "ceilingcurlythorns", "ceilingflowers", "ceilingroots"  ] 
+          "grasses" : [ "ceilingweedy", "ceilingcurlythorns", "ceilingflowers", "ceilingroots"  ]
         },
         {
           "mode" : "ceiling",
@@ -236,9 +254,32 @@
           "type" : "tree",
           "treeFoliageHueShiftMax" : 180,
           "treeStemHueShiftMax" : 180,
-          "treeStemList" : [ "vineroot2", "vine2a", "floweryvine", "twistedvine2" ],
+          "treeStemList" : [ "vineroot2", "vine2a", "floweryvine2", "twistedvine2" ],
           "treeFoliageList" : [ "nofoliagevine", "starry2", "dreamy2", "starry2" ]
-        }
+        },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChallengeDoors",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "challengedoor" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:tiyDist",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "underground1bmicrodungeons", "fuunderground" ]
+      }
     ]
   },
     "hueShiftOptions" : [0]

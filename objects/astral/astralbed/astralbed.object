@@ -1,0 +1,49 @@
+{
+	"objectName": "astralbed",
+	"colonyTags": ["fu", "aether", "pretty", "valuable", "bed"],
+	"rarity": "legendary",
+	"description": "A stellar bed, now you can sleep on the stars rather than under them.",
+	"shortdescription": "Aen Bed",
+	"race": "generic",
+	"category": "furniture",
+	"price": 625,
+	"objectType": "loungeable",
+	"sitFlipDirection": true,
+	"sitPosition": [-9, 16],
+	"sitOrientation": "lay",
+	"sitAngle": 90,
+	"sitCoverImage" : "/objects/astral/astralbed/astralbedcover.png",
+
+	"sitEmote": "sleep",
+	"sitStatusEffects": [
+		"bed5"
+	],
+	"sitEffectEmitters": ["sleepbubbles"],
+	"lightPosition" : [0, 0],
+	"lightColor" : [120, 20, 180],
+
+	"inventoryIcon": "icon.png",
+	"orientations" : [
+    {
+      "imageLayers" : [ { "image" : "astralbed.png:<color>" }, { "image" : "astralbedfullbright.png:<color>", "fullbright" : true } ],
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "astralbed.png:<color>" }, { "image" : "astralbedfullbright.png:<color>", "fullbright" : true } ],
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "direction" : "right",
+
+	  "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+}

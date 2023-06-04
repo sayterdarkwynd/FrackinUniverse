@@ -1,0 +1,3362 @@
+{
+  "metadata" : {
+    "name" : "aviantomb",
+    "species" : "avian",
+    "rules" : [
+    ],
+    "anchor" : [ "entrance1", "entrance2" ],
+    "gravity" : 80,
+    "maxRadius" : 2500,
+    "maxParts" : 25,
+    "extendSurfaceFreeSpace" : 100
+  },
+  "tiles" : [
+    {
+      "value" : [255, 0, 220, 255],
+      "comment" : "magic pinkppp, a no-op value"
+    },
+    {
+      "value" : [0, 0, 0, 255],
+      "rules" : [ [ "worldGenMustContainAirBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ] ]
+    },
+    {
+      "value" : [120, 120, 120, 255],
+      "rules" : [ [ "worldGenMustContainAirForeground" ], [ "allowOverdrawing" ] ]
+    },
+    {
+      "value" : [255, 255, 255, 255],
+      "rules" : [ [ "worldGenMustContainSolidBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface" ] ]
+    },
+    {
+      "value" : [0, 38, 255, 255],
+      "comment" : "bright blue, entrance coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [0, 255, 186, 255],
+      "comment" : "bright aqua, alternate coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [168, 255, 0, 255],
+      "comment" : "bright green, alternate coupler #2",
+      "connector" : true
+    },
+
+    {
+      "value" : [255, 168, 0, 255],
+      "comment" : "bright orange, alternate coupler #3",
+      "connector" : true
+    },
+
+    {
+      "value" : [32, 32, 32, 255],
+      "comment" : "Empty hole",
+      "brush" : [ [ "clear" ] ]
+    },
+
+    {
+      "value" : [48, 48, 48, 255],
+      "comment" : "Empty hole overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ] ]
+    },
+
+    {
+      "value" : [128, 128, 128, 255],
+      "comment" : "Biome tile brush",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [100, 100, 100, 255],
+      "comment" : "Biome tile brush non-overwritable",
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [200, 200, 200, 255],
+      "comment" : "Biome tile background brush",
+      "brush" : [ [ "clear" ], [ "surfacebackground" ] ]
+    },
+
+    {
+      "value" : [54, 63, 105, 255],
+      "comment" : "water pool foreground",
+      "brush" : [ [ "clear" ], [ "liquid", "water" ] ]
+    },
+
+    {
+      "value" : [150, 255, 0, 255],
+      "comment" : "poison pool foreground",
+      "brush" : [ [ "clear" ], [ "liquid", "poison" ] ]
+    },
+
+    {
+      "value" : [255, 96, 0, 255],
+      "comment" : "lava pool foreground",
+      "brush" : [ [ "clear" ], [ "liquid", "lava" ] ]
+    },
+
+    {
+      "value" : [255, 232, 178, 255],
+      "comment" : "background main biome block",
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 0 } ] ]
+    },
+
+    {
+      "value" : [255, 222, 178, 255],
+      "comment" : "overwritable background main biome block",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 0 } ] ]
+    },
+
+    {
+      "value" : [204, 186, 143, 255],
+      "comment" : "foreground main biome block",
+      "brush" : [ [ "surface", { "variant" : 0 } ] ]
+    },
+
+    {
+      "value" : [204, 176, 143, 255],
+      "comment" : "overwritable foreground main biome block",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface", { "variant" : 0 } ] ]
+    },
+
+    {
+      "value" : [178, 232, 255, 255],
+      "comment" : "background sub biome block #1",
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 1 } ] ]
+    },
+
+    {
+      "value" : [178, 222, 255, 255],
+      "comment" : "overwritable background sub biome block #1",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 1 } ] ]
+    },
+
+    {
+      "value" : [143, 186, 204, 255],
+      "comment" : "foreground sub biome block #1",
+      "brush" : [ [ "surface", { "variant" : 1 } ] ]
+    },
+
+    {
+      "value" : [143, 176, 204, 255],
+      "comment" : "overwritable foreground sub biome block #1",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface", { "variant" : 1 } ] ]
+    },
+
+    {
+      "value" : [222, 255, 178, 255],
+      "comment" : "background sub biome block #2",
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 2 } ] ]
+    },
+
+    {
+      "value" : [222, 245, 178, 255],
+      "comment" : "overwritable background sub biome block #2",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "surfacebackground", { "variant" : 2 } ] ]
+    },
+
+    {
+      "value" : [177, 204, 143, 255],
+      "comment" : "foreground sub biome block #2",
+      "brush" : [ [ "surface", { "variant" : 2 } ] ]
+    },
+
+    {
+      "value" : [177, 194, 143, 255],
+      "comment" : "overwritable foreground sub biome block #2",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface", { "variant" : 2 } ] ]
+    },
+
+    {
+      "value" : [255, 0, 0, 255],
+      "comment" : "global wire #1",
+      "brush" : [ [ "wire", { "group" : "globalgroup1", "local" : false } ] ]
+    },
+
+    {
+      "value" : [0, 255, 0, 255],
+      "comment" : "global wire #2",
+      "brush" : [ [ "wire", { "group" : "globalgroup2", "local" : false } ] ]
+    },
+
+    {
+      "value" : [0, 0, 255, 255],
+      "comment" : "global wire #3",
+      "brush" : [ [ "wire", { "group" : "globalgroup3", "local" : false } ] ]
+    },
+
+    {
+      "value" : [1, 0, 0, 255],
+      "comment" : "wire #1",
+      "brush" : [ [ "wire", { "group" : "group1", "local" : true } ] ]
+    },
+
+    {
+      "value" : [2, 0, 0, 255],
+      "comment" : "wire #2",
+      "brush" : [ [ "wire", { "group" : "group2", "local" : true } ] ]
+    },
+
+    {
+      "value" : [3, 0, 0, 255],
+      "comment" : "wire #3",
+      "brush" : [ [ "wire", { "group" : "group3", "local" : true } ] ]
+    },
+
+    {
+      "value" : [4, 0, 0, 255],
+      "comment" : "wire #4",
+      "brush" : [ [ "wire", { "group" : "group4", "local" : true } ] ]
+    },
+
+    {
+      "value" : [5, 0, 0, 255],
+      "comment" : "wire #5",
+      "brush" : [ [ "wire", { "group" : "group5", "local" : true } ] ]
+    },
+
+    {
+      "value" : [6, 0, 0, 255],
+      "comment" : "wire #6",
+      "brush" : [ [ "wire", { "group" : "group6", "local" : true } ] ]
+    },
+
+    {
+      "value" : [7, 0, 0, 255],
+      "comment" : "wire #7",
+      "brush" : [ [ "wire", { "group" : "group7", "local" : true } ] ]
+    },
+
+    {
+      "value" : [8, 0, 0, 255],
+      "comment" : "wire #8",
+      "brush" : [ [ "wire", { "group" : "group8", "local" : true } ] ]
+    },
+
+    {
+      "value" : [9, 0, 0, 255],
+      "comment" : "wire #9",
+      "brush" : [ [ "wire", { "group" : "group9", "local" : true } ] ]
+    },
+
+    {
+      "value" : [10, 0, 0, 255],
+      "comment" : "wire #10",
+      "brush" : [ [ "wire", { "group" : "group10", "local" : true } ] ]
+    },
+
+    {
+      "value" : [11, 0, 0, 255],
+      "comment" : "wire #11",
+      "brush" : [ [ "wire", { "group" : "group11", "local" : true } ] ]
+    },
+
+    {
+      "value" : [12, 0, 0, 255],
+      "comment" : "wire #12",
+      "brush" : [ [ "wire", { "group" : "group12", "local" : true } ] ]
+    },
+
+    {
+      "value" : [13, 0, 0, 255],
+      "comment" : "wire #13",
+      "brush" : [ [ "wire", { "group" : "group13", "local" : true } ] ]
+    },
+
+    {
+      "value" : [14, 0, 0, 255],
+      "comment" : "wire #14",
+      "brush" : [ [ "wire", { "group" : "group14", "local" : true } ] ]
+    },
+
+    {
+      "value" : [15, 0, 0, 255],
+      "comment" : "wire #15",
+      "brush" : [ [ "wire", { "group" : "group15", "local" : true } ] ]
+    },
+
+    {
+      "value" : [16, 0, 0, 255],
+      "comment" : "wire #16",
+      "brush" : [ [ "wire", { "group" : "group16", "local" : true } ] ]
+    },
+
+    {
+      "value" : [17, 0, 0, 255],
+      "comment" : "wire #17",
+      "brush" : [ [ "wire", { "group" : "group17", "local" : true } ] ]
+    },
+
+    {
+      "value" : [18, 0, 0, 255],
+      "comment" : "wire #18",
+      "brush" : [ [ "wire", { "group" : "group18", "local" : true } ] ]
+    },
+
+    {
+      "value" : [19, 0, 0, 255],
+      "comment" : "wire #19",
+      "brush" : [ [ "wire", { "group" : "group19", "local" : true } ] ]
+    },
+
+    {
+      "value" : [20, 0, 0, 255],
+      "comment" : "wire #20",
+      "brush" : [ [ "wire", { "group" : "group20", "local" : true } ] ]
+    },
+
+    {
+      "value" : [21, 0, 0, 255],
+      "comment" : "wire #21",
+      "brush" : [ [ "wire", { "group" : "group21", "local" : true } ] ]
+    },
+
+    {
+      "value" : [22, 0, 0, 255],
+      "comment" : "wire #22",
+      "brush" : [ [ "wire", { "group" : "group22", "local" : true } ] ]
+    },
+
+    {
+      "value" : [23, 0, 0, 255],
+      "comment" : "wire #23",
+      "brush" : [ [ "wire", { "group" : "group23", "local" : true } ] ]
+    },
+
+    {
+      "value" : [24, 0, 0, 255],
+      "comment" : "wire #24",
+      "brush" : [ [ "wire", { "group" : "group24", "local" : true } ] ]
+    },
+
+    {
+      "value" : [25, 0, 0, 255],
+      "comment" : "wire #25",
+      "brush" : [ [ "wire", { "group" : "group25", "local" : true } ] ]
+    },
+
+    {
+      "value" : [26, 0, 0, 255],
+      "comment" : "wire #26",
+      "brush" : [ [ "wire", { "group" : "group26", "local" : true } ] ]
+    },
+
+    {
+      "value" : [27, 0, 0, 255],
+      "comment" : "wire #27",
+      "brush" : [ [ "wire", { "group" : "group27", "local" : true } ] ]
+    },
+
+    {
+      "value" : [28, 0, 0, 255],
+      "comment" : "wire #28",
+      "brush" : [ [ "wire", { "group" : "group28", "local" : true } ] ]
+    },
+
+    {
+      "value" : [29, 0, 0, 255],
+      "comment" : "wire #29",
+      "brush" : [ [ "wire", { "group" : "group29", "local" : true } ] ]
+    },
+
+    {
+      "value" : [30, 0, 0, 255],
+      "comment" : "wire #30",
+      "brush" : [ [ "wire", { "group" : "group30", "local" : true } ] ]
+    },
+
+    {
+      "value" : [0, 1, 0, 255],
+      "comment" : "and",
+      "brush" : [ [ "clear" ], [ "object", "and" ] ]
+    },
+
+    {
+      "value" : [0, 2, 0, 255],
+      "comment" : "dlatch",
+      "brush" : [ [ "clear" ], [ "object", "dlatch" ] ]
+    },
+
+    {
+      "value" : [0, 3, 0, 255],
+      "comment" : "not",
+      "brush" : [ [ "clear" ], [ "object", "not" ] ]
+    },
+
+    {
+      "value" : [0, 4, 0, 255],
+      "comment" : "or",
+      "brush" : [ [ "clear" ], [ "object", "or" ] ]
+    },
+
+    {
+      "value" : [0, 5, 0, 255],
+      "comment" : "timer",
+      "brush" : [ [ "clear" ], [ "object", "timer" ] ]
+    },
+
+    {
+      "value" : [0, 6, 0, 255],
+      "comment" : "timer1s",
+      "brush" : [ [ "clear" ], [ "object", "timer1s" ] ]
+    },
+
+    {
+      "value" : [0, 7, 0, 255],
+      "comment" : "timer2s",
+      "brush" : [ [ "clear" ], [ "object", "timer2s" ] ]
+    },
+
+    {
+      "value" : [0, 8, 0, 255],
+      "comment" : "timer3s",
+      "brush" : [ [ "clear" ], [ "object", "timer3s" ] ]
+    },
+
+    {
+      "value" : [0, 9, 0, 255],
+      "comment" : "timer4s",
+      "brush" : [ [ "clear" ], [ "object", "timer4s" ] ]
+    },
+
+    {
+      "value" : [0, 10, 0, 255],
+      "comment" : "timer5s",
+      "brush" : [ [ "clear" ], [ "object", "timer5s" ] ]
+    },
+
+    {
+      "value" : [0, 11, 0, 255],
+      "comment" : "xor",
+      "brush" : [ [ "clear" ], [ "object", "xor" ] ]
+    },
+
+    {
+      "value" : [0, 12, 0, 255],
+      "comment" : "persistentswitch",
+      "brush" : [ [ "clear" ], [ "object", "persistentswitch" ] ]
+    },
+
+    {
+      "value" : [26, 77, 0, 255],
+      "comment" : "biome tree",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "biometree" ] ]
+    },
+
+    {
+      "value" : [34, 102, 0, 255],
+      "comment" : "biome flora",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "biomeitems" ] ]
+    },
+
+    {
+      "value" : [85, 255, 0, 255],
+      "comment" : "Player Spawn",
+      "brush" : [ [ "playerstart" ] ]
+    },
+
+    {
+      "value" : [220, 220, 220, 255],
+      "comment" : "humangenerator facing left - on state",
+      "brush" : [ [ "clear" ], [ "object", "humangenerator", { "direction" : "left", "parameters" : { "defaultState" : true } } ] ]
+    },
+
+    {
+      "value" : [225, 225, 225, 255],
+      "comment" : "humangenerator facing right - on state",
+      "brush" : [ [ "clear" ], [ "object", "humangenerator", { "direction" : "right", "parameters" : { "defaultState" : true } } ] ]
+    },
+
+    {
+      "value" : [146, 165, 247, 255],
+      "comment" : "background temple1",
+      "brush" : [ [ "clear" ], [ "back", "temple1" ] ]
+    },
+
+    {
+      "value" : [170, 146, 247, 255],
+      "comment" : "foreground temple1",
+      "brush" : [ [ "clear" ], [ "back", "temple1" ], [ "front", "temple1" ] ]
+    },
+
+    {
+      "value" : [120, 96, 197, 255],
+      "comment" : "overwritable temple1",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "temple1" ], [ "front", "temple1" ] ]
+    },
+
+    {
+      "value" : [146, 247, 241, 255],
+      "comment" : "background temple2",
+      "brush" : [ [ "clear" ], [ "back", "temple2" ] ]
+    },
+
+    {
+      "value" : [146, 210, 247, 255],
+      "comment" : "foreground temple2",
+      "brush" : [ [ "clear" ], [ "back", "temple2" ], [ "front", "temple2" ] ]
+    },
+
+    {
+      "value" : [196, 228, 246, 255],
+      "comment" : "overwritable foreground temple2",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "temple2" ], [ "front", "temple2" ] ]
+    },
+
+    {
+      "value" : [146, 247, 151, 255],
+      "comment" : "background temple3",
+      "brush" : [ [ "clear" ], [ "back", "temple3" ] ]
+    },
+
+    {
+      "value" : [146, 247, 203, 255],
+      "comment" : "foreground temple3",
+      "brush" : [ [ "clear" ], [ "back", "temple3" ], [ "front", "temple3" ] ]
+    },
+
+    {
+      "value" : [224, 247, 146, 255],
+      "comment" : "background temple4",
+      "brush" : [ [ "clear" ], [ "back", "temple4" ] ]
+    },
+    {
+      "value" : [186, 247, 146, 255],
+      "comment" : "foreground temple4",
+      "brush" : [ [ "clear" ], [ "back", "temple4" ], [ "front", "temple4" ] ]
+    },
+    {
+      "value" : [206, 146, 247, 255],
+      "comment" : "background crosshatch",
+      "brush" : [ [ "clear" ], [ "back", "crosshatch" ] ]
+    },
+
+    {
+      "value" : [247, 146, 240, 255],
+      "comment" : "foreground crosshatch",
+      "brush" : [ [ "clear" ], [ "front", "crosshatch" ] ]
+    },
+
+    {
+      "value" : [137, 124, 76, 255],
+      "comment" : "wooden stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "platform" ] ]
+    },
+
+    {
+      "value" : [175, 168, 143, 255],
+      "comment" : "birddoor",
+      "brush" : [ [ "clear" ], [ "object", "birddoor" ] ]
+    },
+
+    {
+      "value" : [251, 209, 248, 255],
+      "comment" : "ashjar1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "ashjar1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [241, 209, 248, 255],
+      "comment" : "ashjar1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "ashjar1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [251, 209, 209, 255],
+      "comment" : "ashjar2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "ashjar2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [241, 209, 209, 255],
+      "comment" : "ashjar2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "ashjar2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [226, 209, 251, 255],
+      "comment" : "ashjar3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "ashjar3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [216, 209, 251, 255],
+      "comment" : "ashjar3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "ashjar3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [209, 219, 251, 255],
+      "comment" : "bigjar1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "bigjar1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [199, 219, 251, 255],
+      "comment" : "bigjar1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "bigjar1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [209, 247, 251, 255],
+      "comment" : "goldenducky facing left",
+      "brush" : [ [ "clear" ], [ "object", "goldenducky", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [199, 247, 251, 255],
+      "comment" : "goldenducky facing right",
+      "brush" : [ [ "clear" ], [ "object", "goldenducky", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [209, 251, 227, 255],
+      "comment" : "goldenjar1",
+      "brush" : [ [ "clear" ], [ "object", "goldenjar1" ] ]
+    },
+
+    {
+      "value" : [231, 251, 209, 255],
+      "comment" : "lamp facing left",
+      "brush" : [ [ "clear" ], [ "object", "lamp", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [221, 251, 209, 255],
+      "comment" : "lamp facing right",
+      "brush" : [ [ "clear" ], [ "object", "lamp", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [249, 251, 209, 255],
+      "comment" : "midjar1",
+      "brush" : [ [ "clear" ], [ "object", "midjar1" ] ]
+    },
+
+    {
+      "value" : [251, 241, 209, 255],
+      "comment" : "sacrificialaltar facing left",
+      "brush" : [ [ "clear" ], [ "object", "sacrificialaltar", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [241, 241, 209, 255],
+      "comment" : "sacrificialaltar facing right",
+      "brush" : [ [ "clear" ], [ "object", "sacrificialaltar", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [111, 24, 255, 255],
+      "comment" : "screen",
+      "brush" : [ [ "clear" ], [ "object", "screen1" ] ]
+    },
+
+    {
+      "value" : [255, 24, 24, 255],
+      "comment" : "screen2",
+      "brush" : [ [ "clear" ], [ "object", "screen2" ] ]
+    },
+
+    {
+      "value" : [255, 24, 209, 255],
+      "comment" : "screen3",
+      "brush" : [ [ "clear" ], [ "object", "screen3" ] ]
+    },
+
+    {
+      "value" : [198, 24, 255, 255],
+      "comment" : "screen4",
+      "brush" : [ [ "clear" ], [ "object", "screen4" ] ]
+    },
+
+    {
+      "value" : [57, 24, 255, 255],
+      "comment" : "screen5",
+      "brush" : [ [ "clear" ], [ "object", "screen5" ] ]
+    },
+
+    {
+      "value" : [24, 144, 255, 255],
+      "comment" : "smalljar1",
+      "brush" : [ [ "clear" ], [ "object", "smalljar1" ] ]
+    },
+
+    {
+      "value" : [24, 236, 255, 255],
+      "comment" : "sundecor",
+      "brush" : [ [ "clear" ], [ "object", "sundecor" ] ]
+    },
+
+    {
+      "value" : [24, 255, 160, 255],
+      "comment" : "talljar1",
+      "brush" : [ [ "clear" ], [ "object", "talljar1" ] ]
+    },
+
+    {
+      "value" : [84, 255, 24, 255],
+      "comment" : "talljar2",
+      "brush" : [ [ "clear" ], [ "object", "talljar2" ] ]
+    },
+
+    {
+      "value" : [220, 255, 24, 255],
+      "comment" : "torch",
+      "brush" : [ [ "clear" ], [ "object", "torch" ] ]
+    },
+
+    {
+      "value" : [66, 77, 7, 255],
+      "comment" : "torch - off state",
+      "brush" : [ [ "clear" ], [ "object", "torch" ] ]
+    },
+
+    {
+      "value" : [125, 47, 255, 255],
+      "comment" : "featherybird facing left",
+      "brush" : [ [ "clear" ], [ "object", "featherybird", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [115, 47, 255, 255],
+      "comment" : "featherybird facing right",
+      "brush" : [ [ "clear" ], [ "object", "featherybird", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [228, 47, 255, 255],
+      "comment" : "goldenurn",
+      "brush" : [ [ "clear" ], [ "object", "goldenurn" ] ]
+    },
+
+    {
+      "value" : [47, 174, 255, 255],
+      "comment" : "wingedurn",
+      "brush" : [ [ "clear" ], [ "object", "wingedurn" ] ]
+    },
+
+    {
+      "value" : [47, 213, 255, 255],
+      "comment" : "birdtable facing left",
+      "brush" : [ [ "clear" ], [ "object", "birdtable", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [37, 213, 255, 255],
+      "comment" : "birdtable facing right",
+      "brush" : [ [ "clear" ], [ "object", "birdtable", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [47, 255, 243, 255],
+      "comment" : "birdbed facing left",
+      "brush" : [ [ "clear" ], [ "object", "birdbed", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [37, 255, 243, 255],
+      "comment" : "birdbed facing right",
+      "brush" : [ [ "clear" ], [ "object", "birdbed", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [47, 255, 150, 255],
+      "comment" : "birdthrone facing left",
+      "brush" : [ [ "clear" ], [ "object", "birdthrone", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [37, 255, 150, 255],
+      "comment" : "birdthrone facing right",
+      "brush" : [ [ "clear" ], [ "object", "birdthrone", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [47, 255, 81, 255],
+      "comment" : "birdgong1",
+      "brush" : [ [ "clear" ], [ "object", "birdgong1" ] ]
+    },
+
+    {
+      "value" : [111, 255, 47, 255],
+      "comment" : "birdgong2",
+      "brush" : [ [ "clear" ], [ "object", "birdgong2" ] ]
+    },
+
+    {
+      "value" : [174, 255, 47, 255],
+      "comment" : "birdaltar2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "birdaltar2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [164, 255, 47, 255],
+      "comment" : "birdaltar2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "birdaltar2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [228, 255, 47, 255],
+      "comment" : "feathers1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "feathers1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [218, 255, 47, 255],
+      "comment" : "feathers1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "feathers1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 228, 47, 255],
+      "comment" : "feathers2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "feathers2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [245, 228, 47, 255],
+      "comment" : "feathers2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "feathers2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 189, 47, 255],
+      "comment" : "birdjar1",
+      "brush" : [ [ "clear" ], [ "object", "birdjar1" ] ]
+    },
+
+    {
+      "value" : [255, 160, 47, 255],
+      "comment" : "birdjar2",
+      "brush" : [ [ "clear" ], [ "object", "birdjar2" ] ]
+    },
+
+    {
+      "value" : [255, 67, 47, 255],
+      "comment" : "birdgroundlantern facing left",
+      "brush" : [ [ "clear" ], [ "object", "birdgroundlantern", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [77, 20, 14, 255],
+      "comment" : "birdgroundlantern facing left - off state",
+      "brush" : [ [ "clear" ], [ "object", "birdgroundlantern", { "direction" : "left", "parameters" : { "defaultLightState" : false } } ] ]
+    },
+
+    {
+      "value" : [255, 77, 46, 255],
+      "comment" : "birdgroundlantern facing right",
+      "brush" : [ [ "clear" ], [ "object", "birdgroundlantern", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [77, 23, 14, 255],
+      "comment" : "birdgroundlantern facing right - off state",
+      "brush" : [ [ "clear" ], [ "object", "birdgroundlantern", { "direction" : "right", "parameters" : { "defaultLightState" : false } } ] ]
+    },
+
+    {
+      "value" : [255, 47, 47, 255],
+      "comment" : "woodsupport",
+      "brush" : [ [ "clear" ], [ "object", "woodsupport" ] ]
+    },
+
+    {
+      "value" : [175, 189, 23, 255],
+      "comment" : "sawblade",
+      "brush" : [ [ "clear" ], [ "object", "sawblade", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [174, 189, 17, 255],
+      "comment" : "sawblade",
+      "brush" : [ [ "clear" ], [ "object", "sawblade", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [109, 90, 8, 255],
+      "comment" : "background tombbrick",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick" ] ]
+    },
+
+    {
+      "value" : [85, 109, 8, 255],
+      "comment" : "foreground tombbrick",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick" ], [ "front", "tombbrick" ] ]
+    },
+
+    {
+      "value" : [109, 8, 14, 255],
+      "comment" : "background tombbrick2",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick2" ] ]
+    },
+
+    {
+      "value" : [109, 45, 8, 255],
+      "comment" : "foreground tombbrick2",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick2" ], [ "front", "tombbrick2" ] ]
+    },
+
+    {
+      "value" : [109, 8, 104, 255],
+      "comment" : "background tombbrick3",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick3" ] ]
+    },
+
+    {
+      "value" : [109, 8, 52, 255],
+      "comment" : "foreground tombbrick3",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick3" ], [ "front", "tombbrick3" ] ]
+    },
+
+    {
+      "value" : [128, 9, 60, 255],
+      "comment" : "overwritable foreground tombbrick3",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "tombbrick3" ], [ "front", "tombbrick3" ] ]
+    },
+
+    {
+      "value" : [31, 8, 109, 255],
+      "comment" : "background tombbrick4",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick4" ] ]
+    },
+
+    {
+      "value" : [69, 8, 109, 255],
+      "comment" : "foreground tombbrick4",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick4" ], [ "front", "tombbrick4" ] ]
+    },
+
+    {
+      "value" : [8, 60, 109, 255],
+      "comment" : "background tombbrick5",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick5" ] ]
+    },
+
+    {
+      "value" : [8, 29, 109, 255],
+      "comment" : "foreground tombbrick5",
+      "brush" : [ [ "clear" ], [ "back", "tombbrick5" ], [ "front", "tombbrick5" ] ]
+    },
+
+    {
+      "value" : [222, 144, 233, 255],
+      "comment" : "tribal stairs & platform",
+      "brush" : [ [ "clear" ], [ "front", "tribalplatform" ] ]
+    },
+
+    {
+      "value" : [222, 134, 173, 255],
+      "comment" : "wooden stairs & platform",
+      "brush" : [ [ "clear" ], [ "front", "woodenplatform" ] ]
+    },
+
+    {
+      "value" : [49, 109, 8, 255],
+      "comment" : "background bars",
+      "brush" : [ [ "clear" ], [ "back", "bars" ] ]
+    },
+
+    {
+      "value" : [8, 109, 15, 255],
+      "comment" : "foreground bars",
+      "brush" : [ [ "clear" ], [ "front", "bars" ] ]
+    },
+
+    {
+      "value" : [4, 46, 7, 255],
+      "comment" : "altaravian facing left",
+      "brush" : [ [ "clear" ], [ "object", "altaravian", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [14, 46, 7, 255],
+      "comment" : "altaravian facing right",
+      "brush" : [ [ "clear" ], [ "object", "altaravian", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [4, 46, 46, 255],
+      "comment" : "altarbunny facing left",
+      "brush" : [ [ "clear" ], [ "object", "altarbunny", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [14, 46, 46, 255],
+      "comment" : "altarbunny facing right",
+      "brush" : [ [ "clear" ], [ "object", "altarbunny", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [29, 46, 4, 255],
+      "comment" : "consoletribal1",
+      "brush" : [ [ "clear" ], [ "object", "consoletribal1" ] ]
+    },
+
+    {
+      "value" : [46, 36, 4, 255],
+      "comment" : "consoletribal2",
+      "brush" : [ [ "clear" ], [ "object", "consoletribal2" ] ]
+    },
+
+    {
+      "value" : [46, 8, 4, 255],
+      "comment" : "consoletribal3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "consoletribal3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [56, 8, 4, 255],
+      "comment" : "consoletribal3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "consoletribal3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [46, 4, 28, 255],
+      "comment" : "consoletribal4",
+      "brush" : [ [ "clear" ], [ "object", "consoletribal4" ] ]
+    },
+
+    {
+      "value" : [24, 4, 46, 255],
+      "comment" : "consoletribalwall",
+      "brush" : [ [ "clear" ], [ "object", "consoletribalwall" ] ]
+    },
+
+    {
+      "value" : [231, 111, 0, 255],
+      "comment" : "birdgodemblem",
+      "brush" : [ [ "clear" ], [ "object", "birdgodemblem" ] ]
+    },
+
+    {
+      "value" : [241, 111, 0, 255],
+      "comment" : "birdgodemblem facing right",
+      "brush" : [ [ "clear" ], [ "object", "birdgodemblem", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [6, 4, 46, 255],
+      "comment" : "mask1",
+      "brush" : [ [ "clear" ], [ "object", "mask1" ] ]
+    },
+
+    {
+      "value" : [4, 14, 46, 255],
+      "comment" : "mask2",
+      "brush" : [ [ "clear" ], [ "object", "mask2" ] ]
+    },
+
+    {
+      "value" : [144, 231, 0, 255],
+      "comment" : "mask3",
+      "brush" : [ [ "clear" ], [ "object", "mask3" ] ]
+    },
+
+    {
+      "value" : [0, 231, 231, 255],
+      "comment" : "mask4",
+      "brush" : [ [ "clear" ], [ "object", "mask4" ] ]
+    },
+
+    {
+      "value" : [0, 231, 46, 255],
+      "comment" : "mask5",
+      "brush" : [ [ "clear" ], [ "object", "mask5" ] ]
+    },
+
+    {
+      "value" : [57, 231, 0, 255],
+      "comment" : "mask6",
+      "brush" : [ [ "clear" ], [ "object", "mask6" ] ]
+    },
+
+    {
+      "value" : [231, 19, 0, 255],
+      "comment" : "moonemblem",
+      "brush" : [ [ "clear" ], [ "object", "moonemblem" ] ]
+    },
+
+    {
+      "value" : [231, 0, 95, 255],
+      "comment" : "sarcoavian1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "sarcoavian1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [241, 0, 95, 255],
+      "comment" : "sarcoavian1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "sarcoavian1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [171, 0, 231, 255],
+      "comment" : "sarcoavian2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "sarcoavian2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [181, 0, 231, 255],
+      "comment" : "sarcoavian2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "sarcoavian2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [35, 0, 231, 255],
+      "comment" : "sarcobunny facing left",
+      "brush" : [ [ "clear" ], [ "object", "sarcobunny", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [45, 0, 231, 255],
+      "comment" : "sarcobunny facing right",
+      "brush" : [ [ "clear" ], [ "object", "sarcobunny", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [130, 208, 0, 255],
+      "comment" : "sarcohuman facing left",
+      "brush" : [ [ "clear" ], [ "object", "sarcohuman", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [140, 208, 0, 255],
+      "comment" : "sarcohuman facing right",
+      "brush" : [ [ "clear" ], [ "object", "sarcohuman", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [130, 208, 10, 255],
+      "comment" : "sarcohumanalive facing left",
+      "brush" : [ [ "clear" ], [ "object", "sarcohumanalive", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [140, 208, 10, 255],
+      "comment" : "sarcohumanalive facing right",
+      "brush" : [ [ "clear" ], [ "object", "sarcohumanalive", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [27, 208, 0, 255],
+      "comment" : "spearrack facing left",
+      "brush" : [ [ "clear" ], [ "object", "spearrack", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [37, 208, 0, 255],
+      "comment" : "spearrack facing right",
+      "brush" : [ [ "clear" ], [ "object", "spearrack", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [208, 81, 0, 255],
+      "comment" : "tombstone1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [218, 81, 0, 255],
+      "comment" : "tombstone1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [208, 42, 0, 255],
+      "comment" : "tombstone2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [218, 42, 0, 255],
+      "comment" : "tombstone2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [208, 0, 105, 255],
+      "comment" : "tombstone3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [218, 0, 105, 255],
+      "comment" : "tombstone3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [208, 0, 174, 255],
+      "comment" : "tombstone4 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone4", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [218, 0, 174, 255],
+      "comment" : "tombstone4 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone4", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [144, 0, 208, 255],
+      "comment" : "tombstone5 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone5", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [154, 0, 208, 255],
+      "comment" : "tombstone5 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone5", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [81, 0, 208, 255],
+      "comment" : "tombstone6 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone6", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [91, 0, 208, 255],
+      "comment" : "tombstone6 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone6", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [27, 0, 208, 255],
+      "comment" : "tombstone7 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone7", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [37, 0, 208, 255],
+      "comment" : "tombstone7 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone7", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [0, 27, 208, 255],
+      "comment" : "tombstone8 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone8", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 27, 208, 255],
+      "comment" : "tombstone8 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone8", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [0, 66, 208, 255],
+      "comment" : "tombstone9 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone9", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 66, 208, 255],
+      "comment" : "tombstone9 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone9", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [0, 95, 208, 255],
+      "comment" : "tombstone10 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone10", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 95, 208, 255],
+      "comment" : "tombstone10 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone10", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [0, 188, 208, 255],
+      "comment" : "tombstone11 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstone11", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 188, 208, 255],
+      "comment" : "tombstone11 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstone11", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [208, 0, 12, 255],
+      "comment" : "redalert",
+      "brush" : [ [ "clear" ], [ "object", "redalert" ] ]
+    },
+
+    {
+      "value" : [0, 208, 208, 255],
+      "comment" : "tombstatueavian facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstatueavian", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [10, 208, 208, 255],
+      "comment" : "tombstatueavian facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstatueavian", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [118, 131, 179, 255],
+      "comment" : "tombstatuebunny facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombstatuebunny", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [128, 131, 179, 255],
+      "comment" : "tombstatuebunny facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombstatuebunny", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [80, 87, 112, 255],
+      "comment" : "idolsupport facing left",
+      "brush" : [ [ "clear" ], [ "object", "idolsupport", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [80, 86, 112, 255],
+      "comment" : "idolsupport facing right",
+      "brush" : [ [ "clear" ], [ "object", "idolsupport", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [222, 134, 134, 255],
+      "comment" : "tesla",
+      "brush" : [ [ "clear" ], [ "object", "tesla" ] ]
+    },
+
+    {
+      "value" : [222, 175, 134, 255],
+      "comment" : "crystaltorch",
+      "brush" : [ [ "clear" ], [ "object", "crystaltorch" ] ]
+    },
+
+    {
+      "value" : [77, 60, 46, 255],
+      "comment" : "crystaltorch - off state",
+      "brush" : [ [ "clear" ], [ "object", "crystaltorch", { "parameters" : { "defaultLightState" : false } } ] ]
+    },
+
+    {
+      "value" : [222, 202, 134, 255],
+      "comment" : "barvent",
+      "brush" : [ [ "clear" ], [ "object", "barvent" ] ]
+    },
+
+    {
+      "value" : [221, 222, 134, 255],
+      "comment" : "bardoor",
+      "brush" : [ [ "clear" ], [ "object", "bardoor" ] ]
+    },
+
+    {
+      "value" : [190, 222, 134, 255],
+      "comment" : "bardoor2",
+      "brush" : [ [ "clear" ], [ "object", "bardoor2" ] ]
+    },
+
+    {
+      "value" : [220, 125, 185, 255],
+      "comment" : "tombthing1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombthing1", { "direction" : "left", "parameters" : { "treasurePools" : [ "tombTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [230, 125, 185, 255],
+      "comment" : "tombthing1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombthing1", { "direction" : "right", "parameters" : { "treasurePools" : [ "tombTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [203, 125, 220, 255],
+      "comment" : "tombthing2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombthing2", { "direction" : "left", "parameters" : { "treasurePools" : [ "tombTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [213, 125, 220, 255],
+      "comment" : "tombthing2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombthing2", { "direction" : "right", "parameters" : { "treasurePools" : [ "tombTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [138, 125, 220, 255],
+      "comment" : "tombthing3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombthing3", { "direction" : "left", "parameters" : { "treasurePools" : [ "tombTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [148, 125, 220, 255],
+      "comment" : "tombthing3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombthing3", { "direction" : "right", "parameters" : { "treasurePools" : [ "tombTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [125, 161, 220, 255],
+      "comment" : "tombthing4 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tombthing4", { "direction" : "left", "parameters" : { "treasurePools" : [ "valuableTombTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [135, 161, 220, 255],
+      "comment" : "tombthing4 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tombthing4", { "direction" : "right", "parameters" : { "treasurePools" : [ "valuableTombTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [125, 192, 220, 255],
+      "comment" : "tribalbed2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribalbed2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [135, 192, 220, 255],
+      "comment" : "tribalbed2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribalbed2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [125, 220, 212, 255],
+      "comment" : "tribalbookcase1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribalbookcase1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [135, 220, 212, 255],
+      "comment" : "tribalbookcase1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribalbookcase1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [125, 220, 159, 255],
+      "comment" : "tribalbookcase2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribalbookcase2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [135, 220, 159, 255],
+      "comment" : "tribalbookcase2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribalbookcase2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [174, 220, 125, 255],
+      "comment" : "tribalcabinet1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribalcabinet1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [184, 220, 125, 255],
+      "comment" : "tribalcabinet1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribalcabinet1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [163, 222, 134, 255],
+      "comment" : "tribalcloset1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribalcloset1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [173, 222, 134, 255],
+      "comment" : "tribalcloset1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribalcloset1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [134, 222, 151, 255],
+      "comment" : "tribalcounter1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribalcounter1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [144, 222, 151, 255],
+      "comment" : "tribalcounter1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribalcounter1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [134, 222, 209, 255],
+      "comment" : "tribaldoor",
+      "brush" : [ [ "clear" ], [ "object", "tribaldoor" ] ]
+    },
+
+    {
+      "value" : [134, 213, 222, 255],
+      "comment" : "tribaltable facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribaltable", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [144, 213, 222, 255],
+      "comment" : "tribaltable facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribaltable", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [134, 196, 222, 255],
+      "comment" : "tribalserver facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribalserver", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [144, 196, 222, 255],
+      "comment" : "tribalserver facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribalserver", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [148, 185, 21, 255],
+      "comment" : "background aztectech",
+      "brush" : [ [ "clear" ], [ "back", "aztectech" ] ]
+    },
+
+    {
+      "value" : [175, 185, 21, 255],
+      "comment" : "foreground aztectech",
+      "brush" : [ [ "clear" ], [ "back", "aztectech" ], [ "front", "aztectech" ] ]
+    },
+
+    {
+      "value" : [63, 185, 21, 255],
+      "comment" : "background fullwood1",
+      "brush" : [ [ "clear" ], [ "back", "fullwood1" ] ]
+    },
+
+    {
+      "value" : [117, 185, 21, 255],
+      "comment" : "foreground fullwood1",
+      "brush" : [ [ "clear" ], [ "back", "fullwood1" ], [ "front", "fullwood1" ] ]
+    },
+
+    {
+      "value" : [21, 185, 148, 255],
+      "comment" : "background fadedblocks",
+      "brush" : [ [ "clear" ], [ "back", "fadedblocks" ] ]
+    },
+
+    {
+      "value" : [21, 185, 79, 255],
+      "comment" : "foreground fadedblocks",
+      "brush" : [ [ "clear" ], [ "back", "fadedblocks" ], [ "front", "fadedblocks" ] ]
+    },
+
+    {
+      "value" : [21, 152, 185, 255],
+      "comment" : "background homewalls1",
+      "brush" : [ [ "clear" ], [ "back", "homewalls1" ] ]
+    },
+
+    {
+      "value" : [21, 179, 185, 255],
+      "comment" : "foreground homewalls1",
+      "brush" : [ [ "clear" ], [ "back", "homewalls1" ], [ "front", "homewalls1" ] ]
+    },
+
+    {
+      "value" : [21, 114, 185, 255],
+      "comment" : "background woodbridge",
+      "brush" : [ [ "clear" ], [ "back", "woodbridge" ] ]
+    },
+
+    {
+      "value" : [21, 129, 185, 255],
+      "comment" : "foreground woodbridge",
+      "brush" : [ [ "clear" ], [ "back", "woodbridge" ], [ "front", "woodbridge" ] ]
+    },
+
+    {
+      "value" : [148, 21, 185, 255],
+      "comment" : "background brick",
+      "brush" : [ [ "clear" ], [ "back", "brick" ] ]
+    },
+
+    {
+      "value" : [106, 21, 185, 255],
+      "comment" : "foreground brick",
+      "brush" : [ [ "clear" ], [ "back", "brick" ], [ "front", "brick" ] ]
+    },
+
+    {
+      "value" : [21, 75, 185, 255],
+      "comment" : "background woodenwindow1",
+      "brush" : [ [ "clear" ], [ "back", "woodenwindow1" ] ]
+    },
+
+    {
+      "value" : [21, 94, 185, 255],
+      "comment" : "foreground woodenwindow1",
+      "brush" : [ [ "clear" ], [ "front", "woodenwindow1" ] ]
+    },
+
+    {
+      "value" : [56, 21, 185, 255],
+      "comment" : "background woodenwindow2",
+      "brush" : [ [ "clear" ], [ "back", "woodenwindow2" ] ]
+    },
+
+    {
+      "value" : [21, 56, 185, 255],
+      "comment" : "foreground woodenwindow2",
+      "brush" : [ [ "clear" ], [ "front", "woodenwindow2" ] ]
+    },
+
+    {
+      "value" : [186, 20, 145, 255],
+      "comment" : "background darkwood",
+      "brush" : [ [ "clear" ], [ "back", "darkwood" ] ]
+    },
+
+    {
+      "value" : [237, 26, 184, 255],
+      "comment" : "foreground darkwood",
+      "brush" : [ [ "clear" ], [ "back", "darkwood" ], [ "front", "darkwood" ] ]
+    },
+
+    {
+      "value" : [134, 185, 222, 255],
+      "comment" : "woodenbed facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodenbed", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [144, 185, 222, 255],
+      "comment" : "woodenbed facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodenbed", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [134, 173, 222, 255],
+      "comment" : "woodendoor",
+      "brush" : [ [ "clear" ], [ "object", "woodendoor" ] ]
+    },
+
+    {
+      "value" : [134, 157, 222, 255],
+      "comment" : "woodtable facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodtable", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [144, 157, 222, 255],
+      "comment" : "woodtable facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodtable", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [134, 136, 222, 255],
+      "comment" : "windchicken facing left",
+      "brush" : [ [ "clear" ], [ "object", "windchicken", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [144, 136, 222, 255],
+      "comment" : "windchicken facing right",
+      "brush" : [ [ "clear" ], [ "object", "windchicken", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [167, 134, 222, 255],
+      "comment" : "box1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "box1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [177, 134, 222, 255],
+      "comment" : "box1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "box1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [188, 134, 222, 255],
+      "comment" : "box2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "box2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [198, 134, 222, 255],
+      "comment" : "box2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "box2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [206, 134, 222, 255],
+      "comment" : "cardboard1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "cardboard1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [216, 134, 222, 255],
+      "comment" : "cardboard1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "cardboard1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [217, 134, 222, 255],
+      "comment" : "cardboard2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "cardboard2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [227, 134, 222, 255],
+      "comment" : "cardboard2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "cardboard2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [222, 134, 196, 255],
+      "comment" : "cardboard3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "cardboard3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [232, 134, 196, 255],
+      "comment" : "cardboard3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "cardboard3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [149, 134, 222, 255],
+      "comment" : "electriclight",
+      "brush" : [ [ "clear" ], [ "object", "electriclight" ] ]
+    },
+
+    {
+      "value" : [189, 50, 23, 255],
+      "comment" : "campfire",
+      "brush" : [ [ "clear" ], [ "object", "campfire" ] ]
+    },
+
+    {
+      "value" : [189, 78, 23, 255],
+      "comment" : "curtain1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "curtain1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [189, 92, 23, 255],
+      "comment" : "curtain1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "curtain1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [189, 106, 23, 255],
+      "comment" : "decorativewallrug1",
+      "brush" : [ [ "clear" ], [ "object", "decorativewallrug1" ] ]
+    },
+
+    {
+      "value" : [189, 120, 23, 255],
+      "comment" : "decorativewallrug2",
+      "brush" : [ [ "clear" ], [ "object", "decorativewallrug2" ] ]
+    },
+
+    {
+      "value" : [189, 147, 23, 255],
+      "comment" : "oillanterntall",
+      "brush" : [ [ "clear" ], [ "object", "oillanterntall" ] ]
+    },
+
+    {
+      "value" : [189, 175, 23, 255],
+      "comment" : "oillantern1",
+      "brush" : [ [ "clear" ], [ "object", "oillantern1" ] ]
+    },
+
+    {
+      "value" : [147, 189, 23, 255],
+      "comment" : "triballamp",
+      "brush" : [ [ "clear" ], [ "object", "triballamp" ] ]
+    },
+
+    {
+      "value" : [120, 189, 23, 255],
+      "comment" : "rusticoven facing left",
+      "brush" : [ [ "clear" ], [ "object", "rusticoven", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [106, 189, 23, 255],
+      "comment" : "rusticoven facing right",
+      "brush" : [ [ "clear" ], [ "object", "rusticoven", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 189, 23, 255],
+      "comment" : "tribalwallcabinet facing left",
+      "brush" : [ [ "clear" ], [ "object", "tribalwallcabinet", { "direction" : "left", "parameters" : { "treasurePools" : [ "aviantombLore" ] } } ] ]
+    },
+
+    {
+      "value" : [50, 189, 23, 255],
+      "comment" : "tribalwallcabinet facing right",
+      "brush" : [ [ "clear" ], [ "object", "tribalwallcabinet", { "direction" : "right", "parameters" : { "treasurePools" : [ "aviantombLore" ] } } ] ]
+    },
+
+    {
+      "value" : [23, 189, 36, 255],
+      "comment" : "woodchair facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [23, 189, 50, 255],
+      "comment" : "woodchair facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodchair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [23, 189, 78, 255],
+      "comment" : "woodenarmchair1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodenarmchair1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [23, 189, 92, 255],
+      "comment" : "woodenarmchair1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodenarmchair1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [23, 189, 161, 255],
+      "comment" : "woodenbed2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodenbed2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [23, 189, 175, 255],
+      "comment" : "woodenbed2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodenbed2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [23, 189, 189, 255],
+      "comment" : "woodencouch1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodencouch1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [23, 175, 189, 255],
+      "comment" : "woodencouch1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodencouch1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [23, 147, 189, 255],
+      "comment" : "woodentalllantern",
+      "brush" : [ [ "clear" ], [ "object", "woodentalllantern" ] ]
+    },
+
+    {
+      "value" : [9, 60, 77, 255],
+      "comment" : "woodentalllantern - off state",
+      "brush" : [ [ "clear" ], [ "object", "woodentalllantern", { "parameters" : { "defaultLightState" : false } } ] ]
+    },
+
+    {
+      "value" : [23, 120, 189, 255],
+      "comment" : "woodstool",
+      "brush" : [ [ "clear" ], [ "object", "woodstool", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [23, 92, 189, 255],
+      "comment" : "woodtoilet facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodtoilet", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [44, 92, 189, 255],
+      "comment" : "woodtoilet facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodtoilet", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 184, 153, 255],
+      "comment" : "chestavian1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "chestavian1", { "direction" : "left", "parameters" : { "treasurePools" : [ "aviantombRareTreasure","deadBodiesAvian" ] } } ] ]
+    },
+
+    {
+      "value" : [245, 184, 153, 255],
+      "comment" : "chestavian1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "chestavian1", { "direction" : "right", "parameters" : { "treasurePools" : [ "aviantombRareTreasure","deadBodiesAvian" ] } } ] ]
+    },
+
+    {
+      "value" : [255, 208, 153, 255],
+      "comment" : "chestavian2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "chestavian2", { "direction" : "left", "parameters" : { "treasurePools" : [ "aviantombChestTreasure","deadBodiesAvian" ] } } ] ]
+    },
+
+    {
+      "value" : [245, 208, 153, 255],
+      "comment" : "chestavian2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "chestavian2", { "direction" : "right", "parameters" : { "treasurePools" : [ "aviantombChestTreasure","deadBodiesAvian" ] } } ] ]
+    },
+
+    {
+      "value" : [255, 225, 153, 255],
+      "comment" : "chestmedavian1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "chestmedavian1", { "direction" : "left", "parameters" : { "treasurePools" : [ "aviantombChestTreasure","deadBodiesAvian" ] } } ] ]
+    },
+
+    {
+      "value" : [245, 225, 153, 255],
+      "comment" : "chestmedavian1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "chestmedavian1", { "direction" : "right", "parameters" : { "treasurePools" : [ "aviantombChestTreasure","deadBodiesAvian" ] } } ] ]
+    },
+
+    {
+      "value" : [255, 244, 153, 255],
+      "comment" : "chestmedavian2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "chestmedavian2", { "direction" : "left", "parameters" : { "treasurePools" : [ "aviantombChestTreasure","deadBodiesAvian" ] } } ] ]
+    },
+
+    {
+      "value" : [245, 244, 153, 255],
+      "comment" : "chestmedavian2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "chestmedavian2", { "direction" : "right", "parameters" : { "treasurePools" : [ "aviantombChestTreasure","deadBodiesAvian" ] } } ] ]
+    },
+
+    {
+      "value" : [228, 255, 87, 255],
+      "comment" : "woodencrate1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate1", { "direction" : "left", "parameters" : { "treasurePools" : [ "aviantombTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [218, 255, 87, 255],
+      "comment" : "woodencrate1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate1", { "direction" : "right", "parameters" : { "treasurePools" : [ "aviantombTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [255, 228, 87, 255],
+      "comment" : "woodencrate2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate2", { "direction" : "left", "parameters" : { "treasurePools" : [ "aviantombTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [245, 228, 87, 255],
+      "comment" : "woodencrate2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "woodencrate2", { "direction" : "right", "parameters" : { "treasurePools" : [ "aviantombTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [215, 99, 156, 255],
+      "comment" : "propeller",
+      "brush" : [ [ "clear" ], [ "object", "propeller" ] ]
+    },
+
+    {
+      "value" : [132, 198, 183, 255],
+      "comment" : "anchor",
+      "brush" : [ [ "clear" ], [ "object", "anchor" ] ]
+    },
+
+    {
+      "value" : [120, 128, 103, 255],
+      "comment" : "background chain",
+      "brush" : [ [ "clear" ], [ "back", "chain" ] ]
+    },
+
+    {
+      "value" : [154, 164, 133, 255],
+      "comment" : "foreground chain",
+      "brush" : [ [ "clear" ], [ "front", "chain" ] ]
+    },
+
+    {
+      "value" : [116, 219, 211, 255],
+      "comment" : "shipwheel facing left",
+      "brush" : [ [ "clear" ], [ "object", "shipwheel", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [103, 194, 186, 255],
+      "comment" : "shipwheel facing right",
+      "brush" : [ [ "clear" ], [ "object", "shipwheel", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [212, 170, 245, 255],
+      "comment" : "fireflowerpot facing left",
+      "brush" : [ [ "clear" ], [ "object", "fireflowerpot", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [201, 160, 232, 255],
+      "comment" : "fireflowerpot facing right",
+      "brush" : [ [ "clear" ], [ "object", "fireflowerpot", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [169, 178, 245, 255],
+      "comment" : "wflowerpot facing left",
+      "brush" : [ [ "clear" ], [ "object", "wflowerpot", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [160, 169, 232, 255],
+      "comment" : "wflowerpot facing right",
+      "brush" : [ [ "clear" ], [ "object", "wflowerpot", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [169, 219, 245, 255],
+      "comment" : "cactiflowerpot facing left",
+      "brush" : [ [ "clear" ], [ "object", "cactiflowerpot", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [160, 208, 232, 255],
+      "comment" : "cactiflowerpot facing right",
+      "brush" : [ [ "clear" ], [ "object", "cactiflowerpot", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [18, 103, 231, 255],
+      "comment" : "fountain1",
+      "brush" : [ [ "clear" ], [ "object", "fountain1" ] ]
+    },
+
+    {
+      "value" : [20, 110, 245, 255],
+      "comment" : "fountain2",
+      "brush" : [ [ "clear" ], [ "object", "fountain2" ] ]
+    },
+
+    {
+      "value" : [14, 51, 97, 255],
+      "comment" : "avianbanner1",
+      "brush" : [ [ "clear" ], [ "object", "avianbanner1" ] ]
+    },
+
+    {
+      "value" : [97, 14, 14, 255],
+      "comment" : "avianbanner2",
+      "brush" : [ [ "clear" ], [ "object", "avianbanner2" ] ]
+    },
+
+    {
+      "value" : [14, 97, 43, 255],
+      "comment" : "avianbanner3",
+      "brush" : [ [ "clear" ], [ "object", "avianbanner3" ] ]
+    },
+
+    {
+      "value" : [97, 88, 14, 255],
+      "comment" : "avianbanner4",
+      "brush" : [ [ "clear" ], [ "object", "avianbanner4" ] ]
+    },
+
+    {
+      "value" : [205, 176, 113, 255],
+      "comment" : "treasuremap facing left",
+      "brush" : [ [ "clear" ], [ "object", "treasuremap", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [217, 186, 119, 255],
+      "comment" : "treasuremap facing right",
+      "brush" : [ [ "clear" ], [ "object", "treasuremap", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [135, 77, 110, 255],
+      "comment" : "marketstall1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "marketstall1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [135, 77, 127, 255],
+      "comment" : "marketstall1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "marketstall1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [130, 77, 135, 255],
+      "comment" : "marketstall2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "marketstall2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [111, 77, 135, 255],
+      "comment" : "marketstall2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "marketstall2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [100, 77, 135, 255],
+      "comment" : "marketstall3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "marketstall3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [86, 77, 135, 255],
+      "comment" : "marketstall3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "marketstall3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [77, 81, 135, 255],
+      "comment" : "marketstall4 facing left",
+      "brush" : [ [ "clear" ], [ "object", "marketstall4", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [77, 93, 135, 255],
+      "comment" : "marketstall4 facing right",
+      "brush" : [ [ "clear" ], [ "object", "marketstall4", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [77, 107, 135, 255],
+      "comment" : "marketstall5 facing left",
+      "brush" : [ [ "clear" ], [ "object", "marketstall5", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [77, 119, 135, 255],
+      "comment" : "marketstall5 facing right",
+      "brush" : [ [ "clear" ], [ "object", "marketstall5", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [51, 89, 66, 255],
+      "comment" : "avianbench1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "avianbench1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [58, 102, 76, 255],
+      "comment" : "avianbench1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "avianbench1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [66, 89, 51, 255],
+      "comment" : "avianbench2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "avianbench2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [75, 102, 58, 255],
+      "comment" : "avianbench2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "avianbench2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [77, 135, 112, 255],
+      "comment" : "owlclock facing left",
+      "brush" : [ [ "clear" ], [ "object", "owlclock", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [75, 135, 87, 255],
+      "comment" : "owlclock facing right",
+      "brush" : [ [ "clear" ], [ "object", "owlclock", { "direction" : "right" } ] ]
+    },
+
+    // CLUE OBJECTS
+
+    {
+      "value" : [10, 10, 0, 255],
+      "comment" : "kluexmap1",
+      "brush" : [ [ "clear" ], [ "object", "kluexmap1" ] ]
+    },
+
+    {
+      "value" : [0, 10, 10, 255],
+      "comment" : "kluexmural1",
+      "brush" : [ [ "clear" ], [ "object", "kluexmural1" ] ]
+    },
+
+    {
+      "value" : [10, 0, 10, 255],
+      "comment" : "kluexmural2",
+      "brush" : [ [ "clear" ], [ "object", "kluexmural2" ] ]
+    },
+
+    {
+      "value" : [20, 20, 0, 255],
+      "comment" : "kluexstatue1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "kluexstatue1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [25, 25, 0, 255],
+      "comment" : "kluexstatue1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "kluexstatue1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [0, 20, 20, 255],
+      "comment" : "kluexstatue2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "kluexstatue2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [0, 25, 25, 255],
+      "comment" : "kluexstatue2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "kluexstatue2", { "direction" : "right" } ] ]
+    },
+
+    // NPC MONSTER SPAWN BRUSHES //
+
+    {
+      "value" : [0, 200, 0, 255],
+      "comment" : "avian villager npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "villager"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [175, 0, 0, 255],
+      "comment" : "avian food merchant npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "merchant",
+            "parameters" : {
+              "scriptConfig" : {
+                "noticePlayersRadius" : 20.0,
+                "merchant" : {
+                  "storeRadius" : 2,
+                  "categories" : { "default" : [ "avianingredients" ] },
+                  "priceVarianceRange" : [0.8, 1.2],
+                  "numItems" : 6
+                },
+                "sit" : {
+                  "searchRadius" : 8
+                }
+              }
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [200, 0, 0, 255],
+      "comment" : "avian weapons merchant npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "merchant",
+            "parameters" : {
+              "scriptConfig" : {
+                "noticePlayersRadius" : 20.0,
+                "merchant" : {
+                  "storeRadius" : 2,
+                  "categories" : { "default" : [ "avianweaponblueprints", "randomswords" ] },
+                  "priceVarianceRange" : [0.8, 1.2],
+                  "numItems" : 10
+                },
+                "sit" : {
+                  "searchRadius" : 8
+                }
+              }
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [225, 0, 0, 255],
+      "comment" : "avian armor/clothes merchant npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "merchant",
+            "parameters" : {
+              "scriptConfig" : {
+                "noticePlayersRadius" : 20.0,
+                "merchant" : {
+                  "storeRadius" : 2,
+                  "categories" : { "default" : [ "avianarmour", "avianclothes" ] },
+                  "priceVarianceRange" : [0.8, 1.2],
+                  "numItems" : 20
+                },
+                "sit" : {
+                  "searchRadius" : 8
+                }
+              }
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [0, 0, 200, 255],
+      "comment" : "avian guard npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "villageguard"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [0, 0, 225, 255],
+      "comment" : "avian guard captain npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "villageguardcaptain"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [0, 0, 75, 255],
+      "comment" : "airship quartermaster merchant npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "airshipquartermaster",
+            "parameters" : {
+              "scriptConfig" : {
+                "noticePlayersRadius" : 20.0,
+                "merchant" : {
+                  "categories" : { "default" : [ "avianweaponblueprints", "avianarmour", "randomguns", "randomswords" ] },
+                  "priceVarianceRange" : [0.8, 1]
+                }
+              }
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [0, 75, 0, 255],
+      "comment" : "avian airship crew",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "airshipguard"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [75, 75, 0, 255],
+      "comment" : "avian airship guard",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "airshipguard"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [75, 0, 0, 255],
+      "comment" : "avian airship captain npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "airshipcaptain"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [175, 0, 175, 255],
+      "comment" : "avian temple guard npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "templeguard"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [200, 0, 200, 255],
+      "comment" : "avian sentry placeholder npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "templeguard"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [225, 0, 225, 255],
+      "comment" : "avian skull placeholder npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "templeguard"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [0, 175, 175, 255],
+      "comment" : "avian tomb zombie npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "tombguard"
+          }
+        ] ]
+    },
+
+    {
+      "value" : [0, 200, 200, 255],
+      "comment" : "swarpion npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "swarpion",
+            "parameters" : {
+              "damageTeam" : 2,
+              "aggressive" : true
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [0, 225, 225, 255],
+      "comment" : "bonebird npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "bonebird",
+            "parameters" : {
+              "damageTeam" : 2,
+              "aggressive" : true
+            }
+          }
+        ] ]
+    },
+
+    // STAGEHANDS
+
+    {
+      "value" : [166, 76, 255, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-16, -8, 16, 8],
+            "locationType" : "aviantomb.entrance"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [164, 76, 252, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-12, -8, 12, 8],
+            "locationType" : "aviantomb.depths"
+          }
+        }
+      ] ]
+    }
+
+  ],
+
+  "parts" : [
+    {
+      "name" : "entrance1",
+      "rules" : [
+        [ "doNotCombineWith", [ "entrance1", "entrance2" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "entrance1.png", "entrance1-objects.png" ] ]
+    },
+    {
+      "name" : "entrance2",
+      "rules" : [
+        [ "doNotCombineWith", [ "entrance1", "entrance2" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "entrance2.png", "entrance2-objects.png", "entrance2-wires.png" ] ]
+    },
+    {
+      "name" : "1a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "1a", "1b-clue2" ] ]
+      ],
+      "def" : [ "image", [ "1.png", "1a-objects.png" ] ],
+      "chance" :0.5
+    },
+    {
+      "name" : "1b-clue2",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "1a", "1b-clue2", "4a-clue3a", "4a-clue3b", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "endleft2a-clue1", "endright2a-clue1", "7a", "7b", "7c" ] ]
+      ],
+      "def" : [ "image", [ "1b.png", "1b-objects-clue2.png" ] ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "2a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "2a", "2b", "2c", "2d", "3a", "3b", "3c", "3d" ] ]
+      ],
+      "def" : [ "image", [ "2.png", "2a-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "2b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "2a", "2b", "2c", "2d", "3a", "3b", "3c", "3d" ] ]
+      ],
+      "def" : [ "image", [ "2b.png", "2b-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "2c",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "2a", "2b", "2c", "2d", "3a", "3b", "3c", "3d" ] ]
+      ],
+      "def" : [ "image", [ "2c.png", "2c-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "2d",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "2a", "2b", "2c", "2d", "3a", "3b", "3c", "3d" ] ]
+      ],
+      "def" : [ "image", [ "2d.png", "2d-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "3a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "2a", "2b", "2c", "2d", "3a", "3b", "3c", "3d" ] ]
+      ],
+      "def" : [ "image", [ "3.png", "3a-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "3b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "2a", "2b", "2c", "2d", "3a", "3b", "3c", "3d", "7a" ] ]
+      ],
+      "def" : [ "image", [ "3b.png", "3b-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "3c",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "2a", "2b", "2c", "2d", "3a", "3b", "3c", "3d" ] ]
+      ],
+      "def" : [ "image", [ "3c.png", "3c-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "3d",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "2a", "2b", "2c", "2d", "3a", "3b", "3c", "3d", "10b" ] ]
+      ],
+      "def" : [ "image", [ "3d.png", "3d-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "4a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "4a-clue3a", "4a-clue3b" ] ]
+      ],
+      "def" : [ "image", [ "4.png", "4a-objects.png" ] ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "4a-clue3a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "1b-clue2", "4a-clue3a", "4a-clue3b", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "endleft2a-clue1", "endright2a-clue1", "4a" ] ]
+      ],
+      "def" : [ "image", [ "4.png", "4a-objects-clue3a.png" ] ],
+      "chance" : 0.25
+    },
+    {
+      "name" : "4a-clue3b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "1b-clue2", "4a-clue3a", "4a-clue3b", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "endleft2a-clue1", "endright2a-clue1", "4a" ] ]
+      ],
+      "def" : [ "image", [ "4.png", "4a-objects-clue3b.png" ] ],
+      "chance" : 0.25
+    },
+    {
+      "name" : "7a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "7a", "7b", "7c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "8a", "8b", "8c" ] ]
+      ],
+      "def" : [ "image", [ "7.png", "7a-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "7a-clue4",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "1b-clue2", "4a-clue3a", "4a-clue3b", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "endleft2a-clue1", "endright2a-clue1", "7a", "7b", "7c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "8a", "8b", "8c" ] ]
+      ],
+      "def" : [ "image", [ "7.png", "7a-objects-clue4.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "7a-clue5",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "1b-clue2", "4a-clue3a", "4a-clue3b", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "endleft2a-clue1", "endright2a-clue1", "7a", "7b", "7c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "8a", "8b", "8c" ] ]
+      ],
+      "def" : [ "image", [ "7.png", "7a-objects-clue5.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "7b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "7a", "7b", "7c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "8a", "8b", "8c" ] ]
+      ],
+      "def" : [ "image", [ "7b.png", "7b-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "7b-clue4",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "1b-clue2", "4a-clue3a", "4a-clue3b", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "endleft2a-clue1", "endright2a-clue1", "7a", "7b", "7c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "8a", "8b", "8c" ] ]
+      ],
+      "def" : [ "image", [ "7b.png", "7b-objects-clue4.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "7b-clue5",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "1b-clue2", "4a-clue3a", "4a-clue3b", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "endleft2a-clue1", "endright2a-clue1", "7a", "7b", "7c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "8a", "8b", "8c" ] ]
+      ],
+      "def" : [ "image", [ "7b.png", "7b-objects-clue5.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "7c",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5","7a", "7b", "7c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "8a", "8b", "8c" ] ]
+      ],
+      "def" : [ "image", [ "7c.png", "7c-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "7c-clue4",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "1b-clue2", "4a-clue3a", "4a-clue3b", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "endleft2a-clue1", "endright2a-clue1", "7a", "7b", "7c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "8a", "8b", "8c" ] ]
+      ],
+      "def" : [ "image", [ "7c.png", "7c-objects-clue4.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "7c-clue5",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "1b-clue2", "4a-clue3a", "4a-clue3b", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "endleft2a-clue1", "endright2a-clue1", "7a", "7b", "7c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "8a", "8b", "8c" ] ]
+      ],
+      "def" : [ "image", [ "7c.png", "7c-objects-clue5.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "8a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "8a", "8b", "8c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "7a", "7b", "7c" ] ]
+      ],
+      "def" : [ "image", [ "8.png", "8a-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "8a-clue4",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "1b-clue2", "4a-clue3a", "4a-clue3b", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "endleft2a-clue1", "endright2a-clue1", "8a", "8b", "8c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "7a", "7b", "7c" ] ]
+      ],
+      "def" : [ "image", [ "8.png", "8a-objects-clue4.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "8a-clue5",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "1b-clue2", "4a-clue3a", "4a-clue3b", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "endleft2a-clue1", "endright2a-clue1", "8a", "8b", "8c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "7a", "7b", "7c" ] ]
+      ],
+      "def" : [ "image", [ "8.png", "8a-objects-clue5.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "8b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "8a", "8b", "8c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "7a", "7b", "7c" ] ]
+      ],
+      "def" : [ "image", [ "8b.png", "8b-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "8b-clue4",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "1b-clue2", "4a-clue3a", "4a-clue3b", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "endleft2a-clue1", "endright2a-clue1", "8a", "8b", "8c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "7a", "7b", "7c" ] ]
+      ],
+      "def" : [ "image", [ "8b.png", "8b-objects-clue4.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "8b-clue5",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "1b-clue2", "4a-clue3a", "4a-clue3b", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "endleft2a-clue1", "endright2a-clue1", "8a", "8b", "8c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "7a", "7b", "7c" ] ]
+      ],
+      "def" : [ "image", [ "8b.png", "8b-objects-clue5.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "8c",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "8a", "8b", "8c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "7a", "7b", "7c" ] ]
+      ],
+      "def" : [ "image", [ "8c.png", "8c-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "8c-clue4",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "1b-clue2", "4a-clue3a", "4a-clue3b", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "endleft2a-clue1", "endright2a-clue1", "8a", "8b", "8c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "7a", "7b", "7c" ] ]
+      ],
+      "def" : [ "image", [ "8c.png", "8c-objects-clue4.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "8c-clue5",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "1b-clue2", "4a-clue3a", "4a-clue3b", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "endleft2a-clue1", "endright2a-clue1", "8a", "8b", "8c" ] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "7a", "7b", "7c" ] ]
+      ],
+      "def" : [ "image", [ "8c.png", "8c-objects-clue5.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "10a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "10a", "10b", "11a", "12a", "13a", "14a", "14b" ] ]
+      ],
+      "def" : [ "image", [ "10.png", "10a-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "10b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "3d", "10a", "10b", "11a", "12a", "13a", "14a", "14b" ] ]
+      ],
+      "def" : [ "image", [ "10.png", "10b-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "11a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "10a", "10b", "11a", "12a", "13a", "14a", "14b" ] ]
+      ],
+      "def" : [ "image", [ "11.png", "11a-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "12a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "10a", "10b", "11a", "12a", "13a", "14a", "14b", "endleft3a", "endright3a" ] ]
+      ],
+      "def" : [ "image", [ "12.png", "12a-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "13a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "10a", "10b", "11a", "12a", "13a", "14a", "14b" ] ]
+      ],
+      "def" : [ "image", [ "13.png", "13a-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "14a",
+      "rules" : [
+        [ "doNotConnectToPart", [ "10a", "10b", "11a", "12a", "13a", "14b", "14b-bigchest" ] ],
+        [ "doNotCombineWith", [ "14a", "14a-chest" ] ]
+      ],
+      "def" : [ "image", [ "14.png", "14a-objects.png" ] ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "14a-chest",
+      "rules" : [
+        [ "doNotConnectToPart", [ "10a", "10b", "11a", "12a", "13a", "14b", "14b-bigchest", "endleft1a-bigchest", "endleft1b-chest", "endleft2a-chest", "endleft2b-chest", "endleft3a-bigchest", "endleft3b-chest", "endright1a-bigchest", "endright1b-chest", "endright2a-chest", "endright2b-chest", "endright3a-bigchest", "endright3b-chest" ] ],
+        [ "doNotCombineWith", [ "14a", "14a-chest" ] ]
+      ],
+      "def" : [ "image", [ "14.png", "14a-objects-chest.png" ] ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "14b",
+      "rules" : [
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "10a", "10b", "11a", "12a", "13a", "14a", "14a-chest" ] ],
+        [ "doNotCombineWith", [ "14b", "14b-bigchest" ] ]
+      ],
+      "def" : [ "image", [ "14b.png", "14b-objects.png" ] ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "14b-bigchest",
+      "rules" : [
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "10a", "10b", "11a", "12a", "13a", "14a", "14a-chest", "endleft1a-bigchest", "endleft1b-chest", "endleft2a-chest", "endleft2b-chest", "endleft3a-bigchest", "endleft3b-chest", "endright1a-bigchest", "endright1b-chest", "endright2a-chest", "endright2b-chest", "endright3a-bigchest", "endright3b-chest" ] ],
+        [ "doNotCombineWith", [ "14b", "14b-bigchest" ] ]
+      ],
+      "def" : [ "image", [ "14b.png", "14b-objects-bigchest.png" ] ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "15a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "entrance3" ] ],
+        [ "doNotCombineWith", [ "15b", "15c" ] ]
+      ],
+      "def" : [ "image", [ "15.png", "15a-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "15b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "entrance3" ] ],
+        [ "doNotCombineWith", [ "15a", "15c" ] ]
+      ],
+      "def" : [ "image", [ "15.png", "15b-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "15c",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "entrance3" ] ],
+        [ "doNotCombineWith", [ "15a", "15b" ] ]
+      ],
+      "def" : [ "image", [ "15.png", "15c-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "16a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "entrance3" ] ]
+      ],
+      "def" : [ "image", [ "16.png", "16a-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "17a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "entrance3" ] ]
+      ],
+      "def" : [ "image", [ "17.png", "17a-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "endleft",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "entrance3" ] ]
+      ],
+      "def" : [ "image", [ "endleft.png" ] ],
+      "chance" : 0
+    },
+    {
+      "name" : "endleft1a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft1a", "endleft1a-bigchest", "endright1a", "endright1a-bigchest" ] ]
+      ],
+      "def" : [ "image", [ "endleft1.png", "endleft1a-objects.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endleft1a-bigchest",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft1a", "endleft1a-bigchest", "endright1a", "endright1a-bigchest" ] ]
+      ],
+      "def" : [ "image", [ "endleft1.png", "endleft1a-objects-bigchest.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endleft1b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft1b", "endleft1b-chest", "endright1b", "endright1b-chest" ] ]
+      ],
+      "def" : [ "image", [ "endleft1.png", "endleft1b-objects.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endleft1b-chest",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft1b", "endleft1b-chest", "endright1b", "endright1b-chest" ] ]
+      ],
+      "def" : [ "image", [ "endleft1.png", "endleft1b-objects-chest.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endleft2a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft2a-clue1", "endright2a-clue1", "endleft2a", "endleft2a-chest", "endright2a", "endright2a-chest" ] ]
+      ],
+      "def" : [ "image", [ "endleft2.png", "endleft2a-objects.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endleft2a-chest",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft2a-clue1", "endright2a-clue1", "endleft2a", "endleft2a-chest", "endright2a", "endright2a-chest" ] ]
+      ],
+      "def" : [ "image", [ "endleft2.png", "endleft2a-objects-chest.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endleft2a-clue1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "1b-clue2", "4a-clue3a", "4a-clue3b", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "endleft2a-clue1", "endright2a-clue1", "endleft2a", "endleft2a-chest", "endright2a", "endright2a-chest" ] ]
+      ],
+      "def" : [ "image", [ "endleft2.png", "endleft2a-objects-clue1.png" ] ],
+      "chance" : 0.1
+    },
+    {
+      "name" : "endleft2b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft2b", "endleft2b-chest", "endright2b", "endright2b-chest" ] ]
+      ],
+      "def" : [ "image", [ "endleft2.png", "endleft2b-objects.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endleft2b-chest",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft2b", "endleft2b-chest", "endright2b", "endright2b-chest" ] ]
+      ],
+      "def" : [ "image", [ "endleft2.png", "endleft2b-objects-chest.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endleft3a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft3a", "endleft3a-bigchest", "endright3a", "endright3a-bigchest" ] ],
+        [ "doNotConnectToPart", [ "12a" ] ]
+      ],
+      "def" : [ "image", [ "endleft3.png", "endleft3a-objects.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endleft3a-bigchest",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft3a", "endleft3a-bigchest", "endright3a", "endright3a-bigchest" ] ],
+        [ "doNotConnectToPart", [ "12a" ] ]
+      ],
+      "def" : [ "image", [ "endleft3.png", "endleft3a-objects-bigchest.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endleft3b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft3b", "endleft3b-chest", "endright3b", "endright3b-chest" ] ]
+      ],
+      "def" : [ "image", [ "endleft3.png", "endleft3b-objects.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endleft3b-chest",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft3b", "endleft3b-chest", "endright3b", "endright3b-chest" ] ]
+      ],
+      "def" : [ "image", [ "endleft3.png", "endleft3b-objects-chest.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endright",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "entrance3" ] ]
+      ],
+      "def" : [ "image", [ "endright.png" ] ],
+      "chance" : 0
+    },
+    {
+      "name" : "endright1a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft1a", "endleft1a-bigchest", "endright1a", "endright1a-bigchest" ] ]
+      ],
+      "def" : [ "image", [ "endright1.png", "endright1a-objects.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endright1a-bigchest",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft1a", "endleft1a-bigchest", "endright1a", "endright1a-bigchest" ] ]
+      ],
+      "def" : [ "image", [ "endright1.png", "endright1a-objects-bigchest.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endright1b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft1b", "endleft1b-chest", "endright1b", "endright1b-chest" ] ]
+
+      ],
+      "def" : [ "image", [ "endright1.png", "endright1b-objects.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endright1b-chest",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft1b", "endleft1b-chest", "endright1b", "endright1b-chest" ] ]
+
+      ],
+      "def" : [ "image", [ "endright1.png", "endright1b-objects-chest.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endright2a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft2a-clue1", "endright2a-clue1", "endleft2a", "endleft2a-chest", "endright2a", "endright2a-chest" ] ]
+      ],
+      "def" : [ "image", [ "endright2.png", "endright2a-objects.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endright2a-chest",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft2a-clue1", "endright2a-clue1", "endleft2a", "endleft2a-chest", "endright2a", "endright2a-chest" ] ]
+      ],
+      "def" : [ "image", [ "endright2.png", "endright2a-objects-chest.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endright2a-clue1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "1b-clue2", "4a-clue3a", "4a-clue3b", "7a-clue4", "7a-clue5", "7b-clue4", "7b-clue5", "7c-clue4", "7c-clue5", "8a-clue4", "8a-clue5", "8b-clue4", "8b-clue5", "8c-clue4", "8c-clue5", "endleft2a-clue1", "endright2a-clue1", "endleft2a", "endleft2a-chest", "endright2a", "endright2a-chest" ] ]
+      ],
+      "def" : [ "image", [ "endright2.png", "endright2a-objects-clue1.png" ] ],
+      "chance" : 0.1
+    },
+    {
+      "name" : "endright2b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft2b", "endleft2b-chest", "endright2b", "endright2b-chest" ] ]
+      ],
+      "def" : [ "image", [ "endright2.png", "endright2b-objects.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endright2b-chest",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft2b", "endleft2b-chest", "endright2b", "endright2b-chest" ] ]
+      ],
+      "def" : [ "image", [ "endright2.png", "endright2b-objects-chest.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endright3a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft3a", "endleft3a-bigchest", "endright3a", "endright3a-bigchest" ] ],
+        [ "doNotConnectToPart", [ "12a" ] ]
+      ],
+      "def" : [ "image", [ "endright3.png", "endright3a-objects.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endright3a-bigchest",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft3a", "endleft3a-bigchest", "endright3a", "endright3a-bigchest" ] ],
+        [ "doNotConnectToPart", [ "12a" ] ]
+      ],
+      "def" : [ "image", [ "endright3.png", "endright3a-objects-bigchest.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endright3b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft3b", "endleft3b-chest", "endright3b", "endright3b-chest" ] ]
+      ],
+      "def" : [ "image", [ "endright3.png", "endright3b-objects.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endright3b-chest",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endleft3b", "endleft3b-chest", "endright3b", "endright3b-chest" ] ]
+      ],
+      "def" : [ "image", [ "endright3.png", "endright3b-objects-chest.png" ] ],
+      "chance" : 0.005
+    },
+    {
+      "name" : "endceiling",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endceiling.png" ] ],
+      "chance" : 0
+    },
+    {
+      "name" : "endceiling1a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endceiling1a", "endceiling1a-bigchest" ] ]
+      ],
+      "def" : [ "image", [ "endceiling1.png", "endceiling1a-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "endceiling1a-bigchest",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endceiling1a", "endceiling1a-bigchest" ] ]
+      ],
+      "def" : [ "image", [ "endceiling1.png", "endceiling1a-objects-bigchest.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "endceiling2a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endceiling2a", "endceiling2b", "endceiling2b-chest" ] ]
+      ],
+      "def" : [ "image", [ "endceiling2.png", "endceiling2a-objects.png" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "endceiling2b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endceiling2a", "endceiling2b", "endceiling2b-chest" ] ]
+      ],
+      "def" : [ "image", [ "endceiling2.png", "endceiling2b-objects.png" ] ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "endceiling2b-chest",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endceiling2a", "endceiling2b", "endceiling2b-chest" ] ]
+      ],
+      "def" : [ "image", [ "endceiling2.png", "endceiling2b-objects-chest.png" ] ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "endceiling3a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endceiling3.png", "endceiling3a-objects.png" ] ],
+      "chance" : 0.01
+    },
+    {
+      "name" : "endceiling4",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endceiling4.png" ] ],
+      "chance" : 0
+    },
+    {
+      "name" : "endceiling5a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endceiling5.png", "endceiling5a-objects.png" ] ],
+      "chance" : 0.01
+    },
+    {
+      "name" : "endceiling6a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endceiling6b" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endceiling6.png", "endceiling6a-objects.png" ] ],
+      "chance" : 0.01
+    },
+    {
+      "name" : "endceiling6b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "endceiling6a" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endceiling6.png", "endceiling6b-objects.png" ] ],
+      "chance" : 0.01
+    },
+    {
+      "name" : "endceiling7",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endceiling7.png" ] ],
+      "chance" : 0
+    },
+    {
+      "name" : "endfloor",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "entrance3" ] ]
+      ],
+      "def" : [ "image", [ "endfloor.png" ] ],
+      "chance" : 0
+    },
+    {
+      "name" : "endfloor1a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "2a", "2c", "3a", "3c" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endfloor1.png", "endfloor1a-objects.png" ] ],
+      "chance" : 0.01
+    },
+    {
+      "name" : "endfloor2a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "2a", "2c", "3a", "3c" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endfloor2.png", "endfloor2a-objects.png" ] ],
+      "chance" : 0
+    },
+    {
+      "name" : "endfloor2b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "entrance1", "entrance2", "2a", "2c", "3a", "3c" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "endfloor2.png", "endfloor2b-objects.png" ] ],
+      "chance" : 0
+    }
+  ]
+}

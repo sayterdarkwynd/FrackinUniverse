@@ -1,0 +1,247 @@
+{
+  "type" : "mutantflier",
+  "shortdescription" : "Jheshrikaal",
+  "description" : "The galaxies snuggliest widdle guy.",
+
+  "categories" : [ "mutantflier" ],
+  "parts" : [ "body", "head", "wings" ],
+  "partParameters" : "mutantflier.partparams",
+
+  "animation" : "mutantflier.animation",
+  "reversed" : true,
+
+  "dropPools" : [
+    {
+      "default" : "generatedFlyingMonsterTreasure",
+      "bow" : "huntingflying"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "seeThroughLiquid" : false,
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 30,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 10.0,
+
+      "onGround" : false,
+      "swoopVelocity" : 60,
+
+      "windupTime" : 0.1,
+      "windupState" : "windup",
+      "windupStopForce" : 100,
+
+      "winddownTime" : 0.1,
+      "winddownState" : "winddown",
+
+      "projectileOffset" : [1.0, 1.5],
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-swoop",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "minimumRange" : 3,
+            "maximumRange" : 30,
+
+            "windupState": "windup",
+
+            "onGround" : false,
+            "windupTime" : 0.6,
+
+            "gravityMultiplier" : 0.5,
+            "swoopVelocity" : 50,
+            "collisionCheck" : false,
+            "highArc" : false,
+            "swoopTime" : 1,
+            "swoopState" : "charge",
+            "winddownTime" : 1,
+            "winddownState" : "winddown",
+            "winddownStopForce" : 10
+          }
+        },
+       {
+          "name" : "action-fire",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 30,
+            "minimumRange" : 5,
+            "windupState" : "windup",
+            "windupTime" : 1,
+            "projectileType" : "clustergoo",
+            "power" : 10,
+            "fireOffset" : [-0.25,-0.5],
+            "aimAtTarget" : true,
+            "onGround" : false,
+            "fireState" : "fire",
+            "fireSound" : "",
+            "winddownTime" : 0.4625,
+            "holdAim" : true
+          }
+        }
+      ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "targetOffset" : [0,4],
+            "minRange" : 4
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "targetOffset" : [0,4],
+            "minRange" : 4
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-fly",
+          "cooldown" : [5,20],
+          "parameters" : {
+            "wanderTime" : [10,40],
+            "groundDistance" : 35,
+            "ceilingDistance" : 10,
+            "xVelocity" : 8,
+            "yVelocity" : 12
+          }
+        },
+        {
+          "name" : "land-fly",
+          "parameters" : {
+            "flySpeed" : 8,
+            "flyControlForce" : 25,
+            "landCheckDistance" : 40,
+            "idleTime" : 40
+          }
+        }
+      ],
+
+      "concurrentActions" : [ ],
+
+      "concurrentHostileActions" : [ ]
+    },
+
+   // "baseSkills" : [ "flyingSwoopAttack", "acidSprayAttack" ],
+   // "specialSkills" : [],
+
+    "metaBoundBox" : [-4.5, -4.5, 4.5, 4.5],
+    "scale" : 1,
+
+    "movementSettings" : {
+      "gravityEnabled" : false,
+      "collisionPoly" : [ [0.0, 10.30], [5.0, 0.30], [5.30, -0.30], [5.0, -13.30], [0.0, -13.30], [-5.0, -13.30], [-5.30, -0.30], [-5.0, 0.30] ],
+
+      "mass" : 1.5,
+      "flySpeed" : 20,
+      "airFriction" : 4,
+      "airForce" : 40.0
+    },
+
+    "targetRadius" : 18.0,
+    "targetSearchTime" : 0.5,
+    "targetHoldTime" : 3.0,
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "blink",
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+
+    "touchDamage" : {
+      "poly" : [ [0.0, 2.30], [3.0, 0.30], [3.30, -0.30], [3.0, -3.30], [0.0, -7.30], [-3.0, -3.30], [-3.30, -0.30], [-3.0, 0.30] ],
+      "damage" : 30,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.5
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 4500
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
+  }
+}

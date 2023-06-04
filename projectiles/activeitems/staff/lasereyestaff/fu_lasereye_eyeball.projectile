@@ -1,0 +1,46 @@
+{
+  "projectileName" : "fu_lasereye_eyeball",
+  "physics" : "hover",
+  "bounces" : -1,
+  "speed" : 1,
+  "timeToLive" : 6,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [0, 150, 0],
+  "piercing" : true,
+  "image" : "fu_lasereye_eyeball.png",
+  "animationCycle" : 0.5,
+  "flippable" : true,
+  "frameNumber" : 4,
+  "power" : 0,
+  "damagePoly" : [ [-12, 0], [-9, 9], [0, 12], [9, 9], [0, 12], [9, -9], [0,-12], [-9, -9] ],
+  "supportsProcessing" : true,
+  "onlyHitTerrain" : true,
+
+  "damageKind" : "electricplasma",
+
+  "scripts" : [ "/projectiles/activeitems/staff/lasereyestaff/fu_lasereye_eyeball.lua" ],
+
+  "projectileType" : "fu_lasereyeshot",
+  "projectileParameters" : {},
+
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/globeexplosions/greenglobeexplosion/greenglobeexplosion.config"
+    }
+  ],
+
+  "spawnRate" : 0.2,
+
+  "controlMovement" : {
+    "maxSpeed" : 60,
+    "controlForce" : 60
+  },
+  "controlRotation" : {
+    "maxSpeed" : 120,
+    "controlForce" : 60,
+    "friction" : 10
+  },
+
+  "persistentAudio" : "/sfx/melee/barrier_create_electric.ogg"
+}

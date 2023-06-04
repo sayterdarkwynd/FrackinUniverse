@@ -1,0 +1,281 @@
+{
+  "kind" : "radien",
+
+  "charCreationTooltip" : {
+      "title" : "X'i",
+      "subTitle" : "CH9",
+      "description" : "A race of shy radioactive beings with a disputed origin. This species ^red;is designed around Hunger^reset;. ^red;Challenge is high^reset;.
+
+  ^orange;Diet^reset;: Any, including prepared Isotopes.
+
+^orange;Perks^reset;:
+  Health x^green;1.1^reset;, Energy x^green;1.2^reset;, ^red;Reduced by Hunger^reset;. Defense x^green;1.03^reset;
+  ^green;Resist^reset;: +^green;35^reset;% Radiation, +^green;10^reset;% Poison, +^green;5^reset;% Cosmic, ^green;Up to 2x when Full Belly^reset;. +^green;5^reset;% Mental.
+  Tech: Seed Bulb.
+  ^cyan;Immune^reset;: Radiation Burn
+
+^orange;Environment^reset;:
+  ^green;Radioactive^reset; biomes: Damage x^green;1.15^reset;, +^green;15^reset;% E. Regen, -^green;5^reset;% Hunger Drain
+  ^red;Hot^reset; biomes: Defense x^red;0.85^reset;, +^red;35^reset;% Hunger Drain.
+  ^green;Defense increases over time^reset;
+  ^cyan;Racial Tech is integral to success^reset;.
+  ^green;Passively generate Genes<reset;.
+
+^orange;Weapons^reset;:
+  X'i Weapons: +^green;1.5^reset;% Crit Chance, Defense x^green;1.15^reset;
+
+^red;Weaknesses^reset;:
+  +^red;25^reset;% Hunger drain.
+  ^red;Resist^reset;: -^red;20^reset;% Fire, Ice & Electric, ^red;Up to 1.5x when Hungry^reset;.
+  ^red;CANNOT^reset; use Healing items. Must use racial heals."
+  },
+
+  "statusEffects" : [  ],
+
+  "nameGen" : [ "/species/radiennamegen.config:names", "/species/radiennamegen.config:names" ],
+  "ouchNoises" : [ "/sfx/humanoid/radienhurt_1.ogg", "/sfx/humanoid/radienhurt_1.ogg" ],
+  "charGenTextLabels" : [ "Feather Colour", "Crest", "Shirt", "Legwear", "Core Colour", "Markings", "Shirt Colour", "Legwear Colour", "X'I", "Personality" ],
+  "skull" : "/humanoid/radien/dead.png",
+  "effectDirectives" : "?replace=FEFFFFFF=FFFFFFFF?replace=9bd4ffFF=ecff58FF?replace=31a6ffFF=ffe519FF",
+  "defaultBlueprints" : {
+    "tier1" : [
+// Empty Hands
+      { "item" : "xi_bulb" },
+      { "item" : "thoriumradien" },
+      { "item" : "neptuniumradien" },
+      { "item" : "plutoniumradien" },
+      { "item" : "uraniumore" },
+      { "item" : "uraniumradien" },
+      { "item" : "flagradien" },
+      { "item" : "xibed" },
+      { "item" : "algaegreen" },
+      { "item" : "liquidwater" },
+      { "item" : "xiwell" },
+      { "item" : "fu_carbondioxide" },
+      { "item" : "xipod" },
+      { "item" : "radienquarterstaff" },
+      { "item" : "radiendagger" },
+      { "item" : "radienaxe" },
+      { "item" : "radienspear" },
+      { "item" : "radienbroadsword" },
+      { "item" : "radiengreataxe" },
+      { "item" : "radienstaff" },
+      { "item" : "radienbulb" },
+      { "item" : "radiengrenadelauncher" },
+      { "item" : "floatleaf" },
+      { "item" : "radienlantern" },
+      { "item" : "radienwaterwalk" },
+      { "item" : "radienhook" },
+      { "item" : "radienaugment1" },
+      { "item" : "xibulb" },
+      { "item" : "ff_silicon" },
+      { "item" : "radiencrafting" },
+      { "item" : "reactivegel" },
+      { "item" : "shellplatehead" },
+      { "item" : "shellplatechest" },
+      { "item" : "shellplatepants" },
+      { "item" : "radienshield" },
+      { "item" : "radienpistol" },
+      { "item" : "radienpistol2" },
+      { "item" : "radienflamer" },
+      { "item" : "radiencarbine" }
+    ]
+  },
+
+  "altOptionAsUndyColor" : true,
+  "headOptionAsBodyColor" : true,
+  "hairColorAsBodyColor" : true,
+  "headOptionAsFacialhair" : true,
+
+
+
+  "genders" : [
+    {
+      "name" : "male",
+      "image" : "/interface/title/radiengender.png",
+      "characterImage" : "/interface/title/radienmale.png",
+      "hair" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27" ],
+      "shirt" : [ "radrebelchest", "novakidjacket", "novakidwaistcoat", "novakidfancychest" ],
+      "pants" : [ "radrebelpants", "novakidjacketpants", "novakidblackpants", "novakidfancypants" ],
+      "facialHairGroup" : "markings",
+      "facialHair" : [ "0", "1", "2", "3", "4", "5", "6", "7" ],
+      "facialMaskGroup" : "",
+      "facialMask" : [ ]
+    },
+    {
+      "name" : "female",
+      "image" : "/interface/title/radiengender.png",
+      "characterImage" : "/interface/title/radienfemale.png",
+      "hair" : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27" ],
+      "shirt" : [ "radrebelchest", "novakidjacket", "novakidwaistcoat", "novakidfancychest" ],
+      "pants" : [ "radrebelpants", "novakidjacketpants", "novakidblackpants", "novakidfancypants" ],
+      "facialHairGroup" : "markings",
+      "facialHair" : [ "0", "1", "2", "3", "4", "5", "6", "7" ],
+      "facialMaskGroup" : "",
+      "facialMask" : [ ]
+    }
+  ],
+   "bodyColor" : [
+
+    // Black
+    { "ffc181" : "2c2c2c", "d39c6c" : "121212", "c7815b" : "000000", "ffe2c5" : "4e4e4e" },
+    // Blue
+    { "ffc181" : "386e7d", "d39c6c" : "275157", "c7815b" : "162f32", "ffe2c5" : "4b9baa" },
+    // Blue-green
+    { "ffc181" : "027d7a", "d39c6c" : "045754", "c7815b" : "043230", "ffe2c5" : "2c9f9b" },
+    // Dark blue
+    { "ffc181" : "29357d", "d39c6c" : "1d2657", "c7815b" : "101432", "ffe2c5" : "34449f" },
+    // Dark gray-blue
+    { "ffc181" : "5d787d", "d39c6c" : "405357", "c7815b" : "253032", "ffe2c5" : "768b9f" },
+    // Gray
+    { "ffc181" : "7d7d7d", "d39c6c" : "575757", "c7815b" : "323232", "ffe2c5" : "9f9f9f" },
+    // Gray-blue
+    { "ffc181" : "747a7d", "d39c6c" : "515557", "c7815b" : "2f3132", "ffe2c5" : "949b9f" },
+    // Green
+    { "ffc181" : "607d5d", "d39c6c" : "425740", "c7815b" : "263225", "ffe2c5" : "7a9f76" },
+    // Magenta
+    { "ffc181" : "7c5d7d", "d39c6c" : "564057", "c7815b" : "322532", "ffe2c5" : "9e769f" },
+    // Pink-purple
+    { "ffc181" : "7a297d", "d39c6c" : "551d57", "c7815b" : "311032", "ffe2c5" : "9b349f" },
+    // Purple
+    { "ffc181" : "625d7d", "d39c6c" : "434057", "c7815b" : "272532", "ffe2c5" : "7c769f" },
+    // Red
+    { "ffc181" : "7d2e2e", "d39c6c" : "572020", "c7815b" : "321212", "ffe2c5" : "9f3b3b" },
+    // Red wine
+    { "ffc181" : "7d1d41", "d39c6c" : "571431", "c7815b" : "320c1c", "ffe2c5" : "9f2557" },
+  // Lost
+    { "c7815b" : "292d3b", "d39c6c" : "373a49", "ffc181" : "4a4b5d", "ffe2c5" : "6a6b7b" },
+  // Fluffy Chef
+    { "c7815b" : "243031", "d39c6c" : "304042", "ffc181" : "405357", "ffe2c5" : "5d787d" },
+  // Dirt
+    { "c7815b" : "372f22", "d39c6c" : "574e41", "ffc181" : "7d6e5e", "ffe2c5" : "9f8d77" },
+  // Eccentric Blue
+    { "c7815b" : "00325a", "d39c6c" : "014072", "ffc181" : "145387", "ffe2c5" : "2c6c9f" },
+  // Shy Magenta
+    { "c7815b" : "3d1e3d", "d39c6c" : "512c51", "ffc181" : "6a4775", "ffe2c5" : "8a769c" },
+  // Elegant Silver
+    { "c7815b" : "3b4a54", "d39c6c" : "505f69", "ffc181" : "72808a", "ffe2c5" : "99a5a8" },
+  // Diplomat
+    { "c7815b" : "09090c", "d39c6c" : "1b1a1e", "ffc181" : "29262d", "ffe2c5" : "443d48" },
+  // Coal
+    { "c7815b" : "121212", "d39c6c" : "2c2c2c", "ffc181" : "4e4e4e", "ffe2c5" : "606060" },
+  // Ash
+    { "c7815b" : "2c2c2c", "d39c6c" : "4e4e4e", "ffc181" : "606060", "ffe2c5" : "7d7d7d" },
+  // Mud
+    { "c7815b" : "2e2221", "d39c6c" : "4e3636", "ffc181" : "5d4a4a", "ffe2c5" : "776565" },
+  // Lonely
+    { "c7815b" : "283243", "d39c6c" : "364665", "ffc181" : "576682", "ffe2c5" : "747e91" },
+  // Light Eater
+    { "c7815b" : "302f44", "d39c6c" : "56556d", "ffc181" : "787e95", "ffe2c5" : "8f98ab" },
+  // Blaze Walker
+    { "c7815b" : "54353a", "d39c6c" : "864847", "ffc181" : "ab6150", "ffe2c5" : "c79177" },
+  // Swamp
+    { "c7815b" : "23201a", "d39c6c" : "34342d", "ffc181" : "424339", "ffe2c5" : "5a5e50" },
+  // Corrupt
+    { "c7815b" : "1a2023", "d39c6c" : "2d3034", "ffc181" : "393c43", "ffe2c5" : "50505e" },
+  // Void
+    { "c7815b" : "30223f", "d39c6c" : "4a3451", "ffc181" : "603d62", "ffe2c5" : "81517b" }
+  ],
+
+  "undyColor" : [
+     // White
+    { "951500" : "292d3b", "dc1f00" : "ebf7fa" },
+    // Gray
+    { "951500" : "363e46", "dc1f00" : "b7b7b7" },
+    // Pink
+    { "951500" : "3c2a3b", "dc1f00" : "ff94f9" },
+    // Purple
+    { "951500" : "372a3c", "dc1f00" : "cc94ff" },
+    // Beyond the Cosmos
+    { "951500" : "292444", "dc1f00" : "7224ff" },
+    // Cornflower
+    { "951500" : "3b3e6d", "dc1f00" : "858bff" },
+    // Deep blue
+    { "951500" : "1f2c47", "dc1f00" : "4650f9" },
+    // Blue
+    { "951500" : "2a323c", "dc1f00" : "95c2ff" },
+    // Volatile Memory
+    { "951500" : "264f4e", "dc1f00" : "00fffa" },
+    // Aquamarine
+    { "951500" : "293b36", "dc1f00" : "4ceec5" },
+    // Green
+    { "951500" : "2a3c2c", "dc1f00" : "95ffa0" },
+    // Nuclear Dusk
+    { "951500" : "364c1a", "dc1f00" : "c7fc83" },
+    // Yellow
+    { "951500" : "3b3c2a", "dc1f00" : "e3ff94" },
+    // True Yellow
+    { "951500" : "595723", "dc1f00" : "f3ff57" },
+    // Midas' Gaze
+    { "951500" : "463a1c", "dc1f00" : "fcde43" },
+    // Orange
+    { "951500" : "3c332a", "dc1f00" : "f8b77a" },
+    // Eos' Dawn
+    { "951500" : "4f3429", "dc1f00" : "f78e3e" },
+    // Red
+    { "951500" : "3c2a2a", "dc1f00" : "f87a7a" },
+    // Starless
+    { "951500" : "3c2a2a", "dc1f00" : "f87a7a" }
+  ],
+
+  "hairColor" : [
+    // Black
+    { "ffc181" : "2c2c2c", "d39c6c" : "121212", "c7815b" : "000000", "ffe2c5" : "4e4e4e" },
+    // Blue
+    { "ffc181" : "386e7d", "d39c6c" : "275157", "c7815b" : "162f32", "ffe2c5" : "4b9baa" },
+    // Blue-green
+    { "ffc181" : "027d7a", "d39c6c" : "045754", "c7815b" : "043230", "ffe2c5" : "2c9f9b" },
+    // Dark blue
+    { "ffc181" : "29357d", "d39c6c" : "1d2657", "c7815b" : "101432", "ffe2c5" : "34449f" },
+    // Dark gray-blue
+    { "ffc181" : "5d787d", "d39c6c" : "405357", "c7815b" : "253032", "ffe2c5" : "768b9f" },
+    // Gray
+    { "ffc181" : "7d7d7d", "d39c6c" : "575757", "c7815b" : "323232", "ffe2c5" : "9f9f9f" },
+    // Gray-blue
+    { "ffc181" : "747a7d", "d39c6c" : "515557", "c7815b" : "2f3132", "ffe2c5" : "949b9f" },
+    // Green
+    { "ffc181" : "607d5d", "d39c6c" : "425740", "c7815b" : "263225", "ffe2c5" : "7a9f76" },
+    // Magenta
+    { "ffc181" : "7c5d7d", "d39c6c" : "564057", "c7815b" : "322532", "ffe2c5" : "9e769f" },
+    // Pink-purple
+    { "ffc181" : "7a297d", "d39c6c" : "551d57", "c7815b" : "311032", "ffe2c5" : "9b349f" },
+    // Purple
+    { "ffc181" : "625d7d", "d39c6c" : "434057", "c7815b" : "272532", "ffe2c5" : "7c769f" },
+    // Red
+    { "ffc181" : "7d2e2e", "d39c6c" : "572020", "c7815b" : "321212", "ffe2c5" : "9f3b3b" },
+    // Red wine
+    { "ffc181" : "7d1d41", "d39c6c" : "571431", "c7815b" : "320c1c", "ffe2c5" : "9f2557" },
+  // Lost
+    { "c7815b" : "292d3b", "d39c6c" : "373a49", "ffc181" : "4a4b5d", "ffe2c5" : "6a6b7b" },
+  // Fluffy Chef
+    { "c7815b" : "243031", "d39c6c" : "304042", "ffc181" : "405357", "ffe2c5" : "5d787d" },
+  // Dirt
+    { "c7815b" : "372f22", "d39c6c" : "574e41", "ffc181" : "7d6e5e", "ffe2c5" : "9f8d77" },
+  // Eccentric Blue
+    { "c7815b" : "00325a", "d39c6c" : "014072", "ffc181" : "145387", "ffe2c5" : "2c6c9f" },
+  // Shy Magenta
+    { "c7815b" : "3d1e3d", "d39c6c" : "512c51", "ffc181" : "6a4775", "ffe2c5" : "8a769c" },
+  // Elegant Silver
+    { "c7815b" : "3b4a54", "d39c6c" : "505f69", "ffc181" : "72808a", "ffe2c5" : "99a5a8" },
+  // Diplomat
+    { "c7815b" : "09090c", "d39c6c" : "1b1a1e", "ffc181" : "29262d", "ffe2c5" : "443d48" },
+  // Coal
+    { "c7815b" : "121212", "d39c6c" : "2c2c2c", "ffc181" : "4e4e4e", "ffe2c5" : "606060" },
+  // Ash
+    { "c7815b" : "2c2c2c", "d39c6c" : "4e4e4e", "ffc181" : "606060", "ffe2c5" : "7d7d7d" },
+  // Mud
+    { "c7815b" : "2e2221", "d39c6c" : "4e3636", "ffc181" : "5d4a4a", "ffe2c5" : "776565" },
+  // Lonely
+    { "c7815b" : "283243", "d39c6c" : "364665", "ffc181" : "576682", "ffe2c5" : "747e91" },
+  // Light Eater
+    { "c7815b" : "302f44", "d39c6c" : "56556d", "ffc181" : "787e95", "ffe2c5" : "8f98ab" },
+  // Blaze Walker
+    { "c7815b" : "54353a", "d39c6c" : "864847", "ffc181" : "ab6150", "ffe2c5" : "c79177" },
+  // Swamp
+    { "c7815b" : "23201a", "d39c6c" : "34342d", "ffc181" : "424339", "ffe2c5" : "5a5e50" },
+  // Corrupt
+    { "c7815b" : "1a2023", "d39c6c" : "2d3034", "ffc181" : "393c43", "ffe2c5" : "50505e" },
+  // Void
+    { "c7815b" : "30223f", "d39c6c" : "4a3451", "ffc181" : "603d62", "ffe2c5" : "81517b" }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "objectName" : "swtjc_wp_compactvpersistentswitchinteractive",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A persistent switch that I can also toggle manually.",
+  "shortdescription" : "Compact Persistent Switch (Interactive)",
+  "race" : "generic",
+
+  "category" : "wire",
+  "price" : 20,
+
+  "floranDescription" : "Persssissstent ssswitch that Floran can alssso toggle manually.",
+  "glitchDescription" : "Pleased. A persistent switch that I can also toggle manually.",
+
+  "inventoryIcon" : "swtjc_wp_compactvpersistentswitch.png:default.off",
+  "orientations" : [
+    {
+      "image" : "swtjc_wp_compactvpersistentswitch.png:default.off",
+      "imagePosition" : [-0, -0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/switch/persistentswitch.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallbutton.ogg" ],
+      "off" : [ "/sfx/objects/tinywallbutton.ogg" ]
+    }
+  },
+
+  "animationParts" : {
+    "switch" : "swtjc_wp_compactvpersistentswitch.png"
+  },
+  "animationPosition" : [-0, -0],
+
+  "inputNodes" : [ [0, 0], [0, 2] ],
+  "outputNodes" : [ [0, 1] ],
+
+  "interval" : 15,
+
+  "npcToy": {
+    "ownerOnly" : true,
+    "influence" : [
+      "wallswitch"
+    ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

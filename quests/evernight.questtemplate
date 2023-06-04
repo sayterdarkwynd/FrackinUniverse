@@ -1,0 +1,29 @@
+{
+	"id": "evernight.gearup",
+	"title": "^green;Evernight Jungle",
+	"text": "I've discovered the location of ancient ruins deep in a far-off planet's jungle. This could make for interesting exploration.",
+	"completionText": "What were cultists doing in here? They were up to something with the locals, but I don't know what. Well, it doesn't matter now. Their loot is mine!",
+	"speaker": "player",
+	"moneyRange": [0, 0],
+	"rewards": [
+		[
+			["cuddlehorse"],
+			["fossilbrushultra", 5],
+			["alien_trophy", 1],
+			["quagmuttaf", 1],
+			["researchvoxel"]
+		]
+	],
+
+	"updateDelta": 10,
+	"script": "/quests/scripts/main.lua",
+	"scriptConfig": {
+		"giveBlueprints": ["lunarang"],
+		"portraits": {
+			"default": "player"
+		},
+		"associatedMission": "evernight",
+		"turnInDescription": "Follow the coordinates to the jungle via SAIL and investigate.",
+		"requireTurnIn": true
+	}
+}

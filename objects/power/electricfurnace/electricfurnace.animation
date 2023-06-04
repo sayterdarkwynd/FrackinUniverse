@@ -1,0 +1,63 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "furnaceState" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 1
+          },
+		  "active" : {
+            "frames" : 3,
+            "cycle" : 0.6,
+            "mode" : "loop"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "fu_blastfurnace" : {
+        "properties" : {
+		  "zLevel" : 1,
+          "centered" : false,
+		  "fullbright" : true
+        },
+        "partStates" : {
+          "furnaceState" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.idle"
+              }
+            },
+            "active" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.active<frame>"
+              }
+            }
+          }
+        }
+      },
+	  "fu_blastfurnacefullbright" : {
+        "properties" : {
+		  "zLevel" : 2,
+          "centered" : false
+        },
+        "partStates" : {
+          "furnaceState" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.idle"
+              }
+            },
+            "active" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.active<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

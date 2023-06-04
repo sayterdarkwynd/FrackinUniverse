@@ -1,0 +1,40 @@
+{
+  "objectName" : "flowerpink",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "Happy little flowers of pink hue",
+  "shortdescription" : "Pink Flower",
+  "objectType" : "farmable",
+  "printable" : false,
+
+  "inventoryIcon" : "flowericon.png",
+  "largeImage" : "flowerpink.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "flowerpink" },
+  "orientations" : [
+    {
+      "dualImage" : "flowerpink.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [570, 630]
+    },
+    {
+      "duration" : [570, 630]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "flowerpinkHarvest",
+      "resetToStage" : 1
+    }
+  ],
+  "consumeSoilMoisture" : false,
+  "beeLikeness" : {"sweat":1}
+}

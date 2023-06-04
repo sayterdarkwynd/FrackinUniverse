@@ -1,17 +1,19 @@
 {
   "objectName" : "erithianalgaeseed",
     "colonyTags" : [ "nature" ],
-  "rarity" : "Common",
+  "rarity" : "Uncommon",
   "category" : "seed",
   "description" : "Mutant strain of algae loaded with energy.",
-  "shortdescription" : "Erithian Algae",
+  "shortdescription" : "Erithian Algae Seed",
   "objectType" : "farmable",
   "printable" : false,
   "price" : 18,
 
-  "learnBlueprintsOnPickup" : [ "batterypack_erithian" ],
+ // "learnBlueprintsOnPickup" : [ "batterypack_erithian" ],
 
   "inventoryIcon" : "erithianalgaeicon.png",
+  "largeImage" : "erithianalgaeseed.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "erithianalgae" },
   "orientations" : [
     {
       "dualImage" : "erithianalgaeseed.png:<color>.<stage>.<alt>",
@@ -20,21 +22,21 @@
       "animationCycle" : 0.5,
 
       "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2] ],
-      "requireTilledAnchors" : true,
+      "requireTilledAnchors" : false,
       "anchors" : [ "bottom" ]
 
     }
   ],
   "stages" : [
     {
-      "duration" : [220, 340]
+      "duration" : [330, 450]
     },
     {
-      "duration" : [220, 340]
+      "duration" : [330, 450]
     },
     {
       "alts" : 3,
-      "duration" : [220, 330]
+      "duration" : [330, 450]
     },
     {
       "alts" : 3,
@@ -43,5 +45,6 @@
     }
   ],
     "maxImmersion" : 1.0,
-    "consumeSoilMoisture" : false
+    "consumeSoilMoisture" : false,
+  "beeLikeness" : { "harlequin" : 1}
 }

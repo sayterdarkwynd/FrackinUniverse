@@ -1,0 +1,60 @@
+{
+  "objectName" : "thelusianconsole",
+  "colonyTags" : ["thelusian","electronic","wired"],
+  "rarity" : "Common",
+  "category" : "wire",
+  "price" : 120,
+  "description" : "Displays data in the illegible text of the Thelusians.",
+  "shortdescription" : "Thelusian Console",
+  "race" : "thelusian",
+
+  "lightColor" : [77, 99, 128],
+  "flickerPeriod" : 0.55,
+  "flickerMinIntensity" : 0.45,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.1,
+  "flickerIntensityVariance" : 0.15,
+
+  "inventoryIcon" : "thelusianconsoleicon.png",
+  "orientations" : [
+    {
+      "image" : "thelusianconsole.png:<color>.<frame>",
+      "imagePosition" : [-24, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "thelusianconsole.png:<color>.<frame>",
+      "imagePosition" : [-24, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "thelusianconsole.animation",
+  "animationParts" : {
+    "bg" : "thelusianconsole.png",
+    "fg" : "thelusianconsolelit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
+    }
+  },
+  "animationPosition" : [-24, 0],
+
+  "scripts" : ["/objects/wired/switch/switch.lua","/scripts/npcToyObject.lua"],
+  "scriptDelta" : 60,
+  "interactive" : false,
+  "outputNodes" : [ [0, 0] ],
+  "soundEffect" : "/sfx/objects/bunkerconsole.ogg",
+  "npcToy" : {"influence" : ["wallbutton"],"defaultReactions" : {},"preciseStandPositionLeft" : [-1.0, 0.0],"preciseStandPositionRight" : [1.5, 0.0],"maxNpcs" : 1}
+}

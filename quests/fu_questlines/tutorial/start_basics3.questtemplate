@@ -1,0 +1,33 @@
+{
+	"id" : "start_basics3",
+	"prerequisites" : [ "start_basics2" ],
+	"title" : "Homestead III (pt 1)",
+	"text" : "Ya ever come across ^orange;Oil^reset;? It's quite rare round these 'ere parts. I hear ye kin get some without much hassle by tossin ^orange;Corn^reset; or ^orange;Bone^reset; in a ^orange;Hand Mill^reset;.",
+	"completionText" : "Oil kin be quite useful for a number o' things, but I suggest you save that ^orange;Oil^reset; for a very different task. Talk ter me again ta learn more.",
+	"moneyRange" : [33, 44],
+	"rewards" : [ [ [ "glass",10 ],[ "fuscienceresource",110 ] ] ],
+	"speaker" : "questGiver",
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
+
+		"requireTurnIn" : true,
+
+		"turnInDescription" : "Craft some ^green;Oil^reset; and return to ^green;Welchie^reset;.",
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "liquidoil",
+				"count" : 5,
+				"consume" : false
+			}
+		]
+	}
+}

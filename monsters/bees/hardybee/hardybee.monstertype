@@ -1,5 +1,7 @@
 {
   "type" : "hardybee",
+  "shortdescription" : "Hardy Bee",
+  "description" : "This bee is more productive than the average honey bee.",
 
   "categories" : [ "hardybee" ],
   "parts" : [ "body" ],
@@ -17,6 +19,7 @@
   "baseParameters" : {
     "scripts" : [
       "/monsters/bugs/bug.lua",
+      "/monsters/bees/bee.lua",
       "/scripts/util.lua",
       "/scripts/vec2.lua"
     ],
@@ -70,6 +73,7 @@
         "targetMaterialKind" : "organic"
       },
 
+      "appliesWeatherStatusEffects" : false,
       "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 

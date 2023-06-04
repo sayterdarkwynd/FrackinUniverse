@@ -1,0 +1,46 @@
+{
+  "itemName" : "telebriumaxe",
+  "price" : 240,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Honed from pure telebrium.",
+  "shortdescription" : "Telebrium Hatchet",
+  "tooltipKind" : "sword2",
+  "category" : "axe",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","axe", "upgradeableWeapon","telebrium"],
+  "level" : 2,
+  "inventoryIcon" : "telebriumaxe.png",
+  "animation" : "axe.animation",
+  "animationParts" : {
+    "blade" : "telebriumaxe.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [-1.0, 1.75]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_axe.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "poison",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbilityType" : "axecleave",
+  "primaryAbility" : {
+    "fireTime" : 0.5,
+    "baseDps" : 10,
+    "damageConfig" : {
+      "knockback" : 12,
+      "damageSourceKind" : "poison"
+    }
+  },
+  "critChance" : 2,
+  "critBonus" : 5,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

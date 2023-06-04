@@ -4,12 +4,13 @@
   "inventoryIcon" : "longarm.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Spread joy and shrapnel.",
+  "description" : "A shotgun custom-tailored to spread like crazy and look great doing it.",
   "shortdescription" : "Longarm Shotgun",
-  "level" : 4,
-  "tooltipKind" : "gun",
+  "category" : "shotgun",
+  "level" : 3,
+  "tooltipKind" : "gun2",
   "weaponType" : "Shotgun",
-  "itemTags" : ["weapon","ranged","shotgun"],
+  "itemTags" : ["weapon","ranged","shotgun", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -21,7 +22,8 @@
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
+      "fire" : [ "/sfx/weapons/longarm.wav" ],
+      "cooldown":[  "/sfx/weapons/shotgunreload.ogg"]
     }
   },
 
@@ -31,6 +33,8 @@
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "physical",
+
+  "isReloader" : 1,
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -44,40 +48,47 @@
     "fireType" : "auto",
 
     "projectileType" : "splitbullet",
-    "projectileParameters" : { 
-      "speed" : 50,
-      "knockback" : 4
+    "projectileParameters" : {
+      "speed" : 62,
+      "knockback" : 7
     },
-	  "stances" : {
-	    "idle" : {
-	      "armRotation" : 0,
-	      "weaponRotation" : 0,
-	      "twoHanded" : true,
-
-	      "allowRotate" : true,
-	      "allowFlip" : true
-	    },
-	    "fire" : {
-	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
-
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    },
-	    "cooldown" : {
-	      "duration" : 0.075,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
-
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    }
-	  }
+    "stances" : {
+      "idle":{
+        "armRotation":0,
+        "weaponRotation":0,
+        "twoHanded":true,
+        "allowRotate":true,
+        "allowFlip":true
+      },
+      "fire":{
+        "duration":0.1,
+        "armRotation":3,
+        "weaponRotation":8,
+        "twoHanded":true,
+        "allowRotate":false,
+        "allowFlip":true
+      },
+      "cooldown":{
+        "duration":0.3,
+        "armRotation":-7,
+        "weaponRotation":-360,
+        "twoHanded":true,
+        "allowRotate":false,
+        "allowFlip":true
+      }
+    }
   },
 
+  "critChance" : 5,
+  "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : 4,
+  "reloadTime" : 1.5,
+  "isShotgun" : 1,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 800,
   "altAbilityType" : "grenadelauncher",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

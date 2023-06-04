@@ -1,0 +1,33 @@
+{
+	"id" : "scienceoutpost_shadowShop",
+	"prerequisites" : [ "create_clothingfabricator3" ],
+	"title" : "...",
+	"text" : "<^red;A voice speaks in your head:^reset; Most upsetting. Expedition was a failure. Could not locate ^orange;Ancient Remote^reset; to sell at exorbitant price. If mortal biped locates one, I would be most grateful to purchase it.>",
+	"completionText" : "<Great joy is felt by this being. Appreciation will be shown with gratuitous monetary payment. Fleshlings appreciate such gestures. With it you could purchase goods and services.>",
+	"moneyRange" : [0, 0],
+	"rewards" : [ [ [ "money", 50000 ] ] ],
+	"speaker" : "questGiver",
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
+
+		"requireTurnIn" : true,
+
+		"turnInDescription" : "Bring an ^orange;Ancient Remote^reset; to the ^green;Shadow Shop^reset; at the ^orange;Science Outpost^reset;",
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "ancient_tech",
+				"count" : 1,
+				"consume" : true
+			}
+		]
+	}
+}

@@ -1,0 +1,40 @@
+{
+  "objectName" : "flowerorchid",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "C-c-c-commmmbo breaker!",
+  "shortdescription" : "Black Orchid",
+  "objectType" : "farmable",
+  "printable" : false,
+
+  "inventoryIcon" : "flowericon.png",
+  "largeImage" : "flowerorchid.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "flowerorchid" },
+  "orientations" : [
+    {
+      "dualImage" : "flowerorchid.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [570, 630]
+    },
+    {
+      "duration" : [570, 630]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "flowerorchidHarvest",
+      "resetToStage" : 1
+    }
+  ],
+  "consumeSoilMoisture" : false,
+  "beeLikeness" : { "orchid" : 1}
+}

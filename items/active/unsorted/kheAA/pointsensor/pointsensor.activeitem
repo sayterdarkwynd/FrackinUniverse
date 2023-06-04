@@ -1,0 +1,32 @@
+{
+	"itemName": "network_pointsensor",
+	"price": 150,
+	"maxStack": 1,
+	"rarity": "common",
+	"description": "[Equip] Detects placement points of nearby objects.
+[Primary] Show Colony Tags.",
+	"tooltipKind":"codex",
+	"shortdescription": "Object Data Sensor",
+	"twoHanded": false,
+	"category": "Tool",
+	"itemTags": ["tool"],
+
+	"inventoryIcon": "/items/active/unsorted/oredetector/cavedetectoricon.png",
+	"animation": "/items/active/unsorted/oredetector/oredetector.animation",
+	"animationParts": {
+		"detector": "/items/active/unsorted/oredetector/cavedetector.png",
+		"detectorfullbright": "/items/active/unsorted/oredetector/cavedetectorfullbright.png"
+	},
+	"animationCustom": {},
+
+	"animationScripts": ["/items/active/effects/kheAA_placementdetector.lua"],
+	"animationDelta": 5,
+
+	"scripts": ["pointsensor.lua"],
+	"scriptDelta": 1,
+
+	"pingDetectConfig": {
+		"image": "/items/active/unsorted/kheAA/pointsensor/outbound.png",
+		"maxRange": 20
+	}
+}

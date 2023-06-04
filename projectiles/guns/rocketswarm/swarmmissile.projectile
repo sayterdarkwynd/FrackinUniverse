@@ -11,13 +11,16 @@
   "pointLight" : true,
   "knockback" : 5,
   "knockbackDirectional" : true,
+  "scripts" : [ "homingarrow.lua" ],
+  "baseHomingControlForce" : 3,
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
+      "file" : "/projectiles/explosions/weakexplosion/weakexplosion.config"
     }
   ],
   "power" : 5.0,
-  "damageKind" : "fireplasma",
-  "emitters" : [ "smoke", "fireplasma" ]  
+  //"damageKind" : "fireplasma",
+  "damageKind" : "nodamage",
+  "emitters" : [ "smoke", "fireplasma" ]
 }

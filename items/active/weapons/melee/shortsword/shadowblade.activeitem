@@ -4,33 +4,34 @@
   "level" : 5,
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Darkness given form",
+  "description" : "Darkness given form.",
   "shortdescription" : "Shadowspike",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "shortsword",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword"],
+  "itemTags" : ["weapon","melee","shortsword","shadow", "upgradeableWeapon"],
 
   "inventoryIcon" : "shadowblade.png",
-
-  "animation" : "comboshortsword.animation",
+  //"collectablesOnPickup" : { "fu_weaponshortsword" : "shadowblade" },
+  "animation" : "comboeldershortsword.animation",
   "animationParts" : {
     "handle" : "",
     "blade" : "shadowblade.png"
   },
-  
+
   "animationCustom" : { },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "physical",
 
   "primaryAbilityType" : "shortswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.53,
-    "baseDps" : 6.8
+    "baseDps" : 6.612
   },
-  
+  "critChance" : 3,
+  "critBonus" : 2,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
-  
+
 }

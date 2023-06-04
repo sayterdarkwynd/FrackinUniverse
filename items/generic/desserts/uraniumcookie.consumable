@@ -1,0 +1,28 @@
+{
+  "itemName": "uraniumcookie",
+  "rarity": "Rare",
+  "price": 255,
+  "category": "preparedFood",
+  "inventoryIcon": "uraniumcookie.png",
+  "description": "Uranium-enriched cookies. Radioactive, but not dangerous.\n^pink;Moderate Radiation^gray;, ^pink;Radiation Burn ^cyan;Immunity ^gray;(^white;5m^gray;)^reset;",
+  "shortdescription": "Uranium Cookie",
+  "effects": [
+    [
+      {
+        "effect": "radiationburnimmunity",
+        "duration": 300
+      },
+      {
+        "effect": "radiationimmunity",
+        "duration": 300
+      }
+    ]
+  ],
+  "foodValue": 55,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1.0,
+  "blockingEffects": ["wellfed"]
+}

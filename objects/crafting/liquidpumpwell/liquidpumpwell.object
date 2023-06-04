@@ -1,0 +1,39 @@
+{
+  "objectName" : "liquidpumpwell",
+  "rarity" : "Common",
+  "description" : "Generates water better than a Well. Stores up to 1000 water. Less effective when stacked. Scan for Info.",
+  "shortdescription" : "Water Generator",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 750,
+  "printable" : false,
+  "objectType" : "container",
+ // "learnBlueprintsOnPickup" : [ "fu_liquidcondenser", "fu_portablewaterpumpback" ],
+  "inventoryIcon" : "liquidpumpwellicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "liquidpumpwell.png:<color>.<frame>",
+
+      "imagePosition" : [-20, 0],
+      "frames" : 16,
+      "animationCycle" : 1.6,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+    "outputNodes" : [ [2, 1] ],
+  "scripts" : [ "/scripts/fuwell.lua" ],
+  "scriptDelta" : 10,
+  "slotCount" : 3,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  "wellslots" : [
+    {"name" : "liquidwater","ratio" : 1,"max" : 1000},
+    {"name" : "methanol","amount" : 5,"chance" : 0.02,"count" : 50},
+    {"name" : "algaegreen","amount" : 5,"chance" : 0.16,"count" : 50}
+  ],
+  "wellRange":16
+}

@@ -1,0 +1,51 @@
+[
+	[{
+		"op": "test",
+		"path": "/surfacePlaceables",
+		"inverse": true
+	}, {
+		"op": "add",
+		"path": "/surfacePlaceables",
+		"value": {
+			"grassMod": ["sand"],
+			"grassModDensity": 0.0,
+
+			"items": []
+		}
+	}],
+	[{
+		"op": "test",
+		"path": "/undergroundPlaceables",
+		"inverse": true
+	}, {
+		"op": "replace",
+		"path": "/undergroundPlaceables",
+		"value": {
+			"grassMod": ["sand"],
+			"grassModDensity": 0.0,
+
+			"items": []
+		}
+	}],
+
+	[{
+		"op": "test",
+		"path": "/spawnProfile",
+		"inverse": true
+	}, {
+		"op": "add",
+		"path": "/spawnProfile",
+		"value": {
+			"groups": [{
+				"select": 1,
+				"pool": [
+					[
+						1.0,
+						"burrower_depth_selector_supernight"
+					]
+				]
+			}]
+		}
+	}]
+
+]

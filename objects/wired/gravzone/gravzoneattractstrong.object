@@ -1,0 +1,49 @@
+{
+  "objectName" : "gravzoneattractstrong",
+  "objectType" : "physics",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "This device seems to increase gravity tenfold within a small radius",
+  "shortdescription" : "Force Zone",
+  "race" : "generic",
+
+  "category" : "wire",
+  "price" : 100,
+
+  "inventoryIcon" : "gravzoneattractstrongicon.png",
+  "orientations" : [
+    {
+      "image" : "gravzoneattractstrong.png:<color>.off",
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+      "metaBoundBox" : [-30, -30, 30, 30]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/gravzone/gravzone.lua" ],
+  "scriptDelta" : 0,
+
+  "animation" : "/objects/wired/gravzone/gravzoneattractstrong.animation",
+
+  "animationParts" : {
+    "gravzoneattractstrong" : "gravzoneattractstrong.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "inputNodes" : [ [-1, 0] ],
+  "physicsForces" : {
+    "jumpForce" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 30,
+      "innerRadius" : 20,
+      "targetRadialVelocity" : -60,
+      "controlForce" : 1200,
+      "categoryWhitelist" : [ "monster", "player", "npc", "vehicle", "itemdrop" ]
+    }
+  }
+
+
+}

@@ -1,0 +1,25 @@
+{
+  "projectileName" : "chargedflamearrow",
+  "physics" : "arrownosticky",
+  "image" : "chargedflamearrow.png",
+  "animationCycle" : 0.25,
+  "pointLight" : true,
+  "lightColor" : [191, 103, 2],
+  "frameNumber" : 3,
+  "emitters" : [ "flamesfast" ],
+  "damageKindImage" : "/interface/statuses/fire.png",
+  "damageKind" : "firebow",
+  "power" : 20,
+  "fullbright" : true,
+  "knockback" : 20,
+  "knockbackDirectional" : true,
+  "timeToLive" : 10,
+  "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ],
+  "statusEffects" : [ "burning" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+    }
+  ]
+}

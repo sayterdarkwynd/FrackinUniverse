@@ -1,0 +1,22 @@
+{
+  "projectileName" : "shadowrain",
+  "physics" : "rain",
+  "timeToLive" : 0.75,
+  "image" : "shadowrain.png",
+  "animationCycle" : 1,
+  "lightColor" : [110, 70, 40],
+  "frameNumber" : 1,
+  "fullbright" : true,
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/firerain_impact.ogg" ]
+    }
+  ],
+  "speed" : 25,
+  "power" : 30,
+  "damageKind" : "shadowplasma",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "shadowgasfx" ],
+  "emitters" : [ "shadowsmoke2" ]
+}

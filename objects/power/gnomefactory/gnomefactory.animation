@@ -1,0 +1,51 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "samplingarrayanim" : {
+        "default" : "idle",
+        "states" : {
+          "working" : {
+            "frames" : 11,
+            "cycle" : 27,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/interface/crafting_hands.ogg",
+              "persistentSoundRangeMultiplier" : 0.05,
+              "persistentSoundStopTime" : 0.25,
+              "immediateSoundRangeMultiplier" : 0.05
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "", "", "", "", "", "", "", "", "" ]
+            }
+          },
+          "idle" : {
+            "frames" : 1
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "samplingarrayanim" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "samplingarrayanim" : {
+            "working" : {
+              "properties" : {
+                "image" : "<partImage>:default.<frame>"
+              }
+            },
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:default.default"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

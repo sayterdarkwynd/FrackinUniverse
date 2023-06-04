@@ -1,0 +1,80 @@
+{
+  "objectName" : "thelusianterminal",
+  "colonyTags" : ["thelusian","wired"],
+  "rarity" : "Common",
+  "description" : "A control console.",
+  "shortdescription" : "Thelusian Terminal",
+  "race" : "thelusian",
+  "category" : "wire",
+  "price" : 125,
+  "lightColor" : [23, 33, 38],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.1,
+  "flickerIntensityVariance" : 0.0,
+
+  "inventoryIcon" : "thelusianterminalicon.png",
+  "orientations" : [
+    {
+      "image" : "thelusianterminal.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-8, 0],
+      "frames" : 3,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    },
+    {
+      "image" : "thelusianterminal.png:<color>.<frame>",
+      "direction" : "right",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-8, 0],
+      "frames" : 3,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/switch/switch.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "thelusianterminal.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "bg" : "thelusianterminal.png",
+    "fg" : "thelusianterminallit.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "outputNodes" : [ [0, 0] ],
+
+  "npcToy" : {
+    "ownerOnly" : true,
+    "influence" : [
+      "console"
+    ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-0.5, 0.0],
+    "preciseStandPositionRight" : [2.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

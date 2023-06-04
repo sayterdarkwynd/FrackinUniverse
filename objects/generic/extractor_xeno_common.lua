@@ -1,17 +1,33 @@
 require "/scripts/fu_storageutils.lua"
+require "/scripts/kheAA/transferUtil.lua"
+require '/scripts/fupower.lua'
 local recipes
 
-function init(args)
-	if args then return end
+function init()
+	if config.getParameter('powertype') then
+		power.init()
+		powered = true
+	else
+		powered = false
+	end
 	self.mintick = config.getParameter("fu_mintick", 1)
-	self.timer = self.timer or self.mintick
-	self.crafting = false
-	self.output = nil
-	self.light = config.getParameter("lightColor")
+	storage.timer = storage.timer or self.mintick
+	storage.crafting = storage.crafting or false
 
+	self.light = config.getParameter("lightColor")
+	self.inputSlot = config.getParameter("inputSlot",3)
+	self.outputSlots={}
+	for i=0,self.inputSlot-1 do
+		table.insert(self.outputSlots,i)
+	end
+	self.inputSlot = config.getParameter("inputSlot",1)
 	self.techLevel = config.getParameter("fu_stationTechLevel", 1)
 
-	storage.activeConsumption = false
+	storage.activeConsumption = storage.activeConsumption or false
+	if object.outputNodeCount() > 0 then
+		object.setOutputNodeLevel(0,storage.activeConsumption)
+	end
+
 	if self.light then
 		object.setLightColor({0, 0, 0, 0})
 	end
@@ -40,8 +56,8 @@ end
 function getInputContents()
 	local id = entity.id()
 	local contents = {}
-	for i = 0, 2 do
-		local stack = world.containerItemAt(entity.id(),i)
+	for i = 0, self.inputSlot-1 do
+		local stack = world.containerItemAt(id, i)
 		if stack then
 			contents[stack.name] = (contents[stack.name] or 0) + stack.count
 		end
@@ -62,7 +78,7 @@ function filter(list, func)
 end
 
 function getValidRecipes(query)
-	local function subset(inputs, query)
+	local function subset(inputs)
 		if next(query) == nil then return false end
 		if inputs == query then return true end
 		local validRecipe = false
@@ -76,66 +92,127 @@ function getValidRecipes(query)
 		return validRecipe
 	end
 
-	return filter(recipes, function(l) return subset(l.inputs, query) end)
+	return filter(recipes, function(l) return subset(l.inputs) end)
 end
 
 function update(dt)
-	if not self.mintick then init() end
 
-	if config.getParameter("isn_requiredPower") and isn_hasRequiredPower() == false then
-		animator.setAnimationState("samplingarrayanim", "idle")
-		if self.light then
-			object.setLightColor({0, 0, 0, 0})
-		end
-		storage.activeConsumption = false
-		return
+	if not self.mintick then init() end
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
 
-	self.timer = self.timer - dt
-	if self.timer <= 0 then
-		if self.output then
-			for k,v in pairs(self.output) do
-				fu_storeItems({name = k, count = techlevelMap(v)}, {0, 1, 2}, true)
+	storage.timer = storage.timer - dt
+	if storage.timer <= 0 then
+		if storage.output then
+			for k,v in pairs(storage.output) do
+				fu_sendOrStoreItems(0, {name = k, count = techlevelMap(v)},self.outputSlots, true)
 			end
-			self.output = nil
-			self.timer = self.mintick --reset timer to a safe minimum
+			storage.output = nil
+			storage.inputs = nil
+			storage.timer = self.mintick --reset timer to a safe minimum
 		else
-			if not startCrafting(getValidRecipes(getInputContents())) then
+			if not startCrafting(getInputContents()) then
 				--set timeout and indicate not crafting if there were no recipes
 				animator.setAnimationState("samplingarrayanim", "idle")
 				if self.light then
 					object.setLightColor({0, 0, 0, 0})
 				end
-				self.timer = self.mintick
+				storage.timer = self.mintick
 				storage.activeConsumption = false
+				if object.outputNodeCount() > 0 then
+					object.setOutputNodeLevel(0,storage.activeConsumption)
+				end
 			end
 		end
 	end
+	if powered then
+		power.update(dt)
+	end
 end
 
-function startCrafting(result)
-	if next(result) == nil then
-		return false
-	else
-		_, result = next(result)
-
-		for k, v in pairs(result.inputs) do
-			-- if we ever do multiple inputs, FIXME undo partial consumption on failure
-			if not world.containerConsume(entity.id(), {item = k , count = techlevelMap(v)}) then
-				return false
+function findRecipe(input)
+	local result=getValidRecipes(input)
+	local listSize=util.tableSize(result)
+	if listSize==1 then
+		_,v = next(result)
+		return v
+	elseif listSize > 1 then
+		local tempResult=false
+		for _,resEntry in pairs(result) do
+			if not tempResult then
+				tempResult=resEntry
+			else
+				--sb.logInfo("%s",resEntry)
+				if not resEntry.inputs then sb.logInfo("extractor error: no inputs: %s",result) return false end
+				for resEntryInputItem,resEntryItemCount in pairs(resEntry.inputs) do
+					if tempResult.inputs[resEntryInputItem] < resEntryItemCount then
+						tempResult=resEntry
+					end
+				end
 			end
 		end
+		return tempResult
+	end
+end
 
-		self.timer = (techlevelMap(result.timeScale) or 1) * getTimer(self.techLevel)
-		self.output = result.outputs
+function startCrafting(inputs)
+	for k,v in pairs(inputs) do
+		local t={}
+		t[k]=v
+		local recipe=findRecipe(t)
+		if recipe then
+			if doCrafting(recipe) then
+				return true
+			end
+		end
+	end
+
+	return false
+end
+
+function doCrafting(result)
+	if result == nil then
+		return false
+	else
+		--_, result = next(result)
+		storage.inputs={}
+		for itemName, quantities in pairs(result.inputs) do
+			-- if we ever do multiple inputs, FIXME undo partial consumption on failure
+			local itemData={item = itemName , count = techlevelMap(quantities)}
+			if not (world.containerAvailable(entity.id(),{item = itemName}) >= techlevelMap(quantities) and (not powered or power.consume(config.getParameter('isn_requiredPower'))) and world.containerConsume(entity.id(), itemData)) then
+				for _,v in pairs(storage.inputs) do
+					for i=0,world.containerSize(entity.id())-1 do
+						if v then
+							v=world.containerPutItemsAt(entity.id(),v,i)
+						else
+							break
+						end
+					end
+				end
+				storage.inputs={}
+				return false
+			end
+			table.insert(storage.inputs,itemData)
+		end
+
+		storage.timerMod = config.getParameter("fu_timerMod")
+		storage.timer = ((techlevelMap(result.timeScale) or 1) * getTimer(self.techLevel)) + storage.timerMod
+		storage.output = result.outputs
 		animator.setAnimationState("samplingarrayanim", "working")
 		if self.light then
 			object.setLightColor(self.light)
 		end
 
 		storage.activeConsumption = true
+		if object.outputNodeCount() > 0 then
+			object.setOutputNodeLevel(0,storage.activeConsumption)
+		end
 		return true
-	end			  
+	end
 end
 
 --[[	Validation code - run only from a command shell
@@ -162,7 +239,7 @@ function validateRecipes(testData)
 	local okeys = {}
 	local pair = {}
 
-	for i = 1, table.getn(testData) do
+	for i = 1, #testData do
 		ikeys[i] = {}
 		okeys[i] = {}
 		for key, _ in pairs(testData[i].inputs) do
@@ -253,22 +330,22 @@ function validateRecipes(testData)
 
 	local huntOutput
 	huntOutput = function(chain)
-		local last = chain[table.getn(chain)]
-		for i = 1, table.getn(testData) do
+		local last = chain[#chain]
+		for i = 1, #testData do
 			if i ~= last and containsAny(ikeys[i], okeys[last]) then
 				if --[[containsAny(chain, {i})]] i == chain[1] then
 					printfunc("chain loop:" .. dumpChain(chain))
 				elseif not containsAny(chain, {i}) then
 					table.insert(chain, i)
 					huntOutput(chain)
-					table.remove(chain, table.getn(chain))
+					table.remove(chain, #chain)
 				end
 			end
 		end
 	end
 
-	for i = 1, table.getn(testData) - 1 do
-		for j = i + 1, table.getn(testData) do
+	for i = 1, #testData - 1 do
+		for j = i + 1, #testData do
 			if containsAll(ikeys[i], okeys[j]) and containsAll(okeys[i], ikeys[j]) then
 				if table_eq(testData[i].inputs, testData[j].outputs) and table_eq(testData[i].outputs, testData[j].inputs) then
 					printfunc(string.format("reversible: %s <-> %s", ikeys[i][1], ikeys[j][1]))
@@ -284,5 +361,13 @@ function validateRecipes(testData)
 
 		if not pair[i] then huntOutput({i}) end
 	end
-	huntOutput({table.getn(testData)}) -- last entry
+	huntOutput({#testData}) -- last entry
+end
+
+function die()
+	if storage.inputs and #storage.inputs>0 then
+		for _,v in pairs(storage.inputs) do
+			world.spawnItem(v,entity.position())
+		end
+	end
 end

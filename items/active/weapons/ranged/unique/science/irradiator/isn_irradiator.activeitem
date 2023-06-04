@@ -4,12 +4,14 @@
   "price" : 1500,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Fires radioactive explosive rounds.",
+  "description" : "Most certainly against intergalactic weapons laws.
+^yellow;Area-Effect weapon^reset;
+^green;Inflicts radiation burn^reset;",
   "shortdescription" : "Irradiator",
-  "tooltipKind" : "gun",
-  "category" : "assaultRifle",
+  "tooltipKind" : "gun2",
+  "category" : "rocketLauncher",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "itemTags" : ["weapon","ranged","rocketlauncher", "irradium", "upgradeableWeapon","radioactive","explosive"],
   "inventoryIcon" : "isn_irradiatoricon.png",
   "animation" : "isn_irradiator.animation",
   "animationParts" : {
@@ -26,7 +28,7 @@
       "color" : [10, 0, 50]
     }},
     "sounds" : {
-      "fire" : [ "/sfx/weapons/irradiumrifle.ogg" ]
+      "fire" : [ "/sfx/weapons/acid-fizz5.wav" ]
     }
   },
   "baseOffset" : [0.87, 0.35],
@@ -34,19 +36,19 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "radioactive",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 1.6,
-    "baseDps" : 3.0,
+    "fireTime" : 0.1,
+    "baseDps" : 8.0,
     "energyUsage" : 20,
-    "inaccuracy" : 0,
+    "inaccuracy" : 0.2,
     "fireType" : "auto",
 
-    "projectileType" : "isn_irradiator",
+    "projectileType" : "radioactivethrower",
     "projectileParameters" : {
       "knockback" : 0,
       "speed" : 30
@@ -64,8 +66,8 @@
       },
       "fire" : {
         "duration" : 0,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
         "twoHanded" : true,
 
         "allowRotate" : false,
@@ -73,8 +75,8 @@
       },
       "cooldown" : {
         "duration" : 0.11,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
         "twoHanded" : true,
 
         "allowRotate" : false,
@@ -82,8 +84,9 @@
       }
     }
   },
-
-  "altAbilityType" : "irradiumshotgunshotpower",
+  "critChance" : 1,
+  "critBonus" : 3,
+  "altAbilityType" : "swtjc_ewg_bouncingorbitals",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

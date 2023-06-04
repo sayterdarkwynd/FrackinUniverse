@@ -1,0 +1,73 @@
+{
+  "objectName" : "peglacilighttall2",
+  "colonyTags" : [ "peglaci", "peglacivillage", "light" ],
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 60,
+  "printable" : true,
+
+  "description" : "A tall alloy light, lit by a glowing crystal.",
+  "shortdescription" : "Alloy Glowspire",
+  "race" : "peglaci",
+
+  "apexDescription" : "I don't see a lightbulb in there - it looks like the crystal itself is glowing.",
+  "avianDescription" : "Such a beautiful lantern. Though it looks rather familiar...",
+  "floranDescription" : "Looksss like rock candy.",
+  "glitchDescription" : "Analysis. This lantern is emitting a tight spectrum of radiation in the visible spectrum, as well as trace radio waves.",
+  "humanDescription" : "What a pretty crystal lantern. Hope it's not fragile.",
+  "hylotlDescription" : "How ostentatious, when a simple bulb would have done.",
+  "novakidDescription" : "What a pretty crystal lantern. Hope it's not fragile.",
+  "fupeglaciDescription" : "A crystal lantern to light one's way on a dark winter's path,",
+
+  "lightColor" : [100, 200, 255],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "inventoryIcon" : "peglacilighttall2icon.png",
+  "orientations" : [
+    {
+      "image" : "peglacilighttall2.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+      "animationPosition" : [-8, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "peglacilighttall2.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+
+      "direction" : "right",
+      "animationPosition" : [-8, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/oillantern.ogg",
+
+  "animation" : "peglacilighttall2.animation",
+  "animationParts" : {
+    "bg" : "peglacilighttall2.png",
+    "fg" : "peglacilighttall2lit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/oillantern_on.ogg" ],
+      "off" : [ "/sfx/objects/oillantern_off.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+}

@@ -1,0 +1,194 @@
+{
+  "name" : "deepseaventblood",
+  "friendlyName" : "Blood Sea Vent",
+
+  "mainBlock" : "magmarock",
+  "subBlocks" : [ "magmatile1", "magmatile2", "bloodstonetile2", "obsidian" ],
+  "ores" : "bloodstonesurface",
+
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 3,
+        "pool" : [
+          [ 0.07, "aquamantle" ],
+          [ 0.05, "fufirecrabocean" ],
+          [ 0.05, "pulpinocean" ],
+          [ 0.05, "snagglerocean" ]
+        ]
+      },
+      {
+        "select" : 6,
+        "pool" : [
+          [ 1, "smallFishOcean1" ],
+          [ 1, "smallFishOcean2" ],
+          [ 1, "passiveLargeFish" ],
+          [ 1, "aggroLargeFish" ],
+          [ 1, "squidcritter" ],
+          [ 1, "jellycritter" ]
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "statusSettings" : {
+        "stats" : {
+            "poisonStatusImmunity" : {
+              "baseValue" : 1.0
+            },
+            "insanityImmunity" : {
+              "baseValue" : 1.0
+            }
+        }
+      }
+    }
+  },
+
+  "parallax" : "/parallax/surface/atropusbloodseafloor.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/ocean_underwater.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/ocean_underwater.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/forsaken-grotto.ogg", "/music/lava-exploration1.ogg", "/music/lava-exploration2.ogg", "/music/drosera.ogg", "/music/crystal-exploration1.ogg", "/music/inviolate-loop.ogg", "/music/body-electric-loop.ogg", "/music/europa.ogg", "/music/crystal-exploration2.ogg", "/music/forsaken-grotto.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mira.ogg", "/music/the-deep.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/mercury.ogg", "/music/procyon.ogg" ]
+    }
+  },
+
+  "hueShiftOptions" : [ -180, -160, -140, -120, -100, -80, -60, -40, -20, 0, 20, 40, 60, 80, 100, 120, 140, 160, 180 ],
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "blackash" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "grass",
+        "grasses" : [ "bloodstonespike" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "bloodstonerock" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "anemone1" ] ]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "bloodsea",
+            "baseHueShiftMax" : 15,
+            "modHueShiftMax" : 0
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:rareClumpySmall",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.20, "hecklight1" ], [0.20, "hecklight2" ] ]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "pebbles" ]
+      },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "volcanicrockseed" ],
+              [0.35, "volcanicrockseed2" ],
+              [0.35, "volcanicrockseed3" ],
+              [0.35, "volcanicrockseed4" ],
+              [0.35, "volcanicrockseed5" ],
+              [0.35, "volcanicrockseed6" ],
+              [0.35, "volcanicrockseed7" ],
+              [0.35, "volcanicrockseed8" ],
+              [0.35, "volcanicrock2seed" ],
+              [0.35, "volcanicrock2seed2" ],
+              [0.35, "volcanicrock2seed3" ],
+              [0.35, "volcanicrock2seed4" ],
+              [0.35, "volcanicrock2seed5" ],
+              [0.35, "volcanicrock2seed6" ]
+              ]
+            }
+          ]
+        },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffCommon",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "oceansmokegen" ] ],
+            "parameters" : { }
+          }
+        ]
+      }
+	  ]
+  }
+}

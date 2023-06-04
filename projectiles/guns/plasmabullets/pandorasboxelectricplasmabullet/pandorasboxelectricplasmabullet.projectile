@@ -1,0 +1,24 @@
+{
+  "projectileName" : "pandorasboxelectricplasmabullet",
+  "physics" : "stickybullet",
+  "timeToLive" : 2,
+  "bounces" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "pandorasboxelectricplasmabullet.png",
+  "animationCycle" : 0.5,
+  "fullbright" : true,
+  "frameNumber" : 4,
+  "power" : 25,
+  "speed" : 75,
+  "supportsProcessing" : true,
+  "emitters" : [ "electricplasma" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmabulletexplosion/plasmabulletexplosion.config"
+    }
+  ],
+  "statusEffects" : [ "pandorasboxelectrocution" ],
+  "lightColor" : [102, 32, 110],
+  "damageKind" : "electricplasmabullet"
+}

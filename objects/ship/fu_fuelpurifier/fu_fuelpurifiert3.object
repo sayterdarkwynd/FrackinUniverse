@@ -1,0 +1,59 @@
+{
+  "objectName" : "fu_fuelpurifiert3",
+  "colonyTags" : [ "science", "machines" ],
+  "printable" : false,
+  "rarity" : "rare",
+  "description" : "Purifies fuel before it reaches your ships FTL drive. Reduces fuel cost by ^green;15^reset;%.",
+  "shortdescription" : "^cyan;Dense Fuel Purifier^reset;",
+  "race" : "generic",
+  "category" : "furniture",
+//  "learnBlueprintsOnPickup" : [ "fu_fuelpurifiert4" ],
+
+  "inventoryIcon" : "fu_fuelpurifiericon3.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_fuelpurifiert3.png:<color>.<frame>",
+
+      "imagePosition" : [0, 0],
+      "frames" : 4,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "fu_fuelpurifiert3.animation",
+  "animationParts" : {
+    "centrifuge" : "fu_fuelpurifiert3.png",
+    "centrifugefullbright" : "fu_fuelpurifiert3fullbright.png"
+  },
+
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua", "/scripts/npcToyObject.lua" ],
+  "scriptDelta" : 60,
+  "stats" : {
+    "fuelEfficiency" : 0.15
+  },
+  "maxAmountGroups" : {
+    "fuelPurifier" : 4
+  },
+  "byosOnly" : false,
+
+    "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "crouchwarm"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

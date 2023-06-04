@@ -24,7 +24,7 @@ function init()
 
   local attacks = {}
   local attackStateTables = {}
-  for i, skillName in ipairs(config.getParameter("skills")) do
+  for _, skillName in ipairs(config.getParameter("skills")) do
     local params = config.getParameter(skillName)
 
     --create generic attacks from factories
@@ -97,14 +97,13 @@ function update(dt)
   local slows = status.statusProperty("slows", {})
 
   local stunned = false
-  for k, v in pairs(stuns) do
+  if next(stuns) then
     stunned = true
     animator.setAnimationRate(0)
-    break
   end
   if not stunned then
     local animSpeed = 1.0
-    for k, v in pairs(slows) do
+    for _, v in pairs(slows) do
       animSpeed = animSpeed * v
     end
     animator.setAnimationRate(animSpeed)
@@ -118,7 +117,7 @@ function update(dt)
     end
 
     trackTarget()
-    
+
     -- Attacks can interrupt any normal state
     if self.target ~= 0 then
       if attacking() then
@@ -155,7 +154,7 @@ function update(dt)
       world.debugText(self.state.stateDesc(), monster.toAbsolutePosition({ 0, 2 }), "blue")
     end
 
-    for i, groundSensorIndex in ipairs({ 3, 2, 1 }) do
+    for _, groundSensorIndex in ipairs({ 3, 2, 1 }) do
       local sensor = self.sensors.groundSensors.collisionTrace[groundSensorIndex]
       if sensor.value then
         util.debugLine(mcontroller.position(), sensor.position, "green")

@@ -1,0 +1,29 @@
+{
+  "particleEmitters" : {
+    "healing" : {
+      "enabled" : true,
+      "emissionRate" : 3.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "looping" : true,
+            "animation" : "/animations/statuseffects/honey/honey.animation",
+            "size" : 1.0,
+            "color" : [240, 250, 90, 230],
+            "fade" : 0.9,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 1.0],
+            "finalVelocity" : [0, 5.0],
+            "approach" : [0, 10],
+            "timeToLive" : 0.6,
+            "variance" : {
+              "initialVelocity" : [0.5, 1.0]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

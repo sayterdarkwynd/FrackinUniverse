@@ -1,0 +1,56 @@
+{
+	"objectName" : "peglacibox",
+	"colonyTags" : ["peglaci", "musical"],
+	"rarity" : "Common",
+	"category" : "decorative",
+//    "lightColor" : [124, 228, 192],
+	"description" : "A music player, for playing music.",
+	"shortdescription" : "Peglaci Music Player",
+	"race" : "generic",
+
+	"inventoryIcon" : "peglaciboxicon.png",
+	"orientations" : [
+		{
+			"image" : "peglacibox.png",
+			"imagePosition" : [-12, 0],
+			"animationPosition" : [-12, 0],
+			"animationParts" : {
+				"bg" : "peglacibox.png",
+				"fg" : "peglaciboxlit.png"
+			},
+			"direction" : "left",
+			"flipImages" : true,
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		},
+		{
+			"image" : "peglacibox.png",
+			"imagePosition" : [-12, 0],
+			"animationPosition" : [-12, 0],
+			"animationParts" : {
+				"bg" : "peglacibox.png",
+				"fg" : "peglaciboxlit.png"
+			},
+			"direction" : "right",
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		}
+	],
+
+	"animation" : "racialmusicbox.animation",
+	"animationParts" : {
+		"bg" : "peglacibox.png",
+		"fg" : "peglaciboxlit.png"
+	},
+	"animationPosition" : [-8, 0],
+	"interactAction" : "ScriptPane",
+	"interactData" : "/interface/scripted/fm_musicplayer/fm_musicplayer.config",
+
+	"inputNodes" : [ [-1, 0] ],
+	"outputNodes" : [ [1, 0] ],
+
+	"scripts" : [ "/objects/generic/fm_musicplayer/fm_musicplayer.lua"],
+	"scriptDelta" : 7,
+
+	"musicRadius" : 30
+}

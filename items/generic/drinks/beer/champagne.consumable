@@ -1,25 +1,28 @@
 {
-  "itemName" : "champagne",
-  "rarity" : "Common",
-  "category" : "drink",
-  "price" : 300,
-  "inventoryIcon" : "champagne.png",
-  "description" : "Break out the bubbly!",
-  "shortdescription" : "Champagne",
-  "handPosition" : [0, -4],
-  "effects" : [ [
-
-        {
-        "effect" : "defense2",
-	"duration" : 45
-        },
-		{
-        "effect" : "slow",
-        "duration" : 10
-		},
-		{
-		"effect" : "booze",
-		"duration" : 5
-        }
-    ] ]
+  "itemName": "champagne",
+  "rarity": "Common",
+  "category": "drink",
+  "price": 1600,
+  "inventoryIcon": "champagne.png",
+  "description": "Break out the bubbly!\n^cyan;+^white;3 ^cyan;Defense ^gray;(^white;45s^gray;)\n^white;35% ^red;Slow ^gray;(^white;10s^gray;)\n^red;Drunk ^gray;(^white;5s^gray;)^reset;",
+  "shortdescription": "Champagne",
+  "handPosition": [0, -4],
+  "tooltipKind": "food",
+  "effects": [
+    [
+      {
+        "effect": "defense2",
+        "duration": 45
+      },
+      {
+        "effect": "slow",
+        "duration": 10
+      },
+      {
+        "effect": "booze",
+        "duration": 5
+      }
+    ]
+  ],
+  "emitters" : [ "drinking" ]
 }

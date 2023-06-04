@@ -1,0 +1,31 @@
+{
+	"id": "create_regengene",
+	"prerequisites": ["create_fertilizer"],
+	"title": "Gene Splicing 101",
+	"text": "My ^orange;Xeno Lab^reset; is on the fritz, and I need 3 ^orange;Thornitox^reset; seeds for a client or I don't eat this month! Can you help me out?",
+	"completionText": "Thanks so much. It's not much, but take this data I uncovered by scanning ^orange;Technology of the Ancients^reset;. Maybe you can make use of it.",
+	"moneyRange": [320, 440],
+	"rewards" : [ [ [ "fuprecursorresource", 2 ] ] ],
+	"speaker": "questGiver",
+
+	"updateDelta": 10,
+	"script": "/quests/scripts/main.lua",
+	"scriptConfig": {
+
+		"portraits": {
+			"questStarted": "questGiver",
+			"questComplete": "questGiver"
+		},
+
+		"requireTurnIn": true,
+
+		"turnInDescription": "Bring ^orange;3 Thornitox Seeds^reset; to the yellow Avian at the ^orange;Science Outpost^reset;",
+		"giveBlueprints": ["isn_flintlock"],
+		"conditions": [{
+			"type": "gatherItem",
+			"itemName": "thornitoxseed",
+			"count": 3,
+			"consume": true
+		}]
+	}
+}

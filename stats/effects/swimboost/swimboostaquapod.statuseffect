@@ -1,0 +1,32 @@
+{
+	"name" : "swimboostaquapod",
+	"effectConfig": {
+		"stats": [
+			//{"stat": "boostAmount","amount": 1},
+			{"stat": "boostAmount","effectiveMultiplier": 1.25},
+			{"stat": "riseAmount","effectiveMultiplier": 1.25}
+		],
+		"statusApplierValues": {
+			"init": [
+				[
+					"swimboostbase",1.1
+				]
+			],
+			"update": [
+				[
+					"swimboostbase",1.1
+				]
+			],
+			"updateRate":1
+		}
+	},
+	"defaultDuration" : 220,
+
+	"scripts" : [
+		"/stats/effects/fu_genericStatApplier.lua",
+		"/stats/effects/fu_genericStatusApplier.lua"
+	],
+	"animationConfig" : "swimboost1.animation",
+	"label" : "Swim Boost (Pod)",
+	"icon" : "/interface/statuses/swimboost.png"
+}

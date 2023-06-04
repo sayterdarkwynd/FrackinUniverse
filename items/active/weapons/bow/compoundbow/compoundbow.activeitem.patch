@@ -1,0 +1,72 @@
+[
+{"op": "replace","path": "/tooltipKind","value": "bow2"},
+{"op": "add","path": "/critChance","value": 6},
+{"op": "add","path": "/critBonus","value": 4},
+{"op": "add","path": "/elementalType","value": "physical"},
+  {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "upgradeableWeapon"
+  },
+  {
+    "op": "replace",
+    "path": "/animation",
+    "value": "/items/active/weapons/bow/fubow.animation"
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbility",
+    "value": {
+      "dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+      "drawTime" : 1.0,				//Time to fully draw the bow
+      "powerProjectileTime" : 0.20,		//After fully drawing, the bow is super-charged for this long
+      "energyPerShot" : 27,				//Total energy consumption for a full draw
+      "holdEnergyUsage" : 9,			//Energy consumption per second while fully drawn
+      "airborneBonus" : 1.25				//A dmg multiplier for when airborne
+    }
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbility/projectileParameters",
+    "value": {
+      "power": 8.25,
+      "piercing" : false
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/primaryAbilityType",
+    "value": "rngbows_enhancedbowshot"
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbility/powerProjectileParameters",
+    "value": {
+      "power": 9.5,
+      "piercing" : true
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/builder",
+    "value": "/items/buildscripts/neb-buildbow.lua"
+  },
+  {
+    "op": "replace",
+    "path": "/altAbilityType",
+    "value": "rngbows_enhancedbowshot"
+  },
+  {
+    "op": "replace",
+    "path": "/altAbility",
+    "value": {
+      "name" : "Heal Arrow",
+      "projectileType": "healArrow",
+      "powerProjectileType": "healArrow",
+      "projectileParameters": {
+        "power": 10,
+        "piercing" : true
+      }
+    }
+  }
+]

@@ -1,0 +1,118 @@
+{
+  "name": "approach-teleportnew",
+  "description": null,
+  "scripts": [
+    "/scripts/actions/world.lua",
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/position.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/actions/animator.lua"
+  ],
+  "parameters": {
+    "idleState": "idle",
+    "teleportMinDistance": 40,
+    "targetXDelta": 5,
+    "groundMinHeight": -10,
+    "groundMaxHeight": 10
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "entityPosition",
+        "type": "action",
+        "name": "entityPosition",
+        "parameters": {
+          "entity": {"key": "target"}
+        },
+        "output": {
+          "position": "targetPosition"
+        }
+      },
+      {
+        "title": "entityDirection",
+        "type": "action",
+        "name": "entityDirection",
+        "parameters": {
+          "entity": {"key": "target"},
+          "target": {"key": "self"}
+        },
+        "output": {
+          "direction": "direction"
+        }
+      },
+      {
+        "title": "offsetDirection",
+        "type": "action",
+        "name": "offsetDirection",
+        "parameters": {
+          "direction": {"key": "direction"},
+          "multiplier": {"key": "<targetXDelta>"},
+          "position": {"key": "targetPosition"}
+        },
+        "output": {
+          "position": "targetPosition"
+        }
+      },
+      {
+        "title": "groundPosition",
+        "type": "action",
+        "name": "groundPosition",
+        "parameters": {
+          "avoidLiquid": {"value": false},
+          "maxHeight": {"key": "<groundMaxHeight>"},
+          "minHeight": {"key": "<groundMinHeight>"},
+          "position": {"key": "targetPosition"}
+        },
+        "output": {
+          "position": "targetPosition"
+        }
+      },
+      {
+        "title": "inverter",
+        "type": "decorator",
+        "name": "inverter",
+        "parameters": {},
+        "child": {
+          "title": "inRange",
+          "type": "action",
+          "name": "inRange",
+          "parameters": {
+            "position": {"key": "self"},
+            "range": {"key": "<teleportMinDistance>"},
+            "target": {"key": "targetPosition"}
+          }
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.5}
+        }
+      },
+      {
+        "title": "setPosition",
+        "type": "action",
+        "name": "setPosition",
+        "parameters": {
+          "footPosition": {"value": true},
+          "position": {"key": "targetPosition"}
+        }
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "<idleState>"},
+          "type": {"value": "body"}
+        }
+      }
+    ]
+  }
+}

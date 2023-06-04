@@ -1,0 +1,37 @@
+{
+  "name" : "longjump3",
+  "type" : "legs",
+
+  "scripts" : ["longjump2.lua"],
+  "animator" : "longjump3.animation",
+
+  "description" : "Upgraded Flutter Jump",
+  "shortDescription" : "Flutter Jump II",
+  "rarity" : "rare",
+  "icon" : "/tech/longjump3.png",
+
+  "chipCost" : 5,
+
+  "multiJumpCount" : 1,
+
+  "jumpSpeedMultiplier" : 2.0,
+  "fallGravityMultiplier" : 0.6,
+  "fallDamageMultiplier" : 0.6,
+  "flutterXVelocity" : 24,
+  "flutterYVelocity" : 24,
+  "flutterTime": 0.2,
+  "flutterAfterFall" : false,
+  "flutterFall" : true,
+  "wallJumpXVelocity" : 12,
+  "wallGrabFreezeTime" : 0.30,
+  "wallSensors" : [ 1.0, 1.75, 2.5 ],
+  "wallDetectThreshold" : 2,
+  "wallReleaseTime" : 0.35,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 1,
+      "airForce" : 0,
+      "airFriction" : 5
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "itemName" : "slimebroadsword",
+  "price" : 960,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Through intense concentration, you're able to produce a sharp blade of slime.",
+  "shortdescription" : "Slime Morph Sword",
+  "tooltipKind" : "sword2",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "melee","slime", "bioweapon",  "broadsword","upgradeableWeapon"],
+
+  "inventoryIcon" : "slimebroadswordicon.png",
+
+
+
+  "animation" : "/items/active/weapons/melee/broadsword/slimebroadsword/slimepersonbroadsword.animation",
+  "animationParts" : {
+    "blade" : "blade.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_broadsword_water1.ogg", "/sfx/melee/swing_broadsword_poison1.ogg", "/sfx/melee/swing_broadsword_poison2.ogg" ],
+      "fire2" : [ "/sfx/melee/swing_broadsword_water1.ogg", "/sfx/melee/swing_broadsword_poison1.ogg", "/sfx/melee/swing_broadsword_poison2.ogg" ],
+      "fire3" : [ "/sfx/melee/swing_broadsword_water1.ogg", "/sfx/melee/swing_broadsword_poison1.ogg", "/sfx/melee/swing_broadsword_poison2.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/broadsword/slimebroadsword/slimebroadsword.lua"],
+
+  "activeTime" : 3.0,
+
+  "handGrip" : "wrap",
+  "elementalType" : "physical",
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.83,
+    "baseDps" : 11,
+	"damageConfig" : {
+	"statusEffects" : [
+{"effect" : "slimeslow", "duration" : 0.5 }
+  ]},
+
+	"flashDirectives" : "",
+    "stances" : {
+      "windup1" : {
+        "duration" : 0.15
+      }
+    }
+
+  },
+
+  "altAbilityType" : "slimeflipslash",
+  "altAbility" : {
+  "damageConfig" : {
+	"statusEffects" : [
+{"effect" : "slimeslow", "duration" : 1 }
+  ]}},
+  "critChance" : 1,
+  "critBonus" : 2,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

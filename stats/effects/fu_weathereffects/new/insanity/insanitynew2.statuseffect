@@ -1,0 +1,169 @@
+{
+	"name" : "insanitynew2",
+
+	"effectConfig" : {
+		"typerParticleConfig" : {
+			"particle" : {
+				"color" : [0, 0, 0, 205],
+				"size" : 1,
+				"fade" : 0.7,
+				"destructionTime" : 0.8,
+				"initialVelocity" : [0, 4],
+				"finalVelocity" : [0, 0],
+				"timeToLive" : 0,
+				"destructionAction" : "shrink"
+			},
+
+			"spawnInterval" :20,
+			"writeInterval" : 0.05,
+			"printTextInOrder" : false,
+			"loopOrderedText" : true,
+			"spacing" : [1, 1.5],
+			"boundingBox" : [ 0, 0 ],
+			"texts" : [
+				"kill",
+				"KILL",
+				"flesh",
+				"catch the sky",
+				"dream",
+				"dream deeply",
+				"consume",
+				"work 8 hours",
+				"play 8 hours",
+				"sleep 8 hours",
+				"watch your back",
+				"they're out to get you",
+				"drown",
+				"forget the truth",
+				"bury the lies",
+				"never tell the truth",
+				"devour",
+				"weep",
+				"sleep",
+				"Never sleep again",
+				"drink in all suffering",
+				"agony calls you"
+			],
+
+		// All of these are optional
+			"controllers" : {
+				"color" : [125, 50, 25, 0],
+				"colorLoop" : true,
+				"size" : 0.005,
+				"sizeMax" : 5,
+				"timeToLive" : 1,
+				"timeToLiveMax" : 5,
+				"boundingBox" : [3, 3],
+				"boundingBoxMax" : [50, 50]//,
+				//"spacing" : [1, 1.5]
+			}
+		},
+		"resistanceTypes" : {
+			"cosmicResistance" : 1.0,
+			"shadowResistance" : 0.5
+		},
+		"resistanceThreshold" : 0.7,
+		"immunityStats" : [
+			"insanityImmunity"
+		],
+
+		"healthDrain" : 0.5,
+		"hungerDrain" : 0.25,
+		"energyDrain" : 0,
+		"speedPenalty" : 0,
+		"jumpPenalty" : 0,
+
+		//at these rates, they complete in 300s exact
+		"debuffRate" : 6,//time in seconds
+		"debuffStartDelay" : 0,
+		"debuffs" : {
+			"protection" : {
+				"amount" : -2,//percent per rate
+				"cap" : -100,
+				"type" : "effectiveMultiplier"
+			},
+			"maxEnergy" : {
+				"amount" : -1.8,
+				"cap" : -90,
+				"type" : "effectiveMultiplier"
+			}
+		},
+
+		"colorMod" : [-160, -210, -210],
+		"saturation" : 0,
+
+		"chatterDelay" : {
+			"base" : 30,
+			"random" : 45
+		},
+
+		"darknessImmunityDelay" : 60,
+
+		"modifiers" : {},
+
+		"messages" : {
+			"intro" : "fubiomeinsanity",
+			"wet" : "insanityeffectliquid",
+			"fast" : "insanityeffectfast",
+			"zeroG" : "insanityeffectgrav",
+			"airborne" : [
+				"insanityeffectair",
+				"insanityeffectair2",
+				"insanityeffectair3"
+			],
+			"injured" : [
+				"insanityeffectdying",
+				"insanityeffectdying2",
+				"insanityeffectdying3",
+				"insanityeffectdying4",
+				"insanityeffectdying5",
+				"insanityeffectskin",
+				"insanityeffectwindy",
+				"insanityeffectducts",
+				"insanityeffectweirdo1",
+				"insanityeffectweirdo2",
+				"insanityeffectweirdo3",
+				"insanityeffectweirdo4",
+				"fu_kevin_insanity3",
+				"fu_kevin_insanity5",
+				"fu_kevin_insanity1"
+			],
+			"random" : [
+				"insanityeffectkyle",
+				"insanityeffectmike",
+				"insanityeffectmusic",
+				"insanityeffectwee",
+				"insanityeffectneat",
+				"insanityeffectskin",
+				"insanityeffectwindy",
+				"insanityeffectducts",
+				"insanityeffectweirdo1",
+				"insanityeffectweirdo2",
+				"insanityeffectweirdo3",
+				"insanityeffectweirdo4",
+				"fu_kevin_insanity6",
+				"fu_kevin_insanity2",
+				"fu_kevin_insanity4"
+			],
+			"hungry5" : "insanityeffecthungry4",
+			"hungry10" : "insanityeffecthungry3",
+			"hungry20" : "insanityeffecthungry2",
+			"hungry30" : "insanityeffecthungry1",
+			"hungry40" : "insanityeffecthungry5",
+			"hungry50" : "insanityeffecthungry6",
+			"hungry60" : "insanityeffecthungry7"
+		},
+
+		"configPath" : "/stats/effects/fu_weathereffects/new/insanity/insanitynew2.statuseffect"
+	},
+	"defaultDuration" : 120,
+
+	"scripts" : [
+		"insanitynew.lua"
+	],
+
+	"animationConfig" : "insanitynew.animation",
+
+	"label" : "Extreme Maddening Atmosphere",
+	"icon" : "/interface/statuses/insanity.png"
+}

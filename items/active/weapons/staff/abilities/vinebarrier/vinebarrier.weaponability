@@ -1,0 +1,133 @@
+{
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "orbGlow" : {
+          "default" : "off",
+          "states" : {
+            "off" : {},
+            "idle" : {
+              "frames" : 4,
+              "cycle" : 0.25,
+              "mode" : "loop"
+            },
+            "glow" : {
+              "frames" : 4,
+              "cycle" : 0.25,
+              "mode" : "transition",
+              "transition" : "idle"
+            }
+          }
+        }
+      },
+      "parts" : {
+        "glowingOrb" : {
+          "properties" : {
+            "centered" : true,
+            "zLevel" : 3,
+            "offset" : [0.0, 1.0],
+            "transformationGroups" : ["weapon"],
+            "projectileSource" : [0.0, 0.0]
+          },
+          "partStates" : {
+            "orbGlow" : {
+              "off" : {
+                "properties" : {
+                  "image" : ""
+                }
+              },
+              "idle" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/staff/abilities/vinebarrier/vineorb.png:idle.<frame>"
+                }
+              },
+              "glow" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/staff/abilities/vinebarrier/vineorb.png:glow.<frame>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "lights" : {
+      "orbLight" : {
+        "active" : false,
+        "position" : [0.0, 1.0],
+        "transformationGroups" : ["weapon"],
+        "color" : [80, 80, 80]
+      }
+    },
+
+    "sounds" : {
+      "fireActive" : [ "/sfx/melee/barrier_create_fire.ogg" ],
+      "electricActive" : [ "/sfx/melee/barrier_create_electric.ogg" ],
+      "iceActive" : [ "/sfx/melee/barrier_create_ice.ogg" ],
+      "poisonActive" : [ "/sfx/melee/barrier_create_poison.ogg" ],
+      "shadowActive" : [ "/sfx/melee/barrier_create_poison.ogg" ],
+      "radioactiveActive" : [ "/sfx/melee/barrier_create_poison.ogg" ],
+      "cosmicActive" : [ "/sfx/melee/barrier_create_electric.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Vine Barrier",
+    "type" : "vinebarrier",
+    "scripts" : ["/items/active/weapons/staff/abilities/vinebarrier/vinebarrier.lua"],
+    "class" : "Barrier",
+
+    "energyUsage" : 10,
+
+    "projectileParameters" : {
+      "power" : 3
+    },
+    "projectileInterval" : 1.0,
+    "elementalConfig" : {
+      "fire" : {
+        "projectileType" : "firebarrier"
+      },
+      "ice" : {
+        "projectileType" : "icebarrier"
+      },
+      "poison" : {
+        "projectileType" : "vinebarrier"
+      },
+      "electric" : {
+        "projectileType" : "electricbarrier"
+      },
+      "shadow" : {
+        "projectileType" : "shadowbarrier"
+      },
+      "radioactive" : {
+        "projectileType" : "radioactivebarrier"
+      },
+      "cosmic" : {
+        "projectileType" : "cosmicbarrier"
+      }
+    },
+
+    "elementalLightColors" : {
+      "fire" : [150, 80, 80],
+      "electric" : [80, 80, 150],
+      "ice" : [110, 110, 140],
+      "poison" : [80, 150, 80],
+      "shadow" : [0, 0, 0],
+      "radioactive" : [80, 150, 0],
+      "cosmic" : [110, 110, 140]
+    },
+
+    "stances" : {
+      "hold" : {
+        "weaponOffset" : [0.0, 0.5],
+        "armRotation" : -15,
+        "weaponRotation" : -75,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      }
+    }
+  }
+}

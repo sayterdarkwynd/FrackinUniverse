@@ -1,0 +1,93 @@
+{
+  "type" : "skytemplegrower",
+  "baseType" : "hostile",
+
+  "disableWornArmor" : false,
+  "innateStatusEffects" : [ "regeneration2" ],
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Attack!"
+          ]
+        },
+        "avian" : {
+          "default" : [
+            "Protect the temple!",
+			"You dare intrude upon the most holy of places?",
+            "My thorns will crush you, interloper!",
+            "The light of Kluex fills me with life!"
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+      "runSpeed" : 18,
+	  "walkSpeed" : 18,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    },
+    "mass" : 2.0
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "wildfungushead" }
+            ],
+            "back" : [
+              { "name" : "guardwingsback", "parameters" : { "colorIndex" : 7 } }
+            ],
+            "chest" : [
+              { "name" : "wildfunguschest", "parameters" : { "statusEffects" : [ "thorns" ] } }
+            ],
+            "legs" : [
+              { "name" : "wildfunguspants" }
+            ],
+            "primary" : [
+			  { "name" : "npcavianbroadsword", "parameters" : { "primaryAbility" : { "damageConfig" : { "statusEffects" : ["weakpoison"] } } } }
+			],
+            "sheathedprimary" : [
+			  { "name" : "npctungstenbow", "parameters" : { "primaryAbility" : { "projectileType" : "chargedpoisonarrow", "powerProjectileType" : "chargedpoisonarrow" } } }
+			]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+	"knockbackStunTime" : {
+		"baseValue" : 0.0
+	},
+	"grit" : {
+		"baseValue" : 1.0
+	},
+	  "poisonStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+      "maxHealth" : {
+        "baseValue" : 130.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 1.0
+      },
+	"stunImmunity" : {
+		"baseValue" : 1.0
+	},
+      "maxEnergy" : {
+        "baseValue" : 20.0
+      }
+    }
+  }
+}

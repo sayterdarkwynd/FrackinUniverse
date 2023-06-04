@@ -6,13 +6,14 @@
     "groups" : [
         {
         "select" : 3,
-        "pool" : [ 
-          [ 0.1429, "wisper" ],     
-          [ 0.1429, "lilodon" ],
-          [ 0.1429, "capricoat" ],        
-          [ 0.1429, "skimbus" ],
-          [ 0.1429, "pulpin" ],         
-          [ 0.1429, "monopus" ]
+        "pool" : [
+          [ 0.09, "wisper" ],
+          [ 0.09, "lilodon" ],
+          [ 0.09, "capricoat" ],
+          [ 0.09, "cryopod" ],
+          [ 0.09, "pulpin" ],
+          [ 0.09, "monopus" ],
+          [ 0.1, "snowdeer" ]
         ]
       },
       {
@@ -42,23 +43,41 @@
       "colors" : "arctic"
     }
   },
+  "parallax" : "/parallax/surface/glacial.parallax",
 
-  "hueShiftOptions" : [-45, 0, 45],
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/arctic_day.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/arctic_night.ogg" ]
+    }
+  },
 
-  "mainBlock" : "ice",
-  "subBlocks" : [ "snow", "slush", "gravel", "cobblestone" ],
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-exploration1.ogg", "/music/mercury.ogg", "/music/inviolate-loop.ogg", "/music/europa.ogg","/music/psyche.ogg", "/music/haiku.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg", "/music/error-0xbfaf000.ogg", "/music/large-magellanic-cloud.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/the-deep.ogg", "/music/arctic-constellation2.ogg", "/music/arctic-exploration2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg", "/music/horsehead-nebula.ogg", "/music/Nomads.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg" ]
+    }
+  },
+  "hueShiftOptions" : [0],
+
+  "mainBlock" : "andesite",
+  "subBlocks" : [ "rock03", "gravel", "ice", "ice" ],
   "ores" : "surface",
 
   "surfacePlaceables" : {
     "grassMod" : [ "snow" ],
-    "grassModDensity" : 0.2,
+    "grassModDensity" : 0.5,
 
     "items" : [
       {
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [
@@ -72,10 +91,10 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:scatteredSmall",
+        "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
 
         "type" : "microdungeon",
-        "microdungeons" : [ "ice" ]
+        "microdungeons" : [ "alpinemicrodungeons" ]
       },
       {
         "mode" : "floor",
@@ -99,22 +118,85 @@
         "mode" : "floor",
         "priority" : 0.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:minibiomeChests",
+        "distribution" : "/biomes/distributions.config:overgroundChests",
 
         "type" : "treasureBox",
-        "treasureBoxSets" : [ "iceChest" ]
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "alpineChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
       },
       {
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:scatteredSmall",
+        "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ [0.35, "iceshard1" ], [0.35, "iceshard2" ], [0.35, "iceshard3" ], [0.35, "iceshard4" ], [0.35, "iceshard5" ] ],
+            "pool" : [ [1, "statuspod" ] ],
             "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [
+            [0.35, "rockstony1" ],
+            [0.35, "rockstony2" ],
+            [0.35, "rockstony3" ],
+            [0.35, "rockstony4" ],
+            [0.35, "rockstony5" ],
+            [0.35, "rockstony6" ],
+            [0.35, "rockstony7" ],
+            [0.35, "rockstony8" ]
+            ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "pebbles" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.20, "groundspike1" ], [0.20, "groundspike2" ], [0.20, "groundspike3" ], [0.20, "groundspike4" ] ]
           }
         ]
       }
@@ -127,7 +209,7 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [
@@ -141,10 +223,129 @@
         "mode" : "floor",
         "priority" : 0.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:minibiomeChests",
+        "distribution" : "/biomes/distributions.config:undergroundChests",
 
         "type" : "treasureBox",
-        "treasureBoxSets" : [ "iceChest" ]
+        "treasureBoxSets" : [ "alpineChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [
+            [0.35, "rockstony1" ],
+            [0.35, "rockstony2" ],
+            [0.35, "rockstony3" ],
+            [0.35, "rockstony4" ],
+            [0.35, "rockstony5" ],
+            [0.35, "rockstony6" ],
+            [0.35, "rockstony7" ],
+            [0.35, "rockstony8" ]
+            ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "pebbles" ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "ceilingicespikes",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          },
+          {
+            "name" : "ceilingicicle",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.20, "ceilingspike1" ], [0.20, "ceilingspike2" ], [0.20, "ceilingspike3" ], [0.20, "ceilingspike4" ] ]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.20, "groundspike1" ], [0.20, "groundspike2" ], [0.20, "groundspike3" ], [0.20, "groundspike4" ] ]
+          }
+        ]
       }
     ]
   }

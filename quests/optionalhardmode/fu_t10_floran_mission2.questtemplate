@@ -1,0 +1,29 @@
+{
+	"id": "fu_t10_floran_mission2",
+	"prerequisites": [ "fu_t10_human_mission1" ],
+	"title": "Darkness among the Trees",
+	"text": "Hero fetches artifacts, saves universe. Right? Not in other reality. Why not? Go find first one. See if Kevin was there.",
+	"completionText": "Kevin touched artifact, definitely, and...eww! He left it covered in raptor piss! Dirty stinker used it to etch 'Kevin was here' in the shiny. Hmm...have beacon with new signature though.",
+	"moneyRange": [0, 0],
+	"rewards" : [ [ [ "fu_t10_floranarena1beacon", 1 ] ] ],
+
+	"questGiverIndicator": "mainquestgiver",
+	"questReceiverIndicator": "mainquestreceiver",
+
+	"updateDelta": 10,
+	"script": "/quests/scripts/fuartifacthardmode.lua",
+	"scriptConfig": {
+		"portraits": {
+			"questStarted": "questGiver",
+			"questComplete": "questReceiver"
+		},
+		"associatedMission": "fufloranmission1t10",
+		"descriptions"	: {
+			"artifact": "Find the ^orange;artifact^reset; in ^green;the Dark Hunting Grounds^reset;",
+			"turnIn": "Return to ^orange;Kherae^reset; at ^orange;the Science Outpost^reset;"
+		},
+
+		"artifactUid": "floranartifactaltar",
+		"estherUid": "kheraeoutpost"
+	}
+}

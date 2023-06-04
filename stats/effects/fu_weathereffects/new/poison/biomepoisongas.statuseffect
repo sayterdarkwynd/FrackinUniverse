@@ -1,0 +1,51 @@
+{
+  "name" : "biomepoisongas",
+
+  "effectConfig" : {
+    "resistanceTypes" : {
+      "poisonResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.45,
+    "immunityStats" : [
+      "poisonStatusImmunity",
+      "poisongasImmunity",
+      "gasImmunity"
+    ],
+
+    "healthDrain" : 4,
+    "hungerDrain" : 0,
+    "energyDrain" : 0,
+    "speedPenalty" : 0.75,
+    "jumpPenalty" : 0.75,
+
+    "debuffRate" : 4,
+    "debuffStartDelay" : 25,
+    "debuffs" : {
+      "powerMultiplier" : {
+        "type" : "absolute",
+        "amount" : -0.06,
+        "cap" : 0.05
+      }
+    },
+
+    "modifiers" : {
+      "windy" : 1.2
+    },
+
+    "messages" : {
+      "intro" : "ffbiomepoison",
+      "windy" : "ffbiomepoisonwind"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/poison/biomepoisongas.statuseffect"
+  },
+  "defaultDuration" : 20,
+
+  "scripts" : [
+    "poisonweathernew.lua"
+  ],
+
+  "animationConfig" : "poisonweathernew.animation",
+  "label" : "Severe Poison Gas (Resist: ^green;Poison^reset;)",
+  "icon" : "/interface/statuses/poisoncloud.png"
+}

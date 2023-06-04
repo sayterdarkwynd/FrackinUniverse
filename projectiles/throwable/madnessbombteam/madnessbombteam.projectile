@@ -1,0 +1,29 @@
+{
+  "projectileName" : "madnessbombteam",
+  "physics" : "stickybomb",
+  "bounces" : -1,
+  "timeToLive" : 1.35,
+  "image" : "madnessbombteam.png",
+  "animationCycle" : 1.35,
+  "lightColor" : [0, 75, 0],
+  "frameNumber" : 7,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/madnessbombexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "ngravityexplosion",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0,
+      "angleAdjust" : 0,
+      "config" : { "timeToLive" : 0.2 }
+    }
+  ],
+  "power" : 60,
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+  "damagePoly" : [ [-3, 0], [-2, -2], [0, -3], [2, -2], [3, 0], [2, 2], [0, 3], [-2, 2] ],
+  "emitters" : [ "sparks" ]
+}

@@ -1,0 +1,73 @@
+{
+  "itemName" : "khetastrophae",
+  "price": 15000,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Fires grenades... LOTS of grenades.\nDragoncat weapon of choice.\nHas a thumb trigger in addition to the normal two.",
+  "shortdescription" : "Khetastrophae",
+  "tooltipKind" : "gununique",
+  "category" : "uniqueWeapon",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","grenadelauncher","upgradeableWeapon"],
+
+  "inventoryIcon" : "khetastrophae.png",
+  "animation" : "khetastrophae.animation",
+  "animationParts" : {
+    "gun" : "khetastrophae.png"
+  },
+
+  "scripts" : ["khetastrophae.lua"],
+
+  "fireOffset" : [3.25, 0.625],
+
+  "critChance" : 6,
+  "critBonus" : 8,
+  "elementalType" : "fire",
+  "primaryAbility" : {
+	"recoil":{ "speed" : 26.6, "force" : 200.0 },
+    "energyUsage" : 95,
+    "baseDps" : 5.5,
+    "fireTime" : 2.25,
+    "inaccuracy" : 0.13,
+
+    "projectileType" : "fireproximityminestatus",
+    "projectileCount" : 8,
+    "projectileParameters" : { "inheritDamageFactor" : 0.12 }
+  },
+
+  "altAbility" : {
+    "recoil":{ "speed" : 100.0, "force" : 750.0 },
+    "energyUsage" : 125,
+    "baseDps" : 1,
+    "fireTime" : 3.25,
+    "projectileType" : "kheraegrenade",
+    "projectileCount" : 1,
+    "projectileParameters" : { "inheritDamageFactor" : 0.15},
+    "name" : "Erupting Bomb"
+  },
+  "primaryAbilityShift" : {
+    "energyUsage" : 95,
+    "baseDps" : 11.0,
+    "fireTime" : 2.25,
+    "inaccuracy" : 0.13,
+	"selfEffects":["melting","lavaglow"],
+
+    "projectileType" : "fireproximityminestatus",
+    "projectileCount" : 8,
+    "projectileParameters" : { "inheritDamageFactor" : 0.12 }
+  },
+
+  "altAbilityShift" : {
+    "energyUsage" : 125,
+    "baseDps" : 2,
+    "fireTime" : 3.25,
+	"selfEffects":["melting","lavaglow"],
+
+    "projectileType" : "kheraegrenade",
+    "projectileCount" : 1,
+    "projectileParameters" : { "inheritDamageFactor" : 0.15},
+    "name" : "Erupting Bomb"
+  },
+    "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

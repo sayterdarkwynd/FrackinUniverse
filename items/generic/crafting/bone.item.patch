@@ -1,16 +1,25 @@
 [
-  {"op":"add","path":"/learnBlueprintsOnPickup","value": [
-    "whitedye",
-    "bonematerial",
-    "throwingbones",
-    "fubonearmorchest",
-    "fubonearmorhead", 
-    "fubonearmorlegs",
-    "fuboneshield",
-    "bonespur",
-    "fuboneclaws",
-    "fubonespear",
-    "fuboneaxe",
-    "boneblade"
-    ] }
-]  
+  [
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  ],
+  [
+    { "op": "test", "path": "/pickupQuestTemplates", "inverse" : true },
+    { "op": "add", "path": "/pickupQuestTemplates", "value": [] }
+  ],
+  [
+   // { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "whitedye" },
+    //{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "bonemealmaterial" },
+    //{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "bonematerial" },
+    //{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "throwingbones" },
+    //{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "floranneedler" },
+
+    {
+      "op": "add",
+      "path": "/radioMessagesOnPickup",
+      "value": [
+        "pickupBone"
+      ]
+    }
+  ]
+]

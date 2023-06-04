@@ -1,0 +1,39 @@
+{
+	"objectName" : "network_itemsensor",
+	"printable" : false,
+	"rarity" : "Common",
+	"description" : "Detects item drops within 8 tiles.",
+	"shortdescription" : "Item Sensor",
+	"race" : "generic",
+
+//	"learnBlueprintsOnPickup":["network_containerlink2"],
+	"category" : "wire",
+	"price" : 75,
+
+
+        "animation" : "kheAA_containerlink.animation",
+
+	"inventoryIcon" : "/objects/kheAA/kheAA_containerLink/Itemlink.png:default.off",
+	"orientations" : [
+
+		{
+			"imageLayers" : [{"image":"Itemlink.png:default.off?scale=0.5","fullbright" : true},{"image":"Itemlinkfullbright.png:default.off?scale=0.5"}],
+			"imagePosition" : [0, 0],
+                        "frames" : 1,
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ]
+		}
+	],
+	"animationParts" : {
+		"Itemlink" : "Itemlink.png"
+	},
+	"animationPosition" : [0, 0],
+
+	"scripts" : [ "/objects/kheAA/kheAA_containerLink/kheAA_itemSensor.lua" ],
+	"scriptDelta" : 5,
+
+	"outputNodes" : [[0,0]],
+
+	"interval" : 5,
+	"linkRange":8
+}

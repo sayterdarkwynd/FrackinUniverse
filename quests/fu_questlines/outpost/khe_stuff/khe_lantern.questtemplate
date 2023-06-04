@@ -1,0 +1,30 @@
+{
+	"id": "khe_lantern",
+	"prerequisites": ["khe_fabric"],
+	"title": "Cat Toys",
+	"text": "Mew lantern broke. Sad, sad mew. Find mew another one? Also, mew wants an accordion.",
+	"completionText": "Yay! Happy kitty! You can keep the old lantern. I got lots of those.",
+	"moneyRange": [1, 2],
+	"rewards": [[ [ "lanterrortreasuretrollking", 1 ] ]],
+	"speaker": "questGiver",
+
+	"updateDelta": 10,
+	"script": "/quests/scripts/main.lua",
+	"scriptConfig": {
+		"giveBlueprints": [],
+
+		"portraits": {
+			"questStarted": "questGiver",
+			"questComplete": "questReceiver"
+		},
+
+		"requireTurnIn": true,
+
+		"turnInDescription": "Bring ^cyan;Khe^reset; the ingredients.",
+
+		"conditions": [
+			{"type": "gatherItem","itemName": "lanterror","count": 1,"consume": true},
+			{"type": "gatherItem","itemName": "accordion","count": 1,"consume": true}
+		]
+	}
+}

@@ -1,0 +1,30 @@
+{
+  "projectileName" : "radioactiveswarmer",
+  "physics" : "laser",
+  "timeToLive" : 3,
+  "image" : "radioactiveswarmer.png",
+  "animationCycle" : 0.3,
+  "lightColor" : [70, 70, 0],
+  "frameNumber" : 4,
+  "periodicActions" : [ ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/radioactiveimpact3.config"
+    }
+  ],
+  "speed" : 10,
+  "power" : 30,
+  "damageKind" : "radioactiveplasma",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "radiationburn" ],
+
+  "fullbright" : true,
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+
+  "controlMovement" : {
+    "maxSpeed" : 60,
+    "controlForce" : 40
+  }
+}

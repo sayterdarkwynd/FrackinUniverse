@@ -1,0 +1,45 @@
+{
+  "objectName" : "fubody1",
+  "colonyTags" : ["fu","elder","evil","storage"],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "price" : 0,
+  "printable" : false,
+  "description" : "It looks like this man died in extreme pain.",
+  "shortdescription" : "Ancient human corpse",
+
+  "inventoryIcon" : "body1.png",
+  "orientations" : [
+    {
+      "dualImage" : "body1.png:<color>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "metaBoundBox" : [-10, -10, 10, 10]
+
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/fleshdoor_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/fleshdoor_close.ogg" ],
+  "slotCount" : 16,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+
+  "scripts" : [ "/objects/scripts/fuautofillonce.lua" ],
+  "scriptDelta" : 240,
+
+  "autofillContents" : [
+    {"name" : "wagner4-codex", "count" : 1, "parameters" : {}},
+    {"name" : "rawribmeat", "count" : 1, "parameters" : {}},
+    {"name" : "severedear", "count" : 1, "parameters" : {}}
+  ],
+  "statusEffects"  : [ "madnessgainelder1" ]
+
+}

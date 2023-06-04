@@ -1,0 +1,26 @@
+{
+  "projectileName" : "shadowtrail",
+  "image" : "shadowtrail.png",
+  "physics" : "gas",
+  "frameNumber" : 3,
+  "animationCycle" : 0.3,
+  "lightColor" : [0, 0, 0],
+  "power" : 2,
+  "speed" : 0,
+  "timeToLive" : 2.0,
+  "bounces" : -1,
+  "knockback" : 25,
+  "knockbackDirectional" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [ [2, 4],  [2, -4],  [-2, -4],  [-2, 4] ],
+  "piercing" : true,
+  "damageKind" : "shadowbarrier",
+  "emitters" : [ "shadowsmoke2" ],
+  "statusEffects" : ["shadowgasfx"],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/fire_out.ogg" ]
+    }
+  ]
+}

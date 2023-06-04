@@ -1,0 +1,91 @@
+{
+  "name": "action-aim-head",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/position.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/movement.lua"
+  ],
+  "parameters": {
+    "headOffset": [0, 0]
+  },
+  "root": {
+    "title": "succeeder",
+    "type": "decorator",
+    "name": "succeeder",
+    "parameters": {},
+    "child": {
+      "title": "sequence",
+      "type": "composite",
+      "name": "sequence",
+      "parameters": {},
+      "children": [
+        {
+          "title": "resetTransformationGroup",
+          "type": "action",
+          "name": "resetTransformationGroup",
+          "parameters": {
+            "transformationGroup": {"value": "aim"}
+          }
+        },
+        {
+          "title": "entityDirection",
+          "type": "action",
+          "name": "entityDirection",
+          "parameters": {
+            "entity": {"key": "self"},
+            "target": {"key": "target"},
+            "offset": {"key": "<headOffset>"}
+          },
+          "output": {
+            "direction": "facingDirection",
+            "vector": "aimDirection"
+          }
+        },
+        {
+          "title": "vecMultiply",
+          "type": "action",
+          "name": "vecMultiply",
+          "parameters": {
+            "first": {"key": "aimDirection"},
+            "second": {"value": ["facingDirection", 1]}
+          },
+          "output": {
+            "vector": "aimDirection"
+          }
+        },
+        {
+          "title": "vecAngle",
+          "type": "action",
+          "name": "vecAngle",
+          "parameters": {
+            "vector": {"key": "aimDirection"}
+            },
+          "output": {
+            "angle": "aimAngle"
+          }
+        },
+        {
+          "title": "rotateTransformationGroup",
+          "type": "action",
+          "name": "rotateTransformationGroup",
+          "parameters": {
+            "transformationGroup": {"value": "aim"},
+            "angle": {"key": "aimAngle" },
+            "rotationCenter": {"value": [0, 0]}
+          }
+        },
+        {
+          "title": "translateTransformationGroup",
+          "type": "action",
+          "name": "translateTransformationGroup",
+          "parameters": {
+            "transformationGroup": {"value": "aim"},
+            "offset" : {"key" : "<headOffset>"}
+          }
+        }
+      ]
+    }
+  }
+}

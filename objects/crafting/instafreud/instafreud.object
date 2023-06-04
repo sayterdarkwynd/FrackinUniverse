@@ -1,0 +1,49 @@
+{
+  "objectName" : "instafreud",
+  "colonyTags" : ["madness", "bed"],
+  "printable" : true,
+  "rarity" : "legendary",
+  "description" : "A one-stop mental health kiosk.",
+  "shortdescription" : "Insta-Freud",
+  "lightColor" : [96, 29, 147],
+  "race" : "generic",
+  "category" : "furniture",
+  "price" : 25000,
+
+  "inventoryIcon" : "instafreud.png",
+  "orientations" : [
+    {
+      "image" : "instafreud.png:<color>",
+      "sitCoverImage" : "/objects/crafting/instafreud/instafreudcover.png",
+
+	  "direction" : "right",
+      "imagePosition" : [-28, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "instafreudflip.png:<color>",
+      "sitCoverImage" : "/objects/crafting/instafreud/instafreudcoverflip.png",
+
+	  "direction" : "left",
+      "imagePosition" : [-28, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : true,
+  "sitPosition" : [-4, 20],
+  "sitOrientation" : "sit",
+  "sitAngle" : 0,
+  "sitEmote" : "sleep",
+  "sitStatusEffects" : [ "madnesslossfreud" ],
+  "sitEffectEmitters" : [ "cosmicdust" ]
+}

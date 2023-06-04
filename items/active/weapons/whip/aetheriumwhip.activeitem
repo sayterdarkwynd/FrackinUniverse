@@ -1,0 +1,58 @@
+{
+  "itemName" : "aetheriumwhip",
+  "price" : 2600,
+  "level" : 7,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "The ultimate lashing device. Just don't get it caught on the crossguard.",
+  "shortdescription" : "Aetherium Whip",
+  "tooltipKind" : "swordaetherium",
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","whip","upgradeableWeapon","aetherium","cosmic"],
+
+  "inventoryIcon" : "aetheriumwhip.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "aetheriumwhip.png",
+	"weaponFullbright" : "aetheriumwhipfullbright.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : { "particles" : [ ]}},
+    "sounds" : {
+      "swing" : ["/sfx/melee/mech_energysword_swing1.ogg", "/sfx/melee/mech_energysword_swing2.ogg", "/sfx/melee/mech_energysword_swing3.ogg"],
+      "crack" : [ "/sfx/projectiles/plasma1.ogg", "/sfx/projectiles/plasma2.ogg", "/sfx/projectiles/plasma3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [0.625, 0],
+    "length" : [3, 15],
+    "segmentImage" : "/items/active/weapons/whip/aetheriumwhiplink.png",
+    "endSegmentImage" : "/items/active/weapons/whip/aetheriumwhipend.png",
+    "segmentSize" : 0.375,
+    "fullbright" : true
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "aether",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 0.9,
+    "chainDps" : 3.0,
+    "crackDps" : 7,
+
+    "damageConfig" : {
+      "statusEffects":["defenseboostneg20"],
+	  "damageSourceKind" : "aetherlash"
+    },
+
+    "projectileType" : "whipcrackaether"
+  },
+
+  "critChance" : 2,
+  "critBonus" : 7,
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}

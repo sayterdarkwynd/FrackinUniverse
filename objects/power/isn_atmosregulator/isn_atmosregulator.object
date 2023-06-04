@@ -2,21 +2,21 @@
   "objectName" : "isn_atmosregulator",
   "rarity" : "legendary",
     "colonyTags" : [ "science" ],
-  "description" : "Generates a field that protects against environmental hazards. Requires 24u of power.",
-  "shortdescription" : "^cyan;Atmospheric Regulator^white;",
+  "description" : "Generates a field that heals any lifeform within its area of effect. ^cyan;Requires ^orange;120W^cyan; of power^reset;.",
+  "shortdescription" : "^cyan;Regeneration Matrix^reset;",
   "race" : "generic",
   "price" : 2000,
   "category" : "wire",
   "printable" : false,
 
   "apexDescription" : "Ahhh. Refreshing.",
-  "avianDescription" : "Will this help me breathe in space?",
-  "floranDescription" : "Machine make Floran not wilt in hot land.",
-  "glitchDescription" : "Reassured. Even the harshest environments can't get through this field.",
-  "humanDescription" : "I won't need those suit techs if one of these is running.",
-  "hylotlDescription" : "This will provide excellent protection from the elements.",
+  "avianDescription" : "I feel better.",
+  "floranDescription" : "Healy box make Floran happy.",
+  "glitchDescription" : "Reassured. I won't die while standing near this machine.",
+  "humanDescription" : "I won't have to worry about the peril of death near this thing!",
+  "hylotlDescription" : "This will provide excellent healing at a constant rate.",
 
-  "inventoryIcon" : "isn_atmosregulator_inv.png",
+  "inventoryIcon" : "isn_regenerationmatrix_inv.png",
   "orientations" : [
     {
       "image" : "isn_atmosregulator_base.png:<color>.<frame>",
@@ -26,7 +26,7 @@
       "imagePosition" : [-80, 0],
       "frames" : 1,
       "animationCycle" : 1.0,
-      
+
       "lightPosition" : [-2, 2],
 
       "spaceScan" : 0.1,
@@ -39,7 +39,7 @@
       "imagePosition" : [-80, 0],
       "frames" : 1,
       "animationCycle" : 1.0,
-      
+
       "lightPosition" : [1, 2],
 
       "spaceScan" : 0.1,
@@ -47,20 +47,23 @@
     }
   ],
 
-  "scripts" : [ "/objects/power/isn_atmosregulator/isn_atmosregulator.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-				"/objects/isn_sharedobjectscripts.lua"],
+  "scripts" : [ "/scripts/fupower.lua","/objects/power/fu_atmosfilter/fu_atmosfilter.lua" ],
   "scriptDelta" : 60,
+
+  "atmos" : {
+	"range" : 500,
+	"objectEffects" : ["regenerationAtmosRegen"]
+  },
 
   "animation" : "isn_atmosregulator.animation",
   "animationParts" : {
     "bg" : "isn_atmosregulator_base.png",
     "fg" : "isn_atmosregulator_lit.png"
   },
-  
+
   "animationPosition" : [-80, 0],
 
   "inputNodes" : [ [1, 2] ],
-  "isn_powerReciever" : true,
-  "isn_requiredPower" : 24
+  "powertype" : "input",
+  "isn_requiredPower" : 120
 }

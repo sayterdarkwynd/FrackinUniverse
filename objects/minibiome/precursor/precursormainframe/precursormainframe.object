@@ -1,0 +1,57 @@
+{
+  "objectName" : "precursormainframe",
+  "colonyTags" : [ "precursor","technology","science","ancient" ],
+  "rarity" : "legendary",
+  "category" : "^orange;Extraction Device^reset;",
+  "printable" : false,
+  "objectType" : "container",
+  "price" : 450,
+  "inventoryIcon" : "precursormainframeicon.png",
+  "description" : "A truly amazing, ancient computer. Can devise the perfect cup of coffee.\n^cyan;Research Rate^reset;: 6% (1.2%), 0.5s",
+  "shortdescription" : "^cyan;Precursor Mainframe^reset;",
+
+  "orientations" : [
+     {
+      "imageLayers" : [ { "image" : "precursormainframe.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursormainframelit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+      "animationParts" : {
+          "samplingarrayanim" : "precursormainframe.png",
+          "samplingarrayanimlit" : "precursormainframelit.png"
+        },
+      "imagePosition" : [-88, 0],
+      "frames" : 14,
+      "animationCycle" : 2,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "precursormainframe.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursormainframelit.png:<color>.<frame>" } ],
+      "direction" : "right",
+      "animationParts" : {
+          "samplingarrayanim" : "precursormainframe.png",
+          "samplingarrayanimlit" : "precursormainframelit.png"
+        },
+      "imagePosition" : [-88, 0],
+      "frames" : 14,
+      "animationCycle" : 2,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "learnBlueprintsOnPickup" : [ "precursormainframe"],
+  "powertype" : "input",
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 2] ],
+  "openSounds" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+  "closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ],
+  "scripts" : [ "/objects/generic/extractor_research.lua" ],
+  "scriptDelta" : 10,
+  "slotCount" : 3,
+  "uiConfig" : "/bees/interface/beeexaminer/beeexaminer.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  "fu_timerMod":0.5,
+  "fu_researchMult":0.06,
+  "fu_essenceMult":0.2
+}

@@ -1,0 +1,77 @@
+{
+  "objectName": "fu_booster_tiny5",
+  "colonyTags": ["byos"],
+  "scannable": false,
+  "rarity": "rare",
+  "description": "A tiny thruster used for non-FTL travel. Increases ship speed slightly. Mostly for show.\n^yellow;Ship Speed: +15\n^cyan;BYOS Only^reset;",
+  "shortdescription": "Tiny Ship Booster Mk5",
+  "race": "generic",
+
+//  "learnBlueprintsOnPickup":["fu_booster_tiny6"],
+
+  "apexDescription": "A booster. These have been known to malfunction and explode.",
+  "avianDescription": "A booster, the wings of a ship.",
+  "floranDescription": "Ssscary fire.",
+  "glitchDescription": "Analyse. Temperature too high to measure.",
+  "humanDescription": "This thing eats through fuel.",
+  "hylotlDescription": "Propulsion.",
+  "novakidDescription": "This flame 'ere has a powerful kick.",
+
+  "category": "light",
+  "lightColor": [59, 183, 255],
+  "pointLight": true,
+  "flickerDistance": 0.2,
+  "flickerStrength": 0.05,
+  "flickerTiming": 4,
+  "inventoryIcon": "/objects/ship/fu_thrustericon.png",
+  "orientations": [
+    {
+      "image": "fu_booster_tiny.png:on.1",
+      "imagePosition": [0, -16],
+      "animationPosition": [0, -16],
+      "animationParts": {"booster": "fu_booster_tiny.png"},
+      "flipImages": true,
+      "anchors": ["top"],
+      "spaces":[
+         [ 0,  0],[ 0, -1],[ 0, -2]
+      ]
+    }
+  ],
+  "spaceScan": 0.1,
+  "fullbright": true,
+
+  "animation": "/objects/ship/boosters/boosterflame.animation",
+
+  "soundEffect": "/sfx/objects/smallboosterflame.ogg",
+  "soundEffectRangeMultiplier": 0.25,
+
+  "scripts": [
+    "/objects/ship/boosters/boosterflame.lua",
+    "/objects/ship/fu_shipstatmodifier.lua"
+  ],
+  "scriptDelta": 32,
+
+  "touchDamage": {
+    "poly": [
+      [-0.75, 1],
+      [-0.75, 0.5],
+      [1.75, 0.5],
+      [1.75, 1]
+    ],
+    "damage": 50,
+    "knockback": 25,
+    "damageType": "Environment",
+    "damageSourceKind": "plasma"
+  },
+
+  "flyingBoosterStates": {
+    "none": "turnOff",
+    "disembarking": "turnOn",
+    "warp": "turnOff",
+    "arriving": "turnOn"
+  },
+  "stats": {
+    "shipSpeed": 15
+  },
+  "byosOnly": true
+}

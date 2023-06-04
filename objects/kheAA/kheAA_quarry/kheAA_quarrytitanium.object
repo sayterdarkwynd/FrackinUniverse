@@ -1,0 +1,61 @@
+{
+	"objectName": "network_quarrytitanium",
+	"colonyTags": ["wired"],
+	"printable": false,
+	"rarity": "rare",
+	"description": "Mines blocks automatically. ^yellow;Can affect performance^reset;\n^blue;IN^white;1^blue;: ^white;On/Off Switch\n^blue;IN^white;2^blue;: ^white;Mine Background\n^red;OUT: ^white;To Network^reset;\nWidth: ^green;64^reset;, Depth: ^green;72^reset;\nSpeed: ^green;6^reset;\nStrength: ^green;24^reset;",
+	"shortdescription": "Titanium Quarry",
+	"objectType": "container",
+	"tooltipKind": "base",
+	"race": "generic",
+	"category": "wire",
+	"price": 800,
+
+	"inventoryIcon": "/objects/kheAA/kheAA_quarry/titaniumquarryicon.png",
+	"orientations": [{
+		"image": "titaniumquarry.png:<color>.off",
+		"imagePosition": [0, 0],
+
+		"spaceScan": 0.1,
+		"anchors": ["bottom"],
+		"direction": "right"
+	}],
+
+	"scripts": ["/objects/kheAA/kheAA_quarry/kheAA_quarrywide.lua"],
+	"scriptDelta": 1,
+
+	"animation": "/objects/kheAA/kheAA_quarry/kheAA_quarry.animation",
+
+	"animationParts": {
+		"quarry": "titaniumquarry.png",
+		"drill": "kheAA_drill_titanium.png",
+		"verPipe": "kheAA_ver_pipetitanium.png",
+		"horPipe": "kheAA_hor_pipetitanium.png",
+		"connector": "kheAA_connectortitanium.png"
+	},
+	"animationPosition": [0, 0],
+	"openSounds": ["/sfx/objects/woodenbox_open.ogg"],
+	"closeSounds": ["/sfx/objects/woodenbox_close.ogg"],
+	"slotCount": 16,
+	"lockedSlots": [16],
+	"uiConfig": "/interface/kheAA/kheAA_quarry/kheAA_quarryGui.config",
+	"frameCooldown": 5,
+	"autoCloseCooldown": 3600,
+	"inputNodes": [
+		[0, 0],
+		[1, 0]
+	],
+	"outputNodes": [
+		[0, 1]
+	],
+	"kheAA_logicNode": 0,
+	"kheAA_outDataNode": 0,
+	"kheAA_powerDrillNode": 1,
+	"kheAA_isDrill": true,
+	"kheAA_isVacuum": true,
+	"kheAA_excavatorRate": 6,
+	"kheAA_maxWidth": 64,
+	"kheAA_maxDepth": 72,
+	"kheAA_drillPower": 24,
+	"kheAA_vacuumRange": 12
+}

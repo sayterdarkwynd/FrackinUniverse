@@ -1,0 +1,32 @@
+[
+	[
+		{
+			"op" : "add",
+			"path" : "/effects",
+			"value" : [ [ "robot_food" ] ]
+		},
+		{
+			"op" : "replace",
+			"path" : "/foodValue",
+			"value" : 15
+		},
+		{
+			"op" : "replace",
+			"path" : "/description",
+			"value" : "Boltbulb! Surprisingly soft. ^yellow;Type: Robot Food^reset;"
+		}
+	],
+	[
+		{
+			"op" : "test",
+			"path" : "/maxStack"
+		},
+		{
+			"op" : "replace",
+			"path" : "/maxStack",
+			"value" : 20
+		}
+	],
+	[{"op":"test","path":"/learnBlueprintsOnPickup/1"},{"op":"remove","path":"/learnBlueprintsOnPickup/1"}],
+	[{"op":"test","path":"/learnBlueprintsOnPickup/0"},{"op":"remove","path":"/learnBlueprintsOnPickup/0"}]
+]

@@ -3,26 +3,27 @@
   "price" : 1000,
   "inventoryIcon" : "heatprotectionicon.png",
   "tooltipKind" : "baseaugment",
-  "rarity" : "Legendary",
+  "rarity" : "uncommon",
   "pickupQuestTemplates" : [ ],
   "category" : "enviroProtectionPack",
-  "description" : "This upgrade adds cool air generation to your EPP's capabilities. Helpful on ^red;dangerously hot^reset; planets.",
+  "description" : "+20% Fire Resist. Helpful on ^cyan;mildly hot^reset; planets.",
   "shortdescription" : "Cooling EPP",
-
+ // "learnBlueprintsOnPickup" : [ "heatprotectionback2" ],
   "maleFrames" : "back.png",
   "femaleFrames" : "back.png",
   "maxStack" : 1,
-
   "statusEffects" : [
     {
-      "stat" : "biomeheatImmunity",
+      "stat" : "fireStatusImmunity",
       "amount" : 1.0
+    },
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.2
     }
   ],
-
   "acceptsAugmentType" : "back",
   "radioMessagesOnPickup" : [ "pickupepp" ],
-
   "colorOptions" : [
     // WHITE
     { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },

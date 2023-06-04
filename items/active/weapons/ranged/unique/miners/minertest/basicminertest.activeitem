@@ -1,0 +1,347 @@
+{
+  "itemName" : "basicminertest",
+  "level" : 1,
+  "price" : 100,
+  "inventoryIcon" : "basicminergun.png",
+  "maxStack" : 1,
+  "rarity" : "common",
+  "tooltipKind" : "gun2",
+  "description" : "A neat little mining weapon. Does a bit of damage, too.
+Upgrade using your ^orange;Tricorder^reset;.",
+  "shortdescription" : "Mining Laser",
+  "category" : "upgradeableTool",
+  "itemTags" : [ "ranged", "tool", "mininggun", "mininglaser","theaUninfusable","upgradeableTool" ],
+// "learnBlueprintsOnPickup" : [ "miningbench" ],
+  "radioMessagesOnPickup" : [ "fuMiningGun" ],
+  "twoHanded" : false,
+  "beamId" : "basicminerbeam",
+  "animation" : "miner.animation",
+  "animationParts" : {
+    "beamorigin" : "basicmuzzle.png",
+    "gnome" : "basicminer.png",
+    "gnomefullbright" : "basicminerfullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fireStart" : [ "/sfx/gun/aegisaltpistol_start.ogg" ],
+      "fireLoop" : [ "/sfx/gun/magnorbs_shield_loop2.ogg" ],
+      "fireEnd" : [ "/sfx/gun/aegisaltpistol_stop.ogg" ],
+      "beamImpact" : [ "/sfx/tools/block_protected.ogg" ]
+    }
+  },
+  "animationScripts" : ["/items/active/effects/chain.lua"],
+
+  "muzzleOffset" : [1.45, -0.1],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua" ],
+
+  "elementalType" : "electric",
+  "critChance" : 0,
+  "critBonus" : 0,
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/unique/miners/minertest/beamfire.lua"],
+    "class" : "BeamFire",
+
+    "fireTime" : 0.2,
+    "baseDps" : 0.5,
+    "energyUsage" : 1.5,
+
+    "damageConfig" : {
+      "statusEffects" : [ "electrified" ],
+      "damageSourceKind" : "electric",
+      "knockback" : 5
+    },
+
+    "beamLength" : 4,
+
+    "chain" : {
+      "startOffset" : [0, 0],
+      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/basicstart.png",
+      "segmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/basic.png",
+      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/basicend.png",
+      "segmentSize" : 0.40,
+      "overdrawLength" : 0.1,
+      "taper" : 0,
+      "waveform" : {
+        "frequency" : 0.1,
+        "amplitude" : 0,
+        "movement" : 0.2
+      },
+      "fullbright" : true
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true,
+
+        "animationStates" : {
+          "gnome" : "squirm",
+          "gnomefullbright" : "squirm"
+        }
+      },
+      "fire" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true,
+
+        "animationStates" : {
+          "gnome" : "fire",
+          "gnomefullbright" : "fire"
+        }
+      },
+      "cooldown" : {
+        "duration" : 0.5,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true,
+
+        "animationStates" : {
+          "gnome" : "idle",
+          "gnomefullbright" : "idle"
+        }
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters" : {
+          "beamId" : "protominerbeam",
+          "shortdescription" : "P-7 Miner ^cyan;^reset;",
+  	  "animationParts" : {
+  	    "beamorigin" : "protomuzzle.png",
+            "gnome" : "protominer.png",
+            "gnomefullbright" : "protominerfullbright.png"},
+  	  "inventoryIcon" : [ { "image" : "protominergun.png" } ],
+  	  "primaryAbility" : {
+		  "fireTime" : 0.18,
+		  "baseDps" : 0.6,
+		  "energyUsage" : 2,
+                  "beamLength" : 7,
+		  "chain" : {
+		      "startOffset" : [0, 0],
+		      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/protostart.png",
+		      "segmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/proto.png",
+		      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/protoend.png",
+		      "segmentSize" : 0.40,
+		      "overdrawLength" : 0.1,
+		      "taper" : 0,
+		      "waveform" : {
+			"frequency" : 2.5,
+			"amplitude" : 0.1,
+			"movement" : 2.0
+		      },
+		      "fullbright" : true
+		  }
+  	  }
+  },
+  "upgradeParameters2" : {
+          "beamId" : "penumbriteminerbeam",
+          "shortdescription" : "A-7C Miner ^white;^reset;",
+  	  "animationParts" : {
+  	    "beamorigin" : "penumbritemuzzle.png",
+            "gnome" : "penumbriteminer.png",
+            "gnomefullbright" : "penumbriteminerfullbright.png"},
+  	  "inventoryIcon" : [ { "image" : "penumbriteminergun.png" } ],
+  	  "primaryAbility" : {
+		  "fireTime" : 0.16,
+		  "baseDps" : 0.7,
+		  "energyUsage" : 2.2,
+                  "beamLength" : 9,
+		  "chain" : {
+		      "startOffset" : [0, 0],
+		      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/penumbritestart.png",
+		      "segmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/penumbrite.png",
+		      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/penumbriteend.png",
+		      "segmentSize" : 0.40,
+		      "overdrawLength" : 0.1,
+		      "taper" : 1,
+		      "waveform" : {
+			"frequency" : 2.5,
+			"amplitude" : 0.1,
+			"movement" : 4.0
+		      },
+		      "fullbright" : true
+		  }
+  	  }
+  },
+  "upgradeParameters3" : {
+          "beamId" : "hybridminerbeam",
+          "shortdescription" : "B-97 Miner^reset; ^green;^reset;",
+  	  "animationParts" : {
+  	    "beamorigin" : "hybrid1muzzle.png",
+            "gnome" : "hybridminer.png",
+            "gnomefullbright" : "hybridminerfullbright.png"},
+  	  "inventoryIcon" : [ { "image" : "hybridminergun.png" } ],
+  	  "primaryAbility" : {
+		  "fireTime" : 0.14,
+		  "baseDps" : 0.85,
+		  "energyUsage" : 3,
+                  "beamLength" : 12,
+		  "chain" : {
+		      "startOffset" : [0, 0],
+		      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid1start.png",
+		      "segmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid1.png",
+		      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid1end.png",
+		      "segmentSize" : 0.40,
+		      "overdrawLength" : 0.1,
+		      "taper" : 0,
+		      "waveform" : {
+			"frequency" : 2.5,
+			"amplitude" : 0.1,
+			"movement" : 4.0
+		      },
+		      "fullbright" : true
+		  }
+  	  }
+  },
+  "upgradeParameters4" : {
+          "beamId" : "hybridminer2beam",
+          "shortdescription" : "^cyan;C-7 Miner^reset; ^green;^reset;",
+  	  "animationParts" : {
+  	    "beamorigin" : "hybrid2muzzle.png",
+            "gnome" : "hybridminer2.png",
+            "gnomefullbright" : "hybridminer2fullbright.png"},
+  	  "inventoryIcon" : [ { "image" : "hybridminer2gun.png" } ],
+  	  "primaryAbility" : {
+		  "fireTime" : 0.12,
+		  "baseDps" : 1,
+		  "energyUsage" : 4,
+                  "beamLength" : 15,
+		  "chain" : {
+		      "startOffset" : [0, 0],
+		      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid2start.png",
+		      "segmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid2.png",
+		      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid2end.png",
+		      "segmentSize" : 0.40,
+		      "overdrawLength" : 0.1,
+		      "taper" : 0,
+		      "waveform" : {
+			"frequency" : 2.5,
+			"amplitude" : 0.1,
+			"movement" : 4.0
+		      },
+		      "fullbright" : true
+		  }
+  	  }
+  },
+  "upgradeParameters5" : {
+          "beamId" : "hybridminer3beam",
+          "shortdescription" : "^green;D4-B Miner^reset; ^yellow;^reset;",
+  	  "animationParts" : {
+  	    "beamorigin" : "hybrid3muzzle.png",
+            "gnome" : "hybridminer3.png",
+            "gnomefullbright" : "hybridminer3fullbright.png"},
+  	  "inventoryIcon" : [ { "image" : "hybridminer3gun.png" } ],
+  	  "primaryAbility" : {
+		  "fireTime" : 0.11,
+		  "baseDps" : 1.5,
+		  "energyUsage" : 5,
+                  "beamLength" : 18,
+		  "chain" : {
+		      "startOffset" : [0, 0],
+		      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid3start.png",
+		      "segmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid3.png",
+		      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid3end.png",
+		      "segmentSize" : 0.40,
+		      "overdrawLength" : 0.1,
+		      "taper" : 0,
+		      "waveform" : {
+			"frequency" : 2.5,
+			"amplitude" : 0.1,
+			"movement" : 4.0
+		      },
+		      "fullbright" : true
+		  }
+  	  }
+  },
+  "upgradeParameters6" : {
+          "beamId" : "hybridminer4beam",
+          "shortdescription" : "^#ffc14e;KX-1 Miner^reset; ^yellow;^reset;",
+  	  "animationParts" : {
+  	    "beamorigin" : "hybrid4muzzle.png",
+            "gnome" : "hybridminer4.png",
+            "gnomefullbright" : "hybridminer4fullbright.png"},
+  	  "inventoryIcon" : [ { "image" : "hybridminer4gun.png" } ],
+  	  "primaryAbility" : {
+		  "fireTime" : 0.11,
+		  "baseDps" : 2,
+		  "energyUsage" : 5.5,
+                  "beamLength" : 24,
+		  "chain" : {
+		      "startOffset" : [0, 0],
+		      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid4start.png",
+		      "segmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid4.png",
+		      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid4end.png",
+		      "segmentSize" : 0.40,
+		      "overdrawLength" : 0.1,
+		      "taper" : 0,
+		      "waveform" : {
+			"frequency" : 0.1,
+			"amplitude" : 0.0,
+			"movement" : 0.0
+		      },
+		      "fullbright" : true
+		  }
+  	  }
+  },
+  "upgradeParameters7" : {
+          "beamId" : "hybridminer5beam",
+          "shortdescription" : "^#f74eff;CT-4 Mining Cannon^reset; ^yellow; ^reset;",
+  	  "animationParts" : {
+  	    "beamorigin" : "hybrid5muzzle.png",
+            "gnome" : "hybridminer5.png",
+            "gnomefullbright" : "hybridminer5fullbright.png"},
+  	  "inventoryIcon" : [ { "image" : "hybridminer5gun.png" } ],
+  	  "primaryAbility" : {
+		  "fireTime" : 0.10,
+		  "baseDps" : 2.5,
+		  "energyUsage" : 6,
+                  "beamLength" : 30,
+		  "chain" : {
+		      "startOffset" : [0, 0],
+		      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid5start.png",
+		      "segmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid5.png",
+		      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid5end.png",
+		      "segmentSize" : 0.40,
+		      "overdrawLength" : 0.1,
+		      "taper" : 0,
+		      "waveform" : {
+			"frequency" : 0.1,
+			"amplitude" : 0.1,
+			"movement" : 0.0
+		      },
+		      "fullbright" : true
+		  }
+  	  }
+  },
+  "upgradeParameters8" : {
+          "beamId" : "hybridminer5beam",
+          "shortdescription" : "^#f74eff;CT-4 Mining Cannon ^#f74eff;^reset;",
+  	  "animationParts" : {
+  	    "beamorigin" : "hybrid5muzzle.png",
+            "gnome" : "hybridminer5.png",
+            "gnomefullbright" : "hybridminer5fullbright.png"},
+  	  "inventoryIcon" : [ { "image" : "hybridminer5gun.png" } ],
+  	  "primaryAbility" : {
+		  "chain" : {
+		      "startOffset" : [0, 0],
+		      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid5start.png",
+		      "segmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid5.png",
+		      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/minertest/hybrid5end.png"
+		  }
+  	  }
+  }
+}

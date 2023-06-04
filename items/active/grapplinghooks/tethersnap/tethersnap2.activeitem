@@ -1,0 +1,121 @@
+{
+  "itemName" : "tethersnap2",
+  "price" : 3000,
+  "inventoryIcon" : "tethersnapicon2.png",
+  "rarity" : "legendary",
+  "maxStack" : 1,
+  "description" : "An amazing grappler that ^orange;regenerates your energy^reset; when extended.",
+  "shortdescription" : "Energy Tether",
+  "largeImage" : "tethersnap2.png",
+  "category" : "Tool",
+  "fireTime" : 0,
+  "twoHanded" : false,
+
+  "scripts" : ["/items/active/grapplinghooks/grapplinghook.lua"],
+  "animationScripts" : ["/items/active/effects/renderrope.lua"],
+
+  "animation" : "tethersnap2.animation",
+
+  "fireOffset" : [0, 0],
+  "ropeOffset" : [-1.2, 0],
+  "ropeVisualOffset" : [0.75, 0],
+  "handGrip" : "wrap",
+  "consumeOnUse" : false,
+
+  "projectileType" : "tethersnap2",
+  "projectileParameters" : {
+    "speed" : 120,
+    "timeToLive" : 0.7,
+    "actionOnCollide":[ {"options":["/sfx/projectiles/magnorb_impact2.ogg"],"action":"sound"} ],
+    "periodicActions": [
+      {
+        "time": 0,
+        "action": "particle",
+        "specification": {
+          "type": "ember",
+          "size": 0.1,
+          "light": [155,20,155],
+          "color": [255,25,255,255],
+          "initialVelocity": [0,0],
+          "finalVelocity": [0,0],
+          "approach": [0,0 ],
+          "timeToLive": 1.10,
+          "fade": 0.8,
+          "destructionAction": "shrink",
+          "destructionTime": 0.95,
+          "layer": "front",
+          "variance": {
+            "initialVelocity": [ 0,1 ],
+            "position": [ 0.9,0.9 ],
+            "size": 0.5
+          }
+        }
+      },
+      {
+        "repeat": true,
+        "time": 0.9,
+        "action": "projectile",
+        "type": "invisibletentaclefistnosound",
+        "angleAdjust": 180,
+        "config": {
+          "ignoreTerrain": true,
+          "controlForce": 800,
+          "power": 0,
+          "knockback": 0,
+          "damageTeam": {
+            "type": "indiscriminate"
+          },
+          "damageType": "damage",
+          "damageKind": "hidden",
+          "statusEffects": [],
+          "speed": 70,
+          "processing": "?scalenearest=0.2",
+          "timeToLive": 6,
+          "actionOnReap": [
+            {
+              "time": 0,
+              "repeat": false,
+              "action": "projectile",
+              "type": "invisibleprojectile",
+              "angleAdjust": 0,
+              "config": {
+                "power": 0,
+                "knockback": 0,
+                "statusEffects": [
+                  {
+                    "effect": "energyregen",
+                    "duration": 0.25
+                  },
+                  {
+                    "effect": "colorpurple",
+                    "duration": 0.25
+                  }
+                ],
+                "damageType": "damage",
+                "damageKind": "hidden",
+                "damageTeam": {
+                  "type": "indiscriminate"
+                },
+                "speed": 0,
+                "processing": "?hueshift=?70",
+                "timeToLive": 0.05
+              }
+            }
+          ],
+          "persistentAudio": "/sfx/tech/forcefield_loop.ogg",
+          "periodicActions": []
+        }
+      }
+    ]
+  },
+
+  "ropeWidth" : 2,
+  "ropeColor" : [255, 40, 255, 225],
+  "groundLagTime" : 0,
+  "reelSpeed" : 30,
+  "reelInDistance" : 5,
+  "reelOutLength" : 150,
+  "breakLength" : 180,
+  "minSwingDistance" : 0,
+  "controlForce" : 9000
+}

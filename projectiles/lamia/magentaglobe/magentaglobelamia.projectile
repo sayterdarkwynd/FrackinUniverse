@@ -1,0 +1,35 @@
+{
+  "projectileName" : "magentaglobelamia",
+  "physics" : "laser",
+  "bounces" : -1,
+  "speed" : 15,
+  "timeToLive" : 3,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [200, 35, 100],
+  "image" : "magentaglobe.png",
+  "animationCycle" : 1.0,
+  "frameNumber" : 1,
+  "power" : 3,
+  "damagePoly" : [ [-5, 5], [-5, -5], [5, -5], [5, 5] ],
+  "supportsProcessing" : true,
+
+  "periodicActions" : [
+    {
+      "time" : 0.2,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "hgravityexplosion",
+      "inheritDamageFactor" :1,
+      "fuzzAngle" : 360
+   }
+  ],
+
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/globeexplosions/magentaglobeexplosion/magentaglobeexplosion.config"
+    }
+  ],
+
+  "damageKind" : "plasma"
+}

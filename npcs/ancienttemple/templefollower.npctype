@@ -1,0 +1,93 @@
+{
+  "type" : "templefollower",
+  "baseType" : "follower",
+
+  "levelVariance" : [0, 0],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "follower" : {
+        "attack" : {
+          "default" : {
+            "default" : [
+              "Sacrifice me, will you?",
+              "I'll escape or die trying!"
+            ]
+          }
+        },
+        "join" : {
+          "default" : {
+            "default" : [
+              "Thank you for saving me! I don't fancy being a sacrifice.",
+              "I had almost lost all hope of being rescued! Let's get out of here!"
+            ]
+          }
+        },
+        "returnFromCombat" : {
+          "default" : {
+            "default" : [
+              "Let's move on.",
+              "I'm impressed.",
+              "How did you get here anyway?",
+              "We're a team worth fearing!",
+              "Who's the sacrifice now?"
+            ]
+          }
+        },
+        "wait" : {
+          "default" : {
+            "default" : [
+              "I'll just wait here.",
+              "I'll stay here, don't leave me alone too long!",
+              "Do you need a moment?"
+            ]
+          }
+        },
+        "returnFromWait" : {
+          "default" : {
+            "default" : [
+              "Hello again.",
+              "Let's head off together.",
+              "You ready to move on?"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "chest" : [
+              { "name" : "avianadventurershirt", "parameters" : { "colorIndex" : [1, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "aviancommonershirt", "parameters" : { "colorIndex" : [1, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "avianfancyshirt", "parameters" : { "colorIndex" : [1, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "avianworkershirt", "parameters" : { "colorIndex" : [1, 4, 5, 6, 7, 8, 9] } }
+            ],
+            "legs" : [
+              { "name" : "avianadventurerpants", "parameters" : { "colorIndex" : [1, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "aviancommonerlegs", "parameters" : { "colorIndex" : [1, 4, 5, 6, 7, 8, 9] } },
+              { "name" : "avianfancyskirt", "parameters" : { "colorIndex" : [1, 4, 5, 6, 7, 8, 9] } }
+            ],
+            "primary" : [
+              "npcspear",
+              "npcaxe",
+              "npchammer",
+              "npcbroadsword",
+              "npcshortsword"
+            ],
+            "sheathedprimary" : [
+              "npcpistol",
+              "npcmachinepistol"
+            ],
+            "alt" : [
+              { "name" : "commonsmallshield" },
+              { "name" : "commonlargeshield" }
+            ]
+          }
+        ] ]
+    ]
+  }
+}

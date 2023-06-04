@@ -1,19 +1,18 @@
 {
-  "itemName" : "wubstem",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "wubstemicon.png",
-  "description" : "Increases maximum energy.",
-  "shortdescription" : "Wubstem",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-      "maxenergyboost2"
-    ] ]
+	"itemName": "wubstem",
+	"inventoryIcon": "wubstemicon.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immune: Electrified, Electric Storm & +10% Electric Res^reset; : 2m",
+	"shortdescription": "Wubstem",
+	"effects": [
+		[{
+			"effect": "electricblock1",
+			"duration": 120
+		}]
+	]
+
 }

@@ -1,0 +1,89 @@
+{
+  "itemName" : "xenochest",
+  "inventoryIcon" : "icons.png:chest",
+  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Fall Damage x^green;0.7^reset;
+^yellow;^reset; Assault/Energy Rifle: Damage x^green;1.2^reset; and +^green;2^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Gas, Moderate Cold, Liq.Nitrogen",
+  "shortdescription" : "X10 Power Armor",
+  "category" : "chestarmour",
+  "tooltipKind" : "armornew2",
+
+  "maleFrames" : {
+    "body" : "chestm.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
+
+  "femaleFrames" : {
+    "body" : "chestf.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
+
+  "level" : 4,
+  //"collectablesOnPickup" : { "fu_armortank" : "xenochest" },
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.15
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.6
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 3
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 9
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.026
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.026
+    }
+  ],
+  "itemTags" : [ "upgradeableWeapon", "defensive", "ranged", "hyper" ],
+  "statusEffects" : [
+    "x10setbonus",
+    {
+      "stat" : "fu_x10set_chest",
+      "amount" : 1
+    },
+    {
+      "stat" : "fu_assaultset_chest",
+      "amount" : 1
+    }
+  ],
+
+  "colorOptions" : [
+    {},
+    { "ffca8a" : "727272", "e0975c" : "414141", "a85636" : "1c1c1c", "6f2919" : "060606" },
+    { "ffca8a" : "e9e9e9", "e0975c" : "727272", "a85636" : "333333", "6f2919" : "161616" },
+    { "ffca8a" : "e6a49e", "e0975c" : "ac3b37", "a85636" : "521010", "6f2919" : "200407" },
+    { "ffca8a" : "f3cea2", "e0975c" : "cf7d2c", "a85636" : "773611", "6f2919" : "221004" },
+    { "ffca8a" : "f8f6da", "e0975c" : "d3be46", "a85636" : "745d16", "6f2919" : "1e1705" },
+    { "ffca8a" : "bbe69d", "e0975c" : "5ba73c", "a85636" : "1d4e0f", "6f2919" : "051403" },
+    { "ffca8a" : "99bee5", "e0975c" : "3e65b7", "a85636" : "151f5f", "6f2919" : "040619" },
+    { "ffca8a" : "d29be8", "e0975c" : "933eb4", "a85636" : "47145b", "6f2919" : "0e0314" },
+    { "ffca8a" : "edb8ee", "e0975c" : "c94ac7", "a85636" : "6f1768", "6f2919" : "1e051c" },
+    { "ffca8a" : "ebd3c4", "e0975c" : "be8569", "a85636" : "763f28", "6f2919" : "1c0c06" }
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
+}

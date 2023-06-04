@@ -1,0 +1,74 @@
+{
+  "objectName" : "fu_creepyeyepainting",
+  "colonyTags" : [ "evil","elder","madness","insanity","fun" ],
+  "rarity" : "legendary",
+  "description" : "Something about this painting...",
+  "shortdescription" : "The Gaze",
+  "race" : "generic",
+  "category" : "decorative",
+  "printable" : false,
+  "price" : 3000,
+
+  "inventoryIcon" : "fu_creepyeyepaintingicon.png",
+  "orientations" : [
+    {
+      "image" : "fu_creepyeyepainting_Lone_Zin.png:off",
+      "imagePosition" : [-30, -30],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+      "metaBoundBox" : [-10, -10, 10, 10],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+
+    }
+  ],
+
+  "animationScripts" : ["fu_creepyeyepaintinganimation.lua"],
+  "updateDelta" : 10,
+
+  "self" : {
+	"image" : "/objects/painting/artwork/fu_creepyeyepainting/fu_creepyeyepainting_Lone_Zin.png:<frame>",
+	"maxLight" : 0.3,
+	"minLookDistance" : 2,		//How far from the position of the painting the player needs to be for the eye to start tracking them
+	"maxLookDistance" : 50,		//How close to the position of the painting the player needs to be for the eye to track them
+	"maxRenderDistance" : 500,	//How far it will check for players to update the image they see
+	"turnOnFrames" : 7,
+	"turnOnAnimationUpdateTime" : 0.3,
+	"turnOffFrames" : 6,
+	"turnOffAnimationUpdateTime" : 0.3,
+	"trackingAnimationUpdateTime" : 0.3,
+	"directions" : [
+	  ["left", 0, 22.5],
+	  ["leftDown", 22.5, 67.5],
+	  ["down", 67.5, 112.5],
+	  ["rightDown", 112.5, 157.5],
+	  ["right", 157.5, 202.5],
+	  ["rightUp", 202.5, 247.5],
+	  ["up", 247.5, 292.5],
+	  ["leftUp", 292.5, 337.5],
+	  ["left", 337.5, 360]
+    ]
+  },
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [0.25, "nosebleed"],
+        [0.25, "flee"],
+        [0.25, "creepyfollow"],
+        [0.25, "cry"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 2
+  },
+  "statusEffects"  : [ "madnessgainpainting2" ]
+}

@@ -1,0 +1,27 @@
+{
+  "itemName" : "fupinacolada",
+  "rarity" : "rare",
+  "price" : 115,
+  "category" : "drink",
+  "inventoryIcon" : "fupinacolada.png",
+  "description" : "An alcoholic drink made from coconut milk and rum.\n^white;35% ^red;Slow^gray;, ^red;Drunk ^gray;(^white;1m^gray;)^reset;",
+  "shortdescription" : "Piña Colada",
+  "handPosition" : [0, -2],
+  "tooltipKind" : "food",
+  "effects" : [ [
+		{
+      "effect" : "slow",
+      "duration" : 60
+		},
+		{
+      "effect" : "booze",
+      "duration" : 60
+    }
+  ] ],
+  "foodValue" : 30,
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [ "wellfed" ],
+  "emitters" : [ "drinking" ]
+}

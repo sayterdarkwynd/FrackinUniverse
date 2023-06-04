@@ -1,0 +1,67 @@
+{
+  "itemName" : "aetheriumspear",
+  "price" : 5000,
+  "level" : 7,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Harnessed chaos, ready to poke your friends.
+^cyan;Hunting weapon^reset;",
+  "shortdescription" : "Aetherium Spear",
+  "tooltipKind" : "swordaetherium",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear","energy", "upgradeableWeapon","aetherium","cosmic"],
+
+  "emitters" : [ "ancientenergytrail", "barrierelectric" ],
+
+  "inventoryIcon" : "aetheriumspear.png",
+  "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "aetheriumspear.png",
+    "bladefullbright" : "aetheriumspearfullbright.png"
+  },
+  "animationCustom" : {
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/mech_energysword_swing1.ogg" ],
+	    "fire2" : ["/sfx/melee/mech_energysword_swing2.ogg"],
+	    "fire3" : [ "/sfx/melee/mech_energysword_swing3.ogg"],
+	    "crit" : [ "/sfx/melee/energywhip_impact3.ogg" ]
+	  }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "aether",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : [],
+
+    "fireTime" : 0.9,
+    "baseDps" : 11.9,
+    "damageConfig" : {
+      "damageSourceKind" : "aetherbow",
+      "statusEffects" : [ "defenseboostneg20" ],
+      "knockback" : 20
+    }
+  },
+  "altAbilityType" : "rocketspear",
+  "altAbility" : {
+    "name" : "Aether Blast",
+    "statusEffects" : [ "defenseboostneg20" ],
+    "baseDps" : 7.5,
+    "cooldownTime" : 0.1,
+    "energyUsage" : 75,
+    "fireTime" : 0.05,
+    "inaccuracy" : 0,
+    "boostSpeed" : 220,
+    "boostForce" : 150
+  },
+
+  "critChance" : 3,
+  "critBonus" : 12,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

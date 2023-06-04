@@ -1,0 +1,45 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "shield" : {
+        "priority" : 2,
+        "default" : "off",
+        "states" : {
+          "off" : {
+          },
+          "hit" : {
+            "frames" : 1,
+            "cycle" : 10,
+            "mode" : "transition",
+            "transition" : "off"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "shield" : {
+        "properties" : {
+          "zLevel" : 5,
+          "centered" : true,
+          "fullbright" : true,
+          "offset" : [0, -0.5]
+        },
+
+        "partStates" : {
+          "shield" : {
+            "hit" : {
+              "properties" : {
+                "image" : "trollface.png:hit.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "sounds" : {
+    "trolol" : [ "/sfx/melee/trolol2.ogg" ]
+  }
+}

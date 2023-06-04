@@ -1,0 +1,25 @@
+{
+  "projectileName" : "rngshadowpowerarrow",
+  "physics" : "nebsrngarrow",
+  "bounces" : 0,
+  "image" : "rngshadowpowerarrow.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "emitters" : [ "arrowshadow", "shadowdrip" ],
+  "power" : 20,
+  "fullbright" : true,
+  "knockback" : 10,
+  "knockbackDirectional" : true,
+  "piercing" : false,
+  "timeToLive" : 30,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/shadowimpact.config"
+    }
+  ],
+  "statusEffects" : [ "shadowgasfx" ],
+  "damageKind" : "shadowbow",
+  "hydrophobic" : false
+}

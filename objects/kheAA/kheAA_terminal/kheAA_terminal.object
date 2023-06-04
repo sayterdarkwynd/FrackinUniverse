@@ -1,0 +1,45 @@
+{
+  "objectName": "network_terminal",
+  "colonyTags": [],
+  "printable": false,
+  "rarity": "Common",
+
+  "category": "wire",
+  "price": 500,
+  "description": "Provides access to the contents of connected storage containers.\n^blue;Input: ^white;item network^reset; ^red;UNRELIABLE AT RANGE!^reset;",
+  "shortdescription": "Item Network Terminal",
+  "race": "generic",
+
+  "inventoryIcon": "kheAA_terminalicon.png",
+  "orientations": [
+    {
+      "image": "kheAA_terminal.png:<color>.off",
+      "imagePosition": [0, 0],
+
+      "spaceScan": 0.1,
+      "anchors": ["background"]
+    }
+  ],
+
+  "animation": "/objects/kheAA/kheAA_terminal/kheAA_terminal.animation",
+
+  "animationParts": {
+    "terminal": "kheAA_terminal.png"
+  },
+  "animationPosition": [0, 0],
+
+  "health": 4.5,
+
+  "objectType": "container",
+
+  "openSounds": ["/sfx/interface/nav_computer_on.ogg"],
+  "closeSounds": ["/sfx/interface/nav_computer_off.ogg"],
+  "slotCount": 0,
+  "uiConfig": "/interface/kheAA/kheAA_terminal/kheAA_terminalGui.config",
+  "frameCooldown": 5,
+  "autoCloseCooldown": 3600,
+  "scripts": ["kheAA_terminal.lua"],
+  "inputNodes": [[0, 0]],
+  "kheAA_inDataNode": 0,
+  "scriptDelta": 5
+}

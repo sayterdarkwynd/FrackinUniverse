@@ -1,0 +1,104 @@
+{
+  "itemName" : "telebriummachinepistol",
+  "price" : 80,
+  "inventoryIcon" : "telebriummachinepistol.png",
+    "maxStack" : 1,
+    "rarity" : "common",
+  "shortdescription" : "Telebrium SMG",
+  "description" : "Rapid fire poison-tipped rounds.",
+  "level" : 2,
+  "category" : "machinePistol",
+  "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon","telebrium"],
+  "tooltipKind" : "gun2",
+  "twoHanded" : false,
+  "weaponType" : "machinePistol",
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "telebriummachinepistol.png",
+    "middlefullbright" : "telebriummachinepistolfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/greenstuffmuzzle.png"
+  },
+
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+			//Same as BaseOffset
+		    "offset" : [0.7, 0.2]
+		  }
+		}
+      }
+    },
+    "sounds" : { "fire" : [ "/sfx/weapons/hvmarauder2.wav" ] },
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [22, 108, 46],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    }}
+  },
+
+  "baseOffset" : [0.7, 0.2],
+  "muzzleOffset" : [1.2, 0.2],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.08,
+    "baseDps" : 3,
+    "energyUsage" : 22,
+    "fireType" : "auto",
+    "inaccuracy" : 0.004,
+    "projectileCount" : 1,
+    "projectileType" : "telebriumbouncer2",
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "critChance" : 5,
+  "critBonus" : 3,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 200,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

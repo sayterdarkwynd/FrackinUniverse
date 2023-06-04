@@ -1,0 +1,38 @@
+{
+  "objectName" : "farmwell",
+  "rarity" : "Common",
+  "description" : "Generates water for use around your home. Stores up to 200 water. Less effective when stacked. Scan for Info.",
+  "shortdescription" : "Well",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 750,
+  "printable" : false,
+  "objectType" : "container",
+ // "learnBlueprintsOnPickup" : [ "frontierwatertower", "handmill", "fu_growingtray", "designlab" ],
+
+  "inventoryIcon" : "farmwellicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "farmwell.png:<color>",
+
+      "imagePosition" : [-26, -0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+    "outputNodes" : [ [2, 1] ],
+  "scripts" : [ "/scripts/fuwell.lua" ],
+  "scriptDelta" : 320,
+  "slotCount" : 1,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  "wellslots" : [
+    {"name" : "liquidwater","ratio" : 10,"max" : 200}
+  ],
+  "wellRange":18
+}

@@ -1,0 +1,92 @@
+{
+  "itemName" : "aetherstaff",
+  "price" : 1440,
+  "maxStack" : 1,
+  "level" : 7,
+  "rarity" : "legendary",
+  "description" : "Two words: Wow.",
+  "shortdescription" : "Aetherium Staff",
+  "category" : "staff",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","staff","aetherium","upgradeableWeapon","cosmic"],
+  "tooltipKind" : "staff",
+
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "aetherstaff.png",
+    "stone" : "/items/active/weapons/staff/generated/stone/aether.png",
+    "chargeEffect" : "/items/active/weapons/staff/generated/glow/fu_lasereyestaffglow.png"
+  },
+  "animationCustom" : {
+    "lights" : {"glow" : { "color" : [0, 124, 142]} },
+    "particleEmitters" : {
+      "electriccharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 10,
+        "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
+        "particles" : [{"particle" : "breathcold"}]
+      }
+    }
+  },
+
+  "inventoryIcon" : "aetherstaff.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+      "weaponOffset" : [0,1],
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 1.1,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+      "weaponOffset" : [0,1],
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+      "weaponOffset" : [0,1],
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "duration" : 0.5,
+      "armRotation" : -10,
+      "weaponRotation" : -50,
+      "twoHanded" : true,
+      "weaponOffset" : [0,1],
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "cooldown" : {
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+      "weaponOffset" : [0,1],
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "aetherwand",
+  "primaryAbility" : {},
+
+  "altAbilityType" : "entropicwarding",
+  "altAbility" : {},
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,48 @@
+{
+  "itemName" : "veluudagger",
+  "price" : 20,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "A shockingly sharp blade.",
+  "shortdescription" : "Vel'uuish Dagger",
+  "tooltipKind" : "sword2",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","dagger","upgradeableWeapon","veluu"],
+  "level" : 2,
+  "inventoryIcon" : "veluudagger.png",
+
+  "animation" : "daggercombo.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "veluudagger.png"
+  },
+
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "blade" : { "properties" : {"offset" : [0.4, 2.5]}},
+        "swoosh" : { "properties" : {"offset" : [1, 2]}}
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "daggercombo",
+  "primaryAbility" : {
+    "fireTime" : 0.3,
+    "baseDps" : 7.2,
+    "damageConfig" : {
+      "damageSourceKind" : "electricdagger",
+      "knockback" : 10
+    }
+  },
+  "critChance" : 1,
+  "critBonus" : 6,
+  "stunChance" : 50,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

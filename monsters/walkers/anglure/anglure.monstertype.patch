@@ -1,0 +1,83 @@
+[
+  {
+    "op": "add",
+    "path": "/dropPools/0/firebow",
+    "value": "anglureHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/icebow",
+    "value": "anglureHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/poisonbow",
+    "value": "anglureHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/electricbow",
+    "value": "anglureHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/radioactivebow",
+    "value": "anglureHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/cosmicbow",
+    "value": "anglureHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/shadowbow",
+    "value": "anglureHunting"
+  },
+
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-fire",
+        "cooldown": 4,
+        "parameters": {
+          "requireLineOfSight": true,
+          "maximumRange": 15,
+          "minimumRange": 4,
+          "maxYRange": 4,
+          "windupTime": 0.6,
+          "aimAtTarget": false,
+          "projectileType": "biolumcritters",
+          "aimDirection": [
+            0.7,
+            0.4
+          ],
+          "fireOffset": [
+            0.25,
+            0
+          ],
+          "projectileCount": 5,
+          "projectileInterval": 0.1,
+          "fireState": "fire",
+          "fireSound": "fire",
+          "winddownState": "firewinddown",
+          "winddownTime": 0.3
+        }
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/grit",
+    "value": {
+      "baseValue": 0.95
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 110
+  }
+]

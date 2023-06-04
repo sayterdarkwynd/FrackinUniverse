@@ -1,0 +1,28 @@
+{
+  "projectileName" : "shadowstorm2",
+  "physics" : "default",
+  "image" : "shadowstorm.png",
+  "flippable" : true,
+  "animationCycle" : 0.25,
+  "frameNumber" : 4,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [28, 28, 28],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/shadowexplosionknockback.config"
+    }
+  ],
+  "power" : 20,
+  "knockback" : 40,
+  "speed" : 80,
+  "damageKind" : "fushadowdamage",
+  "damageType" : "NoDamage",
+  "damageKindImage" : "/interface/statuses/shadow.png",
+  "statusEffects" : [
+    "shadowgasfx"
+  ],
+  "hydrophobic" : true,
+  "persistentAudio" : "/sfx/projectiles/dragonprojectile_loop.ogg",
+  "emitters" : [ "shadowsmoke2" ]
+}

@@ -1,0 +1,42 @@
+{
+  "objectName" : "roundedlight",
+  "colonyTags" : ["rounded","light"],
+  "printable" : false,
+  "rarity" : "Uncommon",
+  "description" : "A minimalistic light fixture, stylistically left hanging bare.",
+  "shortdescription" : "Rounded Light Fixture",
+  "race" : "generic",
+  "category" : "light",
+  "price" : 0,
+  "lightColor" : [204, 204, 188],
+
+  "apexDescription" : "An unshielded light bulb. Hopefully no one's eyes here are too sensitive.",
+  "avianDescription" : "A light that shines with twice the power of Avolite crystals.",
+  "floranDescription" : "Round light iss too bright!",
+  "glitchDescription" : "Irritated. If I had physical eyes, I'm sure I'd be squinting.",
+  "humanDescription" : "So... Just a lightbulb? Is this the kind of furniture people are shelling out hundreds of dollars for?",
+  "hylotlDescription" : "A light that illuminates the room like a gentle sun.",
+  "novakidDescription" : "You can't outshine me, li'l buddy!",
+
+  "inventoryIcon" : "roundedlighticon.png",
+  "orientations" : [
+    {
+      "dualImage" : "roundedlight.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "roundedlight.png",
+    "fg" : "roundedlightlit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "animationPosition" : [0, 0],
+  "interactive" : false,
+  "inputNodes" : [ [0, 0] ]
+}

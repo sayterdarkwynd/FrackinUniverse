@@ -4,12 +4,14 @@
   "price" : 1500,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Fires a dense pulse of sound - charge to fire a ricocheting blast.",
+  "description" : "Shockingly deadly.
+^yellow;Destructive Alt-Fire^reset;
+^cyan;Primary fire does secondary physical damage^reset;",
   "shortdescription" : "Shocklance",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "sniperRifle",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","sniperrifle"],
+  "itemTags" : ["weapon","ranged","sniperrifle", "energy", "upgradeableWeapon","electric" ],
 
   "inventoryIcon" : [
     { "image" : "fushocklance.png:idle.1" }
@@ -30,7 +32,7 @@
       "color" : [10, 10, 100]
     }},
     "sounds" : {
-      "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
+      "fire" : [ "/sfx/weapons/shocklance.ogg" ]
     }
   },
   "baseOffset" : [0.77, -0.15],
@@ -45,16 +47,17 @@
     "class" : "GunFire",
 
     "fireTime" : 1.0,
-    "baseDps" : 6.0,
+    "baseDps" : 8.5,
     "energyUsage" : 20,
     "inaccuracy" : 0,
     "fireType" : "auto",
-
+    "damageConfig" : {
+      "statusEffects" : [ "electrified" ]
+    },
     "projectileType" : "fushocklanceshot",
     "projectileParameters" : {
       "knockback" : 10,
-      "speed" : 80,
-      "statusEffects" : [ "electrified" ]
+      "speed" : 80
     },
     "projectileCount" : 1,
 
@@ -87,6 +90,13 @@
       }
     }
   },
+  "critChance" : 8,
+  "critBonus" : 12,
+  "isSniper" : 1,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 1200,
 
   "altAbilityType" : "shocklancepower2",
 

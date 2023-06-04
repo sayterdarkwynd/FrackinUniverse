@@ -1,0 +1,132 @@
+[
+  {
+    "op": "add",
+    "path": "/dropPools/0/firebow",
+    "value": "crabcanoHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/icebow",
+    "value": "crabcanoHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/poisonbow",
+    "value": "crabcanoHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/electricbow",
+    "value": "crabcanoHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/radioactivebow",
+    "value": "crabcanoHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/cosmicbow",
+    "value": "crabcanoHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/shadowbow",
+    "value": "crabcanoHunting"
+  },
+  {
+    "op": "add",
+    "path": "/personalities",
+    "value": [
+      "bland",
+      "grumpy",
+      "jock",
+      "daredevil"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/petOwnerStatusEffects",
+    "value": [
+      "rage"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-fire",
+        "cooldown": 4,
+        "parameters": {
+          "maximumRange": 10,
+          "minimumRange": 1,
+          "windupState": "firewindup",
+          "windupTime": 1.5,
+          "projectileType": "crabcanoball",
+          "fireOffset": [
+            0,
+            0.75
+          ],
+          "aimAtTarget": false,
+          "projectileCount": 12,
+          "fireDelay": 0.1,
+          "projectileInterval": 0.4,
+          "inaccuracy": 0.4,
+          "aimDirection": [
+            0,
+            1
+          ],
+          "fireSound": "fire",
+          "fireState": "fire",
+          "winddownState": "idle",
+          "winddownTime": 0.5
+        }
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/grit",
+    "value": {
+      "baseValue": 1
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 80
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/physicalResistance/baseValue",
+    "value": 0.5
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/fireResistance/baseValue",
+    "value": 0.95
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/pandorasboxSpecialColors",
+    "value": {
+      "colorPool": [
+        [
+          0.9, { "type": "color", "color": "default" }
+        ],
+        [
+          0.01, { "type": "colorPool", "colorPool": "/monsters/pandorasboxuniquemonstercolors/colors/pandorasboxrarecolors.config" }
+        ],
+        [
+          0.001, { "type": "colorPool", "colorPool": [[0.001, { "type": "color", "color": "albino" }]] }
+        ]
+      ],
+      "colors": [
+        "/monsters/pandorasboxuniquemonstercolors/colors/pandorasboxrarecolors.config",
+        { "albino": "/monsters/walkers/crabcano/pandorasboxaltcolors/pandorasboxcrabcanoaltalbino.png" }
+      ],
+      "paletteSwapBaseImage": "/monsters/walkers/crabcano/pandorasboxaltcolors/pandorasboxcrabcanoaltrare.png"
+    }
+  }
+]

@@ -4,15 +4,18 @@
   "inventoryIcon" : "fuplasmacannon.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Utterly decimates unfortunate targets.",
+  "description" : "Focuses energy for supreme damage output.
+^cyan;Counts as plasma weapon for set bonuses^reset;
+^yellow;Destroys tiles^reset;",
   "shortdescription" : "Plasma Eruptor",
-  "level" : 4,
-  "tooltipKind" : "gun",
+  "category" : "energy",
+  "level" : 5,
+  "tooltipKind" : "gun2",
   "weaponType" : "Energy Cannon",
-  "itemTags" : ["weapon","ranged","rocketlauncher"],
+  "itemTags" : ["weapon","ranged","rocketlauncher","plasma", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/unique/fuplasmacannon.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "fuplasmacannon.png",
@@ -21,6 +24,15 @@
     "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3blue.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.5, 0.15]
+		  }
+		}
+      }
+    },
     "sounds" : {
       "fire" : [ "/sfx/weapons/shock_impact3.ogg" ]
     },
@@ -55,7 +67,7 @@
     "fireType" : "auto",
 
     "projectileType" : "fuplasmarifleblast",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 72,
       "knockback" : 10
     },
@@ -88,6 +100,13 @@
 	    }
 	  }
   },
+
+  "critChance" : 4,
+  "critBonus" : 15,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 1200,
 
   "altAbilityType" : "plasmaburstshot",
 

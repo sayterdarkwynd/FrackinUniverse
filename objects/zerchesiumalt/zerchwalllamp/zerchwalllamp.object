@@ -1,0 +1,66 @@
+{
+  "objectName" : "zerchwalllamp",
+  "colonyTags" : ["zerchesium", "light"],
+  "rarity" : "rare",
+  "category" : "light",
+  "lightColor" : [255, 250, 170],
+  "price" : 300,
+  "description" : "A wall mounted lamp made from polished zerchesium.",
+  "shortdescription" : "Zerchesium Wall Lamp",
+  "race" : "generic",
+
+  "apexDescription" : "A sleek, simple lamp.",
+  "avianDescription" : "This lamp has a very simple design.",
+  "floranDescription" : "Pretty lightsss!",
+  "glitchDescription" : "Neutral. A sleek lamp.",
+  "humanDescription" : "This lamp looks nice and sleek.",
+  "hylotlDescription" : "The simplicity of the design is pleasing to the eyes.",
+  "novakidDescription" : "This lamp is mighty simple.",
+
+  "inventoryIcon" : "zerchwalllampicon.png",
+  "orientations" : [
+    {
+      "image" : "zerchwalllamp.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "animationParts" : {
+        "bg" : "zerchwalllamp.png",
+        "fg" : "zerchwalllamplit.png"
+      },
+      "animationPosition" : [0, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "zerchwalllamp.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "animationParts" : {
+        "bg" : "zerchwalllamp.png",
+        "fg" : "zerchwalllamplit.png"
+      },
+      "animationPosition" : [0, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "zerchwalllamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : true,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

@@ -1,0 +1,51 @@
+{
+  "type" : "sunsetdagger",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "extraNovakid" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Looks like we've got another pig for the poking!",
+            "Seems like another varmint's on the loose!"
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+    "runSpeed" : 20,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "chest" : [ { "name" : "novatier3chest" } ],
+            "legs" : [ { "name" : "novatier3pants" } ],
+            "primary" : [
+              "npcdagger"
+            ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 50.0
+      }
+    }
+  }
+}

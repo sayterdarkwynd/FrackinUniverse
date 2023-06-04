@@ -3,7 +3,40 @@
   "friendlyName" : "Gas Giant Underground",
 
   "spawnProfile" : {
-    "groups" : []
+    "groups" : [
+      {
+        "select" : 1,
+        "pool" : [
+          [ 0.45, "gasbag" ],
+          [ 0.05, "gasbagstat" ],
+          [ 0.50, "skywhale" ],
+          [ 0.1, "skywhale2" ],
+          [ 0.1, "fleshreaper" ],
+          [ 0.05, "darkmetroid" ]
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "statusSettings" : {
+        "stats" : {
+          "gasImmunity" : {
+            "baseValue" : 1.0
+          },
+          "poisonStatusImmunity" : {
+            "baseValue" : 1.0
+          },
+          "pressureProtection" : {
+            "baseValue" : 1.0
+          },
+          "extremepressureProtection" : {
+            "baseValue" : 1.0
+          },
+          "sandstormImmunity" : {
+            "baseValue" : 1.0
+          }
+        }
+      }
+    }
   },
 
 
@@ -13,12 +46,6 @@
 
   "parallax" : "/parallax/surface/gasgiant3.parallax",
 
-  "weather" : [
-    [0, [
-      "/weather.config:fugasgiant"
-    ]]
-  ],
-  
   "ambientNoises" : {
     "day" : {
       "tracks" : [ "/sfx/environmental/desert_underground.ogg" ]
@@ -33,7 +60,7 @@
       "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 

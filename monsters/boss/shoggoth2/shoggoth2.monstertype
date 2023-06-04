@@ -1,0 +1,287 @@
+{
+	"type" : "shoggoth2",
+	"shortdescription" : "Shoggoth",
+	"description" : "An unspeakable abomination out of a nightmare.",
+
+	"categories" : [ "shoggoth2" ],
+	"parts" : [ "body", "eyebeam", "eyeglow" ],
+	"reversed" : true,
+	"animation" : "shoggoth2.animation",
+
+	"dropPools" : [ "shoggothFlesh" ],
+
+	"baseParameters" : {
+		"scripts" : [
+			"/monsters/boss/shoggoth2/monster.lua",
+		"/monsters/fu_bossExtraResistsHandler.lua"
+		],
+		"bossExtraResistsValue":0.9,
+
+		"behavior" : "monster",
+
+		"behaviorConfig" : {
+			"damageOnTouch" : true,
+
+			"targetQueryRange" : 40,
+			"targetOnDamage" : true,
+			"keepTargetInSight" : true,
+			"keepTargetInRange" : 50,
+			"targetOutOfSightTime" : 40.5,
+			"hurtTime": 0.10,
+			"hurtWaitForGround": false,
+			"hurtWaitForGroundTime": 0.1,
+
+			"foundTargetActions" : [],
+
+			"fleeActions" : [],
+
+			"hostileActions" : [
+				{
+					"name" : "action-fire",
+					"cooldown" : 5.0,
+					"parameters" : {
+						"requireLineOfSight" : true,
+						"maximumRange" : 24,
+						"minimumRange" : 0,
+						"maxYRange" : 4,
+						"windupTime" : 1.6,
+						"windupState" : "firewindup",
+
+						"aimAtTarget" : true,
+						"projectileType" : "minishoggothspawn",
+						"power" : 5,
+						"aimDirection" : [0.7, 0.4],
+						"fireOffset" : [9, 2],
+						"projectileCount" : 4,
+						"projectileInterval" : 0.4,
+						"projectileParameters" : {
+							"speed": 35
+						},
+						"fireTime" : 1.6,
+						"fireState" : "fire",
+						"fireSound" : "wave",
+
+						"winddownState" : "firewinddown",
+						"winddownTime" : 1.6
+					}
+				},
+				{
+					"name" : "action-charge",
+					"cooldown" : 2.0,
+					"parameters" : {
+						"maximumRange" : 20,
+						"windupState" : "chargewindup",
+						"windupTime" : 1.6,
+
+						"chargeTime" : 0.5,
+						"chargeSpeed" : 12,
+						"chargeControlForce" : 600,
+						"chargeState" : "charge",
+						"wallCrashSound" : "wallCrashSound",
+						"wallCrashEmitter" : "",
+
+						"winddownTime" : 1.6,
+						"winddownStopForce" : 600,
+						"winddownState" : "chargewinddown"
+					}
+				}
+			],
+
+			"periodicActions" : [
+
+			],
+
+			"approachActions" : [
+				{
+					"name" : "approach-walk",
+					"parameters" : {
+						"canJump" : false,
+						"maxJumps" : 0,
+						"jumpXVelocity" : 0,
+						"jumpYVelocity" : 0,
+						"jumpXControlForce" : 500,
+						"minXRange" : 0
+					}
+				}
+			],
+
+			"followActions" : [
+				{
+					"name" : "approach-teleport",
+					"parameters" : {
+					}
+				},
+				{
+					"name" : "approach-walk",
+					"parameters" : {
+						"canJump" : false,
+						"maxJumps" : 0,
+						"jumpXVelocity" : 0,
+						"jumpYVelocity" : 0,
+						"jumpXControlForce" : 0,
+						"minXRange" : 0
+					}
+				}
+			],
+
+			"wanderActions" : [
+				{
+					"name" : "wander-walk",
+					"parameters" : {
+						"wanderTime" : [5, 15],
+						"canJump" : false,
+						"maxJumps" : 0,
+						"jumpXVelocity" : 0,
+						"jumpYVelocity" : 0,
+						"jumpXControlForce" : 0,
+						"minXRange" : 0
+					}
+				}
+			],
+
+			"concurrentActions" : [
+
+			],
+
+			"damageTakenActions" : [
+				//{
+				//	"name" : "action-invulnerable",
+				//	"cooldown" : [20, 60],
+				//	"parameters" : {
+				//		"windupTime" : 1.6,
+				//		"windupState" : "invulnerablewindup",
+				//		"winddownTime" : 1.6,
+				//		"winddownState" : "invulnerablewinddown",
+				//		"invulnerableTime" : 4.0
+				//	}
+				//}
+			]
+		},
+
+		"damageParts" : {
+			"body" : {
+				"damage" : 16,
+				"teamType" : "enemy",
+				"damageSourceKind" : "slash",
+				"knockback" : 30,
+				"statusEffects" : [	]
+			},
+			"eyeglow" : {
+				"damage" : 16,
+				"teamType" : "enemy",
+				"damageSourceKind" : "slash",
+				"knockback" : 30,
+				"statusEffects" : [	]
+			},
+			"eyebeam" : {
+				"damage" : 16,
+				"teamType" : "enemy",
+				"damageSourceKind" : "slash",
+				"knockback" : 30,
+				"statusEffects" : [	]
+			}
+		},
+
+		"touchDamage" : {
+			"poly" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
+			"damage" : 13,
+
+			"teamType" : "enemy",
+			"damageSourceKind" : "slash",
+			"knockback" : 20,
+			"statusEffects" : [ "insanity" ]
+		},
+
+		"metaBoundBox" : [-16, -16, 10, 10],
+		"scale" : 1.0,
+
+		"movementSettings" : {
+			"collisionPoly" : [ [-16, -16], [16, -16], [16, 0], [-16, 0] ],
+
+			"mass" : 6.5,
+			"walkSpeed" : 2,
+			"runSpeed" : 4,
+
+			"airFriction" : 4,
+
+			"airJumpProfile" : {
+				"jumpSpeed" : 1.0,
+				"jumpInitialPercentage" : 1.0,
+				"jumpHoldTime" : 1.0
+			}
+		},
+
+		"bodyMaterialKind" : "organic",
+
+		"knockoutTime" : 0.3,
+		"knockoutAnimationStates" : {
+			"damage" : "stunned"
+		},
+		"deathParticles" : "deathPoof",
+		"knockoutEffect" : "",
+
+		"statusSettings" : {
+			"statusProperties" : {
+				"targetMaterialKind" : "organic"
+			},
+
+			"appliesWeatherStatusEffects" : true,
+			"appliesEnvironmentStatusEffects" : false,
+			"minimumLiquidStatusEffectPercentage" : 0.1,
+
+			"primaryScriptSources" : [
+				"/stats/monster_primary.lua"
+			],
+			"primaryScriptDelta" : 5,
+
+			"stats" : {
+				"knockbackStunTime" : {
+					"baseValue" : 0.25
+				},
+				"knockbackThreshold" : {
+					"baseValue" : 9
+				},
+				"maxHealth" : {
+					"baseValue" : 3580
+				},
+				"protection" : {
+					"baseValue" : 15
+				},
+				"healthRegen" : {
+					"baseValue" : 0.0
+				},
+				"powerMultiplier" : {
+					"baseValue" : 1.2
+				},
+				"poisonResistance" : { "baseValue" : 0.9 },
+				"fireResistance" : { "baseValue" : 0.3 },
+				"iceResistance" : { "baseValue" : 0.8 },
+				"electricResistance" : { "baseValue" : -0.25 },
+				"physicalResistance" : { "baseValue" : 0.25 },
+				"shadowResistance" : { "baseValue" : 0.9 },
+				"radioactiveResistance" : { "baseValue" : 1 },
+				"slagStatusImmunity" : { "baseValue" : 1 },
+				"bluoplasmaStatusImmunity" : { "baseValue" : 1 },
+				"cosmicResistance" : { "baseValue" : 0.9 },
+				"specialStatusImmunity" : {"baseValue" : 1.0},
+				"ucObliteratingBurnImmunity" : { "baseValue" : 1 }
+			},
+
+			"resources" : {
+				"stunned" : {
+					"deltaValue" : -1.0,
+					"initialValue" : 0.0
+				},
+				"health" : {
+					"maxStat" : "maxHealth",
+					"deltaStat" : "healthRegen",
+					"defaultPercentage" : 100
+				}
+			}
+		},
+
+		"mouthOffset" : [0, 0],
+		"feetOffset" : [0, -8],
+		"capturable" : false
+	}
+}

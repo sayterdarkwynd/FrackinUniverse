@@ -1,0 +1,69 @@
+{
+  "type" : "cultistrocket",
+  "baseType" : "hostile",
+
+  "persistent" : true,
+
+  "dropPools" : [ "cultisttreasure" ],
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+	  "queryRange": 50,
+	  "trackingRange": 50
+    },
+    "dialog" : {
+      "attack" : "/dialog/cultist.config:attack"
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "cultisthead" } ],
+            "chest" : [ { "name" : "cultistchest" } ],
+            "legs" : [ { "name" : "cultistlegs" } ],
+            "primary" : [ "npcrocketlauncher", "npcrocketlauncher", "commongrenadelauncher", "burster" ],
+            "sheathedprimary" : [  "npccultistbroadsword", "npccultistshortsword" ]
+          }
+        ] ],
+      [2, [
+          {
+            "head" : [ { "name" : "cultisthead" } ],
+            "chest" : [ { "name" : "cultistchest" } ],
+            "legs" : [ { "name" : "cultistlegs" } ],
+            "primary" : [ "npcrocketlauncher", "npcrocketlauncher", "commongrenadelauncher", "bushmaster", "burster",  "telebriumrocketlauncher" ],
+            "sheathedprimary" : [  "npccultistbroadsword", "npccultistbroadsword", "fucultistaxe", "fucultistdagger" ]
+          }
+        ] ],
+      [3, [
+          {
+            "head" : [ { "name" : "cultisthead" } ],
+            "chest" : [ { "name" : "cultistchest" } ],
+            "legs" : [ { "name" : "cultistlegs" } ],
+            "primary" : [ "npcrocketlauncher", "npcrocketlauncher", "uncommongrenadelauncher", "bushmaster", "burster", "telebriumrocketlauncher", "eyecannon" ],
+            "sheathedprimary" : [  "npccultistbroadsword", "npccultistbroadsword", "fucultistaxe", "fucultistdagger", "fucultistspear", "fucultistgreataxe", "fucultistmace", "spikesword", "quietusrapier", "quietusmace", "quietusaxe" ]
+          }
+        ] ],
+      [4, [
+          {
+            "head" : [ { "name" : "cultisthead" } ],
+            "chest" : [ { "name" : "cultistchest" } ],
+            "legs" : [ { "name" : "cultistlegs" } ],
+            "primary" : [ "npcrocketlauncher", "npcrocketlauncher", "uncommongrenadelauncher", "bushmaster", "burster", "telebriumrocketlauncher", "eyecannon", "quietusrocketlauncher" ],
+            "sheathedprimary" : [  "npccultistbroadsword", "npccultistbroadsword", "fucultistaxe", "fucultistdagger", "fucultistspear", "fucultistgreataxe", "fucultistmace", "spikesword", "quietusrapier", "quietusmace", "quietusaxe", "quietusspear" ]
+          }
+        ] ],
+      [5, [
+          {
+            "head" : [ { "name" : "cultisthead" } ],
+            "chest" : [ { "name" : "cultistchest" } ],
+            "legs" : [ { "name" : "cultistlegs" } ],
+            "primary" : [ "npcrocketlauncher", "npcrocketlauncher", "uncommongrenadelauncher", "bushmaster", "burster", "telebriumrocketlauncher", "eyecannon", "quietusrocketlauncher" ],
+            "sheathedprimary" : [  "npccultistbroadsword", "npccultistbroadsword", "fucultistaxe", "fucultistdagger", "fucultistspear", "fucultistgreataxe", "fucultistmace", "spikesword", "quietusrapier", "quietusmace", "quietusaxe", "quietusspear", "quietusscythe",  "fuatropusbroadsword", "fuatropusdagger", "fuatropusgreataxenpc", "fuatropushammer", "fuatropusscythe", "fuatropusshortsword", "fuatropusspear",  "fucultistscythe" ]
+          }
+        ] ]
+    ]
+
+  }
+}

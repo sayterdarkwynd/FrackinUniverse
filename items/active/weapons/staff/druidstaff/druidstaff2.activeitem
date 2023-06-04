@@ -1,0 +1,99 @@
+{
+  "itemName" : "druidstaff2",
+  "price" : 1440,
+  "maxStack" : 1,
+  "level" : 6,
+  "rarity" : "Legendary",
+  "description" : "Fashioned from bones and petrified wood.
+^cyan;Floran^reset;",
+  "shortdescription" : "Nature's Wrath",
+  "category" : "staff",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","staff","upgradeableWeapon","floran"],
+  "tooltipKind" : "staff",
+
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "druidstaff2.png",
+    "stone" : "",
+    "chargeEffect" : "druidstaffglow.png"
+  },
+  "animationCustom" : {
+    "lights" : {
+      "glow" : {
+        "color" : [55, 124, 22]
+      }
+    },
+    "particleEmitters" : {
+      "poisoncharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 20,
+        "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
+        "particles" : [
+          {"particle" : "druidstaff"}
+        ]
+      }
+    }
+  },
+
+  "inventoryIcon" : "druidstaff2.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 0.6,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "duration" : 0.5,
+      "armRotation" : -10,
+      "weaponRotation" : -50,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "cooldown" : {
+      "duration" : 0.8,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "thornburst",
+  "primaryAbility" : {},
+
+  "altAbilityType" : "vinebarrier",
+  "altAbility" : {},
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,94 @@
+{
+  "name": "action-winddown",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/monster.lua",
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/time.lua"
+  ],
+  "parameters": {
+    "winddownState": "winddown",
+    "winddownStopForce": 0,
+    "winddownTime": 0,
+    "winddownStateType": "body",
+    "rotateToTarget": false
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "succeeder",
+        "type": "decorator",
+        "name": "succeeder",
+        "parameters": {},
+        "child": {
+          "title": "setAnimationState",
+          "type": "action",
+          "name": "setAnimationState",
+          "parameters": {
+            "state": {"value": "<winddownState>"},
+            "type": {"value": "<winddownStateType>"}
+          }
+        }
+      },
+      {
+        "title": "setActiveSkillName",
+        "type": "action",
+        "name": "setActiveSkillName",
+        "parameters": {
+          "skillName": {"value": ""}
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": -1},
+          "success": {"value": -1}
+        },
+        "children": [
+          {
+            "title": "selector",
+            "type": "composite",
+            "name": "selector",
+            "parameters": {},
+            "children": [
+              {
+                "title": "controlApproachVelocityAlongAngle",
+                "type": "action",
+                "name": "controlApproachVelocityAlongAngle",
+                "parameters": {
+                  "angle": {"key": "aimAngle"},
+                  "force": {"key": "<winddownStopForce>"},
+                  "velocity": {"value": 0}
+                }
+              },
+              {
+                "title": "controlApproachVelocity",
+                "type": "action",
+                "name": "controlApproachVelocity",
+                "parameters": {
+                  "force": {"key": "<winddownStopForce>"},
+                  "velocity": {"value": [0, 0]}
+                }
+              }
+            ]
+          },
+          {
+            "title": "timer",
+            "type": "action",
+            "name": "timer",
+            "parameters": {
+              "time": {"value": "<winddownTime>"}
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

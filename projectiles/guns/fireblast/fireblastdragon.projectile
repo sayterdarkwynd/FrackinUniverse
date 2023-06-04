@@ -1,0 +1,85 @@
+{
+  "projectileName" : "fireblastdragon",
+  "image" : "fireblast.png",
+  "physics" : "grenadenobounce",
+  "animationCycle" : 0.6,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 10,
+  "power" : 5,
+  "level" : 5,
+  "speed" : 35,
+  "fullbright" : true,
+  "timeToLive" : 1,
+  "lightColor" : [200,120,0],
+  "damageKind" : "hellfire",
+  "damagePoly" : [ [-10, 0], [0, 7], [10, 10], [10, 0], [-10, -10], [0, -7] ],
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/hellfireexplosion2/hellfireexplosion2.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectilegrenade",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.1
+    },
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectilegrenade",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.1
+    },
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectilegrenade",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.1
+    },
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectilegrenade",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.1
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/hellfireexplosion2/hellfireexplosion2.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectilegrenade",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.1
+    },
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectilegrenade",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.1
+    },
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectilegrenade",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.1
+    },
+    {
+      "action" : "projectile",
+      "type" : "hellfireprojectilegrenade",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.1
+    },
+    {
+      "action" : "explosion",
+      "foregroundRadius" : 4,
+      "backgroundRadius" : 3,
+      "explosiveDamageAmount" : 32,
+      "delaySteps" : 2
+    }
+  ],
+  "emitters" : [ "fireplasma" ],
+  "statusEffects" : [ "burning" ]
+}

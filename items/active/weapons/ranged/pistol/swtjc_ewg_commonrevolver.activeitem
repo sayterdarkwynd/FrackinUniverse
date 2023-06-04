@@ -1,0 +1,106 @@
+{
+  "itemName" : "swtjc_ewg_commonrevolver",
+  "price" : 700,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A small handgun with a powerful punch.",
+  "shortdescription" : "Common High-Caliber Pistol",
+  "tooltipKind" : "gun2",
+  "category" : "swtjc_ewg_revolver",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","ranged","pistol","upgradeableWeapon"],
+  "level" : 1,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : { },
+  "animationCustom" : { },
+  "baseOffset" : [-0.45, 0.25],
+  "muzzleOffset" : [0,0.375],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : [0.7, 2.0],
+    "baseDps" : [5.0, 5.35],
+    "energyUsage" : [19.5, 22.5],
+    "inaccuracy" : 0.026,
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "knockbackRange" : [6,11]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 10,
+        "weaponRotation" : 10,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.25,
+        "armRotation" : 10,
+        "weaponRotation" : 10,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  },
+  "fireSounds" : [ "/sfx/gun/pistol1.ogg", "/sfx/gun/pistol2.ogg", "/sfx/gun/pistol3.ogg", "/sfx/gun/pistol4.ogg", "/sfx/gun/pulserifle1.ogg", "/sfx/gun/pulserifle2.ogg", "/sfx/gun/revolver1.ogg", "/sfx/gun/revolver2.ogg", "/sfx/gun/rifle1.ogg", "/sfx/gun/rifle2.ogg", "/sfx/gun/dragonhead_fire1.ogg" ],
+
+  "critChance" : 1,
+  "critBonus" : 5,
+  "isAmmoBased": [0,1],
+  "magazineSize" : [5,8],
+  "reloadTime" : [1.25,2.1],
+  "isPistol" : 1,
+  //recoil stats
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300,
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "nameGenerator" : "swtjc_ewg_revolvernames.config:nameGen",
+    "animationParts" : {
+      "butt" : {
+        "path" : "/items/active/weapons/ranged/pistol/butt/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "middle" : {
+        "path" : "/items/active/weapons/ranged/pistol/middle/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "barrel" : {
+        "path" : "/items/active/weapons/ranged/shotgun/barrel/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+    },
+    "gunParts" : ["butt", "middle", "barrel"],
+    "altAbilities" : [ ],
+    "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
+    "iconDrawables" : ["butt", "middle", "barrel"]
+  }]
+}

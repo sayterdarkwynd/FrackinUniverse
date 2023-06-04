@@ -1,0 +1,38 @@
+{
+	"id" : "4bees",
+	"prerequisites" : [ "3basicframe" ],
+	"title" : "Queen and Drone",
+	"text" : "Now you need to ^green;catch a queen and a drone honey bee^reset; and let them loose inside your apiary. You'll need a ^orange;Bug Net^reset; for this. Bees can be found on most biomes, usually during the daylight hours.",
+	"completionText" : "Find ^green;other types of bees^reset;, and cross-breed them! How? Just place a different type of drone in there for your queen to check out. You may see some pretty swift results!",
+	"moneyRange" : [120, 220],
+	"rewards" : [ ],
+	"speaker" : "questGiver",
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
+
+		"followUp" : "4bbees",
+
+		"requireTurnIn" : false,
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "bee_honey_queen",
+				"count" : 1,
+				"consume" : false
+			},
+			{
+				"type" : "gatherItem",
+				"itemName" : "bee_honey_drone",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
+}

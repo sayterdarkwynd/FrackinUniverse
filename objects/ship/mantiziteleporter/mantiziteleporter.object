@@ -1,0 +1,74 @@
+{
+  "objectName" : "mantiziteleporter",
+  "colonyTags" : ["mantizi"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A Mantizi designed teleportation device.",
+  "shortdescription" : "Teleporter",
+  "race" : "mantizi",
+
+  "apexDescription" : "Teleporting feels like riding a rollercoaster at the speed of light.",
+  "avianDescription" : "Teleporting feels like flying.",
+  "floranDescription" : "Floran feel confusssed during teleport.",
+  "glitchDescription" : "Educate. I set myself to sleep during the teleport process.",
+  "humanDescription" : "Teleporting is a huge rush.",
+  "hylotlDescription" : "Teleporting feels like diving into the ocean from a mountain top.",
+  "novakidDescription" : "Ship's teleporter. Let's take her for a spin!",
+  "fumantiziDescription" : "You won't believe how much you save on fuel with this thing.",
+
+  "category" : "teleporter",
+  "lightColor" : [99, 132, 153],
+  "flickerDistance" : 0.2,
+  "flickerStrength" : 0.05,
+  "flickerTiming" : 4,
+
+  "particleEmitter" : {
+    "emissionRate" : 3,
+    "emissionVariance" : 0.5,
+
+    "particle" : {
+      "type" : "ember",
+      "position" : [-0.5, 5],
+      "size" : 1.0,
+      "color" : [64, 190, 255, 255],
+      "light" : [50, 50, 150],
+      "fade" : 0.9,
+      "destructionAction" : "shrink",
+      "destructionTime" : 0.5,
+      "initialVelocity" : [0.0, 0.0],
+      "finalVelocity" : [0.0, 0.0],
+      "approach" : [0, 1],
+      "timeToLive" : 1.5,
+      "layer" : "middle"
+    },
+
+    "particleVariance" : {
+      "initialVelocity" : [0, 5],
+      "finalVelocity" : [0, 1],
+      "position" : [1.5, 0],
+      "size" : 0.5
+    }
+  },
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/shipteleporter.config",
+
+  "soundEffect" : "/sfx/objects/shipengine.ogg",
+  "soundEffectRangeMultiplier" : 1.5,
+
+  "inventoryIcon" : "teleportericon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "mantiziteleporter.png:<color>", "fullbright" : true }, { "image" : "mantiziteleporterlit.png:<color>" } ],
+
+      "imagePosition" : [-32, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "solid",
+      "collisionSpaces" : [ [-2, 0], [-1, 0], [0, 0], [1, 0], [-2, 9], [-1, 9], [0, 9], [1, 9] ]
+    }
+  ]
+}

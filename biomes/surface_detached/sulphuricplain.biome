@@ -1,17 +1,17 @@
 {
   "name" : "sulphuricplain",
   "friendlyName" : "Sulphur Pits",
-  "hueShiftOptions" : [-10, -5, 0, 5, 10],
+  "hueShiftOptions" : [0],
 
     "mainBlock" : "sulphurdirt",
-    "subBlocks" : [ "sulphurstone", "drydirt" ],
+    "subBlocks" : [ "sulphurstone", "drydirt", "retexrock15" ],
     "ores" : "ff_surfacesulfurOres",
 
   "spawnProfile" : {
     "groups" : [
       {
         "select" : 1,
-        "pool" : [ 
+        "pool" : [
           [ 0.1111, "sulphurtroll" ]
         ]
       },
@@ -38,7 +38,7 @@
             },
             "blacktarImmunity" : {
               "baseValue" : 1.0
-            },            
+            },
             "breathProtection" : {
               "baseValue" : 1.0
             }
@@ -46,7 +46,25 @@
       }
     }
   },
-  
+  "parallax" : "/parallax/surface/sulphuric.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/tundra_day.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/tundra_night.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/crystal-exploration1.ogg", "/music/drosera.ogg", "/music/inviolate-loop.ogg", "/music/lava-exploration1.ogg", "/music/ultramarine.ogg", "/music/arctic-constellation1.ogg", "/music/body-electric-loop.ogg", "/music/mercury.ogg", "/music/Nomads.ogg", "/music/psyche.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/crystal-exploration2.ogg", "/music/desert-exploration2.ogg", "/music/lava-exploration2.ogg", "/music/mira.ogg", "/music/tranquility-base.ogg", "/music/arctic-constellation1.ogg", "/music/body-electric-loop.ogg", "/music/mercury.ogg", "/music/Nomads.ogg", "/music/casiopeia.ogg" ]
+    }
+  },
   "surfacePlaceables" : {
     "grassMod" : [ "sulphuricgrass" ],
     "grassModDensity" : 0.9,
@@ -54,9 +72,27 @@
     "items" : [
         {
           "mode" : "floor",
-          "priority" : 1.0,
+          "priority" : 0.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -66,7 +102,6 @@
             }
           ]
         },
-
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -85,16 +120,12 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:potsRare",
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
-              [0.35, "plynth1" ],
-              [0.35, "plynth2" ]
-              ],
-              "parameters" : { }
+              "pool" : [ [0.20, "sulphuricgroundspike1" ], [0.20, "sulphuricgroundspike2" ], [0.20, "sulphuricgroundspike3" ], [0.20, "sulphuricgroundspike4" ] ]
             }
           ]
         },
@@ -122,7 +153,145 @@
               "modHueShiftMax" : 180
             }
           ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "sulphurrocks",
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "grass",
+          "grasses" : [ "sulphurpebbles" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.3, "wildwhitespine" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
         }
+    ]
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "sulphuricgrass" ],
+    "grassModDensity" : 0.3,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.20, "sulphuricceilingspike1" ], [0.20, "sulphuricceilingspike2" ], [0.20, "sulphuricceilingspike3" ], [0.20, "sulphuricceilingspike4" ] ]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.20, "sulphuricgroundspike1" ], [0.20, "sulphuricgroundspike2" ], [0.20, "sulphuricgroundspike3" ], [0.20, "sulphuricgroundspike4" ] ]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "sulphurpebbles" ]
+      }
     ]
   }
 }

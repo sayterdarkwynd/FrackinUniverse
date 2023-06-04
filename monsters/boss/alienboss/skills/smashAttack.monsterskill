@@ -1,0 +1,33 @@
+{
+  "name" : "smashAttack",
+  "label" : "FIST PUNCH",
+  "image" : "/monsters/generated/ground/skills/icon.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/boss/alienboss/skills/smashAttack.lua" ],
+    "smashAttack" : {
+      "skillTime" : 4.0,
+
+      "distanceRange" : [8.50, 12],
+      "windupTime" : 0.3,
+      "winddownTime" : 0.7,
+
+      "projectile" : {
+        "type" : "fireplasmaexplosion",
+        "config" : {
+          "power" : 30,
+          "speed" : 0,
+          "damageKind" : "hammer",
+		  "damageTeamType" : "enemy"
+        },
+        "offset" : [9.0, -8]
+      }
+    }
+  },
+
+  "animationParameters" : {
+    "sounds" : {
+      "punch" : [ "/sfx/melee/swing_broadsword_fire1.ogg" ]
+    }
+  }
+}

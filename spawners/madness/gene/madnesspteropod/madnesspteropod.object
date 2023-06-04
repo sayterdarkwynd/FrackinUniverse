@@ -1,0 +1,32 @@
+{
+  "objectName" : "madnesspteropod",
+  "rarity" : "uncommon",
+  "description" : "A flying monstrosity to spit blood at foes. Sound useful?",
+  "shortdescription" : "Bloodbound Pteropod",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 850,
+  "printable" : false,
+
+  "inventoryIcon" : "madnesspteropod.png",
+  "orientations" : [
+    {
+      "dualImage" : "madnesspteropod.png:<color>",
+      "imagePosition" : [-10, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "spaces" : [  [0, 0], [-1, 0], [0, 1], [-1, 1]],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "botspawner" : {
+      "type" : "pteropod3",
+	  "monsterImage":"/monsters/flyers/pteropodish/pteropod3.png:idle.1?"
+  },
+
+  "scripts" : [
+    "/spawners/fuminionspawner.lua"
+  ],
+  "scriptDelta" : 5
+}

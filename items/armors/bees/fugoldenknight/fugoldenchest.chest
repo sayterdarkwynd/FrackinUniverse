@@ -1,53 +1,73 @@
 {
   "itemName" : "fugoldenchest",
+  "price" : 700,
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "The armor of a Honey Knight.",
+  "rarity" : "legendary",
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; ^green;Thorns^reset;
+^yellow;^reset; Bladed Melee: Damage x^green;1.1^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Beestings, Honey",
   "shortdescription" : "Amber Plate Armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-
+  "itemTags" : [ "upgradeableWeapon", "defensive", "melee", "hyper" ],
   "maleFrames" : {
     "body" : "chest.png",
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-"level" : 3,
+
   "femaleFrames" : {
     "body" : "chest.png",
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
 
-  "statusEffects" : [
+  "level" : 5,
+//  "collectablesOnPickup" : { "fu_armortank" : "fugoldenchest" },
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 2.45
+      "baseMultiplier" : 1.15
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 30
+      "amount" : 0.6
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 80
+      "amount" : 3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 25
+      "amount" : 7
     },
-    "beestingimmunity",
-    "honeyslowimmunity"
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.023334
+    }
+  ],
+
+  "statusEffects" : [
+    "ambersetbonus",
+    {
+      "stat" : "fu_amberset_chest",
+      "amount" : 1
+    }
   ],
 
   "colorOptions" : [
 		/* DEFAULT */
-    { "ffd174" : "ffd174", "f8cc00" : "f8cc00", "bf9d00" : "bf9d00", "fff821" : "fff821"},		
+    { "ffd174" : "ffd174", "f8cc00" : "f8cc00", "bf9d00" : "bf9d00", "fff821" : "fff821"},
        /* GREEN */
     { "ffd174" : "60b462", "f8cc00" : "589459", "bf9d00" : "3b603c", "fff821" : "3bff21"}
-  ]
+  ],
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

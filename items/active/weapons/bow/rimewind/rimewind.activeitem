@@ -1,0 +1,76 @@
+{
+  "itemName" : "rimewind",
+  "price" : 1160,
+  "inventoryIcon" : "rimewindicon.png",
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "tooltipKind" : "neb-randombow",
+  "category" : "bow",
+  "description" : "Fires arrows imbued with crippling frost.",
+  "shortdescription" : "Rimewind",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow","upgradeableWeapon"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "level" : 6,
+
+  "animation" : "/items/active/weapons/bow/fubow.animation",
+  "animationParts" : {
+    "bow" : "rimewindfull.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0.25, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "ice",
+  //"collectablesOnPickup" : { "fu_weaponbow" : "rimewind" },
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : {
+    "drawTime" : 0.9,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"energyPerShot" : 35,
+	"holdEnergyUsage" : 7,
+	"airborneBonus" : 1.12,
+    "projectileType" : "icearrow",
+    "powerProjectileType" : "chargedicearrow",
+    "projectileParameters" : {
+      "power" : 8.0,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 8.65,
+      "piercing" : false
+    }
+  },
+
+  "altAbilityType" : "rngbows_enhancedbowshot",
+  "altAbility" : {
+    "name" : "Ice Shot",
+    "energyPerShot" : 35,
+    "projectileType" : "chargedicearrow",
+    "powerProjectileType" : "rimewindarrow",
+    "projectileParameters" : {
+      "power" : 10,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 8.65,
+      "piercing" : false
+    }
+  },
+
+  "critChance" : 6,
+  "critBonus" : 6,
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
+}

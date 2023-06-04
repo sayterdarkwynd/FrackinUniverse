@@ -1,0 +1,49 @@
+{
+  "objectName" : "fu_copperWallLamp",
+  "colonyTags" : ["light"],
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 50,
+  "description" : "A small wall-mounted lamp made from copper.",
+  "shortdescription" : "Small Copper Wall Lamp",
+  "race" : "generic",
+
+  "statusEffects" : [ ],
+
+  "lightColor" : [225, 170, 115],
+  "lightPosition" : [0,-5],
+  "flickerPeriod" : 1,
+  "flickerMinIntensity" : 0.7,
+  "flickerMaxIntensity" : 0.71,
+  "flickerPeriodVariance" : 0.05,
+  "flickerIntensityVariance" : 0,
+
+  "inventoryIcon" : "fu_copperWallLamp.png:on.1",
+  "orientations" : [
+    {
+      "image" : "fu_copperWallLamp.png:off.1",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+
+  "animation" : "/objects/wired/light/lightToggle2.animation",
+  "animationParts" : {
+   "light" : "fu_copperWallLamp.png"
+  },
+  "animationPosition" : [ 0,0 ],
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/castleswitchon.ogg" ],
+      "off" : [ "/sfx/objects/castleswitchoff.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ]
+}

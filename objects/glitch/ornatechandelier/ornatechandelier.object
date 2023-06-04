@@ -1,0 +1,70 @@
+{
+  "objectName" : "fuornatechandelier",
+  "colonyTags" : ["glitch","glitchcastle","light"],
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 105,
+
+  "description" : "A gold ornate chandelier. A good way to light a large room.",
+  "shortdescription" : "Gold Ornate Chandelier",
+  "race" : "glitch",
+
+  "maximumLiquidLevel" : 0.2,
+
+  "statusEffects" : [ ],
+
+  "lightColor" : [179, 149, 107],
+  "lightPosition" : [0, -1],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "inventoryIcon" : "ornatechandeliericon.png",
+  "orientations" : [
+
+    {
+      "image" : "ornatechandelier.png:<color>.<frame>",
+      "imagePosition" : [-16, -16],
+      "animationPosition" : [-16, -16],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "image" : "ornatechandelier.png:<color>.<frame>",
+      "imagePosition" : [-16, -16],
+      "animationPosition" : [-16, -16],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/torch.ogg",
+  "soundEffectRangeMultiplier" : 0.5,
+
+  "animation" : "ornatechandelier.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/torch_on1.ogg", "/sfx/objects/torch_on2.ogg" ],
+      "off" : [ "/sfx/objects/torch_off1.ogg", "/sfx/objects/torch_off2.ogg", "/sfx/objects/torch_off3.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "bg" : "ornatechandelier.png",
+    "fg" : "ornatechandelierlit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, -1] ],
+
+  "interactive" : false
+}

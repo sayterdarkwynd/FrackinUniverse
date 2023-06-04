@@ -1,0 +1,98 @@
+{
+  "type" : "fugiraffecritter",
+  "shortdescription" : "Giraffe",
+  "description" : "A huge leaf-eating mammal. It has an extremely long neck. Its skin has a distinctive brown and white pattern.",
+
+  "categories" : [ "fugiraffecritter" ],
+  "parts" : [ "body" ],
+
+  "animation" : "fugiraffecritter.animation",
+  "reversed" : true,
+
+  "dropPools" : [
+    {
+      "default" : "empty",
+      "bow" : "huntingquadruped"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "walkingcritter",
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.5,2.95], [-1.2,-3.6], [1.55,-3.6], [1,2.95] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 5,
+      "runSpeed" : 5,
+      "jumpSpeed" : 5
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "",
+"deathParticles" : "deathPoof",
+    "damageTeamType" : "passive",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.3,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 0,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 40
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "relocatable" : true,
+    "nametagColor" : [64, 200, 255]
+  }
+}

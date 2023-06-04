@@ -1,0 +1,48 @@
+{
+  "objectName" : "wizardscandle",
+  "colonyTags" : ["wizard","light"],
+  "printable" : false,
+  "rarity" : "Rare",
+  "category" : "light",
+  "price" : 0,
+  "description" : "Its constant bobbing light makes it useless for everything but creating an atmosphere.",
+  "shortdescription" : "Wizard's Candle",
+  "race" : "generic",
+
+  "apexDescription" : "A candle suspended by an unseen force. Fascinating...",
+  "avianDescription" : "A floating candle? What kind of sorcery is this?",
+  "floranDescription" : "F-Flame will ssstay away from Floran if it knows whats good for it!",
+  "glitchDescription" : "Amused. A floating candle sconce.",
+  "humanDescription" : "Woah! This thing's pulsing with magic!",
+  "hylotlDescription" : "An eerie purple glow occasionally surrounds this candle.",
+  "novakidDescription" : "How's this candle floatin' like that?",
+
+
+  "lightColor" : [179, 149, 107],
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.75,
+  "flickerMaxIntensity" : 0.8,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "inventoryIcon" : "wizardscandleicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "wizardscandle.png:<color>.<frame>",
+      "imagePosition" : [0, -16],
+      "animationPosition" : [0, -16],
+      "spaceScan" : 0.1,
+      "anchors" : []
+    }
+  ],
+  "animation" : "wizardscandle.animation",
+  "animationParts" : {
+    "bg" : "wizardscandle.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

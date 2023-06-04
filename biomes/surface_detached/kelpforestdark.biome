@@ -1,10 +1,10 @@
 {
   "name" : "kelpforestdark",
-  "friendlyName" : "Kelp Forest",
-  "hueShiftOptions" : [-40, -25, 0, 25, 40],
+  "friendlyName" : "Kelp Forest (dark)",
+  "hueShiftOptions" : [ -60, -50, -40, -30, -20, -10, 0, 10, 20, 30, 40, 50, 60 ],
 
-  "mainBlock" : "sand2",
-  "subBlocks" : [ "mud", "sandstone01" ],
+  "mainBlock" : "clay",
+  "subBlocks" : [ "oystershell", "marestone", "coral2" ],
   "ores" : "surface",
 
 
@@ -12,12 +12,12 @@
     "groups" : [
       {
         "select" : 3,
-        "pool" : [ 
-          [ 0.1666, "lilodon" ],          
-          [ 0.1666, "monopus" ],
-          [ 0.1666, "miasmop" ],
-          [ 0.1666, "snaggler" ],
-          [ 0.1666, "crabcano" ]
+        "pool" : [
+          [ 0.08, "glump" ],
+          [ 0.08, "sporgus2" ],
+          [ 0.08, "miasmop" ],
+          [ 0.08, "snaggler" ],
+          [ 0.08, "crabcano" ]
         ]
       },
       {
@@ -42,16 +42,56 @@
           [ 1, "fishlemoncritter" ],
           [ 1, "fishberrycritter" ],
           [ 1, "fishchilicritter" ],
-          [ 1, "tortoisecritter" ] 
+          [ 1, "tortoisecritter" ]
         ]
       }
     ],
     "monsterParameters" : {
-      "colors" : "ocean"
+	  "colors" : "ocean",
+          "statusSettings" : {
+            "stats" : {
+                "poisonStatusImmunity" : {
+                  "baseValue" : 1.0
+                },
+                "tarImmunity" : {
+                  "baseValue" : 1.0
+                },
+                "biooozeImmunity" : {
+                  "baseValue" : 1.0
+                },
+                "slimestickImmunity" : {
+                  "baseValue" : 1.0
+                },
+                "slimefrictionImmunity" : {
+                  "baseValue" : 1.0
+                }
+            }
+          }
+    }
+  },
+
+
+  "parallax" : "/parallax/surface/tidewaterfloor.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/ocean_underwater.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/ocean_underwater.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
   "surfacePlaceables" : {
-    "grassMod" : [ "sand" ],
+    "grassMod" : [ "clay" ],
     "grassModDensity" : 0.9,
 
     "items" : [
@@ -62,7 +102,7 @@
         "distribution" : "/biomes/distributions.config:overgroundChests",
 
         "type" : "treasureBox",
-        "treasureBoxSets" : [ "oceanFloorChest" ]
+        "treasureBoxSets" : [ "fftidewaterFloorChest" ]
       },
       {
         "mode" : "floor",
@@ -71,7 +111,7 @@
         "distribution" : "/biomes/distributions.config:scatteredSmall",
 
         "type" : "grass",
-        "grasses" : [ "corals", "seaweed", "waterplant2", "waterplant3" ]
+        "grasses" : [ "oceangrass", "oceangrass2", "tidewatergrass" ]
       },
       {
         "mode" : "floor",
@@ -88,14 +128,35 @@
       },
       {
         "mode" : "floor",
+        "priority" : 1,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "tidewatermini" ]
+      },
+      {
+        "mode" : "floor",
         "priority" : 2.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
+        "distribution" : "/biomes/distributions.config:denseSmall",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 180,
+        "treeStemList" : [ "kelp", "seaweed" ],
+        "treeFoliageList" : [ "flowy", "kelpy", "leafy", "wavy" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
 
         "type" : "bush",
         "bushes" : [
           {
-            "name" : "cone",
+            "name" : "darkcone",
             "baseHueShiftMax" : 180,
             "modHueShiftMax" : 180
           }
@@ -105,12 +166,12 @@
         "mode" : "floor",
         "priority" : 2.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
+        "distribution" : "/biomes/distributions.config:denseLarge",
 
         "type" : "bush",
         "bushes" : [
           {
-            "name" : "coral",
+            "name" : "darkcoral",
             "baseHueShiftMax" : 180,
             "modHueShiftMax" : 180
           }
@@ -119,13 +180,13 @@
       {
         "mode" : "floor",
         "priority" : 2.0,
-        "variants" : 1,
+        "variants" : 2,
         "distribution" : "/biomes/distributions.config:denseMedium",
 
         "type" : "bush",
         "bushes" : [
           {
-            "name" : "seagrass",
+            "name" : "darkseagrass",
             "baseHueShiftMax" : 180,
             "modHueShiftMax" : 180
           }
@@ -134,15 +195,64 @@
       {
         "mode" : "floor",
         "priority" : 2.0,
-        "variants" : 1,
+        "variants" : 2,
         "distribution" : "/biomes/distributions.config:denseMedium",
 
         "type" : "bush",
         "bushes" : [
           {
-            "name" : "seaweed",
+            "name" : "oceanbush",
             "baseHueShiftMax" : 180,
             "modHueShiftMax" : 180
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.20, "darkoshroom1" ], [0.20, "darkoshroom2" ], [0.20, "darkoshroom3" ], [0.20, "darkoshroom4" ], [0.20, "darkoshroom5" ], [0.33, "tonguebush1" ], [0.33, "tonguebush2" ] ]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.5,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:oceanRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.20, "brokenanchor" ]]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [
+            [0.35, "rockstony1" ],
+            [0.35, "rockstony2" ],
+            [0.35, "rockstony3" ],
+            [0.35, "rockstony4" ],
+            [0.35, "rockstony5" ],
+            [0.35, "rockstony6" ],
+            [0.35, "rockstony7" ],
+            [0.35, "rockstony8" ]
+            ],
+            "parameters" : { }
           }
         ]
       },
@@ -157,19 +267,45 @@
       },
       {
         "mode" : "floor",
-        "priority" : 2.0,
+        "priority" : 0.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:superCommon",
+        "distribution" : "/biomes/distributions.config:surfaceCrops",
 
-        "type" : "tree",
-        "treeFoliageHueShiftMax" : 180,
-        "treeStemHueShiftMax" : 15,
-        "treeStemList" : [ "kelp" ],
-        "treeFoliageList" : [ "kelpy" ]
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "wildcoralcreepseed" ] ],
+            "parameters" : {
+              "startingStage" : 4
+            }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "wildreefpodseed" ] ],
+            "parameters" : {
+              "startingStage" : 3
+            }
+          }
+        ]
       }
     ]
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "clay" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [ ]
   }
-  
 }
 
 

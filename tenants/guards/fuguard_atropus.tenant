@@ -1,0 +1,28 @@
+{
+  "name": "fuguard_atropus",
+  "priority": 10,
+
+  "colonyTagCriteria": {
+    "light": 1,
+    "door": 1,
+    "combat" : 8,
+    "atropus" : 9
+  },
+
+  "tenants": [
+    {
+      "spawn": "npc",
+      "species": ["human", "floran"],
+      "level": 4,
+      "type": "fuatropusguard",
+      "overrides": {
+        "damageTeamType" : "friendly"
+       }
+     }
+   ],
+
+  "rent": {
+    "periodRange": [900.0, 1800.0],
+    "pool": "villagerGift"
+  }
+}

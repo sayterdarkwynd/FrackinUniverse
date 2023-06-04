@@ -1,6 +1,18 @@
 [
-	{"op":"add","path":"/fuelAmount", "value": 200},
-	{"op":"replace", "path":"/rarity", "value":"uncommon"},
-	{"op":"add", "path":"/itemTags", "value":["reagent"]},
-	{"op":"replace", "path":"/category", "value":"fuel"}
+  [
+    { "op": "test", "path": "/itemTags", "inverse": true },
+    { "op": "add", "path": "/itemTags", "value": [] }
+  ],
+  [
+    { "op": "replace", "path": "/price", "value": 200 },
+    {
+      "op": "replace",
+      "path": "/description",
+      "value": "This radioactive isotope is typically found on Irradiated planets and moons.\n^blue;+^white;9 ^blue;Fuel^reset;"
+    },
+    { "op": "add", "path": "/fuelAmount", "value": 9 },
+    { "op": "replace", "path": "/category", "value": "fuel" },
+    { "op": "add", "path": "/itemTags/-", "value": "reagent" }//,
+    //{ "op": "add", "path": "/collectablesOnPickup", "value": { "fu_isotopes": "plutoniumrod" }}
+  ]
 ]

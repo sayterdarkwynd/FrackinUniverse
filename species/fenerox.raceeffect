@@ -1,0 +1,83 @@
+{
+	"stats": [
+		{ "stat": "maxHealth", "effectiveMultiplier": 0.9 },
+		{ "stat": "powerMultiplier", "effectiveMultiplier": 1.05 },
+		{ "stat": "fuCharisma", "baseMultiplier": 1.05 },
+
+		{ "stat": "physicalResistance", "amount": -0.15 },
+		{ "stat": "fireResistance", "amount": 0.02 },
+		{ "stat": "iceResistance", "amount": -0.18 },
+		{ "stat": "poisonResistance", "amount": 0.05 },
+		{ "stat": "electricResistance", "amount": 0.20 },
+		{ "stat": "cosmicResistance", "amount": 0.15 },
+		{ "stat": "shadowResistance", "amount": 0.05 },
+
+		{ "stat": "electricStatusImmunity", "amount": 1 },
+
+		{ "stat": "spearMastery", "amount": 0.25 }
+	],
+
+	"diet" : "carnivore",
+
+	"controlModifiers": {
+		"speedModifier": 1.12,
+		"airJumpModifier": 1.12
+	},
+
+	"envEffects": [
+		{
+			"biomes": [ "savannah" ],
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.15 }
+			]
+		},
+		{
+			"biomes": [ "sulphuric","sulphuricdark","sulphuricocean","tarball","slimeworld" ],
+			"stats": [
+				{ "stat": "protection", "effectiveMultiplier": 0.8 }
+			]
+		}
+	],
+
+	"weaponEffects": [
+		{
+			"name" : "fr_velocitybonus",
+			"weapons" : [ "melee" ],
+			"scripts" : [
+				{
+					"script" : "/scripts/fr_weaponscripts/velocitybonus.lua",
+					"contexts" : [ "hey FR, i'm not passive" ],
+					"args" : {}
+				}
+			]
+		}
+	],
+
+	"weaponScripts": [
+		{
+			"script": "/scripts/fr_weaponscripts/hungercost.lua",
+			"weapons": [ "spear" ],
+			"contexts": [ "spearstab-fire" ],
+			"args": {
+				"food": -0.05
+			}
+		}
+	],
+	
+	"scripts" : [
+		{
+			"script" : "/scripts/fr_scripts/feneroxStuff.lua",
+			"args" : {
+				"foodDefault" : 1.0,
+				"foodThreshold" : 0.65,
+				"healingRate" : 0.0045,
+				"stats": [
+					{ "stat": "maxHealth", "effectiveMultiplier": 1.08 },
+					{ "stat": "powerMultiplier", "effectiveMultiplier": 1.08}
+				]
+			}
+		}
+	],
+	"special": [ "headlampveluu"],
+	"tech" : [ "huntersclaw" ]
+}

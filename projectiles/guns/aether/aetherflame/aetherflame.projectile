@@ -1,0 +1,52 @@
+{
+  "projectileName" : "aetherflame",
+  "image" : "aetherflame.png",
+  "physics" : "laser",
+  "animationCycle" : 1,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 10,
+  "power" : 5,
+  "level" : 7,
+  "speed" : 35,
+  "fullbright" : true,
+  "timeToLive" : 1,
+  "lightColor" : [14,191,191],
+  "damageKind" : "aether",
+  "damagePoly" : [ [-10, 0], [0, 7], [10, 10], [10, 0], [-10, -10], [0, -7] ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/hellfireexplosion2/hellfireexplosion2.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "flamethrowerflameff",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 180
+    },
+    {
+      "action" : "projectile",
+      "type" : "flamethrowerflameff",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 35
+    },
+    {
+      "action" : "projectile",
+      "type" : "flamethrowerflameff",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : -35
+    },
+    {
+      "action" : "projectile",
+      "type" : "flamethrowerflameff",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : -225
+    }
+  ],
+  "emitters" : [ "fireplasma" ],
+  "statusEffects" : [ "burning" ]
+}

@@ -1,0 +1,308 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 4,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "zapaura" ], [], [], [], [], [], [], ["zapaura"] ],
+              "particleEmittersOn" : [ [], [], ["zapaura"], [], [], [], [], [] ]
+            }
+          },
+          "walk" : {
+            "frames" : 5,
+            "cycle" : 0.65,
+            "mode" : "loop"
+          },
+          "jump" : {
+            "frames" : 1,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/monster_hop.ogg",
+              "immediateSoundRangeMultiplier" : 0.5
+            }
+          },
+          "sleep" : {
+            "frames" : 8
+          },
+          "awaken" : {
+            "frames" : 7
+          },
+          "hurt" : {
+            "frames" : 3,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/robotboss_turnhostile.ogg"
+            },
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "zapaura" ], [], [], [], [], [], [], ["zapaura"] ],
+              "particleEmittersOn" : [ [], [], ["zapaura"], [], [], [], [], [] ]
+            }
+          },
+          "fall" : {
+            "frames" : 3
+          },
+          "invulnerablewindup" : {
+            "frames" : 7,
+            "cycle" : 0.5,
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "", "", "", "", "/sfx/npc/boss/robotboss_pain2.ogg", "" ]
+            },
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/robotboss_turnhostile.ogg"
+            }
+          },
+          "fire" : {
+            "frames" : 7,
+            "cycle" : 0.5,
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "", "", "", "", "/sfx/npc/boss/robotboss_pain3.ogg", "" ]
+            },
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/robotboss_turnhostile.ogg"
+            }
+          },
+
+          "chargewindup" : {
+            "frames" : 3,
+            "cycle" : 0.5,
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "", "", "", "", "/sfx/npc/boss/robotboss_pain1.ogg", "" ]
+            },
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/robotboss_turnhostile.ogg"
+            }
+          },
+          "chargewinddown" : {
+            "frames" : 3,
+            "cycle" : 0.5,
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "", "", "", "", "/sfx/npc/boss/robotboss_pain2.ogg", "" ]
+            }
+          },
+          "charge" : {
+            "frames" : 5,
+            "cycle" : 0.8,
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "", "", "", "", "/sfx/npc/boss/robotboss_pain3.ogg", "" ]
+            },
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/robotboss_turnhostile.ogg"
+            }
+          },
+          "invulnerablewinddown" : {
+            "frames" : 7,
+            "cycle" : 0.5,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/robotboss_turnhostile.ogg"
+            }
+          },
+          "invulnerable" : {
+            "frames" : 1,
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "zapaura" ], [], [], [], [], [], [], ["zapaura"] ],
+              "particleEmittersOn" : [ [], [], ["zapaura"], [], [], [], [], [] ]
+            }
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "offset" : [-0.0625, 0.6875]
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "invulnerablewindup" : {
+              "properties" : {
+                "image" : "<partImage>:sleep.<frame>"
+              }
+            },
+            "invulnerablewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:awaken.<frame>"
+              }
+            },
+            "invulnerable" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerable.<frame>"
+              }
+            },
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:charge.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:charge.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "particleEmitters" : {
+    "zapaura" : {
+      "emissionRate" : 4,
+      "offsetRegion" : [ 1.0, -1.0, 2.0, -0.0 ],
+      "particles" : [
+        { "particle" : "electricenergy" },
+        { "particle" : "electricenergy" },
+        { "particle" : "energy" },
+        { "particle" : "energy" }
+
+      ]
+    },
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "electricenergy" },
+        { "particle" : "electricenergy" },
+        { "particle" : "electricenergy" },
+        { "particle" : "electricenergy" },
+        { "particle" : "electricenergy" },
+
+        { "particle" : "smallelectriccloud1" },
+        { "particle" : "smallelectriccloud2" },
+        { "particle" : "smallelectriccloud1" },
+        { "particle" : "smallelectriccloud2" },
+        { "particle" : "smallelectriccloud1" },
+        { "particle" : "smallelectriccloud2" },
+        { "particle" : "smallelectriccloud1" },
+        { "particle" : "smallelectriccloud2" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "turnHostile" : [ "/sfx/npc/boss/robotboss_turnhostile.ogg" ],
+    "idle" :["/sfx/npc/boss/robotboss_idle1.ogg"],
+    "fire" :["/sfx/weapons/explosion2.ogg"],
+    "chestgun" :["/sfx/weapons/energypew.ogg"],
+    "dualgun" :["/sfx/weapons/k3.ogg"],
+    "melee" :["/sfx/npc/monsters/toss1.ogg"],
+    "shooting" :["/sfx/npc/monsters/toss1.ogg"],
+    "deathPuff" :["/sfx/npc/boss/robotboss_pain1.ogg"],
+    "attackSound" :["/sfx/npc/boss/robotboss_pain2.ogg"],
+    "aggroHop" :["/sfx/npc/boss/robotboss_pain3.ogg"]
+  }
+}

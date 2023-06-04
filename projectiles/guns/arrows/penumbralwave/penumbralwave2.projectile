@@ -1,0 +1,47 @@
+{
+  "projectileName" : "penumbralwave2",
+  "image" : "penumbralwave.png",
+  "physics" : "arrow",
+  "animationCycle" : 0.7,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 3,
+  "power" : 1,
+  "level" : 4,
+  "speed" : 45,
+  "fullbright" : true,
+  "timeToLive" : 0.7,
+  "lightColor" : [214,120,243],
+  "damageKind" : "shadowbow",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/spatialcollapse/spatialcollapsearrow.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "furavager2",
+      "inheritDamageFactor" : 0.1,
+	  "angleAdjust" : 135
+    },
+	{
+      "action" : "projectile",
+      "type" : "furavager2",
+      "inheritDamageFactor" : 0.1,
+	  "angleAdjust" : -135
+    },
+    {
+      "action" : "projectile",
+      "type" : "furavager2",
+      "inheritDamageFactor" : 0.1,
+	  "angleAdjust" : -45
+    },
+	{
+      "action" : "projectile",
+      "type" : "furavager2",
+      "inheritDamageFactor" : 0.1,
+	  "angleAdjust" : 45
+    }
+  ],
+  "emitters" : [ "spectralsparkle" ],
+  "statusEffects" : [ "biooozepoison2" ]
+}

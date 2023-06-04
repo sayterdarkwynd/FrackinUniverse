@@ -1,19 +1,18 @@
 {
-  "itemName" : "fayshroom",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "fayshroom.png",
-  "description" : "Stab those that harm you.",
-  "shortdescription" : "Fayshroom",
-   "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-       "burstfayshroom"
-    ] ]
+	"itemName": "fayshroom",
+	"category": "food",
+	"inventoryIcon": "fayshroom.png",
+	"rarity": "Rare",
+	"price": 10,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;120% Gas Thorns^reset;: 1m",
+	"shortdescription": "Fayshroom",
+
+	"effects": [
+		[{
+			"effect": "burstfayshroom",
+			"duration": 60
+		}]
+	]
 }

@@ -1,0 +1,26 @@
+[
+    [
+    	{
+    		"op": "replace",
+    		"path": "/interactAction",
+    		"value": "ScriptPane"
+    	}
+	],
+	[
+		{ "op": "test", "path": "/interactData" },
+		{ "op": "replace", "path": "/interactData", "value": "/zb/newSail/newSail.config" }
+	],
+	[
+		{ "op": "test", "path": "/interactData", "inverse": true },
+		{ "op": "add", "path": "/interactData", "value": "/zb/newSail/newSail.config" }
+	],
+
+	[
+		{ "op": "test", "path": "/scripts" },
+		{ "op": "add", "path": "/scripts/-", "value": "/objects/scripts/customtechstation.lua" }
+	],
+	[
+		{ "op": "test", "path": "/scripts", "inverse": true },
+		{ "op": "add", "path": "/scripts", "value": [ "/objects/scripts/customtechstation.lua" ] }
+	]
+]

@@ -1,0 +1,42 @@
+{
+  "objectName" : "atropusdesk",
+  "colonyTags" : ["atropus","storage","commerce"],
+  "rarity" : "legendary",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "A desk made from flesh and organs.",
+  "shortdescription" : "Atropus Desk",
+  "race" : "generic",
+  "category" : "furniture",
+  "price" : 300,
+  "health" : 1.5,
+
+  "apexDescription" : "A vile looking desk.",
+  "avianDescription" : "This makes me want to throw up.",
+  "floranDescription" : "Not desssk! Isss food!",
+  "glitchDescription" : "Wary. This desk makes my circuits shake.",
+  "humanDescription" : "This desk makes me feel sick!",
+  "hylotlDescription" : "You wouldn't catch me anywhere near this vile thing.",
+  "novakidDescription" : "I ain't touchin' this.",
+
+  "inventoryIcon" : "atropusdeskicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "atropusdesk.png:<color>.<key>",
+      "imagePosition" : [-16, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "scripts" : [ "atropusfurniture.lua" ],
+  "scriptDelta" : 5,
+
+  "openSounds" : [ "/sfx/objects/fleshdoor_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/fleshdoor_close.ogg" ],
+  "slotCount" : 12,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+}

@@ -4,37 +4,53 @@
   "inventoryIcon" : "biogun.png",
   "maxStack" : 1,
   "rarity" : "rare",
-    "description" : "Bone-formed bioweapon.",
+  "description" : "Bone-formed biological weapon.
+^yellow;Inflicts bio-ooze effect^reset;
+^green;Aimable stun-balls^reset;",
     "shortdescription" : "Bio Rifle",
+  "category" : "bioweapon",
   "level" : 4,
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "weaponType" : "Bio-Weapon",
-  "itemTags" : ["weapon","ranged","rocketlauncher"],
+  "itemTags" : ["weapon","ranged","rocketlauncher","bioweapon", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "biogun.png",
+    "middlefullbright" : "",
     "barrel" : "",
     "muzzleFlash" : ""
   },
   "animationCustom" : {
     "sounds" : {
       "fire" : [ "/sfx/weapons/biolaunch.ogg" ]
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "plasmafireflames", "offset" : [0.0, 0.0] },
+          { "particle" : "radiationburndust", "offset" : [0.0, 0.0] },
+          { "particle" : "jellydrip1", "offset" : [0.0, 0.0] },
+          { "particle" : "jellydrip2", "offset" : [0.0, 0.0] },
+          { "particle" : "jellydrip3", "offset" : [0.0, 0.0] }
+        ]
+      }
     }
   },
 
   "baseOffset" : [1.0, 0.2],
   "muzzleOffset" : [2.645, 0.125],
-  
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "poison",
+  "scripts" : [ "/items/active/weapons/ranged/gun.lua" ],
+
+  "elementalType" : "bioweapon",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
     "fireTime" : 1.0,
     "baseDps" : 7,
     "energyUsage" : 34.0,
@@ -44,38 +60,39 @@
     "fireType" : "auto",
 
     "projectileType" : "bioblast3",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 30,
-      "knockback" : 1
+      "knockback" : 1,
+      "statusEffects" : [ "weakpoison" ]
     },
-	  "stances" : {
-	    "idle" : {
-	      "armRotation" : 0,
-	      "weaponRotation" : 0,
-	      "twoHanded" : true,
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
 
-	      "allowRotate" : true,
-	      "allowFlip" : true
-	    },
-	    "fire" : {
-	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    },
-	    "cooldown" : {
-	      "duration" : 0.25,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.25,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    }
-	  }
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
   },
     "particleEmitters" : {
       "muzzleFlash" : {
@@ -87,8 +104,11 @@
       }
     },
 
+  "critChance" : 4,
+  "critBonus" : 12,
 
   "altAbilityType" : "biogrenadelauncher",
-    "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

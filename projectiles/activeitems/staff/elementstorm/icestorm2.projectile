@@ -1,0 +1,28 @@
+{
+  "projectileName" : "icestorm2",
+  "physics" : "default",
+  "image" : "icestorm.png",
+  "flippable" : true,
+  "animationCycle" : 0.25,
+  "frameNumber" : 4,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [110, 110, 140],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/iceexplosionknockback.config"
+    }
+  ],
+  "power" : 20,
+  "knockback" : 40,
+  "speed" : 80,
+  "damageKind" : "iceplasma",
+  "damageType" : "NoDamage",
+  "damageKindImage" : "/interface/statuses/ice.png",
+  "statusEffects" : [
+    "frostslow"
+  ],
+  "hydrophobic" : true,
+  "persistentAudio" : "/sfx/projectiles/dragonprojectile_loop.ogg",
+  "emitters" : [ "iceplasma", "icetrailfast" ]
+}

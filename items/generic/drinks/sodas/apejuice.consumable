@@ -1,0 +1,23 @@
+{
+  "itemName" : "apejuice",
+  "rarity" : "rare",
+  "price" : 100,
+  "category" : "drink",
+  "inventoryIcon" : "apejuice.png",
+  "description" : "It looks like a clever play on words. It isn't. It's Apex blood.\n^cyan;+^white;30% ^cyan;Rage ^gray;(^white;30s^gray;)^reset;",
+  "shortdescription" : "Ape Juice",
+  "maxStack" : 1000,
+  "tooltipKind": "food",
+  "effects" : [ [
+    {
+      "effect" : "rage",
+      "duration" : 30
+    }
+  ] ],
+  "foodValue" : 15,
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.1,
+  "blockingEffects" : [ "wellfed" ],
+  "emitters" : [ "drinking" ]
+}

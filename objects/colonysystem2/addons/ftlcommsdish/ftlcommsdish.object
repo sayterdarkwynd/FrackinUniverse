@@ -1,0 +1,63 @@
+{
+  "objectName" : "c_ftlcommsdish",
+  "rarity" : "Uncommon",
+  "category" : "decorative",
+  "colonyTags" : ["outpost","electronic","mechanical"],
+  "price" : 3500,
+  "description" : "A powerful, long-ranged transmitter with incredible upload and download speed. ^yellow;+15 Happiness^reset; ^blue;Requires 20J every 300s.^reset;",
+  "shortdescription" : "FTL Internet Dish",
+  "race" : "generic",
+  "printable" : false,
+
+  "inventoryIcon" : "ftlcommsdishicon.png",
+  "lightColor" : [22, 31, 36],
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "ftlcommsdish.png:<color>", "fullbright" : true }, { "image" : "ftlcommsdishlit.png:<color>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-26, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "ftlcommsdish.png:<color>", "fullbright" : true }, { "image" : "ftlcommsdishlit.png:<color>" } ],
+      "direction" : "right",
+      "lightPosition" : [-1, 1],
+
+      "imagePosition" : [-22, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+
+	"scripts" : [ "/scripts/fupower.lua","/objects/colonysystem2/addons/ftlcommsdish/ftlcommsdish.lua"],
+    "scriptDelta" : 300,
+
+
+	"inputNodes" : [ [0, 1] ],
+	"powertype" : "input",
+	"isn_requiredPower" : 20,
+	"isn_liquidCollector" : false,
+
+
+
+	"airWellRange":256,
+	"productionTime":1000,
+    "frameCooldown" : 67,
+    "autoCloseCooldown" : 3600,
+
+	"happiness":15
+
+
+}

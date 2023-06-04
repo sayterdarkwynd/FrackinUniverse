@@ -5,11 +5,12 @@
   "slaveControlTimeout" : 2.0,
   "slaveControlHeartbeat" : 1.0,
   "canBeHit" : true,
+  "safeLiquids" : ["water", "fusaltwater","alienjuice","beer","bloodliquid","crystalliquid","darkwater","elderfluid","fuel","healingliquid","milk","organicsoup","poison","protociteliquid","pus","sludge","swampwater","wastewater"],
   "animation" : "fusub.animation",
-  
-  
+
+
   "animationCustom" : {
-  
+
 
 
     "particleEmitters" : {
@@ -88,7 +89,7 @@
       "orientation" : "sit",
       "dance" : "warmhands",
       "exitBottomOffset" : [-4, 4.8],
-      "statusEffects" : ["invulnerable","liquidimmunity","airimmunity"]
+      "statusEffects" : [ "invulnerable","liquidimmunity","airimmunity", "shadowimmunity" ]
     },
     "passenger1" : {
       "part" : "seat",
@@ -97,7 +98,7 @@
       "emote" : "neutral",
       "dance" : "flipswitch",
       "exitBottomOffset" : [0, 5.1],
-      "statusEffects" : ["invulnerable","liquidimmunity","airimmunity"]
+      "statusEffects" : [ "invulnerable","liquidimmunity","airimmunity", "shadowimmunity" ]
     },
     "passenger2" : {
       "part" : "seat",
@@ -106,7 +107,7 @@
       "emote" : "neutral",
       "dance" : "flipswitch",
       "exitBottomOffset" : [4, 5.1],
-      "statusEffects" : ["invulnerable","liquidimmunity","airimmunity"]
+      "statusEffects" : [ "invulnerable","liquidimmunity","airimmunity", "shadowimmunity" ]
     }
   },
 
@@ -134,7 +135,7 @@
   "maxHealth" : 700,
   "protection" : 25,
   "materialKind" : "robotic",
-  
+
 // movement settings
   "ballastedSettings" : {
     "liquidBuoyancy" : 1,

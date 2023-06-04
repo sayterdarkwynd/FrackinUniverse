@@ -1,0 +1,65 @@
+{
+  "objectName" : "fissionfurnacenew",
+  "colonyTags" : [ "fu", "science", "scienceoutpost", "mining", "tool" ],
+  "rarity" : "Essential",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/fissionfurnace.config",
+    "filter" : [ "fissionfurnace" ]
+  },
+  "printable" : false,
+  "description" : "This reliable unit is capable of making even the toughest alloys into usable metal.",
+  "shortdescription" : "^orange;Fission Furnace^reset;",
+  "race" : "generic",
+  "category" : "crafting",
+  "price" : 1250,
+  "lightColor" : [0, 0, 90],
+
+
+  "inventoryIcon" : "fissionfurnaceiconnew.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fissionfurnacenew.png:<color>.<frame>", "fullbright" : true }, { "image" : "fissionfurnacenewlit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "imagePosition" : [0, 0],
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "fissionfurnacenew.png:<color>.<frame>", "fullbright" : true }, { "image" : "fissionfurnacenewlit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+
+
+  ],
+  "scripts" : [ "/scripts/npcToyObject.lua" ],
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "crouchwarm"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "name": "action-burroweffect",
+  "description": null,
+  "scripts": [
+    "/scripts/actions/sensor.lua",
+    "/scripts/actions/animator.lua"
+  ],
+  "parameters": {
+    "enterEmitter": "groundBurstEmitter",
+    "behindGroundEmitter": "behindGroundEmitter",
+    "exitEmitter": "groundBurstEmitter"
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "pointTileCollision",
+        "type": "action",
+        "name": "pointTileCollision",
+        "parameters": {
+          "position": {"key": "self"}
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": -1},
+          "success": {"value": 1}
+        },
+        "children": [
+          {
+            "title": "emitParticles",
+            "type": "action",
+            "name": "emitParticles",
+            "parameters": {
+              "emitter": {"key": "<behindGroundEmitter>"}
+            }
+          },
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "burstParticleEmitter",
+                "type": "action",
+                "name": "burstParticleEmitter",
+                "parameters": {
+                  "emitter": {"value": "<enterEmitter>"}
+                }
+              },
+              {
+                "title": "setGlobalTag",
+                "type": "action",
+                "name": "setGlobalTag",
+                "parameters": {
+                  "tag": {"key": "groundState"},
+                  "type": {"value": "below"}
+                }
+              },
+              {
+                "title": "dynamic",
+                "type": "composite",
+                "name": "dynamic",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "inverter",
+                    "type": "decorator",
+                    "name": "inverter",
+                    "parameters": {},
+                    "child": {
+                      "title": "pointTileCollision",
+                      "type": "action",
+                      "name": "pointTileCollision",
+                      "parameters": {}
+                    }
+                  },
+                  {
+                    "title": "runner",
+                    "type": "action",
+                    "name": "runner",
+                    "parameters": {}
+                  }
+                ]
+              },
+              {
+                "title": "burstParticleEmitter",
+                "type": "action",
+                "name": "burstParticleEmitter",
+                "parameters": {
+                  "emitter": {"key": "<exitEmitter>"}
+                }
+              },
+              {
+                "title": "setGlobalTag",
+                "type": "action",
+                "name": "setGlobalTag",
+                "parameters": {
+                  "tag": {"key": "groundState"},
+                  "type": {"value": "above"}
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

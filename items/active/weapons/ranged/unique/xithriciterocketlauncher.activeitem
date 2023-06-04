@@ -1,0 +1,109 @@
+{
+  "itemName" : "xithriciterocketlauncher",
+  "price" : 1600,
+  "inventoryIcon" : "xithriciterocketlauncher.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Superior devastation that warps the fabric of spacetime.
+^cyan;Cosmic blasts^reset;",
+    "shortdescription" : "Xithricite Rocketlauncher",
+  "category" : "rocketLauncher",
+  "level" : 6,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","rocketlauncher", "upgradeableWeapon","xithricite","explosive"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "xithriciterocketlauncher.png",
+    "middlefullbright" : "xithriciterocketlauncherfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.2, 0.5125]
+		  }
+		}
+      }
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [-6.4, 0.0] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/marauder8.wav" ]
+    }
+  },
+
+  "baseOffset" : [1.2, 0.5125],
+  "muzzleOffset" : [1.0, 0.375],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
+    "fireTime" : 2,
+    "baseDps" : 8,
+    "useEnergy" : true,
+    "energyUsage" : 50,
+    "runSlowWhileShooting" : true,
+    "inaccuracy" : 0.03,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "minirocketxith",
+    "projectileParameters" : {
+      "knockback" : 6
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 4,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "cooldown" : {
+	      "duration" : 0.055,
+	      "armRotation" : 4,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 12,
+
+  "altAbilityType" : "supermissile",
+  "altAbility" : { "fireTime" : 4},
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

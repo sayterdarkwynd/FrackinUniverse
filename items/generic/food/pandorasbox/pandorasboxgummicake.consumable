@@ -1,0 +1,25 @@
+{
+  "itemName" : "pandorasboxgummicake",
+  "rarity" : "Uncommon",
+  "price" : 150,
+  "category" : "preparedFood",
+  "inventoryIcon" : "pandorasboxgummicake.png",
+  "description" : "A delicious gelatin-pastery combination!.",
+  "shortdescription" : "Gummi Cake",
+  "effects" : [ [
+    {
+        "effect" : "maxenergyscalingboostfood",
+        "duration" : 60
+    }
+  ] ],
+  "foodValue" : 30,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 8,
+  "blockingEffects" : [
+    "wellfed"
+  ]//,
+  //"learnBlueprintsOnPickup" : [ "carrotcake", "coffeecake", "chocolatecake" ]
+}

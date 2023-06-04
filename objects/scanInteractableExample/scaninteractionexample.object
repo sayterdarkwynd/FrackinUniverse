@@ -1,0 +1,45 @@
+{
+	"objectName" : "scaninteractionexample",
+	"shortdescription" : "A dirty, dirty, rock.",
+	"description" : "I'm calling the police.",
+	"colonyTags" : ["misc"],
+	"rarity" : "Common",
+	"race" : "generic",
+	"category" : "other",
+
+	"printable" : false,
+	"price" : 0,
+
+	"inventoryIcon" : "object.png",
+	"orientations" : [
+		{
+			"image" : "object.png",
+			"imagePosition" : [-8, 0],
+			"animationPosition" : [-8, 0],
+
+			"flipImages" : true,
+			"direction" : "left",
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		},
+		{
+			"image" : "object.png",
+			"imagePosition" : [-8, 0],
+			"animationPosition" : [-8, 0],
+
+			"direction" : "right",
+			"lightPosition" : [0, 3],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		}
+	],
+
+	"outputNodes" : [ [0, 0] ],
+	"scripts" : [ "scaninteractionexample.lua" ],
+  "treasure" : {
+    "pool" : "ffcosmicSurprise",
+    "level" : 1
+  }
+}

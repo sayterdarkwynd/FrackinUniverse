@@ -1,0 +1,143 @@
+{
+  "itemName" : "kirhospistol",
+  "price" : 21,
+  "inventoryIcon" : "kirhospistolicon.png",
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "A low-capacity, high power energy sidearm.
+^cyan;Hunting and Energy weapon^reset;",
+  "shortdescription" : "Kirhosi Blaster",
+  "category" : "pistol",
+  "level" : 1,
+//  "learnBlueprintsOnPickup" : [ "kirhospistol" ],
+  "tooltipKind" : "gun2overheat",
+
+  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon", "energy","kirhos"],
+  "twoHanded" : false,
+  "weaponType" : "Energy",
+  "animation" : "fugunoverheating.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "kirhospistol.png",
+    "middlefullbright" : "kirhospistolfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/greenmuzzleblast.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.8, 0.26]
+		  }
+		}
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/dark-explosion.ogg" ],
+      "cooldown" : [ "/sfx/weapons/charging.wav" ]
+    }
+  },
+
+  "baseOffset" : [0.8, 0.26],
+  "muzzleOffset" : [0.6, 0],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
+    "class" : "FUOverHeating",
+    "fireTime" : 0.35,
+    "baseDps" : 9.65,
+    "energyUsage" : 30,
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+	//Overheating Weapon Values (based heavily on elithian races version)
+	"heatGain" : 4,					//Heat generated per shot
+	"coolingTime" : 0.5,				//Time before passive cooling kicks in
+	"heatLossLevel" : 3,				//Heat lost per second while not overheated
+	"heatLossRateMax" : 10,				//Heat lost per second while overheated
+	"lowLevel" : 7,					//Value required to reach Low heat
+	"medLevel" : 14,				//Value required to reach Medium heat
+	"highLevel" : 21,				//Value required to reach High heat
+	"overheatLevel" : 30,				//Overheat at this value
+
+    "projectileType" : "farsightshotkirhos",
+    "projectileParameters" : {
+      "speed" : 70,
+      "knockback" : 20
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : false,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "overheat" : {
+		"armRotation" : -22,
+		"weaponRotation" : 56,
+		"twoHanded" : false,
+
+		"allowRotate" : false,
+		"allowFlip" : true
+	    }
+	  }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 8,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 200,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters" : {
+    "shortdescription" : "^cyan;Kirhos Blaster II^reset; ^yellow;^reset;",
+  "description" : "Perfection.
+^cyan;Hunting and Energy Weapon^reset;
+^yellow;+1 projectile^reset;",
+  "animationParts" : {
+    "middle" : "kirhospistol2.png",
+    "middlefullbright" : "kirhospistolfullbright.png"
+  },
+    "inventoryIcon" : [{ "image" : "kirhospistolicon.png" }],
+	  "critChance" : 1,
+	  "critBonus" : 9,
+	  "primaryAbility" : {
+		"heatLossLevel" : 6,
+		"heatLossRateMax" : 11,
+		"lowLevel" : 11,
+		"medLevel" : 20,
+		"highLevel" : 35,
+		"overheatLevel" : 42
+	  }
+  }
+}

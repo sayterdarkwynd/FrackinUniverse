@@ -1,19 +1,26 @@
 {
-  "itemName" : "mint",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "mint.png",
-  "description" : "Provides energy regeneration.",
-  "shortdescription" : "Star Mint",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-     "energyregenfu10"
-    ] ]
+	"itemName": "mint",
+	"inventoryIcon": "mint.png",
+	"category": "food",
+	"rarity": "uncommon",
+	"price": 10,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+5% E. Regen & -2.5% E. Regen Block^reset;: 2m",
+	"shortdescription": "Star Mint",
+	"effects": [
+		[{
+			"effect": "energyregenfu10",
+			"duration": 120
+		}]
+	],
+	"blockingEffects": [
+		"energyregenfu50",
+		"energyregenfu60",
+		"energyregenfu25",
+		"energyregenfu35",
+		"energyregenfu20",
+		"energyregenfu05",
+		"energyregenfu40"
+	]
 }

@@ -1,0 +1,42 @@
+{
+  "objectName" : "plynth2",
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 400,
+  "printable" : false,
+  "description" : "How does it glow? I see no power source. Yep, that's creepy.",
+  "shortdescription" : "Glowing Monolith",
+  "lightColor" : [200, 25, 25],
+  "health" : 100,
+  "inventoryIcon" : "plynth2.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "plynth2.png:<color>", "fullbright" : true }, { "image" : "plynth2fullbright.png:<color>" } ],
+      "imagePosition" : [0, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "plynth2.png:<color>", "fullbright" : true }, { "image" : "plynth2fullbright.png:<color>" } ],
+      "imagePosition" : [0, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
+  "smashDropOptions" : [
+    [ [ "plynth2", 1, { } ]]
+  ],
+
+  "breakDropOptions" : [
+    [ [ "plynth2", 1, { } ] ]
+  ],
+  "biomePlaced" : true
+}

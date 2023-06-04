@@ -1,0 +1,35 @@
+{
+  "objectName" : "sentrybotlightbot",
+  "rarity" : "common",
+  "description" : "Keeps a light on in the dark.",
+  "shortdescription" : "Light Bot",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 50,
+  "printable" : false,
+  //"learnBlueprintsOnPickup" : [ "sentrybotshieldbot", "sentrybotcapturebot", "sentrybotmining1" ],
+  "inventoryIcon" : "sentrybotlightboticon.png",
+  "orientations" : [
+    {
+      "dualImage" : "sentrybotlightbot.png:<color>",
+
+      "imagePosition" : [-10, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaces" : [  [0, 0], [-1, 0], [0, 1], [-1, 1]],
+//      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "botspawner" : {
+      "type" : "sentryminidrone1",
+	  "monsterImage":"/monsters/flyers/sentryminidrone1/sentryminidrone1.png:idle.1?"
+  },
+
+  "scripts" : [
+    "/spawners/fubotspawner.lua"
+  ],
+  "scriptDelta" : 5
+}

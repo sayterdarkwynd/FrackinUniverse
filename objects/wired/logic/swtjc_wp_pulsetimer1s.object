@@ -1,0 +1,41 @@
+{
+  "objectName" : "swtjc_wp_pulsetimer1s",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "Sends a 1-second-long signal pulse whenever, and as soon as, it becomes active.",
+  "shortdescription" : "1-Second Pulse Transmitter",
+  "race" : "human",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "floranDescription" : "Sssendsss a 1-sssecond-long sssignal pulssse whenever, and asss sssoon asss, it becomesss active.",
+  "glitchDescription" : "Observation. Sends a 1-second-long signal pulse whenever, and as soon as, it becomes active.",
+
+  "inventoryIcon" : "timer.png:default.1",
+  "orientations" : [
+    {
+      "image" : "timer.png:<color>.off",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/logic/swtjc_wp_pulsetimer.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/wired/logic/logic.animation",
+
+  "animationParts" : {
+    "switch" : "timer.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "inputNodes" : [ [-1, 0] ],
+  "outputNodes" : [ [0, -1] ],
+
+  "interval" : 66
+}

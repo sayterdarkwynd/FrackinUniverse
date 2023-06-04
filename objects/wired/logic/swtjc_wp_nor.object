@@ -1,0 +1,43 @@
+{
+  "objectName" : "swtjc_wp_nor",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A /'NOR'/ gate. Requires all inputs to be /'off'/ to work.",
+  "shortdescription" : "NOR Gate",
+  "race" : "human",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "glitchDescription" : "Observation. A /'NOR'/ gate. Requires all inputs to be /'off'/ to work.",
+
+  "inventoryIcon" : "swtjc_wp_nor.png:default.1",
+  "orientations" : [
+    {
+      "image" : "swtjc_wp_nor.png:<color>.off",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/logic/swtjc_wp_logic.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/wired/logic/logic.animation",
+
+  "animationParts" : {
+    "switch" : "swtjc_wp_nor.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "inputNodes" : [ [-1, -1], [-1, 0] ],
+  "outputNodes" : [ [0, -1] ],
+
+  "gates" : 2,
+  "truthtable" : [ [ true, false ], [ false, false ] ]
+}

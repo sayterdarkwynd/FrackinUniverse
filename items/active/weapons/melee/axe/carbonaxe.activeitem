@@ -2,16 +2,17 @@
   "itemName" : "carbonaxe",
   "price" : 640,
   "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Sturdy, and ideal for survivalists.",
-  "shortdescription" : "Carbon Axe",
-  "tooltipKind" : "sword",
+  "rarity" : "uncommon",
+  "description" : "Sturdy, and ideal for survivalists.
+^cyan;Inflicts bleeding^reset;",
+  "shortdescription" : "Carbon Hatchet",
+  "tooltipKind" : "sword2",
   "category" : "axe",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","axe"],
-"level" : 3,
+  "itemTags" : ["weapon","melee","axe", "upgradeableWeapon"],
+  "level" : 3,
   "inventoryIcon" : "carbonaxe.png",
-
+  //"collectablesOnPickup" : { "fu_weaponaxe" : "carbonaxe" },
   "animation" : "axe.animation",
   "animationParts" : {
     "blade" : "carbonaxe.png",
@@ -34,11 +35,12 @@
 
   "primaryAbilityType" : "axecleave",
   "primaryAbility" : {
-    "fireTime" : 0.62,
-    "baseDps" : 10,
+    "fireTime" : 0.52,
+    "baseDps" : 8.75,
     "damageConfig" : {
       "damageSourceKind" : "axe",
-      "knockback" : 12
+      "knockback" : 12,
+      "statusEffects" : [ "bleedingshort" ]
     },
     "stances" : {
       "idle" : {
@@ -66,6 +68,7 @@
       }
     }
   },
-
+  "critChance" : 4,
+  "critBonus" : 4,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

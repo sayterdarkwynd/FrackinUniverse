@@ -1,0 +1,162 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "shipper" : {
+        "default" : "ready",
+        "states" : {
+          "error" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "loop"
+          },
+          "ready" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "loop"
+          },
+          "ship" : {
+            "frames" : 23,
+            "cycle" : 2.0,
+            "mode" : "transition",
+            "transition" : "closed",
+            "properties" : {
+              "immediateSoundRangeMultiplier" : 0.5
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "/sfx/objects/cropshipper_arm_up.ogg", "", "", "", "", "", "", "/sfx/objects/cropshipper_box_lock2.ogg", "", "", "", "", "", "", "/sfx/objects/cropshipper_arm_down.ogg", "", "", "", "", "", "/sfx/objects/cropshipper_door_close.ogg", "", "" ]
+            }
+          },
+          "closed" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "loop"
+          },
+          "open" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "ready",
+            "properties" : {
+              "immediateSoundRangeMultiplier" : 0.5
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "/sfx/objects/cropshipper_door_open.ogg", "", "", "" ]
+            }
+          },
+          "toready" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "mode" : "transition",
+            "transition" : "ready"
+          },
+          "toerror" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "mode" : "transition",
+            "transition" : "error"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "shipper" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "shipper" : {
+            "error" : {
+              "properties" : {
+                "image" : "cropshipperkhe.png:error.<frame>"
+              }
+            },
+            "ready" : {
+              "properties" : {
+                "image" : "cropshipperkhe.png:ready.<frame>"
+              }
+            },
+            "ship" : {
+              "properties" : {
+                "image" : "cropshipperkhe.png:ship.<frame>"
+              }
+            },
+            "closed" : {
+              "properties" : {
+                "image" : "cropshipperkhe.png:closed.<frame>"
+              }
+            },
+            "open" : {
+              "properties" : {
+                "image" : "cropshipperkhe.png:open.<frame>"
+              }
+            },
+            "toready" : {
+              "properties" : {
+                "image" : "cropshipperkhe.png:toready.<frame>"
+              }
+            },
+            "toerror" : {
+              "properties" : {
+                "image" : "cropshipperkhe.png:toerror.<frame>"
+              }
+            }
+          }
+        }
+      },
+      "shipperfullbright" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 1,
+          "fullbright" : true
+        },
+
+        "partStates" : {
+          "shipper" : {
+            "error" : {
+              "properties" : {
+                "image" : "cropshipperfullbright.png:error.<frame>"
+              }
+            },
+            "ready" : {
+              "properties" : {
+                "image" : "cropshipperfullbright.png:ready.<frame>"
+              }
+            },
+            "ship" : {
+              "properties" : {
+                "image" : "cropshipperfullbright.png:ship.<frame>"
+              }
+            },
+            "closed" : {
+              "properties" : {
+                "image" : "cropshipperfullbright.png:closed.<frame>"
+              }
+            },
+            "open" : {
+              "properties" : {
+                "image" : "cropshipperfullbright.png:open.<frame>"
+              }
+            },
+            "toready" : {
+              "properties" : {
+                "image" : "cropshipperfullbright.png:toready.<frame>"
+              }
+            },
+            "toerror" : {
+              "properties" : {
+                "image" : "cropshipperfullbright.png:toerror.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "sounds" : {
+    "ship" : [],
+    "ready" : []
+  }
+}

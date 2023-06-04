@@ -1,9 +1,14 @@
 {
-  "name" : "coldimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "coldimmunity.lua"
-  ]
+	"name": "coldimmunity",
+	"effectConfig": {
+		"stats": [{
+				"stat": "biomecoldImmunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

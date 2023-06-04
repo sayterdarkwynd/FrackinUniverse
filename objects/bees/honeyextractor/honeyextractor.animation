@@ -1,0 +1,53 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "samplingarrayanim" : {
+        "default" : "idle",
+        "states" : {
+          "working" : {
+            "frames" : 5,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/honeyjarrer/jarring.ogg",
+              "persistentSoundRangeMultiplier" : 0.5,
+              "persistentSoundStopTime" : 0.5,
+              "immediateSoundRangeMultiplier" : 0.5
+            }
+          },
+          "idle" : {
+            "frames" : 1,
+            "cycle" : 0.1
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "samplingarrayanim" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "samplingarrayanim" : {
+            "working" : {
+              "properties" : {
+                "image" : "<partImage>:default.<frame>"
+              }
+            },
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:default.default"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "sounds" : {
+    "active" : [ "/sfx/honeyjarrer/jarring.ogg" ]
+  }
+}

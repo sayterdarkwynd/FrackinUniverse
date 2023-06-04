@@ -1,66 +1,96 @@
 {
+  "levelLabelTitle" : {
+    "type" : "label",
+    "position" : [35, 176],
+    "hAnchor" : "left",
+    "vAnchor" : "top",
+    "color" : [185, 181, 178],
+    "value" : "^yellow;Tier ^reset;"
+  },
+    "levelLabel" : {
+      "type" : "label",
+      "position" : [55, 176],
+      "hAnchor" : "left",
+      "vAnchor" : "top",
+      "color" : [185, 181, 178]
+  },
+    "upgradeLabel" : {
+      "type" : "label",
+      "position" : [70, 176],
+      "hAnchor" : "left",
+      "vAnchor" : "top",
+      "fontSize" : 7,
+      "color" : [185, 181, 178]
+  },
+  //Position: of the armor portrait
   "objectImage" : {
     "type" : "image",
-    "position" : [40, 127],
+    "position" : [29, 120],
     "file" : "",
     "centered" : true,
     "maxSize" : [ 46, 59 ],
     "minSize" : [ 46, 59 ]
   },
+    //Position: of the items description text
   "descriptionLabel" : {
     "type" : "label",
-    "position" : [16, 70],
-    "wrapWidth" : 122,
+    "position" : [26, 82],
+    "wrapWidth" : 118,
     "hAnchor" : "left",
-    "vAnchor" : "top"
+    "vAnchor" : "top",
+    "lineSpacing" : 1.2,
+    "fontSize" : 7
   },
+    //Position: of the items name
   "title" : {
     "type" : "label",
-    "position" : [35, 179],
+    "position" : [35, 176],
     "hAnchor" : "left",
     "value" : ""
   },
-  "rarityLabel" : {
-    "type" : "label",
-    "position" : [16, 5],
-    "hAnchor" : "left",
-    "centered" : true,
-    "wrapWidth" : 126
-  },
+
   "titleIcon" : {
     "type" : "itemslot",
-    "position" : [9, 167],
+    "position" : [9, 166],
     "callback" : "null",
     "iconMode" : true,
     "backingImage" : "/interface/inventory/portrait.png",
     "showRarity" : false,
     "showBackingImageWhenFull" : true
   },
+ /*  //Position: of the items type-label
   "armorLabelTitle" : {
     "type" : "label",
-    "position" : [35, 169],
+    "position" : [35, 166],
     "hAnchor" : "left",
     "color" : [185, 181, 178],
     "value" : "Armour"
   },
+  */
+    //This section defines armors stat list
   "statusList" : {
     "scissoring" : false,
     "type" : "list",
+      //fill the list down
     "fillDown" : true,
-    "position" : [6, 145],
+    //Status Position: horizonal, vertical
+    "position" : [6, 160],
     "schema" : {
-      "spacing" : [0, 1],
+      //Defines lists spacing: horizontal, vertical
+      "spacing" : [0, 0.8],
+      //memberSize: amountallowed, size
       "memberSize" : [999, 15],
       "listTemplate" : {
         "statusLabel" : {
           "type" : "label",
-          "position" : [102, 2],
+          // Defines label text position: horizontal, vertical
+          "position" : [73, 2],
           "hAnchor" : "left"
         },
         "statusImage" : {
           "scissoring" : false,
           "type" : "image",
-          "position" : [62, -1],
+          "position" : [46, -1],
           "file" : "",
           "zlevel" : 8
         },

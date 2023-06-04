@@ -2,12 +2,15 @@
   "objectName" : "crystalcavebush5",
   "printable" : true,
   "rarity" : "Common",
-  "category" : "pot",
+  "category" : "decorative",
   "price" : 400,
 
   "description" : "A crystalline bush. Shiny.",
   "shortdescription" : "Crystalline Bush",
   "race" : "apex",
+  
+  "fullbright" : true,
+  "lightColor" : [51, 72, 87],
 
   "apexDescription" : "A beautiful crystal bush.",
   "avianDescription" : "A bush of shiny crystals.",
@@ -19,21 +22,29 @@
   "inventoryIcon" : "crystalcavebush5.png",
   "orientations" : [
     {
-      "image" : "crystalcavebush5.png",
+      "dualImage" : "crystalcavebush5.png",
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
 
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
+    },
+    {
+      "dualImage" : "crystalcavebush5top.png",
+      "imagePosition" : [0, -8],
+      "frames" : 1,
+      "animationCycle" : 0.5,
 
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
     }
   ],
-  "smashSounds" : [ "/sfx/objects/capsule_break1.ogg", "/sfx/objects/capsule_break2.ogg", "/sfx/objects/capsule_break3.ogg" ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/prism_break_small1.ogg", "/sfx/objects/prism_break_small2.ogg", "/sfx/objects/prism_break_small3.ogg" ],
+  "smashParticles" : [ { "count" : 4, "particle" : "crystalshard" } ],
   "smashDropOptions" : [
     [ [ "crystal", 1, { } ], [ "crystal", 1, { } ], [ "crystal", 1, { } ] ]
   ],
-  "breakDropOptions" : [
-    [ [ "crystal", 1, { } ], [ "crystal", 1, { } ], [ "crystal", 1, { } ] ]
-  ]
+  "biomePlaced" : true
 }

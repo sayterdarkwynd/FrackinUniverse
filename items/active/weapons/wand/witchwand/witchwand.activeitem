@@ -1,0 +1,95 @@
+{
+  "itemName" : "witchwand",
+  "price" : 440,
+  "maxStack" : 1,
+  "level" : 4,
+  "rarity" : "rare",
+  "description" : "Avada Kedavra!",
+  "shortdescription" : "Witch's Wand",
+  "category" : "wand",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","wand","upgradeableWeapon"],
+  "tooltipKind" : "staff",
+
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "witchwand.png",
+    "stone" : "",
+    "chargeEffect" : "/items/active/weapons/wand/witchwand/fubiowandglow.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "poisoncharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 10,
+        "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
+        "particles" : [
+          {"particle" : "spacedusttail"}
+        ]
+      }
+    }
+  },
+
+  "inventoryIcon" : "witchwand.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+      "weaponOffset" : [0, 1.0],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 0.6,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : false,
+      "weaponOffset" : [0, 1.5],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : false,
+      "weaponOffset" : [0, 1.5],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "duration" : 0.25,
+      "armRotation" : -10,
+      "weaponRotation" : -50,
+      "twoHanded" : false,
+      "weaponOffset" : [0, 1.0],
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "cooldown" : {
+      "duration" : 0.1,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+      "weaponOffset" : [0, 1.75],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "witchbarrage",
+  "primaryAbility" : {},
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

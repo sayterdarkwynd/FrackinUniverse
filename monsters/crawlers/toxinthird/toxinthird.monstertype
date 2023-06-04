@@ -1,0 +1,218 @@
+{
+  "type" : "toxinthird",
+  "shortdescription" : "Toxin Thirds",
+  "description" : "A sentient mass of fluids resulting from the division of a toxin.",
+
+  "categories" : [ "toxinthird" ],
+  "parts" : [ "body" ],
+
+  "animation" : "toxinthird.animation",
+
+  "dropPools" : [
+    {
+      "default" : "extraMonsterPoison",
+      "bow" : "extraMonsterPoisonHunting",
+      "firebow" : "extraMonsterPoisonHunting",
+      "icebow" : "extraMonsterPoisonHunting",
+      "poisonbow" : "extraMonsterPoisonHunting",
+      "electricbow" : "extraMonsterPoisonHunting",
+      "cosmicbow" : "extraMonsterPoisonHunting",
+      "radioactivebow" : "extraMonsterPoisonHunting",
+      "shadowbow" : "extraMonsterPoisonHunting"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "facingMode" : "transformation",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "hurtWaitForGround" : false,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 40,
+      "targetOutOfSightTime" : 0.5,
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {
+          "name" : "wander-crawl",
+          "cooldown" : 3,
+          "parameters" : {
+            "wanderTime" : 1.5,
+            "stopForce" : 200,
+            "idleTime" : 0.0,
+            "resetHeading" : false
+          }
+        }
+      ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-crawl",
+          "parameters" : {
+            "resetHeading" : false
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-crawl",
+          "parameters" : {
+            "resetHeading" : false
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-crawl",
+          "cooldown" : 1,
+          "parameters" : {
+            "wanderTime" : 1.5,
+            "stopForce" : 200,
+            "idleTime" : 1.0,
+            "resetHeading" : false
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.31, 0.75],  [0.75, 0.31],  [0.75, -0.31],  [0.31, -0.75],  [-0.31, -0.75],  [-0.75, -0.31],  [-0.75, 0.31],  [-0.31, 0.75] ],
+      "damage" : 3,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "poison",
+      "knockback" : 20,
+      "statusEffects" : [ "weakpoison" ]
+       },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 0.5,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.31, 0.75],  [0.75, 0.31],  [0.75, -0.31],  [0.31, -0.75],  [-0.31, -0.75],  [-0.75, -0.31],  [-0.75, 0.31],  [-0.31, 0.75] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 8,
+      "runSpeed" : 8
+
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.5
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 24
+        },
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : -0.5
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "toxinthird" }
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "globalTagDefaults" : {
+    "paletteSwaps" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "weapon" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {},
+          "low" : {},
+          "med" : {},
+          "high" : {},
+          "overheat" : {}
+          }
+        },
+      "firing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "fire" : {
+            "frames" : 2,
+            "cycle" : 0.07,
+            "mode" : "transition",
+            "transition" : "off"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "middle" : {
+        "properties" : {
+          "zLevel" : 0,
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0, 0], // x offset is set dynamically
+          "transformationGroups" : ["weapon"]
+        },
+        "partStates" : {
+          "weapon" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+	    "low" : {
+              "properties" : {
+                "image" : "<partImage>:low"
+              }
+            },
+	    "med" : {
+              "properties" : {
+                "image" : "<partImage>:med"
+              }
+            },
+	    "high" : {
+              "properties" : {
+                "image" : "<partImage>:high"
+              }
+            },
+	    "overheat" : {
+              "properties" : {
+                "image" : "<partImage>:overheat"
+              }
+            }
+          }
+        }
+      },
+      "middlefullbright" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0, 0], // x offset is set dynamically
+          "transformationGroups" : ["weapon"],
+          "fullbright" : true,
+          "zLevel" : 2
+        },
+        "partStates" : {
+          "weapon" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+	    "low" : {
+              "properties" : {
+                "image" : "<partImage>:low"
+              }
+            },
+	    "med" : {
+              "properties" : {
+                "image" : "<partImage>:med"
+              }
+            },
+	    "high" : {
+              "properties" : {
+                "image" : "<partImage>:high"
+              }
+            },
+	    "overheat" : {
+              "properties" : {
+                "image" : "<partImage>:overheat"
+              }
+            }
+          }
+        }
+      },
+
+      "muzzleFlash" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [0.75, 0],
+          "fullbright" : true,
+          "transformationGroups" : ["muzzle"]
+        },
+
+        "partStates" : {
+          "firing" : {
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:<variant>.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "rotationGroups" : {
+    "weapon" : {
+      "angularVelocity" : 0
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {},
+    "muzzle" : {}
+  },
+
+  "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "eldritchstaff", "offset" : [2.8, 0.335] },
+          { "particle" : "eldritchstaff", "offset" : [2.8, 0.325] },
+          { "particle" : "eldritchstaff", "offset" : [2.8, 0.315] }
+        ]
+      },
+      "heatVenting" : {
+	      "emissionRate" : 20.0,
+	      "transformationGroups" : ["muzzle"],
+	      "offsetRegion" : [-1.1, 0.125, -1.1, 0.125],
+	      "particles" : [
+		{ "particle" : "smallshadowcloud1" },
+		{ "particle" : "smallshadowcloud2" },
+		{ "particle" : "eldritchstaff" },
+		{ "particle" : "eldritchstaff" }
+	      ]
+      }
+  },
+
+  "lights" : {
+    "muzzleFlash" : {
+      "active" : false,
+      "position" : [0, 0],
+      "color" : [90, 90, 0]
+    }
+  },
+
+  "sounds" : {
+	     "fire" : [],
+	     "reload" : [],
+	     "fire1" : [],
+	     "fire2" : [],
+	     "fire3" : [],
+	     "cooldown" : [],
+	     "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ],
+	         "fuReload" : [ "/sfx/weapons/reloadfast1.ogg" ],
+	         "fuReload2" : [ "/sfx/weapons/reloadfast2.ogg" ],
+	         "fuReload3" : [ "/sfx/weapons/reloadmid1.ogg" ],
+	         "fuReload4" : [ "/sfx/weapons/reloadmid2.ogg" ],
+	         "fuReload5" : [ "/sfx/weapons/reloadslow.ogg" ]
+  }
+}

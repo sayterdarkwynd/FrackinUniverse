@@ -1,0 +1,68 @@
+{
+  "name" : "fudoublegroundbeam",
+  "preconditions" : [
+    ["!Danger", 0, 0],
+    ["!Danger", 1, 0],
+    ["!Danger", 2, 0],
+    ["!Danger", 3, 0],
+    ["!Danger", 4, 0],
+    ["!Danger", 5, 0],
+    ["!Danger", 6, 0],
+    ["!Danger", 7, 0],
+    ["!Danger", 0, 1],
+    ["!Danger", 1, 1],
+    ["!Danger", 2, 1],
+    ["!Danger", 3, 1],
+    ["!Danger", 4, 1],
+    ["!Danger", 5, 1],
+    ["!Danger", 6, 1],
+    ["!Danger", 7, 1],
+    ["!FloorIn", [
+        [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0],
+        [0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1]
+      ]],
+    ["Move"]
+  ],
+  "postconditions" : [
+    ["!Ability", "StaticAbility"],
+    ["Ability", "MovingAbility"],
+    ["!Move"]
+  ],
+  "statemodifiers" : [
+    ["Danger", 0, 0],
+    ["Danger", 1, 0],
+    ["Danger", 2, 0],
+    ["Danger", 3, 0],
+    ["Danger", 4, 0],
+    ["Danger", 5, 0],
+    ["Danger", 6, 0],
+    ["Danger", 7, 0],
+    ["Danger", 0, 1],
+    ["Danger", 1, 1],
+    ["Danger", 2, 1],
+    ["Danger", 3, 1],
+    ["Danger", 4, 1],
+    ["Danger", 5, 1],
+    ["Danger", 6, 1],
+    ["Danger", 7, 1],
+    ["Boss", 0, 0, "CertainPosition"],
+    ["Boss", 7, 0, "CertainPosition"],
+    ["Ability", "LongRange"],
+    ["!WeaponEquipped"]
+  ],
+
+  "actions" : [ "guardian-doublegroundbeam" ], // actions to apply the binding to
+  "behaviorHandler" : "doubleGroundBeamConfig",
+
+  "sequenceActions" : [
+    {
+      "name" : "guardian-doublegroundbeam",
+      "parameters" : {
+        "power" : 10,
+        // populated by handler
+        "leftPosition" : null,
+        "rightPosition" : null
+      }
+    }
+  ]
+}

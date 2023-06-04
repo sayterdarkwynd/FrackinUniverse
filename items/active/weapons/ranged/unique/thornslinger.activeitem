@@ -3,13 +3,15 @@
   "price" : 160,
   "inventoryIcon" : "thornslinger.png",
   "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Rapid fire thorny death. Share with friends.",
+  "rarity" : "uncommon",
+  "description" : "Blaze through foes with a storm of poisoned needles.
+^yellow;Inflicts poison, ^cyan;Floran^reset;",
   "shortdescription" : "Thorn Slinger",
+  "category" : "assaultRifle",
   "level" : 3,
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "weaponType" : "Assault Rifle",
-  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "itemTags" : ["weapon","ranged","assaultrifle","bioweapon", "upgradeableWeapon","floran"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -44,7 +46,7 @@
     "fireType" : "auto",
 
     "projectileType" : "thornslingershot",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 92,
       "knockback" : 1.5
     },
@@ -77,6 +79,9 @@
     }
   }
   },
+
+  "critChance" : 3,
+  "critBonus" : 6,
 
   "altAbilityType" : "lance",
 

@@ -1,0 +1,32 @@
+{
+  "objectName" : "madnessbrainbeast",
+  "rarity" : "uncommon",
+  "description" : "A horrifying companion that hungers for the nerve stem of foreign brains.",
+  "shortdescription" : "Ghast",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 850,
+  "printable" : false,
+
+  "inventoryIcon" : "madnessbrainbeast.png",
+  "orientations" : [
+    {
+      "dualImage" : "madnessbrainbeast.png:<color>",
+      "imagePosition" : [-10, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "spaces" : [  [0, 0], [-1, 0], [0, 1], [-1, 1]],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "botspawner" : {
+      "type" : "ghastbrain",
+	  "monsterImage":"/monsters/flyers/ghastbrain/ghastbrain.png:idle.1?"
+  },
+
+  "scripts" : [
+    "/spawners/fuminionspawner.lua"
+  ],
+  "scriptDelta" : 5
+}

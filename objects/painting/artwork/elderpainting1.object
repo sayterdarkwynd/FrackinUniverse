@@ -1,0 +1,47 @@
+{
+  "objectName" : "elderpainting1",
+  "colonyTags" : [ "elder", "hideous" ],
+  "rarity" : "rare",
+  "category" : "decorative",
+  "price" : 1350,
+  "description" : " Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn.",
+  "shortdescription" : "F't",
+  "race" : "glitch",
+  //"collectablesOnPickup" : { "fu_shoggothart" : "elderpainting1" },
+
+  "inventoryIcon" : "elderpainting1.png",
+  "orientations" : [
+    {
+      "dualImage" : "elderpainting1.png:<color>",
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+      "metaBoundBox" : [-10, -10, 10, 10]
+
+    }
+  ],
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [0.25, "nosebleed"],
+        [0.25, "flee"],
+        [0.25, "creepyfollow"],
+        [0.25, "cry"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 2
+  },
+  "statusEffects"  : [ "madnessgainpainting1" ]
+}

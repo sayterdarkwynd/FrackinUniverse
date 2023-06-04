@@ -1,0 +1,26 @@
+{
+  "itemName" : "acutaque",
+  "rarity" : "Common",
+  "price" : 25,
+  "category" : "preparedFood",
+  "inventoryIcon" : "acutaque.png",
+  "description" : "A tangy, creamy mixture of frozen Oculemon and pureed fat. \n^cyan;+^white;2.5% ^cyan;EP Regen & -^white;1.25%^cyan; E. Block ^gray;(^white;20s^gray;)^reset; ^Red;Type: Raw Meat^reset;",
+  "shortdescription" : "Acutaque",
+  "handPosition": [0, 4],
+  "effects" : [ [
+    {
+        "effect": "energyregenfu05",
+        "duration": 20
+    },
+    {
+        "effect" : "meat_raw"
+    }
+  ] ],
+  "foodValue" : 55,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [ "wellfed" ]
+}

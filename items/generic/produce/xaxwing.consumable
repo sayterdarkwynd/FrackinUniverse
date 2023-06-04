@@ -1,23 +1,24 @@
 {
-  "itemName" : "xaxwing",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "xaxwing.png",
-  "description" : "Feels gross to chew, but you'll levitate. That's handy.",
-  "shortdescription" : "Xax Wing",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-      {
-        "effect" : "levitation",
-        "duration" : 60
-      },
-      "helium3immunity"
-    ] ]
+	"itemName": "xaxwing",
+	"inventoryIcon": "xaxwing.png",
+	"category": "food",
+	"rarity": "Rare",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Levitation^reset;: 1m\n^yellow;^reset;^cyan;Immune^reset;: Grav Rain: 3m",
+	"shortdescription": "Xax Wing",
+
+	"effects": [
+		[
+			{
+				"effect": "gravrainimmunity",
+				"duration": 180
+			},
+			{
+				"effect": "levitation",
+				"duration": 60
+			}
+		]
+	]
 }

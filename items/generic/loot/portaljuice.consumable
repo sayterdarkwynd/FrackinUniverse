@@ -4,9 +4,10 @@
   "price" : 200,
   "category" : "medicine",
   "inventoryIcon" : "portaljuice.png",
-  "description" : "If near death, warps you elsewhere.",
+  "description" : "^cyan;If near death, warps you elsewhere and gives ^gray;(^white;10m^gray;) ^blue;+^white;1^gray;-^white;36 ^blue;Madness^reset;",
   "shortdescription" : "Portal Juice",
-  "effects" : [ [
-     "portaljuice"
-    ] ]
+  "effects" : [ [ "madnessgain05", "portaljuice" ] ],
+  "tooltipKind" : "food",
+  "emitters" : [ "drinking" ],
+  "blockingEffects" : [ "portaljuice" ]
 }

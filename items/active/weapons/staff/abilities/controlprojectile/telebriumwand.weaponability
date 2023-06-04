@@ -1,0 +1,24 @@
+{
+  "ability" : {
+    "type" : "telebriumwand",
+    "name" : "Telebrium Burst",
+    "scripts" : ["/items/active/weapons/staff/abilities/controlprojectile/plasmabarrage.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 25,
+
+    "maxCastRange" : 25,
+
+    "projectileCount" : 6,
+    "projectileDistance" : 12,
+    "projectileType" : "telebriumbouncer",
+    "projectileParameters" : {
+      "baseDamage" : 8,
+      "statusEffects" : [ "weakpoison" ]
+    },
+    "triggerSound" : ["/sfx/projectiles/fireball_spit.ogg"],
+
+    "projectileDelayFirst" : 1,
+    "projectileDelayEach" : 1
+  }
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "op": "replace",
+    "path": "/animatedParts/stateTypes/stage/states/craftingwheel2/properties/persistentSoundRangeMultiplier",
+    "value": 0.1
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/stage/states/clothingfabricator",
+    "value": {}
+  },
+    {
+      "op": "add",
+      "path": "/animatedParts/stateTypes/stage/states/clothingfabricator/frames",
+      "value": 7
+    },
+    {
+      "op": "add",
+      "path": "/animatedParts/stateTypes/stage/states/clothingfabricator/cycle",
+      "value": 1
+    },
+    {
+      "op": "add",
+      "path": "/animatedParts/stateTypes/stage/states/clothingfabricator/mode",
+      "value": "loop"
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/fire",
+    "value": {
+      "properties": {
+        "centered": true,
+        "zLevel" :  2,
+        "fullbright" : true
+      },
+      "partStates": {
+        "stage": {
+          "clothingfabricator": {
+            "properties": {
+              "image": "craftingwheel3lit.png:<color>.<frame>"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/chassis/partStates/stage/clothingfabricator",
+    "value": {
+      "properties": {
+        "image": "craftingwheel3.png:<color>.<frame>"
+      }
+    }
+  }
+]

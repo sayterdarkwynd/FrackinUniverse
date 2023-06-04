@@ -1,0 +1,35 @@
+{
+	"itemName": "miracleambrosia",
+	"rarity": "legendary",
+	"price": 22500,
+	"category": "drink",
+	"inventoryIcon": "mantizanwine.png",
+	"description": "A miraculous ambrosia.\nFully restores ^green;Health ^reset;and ^green;Energy^reset;, as well as filling your ^green;belly^reset; and making you ^red;drunk^reset;.",
+	"shortdescription": "Miracle Ambrosia",
+	"handPosition": [0, -2],
+	"tooltipKind": "food",
+	"foodValue": 9999999,
+	"learnBlueprintsOnPickup":["fuexosuitlegskhe","fuexosuitheadkhe","fuexosuitchestkhe"],
+	"effects": [
+		[
+			{
+				"effect": "energy_100",
+				"duration": 0.1
+			},
+			{
+				"effect": "heal_1",
+				"duration": 0.1
+			},
+			{
+				"effect" : "booze",
+				"duration" : 60
+			},
+			{
+				"effect" : "miracleambrosiacooldown",
+				"duration" : 60
+			}
+		]
+	],
+	"emitters" : [ "drinking" ],
+	"blockingEffects":["miracleambrosiacooldown"]
+}

@@ -1,0 +1,54 @@
+{
+  "objectName" : "fu_precursorspawner",
+  "colonyTags" : ["precursor","ancient"],
+  "rarity" : "Legendary",
+  "description" : "Spawns monsters based on a capture pod's contents. Uses beer as fuel. Requires approx.^orange;100J ^cyan;per spawn.^reset; ^blue;Input^reset;1: On/Off Switch",
+  "shortdescription" : "Precursor Spawner",
+  "race" : "precursor",
+  "printable" : false,
+  "category" : "spawner",
+
+  "health" : 20,
+
+  "animation" : "fu_precursorspawner.animation",
+  "animationParts" : {
+    "base" : "fu_precursorspawner.png",
+    "basefullbright" : "fu_precursorspawnerlit.png"
+  },
+  "animationPosition" : [-35, 0],
+
+  "inventoryIcon" : "fu_precursorspawnericon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_precursorspawner.png:off",
+      "imagePosition" : [-35, 0],
+      "frames" : 8,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [ "/scripts/fupower.lua", "/objects/minibiome/precursor/fu_precursorspawner/fu_precursorspawner.lua" ],
+  "scriptDelta" : 10,
+
+  "inputNodes" : [ [-1, 0], [0, 0] ],
+
+  "spawner" : {
+    "fuelType" : "liquidbeer",
+	"fuelMultiplier" : 0.1,
+	"defaultFuelAmount" : 10,
+	"podType" : "filledcapturepod",
+	"spawnTimeMultiplier" : 0.1,
+	"defaultSpawnTime" : 10
+  },
+
+  "objectType" : "container",
+  "slotCount" : 2,
+  "uiConfig" : "/interface/objectcrafting/fu_precursorspawner.config",
+  "subtitle" : "",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+
+  "powertype" : "input",
+  "isn_requiredPower" : 100
+}

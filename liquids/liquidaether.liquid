@@ -1,11 +1,12 @@
 {
   "name" : "liquidaether",
   "liquidId" : 100,
-  "description" : "Strange black liquid. Feels dry. It appears to react with lava.",
+  "description" : "Strange black liquid.",
   "tickDelta" : 3,
   "color" : [255, 255, 255, 200],
   "radiantLight" : [120, 20, 180],
   "itemDrop" : "liquidaether",
+  "statusEffects" :[ "swimming", "aetherweathernew" ],
   "texture" : "/liquids/aethertex.png",
   "bottomLightMix" : [120, 20, 180],
   "textureMovementFactor" : 0.65,
@@ -13,6 +14,10 @@
     {
       "liquid" : 2,
       "materialResult" : "retexaetherdust"
+    },
+    {
+      "liquid" : 62,
+      "liquidResult" : 66
     }
   ]
 }

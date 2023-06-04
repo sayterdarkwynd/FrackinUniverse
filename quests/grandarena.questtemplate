@@ -1,0 +1,28 @@
+{
+	"id": "grandarena.gearup",
+	"title": "^green;The Grand Arena",
+	"text": "The map shows me the way to a grand jungle arena where Floran hunters go test their strength. There's a prize advertised for those who manage to survive...",
+	"completionText": "Now that was one hell of a brawl! Time to claim my hard-earned loot!",
+	"speaker": "player",
+	"moneyRange": [0, 0],
+	"rewards": [
+		[
+			["bleakblade"],
+			["adultpoptopaf", 1],
+			["poptopaf", 1],
+			["fuscienceresource", 1000]
+		]
+	],
+
+	"updateDelta": 10,
+	"script": "/quests/scripts/main.lua",
+	"scriptConfig": {
+		"giveBlueprints": ["vinefist"],
+		"portraits": {
+			"default": "player"
+		},
+		"associatedMission": "grandarena",
+		"turnInDescription": "Survive all waves in the Grand Arena without dying.",
+		"requireTurnIn": true
+	}
+}

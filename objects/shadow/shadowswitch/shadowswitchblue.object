@@ -1,0 +1,64 @@
+{
+  "objectName" : "shadowswitchblue",
+  "colonyTags" : ["shadow","wired"],
+  "rarity" : "Common",
+  "category" : "wire",
+  "price" : 100,
+  "description" : "A switch for activating... Something.",
+  "shortdescription" : "Shadowy Blue Switch",
+  "race" : "shadow",
+
+
+  "apexDescription" : "A machinery switch.",
+  "avianDescription" : "It's probably not a good idea to play with mysterious switches.",
+  "floranDescription" : "Ssswitch for machines.",
+  "glitchDescription" : "Neutral. A switch for machinery.",
+  "humanDescription" : "Just a switch for a machine of some sort.",
+  "hylotlDescription" : "This switch is greasy.",
+  "novakidDescription" : "A clunky lookin' machinery switch.",
+
+
+  "inventoryIcon" : "shadowswitchblueicon.png",
+  "orientations" : [
+    {
+      "image" : "shadowswitchblue.png:<color>.off",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/switch/switchwithinput.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle2.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/apexconsole2switch.ogg" ],
+      "off" : [ "/sfx/objects/apexconsole2switch.ogg" ]
+    }
+  },
+
+  "animationParts" : {
+    "switch" : "shadowswitchblue.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "inputNodes" : [ [-1, 0] ],
+  "outputNodes" : [ [0, -1] ],
+
+  "npcToy": {
+    "ownerOnly" : true,
+    "influence" : [
+      "wallswitch"
+    ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

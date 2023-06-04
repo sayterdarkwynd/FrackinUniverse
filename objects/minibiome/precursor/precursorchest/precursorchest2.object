@@ -1,0 +1,46 @@
+{
+  "objectName" : "precursorchest2",
+  "colonyTags" : [ "precursor", "outpost", "tech", "combat"],
+  "printable" : false,
+  "rarity" : "legendary",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "category" : "storage",
+  "price" : 700,
+  "description" : "A weapon chest.",
+  "shortdescription" : "Precursor Weapon Chest",
+  "race" : "precursor",
+
+
+  "inventoryIcon" : "precursorchest2icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "precursorchest2.png:<color>.<key>", "fullbright" : true }, { "image" : "precursorchest2fullbright.png:<color>.<key>" } ],
+      "imagePosition" : [-12, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "precursorchest2.png:<color>.<key>", "fullbright" : true }, { "image" : "precursorchest2fullbright.png:<color>.<key>" } ],
+      "imagePosition" : [-12, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/chest_small_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/chest_small_close.ogg" ],
+  "slotCount" : 64,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  "learnBlueprintsOnPickup" : [ "precursorchest", "precursorchest2"]
+
+}

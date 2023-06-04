@@ -1,0 +1,53 @@
+{
+	"stats": [
+		{ "stat": "maxHealth", "effectiveMultiplier": 0.88 },
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.10 },
+		{ "stat": "powerMultiplier", "effectiveMultiplier": 1.08 },
+		{ "stat": "fuCharisma", "baseMultiplier": 0.90 },
+
+		{ "stat": "mentalProtection", "amount": 0.30 },
+		{ "stat": "physicalResistance", "amount": -0.12 },
+		{ "stat": "fireResistance", "amount": 0.20 },
+		{ "stat": "iceResistance", "amount": -0.05 },
+		{ "stat": "poisonResistance", "amount": -0.20 },
+		{ "stat": "electricResistance", "amount": 0.20 },
+		{ "stat": "cosmicResistance", "amount": 0.15 },
+		{ "stat": "radioactiveResistance", "amount": 0.15 },
+
+		{ "stat": "fireStatusImmunity", "amount": 1 },
+		{ "stat": "magnorbMastery", "amount": 0.2 }
+
+	],
+	"diet" : "entity",
+	"envEffects": [
+		{
+			"biomes": "electric",
+			"controlModifiers": {
+				"speedModifier": 1.05
+			},
+			"stats": []
+		},
+		{
+			"biomes": "cold",
+			"stats": [{
+				"stat": "protection",
+				"effectiveMultiplier": 0.9
+			}
+			]
+		}
+	],
+	"weaponEffects": [
+		{
+			"weapons": ["psionic"],
+			"stats": [
+				{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.20
+				}
+			]
+		}
+	],
+	"weaponScripts": [],
+	"special": [ ],
+	"tech" : [ "juuxharden" ]
+}

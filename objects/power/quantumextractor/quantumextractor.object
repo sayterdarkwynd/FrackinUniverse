@@ -3,55 +3,116 @@
   "colonyTags" : [ "fu", "science", "scienceoutpost", "radiation" ],
   "rarity" : "legendary",
   "race" : "generic",
-  "category" : "crafting",
+  "category" : "^orange;Extraction Device^reset;",
   "printable" : false,
   "objectType" : "container",
-  "learnBlueprintsOnPickup" : [ "quantumextractor_roof" ],
+  "tooltip" : "base",
 
-  "price" : 1450,
+  "price" : 800,
   "lightColor" : [ 100, 176, 191 ],
   "inventoryIcon" : "quantumextractoricon.png",
-  "description" : "The ultimate in extraction technology. Requires 5u ^orange;power^reset; ",
+  "description" : "The ultimate in block extraction technology. ^cyan;Requires ^orange;60J^cyan; per extraction.^reset; Can be placed on floors -or- ceilings.",
   "shortdescription" : "^cyan;Quantum Extractor^reset;",
   "subtitle" : "Resource converter",
   "orientations" : [
-    {
-      "dualImage" : "quantumextractor.png:<color>.<frame>",
 
+     {
+      "imageLayers" : [ { "image" : "quantumextractor.png:<color>.<frame>", "fullbright" : true }, { "image" : "quantumextractorlit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+      "animationParts" : {
+          "samplingarrayanim" : "quantumextractor.png"
+        },
       "imagePosition" : [0, 0],
       "frames" : 6,
-      "animationCycle" : 2.0,
-
-      "spaceScan" : 0.1,
+      "animationCycle" : 2,
       "collision" : "platform",
+      "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "quantumextractor.png:<color>.<frame>", "fullbright" : true }, { "image" : "quantumextractorlit.png:<color>.<frame>" } ],
+      "direction" : "right",
+      "animationParts" : {
+          "samplingarrayanim" : "quantumextractor.png"
+        },
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "quantumextractor_roof.png:<color>.<frame>", "fullbright" : true }, { "image" : "quantumextractor_rooflit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+      "animationParts" : {
+          "samplingarrayanim" : "quantumextractor_roof.png"
+        },
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "quantumextractor_roof.png:<color>.<frame>", "fullbright" : true }, { "image" : "quantumextractor_rooflit.png:<color>.<frame>" } ],
+      "direction" : "right",
+      "animationParts" : {
+          "samplingarrayanim" : "quantumextractor_roof.png"
+        },
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
     }
   ],
 
   "animation" : "/objects/power/quantumextractor/quantumextractor.animation",
-  "animationParts" : {
-    "samplingarrayanim" : "quantumextractor.png"
-  },
-  
-  "inputNodes" : [ [1, 1] ],
-  "isn_powerReciever" : true,
-  "isn_requiredPower" : 5,
+  "animationParts" : {"samplingarrayanim" : "quantumextractor.png"},
+
+  "powertype" : "input",
+  "isn_requiredPower" : 60,
   "isn_liquidCollector" : false,
   "fu_mintick" : 0,
   "fu_stationTechLevel" : 3,
-  
-  "scripts" : [ 
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua",
-		"/objects/generic/extractionlab_common.lua"
-   	      ],
-   	      
+  "fu_timerMod" : 1,
+
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
+
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "crouchcollect"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  },
+
+  "scripts" : [ "/scripts/fupower.lua", "/objects/generic/extractionlab_common.lua", "/scripts/npcToyObject.lua"],
+
   "scriptDelta" : 5,
-  
+
+  "inputSlot": 6,
+
   "recipeGroup" : "quantumextractor",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
-  "slotCount" : 12,
-  "uiConfig" : "/interface/extractor/extractor.config",
+  "slotCount" : 18,
+  "uiConfig" : "/interface/extractor/extractor3.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600
 }

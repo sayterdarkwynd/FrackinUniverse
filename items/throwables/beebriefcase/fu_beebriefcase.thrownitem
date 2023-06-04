@@ -1,0 +1,29 @@
+{
+  "itemName" : "fu_beebriefcase",
+  "rarity" : "Common",
+  "category" : "throwableItem",
+  "inventoryIcon" : "fu_beebriefcaseicon.png",
+  "image" : "fu_beebriefcase.png",
+  "shortdescription" : "Briefcase o' Bees",
+  "description" : "Throw to release a swarm of bees!",
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 1.5,
+
+  "projectileType" : "fu_beebriefcase",
+  "projectileConfig" : {
+    "speed" : 40,
+    "power" : 1.5,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+}

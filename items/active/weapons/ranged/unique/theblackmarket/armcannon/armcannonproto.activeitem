@@ -4,12 +4,13 @@
   "inventoryIcon" : "armcannonproto.png",
     "maxStack" : 1,
     "rarity" : "rare",
-  "description" : "Attaches to the forearm. Fires quantum blasts.",
-  "shortdescription" : "^yellow;Arm Cannon (Fusion)",
+  "description" : "Attaches to the forearm. Fires quantum blasts.
+^yellow;Counts as 'energy' for set bonuses^reset;",
+  "shortdescription" : "^yellow;Arm Cannon (Fusion)^reset;",
   "level" : 4,
-  "category" : "uniqueWeapon",
-  "itemTags" : ["weapon","ranged","machinepistol"],
-  "tooltipKind" : "gun",
+  "category" : "armcannon",
+  "itemTags" : ["weapon","ranged","upgradeableWeapon","armcannon","energy","proto"],
+  "tooltipKind" : "gun2",
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
@@ -17,25 +18,25 @@
     "middle" : "armcannonproto.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3blue.png"
-  },      
+  },
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/gun/plasma_mp2.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }  
+    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }
   },
 
-  "baseOffset" : [0.75, 0.34],
-  "muzzleOffset" : [1.0, 0.125],
-
+  "baseOffset" : [0.0, 0.34],
+  "muzzleOffset" : [1.0, 0.05],
+  "handGrip" : "wrap",
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "electric",
-  "learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ], 
+  //"learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ],
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.35,
-    "baseDps" : 5.5,
+    "baseDps" : 5.7,
     "energyUsage" : 28,
     "fireType" : "auto",
     "inaccuracy" : 0.02,
@@ -73,6 +74,7 @@
       }
     }
   },
-
+  "critChance" : 5,
+  "critBonus" : 5,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

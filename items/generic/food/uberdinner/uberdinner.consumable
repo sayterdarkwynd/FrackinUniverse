@@ -1,0 +1,48 @@
+{
+  "itemName": "uberdinner",
+  "rarity": "Legendary",
+  "price": 705,
+  "category": "preparedFood",
+  "inventoryIcon": "uberdinner.png",
+  "description": "All plasma plants mixed and cooked.\n^cyan;+^white;20% ^cyan;Run^gray;, ^cyan;Jump^gray;, ^cyan;Rage^gray;, ^cyan;HP^gray;, and ^cyan;EP ^gray;(^white;100s^gray;)\n^red;Burning^gray;, ^red;Electrified ^gray;(^white;15s^gray;)^reset;",
+  "shortdescription": "Uberdinner",
+  "effects": [
+    [
+      {
+        "effect": "runboostfood",
+        "duration": 100
+      },
+      {
+        "effect": "jumpboostfood",
+        "duration": 100
+      },
+      {
+        "effect": "ragefood",
+        "duration": 100
+      },
+      {
+        "effect": "maxhealthscalingboostfood",
+        "duration": 100
+      },
+      {
+        "effect": "maxenergyscalingboostfood",
+        "duration": 100
+      },
+      {
+        "effect": "burning",
+        "duration": 15
+      },
+      {
+        "effect": "electrified",
+        "duration": 15
+      }
+    ]
+  ],
+  "foodValue": 90,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 3,
+  "blockingEffects": ["wellfed"]
+}

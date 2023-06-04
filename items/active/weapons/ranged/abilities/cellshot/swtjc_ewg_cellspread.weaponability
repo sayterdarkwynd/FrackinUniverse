@@ -1,0 +1,82 @@
+{
+  "animationCustom" : {
+    "animatedParts" : { "parts" : {
+      "grenadelauncher" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [-0.75, -0.375],
+          "transformationGroups" : ["muzzle"],
+          "firePosition" : [0.75, -0.125],
+          "image" : "/items/active/weapons/ranged/abilities/grenadelauncher/grenadelauncher.png"
+        }
+      }
+    }},
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "rotationGroup" : "weapon",
+        "emissionRate" : 8,
+        "offsetPart" : "muzzleFlash",
+        "offsetRegion" : [0.5, 1.0, 1.0, 1.5],
+        "particles" : [
+        ]
+      }
+    },
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Plasma Cell Spread",
+    "type" : "swtjc_ewg_cellspread",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "projectileType" : "cellzap<elementalType>1",
+    "projectileParameters" : { },
+    "elementalConfig" : {
+      "physical" : {},
+      "silverweapon" : {},
+      "fire" : {},
+      "hellfire" : {"projectileType":"cellzapfire1"},
+      "electric" : {},
+      "ice" : {},
+      "hoarfrost" : {"projectileType":"cellzapice1"},
+      "poison" : {},
+      "bioweapon" : {"projectileType":"cellzappoison1"},
+      "radioactive" : {},
+      "shadow" :{},
+      "cosmic" : {},
+      "aether" : {"projectileType":"cellzapcosmic1"}
+    },
+
+    "baseDps" : 3,
+    "energyUsage" : 32.5,
+    "inaccuracy" : 0.02,
+    "fireType" : "auto",
+    "projectileCount" : 5,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0.0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.2,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

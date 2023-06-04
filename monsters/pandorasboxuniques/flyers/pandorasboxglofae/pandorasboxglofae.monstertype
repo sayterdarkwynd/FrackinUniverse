@@ -1,0 +1,290 @@
+{
+  "type" : "pandorasboxglofae",
+  "shortdescription" : "Glofae",
+  "description" : "These whimsical-looking monsters are actually a highly intelligent bioluminescent insect.",
+
+  "categories" : [ "pandorasboxglofae" ],
+  "parts" : [ "body" ],
+
+  "animation" : "pandorasboxglofae.animation",
+
+  "dropPools" : [ { "default" : "pandorasboxglofaeTreasure", "bow" : "pandorasboxglofaeHunting" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "renderLayer" : "foregroundEntity",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 40,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 500,
+      "targetOutOfSightTime" : 1000.0,
+
+      "hurtTime" : 0.5,
+      "hurtWaitForGround" : false,
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-swoop",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "minimumRange" : 3,
+            "maximumRange" : 10,
+            "onGround" : false,
+            "windupTime" : 0.6,
+
+            "gravityMultiplier" : -0.5,
+            "swoopVelocity" : 25,
+            "collisionCheck" : true,
+            "highArc" : false,
+            "swoopTime" : 0.5,
+
+            "winddownTime" : 0.5,
+            "winddownState" : "fly",
+            "winddownStopForce" : 20
+          }
+        }
+      ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-swoop",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "minimumRange" : 3,
+            "maximumRange" : 10,
+            "onGround" : false,
+            "windupTime" : 0.6,
+
+            "gravityMultiplier" : -0.5,
+            "swoopVelocity" : 25,
+            "collisionCheck" : true,
+            "highArc" : false,
+            "swoopTime" : 0.5,
+
+            "winddownTime" : 0.5,
+            "winddownState" : "fly",
+            "winddownStopForce" : 20
+          }
+        },
+        {
+          "name" : "action-charge",
+          "cooldown" : 3.5,
+          "parameters" : {
+            "minimumRange" : 5,
+            "maximumRange" : 20,
+            "windupStopForce" : 50,
+            "windupTime" : 1.2,
+
+            "onGround" : false,
+            "wallCollide" : false,
+            "aimAtTarget" : true,
+            "chargeTime" : 1.0,
+            "chargeSpeed" : 20,
+            "chargeControlForce" : 250,
+
+            "winddownState" : "idle",
+            "winddownStopForce" : 50,
+            "winddownTime" : 1.0
+          }
+        }
+      ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "excludeLiquidIds" : [1,3,5,6,7,8,11,12,13,17]
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly"
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-fly",
+          "cooldown" : [5,10],
+          "parameters" : {
+            "wanderTime" : [8,20],
+            "groundDistance" : 5,
+            "ceilingDistance" : 5,
+            "xVelocity" : 8,
+            "yVelocity" : 12
+          }
+        },
+        {
+          "name" : "land-fly",
+          "parameters" : {
+            "flySpeed" : 8,
+            "flyControlForce" : 25,
+            "landCheckDistance" : 40,
+            "idleTime" : 30
+          }
+        },
+        {
+          "name" : "wander-fly",
+          "cooldown" : [5,10],
+          "parameters" : {
+            "wanderTime" : [8,20],
+            "groundDistance" : 7,
+            "ceilingDistance" : 5,
+            "xVelocity" : 8,
+            "yVelocity" : 12
+          }
+        }
+      ],
+
+      "concurrentActions" : [  ],
+
+      "concurrentHostileActions" : [  ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.26, 0.625],  [0.625, 0.26], [0.625, -0.26], [0.26, -0.625], [-0.26, -0.625], [-0.625, -0.26], [-0.625, 0.26], [-0.26, 0.625] ],
+      "damage" : 5,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 5,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionEnabled" : true,
+      "collisionPoly" : [ [0.26, 0.625],  [0.625, 0.26], [0.625, -0.26], [0.26, -0.625], [-0.26, -0.625], [-0.625, -0.26], [-0.625, 0.26], [-0.26, 0.625] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 15,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 1,
+      "airForce" : 10,
+      "flySpeed" : 25
+    },
+
+    "aggressive" : false,
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "colors" : "pandorasboxvibrant",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "grit" : {
+          "baseValue" : -0.1
+        },
+        "maxHealth" : {
+          "baseValue" : 65
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.5
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : -0.5
+        },
+        "fireResistance" : {
+          "baseValue" : 0.2
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceResistance" : {
+          "baseValue" : -0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.95
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
+  }
+}

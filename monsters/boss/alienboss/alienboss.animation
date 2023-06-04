@@ -1,0 +1,403 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "invulnerable" : {
+            "frames" : 1,
+            "cycle" : 5,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/titanyell.ogg"
+            }
+          },
+          "idle" : {
+            "frames" : 4,
+            "cycle" : 2,
+            "mode" : "loop"
+          },
+          "jump" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "mode" : "loop"
+          },
+          "fall" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "mode" : "loop"
+          },
+          "move" : {
+            "frames" : 4,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "walk" : {
+            "frames" : 4,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "run" : {
+            "frames" : 4,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "punch" : {
+            "frames" : 9,
+            "cycle" : 0.50,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/reptar6.ogg"
+            }
+          },
+          "windup" : {
+            "frames" : 5,
+            "cycle" : 0.5,
+            "mode" : "transition",
+            "transition" : "charge"
+          },
+          "charge" : {
+            "frames" : 8,
+            "cycle" : 0.75,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/fleshreaper1.wav"
+            }
+          },
+          "winddown" : {
+            "frames" : 5,
+            "cycle" : 1,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/wingflap.ogg"
+            }
+          }
+        }
+      },
+      "flamethrower" : {
+        "priority" : 1,
+        "default" : "idle",
+        "states" : {
+          "invulnerable" : {
+            "frames" : 1,
+            "cycle" : 5
+          },
+          "idle" : {
+            "frames" : 4,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "move" : {
+            "frames" : 1
+          },
+          "walk" : {
+            "frames" : 1
+          },
+          "run" : {
+            "frames" : 1
+          },
+          "jump" : {
+            "frames" : 1
+          },
+          "windup" : {
+            "frames" : 8,
+            "cycle" : 0.5,
+            "mode" : "transition",
+            "transition" : "firing"
+          },
+          "firing" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "loop"
+          },
+          "winddown" : {
+            "frames" : 8,
+            "cycle" : 0.5,
+            "mode" : "transition",
+            "transition" : "idle"
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "arm" : {
+        "properties" : {
+          "offset" : [-1.5, 0],
+          "centered" : true,
+          "rotationGroup" : "projectileAim",
+          "rotationCenter" : [2.5, -1.25],
+          "zLevel" : 4
+        },
+
+        "partStates" : {
+          "movement" : {
+            "invulnerable" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerable.<frame>"
+              }
+            },
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "move" : {
+              "properties" : {
+                "image" : "<partImage>:move.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:move.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },
+            "run" : {
+              "properties" : {
+                "image" : "<partImage>:move.<frame>"
+              }
+            },
+            "punch" : {
+              "properties" : {
+                "image" : "<partImage>:move.1"
+              }
+            },
+            "windup" : {
+              "properties" : {
+                "image" : "<partImage>:move.1"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:move.1"
+              }
+            },
+            "winddown" : {
+              "properties" : {
+                "image" : "<partImage>:move.1"
+              }
+            }
+          },
+
+          "flamethrower" : {
+            "windup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },
+            "firing" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "winddown" : {
+              "properties" : {
+                "image" : "<partImage>:winddown.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" :{
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            }
+          }
+        }
+      },
+
+      "body" : {
+        "properties" : {
+          "zLevel" : 2,
+          "transformationGroups" : [ "body" ],
+          "offset" : [-1.5, 0],
+          "centered" : true
+        },
+
+        "partStates" : {
+          "body" : {
+            "invulnerable" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerable.<frame>"
+              }
+            },
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "move" : {
+              "properties" : {
+                "image" : "<partImage>:move.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:move.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },
+            "run" : {
+              "properties" : {
+                "image" : "<partImage>:move.<frame>"
+              }
+            },
+            "punch" : {
+              "properties" : {
+                "image" : "<partImage>:punch.<frame>"
+              }
+            },
+            "windup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:charge.<frame>"
+              }
+            },
+            "winddown" : {
+              "properties" : {
+                "image" : "<partImage>:winddown.<frame>"
+              }
+            },
+            "damage" : {
+              "stunned" : {
+                "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "rotationGroups" : {
+    "projectileAim" : {
+      "angularVelocity" : 0.75
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "particleEmitters" : {
+    "damage" : {
+      "emissionRate" : 0.7,
+      "particles" : [
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    }
+  },
+
+
+  "sounds" : {
+    "aggroHop" : [ ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0.25,
+      "directives" : "fade=ffffff;0.5"
+    }
+  }
+}

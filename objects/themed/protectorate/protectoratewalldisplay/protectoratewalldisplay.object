@@ -1,0 +1,49 @@
+{
+  "objectName" : "protectoratewalldisplay",
+  "colonyTags" : ["protectorate","electronic"],
+  "printable" : false,
+  "rarity" : "Rare",
+  "category" : "decorative",
+  "price" : 0,
+
+  "description" : "Isn't that...?",
+  "shortdescription" : "Protectorate Monitor",
+  "race" : "protectorate",
+
+  "apexDescription" : "This must be a Protectorate planet monitor.",
+  "avianDescription" : "The Protectorate uses these to scope out the threat levels of various planets.",
+  "floranDescription" : "It'sss a large tv.",
+  "glitchDescription" : "Confused. Is that planet... supposed to be the Earth? When was this monitor last updated?",
+  "humanDescription" : "... This screen hasn't been updated lately, huh?",
+  "hylotlDescription" : "The planet being displayed... Don't tell me that's-",
+  "novakidDescription" : "Protectorate technology... Some of the best kind out there.",
+
+  "lightColor" : [89, 149, 179],
+
+  "inventoryIcon" : "protectoratewalldisplayicon.png",
+  "orientations" : [
+    {
+      "image" : "protectoratewalldisplay.png:<color>.<frame>",
+      "imagePosition" : [-40, -24],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "protectoratewalldisplay.animation",
+  "animationParts" : {
+    "bg" : "protectoratewalldisplay.png",
+    "fg" : "protectoratewalldisplaylit.png"
+  },
+  "animationPosition" : [-40, -24],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+}

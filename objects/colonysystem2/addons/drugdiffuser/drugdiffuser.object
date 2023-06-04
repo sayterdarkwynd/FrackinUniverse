@@ -1,0 +1,76 @@
+{
+  "objectName" : "c_drugdiffuser",
+  "rarity" : "Rare",
+  "category" : "storage",
+  "price" : 2500,
+  "objectType" : "container",
+  "colonyTags" : ["science","electronic","evil"],
+  "description" : "Test experimental drug fumes on your tenants. ^blue;Requires 25W power. \n^red;-10 Happiness^reset;",
+  "shortdescription" : "Drug Diffuser",
+  "race" : "generic",
+  "printable" : false,
+
+  "inventoryIcon" : "drugdiffusericon.png",
+
+  "orientations" : [
+		{
+			"dualImage" : "drugdiffuser.png:default",
+			"imagePosition" : [0, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		}
+	],
+	"openSounds" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+    "closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ],
+
+	"scripts" : [ "/scripts/fupower.lua","/objects/colonysystem2/addons/drugdiffuser/drugdiffuser.lua"],
+    "scriptDelta" : 60,
+
+
+	"inputNodes" : [ [1, 2] ],
+	"outputNodes" : [ [2, 2] ],
+	"powertype" : "input",
+	"isn_requiredPower" : 25,
+	"isn_liquidCollector" : false,
+
+
+
+	"airWellRange":256,
+	"productionTime":3000,//3000/60=50s
+	"slotCount" : 3,
+    "uiConfig" : "/interface/chests/chest<slots>.config",
+    "frameCooldown" : 67,
+    "autoCloseCooldown" : 3600,
+
+	"happiness":-10,
+
+    // Named weight categories (changing one will change all of the same weight)
+    // Numbered weights can be used instead of names for customization purposes
+
+
+   "namedWeights" : {
+
+        "common" : 66,
+        "uncommon" : 33,
+        "rare" : 1
+    },
+
+	"rarityInfoLevel":3,
+	"overrideScanTooltip":true,
+
+   "outputs" : {
+
+        "default" : [
+            { "weight" : "common",   "items" : [ "fuscienceresource" ] },
+            { "weight" : "uncommon", "items" : [ "fumadnessresource" ] },
+            { "weight" : "rare",     "items" : [ "fumadnessresource" ] }
+        ]
+
+	}
+
+
+
+
+
+}

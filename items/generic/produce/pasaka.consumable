@@ -1,19 +1,18 @@
 {
-  "itemName" : "pasaka",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "pasaka.png",
-  "description" : "Eat this soggy bulb, and you'll gain 25% damage.",
-  "shortdescription" : "Pasaka Bulb",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      "damagebonus3"
-    ] ]
+	"itemName": "pasaka",
+	"inventoryIcon": "pasaka.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immune: Radiation Burn & +20% Radiation Res^reset;: 2m",
+	"shortdescription": "Pasaka Bulb",
+
+	"effects": [
+		[{
+			"effect": "radioactiveblock2",
+			"duration": 120
+		}]
+	]
 }

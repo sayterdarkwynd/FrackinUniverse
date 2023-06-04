@@ -1,0 +1,56 @@
+{
+	"itemName": "fuatropusspear",
+	"price": 780,
+	"level": 5,
+	"maxStack": 1,
+	"rarity": "rare",
+	"description": "A revolting bio-weapon.\n^cyan;Plague Bearing^reset;\n^cyan;Hunting weapon^reset;",
+	"shortdescription": "Fleshweave Spear",
+	"tooltipKind": "sword2",
+	"category": "spear",
+	"twoHanded": true,
+	"itemTags": ["weapon", "melee", "spear", "upgradeableWeapon", "atropus", "bioweapon"],
+
+	"inventoryIcon": "fuatropusspear.png",
+	//"collectablesOnPickup" : { "fu_weaponspear" : "fuatropusspear" },
+	"animation": "/items/active/weapons/melee/spear/spear.animation",
+	"animationParts": {
+		"handle": "",
+		"blade": "fuatropusspear.png"
+	},
+	"animationCustom": {
+		"sounds": {
+			"fire": ["/sfx/melee/swing_spear.ogg"]
+		}
+	},
+
+	"scripts": ["/items/active/weapons/melee/meleeweapon.lua"],
+
+	"elementalType": "bioweapon",
+
+	"aimOffset": -1.0,
+	"primaryAbilityType": "spearstab",
+	"primaryAbility": {
+		"scripts": [],
+
+		"fireTime": 1,
+		"baseDps": 10.5,
+		"damageConfig": {
+			"damageSourceKind": "bioweaponbow",
+			"statusEffects": ["fuwanderingplague"],
+			"knockback": 12
+		}
+	},
+	"altAbilityType": "elementalspin",
+	"altAbility": {
+		"name": "Plague Spin",
+		"projectileParameters": {
+			"statusEffects": ["fuwanderingplague"]
+		}
+	},
+
+	"critChance": 3,
+	"critBonus": 6,
+
+	"builder": "/items/buildscripts/buildunrandweapon.lua"
+}

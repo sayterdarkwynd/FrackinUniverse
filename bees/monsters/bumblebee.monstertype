@@ -1,0 +1,113 @@
+{
+	"type" : "bee_bumblebee",
+	"shortdescription" : "Bumblebee Bee",
+	"description" : "A bumblebee bee.",
+
+	"categories" : [ "bee_bumblebee" ],
+	"parts" : [ "body" ],
+
+	"animation" : "bee.animation",
+	"colors" : "/monsters/colors.config",
+
+	"dropPools" : [
+		{
+			"default" : "empty",
+			"bugnet" : "bee_bumblebee"
+		}
+	],
+
+	"baseParameters" : {
+		"scripts" : [
+			"/monsters/bugs/bug.lua",
+			"/bees/monsters/bee.lua",
+			"/scripts/util.lua",
+			"/scripts/vec2.lua"
+		],
+
+		"buzzing" : {
+			"riseSpeed" : 2,
+			"minGroundDistance" : 1,
+			"fallSpeed" : 4,
+			"maxGroundDistance" : 3,
+			"changeDirSpeed" : 2,
+			"wanderDistance" : 18,
+
+			"rotationSpeed" : 4,
+			"rotationChangeInterval" : 5,
+
+			"flySpeed" : 5
+		},
+
+		"metaBoundBox" : [-0.5, -0.5, 0.5, 0.5],
+		"scale" : 1.0,
+
+		"movementSettings" : {
+			"collisionPoly" : [ [-0.5, -0.5], [0.5, -0.5], [0.5, 0.5], [-0.5, 0.5] ],
+
+			"mass" : 1,
+			"walkSpeed" : 10,
+			"runSpeed" : 10,
+			"jumpSpeed" : 5,
+			"flySpeed" : 3,
+			"airFriction" : 0,
+			"airForce" : 100.0,
+			"gravityEnabled" : false
+		},
+
+		"bodyMaterialKind" : "organic",
+
+		"knockoutTime" : 0.1,
+		"knockoutEffect" : "",
+
+		/*
+		"touchDamage" : {
+			"poly" : [ [-1.0, -1.125], [1.0, -1.125], [1.0, 1.0], [-1.0, 1.0] ],
+			"damage" : 0,
+
+			"teamType" : "enemy",
+			"damageSourceKind" : "bite",
+			"statusEffects" : [ ]
+		},
+		*/
+
+		"statusSettings" : {
+			"statusProperties" : {
+				"targetMaterialKind" : "organic"
+			},
+
+			"appliesWeatherStatusEffects" : false,
+			"appliesEnvironmentStatusEffects" : false,
+			"minimumLiquidStatusEffectPercentage" : 0.1,
+
+			"primaryScriptSources" : [ "/stats/monster_primary.lua" ],
+			"primaryScriptDelta" : 400,
+
+			"stats" : {
+				"grit" : {
+					"baseValue" : 1.0
+				},
+				"maxHealth" : {
+					"baseValue" : 1
+				}/*,
+				"protection" : {
+					"baseValue" : 1.0
+				},
+				"healthRegen" : {
+					"baseValue" : 0
+				}*/
+			},
+
+			"resources" : {
+				"health" : {
+					"maxStat" : "maxHealth",
+					"deltaStat" : "healthRegen",
+					"defaultPercentage" : 100
+				}
+			}
+		},
+
+		"mouthOffset" : [0, 0],
+		"feetOffset" : [0, -8]
+	}
+}
+

@@ -1,0 +1,91 @@
+{
+  "type" : "pavillionshogun",
+  "baseType" : "hostilefu",
+
+    "identity" : {
+    "gender" : "male"
+  },
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "challengeChestTreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Attack!"
+          ]
+        },
+        "hylotl" : {
+          "default" : [
+            "One of the princess' lapdogs! Time to test my blade on you!",
+            "It is said, 'know your enemy and know yourself, and you will emerge the victor of a thousand battles'. You cannot hope to win.",
+			"The princess is mine! Mine! Mine!",
+            "So, you invade my village and castle? Audacious indeed!"
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+      "runSpeed" : 20,
+	  "walkSpeed" : 20,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    },
+    "mass" : 2.5
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "valoroushead", "parameters" : { "colorIndex" : 3 } }
+            ],
+            "chest" : [
+              { "name" : "valorouschest", "parameters" : { "colorIndex" : 3 } }
+            ],
+            "legs" : [
+              { "name" : "valorouspants", "parameters" : { "colorIndex" : 3 } }
+            ],
+            "primary" : [
+			  { "name" : "hokucide", "parameters" : { "primaryAbility" : { "damageConfig" : { "statusEffects" : ["frostslow"] } } } }
+			],
+            "sheathedprimary" : [
+			  { "name" : "npctungstenbow", "parameters" : { "primaryAbility" : { "projectileType" : "chargedicearrow", "powerProjectileType" : "chargedicearrow" } } }
+			]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+	"poisonStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"fireStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"specialStatusImmunity" : {
+		"baseValue" : 1.0
+	},
+	"stunImmunity" : {
+		"baseValue" : 1.0
+	},
+	  "maxHealth" : {
+        "baseValue" : 500.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 1.8
+      },
+	  "maxEnergy" : {
+        "baseValue" : 10.0
+      }
+    }
+  }
+}

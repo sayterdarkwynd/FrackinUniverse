@@ -1,0 +1,87 @@
+{
+  "itemName" : "pistoltitaniumfucustom",
+  "price" : 1200,
+  "inventoryIcon" : "pistoltitaniumfucustom.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Custom-tweaked for a badass.
+^yellow;High damage homing rounds.^reset;",
+  "shortdescription" : "The Velvet Revolver",
+  "level" : 3,
+  "category" : "pistol",
+  "itemTags" : ["weapon","ranged","pistol","upgradeableWeapon"],
+  "tooltipKind" : "gununique",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "pistoltitaniumfucustom.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/gun/pistol4.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [55, 55, 55] } }
+  },
+
+  "baseOffset" : [0.4, 0.54],
+  "muzzleOffset" : [1.2, -0.1],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.9,
+    "baseDps" : 6.3,
+    "energyUsage" : 4,
+    "fireType" : "auto",
+    "inaccuracy" : 0.001,
+    "projectileCount" : 1,
+    "projectileType" : "homingbullet",
+    "projectileParameters" : {
+      "speed" : 72
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0.05,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.05,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 6,
+  "isAmmoBased" : 1,
+  "magazineSize" : 7,
+  "reloadTime" : 1.15,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

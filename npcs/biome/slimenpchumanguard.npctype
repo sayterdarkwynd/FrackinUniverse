@@ -1,0 +1,66 @@
+{
+  "type" : "slimenpchumanguard",
+  "baseType" : "guard",
+
+  "statusControllerSettings" : {
+    "statusProperties" : {
+      "effectDirectives" : ""
+    }
+  },
+
+  "scriptConfig" : {
+    "questGenerator" : { "pools" : ["common", "guard"], "enableParticipation" : true },
+
+    "behaviorConfig" : {
+      "greetingChance" : 0.67
+    },
+
+    "dialog" : {
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/slimenpchuman.config:tagCriteria",
+          "enclosedArea" : "/dialog/fenerox.config:enclosedArea",
+          "otherDeed" : "/dialog/slimenpchuman.config:otherDeed",
+          "severe" : "/dialog/slimenpchuman.config:severe",
+          "final" : "/dialog/slimenpchuman.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/slimenpchuman.config:beacon",
+          "rent" : "/dialog/slimenpchuman.config:rent"
+        }
+      },
+
+      "converse" : "/dialog/slimenpchuman.config:converse",
+      "accuse" : "/dialog/slimenpchuman.config:accuse",
+
+      "attack" : "/dialog/fenerox.config:attack",
+      "reattack" : "/dialog/fenerox.config:reattack",
+      "killedTarget" : "/dialog/fenerox.config:killedTarget",
+      "lostTarget" : "/dialog/fenerox.config:lostTarget",
+      "outOfSight" : "/dialog/fenerox.config:outOfSight",
+      "cheerOn" : "/dialog/fenerox.config:cheerOn",
+      "cantReach" : "/dialog/fenerox.config:cantReach"
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "chest" : [
+              { "name" : "humanier1chest", "parameters" : { "colorIndex" : 0 } }
+            ],
+            "legs" : [
+              { "name" : "humantier1pants", "parameters" : { "colorIndex" : 0 } }
+            ],
+            "primary" : [
+              "npcassaultrifle"
+            ],
+            "sheathedprimary" : [
+              { "name" : "npcbroadsword" }
+            ]
+          }
+        ] ]
+    ]
+  }
+}

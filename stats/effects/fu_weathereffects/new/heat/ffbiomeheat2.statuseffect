@@ -1,0 +1,46 @@
+{
+	"name": "ffbiomeheat2",
+
+	"effectConfig": {
+		"resistanceTypes": {
+			"fireResistance": 1.0
+		},
+		"resistanceThreshold": 0.4,
+		"immunityStats": [
+			"biomeheatImmunity",
+			"ffextremeheatImmunity"
+		],
+
+		"healthDrain": 5,
+		"hungerDrain": 0.6,
+		"energyDrain": 0,
+		"speedPenalty": 0.6,
+		"jumpPenalty": 0.6,
+
+		"debuffRate": 5,
+		"debuffStartDelay": 0,
+		"debuffs": {},
+
+		"modifiers": {
+			"night": 0.8,
+			"wet": 0.7,
+			"underground": 1.2
+		},
+
+		"messages": {
+			"intro": "biomeheat",
+			"underground": "ffbiomeheatcavern"
+		},
+
+		"configPath": "/stats/effects/fu_weathereffects/new/heat/ffbiomeheat2.statuseffect"
+	},
+	"defaultDuration": 5,
+
+	"scripts": [
+		"heatweathernew.lua"
+	],
+
+	"animationConfig": "heatweathernew.animation",
+	"label": "Moderate Heat (Resist: ^#ff6e00;Fire^reset;)",
+	"icon": "/interface/statuses/heat2.png"
+}

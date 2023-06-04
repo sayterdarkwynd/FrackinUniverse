@@ -1,16 +1,26 @@
 {
-  "itemName" : "meatwine",
-  "rarity" : "Common",
-  "inventoryIcon" : "meatwine.png",
-  "description" : "Are you sure this is worth drinking?",
-  "shortdescription" : "Meat Wine",
-  "category" : "drink",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 10,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 100,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 3.0,
-  "effects" : [ [ "heal_5"  ] ]
+  "itemName": "meatwine",
+  "rarity": "Common",
+  "inventoryIcon": "meatwine.png",
+  "description": "Are you sure this is worth drinking?\n^green;Heal ^white;10 ^gray;(^white;2s^gray;)^reset;, 35% ^red;Slow^reset;, ^red;Drunk^gray; (^white;30s^gray;)^reset;",
+  "shortdescription": "Meat Wine",
+  "category": "drink",
+  "price": 600,
+  "eventCategory": "eventCrop",
+  "tooltipKind": "food",
+  "maxStack": 100,
+  "effects": [ [
+    {
+        "effect" : "heal_tier0"
+    },
+    {
+        "effect" : "slow",
+        "duration" : 30
+    },
+    {
+        "effect" : "booze",
+        "duration" : 30
+    }
+  ] ],
+  "emitters" : [ "drinking" ]
 }

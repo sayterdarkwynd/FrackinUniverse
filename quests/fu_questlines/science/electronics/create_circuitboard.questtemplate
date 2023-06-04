@@ -1,0 +1,33 @@
+{
+	"id" : "create_circuitboard",
+	"prerequisites" : [ "fuquest_prototyper"	],
+	"title" : "Hardware Matters",
+	"text" : "Instructive: Now that you have ^orange;Silicon^reset; and ^orange;Copper Wire^reset; why not combine the two at your ^orange;Matter Assembler^reset; and craft a ^orange;Silicon Board^reset;?",
+	"completionText" : "Encouraging: You will need a large amount of boards, for they are the building block of many more advanced chipsets.",
+	"moneyRange" : [ 200,400 ],
+	"rewards" : [ [ [ "fu_lootbox", 1 ] ] ],
+	"speaker" : "questGiver",
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
+
+		"requireTurnIn" : false,
+
+		"turnInDescription" : "Bring the ^orange;Silicon Board^reset; to the scientist at the ^orange;Science Outpost^reset;",
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "siliconboard",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
+}

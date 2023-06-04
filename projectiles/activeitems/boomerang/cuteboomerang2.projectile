@@ -1,0 +1,44 @@
+{
+  "projectileName" : "cuteboomerang2",
+  "image" : "cuteboomerang.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 8,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [255, 255, 51],
+  "pointLight" : true,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "actionOnReap" : [ ],
+  "statusEffects" : [ ],
+  "periodicActions" : [
+    {
+      "time" : 0.05,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "pullshot2",
+      "fuzzAngle" : 360
+   }
+  ],
+  "damagePoly" : [[-8, 4], [-4, 8], [4, 8], [8, 4], [8, -4], [4, -8], [-4, -8], [-8, -4]],
+  "power" : 5.0,
+  "speed" : 60,
+  "damageKind" : "cosmic",
+  "physics" : "laser",
+  "bounces" : 100,
+  "piercing" : false,
+  "timeToLive" : 25,
+  "emitters" : [  ],
+  "persistentAudio" : "/sfx/melee/spear_twirl_loop.ogg",
+
+  "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua" ],
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 7,
+      "innerRadius" : 4,
+      "targetRadialVelocity" : -50,
+      "controlForce" : 800,
+      "categoryWhitelist" : ["itemdrop","monster"]
+    }
+  }
+}

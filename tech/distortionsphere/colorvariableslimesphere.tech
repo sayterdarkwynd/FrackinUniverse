@@ -1,0 +1,49 @@
+{
+  "name" : "colorvariableslimesphere",
+  "type" : "head",
+
+  "scripts" : ["colorvariableslimesphere.lua"],
+  "animator" : "colorvariableslimesphere.animation",
+
+  "description" : "An adaptable slime variant of the Spike Sphere. ^green;[F]^reset;",
+  "shortDescription" : "Adaptable Slime Sphere",
+  "rarity" : "Legendary",
+  "icon" : "/tech/colorvariableslimesphere.png",
+
+  "chipCost" : 8,
+
+  "animationParts" : {
+    "ballGlow" : "colorvariableslimesphereglow.png",
+    "ball" : "colorvariableslimesphere.png"
+  },
+
+  "transformedMovementParameters" : {
+    "collisionPoly" : [ [-0.85, -0.35], [-0.35, -0.85], [0.35, -0.85], [0.85, -0.35], [0.85, 0.35], [0.35, 0.85], [-0.35, 0.85], [-0.85, 0.35] ],
+
+    "airForce" : 0.0,
+    "liquidForce" : 0.0,
+
+    "airJumpProfile" : {
+      "jumpSpeed" : 0.0
+    },
+
+    "liquidJumpProfile" : {
+      "jumpSpeed" : 0.0,
+      "jumpControlForce" : 0.0,
+
+      "multiJump" : false,
+      "autoJump" : false
+    }
+  },
+
+  "ignorePlatforms" : true,
+
+  "ballSpeed" : 10,
+
+  "energyCost" : 50,
+
+  "ballRadius" : 1,
+  "ballFrames" : 4,
+
+  "damageDisableTime" : 0.2
+}

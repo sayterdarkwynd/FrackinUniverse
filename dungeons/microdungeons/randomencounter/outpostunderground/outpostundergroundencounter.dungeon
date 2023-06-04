@@ -1,0 +1,1891 @@
+{
+  "metadata" : {
+    "name" : "outpostundergroundencounter",
+    "species" : "dummy",
+    "rules" : [
+    ],
+    "anchor" : [ "bunker1", "greenhouse1", "shelter1" ],
+    // "gravity" : 80,
+    "maxRadius" : 2000,
+    "maxParts" : 15
+  },
+  "tiles" : [
+    {
+      "value" : [255, 0, 220, 255],
+      "comment" : "magic pinkppp, a no-op value"
+    },
+    {
+      "value" : [0, 0, 0, 255],
+      "rules" : [ [ "worldGenMustContainAirBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ] ]
+    },
+    {
+      "value" : [120, 120, 120, 255],
+      "rules" : [ [ "worldGenMustContainAirForeground" ], [ "allowOverdrawing" ] ]
+    },
+    {
+      "value" : [255, 255, 255, 255],
+      "rules" : [ [ "worldGenMustContainSolidBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "moondust" ], [ "front", "moondust" ] ]
+    },
+    {
+      "value" : [0, 38, 255, 255],
+      "comment" : "bright blue, room coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [0, 255, 186, 255],
+      "comment" : "bright aqua, alternate coupler",
+      "connector" : true
+    },
+
+    {
+      "value" : [168, 255, 0, 255],
+      "comment" : "bright green, alternate coupler #2",
+      "connector" : true
+    },
+
+    {
+      "value" : [255, 168, 0, 255],
+      "comment" : "bright orange, alternate coupler #3",
+      "connector" : true
+    },
+    
+    {
+      "value" : [96, 0, 255, 255],
+      "comment" : "bright purple, doorway coupler #1",
+      "connector" : true
+    },
+
+    {
+      "value" : [255, 0, 120, 255],
+      "comment" : "bright hot pink, doorway coupler #2",
+      "connector" : true
+    },
+
+    {
+      "value" : [32, 32, 32, 255],
+      "comment" : "Empty hole",
+      "brush" : [ [ "clear" ] ]
+    },
+
+    {
+      "value" : [48, 48, 48, 255],
+      "comment" : "Empty hole overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ] ]
+    },
+
+    {
+      "value" : [128, 128, 128, 255],
+      "comment" : "Biome tile brush",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [100, 100, 100, 255],
+      "comment" : "Biome tile brush non-overwritable",
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [200, 200, 200, 255],
+      "comment" : "Biome tile background brush",
+      "brush" : [ [ "clear" ], [ "surfacebackground" ] ]
+    },
+
+    {
+      "value" : [54, 63, 105, 255],
+      "comment" : "water pool foreground",
+      "brush" : [ [ "clear" ], [ "liquid", "water" ] ]
+    },
+
+    {
+      "value" : [150, 255, 0, 255],
+      "comment" : "poison pool foreground",
+      "brush" : [ [ "clear" ], [ "liquid", "poison" ] ]
+    },
+
+    {
+      "value" : [255, 232, 178, 255],
+      "comment" : "background moondust block",
+      "brush" : [ [ "clear" ], [ "back", "moondust" ] ]
+    },
+
+    {
+      "value" : [255, 222, 178, 255],
+      "comment" : "overwritable background moondust block",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "moondust" ] ]
+    },
+
+    {
+      "value" : [204, 186, 143, 255],
+      "comment" : "foreground moondust block",
+      "brush" : [ [ "clear" ], [ "back", "moondust" ], [ "front", "moondust" ] ]
+    },
+
+    {
+      "value" : [204, 176, 143, 255],
+      "comment" : "overwritable foreground moondust block",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "moondust" ], [ "front", "moondust" ] ]
+    },
+
+    {
+      "value" : [178, 232, 255, 255],
+      "comment" : "background moonrock block",
+      "brush" : [ [ "clear" ], [ "back", "moonrock" ] ]
+    },
+
+    {
+      "value" : [178, 222, 255, 255],
+      "comment" : "overwritable background moonrock block",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "moonrock" ] ]
+    },
+
+    {
+      "value" : [143, 186, 204, 255],
+      "comment" : "foreground moonrock block",
+      "brush" : [ [ "clear" ], [ "back", "moonrock" ], [ "front", "moonrock" ] ]
+    },
+
+    {
+      "value" : [143, 176, 204, 255],
+      "comment" : "overwritable foreground moonrock block",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "moonrock" ], [ "front", "moonrock" ] ]
+    },
+
+    {
+      "value" : [222, 255, 178, 255],
+      "comment" : "background moonstone block",
+      "brush" : [ [ "clear" ], [ "back", "moonstone" ] ]
+    },
+
+    {
+      "value" : [222, 245, 178, 255],
+      "comment" : "overwritable background moonstone block",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "moonstone" ] ]
+    },
+
+    {
+      "value" : [177, 204, 143, 255],
+      "comment" : "foreground moonstone block",
+      "brush" : [ [ "clear" ], [ "back", "moonstone" ], [ "front", "moonstone" ] ]
+    },
+
+    {
+      "value" : [177, 194, 143, 255],
+      "comment" : "overwritable foreground moonstone block",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "moonstone" ], [ "front", "moonstone" ] ]
+    },
+    
+    {
+      "value" : [217, 206, 180, 255],
+      "comment" : "background gravel block",
+      "brush" : [ [ "clear" ], [ "back", "gravel" ] ]
+    },
+
+    {
+      "value" : [140, 133, 116, 255],
+      "comment" : "foreground gravel block",
+      "brush" : [ [ "clear" ], [ "back", "gravel" ], [ "front", "gravel" ] ]
+    },
+
+    {
+      "value" : [1, 0, 0, 255],
+      "comment" : "wire #1",
+      "brush" : [ [ "wire", { "group" : "group1", "local" : true } ] ]
+    },
+
+    {
+      "value" : [2, 0, 0, 255],
+      "comment" : "wire #2",
+      "brush" : [ [ "wire", { "group" : "group2", "local" : true } ] ]
+    },
+
+    {
+      "value" : [3, 0, 0, 255],
+      "comment" : "wire #3",
+      "brush" : [ [ "wire", { "group" : "group3", "local" : true } ] ]
+    },
+    
+    {
+      "value" : [4, 0, 0, 255],
+      "comment" : "wire #4",
+      "brush" : [ [ "wire", { "group" : "group4", "local" : true } ] ]
+    },
+
+    {
+      "value" : [5, 0, 0, 255],
+      "comment" : "wire #5",
+      "brush" : [ [ "wire", { "group" : "group5", "local" : true } ] ]
+    },
+
+    {
+      "value" : [6, 0, 0, 255],
+      "comment" : "wire #6",
+      "brush" : [ [ "wire", { "group" : "group6", "local" : true } ] ]
+    },
+    
+    {
+      "value" : [7, 0, 0, 255],
+      "comment" : "wire #7",
+      "brush" : [ [ "wire", { "group" : "group7", "local" : true } ] ]
+    },
+
+    {
+      "value" : [8, 0, 0, 255],
+      "comment" : "wire #8",
+      "brush" : [ [ "wire", { "group" : "group8", "local" : true } ] ]
+    },
+
+    {
+      "value" : [9, 0, 0, 255],
+      "comment" : "wire #9",
+      "brush" : [ [ "wire", { "group" : "group9", "local" : true } ] ]
+    },
+    
+    {
+      "value" : [10, 0, 0, 255],
+      "comment" : "wire #10",
+      "brush" : [ [ "wire", { "group" : "group10", "local" : true } ] ]
+    },
+
+    {
+      "value" : [11, 0, 0, 255],
+      "comment" : "wire #11",
+      "brush" : [ [ "wire", { "group" : "group11", "local" : true } ] ]
+    },
+
+    {
+      "value" : [12, 0, 0, 255],
+      "comment" : "wire #12",
+      "brush" : [ [ "wire", { "group" : "group12", "local" : true } ] ]
+    },
+    
+    {
+      "value" : [13, 0, 0, 255],
+      "comment" : "wire #13",
+      "brush" : [ [ "wire", { "group" : "group13", "local" : true } ] ]
+    },
+
+    {
+      "value" : [14, 0, 0, 255],
+      "comment" : "wire #14",
+      "brush" : [ [ "wire", { "group" : "group14", "local" : true } ] ]
+    },
+
+    {
+      "value" : [15, 0, 0, 255],
+      "comment" : "wire #15",
+      "brush" : [ [ "wire", { "group" : "group15", "local" : true } ] ]
+    },
+    
+    {
+      "value" : [16, 0, 0, 255],
+      "comment" : "wire #16",
+      "brush" : [ [ "wire", { "group" : "group16", "local" : true } ] ]
+    },
+
+    {
+      "value" : [17, 0, 0, 255],
+      "comment" : "wire #17",
+      "brush" : [ [ "wire", { "group" : "group17", "local" : true } ] ]
+    },
+
+    {
+      "value" : [18, 0, 0, 255],
+      "comment" : "wire #18",
+      "brush" : [ [ "wire", { "group" : "group18", "local" : true } ] ]
+    },
+    
+    {
+      "value" : [19, 0, 0, 255],
+      "comment" : "wire #19",
+      "brush" : [ [ "wire", { "group" : "group19", "local" : true } ] ]
+    },
+
+    {
+      "value" : [20, 0, 0, 255],
+      "comment" : "wire #20",
+      "brush" : [ [ "wire", { "group" : "group20", "local" : true } ] ]
+    },
+
+    {
+      "value" : [21, 0, 0, 255],
+      "comment" : "wire #21",
+      "brush" : [ [ "wire", { "group" : "group21", "local" : true } ] ]
+    },
+    
+    {
+      "value" : [22, 0, 0, 255],
+      "comment" : "wire #22",
+      "brush" : [ [ "wire", { "group" : "group22", "local" : true } ] ]
+    },
+
+    {
+      "value" : [23, 0, 0, 255],
+      "comment" : "wire #23",
+      "brush" : [ [ "wire", { "group" : "group23", "local" : true } ] ]
+    },
+
+    {
+      "value" : [24, 0, 0, 255],
+      "comment" : "wire #24",
+      "brush" : [ [ "wire", { "group" : "group24", "local" : true } ] ]
+    },
+
+    {
+      "value" : [25, 0, 0, 255],
+      "comment" : "wire #25",
+      "brush" : [ [ "wire", { "group" : "group25", "local" : true } ] ]
+    },
+    
+    {
+      "value" : [26, 0, 0, 255],
+      "comment" : "wire #26",
+      "brush" : [ [ "wire", { "group" : "group26", "local" : true } ] ]
+    },
+    
+    {
+      "value" : [27, 0, 0, 255],
+      "comment" : "wire #27",
+      "brush" : [ [ "wire", { "group" : "group27", "local" : true } ] ]
+    },
+
+    {
+      "value" : [28, 0, 0, 255],
+      "comment" : "wire #28",
+      "brush" : [ [ "wire", { "group" : "group28", "local" : true } ] ]
+    },
+
+    {
+      "value" : [29, 0, 0, 255],
+      "comment" : "wire #29",
+      "brush" : [ [ "wire", { "group" : "group29", "local" : true } ] ]
+    },
+
+    {
+      "value" : [30, 0, 0, 255],
+      "comment" : "wire #30",
+      "brush" : [ [ "wire", { "group" : "group30", "local" : true } ] ]
+    },
+    
+    {
+      "value" : [0, 1, 0, 255],
+      "comment" : "and",
+      "brush" : [ [ "clear" ], [ "object", "and" ] ]
+    },
+    
+    {
+      "value" : [0, 2, 0, 255],
+      "comment" : "dlatch",
+      "brush" : [ [ "clear" ], [ "object", "dlatch" ] ]
+    },
+    
+    {
+      "value" : [0, 3, 0, 255],
+      "comment" : "not",
+      "brush" : [ [ "clear" ], [ "object", "not" ] ]
+    },
+    
+    {
+      "value" : [0, 4, 0, 255],
+      "comment" : "or",
+      "brush" : [ [ "clear" ], [ "object", "or" ] ]
+    },
+    
+    {
+      "value" : [0, 5, 0, 255],
+      "comment" : "timer",
+      "brush" : [ [ "clear" ], [ "object", "timer" ] ]
+    },
+    
+    {
+      "value" : [0, 6, 0, 255],
+      "comment" : "timer1s",
+      "brush" : [ [ "clear" ], [ "object", "timer1s" ] ]
+    },
+    
+    {
+      "value" : [0, 7, 0, 255],
+      "comment" : "timer2s",
+      "brush" : [ [ "clear" ], [ "object", "timer2s" ] ]
+    },
+    
+    {
+      "value" : [0, 8, 0, 255],
+      "comment" : "timer3s",
+      "brush" : [ [ "clear" ], [ "object", "timer3s" ] ]
+    },
+    
+    {
+      "value" : [0, 9, 0, 255],
+      "comment" : "timer4s",
+      "brush" : [ [ "clear" ], [ "object", "timer4s" ] ]
+    },
+    
+    {
+      "value" : [0, 10, 0, 255],
+      "comment" : "timer5s",
+      "brush" : [ [ "clear" ], [ "object", "timer5s" ] ]
+    },
+
+    {
+      "value" : [0, 11, 0, 255],
+      "comment" : "xor",
+      "brush" : [ [ "clear" ], [ "object", "xor" ] ]
+    },
+
+    {
+      "value" : [26, 77, 0, 255],
+      "comment" : "biome tree",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "biometree" ] ]
+    },
+
+    {
+      "value" : [34, 102, 0, 255],
+      "comment" : "biome flora",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "biomeitems" ] ]
+    },
+    
+    {
+      "value" : [85, 255, 0, 255],
+      "comment" : "Player Spawn",
+      "brush" : [ [ "playerstart" ] ]
+    },
+
+    {
+      "value" : [55, 140, 140, 255],
+      "comment" : "background outpostwall1",
+      "brush" : [ [ "clear" ], [ "back", "outpostwall1" ] ]
+    },
+
+    {
+      "value" : [40, 102, 102, 255],
+      "comment" : "background outpostwall1 overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "outpostwall1" ] ]
+    },
+
+    {
+      "value" : [85, 217, 217, 255],
+      "comment" : "foreground outpostwall1",
+      "brush" : [ [ "clear" ], [ "back", "outpostwall1" ], [ "front", "outpostwall1" ] ]
+    },
+
+    {
+      "value" : [70, 179, 179, 255],
+      "comment" : "foreground outpostwall1 overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "outpostwall1" ], [ "front", "outpostwall1" ] ]
+    },
+
+    {
+      "value" : [55, 63, 140, 255],
+      "comment" : "background outpostwall2",
+      "brush" : [ [ "clear" ], [ "back", "outpostwall2" ] ]
+    },
+
+    {
+      "value" : [40, 46, 102, 255],
+      "comment" : "background outpostwall2 overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "outpostwall2" ] ]
+    },
+
+    {
+      "value" : [85, 98, 217, 255],
+      "comment" : "foreground outpostwall2",
+      "brush" : [ [ "clear" ], [ "back", "outpostwall2" ], [ "front", "outpostwall2" ] ]
+    },
+
+    {
+      "value" : [70, 81, 179, 255],
+      "comment" : "foreground outpostwall2 overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "outpostwall2" ], [ "front", "outpostwall2" ] ]
+    },
+
+    {
+      "value" : [140, 55, 55, 255],
+      "comment" : "background outpostsupport",
+      "brush" : [ [ "clear" ], [ "back", "outpostsupport" ] ]
+    },
+
+    {
+      "value" : [102, 40, 40, 255],
+      "comment" : "background outpostsupport overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "outpostsupport" ] ]
+    },
+
+    {
+      "value" : [217, 85, 85, 255],
+      "comment" : "foreground outpostsupport",
+      "brush" : [ [ "clear" ], [ "back", "outpostsupport" ], [ "front", "outpostsupport" ] ]
+    },
+
+    {
+      "value" : [179, 70, 70, 255],
+      "comment" : "foreground outpostsupport overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "outpostsupport" ], [ "front", "outpostsupport" ] ]
+    },
+    
+    {
+      "value" : [98, 166, 65, 255],
+      "comment" : "background outpost",
+      "brush" : [ [ "clear" ], [ "back", "outpost" ] ]
+    },
+
+    {
+      "value" : [76, 128, 50, 255],
+      "comment" : "background outpost overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "outpost" ] ]
+    },
+
+    {
+      "value" : [129, 217, 85, 255],
+      "comment" : "foreground outpost",
+      "brush" : [ [ "clear" ], [ "back", "outpost" ], [ "front", "outpost" ] ]
+    },
+
+    {
+      "value" : [106, 179, 70, 255],
+      "comment" : "foreground outpost overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "outpost" ], [ "front", "outpost" ] ]
+    },
+
+    {
+      "value" : [166, 89, 65, 255],
+      "comment" : "background heavypipe",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "heavypipe" ] ]
+    },
+    
+    {
+      "value" : [217, 115, 85, 255],
+      "comment" : "foreground heavypipe",
+      "brush" : [ [ "clear" ], [ "back", "heavypipe" ], [ "front", "heavypipe" ] ]
+    },
+
+    {
+      "value" : [191, 102, 75, 255],
+      "comment" : "foreground heavypipe only",
+      "brush" : [ [ "clear" ], [ "front", "heavypipe" ] ]
+    },
+
+    {
+      "value" : [117, 65, 166, 255],
+      "comment" : "background hazard",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "hazard" ] ]
+    },
+
+    {
+      "value" : [153, 85, 217, 255],
+      "comment" : "foreground hazard",
+      "brush" : [ [ "clear" ], [ "back", "hazard" ], [ "front", "hazard" ] ]
+    },
+
+    {
+      "value" : [135, 75, 191, 255],
+      "comment" : "foreground hazard only",
+      "brush" : [ [ "clear" ], [ "front", "hazard" ] ]
+    },
+
+    {
+      "value" : [166, 140, 65, 255],
+      "comment" : "background glass",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "glass" ] ]
+    },
+
+    {
+      "value" : [217, 184, 85, 255],
+      "comment" : "foreground glass",
+      "brush" : [ [ "clear" ], [ "front", "glass" ] ]
+    },
+    
+    {
+      "value" : [152, 166, 65, 255],
+      "comment" : "background mirror",
+      "brush" : [ [ "clear" ], [ "back", "mirror" ] ]
+    },
+
+    {
+      "value" : [200, 217, 85, 255],
+      "comment" : "foreground mirror",
+      "brush" : [ [ "clear" ], [ "front", "mirror" ] ]
+    },
+    
+    {
+      "value" : [56, 107, 140, 255],
+      "comment" : "background ancientblock",
+      "brush" : [ [ "clear" ], [ "back", "ancientblock" ] ]
+    },
+
+    {
+      "value" : [87, 165, 217, 255],
+      "comment" : "foreground ancientblock",
+      "brush" : [ [ "clear" ], [ "back", "ancientblock" ], [ "front", "ancientblock" ] ]
+    },
+    
+    {
+      "value" : [63, 56, 140, 255],
+      "comment" : "background ancientbrick",
+      "brush" : [ [ "clear" ], [ "back", "ancientbrick" ] ]
+    },
+
+    {
+      "value" : [98, 87, 217, 255],
+      "comment" : "foreground ancientbrick",
+      "brush" : [ [ "clear" ], [ "back", "ancientbrick" ], [ "front", "ancientbrick" ] ]
+    },
+    
+    {
+      "value" : [119, 56, 140, 255],
+      "comment" : "background meteoriterock",
+      "brush" : [ [ "clear" ], [ "back", "meteoriterock" ] ]
+    },
+
+    {
+      "value" : [220, 255, 166, 255],
+      "comment" : "foreground boundary (invisible walls)",
+      "brush" : [ [ "clear" ], [ "front", "metamaterial:boundary" ] ]
+    },
+
+    {
+      "value" : [184, 87, 217, 255],
+      "comment" : "foreground meteoriterock",
+      "brush" : [ [ "clear" ], [ "back", "meteoriterock" ], [ "front", "meteoriterock" ] ]
+    },
+    
+    {
+      "value" : [56, 140, 74, 255],
+      "comment" : "background apexshipdetails",
+      "brush" : [ [ "clear" ], [ "back", "apexshipdetails" ] ]
+    },
+
+    {
+      "value" : [87, 217, 115, 255],
+      "comment" : "foreground apexshipdetails",
+      "brush" : [ [ "clear" ], [ "back", "apexshipdetails" ], [ "front", "apexshipdetails" ] ]
+    },
+    
+    {
+      "value" : [70, 56, 140, 255],
+      "comment" : "background apexshipsupport",
+      "brush" : [ [ "clear" ], [ "back", "apexshipsupport" ] ]
+    },
+
+    {
+      "value" : [108, 87, 217, 255],
+      "comment" : "foreground apexshipsupport",
+      "brush" : [ [ "clear" ], [ "back", "apexshipsupport" ], [ "front", "apexshipsupport" ] ]
+    },
+    
+    {
+      "value" : [119, 140, 56, 255],
+      "comment" : "background lunarbaseblock",
+      "brush" : [ [ "clear" ], [ "back", "lunarbaseblock" ] ]
+    },
+
+    {
+      "value" : [185, 217, 87, 255],
+      "comment" : "foreground lunarbaseblock",
+      "brush" : [ [ "clear" ], [ "back", "lunarbaseblock" ], [ "front", "lunarbaseblock" ] ]
+    },
+    
+    {
+      "value" : [140, 72, 56, 255],
+      "comment" : "background girder",
+      "brush" : [ [ "clear" ], [ "back", "girder" ] ]
+    },
+
+    {
+      "value" : [217, 111, 87, 255],
+      "comment" : "foreground girder",
+      "brush" : [ [ "clear" ], [ "back", "girder" ], [ "front", "girder" ] ]
+    },
+    
+    {
+      "value" : [116, 56, 140, 255],
+      "comment" : "background supermatter",
+      "brush" : [ [ "clear" ], [ "back", "supermatter" ] ]
+    },
+    
+    {
+      "value" : [180, 87, 217, 255],
+      "comment" : "foreground only supermatter",
+      "brush" : [ [ "clear" ], [ "front", "supermatter" ] ]
+    },
+
+    {
+      "value" : [155, 171, 179, 255],
+      "comment" : "stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "outpostplatform" ] ]
+    },
+    
+    {
+      "value" : [139, 130, 111, 255],
+      "comment" : "ancient stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "ancientplatform" ] ]
+    },
+    
+    {
+      "value" : [173, 194, 204, 255],
+      "comment" : "lunar base stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "lunarbaseplatform" ] ]
+    },
+
+    {
+      "value" : [255, 85, 0, 255],
+      "comment" : "bathroomhanddryer facing left",
+      "brush" : [ [ "clear" ], [ "object", "bathroomhanddryer", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 81, 0, 255],
+      "comment" : "bathroomhanddryer facing right",
+      "brush" : [ [ "clear" ], [ "object", "bathroomhanddryer", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 89, 0, 255],
+      "comment" : "bathroomsink facing left",
+      "brush" : [ [ "clear" ], [ "object", "bathroomsink", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 85, 0, 255],
+      "comment" : "bathroomsink facing right",
+      "brush" : [ [ "clear" ], [ "object", "bathroomsink", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [26, 255, 217, 255],
+      "comment" : "bathroomstall facing left",
+      "brush" : [ [ "clear" ], [ "object", "bathroomstall", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [24, 242, 206, 255],
+      "comment" : "bathroomstall facing right",
+      "brush" : [ [ "clear" ], [ "object", "bathroomstall", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 26, 64, 255],
+      "comment" : "bathroomtrash facing left",
+      "brush" : [ [ "clear" ], [ "object", "bathroomtrash", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 24, 61, 255],
+      "comment" : "bathroomtrash facing right",
+      "brush" : [ [ "clear" ], [ "object", "bathroomtrash", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 94, 0, 255],
+      "comment" : "bathroomurinal facing left",
+      "brush" : [ [ "clear" ], [ "object", "bathroomurinal", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 89, 0, 255],
+      "comment" : "bathroomurinal facing right",
+      "brush" : [ [ "clear" ], [ "object", "bathroomurinal", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [26, 255, 224, 255],
+      "comment" : "bench facing left",
+      "brush" : [ [ "clear" ], [ "object", "bench", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [24, 242, 213, 255],
+      "comment" : "bench facing right",
+      "brush" : [ [ "clear" ], [ "object", "bench", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 98, 0, 255],
+      "comment" : "coffeemachine facing left",
+      "brush" : [ [ "clear" ], [ "object", "coffeemachine", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 93, 0, 255],
+      "comment" : "coffeemachine facing right",
+      "brush" : [ [ "clear" ], [ "object", "coffeemachine", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [102, 26, 255, 255],
+      "comment" : "filingcabinet facing left",
+      "brush" : [ [ "clear" ], [ "object", "filingcabinet", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [97, 24, 242, 255],
+      "comment" : "filingcabinet facing right",
+      "brush" : [ [ "clear" ], [ "object", "filingcabinet", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 102, 0, 255],
+      "comment" : "fireextinguisher facing left",
+      "brush" : [ [ "clear" ], [ "object", "fireextinguisher", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 97, 0, 255],
+      "comment" : "fireextinguisher facing right",
+      "brush" : [ [ "clear" ], [ "object", "fireextinguisher", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 106, 0, 255],
+      "comment" : "number1",
+      "brush" : [ [ "clear" ], [ "object", "number1" ] ]
+    },
+    
+    {
+      "value" : [255, 110, 0, 255],
+      "comment" : "number2",
+      "brush" : [ [ "clear" ], [ "object", "number2" ] ]
+    },
+    
+    {
+      "value" : [255, 115, 0, 255],
+      "comment" : "number3",
+      "brush" : [ [ "clear" ], [ "object", "number3" ] ]
+    },
+    
+    {
+      "value" : [255, 119, 0, 255],
+      "comment" : "number4",
+      "brush" : [ [ "clear" ], [ "object", "number4" ] ]
+    },
+    
+    {
+      "value" : [255, 123, 0, 255],
+      "comment" : "number5",
+      "brush" : [ [ "clear" ], [ "object", "number5" ] ]
+    },
+    
+    {
+      "value" : [255, 127, 0, 255],
+      "comment" : "number6",
+      "brush" : [ [ "clear" ], [ "object", "number6" ] ]
+    },
+    
+    {
+      "value" : [255, 132, 0, 255],
+      "comment" : "number7",
+      "brush" : [ [ "clear" ], [ "object", "number7" ] ]
+    },
+    
+    {
+      "value" : [255, 136, 0, 255],
+      "comment" : "number8",
+      "brush" : [ [ "clear" ], [ "object", "number8" ] ]
+    },
+    
+    {
+      "value" : [255, 140, 0, 255],
+      "comment" : "number9",
+      "brush" : [ [ "clear" ], [ "object", "number9" ] ]
+    },
+    
+    {
+      "value" : [255, 145, 0, 255],
+      "comment" : "number0",
+      "brush" : [ [ "clear" ], [ "object", "number0" ] ]
+    },
+
+    {
+      "value" : [26, 255, 247, 255],
+      "comment" : "outpostbed facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostbed", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [24, 242, 235, 255],
+      "comment" : "outpostbed facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostbed", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [178, 255, 26, 255],
+      "comment" : "outpostbutton",
+      "brush" : [ [ "clear" ], [ "object", "outpostbutton" ] ]
+    },
+    
+    {
+      "value" : [110, 26, 255, 255],
+      "comment" : "outpostcabinet facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostcabinet", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [104, 24, 242, 255],
+      "comment" : "outpostcabinet facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostcabinet", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [117, 26, 255, 255],
+      "comment" : "outpostcargocrate facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostcargocrate", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [111, 24, 242, 255],
+      "comment" : "outpostcargocrate facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostcargocrate", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [125, 26, 255, 255],
+      "comment" : "outpostcargocrateshort facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostcargocrateshort", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [119, 24, 242, 255],
+      "comment" : "outpostcargocrateshort facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostcargocrateshort", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 217, 26, 255],
+      "comment" : "outpostceilinglight facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostceilinglight", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 206, 24, 255],
+      "comment" : "outpostceilinglight facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostceilinglight", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [26, 255, 232, 255],
+      "comment" : "outpostchair facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [24, 242, 220, 255],
+      "comment" : "outpostchair facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostchair", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 149, 0, 255],
+      "comment" : "outpostconsole facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostconsole", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 141, 0, 255],
+      "comment" : "outpostconsole facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostconsole", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 153, 0, 255],
+      "comment" : "outpostcrane facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostcrane", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 145, 0, 255],
+      "comment" : "outpostcrane facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostcrane", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [133, 26, 255, 255],
+      "comment" : "outpostdesk facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostdesk", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [126, 24, 242, 255],
+      "comment" : "outpostdesk facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostdesk", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [140, 26, 255, 255],
+      "comment" : "outpostfridge facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostfridge", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [133, 24, 242, 255],
+      "comment" : "outpostfridge facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostfridge", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 157, 0, 255],
+      "comment" : "outpostgenerator facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostgenerator", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 149, 0, 255],
+      "comment" : "outpostgenerator facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostgenerator", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [163, 255, 26, 255],
+      "comment" : "outpostkeypad facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostkeypad", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [155, 242, 24, 255],
+      "comment" : "outpostkeypad facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostkeypad", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 224, 26, 255],
+      "comment" : "outpostlamp facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostlamp", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 213, 24, 255],
+      "comment" : "outpostlamp facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostlamp", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 232, 26, 255],
+      "comment" : "outpostlight",
+      "brush" : [ [ "clear" ], [ "object", "outpostlight" ] ]
+    },
+    
+    {
+      "value" : [148, 26, 255, 255],
+      "comment" : "outpostshippingcontainer facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostshippingcontainer", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [141, 24, 242, 255],
+      "comment" : "outpostshippingcontainer facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostshippingcontainer", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [156, 26, 255, 255],
+      "comment" : "outpostlocker facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostlocker", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [148, 24, 242, 255],
+      "comment" : "outpostlocker facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostlocker", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 162, 0, 255],
+      "comment" : "outpostmicrowave facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostmicrowave", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 153, 0, 255],
+      "comment" : "outpostmicrowave facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostmicrowave", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 166, 0, 255],
+      "comment" : "outpostmonitor facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostmonitor", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 157, 0, 255],
+      "comment" : "outpostmonitor facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostmonitor", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 170, 0, 255],
+      "comment" : "outpostpc facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostpc", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 162, 0, 255],
+      "comment" : "outpostpc facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostpc", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [26, 255, 240, 255],
+      "comment" : "outpostpublicchair facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostpublicchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [24, 242, 228, 255],
+      "comment" : "outpostpublicchair facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostpublicchair", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [229, 77, 0, 255],
+      "comment" : "outpostradardish facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostradardish", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [217, 72, 0, 255],
+      "comment" : "outpostradardish facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostradardish", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [229, 80, 0, 255],
+      "comment" : "outpostsecurityconsole facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostsecurityconsole", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [217, 76, 0, 255],
+      "comment" : "outpostsecurityconsole facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostsecurityconsole", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [229, 84, 0, 255],
+      "comment" : "outpostservicepanel facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostservicepanel", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [217, 79, 0, 255],
+      "comment" : "outpostservicepanel facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostservicepanel", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [229, 88, 0, 255],
+      "comment" : "outpostsmallmonitor facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostsmallmonitor", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [217, 83, 0, 255],
+      "comment" : "outpostsmallmonitor facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostsmallmonitor", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [26, 102, 255, 255],
+      "comment" : "outpoststandingdesk facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpoststandingdesk", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [24, 97, 242, 255],
+      "comment" : "outpoststandingdesk facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpoststandingdesk", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [26, 87, 255, 255],
+      "comment" : "outposttable facing left",
+      "brush" : [ [ "clear" ], [ "object", "outposttable", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [24, 82, 242, 255],
+      "comment" : "outposttable facing right",
+      "brush" : [ [ "clear" ], [ "object", "outposttable", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [229, 92, 0, 255],
+      "comment" : "outposttank facing left",
+      "brush" : [ [ "clear" ], [ "object", "outposttank", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [217, 87, 0, 255],
+      "comment" : "outposttank facing right",
+      "brush" : [ [ "clear" ], [ "object", "outposttank", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [229, 96, 0, 255],
+      "comment" : "outpostterminal facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostterminal", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [217, 90, 0, 255],
+      "comment" : "outpostterminal facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostterminal", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [161, 229, 23, 255],
+      "comment" : "scanner",
+      "brush" : [ [ "clear" ], [ "object", "scanner" ] ]
+    },
+    
+    {
+      "value" : [229, 99, 0, 255],
+      "comment" : "plasticplant facing left",
+      "brush" : [ [ "clear" ], [ "object", "plasticplant", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [217, 94, 0, 255],
+      "comment" : "plasticplant facing right",
+      "brush" : [ [ "clear" ], [ "object", "plasticplant", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [26, 71, 255, 255],
+      "comment" : "roofvent facing left",
+      "brush" : [ [ "clear" ], [ "object", "roofvent", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [24, 68, 242, 255],
+      "comment" : "roofvent facing right",
+      "brush" : [ [ "clear" ], [ "object", "roofvent", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [229, 103, 0, 255],
+      "comment" : "watercooler facing left",
+      "brush" : [ [ "clear" ], [ "object", "watercooler", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [217, 98, 0, 255],
+      "comment" : "watercooler facing right",
+      "brush" : [ [ "clear" ], [ "object", "watercooler", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [179, 119, 89, 255],
+      "comment" : "outpostairlock facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostairlock", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [166, 110, 83, 255],
+      "comment" : "outpostairlock facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostairlock", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [179, 126, 89, 255],
+      "comment" : "outpostairlocklarge facing left",
+      "brush" : [ [ "clear" ], [ "object", "outpostairlocklarge", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [166, 117, 83, 255],
+      "comment" : "outpostairlocklarge facing right",
+      "brush" : [ [ "clear" ], [ "object", "outpostairlocklarge", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [179, 134, 89, 255],
+      "comment" : "outpostslidingdoor",
+      "brush" : [ [ "clear" ], [ "object", "outpostslidingdoor" ] ]
+    },
+    
+    {
+      "value" : [148, 255, 26, 255],
+      "comment" : "infinityexpress facing left",
+      "brush" : [ [ "clear" ], [ "object", "infinityexpress", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [141, 242, 24, 255],
+      "comment" : "infinityexpress facing right",
+      "brush" : [ [ "clear" ], [ "object", "infinityexpress", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [133, 255, 26, 255],
+      "comment" : "bunkervent",
+      "brush" : [ [ "clear" ], [ "object", "bunkervent", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [126, 242, 24, 255],
+      "comment" : "penguinbay facing right",
+      "brush" : [ [ "clear" ], [ "object", "penguinbay", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [117, 255, 26, 255],
+      "comment" : "terramart facing left",
+      "brush" : [ [ "clear" ], [ "object", "terramart", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [111, 242, 24, 255],
+      "comment" : "persistentswitch",
+      "brush" : [ [ "clear" ], [ "object", "persistentswitch", { "direction" : "left" } ] ]
+    },
+    
+    {
+      "value" : [102, 255, 26, 255],
+      "comment" : "redlight",
+      "brush" : [ [ "clear" ], [ "object", "redlight", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [97, 242, 24, 255],
+      "comment" : "redlight broken",
+      "brush" : [ [ "clear" ], [ "object", "redlightBroken", { "direction" : "left" } ] ]
+    },
+    
+    {
+      "value" : [204, 68, 0, 255],
+      "comment" : "miningpowersign",
+      "brush" : [ [ "clear" ], [ "object", "miningpowersign", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [191, 64, 0, 255],
+      "comment" : "ancientgate facing right",
+      "brush" : [ [ "clear" ], [ "object", "ancientgate", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 240, 26, 255],
+      "comment" : "ancientpillar facing left",
+      "brush" : [ [ "clear" ], [ "object", "ancientpillar", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 228, 24, 255],
+      "comment" : "ancientpillar facing right",
+      "brush" : [ [ "clear" ], [ "object", "ancientpillar", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [154, 229, 23, 255],
+      "comment" : "drillmachine",
+      "brush" : [ [ "clear" ], [ "object", "drillmachine", { "direction" : "right", "parameters" : { "defaultSwitchState" : true } } ] ]
+    },
+
+    {
+      "value" : [145, 217, 22, 255],
+      "comment" : "ancientconsole facing right",
+      "brush" : [ [ "clear" ], [ "object", "ancientconsole", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [119, 229, 23, 255],
+      "comment" : "returnconsole facing left",
+      "brush" : [ [ "clear" ], [ "object", "returnconsole", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [113, 217, 22, 255],
+      "comment" : "returnconsole facing right",
+      "brush" : [ [ "clear" ], [ "object", "returnconsole", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 102, 26, 255],
+      "comment" : "antenna facing left",
+      "brush" : [ [ "clear" ], [ "object", "antenna", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 97, 24, 255],
+      "comment" : "antenna facing right",
+      "brush" : [ [ "clear" ], [ "object", "antenna", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [23, 229, 195, 255],
+      "comment" : "lunarbasebunk facing left",
+      "brush" : [ [ "clear" ], [ "object", "lunarbasebunk", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [22, 217, 184, 255],
+      "comment" : "lunarbasebunk facing right",
+      "brush" : [ [ "clear" ], [ "object", "lunarbasebunk", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [23, 229, 209, 255],
+      "comment" : "lunarbasechair facing left",
+      "brush" : [ [ "clear" ], [ "object", "lunarbasechair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [22, 217, 197, 255],
+      "comment" : "lunarbasechair facing right",
+      "brush" : [ [ "clear" ], [ "object", "lunarbasechair", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [35, 77, 8, 255],
+      "comment" : "lunarbaseconsole facing left",
+      "brush" : [ [ "clear" ], [ "object", "lunarbaseconsole", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [28, 64, 6, 255],
+      "comment" : "lunarbaseconsole facing right",
+      "brush" : [ [ "clear" ], [ "object", "lunarbaseconsole", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [106, 229, 23, 255],
+      "comment" : "lunarbaseconsole facing left - on state",
+      "brush" : [ [ "clear" ], [ "object", "lunarbaseconsole", { "direction" : "left", "parameters" : { "defaultSwitchState" : true } } ] ]
+    },
+
+    {
+      "value" : [100, 217, 22, 255],
+      "comment" : "lunarbaseconsole facing right - on state",
+      "brush" : [ [ "clear" ], [ "object", "lunarbaseconsole", { "direction" : "right", "parameters" : { "defaultSwitchState" : true } } ] ]
+    },
+    
+    {
+      "value" : [255, 26, 33, 255],
+      "comment" : "lunarbasecrate facing left",
+      "brush" : [ [ "clear" ], [ "object", "lunarbasecrate", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicChestTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [242, 24, 31, 255],
+      "comment" : "lunarbasecrate facing right",
+      "brush" : [ [ "clear" ], [ "object", "lunarbasecrate", { "direction" : "right", "parameters" : { "treasurePools" : [ "basicChestTreasure" ] } } ] ]
+    },
+    
+    {
+      "value" : [229, 195, 23, 255],
+      "comment" : "lunarbaselantern",
+      "brush" : [ [ "clear" ], [ "object", "lunarbaselantern" ] ]
+    },
+    
+    {
+      "value" : [77, 65, 8, 255],
+      "comment" : "lunarbaselantern - off state",
+      "brush" : [ [ "clear" ], [ "object", "lunarbaselantern", { "parameters" : { "defaultLightState" : false } } ] ]
+    },
+    
+    {
+      "value" : [92, 23, 229, 255],
+      "comment" : "lunarbaselocker facing left",
+      "brush" : [ [ "clear" ], [ "object", "lunarbaselocker", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicChestTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [87, 22, 217, 255],
+      "comment" : "lunarbaselocker facing right",
+      "brush" : [ [ "clear" ], [ "object", "lunarbaselocker", { "direction" : "right", "parameters" : { "treasurePools" : [ "basicChestTreasure" ] } } ] ]
+    },
+    
+    {
+      "value" : [179, 141, 89, 255],
+      "comment" : "lunarbasedoor facing left",
+      "brush" : [ [ "clear" ], [ "object", "lunarbasedoor", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [166, 131, 83, 255],
+      "comment" : "lunarbasedoor facing right",
+      "brush" : [ [ "clear" ], [ "object", "lunarbasedoor", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 110, 26, 255],
+      "comment" : "miningbelt facing left",
+      "brush" : [ [ "clear" ], [ "object", "miningbelt", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 104, 24, 255],
+      "comment" : "miningbelt facing right",
+      "brush" : [ [ "clear" ], [ "object", "miningbelt", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 26, 48, 255],
+      "comment" : "miningchest with head",
+      "brush" : [ [ "clear" ], [ "object", "miningchest", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicChestTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [242, 24, 46, 255],
+      "comment" : "miningchest with chest",
+      "brush" : [ [ "clear" ], [ "object", "miningchest", { "direction" : "left", "parameters" : { "treasurePools" : [ "basicChestTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [255, 117, 26, 255],
+      "comment" : "miningcrusher facing left",
+      "brush" : [ [ "clear" ], [ "object", "miningcrusher", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 111, 24, 255],
+      "comment" : "miningcrusher facing right",
+      "brush" : [ [ "clear" ], [ "object", "miningcrusher", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 125, 26, 255],
+      "comment" : "miningfence facing left",
+      "brush" : [ [ "clear" ], [ "object", "miningfence", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 119, 24, 255],
+      "comment" : "miningfence facing right",
+      "brush" : [ [ "clear" ], [ "object", "miningfence", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 133, 26, 255],
+      "comment" : "mininghazardsign",
+      "brush" : [ [ "clear" ], [ "object", "mininghazardsign" ] ]
+    },
+    
+    {
+      "value" : [255, 140, 26, 255],
+      "comment" : "miningskip facing left",
+      "brush" : [ [ "clear" ], [ "object", "miningskip", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 133, 24, 255],
+      "comment" : "miningskip facing right",
+      "brush" : [ [ "clear" ], [ "object", "miningskip", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [179, 149, 89, 255],
+      "comment" : "miningdoor facing left",
+      "brush" : [ [ "clear" ], [ "object", "miningdoor", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [193, 150, 90, 255],
+      "comment" : "miningverticaldoor facing left",
+      "brush" : [ [ "clear" ], [ "object", "miningverticaldoor", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [166, 138, 83, 255],
+      "comment" : "miningdoor facing right",
+      "brush" : [ [ "clear" ], [ "object", "miningdoor", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 228, 26, 255],
+      "comment" : "floodlights facing left",
+      "brush" : [ [ "clear" ], [ "object", "floodlights", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [242, 217, 24, 255],
+      "comment" : "floodlights facing right",
+      "brush" : [ [ "clear" ], [ "object", "floodlights", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [77, 68, 8, 255],
+      "comment" : "floodlights facing left - off state",
+      "brush" : [ [ "clear" ], [ "object", "floodlights", { "direction" : "left", "parameters" : { "defaultLightState" : false } } ] ]
+    },
+
+    {
+      "value" : [64, 57, 6, 255],
+      "comment" : "floodlights facing right - off state",
+      "brush" : [ [ "clear" ], [ "object", "floodlights", { "direction" : "right", "parameters" : { "defaultLightState" : false } } ] ]
+    },
+    
+    {
+      "value" : [236, 255, 26, 255],
+      "comment" : "prisonfloodlight",
+      "brush" : [ [ "clear" ], [ "object", "prisonfloodlight" ] ]
+    },
+    
+    {
+      "value" : [71, 77, 8, 255],
+      "comment" : "prisonfloodlight - off state",
+      "brush" : [ [ "clear" ], [ "object", "prisonfloodlight", { "parameters" : { "defaultLightState" : false } } ] ]
+    },
+    
+    {
+      "value" : [255, 221, 51, 255],
+      "comment" : "prisonfloodlightBroken",
+      "brush" : [ [ "clear" ], [ "object", "prisonfloodlightBroken" ] ]
+    },
+    
+    {
+      "value" : [77, 66, 15, 255],
+      "comment" : "prisonfloodlightBroken - off state",
+      "brush" : [ [ "clear" ], [ "object", "prisonfloodlightBroken", { "parameters" : { "defaultLightState" : false } } ] ]
+    },
+    
+    {
+      "value" : [255, 251, 26, 255],
+      "comment" : "apexshiplight",
+      "brush" : [ [ "clear" ], [ "object", "apexshiplight" ] ]
+    },
+    
+    {
+      "value" : [77, 75, 8, 255],
+      "comment" : "apexshiplight - off state",
+      "brush" : [ [ "clear" ], [ "object", "apexshiplight", { "parameters" : { "defaultLightState" : false } } ] ]
+    },
+    
+    {
+      "value" : [247, 255, 26, 255],
+      "comment" : "apexshiplightBroken",
+      "brush" : [ [ "clear" ], [ "object", "apexshiplightBroken" ] ]
+    },
+    
+    {
+      "value" : [74, 77, 8, 255],
+      "comment" : "apexshiplightBroken - off state",
+      "brush" : [ [ "clear" ], [ "object", "apexshiplightBroken", { "parameters" : { "defaultLightState" : false } } ] ]
+    },
+    
+    {
+      "value" : [147, 229, 23, 255],
+      "comment" : "tinywallswitch",
+      "brush" : [ [ "clear" ], [ "object", "tinywallswitch" ] ]
+    },
+    
+    {
+      "value" : [133, 229, 23, 255],
+      "comment" : "smallwallswitchlit",
+      "brush" : [ [ "clear" ], [ "object", "smallwallswitchlit" ] ]
+    },
+    
+    {
+      "value" : [187, 255, 51, 255],
+      "comment" : "alarm",
+      "brush" : [ [ "clear" ], [ "object", "alarm", { "direction" : "left" } ] ]
+    },
+    
+    {
+      "value" : [178, 242, 48, 255],
+      "comment" : "alarm",
+      "brush" : [ [ "clear" ], [ "object", "alarm", { "direction" : "right" } ] ]
+    },
+    
+    {
+      "value" : [255, 148, 26, 255],
+      "comment" : "fallingrocksmodern",
+      "brush" : [ [ "clear" ], [ "object", "fallingrocksmodern" ] ]
+    },
+    
+    {
+      "value" : [255, 156, 26, 255],
+      "comment" : "deathwarningmodern",
+      "brush" : [ [ "clear" ], [ "object", "deathwarningmodern" ] ]
+    },
+
+    {
+      "value" : [131, 204, 20, 255],
+      "comment" : "signstore",
+      "brush" : [ [ "clear" ], [ "object", "signstore", { "direction" : "left" } ] ]
+    },
+    
+    {
+      "value" : [122, 191, 19, 255],
+      "comment" : "signstore",
+      "brush" : [ [ "clear" ], [ "object", "signstore", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [118, 204, 20, 255],
+      "comment" : "signdispenser",
+      "brush" : [ [ "clear" ], [ "object", "signdispenser", { "direction" : "left" } ] ]
+    },
+    
+    {
+      "value" : [111, 191, 19, 255],
+      "comment" : "signdispenser",
+      "brush" : [ [ "clear" ], [ "object", "signdispenser", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [143, 204, 20, 255],
+      "comment" : "arcadegame",
+      "brush" : [ [ "clear" ], [ "object", "arcadegame", { "direction" : "left" } ] ]
+    },
+    
+    {
+      "value" : [134, 191, 19, 255],
+      "comment" : "arcadegame",
+      "brush" : [ [ "clear" ], [ "object", "arcadegame", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [131, 204, 20, 255],
+      "comment" : "signstore",
+      "brush" : [ [ "clear" ], [ "object", "signstore", { "direction" : "left" } ] ]
+    },
+    
+    {
+      "value" : [122, 191, 19, 255],
+      "comment" : "signstore",
+      "brush" : [ [ "clear" ], [ "object", "signstore", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [118, 204, 20, 255],
+      "comment" : "signdispenser",
+      "brush" : [ [ "clear" ], [ "object", "signdispenser", { "direction" : "left" } ] ]
+    },
+    
+    {
+      "value" : [111, 191, 19, 255],
+      "comment" : "signdispenser",
+      "brush" : [ [ "clear" ], [ "object", "signdispenser", { "direction" : "right" } ] ]
+    },
+
+    // NPC MONSTER SPAWN BRUSHES //
+
+    {
+      "value" : [255, 128, 128, 255],
+      "comment" : "aggressive quadruped npc",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "monster",
+            "typeName" : "moontant",
+            "parameters" : {
+              "aggressive" : true,
+              "level" : 1
+            }
+          }
+        ] ]
+    },
+
+    {
+      "value" : [205, 0, 0, 255],
+      "comment" : "human miner",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "human",
+            "typeName" : "miner"
+          }
+        ] ]
+    },
+  
+    {
+      "value" : [210, 0, 0, 255],
+      "comment" : "human mutant miner",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "human",
+            "typeName" : "mutantminer"
+          }
+        ] ]
+    },
+
+    // STAGEHANDS
+
+    {
+      "value" : [166, 76, 255, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "outpostunderground.bunker"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 254, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "outpostunderground.greenhouse"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 253, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "outpostunderground.shelter"
+          }
+        }
+      ] ]
+    }
+  ],
+
+  "parts" : [
+    {
+      "name" : "bunker1",
+      "rules" : [ ],
+      "def" : [ "image", [ "bunker1.png", "bunker1-objects.png" ] ]
+    },
+
+    {
+      "name" : "greenhouse1",
+      "rules" : [ ],
+      "def" : [ "image", [ "greenhouse1.png", "greenhouse1-objects.png" ] ]
+    },
+
+    {
+      "name" : "shelter1",
+      "rules" : [ ],
+      "def" : [ "image", [ "shelter1.png", "shelter1-objects.png" ] ]
+    }
+  ]
+}

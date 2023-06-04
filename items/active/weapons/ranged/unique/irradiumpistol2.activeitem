@@ -1,0 +1,85 @@
+{
+  "itemName" : "irradiumpistol2",
+  "price" : 500,
+  "inventoryIcon" : "irradiumpistol.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "Ejects deadly radioactive bolts.",
+  "shortdescription" : "Irradium Justicar",
+  "level" : 4,
+  "category" : "Pistol",
+  "itemTags" : ["weapon","ranged","machinepistol","upgradeableWeapon","irradium","radioactive"],
+  "tooltipKind" : "gun2",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "irradiumpistol.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3blue.png"
+  },
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/weapons/irradiumrifle.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }
+  },
+
+  "baseOffset" : [1.0, 0.34],
+  "muzzleOffset" : [0.68, 0.225],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1,
+    "baseDps" : 5,
+    "energyUsage" : 25,
+    "fireType" : "auto",
+    "inaccuracy" : 0.001,
+    "projectileCount" : 1,
+    "projectileType" : "fublueorb",
+    "projectileParameters" : {
+      "speed" : 32,
+      "statusEffects" : [ "radiationburn" ]
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 3,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,19 @@
+{
+	"name" : "medicaljuggernaut",
+	"label" : "^orange;[E]^reset; Juggernaut",
+	"icon" : "/interface/statuses/medicalStationSpecials/juggernaut.png",
+
+	"defaultDuration" : 5,
+	"scripts" : [ "/stats/effects/medicalStationSpecials/medicalStatusBase.lua","/stats/effects/fu_genericStatApplier.lua","/stats/effects/fu_genericControlModifiers.lua" ],
+
+	"effectConfig" : {
+		"stats": [
+			{"stat": "grit","amount": 10},
+			{"stat": "knockbackThreshold","amount": 65535},
+			{"stat": "protection","amount": 50}
+		],
+		"controlModifiers": {
+			"speedModifier": 0.66
+		}
+	}
+}

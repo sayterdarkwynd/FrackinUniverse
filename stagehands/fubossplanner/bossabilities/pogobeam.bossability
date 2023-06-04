@@ -1,0 +1,97 @@
+{
+  "name" : "fupogobeam",
+  "preconditions" : [
+    ["!BossDanger", 0, 0],
+    ["!BossDanger", 1, 0],
+    ["!BossDanger", 2, 0],
+    ["!BossDanger", 3, 0],
+    ["!BossDanger", 4, 0],
+    ["!BossDanger", 5, 0],
+    ["!BossDanger", 6, 0],
+    ["!BossDanger", 7, 0],
+    ["!Danger", 0, 0],
+    ["!Danger", 1, 0],
+    ["!Danger", 2, 0],
+    ["!Danger", 3, 0],
+    ["!Danger", 4, 0],
+    ["!Danger", 5, 0],
+    ["!Danger", 6, 0],
+    ["!Danger", 7, 0],
+    ["!Danger", 0, 1],
+    ["!Danger", 1, 1],
+    ["!Danger", 2, 1],
+    ["!Danger", 3, 1],
+    ["!Danger", 4, 1],
+    ["!Danger", 5, 1],
+    ["!Danger", 6, 1],
+    ["!Danger", 7, 1],
+    ["Ability", "StaticAbility"]
+  ],
+  "postconditions" : [
+    ["!Ability", "StaticAbility"],
+    ["Ability", "MovingAbility"]
+  ],
+  "statemodifiers" : [
+    ["Danger", 0, 0],
+    ["Danger", 1, 0],
+    ["Danger", 2, 0],
+    ["Danger", 3, 0],
+    ["Danger", 4, 0],
+    ["Danger", 5, 0],
+    ["Danger", 6, 0],
+    ["Danger", 7, 0],
+    ["Danger", 0, 1],
+    ["Danger", 1, 1],
+    ["Danger", 2, 1],
+    ["Danger", 3, 1],
+    ["Danger", 4, 1],
+    ["Danger", 5, 1],
+    ["Danger", 6, 1],
+    ["Danger", 7, 1],
+    ["Boss", 0, 0, "CertainPosition"],
+    ["Boss", 1, 0, "CertainPosition"],
+    ["Boss", 3, 0, "CertainPosition"],
+    ["Boss", 4, 0, "CertainPosition"],
+    ["Boss", 6, 0, "CertainPosition"],
+    ["Boss", 7, 0, "CertainPosition"],
+    ["Ability", "LongRange"]
+  ],
+  "objectives" : [
+    ["Danger", 0, 0],
+    ["Danger", 1, 0],
+    ["Danger", 2, 0],
+    ["Danger", 3, 0],
+    ["Danger", 4, 0],
+    ["Danger", 5, 0],
+    ["Danger", 6, 0],
+    ["Danger", 7, 0],
+    ["Danger", 0, 1],
+    ["Danger", 1, 1],
+    ["Danger", 2, 1],
+    ["Danger", 3, 1],
+    ["Danger", 4, 1],
+    ["Danger", 5, 1],
+    ["Danger", 6, 1],
+    ["Danger", 7, 1],
+    ["Boss", 0, 0, "CertainPosition"],
+    ["Boss", 1, 0, "CertainPosition"],
+    ["Boss", 3, 0, "CertainPosition"],
+    ["Boss", 4, 0, "CertainPosition"],
+    ["Boss", 6, 0, "CertainPosition"],
+    ["Boss", 7, 0, "CertainPosition"]
+  ],
+
+  "actions" : [ "guardian-pogobeam" ], // actions to apply the binding to
+  "behaviorHandler" : "pogoBeamHandler",
+
+  "sequenceActions" : [
+    {
+      "name" : "guardian-pogobeam",
+      "parameters" : {
+        "dashSpeed" : 25,
+        "firstPosition" : null, // populated by pogoBeamHandler
+        "secondPosition" : null // populated by pogoBeamHandler
+      }
+    }
+  ]
+}

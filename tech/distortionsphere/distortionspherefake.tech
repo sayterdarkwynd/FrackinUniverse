@@ -1,0 +1,50 @@
+{
+  "name" : "distortionspherefake",
+  "type" : "head",
+
+  "scripts" : ["distortionsphere.lua"],
+  "animator" : "distortionsphere.animation",
+
+  "description" : "Places a large donkey in your inbox ^green;[F]^reset;",
+  "shortDescription" : "Durrstortin Circle",
+  "rarity" : "Uncommon",
+  "icon" : "/tech/distortionsphere.png",
+
+  "chipCost" : 8,
+
+  "animationParts" : {
+    "ballGlow" : "distortionsphereglow.png",
+    "ball" : "distortionsphere.png"
+  },
+
+  "transformedMovementParameters" : {
+    "collisionPoly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
+
+    "groundForce" : 6.0,
+    "normalGroundFriction" : 20,
+    "ambulatingGroundFriction" : 5.2,
+    "slopeSlidingFactor" : 44.0,
+
+    "airJumpProfile" : {
+      "jumpSpeed" : 22,
+      "jumpControlForce" : 1800.0,
+      "jumpInitialPercentage" : 1.0,
+      "jumpHoldTime" : 0.1
+    },
+
+    "liquidJumpProfile" : {
+      "jumpSpeed" : 0.0,
+      "jumpControlForce" : 0.0,
+
+      "multiJump" : false,
+      "autoJump" : false
+    }
+  },
+
+  "ballSpeed" : 7,
+
+  "energyCost" : 22,
+
+  "ballRadius" : 1,
+  "ballFrames" : 8
+}

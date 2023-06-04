@@ -1,0 +1,51 @@
+{
+  "objectName" : "fu_perfectdoor",
+  "colonyTags" : ["door"],
+  "printable" : false,
+  "rarity" : "Common",
+
+  "category" : "door",
+  "description" : "A perfect door.",
+  "shortdescription" : "Perfect Door",
+  "race" : "generic",
+
+  "inventoryIcon" : "fu_perfectdooricon.png",
+
+  "tooltipKind" : "door",
+  "largeImage" : "fu_perfectdoor.png:right",
+
+  "orientations" : [
+    {
+      "dualImage" : "fu_perfectdoor.png:default",
+      "imagePosition" : [-16, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/woodendoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/woodendoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "fu_perfectdoor.png"
+  },
+  "animationPosition" : [-16, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

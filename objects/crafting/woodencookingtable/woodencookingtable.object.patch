@@ -1,0 +1,163 @@
+[
+  {
+    "op": "remove",
+    "path": "/interactData"
+  },
+  {
+    "op": "remove",
+    "path": "/apexDescription"
+  },
+  {
+    "op": "remove",
+    "path": "/avianDescription"
+  },
+  {
+    "op": "remove",
+    "path": "/floranDescription"
+  },
+  {
+    "op": "remove",
+    "path": "/glitchDescription"
+  },
+  {
+    "op": "remove",
+    "path": "/humanDescription"
+  },
+  {
+    "op": "remove",
+    "path": "/hylotlDescription"
+  },
+  {
+    "op": "remove",
+    "path": "/novakidDescription"
+  },
+  {
+    "op": "add",
+    "path": "/animation",
+    "value": "woodencookingtable.animation"
+  },
+  {
+    "op": "add",
+    "path": "/animationPosition",
+    "value": [
+      0,17]
+  },
+  {
+    "op": "add",
+    "path": "/breakDropOptions",
+    "value": []
+  },
+  {
+    "op": "add",
+    "path": "/scripts",
+    "value": [
+      "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/placementImage",
+    "value": "woodencookingtable.png"
+  },
+  {
+    "op": "add",
+    "path": "/placementImagePosition",
+    "value": [-16,0]
+  },
+  {
+    "op": "add",
+    "path": "/startingUpgradeStage",
+    "value": 1
+  },
+  {
+    "op": "add",
+    "path": "/maxUpgradeStage",
+    "value": 2
+  },
+  {
+    "op": "add",
+    "path": "/upgradeStages",
+    "value": [
+      {
+        "animationState": "woodencookingtable",
+        "itemSpawnParameters": {
+          "inventoryIcon": "woodencookingtableicon.png",
+          "placementImage": "woodencookingtable.png",
+          "placementImagePosition": [-16,0],
+          "description": "Used to produce wholesome foods with a variety of effects.",
+          "shortdescription": "^orange;Kitchen Counter^reset;",
+          "apexDescription": "This table contains everything one could need to create almost any dish.",
+          "avianDescription": "Almost any Avian dish could be prepared here. And many non-Avian dishes too, for that matter!",
+          "floranDescription": "Floran prepare food with bare handsss. But table also ussseful.",
+          "glitchDescription": "Inspired. Let's create food!",
+          "humanDescription": "A chef's table. A whole bunch of different implements for making food.",
+          "hylotlDescription": "Food preparation is an art and this is the paintbrush.",
+          "novakidDescription": "I could cook up a storm on this 'ere thing."
+        },
+        "interactData": {
+          "config": "/interface/windowconfig/craftingfood.config",
+          "paneLayoutOverride": {
+            "windowtitle": {
+              "title": " Kitchen Counter",
+              "subtitle": " ^#b9b5b2;Delicious food.",
+              "icon": {
+                "file": "/interface/crafting/culinaryarts.png"
+              }
+            }
+          },
+          "filter": [ "craftingfood" ],
+       //   "initialRecipeUnlocks": [ "crewcontract_chef" ],
+          "upgradeMaterials": [
+            {
+              "item": "titaniumbar",
+              "count": 6
+            },
+            {
+              "item": "carbonplate",
+              "count": 2
+            },
+            {
+              "item": "wire",
+              "count": 5
+            }
+          ]
+        },
+        "upgradeSoundEffect": "fanfare",
+        "upgradeParticleEffect": "dust"
+      },
+      {
+        "animationState": "upgraded",
+        "itemSpawnParameters": {
+          "inventoryIcon": "tier2cookingtableicon.png",
+          "placementImage": "tier2cookingtable.png",
+          "placementImagePosition": [-16,0],
+          "description": "Used to produce wholesome foods with a variety of effects.",
+          "shortdescription": "^orange;Chef's Kitchen^reset;",
+          "apexDescription": "This table contains everything one could need to create almost any dish.",
+          "avianDescription": "Almost any Avian dish could be prepared here. And many non-Avian dishes too, for that matter!",
+          "floranDescription": "Floran prepare food with bare handsss. But table also ussseful.",
+          "glitchDescription": "Inspired. Let's create food!",
+          "humanDescription": "A chef's table. A whole bunch of different implements for making food.",
+          "hylotlDescription": "Food preparation is an art and this is the paintbrush.",
+          "novakidDescription": "I could cook up a storm on this 'ere thing."
+        },
+        "interactData": {
+          "config": "/interface/windowconfig/craftingfood.config",
+          "paneLayoutOverride": {
+            "windowtitle": {
+              "title": " Chef's Kitchen",
+              "subtitle": " ^#b9b5b2;A much nicer kitchen.",
+              "icon": {
+                "file": "/interface/crafting/culinaryarts.png"
+              }
+            }
+          },
+          "filter": ["craftingfood"]//,
+     //     "initialRecipeUnlocks": [ "crewcontract_chef2" ]
+        },
+        "upgradeSoundEffect": "fanfare",
+        "upgradeParticleEffect": "dust"
+      }
+    ]
+  }
+]

@@ -1,26 +1,23 @@
 {
-  "itemName" : "fuavikanspices",
-  "rarity" : "uncommon",
-  "price" : 50,
-  "inventoryIcon" : "avikanspices.png",
-  "description" : "Boost your energy with this tasty spice.",
-  "shortdescription" : "Kadavan Spices",
-    "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 4,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,  
-  "effects" : [ [
-		"percentenergyboost20",
-		{
-			"effect" : "wellfed",
-			"duration" : 75
-		}
-    ] ],
-  "blockingEffects" : [
-    "wellfed"
-  ]
+	"itemName": "fuavikanspices",
+	"inventoryIcon": "avikanspices.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 60,
+
+	"tooltipKind": "food",
+	"description": "Refined spices from Kadavan.\n^yellow;^reset;^cyan;Energy x1.25^reset;: 1m",
+	"shortdescription": "Refined Kadavan Spices",
+
+	"effects": [
+		[{
+			"effect": "percentenergyboost25",
+			"duration": 60
+		}]
+	],
+	"blockingEffects": [
+		"percentenergyboost15",
+		"percentenergyboost35",
+		"percentenergyboost20"
+	]
 }

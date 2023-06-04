@@ -4,31 +4,44 @@
   "inventoryIcon" : "lasrifle.png",
   "maxStack" : 1,
   "rarity" : "common",
-    "description" : "Laser weapon with a decent punch.",
+  "description" : "The most popular weapon in the galaxy.
+^yellow;Reliable^reset;
+^yellow;Counts as 'Energy' for set bonuses^reset;",
     "shortdescription" : "Laser Rifle",
-  "level" : 3,
-  "tooltipKind" : "gun",
+  "category" : "assaultRifle",
+  "level" : 2,
+  "tooltipKind" : "gun2",
   "weaponType" : "Energy",
-  "itemTags" : ["weapon","ranged","rifle"],
+  "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
-
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+//  "learnBlueprintsOnPickup" : [ "fudualcannon" ],
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "lasrifle.png",
+    "middlefullbright" : "lasriflefullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
   },
+
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/weapons/energypew.ogg" ]
+      "fire" : [ "/sfx/weapons/laserblast.ogg" ]
+    },
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.25, 0.25]
+		  }
+		}
+      }
     }
   },
+  "baseOffset" : [1.25, 0.25],
+  "muzzleOffset" : [1.72, 0.3],
 
-  "baseOffset" : [1.4, 0.2],
-  "muzzleOffset" : [1.81, 0.435],
-
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+  "scripts" : [ "/items/active/weapons/ranged/gun.lua" ],
 
   "elementalType" : "electric",
 
@@ -44,9 +57,9 @@
     "fireType" : "auto",
 
     "projectileType" : "fulaserpistol",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 72,
-      "knockback" : 2
+      "knockback" : 4
     },
 	  "stances" : {
 	    "idle" : {
@@ -59,8 +72,8 @@
 	    },
 	    "fire" : {
 	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
 	      "twoHanded" : true,
 
 	      "allowRotate" : false,
@@ -68,8 +81,8 @@
 	    },
 	    "cooldown" : {
 	      "duration" : 0.075,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
 	      "twoHanded" : true,
 
 	      "allowRotate" : false,
@@ -78,7 +91,44 @@
 	  }
   },
 
-  "altAbilityType" : "spray",
+  "critChance" : 3,
+  "critBonus" : 7,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "altAbilityType" : "fuenergyzone",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+
+  "upgradeParameters" : {
+    "description" : "Superior firepower. Sexy sheen.^yellow;Reliable^reset;",
+    "shortdescription" : "Laser Carbine",
+    "inventoryIcon" : [ { "image" : "lasrifle2.png" } ],
+    "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+    "animationParts" : {
+      "middle" : "lasrifle2.png",
+      "middlefullbright" : "lasrifle2fullbright.png"
+    },
+    "animationCustom" : {
+      "sounds" : { "fire" : [ "/sfx/weapons/laserblast.ogg" ] },
+      "animatedParts" : {
+        "parts" : {
+          "middlefullbright" : {
+            "properties" : { "offset" : [1.25, 0.25] }
+          }
+        }
+      }
+    },
+   // "muzzleOffset" : [1.75, 0.3],
+
+      "primaryAbility" : {
+	    "fireTime" : 0.15,
+	    "baseDps" : 10,
+	    "energyUsage" : 32.0,
+	    "projectileParameters" : {
+	      "speed" : 80,
+	      "knockback" : 6
+	    }
+    }
+  }
+
 }

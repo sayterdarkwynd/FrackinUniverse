@@ -1,218 +1,141 @@
-function init(virtual)
-	wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
-        storage.critChance = 50
-	if virtual == true then return end
+require "/scripts/kheAA/transferUtil.lua"
+require "/scripts/fupower.lua"
+require "/scripts/effectUtil.lua"
+
+function init()
+	power.init()
+	wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1},4)
+	tritiumstack = world.containerSwapItems(entity.id(),{name = "tritium", count = 1},5)
 	object.setInteractive(true)
-	
-	if storage.radiation == nil then storage.radiation = 0 end
-	if storage.active == nil then storage.active = true end
-	if storage.batteryHold == nil then storage.batteryHold = false end
+	radiationStates = {
+		{amount = 100, state = 'danger'},
+		{amount = 60, state = 'warn'},
+		{amount = 1, state = 'safe'},
+		{amount = 0, state = 'off'}
+	}
+	radiationRanges = {
+		{range=16,power=120},
+		{range=12,power=100},
+		{range=8,power=80},
+		{range=4,power=50}
+	}
+	powerStates = {
+		{amount = 11, state = 'on'},
+		{amount = 6, state = 'med'},
+		{amount = 1, state = 'slow'},
+		{amount = 0, state = 'off'}
+	}
+	storage.bonusWasteChance = config.getParameter("bonusWasteChance", 50)
+	self.fuels = config.getParameter("fuels")
+	storage.radiation = storage.radiation or 0
+	storage.active = true
+	storage.active2 = (not object.isInputNodeConnected(0)) or object.getInputNodeLevel(0)
 end
 
 function onInputNodeChange(args)
-	if object.isInputNodeConnected(0) then
-		if object.getInputNodeLevel(0) == true then storage.active = true
-		else storage.active = false
-		end
-	else storage.active = true
-	end
+	onNodeConnectionChange(args)
+end
+
+function onNodeConnectionChange(args)
+	storage.active2 = (not object.isInputNodeConnected(0)) or object.getInputNodeLevel(0)
+	power.onNodeConnectionChange(nil,0)
 end
 
 function update(dt)
-
-	local devices = isn_getAllDevicesConnectedOnNode(0,"output")
-	-- sb.logInfo("devices found: %s", devices)
-	local fullBattery = false
-	local spendingPower = false
-	for key,value in pairs(devices) do
-		-- sb.logInfo("Checking device %s", value)
-		if world.callScriptedEntity(value, "isn_isBattery") then
-			local currentBatteryStorage = world.callScriptedEntity(value, "isn_getCurrentPowerStorage")
-			if currentBatteryStorage > 98 then
-				fullBattery = true
-			else
-				if storage.batteryHold and currentBatteryStorage > 90 then
-					fullBattery = true
-				else
-					spendingPower = true
-				end
-			end
-		else
-			if not world.callScriptedEntity(value, "isn_doesNotConsumePower") then
-				spendingPower = true
-			end
-		end
-	end
-	if fullBattery and not spendingPower then
-		storage.batteryHold = true
-		-- sb.logInfo("Battery full and no other consumers connected, shutting down")
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
+		transferUtil.loadSelfContainer()
 	else
-		storage.batteryHold = false
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
-
-	if storage.radiation >= 100 then
-		animator.setAnimationState("hazard", "danger")
-	elseif storage.radiation >= 60 then
-		animator.setAnimationState("hazard", "warn")
-	elseif storage.radiation >= 1 then
-		animator.setAnimationState("hazard", "safe")
-	else 
-		animator.setAnimationState("hazard", "off")
+	for _,dink in pairs(radiationStates) do
+	if storage.radiation >= dink.amount then
+		animator.setAnimationState("hazard", dink.state)
+		break
 	end
-
-	if not storage.active or storage.batteryHold then
-		storage.radiation = storage.radiation - 5
-		storage.radiation = isn_numericRange(storage.radiation,0,120)
+	end
+	if (not storage.active) or (not storage.active2) then
+		storage.radiation = math.max(storage.radiation - dt*5,0)
 		animator.setAnimationState("screen", "off")
+		power.setPower(0)
+		power.update(dt)
+		object.setAllOutputNodes(false)
 		return
 	end
-	
-	if isn_slotDecayCheck(0,1) == true then isn_doSlotDecay(0) end
-	if isn_slotDecayCheck(1,1) == true then isn_doSlotDecay(1) end
-	if isn_slotDecayCheck(2,1) == true then isn_doSlotDecay(2) end
-	if isn_slotDecayCheck(3,1) == true then isn_doSlotDecay(3) end
-	
-	local power = isn_getCurrentPowerOutput(false)
-	if power > 11 then
-	  animator.setAnimationState("screen", "on")
-	elseif power >= 6 then
-	  animator.setAnimationState("screen", "med")
-	elseif power >= 1 then 
-	  animator.setAnimationState("screen", "slow")
-	elseif power <= 0 then
-	  animator.setAnimationState("screen", "off")
+	if storage.active2 then
+		for i=0,3 do
+			isn_slotDecayCheck(i)
+		end
 	end
-	
-	local rads = -4
-	rads = rads + power
-	if rads > 0 then rads = rads * 2 end
-	local waste =  world.containerAvailable(entity.id(),"toxicwaste")
-	if waste >= 75 then
+	local powerout = isn_getCurrentPowerOutput()
+	power.setPower(powerout)
+	for _,dink in pairs(powerStates) do
+	if powerout >= dink.amount then
+		animator.setAnimationState("screen", dink.state)
+		break
+	end
+	end
+	local rads = -4 + powerout
+	rads = (rads > 0) and (rads * 2) or rads
+	if world.containerAvailable(entity.id(),"toxicwaste") >= 75 then
 		rads = rads + 5
 	end
-	storage.radiation = storage.radiation + rads
-	storage.radiation = isn_numericRange(storage.radiation,0,120)
-
+	storage.radiation = math.min(storage.radiation + rads,120)
 	local myLocation = entity.position()
-	world.debugText("R:" .. storage.radiation, {myLocation[1]-1, myLocation[2]-2}, "red"); 
-
-	if storage.radiation >= 50 then
-		isn_projectileAllInRange("isn_fissionrads",4)
+	world.debugText("R:" .. storage.radiation, {myLocation[1]-1, myLocation[2]-2}, "red");
+	-- the effects here don't addup in damage, just it creates more particles & more noise.
+	-- therefore I think we could rework this for a single instance. sayter said that he or someone else
+	-- could match this with the current radiation resistance
+	--khe was here
+	for _,dink in ipairs(radiationRanges) do
+	if storage.radiation >= dink.power then
+		effectUtil.projectileAllInRange("isn_fissionrads",dink.range)
+		break
 	end
-	
-	if storage.radiation >= 80 then
-		isn_projectileAllInRange("isn_fissionrads",8)
 	end
-
-	if storage.radiation >= 100 then
-		isn_projectileAllInRange("isn_fissionrads",12)
-	end
-
-	if storage.radiation >= 120 then
-		isn_projectileAllInRange("isn_fissionrads",16)
-	end
+	object.setAllOutputNodes(powerout>0)
+	power.update(dt)
 end
 
 function isn_powerSlotCheck(slotnum)
-	local contents = world.containerItems(entity.id())
-	local slotContent = world.containerItemAt(entity.id(),slotnum)
-	
-	if slotContent == nil then return 0 end
-	if slotContent.name == "biofuelcannister" then return 2
-	elseif slotContent.name == "biofuelcannisteradv" then return 3
-	elseif slotContent.name == "biofuelcannistermax" then return 4
-	elseif slotContent.name == "uraniumrod" then return 4
-	elseif slotContent.name == "neptuniumrod" then return 4
-	elseif slotContent.name == "enricheduranium" then return 6
-	elseif slotContent.name == "plutoniumrod" then return 6
-	elseif slotContent.name == "enrichedplutonium" then return 7
-	elseif slotContent.name == "thoriumrod" then return 5
-	elseif slotContent.name == "solariumstar" then return 8
-	elseif slotContent.name == "ultronium" then return 10
-	else return 0 end
+	local item = world.containerItemAt(entity.id(), slotnum)
+	if not item then return 0 end
+	return self and self.fuels and self.fuels[item.name] and self.fuels[item.name].power or 0
 end
 
-function isn_slotDecayCheck(slot, chance)
-	local contents = world.containerItems(entity.id())
-	local slotContent = world.containerItemAt(entity.id(),slot)
-	local myLocation = entity.position()
-
-	world.debugText("CHECK",{myLocation[1]-1,myLocation[2]-3.5},"cyan")
-
-	if slotContent == nil then return false end
-
-	if slotContent.name == "biofuelcannister" or slotContent.name == "biofuelcannisteradv" or slotContent.name == "biofuelcannistermax" then
-		if math.random(1,60) <= chance then world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan"); return true end
-	end
-	
-	if slotContent.name == "uraniumrod" or slotContent.name == "plutoniumrod" or slotContent.name == "neptuniumrod" then
-		if math.random(1,80) <= chance then world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan"); return true end
-	end	
-	
-	if slotContent.name == "solariumstar" or slotContent.name == "thoriumrod" or slotContent.name == "enricheduranium" or slotContent.name == "enrichedplutonium" or slotContent.name == "ultronium" then
-		if math.random(1,100) <= chance then world.debugText("DECAY",{myLocation[1]+2,myLocation[2]-3.5},"cyan"); return true end
-	end	
-	
-	return false
-end
-
-function isn_doSlotDecay(slot)
-
-	world.containerConsumeAt(entity.id(),slot,1) --consume resource
-
-	local waste = world.containerItemAt(entity.id(),4)
-	
-	if waste ~= nil then
-		-- sb.logInfo("Waste found in slot. Name is " .. waste.name)
-		if waste.name == "toxicwaste" then
-		  -- sb.logInfo("increasing storage.radiation")
-		  storage.radiation = storage.radiation + 5
-		else
-		  -- sb.logInfo("not toxic waste, ejecting")
-		  world.containerConsumeAt(entity.id(),4,waste.count) --delete waste
-		  world.spawnItem(waste.name,entity.position(),waste.count) --drop it on the ground
+function isn_slotDecayCheck(slot)
+	local item = world.containerItemAt(entity.id(),slot)
+	if item and self and self.fuels and self.fuels[item.name] and math.random(1, self.fuels[item.name].decayRate) == 1 then
+		world.containerConsumeAt(entity.id(),slot,1)
+		local wastename=(self.fuels[item.name].altWaste or "toxicwaste")
+		local bonuschance=(self.fuels[item.name].bonusChance or storage.bonusWasteChance)
+		isn_dropWaste(wastename, 4)
+		if (math.random(0,100) < bonuschance) then
+			isn_dropWaste(wastename, 4)
+			isn_dropWaste("tritium", 5)
 		end
 	end
+end
 
-	local wastestack
-        
-	if waste == nil then
-		if math.random(100) < storage.critChance then
-		  world.spawnItem("tritium",entity.position(),1) --drop it on the ground
-		end	
-		wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
-	elseif waste.name == "toxicwaste" then
-		if math.random(100) < storage.critChance then
-		  world.spawnItem("tritium",entity.position(),1) --drop it on the ground
-		end	
-		wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
-	end
-	if wastestack ~= nil and wastestack.count > 0 then
-		world.spawnItem(wastestack.name,entity.position(),wastestack.count) --drop it on the ground
+function isn_dropWaste(wastename,slot)
+	if world.containerItemAt(entity.id(),slot) == wastename then
 		storage.radiation = storage.radiation + 5
 	end
-
-
-	        
+	local excess = world.containerSwapItems(entity.id(),{name = wastename, count = 1},slot)
+	if excess and (excess.count > 0) then
+		if excess.name == wastename then
+			storage.radiation = storage.radiation + 5
+		end
+		world.spawnItem(excess.name,entity.position(),excess.count,excess.parameters)
+	end
 end
 
-function isn_getCurrentPowerOutput(divide)
-	if storage.batteryHold or not storage.active then return 0 end
-
-	local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)
-	if divisor < 1 then divisor = 1 end
-
+function isn_getCurrentPowerOutput()
+	if not storage.active then return 0 end
 	local powercount = 0
-	powercount = powercount + isn_powerSlotCheck(0)
-	powercount = powercount + isn_powerSlotCheck(1)
-	powercount = powercount + isn_powerSlotCheck(2)
-	powercount = powercount + isn_powerSlotCheck(3)
-	
-	if divide == true then return powercount / divisor
-	else return powercount end
-end
-
-function onNodeConnectionChange()
-	if isn_checkValidOutput() == true then object.setOutputNodeLevel(0, true)
-	else object.setOutputNodeLevel(0, false) end
+	for i=0,3 do
+		powercount = powercount + isn_powerSlotCheck(i)
+	end
+	--object.say(powercount)
+	return powercount
 end

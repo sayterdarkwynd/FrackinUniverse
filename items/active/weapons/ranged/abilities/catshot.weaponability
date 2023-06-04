@@ -1,0 +1,67 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "altFire" : [ "/sfx/weapons/gravitongun.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Cat",
+    "type" : "catshot",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "energyUsage" : 90,
+    "baseDps" : 4,
+    "fireTime" : 2,
+    "inaccuracy" : 0.1,
+    "fireType" : "auto",
+
+    "projectileType" : [ "catapultshot" ],
+    "projectileParameters" : {
+      "speed" : 60,
+      "knockback" : 0,
+      "timeToLive" : 2,
+      "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "magnorbatropus2",
+	      "fuzzAngle" : 360,
+	      "inheritDamageFactor" : 0.1
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "magnorbatropus2",
+	      "fuzzAngle" : 360,
+	      "inheritDamageFactor" : 0.1
+	    },
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/fugoreexplosion/fugoreexplosionsmall.config"
+	    },
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/humanoid/catscream.ogg"  ]
+	    }
+      ]
+    },
+
+    "usePrimaryFireSound" : false,
+    "useParticleEmitter" : false,
+    "stances" : {
+      "fire" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true
+      }
+    }
+  }
+}

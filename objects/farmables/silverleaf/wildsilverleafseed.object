@@ -1,0 +1,44 @@
+{
+  "objectName" : "wildsilverleafseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Rare",
+  "category" : "seed",
+  "description" : "A great way to boost energy.",
+  "shortdescription" : "Silverleaf Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+//    "learnBlueprintsOnPickup" : [ "haleflowerseed"],
+  "inventoryIcon" : "silverleafseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "silverleafseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [120, 360]
+    },
+    {
+      "duration" : [120, 360]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "silverleafHarvest",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125,
+  "breakDropOptions" : [
+    [ [ "silverleafseed", 1, { } ] ]
+  ],
+  "beeLikeness" : { "oremason" : 1,"mason" : 1}
+}

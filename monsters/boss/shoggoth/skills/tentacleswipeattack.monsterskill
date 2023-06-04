@@ -6,19 +6,67 @@
   "parameters" : {
     "scripts" : [ "/monsters/boss/shoggoth/skills/tentacleswipeattack.lua" ],
     "tentacleSwipeAttack" : {
-      "skillTime" : 16,
-      
-      "damagePerSecond" : 2000,
+      "skillTime" : 2.5,
+
+      "damagePerSecond" : 40,
       "distanceRange" : [0, 20],
-      "windupTime" : 0.4,
+      "windupTime" : 1.2,
       "winddownTime" : 1.2,
+      "fireDelay" : 1.2,
       "projectile" : {
         "type" : "shoggothswipe",
         "config" : {
-          "power" : 30,
-          "speed" : 10
+          "power" : 50,
+          "speed" : 50,
+          "timeToLive" : 0.4,
+          "statusEffects" : [ "stun" ],
+
+          "actionOnReap" : [
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/melee/lash_kill_organic.ogg" ]
+	    },
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 6,
+	      "backgroundRadius" : 0,
+	      "explosiveDamageAmount" : 40,
+	      "delaySteps" : 2
+	    },
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elementimpact/radioactiveimpact3.config"
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "shoggothgrav",
+	      "inheritDamageFactor" : 0,
+	      "angleAdjust" : 0
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "shoggothwebblast",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 0.475,
+	      "angleAdjust" : 0,
+	      "config" : {
+	        "speed" : 42,
+		  "periodicActions" : [
+		    {
+		      "action" : "explosion",
+		      "time" : 0.012,
+		      "loop" : true,
+		      "foregroundRadius" : 7,
+		      "backgroundRadius" : 0,
+		      "explosiveDamageAmount" : 1.65,
+		      "delaySteps" : 2
+		    }
+		  ]
+	      }
+	    }
+          ]
         },
-        "offset" : [18, -12.5]
+        "offset" : [0, -12.5]
       }
     }
   }

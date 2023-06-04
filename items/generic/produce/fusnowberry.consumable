@@ -1,19 +1,27 @@
 {
-  "itemName" : "fusnowberry",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "snowberry.png",
-  "description" : "Grants immunity to snow, slush and ice effects.",
-  "shortdescription" : "Snowberry",
-    "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,  
-  "effects" : [ [
-      "slushslowimmunity", "snowslowimmunity", "iceslipimmunity"
-    ] ]
+	"itemName": "fusnowberry",
+	"inventoryIcon": "snowberry.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 10,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immune^reset;: Snow, Slush, Icy: 3m",
+	"shortdescription": "Snowberry",
+
+	"effects": [
+		[{
+				"effect": "slushslowimmunity",
+				"duration": 180
+			},
+			{
+				"effect": "snowslowimmunity",
+				"duration": 180
+			},
+			{
+				"effect": "iceslipimmunity",
+				"duration": 180
+			}
+		]
+	]
 }

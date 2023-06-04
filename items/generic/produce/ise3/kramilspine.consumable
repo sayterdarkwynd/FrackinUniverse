@@ -1,19 +1,30 @@
 {
-  "itemName" : "kramilspine",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "kramilspine.png",
-  "description" : "Immunity to ice effects",
-  "shortdescription" : "Kramil Spine",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 4,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-          "iceslipimmunity", "slushslowimmunity", "snowslowimmunity", "ffextremecoldimmunity"
-    ] ]
+	"itemName": "kramilspine",
+	"inventoryIcon": "kramilspine.png",
+	"category": "food",
+	"rarity": "Legendary",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immune^reset;: Icy, Slush, Snow, Extreme Cold: 2m",
+	"shortdescription": "Kramil Spine",
+	"effects": [
+		[{
+				"effect": "iceslipimmunity",
+				"duration": 120
+			},
+			{
+				"effect": "slushslowimmunity",
+				"duration": 120
+			},
+			{
+				"effect": "snowslowimmunity",
+				"duration": 120
+			},
+			{
+				"effect": "ffextremecoldimmunityicon",
+				"duration": 120
+			}
+		]
+	]
 }

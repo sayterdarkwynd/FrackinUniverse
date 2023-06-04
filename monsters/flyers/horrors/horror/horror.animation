@@ -1,0 +1,228 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 6,
+            "cycle" : 0.9,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/tentacleboss_wakeup1.ogg"
+            }
+          },
+          "fly" : {
+            "frames" : 6,
+            "cycle" : 0.6,
+            "mode" : "loop"
+          },
+          "invulnerablewindup" : {
+            "frames" : 3,
+            "cycle" : 0.6,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/tentacleboss_tentacle_loop.ogg"
+            }
+          },
+          "invulnerable" : {
+            "frames" : 1,
+            "cycle" : 1,
+            "mode" : "loop"
+          },
+          "invulnerablewinddown" : {
+            "frames" : 4,
+            "cycle" : 0.8,
+            "mode" : "transition",
+            "transition" : "idle"
+          },
+          "firewindup" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/reptar4.ogg"
+            }
+          },
+          "fire" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/spiderboss_idle2.ogg"
+            }
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "offset" : [0.0, 0.125]
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "fly" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },
+            "invulnerablewindup" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerablewindup.<frame>"
+              }
+            },
+             "invulnerable" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerable.<frame>"
+              }
+            },
+            "invulnerablewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerablewinddown.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "lights" : {
+    "glow" : {
+      "active" : true,
+      "position" : [0, 0],
+      "color" : [0, 70, 0],
+      "pointLight" : false
+    }
+  },
+
+  "particleEmitters" : {
+   "erchius" : {
+      "active" : true,
+      "emissionRate" : 0,
+      "offsetRegion" : [-2.25, -4.0, 2.25, 2.5],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [140, 70, 140, 255],
+            "position" : [0, 0],
+            "initialVelocity" : [0, 6.0],
+            "light" : [140, 70, 140],
+            "timeToLive" : 0.8,
+            "destructionAction" : "fade",
+            "destructionTime" : 0.2,
+            "layer" : "front",
+            "fullbright" : true,
+            "variance" : {
+              "initialVelocity" : [0, 2.0],
+              "size" : 1.0
+            }
+          }
+        }
+      ]
+    },
+    "flames" : {
+      "active" : true,
+      "emissionRate" : 5.0,
+      "offsetRegion" : [-0.5, -0.5, 0.5, 0.5],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [0, 60, 33, 230],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, -5.0],
+            "finalVelocity" : [0, -10],
+            "approach" : [0, 10],
+            "timeToLive" : 0.6,
+            "variance" : {
+              "initialVelocity" : [0.2, 0],
+              "size" : 0.5
+            }
+          }
+        }
+      ]
+    },
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
+    "fire" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ]
+  }
+}

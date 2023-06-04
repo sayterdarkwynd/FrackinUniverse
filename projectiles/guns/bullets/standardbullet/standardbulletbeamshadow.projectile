@@ -1,0 +1,37 @@
+{
+  "projectileName" : "standardbulletbeamshadow",
+  "image" : "standardbulletbeamshadow.png",
+  "physics" : "laser",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "damageKind" : "shadow",
+  "pointLight" : false,
+  "flippable" : true,
+  "fullbright" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+    }
+  ],
+  "power" : 5.0,
+  "speed" : 150,
+  "knockback" : 0,
+  "timeToLive" : 0.6,
+  "periodicActions" : [
+    {
+      "time" : 0.006,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "shadowplasmabeam",
+      "inheritDamageFactor" :0.1,
+      "fuzzAngle" : 0,
+      "projectileParameters" : {
+        "speed" : 0,
+        "damageSourceKind" : "shadowplasma",
+        "timeToLive" : 0.2
+      }
+    }
+  ],
+  "statusEffects" : [ "shadowgasfx" ]
+}

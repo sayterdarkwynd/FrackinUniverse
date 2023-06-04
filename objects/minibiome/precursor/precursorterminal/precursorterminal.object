@@ -1,0 +1,52 @@
+{
+  "objectName" : "precursorterminal",
+  "colonyTags" : ["precursor","crafting"],
+  "printable" : false,
+  "rarity" : "legendary",
+  "price" : 2400,
+  "category" : "crafting",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/crafting3dprinter.config",
+    "paneLayoutOverride": {
+      "windowtitle": {
+        "title": "Precursor Fabricator",
+        "subtitle": "Reshape pixels into known objects using ancient technology.",
+        "icon": {
+          "file": "/objects/minibiome/precursor/precursorterminal/precursorcrafting3d.png"
+        }
+      }
+    }
+  },
+  "lightColor" : [0, 102, 102],
+  "lightPosition" : [-1, 0],
+
+  "description" : "An ancient device used to form raw creatia into nearly any object imaginable.",
+  "shortdescription" : "Precursor Fabricator",
+  "race" : "precursor",
+
+  "inventoryIcon" : "precursorterminalicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "precursorterminal.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursorterminallit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 8,
+      "animationCycle" : 1.0,
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "precursorterminal.png:<color>.<frame>", "fullbright" : true }, { "image" : "precursorterminallit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 8,
+      "animationCycle" : 1.0,
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ]
+}

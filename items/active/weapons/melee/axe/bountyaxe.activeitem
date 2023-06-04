@@ -5,13 +5,13 @@
   "rarity" : "rare",
   "description" : "Great for those lost in the wilds.",
   "shortdescription" : "Survival Axe",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "axe",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","axe"],
-"level" : 3,
+  "itemTags" : ["weapon","melee","axe", "upgradeableWeapon"],
+  "level" : 3,
   "inventoryIcon" : "bountyaxe.png",
-
+  //"collectablesOnPickup" : { "fu_weaponaxe" : "bountyaxe" },
   "animation" : "axe.animation",
   "animationParts" : {
     "blade" : "bountyaxe.png",
@@ -34,7 +34,7 @@
 
   "primaryAbilityType" : "axecleave",
   "primaryAbility" : {
-    "fireTime" : 0.5,
+    "fireTime" : 0.44,
     "baseDps" : 10,
     "damageConfig" : {
       "damageSourceKind" : "axe",
@@ -66,6 +66,7 @@
       }
     }
   },
-
+  "critChance" : 3,
+  "critBonus" : 3,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

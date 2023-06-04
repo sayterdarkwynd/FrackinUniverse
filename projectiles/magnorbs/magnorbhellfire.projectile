@@ -1,0 +1,81 @@
+{
+  "projectileName" : "magnorbhellfire",
+  "image" : "magnorbhellfire.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 1.5,
+  "speed" : 75,
+  "damageKind" : "hellfire",
+  "physics" : "laser",
+  "fullbright" : true,
+  "bounces" : 6,
+  "piercing" : true,
+  "timeToLive" : 2,
+  "lightColor" : [73, 43, 16],
+
+  "emitters" : [ "flamesfast" ],
+  "statusEffects" : [ "burning" ],
+
+  "actionOnReap" : [
+    { "action" : "config", "file" : "/projectiles/explosions/firetitanexplosion/magnorbfireexplosion.config" }
+  ],
+
+  "actionOnCollide" : [
+    { "action" : "config", "file" : "/projectiles/explosions/firetitanexplosion/magnorbfireexplosion.config" },
+    {
+      "action" : "projectile",
+      "type" : "firelight",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 35
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/fireball_bounce1.ogg",
+        "/sfx/projectiles/fireball_bounce2.ogg",
+        "/sfx/projectiles/fireball_bounce3.ogg"
+      ]
+    }
+  ],
+
+    "periodicActions":[
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/activeitems/staff/elementbouncer/firebouncer.png:1",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0,
+	"type":"textured"
+	},
+      "time":0
+    },
+
+    {
+      "action":"particle",
+      "repeat":true,
+      "rotate":true,
+      "specification":{
+	"destructionAction":"fade",
+	"destructionTime":0.2,
+	"fullbright":true,
+	"image":"/projectiles/activeitems/staff/elementbouncer/firebouncer.png:2",
+	"layer":"back",
+	"position":[0,0],
+	"timeToLive":0.03,
+	"type":"textured"
+	},
+      "time":0.05
+      }
+    ],
+
+  "scripts" : [ "/projectiles/activeitems/boomerang/boomerangprojectile.lua" ]
+}

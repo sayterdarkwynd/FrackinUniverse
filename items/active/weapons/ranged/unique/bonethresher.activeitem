@@ -1,0 +1,118 @@
+{
+  "itemName" : "bonethresher",
+  "price" : 1160,
+  "inventoryIcon" : "bonethresher.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Shoots sharp bone shards that cause enormous pain.
+^cyan;Bio Weapon^reset;",
+  "shortdescription" : "Bone Shard Thresher",
+  "category" : "shotgun",
+  "level" : 4,
+  "tooltipKind" : "gununique",
+  "weaponType" : "shotgun",
+  "itemTags" : ["weapon","ranged","shotgun","bioweapon","upgradeableWeapon","bone"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "bonethresher.png",
+    "middlefullbright" : "",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/goreflash1.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+			//Same as BaseOffset
+		    "offset" : [2, 0.15]
+		  }
+		}
+      }
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "blood", "offset" : [0.4, -0.4] },
+          { "particle" : "blood", "offset" : [0.4, -0.4] },
+          { "particle" : "blood", "offset" : [0.4, -0.4] },
+          { "particle" : "blood", "offset" : [0.4, -0.2] },
+          { "particle" : "jellydrip1", "offset" : [0.4, -0.2] },
+          { "particle" : "bloodtrail", "offset" : [0.4, -0.2] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/energyassault.ogg" ]
+    }
+  },
+
+  "baseOffset" : [2, 0.15],
+  "muzzleOffset" : [0.4, 0.2],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
+    "fireTime" : 1,
+    "baseDps" : 5,
+    "energyUsage" : 65.0,
+    "useEnergy" : true,
+    "runSlowWhileShooting" : true,
+    "fireType" : "auto",
+    "inaccuracy" : 0.1,
+
+    "projectileCount" : 2,
+    "projectileType" : "madnessvashta",
+
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.03,
+	      "armRotation" : -2,
+	      "weaponRotation" : -2,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+
+  "critChance" : 1,
+  "critBonus" : 5,
+  "isAmmoBased" : 1,
+  "magazineSize" : 14,
+  "reloadTime" : 1,
+
+  "altAbilityType" : "vomitrage",
+  "altAbility" : {
+	  "isAmmoBased" : 1,
+	  "reloadTime" : 1
+  },
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

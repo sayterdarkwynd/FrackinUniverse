@@ -1,0 +1,143 @@
+{
+  "objectName" : "peglacitorch",
+  "colonyTags" : [ "light" ],
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 50,
+  "printable" : true,
+
+  "description" : "This glowing crystal torch can provide illumination above or under water.",
+  "shortdescription" : "Glowflare",
+  "race" : "peglaci",
+
+  "apexDescription" : "This glowing mechanism sticks to all kinds of surfaces. ",
+  "avianDescription" : "These look oddly similar to our crystal technology...",
+  "floranDescription" : "Cold light from thisss cryssstal.",
+  "glitchDescription" : "Statement. Versatile waterproof lighting.",
+  "humanDescription" : "Hey, these are cool! They're all glowy!",
+  "hylotlDescription" : "Hmm. Seems like the Hylotl could do better.",
+  "novakidDescription" : "Hey, these are cool! They're all glowy!",
+  "fupeglaciDescription" : "A simple fluorescing crystal. Lights the way, even underwater. ",
+
+  "lightColor" : [100, 200, 255],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "inventoryIcon" : "peglacitorchicon.png",
+  "orientations" : [
+    {
+      "image" : "peglacitorchback.png:<color>.<frame>",
+      "direction" : "right",
+      "animationParts" : {
+        "bg" : "peglacitorchback.png",
+        "fg" : "peglacitorchbacklit.png"
+      },
+
+      "imagePosition" : [0, 0],
+      "animationPosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "fgAnchors" : [ [0, 0] ]
+    },
+
+    {
+      "image" : "peglacitorchdown.png:<color>.<frame>",
+      "direction" : "right",
+      "animationParts" : {
+        "bg" : "peglacitorchdown.png",
+        "fg" : "peglacitorchdownlit.png"
+      },
+
+      "imagePosition" : [0, -2],
+      "animationPosition" : [0, -2],
+
+      "spaces" : [ [0, 0], [0, -1] ],
+      "anchors" : [ "top" ]
+    },
+
+    {
+      "image" : "peglacitorchleft.png:<color>.<frame>",
+      "direction" : "right",
+      "animationParts" : {
+        "bg" : "peglacitorchleft.png",
+        "fg" : "peglacitorchleftlit.png"
+      },
+      "imagePosition" : [0, 0],
+      "animationPosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "anchors" : [ "left" ]
+    },
+
+    {
+      "image" : "peglacitorchright.png:<color>.<frame>",
+      "direction" : "right",
+      "animationParts" : {
+        "bg" : "peglacitorchright.png",
+        "fg" : "peglacitorchrightlit.png"
+      },
+
+      "imagePosition" : [-2, 0],
+      "animationPosition" : [-2, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "anchors" : [ "right" ]
+    },
+
+    {
+      "image" : "peglacitorch.png:<color>.<frame>",
+      "direction" : "right",
+      "animationParts" : {
+        "bg" : "peglacitorch.png",
+        "fg" : "peglacitorchlit.png"
+      },
+
+      "imagePosition" : [0, 0],
+      "animationPosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "anchors" : [ "bottom" ]
+    },
+
+    {
+      "image" : "peglacitorchback.png:<color>.<frame>",
+      "direction" : "right",
+      "animationParts" : {
+        "bg" : "peglacitorchback.png",
+        "fg" : "peglacitorchbacklit.png"
+      },
+
+      "imagePosition" : [0, 0],
+      "animationPosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/torch.ogg",
+  "soundEffectRangeMultiplier" : 0.5,
+
+  "animation" : "peglacitorch.animation",
+  "animationParts" : {
+    "bg" : "peglacitorch.png",
+    "fg" : "peglacitorchlit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/torch_on1.ogg", "/sfx/objects/torch_on2.ogg" ],
+      "off" : [ "/sfx/objects/torch_off1.ogg", "/sfx/objects/torch_off2.ogg", "/sfx/objects/torch_off3.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+}

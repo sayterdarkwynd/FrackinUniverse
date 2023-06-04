@@ -1,0 +1,59 @@
+{
+  "itemName" : "lunariwhip",
+  "price" : 200,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A cool whip fashioned from crystal. Put your enemies on ice!
+^cyan;Inflicts Slow^reset;",
+  "shortdescription" : "Lunari Whip",
+  "tooltipKind" : "sword2",
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","whip","upgradeableWeapon","lunari"],
+
+  "inventoryIcon" : "lunariwhip.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "lunariwhip.png",
+	"weaponFullbright" : ""
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : { "particles" : [ ]}},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/whip_swing1.ogg", "/sfx/melee/whip_swing2.ogg", "/sfx/melee/whip_swing3.ogg" ],
+      "crack" : [ "/sfx/melee/whip_impact1.ogg", "/sfx/melee/whip_impact2.ogg", "/sfx/melee/whip_impact3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [0.625, 0],
+    "length" : [3, 13],
+    "segmentImage" : "/items/active/weapons/whip/lunariwhiplink.png",
+    "endSegmentImage" : "/items/active/weapons/whip/lunariwhipend.png",
+    "segmentSize" : 0.375,
+    "fullbright" : false
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 1.2,
+    "chainDps" : 1.0,
+    "crackDps" : 4.5,
+
+    "damageConfig" : {
+       "damageSourceKind" : "ice",
+	   "statusEffects" : [ "frostslow" ]
+    },
+
+    "projectileType" : "whipcrackice"
+  },
+
+  "critChance" : 4,
+  "critBonus" : 4,
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}

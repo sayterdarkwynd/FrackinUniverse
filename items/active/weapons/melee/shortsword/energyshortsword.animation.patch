@@ -1,0 +1,204 @@
+[
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/swoosh/states/fire3",
+    "value": {
+      "frames": 3,
+      "cycle": 0.1,
+      "mode": "transition",
+      "transition": "idle"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/blade/properties/offset",
+    "value": [
+      0,
+      0
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/handle/properties/offset",
+    "value": [
+      0,
+      0
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/swoosh/properties/offset",
+    "value": [
+      2,
+      2
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/swoosh/partStates/swoosh/fire3",
+    "value": {
+      "properties": {
+        "image": "/items/active/weapons/melee/shortsword/swoosh2/<elementalType>swoosh.png:<frame>",
+        "offset": [
+          1,
+          0.125
+        ],
+        "damageArea": [
+          [
+            -3,
+            1
+          ],
+          [
+            2.5,
+            1
+          ],
+          [
+            2.5,
+            -1
+          ],
+          [
+            -3,
+            -1
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/animatedParts/parts/swoosh/partStates/swoosh/fire/properties/offset/0",
+    "value": 2
+  },
+  {
+    "op": "replace",
+    "path": "/animatedParts/parts/swoosh/partStates/swoosh/fire2/properties/offset/0",
+    "value": 1
+  },
+  {
+    "op": "replace",
+    "path": "/animatedParts/parts/swoosh/partStates/swoosh/fire2/properties/damageArea/1/0",
+    "value": 2.5
+  },
+  {
+    "op": "replace",
+    "path": "/animatedParts/parts/swoosh/partStates/swoosh/fire2/properties/damageArea/2/0",
+    "value": 2.5
+  },
+  {"op" : "replace",
+    "path" : "/sounds",
+  	"value" :
+	  {
+	  	 "fire" : [],
+	  	 "fire2" : [],
+	  	 "fire3" : [],
+	     "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ],
+		 "nightar" : [ "/sfx/weapons/energypew.ogg" ]
+	  }
+  },
+  {
+    "op": "add",
+    "path": "/particleEmitters/silverweaponswoosh",
+    "value": {
+      "active": false,
+      "transformationGroups": [
+        "swoosh"
+      ],
+      "emissionRate": 50,
+      "burstCount": 3,
+      "particles": [
+        {
+          "particle": "cosmicswoosh1"
+        },
+        {
+          "particle": "cosmicswoosh2"
+        },
+        {
+          "particle": "cosmicswoosh3"
+        }
+      ]
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/particleEmitters/bioweaponswoosh",
+    "value": {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
+      "particles" : [
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "fireswoosh2"},
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "fireswoosh2"}
+      ]
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/particleEmitters/aetherswoosh",
+    "value": {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
+      "particles" : [
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"},
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/particleEmitters/hellfireswoosh",
+    "value": {
+      "active": false,
+      "transformationGroups": [
+        "swoosh"
+      ],
+      "emissionRate": 50,
+      "burstCount": 3,
+      "particles": [
+        {
+          "particle": "fireswoosh1"
+        },
+        {
+          "particle": "fireswoosh2"
+        },
+        {
+          "particle": "fireswoosh3"
+        }
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/particleEmitters/hoarfrostswoosh",
+    "value": {
+      "active": false,
+      "transformationGroups": [
+        "swoosh"
+      ],
+      "emissionRate": 50,
+      "burstCount": 3,
+      "particles": [
+        {
+          "particle": "iceswoosh1"
+        },
+        {
+          "particle": "iceswoosh2"
+        },
+        {
+          "particle": "iceswoosh3"
+        }
+      ]
+    }
+  }
+
+]

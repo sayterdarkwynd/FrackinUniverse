@@ -1,0 +1,111 @@
+{
+  "type" : "humanlumberjack",
+  "baseType" : "merchanttenant",
+
+  "damageTeam" : 1,
+
+  "disableWornArmor" : true,
+
+  "identity" : {
+    "gender" : "male"
+  },
+
+  "scripts" : [
+    "/npcs/bmain.lua"
+  ],
+  "initialScriptDelta" : 5,
+  "scriptConfig" : {
+    "merchant" : {
+      "waitTime" : 180,
+      "storeRadius" : 8,
+      "categories" : {
+        "default" : ["lumberjack" ],
+        "human" : ["lumberjack" ]
+      },
+      "buyFactorRange" : [ 1.0, 1.0 ],
+      "sellFactorRange" : [ 0.2, 0.2 ],
+      "numItems" : 4,
+      "paneLayoutOverride" : {
+        "windowtitle" : {
+          "title" : "  Lumberjack",
+          "subtitle" : "  Wood and Wood Accessories."
+        }
+      }
+    },
+
+    "questGenerator" : {
+      "pools" : ["common", "tenant" ]
+    },
+
+    "dialog" : {
+      "merchant" : {
+        "start" : {
+          "human" : {
+            "default" : [
+              "Good wood! Get good wood here!",
+              "Professionally murdered trees!",
+              "Hey, buy my wood!"
+            ]
+          }
+        },
+        "end" : {
+          "human" : {
+            "default" : [
+              "Thanks!",
+              "I hope my wood brings you pleasure."
+            ]
+          }
+        },
+        "follow" : {
+          "human" : {
+            "default" : [
+              "I've got plenty of wood for sale.",
+              "My lumber stockpile is thataway."
+            ]
+          }
+        },
+        "welcome" : {
+          "human" : {
+            "default" : [
+              "You wanna buy some wood?",
+              "Got baby trees and dead trees - take your pick.",
+              "Could it be that you're interested in my wood?"
+            ]
+          }
+        },
+        "tout" : "/dialog/merchant.config:tout"
+      },
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/merchant.config:tagCriteria",
+          "enclosedArea" : "/dialog/merchant.config:enclosedArea",
+          "otherDeed" : "/dialog/merchant.config:otherDeed",
+          "severe" : "/dialog/merchant.config:severe",
+          "final" : "/dialog/merchant.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/merchant.config:beacon",
+          "rent" : "/dialog/merchant.config:rent"
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "bearhead" }
+            ],
+            "chest" : [
+              { "name" : "hikerchest" }
+            ],
+            "legs" : [
+              { "name" : "hikerlegs" }
+            ]
+          }
+      ]]
+    ]
+  }
+}

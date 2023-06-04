@@ -1,0 +1,32 @@
+{
+	"itemName" : "apiary_frame_scented",
+	"description" : "<beeData>",
+	"shortdescription" : "Scented Frame",
+	"inventoryIcon" : "scented.png",
+	"builder":"/items/buildscripts/buildbeeframe.lua",
+	"tooltipKind": "beeframe",
+
+	"rarity" : "uncommon",
+	"maxStack" : 64,
+	"category" : "craftingMaterial",
+	"itemTags" : ["apiaryFrame","solarium"],
+	"dropCollision" : [-2.5, -2.0, 2.5, 2.0],
+
+	// Stats:
+	// Note that they serve as a direct modifier to the stats.
+	"baseProduction" : 0,
+	"droneToughness" : 0,
+	"droneBreedRate" : 6,
+	"queenBreedRate" : -5,
+	"queenLifespan" : 0,
+
+	"mutationChance" : 0,			// 15 = +15% chance
+	"miteResistance" : 0,				// Note that (currently) the normal range is -6.48 to 6.48, so use values smaller than 1 for balanced frames
+	"radResistance" : 0,				//this biome resistance type is a bool, either off (0) or on (1)
+	"coldResistance" : 0,				//this biome resistance type is a bool, either off (0) or on (1)
+	"heatResistance" : 0,				//this biome resistance type is a bool, either off (0) or on (1)
+	"allowDay" : false,		// Set to true to enable bees working at day. Setting to false does not disable day time work.
+	"allowNight" : false		// Set to true to enable bees working at night. Setting to false does not disable night time work.
+	//"specialFunction" : "",		// The function you want the frame to call every bee tick. Must define the function within the 'specialFrameFunctions' table inside 'apiary.lua'
+	//"functionParams" : []	// The parameters to pass the function. Make sure the function in the 'apiary.lua' script fits the would-be passed data
+}

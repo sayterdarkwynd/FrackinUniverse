@@ -1,0 +1,37 @@
+{
+  "objectName" : "brokenshadowfuelhatch",
+  "colonyTags" : ["shadow"],
+  "printable" : false,
+  "rarity" : "Common",
+
+  "category" : "decorative",
+  "description" : "A broken FTL fuel hatch. This won't do!",
+  "shortdescription" : "Broken FTL Fuel Hatch",
+  "race" : "novakid",
+  "lightColor" : [77, 22, 22],
+
+  "inventoryIcon" : "fuelhatchicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "brokenshadowfuelhatch.png:<color>.<frame>", "fullbright" : true }, { "image" : "brokenshadowfuelhatchlit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [-8, -16],
+      "frames" : 12,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/tv_static.ogg",
+  "soundEffectRangeMultiplier" : 0.5,
+
+  "animation" : "/objects/noisy/noisy.animation",
+
+  "scripts" : [
+    "/objects/noisy/noisy.lua"
+  ],
+
+  "sounds" : [ "/sfx/interface/clickon_error.ogg" ]
+}

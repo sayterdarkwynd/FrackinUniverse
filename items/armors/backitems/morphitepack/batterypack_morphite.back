@@ -1,15 +1,17 @@
 {
   "itemName" : "batterypack_morphite",
+  "price" : 2500,
   "inventoryIcon" : "batterypack_eridianicon.png",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
-  "rarity" : "legendary",
-  "description" : "The best energy pack ever created, providing an increased amount of energy.",
+  "rarity" : "rare",
+  "description" : "An advanced energy pack. Blocks electrical storms. Energy x1.2, +30% E. Regen, -15% E. Block, and a slight ^#b72ebc;glow^reset;.",
   "shortdescription" : "Antimatter Energy Pack",
   "tooltipKind" : "baseaugment",
   "category" : "enviroProtectionPack",
   "acceptsAugmentType" : "back",
   "radioMessagesOnPickup" : [ "pickupepp" ],
-  
+
+  "maxStack" : 1,
   "maleFrames" : "back.png",
   "femaleFrames" : "back.png",
 
@@ -17,10 +19,13 @@
     "energyregenfu_morphite",
     {
       "stat" : "maxEnergy",
-      "amount" : 80
+      "effectiveMultiplier" : 1.20
     },
-    "glowpurple2"
+    "glowpurple2",
+    {
+      "stat" : "biomeelectricImmunity",
+      "amount" : 1.0
+    }
   ]
-  
-  
+
 }

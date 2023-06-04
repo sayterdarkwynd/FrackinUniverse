@@ -1,0 +1,28 @@
+{
+	"id" : "fuquest_battery",
+	"title" : "Fuel Your Power",
+	"text" : "You don't need batteries, but they will be extremely useful. Create a ^orange;Basic Battery^reset; in your ^orange;Electronics Center^reset; to try one out.",
+	"completionText" : "Once you place it, use your ^orange;Wiring Tool^reset; to link to a ^green;generator^reset; to a ^blue;blue node^reset; on your battery.",
+	"rewards" : [
+		[ [ "ffskullcap-recipe", 1] ]
+	],
+	"moneyRange" : [10, 10],
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "player"
+		},
+
+		"requireTurnIn" : false,
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "isn_battery_t1",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
+}

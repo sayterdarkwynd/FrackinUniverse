@@ -1,0 +1,70 @@
+{
+  "objectName" : "romanlight",
+  "colonyTags" : ["roman","pretty","valuable","light"],
+  "rarity" : "Rare",
+  "printable" : false,
+  "category" : "light",
+  "price" : 0,
+  "description" : "A robust, roman-style sconce.",
+  "shortdescription" : "Roman Sconce",
+  "race" : "generic",
+
+  "apexDescription" : "A light like this certainly creates an atmosphere.",
+  "avianDescription" : "Avian priests light their way through the crypts with such lights. Likely nothing this fancy, however.",
+  "floranDescription" : "Hanging open flame ssounds like an accident waiting to happen...",
+  "glitchDescription" : "Uneasy. These kinds of lights are often used to illuminate Glitch dungeons.",
+  "humanDescription" : "Impractical, but SO badass.",
+  "hylotlDescription" : "The open flame of this light is beautiful, but not terribly safe for most Hyltol dwellings.",
+  "novakidDescription" : "A fire in a sconce, flickerin' away.",
+
+  "lightColor" : [179, 149, 107],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "inventoryIcon" : "romanlighticon.png",
+  "orientations" : [
+    {
+      "image" : "romanlight.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+
+      "animationPosition" : [-8, 0],
+      "anchors" : [ "top" ],
+      "spaceScan" : 0.1,
+      "direction" : "left",
+      "flipImages" : true
+    },
+    {
+      "image" : "romanlight.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+
+      "animationPosition" : [-8, 0],
+      "anchors" : [ "top" ],
+      "spaceScan" : 0.1,
+      "direction" : "right"
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/torch.ogg",
+  "soundEffectRangeMultiplier" : 0.5,
+
+  "animation" : "romanlight.animation",
+  "animationParts" : {
+    "bg" : "romanlight.png",
+    "fg" : "romanlight.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/torch_on1.ogg", "/sfx/objects/torch_on2.ogg" ],
+      "off" : [ "/sfx/objects/torch_off1.ogg", "/sfx/objects/torch_off2.ogg", "/sfx/objects/torch_off3.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ]
+}

@@ -3,13 +3,16 @@
   "price" : 160,
   "inventoryIcon" : "randomharpoongun.png",
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Why stick to whaling? Impale everything!",
+  "rarity" : "common",
+  "description" : "Impale your enemies, rather than just killing them.
+^yellow;Inflicts bleeding^reset;
+^cyan;Hunting weapon^reset;",
   "shortdescription" : "Harpoon Gun",
-  "level" : 3,
-  "tooltipKind" : "gun",
+  "category" : "sniperRifle",
+  "level" : 1,
+  "tooltipKind" : "gun2",
   "weaponType" : "Speargun",
-  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "itemTags" : ["weapon","ranged","sniperrifle", "upgradeableWeapon", "harpoon" ],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -21,7 +24,7 @@
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/gun/needler1.ogg" ]
+      "fire" : [ "/sfx/weapons/harpoongun.ogg" ]
     }
   },
 
@@ -30,7 +33,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "physical",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -43,9 +46,9 @@
     "fireType" : "auto",
 
     "projectileType" : "harpoon2",
-    "projectileParameters" : { 
-      "speed" : 60,
-      "knockback" : 12,
+    "projectileParameters" : {
+      "speed" : 76,
+      "knockback" : 16,
       "knockbackDirectional" : true,
       "lightColor" : [0, 0, 0]
     },
@@ -79,6 +82,17 @@
 	  }
   },
 
+  "critChance" : 5,
+  "critBonus" : 5,
+  "isSniper" : 1,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300,
+
+  "isAmmoBased" : 1,
+  "magazineSize" : 6,
+  "reloadTime" : 1.2,
 
   "altAbilityType" : "superharpoon",
 

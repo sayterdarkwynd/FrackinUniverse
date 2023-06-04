@@ -4,7 +4,7 @@
     "colonyTags" : [ "science" ],
   "rarity" : "Common",
   "description" : "A small sensor that displays power levels flowing into it.",
-  "shortdescription" : "^cyan;Power Sensor^white;",
+  "shortdescription" : "^cyan;Power Sensor^reset;",
   "race" : "generic",
   "category" : "wire",
   "price" : 100,
@@ -53,11 +53,9 @@
       "direction" : "right"
     }
   ],
-  
-  "scripts" : [ "/objects/power/isn_powersensor/isn_powersensor.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 20,
+
+  "scripts" : [ "/scripts/fupower.lua","isn_powersensor.lua" ],
+  "scriptDelta" : 60,
 
   "animation" : "isn_powersensor.animation",
   "animationParts" : {
@@ -68,6 +66,5 @@
 
   "inputNodes" : [ [0, 0] ],
 
-  "isn_powerReciever" : true,
-  "isn_freePower" : true
+  "powertype" : "input"
 }

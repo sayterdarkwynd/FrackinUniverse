@@ -1,22 +1,27 @@
 {
-  "itemName" : "blexsap",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "blexsap.png",
-  "description" : "This sap is loaded with energizing nutrients. Restores energy.",
-  "shortdescription" : "Blex Cactus Sap",
-    "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      {
-        "effect" : "energyregenfu20",
-        "duration" : 20
-      }
-    ] ]
+	"itemName": "blexsap",
+	"inventoryIcon": "blexsap.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+10% E. Regen & -5% E. Regen Block^reset;: 1m",
+	"shortdescription": "Blex Cactus Sap",
+
+	"effects": [
+		[{
+			"effect": "energyregenfu20",
+			"duration": 60
+		}]
+	],
+	"blockingEffects": [
+		"energyregenfu50",
+		"energyregenfu10",
+		"energyregenfu60",
+		"energyregenfu25",
+		"energyregenfu35",
+		"energyregenfu05",
+		"energyregenfu40"
+	]
 }

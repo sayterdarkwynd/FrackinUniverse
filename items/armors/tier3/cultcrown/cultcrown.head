@@ -1,0 +1,39 @@
+{
+	"itemName": "cultcrown",
+	"inventoryIcon": "icons.png:head",
+	"dropCollision": [-4.0, -3.0, 4.0, 3.0],
+	"maxStack": 1,
+	"rarity": "rare",
+	"description": "A grotesque, bizarre crown of gold.\n+^green;25^reset;% Shadow Resistance.\n^green;+30^reset;% Energy Regen\nDefense x^green;1.15^reset;, Damage x^green;1.2^reset;.\n^cyan;Immune^reset;: Caliginous Gas, Shadow Taint",
+	"shortdescription": "Elder Crown",
+	"category": "headarmour",
+	"tooltipKind": "armornew2",
+
+	"maleFrames": "head.png",
+	"femaleFrames": "head.png",
+	"mask": "mask.png",
+	"level": 4,
+	"statusEffects": [
+		{
+			"stat": "protection",
+			"effectiveMultiplier": 1.15
+		},
+		{
+			"stat": "powerMultiplier",
+			"effectiveMultiplier": 1.2
+		},
+		"energyregenfu_armor30",
+		{
+			"stat": "shadowImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "shadowgasImmunity",
+			"amount": 1
+		}, {
+			"stat": "shadowResistance",
+			"amount": 0.25
+		}
+	],
+	"builder": "/items/buildscripts/fubuildarmor.lua"
+}

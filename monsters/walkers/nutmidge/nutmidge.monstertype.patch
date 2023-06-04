@@ -1,0 +1,90 @@
+[
+  {
+    "op": "replace",
+    "path": "/dropPools/0/default",
+    "value": "kingnutmidgeTreasure"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-invulnerable",
+        "cooldown": 4,
+        "parameters": {
+          "windupTime": 0.5,
+          "windupState": "invulnerablewindup",
+          "winddownTime": 0.5,
+          "winddownState": "invulnerablewinddown",
+          "invulnerableTime": 2
+        }
+      },
+      {
+        "name": "action-charge",
+        "cooldown": 4.5,
+        "parameters": {
+          "maximumRange": 10,
+          "windupTime": 0.6,
+          "chargeTime": [
+            3,
+            3
+          ],
+          "chargeSpeed": 15,
+          "chargeControlForce": 200,
+          "wallKnockback": true,
+          "wallCrashSound": "deathPuff",
+          "wallCrashEmitter": "",
+          "winddownTime": 1
+        }
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/periodicActions/-",
+    "value": {
+      "name": "action-invulnerable",
+      "cooldown": [
+        6,
+        12
+      ],
+      "parameters": {
+        "windupTime": 0.5,
+        "windupState": "invulnerablewindup",
+        "winddownTime": 0.5,
+        "winddownState": "invulnerablewinddown",
+        "invulnerableTime": 4
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/colors",
+    "value": "pandorasboxvibrantfull"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/physicalResistance/baseValue",
+    "value": 0.5
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/iceResistance/baseValue",
+    "value": -0.5
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/electricResistance/baseValue",
+    "value": 1
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/poisonResistance/baseValue",
+    "value": 0.5
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/poisonStatusImmunity/baseValue",
+    "value": 1
+  }
+]

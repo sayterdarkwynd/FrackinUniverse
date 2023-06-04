@@ -1,0 +1,42 @@
+{
+  "objectName" : "gemstation",
+  "colonyTags" : [ "elduukhar", "crafting" ],
+  "printable" : true,
+  "rarity" : "Uncommon",
+  "category" : "crafting",
+  "price" : 250,
+
+  "description" : "A station to create new gem plants.",
+  "shortdescription" : "^orange;Crystal Fusion Station^reset;",
+ // "learnBlueprintsOnPickup" : [ "gemstation" ],
+  "race" : "elduukhar",
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/gemstation.config",
+    "filter" : [ "gemstation" ]
+  },
+
+  "apexDescription" : "A crafting station. It creates new plants.",
+  "avianDescription" : "A tool for creating new types of crystal.",
+  "floranDescription" : "Floran make new ssshiniesss.",
+  "glitchDescription" : "Observant. A gardening tool.",
+  "humanDescription" : "A fancy looking station for gemstones.",
+  "hylotlDescription" : "This kind of technology is certainly interesting.",
+  "novakidDescription" : "I ain't one for playin' with plants.",
+
+  "inventoryIcon" : "gemstationicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "gemstation.png:<color>.<frame>",
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ]
+}

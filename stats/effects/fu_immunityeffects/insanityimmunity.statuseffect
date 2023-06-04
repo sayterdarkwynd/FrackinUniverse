@@ -1,9 +1,15 @@
 {
-  "name" : "insanityimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "insanityimmunity.lua"
-  ]
+	"name": "insanityimmunity",
+	"effectConfig": {
+		"stats": [{
+			"stat": "insanityImmunity",
+			"amount": 1
+		}]
+	},
+	"defaultDuration": 180,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
+	"label": "Immunity - Insanity",
+	"icon": "/interface/statuses/insanityimmunity.png"
 }

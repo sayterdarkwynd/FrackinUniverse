@@ -1,0 +1,25 @@
+{
+  "itemName" : "frostburntmeat",
+  "rarity" : "Common",
+  "price" : 25,
+  "category" : "preparedFood",
+  "inventoryIcon" : "frostburntmeat.png",
+  "description" : "A Peglaci delicacy. An accident for everyone else.\n^green;Heal ^white;10 ^gray;(^white;2s^gray;)^reset; \n^orange;Type: Cooked Meat^reset;",
+  "shortdescription" : "Frostburnt Alien Meat",
+  "effects" : [ [
+    {
+        "effect" : "heal_tier0"
+    },
+    {
+        "effect" : "meat_cooked"
+    }
+  ] ],
+  "foodValue" : 20,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [ "wellfed" ],
+  "learnBlueprintsOnPickup" : [ "coldmarrowpanini" ]
+}

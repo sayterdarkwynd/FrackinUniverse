@@ -1,19 +1,23 @@
 {
-  "itemName" : "goldenseasponge",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "goldenseasponge.png",
-  "description" : "Makes you as light as a sponge, affecting your gravity.",
-  "shortdescription" : "Golden Sea Sponge",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      "lowgrav", "swimboost2", "poisonStatusImmunity"
-    ] ]
+	"itemName": "goldenseasponge",
+	"inventoryIcon": "goldenseasponge.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Swim Boost 2^reset;, ^cyan;Immune^reset;: Poison: 2m",
+	"shortdescription": "Golden Sea Sponge",
+
+	"effects": [
+		[{
+				"effect": "swimboost2",
+				"duration": 120
+			},
+			{
+				"effect": "poisonStatusImmunity",
+				"duration": 120
+			}
+		]
+	]
 }

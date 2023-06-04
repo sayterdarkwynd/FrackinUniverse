@@ -3,31 +3,41 @@
   "inventoryIcon" : "icons.png:head",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "uncommon",
+  "rarity" : "common",
   "description" : "Prevents nasty bee stings!",
   "shortdescription" : "Bee Keeper's Helm",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "head.png",
+  "itemTags" : [ "upgradeableWeapon", "defensive" ],
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 "level" : 1,
-  "statusEffects" : [
+
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.2
+      "baseMultiplier" : 1.05
     },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 4
+      "amount" : 0.35
     },
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 4
+      "amount" : 2
     },
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 3
-    },
+      "amount" : 2
+    }
+  ],
+
+  "statusEffects" : [
     "beestingimmunity"
   ],
 
@@ -69,5 +79,6 @@
     { "e0975c" : "aaaaaa", "a85636" : "6f6f6f", "6f2919" : "494949" },
     { "e0975c" : "d8d8d8", "a85636" : "8d8d8d", "6f2919" : "636363" }
 */
-  ]
+  ],
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

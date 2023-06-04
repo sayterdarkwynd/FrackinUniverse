@@ -1,0 +1,148 @@
+{
+  "itemName" : "freedombird",
+  "price" : 6000,
+  "inventoryIcon" : "freedombird.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Fire condensed freedom at enemies of capitalism.",
+  "shortdescription" : "^red;FR^white;EED^blue;OM^reset;",
+  "level" : 4,
+  "category" : "rocketLauncher",
+  "tooltipKind" : "gununique",
+  "weaponType" : "rocketLauncher",
+  "itemTags" : ["weapon","ranged","rocketlauncher", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "cursor" : "/cursors/cursor_freedom.cursor",
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "freedombird.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "dust2", "offset" : [0.05, -0.4] },
+          { "particle" : "smoke", "offset" : [0.05, -0.4] },
+          { "particle" : "fireember", "offset" : [0.05, -0.4] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/freedom.ogg" ],
+      "altFire" : [ "/sfx/weapons/freedom.ogg" ]
+    }
+  },
+
+  "baseOffset" : [-0.2, 0.62],
+  "muzzleOffset" : [1.645, 0.125],
+
+  "scripts" : ["/items/active/scripts/thea-gun.lua"],
+
+  "elementalType" : "freedom",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 4,
+    "baseDps" : 12.65,
+    "energyUsage" : 55.5,
+
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "freedommissile",
+    "projectileParameters" : {
+      "speed" : 55,
+      "knockback" : 35
+    },
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.075,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+
+  "critChance" : 2,
+  "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : 1,
+  "reloadTime" : 2,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 300,
+  "recoilForce" : 1500,
+
+  "altAbilityType" : "swtjc_ewg_rocketjump",
+  "altAbility" : {
+  "name" : "F$%@* YEA!",
+     "projectileCount" : 1,
+     "baseDps" : 8.4,
+     "projectileType" : "freedommissile",
+     "knockback" : 120,
+     "reloadTime" : 2,
+     "projectileParameters" : {
+         "speed" : 40,
+	  "periodicActions" : [
+	    {
+	      "time" : 0.005,
+	      "loop" : true,
+	      "action" : "projectile",
+	      "type" : "freedombeam",
+	      "config" : { "damageKind" : "freedom" },
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 360
+	   }
+	  ],
+       "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/darkmatterboom/darkmatterboom.config"
+	    },
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/freedomexplosion.config"
+	    }
+       ]
+     }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

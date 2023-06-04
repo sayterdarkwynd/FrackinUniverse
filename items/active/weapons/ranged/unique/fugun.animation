@@ -1,0 +1,121 @@
+{
+  "globalTagDefaults" : {
+    "paletteSwaps" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "firing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "fire" : {
+            "frames" : 2,
+            "cycle" : 0.07,
+            "mode" : "transition",
+            "transition" : "off"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "butt" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0, 0], // x offset is set dynamically
+          "transformationGroups" : ["weapon"]
+        }
+      },
+      "middle" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0, 0], // x offset is set dynamically
+          "transformationGroups" : ["weapon"]
+        }
+      },
+      "middlefullbright" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0, 0], // x offset is set dynamically
+          "transformationGroups" : ["weapon"],
+          "fullbright" : true,
+          "zLevel" : 2
+        }
+      },
+      "barrel" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0, 0], // x offset is set dynamically
+          "transformationGroups" : ["weapon"]
+        }
+      },
+      "muzzleFlash" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [0.75, 0],
+          "fullbright" : true,
+          "transformationGroups" : ["muzzle"]
+        },
+
+        "partStates" : {
+          "firing" : {
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:<variant>.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "rotationGroups" : {
+    "weapon" : {
+      "angularVelocity" : 0
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {},
+    "muzzle" : {}
+  },
+
+  "particleEmitters" : {
+    "muzzleFlash" : {
+      "transformationGroups" : ["muzzle"],
+      "offsetRegion" : [0, 0, 0, 0],
+      "particles" : [ ]
+    }
+  },
+
+  "lights" : {
+    "muzzleFlash" : {
+      "active" : false,
+      "position" : [0, 0],
+      "color" : [90, 90, 0]
+    }
+  },
+
+  "sounds" : {
+	     "fire" : [],
+	     "reload" : [],
+	     "fire1" : [],
+	     "fire2" : [],
+	     "fire3" : [],
+	     "charge" : [],
+	     "cooldown" : [],
+	     "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ],
+	         "fuReload" : [ "/sfx/weapons/reloadfast1.ogg" ],
+	         "fuReload2" : [ "/sfx/weapons/reloadfast2.ogg" ],
+	         "fuReload3" : [ "/sfx/weapons/reloadmid1.ogg" ],
+	         "fuReload4" : [ "/sfx/weapons/reloadmid2.ogg" ],
+	         "fuReload5" : [ "/sfx/weapons/reloadslow.ogg" ]
+  }
+}

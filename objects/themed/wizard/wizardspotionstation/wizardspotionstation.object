@@ -1,0 +1,48 @@
+{
+  "objectName" : "wizardspotionstation",
+  "colonyTags" : ["wizard","crafting"],
+  "printable" : false,
+  "rarity" : "Rare",
+  "description" : "We need... to brew!",
+  "shortdescription" : "Potion Brewery",
+  "race" : "generic",
+  "category" : "crafting",
+  "price" : 0,
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/craftingmedical.config",
+    "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : "  Potion Brewery",
+        "subtitle" : "  Double, double; toil and trouble...",
+        "icon" : {
+          "file" : "/interface/crafting/wizardspotionstation.png"
+        }
+      }
+    },
+    "filter" : [ "craftingmedical" ]
+  },
+
+  "apexDescription" : "I really oughtn't mess with these tools until I know what they do...",
+  "avianDescription" : "A brewing station? Perhaps I can try my hand at it.",
+  "floranDescription" : "Smells ssuspicious. And sstinky.",
+  "glitchDescription" : "Observant. There already seems to be quite the collection of ingredients around this brewing station.",
+  "humanDescription" : "Hm... What makes a Magicka damaging poison, again?",
+  "hylotlDescription" : "This is either a very primitive display of medical practice... Or uncharted scientific territory.",
+  "novakidDescription" : "None of these ingredients smell too great. Does that mean they're workin'?",
+
+
+  "inventoryIcon" : "wizardspotionstationicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "wizardspotionstation.png:<color>.<frame>",
+      "imagePosition" : [-24, 0],
+      "frames" : 12,
+      "animationCycle" : 2,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform",
+      "collisionSpaces" : [[1,1],[2,1],[-1,1],[-2,1],[-3,1],[1,5],[2,5],[-1,5],[-2,5],[-3,5]]
+    }
+  ]
+}

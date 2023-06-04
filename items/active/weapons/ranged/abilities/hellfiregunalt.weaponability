@@ -1,68 +1,86 @@
 {
-  "animationCustom" : {
-    "sounds" : {
-      "altFire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
-    },
-    "particleEmitters" : {
-      "altMuzzleFlash" : {
-        "active" : false,
-        "emissionRate" : 8,
-        "transformationGroups" : ["muzzle"],
-        "offsetRegion" : [0, 0, 0, 0],
-        "particles" : [ 
-          { "particle" : "firestormflame", "offset" : [0.0, 0.0] },
-          { "particle" : "firesmoke", "offset" : [0.0, 0.0] },
-          { "particle" : "firestormflame2", "offset" : [0.0, 0.0] }        
-        ]
-      }
-    }
-  }, 
-  
-    "muzzleOffset" : [1.1, 0.125],
-    
-  "ability" : {
-    "name" : "Flame Ball",
-    "type" : "hellfiregunalt",
-    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
-    "class" : "AltFireAttack",
+	"animationCustom": {
+		"sounds": {
+			"altFire": ["/sfx/gun/plasma_shotgun3.ogg"]
+		},
+		"particleEmitters": {
+			"altMuzzleFlash": {
+				"active": false,
+				"emissionRate": 8,
+				"transformationGroups": ["muzzle"],
+				"offsetRegion": [0, 0, 0, 0],
+				"particles": [{
+						"particle": "firestormflame",
+						"offset": [0.0, 0.0]
+					},
+					{
+						"particle": "firesmoke",
+						"offset": [0.0, 0.0]
+					},
+					{
+						"particle": "firestormflame2",
+						"offset": [0.0, 0.0]
+					}
+				]
+			}
+		}
+	},
 
-    "elementalConfig" : {
-      "physical" : { "projectileType" : "fushotgundartpower" },
-      "fire" : { "projectileType" : "fireblast" },
-      "electric" : { "projectileType" : "fushotgundartpower" },
-      "ice" : { "projectileType" : "fushotgundartpower" },
-      "poison" : { "projectileType" : "spiderlaser" }
-    },
-    "projectileParameters" : {
-      "knockback" : 10,
-      "statusEffects" : [ ] // don't inherit from primary fire
-    },
-    "projectileCount" : 1,
-    "inaccuracy" : 0,
-    "baseDps" : 7,
-    "energyUsage" : 50.0,
-    "fireTime" : 1.0,
-    "fireType" : "auto",
+	"muzzleOffset": [1.1, 0.125],
 
-    "stances" : {
-      "fire" : {
-        "duration" : 0,
-        "armRotation" : 1,
-        "weaponRotation" : 1,
-        "twoHanded" : true,
+	"ability": {
+		"name": "Flame Ball",
+		"type": "hellfiregunalt",
+		"scripts": ["/items/active/weapons/ranged/abilities/altfire.lua"],
+		"class": "AltFireAttack",
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "cooldown" : {
-        "duration" : 0.11,
-        "armRotation" : 1,
-        "weaponRotation" : 1,
-        "twoHanded" : true,
+		"elementalConfig": {
+			"physical": {
+				"projectileType": "fushotgundartpower"
+			},
+			"fire": {
+				"projectileType": "fireblast"
+			},
+			"electric": {
+				"projectileType": "fushotgundartpower"
+			},
+			"ice": {
+				"projectileType": "fushotgundartpower"
+			},
+			"poison": {
+				"projectileType": "spiderlaser"
+			}
+		},
+		"projectileParameters": {
+			"knockback": 10,
+			"statusEffects": [ "burningnapalm" ]
+		},
+		"projectileCount": 1,
+		"inaccuracy": 0,
+		"baseDps": 7,
+		"energyUsage": 50.0,
+		"fireTime": 1.0,
+		"fireType": "auto",
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      }
-    }
-  }
+		"stances": {
+			"fire": {
+				"duration": 0,
+				"armRotation": 1,
+				"weaponRotation": 1,
+				"twoHanded": true,
+
+				"allowRotate": false,
+				"allowFlip": false
+			},
+			"cooldown": {
+				"duration": 0.11,
+				"armRotation": 1,
+				"weaponRotation": 1,
+				"twoHanded": true,
+
+				"allowRotate": false,
+				"allowFlip": false
+			}
+		}
+	}
 }

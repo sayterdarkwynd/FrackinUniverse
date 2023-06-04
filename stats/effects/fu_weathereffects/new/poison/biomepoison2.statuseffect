@@ -1,0 +1,51 @@
+{
+	"name" : "biomepoison2",
+
+	"effectConfig" : {
+		"resistanceTypes" : {
+			"poisonResistance" : 1.0
+		},
+		"resistanceThreshold" : 0.4,
+		"immunityStats" : [
+			"poisonStatusImmunity",
+			"poisongasImmunity",
+			"gasImmunity"
+		],
+
+		"healthDrain" : 2,
+		"hungerDrain" : 0,
+		"energyDrain" : 0,
+		"speedPenalty" : 0.75,
+		"jumpPenalty" : 0.75,
+
+		"debuffRate" : 3.5,
+		"debuffStartDelay" : 25,
+		"debuffs" : {
+			"powerMultiplier" : {
+				"type" : "absolute",
+				"amount" : -0.05,
+				"cap" : 0.05
+			}
+		},
+
+		"modifiers" : {
+			"windy" : 1.2
+		},
+
+		"messages" : {
+			"intro" : "ffbiomepoison",
+			"windy" : "ffbiomepoisonwind"
+		},
+
+		"configPath" : "/stats/effects/fu_weathereffects/new/poison/biomepoison2.statuseffect"
+	},
+	"defaultDuration" : 20,
+
+	"scripts" : [
+		"poisonweathernew.lua"
+	],
+
+	"animationConfig" : "poisonweathernew.animation",
+	"label" : "Moderate Poison (Resist: ^green;Poison^reset;)",
+	"icon" : "/interface/statuses/poison2.png"
+}

@@ -2,31 +2,42 @@
   "objectName" : "tetrapod",
   "colonyTags" : [ "metallic", "rusted" ],
   "rarity" : "Common",
-  "category" : "pot",
+  "category" : "decorative",
   "price" : 400,
-  "printable" : false,  
+  "printable" : false,
   "description" : "What is inside of this?.",
   "shortdescription" : "Strange Pod",
   "inventoryIcon" : "tetrapod.png",
-  "health" : 360,
+  "health" : 30,
   "orientations" : [
     {
-      "image" : "tetrapod.png:<color>",
+      "imageLayers" : [ { "image" : "tetrapod.png:<color>", "fullbright" : true }, { "image" : "tetrapodfullbright.png:<color>" } ],
+      "flipImages" : true,
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+      "anchors" : [ "bottom" ],
+      "direction" : "left"
+    },
+    {
+      "imageLayers" : [ { "image" : "tetrapod.png:<color>", "fullbright" : true }, { "image" : "tetrapodfullbright.png:<color>" } ],
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
 
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
     }
   ],
   "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
   "smashDropOptions" : [
-    [ [ "geneticmaterial", 50, { } ] ]
+    [ [ "fuscienceresource", 350, { } ] ]
   ],
 
   "breakDropOptions" : [
-    [ [ "geneticmaterial", 50, { } ] ]
+    [ [ "fuscienceresource", 350, { } ] ]
   ]
 }

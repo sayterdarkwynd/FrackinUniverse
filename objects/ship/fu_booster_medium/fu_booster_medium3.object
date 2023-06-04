@@ -1,0 +1,95 @@
+{
+  "objectName": "fu_booster_medium3",
+  "colonyTags": ["byos"],
+  "scannable": false,
+  "rarity": "uncommon",
+  "description": "A medium sized sub-light thruster. Moderately increases interplanetary travel speed.\n^yellow;Ship Speed: +27\n^cyan;BYOS Only^reset;",
+  "shortdescription": "Medium Ship Booster Mk3",
+  "race": "generic",
+ // "learnBlueprintsOnPickup":["fu_booster_medium4"],
+
+  "apexDescription": "A booster. These have been known to malfunction and explode.",
+  "avianDescription": "A booster, the wings of a ship.",
+  "floranDescription": "Ssscary fire.",
+  "glitchDescription": "Analyse. Temperature too high to measure.",
+  "humanDescription": "This thing eats through fuel.",
+  "hylotlDescription": "Propulsion.",
+  "novakidDescription": "This flame 'ere has a powerful kick.",
+
+  "category": "light",
+  "lightColor": [59, 183, 255],
+  "pointLight": true,
+  "flickerDistance": 0.2,
+  "flickerStrength": 0.05,
+  "flickerTiming": 4,
+  "inventoryIcon": "/objects/ship/fu_thrustericon.png",
+  "orientations": [
+    {
+      "image": "/objects/ship/fu_booster_medium/fu_booster_medium.png:on.1",
+      "imagePosition": [-32, -32],
+      "animationPosition": [-32, -32],
+      "animationParts": {"booster": "/objects/ship/fu_booster_medium/fu_booster_medium.png"},
+      "flipImages": true,
+      "anchors": ["top"],
+      "spaces":[
+         [-4, 0],[-4, -1],[-4, -2],[-4, -3],[-4, -4],
+         [-3, 0],[-3, -1],[-3, -2],[-3, -3],[-3, -4],
+         [-2, 0],[-2, -1],[-2, -2],[-2, -3],[-2, -4],
+         [-1, 0],[-1, -1],[-1, -2],[-1, -3],[-1, -4],
+         [ 0, 0],[ 0, -1],[ 0, -2],[ 0, -3],[ 0, -4]
+      ]
+    },
+    {
+      "image": "/objects/ship/fu_booster_medium/fu_booster_mediumFlip.png:on.1",
+      "imagePosition": [-32, 0],
+      "animationPosition": [-32, 0],
+      "animationParts": {"booster": "/objects/ship/fu_booster_medium/fu_booster_mediumFlip.png"},
+      "flipImages": true,
+      "anchors": ["bottom"],
+      "spaces":[
+         [-4, 0],[-4, 1],[-4, 2],[-4, 3],[-4, 4],
+         [-3, 0],[-3, 1],[-3, 2],[-3, 3],[-3, 4],
+         [-2, 0],[-2, 1],[-2, 2],[-2, 3],[-2, 4],
+         [-1, 0],[-1, 1],[-1, 2],[-1, 3],[-1, 4],
+         [ 0, 0],[ 0, 1],[ 0, 2],[ 0, 3],[ 0, 4]
+      ]
+    }
+  ],
+  "spaceScan": 0.1,
+  "fullbright": true,
+
+  "animation": "/objects/ship/boosters/boosterflame.animation",
+
+  "soundEffect": "/sfx/objects/smallboosterflame.ogg",
+  "soundEffectRangeMultiplier": 1.0,
+
+  "scripts": [
+    "/objects/ship/boosters/boosterflame.lua",
+    "/objects/ship/fu_shipstatmodifier.lua"
+  ],
+  "scriptDelta": 32,
+
+  "touchDamage": {
+    "poly": [
+      [-0.75, 1],
+      [-0.75, 0.5],
+      [1.75, 0.5],
+      [1.75, 1]
+    ],
+    "damage": 400,
+    "knockback": 128,
+    "damageType": "Environment",
+    "damageSourceKind": "plasma"
+  },
+
+  "flyingBoosterStates": {
+    "none": "turnOff",
+    "disembarking": "turnOn",
+    "warp": "turnOff",
+    "arriving": "turnOn"
+  },
+  "stats": {
+    "shipSpeed": 27
+  },
+  "byosOnly": true
+}

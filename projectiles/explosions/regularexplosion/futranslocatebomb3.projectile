@@ -1,0 +1,83 @@
+{
+  "projectileName" : "futranslocatebomb3",
+  "image" : "regularexplosion.png",
+  "animationCycle" : 0.0,
+  "frameNumber" : 1,
+  "timeToLive" : 0.01,
+  "speed" : 0,
+  "power" : 0,
+  "damagePoly" : [ [-48, 0], [-32, -32], [0, -48], [32, -32], [48, 0], [32, 32], [0, 48], [-32, 32] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "flippable" : true,
+  "damageTeam" : { "type" : "indiscriminate" },
+  "damageKind" : "default",
+
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "inheritDamageFactor" : 0.5,
+      "type" : "crudebombnoblast"
+    },
+    {
+      "action" : "projectile",
+      "inheritDamageFactor" : 0,
+      "type" : "fudebrisexplosive",
+      "fuzzAngle" : 360
+    },
+    {
+      "action" : "projectile",
+      "type" : "smallradioactivecloud",
+      "inheritDamageFactor" : 1
+    },
+    {
+      "action" : "projectile",
+      "type" : "forcecage2",
+      "inheritDamageFactor" : 1
+    },
+    {
+      "action" : "loop",
+      "count" : 10,
+      "body" : [
+        {
+          "action" : "option",
+          "options" : [
+            {
+              "action" : "particle",
+              "specification" : {
+                "type" : "animated",
+                "animation" : "/animations/dusttest/dusttest.animation",
+                "approach" : [0.5, 0.5],
+                "timeToLive" : 0.85,
+                "variance" : {
+                  "position" : [1.5, 1.5],
+                  "initialVelocity" : [1, 1],
+                  "rotation" : 180
+                }
+              }
+            }
+          ]
+        },
+        {
+          "action" : "spark"
+        }
+      ]
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/gun/grenadeblast1.ogg", "/sfx/gun/grenadeblast2.ogg", "/sfx/gun/grenadeblast3.ogg" ]
+    },
+    {
+      "action" : "light",
+      "color" : "orange"
+    },
+    {
+      "action" : "explosion",
+      "foregroundRadius" : 7,
+      "backgroundRadius" : 4,
+      "explosiveDamageAmount" : 60,
+      "harvestLevel" : 99,
+      "delaySteps" : 2
+    }
+  ]
+}

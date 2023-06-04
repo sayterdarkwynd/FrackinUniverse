@@ -2,22 +2,25 @@
   "itemName" : "snowhoneyjar",
   "rarity" : "Common",
   "category" : "food",
-  "price" : 200,
+  "price" : 40,
   "inventoryIcon" : "snowhoneyjar.png",
-  "description" : "A jar of frozen honey.",
+  "description" : "A jar of frozen honey.\n^cyan;+^white;30% ^pink;Ice ^cyan;Resistance ^gray;(^white;5m^gray;)\n^green;Heal ^white;50 ^gray;(^white;1m^gray;)^reset;",
   "shortdescription" : "Frozen Honey Jar",
- 
+
+  "tooltipKind": "food",
   "effects" : [ [
+    "fuiceresistance3",
     {
-        "effect" : "honeyheal6",
-        "duration" :180  
+      "effect" : "honeyheal1",
+      "duration" :60
     },
     {
-        "effect" : "fedhoney",
-        "duration" : 180
+      "effect" : "fedhoney",
+      "duration" : 180
     }
   ] ],
   "blockingEffects" : [
      "fedhoney"
-  ]
+  ]//,
+  //"learnBlueprintsOnPickup" : [ "icecookie" ]
 }

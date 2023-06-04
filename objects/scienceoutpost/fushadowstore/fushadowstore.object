@@ -1,0 +1,54 @@
+{
+  "objectName" : "fushadowstore",
+  "colonyTags" : [ "crafting", "shadow" ],
+  "rarity" : "rare",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/fushadowstore.config",
+    "filter" : [ "fushadowstore" ]
+  },
+  "printable" : false,
+  "description" : "A strange and creepy shop.",
+  "shortdescription" : "^orange;...^reset;",
+  "race" : "floran",
+  "category" : "crafting",
+  "price" : 0,
+  "inventoryIcon" : "fushadowstore.png",
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fushadowstore.png:<color>.<frame>","fullbright":true},{ "image" : "fushadowstorefullbright.png:<color>.<frame>"} ],
+      "imagePosition" : [-68, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "frames" : 1,
+      "animationCycle" : 7.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "fushadowstore.png:<color>.<frame>","fullbright":true},{ "image" : "fushadowstorefullbright.png:<color>.<frame>"} ],
+      "imagePosition" : [-68, 0],
+
+      "direction" : "right",
+
+      "frames" : 1,
+      "animationCycle" : 7.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/aquarium1.ogg",
+  "offeredQuests" : [
+    "scienceoutpost_shadowShop"
+  ],
+  "turnInQuests" : [
+    "scienceoutpost_shadowShop"
+  ]
+
+}

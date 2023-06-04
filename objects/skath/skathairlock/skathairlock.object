@@ -1,0 +1,80 @@
+{
+  "objectName" : "skathairlock",
+  "colonyTags" : ["skath","door"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 175,
+  "description" : "A sturdy airlock made out of Tethyde.",
+  "shortdescription" : "Pressurised Tethyde Door",
+  "race" : "skath",
+
+  "apexDescription" : "A great big airlock door. Sturdy.",
+  "avianDescription" : "An intimidatingly large metal door.",
+  "floranDescription" : "Waterdragon build big, ssturdy doors! Sstrong enough to keep out Floran!",
+  "glitchDescription" : "Curious. Where is the doorknob?",
+  "humanDescription" : "The Hylotl use similar airlocks, I think.",
+  "hylotlDescription" : "A Skath airlock. I'm reminded of home.",
+  "novakidDescription" : "A tough lookin' door.",
+
+  "skathDescription" : "This door was built to keep out water from our ocean cities.",
+
+
+  "inventoryIcon" : "skathairlockicon.png",
+  "orientations" : [
+    {
+      "image" : "skathairlock.png:default",
+      "imagePosition" : [-8, 0],
+      "renderLayer" : "Object+5",
+      "direction" : "left",
+      "flipImages" : true,
+
+      "animationParts" : {
+        "door" : "skathairlock.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    },
+    {
+      "image" : "skathairlock.png:default",
+      "imagePosition" : [-8, 0],
+      "renderLayer" : "Object+5",
+      "direction" : "left",
+
+      "animationParts" : {
+        "door" : "skathairlock.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/lockingdoor.animation",
+
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/airlock_heavy_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/airlock_heavy_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+
+  "animationParts" : {
+    "door" : "skathairlock.png"
+  },
+
+  "inputNodes" : [ [-1, 7] ],
+  "outputNodes" : [ [1, 0] ]
+}

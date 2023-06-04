@@ -1,9 +1,18 @@
 {
-  "name" : "biooozeimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "biooozeimmunity.lua"
-  ]
+	"name": "biooozeimmunity",
+	"effectConfig": {
+		"stats": [{
+				"stat": "biooozeImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "poisonStatusImmunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

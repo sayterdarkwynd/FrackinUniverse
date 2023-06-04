@@ -1,0 +1,68 @@
+{
+  "projectileName" : "peglacitier4knife",
+  "image" : "peglacitier4knife.png",
+  "animationCycle" : 0.5,
+  "physics" : "bullet",
+  "frameNumber" : 4,
+  "lightColor" : [0, 110, 155],
+  "speed" : 20,
+  "timeToLive" : 0.6,
+  "actionOnReap" : [
+	  {
+      "action" : "config",
+      "file" : "/projectiles/throwable/peglacitier4knifeburst.config"
+    },
+	  {
+      "action" : "projectile",
+      "type" : "peglaciicecloud",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 10
+    },
+	  {
+      "action" : "projectile",
+      "type" : "peglaciicecloud",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : -10
+    },
+	  {
+      "action" : "projectile",
+      "type" : "peglaciicecloud",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 30
+    },
+	  {
+      "action" : "projectile",
+      "type" : "peglaciicecloud",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : -30
+    },
+    {
+      "action" : "projectile",
+      "type" : "peglaciicecloud",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 50
+    },
+	  {
+      "action" : "projectile",
+      "type" : "peglaciicecloud",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : -50
+    },
+	  {
+      "action" : "projectile",
+      "type" : "peglaciicecloud",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 70
+    },
+	  {
+      "action" : "projectile",
+      "type" : "peglaciicecloud",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : -70
+    }
+  ],
+  "power" : 60.0,
+  "damageKind" : "ice",
+  "emitters" : [ "peglacitrail" ],
+  "damagePoly" : [ [2, -3], [10, -3], [14, -3], [18, 1], [14, 4], [10, 4], [2, 4] ]
+}

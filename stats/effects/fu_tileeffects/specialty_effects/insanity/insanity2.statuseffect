@@ -1,0 +1,77 @@
+{
+  "name" : "insanity2",
+  "blockingStat" : "insanityImmunity",
+
+  "effectConfig" : {
+    "damageDistance" : 15,
+    "maxDps" : 120,
+
+    "effectMaxErchius" : 5000,
+    "effectDistance" : [35, 100],
+    "emissionRate" : 50,
+    "desaturateAmount" : 120,
+    "lightColor" : [70, 35, 70],
+    "multiplyColor" : [0, -150, 0],
+
+    "ghostSpawnOffset" : [0, -50],
+
+
+     "typerParticleConfig" : {
+      "particle" : {
+        "color" : [0, 0, 0, 205],
+        "size" : 1,
+        "fade" : 0.7,
+        "destructionTime" : 0.8,
+        "initialVelocity" : [0, 4],
+        "finalVelocity" : [0, 0],
+        "timeToLive" : 0,
+        "destructionAction" : "shrink"
+      },
+
+      "spawnInterval" : 0.5,
+      "writeInterval" : 0.1,
+      "printTextInOrder" : false,
+      "loopOrderedText" : true,
+      "spacing" : [1, 1.5],
+      "boundingBox" : [ 0, 0 ],
+      "texts" : [
+        "kill",
+        "KILL",
+        "flesh",
+        "catch the sky",
+        "dream",
+        "dream deeply",
+        "consume",
+        "work 8 hours",
+        "play 8 hours",
+        "sleep 8 hours",
+        "watch your back",
+        "they're out to get you"
+      ],
+
+    // All of these are optional
+      "controllers" : {
+        "color" : [125, 50, 25, 0],
+        "colorLoop" : true,
+        "size" : 1,
+        "sizeMax" : 10,
+        "timeToLive" : 1,
+        "timeToLiveMax" : 5,
+        "boundingBox" : [3, 3],
+        "boundingBoxMax" : [50, 50],
+        "spacing" : [1, 1.5]
+      }
+    }
+  },
+  "defaultDuration" : 60,
+
+  "scripts" : [
+    "insanity.lua",
+    "/stats/typer_particle.lua"
+  ],
+
+  "animationConfig" : "insanity2.animation",
+
+  "label" : "Insane",
+  "icon" : "/interface/statuses/insanity2.png"
+}

@@ -1,22 +1,22 @@
 {
   "projectileName" : "deaththrower",
-  "physics" : "arrow",
+  "physics" : "fugraviton",
   "bounces" : -1,
   "level" : 1,
   "timeToLive" : 1,
-  "speed" : 10,
+  "speed" : 30,
   "piercing" : true,
   "image" : "deaththrower.png",
   "animationCycle" : 0.55,
-  "lightColor" : [150, 150, 150],
-  "frameNumber" : 4,  
-  "emitters" : [ "flames" ],
+  "lightColor" : [2, 2, 2],
+  "frameNumber" : 4,
+  "emitters" : [ "shadowsmoke" ],
   "actionOnReap" : [
     {
       "action" : "config",
       "file" : "/projectiles/explosions/elder/eldercarbineboom.config"
     }
   ],
-  "damageKind" : "fire",
-  "statusEffects" : [ ]
+  "damageKind" : "shadow",
+  "statusEffects" : [ "defenseboostneg20" ]
 }

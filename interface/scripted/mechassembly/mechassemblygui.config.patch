@@ -1,0 +1,414 @@
+[
+  {
+    "op": "replace",
+    "path": "/gui/lblSlot_horn/value",
+    "value": "Module"
+  },
+
+
+
+  {
+    "op": "add",
+    "path": "/massFormat",
+    "value": "^green;Mass^reset;: %.02ft"
+  },
+  {
+    "op": "add",
+    "path": "/gui/lblMass",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [83,155],
+      "hAnchor": "mid",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+    "op": "add",
+    "path": "/gui/lblModuleBonuses",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [110,79],
+      "hAnchor": "mid",
+      "vAnchor": "mid",
+      "value": "Module Bonuses:"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/gui/lblMobility",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [60,52],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+        "op": "add",
+        "path": "/mobilityFormat",
+        "value": "^orange;Mobility +^reset;: %d"
+  },
+  {
+    "op": "add",
+    "path": "/gui/lblMobilityControl",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [128,61],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+        "op": "add",
+        "path": "/mobilityControlFormat",
+        "value": "^orange;Agility^reset; : %d"
+  },
+  {
+    "op": "add",
+    "path": "/gui/lblMobilityJump",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [128,70],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+        "op": "add",
+        "path": "/mobilityJumpFormat",
+        "value": "^orange;Jump^reset; : %d"
+  },
+  {
+    "op": "add",
+    "path": "/gui/lblMobilityBoost",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [128,52],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+        "op": "add",
+        "path": "/mobilityBoostFormat",
+        "value": "^orange;Speed^reset; : %d"
+  },
+  {
+    "op": "add",
+    "path": "/gui/lblEnergyBoost",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [50,61],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+        "op": "add",
+        "path": "/energyBoostFormat",
+        "value": "^green;Energy^reset; : %d"
+  },
+  {
+    "op": "add",
+    "path": "/gui/lblDefenseBoost",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [50,70],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+        "op": "add",
+        "path": "/defenseBoostFormat",
+        "value": "^red;Defense^reset; : %d"
+  },
+  {
+    "op": "add",
+    "path": "/gui/lblFuelBonus",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [50,52],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+        "op": "add",
+        "path": "/fuelBonusFormat",
+        "value": "^#e43774;Fuel Eff^reset; : %.02f"
+  },
+  {
+        "op": "add",
+        "path": "/gui/imgHealthBar",
+        "value":
+		{
+		  "type" : "image",
+          "file" : "/interface/scripted/mechassembly/health_bar.png",
+          "zlevel" : 1,
+          "position" : [191, 61]
+	    }
+  },
+
+  {
+        "op": "add",
+        "path": "/gui/lblHealth",
+        "value":
+		{
+	  "type" : "label",
+          "zlevel" : 2,
+          "position" : [228, 65],
+          "hAnchor" : "mid",
+          "vAnchor" : "mid",
+          "value" : ""
+	    }
+  },
+
+
+  {
+        "op": "add",
+        "path": "/healthFormat",
+        "value": "Health: %d"
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/imgEnergyBar/position",
+        "value": [191, 51]
+  },
+
+  {
+        "op": "replace",
+        "path": "/energyFormat",
+        "value": "Energy: %d"
+  },
+  {
+        "op": "replace",
+        "path": "/gui/lblEnergy/position",
+        "value": [228, 55]
+  },
+  {
+        "op": "replace",
+        "path": "/gui/lblDrain/position",
+        "value": [228,45]
+  },
+  {
+        "op": "replace",
+        "path": "/drainFormat",
+        "value": "Fuel Use: %.02f/s"
+  },
+
+
+   {
+     "op": "replace",
+     "path": "/gui/lblPrimaryColor/position/0",
+     "value": 8
+   },
+   {
+     "op": "replace",
+     "path": "/gui/lblPrimaryColor/position/1",
+     "value": 79
+   },
+   {
+     "op": "replace",
+     "path": "/gui/lblPrimaryColor/value",
+     "value": "Colours"
+  },
+    {
+     "op": "replace",
+     "path": "/gui/lblSecondaryColor/value",
+     "value": ""
+  },
+  {
+    "op": "replace",
+    "path": "/gui/lblSecondaryColor/position/0",
+    "value": 7
+  },
+
+  {
+    "op": "replace",
+    "path": "/gui/btnPrevPrimaryColor/position/0",
+    "value": 7
+  },
+  {
+    "op": "replace",
+    "path": "/gui/btnNextPrimaryColor/position/0",
+    "value": 29
+  },
+  {
+    "op": "replace",
+    "path": "/gui/btnPrevSecondaryColor/position/0",
+    "value": 7
+  },
+  {
+    "op": "replace",
+    "path": "/gui/btnNextSecondaryColor/position/0",
+    "value": 29
+  },
+  {
+    "op": "replace",
+    "path": "/gui/imgPrimaryColorPreview/position/0",
+    "value": 17
+  },
+  {
+    "op": "replace",
+    "path": "/gui/imgSecondaryColorPreview/position/0",
+    "value": 17
+  },
+
+
+  {
+        "op": "replace",
+        "path": "/gui/lblDrain/position",
+        "value": [228, 45]
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/imgEnergyBar/position",
+        "value": [191, 51]
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/lblEnergy/position",
+        "value": [228, 55]
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/lblSlot_body/position/1",
+        "value": 146
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/lblSlot_leftArm/position/1",
+        "value": 124
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/lblSlot_legs/position/1",
+        "value": 102
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/lblSlot_booster/position/1",
+        "value": 146
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/lblSlot_rightArm/position/1",
+        "value": 124
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/lblSlot_horn/position/1",
+        "value": 102
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/itemSlot_body/position/1",
+        "value": 137
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/itemSlot_leftArm/position/1",
+        "value": 115
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/itemSlot_rightArm/position/1",
+        "value": 115
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/itemSlot_legs/position/1",
+        "value": 93
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/itemSlot_booster/position/1",
+        "value": 137
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/itemSlot_horn/position/1",
+        "value": 93
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/close/position/1",
+        "value": 184
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/imgWireframe/position/1",
+        "value": 93
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/imgMissing_body/position/1",
+        "value": 93
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/imgMissing_booster/position/1",
+        "value": 93
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/imgMissing_leftArm/position/1",
+        "value": 93
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/imgMissing_rightArm/position/1",
+        "value": 93
+  },
+
+  {
+        "op": "replace",
+        "path": "/gui/imgMissing_legs/position/1",
+        "value": 93
+  },
+
+    {
+      "op": "replace",
+      "path": "/gui/close/position/1",
+      "value": 174
+  }
+]

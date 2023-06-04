@@ -1,0 +1,46 @@
+{
+  "objectName" : "veluushiplight",
+  "colonyTags" : ["light"],
+  "rarity" : "Common",
+  "category" : "light",
+  "lightColor" : [133, 96, 255],
+  "price" : 60,
+  "description" : "A common ship light.",
+  "shortdescription" : "Ship Light",
+  "race" : "veluu",
+
+  "apexDescription" : "These lights are commonly used on ships.",
+  "avianDescription" : "A vibrant light.",
+  "floranDescription" : "Ship light is harsh on Floran eyesss.",
+  "glitchDescription" : "Impressed. This lighting fixture generates more light than heat.",
+  "humanDescription" : "A bright, white light.",
+  "hylotlDescription" : "A bright, white light. It creates a neutral atmosphere.",
+  "novakidDescription" : "That's one bright lightbulb.",
+
+  "inventoryIcon" : "veluushiplighticon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "veluushiplight.png:<color>.<frame>", "fullbright" : true }, { "image" : "veluushiplightlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-8, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "veluushiplight.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

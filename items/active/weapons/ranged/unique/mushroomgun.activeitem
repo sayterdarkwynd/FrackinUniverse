@@ -3,13 +3,15 @@
   "price" : 160,
   "inventoryIcon" : "mushroomgun.png",
   "maxStack" : 1,
-  "rarity" : "rare",
-    "description" : "Deadly spore clouds await.",
+  "rarity" : "uncommon",
+  "description" : "Tiny little explosive buddies spew out of this thing.
+^yellow;Area-Damage weapon, ^cyan;Floran^reset;^reset;",
   "shortdescription" : "Fungal Gun",
-  "level" : 4,
-  "tooltipKind" : "gun",
+  "category" : "bioweapon",
+  "level" : 3,
+  "tooltipKind" : "gun2",
   "weaponType" : "Grenade Launcher",
-  "itemTags" : ["weapon","ranged","grenadelauncher"],
+  "itemTags" : ["weapon","ranged","grenadelauncher", "bioweapon", "floran", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -29,7 +31,7 @@
   "muzzleOffset" : [1.645, 0.125],
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "bioweapon",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -43,9 +45,10 @@
     "fireType" : "auto",
 
     "projectileType" : "floatyshroom",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 50,
-      "knockback" : 4
+      "knockback" : 4,
+      "statusEffects" : [ "weakpoison" ]
     },
   "stances" : {
     "idle" : {
@@ -85,6 +88,13 @@
         ]
       }
     },
+
+
+  "critChance" : 6,
+  "critBonus" : 2,
+  "isAmmoBased" : 1,
+  "magazineSize" : 24,
+  "reloadTime" : 1.4,
 
   "altAbilityType" : "mushroomgrenadelauncher",
 

@@ -1,0 +1,46 @@
+{
+  "objectName" : "elduuspotlamp",
+  "colonyTags" : ["elduukhar", "light"],
+  "rarity" : "uncommon",
+  "category" : "light",
+  "lightColor" : [238, 255, 186],
+  "price" : 160,
+  "description" : "A wall lamp featuring a secured crystal.",
+  "shortdescription" : "Crystal Spotlight Lamp",
+  "race" : "elduukhar",
+
+  "apexDescription" : "This light doesn't seem practical.",
+  "avianDescription" : "A pretty light.",
+  "floranDescription" : "Light isss bright, isss pretty.",
+  "glitchDescription" : "Happy. This light is beautiful.",
+  "humanDescription" : "A pretty light.",
+  "hylotlDescription" : "A pretty light, made for form more than function.",
+  "novakidDescription" : "A mighty fancy light.",
+
+  "inventoryIcon" : "elduuspotlampicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "elduuspotlamp.png:<color>.<frame>", "fullbright" : true }, { "image" : "elduuspotlamplit.png:<color>.<frame>" } ],
+      "imagePosition" : [0, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "elduuspotlamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : true,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

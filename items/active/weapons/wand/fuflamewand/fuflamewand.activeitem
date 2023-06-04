@@ -1,0 +1,104 @@
+{
+  "itemName" : "fuflamewand",
+  "price" : 440,
+  "maxStack" : 1,
+  "level" : 1,
+  "rarity" : "common",
+  "description" : "Primitive shaman's implement.",
+  "shortdescription" : "Bone Wand",
+  "category" : "wand",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","wand","upgradeableWeapon","fire","bone"],
+  "tooltipKind" : "staff",
+
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "fuflamewand.png",
+    "stone" : "/items/active/weapons/wand/generated/stone/fuflamewand.png",
+    "chargeEffect" : "/items/active/weapons/wand/generated/glow/fire.png"
+  },
+  "animationCustom" : {
+    "lights" : {
+      "glow" : {
+        "color" : [85, 24, 12]
+      }
+    },
+    "particleEmitters" : {
+      "firecharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 10,
+        "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
+        "particles" : [
+          {"particle" : "burningdust"}
+        ]
+      }
+    },
+
+    "sounds" : {
+      "physicalactivate" : ["/sfx/npc/boss/cultistboss_recharge.ogg"]
+    }
+  },
+
+  "inventoryIcon" : "fuflamewand.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+      "weaponOffset" : [0, 1.0],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 0.6,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : false,
+      "weaponOffset" : [0, 1.5],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : false,
+      "weaponOffset" : [0, 1.5],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "duration" : 0.35,
+      "armRotation" : -10,
+      "weaponRotation" : -50,
+      "twoHanded" : false,
+      "weaponOffset" : [0, 1.0],
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "cooldown" : {
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+      "weaponOffset" : [0, 1.75],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "elementalType" : "fire",
+
+  "primaryAbilityType" : "flamewand",
+  "primaryAbility" : {},
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

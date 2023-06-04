@@ -1,0 +1,122 @@
+{
+  "itemName" : "penumbriterocketlauncher",
+  "price" : 110,
+  "inventoryIcon" : "penumbriterocketlauncher.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Fast-moving blasts of attuned power.
+^yellow;Universal Damage^reset;",
+  "shortdescription" : "Penumbrite Cannon",
+  "level" : 3,
+  "tooltipKind" : "gun2",
+  "category" : "rocketLauncher",
+  "itemTags" : ["weapon","ranged","rocketlauncher","silver","upgradeableWeapon", "penumbrite","explosive"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "penumbriterocketlauncher.png",
+    "middleunlit" : "",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middleunlit" : {
+          "properties" : {
+            "centered" : true,
+            "image" : "<partImage><paletteSwaps>",
+            "offset" : [0.30, 0.385],
+            "transformationGroups" : ["weapon"],
+            "fullbright" : true,
+            "zLevel" : 1
+          }
+        }
+      }
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "snowflakeshurikentrail", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/blastcannon.ogg" ]
+    }
+  },
+
+
+  "baseOffset" : [-0.8, 0.25],
+  "muzzleOffset" : [3, 0.15],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "silverweapon",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
+    "fireTime" : 2,
+    "baseDps" : 5.5,
+    "useEnergy" : true,
+    "energyUsage" : 30,
+    "runSlowWhileShooting" : true,
+    "fireType" : "auto",
+
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "projectileType" : "penumbrarocket",
+    "projectileParameters" : {
+      "speed" : 120,
+      "piercing" : false
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 1,
+        "weaponRotation" :1,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.1,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "fudronelauncher",
+
+  "critChance" : 1,
+  "critBonus" : 3,
+
+  "isAmmoBased" : 1,
+  "magazineSize" : 3,
+  "reloadTime" : 2,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 500,
+  "recoilForce" : 500,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

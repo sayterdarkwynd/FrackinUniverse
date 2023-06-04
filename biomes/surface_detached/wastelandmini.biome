@@ -1,16 +1,18 @@
 {
   "name" : "wastelandmini",
-  "friendlyName" : "wastelandmini",
+  "friendlyName" : "Wasteland Mini Biome",
 
     "spawnProfile" : {
     "groups" : [
       {
         "select" : 1,
-        "pool" : [ 
-          [ 0.1111, "tintix" ],     
+        "pool" : [
+          [ 0.1111, "tintix" ],
           [ 0.1111, "triplod" ],
-          [ 0.1111, "scandroid" ],        
+          [ 0.1111, "scandroid" ],
           [ 0.1111, "bobot" ],
+          [ 0.04, "motherpoptop2" ],
+          [ 0.1, "knifetop" ],
           [ 0.1111, "deathdroid" ]
         ]
       },
@@ -32,15 +34,36 @@
     ]
   },
 
+  "hueShiftOptions" : [-10, 0, 10, 20, 30],
+
+  "parallax" : "/parallax/surface/urbanwasteland.parallax",
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/desert_day.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/desert_night.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/lava-exploration1.ogg", "/music/drosera.ogg", "/music/inviolate-loop.ogg", "/music/desert-exploration2.ogg", "/music/ultramarine.ogg", "/music/arctic-constellation1.ogg", "/music/body-electric-loop.ogg", "/music/mercury.ogg", "/music/Nomads.ogg", "/music/psyche.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/lava-exploration2.ogg", "/music/crystal-exploration2.ogg", "/music/mira.ogg", "/music/tranquility-base.ogg", "/music/arctic-constellation1.ogg", "/music/Nomads.ogg", "/music/psyche.ogg", "/music/casiopeia.ogg", "/music/error-0xbfaf000.ogg", "/music/accretion-disc.ogg" ]
+    }
+  },
+
   "mainBlock" : "drydirt",
-  "subBlocks" : [ "junk", "harrowstone", "stonerubble" ],
-  "ores" : "ff_surfacecorruptionOres",
+  "subBlocks" : [ "junk", "harrowstone", "brittlejunk" ],
+  "ores" : "ff_wastelandOres",
 
   "surfacePlaceables" : {
-    "grassMod" : [ "ash" ],
-    "grassModDensity" : 0.4,
+    "grassMod" : [ "junk" ],
+    "grassModDensity" : 0.5,
       "items" : [
-      
+
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -48,7 +71,7 @@
           "distribution" : "/biomes/distributions.config:randomEncounter",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "fuencounters", "fubandits", "randomencounter", "junkmini", "fulabs", "fushops", "fuwastelanddungeons", "furandomencounter", "fuhumanencounter", "fuapexencounter" ] 
+          "microdungeons" : [ "fuencounters", "fubandits", "randomencounter", "junkmini", "fulabs", "fushops", "fuwastelanddungeons", "furandomencounter", "fuhumanencounter", "fuapexencounter" ]
         },
         {
           "mode" : "floor",
@@ -68,12 +91,111 @@
           "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffCommon",
+          "distribution" : "/biomes/distributions.config:ffAverage",
 
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ [0.35, "metalbarrel1"], [0.35, "metalbarrel2"],[0.35, "metalbarrel2b"], [0.35, "explosivebarrel"], [0.35, "populationsign" ],[0.55, "ruinslamppost" ], [0.35, "ruinsvehicle1" ], [0.35, "ruinsvehicle2" ],[0.35, "ruinsvehicle2a" ],[0.35, "ruinsvehicle2b" ],[0.35, "ruinsvehicle3" ],[0.35, "ruinsvehicle3a" ],[0.35, "ruinsvehicle3b" ],[0.35, "ruinsvehicle3c" ],[0.35, "ruinsvehicle4" ], [0.35, "ruinsvehicle5" ], [0.35, "mechruin" ], [0.35, "techbush1" ], [0.35, "techbush2" ], [0.35, "techbush4" ], [0.35, "techbush5" ], [0.35, "techbush6" ] ],
+              "pool" : [ [0.50, "metalbarrel1"], [0.35, "metalbarrel2"], [0.35, "metalbarrel2b"], [0.35, "explosivebarrel"] ],
+			  "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.15, "mechruin" ],
+              [0.35, "ruinsvehicle2a" ],
+              [0.35, "ruinsvehicle2b" ],
+              [0.15, "ruinsvehicle3a" ],
+              [0.15, "ruinsvehicle3b" ],
+              [0.15, "ruinsvehicle3c" ],
+              [0.35, "ruinsvehicle4" ],
+              [0.35, "ruinsvehicle5" ],
+              [0.35, "truck3" ],
+              [0.35, "truck4" ],
+              [0.35, "truck5" ]
+			  ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "rustbush1" ], [0.35, "rustbush2" ], [0.35, "rustbush3" ], [0.35, "rustbush4" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffAverage",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "wreckbed" ],
+              [0.35, "wreckboiler" ],
+              [0.35, "wreckchair" ],
+              [0.35, "wreckconsole1" ],
+              [0.35, "wreckconsole2" ],
+              [0.35, "wreckconsole3" ],
+              [0.35, "wreckcrate1" ],
+              [0.35, "wreckgenerator" ],
+              [0.35, "wrecklocker" ],
+              [0.35, "wrecksmalltable" ],
+              [0.35, "wrecktable" ],
+              [0.35, "wreckturbine2" ],
+              [0.35, "wreckturbines" ],
+              [0.35, "wreckvendingmachine" ],
+              [0.35, "dumpster" ],
+              [0.35, "scorchedcitybrokenbed" ],
+              [0.35, "scorchedcitybrokenchair" ],
+              [0.35, "scorchedcitybrokenchestdrawerlarge" ],
+              [0.35, "scorchedcitybrokenchestdrawersmall" ],
+              [0.35, "scorchedcitybrokencounter" ],
+              [0.35, "scorchedcitybrokenelectricbox1" ],
+              [0.35, "scorchedcitybrokenelectricbox2" ],
+              [0.35, "scorchedcitybrokenfridge" ],
+              [0.35, "scorchedcitybrokenregister" ],
+              [0.35, "scorchedcitybrokenroundsign1" ],
+              [0.35, "scorchedcitybrokentable" ],
+              [0.35, "scorchedcitybrokentank" ],
+              [0.35, "scorchedcitybrokentv" ],
+              [0.35, "scorchedcitycrate" ],
+              [0.35, "scorchedcitysmallcrate" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:moderateClumps",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "trashbag" ] ],
               "parameters" : { }
             }
           ]
@@ -82,23 +204,23 @@
              "mode" : "floor",
              "priority" : 1.0,
              "variants" : 1,
-             "distribution" : "/biomes/distributions.config:ffunCommon",
-   
+             "distribution" : "/biomes/distributions.config:ffAverage",
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
               [0.50, "techbush1" ],
               [0.50, "techbush2" ],
               [0.50, "techbush3" ],
               [0.50, "techbush4" ],
-              [0.50, "techbush5" ], 
+              [0.50, "techbush5" ],
               [0.50, "techbush6" ]
                  ],
                  "parameters" : { "startingStage" : 3 }
                }
              ]
-           },        
+           },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -107,18 +229,6 @@
 
           "type" : "grass",
           "grasses" : [ "weedy", "thinstem", "thickgrass", "savannahgrass", "pebbles", "rockstacks", "grass", "testflower", "testflower2", "testflower3", "testflower4", "testflower5", "testflower6", "testflower7" ]
-        },        
-         {
-           "mode" : "floor",
-           "priority" : 1.0,
-           "variants" : 1,
-           "distribution" : "/biomes/distributions.config:denseLarge",
- 
-           "type" : "tree",
-           "treeFoliageHueShiftMax" : 120,
-           "treeStemHueShiftMax" : 15,
-           "treeStemList" : [ "burnttreestem", "mushroomstalkbio", "fleshstem", "eyestem", "mushroomstalk", "gloomy", "bleak", "savannahbleak", "spiked" ],
-           "treeFoliageList" : [ "burntleaves", "burntmoss", "mushroomredtopbio", "mushroomyellowtopbio", "fleshfoliage", "eyefoliage", "mushroomredtop", "mushroomyellowtop", "spikeyfoliage", "bonky", "squarish" ]
         },
         {
           "mode" : "floor",
@@ -139,7 +249,7 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:rareClumpyLarge",
+          "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "bush",
           "bushes" : [
@@ -154,7 +264,7 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -168,7 +278,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -180,8 +290,17 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
           "treasureBoxSets" : [ "ffwastelandChest" ]
-        },        
+        },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -193,34 +312,25 @@
         },
         {
           "mode" : "floor",
-          "priority" : 3.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:rareClumpySmall",
-
-          "type" : "microdungeon",
-          "microdungeons" : [ "wastelandbuildings" ]
-        },
-        {
-          "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:rareClumpyLarge",
 
           "type" : "microdungeon",
           "microdungeons" : [ "rarebuildings" ]
-        }, 
+        },
       {
         "mode" : "floor",
         "priority" : 2.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:ffunCommon",
+        "distribution" : "/biomes/distributions.config:rareClumpyLarge",
 
         "type" : "tree",
         "treeFoliageHueShiftMax" : 180,
         "treeStemHueShiftMax" : 15,
         "treeStemList" : [ "rustypipes" ],
         "treeFoliageList" : [ "rustypipes" ]
-      },        
+      },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -234,70 +344,25 @@
     },
 
   "undergroundPlaceables" : {
+    "grassMod" : [ "junk" ],
+    "grassModDensity" : 0.3,
+
       "items" : [
-           {
-             "mode" : "ceiling",
-             "priority" : 1.0,
-             "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
-   
-             "type" : "object",
-             "objectSets" : [
-               {
-                 "pool" : [ 
-              [0.50, "ceilingspike1" ],
-              [0.50, "ceilingspike2" ],
-              [0.50, "ceilingspike3" ],
-              [0.50, "ceilingspike4" ]
-                 ],
-                 "parameters" : { "startingStage" : 3 }
-               }
-             ]
-           },
-           {
-             "mode" : "floor",
-             "priority" : 1.0,
-             "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
-   
-             "type" : "object",
-             "objectSets" : [
-               {
-                 "pool" : [ 
-              [0.50, "groundspike1" ],
-              [0.50, "groundspike2" ],
-              [0.50, "groundspike3" ],
-              [0.50, "groundspike4" ],
-              [0.50, "copperrock" ], 
-              [0.50, "copperrocksmall" ],
-              [0.50, "silverrock" ],
-              [0.50, "silverrocksmall" ],
-              [0.50, "goldrock" ],
-              [0.50, "goldrocksmall" ],
-              
-              
-              [0.50, "diamondrock" ],
-              [0.50, "diamondrocksmall" ]
-                 ],
-                 "parameters" : { "startingStage" : 3 }
-               }
-             ]
-           },
            {
              "mode" : "floor",
              "priority" : 1.0,
              "variants" : 1,
              "distribution" : "/biomes/distributions.config:ffunCommon",
-   
+
              "type" : "object",
              "objectSets" : [
                {
-                 "pool" : [ 
+                 "pool" : [
               [0.50, "techbush1" ],
               [0.50, "techbush2" ],
               [0.50, "techbush3" ],
               [0.50, "techbush4" ],
-              [0.50, "techbush5" ], 
+              [0.50, "techbush5" ],
               [0.50, "techbush6" ]
                  ],
                  "parameters" : { "startingStage" : 3 }
@@ -311,9 +376,17 @@
           "distribution" : "/biomes/distributions.config:undergroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
 
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "ffwastelandChest" ]
+        },
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -341,7 +414,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:undergroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -350,7 +423,7 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredPots",
+          "distribution" : "/biomes/distributions.config:potsRare",
 
           "type" : "object",
           "objectSets" : [
@@ -370,15 +443,141 @@
           "microdungeons" : [ "aridplatforming" ]
         },
         {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.50, "metalbarrel1"], [0.35, "metalbarrel2"], [0.35, "metalbarrel2b"], [0.35, "explosivebarrel"] ],
+			  "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "rustbush1" ], [0.35, "rustbush2" ], [0.35, "rustbush3" ], [0.35, "rustbush4" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "wreckbed" ],
+              [0.35, "wreckboiler" ],
+              [0.35, "wreckchair" ],
+              [0.35, "wreckconsole1" ],
+              [0.35, "wreckconsole2" ],
+              [0.35, "wreckconsole3" ],
+              [0.35, "wreckcrate1" ],
+              [0.35, "wreckgenerator" ],
+              [0.35, "wrecklocker" ],
+              [0.35, "wrecksmalltable" ],
+              [0.35, "wrecktable" ],
+              [0.35, "wreckturbine2" ],
+              [0.35, "wreckturbines" ],
+              [0.35, "wreckvendingmachine" ],
+              [0.35, "dumpster" ],
+              [0.35, "scorchedcitybrokenbed" ],
+              [0.35, "scorchedcitybrokenchair" ],
+              [0.35, "scorchedcitybrokenchestdrawerlarge" ],
+              [0.35, "scorchedcitybrokenchestdrawersmall" ],
+              [0.35, "scorchedcitybrokencounter" ],
+              [0.35, "scorchedcitybrokenelectricbox1" ],
+              [0.35, "scorchedcitybrokenelectricbox2" ],
+              [0.35, "scorchedcitybrokenfridge" ],
+              [0.35, "scorchedcitybrokenregister" ],
+              [0.35, "scorchedcitybrokenroundsign1" ],
+              [0.35, "scorchedcitybrokentable" ],
+              [0.35, "scorchedcitybrokentank" ],
+              [0.35, "scorchedcitybrokentv" ],
+              [0.35, "scorchedcitycrate" ],
+              [0.35, "scorchedcitysmallcrate" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "trashbag" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "grass",
+          "grasses" : [ "savannahgrass" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "rubble",
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "rubble",
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
+            }
+          ]
+        },
+        {
           "mode" : "ceiling",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:rareClumpyLarge",
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "tree",
           "treeFoliageHueShiftMax" : 180,
           "treeStemHueShiftMax" : 180,
-          "treeStemList" : [ "tarvine" ],
+          "treeStemList" : [ "tarvine", "rootvine", "rootvine2", "desertvine" ],
           "treeFoliageList" : [ "flowery", "starry", "dreamy" ]
         }
       ]

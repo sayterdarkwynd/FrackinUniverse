@@ -1,10 +1,23 @@
 {
   "itemName" : "radioactivehoneyjar",
   "rarity" : "Common",
-  "category" : "fuel",
-  "price" : 200,
+  "category" : "food",
+  "price" : 47,
   "inventoryIcon" : "radioactivehoneyjar.png",
-  "description" : "FUEL! DO NOT EAT!",
-  "shortdescription" : "Radioactive Honey Jar",
-  "fuelAmount" : 6
+  "description" : "Radioactive, but not dangerous.\n^cyan;+^white;30% ^pink;Radiation ^cyan;Resistance ^gray;(^white;5m^gray;)\n^blue;+^white;4 ^blue;Fuel^reset;",
+  "shortdescription" : "Mutagenic Honey Jar",
+  "fuelAmount" : 4,
+  //"learnBlueprintsOnPickup" : [ "vxspecialblend", "uraniumcookie" ],
+
+  "tooltipKind": "food",
+  "effects" : [ [
+    "furadioactiveresistance3",
+    {
+      "effect" : "fedhoney",
+      "duration" : 300
+    }
+  ] ],
+  "blockingEffects" : [
+    "fedhoney"
+  ]
  }

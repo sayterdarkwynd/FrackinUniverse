@@ -1,0 +1,231 @@
+{
+  "type" : "deathdroidpet",
+  "shortdescription" : "Turtle mkI",
+  "description" : "Aggressively defends its creator.",
+  "categories" : [ "serpentdroid" ],
+  "parts" : [ "body", "arm" ],
+
+  "animation" : "serpentdroid.animation",
+  "reversed" : false,
+
+  "dropPools" : [ ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua",
+	  "/stats/monstereffects/monsterstatus_persistenteffectsapplier.lua"
+    ],
+	"fu_monsterPersistentEffects":["regeneratingshield_hp-100-10-3","regeneratingshieldindicatordreamer"],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 30,
+      "targetOnDamage" : true,
+      "targetEntityTypes" : [ "player", "npc", "monster" ],
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 0.3,
+          "parameters" : {
+            "maximumRange" : 15,
+            "minimumRange" : 2,
+            "windupState" : "",
+            "windupTime" : 0.0,
+
+            "projectileType" : "blueplasmabullet",
+            "power" : 9,
+            "fireOffsets" : [[-1.0, -0.5], [1, -0.5]],
+            "projectileCount" : 1,
+            "projectileInterval" : 0.05,
+            "aimAtTarget" : true,
+            "rotateAim" : true,
+            "rotatedOffset" : [2.125, 0.0],
+            "fireState" : "fire",
+            "fireDelay" : 0.05,
+            "fireSound" : "fire",
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        }
+      ],
+
+      "invulnerableActions" : [],
+
+      "periodicActions" : [],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : false
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [3, 6]
+          }
+        }
+      ]
+    },
+
+    "aggressive" : true,
+    "damageTeam" : 1,
+
+    "metaBoundBox" : [-1.75, -1.75, 1.75, 1.0],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.75, -1.75], [1.75, -1.75], [1.75, 1.0], [-1.75, 1.0] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 6,
+      "runSpeed" : 6,
+      "jumpSpeed" : 0,
+      "flySpeed" : 15,
+      "airFriction" : 0.25,
+      "airForce" : 50.0,
+      "airJumpProfile" : {
+        "jumpControlForce" : 0,
+        "jumpInitialPercentage" : 0
+      }
+    },
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathPoof",
+
+    "touchDamage" : {
+      "poly" : [ [-1.75, -1.75], [1.75, -1.75], [1.75, 1.0], [-1.75, 1.0] ],
+      "damage" : 15,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "hammer",
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "robotic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 120
+        },
+        "maxShield" : {
+          "baseValue" : 0.0
+        },
+        "protection" : {
+          "baseValue" : 1.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "shieldRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "electricResistance" : {
+          "baseValue" : -0.3
+        },
+        "fireResistance" : {
+          "baseValue" : 0.2
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1
+        },
+        "iceResistance" : {
+          "baseValue" : 0.2
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.7
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.25
+        },
+        "cosmicResistance" : {
+          "baseValue" : 0.0
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 0.7
+        },
+        "shadowResistance" : {
+          "baseValue" : 0.5
+        },
+        "extremepressureImmunity" : {
+          "baseValue" : 1
+        },
+        "shadowImmunity" : {
+          "baseValue" : 1
+        },
+        "insanityImmunity" : {
+          "baseValue" : 1
+        },
+        "darknessImmunity" : {
+          "baseValue" : 1
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        },
+        "damageAbsorption" : {
+          "initialValue" : 0.0
+        }
+      }
+    },
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 1.0,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "deathdroidpet" }
+}
+}

@@ -1,0 +1,48 @@
+{
+  "objectName" : "swtjc_wp_sequencer2bitv",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A 2-bit sequencer. Outputs a signal based on which of the 4 states it's currently on.",
+  "shortdescription" : "2-Bit Sequencer",
+  "race" : "human",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "floranDescription" : "2-bit sssequencccer. Outputsss a sssignal basssed on which of the 4 ssstatesss it'sss currently on.",
+  "glitchDescription" : "Fascinated. A 2-bit sequencer. Outputs a signal based on which of the 4 states it's currently on.",
+
+  "inventoryIcon" : "swtjc_wp_sequencer2bitv.png:default.3",
+  "orientations" : [
+    {
+      "image" : "swtjc_wp_sequencer2bitv.png:default.3",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/sequencer/swtjc_wp_sequencer.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/wired/sequencer/swtjc_wp_sequencer.animation",
+
+  "animationParts" : {
+    "switch" : "swtjc_wp_sequencer2bitv.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "hasStateInputs" : false,
+  "stateCount" : 4,
+  "inputNodes" : [ [-1, -1], [0, -1] ],
+  "outputNodes" : [ [-1, 1], [0, 1], [-1, 0], [0, 0] ],
+  "incrementingNode" : 1,
+  "decrementingNode" : 0,
+
+  "hasLatch" : false,
+  "defaultSwitchState" : 0
+}

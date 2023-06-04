@@ -11,19 +11,37 @@
     "type" : "fuplasmaburst",
     "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
     "class" : "AltFireAttack",
-    
+
     "projectileType" : "plasmablast",
-    "projectileParameters" : { 
-      "speed" : 35,
-      "knockback" : 15    
+    "projectileParameters" : {
+      "speed" : 55,
+      "knockback" : 25,
+      "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "inheritDamageFactor" : 0,
+	      "type" : "plasmaboom"
+	    },
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 8,
+	      "backgroundRadius" : 4,
+	      "explosiveDamageAmount" : 4,
+	      "delaySteps" : 0
+	    },
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/weapons/plasmaexplosion.ogg" ]
+	    }
+      ]
     },
-    
-    "baseDamage" : 1,
-    "energyUsage" : 20,
+
+    "baseDamage" : 14,
+    "energyUsage" : 60,
 
     "fireTime" : 2.0,
     "projectileCount" : 1,
-    "inaccuracy" : 0.03,
+    "inaccuracy" : 0,
 
     "useParticleEmitter" : false,
 

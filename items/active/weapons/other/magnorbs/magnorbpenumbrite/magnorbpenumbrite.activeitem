@@ -1,0 +1,66 @@
+{
+	"itemName" : "magnorbpenumbrite",
+	"level" : 3,
+	"price" : 400,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "Frosty balls of danger decimate the enemy.",
+	"shortdescription" : "Penumbrite Magnorb",
+	"tooltipKind" : "magnorb",
+	"category" : "Magnorb",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","magnorb","silver", "upgradeableWeapon", "penumbrite"],
+
+	"inventoryIcon" : "iconpenumbrite.png",
+	"animation" : "magnorbpenumbrite.animation",
+	"animationParts" : {
+		"glove" : "glovepenumbrite.png",
+		"orb1" : "orbpenumbrite.png",
+		"orb2" : "orbpenumbrite.png",
+		"orb3" : "orbpenumbrite.png"
+	},
+	"animationCustom" : { },
+
+	"scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
+
+	"orbitRate" : 0.15,
+
+	"projectileType" : "magnorbpenumbrite",
+	"projectileParameters" : {
+		"power" : 2.6,
+		"knockback" : 10,
+
+		"returnOnHit" : true,
+		"ignoreTerrain" : false,
+		"controlForce" : 50,
+		"pickupDistance" : 2.5,
+		"snapDistance" : 2.0
+	},
+
+	"count" : 3,
+	"shieldKnockback" : 15,
+	"shieldEnergyCost" : 40,
+	"shieldHealth" : 60,
+	"shieldPower" : "Frost Resist",
+	"shieldPersistentGroup":"magnorbPenumbrite",
+	"shieldPersistentEffects":[{"stat":"iceResistance","amount":0.2}],
+	//"shieldEphemeralEffects":["iceburst"],//doesn't have any
+	"critChance" : 2,
+	"critBonus" : 2,
+
+	"stances" : {
+		"idle" : {
+			"armRotation" : 10,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		},
+		"shield" : {
+			"armRotation" : 0,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		}
+	},
+	"builder" : "/items/buildscripts/fubuildmagnorb.lua"
+}

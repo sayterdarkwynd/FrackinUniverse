@@ -1,0 +1,132 @@
+{
+	"animationParts": {},
+	"animationCustom": {
+		"particleEmitters": {
+			"altMuzzleFlash": {
+				"active": false,
+				"emissionRate": 8,
+				"transformationGroups": ["muzzle"],
+				"offsetRegion": [0, 0, 0, 0],
+				"particles": [{
+						"particle": "piercingspark"
+					},
+					{
+						"particle": "piercingspark"
+					},
+					{
+						"particle": "piercingspark"
+					},
+					{
+						"particle": "piercingspark"
+					},
+					{
+						"particle": "piercingspark"
+					},
+					{
+						"particle": "piercingspark"
+					}
+				]
+			}
+		},
+		"sounds": {
+			"altFire": ["/sfx/gun/shotgun1.ogg"]
+		}
+	},
+
+	"ability": {
+		"name": "Piercing Spray",
+		"type": "swtjc_ewg_piercingspray",
+		"scripts": ["/items/active/weapons/ranged/abilities/altfire.lua"],
+		"class": "AltFireAttack",
+
+		"projectileType": "piercingbullet",
+		"projectileParameters": {
+			"piercing": true,
+			"damageKind": "<elementalType>"
+		},
+		"elementalConfig": {
+			"physical": {
+				"projectileParameters": {
+					"damageKind": "default"
+				}
+			},
+			"fire": {
+				"projectileParameters": {
+					"statusEffects": ["burning"]
+				}
+			},
+			"hellfire": {
+				"projectileParameters": {
+					"statusEffects": ["burning"]
+				}
+			},
+			"electric": {
+				"projectileParameters": {
+					"statusEffects": ["electrified"]
+				}
+			},
+			"ice": {
+				"projectileParameters": {
+					"statusEffects": ["frostslow"]
+				}
+			},
+			"hoarfrost": {
+				"projectileParameters": {
+					"statusEffects": ["frostslow"]
+				}
+			},
+			"poison": {
+				"projectileParameters": {
+					"statusEffects": ["weakpoison"]
+				}
+			},
+			"bioweapon": {
+				"projectileParameters": {
+					"statusEffects": ["weakpoison"]
+				}
+			},
+			"radioactive": {
+				"projectileParameters": {
+					"statusEffects": ["radiationburn"]
+				}
+			},
+			"shadow": {
+				"projectileParameters": {
+					"statusEffects": ["shadowgasfx"]
+				}
+			},
+			"cosmic": {
+				"projectileParameters": {
+					"statusEffects": ["timeslip"]
+				}
+			},
+			"aether": {
+				"projectileParameters": {
+					"statusEffects": ["timeslip"]
+				}
+			}
+		},
+
+		"baseDps": 16,
+		"energyUsage": 90,
+		"fireTime": 0.04,
+		"inaccuracy": 0.15,
+		"fireType": "auto",
+		"projectileCount": 1,
+
+		"stances": {
+			"fire": {
+				"duration": 0.02,
+				"armRotation": 2,
+				"weaponRotation": 2,
+				"twoHanded": true
+			},
+			"cooldown": {
+				"duration": 0.02,
+				"armRotation": 2,
+				"weaponRotation": 2,
+				"twoHanded": true
+			}
+		}
+	}
+}

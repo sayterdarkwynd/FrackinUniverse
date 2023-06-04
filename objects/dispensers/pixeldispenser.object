@@ -1,0 +1,54 @@
+{
+  "objectName" : "pixeldispenser",
+  "colonyTags" : [],
+  "rarity" : "Common",
+  "printable" : false,
+
+  "category" : "other",
+  "price" : 1000,
+  "description" : "A pixel dispensing pod.",
+  "shortdescription" : "Pixel Pod",
+  "race" : "generic",
+
+  "apexDescription" : "This pod dispenses currency.",
+  "avianDescription" : "Free loot. Nice.",
+  "floranDescription" : "Machine ssspit loot at Floran.",
+  "glitchDescription" : "Wonder. A machine that gives treasures for free!",
+  "humanDescription" : "This is like a gashapon machine, but useful!",
+  "hylotlDescription" : "A pod that supplies basic materials.",
+
+  "inventoryIcon" : "pixeldispensericon.png",
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "pixeldispenser.png:default"}, { "image" : "pixeldispenser2.png:default" } ],
+      "flipImages" : true,
+      "imagePosition" : [-12, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "left",
+      "collision" : "platform"
+    }
+  ],
+
+  "scripts" : [ "/scripts/statusProjectileObject.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/dispensers/pixeldispenser.animation",
+  "animationParts" : {
+    "pod" : "pixeldispenser.png"
+  },
+  "animationPosition" : [-12, 0],
+
+  "inboundNodes" : [ ],
+  "outboundNodes" : [ ],
+
+  "smashOnBreak" : true,
+
+  "projectileOptions" : [
+    {
+      "projectileType" : "moneystatusprojectile",
+      "projectileParams" : { }
+    }
+  ]
+}

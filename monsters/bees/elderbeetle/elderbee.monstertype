@@ -1,0 +1,118 @@
+{
+  "type" : "elderbee",
+  "shortdescription" : "Elder Bee",
+  "description" : "Despite what the name suggests, Elder Bees don't live very long.",
+
+  "categories" : [ "elderbeetle" ],
+  "parts" : [ "body" ],
+
+  "animation" : "elderbeetle.animation",
+  "colors" : "/monsters/colors.config",
+
+  "dropPools" : [
+    {
+      "default" : "empty",
+      "bugnet" : "elderBee"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/bugs/bug.lua",
+      "/monsters/bees/bee.lua",
+      "/scripts/util.lua",
+      "/scripts/vec2.lua"
+    ],
+
+    "buzzing" : {
+      "riseSpeed" : 7,
+      "minGroundDistance" : 1,
+      "fallSpeed" : 7,
+      "maxGroundDistance" : 12,
+      "changeDirSpeed" : 9,
+      "wanderDistance" : 24,
+
+      "rotationSpeed" : 7,
+      "rotationChangeInterval" : 5,
+
+      "flySpeed" : 9
+    },
+
+    "metaBoundBox" : [-0.5, -0.5, 0.5, 0.5],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-0.5, -0.5], [0.5, -0.5], [0.5, 0.5], [-0.5, 0.5] ],
+
+      "mass" : 1,
+      "walkSpeed" : 10,
+      "runSpeed" : 10,
+      "jumpSpeed" : 5,
+      "flySpeed" : 9,
+      "airFriction" : 0,
+      "airForce" : 100.0,
+      "gravityEnabled" : false
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "",
+
+    "touchDamage" : {
+      "poly" : [ [-1.0, -1.125], [1.0, -1.125], [1.0, 1.0], [-1.0, 1.0] ],
+      "damage" : 2,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "insanity",
+      "statusEffects" : [ "fubeesting2" ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : false,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 400,
+
+      "stats" : {
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 3
+        },
+        "protection" : {
+          "baseValue" : 1.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0
+        },
+        "cosmicResistance" : {
+          "baseValue" : 1
+        },
+        "shadowResistance" : {
+          "baseValue" : 1
+        }
+      },
+
+      "resources" : {
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8]
+  }
+}

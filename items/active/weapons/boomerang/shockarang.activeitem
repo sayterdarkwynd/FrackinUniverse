@@ -6,10 +6,10 @@
   "category" : "boomerang",
   "description" : "Zap your foes with super fun electricity!",
   "shortdescription" : "Shock Boomerang",
-  "tooltipKind" : "base",
+  "tooltipKind" : "boomerang",
   "twoHanded" : false,
-  "itemTags" : ["weapon"],
-
+  "itemTags" : ["weapon","boomerang", "upgradeableWeapon","electric","energy"],
+  //"collectablesOnPickup" : { "fu_weaponbomerang" : "shockarang" },
   "inventoryIcon" : "shockarang.png",
   "animation" : "boomerang.animation",
   "animationParts" : {
@@ -20,9 +20,12 @@
   "fireOffset" : [1.25, 0.5],
   "fireAngleOffset" : 10,
 
+  "critChance" : 7,
+  "critBonus" : 5,
+
   "projectileType" : "shockarang",
   "projectileParameters" : {
-    "power" : 2.5,
+    "power" : 4,
     "knockback" : 20,
 
     "ignoreTerrain" : false,
@@ -70,5 +73,6 @@
       "allowRotate" : false,
       "allowFlip" : true
     }
-  }
+  },
+  "builder" : "/items/buildscripts/buildboomerang.lua"
 }

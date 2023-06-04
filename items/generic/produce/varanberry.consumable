@@ -1,19 +1,17 @@
 {
-  "itemName" : "varanberry",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "varanberry.png",
-  "description" : "Heals 5% of your health.",
-  "shortdescription" : "Varan Berries",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-      "heal_5"
-    ] ]
+	"itemName": "varanberry",
+	"inventoryIcon": "varanberry.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Heal 10 HP^reset;: 2s",
+	"shortdescription": "Varan Berries",
+	"effects": [
+		[{
+			"effect": "heal_tier0",
+			"duration": 2
+		}]
+	],
+	"blockingEffects": ["heal_tier0"]
 }

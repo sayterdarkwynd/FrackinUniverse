@@ -1,15 +1,17 @@
 {
   "itemName" : "batterypack_erithian",
+  "price" : 500,
   "inventoryIcon" : "batterypack_erithianicon.png",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "rarity" : "common",
-  "description" : "This lovely piece of gear increases your max energy and regeneration.",
+  "description" : "This lovely piece of gear grants: Energy x1.1, +10% E. Regen, -5% E. Block, protection from electrical storms and a slight ^#00aa00;glow^reset;.",
   "shortdescription" : "Erithian Energy Pack",
   "tooltipKind" : "baseaugment",
   "category" : "enviroProtectionPack",
   "acceptsAugmentType" : "back",
   "radioMessagesOnPickup" : [ "pickupepp" ],
-  
+  "maxStack" : 1,
+
   "maleFrames" : "back.png",
   "femaleFrames" : "back.png",
 
@@ -17,10 +19,13 @@
     "energyregenfu_erithian",
     {
       "stat" : "maxEnergy",
-      "amount" : 25
+      "effectiveMultiplier" : 1.10
     },
-    "glowgreen2"
+    "glowgreen2",
+    {
+      "stat" : "biomeelectricImmunity",
+      "amount" : 1.0
+    }
   ]
-  
-  
+
 }

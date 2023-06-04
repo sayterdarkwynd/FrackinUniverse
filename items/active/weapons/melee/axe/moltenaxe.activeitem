@@ -2,19 +2,20 @@
   "itemName" : "moltenaxe",
   "price" : 640,
   "maxStack" : 1,
-  "rarity" : "rare",
+  "rarity" : "uncommon",
   "description" : "Fire and brimstone",
   "shortdescription" : "Molten Axe",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "axe",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","axe"],
-"level" : 5,
+  "itemTags" : ["weapon","melee","axe","hellfire", "upgradeableWeapon"],
+  "level" : 4,
   "inventoryIcon" : "moltenaxe.png",
-
-  "animation" : "axe.animation",
+  //"collectablesOnPickup" : { "fu_weaponaxe" : "moltenaxe" },
+  "animation" : "axeglow.animation",
   "animationParts" : {
     "blade" : "moltenaxe.png",
+    "bladefullbright" : "moltenaxefullbright.png",
     "handle" : ""
   },
   "animationCustom" : {
@@ -34,7 +35,7 @@
 
   "primaryAbilityType" : "axecleave",
   "primaryAbility" : {
-    "fireTime" : 0.7,
+    "fireTime" : 0.55,
     "baseDps" : 11,
     "damageConfig" : {
       "damageSourceKind" : "fireaxe",
@@ -66,6 +67,7 @@
       }
     }
   },
-
+  "critChance" : 2,
+  "critBonus" : 6,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -3,13 +3,17 @@
   "price" : 160,
   "inventoryIcon" : "fuaegisaltminigun.png",
   "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "A storm of aegisalt shards rend armor with ease and reflect off walls.",
+  "rarity" : "rare",
+  "description" : "Exceptionally powerful.
+^yellow;Alt-Fire slows enemies^reset;
+^green;+Sustained Fire^reset;
+^red;-Slowed^reset;",
   "shortdescription" : "Imperius Minigun",
-  "level" : 4,
-  "tooltipKind" : "gun",
-  "weaponType" : "Vulcan",
-  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "category" : "Chaingun",
+  "level" : 5,
+  "tooltipKind" : "gun2",
+  "weaponType" : "assaultrifle",
+  "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -21,64 +25,79 @@
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
+      "fire" : [ "/sfx/weapons/marauder7.wav","/sfx/weapons/marauder9.wav" ]
     }
   },
 
   "baseOffset" : [0.5, -0.72],
   "muzzleOffset" : [1, 0.125],
 
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+  "scripts" : [
+    "/items/active/scripts/modifiablegun.lua",
+    "/items/active/scripts/windupinaccurateweapon.lua",
+    "/items/active/scripts/heavyweapon.lua"
+  ],
 
   "elementalType" : "electric",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.10,
+    "fireTime" : 0.25,
     "baseDps" : 5,
-    "energyUsage" : 35,
-    "inaccuracy" : 0.026,
+    "energyUsage" : 33,
+    "inaccuracy" : 0.016,
 
     "projectileCount" : 2,
     "fireType" : "auto",
 
     "projectileType" : "fuaegisaltminigunshot",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 50,
       "knockback" : 4
     },
-	  "stances" : {
-	    "idle" : {
-	      "armRotation" : 0,
-	      "weaponRotation" : 0,
-	      "twoHanded" : true,
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
 
-	      "allowRotate" : true,
-	      "allowFlip" : true
-	    },
-	    "fire" : {
-	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    },
-	    "cooldown" : {
-	      "duration" : 0.075,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.075,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    }
-	  }
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
   },
+  "critChance" : 1,
+  "critBonus" : 2,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300,
 
   "altAbilityType" : "spray",
+  "altAbility" : {
+    "name" : "Stun Shot",
+    "fireTime" : 0.25,
+    "projectileType" : "fuaegisaltminigunshot1a"
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

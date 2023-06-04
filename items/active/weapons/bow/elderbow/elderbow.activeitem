@@ -1,0 +1,98 @@
+{
+  "itemName" : "elderbow",
+  "level" : 7,
+  "price" : 500,
+  "inventoryIcon" : "elderbowicon.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "tooltipKind" : "bowelder2",
+  "weaponType" : "Bow",
+  "description" : "Ripe with malice.
+^cyan;Alt-Fire opens Rift to Far Realm.^reset;",
+  "shortdescription" : "Elder Bow",
+  "category" : "bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow","upgradeableWeapon", "elder","shadow"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "animation" : "/items/active/weapons/bow/bowglow.animation",
+  "animationParts" : {
+    "bow" : "elderbow.png",
+    "bowFullbright" : "elderbowfullbright.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+    "parts" : {
+     "bow" : {
+       "properties" : {
+          "offset" : [-0.1, 0]
+          }
+        },
+     "bowFullbright" : {
+       "properties" : {
+          "offset" : [-0.1, 0]
+          }
+        }
+      }
+    },
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "shadow",
+  //"collectablesOnPickup" : { "fu_weaponbow" : "elderbow" },
+
+  "primaryAbilityType" : "rngbows_enhancedbowshotelder",
+  "primaryAbility" : {
+    "drawTime" : 0.93,
+    "powerProjectileTime" : 0.4,
+    "dynamicDamageMultiplier" : 1.0,
+	"energyPerShot" : 40,
+	"holdEnergyUsage" : 4,
+	"airborneBonus" : 1.50,
+    "projectileType" : "elderarrow",
+    "powerProjectileType" : "chargedelderarrow",
+    "projectileParameters" : {
+      "power" : 6.8,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 8.65,
+      "piercing" : false
+    }
+  },
+
+  //"altAbilityType" : "elderreaim",
+  "altAbilityType" : "rngbows_enhancedbowshot",
+  "altAbility" : {
+    "staticDamageMultiplier" : 0.65,
+    "dynamicDamageMultiplier" : 0.5,
+    "drawTime" : 3,
+    "energyPerShot" : 70,
+    "holdEnergyUsage" : 25,
+    "name" : "Rift Arrow",
+    "projectileType" : "elderarrow",
+    "inaccuracy": 0.0,
+    "powerProjectileTime" : 0.4,
+    "powerProjectileType" : "floatydeathballelderbowcharged",
+    "projectileParameters" : {
+      "speed" : 120,
+      "piercing" : true
+    },
+    "powerProjectileParameters" : {
+      "speed" : 90,
+      "piercing" : true
+    }
+  },
+
+
+  "critChance" : 8,
+  "critBonus" : 25,
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
+}

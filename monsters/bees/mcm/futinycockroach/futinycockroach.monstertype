@@ -1,0 +1,113 @@
+{
+  "type" : "futinycockroach",
+  "shortdescription" : "Cockroach",
+  "description" : "A tiny insect that seeks out unwatched food and garbage. They fear light",
+
+  "categories" : [ "futinycockroach" ],
+  "parts" : [ "body" ],
+
+  "animation" : "futinycockroach.animation",
+
+  "dropPools" : [
+    {
+      "default" : "empty",
+      "bugnet" : "blackbeetle"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/bugs/bug.lua",
+      "/scripts/util.lua",
+      "/scripts/vec2.lua"
+    ],
+
+    "buzzing" : {
+      "riseSpeed" : 2,
+      "minGroundDistance" : 2,
+      "fallSpeed" : 3,
+      "maxGroundDistance" : 3,
+      "changeDirSpeed" : 1,
+      "wanderDistance" : 7,
+
+      "rotationSpeed" : 1,
+      "rotationChangeInterval" : 2,
+
+      "flySpeed" : 4
+    },
+
+    "metaBoundBox" : [-0.5, -0.5, 0.5, 0.5],
+    "scale" : 0.5,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-0.5, -0.5], [0.5, -0.5], [0.5, 0.5], [-0.5, 0.5] ],
+
+      "mass" : 1,
+      "walkSpeed" : 10,
+      "runSpeed" : 10,
+      "jumpSpeed" : 5,
+      "flySpeed" : 3,
+      "airFriction" : 0,
+      "airForce" : 100.0,
+      "gravityEnabled" : false
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "",
+
+    "damageTeamType" : "passive",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : false,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 1
+        },
+        "protection" : {
+          "baseValue" : 1.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "wetImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8]
+  }
+}

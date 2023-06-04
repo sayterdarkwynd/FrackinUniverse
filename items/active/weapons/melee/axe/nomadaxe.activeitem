@@ -5,13 +5,13 @@
   "rarity" : "uncommon",
   "description" : "The weapon of a desert nomad",
   "shortdescription" : "Nomad Axe",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "axe",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","axe"],
-"level" : 2,
+  "itemTags" : ["weapon","melee","axe", "upgradeableWeapon"],
+  "level" : 2,
   "inventoryIcon" : "nomadaxe.png",
-
+  //"collectablesOnPickup" : { "fu_weaponaxe" : "nomadaxe" },
   "animation" : "axe.animation",
   "animationParts" : {
     "blade" : "nomadaxe.png",
@@ -34,7 +34,7 @@
 
   "primaryAbilityType" : "axecleave",
   "primaryAbility" : {
-    "fireTime" : 0.7,
+    "fireTime" : 0.52,
     "baseDps" : 10,
     "damageConfig" : {
       "damageSourceKind" : "axe",
@@ -66,6 +66,7 @@
       }
     }
   },
-
+  "critChance" : 2,
+  "critBonus" : 7,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

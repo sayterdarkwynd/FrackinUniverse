@@ -1,0 +1,242 @@
+{
+  "type" : "glarp",
+  "shortdescription" : "Glarp",
+  "description" : "Releases different abnormalizing gasses when struck or frightened.",
+
+  "categories" : [ "glarp" ],
+  "parts" : [ "body" ],
+
+  "animation" : "glarp.animation",
+
+  "dropPools" : [
+    {
+    "default" : "extraMonsterPlant",
+    "bow" : "extraMonsterPlantHunting",
+    "firebow" : "extraMonsterPlantHunting",
+    "icebow" : "extraMonsterPlantHunting",
+    "poisonbow" : "extraMonsterPlantHunting",
+    "electricbow" : "extraMonsterPlantHunting",
+    "cosmicbow" : "extraMonsterPlantHunting",
+    "radioactivebow" : "extraMonsterPlantHunting",
+    "shadowbow" : "extraMonsterPlantHunting"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "damageTakenActions" : [
+      ],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 5,
+          "parameters" : {
+          "effect" : "regeneration5",
+          "duration" : 5
+          }
+        }
+      ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-hop",
+          "cooldown" : 0.1,
+          "parameters" : {
+            "verticalSpeed" : 34,
+            "horizontalSpeed" : 16,
+            "hopSequence" : 1,
+            "timeBetweenHops" : 0.75,
+            "windupTime" : 0.1,
+            "landTime" : 0.1,
+            "hopAwayFromWall" : true,
+            "wallVerticalSpeed" : 35
+          }
+        }
+
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "action-hop",
+          "cooldown" : 0.0,
+          "parameters" : {
+            "verticalSpeed" : 20,
+            "horizontalSpeed" : 10,
+            "hopSequence" : 1,
+            "timeBetweenHops" : 0.0,
+            "windupTime" : 0.1,
+            "landTime" : 0.1,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 35
+          }
+        }
+      ],
+
+      "periodicActions" : [
+
+      {
+          "name" : "action-hop",
+          "parameters" : {
+            "verticalSpeed" : 40,
+            "horizontalSpeed" : 7.5,
+            "hopSequence" : 3,
+            "timeBetweenHops" : 0.25,
+            "hopAwayFromWall" : true
+          }
+        }
+
+      ],
+
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "healingzone",
+            "projectileParameters" : {
+              "timeToLive" : 2.4
+            },
+            "power" : 3,
+            "aimDirection" : [0.3, -1],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 2]
+          }
+        }
+      ]
+
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-0.6875, -0.375], [-0.4375, -0.625], [0.4375, -0.625], [0.6875, -0.375], [0.6875, 0.25], [0.4375, 0.5], [-0.4375, 0.5], [-0.6875, 0.25] ],
+      "damage" : 8,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 15,
+      "statusEffects" : []
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-0.6875, -0.375], [-0.4375, -0.625], [0.4375, -0.625], [0.6875, -0.375], [0.6875, 0.25], [0.4375, 0.5], [-0.4375, 0.5], [-0.6875, 0.25] ],
+
+      "mass" : 0.75,
+      "walkSpeed" : 5,
+      "runSpeed" : 5,
+      "jumpSpeed" : 5
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+      "appliesWeatherStatusEffects" : false,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.15
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 64
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.1
+        },
+        "fireResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.2
+        },
+        "iceResistance" : {
+          "baseValue" : -0.2
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.6
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : {
+          "baseValue" : -0.4
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "glarp" }
+  }
+}

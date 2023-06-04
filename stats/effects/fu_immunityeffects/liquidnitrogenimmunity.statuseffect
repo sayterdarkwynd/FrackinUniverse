@@ -1,9 +1,13 @@
 {
-  "name" : "liquidnitrogenimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "liquidnitrogenimmunity.lua"
-  ]
+	"name": "liquidnitrogenimmunity",
+	"effectConfig": {
+		"stats": [{
+			"stat": "liquidnitrogenImmunity",
+			"amount": 1
+		}]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

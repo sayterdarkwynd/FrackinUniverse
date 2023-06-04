@@ -1,0 +1,194 @@
+{
+  "type" : "cleaningbot",
+"shortdescription" : "Cleaning Bot",
+  "description" : "For those too lazy to do the vacuum cleaning themselves.",
+
+  "categories" : [ "cleaningbot" ],
+  "parts" : [ "body" ],
+
+  "animation" : "cleaningbot.animation",
+  "reversed" : true,
+
+  "dropPools" : [
+    {
+      "default" : "smallRobotTreasure",
+      "bow" : "furobotHuntingnoChassis",
+      "firebow" : "furobotHuntingnoChassis",
+      "icebow" : "furobotHuntingnoChassis",
+      "poisonbow" : "furobotHuntingnoChassis",
+      "electricbow" : "furobotHuntingnoChassis",
+      "cosmicbow" : "furobotHuntingnoChassis",
+      "radioactivebow" : "furobotHuntingnoChassis",
+      "shadowbow" : "furobotHuntingnoChassis"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetOnDamage" : true,
+      "targetEntityTypes" : [ "player", "npc", "monster" ],
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 40,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-charge",
+          "parameters" : {
+            "maximumRange" : 5,
+            "maxXRange" : 3,
+            "windupTime" : 0.0,
+            "windupState" : "",
+
+            "chargeTime" : 1.0,
+            "chargeSpeed" : 4,
+            "chargeControlForce" : 300,
+            "chargeState" : "attack",
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.0,
+            "winddownState" : ""
+          }
+        }
+      ],
+
+      "periodicActions" : [],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : false,
+            "moveState" : "aggro",
+            "run" : true
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : false,
+            "run" : true
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 10],
+            "moveState" : "move"
+          }
+        }
+      ]
+    },
+
+    "aggressive" : false,
+
+    "damageTeam" : 1,
+
+    "metaBoundBox" : [-1.0, -0.65, 1.0, 0.65],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.0, -0.65], [1.0, -0.65], [1.0, 0.65], [-1.0, 0.65] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 2,
+      "runSpeed" : 3
+    },
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathPoof",
+
+    "touchDamage" : {
+      "poly" : [ [-1.0, -0.65], [1.0, -0.65], [1.0, 0.65], [-1.0, 0.65] ],
+      "damage" : 15,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "electric",
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "robotic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 32
+        },
+        "protection" : {
+          "baseValue" : 1.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "cleaningbot" }
+  }
+}

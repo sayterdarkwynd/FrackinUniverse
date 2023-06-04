@@ -1,0 +1,32 @@
+{
+  "itemName" : "peglacitier6knife",
+  "price" : 375,
+  "rarity" : "Legendary",
+  "level" : 6,
+   "inventoryIcon" : "peglacitier6knife.png",
+  "image" : "peglacitier6knife.png",
+  "shortdescription" : "Hobbler",
+  "description" : "A specially crafted orb that emits freezing bursts to slow targets and cover an area with pain.",
+
+  "ammoUsage" : 1,
+  "category" : "throwableItem",
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 1,
+
+  "projectileType" : "peglacitier6knife",
+  "projectileConfig" : {
+    "speed" : 25,
+    "power" : 18,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item.ogg" ]
+      }
+    ]
+  }
+}
+

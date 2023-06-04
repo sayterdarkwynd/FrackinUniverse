@@ -1,0 +1,124 @@
+{
+	"objectName": "fu_precursorduplicator",
+	"colonyTags": ["precursor", "ancient"],
+	"rarity": "Legendary",
+	"description": "Consumes fuel to duplicate certain items.\n^cyan;Requires ^orange;200J^cyan; per duplication.^reset;\n^blue;Upper Input^reset;: On/Off Switch.",
+	"shortdescription": "Duplicator",
+	"race": "precursor",
+	"printable": false,
+	"category": "crafting",
+
+	"health": 2,
+
+	"animation": "fu_precursorduplicator.animation",
+	"animationParts": {
+		"base": "fu_precursorduplicator.png"
+	},
+	"animationPosition": [-26, 0],
+
+	"inventoryIcon": "fu_precursorduplicatoricon.png",
+	"orientations": [{
+			"imageLayers": [{
+				"image": "fu_precursorduplicator.png:<color>.<frame>",
+				"fullbright": true
+			}, {
+				"image": "fu_precursorduplicatorlit.png:<color>.<frame>"
+			}],
+			"imagePosition": [-26, 0],
+			"frames": 81,
+			"direction": "left",
+			"flipImages": true,
+			"animationCycle": 3,
+			"spaceScan": 0.1,
+			"anchors": ["bottom"]
+		},
+		{
+			"imageLayers": [{
+				"image": "fu_precursorduplicator.png:<color>.<frame>",
+				"fullbright": true
+			}, {
+				"image": "fu_precursorduplicatorlit.png:<color>.<frame>"
+			}],
+			"imagePosition": [-26, 0],
+			"frames": 81,
+			"direction": "right",
+			"animationCycle": 3,
+			"spaceScan": 0.1,
+			"anchors": ["bottom"]
+		}
+	],
+
+	"scripts": ["/scripts/fupower.lua", "/objects/minibiome/precursor/fu_precursorduplicator/fu_precursorduplicator.lua"],
+	"scriptDelta": 10,
+
+	"inputNodes": [
+		[-1, 1],
+		[-1, 0]
+	],
+	"outputNodes": [
+		[-1,2]
+	],
+
+	"duplicator": {
+		"inputs": [
+			"biofuelcannister",
+			"biofuelcannisteradv",
+			"biofuelcannistermax",
+
+			"ff_fertilizer",
+			"ff_fertilizer2",
+			"ff_fertilizer3",
+			"fu_mulch",
+
+			"blobbushjelly",
+			"unstableparticles",
+			"glass",
+
+			"plutoniumrod",
+			"uraniumrod",
+			"neptuniumrod",
+			"thoriumrod",
+
+			"fuamberchunk",
+			"corruptionseed",
+			"morphiteore",
+			"penumbriteshard",
+			"solaricrystal",
+
+			"refinedaegisalt",
+			"refinedviolium",
+			"refinedferozium",
+			"solariumstar",
+			"triangliumpyramid",
+			"copperbar",
+			"silverbar",
+			"ironbar",
+			"titaniumbar",
+			"durasteelbar",
+			"goldbar",
+			"tungstenbar",
+			"prisilitestar",
+
+			"densiniumbar",
+			"quietusbar",
+			"effigiumbar",
+			"irradiumbar",
+			"isogenbar",
+			"moonstonebar",
+			"protocitebar",
+			"pyreitebar",
+			"xithricitecrystal",
+			"zerchesiumbar"
+		]
+	},
+
+	"objectType": "container",
+	"slotCount": 5,
+	"uiConfig": "/interface/objectcrafting/fu_precursorduplicator.config",
+	"subtitle": "",
+	"frameCooldown": 5,
+	"autoCloseCooldown": 3600,
+	"craftTime": 3,
+	"powertype": "input",
+	"isn_requiredPower": 200
+}

@@ -1,0 +1,42 @@
+{
+  "objectName" : "futoolbox2",
+  "colonyTags" : [ "fu", "science", "scienceoutpost", "storage" ],
+  "printable" : false,
+  "rarity" : "uncommon",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+
+  "category" : "storage",
+  "price" : 100,
+  "description" : "This should be perfect for tool storage.",
+  "shortdescription" : "^#e43774;Toolbox^reset;",
+  "race" : "generic",
+
+  "inventoryIcon" : "toolbox2icon.png",
+  "orientations" : [
+		{
+			"image" : "toolbox2.png:<color>.<frame>",
+			"imagePosition" : [0, 0],
+			"direction" : "left",
+			"flipImages" : true,
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ],
+			"collision" : "platform"
+		},
+		{
+			"image" : "toolbox2.png:<color>.<frame>",
+			"imagePosition" : [0, 0],
+			"direction" : "right",
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ],
+			"collision" : "platform"
+		}
+  ],
+
+  "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
+  "slotCount" : 64,
+  "uiConfig" : "/interface/chests/chest64.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600
+}

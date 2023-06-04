@@ -19,12 +19,12 @@ end
 
 function recoverSpecial.enteringState(stateData)
   setAggressive(true, false)
-  
+
   animator.setAnimationState("movement", "idle")
   animator.setAnimationState("attack", "idle")
   monster.setActiveSkillName("recoverSpecial")
 
-  entity.setEffectActive("recover", true) 
+  entity.setEffectActive("recover", true)
 end
 
 function recoverSpecial.update(dt, stateData)

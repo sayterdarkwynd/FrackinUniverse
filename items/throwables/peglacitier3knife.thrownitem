@@ -1,0 +1,32 @@
+{
+  "itemName" : "peglacitier3knife",
+  "price" : 200,
+  "rarity" : "Uncommon",
+  "level" : 3,
+    "inventoryIcon" : "peglacitier3knife.png",
+  "image" : "peglacitier3knife.png",
+  "shortdescription" : "Ricoshave",
+  "description" : "The gyroscopically stable blade can be banked off walls.",
+
+  "ammoUsage" : 1,
+  "category" : "throwableItem",
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 0.4,
+
+  "projectileType" : "peglacitier3knife",
+  "projectileConfig" : {
+    "speed" : 45,
+    "power" : 30,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item.ogg" ]
+      }
+    ]
+  }
+}
+

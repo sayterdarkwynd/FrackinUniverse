@@ -1,0 +1,76 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "pulse" : {
+        "default" : "stop",
+        "states" : {
+          "stop" : {
+            "frames" : 1
+          },
+          "pulse1" : {
+            "frames" : 6,
+            "cycle" : 0.9,
+            "mode" : "transition",
+            "transition" : "pulse2"
+          },
+          "pulse2" : {
+            "frames" : 6,
+            "cycle" : 0.9,
+            "mode" : "transition",
+            "transition" : "pulse3"
+          },
+          "pulse3" : {
+            "frames" : 6,
+            "cycle" : 0.9,
+            "mode" : "transition",
+            "transition" : "pulse4"
+          },
+          "pulse4" : {
+            "frames" : 6,
+            "cycle" : 0.9,
+            "mode" : "transition",
+            "transition" : "stop"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "orb" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "pulse" : {
+            "stop" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.1"
+              }
+            },
+            "pulse1" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.<frame>"
+              }
+            },
+            "pulse2" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.<frame>"
+              }
+            },
+            "pulse3" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.<frame>"
+              }
+            },
+            "pulse4" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

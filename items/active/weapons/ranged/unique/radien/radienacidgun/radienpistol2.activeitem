@@ -1,0 +1,272 @@
+{
+  "itemName" : "radienpistol2",
+  "price" : 80,
+  "inventoryIcon" : "radienpistol2icon.png",
+    "maxStack" : 1,
+    "rarity" : "uncommon",
+  "shortdescription" : "X'ian Acid Gun",
+  "description" : "A strange X'i-formed weapon.
+^cyan;Eats Tiles^reset;
+^yellow;Poison Rad Gas^reset;",
+  "level" : 2,
+  "category" : "bioweapon",
+  "itemTags" : ["weapon","ranged","pistol","radien","bioweapon","upgradeableWeapon"],
+  "tooltipKind" : "gun2overheat",
+  "twoHanded" : false,
+  "piercing" : true,
+  "weaponType" : "Bio Pistol",
+  "handGrip" : "wrap",
+
+  "animation" : "/items/active/weapons/ranged/unique/radien/fugunoverheating.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "radienpistol2.png",
+    "middlefullbright" : "radienpistol2fullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
+  },
+
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.7, 0.2]
+		  }
+		}
+      }
+    },
+    "sounds" : { "fire" : [ "/sfx/weapons/radienpistol.ogg" ] },
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [98, 98, 42],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    }}
+  },
+
+  "baseOffset" : [0.7, 0.2],
+  "muzzleOffset" : [1.1, 0.4],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
+    "class" : "FUOverHeating",
+    "fireTime" : 1.45,
+    "baseDps" : 4,
+    "energyUsage" : 30,
+    "inaccuracy" : 0.0,
+    "fireType" : "auto",
+
+	//Overheating Weapon Values (based heavily on elithian races version)
+	"heatGain" : 5,					//Heat generated per shot
+	"coolingTime" : 1.0,				//Time before passive cooling kicks in
+	"heatLossLevel" : 3,				//Heat lost per second while not overheated
+	"heatLossRateMax" : 3,				//Heat lost per second while overheated
+	"lowLevel" : 10,				//Value required to reach Low heat
+	"medLevel" : 15,				//Value required to reach Medium heat
+	"highLevel" : 20,				//Value required to reach High heat
+	"overheatLevel" : 25,				//Overheat at this value
+
+    "projectileCount" : 1,
+    "projectileType" : "radiationguardianpelletgrenade",
+    "projectileParameters" : {
+      "timeToLive" : 8,
+      "speed" : 30,
+      "damageKind" : "radioactive",
+      "knockback": 6,
+      "statusEffects" : [],
+      "actionOnCollide" : [
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
+	    },
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 2,
+	      "backgroundRadius" : 2,
+	      "explosiveDamageAmount" : 2,
+	      "harvestLevel" : 99,
+	      "delaySteps" : 2
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "radiengas",
+	      "inheritDamageFactor" :0.001,
+	      "fuzzAngle" : 360,
+	      "projectileCount" : 1,
+	      "projectileParameters" : { "speed" : 5}
+	   }
+      ],
+      "periodicActions" : [
+	    {
+	      "time" : 0.14,
+	      "loop" : true,
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
+	    },
+	    {
+	      "time" : 0.10,
+	      "loop" : true,
+	      "action" : "explosion",
+	      "foregroundRadius" : 2,
+	      "backgroundRadius" : 2,
+	      "explosiveDamageAmount" : 1,
+	      "harvestLevel" : 99,
+	      "delaySteps" : 2
+	    },
+	    {
+	      "time" : 0.5,
+	      "loop" : true,
+	      "action" : "projectile",
+	      "type" : "radiengas",
+	      "inheritDamageFactor" :0.001,
+	      "fuzzAngle" : 360,
+	      "projectileCount" : 1,
+	      "projectileParameters" : { "speed" : 5}
+	   }
+      ],
+      "actionOnReap" : [
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
+	    },
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 2,
+	      "backgroundRadius" : 2,
+	      "explosiveDamageAmount" : 2,
+	      "harvestLevel" : 99,
+	      "delaySteps" : 2
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "radiengas",
+	      "inheritDamageFactor" :0.001,
+	      "fuzzAngle" : 360,
+	      "projectileCount" : 1,
+	      "projectileParameters" : { "speed" : 5,
+		      "periodicActions" : [
+			    {
+			      "time" : 0.14,
+			      "loop" : true,
+			      "action" : "sound",
+			      "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
+			    },
+			    {
+			      "time" : 0.10,
+			      "loop" : true,
+			      "action" : "explosion",
+			      "foregroundRadius" : 2,
+			      "backgroundRadius" : 2,
+			      "explosiveDamageAmount" : 1,
+			      "harvestLevel" : 99,
+			      "delaySteps" : 2
+			    },
+			    {
+			      "time" : 0.5,
+			      "loop" : true,
+			      "action" : "projectile",
+			      "type" : "radiengas",
+			      "inheritDamageFactor" :0.001,
+			      "fuzzAngle" : 360,
+			      "projectileCount" : 1,
+			      "projectileParameters" : { "speed" : 5}
+			   }
+		      ],
+		      "actionOnReap" : [
+			    {
+			      "action" : "sound",
+			      "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
+			    },
+			    {
+			      "action" : "explosion",
+			      "foregroundRadius" : 2,
+			      "backgroundRadius" : 2,
+			      "explosiveDamageAmount" : 2,
+			      "harvestLevel" : 99,
+			      "delaySteps" : 2
+			    },
+			    {
+			      "action" : "projectile",
+			      "type" : "radiengas",
+			      "inheritDamageFactor" :0.001,
+			      "fuzzAngle" : 360,
+			      "projectileCount" : 1,
+			      "projectileParameters" : { "speed" : 5}
+			   }
+		      ]
+	      }
+	   }
+      ]
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "overheat" : {
+	"armRotation" : -22,
+	"weaponRotation" : 56,
+	"twoHanded" : false,
+
+	"allowRotate" : false,
+	"allowFlip" : true
+      }
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 3,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters" : {
+  "shortdescription" : "^cyan;X'ian Acid Ejector^reset;",
+  "description" : "A strange X'i-formed weapon.
+^cyan;Eats Tiles, ^orange;+2 Projectiles^reset;^reset;
+^yellow;Poison Rad Gas^reset;",
+	  "primaryAbility" : {
+		"projectileCount" : 2,
+		"inaccuracy" : 0.05
+	  }
+  },
+  "upgradeParameters2" : {
+  "shortdescription" : "^orange;X'ian Acid Blaster^reset;",
+  "description" : "A strange X'i-formed weapon.
+^cyan;Eats Tiles, ^orange;+2 Projectiles^reset;^reset;
+^yellow;Poison Rad Gas^reset;",
+	  "primaryAbility" : {
+		"projectileCount" : 3,
+		"inaccuracy" : 0.07
+	  }
+  }
+}

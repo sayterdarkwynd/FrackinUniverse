@@ -2,14 +2,14 @@
   "itemName" : "funeochakram",
   "price" : 3000,
   "maxStack" : 1,
-  "rarity" : "Legendary",
+  "rarity" : "uncommon",
   "category" : "chakram",
   "description" : "Crackling with destructive energy.",
   "shortdescription" : "Proto Chakram",
-  "tooltipKind" : "base",
+  "tooltipKind" : "chakram",
   "twoHanded" : false,
-  "itemTags" : ["weapon"],
-
+  "itemTags" : ["weapon","chakram", "upgradeableWeapon"],
+  //"collectablesOnPickup" : { "fu_weaponchakram" : "funeochakram" },
   "inventoryIcon" : "funeochakram.png",
   "animation" : "chakram.animation",
   "animationParts" : {
@@ -23,19 +23,22 @@
   "scripts" : ["/items/active/weapons/boomerang/boomerang.lua"],
   "fireOffset" : [1.25, 0.5],
 
+  "critChance" : 6,
+  "critBonus" : 5,
+
   "projectileType" : "neochakram",
   "projectileParameters" : {
     "knockback" : 2,
-    "power" : 2,
+    "power" : 6,
     "damageRepeatTimeout" : 0.2,
 
     "returnOnHit" : false,
     "pickupDistance" : 1.0,
 
-    "hoverMaxDistance" : 15,
+    "hoverMaxDistance" : 20,
     "hoverTime" : 0.8
   },
-  "level" : 5,
+  "level" : 3,
 
   "stances" : {
     "idle" : {
@@ -75,5 +78,6 @@
       "allowRotate" : false,
       "allowFlip" : true
     }
-  }
+  },
+  "builder" : "/items/buildscripts/fubuildchakram.lua"
 }

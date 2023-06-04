@@ -1,0 +1,77 @@
+{
+  "objectName" : "sprinklerroofweak",
+  "colonyTags" : [ "farming" ],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A half-broken, crappy sprinkler.",
+  "shortdescription" : "Crappy Sprinkler (roof)",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "inventoryIcon" : "sprinklerrooficon.png",
+  "orientations" : [
+    {
+      "image" : "sprinklerroof.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "animationPosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "sprinklerroof.png",
+        "fg" : "sprinklerroof.png"
+      },
+
+      "projectileDirection" : [0, -1],
+      "projectilePosition" : [0, 0.7],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "image" : "sprinklerroof.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "animationPosition" : [0, 0],
+      "animationParts" : {
+        "bg" : "sprinklerroof.png",
+        "fg" : "sprinklerroof.png"
+      },
+
+      "projectileDirection" : [0, -1],
+      "projectilePosition" : [1, 0.7],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/generic/sprinklerroof/projectiletrap.lua" ],
+  "scriptDelta" : 2,
+
+  "animation" : "/objects/wired/projectiletrap/projectiletrap.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "shoot" : [ ],
+      "on" : [ ],
+      "off" : [ ]
+    }
+  },
+
+  "inputNodes" : [ [0, 0] ],
+
+  "inactiveLightColor" : [0, 0, 0], // light color to emit when the object is 'off'
+  "activeLightColor" : [0, 0, 0], // light color to emit when the object is 'on'
+
+  "fireTime" : 20.0, // rate of fire
+  "fireTimeVariance" : 1.0, // variation in rate of fire
+  "inaccuracy" : 0.5,
+  "projectile" : "watersprinkledroplet", // name of projectile (required)
+  "projectileConfig" : { // extra configuration overrides for projectile
+    "damageTeam" : { "type" : "indiscriminate" },
+    "power" : 0,
+    "speed" : 25
+  }
+}

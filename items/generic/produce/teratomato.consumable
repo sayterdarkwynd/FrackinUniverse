@@ -1,23 +1,18 @@
 {
-  "itemName" : "teratomato",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "teratomatoicon.png",
-  "description" : "Induces 100% berserk rage.",
-  "shortdescription" : "Teratomato",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 8,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-       {
-        "effect" : "rage100",
-        "duration" : 60
-        }
+	"itemName": "teratomato",
+	"inventoryIcon": "teratomatoicon.png",
+	"category": "food",
+	"rarity": "Rare",
+	"price": 5,
 
-    ] ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+30% Physical & Knockback Res.^reset;: 2m",
+	"shortdescription": "Teratomato",
+
+	"effects": [
+		[{
+			"effect": "physicalblock3",
+			"duration": 120
+		}]
+	]
 }

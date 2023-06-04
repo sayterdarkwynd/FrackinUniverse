@@ -1,21 +1,24 @@
 {
-  "itemName" : "spirits",
-  "price" : 100,
-  "rarity" : "Common",
-  "category" : "drink",
-  "inventoryIcon" : "spirits.png",
-  "description" : "A bottle of fruit-infused rectified spirits!",
-  "shortdescription" : "Rectified Spirits",
-  "handPosition" : [0, -2],
-  "effects" : [ [
-		{
-        "effect" : "slow",
-        "duration" : 10
-		},
-		{
-		"effect" : "booze",
-		"amount" : 3,
-		"duration" : 10
-        }
-    ] ]
+  "itemName": "spirits",
+  "price": 750,
+  "rarity": "Common",
+  "category": "drink",
+  "inventoryIcon": "spirits.png",
+  "description": "A bottle of fruit-infused rectified spirits!\n^white;35% ^red;Slow ^gray;, ^red;Drunk ^gray;(^white;10s^gray;)^reset;",
+  "shortdescription": "Rectified Spirits",
+  "tooltipKind": "food",
+  "handPosition": [0, -2],
+  "effects": [
+    [
+      {
+        "effect": "slow",
+        "duration": 10
+      },
+      {
+        "effect": "booze",
+        "duration": 10
+      }
+    ]
+  ],
+  "emitters" : [ "drinking" ]
 }

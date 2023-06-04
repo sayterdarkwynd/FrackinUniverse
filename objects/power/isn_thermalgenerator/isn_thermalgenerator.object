@@ -1,21 +1,24 @@
 {
   "objectName" : "isn_thermalgenerator",
-  "rarity" : "Common",
-    "colonyTags" : [ "science" ],
+  "rarity" : "common",
+  "colonyTags" : [ "science" ],
   "category" : "wire",
   "objectType" : "container",
-  "price" : 2500,
-  "description" : "A fuel-burning generator. It can generate up to 10u of power.",
-  "shortdescription" : "^cyan;Combustion Generator^white;",
+  "price" : 3500,
+  "description" : "A versatile fuel-burning generator. Generates up to ^orange;12W^reset;, fuel type determines consumption rate. ^orange;Heats up, heat determines output.^reset; ^blue;Left Input^reset;: On/Off Switch",
+  "shortdescription" : "^cyan;Combustion Generator^reset;",
   "race" : "generic",
   "printable" : false,
-  "learnBlueprintsOnPickup" : [  "isn_radiostation", "isn_fissionreactornew", "isn_atmoscondenser" ],
+  "tooltipKind" : "base",
+//  "learnBlueprintsOnPickup" : [  "isn_fissionreactornew", "isn_atmoscondenser" ],
+
   "apexDescription" : "Low-class Apex housing is usually near generators like these. The constant noise prevents you from getting any good sleep.",
   "avianDescription" : "I'm not a fan of heavy industry.",
-  "floranDescription" : "Floran not like hot noisssy machine.",
+  "floranDescription" : "Floran not like hot noisssy machine. Makesss noissy soundss all the time.",
   "glitchDescription" : "Observation. It is designed with replaceable parts to minimize repair costs.",
   "humanDescription" : "This'll generate a lot of power, but it'll eat up fuel.",
   "hylotlDescription" : "Fossil fuel generation. Crass and primitive. It is, however, effective.",
+  "feneroxDescription" : "Loud machine is scare. Not like. Why clank and BRRRR? Just make power, no sound!",
 
   "inventoryIcon" : "isn_thermalgeneratoricon.png",
   "orientations" : [
@@ -35,31 +38,53 @@
   },
   "animationPosition" : [0, 0],
   "soundEffect" : "/objects/power/isn_thermalgenerator/isn_thermalgenerator.wav",
-  
+
   "slotCount" : 1,
   "uiConfig" : "/objects/power/isn_thermalgenerator/isn_thermalgenerator.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
-  
-  "scripts" : [ "/objects/power/isn_thermalgenerator/isn_thermalgenerator.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 70,
-  
-  "inputNodes" : [ [2, 2] ],
+
+  "scripts" : [ "/scripts/fupower.lua","/scripts/fugenerator.lua"],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [2, 2],[0, 2] ],
   "outputNodes" : [ [2, 1] ],
-  
-  "isn_powerSupplier" : true,
+
+  "powertype" : "output",
   "acceptablefuel" : {
-	  "paper" : 2,
-	  "logblock" : 4,
-	  "fullwood2" : 4,
-	  "coalore" : 6,
-	  "biofuelcannister" : 8,
-	  "liquidoil" : 8,
-	  "liquidfuel" : 10,
-	  "biofuelcannisteradv" : 12,
-	  "supermatter" : 14,
-	  "biofuelcannistermax" : 16
-  }
+    //solids
+    "paper" : 1,
+    "logblock" : 5,
+    "fullwood2" : 2,
+    "coalore" : 8,
+    "solidfuel" : 12,
+    "supermatter" : 25,
+    "goldenwood" : 10,
+    "energywood" : 25,
+    "crunchychick" : 30,
+    "alienweirdwood" : 20,
+    "astralwood" : 30,
+    "redwoodbark" : 10,
+    "penumbralbark" : 15,
+    //liquids
+    "methanol" : 9,
+    "fu_hydrogen" : 9,
+    "liquidoil" : 10,
+    "liquidfuel" : 10,
+    "unrefinedliquidmechfuel" : 13,
+    "liquidmechfuel" : 15,
+    "biofuelcannister" : 10,
+    "biofuelcannisteradv" : 15,
+    "biofuelcannistermax" : 20,
+    "schrodingerscat" : 90
+  },
+
+  "heat" : [
+    {"minheat" : 90,"animator" : {"screen" : "fast"},"sound" : true,"power" : 12,"light" : [166,166,166]},
+    {"minheat" : 70,"animator" : {"screen" : "med","fans" : "fast"},"sound" : true,"power" : 9,"light" : [100,100,100]},
+    {"minheat" : 50,"animator" : {"screen" : "med","fans" : "fast"},"sound" : true,"power" : 7,"light" : [100,100,100]},
+    {"minheat" : 30,"animator" : {"screen" : "slow","fans" : "slow"},"sound" : false,"power" : 5,"light" : [50,50,50]},
+    {"minheat" : 10,"animator" : {"screen" : "slow","fans" : "slow"},"sound" : false,"power" : 3,"light" : [50,50,50]},
+    {"minheat" : 0,"animator" : {"screen" : "off","fans" : "off"},"sound" : false,"power" : 0,"light" : [0,0,0]}
+  ]
 }

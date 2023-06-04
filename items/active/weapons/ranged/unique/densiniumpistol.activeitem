@@ -1,0 +1,112 @@
+{
+  "itemName" : "densiniumpistol",
+  "price" : 720,
+  "inventoryIcon" : "densiniumpistol.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Eradicate foes with blasts of energy.
+^cyan;Counts as 'energy' for set bonuses^reset;",
+  "shortdescription" : "Densinium Pistol",
+  "category" : "pistol",
+  "level" : 6,
+  "tooltipKind" : "gun2",
+
+  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon", "energy", "densinium"],
+  "twoHanded" : false,
+  "weaponType" : "Disruptor",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "densiniumpistol.png",
+    "middlefullbright" : "densiniumpistolfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.8, 0.26]
+		  }
+		}
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
+    },
+    "lights" : { "muzzleFlash" : {"color" : [92, 41, 123] } },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "frozenflames", "offset" : [0.0, 0.0] },
+          { "particle" : "frozenfiretrail", "offset" : [0.0, 0.0] },
+          { "particle" : "teslaboltpurple", "offset" : [0.0, 0.0] }
+        ]
+      }
+    }
+  },
+
+  "baseOffset" : [0.8, 0.26],
+  "muzzleOffset" : [1.145, 0.0],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.2,
+    "baseDps" : 7.2,
+    "energyUsage" : 20,
+    "inaccuracy" : 0.01,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "densiniumrifleshot",
+    "projectileParameters" : {
+      "speed" : 70,
+      "knockback" : 5,
+      "damageSourceKind" : "electric"
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : false,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 3,
+  "critBonus" : 6,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

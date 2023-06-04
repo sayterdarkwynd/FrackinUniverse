@@ -1,37 +1,518 @@
 [
+  {
+    "op": "replace",
+    "path": "/bulbopHunting/0/1/pool/0/weight",
+    "value": 0.5
+  },
+  {
+    "op": "add",
+    "path": "/bulbopHunting/0/1/pool/-",
+    "value": {
+      "weight": 0.498,
+      "item": "onion"
+    }
+  },
 {"op":"add",
-	"path":"/hunting",
+  "path":"/illumitopTreasure",
+  "value":[[0, {
+        "pool":[
+          {"weight" : 0.30, "item" : "alienmeat"},
+          {"weight" : 0.70, "item" : [ "glowfibre", 1] }
+          ]
+        }
+  ]]
+},
+{"op":"add",
+	"path":"/horkulbeastTreasure",
 	"value":[[0, {
-        "pool":[ {"weight":0.35, "item":"bone"},{"weight":0.15, "item":"monsterplating"},{"weight":0.5, "item":"leather"},{"weight":0.75, "item":"alienmeat"} ]
+        "pool":[
+          {"weight" : 0.55, "item" : "alienmeat"},
+          {"weight" : 0.20, "item" : [ "plantfibre", 10] }
+          ]
         }
 	]]
 },
 {"op":"add",
-	"path":"/huntingquadruped",
+	"path":"/horkulbeasthuntTreasure",
 	"value":[[0, {
-	"pool":[ {"weight":0.35, "item":"bone"},{"weight":0.15, "item":"monsterplating"},{"weight":0.5, "item":"leather"},{"weight":0.75, "item":"alienmeat"} ]
+        "pool":[
+          {"weight" : 0.55, "item" : "horkulsausage"},
+          {"weight" : 0.20, "item" : [ "biospore", 4] },
+          {"weight" : 0.15, "item" : [ "fuflesh", 1] }
+          ]
+        }
+	]]
+},
+{"op":"add",
+	"path":"/jellyfishTreasure",
+	"value":[[0, {
+        "pool":[
+          {"weight" : 0.20, "item" : "cellmateria"},
+          {"weight" : 0.10, "item" : "cellmatter"},
+          {"weight" : 0.59, "item" : "biosample"},
+          {"weight" : 0.04, "item" : "fugeneticmaterial"},
+          {"weight" : 0.01, "item" : "psionicenergy"}
+          ]
+        }
+	]]
+},
+{"op":"add",
+	"path":"/leadlitTreasure",
+	"value":[[0, {
+        "fill":[
+          {"weight":1, "item":[ "lead", 1] }
+          ]
+        }
+	]]
+},
+{"op":"add",
+	"path":"/leadlitHunting",
+	"value":[[0, {
+        "fill":[
+          {"weight":1, "item":[ "lead", 1] }
+          ]
+        }
+	]]
+},
+{"op":"add",
+	"path":"/erchibuddrop",
+	"value":[[0, {
+        "fill":[
+            {"weight":0.2, "item":[ "supermatter", 10] },
+	          {"weight":0.3, "item":[ "liquidfuel", 10] },
+	          {"weight":0.5, "item":[ "solidfuel", 10] }
+          ]
+        }
+	]]
+},
+{"op":"add",
+	"path":"/huntingDarkMetroid",
+	"value":[[0, {
+        "pool":[
+          {"weight":0.3, "pool":"fuEssence"},
+          {"weight":1, "item":[ "corruptionore", 10]},
+          {"weight":1, "item":[ "blobbushjelly", 10]},
+          {"weight" : 0.5, "item" : "wrappedbody"},
+          {"weight" : 0.5, "item" : "wrappedbodyputrid"},
+          {"weight" : 0.5, "item" : "wrappedbodyalien"}
+          ]
+        }
+	]]
+},
+
+{"op":"add",
+	"path":"/huntingmechanicalLarge",
+	"value":[[0, {
+        "pool":[
+          {"weight":0.3, "pool":"salvageComponent"},
+          {"weight":0.2, "item":"laserdiode"},
+          {"weight":0.3, "item":"liquidoil"},
+          {"weight":0.2, "item":"ff_spareparts"},
+          {"weight" : 0.2, "item" : "stickofram"},
+          {"weight" : 0.2, "item" : "ff_spareparts"},
+          {"weight" : 0.2, "item" : "laserdiode"},
+          {"weight" : 0.2, "item" : "fuprocessor"},
+          {"weight" : 0.05, "item" : "battery"},
+          {"weight":0.01, "item":"essence"}
+          ]
+        }
+	]]
+},
+
+{"op":"add",
+	"path":"/huntingmechanical",
+	"value":[[0, {
+        "pool":[
+          {"weight":0.1, "pool":"salvageComponent"},
+          {"weight":0.2, "item":"laserdiode"},
+          {"weight":0.4, "item":"liquidoil"},
+          {"weight":0.5, "item":"ff_spareparts"},
+          {"weight":0.01, "item":"essence"}
+          ]
+        }
+	]]
+},
+{"op":"add",
+	"path":"/huntingbear",
+	"value":[[0, {
+        "pool":[ {"weight":0.10, "item":"bone"},
+        {"weight":0.40, "item":"leather"},
+        {"weight":0.49, "pool":"meatBasic"},
+        {"weight":0.01, "item":"essence"}
+        ]
+        }
+	]]
+},
+{"op":"add",
+	"path":"/huntingwolf",
+	"value":[[0, {
+        "pool":[ {"weight":0.10, "item":"bone"},
+        {"weight":0.30, "item":"leather"},
+        {"weight":0.58, "pool":"meatBasic"},
+        {"weight":0.02, "item":"essence"}
+        ]
+        }
+	]]
+},
+
+  {
+    "op": "remove",
+    "path": "/hunting/0/1/pool/0/item"
+  },
+  {
+    "op": "add",
+    "path": "/hunting/0/1/pool/0/pool",
+    "value": "meatBasic"
+  },
+  {
+    "op": "replace",
+    "path": "/hunting/0/1/pool/0/weight",
+    "value": 0.55
+  },
+  {
+    "op": "replace",
+    "path": "/hunting/0/1/pool/1/weight",
+    "value": 0.24
+  },
+  {
+    "op": "replace",
+    "path": "/hunting/0/1/pool/1/item",
+    "value": "bone"
+  },
+  {
+    "op": "add",
+    "path": "/hunting/0/1/pool/-",
+    "value": {
+      "weight": 0.35,
+      "item": "leather"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hunting/0/1/pool/-",
+    "value": {
+      "weight": 0.01,
+      "item": "essence"
+    }
+  },
+  {
+    "op": "remove",
+    "path": "/huntingquadruped/0/1/pool/0/item"
+  },
+  {
+    "op": "add",
+    "path": "/huntingquadruped/0/1/pool/0/pool",
+    "value": "meatBasic"
+  },
+  {
+    "op": "replace",
+    "path": "/huntingquadruped/0/1/pool/0/weight",
+    "value": 0.54
+  },
+  {
+    "op": "replace",
+    "path": "/huntingquadruped/0/1/pool/1/weight",
+    "value": 0.2
+  },
+  {
+    "op": "replace",
+    "path": "/huntingquadruped/0/1/pool/1/item",
+    "value": "bone"
+  },
+  {
+    "op": "replace",
+    "path": "/huntingquadruped/0/1/pool/2/weight",
+    "value": 0.25
+  },
+  {
+    "op": "add",
+    "path": "/huntingquadruped/0/1/pool/-",
+    "value": {
+      "weight": 0.01,
+      "item": "essence"
+    }
+  },
+
+
+{"op":"add",
+	"path":"/huntingquadrupedchitin",
+	"value":[[0, {
+	"pool":[
+	{"weight":0.49, "item":"monsterplating"},
+	{"weight":0.50, "pool":"meatBasic"},
+	{"weight":0.01, "item":"essence"}
+	]
 	}
 	]]
 },
 {"op":"add",
 	"path":"/huntingminiboss",
 	"value":[[0, {
-	"pool":[ {"weight":0.40, "item":"bone"},{"weight":0.25, "item":"monsterplating"},{"weight":0.5, "item":"leather"},{"weight":0.5, "item":"alienmeat"} ]
+	"pool":[
+	  {"weight":0.25, "item":"bone"},
+	  {"weight":0.25, "item":"monsterplating"},
+	  {"weight":0.24, "item":"leather"},
+	  {"weight":0.25, "pool":"meatFat"},
+	  {"weight":0.01, "item":"essence"}
+	  ]
 	}
 	]]
 },
 {"op":"add",
 	"path":"/huntingflying",
 	"value":[[0, {
-	"pool":[ {"weight":0.25, "item":"bone"},{"weight":0.12, "item":"monsterplating"},{"weight":0.45, "item":"leather"},{"weight":0.85, "item":"rawpoultry"} ]
+	"pool":[ {"weight":0.49, "item":"bone"},{"weight":0.50, "item":"rawpoultry"},{"weight":0.01, "item":"essence"} ]
 	}
 	]]
 },
 {"op":"add",
-	"path":"/huntingplant",
+	"path":"/huntingflyingchitin",
 	"value":[[0, {
-	"pool":[ {"weight":0.55, "item":"plantfibre"},{"weight":0.03, "item":"livingroot"},{"weight":0.05, "item":"dnasample"} ]
+	"pool":[ {"weight":0.35, "item":"monsterplating"},{"weight":0.64, "item":"bugshell"},{"weight":0.01, "item":"essence"} ]
 	}
 	]]
-}
+},
+{"op":"add",
+	"path":"/huntingflyingchitinhot",
+	"value":[[0, {
+	"pool":[
+	{"weight":0.29, "item":"monsterplating"},
+	{"weight":0.45, "item":"bugshell"},
+	{"weight":0.25, "item":"scorchedcore"},
+	{"weight":0.01, "item":"essence"}
+	]
+	}
+	]]
+},
+{"op":"add",
+	"path":"/huntingchitincold",
+	"value":[[0, {
+	"pool":[
+	  {"weight":0.29, "item":"monsterplating"},
+	  {"weight":0.45, "item":"bugshell"},
+	  {"weight":0.25, "item":"cryonicextract"},
+	  {"weight":0.01, "item":"essence"}
+	  ]
+	}
+	]]
+},
+{"op":"add",
+	"path":"/huntingflyingchitincold",
+	"value":[[0, {
+	"pool":[
+	{"weight":0.29, "item":"monsterplating"},
+	{"weight":0.45, "item":"bugshell"},
+	{"weight":0.25, "item":"cryonicextract"},
+	{"weight":0.01, "item":"essence"} ]
+	}
+	]]
+},
+{"op":"add",
+	"path":"/huntingchitin",
+	"value":[[0, {
+        "pool":[
+        {"weight":0.33, "item":"monsterplating"},
+        {"weight":0.32, "item":"hardenedcarapace"},
+        {"weight":0.33, "pool":"meatBasic"},
+        {"weight":0.01, "item":"essence"}
+        ]
+        }
+	]]
+},
+
+{"op":"add",
+	"path":"/huntingplant",
+	"value":[[0, {
+	"pool":[ {"weight":0.55, "item":"plantfibre"},{"weight":0.03, "item":"livingroot"},{"weight":0.05, "item":"fuscienceresource"},{"weight":0.01, "item":"essence"} ]
+	}
+	]]
+},
+
+{"op":"add",
+	"path":"/huntingfufirecrab",
+	"value":[[0, {
+        "pool":[ {"weight":0.3, "item":"sharpenedclaw"},{"weight":0.7, "item":"bugshell"},{"weight":0.01, "item":"essence"} ]
+        }
+	]]
+},
+
+{"op":"add",
+	"path":"/huntingghost",
+	"value":[[0, {
+        "pool":[ {"weight":0.1, "item":"liquidaether"},{"weight":0.70, "item":"liquidbioooze"},{"weight":0.20, "item":"phasematter"},{"weight":0.01, "item":"essence"} ]
+        }
+	]]
+},
+
+{"op":"add",
+	"path":"/huntingglow",
+	"value":[[0, {
+	"pool":[
+	{"weight":0.30, "item":"glowfibre" },
+        {"weight" : 0.359, "item" : "giantflowerpetal"},
+        {"weight":0.40, "pool":"meatBasic"},
+        {"weight" : 0.400, "item" : "monsterplating"},
+        {"weight":0.01, "item":"essence"}
+	]
+	}
+	]]
+},
+
+{"op":"add",
+	"path":"/adultpoptopHunting",
+	"value":[[0, {
+	"pool":[
+	{"weight":0.50, "item":"leather" },
+        {"weight":0.25, "pool":"meatBasic"},
+        {"weight" : 0.25, "item" : "sharpenedclaw"},
+        {"weight" : 0.001, "item" : "adultpoptopaf"},
+        {"weight":0.01, "item":"essence"}
+	]
+	}
+	]]
+},
+{"op":"add",
+	"path":"/snakeHunting",
+	"value":[[0, {
+	"pool":[
+        {"weight" : 0.30, "item" : "monsterplating"},
+	{"weight":0.50, "item":"leather"},
+        {"weight" : 0.20, "item" : "venomsample"},
+        {"weight":0.01, "item":"essence"}
+	]
+	}
+	]]
+},
+{"op":"add",
+	"path":"/gleapHunting",
+	"value":[[0, {
+	"pool":[
+        {"weight" : 0.50, "item" : "livingroot"},
+        {"weight" : 0.002, "item" : "gleapaf"},
+        {"weight":0.5, "pool":"meatBasic"},
+        {"weight":0.01, "item":"essence"}
+	]
+	}
+	]]
+},
+{"op":"add",
+	"path":"/poptopHunting",
+	"value":[[0, {
+	"pool":[
+        {"weight":0.3, "pool":"meatBasic"},
+        {"weight" : 0.450, "item" : "leather"},
+        {"weight" : 0.300, "item" : "sharpenedclaw"},
+        {"weight" : 0.001, "item" : "poptopaf"},
+        {"weight":0.01, "item":"essence"}
+	]
+	}
+	]]
+},
+  {
+    "op": "add",
+    "path": "/crustoiseHunting/0/1/pool/-",
+    "value": {
+      "weight": 0.2,
+      "item": "bugshell"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/iguarmorHunting/0/1/pool/-",
+    "value": {
+      "weight": 0.2,
+      "item": "bugshell"
+    }
+  },
+  {
+        "op":"add",
+	"path":"/horrorHunting",
+	"value":[[0, {
+            "pool" : [
+                {"weight" : 0.499, "item" : "cryonicextract"},
+                {"weight" : 0.499, "item" : "phasematter"},
+                {"weight" : 0.002, "item" : "horroraf"}
+            ],
+            "poolRounds" : [
+                [0.6, 0],
+                [0.4, 1]
+            ],
+            "allowDuplication" : false
+        }]]
+ },
+ {
+        "op":"add",
+	"path":"/horror2Hunting",
+	"value":[[0, {
+            "pool" : [
+                {"weight" : 0.499, "item" : "cryonicextract"},
+                {"weight" : 0.499, "item" : "phasematter"},
+                {"weight" : 0.002, "item" : "horror2af"}
+            ],
+            "poolRounds" : [
+                [0.6, 0],
+                [0.4, 1]
+            ],
+            "allowDuplication" : false
+        }]]
+ },
+  {
+        "op":"add",
+	"path":"/fuallergenHunting",
+	"value":[[0, {
+            "pool" : [
+                {"weight":0.55, "item":"plantfibre"},
+                {"weight":0.03, "item":"livingroot"},
+                {"weight":0.05, "item":"fuscienceresource"},
+                {"weight":0.01, "item":"essence"},
+                {"weight" : 0.002, "item" : "fuallergenaf"}
+            ],
+            "poolRounds" : [
+                [0.6, 0],
+                [0.4, 1]
+            ],
+            "allowDuplication" : false
+        }]]
+ },
+  {
+        "op":"add",
+	"path":"/fuallergen2Hunting",
+	"value":[[0, {
+            "pool" : [
+                {"weight":0.55, "item":"plantfibre"},
+                {"weight":0.03, "item":"livingroot"},
+                {"weight":0.05, "item":"fuscienceresource"},
+                {"weight":0.01, "item":"essence"},
+                {"weight":0.002, "item" : "fuallergen2af"}
+            ],
+            "poolRounds" : [
+                [0.6, 0],
+                [0.4, 1]
+            ],
+            "allowDuplication" : false
+        }]]
+ },
+ {
+        "op":"add",
+	"path":"/fuallergen3Hunting",
+	"value":[[0, {
+            "pool" : [
+                {"weight":0.55, "item":"plantfibre"},
+                {"weight":0.03, "item":"livingroot"},
+                {"weight":0.05, "item":"fuscienceresource"},
+                {"weight":0.01, "item":"essence"},
+                {"weight":0.002, "item" : "fuallergen3af"}
+            ],
+            "poolRounds" : [
+                [0.6, 0],
+                [0.4, 1]
+            ],
+            "allowDuplication" : false
+        }]]
+ },
+ {
+    "op": "replace",
+    "path": "/quagmuttHunting/0/1/pool/2/item",
+    "value": "quagmuttaf"
+  }
 ]

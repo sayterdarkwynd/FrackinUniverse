@@ -1,0 +1,24 @@
+{
+	"itemName": "boogerbread",
+	"rarity": "uncommon",
+	"price": 10,
+	"category": "preparedFood",
+	"inventoryIcon": "boogerbread.png",
+	"description": "What IS this disgusting creation?! \n^cyan;-^red;5% ^green;HP^reset;",
+	"shortdescription": "Boogerbread",
+	"effects": [
+		["madnessgain",
+			{
+				"effect": "negativehealth5",
+                "duration": 30
+			}
+		]
+	],
+	"foodValue": 20,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}

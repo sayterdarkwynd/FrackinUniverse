@@ -1,0 +1,73 @@
+{
+  "objectName" : "fuaetherconsole",
+  "colonyTags" : ["fu","aether","pretty","valuable","electronic","wired"],
+  "rarity" : "Legendary",
+  "description" : "A dreamy control console.",
+  "shortdescription" : "Aether Console",
+  "race" : "generic",
+  "category" : "wire",
+  "price" : 85,
+  "lightColor" : [120, 20, 180],
+
+  "inventoryIcon" : "fuaetherconsoleicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fuaetherconsole.png:<color>.on" }, { "image" : "fuaetherconsolelit.png:<color>.on" } ],
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-8, 0],
+      "frames" : 8,
+      "animationCycle" : 2,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "fuaetherconsole.png:<color>.on" }, { "image" : "fuaetherconsolelit.png:<color>.on" } ],
+      "direction" : "right",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-8, 0],
+      "frames" : 8,
+      "animationCycle" : 2,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+
+  "scripts" : [
+    "/objects/wired/switch/switch.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "fuaetherconsole.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "bg" : "fuaetherconsole.png",
+    "fg" : "fuaetherconsolelit.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "outputNodes" : [ [0, 0] ],
+
+  "npcToy" : {
+    "ownerOnly" : true,
+    "influence" : [
+      "console"
+    ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-0.5, 0.0],
+    "preciseStandPositionRight" : [2.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

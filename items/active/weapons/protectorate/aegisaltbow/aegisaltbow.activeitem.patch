@@ -1,0 +1,116 @@
+[
+  {"op": "replace","path": "/tooltipKind","value": "bow2"},
+  {"op": "replace","path": "/level","value": 5},
+  {"op": "add","path": "/critChance","value": 2},
+  {"op": "add","path": "/critBonus","value": 5},
+  {"op": "add","path": "/elementalType","value": "physical"},
+  {"op": "add","path": "/animation","value": "/items/active/weapons/bow/fuenergybow.animation"},
+  {"op": "replace","path": "/rarity","value": "rare"},
+  {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "aegisalt"
+  },
+  {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "upgradeableWeapon"
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbility",
+    "value": {
+      "projectileType" : "energyarrow",
+      "powerProjectileType" : "chargedenergyarrow",
+      "dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+      "drawTime" : 0.9,				//Time to fully draw the bow
+      "powerProjectileTime" : 0.225,		//After fully drawing, the bow is super-charged for this long
+      "energyPerShot" : 30,				//Total energy consumption for a full draw
+      "holdEnergyUsage" : 5,			//Energy consumption per second while fully drawn
+      "airborneBonus" : 1.15				//A dmg multiplier for when airborne
+    }
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbility/projectileParameters",
+    "value": {
+      "power": 9
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/primaryAbilityType",
+    "value": "rngbows_enhancedbowshot"
+  },
+  {
+    "op": "replace",
+    "path": "/builder",
+    "value": "/items/buildscripts/neb-buildbow.lua"
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbility/powerProjectileParameters",
+    "value": {
+      "power": 9.6
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/altAbilityType",
+    "value": "rngbows_enhancedbowshot"
+  },
+  {
+    "op": "replace",
+    "path": "/altAbility",
+    "value": {
+      "name" : "Chaos Arrow",
+      "drawTime" : 1.2,				//Time to fully draw the bow
+      "powerProjectileTime" : 0.225,		//After fully drawing, the bow is super-charged for this long
+      "energyPerShot" : 50,				//Total energy consumption for a full draw
+      "holdEnergyUsage" : 9,			//Energy consumption per second while fully drawn
+      "projectileType" : "energyarrow",
+      "powerProjectileType" : "chargedenergyarrow",
+      "projectileParameters": {
+      "power" : 9,
+      "speed" : 100,
+      "actionOnReap" : [
+        {
+          "action" : "projectile",
+          "type" : "chargedenergyarrow",
+          "angleAdjust" : -50,
+          "inheritDamageFactor" : 0.2,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "chargedenergyarrow",
+          "angleAdjust" : -25,
+          "inheritDamageFactor" : 0.2,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "chargedenergyarrow",
+          "angleAdjust" : 0,
+          "inheritDamageFactor" : 0.2,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "chargedenergyarrow",
+          "angleAdjust" : 25,
+          "inheritDamageFactor" : 0.2,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "chargedenergyarrow",
+          "angleAdjust" : 50,
+          "inheritDamageFactor" : 0.2,
+          "inheritSpeedFactor" : 1
+        }
+      ]
+      }
+    }
+  }
+]

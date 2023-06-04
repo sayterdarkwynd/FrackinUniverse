@@ -1,0 +1,56 @@
+{
+  "animatedParts" :
+  {
+    "stateTypes" :
+    {
+      "racializer" :
+      {
+        "default" : "idle",
+        "states" :
+        {
+          "idle" :
+          {
+            "frames" : 1
+          },
+          "working" : {
+            "frames" : 35,
+            "cycle" : 4
+          }
+        }
+      }
+    },
+
+    "parts" :
+    {
+      "racializer" :
+      {
+        "properties" :
+        {
+          "centered" : false,
+          "zLevel" : 1,
+          "fullbright" : false
+        },
+
+        "partStates" :
+        {
+          "racializer" :
+          {
+            "idle" :
+            {
+              "properties" :
+              {
+                "image" : "<partImage>:default.default"
+              }
+            },
+
+            "working" : {
+              "properties" : {
+                "image" : "<partImage>:default.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

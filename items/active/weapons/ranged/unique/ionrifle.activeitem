@@ -4,50 +4,110 @@
   "inventoryIcon" : "ionrifle.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Fires reflective bursts of ion energy.",
+  "description" : "Reliable infantry weapon for anti-robot warfare.
+^yellow;Inflicts Electrified^reset;
+^green;Area-Denial Alt^reset;",
   "shortdescription" : "Ion Rifle",
-  "level" : 4,
-  "tooltipKind" : "gun",
+  "category" : "assaultRifle",
+  "level" : 3,
+  "tooltipKind" : "gun2",
   "weaponType" : "Energy",
-  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "ionrifle.png",
+    "middlefullbright" : "ionriflefullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3blue.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+			//Same as BaseOffset
+		    "offset" : [0.68, -0.22]
+		  }
+		}
+      }
+    },
     "sounds" : {
-      "fire" : [ "/sfx/weapons/ionrifle.ogg" ]
+      "fire" : [ "/sfx/weapons/ionburst.ogg" ]
     }
   },
 
   "baseOffset" : [0.68, -0.22],
-  "muzzleOffset" : [2.845, 0.325],
+  "muzzleOffset" : [2.0, 0.5],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "electric",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
-    "fireTime" : 0.11,
-    "baseDps" : 8,
-    "energyUsage" : 12,
-    "inaccuracy" : 0.03,
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
+    "fireTime" : 0.3,
+    "baseDps" : 4.5,
+    "useEnergy" : true,
+    "energyUsage" : 38,
+    "runSlowWhileShooting" : true,
+
+    "burstCooldown" : 0.3,
     "burstTime" : 0.075,
     "burstCount" : 3,
+    "inaccuracy" : 0.02,
     "projectileCount" : 1,
     "fireType" : "burst",
 
-    "projectileType" : "ionrifleshot",
-    "projectileParameters" : { 
+    "projectileType" : "electricguardianpellet",
+    "projectileParameters" : {
       "speed" : 60,
-      "knockback" : 3.5
+      "knockback" : 3.5,
+      "statusEffects" : [ "electrified" ],
+      "periodicActions" : [
+	    {
+	      "action":"particle",
+	      "repeat":true,
+	      "rotate":true,
+	      "specification":{
+		"destructionAction":"fade",
+		"destructionTime":0.2,
+		"fullbright":true,
+		"image":"/projectiles/boss/guardianboss/guardianpellet/electricguardianpellet.png",
+		"layer":"back",
+		"position":[0,0],
+		"timeToLive":0.005,
+		"type":"textured"
+		},
+	      "time":0
+	    },
+
+	    {
+	      "action":"particle",
+	      "repeat":true,
+	      "rotate":true,
+	      "specification":{
+		"destructionAction":"fade",
+		"destructionTime":0.2,
+		"fullbright":true,
+		"image":"/projectiles/boss/guardianboss/guardianpellet/electricguardianpellet.png",
+		"layer":"back",
+		"position":[0,0],
+		"timeToLive":0.001,
+		"type":"textured"
+		},
+	      "time":0.1
+	      }
+      ],
+      "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/boss/guardianboss/guardianexplosion/electricguardianexplosion.config"
+	    }
+      ]
     },
 	  "stances" : {
 	    "idle" : {
@@ -79,8 +139,28 @@
 	  }
   },
 
+  "critChance" : 1.2,
+  "critBonus" : 5,
 
   "altAbilityType" : "iongrenadelauncher",
+  "altAbility" : {
+    "name" : "Shock Grenade",
+    "baseDps" : 1,
+    "useEnergy" : true,
+    "energyUsage" : 90,
+    "projectileParameters" : {
+      "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "electricguardiandamagearea",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 1,
+	      "angleAdjust" : 0,
+	      "config" : { "timeToLive" : 3.5 }
+	    }
+      ]
+    }
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

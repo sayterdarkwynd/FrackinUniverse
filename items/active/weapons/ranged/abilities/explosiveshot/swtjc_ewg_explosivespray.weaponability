@@ -1,0 +1,131 @@
+{
+	"animationParts": {},
+	"animationCustom": {
+		"particleEmitters": {
+			"altMuzzleFlash": {
+				"active": false,
+				"transformationGroups": ["muzzle"],
+				"emissionRate": 8,
+				"offsetRegion": [0.0, 0.0, 0.0, 0.0],
+				"particles": [{
+						"particle": "fireswoosh1"
+					},
+					{
+						"particle": "fireswoosh2"
+					},
+					{
+						"particle": "fireswoosh3"
+					},
+					{
+						"particle": "fireswoosh1"
+					},
+					{
+						"particle": "fireswoosh2"
+					},
+					{
+						"particle": "fireswoosh3"
+					}
+				]
+			}
+		},
+		"sounds": {
+			"altFire": ["/sfx/gun/grenade2.ogg"]
+		}
+	},
+
+	"ability": {
+		"name": "Explosive Spray",
+		"type": "swtjc_ewg_explosivespray",
+		"scripts": ["/items/active/weapons/ranged/abilities/altfire.lua"],
+		"class": "AltFireAttack",
+
+		"projectileType": "explosivebullet",
+
+		"projectileParameters": {
+			"actionOnReap": [{
+				"action": "config",
+				"file": "/projectiles/explosions/regularexplosion2/<elementalType>explosionknockbackstatus.config"
+			}]
+		},
+		"elementalConfig": {
+			"physical": {
+				"projectileParameters": {
+					"actionOnReap": [{
+						"action": "config",
+						"file": "/projectiles/explosions/regularexplosion2/regularexplosionknockback.config"
+					}]
+				}
+			},
+			"silverweapon": {
+				"projectileParameters": {
+					"actionOnReap": [{
+						"action": "config",
+						"file": "/projectiles/explosions/regularexplosion2/regularexplosionknockback.config"
+					}]
+				}
+			},
+			"fire": {},
+			"hellfire": {
+				"projectileParameters": {
+					"actionOnReap": [{
+						"action": "config",
+						"file": "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
+					}]
+				}
+			},
+			"electric": {},
+			"ice": {},
+			"hoarfrost": {
+				"projectileParameters": {
+					"actionOnReap": [{
+						"action": "config",
+						"file": "/projectiles/explosions/regularexplosion2/iceexplosionknockbackstatus.config"
+					}]
+				}
+			},
+			"poison": {},
+			"bioweapon": {
+				"projectileParameters": {
+					"actionOnReap": [{
+						"action": "config",
+						"file": "/projectiles/explosions/regularexplosion2/poisonexplosionknockbackstatus.config"
+					}]
+				}
+			},
+			"radioactive": {},
+			"shadow": {},
+			"cosmic": {},
+			"aether": {
+				"projectileParameters": {
+					"actionOnReap": [{
+						"action": "config",
+						"file": "/projectiles/explosions/regularexplosion2/cosmicplasmaexplosion.config"
+					}]
+				}
+			}
+		},
+
+
+		"baseDps": 19,
+		"energyUsage": 105,
+		"fireTime": 0.04,
+		"inaccuracy": 0.15,
+		"fireType": "auto",
+		"projectileCount": 1,
+
+		"stances": {
+			"fire": {
+				"duration": 0.02,
+				"armRotation": 2,
+				"weaponRotation": 2,
+				"twoHanded": true
+			},
+			"cooldown": {
+				"duration": 0.02,
+				"armRotation": 2,
+				"weaponRotation": 2,
+				"twoHanded": true
+			}
+		}
+	}
+}

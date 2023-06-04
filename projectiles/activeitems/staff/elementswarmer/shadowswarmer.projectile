@@ -1,0 +1,33 @@
+{
+  "projectileName" : "shadowswarmer",
+  "physics" : "laser",
+  "timeToLive" : 3,
+  "image" : "shadowswarmer.png",
+  "animationCycle" : 0.3,
+  "lightColor" : [28, 28, 28],
+  "frameNumber" : 4,
+  "periodicActions" : [ ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/shadowimpact.config"
+    }
+  ],
+  "speed" : 10,
+  "power" : 30,
+  "damageKind" : "shadowplasma",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "shadowgasfx" ],
+
+  "fullbright" : true,
+  "emitters" : [ "shadowsmoke2" ],
+
+  "bounces" : 0,
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+
+  "controlMovement" : {
+    "maxSpeed" : 60,
+    "controlForce" : 40
+  }
+}

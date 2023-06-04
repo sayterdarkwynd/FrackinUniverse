@@ -1,0 +1,22 @@
+{
+  "projectileName" : "peglacitier5knife",
+  "image" : "peglacitier5b.png",
+  "animationCycle" : 0.5,
+  "armorPenetration" : 10,
+  "physics" : "stickybullet",
+  "bounces" : 0,
+  "frameNumber" : 4,
+  "lightColor" : [0, 200, 200],
+  "speed" : 45,
+  "piercing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+    }
+  ],
+  "damageKind" : "ice",
+  "statusEffects" : ["slow","freeze"],
+  "emitters" : [ "peglacitrail" ],
+  "damagePoly" : [ [-2, -3], [1, -3], [10, 1], [1, 4], [-2, 4] ]
+}

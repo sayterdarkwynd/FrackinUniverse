@@ -1,0 +1,28 @@
+{
+	"id" : "fuquest_extractor",
+	"title" : "Hand Mills and Extractors",
+	"text" : "Without ^green;Extraction Devices^reset; progression in FU will be arduous. These wonderful devices ^green;take resource stacks and convert them into useful stuff^reset;. Create a ^orange;Hand Mill^reset; built at a ^orange;Machining Table^reset;. You can ^green;Research^reset; it in the ^orange;Engineering^reset; branch.",
+	"completionText" : "You can also place food, seeds, meats and numerous other goods into extractors. ^green;Try everything you can^reset;. You never know what you'll discover! Upgrading to an ^orange;Extraction Lab^reset; will allow you to work ^green;much^reset; faster.",
+	"rewards" : [
+		[ [ "scientistchest", 1] ]
+	],
+	"moneyRange" : [10, 10],
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "player"
+		},
+
+		"requireTurnIn" : false,
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "handmill",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
+}

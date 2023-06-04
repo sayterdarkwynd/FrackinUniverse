@@ -1,19 +1,21 @@
 {
   "name" : "nitrogensea",
   "friendlyName" : "Nitrogen Ocean",
-  "statusEffects" : [ "biomecold"],
+  "statusEffects" : [ "ffbiomecold2" , "biomeairless" ],
   "airless" : true,
   "breathable" : false,
-  
-  
+
+
     "spawnProfile" : {
     "groups" : [
       {
-        "select" : 1,
-        "pool" : [ 
+        "select" : 2,
+        "pool" : [
           [ 0.07, "icetroll" ],
           [ 0.07, "wisper" ],
-          [ 0.07, "wisper7" ]
+          [ 0.07, "wisper7" ],
+          [ 0.07, "cryopod" ],
+          [ 0.07, "garflipp" ]
         ]
       },
       {
@@ -36,7 +38,7 @@
       }
     ],
     "monsterParameters" : {
-      "colors" : "magma",
+      "colors" : "ice",
       "statusSettings" : {
         "stats" : {
             "ffextremecoldImmunity" : {
@@ -45,7 +47,7 @@
             "biomecoldImmunity" : {
               "baseValue" : 1.0
             },
-            "nitrogenfreezeImmunity" : {
+            "liquidnitrogenImmunity" : {
               "baseValue" : 1.0
             }
         }
@@ -55,7 +57,7 @@
 
   //"hueShiftOptions" : [ -120, -75, -55, -25, 0, 25, 55, 75, 120],
   "hueShiftOptions" : [ 0 ],
-  
+
   "weather" : [
     [0, [
       "/weather.config:nitrogensea"
@@ -145,13 +147,13 @@
     }
 
   ],
-  
-  
+
+
   "mainBlock" : "frozensand2",
   "subBlocks" : [ "frozenwater", "frozensand", "iceblock4" ],
   "ores" : "surface",
 
-  "parallax" : "/parallax/surface/arctic.parallax",
+  "parallax" : "/parallax/surface/nitrogensea.parallax",
 
   "ambientNoises" : {
     "day" : {
@@ -165,10 +167,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/Myst.ogg","/music/MelodyofMisery.ogg","/music/ocean-exploration2.ogg","/music/tentacle-exploration1.ogg","/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-exploration1.ogg", "/music/mercury.ogg", "/music/inviolate-loop.ogg", "/music/europa.ogg","/music/psyche.ogg", "/music/haiku.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg", "/music/error-0xbfaf000.ogg", "/music/large-magellanic-cloud.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/Srinagar.ogg","/music/SomethingIntoDarkness.ogg","/music/ocean-exploration2.ogg","/music/tentacle-exploration1.ogg","/music/jupiter.ogg", "/music/the-deep.ogg", "/music/arctic-constellation2.ogg", "/music/arctic-exploration2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg", "/music/horsehead-nebula.ogg", "/music/Nomads.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg" ]
     }
   },
 
@@ -185,7 +187,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
                [0.35, "wildpekkitseed" ],
                [0.35, "wildfusnowberryseed" ]
           ],
@@ -237,9 +239,18 @@
         },
         {
           "mode" : "floor",
-          "priority" : 1.0,
+          "priority" : 0.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "iceChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -253,7 +264,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -274,8 +285,8 @@
           "distribution" : "/biomes/distributions.config:randomEncounter",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "fuencountercultist", "furandomencounter", "randomencounter", "avianencounter", "glitchencounter", "icewastemini" ]
-        },       
+          "microdungeons" : [ "fu_dae_microdungeons","fuencountercultist", "furandomencounter", "randomencounter", "avianencounter", "glitchencounter", "icewastemini" ]
+        },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -305,31 +316,36 @@
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:scatteredSmall",
 
-          "type" : "tree",
-          "treeFoliageHueShiftMax" : 0,
-          "treeStemHueShiftMax" : 0,
-          "treeStemList" : [ "geometricstem", "icespherestem", "purewhite" ],
-          "treeFoliageList" : [ "geometricfoliage", "icespherefoliage", "purewhitey" ]
-        },
-        {
-          "mode" : "ceiling",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
-
-          "type" : "grass",
-          "grasses" : [ "ceilingice", "ceilingthinice", "ceilingiceballs", "ceilingsnow" ]
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "geometricshard1" ], [0.35, "geometricshard2" ], [0.35, "geometricshard3" ], [0.35, "geometricshard4" ], [0.35, "geometricshard5" ] ],
+              "parameters" : { }
+            }
+          ]
         },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 0,
+          "treeStemHueShiftMax" : 12,
+          "treeStemList" : [ "geometricstem", "icespherestem", "purewhite" ],
+          "treeFoliageList" : [ "geometricfoliage", "icespherefoliage", "purewhitey" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "icestalk" ],
               [0.35, "iceball_rock" ],
               [0.35, "icebloom" ],
@@ -341,15 +357,6 @@
               "parameters" : { }
             }
           ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 3.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "grass",
-          "grasses" : [ "geometricflower", "nitrogengrass" ]
         }
       ]
     },
@@ -431,7 +438,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
                [0.35, "wildalgaeseed" ],
                [0.35, "wildblizzberryseed" ],
                [0.35, "wildcoralcreepseed" ],

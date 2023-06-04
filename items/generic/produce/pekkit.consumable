@@ -1,20 +1,19 @@
 {
-  "itemName" : "pekkit",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "pekkiticon.png",
-  "description" : "This thing radiates cold. Generates a protective frost aura.",
-  "shortdescription" : "Pekkit",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 1,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "learnBlueprintsOnPickup" : [ "pekkitfreeze_freezegrenade" ],
-  "effects" : [ [
-      "iceburst"
-    ] ]
+	"itemName": "pekkit",
+	"inventoryIcon": "pekkiticon.png",
+	"category": "food",
+	"price": 5,
+	"rarity": "Uncommon",
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;200% Ice Thorns^reset;: 1m",
+	"shortdescription": "Pekkit",
+
+	//"learnBlueprintsOnPickup": ["pekkitfreeze_freezegrenade"],
+	"effects": [
+		[{
+			"effect": "iceburst",
+			"duration": 60
+		}]
+	]
 }

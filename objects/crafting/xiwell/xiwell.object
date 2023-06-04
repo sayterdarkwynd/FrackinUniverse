@@ -1,0 +1,37 @@
+{
+  "objectName" : "xiwell",
+  "rarity" : "uncommon",
+  "description" : "Siphons atmospheric particulates and recycles them into water. Must be ^red;25 tiles^reset; from other X'ian wells.",
+  "shortdescription" : "X'ian Well",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 50,
+  "printable" : false,
+  "objectType" : "container",
+
+  "inventoryIcon" : "xiwell.png",
+  "orientations" : [
+    {
+      "dualImage" : "xiwell.png:<color>",
+
+      "imagePosition" : [-26, -0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+    "outputNodes" : [ [2, 1] ],
+  "scripts" : [ "/scripts/fuwell.lua" ],
+  "scriptDelta" : 260,
+  "slotCount" : 1,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  "wellslots" : [
+    {"name" : "liquidwater","ratio" : 10,"max" : 500}
+  ],
+  "wellRange":25
+}

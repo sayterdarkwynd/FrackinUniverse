@@ -1,0 +1,66 @@
+{
+  "objectName" : "elderlightsensor",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "Whatever this says, it's probably not a greeting.",
+  "shortdescription" : "Strange Glyph",
+  "race" : "generic",
+  "category" : "wire",
+  "price" : 10,
+
+  "inventoryIcon" : "elderlightsensoricon.png",
+
+  "orientations" : [
+    {
+      "image" : "elderlightsensor.png:default.min",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "elderlightsensor.png:default.min",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "elderlightsensor.png:default.min",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "image" : "elderlightsensor.png:default.min",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "left" ]
+    },
+    {
+      "image" : "elderlightsensor.png:default.min",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "right" ]
+    }
+  ],
+
+  "scripts" : [ "elderlightsensor.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/minibiome/elder/elderswitches/elderlightsensor/elderlightsensor.animation",
+  "animationParts" : {
+    "sensor" : "elderlightsensor.png",
+    "sensorfullbright" : "elderlightsensorfullbright.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "outputNodes" : [ [0, -1], [0, 1] ],
+
+  "detectThresholdLow" : 1,
+  "detectThresholdHigh" : 40
+}

@@ -1,0 +1,103 @@
+{
+  "itemName" : "lunarishotgun",
+  "price" : 210,
+  "inventoryIcon" : "lunarishotgun.png",
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Scattered lunari blasts with wide reach.
+^yellow;Lights areas^reset;
+^green;Long-lived projectiles^reset;",
+    "shortdescription" : "Lunari Shotgun",
+  "category" : "shotgun",
+  "level" : 2,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Crystalline Rifle",
+  "itemTags" : ["weapon","ranged","shotgun","lunari", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "lunarishotgun.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/beam.ogg" ],
+	  "cooldown" : ["/sfx/weapons/shotgunreload.ogg"] },
+    "lights" : { "muzzleFlash" : {"color" : [143, 131, 98] } }
+  },
+
+  "baseOffset" : [1.3125, 0.3125],
+  "muzzleOffset" : [1.5, 0.25],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1.12,
+    "baseDps" : 6.8,
+    "energyUsage" : 35,
+    "inaccuracy" : 0.075,
+
+    "projectileCount" : 5,
+    "fireType" : "auto",
+
+    "projectileType" : "lunarimicronoboom",
+    "projectileParameters" : {
+      "speed" : 50,
+      "knockback" : 5
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0.1,
+	      "armRotation" : 2,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : true
+	    },
+	    "cooldown" : {
+	      "duration" : 0.2,
+	      "armRotation" : -6,
+	      "weaponRotation" : -360,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : true
+	    }
+	  }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "smallfirecloud1", "offset" : [0.0, 0.0] },
+          { "particle" : "smallfirecloud2", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+
+  "critChance" : 2,
+  "critBonus" : 6,
+  "altAbilityType" : "icemist",
+  "isRealoder" : 1,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 700,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

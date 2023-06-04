@@ -4,6 +4,21 @@
 
   "layers" : [
     {
+      "kind" : "divider/irradiated",
+      "offset" : [0, 180],
+      "nohueshift" : true,
+      "lightMapped" : true,
+      "parallax" : 1.199
+    },
+    {
+      "kind" : "tile/rock",
+      "nohueshift" : true,
+      "lightMapped" : true,
+      "repeatY" : true,
+      "tileLimitTop" : 125,
+      "parallax" : 1.2
+    },
+    {
       "kind" : "irradiatedback",
       "baseCount" : 5,
       "offset" : [0, 400],
@@ -21,8 +36,7 @@
       "modifiers" : ""
     },
     {
-      "kind" : "bioworldfront",
-      "baseCount" : 2,
+      "kind" : "lightlessfront",
       "offset" : [0, 360],
       "parallax" : 12,
       "directives" : "?brightness=20?saturation=-10",

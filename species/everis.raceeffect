@@ -1,0 +1,60 @@
+{
+	"stats":[
+		{ "stat":"maxHealth", "effectiveMultiplier":0.85 },
+		{ "stat":"maxEnergy", "effectiveMultiplier":1.15 },
+		{ "stat":"fireResistance", "amount":-0.4 },
+		{ "stat":"iceResistance", "amount":0.3 },
+		{ "stat":"poisonResistance", "amount":-0.1 },
+		{ "stat":"electricResistance", "amount":0.2 },
+		{ "stat":"slushslowImmunity", "amount":1 },
+		{ "stat":"snowslowImmunity", "amount":1 },
+		{ "stat":"iceslipImmunity", "amount":1 },
+		{ "stat":"biomecoldImmunity", "amount":1 }
+	],
+	"diet" : "omnivore",
+	"controlModifiers":{
+		"speedModifier":1.1,
+		"airJumpModifier":1.1
+	},
+	"weaponEffects" : [
+		{
+			"weapons" : [ "assaultrifle", "sniperrifle" ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.10 }
+			]
+		},
+		{
+			"weapons" : [ "machinepistol", "pistol" ],
+			"stats" : [
+				{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 1.25 }
+			]
+		},
+		{
+			"weapons" : [ "shield" ],
+			"stats" : [
+				{ "stat" : "protection", "amount" : 15 }
+			],
+			"scripts" : [
+				{
+					"script" : "/scripts/fr_scripts/healthRegen.lua",
+					"args" : {
+						"healingRate" : 0.0035
+					}
+				}
+			]
+		}
+	],
+	"envEffects":[
+		{
+			"biomes":[ "cold", "arctic", "snow", "arcticoceanfloor", "tundra", "space", "moon", "asteroids", "barrenasteroids" ],
+			"stats":[
+				{ "stat":"protection", "amount" : 10 },
+				{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 1.25 }
+			],
+			"controlModifiers":{
+				"speedModifier":1.15,
+				"airJumpModifier":1.15
+			}
+		}
+	]
+}

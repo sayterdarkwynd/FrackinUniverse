@@ -1,0 +1,55 @@
+{
+  "type" : "grandarenacompetitor",
+  "baseType" : "base",
+
+  "damageTeamType" : "friendly",
+  "levelVariance" : [0, 0],
+
+  "persistent" : true,
+
+  "dropPools" : [ "villagertreasure" ],
+
+  "scriptConfig" : {
+    "behavior" : "spectator",
+
+    "dialog" : {
+      "converse" : {
+        "default" : {
+          "default" : [
+            "I have nothing to sssay to you"
+          ]
+        },
+        "floran" : {
+          "default" : [
+            "Remember to eatsss up well before going in!",
+			"During the flying monstersss phassse, the ground becomesss treacherousss!",
+			"The number of torchesss tellsss you how many wavesss remain.",
+			"Monstersss are teleported into arena with magicsss!",
+			"Thisss isss a tessst of onessself, we will not ssstab you...today.",
+			"Even if you sssurvive the lassst wave, you mussst ssstab all enemiesss to win.",
+			"Floran ran out of energy lassst time, but remembered to bring ssspear to ssstab!",
+			"Floran wasss ssslow in ssstabbing monstersss lassst time. Got ssswamped.",
+            "Floran likesss rocket launchersss for arena! Hurtsss many enemiesss at once! But also sometimes hurtsss self..."
+          ]
+        }
+      }
+    }
+  },
+
+  "matchColorIndices" : true,
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "predatoryhead", "parameters" : { "colorIndex" : 7 } } ],
+            "chest" : [ { "name" : "predatorychest", "parameters" : { "colorIndex" : 7 } } ],
+            "legs" : [ { "name" : "predatorypants", "parameters" : { "colorIndex" : 7 } } ],
+            "back" : [ { "name" : "predatoryback", "parameters" : { "colorIndex" : 7 } } ],
+            "primary" : [
+              "npcspear"
+            ]
+          }
+        ] ]
+    ]
+  }
+}

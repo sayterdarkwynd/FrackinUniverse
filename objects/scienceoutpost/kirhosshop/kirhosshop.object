@@ -1,0 +1,54 @@
+{
+  "objectName" : "kirhosshop",
+  "colonyTags" : [ "crafting", "kirhos" ],
+  "rarity" : "rare",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/kirhosshop.config",
+    "filter" : [ "kirhosshop" ]
+  },
+  "printable" : false,
+  "description" : "Sells all manner of interesting wares.",
+  "shortdescription" : "^orange;Lorewalker's Shop^reset;",
+  "race" : "fukirhos",
+  "category" : "crafting",
+  "price" : 0,
+  "inventoryIcon" : "kirhosshopicon.png",
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "kirhosshop.png:<color>.<frame>"},{ "image" : "kirhosshopfullbright.png:<color>.<frame>","fullbright" : true} ],
+      "imagePosition" : [-58, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "frames" : 1,
+      "animationCycle" : 7.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "kirhosshop.png:<color>.<frame>"},{ "image" : "kirhosshopfullbright.png:<color>.<frame>","fullbright" : true} ],
+      "imagePosition" : [-58, 0],
+
+      "direction" : "right",
+
+      "frames" : 1,
+      "animationCycle" : 7.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/aquarium1.ogg",
+  "offeredQuests" : [
+    "scienceoutpost_kirhosShop"
+  ],
+  "turnInQuests" : [
+    "scienceoutpost_kirhosShop"
+  ]
+
+}

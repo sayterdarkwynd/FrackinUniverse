@@ -1,0 +1,75 @@
+{
+	"stats": [
+		{
+			"stat": "foodDelta",
+			"baseMultiplier": 0.7
+		},
+		{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 1.1
+		},
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 0.8
+		},
+		{
+			"stat": "insanityImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "physicalResistance",
+			"amount": 0.25
+		},
+		{
+			"stat": "electricResistance",
+			"amount": 0.10
+		},
+		{
+			"stat": "iceResistance",
+			"amount": -0.35
+		}
+	],
+	"diet" : "omnivore",
+	"weaponEffects": [{
+			"weapons": [
+				"axe",
+				"hammer"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.2
+			}]
+		},
+		{
+			"weapons": [
+				"rocketlauncher",
+				"grenadelauncher"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.15
+			}]
+		},
+		{
+			"combos": [
+				[
+					"rocketlauncher",
+					"rocketlauncher"
+				],
+				[
+					"rocketlauncher",
+					"grenadelauncher"
+				],
+				[
+					"grenadelauncher",
+					"grenadelauncher"
+				]
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.15
+			}]
+		}
+	],
+	"tech" : [ "minersclaw" ]
+}

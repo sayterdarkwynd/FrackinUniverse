@@ -1,0 +1,53 @@
+{
+  "projectileName" : "shadowbouncer",
+  "physics" : "laser",
+  "timeToLive" : 5,
+  "image" : "shadowbouncer.png",
+  "animationCycle" : 0.3,
+  "lightColor" : [28, 28, 28],
+  "frameNumber" : 4,
+  "periodicActions" : [ ],
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/shadowimpact.config"
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "loop",
+      "count" : 4,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "shadowrockshard"
+        }
+      ]
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/fireball_spit.ogg" ]
+    }
+  ],
+  "speed" : 0,
+  "power" : 30,
+  "piercing" : true,
+  "damageKind" : "shadowplasma",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "shadowgasfx" ],
+
+  "fullbright" : true,
+  "emitters" : [ "shadowsmoke2" ],
+
+  "bounces" : 6,
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua", "/projectiles/activeitems/staff/elementbouncer/bouncespikes.lua" ],
+
+  "spikeProjectile" : "shadowstickyspikes",
+  "spikeDamageFactor" : 0.1,
+
+  "controlMovement" : {
+    "maxSpeed" : 60,
+    "controlForce" : 60
+  }
+}

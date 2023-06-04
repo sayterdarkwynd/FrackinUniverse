@@ -1,15 +1,17 @@
 {
   "name" : "elder",
   "friendlyName" : "Eldritch Field",
-  
+
   "spawnProfile" : {
     "groups" : [
       {
         "select" : 3,
-        "pool" : [ 
-          [ 0.111, "starspawn" ],          
+        "pool" : [
+          [ 0.111, "starspawn" ],
           [ 0.111, "deepone" ],
-          [ 0.111, "slime" ],
+          [ 0.111, "doomspirit" ],
+          [ 0.111, "fleshreaper" ],
+          [ 0.111, "ravager" ],
           [ 0.111, "fleshleech" ]
         ]
       },
@@ -20,10 +22,11 @@
       {
         "select" : 2,
         "pool" : [
-          [ 0.4, "elderbeetle" ],
-          [ 0.3, "glowingball2critter" ],
-          [ 0.4, "fubat" ],
-          [ 0.3, "wurmcritter" ]   
+          [ 0.2, "elderbeetle" ],
+          [ 0.2, "bee_xenodaemonae" ],
+          [ 0.2, "glowingball2critter" ],
+          [ 0.2, "fubat" ],
+          [ 0.2, "wurmcritter" ]
         ]
       }
     ],
@@ -32,10 +35,31 @@
     }
   },
 
+
+  "parallax" : "/parallax/surface/lightless.parallax",
+
+    "ambientNoises" : {
+      "day" : {
+        "tracks" : [ "/sfx/environmental/aviantemple.ogg" ]
+      },
+      "night" : {
+        "tracks" : [ "/sfx/environmental/aviantemple.ogg" ]
+      }
+    },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/devils_tritone.ogg", "/music/darkambient2a.ogg","/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/Nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/Nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
+    }
+  },
+
   "hueShiftOptions" : [-20, -10, 0, 10, 20],
     "mainBlock" : "elderstone",
     "subBlocks" : [ "elderstone2", "hive", "protorock" ],
-    "ores" : "ff_deepsurfaceshadowOres",
+    "ores" : "ff_elderOres",
 
   "surfacePlaceables" : {
     "grassMod" : [ "blackslimegrass" ],
@@ -65,7 +89,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "wildalgaeseed" ],
               [0.35, "wildtoxictopseed" ],
               [0.35, "wildoonfortaseed" ],
@@ -81,49 +105,28 @@
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffCommon",
-
-          "type" : "object",
-          "objectSets" : [
-            {
-        "pool" : [  
-              [0.35, "toxicfern1" ],
-              [0.35, "toxicflower1" ],
-              [0.35, "toxicflower2" ],
-              [0.35, "toxicflower3" ],
-              [0.35, "toxicflower4" ],
-              [0.35, "toxicsprout1" ],
-              [0.35, "toxicsprout2" ],
-              [0.35, "toxicsprout3" ],
-              [0.35, "toxicsprout4" ]
-              ],
-              "parameters" : {  }
-            }
-          ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
           "distribution" : "/biomes/distributions.config:ffRare",
 
           "type" : "object",
           "objectSets" : [
             {
-        "pool" : [ 
+        "pool" : [
               [0.35, "elderidol" ],
               [0.35, "elderstatue" ],
               [0.35, "mound3" ],
+              [0.35, "mound4" ],
+              [0.35, "monolith1" ],
+              [0.35, "monolith2" ],
               [0.35, "monolith3" ],
+              [0.35, "monolith4" ],
               [0.35, "plynth1" ],
-              [0.35, "pillar1" ],
-              [0.35, "pillar2" ]
+              [0.35, "plynth2" ]
               ],
               "parameters" : {  }
             }
           ]
         },
-        
+
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -131,7 +134,7 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
         {
           "mode" : "floor",
@@ -144,24 +147,47 @@
         },
         {
           "mode" : "floor",
-          "priority" : 2.0,
+          "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredLarge",
+          "distribution" : "/biomes/distributions.config:mainBiomeRareMicrodungeon",
 
-          "type" : "tree",
-          "treeStemList" : [ "grasstree", "magma", "alienpalm" ],
-          "treeFoliageList" : [ "bluebell", "grey", "lushleaves" ]
+          "type" : "microdungeon",
+          "microdungeons" : [ "fuelders" ]
         },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 0,
+          "treeStemHueShiftMax" : 15,
+          "treeStemList" : [ "energyorbstem" ],
+          "treeFoliageList" : [ "energyorbfoliage" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 180,
+          "treeStemHueShiftMax" : 20,
+          "treeStemList" : [ "edelwood" ],
+          "treeFoliageList" : [ "edelwoodleaves", "edelwoodleaves2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ [1, "statuspod" ] ],
+              "pool" : [ [1, "statuspod" ], [0.01, "elderaltar" ] ],
               "parameters" : { }
             }
           ]
@@ -170,7 +196,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -184,7 +210,7 @@
           "type" : "microdungeon",
           "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
         },
-        
+
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -198,34 +224,14 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredLarge",
+          "distribution" : "/biomes/distributions.config:denseMedium",
 
           "type" : "bush",
           "bushes" : [
             {
-              "name" : "aridskeleton",
-              "baseHueShiftMax" : 120,
-              "modHueShiftMax" : 120
-            },
-            {
-              "name" : "savannahbush",
-              "baseHueShiftMax" : 120,
-              "modHueShiftMax" : 120
-            },
-            {
-              "name" : "algae",
-              "baseHueShiftMax" : 120,
-              "modHueShiftMax" : 120
-            },
-            {
-              "name" : "slimebush",
-              "baseHueShiftMax" : 120,
-              "modHueShiftMax" : 120
-            },
-            {
               "name" : "testbush2",
-              "baseHueShiftMax" : 120,
-              "modHueShiftMax" : 120
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             }
           ]
         },
@@ -236,8 +242,101 @@
           "distribution" : "/biomes/distributions.config:scatteredSmall",
 
           "type" : "grass",
-          "grasses" : [ "spire", "eldergrass" ]
+          "grasses" : [ "eldergrass" ]
         }
+    ]
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "blackslimegrass" ],
+    "grassModDensity" : 0.5,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "ffelderChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ], [0.01, "elderaltar" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 0,
+        "treeStemHueShiftMax" : 10,
+        "treeStemList" : [ "hivevine" ],
+        "treeFoliageList" : [ "" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "grass",
+        "grasses" : [ "eldergrass" ]
+      }
     ]
   }
 }

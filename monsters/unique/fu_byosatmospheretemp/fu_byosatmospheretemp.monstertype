@@ -1,0 +1,90 @@
+{
+  "type" : "fu_byosatmospheretemp",
+  "shortdescription" : "BYOS Atmosphere Temp",
+  "description" : "Checks if the room is enclosed.",
+
+  "categories" : [ "fu_byosatmospheretemp" ],
+  "parts" : [ "body" ],
+
+  "animation" : "fu_byosatmospheretemp.animation",
+  "colors" : "/monsters/colors.config",
+
+  "dropPools" : [
+    {
+      "default" : "empty"
+    }
+  ],
+  "baseParameters" : {
+    "scripts" : [
+	  "/monsters/unique/fu_byosatmospheretemp/fu_byosatmospheretemp.lua"
+    ],
+	"damageTeamType" : "ghostly",
+    "metaBoundBox" : [-0.5, -0.5, 0.5, 0.5],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [  ],
+
+      "mass" : 1,
+      "walkSpeed" : 0,
+      "runSpeed" : 0,
+      "jumpSpeed" : 0,
+      "flySpeed" : 0,
+      "airFriction" : 0,
+      "airForce" : 100.0,
+      "gravityEnabled" : false
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "",
+
+    "touchDamage" : {
+      "poly" : [ [-1.0, -1.125], [1.0, -1.125], [1.0, 1.0], [-1.0, 1.0] ],
+      "damage" : 0,
+
+      "teamType" : "ghostly",
+      "damageSourceKind" : "bite",
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+	  "appliesWeatherStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+
+      ],
+      "primaryScriptDelta" : 10,
+
+      "stats" : {
+        "maxHealth" : {
+          "baseValue" : 10000
+        },
+        "protection" : {
+          "baseValue" : 10000.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8]
+  }
+}

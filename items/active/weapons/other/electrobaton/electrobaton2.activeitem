@@ -1,0 +1,164 @@
+{
+  "itemName" : "electrobaton2",
+  "price" : 3640,
+  "level" : 7,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Originally developed for Miniknog riot police. It's shockingly effective.",
+  "shortdescription" : "Zipzap The Astounder",
+  "tooltipKind" : "swordunique",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "melee", "shortsword", "upgradeableWeapon", "energy", "electric" ],
+
+  "inventoryIcon" : "electrobaton2icon.png",
+
+  "animation" : "/items/active/weapons/melee/shortsword/energyshortsword.animation",
+  "animationParts" : {
+    "handle": "handle.png",
+    "handleFullbright" : "",
+    "blade" : "blade.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "blade" : { "states" : {
+          "extend" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "properties" : {
+              "immediateSound" : "/sfx/tools/energypickaxe_start.ogg"
+            }
+          },
+          "active" : {
+            "frames" : 6,
+            "cycle" : 0.3,
+            "properties" : {
+              "persistentSound" : "/sfx/melee/electrobaton_idle1.ogg"
+            }
+          },
+          "retract" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "properties" : {
+              "immediateSound" : "/sfx/tools/energypickaxe_stop2.ogg"
+            }
+          }
+        }},
+        "swoosh" : { "states" : { "fire2" : {
+          "cycle" : 0.15
+        }}}
+      },
+      "parts" : {
+        "blade" : { "properties" : {
+          "zLevel" : 2
+        }},
+        "swoosh" : { "partStates" : { "swoosh" : {
+          "fire" : { "properties" : {
+            "image" : "/items/active/weapons/melee/shortsword/swoosh/electricswoosh.png:<frame>"
+          }},
+          "fire2" : { "properties" : {
+            "image" : "/items/active/weapons/melee/broadsword/swoosh/electricswoosh.png:<frame>",
+            "offset" : [-3.625, 2.25],
+            "damageArea" : [[1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+          }}
+        }}}
+      }
+    },
+    "particleEmitters" : {
+      "electricswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "burstCount" : 4,
+        "particles" : [
+          { "particle" : "electricswoosh1"},
+          { "particle" : "electricswoosh2"},
+          { "particle" : "electricswoosh2"}
+        ]
+      },
+      "blade" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "offsetRegion" : [-0.5, -0.75, 0.5, 1.5],
+        "emissionRate" : 5,
+        "particles" : [
+          { "particle" : "electricswoosh1"},
+          { "particle" : "electricswoosh2"},
+          { "particle" : "electricswoosh2"}
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : ["/sfx/melee/swing_shortsword_electric1.ogg", "/sfx/melee/swing_shortsword_electric2.ogg", "/sfx/melee/swing_shortsword_electric3.ogg"],
+      "fire2" : ["/sfx/melee/swing_shortsword_electric1.ogg", "/sfx/melee/swing_shortsword_electric2.ogg", "/sfx/melee/swing_shortsword_electric3.ogg"]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/energymeleeweapon.lua"],
+
+  "activeTime" : 2.0,
+
+  "elementalType" : "electric",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.3,//you are an idiot. if you change the fire time, you MUST change the stance durations proportionally when the weapon is made faster. Or was the lesson of the precursor crucible upgrades to maces and such wasted?
+    //"fireTime" : 0.8,//original electrobaton
+    "baseDps" : 7.5,
+
+    "damageConfig" : {
+      "damageSourceKind" : "electrobaton",
+      "statusEffects" : [ "electrified" ]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0, 2.75]
+      },
+      "windup1" : {
+        "duration" : 0.0375,
+        "armRotation" : -15,
+        "weaponRotation" : -60,
+        "weaponOffset" : [0, 2.75]
+      },
+      "fire1" : {
+        "duration" : 0.075,
+        "armRotation" : -135,
+        "weaponRotation" : 30,
+        "weaponOffset" : [0, 2.75]
+      },
+      "wait1" : {
+        "duration" : 0.01125,
+        "armRotation" : -135,
+        "weaponRotation" : 30,
+        "weaponOffset" : [0, 2.75]
+      },
+      "windup2" : {
+        "duration" : 0.05625,
+        "armRotation" : 30,
+        "weaponRotation" : 0,
+        "weaponOffset" : [0, 2.75]
+      },
+      "fire2" : {
+        "duration" : 0.1125,
+        "armRotation" : -40,
+        "weaponRotation" : -70,
+        "weaponOffset" : [0, 2.75]
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  "critChance" : 2,
+  "critBonus": 10,
+  "upgradeParameters" : {
+    "inventoryIcon" : "electrobaton2icon_l6.png",
+    "animationParts" : {
+      "handle" : "/items/active/weapons/other/electrobaton/handle2_l6.png",
+      "blade" : "/items/active/weapons/other/electrobaton/blade2_l6.png"
+    },
+    "shortdescription" : "2 Zip 2 Furious ^yellow;^reset;"
+  }
+}

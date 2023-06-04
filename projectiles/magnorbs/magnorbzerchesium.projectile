@@ -1,0 +1,43 @@
+{
+  "projectileName" : "magnorbzerchesium",
+  "image" : "magnorbzerchesium.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 6.5,
+  "speed" : 50,
+  "damageKind" : "iceplasma",
+  "physics" : "laser",
+  "fullbright" : true,
+  "bounces" : 2,
+  "piercing" : true,
+  "timeToLive" : 3,
+  "lightColor" : [199, 199, 199],
+
+  "emitters" : [ "defaultwhite" ],
+  "statusEffects" : [ "slow" ],
+
+  "actionOnReap" : [ ],
+
+  "actionOnCollide" : [
+    {
+      "action" : "projectile",
+      "type" : "pullshot",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.25,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/weapons/magnorbproto_impact1.ogg",
+        "/sfx/weapons/magnorbproto_impact2.ogg",
+        "/sfx/weapons/magnorbproto_impact3.ogg"
+      ]
+    }
+  ],
+
+  "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua" ]
+}

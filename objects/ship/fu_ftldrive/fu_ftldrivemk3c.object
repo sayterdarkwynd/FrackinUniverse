@@ -1,0 +1,51 @@
+{
+  "objectName" : "fu_ftldrivemk3c",
+  "rarity" : "essential",
+  "colonyTags" : [ "science" ],
+  "category" : "furniture",
+  "description" : "A larger FTL drive for a space ship. Allows interstellar travel. ^orange;Ship Speed: +25, Ship Mass: +3^reset;. ^red;BYOS Only^reset;.",
+  "shortdescription" : "^cyan;FTL Drive Mk3c^reset;",
+  "race" : "generic",
+  "printable" : false,
+
+  "apexDescription" : "A square model of the FTL drive, featuring a powerful core that ignites during travel.",
+  "avianDescription" : "The core in the center glows brightly when powered on.",
+  "floranDescription" : "Bright lightsss sshine when Floran ussse ship.",
+  "glitchDescription" : "Intrigued. The FTL drive glows bright when in motion.",
+  "humanDescription" : "Bright core in the center of this FTL drive glows when the ship is moving.",
+  "hylotlDescription" : "This FTL drive glows quite bright when the ship is in motion.",
+  "novakidDescription" : "When in motion, this 'ere FTL drive glows bright. Almost as bright as me!",
+
+  "inventoryIcon" : "fu_ftldrive3icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_ftldrive3.png:off",
+      "imagePosition" : [-32, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "fu_ftldrive3.animation",
+  "animationParts" : {
+    "base" : "fu_ftldrive3.png",
+	"fullbright" : "fu_ftldrive3fullbright.png"
+  },
+  "animationPosition" : [-32, 0],
+
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua", "/objects/ship/fu_ftldriveanimation.lua" ],
+  "scriptDelta" : 60,
+
+  "stats" : {
+    "shipSpeed" : 25,
+    "shipMass" : 3
+  },
+  "capabilities" : [
+    "systemTravel",
+    "planetTravel"
+  ],
+  "maxAmountGroups" : {
+    "ftlDrive" : 1
+  },
+  "byosOnly" : true
+}

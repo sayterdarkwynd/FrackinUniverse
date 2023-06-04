@@ -4,21 +4,32 @@
   "rarity" : "Common",
   "category" : "decorative",
   "price" : 400,
-  "printable" : false,  
+  "printable" : false,
   "description" : "A massive, barely functional data storage of unknown design.",
   "shortdescription" : "Data Storage",
   "inventoryIcon" : "metallicmachine3.png",
-  "health" : 70,
+  "health" : 40,
   "orientations" : [
     {
-      "image" : "metallicmachine3.png:<color>",
+      "imageLayers" : [ { "image" : "metallicmachine3.png:<color>.<frame>", "fullbright" : true }, { "image" : "metallicmachine3fullbright.png:<color>.<frame>" } ],
+      "flipImages" : true,
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+      "anchors" : [ "bottom" ],
+      "direction" : "left"
+    },
+    {
+      "imageLayers" : [ { "image" : "metallicmachine3.png:<color>.<frame>", "fullbright" : true }, { "image" : "metallicmachine3fullbright.png:<color>.<frame>" } ],
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
 
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
     }
   ]
 }

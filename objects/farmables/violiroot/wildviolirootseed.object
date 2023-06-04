@@ -1,0 +1,60 @@
+{
+  "objectName" : "wildviolirootseed",
+  "colonyTags" : ["nature"],
+  "rarity" : "Uncommon",
+  "category" : "seed",
+  "description" : "Violiroot will make your plantation super hot.",
+  "shortdescription" : "Violiroot Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 95,
+  "lightColor" : [90, 50, 120],
+
+  "apexDescription" : "Bad for teeth, great for researching.",
+  "avianDescription" : "Violiroot is a great source of metal.",
+  "floranDescription" : "Plasssma ssstick.",
+  "glitchDescription" : "Ponderous. This plant is sharp and potentially deadly.",
+  "humanDescription" : "Violiroot. Don't eat this thing, it's bad for your health.",
+  "hylotlDescription" : "Violiroot's leaves can be used to make violium.",
+  "novakidDescription" : "This plant is very familiar to me.",
+
+  "inventoryIcon" : "violirootseedicon.png",
+
+  "tooltipKind" : "seed",
+  "largeImage" : "violirootseed.png:default.2.0",
+
+
+  "orientations" : [
+    {
+      "imageLayers" : [{ "image" : "violirootseed.png:<color>.<stage>.<alt>", "fullbright" : true}, { "image" : "violirootseedlit.png:<color>.<stage>.<alt>"}],
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3], [1, 4], [0, 4] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "radioMessagesOnPickup" : [ "pickupseed" ],
+
+  "stages" : [
+    {
+      "duration" : [930, 960]
+    },
+    {
+      "duration" : [930, 960]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "violirootHarvest"
+    }
+  ],
+
+  "maxImmersion" : 0.1,
+  "breakDropOptions" : [
+    [ [ "violirootseed", 1, { } ] ]
+  ]
+}

@@ -1,0 +1,314 @@
+{
+  "type" : "trictus2",
+  "shortdescription" : "Vectus",
+  "description" : "An unusual and deadly energy-based variation of the Trictus.",
+
+  "categories" : [ "trictus2" ],
+  "parts" : [ "body" ],
+
+  "animation" : "trictus2.animation",
+
+  "dropPools" : [
+    {
+    "default" : "trictusTreasure",
+    "bow" : "trictusHunting",
+    "firebow" : "trictusHunting",
+    "icebow" : "trictusHunting",
+    "poisonbow" : "trictusHunting",
+    "electricbow" : "trictusHunting",
+    "cosmicbow" : "trictusHunting",
+    "radioactivebow" : "trictusHunting",
+    "shadowbow" : "trictusHunting"
+    }
+  ],
+
+  "baseParameters" : {
+
+    "colorSwap":{
+    "1b4c2a":"321b4c",
+    "48832f":"2f3a83",
+    "629a4b" : "4b559a",
+    "9bba3d":"3d86ba",
+    "d1e160":"60bbe1"
+    },
+
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetQueryCooldown" : 0.2,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 20,
+      "targetOutOfSightTime" : 6.5,
+
+      "foundTargetActions" : [],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 0.0,
+          "parameters" : {
+            "maximumRange" : 12,
+            "windupState" : "",
+            "windupTime" : 0.0,
+
+            "chargeTime" : 0.5,
+            "chargeSpeed" : 35,
+            "chargeControlForce" : 300,
+            "chargeState" : "slash",
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownStopForce" : 100,
+            "winddownState" : "",
+            "winddownTime" : 0.5
+          }
+        }
+      ],
+
+      "damageTakenActions" : [
+	{
+         "name":"action-projectile",
+         "cooldown" : 2,
+         "parameters" : {
+          "projectileType" : "magnorbshadow2",
+          "projectileParameters" : {
+            "timeToLive" : 0.1
+          },
+          "aimDirection" : [-0.4,-1],
+          "aimAtTarget" : false
+         }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-invulnerable",
+          "cooldown" : [10, 20],
+          "parameters" : {
+            "windupTime" : 0,
+            "windupState" : "",
+            "winddownTime" : 0.7,
+            "winddownState" : "winddown",
+
+            "invulnerableState" : "windup",
+            "invulnerableTime" : 0.25
+          }
+        }
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-teleport",
+          "cooldown" : 8,
+          "parameters" : {
+	    "moveState": "chargewindup",
+	    "idleState": "chargewinddown",
+	    "teleportMinDistance": 15,
+	    "targetXDelta": 15,
+	    "groundMinHeight": -10,
+	    "groundMaxHeight": 10
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "cooldown" : 8,
+          "parameters" : {
+	    "moveState": "chargewindup",
+	    "idleState": "chargewinddown",
+	    "teleportMinDistance": 15,
+	    "targetXDelta": 15,
+	    "groundMinHeight": -10,
+	    "groundMaxHeight": 10
+          }
+        }
+      ],
+
+      "invulnerableActions" : [
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 5,
+          "parameters" : {
+          "effect" : "novax10",
+          "duration" : 10
+          }
+        }
+      ],
+
+      "wanderActions" : [],
+
+      "concurrentHostileActions" : [
+	    {
+	      "name" : "action-fire",
+	      "cooldown" : 8,
+	      "parameters" : {
+		"requireLineOfSight" : false,
+		"maximumRange" : 35,
+		"minimumRange" : 4,
+		"windupState" : "chargewindup",
+		"windupTime" : 1.8,
+
+		"projectileType" : "redplasmatorpedo",
+		"projectileCount" : 1,
+		"projectileParameters" : {
+		  "timeToLive" : 1,
+		  "statusEffects" : [ "darkwaterpoison" ]
+		},
+		"power" : 3,
+
+		"fireOffset" : [0.8, 0.6],
+		"aimAtTarget" : true,
+		"fireDelay" : 0.1,
+		"fireSound" : "fire",
+		"fireState" : "slash",
+		"winddownState" : "winddown",
+		"winddownTime" : 0.5
+		}
+	     }
+      ]
+    },
+
+    "damageParts" : {
+      "body" : {
+        "damage" : 13,
+
+        "teamType" : "enemy",
+        "damageSourceKind" : "slash",
+        "knockback" : 20,
+        "statusEffects" : [ ]
+      }
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.4375, 1.5625], [0.9375, 1.0625], [0.9375, -1.0625], [0.4375, -1.5625], [-0.4375, -1.5625], [-0.9375, -1.0625], [-0.9375, 1.0625], [-0.4375, 1.5625] ],
+      "damage" : 13,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.4375, 1.5625], [0.9375, 1.0625], [0.9375, -1.0625], [0.4375, -1.5625], [-0.4375, -1.5625], [-0.9375, -1.0625], [-0.9375, 1.0625], [-0.4375, 1.5625] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 3,
+      "runSpeed" : 5,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 70
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.05
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.2
+        },
+        "fireResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : -0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.5
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : {
+          "baseValue" : -0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "trictus2" }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "objectName" : "amberlight",
+  "colonyTags" : ["bees","light","odd"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A tall lamp, with each light capped in amber casing.",
+  "shortdescription" : "Amber Lamp",
+  "race" : "generic",
+  "category" : "light",
+  "price" : 90,
+  "lightColor" : [53, 222, 160],
+
+  "inventoryIcon" : "amberlighticon.png",
+  "orientations" : [
+    {
+      "dualImage" : "amberlight.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "animationPosition" : [0, 0],
+      "lightPosition" : [0, 2],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "amberlight.png",
+    "fg" : "amberlightlit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

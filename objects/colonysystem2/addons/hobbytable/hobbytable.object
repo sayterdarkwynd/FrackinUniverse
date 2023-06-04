@@ -1,0 +1,37 @@
+{
+  "objectName" : "c_hobbytable",
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 250,
+  "description" : "A place to enjoy old-fashioned media like books or board games. \n^yellow;+6 Happiness^reset;",
+  "shortdescription" : "Community Library",
+  "race" : "generic",
+  "printable" : false,
+
+  "inventoryIcon" : "hobbytableicon.png",
+
+  "orientations" : [
+		{
+			"dualImage" : "hobbytable.png",
+			"imagePosition" : [-16, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		}
+	],
+
+	"scripts" : [ "/scripts/fupower.lua","/objects/colonysystem2/addons/hobbytable/hobbytable.lua"],
+    "scriptDelta" : 300,
+
+
+	"powertype" : "input",
+	"isn_requiredPower" : 0,
+	"isn_liquidCollector" : false,
+
+	"airWellRange":256,
+	"productionTime":1000,
+    "frameCooldown" : 67,
+    "autoCloseCooldown" : 3600,
+
+	"happiness":6
+}

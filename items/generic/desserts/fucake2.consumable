@@ -1,0 +1,25 @@
+{
+  "itemName": "fucake2",
+  "rarity": "uncommon",
+  "price": 240,
+  "category": "preparedFood",
+  "inventoryIcon": "fucake2.png",
+  "description": "It's a delicious moist cake!\n^cyan;+^white;20% ^cyan;EP ^gray;(^white;405s^gray;)^reset; \n^orange;Type: Fruits + Dairy + Eggs + Sugar^reset;",
+  "shortdescription": "Plain Cake",
+  "effects": [
+    [
+	"fruit_cake_meal",
+      {
+        "effect": "maxenergyscalingboostfood",
+        "duration": 405
+      }
+    ]
+  ],
+  "foodValue": 45,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1.0,
+  "blockingEffects": ["wellfed"]
+}

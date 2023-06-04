@@ -1,22 +1,19 @@
 {
-  "itemName" : "dragonsbeard",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "dragonsbeard.png",
-  "description" : "Exceptional extreme heat protection.",
-  "shortdescription" : "Dragons Beard Herb",
-    "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-    "effects" : [ [
-    "ffextremeheatimmunity"
-    ] ],
-  "blockingEffects" : [
-    "ffextremeheatimmunity"
-  ]
+	"itemName": "dragonsbeard",
+	"inventoryIcon": "dragonsbeard.png",
+	"category": "food",
+	"rarity": "Legendary",
+	"price": 10,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immune^reset;: Extreme Heat: 2m",
+	"shortdescription": "Dragon's Beard Herb",
+
+	"effects": [
+		[{
+			"effect": "ffextremeheatimmunity",
+			"duration": 120
+		}]
+	],
+	"blockingEffects": ["ffextremeheatimmunity"]
 }

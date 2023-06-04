@@ -1,0 +1,99 @@
+{
+  "type" : "fufoxcritter",
+  "shortdescription" : "Fox",
+  "description" : "A small carnivorous animal found in temperate climates. It has orange fur and is known for its cleverness.",
+
+  "categories" : [ "fufoxcritter" ],
+  "parts" : [ "body" ],
+
+  "animation" : "fufoxcritter.animation",
+  "reversed" : false,
+
+  "dropPools" : [
+    {
+      "default" : "empty",
+      "bow" : "huntingwolf",
+      "brain" : "brain"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "walkingcritter",
+
+    "metaBoundBox" : [-3.0, -1.0, 3.0, 1.0],
+    "scale" : 1.00,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.75, -1.0], [1.75, -1.0], [1.75, 1.0], [-1.75, 1.0] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 15,
+      "runSpeed" : 30,
+      "jumpSpeed" : 7
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "",
+"deathParticles" : "deathPoof",
+    "damageTeamType" : "passive",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 1
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "relocatable" : true,
+    "nametagColor" : [64, 200, 255]
+  }
+}

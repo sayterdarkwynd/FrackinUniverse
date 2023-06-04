@@ -1,0 +1,97 @@
+{
+  "itemName" : "silverslayer",
+  "price" : 360,
+  "inventoryIcon" : "penumbriteslayer.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Specially treated rounds harm any element equally.
+^yellow;Universal Damage^reset;",
+  "shortdescription" : "Penumbrite Carbine",
+  "category" : "assaultRifle",
+  "level" : 3,
+  "tooltipKind" : "gun2",
+  "itemTags" : ["weapon","ranged","assaultrifle", "silver", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "penumbriteslayer.png",
+    "middlefullbright" : "",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/marauder5.wav" ]
+    }
+  },
+
+  "baseOffset" : [1.5, 0.14],
+  "muzzleOffset" : [2.0, 0.05],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "silverweapon",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
+    "fireTime" : 0.15,
+    "baseDps" : 6.5,
+    "useEnergy" : true,
+    "energyUsage" : 24,
+    "runSlowWhileShooting" : true,
+    "inaccuracy" : 0.03,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "standardbulletbeamsilver",
+    "projectileParameters" : {
+      "knockback" : 3
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 3,
+	      "weaponRotation" : 3,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "cooldown" : {
+	      "duration" : 0.04,
+	      "armRotation" : 3,
+	      "weaponRotation" : 3,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 8,
+  "isAmmoBased" : 1,
+  "reloadTime" : 1.35,
+  "magazineSize" : 30,
+  "isAssaultRifle" : 1,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 400,
+
+  "altAbilityType" : "swtjc_ewg_slowgrenades",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,44 @@
+{
+  "itemName" : "beammasterhelm",
+  "price" : 1500,
+  "inventoryIcon" : "icons.png:head",
+  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "High energy reserve.
+^cyan;Immune^reset;: Insanity.",
+  "shortdescription" : "Tek-Knight Helm",
+  "category" : "headarmour",
+  "tooltipKind" : "armornew2",
+  "level" : 4,
+  "itemTags" : [ "upgradeableWeapon", "ranged" ],
+  "maleFrames" : "head.png",
+  "femaleFrames" : "head.png",
+  "mask" : "mask.png",
+
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.1
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.20
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 10
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 2
+    }
+  ],
+
+  "statusEffects" : ["insanityimmunityhidden"],
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
+}

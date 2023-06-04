@@ -1,0 +1,48 @@
+{
+  "objectName" : "peglacibookcaselight",
+  "colonyTags" : [ "peglaci", "peglacivillage", "light" ],
+  "rarity" : "Common",
+  "category" : "light",
+  "description" : "A crystalline light built into a bookcase.",
+  "shortdescription" : "Alloy Bookcase Light",
+  "race" : "peglaci",
+  "price" : 100,
+  "printable" : true,
+  "retainObjectParametersInItem" : true,
+
+  "apexDescription" : "This embedded light gives off clear, pure light.",
+  "avianDescription" : "How lovely - I'm entranced.",
+  "floranDescription" : "Like light through leavesss.",
+  "glitchDescription" : "Analysis. Emits light in a tight spectrum pleasant to the eyes of many humanoids.",
+  "humanDescription" : "Well, it saves space. Kinda ostentatious.",
+  "hylotlDescription" : "They mock us with such extravagence in such mundane uses.",
+  "novakidDescription" : "Check out the light on this baby!",
+  "fupeglaciDescription" : "If someone were to read the books, they would problably appreciate the light.",
+
+  "lightColor" : [100, 200, 255],
+
+  "inventoryIcon" : "peglacibookcaselighticon.png",
+  "orientations" : [
+    {
+      "image" : "peglacibookcaselight.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "peglacibookcaselight.png",
+    "fg" : "peglacibookcaselightlit.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ],
+  "interactive" : true
+}

@@ -1,0 +1,54 @@
+{
+  "itemName" : "pyreitespear",
+  "price" : 1200,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Searing, deadly pyreite to kiss your enemies hides.
+^cyan;Inflicts Napalm^reset;
+^cyan;Hunting weapon^reset;",
+  "shortdescription" : "Pyreite Lance",
+  "tooltipKind" : "sword2",
+  "category" : "lance",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear","pyreite", "upgradeableWeapon"],
+
+  "inventoryIcon" : "pyreitespear.png",
+  //"collectablesOnPickup" : { "fu_weaponspear" : "pyreitespear" },
+  "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "pyreitespear.png",
+    "bladefullbright" : "pyreitespearfullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "hellfire",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "heavyspearcombo",
+  "primaryAbility" : {
+    "scripts" : [],
+
+    "fireTime" : 1,
+    "baseDps" : 12.5,
+    "damageConfig" : {
+      "damageSourceKind" : "hellfirebow",
+      "statusEffects" : [ "burningnapalm" ],
+      "knockback" : 35
+    }
+  },
+  "altAbilityType" : "barrier",
+  "altAbility" : { },
+
+  "critChance" : 2,
+  "critBonus" : 12,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

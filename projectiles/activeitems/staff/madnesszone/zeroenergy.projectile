@@ -1,0 +1,37 @@
+{
+  "projectileName" : "zeroenergy",
+  "physics" : "laser",
+  "timeToLive" : 2,
+  "image" : "zeroenergy.png",
+  "animationCycle" : 0.8,
+  "frameNumber" : 12,
+  "windupFrames" : 3,
+  "winddownFrames" : 3,
+  "periodicActions" : [
+    {
+      "time" : 2,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/tech/vehicle_disappear1.ogg" ]
+    }
+  ],
+  "actionOnReap" : [],
+  "speed" : 0,
+  "power" : 0,
+  "damageKind": "cosmicplasma",
+  "onlyHitTerrain" : false,
+  "persistentStatusEffects" : [ "percentenergyboostneg100" ],
+  "statusEffectArea" : [ [-16.0, 0], [-14.0, -14.0], [0, -16.0], [14.0, -14.0], [16.0, 0], [14.0, 14.0], [0, 16.0], [-14.0, 14.0] ],
+
+  "renderLayer" : "Player+1",
+  "orientationLocked" : true,
+  "fullbright" : true,
+  "emitters" : [],
+
+  "piercing" : true,
+  "bounces" : -1,
+
+  "scripts" : ["/projectiles/activeitems/staff/staffprojectile.lua"],
+
+  "persistentAudio" : "/sfx/projectiles/forcecage_loop.ogg"
+}

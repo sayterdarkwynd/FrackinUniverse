@@ -2,7 +2,7 @@
   "name" : "tundradark",
   "friendlyName" : "Tundra",
 
-  "statusEffects" : [ "biomecold" ],
+  "statusEffects" : [ "ffbiomecold1" ],
 
   "spawnProfile" : {
     "groups" : [
@@ -16,25 +16,30 @@
           [ 0.1111, "pulpin" ],
           [ 0.1111, "scandroid" ],
           [ 0.1111, "bobfae" ],
-          [ 0.1111, "bobot" ]
+          [ 0.1111, "bobot" ],
+          [ 0.05, "frostlit"],
+          [ 0.1, "pandorasboxnocttop" ],
+          [ 0.05, "pandorasboxadultnocttop" ]
         ]
       },
       {
         "select" : 1,
         "pool" : [
-          [ 0.4, "aurorabee" ],
-          [ 0.3, "driftbell" ],
-          [ 0.3, "shardwing" ]
+          [ 0.4, "snowdeer" ],
+          [ 0.2, "aurorabee" ],
+          [ 0.2, "bee_gelidburrower" ],
+          [ 0.1, "driftbell" ],
+          [ 0.1, "shardwing" ]
         ]
       },
       {
         "select" : 1,
         "pool" : "generatedGroundAggroDay"
-      }, 
+      },
       {
         "select" : 3,
         "pool" : "nightTerrors"
-      },      
+      },
       {
         "select" : 2,
         "pool" : "generatedGround"
@@ -74,74 +79,202 @@
 
   "skyOptions" : [
     {
-      // sunny earth days, red/orange sunrise and purple/red sunset
-      "mainColor" : [12, 0, 0],
+      "mainColor" : [60, 0, 0],
 
-      "morningColors" : [ [242, 120, 0], [255, 230, 176] ],
-      "dayColors" : [ [225, 248, 255], [255, 255, 255] ],
-      "eveningColors" : [ [125, 17, 158], [210, 52, 50] ],
-      "nightColors" : [ [24, 38, 53, 80], [58, 42, 70, 160] ],
+      "morningColors" : [ [30, 0, 0], [10, 0, 0] ],
+      "dayColors" : [ [60, 0, 0], [20, 0, 0] ],
+      "eveningColors" : [ [30, 0, 0], [10, 0, 0] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
 
-      "morningLightColor" : [140, 71, 0],
-      "dayLightColor" : [200, 200, 200],
-      "eveningLightColor" : [160, 120, 180],
-      "nightLightColor" : [40, 20, 60]
+      "morningLightColor" : [20, 8, 8],
+      "dayLightColor" : [40, 17, 17],
+      "eveningLightColor" : [20, 8, 8],
+      "nightLightColor" : [0, 0, 0]
     },
     {
-      // sunny green day, darkgreen/yellow sunrise and purple/blue sunset
-      "mainColor" : [24, 24, 0],
+      "mainColor" : [60, 0, 0],
 
-      "morningColors" : [ [68, 164, 84], [243, 201, 115] ],
-      "dayColors" : [ [220, 255, 242], [255, 255, 255] ],
-      "eveningColors" : [ [43, 17, 118], [244, 161, 231] ],
-      "nightColors" : [ [24, 38, 53, 80], [58, 42, 70, 160] ],
+      "morningColors" : [ [30, 0, 0], [10, 0, 0] ],
+      "dayColors" : [ [60, 0, 0], [20, 0, 0] ],
+      "eveningColors" : [ [30, 0, 0], [10, 0, 0] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
 
-      "morningLightColor" : [20, 91, 100],
-      "dayLightColor" : [200, 200, 200],
-      "eveningLightColor" : [160, 120, 180],
-      "nightLightColor" : [40, 20, 60]
+
+      "morningLightColor" : [28, 8, 8],
+      "dayLightColor" : [56, 17, 17],
+      "eveningLightColor" : [28, 8, 8],
+      "nightLightColor" : [0, 0, 0]
     },
     {
-      // sunny lilac day, blue/orange sunrise and blue/green sunset
-      "mainColor" : [44, 44, 0],
+      "mainColor" : [40, 0, 60],
 
-      "morningColors" : [ [0, 24, 55], [255, 140, 49] ],
-      "dayColors" : [ [241, 230, 255], [255, 255, 255] ],
-      "eveningColors" : [ [100, 86, 173], [0, 222, 73] ],
-      "nightColors" : [ [24, 38, 53, 80], [58, 42, 70, 160] ],
+      "morningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "dayColors" : [ [40, 0, 60], [10, 0, 20] ],
+      "eveningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
 
-      "morningLightColor" : [140, 71, 0],
-      "dayLightColor" : [200, 200, 200],
-      "eveningLightColor" : [160, 120, 180],
-      "nightLightColor" : [40, 20, 60]
+      "morningLightColor" : [17, 19, 56],
+      "dayLightColor" : [17, 19, 56],
+      "eveningLightColor" : [8, 9, 28],
+      "nightLightColor" : [0, 0, 0]
     },
     {
-      // sunny pink day, pink/peach sunrise and blue/pink sunset
-      "mainColor" : [76, 0, 22],
+      "mainColor" : [40, 0, 60],
 
-      "morningColors" : [ [197, 48, 174], [253, 161, 96] ],
-      "dayColors" : [ [255, 226, 227], [255, 255, 255] ],
-      "eveningColors" : [ [88, 42, 91], [175, 20, 50] ],
-      "nightColors" : [ [24, 38, 53, 80], [58, 42, 70, 160] ],
+      "morningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "dayColors" : [ [40, 0, 60], [10, 0, 20] ],
+      "eveningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
 
-      "morningLightColor" : [140, 71, 0],
-      "dayLightColor" : [200, 200, 200],
-      "eveningLightColor" : [180, 120, 120],
-      "nightLightColor" : [40, 20, 60]
+      "morningLightColor" : [8, 9, 28],
+      "dayLightColor" : [17, 19, 56],
+      "eveningLightColor" : [8, 9, 28],
+      "nightLightColor" : [0, 0, 0]
     },
     {
-      // sunny orange day, orange/yellow sunrise and green/orange sunset
-      "mainColor" : [0, 12, 12],
+      "mainColor" : [40, 0, 60],
 
-      "morningColors" : [ [174, 89, 47], [255, 197, 54] ],
-      "dayColors" : [ [255, 243, 231], [255, 255, 255] ],
-      "eveningColors" : [ [3, 90, 92], [250, 138, 77] ],
-      "nightColors" : [ [24, 38, 53, 80], [58, 42, 70, 160] ],
+      "morningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "dayColors" : [ [40, 0, 60], [10, 0, 20] ],
+      "eveningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
 
-      "morningLightColor" : [140, 71, 0],
-      "dayLightColor" : [200, 200, 200],
-      "eveningLightColor" : [180, 120, 120],
-      "nightLightColor" : [40, 20, 60]
+      "morningLightColor" : [13, 13, 15],
+      "dayLightColor" : [26, 26, 31],
+      "eveningLightColor" : [13, 13, 15],
+      "nightLightColor" : [0, 0, 0]
+    },
+    {
+      "mainColor" : [40, 0, 60],
+
+      "morningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "dayColors" : [ [40, 0, 60], [10, 0, 20] ],
+      "eveningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+      "morningLightColor" : [13, 13, 15],
+      "dayLightColor" : [26, 26, 31],
+      "eveningLightColor" : [13, 13, 15],
+      "nightLightColor" : [0, 0, 0]
+    },
+    {
+      "mainColor" : [40, 0, 60],
+
+      "morningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "dayColors" : [ [40, 0, 60], [10, 0, 20] ],
+      "eveningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+      "morningLightColor" : [14, 13, 15],
+      "dayLightColor" : [29, 26, 31],
+      "eveningLightColor" : [14, 13, 15],
+      "nightLightColor" : [0, 0, 0]
+    },
+    {
+      "mainColor" : [40, 0, 60],
+
+      "morningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "dayColors" : [ [40, 0, 60], [10, 0, 20] ],
+      "eveningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+      "morningLightColor" : [14, 7, 7],
+      "dayLightColor" : [28, 14, 14],
+      "eveningLightColor" : [14, 7, 7],
+      "nightLightColor" : [0, 0, 0]
+    },
+    {
+      "mainColor" : [0, 40, 60],
+
+      "morningColors" : [ [0, 20, 30], [0, 5, 10] ],
+      "dayColors" : [ [0, 40, 60], [0, 10, 20] ],
+      "eveningColors" : [ [0, 20, 30], [0, 5, 10] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+      "morningLightColor" : [12, 14, 12],
+      "dayLightColor" : [24, 28, 24],
+      "eveningLightColor" : [12, 14, 12],
+      "nightLightColor" : [0, 0, 0]
+    },
+    {
+      "mainColor" : [125, 125, 125],
+
+      "morningColors" : [ [89, 88, 88], [88, 90, 90] ],
+      "dayColors" : [ [79, 90, 80], [79, 90, 75] ],
+      "eveningColors" : [ [55, 50, 55], [55, 50, 55] ],
+      "nightColors" : [ [12, 20, 10], [12, 20, 10] ],
+
+      "morningLightColor" : [37, 55, 37],
+      "dayLightColor" : [25, 25, 55],
+      "eveningLightColor" : [15, 15, 15],
+      "nightLightColor" : [5, 5, 5]
+    },
+    //total darkness
+    {
+      "mainColor" : [0, 0, 0],
+
+      "morningColors" : [ [0, 0, 0], [0, 0, 0] ],
+      "dayColors" : [ [0, 0, 0], [0, 0, 0] ],
+      "eveningColors" : [ [0, 0, 0], [0, 0, 0] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+      "morningLightColor" : [0, 0, 0],
+      "dayLightColor" : [0, 0, 0],
+      "eveningLightColor" : [0, 0, 0],
+      "nightLightColor" : [0, 0, 0]
+    },
+    //black
+    {
+      "mainColor" : [20, 20, 20],
+
+      "morningColors" : [ [20, 20, 20], [20, 20, 20] ],
+      "dayColors" : [ [20, 20, 20], [20, 20, 20] ],
+      "eveningColors" : [ [10, 10, 10], [10, 10, 10] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+      "morningLightColor" : [20, 20, 20],
+      "dayLightColor" : [20, 20, 20],
+      "eveningLightColor" : [10, 10, 10],
+      "nightLightColor" : [0, 0, 0]
+    },
+    {
+      "mainColor" : [90, 90, 90],
+
+      "morningColors" : [ [70, 70, 70], [70, 70, 70] ],
+      "dayColors" : [ [50, 50, 50], [50, 50, 50] ],
+      "eveningColors" : [ [30, 30, 30], [30, 30, 30] ],
+      "nightColors" : [ [12, 20, 10], [12, 20, 10] ],
+
+      "morningLightColor" : [47, 66, 75],
+      "dayLightColor" : [20, 60, 60],
+      "eveningLightColor" : [10, 20, 20],
+      "nightLightColor" : [0, 0, 0]
+    },
+    {
+      "mainColor" : [20, 70, 20],
+
+      "morningColors" : [ [59, 59, 59], [59, 59, 59] ],
+      "dayColors" : [ [50, 50, 50], [50, 50, 50] ],
+      "eveningColors" : [ [30, 30, 30], [30, 30, 30] ],
+      "nightColors" : [ [15, 15, 15], [15, 15, 15] ],
+
+      "morningLightColor" : [59, 59, 59],
+      "dayLightColor" : [49, 49, 49],
+      "eveningLightColor" : [30, 30, 30],
+      "nightLightColor" : [15, 15, 15]
+    },
+    {
+      "mainColor" : [20, 75, 45],
+
+      "morningColors" : [ [79, 79, 79], [64, 100, 64] ],
+      "dayColors" : [ [79, 70, 80], [79, 75, 75] ],
+      "eveningColors" : [ [55, 90, 55], [55, 90, 55] ],
+      "nightColors" : [ [12, 50, 10], [12, 50, 10] ],
+
+      "morningLightColor" : [47, 97, 55],
+      "dayLightColor" : [20, 30, 10],
+      "eveningLightColor" : [20, 40, 90],
+      "nightLightColor" : [17, 40, 77]
     }
   ],
 
@@ -161,10 +294,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/arctic-exploration1.ogg", "/music/arctic-exploration2.ogg", "/music/haiku.ogg", "/music/m54.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/Pure.ogg","/music/Srinagar.ogg","/music/MelodyofMisery.ogg","/music/GlacialHorizon.ogg","/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/arctic-exploration1.ogg", "/music/arctic-exploration2.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/m54.ogg", "/music/nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/Pure.ogg","/music/SomethingIntoDarkness.ogg","/music/GlacialHorizon.ogg","/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 
@@ -173,6 +306,15 @@
     "grassModDensity" : 1,
 
     "items" : [
+	{
+	  "mode" : "floor",
+	  "priority" : 1,
+	  "variants" : 1,
+	  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+	  "type" : "microdungeon",
+	  "microdungeons" : [ "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "fuencounters", "fulabs", "fubandits", "newhumanmicro", "newavianmicro", "fuhives", "furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter" ]
+      },
       {
         "mode" : "floor",
         "priority" : 3.0,
@@ -235,6 +377,30 @@
       },
       {
         "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [
+            [0.15, "icicleshoot1" ],
+            [0.15, "icicleshoot2" ],
+            [0.15, "icicleshoot3" ],
+            [0.15, "icicleshoot4" ],
+            [0.15, "icicleshoot5" ],
+            [0.15, "icicleshoot6" ],
+            [0.15, "icebloom" ],
+            [0.15, "iceplant2" ],
+            [0.15, "icespikeff" ]
+            ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
         "priority" : 1,
         "variants" : 1,
         "distribution" : "/biomes/distributions.config:mainBiomeRareMicrodungeon",
@@ -250,6 +416,20 @@
 
         "type" : "microdungeon",
         "microdungeons" : [ "encounterdungeons" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "snowman" ] ],
+            "parameters" : { }
+          }
+        ]
       },
       {
         "mode" : "floor",
@@ -357,7 +537,7 @@
         "treeFoliageHueShiftMax" : 0,
         "treeStemHueShiftMax" : 12,
         "treeStemList" : [ "geometricstem", "icespherestem" ],
-        "treeFoliageList" : [ "" ]
+        "treeFoliageList" : [ "geometricfoliage", "icespherefoliage" ]
       },
       {
         "mode" : "floor",
@@ -439,7 +619,7 @@
         "mode" : "ceiling",
         "priority" : 2.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:denseMedium",
+        "distribution" : "/biomes/distributions.config:denseLarge",
 
         "type" : "tree",
         "treeFoliageHueShiftMax" : 180,
@@ -525,6 +705,34 @@
         "objectSets" : [
           {
             "pool" : [ [0.20, "icestalactite1" ], [0.20, "icestalactite2" ], [0.20, "icestalactite3" ], [0.20, "icestalactite4" ] ]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "iceshard1" ], [0.35, "iceshard2" ], [0.35, "iceshard3" ], [0.35, "iceshard4" ], [0.35, "iceshard5" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "geometricshard1" ], [0.35, "geometricshard2" ], [0.35, "geometricshard3" ], [0.35, "geometricshard4" ], [0.35, "geometricshard5" ] ],
+            "parameters" : { }
           }
         ]
       }

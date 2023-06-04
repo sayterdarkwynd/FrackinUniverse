@@ -1,25 +1,28 @@
 {
-  "itemName" : "darkale",
-  "rarity" : "Common",
-  "price" : 100,
-  "category" : "drink",
-  "inventoryIcon" : "darkale.png",
-  "description" : "A bottle of mild ale. The alcohol content is around 5%.",
-  "shortdescription" : "Mild Ale",
-  "handPosition" : [0, -4],
-  "effects" : [ [
-        {
-        "effect" : "defense2",
-	"duration" : 45
-        },
-		{
-        "effect" : "slow",
-        "duration" : 10
-		},
-		{
-		"effect" : "booze",
-		"amount" : 1,
-		"duration" : 15
-        }
-    ] ]
+  "itemName": "darkale",
+  "rarity": "Common",
+  "price": 500,
+  "category": "drink",
+  "inventoryIcon": "darkale.png",
+  "description": "A bottle of mild ale. The alcohol content is around 5%.\n^cyan;+^white;3 ^cyan;Defense ^gray;(^white;45s^gray;)\n^white;35% ^red;Slow ^gray;(^white;10s^gray;)\n^red;Buzzed ^gray;(^white;15s^gray;)^reset;",
+  "shortdescription": "Mild Ale",
+  "handPosition": [0, -4],
+  "tooltipKind": "food",
+  "effects": [
+    [
+      {
+        "effect": "defense2",
+        "duration": 45
+      },
+      {
+        "effect": "slow",
+        "duration": 10
+      },
+      {
+        "effect": "booze",
+        "duration": 15
+      }
+    ]
+  ],
+  "emitters" : [ "drinking" ]
 }

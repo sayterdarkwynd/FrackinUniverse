@@ -1,0 +1,58 @@
+{
+  "objectName" : "nightarbox1",
+  "colonyTags" : ["nightar","storage","commerce"],
+  "printable" : true,
+  "rarity" : "Legendary",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+
+  "category" : "storage",
+  "price" : 150,
+  "description" : "A mysterious Nightar box.",
+  "shortdescription" : "Small Nightar Box",
+  "race" : "nightar",
+  "health" : 1.5,
+
+  "apexDescription" : "It's small, but it's also very durable.",
+  "avianDescription" : "What a cute little box!",
+  "floranDescription" : "Floran can keep sssspoilss hidden here!",
+  "glitchDescription" : "Inquisitive. I wonder what prompted the scrolling lights design?",
+  "hylotlDescription" : "This small box is highly secure.",
+  "novakidDescription" : "It's a regular ol' box.",
+
+  "inventoryIcon" : "nightarbox1icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "nightarbox1.png:<color>.<frame>", "fullbright" : true }, { "image" : "nightarbox1lit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "imagePosition" : [-16, 0],
+      "frames" : 18,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "nightarbox1.png:<color>.<frame>", "fullbright" : true }, { "image" : "nightarbox1lit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [-16, 0],
+      "frames" : 18,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/woodenbox_close.ogg" ],
+  "slotCount" : 24,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+}

@@ -12,7 +12,7 @@
   "timeToLive" : 0.5,
   "damagePoly" : [ [-66, 0], [-66, -33], [0, -33], [66, -33], [66, 0], [66, 33], [0, 33], [-66, 33] ],
   "damageKind" : "fireplasma",
-  
+
   "actionOnReap" : [
 
     {
@@ -24,7 +24,16 @@
     }
 
   ],
-  "emitters" : [ "gausssmoke" ], 
-  "statusEffects" : [ "burning" ],
+  "actionOnCollide" : [
+    {
+      "action" : "projectile",
+      "type" : "firefinish2",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.35,
+      "angleAdjust" : 0
+    }
+  ],
+  "emitters" : [ "gausssmoke" ],
+  "statusEffects" : [ "burningnapalm" ],
   "hydrophobic" : true
 }

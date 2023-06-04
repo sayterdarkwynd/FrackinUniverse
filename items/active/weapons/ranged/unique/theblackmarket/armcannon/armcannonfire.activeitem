@@ -4,12 +4,13 @@
   "inventoryIcon" : "armcannonfire.png",
     "maxStack" : 1,
     "rarity" : "rare",
-  "description" : "Attaches to the forearm. Fires incendiary blasts.",
-  "shortdescription" : "^orange;Arm Cannon (Fire)",
+  "description" : "Attaches to the forearm. Fires incendiary blasts.
+^yellow;Counts as 'flamethrower' and 'machinepistol' for set bonuses^reset;",
+  "shortdescription" : "^orange;Arm Cannon (Fire)^reset;",
   "level" : 3,
-  "category" : "uniqueWeapon",
-  "itemTags" : ["weapon","ranged","machinepistol"],
-  "tooltipKind" : "gun",
+  "category" : "armcannon",
+  "itemTags" : ["weapon","ranged","upgradeableWeapon","armcannon","flamethrower","fire"],
+  "tooltipKind" : "gun2",
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
@@ -17,30 +18,29 @@
     "middle" : "armcannonfire.png",
     "barrel" : "",
     "muzzleFlash" : ""
-  },      
+  },
   "animationCustom" : {
-    "sounds" : { "fire" : [ "/items/active/weapons/ranged/unique/science/flamepistol/isn_flamethrower.wav" ] },
-    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }  
+    "sounds" : { "fire" : [ "/sfx/gun/plasma_mp2.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }
   },
 
-  "baseOffset" : [0.75, 0.34],
-  "muzzleOffset" : [1.0, 0.125],
-
+  "baseOffset" : [0.0, 0.34],
+  "muzzleOffset" : [1.0, 0.05],
+  "handGrip" : "wrap",
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "fire",
-  "learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ], 
-
+ // "learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ],
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.07,
-    "baseDps" : 5.5,
+    "fireTime" : 0.25,
+    "baseDps" : 6.5,
     "energyUsage" : 20,
     "fireType" : "auto",
     "inaccuracy" : 0.08,
     "projectileCount" : 1,
-    "projectileType" : "isn_flamethrower_shot",
+    "projectileType" : "fufireball",
     "projectileParameters" : {
       "speed" : 45
     },
@@ -73,6 +73,9 @@
       }
     }
   },
+
+  "critChance" : 2,
+  "critBonus" : 3,
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

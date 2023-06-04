@@ -1,0 +1,55 @@
+{
+  "type" : "grimdarkcultist",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "The Shadow will consume all!",
+            "I'll melt your face off!",
+            "The Corruption spreads!",
+            "Speak the shadow words of pain!",
+            "Nothing...everything!",
+            "No more tears. Only darkness."
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+    "runSpeed" : 20,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    }
+  },
+
+    "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 100.0
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "cultisthead", "parameters" : { "colorIndex" : 1 } } ],
+            "chest" : [ { "name" : "cultistchest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "cultistlegs", "parameters" : { "colorIndex" : 1 } } ],
+            "primary" : [
+              "npcdagger"
+            ]
+          }
+        ] ]
+    ]
+  }
+}

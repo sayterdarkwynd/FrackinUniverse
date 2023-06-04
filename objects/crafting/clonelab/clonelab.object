@@ -1,0 +1,35 @@
+{
+  "objectName" : "clonelab",
+  "rarity" : "Essential",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "category" : "storage",
+  "price" : 500,
+  "printable" : false,
+  "subtitle" : "Mash together tree genetics",
+  "description" : "Create modified versions of saplings for unique trees.",
+  "shortdescription" : "^orange;Cloning Lab^reset;",
+  "race" : "floran",
+
+  "orientations" : [
+    {
+      "dualImage" : "clonelab.png:<color>",
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "inventoryIcon" : "clonelabicon.png",
+  "openSounds" : [ "/sfx/objects/screen3.ogg" ],
+  "closeSounds" : [ "/sfx/objects/screen2.ogg" ],
+  "slotCount" : 2,
+  "uiConfig" : "/objects/crafting/clonelab/clonelab.config",
+  "containerCallback" : "checkSplice",
+  "scripts" : [ "clonelab.lua" ],
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  "items" : [],
+  "bannedFoliage" : ["geodefoliage"],
+  "bannedStems" : []
+}

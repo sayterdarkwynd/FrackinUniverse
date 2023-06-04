@@ -1,24 +1,25 @@
 {
-  "itemName" : "sweetscoop",
-  "rarity" : "Common",
-  "foodValue" : 40,
-  "price" : 60,
-  "inventoryIcon" : "sweetscoop.png",
-  "description" : "The tender bulb of a sweetscoop plant. Boosts energy and fills you up well.",
-  "shortdescription" : "Sweetscoop",
-  "category" : "food",
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 3.0,
-  "effects" : [ [
-    {
-        "effect" : "maxenergyscalingboostfood",
-        "duration" : 360
-    }
-  ] ],
-  "blockingEffects" : [
-    "wellfed"
-  ]
+	"itemName": "sweetscoop",
+	"inventoryIcon": "sweetscoop.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 60,
+	"foodValue": 40,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Energy x1.2^reset;: 2m \n^green;Type: Fruit^reset;",
+	"shortdescription": "Sweetscoop",
+
+	"eventCategory": "eventCrop",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"effects": [
+		[{
+			"effect": "maxenergyscalingboostfood",
+			"duration": 120
+		},
+		{
+			"effect": "fruit_food"
+		}]
+	],
+	"blockingEffects": ["wellfed"]
 }

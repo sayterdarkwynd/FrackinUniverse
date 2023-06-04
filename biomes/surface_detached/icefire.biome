@@ -1,20 +1,22 @@
 {
   "name" : "icefire",
   "friendlyName" : "Icefire Forest",
-  "hueShiftOptions" : [-40, -25, 0, 25, 40],
+  "hueShiftOptions" : [0],
   "spawnProfile" : {
     "groups" : [
       {
         "select" : 2,
-        "pool" : [ 
-          [ 0.1111, "crustoise" ],     
-          [ 0.1111, "capricoat" ],
-          [ 0.1111, "gleap" ],        
-          [ 0.1111, "ringram" ],
-          [ 0.1111, "pyromantle" ],     
-          [ 0.1111, "smoglin" ],
-          [ 0.1111, "spookit" ],
-          [ 0.1111, "peblit" ]
+        "pool" : [
+          [ 0.08, "ocumera" ],
+          [ 0.08, "capricoat" ],
+          [ 0.08, "cryopod" ],
+          [ 0.08, "pyropod" ],
+          [ 0.08, "ringram" ],
+          [ 0.08, "crisper" ],
+          [ 0.08, "smoglin" ],
+          [ 0.08, "pyromantle" ],
+          [ 0.08, "flintlit" ],
+          [ 0.08, "frostlit" ]
         ]
       },
       {
@@ -40,9 +42,9 @@
           "biomecoldImmunity" : {
             "baseValue" : 1.0
           },
-          "nitrogenfreezeImmunity" : {
+          "liquidnitrogenImmunity" : {
             "baseValue" : 1.0
-          },		  
+          },
           "lavaImmunity" : {
             "baseValue" : 1.0
           },
@@ -53,13 +55,34 @@
       }
     }
   },
+
+    "parallax" : "/parallax/surface/icefire.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/magma_day.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/magma_night.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/darkambient2a.ogg","/music/ambient_dark.ogg","/music/lava-exploration1.ogg", "/music/drosera.ogg", "/music/inviolate-loop.ogg", "/music/desert-exploration2.ogg", "/music/ultramarine.ogg", "/music/arctic-constellation1.ogg", "/music/body-electric-loop.ogg", "/music/mercury.ogg", "/music/Nomads.ogg", "/music/psyche.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/lava-exploration2.ogg", "/music/crystal-exploration2.ogg", "/music/mira.ogg", "/music/tranquility-base.ogg", "/music/arctic-constellation1.ogg", "/music/Nomads.ogg", "/music/psyche.ogg", "/music/casiopeia.ogg", "/music/error-0xbfaf000.ogg", "/music/accretion-disc.ogg" ]
+    }
+  },
+
     "mainBlock" : "iceblock3",
-    "subBlocks" : [ "magmarock", "redhotcobblestone", "iceblock4", "protorock" ],
-    "ores" : "depth3",
+    "subBlocks" : [ "magmarock", "redhotcobblestone", "iceblock4", "magmatile1" ],
+    "ores" : "surface",
 
 
   "surfacePlaceables" : {
-    "grassMod" : [ "icegrass2" ],
+    "grassMod" : [ "icegrass1", "icegrass2" ],
     "grassModDensity" : 0.9,
 
     "items" : [
@@ -72,7 +95,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [1, "wildcrystalplantseed" ],
               [1, "wildmelodistarseed" ],
               [1, "wildblizzberryseed" ]
@@ -92,12 +115,58 @@
         },
         {
           "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:minibiomeChests",
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "iceChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
         },
         {
           "mode" : "floor",
@@ -108,8 +177,8 @@
           "type" : "tree",
           "treeFoliageHueShiftMax" : 0,
           "treeStemHueShiftMax" : 15,
-          "treeStemList" : [ "icespherestem" ],
-          "treeFoliageList" : [ "icespherefoliage" ]
+          "treeStemList" : [ "icespherestem", "geometricstem" ],
+          "treeFoliageList" : [ "icespherefoliage", "geometricfoliage" ]
         },
         {
           "mode" : "floor",
@@ -124,7 +193,135 @@
               "parameters" : { }
             }
           ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "geometricshard1" ], [0.35, "geometricshard2" ], [0.35, "geometricshard3" ], [0.35, "geometricshard4" ], [0.35, "geometricshard5" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "smokeprimer" ] ],
+              "parameters" : { }
+            }
+          ]
         }
+    ]
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "snow" ],
+    "grassModDensity" : 0.0,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "iceChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "icesphere1" ], [0.35, "icesphere2" ], [0.35, "icesphere3" ], [0.35, "icesphere4" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "geometricshard1" ], [0.35, "geometricshard2" ], [0.35, "geometricshard3" ], [0.35, "geometricshard4" ], [0.35, "geometricshard5" ] ],
+            "parameters" : { }
+          }
+        ]
+      }
     ]
   }
 }

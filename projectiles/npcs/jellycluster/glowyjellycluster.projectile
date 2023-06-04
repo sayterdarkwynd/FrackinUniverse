@@ -1,0 +1,30 @@
+{
+  "projectileName" : "glowyjellycluster",
+  "image" : "jellycluster.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "physics" : "grenade",
+  "lightColor" : [128, 64, 128],
+  "pointLight" : false,
+  "timeToLive" : 4,
+  "bounces" : 0,
+  "emitters" : [ "jellyplasmarocket", "jellydrip" ],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "smallregularexplosion",
+      "inheritDamageFactor" : 1,
+      "angle" : 5
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/goocluster_pop.ogg" ]
+    }
+  ],
+  "power" : 5.0,
+  "speed" : 25,
+  "damageType" : "NoDamage",
+  "damageKind" : "lash"
+}
+

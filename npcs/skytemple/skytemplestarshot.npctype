@@ -1,0 +1,85 @@
+{
+  "type" : "skytemplestarshot",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Attack!"
+          ]
+        },
+        "avian" : {
+          "default" : [
+            "Protect the temple!",
+			"You dare intrude upon the most holy of places?",
+            "The divine light of Kluex empowers me to slay you!",
+            "The piercing wrath of the aether will chill you, fiend!"
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+      "runSpeed" : 18,
+	  "walkSpeed" : 18,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    },
+    "mass" : 2.0
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "aviantier6ahead", "parameters" : { "colorIndex" : 6 } }
+            ],
+            "back" : [
+              { "name" : "guardwingsback", "parameters" : { "colorIndex" : 6 } }
+            ],
+            "chest" : [
+              { "name" : "aviantier6achest", "parameters" : { "colorIndex" : 6 } }
+            ],
+            "legs" : [
+              { "name" : "aviantier6apants", "parameters" : { "colorIndex" : 6 } }
+            ],
+            "primary" : [
+              "npcpetcapturepod"
+            ],
+            "sheathedprimary" : [ { "name" : "npctungstenbow", "parameters" : { "primaryAbility" : { "projectileType" : "chargedlightarrow", "powerProjectileType" : "chargedlightarrow", "projectileParameters" : { "statusEffects" : ["frostsnare"] } } } } ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+	"knockbackStunTime" : {
+		"baseValue" : 0.0
+	},
+	"grit" : {
+		"baseValue" : 1.0
+	},
+      "maxHealth" : {
+        "baseValue" : 100.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 1.8
+      },
+	"stunImmunity" : {
+		"baseValue" : 1.0
+	},
+	  "maxEnergy" : {
+        "baseValue" : 400.0
+      }
+    }
+  }
+}

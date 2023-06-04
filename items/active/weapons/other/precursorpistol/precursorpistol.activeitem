@@ -1,0 +1,85 @@
+{
+	"itemName": "precursorpistol",
+	"price": 1600,
+	"inventoryIcon": "precursorpistol.png",
+	"maxStack": 1,
+	"rarity": "rare",
+	"description": "Projects ^orange;Regen Zones^reset; that:\n^green;Provide Defense. Convert Energy to Health.^reset;\n^red;Reduce Energy and Shield Regen.^reset;",
+	"shortdescription": "Precursor Protector",
+	"category": "bioweapon",
+	"level": 7,
+	"tooltipKind": "gununique",
+	"weaponType": "pistol",
+	"itemTags": ["ranged", "pistol", "precursor", "bioweapon", "theaUninfusable", "upgradeableWeapon"],
+	"twoHanded": false,
+
+	"animation": "/items/active/weapons/ranged/unique/fugun.animation",
+	"animationParts": {
+		"butt": "",
+		"middle": "precursorpistol.png",
+		"middlefullbright": "precursorpistolfullbright.png",
+		"barrel": "",
+		"muzzleFlash": "/animations/muzzleflash/matterblastmuzzlered.png"
+	},
+	"animationCustom": {
+		"animatedParts": {
+			"parts": {
+				"middlefullbright": {
+					"properties": {
+						"offset": [0.5, 0.2]
+					}
+				}
+			}
+		},
+		"sounds": {
+			"fire": ["/sfx/weapons/biolaunch.ogg"]
+		}
+	},
+
+	"baseOffset": [0.5, 0.2],
+	"muzzleOffset": [0.8, 0.125],
+
+	"scripts": ["/items/active/weapons/ranged/gun.lua"],
+
+	"elementalType": "radioactive",
+
+	"primaryAbility": {
+		"scripts": ["/items/active/weapons/ranged/abilities/precursorhealgun/effectzone.lua"],
+		"class": "EffectZone",
+		"fireTime": 3.0,
+		"baseDps": 0,
+		"energyUsage": 1.0,
+		"inaccuracy": 0,
+		"fireType": "auto",
+		"maxCastRange":4,
+		"abilityCooldown":3.0,
+		"projectileType": "healingzone2",
+		"projectileParameters": {
+			"speed": 0,
+			"timeToLive": 3
+		}
+	},
+	"particleEmitters": {
+		"muzzleFlash": {
+			"particles": [{
+					"particle": "dripslime",
+					"offset": [0.0, 0.0]
+				},
+				{
+					"particle": "dripslime",
+					"offset": [0.0, 0.0]
+				},
+				{
+					"particle": "dripslime",
+					"offset": [0.0, 0.0]
+				}
+			]
+		}
+	},
+
+	"critChance": 0,
+	"critBonus": 0,
+
+	"builder": "/items/buildscripts/buildunrandweapon.lua"
+
+}

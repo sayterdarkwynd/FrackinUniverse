@@ -1,0 +1,68 @@
+{
+  "projectileName" : "crystalstickyspikes",
+  "physics" : "wallsticky",
+  "timeToLive" : 5,
+  "image" : "crystalspikes.png",
+  "animationCycle" : 0.5,
+  "animationLoops" : false,
+  "lightColor" : [255, 255, 255],
+  "frameNumber" : 5,
+
+  "periodicActions" : [
+    {
+      "time" : 0.4,
+      "action" : "loop",
+      "count" : 2,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/shards/crystalshard.animation",
+            "initialVelocity" : [0.0, 7.0],
+            "finalVelocity" : [0.0, 3.0],
+            "approach" : [0.3, 60],
+            "timeToLive" : 0.7,
+            "layer" : "back",
+            "size" : 0.4,
+            "collidesForeground" : true,
+            "variance" : {
+            "position" : [0.5, 0.5],
+            "size" : 0.1,
+            "initialVelocity" : [5, 3],
+            "finalVelocity" : [0, 0],
+            "rotation" : 180,
+            "angularVelocity" : 180
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "loop",
+      "count" : 4,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "crystalshard"
+        }
+      ]
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/ice_barrier_break1.ogg", "/sfx/projectiles/ice_barrier_break2.ogg", "/sfx/projectiles/ice_barrier_break3.ogg", "/sfx/projectiles/ice_barrier_break4.ogg", "/sfx/projectiles/ice_barrier_break5.ogg", "/sfx/projectiles/ice_barrier_break6.ogg", "/sfx/projectiles/ice_barrier_break7.ogg", "/sfx/projectiles/ice_barrier_break8.ogg", "/sfx/projectiles/ice_barrier_break9.ogg", "/sfx/projectiles/ice_barrier_break10.ogg" ]
+    }
+  ],
+  "speed" : 0,
+  "power" : 5,
+  "damageKind" : "cosmic",
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "damageRepeatTimeout" : 0.5,
+
+  "fullbright" : true,
+
+  "bounces" : -1,
+  "piercing" : true
+}

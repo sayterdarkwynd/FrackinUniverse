@@ -1,0 +1,24 @@
+{
+	"itemName": "cinnamonchallenge",
+	"rarity": "uncommon",
+	"price": 25,
+	"category": "preparedFood",
+	"inventoryIcon": "cinnamonchallenge.png",
+	"description": "Can YOU endure the challenge? \n^red;Burning ^reset;30s",
+	"shortdescription": "The Cinnamon Challenge",
+	"effects": [
+        [
+        {
+            "effect": "burning",
+            "duration": 30
+        }
+        ]
+    ],
+	"foodValue": 10,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 0.05,
+	"blockingEffects": ["wellfed"]
+}

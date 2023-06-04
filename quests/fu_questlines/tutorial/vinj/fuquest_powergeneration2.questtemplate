@@ -1,0 +1,26 @@
+{
+	"id" : "fuquest_powergeneration2",
+	"prerequisites" : [ "fuquest_powergeneration1", "create_electronics" ],
+	"title" : "Sifters",
+	"text" : "A ^orange;Wooden Sifter^reset; requires power, but allows you to toss in ^orange;Sand^reset;, ^orange;Dirt^reset; and ^green;other loose materials^reset; and sift for hidden goodies. Very useful. Though the wood sifter is quite slow, one cannot complain about free resources. Try building a ^orange;Wooden Sifter^reset; now.",
+	"completionText" : "If you want to step up your game, try creating a ^orange;Item Transference Device^reset; and a ^orange;Storage Bridge^reset;, then link them to the ^green;Sifter^reset;! You'll be able to automatically transfer from a crafting station to a storage container!",
+	"rewards" : [ [ [ "fuscienceresource", 50 ] ] ],
+	"moneyRange" : [10, 10],
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "player"
+		},
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "fu_woodensifter",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
+}

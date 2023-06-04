@@ -1,0 +1,633 @@
+{
+  "name": "fuguardian",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/monster.lua",
+    "/scripts/actions/entity.lua",
+    "/scripts/behavior.lua",
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/world.lua",
+    "/scripts/actions/notification.lua",
+    "/scripts/actions/status.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/actions/builders.lua",
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/projectiles.lua"
+  ],
+  "parameters": {
+    "actions": []
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "setDamageBar",
+        "type": "action",
+        "name": "setDamageBar",
+        "parameters": {
+          "type": {"value": "None"}
+        }
+      },
+      {
+        "title": "setAggressive",
+        "type": "action",
+        "name": "setAggressive",
+        "parameters": {
+          "aggressive": {"value": true}
+        }
+      },
+      {
+        "title": "setNumber",
+        "type": "action",
+        "name": "setNumber",
+        "parameters": {
+          "number": {"value": 0}
+        },
+        "output": {
+          "number": "heading"
+        }
+      },
+      {
+        "title": "faceDirection",
+        "type": "action",
+        "name": "faceDirection",
+        "parameters": {
+          "direction": {"value": 1}
+        }
+      },
+      {
+        "title": "setDying",
+        "type": "action",
+        "name": "setDying",
+        "parameters": {
+          "shouldDie": {"value": false}
+        }
+      },
+      {
+        "title": "dynamic",
+        "type": "composite",
+        "name": "dynamic",
+        "parameters": {},
+        "children": [
+          {
+            "title": "failer",
+            "type": "decorator",
+            "name": "failer",
+            "parameters": {},
+            "child": {
+              "title": "sequence",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "succeeder",
+                  "type": "decorator",
+                  "name": "succeeder",
+                  "parameters": {},
+                  "child": {
+                    "title": "filter",
+                    "type": "decorator",
+                    "name": "filter",
+                    "parameters": {
+                      "list": {"key": "allMinions"},
+                      "type": {"value": "entity"}
+                    },
+                    "child": {
+                      "title": "entityExists",
+                      "type": "action",
+                      "name": "entityExists",
+                      "parameters": {
+                        "entity": {"key": "filterItem"}
+                      }
+                    }
+                  }
+                },
+                {
+                  "title": "receivedNotification",
+                  "type": "action",
+                  "name": "receivedNotification",
+                  "parameters": {
+                    "type": {"value": "newMinion"}
+                  },
+                  "output": {
+                    "target": "newMinion"
+                  }
+                },
+                {
+                  "title": "listPush",
+                  "type": "action",
+                  "name": "listPush",
+                  "parameters": {
+                    "entity": {"key": "newMinion"},
+                    "list": {"key": "allMinions"}
+                  },
+                  "output": {
+                    "list": "allMinions"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "title": "parallel",
+            "type": "composite",
+            "name": "parallel",
+            "parameters": {
+              "fail": {"value": 1},
+              "success": {"value": -1}
+            },
+            "children": [
+              {
+                "title": "resourcePercentage",
+                "type": "action",
+                "name": "resourcePercentage",
+                "parameters": {
+                  "percentage": {"value": 0},
+                  "resource": {"value": "health"}
+                }
+              },
+              {
+                "title": "parallel",
+                "type": "composite",
+                "name": "parallel",
+                "parameters": {
+                  "fail": {"value": 1},
+                  "success": {"value": -1}
+                },
+                "children": [
+                  {
+                    "title": "monster-targeting",
+                    "type": "module",
+                    "name": "monster-targeting",
+                    "parameters": {
+                      "targetQueryRange": {"value": 200},
+                      "keepTargetInRange": {"value": 200},
+                      "keepTargetInSight": {"value": true},
+                      "queryTargets": {"value": true},
+                      "targetOnDamage": {"value": true},
+                      "targetOutOfSightTime": {"value": 0.1}
+                    }
+                  },
+                  {
+                    "title": "controlDown",
+                    "type": "action",
+                    "name": "controlDown",
+                    "parameters": {}
+                  },
+                  {
+                    "title": "sequence",
+                    "type": "composite",
+                    "name": "sequence",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "timer",
+                        "type": "action",
+                        "name": "timer",
+                        "parameters": {
+                          "time": {"value": 0.5}
+                        }
+                      },
+                      {
+                        "title": "setDamageBar",
+                        "type": "action",
+                        "name": "setDamageBar",
+                        "parameters": {
+                          "type": {"value": "Special"}
+                        }
+                      },
+                      {
+                        "title": "battleMusic",
+                        "type": "action",
+                        "name": "battleMusic",
+                        "parameters": {
+                          "enable": {"value": true}
+                        }
+                      },
+                      {
+                        "title": "timer",
+                        "type": "action",
+                        "name": "timer",
+                        "parameters": {
+                          "time": {"value": 1}
+                        }
+                      },
+                      {
+                        "title": "repeater",
+                        "type": "decorator",
+                        "name": "repeater",
+                        "parameters": {
+                          "maxLoops": {"value": -1},
+                          "untilSuccess": {"value": false}
+                        },
+                        "child": {
+                          "title": "succeeder",
+                          "type": "decorator",
+                          "name": "succeeder",
+                          "parameters": {},
+                          "child": {
+                            "title": "parallel",
+                            "type": "composite",
+                            "name": "parallel",
+                            "parameters": {
+                              "fail": {"value": 1},
+                              "success": {"value": -1}
+                            },
+                            "children": [
+                              {
+                                "title": "entityExists",
+                                "type": "action",
+                                "name": "entityExists",
+                                "parameters": {
+                                  "entity": {"key": "target"}
+                                }
+                              },
+                              {
+                                "title": "selectorActions",
+                                "type": "action",
+                                "name": "selectorActions",
+                                "parameters": {
+                                  "actions": {"key": "<actions>"},
+                                  "dynamic": {"value": true}
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "failer",
+            "type": "decorator",
+            "name": "failer",
+            "parameters": {},
+            "child": {
+              "title": "sequence",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "each",
+                  "type": "decorator",
+                  "name": "each",
+                  "parameters": {
+                    "list": {"key": "newMinions"},
+                    "type": {"value": "entity"}
+                  },
+                  "child": {
+                    "title": "sendEntityMessage",
+                    "type": "action",
+                    "name": "sendEntityMessage",
+                    "parameters": {
+                      "entity": {"key": "eachItem"},
+                      "message": {"value": "despawn"}
+                    }
+                  }
+                },
+                {
+                  "title": "each",
+                  "type": "decorator",
+                  "name": "each",
+                  "parameters": {
+                    "list": {"key": "allMinions"},
+                    "type": {"value": "entity"}
+                  },
+                  "child": {
+                    "title": "sendEntityMessage",
+                    "type": "action",
+                    "name": "sendEntityMessage",
+                    "parameters": {
+                      "entity": {"key": "eachItem"},
+                      "message": {"value": "despawn"}
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "title": "parallel",
+            "type": "composite",
+            "name": "parallel",
+            "parameters": {
+              "fail": {"value": 1},
+              "success": {"value": -1}
+            },
+            "children": [
+              {
+                "title": "resourcePercentage",
+                "type": "action",
+                "name": "resourcePercentage",
+                "parameters": {
+                  "percentage": {"value": 0},
+                  "resource": {"value": "health"}
+                }
+              },
+              {
+                "title": "sequence",
+                "type": "composite",
+                "name": "sequence",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "flyToPosition",
+                    "type": "action",
+                    "name": "flyToPosition",
+                    "parameters": {
+                      "position": {"key": "spawn"},
+                      "tolerance": {"value": 1}
+                    }
+                  },
+                  {
+                    "title": "setDamageBar",
+                    "type": "action",
+                    "name": "setDamageBar",
+                    "parameters": {
+                      "type": {"value": "None"}
+                    }
+                  },
+                  {
+                    "title": "battleMusic",
+                    "type": "action",
+                    "name": "battleMusic",
+                    "parameters": {
+                      "enable": {"value": false}
+                    }
+                  },
+                  {
+                    "title": "setResourcePercentage",
+                    "type": "action",
+                    "name": "setResourcePercentage",
+                    "parameters": {
+                      "percentage": {"value": 1},
+                      "resource": {"value": "health"}
+                    }
+                  },
+                  {
+                    "title": "setVelocity",
+                    "type": "action",
+                    "name": "setVelocity",
+                    "parameters": {
+                      "velocity": {"value": [0, 0]}
+                    }
+                  },
+                  {
+                    "title": "runner",
+                    "type": "action",
+                    "name": "runner",
+                    "parameters": {}
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "timer",
+                "type": "action",
+                "name": "timer",
+                "parameters": {
+                  "time": {"value": 0.5}
+                },
+                "output": {
+                  "ratio": "ratio"
+                }
+              },
+              {
+                "title": "setDamageBar",
+                "type": "action",
+                "name": "setDamageBar",
+                "parameters": {
+                  "type": {"value": "None"}
+                }
+              },
+              {
+                "title": "battleMusic",
+                "type": "action",
+                "name": "battleMusic",
+                "parameters": {
+                  "enable": {"value": false}
+                }
+              },
+              {
+                "title": "playSound",
+                "type": "action",
+                "name": "playSound",
+                "parameters": {
+                  "loops": {"value": 0},
+                  "sound": {"value": "deathFade"}
+                }
+              },
+              {
+                "title": "addEphemeralEffect",
+                "type": "action",
+                "name": "addEphemeralEffect",
+                "parameters": {
+                  "name": {"value": "guardiandeath"}
+                }
+              },
+              {
+                "title": "parallel",
+                "type": "composite",
+                "name": "parallel",
+                "parameters": {
+                  "fail": {"value": 1},
+                  "success": {"value": -1}
+                },
+                "children": [
+                  {
+                    "title": "timer",
+                    "type": "action",
+                    "name": "timer",
+                    "parameters": {
+                      "time": {"value": 6}
+                    },
+                    "output": {
+                      "ratio": "ratio"
+                    }
+                  },
+                  {
+                    "title": "sequence",
+                    "type": "composite",
+                    "name": "sequence",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "lerp",
+                        "type": "action",
+                        "name": "lerp",
+                        "parameters": {
+                          "max": {"value": 0.25},
+                          "min": {"value": 0},
+                          "ratio": {"key": "ratio"}
+                        },
+                        "output": {
+                          "number": "shake"
+                        }
+                      },
+                      {
+                        "title": "random",
+                        "type": "action",
+                        "name": "random",
+                        "parameters": {
+                          "max": {"key": "shake"},
+                          "min": {"value": 0}
+                        },
+                        "output": {
+                          "number": "x"
+                        }
+                      },
+                      {
+                        "title": "random",
+                        "type": "action",
+                        "name": "random",
+                        "parameters": {
+                          "max": {"key": "shake"},
+                          "min": {"value": 0}
+                        },
+                        "output": {
+                          "number": "y"
+                        }
+                      },
+                      {
+                        "title": "resetTransformationGroup",
+                        "type": "action",
+                        "name": "resetTransformationGroup",
+                        "parameters": {
+                          "transformationGroup": {"value": "all"}
+                        }
+                      },
+                      {
+                        "title": "translateTransformationGroup",
+                        "type": "action",
+                        "name": "translateTransformationGroup",
+                        "parameters": {
+                          "offset": {"value": ["x", "y"]},
+                          "transformationGroup": {"value": "all"}
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "playSound",
+                "type": "action",
+                "name": "playSound",
+                "parameters": {
+                  "loops": {"value": 0},
+                  "sound": {"value": "deathShrink"}
+                }
+              },
+              {
+                "title": "parallel",
+                "type": "composite",
+                "name": "parallel",
+                "parameters": {
+                  "fail": {"value": 1},
+                  "success": {"value": -1}
+                },
+                "children": [
+                  {
+                    "title": "timer",
+                    "type": "action",
+                    "name": "timer",
+                    "parameters": {
+                      "time": {"value": 0.1}
+                    },
+                    "output": {
+                      "ratio": "ratio"
+                    }
+                  },
+                  {
+                    "title": "sequence",
+                    "type": "composite",
+                    "name": "sequence",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "lerp",
+                        "type": "action",
+                        "name": "lerp",
+                        "parameters": {
+                          "max": {"value": 0.05},
+                          "min": {"value": 1},
+                          "ratio": {"key": "ratio"}
+                        },
+                        "output": {
+                          "number": "scale"
+                        }
+                      },
+                      {
+                        "title": "resetTransformationGroup",
+                        "type": "action",
+                        "name": "resetTransformationGroup",
+                        "parameters": {
+                          "transformationGroup": {"value": "all"}
+                        }
+                      },
+                      {
+                        "title": "scaleTransformationGroup",
+                        "type": "action",
+                        "name": "scaleTransformationGroup",
+                        "parameters": {
+                          "scale": {"value": ["scale", "scale"]},
+                          "transformationGroup": {"value": "all"}
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "spawnProjectile",
+                "type": "action",
+                "name": "spawnProjectile",
+                "parameters": {
+                  "angle": {"value": 0},
+                  "offset": {"value": [0, 0]},
+                  "position": {"key": "self"},
+                  "projectileConfig": {"value": {}},
+                  "projectileType": {"value": "fuguardiandeathexplosionspawner"},
+                  "scalePower": {"value": false},
+                  "sourceEntity": {"key": "self"},
+                  "trackSource": {"value": false}
+                }
+              },
+              {
+                "title": "setDying",
+                "type": "action",
+                "name": "setDying",
+                "parameters": {
+                  "shouldDie": {"value": true}
+                }
+              },
+              {
+                "title": "runner",
+                "type": "action",
+                "name": "runner",
+                "parameters": {}
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

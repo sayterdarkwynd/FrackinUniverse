@@ -1,0 +1,43 @@
+{
+  "objectName" : "swtjc_wp_countdowndelay",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "Only activates when its input node remains live for a set amount of time.",
+  "shortdescription" : "Countdown Delay Timer",
+  "race" : "human",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "floranDescription" : "Only activatesss when itsss input node remainsss live for a ssset amount of time.",
+  "glitchDescription" : "Informative. Only activates when its input node remains live for a set amount of time.",
+
+  "inventoryIcon" : "swtjc_wp_delaytimer5.png:default.5.on",
+  "orientations" : [
+    {
+      "image" : "swtjc_wp_delaytimer5.png:<color>.5.on",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/logic/swtjc_wp_countdowndelay.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/wired/logic/swtjc_wp_delaytimer5.animation",
+
+  "animationParts" : {
+    "timer" : "swtjc_wp_delaytimer5.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "inputNodes" : [ [-1, 0] ],
+  "outputNodes" : [ [0, -1] ],
+
+  // this value must be an integer between 1 and 5
+  "duration" : 5
+}

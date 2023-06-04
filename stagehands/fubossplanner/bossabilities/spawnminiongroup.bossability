@@ -1,0 +1,67 @@
+{
+  "name" : "fuspawnMinionGroup",
+  "preconditions" : [
+    ["!Minion", ["distract"]],
+    ["Ability", "MovingAbility"],
+    ["!Move"]
+  ],
+  "postconditions" : [
+    ["Minion", ["distract"]],
+    ["Move"],
+    ["Ability", "StaticAbility"],
+    ["!Ability", "MovingAbility"]
+  ],
+  "statemodifiers" : [
+    ["Ability", "LongRange"]
+  ],
+  "objectives" : [
+    ["Move"]
+  ],
+
+  "actions" : [ "spawnminiongroup" ], // actions to apply the binding to
+  "behaviorHandler" : "spawnMinionGroupHandler",
+
+  "rangedAttack" : {
+    "projectileTypes" : {
+      "<element>guardianpellet" : {
+        "count" : 5,
+        "speed" : 45,
+        "explosion" : "/projectiles/boss/guardianboss/guardianexplosion/<element>guardianexplosion.config",
+        "explosiveCount" : 4,
+        "explosiveSpread" : 3
+      },
+      "<element>guardianbullet" : {
+        "count" : 5,
+        "speed" : 35,
+        "explosion" : "/projectiles/boss/guardianboss/guardianlargeexplosion/<element>guardianlargeexplosion.config",
+        "explosiveCount" : 1,
+        "explosiveSpread" : 0 // because count is 1 don't add inaccuracy
+      }
+    },
+
+    "power" : 10,
+
+    "explosiveChance" : 0.5,
+
+    "repeatChance" : 0.67,
+    "fireInterval" : 0.02,
+
+    "trackChance" : 0.5,
+    "trackFireInterval" : 0.05,
+
+    "burstFuzzAngle" : 0.15,
+    "burstFuzzSpeed" : 5,
+
+    "cooldown" : 3
+  },
+
+  "sequenceActions" : [
+    {
+      "name" : "spawnminiongroup",
+      "parameters" : {
+        "spawns" : null, // populated by spawnMinionGroupHandler
+        "minionGroup" : {"key" : "minions"}
+      }
+    }
+  ]
+}

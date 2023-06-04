@@ -3,13 +3,14 @@
   "price" : 500,
   "inventoryIcon" : "isn_napalmsprayer.png",
     "maxStack" : 1,
-    "rarity" : "rare",
-  "description" : "A nasty flame weapon guaranteed to cook, or your money back.",
+    "rarity" : "uncommon",
+  "description" : "Huge gouts of dangerous napalm. Keep away from children.
+^yellow;Inflicts burning^reset;",
   "shortdescription" : "Scorchburst",
-  "level" : 4,
-  "category" : "uniqueWeapon",
-  "itemTags" : ["weapon","ranged","flamethrower"],
-  "tooltipKind" : "gun",
+  "level" : 3,
+  "category" : "flamethrower",
+  "itemTags" : ["weapon","ranged","flamethrower", "upgradeableWeapon"],
+  "tooltipKind" : "gun2",
   "twoHanded" : true,
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
@@ -17,14 +18,14 @@
     "middle" : "isn_napalmsprayer.png",
     "barrel" : "",
     "muzzleFlash" : ""
-  },      
+  },
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/weapons/firearrow.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }  
+    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }
   },
 
   "baseOffset" : [1.4, 0.34],
-  "muzzleOffset" : [4, 0.125],
+  "muzzleOffset" : [2.4, 0.2],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -33,15 +34,37 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.2,
-    "baseDps" : 7.8,
-    "energyUsage" : 20,
+    "fireTime" : 0.9,
+    "baseDps" : 7.2,
+    "energyUsage" : 32,
     "fireType" : "auto",
     "inaccuracy" : 0.02,
     "projectileCount" : 1,
     "projectileType" : "isn_napalmsprayer",
     "projectileParameters" : {
-      "speed" : 52
+      "speed" : 52,
+        "actionOnReap" : [
+        { "action" : "liquid", "liquid" : "fuironliquid", "quantity" : 0.2 },
+          {
+            "action" : "config",
+            "file" : "/projectiles/explosions/burstexplosion/fireburstexplosion.config"
+          }
+        ] ,
+    "periodicActions":[
+      {
+      "time":0.01,
+      "action":"projectile",
+      "type":"firelasershot3",
+      "config":{
+        "speed":0,
+        "physics" : "laser",
+        "bounces" :-1,
+        "timeToLive":0.4,
+        "power":1,
+        "knockback":0
+        }
+      }
+    ]
     },
     "stances" : {
       "idle" : {
@@ -62,9 +85,9 @@
         "allowFlip" : false
       },
       "cooldown" : {
-        "duration" : 0.0,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
+        "duration" : 0.1,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
         "twoHanded" : true,
 
         "allowRotate" : false,
@@ -72,6 +95,8 @@
       }
     }
   },
-
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "critChance" : 2,
+  "critBonus" : 8,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  "altAbilityType" : "funapalmspray"
 }

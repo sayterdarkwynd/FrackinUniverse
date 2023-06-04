@@ -2,23 +2,25 @@
   "itemName" : "lightale",
   "rarity" : "Common",
   "category" : "drink",
-  "price" : 100,
+  "price" : 500,
   "inventoryIcon" : "lightale.png",
-  "description" : "A bottle of very pale ale. The alcohol content is low.",
+  "description" : "A bottle of very pale ale\n^cyan;+^white;3 ^cyan;Defense ^gray;(^white;45s^gray;)\n^white;35% ^red;Slow ^gray;(^white;10s^gray;)\n^red;Drunk ^gray;(^white;15s^gray;)^reset;",
   "shortdescription" : "Pale Ale",
   "handPosition" : [0, -4],
+  "tooltipKind" : "food",
   "effects" : [ [
-        {
-        "effect" : "defense2",
-	"duration" : 45
-        },
+    {
+      "effect" : "defense2",
+      "duration" : 45
+    },
 		{
-        "effect" : "slow",
-        "duration" : 10
+      "effect" : "slow",
+      "duration" : 10
 		},
 		{
-		"effect" : "booze",
-		"duration" : 15
-        }
-    ] ]
+      "effect" : "booze",
+      "duration" : 15
+    }
+  ] ],
+  "emitters" : [ "drinking" ]
 }

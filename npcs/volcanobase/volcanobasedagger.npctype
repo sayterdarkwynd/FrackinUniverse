@@ -1,0 +1,54 @@
+{
+  "type" : "volcanobasedagger",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Dark. The Master shall not be disturbed!",
+			"Confident. You cannot withstand our power!",
+			"Fanatical. The tower is invincible!",
+            "Enraged. Death to intruders!"
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+    "runSpeed" : 20,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "apextier2head", "parameters" : { "colorIndex" : 1 } } ],
+            "chest" : [ { "name" : "glitchtier4chest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "glitchtier4pants", "parameters" : { "colorIndex" : 1 } } ],
+            "primary" : [
+              "raredagger"
+            ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 100.0
+      }
+    }
+  }
+}

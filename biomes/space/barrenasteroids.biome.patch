@@ -1,0 +1,68 @@
+[
+
+	[{
+		"op": "replace",
+		"path": "/ores",
+		"value": "ff_asteroidstandardores"
+	}],
+
+	[{
+			"op": "replace",
+			"path": "/spawnProfile/groups",
+			"value": []
+		},
+		{
+			"op": "add",
+			"path": "/spawnProfile/groups/-",
+			"value": {
+				"select": 2,
+				"pool": [
+					[0.005, "asteroidhorror"],
+					[0.005, "asteroidtentaclecometspore"],
+					[0.005, "asteroidpeblit"],
+					[0.005, "asteroidtintic"],
+					[0.005, "asteroidservitor"],
+					[0.005, "asteroidminidrone"],
+					[0.005, "asteroidscandroid"],
+					[0.005, "asteroidskimbus"],
+					[0.005, "asteroidwisper7"],
+					[0.005, "trifangle"],
+					[0.005, "twigun"],
+					[0.005, "omnicannon"],
+					[0.005, "chiropterror"],
+					[0.005, "heavydrone"],
+					[0.004, "skywhale2"]
+				]
+			}
+		}
+	],
+
+	[{
+		"op": "test",
+		"path": "/surfacePlaceables",
+		"inverse": true
+	}, {
+		"op": "add",
+		"path": "/surfacePlaceables",
+		"value": {
+			"grassMod": ["sand"],
+			"grassModDensity": 0.0,
+
+			"items": []
+		}
+	}],
+	[{
+		"op": "test",
+		"path": "/undergroundPlaceables",
+		"inverse": true
+	}, {
+		"op": "add",
+		"path": "/undergroundPlaceables",
+		"value": {
+			"grassMod": ["sand"],
+			"grassModDensity": 0.0,
+
+			"items": []
+		}
+	}]
+]

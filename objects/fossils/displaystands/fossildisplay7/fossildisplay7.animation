@@ -1,0 +1,208 @@
+{
+  "globalTagDefaults" : {
+    "fossil1" : "",
+    "fossil2" : "",
+    "fossil3" : "",
+    "fossil4" : "",
+    "fossil5" : "",
+
+    "completion" : "incomplete"
+  },
+
+
+  "animatedParts" : {
+    "stateTypes" : {
+
+      "displayStand" : {
+        "default" : "incomplete",
+        "states" : {
+          "incomplete" : {},
+          "completeSet" : {}
+        }
+      },
+
+      "displayfossils" : {
+        "default" : "display",
+        "states" : {
+
+          "display" : {}
+        }
+      }
+    },
+
+    "parts" : {
+
+      "standRear" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : -1,
+          "offset" : [0, 0]
+        },
+
+        "partStates" : {
+          "displayStand" : {
+
+
+            "incomplete" : {
+              "properties" : {
+                "image" : "fossildisplay7.png:back"
+              }
+            },
+
+            "completeSet" : {
+              "properties" : {
+                "image" : "fossildisplay7.png:backComplete"
+              }
+            }
+          }
+        }
+      },
+      "standFront" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 6,
+          "offset" : [0, 0]
+        },
+
+        "partStates" : {
+          "displayStand" : {
+
+
+            "incomplete" : {
+              "properties" : {
+                "image" : "fossildisplay7.png:front"
+              }
+            },
+
+            "completeSet" : {
+              "properties" : {
+                "image" : "fossildisplay7.png:frontComplete"
+              }
+            }
+          }
+        }
+      },
+
+      "fossil1" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 5,
+          "transformationGroups" : [ "fossil1transform" ]
+        },
+
+        "partStates" : {
+
+          "displayfossils" : {
+
+            "display" : {
+              "properties" : {
+                "image" : "<fossil1>"
+              }
+            }
+          }
+        }
+      },
+
+      "fossil2" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 4,
+          "transformationGroups" : [ "fossil2transform" ]
+        },
+
+        "partStates" : {
+
+          "displayfossils" : {
+
+            "display" : {
+              "properties" : {
+                "image" : "<fossil2>"
+              }
+            }
+          }
+        }
+      },
+
+      "fossil3" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 3,
+          "transformationGroups" : [ "fossil3transform" ]
+        },
+
+        "partStates" : {
+
+          "displayfossils" : {
+
+            "display" : {
+              "properties" : {
+                "image" : "<fossil3>"
+              }
+            }
+          }
+        }
+      },
+
+      "fossil4" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 2,
+          "transformationGroups" : [ "fossil4transform" ]
+        },
+
+        "partStates" : {
+
+          "displayfossils" : {
+
+            "display" : {
+              "properties" : {
+                "image" : "<fossil4>"
+              }
+            }
+          }
+        }
+      },
+
+      "fossil5" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 1,
+          "transformationGroups" : [ "fossil5transform" ]
+        },
+
+        "partStates" : {
+
+          "displayfossils" : {
+
+            "display" : {
+              "properties" : {
+                "image" : "<fossil5>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "fossil1transform" : {},
+    "fossil2transform" : {},
+    "fossil3transform" : {},
+    "fossil4transform" : {},
+    "fossil5transform" : {}
+  },
+
+  "sounds" : {
+    "fanfare" : ["/sfx/cinematics/mission_unlock_event.ogg"]
+  },
+
+  "particleEmitters" : {
+    "completed" : {
+      "emissionRate" : 0.0,
+      "burstCount"  : 50,
+      "offsetRegion" : [-8, -2, 8, 10],
+      "particles" : [{ "particle" : "dust2"}]
+    }
+  }
+}

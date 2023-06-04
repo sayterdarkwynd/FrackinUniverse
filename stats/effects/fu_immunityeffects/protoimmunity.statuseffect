@@ -1,9 +1,13 @@
 {
-  "name" : "protoimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 60,
-
-  "scripts" : [
-    "protoimmunity.lua"
-  ]
+	"name": "protoimmunity",
+	"effectConfig": {
+		"stats": [{
+			"stat": "protoImmunity",
+			"amount": 1
+		}]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

@@ -1,0 +1,28 @@
+{
+  "itemName": "aetherdonut",
+  "rarity": "legendary",
+  "price": 135,
+  "category": "preparedFood",
+  "inventoryIcon": "aetherdonut.png",
+  "description": "Baked cosmic essence. Yummo.\n^pink;Shadow Taint^gray;, ^pink;Darkness ^cyan;Immunity ^gray;(^white;90s^gray;)^reset;",
+  "shortdescription": "Aether Donut",
+  "effects": [
+    [
+      {
+        "effect": "darknessimmunity",
+        "duration": 90
+      },
+      {
+        "effect": "shadowimmunity",
+        "duration": 90
+      }
+    ]
+  ],
+  "foodValue": 10,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1000,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1.0,
+  "blockingEffects": ["wellfed"]
+}

@@ -1,0 +1,58 @@
+{
+  "type" : "corpsevendor",
+  "baseType" : "merchant",
+
+  "scriptConfig" : {
+    "questGenerator" : {
+      "pools" : ["common"]
+    },
+
+    "merchant" : {
+      "waitTime" : 10,
+      "storeRadius" : -1,
+      "categories" : {
+        "default" : [ "corpsevendor" ]
+      },
+      "buyFactorRange" : [ 1.0, 1.0 ],
+      "sellFactorRange" : [ 0.2, 0.2 ],
+      "numItems" : 7,
+      "paneLayoutOverride" : {
+        "windowtitle" : {
+          "title" : "  Shady Merchant",
+          "subtitle" : "  Sells ...stuff."
+        }
+      }
+    },
+
+    "dialog" : {
+      "merchant" : {
+        "start" : {
+          "default" : {
+            "default" : [
+              "Need some corpses?"
+            ]
+          }
+        },
+        "end" : {
+          "default" : {
+            "default" : [
+              "Come back anytime!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ ],
+            "chest" : [ "madscientistchest" ],
+            "legs" : [ "madscientistpants" ]
+          }
+        ] ]
+    ]
+  }
+}

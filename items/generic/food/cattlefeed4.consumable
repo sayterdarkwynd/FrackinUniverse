@@ -1,0 +1,27 @@
+{
+  "itemName" : "cattlefeed4",
+  "rarity" : "legendary",
+  "price" : 16,
+  "category" : "preparedFood",
+  "inventoryIcon" : "cattlefeed4.png",
+  "description" : "Astounding cattle feed. Not for sapient ingestion. You'll get sick.\n^red;-^white;5% ^red;HP^gray;, ^red;Poisoned ^gray;(^white;1m^gray;)^reset;",
+  "shortdescription" : "Ultra Feed",
+  "effects" : [ [
+    {
+        "effect" : "negativehealth5",
+        "duration" : 60
+    },
+    {
+        "effect" : "cattlepoison",
+        "duration" : 60
+    }
+  ] ],
+  "foodValue" : 55,
+  "tooltipKind" : "food",
+
+  "maxStack" : 1000,
+  "builder": "/items/buildscripts/buildfood.lua",
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

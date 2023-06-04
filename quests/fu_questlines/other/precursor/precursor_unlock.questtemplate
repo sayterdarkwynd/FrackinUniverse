@@ -1,0 +1,28 @@
+{
+	"id" : "precursor_unlock",
+	"mainQuest" : true,
+	"title" : "A Strange Place",
+	"prerequisites" : [ ],
+	"text" : "Where am I? This ^green;data-disc^reset; at least presents the coordinates. What is odd, is that this sector has always been devoid of...everything. I should definitely explore this place.",
+	"completionText" : "I've explored the mysteries of the Precursor ruins, and it was worth every minute.",
+	"portraits" : {
+		"questStarted" : "questGiver",
+		"questComplete" : "questReceiver"
+	},
+	"moneyRange" : [0, 0],
+	"missionUnlockedCinema" : "/cinematics/coordinates.cinematic",
+	"rewards" : [
+		[ [ "fuscienceresource", 5000 ] ]
+	],
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "player"
+		},
+		"associatedMission" : "precursordungeon2",
+		"turnInDescription" : "Explore the Precursor Dungeon",
+		"requireTurnIn" : true
+	}
+}

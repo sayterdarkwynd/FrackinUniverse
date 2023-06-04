@@ -1,0 +1,212 @@
+{
+  "type" : "barista",
+  "baseType" : "merchanttenant",
+
+  "persistent" : true,
+  "damageTeamType" : "friendly",
+
+  "dropPools" : [ "basicTreasure" ],
+
+  "scripts" : [
+    "/npcs/bmain.lua"
+  ],
+  "initialScriptDelta" : 5,
+  "scriptConfig" : {
+    "behavior" : "merchant",
+
+    "behaviorConfig" : {
+      "noticePlayersRadius" : 20,
+      "hostileDamageTeam" : { "type" : "enemy", "team" : 1 }
+    },
+
+    "questGenerator" : {
+      "pools" : ["common", "merchant"],
+      "enableParticipation" : true,
+
+      "timeLimit" : 30,
+      "chance" : 0.02,
+      "nearbyQuestLimit" : 2,
+      "nearbyQuestRange" : 50
+    },
+
+    "reactions" : {
+      "spontaneous" : [
+        [4.0, "sleep", { "timeRange" : [0.7, 0.9] }],
+        [2.0, "sit", { "timeRange" : [0.6,0.2]}],
+        [1.0, "wander", { "timeRange" : [0.2, 0.6] }]
+      ]
+    },
+
+    "merchant" : {
+      "waitTime" : 40,
+      "storeRadius" : 16,
+      "poolsFile" : "/npcs/merchantpools.config",
+      "categories" : {
+        "default" : ["barista" ],
+        "avian" : [ "barista" ],
+        "apex" : [ "barista" ],
+        "floran" : [ "barista" ],
+        "glitch" : [ "barista" ],
+        "felin" : [ "barista" ],
+        "human" : [ "barista" ],
+        "hylotl" : [ "barista" ],
+        "novakid" : [ "barista"]
+		},
+      "buyFactorRange" : [ 2.0, 4.0 ],
+      "sellFactorRange" : [ 0.2, 0.2 ],
+      "numItems" : 10,
+      "paneLayoutOverride" : {
+        "windowtitle" : {
+          "title" : "  Barista",
+          "subtitle" : "  Get your caffeine fix!"
+}
+}
+    },
+    "dialog" : {
+      "merchant" : {
+
+	    "start" : {
+		  "default" : {
+            "default" : [
+              "We've got a special on coffee today... And every other day too, for that matter!",
+              "Okay! Will that be a short, a tall, a grande, a venti, or a... shoot. Lost track again...",
+              "Now, what can I get for you today?"
+            ]
+          },
+		  "floran" : {
+            "default" : [
+              "Floran's coffee is extra good today!",
+              "Floran's coffee comes in five sssizes! ... Though Floran forgets what.",
+              "What can Floran make you?"
+            ]
+          },
+		  "glitch" : {
+            "default" : [
+              "Cheery. We've got a special on coffee today... And everyday too, for that matter!",
+              "Nervous. Will that be a short, a tall, a grande, a venti, or a... Frustrated. Oh no, I've lost track again...",
+              "Cordial. Right then, what can I brew for you today?"
+            ]
+          },
+		  "felin" : {
+            "default" : [
+              "Our coffee's brewed from the best beans, selected by the best ca--. Um, forget it.",
+              " Will that be a short, a tall, a grande, a venti, or a... Oh no, I've lost track again...",
+              "Right then, what can I brew for you today?",
+"Kopi luwak? sorry, we don't have that ... for obvious reasons. But we do serve other tasty treats!"
+            ]
+          },
+		  "novakid" : {
+            "default" : [
+              "Got a special on coffee today... Always do, come to think of it.",
+              "We got coffee in a few different sizes. Beats me what they were called though...",
+              "Now what can I fix you with?"
+            ]
+          }
+		},
+		"welcome" : {
+		  "default" : {
+            "default" : [
+              "Next please!",
+              "The line starts right over here!",
+              "Welcome! Come right in!"
+            ]
+          },
+		  "floran" : {
+            "default" : [
+              "Floran makes great foodssstuff!!",
+              "Come try Floran's sssweets!",
+              "Line is thisss way. No stabbing, promise!"
+            ]
+          },
+		  "glitch" : {
+            "default" : [
+              "Hospitable. Please do come in!",
+              "Assured. Ours is a quality brew, I assure you.",
+              "Welcoming. Oh! A patron!"
+            ]
+          },
+		  "felin" : {
+            "default" : [
+"Welcome to Four Felins' Coffee Corner! our coffees won't taste like cat poop, honest!",
+"We've coffees so rich in flavour you'd think they were brewed with ... um, never mind!",
+"Welcome to Four Felins' Coffee Corner! Stay a while, and drink something!",
+"Nothing but the finest coffee, purr-colated to purr-fection!",
+"We serve all coffee brews - with the exception of kopi luwak, so don't worry!"
+            ]
+          },
+		  "novakid" : {
+            "default" : [
+              "Heya! The line's over this-a-way!",
+              "Well blow me down, it's a customer!",
+              "We gotta a whole bunch of stuff for ya to try!"
+            ]
+          }
+		},
+		"end" : {
+          "default" : {
+            "default" : [
+              "Come back and rest a spell anytime!"
+            ]
+          },
+		  "floran" : {
+            "default" : [
+              "Tell your friends about Floran's coffee!"
+            ]
+          },
+		  "glitch" : {
+            "default" : [
+              "Desperate. Don't forget to review us online!"
+            ]
+          },
+		  "felin" : {
+            "default" : [ "Don't forget to review us online!","Wait! where are you going?!"
+            ]
+          },
+		  "novakid" : {
+            "default" : [
+              "Y'all come back now, ya hear?"
+            ]
+          }
+        },
+        "follow" : "/dialog/merchant.config:follow",
+        "tout" : "/dialog/merchant.config:tout"
+      },
+      "flee" : {
+        "helpme" : "/dialog/flee.config:helpme",
+        "safe" : "/dialog/flee.config:safe"
+      },
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/merchant.config:tagCriteria",
+          "enclosedArea" : "/dialog/merchant.config:enclosedArea",
+          "otherDeed" : "/dialog/merchant.config:otherDeed",
+          "severe" : "/dialog/merchant.config:severe",
+          "final" : "/dialog/merchant.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/merchant.config:beacon",
+          "rent" : "/dialog/merchant.config:rent"
+        }
+      },
+      "accuse" : "/dialog/thief.config:accuse",
+      "alert" : "/dialog/thief.config:alert"
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+
+            "chest" : [
+              { "name" : "craftsmenchest", "parameters" : { "colorIndex" : [1] } }
+            ],
+            "legs" : [
+              { "name" : "cheflegs", "parameters" : { "colorIndex" : [1] } }
+            ]
+          }
+      ]]
+    ]
+
+  }
+}

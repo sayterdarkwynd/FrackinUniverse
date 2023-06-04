@@ -1,0 +1,446 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 13,
+            "cycle" : 1.5,
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"],[], [], [], [], [] ],
+              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [],[], [], ["fireaura"], [], [] ]
+            }
+          },
+          "blink" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          },
+          "walk" : {
+            "frames" : 8,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
+              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ]
+            }
+          },
+          "jump" : {
+            "frames" : 2,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "fall" : {
+            "frames" : 2,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "chargewindup" : {
+            "frames" : 3,
+            "cycle" : 0.5,
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
+              "persistentSoundStopTime" : 1.0,
+              "particleEmittersOff" : [ "spindust" ],
+              "particleEmittersOn" : [ "fireaura" ]
+            }
+          },
+          "chargewinddown" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
+              "persistentSoundStopTime" : 1.0,
+              "particleEmittersOff" : [ "spindust" ]
+            }
+          },
+          "charge" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
+              "persistentSoundStopTime" : 1.0,
+              "immediateSound" : "/sfx/npc/monsters/monster_slash1.ogg",
+              "particleEmittersOff" : [ "spindust" ]
+            }
+          },
+          "roarlong" : {
+            "frames" : 8,
+            "cycle" : 1.5,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain1.ogg",
+              "persistentSoundStopTime" : 1.5
+            },
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
+              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ]
+            }
+          },
+          "roarwindup" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain1.ogg",
+              "persistentSoundStopTime" : 1
+            }
+          },
+          "roarwinddown" : {
+            "frames" : 2,
+            "cycle" : 0.2
+          },
+          "roar" : {
+            "frames" : 8,
+            "cycle" : 0.53,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain1.ogg",
+              "persistentSoundStopTime" : 1.25
+            },
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
+              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ]
+            }
+          },
+          "fire" : {
+            "frames" : 8,
+            "cycle" : 0.53,
+            "mode" : "transition",
+            "transition" : "idle",
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "fireaura" ], [], [], [], [], [], [], ["fireaura"] ],
+              "particleEmittersOn" : [ [], [], ["fireaura"], [], [], [], [], [] ]
+            }
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "zLevel" : 10,
+          "transformationGroups" : [ "body" ],
+          "offset" : [2.0625, 0.6875]
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "blink" : {
+              "properties" : {
+                "image" : "<partImage>:blink.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "roarwindup" : {
+              "properties" : {
+                "image" : "<partImage>:roarwindup.<frame>"
+              }
+            },
+            "roarwinddown" : {
+              "properties" : {
+                "image" : "<partImage>:roarwinddown.<frame>"
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:winddown.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:roar.<frame>"
+              }
+            },
+            "roar" : {
+              "properties" : {
+                "image" : "<partImage>:roar.<frame>"
+              }
+            },
+            "roarlong" : {
+              "properties" : {
+                "image" : "<partImage>:roar.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:winddown.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:charge.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            }
+          },
+		  "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      },
+
+      "bodyfullbright" : {
+        "properties" : {
+          "zLevel" : 20,
+          "transformationGroups" : [ "body" ],
+          "offset" : [2.0625, 0.6875],
+          "fullbright" : true
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "blink" : {
+              "properties" : {
+                "image" : "<partImage>:blink.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "roarwindup" : {
+              "properties" : {
+                "image" : "<partImage>:roarwindup.<frame>"
+              }
+            },
+            "roarwinddown" : {
+              "properties" : {
+                "image" : "<partImage>:roarwinddown.<frame>"
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:roarwindup.<frame>"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:roarwinddown.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:roar.<frame>"
+              }
+            },
+            "roarlong" : {
+              "properties" : {
+                "image" : "<partImage>:roar.<frame>"
+              }
+            },
+            "roar" : {
+              "properties" : {
+                "image" : "<partImage>:roar.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:winddown.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:charge.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "lights" : {
+    "glow" : {
+      "active" : true,
+      "position" : [0, 0],
+      "color" : [200, 90, 30],
+      "pointLight" : true
+    }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "particleEmitters" : {
+    "fireaura" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [ 1.0, -1.0, 2.0, -0.0 ],
+      "particles" : [
+        { "particle" : "firestormflame" },
+        { "particle" : "firestormflame" },
+        { "particle" : "firestormflame" },
+        { "particle" : "firestormflame" },
+        { "particle" : "fireaura" },
+        { "particle" : "fireaura" }
+
+      ]
+    },
+    "spindust" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [ 1.0, -1.0, 2.0, -0.0 ],
+      "particles" : [
+        { "particle" : "mandrafloradust" }
+      ]
+    },
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "fire" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ],
+    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "angryPuppy" : [ "/sfx/npc/enemydeathpuff.ogg" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
+  }
+}

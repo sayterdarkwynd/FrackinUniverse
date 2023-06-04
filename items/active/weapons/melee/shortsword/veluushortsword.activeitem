@@ -1,0 +1,40 @@
+{
+  "itemName" : "fuveluushortsword",
+  "price" : 30,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Charged with purrpose.",
+  "shortdescription" : "Vel'uuish Shortsword",
+  "tooltipKind" : "sword2",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword","upgradeableWeapon","veluu"],
+
+  "inventoryIcon" : "veluushortsword.png",
+  "animation" : "comboshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "veluushortsword.png"
+  },
+
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.7,
+    "baseDps" : 6.25,
+    "damageConfig" : {
+      "damageSourceKind": "electricshortsword",
+      "statusEffects" : [ ]
+    }
+  },
+  "critChance" : 1,
+  "critBonus" : 2,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

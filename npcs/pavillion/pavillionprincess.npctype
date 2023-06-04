@@ -1,0 +1,63 @@
+{
+  "type" : "pavillionprincess",
+  "baseType" : "base",
+
+  "identity" : {
+    "name" : "Koto",
+    "gender" : "female",
+    "race" : "hylotl"
+  },
+
+  "damageTeamType" : "ghostly",
+  "levelVariance" : [0, 0],
+
+  "persistent" : true,
+
+  "dropPools" : [ "villagertreasure" ],
+
+  "scriptConfig" : {
+    "turnInQuests" : [ "pavillion.gearup" ],
+	"behavior" : "spectator",
+
+	"dialogMode" : "sequence",
+
+    "dialog" : {
+      "speak" : {
+        "default" : {
+          "default" : [
+            "Thank you for rescuing me!"
+          ]
+        }
+      },
+
+      "converse" : {
+        "default" : {
+          "default" : [
+            "Thank you! Sorry, but your princess is in another castle!",
+			"Eh...yes, that was a bad joke. Pardon me, I just thought to lighten the mood a little.",
+			"It must have been something of an ordeal to get here. No, I'm not hurt.",
+			"We need to get out of here quickly before reinforcements arrive. Maybe you can activate the teleporter in the room above.",
+			"Let's just grab what treasure is here and go!"
+          ]
+        }
+      }
+    }
+  },
+
+  "matchColorIndices" : true,
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "chest" : [
+              { "name" : "kimonochest", "parameters" : { "colorIndex" : 1 } }
+            ],
+            "legs" : [
+              { "name" : "kimonolegs", "parameters" : { "colorIndex" : 1 } }
+            ]
+          }
+        ] ]
+    ]
+  }
+}

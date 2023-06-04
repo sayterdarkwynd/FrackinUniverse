@@ -1,0 +1,48 @@
+{
+  "type" : "froggunner",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "!!!",
+			">=(",
+			"-_-",
+			"0_o",
+            ":3"
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "frogghead", "parameters" : { "colorIndex" : 3 } } ],
+            "chest" : [ { "name" : "froggchest", "parameters" : { "colorIndex" : 3 } } ],
+            "legs" : [ { "name" : "frogglegs", "parameters" : { "colorIndex" : 3 } } ],
+            "primary" : [
+              "npcassaultrifle"
+            ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+
+    "stats" : {
+      "maxEnergy" : {
+        "baseValue" : 400.0
+      }
+    }
+  }
+}

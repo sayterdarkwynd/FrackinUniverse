@@ -1,0 +1,92 @@
+{
+  "itemName" : "effigiumwand",
+  "level" : 5,
+  "price" : 960,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Sufficiently Advanced Technology.",
+  "shortdescription" : "Effigium Wand",
+  "category" : "wand",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","wand","upgradeableWeapon","effigium","shadow"],
+  "tooltipKind" : "staff",
+
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "effigiumwand.png",
+    "stone" : "/items/active/weapons/wand/generated/stone/effigiumwand.png",
+    "chargeEffect" : "/items/active/weapons/staff/generated/glow/shadow.png"
+  },
+
+  "inventoryIcon" : "effigiumwand.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "baseDamageFactor" : 0.5,
+
+  "elementalType" : "shadow",
+
+  "primaryAbility" : {
+    "type" : "elementblast",
+    "name" : "Shadow Blast",
+    "scripts" : ["/items/active/weapons/staff/abilities/aimedprojectile/aimedprojectile.lua"],
+    "class" : "AimedProjectile",
+
+    "energyCost" : 60,
+
+    "maxCastRange" : 25,
+
+    "projectileType" : "shadowblast2",
+    "projectileParameters" : {
+      "baseDamage" : 8
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "weaponOffset" : [0,0.5],
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "charge" : {
+        "duration" : 1.1,
+        "armRotation" : -110,
+        "weaponRotation" : 20,
+        "twoHanded" : false,
+        "weaponOffset" : [0,0.5],
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "charged" : {
+        "armRotation" : -110,
+        "weaponRotation" : 20,
+        "twoHanded" : false,
+        "weaponOffset" : [0,0.5],
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "discharge" : {
+        "duration" : 0.5,
+        "armRotation" : -20,
+        "weaponRotation" : -70,
+        "twoHanded" : false,
+        "weaponOffset" : [0,0.5],
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.5,
+        "armRotation" : -110,
+        "weaponRotation" : 20,
+        "twoHanded" : false,
+        "weaponOffset" : [0,0.5],
+        "allowRotate" : true,
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

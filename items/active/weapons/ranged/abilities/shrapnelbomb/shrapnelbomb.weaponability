@@ -1,0 +1,51 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/grenade2.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Shrapnel Bomb",
+    "type" : "shrapnelbomb",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "projectileType" : "shrapnelbomb",
+    "projectileParameters" : { },
+
+    "baseDamage" : 1,
+    "energyUsage" : 25,
+
+    "baseDamageMultiplier" : 0.1,
+    "energyUsageMultiplier" : 1.5,
+
+    "fireTime" : 2.0,
+    "projectileCount" : 1,
+    "inaccuracy" : 0,
+
+    "useParticleEmitter" : false,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

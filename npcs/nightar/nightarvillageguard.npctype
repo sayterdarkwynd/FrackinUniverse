@@ -1,0 +1,103 @@
+{
+  "type" : "nightarvillageguard",
+  "baseType" : "base",
+
+  "levelVariance" : [3, 3],
+  "persistent" : true,
+
+  "damageTeamType" : "friendly",
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "behavior" : "villageguard",
+
+    "behaviorConfig" : {
+      "greetingChance" : 0.67,
+
+      "hostileDamageTeam" : { "type" : "enemy", "team" : 1 }
+    },
+
+    "questGenerator" : {
+      "pools" : ["common", "guard"],
+      "enableParticipation" : true,
+      "timeLimit" : 30,
+      "nearbyQuestLimit" : 2,
+      "nearbyQuestRange" : 50,
+      "questCountRange" : [1, 4],
+
+      "graduation" : {
+        "nextNpcType" : [
+          [1, "crewmember"],
+          [1, "crewmember_spacestationassassin"],
+          [1, "crewmember_spacestationcaptain"],
+          [1, "crewmember_spacestationcommander"],
+          [1, "crewmember_spacestationdevastator"],
+          [1, "crewmember_spacestationmercenary"],
+          [1, "crewmember_spacestationwarmonger"],
+          [1, "crewmemberbountyhunter"],
+          [1, "crewmembercyborg"],
+          [1, "crewmemberguardian"],
+          [1, "crewmemberoutlaw"],
+          [1, "crewmemberstealth"],
+          [1, "crewmemberwarrior"],
+          [1, "crewmemberwarrior2"],
+          [1, "crewmemberwarrior3"]
+        ]
+      }
+    },
+
+    "personalities" : [
+        [1.0, { "personality" : "normal", "reactions" : {} }]
+    ],
+
+    "dialog" : {
+      "greeting" : "/dialog/converse.config:greeting",
+      "converse" : "/dialog/converse.config:converse",
+
+      "attack" : "/dialog/combat.config:attack",
+      "reattack" : "/dialog/combat.config:reattack",
+      "killedTarget" : "/dialog/combat.config:killedTarget",
+      "lostTarget" : "/dialog/combat.config:lostTarget",
+      "outOfSight" : "/dialog/combat.config:outOfSight",
+      "cheerOn" : "/dialog/combat.config:cheerOn",
+      "cantReach" : "/dialog/combat.config:cantReach",
+
+      "hail" : "/dialog/guard.config:hail",
+
+      "accuse" : "/dialog/thief.config:accuse"
+    }
+  },
+
+  "items" : {
+    "nightar" : [
+      [0, [
+          {
+            "head" : [ { "name" : "fukingslayerhead", "parameters" : { "colorIndex" : 1 } } ],
+            "chest" : [ { "name" : "fukingslayerchest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "fukingslayerpants", "parameters" : { "colorIndex" : 1 } } ],
+            "primary" : [ "nightarshortsword" ],
+            "alt" : [ "tungstenshield" ],
+            "sheathedprimary" : [ "tungstenbow" ]
+          }
+      ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 100.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.5
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      }
+    }
+  }
+}

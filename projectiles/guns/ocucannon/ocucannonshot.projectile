@@ -10,22 +10,40 @@
   "bounces" : 12,
   "piercing" : false,
   "damagePoly" : [ [-4, 0], [-3, -3], [0, -4], [3, -3], [4, 0], [3, 3], [0, 4], [-3, 3] ],
-  "damageKind" : "fireplasma",
+  "damageKind" : "poison",
+
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/fubloodexplosion/fubloodexplosion.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/blocks/footstep_brains.ogg",
+        "/sfx/projectiles/goocluster_pop.ogg",
+        "/sfx/projectiles/bonebounce1.ogg",
+        "/sfx/projectiles/bonebounce3.ogg",
+        "/sfx/projectiles/bonebounce5.ogg"
+      ]
+    }
+  ],
+
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/grenadeexplosion/grenadeexplosion.config"
+      "file" : "/projectiles/explosions/fubloodexplosion/fubloodexplosion.config"
     },
     {
-      "action" : "liquid", 
-      "liquid" : "pus", 
-      "quantity" : 1.5
+      "action" : "liquid",
+      "liquid" : "pus",
+      "quantity" : 0.2
     },
     {
       "action" : "applySurfaceMod",
       "previousMod" : "metamod:none",
       "newMod" : "tentaclegrass",
-      "radius" : 3
+      "radius" : 1
     },
     {
       "action" : "projectile",

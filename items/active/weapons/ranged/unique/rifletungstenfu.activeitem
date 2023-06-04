@@ -1,0 +1,106 @@
+{
+  "itemName" : "rifletungstenfu",
+  "price" : 90,
+  "inventoryIcon" : "rifletungstenfu.png",
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Reliable and accurate, and cheap to produce.",
+  "shortdescription" : "Tungsten Rifle",
+  "category" : "sniperRifle",
+  "level" : 2,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Sniper Rifle",
+  "itemTags" : ["weapon","ranged","sniperrifle","upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "rifletungstenfu.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/rifle1.ogg" ]
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+	  { "particle" : "fushellcasing", "offset" : [-2.5, 0.0] },
+          { "particle" : "dust2", "offset" : [0.4, -0.4] }
+        ]
+      }
+    },
+    "lights" : { "muzzleFlash" : {"color" : [77, 77, 77] } }
+  },
+
+  "baseOffset" : [0.5, 0.2],
+  "muzzleOffset" : [2, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1.85,
+    "baseDps" : 8.5,
+    "energyUsage" : 25.5,
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "bullet-1",
+    "projectileParameters" : {
+      "speed" : 90,
+      "knockback" : 15,
+      "damageKind" : "bow"
+    },
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.075,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 8,
+  "isSniper" : 1,
+  "isAmmoBased" : 1,
+  "magazineSize" : 5,
+  "reloadTime" : 2,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 900,
+
+  "altAbilityType" : "piercingshot",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

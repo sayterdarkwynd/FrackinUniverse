@@ -1,0 +1,66 @@
+{
+  "type" : "crewmemberkirhoshacker",
+  "baseType" : "fu_crewmember",
+
+  "scriptConfig" : {
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "bloodhoundhead",
+        "chest" : "bloodhoundchest",
+        "legs" : "bloodhoundlegs"
+      },
+
+      "role" : {
+        "type" : "soldier",
+        "name" : "Hacker",
+        "field" : "Hacker",
+        "uniformColorIndex" : 1,
+
+        "benefits" : [
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "shipSpeed",
+            "value" : 3.75
+          },
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "electricblock3",
+            "duration" : 300
+          }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'll jack into your ship's mainframe, and overclock the warp drive!"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Don't forget your bio-antivirus, boss!",
+              "This'll mask your signal!"
+            ]
+          }
+        }
+	  }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "kirhossniper" ],
+            "sheathedprimary" : [ "kirhosscythe" ]
+          }
+        ] ]
+    ]
+  }
+}

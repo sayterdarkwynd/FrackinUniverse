@@ -1,0 +1,80 @@
+{
+  "type" : "elduukharpub",
+  "baseType" : "base",
+
+  "persistent" : true,
+
+  "dropPools" : [ "basicMonsterTreasure" ],
+
+  "scripts" : [
+    "/npcs/bmain.lua"
+  ],
+  "initialScriptDelta" : 5,
+  "scriptConfig" : {
+    "behavior" : "merchant",
+
+    "reactions" : {
+      "spontaneous" : [
+        [5.0, "sleep", { "timeRange" : [0.8, 0.9] }]
+      ]
+    },
+
+    "merchant" : {
+	  "waitTime" : 40,
+	  "storeRadius" : 8,
+      "poolsFile" : "/npcs/merchantpools.config",
+      "categories" : {
+        "default" : ["basicmerchant", "randomguns", "randomswords", "humaningredients" ],
+        "elduukhar" : ["elduukharpub" ]
+      },
+      "buyFactorRange" : [ 0.9, 1.2 ],
+      "sellFactorRange" : [ 0.2, 0.2 ],
+      "numItems" : 10
+    },
+
+    "dialog" : {
+      "merchant" : {
+        "start" : "/dialog/merchant.config:merchantStart",
+        "end" : "/dialog/merchant.config:merchantEnd",
+        "follow" : "/dialog/merchant.config:follow",
+        "welcome" : "/dialog/merchant.config:welcome",
+        "tout" : "/dialog/merchant.config:tout"
+      },
+      "flee" : {
+        "helpme" : "/dialog/merchant.config:helpme",
+        "helpthem" : "/dialog/merchant.config:helpthem",
+        "encourage" : "/dialog/merchant.config:encourage",
+        "safe" : "/dialog/merchant.config:safe"
+      },
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/merchant.config:tagCriteria",
+          "enclosedArea" : "/dialog/merchant.config:enclosedArea",
+          "otherDeed" : "/dialog/merchant.config:otherDeed",
+          "severe" : "/dialog/merchant.config:severe",
+          "final" : "/dialog/merchant.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/merchant.config:beacon",
+          "rent" : "/dialog/merchant.config:rent"
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "elduukhar" : [
+      [0, [
+        {
+		  "head" : [ "bandithat1" ],
+          "chest" : [
+		  { "name" : "sweatervestchest", "data" : { "colorIndex" : 1 } }
+		  ],
+          "legs" : [
+		  { "name" : "traditionallegs", "data" : { "colorIndex" : 2 } }
+		  ]
+        }
+      ]]
+    ]
+  }
+}

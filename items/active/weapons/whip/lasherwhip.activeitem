@@ -3,13 +3,13 @@
   "price" : 1000,
   "level" : 3,
   "maxStack" : 1,
-  "rarity" : "uncommon",
+  "rarity" : "rare",
   "description" : "Made from a Lasher plant.",
   "shortdescription" : "Lasher Whip",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "whip",
   "twoHanded" : false,
-  "itemTags" : ["weapon"],
+  "itemTags" : ["weapon", "whip", "bioweapon", "upgradeableWeapon"],
 
   "inventoryIcon" : "lasherwhip.png:idle",
   "animation" : "whip.animation",
@@ -42,9 +42,9 @@
 
   "primaryAbilityType" : "whipcrack",
   "primaryAbility" : {
-    "fireTime" : 0.75,
-    "chainDps" : 1.2,
-    "crackDps" : 5.5,
+    "fireTime" : 1.1,
+    "chainDps" : 1.4,
+    "crackDps" : 5.65,
 
     "damageConfig" : {
       "damageSourceKind" : "poisonlash"
@@ -53,5 +53,7 @@
     "projectileType" : "whipcrackpoison"
   },
 
+  "critChance" : 3,
+  "critBonus" : 3,
   "builder" : "/items/buildscripts/buildwhip.lua"
 }

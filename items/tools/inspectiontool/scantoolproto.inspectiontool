@@ -1,0 +1,122 @@
+{
+  "itemName" : "scantoolproto",
+  "price" : 0,
+  "category" : "Tool",
+  "inventoryIcon" : "inspectionmodeicon.png",
+  "rarity" : "Essential",
+  "maxStack" : 1,
+  "description" : "With this protocite-infused tool you can scan at much greater ranges.",
+  "shortdescription" : "Protocite Scanning Tool",
+  "largeImage" : "scantoolproto.png",
+  "tooltipKind" : "mm",
+  "image" : "scantoolproto.png",
+
+  "twoHanded" : true,
+
+  // unlike the flashlight, these are measured in tiles
+  "handPosition" : [-0.2, 0],
+  "lightPosition" : [0.75, 0],
+
+  "lightColor" : [232, 241, 158],
+  "beamLevel" : 1,
+  "beamAmbience" : 0.2,
+
+  "showHighlights" : true,
+  "allowScanning" : true,
+
+  // tiles within the first angle are fully highlighted, tiles outside the second angle are not highlighted,
+  // and tiles between the two have partial highlight value
+  "inspectionAngles" : [0.4, 0.7],
+
+  // tiles within the first range are fully highlighted, tiles outside the second range are not highlighted,
+  // and tiles between the two have partial highlight value
+  "inspectionRanges" : [50, 60],
+
+  // tiles within this radius of the tool's source position will have partial highlight value based on proximity
+  "ambientInspectionRadius" : 4,
+
+  // if a large entity has at least this many spaces' worth of highlight, it will be fully highlighted
+  "fullInspectionSpaces" : 10,
+
+  // an entity or tile must have at least this overall highlight level to be inspectable
+  "minimumInspectionLevel" : 0.2,
+
+  // might be out of range, or might be out of line of sight
+  "outOfRangeText" : {
+    "default" : [
+      "That's outside my scanner's detection area.",
+      "Can't seem to get a reading; I should get closer.",
+      "The signal's too faint to make out - might be out of range.",
+      "It must be out of range, I can't get a reading."
+    ],
+    "novakid" : [
+      "The scanner ain't reachin' - probably oughta get closer.",
+      "Guess I'm outta range, the scanner ain't scanning that far.",
+      "Signal's too faint, better get closer.",
+      "Can't scan that, it ain't in range."
+    ],
+    "floran" : [
+      "Scanner not ssstrong enough! Floran must move in.",
+      "That's outsssside scanner's range.",
+      "Ssignal's too faint to make out, Floran not close enough.",
+      "Mussst be out of range, Floran can't get a reading."
+    ],
+    "glitch" : [
+      "Disappointed. This hardware's sensors are insufficient to analyze that position from here.",
+      "Puzzled. I cannot seem to get a reading; perhaps I should get closer.",
+      "Frustrated. The signal is too faint to make out, I believe I'm out of range.",
+      "Irked. It must be out of range, I cannot get a reading."
+    ],
+    "shadow" : [
+      "...?",
+      ".....",
+      "...? ..."
+    ],
+    "fenerox" : [
+      "Thing not seen?",
+      "See nothing. Move closer?",
+      "Scanner weak. Should move.",
+      "Can't see. Scanner broken?"
+    ]
+  },
+
+  // in range / line of sight, but nothing inspectable at the cursor position
+  "nothingThereText" : {
+    "default" : [
+      "Nothing of interest here.",
+      "Nothing to see here.",
+      "This isn't really anything.",
+      "Nothing much to speak of."
+    ],
+    "novakid" : [
+      "Scanner's drawin' a blank.",
+      "Not a darn thing there.",
+      "Scanner says ain't nothin' there.",
+      "That's just a whole lotta nothin'."
+    ],
+    "floran" : [
+      "Nothing of interessst.",
+      "Nothing to sscan.",
+      "This isssn't anything.",
+      "Nothing much to sspeak of."
+    ],
+    "glitch" : [
+      "Unimpressed. Nothing of interest here.",
+      "Neutral. There is nothing there.",
+      "Disappointed. Nothing there to scan.",
+      "Disinterested. This isn't really anything."
+    ],
+    "shadow" : [
+      "...?",
+      ".....",
+      "...? ..."
+    ],
+    "fenerox" : [
+      "Thing not there?",
+      "See nothing. Why look?",
+      "Nothing there?",
+      "Watch nothing? See nothing."
+    ]
+  }
+}
+

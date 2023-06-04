@@ -1,0 +1,20 @@
+{
+  "itemName": "sludgecone",
+  "rarity": "rare",
+  "price": 150,
+  "category": "preparedFood",
+  "inventoryIcon": "sludgecone.png",
+  "description": "For species that can't get enough radioactive iced cream.\n^cyan;+^white;20% ^pink;Radiation ^cyan;Res ^gray;(^white;5m^gray;)^reset;",
+  "shortdescription": "Sludge Cone",
+  "foodValue": 20,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 10,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1.0,
+
+  "effects": [["furadioactiveresistance2"]],
+  "blockingEffects": ["sourmilk", "wellfed"],
+
+  "emitters": ["drinking"]
+}

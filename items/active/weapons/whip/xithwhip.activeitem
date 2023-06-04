@@ -1,0 +1,59 @@
+{
+  "itemName" : "xithwhip",
+  "price" : 900,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Opens cosmic rifts to summon stabby blades.
+^cyan;Inflicts Minor Vulnerability^reset;",
+  "shortdescription" : "Cosmic Blade-lash",
+  "tooltipKind" : "sword2",
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","whip","upgradeableWeapon","xithricite"],
+
+  "inventoryIcon" : "xithwhip.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "xithwhip.png",
+	"weaponFullbright" : "xithwhipfullbright.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : { "particles" : [ ]}},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/energywhip_swing1.ogg", "/sfx/melee/energywhip_swing2.ogg", "/sfx/melee/energywhip_swing3.ogg" ],
+      "crack" : [ "/sfx/projectiles/plasma1.ogg", "/sfx/projectiles/plasma2.ogg", "/sfx/projectiles/plasma3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [0.975, 0],
+    "length" : [3, 8],
+    "segmentImage" : "/items/active/weapons/whip/xithwhiplink.png",
+    "endSegmentImage" : "/items/active/weapons/whip/xithwhipend.png",
+    "segmentSize" : 0.9,
+    "fullbright" : true
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 1.1,
+    "chainDps" : 4.0,
+    "crackDps" : 5.0,
+
+    "damageConfig" : {
+	  "damageSourceKind" : "cosmicbroadsword",
+      "statusEffects" : [ "defenseboostneg20" ]
+    },
+
+    "projectileType" : "whipcrackcosmic"
+  },
+
+  "critChance" : 1,
+  "critBonus" : 9,
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}

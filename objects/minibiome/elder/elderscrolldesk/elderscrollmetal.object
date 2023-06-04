@@ -1,0 +1,52 @@
+{
+  "objectName" : "elderscrolldeskmetal",
+  "colonyTags" : ["madness","insanity","storage","elder"],
+  "rarity" : "rare",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/craftingesoteric.config",
+    "filter" : [ "esoteric","esoteric2" ],
+    "initialRecipeUnlocks" : ["snarshedgarflipps","butteronastick","microwave","sourmilkandbees"]
+  },
+
+  "description" : "Translate texts, or use the Velbex to Snarsh Garflipps.",
+  "shortdescription" : "Snarshing Table",
+  "race" : "generic",
+  "category" : "crafting",
+  "price" : 2120,
+  "lightColor" : [7, 40, 7],
+
+  "inventoryIcon" : "elderscrolldeskicon.png",
+  "orientations" : [
+    {
+
+      "imageLayers" : [ { "image" : "elderscrolldeskmetal.png:<color>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [-1, 1],
+
+      "imagePosition" : [-20, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+
+      "imageLayers" : [ { "image" : "elderscrolldeskmetal.png:<color>" } ],
+      "direction" : "right",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-20, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ]
+
+}

@@ -1,0 +1,46 @@
+{
+  "objectName" : "batterystem",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Rare",
+  "category" : "seed",
+  "description" : "Not surprisingly, these are jammed with energy.",
+  "shortdescription" : "Battery Stem",
+  "objectType" : "farmable",
+  "printable" : false,
+"price" : 19,
+  "inventoryIcon" : "batterystemicon.png",
+  "largeImage" : "batterystem.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "batterystem" },
+  "orientations" : [
+    {
+      "dualImage" : "batterystem.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+"stages" : [
+    {
+      "alts" : 3,
+      "duration" : [160, 460]
+    },
+    {
+      "alts" : 3,
+      "duration" : [160, 560]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "batterystem",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125,
+  "beeLikeness" : { "cybernetic" : 1}
+  }

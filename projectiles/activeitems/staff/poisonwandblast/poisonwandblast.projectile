@@ -1,0 +1,65 @@
+{
+  "projectileName" : "poisonwandblast",
+  "physics" : "default",
+  "timeToLive" : 5,
+  "image" : "poisonwandblast.png",
+  "animationCycle" : 0.2,
+  "lightColor" : [12, 32, 80],
+  "frameNumber" : 1,
+  "speed" : 0,
+  "power" : 30,
+  "damageKind" : "poison",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "weakpoison" ],
+  "fullbright" : true,
+  "emitters" : [ "poisondrip" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/acidexplosion/acidexplosion.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/poisonstickyspikes_break1.ogg"
+      ]
+    },
+    {
+      "action" : "projectile",
+      "type" : "smallpoisonexplosion",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.33,
+      "angleAdjust" : -90
+    },
+    {
+      "action" : "loop",
+      "count" : 5,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "poisonsicknessdust",
+          "time" : 0.1,
+          "repeat" : true
+        },
+        {
+          "action" : "particle",
+          "specification" : "poisonsicknessdust2",
+          "time" : 0.1,
+          "repeat" : true
+        }
+      ]
+    }
+  ],
+
+  "bounces" : 5,
+
+  "scripts" : [ "/projectiles/activeitems/staff/poisonwandblast/poisonwandblast.lua" ],
+
+  "triggerSpeed" : 80,
+
+  "controlRotation" : {
+    "maxSpeed" : 15,
+    "controlForce" : 1000,
+    "friction" : 10
+  }
+}

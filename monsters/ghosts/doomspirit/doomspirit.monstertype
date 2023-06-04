@@ -1,0 +1,318 @@
+{
+  "type" : "doomspirit",
+  "shortdescription" : "Wraith",
+  "description" : "Shadowy spirit-like beasts that love to stalk their prey in the dark.",
+
+  "categories" : [ "doomspirit" ],
+  "parts" : [ "body","bodyfullbright" ],
+
+  "animation" : "doomspirit.animation",
+
+  "dropPools" : [
+    {
+      "default" : "spookitTreasure",
+      "bow" : "huntingghost",
+      "firebow" : "huntingghost",
+      "icebow" : "huntingghost",
+      "poisonbow" : "huntingghost",
+      "electricbow" : "huntingghost",
+      "cosmicbow" : "huntingghost",
+      "radioactivebow" : "huntingghost",
+      "shadowbow" : "huntingghost"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "renderLayer" : "foregroundEntity",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 70,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 70,
+      "targetOutOfSightTime" : 10.0,
+
+      "hurtTime" : 0.25,
+      "hurtWaitForGround" : false,
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-invulnerable",
+          "parameters" : {
+            "windupTime" : 2,
+            "windupState" : "summon",
+            "winddownTime" : 2,
+            "winddownState" : "summon2",
+            "invulnerableTime" : 1
+          }
+        }
+      ],
+
+      // Special hook for behavior during the invulnerable action
+      // If this behavior succeeds, invulnerability ends
+      "invulnerableActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "usePathfinding" : false,
+            "flyState" : "summon2"
+          }
+        }
+      ],
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+	       "cooldown" : 1.5,
+          "parameters" : {
+            "requireLineOfSight" : false,
+            "maximumRange" : 70,
+            "minimumRange" : 2,
+            "windupState" : "meleewindup",
+            "windupTime" : 0.4,
+            "projectileCount" : 1,
+            "projectileInterval" : 0,
+            "inaccuracy" : 0,
+            "projectileType" : "magnorbwraith",
+            "power" : 15,
+            "fireOffset" : [1, 1],
+
+            "aimAtTarget" : true,
+            "fireSound" : "melee",
+            "fireState" : "melee",
+            "fireDelay" : 0.7,
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        },
+        {
+          "name" : "action-swoosh-charge",
+          "cooldown" : 6,
+          "parameters" : {
+            "maximumRange" : 70,
+            "minimumRange" : 6,
+            "windupTime" : 2,
+            "windupState": "summon",
+            "chargeTime" : 1.5,
+            "chargeSpeed" : 35,
+            "chargeState" : "invulnerablestate",
+            "chargeControlForce" : 200,
+            "wallKnockback" : false,
+            "wallCrashSound" : "melee",
+            "wallCrashEmitter" : "",
+            "aimAtTarget" : true,
+            "winddownTime" : 2,
+            "winddownStopForce" : 500,
+            "winddownState" : "summon2",
+            "projectileType" : "astraltearstart2",
+            "fireOffset" : [0,0],
+            "fireDelay" : 0.7
+          }
+        }
+      ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "usePathfinding" : false,
+            "minRange" : 2,
+            "maxRange" : 8
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+      	    "moveState": "summon",
+      	    "idleState": "summon2",
+      	    "teleportMinDistance": 15,
+      	    "targetXDelta": 10,
+      	    "groundMinHeight": -10,
+      	    "groundMaxHeight": 10
+          }
+        },
+        {
+        "name":"approach-fly",
+        "parameters":{
+          "targetOffset":[0,5],
+          "minRange":5,
+          "maxRange":15
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {"name" : "emerge-fly"},
+	      {"name":"wander-fly", "cooldown":[5,20], "parameters":{"wanderTime":[10,40], "groundDistance":20, "ceilingDistance":10, "xVelocity":8, "yVelocity":12}},
+	      {"name":"land-fly", "parameters":{"flySpeed":8, "flyControlForce":25, "landCheckDistance":40, "idleTime":40}}
+      ],
+
+      "concurrentActions" : [  ],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-fire",
+	        "cooldown" : 6,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 4,
+            "minimumRange" : 0,
+            "windupState" : "meleewindup",
+            "windupTime" : 0.4,
+            "projectileCount" : 1,
+            "projectileInterval" : 0,
+            "inaccuracy" : 0,
+            "projectileType" : "particleswoosh",
+            "power" : 10,
+            "fireOffset" : [2, 0],
+
+            "aimAtTarget" : true,
+            "fireSound" : "melee",
+            "fireState" : "melee",
+            "fireDelay" : 0.6,
+            "winddownState" : "",
+            "winddownTime" : 0.25
+          }
+        }
+      ]
+
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.125, 1.25], [0.625, 0.75], [0.625, -0.75], [0.125, -1.25], [-0.125, -1.25], [-0.625, -0.75], [-0.625, 0.75], [-0.125, 1.25] ],
+      "damage" : 8,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ "darkstalker" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionEnabled" : false,
+      "collisionPoly" : [ [0.425, 1.5], [0.825, 1], [0.825, -1], [0.425, -1.5], [-0.425, -1.5], [-0.825, -1], [-0.825, 1], [-0.425, 1.5] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 0.5,
+      "airForce" : 40,
+      "flySpeed" : 8
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.15,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : false,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 60
+        },
+        "protection" : {
+          "baseValue" : 25
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "insanityImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "biooozeImmunity" : {
+          "baseValue" : 1.0
+        },
+        "sulphuricImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "shadowResistance" : { "baseValue" : 1.0 },
+        "poisonResistance" : { "baseValue" : 1.0 },
+        "cosmicResistance" : { "baseValue" : -1.0 },
+        "radioactiveResistance" : { "baseValue" : 0.7 },
+        "iceResistance" : { "baseValue" : 0.6 },
+        "fireResistance" : { "baseValue" : -0.5 },
+        "physicalResistance" : { "baseValue" : 1.0 },
+        "electricResistance" : { "baseValue" : 0.7 }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.25,
+    "nametagColor" : [64, 64, 64]//,
+    //"captureCollectables" : { "fu_monster" : "doomspirit" }
+  }
+}

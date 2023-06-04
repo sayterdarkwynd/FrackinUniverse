@@ -1,0 +1,62 @@
+{
+	"objectName": "fu_ftlBooster_small",
+	"colonyTags": ["byos"],
+	"scannable": false,
+	"rarity": "common",
+	"description": "A thruster used for FTL travel.\n^yellow;Ship Mass: -4\n^cyan;BYOS Only^reset;",
+	"shortdescription": "Small FTL Booster",
+	"race": "generic",
+	"apexDescription": "A booster. These have been known to malfunction and explode.",
+	"avianDescription": "A booster, the wings of a ship.",
+	"floranDescription": "Ssscary fire.",
+	"glitchDescription": "Analyse. Temperature too high to measure.",
+	"humanDescription": "This thing eats through fuel.",
+	"hylotlDescription": "Propulsion.",
+	"category": "light",
+	"lightColor": [59, 183, 255],
+	"pointLight": true,
+	"flickerDistance": 0.2,
+	"flickerStrength": 0.05,
+	"flickerTiming": 4,
+	"inventoryIcon": "/objects/ship/fu_thrustericon.png",
+	"orientations": [{
+			"image": "fu_ftlBooster_small.png:on.1",
+			"imagePosition": [0, -16],
+         "animationParts": {"booster": "fu_ftlBooster_small.png"},
+         "animationPosition": [0, -16],
+			"fullbright": true,
+			"spaceScan": 0.1,
+			"anchors": ["right"],
+			"direction": "right"
+		}
+	],
+	"animation": "/objects/ship/boosters/boosterflame.animation",
+	"soundEffect": "/sfx/objects/boosterflame.ogg",
+	"scripts": [
+		"/objects/ship/boosters/boosterflame.lua",
+		"/objects/ship/fu_shipstatmodifier.lua"
+	],
+	"scriptDelta": 60,
+	"stats": {
+		"shipMass": -4
+	},
+	"flyingBoosterStates": {
+		"none": "off",
+		"disembarking": "off",
+		"warp": "turnOn",
+		"arriving": "turnOff"
+	},
+	"touchDamage": {
+		"poly": [
+			[0, 4],
+			[0, -3],
+			[1, -3.75],
+			[1, 4.75]
+		],
+		"damage": 125,
+		"knockback": 50,
+		"damageType": "Environment",
+		"damageSourceKind": "plasma"
+	},
+	"byosOnly": true
+}

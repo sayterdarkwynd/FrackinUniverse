@@ -1,0 +1,40 @@
+{
+	"objectName" : "beeexaminer2",
+	"colonyTags" : [ "research","bees" ],
+	"rarity" : "common",
+	"description" : "A basic microscope designed to inspect queen bees. Works automatically.",
+	"shortdescription" : "^orange;Advanced^reset; Microscope",
+	"race" : "generic",
+	"subtitle" : "Inspect Bees & Items",
+	"category" : "crafting",
+	"price" : 100,
+	"objectType" : "container",
+	"printable" : false,
+	"health" : 0.1,
+
+	"inventoryIcon" : "icon3.png",
+	"orientations" : [
+		{
+			"dualImage" : "object3.png",
+			"imagePosition" : [0, 0],
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		}
+	],
+
+	"recipeGroup" : "beetrap",
+	"openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+
+	"frameCooldown" : 67,
+	"autoCloseCooldown" : 3600,
+
+	"selfWorking" : true, // Whether it can work while the player is not interacting with it
+	"selfWorkingEfficiency" : 7, // 5 per sec up to 100
+	"playerWorkingEfficiency" : 17, // 10 per sec up to 100
+
+	"uiConfig" : "/bees/interface/beeexaminer/beeexaminer3.config",
+	"slotCount" : 5,
+
+    "scripts" : ["/bees/beeExaminer.lua"],
+	"scriptDelta" : 10
+}

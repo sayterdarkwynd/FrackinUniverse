@@ -1,0 +1,81 @@
+[
+  {
+    "op": "replace",
+    "path": "/rarity",
+    "value": "Essential"
+  },
+  {
+    "op": "replace",
+    "path": "/upgradeStages/0/interactData/upgradeMaterials/0/item",
+    "value": "tungstenbar"
+  },
+  {
+    "op": "replace",
+    "path": "/maxUpgradeStage",
+    "value": 3
+  },
+  {
+    "op": "add",
+    "path": "/upgradeStages/1/interactData/upgradeMaterials",
+    "value": [
+      {
+        "item": "zerchesiumbar",
+        "count": 6
+      },
+      {
+        "item": "advcircuit",
+        "count": 2
+      },
+      {
+        "item": "fuprocessor",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/upgradeStages/-",
+    "value": {
+      "animationState": "craftingmedical3",
+      "itemSpawnParameters": {
+        "price": 750,
+        "inventoryIcon": "craftingmedical3icon.png",
+        "placementImage": "craftingmedical3.png:default.default",
+        "placementImagePosition": [
+          -16,
+          0
+        ],
+        "description": "A top-of-the-line medical station.",
+        "shortdescription": "^orange;Health Center^reset;",
+        "apexDescription": "A table with a bunch of medical tools.",
+        "avianDescription": "A chance to display one's medical ability.",
+        "floranDescription": "Floran ussse table. Patch ssself up.",
+        "glitchDescription": "Inspired. Medical module activated.",
+        "humanDescription": "I can use materials I've found here to create new healing items.",
+        "hylotlDescription": "This gives me the ability to heal and rejuvenate after incurring damage.",
+        "novakidDescription": "This table looks good for treatin' wounds."
+      },
+      "interactData": {
+        "config": "/interface/windowconfig/craftingmedical.config",
+        "paneLayoutOverride": {
+          "windowtitle": {
+            "title": " Health Center",
+            "subtitle": " ^#b9b5b2;Health and well-being",
+            "icon": {
+              "file": "/interface/crafting/craftingmedical3.png"
+            }
+          }
+        },
+        "filter": [
+          "craftingmedical",
+          "craftingmedical2",
+          "craftingmedical3"
+        ]
+      },
+      "learnBlueprintsOnPickup": [],
+      "craftingSound" : "/sfx/interface/crafting_medical.ogg",
+      "upgradeSoundEffect": "fanfare2",
+      "upgradeParticleEffect": "dust"
+    }
+  }
+]

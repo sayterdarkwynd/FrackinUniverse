@@ -1,0 +1,35 @@
+{
+  "itemName" : "veluushortsword4",
+  "price" : 480,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "A very powerful sword to be wielded telepathically.",
+  "shortdescription" : "Diamond Telekinetic Blade",
+  "tooltipKind" : "sword2",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword","veluu","upgradeableWeapon"],
+
+  "inventoryIcon" : "veluushortsword4.png",
+
+  "animation" : "/items/active/weapons/melee/shortsword/comboshortsword.animation",
+  "animationParts" : {
+    "handle": "veluushortsword4.png",
+	"handleFullbright" : "veluushortsword4fullbright.png",
+	"blade" : ""
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.67,
+    "baseDps" : 9.0
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,94 @@
+{
+  "itemName" : "densiniumsword",
+  "price" : 425,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "A powerful, super-dense blade.",
+  "shortdescription" : "Densinium Broadsword",
+  "tooltipKind" : "sword2",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword","nightar", "densinium", "upgradeableWeapon"],
+
+  "inventoryIcon" : "nightarancientblade.png:inactive",
+  "critChance" : 2,
+  "critBonus" : 8,
+  "animation" : "/items/active/weapons/melee/broadsword/densiniumsword/nightarancientblade.animation",
+  "animationParts" : {
+    "sword" : "nightarancientblade.png",
+    "swordfullbright" : "nightarancientbladefullbright.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/broadsword/densiniumsword/nightarancientblade.lua"],
+
+  "elementalType" : "electric",
+  //"collectablesOnPickup" : { "fu_weaponbroadsword" : "densiniumsword" },
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.8,
+    "baseDps" : 11.2,
+    "damageConfig" : {
+      "damageSourceKind": "electricbroadsword",
+      "statusEffects" : [ "electrified" ],
+      "knockback" : 8
+    },
+    "damageSourceKind" : "electricbroadsword",
+    "animKeyPrefix" : "inactive"
+  },
+
+  "inactiveBaseDps" : 11.2,
+  "activeBaseDps" : 14,
+
+  "altAbility" : {
+    "name" : "Empowerment",
+    "type" : "empowerment",
+    "scripts" : ["/items/active/weapons/protectorate/protectoratebroadsword/empowerment.lua"],
+    "class" : "Empowerment",
+
+    "energyPerSecond" : 30,
+
+    "projectileOffset" : [1, 0],
+    "projectileType" : "nightar_energytravelingswoosh",
+    "baseDamage" : 10,
+
+    "cooldownTime" : 1.0,
+
+    "stances" : {
+      "empower" : {
+        "durationBefore" : 0.2,
+        "durationAfter" : 0.5,
+        "armRotation" : 90,
+        "weaponRotation" : -90,
+        "twoHanded" : true,
+
+        "weaponOffset" : [0.5, -0.375],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "windup" : {
+        "duration" : 0.25,
+        "armRotation" : 70,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

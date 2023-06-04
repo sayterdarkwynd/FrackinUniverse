@@ -1,0 +1,64 @@
+{
+  "projectileName" : "green_energyarrow",
+  "physics" : "default",
+  "bounces" : 0,
+  "periodicActions" : [
+    {
+      "action" : "particle",
+      "specification" : "greenenergyblade",
+      "time" : 0.05,
+      "repeat" : true
+    },
+    {
+      "action" : "particle",
+      "specification" : "greenenergyblade2",
+      "time" : 0.07,
+      "repeat" : true
+    },
+    {
+      "action" : "particle",
+      "specification" : "energyarrowtrail",
+      "rotate" : true,
+      "time" : 0.032,
+      "repeat" : true
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/gun/impact_plasma.ogg"
+      ]
+    },
+    {
+      "action" : "loop",
+      "count" : 5,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "greenenergyblade",
+          "time" : 0.1,
+          "repeat" : true
+        },
+        {
+          "action" : "particle",
+          "specification" : "greenenergyblade2",
+          "time" : 0.1,
+          "repeat" : true
+        }
+      ]
+    }
+  ],
+  "image" : "energyarrow.png",
+  "animationCycle" : 0.1,
+  "frameNumber" : 2,
+  "lightColor" : [130, 70, 160],
+  "fullbright" : true,
+  "emitters" : ["energyweapon"],
+  "timeToLive" : 10,
+  "damagePoly" : [ [-10, 0], [2, 4], [10, 0], [2, -4] ],
+  "power" : 20,
+  "knockback" : 10,
+  "knockbackDirectional" : true,
+  "damageKind" : "bow"
+}

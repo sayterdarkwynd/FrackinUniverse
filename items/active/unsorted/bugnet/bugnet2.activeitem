@@ -1,0 +1,74 @@
+{
+  "itemName" : "bugnet2",
+  "price" : 20,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "category" : "Tool",
+  "tooltipKind" : "tool",
+  "description" : "A net for catching bugs! Faster than the wooden one, with less delay!",
+  "shortdescription" : "Superior Bug Net",
+  "twoHanded" : true,
+  "itemTags" : [ "upgradeableWeapon", "bugnet" ],
+  "inventoryIcon" : "bugnet2icon.png",
+  "largeImage" : "bugnet2big.png",
+
+  "animation" : "/items/active/unsorted/bugnet/bugnet.animation",
+  "animationParts" : {
+    "bugnet" : "bugnet2.png",
+    "swoosh" : "swoosh2.png"
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
+    "class" : "MeleeSlash",
+
+    "fireTime" : 1.0,
+    "baseDps" : 0.01,
+    "damageConfig" : {
+      "damageSourceKind" : "bugnet",
+      "statusEffects" : [ ],
+      "knockback" : 0,
+      "knockbackMode" : "facing",
+      "timeoutGroup" : "primary"
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "windup" : {
+        "duration" : 0.15,
+        "armRotation" : 60,
+        "weaponRotation" : 10,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : true,
+
+        "animationStates" : {
+          "net" : "hang"
+        }
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false,
+
+        "animationStates" : {
+          "net" : "swing"
+        }
+      }
+    }
+  }
+}

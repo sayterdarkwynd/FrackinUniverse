@@ -1,0 +1,65 @@
+{
+  "objectName" : "nightarmedievalfireplace",
+  "colonyTags" : ["nightar","glitchcastle","light"],
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 145,
+  "subtitle" : "Medieval Fireplace",
+
+  "description" : "A stone fireplace. A good way to warm a cold castle.",
+  "shortdescription" : "Medieval Fireplace",
+  "race" : "glitch",
+
+  "maximumLiquidLevel" : 0.2,
+
+  "statusEffects" : [ ],
+
+  "lightColor" : [179, 149, 107],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "inventoryIcon" : "medievalfireplaceicon.png",
+  "orientations" : [
+    {
+      "image" : "medievalfireplace.png:<color>.<frame>",
+      "imagePosition" : [-16, 0],
+      "animationPosition" : [-16, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "image" : "medievalfireplace.png:<color>.<frame>",
+      "imagePosition" : [-16, 0],
+      "animationPosition" : [-16, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/furnace.ogg",
+
+  "animation" : "medievalfireplace.animation",
+  "animationParts" : {
+    "bg" : "medievalfireplace.png",
+    "fg" : "medievalfireplacelit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ],
+
+  "interactive" : false
+
+}

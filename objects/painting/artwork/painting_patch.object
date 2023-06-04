@@ -1,0 +1,74 @@
+{
+  "objectName": "painting_patch",
+  "colonyTags": ["odd","pretty", "avianairship","ccccc"],
+  "rarity": "Common",
+  "description": "Its reputation precedes its very presence!",
+  "shortdescription": "Patchy Painting",
+  "race": "generic",
+  "printable": false,
+  "category": "decorative",
+  "price": 90,
+
+  "bothanDescription": "A painting of a Human pirate set in the archaic period of Human history, I believe.",
+  "feneroxDescription": "Strange painting. Use unknown. Use it?",
+  "ithorianDescription": "An oddly done picture of a Human in strange costume, standing in a tropical seascape.",
+  "zabrakDescription": "I will be hard pressed looking for someone to fence this .... artwork.",
+  "togrutaDescription": "This painting looks piratical as much as it must've been pirated. As well as being odd. But why?",
+  "rodianDescription": "I will be hard pressed looking for someone to fence this .... artwork.",
+  "thelusianDescription": "''Are you ready, kids?''",
+  "sithDescription": "My Force affinity has revealed a secret lock-and-trigger mechanism secreted in this grotthu daub.",
+  "diathimDescription": "A painting of a Human with an eyepatch.",
+  "apexDescription": "This painting looks piratical as much as it must've been pirated. As well as being odd. But why?",
+  "avianDescription": "Why is this Human depicted in Grounded costume? that doesn't make any sense.",
+  "floranDescription": "Sssstrange painting issssss ssssstrangely clunky.",
+  "glitchDescription": "Analytical. My internal scanner detects highly sophisticated telemetric and signalliing components embedded in this painting.",
+  "humanDescription": "Some long forgotten figure from Human history. Perhaps it's the Heir of Carthage?",
+  "hylotlDescription": "There is more that meets the eye as far as this cheap, trite and clearly mass-produced painting is concerned.",
+  "novakidDescription": "Whoever this dude is, he seems to be an eye short!",
+  "felinDescription": "Pretty quaint and anachronistic for an intergalactic space exploration game, right?",
+  "mawgDescription": "''Are you ready, kids?''",
+  "veluuDescription" : "Mrowr. Pirate.",
+  "shadowDescription" : "...yes.",
+
+
+  "inventoryIcon": "/objects/apex/apexpainting2/apexpainting2icon.png",
+  "orientations": [{
+      "image": "painting_patch.png:<color>.<frame>",
+      "imagePosition": [-16, -14],
+      "direction": "left",
+      "flipImages": true,
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "image": "painting_patch.png:<color>.<frame>",
+      "imagePosition": [-16, -14],
+      "direction": "right",
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation": "painting_patch.animation",
+  "animationParts": {
+    "bg": "painting_patch.png",
+    "fg": "painting_patch.png"
+  },
+  "animationCustom": {
+    "sounds": {
+      "on" : [ "/sfx/rubik.ogg" ],
+      "off" : [ "/sfx/rubik.ogg" ]
+    }
+  },
+  "animationPosition": [-16, -14],
+  "soundEffectRangeMultiplier": 0.5,
+
+  "scripts": ["/objects/wired/switch/switch.lua"],
+
+  "scriptDelta": 5,
+  "outputNodes": [
+    [-1, -2]
+// calculated in groups of 8, ie "blocks"
+  ],
+  "npcToy": {}
+}

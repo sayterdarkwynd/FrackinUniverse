@@ -1,0 +1,28 @@
+{
+  "itemName" : "bolbohnjam",
+  "rarity" : "Common",
+  "price" : 120,
+  "category" : "preparedFood",
+  "inventoryIcon" : "bolbohnjam.png",
+  "description" : "A good way to make something nasty even nastier.\n^cyan;+^white;20% ^cyan;EP ^gray;(^white;225s^gray;)^reset; \n^green;Type: Vegetable Dessert^reset;",
+  "shortdescription" : "Bolbohn Jam",
+  "effects" : [ [
+    {
+      "effect" : "maxenergyscalingboostfood",
+      "duration" : 225
+    },
+    {
+      "effect" : "plant_dessert"
+    }
+  ] ],
+  "foodValue" : 25,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [
+    "wellfed"
+  ],
+  "emitters" : [ "drinking" ]
+}

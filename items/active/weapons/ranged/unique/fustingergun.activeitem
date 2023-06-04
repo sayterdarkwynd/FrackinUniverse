@@ -1,17 +1,19 @@
 {
   "itemName" : "fustingergun",
-  "price" : 160,
+  "price" : 800,
   "inventoryIcon" : "fustingergun.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "A gene-spliced living weapon.",
+  "description" : "A gene-spliced living weapon. Fires boney stingers.
+^yellow;Inflicts Slow, ^cyan;Floran^reset;^reset;",
   "shortdescription" : "Sting Needler",
+  "category" : "machinePistol",
   "level" : 4,
-  "tooltipKind" : "gun",
-  "weaponType" : "Carbine",
-  "itemTags" : ["weapon","ranged","assaultrifle"],
-  "twoHanded" : true,
-
+  "tooltipKind" : "gun2",
+  "weaponType" : "machinePistol",
+  "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon", "floran", "bioweapon", "bees"],
+  "twoHanded" : false,
+ // "learnBlueprintsOnPickup" : [ "fustingergun2" ],
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
@@ -43,8 +45,8 @@
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "stingergunsting",
-    "projectileParameters" : { 
+    "projectileType" : "honeystingergunsting",
+    "projectileParameters" : {
       "speed" : 62,
       "knockback" : 1.5
     },
@@ -52,7 +54,7 @@
 	    "idle" : {
 	      "armRotation" : 0,
 	      "weaponRotation" : 0,
-	      "twoHanded" : true,
+	      "twoHanded" : false,
 
 	      "allowRotate" : true,
 	      "allowFlip" : true
@@ -61,7 +63,7 @@
 	      "duration" : 0,
 	      "armRotation" : 5,
 	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+	      "twoHanded" : false,
 
 	      "allowRotate" : false,
 	      "allowFlip" : false
@@ -70,7 +72,7 @@
 	      "duration" : 0.075,
 	      "armRotation" : 5,
 	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+	      "twoHanded" : false,
 
 	      "allowRotate" : false,
 	      "allowFlip" : false
@@ -78,7 +80,11 @@
 	  }
   },
 
-  "altAbilityType" : "burstshot",
-
+  "critChance" : 3,
+  "critBonus" : 3,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,19 +1,23 @@
 {
-  "itemName" : "nisscap",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "nisscap.png",
-  "description" : "Niss posseses the ability to shield you from tar, mud and clay.",
-  "shortdescription" : "Niss Cap",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      "blacktarimmunity", "fumudslowimmunity"
-    ] ]
+	"itemName": "nisscap",
+	"inventoryIcon": "nisscap.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immune^reset;: Mud, Tar: 3m",
+	"shortdescription": "Niss Cap",
+
+	"effects": [
+		[{
+				"effect": "blacktarimmunity",
+				"duration": 180
+			},
+			{
+				"effect": "fumudslowimmunity",
+				"duration": 180
+			}
+		]
+	]
 }

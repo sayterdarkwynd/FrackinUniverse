@@ -1,14 +1,15 @@
 {
   "objectName" : "elderstatue",
-  "colonyTags" : [ "elder", "hideous" ],
+  "colonyTags" : [ "elder", "hideous", "statue" ],
   "rarity" : "Common",
   "category" : "furniture",
   "price" : 23400,
-  "printable" : true,  
-  "description" : "Even looking at this feels unclean...",
+  "printable" : false,
+  "description" : "Even looking at this feels unclean. Whatever being this represents, it violates the senses.",
   "shortdescription" : "Cthulhu Statue",
   "inventoryIcon" : "elderstatue.png",
-  "health" : 500,
+  "health" : 20,
+  "rooting" : true,
   "orientations" : [
     {
       "image" : "elderstatue.png:<color>",
@@ -20,5 +21,8 @@
       "anchors" : [ "bottom" ]
 
     }
-  ]
+  ],
+  "biomePlaced" : true,
+  //"collectablesOnPickup" : { "fu_elderrelics" : "elderstatue" },
+  "statusEffects"  : [ "madnessgainelder3" ]
 }

@@ -1,0 +1,86 @@
+[
+  {
+    "op": "replace",
+    "path": "/rarity",
+    "value": "Essential"
+  },
+  {
+    "op": "replace",
+    "path": "/maxUpgradeStage",
+    "value": 4
+  },
+  {
+    "op": "add",
+    "path": "/upgradeStages/2/interactData/upgradeMaterials",
+    "value": [
+      {
+        "item": "irradiumbar",
+        "count": 6
+      },
+      {
+        "item": "fuprocessor",
+        "count": 1
+      },
+      {
+        "item": "powercore",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/upgradeStages/2/upgradeSoundEffect",
+    "value": "fanfare2"
+  },
+  {
+    "op": "add",
+    "path": "/upgradeStages/2/upgradeParticleEffect",
+    "value": "dust"
+  },
+  {
+    "op": "add",
+    "path": "/upgradeStages/-",
+    "value": {
+      "animationState": "fissionfurnace",
+      "itemSpawnParameters": {
+        "price": 750,
+        "inventoryIcon": "craftingfurnace4icon.png",
+        "placementImage": "craftingfurnace4.png:default.default",
+        "placementImagePosition": [
+          -8,
+          0
+        ],
+        "description": "There is effectively nothing that this furnace cannot melt down.",
+        "shortdescription": "^orange;Fission Furnace^reset;"
+      },
+      "interactData": {
+        "config": "/interface/windowconfig/fissionfurnace.config",
+        "paneLayoutOverride": {
+          "windowtitle": {
+            "title": " Fission Furnace",
+            "subtitle": " ^#b9b5b2;Bars and ingredients",
+            "icon": {
+              "file": "/interface/crafting/craftingfurnace4.png"
+            }
+          }
+        },
+        "filter": [
+          "craftingfurnace",
+          "craftingfurnace2",
+          "craftingfurnace3",
+          "fissionfurnace"
+        ],
+        "craftingSound": "/sfx/interface/crafting_furnacetech.ogg",
+      "upgradeSoundEffect": "fanfare2",
+      "upgradeParticleEffect": "dust",
+        "initialRecipeUnlocks": []
+      },
+      "learnBlueprintsOnPickup": []
+    }
+  },
+  {
+  "op":"add",
+  "path":"/slimepersonDescription",
+  "value":"Without the pain of the searing flame, the metal can never realize its potential."
+  }
+]

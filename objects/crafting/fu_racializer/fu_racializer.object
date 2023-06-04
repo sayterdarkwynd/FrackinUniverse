@@ -1,0 +1,39 @@
+{
+  "objectName" : "fu_racializer",
+  "colonyTags" : ["crafting"],
+  "price" : 300,
+  "rarity" : "Rare",
+  "printable" : false,
+  "description" : "Used to change ship components into various racial styles.",
+  "shortdescription" : "^orange;Ship Component Racializer^reset;",
+  "race" : "generic",
+  "category" : "crafting",
+
+  "inventoryIcon" : "fu_racializer_icon.png",
+  "orientations" : [
+     {
+      "dualImage" : "fu_racializer.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "objectType" : "container",
+  "slotCount" : 3,
+  "uiConfig" : "/interface/objectcrafting/fu_racializer/fu_racializer.config",
+  "autoCloseCooldown" : 3600,
+
+  "frameCooldown":5,
+
+  "scripts" : [ "/objects/crafting/fu_racializer/fu_racializer_obj.lua" ],
+  "scriptDelta" : 6,
+
+  "animation" : "fu_racializer.animation",
+  "animationParts" :
+  {
+    "racializer" : "fu_racializer.png"
+  },
+  "craftTime" : 4.5
+}

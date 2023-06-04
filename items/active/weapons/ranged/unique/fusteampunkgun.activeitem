@@ -4,12 +4,14 @@
   "inventoryIcon" : "fusteampunkgun.png",
   "maxStack" : 1,
   "rarity" : "rare",
-    "description" : "Zappy fun to be had with this sweet baby.",
+  "description" : "A pulse-blaster fueled by steam
+^yellow;Fast projectiles^reset;",
     "shortdescription" : "Shock Rifle",
-  "level" : 4,
-  "tooltipKind" : "gun",
+  "category" : "sniperRifle",
+  "level" : 3,
+  "tooltipKind" : "gun2",
   "weaponType" : "Electric",
-  "itemTags" : ["weapon","ranged","plasma"],
+  "itemTags" : ["weapon","ranged","sniperrifle", "energy", "electric", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -43,7 +45,8 @@
     "fireType" : "auto",
 
     "projectileType" : "pulsecannon",
-    "projectileParameters" : { 
+    "projectileParameters" : {
+      "damageKind" : "electric",
       "speed" : 60,
       "knockback" : 4
     },
@@ -85,6 +88,18 @@
         ]
       }
     },
+
+
+  "critChance" : 6,
+  "critBonus" : 3,
+  "isSniper" : 1,
+  "isAmmoBased" : 1,
+  "magazineSize" : 5,
+  "reloadTime" : 1.4,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 600,
 
   "altAbilityType" : "steampunkburstshot",
 

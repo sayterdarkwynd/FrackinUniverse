@@ -1,0 +1,66 @@
+{
+  "objectName" : "ppshoptruck",
+  "colonyTags" : ["misc"],
+  "rarity" : "Legendary",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/ppshop.config",
+    "requiresBlueprint" : false,
+    "filter" : [ "ppshop" ]
+  },
+  "description" : "A perfectly original and legitimate furniture shipment company.",
+  "shortdescription" : "Prop Pack Truck",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 1500,
+
+  "apexDescription" : "A delivery truck. Is this penguin manning it or just loitering?",
+  "avianDescription" : "A penguin? Alone with a truck? I ought to be on guard.",
+  "floranDescription" : "Little penguin hasss wares!",
+  "glitchDescription" : "Suspicious. This delivery truck is unoccupied save for one penguin \"employee\"...",
+  "humanDescription" : "I'm not too sure I can trust this guy... but just look at his stock!",
+  "hylotlDescription" : "A penguin delinquent, claiming to be running a shop. I might alert the authorities if this goes south. ",
+  "novakidDescription" : "Somethin' tells me this stock wasn't legally obtained...",
+
+  "inventoryIcon" : "ppshoptruckicon.png",
+  "orientations" : [
+    {
+      "image" : "ppshoptruckleft.png:<color>.<frame>",
+      "imagePosition" : [-32, 0],
+      "frames": 15,
+      "animationCycle": 2,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "collision" : "platform",
+      "collisionSpaces" : [[-3,4],[-2,4],[-1,4],[0,4],[1,4]]
+    },
+    {
+      "image" : "ppshoptruckright.png:<color>.<frame>",
+      "imagePosition" : [-32, 0],
+      "frames": 15,
+      "animationCycle": 2,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "left",
+      "collision" : "platform",
+      "collisionSpaces" : [[-1,4],[0,4],[1,4],[2,4],[3,4]]
+    }
+  ],
+  "learnBlueprintsOnPickup" : [ "ppshopmini" ],
+
+  "scripts" : [ "/objects/crafting/ppshoptruck/ppshoptruck.lua" ],
+  "scriptDelta" : 20,
+
+  "chatRadius" : 10,
+  "chatCooldown" : 25,
+  "chatOptions" : [
+    "Hey you - yeah, you! C'mere a sec. You want in on some killer deals?",
+    "Pssst - hey kid! You interested in some... Furniture and furniture byproducts?",
+    "OKEA? ... Nope, uh, can't ever say I've heard of 'em. ... What's with that look?",
+    "Quality goods here, fallen right off the back of a truck! ... Er, not this one, though.",
+    "Where do I get this stuff? I got a, er, supplier. Honest Dave. Swell guy, really.",
+    "I'm upset to hear about Earth, don't get me wrong, but I'd be lying if I said I'm not relieved to get the Protectorate off of my flippers.",
+    "What, you think I can't drive this thing? Me and my booster seat would like to disagree."
+  ]
+}

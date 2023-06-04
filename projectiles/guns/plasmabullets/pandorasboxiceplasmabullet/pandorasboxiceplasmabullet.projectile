@@ -1,0 +1,24 @@
+{
+  "projectileName" : "pandorasboxiceplasmabullet",
+  "physics" : "stickybullet",
+  "timeToLive" : 2,
+  "bounces" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "pandorasboxiceplasmabullet.png",
+  "animationCycle" : 0.5,
+  "fullbright" : true,
+  "frameNumber" : 4,
+  "power" : 25,
+  "speed" : 75,
+  "supportsProcessing" : true,
+  "emitters" : [ "iceplasma" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmabulletexplosion/plasmabulletexplosion.config"
+    }
+  ],
+  "statusEffects" : [ "frostslow" ],
+  "lightColor" : [52, 112, 153],
+  "damageKind" : "iceplasmabullet"
+}

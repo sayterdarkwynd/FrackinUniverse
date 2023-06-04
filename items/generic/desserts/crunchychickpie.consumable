@@ -1,0 +1,28 @@
+{
+  "itemName": "crunchychickpie",
+  "rarity": "uncommon",
+  "price": 35,
+  "category": "preparedFood",
+  "inventoryIcon": "crunchychickpie.png",
+  "description": "Pie made from crunchy, delicious baby chickens! So much floof!\n^cyan;+^white;35% ^cyan;EP ^gray;(^white;2m^gray;)^reset; \n^orange;Type: Cooked Meat^reset;",
+  "shortdescription": "Crunchy Chick Pie",
+  "effects": [
+    [
+      {
+        "effect": "meat_cooked"
+      },
+      {
+        "effect": "maxenergyscalingboostfood",
+        "duration": 120,
+        "energyModifier": 1.35
+      }
+    ]
+  ],
+  "foodValue": 30,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1000,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 2.0,
+  "blockingEffects": ["wellfed"]
+}

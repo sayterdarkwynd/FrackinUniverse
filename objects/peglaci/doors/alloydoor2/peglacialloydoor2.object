@@ -1,0 +1,57 @@
+{
+  "objectName" : "peglacialloydoor2",
+  "colonyTags" : [ "peglaci", "peglacivillage", "door" ],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 100,
+  "printable" : true,
+  "description" : "A sleek sliding door, formed from a mix of ice and wood and augmented with advanced technology.",
+  "shortdescription" : "Alloy Sliding Door",
+  "race" : "peglaci",
+
+  "apexDescription" : "What classified technologies do they hide behind this I wonder",
+  "avianDescription" : "I can't tell if this is a wall or a door; where's the buttons?",
+  "floranDescription" : "A sturdy door isss no good, if the walls are made of canvas.",
+  "glitchDescription" : "Suspicion. I think this door is watching me...",
+  "humanDescription" : "Open sesame?",
+  "hylotlDescription" : "Could they have made this any more of an abomination of portal technology?",
+  "novakidDescription" : "An impressive doorway. These sure don't come cheap.",
+  "fupeglaciDescription" : "The locking mechanism is accessed via augmented reality, non-Peglaci can't normally open a door like this.",
+
+  "inventoryIcon" : "peglacialloydoor2icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "peglacialloydoor2.png:<key>",
+      "imagePosition" : [0, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/bunkerslidingdoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/bunkerslidingdoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "peglacialloydoor2.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

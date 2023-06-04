@@ -1,0 +1,156 @@
+{
+  "itemName" : "quietusassaultrifle",
+  "price" : 360,
+  "inventoryIcon" : "quietusassaultrifle.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A unique flavor of bioweapon that avoids violations of intergalactic law.
+^cyan;Targets cannot heal when hit.^reset;",
+  "shortdescription" : "Quietus Assault Rifle",
+  "category" : "assaultRifle",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "assaultRifle",
+  "itemTags" : ["weapon","ranged","assaultrifle", "upgradeableWeapon","bioweapon","quietus"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "quietusassaultrifle.png",
+    "middlefullbright" : "quietusassaultriflefullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/darkmattermuzzle.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "quietusparticle", "offset" : [0.4, -0.4] },
+          { "particle" : "druidstaff", "offset" : [0.4, -0.4] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/dkmarauder2.wav" ]
+    },
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+      "properties" : {
+        "offset" : [1.25, 0.14]
+      }
+    }
+      }
+    }
+  },
+  "baseOffset" : [1.25, 0.14],
+  "muzzleOffset" : [2.0, 0.4],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "bioweapon",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.12,
+    "baseDps" : 8.4,
+    "energyUsage" : 27.0,
+    "inaccuracy" : 0.009,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "quietusbullet",
+    "projectileParameters" : {
+      "speed" : 80,
+      "knockback" : 5
+    },
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.075,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  }
+  },
+
+  "isAmmoBased" : 1,
+  "magazineSize" : 24,
+  "reloadTime" : 1.7,
+
+  "critChance" : 3,
+  "critBonus" : 7,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 700,
+
+  "altAbilityType" : "protobomb",
+  "altAbility" : {
+    "fireTime" : 3,
+    "name" : "Blaster Ball",
+    "baseDps" : 10,
+    "projectileParameters" : {
+      "timeToLive" : 10,
+      "knockback" : 20,
+      "piercing" : true,
+      "periodicActions" : [
+      {
+        "time" : 0.1,
+        "action" : "sound",
+        "options" : [ "/sfx/weapons/protopistol.ogg" ]
+      },
+      {
+        "time" : 0.1,
+        "action" : "projectile",
+        "type" : "quietusbullet",
+        "fuzzAngle" : 360,
+        "inheritDamageFactor" : 0.1
+      }
+      ],
+      "actionOnCollide" : [
+      {
+        "action" : "config",
+        "file" : "/projectiles/explosions/elder/protoboom.config"
+      }
+      ],
+      "actionOnHit" : [
+      {
+        "action" : "config",
+        "file" : "/projectiles/explosions/elder/protoboom.config"
+      }
+      ],
+      "actionOnReap" : [
+      {
+        "action" : "config",
+        "file" : "/projectiles/explosions/elder/protoboom.config"
+      }
+      ]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

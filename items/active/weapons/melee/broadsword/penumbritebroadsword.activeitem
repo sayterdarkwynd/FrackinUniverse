@@ -1,0 +1,82 @@
+{
+  "itemName" : "penumbritebroadsword",
+  "price" : 150,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "A keen edge for slashing things to pieces.
+^cyan;Universal Damage^reset;",
+  "shortdescription" : "Penumbral Broadsword",
+  "tooltipKind" : "sword2",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword","penumbrite", "upgradeableWeapon","silver"],
+  "inventoryIcon" : "penumbritebroadsword.png",
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "penumbritebroadsword.png",
+    "bladefullbright" : "penumbritebroadswordfullbright.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "silverweapon",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.85,
+    "baseDps" : 9.5,
+    "damageConfig" : {
+      "knockback" : 10,
+       "damageSourceKind" : "silverweapon"
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "aimAngle" : 0,
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "windup" : {
+        "duration" : 0.1,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "preslash" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "phasecharge",
+
+
+  "critChance" : 2,
+  "critBonus" : 7,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

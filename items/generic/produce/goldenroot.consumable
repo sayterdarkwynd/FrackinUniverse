@@ -1,19 +1,19 @@
 {
-  "itemName" : "goldenroot",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "goldenrooticon.png",
-  "description" : "Increase hitpoints.", 
-  "shortdescription" : "Golden Root",
-   "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 4,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-    "maxhealthboost2"
-    ] ]
+	"itemName": "goldenroot",
+	"inventoryIcon": "goldenrooticon.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+8 HP^reset;: 3m",
+	"shortdescription": "Golden Root",
+
+	"effects": [
+		[{
+			"effect": "maxhealthboost2",
+			"duration": 180
+		}]
+	]
+
 }

@@ -1,0 +1,56 @@
+{
+	"objectName" : "nightarbox",
+	"colonyTags" : ["nightar", "musical"],
+	"rarity" : "Common",
+	"category" : "decorative",
+//    "lightColor" : [130, 217, 232],
+	"description" : "A music player, for playing music.",
+	"shortdescription" : "Nightar Music Player",
+	"race" : "generic",
+
+	"inventoryIcon" : "nightarboxicon.png",
+	"orientations" : [
+		{
+			"image" : "nightarbox.png",
+			"imagePosition" : [-12, 0],
+			"animationPosition" : [-12, 0],
+			"animationParts" : {
+				"bg" : "nightarbox.png",
+				"fg" : "nightarboxlit.png"
+			},
+			"direction" : "left",
+			"flipImages" : true,
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		},
+		{
+			"image" : "nightarbox.png",
+			"imagePosition" : [-12, 0],
+			"animationPosition" : [-12, 0],
+			"animationParts" : {
+				"bg" : "nightarbox.png",
+				"fg" : "nightarboxlit.png"
+			},
+			"direction" : "right",
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		}
+	],
+
+	"animation" : "racialmusicbox.animation",
+	"animationParts" : {
+		"bg" : "nightarbox.png",
+		"fg" : "nightarboxlit.png"
+	},
+	"animationPosition" : [-8, 0],
+	"interactAction" : "ScriptPane",
+	"interactData" : "/interface/scripted/fm_musicplayer/fm_musicplayer.config",
+
+	"inputNodes" : [ [-1, 0] ],
+	"outputNodes" : [ [1, 0] ],
+
+	"scripts" : [ "/objects/generic/fm_musicplayer/fm_musicplayer.lua"],
+	"scriptDelta" : 7,
+
+	"musicRadius" : 30
+}

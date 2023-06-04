@@ -1,0 +1,45 @@
+{
+  "objectName" : "wildgreenleafseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Uncommon",
+  "category" : "seed",
+  "description" : "A potent energy source that looks like grass.",
+  "shortdescription" : "Greenleaf Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+//    "learnBlueprintsOnPickup" : [ "silverleafseed", "greenleafseed" ],
+  "inventoryIcon" : "greenleafseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "greenleafseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [240, 420]
+    },
+    {
+      "duration" : [240, 420]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "greenleafHarvest",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125,
+  "breakDropOptions" : [
+    [ [ "greenleafseed", 1, { } ] ]
+  ],
+  "beeLikeness" : { "loamzipper" :1}
+}

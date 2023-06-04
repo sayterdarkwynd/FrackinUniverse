@@ -5,13 +5,20 @@
   "spawnProfile" : {
     "groups" : [
       {
+        "select" : 1,
+        "pool" : [
+          [ 0.1, "burrower_depth_selector" ]
+        ]
+      },
+      {
         "select" : 2,
-        "pool" : [ 
+        "pool" : [
           [ 1.0, "gleap" ],
           [ 1.0, "batong" ],
           [ 1.0, "crustoise" ],
           [ 1.0, "peblit" ],
-          [ 1.0, "bobfae" ]
+          [ 1.0, "bobfae" ],
+          [ 1.0, "gnomewarriors" ]
         ]
       },
       {
@@ -49,7 +56,7 @@
       "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 
@@ -58,6 +65,34 @@
     "grassModDensity" : 1.0,
 
     "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundOreRocks",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "carbonrock" ], [0.35, "carbonrocksmall" ], [0.35, "goldrock" ], [0.35, "goldrocksmall" ], [0.35, "silverrock" ], [0.35, "silverrocksmall" ], [0.35, "copperrock" ], [0.35, "copperrocksmall" ], [0.35, "diamondrock" ], [0.35, "diamondrocksmall" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+      {
+        "mode" : "background",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundFossils",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.15, "dirtyfossil1" ], [0.15, "dirtyfossil2" ], [0.15, "dirtyfossil3" ], [0.15, "dirtyfossil4" ], [0.1, "dirtyfossil5" ], [0.1, "dirtyfossil6" ], [0.1, "dirtyfossil7" ], [0.1, "dirtyfossil8" ] ],
+            "parameters" : {  "materials" : ["mud", "cobblestone", "bonematerial"]}
+          }
+        ]
+      },
       {
         "mode" : "floor",
         "priority" : 1.0,

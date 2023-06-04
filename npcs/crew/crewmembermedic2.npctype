@@ -1,0 +1,111 @@
+{
+  "type" : "crewmembermedic2",
+  "baseType" : "fu_crewmember",
+
+  "scriptConfig" : {
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "medichead",
+        "chest" : "medicchest",
+        "legs" : "mediclegs"
+      },
+
+      "role" : {
+        "type" : "medic",
+        "name" : "Field Medic",
+        "field" : "Medical Combat",
+        "uniformColorIndex" : 2,
+
+        "benefits" : [
+          {
+            "type" : "Regeneration",
+            "value" : 2
+          }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'll heal you whenever we're on the ship."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran will heal you whenever we're on the ship!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Helpful. I'll heal you whenever we're on the ship!"
+            ]
+          }
+        },
+        "fieldBenefit" : {
+          "default" : {
+            "default" : [
+              "You look hurt. Let me help you out!",
+              "Let me help you out!",
+              "You look like you wouldn't mind some healing. Here!",
+              "Hey, I can heal you! Just hold still!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "You look wounded. Floran can help!",
+              "Floran is medic! Trust Floran!",
+              "You look hurt. Floran can help you!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Concerned. You look like you could do with some healing!",
+              "Caring. Perhaps you could do with some healing?",
+              "Helpful. You look like you could be in better shape. Let me assist you!"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "You look like you could use some healing!",
+              "Let me help you out!",
+              "I'm a combat medic - let me help you!",
+              "Looks like you could use my assistance!",
+              "I can heal you! Come to me, quickly!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran hasss things to help out!",
+              "Floran can help out!",
+              "Floran hasss things to help!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Eager. I can help you out!",
+              "Excited. Perhaps you could do with some healing?",
+              "Helpful. This should heal you!",
+              "Helpful. Take this, it will help!"
+            ]
+          }
+        }
+	  }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "zerchesiumsmg", "lunarismg", "telebriummachinepistol" ],
+            "alt" : [ "medkit" ]
+          }
+        ] ]
+    ]
+  }
+}

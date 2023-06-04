@@ -1,0 +1,52 @@
+{
+  "itemName" : "fucrystalspear",
+  "price" : 100,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Shimmering, beautiful death.
+^cyan;Hunting weapon^reset;",
+  "shortdescription" : "Crystal Spear",
+  "tooltipKind" : "sword2",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear", "upgradeableWeapon"],
+
+  "inventoryIcon" : "fucrystalspear.png",
+  //"collectablesOnPickup" : { "fu_weaponspear" : "fucrystalspear" },
+  "animation" : "/items/active/weapons/melee/spear/spear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "fucrystalspear.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : [],
+
+    "fireTime" : 0.85,
+    "baseDps" : 9.5,
+    "damageConfig" : {
+      "damageSourceKind" : "icebow",
+      "statusEffects" : [ ],
+      "knockback" : 10
+    }
+  },
+  "altAbilityType" : "elementalspin",
+  "altAbility" : { },
+
+  "critChance" : 1,
+  "critBonus" : 8,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

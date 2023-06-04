@@ -1,0 +1,26 @@
+{
+  "itemName" : "meatchunk",
+  "rarity" : "Common",
+  "price" : 30,
+  "category" : "preparedFood",
+  "inventoryIcon" : "meatchunk.png",
+  "description" : "A large chunk of barely cooked alien meat. An Avikan favourite.\n^cyan;+^white;20% ^cyan;HP ^gray;(^white;2m^gray;)^reset; \n^orange;Type: Cooked Meat^reset;",
+  "shortdescription" : "Meat Chunk",
+  "effects" : [ [
+    { "effect" : "meat_cooked" },
+    {
+        "effect" : "maxhealthscalingboostfood",
+        "duration" : 120
+    }
+  ] ],
+  "foodValue" : 35,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [
+    "wellfed"
+  ],
+  "learnBlueprintsOnPickup" : [ "avikanmeal" ]
+}

@@ -1,0 +1,47 @@
+{
+  "objectName" : "fuaetherdoor3",
+  "colonyTags" : ["fu","aether","pretty","valuable","door"],
+  "rarity" : "Legendary",
+
+  "category" : "door",
+  "price" : 95,
+  "description" : "A lightweight sliding door made with hardened aether materials.",
+  "shortdescription" : "Aether Sliding Door",
+  "race" : "generic",
+
+  "inventoryIcon" : "fuaetherdoor3icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fuaetherdoor3.png:<key>",
+      "imagePosition" : [0, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/bunkerslidingdoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/bunkerslidingdoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "fuaetherdoor3.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

@@ -8,21 +8,29 @@
   "animation" : "robothenbaby.animation",
   "reversed" : false,
 
+  "diet" : "robo",
+  "hungerTime" : 20,
+
   "dropPools" : [ { "default" : "robothenbabyTreasure" } ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"
+      "/monsters/monster.lua",
+      "/scripts/golemancer/gol_monstermain.lua"
     ],
+  "diet" : "robo",
+  "hungerTime" : 20,
+  "tickEvoTime" : 5,
+  "evolutions" : [ "/scripts/golemancer/evolutions/robothenbabygrow.evo" ],
 
-    "persistent" : false,
+    "persistent" : true,
 
     "behavior" : "farmablebaby",
 
-    "evolveType" : "robothen",
+    "evolveType" : "furobothen",
     "spawnOffset" : [0.0, 0.25],
     "spawnPoly" : [ [0.25, 0.75], [0.75, 0.25], [0.75, -0.25], [0.25, -0.75], [-0.25, -0.75], [-0.75, -0.25], [-0.75, 0.25], [-0.25, 0.75] ],
-    "evolveTime" : 100,
+    "evolveTime" : 1200,
 
     "metaBoundBox" : [-0.5, -0.5, 0.5, 0.5],
     "scale" : 1.0,
@@ -49,6 +57,7 @@
         "targetMaterialKind" : "organic"
       },
 
+      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
@@ -65,7 +74,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 100
+          "baseValue" : 40
         },
         "protection" : {
           "baseValue" : 0.0
@@ -94,6 +103,9 @@
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : false,
+    "relocatable" : true,
+    "captureHealthFraction" : 0.5,
+    "capturedMonsterType" : "robothenbaby",
     "nametagColor" : [64, 200, 255]
   }
 }

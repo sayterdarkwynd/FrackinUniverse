@@ -1,0 +1,59 @@
+[
+	[
+    {
+    "op": "replace",
+    "path": "/prerequisites/0",
+    "value": "floran_mission1"
+    },
+    {"op":"remove",
+	"path":"/completionCinema"
+	},
+	{"op":"add",
+	"path":"/scriptConfig/shipUpgradeCinema",
+	"value":"/cinematics/repair/repair.cinematic"
+	},
+	{"op":"add",
+	"path":"/scriptConfig/BYOSCompletionText",
+	"value": "Perfect! These'll keep us going fer quite a while. If you haven't already, you should head down to ^green;the maintenance area^reset; below us and talk to ^green;Dr.Akaggy^reset; in the ^green;Mech Hangar^reset;. If you're needing to ^orange;fix up your ship^reset;, you ought to try a little research into ^orange;Engineering^reset;."
+	},
+	{"op":"replace",
+	"path":"/scriptConfig/descriptions/turnIn",
+	"value":"^green;Bring^reset; the ^orange;Erchius Crystals^reset; to ^orange;Penguin Pete^reset; at the ^orange;Outpost^reset;"
+	},
+  {
+    "op": "replace",
+    "path": "/text",
+    "value": "I've been awaitin' a shipment of ^orange;20 Erchius Crystals^reset; from the ^green;Erchius Mining Facility^reset;. They're two weeks late and without these crystals the outpost is in trouble! I've sent the location coordinates to ^green;yer ship's SAIL^reset;. Can you ^green;please help us^reset;?"
+  },
+  {
+    "op": "replace",
+    "path": "/completionText",
+    "value": "Perfect! These'll keep us going fer quite a while. If you haven't already, you should head down to ^green;the maintenance area^reset; below us and talk to ^green;Dr.Akaggy^reset; in the ^green;Mech Hangar^reset;."
+  },
+  {
+    "op": "replace",
+    "path": "/moneyRange/0",
+    "value": 2500
+  },
+  {
+    "op": "replace",
+    "path": "/moneyRange/1",
+    "value": 2510
+  },
+	{"op":"add",
+	"path":"/scriptConfig/BYOSRewards",
+	"value":["supermatter", 20]
+	},
+	{"op": "add",
+	"path": "/rewards/0/-",
+	"value": ["erchiusartifactaugment",1]
+	}],
+	[
+		{"op": "test","path": "/scriptConfig/giveBlueprints","inverse":true},
+		{"op": "add","path": "/scriptConfig/giveBlueprints","value":[]}
+	],
+	[
+		{"op": "test","path": "/scriptConfig/giveBlueprints"},
+		{"op": "add","path": "/scriptConfig/giveBlueprints/-","value":"erchiusartifactaugment"}
+	]
+]

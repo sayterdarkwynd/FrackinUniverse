@@ -1,0 +1,74 @@
+{
+  "objectName":"sodafountain",
+  "printable" : false,
+  "colonyTags":["cooking","fastfood"],
+  "rarity":"Common",
+  "description":"A dispenser for a variety of soft drinks.",
+  "shortdescription":"Soda Fountain",
+  "race":"generic",
+  "category":"decorative",
+  "price":70,
+
+  "apexDescription":"This variety of drinks can't be found under Miniknog rule.",
+  "avianDescription":"These drinks are a bit too sweet...",
+  "floranDescription":"Machine gives Floran drinksss.",
+  "glitchDescription":"Neutral. A soda fountain.",
+  "humanDescription":"It's free refills if you own it, right? Right.",
+  "hylotlDescription":"A dispenser for sugary soft drinks.",
+  "novakidDescription":"Cola, punch... but still no Dandelion Root Pop...",
+  "inventoryIcon":"sodafountainicon.png",
+  "orientations":[
+    {
+      "dualImage":"sodafountain.png:default",
+      "imagePosition":[0, 0],
+      "spaceScan":0.1,
+      "anchors":[
+        "bottom"
+      ]
+    }
+  ],
+  "scripts":[
+    "/scripts/npcToyObject.lua"
+  ],
+  "npcToy":{
+    "influence":[
+      "watercoolerCollect",
+      "watercoolerConsume",
+      "watercoolerComplete"
+    ],
+    "defaultReactions":{
+      "watercoolerCollect":[
+        [
+          1.0,
+          "crouchcollect"
+        ]
+      ],
+      "watercoolerConsume":[
+        [
+          1.0,
+          "drink"
+        ]
+      ],
+      "watercoolerComplete":[
+        [
+          1.0,
+          "smile"
+        ],
+        [
+          0.1,
+          "vomit"
+        ]
+      ]
+    },
+    "preciseStandPositionLeft":[
+      -1.0,
+      0.0
+    ],
+    "preciseStandPositionRight":[
+      1.0,
+      0.0
+    ],
+    "maxNpcs":1
+  },
+  "soundEffect" : "/sfx/objects/fridge_hum.ogg"
+}

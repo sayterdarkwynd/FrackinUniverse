@@ -1,18 +1,19 @@
 {
   "itemName" : "metallicspear",
-  "price" : 0,
-  "level" : 4,
+  "price" : 100,
+  "level" : 3,
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "Made from all sorts of junk",
+  "description" : "Made from all sorts of junk.
+^cyan;Hunting weapon^reset;",
   "shortdescription" : "Junk Spear",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "spear",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear"],
+  "itemTags" : ["weapon","melee","spear", "upgradeableWeapon"],
 
   "inventoryIcon" : "metallicspear.png",
-
+  //"collectablesOnPickup" : { "fu_weaponspear" : "metallicspear" },
   "animation" : "/items/active/weapons/melee/spear/spear.animation",
   "animationParts" : {
     "handle" : "",
@@ -32,66 +33,20 @@
   "primaryAbilityType" : "spearstab",
   "primaryAbility" : {
     "scripts" : [],
-    "class" : "SpearStab",
 
     "fireTime" : 1.12,
     "baseDps" : 10.5,
     "damageConfig" : {
-      "damageSourceKind" : "spear",
+      "damageSourceKind" : "bow",
       "statusEffects" : [ ],
-      "knockbackMode" : "aim",
-      "knockback" : 10,
-      "timeoutGroup" : "primary"
-    },
-    "holdDamageMultiplier" : 0.1,
-    "holdDamageConfig" : {
-      "timeoutGroup" : "hold",
-      "timeout" : 0.5
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : 0,
-        "twoHanded" : false,
-        "weaponOffset" : [0, 0.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "windup" : {
-        "hold" : true,
-        "duration" : 0.55,
-        "armRotation" : -110,
-        "weaponRotation" : 20,
-        "twoHanded" : true,
-        "weaponOffset" : [0, 0.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "fire" : {
-        "duration" : 0.3,
-        "armRotation" : -20,
-        "weaponRotation" : -70,
-        "twoHanded" : true,
-        "weaponOffset" : [0.3, 2.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "hold" : {
-        "armRotation" : -30,
-        "weaponRotation" : -60,
-        "twoHanded" : true,
-        "weaponOffset" : [-0.3, 2.0],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      }
+      "knockback" : 20
     }
   },
-  "altAbilityType" : "barrier",
+  "altAbilityType" : "huntspearstab",
   "altAbility" : { },
-  
+
+  "critChance" : 3,
+  "critBonus" : 4,
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

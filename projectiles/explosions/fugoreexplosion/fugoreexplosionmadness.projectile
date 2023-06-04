@@ -1,0 +1,59 @@
+{
+  "projectileName" : "fugoreexplosionmadness",
+  "image" : "fugoreexplosion.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 9,
+  "speed" : 0,
+  "damagePoly" : [ [-3,3], [-3,-3], [2,-2], [2,3] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "flippable" : true,
+  "universalDamage" : true,
+  "damageKind" : "shadow",
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/blocks/footstep_brains.ogg",
+        "/sfx/projectiles/goocluster_pop.ogg"
+      ]
+    },
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : "metamod:none",
+      "newMod" : "bloodstonegrass",
+      "radius" : 6
+    },
+    {
+      "action" : "projectile",
+      "type" : "bloodrain2",
+      "fuzzAngle" : 10,
+      "inheritDamageFactor" : 0.66,
+      "angleAdjust" : 90
+    },
+    {
+      "action" : "projectile",
+      "type" : "bloodrain2",
+      "fuzzAngle" : 10,
+      "inheritDamageFactor" : 0.66,
+      "angleAdjust" : -90
+    },
+    {
+      "action" : "projectile",
+      "type" : "bloodrain2",
+      "fuzzAngle" : 10,
+      "inheritDamageFactor" : 0.66,
+      "angleAdjust" : 75
+    },
+    {
+      "action" : "projectile",
+      "type" : "bloodrain2",
+      "fuzzAngle" : 10,
+      "inheritDamageFactor" : 0.66,
+      "angleAdjust" : -75
+    }
+  ],
+  "power" : 1,
+  "emmiters" : [ "blood" ],
+  "statusEffects" : [ "darkwaterpoison" ]
+}

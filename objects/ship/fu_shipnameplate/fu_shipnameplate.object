@@ -1,0 +1,28 @@
+{
+  "objectName" : "fu_shipnameplate",
+  "colonyTags" : ["valuable","pretty"],
+  "rarity" : "Uncommon",
+  "category" : "decorative",
+  "price" : 100,
+  "printable" : true,
+
+  "description" : "A fancy plaque made to commemorate a ship. Displays its name, type and construction date. Break to reset ship name.",
+  "shortdescription" : "Fancy Ship Plaque",
+  "race" : "generic",
+
+  "inventoryIcon" : "fu_shipnameplate_icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_shipnameplate.png",
+      "imagePosition" : [-12, -0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+  "scripts" : ["fu_shipnameplate_obj.lua"],
+
+  "text" : {
+	"notOnOwnShip" : "Only the ships owner can name it.",
+	"shipNamed" : "Reading the plaque, it says the ship name is: ^red;<shipName>^white;.\nConstructed On: ^green;<shipDate>\n^white;Its classification is ^cyan;<shipType>^reset;"
+  }
+}

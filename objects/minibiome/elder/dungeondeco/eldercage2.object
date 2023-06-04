@@ -1,10 +1,10 @@
 {
   "objectName" : "eldercage2",
-  "colonyTags" : [ "elder", "evil", "wtf" ],
+  "colonyTags" : [ "elder", "evil", "death" ],
   "rarity" : "uncommon",
   "printable" : false,
-  "description" : "This poor soul suffered long before death.",
-  "shortdescription" : "^orange;Torture Cage^white;",
+  "description" : "This poor soul suffered long before death. Now he decays in solitude.",
+  "shortdescription" : "^orange;Torture Cage^reset;",
   "race" : "generic",
   "category" : "furniture",
   "price" : 600,
@@ -14,12 +14,14 @@
     {
       "dualImage" : "eldercage2.png:<color>.<frame>",
 
-      "imagePosition" : [-16, -88],
+      "imagePosition" : [0, 0],
       "frames" : 8,
       "animationCycle" : 1.0,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "top" ]
+      "anchors" : [ "top" ],
+      "metaBoundBox" : [-10, -10, 10, 10]
     }
-  ]
+  ],
+  "statusEffects"  : [ "madnessgainelder2" ]
 }

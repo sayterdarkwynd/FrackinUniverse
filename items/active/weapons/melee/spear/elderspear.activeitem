@@ -1,97 +1,58 @@
 {
-  "itemName" : "elderspear",
-  "price" : 0,
-  "level" : 6,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "Made from the stuff of raw Chaos",
-  "shortdescription" : "Elder Spear",
-  "tooltipKind" : "sword",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear"],
+	"itemName": "elderspear",
+	"price": 1260,
+	"level": 6,
+	"maxStack": 1,
+	"rarity": "legendary",
+	"description": "^#a5ff00;A sharpened edge that could cut a god.^reset;
+^cyan;Hunting weapon^reset;",
+	"shortdescription": "^#a5ff00;Elder Spear^reset;",
+	"tooltipKind": "swordelder",
+	"category": "spear",
+	"twoHanded": true,
+	"itemTags": ["weapon","melee","spear","elder", "upgradeableWeapon","shadow"],
 
-  "inventoryIcon" : "elderspear.png",
+	"inventoryIcon": "elderspear.png",
+	//"collectablesOnPickup": { "fu_weaponspear": "elderspear" },
+	"animation": "/items/active/weapons/melee/spear/elderspear.animation",
+	"animationParts": {
+		"handle": "",
+		"blade": "elderspear.png",
+		"bladefullbright": "elderspearfullbright.png"
+	},
+	"animationCustom": {
+		"sounds": {
+			"fire": [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "animation" : "/items/active/weapons/melee/spear/spear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "elderspear.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"scripts": ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"elementalType": "shadow",
 
-  "elementalType" : "poison",
+	"aimOffset": -1.0,
+	"primaryAbilityType": "spearstab",
+	"primaryAbility": {
+		"scripts": [],
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "scripts" : [],
-    "class" : "SpearStab",
+		"fireTime": 1.11,
+		"baseDps": 11.5,
+		"damageConfig": {
+			"damageSourceKind": "shadowbow",
+			"statusEffects": [ "insanity" ],
+			"knockback": 30
+		}
+	},
+	"altAbilityType": "flurry",
+	"altAbility": {
+		"damageConfig": {
+			"damageSourceKind": "shadowbow",
+			"statusEffects": [ "insanity" ]
+		}
+	},
 
-    "fireTime" : 1.11,
-    "baseDps" : 11.5,
-    "damageConfig" : {
-      "damageSourceKind" : "spear",
-      "statusEffects" : [ ],
-      "knockbackMode" : "aim",
-      "knockback" : 10,
-      "timeoutGroup" : "primary"
-    },
-    "holdDamageMultiplier" : 0.1,
-    "holdDamageConfig" : {
-      "timeoutGroup" : "hold",
-      "timeout" : 0.5
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : 0,
-        "twoHanded" : false,
-        "weaponOffset" : [0, 0.5],
+	"critChance": 4,
+	"critBonus": 12,
 
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "windup" : {
-        "hold" : true,
-        "duration" : 0.55,
-        "armRotation" : -110,
-        "weaponRotation" : 20,
-        "twoHanded" : true,
-        "weaponOffset" : [0, 0.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "fire" : {
-        "duration" : 0.3,
-        "armRotation" : -20,
-        "weaponRotation" : -70,
-        "twoHanded" : true,
-        "weaponOffset" : [0.3, 2.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "hold" : {
-        "armRotation" : -30,
-        "weaponRotation" : -60,
-        "twoHanded" : true,
-        "weaponOffset" : [-0.3, 2.0],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      }
-    }
-  },
-  "altAbilityType" : "flurry",
-  "altAbility" : { },
-  
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder": "/items/buildscripts/buildunrandweapon.lua"
 }

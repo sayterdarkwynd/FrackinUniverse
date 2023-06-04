@@ -1,0 +1,25 @@
+{
+  "itemName" : "coldmarrowpanini",
+  "rarity" : "Common",
+  "price" : 25,
+  "category" : "preparedFood",
+  "inventoryIcon" : "coldmarrowpanini.png",
+  "description" : "A frozen meat and Boneboo sandwich, cooked to perfection - then served cold. ^green;Heal ^white;20 ^gray;(^white;2s^gray;)^reset; ^orange;Type: Cooked Meat + Vegetables^reset;",
+  "shortdescription" : "Coldmarrow Panini",
+  "handPosition": [0, 4],
+  "effects" : [ [
+    {
+        "effect" : "heal_tier1"
+    },
+    {
+        "effect" : "meatc_plant_meal"
+    }
+  ] ],
+  "foodValue" : 45,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [ "wellfed" ]
+}

@@ -1,0 +1,73 @@
+{
+  "itemName" : "fuisogenchest",
+  "price" : 950,
+  "inventoryIcon" : "icons.png:chest",
+  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Isogen weapons: +^green;15^reset;% Phys. Resist, +^green;3^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: All Heat, Oxygen",
+
+  "shortdescription" : "Isogen Chestplate",
+  "category" : "chestarmour",
+  "tooltipKind" : "armornew2",
+  "itemTags" : [ "upgradeableWeapon", "balanced" ],
+  "maleFrames" : {
+    "body" : "chest.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
+
+  "femaleFrames" : {
+    "body" : "chest.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
+
+  "level" : 6,
+  //"collectablesOnPickup" : { "fu_armorbalanced" : "fuisogenchest" },
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.25
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.5
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 5
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 5
+    },
+  {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.085715
+    }
+  ],
+
+  "statusEffects" : [
+    "isogensetbonus",
+    {
+      "stat" : "fu_isogenset_chest",
+      "amount" : 1
+    }
+  ],
+
+  "colorOptions" : [
+    /* BROWN */
+    { "ffca8a" : "67513b", "e0975c" : "503f2f", "a85636" : "3a2f24", "6f2919" : "29221b", "676f83" : "526b4a","3d3d51" : "3c4d37","24232f" : "283125" }
+
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
+}

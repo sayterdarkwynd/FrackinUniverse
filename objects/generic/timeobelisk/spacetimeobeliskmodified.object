@@ -1,0 +1,78 @@
+{
+	"objectName": "spacetimeobeliskmodified",
+	"colonyTags": ["ancient", "electronic", "elder"],
+	"description": "A strange artifact of unknown use, modified according to the instructions of an insane cat-person.",
+	"shortdescription": "Modified Pillar",
+	"rarity": "legendary",
+	"race": "generic",
+	"category": "storage",
+	"objectType" : "container",
+	"printable": false,
+	"price": 200,
+	"lightColor": [22, 51, 177],
+	"hasObjectItem": true,
+	"health": 9,
+	"flickerPeriod": 0.5,
+	"flickerMinIntensity": 0.95,
+	"flickerMaxIntensity": 1,
+	"flickerPeriodVariance": 0.0,
+	"flickerIntensityVariance": 0.0,
+	//"learnBlueprintsOnPickup" : [ "isn_atmosregulatorwarped" ],
+	"inventoryIcon": "spacetimeobeliskicon.png",
+	"orientations": [{
+			"image": "spacetimeobelisk.png:<color>.off",
+			"flipImages": true,
+			"direction": "left",
+			"lightPosition": [0, 1],
+
+			"imagePosition": [-8, 0],
+			"frames": 1,
+			"animationCycle": 1.0,
+
+			"spaceScan": 0.1,
+			"anchors": ["bottom"]
+		},
+		{
+			"image": "spacetimeobelisk.png:<color>.off",
+			"direction": "right",
+			"lightPosition": [0, 1],
+
+			"imagePosition": [-8, 0],
+			"frames": 1,
+			"animationCycle": 1.0,
+
+			"spaceScan": 0.1,
+			"anchors": ["bottom"]
+		}
+	],
+
+	"scripts": ["/scripts/npcToyObject.lua", "spacetimeobeliskmodified.lua"],
+	"animation": "spacetimeobelisk.animation",
+	"animationCustom": {
+		"sounds": {
+			"on": ["/sfx/objects/console_button.ogg"],
+			"off": ["/sfx/objects/console_button.ogg"]
+		}
+	},
+	"animationParts": {
+		"bg": "spacetimeobelisk.png",
+		"fg": "spacetimeobelisklit.png"
+	},
+	"animationPosition": [-8, 0],
+
+	"npcToy": {
+		"influence": ["console"],
+		"defaultReactions": {},
+		"preciseStandPositionLeft": [-0.5, 0.0],
+		"preciseStandPositionRight": [2.0, 0.0],
+		"maxNpcs": 1
+	},
+
+	"scriptDelta": 1,
+	"openSounds": ["/sfx/objects/locker_open.ogg"],
+	"slotCount": 1,
+    "uiConfig" : "/interface/objectcrafting/fu_warped<slots>.config",
+	"containerCallback":"containerCallback",
+	"frameCooldown": 67,
+	"autoCloseCooldown": 3600
+}

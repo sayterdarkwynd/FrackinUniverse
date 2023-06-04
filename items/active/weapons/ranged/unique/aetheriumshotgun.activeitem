@@ -1,0 +1,121 @@
+{
+  "itemName" : "aetheriumshotgun",
+  "price" : 1160,
+  "inventoryIcon" : "aetheriumblaster.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Obliterating blasts that promise death.
+^cyan;Energy weapon^reset;",
+  "shortdescription" : "Aetherium Titan",
+  "category" : "shotgun",
+  "level" : 7,
+  "tooltipKind" : "gun2aetherium",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","shotgun","energy","upgradeableWeapon","aetherium","cosmic"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "aetheriumblaster.png",
+    "middlefullbright" : "aetheriumblasterfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastlightblue.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+			//Same as BaseOffset
+		    "offset" : [2, 0.15]
+		  }
+		}
+      }
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "erchiussmoke", "offset" : [0.4, -0.4] },
+          { "particle" : "peglacitrail", "offset" : [0.4, -0.4] },
+          { "particle" : "plasmafireflames", "offset" : [0.4, -0.4] },
+          { "particle" : "erchiussmoke", "offset" : [0.4, -0.2] },
+          { "particle" : "peglacitrail", "offset" : [0.4, -0.2] },
+          { "particle" : "plasmafireflames", "offset" : [0.4, -0.2] },
+          { "particle" : "erchiussmoke", "offset" : [0.4, -0.6] },
+          { "particle" : "peglacitrail", "offset" : [0.4, -0.6] },
+          { "particle" : "plasmafireflames", "offset" : [0.4, -0.6] },
+          { "particle" : "erchiussmoke", "offset" : [0.4, -0.5] },
+          { "particle" : "peglacitrail", "offset" : [0.4, -0.5] },
+          { "particle" : "plasmafireflames", "offset" : [0.4, -0.5] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/arconpew.ogg" ]
+    }
+  },
+
+  "baseOffset" : [2, 0.15],
+  "muzzleOffset" : [0.4, 0.2],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "aether",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
+    "fireTime" : 2,
+    "baseDps" : 5,
+    "energyUsage" : 80.0,
+    "useEnergy" : true,
+    "runSlowWhileShooting" : true,
+    "fireType" : "auto",
+    "inaccuracy" : 0.09,
+
+    "projectileCount" : 4,
+    "projectileType" : "aetherbullet",
+    "projectileParameters" : {
+      "speed" : 80,
+      "knockback" : 5
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.03,
+	      "armRotation" : -2,
+	      "weaponRotation" : -2,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+
+  "critChance" : 1,
+  "critBonus" : 5,
+
+  "altAbilityType" : "fusionblast",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

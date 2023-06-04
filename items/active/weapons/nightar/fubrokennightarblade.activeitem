@@ -1,0 +1,40 @@
+{
+  "itemName" : "fubrokennightarblade",
+  "price" : 60,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "A rather broken and tarnished blade. It bears fine etched details.",
+  "shortdescription" : "Broken Densinium Sword",
+  "tooltipKind" : "sword2",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword","nightar","densinium"],
+ // "learnBlueprintsOnPickup" : [ "densiniumsword" ],
+
+  "inventoryIcon" : "brokennightarblade.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "brokennightarblade.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.84,
+    "baseDps" : 7
+  },
+
+  "critChance" : 1,
+  "critBonus" : 4,
+
+  "altAbilityType" : "risingslash",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

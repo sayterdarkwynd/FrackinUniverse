@@ -1,35 +1,57 @@
 function init()
 	object.setInteractive(true)
-	storage.state = false
+	storage.state = storage.state or false
+	if not storage.watchBox then
+		local myLocation = entity.position()
+		storage.watchBox = { myLocation[1]-20, myLocation[2]-20, myLocation[1]+20, myLocation[2]+20 }
+	end
 end
 
 function update(dt)
-	local myLocation = entity.position()
-	local watchBox = { myLocation[1]-20, myLocation[2]-20, myLocation[1]+20, myLocation[2]+20 }
-	-- world.debugPoly( watchBox, "red" ) -- didn't work, rectf is not usable as poly
-	if storage.state then
-		world.loadRegion( watchBox )
+	if object.isInputNodeConnected(0) then
+		object.setInteractive(false)
+		storage.state=object.getInputNodeLevel(0)
+		if storage.state then
+			if not world.regionActive(storage.watchBox) then
+				world.loadRegion( storage.watchBox )
+			end
+		end
+	else
+		object.setInteractive(true)
 	end
+	if storage.state then
+		world.loadRegion( storage.watchBox )
+	end
+	moveEyeball()
+end
+
+function onNodeConnectionChange()
+	if object.isInputNodeConnected(0) then
+		object.setInteractive(false)
+			storage.state=object.getInputNodeLevel(0)
+	else
+		object.setInteractive(true)
+	end
+	moveEyeball()
+end
+
+function onInboundNodeChange()
+	storage.state=object.getInputNodeLevel(0)
+	moveEyeball()
 end
 
 function onInteraction(args)
-	if not storage.state then
-		openEye()
+	storage.state = not storage.state
+	moveEyeball()
+end
+function moveEyeball()
+	if storage.state then
+		animator.setAnimationState("eyeState","opening")
 	else
-		closeEye()
+		animator.setAnimationState("eyeState","closing")
 	end
 end
 
-function openEye()
-	animator.setAnimationState("eyeState","opening")
-	storage.state = true
-end
-
-function closeEye()
-	animator.setAnimationState("eyeState","closing")
-	storage.state = false
-end
-
 function uninit()
-  
+	storage.state = false
 end

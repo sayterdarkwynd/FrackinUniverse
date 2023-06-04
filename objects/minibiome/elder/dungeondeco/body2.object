@@ -1,0 +1,44 @@
+{
+  "objectName" : "fubody2",
+  "colonyTags" : ["fu","elder","evil","storage"],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "price" : 0,
+  "printable" : false,
+  "description" : "This body looks to have been torn to shreds prior to death",
+  "shortdescription" : "Ancient mangled corpse",
+
+  "inventoryIcon" : "body2.png",
+  "orientations" : [
+    {
+      "dualImage" : "body2.png:<color>",
+      "imagePosition" : [-19, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "metaBoundBox" : [-10, -10, 10, 10]
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/fleshdoor_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/fleshdoor_close.ogg" ],
+  "slotCount" : 16,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+
+  "scripts" : [ "/objects/scripts/fuautofillonce.lua" ],
+  "scriptDelta" : 240,
+
+  "autofillContents" : [
+   {"name" : "rawribmeat", "count" : 1, "parameters" : {}},
+   {"name" : "humaneyeball", "count" : 1, "parameters" : {}},
+   {"name" : "severedear", "count" : 1, "parameters" : {}}
+   ],
+  "statusEffects"  : [ "madnessgainelder1" ]
+
+}

@@ -1,0 +1,150 @@
+{
+  "itemName" : "quietusrocketlauncher",
+  "price" : 500,
+  "inventoryIcon" : "quietusrocketlauncher.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A unique flavor of bioweapon that avoids violations of intergalactic law.
+^cyan;Targets cannot heal when hit^reset;",
+  "shortdescription" : "Quietus Rocket Launcher",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "category" : "rocketLauncher",
+  "itemTags" : ["weapon","ranged","rocketlauncher","bioweapon", "upgradeableWeapon" ,"quietus"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "quietusrocketlauncher.png",
+    "middleunlit" : "",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middleunlit" : {
+          "properties" : {
+            "centered" : true,
+            "image" : "<partImage><paletteSwaps>",
+            "offset" : [0.30, 0.385],
+            "transformationGroups" : ["weapon"],
+            "fullbright" : true,
+            "zLevel" : 1
+          }
+        }
+      }
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/gun/rocket2.ogg" ]
+    }
+  },
+
+
+  "baseOffset" : [-1, 0.38],
+  "muzzleOffset" : [3, 0.15],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "bioweapon",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 1.5,
+    "baseDps" : 10,
+    "energyUsage" : 32,
+    "inaccuracy" : 0.06,
+
+    "projectileCount" : 4,
+    "fireType" : "auto",
+
+    "projectileType" : "fuswarmmissilequietus",
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.05,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "explosiveshot",
+  "altAbility" : {
+    "name" : "Blocker Blast",
+    "projectileCount" : 1,
+    "projectileParameters" : {
+      "actionOnReap" : [
+        {
+          "action" : "sound",
+          "options" : [
+            "/sfx/melee/staff_aura_activate.ogg"
+          ]
+        },
+        {
+          "action" : "projectile",
+          "type" : "pushzone",
+          "config" : { "timeToLive": 4}
+        },
+        {
+          "action" : "projectile",
+          "type" : "pushzone",
+          "config" : { "timeToLive": 4}
+        },
+        {
+          "action" : "projectile",
+          "type" : "impactgrenade",
+          "inheritDamageFactor" : 0.5
+        }
+      ],
+      "statusEffects" : [ "slow" ]
+
+
+    }
+  },
+
+  "isAmmoBased" : 1,
+  "magazineSize" : 3,
+  "reloadTime" : 1.85,
+
+  "critChance" : 2,
+  "critBonus" : 4,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 400,
+  "recoilForce" : 700,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

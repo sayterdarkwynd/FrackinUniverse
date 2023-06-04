@@ -1,23 +1,18 @@
 {
-  "itemName" : "gemglow",
-  "rarity" : "Common",
-  "price" : 60,
-  "inventoryIcon" : "gemglow.png",
-  "description" : "Rocksalt in fruit form. A hylotl favorite. Increases your energy by 20%.",
-  "shortdescription" : "Gemglow",
-  "effects" : [ [
-    {
-        "effect" : "maxenergyboost20",
-        "duration" : 90
-    },
-    {
-        "effect" : "wellfed",
-        "duration" : 150
-    }
-  ] ],
-  
-  "blockingEffects" : [
-    "wellfed"
-  ],
-  "learnBlueprintsOnPickup" : [ "gemglowseed" ]
+	"itemName": "gemglow",
+	"inventoryIcon": "gemglow.png",
+	"category": "food",
+	"rarity": "Rare",
+	"price": 60,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immune^reset;: Grav-Rain: 2m",
+	"shortdescription": "Gemglow",
+	"effects": [
+		[{
+			"effect": "gravrainimmunity",
+			"duration": 120
+		}]
+	]//,
+	//"learnBlueprintsOnPickup": ["gemglowseed"]
 }

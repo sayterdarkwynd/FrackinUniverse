@@ -3,9 +3,9 @@
   "baseType" : "fuoutpostcivilian",
   "damageTeam" : 1,
     "scriptConfig" : {
-        "offeredQuests" : [ "create_extractor", "create_advxeno" ],
-        "turnInQuests" : [ "create_extractor", "create_advxeno" ],
-        
+        "offeredQuests" : [ "create_iodine", "create_advxeno" ],
+        "turnInQuests" : [ "create_iodine", "create_advxeno" ],
+
     "wander" : {
       "timeRange" : [2.0, 10.0],
       "chatDistance" : 4,
@@ -20,7 +20,7 @@
     "returnToPost" : {
       "moveTime" : 20,
       "minDistance" : 2
-    },    
+    },
     "sit" : {
       "timeOfDayRanges" : [ [0.6, 1.0], [0.0, 0.2] ],
       "moveTimeLimit" : 30,
@@ -62,18 +62,18 @@
         ]
       ],
       "cooldown" : 10
-    },    
+    },
         "converse" : {
             "waitTime" : 0.5,
             "dialog" : {
-          
+
                 "default" : [
                       "I'm glad to meet a fellow scientist."
                 ]
                 }
             }
         },
-    
+
   "humanoidTiming" : {
     // Idle, Walk, Run, Jump, Fall, Swim, SwimIdle, Duck, Sit, Lay
     "stateCycle" : [1.0, 0.75, 0.75, 0.25, 0.25, 0.50, 0.50, 1.0, 1.0, 1.0],
@@ -88,7 +88,6 @@
         "override" : [
             [0, [
           {
-            "head" : [ "fieldscientisthead" ],
             "chest" : [ "scientistchest" ],
             "legs" : [ "scientistlegs" ]
           }

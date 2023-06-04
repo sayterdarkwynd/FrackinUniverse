@@ -1,0 +1,105 @@
+[
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/idlefin",
+    "value": {
+      "frames": 1,
+      "cycle": 1
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/dig",
+    "value": {
+      "frames": 4,
+      "cycle": 0.5,
+      "mode": "loop",
+      "properties": {
+        "immediateSoundRangeMultiplier": 0.5
+      },
+      "frameProperties": {
+        "immediateSound": [
+          "/sfx/environmental/vine_cut1.ogg",
+          "/sfx/environmental/vine_cut2.ogg",
+          "/sfx/environmental/vine_cut3.ogg",
+          "/sfx/environmental/vine_cut2.ogg"
+        ]
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/charge",
+    "value": {
+      "frames": 2,
+      "cycle": 0.1,
+      "properties": {
+        "persistentSound": "/sfx/npc/quadruped/arrowhead_turnhostile.ogg"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/dive",
+    "value": {
+      "frames": 2,
+      "cycle": 0.4,
+      "properties": {
+        "persistentSound": "/sfx/npc/quadruped/arrowhead_idle1.ogg"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/body/partStates/body/idlefin",
+    "value": {
+      "properties": {
+        "image": "<partImage>:idlefin.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/body/partStates/body/dig",
+    "value": {
+      "properties": {
+        "image": "<partImage>:dig.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/body/partStates/body/charge",
+    "value": {
+      "properties": {
+        "image": "<partImage>:charge.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/body/partStates/body/dive",
+    "value": {
+      "properties": {
+        "image": "<partImage>:dive.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/sounds/bite",
+    "value": [
+      "/sfx/npc/quadruped/arrowhead_attack1.ogg",
+      "/sfx/npc/quadruped/arrowhead_attack2.ogg"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/sounds/dig",
+    "value": [
+      "/sfx/environmental/vine_cut1.ogg",
+      "/sfx/environmental/vine_cut2.ogg",
+      "/sfx/environmental/vine_cut3.ogg"
+    ]
+  }
+]

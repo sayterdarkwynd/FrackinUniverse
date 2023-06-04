@@ -1,0 +1,39 @@
+{
+  "objectName" : "thelusianwalllamp",
+  "colonyTags" : ["thelusian","light"],
+  "rarity" : "Common",
+  "description" : "A biomechanical wall light.",
+  "shortdescription" : "Thelusian Wall Light",
+  "race" : "thelusian",
+
+  "category" : "light",
+  "price" : 45,
+  "lightColor" : [30, 220, 30],
+
+  "inventoryIcon" : "thelusianwalllampicon.png",
+  "orientations" : [
+    {
+      "image" : "thelusianwalllamp.png:<color>.<frame>",
+      "imagePosition" : [-0, 0],
+      "animationPosition" : [0, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "thelusianwalllamp.png",
+    "fg" : "thelusianwalllamp.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+}

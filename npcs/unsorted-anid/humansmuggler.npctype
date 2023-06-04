@@ -1,0 +1,203 @@
+{
+  "type" : "humansmuggler",
+  "baseType" : "merchanttenant",
+
+  "damageTeam" : 1,
+
+  "disableWornArmor" : false,
+
+  "scripts" : [
+    "/npcs/bmain.lua",
+    "/scripts/behavior.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/position.lua",
+    "/scripts/actions/merchant.lua",
+    "/scripts/actions/entity.lua",
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/dialog.lua",
+    "/scripts/actions/world.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/actions/query.lua"
+
+  ],
+
+  "initialScriptDelta" : 5,
+  "scriptConfig" : {
+
+   // "behavior" : "merchant",
+
+	"behaviorConfig" : {
+      "hostileDamageTeam" : { "type" : "friendly", "team" : 1 }
+    },
+    "attackerLimit" : 12,
+    "attackerLimitCooldown" : 1,
+    "merchant" : {
+      "waitTime" : 180,
+      "storeRadius" : 8,
+      "categories" : {
+        "default" : ["humansmuggler" ],
+        "human" : ["humansmuggler" ]
+      },
+      "buyFactorRange" : [ 5.0, 5.0 ],
+      "sellFactorRange" : [ 0.4, 0.4 ],
+      "numItems" : 13,
+      "paneLayoutOverride" : {
+        "windowtitle" : {
+          "title" : "  Smuggler",
+          "subtitle" : "  Black market goods."
+        }
+      },
+
+     "interactAction" : "OpenMerchantInterface",
+	"interactData" : {
+    "config" : "/interface/windowconfig/merchant.config",
+    "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : " Geologist",
+        "subtitle" : " Rocks and Rock-like things."
+      }
+    },
+    "buyFactor" : 8.75,
+    "sellFactor" : 0.45,
+    "items" : [
+      { "item" : "devilsbargain" },
+      { "item" : "thesauce", "price":1000 },
+      { "item" : "apexbrainjar", "price":800  },
+      { "item" : "mantizanwine" },
+      { "item" : "snarshedgarflipps" },
+      { "item" : "orphanpaste" },
+      { "item" : "solidfuel", "price":1 },
+      { "item" : "aichip", "price":25000 },
+	    { "item" : "fucontrabandgoods", "price":500 },
+	    { "item" : "powderednarcotics", "price":1000  },
+	    { "item" : "myphisinjector" },
+	    { "item" : "greghead" },
+	    { "item" : "poutine" }
+		]
+	}
+
+
+    },
+
+    "questGenerator" : {
+      "pools" : ["common", "tenant", "shady"],
+      "enableParticipation" : true,
+
+      // Every 30 seconds, decide whether to generate a quest and if so, spend
+      // the rest of the 30s window trying to generate it.
+      "timeLimit" : 30,
+
+      // Don't generate new quests if there are already more than <nearbyQuestLimit>
+      // questmanager stagehands nearby, within a <nearbyQuestRange> tile range.
+      "nearbyQuestLimit" : 2,
+      "nearbyQuestRange" : 50,
+      "questCountRange" : [1, 4],
+
+      "graduation" : {
+        "nextNpcType" : [
+          [0.25, "crewmemberchemistblue"],
+          [0.25, "crewmemberchemistgreen"],
+          [0.25, "crewmemberchemistyellow"],
+          [0.25, "crewmemberchemistorange"],
+          [1, "crewmemberengineer"],
+          [1, "crewmembermechanic"]
+        ]
+      }
+    },
+
+    "dialog" : {
+      "merchant" : {
+        "start" : {
+          "human" : {
+            "default" : [
+              "Legal things for sale!.",
+              "The rarest stuff in the galaxy!",
+              "Psst! Hey, you! Buy my stuff!"
+            ]
+          }
+        },
+        "end" : {
+          "human" : {
+            "default" : [
+              "Remember - no refunds.",
+			  "We've got a good thing going here. Don't mess it up!",
+              "Pleasure doing business with you, partner.",
+              "Keep this on the down-low, will you?"
+            ]
+          }
+        },
+        "follow" : {
+          "human" : {
+            "default" : [
+              "We can do business at my... uh, store.",
+              "Not so loud! Follow me..."
+            ]
+          }
+        },
+        "welcome" : {
+          "human" : {
+            "default" : [
+              "I've got what you need...",
+              "The goods are all here.",
+              "Plenty of other buyers out there. Got anything to sell?",
+              "Here we are. They're worth every pixel.",
+              "It's not easy to get ahold of this stuff."
+            ]
+          }
+        },
+        "tout" : "/dialog/merchant.config:tout"
+      },
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/merchant.config:tagCriteria",
+          "enclosedArea" : "/dialog/merchant.config:enclosedArea",
+          "otherDeed" : "/dialog/merchant.config:otherDeed",
+          "severe" : "/dialog/merchant.config:severe",
+          "final" : "/dialog/merchant.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/merchant.config:beacon",
+          "rent" : "/dialog/merchant.config:rent"
+        }
+      }
+    }
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 250.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 1.6
+      },
+      "protection" : {
+        "baseValue" : 1.3
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "fuoperativehead", "parameters" : { "colorIndex" : 1 } }
+            ],
+            "chest" : [
+              { "name" : "fuoperativechest", "parameters" : { "colorIndex" : 1 } }
+            ],
+            "legs" : [
+              { "name" : "fuoperativelegs", "parameters" : { "colorIndex" : 1 } }
+            ],
+            "primary" : [
+              "energyassault"
+            ],
+            "sheathedprimary": [
+            "goldquarterstaff"
+            ]
+          }
+      ]]
+    ]
+  }
+}

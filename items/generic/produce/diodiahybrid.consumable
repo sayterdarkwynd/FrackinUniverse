@@ -1,23 +1,18 @@
 {
-  "itemName" : "diodiahybrid",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "diodiahybrid.png",
-  "description" : "Regenerates energy regen and maximum energy.",
-  "shortdescription" : "Diodia Hybrid Fruit",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      {
-        "effect" : "energyregenfu15",
-        "duration" : 15
-      },
-      "percentenergyboost5"
-    ] ]
+	"itemName": "diodiahybrid",
+	"inventoryIcon": "diodiahybrid.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+20% Poison Res^reset;: 2m",
+	"shortdescription": "Diodia Hybrid Fruit",
+
+	"effects": [
+		[{
+			"effect": "poisonblock2",
+			"duration": 120
+		}]
+	]
 }

@@ -1,0 +1,72 @@
+{
+  "objectName" : "protectoratetvstand",
+  "colonyTags" : ["protectorate"],
+  "printable" : false,
+  "rarity" : "Rare",
+  "description" : "A standard issue Protectorate dorm room television stand. This one comes with a console!",
+  "shortdescription" : "Protectorate TV Stand",
+  "race" : "protectorate",
+  "category" : "furniture",
+  "price" : 0,
+
+  "apexDescription" : "Hah! I hardly ever had this television to myself back at the Academy...",
+  "avianDescription" : "In retrospect, the furniture of the Protectorate was remarkably and stylishly made.",
+  "floranDescription" : "... Floran has no one to play console with now...",
+  "glitchDescription" : "Bittersweet. I suppose I finally have the TV to myself now...",
+  "humanDescription" : "Oh man... It's even loaded up with the same games we had... This is just...",
+  "hylotlDescription" : "A beautifully made television stand, if there ever was one.",
+  "novakidDescription" : "This television was awfully great for hangin' out around.",
+
+  "inventoryIcon" : "protectoratetvstandicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "protectoratetvstand.png:<color>",
+      "imagePosition" : [-24, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform",
+      "collisionSpaces" : [[-2,1],[-1,1],[0,1],[1,1],[2,1]]
+    }
+  ],
+  "scripts":[
+    "/scripts/npcToyObject.lua"
+  ],
+  "npcToy":{
+    "influence":[
+      "videogame",
+      "videogame",
+      "videogameComplete"
+    ],
+    "defaultReactions":{
+      "videogame":[
+        [
+          1.0,
+          "typing"
+        ]
+      ],
+      "videogameComplete":[
+        [
+          1.0,
+          "smile"
+        ],
+        [
+          1.0,
+          "annoyed"
+        ],
+        [
+          1.0,
+          "punch"
+        ]
+      ]
+    },
+    "preciseStandPositionLeft":[
+      -0.5,
+      0.0
+    ],
+    "preciseStandPositionRight":[
+      2.0,
+      0.0
+    ],
+    "maxNpcs":1
+  }
+}

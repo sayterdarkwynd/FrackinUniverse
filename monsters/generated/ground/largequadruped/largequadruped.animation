@@ -1,0 +1,550 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 1
+          },
+          "jump" : {
+            "frames" : 1
+          },
+          "walk" : {
+            "frames" : 8,
+            "cycle" : 1.0,
+            "mode" : "loop"
+          },
+          "run" : {
+            "frames" : 8,
+            "cycle" : 0.75,
+            "mode" : "loop"
+          },
+          "chargewindup" : {
+            "frames" : 8,
+            "cycle" : 0.75,
+            "mode" : "loop"
+          },
+          "charge" : {
+            "frames" : 8,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "chargewinddown" : {
+            "frames" : 1
+          },
+          "firewindup" : {
+            "frames" : 1
+          },
+          "fire" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "",
+              "persistentSoundStopTime" : 0.25,
+              "persistentSoundRangeMultiplier" : 0.15
+            }
+          },
+          "firewinddown" : {
+            "frames" : 1
+          },
+          "melee" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "persistentSound" : "/sfx/melee/bite.ogg",
+              "persistentSoundStopTime" : 0.25,
+              "persistentSoundRangeMultiplier" : 0.15
+            }
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "backLegs" : {
+        "properties" : {
+          "zLevel" : 0,
+          "centered" : true,
+          "transformationGroups" : [ "body" ],
+          "offset" : [-0.75, 0.125]
+        },
+
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "run" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:idle.1"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:idle.1"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:idle.1"
+              }
+            },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      },
+
+      "chest" : {
+        "properties" : {
+          "zLevel" : 1,
+          "centered" : true,
+          "transformationGroups" : [ "body" ],
+          "offset" : [-0.75, 0.125]
+        },
+
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "run" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:idle.1"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:idle.1"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:idle.1"
+              }
+            },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      },
+
+      "tail" : {
+        "properties" : {
+          "zLevel" : 2,
+          "centered" : true,
+          "transformationGroups" : [ "body" ],
+          "offset" : [-0.75, 0.125]
+        },
+
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "run" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:idle.1"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:idle.1"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:idle.1"
+              }
+            },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      },
+
+      "head" : {
+        "properties" : {
+          "zLevel" : 3,
+          "centered" : true,
+          "transformationGroups" : [ "body", "aim" ],
+          "offset" : [-0.75, 0.125]
+        },
+
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "run" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:fire.1"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:rotation"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:rotation"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:rotation"
+              }
+            },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:fire.2"
+              }
+            }
+          }
+        }
+      },
+
+      "frontLegs" : {
+        "properties" : {
+          "zLevel" : 4,
+          "centered" : true,
+          "transformationGroups" : [ "body" ],
+          "offset" : [-0.75, 0.125]
+        },
+
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "run" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:idle.1"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:idle.1"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:idle.1"
+              }
+            },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : {"interpolated" : true},
+    "aim" : {"interpolated" : true}
+  },
+
+  "particleEmitters" : {
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
+    "fire" : [ "/sfx/npc/monsters/monster_surprise.ogg" ]
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0.25,
+      "directives" : "fade=ffffff;0.5"
+    }
+  }
+}

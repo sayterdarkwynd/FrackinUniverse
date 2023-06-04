@@ -1,0 +1,55 @@
+{
+  "projectileName" : "fireblastsmall",
+  "image" : "fireblastsmall.png",
+  "physics" : "paperplane",
+  "animationCycle" : 1,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 10,
+  "power" : 5,
+  "level" : 2,
+  "speed" : 45,
+    "fullbright" : true,
+  "timeToLive" : 1,
+  "lightColor" : [255,165,0],
+  "damageKind" : "hellfire",
+  "damagePoly" : [ [-10, 0], [0, 7], [10, 10], [10, 0], [-10, -10], [0, -7] ],
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/hellfireexplosion2/hellfireexplosion2.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "flamethrowerflameff",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.1
+    },
+    {
+      "action" : "projectile",
+      "type" : "flamethrowerflameff",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.1
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/hellfireexplosion2/hellfireexplosion2.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "flamethrowerflameff",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.1
+    },
+    {
+      "action" : "projectile",
+      "type" : "flamethrowerflameff",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.1
+    }
+  ],
+  "emitters" : [ "fireplasma" ],
+  "statusEffects" : [ "burning" ],
+  "hydrophobic" : true
+}

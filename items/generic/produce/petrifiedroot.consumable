@@ -1,20 +1,41 @@
 {
-  "itemName" : "petrifiedroot",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "petrifiedrooticon.png",
-  "description" : "Grants a huge defense boost. Resists shadow gas.", 
-  "shortdescription" : "Shadow Root",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      "defense4",
-      "shadowgasimmunity"
-    ] ]
+	"itemName": "petrifiedroot",
+	"inventoryIcon": "petrifiedrooticon.png",
+	"category": "food",
+	"rarity": "Legendary",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immune^reset;: Caliginous Gas, ^cyan;+6 Defense^reset;: 2m",
+	"shortdescription": "Umbral Stalk",
+	"effects": [
+		[{
+				"effect": "defense4",
+				"duration": 120
+			},
+			{
+				"effect": "shadowgasImmunity",
+				"duration": 120
+			}
+		]
+	],
+	"blockingEffects": [
+		"defense1",
+		"defense2",
+		"defense3",
+		"defense5",
+		"defense6",
+		"defenseboost10",
+		"defenseboost20",
+		"defenseboost30",
+		"defenseboost60",
+		"defenseboost90",
+		"defenseboost120",
+		"defenseboost180",
+		"defenseboost210",
+		"defenseboost240",
+		"defenseboost270",
+		"defenseboost300",
+		"defenseboostgreg"
+	]
 }

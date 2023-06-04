@@ -1,0 +1,210 @@
+{
+  "name" : "atropushellhiveunderground",
+  "friendlyName" : "Atropus Underground Hell Hive",
+
+    "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 1,
+        "pool" : [
+          [ 0.1, "burrower_depth_selector" ]
+        ]
+      },
+      {
+        "select" : 3,
+        "pool" : [
+          [ 0.3111, "fugiantredbee2" ]
+        ]
+      },
+      {
+        "select" : 3,
+        "pool" : [
+          [ 0.3, "forestbee" ],
+          [ 0.3, "normalbee" ],
+	  [ 0.6, "futinybee2" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      }
+    ],
+    "monsterParameters" : {
+      "colors" : "magma",
+      "statusSettings" : {
+        "stats" : {
+          "insanityImmunity" : {
+            "baseValue" : 1.0
+          },
+          "pusImmunity" : {
+            "baseValue" : 1.0
+          },
+          "biooozeImmunity" : {
+            "baseValue" : 1.0
+          }
+        }
+      }
+    }
+  },
+
+  "mainBlock" : "redhoneycombmaterial",
+  "subBlocks" : [ "fu_redhoneycombblock", "hellstone" ],
+  "ores" : "ff_deepredhoneyOres",
+
+  "parallax" : "/parallax/underground/atropusunderground.parallax",
+
+  "ambientNoises" : {
+      "day" : {
+        "tracks" : [ "/sfx/ambiance/atropusambiance2.ogg", "/sfx/ambiance/atropusambiance4.ogg", "/sfx/ambiance/atropusambiance6.ogg" ]
+      },
+      "night" : {
+        "tracks" : [ "/sfx/ambiance/atropusambiance3.ogg", "/sfx/ambiance/atropusambiance4.ogg" ]
+      }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "bone" ],
+    "grassModDensity" : 0.3,
+
+    "items" : [
+      {
+        "mode" : "background",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundFossils",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.15, "dirtyfossil1" ], [0.15, "dirtyfossil2" ], [0.15, "dirtyfossil3" ], [0.15, "dirtyfossil4" ], [0.1, "dirtyfossil5" ], [0.1, "dirtyfossil6" ], [0.1, "dirtyfossil7" ], [0.1, "dirtyfossil8" ] ],
+            "parameters" : {  "materials" : ["mud", "cobblestone", "bonematerial"]}
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "smashbones1" ], [0.35, "smashbones2" ], [0.35, "smashbones3" ], [0.35, "smashbones4" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+           {
+             "mode" : "floor",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:ffunCommon",
+
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [
+              		[0.50, "hiveblob" ],
+              		[0.50, "hiveblob1" ],
+              		[0.50, "hiveblob2" ],
+              		[0.50, "hiveblob3" ],
+              		[0.50, "hiveblob4" ],
+              		[0.50, "hiveblob5" ],
+              		[0.50, "copperrock" ],
+              		[0.50, "copperrocksmall" ],
+              		[0.50, "silverrock" ],
+              		[0.50, "silverrocksmall" ],
+              		[0.50, "goldrock" ],
+              		[0.50, "goldrocksmall" ]
+                 ]
+               }
+             ]
+           },
+      {
+        "mode" : "ceiling",
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "ceilinghive1" ], [0.35, "ceilinghive2" ], [0.35, "ceilinghive3" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 180,
+          "treeStemHueShiftMax" : 180,
+          "treeStemList" : [ "wildernessvine", "sulphurvine" ],
+          "treeFoliageList" : [ "flowery", "starry", "dreamy" ]
+        },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:minibiomeChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "ffbeeChest" ]
+      },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "hivebush",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "rocklarge",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "podbush",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            }
+          ]
+        },
+      {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundCrops",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "wildoonfortaseed" ] ],
+            "parameters" : {
+              "startingStage" : 3
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

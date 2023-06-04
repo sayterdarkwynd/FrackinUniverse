@@ -1,0 +1,457 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 1,
+            "cycle" : 1,
+            "mode" :"loop",
+            "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ]
+            }
+          },
+          "walk" : {
+            "frames" : 8,
+            "cycle" : 1,
+            "mode" :"loop",
+            "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ]
+            }
+          },
+          "fire" : {
+            "frames" : 6,
+            "cycle" : 0.6,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/starspawnattack.ogg",
+              "particleEmittersOn" : [ "cosmic" ],
+              "particleEmittersOff" : [ "poisonous", "ball" ]
+            }
+          },
+          "fire2" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/starspawnattack2.ogg",
+              "particleEmittersOn" : [ "poisonous" ],
+              "particleEmittersOff" : [ "cosmic", "ball" ]
+            }
+          },
+          "fire3" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/starspawn1.ogg",
+              "particleEmittersOn" : [ "ball" ],
+              "particleEmittersOff" : [ "poisonous", "cosmic" ]
+            }
+          },
+          "firewindup" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ]
+            }
+          },
+
+          "firewinddown" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "properties" : {
+              "particleEmittersOff" : [ "poisonous", "cosmic", "ball" ]
+            }
+          },
+          "jump" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" :"loop"
+          },
+          "fall" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          },
+          "jumpwindup" : {
+            "frames" : 1,
+            "cycle" : 0.2,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/robotboss_pain1.ogg"
+            }
+          }
+        }
+      },
+
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "centered" : true,
+          "zLevel" : 2
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "jumpwindup" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:firewinddown.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            },
+            "fire2" : {
+              "properties" : {
+                "image" : "<partImage>:fire2.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            },
+            "fire3" : {
+              "properties" : {
+                "image" : "<partImage>:fire3.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            }
+          }
+        }
+      },
+      "head" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "offset" : [ 0, -0.1],
+          "centered" : true,
+          "zLevel" : 3
+        },
+        "partStates" : {
+          "head" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "jumpwindup" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            },
+            "fire2" : {
+              "properties" : {
+                "image" : "<partImage>:fire2.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            },
+            "fire3" : {
+              "properties" : {
+                "image" : "<partImage>:fire3.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            }
+          }
+        }
+      },
+      "staff" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "centered" : true,
+          "zLevel" : 1
+        },
+        "partStates" : {
+          "staff" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "jumpwindup" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            },
+            "fire2" : {
+              "properties" : {
+                "image" : "<partImage>:fire2.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            },
+            "fire3" : {
+              "properties" : {
+                "image" : "<partImage>:fire3.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "lights" : {
+    "glow" : {
+      "active" : true,
+      "position" : [0, 0],
+      "color" : [40, 40, 30],
+      "pointLight" : true
+    }
+  },
+
+  "particleEmitters" : {
+    "ball" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [3,2,-3,4],
+      "particles" : [
+        { "particle" : "defaultdarkgreen" },
+        { "particle" : "defaultdarkgreen" },
+        { "particle" : "defaultdarkgreen" },
+        { "particle" : "defaultdarkgreen" },
+        { "particle" : "defaultred" },
+        { "particle" : "defaultred" },
+        { "particle" : "levitationair" },
+        { "particle" : "levitationair" },
+        { "particle" : "levitationair" }
+      ]
+    },
+    "cosmic" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [3,3, -3, 5],
+      "particles" : [
+        { "particle" : "lightredphaseparticle" },
+        { "particle" : "lightpurplephaseparticle" },
+        { "particle" : "lightpurplephaseparticle" },
+        { "particle" : "lightredphaseparticle" },
+        { "particle" : "lightredphaseparticle" },
+        { "particle" : "lightredphaseparticle" },
+        { "particle" : "piercingspark" },
+        { "particle" : "piercingspark" },
+        { "particle" : "piercingspark" },
+        { "particle" : "piercingspark" }
+      ]
+    },
+    "poisonous" : {
+      "emissionRate" : 10,
+      "offsetRegion" : [1.0,3.0,-1.0,5.0],
+      "particles" : [
+        { "particle" : "poisondust" },
+        { "particle" : "poisondust" },
+        { "particle" : "poisondust" },
+        { "particle" : "poisondust" },
+        { "particle" : "poisondust" },
+        { "particle" : "poisonsicknessdust" },
+        { "particle" : "poisonsicknessdust" },
+        { "particle" : "poisonsicknessdust" },
+        { "particle" : "poisonsicknessdust" },
+        { "particle" : "poisonsicknessdust" }
+      ]
+    },
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "castpoison" },
+        { "particle" : "castpoison" },
+        { "particle" : "castpoison" },
+        { "particle" : "castelectric" },
+        { "particle" : "castelectric" },
+        { "particle" : "castelectric" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "blood" },
+        { "particle" : "castpoison" },
+        { "particle" : "castpoison" },
+        { "particle" : "castpoison" },
+        { "particle" : "castelectric" },
+        { "particle" : "castelectric" },
+        { "particle" : "castelectric" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "turnHostile" : [ "/sfx/npc/monsters/starspawnattack.ogg" ],
+    "idle" :["/sfx/npc/boss/robotboss_idle1.ogg"],
+    "fire" :["/sfx/weapons/explosion2.ogg"],
+    "chestgun" :["/sfx/weapons/energypew.ogg"],
+    "dualgun" :["/sfx/weapons/k3.ogg"],
+    "melee" :["/sfx/npc/monsters/toss1.ogg"],
+    "shooting" :["/sfx/npc/monsters/toss1.ogg"],
+    "deathPuff" :["/sfx/npc/monsters/starspawn1.ogg"],
+    "attackSound" :["/sfx/npc/monsters/starspawnattack.ogg"],
+    "aggroHop" :["/sfx/npc/monsters/starspawnattack2.ogg"],
+    "blinkSound" : [ "/sfx/gun/lightningcoil3.ogg" ]
+  }
+}

@@ -3,40 +3,65 @@
   "colonyTags" : [ "bees" ],
   "printable" : false,
   "rarity" : "rare",
-  "description" : "Connect it to an Industrial Centrifuge, and add empty jars!",
-  "shortdescription" : "^orange;Honey Jarring Machine^reset;",
-  "subtitle" : "Fill your honey jars!",
+  "description" : "Turns ^green;combs and bottles^reset; into ^orange;honey^reset;. Looks nice connected to an Industrial Centrifuge.",
+  "shortdescription" : "Honey Jarring Machine",
+  "subtitle" : "Fill bottles with awesome honey.",
   "race" : "generic",
   "category" : "crafting",
   "price" : 200,
   "objectType" : "container",
-
   "hydrophobic" : false,
-
   "inventoryIcon" : "honeyjarrericon.png",
   "orientations" : [
     {
       "dualImage" : "honeyjarrer.png:<color>.<frame>",
-	  
+
       "imagePosition" : [0, 0],
-      "frames" : 1,
+      "frames" : 7,
       "animationCycle" : 1.0,
-	  
+
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     }
   ],
+
   "animation" : "honeyjarrer.animation",
   "animationParts" : {
-    "jar" : "honeyjarrer.png"
+    "samplingarrayanim" : "honeyjarrer.png"
   },
-  "scripts" : [ "/objects/bees/honeyjarrer/honeyjar.lua" ],
-  "scriptDelta" : 100,
+  "scripts" : [ "/objects/generic/honeyjarrer_common.lua","/scripts/npcToyObject.lua" ],
+  "scriptDelta" : 12,
+
   "recipeGroup" : "honeyjarrer",
   "openSounds" : [ "/sfx/objects/florancrate_open.ogg" ],
-  "slotCount" : 15,
-  "uiConfig" : "/objects/bees/honeyjarrer/honeyjarrer.config",
+  "slotCount" : 12,
+  "uiConfig" : "/objects/bees/honeyjarrer/jarrer.config",
   "frameCooldown" : 67,
-  "autoCloseCooldown" : 3600
+  "autoCloseCooldown" : 3600,
+  "inputNodes":[[0,1]],
+  "outputNodes":[[0,0]],
 
+  "craftDelay" : 1,
+
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "crouchcollect"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 2
+  }
 }
+
+
+
+

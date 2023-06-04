@@ -1,0 +1,29 @@
+{
+  "projectileName" : "madnessvashta",
+  "image" : "vashtagunshot.png",
+  "physics" : "fuvashta",
+  "timeToLive" : 1,
+  "animationCycle" : 0.2,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 4,
+  "level" : 1,
+  "power" : 0.1,
+  "speed" : 120,
+  "piercing" : false,
+  "bounces" : 2,
+  "damagePoly" : [ [0, -8], [16, -8], [16, 8], [0, 8] ],
+  "damageKind" : "shadow",
+  "emitters" : [ "blood" ],
+  "knockback" : 8,
+  "knockbackDirectional" : true,
+  "statusEffects" : [ "weakpoison" ],
+	  "periodicActions" : [
+	    {
+	      "time" : 0.07,
+	      "loop" : true,
+	      "action" : "projectile",
+	      "type" : "madnessshard",
+	      "fuzzAngle" : 360
+	   }
+	  ]
+  }

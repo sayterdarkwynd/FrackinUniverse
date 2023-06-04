@@ -1,23 +1,41 @@
 {
-  "itemName" : "tyvokkhook",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "tyvokkhook.png",
-  "description" : "A powerful enhancement food.",
-  "shortdescription" : "Tyvokk Hook",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 4,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-  "maxhealthboost5", "maxenergyboost4",
-      {
-        "effect" : "regeneration2",
-        "duration" : 20
-      }
-    ] ]
+	"itemName": "tyvokkhook",
+	"inventoryIcon": "tyvokkhook.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+21 HP^reset;, ^cyan;+30 EP^reset;, ^cyan;Heal 80% HP^reset;: 2m",
+	"shortdescription": "Tyvokk Hook",
+
+	"effects": [
+		[
+			{
+				"effect": "maxhealthboost5",
+				"duration": 120
+			},
+			{
+				"effect": "maxenergyboost4",
+				"duration": 120
+			},
+			{
+				"effect": "regeneration2",
+				"duration": 120
+			}
+		]
+	],
+	"blockingEffects": [
+		"regeneration01",
+		"maxhealthboost1",
+		"maxhealthboost2",
+		"maxhealthboost3",
+		"maxhealthboost4",
+		"maxhealthboost5",
+		"maxenergyboost1",
+		"maxenergyboost2",
+		"maxenergyboost3",
+		"maxenergyboost4",
+		"maxenergyboost6"
+	]
 }

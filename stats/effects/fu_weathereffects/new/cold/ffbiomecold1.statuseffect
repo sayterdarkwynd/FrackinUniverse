@@ -1,0 +1,49 @@
+{
+  "name": "ffbiomecold1",
+
+  "effectConfig": {
+    "resistanceTypes": {
+      "iceResistance": 1.0
+    },
+    "resistanceThreshold": 0.2,
+    "immunityStats": [
+      "biomecoldImmunity",
+      "ffextremecoldImmunity"
+    ],
+
+    "healthDrain": 3,
+    "hungerDrain": 0.3,
+    "energyDrain": 0,
+    "speedPenalty": 0.5,
+    "jumpPenalty": 0.5,
+
+    "debuffRate": 5,
+    "debuffStartDelay": 0,
+    "debuffs": {},
+
+    "modifiers": {
+      "night": 1.1,
+      "wet": 1.1,
+      "windy": 1.2
+    },
+
+    "messages": {
+      "intro": "biomecold",
+      "night": "ffbiomecoldnight",
+      "wet": "ffbiomecoldwater",
+      "windy": "fubiomecoldwind"
+    },
+
+    "configPath": "/stats/effects/fu_weathereffects/new/cold/ffbiomecold1.statuseffect"
+  },
+  "defaultDuration": 5,
+
+  "scripts": [
+    "coldweathernew.lua"
+  ],
+
+  "animationConfig": "coldweathernew.animation",
+
+  "label": "Mild Cold (Resist: ^#77f4ff;Ice^reset;)",
+  "icon": "/interface/statuses/cold1.png"
+}

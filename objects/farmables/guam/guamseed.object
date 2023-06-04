@@ -1,0 +1,44 @@
+{
+  "objectName" : "guamseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Legendary",
+  "category" : "seed",
+  "description" : "This mutant strain of guam can filter any radiation.",
+  "shortdescription" : "Rad Grass Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 17,
+//  "learnBlueprintsOnPickup" : [ "guamseed"],
+  "inventoryIcon" : "guamseedicon.png",
+  "largeImage" : "guamseed.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "guam" },
+  "orientations" : [
+    {
+      "dualImage" : "guamseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [420, 640]
+    },
+    {
+      "duration" : [420, 640]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "guamHarvest",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125
+}

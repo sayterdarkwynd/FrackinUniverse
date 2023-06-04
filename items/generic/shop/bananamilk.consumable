@@ -1,0 +1,28 @@
+{
+  "itemName" : "bananamilk",
+  "rarity" : "Common",
+  "price" : 75,
+  "category" : "drink",
+  "inventoryIcon" : "bananamilk.png",
+  "description" : "Contains no bees.\n^cyan;+^white;4 ^cyan;Defense ^gray;(^white;30s^gray;)^reset; \n^orange;Type: Fruits + Dairy^reset;",
+  "shortdescription" : "Banana Milk",
+  "handPosition" : [-1, 3],
+  "armFrameOverride" : "run.3",
+  "effects" : [ [
+    {
+        "effect" : "defense3",
+        "duration" : 30
+    },
+    {
+        "effect" : "fruit_dairy_meal"
+    }
+  ] ],
+  "foodValue" : 20,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [ "wellfed" ],
+  "emitters" : [ "drinking" ]
+}

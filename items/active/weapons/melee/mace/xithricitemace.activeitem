@@ -1,0 +1,43 @@
+{
+  "itemName" : "xithricitemace",
+  "price" : 700,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Smack em in the face with the cosmos.",
+  "shortdescription" : "Xithricite Mace",
+  "tooltipKind" : "hammer",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : [ "weapon", "melee", "mace", "xithricite", "upgradeableWeapon" ],
+
+  "inventoryIcon" : "xithricitemace.png",
+  "animation" : "combomaceglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "xithricitemace.png",
+    "bladefullbright" : "xithricitemacefullbright.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1.2,
+    "baseDps":7.4,
+    "damageConfig" : {
+      "statusEffects" : [ "defenseboostneg20" ],
+      "knockback" : 10,
+      "knockbackMode" : "facing",
+      "damageSourceKind" : "cosmichammer"
+    }
+  },
+  "critChance" : 1,
+  "critBonus" : 3,
+  "stunChance" : 85,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

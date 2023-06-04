@@ -1,20 +1,31 @@
 {
-  "itemName" : "wretchel",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "wretchel.png",
-  "description" : "Grants a protective dimensional barrier for a short time. It's a teency bit poisonous, though.",
-  "shortdescription" : "Wretchel Fruit",
-  "learnBlueprintsOnPickup" : [ "batterypack_morphite", "wretchelchest", "wretchelhead", "wretchelpants", "wretchelpoultice" ],
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 8,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-      "wretchelshield", "weakpoison"
-    ] ]
+	"itemName": "wretchel",
+	"inventoryIcon": "wretchel.png",
+	"category": "food",
+	"rarity": "Legendary",
+	"price": 20,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;80 Damage Barrier^reset;: 5m\n^yellow;^reset;^red;Poisoned^reset;: 60s",
+	"shortdescription": "Wretchel Fruit",
+
+	//"learnBlueprintsOnPickup": [
+	//	"batterypack_morphite",
+	//	"wretchelchest",
+	//	"wretchelhead",
+	//	"wretchelpants",
+	//	"wretchelpoultice"
+	//],
+	"effects": [
+		[
+			{
+				"effect": "wretchelshield",
+				"duration": 300
+			},
+			{
+				"effect": "weakpoison",
+				"duration": 60
+			}
+		]
+	]
 }

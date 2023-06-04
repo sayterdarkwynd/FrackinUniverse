@@ -1,0 +1,160 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "stage" : {
+        "default" : "AA",
+        "states" : {
+          "AA" : {
+            "frames" : 17,
+            "cycle" : 2,
+            "mode" : "loop",
+            "properties" : {
+              "lightsOff" : [ "fireglow" ],
+			  "lightsOn" : [ "scifiglow" ],
+              "persistentSound" : "/sfx/objects/scififurnace.ogg",
+              "persistentSoundRangeMultiplier" : 0.5
+            }
+          },
+          "BB" : {
+            "frames" : 17,
+            "cycle" : 2,
+            "mode" : "loop",
+            "properties" : {
+              "lightsOff" : [ "fireglow" ],
+			  "lightsOn" : [ "scifiglow" ],
+              "persistentSound" : "/sfx/objects/scififurnace.ogg",
+              "persistentSoundRangeMultiplier" : 0.5
+            }
+          },
+          "CC" : {
+            "frames" : 17,
+            "cycle" : 2,
+            "mode" : "loop",
+            "properties" : {
+              "lightsOff" : [ "fireglow" ],
+              "lightsOn" : [ "scifiglow" ],
+              "persistentSound" : "/sfx/objects/scififurnace.ogg",
+              "persistentSoundRangeMultiplier" : 0.5
+            }
+          },
+		  "DD" : {
+            "frames" : 17,
+            "cycle" : 2,
+            "mode" : "loop",
+            "properties" : {
+              "lightsOff" : [ "fireglow" ],
+              "lightsOn" : [ "scifiglow" ],
+              "persistentSound" : "/sfx/objects/scififurnace.ogg",
+              "persistentSoundRangeMultiplier" : 0.5
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "chassis" : {
+        "properties" : {
+          "centered" : true
+        },
+        "partStates" : {
+          "stage" : {
+            "AA" : {
+              "properties" : {
+                "image" : "nightaranvillit.png:<color>.<frame>"
+              }
+            },
+
+            "BB" : {
+              "properties" : {
+                "image" : "nightaranvillit.png:<color>.<frame>"
+              }
+            },
+
+            "CC" : {
+              "properties" : {
+                "image" : "nightaranvillit.png:<color>.<frame>"
+              }
+            },
+			"DD" : {
+              "properties" : {
+                "image" : "nightaranvillit.png:<color>.<frame>"
+              }
+            }
+          }
+        }
+      },
+
+      "fire" : {
+        "properties" : {
+          "centered" : true,
+          "fullbright" : true
+        },
+        "partStates" : {
+          "stage" : {
+            "AA" : {
+              "properties" : {
+                "image" : "nightaranvil.png:<color>.<frame>"
+              }
+            },
+
+            "BB" : {
+              "properties" : {
+                "image" : "nightaranvil.png:<color>.<frame>"
+              }
+            },
+
+            "CC" : {
+              "properties" : {
+                "image" : "nightaranvil.png:<color>.<frame>"
+              }
+            },
+			"DD" : {
+              "properties" : {
+                "image" : "nightaranvil.png:<color>.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "sounds" : {
+    "fanfare" : ["/sfx/cinematics/mission_unlock_event.ogg"],
+    "fanfare2" : ["/sfx/cinematics/license_acquired_event.ogg"]
+  },
+
+  "lights" : {
+    "fireglow" : {
+      "active" : false,
+      "position" : [0, 0],
+      "color" : [153, 128, 92],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    },
+
+    "scifiglow" : {
+      "active" : false,
+      "position" : [0, 0],
+      "color" : [42, 82, 128],
+      "flickerPeriod" : 0.5,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1.0,
+      "flickerPeriodVariance" : 0.0,
+      "flickerIntensityVariance" : 0.0
+    }
+  },
+
+  "particleEmitters" : {
+    "dust" : {
+      "emissionRate" : 0.0,
+      "burstCount"  : 10,
+      "offsetRegion" : [-2, -2, 2, 2],
+      "particles" : [{ "particle" : "dust2"}]
+    }
+  }
+}

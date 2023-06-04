@@ -1,0 +1,52 @@
+[
+{"op": "replace","path": "/tooltipKind","value": "bow2"},
+{"op": "add","path": "/critChance","value": 5},
+{"op": "add","path": "/critBonus","value": 9},
+{"op": "add","path": "/elementalType","value": "physical"},
+  {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "upgradeableWeapon"
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbility",
+    "value": {
+      "dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+      "drawTime" : 0.9,				//Time to fully draw the bow
+      "powerProjectileTime" : 0.225,		//After fully drawing, the bow is super-charged for this long
+      "energyPerShot" : 30,				//Total energy consumption for a full draw
+      "holdEnergyUsage" : 5,			//Energy consumption per second while fully drawn
+      "airborneBonus" : 1.15				//A dmg multiplier for when airborne
+    }
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbility/projectileParameters",
+    "value": {
+      "power": 8.5
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/primaryAbilityType",
+    "value": "rngbows_enhancedbowshot"
+  },
+  {
+    "op": "replace",
+    "path": "/animation",
+    "value": "/items/active/weapons/bow/fubow.animation"
+  },
+  {
+    "op": "replace",
+    "path": "/builder",
+    "value": "/items/buildscripts/neb-buildbow.lua"
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbility/powerProjectileParameters",
+    "value": {
+      "power": 8.75
+    }
+  }
+]

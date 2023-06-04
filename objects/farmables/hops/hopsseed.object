@@ -9,15 +9,17 @@
   "printable" : false,
   "price" : 14,
 
-
+//  "learnBlueprintsOnPickup" : [ "vextongueseed" ],
   "inventoryIcon" : "hopsseedicon.png",
+  "largeImage" : "hopsseed.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "hops" },
   "orientations" : [
     {
       "dualImage" : "hopsseed.png:<color>.<stage>.<alt>",
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
-      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3], [1, 4], [0, 4] ],
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
       "requireTilledAnchors" : true,
       "anchors" : [ "bottom" ]
 
@@ -33,8 +35,7 @@
     {
       "alts" : 5,
       "harvestPool" : "hopsHarvest",
-      "resetToStage" : 0,
-      "duration" : [60, 200]
+      "resetToStage" : 0
     }
   ],
   "maxImmersion" : 0.125

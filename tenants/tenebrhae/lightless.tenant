@@ -1,0 +1,25 @@
+{
+  "name": "lightless",
+  "priority": 7,
+
+  "colonyTagCriteria": {
+    "door": 1,
+    "dark": 8
+  },
+
+  "tenants": [
+    {
+      "spawn": "npc",
+      "species": "shadow",
+      "type": "lightlessciv",
+      "overrides": {
+        "damageTeamType" : "friendly"
+       }
+     }
+   ],
+
+  "rent": {
+    "periodRange": [900.0, 1800.0],
+    "pool": "villagerGift"
+  }
+}

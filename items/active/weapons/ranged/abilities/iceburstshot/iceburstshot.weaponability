@@ -23,9 +23,9 @@
             "zLevel" : 3,
             "centered" : true,
             "fullbright" : true,
-            "offset" : [2.5, 0.0],
+            "offset" : [6, 0.0],
             "transformationGroups" : ["muzzle"],
-            "damageArea" : [ [-3.0, 0], [-2.0, 0.5], [2.5, 0.0], [-2.0, -0.5] ]
+            "damageArea" : [ [-6.0, 0], [-5.0, 2.2], [3.7, 0.0], [-5.0, -2.2] ]
           },
           "partStates" : {
             "lance" : {
@@ -48,7 +48,7 @@
       "fireflash" : {
         "active" : false,
         "position" : [3.0, 0.0],
-        "color" : [140, 100, 40]
+        "color" : [40, 100, 140]
       },
       "electricflash" : {
         "active" : false,
@@ -58,12 +58,12 @@
       "iceflash" : {
         "active" : false,
         "position" : [3.0, 0.0],
-        "color" : [20, 90, 90]
+        "color" : [20, 90, 190]
       },
       "poisonflash" : {
         "active" : false,
         "position" : [3.0, 0.0],
-        "color" : [40, 140, 40]
+        "color" : [40, 140, 140]
       }
     },
     "particleEmitters" : {
@@ -110,7 +110,7 @@
         "active" : false,
         "transformationGroups" : ["weapon"],
         "emissionRate" : 25,
-        "offsetRegion" : [2.24, -0.5, 3.0, 0.5],
+        "offsetRegion" : [1.8, -0.5, 3.0, 0.5],
         "particles" : [
           { "particle" : "iceswoosh1"},
           { "particle" : "iceswoosh2"},
@@ -138,13 +138,15 @@
     "energyUsage" : 50.0,
     "cooldownTime" : 1.0,
     "damageConfig" : {
+      "damageSourceKind" : "ice",
+      "statusEffects" : [ "slow" ],
       "baseDamage" : 7.5,
       "knockback" : 90,
       "knockbackMode" : "aim",
       "timeout" : 0.5,
       "timeoutGroup" : "alt"
     },
-    
+
     "elementalConfig" : {
       "fire" : { "damageConfig" : { "statusEffects" : [ "burning" ] } },
       "ice" : { "damageConfig" : { "statusEffects" : [ "freeze" ] } },

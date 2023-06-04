@@ -1,0 +1,114 @@
+{
+  "itemName" : "quietussniper",
+  "price" : 360,
+  "inventoryIcon" : "quietussniper.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A unique flavor of bioweapon that avoids violations of intergalactic law.
+^cyan;Targets cannot heal when hit^reset;",
+  "shortdescription" : "Quietus Sniper Rifle",
+  "category" : "sniperRifle",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "sniperRifle",
+  "itemTags" : ["weapon","ranged","sniperrifle", "upgradeableWeapon","bioweapon","quietus"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "quietussniper.png",
+    "middlefullbright" : "quietussniperfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/darkmattermuzzle.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "quietusparticle", "offset" : [0.4, -0.4] },
+          { "particle" : "druidstaff", "offset" : [0.4, -0.4] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/dkmarauder2.wav" ]
+    },
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+          "properties" : {
+            "offset" : [1.3, 0.21]
+          }
+        }
+      }
+    }
+  },
+  "baseOffset" : [1.3, 0.21],
+  "muzzleOffset" : [2.5, 0.0],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "bioweapon",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1.6,
+    "baseDps" : 7.0,
+    "energyUsage" : 32.0,
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "quietusbullet",
+    "projectileParameters" : {
+      "speed" : 120,
+      "knockback" : 5
+    },
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.075,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  }
+  },
+
+  "isAmmoBased" : 1,
+  "magazineSize" : 4,
+  "reloadTime" : 1.7,
+
+  "critChance" : 5,
+  "critBonus" : 7,
+  "isSniper" : 1,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 300,
+  "recoilForce" : 700,
+
+  "altAbilityType" : "swtjc_ewg_shattershot",
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

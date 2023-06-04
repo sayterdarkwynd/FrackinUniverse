@@ -8,14 +8,19 @@
   "animation" : "largebiped.animation",
   "reversed" : true,
 
-  "dropPools" : [
-    {
-      "default" : "slimemonsterlargeTreasure",
-      "bow" : "huntingminiboss",
-      "brain" : "brain"
-    }
-  ],
-
+"dropPools" : [
+  {
+	"default" : "ffbasicTreasure",
+	"bow" : "huntingminiboss",
+	"firebow" : "huntingminiboss",
+	"icebow" : "huntingminiboss",
+	"poisonbow" : "huntingminiboss",
+	"electricbow" : "huntingminiboss",
+	"radioactivebow" : "huntingminiboss",
+	"cosmicbow" : "huntingminiboss",
+	"shadowbow" : "huntingminiboss"
+  }
+],
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
@@ -82,51 +87,50 @@
       ]
     },
 
-    "skillCount" : 2,
-    "baseSkills" : [ 
-    "chargeAttack", 
-    "pounceAttack", 
-    "acidicSpitAttack", 
+    "skillCount" : 3,
+    "baseSkills" : [ "fumeleeAttack",  "pounceAttack"],
+    "specialSkills" : [
+    "pusAttack",
+    "chargeAttack",
+    "acidicSpitAttack",
     "acidSprayAttack",
-    "beamBurstAttack", 
-    "bloodVomitAttack", 
+    "beamBurstAttack",
+    "bloodVomitAttack",
     "blueFlameAttack",
-    "boneRainAttack", 
+    "boneRainAttack",
     "bubbleBlastAttack",
     "burninghaloAttack",
-    "cellBlastAttack", 
+    "cellBlastAttack",
     "darkGravityBallAttack",
     "doubleBarbSprayAttack",
     "explosivePhlegmAttack",
     "eyeballShotAttack",
-    "eyeballSprayAttack", 
-    "fireballAttack", 
+    "eyeballSprayAttack",
+    "fireballAttack",
     "fireSwirlAttack",
-    "fishBreathAttack", 
-    "gasBelchAttack",    
-    "glitterAttack", 
-    "iceBlastAttack", 
+    "fishBreathAttack",
+    "gasBelchAttack",
+    "glitterAttack",
+    "iceBlastAttack",
     "icerockShotAttack",
     "leafyGustAttack",
-    "lightBallAttack", 
-    "miniDragonBreathAttack", 
+    "lightBallAttack",
+    "miniDragonBreathAttack",
     "mudBallAttack",
     "orbOfZotsAttack",
-    "plasmaSweepAttack", 
-    "plasmaTorpedoAttack", 
-    "putridWaveAttack", 
+    "plasmaSweepAttack",
+    "plasmaTorpedoAttack",
+    "putridWaveAttack",
     "rainbowVomitAttack",
-    "rockRollAttack", 
+    "rockRollAttack",
     "shardSprayAttack",
     "shockingBoltAttack",
-    "shockingWaveAttack", 
+    "shockingWaveAttack",
     "smokeRingAttack",
     "snotBubbleAttack",
-    "snotShotAttack", 
-    "staticDischargeAttack", 
+    "snotShotAttack",
+    "staticDischargeAttack",
     "waterGunAttack",
-    "chargeAttack", 
-    "pounceAttack", 
     "beetleSwarmAttack",
     "darkGasAttack",
     "flySwarmAttack",
@@ -137,7 +141,6 @@
     "sonicWaveAttack",
     "spiceCloudAttack",
     "tentacleShotAttack",
-// FU abilities
     "waveBlastAttack",
     "waveBlastAttack2",
     "waveBlastAttack3",
@@ -147,7 +150,28 @@
     "raptorstrikeAttack3",
     "raptorstrikeAttack4",
     "soundwaveAttack2",
-    "windBlastAttack2"
+    "windBlastAttack2",
+    "shadowbeastAttack",
+    "cageWall",
+    "crystalAttack",
+    "flamingAuraAttack",
+    "glowcritterAttack",
+    "glowcritterAttack2",
+    "goopAttack",
+    "gravAuraAttack",
+    "iceAuraAttack",
+    "iceBelchAttack",
+    "kluexAuraAttack",
+    "kluexBlastAttack",
+    "poisonAuraAttack",
+    "pullAuraAttack",
+    "pushAuraAttack",
+    "roarAttack",
+    "seedAttack",
+    "shitShowerAttack",
+    "shockAuraAttack",
+    "spinAssaultAttack",
+    "steamAttack"
     ],
     "knockoutTime" : 0.1,
     "knockoutEffect" : "blink",
@@ -184,6 +208,7 @@
         "targetMaterialKind" : "organic"
       },
 
+      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
@@ -194,13 +219,13 @@
 
       "stats" : {
         "knockbackStunTime" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.15
         },
         "knockbackThreshold" : {
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 75
+          "baseValue" : 120
         },
         "maxShield" : {
           "baseValue" : 0.0

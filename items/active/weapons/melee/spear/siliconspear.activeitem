@@ -1,19 +1,20 @@
 {
   "itemName" : "siliconspear",
-  "price" : 0,
+  "price" : 100,
   "level" : 3,
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "Tungsten and silicon make up this swift weapon",
-  "shortdescription" : "Tek Spear",
-  "tooltipKind" : "sword",
-  "category" : "spear",
+  "description" : "This heavy spear will puncture even well-armored foes.
+^cyan;Hunting weapon^reset;",
+  "shortdescription" : "Tek Lance",
+  "tooltipKind" : "sword2",
+  "category" : "lance",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear"],
+  "itemTags" : ["weapon","melee","spear", "upgradeableWeapon"],
 
   "inventoryIcon" : "siliconspear.png",
-
-  "animation" : "/items/active/weapons/melee/spear/spear.animation",
+  //"collectablesOnPickup" : { "fu_weaponspear" : "siliconspear" },
+  "animation" : "/items/active/weapons/melee/spear/heavyspear.animation",
   "animationParts" : {
     "handle" : "",
     "blade" : "siliconspear.png"
@@ -29,69 +30,23 @@
   "elementalType" : "physical",
 
   "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
+  "primaryAbilityType" : "heavyspearcombo",
   "primaryAbility" : {
     "scripts" : [],
-    "class" : "SpearStab",
 
-    "fireTime" : 0.85,
-    "baseDps" : 9.5,
+    "fireTime" : 1,
+    "baseDps" : 12.5,
     "damageConfig" : {
-      "damageSourceKind" : "spear",
+      "damageSourceKind" : "bow",
       "statusEffects" : [ ],
-      "knockbackMode" : "aim",
-      "knockback" : 10,
-      "timeoutGroup" : "primary"
-    },
-    "holdDamageMultiplier" : 0.1,
-    "holdDamageConfig" : {
-      "timeoutGroup" : "hold",
-      "timeout" : 0.5
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : 0,
-        "twoHanded" : false,
-        "weaponOffset" : [0, 0.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "windup" : {
-        "hold" : true,
-        "duration" : 0.55,
-        "armRotation" : -110,
-        "weaponRotation" : 20,
-        "twoHanded" : true,
-        "weaponOffset" : [0, 0.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "fire" : {
-        "duration" : 0.3,
-        "armRotation" : -20,
-        "weaponRotation" : -70,
-        "twoHanded" : true,
-        "weaponOffset" : [0.3, 2.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "hold" : {
-        "armRotation" : -30,
-        "weaponRotation" : -60,
-        "twoHanded" : true,
-        "weaponOffset" : [-0.3, 2.0],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      }
+      "knockback" : 35
     }
   },
   "altAbilityType" : "parry",
   "altAbility" : { },
-  
+
+  "critChance" : 2,
+  "critBonus" : 8,
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,0 +1,46 @@
+{
+  "itemName" : "fuyinyang",
+  "price" : 3600,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "A balanced blade. Light and dark combined.",
+  "shortdescription" : "Yin  Yang",
+  "tooltipKind" : "swordunique",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","longsword","upgradeableWeapon"],
+  "inventoryIcon" : "yinyang.png",
+  "animation" : "combolongswordglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "yinyang.png",
+    "bladefullbright" : "yinyangfullbright.png"
+  },
+  "animationCustom" : {
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }
+  },
+  "emitters" : [ "ancientenergytrail", "barrierelectric" ],
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.92,
+    "baseDps" : 7.0,
+    "damageConfig" : {
+      "damageSourceKind": "cosmic",
+      "statusEffects" : [ "shadowgasfx" ]
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 7,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

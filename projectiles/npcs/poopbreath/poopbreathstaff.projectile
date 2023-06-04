@@ -1,0 +1,27 @@
+{
+  "projectileName" : "poopbreathstaff",
+  "image" : "poopbreath.png",
+  "physics" : "flame",
+  "animationCycle" : 1,
+  "damageKindImage" : "/interface/statuses/poison.png",
+  "frameNumber" : 12,
+  "power" : 2,
+  "speed" : 20,
+  "timeToLive" : 5,
+  "bounces" : 4,
+  "piercing" : true,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "damageKind" : "poison",
+      "periodicActions":[
+	    {
+	      "time" : 0.3,
+	      "loop" : true,
+	      "action" : "projectile",
+	      "type" : "poball",
+	      "inheritDamageFactor" :1,
+	      "fuzzAngle" : 360,
+	      "projectileParameters" : { "damageSourceKind" : "poison", "speed" : 20 }
+	   }
+      ],
+    "statusEffects" : [ "weakpoison" ]
+}

@@ -1,0 +1,47 @@
+{
+	"objectName" : "network_spout",
+	"colonyTags" : ["wired"],
+	"printable" : false,
+	"rarity" : "Common",
+	"description" : "Pours Liquids into the world.
+^blue;Input^white;1^blue;: ^white;On/Off Switch
+^blue;Input^white;2^blue;: ^white;item network^reset;",
+	"shortdescription" : "Spout",
+	"objectType" : "container",
+	"tooltipKind" : "container",
+	"race" : "generic",
+
+	"category" : "wire",
+	"price" : 15,
+
+	"inventoryIcon" : "kheAA_spouticon.png",
+	"orientations" : [
+		{
+			"image" : "kheAA_spout.png:<color>.off",
+			"imagePosition" : [0, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ]
+		}
+	],
+
+	"scripts" : [ "/objects/kheAA/kheAA_spout/kheAA_spout.lua"],
+	"scriptDelta" : 1,
+
+	"animation" : "/objects/kheAA/kheAA_spout/kheAA_spout.animation",
+
+	"animationParts" : {
+		"spout" : "kheAA_spout.png"
+	},
+	"animationPosition" : [0, 0],
+	"openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+	"closeSounds" : [ "/sfx/objects/woodenbox_close.ogg" ],
+	"slotCount" : 1,
+	"uiConfig" : "/objects/kheAA/kheAA_spout/kheAA_spout.config",
+	"frameCooldown" : 5,
+	"autoCloseCooldown" : 3600,
+	"kheAA_logicNode":0,
+	"kheAA_inLiquidNode":1,
+
+	"inputNodes" : [ [-1, 0], [1, 0] ]
+}

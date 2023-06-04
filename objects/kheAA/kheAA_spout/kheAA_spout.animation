@@ -1,0 +1,41 @@
+{
+	"animatedParts" : {
+		"stateTypes" : {
+			"spoutState" : {
+				"default" : "off",
+				"states" : {
+					"off" : {
+						"frames" : 1
+					},
+					"on" : {
+						"frames" : 1
+					}
+				}
+			}
+		},
+
+		"parts" : {
+			"spout" : {
+				"properties" : {
+					"centered" : false
+				},
+
+				"partStates" : {
+					"spoutState" : {
+						"off" : {
+							"properties" : {
+								"image" : "<partImage>:<color>.off"
+							}
+						},
+
+						"on" : {
+							"properties" : {
+								"image" : "<partImage>:<color>.on"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

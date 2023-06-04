@@ -1,0 +1,48 @@
+{
+  "objectName" : "labhatchhuge",
+  "colonyTags" : ["fu","science","door"],
+  "rarity" : "uncommon",
+
+  "category" : "door",
+  "price" : 250,
+  "description" : "This hatch is made of some sort of bulletproof material.",
+  "shortdescription" : "Huge Lab Hatch",
+  "race" : "apex",
+
+  "inventoryIcon" : "labhatchhugeicon.png",
+  "orientations" : [
+    {
+      "image" : "labhatchhuge.png:default",
+      "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "left", "right" ],
+      "direction" : "left"
+    },
+    {
+      "image" : "labhatchhuge.png:default",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "left", "right" ],
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+      "close" : [ "/sfx/objects/apexcooldoor_close.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "door" : "labhatchhuge.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [9, 2] ],
+  "outputNodes" : [ [0, 0] ]
+}

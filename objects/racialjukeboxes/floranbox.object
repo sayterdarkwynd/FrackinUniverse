@@ -1,0 +1,56 @@
+{
+	"objectName" : "floranbox",
+	"colonyTags" : ["floran", "musical"],
+	"rarity" : "Common",
+	"category" : "decorative",
+//    "lightColor" : [101, 232, 2],
+	"description" : "A music player, for playing music.",
+	"shortdescription" : "Floran Music Player",
+	"race" : "generic",
+
+	"inventoryIcon" : "floranboxicon.png",
+	"orientations" : [
+		{
+			"image" : "floranbox.png",
+			"imagePosition" : [-12, 0],
+			"animationPosition" : [-12, 0],
+			"animationParts" : {
+				"bg" : "floranbox.png",
+				"fg" : "floranboxlit.png"
+			},
+			"direction" : "left",
+			"flipImages" : true,
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		},
+		{
+			"image" : "floranbox.png",
+			"imagePosition" : [-12, 0],
+			"animationPosition" : [-12, 0],
+			"animationParts" : {
+				"bg" : "floranbox.png",
+				"fg" : "floranboxlit.png"
+			},
+			"direction" : "right",
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		}
+	],
+
+	"animation" : "racialmusicbox.animation",
+	"animationParts" : {
+		"bg" : "floranbox.png",
+		"fg" : "floranboxlit.png"
+	},
+	"animationPosition" : [-8, 0],
+	"interactAction" : "ScriptPane",
+	"interactData" : "/interface/scripted/fm_musicplayer/fm_musicplayer.config",
+
+	"inputNodes" : [ [-1, 0] ],
+	"outputNodes" : [ [1, 0] ],
+
+	"scripts" : [ "/objects/generic/fm_musicplayer/fm_musicplayer.lua"],
+	"scriptDelta" : 7,
+
+	"musicRadius" : 30
+}

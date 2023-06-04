@@ -1,0 +1,93 @@
+{
+  "itemName" : "murdermanipulator",
+  "price" : 500,
+  "inventoryIcon" : "murdermanipulator.png",
+    "maxStack" : 1,
+    "rarity" : "uncommon",
+    "description" : "A repurposed manipulator. This one murders! Yay!
+^cyan;Floran^reset;",
+    "shortdescription" : "Murder Manipulator",
+//    "learnBlueprintsOnPickup" : [ "murdermanipulator2" ],
+  "level" : 3,
+  "category" : "machinePistol",
+  "itemTags" : ["weapon","ranged","machinepistol", "energy", "floran", "upgradeableWeapon"],
+  "weaponType" : "Energy",
+
+    "tooltipKind" : "gun2",
+  "twoHanded" : false,
+  "classMultiplier" : 0.007,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "murdermanipulator.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/swing_electric1.ogg" ]
+    },
+    "lights" : {
+      "muzzleFlash" : {
+        "color" : [0, 60, 0]
+      }
+    }
+  },
+
+  "baseOffset" : [0.12, -0.14],
+  "muzzleOffset" : [1.5, 0.105],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "bioweapon",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.05,
+    "baseDps" : 7,
+    "energyUsage" : 22,
+    "fireType" : "auto",
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "projectileType" : "shoggothbeamgun",
+    "projectileParameters" : {
+      "speed" : 35,
+      "timeToLive" : 0.6
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+
+  "critChance" : 2,
+  "critBonus" : 3,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

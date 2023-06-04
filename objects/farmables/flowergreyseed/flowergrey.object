@@ -1,0 +1,40 @@
+{
+  "objectName" : "flowergrey",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "Drab in color, but smells nice",
+  "shortdescription" : "Gray Flower",
+  "objectType" : "farmable",
+  "printable" : false,
+
+  "inventoryIcon" : "flowericon.png",
+  "largeImage" : "flowergrey.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "flowergrey" },
+  "orientations" : [
+    {
+      "dualImage" : "flowergrey.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [570, 630]
+    },
+    {
+      "duration" : [570, 630]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "flowergreyHarvest",
+      "resetToStage" : 1
+    }
+  ],
+  "consumeSoilMoisture" : false,
+  "beeLikeness" : {"exspiravit":1,"rimewing":1}
+}

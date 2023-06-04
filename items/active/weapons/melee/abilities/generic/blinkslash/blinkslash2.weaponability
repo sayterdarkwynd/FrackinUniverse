@@ -1,0 +1,117 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "blinkSwoosh" : {
+          "default" : "idle",
+          "states" : {
+            "idle" : {
+            },
+            "fire" : {
+              "frames" : 3,
+              "cycle" : 0.125,
+              "mode" : "transition",
+              "transition" : "idle"
+            }
+          }
+        }
+      },
+      "parts" : {
+        "blinkSwoosh" : {
+          "properties" : {
+            "zLevel" : -1,
+            "centered" : true,
+            "offset" : [4.5, 0.75],
+            "transformationGroups" : ["swoosh"],
+            "rotationCenter" : [0, 0]
+          },
+          "partStates" : {
+            "blinkSwoosh" : {
+              "idle" : {
+                "properties" : {
+                  "image" : ""
+                }
+              },
+              "fire" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/abilities/generic/blinkslash/<elementalType>swoosh.png:<frame>",
+                  "damageArea" : [ [-3.5, 0.875], [0.25, 0.875], [1.625, 0.5], [2.5, 0], [2.5, -0.5], [2.125, -0.875], [1, -1.375], [-3.5, -1.375] ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "ability" : {
+    "name" : "Tele-Slice",
+    "type" : "blinkslash2",
+    "scripts" : ["/items/active/weapons/melee/abilities/generic/blinkslash/blinkslash2.lua"],
+    "class" : "BlinkSlash",
+
+    "energyUsage" : 40,
+    "cooldownTime" : 1.0,
+
+    "blinkDistance" : 15,
+    "blinkYTolerance" : 12.5,
+    "requireLineOfSight" : true,
+
+    "damageConfig" : {
+      "damageSourceKind" : "<elementalType>broadsword",
+      "baseDamage" : 9,
+      "knockback" : 20,
+      "knockbackMode" : "facing",
+      "timeout" : 0.5,
+      "timeoutGroup" : "alt"
+    },
+    "elementalConfig" : {
+      "fire" : {
+        "damageConfig" : { "statusEffects" : [ "burning" ] }
+      },
+      "ice" : {
+        "damageConfig" : { "statusEffects" : [ "frostslow" ] }
+      },
+      "poison" : {
+        "damageConfig" : { "statusEffects" : [ "weakpoison" ] }
+      },
+      "electric" : {
+        "damageConfig" : { "statusEffects" : [ "electrified" ] }
+      },
+      "shadow" : {
+        "damageConfig" : { "statusEffects" : [ "defenseboostneg20" ] }
+      },
+      "radioactive" : {
+        "damageConfig" : { "statusEffects" : [ "radiationburn" ] }
+      },
+      "cosmic" : {
+        "damageConfig" : { "statusEffects" : [ ] }
+      }
+    },
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.1,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+        "weaponOffset" : [0.0, 0.0],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "slash" : {
+        "duration" : 0.1,
+        "armRotation" : -90,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+        "weaponOffset" : [0.0, 0.0],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

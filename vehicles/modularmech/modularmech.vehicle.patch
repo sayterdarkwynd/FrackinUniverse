@@ -1,0 +1,429 @@
+[
+	{ "op" : "replace", "path" : "/frontFootOffset", "value" : [-0.25, -4.0] },
+	{ "op" : "replace", "path" : "/backFootOffset", "value" : [0.375, -4.0] },
+	{ "op" : "replace", "path" : "/reachGroundDistance", "value" : [1.0, -1.0] },
+	{ "op" : "replace", "path" : "/legRadius", "value" : 0.825 },
+
+	{
+		"op" : "replace", "path" : "/movementSettings/collisionPoly",
+		"value" : [
+			[-2.625, -1.25],
+			[-0.125, -3.625],
+			[0.125, -3.625],
+			[2.625, -1.25],
+			[2.625, 3.0],
+			[0.875, 4.5],
+			[-0.875, 4.5],
+			[-2.625, 3.0]
+		]
+	},
+
+	{
+		"op" : "replace", "path" : "/damageSources/bumperGround/poly",
+		"value" : [
+			[-2.625, -1.25],
+			[-0.125, -3.625],
+			[0.125, -3.625],
+			[2.625, -1.25],
+			[2.625, 3.0],
+			[0.875, 4.5],
+			[-0.875, 4.5],
+			[-2.625, 3.0]
+		]
+	},
+
+	{
+		"op" : "add", "path" : "/noneCrouchSettings",
+		"value" : {
+			"collisionPoly" : [
+			[-2.625, -1.25],
+			[-0.125, -3.625],
+			[0.125, -3.625],
+			[2.625, -1.25],
+			[2.625, 3.0],
+			[0.875, 4.5],
+			[-0.875, 4.5],
+			[-2.625, 3.0]
+			]
+		}
+	},
+
+	{
+		"op" : "add", "path" : "/crouchSettings",
+		"value" : {
+			"collisionPoly" : [
+				[-2.625, -1.25],
+				[-0.125, -3.625],
+				[0.125, -3.625],
+				[2.625, -1.25],
+				[2.625, 0.0],
+				[0.875, 2.125],
+				[-0.875, 2.125],
+				[-2.625, 0.0]
+			]
+		}
+	},
+
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/gasworld1",
+    "value": {
+      "energyDrain": 70,
+      "message": "biomepressure_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/gasworld2",
+    "value": {
+      "energyDrain": 80,
+      "message": "biomepressure_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/gasworld3",
+    "value": {
+      "energyDrain": 90,
+      "message": "biomepressure_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/aetherweathernew",
+    "value": {
+      "energyDrain": 30,
+      "message": "biomeplaceholder_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/aetherweathernew2",
+    "value": {
+      "energyDrain": 35,
+      "message": "biomeplaceholder_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/aetherweathernew3",
+    "value": {
+      "energyDrain": 40,
+      "message": "biomeplaceholder_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/ffbiomecold1",
+    "value": {
+      "energyDrain": 5,
+      "message": "biomecold_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/ffbiomecold2",
+    "value": {
+      "energyDrain": 12,
+      "message": "biomecold_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/ffbiomecold3",
+    "value": {
+      "energyDrain": 30,
+      "message": "biomecold_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/ffbiomeelectric1",
+    "value": {
+      "energyDrain": 3,
+      "message": "biomeelectric_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/ffbiomeelectric2",
+    "value": {
+      "energyDrain": 5,
+      "message": "biomeelectric_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/ffbiomeelectric3",
+    "value": {
+      "energyDrain": 8,
+      "message": "biomeelectric_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/desertweathernewdeadly",
+    "value": {
+      "energyDrain": 15,
+      "message": "biomeplaceholder_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/ffbiomeheat1",
+    "value": {
+      "energyDrain": 10,
+      "message": "biomeheat_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/ffbiomeheat2",
+    "value": {
+      "energyDrain": 25,
+      "message": "biomeheat_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/ffbiomeheat3",
+    "value": {
+      "energyDrain": 35,
+      "message": "biomeheat_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/heatweathernew2",
+    "value": {
+      "energyDrain": 15,
+      "message": "biomeheat_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/biomepoison1",
+    "value": {
+      "energyDrain": 2,
+      "message": "biomepoison_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/biomepoison2",
+    "value": {
+      "energyDrain": 3,
+      "message": "biomepoison_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/biomepoison3",
+    "value": {
+      "energyDrain": 4,
+      "message": "biomepoison_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/biomepoisongas",
+    "value": {
+      "energyDrain": 5,
+      "message": "biomepoison_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/poisonweathernew",
+    "value": {
+      "energyDrain": 6,
+      "message": "biomepoison_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/poisonweathernewbiome",
+    "value": {
+      "energyDrain": 8,
+      "message": "biomepoison_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/protoweather",
+    "value": {
+      "energyDrain": 8,
+      "message": "biomeproto_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/protoweather2",
+    "value": {
+      "energyDrain": 15,
+      "message": "biomeproto_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/radioactiveweathernew",
+    "value": {
+      "energyDrain": 6,
+      "message": "biomeradiation_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/radioactiveweathernew2",
+    "value": {
+      "energyDrain": 10,
+      "message": "biomeradiation_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/radioactiveweathernew3",
+    "value": {
+      "energyDrain": 15,
+      "message": "biomeradiation_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/sulphuricweatherstorm",
+    "value": {
+      "energyDrain": 15,
+      "message": "biomeplaceholder_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/sulphuricweatherstorm2",
+    "value": {
+      "energyDrain": 20,
+      "message": "biomeplaceholder_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/sulphuricweatherstorm3",
+    "value": {
+      "energyDrain": 25,
+      "message": "biomeplaceholder_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/sulphuricweathernew",
+    "value": {
+      "energyDrain": 15,
+      "message": "biomeplaceholder_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/sulphuricweathernew2",
+    "value": {
+      "energyDrain": 20,
+      "message": "biomeplaceholder_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/sulphuricweathernew3",
+    "value": {
+      "energyDrain": 25,
+      "message": "biomeplaceholder_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hazardVulnerabilities/sulphuricweathernew4",
+    "value": {
+      "energyDrain": 30,
+      "message": "biomeplaceholder_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/liquidVulnerabilities/liquidaether",
+    "value": {
+      "energyDrain": 10,
+      "message": "aether_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/liquidVulnerabilities/sulphuricacid",
+    "value": {
+      "energyDrain": 35,
+      "message": "acid_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/liquidVulnerabilities/protociteliquid",
+    "value": {
+      "energyDrain": -1,
+      "message": "proto_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/liquidVulnerabilities/fuironliquid",
+    "value": {
+      "energyDrain": 42.5,
+      "healthDrain": 42.5,
+      "message": "lava_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/liquidVulnerabilities/lava",
+    "value": {
+      "energyDrain": 42.5,
+      "healthDrain": 42.5,
+      "message": "lava_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/liquidVulnerabilities/darkwater",
+    "value": {
+      "energyDrain": 15,
+      "message": "darkwater_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/liquidVulnerabilities/elderfluid",
+    "value": {
+      "energyDrain": 30,
+      "healthDrain": 30,
+      "message": "elder_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/liquidVulnerabilities/liquidnitrogen",
+    "value": {
+      "energyDrain": 27.5,
+      "message": "nitrogen_mech"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/applyEnvironmentStatuses/-",
+    "value": "slimestickimmunity"
+  },
+  {
+    "op": "add",
+    "path": "/applyEnvironmentStatuses/-",
+    "value": "liquidnitrogenimmunity"
+  },
+  {
+    "op": "add",
+    "path": "/applyEnvironmentStatuses/-",
+    "value": "fumudslowimmunity"
+  }
+]

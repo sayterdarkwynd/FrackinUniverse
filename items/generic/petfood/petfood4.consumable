@@ -1,0 +1,26 @@
+{
+  "itemName": "petfood4",
+  "rarity": "common",
+  "price": 5,
+  "category": "petfood",
+  "inventoryIcon": "periwinkle.png",
+  "description": "Energize your pet! Don't ask what it's made from. ^red;Do Not Consume.\n^red;-^white;5% ^red;HP^gray;, ^red;Poisoned ^gray;(^white;1m^gray;)^reset;",
+  "shortdescription": "Soylent Periwinkle",
+  "maxStack": 1000,
+  "effects": [
+    [
+      {
+        "effect" : "negativehealth5",
+        "duration" : 60
+      },
+      {
+        "effect" : "cattlepoison",
+        "duration" : 60
+      }
+    ]
+  ],
+  "foodValue": 20,
+  "builder": "/items/buildscripts/buildfood.lua",
+  "tooltipKind": "food",
+  "blockingEffects": ["wellfed"]
+}

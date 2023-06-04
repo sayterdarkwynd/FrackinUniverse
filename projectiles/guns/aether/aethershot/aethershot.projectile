@@ -1,0 +1,26 @@
+{
+  "projectileName" : "aethershot",
+  "physics" : "laser",
+  "bounces" : 0,
+  "speed" : 45,
+  "timeToLive" : 0.8,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [15, 191, 191],
+  "image" : "aethershot.png",
+  "animationCycle" : 0.8,
+    "fullbright" : true,
+  "frameNumber" : 6,
+  "animationLoops" : false,
+  "power" : 0,
+  "damagePoly" : [ [-3, 3], [-3, -3], [3, -3], [3, 3] ],
+  "piercing" : false,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/aetherprojectileboom/aetherprojectileboom.config"
+    }
+  ],
+  "damageKind" : "aether",
+  "emitters" : [ "iceplasma" ]
+}

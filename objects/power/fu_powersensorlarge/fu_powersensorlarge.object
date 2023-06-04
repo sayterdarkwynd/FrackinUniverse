@@ -3,11 +3,11 @@
   "printable" : false,
     "colonyTags" : [ "science", "power", "tech" ],
   "rarity" : "Common",
-  "description" : "A large sensor that displays power levels flowing into it. This one goes up to 128",
-  "shortdescription" : "^cyan;Large Power Sensor^white;",
+  "description" : "A large sensor that displays power levels flowing into it. This one goes up to 999.",
+  "shortdescription" : "^cyan;Large Power Sensor^reset;",
   "race" : "generic",
   "category" : "wire",
-  "price" : 1000,
+  "price" : 150,
 
   "inventoryIcon" : "fu_powersensorlargeicon.png",
 
@@ -21,21 +21,20 @@
       "direction" : "right"
     }
   ],
-  
-  "scripts" : [ "/objects/power/fu_powersensorlarge/fu_powersensorlarge.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 20,
+
+  "scripts" : [ "/scripts/fupower.lua","fu_powersensorlarge.lua" ],
+  "scriptDelta" : 10,
 
   "animation" : "fu_powersensorlarge.animation",
   "animationParts" : {
-    "num" : "fu_powersensorlarge_num.png",
+    "one" : "fu_powersensorlarge_num.png",
+  "ten" : "fu_powersensorlarge_num.png",
+  "hundred" : "fu_powersensorlarge_num.png",
     "base" : "fu_powersensorlarge.png"
   },
   "animationPosition" : [0, 0],
 
   "inputNodes" : [ [0, 0] ],
 
-  "isn_powerReciever" : true,
-  "isn_freePower" : true
+  "powertype" : "input"
 }

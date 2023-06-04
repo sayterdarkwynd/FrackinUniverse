@@ -1,0 +1,127 @@
+{
+  "objectName" : "forumdecorum",
+  "colonyTags" : ["outpost","commerce"],
+  "rarity" : "Common",
+  "description" : "Fine Mantizi goods, mostly legal!",
+  "shortdescription" : "Forum Decorum",
+  "category":"decorative",
+  "race" : "mantizi",
+  "printable" : false,
+  "lightColor" : [46, 66, 77],
+
+  "interactAction" : "OpenMerchantInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/merchant.config",
+    "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : "  Forum Decorum",
+        "subtitle" : "  Fine Mantizian Goods"
+      }
+    },
+    "buyFactor" : 1.0,
+    "sellFactor" : 0.2,
+    "items" : [
+      { "item" : "cornu" },
+      { "item" : "mantizanwine" },
+      { "item" : "richwoodmaterial", "price" : 8 },
+      { "item" : "richplatform", "price" : 8 },
+      { "item" : "richlattice", "price" : 8 },
+      { "item" : "marblepillarblock", "price" : 8 },
+      { "item" : "marbleblock", "price" : 8 },
+      { "item" : "claytile", "price" : 8 },
+      { "item" : "imperialbanner1" },
+      { "item" : "imperialbanner2" },
+      { "item" : "imperialbanner3" },
+      { "item" : "imperialbanner4" },
+      { "item" : "imperialbed" },
+      { "item" : "imperialbookcase" },
+      { "item" : "imperialbowl" },
+      { "item" : "imperialbowlfruit" },
+      { "item" : "imperialbucket" },
+      { "item" : "imperialcabinet" },
+      { "item" : "imperialchair" },
+      { "item" : "imperialchairtall" },
+      { "item" : "imperialchest" },
+      { "item" : "imperialchestlong" },
+      { "item" : "imperialcouch" },
+      { "item" : "imperialcup" },
+      { "item" : "imperialcurtain1" },
+      { "item" : "imperialdoor" },
+      { "item" : "imperialdresser" },
+      { "item" : "imperialhanginglight" },
+      { "item" : "imperialshieldstand" },
+      { "item" : "imperialtable" },
+      { "item" : "imperialtableshort" },
+      { "item" : "imperialvaselarge1" },
+      { "item" : "imperialvaselarge2" },
+      { "item" : "imperialvasemedium1" },
+      { "item" : "imperialvasemedium2" },
+      { "item" : "imperialvasesmall1" },
+      { "item" : "imperialvasesmall2" },
+      { "item" : "imperialwalllight" },
+      { "item" : "imperialwallshield" },
+      { "item" : "mantizistoragelocker" },
+      { "item" : "ccccc_mantizibasin" },
+      { "item" : "ccccc_mantizibowl1" },
+      { "item" : "ccccc_mantizibowl2" },
+      { "item" : "ccccc_mantizibowl3" },
+      { "item" : "ccccc_mantizijar1" },
+      { "item" : "ccccc_mantizijar2" },
+      { "item" : "ccccc_mantizijar3" },
+      { "item" : "ccccc_mantizijar4" },
+      { "item" : "ccccc_mantizijar5" },
+      { "item" : "ccccc_mantizijar6" },
+      { "item" : "ccccc_mantizijar7" },
+      { "item" : "ccccc_mantizijar8" },
+      { "item" : "ccccc_mantizipitcher1" },
+      { "item" : "ccccc_mantizipitcher2" },
+      { "item" : "ccccc_mantizipitcher3" },
+      { "item" : "ccccc_mantizipot1" },
+      { "item" : "ccccc_mantizipot2" },
+      { "item" : "ccccc_mantizipot3" },
+      { "item" : "ccccc_mantizipot4" },
+      { "item" : "ccccc_mantizivase2" },
+      { "item" : "ccccc_mantizivase3" }
+    ]
+  },
+
+  "apexDescription" : "I hope Big Ape doesn't see me shopping here.",
+  "avianDescription" : "What lovely wares!",
+  "floranDescription" : "Floran need nothing from ssshop.",
+  "glitchDescription" : "Statement. A wholesale shop.",
+  "humanDescription" : "Are they allowed to operate out here like this?",
+  "hylotlDescription" : "I am surprised they let this one in here.",
+  "novakidDescription" : "Fancy stuff in there.",
+  "fumantiziDescription" : "Masterworks, all. Can't go wrong.",
+
+  "inventoryIcon" : "icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "forumdecorumleft.png:<color>.<frame>", "fullbright" : true }, { "image" : "forumdecorumleftlit.png:<color>.<frame>" } ],
+      "direction" : "left",
+
+      "lightPosition" : [-1, 2],
+
+      "imagePosition" : [-64, 0],
+      "frames" : 16,
+      "animationCycle" : 10.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "forumdecorumright.png:<color>.<frame>", "fullbright" : true }, { "image" : "forumdecorumrightlit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "lightPosition" : [0, 2],
+
+      "imagePosition" : [-64, 0],
+      "frames" : 16,
+      "animationCycle" : 10.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "soundEffect" : "/sfx/objects/hubbub.ogg"
+}

@@ -1,0 +1,43 @@
+{
+  "projectileName" : "radioactivebouncer",
+  "physics" : "laser",
+  "timeToLive" : 5,
+  "image" : "radioactivebouncer.png",
+  "animationCycle" : 0.3,
+  "lightColor" : [150, 150, 0],
+  "frameNumber" : 4,
+  "periodicActions" : [ ],
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/radioactiveimpact2.config"
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/radioactiveimpact.config"
+    }
+  ],
+  "speed" : 0,
+  "power" : 30,
+  "piercing" : true,
+  "damageKind" : "radioactiveplasma",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "radiationburn" ],
+
+  "fullbright" : true,
+  "emitters" : [ "radioactiveplasma" ],
+
+  "bounces" : 6,
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua", "/projectiles/activeitems/staff/elementbouncer/bouncespikes.lua" ],
+
+  "spikeProjectile" : "radioactivestickyspikes",
+  "spikeDamageFactor" : 0.1,
+
+  "controlMovement" : {
+    "maxSpeed" : 60,
+    "controlForce" : 60
+  }
+}

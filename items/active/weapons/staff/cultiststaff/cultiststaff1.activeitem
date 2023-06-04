@@ -2,13 +2,13 @@
   "itemName" : "cultiststaff1",
   "price" : 1440,
   "maxStack" : 1,
-  "level" : 2,
-  "rarity" : "uncommon",
+  "level" : 7,
+  "rarity" : "legendary",
   "description" : "Fashioned from bones and petrified wood.",
   "shortdescription" : "Cultist's Staff",
   "category" : "staff",
   "twoHanded" : true,
-  "itemTags" : ["weapon","staff"],
+  "itemTags" : ["weapon","staff","upgradeableWeapon","elder"],
   "tooltipKind" : "staff",
 
   "animation" : "/items/active/weapons/staff/staff.animation",
@@ -24,19 +24,19 @@
       }
     },
     "particleEmitters" : {
-      "physicalcharge" : {
+      "shadowcharge" : {
         "active" : false,
         "transformationGroups" : ["weapon"],
         "emissionRate" : 10,
         "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
         "particles" : [
-          {"particle" : "kluexstaff"}
+          {"particle" : "cultiststaff"}
         ]
       }
     },
 
     "sounds" : {
-      "physicalactivate" : ["/sfx/npc/boss/cultistboss_recharge.ogg"]
+      "shadowactivate" : ["/sfx/npc/boss/cultistboss_recharge.ogg"]
     }
   },
 
@@ -90,9 +90,9 @@
     }
   },
 
-  "elementalType" : "poison",
+  "elementalType" : "shadow",
 
-  "primaryAbilityType" : "plasmabarrage",
+  "primaryAbilityType" : "darkcloud",
   "primaryAbility" : {},
 
   "altAbilityType" : "cultbarrage1",

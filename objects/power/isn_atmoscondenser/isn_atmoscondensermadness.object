@@ -1,0 +1,65 @@
+{
+    "objectName" : "atmoscondensermadness",
+    "rarity" : "rare",
+    "colonyTags" : [ "science","elder","macabre","genetics" ],
+    "description" : "Siphons and warps the atmosphere into usable reagents. ^cyan;Requires ^orange;42J^cyan; every 8.7 seconds. ^red;Slower production  when stacked^reset;.",
+    "shortdescription" : "Entropic Converter",
+    "race" : "generic",
+    "category" : "storage",
+    "price" : 15500,
+    "objectType" : "container",
+    "printable" : false,
+
+    "scripts" : [ "/scripts/fupower.lua","/objects/power/isn_atmoscondenser/isn_resource_generator.lua"],
+    "scriptDelta" : 10,
+
+    "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
+    "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
+    "slotCount" : 40,
+    "uiConfig" : "/objects/power/isn_atmoscondenser/isn_atmoscondenser.config",
+    "frameCooldown" : 67,
+    "autoCloseCooldown" : 3600,
+
+	"airWellRange":30,
+	"productionTime":520,//520/60= 8 and 2/3 seconds. power consumption on this interval.
+
+	//rarities to show up to, on the scan tooltip, others will simply not display. 0=none (script default),1=common,2=uncommon,3=rare
+	"rarityInfoLevel":0,
+	"overrideScanTooltip":true,
+
+    "namedWeights" : {
+        "common" : 79,
+        "uncommon" : 20,
+        "rare" : 1
+    },
+
+    "outputs" : {
+        "default" : [
+            { "weight" : "common",   "items" : [ "cellmatter", "cellmateria", "liquidwater", "fu_oxygen", "fu_hydrogen", "fu_nitrogen", "fu_carbondioxide"] },
+            { "weight" : "uncommon", "items" : [ "aliencompound", "cell_mutated", "cell_spliced", "cell_viral","exoticmatter","alienwoodsap", "biosample"  ] },
+            { "weight" : "rare",     "items" : [ "darkmatter", "redmatter", "unstableparticles","unknowngene" ] }
+        ]
+
+    },
+
+  "animation" : "/objects/power/isn_resource_generator.animation",
+
+  "animationParts" : {"basemachine" : "isn_atmoscondensermadness.png"},
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [1, 1] ],
+  "outputNodes" : [ [2, 1] ],
+  "powertype" : "input",
+  "isn_requiredPower" : 42,
+  "isn_liquidCollector" : false,
+
+  "inventoryIcon" : "isn_atmoscondensermadnessicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "isn_atmoscondensermadness.png:<color>.idle",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+}

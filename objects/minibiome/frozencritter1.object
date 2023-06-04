@@ -1,0 +1,32 @@
+{
+  "objectName" : "frozencritter1",
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 400,
+  "printable" : false,
+  "description" : "Some sort of long-frozen creature trapped within the ice.",
+  "shortdescription" : "Frozen creature",
+  "inventoryIcon" : "frozencritter1.png",
+  "health" : 18,
+  "orientations" : [
+    {
+      "dualImage" : "frozencritter1.png:<color>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
+  "smashDropOptions" : [
+    [ [ "icecrystal", 1, { } ] ]
+  ],
+
+  "breakDropOptions" : [
+    [ [ "icecrystal", 1, { } ] ]
+  ],
+  "biomePlaced" : true
+}

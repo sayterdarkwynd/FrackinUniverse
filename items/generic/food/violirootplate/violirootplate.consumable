@@ -1,0 +1,29 @@
+{
+  "itemName": "violirootplate",
+  "rarity": "Rare",
+  "price": 125,
+  "category": "preparedFood",
+  "inventoryIcon": "violirootplate.png",
+  "description": "Sliced violiroot is a simple but delicious Novakid food. ^cyan;+^white;20% ^cyan;Jump ^gray;(^white;100s^gray;)\n^red;Electrified ^gray;(^white;5s^gray;)^reset;",
+  "shortdescription": "Violiroot Plate",
+  "effects": [
+    [
+      {
+        "effect": "jumpboostfood",
+        "duration": 100
+      },
+      {
+        "effect": "electrified",
+        "duration": 5
+      }
+    ]
+  ],
+  "foodValue": 30,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 4,
+  "blockingEffects": ["wellfed"]//,
+  //"learnBlueprintsOnPickup": ["glowburger"]
+}

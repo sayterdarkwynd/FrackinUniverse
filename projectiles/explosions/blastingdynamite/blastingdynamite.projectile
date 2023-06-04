@@ -1,26 +1,27 @@
 {
   "projectileName" : "blastingdynamite",
   "image" : "blastingdynamite.png",
-  "animationCycle" : 0.01,
+  "animationCycle" : 0.25,
   "level" : 4,
   "frameNumber" : 5,
   "speed" : 0,
   "fallSpeed" : 0,
   "animationLoops" : false,
-  "piercing" : true,
-  "flippable" : true,
-  "pointLight" : true,
-  "lightColor" : [168,175,155],
-  "universalDamage" : true,
-  "damageKind" : "default",
-  "timeToLive" : 0.01,
   "knockback" : 60,
   "knockbackDirectional" : true,
   "actionOnReap" : [
     {
       "action" : "config",
       "file" : "/projectiles/explosions/blastingdynamite/blastingdynamite.config"
-    } 
+    }
   ],
-  "power" : 12
+  "power" : 12,
+  "piercing" : true,
+  "damageKind" : "hidden",
+  "damageType" : "IgnoresDef",
+  "damagePoly" : [ [-11, -11], [-11, 11], [11, 11], [11, -11] ],
+  "flippable" : true,
+  "damageTeam" : { "type" : "indiscriminate" },
+  "pointLight" : true,
+  "lightColor" : [168,175,155]
 }

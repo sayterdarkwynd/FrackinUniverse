@@ -1,0 +1,50 @@
+{
+  "objectName" : "wildavikancactusseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "Cacti originating from Kadavan, but with variations in genetics that sets them apart.",
+  "shortdescription" : "Kadavan Cactus Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 20,
+
+  "inventoryIcon" : "avikancactusseedicon.png",
+  "largeImage" : "avikancactusseed.png:default.3.0",
+  "orientations" : [
+    {
+      "dualImage" : "avikancactusseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [100, 105]
+    },
+    {
+      "duration" : [100, 105]
+    },
+    {
+      "alts" : 5,
+      "duration" : [100, 140]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "avikancactusHarvest",
+      "resetToStage" : 0
+    }
+  ],
+
+  "breakDropOptions" : [
+    [ [ "avikancactusseed", 1, { } ] ]
+  ],
+    "maxImmersion" : 0.125
+}

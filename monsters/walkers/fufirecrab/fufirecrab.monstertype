@@ -1,0 +1,304 @@
+{
+  "type" : "fufirecrab",
+  "shortdescription" : "Wilt Crab",
+  "description" : "Heavily plated. Hard to kill. Aggressive if stared at.",
+
+  "categories" : [ "fufirecrab" ],
+  "parts" : [ "body" ],
+
+  "animation" : "fufirecrab.animation",
+
+  "dropPools" : [
+    {
+    "default" : "huntingfufirecrab",
+    "bow" : "huntingfufirecrab",
+    "firebow" : "huntingfufirecrab",
+    "icebow" : "huntingfufirecrab",
+    "poisonbow" : "huntingfufirecrab",
+    "electricbow" : "huntingfufirecrab",
+    "cosmicbow" : "huntingfufirecrab",
+    "radioactivebow" : "huntingfufirecrab",
+    "shadowbow" : "huntingfufirecrab"
+    }
+  ],
+
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 60,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 60,
+      "targetOutOfSightTime" : 10,
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 0.0,
+          "parameters" : {
+            "minimumRange" : 0,
+            "maximumRange" : 20,
+            "keepInRange" : true,
+            "windupTime" : 0,
+
+            "chargeTime" : 1,
+            "chargeSpeed" : 40,
+            "chargeControlForce" : 300,
+            "wallKnockback" : true,
+            "wallCrashSound" : "wallCrash",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.6
+          }
+        }
+      ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-charge",
+          "parameters" : {
+            "minimumRange" : 5,
+            "maximumRange" : 20,
+            "keepInRange" : true,
+            "windupTime" : 6,
+
+            "chargeTime" : 0.5,
+            "chargeSpeed" : 40,
+            "chargeControlForce" : 300,
+            "wallKnockback" : true,
+            "wallCrashSound" : "wallCrash",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.6
+          }
+        },
+        {
+          "name" : "action-charge",
+          "parameters" : {
+            "minimumRange" : 0,
+            "maximumRange" : 5,
+            "keepInRange" : true,
+            "windupTime" : 0,
+
+            "chargeTime" : 0.5,
+            "chargeSpeed" : 40,
+            "chargeControlForce" : 300,
+            "wallKnockback" : true,
+            "wallCrashSound" : "wallCrash",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.6
+          }
+        }
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 7,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 30
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 7,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 30
+          }
+        }
+      ],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 5,
+          "parameters" : {
+          "effect" : "swimboost3",
+          "duration" : 60
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 5.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 12,
+            "minimumRange" : 6,
+            "maxYRange" : 6,
+            "windupState" : "idle",
+            "windupTime" : 0.4,
+
+            "aimAtTarget" : true,
+            "projectileType" : "unfriendlybubble",
+            "projectileCount" : 8,
+            "projectileInterval" : 0.15,
+            "power" : 6,
+            "fireOffset" : [2.2, -0.5],
+            "fireState" : "",
+            "fireSound" : "wallCrash",
+
+            "winddownState" : "",
+            "winddownTime" : 0.05
+          }
+        }
+      ],
+      "periodicHostileActions" : [
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 20]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-0.475,0.062], [-0.95,-0.25], [-0.91,-1.3], [-0.475,-1.5], [0.542,-1.5], [0.917,-1.3], [0.95,-0.25], [0.475,0.062] ],
+      "damage" : 15,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-0.475,0.062], [-0.95,-0.25], [-0.91,-1.3], [-0.475,-1.5], [0.542,-1.5], [0.917,-1.3], [0.95,-0.25], [0.475,0.062] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 8,
+      "runSpeed" : 10,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 35.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 70
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.5
+        },
+        "fireResistance" : {
+          "baseValue" : 1.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : -1.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : -0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "fufirecrab" }
+  }
+}

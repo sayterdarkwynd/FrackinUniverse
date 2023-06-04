@@ -7,7 +7,7 @@
   "printable" : false,
 
   "description" : "This honey is falling.",
-  "shortdescription" : "Dripping Slime",
+  "shortdescription" : "Dripping Honey",
   "race" : "generic",
 
   "particleEmitter" : {
@@ -27,22 +27,25 @@
       "layer" : "back"
     }
   },
+  
   "inventoryIcon" : "ceilinghive3icon.png",
   "orientations" : [
     {
-      
-      "image" : "ceilinghive3.png:<color>",
-      "imagePosition" : [-3, -5],
-      "direction" : "right",
+      "dualImage" : "ceilinghive3.png:<color>",
+      "imagePosition" : [0, -4],
+      "frames" : 1,
+      "animationCycle" : 0.5,
 
       "spaceScan" : 0.1,
       "anchors" : [ "top" ]
     }
   ],
-  
+
   "smashable" : true,
   "smashSounds" : [ "/sfx/blocks/water_swim.ogg" ],
+  "smashParticles" : [ { "count" : 4, "particle" : "honeyshard" } ],
   "smashDropOptions" : [
     [ [ "fu_liquidhoney", 1, { } ], [ "fu_liquidhoney", 1, { } ], [ "fu_liquidhoney", 1, { } ] ]
-  ]
+  ],
+  "biomePlaced" : true
 }

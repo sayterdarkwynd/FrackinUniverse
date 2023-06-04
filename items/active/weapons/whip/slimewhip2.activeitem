@@ -1,0 +1,61 @@
+{
+  "itemName" : "slimewhip2",
+  "price" : 1300,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "Rare",
+  "description" : "A whip made of sticky slime.",
+  "shortdescription" : "Slime Whip II",
+  "tooltipKind" : "sword2",
+ // "learnBlueprintsOnPickup" : [ "slimewhip3" ],
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "whip", "upgradeableWeapon", "slime"],
+
+  "inventoryIcon" : "slimewhip.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "slimewhip.png",
+    "weaponFullbright" : ""
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : { "particles" : [ ]}},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/whip_swing1.ogg", "/sfx/melee/whip_swing2.ogg", "/sfx/melee/whip_swing3.ogg" ],
+      "crack" : [ "/sfx/melee/whip_impact1.ogg", "/sfx/melee/whip_impact2.ogg", "/sfx/melee/whip_impact3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [0.625, 0.0625],
+    "length" : [3, 20],
+    "segmentImage" : "/items/active/weapons/whip/slimewhiplink.png",
+    "endSegmentImage" : "/items/active/weapons/whip/slimewhipend.png",
+    "segmentSize" : 0.375
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 1.2,
+    "chainDps" : 1.5,
+    "crackDps" : 6.0,
+
+    "projectileType" : "whipcrackslime",
+    "projectileParameters" : {
+      "knockback" : 5,
+      "speed" : 40,
+      "timeToLive" : 10,
+  "statusEffects" : [
+{"effect" : "slimeslow", "duration" : 5 }
+  ]
+    }
+
+  },
+  "critChance" : 2,
+  "critBonus" : 4,
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}

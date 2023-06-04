@@ -1,0 +1,488 @@
+{
+  "metadata" : {
+    "name" : "humanbunker",
+    "species" : "human",
+    "rules" : [
+    ],
+    "anchor" : [ "entrance" ],
+    "gravity" : 80,
+    "maxRadius" : 2000,
+    "maxParts" : 100,
+    "extendSurfaceFreeSpace" : 100,
+    "protected" : true
+  },
+  "parts" : [
+    {
+      "name" : "entrance",
+      "rules" : [
+        [ "doNotConnectToPart", [ "shieldgenleft", "shieldgenright", "2a", "5", "8", "11", "14", "17" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "entrance.json" ]
+    },
+    {
+      "name" : "1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "1.json" ]
+    },
+    {
+      "name" : "2",
+      "rules" : [
+        [ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "1.json" ]
+    },
+    {
+      "name" : "2a",
+      "rules" : [
+        [ "doNotConnectToPart", [ "shieldgenleft", "shieldgenright", "entrance" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "chance" : 100,
+      "def" : [ "tmx", "2a.json" ]
+    },
+    {
+      "name" : "3",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "3", "6", "12", "15", "16", "entrance" ] ]
+      ],
+      "def" : [ "tmx", "3.json" ]
+    },
+    {
+      "name" : "4",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "4.json" ]
+    },
+    {
+      "name" : "5",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance" ] ]
+      ],
+      "def" : [ "tmx", "5.json" ]
+    },
+    {
+      "name" : "6",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "3", "6" ] ]
+      ],
+      "def" : [ "tmx", "6.json" ]
+    },
+    {
+      "name" : "7",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "7.json" ]
+    },
+    {
+      "name" : "8",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance" ] ]
+      ],
+      "def" : [ "tmx", "8.json" ]
+    },
+    {
+      "name" : "9",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "9.json" ]
+    },
+    {
+      "name" : "10",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "10.json" ]
+    },
+    {
+      "name" : "11",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance" ] ]
+      ],
+      "def" : [ "tmx", "11.json" ]
+    },
+    {
+      "name" : "12",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "12.json" ]
+    },
+    {
+      "name" : "13",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "13.json" ]
+    },
+    {
+      "name" : "13a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "13a.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "14",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance" ] ]
+      ],
+      "def" : [ "tmx", "14.json" ]
+    },
+    {
+      "name" : "15",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "1", "16" ] ]
+      ],
+      "def" : [ "tmx", "15.json" ]
+    },
+    {
+      "name" : "16",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance", "1", "15", "16" ] ]
+      ],
+      "def" : [ "tmx", "16.json" ]
+    },
+    {
+      "name" : "17",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "entrance" ] ]
+      ],
+      "def" : [ "tmx", "17.json" ]
+    },
+    {
+      "name" : "endleft1a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endleft1a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endleft1b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endleft1b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endleft1c",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endleft1c.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endleft2a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endleft2a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endleft2b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endleft2b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endleft2c",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endleft2c.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endleft3a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endleft3a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endleft3b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endleft3b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endleft3c",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endleft3c.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endleft4",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "endleft4.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endright1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endright1a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endright1b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endright1b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endright1c",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endright1c.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endright2a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endright2a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endright2b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endright2b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endright2c",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endright2c.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endright3",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "endright3a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endright3b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endright3b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endright3c",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endright3c.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endright4",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "endright4.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endceiling1a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endceiling1a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endceiling1b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endceiling1b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endceiling1c",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endceiling1c.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endceiling1d",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endceiling1d.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endceiling1e",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "endceiling1e.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endceiling2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "endceiling2.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endceiling3",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "endceiling3.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endfloor1a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endfloor1a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endfloor1b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endfloor1b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endfloor1c",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endfloor1c.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endfloor2a",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "endfloor2a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endfloor2b",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "endfloor2b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endfloor3",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "endfloor3.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endfloor4",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "endfloor4.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "shieldgenleft",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "entrance" ] ],
+        [ "doNotCombineWith", [ "shieldgenleft", "shieldgenright", "2a" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "shieldgenleft.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "shieldgenright",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "entrance" ] ],
+        [ "doNotCombineWith", [ "shieldgenleft", "shieldgenright", "2a" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "shieldgenright.json" ],
+      "chance" : 100
+    }
+  ]
+}

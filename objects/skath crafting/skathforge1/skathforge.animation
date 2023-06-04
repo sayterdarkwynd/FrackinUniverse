@@ -1,0 +1,89 @@
+{
+  "animatedParts": {
+    "stateTypes": {
+      "stage": {
+        "default": "rustic",
+        "states": {
+          "rustic": {
+            "frames": 4,
+            "cycle": 1.0,
+            "mode": "loop",
+            "properties": {
+              "lightsOn": [ "forgeglow" ],
+              "persistentSound": "/sfx/objects/furnace.ogg",
+              "persistentSoundRangeMultiplier": 0.5
+            }
+          },
+          "plasma": {
+            "frames": 6,
+            "cycle": 1.0,
+            "mode": "loop",
+            "properties": {
+              "lightsOn": [ "plasmaglow" ],
+              "persistentSound": "/sfx/objects/furnace.ogg",
+              "persistentSoundRangeMultiplier": 0.5
+            }
+          }
+        }
+      }
+    },
+
+    "parts": {
+      "chassis": {
+        "properties": { "centered": true },
+        "partStates": {
+          "stage": {
+            "rustic": { "properties": { "image": "skathforge1lit.png:<color>.1" } },
+            "plasma": { "properties": { "image": "skathforge2lit.png:<color>.1" } }
+          }
+        }
+      },
+      "fire": {
+        "properties": { "centered": true, "fullbright": true },
+        "partStates": {
+          "stage": {
+            "rustic": { "properties": { "image": "skathforge1.png:<color>.<frame>" } },
+            "plasma": { "properties": { "image": "skathforge2.png:<color>.<frame>" } }
+          }
+        }
+      }
+    }
+  },
+
+  "sounds": {
+    "fanfare": [ "/sfx/cinematics/mission_unlock_event.ogg" ]
+  },
+
+  "lights": {
+    "forgeglow": {
+      "active": false,
+      "position": [0, 1],
+      "color": [179, 149, 107],
+      "flickerPeriod": 0.3,
+      "flickerMinIntensity": 0.95,
+      "flickerMaxIntensity": 1,
+      "flickerPeriodVariance": 0.075,
+      "flickerIntensityVariance": 0.025
+    },
+
+    "plasmaglow": {
+      "active": false,
+      "position": [0, 1],
+      "color": [0, 240, 255],
+      "flickerPeriod": 0.3,
+      "flickerMinIntensity": 0.95,
+      "flickerMaxIntensity": 1,
+      "flickerPeriodVariance": 0.075,
+      "flickerIntensityVariance": 0.025
+    }
+  },
+
+  "particleEmitters": {
+    "dust": {
+      "emissionRate": 0.0,
+      "burstCount": 10,
+      "offsetRegion": [-2, -2, 2, 2],
+      "particles": [{ "particle": "dust2" }]
+    }
+  }
+}

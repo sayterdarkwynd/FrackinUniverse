@@ -1,0 +1,47 @@
+{
+  "objectName" : "avikanspiceplantseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Uncommon",
+  "category" : "seed",
+  "description" : "Spices can be made by drying this plants fruits.",
+  "shortdescription" : "Kadavan Spice Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 21,
+
+  "inventoryIcon" : "avikanspiceplantseedicon.png",
+  "largeImage" : "avikanspiceplantseed.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "avikanspice" },
+  "orientations" : [
+    {
+      "dualImage" : "avikanspiceplantseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [320, 640]
+    },
+    {
+      "duration" : [320, 640]
+    },
+    {
+      "alts" : 5,
+      "duration" : [320, 630]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "avikanspiceplantHarvest",
+      "resetToStage" : 2
+    }
+  ],
+    "maxImmersion" : 0.125
+}

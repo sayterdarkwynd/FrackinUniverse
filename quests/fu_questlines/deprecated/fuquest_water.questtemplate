@@ -1,0 +1,27 @@
+{
+	"id" : "fuquest_water",
+	"title" : "Hydrogen and Oxygen",
+	"text" : "You've gathered ^orange;Water^reset;! If you want to gather ^green;Hydrogen,Oxygen and Salt^reset;, collect some ^orange;Water^reset; and then use any ^green;hand mill or extractor^reset; to create 5 ^orange;Hydrogen^reset;!",
+	"completionText" : "You'll eventually find other sources for these useful materials, but for now this is the best method you have access to. Experimentation will get you far!",
+	"rewards" : [
+		[ [ "ironore", 5] ]
+	],
+	"moneyRange" : [20, 50],
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "player"
+		},
+		"requireTurnIn" : false,
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "fu_hydrogen",
+				"count" : 5,
+				"consume" : false
+			}
+		]
+	}
+}

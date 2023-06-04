@@ -1,0 +1,29 @@
+{
+  "itemName" : "bloodycorpsewaffles",
+  "rarity" : "rare",
+  "price" : 35,
+  "category" : "preparedFood",
+  "inventoryIcon" : "bloodycorpsewaffles.png",
+  "description" : "Clearly the breakfast of choice for a growing child.\n^cyan;+^white;10% ^cyan;HP ^gray;(^white;45s^gray;) ^blue;+^white;1 ^blue;Madness^reset; ^orange;Type: Cooked Meat^reset;",
+  "shortdescription" : "Bloody Corpse Waffles",
+  "effects" : [ [
+    "madnessgain",
+	{
+	"effect": "meat_cooked"
+	},
+    {
+      "effect" : "maxhealthscalingboostfood",
+      "duration" : 45,
+      "healthModifier" : 1.10
+    }
+  ] ],
+  "foodValue" : 22,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.5,
+  "blockingEffects" : [
+    "wellfed","maxhealthscalingboostfood"
+  ]
+}

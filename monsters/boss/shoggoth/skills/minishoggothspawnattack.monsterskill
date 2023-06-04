@@ -7,19 +7,40 @@
     "scripts" : [ "/monsters/boss/shoggoth/skills/minishoggothspawnattack.lua" ],
     "miniShoggothSpawnAttack" : {
       "skillTime" : 4,
-      
-      "damagePerSecond" : 2000,
-      "distanceRange" : [10,100],
+
+      "damagePerSecond" : 10,
+      "distanceRange" : [0,100],
       "windupTime" : 0.5,
       "periodTime" : 1,
       "winddownTime" : 1.0,
-      "attacksLeft" : 3,
+      "attacksLeft" : 2,
       "bounces" : 1,
       "projectile" : {
         "type" : "minishoggothspawn",
         "config" : {
           "power" : 20,
-          "speed" : 40
+          "speed" : 70,
+          "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/acidexplosionshoggoth/acidexplosionshoggoth.config"
+	    },
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 3,
+	      "backgroundRadius" : 0,
+	      "explosiveDamageAmount" : 1,
+	      "delaySteps" : 2
+	    },
+	    {
+	      "action" : "spawnmonster",
+	      "type" : "minishoggoth",
+	      "offset" : [0, 2],
+	      "arguments" : {
+		"aggressive" : true
+	      }
+	    }
+          ]
         },
         "offset" : [10, -5]
       }

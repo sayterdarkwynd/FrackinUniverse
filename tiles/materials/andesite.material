@@ -3,30 +3,30 @@
 	"materialName" : "andesite",
 	"particleColor" : [55, 55, 55, 255],
 	"itemDrop" : "andesite",
-	"description" : "a rough volcanic stone",
+	"description" : "A rough volcanic stone",
 	"shortdescription" : "Andesite",
 	"footstepSound" : "/sfx/blocks/footstep_stone.ogg",
 	"health" : 8.5,
 	"category": "materials",
 
-	"renderTemplate" : "/tiles/classicmaterialtemplate.config",
+	"renderTemplate" : "/tiles/fuclassicnopaint.config",
 	"renderParameters" : {
 		"texture" : "andesite.png",
 		"variants" : 5,
 		"lightTransparent" : false,
-		"multiColored" : false,
+		"multiColored" : true,
 		"occludesBelow" : true,
 		"zLevel" : 0
 	},
   "liquidInteractions" : [
     {
       "liquidId" : 2,
-      "consumeLiquid" : 0.5,
+      "consumeLiquid" : 0.2,
       "transformMaterialId" : 6539
     },
     {
       "liquidId" : 46,
-      "consumeLiquid" : 0.5,
+      "consumeLiquid" : 0.2,
       "transformMaterialId" : 360
     }
   ]

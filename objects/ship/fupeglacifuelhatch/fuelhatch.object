@@ -1,0 +1,47 @@
+{
+  "objectName" : "fupeglacifuelhatch",
+  "rarity" : "Common",
+  "objectType" : "container",
+  "category" : "container",
+  "description" : "Accepts a bunch of different kinds of fuel.",
+  "shortdescription" : "Fuel Hatch",
+  "race" : "peglaci",
+
+  "apexDescription" : "An integrated fuel hatch - I can load it up right from the command chair!",
+  "avianDescription" : "How convenient, I can reach the fuel hatch from the chair.",
+  "floranDescription" : "Better not ssstick my hand in there.",
+  "glitchDescription" : "Excited. Accepts a variety of fuels from the comfort of the seat.",
+  "humanDescription" : "Aw, sweet - don't even have to get off the chair.",
+  "hylotlDescription" : "No need to even get off the seat to fuel the ship. Seems quite lazy.",
+  "peglaciDescription" : "A simple arc-furnace separates bio-matter and denser fuels into component atoms for use in fueling the ship.",
+  "fupeglaciDescription" : "A simple arc-furnace separates bio-matter and denser fuels into component atoms for use in fueling the ship.",
+
+  "inventoryIcon" : "fuelhatchicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fuelhatch.png:<color>.<frame>",
+      "imagePosition" : [-4, 0],
+      "frames" : 5,
+      "animationCycle" : 0.7,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "hasWindowIcon" : false,
+  "recipeGroup" : "fuel",
+  "slotCount" : 6,
+  "uiConfig" : "/interface/fuel/fuel.config",
+  "autoCloseCooldown" : 3600,
+  "frameCooldown" : 67,
+  "soundEffect" : "/sfx/objects/shipengine.ogg",
+  "soundEffectRadius" : 300,
+
+  "itemTags" : [ "newfuelhatch" ],
+
+  "scripts" : ["/stagehands/radiomessage.lua"],
+  "scriptDelta" : 30,
+  "broadcastArea" : [-5, -5, 5, 5],
+  "radioMessage" : "fuel"
+}

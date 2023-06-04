@@ -2,7 +2,7 @@
   "projectileName" : "atomsmasher_shot20",
   "image" : "atomsmasher_shot.png",
   "animationCycle" : 1.0,
-  "level" : 1,
+  "level" : 6,
   "physics" : "atomsmasher",
   "frameNumber" : 6,
   "pointLight" : true,
@@ -10,6 +10,7 @@
   "lightColor" : [60, 113, 255],
   "speed" : 50,
   "timeToLive" : 0.7,
+  "universalDamage" : true,
   "actionOnReap" : [
     {
       "action" : "config",
@@ -63,7 +64,7 @@
       "fuzzAngle" : 0,
       "inheritDamageFactor" : 0.12,
       "angleAdjust" : -90
-    },   
+    },
     {
       "action" : "projectile",
       "type" : "ffteslasmall",
@@ -77,7 +78,7 @@
       "fuzzAngle" : 0,
       "inheritDamageFactor" : 0.12,
       "angleAdjust" : -120
-    }, 
+    },
     {
       "action" : "projectile",
       "type" : "ffteslasmall",
@@ -107,7 +108,9 @@
       "angleAdjust" : -180
     }
   ],
-  "damageKind" : "default",
+  "damageKind" : "cosmic",
+  "power" : 40,
+  "damageType" : "IgnoresDef",
   "emitters" : [ "defaultblue" ]
 }
 

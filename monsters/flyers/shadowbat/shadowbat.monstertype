@@ -1,0 +1,290 @@
+{
+  "type" : "shadowbat",
+  "shortdescription" : "Vorp",
+  "description" : "A strange creature composed of pulsing sacks of shadowy material.",
+
+  "reversed" : true,
+  "categories" : [ "shadowbat" ],
+  "parts" : [ "body" ],
+
+  "animation" : "shadowbat.animation",
+
+  "dropPools" : [
+    {
+      "default" : "batongTreasure",
+      "bow" : "batongHunting",
+      "firebow" : "batongHunting",
+      "icebow" : "batongHunting",
+      "poisonbow" : "batongHunting",
+      "electricbow" : "batongHunting",
+      "cosmicbow" : "batongHunting",
+      "radioactivebow" : "batongHunting",
+      "shadowbow" : "batongHunting"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "seeThroughLiquid" : false,
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-swoop",
+          "cooldown" : 4,
+          "parameters" : {
+            "minimumRange" : 0,
+            "maximumRange" : 24,
+
+            "windupState": "attack",
+
+            "onGround" : false,
+            "windupTime" : 1,
+
+            "gravityMultiplier" : 0.5,
+            "swoopVelocity" : 30,
+            "collisionCheck" : false,
+            "highArc" : false,
+            "swoopTime" : 1,
+            "swoopState" : "attack",
+            "winddownTime" : 0.5,
+            "winddownState" : "fly",
+            "winddownStopForce" : 10
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+         "name":"action-projectile",
+         "cooldown" : 1,
+         "parameters" : {
+          "projectileType" : "shadowelementcloud2",
+          "power" : 5
+         }
+        }
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "wander-fly",
+          "cooldown" : 1.5,
+          "parameters" : {
+            "approachAngle" : 30,
+            "usePathfinding" : false,
+            "wanderTime" : [2,4],
+            "groundDistance" : 8,
+            "ceilingDistance" : 8,
+            "xVelocity" : 4,
+            "yVelocity" : 6
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "approachTime" : 1,
+            "minRange" : 4,
+            "maxRange" : 12,
+            "targetOffset" : [0,4]
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly"
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "wanderTime" : [2,8],
+            "groundDistance" : 8,
+            "ceilingDistance" : 8,
+            "xVelocity" : 4,
+            "yVelocity" : 4
+          }
+        }
+      ],
+
+      "damageTakenActions" : [
+        {
+         "name":"action-projectile",
+         "cooldown" : 1,
+         "parameters" : {
+          "projectileType" : "shadowfireboom",
+          "power" : 5
+         }
+        }
+      ],
+
+      "concurrentActions" : [ ],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 1,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 25,
+            "minimumRange" : 0,
+            "windupState" : "idle",
+            "windupTime" : 0.2,
+
+            "projectileType" : "shadowelementcloud2",
+            "power" : 8,
+            "fireOffset" : [0, 0],
+            "aimAtTarget" : false,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.01,
+            "fireSound" : "attack1",
+            "range": 5,
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        }
+       ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-2.125,1.75], [-2.125,-0.938], [1.312,-0.938], [1.5,2.125] ],
+      "damage" : 8,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 20,
+      "statusEffects" : [ "darkstalker" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-2.125,1.75], [-2.125,-0.938], [1.312,-0.938], [1.5,2.125] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 2,
+      "runSpeed" : 4,
+      "gravityEnabled" : false,
+
+      "airFriction" : 0,
+      "airForce" : 40,
+      "flySpeed" : 5
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.5
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 15
+        },
+        "maxHealth" : {
+          "baseValue" : 70
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 1
+        },
+        "poisonResistance" : {
+          "baseValue" : 1
+        },
+        "shadowResistance" : {
+          "baseValue" : 1
+        },
+        "cosmicResistance" : {
+          "baseValue" : 0.6
+        },
+        "fireResistance" : {
+          "baseValue" : -0.5
+        },
+        "iceResistance" : {
+          "baseValue" : 0.5
+        },
+        "insanityImmunity" : {
+          "baseValue" : 1.0
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 0.7
+        },
+        "shadowImmunity" : {
+          "baseValue" : 1
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "shadowbat" }
+  }
+}

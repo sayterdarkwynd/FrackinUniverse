@@ -1,0 +1,63 @@
+{
+  "objectName" : "slimepersonscanner",
+  "colonyTags" : ["wired","slimeperson", "slimenpc", "slimenpchuman"],
+  "printable" : false,
+  "rarity" : "Common",
+
+  "category" : "wire",
+  "price" : 15,
+  "description" : "This eye watches for friendly nearby targets.",
+  "shortdescription" : "Slime Proximity Scanner",
+  "race" : "generic",
+
+  "apexDescription" : "It's a proximity device. It'll sense when I get close to it.",
+  "avianDescription" : "A proximity device. It could trigger something if I'm near.",
+  "floranDescription" : "Ssscanning eye on the wall. It's looking at me!",
+  "glitchDescription" : "Suspicious. This proximity scanner might be aware of me.",
+  "humanDescription" : "A proximity sensor. It can tell when I'm near.",
+  "hylotlDescription" : "This scanning device can tell when I'm present.",
+  "novakidDescription" : "A proximity scanner. Is it watching me right now?",
+  "slimepersonDescription" : "This sees when something is moving.",
+  "slimenpcDescription" : "Eye watches moving stuff.",
+  "slimenpchumanDescription" : "This scanner watches for nearby movement.",
+
+  "inventoryIcon" : "slimepersonscannericon.png",
+  "orientations" : [
+    {
+      "image" : "slimepersonscanner.png:<frame>.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/proximitysensor/proximitysensor.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/scanner/slimepersonscanner.animation",
+  "animationParts" : {
+    "switch" : "slimepersonscanner.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "outputNodes" : [ [0, 0] ],
+
+  "interactive" : false,
+
+  "detectDuration" : 3,
+  "detectEntityTypes" : [ "creature" ],
+  "detectArea" : [ [0.5, 0.5], 3 ],
+
+  "npcToy": {
+    "ownerOnly" : true,
+    "influence" : [
+      "proximitysensor"
+    ],
+    "defaultReactions" : {},
+    "maxNpcs" : 1
+  }
+}

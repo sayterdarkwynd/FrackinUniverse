@@ -1,0 +1,93 @@
+{
+  "itemName" : "injectorbio",
+  "price" : 780,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Fill enemies with chemicals, without the annoyance of laws interfering with scientific progress.",
+  "shortdescription" : "Bio-Ooze Injector",
+  "tooltipKind" : "sword2",
+  "category" : "injector",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","injector", "upgradeableWeapon"],
+
+  "inventoryIcon" : "injectorbio.png",
+  "animation" : "/items/active/weapons/melee/spear/injectorspear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "injectorbio.png",
+    "bladefullbright" : "injectorfullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "poison",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : [],
+
+    "fireTime" : 1,
+    "baseDps" : 2,
+    "damageConfig" : {
+      "damageSourceKind" : "poison",
+      "statusEffects" : [ "biooozepoison" ],
+      "knockback" : 24
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "weaponOffset" : [0, 0.5],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "windup" : {
+        "duration" : 0.1,
+        "armRotation" : -110,
+        "weaponRotation" : 20,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 0.5],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.3,
+        "armRotation" : -20,
+        "weaponRotation" : -70,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 0.5],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "hold" : {
+        "armRotation" : -30,
+        "weaponRotation" : -60,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 0.0],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      }
+    }
+
+  },
+  "altAbilityType" : "needleflurry",
+  "altAbility" : {},
+
+  "critChance" : 3,
+  "critBonus" : 4,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

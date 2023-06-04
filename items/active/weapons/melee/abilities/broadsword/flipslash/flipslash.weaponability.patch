@@ -1,0 +1,15 @@
+[
+  {"op" : "remove", "path" : "/ability/damageConfig/damageSourceKind"},
+  {"op" : "remove", "path" : "/ability/damageConfig/statusEffects"},
+  {"op" : "add", "path" : "/ability/elementalConfig", "value" : {
+    "physical" : {"damageSourceKind" : "broadsword", "statusEffects" : []},
+    "fire" : {"damageSourceKind" : "firebroadsword", "statusEffects" : ["burning"]},
+    "ice" : {"damageSourceKind" : "icebroadsword", "statusEffects" : ["frostslow"]},
+    "electric" : {"damageSourceKind" : "electricbroadsword", "statusEffects" : ["electrified"]},
+    "poison" : {"damageSourceKind" : "poisonbroadsword", "statusEffects" : ["weakpoison"]},
+    "shadow" : {"damageSourceKind" : "shadowbroadsword", "statusEffects" : ["shadowgasfx"]},
+    "radioactive" : {"damageSourceKind" : "radioactivebroadsword", "statusEffects" : ["radiationburn"]},
+    "cosmic" : {"damageSourceKind" : "cosmicbroadsword", "statusEffects" : ["defenseboostneg20"]}}
+  },
+  { "op": "add", "path": "/ability/stances/flip/noAimCompensation", "value": true }
+]

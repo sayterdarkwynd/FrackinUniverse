@@ -1,0 +1,66 @@
+{
+  "objectName" : "lavalampstation",
+  "colonyTags" : [ "crafting" ],
+  "printable" : true,
+  "rarity" : "legendary",
+  "category" : "crafting",
+  "price" : 250,
+
+  "description" : "A station for creating different lava lamps.",
+  "shortdescription" : "^orange;The Lamporium^reset;",
+  //"learnBlueprintsOnPickup" : [ "lavalampstation" ],
+  "race" : "generic",
+
+  "lightColor" : [120, 20, 180],
+  "lightPosition" : [0, 1],
+
+  "flickerPeriod" : 0.5,
+  "flickerMinIntensity" : 0.725,
+  "flickerMaxIntensity" : 0.8,
+  "flickerPeriodVariance" : 0,
+  "flickerIntensityVariance" : 0,
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/lavalampstation.config",
+    "filter" : [ "lavalampstation" ]
+  },
+
+  "apexDescription" : "A large lava lamp.",
+  "avianDescription" : "A very large lamp.",
+  "floranDescription" : "Floran likesss pretty lamp.",
+  "glitchDescription" : "Observant. A large lamp.",
+  "humanDescription" : "A massive lamp! It's so pretty.",
+  "hylotlDescription" : "This is beautiful to look at.",
+  "novakidDescription" : "This is mighty pretty.",
+
+  "inventoryIcon" : "lavalampstationicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "lavalampstation.png:<color>.<frame>" } ],
+      "imagePosition" : [-12, 0],
+      "animationPosition" : [-12, 0],
+      "direction" : "left",
+      "flipImages" : true,
+      "animationCycle" : 1,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "lavalampstation.png:<color>.<frame>" } ],
+      "imagePosition" : [-12, 0],
+      "animationPosition" : [-12, 0],
+      "direction" : "right",
+      "flipImages" : true,
+      "animationCycle" : 1,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "lavalampstation.animation",
+  "animationParts" : {
+    "bg" : "lavalampstation.png",
+    "fg" : "lavalampstationlit.png"
+  }
+}

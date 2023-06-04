@@ -1,0 +1,20 @@
+{
+  "itemName": "solariumbiscuit",
+  "rarity": "rare",
+  "price": 150,
+  "category": "preparedFood",
+  "inventoryIcon": "solariumbiscuit.png",
+  "description": "Super-dangerous to eat if you can't roll in radiation.\n^cyan;+^white;30% ^pink;Radiation ^cyan;Res ^gray;(^white;5m^gray;)^reset;",
+  "shortdescription": "Solarium Biscuit",
+  "foodValue": 35,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 10,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 12.0,
+
+  "effects": [["furadioactiveresistance3"]],
+  "blockingEffects": ["furadioactiveresistance3", "wellfed"],
+
+  "emitters": ["drinking"]
+}

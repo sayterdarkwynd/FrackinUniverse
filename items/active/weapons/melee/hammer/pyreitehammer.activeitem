@@ -1,0 +1,53 @@
+{
+  "itemName" : "pyreitehammer",
+  "price" : 2000,
+  "maxStack" : 1,
+  "level" : 6,
+  "rarity" : "legendary",
+  "description" : "Probably not intended for carpentry.
+^cyan;Inflicts Napalm^reset;",
+  "shortdescription" : "Pyreite Hammer",
+  "tooltipKind" : "hammer",
+  "category" : "hammer",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","hammer","pyreite", "upgradeableWeapon"],
+  "inventoryIcon" : "pyreitehammer.png",
+  //"collectablesOnPickup" : { "fu_weaponhammer" : "pyreitehammer" },
+  "animation" : "hammerglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "pyreitehammer.png",
+    "bladefullbright" : "pyreitehammerfullbright.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [-2.0, 1.5]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "hellfire",
+  "damageKindImage" : "/interface/statuses/hellfire.png",
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 0.85,
+    "baseDps" : 12.5,
+    "damageConfig" : {
+      "damageSourceKind" : "hellfire",
+      "statusEffects" : [ "burningnapalm" ]
+    }
+  },
+
+  "altAbilityType" : "fugroundslamfire",
+  "altAbility" : { },
+
+  "critChance" : 3,
+  "critBonus" : 8,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "stunChance" : 7
+}

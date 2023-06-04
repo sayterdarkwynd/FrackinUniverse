@@ -1,0 +1,46 @@
+{
+  "objectName" : "shadowstrip",
+  "colonyTags" : ["shadow", "light"],
+  "rarity" : "Common",
+  "category" : "light",
+  "lightColor" : [216, 0, 0],
+  "price" : 60,
+  "description" : "A red strip light.",
+  "shortdescription" : "Red Strip Light",
+  "race" : "shadow",
+
+  "apexDescription" : "This light doesn't seem practical.",
+  "avianDescription" : "A soft light.",
+  "floranDescription" : "Light is ssspooky, but sssoft on Floran eyesss.",
+  "glitchDescription" : "Impressed. This lighting fixture generates more light than heat.",
+  "humanDescription" : "A soft, red light.",
+  "hylotlDescription" : "A soft, red light. It creates a strangely haunting atmosphere.",
+  "novakidDescription" : "That's mighty spooky.",
+
+  "inventoryIcon" : "shadowstripicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "shadowstrip.png:<color>.<frame>", "fullbright" : true }, { "image" : "shadowstriplit.png:<color>.<frame>" } ],
+      "imagePosition" : [-8, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "shadowstrip.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

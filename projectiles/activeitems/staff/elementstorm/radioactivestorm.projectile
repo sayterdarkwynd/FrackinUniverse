@@ -1,0 +1,28 @@
+{
+  "projectileName" : "radioactivestorm2",
+  "physics" : "default",
+  "image" : "radioactivestorm.png",
+  "flippable" : true,
+  "animationCycle" : 0.25,
+  "frameNumber" : 4,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [150, 150, 0],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/radioactiveexplosionknockback.config"
+    }
+  ],
+  "power" : 20,
+  "knockback" : 40,
+  "speed" : 80,
+  "damageKind" : "radioactiveplasma",
+  "damageType" : "NoDamage",
+  "damageKindImage" : "/interface/statuses/radioactive.png",
+  "statusEffects" : [
+    "radiationburn"
+  ],
+  "hydrophobic" : true,
+  "persistentAudio" : "/sfx/projectiles/dragonprojectile_loop.ogg",
+  "emitters" : [ "radioactiveplasma", "radioactivethrowertrail" ]
+}

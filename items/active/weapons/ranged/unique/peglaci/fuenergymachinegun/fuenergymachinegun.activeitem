@@ -4,12 +4,14 @@
   "price" : 1500,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Violium spikes shred armor plating - stay on target to strip enemy protection.",
+  "description" : "Brutal violium-derived blasts shred opponents.
+^yellow;Inflicts electrified status^reset;
+^cyan;Inflicts Slow status^reset;",
   "shortdescription" : "Thresher",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "assaultRifle",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon" ],
 
   "inventoryIcon" : [
     { "image" : "fuenergymachinegun.png:idle.1" }
@@ -30,7 +32,7 @@
       "color" : [101, 52, 120]
     }},
     "sounds" : {
-      "fire" : [ "/sfx/weapons/irradiumrifle.ogg" ]
+      "fire" : [ "/sfx/weapons/hvmarauder1.wav" ]
     }
   },
   "baseOffset" : [1.0, 0.35],
@@ -44,14 +46,15 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 0.13,
-    "baseDps" : 9.6,
+    "fireTime" : 0.15,
+    "baseDps" : 9.25,
     "energyUsage" : 25,
     "inaccuracy" : 0.008,
     "fireType" : "auto",
 
     "projectileType" : "fuenergymachinegunshot",
     "projectileParameters" : {
+      "damageKind" : "electric",
       "knockback" : 4,
       "speed" : 60,
       "statusEffects" : [ "electrified" ]
@@ -69,17 +72,17 @@
       },
       "fire" : {
         "duration" : 0,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
         "twoHanded" : true,
 
         "allowRotate" : false,
         "allowFlip" : false
       },
       "cooldown" : {
-        "duration" : 0.11,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
+        "duration" : 0.08,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
         "twoHanded" : true,
 
         "allowRotate" : false,
@@ -87,8 +90,17 @@
       }
     }
   },
-
+  "critChance" : 4,
+  "critBonus" : 6,
   "altAbilityType" : "shrapnelshard",
+  "altAbility" : {
+    "name" : "Static Shocks",
+    "projectileType" : "electricguardianbullet",
+    "baseDps" : 3,
+    "protectileParameters" : {
+
+    }
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

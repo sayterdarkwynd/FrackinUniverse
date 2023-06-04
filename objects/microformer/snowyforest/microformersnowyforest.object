@@ -1,0 +1,59 @@
+{
+  "objectName" : "microformersnowyforest",
+  "colonyTags" : [],
+  "rarity" : "Legendary",
+  "description" : "Transforms an area of a planet into a snow forest.",
+  "shortdescription" : "Snow Forest Microformer",
+  "race" : "ancient",
+  "category" : "terraformer",
+  "price" : 3000,
+  "printable" : false,
+
+  "inventoryIcon" : "microformericon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "microformerfullbright.png:default", "fullbright" : true }, { "image" : "/objects/microformer/microformer.png:default" } ],
+
+      "imagePosition" : [-16, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+
+      "direction" : "right"
+    },
+    {
+      "imageLayers" : [ { "image" : "microformerfullbright.png:default", "fullbright" : true }, { "image" : "/objects/microformer/microformer.png:default" } ],
+      "flipImages" : true,
+
+      "imagePosition" : [-16, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+
+      "direction" : "left"
+    }
+  ],
+
+  "health" : 5,
+  "rooting" : true,
+
+  "animation" : "/objects/microformer/microformer.animation",
+  "animationPosition" : [-16, 0],
+  "animationParts" : {
+    "base" : "/objects/microformer/microformer.png",
+    "baseFullbright" : "microformerfullbright.png"
+  },
+
+  "smashSounds" : [ "/sfx/objects/rock_crumble1.ogg", "/sfx/objects/rock_crumble2.ogg", "/sfx/objects/rock_crumble3.ogg", "/sfx/objects/rock_crumble4.ogg", "/sfx/objects/rock_crumble5.ogg" ],
+  "smashParticles" : [ { "count" : 20, "particle" : "ancientshard1" } ],
+
+  "scripts" : ["/objects/microformer/microformer.lua"],
+  "scriptDelta" : 10,
+
+  "terraformOffset" : [-15, 0],
+  "terraformSize" : 400,
+
+  "pregenerateTime" : [5, 30],
+
+  "terraformBiome" : "snowyforest"
+}

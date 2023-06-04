@@ -1,0 +1,65 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "padState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1
+          },
+          "on" : {
+            "frames" : 1
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "forcepad" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 1,
+          "fullbright": true
+        },
+
+        "partStates" : {
+          "padState" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.off"
+              }
+            },
+
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.on"
+              }
+            }
+          }
+        }
+      },
+      "forcepadfullbright" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 2
+        },
+
+        "partStates" : {
+          "padState" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.off"
+              }
+            },
+
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.on"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

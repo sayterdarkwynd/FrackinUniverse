@@ -1,0 +1,265 @@
+{
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "ammoType" : {
+          "default" : "1",
+          "states" : {
+            "1" : {
+              "frames" : 1,
+              "properties" : {
+                "particleEmittersOff" : [ "napalmAmmo", "frostAmmo", "shockAmmo", "biooozeAmmo", "shadowAmmo", "radioactiveAmmo", "cosmicAmmo" ]
+              }
+            },
+            "2" : {
+              "frames" : 1,
+              "properties" : {
+                "particleEmittersOff" : [ "frostAmmo", "shockAmmo", "biooozeAmmo", "shadowAmmo", "radioactiveAmmo", "cosmicAmmo" ],
+                "particleEmittersOn" : [ "napalmAmmo" ]
+              }
+            },
+            "3" : {
+              "frames" : 1,
+              "properties" : {
+                "particleEmittersOff" : [ "napalmAmmo", "shockAmmo", "biooozeAmmo", "shadowAmmo", "radioactiveAmmo", "cosmicAmmo" ],
+                "particleEmittersOn" : [ "frostAmmo" ]
+              }
+            },
+            "4" : {
+              "frames" : 1,
+              "properties" : {
+                "particleEmittersOff" : [ "napalmAmmo", "frostAmmo", "biooozeAmmo", "shadowAmmo", "radioactiveAmmo", "cosmicAmmo" ],
+                "particleEmittersOn" : [ "shockAmmo" ]
+              }
+            },
+            "5" : {
+              "frames" : 1,
+              "properties" : {
+                "particleEmittersOff" : [ "napalmAmmo", "frostAmmo", "shockAmmo", "shadowAmmo", "radioactiveAmmo", "cosmicAmmo" ],
+                "particleEmittersOn" : [ "biooozeAmmo" ]
+              }
+            },
+            "6" : {
+              "frames" : 1,
+              "properties" : {
+                "particleEmittersOff" : [ "napalmAmmo", "frostAmmo", "shockAmmo", "biooozeAmmo", "radioactiveAmmo", "cosmicAmmo" ],
+                "particleEmittersOn" : [ "shadowAmmo" ]
+              }
+            },
+            "7" : {
+              "frames" : 1,
+              "properties" : {
+                "particleEmittersOff" : [ "napalmAmmo", "frostAmmo", "shockAmmo", "biooozeAmmo", "shadowAmmo", "cosmicAmmo" ],
+                "particleEmittersOn" : [ "radioactiveAmmo" ]
+              }
+            },
+            "8" : {
+              "frames" : 1,
+              "properties" : {
+                "particleEmittersOff" : [ "napalmAmmo", "frostAmmo", "shockAmmo", "biooozeAmmo", "shadowAmmo", "radioactiveAmmo" ],
+                "particleEmittersOn" : [ "cosmicAmmo" ]
+              }
+            }
+          }
+        }
+      },
+
+      "parts" : {
+        "middle" : {
+          "properties" : {
+            "image" : null
+          },
+
+          "partStates" : {
+            "ammoType" : {
+              "1" : {
+                "properties" : {
+                  "image" : "<partImage>:iron.<frame><paletteSwaps>"
+                }
+              },
+              "2" : {
+                "properties" : {
+                  "image" : "<partImage>:napalm.<frame><paletteSwaps>"
+                }
+              },
+              "3" : {
+                "properties" : {
+                  "image" : "<partImage>:frost.<frame><paletteSwaps>"
+                }
+              },
+              "4" : {
+                "properties" : {
+                  "image" : "<partImage>:shock.<frame><paletteSwaps>"
+                }
+              },
+              "5" : {
+                "properties" : {
+                  "image" : "<partImage>:bioooze.<frame><paletteSwaps>"
+                }
+              },
+              "6" : {
+                "properties" : {
+                  "image" : "<partImage>:shadow.<frame><paletteSwaps>"
+                }
+              },
+              "7" : {
+                "properties" : {
+                  "image" : "<partImage>:radioactive.<frame><paletteSwaps>"
+                }
+              },
+              "8" : {
+                "properties" : {
+                  "image" : "<partImage>:cosmic.<frame><paletteSwaps>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "particleEmitters" : {
+      "napalmAmmo" : {
+        "transformationGroups" : ["weapon"],
+        "offsetRegion" : [0, 0, 1.5, 0],
+        "emissionRate" : 3.0,
+        "particles" : [
+          { "particle" : "fireember" },
+          { "particle" : "fireember" },
+          { "particle" : "fireember" }
+        ]
+      },
+      "frostAmmo" : {
+        "transformationGroups" : ["weapon"],
+        "offsetRegion" : [0, 0, 1.5, 0],
+        "emissionRate" : 3.0,
+        "particles" : [
+          { "particle" : "iceaura" }
+        ]
+      },
+      "shockAmmo" : {
+        "transformationGroups" : ["weapon"],
+        "offsetRegion" : [0, 0, 1.5, 0],
+        "emissionRate" : 1.0,
+        "particles" : [
+          { "particle" : "teslabolt" },
+          { "particle" : "electricalburn" },
+          { "particle" : "electricalburn" },
+          { "particle" : "electricswoosh2" },
+          { "particle" : "electricswoosh2" }
+        ]
+      },
+      "biooozeAmmo" : {
+        "transformationGroups" : ["weapon"],
+        "offsetRegion" : [0, 0, 1.5, 0],
+        "emissionRate" : 1.0,
+        "particles" : [
+          { "particle" : "poisondrip2" },
+          { "particle" : "poisondrip2" },
+          { "particle" : "poisondrip2" }
+        ]
+      },
+      "shadowAmmo" : {
+        "transformationGroups" : ["weapon"],
+        "offsetRegion" : [0, 0, 1.5, 0],
+        "emissionRate" : 1.5,
+        "particles" : [
+          { "particle" : "shadowsmoke" },
+          { "particle" : "shadowsmoke" }
+        ]
+      },
+      "radioactiveAmmo" : {
+        "transformationGroups" : ["weapon"],
+        "offsetRegion" : [0, 0, 1.5, 0],
+        "emissionRate" : 2.0,
+        "particles" : [
+          { "particle" : "radioactiveswoosh1" },
+          { "particle" : "radioactiveswoosh2" },
+          { "particle" : "radiationburndust" }
+        ]
+      },
+      "cosmicAmmo" : {
+        "transformationGroups" : ["weapon"],
+        "offsetRegion" : [0, 0, 1.5, 0],
+        "emissionRate" : 2.0,
+        "particles" : [
+          { "particle" : "smallcosmiccloud1" },
+          { "particle" : "smallcosmiccloud2" }
+        ]
+      }
+    },
+
+    "sounds" : {
+      "switchAmmo" : [ "/sfx/gun/reload/shotgun_reload_clip3.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "type" : "fuadaptableammo",
+    "name" : "Adaptable Ammo",
+    "scripts" : ["/items/active/weapons/other/adaptablecrossbow/adaptableammo.lua"],
+    "class" : "AdaptableAmmo",
+
+    "adaptedAbilityIndex" : 1,
+
+    "ammoTypes" : [
+      {
+        "projectileType" : "ironbolt",
+        "energyUsage" : 36
+      },
+      {
+        "projectileType" : "napalmbolt",
+        "energyUsage" : 36
+      },
+      {
+        "projectileType" : "freezebolt",
+        "energyUsage" : 36
+      },
+      {
+        "projectileType" : "fushockbolt",
+        "energyUsage" : 36
+      },
+      {
+        "projectileType" : "biooozebolt",
+        "energyUsage" : 36
+      },
+      {
+        "projectileType" : "shadowbolt",
+        "energyUsage" : 36
+      },
+      {
+        "projectileType" : "radioactivebolt",
+        "energyUsage" : 36
+      },
+      {
+        "projectileType" : "cosmicbolt",
+        "energyUsage" : 36
+      }
+    ],
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "switch" : {
+        "aimAngle" : 0,
+        "armRotation" : -40,
+        "weaponRotation" : 60,
+        "weaponAngularVelocity" : -150,
+        "armAngularVelocity" : 100,
+        "twoHanded" : true,
+        "duration" : 0.4,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  },
+  "critChance" : 4,
+  "critBonus" : 7
+}

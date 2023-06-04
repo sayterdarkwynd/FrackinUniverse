@@ -1,0 +1,239 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 1,
+            "cycle" : 3,
+	    "mode" : "loop"
+          },
+          "walk" : {
+            "frames" : 3,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSoundRangeMultiplier" : 0.5
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "/sfx/blocks/footstep_brains.ogg", "/sfx/blocks/footstep_brains.ogg", "/sfx/blocks/footstep_brains.ogg" ]
+            }
+          },
+          "hurt" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          },
+          "jump" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          },
+          "fall" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          },
+          "snotspew" : {
+            "frames" : 10,
+            "cycle" : 2
+          },
+          "windup" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" : "transition",
+            "transition" : "fire"
+          },
+          "melee" : {
+            "frames" : 5,
+            "cycle" : 0.5
+          },
+          "fire" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "immediateSoundRangeMultiplier" : 0.5,
+              "immediateSound" : "/sfx/npc/quadruped/sandworm_attack2.ogg"
+            }
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+		  "centered" : true,
+          "offset" : [0,1]
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:melee.<frame>",
+                "damageArea" : [ [-2.167,1.583], [-2.458,0.5], [-2.292,-2.333], [-1.458,-2.875], [1.125,-2.875], [1.875,-1.792], [0.542,-0.333], [0.167,0.667], [-0.708,1.708] ]
+              }
+            },
+            "snotspew" : {
+              "properties" : {
+                "image" : "<partImage>:snotspew.<frame>"
+              }
+            },
+            "windup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>",
+                "damageArea" : [ [-2.167,1.583], [-2.458,0.5], [-2.292,-2.333], [-1.458,-2.875], [1.125,-2.875], [1.875,-1.792], [0.542,-0.333], [0.167,0.667], [-0.708,1.708] ]
+              }
+            },
+            "fireWindup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>",
+                "damageArea" : [ [-2.167,1.583], [-2.458,0.5], [-2.292,-2.333], [-1.458,-2.875], [1.125,-2.875], [1.875,-1.792], [0.542,-0.333], [0.167,0.667], [-0.708,1.708] ]
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0.25,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "particleEmitters" : {
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+    "dripslime" : {
+      "emissionRate" : 5,
+      "offsetRegion" : [-1, -1, 1, 1],
+      "particles" : [
+        { "particle" : "poisondrip3" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "deathPuff" : [ "/sfx/npc/quadruped/sandworm_death.ogg" ],
+    "fire" : [  "/sfx/projectiles/bloodvomit6.ogg","/sfx/projectiles/bloodvomit5.ogg" , "/sfx/projectiles/bloodvomit4.ogg" , "/sfx/projectiles/bloodvomit3.ogg" , "/sfx/projectiles/bloodvomit2.ogg"  ]
+  }
+}

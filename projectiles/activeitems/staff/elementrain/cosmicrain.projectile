@@ -1,0 +1,22 @@
+{
+  "projectileName" : "cosmicrain",
+  "physics" : "rain",
+  "timeToLive" : 0.75,
+  "image" : "cosmicrain.png",
+  "animationCycle" : 1,
+  "frameNumber" : 1,
+  "fullbright" : true,
+  "lightColor" : [114, 0, 154],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/electricrain_impact.ogg" ]
+    }
+  ],
+  "speed" : 25,
+  "power" : 30,
+  "damageKind" : "cosmicplasma",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "defenseboostneg20" ],
+  "emitters" : [ "cosmicdust" ]
+}

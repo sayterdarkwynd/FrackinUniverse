@@ -1,11 +1,13 @@
 {
-  "name" : "radiationimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "radiationimmunity.lua"
-  ],
-  "label" : "Radiation Immunity",
-  "icon" : "/interface/statuses/biomeradioactive.png"
+	"name": "radiationimmunity",
+	"effectConfig": {
+		"stats": [{
+			"stat": "biomeradiationImmunity",
+			"amount": 1
+		}]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

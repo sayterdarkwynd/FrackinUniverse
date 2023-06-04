@@ -1,0 +1,29 @@
+{
+	"id": "snowcrash.gearup",
+	"title": "^green;Snow Crash",
+	"text": "The map has directions showing the coordinates to a far-off snowy world where an Apex rebel outpost lies. It seems they have a hostage situation on their hands...you could help, if you're interested.",
+	"completionText": "Thank you for rescuing me! There's a teleporter in the basement, we can use that to escape! Before that, though, take this! You've earned it.",
+	"speaker": "player",
+	"moneyRange": [0, 0],
+	"rewards": [
+		[
+			["fu_lootbox", 4],
+			["wastelandhead"],
+			["wastelandchest"],
+			["wastelandlegs"],
+			["fuscienceresource", 2000]
+		]
+	],
+
+	"updateDelta": 10,
+	"script": "/quests/scripts/main.lua",
+	"scriptConfig": {
+		"giveBlueprints": ["stunglove"],
+		"portraits": {
+			"default": "player"
+		},
+		"associatedMission": "snowcrash",
+		"turnInDescription": "Help the Apex Rebels with their hostage situation.",
+		"requireTurnIn": true
+	}
+}

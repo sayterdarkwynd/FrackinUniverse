@@ -1,0 +1,34 @@
+{
+  "projectileName" : "magnorbslime",
+  "image" : "magnorbslime.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 1.5,
+  "speed" : 55,
+  "damageKind" : "poison",
+  "physics" : "isn_bouncyslime",
+  "bounces" : 6,
+  "timeToLive" : 5,
+
+  "statusEffects" : [ ],
+  "actionOnReap" : [
+    { "action" : "config", "file" : "/projectiles/explosions/slimeexplosion1/slimeexplosion1.config" },
+    { "action" : "liquid", "liquid" : "slimeliquid",  "quantity" : 0.4}
+  ],
+
+  "actionOnCollide" : [
+    { "action" : "config", "file" : "/projectiles/explosions/slimestormexplosion/slimestormexplosionmagnorb.config" },
+    { "action" : "sound", "options" : [ "/sfx/projectiles/goocluster_pop.ogg" ] },
+
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : "metamod:none",
+      "newMod" : "greenslimegrass",
+      "radius" : 2
+    }
+  ]
+
+
+}

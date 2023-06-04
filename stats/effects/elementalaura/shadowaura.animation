@@ -1,0 +1,57 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "aura" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "windup" : {
+            "frames" : 3,
+            "cycle" : 0.5,
+            "mode" : "transition",
+            "transition" : "on"
+          },
+          "on" : {
+            "frames" : 10,
+            "cycle" : 0.9,
+            "mode" : "loop"
+          }
+        }
+      }
+    },
+    "parts" : {
+      "aura" : {
+        "properties" : {
+          "zLevel" : 0
+        },
+        "partStates" : {
+          "aura" : {
+            "windup" : {
+              "properties" : {
+                "image" : "shadowaura.png:windup.<frame>"
+              }
+            },
+            "on" : {
+              "properties" : {
+                "image" : "shadowaura.png:on.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "particleEmitters" : {
+    "shadowAura" : {
+      "active" : true,
+      "emissionRate" : 15,
+      "offsetRegion" : [-3.0, -3.0, 3.0, 3.0],
+      "particles" : [
+        { "particle" : "shadowswoosh1"},
+        { "particle" : "shadowswoosh2"},
+        { "particle" : "shadowswoosh3"},
+        { "particle" : "shadowaura"}
+      ]
+    }
+  }
+}

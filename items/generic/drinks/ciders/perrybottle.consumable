@@ -1,26 +1,26 @@
 {
   "itemName" : "perrybottle",
   "rarity" : "Common",
-  "price" : 100,
+  "price" : 2300,
   "category" : "drink",
   "inventoryIcon" : "perrybottle.png",
-  "description" : "A large bottle of sweet perry!",
+  "description" : "Jeroboam of sweet perry!\n^cyan;+^white;10 ^cyan;Defense ^gray;(^white;45s^gray;)\n^white;35% ^red;Slow^gray;, ^red;Drunk ^gray;(^white;1m^gray;)^reset;",
   "shortdescription" : "Poire",
   "handPosition" : [0, -2],
+  "tooltipKind" : "food",
   "effects" : [ [
-        {
-        "effect" : "defense2",
-        "amount" : 15,
-		"duration" : 45
-         },
+    {
+      "effect" : "defenseboost10",
+      "duration" : 45
+    },
 		{
-        "effect" : "slow",
-        "duration" : 60
+      "effect" : "slow",
+      "duration" : 60
 		},
 		{
-		"effect" : "booze",
-		"amount" : 2,
-		"duration" : 60
-        }
-    ] ]
+      "effect" : "booze",
+      "duration" : 60
+    }
+  ] ],
+  "emitters" : [ "drinking" ]
 }

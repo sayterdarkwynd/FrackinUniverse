@@ -1,0 +1,30 @@
+{
+  "particleEmitters" : {
+    "firebreath" : {
+      "enabled" : true,
+      "emissionRate" : 1.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [20, 40, 90, 180],
+            "fade" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.4,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, -0.1],
+            "finalVelocity" : [0, -0.3],
+            "approach" : [0, 0.3],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "bolt" : [ "/sfx/projectiles/electric_barrier_shock_kill.ogg" ]
+  }
+}

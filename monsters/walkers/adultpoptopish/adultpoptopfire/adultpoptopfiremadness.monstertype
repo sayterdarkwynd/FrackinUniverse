@@ -1,0 +1,351 @@
+{
+	"type" : "adultpoptopfiremadness",
+	"shortdescription" : "Magmatop Omega",
+	"description" : "I don't recommend petting one of these. Absolutely lethal.",
+
+	"categories" : [ "adultpoptopfire" ],
+	"parts" : [ "body", "bodyfullbright" ],
+
+	"animation" : "adultpoptopfire.animation",
+
+	"dropPools" : [ { "default" : "ashgolemLoot",
+		"bow" : "ashgolemLoot",
+		"firebow" : "ashgolemLoot",
+		"icebow" : "ashgolemLoot",
+		"poisonbow" : "ashgolemLoot",
+		"electricbow" : "ashgolemLoot",
+		"cosmicbow" : "ashgolemLoot",
+		"radioactivebow" : "ashgolemLoot",
+		"shadowbow" : "ashgolemLoot"	 }
+	],
+
+	"baseParameters" : {
+		"scripts" : [
+			"/monsters/walkers/adultpoptopish/adultpoptopfire/monster2.lua",
+			"/stats/monstereffects/monsterstatus_deathbombmagma.lua"
+		],
+
+		"renderLayer" : "Monster+10",
+		"damageTeamType" : "friendly",
+		"behavior" : "monster",
+		"deathBehavior" : "monster-death",
+
+		"behaviorConfig" : {
+			"damageOnTouch" : true,
+
+			"targetQueryRange" : 50,
+			"targetOnDamage" : true,
+			"keepTargetInSight" : true,
+			"keepTargetInRange" : 100,
+			"targetOutOfSightTime" : 20.5,
+			"hurtWaitForGround": false,
+
+			"foundTargetActions" : [
+				{
+					"name" : "action-animate",
+					"cooldown" : 15,
+					"parameters" : {
+						"stateType" : "body",
+						"state" : "roar",
+						"animationTime" : 0.53
+					}
+				}
+			],
+
+			"fleeActions" : [],
+
+			"hostileActions" : [
+				{
+					"name" : "action-animate",
+					"cooldown" : 15,
+					"parameters" : {
+						"stateType" : "body",
+						"state" : "roar",
+						"animationTime" : 0.53
+					}
+				},
+				{
+					"name" : "action-fire",
+					"cooldown" : 15,
+					"parameters" : {
+						"projectileType" : "hellfireburst2",
+						"fireOffset" : [0.875, 0.625],
+
+						"maximumRange" : 30,
+						"minimumRange" : 3,
+						"windupState" : "roarlong",
+						"windupTime" : 1.5,
+
+						"power" : 22,
+						"speed": 50,
+						"aimAtTarget" : true,
+						"projectileCount" : 1,
+						"fireSound" : "fire",
+						"range": 30,
+
+						"winddownState" : ""
+					}
+				},
+				{
+					"name" : "action-charge",
+					"cooldown" : 3.0,
+					"parameters" : {
+						"maximumRange" : 20,
+						"windupState" : "chargewindup",
+						"windupTime" : 0.3,
+
+						"chargeTime" : 0.2,
+						"chargeSpeed" : 60,
+						"chargeControlForce" : 1000,
+						"chargeState" : "charge",
+						"wallCrashSound" : "",
+						"wallCrashEmitter" : "",
+
+						"winddownTime" : 0.05,
+						"winddownStopForce" : 1000,
+						"winddownState" : "chargewinddown"
+					}
+				},
+				{
+					"name" : "action-fire",
+		"cooldown" : 5,
+					"parameters" : {
+						"requireLineOfSight" : true,
+						"maximumRange" : 10,
+						"minimumRange" : 3,
+						"windupState" : "roarwindup",
+						"windupTime" : 0.7,
+
+						"projectileType" : "napalm2",
+						"power" : 5,
+						"speed": 50,
+						"fireOffset" : [3.0, -0.2],
+						"aimAtTarget" : true,
+						"projectileCount" : 8,
+						"projectileInterval" : 0.01,
+						"fireSound" : "fire",
+						"range": 10,
+						"fireState" : "roar",
+						"winddownState" : "roarwinddown",
+						"winddownTime" : 0.6
+					}
+				}
+			],
+
+			"periodicActions" : [],
+
+			"approachActions" : [
+				{
+					"name" : "approach-walk",
+					"parameters" : {
+						"canJump" : true,
+						"maxJumps" : 5,
+						"jumpXVelocity" : 12,
+						"jumpYVelocity" : 30,
+						"jumpXControlForce" : 50,
+						"minXRange" : 10
+					}
+				}
+			],
+
+			"followActions" : [
+				{
+					"name" : "approach-teleport",
+					"parameters" : {
+					}
+				},
+				{
+					"name" : "approach-walk",
+					"parameters" : {
+						"canJump" : true,
+						"maxJumps" : 5,
+						"jumpXVelocity" : 12,
+						"jumpYVelocity" : 30,
+						"jumpXControlForce" : 50,
+						"minXRange" : 10
+					}
+				}
+			],
+			"damageTakenActions" : [
+				{
+					"name" : "action-charge",
+					"cooldown" : 1.0,
+					"parameters" : {
+						"maximumRange" : 15,
+						"windupState" : "chargewindup",
+						"windupTime" : 0.3,
+
+						"chargeTime" : 0.4,
+						"chargeSpeed" : 50,
+						"chargeControlForce" : 1000,
+						"chargeState" : "charge",
+						"wallCrashSound" : "",
+						"wallCrashEmitter" : "",
+
+						"winddownTime" : 0.05,
+						"winddownStopForce" : 1200,
+						"winddownState" : "chargewinddown"
+					}
+				}
+			],
+			"concurrentActions" : [
+				{
+					"name" : "action-spawncompanions",
+					"parameters" : {
+						"maxCount" : 3,
+						"spawnCooldown" : 5.0,
+						"monsterType" : "firetop",
+						"state" : "roar"
+					}
+				}
+			],
+			"wanderActions" : [
+				{
+					"name" : "wander-walk",
+					"cooldown" : 6.0,
+					"parameters" : {
+						"wanderTime" : [5, 15]
+					}
+				}
+			],
+			"deathActions" : [
+				{
+					"name" : "action-projectile",
+					"parameters" : {
+						"projectileCount" : 1,
+						"projectileType" : "magmadeath",
+						"projectileParameters" : {},
+						"power" : 0,
+						"aimDirection" : [0, -1],
+						"inaccuracy" : 0,
+						"fireOffset" : [0, 1]
+					}
+				}
+			]
+		},
+
+		"damageParts" : {
+			"body" : {
+				"damage" : 13,
+
+				"teamType" : "enemy",
+				"damageSourceKind" : "slash",
+				"knockback" : 20,
+				"statusEffects" : [ ]
+			}
+		},
+
+		"touchDamage" : {
+			"poly" : [ [1.75, 2.55], [2.25, 2.05],	[2.75, -3.55], [2.25, -3.95],	[-2.25, -3.95], [-2.75, -3.55],	[-2.25, 2.05], [-1.75, 2.55] ],
+			"damage" : 25,
+
+			"teamType" : "enemy",
+			"damageSourceKind" : "hellfire",
+			"knockback" : 20,
+			"statusEffects" : [ "burning" ]
+		},
+
+		"metaBoundBox" : [-4, -4, 4, 4],
+		"scale" : 2.0,
+
+		"movementSettings" : {
+			"collisionPoly" : [ [1.75, 2.55], [2.25, 2.05],	[2.75, -3.55], [2.25, -3.95],	[-2.25, -3.95], [-2.75, -3.55],	[-2.25, 2.05], [-1.75, 2.55] ],
+
+			"mass" : 2.5,
+			"walkSpeed" : 8,
+			"runSpeed" : 9,
+
+			"airFriction" : 0,
+
+			"airJumpProfile" : {
+				"jumpSpeed" : 35.0,
+				"jumpInitialPercentage" : 1.0,
+				"jumpHoldTime" : 0.0
+			}
+		},
+
+		"bodyMaterialKind" : "organic",
+
+		"knockoutTime" : 0.3,
+		"knockoutAnimationStates" : {
+			"damage" : "stunned"
+		},
+		"deathParticles" : "deathPoof",
+		"knockoutEffect" : "",
+
+		"statusSettings" : {
+			"statusProperties" : {
+				"targetMaterialKind" : "organic"
+			},
+
+			"appliesEnvironmentStatusEffects" : false,
+			"appliesWeatherStatusEffects" : true,
+			"minimumLiquidStatusEffectPercentage" : 0.1,
+
+			"primaryScriptSources" : [
+				"/stats/monster_primary.lua"
+			],
+			"primaryScriptDelta" : 5,
+
+			"stats" : {
+				"knockbackStunTime" : {
+					"baseValue" : 0.25
+				},
+				"knockbackThreshold" : {
+					"baseValue" : 9
+				},
+				"maxHealth" : {
+					"baseValue" : 4220
+				},
+				"protection" : {
+					"baseValue" : 40
+				},
+				"lavaImmunity" : {
+					"baseValue" : 1.0
+				},
+				"ffextremeheatImmunity" : {
+					"baseValue" : 1.0
+				},
+				"biomeheatImmunity" : {
+					"baseValue" : 1.0
+				},
+				"fireStatusImmunity" : {
+					"baseValue" : 1.0
+				},
+				"powerMultiplier" : {
+					"baseValue" : 1.45
+				},
+				"poisonResistance" : { "baseValue" : 0.99 },
+				"fireResistance" : { "baseValue" : 1 },
+				"iceResistance" : { "baseValue" : -0.4 },
+				"electricResistance" : { "baseValue" : 0.8 },
+				"physicalResistance" : { "baseValue" : 0.8 },
+				"shadowResistance" : { "baseValue" : 0.6 },
+				"cosmicResistance" : { "baseValue" : 0.6 },
+				"radioactiveResistance" : { "baseValue" : 0.8 },
+				"captureImmunity" : {
+					"baseValue" : 1
+				}
+			},
+
+			"resources" : {
+				"stunned" : {
+					"deltaValue" : -1.0,
+					"initialValue" : 0.0
+				},
+				"health" : {
+					"maxStat" : "maxHealth",
+					"deltaStat" : "healthRegen",
+					"defaultPercentage" : 100
+				}
+			}
+		},
+
+		"mouthOffset" : [0, 0],
+		"feetOffset" : [0, -8],
+		"capturable" : false,
+		"captureHealthFraction" : 0.5,
+		"nametagColor" : [64, 200, 255]//,
+		//"captureCollectables" : { "fu_monster" : "adultpoptopfiremadness" }
+	}
+}

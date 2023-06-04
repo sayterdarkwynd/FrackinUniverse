@@ -1,19 +1,35 @@
 {
-  "itemName" : "vanusflower",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "vanusflowericon.png",
-  "description" : "Grants increased protection from harm.",
-  "shortdescription" : "Vanus Flower",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-     "defense2"
-    ] ]
+	"itemName": "vanusflower",
+	"inventoryIcon": "vanusflowericon.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 10,
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+3 Defense^reset;: 3m",
+	"shortdescription": "Vanus Flower",
+	"effects": [
+		[{
+			"effect": "defense2",
+			"duration": 180
+		}]
+	],
+	"blockingEffects": [
+		"defense1",
+		"defense4",
+		"defense3",
+		"defense5",
+		"defense6",
+		"defenseboost10",
+		"defenseboost20",
+		"defenseboost30",
+		"defenseboost60",
+		"defenseboost90",
+		"defenseboost120",
+		"defenseboost180",
+		"defenseboost210",
+		"defenseboost240",
+		"defenseboost270",
+		"defenseboost300",
+		"defenseboostgreg"
+	]
 }

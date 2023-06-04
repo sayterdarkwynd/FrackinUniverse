@@ -1,0 +1,52 @@
+{
+  "itemName" : "xithricitedagger",
+  "price" : 404,
+  "maxStack" : 1,
+  "level" : 6,
+  "rarity" : "legendary",
+  "description" : "Stab them with cosmic power!",
+  "shortdescription" : "Cosmic Knife",
+  "tooltipKind" : "sword2",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","dagger","xithricite", "upgradeableWeapon"],
+  "inventoryIcon" : "xithricitedagger.png",
+  //"collectablesOnPickup" : { "fu_weapondagger" : "xithricitedagger" },
+  "animation" : "daggercomboglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "xithricitedagger.png",
+    "bladefullbright" : "xithricitedaggerfullbright.png"
+  },
+
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "swoosh" : { "properties" : {"offset" : [1, 2]}}
+      }
+    }
+  },
+
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "daggercombo",
+  "primaryAbility" : {
+    "fireTime" : 0.315,
+    "baseDps" : 8.14,
+    "damageConfig" : {
+      "knockback" : 10,
+       "statusEffects" : [ "defenseboostneg20" ],
+       "damageSourceKind" : "cosmicdagger"
+    }
+  },
+  "critChance" : 1,
+  "critBonus" : 4,
+  "stunChance" : 50,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

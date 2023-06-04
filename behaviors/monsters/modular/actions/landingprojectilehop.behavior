@@ -1,0 +1,575 @@
+{
+  "name": "action-landing-projectile-hop",
+  "description": null,
+  "scripts": [
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/actions/entity.lua",
+    "/scripts/behavior.lua",
+    "/scripts/actions/status.lua",
+    "/scripts/actions/projectiles.lua"
+  ],
+  "parameters": {
+    "verticalSpeed": 35,
+    "horizontalSpeed": 10,
+    "windupTime": 0.25,
+    "landTime": 0.25,
+    "hopSequence": 3,
+    "timeBetweenHops": 0.5,
+    "hopAwayFromWall": true,
+    "wallVerticalSpeed": 35,
+    "hopControlForce": 10,
+    "damageOnTouch": false,
+    "aimDirection": [0, -1],
+    "projectileType": "standardbullet",
+    "inaccuracy": 0,
+    "projectileCount": 1,
+    "fireOffset": [0, 0],
+    "projectileParameters": {}
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "setDirection",
+        "type": "action",
+        "name": "setDirection",
+        "parameters": {},
+        "output": {
+          "direction": "facingDirection"
+        }
+      },
+      {
+        "title": "repeater",
+        "type": "decorator",
+        "name": "repeater",
+        "parameters": {
+          "maxLoops": {"key": "<hopSequence>"},
+          "untilSuccess": {"value": false}
+        },
+        "child": {
+          "title": "sequence",
+          "type": "composite",
+          "name": "sequence",
+          "parameters": {},
+          "children": [
+            {
+              "title": "multiply",
+              "type": "action",
+              "name": "multiply",
+              "parameters": {
+                "factor": {"key": "<verticalSpeed>"},
+                "number": {"value": 1}
+              },
+              "output": {
+                "result": "ySpeed"
+              }
+            },
+            {
+              "title": "dynamic",
+              "type": "composite",
+              "name": "dynamic",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "onGround",
+                  "type": "action",
+                  "name": "onGround",
+                  "parameters": {}
+                },
+                {
+                  "title": "runner",
+                  "type": "action",
+                  "name": "runner",
+                  "parameters": {}
+                }
+              ]
+            },
+            {
+              "title": "sequence",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "succeeder",
+                  "type": "decorator",
+                  "name": "succeeder",
+                  "parameters": {},
+                  "child": {
+                    "title": "entityDirection",
+                    "type": "action",
+                    "name": "entityDirection",
+                    "parameters": {
+                      "entity": {"key": "self"},
+                      "target": {"key": "target"}
+                    },
+                    "output": {
+                      "direction": "facingDirection"
+                    }
+                  }
+                },
+                {
+                  "title": "succeeder",
+                  "type": "decorator",
+                  "name": "succeeder",
+                  "parameters": {},
+                  "child": {
+                    "title": "selector",
+                    "type": "composite",
+                    "name": "selector",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "canMove",
+                        "type": "action",
+                        "name": "canMove",
+                        "parameters": {
+                          "direction": {"key": "facingDirection"}
+                        }
+                      },
+                      {
+                        "title": "optional",
+                        "type": "decorator",
+                        "name": "optional",
+                        "parameters": {
+                          "shouldRun": {"key": "<hopAwayFromWall>"}
+                        },
+                        "child": {
+                          "title": "multiply",
+                          "type": "action",
+                          "name": "multiply",
+                          "parameters": {
+                            "factor": {"value": -1},
+                            "number": {"key": "facingDirection"}
+                          },
+                          "output": {
+                            "result": "facingDirection"
+                          }
+                        }
+                      },
+                      {
+                        "title": "multiply",
+                        "type": "action",
+                        "name": "multiply",
+                        "parameters": {
+                          "factor": {"key": "<wallVerticalSpeed>"},
+                          "number": {"value": 1}
+                        },
+                        "output": {
+                          "result": "ySpeed"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "title": "multiply",
+              "type": "action",
+              "name": "multiply",
+              "parameters": {
+                "factor": {"key": "<horizontalSpeed>"},
+                "number": {"key": "facingDirection"}
+              },
+              "output": {
+                "result": "xSpeed"
+              }
+            },
+            {
+              "title": "faceDirection",
+              "type": "action",
+              "name": "faceDirection",
+              "parameters": {
+                "direction": {"key": "facingDirection"}
+              }
+            },
+            {
+              "title": "setAnimationState",
+              "type": "action",
+              "name": "setAnimationState",
+              "parameters": {
+                "state": {"value": "hop"},
+                "type": {"value": "body"}
+              }
+            },
+            {
+              "title": "timer",
+              "type": "action",
+              "name": "timer",
+              "parameters": {
+                "time": {"value": "<windupTime>"}
+              }
+            },
+            {
+              "title": "setDamageOnTouch",
+              "type": "action",
+              "name": "setDamageOnTouch",
+              "parameters": {
+                "touchDamage": {"value": true}
+              }
+            },
+            {
+              "title": "parallel",
+              "type": "composite",
+              "name": "parallel",
+              "parameters": {
+                "fail": {"value": 1},
+                "success": {"value": -1}
+              },
+              "children": [
+                {
+                  "title": "controlFlag",
+                  "type": "action",
+                  "name": "controlFlag",
+                  "parameters": {
+                    "bool": {"value": true}
+                  },
+                  "output": {
+                    "bool": "attacking"
+                  }
+                },
+                {
+                  "title": "sequence",
+                  "type": "composite",
+                  "name": "sequence",
+                  "parameters": {},
+                  "children": [
+                    {
+                      "title": "sequence",
+                      "type": "composite",
+                      "name": "sequence",
+                      "parameters": {},
+                      "children": [
+                        {
+                          "title": "stat",
+                          "type": "action",
+                          "name": "stat",
+                          "parameters": {
+                            "statName": {"value": "jumpModifier"}
+                          },
+                          "output": {
+                            "value": "jumpModifier"
+                          }
+                        },
+                        {
+                          "title": "vecMultiply",
+                          "type": "action",
+                          "name": "vecMultiply",
+                          "parameters": {
+                            "first": {"value": ["xSpeed", "ySpeed"]},
+                            "number": {"key": "jumpModifier"}
+                          },
+                          "output": {
+                            "vector": "speedModifier"
+                          }
+                        },
+                        {
+                          "title": "vecAdd",
+                          "type": "action",
+                          "name": "vecAdd",
+                          "parameters": {
+                            "first": {"value": ["xSpeed", "ySpeed"]},
+                            "second": {"key": "speedModifier"}
+                          },
+                          "output": {
+                            "vector": "hopVelocity"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "title": "setVelocity",
+                      "type": "action",
+                      "name": "setVelocity",
+                      "parameters": {
+                        "velocity": {"key": "hopVelocity"}
+                      }
+                    },
+                    {
+                      "title": "timer",
+                      "type": "action",
+                      "name": "timer",
+                      "parameters": {
+                        "time": {"value": 0.25}
+                      }
+                    },
+                    {
+                      "title": "parallel",
+                      "type": "composite",
+                      "name": "parallel",
+                      "parameters": {
+                        "fail": {"value": -1},
+                        "success": {"value": -1}
+                      },
+                      "children": [
+                        {
+                          "title": "controlApproachXVelocity",
+                          "type": "action",
+                          "name": "controlApproachXVelocity",
+                          "parameters": {
+                            "force": {"key": "<hopControlForce>"},
+                            "velocity": {"key": "xSpeed"}
+                          }
+                        },
+                        {
+                          "title": "dynamic",
+                          "type": "composite",
+                          "name": "dynamic",
+                          "parameters": {},
+                          "children": [
+                            {
+                              "title": "failer",
+                              "type": "decorator",
+                              "name": "failer",
+                              "parameters": {},
+                              "child": {
+                                "title": "sequence",
+                                "type": "composite",
+                                "name": "sequence",
+                                "parameters": {},
+                                "children": [
+                                  {
+                                    "title": "entityDirection",
+                                    "type": "action",
+                                    "name": "entityDirection",
+                                    "parameters": {
+                                      "entity": {"key": "self"},
+                                      "target": {"key": "target"}
+                                    },
+                                    "output": {
+                                      "yDirection": "targetYDir"
+                                    }
+                                  },
+                                  {
+                                    "title": "inverter",
+                                    "type": "decorator",
+                                    "name": "inverter",
+                                    "parameters": {},
+                                    "child": {
+                                      "title": "greaterThan",
+                                      "type": "action",
+                                      "name": "greaterThan",
+                                      "parameters": {
+                                        "first": {"key": "targetYDir"},
+                                        "second": {"value": 0}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "title": "controlDown",
+                                    "type": "action",
+                                    "name": "controlDown",
+                                    "parameters": {}
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "title": "failer",
+                              "type": "decorator",
+                              "name": "failer",
+                              "parameters": {},
+                              "child": {
+                                "title": "sequence",
+                                "type": "composite",
+                                "name": "sequence",
+                                "parameters": {},
+                                "children": [
+                                  {
+                                    "title": "velocity",
+                                    "type": "action",
+                                    "name": "velocity",
+                                    "parameters": {},
+                                    "output": {
+                                      "x": "xVelocity",
+                                      "y": "yVelocity"
+                                    }
+                                  },
+                                  {
+                                    "title": "inverter",
+                                    "type": "decorator",
+                                    "name": "inverter",
+                                    "parameters": {},
+                                    "child": {
+                                      "title": "greaterThan",
+                                      "type": "action",
+                                      "name": "greaterThan",
+                                      "parameters": {
+                                        "first": {"key": "yVelocity"},
+                                        "second": {"value": 0}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "title": "setAnimationState",
+                                    "type": "action",
+                                    "name": "setAnimationState",
+                                    "parameters": {
+                                      "state": {"value": "fall"},
+                                      "type": {"value": "body"}
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "title": "onGround",
+                              "type": "action",
+                              "name": "onGround",
+                              "parameters": {}
+                            },
+                            {
+                              "title": "runner",
+                              "type": "action",
+                              "name": "runner",
+                              "parameters": {}
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "setAnimationState",
+              "type": "action",
+              "name": "setAnimationState",
+              "parameters": {
+                "state": {"value": "land"},
+                "type": {"value": "body"}
+              }
+            },
+            {
+              "title": "repeater",
+              "type": "decorator",
+              "name": "repeater",
+              "parameters": {
+                "maxLoops": {"key": "<projectileCount>"},
+                "untilSuccess": {"value": false}
+              },
+              "child": {
+                "title": "sequence",
+                "type": "composite",
+                "name": "sequence",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "multiply",
+                    "type": "action",
+                    "name": "multiply",
+                    "parameters": {
+                      "factor": {"value": -1},
+                      "number": {"key": "<inaccuracy>"}
+                    },
+                    "output": {
+                      "result": "minInaccuracy"
+                    }
+                  },
+                  {
+                    "title": "random",
+                    "type": "action",
+                    "name": "random",
+                    "parameters": {
+                      "max": {"key": "<inaccuracy>"},
+                      "min": {"key": "minInaccuracy"}
+                    },
+                    "output": {
+                      "number": "angleOffset"
+                    }
+                  },
+                  {
+                    "title": "vecRotate",
+                    "type": "action",
+                    "name": "vecRotate",
+                    "parameters": {
+                      "angle": {"key": "angleOffset"},
+                      "vector": {"key": "<aimDirection>"}
+                    },
+                    "output": {
+                      "vector": "aimVector"
+                    }
+                  },
+                  {
+                    "title": "vecMultiply",
+                    "type": "action",
+                    "name": "vecMultiply",
+                    "parameters": {
+                      "first": {"key": "<fireOffset>"},
+                      "second": {"value": ["facingDirection", 1]}
+                    },
+                    "output": {
+                      "vector": "fireOffset"
+                    }
+                  },
+                  {
+                    "title": "vecMultiply",
+                    "type": "action",
+                    "name": "vecMultiply",
+                    "parameters": {
+                      "first": {"key": "aimVector"},
+                      "second": {"value": ["facingDirection", 1]}
+                    },
+                    "output": {
+                      "vector": "aimVector"
+                    }
+                  },
+                  {
+                    "title": "spawnProjectile",
+                    "type": "action",
+                    "name": "spawnProjectile",
+                    "parameters": {
+                      "aimVector": {"key": "aimVector"},
+                      "angle": {"value": 0},
+                      "damageRepeatGroup": {"value": "monsterfire"},
+                      "offset": {"key": "fireOffset"},
+                      "position": {"key": "self"},
+                      "projectileConfig": {"key": "<projectileParameters>"},
+                      "projectileType": {"key": "<projectileType>"},
+                      "scalePower": {"value": true},
+                      "sourceEntity": {"key": "self"},
+                      "trackSource": {"value": false},
+                      "uniqueRepeatGroup": {"value": true}
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "title": "setDamageOnTouch",
+              "type": "action",
+              "name": "setDamageOnTouch",
+              "parameters": {
+                "touchDamage": {"key": "<damageOnTouch>"}
+              }
+            },
+            {
+              "title": "timer",
+              "type": "action",
+              "name": "timer",
+              "parameters": {
+                "time": {"value": "<landTime>"}
+              }
+            },
+            {
+              "title": "timer",
+              "type": "action",
+              "name": "timer",
+              "parameters": {
+                "time": {"value": "<timeBetweenHops>"}
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

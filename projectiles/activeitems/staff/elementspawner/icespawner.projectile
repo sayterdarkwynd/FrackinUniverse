@@ -1,0 +1,55 @@
+{
+  "projectileName" : "icespawner",
+  "piercing" : true,
+  "timeToLive" : 5,
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "speed" : 0,
+  "power" : 30,
+  "damageKind" : "nodamage",
+  "damagePoly" : [ ],
+  "orientationLocked" : true,
+  "bounces" : -1,
+  "scripts" : [ "/projectiles/activeitems/staff/elementspawner/elementspawner.lua" ],
+  "scriptDelta" : 1,
+  "movementSettings" : {
+    "collisionEnabled" : false
+  },
+
+  "control" : {},
+
+  "timedActions" : [
+    {
+      "delayTime" : 0.5,
+      "loopTime" : 0.3,
+      "loopTimeVariance" : 0.05,
+      "action" : "projectile",
+      "type" : "icestorm2",
+      "config" : {},
+      "inheritDamageFactor" : 0.1,
+      "direction" : [0, -1],
+      "offset" : [30, 30]
+    },
+    {
+      "delayTime" : 0.5,
+      "loopTime" : 0.5,
+      "loopTimeVariance" : 0.05,
+      "action" : "projectile",
+      "type" : "icestorm2",
+      "config" : {},
+      "inheritDamageFactor" : 0.1,
+      "direction" : [0, -1],
+      "offset" : [30, 30]
+    },
+    {
+      "delayTime" : 0.5,
+      "loopTime" : 0.7,
+      "loopTimeVariance" : 0.05,
+      "action" : "projectile",
+      "type" : "icestorm2",
+      "config" : {},
+      "inheritDamageFactor" : 0.1,
+      "direction" : [0, -1],
+      "offset" : [30, 30]
+    }
+  ]
+}

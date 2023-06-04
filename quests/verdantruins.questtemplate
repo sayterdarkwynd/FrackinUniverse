@@ -1,0 +1,33 @@
+{
+	"id" : "verdantruins.gearup",
+	"title" : "^green;The Verdant Ruins",
+	"text" : "The map shows me how to get to some ancient, overgrown ruins. It supposedly holds a wealth of Floran artifacts.",
+	"completionText" : "Well, looks like the ruins weren't as abandoned as I thought they would be. Did I manage to discover all of its secrets?",
+	"portraits" : {
+		"questStarted" : "questGiver",
+		"questComplete" : "questReceiver"
+	},
+	"moneyRange" : [0, 0],
+	"missionUnlockedCinema" : "/cinematics/coordinates.cinematic",
+	"rewards" : [
+		[
+			[ "vinewhip" ],
+			[ "verdantcarbine" ],
+			[ "verdantrailgun" ],
+			[ "bulbopaf", 1 ],
+			[ "greenfinger_trophy", 1 ],
+			[ "fuscienceresource", 500 ]
+		]
+	 ],
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"portraits" : {
+		"default" : "player"
+		},
+		"associatedMission" : "verdantruins",
+		"turnInDescription" : "Explore the Verdant Ruins.",
+		"requireTurnIn" : true
+	}
+}

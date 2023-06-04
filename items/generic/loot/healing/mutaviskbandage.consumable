@@ -4,19 +4,27 @@
   "price" : 255,
   "category" : "medicine",
   "inventoryIcon" : "mutaviskbandage.png",
-  "description" : "A bandage for healing ugly wounds. Using it restores sizeable health.",
-  "shortdescription" : "^#77acc3;Mutavisk Bandage^white;",
-    "effects" : [ [
-    "mutaviskheal"
-    ] ],
-  "emote" : "",
+  "description" : "^green;Heal ^white;85 ^gray;over ^white;1s^reset;",
+  "shortdescription" : "^#77acc3;Mutavisk Bandage^reset;",
+  "effects" : [ [ "mutaviskheal" ] ],
+  "emote" : "oooh",
   "emitters" : [ "bandageuse" ],
-  "blockingEffects" : [
+   "blockingEffects" : [
+    "heal_tier0",
+    "heal_tier1",
+    "heal_tier2",
+    "heal_tier4",
+    "heal_tier5",
+    "heal_tier6",
     "salveheal",
+    "heal_long",
+    "heal_long2",
+    "heal_long3",
+    "heal_long4",
     "bandageheal",
     "medkitheal",
     "mutaviskheal",
     "nanowrapheal",
-	"honeysilkheal"
+    "honeysilkheal"
   ]
 }

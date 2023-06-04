@@ -1,0 +1,20 @@
+{
+	"itemName" : "fupest",
+	"rarity" : "Common",
+	"price" : 10,
+	"category" : "preparedFood",
+	"inventoryIcon" : "fupest.png",
+	"description" : "A small mammalian pest. Edible, and nutritious. ^red;Type: Raw Meat^reset;",
+	"shortdescription" : "Pest",
+	"foodValue" : 5,
+	"tooltipKind" : "food",
+	"builder" : "/items/buildscripts/buildfood.lua",
+	"maxStack" : 99,
+	"itemAgingScripts" : ["/scripts/items/rotting.lua"],
+	"rottingMultiplier" : 0.5,
+	"learnBlueprintsOnPickup" : [ "fupestcooked" ],
+	"blockingEffects" : [ "wellfed" ],
+	"effects" : [ [
+		{ "effect" : "meat_raw" }
+	] ]
+}

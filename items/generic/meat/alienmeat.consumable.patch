@@ -1,0 +1,25 @@
+[
+  	[
+    	{ "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    	{ "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+  	],
+  	[
+	//	{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "meatchunk" },
+		{ "op": "replace", "path": "/maxStack", "value": 99 },
+		{
+			"op" : "replace",
+			"path" : "/effects",
+			"value" : [ [ { "effect" : "meat_raw" } ] ]
+		},
+		{
+			"op" : "replace",
+			"path" : "/foodValue",
+			"value" : 20
+		},
+		{
+			"op" : "replace",
+			"path" : "/description",
+			"value" : "A raw slab of weird, stringy alien meat. Maybe I should cook it. ^red;Type: Raw Meat^reset;"
+		}
+	]
+]

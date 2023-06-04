@@ -3,9 +3,9 @@
   "rarity" : "Common",
   "category" : "crafting",
   "price" : 3000,
-  "objectType" : "container", 
-  "description" : "Apply upgrades to any body armor. Requires 6u power. Use Upgrade Modules to upgrade pieces.",
-  "shortdescription" : "^cyan;Upgrade Station^white;",
+  "objectType" : "container",
+  "description" : "Does nothing at all.",
+  "shortdescription" : "^cyan;I'm broken. Why U Spawn?^reset;",
   "race" : "generic",
 
   "inventoryIcon" : "fu_upgradeicon.png",
@@ -20,21 +20,20 @@
       "anchors" : [ "bottom" ]
     }
   ],
-  
+
   "inputNodes" : [ [1, 1] ],
-  "isn_powerReciever" : true,
+  "isn_powerReceiver" : true,
   "isn_requiredPower" : 6,
   "isn_liquidCollector" : false,
 
-  "scripts" : [ 
-                "/scripts/vec2.lua", 
-                "/objects/power/fu_upgrade/fu_upgrade.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"
-   	      ],
-   	      
+  //"scripts" : [
+  //              "/scripts/vec2.lua",
+  //              "/objects/power/fu_upgrade/fu_upgrade.lua",
+  //              "/objects/power/isn_sharedpowerscripts.lua"
+  // 	      ],
+
   "scriptDelta" : 120,
-  
+
   "openSounds" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
   "closeSounds" : [ "/sfx/objects/apexcooldoor_close.ogg" ],
   "slotCount" : 10,

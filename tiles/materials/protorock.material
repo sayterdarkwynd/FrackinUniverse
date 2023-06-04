@@ -6,16 +6,18 @@
   "description" : "This is most...unusual.",
   "shortdescription" : "Elder Stone",
   "footstepSound" : "/sfx/blocks/footstep_stone3.ogg",
-  "health" : 50,
+  "health" : 35,
   "category": "materials",
-
-  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  //"collisionKind" : "none",    when activated, these properties allow people
+  //"blocksLiquidFlow" : true,    to pass, but liquids cant
+  //"renderTemplate" : "/tiles/fuclassicnopaint.config",
+  "renderTemplate" :  "/tiles/classicmaterialtemplate.config",
   "renderParameters" : {
     "texture" : "protorock.png",
     "variants" : 5,
-    "lightTransparent" : false,
+    "lightTransparent" : true,
     "occludesBelow" : true,
-    "multiColored" : false,
+    "multiColored" : true,
     "zLevel" : 0,
         "radiantLight" : [0, 32, 0]
   }

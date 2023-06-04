@@ -1,0 +1,46 @@
+{
+  "objectName" : "garikleaf",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Legendary",
+  "category" : "seed",
+  "description" : "Grants a large boost to ground speed.",
+  "shortdescription" : "Garik Leaf",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 30,
+//  "learnBlueprintsOnPickup" : [ "victorleaf" ],
+  "inventoryIcon" : "garikleaficon.png",
+  "largeImage" : "garikleaf.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "garikleaf" },
+  "orientations" : [
+    {
+      "dualImage" : "garikleaf.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+"stages" : [
+    {
+      "alts" : 3,
+      "duration" : [320, 660]
+    },
+    {
+      "alts" : 3,
+      "duration" : [320, 660]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "garikleaf",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125
+  }

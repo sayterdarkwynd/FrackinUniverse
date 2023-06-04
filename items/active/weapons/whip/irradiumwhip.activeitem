@@ -1,0 +1,59 @@
+{
+  "itemName" : "irradiumwhip",
+  "price" : 800,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A whip coated in irradium. Rad.
+^cyan;Inflicts Radiation Burn^reset;",
+  "shortdescription" : "Irradium Whip",
+  "tooltipKind" : "sword2",
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","whip","irradium","upgradeableWeapon","radioactive"],
+
+  "inventoryIcon" : "irradiumwhip.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "irradiumwhip.png",
+  "weaponFullbright" : "irradiumwhipfullbright.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : { "particles" : [ ]}},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/whip_swing1.ogg", "/sfx/melee/whip_swing2.ogg", "/sfx/melee/whip_swing3.ogg" ],
+      "crack" : [ "/sfx/melee/whip_impact1.ogg", "/sfx/melee/whip_impact2.ogg", "/sfx/melee/whip_impact3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [1.3, 0],
+    "length" : [3, 11],
+    "segmentImage" : "/items/active/weapons/whip/irradiumwhiplink.png",
+    "endSegmentImage" : "/items/active/weapons/whip/irradiumwhipend.png",
+    "segmentSize" : 0.375,
+    "fullbright" : false
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 1.0,
+    "chainDps" : 1.0,
+    "crackDps" : 5.5,
+
+    "damageConfig" : {
+    "damageSourceKind" : "radioactive",
+      "statusEffects" : [ "radiationburn" ]
+    },
+
+    "projectileType" : "whipcrackrad"
+  },
+
+  "critChance" : 2,
+  "critBonus" : 8,
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}

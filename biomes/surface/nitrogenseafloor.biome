@@ -1,21 +1,21 @@
 {
   "name" : "nitrogenseafloor",
-  "friendlyName" : "Nitrogen Sea",
-  "airless" : true,
+  "friendlyName" : "Nitrogen Sea Floor",
   "breathable" : false,
-  
+
   "spawnProfile" : {
     "groups" : [
       {
         "select" : 7,
         "pool" : [
-          [ 1, "smallFishOcean1" ],
-          [ 1, "smallFishOcean2" ],
-          [ 1, "passiveLargeFish" ],
-          [ 1, "aggroLargeFish" ],
-          [ 1, "charfishcritter" ],
-          [ 1, "narfishcritter" ],
-          [ 1, "arcticfishcritter" ]
+          [ 0.1, "smallFishOcean1" ],
+          [ 0.1, "smallFishOcean2" ],
+          [ 0.1, "passiveLargeFish" ],
+          [ 0.1, "aggroLargeFish" ],
+          [ 0.1, "charfishcritter" ],
+          [ 0.1, "narfishcritter" ],
+          [ 0.1, "arcticfishcritter" ],
+          [ 0.1, "garflipp" ]
         ]
       }
     ],
@@ -28,24 +28,42 @@
             "biomecoldImmunity" : {
               "baseValue" : 1.0
             },
-            "nitrogenfreezeImmunity" : {
+            "liquidnitrogenImmunity" : {
               "baseValue" : 1.0
             }
           }
         }
       }
   },
-  
+
 
 
   "parallax" : "/parallax/surface/nitrogenseafloor.parallax",
 
   //"hueShiftOptions" : [-180, -135, -90, -45, 0, 45, 90, 135, 180],
      "hueShiftOptions" : [ 0 ],
-     
+
   "mainBlock" : "frozensand2",
   "subBlocks" : [ "frozenwater", "iceblock2", "frozendirt" ],
   "ores" : "surface",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/ocean_underwater.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/ocean_underwater.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/arctic-exploration1.ogg", "/music/arctic-exploration2.ogg", "/music/haiku.ogg", "/music/m54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/m54.ogg", "/music/nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
 
   "surfacePlaceables" : {
     "grassMod" : [ "icegrass2" ],
@@ -60,7 +78,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
                [0.35, "wildkamaranpodsplant" ],
                [0.35, "wildcoralcreepseed" ],
                [0.35, "wildreefpodseed" ]
@@ -224,9 +242,18 @@
         },
         {
           "mode" : "floor",
-          "priority" : 1.0,
+          "priority" : 0.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "iceChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -240,7 +267,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -254,6 +281,15 @@
           "type" : "microdungeon",
           "microdungeons" : [ "terrainfeatures", "rockclimb","rocktunnel",  "blockpile", "spikes", "flats" ]
         },
+      {
+        "mode" : "floor",
+        "priority" : 1,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "oceanmicrodungeons" ]
+      },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -278,13 +314,18 @@
           ]
         },
         {
-          "mode" : "ceiling",
-          "priority" : 2.0,
+          "mode" : "floor",
+          "priority" : 1.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:scatteredSmall",
 
-          "type" : "grass",
-          "grasses" : [ "ceilingice", "ceilingthinice", "ceilingiceballs", "ceilingsnow" ]
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "geometricshard1" ], [0.35, "geometricshard2" ], [0.35, "geometricshard3" ], [0.35, "geometricshard4" ], [0.35, "geometricshard5" ] ],
+              "parameters" : { }
+            }
+          ]
         },
         {
           "mode" : "floor",
@@ -295,7 +336,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "icestalk" ],
               [0.35, "iceball_rock" ],
               [0.35, "icebloom" ],

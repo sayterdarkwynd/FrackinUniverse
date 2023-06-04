@@ -1,0 +1,59 @@
+{
+  "itemName" : "densiniumwhip",
+  "price" : 1500,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Incredibly dense, but ultra flexible. A shockingly good time.
+^cyan;Electrifies foes^reset;",
+  "shortdescription" : "Densinium Whip",
+  "tooltipKind" : "sword2",
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","whip","upgradeableWeapon","densinium","energy"],
+
+  "inventoryIcon" : "densiniumwhip.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "densiniumwhip.png",
+	"weaponFullbright" : "densiniumwhipfullbright.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : { "particles" : [ ]}},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/energywhip_swing1.ogg", "/sfx/melee/energywhip_swing2.ogg", "/sfx/melee/energywhip_swing3.ogg" ],
+      "crack" : [ "/sfx/melee/energywhip_impact1.ogg", "/sfx/melee/energywhip_impact2.ogg", "/sfx/melee/energywhip_impact3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [0.625, 0],
+    "length" : [3, 13],
+    "segmentImage" : "/items/active/weapons/whip/densiniumwhiplink.png",
+    "endSegmentImage" : "/items/active/weapons/whip/densiniumwhipend.png",
+    "segmentSize" : 0.375,
+    "fullbright" : true
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "electric",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 0.9,
+    "chainDps" : 1.5,
+    "crackDps" : 6.5,
+
+    "damageConfig" : {
+      "damageSourceKind" : "electriclash",
+      "statusEffects" : [ "electrified" ]
+    },
+
+    "projectileType" : "whipcrackelectric"
+  },
+
+  "critChance" : 1.25,
+  "critBonus" : 10,
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}

@@ -1,0 +1,34 @@
+{
+  "objectName" : "fatalcircuitdroid",
+  "rarity" : "uncommon",
+  "description" : "Pretty great, really. You're so smart!",
+  "shortdescription" : "Robot Guard",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 1850,
+  "printable" : false,
+
+  "inventoryIcon" : "fatalcircuitdroidicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fatalcircuitdroid.png:<color>",
+
+      "imagePosition" : [-25, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaces" : [  [0, 0], [-1, 0], [0, 1], [-1, 1]],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "botspawner" : {
+      "type" : "fatalcircuit",
+	  "monsterImage":"/monsters/walker/fatalcircuit/fatalcircuit.png:idle.1?"
+  },
+
+  "scripts" : [
+    "/spawners/fubotspawner.lua"
+  ],
+  "scriptDelta" : 5
+}

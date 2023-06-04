@@ -1,0 +1,32 @@
+{
+	"id": "kevin_feedkhe",
+	"prerequisites": ["create_clothingfabricator4", "precursor_unlock", "shoggoth_defeat", "khecoinbreadcrumb", "khecrystalbreadcrumb"],
+	"title": "Feed Khe.",
+	"text": "Minion, I have an ^red;extremely important^reset; task for you: my pet cat is starving and needs food. Only the finest sustenance will do, so I need you to feed her one ^red;Neutron Bomb^reset;.",
+	"completionText": "...pet? Well...that's awkward and completely wrong. Won't turn down good food, though. Don't tell anyone about him saying that...and take this blueprint. It's not 'useful', but it was certainly fun to design.",
+	"moneyRange": [1, 2],
+	"rewards": [],
+	"speaker": "questGiver",
+
+	"updateDelta": 10,
+	"script": "/quests/scripts/main.lua",
+	"scriptConfig": {
+		"giveBlueprints": ["weaponcompressor"],
+
+		"portraits": {
+			"questStarted": "questGiver",
+			"questComplete": "questReceiver"
+		},
+
+		"requireTurnIn": true,
+
+		"turnInDescription": "Bring ^cyan;Khe^reset; 1 ^orange;Neutron Bomb^reset;",
+
+		"conditions": [{
+			"type": "gatherItem",
+			"itemName": "neutronbomb",
+			"count": 1,
+			"consume": true
+		}]
+	}
+}

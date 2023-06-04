@@ -1,54 +1,65 @@
 {
-  "objectName" : "elderbookstand",
-  "colonyTags" : ["outpost","storage","commerce"],
-  "rarity" : "Common",
-  "objectType" : "container",
-  "tooltipKind" : "container",
-  "description" : "I should totally read this monstrous glowing book. It's perfectly safe!",
-  "shortdescription" : "Ancient Malign Text",
-  "race" : "generic",
-  "category" : "storage",
-  "price" : 1120,
-  "lightColor" : [16, 23, 26],
+	"objectName": "elderbookstand",
+	"colonyTags": ["madness", "insanity", "elder"],
+	"rarity": "legendary",
+	"category": "crafting",
 
-  "inventoryIcon" : "elderbookstandicon.png",
-  "orientations" : [
-    {
-    
-      "imageLayers" : [ { "image" : "elderbookstandlit.png:<color>", "fullbright" : true }, { "image" : "elderbookstand.png:<color>" } ],
-      "flipImages" : true,
-      "direction" : "left",
-      "lightPosition" : [-1, 1],
+	"interactAction": "OpenCraftingInterface",
+	"interactData": {
+		"config": "/interface/windowconfig/tomedais.config",
+		"filter": ["tomedais", "tomedais1", "tomedais2", "tomedais3"],
+		"paneLayoutOverride": {
+			"windowtitle": {
+				"title": "Antediluvian Texts"
+			}
+		}
+	},
+"printable" : false,
+	"description": "Compel entities beyond understanding to gift you with knowledge.",
+	"shortdescription": "Antediluvian Texts",
 
-      "imagePosition" : [-16, 0],
-      "frames" : 1,
-      "animationCycle" : 1.0,
+	"price": 5120,
+	"lightColor": [16, 23, 26],
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ],
-      "collision" : "platform"
-    },
-    {
-    
-      "imageLayers" : [ { "image" : "elderbookstandlit.png:<color>", "fullbright" : true }, { "image" : "elderbookstand.png:<color>" } ],
-      "direction" : "right",
-      "lightPosition" : [0, 1],
+	"inventoryIcon": "elderbookstandicon.png",
+	"orientations": [{
 
-      "imagePosition" : [-16, 0],
-      "frames" : 1,
-      "animationCycle" : 1.0,
+			"imageLayers": [{
+				"image": "elderbookstandlit.png:<color>",
+				"fullbright": true
+			}, {
+				"image": "elderbookstand.png:<color>"
+			}],
+			"flipImages": true,
+			"direction": "left",
+			"lightPosition": [-1, 1],
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ],
-      "collision" : "platform"
-    }
-  ],
+			"imagePosition": [-16, 0],
+			"frames": 1,
+			"animationCycle": 1.0,
 
-  "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
-  "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
-  "slotCount" : 24,
-  "uiConfig" : "/interface/chests/chest<slots>.config",
-  "frameCooldown" : 5,
-  "autoCloseCooldown" : 3600
+			"spaceScan": 0.1,
+			"anchors": ["bottom"],
+			"collision": "platform"
+		},
+		{
 
+			"imageLayers": [{
+				"image": "elderbookstandlit.png:<color>",
+				"fullbright": true
+			}, {
+				"image": "elderbookstand.png:<color>"
+			}],
+			"direction": "right",
+			"lightPosition": [0, 1],
+
+			"imagePosition": [-16, 0],
+			"frames": 1,
+			"animationCycle": 1.0,
+
+			"spaceScan": 0.1,
+			"anchors": ["bottom"],
+			"collision": "platform"
+		}
+	]
 }

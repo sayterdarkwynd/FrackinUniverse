@@ -1,18 +1,19 @@
 {
   "itemName" : "corruptspear",
-  "price" : 0,
+  "price" : 100,
   "level" : 5,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Laced with the entropic force of Corruption.",
+  "description" : "Laced with the entropic force of Corruption.
+^cyan;Hunting weapon^reset;",
   "shortdescription" : "Corrupted Spear",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "spear",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear"],
+  "itemTags" : ["weapon","melee","spear","shadow", "upgradeableWeapon"],
 
   "inventoryIcon" : "corruptspear.png",
-
+  //"collectablesOnPickup" : { "fu_weaponspear" : "corruptspear" },
   "animation" : "/items/active/weapons/melee/spear/spear.animation",
   "animationParts" : {
     "handle" : "",
@@ -37,61 +38,16 @@
     "fireTime" : 1.0,
     "baseDps" : 11.0,
     "damageConfig" : {
-      "damageSourceKind" : "spear",
+      "damageSourceKind" : "poisonbow",
       "statusEffects" : [ ],
-      "knockbackMode" : "aim",
-      "knockback" : 10,
-      "timeoutGroup" : "primary"
-    },
-    "holdDamageMultiplier" : 0.1,
-    "holdDamageConfig" : {
-      "timeoutGroup" : "hold",
-      "timeout" : 0.5
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : 0,
-        "twoHanded" : false,
-        "weaponOffset" : [0, 0.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "windup" : {
-        "hold" : true,
-        "duration" : 0.55,
-        "armRotation" : -110,
-        "weaponRotation" : 20,
-        "twoHanded" : true,
-        "weaponOffset" : [0, 0.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "fire" : {
-        "duration" : 0.3,
-        "armRotation" : -20,
-        "weaponRotation" : -70,
-        "twoHanded" : true,
-        "weaponOffset" : [0.3, 2.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "hold" : {
-        "armRotation" : -30,
-        "weaponRotation" : -60,
-        "twoHanded" : true,
-        "weaponOffset" : [-0.3, 2.0],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      }
+      "knockback" : 20
     }
   },
-  "altAbilityType" : "parry",
+  "altAbilityType" : "elementalspin",
   "altAbility" : { },
-  
+
+  "critChance" : 1,
+  "critBonus" : 8,
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

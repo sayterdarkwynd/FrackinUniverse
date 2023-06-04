@@ -1,15 +1,15 @@
 {
   "itemName" : "elderwhip",
-  "price" : 1000,
-  "level" : 3,
+  "price" : 2500,
+  "level" : 6,
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Made from a Lasher plant.",
-  "shortdescription" : "Lasher Whip",
-  "tooltipKind" : "sword",
+  "description" : "Some sort of tentacle thingy.",
+  "shortdescription" : "Elder Whip",
+  "tooltipKind" : "sword2",
   "category" : "whip",
   "twoHanded" : false,
-  "itemTags" : ["weapon"],
+  "itemTags" : ["weapon", "whip", "upgradeableWeapon","elder","shadow"],
 
   "inventoryIcon" : "elderwhip.png:idle",
   "animation" : "whip.animation",
@@ -38,7 +38,7 @@
 
   "scripts" : [ "whip.lua" ],
 
-  "elementalType" : "electric",
+  "elementalType" : "shadow",
 
   "primaryAbilityType" : "whipcrack",
   "primaryAbility" : {
@@ -47,11 +47,13 @@
     "crackDps" : 5.5,
 
     "damageConfig" : {
-      "damageSourceKind" : "poisonlash"
+      "damageSourceKind" : "shadowlash"
     },
 
     "projectileType" : "elderflamethrowerflameff"
   },
 
+  "critChance" : 3,
+  "critBonus" : 8,
   "builder" : "/items/buildscripts/buildwhip.lua"
 }

@@ -1,0 +1,51 @@
+{
+  "itemName" : "futrollkinglegs",
+  "inventoryIcon" : "icons.png:pants",
+  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; ^cyan;Trolling^reset;: 13%
+^yellow;^reset; ^cyan;Dual Trollfist Striker^reset;: Damage x^green;2^reset;, ^cyan;Ghostly Miasma^reset;
+^yellow;^reset; +^green;1^reset;% Health Regen (x^green;10^reset; if not hit within 10s, but ^red;Drains Food^reset;)
+^yellow;^reset; ^cyan;Erchius Ghost Protection^reset;
+^yellow;^reset; ^red;Vulnerable to Insanity^reset;, -^red;100^reset;% Charisma",
+
+  "shortdescription" : "Troll King Legs",
+  "category" : "legarmour",
+  "tooltipKind" : "armornew2",
+  "maleFrames" : "pants.png",
+  "femaleFrames" : "pants.png",
+  "itemTags" : [ "upgradeableWeapon", "defensive", "melee", "specialist" ],
+ "level" : 1,
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.08
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.28
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 1
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 3
+    }
+  ],
+  "statusEffects" : [
+    "trollkingsetbonus",
+    {
+      "stat" : "fu_trollkingset_legs",
+      "amount" : 1
+    }
+  ],
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
+}

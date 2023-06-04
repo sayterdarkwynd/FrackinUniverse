@@ -1,19 +1,17 @@
 {
-  "itemName" : "fuspongeweed",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "spongeweed.png",
-  "description" : "Completely absorbs poison for quite a while.",
-  "shortdescription" : "Spongeweed Slice",
-    "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,  
-  "effects" : [ [
-      "poisonimmunityspongeweed"
-    ] ]
+	"itemName": "fuspongeweed",
+	"inventoryIcon": "spongeweed.png",
+	"category": "food",
+	"rarity": "uncommon",
+	"price": 10,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immune^reset;: Poison: 2m",
+	"shortdescription": "Spongeweed Slice",
+	"effects": [
+		[{
+			"effect": "poisonimmunityspongeweed",
+			"duration": 120
+		}]
+	]
 }

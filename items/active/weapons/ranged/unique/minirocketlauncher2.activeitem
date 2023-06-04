@@ -3,13 +3,15 @@
   "price" : 160,
   "inventoryIcon" : "minirocketlauncher2.png",
   "maxStack" : 1,
-  "rarity" : "rare",
-    "description" : "Fires adorable little missiles.",
+  "rarity" : "legendary",
+  "description" : "Fires a ton of missiles at the enemy
+^yellow;Homing projectiles^reset;",
     "shortdescription" : "Micro-Rocket Cannon",
-  "level" : 4,
-  "tooltipKind" : "gun",
+  "level" : 6,
+  "category" : "rocketLauncher",
+  "tooltipKind" : "gun2",
   "weaponType" : "Rifle",
-  "itemTags" : ["weapon","ranged","rocketlauncher"],
+  "itemTags" : ["weapon","ranged","rocketlauncher", "upgradeableWeapon","explosive"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -21,13 +23,13 @@
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/gun/rocket_fire1.ogg" ]
+      "fire" : [ "/sfx/weapons/rocketburst.ogg" ]
     }
   },
 
-  "baseOffset" : [1.0, 0.2],
+  "baseOffset" : [-0.2, 0.62],
   "muzzleOffset" : [1.645, 0.125],
-  
+
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "physical",
@@ -35,18 +37,19 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.3,
-    "baseDps" : 6.2,
-    "energyUsage" : 26.0,
-    "inaccuracy" : 0.01,
+    "fireTime" : 0.15,
+    "baseDps" : 6.6,
+    "energyUsage" : 55.5,
+
+    "inaccuracy" : 0.1,
 
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "rocketswarm",
-    "projectileParameters" : { 
-      "speed" : 50,
-      "knockback" : 4
+    "projectileType" : "rocketswarmlite",
+    "projectileParameters" : {
+      "speed" : 47,
+      "knockback" : 15
     },
   "stances" : {
     "idle" : {
@@ -86,8 +89,17 @@
         ]
       }
     },
-    
-  "altAbilityType" : "homingrocket",
+
+  "critChance" : 2,
+  "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : 22,
+  "reloadTime" : 1.5,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300,
+  "altAbilityType" : "atomguidedrocket",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

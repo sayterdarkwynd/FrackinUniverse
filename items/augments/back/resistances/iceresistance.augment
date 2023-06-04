@@ -1,0 +1,22 @@
+{
+  "itemName" : "iceresistanceaugment",
+  "price" : 500,
+  "rarity" : "Uncommon",
+  "category" : "eppAugment",
+  "inventoryIcon" : "iceresist.png",
+  "description" : "An EPP module that resists the Ice element.\n^green;+25% Ice Resist.\n^cyan;Immune: Freeze, Slush, Ice Slip, Snow Slow^reset;.",
+  "shortdescription" : "Ice Barrier",
+  "tooltipKind" : "eppaugment",
+  "tooltipFields" : {"instructionLabel":""},
+  "augment" : {
+    "type" : "back",
+    "name" : "iceresistanceaugment",
+    "displayName" : "Ice Barrier",
+    "displayIcon" : "/items/augments/back/resistances/iceresist.png",
+    "effects" : [ "iceblock","iceslipimmunity","slushslowimmunity","snowslowimmunity" ]
+  },
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/scripts/augments/augment.lua" ]
+}

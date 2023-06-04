@@ -1,0 +1,57 @@
+{
+  "objectName" : "tethydeslidingdoor",
+  "colonyTags" : ["skath", "door"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 95,
+  "description" : "A sleek sliding door, made completely out of Tethyde.",
+  "shortdescription" : "Skath Sliding Door",
+  "race" : "human",
+
+  "apexDescription" : "A sliding door. Boring, but functional.",
+  "avianDescription" : "A sliding door, common among spacefaring races.",
+  "floranDescription" : "Ssneaky sssliding door.",
+  "glitchDescription" : "Appreciative. There is something fascinating about the movement of these doors.",
+  "humanDescription" : "I ran at a door like this once.",
+  "hylotlDescription" : "A sleek sliding door.",
+  "novakidDescription" : "I always liked these types of sliding doors.",
+  "skathDescription" : "A sliding door made by my kind. These are commonly found in civil sectors.",
+
+
+  "inventoryIcon" : "tethydeslidingdooricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "tethydeslidingdoor.png:closed",
+      "imagePosition" : [0, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/bunkerslidingdoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/bunkerslidingdoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "tethydeslidingdoor.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

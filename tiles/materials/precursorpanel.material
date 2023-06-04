@@ -1,0 +1,35 @@
+{
+  "materialId" : 6665,
+  "materialName" : "precursorpanel",
+  "particleColor" : [60, 60, 60, 255],
+  "itemDrop" : "precursorpanel",
+  "description" : "An ancient construct of unknown origin",
+  "shortdescription" : "Precursor Panel",
+  "footstepSound" : "/sfx/blocks/footstep_girder.ogg",
+  "health" : 32,
+  "category": "materials",
+
+  "renderTemplate" : "/tiles/fuclassicnopaint.config",
+  "renderParameters" : {
+    "texture" : "precursorpanel.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : false,
+    "multiColored" : true,
+    "zLevel" : 0
+  },
+
+  "liquidInteractions" : [
+    {
+      "liquidId" : 2,
+      "consumeLiquid" : 0.55,
+      "transformMaterialId" : 37
+    },
+    {
+      "liquidId" : 52,
+      "consumeLiquid" : 0.55,
+      "transformMaterialId" : 37
+    }
+  ]
+
+}

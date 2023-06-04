@@ -16,7 +16,7 @@ function attackState.update(dt, stateData)
   if not self.target then return true end
 
   stateData.timer = stateData.timer - dt
-  
+
   local toTarget = entity.distanceToEntity(self.target)
 
   if stateData.stage == "approach" then
@@ -48,7 +48,7 @@ function attackState.update(dt, stateData)
       move(stateData.chargeDirection, false)
     end
   end
-  
+
   return stateData.timer <= 0
 end
 

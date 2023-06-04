@@ -1,0 +1,24 @@
+{
+  "projectileName" : "bioblast4a",
+  "image" : "bioblast3.png",
+  "animationCycle" : 0.8,
+  "level" : 6,
+  "frameNumber" : 8,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [0,105,0],
+  "power" : 4,
+  "speed" : 45,
+  "timeToLive" : 0.8,
+  "damagePoly" : [ [-41, 0], [-41, -10], [0, -10], [41, -10], [41, 0], [41, 10], [0, 10], [-41, 10] ],
+  "damageKind" : "poison",
+  "physics" : "bullet",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bioboom/bioboom.config"
+    }
+  ],
+  "emitters" : [ "corrosive" ],
+  "statusEffects" : [ "weakpoison" ]
+}

@@ -1,0 +1,56 @@
+{
+  "type" : "wrexornar",
+  "baseType" : "hostilefuhard",
+
+  "levelVariance" : [1, 2],
+
+  "dropPools" : [ "apexsupermutant" ],
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "leapWindup" : 0.25,
+      "rangedAimTime" : 0.2,
+      "rangedWindupTime" : 0.1,
+      "rangedMinFireTime": 0.1,
+      "rangedMaxFireTime": 2
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "fubonearmor3head" } ],
+            "chest" : [ { "name" : "fubonearmor3chest" } ],
+            "legs" : [ { "name" : "fubonearmor3legs" } ],
+            "primary" : [
+              "stormwarden"
+            ],
+            "alt" : [
+             "elderrepeater"
+            ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 220.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 180.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.85
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      }
+    }
+  }
+}

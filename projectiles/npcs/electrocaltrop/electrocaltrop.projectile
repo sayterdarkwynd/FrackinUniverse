@@ -1,0 +1,44 @@
+{
+  "projectileName" : "electrocaltrop",
+  "physics" : "laser",
+  "timeToLive" : 5,
+  "image" : "electrocaltrop.png",
+  "animationCycle" : 0.3,
+  "lightColor" : [70, 30, 110],
+  "frameNumber" : 4,
+  "periodicActions" : [ ],
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/electricimpact2.config"
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
+    }
+  ],
+  "speed" : 50,
+  "power" : 8,
+  "piercing" : true,
+  "damageKind" : "electric",
+  "damagePoly" : [ [0, -8], [16, -8], [16, 8], [0, 8] ],
+  "statusEffects" : [
+              {"effect" : "levitation",
+               "duration" : 0.75},
+              {"effect" : "lowgrav",
+               "duration" : 1.5}
+             ],
+
+  "fullbright" : true,
+  "emitters" : [ "electricplasma" ],
+
+  "bounces" : 0,
+
+  "scripts" : [ "/projectiles/activeitems/staff/elementbouncer/bouncespikes.lua" ],
+
+  "spikeProjectile" : "electricstickyspikes",
+  "spikeDamageFactor" : 1
+
+}

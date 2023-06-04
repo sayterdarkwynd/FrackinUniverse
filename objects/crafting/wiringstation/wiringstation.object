@@ -1,0 +1,59 @@
+{
+  "objectName" : "wiringstation",
+  "colonyTags" : ["crafting","electronic"],
+  "rarity" : "Rare",
+  "price" : 800,
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/wiringstation.config",
+    "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : " Wiring Station",
+        "subtitle" : " For everything to do with wiring",
+        "icon" : {
+          "file" : "/interface/crafting/wiringstation.png"
+        }
+      }
+    },
+    "filter" : [ "craftingwiring" ]
+  },
+  "printable" : false,
+  "description" : "Used to produce complex wiring components.",
+  "shortdescription" : "^orange;Wiring Station^reset;",
+  "race" : "generic",
+  "category" : "crafting",
+
+  "apexDescription" : "I can create equipment to use for wiring here.",
+  "avianDescription" : "It's a workstation for crafting equipment to use for wiring.",
+  "floranDescription" : "Floran can make equipment for wiring thingsss.",
+  "glitchDescription" : "Pleased. A workstation for creating wiring related equipment. Very handy.",
+  "humanDescription" : "Wiring related equipment can be crafted on this workstation. Neat!",
+  "hylotlDescription" : "For wiring tools and accessories, this is the go to workstation.",
+  "novakidDescription" : "A workstation for all things wirin' related.",
+
+  "inventoryIcon" : "wiringstationicon.png",
+  "orientations" : [
+    {"imageLayers" : [ { "image" : "wiringstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "wiringstationlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "frames" : 9,
+      "animationCycle" : 0.9,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]},
+
+    {"imageLayers" : [ { "image" : "wiringstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "wiringstationlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, 0],
+
+      "direction" : "right",
+
+      "frames" : 9,
+      "animationCycle" : 0.9,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]}
+  ]
+}

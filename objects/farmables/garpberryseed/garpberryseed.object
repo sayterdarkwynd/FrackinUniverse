@@ -3,19 +3,21 @@
     "colonyTags" : [ "nature" ],
   "rarity" : "Rare",
   "category" : "seed",
-  "description" : "A strange radioactive stalk.",
+  "description" : "A strange, toxic radioactive stalk.",
   "shortdescription" : "Garp Berry Plant",
   "objectType" : "farmable",
   "printable" : false,
   "price" : 11,
-  
+
   "lightColor" : [0, 66, 0],
-"learbBlueprintsOnPickup": [ "garpberryseed" ],
+//"learnBlueprintsOnPickup": [ "garpberryseed" ],
 "inventoryIcon" : "garpberryseedicon.png",
+"largeImage" : "garpberryseed.png:default.3.0",
+//"collectablesOnPickup" : { "fu_plant" : "garpberry" },
   "orientations" : [
     {
       "dualImage" : "garpberryseed.png:<color>.<stage>.<alt>",
-      "imagePosition" : [-8, 0],
+      "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
 
@@ -41,6 +43,16 @@
       "resetToStage" : 2
     }
   ],
+
+          "touchDamage" : {
+            "poly" : [ [0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0] ],
+            "damage" : 8,
+
+            "damageType" : "IgnoresDef",
+            "damageSourceKind" : "radioactive",
+            "statusEffects" : [ "radiationburn" ]
+          },
+
     "maxImmersion" : 0.4,
     "consumeSoilMoisture" : true
 }

@@ -1,0 +1,34 @@
+{
+  "itemName" : "greghead",
+  "rarity" : "rare",
+  "price" : 300,
+  "category" : "preparedFood",
+  "inventoryIcon" : "greghead.png",
+  "description" : "The severed head of a Greg\n^green;Heal ^white;20% ^green;HP ^gray;(^white;20s^gray;)\n^red;Drunk ^gray;(^white;1m^gray;)\n^blue;+^white;1 ^blue;Madness^reset; ^red;Type: Raw Meat^reset;",
+  "shortdescription" : "Greg Head",
+  "foodValue" : 20,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.9,
+  //"learnBlueprintsOnPickup" : [ "greggnog" ],
+  "effects" : [ [
+    "madnessgain",
+		{
+      "effect" : "regeneration2",
+      "duration" : 20
+		},
+		{
+      "effect" : "booze",
+      "duration" : 60
+    },
+	{ "effect" : "meat_raw" }
+  ] ],
+  "blockingEffects" : [
+    "wellfed","booze"
+  ]
+}
+
+
+

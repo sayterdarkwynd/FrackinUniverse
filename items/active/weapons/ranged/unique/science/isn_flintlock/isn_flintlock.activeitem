@@ -1,15 +1,15 @@
 {
   "itemName" : "isn_flintlock",
-  "price" : 500,
+  "price" : 120,
   "inventoryIcon" : "isn_flintlock.png",
     "maxStack" : 1,
-    "rarity" : "rare",
-  "description" : "An old-style sidearm with tons of stopping power.",
-  "shortdescription" : ".45 Revolver",
+    "rarity" : "common",
+  "description" : "Astounding stopping power.",
+  "shortdescription" : "Fellshot Revolver",
   "level" : 2,
-  "category" : "uniqueWeapon",
-  "itemTags" : ["weapon","ranged","flamethrower"],
-  "tooltipKind" : "gun",
+  "category" : "pistol",
+  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon"],
+  "tooltipKind" : "gun2",
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
@@ -17,14 +17,15 @@
     "middle" : "isn_flintlock.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
-  },      
+  },
   "animationCustom" : {
-    "sounds" : { "fire" : [ "/sfx/gun/revolver2.ogg" ] }  
+    "sounds" : { "fire" : [ "/sfx/gun/revolver2.ogg" ] }
   },
 
   "baseOffset" : [0.7, 0.34],
   "muzzleOffset" : [1.3, 0.325],
 
+  "radioMessagesOnPickup" : [ "ammoLoad" ],
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "physical",
@@ -33,15 +34,15 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.6,
-    "baseDps" : 6.6,
-    "energyUsage" : 35,
+    "baseDps" : 8.2,
+    "energyUsage" : 25,
     "fireType" : "auto",
-    "inaccuracy" : 0.03,
+    "inaccuracy" : 0.01,
     "projectileCount" : 1,
     "projectileType" : "bullet-2",
     "projectileParameters" : {
       "speed" : 75,
-      "knockback" : 4
+      "knockback" : 12
     },
     "stances" : {
       "idle" : {
@@ -72,6 +73,71 @@
       }
     }
   },
+  "critChance" : 2,
+  "critBonus" : 4,
+  "isAmmoBased" : 1,
+  "reloadTime" : 1.15,
+  "magazineSize" : 6,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters" : {
+    "shortdescription" : "^cyan;Deadeye^reset; ^yellow;^reset;",
+  "description" : "Revolver...evolved.
+^cyan;+1 projectile^reset;",
+  "animationParts" : {
+    "middle" : "isn_flintlock2.png"
+    },
+    "inventoryIcon" : [
+    { "image" : "isn_flintlock2.png:" }
+    ],
+    "critChance" : 2.5,
+    "critBonus" : 5,
+    "reloadTime" : 1.1,
+    "magazineSize" : 7,
+    "primaryAbility" : {
+	    "fireTime" : 0.55,
+	    "baseDps" : 8.6,
+	    "energyUsage" : 25,
+	    "inaccuracy" : 0.03,
+	    "fireType" : "auto",
+
+	    "projectileType" : "bullet-2",
+	    "projectileParameters" : {
+	      "speed" : 75,
+	      "knockback" : 15
+	    },
+	    "projectileCount" : 2
+    }
+  },
+  "upgradeParameters2" : {
+    "shortdescription" : "^cyan;Equalizer^reset; ^yellow;^reset;",
+  "description" : "Open many large holes in your foes.
+^cyan;+2 projectile^reset;",
+  "animationParts" : {
+    "middle" : "isn_flintlock3.png"
+    },
+    "inventoryIcon" : [
+    { "image" : "isn_flintlock3.png:" }
+    ],
+    "critChance" : 2.65,
+    "critBonus" : 6,
+    "reloadTime" : 1.0,
+    "magazineSize" : 8,
+    "primaryAbility" : {
+	    "fireTime" : 0.50,
+	    "baseDps" : 9,
+	    "energyUsage" : 25,
+	    "inaccuracy" : 0.03,
+	    "fireType" : "auto",
+
+	    "projectileType" : "bullet-2",
+	    "projectileParameters" : {
+	      "speed" : 75,
+	      "knockback" : 20
+	    },
+	    "projectileCount" : 3
+    }
+  }
+
 }

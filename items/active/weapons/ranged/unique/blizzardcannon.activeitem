@@ -1,0 +1,131 @@
+{
+  "itemName" : "blizzardcannon",
+  "price" : 1000,
+  "inventoryIcon" : "blizzardcannon.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Freeze enemies with cryogenic rockets!
+^cyan;Freeze enemies^reset;
+^#e43774;Area Clear^reset;",
+  "shortdescription" : "Blizzard Cannon",
+  "level" : 3,
+  "tooltipKind" : "gun2",
+  "category" : "rocketLauncher",
+  "itemTags" : ["weapon","ranged","rocketlauncher","upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "blizzardcannon.png",
+    "middleunlit" : "",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middleunlit" : {
+          "properties" : {
+            "centered" : true,
+            "image" : "<partImage><paletteSwaps>",
+            "offset" : [0.30, 0.385],
+            "transformationGroups" : ["weapon"],
+            "fullbright" : true,
+            "zLevel" : 1
+          }
+        }
+      }
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/gun/rocket2.ogg" ]
+    }
+  },
+
+
+  "baseOffset" : [0.30, 0.385],
+  "muzzleOffset" : [3, 0.15],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 1.25,
+    "baseDps" : 10,
+    "energyUsage" : 42,
+
+    "fireType" : "auto",
+    "projectileCount" : 1,
+    "projectileType" : "icemissile",
+    "inaccuracy" : 0,
+    "projectileParameters" : {
+      "statusEffects" : [ "freezefu" ],
+      "damageKind" : "ice",
+      "speed" : 50,
+      "knockback" : 15,
+	  "actionOnReap" : [
+	   {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/iceexplosion1/iceexplosion1.config"
+	    }
+	  ]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.25,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "critChance" : 3,
+  "critBonus" : 10,
+  "isAmmoBased" : 1,
+  "magazineSize" : 5,
+  "reloadTime" : 2,
+
+  "altAbilityType" : "swtjc_ewg_explosivespray",
+  "altAbility" : {
+    "projectileType" : "icemissile",
+    "projectileParameters" : { "speed" : 50},
+	  "isAmmoBased" : 1,
+	  "reloadTime" : 2
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

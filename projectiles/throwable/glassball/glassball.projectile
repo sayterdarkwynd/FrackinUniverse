@@ -1,0 +1,43 @@
+{
+  "projectileName" : "glassball",
+  "speed" : 11,
+  "physics" : "grenade",
+  "image" : "glassball.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "damageKind" : "snowball",
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "brokenglassslide",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.25,
+      "angleAdjust" : 35
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/objects/ancient_pot_break_small3.ogg" ]
+    },
+    {
+      "action" : "loop",
+      "count" : 4,
+      "body" : [
+            {
+              "action" : "particle",
+              "specification" : {
+                "type" : "animated",
+                "animation" : "/animations/dusttest/dusttest.animation",
+                "approach" : [0.5, 0.5],
+                "timeToLive" : 0.85,
+                "variance" : {
+                  "position" : [1.5, 1.5],
+                  "initialVelocity" : [1, 1],
+                  "rotation" : 180
+                }
+              }
+            }
+      ]
+    }
+  ],
+  "emitters" : [ "defaultwhite" ]
+}

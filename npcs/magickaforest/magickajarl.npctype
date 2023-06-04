@@ -1,0 +1,94 @@
+{
+  "type" : "magickajarl",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "challengeChestTreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Tae Glitch have sent a champion, I see.",
+			"I was gettin' tired anyways...",
+			"Tae heck with ye!",
+			"Tae Glitch can only send a wee craven to face me?"
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+      "runSpeed" : 16,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    },
+    "mass" : 2.0
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "alpacaguardhead", "parameters" : { "colorIndex" : [0, 1, 2, 3] } }
+            ],
+            "chest" : [
+              { "name" : "alpacaguardchest", "parameters" : { "colorIndex" : [0, 1, 2, 3] } }
+            ],
+            "legs" : [
+              { "name" : "alpacaguardlegs", "parameters" : { "colorIndex" : [0, 1, 2, 3] } }
+            ],
+            "primary" : [
+              { "name" : "legendblade", "parameters" : { "primaryAbility" : { "damageConfig" : { "statusEffects" : ["frostslow"] } } } }
+            ],
+            "alt" : [
+              { "name" : "commonsmallshield" }
+            ],
+			"sheathedprimary" : [
+			  { "name" : "npctungstenbow", "parameters" : { "primaryAbility" : { "projectileType" : "chargedicearrow", "powerProjectileType" : "chargedicearrow" } } }
+			]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+
+    "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.0
+        },
+	  "iceResistance" : {
+        "baseValue" : 0.5
+      },
+      "fireResistance" : {
+        "baseValue" : -0.5
+      },
+	"poisonStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"iceStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+    "electricStatusImmunity" : {
+        "baseValue" : 0.0
+    },
+	"specialStatusImmunity" : {
+		"baseValue" : 1.0
+	},
+	"stunImmunity" : {
+		"baseValue" : 1.0
+	},
+	"powerMultiplier" : {
+        "baseValue" : 1.8
+      },
+      "maxHealth" : {
+        "baseValue" : 500.0
+      }
+    }
+  }
+}

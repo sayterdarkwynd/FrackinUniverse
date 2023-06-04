@@ -1,0 +1,45 @@
+{
+  "itemName" : "densiniumlongsword",
+  "price" : 1600,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Brutally dense metal. Super murdery fun.",
+  "shortdescription" : "Densinium Longsword",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : [ "weapon", "melee", "longsword", "energy", "densinium", "upgradeableWeapon" ],
+  "inventoryIcon" : "densiniumlongsword.png",
+  "animation" : "combolongswordglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "densiniumlongsword.png",
+    "bladefullbright" : "densiniumlongswordfullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+      "fire2" : [ "/sfx/melee/swing_shortsword.ogg" ],
+      "fire3" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.93,
+    "baseDps" : 6.8,
+    "damageConfig" : {
+      "damageSourceKind": "electricshortsword"
+    }
+  },
+
+  "critChance" : 1.25,
+  "critBonus" : 10,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

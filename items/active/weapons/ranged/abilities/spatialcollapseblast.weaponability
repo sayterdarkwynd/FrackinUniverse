@@ -1,59 +1,64 @@
 {
-  "animationParts" : { },
-  "animationCustom" : {
-    "particleEmitters" : {
-      "altMuzzleFlash" : {
-        "active" : false,
-        "emissionRate" : 8,
-        "transformationGroups" : ["muzzle"],
-        "offsetRegion" : [0, 0, 0, 0],
-        "particles" : [
-          { "particle" : "burningdust2"},
-          { "particle" : "burningdust2"},
-          { "particle" : "burningdust"},
-          { "particle" : "burningdust"}
-        ]
-      }
-    },
-    "sounds" : {
-      "altFire" : [ "/sfx/weapons/fucellgun.ogg" ]
-    }
-  },
+	"animationParts": {},
+	"animationCustom": {
+		"particleEmitters": {
+			"altMuzzleFlash": {
+				"active": false,
+				"emissionRate": 8,
+				"transformationGroups": ["muzzle"],
+				"offsetRegion": [0, 0, 0, 0],
+				"particles": [{
+						"particle": "burningdust2"
+					},
+					{
+						"particle": "burningdust2"
+					},
+					{
+						"particle": "burningdust"
+					},
+					{
+						"particle": "burningdust"
+					}
+				]
+			}
+		},
+		"sounds": {
+			"altFire": ["/sfx/weapons/fucellgun.ogg"]
+		}
+	},
 
-  "ability" : {
-    "name" : "Spatial Collapse",
-    "type" : "spatialcollapseblast",
-    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
-    "class" : "AltFireAttack",
+	"ability": {
+		"name": "Spatial Collapse",
+		"type": "spatialcollapseblast",
+		"scripts": ["/items/active/weapons/ranged/abilities/altfire.lua"],
+		"class": "AltFireAttack",
 
-    "projectileType" : "energyblast2",
+		"projectileType": "energyblast2",
 
-    // use baseDps and fireTime from primary fire
-    "fireTime" : 0.2,
-    "baseDps" : 4.5,
-    "fireType" : "auto",
-    "energyUsage" : 20.0,
+		"fireTime": 0.2,
+		"baseDps": 4.5,
+		"fireType": "auto",
+		"energyUsage": 80.0,
 
-    "stances" : {
-      "fire" : {
-        "duration" : 0,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
+		"stances": {
+			"fire": {
+				"duration": 0,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "cooldown" : {
-        "duration" : 0.11,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
+				"allowRotate": false,
+				"allowFlip": false
+			},
+			"cooldown": {
+				"duration": 0.11,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      }
-    }
-  }
+				"allowRotate": false,
+				"allowFlip": false
+			}
+		}
+	}
 }
-

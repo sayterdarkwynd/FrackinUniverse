@@ -1,0 +1,54 @@
+{
+  "objectName" : "carbonrock",
+  "colonyTags" : [],
+  "rarity" : "Common",
+  "category" : "breakable",
+  "printable" : false,
+
+  "description" : "A cracked rock full of carbon.",
+  "shortdescription" : "Carbon Rock",
+  "race" : "generic",
+
+  "particleEmitter" : {
+    "emissionRate" : 0.5,
+    "emissionVariance" : 0.2,
+    "pixelOrigin" : [12, 12],
+
+    "particle" : {
+      "type" : "animated",
+      "animation" : "/animations/sparkles/sparkle1.animation",
+      "size" : 1.0,
+      "fade" : 0,
+      "destructionAction" : "shrink",
+      "destructionTime" : 3,
+      "initialVelocity" : [0, 0],
+      "finalVelocity" : [0, 0],
+      "timeToLive" : 1,
+      "layer" : "front"
+    },
+
+    "particleVariance" : {
+      "position" : [1.0, 1.0]
+    }
+  },
+
+  "inventoryIcon" : "carbonrockicon.png",
+  "orientations" : [
+    {
+      "image" : "carbonrock.png:<color>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "smashable" : true,
+  "smashSounds" : [ "/sfx/objects/rock_break1.ogg", "/sfx/objects/rock_break2.ogg", "/sfx/objects/rock_break3.ogg", "/sfx/objects/rock_break4.ogg", "/sfx/objects/rock_break5.ogg", "/sfx/objects/rock_crumble1.ogg", "/sfx/objects/rock_crumble2.ogg", "/sfx/objects/rock_crumble3.ogg", "/sfx/objects/rock_crumble4.ogg", "/sfx/objects/rock_crumble5.ogg" ],
+  "smashParticles" : [ { "count" : 8, "particle" : "rockshard" } ],
+  "smashDropPool" : "carbonRock",
+  "breakDropPool" : "carbonRock"
+}

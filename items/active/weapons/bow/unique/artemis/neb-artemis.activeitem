@@ -1,0 +1,103 @@
+{
+	"itemName" : "neb-artemis",
+	"price" : 960,
+	"inventoryIcon" : "neb-artemisicon.png",
+	"maxStack" : 1,
+	"rarity" : "Legendary",
+	"tooltipKind" : "bow",
+	"category" : "bow",
+	"description" : "An unusual yet fearsome bow, the hefty arrows it slings always return.",
+	"shortdescription" : "Artemis",
+	"twoHanded" : true,
+	"itemTags" : ["weapon", "ranged", "bow", "upgradeableWeapon"],
+	"radioMessagesOnPickup" : [ "pickupbow" ],
+	"level" : 5,
+	"animation" : "neb-artemis.animation",
+	"animationParts" : {
+		"bow" : "neb-artemis.png",
+		"bowFullbright" : "neb-artemislights.png"
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : {
+			"bow" : { "properties" : {
+				"offset" : [1.375, -0.125]
+			}},
+			"bowFullbright" : { "properties" : {
+				"offset" : [1.375, -0.125]
+			}}
+		}},
+		"sounds" : {
+			"draw" : [ "/sfx/gun/nebsrngbows_draw1.ogg", "/sfx/gun/nebsrngbows_draw2.ogg", "/sfx/gun/nebsrngbows_draw3.ogg", "/sfx/gun/nebsrngbows_draw4.ogg", "/sfx/gun/nebsrngbows_draw5.ogg", "/sfx/gun/nebsrngbows_draw6.ogg" ],
+			"ready" : [ "/sfx/gun/randombow_fulltensionping.ogg" ],
+			"release" : [ "/sfx/gun/bow_loose.ogg" ],
+			"perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+		}
+	},
+	"scripts" : ["/items/active/weapons/bow/randomlygenerated/rngbow.lua"],
+	"primaryAbility" : {
+		"scripts" : ["/items/active/weapons/bow/abilities/rngbows/enhancedbowshot.lua"],
+		"class" : "NebBowShot",
+	"fireOffset" : [0.75, 0],
+	//Config for animated cursor
+	"cursorFrames" : [
+		"/cursors/animated/rngbowsrotate/neb-rngbowreticle1.cursor",
+		"/cursors/animated/rngbowsrotate/neb-rngbowreticle2.cursor",
+		"/cursors/animated/rngbowsrotate/neb-rngbowreticle3.cursor",
+		"/cursors/animated/rngbowsrotate/neb-rngbowreticle4.cursor",
+		"/cursors/animated/rngbowsrotate/neb-rngbowreticle5.cursor",
+		"/cursors/animated/rngbowsrotate/neb-rngbowreticle6.cursor",
+		"/cursors/animated/rngbowsrotate/neb-rngbowreticle7.cursor"
+	],
+		"drawTime" : 1.35,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
+	"energyPerShot" : 40,			//Total energy consumption for a full draw
+	"holdEnergyUsage" : 5,			//Energy consumption per second while fully drawn
+	"airborneBonus" : 1.5,			//A dmg multiplier for when airborne
+		"cooldownTime" : 0.3,			//Time between firing and drawing the next arrow
+		"inaccuracy" : 0.0,				//Inaccuracy of the shot
+	"walkWhileFiring" : true,		//If true, prevents the player from running while drawing the bow
+	"useQuiverDamageBonus" : true,	//If true, allows this bow to use quiver damage bonuses
+	"drainEnergyWhilePowerful" : false,	//If true, consume energy while at max power
+	"staticDamageMultiplier" : null,	//If this value is set, arrow damage is independent of draw time and is instead multiplied by this value
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+		"drawArmFrames" : ["rotation", "run.2", "swim.2", "swim.2", "swim.1", "swim.1"],
+	"projectileCount" : 1,	//Amount of arrows to shoot at once
+		"projectileType" : "nebartemisarrow",
+		"projectileParameters" : {
+			"speed" : 115,
+			"power" : 10
+		},
+		"powerProjectileType" : "nebartemisarrow",
+		"powerProjectileParameters" : {
+			"piercing" : true,
+			"speed" : 130,
+			"power" : 11.25
+		},
+		"stances" : {
+			"idle" : {
+				"armRotation" : -30,
+				"weaponRotation" : 0,
+				"allowRotate" : true,
+				"allowFlip" : true,
+				"twoHanded" : true
+			},
+			"draw" : {
+				"armRotation" : 0,
+				"weaponRotation" : 0,
+				"allowRotate" : true,
+				"allowFlip" : true,
+				"twoHanded" : true
+			},
+			"fire" : {
+				"duration" : 0.2,
+				"armRotation" : 0,
+				"weaponRotation" : 0,
+				"allowRotate" : false,
+				"allowFlip" : true,
+				"twoHanded" : true,
+				"frontArmFrame" : "idle.3"
+			}
+		}
+	},
+	"builder" : "/items/buildscripts/neb-buildbow.lua"
+}

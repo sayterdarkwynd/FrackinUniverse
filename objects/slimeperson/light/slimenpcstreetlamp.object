@@ -1,0 +1,67 @@
+{
+  "objectName" : "slimenpcstreetlamp",
+"colonyTags" : ["slimenpc","slimenpchuman","slimeperson","slimevillage","light","slime"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A tall lamp made of slime.",
+  "shortdescription" : "Tall Slime Lamp",
+  "race" : "slimeperson",
+
+"apexDescription" : "A slime lamp.",
+  "avianDescription" : "Does anyone like sticky lamps?",
+  "floranDescription" : "Sssuch a great ssslimy lamp!",
+  "glitchDescription" : "Confused. How does it glow?",
+  "humanDescription" : "A sticky lamp.",
+  "hylotlDescription" : "The lifeform emits a dull light.",
+  "novakidDescription" : "A slimy lamp. Great design.",
+  "slimepersonDescription" : "Tall lamp.",
+
+
+  "category" : "light",
+  "price" : 85,
+  "lightColor" : [217, 217, 190],
+
+  "inventoryIcon" : "slimenpcstreetlampicon.png",
+  "orientations" : [
+    {
+      "image" : "slimenpcstreetlamp.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.3,
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [0, 1],
+      "animationPosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "slimenpcstreetlamp.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.3,
+      "direction" : "right",
+      "lightPosition" : [0, 1],
+      "animationPosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "slimenpcstreetlamp.png",
+    "fg" : "slimenpcstreetlamplit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallswitch.ogg" ],
+      "off" : [ "/sfx/objects/tinywallswitch.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ]
+}

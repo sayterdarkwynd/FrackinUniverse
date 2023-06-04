@@ -1,0 +1,71 @@
+{
+	"stats": [
+		{"stat": "maxEnergy","effectiveMultiplier": 1.1},
+		{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 0.75
+		},
+		{
+			"stat": "physicalResistance",
+			"amount": -0.10
+		},
+		{
+			"stat": "shadowResistance",
+			"amount": 0.15
+		},
+		{
+			"stat": "cosmicResistance",
+			"amount": 0.15
+		},
+		{
+			"stat": "fireResistance",
+			"amount": -0.35
+		},
+		{
+			"stat": "poisonResistance",
+			"amount": -0.2
+		}
+	],
+	"diet" : [ { "ORGANIC" : false, "PLANT" : true, "HIGH_GLUCOSE" : true }, { "MEAT" : true } ],
+	"controlModifiers": {
+		"airJumpModifier": 1.15
+	},
+
+	"envEffects": [{
+		"biomes": ["lush","forest","thickjungle","arboreal","arborealdark"],
+		"stats": [{"stat": "maxEnergy","effectiveMultiplier": 1.15}]
+	}],
+
+	"weaponEffects": [
+			{
+			"weapons": ["wand","staff"],
+			"stats": [{
+				"stat": "protection",
+				"effectiveMultiplier": 1.2
+			}]
+		},
+			{
+			"weapons": ["wand"],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.1
+			},
+			{
+				"stat": "maxEnergy",
+				"effectiveMultiplier": 1.05
+			}]
+		},
+			{
+			"weapons": ["staff"],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.15
+			},
+			{
+				"stat": "maxEnergy",
+				"effectiveMultiplier": 1.2
+			}]
+		}
+	],
+	"tech" : [ "flight_saturnian" ]
+}

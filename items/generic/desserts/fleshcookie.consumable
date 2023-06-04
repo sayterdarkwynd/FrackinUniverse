@@ -1,0 +1,31 @@
+{
+  "itemName": "fleshcookie",
+  "rarity": "Rare",
+  "price": 255,
+  "category": "preparedFood",
+  "inventoryIcon": "fleshcookie.png",
+  "description": "Cookies for carnivores.\n^pink;Insanity^gray;, ^pink;Pus ^cyan;Immunity ^gray;(^white;5m^gray;)^reset; ^red;Type: Raw Meat^reset;",
+  "shortdescription": "Fleshy Meat Cookie",
+  "effects": [
+    [
+      {
+        "effect": "meat_raw"
+      },
+      {
+        "effect": "insanityimmunity",
+        "duration": 300
+      },
+      {
+        "effect": "pusimmunity",
+        "duration": 300
+      }
+    ]
+  ],
+  "foodValue": 55,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1.0,
+  "blockingEffects": ["wellfed"]
+}

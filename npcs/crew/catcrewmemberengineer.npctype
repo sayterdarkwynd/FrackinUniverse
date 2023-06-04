@@ -1,0 +1,58 @@
+{
+  "type" : "catcrewmemberengineer",
+  "baseType" : "catcrewmember",
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "emptyHands" : true
+    },
+
+    "crew" : {
+      "role" : {
+        "type" : "engineer",
+        "name" : "Engineer",
+        "field" : "Engineering",
+        "uniformColorIndex" : 5,
+
+        "benefits" : [
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "fuelEfficiency",
+            "value" : 0.10
+          }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "Meow! Purrfect! Fuel costs reduced by 10%!"
+            ]
+          }
+        },
+        "shipImprovementApplied" : {
+          "default" : {
+            "default" : [
+              "Meow! Purrfect! Fuel costs reduced by 10%!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "chest" : [ { "name" : "hiderchest" } ],
+            "legs" : [ { "name" : "hiderlegs" } ],
+            "sheathedprimary" : [ "npcpistol", "veluushortsword3" ]
+          }
+        ] ]
+    ]
+  }
+}

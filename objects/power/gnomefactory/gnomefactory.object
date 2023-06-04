@@ -1,0 +1,86 @@
+{
+  "objectName" : "gnomefactory",
+  "colonyTags" : [ "machines" ],
+  "printable" : false,
+  "rarity" : "rare",
+  "description" : "Uses gnome slave labor to craft your stuff. This is super illegal, but who's going to stop you? Certainly not the gnomes.",
+  "shortdescription" : "^orange;Gnome Workshop^reset;",
+  "subtitle" : "",
+  "race" : "generic",
+  "category" : "crafting",
+  "price" : 0,
+  "objectType" : "container",
+  "hydrophobic" : false,
+  "rooting" : true,
+  "inventoryIcon" : "gnomefactoryicon.png",
+
+  "lightColor" : [62, 89, 89],
+
+  "flickerPeriod" : 0.5,
+  "flickerMinIntensity" : 0.9,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.0,
+  "flickerIntensityVariance" : 0,
+
+  "apexDescription" : "This seems like something the Miniknog would do.",
+  "avianDescription" : "They work hard for my benefit.",
+  "floranDescription" : "Work harder, little ssslaves!",
+  "glitchDescription" : "Oppresive. These gnomes will work ceaselessly.",
+  "humanDescription" : "It's like Santa's workshop. But crueler.",
+  "hylotlDescription" : "I'm sure most Hylotl would disapprove of this.",
+  "novakidDescription" : "Them little folk sure are hard working!",
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "gnomefactory.png:<color>.<frame>", "fullbright" : true }, { "image" : "gnomefactorylit.png:<color>.<frame>" } ],
+      "imagePosition" : [-63, 0],
+      "animationPosition" : [-63, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "frames" : 12,
+      "animationCycle" : 10,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+
+    {
+      "imageLayers" : [ { "image" : "gnomefactory.png:<color>.<frame>", "fullbright" : true }, { "image" : "gnomefactorylit.png:<color>.<frame>" } ],
+      "imagePosition" : [-63, 0],
+      "animationPosition" : [-63, 0],
+      "direction" : "right",
+
+      "frames" : 12,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "gnomefactory.animation",
+  "animationParts" : {
+    "samplingarrayanim" : "gnomefactory.png"
+  },
+
+
+  "scripts" : [ "/scripts/fupower.lua", "/objects/power/manufacturing/mfgstation.lua"],
+  "craftDelay": 6,
+
+  "scriptDelta" : 5,
+  "recipeGroup" : "gnomefactory",
+  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+  "slotCount" : 18,
+  "uiConfig" : "/interface/gnomefactory.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
+
+  "powertype" : "input",
+  "isn_requiredPower" : 0,
+  "soundEffectRangeMultiplier" : 0.05
+
+}

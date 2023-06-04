@@ -1,0 +1,79 @@
+{
+	"objectName": "antigravgen",
+	"colonyTags": ["fu", "science", "scienceoutpost", "hitech"],
+	"printable": false,
+	"price": 1600,
+	"rarity": "rare",
+	"objectType": "physics",
+	"description": "Reduces effects of gravity within 30 tiles.\n^blue;Input^reset;: On/Off Switch.",
+	"shortdescription": "^orange;Anti-Grav Generator^reset;",
+	"race": "generic",
+	"category": "wire",
+
+	"inventoryIcon": "antigravgenicon.png",
+	"orientations": [{
+			"imageLayers": [{
+				"image": "antigravgen.png:<color>.<frame>",
+				"fullbright": true
+			}, {
+				"image": "antigravgenlit.png:<color>.<frame>"
+			}],
+			"direction": "left",
+			"flipImages": true,
+
+			"imagePosition": [0, 0],
+			"frames": 4,
+			"animationCycle": 1,
+
+			"spaceScan": 0.1,
+			"anchors": ["bottom"],
+			"metaBoundBox": [-30, -30, 30, 30]
+		},
+		{
+			"imageLayers": [{
+				"image": "antigravgen.png:<color>.<frame>",
+				"fullbright": true
+			}, {
+				"image": "antigravgenlit.png:<color>.<frame>"
+			}],
+			"direction": "right",
+
+			"imagePosition": [0, 0],
+			"frames": 4,
+			"animationCycle": 1,
+
+			"spaceScan": 0.1,
+			"anchors": ["bottom"],
+			"metaBoundBox": [-30, -30, 30, 30]
+		}
+	],
+
+	"scripts": [
+		"/scripts/npcToyObject.lua",
+		"gravgen.lua"
+
+	],
+
+	"npcToy": {
+		"influence": [
+			"sink",
+			"sinkComplete"
+		],
+		"defaultReactions": {
+			"sink": [
+				[1.0, "typing"]
+			],
+			"sinkComplete": [
+				[1.0, "smile"]
+			]
+		},
+		"preciseStandPositionLeft": [-1.0, 0.0],
+		"preciseStandPositionRight": [1.0, 0.0],
+		"maxNpcs": 1
+	},
+	"inputNodes": [
+		[0, 0]
+	],
+	"generatorEffect": "antigravgenfield",
+	"effectRange": 30
+}

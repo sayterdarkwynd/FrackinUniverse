@@ -1,0 +1,271 @@
+{
+  "type" : "shadowcrab",
+  "shortdescription" : "Shadow Shell",
+  "description" : "Don't let these guys erupt in your face. You won't like it.",
+
+  "categories" : [ "shadowcrab" ],
+  "parts" : [ "body" ],
+
+  "animation" : "shadowcrab.animation",
+
+  "dropPools" : [
+    {
+    "default" : "icecrabcanoTreasure",
+    "bow" : "huntingchitincold",
+    "firebow" : "huntingchitincold",
+    "icebow" : "huntingchitincold",
+    "poisonbow" : "huntingchitincold",
+    "electricbow" : "huntingchitincold",
+    "cosmicbow" : "huntingchitincold",
+    "radioactivebow" : "huntingchitincold",
+    "shadowbow" : "huntingchitincold"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 2.5,
+          "parameters" : {
+            "maximumRange" : 10,
+            "minimumRange" : 1,
+            "windupState" : "firewindup",
+            "windupTime" : 1.5,
+
+            "projectileType" : "shadowcrabball",
+            "fireOffset" : [0, 0.75],
+
+            "aimAtTarget" : false,
+            "projectileCount" : 20,
+            "fireDelay" : 0.05,
+            "projectileInterval" : 0.01,
+            "inaccuracy" : 1.5,
+            "aimDirection" : [0,1],
+            "power" : 1,
+            "fireSound" : "fire",
+            "fireState" : "fire",
+
+            "winddownState" : "idle",
+            "winddownTime" : 0.5
+          }
+        }
+      ],
+
+      "periodicActions" : [],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : false,
+            "run" : true
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : false
+          }
+        }
+      ],
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 10,
+          "parameters" : {
+          "effect" : "mage_shield_lvl1shadowcrab",
+          "duration" : 5
+          }
+        }
+      ],
+
+     "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "cultiststaffexplosion",
+            "projectileParameters" : {},
+            "power" : 0,
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0]
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [0.5, 2.5]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [1.0625, 0.0], [1.0625, -0.5], [0.8125, -0.875], [-0.8125, -0.875], [-1.0625, -0.5], [-1.0625, 0.0], [0.0, 0.75]],
+      "damage" : 10,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [1.0625, 0.0], [1.0625, -0.5], [0.8125, -0.875], [-0.8125, -0.875], [-1.0625, -0.5], [-1.0625, 0.0], [0.0, 0.75]],
+
+      "mass" : 1.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 6,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 60
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "lavaImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.25
+        },
+        "fireResistance" : {
+          "baseValue" : 0.5
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceResistance" : {
+          "baseValue" : -0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "fallDamageMultiplier" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "damageAbsorption" : {
+          "deltaValue" : 0.0,
+          "initialValue" : 0.0
+        },
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "shadowcrab" }
+  }
+}
+
+
+

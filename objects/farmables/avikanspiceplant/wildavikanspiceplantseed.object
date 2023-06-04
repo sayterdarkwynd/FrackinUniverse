@@ -1,0 +1,51 @@
+{
+  "objectName" : "wildavikanspiceplantseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Uncommon",
+  "category" : "seed",
+  "description" : "Spices can be made by drying this plants fruits.",
+  "shortdescription" : "Kadavan Spice Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 20,
+
+  "ponexDescription" : "When people aren't watching, I like to eat babies.",
+  "largeImage" : "avikanspiceplantseed.png:default.3.0",
+  "inventoryIcon" : "avikanspiceplantseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "avikanspiceplantseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [200, 305]
+    },
+    {
+      "duration" : [200, 305]
+    },
+    {
+      "alts" : 5,
+      "duration" : [300, 420]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "avikanspiceplantHarvest",
+      "resetToStage" : 2
+    }
+  ],
+
+  "breakDropOptions" : [
+    [ [ "avikanspiceplantseed", 1, { } ] ]
+  ],
+    "maxImmersion" : 0.125
+}

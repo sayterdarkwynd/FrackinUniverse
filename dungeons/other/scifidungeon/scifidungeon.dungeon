@@ -1,0 +1,1379 @@
+{
+  "metadata" : {
+    "name" : "scifidungeon",
+    "species" : "generic",
+    "rules" : [
+    ],
+    "anchor" : [ "entrance1" ],
+    "gravity" : 30,
+    "maxRadius" : 2000,
+    "maxParts" : 100,
+    "extendSurfaceFreeSpace" : 100
+  },
+  "tiles" : [
+    {
+      "value" : [255, 0, 220, 255],
+      "comment" : "magic pinkppp, a no-op value"
+    },
+    {
+      "value" : [0, 0, 0, 255],
+      "rules" : [ [ "worldGenMustContainAirBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ] ]
+    },
+    {
+      "value" : [120, 120, 120, 255],
+      "rules" : [ [ "worldGenMustContainAirForeground" ], [ "allowOverdrawing" ] ]
+    },
+
+    {
+      "value" : [255, 255, 255, 255],
+      "rules" : [ [ "worldGenMustContainSolidBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [225, 225, 255, 255],
+      "rules" : [ [ "worldGenMustContainSolidBackground" ], [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "apexshipwall" ], [ "front", "apexshipwall" ] ]
+    },
+
+    {
+      "value" : [0, 38, 255, 255],
+      "comment" : "bright blue, entrance coupler",
+      "connector" : true
+    },
+    {
+      "value" : [0, 255, 186, 255],
+      "comment" : "bright aqua, water coupler",
+      "connector" : true
+    },
+    {
+      "value" : [32, 32, 32, 255],
+      "comment" : "Empty hole",
+      "brush" : [ [ "clear" ] ]
+    },
+
+    {
+      "value" : [128, 128, 128, 255],
+      "comment" : "Biome tile brush",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [100, 100, 100, 255],
+      "comment" : "Biome tile brush non-overwritable",
+      "brush" : [ [ "surface" ] ]
+    },
+
+    {
+      "value" : [200, 200, 200, 255],
+      "comment" : "Biome tile background brush",
+      "brush" : [ [ "clear" ], [ "surfacebackground" ] ]
+    },
+
+    {
+      "value" : [196, 175, 113, 255],
+      "comment" : "steel stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "tungstenplatform" ] ]
+    },
+
+    {
+      "value" : [218, 174, 116, 255],
+      "comment" : "wooden stairs/platform",
+      "brush" : [ [ "clear" ], [ "front", "modernplatform" ] ]
+    },
+
+    {
+      "value" : [255, 128, 191, 255],
+      "comment" : "background junktech",
+      "brush" : [ [ "clear" ], [ "back", "junktech" ] ]
+    },
+
+    {
+      "value" : [153, 76, 113, 255],
+      "comment" : "foreground junktech overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "junktech" ], [ "front", "junktech" ] ]
+    },
+
+    {
+      "value" : [204, 102, 151, 255],
+      "comment" : "foreground junktech",
+      "brush" : [ [ "clear" ], [ "back", "junktech" ], [ "front", "junktech" ] ]
+    },
+
+    {
+      "value" : [128, 255, 217, 255],
+      "comment" : "background lightmetal",
+      "brush" : [ [ "clear" ], [ "back", "lightmetal" ] ]
+    },
+
+    {
+      "value" : [76, 153, 130, 255],
+      "comment" : "foreground lightmetal overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "lightmetal" ], [ "front", "lightmetal" ] ]
+    },
+
+    {
+      "value" : [102, 204, 173, 255],
+      "comment" : "foreground lightmetal",
+      "brush" : [ [ "clear" ], [ "back", "lightmetal" ], [ "front", "lightmetal" ] ]
+    },
+
+    {
+      "value" : [128, 140, 255, 255],
+      "comment" : "background apexshipwall",
+      "brush" : [ [ "clear" ], [ "back", "apexshipwall" ] ]
+    },
+
+    {
+      "value" : [89, 98, 179, 255],
+      "comment" : "background apexshipwall overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "apexshipwall" ] ]
+    },
+
+    {
+      "value" : [76, 84, 153, 255],
+      "comment" : "foreground apexshipwall overwritable",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "clear" ], [ "back", "apexshipwall" ], [ "front", "apexshipwall" ] ]
+    },
+
+    {
+      "value" : [102, 112, 204, 255],
+      "comment" : "foreground apexshipwall",
+      "brush" : [ [ "clear" ], [ "back", "apexshipwall" ], [ "front", "apexshipwall" ] ]
+    },
+
+    {
+      "value" : [111, 98, 90, 255],
+      "comment" : "background apexshipsupport",
+      "brush" : [ [ "clear" ], [ "back", "apexshipsupport" ] ]
+    },
+
+    {
+      "value" : [251, 255, 128, 255],
+      "comment" : "background cheapwallpaper",
+      "brush" : [ [ "clear" ], [ "back", "cheapwallpaper" ] ]
+    },
+    {
+      "value" : [201, 204, 102, 255],
+      "comment" : "foreground cheapwallpaper",
+      "brush" : [ [ "clear" ], [ "back", "cheapwallpaper" ], [ "front", "cheapwallpaper" ] ]
+    },
+
+    {
+      "value" : [255, 187, 128, 255],
+      "comment" : "background woodpanelling",
+      "brush" : [ [ "clear" ], [ "back", "woodpanelling" ] ]
+    },
+
+    {
+      "value" : [204, 150, 102, 255],
+      "comment" : "foreground woodpanelling",
+      "brush" : [ [ "clear" ], [ "back", "woodpanelling" ], [ "front", "woodpanelling" ] ]
+    },
+
+    {
+      "value" : [205, 255, 128, 255],
+      "comment" : "background glass",
+      "brush" : [ [ "clear" ], [ "back", "glass" ] ]
+    },
+
+    {
+      "value" : [165, 204, 102, 255],
+      "comment" : "foreground glass",
+      "brush" : [ [ "clear" ], [ "front", "glass" ] ]
+    },
+
+    {
+      "value" : [74, 64, 58, 255],
+      "comment" : "background darksmoothstone",
+      "brush" : [ [ "clear" ], [ "back", "darksmoothstone" ] ]
+    },
+
+    {
+      "value" : [117, 102, 93, 255],
+      "comment" : "foreground darksmoothstone",
+      "brush" : [ [ "clear" ], [ "back", "darksmoothstone" ], [ "front", "darksmoothstone" ] ]
+    },
+
+    {
+      "value" : [20, 81, 82, 255],
+      "comment" : "background darkwood",
+      "brush" : [ [ "clear" ], [ "back", "darkwood" ] ]
+    },
+
+    {
+      "value" : [47, 174, 176, 255],
+      "comment" : "foreground darkwood",
+      "brush" : [ [ "clear" ], [ "back", "darkwood" ], [ "front", "darkwood" ] ]
+    },
+
+    {
+      "value" : [21, 114, 185, 255],
+      "comment" : "background woodbridge",
+      "brush" : [ [ "clear" ], [ "back", "woodbridge" ] ]
+    },
+
+    {
+      "value" : [21, 129, 185, 255],
+      "comment" : "foreground woodbridge",
+      "brush" : [ [ "clear" ], [ "back", "woodbridge" ], [ "front", "woodbridge" ] ]
+    },
+
+    {
+      "value" : [148, 21, 185, 255],
+      "comment" : "background plate",
+      "brush" : [ [ "clear" ], [ "back", "plate" ] ]
+    },
+
+    {
+      "value" : [106, 21, 185, 255],
+      "comment" : "foreground plate",
+      "brush" : [ [ "clear" ], [ "back", "plate" ], [ "front", "plate" ] ]
+    },
+
+    {
+      "value" : [21, 75, 185, 255],
+      "comment" : "background pressurisedbeam",
+      "brush" : [ [ "clear" ], [ "back", "pressurisedbeam" ] ]
+    },
+
+    {
+      "value" : [21, 94, 185, 255],
+      "comment" : "foreground pressurisedbeam",
+      "brush" : [ [ "clear" ], [ "front", "pressurisedbeam" ] ]
+    },
+
+    {
+      "value" : [56, 21, 185, 255],
+      "comment" : "background pressurisedsteel",
+      "brush" : [ [ "clear" ], [ "back", "pressuriseddurasteel" ] ]
+    },
+
+    {
+      "value" : [21, 56, 185, 255],
+      "comment" : "foreground pressurisedsteel",
+      "brush" : [ [ "clear" ], [ "front", "pressuriseddurasteel" ] ]
+    },
+
+    {
+      "value" : [35, 41, 117, 255],
+      "comment" : "background crosshatch",
+      "brush" : [ [ "clear" ], [ "back", "crosshatch" ] ]
+    },
+
+    {
+      "value" : [70, 75, 146, 255],
+      "comment" : "foreground crosshatch",
+      "brush" : [ [ "clear" ], [ "back", "crosshatch" ], [ "front", "crosshatch" ] ]
+    },
+
+    {
+      "value" : [54, 63, 105, 255],
+      "comment" : "lava pool foreground",
+      "brush" : [ [ "clear" ], [ "liquid", "lava" ] ]
+    },
+
+    {
+      "value" : [255, 0, 0, 255],
+      "comment" : "wire #1 Red",
+      "brush" : [ [ "wire", { "group" : "group1", "local" : true } ] ]
+    },
+
+    {
+      "value" : [0, 255, 0, 255],
+      "comment" : "wire #2 Green",
+      "brush" : [ [ "wire", { "group" : "group2", "local" : true } ] ]
+    },
+
+    {
+      "value" : [0, 0, 255, 255],
+      "comment" : "wire #3 Blue",
+      "brush" : [ [ "wire", { "group" : "group3", "local" : true } ] ]
+    },
+
+    {
+      "value" : [26, 77, 0, 255],
+      "comment" : "biome tree",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "biometree" ] ]
+    },
+
+    {
+      "value" : [34, 102, 0, 255],
+      "comment" : "biome flora",
+      "rules" : [ [ "allowOverdrawing" ] ],
+      "brush" : [ [ "biomeitems" ] ]
+    },
+    
+    {
+      "value" : [85, 255, 0, 255],
+      "comment" : "Player Spawn",
+      "brush" : [ [ "playerstart" ] ]
+    },
+
+    {
+      "value" : [255, 64, 64, 255],
+      "comment" : "apexapesign",
+      "brush" : [ [ "clear" ], [ "object", "apexapesign" ] ]
+    },
+
+    {
+      "value" : [255, 80, 64, 255],
+      "comment" : "apexbananasign",
+      "brush" : [ [ "clear" ], [ "object", "apexbananasign" ] ]
+    },
+
+    {
+      "value" : [255, 96, 64, 255],
+      "comment" : "apexbloodbank facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexbloodbank", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [229, 86, 57, 255],
+      "comment" : "apexbloodbank facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexbloodbank", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 112, 64, 255],
+      "comment" : "apexceilingtv facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexceilingtv", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [229, 100, 57, 255],
+      "comment" : "apexceilingtv facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexceilingtv", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 128, 64, 255],
+      "comment" : "apexconsole1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexconsole1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [229, 115, 57, 255],
+      "comment" : "apexconsole1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexconsole1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 143, 64, 255],
+      "comment" : "apexcoolbookcase facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexcoolbookcase", { "direction" : "left", "parameters" : { "treasurePools" : [ "humanprisonLore" ] } } ] ]
+    },
+
+    {
+      "value" : [229, 129, 57, 255],
+      "comment" : "apexcoolbookcase facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexcoolbookcase", { "direction" : "right", "parameters" : { "treasurePools" : [ "humanprisonLore" ] } } ] ]
+    },
+
+    {
+      "value" : [255, 159, 64, 255],
+      "comment" : "apexcoolchair facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexcoolchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [229, 143, 57, 255],
+      "comment" : "apexcoolchair facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexcoolchair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 175, 64, 255],
+      "comment" : "apexcoolcomputer facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexcoolcomputer", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [229, 158, 57, 255],
+      "comment" : "apexcoolcomputer facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexcoolcomputer", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 64, 191, 255],
+      "comment" : "bigredbutton",
+      "brush" : [ [ "clear" ], [ "object", "smashcrystal" ] ]
+    },
+
+    {
+      "value" : [255, 236, 30, 255],
+      "comment" : "techchest facing left",
+      "brush" : [ [ "clear" ], [ "object", "techchest", { "direction" : "left", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [229, 213, 28, 255],
+      "comment" : "techchest facing right",
+      "brush" : [ [ "clear" ], [ "object", "techchest", { "direction" : "right", "parameters" : { "treasurePools" : [ "ffbasicTreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [255, 191, 64, 255],
+      "comment" : "apexcoolcupboard facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexcoolcupboard", { "direction" : "left", "parameters" : { "treasurePools" : [ "apexstimtreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [229, 172, 57, 255],
+      "comment" : "apexcoolcupboard facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexcoolcupboard", { "direction" : "right", "parameters" : { "treasurePools" : [ "apexstimtreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [255, 207, 64, 255],
+      "comment" : "apexcooldesk facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexcooldesk", { "direction" : "left", "parameters" : { "treasurePools" : [ "humanprisonLore" ] } } ] ]
+    },
+
+    {
+      "value" : [229, 186, 57, 255],
+      "comment" : "apexcooldesk facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexcooldesk", { "direction" : "right", "parameters" : { "treasurePools" : [ "humanprisonLore" ] } } ] ]
+    },
+
+    {
+      "value" : [255, 223, 64, 255],
+      "comment" : "apexcoolserver facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexcoolserver", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [229, 201, 57, 255],
+      "comment" : "apexcoolserver facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexcoolserver", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 239, 64, 255],
+      "comment" : "apexcoolshelf1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexcoolshelf1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [229, 215, 57, 255],
+      "comment" : "apexcoolshelf1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexcoolshelf1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 255, 64, 255],
+      "comment" : "apexcoolshelf2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexcoolshelf2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [229, 229, 57, 255],
+      "comment" : "apexcoolshelf2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexcoolshelf2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [239, 255, 64, 255],
+      "comment" : "apexcooltable facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexcooltable", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [215, 229, 57, 255],
+      "comment" : "apexcooltable facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexcooltable", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [223, 255, 64, 255],
+      "comment" : "apexhdtv",
+      "brush" : [ [ "clear" ], [ "object", "apexhdtv" ] ]
+    },
+
+    {
+      "value" : [207, 255, 64, 255],
+      "comment" : "apexlevel1sign",
+      "brush" : [ [ "clear" ], [ "object", "apexlevel1sign" ] ]
+    },
+
+    {
+      "value" : [191, 255, 64, 255],
+      "comment" : "apexobeysign",
+      "brush" : [ [ "clear" ], [ "object", "apexobeysign" ] ]
+    },
+
+    {
+      "value" : [175, 255, 64, 255],
+      "comment" : "apexofficechair facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexofficechair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [158, 229, 57, 255],
+      "comment" : "apexofficechair facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexofficechair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [159, 255, 64, 255],
+      "comment" : "apexpod facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexpod", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [143, 229, 57, 255],
+      "comment" : "apexpod facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexpod", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [48, 77, 19, 255],
+      "comment" : "apexpod facing left - off state",
+      "brush" : [ [ "clear" ], [ "object", "apexpod", { "parameters" : { "defaultLightState" : false } } ] ]
+    },
+
+    {
+      "value" : [32, 51, 13, 255],
+      "comment" : "apexpod facing right - off state",
+      "brush" : [ [ "clear" ], [ "object", "apexpod", { "parameters" : { "defaultLightState" : false } } ] ]
+    },
+
+    {
+      "value" : [146, 233, 69, 255],
+      "comment" : "apexpod2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexpod2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [65, 201, 12, 255],
+      "comment" : "apexpod2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexpod2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [34, 54, 16, 255],
+      "comment" : "apexpod2 facing left - off state",
+      "brush" : [ [ "clear" ], [ "object", "apexpod2", { "parameters" : { "defaultLightState" : false } } ] ]
+    },
+
+    {
+      "value" : [16, 48, 3, 255],
+      "comment" : "apexpod2 facing right - off state",
+      "brush" : [ [ "clear" ], [ "object", "apexpod2", { "parameters" : { "defaultLightState" : false } } ] ]
+    },
+
+    {
+      "value" : [143, 255, 64, 255],
+      "comment" : "apextorturebed facing left",
+      "brush" : [ [ "clear" ], [ "object", "apextorturebed", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [129, 229, 57, 255],
+      "comment" : "apextorturebed facing right",
+      "brush" : [ [ "clear" ], [ "object", "apextorturebed", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [128, 255, 64, 255],
+      "comment" : "apextv",
+      "brush" : [ [ "clear" ], [ "object", "apextv" ] ]
+    },
+
+    {
+      "value" : [159, 64, 255, 255],
+      "comment" : "tesla",
+      "brush" : [ [ "clear" ], [ "object", "tesla" ] ]
+    },
+
+    {
+      "value" : [175, 64, 255, 255],
+      "comment" : "teslaspike",
+      "brush" : [ [ "clear" ], [ "object", "teslaspike" ] ]
+    },
+
+    {
+      "value" : [238, 192, 69, 255],
+      "comment" : "apexcooldoor",
+      "brush" : [ [ "clear" ], [ "object", "apexcooldoor" ] ]
+    },
+
+    {
+      "value" : [138, 213, 114, 255],
+      "comment" : "apexshipdoor",
+      "brush" : [ [ "clear" ], [ "object", "apexshipdoor" ] ]
+    },
+
+    {
+      "value" : [235, 247, 241, 255],
+      "comment" : "futurelight",
+      "brush" : [ [ "clear" ], [ "object", "futurelight" ] ]
+    },
+
+    {
+      "value" : [91, 106, 99, 255],
+      "comment" : "futurelight",
+      "brush" : [ [ "clear" ], [ "object", "futurelight" ] ]
+    },
+
+    {
+      "value" : [191, 64, 255, 255],
+      "comment" : "capsulesmall",
+      "brush" : [ [ "clear" ], [ "object", "capsulesmall" ] ]
+    },
+
+    {
+      "value" : [207, 64, 255, 255],
+      "comment" : "capsulemed",
+      "brush" : [ [ "clear" ], [ "object", "capsulemed" ] ]
+    },
+
+    {
+      "value" : [223, 64, 255, 255],
+      "comment" : "capsulebig",
+      "brush" : [ [ "clear" ], [ "object", "capsulebig" ] ]
+    },
+
+    {
+      "value" : [239, 64, 255, 255],
+      "comment" : "electricsign",
+      "brush" : [ [ "clear" ], [ "object", "electricsign" ] ]
+    },
+
+    {
+      "value" : [255, 64, 255, 255],
+      "comment" : "reddangersign",
+      "brush" : [ [ "clear" ], [ "object", "reddangersign" ] ]
+    },
+
+    {
+      "value" : [255, 64, 239, 255],
+      "comment" : "arrowsign facing left",
+      "brush" : [ [ "clear" ], [ "object", "arrowsign", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [229, 57, 215, 255],
+      "comment" : "arrowsign facing right",
+      "brush" : [ [ "clear" ], [ "object", "arrowsign", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 64, 223, 255],
+      "comment" : "plasmadisc",
+      "brush" : [ [ "clear" ], [ "object", "plasmadisc" ] ]
+    },
+
+    {
+      "value" : [77, 19, 67, 255],
+      "comment" : "plasmadisc - off state",
+      "brush" : [ [ "clear" ], [ "object", "plasmadisc", { "parameters" : { "defaultLightState" : false } } ] ]
+    },
+
+    {
+      "value" : [163, 22, 22, 255],
+      "comment" : "apexdonotenter",
+      "brush" : [ [ "clear" ], [ "object", "apexdonotenter" ] ]
+    },
+
+    {
+      "value" : [148, 41, 41, 255],
+      "comment" : "apexthoughtreassign",
+      "brush" : [ [ "clear" ], [ "object", "apexthoughtreassign" ] ]
+    },
+
+    {
+      "value" : [253, 224, 78, 255],
+      "comment" : "bunkercorner",
+      "brush" : [ [ "clear" ], [ "object", "bunkercorner" ] ]
+    },
+
+    {
+      "value" : [252, 228, 104, 255],
+      "comment" : "hazardtapeh",
+      "brush" : [ [ "clear" ], [ "object", "hazardtapeh" ] ]
+    },
+
+    {
+      "value" : [112, 255, 64, 255],
+      "comment" : "apexaquarium1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexaquarium1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [100, 229, 57, 255],
+      "comment" : "apexaquarium1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexaquarium1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [96, 255, 64, 255],
+      "comment" : "apexaquarium2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexaquarium2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [86, 229, 57, 255],
+      "comment" : "apexaquarium2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexaquarium2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [80, 255, 64, 255],
+      "comment" : "apexarmchair facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexarmchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [72, 229, 57, 255],
+      "comment" : "apexarmchair facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexarmchair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 255, 64, 255],
+      "comment" : "apexbed facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexbed", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [57, 229, 57, 255],
+      "comment" : "apexbed facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexbed", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 255, 80, 255],
+      "comment" : "apexcomfychair facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexcomfychair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [57, 229, 72, 255],
+      "comment" : "apexcomfychair facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexcomfychair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 255, 96, 255],
+      "comment" : "apexcouch facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexcouch", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [57, 229, 86, 255],
+      "comment" : "apexcouch facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexcouch", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 255, 112, 255],
+      "comment" : "apexcounter1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexcounter1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [57, 229, 100, 255],
+      "comment" : "apexcounter1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexcounter1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 255, 128, 255],
+      "comment" : "apexcounter2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexcounter2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [57, 229, 115, 255],
+      "comment" : "apexcounter2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexcounter2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 255, 143, 255],
+      "comment" : "apexcurtain facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexcurtain", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [57, 229, 129, 255],
+      "comment" : "apexcurtain facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexcurtain", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 255, 159, 255],
+      "comment" : "apexdesk facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexdesk", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [57, 229, 143, 255],
+      "comment" : "apexdesk facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexdesk", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 255, 175, 255],
+      "comment" : "apexfridge facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexfridge", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [57, 229, 158, 255],
+      "comment" : "apexfridge facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexfridge", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 255, 191, 255],
+      "comment" : "apexlamp1",
+      "brush" : [ [ "clear" ], [ "object", "apexlamp1" ] ]
+    },
+
+    {
+      "value" : [64, 255, 207, 255],
+      "comment" : "apexlamp2",
+      "brush" : [ [ "clear" ], [ "object", "apexlamp2" ] ]
+    },
+
+    {
+      "value" : [64, 255, 223, 255],
+      "comment" : "apexlamp3",
+      "brush" : [ [ "clear" ], [ "object", "apexlamp3" ] ]
+    },
+
+    {
+      "value" : [64, 255, 239, 255],
+      "comment" : "apexpainting1",
+      "brush" : [ [ "clear" ], [ "object", "apexpainting1" ] ]
+    },
+
+    {
+      "value" : [64, 255, 255, 255],
+      "comment" : "apexpainting2",
+      "brush" : [ [ "clear" ], [ "object", "apexpainting2" ] ]
+    },
+
+    {
+      "value" : [64, 239, 255, 255],
+      "comment" : "apexpainting3",
+      "brush" : [ [ "clear" ], [ "object", "apexpainting3" ] ]
+    },
+
+    {
+      "value" : [64, 223, 255, 255],
+      "comment" : "apexpainting4",
+      "brush" : [ [ "clear" ], [ "object", "apexpainting4" ] ]
+    },
+
+    {
+      "value" : [64, 207, 255, 255],
+      "comment" : "apexpainting5",
+      "brush" : [ [ "clear" ], [ "object", "apexpainting5" ] ]
+    },
+
+    {
+      "value" : [64, 191, 255, 255],
+      "comment" : "apexpiano facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexpiano", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [57, 172, 229, 255],
+      "comment" : "apexpiano facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexpiano", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 175, 255, 255],
+      "comment" : "apexradio facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexradio", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [57, 158, 229, 255],
+      "comment" : "apexradio facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexradio", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 159, 255, 255],
+      "comment" : "apexrecordplayer facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexrecordplayer", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [57, 143, 229, 255],
+      "comment" : "apexrecordplayer facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexrecordplayer", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 143, 255, 255],
+      "comment" : "apexspeaker facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexspeaker", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [57, 129, 229, 255],
+      "comment" : "apexspeaker facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexspeaker", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 128, 255, 255],
+      "comment" : "apexstatue1 facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexstatue1", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [57, 115, 229, 255],
+      "comment" : "apexstatue1 facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexstatue1", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 112, 255, 255],
+      "comment" : "apexstatue2 facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexstatue2", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [57, 100, 229, 255],
+      "comment" : "apexstatue2 facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexstatue2", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 96, 255, 255],
+      "comment" : "apexstatue3 facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexstatue3", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [57, 86, 229, 255],
+      "comment" : "apexstatue3 facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexstatue3", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 80, 255, 255],
+      "comment" : "apextable facing left",
+      "brush" : [ [ "clear" ], [ "object", "apextable", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [57, 72, 229, 255],
+      "comment" : "apextable facing right",
+      "brush" : [ [ "clear" ], [ "object", "apextable", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [64, 64, 255, 255],
+      "comment" : "apexwallpainting1",
+      "brush" : [ [ "clear" ], [ "object", "apexwallpainting1" ] ]
+    },
+
+    {
+      "value" : [80, 64, 255, 255],
+      "comment" : "apexwallpainting2",
+      "brush" : [ [ "clear" ], [ "object", "apexwallpainting2" ] ]
+    },
+
+    {
+      "value" : [96, 64, 255, 255],
+      "comment" : "apexwardrobe facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexwardrobe", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [86, 57, 229, 255],
+      "comment" : "apexwardrobe facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexwardrobe", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [112, 64, 255, 255],
+      "comment" : "apexwoodenchair facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexwoodenchair", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [100, 57, 229, 255],
+      "comment" : "apexwoodenchair facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexwoodenchair", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [128, 64, 255, 255],
+      "comment" : "apexwoodenshelves facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexwoodenshelves", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [115, 57, 229, 255],
+      "comment" : "apexwoodenshelves facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexwoodenshelves", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [143, 64, 255, 255],
+      "comment" : "apexwoodpanel",
+      "brush" : [ [ "clear" ], [ "object", "apexwoodpanel" ] ]
+    },
+
+    {
+      "value" : [255, 64, 207, 255],
+      "comment" : "grandfatherclock facing left",
+      "brush" : [ [ "clear" ], [ "object", "grandfatherclock", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [229, 57, 186, 255],
+      "comment" : "grandfatherclock facing right",
+      "brush" : [ [ "clear" ], [ "object", "grandfatherclock", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 65, 128, 255],
+      "comment" : "apexstatue facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexstatue", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [229, 57, 115, 255],
+      "comment" : "apexstatue facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexstatue", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [255, 64, 96, 255],
+      "comment" : "apexconsolekeyboard facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexconsolekeyboard", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [229, 57, 86, 255],
+      "comment" : "apexconsolekeyboard facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexconsolekeyboard", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [232, 1, 59, 255],
+      "comment" : "alarm",
+      "brush" : [ [ "clear" ], [ "object", "alarm" ] ]
+    },
+
+    {
+      "value" : [206, 32, 119, 255],
+      "comment" : "apexmedsign",
+      "brush" : [ [ "clear" ], [ "object", "apexmedsign" ] ]
+    },
+
+    {
+      "value" : [255, 64, 143, 255],
+      "comment" : "screenplanet",
+      "brush" : [ [ "clear" ], [ "object", "screenplanet" ] ]
+    },
+
+    {
+      "value" : [90, 241, 204, 255],
+      "comment" : "apexbrainjar facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexbrainjar", { "direction" : "left" } ] ]
+    },
+
+    {
+      "value" : [80, 217, 183, 255],
+      "comment" : "apexbrainjar facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexbrainjar", { "direction" : "right" } ] ]
+    },
+
+    {
+      "value" : [90, 241, 143, 255],
+      "comment" : "apexlocker facing left",
+      "brush" : [ [ "clear" ], [ "object", "apexlocker", { "direction" : "left", "parameters" : { "treasurePools" : [ "apexlockertreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [80, 217, 128, 255],
+      "comment" : "apexlocker facing right",
+      "brush" : [ [ "clear" ], [ "object", "apexlocker", { "direction" : "right", "parameters" : { "treasurePools" : [ "apexlockertreasure" ] } } ] ]
+    },
+
+    {
+      "value" : [90, 217, 80, 255],
+      "comment" : "apextablelamp",
+      "brush" : [ [ "clear" ], [ "object", "apextablelamp" ] ]
+    },
+
+    {
+      "value" : [32, 77, 28, 255],
+      "comment" : "apextablelamp - off state",
+      "brush" : [ [ "clear" ], [ "object", "apextablelamp", { "parameters" : { "defaultLightState" : false } } ] ]
+    },
+
+    {
+      "value" : [217, 80, 80, 255],
+      "comment" : "redflask",
+      "brush" : [ [ "clear" ], [ "object", "redflask" ] ]
+    },
+
+    {
+      "value" : [132, 217, 80, 255],
+      "comment" : "greenflask",
+      "brush" : [ [ "clear" ], [ "object", "greenflask" ] ]
+    },
+
+    {
+      "value" : [80, 109, 217, 255],
+      "comment" : "blueflask",
+      "brush" : [ [ "clear" ], [ "object", "blueflask" ] ]
+    },
+
+    {
+      "value" : [250, 200, 250, 255],
+      "comment" : "spacetimeobelisk"
+//      "brush" : [ [ "clear" ], [ "object", "spacetimeobelisk" ] ]
+    },
+
+    // NPC MONSTER SPAWN BRUSHES //
+
+    {
+      "value" : [0, 225, 225, 255],
+      "comment" : "scifiguard",
+      "brush" : [ [ "npc",
+          {
+            "kind" : "npc",
+            "species" : "avian",
+            "typeName" : "pyramidguard"
+          }
+        ] ]
+    },
+
+    // STAGEHANDS
+
+    {
+      "value" : [166, 76, 255, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "scifidungeon.entrance"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 254, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "scifidungeon.treasureroom"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 253, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "scifidungeon.verticalshaft"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 252, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "scifidungeon.chamber"
+          }
+        }
+      ] ]
+    },
+
+    {
+      "value" : [166, 76, 251, 255],
+      "comment" : "questlocation stagehand",
+      "brush" : [ [ "stagehand",
+        {
+          "type" : "questlocation",
+          "parameters" : {
+            "broadcastArea" : [-8, -16, 8, 16],
+            "locationType" : "scifidungeon.deadend"
+          }
+        }
+      ] ]
+    }
+  ],
+
+  "parts" : [
+    {
+      "name" : "entrance1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotCombineWith", [ "" ] ],
+        [ "doNotConnectToPart", [ "2", "3", "4", "6" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "entrance1.png", "entrance1a.png" ] ]
+    },
+
+    {
+      "name" : "1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "image", [ "1.png", "1a.png" ] ]
+    },
+
+    {
+      "name" : "2",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+        [ "doNotConnectToPart", [ "2" ] ]
+      ],
+      "def" : [ "image", [ "2.png", "2a.png" ] ]
+    },
+
+    {
+      "name" : "3",
+      "rules" : [
+        [ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "image", [ "3.png", "3a.png" ] ]
+    },
+
+    {
+      "name" : "4",
+      "rules" : [
+        [ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "image", [ "4.png", "4a.png" ] ]
+    },
+
+    {
+      "name" : "5",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+        [ "doNotConnectToPart", [ "3" ] ]
+      ],
+      "def" : [ "image", [ "5.png", "5a.png" ] ]
+    },
+
+    {
+      "name" : "6",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+        [ "doNotConnectToPart", [ "6" ] ]
+      ],
+      "def" : [ "image", [ "6.png", "6a.png" ] ]
+    },
+
+    {
+      "name" : "7",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "7.png", "7pod.png" ] ]
+    },
+
+    {
+      "name" : "endleft",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endleft.png", "endlefta.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endleft2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endleft.png", "endleftb.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endright",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endright.png", "endrighta.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endright2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endright.png", "endrightb.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endrightsmall",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endrightsmall.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endleftsmall",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endleftsmall.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endbottom",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endbottom.png", "endbottoma.png" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "endtop",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "image", [ "endtop.png" ] ],
+      "chance" : 0
+    }
+  ]
+}

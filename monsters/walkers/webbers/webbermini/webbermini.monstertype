@@ -1,0 +1,230 @@
+{
+  "type" : "webbermini",
+  "shortdescription" : "Webber Juvenile",
+  "description" : "A big spider. Who doesn't love spiders?",
+
+  "categories" : [ "webbermini" ],
+  "parts" : [ "body" ],
+
+  "animation" : "webbermini.animation",
+
+  "dropPools" : [
+    {
+    "default" : "poptopTreasure",
+    "bow" : "poptopHunting",
+    "firebow" : "poptopHunting",
+    "icebow" : "poptopHunting",
+    "poisonbow" : "poptopHunting",
+    "electricbow" : "poptopHunting",
+    "cosmicbow" : "poptopHunting",
+    "radioactivebow" : "poptopHunting",
+    "shadowbow" : "poptopHunting"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua",
+      "/scripts/golemancer/gol_monstermain.lua"
+    ],
+  "tickEvoTime" : 3,
+  "evolutions" : [ "/scripts/golemancer/evolutions/webber.evo" ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "facingMode" : "transformation",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [
+        {
+          "name" : "action-aggrohop",
+          "parameters" : {
+            "aggroHopSpeed" : 0,
+            "aggroHopWait" : 0,
+            "onGround" : false
+          }
+        }
+      ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 7,
+          "parameters" : {
+            "maximumRange" : 20,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.4,
+
+            "chargeTime" : 0.4,
+            "chargeSpeed" : 40,
+            "chargeControlForce" : 900,
+            "chargeState" : "charge",
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.2,
+            "winddownStopForce" : 1000,
+            "winddownState" : "idle"
+          }
+        }
+      ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-crawl"
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-crawl"
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-crawl",
+          "cooldown" : 1,
+          "parameters" : {
+            "wanderTime" : 1.5,
+            "stopForce" : 200,
+            "idleTime" : 1.0
+          }
+        }
+      ],
+
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "ocueye",
+            "projectileParameters" : {},
+            "power" : 0,
+            "aimDirection" : [-1, 2],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0.4]
+          }
+        }
+      ],
+
+      "concurrentActions" : [ ],
+
+      "concurrentHostileActions" : [ ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.875, 1.0], [1.375, 0.7], [1.375, -1.875], [0.875, -2.375], [-0.875, -2.375], [-1.375, -1.875], [-1.375, 0.7], [-0.875, 1.0] ],
+      "damage" : 11,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ "weakpoison" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" :[ [0.875, 1.0], [1.375, 0.7], [1.375, -1.875], [0.875, -2.375], [-0.875, -2.375], [-1.375, -1.875], [-1.375, 0.7], [-0.875, 1.0] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 10,
+      "runSpeed" : 18,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 65
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "webbermini" }
+  }
+}

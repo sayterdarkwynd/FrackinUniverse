@@ -1,19 +1,17 @@
 {
-  "itemName" : "tentacleproduce",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "tentacleproduce.png",
-  "description" : "Lashes out at those who harm you.",
-  "shortdescription" : "Tentacles",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-          "thornsstranglevinesuper"
-    ] ]
+	"itemName": "tentacleproduce",
+	"inventoryIcon": "tentacleproduce.png",
+	"rarity": "Legendary",
+	"price": 5,
+	"category": "food",
+
+	"tooltipKind": "food",
+	"shortdescription": "Tentacles",
+	"description": "^yellow;^reset;^cyan;200% Physical Thorns^reset;: 1m",
+	"effects": [
+		[{
+			"effect": "thornsstranglevinesuper",
+			"duration": 60
+		}]
+	]
 }

@@ -1,0 +1,20 @@
+{
+  "itemName" : "bowlofbrains",
+  "rarity" : "uncommon",
+  "price" : 42,
+  "category" : "preparedFood",
+  "inventoryIcon" : "bowlofbrains.png",
+  "description" : "Looks like a nice, wholesome bowl of mashed brains matter. \n^blue;+^white;1 ^blue;Madness^reset; ^red;Type: Raw Meat^reset;",
+  "shortdescription" : "Bowl o' Brains",
+  "effects" : [ [
+    "madnessgain",
+	{ "effect" : "meat_raw" }
+  ] ],
+  "foodValue" : 30,
+  "tooltipKind" : "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 0.5,
+  "blockingEffects" : [ "wellfed","negativehealth5" ]
+}

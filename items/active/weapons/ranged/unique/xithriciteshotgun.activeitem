@@ -1,0 +1,105 @@
+{
+  "itemName" : "xithriciteshotgun",
+  "price" : 160,
+  "inventoryIcon" : "xithriciteshotgun.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Reach into infinity and channel the power of a dying star.
+^cyan;Cosmic blasts^reset;",
+  "shortdescription" : "Xithricite Shotgun",
+  "category" : "shotgun",
+  "level" : 6,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","shotgun", "energy", "upgradeableWeapon","xithricite"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "xithriciteshotgun.png",
+    "middlefullbright" : "xithriciteshotgunfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.8125, 0.1875]
+		  }
+		}
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/marauder9.wav" ],
+	  "cooldown": [ "/sfx/weapons/shotgunreload.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.8125, 0.1875],
+  "muzzleOffset" : [2.625, 0.375],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1.25,
+    "baseDps" : 8.65,
+    "useEnergy" : true,
+    "energyUsage" : 39.5,
+    "inaccuracy" : 0.095,
+
+    "projectileCount" : 8,
+    "fireType" : "auto",
+    "projectileType" : "xithshot",
+
+    "projectileParameters" : {
+      "knockback" : 6
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 3,
+	      "weaponRotation" : 8,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "cooldown" : {
+	      "duration" : 0.25,
+	      "armRotation" : -7,
+	      "weaponRotation" : -360,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 6,
+  "isReloader" : 1,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 600,
+
+  "altAbilityType" : "swtjc_ewg_globelauncher",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

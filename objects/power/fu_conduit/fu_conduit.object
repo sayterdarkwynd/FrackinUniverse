@@ -3,8 +3,8 @@
   "colonyTags" : ["science"],
   "printable" : false,
   "rarity" : "common",
-  "description" : "Transmits power. Use with care. You may need ^cyan;Watchers^reset; to keep distant stations running.",
-  "shortdescription" : "Wire Relay",
+  "description" : "Transmits power. Use with care. ^blue;Upper Input^reset;: On/Off Switch. You may need ^cyan;Watchers^reset; to keep distant stations running.",
+  "shortdescription" : "Power Relay",
   "race" : "generic",
 
   "category" : "wire",
@@ -23,23 +23,16 @@
     }
   ],
 
-  "scripts" : [ "/objects/power/fu_conduit/fu_conduit.lua",
-                "/objects/power/isn_sharedpowerscripts.lua",
-		"/objects/isn_sharedobjectscripts.lua"],
-  "scriptDelta" : 15,
+  "scripts" : [ "fu_conduit.lua" ],
+  "scriptDelta" : 0,
 
   "animation" : "/objects/power/fu_conduit/fu_conduit.animation",
-
-  "animationParts" : {
-    "switch" : "fu_conduit.png"
-  },
+  "animationParts" : { "switch" : "fu_conduit.png" },
   "animationPosition" : [0, 0],
 
   "inputNodes" : [ [-1, -1], [-1, 0] ],
   "outputNodes" : [ [0, -1] ],
 
-  "isn_powerSupplier" : true,
-  "isn_powerReciever" : true,
-  "isn_powerPassthrough" : true
+  "powertype" : "relay"
 
 }

@@ -1,0 +1,50 @@
+{
+  "type" : "spiderdroidhostile",
+  "baseType" : "hostilefuhard",
+
+  "levelVariance" : [1, 2],
+
+  "dropPools" : [ "furobotTreasure" ],
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "leapWindup" : 0.85,
+      "rangedAimTime" : 0.1,
+      "rangedWindupTime" : 0.4,
+      "rangedMinFireTime": 0.15,
+      "rangedMaxFireTime": 1
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0,[
+          {
+            "primary" : [
+              "spiderdroidbeam","spiderdroidblast"
+            ]
+          }
+      ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 60.0
+      },
+      "maxEnergy" : {
+        "baseValue" : 90.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.7
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      }
+    }
+  }
+}

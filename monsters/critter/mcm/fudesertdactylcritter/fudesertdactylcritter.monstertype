@@ -1,0 +1,188 @@
+{
+  "type" : "fudesertdactylcritter",
+  "shortdescription" : "Pterodactyl",
+  "description" : "A small flying beast that can sail through the sky on wings stretching between its front and hind legs.",
+
+  "categories" : [ "fudesertdactylcritter_parts" ],
+  "parts" : [ "body", "head", "wings" ],
+  "partParameters" : "fudesertdactylcritter.partparams",
+
+  "animation" : "fudesertdactylcritter.animation",
+  "reversed" : true,
+
+  "dropPools" : [
+    {
+      "default" : "empty",
+      "bow" : "huntingflying",
+      "brain" : "brain"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "seeThroughLiquid" : false,
+    "behaviorConfig" : {
+      "damageOnTouch" : false,
+
+      "targetQueryRange" : 0,
+      "targetOnDamage" : false,
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      // Attack specific parameters
+      "swoopVelocity" : 30,
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [ ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "targetOffset" : [0,5],
+            "minRange" : 5
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "targetOffset" : [0,5],
+            "minRange" : 5
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-fly",
+          "cooldown" : [5,20],
+          "parameters" : {
+            "wanderTime" : [10,40],
+            "groundDistance" : 20,
+            "ceilingDistance" : 10,
+            "xVelocity" : 8,
+            "yVelocity" : 12
+          }
+        },
+        {
+          "name" : "land-fly",
+          "parameters" : {
+            "flySpeed" : 8,
+            "flyControlForce" : 25,
+            "landCheckDistance" : 40,
+            "idleTime" : 40
+          }
+        }
+      ],
+
+      "concurrentActions" : [ ],
+
+      "concurrentHostileActions" : [ ]
+    },
+
+    "baseSkills" : [ "flyingSwoopAttack" ],
+
+    "metaBoundBox" : [-1.625, -1.25, 1.875, 1.625],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "gravityEnabled" : false,
+      "collisionPoly" : [ [-1.625, -1.25], [1.875, -1.25], [1.875, 1.625], [-1.0, 1.625] ],
+
+      "mass" : 1.0,
+      "flySpeed" : 16,
+      "airFriction" : 0.5,
+      "airForce" : 15.0
+    },
+
+    "knockoutTime" : 0,
+    "knockoutEffect" : "blink",
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+
+    "touchDamage" : {
+      "poly" : [ [0.625, 1], [1, 0.625], [1, -0.625], [0.625, -1], [-0.625, -1], [-1, -0.625], [-1, 0.625], [-0.625, 1] ],
+      "damage" : 0,
+
+      "teamType" : "passive",
+      "damageSourceKind" : "default",
+      "statusEffects" : [ ]
+    },
+
+    "damageTeamType" : "passive",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 40
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+      },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "relocatable" : true,
+    "nametagColor" : [64, 200, 255]
+  }
+}

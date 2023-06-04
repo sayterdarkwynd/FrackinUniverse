@@ -1,0 +1,27 @@
+[
+	[
+		{
+			"op" : "add",
+			"path" : "/effects/0/-",
+			"value" : "plant_food"
+		},
+		{
+			"op" : "replace",
+			"path" : "/description",
+			"value" : "Warty but not very weedy. ^green;Type: Vegetable^reset;"
+		}
+	],
+	[
+		{
+			"op" : "test",
+			"path" : "/maxStack"
+		},
+		{
+			"op" : "replace",
+			"path" : "/maxStack",
+			"value" : 20
+		}
+	],
+	[{"op":"test","path":"/learnBlueprintsOnPickup/1"},{"op":"remove","path":"/learnBlueprintsOnPickup/1"}],
+	[{"op":"test","path":"/learnBlueprintsOnPickup/0"},{"op":"remove","path":"/learnBlueprintsOnPickup/0"}]
+]

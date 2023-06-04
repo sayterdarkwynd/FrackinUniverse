@@ -1,0 +1,20 @@
+{
+  "itemName" : "blam",
+  "rarity" : "rare",
+  "price" : 35,
+  "category" : "preparedFood",
+  "inventoryIcon" : "blam.png",
+  "description" : "'Blam', short for Butchered Lambian, a now extinct Floran favorite.\n^cyan;+^white;10% ^pink;Fire ^cyan;Res^gray;, ^pink;Fire ^cyan;Immunity ^gray;(^white;2m^gray;)^reset; ^orange;Type: Cooked Meat^reset;",
+  "shortdescription" : "Blam",
+  "effects" : [ [
+  { "effect": "fireblock1" },
+  { "effect" : "meat_cooked" }
+  ] ],
+  "foodValue" : 40,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 2,
+  "blockingEffects" : ["wellfed"]
+}

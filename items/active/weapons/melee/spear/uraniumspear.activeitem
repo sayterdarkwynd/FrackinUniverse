@@ -1,0 +1,53 @@
+{
+  "itemName" : "uraniumspear",
+  "price" : 1600,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "Rare",
+  "description" : "Infused with deadly enriched uranium. That's kind of you.
+^cyan;Hunting weapon^reset;",
+  "shortdescription" : "Uranium Lance",
+  "tooltipKind" : "sword2",
+  "category" : "lance",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear","radioactive", "upgradeableWeapon","uranium"],
+
+  "inventoryIcon" : "uraniumspear.png",
+  //"collectablesOnPickup" : { "fu_weaponspear" : "uraniumspear" },
+  "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "uraniumspear.png",
+    "bladefullbright" : "uraniumspearfullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "radioactive",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "heavyspearcombo",
+  "primaryAbility" : {
+    "scripts" : [],
+
+    "fireTime" : 0.92,
+    "baseDps" : 9.92,
+    "damageConfig" : {
+      "damageSourceKind" : "radioactivebow",
+      "statusEffects" : [ "radiationburn" ],
+      "knockback" : 10
+    }
+  },
+  "altAbilityType" : "barrier",
+  "altAbility" : { },
+
+  "critChance" : 2,
+  "critBonus" : 8,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

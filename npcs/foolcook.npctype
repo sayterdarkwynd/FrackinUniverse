@@ -1,0 +1,209 @@
+{
+   "type":"foolcook",
+   "baseType":"merchanttenant",
+  "persistent" : true,
+  "damageTeamType" : "friendly",
+
+  "dropPools" : [ "basicTreasure" ],
+
+  "scripts" : [
+    "/npcs/bmain.lua"
+  ],
+  "initialScriptDelta" : 5,
+  "scriptConfig" : {
+    "behavior" : "merchant",
+
+    "behaviorConfig" : {
+      "noticePlayersRadius" : 20,
+      "hostileDamageTeam" : { "type" : "enemy", "team" : 1 }
+    },
+
+    "questGenerator" : {
+      "pools" : ["common", "merchant"],
+      "enableParticipation" : true,
+
+      "timeLimit" : 13,
+      "chance" : 0.01,
+      "nearbyQuestLimit" : 1,
+      "nearbyQuestRange" : 30
+    },
+
+    "reactions" : {
+      "spontaneous" : [
+
+        [2.0, "sit", { "timeRange" : [0.6,0.2]}],
+        [1.0, "wander", { "timeRange" : [0.2, 0.6] }]
+      ]
+    },
+
+    "merchant" : {
+         "waitTime":40,
+         "storeRadius":10,
+      "poolsFile" : "/npcs/merchantpools.config",
+         "categories":{
+            "default": ["foolcook"],
+            "glitch": ["foolcook"]
+         },
+         "buyFactorRange":[
+            2.0,
+            4.0
+         ],
+         "sellFactorRange":[
+            0.1,
+            0.1
+         ],
+         "numItems":10,
+         "paneLayoutOverride":{
+            "windowtitle":{
+               "title": "The Burger Fool",
+               "subtitle":"  Dinner and a... show?"
+            }
+         }
+      },
+      "dialog":{
+         "merchant":{
+            "start":{
+               "default":{
+                  "default":[
+                     "Distraught. How am I supposed to give quality customer service when I voice my loathing with every sentence?",
+                     "Uninterested. Welcome to Burger Fool, where even the fools eat like kings.",
+                     "Pained. Oh, milord! What can this humble fool do for you today?"
+                  ]
+               },
+               "glitch":{
+                  "default":[
+                     "Distraught. How am I supposed to give quality customer service when I voice my loathing with every sentence?",
+                     "Uninterested. Welcome to Burger Fool, where even the fools eat like kings.",
+                     "Pained. Oh, milord! What can this humble fool do for you today?"
+                  ]
+               }
+            },
+            "welcome":{
+               "default":{
+                  "default":[
+                     "Tired. Unlimited refills today for just an extra 25 pixels.",
+                     "Irritable. No, milord, we do not have a drive-through, my deepest apologies.",
+                     "Insincere. Can I interest you in a fine meal, my liege?"
+                  ],
+                  "glitch":{
+                     "default":[
+                        "Tired. Unlimited refills today for just an extra 25 Pixels.",
+                        "Irritable. No, milord, we do not have a drive-through, my deepest apologies.",
+                        "Insincere. Can I interest you in a fine meal, my liege?"
+                     ]
+                  },
+                  "end":{
+                     "default":{
+                        "default":[
+                           "Desperate. Please give us a good review - my manager will kill me..."
+                        ]
+                     },
+                     "glitch":{
+                        "default":[
+                           "Desperate. Please give us a good review - my manager will kill me..."
+                        ]
+                     }
+                  },
+                  "follow":"/dialog/merchant.config:follow",
+                  "tout":{
+                    "default":{
+                      "default":[
+                        "Unenthused. Unlimited refills today, for just an extra 25 Pixels!",
+                        "Stressed. Come dine at Burger Fool, where we make burgers and you the rules!",
+                        "Tired. 110% quality, 25/8 - that's our #1 rule! Come one, come all, to Burger Fool!"
+                        ]
+                      },
+                    "glitch":{
+                      "default":[
+                        "Unenthused. Unlimited refills today, for just an extra 25 Pixels!",
+                        "Stressed. Come dine at Burger Fool, where we make burgers and you the rules!",
+                        "Tired. 110% quality, 25/8 - that's our #1 rule! Come one, come all, to Burger Fool!"
+                        ]
+                      }
+                    }
+               },
+
+               "tenant":{
+                  "grumbles":{
+                     "tagCriteria":"/dialog/merchant.config:tagCriteria",
+                     "enclosedArea":"/dialog/merchant.config:enclosedArea",
+                     "otherDeed":"/dialog/merchant.config:otherDeed",
+                     "severe":"/dialog/merchant.config:severe",
+                     "final":"/dialog/merchant.config:final"
+                  },
+                  "arrivedHome":{
+                     "beacon": {
+                      "default":{
+                        "default":[
+                          "Uninterested. Welcome to Burger Fool, where even the fools eat like kings.",
+                          "Pained. Oh, milord! What can this humble fool do for you today?",
+                          "Insincere. Can I interest you in a fine meal, my liege?"
+                        ]
+                      },
+                      "glitch":{
+                        "default":[
+                          "Uninterested. Welcome to Burger Fool, where even the fools eat like kings.",
+                          "Pained. Oh, milord! What can this humble fool do for you today?",
+                          "Insincere. Can I interest you in a fine meal, my liege?"
+                        ]
+                      }
+                    },
+                     "rent":{
+                     "default":{
+                      "default":[
+                        "Worried. We don't have Pixels to spare, so I hope you'd have this - it might be a collectible some day!",
+                        "Embarassed. I'm still living on food stamps, so this is all I've got to pay my rent.",
+                        "Insincere. Here's something for your troubles, I'm sure you'd like it!"
+                      ]
+},
+                      "glitch":{
+                      "default":[
+                        "Worried. We don't have Pixels to spare, so I hope you'd have this - it might be a collectible some day!",
+                        "Embarassed. I'm still living on food stamps, so this is all I've got to pay my rent.",
+                        "Insincere. Here's something for your troubles, I'm sure you'd like it!"
+                      ]
+}
+                    }
+                  }
+               }
+            }
+         }
+      }
+   },
+   "matchColorIndices":true,
+   "items":{
+      "override":[
+         [
+            0,
+            [
+               {
+                  "chest":[
+                     {
+                        "name":"peasantchest",
+                        "parameters":{
+                           "colorIndex":9
+                        }
+                     }
+                  ],
+                  "legs":[
+                     {
+                        "name":"peasantlegs",
+                        "parameters":{
+                           "colorIndex":9
+                        }
+                     }
+                  ],
+                  "head":[
+                     {
+                        "name":"jesterhead",
+                        "parameters":{
+                           "colorIndex":0
+                        }
+                     }
+                  ]
+               }
+            ]
+         ]
+      ]
+   }
+}

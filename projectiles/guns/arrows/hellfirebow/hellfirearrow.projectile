@@ -1,0 +1,29 @@
+{
+  "projectileName" : "hellfirearrow",
+  "physics" : "arrownosticky",
+  "bounces" : 0,
+  "image" : "hellfirearrow.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 3,
+  "emitters" : [ "fireplasma", "flames", "fireplasma", "flames", "fireplasma", "flames", "fireplasma", "flames", "fireplasma", "flames", "fireplasma", "flames" ],
+  "timeToLive" : 30,
+  "pointLight" : true,
+  "lightColor" : [235, 126, 2],
+  "power" : 20,
+  "knockback" : 10,
+  "fullbright" : true,
+  "knockbackDirectional" : true,
+  "speed" : 80,
+  "damageKind" : "firebow",
+  "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ],
+
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "ignusinvis",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.4,
+      "angleAdjust" : 0
+    }
+  ]
+}

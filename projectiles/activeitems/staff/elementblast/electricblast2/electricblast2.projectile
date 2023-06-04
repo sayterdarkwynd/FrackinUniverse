@@ -1,0 +1,23 @@
+{
+  "projectileName" : "electricblast2",
+  "image" : "electricblast2.png",
+  "physics" : "laser",
+  "animationCycle" : 0.4,
+  "frameNumber" : 4,
+  "pointLight" : true,
+  "fullbright" : true,
+  "lightColor" : [30,144,255],
+  "power" : 10,
+  "speed" : 35,
+  "damagePoly" : [ [-18, 0], [-6, -6], [0, -18], [6, -6], [18, 0], [6, 6], [0, 18], [-6, 6] ],
+  "damageKind" : "electricplasma",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/electricexplosionknockbackstatus.config"
+    }
+  ],
+  "emitters" : [ "electricplasma" ],
+  "statusEffects" : ["electrified"],
+  "bounces" : 0
+}

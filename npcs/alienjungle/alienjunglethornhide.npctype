@@ -1,0 +1,96 @@
+{
+  "type" : "alienjunglethornhide",
+  "baseType" : "hostile",
+
+  "disableWornArmor" : false,
+  "innateStatusEffects" : [ "regeneration2" ],
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Attack!"
+          ]
+        },
+        "floran" : {
+          "default" : [
+            "Who daress intrude upon ssacred landss?",
+			"Sshiny thingss belongss to tribe! Not you!",
+            "Tribe hass lived here for aeonss!",
+            "Devour meatss! Devour sshiniess! Floran becomess powerful!"
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+      "runSpeed" : 14,
+	  "walkSpeed" : 14,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    },
+    "mass" : 2.0
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "wildfungushead" }
+            ],
+            "chest" : [
+              { "name" : "wildfunguschest", "parameters" : { "statusEffects" : [ "thorns" ] } }
+            ],
+            "legs" : [
+              { "name" : "wildfunguspants" }
+            ],
+            "primary" : [
+			  { "name" : "npcfeneroxspear", "parameters" : { "primaryAbility" : { "damageConfig" : { "statusEffects" : ["weakpoison"] } } } }
+			],
+            "sheathedprimary" : [
+			  { "name" : "npctungstenbow", "parameters" : { "primaryAbility" : { "projectileType" : "chargedpoisonarrow", "powerProjectileType" : "chargedpoisonarrow" } } }
+			]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+	"knockbackStunTime" : {
+		"baseValue" : 0.0
+	},
+	"grit" : {
+		"baseValue" : 1.0
+	},
+	  "poisonResistance" : {
+        "baseValue" : 0.5
+      },
+      "fireResistance" : {
+        "baseValue" : -0.5
+      },
+	  "poisonStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+      "maxHealth" : {
+        "baseValue" : 130.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 1.5
+      },
+	"stunImmunity" : {
+		"baseValue" : 1.0
+	},
+      "maxEnergy" : {
+        "baseValue" : 20.0
+      }
+    }
+  }
+}

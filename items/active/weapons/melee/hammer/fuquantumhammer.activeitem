@@ -5,13 +5,13 @@
   "rarity" : "rare",
   "description" : "Straddles two universes. Amazing.",
   "shortdescription" : "Quantum Hammer",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "hammer",
   "category" : "hammer",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer"],
+  "itemTags" : ["weapon","melee","hammer","cosmic", "upgradeableWeapon"],
   "level" : 5,
   "inventoryIcon" : "fuquantumhammer.png",
-
+  //"collectablesOnPickup" : { "fu_weaponhammer" : "fuquantumhammer" },
   "animation" : "hammer.animation",
   "animationParts" : {
     "handle" : "",
@@ -19,7 +19,7 @@
   },
   "animationCustom" : {
     "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-3.0, 1.5]
+      "offset" : [-2.0, 1.5]
     }}}},
     "sounds" : {
       "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
@@ -33,47 +33,15 @@
   "primaryAbilityType" : "hammersmash",
   "primaryAbility" : {
     "fireTime" : 0.78,
-    "baseDps" : 13,
-    "stances" : {
-      "idle" : {
-        "armRotation" : -10,
-        "weaponRotation" : -10,
-        "weaponOffset" : [0.5, 1.75]
-      },
-      "windup" : {
-        "duration" : 0.8,
-        "armRotation" : 90,
-        "weaponRotation" : -10,
-        "weaponOffset" : [0.4, 1.75],
-
-        // Windup animation
-        "idleHammerAngle" : -10,
-        "windupHammerAngle" : 0,
-        "dropHammerAngle" : 60,
-        "bounceHammerAngle" : 55,
-
-        "minWindup" : 0.7,
-        "windupBaseAngle" : -10,
-        "windupAngleRange" : 70
-      },
-      "preslash" : {
-        "duration" : 0.025,
-        "armRotation" : 55,
-        "weaponRotation" : -45,
-        "weaponOffset" : [0.4, 2.0]
-      },
-      "fire" : {
-        "duration" : 0.4,
-        "armRotation" : -35,
-        "weaponRotation" : -55,
-        "smashTimer" : 1.5,
-        "weaponOffset" : [0.6, 2.0]
-      }
-    }
+    "baseDps" : 13
   },
 
   "altAbilityType" : "elementalaura",
   "altAbility" : { },
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "critChance" : 5,
+  "critBonus" : 5,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "stunChance" : 7
 }

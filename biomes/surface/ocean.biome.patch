@@ -1,0 +1,69 @@
+[
+  {
+    "op": "replace",
+    "path": "/hueShiftOptions",
+    "value": [-30, -20, -10, 0, 10]
+  },
+
+  {
+    "op": "replace",
+    "path": "/surfacePlaceables/items/0/distribution",
+    "value": "/biomes/distributions.config:overgroundChests"
+  },
+
+{"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "fuencounters", "fulabs", "fubandits", "newhumanmicro", "newavianmicro", "furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter" ]
+  }
+},
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
+  }
+},
+{"op":"add","path":"/surfacePlaceables/items/-","value":{
+  "mode" : "floor",
+  "priority" : 1.0,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+  "type" : "object",
+  "objectSets" : [
+    {
+      "pool" : [
+      [0.33, "emeraseed" ],
+      [0.33, "feyaseed" ],
+      [0.33, "oceaniteseed" ]
+      ],
+      "parameters" : { "startingStage" : 3 }
+    }
+  ]
+}
+},
+
+{"op":"add","path":"/spawnProfile/groups/-",
+"value":{
+
+        "select" : 3,
+        "pool" : [
+          [ 0.1, "fualbatrosscritter" ],
+          [ 0.1, "fudodocritter" ],
+          [ 0.1, "fufirecrab" ],
+          [ 0.1, "aquapodflyer" ],
+          [ 0.15, "bee_loamzipper" ],
+          [ 0.3, "bee_aquarum" ]
+        ]
+      }
+}
+
+]

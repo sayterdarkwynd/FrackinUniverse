@@ -1,0 +1,70 @@
+{
+  "itemName" : "fuxithricitehead",
+  "price" : 750,
+  "inventoryIcon" : "icons.png:head",
+  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "legendary",
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Xithricite Weapons: +^green;3^reset;% Crit
+^yellow;^reset; ^cyan;Immune^reset;: All Radiation, Pressure, Shadow Taint, Aether, Insanity, Oxygen",
+  "shortdescription" : "Xithricite Helm",
+  "category" : "headarmour",
+  "tooltipKind" : "armornew2",
+  "itemTags" : [ "upgradeableWeapon", "balanced" ],
+  "maleFrames" : "head.png",
+  "femaleFrames" : "head.png",
+  "mask" : "mask.png",
+
+  "level" : 6,
+  //"collectablesOnPickup" : { "fu_armorbalanced" : "fuxithricitehead" },
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.15
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.3
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 3
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 3
+    },
+  {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.042857
+    },
+  {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.025715
+    }
+  ],
+
+  "statusEffects" : [
+    "xithricitesetbonus",
+    {
+      "stat" : "fu_xithriciteset_head",
+      "amount" : 1
+    }
+  ],
+
+  "colorOptions" : [
+
+    /* BROWN */
+    { "ffca8a" : "67513b", "e0975c" : "503f2f", "a85636" : "3a2f24", "6f2919" : "29221b", "676f83" : "526b4a","3d3d51" : "3c4d37","24232f" : "283125" }
+
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
+}

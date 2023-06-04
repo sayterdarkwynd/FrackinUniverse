@@ -1,22 +1,18 @@
 {
-  "itemName" : "toxicflower",
-  "rarity" : "common",
-  "price" : 5,
-  "inventoryIcon" : "toxicflowericon.png",
-  "description" : "I don't really know if I should eat this..",
-  "shortdescription" : "Toxic Flower",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 1,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-      {
-        "effect" : "weakpoison",
-        "duration" : 12
-      }
-    ] ]
+	"itemName": "toxicflower",
+	"inventoryIcon": "toxicflowericon.png",
+	"category": "food",
+	"rarity": "common",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^red;Poisoned^reset;: 12s",
+	"shortdescription": "Toxic Flower",
+
+	"effects": [
+		[{
+			"effect": "weakpoison",
+			"duration": 12
+		}]
+	]
 }

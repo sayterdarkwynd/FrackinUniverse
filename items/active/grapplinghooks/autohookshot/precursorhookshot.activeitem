@@ -1,0 +1,42 @@
+{
+  "itemName" : "precursorhookshot",
+  "price" : 11200,
+  "inventoryIcon" : "precursorhookshoticon.png",
+  "rarity" : "rare",
+  "maxStack" : 1,
+  "description" : "Be careful not to get whiplash.",
+  "shortdescription" : "Precursor Hookshot",
+  "largeImage" : "precursorhookshotbig.png",
+  "category" : "Tool",
+  "fireTime" : 0,
+  "twoHanded" : false,
+
+  "scripts" : ["/items/active/grapplinghooks/autohookshot.lua"],
+  "animationScripts" : ["/items/active/grapplinghooks/autohookshotanimation.lua"],
+
+  "animation" : "precursorhookshot.animation",
+
+  "fireOffset" : [0, 0.3],
+  "ropeOffset" : [-1.75, 0.3],
+  "ropeVisualOffset" : [0.75, 0.3],
+
+  "consumeOnUse" : false,
+
+  "projectileType" : "grapplehook",
+  "projectileParameters" : {
+    "speed" : 180,
+    "timeToLive" : 0.6
+  },
+
+  "ropeWidth" : 1.0,
+  "ropeColor" : [255, 235, 76, 255],
+
+  "reelInDistance" : 3.5,
+  "reelOutLength" : 210,
+  "breakLength" : 220,
+
+  "reelSpeed" : 600,
+  "controlForce" : 2000,
+
+  "groundLagTime" : 0.05
+}

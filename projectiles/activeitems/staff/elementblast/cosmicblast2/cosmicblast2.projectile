@@ -1,0 +1,23 @@
+{
+  "projectileName" : "cosmicblast2",
+  "image" : "cosmicblast2.png",
+  "physics" : "laser",
+  "animationCycle" : 0.4,
+  "frameNumber" : 4,
+  "fullbright" : true,
+  "lightColor" : [0,205,255],
+  "power" : 10,
+  "speed" : 35,
+
+  "damageKind" : "cosmicplasma",
+  "damagePoly" : [ [-18, 0], [-6, -6], [0, -18], [6, -6], [18, 0], [6, 6], [0, 18], [-6, 6] ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/cosmicexplosionknockbackstatus.config"
+    }
+  ],
+  "emitters" : [ "cosmicdust" ],
+  "statusEffects" : [ "defenseboostneg20" ],
+  "bounces" : 0
+}

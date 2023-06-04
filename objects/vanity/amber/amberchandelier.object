@@ -1,0 +1,70 @@
+{
+  "objectName" : "amberchandelier",
+  "colonyTags" : ["bees","light"],
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 105,
+
+  "description" : "Glowing ancient tree sap. Nice.",
+  "shortdescription" : "Amber Chandelier",
+  "race" : "glitch",
+
+  "maximumLiquidLevel" : 0.8,
+
+  "statusEffects" : [ ],
+
+  "lightColor" : [179, 149, 107],
+  "lightPosition" : [0, -1],
+
+  "flickerPeriod" : 1,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "inventoryIcon" : "amberchandeliericon.png",
+  "orientations" : [
+
+    {
+      "image" : "amberchandelier.png:<color>.<frame>",
+      "imagePosition" : [-16, -16],
+      "animationPosition" : [-16, -16],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "image" : "amberchandelier.png:<color>.<frame>",
+      "imagePosition" : [-16, -16],
+      "animationPosition" : [-16, -16],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/torch.ogg",
+  "soundEffectRangeMultiplier" : 0.5,
+
+  "animation" : "amberchandelier.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/torch_on1.ogg", "/sfx/objects/torch_on2.ogg" ],
+      "off" : [ "/sfx/objects/torch_off1.ogg", "/sfx/objects/torch_off2.ogg", "/sfx/objects/torch_off3.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "bg" : "amberchandelier.png",
+    "fg" : "amberchandelierlit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, -1] ],
+
+  "interactive" : false
+}

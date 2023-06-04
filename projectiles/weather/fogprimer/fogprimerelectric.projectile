@@ -1,0 +1,56 @@
+{
+  "projectileName" : "fogprimerelectric",
+  "image" : "fogprimer.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "renderLayer" : "Player+1",
+
+  "damagePoly" : [ [-28, 0], [0, 12], [16, 16], [28, 0], [-16, -16], [0, -12] ],
+  "damageKind" : "electric",
+  "emitters" : [ "electricplasma" ],
+  "lightColor" : [190, 222, 255],
+
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "energyburstexplosion",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 1
+    },
+    {
+      "action" : "projectile",
+      "type" : "energyburstexplosionweather",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 1
+    },
+    {
+      "action" : "loop",
+      "count" : 4,
+      "body" : [
+        {
+          "action" : "option",
+          "options" : [
+            {
+              "action" : "particle",
+              "specification" : {
+                "type" : "animated",
+                "animation" : "/animations/fog/electricfog.animation",
+                "size" : 1.0,
+                "timeToLive" : 20.0,
+                "variance" : {
+                  "position" : [3, 0],
+                  "rotation" : 180
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "onlyHitTerrain" : true,
+  "power" : 0.0
+}

@@ -1,0 +1,112 @@
+{
+  "objectName" : "extractionlabadv",
+  "colonyTags" : [ "fu", "science", "scienceoutpost" ],
+  "rarity" : "rare",
+  "race" : "generic",
+  "category" : "^orange;Extraction Device^reset;",
+  "printable" : false,
+  "objectType" : "container",
+  "price" : 450,
+  "inventoryIcon" : "extractionlabicon.png",
+  "description" : "Efficiently extracts useful materials from most blocks. ^cyan;Requires ^orange;30J^cyan; per extraction.^reset; Can be placed on floors -or- ceilings.",
+  "tooltip" : "base",
+  "shortdescription" : "^cyan;Extraction Lab MKII^reset;",
+  "subtitle" : "Resource converter",
+  "orientations" : [
+     {
+      "imageLayers" : [ { "image" : "extractionlabadv.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlabadvlit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+      "animationParts" : {
+          "samplingarrayanim" : "extractionlabadv.png"
+        },
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "extractionlabadv.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlabadvlit.png:<color>.<frame>" } ],
+      "direction" : "right",
+      "animationParts" : {
+          "samplingarrayanim" : "extractionlabadv.png"
+        },
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+     {
+      "imageLayers" : [ { "image" : "extractionlabadv_roof.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlabadv_rooflit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+      "animationParts" : {
+          "samplingarrayanim" : "extractionlabadv_roof.png"
+        },
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "extractionlabadv_roof.png:<color>.<frame>", "fullbright" : true }, { "image" : "extractionlabadv_rooflit.png:<color>.<frame>" } ],
+      "direction" : "right",
+      "animationParts" : {
+          "samplingarrayanim" : "extractionlabadv_roof.png"
+        },
+      "imagePosition" : [0, 0],
+      "frames" : 6,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "animation" : "extractionlabadv.animation",
+  "animationParts" : {"samplingarrayanim" : "extractionlabadv.png"},
+  "scripts" : [ "/scripts/fupower.lua", "/objects/generic/extractionlab_common.lua","/scripts/npcToyObject.lua" ],
+  "scriptDelta" : 5,
+
+  "recipeGroup" : "extractionlab",
+  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+  "slotCount" : 12,
+  "uiConfig" : "/interface/extractor/extractor2.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
+
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "crouchcollect"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  },
+
+  "inputSlot": 3,
+  "powertype" : "input",
+  "isn_requiredPower" : 30,
+  "isn_liquidCollector" : false,
+  "fu_mintick" : 1,
+  "fu_stationTechLevel" : 2,
+  "fu_timerMod" : 2
+}

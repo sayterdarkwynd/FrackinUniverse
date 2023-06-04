@@ -1,0 +1,54 @@
+{
+	"name" : "aetherweathernew3",
+
+	"effectConfig" : {
+		"resistanceTypes" : {
+			"cosmicResistance" : 1.0
+		},
+		"resistanceThreshold" : 0.9,
+		"immunityStats" : [
+			"aetherImmunity"
+		],
+
+		"healthDrain" : 7.0,
+		"hungerDrain" : 0,
+		"energyDrain" : 3.0,
+		"speedPenalty" : 0,
+		"jumpPenalty" : 0,
+
+		"debuffRate" : 3.5,
+		"debuffStartDelay" : 0,
+		"debuffs" : {
+			"maxEnergy" : {
+				"amount" : -11.0,
+				"cap" : -1
+			},
+			"energyRegenPercentageRate" : {
+				"amount" : -0.04,
+				"cap" : 0.1
+			}
+		},
+
+		"modifiers" : {
+			"night" : 1.5
+		},
+
+		"messages" : {
+			"intro" : "ffbiomeaether",
+			"night" : "ffbiomeaethernight"
+		},
+
+		"configPath" : "/stats/effects/fu_weathereffects/new/aether/aetherweathernew3.statuseffect"
+	},
+
+	"defaultDuration" : 5,
+
+	"scripts" : [
+		"aetherweathernew.lua"
+	],
+
+	"animationConfig" : "aetherweathernew.animation",
+
+	"label" : "Extreme Aetheric Atmosphere (Resist: ^#de77ff;Cosmic^reset;)",
+	"icon" : "/interface/statuses/cosmic3.png"
+}

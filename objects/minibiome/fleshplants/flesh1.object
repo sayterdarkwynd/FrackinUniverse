@@ -1,0 +1,32 @@
+{
+  "objectName" : "flesh1",
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 400,
+  "printable" : false,
+  "scannable" : false,
+  "description" : "Fleshy Plant",
+  "shortdescription" : "Fleshy Plant",
+  "race" : "apex",
+
+  "inventoryIcon" : "flesh1.png",
+  "orientations" : [
+    {
+      "dualImage" : "flesh1.png:<color>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/meat_break1.ogg", "/sfx/objects/meat_break2.ogg", "/sfx/objects/meat_break3.ogg" ],
+  "smashParticles" : [ { "count" : 8, "particle" : "fleshshard" } ],
+  "smashDropOptions" : [
+    [ [ "fleshstrand", 2, { } ] ]
+  ],
+  "biomePlaced" : true
+}

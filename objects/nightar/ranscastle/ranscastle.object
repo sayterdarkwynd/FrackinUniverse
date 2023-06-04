@@ -1,0 +1,161 @@
+{
+  "objectName" : "ranscastle",
+  "colonyTags" : ["nightar","commerce"],
+  "rarity" : "legendary",
+  "category" : "other",
+  "description" : "A storefront for the Nightar merchant, Ran, to sell his wares.",
+  "shortdescription" : "Ran's Castle",
+  "race" : "nightar",
+  "price" : 20000,
+  "printable" : false,
+  "lightColor" : [130, 217, 232],
+  "lightPosition" : [0, 4],
+  "interactAction" : "OpenMerchantInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/merchant.config",
+    "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : "Ran's Castle",
+        "subtitle" : "^#b9b5b2;Sells Nightar-themed goods"
+      }
+    },
+    "buyFactor" : 1.0,
+    "sellFactor" : 0.2,
+    "items" : [
+	//=======================> blocks
+      { "item" : "nightarcastleblock", "price" : 8 },
+      { "item" : "nightarcastleblock2", "price" : 8 },
+      { "item" : "nightarfloor", "price" : 8 },
+      { "item" : "slopednightarblock", "price" : 8 },
+      { "item" : "nightarshipblock", "price" : 8 },
+	  { "item" : "nightarsupport", "price" : 8 },
+	  { "item" : "nightarsupport2", "price" : 8 },
+	  { "item" : "nightarswall1", "price" : 8 },
+	  { "item" : "nightartechblock", "price" : 8 },
+	  { "item" : "nightarwall2", "price" : 8 },
+      { "item" : "nightarsplatform", "price" : 8 },
+
+	//=======================> Stuff
+
+	  { "item" : "nightaranvil" },
+	  { "item" : "nightaraxedisplay" },
+      { "item" : "nightarbattlestandard" },
+      { "item" : "nightarbed" },
+      { "item" : "nightarbladealtar" },
+      { "item" : "nightarbladedisplay1" },
+      { "item" : "nightarbladedisplay2" },
+      { "item" : "nightarbladedisplay3" },
+      { "item" : "nightarbladedisplay4" },
+      { "item" : "nightarbladedisplay5" },
+	  { "item" : "nightarbladedisplay6" },
+	  { "item" : "nightarbookcase" },
+      { "item" : "nightarbox1" },
+      { "item" : "nightarbox2" },
+      { "item" : "nightarcabinet" },
+      { "item" : "nightarcastledoor" },
+      { "item" : "nightarchair" },
+      { "item" : "nightarchandelier" },
+      { "item" : "nightarchest" },
+      { "item" : "nightarcomputer" },
+	  { "item" : "nightarconsole" },
+	  { "item" : "nightarcouch" },
+      { "item" : "nightardresser" },
+      { "item" : "nightarfridge" },
+      { "item" : "nightarjuicekeg" },
+      { "item" : "nightarlight" },
+      { "item" : "nightarmedievalarmor" },
+      { "item" : "nightarmedievalarmorarmed" },
+      { "item" : "nightarmedievalarmorswitch" },
+      { "item" : "nightarmedievalbookcase" },
+	  { "item" : "nightarmedievalbookcaseswitch" },
+	  { "item" : "nightarmedievalcabinet" },
+      { "item" : "nightarmedievalcellbed" },
+      { "item" : "nightarmedievalchest" },
+      { "item" : "nightarmedievalclock" },
+      { "item" : "nightarmedievalcodex" },
+      { "item" : "nightarmedievalcounter" },
+      { "item" : "nightarmedievaldesk" },
+      { "item" : "nightarmedievaldiningtable" },
+      { "item" : "nightarmedievaldresser" },
+	  { "item" : "nightarmedievalfireplace" },
+	  { "item" : "nightarmedievalflagpole" },
+      { "item" : "nightarmedievalfurnace" },
+      { "item" : "nightarmedievalglobe" },
+      { "item" : "nightarmedievallargecookingpot" },
+      { "item" : "nightarmedievalregister" },
+      { "item" : "nightarmedievalscaffolding" },
+      { "item" : "nightarmedievalshelf" },
+      { "item" : "nightarmedievalstock" },
+      { "item" : "nightarmedievalswitchlever" },
+	    { "item" : "nightarmedievalwallshelf" },
+	    { "item" : "nightarpedestal" },
+      { "item" : "nightarpicture" },
+      { "item" : "nightarsbannersmall" },
+      { "item" : "nightarsbannertorn" },
+      { "item" : "nightarshelf" },
+      { "item" : "nightarshiplight" },
+      { "item" : "nightarsink" },
+      { "item" : "nightarstasispod" },
+      { "item" : "nightarstool" },
+	    { "item" : "nightarstoragelocker" },
+	    { "item" : "nightarstove" },
+      { "item" : "nightarstreetlamp" },
+      { "item" : "nightartable" },
+      { "item" : "nightartablechair" },
+      //{ "item" : "nightarteleporter" },
+      { "item" : "nightarthrone" },
+      { "item" : "nightartinywallswitch" },
+      { "item" : "nightartoilet" },
+      { "item" : "ranscastle" },
+	    { "item" : "nightarshipdoor" },
+      { "item" : "nightarshiphatch" }
+    ]
+  },
+
+  "inventoryIcon" : "icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "ranscastleleft.png:<color>.<frame>", "fullbright" : true }, { "image" : "ranscastleleftlit.png:<color>.<frame>" } ],
+      "direction" : "left",
+
+      "lightPosition" : [-1, 2],
+
+      "imagePosition" : [-64, 0],
+      "frames" : 16,
+      "animationCycle" : 3,
+
+      "spaceScan" : 0.1,
+      "interactiveSpaces": [
+        [-5, 1], [-4, 1], [-3, 1], [-2, 1], [-1, 1], [0, 1],
+        [-5, 2], [-4, 2], [-3, 2], [-2, 2], [-1, 2],
+        [-4, 3], [-3, 3], [-2, 3],
+        [-4, 4], [-3, 4], [-2, 4],
+        [-6, 5], [-5, 5], [-4, 5], [-3, 5], [-2, 5], [-1, 5], [0, 5],
+        [-6, 6], [-5, 6], [-4, 6], [-3, 6], [-2, 6], [-1, 6], [0, 6]
+      ],
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "ranscastleright.png:<color>.<frame>", "fullbright" : true }, { "image" : "ranscastlerightlit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "lightPosition" : [0, 3],
+
+      "imagePosition" : [-64, 0],
+      "frames" : 16,
+      "animationCycle" : 3,
+
+      "spaceScan" : 0.1,
+      "interactiveSpaces": [
+        [6, 1], [5, 1], [4, 1], [3, 1], [2, 1], [1, 1], [0, 1], [-1, 1],
+        [4, 2], [3, 2], [2, 2], [1, 2], [0, 2],
+        [3, 3], [2, 3], [1, 3],
+        [3, 4], [2, 4], [1, 4],
+        [5, 5], [4, 5], [3, 5], [2, 5], [1, 5], [0, 5], [-1, 5],
+        [5, 6], [4, 6], [3, 6], [2, 6], [1, 6], [0, 6], [-1, 6]
+      ],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "soundEffect" : "/sfx/objects/hubbub.ogg"
+}

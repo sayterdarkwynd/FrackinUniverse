@@ -1,0 +1,100 @@
+{
+  "itemName" : "swtjc_ewg_npcbattlerifle",
+  "price" : 0,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "An automatic rifle that fires more powerful rounds than an ordinary assault rifle, with better accuracy, at the cost of rate-of-fire.",
+  "shortdescription" : "NPC Battle Rifle",
+  "tooltipKind" : "gun",
+  "category" : "swtjc_ewg_battleRifle",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","assaultrifle"],
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : { },
+  "animationCustom" : { },
+  "baseOffset" : [-1.0, 0.25],
+  "muzzleOffset" : [0.0, 0.3125],
+
+
+  "magazineSize" : [12,24],
+  "reloadTime" : [0.75,2],
+  "isAmmoBased" : 1,
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.14,
+    "baseDps" : 9.5,
+    "energyUsage" : 14.25,
+    "inaccuracy" : 0.02,
+
+    "fireType" : "auto",
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "knockbackRange" : [5,10]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 4,
+        "weaponRotation" : 4,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.16,
+        "armRotation" : 4,
+        "weaponRotation" : 4,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "fireSounds" : [ "/sfx/gun/pistol1.ogg", "/sfx/gun/pistol2.ogg", "/sfx/gun/pistol3.ogg", "/sfx/gun/pistol4.ogg", "/sfx/gun/pulserifle1.ogg", "/sfx/gun/pulserifle2.ogg", "/sfx/gun/revolver1.ogg", "/sfx/gun/revolver2.ogg", "/sfx/gun/rifle1.ogg", "/sfx/gun/rifle2.ogg", "/sfx/gun/shotgun1.ogg", "/sfx/gun/shotgun2.ogg", "/sfx/gun/shotgun3.ogg", "/sfx/gun/shotgun4.ogg", "/sfx/gun/sniper1.ogg", "/sfx/gun/sniper2.ogg", "/sfx/gun/sniper3.ogg", "/sfx/gun/sniper4.ogg" ],
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "animationParts" : {
+      "butt" : {
+        "path" : "/items/active/weapons/ranged/assaultrifle/butt/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "middle" : {
+        "path" : "/items/active/weapons/ranged/assaultrifle/middle/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "barrel" : {
+        "path" : "/items/active/weapons/ranged/shotgun/barrel/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+    },
+    "gunParts" : ["butt", "middle", "barrel"],
+    "altAbilities" : [ ],
+    "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
+    "iconDrawables" : ["butt", "middle", "barrel"]
+  }]
+}

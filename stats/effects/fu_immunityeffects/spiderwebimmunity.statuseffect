@@ -1,9 +1,13 @@
 {
-  "name" : "spiderwebimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "spiderwebimmunity.lua"
-  ]
+	"name": "spiderwebimmunity",
+	"effectConfig": {
+		"stats": [{
+			"stat": "spiderwebImmunity",
+			"amount": 1
+		}]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

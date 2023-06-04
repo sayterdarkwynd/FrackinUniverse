@@ -1,0 +1,27 @@
+{
+	"itemName": "cinnamonoatmeal",
+	"rarity": "uncommon",
+	"price": 35,
+	"category": "preparedFood",
+	"inventoryIcon": "cinnamonoatmeal.png",
+	"description": "A breakfast favorite among humans. Great with a side of milk. \n^cyan;+^green;12% Energy^reset; ^green;Type: Grain^reset;",
+	"shortdescription": "Cinnamon Oatmeal",
+	"effects": [
+		[{
+				"effect": "maxenergyscalingboostfood",
+                "duration": 250,
+                "energyModifier": 1.12
+			},
+			{
+				"effect": "plant_food"
+			}
+		]
+	],
+	"foodValue": 35,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}

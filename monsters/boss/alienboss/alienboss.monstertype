@@ -1,0 +1,355 @@
+{
+	"type": "fleshtyrant",
+	"shortdescription": "Flesh Tyrant",
+	"description": "Perfection.",
+	"categories": ["alienboss"],
+	"parts": ["body"],
+	"animation": "alienboss.animation",
+	"reversed": true,
+	"dropPools": [],
+	"baseParameters": {
+		"scripts": [
+			"/monsters/monster.lua",
+			"/monsters/fu_bossExtraResistsHandler.lua"
+		],
+		"behavior": "monster",
+		"bossExtraResistsValue": 0.5,
+		"behaviorConfig": {
+			"damageOnTouch": true,
+			"targetQueryRange": 20,
+			"targetOnDamage": true,
+			"keepTargetInSight": true,
+			"keepTargetInRange": 50,
+			"targetOutOfSightTime": 4,
+			"foundTargetActions": [{
+				"name": "action-aggrohop"
+			}],
+			"fleeActions": [],
+			"hostileActions": [{
+					"name": "action-fire",
+					"cooldown": 4.0,
+					"parameters": {
+						"requireLineOfSight": true,
+						"maximumRange": 20,
+						"minimumRange": 5,
+						"windupState": "windup",
+						"windupTime": 0.5,
+						"projectileType": "lunarishotwobblepsionic",
+						"projectileCount": 12,
+						"power": 2,
+						"fireDelay": 0.00001,
+						"projectileInterval": 0.00001,
+						"inaccuracy": 0.03,
+						"projectileSpeed": 50,
+						"gravityMultiplier": 0.6,
+						"fireOffset": [1.0, 0.7],
+						"aimAtTarget": true,
+						"fireState": "charge",
+						"fireSound": "",
+						"fireArc": false,
+						"winddownState": "winddown",
+						"winddownTime": 1
+					}
+				},
+				{
+					"name": "action-charge",
+					"cooldown": 1.5,
+					"parameters": {
+						"maximumRange": 15,
+						"minimumRange": 1,
+						"windupTime": 0.0,
+						"windupState": "",
+						"aimAtTarget": false,
+						"chargeTime": 0.35,
+						"chargeSpeed": 35,
+						"chargeControlForce": 300,
+						"chargeState": "punch",
+						"wallCrashSound": "",
+						"wallCrashEmitter": "",
+						"winddownState": "idle",
+						"winddownTime": 0.5
+					}
+				}
+			],
+			"periodicActions": [],
+			"approachActions": [{
+				"name": "approach-walk",
+				"parameters": {
+					"canJump": true,
+					"maxJumps": 6,
+					"jumpXVelocity": 12,
+					"jumpYVelocity": 30,
+					"jumpXControlForce": 50,
+					"minXRange": 10
+				}
+			}],
+			"damageTakenActions": [{
+				"name": "action-invulnerable",
+				"cooldown": 6,
+				"parameters": {
+					"windupTime": 0.35,
+					"windupState": "windup",
+					"winddownTime": 0.15,
+					"winddownState": "winddown",
+					"invulnerableTime": 5
+				}
+			}],
+			"invulnerableActions": [{
+				"name": "action-fire",
+				"cooldown": 15,
+				"parameters": {
+					"requireLineOfSight": true,
+					"maximumRange": 20,
+					"minimumRange": 5,
+					"windupState": "windup",
+					"windupTime": 0.5,
+					"projectileType": "lunarishotinitiate",
+					"projectileCount": 30,
+					"power": 5,
+					"fireDelay": 0.00001,
+					"projectileInterval": 0.00001,
+					"inaccuracy": 0.08,
+					"projectileSpeed": 50,
+					"gravityMultiplier": 0.6,
+					"fireOffset": [1.0, 0.7],
+					"aimAtTarget": true,
+					"fireState": "charge",
+					"fireSound": "",
+					"fireArc": false,
+					"winddownState": "winddown",
+					"winddownTime": 1
+				}
+			}],
+			"followActions": [{
+					"name": "approach-teleport",
+					"parameters": {}
+				},
+				{
+					"name": "approach-walk",
+					"parameters": {
+						"canJump": true,
+						"maxJumps": 6,
+						"jumpXVelocity": 32,
+						"jumpYVelocity": 50,
+						"jumpXControlForce": 50,
+						"minXRange": 6
+					}
+				}
+			],
+			"wanderActions": [{
+				"name": "wander-walk",
+				"cooldown": 6.0,
+				"parameters": {
+					"wanderTime": [1, 2]
+				}
+			}]
+		},
+		"metaBoundBox": [-1.625, -2.375, 1.75, 2.0],
+		"scale": 1.0,
+		"touchDamage": {
+			"poly": [
+				[-2.0, -4.5],
+				[-2.5, -4.0],
+				[-2.5, 3.5],
+				[-2.0, 4.0],
+				[2.0, 4.0],
+				[2.5, 3.5],
+				[2.5, -4.0],
+				[2.0, -4.5]
+			],
+			"damage": 15,
+			"teamType": "enemy",
+			"damageSourceKind": "lash",
+			"knockback": 20,
+			"statusEffects": ["insanitynew"]
+		},
+		"movementSettings": {
+			"collisionPoly": [
+				[-2.0, -4.5],
+				[-2.5, -4.0],
+				[-2.5, 3.5],
+				[-2.0, 4.0],
+				[2.0, 4.0],
+				[2.5, 3.5],
+				[2.5, -4.0],
+				[2.0, -4.5]
+			],
+			"mass": 1.0,
+			"walkSpeed": 9,
+			"runSpeed": 15,
+			"flySpeed": 15,
+			"airForce": 110.0,
+			"liquidBuoyancy": 2,
+			"airJumpProfile": {
+				"jumpSpeed": 45.0,
+				"jumpHoldTime": 0.1
+			}
+		},
+		"bodyMaterialKind": "organic",
+		"knockoutTime": 0.3,
+		"knockoutAnimationStates": {
+			"damage": "stunned"
+		},
+		"knockoutEffect": "blink",
+		"deathParticles": "deathPoof",
+		"statusSettings": {
+			"statusProperties": {
+				"targetMaterialKind": "organic"
+			},
+			"appliesEnvironmentStatusEffects": false,
+			"appliesWeatherStatusEffects": false,
+			"minimumLiquidStatusEffectPercentage": 0.1,
+			"primaryScriptSources": [
+				"/stats/monster_primary.lua"
+			],
+			"primaryScriptDelta": 5,
+			"stats": {
+				"knockbackStunTime": {
+					"baseValue": 0.25
+				},
+				"grit": {
+					"baseValue": 1.0
+				},
+				"maxHealth": {
+					"baseValue": 1240
+				},
+				"protection": {
+					"baseValue": 50
+				},
+				"healthRegen": {
+					"baseValue": 0.05
+				},
+				"poisonStatusImmunity": {
+					"baseValue": 1.0
+				},
+				"bluoplasmaStatusImmunity": {
+					"baseValue": 1.0
+				},
+				"slagStatusImmunity": {
+					"baseValue": 1.0
+				},
+				"fireStatusImmunity": {
+					"baseValue": 1.0
+				},
+				"biooozeImmunity": {
+					"baseValue": 1.0
+				},
+				"electricStatusImmunity": {
+					"baseValue": 1.0
+				},
+				"insanityImmunity": {
+					"baseValue": 1.0
+				},
+				"protoImmunity": {
+					"baseValue": 1.0
+				},
+				"gasImmunity": {
+					"baseValue": 1.0
+				},
+				"shadowImmunity": {
+					"baseValue": 1.0
+				},
+				"radiationburnImmunity": {
+					"baseValue": 1.0
+				},
+				"sulphuricImmunity": {
+					"baseValue": 1.0
+				},
+				"ffextremeheatImmunity": {
+					"baseValue": 1.0
+				},
+				"penaltyBlock": {
+					"baseValue": 1.0
+				},
+				"critImmunity": {
+					"baseValue": 1.0
+				},
+				"specialStatusImmunity": {
+					"baseValue": 1.0
+				},
+				"healingStatusImmunity": {
+					"baseValue": 1.0
+				},
+				"stunImmunity": {
+					"baseValue": 1.0
+				},
+				"powerMultiplier": {
+					"baseValue": 1.0
+				},
+				"poisonResistance": {
+					"baseValue": 0.5
+				},
+				"fireResistance": {
+					"baseValue": 0.5
+				},
+				"iceResistance": {
+					"baseValue": 0.5
+				},
+				"electricResistance": {
+					"baseValue": 0.5
+				},
+				"physicalResistance": {
+					"baseValue": 0.5
+				},
+				"shadowResistance": {
+					"baseValue": 0.8
+				},
+				"cosmicResistance": {
+					"baseValue": 0.5
+				},
+				"radioactiveResistance": {
+					"baseValue": 0.5
+				},
+				"bleedingImmunity": {
+					"baseValue": 1
+				},
+				"linerifleResistance": {
+					"baseValue": 0.9
+				},
+				"linerifleStatusImmunity": {
+					"baseValue": 1
+				},
+				"centensianenergyResistance": {
+					"baseValue": 0.9
+				},
+				"centensianenergyStatusImmunity": {
+					"baseValue": 0.9
+				},
+				"xanafianResistance": {
+					"baseValue": 0.9
+				},
+				"xanafianStatusImmunity": {
+					"baseValue": 1
+				},
+				"akkimariacidResistance": {
+					"baseValue": 0.9
+				},
+				"akkimariacidStatusImmunity": {
+					"baseValue": 1
+				},
+				"ucObliteratingBurnImmunity": {
+					"baseValue": 1
+				},
+				"ignoreInvisibilityEffects": {
+					"baseValue": 1
+				}
+			},
+			"resources": {
+				"stunned": {
+					"deltaValue": -1.0,
+					"initialValue": 0.0
+				},
+				"health": {
+					"maxStat": "maxHealth",
+					"deltaStat": "healthRegen",
+					"defaultPercentage": 100
+				}
+			}
+		},
+		"capturable": false,
+		"captureHealthFraction": 0.5,
+		"nametagColor": [64, 200, 255],
+		"mouthOffset": [0, 0],
+		"feetOffset": [0, -8]
+	}
+}

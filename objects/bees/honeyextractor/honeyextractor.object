@@ -3,34 +3,66 @@
   "colonyTags" : [ "bees" ],
   "printable" : false,
   "rarity" : "rare",
-  "description" : "Extract honey out of honeycombs, and jar it!",
-  "shortdescription" : "^orange;Honey Extractor^white;",
-  "subtitle" : "Extract honey from combs.",
+  "description" : "Slowly turns ^green;combs and bottles^reset; into ^orange;honey^reset;.",
+  "shortdescription" : "Honey Extractor",
+  "subtitle" : "Fill bottles with awesome honey.",
   "race" : "generic",
   "category" : "crafting",
-  "price" : 200,
+  "price" : 50,
   "objectType" : "container",
-
   "hydrophobic" : false,
-
   "inventoryIcon" : "honeyextractoricon.png",
   "orientations" : [
     {
-      "dualImage" : "honeyextractor.png:default",
+      "dualImage" : "honeyextractor.png:<color>.<frame>",
+
       "imagePosition" : [0, 0],
+      "frames" : 5,
+      "animationCycle" : 1.0,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
     }
   ],
 
-  "scripts" : [ "/objects/bees/honeyextractor/extractor.lua", "/objects/bees/honeymap.lua" ],
-  "scriptDelta" : 100,
+  "animation" : "honeyextractor.animation",
+  "animationParts" : {
+    "samplingarrayanim" : "honeyextractor.png"
+  },
+  "scripts" : [ "/objects/generic/honeyjarrer_common.lua","/scripts/npcToyObject.lua" ],
+  "scriptDelta" : 12,
+
   "recipeGroup" : "honeyextractor",
   "openSounds" : [ "/sfx/objects/florancrate_open.ogg" ],
-  "slotCount" : 3,
-  "uiConfig" : "/objects/bees/honeyextractor/honeyextractor.config",
+  "slotCount" : 12,
+  "uiConfig" : "/objects/bees/honeyjarrer/jarrer.config",
   "frameCooldown" : 67,
-  "autoCloseCooldown" : 3600
+  "autoCloseCooldown" : 3600,
+  "inputNodes":[[0,1]],
+  "outputNodes":[[0,0]],
 
+  "craftDelay" : 2,
+
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "crouchcollect"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 2
+  }
 }
+
+
+
+

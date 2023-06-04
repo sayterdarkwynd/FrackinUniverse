@@ -1,15 +1,16 @@
 {
   "itemName" : "fubeamgun",
-  "level" : 4,
+  "level" : 5,
   "price" : 1200,
   "inventoryIcon" : "fubeamgun.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Eradication is pretty!",
+  "description" : "A solid beam guaranteed to roast your foes.",
   "shortdescription" : "Beam Gun",
-  "itemTags" : ["weapon","ranged"],
+  "category" : "energy",
+  "itemTags" : ["weapon","ranged", "beam", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "animation" : "fubeamgun.animation",
   "animationParts" : {
     "beamorigin" : "rainbowmuzzle.png",
@@ -18,10 +19,10 @@
   },
   "animationCustom" : {
     "sounds" : {
-      "fireStart" : [ "/sfx/projectiles/astraltear_start.ogg" ],
-      "fireLoop" : [ "/sfx/projectiles/astraltear_loop.ogg" ],
+      "fireStart" : [ "/sfx/gun/erchiuseyebeam_start.ogg" ],
+      "fireLoop" : [ "/sfx/gun/erchiuseyebeam_loop.ogg" ],
       "fireEnd" : [],
-      "beamImpact" : [ "/sfx/projectiles/astraltear_stop1.ogg" ]
+      "beamImpact" : [ "/sfx/gun/erchiuseyebeam_stop.ogg" ]
     }
   },
   "animationScripts" : ["/items/active/effects/chain.lua"],
@@ -36,9 +37,9 @@
     "scripts" : ["/items/active/weapons/ranged/beamfire.lua"],
     "class" : "BeamFire",
 
-    "fireTime" : 0.2,
-    "baseDps" : 2,
-    "energyUsage" : 34,
+    "fireTime" : 0.1,
+    "baseDps" : 12.5,
+    "energyUsage" : 45,
 
     "damageConfig" : {
       "statusEffects" : [ ],
@@ -104,8 +105,9 @@
       }
     }
   },
-
+  "critChance" : 2,
+  "critBonus" : 4,
   "altAbilityType" : "fuerchiuslauncher",
-  
+
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

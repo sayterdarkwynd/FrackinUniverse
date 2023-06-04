@@ -1,0 +1,116 @@
+{
+  "itemName" : "blastcannon",
+  "price" : 800,
+  "inventoryIcon" : "blastcannon.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "^cyan;Counts as 'plasma' (set bonuses)^reset;
+^yellow;Stun^reset; and apply ^cyan;Minor Vulnerability^reset;.",
+  "shortdescription" : "ArCon Cannon",
+  "level" : 5,
+  "tooltipKind" : "gun2",
+  "category" : "rocketLauncher",
+  "itemTags" : ["weapon","ranged","rocketlauncher","plasma","upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "blastcannon.png",
+    "middleunlit" : "",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middleunlit" : {
+          "properties" : {
+            "centered" : true,
+            "image" : "<partImage><paletteSwaps>",
+            "offset" : [0.30, 0.385],
+            "transformationGroups" : ["weapon"],
+            "fullbright" : true,
+            "zLevel" : 1
+          }
+        }
+      }
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/blastcannon.ogg" ]
+    }
+  },
+
+
+  "baseOffset" : [0.05, 0.6],
+  "muzzleOffset" : [3, 0.15],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 1.5,
+    "baseDps" : 6.14,
+    "energyUsage" : 40,
+    "inaccuracy" : 0.05,
+
+    "projectileCount" : 2,
+    "fireType" : "auto",
+
+    "projectileType" : "fuplasmatorpedo2",
+    "projectileParameters" : {
+      "knockback" : 40,
+      "statusEffects" : [ "slow","defenseboostneg20" ]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.25,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "fu_darkplasma",
+  "critChance" : 3,
+  "critBonus" : 10,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 300,
+  "recoilForce" : 1500,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

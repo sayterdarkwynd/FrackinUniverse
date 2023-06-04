@@ -1,0 +1,66 @@
+{
+  "objectName" : "skathconsole1",
+  "colonyTags" : ["skath"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "wire",
+  "price" : 65,
+  "lightColor" : [38, 122, 128],
+  "flickerDistance" : 0.2,
+  "flickerStrength" : 0.05,
+  "flickerTiming" : 4,
+  "description" : "A control console of Skath origin. Press all the buttons!",
+  "shortdescription" : "Skath Console",
+  "race" : "skath",
+
+  "apexDescription" : "I can't decipher these readings. Skath letters have not yet been added to the translator.",
+  "avianDescription" : "A sleek console built by the Skath. I wonder what it does?",
+  "floranDescription" : "Floran can't read waterdragon letterss!",
+  "glitchDescription" : "Impressed. My scans indicate that this is indeed a powerful console.",
+  "humanDescription" : "Urge... to press buttons... rising!",
+  "hylotlDescription" : "The Skath rely so much on their technology. It's a shame.",
+  "novakidDescription" : "Some kinda control console, I'll only push a few buttons...",
+  "skathDescription" : "This console was built to control a variety of electronics. Like any other console, it's encrypted and only readable by the Skath.",
+
+  "inventoryIcon" : "skathconsole1icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "skathconsole1.png:<color>.<4>",
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/switch/switch.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switch3.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "switch" : "skathconsole1.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "outputNodes" : [ [0, 0] ],
+
+  "npcToy" : {
+    "ownerOnly" : true,
+    "influence" : [
+      "wallbutton"
+    ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

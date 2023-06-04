@@ -1,0 +1,29 @@
+{
+  "projectileName" : "fuicethrower",
+  "image" : "fuicethrower.png",
+  "physics" : "flame",
+  "animationCycle" : 1,
+  "animationLoops" : false,
+  "frameNumber" : 12,
+  "winddownFrames" : 3,
+  "intangibleWinddown" : true,
+  "power" : 50,
+  "speed" : 25,
+  "timeToLive" : 1.0,
+  "bounces" : 4,
+  "piercing" : true,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [0, 30, 90],
+  "damageKind" : "ice",
+  "damageKindImage" : "/interface/statuses/fire.png",
+  "statusEffects" : [ "icethrowereffect" ],
+  "hydrophobic" : false,
+  "actionOnCollide" : [
+    {
+      "action" : "projectile",
+      "type" : "icethrowercollision",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.05
+    }
+  ]
+}

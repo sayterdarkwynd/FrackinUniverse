@@ -1,0 +1,58 @@
+{
+  "itemName" : "cutemace",
+  "price" : 500,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Hungry for bones to smash and color.
+^yellow;Counts as 'energy' for set bonuses^reset;",
+  "shortdescription" : "Prismatic Mace",
+  "tooltipKind" : "hammer",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "energy", "upgradeableWeapon", "cute","cosmic"],
+  "inventoryIcon" : "cutemace.png",
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "cutemace.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "swoosh" : {
+      "fire" : { "properties" : { "image" : "/items/active/weapons/melee/broadsword/swoosh/cuteswoosh.png:<frame>" }},
+      "fire2" : { "properties" : { "image" : "/items/active/weapons/melee/broadsword/swoosh2/cuteswoosh.png:<frame>" }},
+      "fire3" : { "properties" : { "image" : "/items/active/weapons/melee/broadsword/swoosh/cuteswoosh.png:<frame>" }}
+    }}}}},
+    "particleEmitters" : {
+      "cosmicswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "emissionRate" : 50,
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "cuteswoosh1"},
+          { "particle" : "cuteswoosh2"},
+          { "particle" : "cuteswoosh3"}
+        ]
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":0.96,
+    "baseDps":8.8,
+    "damageConfig" : {
+      "damageSourceKind" : "cosmichammer"
+    }
+  },
+  "critChance" : 3,
+  "critBonus" : 1,
+  "stunChance" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

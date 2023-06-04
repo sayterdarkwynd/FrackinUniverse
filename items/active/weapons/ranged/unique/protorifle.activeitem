@@ -1,0 +1,162 @@
+{
+  "itemName" : "protorifle",
+  "price" : 260,
+  "inventoryIcon" : "protosniper.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "An energy-based sniper rifle with a bouncy projectile.",
+  "shortdescription" : "Proto Rifle",
+  "category" : "sniperRifle",
+  "level" : 3,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Sniper Rifle",
+  "itemTags" : ["weapon","ranged","sniperrifle","energy", "upgradeableWeapon","proto"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "protosniper.png",
+    "middlefullbright" : "protosniperfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/protomuzzle.png"
+  },
+  "animationCustom" : {
+
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/protopistol.ogg" ]
+    },
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.3, 0.34]
+		  }
+		}
+      }
+    }
+  },
+  "baseOffset" : [1.3, 0.34],
+  "muzzleOffset" : [2.0, 0.0],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1.4,
+    "baseDps" : 10.0,
+    "energyUsage" : 35.0,
+    "inaccuracy" : 0.001,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "protoshot3",
+    "projectileParameters" : {
+      "speed" : 90,
+      "knockback" : 5,
+      "actionOnCollide" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboomnodmg.config"
+	    }
+      ],
+      "actionOnHit" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboomnodmg.config"
+	    }
+      ],
+      "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboomnodmg.config"
+	    }
+      ]
+    },
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.075,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  }
+  },
+
+  "critChance" : 6,
+  "critBonus" : 7,
+  "isSniper" : 1,
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 700,
+
+  "altAbilityType" : "protobomb",
+  "altAbility" : {
+    "fireTime" : 3,
+    "name" : "Blaster Ball",
+    "baseDps" : 10,
+    "projectileParameters" : {
+      "timeToLive" : 10,
+      "knockback" : 20,
+      "piercing" : true,
+      "periodicActions" : [
+	    {
+	      "time" : 0.1,
+	      "action" : "sound",
+	      "options" : [ "/sfx/weapons/protopistol.ogg" ]
+	    },
+	    {
+	      "time" : 0.1,
+	      "action" : "projectile",
+	      "type" : "protoshot",
+	      "fuzzAngle" : 360,
+	      "inheritDamageFactor" : 0.1
+	    }
+      ],
+      "actionOnCollide" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }
+      ],
+      "actionOnHit" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }
+      ],
+      "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	    }
+      ]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

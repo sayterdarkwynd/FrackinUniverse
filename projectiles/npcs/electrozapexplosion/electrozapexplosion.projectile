@@ -1,0 +1,39 @@
+{
+  "projectileName" : "electrozapexplosion",
+  "timeToLive" : 0.1,
+    "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "electrozap",
+      "parameters" : {
+              "statusEffects" : [
+              {"effect" : "levitation",
+               "duration" : 0.75},
+              {"effect" : "lowgrav",
+               "duration" : 1.5}
+             ]
+            },
+      "inheritDamageFactor" : 1.0,
+      "angleAdjust" : 45
+    },
+    {
+      "action" : "projectile",
+      "type" : "electrozap",
+      "parameters" : {
+              "statusEffects" : [
+              {"effect" : "levitation",
+               "duration" : 0.75},
+              {"effect" : "lowgrav",
+               "duration" : 1.5}
+             ]
+            },
+      "inheritDamageFactor" : 1.0,
+      "angleAdjust" : -45
+    }
+  ],
+  "speed" : 0,
+  "power" : 5,
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

@@ -2,16 +2,17 @@
   "objectName" : "ruinsvehicle3a",
   "colonyTags" : [ "wasteland", "vehicle" ],
   "rarity" : "Common",
-  "category" : "decorative",
+  "category" : "furniture",
   "price" : 1000,
-  "printable" : true,  
-  "description" : "A vehicle.",
-  "shortdescription" : "Abandoned Vehicle",
+  "printable" : false,
+  "description" : "This was once some sort of mobile weapons platform.",
+  "shortdescription" : "Ruined Mech",
   "inventoryIcon" : "ruinsvehicle3a.png",
-  "health" : 200,
+  "health" : 2,
+  "rooting" : true,
   "orientations" : [
     {
-      "image" : "ruinsvehicle3a.png:<color>",
+      "dualImage" : "ruinsvehicle3a.png:<color>",
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
@@ -20,5 +21,14 @@
       "anchors" : [ "bottom" ]
 
     }
-  ]
+  ],
+  "biomePlaced" : true,
+
+
+  "openSounds" : [ "/sfx/objects/chest_small_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/chest_small_close.ogg" ],
+  "slotCount" : 32,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
 }

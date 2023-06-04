@@ -1,0 +1,46 @@
+{
+  "objectName" : "nocxiumstrip1",
+  "colonyTags" : ["nocxium", "light"],
+  "rarity" : "legendary",
+  "category" : "light",
+  "lightColor" : [30, 120, 38],
+  "price" : 300,
+  "description" : "A strip light made from Nocxium.",
+  "shortdescription" : "Horizontal Nocxium Strip",
+  "race" : "generic",
+
+  "apexDescription" : "Some sort of horrible light.",
+  "avianDescription" : "This makes me uncomfortable.",
+  "floranDescription" : "Ssshiny light! Floran not ssscared, honessst...",
+  "glitchDescription" : "Wary. This light makes my circuits shake.",
+  "humanDescription" : "This light gives me the creeps!",
+  "hylotlDescription" : "A wall light. It is functional... but very unpleasant.",
+  "novakidDescription" : "This light ain't right.",
+
+  "inventoryIcon" : "nocxiumstrip1icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "nocxiumstrip1.png:<color>.<frame>", "fullbright" : true }, { "image" : "nocxiumstrip1lit.png:<color>.<frame>" } ],
+      "imagePosition" : [0, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "nocxiumstrip1.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

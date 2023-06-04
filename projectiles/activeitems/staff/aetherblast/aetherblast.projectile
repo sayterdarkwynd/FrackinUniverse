@@ -1,0 +1,53 @@
+{
+  "projectileName" : "aetherblast",
+  "physics" : "default",
+  "timeToLive" : 7,
+  "image" : "aetherblast.png",
+  "animationCycle" : 0.2,
+  "lightColor" : [80, 20, 10],
+  "frameNumber" : 1,
+  "speed" : 0,
+  "power" : 20,
+  "level" : 7,
+  "damageKind" : "cosmic",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "slow" ],
+  "fullbright" : true,
+  "emitters" : [ "sparklesunicorn" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/cosmicimpact.config"
+    },
+    {
+      "action" : "loop",
+      "count" : 5,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "froth1",
+          "time" : 0.45,
+          "repeat" : true
+        },
+        {
+          "action" : "particle",
+          "specification" : "froth2",
+          "time" : 0.45,
+          "repeat" : true
+        }
+      ]
+    }
+  ],
+
+  "bounces" : 1,
+
+  "scripts" : [ "/projectiles/activeitems/staff/aetherblast/aetherblast.lua" ],
+
+  "triggerSpeed" : 45,
+
+  "controlRotation" : {
+    "maxSpeed" : 52,
+    "controlForce" : 620,
+    "friction" : 1
+  }
+}

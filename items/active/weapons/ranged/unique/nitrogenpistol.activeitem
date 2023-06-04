@@ -4,12 +4,14 @@
   "inventoryIcon" : "nitrogenpistol.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Freezes unfortunate targets.",
-  "shortdescription" : "Nitrogen Pistol",
-  "level" : 4,
-  "tooltipKind" : "gun",
+  "description" : "Effective in most situations, though somewhat chilling.
+^yellow;Inflicts freezing^reset;",
+  "shortdescription" : "Nitrogen SMG",
+  "category" : "machinePistol",
+  "level" : 5,
+  "tooltipKind" : "gun2",
 
-  "itemTags" : ["weapon","ranged","machinepistol"],
+  "itemTags" : ["weapon","ranged","machinepistol", "isogen", "upgradeableWeapon"],
   "twoHanded" : false,
   "weaponType" : "Nitrogen Pistol",
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -30,12 +32,12 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "ice",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.4,
+    "fireTime" : 0.2,
     "baseDps" : 3,
     "energyUsage" : 32.5,
     "inaccuracy" : 0.01,
@@ -44,7 +46,7 @@
     "fireType" : "auto",
 
     "projectileType" : "fuicebreath",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 25,
       "knockback" : 2
     },
@@ -77,6 +79,10 @@
 	    }
 	  }
   },
+
+
+  "critChance" : 4,
+  "critBonus" : 3,
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

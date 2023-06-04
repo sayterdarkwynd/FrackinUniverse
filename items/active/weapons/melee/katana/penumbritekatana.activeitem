@@ -1,0 +1,72 @@
+{
+  "itemName" : "penumbritekatana",
+  "price" : 150,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Shiny, honed and deadly.
+^cyan;Universal Damage^reset;",
+  "shortdescription" : "Penumbral Katana",
+  "tooltipKind" : "sword2",
+  "category" : "katana",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","katana","daikatana", "energy","upgradeableWeapon", "penumbrite","silver"],
+
+  "inventoryIcon" : "penumbritekatana.png",
+
+  "animation" : "combokatanaglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "penumbritekatana.png",
+    "bladefullbright" : "penumbritekatanafullbright.png"
+  },
+  "animationCustom" : { //override default swoosh and particles cause cuteness.
+    "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "swoosh" : {
+      "fire":{"properties":{"image":"/items/active/weapons/melee/broadsword/swoosh/nightarswoosh.png:<frame>?flipy"}},
+      "fire2":{"properties":{"image":"/items/active/weapons/melee/broadsword/swoosh/nightarswoosh.png:<frame>"}},
+      "fire3":{"properties":{"image":"/items/active/weapons/melee/broadsword/swoosh3/nightar_physicalswoosh/nightar_physicalswoosh.png:<frame>"}},
+      "fire4":{"properties":{"image":"/items/active/weapons/melee/broadsword/swoosh/nightarswoosh.png:<frame>"}},
+      "fire5":{"properties":{"image":"/items/active/weapons/melee/broadsword/swoosh/nightarswoosh.png:<frame>?flipy"}},
+      "fire6":{"properties":{"image":"/items/active/weapons/melee/broadsword/swoosh3/nightar_physicalswoosh/nightar_physicalswoosh.png:<frame>"}}
+    }}}}},
+    "particleEmitters" : {
+      "shadowswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "emissionRate" : 40,
+        "particles" : [
+          { "particle" : "shadowswoosh1"},
+          { "particle" : "shadowswoosh2"},
+          { "particle" : "shadowswoosh3"}
+        ]
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "silverweapon",
+
+  "primaryAbilityType" : "katanacombo",
+  "primaryAbility": {
+    "comboSteps": 6,
+    "fireTime" : 0.75,
+    "baseDps": 6.25,
+    "damageConfig": {
+      "damageSourceKind" : "silverweapon",
+      "knockback":20
+    }
+  },
+
+  "altAbilityType" : "parrykatana",
+  "altAbility" : {
+    "parryTime" : 0.225,
+    "cooldownTime" : 0.2
+  },
+
+  "critChance" : 2,
+  "critBonus" : 5,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

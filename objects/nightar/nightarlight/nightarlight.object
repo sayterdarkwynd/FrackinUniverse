@@ -1,0 +1,127 @@
+{
+  "objectName" : "nightarlight",
+  "colonyTags" : ["light","nightar"],
+  "rarity" : "Common",
+  "category" : "light",
+  "lightColor" : [60, 197, 220],
+  "price" : 75,
+  "description" : "A Nightar castle light.",
+  "shortdescription" : "Nightar light",
+  "race" : "nightar",
+
+  "avianDescription" : "Provides luminosity.",
+  "floranDescription" : "Floran like light. Light make shadow, Floran creep in shadow.",
+  "glitchDescription" : "Light.",
+  "humanDescription" : "A handy light.",
+  "hylotlDescription" : "Waterproof lights.",
+
+
+
+  "inventoryIcon" : "nightarlighticon.png",
+  "orientations" : [
+    {
+      "image" : "nightarlightbackground.png:<color>.<frame>",
+      "direction" : "right",
+      "animationParts" : {
+        "bg" : "nightarlightbackground.png",
+        "fg" : "nightarlightbackgroundlit.png"
+      },
+
+      "imagePosition" : [0, 0],
+      "animationPosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "fgAnchors" : [ [0, 0] ]
+    },
+
+    {
+      "image" : "nightarlightceiling.png:<color>.<frame>",
+      "direction" : "right",
+      "animationParts" : {
+        "bg" : "nightarlightceiling.png",
+        "fg" : "nightarlightceilinglit.png"
+      },
+
+      "imagePosition" : [0, -4],
+      "animationPosition" : [0, -4],
+
+      "spaces" : [ [0, 0], [0, -1] ],
+      "anchors" : [ "top" ]
+    },
+
+    {
+      "image" : "nightarlightleft.png:<color>.<frame>",
+      "direction" : "right",
+      "animationParts" : {
+        "bg" : "nightarlightleft.png",
+        "fg" : "nightarlightleftlit.png"
+      },
+      "imagePosition" : [0, 0],
+      "animationPosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "anchors" : [ "left" ]
+    },
+
+    {
+      "image" : "nightarlightright.png:<color>.<frame>",
+      "direction" : "right",
+      "animationParts" : {
+        "bg" : "nightarlightright.png",
+        "fg" : "nightarlightrightlit.png"
+      },
+
+      "imagePosition" : [0, 0],
+      "animationPosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "anchors" : [ "right" ]
+    },
+
+    {
+      "image" : "nightarlightground.png:<color>.<frame>",
+      "direction" : "right",
+      "animationParts" : {
+        "bg" : "nightarlightground.png",
+        "fg" : "nightarlightgroundlit.png"
+      },
+
+      "imagePosition" : [0, 0],
+      "animationPosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "anchors" : [ "bottom" ]
+    },
+
+    {
+      "image" : "nightarlightbackground.png:<color>.<frame>",
+      "direction" : "right",
+      "animationParts" : {
+        "bg" : "nightarlightbackground.png",
+        "fg" : "nightarlightbackgroundlit.png"
+      },
+
+      "imagePosition" : [0, 0],
+      "animationPosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/fluorescent_light_quiet.ogg",
+
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "nightarlightbackground.png",
+    "fg" : "nightarlightbackgroundlit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inboundNodes" : [ [0, 0] ]
+
+}

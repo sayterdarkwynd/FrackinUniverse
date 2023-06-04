@@ -1,9 +1,9 @@
 {
   "objectName" : "wildgemglowseed",
   "colonyTags" : ["nature"],
-  "rarity" : "Common",
+  "rarity" : "Rare",
   "category" : "seed",
-  "description" : "A salty plant that is fairly water-tolerant.",
+  "description" : "A salty plant that is resistant to gravity.",
   "shortdescription" : "Gemglow Seed",
   "objectType" : "farmable",
   "printable" : false,
@@ -64,7 +64,10 @@
       "resetToStage" : 2
     }
   ],
-  "learnBlueprintsOnPickup" : [ "gemglowseed" ],
+//  "learnBlueprintsOnPickup" : [ "gemglowseed" ],
 
-  "maxImmersion" : 2.0
+  "maxImmersion" : 2.0,
+  "breakDropOptions" : [
+    [ [ "gemglowseed", 1, { } ] ]
+  ]
 }

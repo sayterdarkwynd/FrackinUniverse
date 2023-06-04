@@ -1,5 +1,7 @@
 {
   "type" : "radioactivebee",
+  "shortdescription" : "Radioactive Bee",
+  "description" : "A radioactive bee. Just one sting could give you superpowers.. or kill you!",
 
   "categories" : [ "radioactivebee" ],
   "parts" : [ "body" ],
@@ -17,6 +19,7 @@
   "baseParameters" : {
     "scripts" : [
       "/monsters/bugs/bug.lua",
+      "/monsters/bees/bee.lua",
       "/scripts/util.lua",
       "/scripts/vec2.lua"
     ],
@@ -61,7 +64,7 @@
       "damage" : 0,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "bite",
+      "damageSourceKind" : "radioactive",
       "statusEffects" : [ ]
     },
 
@@ -70,6 +73,7 @@
         "targetMaterialKind" : "organic"
       },
 
+      "appliesWeatherStatusEffects" : false,
       "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
@@ -90,6 +94,12 @@
         },
         "healthRegen" : {
           "baseValue" : 0
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 1
+        },
+        "radiationburnImmunity" : {
+          "baseValue" : 1
         }
       },
 

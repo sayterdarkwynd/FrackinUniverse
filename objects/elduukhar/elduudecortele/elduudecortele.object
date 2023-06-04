@@ -1,0 +1,99 @@
+{
+  "objectName" : "elduudecortele",
+  "colonyTags" : ["misc", "elduukhar"],
+  "objectType" : "teleporter",
+  "rarity" : "Legendary",
+  "description" : "A personal teleporter, connects to bookmarked locations. \n^red;Destroyed when broken.^reset;",
+  "shortdescription" : "Eld'uukhar Teleporter",
+  "price" : 3000,
+  "printable" : false,
+
+  "apexDescription" : "A personal teleporter. A functional but fun piece of equipment.",
+  "avianDescription" : "I love the whoosh of my feathers when I teleport!",
+  "floranDescription" : "Perssonal teleporter is fancy!",
+  "glitchDescription" : "Enticed. A personal teleporter, with a custom design.",
+  "humanDescription" : "A personal teleporter! Now this is travelling in style.",
+  "hylotlDescription" : "A personal teleporter, it sports a custom design.",
+  "novakidDescription" : "As teleporters go, this sure is fancy lookin'!",
+
+  "category" : "teleporter",
+  "lightColor" : [103, 191, 166],
+  "lightPosition" : [0, 1],
+  "flickerDistance" : 0.2,
+  "flickerStrength" : 0.05,
+  "flickerTiming" : 4,
+
+  "particleEmitter" : {
+    "emissionRate" : 3,
+    "emissionVariance" : 0.5,
+
+    "particle" : {
+      "type" : "ember",
+      "position" : [-0.5, 5],
+      "size" : 1.0,
+      "color" : [238, 255, 186, 255],
+      "light" : [37, 111, 161],
+      "fade" : 0.9,
+      "destructionAction" : "shrink",
+      "destructionTime" : 0.5,
+      "initialVelocity" : [0.0, 0.0],
+      "finalVelocity" : [0.0, 0.0],
+      "approach" : [0, 1],
+      "timeToLive" : 1.5,
+      "layer" : "middle"
+    },
+
+    "particleVariance" : {
+      "initialVelocity" : [0, 5],
+      "finalVelocity" : [0, 1],
+      "position" : [1.5, 0],
+      "size" : 0.5
+    }
+  },
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/remoteteleporter.config",
+
+  "inventoryIcon" : "elduudecorteleicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "elduudecortele.png:<color>.<frame>", "fullbright" : true }, { "image" : "elduudecortelelit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [-32, 0],
+      "frames" : 6,
+      "animationCycle" : 5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "solid",
+      "collisionSpaces" : [ [-2, 0], [-1, 0], [0, 0], [1, 0], [-2, 9], [-1, 9], [0, 9], [1, 9] ]
+    }
+  ],
+
+  "health" : 10,
+  "rooting" : true,
+
+  "breakDropPool" : "remoteteleporter",
+
+  "teleporterFootPosition" : [0, 1],
+
+  "scripts" : [ "/scripts/npcToyObject.lua"],
+  "npcToy" : {
+    "influence" : [
+      "teleporter",
+      "teleporterComplete"
+    ],
+    "defaultReactions" : {
+      "teleporter" : [
+        [1.0, "beamaway"]
+      ],
+      "teleporterComplete" : [
+        [1.0, "vomit"],
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [0, 0.0],
+    "preciseStandPositionRight" : [0, 0.0],
+    "maxNpcs" : 1
+  }
+}

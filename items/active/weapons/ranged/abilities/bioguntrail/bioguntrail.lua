@@ -16,7 +16,7 @@ function setupAltAbility(altAbilityConfig)
 
     if self.fireMode == "alt"
        and not self.weapon.currentAbility
-       and self.cooldownTimer == 0 
+       and self.cooldownTimer == 0
        and not status.resourceLocked("energy")
        and not world.lineTileCollision(mcontroller.position(), self:firePosition())
        and not world.liquidAt(self:firePosition()) then
@@ -42,7 +42,7 @@ function setupAltAbility(altAbilityConfig)
       if not world.entityExists(self.lastProjectileId) then break end
 
       if world.liquidAt(self:firePosition()) then return true end
-      
+
       local lastPosition = world.entityPosition(self.lastProjectileId)
       local delta = world.distance(self:firePosition(), lastPosition)
       if vec2.mag(delta) >= self.projectileFrequency then

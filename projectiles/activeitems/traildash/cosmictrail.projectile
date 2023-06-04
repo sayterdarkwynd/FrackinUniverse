@@ -1,0 +1,26 @@
+{
+  "projectileName" : "cosmictrail",
+  "image" : "cosmictrail.png",
+  "physics" : "gas",
+  "frameNumber" : 3,
+  "animationCycle" : 0.15,
+  "light" : [228, 55, 116],
+  "power" : 2,
+  "speed" : 0,
+  "timeToLive" : 2.0,
+  "bounces" : -1,
+  "knockback" : 25,
+  "knockbackDirectional" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [ [2, 4],  [2, -4],  [-2, -4],  [-2, 4] ],
+  "piercing" : true,
+  "damageKind" : "cosmicbarrier",
+  "emitters" : [ "cosmicdust" ],
+  "statusEffects" : [ "defenseboostneg20" ],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/electrical_barrier_break3.ogg" ]
+    }
+  ]
+}

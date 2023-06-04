@@ -1,20 +1,24 @@
 {
-  "itemName" : "gazelemon",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "gazelemon.png",
-  "description" : "Focused light emits from your face. Also prevents poison effects.",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 5,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "shortdescription" : "Gaze Lemon",
-  "effects" : [ [
-    "headlamp", "poisonStatusImmunity" 
-  ] ],
-  "blockingEffects" : [ "headlamp" ]
+	"itemName": "gazelemon",
+	"inventoryIcon": "gazelemon.png",
+	"category": "food",
+	"rarity": "Rare",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Headlamp 2^reset;: 2m\n^yellow;^reset;^cyan;Immune^reset;: Poison: 90s",
+	"shortdescription": "Gaze Lemon",
+
+	"effects": [
+		[{
+				"effect": "headlamp2",
+				"duration": 120
+			},
+			{
+				"effect": "poisonimmunitycrystal",
+				"duration": 90
+			}
+		]
+	],
+	"blockingEffects": ["poisonimmunitycrystal", "headlamp2"]
 }

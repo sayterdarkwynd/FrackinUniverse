@@ -1,0 +1,27 @@
+{
+	"itemName": "gnomeandveggiesandwich",
+	"rarity": "uncommon",
+	"price": 35,
+	"category": "preparedFood",
+	"inventoryIcon": "gnomeandveggiesandwich.png",
+	"description": "One gnome was harmed in making this sandwich. \n^cyan;+^reset;20%^green; HP^reset;^cyan; +^reset;20%^green; Energy^reset;\n^cyan;+^reset;3^blue; Madness^reset; ^orange;Type: Cooked Meat + Vegetables^reset;",
+	"shortdescription": "Gnomewich",
+	"effects": [
+        ["madnessgain2", "meatc_plant_meal",
+        {
+            "effect": "maxenergyscalingboostfood",
+            "duration": 120
+        },
+        { "effect" : "maxhealthscalingboostfood",
+            "duration": 120
+        }
+        ]
+    ],
+	"foodValue": 40,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}

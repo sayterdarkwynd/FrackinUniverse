@@ -1,0 +1,95 @@
+[{
+		"op": "replace",
+		"path": "/tooltipKind",
+		"value": "bow2"
+	},
+	{
+		"op": "add",
+		"path": "/critChance",
+		"value": 7
+	},
+	{
+		"op": "add",
+		"path": "/critBonus",
+		"value": 3
+	},
+	{
+		"op": "add",
+		"path": "/elementalType",
+		"value": "cosmic"
+	},
+	{
+		"op": "add",
+		"path": "/itemTags/-",
+		"value": "upgradeableWeapon"
+	},
+	{
+		"op": "add",
+		"path": "/primaryAbility",
+		"value": {
+			"dynamicDamageMultiplier": 1.0, //All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+			"drawTime": 0.7, //Time to fully draw the bow
+			"powerProjectileTime": 0.180, //After fully drawing, the bow is super-charged for this long
+			"energyPerShot": 35, //Total energy consumption for a full draw
+			"holdEnergyUsage": 12, //Energy consumption per second while fully drawn
+			"airborneBonus": 1.25, //A dmg multiplier for when airborne
+			"projectileType": "cutearrow",
+			"powerProjectileType": "chargedcutearrow"
+		}
+	},
+	{
+		"op": "replace",
+		"path": "/animation",
+		"value": "/items/active/weapons/bow/fubow.animation"
+	},
+	{
+		"op": "add",
+		"path": "/primaryAbility/projectileParameters",
+		"value": {
+			"power": 7,
+			"piercing": false
+		}
+	},
+	{
+		"op": "replace",
+		"path": "/primaryAbilityType",
+		"value": "rngbows_enhancedbowshot"
+	},
+	{
+		"op": "replace",
+		"path": "/builder",
+		"value": "/items/buildscripts/neb-buildbow.lua"
+	},
+	{
+		"op": "add",
+		"path": "/primaryAbility/powerProjectileParameters",
+		"value": {
+			"power": 8.25,
+			"piercing": false
+		}
+	},
+	{
+		"op": "replace",
+		"path": "/altAbilityType",
+		"value": "rngbows_enhancedbowshot"
+	},
+	{
+		"op": "replace",
+		"path": "/altAbility",
+		"value": {
+			"name": "Stricken Heart",
+			"projectileType": "heartarrow",
+			"projectileCount": 4,
+			"inaccuracy": 0.05,
+			"powerProjectileType": "heartarrow",
+			"projectileParameters": {
+				"power": 8.75,
+				"piercing": false,
+				"actionOnReap": [{
+					"action": "config",
+					"file": "/projectiles/explosions/plasmaboomsmall2/plasmaboomsmall5.config"
+				}]
+			}
+		}
+	}
+]

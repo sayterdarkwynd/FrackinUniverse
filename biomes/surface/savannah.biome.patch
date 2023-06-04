@@ -1,17 +1,72 @@
 [
 {"op":"add","path":"/spawnProfile/groups/-",
-"value":{ 
-      
-        "select" : 5,
-        "pool" : [ 
-          [ 0.111, "brightstripe" ],          
+"value":{
+
+        "select" : 3,
+        "pool" : [
+          [ 0.111, "brightstripe" ],
           [ 0.111, "vineclimber" ],
-          [ 0.111, "junglebee" ],
-          [ 0.111, "nocturnalbee" ],
-          [ 0.111, "hardybee" ]
+          [ 0.111, "bee_sweat" ],
+          [ 0.111, "bee_assassin" ],
+          [ 0.111, "bee_digger" ]
         ]
       }
 },
+{"op":"add","path":"/spawnProfile/groups/-",
+"value":{
+
+        "select" : 2,
+        "pool" : [
+          [ 0.111, "pangolin" ],
+          [ 0.111, "pangobaby" ],
+          [ 0.111, "fuspidercritter" ],
+          [ 0.111, "fuelephantcritter" ],
+          [ 0.111, "fublackbunnycritter" ],
+          [ 0.111, "fufoxcritter" ],
+          [ 0.111, "fuhorsecritter" ],
+          [ 0.311, "fugiraffecritter" ]
+        ]
+      }
+},
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/10/treeStemList/-",
+    "value": "murky"
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/10/treeStemList/-",
+    "value": "savah"
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/10/treeStemList/-",
+    "value": "spiked"
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/10/treeFoliageList/-",
+    "value": "burly"
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+    }
+  },
 
 	{"op":"add","path":"/surfacePlaceables/items/-","value":{
 			"mode" : "floor",
@@ -21,8 +76,9 @@
 
 			"type" : "microdungeon",
 			"microdungeons" : [ "newavianmicro", "minigreenruins" ]
-		} 
+		}
 	},
+
 	{"op":"add","path":"/surfacePlaceables/items/-","value":{
           "mode" : "floor",
           "priority" : 1.0,
@@ -32,13 +88,62 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "wildbrackentreeseed" ],
-              [0.35, "wildcinnamonseed" ]
+              [0.35, "wildcinnamonseed" ],
+              [0.35, "wildvanusflowerseed"]
               ],
               "parameters" : { "startingStage" : 3 }
             }
           ]
         }
-	}
+	},
+{"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "fuencounters", "fulabs", "fubandits", "newhumanmicro", "newavianmicro", "furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter" ]
+  }
+},
+
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/0/treasureBoxSets/-",
+    "value": "ffbasicChest"
+  },
+
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/0/treasureBoxSets/-",
+    "value": "ffbasicChest2"
+  },
+
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "savannahChest" ]
+    }
+  },
+
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
+  }
+}
 ]

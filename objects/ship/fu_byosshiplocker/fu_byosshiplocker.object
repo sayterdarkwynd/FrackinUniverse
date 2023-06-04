@@ -1,0 +1,82 @@
+{
+  "objectName" : "fu_byosshiplocker",
+  "colonyTags" : ["storage"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+
+  "category" : "storage",
+  "description" : "A locker. Store some stuff, why don't you?",
+  "shortdescription" : "Shiplocker",
+  "race" : "generic",
+
+  "lightColor" : [61, 88, 102],
+  "lightPosition" : [0, 0],
+
+  "apexDescription" : "The ship's storage system.",
+  "avianDescription" : "A device that holds many items for safe keeping.",
+  "floranDescription" : "Ssstorage.",
+  "glitchDescription" : "Pleased. This ship's storage system is indeed useful.",
+  "humanDescription" : "A storage locker. That's handy!",
+  "hylotlDescription" : "An elegant storage solution.",
+  "novakidDescription" : "A locker, for puttin' things in.",
+  "fukirhosDescription" : "A slick storage rig with an ICE-3 encrypted lock.  My gear's safe here!",
+  "fumantiziDescription" : "There may be valuables inside.",
+  "fupeglaciDescription" : "Basic storage system operates on a variation of teleportation technology to store objects as virtual pixels until required.",
+  "shadowDescription" : "Holding of things, within.",
+  "slimepersonDescription" : "A decent enough locker, I suppose.",
+
+  "aegiDescription" : "A ship locker. Useful for storing items.",
+  "avikanDescription" : "A ship locker. Useful for storing artifacts found on scout runs.",
+  "draunaarDescription" : "This ship locker can store a lot of items.",
+  "trinkDescription" : "A ship locker. It can't be locked, ironically.",
+  "hymidDescription" : "I am curious what this locker might contain.",
+  "notixDescription" : "A sizeable ship locker.",
+  "jorgasianDescription" : "Great for storing items, but not too secure.",
+  "drodenDescription" : "Detected ship locker. Contents scan failed.",
+  "akkimariDescription" : "Locker-ship, for storing things-many.",
+
+  "inventoryIcon" : "/objects/ship/apexshiplocker/shiplockericon.png",
+  "placementImage" : "/objects/ship/apexshiplocker/apexshiplocker.png:default.0",
+  "placementImagePosition" : [-16, -8],
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "/objects/ship/fu_byosshiplocker/fu_byosshiplocker.png:<color>.<frame>", "fullbright" : true }, { "image" : "/objects/ship/fu_byosshiplocker/fu_byosshiplockerlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 8,
+      "animationCycle" : 1.0,
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+	  "spaces" : [
+	  [-2,1],  [-1,1],  [0,1],  [1,1],
+	  [-2,0],  [-1,0],  [0,0],  [1,0],
+	  [-2,-1], [-1,-1], [0,-1], [1,-1]
+	  ]
+    }
+  ],
+  "defaultImageConfig" : [
+    {
+      "imageLayers" : [ { "image" : "/objects/ship/apexshiplocker/apexshiplocker.png:<color>.<frame>", "fullbright" : true }, { "image" : "/objects/ship/apexshiplocker/apexshiplockerlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 8,
+      "animationCycle" : 1.0,
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/gunchest_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/gunchest_close.ogg" ],
+  "slotCount" : 64,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 11,
+  "autoCloseCooldown" : 3600,
+
+  "scripts" : [ "/objects/ship/fu_byosobjectdeath.lua" ],
+  "animationScripts" : ["/objects/ship/fu_byosobjectanimation.lua"],
+  "scriptDelta" : 20,
+  "racialiserType" : "shiplocker",
+  "retainObjectParametersInItem" : true,
+  "byosBootupTreasure" : true
+}

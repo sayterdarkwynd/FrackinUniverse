@@ -1,0 +1,100 @@
+{
+  "itemName" : "zerchesiumpistol",
+  "price" : 160,
+  "inventoryIcon" : "zerchesiumpistol.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Put your enemies on ice.
+^cyan;Slows enemies^reset;",
+    "shortdescription" : "Zerchesium Pistol",
+  "category" : "pistol",
+  "level" : 3,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","pistol", "energy", "upgradeableWeapon","zerchesium"],
+  "twoHanded" : false,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "zerchesiumpistol.png",
+	"middlefullbright":"",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.375, 0.125]
+		  }
+		}
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/marauder5.wav" ]
+    }
+  },
+
+  "baseOffset" : [0.375, 0.125],
+  "muzzleOffset" : [1.5, 0.4375],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.4,
+    "baseDps" : 6.65,
+    "useEnergy" : true,
+    "energyUsage" : 25.8,
+    "inaccuracy" : 0.02,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "fuicebulletzerch",
+    "projectileParameters" : {
+      "knockback" : 6
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : false,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 3,
+	      "weaponRotation" : 3,
+	      "twoHanded" : false,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "cooldown" : {
+	      "duration" : 0.04,
+	      "armRotation" : 3,
+	      "weaponRotation" : 3,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 4,
+  "isAmmoBased" : 1,
+  "reloadTime" : 0.85,
+  "magazineSize" : 8,
+  "isPistol" : 1,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

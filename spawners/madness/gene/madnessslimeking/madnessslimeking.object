@@ -1,0 +1,32 @@
+{
+  "objectName" : "madnessslimeking",
+  "rarity" : "uncommon",
+  "description" : "A gargantuan slime creature.",
+  "shortdescription" : "Slime Eye",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 850,
+  "printable" : false,
+
+  "inventoryIcon" : "madnessjellyking.png",
+  "orientations" : [
+    {
+      "dualImage" : "madnessjellyking.png:<color>",
+      "imagePosition" : [-70, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "spaces" : [  [0, 0], [-1, 0], [0, 1], [-1, 1]],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "botspawner" : {
+      "type" : "eyeslimekingpet",
+	  "monsterImage":"/monsters/flyers/eyejelly/eyeslimeking-body.png:idle.1?"
+  },
+
+  "scripts" : [
+    "/spawners/fuminionspawner.lua"
+  ],
+  "scriptDelta" : 5
+}

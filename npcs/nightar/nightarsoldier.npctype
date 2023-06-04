@@ -1,0 +1,43 @@
+{
+  "type" : "nightarsoldier",
+  "baseType" : "hostile",
+
+  "persistent" : true,
+
+  "dropPools" : [ "money" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Attack!"
+          ]
+        },
+        "nightar" : {
+          "default" : [
+            "You want a fight? Very well!",
+            "Our swordsmanship is unparalleled!",
+            "This is our territory, and ours alone!",
+            "I've been trained by the best! You have no chance against me!"
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "fumantizitier2head" } ],
+            "chest" : [ { "name" : "fumantizitier2chest" } ],
+            "legs" : [ { "name" : "fumantizitier2pants" } ],
+            "primary" : [ "nightarshortsword" ],
+            "alt" : [ "tungstenshield" ],
+            "sheathedprimary" : [ "tungstenbow" ]
+          }
+        ] ]
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+	"id": "khe_fabric",
+	"prerequisites": ["create_clothingfabricator"],
+	"title": "Perfect Threads",
+	"text": "Mew. I like shiny. You like shiny too, right? How about we make the shiniest outfit ever? Need specific, very special ingredients. Fetch 3 each. Gold, diamond, crystal, core fragments, pure erchius. Quickly. Mew.",
+	"completionText": "A bit of weaving here, a bit of trimming there, *burp* mrr... and it's done. If you need a replacement set, I'll have some for sale.",
+	"moneyRange": [1, 2],
+	"rewards": [[ [ "fukhestreakerrewardbag", 1 ] ]],
+	"speaker": "questGiver",
+
+	"updateDelta": 10,
+	"script": "/quests/scripts/main.lua",
+	"scriptConfig": {
+		"giveBlueprints": [],
+
+		"portraits": {
+			"questStarted": "questGiver",
+			"questComplete": "questReceiver"
+		},
+
+		"requireTurnIn": true,
+
+		"turnInDescription": "Bring ^cyan;Khe^reset; the ingredients.",
+
+		"conditions": [
+			{"type": "gatherItem","itemName": "goldbar","count": 3,"consume": true},
+			{"type": "gatherItem","itemName": "diamond","count": 3,"consume": true},
+			{"type": "gatherItem","itemName": "crystal","count": 3,"consume": true},
+			{"type": "gatherItem","itemName": "corefragmentore","count": 3,"consume": true},
+			{"type": "gatherItem","itemName": "pureerchius","count": 3,"consume": true}
+		]
+	}
+}

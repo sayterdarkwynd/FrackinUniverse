@@ -1,17 +1,17 @@
 {
   "itemName" : "spikesword",
-  "price" : 1500,
+  "price" : 160,
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "Covered in sharp poisoned barbs. Cute.",
   "shortdescription" : "Thornitox Sword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword"],
+  "itemTags" : ["weapon","melee","broadsword","bioweapon", "upgradeableWeapon"],
   "level" : 3,
   "inventoryIcon" : "spikesword.png",
-
+  //"collectablesOnPickup" : { "fu_weaponbroadsword" : "spikesword" },
   "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
   "animationParts" : {
     "handle" : "",
@@ -21,15 +21,21 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "bioweapon",
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.73,
-    "baseDps" : 9.77
+    "baseDps" : 9.77,
+    "damageConfig" : {
+      "damageSourceKind": "bioweaponbroadsword",
+      "statusEffects" : [ "weakpoison" ]
+    }
   },
 
   "altAbilityType" : "traildash",
 
+  "critChance" : 3,
+  "critBonus" : 3,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

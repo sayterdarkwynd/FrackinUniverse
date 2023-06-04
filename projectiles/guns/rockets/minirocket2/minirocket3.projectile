@@ -1,0 +1,27 @@
+{
+  "projectileName" : "minirocket3",
+  "image" : "minirocket2.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 3,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [128, 128, 64],
+  "pointLight" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/burstjumpboom/burstjumpboom3.config"
+    }
+  ],
+  "statusEffects" : [ "burning" ],
+  "emitters" : [ "tinyrocketsmoke" ],
+  "flippable" : true,
+  "power" : 10.0,
+  "speed" : 10.0,
+  "physics" : "rocket",
+  "damageType" : "NoDamage",
+  "damageKind" : "physical",
+
+  "scripts" : [ "minirocket2.lua" ],
+  "maxSpeed" : 55,
+  "controlForce" : 120
+}

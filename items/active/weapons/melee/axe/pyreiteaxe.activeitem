@@ -1,0 +1,77 @@
+{
+  "itemName" : "pyreiteaxe",
+  "price" : 940,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Hack them into burning bits.
+^cyan;Inflicts Napalm^reset;",
+  "shortdescription" : "Pyreite Axe",
+  "tooltipKind" : "sword2",
+  "category" : "axe",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","axe","pyreite", "upgradeableWeapon"],
+  "level" : 6,
+  "inventoryIcon" : "pyreiteaxe.png",
+  //"collectablesOnPickup" : { "fu_weaponaxe" : "pyreiteaxe" },
+  "animation" : "axeglow.animation",
+  "animationParts" : {
+    "blade" : "pyreiteaxe.png",
+    "bladefullbright" : "pyreiteaxefullbright.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [-0.5, 1.75]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_axe.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "hellfire",
+  "damageKindImage" : "/interface/statuses/hellfire.png",
+  "aimOffset" : -1.0,
+
+  "primaryAbilityType" : "axecleave",
+  "primaryAbility" : {
+    "fireTime" : 0.6,
+    "baseDps" : 13.75,
+
+    "damageConfig" : {
+      "damageSourceKind" : "hellfire",
+      "statusEffects" : [ "burningnapalm" ],
+      "knockback" : 20,
+      "knockbackMode" : "facing"
+    },
+    "stances" : {
+      "idle" : {
+        "weaponOffset" : [0.25, 2]
+      },
+      "windup" : {
+        "duration" : 0.7,
+        "weaponOffset" : [0.25, 2],
+
+        "minWindup" : 0.6,
+
+        "weaponAngle" : [
+          [0.7, "linear", -20, 0],
+          [0.85, "linear", 0, 50],
+          [0.925, "sin", 50, 45],
+          [1.0, "cos", 50, 45]
+        ],
+
+        "armAngle" : [
+          [1.0, "sin", -90, 50]
+        ]
+      },
+      "fire" : {
+        "weaponOffset" : [0.25, 2]
+      }
+    }
+  },
+  "critChance" : 3,
+  "critBonus" : 11,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

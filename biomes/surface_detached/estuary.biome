@@ -1,21 +1,82 @@
 {
   "name" : "estuary",
   "friendlyName" : "Estuary",
-  
-  "mainBlock" : "mud",
-  "subBlocks" : [ "clay", "wetdirt", "oystershell", "clay" ],
+
+  "hueShiftOptions" : [-30, -20, -10, 0, 10],
+
+  "mainBlock" : "sand2",
+  "subBlocks" : [ "sandstone01", "oystershell" ],
   "ores" : "surface",
 
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 2,
+        "pool" : [
+          [ 0.07, "aquamantle" ],
+          [ 0.05, "fufirecrabocean" ],
+          [ 0.05, "pulpinocean" ],
+          [ 0.05, "snagglerocean" ]
+        ]
+      },
+      {
+        "select" : 6,
+        "pool" : [
+          [ 1, "smallFishOcean1" ],
+          [ 1, "smallFishOcean2" ],
+          [ 1, "passiveLargeFish" ],
+          [ 1, "aggroLargeFish" ],
+          [ 1, "squidcritter" ],
+          [ 1, "jellycritter" ]
+        ]
+      }
+    ]
+  },
+
+  "parallax" : "/parallax/surface/ocean.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/ocean_surface_calm.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/ocean_surface_calm.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/m54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/m54.ogg", "/music/nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+
   "surfacePlaceables" : {
-    "grassMod" : [ "clay" ],
-    "grassModDensity" : 0.3,
+    "grassMod" : [ "aridgrass" ],
+    "grassModDensity" : 0.5,
 
     "items" : [
       {
         "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
         "priority" : 0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:minibiomeChests",
+        "distribution" : "/biomes/distributions.config:overgroundChests",
 
         "type" : "treasureBox",
         "treasureBoxSets" : [ "oasisChest" ]
@@ -24,10 +85,33 @@
         "mode" : "floor",
         "priority" : 0.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:overgroundRareChests",
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "oceanChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
         "type" : "treasureBox",
         "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundRareChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
       },
       {
         "mode" : "floor",
@@ -42,7 +126,15 @@
           }
         ]
       },
-  
+      {
+        "mode" : "floor",
+        "priority" : 1,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "oceanislandsmicrodungeons" ]
+      },
       {
         "mode" : "floor",
         "priority" : 3.0,
@@ -56,17 +148,29 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:superCommon",
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 15,
+        "treeStemList" : [ "bark", "beach", "blank", "coconut", "cross", "desertpalm", "palm", "plain", "twirl" ],
+        "treeFoliageList" : [ "cocopalm", "elegant", "lushleaves", "palmleaves", "palmlush", "palmy", "roseleaves" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
 
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ 
-            [0.2, "reedseed1" ], 
-            [0.2, "reedseed2" ], 
-            [0.2, "reedseed3" ], 
-            [0.2, "reedseed4" ], 
-            [0.2, "reedseed5" ] 
+            "pool" : [
+            [0.2, "reedseed1" ],
+            [0.2, "reedseed2" ],
+            [0.2, "reedseed3" ],
+            [0.2, "reedseed4" ],
+            [0.2, "reedseed5" ]
             ],
             "parameters" : { }
           }
@@ -81,11 +185,11 @@
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ 
-            [0.35, "tallgrass1" ], 
-            [0.35, "tallgrass2" ], 
-            [0.35, "tallgrass3" ], 
-            [0.35, "tallgrass4" ] 
+            "pool" : [
+            [0.35, "tallgrass1" ],
+            [0.35, "tallgrass2" ],
+            [0.35, "tallgrass3" ],
+            [0.35, "tallgrass4" ]
             ],
             "parameters" : { }
           }
@@ -103,7 +207,7 @@
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ 
+            "pool" : [
             [0.5, "wildriceseed" ],
             [0.5, "wildsweetscoopseed" ],
             [0.5, "gemglowseed" ]
@@ -118,8 +222,8 @@
   },
 
   "undergroundPlaceables" : {
-    "grassMod" : [ "clay" ],
-    "grassModDensity" : 0.9,
+    "grassMod" : [ "aridgrass" ],
+    "grassModDensity" : 0.2,
 
     "items" : [
       {
@@ -131,7 +235,7 @@
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ 
+            "pool" : [
             [0.5, "wildriceseed" ],
             [0.5, "wildsweetscoopseed" ],
             [0.5, "wildgemglowseed" ]
@@ -141,7 +245,7 @@
             }
           }
         ]
-      },    
+      },
       {
         "mode" : "ceiling",
         "priority" : 0.5,
@@ -151,7 +255,7 @@
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ 
+            "pool" : [
             [0.5, "wildlumivineseed" ]
             ],
             "parameters" : {
@@ -159,7 +263,7 @@
             }
           }
         ]
-      },    
+      },
       {
         "mode" : "floor",
         "priority" : 0.0,

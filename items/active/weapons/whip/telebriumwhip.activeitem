@@ -1,0 +1,57 @@
+{
+  "itemName" : "telebriumwhip",
+  "price" : 200,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A poisonous lash made from telebrium. Not for recreational use.",
+  "shortdescription" : "Telebrium Whip",
+  "tooltipKind" : "sword2",
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","whip","upgradeableWeapon","telebrium"],
+
+  "inventoryIcon" : "telebriumwhip.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "telebriumwhip.png",
+	"weaponFullbright" : "telebriumwhipfullbright.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : { "particles" : [ ]}},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/energywhip_swing1.ogg", "/sfx/melee/energywhip_swing2.ogg", "/sfx/melee/energywhip_swing3.ogg" ],
+      "crack" : [ "/sfx/melee/energywhip_impact1.ogg", "/sfx/melee/energywhip_impact2.ogg", "/sfx/melee/energywhip_impact3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [0.625, 0],
+    "length" : [3, 11],
+    "segmentImage" : "/items/active/weapons/whip/telebriumwhiplink.png",
+    "endSegmentImage" : "/items/active/weapons/whip/telebriumwhipend.png",
+    "segmentSize" : 0.375,
+    "fullbright" : true
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 1.1,
+    "chainDps" : 2.0,
+    "crackDps" : 5.0,
+
+    "damageConfig" : {
+      "damageSourceKind" : "poison"
+    },
+
+    "projectileType" : "whipcrackpoison"
+  },
+
+  "critChance" : 1,
+  "critBonus" : 8,
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}

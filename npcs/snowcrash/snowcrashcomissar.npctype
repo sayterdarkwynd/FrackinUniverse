@@ -1,0 +1,61 @@
+{
+  "type" : "snowcrashcomissar",
+  "baseType" : "hostilefu",
+
+    "identity" : {
+    "name" : "Commissar M. Vonel",
+    "gender" : "male",
+    "race" : "apex"
+  },
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "You dare break into my home? You will die!"
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "captainshead", "parameters" : { "colorIndex" : 1 } } ],
+            "chest" : [ { "name" : "apexcommanderjacket", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "apexcommanderpants", "parameters" : { "colorIndex" : 1 } } ],
+            "primary" : [
+              "rarepistol"
+            ],
+			"alt" : [
+              "rarepistol"
+            ]
+
+          }
+         ]
+    ]
+	]
+  },
+
+  "statusControllerSettings" : {
+
+    "stats" : {
+      "powerMultiplier" : {
+        "baseValue" : 1.8
+      },
+	  "maxHealth" : {
+        "baseValue" : 200.0
+      },
+	  "maxEnergy" : {
+        "baseValue" : 400.0
+      }
+    }
+  }
+}

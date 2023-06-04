@@ -1,0 +1,37 @@
+{
+  "itemName": "glowburger",
+  "rarity": "Rare",
+  "price": 475,
+  "category": "preparedFood",
+  "inventoryIcon": "glowburger.png",
+  "description": "A glowing hamburger with some violiroot and phasefruit inside.\n^cyan;+^#ffd700;20% ^cyan;HP ^gray;& ^cyan;EP ^gray;(^white;228^gray;)\n^white;Glow ^gray;(^white;2m^gray;)\n^red;Electrified ^gray;(^white;18s^gray;)^reset;",
+  "shortdescription": "Glowburger",
+  "effects": [
+    [
+      {
+        "effect": "maxhealthscalingboostfood",
+        "duration": 228
+      },
+      {
+        "effect": "maxenergyscalingboostfood",
+        "duration": 228
+      },
+      {
+        "effect": "electrified",
+        "duration": 18
+      },
+      {
+        "effect": "glow",
+        "duration": 120
+      }
+    ]
+  ],
+  "foodValue": 75,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 5,
+  "blockingEffects": ["wellfed"]//,
+  //"learnBlueprintsOnPickup": ["uberdinner"]
+}

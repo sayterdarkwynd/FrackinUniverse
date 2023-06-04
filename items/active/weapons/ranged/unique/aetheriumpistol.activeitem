@@ -1,0 +1,112 @@
+{
+  "itemName" : "aetheriumpistol",
+  "price" : 1160,
+  "inventoryIcon" : "aetheriumpistol.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Powerful, focused blasts of raw cosmic energy.
+^cyan;Energy weapon^reset;",
+  "shortdescription" : "Aetherium Vigilant",
+  "category" : "machinePistol",
+  "level" : 7,
+  "tooltipKind" : "gun2aetherium",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","machinepistol","energy","upgradeableWeapon","aetherium","cosmic"],
+  "twoHanded" : false,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "aetheriumpistol.png",
+    "middlefullbright" : "aetheriumpistolfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastlightblue.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+			//Same as BaseOffset
+		    "offset" : [2.4, 0.15]
+		  }
+		}
+      }
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "erchiussmoke", "offset" : [0.4, -0.4] },
+          { "particle" : "peglacitrail", "offset" : [0.4, -0.4] },
+          { "particle" : "plasmafireflames", "offset" : [0.4, -0.4] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/hailstrike.ogg" ]
+    }
+  },
+
+  "baseOffset" : [2.4, 0.15],
+  "muzzleOffset" : [-0.5, 0],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "aether",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
+    "fireTime" : 0.14,
+    "baseDps" : 6,
+    "energyUsage" : 34.0,
+    "useEnergy" : true,
+    "burstCooldown" : 0.2,
+    "projectileCount" : 1,
+    "fireType" : "burst",
+    "inaccuracy" : 0.02,
+    "burstTime" : 0.015,
+    "burstCount" : 2,
+
+    "projectileType" : "aetherbullet",
+    "projectileParameters" : {
+      "speed" : 80,
+      "knockback" : 3
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : false,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.03,
+	      "armRotation" : -2,
+	      "weaponRotation" : -2,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+
+  "critChance" : 1,
+  "critBonus" : 5,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

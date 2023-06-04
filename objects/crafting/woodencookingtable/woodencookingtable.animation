@@ -1,0 +1,116 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "stage" : {
+        "default" : "woodencookingtable",
+        "states" : {
+          "woodencookingtable" : {},
+          "upgraded" : {}
+        }
+      }
+    },
+
+    "parts" : {
+      "lights" : {
+        "properties" : {
+          "centered" : true,
+          "fullbright" : true,
+          "zLevel" : 0
+        },
+        "partStates" : {
+          "stage" : {
+            "woodencookingtable" : {},
+            "upgraded" : {}
+          }
+        }
+      },
+      "chassis" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 1
+        },
+        "partStates" : {
+          "stage" : {
+            "woodencookingtable" : {
+              "properties" : {
+                "image" : "woodencookingtable.png:<color>"
+              }
+            },
+
+            "upgraded" : {
+              "properties" : {
+                "image" : "tier2cookingtable.png:<color>"
+              }
+            }
+
+          }
+        }
+      }
+    }
+  },
+
+  "sounds" : {
+    "fanfare" : ["/sfx/cinematics/mission_unlock_event.ogg"],
+    "fanfare2" : ["/sfx/cinematics/license_acquired_event.ogg"]
+  },
+
+  "lights" : {
+
+    "replicatorglow" : {
+      "active" : false,
+      "color" : [89, 119, 179],
+      "position" : [0, 2],
+
+      "flickerPeriod" : 0.9,
+      "flickerMinIntensity" : 0.75,
+      "flickerMaxIntensity" : 0.8,
+      "flickerPeriodVariance" : 0,
+      "flickerIntensityVariance" : 0
+    },
+
+    "acceleratorglow" : {
+      "active" : false,
+      "color" : [155, 186, 61],
+      "position" : [0, 2],
+
+      "flickerPeriod" : 0.9,
+      "flickerMinIntensity" : 0.75,
+      "flickerMaxIntensity" : 0.8,
+      "flickerPeriodVariance" : 0,
+      "flickerIntensityVariance" : 0
+    },
+
+    "separatorglow" : {
+      "active" : false,
+      "color" : [164, 81, 196],
+      "position" : [0, 2],
+
+      "flickerPeriod" : 0.9,
+      "flickerMinIntensity" : 0.75,
+      "flickerMaxIntensity" : 0.8,
+      "flickerPeriodVariance" : 0,
+      "flickerIntensityVariance" : 0
+    },
+
+    "manipulatorglow" : {
+      "active" : false,
+      "color" : [79, 172, 178],
+      "position" : [0, 2],
+
+      "flickerPeriod" : 0.9,
+      "flickerMinIntensity" : 0.75,
+      "flickerMaxIntensity" : 0.8,
+      "flickerPeriodVariance" : 0,
+      "flickerIntensityVariance" : 0
+    }
+  },
+
+  "particleEmitters" : {
+    "dust" : {
+      "emissionRate" : 0.0,
+      "burstCount"  : 10,
+      "offsetRegion" : [-2, -2, 2, 2],
+      "particles" : [{ "particle" : "dust2"}]
+    }
+  }
+}

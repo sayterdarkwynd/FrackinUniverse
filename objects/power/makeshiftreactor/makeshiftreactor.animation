@@ -1,0 +1,117 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "screen" : {
+        "default" : "off",
+        "states" : {
+          "off" : {"frames" : 1},
+          "slow" : {"frames" : 4, "cycle" : 0.8, "mode" : "loop", "properties" : {
+              "persistentSound" : "/sfx/objects/ftldrive_idle2.ogg",
+              "persistentSoundRangeMultiplier" : 5.5,
+              "persistentSoundStopTime" : 0.25,
+              "immediateSoundRangeMultiplier" : 3
+            } },
+          "med" : {"frames" : 4, "cycle" : 0.8, "mode" : "loop", "properties" : {
+              "persistentSound" : "/sfx/objects/terraforge_loop1.ogg",
+              "persistentSoundRangeMultiplier" : 5.5,
+              "persistentSoundStopTime" : 0.25,
+              "immediateSoundRangeMultiplier" : 3
+            } },
+          "on" : {"frames" : 4, "cycle" : 0.8, "mode" : "loop", "properties" : {
+              "persistentSound" : "/sfx/objects/terraforge_loop2.ogg",
+              "persistentSoundRangeMultiplier" : 5.5,
+              "persistentSoundStopTime" : 0.25,
+              "immediateSoundRangeMultiplier" : 3
+            } }
+        }
+      },
+      "screenbright" : {
+        "default" : "off",
+        "states" : {
+          "off" : {"frames" : 1},
+          "slow" : {"frames" : 4, "cycle" : 0.8, "mode" : "loop"},
+          "med" : {"frames" : 4, "cycle" : 0.8, "mode" : "loop"},
+          "on" : {"frames" : 4, "cycle" : 0.8, "mode" : "loop"}
+        }
+      },
+      "hazard" : {
+        "default" : "off",
+        "states" : {
+          "off" : {"frames" : 1},
+          "safe" : {"frames" : 4, "cycle" : 1.0, "mode" : "loop"},
+          "warn" : {"frames" : 4, "cycle" : 1.0, "mode" : "loop", "properties" : {
+              "persistentSound" : "/sfx/objects/redalert.ogg",
+              "persistentSoundRangeMultiplier" : 10.5,
+              "persistentSoundStopTime" : 0.25,
+              "immediateSoundRangeMultiplier" : 10.5
+            }},
+          "danger" : {"frames" : 4, "cycle" : 1.0, "mode" : "loop", "properties" : {
+              "persistentSound" : "/sfx/objects/redalert.ogg",
+              "persistentSoundRangeMultiplier" : 10.5,
+              "persistentSoundStopTime" : 0.25,
+              "immediateSoundRangeMultiplier" : 10.5
+            }}
+        }
+      },
+	  "base" : {
+	    "default" : "base",
+		"states" : { "base" : {"frames" : 1}}
+	  }
+    },
+
+    "parts" : {
+      "screen" : {
+	    "properties" : {
+	"zLevel" : 3,
+	"centered" : false,
+	"fullbright" : false
+	    },
+        "partStates" : {
+          "screen" : {
+            "off" : {"properties" : {"image" : "<partImage>:off"}},
+            "slow" : {"properties" : {"image" : "<partImage>:slow.<frame>"}},
+            "med" : {"properties" : {"image" : "<partImage>:med.<frame>"}},
+            "on" : {"properties" : {"image" : "<partImage>:on.<frame>"}}
+          }
+        }
+      },
+      "screenbright" : {
+	    "properties" : {
+	"zLevel" : 4,
+	"centered" : false,
+	"fullbright" : true
+	    },
+        "partStates" : {
+          "screen" : {
+            "off" : {"properties" : {"image" : "<partImage>:off"}},
+            "slow" : {"properties" : {"image" : "<partImage>:slow.<frame>"}},
+            "med" : {"properties" : {"image" : "<partImage>:med.<frame>"}},
+            "on" : {"properties" : {"image" : "<partImage>:on.<frame>"}}
+          }
+        }
+      },
+
+	  "hazard" : {
+	    "properties" : {
+	"zLevel" : 3,
+	"centered" : false,
+	"fullbright" : true
+	    },
+        "partStates" : {
+          "hazard" : {
+            "off" : {"properties" : {"image" : "<partImage>:off"}},
+            "safe" : {"properties" : {"image" : "<partImage>:safe.<frame>"}},
+            "warn" : {"properties" : {"image" : "<partImage>:warn.<frame>"}},
+            "danger" : {"properties" : {"image" : "<partImage>:danger.<frame>"}}
+          }
+        }
+      },
+	  "base" : {
+	    "properties" : {"centered" : false},
+        "partStates" : {
+          "base" : { "base" : {"properties" : {"image" : "<partImage>:base"}}}
+		}
+	  }
+    }
+  }
+}

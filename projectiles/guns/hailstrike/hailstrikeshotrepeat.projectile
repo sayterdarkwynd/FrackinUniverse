@@ -1,0 +1,30 @@
+{
+  "projectileName" : "fuhailstrikeshotrepeat",
+  "image" : "fusplithailstrikeshot.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "physics" : "bullet",
+  "speed" :50,
+  "fullbright" : true,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "lightColor" : [0, 120, 120],
+  "power" : 5,
+  "damageKind" : "cosmic",
+  "scripts" : [ "homingarrow.lua" ],
+  "baseHomingControlForce" : 5,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/cosmicimpact2.config"
+    }
+  ],
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/gun/impact_arrow.ogg"
+      ]
+    }
+  ]
+}

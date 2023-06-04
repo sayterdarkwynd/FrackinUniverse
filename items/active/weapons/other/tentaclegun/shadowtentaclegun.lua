@@ -60,7 +60,7 @@ end
 function TentacleGun:fire()
   status.overConsumeResource("energy", self.energyUsage * self.fireTime)
 
-  for i = 1, math.min(self.projectileCount, self.maxProjectiles - #self.chains) do
+  for _ = 1, math.min(self.projectileCount, self.maxProjectiles - #self.chains) do
     local projectileParameters = {
         damageTeam = world.entityDamageTeam(activeItem.ownerEntityId()),
         power = self:damagePerShot(),
@@ -92,7 +92,7 @@ function TentacleGun:addProjectile(projectileId)
   local min = newChain.arcRadiusRatio[1]
   local max = newChain.arcRadiusRatio[2]
   newChain.arcRadiusRatio = (math.random() * (max - min) + min) * (math.random(2) * 2 - 3)
-  
+
   table.insert(self.chains, newChain)
 end
 

@@ -2,17 +2,17 @@
   "objectName" : "hiveblob2",
   "colonyTags" : [ "hive", "bees", "insects" ],
   "rarity" : "Common",
-  "category" : "pot",
+  "category" : "decorative",
   "printable" : false,
 
-  "description" : "A vile bubble of slime. Yuk.",
+  "description" : "A bubble of honey.",
   "shortdescription" : "Honey Blob",
   "race" : "apex",
 
   "inventoryIcon" : "capsulebigicon.png",
   "orientations" : [
     {
-      "image" : "hiveblob2.png:<color>",
+      "dualImage" : "hiveblob2.png:<color>",
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
@@ -24,7 +24,9 @@
   ],
   "smashable" : true,
   "smashSounds" : [ "/sfx/blocks/water_swim.ogg" ],
+  "smashParticles" : [ { "count" : 4, "particle" : "honeyshard" } ],
   "smashDropOptions" : [
     [ [ "fu_liquidhoney", 1, { } ], [ "fu_liquidhoney", 1, { } ], [ "fu_liquidhoney", 1, { } ] ]
-  ]
+  ],
+  "biomePlaced" : true
 }

@@ -1,16 +1,19 @@
 {
   "animatedParts" : {
     "stateTypes" : {
-      "furnaceState" : {
+      "centrifuge" : {
         "default" : "idle",
         "states" : {
           "idle" : {
             "frames" : 1
           },
-		  "active" : {
-            "frames" : 3,
-            "cycle" : 0.3,
-            "mode" : "loop"
+          "working" : {
+            "frames" : 5,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/honeyjarrer/centrifuge.ogg"
+            }
           }
         }
       }
@@ -19,23 +22,52 @@
     "parts" : {
       "centrifuge" : {
         "properties" : {
-          "centered" : false
+          "centered" : false,
+          "fullbright" : true,
+          "zLevel" : 0
         },
+
         "partStates" : {
-          "furnaceState" : {
+          "centrifuge" : {
             "idle" : {
               "properties" : {
-                "image" : "<partImage>:<color>.idle"
+                "image" : "<partImage>:<color>.1"
               }
             },
-            "active" : {
+
+            "working" : {
               "properties" : {
-                "image" : "<partImage>:<color>.active<frame>"
+                "image" : "<partImage>:<color>.<frame>"
+              }
+            }
+          }
+        }
+      },
+
+      "centrifugefullbright" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 2
+        },
+
+        "partStates" : {
+          "centrifuge" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.1"
+              }
+            },
+
+            "working" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.<frame>"
               }
             }
           }
         }
       }
+
+
     }
   }
 }

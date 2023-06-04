@@ -1,23 +1,18 @@
 {
-  "itemName" : "zathitails",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "zathitails.png",
-  "description" : "Stingy and painful to eat. But hey, low gravity!",
-  "shortdescription" : "Zathi Node",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-      {
-        "effect" : "lowgrav",
-        "amount" : 0.50,
-        "duration" : 90
-      }
-    ] ]
+	"itemName": "zathitails",
+	"inventoryIcon": "zathitails.png",
+	"category": "food",
+	"rarity": "Rare",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+30% Cosmic Res^reset;: 3m",
+	"shortdescription": "Zathi Node",
+
+	"effects": [
+		[{
+			"effect": "cosmicblock3",
+			"duration": 180
+		}]
+	]
 }

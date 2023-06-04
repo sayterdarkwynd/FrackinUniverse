@@ -1,0 +1,78 @@
+{
+  "objectName" : "fu_byostechstationTier0",
+  "colonyTags" : ["misc"],
+  "printable" : false,
+  "rarity" : "Common",
+  "smashOnBreak" : true,
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/interface/ai/fu_byosai.config",
+
+  "category" : "decorative",
+
+  "description" : "Ship-based Artificial Intelligence Lattice, or S.A.I.L for short.",
+  "shortdescription" : "S.A.I.L",
+  "race" : "generic",
+
+  "lightColor" : [77, 111, 128],
+  "lightPosition" : [-1, 0],
+
+  "flickerDistance" : 1.0,
+  "flickerStrength" : 0.05,
+  "flickerTiming" : 8,
+
+  "apexDescription" : "When it's working, I can talk to S.A.I.L. through this console.",
+  "avianDescription" : "Rebooting this station should enable me to talk to S.A.I.L..",
+  "floranDescription" : "Floran fix thisss panel to wake ship up!",
+  "glitchDescription" : "Distressed. I first need to reboot this station to communicate with S.A.I.L..",
+  "humanDescription" : "If I can reboot this station S.A.I.L. should come back online!",
+  "hylotlDescription" : "This console will allow me to communicate with S.A.I.L.. I need to reboot it first.",
+  "novakidDescription" : "Time to reboot this station so I can talk to S.A.I.L..",
+  "fukirhosDescription" : "I can use this to load up on augs or chat with S.A.I.L., if I get lonely.",
+  "fumantiziDescription" : "I can mess with my techs here, as well as talk to the AI, S.A.I.L.",
+  "fupeglaciDescription" : "A tech station - S.A.I.L displays data in both 'visible' and infrared light best suited for Peglaci eyes.",
+  "shadowDescription" : "This reminds me of the One.",
+  "slimepersonDescription" : "My friend.",
+
+  "aegiDescription" : "This panel allows for interaction with S.A.I.L., the ship-based AI.",
+  "avikanDescription" : "The Nomada doesn't like AIs like S.A.I.L., but the Protectorate insisted on installing it.",
+  "draunaarDescription" : "A station for interacting with S.A.I.L..",
+  "trinkDescription" : "I can speak to S.A.I.L. using this console. It's good to have another AI on the ship.",
+  "hymidDescription" : "This console allows for interaction with S.A.I.L.. It's nice to have someone to talk to.",
+  "notixDescription" : "S.A.I.L. is one companion who will never fail you.",
+  "jorgasianDescription" : "A console for communicating with S.A.I.L..",
+  "drodenDescription" : "Detected S.A.I.L. interface. Console enables communication with S.A.I.L..",
+  "akkimariDescription" : "Interface-S.A.I.L.. Akki talk to ship here.",
+
+  "inventoryIcon" : "fu_byostechstationiconTier0.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fu_byostechstationTier0.png:<color>.<frame>", "fullbright" : true }, { "image" : "fu_byostechstationlitTier0.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 8,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+
+    }
+  ],
+  "scripts" : [
+    "fu_byostechstationTier0.lua"
+  ],
+  "scriptDelta" : 20,
+
+  "chatPortrait" : "/ai/portraits/fu_byosportrait.png:yell.1",
+  "dialog" : {
+    "wakePlayer" : [
+      [ "System is down, please reboot.", "/ai/portraits/fu_byosportrait.png:unique.1"],
+      [ "Please reboot the system.", "/ai/portraits/fu_byosportrait.png:unique.1"],
+      [ "Reboot process remains uninitiated.", "/ai/portraits/fu_byosportrait.png:unique.1"],
+      [ "To make use of your S.A.I.L please reboot.", "/ai/portraits/fu_byosportrait.png:unique.1" ],
+      [ "Rebooting has shown to improve ship interaction satisfaction levels by 73%.", "/ai/portraits/fu_byosportrait.png:unique.1"],
+      [ "Rebooting requires a conscious entity to interact with the S.A.I.L console.", "/ai/portraits/fu_byosportrait.png:unique.1" ]
+    ]
+  },
+  "byosBootupReplacement" : "fu_byostechstation",
+  "byosBootupUniqueId" : "techstation"
+}

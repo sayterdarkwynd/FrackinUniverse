@@ -1,0 +1,124 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "stage" : {
+        "default" : "machiningtable",
+        "states" : {
+          "machiningtable" : {
+            "frames" : 8,
+            "cycle" : 2,
+            "mode" : "loop"
+          },
+          "autoassembler" : {
+            "frames" : 8,
+            "cycle" : 1,
+            "mode" : "loop"
+          },
+          "matterassembler" : {
+            "frames" : 8,
+            "cycle" : 1,
+            "mode" : "loop",
+            "properties" : {
+              "lightsOn" : [ "scifiglow" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "chassis" : {
+        "properties" : {
+          "centered" : true
+        },
+        "partStates" : {
+          "stage" : {
+            "machiningtable" : {
+              "properties" : {
+                "image" : "prototyper1lit.png:<color>.<frame>"
+              }
+            },
+
+            "autoassembler" : {
+              "properties" : {
+                "image" : "prototyper2lit.png:<color>.<frame>"
+              }
+            },
+
+            "matterassembler" : {
+              "properties" : {
+                "image" : "prototyper3lit.png:<color>.<frame>"
+              }
+            }
+          }
+        }
+      },
+
+      "fire" : {
+        "properties" : {
+          "centered" : true,
+          "fullbright" : true
+        },
+        "partStates" : {
+          "stage" : {
+            "machiningtable" : {
+              "properties" : {
+                "image" : "prototyper1.png:<color>.<frame>"
+              }
+            },
+
+            "autoassembler" : {
+              "properties" : {
+                "image" : "prototyper2.png:<color>.<frame>"
+              }
+            },
+
+            "matterassembler" : {
+              "properties" : {
+                "image" : "prototyper3.png:<color>.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "sounds" : {
+    "fanfare" : ["/sfx/cinematics/mission_unlock_event.ogg"],
+    "fanfare2" : ["/sfx/cinematics/license_acquired_event.ogg"]
+  },
+
+  "lights" : {
+    "fireglow" : {
+      "active" : false,
+      "position" : [0, 1],
+      "color" : [0, 0, 0],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    },
+
+    "scifiglow" : {
+      "active" : false,
+      "position" : [0, 1],
+      "color" : [42, 82, 128],
+      "flickerPeriod" : 0.5,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1.0,
+      "flickerPeriodVariance" : 0.0,
+      "flickerIntensityVariance" : 0.0
+    }
+  },
+
+  "particleEmitters" : {
+    "dust" : {
+      "emissionRate" : 0.0,
+      "burstCount"  : 10,
+      "offsetRegion" : [-2, -2, 2, 2],
+      "particles" : [{ "particle" : "dust2"}]
+    }
+  }
+}

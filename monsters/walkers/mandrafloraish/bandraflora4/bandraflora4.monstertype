@@ -1,0 +1,358 @@
+{
+  "type" : "bandraflora4",
+  "shortdescription" : "Effigiflora",
+  "description" : "Will harass you to death. Phases dimensions when murdered.",
+
+  "categories" : [ "bandraflora4" ],
+  "parts" : [ "body", "bodyfullbright" ],
+
+  "animation" : "bandraflora4.animation",
+
+  "dropPools" : [
+    {
+    "default" : "mandrafloraTreasure",
+    "bow" : "mandrafloraHunting",
+    "firebow" : "mandrafloraHunting",
+    "icebow" : "mandrafloraHunting",
+    "poisonbow" : "mandrafloraHunting",
+    "electricbow" : "mandrafloraHunting",
+    "cosmicbow" : "mandrafloraHunting",
+    "radioactivebow" : "mandrafloraHunting",
+    "shadowbow" : "mandrafloraHunting"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [ "/monsters/monster.lua" ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 50,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 40,
+      "targetOutOfSightTime" : 5.5,
+
+      "foundTargetActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 10,
+          "parameters" : {
+            "maximumRange" : 30,
+            "windupTime" : 0.6,
+
+            "aimAtTarget" : true,
+            "chargeTime" : 1,
+            "chargeSpeed" : 50,
+            "chargeControlForce" : 370,
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.4
+          }
+        }
+      ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 7,
+          "parameters" : {
+            "maximumRange" : 20,
+            "windupTime" : 0.2,
+
+            "aimAtTarget" : true,
+            "chargeTime" : 1,
+            "chargeSpeed" : 30,
+            "chargeControlForce" : 500,
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.4
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 2,
+          "parameters" : {
+            "maximumRange" : 20,
+            "minimumRange" : 4,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.1,
+            "projectileCount" : 8,
+            "projectileInterval" : 0.001,
+            "projectileType" : "magnorbneutron",
+            "projectileParameters" : {
+              "timeToLive" : 0.01
+            },
+            "fireOffset" : [0, 3],
+
+            "aimAtTarget" : false,
+
+            "inaccuracy" : 0,
+            "power" : 4,
+            "speed": 0,
+            "fireSound" : "fire",
+            "fireState" : "charge",
+
+            "winddownState" : "chargewinddown"
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 2,
+          "parameters" : {
+            "maximumRange" : 20,
+            "minimumRange" : 4,
+            "windupState" : "powerup",
+            "windupTime" : 0.6,
+            "projectileCount" : 1,
+            "projectileType" : "magnorbshadow",
+            "projectileParameters" : {
+              "timeToLive" : 5,
+              "speed" : 5
+            },
+            "fireOffset" : [0, -1.4],
+
+            "aimAtTarget" : false,
+            "onGround" : true,
+            "inaccuracy" : 0,
+            "fireSound" : "fire3",
+            "fireState" : "charge",
+            "power" : 1,
+            "winddownState" : "chargewinddown"
+          }
+        }
+      ],
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 15,
+          "parameters" : {
+          "effect" : "lowgrav_wretchel",
+          "duration" : 10
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 3,
+          "parameters" : {
+            "maximumRange" : 30,
+            "windupTime" : 0.2,
+
+            "aimAtTarget" : true,
+            "chargeTime" : 0.25,
+            "chargeSpeed" : 40,
+            "chargeControlForce" : 300,
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.4
+          }
+        }
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 20
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 20
+          }
+        }
+      ],
+
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "astraltear",
+            "projectileParameters" : {},
+            "power" : 12,
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0]
+          }
+        }
+      ],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 8,
+          "parameters" : {
+          "effect" : "darkregen",
+          "duration" : 2
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 15]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [1.0125, 1.25], [1.5125, 0.75],  [1.5125, -1.55], [1.0125, -1.95],  [-1.0125, -1.95], [-1.5125, -1.55],  [-1.5125, 0.75], [-1.0125, 1.25] ],
+      "damage" : 14,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "shadow",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [1.0125, 1.25], [1.5125, 0.75],  [1.5125, -1.55], [1.0125, -1.95],  [-1.0125, -1.95], [-1.5125, -1.55],  [-1.5125, 0.75], [-1.0125, 1.25] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 2,
+      "runSpeed" : 3,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 35.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 150
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.15
+        },
+        "fireResistance" : {
+          "baseValue" : -0.5
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1
+        },
+        "electricResistance" : {
+          "baseValue" : -0.5
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 1
+        },
+        "shadowResistance" : {
+          "baseValue" : -0.99
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "bandraflora4" }
+  }
+}

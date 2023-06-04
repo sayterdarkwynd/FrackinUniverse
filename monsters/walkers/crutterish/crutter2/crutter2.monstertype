@@ -1,0 +1,264 @@
+{
+  "type" : "crutter2",
+  "shortdescription" : "Nightcrutter",
+  "description" : "A strange mutation of the Crutter genome.",
+  "categories" : [ "crutter2" ],
+  "parts" : [ "body" ],
+
+  "animation" : "crutter2.animation",
+
+  "dropPools" : [
+    {
+    "default" : "crutterTreasure",
+    "bow" : "crutterHunting",
+    "firebow" : "crutterHunting",
+    "icebow" : "crutterHunting",
+    "poisonbow" : "crutterHunting",
+    "electricbow" : "crutterHunting",
+    "cosmicbow" : "crutterHunting",
+    "radioactivebow" : "crutterHunting",
+    "shadowbow" : "crutterHunting"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "targetEntityTypes" : [ "player", "npc", "monster" ],
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "cooldown" : 4,
+          "name" : "action-fire",
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 10,
+            "windupState" : "windup",
+            "windupTime" : 0.8,
+
+            "projectileType" : "hgravityexplosion",
+            "projectileParameters" : { "speed" : 22, "timeToLive" : 0.45},
+            "power" : 2,
+            "fireOffset" : [0.5, 0.6875],
+            "aimAtTarget" : true,
+            "fireState" : "fire",
+            "fireSound" : "fire",
+
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        },
+        {
+          "cooldown" : 2,
+          "name" : "action-fire",
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 10,
+            "windupState" : "windup",
+            "windupTime" : 0.8,
+
+            "projectileType" : "ngravityexplosion",
+            "projectileParameters" : { "speed" : 25, "timeToLive" : 1},
+            "power" : 6,
+            "fireOffset" : [0.5, 0.6875],
+            "aimAtTarget" : true,
+            "fireState" : "fire",
+            "fireSound" : "fire",
+
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        }
+      ],
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-fire",
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 10,
+            "windupState" : "windup",
+            "windupTime" : 0.8,
+
+            "projectileType" : "pushzone",
+            "projectileParameters" : { "speed" : 0, "timeToLive" : 2},
+            "power" : 9,
+            "fireOffset" : [0.5, 0.6875],
+            "aimAtTarget" : true,
+            "fireState" : "fire",
+            "fireDelay" : 0.1,
+            "fireSound" : "fire",
+
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        },
+        {
+          "cooldown" : 2,
+          "name" : "action-fire",
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 10,
+            "windupState" : "windup",
+            "windupTime" : 0.8,
+
+            "projectileType" : "shadoworb",
+            "projectileParameters" : { "speed" : 45, "timeToLive" : 5},
+            "power" : 9,
+            "fireOffset" : [0.5, 0.6875],
+            "aimAtTarget" : true,
+            "fireState" : "fire",
+            "fireDelay" : 0.1,
+            "fireSound" : "fire",
+
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        }
+      ],
+
+      "periodicActions" : [],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : false
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 15]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.1875, 1.3125], [0.5625, 0.9375], [0.5625, -0.9375], [0.1875, -1.3125], [-0.1875, -1.3125], [-0.5625, -0.9375], [-0.5625, 0.9375], [-0.1875, 1.3125] ],
+      "damage" : 10,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "shadow",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.1875, 1.3125], [0.5625, 0.9375], [0.5625, -0.9375], [0.1875, -1.3125], [-0.1875, -1.3125], [-0.5625, -0.9375], [-0.5625, 0.9375], [-0.1875, 1.3125] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 3,
+      "runSpeed" : 5,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 65
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : { "baseValue" : 0 },
+        "fireResistance" : { "baseValue" : 0 },
+        "iceResistance" : { "baseValue" : 0 },
+        "electricResistance" : { "baseValue" : 0 },
+        "physicalResistance" : { "baseValue" : 0 },
+        "shadowResistance" : { "baseValue" : 0.5 }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "crutter2" }
+  }
+}

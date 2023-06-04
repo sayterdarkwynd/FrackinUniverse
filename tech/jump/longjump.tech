@@ -1,0 +1,37 @@
+{
+  "name" : "longjump",
+  "type" : "legs",
+
+  "scripts" : ["longjump.lua"],
+  "animator" : "longjump.animation",
+
+  "description" : "Jump height boost, lower fall damage, wall jump, wall slide.",
+  "shortDescription" : "Power Jump",
+  "rarity" : "Uncommon",
+  "icon" : "/tech/longjump1.png",
+
+  "chipCost" : 2,
+
+  "multiJumpCount" : 1,
+
+  "jumpSpeedMultiplier" : 1.75,
+  "fallGravityMultiplier" : 0.8,
+  "fallDamageMultiplier" : 0.8,
+  "flutterXVelocity" : 0,
+  "flutterYVelocity" : 0,
+  "flutterTime": 0.01,
+  "flutterAfterFall" : false,
+  "flutterFall" : false,
+  "wallJumpXVelocity" : 8,
+  "wallGrabFreezeTime" : 0.10,
+  "wallSensors" : [ 1.0, 1.75, 2.5 ],
+  "wallDetectThreshold" : 1,
+  "wallReleaseTime" : 0.15,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 1,
+      "airForce" : 0,
+      "airFriction" : 10
+    }
+  }
+}

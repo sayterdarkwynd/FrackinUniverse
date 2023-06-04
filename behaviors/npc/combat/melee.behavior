@@ -1,0 +1,285 @@
+{
+  "name": "meleecombat",
+  "description": "",
+  "scripts": [
+    "/scripts/behavior.lua",
+    "/scripts/actions/npc.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/world.lua",
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/time.lua"
+  ],
+  "parameters": {
+    "switchToRangedCooldown": 2,
+    "leapCooldown": 4,
+    "leapChance": 0.5
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "setFlag",
+        "type": "action",
+        "name": "setFlag",
+        "parameters": {
+          "name": {"value": "avoidLiquid"}
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": -1},
+          "success": {"value": -1}
+        },
+        "children": [
+          {
+            "title": "primaryWeaponTiming",
+            "type": "action",
+            "name": "primaryWeaponTiming",
+            "parameters": {},
+            "output": {
+              "cooldown": "meleeCooldown",
+              "windup": "meleeWindup"
+            }
+          },
+          {
+            "title": "meleecombat-approach",
+            "type": "module",
+            "name": "meleecombat-approach",
+            "parameters": {}
+          },
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "cooldown",
+                "type": "decorator",
+                "name": "cooldown",
+                "parameters": {
+                  "cooldown": {"key": "<switchToRangedCooldown>"},
+                  "onFail": {"value": false},
+                  "onSuccess": {"value": true}
+                },
+                "child": {
+                  "title": "sequence",
+                  "type": "composite",
+                  "name": "sequence",
+                  "parameters": {},
+                  "children": [
+                    {
+                      "title": "canFire",
+                      "type": "action",
+                      "name": "canFire",
+                      "parameters": {}
+                    },
+                    {
+                      "title": "hasRangedSheathed",
+                      "type": "action",
+                      "name": "hasRangedSheathed",
+                      "parameters": {}
+                    },
+                    {
+                      "title": "swapItemSlots",
+                      "type": "action",
+                      "name": "swapItemSlots",
+                      "parameters": {}
+                    }
+                  ]
+                }
+              },
+              {
+                "title": "halt",
+                "type": "action",
+                "name": "halt",
+                "parameters": {}
+              }
+            ]
+          },
+          {
+            "title": "dynamic",
+            "type": "composite",
+            "name": "dynamic",
+            "parameters": {},
+            "children": [
+              {
+                "title": "cooldown",
+                "type": "decorator",
+                "name": "cooldown",
+                "parameters": {
+                  "cooldown": {"key": "meleeCooldown"},
+                  "onFail": {"value": false},
+                  "onSuccess": {"value": true}
+                },
+                "child": {
+                  "title": "selector",
+                  "type": "composite",
+                  "name": "selector",
+                  "parameters": {},
+                  "children": [
+                    {
+                      "title": "cooldown",
+                      "type": "decorator",
+                      "name": "cooldown",
+                      "parameters": {
+                        "cooldown": {"key": "<leapCooldown>"},
+                        "onFail": {"value": false},
+                        "onSuccess": {"value": true}
+                      },
+                      "child": {
+                        "title": "cooldown",
+                        "type": "decorator",
+                        "name": "cooldown",
+                        "parameters": {
+                          "cooldown": {"value": 0.5},
+                          "onFail": {"value": true},
+                          "onSuccess": {"value": true}
+                        },
+                        "child": {
+                          "title": "sequence",
+                          "type": "composite",
+                          "name": "sequence",
+                          "parameters": {},
+                          "children": [
+                            {
+                              "title": "chance",
+                              "type": "action",
+                              "name": "chance",
+                              "parameters": {
+                                "chance": {"key": "<leapChance>"}
+                              }
+                            },
+                            {
+                              "title": "meleecombat-leap",
+                              "type": "module",
+                              "name": "meleecombat-leap",
+                              "parameters": {}
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "title": "sequence",
+                      "type": "composite",
+                      "name": "sequence",
+                      "parameters": {},
+                      "children": [
+                        {
+                          "title": "groupResource",
+                          "type": "action",
+                          "name": "groupResource",
+                          "parameters": {
+                            "groupId": {"value": "combat"},
+                            "name": {"value": "maxRange"}
+                          },
+                          "output": {
+                            "number": "maxRange"
+                          }
+                        },
+                        {
+                          "title": "entityInRange",
+                          "type": "action",
+                          "name": "entityInRange",
+                          "parameters": {
+                            "entity": {"key": "target"},
+                            "position": {"key": "self"},
+                            "xRange": {"key": "maxRange"}
+                          }
+                        },
+                        {
+                          "title": "entityInRange",
+                          "type": "action",
+                          "name": "entityInRange",
+                          "parameters": {
+                            "entity": {"key": "target"},
+                            "position": {"key": "self"},
+                            "yRange": {"value": 5}
+                          }
+                        },
+                        {
+                          "title": "succeeder",
+                          "type": "decorator",
+                          "name": "succeeder",
+                          "parameters": {},
+                          "child": {
+                            "title": "parallel",
+                            "type": "composite",
+                            "name": "parallel",
+                            "parameters": {
+                              "fail": {"value": 1},
+                              "success": {"value": -1}
+                            },
+                            "children": [
+                              {
+                                "title": "onGround",
+                                "type": "action",
+                                "name": "onGround",
+                                "parameters": {}
+                              },
+                              {
+                                "title": "entityInRange",
+                                "type": "action",
+                                "name": "entityInRange",
+                                "parameters": {
+                                  "entity": {"key": "target"},
+                                  "position": {"key": "self"},
+                                  "xRange": {"key": "maxRange"}
+                                }
+                              },
+                              {
+                                "title": "meleecombat-aim",
+                                "type": "module",
+                                "name": "meleecombat-aim",
+                                "parameters": {}
+                              },
+                              {
+                                "title": "primaryFire",
+                                "type": "action",
+                                "name": "primaryFire",
+                                "parameters": {}
+                              },
+                              {
+                                "title": "timer",
+                                "type": "action",
+                                "name": "timer",
+                                "parameters": {
+                                  "time": {"key": "meleeWindup"}
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "title": "faceEntity",
+                "type": "action",
+                "name": "faceEntity",
+                "parameters": {
+                  "entity": {"key": "target"}
+                }
+              }
+            ]
+          },
+          {
+            "title": "runner",
+            "type": "action",
+            "name": "runner",
+            "parameters": {}
+          }
+        ]
+      }
+    ]
+  }
+}

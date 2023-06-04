@@ -1,0 +1,81 @@
+{
+  "objectName" : "peglacilightembedded",
+  "colonyTags" : [ "peglaci", "peglacivillage", "light" ],
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 60,
+  "printable" : true,
+
+  "description" : "An embedded crystal lantern.",
+  "shortdescription" : "Alloy Wall Lantern",
+  "race" : "peglaci",
+
+  "apexDescription" : "A crystal lantern embedded into the back wall. Very space efficient.",
+  "avianDescription" : "Such a lovely crystalline glow.",
+  "floranDescription" : "Looksss like ice with sssun shining through it.",
+  "glitchDescription" : "Analysis. Light signature is similar to sunlight filtering through ice.",
+  "humanDescription" : "Embedded in the wall to save space, I guess.",
+  "hylotlDescription" : "Why not use a simple light instead of mucking about with crystals?",
+  "novakidDescription" : "Such a lovely crystalline glow.",
+  "fupeglaciDescription" : "When you need a light but you don't have a lot of space, this could be what you're looking for.",
+
+  "lightColor" : [100, 200, 255],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "inventoryIcon" : "peglacilightembeddedicon.png",
+  "orientations" : [
+    {
+      "image" : "peglacilightembedded.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+      "animationPosition" : [-8, 0],
+
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "peglacilightembedded.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+
+      "direction" : "right",
+      "animationPosition" : [-8, 0],
+
+      "frames" : 4,
+      "animationCycle" : 0.3,
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/oillantern.ogg",
+
+  "animation" : "peglacilightembedded.animation",
+  "animationParts" : {
+    "bg" : "peglacilightembedded.png",
+    "fg" : "peglacilightembeddedlit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/oillantern_on.ogg" ],
+      "off" : [ "/sfx/objects/oillantern_off.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+}

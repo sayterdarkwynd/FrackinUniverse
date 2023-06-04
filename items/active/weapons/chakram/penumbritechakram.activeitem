@@ -1,0 +1,86 @@
+{
+  "itemName" : "penumbritechakram",
+  "price" : 100,
+
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "category" : "chakram",
+  "description" : "Precise and powerful, and shiny!",
+  "shortdescription" : "Penumbrite Chakram",
+  "tooltipKind" : "chakram",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","chakram", "silver", "upgradeableWeapon", "penumbrite","silver"],
+  "inventoryIcon" : "penumbritechakram.png",
+  "animation" : "chakram.animation",
+  "animationParts" : {
+    "chakram" : "penumbritechakram.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "throw" : [ "/sfx/melee/swing_dagger.ogg" ]
+    }
+  },
+  "scripts" : ["/items/active/weapons/boomerang/boomerang.lua"],
+  "fireOffset" : [1.25, 0.5],
+
+  "critChance" : 1,
+  "critBonus" : 10,
+
+  "projectileType" : "penumbritechakram",
+  "projectileParameters" : {
+    "knockback" : 5,
+    "power" : 5,
+    "damageRepeatTimeout" : 0.2,
+
+    "returnOnHit" : true,
+    "pickupDistance" : 1.0,
+
+    "hoverMaxDistance" : 20,
+    "hoverTime" : 0,
+
+    "maxDistance" : 20
+  },
+
+  "level" : 3,
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transition" : "throw",
+      "transitionFunction" : "fire",
+      "armRotation" : 70,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+  "builder" : "/items/buildscripts/fubuildchakram.lua"
+}

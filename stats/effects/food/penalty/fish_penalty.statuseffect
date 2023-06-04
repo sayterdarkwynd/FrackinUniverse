@@ -1,0 +1,24 @@
+{
+	"name" : "fish_penalty",
+
+	"effectConfig" : {
+		"poisonPercent" : 0.01,
+		"stats" : [
+			{ "stat" : "maxHealth", "effectiveMultiplier" : 0.9 },
+			{ "stat" : "maxBreath", "effectiveMultiplier" : 0.5 }
+		],
+		"controlModifiers" : {
+			"speedModifier" : 0.8
+		}
+	},
+	"defaultDuration" : 120,
+
+	"scripts" : [
+		"foodpenalty.lua"
+	],
+
+	"animationConfig" : "foodpoison.animation",
+
+	"label" : "Too fishy for you.",
+	"icon" : "/interface/statuses/foodpoisonfish.png"
+}

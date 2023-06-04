@@ -1,0 +1,168 @@
+{
+  "objectName" : "chemlab",
+  "colonyTags" : [ "fu", "science", "scienceoutpost", "hitech" ],
+  "rarity" : "Essential",
+  "race" : "generic",
+  "category" : "crafting",
+
+  "breakDropOptions" : [],
+
+  "price" : 50,
+  "printable" : false,
+
+  "scripts" : [ "/scripts/npcToyObject.lua",
+                "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua"
+              ],
+
+  "animation" : "chemlab.animation",
+  "animationPosition" : [0, 24],
+
+  "inventoryIcon" : "chemlab1icon.png",
+  "placementImage" : "chemlab1.png:default.default",
+  "placementImagePosition" : [-28, 0],
+
+  "description" : "Play with chemicals. Endless fun.",
+  "shortdescription" : "^orange;Alchemy Table^reset;",
+
+  "startingUpgradeStage" : 1,
+  "maxUpgradeStage" : 3,
+
+  "upgradeStages" : [
+    {
+      "animationState" : "alchemytable",
+
+      "itemSpawnParameters" : {
+        "inventoryIcon" : "chemlab1icon.png",
+        "placementImage" : "chemlab1.png:default.default",
+        "placementImagePosition" : [-28, 0],
+
+        "description" : "Experiment with chemicals.",
+        "shortdescription" : "^orange;Alchemy Table^reset;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/chemlab.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {"title" : " ","subtitle" : " ","icon" : {"file" : ""}},
+          "lblTitle" : {"value" : " ^orange;Alchemy Table^reset;"},
+          "lblSubTitle" : {"value" : " ^#dddddd;Experiment with chemicals."}
+        },
+
+        "filter" : [ "chemlab1" ],
+        "upgradeMaterials" : [
+          { "item" : "tungstenbar", "count" : 4 },
+          { "item" : "bottle", "count" : 4 },
+          { "item" : "wire", "count" : 4 },
+          { "item" : "polymer", "count" : 8 }
+        ]
+      },
+
+
+      "craftingSound" : "/sfx/interface/crafting_medical.ogg",
+      "upgradeSoundEffect" : "fanfare",
+      "upgradeParticleEffect" : "dust"
+    },
+
+    {
+      "animationState" : "chemistrylab",
+
+      "itemSpawnParameters" : {
+        "price" : 400,
+        "inventoryIcon" : "chemlab2icon.png",
+        "placementImage" : "chemlab2.png:default.default",
+        "placementImagePosition" : [-28, 0],
+
+        "description" : "More advanced experiments. More kaboom.",
+        "shortdescription" : "^orange;Chemistry Lab^reset;"
+      },
+      "interactData" : {
+        "config" : "/interface/windowconfig/chemlab.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {"title" : " ","subtitle" : " ","icon" : {"file" : ""}},
+          "lblTitle" : {"value" : " ^orange;Chemistry Lab^reset;"},
+          "lblSubTitle" : {"value" : " ^#dddddd;More advanced experiments. More kaboom."}
+        },
+        "filter" : [ "chemlab1", "chemlab2" ],
+    "upgradeMaterials" : [
+          { "item" : "titaniumbar", "count" : 6 },
+          { "item" : "cpu", "count" : 2 },
+          { "item" : "stickofram", "count" : 4 },
+          { "item" : "ff_plastic", "count" : 5 }
+        ]
+      },
+
+      "learnBlueprintsOnPickup" : [],
+      "craftingSound" : "/sfx/interface/crafting_medical.ogg",
+      "upgradeSoundEffect" : "fanfare2",
+      "upgradeParticleEffect" : "dust"
+    },
+
+    {
+      "animationState" : "biochemlab",
+
+      "itemSpawnParameters" : {
+        "price" : 750,
+        "inventoryIcon" : "chemlab3icon.png",
+        "placementImage" : "chemlab3.png:default.default",
+        "placementImagePosition" : [-28, 0],
+
+        "description" : "Superior chemistry and biology experiments.",
+        "shortdescription" : "^orange;Bio-Chem Lab^reset;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/chemlab.config",
+        "paneLayoutOverride" : {
+          "background" : {"fileHeader" : "/interface/windowconfig/newuiheader_dark_upgraded.png"},
+          "windowtitle" : {"title" : " ","subtitle" : " ","icon" : {"file" : ""}},
+          "lblTitle" : {"value" : " ^orange;Bio-Chem Lab^reset;"},
+          "lblSubTitle" : {"value" : " ^#dddddd;Superior chemistry and biology experiments."}
+        },
+        "filter" : [ "chemlab1", "chemlab2", "chemlab3" ],
+        "craftingSound" : "/sfx/interface/crafting_medical.ogg"
+      },
+
+      "learnBlueprintsOnPickup" : []
+    }
+  ],
+
+  "orientations" : [
+    {
+      "image" : "chemlab1.png:default.<frame>",
+      "imagePosition" : [-28, 0],
+      "direction" : "left",
+      "flipImages" : true,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "chemlab1.png:default.<frame>",
+      "imagePosition" : [-28, 0],
+      "direction" : "right",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "npcToy" : {
+    "influence" : [
+      "furnace",
+      "furnace",
+      "furnaceComplete"
+    ],
+    "defaultReactions" : {
+      "furnace" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"]
+      ],
+      "furnaceComplete" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"],
+        [1.0, "pokefire"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.5, 0.0],
+    "preciseStandPositionRight" : [2.5, 0.0],
+    "maxNpcs" : 1
+  }
+}

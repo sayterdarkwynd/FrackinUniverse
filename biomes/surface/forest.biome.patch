@@ -1,20 +1,72 @@
 [
-
 {"op":"add","path":"/spawnProfile/groups/-",
-"value":{ 
-      
-        "select" : 6,
-        "pool" : [ 
-          [ 0.111, "greentip" ],          
-          [ 0.111, "blueback" ],
-          [ 0.111, "forestbee" ],
-          [ 0.111, "nocturnalbee" ],
-          [ 0.111, "normalbee" ],
-          [ 0.111, "blackbeetle" ],
-          [ 0.111, "redwing" ]
+"value":{
+
+        "select" : 4,
+        "pool" : [
+          [ 0.111, "fuhummingbirdcritter" ],
+          [ 0.111, "fublackbunnycritter" ],
+          [ 0.111, "fuspidercritter" ],
+          [ 0.111, "fumothcritter" ],
+          [ 0.111, "furaccooncritter" ],
+          [ 0.111, "fuspidercritter" ],
+          [ 0.111, "fuplantsnakecritter" ],
+          [ 0.111, "warmdeer" ],
+          [ 0.111, "fubearcritter" ],
+          [ 0.111, "fuduckcritter" ],
+          [ 0.111, "fufoxcritter" ]
         ]
       }
 },
+{"op":"add","path":"/spawnProfile/groups/-",
+"value":{
+
+        "select" : 1,
+        "pool" : [
+          [ 0.33, "pandorasboxcottonbop" ],
+          [ 0.33, "blackbeetle" ],
+          [ 0.33, "futinycockroach" ]
+        ]
+      }
+},
+{"op":"add","path":"/spawnProfile/groups/-",
+"value":{
+
+        "select" : 3,
+        "pool" : [
+          [ 0.5, "bee_orchid" ],
+          [ 0.1, "bee_bumblebee" ],
+          [ 0.4, "bee_honey" ]
+        ]
+      }
+},
+
+ {
+   "op": "add",
+   "path": "/subBlocks/-",
+   "value": "clay"
+ },
+
+ {
+   "op": "replace",
+   "path": "/surfacePlaceables/items/9/bushes/0/baseHueShiftMax",
+   "value": 40
+ },
+
+ {
+   "op": "add",
+   "path": "/surfacePlaceables/items/-",
+   "value":
+   {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+   }
+ },
 
 {"op":"add","path":"/surfacePlaceables/items/-","value":{
 			"mode" : "floor",
@@ -24,8 +76,9 @@
 
 			"type" : "microdungeon",
 			"microdungeons" : [ "newavianmicro", "minigreenruins" ]
-		} 
+		}
 	},
+
 {"op":"add","path":"/surfacePlaceables/items/-","value":{
           "mode" : "floor",
           "priority" : 1.0,
@@ -35,7 +88,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "wildbrackentreeseed" ],
               [0.35, "wildonionseed" ],
               [0.35, "wildjillyrootseed" ],
@@ -47,6 +100,7 @@
           ]
         }
 	},
+
 	{"op":"add","path":"/surfacePlaceables/items/-","value":
 	  {
           "mode" : "floor",
@@ -57,15 +111,15 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
-            [0.35, "flowerred" ], 
-            [0.35, "flowerblue" ], 
-            [0.35, "floweryellow" ], 
+              "pool" : [
+            [0.35, "flowerred" ],
+            [0.35, "flowerblue" ],
+            [0.35, "floweryellow" ],
             [0.35, "flowerblack" ],
             [0.35, "flowerbrown" ],
             [0.35, "flowerorchid" ],
             [0.35, "flowerorchid2" ],
-            [0.35, "flowerspring" ], 
+            [0.35, "flowerspring" ],
             [0.35, "flowergreen" ],
             [0.35, "flowerorange" ],
             [0.35, "flowerorchid3" ],
@@ -77,5 +131,38 @@
             }
           ]
           }
-	}
+	},
+{"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "fu_dae_microdungeons", "lakes_water", "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "fuencounters",  "fulabs", "fubandits", "newhumanmicro", "newavianmicro", "fuhives", "furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter" ]
+  }
+},
+
+ {
+   "op": "add",
+   "path": "/undergroundPlaceables/items/0/treasureBoxSets/-",
+   "value": "ffbasicChest"
+ },
+
+ {
+   "op": "add",
+   "path": "/undergroundPlaceables/items/0/treasureBoxSets/-",
+   "value": "ffbasicChest2"
+ },
+
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
+  }
+}
 ]

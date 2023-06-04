@@ -1,0 +1,66 @@
+{
+	"stats" : [
+		{ "stat" : "maxHealth", "effectiveMultiplier" : 0.90 },
+		{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.1 },
+		{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.05 },
+		{ "stat" : "fallDamageMultiplier", "effectiveMultiplier" : 0.35 },
+		{ "stat" : "physicalResistance", "amount" : -0.05 },
+		{ "stat" : "electricResistance", "amount" : 0.25 },
+		{ "stat" : "iceResistance", "amount" : -0.3 },
+		{ "stat" : "poisonResistance", "amount" : -0.25 },
+		{ "stat" : "shadowResistance", "amount" : 0.15 },
+		{ "stat" : "cosmicResistance","amount" : 0.25 }
+	],
+	"diet" : "omnivore",
+	"controlModifiers" : {
+		"airJumpModifier" : 1.05
+	},
+	"controlParameters" : {
+		"airJumpProfile" : {
+			"jumpSpeed" : 30
+		}
+	},
+	"weaponEffects" : [
+		{
+			"weapons" : [ "shortspear" ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.06 },
+				{ "stat" : "critChance", "amount" : 1 }
+			]
+		},
+		{
+			"weapons": [ "bow" ],
+			"stats": [
+				{ "stat" : "critDamage", "amount": 0.05 },
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.12}
+			],
+			"controlModifiers": { "speedModifier": 1.05 }
+		}
+	],
+	"aerialEffect" : {
+		"airStats" : {
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.12 }
+			]
+		},
+
+		"windEffects" : {
+			"windHigh" : {
+				"speed" : 60
+			},
+			"windLow" : {
+				"speed" : 5,
+				"stats" : [
+					{ "stat" : "maxHealth", "effectiveMultiplier" : 1.15 },
+					{ "stat" : "protection", "effectiveMultiplier" : 1.1 }
+				],
+				"controlModifiers" : {
+					"speedModifier" : 1.19,
+					"airJumpModifier" : 1.2,
+					"airForce" : 86
+				}
+			}
+		}
+	},
+	"tech" : [ "flight_avian" ]
+}

@@ -1,0 +1,40 @@
+{
+  "objectName" : "pongmachine",
+  "colonyTags" : ["outpost","electronic"],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 400,
+  "lightColor" : [120, 173, 173],
+  "printable" : false,
+
+  "description" : "This machine runs a game called 'Pong'.",
+  "shortdescription" : "Pong Machine",
+  "race" : "generic",
+
+  "inventoryIcon" : "pongicon.png",
+  "orientations" : [
+    {
+      "image" : "pong.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "direction" : "left",
+      "flipImages" : true,
+      "frames" : 2,
+      "animationCycle" : 0.6,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "pong.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "direction" : "right",
+      "frames" : 2,
+      "animationCycle" : 0.6,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "interactAction" : "ScriptPane",
+  "interactData" : "/objects/generic/pong/pong.config"
+}

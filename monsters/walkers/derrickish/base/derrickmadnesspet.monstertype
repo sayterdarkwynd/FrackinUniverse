@@ -1,0 +1,343 @@
+{
+  "type" : "derrickmadnesspet",
+  "shortdescription" : "Psilamander",
+  "description" : "Psionic amphibians. Relatively friendly, and make great pets.",
+
+
+
+  "reversed" : true,
+  "categories" : [ "derrick" ],
+  "parts" : [ "body" ],
+
+  "animation" : "derrick.animation",
+
+  "dropPools" : [
+    {
+    "default" : "generatedGroundMonsterTreasure",
+    "bow" : "bogdinoLoot",
+    "firebow" : "bogdinoLoot",
+    "icebow" : "bogdinoLoot",
+    "poisonbow" : "bogdinoLoot",
+    "electricbow" : "bogdinoLoot",
+    "cosmicbow" : "bogdinoLoot",
+    "radioactivebow" : "bogdinoLoot",
+    "shadowbow" : "bogdinoLoot"
+    }
+  ],
+
+  "baseParameters" : {
+  "colorSwap":{"6f2919":"531729", "a85636":"7e2e3e", "e0975c":"aa4d50", "ffca8a":"c27570", "735e3a":"873300", "a38d59":"c45b00","d9c189":"ff8215","f7e7b2":"ffa94c"},
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 40,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 40,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+	  "cooldown" : 8,
+          "parameters" : {
+            "requireLineOfSight" : false,
+            "maximumRange" : 12,
+            "minimumRange" : 4,
+            "windupState" : "windup",
+            "windupTime" : 2,
+
+            "projectileType" : "fu_genericBlankProjectile",
+            "projectileParameters" : {
+                  "physics" : "illusion",
+                  "damageSourceKind" : "cosmic",
+                  "speed" : 60,
+		  "actionOnReap" : [
+		    {
+		      "action" : "projectile",
+		      "type" : "slowzone",
+		      "fuzzAngle" : 0,
+		      "inheritDamageFactor" : 1
+		    }
+		  ]
+            },
+            "power" : 9,
+
+            "fireOffset" : [1.5, 1],
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.01,
+            "fireSound" : "charge",
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.25
+          }
+        },
+        {
+          "name" : "action-leap",
+          "cooldown" : 2,
+          "parameters" : {
+            "minimumRange" : 0,
+            "maximumRange" : 20,
+            "maxXRange" : 6,
+            "windupTime" : 0.3,
+            "windupState" : "idle",
+
+            "leapVelocity" : 28,
+            "collisionCheck" : true,
+            "highArc" : false,
+            "leapState" : "jump",
+            "fallState" : "fall",
+
+            "winddownState" : "",
+            "winddownTime" : 0.3
+          }
+        },
+        {
+          "name" : "action-charge",
+          "cooldown" : 4,
+          "parameters" : {
+            "maximumRange" : 10,
+            "minimumRange" : 2,
+            "windupTime" : 0.01,
+
+            "chargeTime" : 1.0,
+            "chargeSpeed" : 18,
+            "chargeControlForce" : 400,
+            "wallKnockback" : true,
+            "wallCrashSound" : "wallCrash",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.4,
+            "winddownStopForce" : 400
+          }
+        }
+      ],
+
+      "periodicActions" : [
+
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 8,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 8,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-fire",
+          "parameters" : {
+            "requireLineOfSight" : false,
+            "maximumRange" : 55,
+            "minimumRange" : 0,
+            "windupState" : "windup",
+            "windupTime" : 2,
+
+            "projectileType" : "fu_genericBlankProjectile",
+            "projectileParameters" : {
+                  "timeToLive" : 1,
+                  "speed" : 5,
+		  "actionOnReap" : [
+		    {
+		      "action" : "projectile",
+		      "type" : "pushzone",
+		      "fuzzAngle" : 0,
+		      "inheritDamageFactor" : 0.25
+		    }
+		  ]
+            },
+            "power" : 9,
+
+            "fireOffset" : [1.5, 1],
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.01,
+            "fireSound" : "charge",
+            "range": 8,
+            "fireState" : "",
+            "winddownState" : "",
+            "winddownTime" : 0.25
+          }
+        }
+      ],
+
+      "concurrentActions" : [
+
+        {
+          "name" : "action-projectile",
+          "cooldown" : 6,
+          "parameters" : {
+            "windupState" : "windup",
+            "windupTime" : 2,
+            "projectileCount" : 1,
+            "projectileType" : "healingzone",
+            "projectileParameters" : { "timeToLive" : 4 },
+            "power" : 0,
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0]
+          }
+        }
+      ],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-projectile",
+          "cooldown" : 6,
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "healingzone",
+            "projectileParameters" : { "timeToLive" : 2 },
+            "power" : 0,
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0]
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 20]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-1.583,-1.667], [-0.167,-1.833], [0.917,-1.875], [1,-1.5], [1.583,-1.458], [1.667,-0.417], [0.583,-0], [-1.042,0.083], [-1.042,-0.25], [-1.667,-0.75] ],
+      "damage" : 8,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ "weakpoison" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.583,-1.667], [-0.167,-1.833], [0.917,-1.875], [1,-1.5], [1.583,-1.458], [1.667,-0.417], [0.583,-0], [-1.042,0.083], [-1.042,-0.25], [-1.667,-0.75] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 5,
+      "runSpeed" : 7,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.15
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 200
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.75
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "derrickmadnesspet" }
+  }
+}

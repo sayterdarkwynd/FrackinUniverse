@@ -1,0 +1,108 @@
+{
+  "objectName" : "precursorconverter",
+  "colonyTags" : [ "precursor" ],
+  "rarity" : "legendary",
+  "race" : "precursor",
+  "category" : "^orange;Extraction Device^reset;",
+  "printable" : false,
+  "objectType" : "container",
+  "price" : 450,
+  "inventoryIcon" : "extractionlabicon.png",
+  "description" : "Converts erchius energy into a more potent fuel.",
+  "shortdescription" : "^cyan;Erchius Converter^reset;",
+  "subtitle" : "Resource converter",
+  "orientations" : [
+     {
+      "imageLayers" : [ { "image" : "console.png:<color>.<frame>", "fullbright" : true }, { "image" : "consolelit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+      "animationParts" : {
+          "samplingarrayanim" : "console.png",
+          "samplingarrayanimlit" : "consolelit.png"
+        },
+      "imagePosition" : [0, 0],
+      "frames" : 3,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "console.png:<color>.<frame>", "fullbright" : true }, { "image" : "consolelit.png:<color>.<frame>" } ],
+      "direction" : "right",
+      "animationParts" : {
+          "samplingarrayanim" : "console.png",
+          "samplingarrayanimlit" : "consolelit.png"
+        },
+      "imagePosition" : [0, 0],
+      "frames" : 3,
+      "animationCycle" : 2,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "console.animation",
+  "animationParts" : {
+    "samplingarrayanim" : "console.png",
+	"samplingarrayanimlit" : "consolelit.png"
+  },
+  "scripts" : [ "/objects/minibiome/precursor/precursorconverter/converter.lua",
+                "/scripts/npcToyObject.lua" ],
+  "scriptDelta" : 5,
+  "recipeGroup" : "converter",
+  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+  "slotCount" : 11,
+  "uiConfig" : "/interface/extractor/extractor.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "outputNodes" : [ [0, 1] ],
+  "inputNodes" : [ [0, 0] ],
+   "kheAA_inDataNode":0,
+   "kheAA_outDataNode":0,
+
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "crouchcollect"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  },
+
+  "fu_mintick" : 1,
+  "fu_stationTechLevel" : 1,
+  "fu_timerMod" : 4,
+  "recipeTable":
+	[
+		{"inputs" : { "solidfuel":100 }, "outputs" : { "precursorgrease":1 }, "time" : 10.0},
+		{"inputs" : { "liquidfuel":200 }, "outputs" : { "precursorgrease":1 }, "time" : 10.0},
+		{"inputs" : { "toxicwaste":100 }, "outputs" : { "precursorgrease":1 }, "time" : 10.0},
+		{"inputs" : { "irradiumbar":25 }, "outputs" : { "precursorfluid":1 }, "time" : 40.0},
+		{"inputs" : { "liquidirradium":80 }, "outputs" : { "precursorfluid":1 }, "time" : 50.0},
+		{"inputs" : { "supermatter":20 }, "outputs" : { "precursorgel":2 }, "time" : 15.0},
+		{"inputs" : { "neptuniumrod":30 }, "outputs" : { "precursorfluid":1 }, "time" : 70.0},
+		{"inputs" : { "thoriumrod":27 }, "outputs" : { "precursorfluid":1 }, "time" : 60.0},
+		{"inputs" : { "uraniumrod":25 }, "outputs" : { "precursorfluid":1 }, "time" : 40.0},
+		{"inputs" : { "plutoniumrod":22 }, "outputs" : { "precursorfluid":1 }, "time" : 50.0},
+		{"inputs" : { "enricheduranium":10 }, "outputs" : { "precursorfluid":2 }, "time" : 30.0},
+		{"inputs" : { "enrichedplutonium":8}, "outputs" : { "precursorfluid":2 }, "time" : 30.0},
+		{"inputs" : { "solariumstar":15 }, "outputs" : { "precursorfluid":2 }, "time" : 30.0},
+		{"inputs" : { "ultronium":1 }, "outputs" : { "precursorfluid":5 }, "time" : 12.0},
+		{"inputs" : { "precursorfluid":50 }, "outputs" : { "essence":1 }, "time" : 20.0},
+		{"inputs" : { "crunchychick":1 }, "outputs" : { "essence":5 }, "time" : 10.0},
+		{"inputs" : { "crunchychickdeluxe":1 }, "outputs" : { "essence":50 }, "time" : 10.0},
+		{"inputs" : { "crunchychickevil":1 }, "outputs" : { "essence":100 }, "time" : 10.0}
+	]
+}

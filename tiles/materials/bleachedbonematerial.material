@@ -1,0 +1,37 @@
+{
+  "materialId" : 6690,
+  "materialName" : "bleachedbonematerial",
+  "particleColor" : [155, 155, 155, 255],
+  "itemDrop" : "bleachedbonematerial",
+  "description" : "A collection of sun-bleached bones tightly packed together.",
+  "shortdescription" : "Bleached Bones",
+  "glitchDescription" : "Horrified. Bones from a variety of sources packed together.",
+
+  "footstepSound" : "/sfx/blocks/footstep_bone.ogg",
+  "falling" : true,
+  "cascading" : true,
+  "health" : 4,
+  "category" : "materials",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "bleachedbones.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "multiColored" : true,
+    "occludesBelow" : true,
+    "zLevel" : 3940
+  },
+  "liquidInteractions" : [
+    {
+      "liquidId" : 2,
+      "consumeLiquid" : 0.15,
+      "transformMaterialId" : 6689
+    },
+    {
+      "liquidId" : 52,
+      "consumeLiquid" : 0.15,
+      "transformMaterialId" : 6689
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+	"animatedParts": {
+		"stateTypes": {
+			"shield": {
+				"priority": 2,
+				"default": "hit",
+				"states": {
+					"hit": {
+						"frames": 2,
+						"cycle": 0.2,
+						"mode": "loop"
+					}
+				}
+			}
+		},
+
+		"parts": {
+			"shield": {
+				"properties": {
+					"zLevel": 5,
+					"centered": true,
+					"offset": [0, -0.5]
+				},
+
+				"partStates": {
+					"shield": {
+						"hit": {
+							"properties": {
+								"image": "cultistshield.png:hit.<frame>"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

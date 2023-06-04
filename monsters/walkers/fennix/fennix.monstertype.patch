@@ -1,0 +1,109 @@
+[
+  {
+    "op": "add",
+    "path": "/dropPools/0/firebow",
+    "value": "fennixHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/icebow",
+    "value": "fennixHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/poisonbow",
+    "value": "fennixHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/electricbow",
+    "value": "fennixHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/radioactivebow",
+    "value": "fennixHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/cosmicbow",
+    "value": "fennixHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/shadowbow",
+    "value": "fennixHunting"
+  },
+
+  {
+    "op": "replace",
+    "path": "/baseParameters/touchDamage/damageSourceKind",
+    "value": "fire"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/shadowResistance",
+    "value": {
+      "baseValue": 0.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/radioactiveResistance",
+    "value": {
+      "baseValue": 0
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/cosmicResistance",
+    "value": {
+      "baseValue": 0.25
+    }
+  },
+{
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-fire",
+        "cooldown": 4,
+        "parameters": {
+          "requireLineOfSight": true,
+          "maxYRange": 2,
+          "maximumRange": 15,
+          "minimumRange": 2,
+          "windupState": "firewindup",
+          "windupTime": 0.4,
+          "projectileType": "flame",
+          "fireOffset": [
+            1,
+            0.35
+          ],
+          "projectileCount": 6,
+          "projectileInterval": 0.01,
+          "aimDirection": [
+            1,
+            0
+          ],
+          "aimAtTarget": false,
+          "inaccuracy": 0.2,
+          "fireSound": "fire",
+          "fireState": "fire",
+          "winddownState": "",
+          "winddownTime": 0.3
+        }
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/hostileActions/1/parameters/inaccuracy",
+    "value": 0.2
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 80
+  }
+]

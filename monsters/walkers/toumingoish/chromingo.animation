@@ -1,0 +1,297 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 1
+          },
+          "walk" : {
+            "frames" : 8,
+            "cycle" : 1.2,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSoundRangeMultiplier" : 0.5
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "", "/sfx/npc/monsters/lilodon_step1.ogg", "", "", "", "/sfx/npc/monsters/lilodon_step2.ogg", "", "" ]
+            }
+          },
+          "windup" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "mode" : "transition",
+            "transition" : "winduploop",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/scaveran_hop.ogg"
+            }
+          },
+          "winduploop" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "loop"
+          },
+          "hop" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/toumingo_attack.ogg"
+            }
+          },
+          "leap" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/toumingo_attack.ogg"
+            }
+          },
+          "land" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" : "transition",
+            "transition" : "stand",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/scaveran_hop.ogg"
+            }
+          },
+          "winddown" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" : "transition",
+            "transition" : "stand",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/scaveran_hop.ogg"
+            }
+          },
+          "stand" : {
+            "frames" : 10,
+            "cycle" : 1.0
+          },
+          "jump" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "jumploop",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/monster_hop.ogg",
+              "immediateSoundRangeMultiplier" : 0.5
+            }
+          },
+          "jumploop" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "loop"
+          },
+          "fall" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "falloop"
+          },
+          "falloop" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "loop"
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "offset" : [1.0, 0.75],
+          "damageArea" : [ [-1.25, -2.5], [-1.625, -2.125], [-1.625, 0.5], [-1.25, 0.875], [-0.625, 0.875], [-0.25, 0.5], [-0.25, -2.125], [-0.625, -2.5] ]
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "windup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },
+            "winduploop" : {
+              "properties" : {
+                "image" : "<partImage>:winduploop.<frame>"
+              }
+            },
+            "hop" : {
+              "properties" : {
+                "image" : "<partImage>:leap.<frame>",
+                "damageArea" : [ [-1.625, -2.5], [-1.625, -1.25], [2.75, -1.25], [2.75, -2.5] ],
+                "collisionPoly" : [ [-1.625, -2.5], [-1.625, 0.875], [2.75, 0.875], [2.75, -2.5] ]
+              }
+            },
+            "leap" : {
+              "properties" : {
+                "image" : "<partImage>:leap.<frame>",
+                "damageArea" : [ [-1.625, -2.5], [-1.625, -1.25], [2.75, -1.25], [2.75, -2.5] ],
+                "collisionPoly" : [ [-1.625, -2.5], [-1.625, 0.875], [2.75, 0.875], [2.75, -2.5] ]
+              }
+            },
+            "land" : {
+              "properties" : {
+                "image" : "<partImage>:winddown.<frame>",
+                "damageArea" : [ [-1.625, -2.5], [-1.625, -1.25], [2.75, -1.25], [2.75, -2.5] ],
+                "collisionPoly" : [ [-1.625, -2.5], [-1.625, 0.875], [2.75, 0.875], [2.75, -2.5] ]
+              }
+            },
+            "winddown" : {
+              "properties" : {
+                "image" : "<partImage>:winddown.<frame>",
+                "damageArea" : [ [-1.625, -2.5], [-1.625, -1.25], [2.75, -1.25], [2.75, -2.5] ],
+                "collisionPoly" : [ [-1.625, -2.5], [-1.625, 0.875], [2.75, 0.875], [2.75, -2.5] ]
+              }
+            },
+            "stand" : {
+              "properties" : {
+                "image" : "<partImage>:stand.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "jumploop" : {
+              "properties" : {
+                "image" : "<partImage>:jumploop.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:fall.<frame>"
+              }
+            },
+            "falloop" : {
+              "properties" : {
+                "image" : "<partImage>:falloop.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "particleEmitters" : {
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "toumingoleg" },
+        { "particle" : "toumingoleg" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "hop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
+  }
+}

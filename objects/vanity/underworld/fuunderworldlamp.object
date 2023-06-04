@@ -1,0 +1,73 @@
+{
+  "objectName" : "fuunderworldlamp",
+  "colonyTags" : [ "atropus", "creepy", "flesh", "light"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 70,
+  "description" : "An...an eye lamp. Great.",
+  "shortdescription" : "Flesh Lamp",
+  "race" : "generic",
+
+  "lightColor" : [173, 208, 217],
+  "pointLight" : true,
+  "pointBeam" : 8,
+  "beamAmbience" : 0.4,
+
+  "inventoryIcon" : "fuunderworldlampicon.png",
+  "orientations" : [
+
+    {
+      "image" : "fuunderworldlamp.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+      "spaceScan" : 0.1,
+
+      "animationParts" : {
+        "bg" : "fuunderworldlamp.png",
+        "fg" : "fuunderworldlamplit.png"
+      },
+      "animationPosition" : [0, 0],
+
+      "fgAnchors" : [ [0, -1] ],
+      "lightPosition" : [1, 3],
+      "beamAngle" : 0
+    },
+    {
+      "image" : "fuunderworldlamp.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "left",
+      "spaceScan" : 0.1,
+      "flipImages" : true,
+
+      "animationParts" : {
+        "bg" : "fuunderworldlamp.png",
+        "fg" : "fuunderworldlamplit.png"
+      },
+      "animationPosition" : [0, 0],
+
+      "fgAnchors" : [ [0, -1] ],
+      "lightPosition" : [0, 3],
+      "beamAngle" : 180
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "fuunderworldlamp.png",
+    "fg" : "fuunderworldlamplit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallswitch.ogg" ],
+      "off" : [ "/sfx/objects/tinywallswitch.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : true,
+
+  "inputNodes" : [ [0, 0] ]
+}

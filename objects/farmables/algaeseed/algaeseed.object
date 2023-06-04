@@ -8,8 +8,10 @@
   "objectType" : "farmable",
   "printable" : false,
   "price" : 12,
-  "learnBlueprintsOnPickup" : [ "algaeseed", "erithianalgaeseed" ],
+ // "learnBlueprintsOnPickup" : [ "algaeseed", "erithianalgaeseed" ],
   "inventoryIcon" : "algaegreenicon.png",
+  "largeImage" : "algaeseed.png:default.2.2",
+  //"collectablesOnPickup" : { "fu_plant" : "algae" },
   "orientations" : [
     {
       "dualImage" : "algaeseed.png:<color>.<stage>.<alt>",
@@ -18,7 +20,7 @@
       "animationCycle" : 0.5,
 
       "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
-      "requireTilledAnchors" : true,
+      "requireTilledAnchors" : false,
       "anchors" : [ "bottom" ]
     }
   ],
@@ -36,5 +38,6 @@
     }
   ],
     "maxImmersion" : 1.0,
-    "consumeSoilMoisture" : false
+    "consumeSoilMoisture" : false,
+  "beeLikeness" : { "plasterer" : 1, "sweat":1, "carpenter":1}
 }

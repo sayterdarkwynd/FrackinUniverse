@@ -1,0 +1,35 @@
+{
+  "animationParts" : { },
+  "animationCustom" : { },
+
+  "ability" : {
+    "name" : "Spray n' Pray",
+    "type" : "spray",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "baseDps" : 24,
+    "energyUsage" : 90,
+    "fireTime" : 0.04,
+    "inaccuracy" : 0.15,
+    "fireType" : "auto",
+    "projectileCount" : 1,
+
+    "usePrimaryFireSound" : true,
+    "useParticleEmitter" : false,
+    "stances" : {
+      "fire" : {
+        "duration" : 0.02,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true
+      },
+      "cooldown" : {
+        "duration" : 0.02,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true
+      }
+    }
+  }
+}

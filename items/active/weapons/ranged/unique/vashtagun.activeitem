@@ -4,12 +4,14 @@
   "inventoryIcon" : "vashtagun.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Shoots nasty, curved, weaponized vashta blades.",
+  "description" : "A weird and unique weapon guaranteed to turn heads. And remove them.
+^yellow;Boomerang-blasts, ^cyan;Floran^reset;",
   "shortdescription" : "Vashta Cutter",
-  "level" : 3,
-  "tooltipKind" : "gun",
+  "category" : "bioweapon",
+  "level" : 6,
+  "tooltipKind" : "gun2",
   "weaponType" : "Rifle",
-  "itemTags" : ["weapon","ranged","rocketlauncher"],
+  "itemTags" : ["weapon","ranged","rocketlauncher","bioweapon", "upgradeableWeapon","floran"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -26,11 +28,11 @@
   },
 
   "baseOffset" : [1.3, 0.2],
-  "muzzleOffset" : [1.645, 0.125],
-  "learnBlueprintsOnPickup" : [ "minirocketlauncher2" ],
+  "muzzleOffset" : [2.65, 0.125],
+//  "learnBlueprintsOnPickup" : [ "minirocketlauncher2", "fu_vashtaturret" ],
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "bioweapon",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -44,7 +46,7 @@
     "fireType" : "auto",
 
     "projectileType" : "vashtashard",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 50,
       "knockback" : 1
     },
@@ -86,6 +88,9 @@
         ]
       }
     },
+
+  "critChance" : 6,
+  "critBonus" : 3,
 
   "altAbilityType" : "vashtaaltshot",
 

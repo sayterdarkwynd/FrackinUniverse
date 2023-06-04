@@ -1,0 +1,24 @@
+{
+  "projectileName" : "chaincosmicplasma2",
+  "physics" : "illusion",
+  "damageKindImage" : "icon.png",
+  "image" : "cosmicplasma.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 3,
+  "power" : 50,
+  "speed" : 100,
+  "supportsProcessing" : true,
+  "emitters" : [ "cosmicdust" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmabulletexplosion/plasmabulletexplosion.config"
+    }
+  ],
+  "statusEffects" : [ "defenseboostneg20" ],
+  "lightColor" : [150, 32, 110],
+  "damageKind" : "cosmicplasma",
+  "piercing" : true,
+
+  "scripts" : [ "/scripts/projectiles/chainbullet.lua" ]
+}

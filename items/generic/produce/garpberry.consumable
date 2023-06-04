@@ -1,19 +1,18 @@
 {
-  "itemName" : "garpberry",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "garpberry.png",
-  "description" : "Not a great idea to eat, but quite useful via extraction.",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "shortdescription" : "Garp Berry",
-  "effects" : [ [
-      "weakpoison"
-    ] ]
+	"itemName": "garpberry",
+	"inventoryIcon": "garpberry.png",
+	"category": "food",
+	"rarity": "Rare",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+10% Radiation Res & Immune^reset;: Radiation Burn: 2m",
+	"shortdescription": "Garp Berry",
+
+	"effects": [
+		[{
+			"effect": "radioactiveblock",
+			"duration": 120
+		}]
+	]
 }

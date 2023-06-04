@@ -4,19 +4,25 @@
   "price" : 60,
   "category" : "food",
   "inventoryIcon" : "applehoneystraw.png",
-  "description" : "An apple honey straw! More nutritious and delicious!",
-  "shortdescription" : "Honey Straw Apple",
- 
+  "description" : "An apple honey straw! More nutritious and delicious!\n^green;Heal ^white;160 ^gray;(^white;2m^gray;)^reset; \n^green;Type: Fruit Dessert^reset;",
+  "shortdescription" : "Apple Honey Straw",
   "effects" : [ [
     {
         "effect" : "honeyheal2",
-        "duration" :120  },
+        "duration" : 120
+    },
     {
         "effect" : "fedhoney",
         "duration" : 120
+    },
+    {
+        "effect" : "fruit_dessert"
     }
   ] ],
-  "blockingEffects" : [
-     "fedhoney"
-  ]
+  "foodValue" : 6,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 5,
+  "blockingEffects" : [ "wellfed", "fedhoney" ]
 }

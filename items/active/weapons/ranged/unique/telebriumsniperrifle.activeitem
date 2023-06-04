@@ -1,0 +1,165 @@
+{
+  "itemName" : "telebriumsniperrifle",
+  "price" : 102,
+  "inventoryIcon" : "telebriumsniperrifle.png",
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Poisonous rounds are handy in a pinch.
+^cyan;Fast projectiles^reset;",
+  "shortdescription" : "Telebrium Sniper Rifle",
+  "category" : "sniperRifle",
+  "level" : 2,
+  "tooltipKind" : "gun2",
+  "weaponType" : "sniperRifle",
+  "itemTags" : ["weapon","ranged","upgradeableWeapon", "sniperrifle","telebrium"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "telebriumsniperrifle.png",
+    "middlefullbright" : "telebriumsniperriflefullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/greenstuffmuzzle.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.7, 0.1]
+		  }
+		}
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/hvmarauder2.wav" ]
+    },
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [22, 108, 46],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    }}
+  },
+
+  "baseOffset" : [1.7, 0.1],
+  "muzzleOffset" : [3.5, 0.1],
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 2,
+    "baseDps" : 7.75,
+    "energyUsage" : 30.5,
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "poisonguardianpellet",
+    "projectileParameters" : {
+      "speed" : 125,
+      "knockback" : 12
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 3,
+	      "weaponRotation" : 3,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.01,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "fastrisingelectric", "offset" : [0.0, 0.0] },
+          { "particle" : "fastrisingelectric", "offset" : [0.0, 0.0] },
+          { "particle" : "fastrisingelectric", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+
+
+  "critChance" : 0.5,
+  "critBonus" : 2,
+  "isSniper" : 1,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 600,
+
+  "altAbility" : {
+    "name" : "Telebrium Blast",
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 3,
+    "baseDps" : 6,
+    "energyUsage" : 100,
+    "inaccuracy" : 0.07,
+    "fireType" : "auto",
+    "timeToLive" : 1.5,
+    "projectileType" : "magnorbmoonstone",
+
+    "projectileCount" : 6,
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

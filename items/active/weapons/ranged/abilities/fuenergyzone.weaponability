@@ -1,0 +1,45 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Energy Zone",
+    "type" : "fuenergyzone",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "energyUsage" : 20,
+    "baseDps" : 0,
+    "fireTime" : 4.0,
+    "inaccuracy" : 0,
+    "fireType" : "auto",
+
+    "projectileType" : [ "energyzone" ],
+    "projectileParameters" : {
+      "speed" : 0,
+      "knockback" : 20,
+      "timeToLive" : 6
+    },
+
+    "usePrimaryFireSound" : false,
+    "useParticleEmitter" : false,
+    "stances" : {
+      "fire" : {
+        "duration" : 0.02,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true
+      },
+      "cooldown" : {
+        "duration" : 0.02,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true
+      }
+    }
+  }
+}

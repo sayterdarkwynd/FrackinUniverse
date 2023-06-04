@@ -1,0 +1,45 @@
+{
+  "itemName" : "slimegrapplinghook",
+  "price" : 300,
+  "inventoryIcon" : "slimegrapplinghookicon.png",
+  "rarity" : "Legendary",
+  "maxStack" : 1,
+  "description" : "Used for making messes on the ceiling.",
+  "shortdescription" : "Slime Hook",
+  //"learnBlueprintsOnPickup" : [ "slimegrapplinghook" ],
+  "largeImage" : "slimegrapplinghookbig.png",
+  "category" : "Tool",
+  "fireTime" : 0,
+  "twoHanded" : false,
+
+  "scripts" : ["/items/active/grapplinghooks/grapplinghook.lua"],
+  "animationScripts" : ["/items/active/effects/renderrope.lua"],
+
+  "animation" : "slimegrapplinghook.animation",
+
+  "fireOffset" : [0, 0],
+  "ropeOffset" : [0, 0],
+  "ropeVisualOffset" : [0, 0],
+
+  "consumeOnUse" : false,
+
+  "projectileType" : "slimegrapplehook",
+  "projectileParameters" : {
+    "speed" : 100,
+    "timeToLive" : 0.35
+  },
+
+  "ropeWidth" : 2.0,
+  "ropeColor" : [71, 136, 68, 191],
+
+  "reelInDistance" : 3.5,
+  "reelOutLength" : 50,
+  "breakLength" : 60,
+
+  "minSwingDistance" : 1.5,
+
+  "reelSpeed" : 15,
+  "controlForce" : 1000,
+
+  "groundLagTime" : 0.2
+}

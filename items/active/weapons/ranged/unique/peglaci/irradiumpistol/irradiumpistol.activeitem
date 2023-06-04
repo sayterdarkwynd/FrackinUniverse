@@ -4,16 +4,15 @@
   "price" : 100,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Volatile irradium rounds, when charged, are less than pleasant for foes. ",
+  "description" : "Radiation has never been so adorably lethal.
+^yellow;Inflicts radiation burn^reset;",
   "shortdescription" : "Irradium Pistol",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "machinePistol",
   "twoHanded" : false,
-  "itemTags" : ["weapon","ranged","machinePistol"],
+  "itemTags" : ["weapon","ranged","machinepistol", "energy", "irradium", "upgradeableWeapon","radioactive" ],
 
-  "inventoryIcon" : [
-    { "image" : "irradiumpistol.png:idle.1" }
-  ],
+  "inventoryIcon" : [ { "image" : "irradiumpistol.png:idle.1" } ],
 
   "animation" : "irradiumpistol.animation",
   "animationParts" : {
@@ -33,19 +32,20 @@
       "fire" : [ "/sfx/weapons/irradiumrifle.ogg" ]
     }
   },
+
   "baseOffset" : [0.87, 0.35],
   "muzzleOffset" : [1.0, 0.125],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "radioactive",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
     "fireTime" : 0.3,
-    "baseDps" : 4.45,
+    "baseDps" : 6.45,
     "energyUsage" : 30,
     "inaccuracy" : 0,
     "fireType" : "auto",
@@ -53,7 +53,8 @@
     "projectileType" : "irradiumpistolshot",
     "projectileParameters" : {
       "knockback" : 2,
-      "speed" : 60
+      "speed" : 60,
+      "statusEffects" : [ "radiationburn" ]
     },
     "projectileCount" : 1,
 
@@ -86,6 +87,7 @@
       }
     }
   },
-
+  "critChance" : 3,
+  "critBonus" : 6,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

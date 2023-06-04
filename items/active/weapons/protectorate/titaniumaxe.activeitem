@@ -1,0 +1,44 @@
+{
+  "itemName" : "titaniumaxe",
+  "level" : 3,
+  "price" : 480,
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "This axe is light, but strong.",
+  "shortdescription" : "Titanium Axe",
+  "tooltipKind" : "sword2",
+  "category" : "axe",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","axe", "upgradeableWeapon"],
+  //"collectablesOnPickup" : { "fu_weaponaxe" : "titaniumaxe" },
+  "inventoryIcon" : "titaniumaxe.png",
+
+  "animation" : "/items/active/weapons/melee/axe/axe.animation",
+  "animationParts" : {
+    "blade" : "titaniumaxe.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_axe.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbilityType" : "axecleave",
+  "primaryAbility" : {
+    "fireTime" : 0.9,
+    "baseDps" : 9.5,
+    "damageConfig" : {
+      "knockback" : 25
+    }
+  },
+  "critChance" : 2,
+  "critBonus" : 4,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

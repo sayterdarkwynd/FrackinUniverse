@@ -1,0 +1,54 @@
+{
+  "objectName" : "fufoodshop",
+  "colonyTags" : [ "crafting", "floran" ],
+  "rarity" : "rare",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/fufoodstore.config",
+    "filter" : [ "fufoodstore" ]
+  },
+  "printable" : false,
+  "description" : "Tassties!",
+  "shortdescription" : "^orange;Murder-Twig's Yum-Yums^reset;",
+  "race" : "floran",
+  "category" : "crafting",
+  "price" : 0,
+  "inventoryIcon" : "fufoodshop.png",
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fufoodshop.png:<color>.<frame>"} ],
+      "imagePosition" : [-58, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "frames" : 1,
+      "animationCycle" : 7.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "fufoodshop.png:<color>.<frame>"} ],
+      "imagePosition" : [-58, 0],
+
+      "direction" : "right",
+
+      "frames" : 1,
+      "animationCycle" : 7.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/aquarium1.ogg",
+  "offeredQuests" : [
+    "scienceoutpost_foodShop"
+  ],
+  "turnInQuests" : [
+    "scienceoutpost_foodShop"
+  ]
+
+}

@@ -1,0 +1,289 @@
+{
+  "type" : "eyeslimekingpet",
+  "shortdescription" : "Slime Behemoth",
+  "description" : "An array of eyes immersed in a viscous fluid.",
+
+  "categories" : [ "eyeslimeking" ],
+  "parts" : [ "body", "head" ],
+
+  "animation" : "eyeslimeking.animation",
+
+  "dropPools" : [ { "default" : "slimemonsterTreasure" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+      "queryTargets" : false,
+      "targetQueryRange" : 70,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 100,
+      "targetOutOfSightTime" : 5.0,
+
+      "hurtTime" : 0.25,
+      "hurtWaitForGround" : false,
+
+      "damageTakenActions" : [ ],
+
+      "foundTargetActions" : [
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 599,
+          "parameters" : {
+          "effect" : "eyeslimekingspawnbydamage",
+          "duration" : 600
+          }
+        }
+      ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 4,
+          "parameters" : {
+            "requireLineOfSight" : false,
+            "maximumRange" : 50,
+            "minimumRange" : 0,
+            "projectileType" : "bioblast1",
+            "projectileParameters" : {
+              "statusEffects" : [ "weakpoison" ],
+              "speed" :50
+            },
+            "power" : 10,
+            "fireOffset" : [0, -5],
+            "aimDirection" : [0,-1],
+            "faceTarget" : true,
+            "aimAtTarget" : true,
+            "onGround" : false,
+            "fireState" : "fly",
+            "fireSound" : "fire",
+            "windupStopForce": 10,
+            "windupTime": 0.5,
+            "winddownStopForce": 10,
+            "winddownTime": 0.25
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 2.5,
+          "parameters" : {
+            "requireLineOfSight" : false,
+            "maximumRange" : 50,
+            "minimumRange" : 0,
+            "projectileType" : "eyeslimerain",
+            "projectileParameters" : {
+              "statusEffects" : [ "weakpoison" ]
+            },
+            "power" : 10,
+            "fireOffset" : [0, 0],
+            "aimDirection" : [0,-1],
+            "faceTarget" : true,
+            "aimAtTarget" : false,
+            "onGround" : false,
+            "fireState" : "fly",
+            "fireSound" : "fire",
+            "windupStopForce": 10,
+            "windupTime": 0.5,
+            "winddownStopForce": 10,
+            "winddownTime": 0.25
+          }
+        }
+      ],
+
+      "periodicActions" : [
+
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 599,
+          "parameters" : {
+          "effect" : "eyeslimekingspawnbydamage",
+          "duration" : 600
+          }
+        }
+
+       ],
+
+      "approachActions" :[
+       {
+         "name" : "approach-fly",
+         "parameters" : {
+           "targetOffset" : [0,8],
+           "minRange" : 10,
+           "maxRange" : 16
+         }
+       }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-fly"
+        }
+      ],
+
+      "deathActions" : [ ],
+
+      "concurrentActions" : [
+        {
+          "name" : "action-aim-head",
+          "parameters" : {
+            "headOffset" : [0,5]
+          }
+        }
+      ],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-aim-head",
+          "parameters" : {
+            "headOffset" : [0,5]
+          }
+        }
+       ]
+    },
+
+    "touchDamage" : {
+      "poly" : [[2,7.5],[5.25,5.25],[7,1],[8.75,-1.5],[8,-4],[5,-5.5],[2,-7],[-2,-7],[-5,-5.5],[-8,-4],[-8.75,-1.5],[-7,1],[-5.25,5.25],[-2,7.5]],
+      "damage" : 10,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "poison",
+      "knockback" : 20,
+      "statusEffects" : [ {"effect" : "slimefriction", "duration" : 1.5} ]
+    },
+
+    "metaBoundBox" : [-9, -9, 9, 9],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionEnabled" : true,
+      "collisionPoly" : [[2,7.5],[5.25,5.25],[7,1],[8.75,-1.5],[8,-4],[7,-7.5],[2,-8.5],[-2,-8.5],[-7,-7.5],[-8,-4],[-8.75,-1.5],[-7,1],[-5.25,5.25],[-2,7.5]],
+
+      "mass" : 1.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 2.0,
+      "airForce" : 40,
+      "flySpeed" : 15
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 2242
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "slimestickImmunity" : {
+          "baseValue" : 1.0
+        },
+        "slimeImmunity" : {
+          "baseValue" : 1.0
+        },
+        "fireResistance" : {
+          "baseValue" : -0.5
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "eyeslimekingpet" }
+  }
+}

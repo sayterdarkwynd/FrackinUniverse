@@ -3,13 +3,14 @@
   "price" : 1500,
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Freeze your foes with glacial love.",
+  "description" : "Eject super-cold fun at enemies.
+^yellow;Charge increases damage^reset;",
   "shortdescription" : "Glacial Pistol",
-  "tooltipKind" : "gun",
-  "category" : "uniqueWeapon",
+  "tooltipKind" : "gun2",
+  "category" : "pistol",
   "twoHanded" : false,
-  "itemTags" : ["weapon","ranged"],
-  "level" : 4,
+  "itemTags" : ["weapon","ranged", "pistol", "isogen", "upgradeableWeapon"],
+  "level" : 3,
   "weaponType" : "Ice Gun",
   "inventoryIcon" : "chargepistolicon.png",
 
@@ -23,7 +24,7 @@
       "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
     }
   },
-  
+
   "muzzleOffset" : [1.4, 0.5],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
@@ -32,6 +33,8 @@
 
   "primaryAbilityType" : "chargefire",
   "primaryAbility" : {
+    "baseDps" : 3,
+    "energyUsage" : 24,
     "chargeLevels" : [
       {
         "time" : 0,
@@ -55,6 +58,7 @@
       }
     ]
   },
-
+  "critChance" : 4,
+  "critBonus" : 4,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

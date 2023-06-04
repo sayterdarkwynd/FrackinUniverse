@@ -1,0 +1,251 @@
+{
+  "type" : "alienwalker",
+  "shortdescription" : "Wretch",
+  "description" : "A vicious looking insectoid. It appears to be in agony.",
+  "categories" : [ "alienwalker" ],
+  "parts" : [ "body" ],
+
+  "animation" : "alienwalker.animation",
+
+  "dropPools" : [
+  	{
+  		"default" : "huntingquadrupedchitin"
+  	}
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 40,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 5,
+            "windupState" : "",
+            "windupTime" : 0.1,
+
+            "projectileType" : "uutwistingpulse",
+            "fireOffset" : [1.0, 0.7],
+            "aimAtTarget" : true,
+            "fireState" : "attack",
+            "fireDelay" : 0.15,
+            "fireSound" : "",
+
+            "fireArc": false,
+            "projectileSpeed": 50,
+            "gravityMultiplier": 0.6,
+
+            "winddownState" : "",
+            "winddownTime" : 0.05
+          }
+        },
+        {
+          "name" : "action-charge",
+          "cooldown" : 1.5,
+          "parameters" : {
+            "maximumRange" : 8,
+            "minimumRange" : 1,
+            "windupTime" : 0.0,
+            "windupState" : "",
+
+            "aimAtTarget" : false,
+            "chargeTime" : 0.25,
+            "chargeSpeed" : 15,
+            "chargeControlForce" : 300,
+            "chargeState" : "attack",
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownState" : "idle",
+            "winddownTime" : 0.5
+          }
+        }
+      ],
+
+      "periodicActions" : [],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "run" : true,
+            "moveState" : "run"
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "run" : true,
+            "moveState" : "run"
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [2, 4]
+          }
+        }
+      ]
+    },
+
+    "metaBoundBox" : [-2.5, -2.5, 2.5, 2.5],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.0, -2.5], [1.0, -2.5], [1.0, 1.0], [-1.0, 1.0] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 2.0,
+      "runSpeed" : 4.0,
+      "flySpeed" : 25.0,
+      "airForce" : 50.0,
+      "airJumpProfile": {
+        "jumpSpeed" : 15.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "blink",
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+
+    "touchDamage" : {
+      "poly" : [ [-1.0, -1.0], [1.0, -1.0], [1.0, 1.0], [-1.0, 1.0] ],
+      "damage" : 25,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "hammer",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" :90
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.55
+        },
+        "fireResistance" : {
+          "baseValue" : -0.25
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : -0.25
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.40
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "shadowResistance" : {
+          "baseValue" : 0.8
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 0.8
+        },
+        "cosmicResistance" : {
+          "baseValue" : -0.2
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 10
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -22],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "alienwalker" }
+  }
+}

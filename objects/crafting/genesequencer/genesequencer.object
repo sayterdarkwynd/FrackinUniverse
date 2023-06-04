@@ -1,0 +1,56 @@
+{
+  "objectName" : "genesequencer",
+  "colonyTags" : [ "fu", "science", "scienceoutpost" ],
+  "rarity" : "Essential",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/genesequencer.config",
+    "filter" : [ "genesequencer" ],
+    "paneLayoutOverride" : {
+      "windowtitle" : {"title" : " ","subtitle" : " ","icon" : {"file" : ""}},
+      "lblTitle" : {"value" : " ^#00ccff;Gene Sequencer^reset;"},
+      "lblSubTitle" : {"value" : " ^#dddddd;Create genes from scratch."}
+    }
+  },
+  "printable" : false,
+  "description" : "Create genes from scratch.",
+  "shortdescription" : "^orange;Gene Sequencer^reset;",
+  "race" : "generic",
+  "category" : "crafting",
+  "price" : 450,
+
+  "lightColor" : [60, 60, 100],
+  "soundEffect" : "/sfx/objects/fridge_hum.ogg",
+  "inventoryIcon" : "genesequencericon.png",
+  "orientations" : [
+
+    {
+      "dualImage" : "genesequencer.png:<color>.<frame>",
+      "imagePosition" : [-14, 0],
+      "frames" : 4,
+      "animationCycle" : 3.0,
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [0, -1] ]
+    }
+  ],
+  "scripts" : [ "/scripts/npcToyObject.lua" ],
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "typing"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+
+}

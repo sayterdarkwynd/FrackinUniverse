@@ -1,0 +1,60 @@
+{
+  "type" : "snowcrashrocketeer",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "You are not allowed here!",
+			"I love you Winter-Chan!",
+			"You made a big mistake!",
+            "Halt! You are trespassing on private property!"
+          ]
+        },
+        "avian" : {
+          "default" : [
+            "You die today!",
+			"Your struggle is futile.",
+			"You sure have a lot of gall coming here!",
+			"There's a thought reassignment room waiting for you!",
+			"I love you Winter-Chan!",
+            "You made a big mistake coming here!"
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "ushankahead" } ],
+            "chest" : [ { "name" : "apexnavyjacket", "parameters" : { "colorIndex" : 2 } } ],
+            "legs" : [ { "name" : "apexnavypants", "parameters" : { "colorIndex" : 2 } } ],
+            "primary" : [
+              "npcrocketlauncher"
+            ],
+            "sheathedprimary" : [
+              "npcbroadsword"
+            ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+
+    "stats" : {
+      "maxEnergy" : {
+        "baseValue" : 400.0
+      }
+    }
+  }
+}

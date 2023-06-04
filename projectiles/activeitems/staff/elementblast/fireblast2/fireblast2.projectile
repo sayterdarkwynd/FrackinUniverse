@@ -1,0 +1,23 @@
+{
+  "projectileName" : "fireblast2",
+  "image" : "fireblast2.png",
+  "physics" : "laser",
+  "animationCycle" : 0.25,
+  "frameNumber" : 4,
+  "windupFrames" : 6,
+  "fullbright" : true,
+  "lightColor" : [255,165,0],
+  "power" : 10,
+  "speed" : 35,
+  "damageKind" : "fireplasma",
+  "damagePoly" : [ [-10, 0], [0, 7], [10, 10], [10, 0], [-10, -10], [0, -7] ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
+    }
+  ],
+  "emitters" : [ "fireplasma" ],
+  "statusEffects" : [ "burning" ],
+  "bounces" : 0
+}

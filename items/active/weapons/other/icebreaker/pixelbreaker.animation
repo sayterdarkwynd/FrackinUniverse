@@ -1,0 +1,171 @@
+{
+  "globalTagDefaults" : {
+    "paletteSwaps" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "firing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "fire" : {
+            "frames" : 3,
+            "cycle" : 0.08,
+            "mode" : "transition",
+            "transition" : "off"
+          }
+        }
+      },
+	  "weapon" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "properties" : {
+              "particleEmittersOff" : [ "cooldownVenting" ]
+            }
+		  },
+		  "fire" : {
+            "properties" : {
+              "particleEmittersOff" : [ "cooldownVenting" ]
+            }
+		  },
+		  "reload" : {
+            "frames" : 7,
+            "cycle" : 0.7,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "particleEmittersOn" : [ "cooldownVenting" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "middle" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0.0, 0.0],
+          "transformationGroups" : ["weapon"]
+        },
+
+        "partStates" : {
+          "weapon" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+			"fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire"
+              }
+            },
+			"reload" : {
+              "properties" : {
+                "image" : "<partImage>:reload.<frame>"
+              }
+            }
+          }
+        }
+      },
+	  "middleFullbright" : {
+        "properties" : {
+          "zLevel" : 1,
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0.0, 0.0],
+          "fullbright" : true,
+          "transformationGroups" : ["weapon"]
+        },
+
+        "partStates" : {
+          "weapon" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+			"fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire"
+              }
+            },
+			"reload" : {
+              "properties" : {
+                "image" : "<partImage>:reload.<frame>"
+              }
+            }
+          }
+        }
+      },
+      "muzzleFlash" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [0.75, 0],
+          "fullbright" : true,
+          "transformationGroups" : ["weapon"]
+        },
+        "partStates" : {
+          "firing" : {
+            "off" : {
+              "properties" : {
+                "image" : ""
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:<variant>.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "rotationGroups" : {
+    "weapon" : {
+      "angularVelocity" : 0
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {},
+    "muzzle" : {}
+  },
+
+  "particleEmitters" : {
+    "muzzleFlash" : {
+      "emissionRate" : 10.0,
+      "transformationGroups" : ["muzzle"],
+      "offsetRegion" : [0.1, 0.1, -0.1, -0.1],
+      "particles" : [ ]
+    },
+    "cooldownVenting" : {
+      "emissionRate" : 40.0,
+      "transformationGroups" : ["weapon"],
+      "offsetRegion" : [0.9, 0.15, 0.9, 0.15],
+      "particles" : [
+		{ "particle" : "smallicecloud1" }
+	  ]
+    }
+  },
+
+  "lights" : {
+    "muzzleFlash" : {
+      "active" : false,
+      "position" : [0, 0],
+      "color" : [38, 36, 96]
+    }
+  },
+
+  "sounds" : {
+    "fire" : [ ],
+    "reload" : [ ]
+  }
+}

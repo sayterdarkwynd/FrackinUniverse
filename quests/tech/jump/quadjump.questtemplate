@@ -1,0 +1,27 @@
+{
+  "id" : "quadjump",
+  "prerequisites" : [ ],
+  "title" : "Jump Harness",
+  "text" : "I've come up with a way to double a double-jump tech!",
+  "completionText" : "Using some fancy ancient tech I think I can produce a Quad-Jump tech!",
+  "moneyRange" : [220, 320],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : false,
+
+    "conditions" : [ ],
+    "showTech" : [
+      "quadjump"
+    ]
+  }
+}

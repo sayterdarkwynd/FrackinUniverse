@@ -1,0 +1,100 @@
+{
+  "itemName" : "reaperrailgun",
+  "price" : 600,
+  "inventoryIcon" : "reaperrailgun.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Devastatingly cold blasts.
+^yellow;Extremely fast rounds^reset;",
+  "shortdescription" : "Tk-98 Kaiju",
+  "category" : "sniperRifle",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Sniper Rifle",
+  "itemTags" : ["weapon","ranged","sniperrifle","upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "reaperrailgun.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlepurple.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/farsight.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1, 0.2],
+  "muzzleOffset" : [2, 0.5],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "hoarfrost",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 3,
+    "baseDps" : 7,
+    "energyUsage" : 100.0,
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "coldblast2",
+    "projectileParameters" : {
+      "speed" : 600,
+      "timeToLive" : 1,
+      "knockback" : 50,
+      "damageKind" : "hoarfrost",
+      "statusEffects" : [ "slow" ]
+    },
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.075,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  }
+  },
+
+  "critChance" : 4,
+  "critBonus" : 2,
+  "isSniper" : 1,
+  "isAmmoBased" : 1,
+  "magazineSize" : 4,
+  "reloadTime" : 2,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 700,
+
+  "altAbilityType" : "swtjc_ewg_bouncingorbitals",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

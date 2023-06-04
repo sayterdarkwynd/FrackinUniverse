@@ -1,0 +1,100 @@
+{
+   "objectName":"pipkinboiler",
+   "colonyTags":[
+      "monstrous"
+   ],
+  "printable" : false,
+   "rarity":"Uncommon",
+   "description":"A boiler modeled after a Pipkin. For those cold, steam-less nights.",
+   "shortdescription":"Monstrous Boiler",
+   "race":"generic",
+   "category":"decorative",
+   "price":0,
+   "apexDescription":"This boiler whistles like a tea kettle. It's rather relaxing.",
+   "avianDescription":"Pipkin steam is actually rather dangerous, but this boiler has no intention of scalding me.",
+   "floranDescription":"Floran hopes they don't have to feed this boiler's fire...",
+   "glitchDescription":"Content. A cozy little boiler.",
+   "humanDescription":"An old timey boiler... Oh wait! This is based off of a Pipkin!",
+   "hylotlDescription":"It's cozy, but if this boiler is especially old, it might not be safe to use...",
+   "novakidDescription":"A boiler that whistles like a kettle. It's nice 'n cozy.",
+   "inventoryIcon":"pipkinboilericon.png",
+   "orientations":[
+      {
+         "dualImage":"pipkinboiler.png:<color>.<frame>",
+         "imagePosition":[
+            -8,
+            0
+         ],
+         "frames":5,
+         "spaceScan":0.1,
+         "anchors":[
+            "bottom"
+         ],
+         "animationCycle":0.5
+      }
+   ],
+   "particleEmitters":[
+      {
+         "emissionRate":1,
+         "emissionVariance":0.5,
+         "pixelOrigin":[
+            0,
+            0
+         ],
+         "particle":{
+            "type":"animated",
+            "image":"/animations/whitepoof/whitepoof.animation",
+            "size":1.0,
+            "opacity":0.1,
+            "color":[
+               244,
+               244,
+               244,
+               255
+            ],
+            "destructionAction":"fade",
+            "destructionTime":4,
+            "initialVelocity":[
+               0,
+               2
+            ],
+            "timeToLive":5,
+            "layer":"front",
+            "position":[
+               0,
+               5
+            ],
+            "collidesForeground":false
+         },
+         "particleVariance":{
+            "position":[
+               0.9,
+               0
+            ],
+            "finalVelocity":[
+               0,
+               0
+            ]
+         }
+      }
+   ],
+  "soundEffect" : "/sfx/objects/oillantern.ogg",
+  "soundEffectRangeMultiplier" : 0.5,
+
+  "scripts" : [ "/scripts/npcToyObject.lua"],
+  "npcToy" : {
+    "influence" : [
+      "campfire",
+      "campfire"
+    ],
+    "defaultReactions" : {
+      "campfire" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-2.5, 0.0],
+    "preciseStandPositionRight" : [2.5, 0.0],
+    "maxNpcs" : 1
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "itemName" : "fuprotectoratesniper",
+  "price" : 160,
+  "inventoryIcon" : "fuprotectoratesniper.png",
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "A lightweight, accurate rifle with a built-in ultra-zoom scope.",
+    "shortdescription" : "Protectorate Rifle",
+  "category" : "sniperRifle",
+  "level" : 2,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Sniper Rifle",
+  "itemTags" : ["weapon","ranged","sniperrifle","upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "fuprotectoratesniper.png",
+    "middlefullbright" : "fuprotectoratesniperfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.1875, 0.4375]
+		  }
+		}
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/blastcannon.ogg" ]
+    },
+    "lights" : { "muzzleFlash" : {"color" : [55, 55, 55] } },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 1,
+        "particles" : [
+          { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] },
+          { "particle" : "dust2", "offset" : [0, 0] }
+        ]
+      }
+    }
+  },
+
+  "baseOffset" : [1.1875, 0.4375],
+  "muzzleOffset" : [2.5, 0],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1.5,
+    "baseDps" : 6.5,
+    "useEnergy" : true,
+    "energyUsage" : 22.5,
+    "runSlowWhileShooting" : false,
+
+    "fireType" : "auto",
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "projectileType" : "bullet-1",
+    "projectileParameters" : {
+	   "speed" : 110,
+	   "knockback" : 8,
+      "actionOnReap" : [
+        {
+          "action" : "config",
+          "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+        }
+      ]
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "cooldown" : {
+	      "duration" : 0.065,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    }
+	  }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 4,
+  "isAmmoBased" : 1,
+  "magazineSize" : 4,
+  "reloadTime" : 1,
+  "isSniper" : 1,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 900,
+
+  "altAbilityType" : "markedshot",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

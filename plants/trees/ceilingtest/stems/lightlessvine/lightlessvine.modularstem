@@ -1,0 +1,152 @@
+{
+  "name" : "lightlessvine",
+  "shape" : "ceilingtest",
+  "health" : 10,
+  "ceiling" : true,
+  "dropConfig" : {
+    "drops" : [
+      [ { "item" : "biosample", "count" : 1 } ]
+    ],
+    "sounds" : {
+      "breakTree" : [
+        { "file" : "/sfx/environmental/vine_cut1.ogg" }, { "file" : "/sfx/environmental/vine_cut2.ogg" }, { "file" : "/sfx/environmental/vine_cut3.ogg" }
+      ]
+    },
+    "particles" : {
+      "breakTree" : {
+        "density" : 3,
+        "options" : [ {
+            "image" : "/particles/treestems/vine.png",
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, -30],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialPosition" : [1.0, 1.0],
+              "initialVelocity" : [1.0, 1.0]
+            }
+          } ]
+      },
+      "hitGround" : {
+        "density" : 3,
+        "options" : [ {
+          "type" : "animated",
+          "animation" : "/animations/dusttest/dusttest.animation",
+          "timeToLive" : 3,
+          "destructionAction" : "shrink",
+          "destructionTime" : 1.0,
+          "variance" : {
+            "rotation" : 180,
+            "timeToLive" : 1.0,
+            "initialPosition" : [1.0, 1.0],
+            "initialVelocity" : [1.0, 1.0]
+          }
+        } ]
+      },
+      "damageTree" : {
+        "density" : 1,
+        "options" : [ {
+          "type" : "ember",
+          "color" : [47, 41, 58],
+          "timeToLive" : 10,
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, -30],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialPosition" : [1.0, 1.0],
+              "initialVelocity" : [1.0, 1.0]
+            }
+        } ]
+      }
+    }
+  },
+  "base" : {
+    "base1" : {
+      "image" : "lightlessvinebase1.png",
+      "attachment" : {
+        "bx" : -1,
+        "by" : -16,
+        "x" : 6,
+        "y" : 0
+      }
+    },
+    "base2" : {
+      "image" : "lightlessvinebase2.png",
+      "attachment" : {
+        "bx" : -2,
+        "by" : -16,
+        "x" : 6,
+        "y" : 0
+      }
+    },
+    "base3" : {
+      "image" : "lightlessvinebase3.png",
+      "attachment" : {
+        "bx" : -2,
+        "by" : -16,
+        "x" : 6,
+        "y" : 0
+      }
+    }
+  },
+  "middle" : {
+    "middle1" : {
+      "image" : "lightlessvinemiddle1.png",
+      "attachment" : {
+        "bx" : -6,
+        "by" : -16,
+        "x" : 6,
+        "y" : 0
+      }
+    },
+    "middle2" : {
+      "image" : "lightlessvinemiddle2.png",
+      "attachment" : {
+        "bx" : -6,
+        "by" : -16,
+        "x" : 6,
+        "y" : 0
+      }
+    },
+    "middle3" : {
+      "image" : "lightlessvinemiddle3.png",
+      "attachment" : {
+        "bx" : -6,
+        "by" : -16,
+        "x" : 6,
+        "y" : 0
+      }
+    }
+  },
+  "crown" : {
+    "crown1" : {
+      "image" : "lightlessvineend1.png",
+      "attachment" : {
+        "bx" : -6,
+        "by" : -16,
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "crown2" : {
+      "image" : "lightlessvineend2.png",
+      "attachment" : {
+        "bx" : -6,
+        "by" : -16,
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    "crown3" : {
+      "image" : "lightlessvineend3.png",
+      "attachment" : {
+        "bx" : -6,
+        "by" : -16,
+        "x" : 0,
+        "y" : 0
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "op": "add",
+    "path": "/dropPools/0/firebow",
+    "value": "voltipHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/icebow",
+    "value": "voltipHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/poisonbow",
+    "value": "voltipHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/electricbow",
+    "value": "voltipHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/radioactivebow",
+    "value": "voltipHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/cosmicbow",
+    "value": "voltipHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/shadowbow",
+    "value": "voltipHunting"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-fire",
+        "cooldown": 4,
+        "parameters": {
+          "requireLineOfSight": true,
+          "maxYRange": 2,
+          "maxXRange": 6,
+          "maximumRange": 0,
+          "minimumRange": 2.5,
+          "windupState": "firewindup",
+          "windupTime": 0.3,
+          "projectileType": "electriclance",
+          "fireOffset": [
+            3.75,
+            0
+          ],
+          "projectileCount": 1,
+          "projectileInterval": 0.01,
+          "aimDirection": [
+            1,
+            0
+          ],
+          "aimAtTarget": false,
+          "fireState": "",
+          "fireDelay": 0.2,
+          "winddownTime": 0.3
+        }
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/touchDamage/statusEffects/-",
+    "value": "electrified"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/colors",
+    "value": "pandorasboxvibrant"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/electricResistance/baseValue",
+    "value": 0.95
+  }
+]

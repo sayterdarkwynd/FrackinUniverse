@@ -1,0 +1,58 @@
+{
+  "objectName" : "elduuconsole5",
+  "colonyTags" : ["elduukhar","wired"],
+  "rarity" : "uncommon",
+  "category" : "decorative",
+  "price" : 200,
+  "lightColor" : [238, 255, 186],
+  "flickerDistance" : 0.2,
+  "flickerStrength" : 0.05,
+  "flickerTiming" : 4,
+  "description" : "A touch-screen console with all sorts of fun buttons.",
+  "shortdescription" : "Tiny Crystal Console",
+  "race" : "elduukhar",
+
+  "inventoryIcon" : "elduuconsole5icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "elduuconsole5.png:<color>.<frame>", "fullbright" : true }, { "image" : "elduuconsole5lit.png:<color>.<frame>" } ],
+      "imagePosition" : [-8, 0],
+      "frames" : 4,
+      "animationCycle" : 0.8,
+
+      "direction": "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "elduuconsole5.png:<color>.<frame>", "fullbright" : true }, { "image" : "elduuconsole5lit.png:<color>.<frame>" } ],
+      "imagePosition" : [-8, 0],
+      "frames" : 4,
+      "animationCycle" : 0.8,
+
+      "direction": "left",
+      "flipImages": true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/switch/switch.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switch3.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "switch" : "elduuconsole5.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "outputNodes" : [ [0, 0] ]
+}

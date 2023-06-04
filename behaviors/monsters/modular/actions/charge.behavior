@@ -1,0 +1,550 @@
+{
+  "name": "action-charge",
+  "description": null,
+  "scripts": [
+    "/scripts/behavior.lua",
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/entity.lua",
+    "/scripts/actions/monster.lua",
+    "/scripts/behavior/bdata.lua",
+    "/scripts/actions/sensor.lua",
+    "/scripts/actions/status.lua",
+    "/scripts/actions/time.lua"
+  ],
+  "parameters": {
+    "windupState": "chargewindup",
+    "winddownState": "chargewinddown",
+    "chargeState": "charge",
+    "chargeSpeed": 25,
+    "chargeControlForce": 100,
+    "chargeTime": 1.5,
+    "wallCollide": true,
+    "wallCrashSound": "crash",
+    "wallCrashEmitter": "",
+    "aimAtTarget": false,
+    "inaccuracy": 0,
+    "aimDirection": [1, 0],
+    "rotateToTarget": false,
+    "chargeStateType": "body",
+    "rotationOffset": 0,
+    "skillName": "",
+    "wallCrashVelocity": [-10, 20],
+    "wallKnockback": false,
+    "damageOnTouch": false
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "action-windup",
+        "type": "module",
+        "name": "action-windup",
+        "parameters": {
+          "windupState": {"value": "<windupState>"},
+          "wallCollisionCheck": {"key": "<wallCollide>"},
+          "windupStateType": {"value": "<chargeStateType>"},
+          "skillName": {"value": "<skillName>"}
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": 1},
+          "success": {"value": -1}
+        },
+        "children": [
+          {
+            "title": "controlFlag",
+            "type": "action",
+            "name": "controlFlag",
+            "parameters": {
+              "bool": {"value": true}
+            },
+            "output": {
+              "bool": "attacking"
+            }
+          },
+          {
+            "title": "sequence",
+            "type": "composite",
+            "name": "sequence",
+            "parameters": {},
+            "children": [
+              {
+                "title": "selector",
+                "type": "composite",
+                "name": "selector",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "optional",
+                    "type": "decorator",
+                    "name": "optional",
+                    "parameters": {
+                      "shouldRun": {"key": "<aimAtTarget>"}
+                    },
+                    "child": {
+                      "title": "sequence",
+                      "type": "composite",
+                      "name": "sequence",
+                      "parameters": {},
+                      "children": [
+                        {
+                          "title": "entityDirection",
+                          "type": "action",
+                          "name": "entityDirection",
+                          "parameters": {
+                            "entity": {"key": "self"},
+                            "target": {"key": "target"}
+                          },
+                          "output": {
+                            "direction": "direction",
+                            "vector": "aimDirection"
+                          }
+                        },
+                        {
+                          "title": "multiply",
+                          "type": "action",
+                          "name": "multiply",
+                          "parameters": {
+                            "factor": {"key": "<inaccuracy>"},
+                            "number": {"value": -1}
+                          },
+                          "output": {
+                            "result": "minInaccuracy"
+                          }
+                        },
+                        {
+                          "title": "random",
+                          "type": "action",
+                          "name": "random",
+                          "parameters": {
+                            "max": {"key": "<inaccuracy>"},
+                            "min": {"key": "minInaccuracy"}
+                          },
+                          "output": {
+                            "number": "fuzzAngle"
+                          }
+                        },
+                        {
+                          "title": "vecRotate",
+                          "type": "action",
+                          "name": "vecRotate",
+                          "parameters": {
+                            "angle": {"key": "fuzzAngle"},
+                            "vector": {"key": "aimDirection"}
+                          },
+                          "output": {
+                            "vector": "aimDirection"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "vecMultiply",
+                    "type": "action",
+                    "name": "vecMultiply",
+                    "parameters": {
+                      "first": {"key": "<aimDirection>"},
+                      "second": {"value": ["facingDirection", 1]}
+                    },
+                    "output": {
+                      "vector": "aimDirection"
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "parallel",
+                "type": "composite",
+                "name": "parallel",
+                "parameters": {
+                  "fail": {"value": -1},
+                  "success": {"value": 1}
+                },
+                "children": [
+                  {
+                    "title": "sequence",
+                    "type": "composite",
+                    "name": "sequence",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "succeeder",
+                        "type": "decorator",
+                        "name": "succeeder",
+                        "parameters": {},
+                        "child": {
+                          "title": "setAnimationState",
+                          "type": "action",
+                          "name": "setAnimationState",
+                          "parameters": {
+                            "state": {"value": "<chargeState>"},
+                            "type": {"value": "<chargeStateType>"}
+                          }
+                        }
+                      },
+                      {
+                        "title": "setDamageOnTouch",
+                        "type": "action",
+                        "name": "setDamageOnTouch",
+                        "parameters": {
+                          "touchDamage": {"value": true}
+                        }
+                      },
+                      {
+                        "title": "parallel",
+                        "type": "composite",
+                        "name": "parallel",
+                        "parameters": {
+                          "fail": {"value": -1},
+                          "success": {"value": -1}
+                        },
+                        "children": [
+                          {
+                            "title": "selector",
+                            "type": "composite",
+                            "name": "selector",
+                            "parameters": {},
+                            "children": [
+                              {
+                                "title": "gravityEnabled",
+                                "type": "action",
+                                "name": "gravityEnabled",
+                                "parameters": {}
+                              },
+                              {
+                                "title": "controlDown",
+                                "type": "action",
+                                "name": "controlDown",
+                                "parameters": {}
+                              }
+                            ]
+                          },
+                          {
+                            "title": "vecAngle",
+                            "type": "action",
+                            "name": "vecAngle",
+                            "parameters": {
+                              "vector": {"key": "aimDirection"}
+                            },
+                            "output": {
+                              "angle": "aimAngle"
+                            }
+                          },
+                          {
+                            "title": "succeeder",
+                            "type": "decorator",
+                            "name": "succeeder",
+                            "parameters": {},
+                            "child": {
+                              "title": "selector",
+                              "type": "composite",
+                              "name": "selector",
+                              "parameters": {},
+                              "children": [
+                                {
+                                  "title": "optional",
+                                  "type": "decorator",
+                                  "name": "optional",
+                                  "parameters": {
+                                    "shouldRun": {"key": "<rotateToTarget>"}
+                                  },
+                                  "child": {
+                                    "title": "parallel",
+                                    "type": "composite",
+                                    "name": "parallel",
+                                    "parameters": {
+                                      "fail": {"value": -1},
+                                      "success": {"value": -1}
+                                    },
+                                    "children": [
+                                      {
+                                        "title": "faceDirection",
+                                        "type": "action",
+                                        "name": "faceDirection",
+                                        "parameters": {
+                                          "direction": {"value": 1}
+                                        }
+                                      },
+                                      {
+                                        "title": "add",
+                                        "type": "action",
+                                        "name": "add",
+                                        "parameters": {
+                                          "addend": {"key": "aimAngle"},
+                                          "number": {"key": "<rotationOffset>"}
+                                        },
+                                        "output": {
+                                          "result": "rotationAngle"
+                                        }
+                                      },
+                                      {
+                                        "title": "rotateBody",
+                                        "type": "action",
+                                        "name": "rotateBody",
+                                        "parameters": {
+                                          "angle": {"key": "rotationAngle"},
+                                          "transformationGroup": {"value": "body"}
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                {
+                                  "title": "sequence",
+                                  "type": "composite",
+                                  "name": "sequence",
+                                  "parameters": {},
+                                  "children": [
+                                    {
+                                      "title": "breakVector",
+                                      "type": "action",
+                                      "name": "breakVector",
+                                      "parameters": {
+                                        "vector": {"key": "aimDirection"}
+                                      },
+                                      "output": {
+                                        "x": "chargeX"
+                                      }
+                                    },
+                                    {
+                                      "title": "faceDirection",
+                                      "type": "action",
+                                      "name": "faceDirection",
+                                      "parameters": {
+                                        "direction": {"key": "chargeX"}
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "title": "controlApproachVelocityAlongAngle",
+                            "type": "action",
+                            "name": "controlApproachVelocityAlongAngle",
+                            "parameters": {
+                              "angle": {"key": "aimAngle"},
+                              "force": {"key": "<chargeControlForce>"},
+                              "velocity": {"key": "<chargeSpeed>"}
+                            }
+                          },
+                          {
+                            "title": "runner",
+                            "type": "action",
+                            "name": "runner",
+                            "parameters": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "title": "dynamic",
+                    "type": "composite",
+                    "name": "dynamic",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "optional",
+                        "type": "decorator",
+                        "name": "optional",
+                        "parameters": {
+                          "shouldRun": {"key": "<wallCollide>"}
+                        },
+                        "child": {
+                          "title": "sequence",
+                          "type": "composite",
+                          "name": "sequence",
+                          "parameters": {},
+                          "children": [
+                            {
+                              "title": "selector",
+                              "type": "composite",
+                              "name": "selector",
+                              "parameters": {},
+                              "children": [
+                                {
+                                  "title": "sequence",
+                                  "type": "composite",
+                                  "name": "sequence",
+                                  "parameters": {},
+                                  "children": [
+                                    {
+                                      "title": "gravityEnabled",
+                                      "type": "action",
+                                      "name": "gravityEnabled",
+                                      "parameters": {}
+                                    },
+                                    {
+                                      "title": "wallCollision",
+                                      "type": "action",
+                                      "name": "wallCollision",
+                                      "parameters": {
+                                        "direction": {"key": "facingDirection"}
+                                      }
+                                    },
+                                    {
+                                      "title": "succeeder",
+                                      "type": "decorator",
+                                      "name": "succeeder",
+                                      "parameters": {},
+                                      "child": {
+                                        "title": "optional",
+                                        "type": "decorator",
+                                        "name": "optional",
+                                        "parameters": {
+                                          "shouldRun": {"key": "<wallKnockback>"}
+                                        },
+                                        "child": {
+                                          "title": "sequence",
+                                          "type": "composite",
+                                          "name": "sequence",
+                                          "parameters": {},
+                                          "children": [
+                                            {
+                                              "title": "vecMultiply",
+                                              "type": "action",
+                                              "name": "vecMultiply",
+                                              "parameters": {
+                                                "first": {"key": "<wallCrashVelocity>"},
+                                                "second": {"value": ["facingDirection", 1]}
+                                              },
+                                              "output": {
+                                                "vector": "wallCrashVelocity"
+                                              }
+                                            },
+                                            {
+                                              "title": "setVelocity",
+                                              "type": "action",
+                                              "name": "setVelocity",
+                                              "parameters": {
+                                                "velocity": {"key": "wallCrashVelocity"}
+                                              }
+                                            },
+                                            {
+                                              "title": "clearControls",
+                                              "type": "action",
+                                              "name": "clearControls",
+                                              "parameters": {}
+                                            },
+                                            {
+                                              "title": "setResource",
+                                              "type": "action",
+                                              "name": "setResource",
+                                              "parameters": {
+                                                "amount": {"value": 0.25},
+                                                "resource": {"value": "stunned"}
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "title": "sequence",
+                                  "type": "composite",
+                                  "name": "sequence",
+                                  "parameters": {},
+                                  "children": [
+                                    {
+                                      "title": "inverter",
+                                      "type": "decorator",
+                                      "name": "inverter",
+                                      "parameters": {},
+                                      "child": {
+                                        "title": "gravityEnabled",
+                                        "type": "action",
+                                        "name": "gravityEnabled",
+                                        "parameters": {}
+                                      }
+                                    },
+                                    {
+                                      "title": "boundsCollision",
+                                      "type": "action",
+                                      "name": "boundsCollision",
+                                      "parameters": {}
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "title": "succeeder",
+                              "type": "decorator",
+                              "name": "succeeder",
+                              "parameters": {},
+                              "child": {
+                                "title": "playSound",
+                                "type": "action",
+                                "name": "playSound",
+                                "parameters": {
+                                  "sound": {"value": "<wallCrashSound>"}
+                                }
+                              }
+                            },
+                            {
+                              "title": "succeeder",
+                              "type": "decorator",
+                              "name": "succeeder",
+                              "parameters": {},
+                              "child": {
+                                "title": "burstParticleEmitter",
+                                "type": "action",
+                                "name": "burstParticleEmitter",
+                                "parameters": {
+                                  "emitter": {"value": "<wallCrashEmitter>"}
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "title": "timer",
+                        "type": "action",
+                        "name": "timer",
+                        "parameters": {
+                          "time": {"value": "<chargeTime>"}
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "action-winddown",
+        "type": "module",
+        "name": "action-winddown",
+        "parameters": {
+          "winddownState": {"value": "<winddownState>"},
+          "winddownStateType": {"value": "<chargeStateType>"}
+        }
+      },
+      {
+        "title": "setDamageOnTouch",
+        "type": "action",
+        "name": "setDamageOnTouch",
+        "parameters": {
+          "touchDamage": {"key": "<damageOnTouch>"}
+        }
+      }
+    ]
+  }
+}

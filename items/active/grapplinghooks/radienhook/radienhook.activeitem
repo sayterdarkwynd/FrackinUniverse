@@ -1,0 +1,48 @@
+{
+  "itemName" : "radienhook",
+  "price" : 2,
+  "inventoryIcon" : "lasherhookicon.png",
+  "rarity" : "rare",
+  "maxStack" : 1,
+  "description" : "A useful genetic trick of the X'i.",
+  "shortdescription" : "X'ian Grapple Vine",
+  "largeImage" : "lasherhookbig.png",
+  "category" : "Tool",
+  "fireTime" : 0,
+  "twoHanded" : false,
+
+  "scripts" : ["/items/active/grapplinghooks/grapplinghook.lua"],
+  "animationScripts" : ["/items/active/effects/renderrope.lua"],
+
+  "animation" : "radienhook.animation",
+
+  "fireOffset" : [0, 0],
+  "ropeOffset" : [-1.2, 0],
+  "ropeVisualOffset" : [0.75, 0],
+  "handGrip" : "wrap",
+  "consumeOnUse" : false,
+
+  "projectileType" : "radienhook",
+  "projectileParameters" : {
+    "speed" : 60,
+    "timeToLive" : 1,
+    "power" : 4,
+    "piercing" : true,
+    "onlyHitTerrain":false,
+    "actionOnCollide":[ {"options":["/sfx/projectiles/magnorb_impact1.ogg"],"action":"sound"} ]
+  },
+
+  "ropeWidth" : 1,
+  "ropeColor" : [122, 55, 122, 255],
+
+  "reelInDistance" : 2.5,
+  "reelOutLength" : 20,
+  "breakLength" : 30,
+
+  "minSwingDistance" : 1.0,
+
+  "reelSpeed" : 12,
+  "controlForce" : 600,
+
+  "groundLagTime" : 0.15
+}

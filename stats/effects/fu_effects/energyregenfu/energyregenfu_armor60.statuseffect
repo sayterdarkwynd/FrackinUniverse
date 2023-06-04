@@ -1,17 +1,19 @@
 {
-  "name" : "energyregenfu_armor60",
-  "effectConfig" : {
-    "regenAmount" : 1.60,
-    "regenBlockAmount" : 5
-  },
-  "defaultDuration" : 1,
-
-  "scripts" : [
-    "energyregenfu.lua"
-  ],
-
-  "animationConfig" : "energyregenfu.animation",
-
-  "label" : "E.Regen 5",
-  "icon" : "/interface/statuses/energyregen2.png"
+	"name": "energyregenfu_armor60",
+	"effectConfig": {
+		"stats": [{
+				"stat": "energyRegenPercentageRate",
+				"baseMultiplier": 1.6
+			},
+			{
+				"stat": "energyRegenBlockTime",
+				"baseMultiplier": 0.9
+			}
+		]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
+	"animationConfig": "energyregenfu.animation"
 }

@@ -1,0 +1,57 @@
+{
+  "objectName" : "kirhosdoor2",
+  "colonyTags" : ["kirhos", "fukirhos","door"],
+  "printable" : true,
+  "rarity" : "Rare",
+
+  "category" : "door",
+  "price" : 350,
+  "description" : "Shiny and nice, and keeps out the bugs.",
+  "shortdescription" : "Kirhosi Door",
+  "race" : "fukirhos",
+
+  "inventoryIcon" : "kirhosdoor2icon.png",
+  "orientations" : [
+    {
+      "image" : "kirhosdoor2.png:default",
+      "imagePosition" : [-20, 0],
+      "renderLayer" : "Object+5",
+      "flipImages" : true,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "direction" : "left"
+    },
+    {
+      "image" : "kirhosdoor2.png:default",
+      "imagePosition" : [-20, 0],
+      "renderLayer" : "Object+5",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/airlock_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/airlock_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "kirhosdoor2.png"
+  },
+  "animationPosition" : [-20, 0],
+
+  "inputNodes" : [ [-1, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

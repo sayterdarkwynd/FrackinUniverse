@@ -21,16 +21,40 @@
         "density" : 3,
         "options" : [
           {
-            "color" : [26, 55, 75],
-            "timeToLive" : 10
+            "type" : "ember",
+            "color" : [26, 55, 24],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           },
           {
-            "color" : [51, 82, 75],
-            "timeToLive" : 10
+            "type" : "ember",
+            "color" : [51, 82, 39],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           },
           {
-            "color" : [64, 109, 75],
-            "timeToLive" : 10
+            "type" : "ember",
+            "color" : [64, 109, 63],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           }
         ]
       },
@@ -38,19 +62,40 @@
         "density" : 3,
         "options" : [
           {
-            "color" : [26, 55, 75],
+            "type" : "ember",
+            "color" : [26, 55, 24],
             "timeToLive" : 10,
-            "initial" : "upwards"
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           },
           {
-            "color" : [51, 82, 75],
+            "type" : "ember",
+            "color" : [51, 82, 39],
             "timeToLive" : 10,
-            "initial" : "upwards"
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           },
           {
-            "color" : [64, 109, 75],
+            "type" : "ember",
+            "color" : [64, 109, 63],
             "timeToLive" : 10,
-            "initial" : "upwards"
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
           }
         ]
       }
@@ -58,7 +103,7 @@
   },
 
   "parallaxFoliage" : true,
-  
+
   "crownLeaves" : {
     "crown1" : {
       "image" : "crown1.png",

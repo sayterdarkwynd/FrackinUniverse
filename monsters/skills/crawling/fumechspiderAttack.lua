@@ -4,8 +4,8 @@ fumechspiderAttack = {}
 function fumechspiderAttack.enterWith(args)
   if not args.fumechspiderAttack then return nil end
 
-  return { 
-    didAttack = false, 
+  return {
+    didAttack = false,
     wasInRange = false,
     windupTimer = config.getParameter("fumechspiderAttack.windupTime"),
     winddownTimer = config.getParameter("fumechspiderAttack.windDownTime"),
@@ -17,8 +17,8 @@ end
 function fumechspiderAttack.enter()
   if not canStartSkill("fumechspiderAttack") then return nil end
 
-  return { 
-    didAttack = false, 
+  return {
+    didAttack = false,
     wasInRange = false,
     windupTimer = config.getParameter("fumechspiderAttack.windupTime"),
     winddownTimer = config.getParameter("fumechspiderAttack.winddownTime"),
@@ -41,9 +41,6 @@ end
 
 function fumechspiderAttack.update(dt, stateData)
   if not canContinueSkill() or not hasTarget() then return true end
-
-  local targetPosition = world.entityPosition(self.target)
-  local toTarget = world.distance(targetPosition, mcontroller.position())
 
   local projectileName = config.getParameter("fumechspiderAttack.projectile")
   local power = root.evalFunction("monsterLevelPowerMultiplier", monster.level()) * config.getParameter("fumechspiderAttack.power")
@@ -82,5 +79,5 @@ function fumechspiderAttack.update(dt, stateData)
 end
 
 function fumechspiderAttack.leavingState(stateData)
-  
+
 end

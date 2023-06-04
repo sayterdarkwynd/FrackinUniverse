@@ -15,7 +15,7 @@ end
 function shieldSpecial.onUpdate(dt)
   if not hasTarget() then
     shieldSpecial.deactivateShield()
-    return true 
+    return true
   end
 
   --Set to activate on next damage

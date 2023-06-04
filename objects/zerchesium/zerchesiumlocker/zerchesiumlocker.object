@@ -1,0 +1,61 @@
+{
+  "objectName" : "zerchesiumlocker",
+  "colonyTags" : ["zerchesium","storage"],
+  "rarity" : "Common",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "A set of lockers made from Zerchesium. They don't seem to have an owner.",
+  "shortdescription" : "Zerchesium Locker",
+  "race" : "generic",
+  "category" : "storage",
+  "price" : 175,
+  "lightColor" : [255, 249, 140],
+  "health" : 1.5,
+
+  "apexDescription" : "Whose locker is this, I wonder?",
+  "avianDescription" : "I wonder if I could fit in this locker.",
+  "floranDescription" : "Floran wonders what'sss inside locker.",
+  "glitchDescription" : "Neutral. A locker, for locking up things you want to lock away.",
+  "humanDescription" : "Ah, this reminds me of high school.",
+  "hylotlDescription" : "A basic, ugly locker.",
+  "novakidDescription" : "Just a locker, does the job I guess.",
+
+  "inventoryIcon" : "zerchesiumlockericon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "zerchesiumlocker.png:<color>", "fullbright" : true }, { "image" : "zerchesiumlockerlit.png:<color>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [0, 2],
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "zerchesiumlocker.png:<color>", "fullbright" : true }, { "image" : "zerchesiumlockerlit.png:<color>" } ],
+      "direction" : "right",
+      "lightPosition" : [0, 2],
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/locker_close.ogg" ],
+  "slotCount" : 48,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+
+}

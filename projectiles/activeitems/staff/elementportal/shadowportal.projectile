@@ -1,0 +1,50 @@
+{
+  "projectileName" : "shadowportal",
+  "physics" : "hover",
+  "timeToLive" : 6,
+  "image" : "shadowportal.png",
+  "animationCycle" : 0.35,
+  "frameNumber" : 4,
+  "windupFrames" : 3,
+  "winddownFrames" : 3,
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/melee/astraltear2.ogg" ]
+    },
+    {
+      "time" : 5.65,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/astraltear_stop3.ogg" ]
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/shadowimpactmute.config"
+    }
+  ],
+  "speed" : 0,
+  "power" : 0,
+  "damagePoly" : [],
+
+  "fullbright" : true,
+  "emitters" : ["shadowsmoke2"],
+
+  "renderLayer" : "Projectile-1",
+  "orientationLocked" : true,
+
+  "bounces" : -1,
+  "onlyHitTerrain" : true,
+
+  "scripts" : [ "/projectiles/activeitems/staff/elementportal/elementportal.lua" ],
+
+  "projectileType" : "shadowswarmer",
+  "projectileParameters" : {},
+  "spawnRate" : 0.3,
+
+  "persistentAudio" : "/sfx/projectiles/zone_power_loop.ogg"
+}

@@ -1,0 +1,43 @@
+{
+  "objectName": "bioplant19",
+  "rarity": "Common",
+  "category": "decorative",
+  "price": 400,
+  "printable": false,
+  "description": "Proto Plant",
+  "shortdescription": "Proto Plant",
+  "lightColor" : [75, 22, 75],
+	
+  "inventoryIcon": "bioplant19.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "bioplant19.png:<color>" }, { "image" : "bioplant19fullbright.png:<color>", "fullbright" : true } ],
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
+    },
+    {
+      "imageLayers" : [ { "image" : "bioplant19.png:<color>" }, { "image" : "bioplant19fullbright.png:<color>", "fullbright" : true } ],
+      "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "left"
+    }
+  ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/plant_break1.ogg", "/sfx/objects/plant_break2.ogg", "/sfx/objects/plant_break3.ogg", "/sfx/objects/plant_break4.ogg", "/sfx/objects/plant_break5.ogg", "/sfx/objects/plant_break6.ogg" ],
+  "smashParticles" : [ { "count" : 3, "particle" : "bioplant1shard" }, { "count" : 4, "particle" : "bioplant3shard" } ],
+  "smashDropOptions" : [
+    [ [ "cellmatter", 1, { } ] ]
+  ],
+  "biomePlaced": true,
+  "scannable": false
+}

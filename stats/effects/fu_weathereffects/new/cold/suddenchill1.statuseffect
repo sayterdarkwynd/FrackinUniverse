@@ -1,0 +1,49 @@
+{
+	"name" : "suddenchill1",
+
+	"effectConfig" : {
+		"resistanceTypes" : {
+			"iceResistance" : 1.0
+		},
+		"resistanceThreshold" : 0.25,
+		"immunityStats" : [
+			"biomecoldImmunity",
+			"ffextremecoldImmunity"
+		],
+
+		"healthDrain" : 3,
+		"hungerDrain" : 0.3,
+		"energyDrain" : 0,
+		"speedPenalty" : 0.4,
+		"jumpPenalty" : 0.4,
+
+		"debuffRate" : 5,
+		"debuffStartDelay" : 0,
+		"debuffs" : {},
+
+		"modifiers" : {
+			"night" : 1.2,
+			"wet" : 1.2,
+			"windy" : 1.2
+		},
+
+		"messages" : {
+			"intro" : "biomecold",
+			"night" : "ffbiomecoldnight",
+			"wet" : "ffbiomecoldwater",
+			"windy" : "fubiomecoldwind"
+		},
+
+		"configPath" : "/stats/effects/fu_weathereffects/new/cold/suddenchill1.statuseffect"
+	},
+	"defaultDuration" : 5,
+
+	"scripts" : [
+		"coldweathernew.lua"
+	],
+
+	"animationConfig" : "coldweathernew.animation",
+
+	"label" : "Cold Snap (Resist: ^#77f4ff;Ice^reset;)",
+	"icon" : "/interface/statuses/cold1.png"
+}

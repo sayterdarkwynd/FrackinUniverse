@@ -1,0 +1,100 @@
+{
+  "type" : "crewmemberoceanographer",
+  "baseType" : "fu_crewmember",
+
+  "scriptConfig" : {
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "fudiverhead3",
+        "chest" : "fudiverchest3",
+        "legs" : "fudiverlegs3"
+      },
+
+      "role" : {
+        "type" : "chemist",
+        "name" : "Oceanographer",
+        "field" : "Nautical Studies",
+        "uniformColorIndex" : 1,
+
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "swimboost4",
+            "duration" : 900
+          },
+          {
+            "type" : "EphemeralEffect",
+            "effect" : "liquidnitrogenimmunity",
+            "duration" : 900
+          },
+          {
+            "type" : "EphemeralEffect",
+            "effect" : "lavaimmunity",
+            "duration" : 900
+          },
+          {
+            "type" : "Regeneration",
+            "value" : 1
+          }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "fieldBenefit" : {
+          "default" : {
+            "default" : [
+              "Jump right in, the water's fine!"
+            ]
+          }
+        },
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "Want to swim with the fishes?"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran wantsss see the fisshess."
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Boastful. I am personally acquanted with Shamu, you know."
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Jump right in, the water's fine!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Jump in, sswim with fisshess!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Mocking. Afraid of a little dip?"
+            ]
+          }
+        }
+	  }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "nitrogengun" ]
+          }
+        ] ]
+    ]
+  }
+}

@@ -1,15 +1,21 @@
 {
   "objectName" : "honeytable",
-  "colonyTags" : [ "bees" ],
+  "colonyTags" : [ "bees", "cooking" ],
   "printable" : false,
   "rarity" : "rare",
   "interactAction" : "OpenCraftingInterface",
   "interactData" : {
-    "config" : "/interface/windowconfig/kitchen.config",
-    "filter" : [ "honeytable" ]
+    "config" : "/interface/windowconfig/craftingfood.config",
+    "filter" : [ "honeytable", "craftingfood" ],
+    "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : " Honey Cooking Table",
+        "subtitle" : " ^#b9b5b2;Prepare and cook honey!"
+      }
+    }
   },
   "description" : "Cook honey based food on this!",
-  "shortdescription" : "^orange;Honey Cooking Table^white;",
+  "shortdescription" : "Honey Cooking Table",
   "race" : "generic",
   "category" : "crafting",
 

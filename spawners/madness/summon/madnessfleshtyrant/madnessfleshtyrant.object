@@ -1,0 +1,32 @@
+{
+  "objectName" : "madnessfleshtyrant",
+  "rarity" : "legendary",
+  "description" : "The shining gem of your genetic experimentation.",
+  "shortdescription" : "Flesh Tyrant",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 21850,
+  "printable" : false,
+
+  "inventoryIcon" : "madnessfleshtyrant.png",
+  "orientations" : [
+    {
+      "dualImage" : "madnessfleshtyrant.png:<color>",
+      "imagePosition" : [-36, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "spaces" : [  [0, 0], [-1, 0], [0, 1], [-1, 1]],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "botspawner" : {
+      "type" : "fleshtyrant",
+	  "monsterImage":"/monsters/flyers/fleshreaper/fleshreaper.png:idle.1?"
+  },
+
+  "scripts" : [
+    "/spawners/fuminionspawner.lua"
+  ],
+  "scriptDelta" : 5
+}

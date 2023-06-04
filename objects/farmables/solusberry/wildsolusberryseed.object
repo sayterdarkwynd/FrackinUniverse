@@ -1,0 +1,64 @@
+{
+  "objectName" : "wildsolusberryseed",
+  "colonyTags" : ["nature"],
+  "rarity" : "Rare",
+  "category" : "seed",
+  "description" : "A solarium-rich berry. Likely unsafe to eat.",
+  "shortdescription" : "Solusberry Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 90,
+  "lightColor" : [128, 72, 40],
+
+  "apexDescription" : "I think it is a result of ages of evolution...",
+  "avianDescription" : "This little glowing bush produces solarium! How wonderful!",
+  "floranDescription" : "What if Floran wass sssimilar to thisss?",
+  "glitchDescription" : "Amazed. Do this berries glow?",
+  "humanDescription" : "The crop seems to be made of solarium. It's a bit strange.",
+  "hylotlDescription" : "I must write an article about these all energy plants.",
+  "novakidDescription" : "A lovely solusberry bush, it makes me nostalgic.",
+
+  "inventoryIcon" : "solusberryseedicon.png",
+
+  "tooltipKind" : "seed",
+  "largeImage" : "solusberryseed.png:default.3.0",
+
+
+  "orientations" : [
+    {
+      "imageLayers" : [{ "image" : "solusberryseed.png:<color>.<stage>.<alt>", "fullbright" : true}, { "image" : "solusberryseedlit.png:<color>.<stage>.<alt>"}],
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [430, 470]
+    },
+    {
+      "duration" : [430, 470]
+    },
+    {
+      "alts" : 5,
+      "duration" : [1740, 1860]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "solusberryHarvest",
+      "resetToStage" : 2
+    }
+  ],
+
+  "maxImmersion" : 0.25,
+  "breakDropOptions" : [
+    [ [ "solusberryseed", 1, { } ] ]
+  ],
+  "beeLikeness" : {"stellar" : 1, "goldensaint":1,"cuckoo":1}
+}

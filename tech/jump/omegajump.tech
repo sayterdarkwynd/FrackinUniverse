@@ -1,0 +1,37 @@
+{
+  "name" : "omegajump",
+  "type" : "legs",
+
+  "scripts" : ["gravityjump.lua"],
+  "animator" : "longjump3.animation",
+
+  "description" : "Now that is one helluva jump.",
+  "shortDescription" : "Omega Jump",
+  "rarity" : "essential",
+  "icon" : "/tech/longjump.png",
+
+  "chipCost" : 8,
+
+  "multiJumpCount" : 12,
+
+  "jumpSpeedMultiplier" : 44,
+  "fallGravityMultiplier" : 0.25,
+  "fallDamageMultiplier" : 0.25,
+  "flutterXVelocity" : 0,
+  "flutterYVelocity" : 0,
+  "flutterTime": 0.0,
+  "flutterAfterFall" : false,
+  "flutterFall" : false,
+  "wallJumpXVelocity" : 0,
+  "wallGrabFreezeTime" : 0,
+  "wallSensors" : [ 1.0, 1.75, 2.5 ],
+  "wallDetectThreshold" : 0.5,
+  "wallReleaseTime" : 0.05,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 1.4,
+      "airForce" : 0,
+      "airFriction" : 0
+    }
+  }
+}

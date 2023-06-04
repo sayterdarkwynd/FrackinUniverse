@@ -1,0 +1,89 @@
+{
+  "projectileName" : "psionicburst",
+  "image" : "psionicburst.png",
+  "animationCycle" : 0.15,
+  "frameNumber" : 2,
+  "damageKindImage" : "icon.png",
+  "physics" : "stickybullet",
+  "pointLight" : false,
+  "timeToLive" : 4,
+  "speed": 42,
+  "knockback" : 30,
+  "bounces" : -1,
+  "statusEffects" : [ "stun" ],
+      "actionOnCollide" : [
+        {
+          "action" : "sound",
+          "options" : [ "/sfx/gun/impact_plasma.ogg" ]
+        }
+      ],
+      "actionOnReap":[
+	    {
+	      "action" : "projectile",
+	      "type" : "vsmallplasmaexplosion",
+	      "inheritDamageFactor" : 1,
+	      "angle" : 0,
+	      "fuzzAngle" : 360
+	    },
+	    {
+	      "action" : "loop",
+	      "count" : 12,
+	      "body" : [
+		{
+		  "action" : "particle",
+		  "specification" : {
+		    "type" : "ember",
+		    "size" : 1.5,
+		    "color" : [90, 180, 230, 255],
+		    "light" : [90, 180, 230],
+		    "fullbright" : true,
+		    "destructionTime" : 0.1,
+		    "destructionAction" : "shrink",
+		    "fade" : 0.9,
+		    "initialVelocity" : [0, 0],
+		    "finalVelocity" : [0.0, -50.0],
+		    "approach" : [0, 30],
+		    "timeToLive" : 0.1,
+		    "layer" : "middle",
+		    "variance" : {
+		      "position" : [0.25, 0.25],
+		      "size" : 0.5,
+		      "initialVelocity" : [13, 13],
+		      "timeToLive" : 0.1
+		    }
+		  }
+		}
+	      ]
+	    },
+	    {
+	      "action" : "projectile",
+	      "inheritDamageFactor" : 0.4,
+	      "type" : "fuhgravityexplosion"
+	    },
+	    {
+		  "action" : "config",
+		  "file" : "/projectiles/explosions/shadowfireboom/shadowfireboom.config"
+	    },
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
+	    }
+
+      ],
+       "actionOnHit":[
+	    {
+		  "action" : "config",
+		  "file" : "/projectiles/explosions/psiexplosion/psiexplosion.config"
+	    },
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
+	    }
+      ],
+
+  "power" : 5.0,
+
+  "lightColor" : [78, 202, 223],
+  "damageType" : "NoDamage",
+  "damageKind" : "cosmic"
+}

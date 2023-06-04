@@ -1,0 +1,47 @@
+{
+  "objectName" : "madnesscodex",
+  "colonyTags" : ["madness","evil","insanity","macabre"],
+  "rarity" : "rare",
+  "description" : "A place to write down magnificent, totally safe theories and lost knowledge.",
+  "shortdescription" : "Tome Dais",
+  "race" : "generic",
+  "category" : "crafting",
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/tomedais.config",
+    "filter" : [ "tomedais" ]
+  },
+
+  "price" : 355,
+  "printable" : false,
+
+  "scripts" : [ "/scripts/npcToyObject.lua"],
+
+  "inventoryIcon" : "madnesscodexicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "madnesscodex.png:<color>",
+
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+
+  "npcToy" : {
+    "influence" : ["sink","sinkComplete"],
+    "defaultReactions" : {
+      "sink" : [[1.0, "crouchcollect"]],
+      "sinkComplete" : [[1.0, "smile"]]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

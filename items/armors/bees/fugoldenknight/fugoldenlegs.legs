@@ -1,44 +1,64 @@
 {
   "itemName" : "fugoldenlegs",
+  "price" : 300,
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Golden leg plates of a highly visible knight.",
+  "rarity" : "legendary",
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; ^green;Thorns^reset;
+^yellow;^reset; Bladed Melee: Damage x^green;1.1^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Beestings, Honey",
   "shortdescription" : "Amber Leg Plates",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
-
+  "itemTags" : [ "upgradeableWeapon", "defensive", "melee", "hyper" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-"level" : 3,
-  "statusEffects" : [
+
+  "level" : 5,
+  //"collectablesOnPickup" : { "fu_armortank" : "fugoldenlegs" },
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.6
+      "baseMultiplier" : 1.05
     },
-
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 12
+      "amount" : 0.3
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 32
+      "amount" : 1
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 11
+      "amount" : 8
     },
-    "beestingimmunity",
-    "honeyslowimmunity"
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.023334
+    }
+  ],
+
+  "statusEffects" : [
+    "ambersetbonus",
+    {
+      "stat" : "fu_amberset_legs",
+      "amount" : 1
+    }
   ],
 
   "colorOptions" : [
 		/* DEFAULT */
-    { "ffd174" : "ffd174", "f8cc00" : "f8cc00", "bf9d00" : "bf9d00", "fff821" : "fff821"},		
+    { "ffd174" : "ffd174", "f8cc00" : "f8cc00", "bf9d00" : "bf9d00", "fff821" : "fff821"},
        /* GREEN */
     { "ffd174" : "60b462", "f8cc00" : "589459", "bf9d00" : "3b603c", "fff821" : "3bff21"}
-  ]
+  ],
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

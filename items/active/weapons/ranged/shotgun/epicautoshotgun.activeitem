@@ -1,0 +1,192 @@
+{
+  "itemName" : "epicautoshotgun",
+  "price" : 2000,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Rapidly fires volleys of spread-out rounds that are especially lethal at close range.",
+  "shortdescription" : "Epic Automatic Shotgun",
+  "tooltipKind" : "gun2",
+  "category" : "swtjc_ewg_autoShotgun",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","shotgun","upgradeableWeapon"],
+  "level" : 1,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : { },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
+        ]
+      }
+    }
+  },
+  "baseOffset" : [-1.25, 0.25],
+  "muzzleOffset" : [0.0, 0.3125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : [0.1, 0.4],
+    "baseDps" : [13, 15],
+    "energyUsage" : [24.5, 34.5],
+    "projectileCount" : [5,12],
+    "inaccuracy" : 0.08,
+
+    "projectileParameters" : {
+      "knockbackRange" : [3, 12]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.2,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "critChance" : 4,
+  "critBonus" : 12,
+  "isAmmoBased" : [0,1],
+  "magazineSize" : [5,24],
+  "reloadTime" : [1.85,4.4],
+  "isShotgun" : 1,
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "nameGenerator" : "swtjc_ewg_autoshotgunnames.config:nameGen",
+    "elementalType" : [
+      "fire",
+      "ice",
+      "electric",
+      "poison",
+      "radioactive",
+      "shadow",
+      "cosmic"
+    ],
+    "elementalConfig" : {
+      "fire" : {
+        "primaryAbility" : { "projectileType" : "fireplasma", "projectileParameters" : { "damageKind" : "fireplasmashotgun", "statusEffects" : [ "burning" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg" ]
+      },
+      "ice" : {
+        "primaryAbility" : { "projectileType" : "iceplasma", "projectileParameters" : { "damageKind" : "iceplasmashotgun", "statusEffects" : [ "frostslow" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg" ]
+      },
+      "poison" : {
+        "primaryAbility" : { "projectileType" : "poisonplasma", "projectileParameters" : { "damageKind" : "poisonplasmashotgun", "statusEffects" : [ "weakpoison" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg" ]
+      },
+      "electric" : {
+        "primaryAbility" : { "projectileType" : "electricplasma", "projectileParameters" : { "damageKind" : "electricplasmashotgun", "statusEffects" : [ "electrified" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg" ]
+      },
+      "radioactive" : {
+        "primaryAbility" : { "projectileType" : "radioactiveplasma", "projectileParameters" : { "statusEffects" : [ "radiationburn" ] } },
+       "fireSounds" : [ "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg" ]
+      },
+      "shadow" : {
+        "primaryAbility" : { "projectileType" : "shadowplasma", "projectileParameters" : { "statusEffects" : [ "shadowgasfx" ] } },
+       "fireSounds" : [ "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg" ]
+      },
+      "cosmic" : {
+        "primaryAbility" : { "projectileType" : "cosmicplasma", "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } },
+       "fireSounds" : [ "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg" ]
+      }
+    },
+    "animationParts" : {
+      "butt" : {
+        "path" : "/items/active/weapons/ranged/shotgun/butt/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "middle" : {
+        "path" : "/items/active/weapons/ranged/assaultrifle/middle/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "barrel" : {
+        "path" : "/items/active/weapons/ranged/shotgun/barrel/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+    },
+    "gunParts" : ["butt", "middle", "barrel"],
+    "altAbilities" : [
+      "bouncingshot",
+      "deathbomb",
+      "explosiveburst",
+      "explosiveshot",
+      "grenadelauncher",
+      "lance",
+      "markedshot",
+      "piercingshot",
+      "shrapnelbomb",
+      "spray",
+      "stickyshot",
+
+      "swtjc_ewg_bouncingspray",
+      "swtjc_ewg_bouncingspread",
+      "swtjc_ewg_bouncingpiercingshot",
+      "swtjc_ewg_bouncingpiercingspray",
+      "swtjc_ewg_bouncingpiercingspread",
+      "swtjc_ewg_explosivebouncingshot",
+      "swtjc_ewg_explosivebouncingspray",
+      "swtjc_ewg_explosivebouncingspread",
+      "swtjc_ewg_explosivespray",
+      "swtjc_ewg_explosivespread",
+      "swtjc_ewg_piercingspray",
+      "swtjc_ewg_piercingspread",
+      "swtjc_ewg_railgun",
+      "swtjc_ewg_spreadshot",
+      "swtjc_ewg_stickyspray",
+      "swtjc_ewg_stickyspread",
+
+      "swtjc_ewg_clusterbomb",
+      "swtjc_ewg_markedshotweak",
+      "swtjc_ewg_proximitymines",
+
+      "swtjc_ewg_bouncingorbitals",
+      "swtjc_ewg_cellspray",
+      "swtjc_ewg_cellspread",
+      "swtjc_ewg_darkplasma",
+      "swtjc_ewg_elementalspray",
+      "swtjc_ewg_explosivebubbles",
+      "swtjc_ewg_forceshield",
+      "swtjc_ewg_globelauncher",
+      "swtjc_ewg_phaseburst",
+      "swtjc_ewg_rocketjump",
+      "swtjc_ewg_shattershot",
+      "forcebubble"
+    ],
+    "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
+    "iconDrawables" : ["butt", "middle", "barrel"]
+  }]
+}

@@ -1,0 +1,24 @@
+{
+  "projectileName" : "poisonblast2",
+  "image" : "poisonblast2.png",
+  "physics" : "laser",
+  "animationCycle" : 0.25,
+  "frameNumber" : 3,
+  "windupFrames" : 4,
+  "pointLight" : true,
+  "fullbright" : true,
+  "lightColor" : [127,255,0],
+  "power" : 10,
+  "speed" : 35,
+  "damageKind" : "poisonplasma",
+  "damagePoly" : [ [-18, 0], [-6, -6], [0, -18], [6, -6], [18, 0], [6, 6], [0, 18], [-6, 6] ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/poisonexplosionknockbackstatus.config"
+    }
+  ],
+  "emitters" : [ "poisonplasma" ],
+  "statusEffects" : ["weakpoison"],
+  "bounces" : 0
+}

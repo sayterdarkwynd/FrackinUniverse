@@ -1,0 +1,41 @@
+{
+	"objectName" : "brainbattery",
+	"rarity" : "rare",
+		"colonyTags" : [ "science","elder","macabre" ],
+	"category" : "wire",
+	"price" : 12500,
+	"description" : "Use brains to store and transfer electrical energy! Substantial storage!^truncate; ^red;Scan for Info^reset;\nStorage Capacity: ^green;5000^reset;J",
+	"shortdescription" : "^cyan;Psionic^reset; Battery",
+	"race" : "generic",
+	"printable" : false,
+
+	"inventoryIcon" : "brainbatteryicon.png",
+	"orientations" : [
+		{
+			"dualImage" : "brainbattery_base.png",
+			"imagePosition" : [0, 0],
+			"spaceScan" : 0.1,
+			"collision" : "platform",
+			"anchors" : [ "bottom" ]
+		}
+	],
+
+	"breakDropOptions" : [],
+
+	"animation" : "brainbattery.animation",
+	"animationParts" : {
+		"meter" : "brainbattery_meter.png",
+		"status" : "brainbattery_status.png",
+		"base" : "brainbattery_base.png"
+	},
+	"animationPosition" : [0, 0],
+
+	"scripts" : [ "/scripts/fupower.lua","/objects/power/isn_battery.lua" ],
+	"scriptDelta" : 60,
+
+	"outputNodes" : [ [0, 0], [1, 0] ],
+	"inputNodes" : [ [0, 1], [1, 1] ],
+
+	"isn_batteryCapacity" : 5000,
+	"powertype" : "battery"
+}

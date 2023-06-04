@@ -1,0 +1,83 @@
+{
+  "itemName" : "crystalpistolfire",
+  "price" : 500,
+  "inventoryIcon" : "crystalpistolfire.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "Razor-sharp shards of fun slow targets.",
+  "shortdescription" : "^cyan;Fire Shard Gun^reset;",
+  "level" : 3,
+  "category" : "pistol",
+  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon", "crystal"],
+  "tooltipKind" : "gun2",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "crystalpistolfire.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/projectiles/acid_hit.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }
+  },
+
+  "baseOffset" : [0.55, 0.34],
+  "muzzleOffset" : [1.75, 0],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "fire",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.5,
+    "baseDps" : 6,
+    "energyUsage" : 26,
+    "fireType" : "auto",
+    "inaccuracy" : 0.001,
+    "projectileCount" : 1,
+    "projectileType" : "razorneedlerthornsfire",
+    "projectileParameters" : {
+      "speed" : 65,
+      "statusEffects" : [ "burning" ]
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "critChance" : 2,
+  "critBonus" : 2,
+  "isAmmoBased" : 1,
+  "magazineSize" : 12,
+  "isMachinePistol" : 1,
+  "reloadTime": 1,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

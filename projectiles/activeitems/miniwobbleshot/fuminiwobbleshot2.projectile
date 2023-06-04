@@ -1,0 +1,74 @@
+{
+  "projectileName" : "fuminiwobbleshot2",
+  "physics" : "laser",
+  "image" : "miniwobbleshot.png",
+  "fullbright" : true,
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "power" : 50,
+  "speed" : 50,
+  "timeToLive" : 3,
+  "lightColor" : [80, 190, 60],
+  "damageKind" : "plasma",
+  "knockback" : 2,
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/cplasmaex1.ogg" ]
+    },
+    {
+      "action" : "loop",
+      "count" : 4,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [180, 230, 160, 255],
+            "light" : [80, 190, 60],
+            "fullbright" : true,
+            "destructionTime" : 0.1,
+            "destructionAction" : "shrink",
+            "fade" : 0.9,
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0.0, -50.0],
+            "approach" : [0, 30],
+            "timeToLive" : 0.1,
+            "layer" : "middle",
+            "variance" : {
+              "position" : [0.25, 0.25],
+              "size" : 0.5,
+              "initialVelocity" : [13, 13],
+              "timeToLive" : 0.1
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.015,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/animations/cultpoof/cultpoof.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.2,
+        "layer" : "middle",
+        "position" : [0.0, 0.0]
+      }
+    }
+  ],
+
+  "scripts" : ["/scripts/projectiles/sinewaveprojectile.lua"],
+  "scriptDelta" : 1,
+
+  "wavePeriod" : 0.25,
+  "waveAmplitude" : 0.75,
+
+  "persistentAudio" : "/sfx/projectiles/raygun_wobble_loop.ogg"
+}

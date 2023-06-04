@@ -1,0 +1,47 @@
+{
+  "itemName" : "mystichammer",
+  "price" : 900,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "So mystic.",
+  "shortdescription" : "Mystichammer",
+  "tooltipKind" : "hammerunique",
+  "category" : "hammer",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon"],
+  "level" : 5,
+  "inventoryIcon" : "mystichammer.png",
+
+  "animation" : "hammer.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "mystichammer.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [0, 3.0]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 0.78,
+    "baseDps" : 13
+  },
+
+  "altAbilityType" : "elementalaura",
+  "altAbility" : { },
+
+  "critChance" : 3,
+  "critBonus" : 5,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "stunChance" : 6
+}

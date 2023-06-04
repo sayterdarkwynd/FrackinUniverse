@@ -1,0 +1,105 @@
+{
+  "objectName" : "labvendingmachine",
+  "colonyTags" : ["science","commerce"],
+  "rarity" : "Common",
+  "description" : "Ooh, what should I get?",
+  "shortdescription" : "Lab Vending Machine",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 200,
+  "lightColor" : [23, 33, 38],
+  "printable" : false,
+
+  "apexDescription" : "A vending machine. No banana-flavoured snacks, sadly.",
+  "avianDescription" : "Perfect to stave off hunger.",
+  "floranDescription" : "Clever machine gives Floran treatsss.",
+  "glitchDescription" : "Indecisive. I can't decide what to buy.",
+  "humanDescription" : "Oh boy, it's the kind of vending machine where you win every time!",
+  "hylotlDescription" : "A vending machine for sugary drinks. They will have to do.",
+  "novakidDescription" : "A vendin' machine for sugary type drinks.",
+
+  "interactAction" : "OpenMerchantInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/vendingmachine.config",
+    "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : " Lab Vending Machine",
+        "subtitle" : " Tasty Snacks"
+      }
+    },
+    "buyFactor" : 3,
+    "sellFactor" : 0.2,
+    "items" : [
+      { "item" : "coffee" },
+      { "item" : "soda" },
+      { "item" : "oculemonade" },
+      { "item" : "reefcola" },
+      { "item" : "bottledwater" },
+      { "item" : "thornjuice" },
+      { "item" : "avesmingojuice" },
+      { "item" : "chocolate" },
+      { "item" : "phaseshake" },
+      { "item" : "caramelsoggypaper" },
+      { "item" : "cherryjuice" },
+      { "item" : "frostburntmeat" }
+    ]
+  },
+
+  "inventoryIcon" : "icon.png",
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "labvendingmachine.png:<color>.<frame>", "fullbright" : true }, { "image" : "labvendingmachinelit.png:<color>.<frame>" } ],
+      "imagePosition" : [-8, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "labvendingmachine.png:<color>.<frame>", "fullbright" : true }, { "image" : "labvendingmachinelit.png:<color>.<frame>" } ],
+      "imagePosition" : [-8, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 60,
+
+  "soundEffect" : "/sfx/objects/fluorescent_light_loud.ogg",
+  "soundEffectRangeMultiplier" : 0.5,
+
+  "npcToy" : {
+    "influence" : [
+      "vendingmachineActivate",
+      "vendingmachineCollect",
+      "vendingmachineConsume",
+      "vendingmachineComplete"
+    ],
+    "defaultReactions" : {
+      "vendingmachineActivate" : [
+        [1.0, "pressbutton"]
+      ],
+      "vendingmachineCollect" : [
+        [1.0, "crouchcollect"]
+      ],
+      "vendingmachineConsume" : [
+        [1.0, "drink"]
+      ],
+      "vendingmachineComplete" : [
+        [1.0, "smile"],
+        [0.1, "vomit"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-0.5, 0.0],
+    "preciseStandPositionRight" : [2.0, 0.0],
+    "maxNpcs" : 1
+  }
+}
+

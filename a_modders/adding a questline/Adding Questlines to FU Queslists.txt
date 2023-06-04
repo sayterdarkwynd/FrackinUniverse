@@ -1,0 +1,185 @@
+
+
+		Introduction:
+Hello, and welcome to this short guide, on how to easily add your own questlines into the Frackin' Universe custom questline GUI!
+Note that this guide assumes that the user has very little knowledge about Starbound modding, and will hand hold you as much as it can.
+But it still assumes you at least know how to setup your own mod.
+Sorry in advance if that annoys the living crap out of you. :)
+
+
+		Setup:
+First thing you'll need to do, is get a code editor program such as Notepad++.
+Here is a link to make your life easier: https://notepad-plus-plus.org/
+(I know there are others out there, and you think [insert better program name here] is better, but NP++ is more than enough)
+
+You must also be able to view, and change file extension.
+Look up "How to see file extensions in [operating system]" on Google if you can't and don't know how to enable that.
+
+In your mod project, create the following directory: "\interface\scripted\fu_tutorialQuestList"
+Add two folders into that directory, one named "banners", and the other named "givers"
+
+
+		Questline vs. Subline:
+- Questline: Displayed in the questline selection menu, and is the big box that holds a list of sublines in it. 
+- Subline: Displayed inside the selected quesline, and is the medium box displaying a list of quests under itself.
+
+
+		Adding Images:
+Without images, it would be hard for the user to discern different questlines and sublines from one another without unnecessary clicking.
+This files comes with an example for both images required.
+Here is how you add those images:
+
+	Questlines:
+For the questline banner, you must create a new 164 x 60 image inside the "questline_images", with its name being the questline ID it represents. (So if a quesline is named "my_questline" the image file must be named "my_questline.png")
+This image will be actually split into two frames: one for when the questline is available, and one when its unavailable. (FU just makes the unavailable image a black and white version of the available one) 
+Here is here you do either some drawing, and take a screenshot and crop it to fit.
+
+Now you must add another file in the same folder, and give it the same name as the images file, but replace the ".png" with ".frames" (Following the previous example of "my_questline.png", it would be "my_questline.frames")
+Should your OS what to open the file with, choose any text editing program (such as the aforementioned Notepad++)
+Now copy this code segment into the file, and save it without touching anything:
+
+{
+	"frameGrid" : {
+		"size" : [164, 30],
+		"dimensions" : [1, 2],
+		"names" : [
+			[ "default" ],
+			[ "unavailable" ]
+		]
+	}
+}
+	
+	Sublines:
+For the subline image, you must create a new 164 x 16 image inside the "subline_images", with its name being the subline ID it represents. (So if a subline is named "my_subline" the image file must be named "my_subline.png")
+This image will be displayed as-is, and serves as an indicator for starting a new list, so you can decide how the separation between quests looks to give some extra visual filling.
+You can use the provided example and overlay an icon representing the general idea of the quests in this subline if you don't want to make your own splitter or are to lazy to.
+
+
+		Adding the Lines:
+
+And inside that folder create a new text file and rename it to "questData.config.patch", and copy this entire code segment into it, and follow the instructions written within:
+Note that you can copy and paste different segments multiple times based on needs. If you want to add two questlines, copy and edit the first segment twice.
+!!! IMPORTANT - MAKE SURE SEGMENTS HAVE A comma (,) AT ITS END IF ITS NOT THE FINAL SEGMENT !!!
+
+[
+	// Segment for adding a new questline:
+	{
+		"op" : "add",
+		"path" : "/lines/-",
+		"value" :
+		{
+			"id" : "###",						// Replace "###" with questline ID. Try making it unique by adding your mods acronym before the name (like in "fu_myquestline") so you don't accidentally add/override something that already exists.
+			"sublines" : [ "###", "###" ],		// Replace "###"s with subline IDs. Can have more than 2, but don't forget to add commas(,) between them.
+			"requirements" : [ "qwer" ],		// Replace "###"s with quest IDs which the player has to complete first before gaining access to this questline.
+			"moneyRange" : [ 10, 20 ],			// Replace numbers with the range of pixels the player should be awarded when they complete the questline. Must have minimum first, and maximum later. Set both values to the same number if you want a static value.
+			"rewards" : [ ["###", 1], ["###", 1], ["###", 1, {"@@@" : 2}]],	// Replace "###" with the IDs of items the player should recieve upon completing the questline, and replace the "1" with the amount of said item the player should recieve.
+																			// You can add multiple rewards by copying this segment inside the outer most brackets: ["###", 1]
+																			// You can also give the items custom parameters by adding a third value inside the inner brackets like in this example: ["fu_lootbox", 3, {"level" : 3}]
+			"secret" : false					// set to "true" or "false" (without the ") whether you want the questline to be hidden when unavailable or not. (true = hidden)
+		}
+	},
+	
+	// Segment for adding a new subline:
+	{
+		"op" : "add",
+		"path" : "/sublines/###",			// Replace "###" with subline ID
+		"value" : [ "###", "###" ]			// Replace "###"s with quest IDs. Can have more than 2, but don't forget to add commas(,) between them.
+	},
+	
+	// Segment for adding questline texts:
+	{
+		"op" : "add",
+		"path" : "/strings/questlines/###",	// Replace the "###" with the questline ID
+		"value" : {
+			"title" : "###",				// Replace with questline display title
+			"description" : "###"			// Replace with questline description
+		}
+	},
+	
+	// Segment for adding subline texts:
+	{
+		"op" : "add",
+		"path" : "/strings/sublines/###",	// Replace the "###" with the subline ID
+		"value" : "###"						// Replace with the sublines display name
+	}
+]
+
+Here is a full example featuring two questlines and three sublines:
+
+[
+	{
+		"op" : "add",
+		"path" : "/lines/-",
+		"value" :
+		{
+			"id" : "my_questline",						
+			"sublines" : [ "my_subline_1", "my_subline_2" ],
+			"requirements" : [ "required_quest_1", "required_quest_2" ],
+			"moneyRange" : [ 100, 200 ],
+			"rewards" : [ ["salvagebody", 5], ["salvagetier4", 3], ["fu_lootbox", 1, {"level" : 3}]],
+			"secret" : false
+		}
+	},
+	{
+		"op" : "add",
+		"path" : "/lines/-",
+		"value" :
+		{
+			"id" : "my_hidden_questline",						
+			"sublines" : [ "required_quest_3" ],
+			"requirements" : [ "create_clothingfabricator" ],
+			"moneyRange" : [ 500, 500 ],
+			"rewards" : [ ["essence", 500] ],
+			"secret" : true
+		}
+	},
+	{
+		"op" : "add",
+		"path" : "/sublines/my_subline_1",
+		"value" : [ "given_quest_1", "given_quest_2" ]
+	},
+	{
+		"op" : "add",
+		"path" : "/sublines/my_subline_2",
+		"value" : [ "given_quest_3" ]
+	},
+	{
+		"op" : "add",
+		"path" : "/sublines/my_subline_3",
+		"value" : [ "given_quest_4", "given_quest_5", "given_quest_6" ]
+	},
+	{
+		"op" : "add",
+		"path" : "/strings/questlines/my_questline",
+		"value" : {
+			"title" : "My Custom Questline",
+			"description" : "This is an example questline. Support ^green;custom colors^reset;!"
+		}
+	},
+	{
+		"op" : "add",
+		"path" : "/strings/questlines/my_hidden_questline",
+		"value" : {
+			"title" : "My Hidden Questline",
+			"description" : "This is an example questline. It will be hidden until you finish all of its required quests!"
+		}
+	},
+	{
+		"op" : "add",
+		"path" : "/strings/sublines/my_subline_1",
+		"value" : "Title"
+	},
+	{
+		"op" : "add",
+		"path" : "/strings/sublines/my_subline_2",
+		"value" : "Kevins Tasks"
+	},
+	{
+		"op" : "add",
+		"path" : "/strings/sublines/my_subline_3",
+		"value" : "George"
+	}
+]
+
+And thats it folks, you now know how to add your own questlines to the Frackin' Universe quest list.
+Thanks, and have fun!

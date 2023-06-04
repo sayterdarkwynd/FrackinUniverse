@@ -1,0 +1,50 @@
+{//ERM-native status: "akkimaribloodfrenzy", up to 1.25x power, speed and jump height after 5 kills within 10s
+	"stats" : [
+		{ "stat" : "maxFood", "effectiveMultiplier" : 2 },
+		{ "stat" : "physicalResistance", "amount" : 0.1 },
+		{ "stat" : "poisonResistance", "amount" : 0.3 },
+		{ "stat" : "shadowResistance", "amount" : -0.1 },
+		{ "stat" : "radioactiveResistance", "amount" : -0.2 }
+	],
+	"diet" : "entity",
+	"envEffects" : [
+		{
+			"biomes" : [ "bog", "desert", "garden", "forest" ],
+			"stats" : [
+				{ "stat" : "protection", "effectiveMultiplier" : 1.15 },
+				{ "stat" : "maxHealth", "effectiveMultiplier" : 1.15 }
+			]
+		}
+	],
+	"weaponEffects" : [
+		{
+			"weapons" : [ "broadsword" ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.1 },
+				{ "stat" : "protection", "effectiveMultiplier" : 1.1 }
+			]
+		},
+		{
+			"weapons" : [ "shortspear", "spear" ],
+			"stats" : [
+				{ "stat" : "grit", "amount" : 0.25 },
+				{ "stat" : "critChance", "amount" : 2 }
+			]
+		},
+		{
+			"weapons"  : [ "bow", "crossbow" ],
+			"stats" : [
+				{ "stat" : "critChance", "amount" : 2 },
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.15 }
+			]
+		}
+	],
+	"scripts" : [
+		{
+			"script" : "/scripts/fr_scripts/healthRegen.lua",
+			"args" : {
+				"healingRate" : 0.0001
+			}
+		}
+	]
+}

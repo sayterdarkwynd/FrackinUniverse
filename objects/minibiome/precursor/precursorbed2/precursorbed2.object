@@ -1,0 +1,54 @@
+{
+  "objectName" : "precursorbed2",
+  "colonyTags" : ["precursor", "bed"],
+  "rarity" : "legendary",
+  "description" : "Some imposing glowy bedding. I am impressed.",
+  "shortdescription" : "Precursor Captain's Bed",
+
+  "category" : "furniture",
+  "printable" : false,
+  "price" : 60,
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : true,
+  "sitOrientation" : "lay",
+  "sitAngle" : 90,
+  "sitCoverImage": "/objects/minibiome/precursor/precursorbed2/precursorbed2_cover.png",
+  "sitEmote" : "sleep",
+  "sitStatusEffects" : [
+    "bed3"
+  ],
+  "sitEffectEmitters" : [ "sleepbubbles" ],
+
+  "inventoryIcon" : "precursorbed2.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "precursorbed2.png:<color>"}, { "image" : "precursorbed2_lit.png:<color>", "fullbright" : true } ],
+      "flipImages" : true,
+      "direction" : "left",
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "sitPositions" : [ [0, 19], [1, 21] ],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "precursorbed2.png:<color>"}, { "image" : "precursorbed2_lit.png:<color>", "fullbright" : true } ],
+      "direction" : "right",
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "sitPositions" : [ [-23, 19], [-22, 21] ],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "learnBlueprintsOnPickup" : [ "precursorbed2" ]
+
+}

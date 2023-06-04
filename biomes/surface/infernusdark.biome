@@ -1,30 +1,38 @@
 {
   "name" : "infernusdark",
   "friendlyName" : "Infernus",
-  "statusEffects" : [ "ffextremeheat"  ],
-  "airless" : true,
+  "statusEffects" : [ "ffbiomeheat3", "biomeairless" ],
+
   "breathable" : false,
+
   "spawnProfile" : {
     "groups" : [
       {
         "select" : 3,
-        "pool" : [ 
-          [ 0.02, "magmagolem" ],     
-          [ 0.07, "fuashgolem" ],
-          [ 0.11, "crabcano" ],        
-          [ 0.09, "ignome" ],
-          [ 0.09, "pyromantle" ],     
-          [ 0.09, "smoglin" ],
-          [ 0.07, "scandroid" ],
-          [ 0.09, "peblit" ]
+        "pool" : [
+          [ 0.1, "magmagolem" ],
+          [ 0.1, "fuashgolem" ],
+          [ 0.1, "crabcano" ],
+          [ 0.1, "ignome" ],
+          [ 0.1, "pyromantle" ],
+          [ 0.1, "burntrotter" ],
+          [ 0.1, "smoglin" ],
+          [ 0.1, "firetop" ],
+          [ 0.1, "magmaslime" ],
+          [ 0.1, "volpin" ],
+          [ 0.1, "pyropod" ],
+          [ 0.1, "crisper" ],
+          [ 0.1, "firelit"],
+          [ 0.1, "infernusdroid"]
         ]
       },
       {
         "select" : 2,
         "pool" : [
-          [ 0.4, "flameroach" ],
+          [ 0.3, "flameroach" ],
           [ 0.3, "lavahopper" ],
-          [ 0.3, "fireygiant" ]
+          [ 0.3, "fireygiant" ],
+          [ 0.1, "bee_scoria" ]
         ]
       },
       {
@@ -51,7 +59,7 @@
             },
             "biomeheatImmunity" : {
               "baseValue" : 1.0
-            },            
+            },
             "ffextremeheatImmunity" : {
               "baseValue" : 1.0
             }
@@ -61,10 +69,13 @@
   },
 
   "hueShiftOptions" : [ 0 ],
-  
+
   "weather" : [
     [0, [
-      "/weather.config:infernus"
+      "/weather.config:infernus",
+      "/weather.config:infernusrainy",
+      "/weather.config:infernuswindy",
+      "/weather.config:infernusquake"
     ]]
   ],
 
@@ -164,11 +175,11 @@
       "nightLightColor" : [40, 17, 17]
     }
   ],
-  
-  
+
+
     "mainBlock" : "magmatile4",
     "subBlocks" : [ "magmatile3", "rock14", "andesite", "magmatile1" ],
-    "ores" : "ff_surfacevolcanicOres",
+    "ores" : "ff_surfaceinfernusOres",
     "parallax" : "/parallax/surface/infernus.parallax",
 
   "ambientNoises" : {
@@ -182,50 +193,40 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/MelodyofMisery.ogg","/music/darkambient2a.ogg", "/music/ambient_dark.ogg","/music/lava-exploration1.ogg", "/music/drosera.ogg", "/music/inviolate-loop.ogg", "/music/desert-exploration2.ogg", "/music/ultramarine.ogg", "/music/arctic-constellation1.ogg", "/music/body-electric-loop.ogg", "/music/mercury.ogg", "/music/Nomads.ogg", "/music/psyche.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/SomethingIntoDarkness.ogg","/music/darkambient2b.ogg","/music/lava-exploration2.ogg", "/music/crystal-exploration2.ogg", "/music/mira.ogg", "/music/tranquility-base.ogg", "/music/arctic-constellation1.ogg", "/music/Nomads.ogg", "/music/psyche.ogg", "/music/casiopeia.ogg", "/music/error-0xbfaf000.ogg", "/music/accretion-disc.ogg" ]
     }
   },
 
   "surfacePlaceables" : {
-    "grassMod" : [ "blackash" ],
+    "grassMod" : [ "ash", "blackash" ],
     "grassModDensity" : 0.9,
       "items" : [
       {
         "mode" : "floor",
         "priority" : 0.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundChests",
+        "distribution" : "/biomes/distributions.config:overgroundChests",
 
         "type" : "treasureBox",
-        "treasureBoxSets" : [ "basicChest" ]
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
       },
       {
         "mode" : "floor",
         "priority" : 0.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundChests",
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
         "type" : "treasureBox",
         "treasureBoxSets" : [ "weaponChest" ]
-      },
-
-      {
-        "mode" : "floor",
-        "priority" : 0.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundtechChests",
-
-        "type" : "treasureBox",
-        "treasureBoxSets" : [ "techChest" ]
       },
       {
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundChests",
+        "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
         "type" : "object",
         "objectSets" : [
@@ -239,12 +240,12 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "pool" : [ [0.05, "timeobelisk" ],[0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
             "parameters" : { }
           }
         ]
@@ -257,7 +258,7 @@
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "infernusChest" ]
-        },         
+        },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -265,7 +266,7 @@
           "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "canyonmini", "terrainfeatures", "rockclimb","rocktunnel",  "toxicmicrodungeons", "sandstone", "blockpile", "loops", "flats" ]
+          "microdungeons" : [  "randomencounterfire", "shroomencounterfire", "eyeencounterfire", "colourfulencounterfire", "boneencounterfire", "humanencounterfire", "glitchencounterfire", "apexencounterfire", "avianencounterfire", "floranencounterfire", "frozenvolcanicmini", "canyonmini", "terrainfeatures", "rockclimb","rocktunnel",  "toxicmicrodungeons", "sandstone", "blockpile", "loops", "flats" ]
         },
         {
           "mode" : "floor",
@@ -274,8 +275,17 @@
           "distribution" : "/biomes/distributions.config:randomEncounter",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "randomencounter", "avianencounter", "glitchencounter", "shroomencounter" ]
-        },       
+          "microdungeons" : [ "fu_dae_microdungeons", "bonesmicrodungeons", "foundrymicrodungeons", "randomencounter", "avianencounter", "glitchencounter", "shroomencounter" ]
+        },
+      {
+        "mode" : "floor",
+        "priority" : 1,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "volcanicmicrodungeons" ]
+      },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -302,16 +312,19 @@
             "priority" : 1.0,
             "variants" : 1,
             "distribution" : "/biomes/distributions.config:potsRare",
-  
+
             "type" : "object",
             "objectSets" : [
               {
-                "pool" : [ 
-                [0.35, "wildhellfireplantseed" ],
-                [0.35, "wildignuschiliseed" ],
-                [0.35, "wildoonfortaseed" ],
-                [0.35, "wildrockrootseed" ],
-                [0.35, "wildpetrifiedrootseed" ]
+                "pool" : [
+                [0.2, "wildhellfireplantseed" ],
+                [0.1, "wildignuschiliseed" ],
+                [0.15, "wildplasmangoseed" ],
+                [0.1, "wildoonfortaseed" ],
+                [0.1, "wildrockrootseed" ],
+                [0.1, "wildpetrifiedrootseed" ],
+              	[0.1, "phositeseed" ],
+              	[0.15, "thanatiteseed" ]
                 ],
                 "parameters" : { "startingStage" : 3 }
               }
@@ -321,140 +334,77 @@
             "mode" : "floor",
             "priority" : 1.0,
             "variants" : 1,
-            "distribution" : "/biomes/distributions.config:ffunCommon",
-  
+            "distribution" : "/biomes/distributions.config:denseLarge",
+
             "type" : "object",
             "objectSets" : [
               {
-                "pool" : [ 
-                [0.15, "volcanicrockseed4" ],
-                [0.15, "volcanicrock2seed" ],
-                [0.15, "volcanicrockseed5" ],
-                [0.15, "volcanicrock2seed3" ],
-                [0.15, "volcanicrockseed6" ],
-                [0.15, "volcanicrock2seed4" ],
-                [0.15, "volcanicrockseed7" ],
-                [0.15, "volcanicrock2seed5" ],
-                [0.15, "volcanicrockseed8" ],
-                [0.15, "volcanicrock2seed6" ] 
+                "pool" : [
+                [0.35, "volcanicrockseed" ],
+                [0.35, "volcanicrockseed2" ],
+                [0.35, "volcanicrockseed3" ],
+                [0.35, "volcanicrockseed4" ],
+                [0.35, "volcanicrockseed5" ],
+                [0.35, "volcanicrockseed6" ],
+                [0.35, "volcanicrockseed7" ],
+                [0.35, "volcanicrockseed8" ],
+                [0.35, "volcanicrock2seed" ],
+                [0.35, "volcanicrock2seed2" ],
+                [0.35, "volcanicrock2seed3" ],
+                [0.35, "volcanicrock2seed4" ],
+                [0.35, "volcanicrock2seed5" ],
+                [0.35, "volcanicrock2seed6" ]
                 ],
                 "parameters" : { }
               }
             ]
           },
-          
+
         {
           "mode" : "floor",
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
 
           "type" : "grass",
           "grasses" : [ "ashlion", "fireflower", "magmaflower", "magmaflower2", "magmaflower3", "magmaflower4", "magmaflower5" ]
-        },         
+        },
         {
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
 
           "type" : "bush",
           "bushes" : [
             {
               "name" : "moltenbones",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             },
             {
               "name" : "magmapitcher",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             },
             {
               "name" : "moltenrock",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             },
             {
               "name" : "lavabowl",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             }
           ]
-        },
-        {
-          "mode" : "ceiling",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "ceilingarchrock",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "ceilingmagmapods",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "ceilingwicked",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            },
-            {
-              "name" : "ceilingspiralrocks",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
-            }
-          ]
-        }     
+        }
       ]
     },
   "undergroundPlaceables" : {
-    "grassMod" : [ "ash" ],
+    "grassMod" : [ "ash", "blackash" ],
     "grassModDensity" : 0.6,
 
     "items" : [
-           {
-             "mode" : "ceiling",
-             "priority" : 1.0,
-             "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
-   
-             "type" : "object",
-             "objectSets" : [
-               {
-                 "pool" : [ 
-              [0.50, "ceilingspike1" ],
-              [0.50, "ceilingspike2" ],
-              [0.50, "ceilingspike3" ],
-              [0.50, "ceilingspike4" ]
-                 ],
-                 "parameters" : { "startingStage" : 3 }
-               }
-             ]
-           },
-           {
-             "mode" : "floor",
-             "priority" : 1.0,
-             "variants" : 1,
-             "distribution" : "/biomes/distributions.config:potsRare",
-   
-             "type" : "object",
-             "objectSets" : [
-               {
-                 "pool" : [ 
-              [0.50, "magmagroundspike1" ],
-              [0.50, "magmagroundspike2" ],
-              [0.50, "magmagroundspike3" ]
-                 ],
-                 "parameters" : { "startingStage" : 3 }
-               }
-             ]
-           },
       {
         "mode" : "floor",
         "priority" : 0.0,
@@ -462,13 +412,13 @@
         "distribution" : "/biomes/distributions.config:undergroundChests",
 
         "type" : "treasureBox",
-        "treasureBoxSets" : [ "basicChest" ]
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
       },
       {
         "mode" : "floor",
         "priority" : 0.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundChests",
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
         "type" : "treasureBox",
         "treasureBoxSets" : [ "weaponChest" ]
@@ -501,12 +451,12 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [
           {
-            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "pool" : [ [0.05, "timeobelisk" ],[0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
             "parameters" : { }
           }
         ]
@@ -515,16 +465,45 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "infernusChest" ]
-        },      
+        },
       {
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:rareClumpySmall",
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [
+            [0.35, "volcanicrockseed" ],
+            [0.35, "volcanicrockseed2" ],
+            [0.35, "volcanicrockseed3" ],
+            [0.35, "volcanicrockseed4" ],
+            [0.35, "volcanicrockseed5" ],
+            [0.35, "volcanicrockseed6" ],
+            [0.35, "volcanicrockseed7" ],
+            [0.35, "volcanicrockseed8" ],
+            [0.35, "volcanicrock2seed" ],
+            [0.35, "volcanicrock2seed2" ],
+            [0.35, "volcanicrock2seed3" ],
+            [0.35, "volcanicrock2seed4" ],
+            [0.35, "volcanicrock2seed5" ],
+            [0.35, "volcanicrock2seed6" ]
+            ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
 
         "type" : "grass",
         "grasses" : [ "magmaflower", "magmaflower2", "magmaflower3", "magmaflower4", "testflower8", "magmaflower5" ]

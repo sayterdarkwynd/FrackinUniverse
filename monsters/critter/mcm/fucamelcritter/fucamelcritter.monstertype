@@ -1,0 +1,98 @@
+{
+  "type" : "fucamelcritter",
+  "shortdescription" : "Two-Humped Camel",
+  "description" : "A large, long-necked creature with two fleshy humps on its back. It is domesticated to carry passengers and cargo.",
+
+  "categories" : [ "fucamelcritter" ],
+  "parts" : [ "body" ],
+
+  "animation" : "fucamelcritter.animation",
+  "reversed" : false,
+
+  "dropPools" : [
+    {
+      "default" : "empty",
+      "bow" : "huntingquadruped"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "walkingcritter",
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 0.80,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.875, 2.375], [1.375, 1.875], [1.375, -1.875], [0.875, -2.375], [-0.875, -2.375], [-1.375, -1.875], [-1.375, 1.875], [-0.875, 2.375] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 5,
+      "runSpeed" : 5,
+      "jumpSpeed" : 5
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "",
+"deathParticles" : "deathPoof",
+    "damageTeamType" : "passive",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.3,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 0,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 50
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "relocatable" : true,
+    "nametagColor" : [64, 200, 255]
+  }
+}

@@ -1,0 +1,58 @@
+{
+	"itemName": "effigiumspear",
+	"price": 1600,
+	"level": 5,
+	"maxStack": 1,
+	"rarity": "Rare",
+	"description": "Ghostly as a spirit.
+^cyan;Hunting weapon^reset;",
+	"shortdescription": "Phantasm Spear",
+	"tooltipKind": "sword2",
+	"category": "spear",
+	"twoHanded": true,
+	"itemTags": ["weapon","melee","spear","effigium", "upgradeableWeapon","shadow"],
+
+	"inventoryIcon": "effigiumspear.png",
+	//"collectablesOnPickup": { "fu_weaponspear": "effigiumspear" },
+	"animation": "/items/active/weapons/melee/spear/glowspear.animation",
+	"animationParts": {
+		"handle": "",
+		"blade": "effigiumspear.png",
+		"bladefullbright": "effigiumspearfullbright.png"
+	},
+	"animationCustom": {
+		"sounds": {
+			"fire": [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
+
+	"scripts": ["/items/active/weapons/melee/meleeweapon.lua"],
+
+	"elementalType": "shadow",
+
+	"aimOffset": -1.0,
+	"primaryAbilityType": "spearstab",
+	"primaryAbility": {
+		"scripts": [],
+
+		"fireTime": 0.92,
+		"baseDps": 9.92,
+		"damageConfig": {
+			"damageSourceKind": "shadowbow",
+			"statusEffects": [ "shadowgasfx" ],
+			"knockback": 10
+		}
+	},
+	"altAbilityType": "flurry", //regular flurry uses elemental damagesourcekind and statuseffects
+	"altAbility": {
+		"damageConfig": {
+			"damageSourceKind": "bow",
+			"statusEffects": [ "shadowgasfx" ]
+		}
+	},
+
+	"critChance": 3,
+	"critBonus": 5,
+
+	"builder": "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -4,29 +4,42 @@
   "inventoryIcon" : "laspistol.png",
     "maxStack" : 1,
     "rarity" : "common",
-    "description" : "A simple, reliable energy sidearm.",
+  "description" : "A common sidearm in the galaxy.
+^yellow;Reliable^reset;
+^yellow;Counts as 'Energy' for set bonuses^reset;",
     "shortdescription" : "Laser Pistol",
-  "level" : 3,
-  "category" : "uniqueWeapon",
-  "itemTags" : ["weapon","ranged","machinepistol"],
-  "tooltipKind" : "gun",
+  "level" : 2,
+  "category" : "machinePistol",
+  "itemTags" : ["weapon","ranged","machinepistol", "energy", "upgradeableWeapon"],
+  "tooltipKind" : "gun2",
   "twoHanded" : false,
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "laspistol.png",
+    "middlefullbright" : "laspistolfullbright.png",
     "barrel" : "",
-    "muzzleFlash" : ""
-  },      
-  "animationCustom" : {
-    "sounds" : { "fire" : [ "/sfx/weapons/energypew.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [80, 30, 12] } }  
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
   },
-  
-  "learnBlueprintsOnPickup" : [ "isn_terawattlaser" ],
-  
-  "baseOffset" : [1.0, 0.04],
-  "muzzleOffset" : [1.7, 0.325],
+
+  "animationCustom" : {
+    "lights" : { "muzzleFlash" : {"color" : [80, 30, 12] } },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/laserblast.ogg" ]
+    },
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.0, 0.125]
+		  }
+		}
+      }
+    }
+  },
+
+  "baseOffset" : [1.0, 0.125],
+  "muzzleOffset" : [1.0, 0.325],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -36,7 +49,7 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.16,
-    "baseDps" : 6,
+    "baseDps" : 7,
     "energyUsage" : 25,
     "fireType" : "auto",
     "inaccuracy" : 0.001,
@@ -56,8 +69,8 @@
       },
       "fire" : {
         "duration" : 0,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
         "twoHanded" : false,
 
         "allowRotate" : false,
@@ -65,8 +78,8 @@
       },
       "cooldown" : {
         "duration" : 0.0,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
         "twoHanded" : false,
 
         "allowRotate" : false,
@@ -75,5 +88,41 @@
     }
   },
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "critChance" : 2,
+  "critBonus" : 7,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters" : {
+    "description" : "Superior firepower. Sexy sheen. ^yellow;Reliable^reset;",
+    "shortdescription" : "Scatterlaser Pistol",
+    "inventoryIcon" : [ { "image" : "laspistol2.png" } ],
+    "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+    "animationParts" : {
+      "middle" : "laspistol2.png",
+      "middlefullbright" : "laspistol2fullbright.png"
+    },
+    "animationCustom" : {
+      "lights" : { "muzzleFlash" : {"color" : [80, 30, 12] } },
+      "sounds" : { "fire" : [ "/sfx/weapons/laserblast.ogg" ] },
+      "animatedParts" : {
+        "parts" : {
+          "middlefullbright" : {
+            "properties" : { "offset" : [1.0, 0.125] }
+          }
+        }
+      }
+    },
+
+      "primaryAbility" : {
+	    "fireTime" : 0.12,
+	    "baseDps" : 8,
+	    "energyUsage" : 27,
+	    "projectileParameters" : {
+	      "speed" : 75,
+	      "knockback" : 2
+	    }
+    }
+  }
+
 }

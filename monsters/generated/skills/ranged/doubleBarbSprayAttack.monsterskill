@@ -4,7 +4,7 @@
   "image" : "/monsters/generated/flying/skills/default.png",
 
   "config" : {
-    "hostileActions" : [ 
+    "hostileActions" : [
       {
         "name" : "action-fire",
         "cooldown" : 4,
@@ -14,12 +14,13 @@
           "maximumRange" : 20,
           "minimumRange" : 5,
           "windupEffect" : "castphysical",
-          
+
           "fireDelay" : 0.27,
           "projectileType" : "doublethorns",
           "projectileParameters" : {
+            "power" : 2
           },
-          "power" : 6,
+          "power" : 2,
           "aimAtTarget" : true,
 
           "projectileCount" : 6,
@@ -31,7 +32,7 @@
 
   "animationParameters" : {
     "sounds" : {
-      "fire" : [ ]
+      "fire" : [ "/sfx/projectiles/bonecrumble2.ogg" ]
     }
   }
 }

@@ -1,0 +1,69 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "stage" : {
+        "default" : "slimecentrifuge",
+        "states" : {
+          "slimecentrifuge" : {},
+          "slimecentrifuge2" : {
+            "frames" : 4,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "slimecentrifuge3" : {
+	      "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "loop"
+                      }
+        }
+      }
+    },
+
+    "parts" : {
+            "chassis" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 1
+        },
+        "partStates" : {
+          "stage" : {
+            "slimecentrifuge" : {
+              "properties" : {
+                "image" : "slimecentrifuge.png:<color>"
+              }
+            },
+
+            "slimecentrifuge2" : {
+              "properties" : {
+                "image" : "slimecentrifuge2.png:<color>.<frame>"
+              }
+            },
+
+            "slimecentrifuge3" : {
+              "properties" : {
+
+				"image" : "slimecentrifuge3.png:<color>.<frame>"
+              }
+            }
+
+          }
+        }
+      }
+    }
+  },
+
+  "sounds" : {
+    "fanfare" : ["/sfx/cinematics/mission_unlock_event.ogg"],
+    "fanfare2" : ["/sfx/cinematics/license_acquired_event.ogg"]
+  },
+
+
+  "particleEmitters" : {
+    "dust" : {
+      "emissionRate" : 0.0,
+      "burstCount"  : 10,
+      "offsetRegion" : [-2, -2, 2, 2],
+      "particles" : [{ "particle" : "dust2"}]
+    }
+  }
+}

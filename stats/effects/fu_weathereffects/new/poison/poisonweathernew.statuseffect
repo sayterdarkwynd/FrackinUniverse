@@ -1,0 +1,51 @@
+{
+  "name" : "poisonweathernew",
+
+  "effectConfig" : {
+    "resistanceTypes" : {
+      "poisonResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.2,
+    "immunityStats" : [
+      "poisonStatusImmunity",
+      "poisongasImmunity",
+      "gasImmunity"
+    ],
+
+    "healthDrain" : 2,
+    "hungerDrain" : 0,
+    "energyDrain" : 0,
+    "speedPenalty" : 0.7,
+    "jumpPenalty" : 0.7,
+
+    "debuffRate" : 5,
+    "debuffStartDelay" : 35,
+    "debuffs" : {
+      "powerMultiplier" : {
+        "type" : "absolute",
+        "amount" : -0.04,
+        "cap" : 0.05
+      }
+    },
+
+    "modifiers" : {
+      "windy" : 1.2
+    },
+
+    "messages" : {
+      "intro" : "ffbiomepoison",
+      "windy" : "ffbiomepoisonwind"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/poison/poisonweathernew.statuseffect"
+  },
+  "defaultDuration" : 20,
+
+  "scripts" : [
+    "poisonweathernew.lua"
+  ],
+
+  "animationConfig" : "poisonweathernew.animation",
+  "label" : "Mild Poison",
+  "icon" : "/interface/statuses/poison1.png"
+}

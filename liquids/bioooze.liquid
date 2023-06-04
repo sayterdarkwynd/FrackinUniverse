@@ -2,53 +2,48 @@
   "name" : "bio_ooze",
   "liquidId" : 41,
   "description" : "A particularly potent toxic sludge loaded with parasites and ickiness.",
-	"tickDelta" : 3,
-	"color" : [0, 200, 0, 225],
-	"radiantLight" : [0, 125, 0],
-        "statusEffects" : [ "swimming", "biooozepoison" ],
-        "itemDrop" : "liquidbioooze",
-        
-        "interactions" : [
-          {
-            "liquid" : 1,
-            "materialResult" : "slime"
-          },
-          {
-            "liquid" : 3,
-            "materialResult" : "slime"
-          },
-          {
-            "liquid" : 6,
-            "liquidResult" : 41
-          },
-          {
-            "liquid" : 8,
-            "liquidResult" : 0
-          },            
-          {
-          //soup
-            "liquid" : 43,
-            "liquidResult" : 41
-          },           
-          {
-          //acid
-            "liquid" : 46,
-            "materialResult" : "wastestone"
-          }, 
-          {
-          //irradium
-          
-            "liquid" : 47,
-            "liquidResult" : 41
-          },   
-          {
-          //mercury
-            "liquid" : 48,
-            "liquidResult" : 44
-          }
-        ],
-        
-        "texture" : "/liquids/bio_oozetex.png",
-        "bottomLightMix" : [70, 255, 0],
-        "textureMovementFactor" : 2.6   
+  "tickDelta" : 3,
+  "color" : [147, 255, 51, 225],
+  "radiantLight" : [0, 125, 0],
+  "statusEffects" : [ "swimming", "biooozepoison" ],
+  "itemDrop" : "liquidbioooze",
+
+  "interactions" : [
+    {
+      "liquid" : 1,
+      "materialResult" : "slime"
+    },
+    {
+      "liquid" : 3,
+      "materialResult" : "slime"
+    },
+    {
+      "liquid" : 8,
+      "liquidResult" : 0
+    },
+    {
+      //acid
+      "liquid" : 46,
+      "materialResult" : "wastestone"
+    },
+    {
+      //elder
+      "liquid" : 45,
+      "materialResult" : "corruptslime"
+    },
+    {
+      //mercury
+      "liquid" : 48,
+      "liquidResult" : 44
+    },
+    {
+      //gravrain
+      "liquid" : 51,
+      "liquidResult" : 51
+    }
+  ],
+
+  "texture" : "/liquids/bio_oozetex.png",
+  "bottomLightMix" : [147, 255, 51],
+  "textureMovementFactor" : 2.6
 }

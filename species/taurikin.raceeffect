@@ -1,0 +1,68 @@
+{
+	"stats":[
+		{ "stat":"maxEnergy", "effectiveMultiplier":1.15 },
+		{ "stat": "maxFood", "effectiveMultiplier": 1.20 },
+		{ "stat": "fallDamageMultiplier", "effectiveMultiplier": 0.9 },
+		{ "stat" : "protection", "effectiveMultiplier" : 0.9 },
+		{ "stat" : "fumudslowImmunity", "amount" : 1 },
+		{ "stat" : "jungleslowImmunity", "amount" : 1 },
+		{ "stat" : "snowslowImmunity", "amount" : 1 },
+		{ "stat" : "slushslowImmunity", "amount" : 1 },
+		{ "stat" : "fuclayslowImmunity", "amount" : 1 },
+		{ "stat" : "foodDelta", "baseMultiplier" : 1.25 }
+	],
+	"diet" : "herbivore",
+	"controlModififiers" : {
+		"speedModifier" : 1.3,
+		"airJumpModifier" : 1.15
+	},
+	"envEffects": [
+		{
+			"biomes" : [ "thickjungle", "forest", "jungle", "bog", "arboreal", "arboreal2" ],
+			"stats" : [
+				{ "stat" : "maxHealth", "effectiveMultiplier" : 1.1 }
+			]
+		},
+		{
+			"biomes" : [ "garden", "tundra"],
+			"controlModifiers" : {
+				"speedModifier" : 1.4
+			}
+		},
+		{
+			"biomes" : [ "snow", "snowdark", "tundra", "arctic", "arcticdark", "nitrogensea", "icemoon", "frozenvolcanic", "icewaste", "icewastedark" ],
+			"stats" : [
+				{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 0.9 }
+			]
+		}
+	],
+	"weaponEffects": [
+		{
+			"weapons" : [ "spear", "shortspear" ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier": 1.15 }]
+		},
+		{
+			"weapons": [ "bow" ],
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.02 },
+				{ "stat" : "critChance", "amount" : 5 },
+				{ "stat" : "critDamage", "amount" : 0.02}
+			]
+		},
+		{
+			"weapons": [ "wand", "staff" ],
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 0.9 },
+				{ "stat": "energyRegenPercentageRate", "baseMultiplier": 0.95 }
+			]
+		},
+		{
+			"weapons" : [ "sniperrifle" ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 0.85 },
+				{ "stat" : "critChance", "amount" : -1 }
+			]
+		}
+	]
+}

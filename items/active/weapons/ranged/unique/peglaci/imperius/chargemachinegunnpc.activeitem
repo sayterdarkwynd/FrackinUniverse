@@ -1,0 +1,89 @@
+{
+  "itemName" : "fuaegisaltminigunnpc",
+  "price" : 160,
+  "inventoryIcon" : "fuaegisaltminigun.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "A storm of aegisalt shards rend armor with ease and reflect off walls.",
+  "shortdescription" : "Imperius Minigun",
+  "category" : "assaultRifle",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Vulcan",
+  "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "fuaegisaltminigun.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/marauder7.wav","/sfx/weapons/marauder9.wav" ]
+    }
+  },
+
+  "baseOffset" : [0.5, -0.72],
+  "muzzleOffset" : [1, 0.125],
+
+  "scripts" : [
+    "/items/active/scripts/modifiablegun.lua",
+    "/items/active/scripts/windupinaccurateweapon.lua",
+    "/items/active/scripts/heavyweapon.lua"
+  ],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.25,
+    "baseDps" : 5,
+    "energyUsage" : 33,
+    "inaccuracy" : 0.016,
+
+    "projectileCount" : 2,
+    "fireType" : "auto",
+
+    "projectileType" : "fuaegisaltminigunshot",
+    "projectileParameters" : {
+      "speed" : 50,
+      "knockback" : 4
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+  "critChance" : 1,
+  "critBonus" : 2,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

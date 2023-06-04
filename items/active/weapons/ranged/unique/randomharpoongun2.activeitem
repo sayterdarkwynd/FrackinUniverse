@@ -1,0 +1,91 @@
+{
+  "itemName" : "randomharpoongun2",
+  "price" : 260,
+  "inventoryIcon" : "randomharpoongun2.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Impale your enemies, rather than just killing them.
+^yellow;Inflicts bleeding^reset;
+^cyan;Hunting weapon.^reset;",
+  "shortdescription" : "Beth",
+  "category" : "sniperRifle",
+  "level" : 4,
+  "tooltipKind" : "gununique",
+  "weaponType" : "Speargun",
+  "itemTags" : ["weapon","ranged","sniperrifle", "upgradeableWeapon" ],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "randomharpoongun2.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/blankmuzzle.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/harpoongun.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.5, 0.32],
+  "muzzleOffset" : [1.645, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.5,
+    "baseDps" : 9.0,
+    "energyUsage" : 30,
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "harpoon3",
+    "projectileParameters" : { },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 5,
+  "critBonus" : 5,
+  "isSniper" : 1,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300,
+
+  "altAbilityType" : "superharpoon",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

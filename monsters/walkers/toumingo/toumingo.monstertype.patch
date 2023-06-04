@@ -1,0 +1,133 @@
+[
+  {
+    "op": "add",
+    "path": "/dropPools/0/firebow",
+    "value": "toumingoHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/icebow",
+    "value": "toumingoHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/poisonbow",
+    "value": "toumingoHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/electricbow",
+    "value": "toumingoHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/radioactivebow",
+    "value": "toumingoHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/cosmicbow",
+    "value": "toumingoHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/shadowbow",
+    "value": "toumingoHunting"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-leap",
+        "cooldown": 4,
+        "parameters": {
+          "minimumRange": 2,
+          "maximumRange": 10,
+          "windupTime": 0.5,
+          "windupState": "windup",
+          "leapVelocity": 25,
+          "collisionCheck": true,
+          "highArc": false,
+          "leapState": "leap",
+          "fallState": "",
+          "winddownTime": 1.8,
+          "winddownState": "winddown"
+        }
+      },
+      {
+        "name": "action-leap",
+        "cooldown": 4.5,
+        "parameters": {
+          "minimumRange": 2,
+          "maximumRange": 20,
+          "windupTime": 0.5,
+          "windupState": "windup",
+          "leapVelocity": 45,
+          "collisionCheck": true,
+          "highArc": false,
+          "leapState": "leap",
+          "fallState": "",
+          "winddownTime": 1.8,
+          "winddownState": "winddown"
+        }
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/cooldown",
+    "value": 1
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/parameters/maximumRange",
+    "value": 10
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/hostileActions/-",
+    "value": {
+      "name": "action-leap",
+      "cooldown": 2,
+      "parameters": {
+        "minimumRange": 2,
+        "maximumRange": 20,
+        "windupTime": 0.5,
+        "windupState": "windup",
+        "leapVelocity": 45,
+        "collisionCheck": true,
+        "highArc": false,
+        "leapState": "leap",
+        "fallState": "",
+        "winddownTime": 1.8,
+        "winddownState": "winddown"
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/movementSettings/walkSpeed",
+    "value": 2
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/movementSettings/runSpeed",
+    "value": 5
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/colors",
+    "value": "pandorasboxvibrantfull"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 65
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/physicalResistance/baseValue",
+    "value": 0.5
+  }
+]

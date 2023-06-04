@@ -1,0 +1,46 @@
+{
+	"objectName" : "network_dropper",
+	"colonyTags" : ["wired"],
+	"printable" : false,
+	"rarity" : "Common",
+	"description" : "Drops Items into the world.
+^blue;Input^white;1^blue;: ^white;On/Off Switch^reset;",
+	"shortdescription" : "Item Dropper",
+	"objectType" : "container",
+	"tooltipKind" : "container",
+	"race" : "generic",
+
+	"category" : "wire",
+	"price" : 15,
+
+	"inventoryIcon" : "kheAA_spouticon.png",
+	"orientations" : [
+		{
+			"image" : "kheAA_spout.png:<color>.off",
+			"imagePosition" : [0, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ]
+		}
+	],
+
+	"scripts" : [ "/objects/kheAA/kheAA_spout/kheAA_dropper.lua"],
+	"scriptDelta" : 1,
+
+	"animation" : "/objects/kheAA/kheAA_spout/kheAA_spout.animation",
+
+	"animationParts" : {
+		"spout" : "kheAA_spout.png"
+	},
+	"animationPosition" : [0, 0],
+	"openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+	"closeSounds" : [ "/sfx/objects/woodenbox_close.ogg" ],
+	"slotCount" : 1,
+	"uiConfig" : "/objects/kheAA/kheAA_spout/kheAA_spout.config",
+	"frameCooldown" : 5,
+	"autoCloseCooldown" : 3600,
+	"kheAA_logicNode":0,
+	"kheAA_inLiquidNode":1,
+
+	"inputNodes" : [ [-1, 0], [1, 0] ]
+}

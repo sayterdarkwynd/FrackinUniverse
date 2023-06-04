@@ -1,0 +1,46 @@
+{
+	"stats": [
+		// bases
+		{ "stat": "maxHealth", "effectiveMultiplier": 1.05 },
+		{ "stat": "maxEnergy", "effectiveMultiplier": 0.8 },
+		{ "stat": "energyRegenPercentageRate", "baseMultiplier": 1.25 },
+		{ "stat": "powerMultiplier", "effectiveMultiplier": 1.1 },
+		{ "stat": "fuCharisma", "baseMultiplier": 0.9 },
+		{ "stat": "fallDamageMultiplier", "effectiveMultiplier": 0.8 },
+		{ "stat": "foodDelta", "baseMultiplier": 1.5 },
+		// resists
+		{ "stat": "shadowResistance", "amount": 0.25 },
+		{ "stat": "poisonResistance", "amount": 0.2 },
+		{ "stat": "radiationResistance", "amount": 0.05 },
+		{ "stat": "cosmicResistance", "amount": -0.2 },
+		{ "stat": "fireResistance", "amount": -0.15 },
+		{ "stat": "iceResistance", "amount": -0.15 },
+		// immunities
+		{ "stat": "shadowImmunity", "amount": 1 },
+		{ "stat": "darknessImmunity", "amount": 1 },
+		// masteries
+		{ "stat": "livingweaponMastery", "amount": 0.15 },
+		{ "stat": "wandMastery", "amount": 0.1 }
+	],
+	"diet" : "raw_omnivore",
+	"controlModifiers": { "speedModifier": 0.95, "airJumpModifier": 0.95 },
+	"envEffects": [
+		{
+			"biomes":[ "midnight", "penumbra", "lightless", "tidewaterfloor", "tidewater", "sulphuricdark", "icewastedark", "atropusdark", "moon_shadow" ],
+			"stats": [
+						{ "stat": "powerMultiplier", "effectiveMultiplier": 1.1 },
+						{ "stat": "energyRegenBlockTime", "baseMultiplier": 0.9 },
+						{ "stat": "foodDelta", "baseMultiplier": 0.9 }
+					]
+		},
+		{
+			"biomes":[ "arboreal2","scorchedcity", "desert", "desertwastes", "magma", "volcanic", "infernus", "snow", "snowdark", "tundra", "arctic", "nitrogensea", "icemoon", "frozenvolcanic", "icewaste" ],
+			"stats": [
+					{ "stat": "maxHealth", "effectiveMultiplier": 0.95 },
+					{ "stat": "energyRegenBlockTime", "baseMultiplier": 1.11 }
+			]
+		}
+	],
+	"weaponEffects":
+	[]
+}

@@ -1,0 +1,144 @@
+{
+  "itemName" : "aetheriumrocketlauncher",
+  "price" : 1100,
+  "inventoryIcon" : "aetheriumrocketlauncher.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Shatteringly powerful homing missile swarm.",
+  "shortdescription" : "Aetherium Rocketlauncher",
+  "level" : 7,
+  "tooltipKind" : "gun2aetherium",
+  "category" : "rocketLauncher",
+  "itemTags" : ["weapon","ranged","rocketlauncher","upgradeableWeapon", "upgradeableWeapon","aetherium","cosmic","explosive"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "aetheriumrocketlauncher.png",
+    "middlefullbright" : "aetheriumrocketlauncherfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastlightblue.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+          "properties" : {
+            "centered" : true,
+            "image" : "<partImage><paletteSwaps>",
+            "offset" : [1.30, 0.785],
+            "transformationGroups" : ["weapon"],
+            "fullbright" : true,
+            "zLevel" : 1
+          }
+        }
+      }
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/gun/rocket2.ogg" ]
+    }
+  },
+
+
+  "baseOffset" : [1.30, 0.785],
+  "muzzleOffset" : [1.5, 0.15],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "aether",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 2,
+    "baseDps" : 5.5,
+    "energyUsage" : 60,
+
+    "projectileCount" : 6,
+    "inaccuracy" : 0.1,
+    "fireType" : "auto",
+
+    "projectileType" : "aethermissile",
+    "projectileParameters" : {
+      "speed" : 40,
+      "knockback" : 8
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.25,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "explosiveshot",
+  "altAbility" : {
+    "name" : "Blocker Blast",
+    "projectileParameters" : {
+      "actionOnReap" : [
+        {
+          "action" : "sound",
+          "options" : [
+            "/sfx/melee/staff_aura_activate.ogg"
+          ]
+        },
+        {
+          "action" : "projectile",
+          "type" : "pushzone",
+          "config" : { "timeToLive": 4}
+        },
+        {
+          "action" : "projectile",
+          "type" : "pushzone",
+          "config" : { "timeToLive": 4}
+        },
+        {
+          "action" : "projectile",
+          "type" : "impactgrenade",
+          "inheritDamageFactor" : 0.5
+        }
+      ],
+      "statusEffects" : [ "stun" ]
+
+
+    }
+  },
+
+  "critChance" : 4,
+  "critBonus" : 2,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,67 @@
+{
+  "objectName" : "fu_crewbed",
+  "colonyTags" : ["misc", "bed"],
+  "rarity" : "Legendary",
+  "description" : "These cosy beds can stack on top of each other. ^yellow;Crew +1^reset;. Counts as a deed. ^red;BYOS Only^reset;",
+  "shortdescription" : "Crew Bed",
+  "race" : "generic",
+  "category" : "furniture",
+  "printable" : false,
+  "lightColor" : [20, 29, 33],
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : true,
+
+  "sitOrientation" : "lay",
+  "sitAngle" : 90,
+  "sitCoverImage" : "/objects/mission/lunarbasebunk/lunarbasebunkcover.png",
+  "sitEmote" : "sleep",
+  "sitStatusEffects" : [
+    "bed1"
+  ],
+  "sitEffectEmitters" : [ "sleepbubbles" ],
+
+  "inventoryIcon" : "fu_crewbedicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fu_crewbed.png:<color>", "fullbright" : true }, { "image" : "fu_crewbedlit.png:<color>" } ],
+      "flipImages" : true,
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "lightPosition" : [-3, 1],
+
+      "sitPosition" : [-2, 14.3],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "left",
+      "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "fu_crewbed.png:<color>", "fullbright" : true }, { "image" : "fu_crewbedlit.png:<color>"} ],
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "lightPosition" : [3, 1],
+
+      "sitPosition" : [-14, 14.3],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "collision" : "platform"
+    }
+
+  ],
+
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua" ],
+  "scriptDelta" : 60,
+  "stats" : {
+    "crewSize" : 1
+  },
+  "byosOnly" : true,
+  "isDeed" : true
+}

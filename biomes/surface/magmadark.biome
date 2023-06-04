@@ -2,7 +2,7 @@
   "name" : "magmadark",
   "friendlyName" : "Magma",
 
-  "statusEffects" : [ "biomeheat" ],
+  "statusEffects" : [ "ffbiomeheat3" ],
 
   "spawnProfile" : {
     "groups" : [
@@ -16,7 +16,13 @@
           [ 0.1111, "pyromantle" ],
           [ 0.1111, "smoglin" ],
           [ 0.1111, "scandroid" ],
-          [ 0.1111, "peblit" ]
+          [ 0.1111, "peblit" ],
+          [ 0.1, "crisper" ],
+          [ 0.1, "voltip" ],
+          [ 0.1, "pyropod" ],
+          [ 0.1, "firelit"],
+          [ 0.1, "pandorasboxnocttop" ],
+          [ 0.1, "pandorasboxadultnocttop" ]
         ]
       },
       {
@@ -30,11 +36,11 @@
       {
         "select" : 1,
         "pool" : "generatedGroundAggroDay"
-      }, 
+      },
       {
         "select" : 3,
         "pool" : "nightTerrors"
-      },      
+      },
       {
         "select" : 2,
         "pool" : "generatedGround"
@@ -82,14 +88,14 @@
       // light reddish
       "mainColor" : [55, 0, 0],
 
-      "morningColors" : [ [255, 224, 129], [252, 230, 164] ],
-      "dayColors" : [ [255, 152, 107], [255, 183, 152] ],
-      "eveningColors" : [ [254, 121, 69], [254, 165, 129] ],
-      "nightColors" : [ [70, 20, 0, 60], [70, 20, 0, 160] ],
+      "morningColors" : [ [155, 144, 55], [155, 152, 90] ],
+      "dayColors" : [ [155, 75, 107], [122, 90, 98] ],
+      "eveningColors" : [ [155, 77, 40], [144, 90, 69] ],
+      "nightColors" : [ [70, 20, 0, 20], [40, 20, 0, 90] ],
 
-      "morningLightColor" : [202, 177, 100],
-      "dayLightColor" : [202, 138, 100],
-      "eveningLightColor" : [202, 100, 100],
+      "morningLightColor" : [122, 77, 77],
+      "dayLightColor" : [155, 55, 55],
+      "eveningLightColor" : [125, 50, 50],
       "nightLightColor" : [70, 20, 0]
     },
     {
@@ -125,14 +131,132 @@
       "mainColor" : [90, 0, 0],
 
       "morningColors" : [ [230, 129, 204], [230, 164, 210] ],
-      "dayColors" : [ [230, 107, 132], [230, 152, 163] ],
+      "dayColors" : [ [111, 107, 132], [230, 152, 163] ],
       "eveningColors" : [ [230, 69, 101], [230, 129, 145] ],
       "nightColors" : [ [70, 20, 0, 60], [70, 20, 0, 160] ],
 
-      "morningLightColor" : [240, 100, 202],
-      "dayLightColor" : [240, 100, 202],
-      "eveningLightColor" : [240, 100, 202],
-      "nightLightColor" : [70, 20, 0]
+      "morningLightColor" : [40, 20, 10],
+      "dayLightColor" : [60, 40, 30],
+      "eveningLightColor" : [50, 40, 32],
+      "nightLightColor" : [30, 10, 0]
+    },
+    {
+      "mainColor" : [60, 0, 0],
+
+      "morningColors" : [ [30, 0, 0], [10, 0, 0] ],
+      "dayColors" : [ [60, 0, 0], [20, 0, 0] ],
+      "eveningColors" : [ [30, 0, 0], [10, 0, 0] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+      "morningLightColor" : [20, 8, 8],
+      "dayLightColor" : [40, 17, 17],
+      "eveningLightColor" : [20, 8, 8],
+      "nightLightColor" : [0, 0, 0]
+    },
+    {
+      "mainColor" : [60, 0, 0],
+
+      "morningColors" : [ [30, 0, 0], [10, 0, 0] ],
+      "dayColors" : [ [60, 0, 0], [20, 0, 0] ],
+      "eveningColors" : [ [30, 0, 0], [10, 0, 0] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+
+      "morningLightColor" : [28, 8, 8],
+      "dayLightColor" : [56, 17, 17],
+      "eveningLightColor" : [28, 8, 8],
+      "nightLightColor" : [0, 0, 0]
+    },
+    {
+      "mainColor" : [40, 0, 60],
+
+      "morningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "dayColors" : [ [40, 0, 60], [10, 0, 20] ],
+      "eveningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+      "morningLightColor" : [17, 19, 56],
+      "dayLightColor" : [17, 19, 56],
+      "eveningLightColor" : [8, 9, 28],
+      "nightLightColor" : [0, 0, 0]
+    },
+    {
+      "mainColor" : [40, 0, 60],
+
+      "morningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "dayColors" : [ [40, 0, 60], [10, 0, 20] ],
+      "eveningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+      "morningLightColor" : [8, 9, 28],
+      "dayLightColor" : [17, 19, 56],
+      "eveningLightColor" : [8, 9, 28],
+      "nightLightColor" : [0, 0, 0]
+    },
+    {
+      "mainColor" : [40, 0, 60],
+
+      "morningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "dayColors" : [ [40, 0, 60], [10, 0, 20] ],
+      "eveningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+      "morningLightColor" : [13, 13, 15],
+      "dayLightColor" : [26, 26, 31],
+      "eveningLightColor" : [13, 13, 15],
+      "nightLightColor" : [0, 0, 0]
+    },
+    {
+      "mainColor" : [40, 0, 60],
+
+      "morningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "dayColors" : [ [40, 0, 60], [10, 0, 20] ],
+      "eveningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+      "morningLightColor" : [13, 13, 15],
+      "dayLightColor" : [26, 26, 31],
+      "eveningLightColor" : [13, 13, 15],
+      "nightLightColor" : [0, 0, 0]
+    },
+    {
+      "mainColor" : [40, 0, 60],
+
+      "morningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "dayColors" : [ [40, 0, 60], [10, 0, 20] ],
+      "eveningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+      "morningLightColor" : [14, 13, 15],
+      "dayLightColor" : [29, 26, 31],
+      "eveningLightColor" : [14, 13, 15],
+      "nightLightColor" : [0, 0, 0]
+    },
+    {
+      "mainColor" : [40, 0, 60],
+
+      "morningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "dayColors" : [ [40, 0, 60], [10, 0, 20] ],
+      "eveningColors" : [ [20, 0, 30], [5, 0, 10] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+      "morningLightColor" : [14, 7, 7],
+      "dayLightColor" : [28, 14, 14],
+      "eveningLightColor" : [14, 7, 7],
+      "nightLightColor" : [0, 0, 0]
+    },
+    {
+      "mainColor" : [0, 40, 60],
+
+      "morningColors" : [ [0, 20, 30], [0, 5, 10] ],
+      "dayColors" : [ [0, 40, 60], [0, 10, 20] ],
+      "eveningColors" : [ [0, 20, 30], [0, 5, 10] ],
+      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+      "morningLightColor" : [12, 14, 12],
+      "dayLightColor" : [24, 28, 24],
+      "eveningLightColor" : [12, 14, 12],
+      "nightLightColor" : [0, 0, 0]
     }
   ],
 
@@ -153,10 +277,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/crystal-exploration1.ogg", "/music/arctic-constellation1.ogg", "/music/drosera.ogg", "/music/arctic-exploration1.ogg", "/music/arctic-exploration2.ogg", "/music/mercury.ogg", "/music/nomads.ogg", "/music/psyche.ogg", "/music/large-magellanic-cloud.ogg", "/music/accretion-disc.ogg" ]
+      "tracks" : [ "/music/Temporis.ogg","/music/jupiter.ogg", "/music/crystal-exploration1.ogg", "/music/arctic-constellation1.ogg", "/music/drosera.ogg", "/music/arctic-exploration1.ogg", "/music/arctic-exploration2.ogg", "/music/mercury.ogg", "/music/Nomads.ogg", "/music/psyche.ogg", "/music/large-magellanic-cloud.ogg", "/music/accretion-disc.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/lava-exploration2.ogg", "/music/crystal-exploration2.ogg","/music/mira.ogg", "/music/tranquility-base.ogg", "/music/arctic-constellation2.ogg", "/music/arctic-exploration2.ogg","/music/nomads.ogg", "/music/psyche.ogg", "/music/error-0xbfaf000.ogg", "/music/large-magellanic-cloud.ogg", "/music/accretion-disc.ogg" ]
+      "tracks" : [ "/music/lava-exploration2.ogg", "/music/crystal-exploration2.ogg","/music/mira.ogg", "/music/tranquility-base.ogg", "/music/arctic-constellation2.ogg", "/music/arctic-exploration2.ogg","/music/Nomads.ogg", "/music/psyche.ogg", "/music/error-0xbfaf000.ogg", "/music/large-magellanic-cloud.ogg", "/music/accretion-disc.ogg" ]
     }
   },
 
@@ -172,7 +296,7 @@
         "distribution" : "/biomes/distributions.config:overgroundChests",
 
         "type" : "treasureBox",
-        "treasureBoxSets" : [ "basicChest" ]
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
       },
       {
         "mode" : "floor",
@@ -201,7 +325,7 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [
@@ -220,6 +344,15 @@
         "type" : "microdungeon",
         "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
       },
+{
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "randomencounterfire", "shroomencounterfire", "eyeencounterfire", "colourfulencounterfire", "boneencounterfire", "humanencounterfire", "glitchencounterfire", "apexencounterfire", "avianencounterfire", "floranencounterfire", "fulabs", "fubandits", "newhumanmicro", "newavianmicro","furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter" ]
+  },
       {
         "mode" : "floor",
         "priority" : 3.0,
@@ -228,6 +361,15 @@
 
         "type" : "grass",
         "grasses" : [ "magmaflower", "magmaflower2", "magmaflower3", "magmaflower4", "testflower8", "magmaflower5" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "obsidianpebbles" ]
       },
       {
         "mode" : "floor",
@@ -264,6 +406,21 @@
       },
       {
         "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "moltenbones",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
         "distribution" : "/biomes/distributions.config:rareClumpyLarge",
@@ -271,10 +428,37 @@
         "type" : "tree",
         "treeFoliageHueShiftMax" : 180,
         "treeStemHueShiftMax" : 15,
-        "treeStemList" : [ "grumpy", "ashy", "coal", "crispy", "lava", "magma" ],
-        "treeFoliageList" : [ "grey", "red", "fluff" ]
+        "treeStemList" : [ "ashy", "coal", "magma" ],
+        "treeFoliageList" : [ "" ]
       },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
 
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [
+            [0.35, "volcanicrockseed" ],
+            [0.35, "volcanicrockseed2" ],
+            [0.35, "volcanicrockseed3" ],
+            [0.35, "volcanicrockseed4" ],
+            [0.35, "volcanicrockseed5" ],
+            [0.35, "volcanicrockseed6" ],
+            [0.35, "volcanicrockseed7" ],
+            [0.35, "volcanicrockseed8" ],
+            [0.35, "volcanicrock2seed" ],
+            [0.35, "volcanicrock2seed2" ],
+            [0.35, "volcanicrock2seed3" ],
+            [0.35, "volcanicrock2seed4" ],
+            [0.35, "volcanicrock2seed5" ],
+            [0.35, "volcanicrock2seed6" ]
+            ]
+          }
+        ]
+      },
       {
         "mode" : "floor",
         "priority" : 0.0,
@@ -299,6 +483,15 @@
     "grassModDensity" : 0.6,
 
     "items" : [
+  {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
+  },
       {
         "mode" : "floor",
         "priority" : 0.0,
@@ -345,7 +538,7 @@
         "mode" : "floor",
         "priority" : 1.0,
         "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundCapsules",
+        "distribution" : "/biomes/distributions.config:potsRare",
 
         "type" : "object",
         "objectSets" : [

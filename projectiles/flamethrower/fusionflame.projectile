@@ -1,19 +1,22 @@
 {
   "projectileName" : "fusionflame",
-  "physics" : "fugraviton",
+  "physics" : "gas",
   "bounces" : -1,
-  "level" : 1,
-  "timeToLive" : 1.4,
+  "level" : 5,
+  "timeToLive" : 0.55,
   "speed" : 10,
-  "piercing" : false,
+  "piercing" : true,
   "image" : "fusionflame.png",
   "animationCycle" : 0.55,
   "lightColor" : [0, 50, 220],
-  "frameNumber" : 12,  
+  "frameNumber" : 12,
   "actionOnReap" : [
     {
-      "action" : "config",
-      "file" : "/projectiles/explosions/laserexplosion/laserexplosion.config"
+      "action" : "projectile",
+      "type" : "isn_fusion_cloud",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.25,
+      "angleAdjust" : 0
     }
   ],
   "damageKind" : "fire",

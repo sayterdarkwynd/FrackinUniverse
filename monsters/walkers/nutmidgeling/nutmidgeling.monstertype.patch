@@ -1,0 +1,46 @@
+[
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-hop",
+        "cooldown": 4,
+        "parameters": {
+          "verticalSpeed": 20,
+          "horizontalSpeed": 10,
+          "hopSequence": 1,
+          "windupTime": 0.1,
+          "landTime": 0.1,
+          "hopAwayFromWall": false,
+          "wallVerticalSpeed": 35
+        }
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 50
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/healthRegen/baseValue",
+    "value": 0.5
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/iceResistance/baseValue",
+    "value": -0.5
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/poisonResistance/baseValue",
+    "value": 0.5
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/poisonStatusImmunity/baseValue",
+    "value": 1
+  }
+]

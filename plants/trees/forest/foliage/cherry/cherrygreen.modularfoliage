@@ -1,0 +1,160 @@
+{
+  "name" : "cherrygreen",
+  "shape" : "cherrytree",
+
+  "dropConfig" : {
+    "drops" : [
+      [ { "item" : "sapling", "count" : 2 },
+        { "item" : "cherry", "count" : 1 } ]
+    ],
+    "sounds" : {
+      "breakTree" : [
+        { "file" : "/sfx/environmental/tree_breaking.ogg" },
+        { "file" : "/sfx/environmental/tree_breaking_alt.ogg" }
+      ],
+      "hitGround" : [
+        { "file" : "/sfx/environmental/tree_hitground.ogg" },
+        { "file" : "/sfx/environmental/tree_hitground2.ogg" }
+      ]
+    },
+    "particles" : {
+      "breakTree" : {
+        "density" : 3,
+        "options" : [
+          {
+            "type" : "ember",
+            "color" : [65, 117, 46],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
+          },
+          {
+            "type" : "ember",
+            "color" : [88, 143, 46],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
+          },
+          {
+            "type" : "ember",
+            "color" : [86, 172, 51],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
+          }
+        ]
+      },
+      "hitGround" : {
+        "density" : 3,
+        "options" : [
+          {
+            "type" : "ember",
+            "color" : [65, 117, 46],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
+          },
+          {
+            "type" : "ember",
+            "color" : [88, 143, 46],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
+          },
+          {
+            "type" : "ember",
+            "color" : [86, 172, 51],
+            "timeToLive" : 10,
+            "initialVelocity" : [0, 5],
+            "finalVelocity" : [0, -20],
+            "approach" : [0, 5],
+            "variance" : {
+              "timeToLive" : 3.0,
+              "initialVelocity" : [1.0, 1.0]
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "parallaxFoliage" : true,
+
+  "crownLeaves" : {
+    "crown1" : {
+      "image" : "crown1.png",
+      "backimage" : "",
+      "attachment" : {
+        "bx" : 0,
+        "by" : 0
+      }
+    },
+    "crown2" : {
+      "image" : "crown2.png",
+      "backimage" : "",
+      "attachment" : {
+        "bx" : 0,
+        "by" : 0
+      }
+    },
+    "crown3" : {
+      "image" : "crown3.png",
+      "backimage" : "",
+      "attachment" : {
+        "bx" : 0,
+        "by" : 0
+      }
+    }
+  },
+  "branchLeaves" : {
+    "branch1" : {
+      "image" : "branch1.png",
+      "backimage" : "",
+      "attachment" : {
+        "bx" : 0,
+        "by" : 0
+      }
+    },
+    "branch2" : {
+      "image" : "branch2.png",
+      "backimage" : "",
+      "attachment" : {
+        "bx" : 0,
+        "by" : 0
+      }
+    },
+    "branch3" : {
+      "image" : "branch3.png",
+      "backimage" : "",
+      "attachment" : {
+        "bx" : -5,
+        "by" : 0
+      }
+    }
+  }
+}

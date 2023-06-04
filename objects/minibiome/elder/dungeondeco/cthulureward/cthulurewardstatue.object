@@ -5,7 +5,8 @@
   "category" : "decorative",
   "objectType" : "container",
   "tooltipKind" : "container",
-  "price" : 145,
+  "price" : 14635,
+  "printable" : false,
   "description" : "This abhorrent statue grips some sort of glowing artifact in its inhuman claw.",
   "shortdescription" : "Elder Artifact",
   "race" : "apex",
@@ -13,7 +14,7 @@
   "inventoryIcon" : "wagnericon.png",
 "orientations" : [
     {
-    
+
       "imageLayers" : [ { "image" : "cthulurewardstatuelit.png:<color>", "fullbright" : true }, { "image" : "cthulurewardstatue.png:<color>" } ],
       "flipImages" : true,
       "direction" : "left",
@@ -28,7 +29,7 @@
       "collision" : "platform"
     },
     {
-    
+
       "imageLayers" : [ { "image" : "cthulurewardstatuelit.png:<color>", "fullbright" : true }, { "image" : "cthulurewardstatue.png:<color>" } ],
       "direction" : "right",
       "lightPosition" : [0, 1],
@@ -50,6 +51,7 @@
   "frameCooldown" : 5,
   "autoCloseCooldown" : 3600,
 
-  "scripts" : [ "/objects/scripts/autofill.lua" ],
-  "scriptDelta" : 240
+  "scripts" : [ "/objects/scripts/fuautofillonce.lua" ],
+  "scriptDelta" : 240,
+  "statusEffects"  : [ "madnessgainelder3" ]
 }

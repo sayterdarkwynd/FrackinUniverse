@@ -1,0 +1,40 @@
+{
+  "objectName" : "flowerbrown",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "A rare color for a flower.",
+  "shortdescription" : "Brown Flower",
+  "objectType" : "farmable",
+  "printable" : false,
+
+  "inventoryIcon" : "flowericon.png",
+  "largeImage" : "flowerbrown.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "flowerbrown" },
+  "orientations" : [
+    {
+      "dualImage" : "flowerbrown.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [570, 630]
+    },
+    {
+      "duration" : [570, 630]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "flowerbrownHarvest",
+      "resetToStage" : 1
+    }
+  ],
+  "consumeSoilMoisture" : false,
+  "beeLikeness" : {"digger":1,"oremason":1,"stalwart":1}
+}

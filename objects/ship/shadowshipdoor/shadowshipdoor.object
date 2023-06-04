@@ -1,0 +1,51 @@
+{
+  "objectName" : "shadowshipdoor",
+  "colonyTags" : ["shadow","door"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 625,
+  "description" : "A door. Possibly suitable for a spaceship.",
+  "shortdescription" : "Shadow Ship Door",
+  "race" : "shadow",
+
+
+  "inventoryIcon" : "shadowshipdooricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "shadowshipdoor.png:default",
+      "imagePosition" : [-20, 0],
+	  "renderLayer" : "Object+5",
+
+      "spaces" : [
+                    [0, 0], [0, 1], [0, 2], [0, 3], [0, 4],
+                    [-1, 0], [-1, 1], [-1, 2], [-1, 3], [-1, 4]
+      ],
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "shadowshipdoor.png"
+  },
+  "animationPosition" : [-20, 0],
+
+  "inputNodes" : [ [-1, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

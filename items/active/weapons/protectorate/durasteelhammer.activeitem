@@ -1,0 +1,43 @@
+{
+  "itemName" : "durasteelhammer",
+  "price" : 1000,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "A formidable durasteel hammer.",
+  "shortdescription" : "Durasteel Hammer",
+  "tooltipKind" : "sword2",
+  "category" : "hammer",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon"],
+
+  "inventoryIcon" : "durasteelhammer.png",
+  //"collectablesOnPickup" : { "fu_weaponhammer" : "durasteelhammer" },
+  "animation" : "/items/active/weapons/melee/hammer/hammer.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "durasteelhammer.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 1.2,
+    "baseDps" : 11.5
+  },
+
+  "palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
+
+  "altAbilityType" : "physicalshockwave",
+  "critChance" : 2,
+  "critBonus" : 5,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

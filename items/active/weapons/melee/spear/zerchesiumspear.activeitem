@@ -1,97 +1,57 @@
 {
-  "itemName" : "zerchesiumspear",
-  "price" : 0,
-  "level" : 4,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "A wonderfully made tool of war.",
-  "shortdescription" : "Zerchesium Spear",
-  "tooltipKind" : "sword",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear"],
+	"itemName" : "zerchesiumspear",
+	"price" : 160,
+	"level" : 3,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "A wonderfully made tool of war.
+^cyan;Hunting weapon^reset;",
+	"shortdescription" : "Zerchesium Spear",
+	"tooltipKind" : "sword2",
+	"category" : "spear",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear","zerchesium", "upgradeableWeapon"],
 
-  "inventoryIcon" : "zerchesiumspear.png",
+	"inventoryIcon" : "zerchesiumspear.png",
+	//"collectablesOnPickup" : { "fu_weaponspear" : "zerchesiumspear" },
+	"animation" : "/items/active/weapons/melee/spear/spear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "zerchesiumspear.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "animation" : "/items/active/weapons/melee/spear/spear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "zerchesiumspear.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"elementalType" : "ice",
 
-  "elementalType" : "ice",
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "spearstab",
+	"primaryAbility" : {
+		"scripts" : [],
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "scripts" : [],
-    "class" : "SpearStab",
+		"fireTime" : 0.75,
+		"baseDps" : 10.3,
+		"damageConfig" : {
+			"damageSourceKind" : "icebow",
+			"statusEffects" : [ ],
+			"knockback" : 20
+		}
+	},
+	"altAbilityType" : "fucharge",
 
-    "fireTime" : 0.75,
-    "baseDps" : 9,
-    "damageConfig" : {
-      "damageSourceKind" : "spear",
-      "statusEffects" : [ ],
-      "knockbackMode" : "aim",
-      "knockback" : 10,
-      "timeoutGroup" : "primary"
-    },
-    "holdDamageMultiplier" : 0.1,
-    "holdDamageConfig" : {
-      "timeoutGroup" : "hold",
-      "timeout" : 0.5
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : 0,
-        "twoHanded" : false,
-        "weaponOffset" : [0, 0.5],
+	"altAbility" : {
+		"damageConfig" : {
+			"damageSourceKind" : "bow"
+		}
+	},
 
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "windup" : {
-        "hold" : true,
-        "duration" : 0.55,
-        "armRotation" : -110,
-        "weaponRotation" : 20,
-        "twoHanded" : true,
-        "weaponOffset" : [0, 0.5],
+	"critChance" : 4,
+	"critBonus" : 2,
 
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "fire" : {
-        "duration" : 0.3,
-        "armRotation" : -20,
-        "weaponRotation" : -70,
-        "twoHanded" : true,
-        "weaponOffset" : [0.3, 2.5],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "hold" : {
-        "armRotation" : -30,
-        "weaponRotation" : -60,
-        "twoHanded" : true,
-        "weaponOffset" : [-0.3, 2.0],
-
-        "allowRotate" : true,
-        "allowFlip" : true
-      }
-    }
-  },
-  "altAbilityType" : "fucharge",
-  "altAbility" : { },
-  
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

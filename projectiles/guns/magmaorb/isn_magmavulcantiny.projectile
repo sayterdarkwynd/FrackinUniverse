@@ -1,0 +1,29 @@
+{
+  "projectileName" : "isn_magmavulcantiny",
+  "image" : "isn_magmavulcanshottiny.png",
+  "physics" : "laser",
+  "animationCycle" : 0.25,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 6,
+  "power" : 5,
+  "level" : 5,
+  "speed" : 60,
+  "timeToLive" : 1,
+  "bounces" : 0,
+  "piercing" : false,
+  "fallSpeed" : 10,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [155, 77, 0],
+  "damageKind" : "hellfire",
+  "emitters" : [ "flamesfast" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/guns/magmaorb/isn_magmavulcantiny.config"
+    },
+    {
+      "action" : "liquid",
+      "liquid" : "fuironliquid", "quantity" : 0.5
+    }
+  ]
+}

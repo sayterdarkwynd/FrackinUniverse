@@ -1,0 +1,47 @@
+{
+  "objectName" : "cutebathroomcabinet",
+  "colonyTags" : ["fu","cute","storage","pretty"],
+  "printable" : false,
+  "rarity" : "Rare",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "A cute cabinet, for a bathroom.",
+  "shortdescription" : "Cute Bath Cabinet",
+  "race" : "generic",
+  "category" : "storage",
+  "price" : 120,
+  "health" : 1.5,
+
+
+  "inventoryIcon" : "cutebathroomcabineticon.png",
+  "orientations" : [
+    {
+      "image" : "cutebathroomcabinet.png:default",
+      "imagePosition" : [-16, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "image" : "cutebathroomcabinet.png:default",
+      "imagePosition" : [-16, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/woodenbox_close.ogg" ],
+  "slotCount" : 16,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+}

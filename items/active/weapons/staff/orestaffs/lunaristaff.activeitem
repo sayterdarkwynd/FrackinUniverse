@@ -1,0 +1,101 @@
+{
+  "itemName" : "lunaristaff",
+  "level" : 2,
+  "price" : 1440,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Powered by the crystal moon.",
+  "shortdescription" : "Lunari Staff",
+  "category" : "staff",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","staff","upgradeableWeapon","lunari"],
+  "tooltipKind" : "staff",
+
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "lunaristaff.png",
+    "stone" : "/items/active/weapons/staff/generated/stone/lunaristaff.png",
+    "chargeEffect" : "/items/active/weapons/staff/generated/glow/ice.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "icecharge" : {
+        "offsetRegion" : [-0.5, 1.75, 0.5, 3.25]
+      }
+    }
+  },
+
+  "inventoryIcon" : "lunaristaff.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 1.3,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "discharge" : {
+      "duration" : 0.5,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "elementalType" : "ice",
+
+  "primaryAbility" : {
+    "type" : "elementswarm",
+    "name" : "Ice Swarm",
+    "scripts" : ["/items/active/weapons/staff/abilities/controlprojectile/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 25,
+
+    "maxCastRange" : 35,
+
+    "projectileType" : "icebouncer",
+    "projectileCount" : 3,
+    "projectileDistance" : 4.5,
+    "projectileParameters" : {
+      "baseDamage" : 12
+    }
+  },
+  "altAbilityType" : "slowzone",
+  "altAbility" : {},
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,29 @@
+{
+	"id" : "shoggoth_unlocknew",
+	"mainQuest" : true,
+	"prerequisites" : [],
+	"title" : "Strange Visions",
+	"text" : "Lifting up this book has triggered ^red;strange visions^reset; of a place covered in snow and ice, and coordinates to that place. I should enter the coordinates for ^orange;Delta Freya II^reset; into my SAIL. It calls to me. I am compelled to obey.",
+	"completionText" : "There are no words to express the madness and strangeness that tugs now at the very roots of my soul. A piece of myself has been forever lost to that hellish place.",
+	"portraits" : {
+		"questStarted" : "questGiver",
+		"questComplete" : "questReceiver"
+	},
+	"moneyRange" : [0, 0],
+	"missionUnlockedCinema" : "/cinematics/dfcoordinates.cinematic",
+	"rewards" : [
+		[ [ "fumadnessresource", 5000 ] ]
+	],
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "player"
+		},
+		"associatedMission" : "shoggothmission",
+		"turnInDescription" : "Explore Delta Freya II",
+		"requireTurnIn" : true
+	}
+}
+

@@ -1,0 +1,57 @@
+{
+	"stats": [
+		{ "stat": "maxHealth", "effectiveMultiplier": 0.80 },
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.30 },
+
+		{ "stat": "fallDamageMultiplier", "effectiveMultiplier": 0 },
+		{ "stat": "foodDelta", "baseMultiplier": 0.9 },
+		{ "stat": "maxFood", "effectiveMultiplier": 0.8 },
+
+		{ "stat": "jungleslowImmunity", "amount": 1 },
+		{ "stat": "fumudslowImmunity", "amount": 1 },
+		{ "stat": "mudslowImmunity", "amount": 1 },
+		{ "stat": "fuclayslowImmunity", "amount": 1 },
+
+		{ "stat": "iceResistance", "amount": 0.1 },
+		{ "stat": "shadowResistance", "amount": 0.2 },
+		{ "stat": "darknessResistance", "amount": 0.2 },
+
+		{ "stat": "physicalResistance", "amount": -0.15 },
+		{ "stat": "radioactiveResistance", "amount": -0.23 },
+		{ "stat": "poisonResistance", "amount": -0.23 },
+		{ "stat": "electricResistance", "amount": -0.23 },
+		{ "stat": "fireResistance", "amount": -0.23 }
+	],
+	"diet" : "herbivore",
+
+	// All natural environments grant buffs.
+	"envEffects": [
+		{
+			"biomes": [ "garden", "thickjungle", "forest", "jungle", "bog", "arboreal", "arborealdark" ],
+			"stats": [
+				{ "stat": "protection", "effectiveMultiplier": 1.15 },
+				{ "stat": "maxHealth", "effectiveMultiplier": 1.1 }
+			]
+		}
+	],
+
+	// Wands / Staves grant bonus power.
+	"weaponEffects": [
+		{
+			"weapons": [ "wand", "staff" ],
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.12 }
+			]
+		}
+	],
+	"scripts" : [
+		{
+			"script" : "/scripts/fr_scripts/healthRegen.lua",
+			"args" : {
+				"healingRate" : 0.01
+			}
+		}
+	]
+	//Note: Species patch mentions Glow in the Dark / Bioluminescense.
+	//GLOW IN THE DARK SHOULD NOT BE APPENDED HERE. This effect is now included vanilla via a passive race status effect similar to novakidglow.
+}

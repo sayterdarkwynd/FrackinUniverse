@@ -1,19 +1,23 @@
 {
-  "itemName" : "genesiberry",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "genesiberry.png",
-  "description" : "Heals 90% of your health.",
-  "shortdescription" : "Genesiberry",
-   "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 8,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      "heal_90"
-    ] ]
+	"itemName": "genesiberry",
+	"inventoryIcon": "genesiberry.png",
+	"category": "food",
+	"rarity": "legendary",
+	"price": 95,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Heal 85^reset;: 2s\n^yellow;^reset;^cyan;20% Reduced Hunger Drain^reset;: 2m",
+	"shortdescription": "Genesiberry",
+	"effects": [
+		[{
+				"effect": "heal_tier7",
+				"duration": 2
+			},
+			{
+				"effect": "genesifeed",
+				"duration": 120
+			}
+		]
+	],
+	"blockingEffects": ["heal_tier7"]
 }

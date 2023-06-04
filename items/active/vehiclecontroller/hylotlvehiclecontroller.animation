@@ -1,0 +1,42 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "controller" : {
+        "default" : "full",
+        "states" : {
+          "empty" : {},
+          "full" : {}
+        }
+      }
+    },
+
+    "parts" : {
+      "casing" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [0.0, 0.0]
+        },
+
+        "partStates" : {
+          "controller" : {
+            "empty" : {
+              "properties" : {
+                "image" : "<partImage>:empty"
+              }
+            },
+            "full" : {
+              "properties" : {
+                "image" : "<partImage>:full"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "sounds" : {
+    "placeOk" : ["/sfx/tech/vehicle_appear1.ogg"],
+    "placeBad" : ["/sfx/interface/clickon_error.ogg"]
+  }
+}

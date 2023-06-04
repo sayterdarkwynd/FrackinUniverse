@@ -1,0 +1,134 @@
+{
+  "itemName" : "skathtier3shotgun",
+  "price" : 1080,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "'A high tech shotgun that fires plasma rounds.'",
+  "shortdescription" : "Skath Plasma Shotgun",
+  "tooltipKind" : "gun",
+  "category" : "Assault Shotgun",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","shotgun","energy","upgradeableWeapon","plasma"],
+  "level" : 6,
+
+  "inventoryIcon" : [
+    { "image" : "skathplasmashotgun.png" }
+  ],
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "skathplasmashotgun.png",
+    "barrel" : "",
+	"muzzleFlash" : "plasmamuzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : ["/sfx/gun/plasma_shotgun2.ogg"]
+    },
+    "lights" : {
+      "muzzleFlash" : {
+        "color" : [0, 142, 255]
+      }
+    }
+  },
+
+		"baseOffset": [1.000, 0.225],
+		"muzzleOffset": [2.6, 0.100],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.3,
+    "baseDps" : 13.5,
+    "energyUsage" : 50,
+    "projectileCount" : 5,
+    "inaccuracy" : 0.11,
+    "fireType" : "auto",
+
+    "projectileType" : "skathplasma1",
+    "projectileParameters" : {
+      "knockback" : 0
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 8,
+        "weaponRotation" : 8,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.2,
+        "armRotation" : 8,
+        "weaponRotation" : 8,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "altAbility" : {
+    "name" : " Plasma Grenade",
+	"scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 1.5,
+    "baseDps" : 8,
+    "energyUsage" : 60,
+    "projectileCount" : 3,
+    "inaccuracy" : 0.09,
+    "fireType" : "auto",
+
+    "projectileType" : "stickyplasma",
+    "projectileParameters" : {},
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 8,
+        "weaponRotation" : 8,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.2,
+        "armRotation" : 8,
+        "weaponRotation" : 8,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

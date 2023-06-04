@@ -1,0 +1,61 @@
+{
+  "itemName" : "triwhip",
+  "price" : 400,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Trianglium shards gravitated into a whip. Don't ask, just whip.
+^cyan;Shoots radioactive exploding shards^reset;",
+  "shortdescription" : "Trianglium Whip",
+  "tooltipKind" : "sword2",
+  "category" : "whip",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","whip","upgradeableWeapon"],
+
+  "inventoryIcon" : "triwhip.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "triwhip.png",
+  "weaponFullbright" : ""
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : { "particles" : [ ]}},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/whip_swing1.ogg", "/sfx/melee/whip_swing2.ogg", "/sfx/melee/whip_swing3.ogg" ],
+      "crack" : [ "/sfx/melee/whip_impact1.ogg", "/sfx/melee/whip_impact2.ogg", "/sfx/melee/whip_impact3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [1, 0],
+    "length" : [3, 8],
+    "segmentImage" : "/items/active/weapons/whip/triwhiplink.png",
+    "endSegmentImage" : "/items/active/weapons/whip/triwhipend.png",
+    "segmentSize" : 1,
+    "fullbright" : false
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 1.2,
+    "chainDps" : 1.0,
+    "crackDps" : 6.0,
+
+    "damageConfig" : {
+    "damageSourceKind" : "radioactive",
+      "statusEffects" : [ "radiationburn" ]
+    },
+
+    "projectileType" : "whipcrackrad"
+  },
+
+  "altAbilityType": "triangliumblast",
+
+  "critChance" : 3,
+  "critBonus" : 3,
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}

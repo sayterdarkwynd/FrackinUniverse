@@ -4,7 +4,7 @@
   "image" : "/monsters/generated/skills/defaultpoison.png",
 
   "config" : {
-    "hostileActions" : [ 
+    "hostileActions" : [
       {
         "name" : "action-fire",
         "cooldown" : 4,
@@ -14,13 +14,14 @@
           "maximumRange" : 9,
           "minimumRange" : 2,
           "windupEffect" : "castpoison",
-          
+
           "fireDelay" : 0.3,
           "projectileType" : "gas",
           "projectileParameters" : {
-            "speed" : 20
+            "speed" : 20,
+            "power" : 5
           },
-          "power" : 7,
+          "power" : 5,
           "aimAtTarget" : true,
 
           "projectileCount" : 4,
@@ -32,7 +33,7 @@
 
   "animationParameters" : {
     "sounds" : {
-      "fire" : [ ]
+      "fire" : [ "/sfx/projectiles/bloodvomit6.ogg"  ]
     }
   }
 }

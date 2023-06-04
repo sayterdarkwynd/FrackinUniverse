@@ -4,21 +4,33 @@
   "rarity" : "Common",
   "category" : "decorative",
   "price" : 1000,
-  "printable" : false,  
+  "printable" : false,
   "description" : "A device that aids in transmissions.",
   "shortdescription" : "Signal Relay",
   "inventoryIcon" : "metallicmachine1.png",
-  "health" : 160,
+  "health" : 40,
+  "rooting" : true,
   "orientations" : [
     {
-      "image" : "metallicmachine1.png:<color>",
+      "imageLayers" : [ { "image" : "metallicmachine1.png:<color>.<frame>", "fullbright" : true }, { "image" : "metallicmachine1fullbright.png:<color>.<frame>" } ],
+      "flipImages" : true,
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+      "anchors" : [ "bottom" ],
+      "direction" : "left"
+    },
+    {
+      "imageLayers" : [ { "image" : "metallicmachine1.png:<color>.<frame>", "fullbright" : true }, { "image" : "metallicmachine1fullbright.png:<color>.<frame>" } ],
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
 
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
     }
   ]
 }

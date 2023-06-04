@@ -1,7 +1,7 @@
 {
   "name" : "reddesert",
   "friendlyName" : "Red Waste",
-  "hueShiftOptions" : [-40, -25, 0, 25, 40],
+  "hueShiftOptions" : [0],
     "mainBlock" : "redsand2",
     "subBlocks" : [ "wastestone", "retexredsandstone" ],
     "ores" : "surface",
@@ -10,15 +10,14 @@
     "groups" : [
       {
         "select" : 3,
-        "pool" : [ 
-          [ 0.111, "peblit" ],          
+        "pool" : [
+          [ 0.111, "peblit" ],
           [ 0.111, "crustoise" ],
           [ 0.111, "iguarmor" ],
-          [ 0.111, "batong" ],
-          [ 0.111, "voltip" ],
+          [ 0.081, "batong" ],
+          [ 0.061, "voltip" ],
           [ 0.111, "fennix" ],
-          [ 0.111, "ignome" ],
-          [ 0.111, "bobot" ]
+          [ 0.091, "ignome" ]
         ]
       },
       {
@@ -40,7 +39,7 @@
           [ 1, "mousecritter" ],
           [ 1, "groopcritter" ],
           [ 1, "ravencritter" ],
-          [ 1, "wurmcritter" ]   
+          [ 1, "wurmcritter" ]
         ]
       }
     ],
@@ -48,9 +47,27 @@
       "colors" : "desert"
     }
   },
-  
+  "parallax" : "/parallax/surface/reddesert.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/desert_day.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/desert_night.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/Nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/Nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
+    }
+  },
   "surfacePlaceables" : {
-    "grassMod" : [ "redsand" ],
+    "grassMod" : [ "redsand", "savannahgrass" ],
     "grassModDensity" : 0.9,
 
     "items" : [
@@ -107,7 +124,7 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
         {
           "mode" : "floor",
@@ -116,20 +133,41 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
+          "treasureBoxSets" : [ "desertChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+          "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
         },
-
-
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
             {
               "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ultraRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "wormstatue" ], [0.35, "sandstonestatueapex" ], [0.35, "sandstonestatueavian" ], [0.35, "sandstonestatuefloran" ], [0.35, "sandstonestatueglitch" ], [0.35, "sandstonestatuehuman" ], [0.35, "sandstonestatuehylotl" ] ],
               "parameters" : { }
             }
           ]
@@ -145,6 +183,15 @@
         },
         {
           "mode" : "floor",
+          "priority" : 1,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:mainBiomeRareMicrodungeon",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "desertmicrodungeons" ]
+        },
+        {
+          "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
@@ -152,8 +199,6 @@
           "type" : "microdungeon",
           "microdungeons" : [ "terrainfeatures" ]
         },
-
-        			
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -165,21 +210,42 @@
         },
         {
           "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "fudesertrock1"],
+              [0.35, "fudesertrock2" ],
+              [0.35, "fudesertrock3" ],
+              [0.35, "fudesertrock4"],
+              [0.35, "fudesertrock5" ],
+              [0.35, "fudesertrock6" ],
+              [0.35, "fudesertrock7"]
+              ]
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:rareClumpyLarge",
+          "distribution" : "/biomes/distributions.config:rareClumpySmall",
 
           "type" : "bush",
           "bushes" : [
             {
               "name" : "cactus1",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
+              "baseHueShiftMax" : 15,
+              "modHueShiftMax" : 35
             },
             {
               "name" : "cactus2",
-              "baseHueShiftMax" : 40,
-              "modHueShiftMax" : 180
+              "baseHueShiftMax" : 15,
+              "modHueShiftMax" : 35
             }
           ]
         },
@@ -239,9 +305,17 @@
           "distribution" : "/biomes/distributions.config:undergroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:undergroundChests",
 
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "desertChest" ]
+        },
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -267,9 +341,23 @@
         },
         {
           "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ultraRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "wormstatue" ], [0.35, "sandstonestatueapex" ], [0.35, "sandstonestatueavian" ], [0.35, "sandstonestatuefloran" ], [0.35, "sandstonestatueglitch" ], [0.35, "sandstonestatuehuman" ], [0.35, "sandstonestatuehylotl" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:undergroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -282,6 +370,18 @@
 
           "type" : "grass",
           "grasses" : [ "pebbles" ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 180,
+          "treeStemHueShiftMax" : 10,
+          "treeStemList" : [ "desertvine"],
+          "treeFoliageList" : [ "" ]
         }
       ]
     }

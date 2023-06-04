@@ -1,0 +1,234 @@
+{
+  "type" : "deathdroid2",
+  "shortdescription" : "Glitched Deathbot",
+  "description" : "When programming goes wrong, this is what you get.",
+
+  "categories" : [ "deathdroid2" ],
+  "parts" : [ "body", "arm" ],
+
+  "animation" : "deathdroid.animation",
+  "reversed" : false,
+
+  "dropPools" : [
+    {
+    "default" : "furobotTreasure",
+    "bow" : "furobotHuntingnoChassis",
+    "firebow" : "furobotHuntingnoChassis",
+    "icebow" : "furobotHuntingnoChassis",
+    "poisonbow" : "furobotHuntingnoChassis",
+    "electricbow" : "furobotHuntingnoChassis",
+    "cosmicbow" : "furobotHuntingnoChassis",
+    "radioactivebow" : "furobotHuntingnoChassis",
+    "shadowbow" : "furobotHuntingnoChassis",
+    "brain" : "madnessBrainHarvestingRobot"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua",
+	  "/stats/monstereffects/monsterstatus_persistenteffectsapplier.lua"
+    ],
+	"fu_monsterPersistentEffects":["regeneratingshield_hp-100-10-3","regeneratingshieldindicatordemon"],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 30,
+      "targetOnDamage" : true,
+      "targetEntityTypes" : [ "player", "npc", "monster" ],
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-invulnerable",
+          "cooldown" : 10.0,
+          "parameters" : {
+            "windupTime" : 0.5,
+            "windupState" : "windup",
+            "winddownTime" : 0.5,
+            "winddownState" : "winddown",
+
+            "invulnerableEffect" : "highprotection",
+            "invulnerableTime" : 8
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "maximumRange" : 15,
+            "minimumRange" : 2,
+            "windupState" : "",
+            "windupTime" : 0.0,
+
+            "projectileType" : "gausspistolshot",
+            "power" : 7,
+            "fireOffset" : [-1.0, -0.5],
+            "projectileCount" : 3,
+            "projectileInterval" : 0.15,
+            "aimAtTarget" : true,
+            "rotateAim" : true,
+            "rotatedOffset" : [2.125, 0.0],
+            "fireState" : "fire",
+            "fireDelay" : 0.2,
+            "fireSound" : "fire",
+
+            "winddownState" : "",
+            "winddownTime" : 0.5
+          }
+        }
+      ],
+
+      "invulnerableActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "maximumRange" : 15,
+            "minimumRange" : 2,
+            "windupState" : "",
+            "windupTime" : 0.0,
+
+            "projectileType" : "isn_annihilator",
+            "power" : 12,
+            "fireOffset" : [-1.0, -0.5],
+            "aimAtTarget" : true,
+            "rotateAim" : true,
+            "rotatedOffset" : [2.125, 0.0],
+            "fireState" : "",
+            "fireDelay" : 0.2,
+            "fireSound" : "fire",
+
+            "winddownState" : "",
+            "winddownTime" : 0.5
+          }
+        }
+      ],
+
+      "periodicActions" : [],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : false
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [3, 6]
+          }
+        }
+      ]
+    },
+
+    "aggressive" : true,
+    "damageTeam" : 1,
+
+    "metaBoundBox" : [-1.75, -1.75, 1.75, 1.0],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.75, -1.75], [1.75, -1.75], [1.75, 1.0], [-1.75, 1.0] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 6,
+      "runSpeed" : 6,
+      "jumpSpeed" : 0,
+      "flySpeed" : 15,
+      "airFriction" : 0.25,
+      "airForce" : 50.0,
+      "airJumpProfile" : {
+        "jumpControlForce" : 0,
+        "jumpInitialPercentage" : 0
+      }
+    },
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathPoof",
+
+    "touchDamage" : {
+      "poly" : [ [-1.75, -1.75], [1.75, -1.75], [1.75, 1.0], [-1.75, 1.0] ],
+      "damage" : 15,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "hammer",
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "robotic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 72
+        },
+        "maxShield" : {
+          "baseValue" : 0.0
+        },
+        "protection" : {
+          "baseValue" : 1.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "shieldRegen" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        },
+        "damageAbsorption" : {
+          "initialValue" : 0.0
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8]
+  }
+}

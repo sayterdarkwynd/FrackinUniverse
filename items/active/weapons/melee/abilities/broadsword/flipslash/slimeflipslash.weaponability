@@ -1,0 +1,98 @@
+{
+  "globalTagDefaults" : {
+	"skinColor" : ""
+  },
+  "animationParts" : { },
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "swoosh" : {
+          "states" : {
+            "flip" : {}
+          }
+        }
+      },
+
+      "parts" : {
+        "swoosh" : {
+          "partStates" : {
+            "swoosh" : {
+              "flip" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/abilities/broadsword/flipslash/slimeswoosh.png:<skinColor>",
+                  "offset" : [2.25, 2.75],
+                  "damageArea" : [[-6.0, -3.5], [-6.0, 0], [-3.5, 2.5], [0, 2.5], [2.5, 0], [2.5, -3.5], [0, -6.0], [-3.5, -6.0]]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "particleEmitters" : {
+      "flip" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "offsetRegion" : [-4, -4, 5, 5],
+        "emissionRate" : 0,
+        "particles" : [
+          { "particle" : "energyblade"},
+          { "particle" : "energyblade2"}
+        ]
+      }
+    },
+    "sounds" : {
+      "flipSlash" : [ "/sfx/sword/slimeflip_slash.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Slime Flip Slash",
+    "type" : "slimeflipslash",
+    "scripts" : ["/items/active/weapons/melee/abilities/broadsword/flipslash/flipslash.lua"],
+    "class" : "FlipSlash",
+
+    "cooldownTime" : 0.5,
+
+    "damageConfig" : {
+      "damageSourceKind" : "broadsword",
+      "statusEffects" : [ ],
+      "baseDamage" : 6,
+      "knockback" : [0, -35],
+      "timeout" : 0.2,
+      "timeoutGroup" : "alt"
+    },
+
+    "flipMovementParameters" : {
+      "collisionPoly" : [ [-2.0, -1.0], [-1.0, -2.0], [1.0, -2.0], [2.0, -1.0], [2.0, 1.0], [1.0, 2.0], [-1.0, 2.0], [-2.0, 1.0] ]
+    },
+
+    "energyUsage" : 60.0,
+    "rotations" : 3,
+    "rotationTime" : 0.2,
+
+    "jumpVelocity" : [35, 20],
+    "jumpDuration" : 0.2,
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.2,
+        "armRotation" : 30,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "flip" : {
+        "noAimCompensation" : true,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

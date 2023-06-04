@@ -1,0 +1,47 @@
+{
+  "projectileName" : "magnorbxithricite",
+  "image" : "magnorbxithricite.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 1.5,
+  "speed" : 75,
+  "damageKind" : "cosmic",
+  "physics" : "laser",
+  "fullbright" : true,
+  "bounces" : 6,
+  "piercing" : true,
+  "timeToLive" : 2,
+  "lightColor" : [73, 43, 16],
+
+  "emitters" : [ "cosmicdust" ],
+  "statusEffects" : [ ],
+
+  "actionOnReap" : [
+    { "action" : "config", "file" : "/projectiles/explosions/elementimpact/cosmicimpact.config" }
+  ],
+
+  "actionOnCollide" : [
+    { "action" : "config", "file" : "/projectiles/explosions/elementimpact/cosmicimpact.config" },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/fireball_bounce1.ogg",
+        "/sfx/projectiles/fireball_bounce2.ogg",
+        "/sfx/projectiles/fireball_bounce3.ogg"
+      ]
+    }
+  ],
+
+    "periodicActions":[
+
+    ],
+
+  "zigZagTime" : 0.1,
+  "zigZagAngle" : 0.7,
+  "scripts" : [
+    "/projectiles/activeitems/boomerang/boomerangprojectile.lua",
+    "/scripts/projectiles/zigzagprojectile.lua"
+    ]
+}

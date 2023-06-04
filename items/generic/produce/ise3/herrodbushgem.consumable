@@ -1,19 +1,17 @@
 {
-  "itemName" : "herrodbushgem",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "herrodbushgem.png",
-  "description" : "Grants a massive +50% defense.",
-  "shortdescription" : "Herrod Bush Gem",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-          "percentarmorboost50"
-    ] ]
+	"itemName": "herrodbushgem",
+	"inventoryIcon": "herrodbushgem.png",
+	"category": "food",
+	"rarity": "Legendary",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immune^reset;: Shadow Taint: 3m",
+	"shortdescription": "Herrod Bush Gem",
+	"effects": [
+		[{
+			"effect": "shadowimmunity",
+			"duration": 180
+		}]
+	]
 }

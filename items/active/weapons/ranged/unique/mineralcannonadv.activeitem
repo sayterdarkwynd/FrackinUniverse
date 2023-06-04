@@ -4,14 +4,15 @@
   "inventoryIcon" : "mineralcannonadv.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Massive blasting power. ",
+  "description" : "Enormous blasting potential.
+^yellow;Destroys tiles^reset;",
   "shortdescription" : "Particle Cannon",
-  "level" : 4,
-  "tooltipKind" : "gun",
-  "weaponType" : "Particle",
-  "itemTags" : ["weapon","ranged","rifle"],
+  "category" : "rocketLauncher",
+  "level" : 5,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","rocketlauncher", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
-
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
@@ -21,7 +22,7 @@
   },
   "animationCustom" : {
     "sounds" : {"fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]},
-    "lights" : { "muzzleFlash" : {"color" : [0, 184, 0] } }     
+    "lights" : { "muzzleFlash" : {"color" : [0, 184, 0] } }
   },
 
   "baseOffset" : [1.5, 0.2],
@@ -35,7 +36,7 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 1.2,
-    "baseDps" : 6.5,
+    "baseDps" : 7.2,
     "energyUsage" : 37.0,
     "inaccuracy" : 0,
 
@@ -43,7 +44,7 @@
     "fireType" : "auto",
 
     "projectileType" : "mineralcannonshotadv",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 60,
       "knockback" : 12
     },
@@ -76,6 +77,9 @@
 	    }
 	  }
   },
+
+  "critChance" : 6,
+  "critBonus" : 7,
 
   "altAbilityType" : "guidedrocket",
 

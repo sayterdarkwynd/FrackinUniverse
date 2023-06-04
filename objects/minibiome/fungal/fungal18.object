@@ -1,0 +1,43 @@
+{
+  "objectName" : "fungal18",
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 10,
+  "printable" : false,
+  "description" : "A mushroom that appears to glow",
+  "shortdescription" : "Bioluminescent mushroom",
+  "race" : "apex",
+  "lightColor" : [0, 44, 0],
+
+  "inventoryIcon" : "fungal18.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fungal18.png:<color>", "fullbright" : true }, { "image" : "fungal18fullbright.png:<color>" } ],
+      "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "left"
+    },
+    {
+      "imageLayers" : [ { "image" : "fungal18.png:<color>", "fullbright" : true }, { "image" : "fungal18fullbright.png:<color>" } ],
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
+    }
+  ],
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/projectiles/tar_hit_organic1.ogg", "/sfx/projectiles/tar_hit_organic2.ogg", "/sfx/projectiles/tar_hit_organic3.ogg", "/sfx/projectiles/tar_hit_organic4.ogg", "/sfx/projectiles/tar_hit_organic5.ogg" ],
+  "smashParticles" : [ { "count" : 1, "particle" : "slimeshard" } ],
+  "smashDropOptions" : [
+    [ [ "biospore", 4, { } ] ]
+  ],
+  "biomePlaced" : true
+}

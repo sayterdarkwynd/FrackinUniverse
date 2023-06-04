@@ -1,0 +1,78 @@
+{
+  "objectName" : "fuincubator",
+  "colonyTags" : [ "fu", "science", "scienceoutpost" ],
+  "rarity" : "Essential",
+  "race" : "generic",
+  "category" : "crafting",
+  "printable" : false,
+  "objectType" : "container",
+
+  "price" : 450,
+  "inventoryIcon" : "fuincubatoricon.png",
+  "description" : "Hatch eggs into creatures.",
+  "shortdescription" : "^orange;Incubator^reset;",
+  "subtitle" : "Resource converter",
+  "orientations" : [
+     {
+      "imageLayers" : [ { "image" : "fuincubator.png:<color>.<frame>", "fullbright" : true }, { "image" : "fuincubatorlit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "imagePosition" : [0, 0],
+      "frames" : 2,
+      "animationCycle" : 1,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "fuincubator.png:<color>.<frame>", "fullbright" : true }, { "image" : "fuincubatorlit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 2,
+      "animationCycle" : 1,
+      "collision" : "platform",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "fuincubator.animation",
+  "animationParts" : {
+    "samplingarrayanim" : "fuincubator.png"
+  },
+  "scripts" : [ "incubator.lua",
+                "/scripts/npcToyObject.lua" ],
+  "scriptDelta" : 5,
+  "recipeGroup" : "extractionlab",
+  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+  "slotCount" : 12,
+  "uiConfig" : "/interface/extractor/extractor.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "outputNodes" : [ [2, 1] ],
+
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "crouchcollect"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-0.5, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 2
+  },
+
+  "fu_mintick" : 1,
+  "fu_stationTechLevel" : 1
+}
+

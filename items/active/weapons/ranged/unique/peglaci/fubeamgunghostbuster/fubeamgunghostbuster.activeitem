@@ -1,0 +1,113 @@
+{
+  "itemName" : "fubeamgunghostbuster",
+  "level" : 4,
+  "price" : 1200,
+  "inventoryIcon" : "fubeamgunghostbuster.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A solid beam guaranteed to roast ghosts. Don't cross the streams!",
+  "shortdescription" : "Beam Gun (Ghostbuster)",
+  "category" : "energy",
+  "itemTags" : ["weapon","ranged", "beam", "energy", "upgradeableWeapon"],
+  "twoHanded" : true,
+  "tooltipKind" : "gun2",
+  "animation" : "fubeamgunghostbuster.animation",
+  "animationParts" : {
+    "beamorigin" : "rainbowmuzzle.png",
+    "gnome" : "fubeam.png",
+    "gnomefullbright" : "fubeamfullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fireStart" : [ "/sfx/gun/erchiuseyebeam_start.ogg" ],
+      "fireLoop" : [ "/sfx/gun/erchiuseyebeam_loop.ogg" ],
+      "fireEnd" : [],
+      "beamImpact" : [ "/sfx/gun/erchiuseyebeam_stop.ogg" ]
+    }
+  },
+  "animationScripts" : ["/items/active/effects/chain.lua"],
+
+  "muzzleOffset" : [2.8, 0.275],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/beamfire.lua"],
+    "class" : "BeamFire",
+
+    "fireTime" : 0.1,
+    "baseDps" : 12.5,
+    "energyUsage" : 45,
+
+    "damageConfig" : {
+      "statusEffects" : [ ],
+      "damageSourceKind" : "electricplasma",
+      "knockback" : 2
+    },
+
+    "beamLength" : 20,
+
+    "chain" : {
+      "startOffset" : [0, 0],
+      "startSegmentImage" : "/items/active/weapons/ranged/unique/peglaci/fubeamgun/rainbowstart.png",
+      "segmentImage" : "/items/active/weapons/ranged/unique/peglaci/fubeamgun/rainbow.png",
+      "endSegmentImage" : "/items/active/weapons/ranged/unique/peglaci/fubeamgun/rainbowend.png",
+      "segmentSize" : 0.48,
+      "overdrawLength" : 0.2,
+      "taper" : 0,
+      "waveform" : {
+        "frequency" : 11.0,
+        "amplitude" : 0.05,
+        "movement" : 12.0
+      },
+      "fullbright" : true
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true,
+
+        "animationStates" : {
+          "gnome" : "squirm"
+        }
+      },
+      "fire" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true,
+
+        "animationStates" : {
+          "gnome" : "fire"
+        }
+      },
+      "cooldown" : {
+        "duration" : 0.5,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true,
+
+        "animationStates" : {
+          "gnome" : "idle"
+        }
+      }
+    }
+  },
+  "critChance" : 2,
+  "critBonus" : 4,
+  "altAbilityType" : "fuerchiuslauncher",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

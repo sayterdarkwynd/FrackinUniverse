@@ -1,0 +1,191 @@
+{
+  "globalTagDefaults" : {
+    "paletteSwaps" : "",
+	"skinColor" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "swoosh" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {},
+          "fire" : {
+            "frames" : 3,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "idle"
+          },
+          "fire2" : {
+            "frames" : 3,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "idle"
+          },
+          "fire3" : {
+            "frames" : 3,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "idle"
+          }
+        }
+      },
+      "blade" : {
+        "default" : "inactive",
+        "states" : {
+          "inactive" : {
+            "properties" : {
+
+              "particleEmittersOff" : ["blade"]
+            }
+          },
+          "extend" : {
+            "frames" : 9,
+            "cycle" : 0.3,
+            "mode" : "transition",
+            "transition" : "active",
+            "properties" : {
+
+              "particleEmittersOn" : ["blade"],
+              "immediateSound" : "/sfx/sword/swordappear.ogg"
+            }
+          },
+          "active" : {
+            "frames" : 9,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+
+              "particleEmittersOn" : ["blade"]
+            }
+          },
+          "retract" : {
+            "frames" : 9,
+            "cycle" : 0.3,
+            "mode" : "transition",
+            "transition" : "inactive",
+            "properties" : {
+
+              "particleEmittersOn" : ["blade"],
+              "immediateSound" : "/sfx/sword/swordappear.ogg"
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "blade" : {
+        "properties" : {
+          "zLevel" : 0,
+          "centered" : true,
+          "fullbright" : false,
+          "offset" : [0, 1.875],
+          "transformationGroups" : ["weapon"],
+          "rotationCenter" : [0, 0],
+          "damageArea" : [[-0.6, -1.2], [-0.6, 1.2], [0, 0.1], [0, 0.3]]
+        },
+
+        "partStates" : {
+          "blade" : {
+            "inactive" : {
+              "properties" : {
+                "image" : ""
+              }
+            },
+            "extend" : {
+              "properties" : {
+                "image" : "<partImage>:extend.<frame>?<directives>?<bladeDirectives>?<skinColor>"
+              }
+            },
+            "active" : {
+              "properties" : {
+                "image" : "<partImage>:active.<frame>?<directives>?<bladeDirectives>?<skinColor>"
+              }
+            },
+            "retract" : {
+              "properties" : {
+                "image" : "<partImage>:retract.<frame>?<directives>?<bladeDirectives>?<skinColor>"
+              }
+            }
+          }
+        }
+      },
+
+      "swoosh" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "fullbright" : false,
+          "transformationGroups" : ["swoosh"],
+          "rotationCenter" : [0, 0]
+        },
+
+        "partStates" : {
+          "swoosh" : {
+            "idle" : {
+              "properties" : {
+                "image" : ""
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "/items/active/weapons/melee/slimedagger/swoosh/slimeswoosh.png:<frame>?<skinColor>",
+                "offset" : [2.5, 0],
+                "damageArea" : [[1.5, -0.25], [1.5, 0.25], [0, -0.25], [0, 0.25]]
+              }
+            },
+            "fire2" : {
+              "properties" : {
+                "image" : "/items/active/weapons/melee/broadsword/slimebroadsword/swoosh2/slimeswoosh.png:<frame>?<skinColor>",
+                "offset" : [5.0, 1.0],
+                "damageArea" : [[-4, 1], [2.5, 1], [2.5, -2], [-4, -2]]
+              }
+            },
+            "fire3" : {
+              "properties" : {
+                "image" : "/items/active/weapons/melee/broadsword/slimebroadsword/swoosh3/slimeswoosh.png:<frame>?<skinColor>",
+                "offset" : [3.5, 0],
+                "damageArea" : [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {},
+    "swoosh" : {}
+  },
+
+  "particleEmitters" : {
+    "physicalswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "burstCount" : 0,
+      "particles" : [
+        { "particle" : "energyblade"},
+        { "particle" : "energyblade2"}
+      ]
+    },
+    "blade" : {
+      "active" : false,
+      "transformationGroups" : ["weapon"],
+      "offsetRegion" : [-0.5, 1.5, 0.5, 4.0],
+      "emissionRate" : 0,
+      "particles" : [
+        { "particle" : "energyblade"},
+        { "particle" : "energyblade2"}
+      ]
+    }
+  },
+
+
+  "sounds" : {
+    "fire" : [],
+    "fire2" : [],
+    "fire3" : []
+  }
+}

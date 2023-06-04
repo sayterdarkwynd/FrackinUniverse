@@ -1,0 +1,229 @@
+{
+  "metadata" : {
+    "name" : "wizardabode",
+    "species" : "generic",
+    "rules" : [
+    ],
+    "anchor" : [ "base1", "base2", "base3" ],
+    "gravity" : 80,
+    "maxRadius" : 1000000,
+    "maxParts" : 3,
+    "protected" : true
+},
+
+  "parts" : [
+  
+	//Rooms
+
+    {
+      "name" : "room1",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room1.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "room2",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room2.json" ],
+      "chance" : 0
+    },
+	    {
+      "name" : "room3",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room3.json" ],
+      "chance" : 0
+    },
+	    {
+      "name" : "room4",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room4.json" ],
+      "chance" : 0
+    },
+	    {
+      "name" : "room5",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room5.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "room6",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room6.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "room7",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room7.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "room8",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room8.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "room9",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room9.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "room10",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "room10.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "smallroom1",
+      "rules" : [
+		[ "maxSpawnCount", [2] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "smallroom1.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "smallroom2",
+      "rules" : [
+		[ "maxSpawnCount", [2] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "smallroom2.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "smallroom3",
+      "rules" : [
+		[ "maxSpawnCount", [2] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "smallroom3.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "smallroom4",
+      "rules" : [
+		[ "maxSpawnCount", [2] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "smallroom4.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "smallroom5",
+      "rules" : [
+		[ "maxSpawnCount", [2] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "smallroom5.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "smallroom6",
+      "rules" : [
+		[ "maxSpawnCount", [2] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "smallroom6.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "smallroom7",
+      "rules" : [
+		[ "maxSpawnCount", [2] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "smallroom7.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "maphomeradar",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "mapmagicka", "maptower" ] ]
+      ],
+      "def" : [ "tmx", "maphomeradar.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "mapmagicka",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "maphomeradar", "maptower" ] ]
+      ],
+      "def" : [ "tmx", "mapmagicka.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "maptower",
+      "rules" : [
+		[ "maxSpawnCount", [1] ],
+		[ "ignorePartMaximumRule" ],
+        [ "doNotCombineWith", [ "maphomeradar", "mapmagicka" ] ]
+      ],
+      "def" : [ "tmx", "maptower.json" ],
+      "chance" : 0
+    },
+	
+    //Bases
+	
+    {
+      "name" : "base1",
+      "rules" : [
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "base1.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "base2",
+      "rules" : [
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "base2.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "base3",
+      "rules" : [
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "base3.json" ],
+      "chance" : 0
+    }
+  ]
+}

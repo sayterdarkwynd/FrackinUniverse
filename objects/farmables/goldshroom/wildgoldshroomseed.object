@@ -1,0 +1,44 @@
+{
+  "objectName" : "wildgoldshroomseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "Glow in the dark.",
+  "shortdescription" : "Gold Shroom Spore",
+  "objectType" : "farmable",
+  "printable" : false,
+//    "learnBlueprintsOnPickup" : [ "zathiseed" ],
+  "inventoryIcon" : "goldshroomseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "goldshroomseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [120, 240]
+    },
+    {
+      "duration" : [120, 240]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "goldshroomHarvest",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125,
+  "breakDropOptions" : [
+    [ [ "goldshroomseed", 1, { } ] ]
+  ]
+}

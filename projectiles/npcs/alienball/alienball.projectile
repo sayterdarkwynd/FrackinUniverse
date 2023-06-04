@@ -1,0 +1,23 @@
+{
+  "projectileName" : "alienball",
+  "physics" : "grenade",
+  "bounces" : 0,
+  "image" : "alienball.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "power" : 5.0,
+  "speed" : 32,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/tarexplosion/tarexplosion.config"
+    },
+    {
+      "action" : "spawnmonster",
+      "type" : "fuslug",
+      "offset" : [0,0]
+    }
+  ],
+  "damageKind" : "tarball",
+  "damageKindImage" : "/interface/statuses/tar.png"
+}

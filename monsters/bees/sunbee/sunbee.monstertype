@@ -1,5 +1,7 @@
 {
   "type" : "sunbee",
+  "shortdescription" : "Sun Bee",
+  "description" : "A glowing bee from the sun itself.",
 
   "categories" : [ "sunbee" ],
   "parts" : [ "body" ],
@@ -17,6 +19,7 @@
   "baseParameters" : {
     "scripts" : [
       "/monsters/bugs/bug.lua",
+      "/monsters/bees/bee.lua",
       "/scripts/util.lua",
       "/scripts/vec2.lua"
     ],
@@ -70,6 +73,7 @@
         "targetMaterialKind" : "organic"
       },
 
+      "appliesWeatherStatusEffects" : false,
       "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
@@ -90,6 +94,12 @@
         },
         "healthRegen" : {
           "baseValue" : 0
+        },
+        "fireResistance" : {
+          "baseValue" : 1
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1
         }
       },
 

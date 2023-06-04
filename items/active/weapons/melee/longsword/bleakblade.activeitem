@@ -1,0 +1,75 @@
+{
+  "itemName" : "bleakblade",
+  "price" : 13600,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "A legendary Nightarian blade. It's said it can cleave time and space.",
+  "shortdescription" : "The Bleak Blade",
+  "tooltipKind" : "swordunique",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","longsword","upgradeableWeapon"],
+  "inventoryIcon" : "bleakblade.png",
+  "animation" : "combolongswordglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "bleakblade.png",
+    "bladefullbright" : "bleakbladefullbright.png"
+  },
+  "animationCustom" : {
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg","/sfx/weapons/biolaunch.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg","/sfx/weapons/shocklance.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg","/sfx/weapons/darknessblast.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg","/sfx/weapons/hailstrike.ogg" ]
+	  },
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.0, 0.5],
+      "color" : [122, 12, 44],
+      "flickerPeriod" : 12.3,
+      "flickerMinIntensity" : 0.45,
+      "flickerMaxIntensity" : 1.4,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    }},
+    "animatedParts":{
+	  "parts":{
+	    "swoosh": {
+		"partStates": {
+		    "swoosh":{
+			    "fire" : {
+			      "properties":{"image":"/items/active/weapons/melee/longsword/swoosh/timeswoosh.png:<frame>", "fullbright" : true, "zLevel":10}
+			    },
+			    "fire2" : {
+			      "properties":{"image":"/items/active/weapons/melee/longsword/swoosh2/timeswoosh.png:<frame>", "fullbright" : true, "zLevel":10}
+			    },
+			    "fire3" : {
+			      "properties":{"image":"/items/active/weapons/melee/longsword/swoosh3/timeswoosh.png:<frame>", "fullbright" : true, "zLevel":10}
+			    }
+		    }
+		}
+	     }
+	   }
+     }
+  },
+  "emitters" : [ "fieryplasma", "cloudtrail" ],
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "silverweapon",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.92,
+    "baseDps" : 7.2,
+    "damageConfig" : {
+      "damageSourceKind": "silverweapon",
+      "statusEffects" : [ "gravrain" ]
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 12,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

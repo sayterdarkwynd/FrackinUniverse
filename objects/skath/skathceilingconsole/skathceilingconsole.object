@@ -1,0 +1,80 @@
+{
+  "objectName" : "skathceilingconsole",
+  "colonyTags" : ["skath"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "wire",
+  "price" : 65,
+  "lightColor" : [38, 122, 128],
+  "flickerDistance" : 0.2,
+  "flickerStrength" : 0.05,
+  "flickerTiming" : 4,
+  "description" : "This sleek console hangs from the ceiling.",
+  "shortdescription" : "Skath Ceiling Console",
+  "race" : "skath",
+
+  "apexDescription" : "I can't decipher these readings. Skath letters have not yet been added to the translator.",
+  "avianDescription" : "A sleek console built by the Skath. I wonder what it does?",
+  "floranDescription" : "Floran can't read waterdragon letterss!",
+  "glitchDescription" : "Impressed. My scans indicate that this is indeed a powerful console.",
+  "humanDescription" : "Urge... to press buttons... rising!",
+  "hylotlDescription" : "The Skath rely so much on their technology. It's a shame.",
+  "novakidDescription" : "Some kinda control console, I'll only push a few buttons...",
+  "skathDescription" : "This screen is depicting basic information about this location. The map should be useful.",
+
+  "inventoryIcon" : "skathceilingconsoleicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "skathceilingconsole.png:<color>.<key>",
+      "imagePosition" : [-8, 0],
+      "animationPosition" : [-8, -0],
+
+      "flipImages" : true,
+      "direction" : "left",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "dualImage" : "skathceilingconsole.png:<color>.<key>",
+      "imagePosition" : [-8, 0],
+      "animationPosition" : [-8, -0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/light/light.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 60,
+
+  "animation" : "/objects/skath/skathceilingconsole/skathceilingconsole.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "bg" : "skathceilingconsole.png",
+    "fg" : "skathceilingconsolelit.png"
+  },
+
+  "inputNodes" : [ [0, 0] ],
+
+  "npcToy" : {
+    "ownerOnly" : true,
+    "influence" : [
+      "wallbutton"
+    ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "objectName" : "elderpainting6",
+  "colonyTags" : [ "elder", "hideous" ],
+  "rarity" : "rare",
+  "category" : "decorative",
+  "price" : 1350,
+  "description" : "A vaguely man-shaped aberration that has a terrifyingly powerful presence. It feels as if touching the painting...would touch him as well.",
+  "shortdescription" : "Lord Nyarlathotep",
+  "race" : "glitch",
+  //"collectablesOnPickup" : { "fu_shoggothart" : "elderpainting6" },
+
+  "inventoryIcon" : "elderpainting6.png",
+  "orientations" : [
+    {
+      "dualImage" : "elderpainting6.png:<color>",
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+      "metaBoundBox" : [-10, -10, 10, 10]
+
+    }
+  ],
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [0.25, "nosebleed"],
+        [0.25, "flee"],
+        [0.25, "creepyfollow"],
+        [0.25, "cry"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 2
+  },
+  "statusEffects"  : [ "madnessgainpainting1" ]
+}

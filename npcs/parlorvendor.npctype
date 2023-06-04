@@ -1,0 +1,127 @@
+{
+   "type":"parlorvendor",
+   "baseType":"merchanttenant",
+   "damageTeam":1,
+   "scripts":[
+      "/npcs/bmain.lua"
+   ],
+   "initialScriptDelta":5,
+   "scriptConfig":{
+      "questGenerator":{
+         "pools":[
+            "common",
+            "tenant"
+         ]
+      },
+      "merchant":{
+         "waitTime":40,
+         "storeRadius":10,
+         "categories":{
+            "default":[
+               "parlorvendor"
+            ],
+            "penguin":[
+               "parlorvendor"
+            ]
+         },
+         "buyFactorRange":[
+            2.0,
+            4.0
+         ],
+         "sellFactorRange":[
+            0.2,
+            0.2
+         ],
+         "numItems":10,
+         "paneLayoutOverride":{
+            "windowtitle":{
+               "title":"  Ice Cream Vendor",
+               "subtitle":"  A legit penguin business?!"
+            }
+         }
+      },
+      "dialog":{
+         "merchant":{
+            "start":{
+               "default":{
+                  "default":[
+                     "Right, you here for the sweet stuff? ... Ice cream, I mean.",
+                     "All right, all right. What can I fix you with?",
+                     "Take your pick, mate."
+                  ]
+               },
+               "penguin":{
+                  "default":[
+                     "Right, you here for the sweet stuff? ... Ice cream, I mean.",
+                     "All right, all right. What can I fix you with?",
+                     "Take your pick, mate."
+                  ]
+               }
+            },
+            "welcome":{
+               "default":{
+                  "default":[
+                     "Can I interest you in a sardine sundae?",
+                     "A single scoop starts at 300,000 pixels... kidding! Just kidding!",
+                     "Let's talk business. ... ICE CREAM business, mind you."
+                  ],
+                  "penguin":{
+                     "default":[
+                     "Can I interest you in a sardine sundae?",
+                     "A single scoop starts at 300,000 pixels... kidding! Just kidding!",
+                     "Let's talk business. ... ICE CREAM business, mind you."
+                     ]
+                  },
+                  "end":{
+                     "default":{
+                        "default":[
+                           "Yeah, yeah, don't let the door hit ya on the way out."
+                        ]
+                     },
+                     "penguin":{
+                        "default":[
+                           "Yeah, yeah, don't let the door hit ya on the way out."
+                        ]
+                     }
+                  },
+                  "follow":"/dialog/merchant.config:follow",
+                  "tout":"/dialog/merchant.config:tout"
+               },
+               "tenant":{
+                  "grumbles":{
+                     "tagCriteria":"/dialog/merchant.config:tagCriteria",
+                     "enclosedArea":"/dialog/merchant.config:enclosedArea",
+                     "otherDeed":"/dialog/merchant.config:otherDeed",
+                     "severe":"/dialog/merchant.config:severe",
+                     "final":"/dialog/merchant.config:final"
+                  },
+                  "arrivedHome":{
+                     "beacon":"/dialog/merchant.config:beacon",
+                     "rent":"/dialog/merchant.config:rent"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "matchColorIndices":true,
+   "items":{
+      "override":[
+         [
+            0,
+            [
+               {
+                  "legs":[
+                     {
+                        "name":"penguinglasses",
+                        "parameters":{
+                           "colorIndex":1
+                        }
+                     }
+                  ]
+               }
+            ]
+         ]
+      ]
+   }
+}

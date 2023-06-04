@@ -1,0 +1,78 @@
+[
+  {
+    "op": "add",
+    "path": "/dropPools/0/firebow",
+    "value": "quagmuttHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/icebow",
+    "value": "quagmuttHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/poisonbow",
+    "value": "quagmuttHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/electricbow",
+    "value": "quagmuttHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/radioactivebow",
+    "value": "quagmuttHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/cosmicbow",
+    "value": "quagmuttHunting"
+  },
+  {
+    "op": "add",
+    "path": "/dropPools/0/shadowbow",
+    "value": "quagmuttHunting"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-leap",
+        "cooldown": 4,
+        "parameters": {
+          "minimumRange": 5,
+          "maximumRange": 20,
+          "windupTime": 0.5,
+          "leapVelocity": 35,
+          "collisionCheck": true,
+          "highArc": true,
+          "leapState": "jump",
+          "fallState": "fall",
+          "winddownTime": 2
+        }
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/touchDamage/statusEffects/-",
+    "value": "weakpoison"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 70
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/poisonResistance/baseValue",
+    "value": 0.95
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/poisonStatusImmunity/baseValue",
+    "value": 1
+  }
+]

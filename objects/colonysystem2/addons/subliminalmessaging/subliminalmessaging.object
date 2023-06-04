@@ -1,0 +1,46 @@
+{
+  "objectName" : "c_subliminalmessaging",
+  "rarity" : "Uncommon",
+  "colonyTags" : ["evil","apexresearchlab"],
+  "category" : "decorative",
+  "price" : 250,
+  "description" : "Secretly emits subtle tones to make your tenants like your colony more. ^yellow;+12 Happiness\n^blue;Requires 12J every 5s.^reset;",
+  "shortdescription" : "Subliminal Messaging",
+  "race" : "generic",
+  "printable" : false,
+
+  "inventoryIcon" : "subliminalmessagingicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "subliminalmessaging.png:<color>",
+      "imagePosition" : [-8, -8],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+
+    }
+  ],
+
+
+	"scripts" : [ "/scripts/fupower.lua","/objects/colonysystem2/addons/subliminalmessaging/subliminalmessaging.lua"],
+    "scriptDelta" : 300,
+
+
+	"inputNodes" : [ [0, 0] ],
+	"powertype" : "input",
+	"isn_requiredPower" : 12,
+	"isn_liquidCollector" : false,
+
+
+
+	"airWellRange":256,
+	"productionTime":1000,
+    "frameCooldown" : 67,
+    "autoCloseCooldown" : 3600,
+
+	"happiness":12
+
+
+}

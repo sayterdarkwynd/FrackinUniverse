@@ -1,0 +1,57 @@
+{
+  "objectName" : "peglacihorizontalalloydoor",
+  "colonyTags" : [ "peglaci", "door" ],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 125,
+  "printable" : true,
+  "description" : "A sturdy door made of an unusual alloy.",
+  "shortdescription" : "Alloy Hatch",
+  "race" : "peglaci",
+
+  "apexDescription" : "Sturdy and cold to the touch.",
+  "avianDescription" : "The faceted crystal in the centre is so lovely.",
+  "floranDescription" : "Open, door!",
+  "glitchDescription" : "Analysis. A sturdy water-proof door.",
+  "humanDescription" : "That sure is a lovely giant crystal right in the center there. Seems a little much for a door, but who am I to judge?",
+  "hylotlDescription" : "Is that crystal in the center quite necessary?",
+  "novakidDescription" : "A hatch. A really nice hatch.",
+  "fupeglaciDescription" : "A sliding waterproof hatch with an incorporated crystalline biometric scanner.",
+
+  "inventoryIcon" : "peglacihorizontalalloydooricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "peglacihorizontalalloydoor.png:default",
+      "imagePosition" : [-16, -20],
+      "animationPosition" : [-16, -20],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "left", "right" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/bunkerslidingdoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/bunkerslidingdoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "peglacihorizontalalloydoor.png"
+  },
+
+  "inputNodes" : [ [-2, 0] ],
+  "outputNodes" : [ [2, -1] ]
+}

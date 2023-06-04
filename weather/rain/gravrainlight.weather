@@ -1,0 +1,85 @@
+{
+  "name" : "gravrainlight",
+  "icon" : "/interface/cockpit/weather/gravityrain.png",
+
+"particles" : [
+    {
+
+      "density" : 0.05,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/gravrain/rain1.png",
+        "velocity" : [0, -35.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 20,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/gravrain/splash1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true,
+        "ignoreWind" : false
+      }
+    },
+    {
+      "density" : 0.05,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/gravrain/rain2.png",
+        "velocity" : [0, -25.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 20,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/gravrain/splash1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true,
+        "ignoreWind" : false
+      }
+    },
+    {
+      "density" : 0.05,
+      "autoRotate" : true,
+
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/gravrain/rain3.png",
+        "velocity" : [0, -20.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 20,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/gravrain/splash1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true,
+        "ignoreWind" : false
+      }
+    }
+  ],
+
+  "projectiles" : [
+    {
+      "projectile" : "gravityrain",
+      "parameters" : {
+        "power" : 0
+      },
+      "velocity" : [0, -30],
+      "ratePerX" : 0.03,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    }
+  ],
+
+  "duration" : [50, 120],
+  "lightningFrequency" : 0.12,
+  "maximumWind" : 30.0,
+  "weatherNoises" : [ "/sfx/weather/WeatherDrizzle.ogg" ]
+}
+

@@ -1,0 +1,41 @@
+{
+  "objectName" : "swtjc_wp_compacthdlatch",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "The left, or 'Enable', node controls whether or not the latch can change states based on its right, or 'Data', node.",
+  "shortdescription" : "Compact Data Latch",
+  "race" : "human",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "floranDescription" : "The left, or 'Enable', node controlsss whether or not the latch can change statesss based on itsss right, or 'Data', node.",
+  "glitchDescription" : "Fascinated. The left, or 'Enable', node controls whether or not the latch can change states based on its right, or 'Data', node.",
+
+  "inventoryIcon" : "swtjc_wp_compacthdlatch.png:default.on",
+  "orientations" : [
+    {
+      "image" : "swtjc_wp_compacthdlatch.png:default.on",
+      "imagePosition" : [-0, -0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/logic/dlatch.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/wired/advancedlogic/swtjc_wp_advancedlogic.animation",
+
+  "animationParts" : {
+    "switch" : "swtjc_wp_compacthdlatch.png"
+  },
+  "animationPosition" : [-0, -0],
+
+  "inputNodes" : [ [0, 0], [1, 0] ],
+  "outputNodes" : [ [2, 0] ]
+}

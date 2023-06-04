@@ -1,0 +1,422 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 4,
+            "cycle" : 1,
+            "mode" :"loop",
+            "frameProperties" : {
+              "particleEmittersOff" : [ ["waterdrip"], [], [], [] ],
+              "particleEmittersOn" : [ [], [], ["waterdrip"], [] ]
+            }
+          },
+          "walk" : {
+            "frames" : 8,
+            "cycle" : 1,
+            "mode" :"loop",
+            "frameProperties" : {
+              "particleEmittersOff" : [ ["waterdrip"], [], [], [], ["waterdrip"], [], [], ["waterdrip"] ],
+              "particleEmittersOn" : [ [], [], ["waterdrip"], [], [], ["waterdrip"], [], [] ],
+              "immediateSound" : [ "", "", "", "/sfx/npc/wetstep2.ogg", "", "", "/sfx/npc/wetstep1.ogg", "" ]
+            }
+          },
+          "hurt" : {
+            "frames" : 1,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/quadruped/lion_attack1.ogg"
+            }
+          },
+          "melee" : {
+            "frames" : 7,
+            "cycle" : 1
+          },
+          "bite" : {
+            "frames" : 7,
+            "cycle" : 1
+          },
+          "bitewindup" : {
+            "frames" : 2,
+            "cycle" : 0.3
+          },
+          "bitewinddown" : {
+            "frames" : 2,
+            "cycle" : 0.2
+          },
+          "chomp" : {
+            "frames" : 3,
+            "cycle" : 0.5,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/quadruped/lion_attack2.ogg"
+            }
+          },
+          "fire" : {
+            "frames" : 9,
+            "cycle" : 1
+          },
+          "firewindup" : {
+            "frames" : 4,
+            "cycle" : 0.8
+          },
+          "spit" : {
+            "frames" : 5,
+            "cycle" : 0.7
+          },
+          "firewinddown" : {
+            "frames" : 7,
+            "cycle" : 0.8
+          },
+          "jumpwindup" : {
+            "frames" : 1,
+            "cycle" : 0.5,
+            "mode" :"loop"
+          },
+          "jump" : {
+            "frames" : 1,
+            "cycle" : 0.5,
+            "mode" :"loop"
+          },
+          "fall" : {
+            "frames" : 1,
+            "cycle" : 0.5
+          },
+          "chargewindup" : {
+            "frames" : 2,
+            "cycle" : 0.35,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/quadruped/lion_attack2.ogg"
+            },
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "waterdrip" ], [] ],
+              "particleEmittersOn" : [ [], [] ]
+            }
+          },
+          "chargewinddown" : {
+            "frames" : 1,
+            "cycle" : 0.17,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/quadruped/lion_idle2.ogg"
+            },
+            "frameProperties" : {
+              "particleEmittersOff" : [ ["waterdrip"] ],
+              "particleEmittersOn" : [ [] ]
+            }
+          },
+          "charge" : {
+            "frames" : 4,
+            "cycle" : 0.5,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/oogler_charge.ogg"
+            },
+            "frameProperties" : {
+              "particleEmittersOff" : [ [], ["waterdrip"],  [], ["waterdrip"]],
+              "particleEmittersOn" : [ ["waterdrip"], [],  ["waterdrip"], [] ]
+            }
+          },
+
+          "roarwindup" : {
+            "frames" : 2,
+            "cycle" : 0.3 ,
+            "mode" : "transition",
+            "transition" : "roar",
+            "frameProperties" : {
+              "particleEmittersOff" : [ [],[] ],
+              "particleEmittersOn" : [ ["waterdrip"],[] ]
+            }
+          },
+          "roar" : {
+            "frames" : 1,
+            "cycle" : 2,
+            "mode" : "transition",
+            "transition" : "roarwinddown",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/monsters/troll5.ogg",
+              "persistentSoundStopTime" : 1.25
+            }
+          },
+          "roarwinddown" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "idle",
+            "frameProperties" : {
+              "particleEmittersOff" : [ ["waterdrip"],[] ],
+              "particleEmittersOn" : [ [],[] ]
+            }
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ]
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+
+            "jumpwindup" : {
+              "properties" : {
+                "image" : "<partImage>:jumpwindup",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:fall",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+
+            "roarwindup" : {
+              "properties" : {
+                "image" : "<partImage>:roarwindup.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "roarwinddown" : {
+              "properties" : {
+                "image" : "<partImage>:firewinddown.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "roar" : {
+              "properties" : {
+                "image" : "<partImage>:roar",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:hurt",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:chargewindup.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:chargewinddown.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:charge.<frame>",
+                "damageArea" : [ [-2.3,1.0],[-1.7,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:melee.<frame>",
+                "damageArea" : [ [-2.3,1.0],[-1.7,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+
+            "bite" : {
+              "properties" : {
+                "image" : "<partImage>:bite.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3]  ]
+              }
+            },
+            "bitewindup" : {
+              "properties" : {
+                "image" : "<partImage>:bitewindup.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "chomp" : {
+              "properties" : {
+                "image" : "<partImage>:chomp.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "bitewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:bitewinddown.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:firewindup.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "spit" : {
+              "properties" : {
+                "image" : "<partImage>:spit.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:firewinddown.<frame>",
+                "damageArea" : [ [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3] ]
+              }
+            }
+
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "particleEmitters" : {
+    "waterdrip" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [ 1.0, -1.0, 2.0, -0.0 ],
+      "particles" : [
+        { "particle" : "deeponedrip" },
+        { "particle" : "deeponedrip" },
+        { "particle" : "deeponedrip" },
+        { "particle" : "deeponedrip" },
+        { "particle" : "deeponedrip" },
+        { "particle" : "deeponedrip" }
+
+      ]
+    },
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ "/sfx/npc/monsters/deeponeturnhostile.ogg" ],
+    "deathPuff" : [ "/sfx/npc/monsters/deeponeturnhostile.ogg" ],
+    "turnHostile" : [ "/sfx/npc/monsters/deeponeturnhostile.ogg" ],
+    //"fire" : [ "/sfx/npc/monsters/deeponeattack1.ogg" , "/sfx/npc/monsters/deeponeattack2.ogg"  ]
+    "fire" : [   ],
+    "spit" : [ "/sfx/npc/monsters/deeponeattack1.ogg"]
+  }
+}

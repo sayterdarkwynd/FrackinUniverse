@@ -1,0 +1,47 @@
+{
+  "type" : "grandarenausher",
+  "baseType" : "base",
+
+  "damageTeamType" : "friendly",
+  "levelVariance" : [0, 0],
+
+  "persistent" : true,
+
+  "dropPools" : [ "villagertreasure" ],
+
+  "scriptConfig" : {
+    "behavior" : "spectator",
+
+    "dialog" : {
+      "converse" : {
+        "default" : {
+          "default" : [
+            "I have nothing to sssay to you"
+          ]
+        },
+        "floran" : {
+          "default" : [
+            "Floran welcomesss you to grand arena! Sssurvive all wavesss of monstersss to gain victory, but if you die during challenge then you mussst ssstart all over again!"
+          ]
+        }
+      }
+    }
+  },
+
+  "matchColorIndices" : true,
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "predatoryhead", "parameters" : { "colorIndex" : 7 } } ],
+            "chest" : [ { "name" : "predatorychest", "parameters" : { "colorIndex" : 7 } } ],
+            "legs" : [ { "name" : "predatorypants", "parameters" : { "colorIndex" : 7 } } ],
+            "back" : [ { "name" : "predatoryback", "parameters" : { "colorIndex" : 7 } } ],
+            "primary" : [
+              "npcspear"
+            ]
+          }
+        ] ]
+    ]
+  }
+}

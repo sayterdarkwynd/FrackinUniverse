@@ -1,0 +1,107 @@
+{
+	"type": "fucultistbuilder",
+	"baseType": "merchant",
+
+	"damageTeam": 1,
+
+	"disableWornArmor": true,
+
+	"scripts": [
+		"/npcs/bmain.lua"
+	],
+	"initialScriptDelta": 5,
+	"scriptConfig": {
+		"questGenerator": {
+			"pools": ["common", "tenant"],
+			"enableParticipation": true,
+			"timeLimit": 5
+		},
+
+		"graduation": {
+			"nextNpcType": [
+				[1, "crewmember"],
+				[0.2, "crewmemberhobo"],
+				[0.1, "crewmembergreg"],
+				[0.7, "crewmembercultist"]
+			]
+		},
+
+		"merchant": {
+			"waitTime": 40,
+			"storeRadius": 8,
+			"poolsFile": "/npcs/merchantpools.config",
+			"categories": {
+				"override": ["futemplemerchant"]
+			},
+			"buyFactorRange": [1.2, 3.0],
+			"sellFactorRange": [0.05, 0.1],
+			"numItems": 12,
+			"paneLayoutOverride": {
+				"windowtitle": {
+					"title": "  Eldritch Temple Construction",
+					"subtitle": "  The Building Blocks of Madness"
+
+				}
+			}
+		},
+
+		"dialog": {
+			"merchant": {
+				"start": "/dialog/eldermerchant.config:merchantStart",
+				"end": "/dialog/eldermerchant.config:merchantEnd",
+				"follow": "/dialog/eldermerchant.config:follow",
+				"welcome": "/dialog/eldermerchant.config:welcome",
+				"tout": "/dialog/eldermerchant.config:tout"
+			},
+			"flee": {
+				"helpme": "/dialog/flee.config:helpme",
+				"safe": "/dialog/flee.config:safe"
+			},
+			"tenant": {
+				"grumbles": {
+					"tagCriteria": "/dialog/eldermerchant.config:tagCriteria",
+					"enclosedArea": "/dialog/eldermerchant.config:enclosedArea",
+					"otherDeed": "/dialog/eldermerchant.config:otherDeed",
+					"severe": "/dialog/eldermerchant.config:severe",
+					"final": "/dialog/eldermerchant.config:final"
+				},
+				"arrivedHome": {
+					"beacon": "/dialog/eldermerchant.config:beacon",
+					"rent": "/dialog/eldermerchant.config:rent"
+				}
+			},
+			"accuse": "/dialog/thief.config:accuse",
+			"alert": "/dialog/thief.config:alert"
+
+
+		}
+
+
+	},
+
+	"items": {
+		"override": [
+			[0, [{
+				"head": [{
+					"name": "cultcrown",
+					"parameters": {
+						"colorIndex": 0
+					}
+				}],
+				"chest": [{
+					"name": "cultarmorchest",
+					"parameters": {
+						"colorIndex": 0
+					}
+				}],
+				"legs": [{
+					"name": "cultarmorpants",
+					"parameters": {
+						"colorIndex": 0
+					}
+				}]
+			}]]
+		]
+	}
+
+}

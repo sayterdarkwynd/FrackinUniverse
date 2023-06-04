@@ -1,0 +1,185 @@
+{
+  "name" : "futentacleunderground",
+  "friendlyName" : "Infested Cave",
+
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 6,
+        "pool" : [
+          [ 1, "tentaclecrawler" ],
+          [ 1, "tentaclegnat" ],
+          [ 0.5, "tentaclespawner" ],
+          [ 0.6, "tentaclebomb" ],
+          [ 0.6, "tentacleghost" ],
+          [ 0.6, "futentaclebarrier" ],
+          [ 1, "tentacleclam" ]
+        ]
+      },
+      {
+        "select" : 5,
+        "pool" : [
+          [ 1, "bigwormcritter" ],
+          [ 1, "fisheyecritter" ],
+          [ 1, "cellcritter" ],
+          [ 1, "cell2critter" ],
+          [ 1, "eggcellcritter" ]
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "colors" : "volcanic",
+        "statusSettings" : {
+        "stats" : {
+          "poisonStatusImmunity" : {"baseValue" : 1.0},
+          "pusImmunity" : {"baseValue" : 1.0},
+          "insanityImmunity" : {"baseValue" : 1.0},
+          "biooozeImmunity" : {"baseValue" : 1.0}
+        }
+      }
+    }
+  },
+
+    "mainBlock" : "tentacleblock",
+    "subBlocks" : [ "andesite", "jellyblock", "fustomachblock" ],
+    "ores" : "ff_deepsurfaceshadowOres",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/desert_underground.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/desert_underground.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "tentaclegrass" ],
+    "grassModDensity" : 0.9,
+      "ceilingGrassMod" : [ "tentaclegrass" ],
+      "ceilingGrassModDensity" : 0.5,
+    "items" : [
+      {
+        "mode" : "background",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundFossils",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.15, "dirtyfossil1" ], [0.15, "dirtyfossil2" ], [0.15, "dirtyfossil3" ], [0.15, "dirtyfossil4" ], [0.1, "dirtyfossil5" ], [0.1, "dirtyfossil6" ], [0.1, "dirtyfossil7" ], [0.1, "dirtyfossil8" ] ],
+            "parameters" : {  "materials" : ["mud", "cobblestone", "bonematerial"]}
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [
+            [2.0, "tentaclepopbig" ],
+            [0.8, "tentaclepopmed" ],
+            [0.8, "tentaclepopsmall" ],
+            [0.8, "tentacleegg" ],
+            [0.4, "tentaclespawner1" ]
+            ]
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclepart1" ], [0.8, "tentaclepart2" ], [0.8, "tentaclepart3" ], [0.4, "tentaclespawner1" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclespike" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclespike" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclepart1" ], [0.8, "tentaclepart2" ], [0.8, "tentaclepart3" ], [0.4, "tentaclespawner1" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 0,
+        "treeStemHueShiftMax" : 0,
+        "treeStemList" : [ "tentacle" ],
+        "treeFoliageList" : [ "" ]
+      }
+    ]
+  },
+
+  "hueShiftOptions" : [0],
+  "parallax" : "/parallax/underground/atropusunderground.parallax",
+
+  "sky" : {
+    "topColor" : [182, 204, 255],
+    "bottomColor" : [224, 239, 255],
+    "nightTopColor" : [0, 0, 30],
+    "nightBottomColor" : [0, 0, 0]
+  }
+}

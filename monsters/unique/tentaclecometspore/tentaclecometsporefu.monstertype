@@ -1,5 +1,7 @@
 {
   "type" : "tentaclecometsporefu",
+  "shortdescription" : "Tentacool",
+  "description" : "Its tentacles contain a poison that stops targets in their tracks.",
 
   "categories" : [ "tentaclecometsporefu" ],
   "parts" : [ "chest" ],
@@ -8,11 +10,18 @@
   "animation" : "tentaclecometsporefu.animation",
   "reversed" : true,
 
+
   "dropPools" : [
     {
       "default" : "shadowtopLoot",
       "bow" : "hunting",
-      "brain" : "brain"
+      "firebow" : "hunting",
+      "icebow" : "hunting",
+      "poisonbow" : "hunting",
+      "electricbow" : "hunting",
+      "cosmicbow" : "hunting",
+      "radioactivebow" : "hunting",
+      "shadowbow" : "hunting"
     }
   ],
 
@@ -98,6 +107,7 @@
         "targetMaterialKind" : "organic"
       },
 
+      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 

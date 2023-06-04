@@ -1,0 +1,78 @@
+{
+  "name" : "bloodrain",
+  "icon" : "/interface/cockpit/weather/bloodrain.png",
+
+"particles" : [
+    {
+      "density" : 0.05,
+	  "autoRotate" : true,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/bloodrain/rain1.png",
+        "velocity" : [0, -35.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 100,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/bloodrain/splash1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.007,
+	  "autoRotate" : true,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/bloodrain/rain2.png",
+        "velocity" : [0, -25.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 100,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/bloodrain/splash1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    },
+    {
+      "density" : 0.15,
+	  "autoRotate" : true,
+      "particle" : {
+        "type" : "textured",
+        "image" : "/particles/bloodrain/rain3.png",
+        "velocity" : [0, -20.5],
+        "approach" : [15, 15],
+        "angularVelocity" : 0,
+        "timeToLive" : 100,
+        "destructionAction" : "Image",
+        "destructionTime" : 0.1,
+        "destructionImage" : "/particles/bloodrain/splash1.png",
+        "collidesForeground" : true,
+        "collidesLiquid" : true
+      }
+    }
+  ],
+
+  "projectiles" : [
+    {
+      "projectile" : "bloodrain",
+      "parameters" : {
+        "power" : 0
+      },
+      "velocity" : [0, -30],
+      "ratePerX" : 0.1,
+      "spawnAboveRegion" : 30,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    }
+  ],
+
+  "duration" : [50, 820],
+  "lightningFrequency" : 1.12,
+  "maximumWind" : 30.0,
+  "weatherNoises" : [ "/sfx/weather/rain_heavy.ogg" ]
+}
+

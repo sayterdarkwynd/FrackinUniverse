@@ -1,0 +1,43 @@
+{
+  "projectileName" : "cosmicbouncer",
+  "physics" : "laser",
+  "timeToLive" : 5,
+  "image" : "cosmicbouncer.png",
+  "animationCycle" : 0.3,
+  "lightColor" : [70, 30, 110],
+  "frameNumber" : 4,
+  "periodicActions" : [ ],
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/cosmicimpact2.config"
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/cosmicimpact.config"
+    }
+  ],
+  "speed" : 0,
+  "power" : 30,
+  "piercing" : true,
+  "damageKind" : "cosmicplasma",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "defenseboostneg20" ],
+
+  "fullbright" : true,
+  "emitters" : [ "cosmicdust" ],
+
+  "bounces" : 6,
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua", "/projectiles/activeitems/staff/elementbouncer/bouncespikes.lua" ],
+
+  "spikeProjectile" : "cosmicstickyspikes",
+  "spikeDamageFactor" : 0.1,
+
+  "controlMovement" : {
+    "maxSpeed" : 60,
+    "controlForce" : 60
+  }
+}

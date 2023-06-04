@@ -4,14 +4,15 @@
   "inventoryIcon" : "swarmgun.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Fires swarming insects. ^#e43774;-Upgradeable-^reset;",
+  "description" : "Horrify the enemy with clouds of stinging, angry bugs.
+^cyan;Causes stings, weakening and poison^reset;",
   "shortdescription" : "Swarm Gun",
-  "level" : 3,
-  "tooltipKind" : "gun",
+  "category" : "bioweapon",
+  "level" : 4,
+  "tooltipKind" : "gun2",
   "weaponType" : "Bio-Weapon",
-  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "itemTags" : ["weapon","ranged","assaultrifle", "bioweapon", "upgradeableWeapon" ],
   "twoHanded" : true,
-
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
@@ -30,25 +31,50 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "bioweapon",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 2.5,
-    "baseDps" : 4.5,
+    "baseDps" : 2,
     "energyUsage" : 35.0,
     "inaccuracy" : 0,
 
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "insectswarm",
-    "projectileParameters" : { 
+    "projectileType" : "hiveswarm2",
+    "projectileParameters" : {
       "speed" : 32,
-      "knockback" : 1
+      "knockback" : 1,
+      "damageKind" : "bioweapon",
+	  "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/beeboom/beeboom.config"
+	    },
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/hivebomb_impact.ogg" ]
+	    }
+	  ],
+	  "periodicActions" : [
+	    {
+	      "time" : 0.05,
+	      "loop" : true,
+	      "action" : "projectile",
+	      "type" : "hiveswarm3",
+	      "config" : {
+	        "statusEffects" : [ "weakpoison" ]
+	      },
+	      "inheritDamageFactor" : 0.01,
+	      "fuzzAngle" : 360
+	   }
+	  ]
     },
-    "statusEffects" : [ "weakenweather2" ],
+
+
   "stances" : {
     "idle" : {
       "armRotation" : 0,
@@ -78,7 +104,8 @@
     }
   }
   },
-
+  "critChance" : 4,
+  "critBonus" : 3,
   "altAbilityType" : "lance",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

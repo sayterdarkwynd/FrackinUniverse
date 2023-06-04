@@ -1,0 +1,51 @@
+{
+	"projectileName": "neutronbombgrav1",
+	"image": "/projectiles/mech/gravitysphere/gravitysphere.png",
+	"animationCycle": 0.3,
+	"physics": "illusion",
+	"frameNumber": 3,
+	"windupFrames": 2,
+	"winddownFrames": 2,
+	"pointLight": false,
+	"speed": 0,
+	"power": 0.0,
+
+	"bounces": -1,
+	"piercing": true,
+
+	"timeToLive": 1,
+
+	"orientationLocked": true,
+
+	"damagePoly": [
+		[-132, 0],
+		[-128, 128],
+		[128, 128],
+		[132, 0],
+		[128, -128],
+		[-128, -128]
+	],
+	"damageRepeatTimeout": 0.1,
+
+	"boundBox": [-10, -10, 10, 10],
+	"physicsForces": {
+		"vacuum": {
+			"type": "RadialForceRegion",
+			"outerRadius": 138,
+			"innerRadius": 0,
+			"targetRadialVelocity": -110,
+			"controlForce": 110,
+			"categoryWhitelist": ["monster", "player", "npc", "vehicle", "itemdrop"]
+		}
+	},
+
+	//"clientEntityMode": "ClientSlaveOnly",
+
+
+	"actionOnReap": [{
+		"action": "sound",
+		"options": ["/sfx/tech/vehicle_disappear1.ogg"]
+	}],
+
+	"persistentAudio": "/sfx/projectiles/gravitymine_loop.ogg"
+}

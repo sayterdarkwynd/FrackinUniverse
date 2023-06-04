@@ -1,0 +1,39 @@
+{
+  "projectileName" : "vashtashardturret",
+  "image" : "vashtashard.png",
+  "animationCycle" : 0.3,
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "flippable" : false,
+  "orientationLocked" : true,
+  "actionOnReap" : [ ],
+  "statusEffects" : [ ],
+  "damagePoly" : [[-4, 2], [-2, 4], [2, 4], [4, 2], [4, -2], [2, -4], [-2, -4], [-4, -2]],
+  "power" : 6.0,
+  "speed" : 40,
+  "damageKind" : "default",
+  "physics" : "laser",
+  "bounces" : -1,
+  "piercing" : true,
+  "timeToLive" : 6,
+  "emitters" : [ "spectralsparkle" ],
+  "persistentAudio" : "/sfx/weapons/branchswoosh.ogg",
+
+  "scripts" : [ "boomerangprojectile.lua" ],
+
+  "ignoreTerrain" : false,
+  "controlForce" : 15,
+  "pickupDistance" : 1.5,
+  "snapDistance" : 3.5,
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 5,
+      "innerRadius" : 0,
+      "targetRadialVelocity" : -50,
+      "controlForce" : 1500,
+      "categoryWhitelist" : ["itemdrop"]
+    }
+  }
+}

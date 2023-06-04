@@ -1,0 +1,66 @@
+{
+  "animationParts" : { },
+  "animationCustom" : { },
+
+  "ability" : {
+    "name" : "Stab",
+    "type" : "spearstab",
+    "scripts" : ["/items/active/weapons/melee/abilities/spear/spearstab.lua"],
+    "class" : "SpearStab",
+
+    "fireTime" : 1.0,
+    "baseDps" : 9.5,
+    "damageConfig" : {
+      "damageSourceKind" : "shadow",
+      "statusEffects" : [ ],
+      "knockbackMode" : "aim",
+      "knockback" : 30,
+      "timeoutGroup" : "primary"
+    },
+    "holdDamageMultiplier" : 0.1,
+    "holdDamageConfig" : {
+      "timeoutGroup" : "hold",
+      "timeout" : 0.5
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "weaponOffset" : [0, 0.5],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "windup" : {
+        "duration" : 0.1,
+        "armRotation" : -110,
+        "weaponRotation" : 20,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 0.5],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.3,
+        "armRotation" : -20,
+        "weaponRotation" : -70,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 2.5],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "hold" : {
+        "armRotation" : -30,
+        "weaponRotation" : -60,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 2.0],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      }
+    }
+  }
+}

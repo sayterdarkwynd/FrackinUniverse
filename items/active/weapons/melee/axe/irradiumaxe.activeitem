@@ -5,13 +5,13 @@
   "rarity" : "rare",
   "description" : "Purified irradium weapon.",
   "shortdescription" : "Irradium Axe",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "axe",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","axe"],
-"level" : 4,
+  "itemTags" : ["weapon","melee","axe","irradium", "upgradeableWeapon","radioactive"],
+  "level" : 4,
   "inventoryIcon" : "irradiumaxe.png",
-
+  //"collectablesOnPickup" : { "fu_weaponaxe" : "irradiumaxe" },
   "animation" : "axe.animation",
   "animationParts" : {
     "blade" : "irradiumaxe.png",
@@ -28,16 +28,17 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "radioactive",
 
   "aimOffset" : -1.0,
 
   "primaryAbilityType" : "axecleave",
   "primaryAbility" : {
-    "fireTime" : 0.65,
+    "fireTime" : 0.51,
     "baseDps" : 10,
     "damageConfig" : {
-      "damageSourceKind" : "poisonaxe",
+      "damageSourceKind" : "radioactiveaxe",
+      "statusEffects" : [ "radiationburn" ],
       "knockback" : 15
     },
     "stances" : {
@@ -66,6 +67,7 @@
       }
     }
   },
-
+  "critChance" : 2,
+  "critBonus" : 4,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -18,7 +18,7 @@
       "house1",
 	  "house4",
 	  "house3",
-	  "cemitery"
+	  "cemetery"
     ]
   },
   "tiles": [
@@ -6799,7 +6799,7 @@
             "direction": "left",
             "parameters": {
               "treasurePools": [
-                "basicTreasure"
+                "ffbasicTreasure"
               ]
             }
           }
@@ -6832,7 +6832,7 @@
             "direction": "right",
             "parameters": {
               "treasurePools": [
-                "basicTreasure"
+                "ffbasicTreasure"
               ]
             }
           }
@@ -6931,7 +6931,7 @@
             "direction": "left",
             "parameters": {
               "treasurePools": [
-                "basicTreasure"
+                "ffbasicTreasure"
               ]
             }
           }
@@ -6964,7 +6964,7 @@
             "direction": "right",
             "parameters": {
               "treasurePools": [
-                "basicTreasure"
+                "ffbasicTreasure"
               ]
             }
           }
@@ -8241,7 +8241,7 @@
             "parameters" : {
               "scriptConfig" : {
                 "merchant" : {
-                  "categories" : [ "avianclothes" ],
+                  "categories" : { "default" : ["avianingredients"] },
                   "numItems" : 10
                 }
               }
@@ -8276,7 +8276,7 @@
             "parameters" : {
               "scriptConfig" : {
                 "merchant" : {
-                  "categories" : [ "avianclothes" ],
+                  "categories" : {"default":[ "avianweaponblueprints", "randomswords" ]},
                   "numItems" : 10
                 }
               }
@@ -8311,7 +8311,7 @@
             "parameters" : {
               "scriptConfig" : {
                 "merchant" : {
-                  "categories" : [ "avianclothes" ],
+                  "categories" :{ "default":[ "avianarmour", "avianclothes" ]},
                   "numItems" : 10
                 }
               }
@@ -8398,12 +8398,12 @@
               "scriptConfig": {
                 "noticePlayersRadius": 20.0,
                 "merchant": {
-                  "categories": [
+                  "categories": {"default":[
                     "avianweaponblueprints",
                     "avianarmorblueprints",
                     "randomguns",
                     "randomswords"
-                  ],
+                  ]},
                   "priceVarianceRange": [
                     0.8,
                     1
@@ -8550,67 +8550,12 @@
       "def": [
         "image",
         [
-          "avianluxury.png",
-          "avianluxuryobjects.png"
-        ]
-      ],
-      "rules": [],
-      "name": "avianluxury"
-    },
-    {
-      "def": [
-        "image",
-        [
-          "aviangrave.png",
-          "aviangraveobjects.png"
-        ]
-      ],
-      "rules": [],
-      "name": "aviangrave"
-    },
-    {
-      "def": [
-        "image",
-        [
-          "avianhunter.png",
-          "avianhunterobjects.png"
-        ]
-      ],
-      "rules": [],
-      "name": "avianhunter"
-    },
-    {
-      "def": [
-        "image",
-        [
           "aviandock.png",
           "aviandockobjects.png"
         ]
       ],
       "rules": [],
       "name": "aviandock"
-    },
-    {
-      "def": [
-        "image",
-        [
-          "villagerhouse1.png",
-          "villagerhouse1a.png"
-        ]
-      ],
-      "rules": [],
-      "name": "villagerhouse1"
-    },
-    {
-      "def": [
-        "image",
-        [
-          "villagerhouse2.png",
-          "villagerhouse2a.png"
-        ]
-      ],
-      "rules": [],
-      "name": "villagerhouse2"
     },
     {
       "def": [
@@ -8638,12 +8583,37 @@
       "def": [
         "image",
         [
-          "cemitery.png",
-          "cemiteryobj.png"
+          "cemetery.png",
+          "cemeteryobj.png"
         ]
       ],
       "rules": [],
-      "name": "cemitery"
+      "name": "cemetery"
+    },
+    {
+      "name": "aviangrave",
+      "rules": [["maxSpawnCount", [1]]],
+      "def": ["tmx", "aviangrave.json"]
+    },
+    {
+      "name": "avianluxury",
+      "rules": [["maxSpawnCount", [1]]],
+      "def": ["tmx", "avianluxury.json"]
+    },
+    {
+      "name": "avianhunter",
+      "rules": [["maxSpawnCount", [1]]],
+      "def": ["tmx", "avianhunter.json"]
+    },
+    {
+      "name": "villagerhouse1",
+      "rules": [["maxSpawnCount", [1]]],
+      "def": ["tmx", "villagerhouse1.json"]
+    },
+    {
+      "name": "villagerhouse2",
+      "rules": [["maxSpawnCount", [1]]],
+      "def": ["tmx", "villagerhouse2.json"]
     }
   ]
 }

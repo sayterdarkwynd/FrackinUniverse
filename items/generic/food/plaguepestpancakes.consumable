@@ -1,0 +1,27 @@
+{
+	"itemName": "plaguepestpancakes",
+	"rarity": "uncommon",
+	"price": 85,
+	"category": "preparedFood",
+	"inventoryIcon": "plaguepestpancakes.png",
+	"description": "I've heard of bacon in pancakes, but pest? Eugh! \n^cyan;-^red;5% Health^reset; ^blue;+2^reset; Madness; ^red;60s Poison^reset; ^orange;Type: Cooked Meat + Vegetables + Dairy + Eggs^reset;",
+	"shortdescription": "Plague Pest Pancakes",
+	"effects": [
+        ["madnessgain2", "bacon_pancakes_meal",
+		{
+				"effect": "negativehealth5",
+                "duration": 90
+            },
+            {"effect": "weakpoison",
+            "duration": 60
+        }
+        ]
+    ],
+	"foodValue": 30,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}

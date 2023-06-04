@@ -1,0 +1,36 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "dashing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {}
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "dashParticles" : {
+      "emissionRate" : 40.0,
+      "particles" : [
+        {
+          "particle" : "zeroburst",
+          "flip" : true
+        },
+        {
+          "particle" : "frozenflames",
+          "flip" : true
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "activate" : [ "/sfx/projectiles/blast_small1.ogg", "/sfx/projectiles/gravitymine_detonate.ogg" ],
+    "recharge" : [ "/sfx/projectiles/astraltear_stop3.ogg", "/sfx/projectiles/fistlauncher_shot.ogg" ],
+      "refire" : [ "/sfx/projectiles/toy_throw2.ogg", "/sfx/projectiles/toy_throw1.ogg" ],
+    "chargeUp" : [ "/sfx/projectiles/guardian_delayedshot_charge1.ogg" ]
+  }
+}

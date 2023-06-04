@@ -1,0 +1,83 @@
+{
+  "itemName" : "radneedler",
+  "price" : 500,
+  "inventoryIcon" : "radneedler.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "Horribly radioactive and kinda pretty.
+^yellow;Inflicts rad-burn^reset;",
+  "shortdescription" : "^#5aff00;Toxic Needler^reset;",
+  "level" : 3,
+  "category" : "machinePistol",
+  "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon", "crystal"],
+  "tooltipKind" : "gun2",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "toxicneedler.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/projectiles/acid_hit.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }
+  },
+
+  "baseOffset" : [0.55, 0.34],
+  "muzzleOffset" : [1.75, 0],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.12,
+    "baseDps" : 6,
+    "energyUsage" : 25,
+    "fireType" : "auto",
+    "inaccuracy" : 0.08,
+    "projectileCount" : 1,
+    "projectileType" : "razorneedlerthornsrad",
+    "projectileParameters" : {
+      "speed" : 65
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "critChance" : 2,
+  "critBonus" : 2,
+  "isAmmoBased" : 1,
+  "magazineSize" : 12,
+  "isMachinePistol" : 1,
+  "reloadTime": 1,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,41 @@
+{
+  "objectName" : "fuunderworlddoor2",
+  "colonyTags" : [ "atropus", "creepy", "flesh",  "door" ],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 95,
+  "description" : "Squishy and putrid",
+  "shortdescription" : "Flesh Door",
+  "race" : "human",
+
+
+  "inventoryIcon" : "fuunderworlddoor2icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fuunderworlddoor2.png:closed",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : [ "/sfx/objects/bunkerslidingdoor_open.ogg" ],
+      "close" : [ "/sfx/objects/bunkerslidingdoor_close.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "door" : "fuunderworlddoor2.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

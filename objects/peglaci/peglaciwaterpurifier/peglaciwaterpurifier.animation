@@ -1,0 +1,67 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "purifierState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1
+          },
+          "on" : {
+            "frames" : 8,
+            "cycle" : 1,
+            "mode" : "loop"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "purifier" : {
+        "properties" : {
+          "zLevel" : 1,
+          "centered" : false
+        },
+
+        "partStates" : {
+          "purifierState" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:off"
+              }
+            },
+
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:liquid.<frame>"
+              }
+            }
+          }
+        }
+      },
+
+      "turbine" : {
+        "properties" : {
+          "zLevel" : 2,
+          "centered" : false
+        },
+
+        "partStates" : {
+          "purifierState" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:off"
+              }
+            },
+
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:turbine.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "objectName" : "embalmingtable",
+  "colonyTags" : [ "science", "macabre", "madness", "insanity" ],
+  "printable" : false,
+  "rarity" : "rare",
+  "description" : "Primarily for investigating (or experimenting on) the deceased. Has other lab applications.",
+  "shortdescription" : "Autopsy Table",
+  "race" : "generic",
+  "category" : "Extractor",
+  "price" : 1400,
+  "objectType" : "container",
+  "hydrophobic" : false,
+  "rooting" : true,
+  "inventoryIcon" : "embalmingtableicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "embalmingtable.png:<color>.<frame>",
+
+      "imagePosition" : [0, 0],
+      "frames" : 5,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "animation" : "/objects/minibiome/elder/embalmingtable/embalmingtable.animation",
+  "animationParts" : { "samplingarrayanim" : "embalmingtable.png" },
+  "scripts" : [ "/objects/minibiome/elder/embalmingtable/embalmingtable.lua","/scripts/npcToyObject.lua" ],
+  "scriptDelta" : 30,
+  "recipeGroup" : "elderaltar",
+  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+  "slotCount" : 12,
+  "uiConfig" : "/interface/extractor/embalming.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "crouchcollect"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 2
+  }
+}
+
+
+
+

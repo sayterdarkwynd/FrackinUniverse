@@ -1,0 +1,59 @@
+{
+  "ability" : {
+    "type" : "elderbowshot",
+    "class" : "BowShot",
+    "name" : "Elder Bow Shot",
+    "scripts" : ["/items/active/weapons/bow/abilities/elderbowshot.lua"],
+
+    "walkWhileFiring" : true,
+
+    "fireOffset" : [1.75, 0],
+
+    "energyPerShot" : 30,
+
+    "cooldownTime" : 0.4,
+
+    "inaccuracy" : 0.01,
+
+    "drawFrameSelector" : "bowImageSelector",
+    "drawPowerMultiplier" : "drawTimeMultiplier",
+    "drawSpeedMultiplier" : "constant",
+
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+
+    "projectileType" : "elderarrow",
+    "powerProjectileType" : "chargedelderarrow",
+    "powerProjectileTime" : [0.9, 1.41],
+    "projectileParameters" : {
+      "speed" : 80,
+      "power" : 6.5
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : -30,
+        "weaponRotation" : 0,
+        "allowRotate" : true,
+        "allowFlip" : true,
+        "twoHanded" : true
+      },
+      "draw" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "allowRotate" : true,
+        "allowFlip" : true,
+        "twoHanded" : true
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "allowRotate" : false,
+        "allowFlip" : true,
+        "twoHanded" : true,
+
+        "frontArmFrame" : "idle.3"
+      }
+    }
+  }
+}

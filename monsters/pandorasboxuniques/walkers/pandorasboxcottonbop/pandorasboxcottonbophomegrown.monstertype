@@ -1,0 +1,345 @@
+{
+  "type" : "pandorasboxcottonbophomegrown",
+  "shortdescription" : "Cottonbop",
+  "description" : "They're able to trap air in their cotton fibres, allowing them to float on the slightest breeze.",
+
+  "categories" : [ "pandorasboxcottonbop" ],
+  "parts" : [ "body" ],
+
+  "animation" : "pandorasboxcottonbop.animation",
+
+  "dropPools" : [ { "default" : "pandorasboxcottonbopTreasure", "bow" : "pandorasboxcottonbopHunting" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua",
+      "/monsters/pandorasboxmonsterscripts/pandorasboxsimplefarmablemonster.lua"
+    ],
+
+    "persistent" : true,
+    "behavior" : "monster",
+
+    "harvestTime" : [500, 900],
+    "harvestSpawnOffset" : [0, 0],
+    "harvestPool" : "pandorasboxcottonbopHarvest",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 50.0,
+
+      "foundTargetActions" : [
+        {
+          "name" : "action-aggrohop",
+          "parameters" : {
+            "onGround": false
+          }
+        }
+      ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 10.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 8,
+            "minimumRange" : 0,
+            "windupState" : "",
+            "windupTime" : 0.0,
+
+            "projectileType" : "pandorasboxcottonpuff",
+            "projectileParameters" : {
+              "power" : 8,
+              "knockback" : 0,
+              "speed" : 185
+            },
+            "fireOffset" : [0.0, 0.0],
+            "aimAtTarget" : false,
+            "aimDirection" : [0, 1],
+            "inaccuracy" : 0.5,
+            "projectileCount" : 25,
+            "projectileInterval" : 0.01,
+            "fireState" : "fire",
+            "fireDelay" : 0.5,
+            "fireSound" : "fire",
+            "gravityMultiplier": 0.1,
+
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        },
+        {
+          "name" : "action-hop",
+          "cooldown" : 5.0,
+          "parameters" : {
+            "verticalSpeed" : 15,
+            "horizontalSpeed" : 10,
+            "hopSequence" : 5,
+            "timeBetweenHops" : 0.0,
+            "windupTime" : 0.1,
+            "landTime" : 0.1,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 15
+          }
+        }
+      ],
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 8,
+            "minimumRange" : 0,
+            "windupState" : "",
+            "windupTime" : 0.0,
+
+            "projectileType" : "pandorasboxcottonpuff",
+            "projectileParameters" : {
+              "power" : 8,
+              "knockback" : 0,
+              "speed" : 85
+            },
+            "fireOffset" : [0.0, 0.0],
+            "aimAtTarget" : false,
+            "aimDirection" : [0, 1],
+            "inaccuracy" : 0.5,
+            "projectileCount" : 10,
+            "projectileInterval" : 0.01,
+            "fireState" : "fire",
+            "fireDelay" : 0.5,
+            "fireSound" : "fire",
+            "gravityMultiplier": 0.1,
+
+
+            "winddownState" : "",
+            "winddownTime" : 0.2
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-hop",
+          "cooldown" : 20.0,
+          "parameters" : {
+            "verticalSpeed" : 15,
+            "horizontalSpeed" : 10,
+            "hopSequence" : 3,
+            "timeBetweenHops" : 0.0,
+            "windupTime" : 0.1,
+            "landTime" : 0.1,
+            "hopAwayFromWall" : true,
+            "wallVerticalSpeed" : 15
+          }
+        }
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "approachTime" : 8.0,
+            "groundDistance" : 4
+          }
+        },
+        {
+          "name" : "land-fly",
+          "cooldown" : 4,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 12,
+            "flyControlForce" : 20,
+            "idleTime" : [1,2],
+            "landState" : "idle"
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "approachTime" : 8.0
+          }
+        },
+        {
+          "name" : "land-fly",
+          "cooldown" : 4,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 12,
+            "flyControlForce" : 20,
+            "idleTime" : [1,2],
+            "landState" : "idle"
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "land-fly",
+          "cooldown" : 4,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 12,
+            "flyControlForce" : 20,
+            "idleTime" : [2,4],
+            "landState" : "idle"
+          }
+        },
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "wanderTime" : [40,50],
+            "groundDistance" : 4,
+            "ceilingDistance" : 2,
+            "xVelocity" : 4,
+            "yVelocity" : 4
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-0.6875, -0.775], [-0.4375, -1.025], [0.4375, -1.025], [0.6875, -0.775], [0.6875, 0.25], [0.4375, 0.5], [-0.4375, 0.5], [-0.6875, 0.25] ],
+      "damage" : 10,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-0.6875, -0.775], [-0.4375, -1.025], [0.4375, -1.025], [0.6875, -0.775], [0.6875, 0.25], [0.4375, 0.5], [-0.4375, 0.5], [-0.6875, 0.25] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 5,
+      "runSpeed" : 5,
+      "jumpSpeed" : 5,
+      "flySpeed" : 15,
+      "airForce" : 40,
+
+      "airBuoyancy" : 0.9,
+      "airFriction" : 0.0,
+
+      "liquidForce" : 350,
+      "liquidFriction" : 2.5,
+      "minimumLiquidPercentage" : 0.1,
+      "liquidImpedance" : 0.2
+    },
+
+    "aggressive" : false,
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+
+    "damageTeamType" : "passive",
+
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 110
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.5
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.2
+        },
+        "fireResistance" : {
+          "baseValue" : -0.5
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : -0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.25
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.95
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "wildHarvestable" : true,
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false,
+    "relocatable" : true
+  }
+}

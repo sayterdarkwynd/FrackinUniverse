@@ -1,17 +1,18 @@
 {
-  "itemName" : "aenemapetal",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "aenemapetal.png",
-  "description" : "Grants a firey, protective nova effect. Spicy.",
-  "shortdescription" : "Aenema Petal",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [ "wellfed", "fireburst" ] ]
+	"itemName": "aenemapetal",
+	"inventoryIcon": "aenemapetal.png",
+	"category": "food",
+	"rarity": "Rare",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;100% Fire Thorns^reset;: 1m.\nSpicy!",
+	"shortdescription": "Aenema Petal",
+
+	"effects": [
+		[{
+			"effect": "fireburst",
+			"duration": 60
+		}]
+	]
 }

@@ -1,0 +1,301 @@
+{
+  "type" : "deepone",
+  "shortdescription" : "Deep One",
+  "description" : "This wretched evolutionary abomination is one of countless billions...",
+
+  "categories" : [ "deepone" ],
+  "parts" : [ "body" ],
+
+  "animation" : "deepone.animation",
+
+  "dropPools" : [ {"default" : "deeponeTreasure",
+  		"brain" : "madnessBrainHarvestingGreat"}   ],
+
+  "baseParameters" : {
+    "colors" : "deepone",
+
+    "scripts" : [ "/monsters/monster.lua" ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+      "hurtTime": 0.10,
+      "hurtWaitForGround": false,
+      "hurtWaitForGroundTime": 0.1,
+
+      "foundTargetActions" : [],
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-animate",
+          "cooldown" : 15,
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "roarwindup",
+            "animationTime" : 3
+          }
+        },
+        {
+          "name" : "action-charge",
+          "cooldown" : 7,
+          "parameters" : {
+            "minimumRange" : 4,
+            "maximumRange" : 15,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.4,
+
+            "chargeTime" : 0.4,
+            "chargeSpeed" : 30,
+            "chargeControlForce" : 800,
+            "chargeState" : "charge",
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.2,
+            "winddownStopForce" : 1000,
+            "winddownState" : "chargewinddown"
+          }
+        },
+        {
+          "name" : "action-charge",
+          "cooldown" : 3,
+          "parameters" : {
+            "minimumRange" : 0,
+            "maximumRange" : 6,
+            "windupState" : "bitewindup",
+            "windupTime" : 0.3,
+
+            "chargeTime" : 0.5,
+            "chargeSpeed" : 10,
+            "chargeControlForce" : 800,
+            "chargeState" : "chomp",
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.2,
+            "winddownStopForce" : 500,
+            "winddownState" : "bitewinddown"
+          }
+        },
+
+
+        {
+          "name" : "action-fire",
+	        "cooldown" : 5,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 8,
+            "windupState" : "firewindup",
+            "windupTime" : 0.8,
+
+            "projectileType" : "randomfish",
+            "projectileParameters" : { "damageKind" : "bioweapon" },
+            "projectileCount" : 3,
+            "projectileInterval" : 0.035,
+            "power" : 5,
+            "speed": 30,
+
+            "fireOffset" : [2.0, 0],
+            "aimAtTarget" : true,
+            "fireDelay" : 0.22,
+            "fireSound" : "spit",
+            "fireState" : "spit",
+            "winddownState" : "firewinddown",
+            "winddownTime" : 0.8
+          }
+        }
+      ],
+
+      "periodicActions" : [
+
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "cooldown" : 0.1,
+          "parameters" : {
+            "usePathfinding" : false,
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 40,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 40,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 15],
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 40,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "concurrentActions" : [ ],
+
+      "deathActions" : [ ]
+
+    },
+
+
+    "damageParts" : {
+      "body" : {
+        "damage" : 16,
+
+        "teamType" : "enemy",
+        "damageSourceKind" : "slash",
+        "knockback" : 30,
+        "statusEffects" : [ ]
+      }
+    },
+
+    "touchDamage" : {
+      "poly" : [  [-1.8,1.0],[-1.2,2.0],[0.8,2.0],[1.4,1.0],[1.4,-4.3],[0.8,-5.3],[-1.2,-5.3],[-1.8,-4.3]  ],
+      "damage" : 22,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "shadow",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.2,0.8], [-1.7,-0.05], [-1.45,-5.15], [-1.05,-5.7], [-0.5,-5.75], [0,-5.1], [0,-0.1], [-0.4,0.8] ],
+
+      "mass" : 2.5,
+      "walkSpeed" : 7,
+      "runSpeed" : 12,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 35.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.45,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 200
+        },
+        "protection" : {
+          "baseValue" : 25
+        },
+        "insanityImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : { "baseValue" : 0.8 },
+        "fireResistance" : { "baseValue" : 0.2 },
+        "iceResistance" : { "baseValue" : 0.2 },
+        "electricResistance" : { "baseValue" : 0 },
+        "physicalResistance" : { "baseValue" : 0.3 },
+        "shadowResistance" : { "baseValue" : 0.99 },
+        "radioactiveResistance" : { "baseValue" : 0.3 },
+        "cosmicResistance" : { "baseValue" : 1.0 },
+        "bleedingImmunity" : { "baseValue" : 1 },
+        "linerifleResistance" : { "baseValue" : 0.9 },
+        "linerifleStatusImmunity" : { "baseValue" : 1 },
+        "centensianenergyResistance" : { "baseValue" : 0.9 },
+        "centensianenergyStatusImmunity" : { "baseValue" : 0.9 },
+        "xanafianResistance" : { "baseValue" : 0.9 },
+        "xanafianStatusImmunity" : { "baseValue" : 1 },
+        "akkimariacidResistance" : { "baseValue" : 0.9 },
+        "akkimariacidStatusImmunity" : { "baseValue" : 1 },
+        "ignoreInvisibilityEffects" : { "baseValue" : 1 }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false,
+    "captureHealthFraction" : 0.24,
+    "nametagColor" : [64, 200, 255]
+  }
+}

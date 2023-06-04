@@ -1,0 +1,40 @@
+[
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/0/treasureBoxSets/-",
+    "value": "ffbasicChest"
+  },
+
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/0/treasureBoxSets/-",
+    "value": "ffbasicChest2"
+  },
+
+  {
+    "op": "replace",
+    "path": "/surfacePlaceables/items/1/grasses",
+    "value": [ "obsidianpebbles" ]
+  },
+
+{
+  "op": "add",
+  "path": "/undergroundPlaceables",
+  "value": {
+    "grassMod" : [ "ash" ],
+    "grassModDensity" : 0.9,
+
+    "items" : []
+  }
+},
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
+  }
+}
+]

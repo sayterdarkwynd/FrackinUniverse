@@ -1,11 +1,22 @@
 {
-  "name" : "ffextremeradiationimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 60,
-
-  "scripts" : [
-    "ffextremeradiationimmunity.lua"
-  ],
-  "label" : "Rad Proof",
-  "icon" : "/interface/statuses/biomeradioactive.png"
+	"name": "ffextremeradiationimmunity",
+	"effectConfig": {
+		"stats": [{
+				"stat": "ffextremeradiationImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "biomeradiationImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "radiationburnImmunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

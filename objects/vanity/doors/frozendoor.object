@@ -1,0 +1,51 @@
+{
+  "objectName" : "fufrozendoor",
+  "colonyTags" : ["ice","door"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 125,
+  "description" : "Sturdy, and rather heavy.",
+  "shortdescription" : "Heavy Tungsten Door",
+  "race" : "glitch",
+
+  "inventoryIcon" : "frozendooricon.png",
+
+  "tooltipKind" : "door",
+  "largeImage" : "frozendoor.png:right",
+
+  "orientations" : [
+    {
+      "image" : "frozendoor.png:default",
+      "imagePosition" : [-16, 0],
+      "renderLayer" : "Object+5",
+
+      "spaces" : [ [0,0], [0,1], [0,2], [0,3], [0,4] ],
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/metalslidingdoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/metalslidingdoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "frozendoor.png"
+  },
+  "animationPosition" : [-16, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

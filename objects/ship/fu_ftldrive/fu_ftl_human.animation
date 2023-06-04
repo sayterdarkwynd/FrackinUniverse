@@ -1,0 +1,86 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "base" : {
+        "default" : "off",
+        "states" : {
+            "off" : {
+               "frames" : 1,
+               "mode" : "loop"
+            },
+            "powerup" : {
+               "frames" : 3,
+               "mode" : "transition",
+               "transition" : "powered",
+               "cycle": 0.75
+            },
+            "powered" : {
+               "frames" : 4,
+               "mode" : "loop",
+               "cycle": 0.25
+            },
+            "powerdown" : {
+               "frames" : 3,
+               "mode" : "transition",
+               "transition" : "off",
+               "cycle": 0.75
+            }
+        }
+      }
+    },
+
+    "parts" : {
+      "base" : {
+         "properties" : {
+            "zLevel" : 2
+         },
+         "partStates" : {
+            "base" : {
+               "off" : {
+                  "properties" : {
+                     "image" : "<partImage>:off"}
+                  },
+               "powerup" : {
+                  "properties" : {
+                     "image" : "<partImage>:powerup.<frame>"}
+                  },
+               "powered" : {
+                  "properties" : {
+                     "image" : "<partImage>:powered.<frame>"}
+                  },
+               "powerdown" : {
+                  "properties" : {
+                     "image" : "<partImage>:powerdown.<frame>"}
+                  }
+            }
+         }
+      },
+      "fullbright" : {
+         "properties" : {
+            "zLevel" : 3,
+            "fullbright" : true
+         },
+         "partStates" : {
+            "base" : {
+               "off" : {
+                  "properties" : {
+                     "image" : "<partImage>:off"}
+                  },
+               "powerup" : {
+                  "properties" : {
+                     "image" : "<partImage>:powerup.<frame>"}
+                  },
+               "powered" : {
+                  "properties" : {
+                     "image" : "<partImage>:powered.<frame>"}
+                  },
+               "powerdown" : {
+                  "properties" : {
+                     "image" : "<partImage>:powerdown.<frame>"}
+                  }
+            }
+         }
+      }
+    }
+  }
+}

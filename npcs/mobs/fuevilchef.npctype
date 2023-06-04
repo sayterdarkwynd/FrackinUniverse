@@ -1,0 +1,67 @@
+{
+  "type" : "fuevilchef",
+  "baseType" : "hostilefu",
+
+  "dropPools" : [ "ffbanditTreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "WHERE'S THE LAMB SAUCE?!",
+            "WHAT ARE YOU? AN IDIOT SANDWICH!",
+            "And here comes today's fresh meat!",
+            "And it's Frackin' RAAAAAAWWWWW!!!",
+            "GET OUT!!",
+            "You're going straight on the grill!",
+			"What is going on?!",
+			"You donkey!!"
+          ]
+        },
+        "floran" : {
+          "default" : [
+            "WHERE'S THE LAMB SSSSSAUCE?!",
+            "WHAT ARE YOU? AN IDIOT SSSSSANDWICH!",
+            "And here comes today's fressssh meat!",
+            "And it's Frackin' RAAAAAAWWWWW!!!",
+            "GET OUT!!",
+            "SSSSTAAAB!"
+          ]
+        },
+        "glitch" : {
+          "default" : [
+            "Enraged. WHERE'S THE LAMB SAUCE?!",
+            "beligerant. WHAT ARE YOU? AN IDIOT SANDWICH!",
+            "Threatening. And here comes today's fresh meat!",
+            "Exacerbated. And it's Frackin' RAAAAAAWWWWW!!!",
+            "Angry. GET OUT!!",
+            "Hungry. You're going straight on the grill!",
+			"Irritated. What is going on?!!",
+			"Insulting. You donkey!!"
+          ]
+        }
+      }
+    }
+  },
+
+    "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "carbonblade" ],
+			"head" :  [{ "name" : "chefhead", "count" :1, "parameters" : { "colorIndex" : 3 } } ],
+			"chest" : [ { "name" : "chefchest", "count" :1, "parameters" : { "colorIndex" : 3 } } ],
+            "legs" : [ { "name" : "cheflegs", "count" :1, "parameters" : { "colorIndex" : 3 } } ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+      "powerMultiplier" : {
+        "baseValue" : 1.25
+      }
+    }
+
+}

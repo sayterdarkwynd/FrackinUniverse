@@ -1,0 +1,112 @@
+{
+  "objectName": "skathforge1",
+  "colonyTags": ["skath","crafting"],
+  "printable": false,
+  "rarity": "rare",
+  "description": "A rustic Skath-made forge, used to smelt alloys and craft weaponry and armors.",
+  "shortdescription": "^orange;Rustic Skath Forge^reset;",
+  "race": "skath",
+  "category": "crafting",
+  "price": 25,
+  "inventoryIcon" : "skathforge1icon.png",
+
+  "breakDropOptions": [],
+
+  "animation" : "skathforge.animation",
+  "animationPosition" : [4, 20],
+
+  "scripts": [
+    "/scripts/npcToyObject.lua",
+    "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua"
+  ],
+
+  "apexDescription": "This furnace looks a bit old fashioned, but I suppose it will serve its purpose.",
+  "avianDescription": "This furnace gives off a pleasant warmth.",
+  "floranDescription": "Waterdragon forge makesss fiery noisess. Ssscary.",
+  "glitchDescription": "Impressed. Despite its rustic look, this forge is unusually powerful.",
+  "humanDescription": "Looks like a retro oven to me, but it probably works well enough.",
+  "hylotlDescription": "This looks like a makeshift forge, built by the Skath.",
+  "novakidDescription": "Not my kinda rustic, but it'll do.",
+  "skathDescription": "It may look a bit rustic, but this forge is the first step to crafting quality alloys.",
+
+  "statusEffects": [],
+
+  "startingUpgradeStage": 1,
+  "maxUpgradeStage": 2,
+
+  "upgradeStages": [
+    {
+      "animationState": "rustic",
+      "itemSpawnParameters": {
+        "price": 350,
+        "inventoryIcon": "skathforge1icon.png",
+        "placementImage": "skathforge1.png:default.default",
+        "placementImagePosition": [-24, 0],
+        "description": "A rustic Skath-made forge, used to smelt alloys and craft weaponry and armors.",
+        "shortdescription": "^orange;Rustic Skath Forge^reset;"
+      },
+      "interactData": {
+        "config": "/interface/windowconfig/skathforgecrafting.config",
+        "paneLayoutOverride": {
+          "windowtitle": {
+            "title": " Rustic Skath Forge",
+            "subtitle": " ^#b9b5b2;Furnace and Anvil.",
+            "icon": { "file": "/interface/crafting/craftinganvil.png" }
+          }
+        },
+        "filter": ["skathforge1", "craftinganvil", "craftinganvil2", "craftingfurnace", "craftingfurnace2", "armory", "armory2" ],
+        "upgradeMaterials": [
+          { "item": "durasteelbar", "count": 10 },
+          { "item": "hydrolium", "count": 10 },
+          { "item": "titaniumbar", "count": 5 }
+         ]
+      },
+      "upgradeSoundEffect": "fanfare",
+      "upgradeParticleEffect": "dust"
+    },
+    {
+      "animationState": "plasma",
+      "itemSpawnParameters": {
+        "price": 1500,
+        "rarity": "legendary",
+        "inventoryIcon": "skathforge2icon.png",
+        "placementImage": "skathforge2.png:default.default",
+        "placementImagePosition": [-24, 0],
+
+        "description": "A Skath Plasma Forge, able to craft high quality weaponry, armour and alloys.",
+        "shortdescription": "^orange;Skath Plasma Forge^reset;"
+      },
+      "interactData": {
+        "config": "/interface/windowconfig/skathforgecrafting.config",
+        "paneLayoutOverride": {
+          "windowtitle": {
+            "title": " Skath Plasma Forge",
+            "subtitle": " ^#b9b5b2;Armour, weapons and alloys",
+            "icon": { "file": "/interface/crafting/craftinganvil3.png" }
+          }
+        },
+        "filter": ["skathforge1", "skathforge2", "craftinganvil", "craftinganvil2", "craftinganvil3", "craftingfurnace", "craftingfurnace2", "craftingfurnace3", "armory", "armory2", "armory3" ],
+        "craftingSound": "/sfx/interface/crafting_tech1.ogg",
+        "initialRecipeUnlocks" : [ ]
+      }
+    }
+  ],
+  "orientations": [
+    {
+      "image": "skathforge1.png:default.1",
+      "imagePosition": [-24, 0],
+      "direction": "left",
+      "flipImages": true,
+      "spaceScan": 0.1,
+      "anchors": ["bottom"]
+    },
+    {
+      "image": "skathforge1.png:default.1",
+      "imagePosition": [-24, 0],
+      "direction": "right",
+      "spaceScan": 0.1,
+      "anchors": ["bottom"]
+    }
+  ],
+  "soundEffect": "/sfx/objects/furnace.ogg"
+}

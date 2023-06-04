@@ -1,0 +1,35 @@
+{
+  "itemName": "avikanmeal",
+  "rarity": "Uncommon",
+  "price": 220,
+  "category": "preparedFood",
+  "inventoryIcon": "avikanmeal.png",
+  "description": "A traditional Kadavan meal, a warrior's favourite.\n^cyan;+^white;20% ^cyan;HP ^gray;& ^cyan;EP ^gray;(^white;210s^gray;)\n^cyan;+^white;20% ^cyan;Rage ^gray;(^white;60s^gray;)^reset; ^orange;Type: Cooked Meat + Vegetables^reset;",
+  "shortdescription": "Kadavan Meal",
+  "effects": [
+    [
+      {
+        "effect": "meatc_plant_meal"
+      },
+      {
+        "effect": "ragefood",
+        "duration": 60
+      },
+      {
+        "effect": "maxhealthscalingboostfood",
+        "duration": 210
+      },
+      {
+        "effect": "maxenergyscalingboostfood",
+        "duration": 210
+      }
+    ]
+  ],
+  "foodValue": 70,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1.0,
+  "blockingEffects": ["wellfed"]
+}

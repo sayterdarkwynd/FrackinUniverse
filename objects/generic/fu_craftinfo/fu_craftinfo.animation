@@ -1,0 +1,47 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "light" : {
+        "default" : "on",
+        "states" : {
+          "on" : { "frames" : 1 }
+        }
+      }
+    },
+
+    "parts" : {
+      "bg" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "light" : {
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>"
+              }
+            }
+          }
+        }
+      },
+      "fg" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 1
+        },
+
+        "partStates" : {
+          "light" : {
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>",
+                "fullbright" : true
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

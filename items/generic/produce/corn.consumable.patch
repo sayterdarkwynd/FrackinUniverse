@@ -1,0 +1,30 @@
+[
+	[
+		{
+			"op" : "add",
+			"path" : "/effects",
+			"value" : [ [ "plant_food" ] ]
+		},
+		{
+			"op" : "replace",
+			"path" : "/description",
+			"value" : "Sweet and corny, good for digestion! ^green;Type: Vegetable^reset;"
+		}//,
+	//	{
+	//		"op": "add",
+	//		"path": "/learnBlueprintsOnPickup",
+		//	"value": [ "cattlefeed" ]
+	//	}
+	],
+	[
+		{
+			"op" : "test",
+			"path" : "/maxStack"
+		},
+		{
+			"op" : "replace",
+			"path" : "/maxStack",
+			"value" : 20
+		}
+	]
+]

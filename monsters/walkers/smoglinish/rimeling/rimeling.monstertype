@@ -1,0 +1,364 @@
+{
+	"type": "rimeling",
+	"shortdescription": "Rimeling",
+	"description": "A chemical reaction in its belly makes its ice breath quite lethal.",
+
+	"categories": ["rimeling"],
+	"parts": ["body"],
+
+	"animation": "rimeling.animation",
+
+	"dropPools": [{
+		"default": "rimelingTreasure",
+		"bow": "rimelinghuntTreasure",
+		"firebow": "rimelinghuntTreasure",
+		"icebow": "rimelinghuntTreasure",
+		"poisonbow": "rimelinghuntTreasure",
+		"electricbow": "rimelinghuntTreasure",
+		"cosmicbow": "rimelinghuntTreasure",
+		"radioactivebow": "rimelinghuntTreasure",
+		"shadowbow": "rimelinghuntTreasure"
+	}],
+
+	"baseParameters": {
+
+		"colorSwap": {
+			"151515": "273547",
+			"383838": "738fb3",
+			"555555": "d6dee9",
+			"838383": "f8f8f8",
+
+			"a46e06": "8006a4",
+			"e2c344": "d544e2",
+			"ffffa7": "ffa7f4"
+		},
+
+		"scripts": [
+			"/monsters/monster.lua"
+		],
+
+		"behavior": "monster",
+
+		"behaviorConfig": {
+			"damageOnTouch": true,
+
+			"targetQueryRange": 20,
+			"targetOnDamage": true,
+			"keepTargetInSight": true,
+			"keepTargetInRange": 50,
+			"targetOutOfSightTime": 2.5,
+
+			"foundTargetActions": [{
+					"name": "action-statuseffect",
+					"cooldown": 10,
+					"parameters": {
+						"effect": "icefield",
+						"duration": 10
+					}
+				},
+				{
+					"name": "action-aggrohop"
+				}
+			],
+
+			"fleeActions": [],
+
+			"hostileActions": [{
+					"name": "action-statuseffect",
+					"cooldown": 10,
+					"parameters": {
+						"effect": "icefield",
+						"duration": 10
+					}
+				},
+				{
+					"name": "action-fire",
+					"cooldown": 6.0,
+					"parameters": {
+						"requireLineOfSight": true,
+						"maxYRange": 2,
+						"maximumRange": 10,
+						"minimumRange": 0,
+						"windupState": "transition",
+						"windupTime": 1.2,
+						"fireDelay": 1,
+
+						"projectileType": "iceguardiandamagearea",
+						"projectileParameters": {
+							"timeToLive": 6,
+							"speed": 5,
+							"physics": "illusion",
+							"intangibleWindup": true,
+							"periodicActions": [{
+								"time": 0.09,
+								"loop": true,
+								"action": "projectile",
+								"type": "icegas",
+								"inheritDamageFactor": 0.15,
+								"fuzzAngle": 360,
+								"projectileParameters": {
+									"timeToLive": 4,
+									"damageKind": "ice"
+								}
+							}],
+							"actionOnReap": [{
+									"action": "config",
+									"file": "/projectiles/explosions/iceboom/iceboom.config"
+								},
+								{
+									"action": "sound",
+									"options": ["/sfx/weapons/fufreeze.ogg"]
+								}
+							]
+						},
+						"power": 9,
+						"fireOffset": [3.5, 0.35],
+						"projectileCount": 1,
+						"projectileInterval": 0.01,
+						"aimDirection": [1, 0],
+						"aimAtTarget": false,
+						"fireSound": "fire",
+						"fireState": "fire",
+
+						"winddownState": "firewinddown",
+						"winddownTime": 1
+					}
+				}
+			],
+
+			"periodicActions": [{
+				"name": "action-projectile",
+				"cooldown": 1,
+				"parameters": {
+					"power": 1.35,
+					"projectileType": "icegas",
+					"projectileParameters": {
+						"timeToLive": 4,
+						"speed": 1
+					},
+					"aimDirection": [0, -1],
+					"fireOffset": [0, 0],
+					"aimAtTarget": false
+				}
+			}],
+
+			"concurrentHostileActions": [],
+
+			"approachActions": [{
+				"name": "approach-walk",
+				"parameters": {
+					"canJump": true,
+					"maxJumps": 6,
+					"jumpXVelocity": 12,
+					"jumpYVelocity": 30,
+					"jumpXControlForce": 50,
+					"minXRange": 10,
+					"run": true
+				}
+			}],
+
+			"damageTakenActions": [{
+				"name": "action-projectile",
+				"cooldown": 2,
+				"parameters": {
+					"projectileType": "iceshock",
+					"projectileParameters": {
+						"speed": 1,
+						"power": 10
+					},
+					"fireOffset": [4.5, 0.35],
+					"aimAtTarget": false
+				}
+			},{
+					"name": "action-statuseffect",
+					"cooldown": 10,
+					"parameters": {
+						"effect": "icefield",
+						"duration": 10
+					}
+			}],
+
+			"followActions": [{
+					"name": "approach-teleport",
+					"parameters": {}
+				},
+				{
+					"name": "approach-walk",
+					"parameters": {
+						"canJump": true,
+						"maxJumps": 6,
+						"jumpXVelocity": 12,
+						"jumpYVelocity": 30,
+						"jumpXControlForce": 50,
+						"minXRange": 10,
+						"run": true
+					}
+				}
+			],
+
+			"wanderActions": [{
+					"name": "action-projectile",
+					"cooldown": 3,
+					"parameters": {
+						"projectileType": "frostlittrail2",
+						"projectileParameters": {
+							"timeToLive": 8,
+							"speed": 1
+						},
+						"aimDirection": [0, -1],
+						"fireOffset": [0, 0],
+						"aimAtTarget": false
+					}
+				},
+				{
+					"name": "wander-walk",
+					"cooldown": 6.0,
+					"parameters": {
+						"wanderTime": [5, 15]
+					}
+				}
+			]
+		},
+
+		"touchDamage": {
+			"poly": [
+				[1.3125, 1.25],
+				[1.8125, 0.75],
+				[1.8125, -0.6],
+				[1.3125, -1.2],
+				[-1.3125, -1.2],
+				[-1.8125, -0.6],
+				[-1.8125, 0.75],
+				[-1.3125, 1.25]
+			],
+			"damage": 10,
+
+			"teamType": "enemy",
+			"damageSourceKind": "slash",
+			"knockback": 20,
+			"statusEffects": []
+		},
+
+		"metaBoundBox": [-4, -4, 4, 4],
+		"scale": 1.0,
+
+		"movementSettings": {
+			"collisionPoly": [
+				[1.3125, 1.25],
+				[1.8125, 0.75],
+				[1.8125, -0.6],
+				[1.3125, -1.2],
+				[-1.3125, -1.2],
+				[-1.8125, -0.6],
+				[-1.8125, 0.75],
+				[-1.3125, 1.25]
+			],
+
+			"mass": 1.0,
+			"walkSpeed": 4,
+			"runSpeed": 8,
+
+			"airFriction": 0,
+
+			"airJumpProfile": {
+				"jumpSpeed": 45.0,
+				"jumpInitialPercentage": 1.0,
+				"jumpHoldTime": 0.0
+			}
+		},
+
+		"bodyMaterialKind": "organic",
+
+		"knockoutTime": 0.3,
+		"knockoutAnimationStates": {
+			"damage": "stunned"
+		},
+		"deathParticles": "deathPoof",
+		"knockoutEffect": "",
+
+		"statusSettings": {
+			"statusProperties": {
+				"targetMaterialKind": "organic"
+			},
+
+			"appliesEnvironmentStatusEffects": false,
+			"appliesWeatherStatusEffects": true,
+			"minimumLiquidStatusEffectPercentage": 0.1,
+
+			"primaryScriptSources": [
+				"/stats/monster_primary.lua"
+			],
+			"primaryScriptDelta": 5,
+
+			"stats": {
+				"knockbackStunTime": {
+					"baseValue": 0.25
+				},
+				"knockbackThreshold": {
+					"baseValue": 9
+				},
+				"maxHealth": {
+					"baseValue": 65
+				},
+				"protection": {
+					"baseValue": 0.0
+				},
+				"healthRegen": {
+					"baseValue": 0.0
+				},
+				"lavaImmunity": {
+					"baseValue": 1.0
+				},
+				"powerMultiplier": {
+					"baseValue": 1.0
+				},
+				"physicalResistance": {
+					"baseValue": 0.0
+				},
+				"fireResistance": {
+					"baseValue": -0.5
+				},
+				"fireStatusImmunity": {
+					"baseValue": 0.0
+				},
+				"iceResistance": {
+					"baseValue": 1.0
+				},
+				"iceStatusImmunity": {
+					"baseValue": 1.0
+				},
+				"electricResistance": {
+					"baseValue": 0.0
+				},
+				"electricStatusImmunity": {
+					"baseValue": 0.0
+				},
+				"poisonResistance": {
+					"baseValue": 0.0
+				},
+				"poisonStatusImmunity": {
+					"baseValue": 0.0
+				}
+			},
+
+			"resources": {
+				"stunned": {
+					"deltaValue": -1.0,
+					"initialValue": 0.0
+				},
+				"health": {
+					"maxStat": "maxHealth",
+					"deltaStat": "healthRegen",
+					"defaultPercentage": 100
+				}
+			}
+		},
+
+		"mouthOffset": [0, 0],
+		"feetOffset": [0, -8],
+		"capturable": true,
+		"captureHealthFraction": 0.5,
+		"nametagColor": [64, 200, 255]//,
+		//"captureCollectables": {"fu_monster": "rimeling"}
+	}
+}

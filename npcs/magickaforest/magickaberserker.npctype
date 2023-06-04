@@ -1,0 +1,76 @@
+{
+  "type" : "magickaberserker",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Tae battle!",
+			"Ye blood shall soil the land!",
+			"Oy!",
+			"Raidin' time came early today!",
+			"Hopin' tae catch me with mah socks off, were ye?",
+			"Yer havin' a laff, ain't'cha?",
+            "I'll take ye as a warm-up 'fore the monastery!"
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+      "runSpeed" : 14,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    },
+    "mass" : 2.0
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "alpacaguardhead", "parameters" : { "colorIndex" : [0, 1, 2, 3] } }
+            ],
+            "chest" : [
+              { "name" : "alpacaguardchest", "parameters" : { "colorIndex" : [0, 1, 2, 3] } }
+            ],
+            "legs" : [
+              { "name" : "alpacaguardlegs", "parameters" : { "colorIndex" : [0, 1, 2, 3] } }
+            ],
+            "primary" : [
+              { "name" : "npcbruisersword", "parameters" : { "primaryAbility" : { "damageConfig" : { "statusEffects" : ["frostslow"] } } } }
+            ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+
+    "stats" : {
+		"knockbackStunTime" : {
+          "baseValue" : 0.0
+        },
+	  "iceResistance" : {
+        "baseValue" : 0.5
+      },
+      "fireResistance" : {
+        "baseValue" : -0.5
+      },
+	  "powerMultiplier" : {
+        "baseValue" : 1.75
+      },
+      "maxHealth" : {
+        "baseValue" : 125.0
+      }
+    }
+  }
+}

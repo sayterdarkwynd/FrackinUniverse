@@ -1,0 +1,66 @@
+{
+  "objectName" : "carbondesklamp",
+  "colonyTags" : ["carbon", "light"],
+  "rarity" : "common",
+  "category" : "light",
+  "lightColor" : [51, 164, 160],
+  "price" : 300,
+  "description" : "A desk lamp made from carbon.",
+  "shortdescription" : "Carbon Desk Lamp",
+  "race" : "generic",
+
+  "apexDescription" : "This lamp is lighter than it looks.",
+  "avianDescription" : "A simple looking lamp.",
+  "floranDescription" : "Floran ssseesss it isss a lamp.",
+  "glitchDescription" : "Neutral. A lamp.",
+  "humanDescription" : "It's simple, but it looks nice and sleek.",
+  "hylotlDescription" : "The design is simple, I wouldn't mind this in my room.",
+  "novakidDescription" : "This is mighty simple, but it's pretty.",
+
+  "inventoryIcon" : "carbondesklampicon.png",
+  "orientations" : [
+    {
+      "image" : "carbondesklamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "carbondesklamp.png",
+        "fg" : "carbondesklamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "carbondesklamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "carbondesklamp.png",
+        "fg" : "carbondesklamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "carbondesklamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : true,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

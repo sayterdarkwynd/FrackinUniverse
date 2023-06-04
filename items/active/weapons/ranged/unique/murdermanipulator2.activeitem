@@ -1,0 +1,103 @@
+{
+  "itemName" : "murdermanipulator2",
+  "price" : 500,
+  "inventoryIcon" : "murdermanipulator2.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+    "description" : "A repurposed manipulator. This one murders! Yay!
+^cyan;Floran^reset;",
+    "shortdescription" : "Slaughter Manipulator",
+  "level" : 4,
+  "category" : "machinePistol",
+  "itemTags" : ["weapon","ranged","machinepistol", "energy","floran", "upgradeableWeapon"],
+  "weaponType" : "Energy",
+    "tooltipKind" : "gun2",
+  "twoHanded" : false,
+  "classMultiplier" : 0.2,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "murdermanipulator2.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/swing_electric1.ogg" ]
+    },
+    "lights" : {
+      "muzzleFlash" : {
+        "color" : [0, 60, 0]
+      }
+    }
+  },
+
+  "baseOffset" : [0.12, -0.14],
+  "muzzleOffset" : [1.5, 0.105],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "bioweapon",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.05,
+    "baseDps" : 9,
+    "energyUsage" : 30,
+    "fireType" : "auto",
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "projectileType" : "shoggothbeamgun",
+    "projectileParameters" : {
+      "speed" : 40,
+      "timeToLive" : 0.8
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 3,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters2" : {
+    "description" : "Love is for pansies. Try this instead.",
+    "shortdescription" : "Hate Beam",
+    "primaryAbility" : {
+    "critChance" : 4,
+    "critBonus" : 6,
+    "energyUsage" : 26,
+      "projectileParameters" : {
+        "speed" : 60
+      }
+    }
+  }
+}

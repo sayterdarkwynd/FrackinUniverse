@@ -1,0 +1,195 @@
+{
+  "itemName" : "swtjc_ewg_raresaw",
+  "price" : 1200,
+  "maxStack" : 1,
+  "rarity" : "Rare",
+  "description" : "A man-portable machine gun that's bigger and meaner, albeit far less accurate, than an assault rifle.",
+  "shortdescription" : "Rare Squad Automatic Weapon",
+  "tooltipKind" : "gun2",
+  "category" : "swtjc_ewg_squadAutomaticWeapon",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","assaultrifle","upgradeableWeapon"],
+  "level" : 1,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : { },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
+        ]
+      }
+    }
+  },
+  "baseOffset" : [-1.0, 0.25],
+  "muzzleOffset" : [0.0, 0.3125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : [0.07, 0.12],
+    "baseDps" : [10, 12.24],
+    "energyUsage" : [34.5, 37.5],
+    "inaccuracy" : 0.08,
+
+    "burstTime" : 0.075,
+    "burstCount" : [2,4],
+    "fireType" : ["auto", "burst"],
+
+    "projectileParameters" : {
+      "knockbackRange" : [5,10]
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.1,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "isAmmoBased": [0,1],
+  "magazineSize" : [25,70],
+  "reloadTime" : [1.5,2.5],
+  "isAssaultRifle" : 1,
+  //recoil stats
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 700,
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "nameGenerator" : "swtjc_ewg_sawnames.config:nameGen",
+    "elementalType" : [
+      "fire",
+      "ice",
+      "electric",
+      "poison",
+      "radioactive",
+      "shadow",
+      "cosmic"
+    ],
+    "elementalConfig" : {
+      "fire" : {
+        "primaryAbility" : { "projectileType" : "fireplasma", "projectileParameters" : { "statusEffects" : [ "burning" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg" ]
+      },
+      "ice" : {
+        "primaryAbility" : { "projectileType" : "iceplasma", "projectileParameters" : { "statusEffects" : [ "frostslow" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg" ]
+      },
+      "poison" : {
+        "primaryAbility" : { "projectileType" : "poisonplasma", "projectileParameters" : { "statusEffects" : [ "weakpoison" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg" ]
+      },
+      "electric" : {
+        "primaryAbility" : { "projectileType" : "electricplasma", "projectileParameters" : { "statusEffects" : [ "electrified" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg" ]
+      },
+      "radioactive" : {
+        "primaryAbility" : { "projectileType" : "radioactiveplasma", "projectileParameters" : { "statusEffects" : [ "radiationburn" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg" ]
+      },
+      "shadow" : {
+        "primaryAbility" : { "projectileType" : "shadowplasma", "projectileParameters" : { "statusEffects" : [ "shadowgasfx" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg" ]
+      },
+      "cosmic" : {
+        "primaryAbility" : { "projectileType" : "cosmicplasma", "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } },
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg" ]
+      }
+    },
+    "animationParts" : {
+      "butt" : {
+        "path" : "/items/active/weapons/ranged/assaultrifle/butt/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "middle" : {
+        "path" : "/items/active/weapons/ranged/rocketlauncher/middle/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "barrel" : {
+        "path" : "/items/active/weapons/ranged/shotgun/barrel/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+    },
+    "gunParts" : ["butt", "middle", "barrel"],
+    "altAbilities" : [
+      "bouncingshot",
+      "deathbomb",
+      "explosiveburst",
+      "explosiveshot",
+      "grenadelauncher",
+      "lance",
+      "markedshot",
+      "piercingshot",
+      "shrapnelbomb",
+      "spray",
+      "stickyshot",
+
+      "swtjc_ewg_bouncingspray",
+      "swtjc_ewg_bouncingspread",
+      "swtjc_ewg_bouncingpiercingshot",
+      "swtjc_ewg_bouncingpiercingspray",
+      "swtjc_ewg_bouncingpiercingspread",
+      "swtjc_ewg_explosivebouncingshot",
+      "swtjc_ewg_explosivebouncingspray",
+      "swtjc_ewg_explosivebouncingspread",
+      "swtjc_ewg_explosivespray",
+      "swtjc_ewg_explosivespread",
+      "swtjc_ewg_piercingspray",
+      "swtjc_ewg_piercingspread",
+      "swtjc_ewg_railgun",
+      "swtjc_ewg_spreadshot",
+      "swtjc_ewg_stickyspray",
+      "swtjc_ewg_stickyspread",
+
+      "swtjc_ewg_clusterbomb",
+      "swtjc_ewg_markedshotweak",
+      "swtjc_ewg_proximitymines",
+
+      "swtjc_ewg_bouncingorbitals",
+      "swtjc_ewg_cellspray",
+      "swtjc_ewg_darkplasma",
+      "swtjc_ewg_elementalspray",
+      "swtjc_ewg_explosivebubbles",
+      "swtjc_ewg_forceshield",
+      "swtjc_ewg_globelauncher",
+      "swtjc_ewg_phaseburst",
+      "swtjc_ewg_rocketjump",
+      "swtjc_ewg_shattershot"
+    ],
+    "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
+    "iconDrawables" : ["butt", "middle", "barrel"]
+  }]
+}

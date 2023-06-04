@@ -10,10 +10,20 @@
     "lightColor" : [229, 0, 0],
   "power" : 5,
   "damageKind" : "default",
+  "scripts" : [ "homingarrow.lua" ],
+  "baseHomingControlForce" : 5,
   "actionOnReap" : [
     {
       "action" : "config",
       "file" : "/projectiles/explosions/paintexplosionred/paintexplosionred.config"
+    }
+  ],
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/gun/impact_arrow.ogg"
+      ]
     }
   ]
 }

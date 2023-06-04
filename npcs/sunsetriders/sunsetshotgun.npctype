@@ -1,0 +1,52 @@
+{
+  "type" : "sunsetshotgun",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+  "disableWornArmor" : true,
+  "dropPools" : [ "extraNovakid" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Well, good night Irene!",
+	    "Shoot 'em full of holes!",
+            "Seems like another varmint's on the loose!",
+            "I feel like I might need to shoot you now!",
+            "Blam! Blam! Blam! That's what I'm gonna do!",
+            "Seems ter be an intruder 'round these parts.",
+            "We don't take kindly to your kind 'round 'ere!",
+            "There's rumors I ain't too friendly."
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "novatier5ahead" } ],
+            "chest" : [ { "name" : "novatier5achest" } ],
+            "legs" : [ { "name" : "novatier5apants" } ],
+            "primary" : ["npcshotgun" ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+
+    "stats" : {
+      "maxEnergy" : {
+        "baseValue" : 200.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.01
+      }
+    }
+  }
+}

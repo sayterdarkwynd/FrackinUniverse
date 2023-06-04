@@ -1,0 +1,59 @@
+{
+  "ability" : {
+    "type" : "tripleshotshadow",
+    "class" : "ZenShot",
+    "name" : "Shadow Shot",
+    "scripts" : ["/items/active/weapons/bow/abilities/tripleshotshadow.lua"],
+
+    "walkWhileFiring" : true,
+
+    "fireOffset" : [1.75, 0],
+
+    "energyPerShot" : 60,
+
+    "cooldownTime" : 0.25,
+
+    "drawFrameSelector" : "bowImageSelectorNoPower",
+    "drawPowerMultiplier" : "normalizedDrawTimeMultiplier",
+    "drawSpeedMultiplier" : "normalizedDrawTimeMultiplier",
+
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+
+    "projectileType" : "woodenarrow",
+    "projectileParameters" : {
+      "speed" : 45,
+      "power" : 8.125
+    },
+
+    "splitDelay" : 1.0,
+    "splitAngle" : 10,
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.75,
+        "armRotation" : -30,
+        "weaponRotation" : 0,
+        "allowRotate" : true,
+        "allowFlip" : true,
+        "twoHanded" : true
+      },
+      "draw" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "allowRotate" : true,
+        "allowFlip" : true,
+        "twoHanded" : true
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "allowRotate" : false,
+        "allowFlip" : true,
+        "twoHanded" : true,
+
+        "frontArmFrame" : "idle.3"
+      }
+    }
+  }
+}

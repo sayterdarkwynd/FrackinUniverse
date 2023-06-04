@@ -1,0 +1,43 @@
+{
+  "itemName" : "pyreitemace",
+  "price" : 890,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Masterful crafting, deadly edges.
+^cyan;Inflicts Napalm^reset;",
+  "shortdescription" : "Pyreite Mace",
+  "tooltipKind" : "hammer",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace","pyreite", "upgradeableWeapon"],
+
+  "inventoryIcon" : "pyreitemace_ashey.png",
+  //"collectablesOnPickup" : { "fu_weaponmace" : "pyreitemace" },
+  "animation" : "combomaceglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "pyreitemace_ashey.png",
+    "bladefullbright" : "pyreitemace_asheyfullbright.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "hellfire",
+  "damageKindImage" : "/interface/statuses/hellfire.png",
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1.1,
+    "baseDps":7.7,
+    "damageConfig" : {
+      "damageSourceKind" : "hellfire",
+      "statusEffects" : [ "burning" ]
+    }
+  },
+  "critChance" : 1,
+  "critBonus" : 8,
+  "stunChance" : 80,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

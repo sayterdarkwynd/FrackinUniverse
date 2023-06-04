@@ -1,21 +1,19 @@
 {
   "name" : "snowyforest",
   "friendlyName" : "Winter Glade",
-  "hueShiftOptions" : [-40, -25, 0, 25, 40],
+  "hueShiftOptions" : [-30, -20, -15, -10, 0, 10, 15, 20, 30],
 
   "spawnProfile" : {
     "groups" : [
       {
         "select" : 2,
-        "pool" : [ 
-          [ 0.1111, "wisper" ],     
-          [ 0.1111, "lilodon" ],
-          [ 0.1111, "capricoat" ],        
-          [ 0.1111, "skimbus" ],
-          [ 0.1111, "pulpin" ],     
-          [ 0.1111, "scandroid" ],
-          [ 0.1111, "bobfae" ],
-          [ 0.1111, "bobot" ]
+        "pool" : [
+          [ 0.07, "wisper" ],
+          [ 0.07, "lilodon" ],
+          [ 0.07, "capricoat" ],
+          [ 0.06, "skimbus" ],
+          [ 0.07, "pulpin" ],
+          [ 0.04, "bobfae" ]
         ]
       },
       {
@@ -45,151 +43,333 @@
       "colors" : "snow"
     }
   },
+
+  "parallax" : "/parallax/surface/snow.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/snow_day.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/snow_night.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/arctic-exploration1.ogg", "/music/arctic-exploration2.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+
     "mainBlock" : "dirt",
     "subBlocks" : [ "snow", "cobblestone" ],
     "ores" : "surface",
 
-
   "surfacePlaceables" : {
-    "grassMod" : [ "snow" ],
+    "grassMod" : [ "snow", "snowygrass" ],
     "grassModDensity" : 0.9,
 
     "items" : [
-        {
-          "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:potsRare",
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:tiyDist",
 
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
-              "parameters" : { }
+        "type" : "microdungeon",
+        "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:mainBiomeRareMicrodungeon",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "forestmicrodungeons" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "encounterdungeons" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.5,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:rare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "snowdrift1" ], [0.35, "snowdrift2" ], [0.35, "snowdrift3" ], [0.35, "snowdrift4" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.5,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffunCommon",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "snowbush1" ], [0.35, "snowtree1" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "snowman" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ultraRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "fancysnowman" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "snowChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundRareChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "testflower", "testflower2", "testflower3", "testflower4", "testflower5", "testflower6", "testflower7" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "snowbush",
+            "baseHueShiftMax" : 40,
+            "modHueShiftMax" : 180
+          },
+          {
+            "name" : "snowhappybush",
+            "baseHueShiftMax" : 40,
+            "modHueShiftMax" : 180
+          },
+          {
+            "name" : "snowshrub1",
+            "baseHueShiftMax" : 40,
+            "modHueShiftMax" : 35
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 15,
+        "treeStemList" : [ "snowpinetree", "snowbirch", "snowcocoa", "snowfleshy", "snowgrumpy", "snowpine", "snowslimey", "snowsomething", "snowspikey", "snowtwisted", "snowwood" ],
+        "treeFoliageList" : [ "snowpine", "snowblank", "snowscraggy", "snowleafy", "snowfrumpy", "snowredleaves", "snowgreenleaves" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "wildautomatoseed" ] ],
+            "parameters" : {
+              "startingStage" : 4
             }
-          ]
-        },
+          }
+        ]
+      }
+    ]
+  },
 
-        {
-          "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffRare",
+  "undergroundPlaceables" : {
+    "grassMod" : [ "grass" ],
+    "grassModDensity" : 0.1,
 
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : [ [1, "snowman" ] ],
-              "parameters" : { }
-            }
-          ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseLarge",
+    "ceilingGrassMod" : [ "roots" ],
+    "ceilingGrassModDensity" : 0.3,
 
-          "type" : "tree",
-          "treeFoliageHueShiftMax" : 50,
-          "treeStemHueShiftMax" : 50,
-          "treeStemList" : [ 
-          "snowbirch", 
-          "snowcocoa", 
-          "snowfleshy", 
-          "snowgrumpy", 
-          "snowmetal", 
-          "snowpine", 
-          "snowpinetree", 
-          "snowslimey", 
-          "snowsomething", 
-          "snowspikey", 
-          "snowtwisted", 
-          "snowwood" 
-          ],
-          "treeFoliageList" : [ 
-          "snowblank", 
-          "snowbrains", 
-          "snowbubbles", 
-          "snowcloudy",  
-          "snowfrumpy", 
-          "snowgreenleaves", 
-          "snowhanging", 
-          "snowleafy", 
-          "snowlotus", 
-          "snowpine", 
-          "snowredleaves", 
-          "snowscraggy"
-          ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 0.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
 
-          "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "snowChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
 
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : [ [1, "statuspod" ] ],
-              "parameters" : { }
-            }
-          ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 0.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
-          "type" : "treasureBox",
-          "treasureBoxSets" : [ "weaponChest" ]
-        },
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
 
-        
-        {
-          "mode" : "floor",
-          "priority" : 3.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
 
-          "type" : "microdungeon",
-          "microdungeons" : [ "terrainfeatures" ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseMedium",
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
 
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "snowshrub1",
-              "baseHueShiftMax" : 50,
-              "modHueShiftMax" : 50
-            },
-            {
-              "name" : "snowbush",
-              "baseHueShiftMax" : 50,
-              "modHueShiftMax" : 50
-            },
-            {
-              "name" : "snowhappybush",
-              "baseHueShiftMax" : 50,
-              "modHueShiftMax" : 50
-            }
-          ]
-        }
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 10,
+        "treeStemList" : [ "rootvine", "rootvine2" ],
+        "treeFoliageList" : [ "" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "period" : 5,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "grass",
+        "grasses" : [ "testflower", "testflower2", "testflower3", "testflower4", "testflower5", "testflower6", "testflower7" ]
+      }
     ]
   }
 }

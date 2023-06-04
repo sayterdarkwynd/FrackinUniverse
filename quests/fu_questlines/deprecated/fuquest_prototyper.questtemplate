@@ -1,0 +1,28 @@
+{
+	"id" : "fuquest_prototyper",
+	"title" : "Expanding Knowledge",
+	"text" : "You've taken your first steps in ^cyan;Frackin' Universe^reset;. With the ^orange;Machining Table^reset; you can now branch out into a wide assortment of ^green;Lab Stations and Equipment^reset; as well as ^green;crafting resources^reset;. Let's start by making an ^orange;Electromagnet^reset;.",
+	"completionText" : "Try building a few more basic goods such as the extremely useful ^orange;Extraction Lab^reset;. The ^orange;Machining Table^reset; and its ^green;upgrades^reset; are necessary for every FU crafting station. Use it well.",
+	"rewards" : [
+		[ [ "manipulatormodule", 1 ] ]
+	],
+	"moneyRange" : [10, 10],
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "player"
+		},
+
+		"requireTurnIn" : false,
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "electromagnet",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
+}

@@ -1,0 +1,102 @@
+{
+  "type" : "banditrocket",
+  "baseType" : "hostile",
+
+  "dropPools" : [ "banditTreasure" ],
+
+  "scriptConfig" : {
+    "behavior" : "hostileguard",
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Attack!"
+          ]
+        },
+        "human" : {
+          "default" : [
+            "Hey look, easy prey!",
+            "Don't think you're getting out of this one easily!",
+            "I bet you'll drop lots of pixels!",
+            "You've wandered right into the wolf's den!",
+            "Good, a fight! I was almost bored!",
+            "This isn't personal, I just love attacking people!",
+            "Surprise, you're about to get poked full of holes!"
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+              "npcrocketlauncher"
+            ]
+          }
+        ] ],
+      [2, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+              "npcrocketlauncher",
+			  "commonrocketlauncher"
+            ]
+          }
+        ] ],
+      [3, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+              "npcrocketlauncher",
+			  "commonrocketlauncher",
+			  "uncommonrocketlauncher"
+            ]
+          }
+        ] ],
+      [4, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+              "npcrocketlauncher",
+			  "commonrocketlauncher",
+			  "uncommonrocketlauncher",
+			  "rarerocketlauncher"
+            ]
+          }
+        ] ],
+      [5, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+			  "uncommonrocketlauncher",
+			  "rarerocketlauncher"
+            ]
+          }
+        ] ],
+      [6, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+			  "rarerocketlauncher"
+            ]
+          }
+        ] ]
+    ]
+  }
+}

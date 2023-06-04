@@ -1,0 +1,53 @@
+{
+  "itemName" : "pyreitedagger",
+  "price" : 1040,
+  "maxStack" : 1,
+  "level" : 6,
+  "rarity" : "legendary",
+  "description" : "Let's make some friends!
+^cyan;Inflicts Napalm^reset;",
+  "shortdescription" : "Pyreite Dirk",
+  "tooltipKind" : "sword2",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","dagger","pyreite", "upgradeableWeapon"],
+  "inventoryIcon" : "pyreitedagger.png",
+  //"collectablesOnPickup" : { "fu_weapondagger" : "pyreitedagger" },
+
+  "animation" : "daggercomboglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "pyreitedagger.png",
+    "bladefullbright" : "pyreitedaggerfullbright.png"
+  },
+
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "swoosh" : { "properties" : {"offset" : [1, 2]}}
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "hellfire",
+  "damageKindImage" : "/interface/statuses/hellfire.png",
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "daggercombo",
+  "primaryAbility" : {
+    "fireTime" : 0.35,
+    "baseDps" : 8.24,
+    "damageConfig" : {
+      "knockback" : 10,
+       "damageSourceKind" : "hellfire",
+       "statusEffects" : [ "burningnapalm" ]
+    }
+  },
+  "critChance" : 3,
+  "critBonus" : 3,
+  "stunChance" : 50,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

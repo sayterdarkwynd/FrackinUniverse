@@ -1,0 +1,41 @@
+{
+  "objectName": "fu_mediumthruster",
+  "colonyTags": ["decoration","decor"],
+  "scannable": true,
+  "printable" : true,
+  "rarity": "common",
+  "description": "Medium-sized, decorative booster to represent FTL travel. Can be placed anywhere.",
+  "shortdescription": "Medium Decorative FTL Booster",
+  "race": "generic",
+  "category": "light",
+  "lightColor": [59, 183, 255],
+  "pointLight": true,
+  "flickerDistance": 0.2,
+  "flickerStrength": 0.05,
+  "flickerTiming": 4,
+  "inventoryIcon": "/objects/ship/fu_thrustericon.png",
+  "orientations": [
+    {
+      "image": "fu_mediumthruster.png:on.1",
+      "imagePosition": [0, 0],
+      "animationParts": {"booster": "fu_mediumthruster.png"},
+      "animationPosition": [0, 0],
+      "fullbright": true,
+      "spaceScan" : 0.1,
+      "anchors": ["right"],
+      "direction": "right"
+    }
+  ],
+  "animation": "/objects/ship/boosters/boosterflame.animation",
+  "soundEffect": "/sfx/objects/boosterflame.ogg",
+  "scripts": [
+		"/objects/ship/boosters/boosterflame.lua",
+		"/objects/ship/fu_shipstatmodifier.lua"
+	],
+  "flyingBoosterStates": {
+    "none": "off",
+    "disembarking": "off",
+    "warp": "turnOn",
+    "arriving": "turnOff"
+  }
+}

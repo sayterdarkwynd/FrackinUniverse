@@ -1,0 +1,72 @@
+{
+  "objectName" : "swtjc_wp_advancedlightsensor",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A more advanced light sensor that activates various nodes based upon whether or not ambient light levels exceed certain thresholds.",
+  "shortdescription" : "Advanced Light Sensor",
+  "race" : "generic",
+  "category" : "wire",
+  "price" : 10,
+
+  "floranDescription" : "More advancced light sensssor that activatess variouss nodess if variouss brightnessesss are excceeded.",
+  "glitchDescription" : "Thoughtful. A more advanced light sensor that activates various nodes based upon whether or not ambient light levels exceed certain thresholds.",
+
+  "inventoryIcon" : "lightsensoricon.png",
+
+  "orientations" : [
+    {
+      "image" : "lightsensor.png:default.min",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "lightsensor.png:default.min",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "lightsensor.png:default.min",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+    {
+      "image" : "lightsensor.png:default.min",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "left" ]
+    },
+    {
+      "image" : "lightsensor.png:default.min",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "right" ]
+    }
+  ],
+
+  "scripts" : [ "advancedlightsensor.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/lightsensor/lightsensor.animation",
+  "animationParts" : {
+    "sensor" : "lightsensor.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "outputNodes" : [ [-1, -1], [0, -1], [1, -1], [-1, 0], [0, 0], [1, 0], [-1, 1], [0, 1], [1, 1] ],
+
+//  "defaultOnAnimation" : "max",
+//  "defaultOffAnimation" : "min",
+  "thresholdCount" : 9, //Total number of light thresholds to use for determining which output nodes will be activated at varying ambient light settings.
+
+  "detectThresholds" : [1, 10, 20, 30, 40, 50, 60, 70, 80], //If ambient light levels exceed any values within this array, then it'll activate corresponding output nodes.
+  "lightArrayAnimations" : ["med", "med", "med", "med", "med", "med", "med", "med", "max"] //Determines which animation frame to use when the sensor detects a particular level of ambient light.
+}

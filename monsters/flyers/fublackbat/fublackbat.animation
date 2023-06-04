@@ -1,0 +1,238 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 1,
+            "cycle" : 1.0,
+            "mode" : "loop"
+          },
+          "fly" : {
+            "frames" : 5,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "frameProperties" : {
+              "immediateSound" : [ "/sfx/npc/monsters/batong_flap1.ogg", "", "", "", "/sfx/npc/monsters/batong_flap2.ogg", "", "", ""]
+            }
+          },
+          "hurt" : {
+            "frames" : 5,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "swoopwindup" : {
+            "frames" : 5,
+            "cycle" : 0.3,
+            "mode" : "loop"
+          },
+          "swoop" : {
+            "frames" : 1,
+            "cycle" : 1.0,
+            "mode" : "loop"
+          },
+          "landwindup" : {
+            "frames" : 3,
+            "cycle" : 0.6,
+            "mode" : "transition",
+            "transition" : "idle"
+          },
+          "flywindup" : {
+            "frames" : 3,
+            "cycle" : 0.6,
+            "mode" : "transition",
+            "transition" : "fly"
+          },
+          "chargewindup" : {
+            "frames" : 6,
+            "cycle" : 0.6
+          },
+          "chargewinddown" : {
+            "frames" : 6,
+            "cycle" : 0.6
+          },
+          "charge" : {
+            "frames" : 2,
+            "cycle" : 0.1,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : ["/sfx/npc/monsters/blackbat_charge.ogg" ]
+            }
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 5
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "offset" : [-0.375, 0.125]
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+            "fly" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "swoopwindup" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "swoop" : {
+              "properties" : {
+                "image" : "<partImage>:fly.5"
+              }
+            },
+            "landwindup" : {
+              "properties" : {
+                "image" : "<partImage>:landwindup.<frame>"
+              }
+            },
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "flywindup" : {
+              "properties" : {
+                "image" : "<partImage>:flywindup.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:chargewindup.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:chargewinddown.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:charge.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "particleEmitters" : {
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "agrobatwing" },
+        { "particle" : "agrobatwingflipped" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ "" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
+  }
+}

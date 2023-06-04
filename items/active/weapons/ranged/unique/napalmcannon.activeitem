@@ -3,13 +3,15 @@
   "price" : 160,
   "inventoryIcon" : "napalmcannon.png",
   "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "People won't appreciate the painful end of this weapon.",
+  "rarity" : "uncommon",
+  "description" : "Not the sort of thing you fire indoors at a carpentry show.
+^yellow;Inflicts burning^reset;",
   "shortdescription" : "Napalm Launcher",
-  "level" : 5,
-  "tooltipKind" : "gun",
+  "category" : "flamethrower",
+  "level" : 3,
+  "tooltipKind" : "gun2",
   "weaponType" : "Incendiary Cannon",
-  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "itemTags" : ["weapon","ranged","assaultrifle", "flamethrower", "hellfire", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -43,43 +45,44 @@
     "fireType" : "auto",
 
     "projectileType" : "napalm2",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 25,
       "knockback" : 0,
       "knockbackDirectional" : true,
       "lightColor" : [255, 141, 40]
     },
-	  "stances" : {
-	    "idle" : {
-	      "armRotation" : 0,
-	      "weaponRotation" : 0,
-	      "twoHanded" : true,
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
 
-	      "allowRotate" : true,
-	      "allowFlip" : true
-	    },
-	    "fire" : {
-	      "duration" : 0,
-	      "armRotation" : 1,
-	      "weaponRotation" : 1,
-	      "twoHanded" : true,
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    },
-	    "cooldown" : {
-	      "duration" : 0.075,
-	      "armRotation" : 1,
-	      "weaponRotation" : 1,
-	      "twoHanded" : true,
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.075,
+        "armRotation" : 1,
+        "weaponRotation" : 1,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    }
-	  }
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
   },
 
-
+  "critChance" : 2,
+  "critBonus" : 6,
   "altAbilityType" : "fuelairtrail",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

@@ -1,31 +1,23 @@
 {
-  "itemName" : "mireurchin",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "mireurchin.png",
-  "description" : "Move slower, but carry a big shield",
-  "shortdescription" : "Mire Urchin",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      {
-        "effect" : "runboost",
-        "amount" : "-0.15",
-        "duration" : 30
-      },
-      {
-        "effect" : "staticshield",
-        "amount" : "1.00",
-        "duration" : 30
-      }
-    ] ],
-  "blockingEffects" : [
-    "runboost", "staticshield"
-  ]
+	"itemName": "mireurchin",
+	"inventoryIcon": "mireurchin.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immune: Freeze & +25% Ice Res^reset;, ^cyan;^cyan;Immune^reset;: Shock, Electric Storm & +20% Electric Res: 2m",
+	"shortdescription": "Mire Urchin",
+	"effects": [
+		[{
+				"effect": "electricblock2",
+				"duration": 120
+			},
+			{
+				"effect": "iceblock",
+				"duration": 120
+			}
+		]
+	],
+	"blockingEffects": ["electricblock2", "iceblock"]
 }

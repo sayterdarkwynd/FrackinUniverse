@@ -1,0 +1,56 @@
+{
+  "objectName" : "colonystation",
+  "colonyTags" : ["crafting"],
+  "rarity" : "Uncommon",
+  "price" : 250,
+  "description" : "Used to create a large colony.",
+  "shortdescription" : "^orange;Colony Station^reset;",
+  "race" : "generic",
+  "category" : "crafting",
+  "printable" : false,
+
+  "interactAction" : "OpenCraftingInterface",
+    "interactData" : {
+    "config" : "/interface/objectcrafting/colonystation.config",
+    "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : " Colony Station",
+        "subtitle" : " Colony components, cores, and deeds.",
+        "icon" : {
+          "file" : "/objects/colonysystem2/colonystation/colonystationicon.png"
+        }
+      }
+    },
+    "filter" : [ "colonystation" ]
+
+  },
+
+  "apexDescription" : "It will be nice to be in charge of something for a change.",
+  "avianDescription" : "I've always wanted to be a mayor.",
+  "floranDescription" : "Floran can gather fleshlingss with workbench.",
+  "glitchDescription" : "Ambitious. I can become a feudal lord with this.",
+  "humanDescription" : "Humans never really settled other planets. I should fix that.",
+  "hylotlDescription" : "I can create a sizable settlement with this table.",
+  "novakidDescription" : "Perfect for makin' a frontier town.",
+
+  "inventoryIcon" : "colonystationicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "colonystation.png:<color>",
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "recipeGroup" : "colonystation",
+  "openSounds" : [ "/sfx/objects/campfire_use.ogg" ],
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+
+}

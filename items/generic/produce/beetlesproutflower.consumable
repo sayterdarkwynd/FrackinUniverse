@@ -1,19 +1,24 @@
 {
-  "itemName" : "beetlesproutflower",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "beetlesproutflower.png",
-  "description" : "Smells like bacon, tastes like snot. Grants +30% defense and increased Shield regen.",
-    "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 4,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "shortdescription" : "Beetle Sprout Flower",
-  "effects" : [ [
-     "percentarmorboost30", "shieldregen1"
-    ] ]
+	"itemName": "beetlesproutflower",
+	"inventoryIcon": "beetlesproutflower.png",
+	"category": "food",
+	"rarity": "Legendary",
+	"price": 10,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Defense x1.3^reset;, ^cyan;+20% Shield Regen^reset;: 1m",
+	"shortdescription": "Beetle Sprout Flower",
+
+	"effects": [
+		[
+			{
+				"effect": "shieldregen1",
+				"duration": 60
+			},
+			{
+				"effect": "percentarmorboost30",
+				"duration": 60
+			}
+		]
+	]
 }

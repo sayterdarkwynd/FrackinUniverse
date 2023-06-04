@@ -1,70 +1,120 @@
 {
-  "animationParts" : { },
-  "animationCustom" : {
-    "particleEmitters" : {
-      "altMuzzleFlash" : {
-        "active" : false,
-        "rotationGroup" : "weapon",
-        "emissionRate" : 8,
-        "offsetPart" : "muzzleFlash",
-        "offsetRegion" : [0.0, 0.0, 0.0, 0.0],
-        "particles" : [
-          { "particle" : "rocketbarrelpuff", "offset" : [0, 0.5] },
-          { "particle" : "rocketbarrelpuff", "offset" : [0, 0.5] },
-          { "particle" : "rocketbarrelpuff", "offset" : [0, 0.5] }
-        ]
-      }
-    },
-    "sounds" : {
-      "physicalGuided" : [ "/sfx/gun/rocket2.ogg" ],
-      "fireGuided" : [ "/sfx/gun/rocket_fire1.ogg" ],
-      "iceGuided" : [ "/sfx/gun/rocket_ice1.ogg" ],
-      "electricGuided" : [ "/sfx/gun/rocket_electric1.ogg" ],
-      "poisonGuided" : [ "/sfx/gun/rocket_poison1.ogg" ]
-    }
-  },
+	"animationParts": {},
+	"animationCustom": {
+		"particleEmitters": {
+			"altMuzzleFlash": {
+				"active": false,
+				"rotationGroup": "weapon",
+				"emissionRate": 8,
+				"offsetPart": "muzzleFlash",
+				"offsetRegion": [0.0, 0.0, 0.0, 0.0],
+				"particles": [{
+						"particle": "rocketbarrelpuff",
+						"offset": [0, 0.5]
+					},
+					{
+						"particle": "rocketbarrelpuff",
+						"offset": [0, 0.5]
+					},
+					{
+						"particle": "rocketbarrelpuff",
+						"offset": [0, 0.5]
+					}
+				]
+			}
+		},
+		"sounds": {
+			"physicalGuided": ["/sfx/gun/rocket2.ogg"],
+			"silverweaponGuided": ["/sfx/gun/rocket2.ogg"],
+			"fireGuided": ["/sfx/gun/rocket_fire1.ogg"],
+			"hellfireGuided": ["/sfx/gun/rocket_fire1.ogg"],
+			"iceGuided": ["/sfx/gun/rocket_ice1.ogg"],
+			"hoarfrostGuided": ["/sfx/gun/rocket_ice1.ogg"],
+			"electricGuided": ["/sfx/gun/rocket_electric1.ogg"],
+			"poisonGuided": ["/sfx/gun/rocket_poison1.ogg"],
+			"bioweaponGuided": ["/sfx/gun/rocket_poison1.ogg"],
+			"shadowGuided": ["/sfx/gun/rocket_poison1.ogg"],
+			"radioactiveGuided": ["/sfx/gun/rocket_poison1.ogg"],
+			"cosmicGuided": ["/sfx/gun/rocket_poison1.ogg"],
+			"aetherGuided": ["/sfx/gun/rocket_poison1.ogg"]
+		}
+	},
 
-  "ability" : {
-    "name" : "Plasma Rocket",
-    "type" : "atomguidedrocket",
-    "scripts" : ["/items/active/weapons/ranged/abilities/guidedrocket/guidedrocket.lua"],
-    "class" : "GuidedRocket",
+	"ability": {
+		"name": "Plasma Rocket",
+		"type": "atomguidedrocket",
+		"projectileType": "atomguidedrocket",
+		"scripts": ["/items/active/weapons/ranged/abilities/guidedrocket/guidedrocket.lua"],
+		"class": "GuidedRocket",
 
-    "elementalConfig" : {
-      "physical" : { "projectileType" : "atomguidedrocket" },
-      "fire" : { "projectileType" : "atomguidedrocket" },
-      "electric" : { "projectileType" : "atomguidedrocket" },
-      "ice" : { "projectileType" : "atomguidedrocket" },
-      "poison" : { "projectileType" : "atomguidedrocket" }
-    },
-    "projectileParameters" : {
-          "knockback" : 20
-         },
-    "baseDps" : 6.75,
-    "energyUsage" : 12,
-    "fireTime" : 0.35,
-    "inaccuracy" : 0.1,
-    "stances" : {
-      "fire" : {
-        "duration" : 0,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "weaponOffset" : [-0.2, 0],
-        "twoHanded" : true,
+		"elementalConfig": {
+			"physical": {
+				"projectileParameters": {
+					"damageKind": "plasma"
+				}
+			},
+			"silverweapon": {
+				"projectileParameters": {
+					"damageKind": "silverweapon"
+				}
+			},
+			"fire": {},
+			"hellfire": {
+				"projectileParameters": {
+					"damageKind": "fireplasma"
+				}
+			},
+			"electric": {},
+			"ice": {},
+			"hoarfrost": {
+				"projectileParameters": {
+					"damageKind": "iceplasma"
+				}
+			},
+			"poison": {},
+			"bioweapon": {
+				"projectileParameters": {
+					"damageKind": "poisonplasma"
+				}
+			},
+			"shadow": {},
+			"radioactive": {},
+			"cosmic": {},
+			"aether": {
+				"projectileParameters": {
+					"damageKind": "cosmicplasma"
+				}
+			}
+		},
+		"projectileParameters": {
+			"damageKind": "<elementalType>plasma",
+			"knockback": 20
+		},
+		"baseDps": 12.75,
+		"energyUsage": 55,
+		"fireTime": 0.55,
+		"inaccuracy": 0.1,
+		"stances": {
+			"fire": {
+				"duration": 0,
+				"armRotation": 0,
+				"weaponRotation": 0,
+				"weaponOffset": [-0.2, 0],
+				"twoHanded": true,
 
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "cooldown" : {
-        "duration" : 0.1,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "weaponOffset" : [-0.2, 0],
-        "twoHanded" : true,
+				"allowRotate": true,
+				"allowFlip": true
+			},
+			"cooldown": {
+				"duration": 0.1,
+				"armRotation": 0,
+				"weaponRotation": 0,
+				"weaponOffset": [-0.2, 0],
+				"twoHanded": true,
 
-        "allowRotate" : true,
-        "allowFlip" : true
-      }
-    }
-  }
+				"allowRotate": true,
+				"allowFlip": true
+			}
+		}
+	}
 }

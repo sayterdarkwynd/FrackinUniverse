@@ -1,0 +1,64 @@
+{
+  "objectName" : "bolbohnseed",
+  "colonyTags" : ["nature"],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "An oddly shaped plant with a similarly odd taste.",
+  "shortdescription" : "Bolbohn Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 20,
+
+  "apexDescription" : "A decidedly odd plant, and a funny smelling one at that.",
+  "avianDescription" : "I'm not sure I like the smell of this plant...",
+  "floranDescription" : "Floran find thiss plant sssmelly.",
+  "glitchDescription" : "Observation. This plant seems oddly familiar, yet very alien at the same time.",
+  "humanDescription" : "I'm not even sure if I want to know what this tastes like...",
+  "hylotlDescription" : "This plant has an odd taste. I'm not a fan of it.",
+
+  "aegiDescription" : "Few find this plant tasty. I know I don't.",
+  "avikanDescription" : "A bolbohn! A tasty reminder of home!",
+  "erixianDescription" : "The Avikan somehow find this plant delicious... I can hardly stomach it.",
+  "trinkDescription" : "Everyone I asked agreed that this plant tasted horrible. Everyone, except for the Avikan.",
+  "hymidDescription" : "I'm often a fan of alien food, but this just tastes horrible.",
+  "notixDescription" : "This plant's taste is liked by few. I'm certainly not one of them.",
+  "jorgasianDescription" : "This plants smells rather funny... I doubt it tastes any better.",
+  "drodenDescription" : "Detected native Kadavan flora. Bolbohn confirmed.",
+
+  "inventoryIcon" : "bolbohnseedicon.png",
+
+  "tooltipKind" : "seed",
+  "largeImage" : "bolbohnseed.png:default.2.0",
+  //"collectablesOnPickup" : { "fu_plant" : "bolbohn" },
+
+  "orientations" : [
+    {
+      "dualImage" : "bolbohnseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "radioMessagesOnPickup" : [ "pickupseed" ],
+
+  "stages" : [
+    {
+      "duration" : [1080, 1160]
+    },
+    {
+      "duration" : [1080, 1160]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "bolbohnHarvest"
+    }
+  ],
+
+  "maxImmersion" : 0.25
+}

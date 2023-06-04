@@ -1,0 +1,44 @@
+{
+  "objectName" : "wildbloodrootseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "common",
+  "category" : "seed",
+  "description" : "Vitality-increasing plant.",
+  "shortdescription" : "Blood Root Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+ //   "learnBlueprintsOnPickup" : [ "bloodrootseed", "goldenrootseed" ],
+  "inventoryIcon" : "bloodrootseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "bloodrootseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [100, 120]
+    },
+    {
+      "duration" : [100, 120]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "bloodrootHarvest",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125,
+  "breakDropOptions" : [
+    [ [ "bloodrootseed", 1, { } ] ]
+  ]
+}

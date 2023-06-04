@@ -1,0 +1,58 @@
+{
+  "objectName" : "somacockpithatch",
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 1000,
+  "description" : "A vertical sliding hatch doorway.",
+  "shortdescription" : "Soma Sliding Hatch",
+  "race" : "apex",
+
+  "apexDescription" : "A hatch door with a lot of moving parts; I bet this thing breaks down a lot.",
+  "avianDescription" : "A hatch cover; the design seems quite ingenious... perhaps overly so.",
+  "floranDescription" : "Hatch opensss!",
+  "glitchDescription" : "Statement. A vertical access hatch. Exasperation. As is typical for Soman design, it is thoroughly over-engineered.",
+  "humanDescription" : "It's studded in LEDs and shiny as all get out.  Best hatch ever!",
+  "hylotlDescription" : "A gaudy display of Soman tech fetishism in handy hatch form.",
+
+  "inventoryIcon" : "somacockpithatchicon.png",
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : [ "/sfx/objects/apexcooldoor_open.wav" ],
+      "close" : [ "/sfx/objects/apexcooldoor_close.wav" ]
+    }
+  },
+  "animationParts" : {
+    "door" : "somacockpithatch.png"
+  },
+
+  "orientations" : [
+    {
+      "image" : "somacockpithatch.png:default",
+      "imagePosition" : [-32, -4],
+      "animationPosition" : [-17, -6],
+      "flipImages" : true,
+      "direction" : "left",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "left", "right" ]
+    },
+    {
+      "image" : "somacockpithatch.png:default",
+      "imagePosition" : [-32, -4],
+      "animationPosition" : [-16, -6],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "left", "right" ]
+    }
+  ],
+
+  "inboundNodes" : [ [-2, 0] ],
+  "outboundNodes" : [ [2, -1] ]
+}

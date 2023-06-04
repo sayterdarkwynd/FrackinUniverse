@@ -1,0 +1,98 @@
+{
+  "itemName" : "fucatapult",
+  "price" : 16000,
+  "inventoryIcon" : "fucatapult.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Reliably shoots cats.
+^cyan;Explosive cats^reset;
+^yellow;Multiple damage types^reset;",
+  "shortdescription" : "Cat-A-Pult",
+  "category" : "grenadeLauncher",
+  "level" : 4,
+  "tooltipKind" : "gununique",
+  "weaponType" : "Grenade Launcher",
+  "itemTags" : ["weapon","ranged","grenadelauncher","upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "fucatapult.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [  "/sfx/gun/grenade1.ogg", "/sfx/gun/grenade2.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.4, -0.3],
+  "muzzleOffset" : [1.645, 0.3],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "meow",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.2,
+    "baseDps" : 8.6,
+    "energyUsage" : 34.0,
+    "inaccuracy" : 0.0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "catapultshot",
+    "projectileParameters" : {
+      "knockback" : 20,
+      "damageKind" : "meow",
+      "speed" : 60
+    },
+	  "stances" : {
+	      "idle" : {
+		"armRotation" : 0,
+		"weaponRotation" : 0,
+		"twoHanded" : true,
+
+		"allowRotate" : true,
+		"allowFlip" : true
+	      },
+	      "fire" : {
+		"duration" : 0,
+		"armRotation" : 7.5,
+		"weaponRotation" : 7.5,
+		"twoHanded" : true,
+
+		"allowRotate" : false,
+		"allowFlip" : true
+	      },
+	      "cooldown" : {
+		"duration" : 0.32,
+		"armRotation" : 7.5,
+		"weaponRotation" : 7.5,
+		"twoHanded" : true,
+
+		"allowRotate" : false,
+		"allowFlip" : true
+	      }
+	  }
+  },
+
+  "altAbilityType" : "catshot",
+  "altAbility" : {
+    "name" : "Toxic Kitten Blast",
+    "inaccuracy" : 0.0
+  },
+
+  "critChance" : 2,
+  "critBonus" : 6,
+  "isAmmoBased" : 1,
+  "magazineSize" : 10,
+  "reloadTime" : 2,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

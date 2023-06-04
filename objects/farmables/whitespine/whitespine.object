@@ -1,0 +1,45 @@
+{
+  "objectName" : "whitespine",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Uncommon",
+  "category" : "seed",
+  "description" : "Completely immune to acid.",
+  "shortdescription" : "Whitespine",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 14,
+  "inventoryIcon" : "whitespineicon.png",
+  "largeImage" : "whitespine.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "whitespine" },
+  "orientations" : [
+    {
+      "dualImage" : "whitespine.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+"stages" : [
+    {
+      "alts" : 3,
+      "duration" : [320, 460]
+    },
+    {
+      "alts" : 3,
+      "duration" : [325, 460]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "whitespine",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125
+  }

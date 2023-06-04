@@ -1,0 +1,38 @@
+{
+	"objectName" : "colonycore",
+	"rarity" : "Rare",
+	"description" : "The basis of a large colony. Collects rent from MK2 deeds passively.",
+	"shortdescription" : "Colony Core",
+	"race" : "generic",
+	"category" : "decorative",
+	"price" : 2500,
+	"printable" : false,
+	"objectType" : "container",
+
+	"inventoryIcon" : "colonycoreicon.png",
+	"orientations" : [
+		{
+			"dualImage" : "colonycore.png:<color>",
+
+			"imagePosition" : [-20, 0],
+			"frames" : 4,
+			"animationCycle" : 1.0,
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ]
+
+		}
+	],
+	"outputNodes" : [ [0, 0] ],
+	"scripts" : [ "/scripts/colonycorefu.lua" ],
+	"openSounds": ["/sfx/interface/nav_computer_on.ogg"],
+	"closeSounds": ["/sfx/interface/nav_computer_off.ogg"],
+	"scriptDelta" : 60,
+	"productionTime":150,
+	"slotCount" : 1,
+	"uiConfig" : "/interface/chests/chest<slots>.config",
+	"frameCooldown" : 67,
+	"autoCloseCooldown" : 3600,
+	"wellslots" : [{"name" : "money","ratio" : 1,"max" : 9999999999}],
+	"wellRange":128
+}

@@ -1,0 +1,131 @@
+{
+	"stats": [
+		{
+			"stat": "fuCharisma",
+			"baseMultiplier": 0.85
+		},
+		{
+			"stat": "protection",
+			"effectiveMultiplier": 0.85
+		},
+		{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 1.1
+		},
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 1.1
+		},
+		{
+			"stat": "fallDamageMultiplier",
+			"effectiveMultiplier": 0.5
+		},
+		{
+			"stat": "maxFood",
+			"effectiveMultiplier": 1.2
+		},
+		{
+			"stat": "poisonResistance",
+			"amount": 0.2
+		},
+		{
+			"stat": "iceResistance",
+			"amount": 0.5
+		},
+		{
+			"stat": "cosmicResistance",
+			"amount": -0.2
+		},
+		{
+			"stat": "fireResistance",
+			"amount": -0.25
+		},
+		{
+			"stat": "electricResistance",
+			"amount": -0.25
+		}
+	],
+	"diet" : "carnivore",
+	"envEffects":
+	[
+		{
+			"biomes": [
+			"snow", "snowdark", "tundra", "arctic", "arcticdark", "nitrogensea", "icemoon", "frozenvolcanic", "icewaste", "icewastedark"
+			],
+		"stats": [{
+				"stat": "physicalResistance",
+				"amount": 0.15
+			},
+			{
+				"stat": "maxEnergy",
+				"effectiveMultiplier": 1.15
+			}
+		],
+		"controlModifiers":
+			{
+					"speedModifier": 1.2,
+					"airJumpModifier": 1.2
+			}
+		},
+		{
+			"biomes": [
+				"arboreal2","scorchedcity", "desert", "desertwastes", "desertwastesdark", "magma", "magmadark", "volcanic", "volcanicdark", "infernus", "infernusdark"
+			],
+			"stats": [
+					{
+					"stat": "maxHealth",
+					"effectiveMultiplier": 0.9
+					},
+					{
+					"stat": "energyRegenPercentageRate",
+					"baseMultiplier": 0.6
+					}
+			],
+			"controlModifiers":
+			{
+					"speedModifier": 0.8,
+					"airJumpModifier": 0.8
+			}
+		}
+	],
+	"weaponEffects":
+	[
+		{
+		"weapons": [ "magnorb" ],
+		"stats": [
+			{
+				"stat": "critChance",
+				"amount": 2
+			}
+		]
+		},
+		{
+		"weapons": [ "shortspear", "spear" ],
+		"stats": [
+			{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.07
+			}
+		]
+		},
+		{
+		"weapons": [ "dagger" ],
+		"stats": [
+			{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.05
+			}
+		]
+		},
+		{
+		"combo": [ "shortspear, shortspear" ],
+		"stats": [
+			{
+				"stat": "critDamage",
+				"amount": 0.20
+			}
+		],
+		"controlModifiers": {"airJumpModifier": 1.10}
+		}
+	]
+}

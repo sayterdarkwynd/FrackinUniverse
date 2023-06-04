@@ -1,0 +1,73 @@
+{
+  "type" : "volcanobasesentinel",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Dark. You will regret coming here!",
+			"Bloodthirsty. Your blood will soil the land!",
+			"Fanatical. Die, fool!",
+			"Determined. We are the unyielding.",
+			"Confident. I am unstoppable!",
+            "Enraged. Death to intruders!"
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+      "runSpeed" : 14,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    },
+    "mass" : 2.0
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "eyehead", "parameters" : { "colorIndex" : 1 } } ],
+            "chest" : [ { "name" : "glitchtier4chest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "glitchtier4pants", "parameters" : { "colorIndex" : 1 } } ],
+            "primary" : [ { "name" : "soulseeker", "parameters" : { "primaryAbility" : { "damageConfig" : { "statusEffects" : ["burning"] } } } } ],
+            "alt" : [
+              "commonlargeshield"
+            ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+
+    "stats" : {
+	"poisonStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"electricStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"iceStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	"fireStatusImmunity" : {
+        "baseValue" : 1.0
+      },
+	  "powerMultiplier" : {
+        "baseValue" : 1.0
+      },
+      "maxHealth" : {
+        "baseValue" : 120.0
+      }
+    }
+  }
+}

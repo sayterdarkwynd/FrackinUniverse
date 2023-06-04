@@ -1,0 +1,30 @@
+{
+  "itemName" : "solusjam",
+  "rarity" : "Rare",
+  "price" : 366,
+  "category" : "preparedFood",
+  "inventoryIcon" : "solusjam.png",
+  "description" : "Jam made from solusberry. But is it so dangerous? Only one way to find out!\n^cyan;+^white;20% ^cyan;EP ^gray;(^white;325s^gray;)\n^red;Electrified ^gray;(^white;5s^gray;)^reset;",
+  "shortdescription" : "Solus Jam",
+  "effects" : [ [
+    {
+      "effect" : "maxenergyscalingboostfood",
+      "duration" : 325
+    },
+    {
+      "effect" : "electrified",
+      "duration" : 5
+    }
+  ] ],
+  "foodValue" : 40,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 4,
+  "blockingEffects" : [
+    "wellfed"
+  ],
+  "emitters" : [ "drinking" ]//,
+  //"learnBlueprintsOnPickup" : [ "solstew" ]
+}

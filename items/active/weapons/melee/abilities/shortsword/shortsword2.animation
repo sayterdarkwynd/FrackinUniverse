@@ -1,0 +1,154 @@
+{
+  "globalTagDefaults" : {
+    "paletteSwaps" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "swoosh" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+          },
+          "fire" : {
+            "frames" : 3,
+            "cycle" : 0.08,
+            "mode" : "transition",
+            "transition" : "idle"
+          }
+        }
+      }
+    },
+    "parts" : {
+      "blade" : {
+        "properties" : {
+          "zLevel" : 0,
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "transformationGroups" : ["weapon"],
+          "rotationCenter" : [0, 0]
+        }
+      },
+      "handle" : {
+        "properties" : {
+          "zLevel" : 1,
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "transformationGroups" : ["weapon"],
+          "rotationCenter" : [0, 0]
+        }
+      },
+      "swoosh" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [1.75, 0.75],
+          "transformationGroups" : ["swoosh"],
+          "rotationCenter" : [0, 0]
+        },
+
+        "partStates" : {
+          "swoosh" : {
+            "idle" : {
+              "properties" : {
+                "image" : ""
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "/items/active/weapons/melee/shortsword/swoosh/<elementalType>swoosh.png:<frame>",
+                "damageArea" : [ [-3.5, 0.875], [0.25, 0.875], [1.625, 0.5], [2.5, 0], [2.5, -0.5], [2.125, -0.875], [1, -1.375], [-3.5, -1.375] ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {},
+    "swoosh" : {}
+  },
+
+  "particleEmitters" : {
+    "physicalswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-1.5, -0.25, 1.5, 2.0],
+      "particles" : [ ]
+    },
+    "shadowswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 20,
+      "offsetRegion" : [-1.5, -0.25, 1.5, 2.0],
+      "particles" : [ ]
+    },
+    "shadowswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 20,
+      "offsetRegion" : [-1.5, -0.25, 1.5, 2.0],
+      "particles" : [ ]
+    },
+    "fireswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-1.5, -0.25, 1.5, 2.0],
+      "particles" : [
+        { "particle" : "fireswoosh1"},
+        { "particle" : "fireswoosh2"},
+        { "particle" : "fireswoosh3"},
+        { "particle" : "fireswoosh1"},
+        { "particle" : "fireswoosh2"},
+        { "particle" : "fireswoosh3"}
+      ]
+    },
+    "electricswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-1.5, -0.25, 1.5, 2.0],
+      "particles" : [
+        { "particle" : "electricswoosh1"},
+        { "particle" : "electricswoosh2"},
+        { "particle" : "electricswoosh2"}
+      ]
+    },
+    "iceswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-1.5, -0.25, 1.5, 2.0],
+      "particles" : [
+        { "particle" : "iceswoosh1"},
+        { "particle" : "iceswoosh2"},
+        { "particle" : "iceswoosh3"},
+        { "particle" : "iceswoosh1"},
+        { "particle" : "iceswoosh2"},
+        { "particle" : "iceswoosh3"}
+      ]
+    },
+    "poisonswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-1.5, -0.25, 1.5, 2.0],
+      "particles" : [
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "fireswoosh2"},
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "fireswoosh2"}
+      ]
+    }
+  },
+
+  "sounds" : {
+    "fire" : [ ]
+  }
+}

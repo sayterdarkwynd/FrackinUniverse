@@ -1,0 +1,89 @@
+{
+  "objectName": "fu_booster_small",
+  "colonyTags": ["byos"],
+  "scannable": false,
+  "rarity": "common",
+  "description": "^red;This item was deprecated. Place and break to get the items used to make this back.^reset;",
+  "shortdescription": "^red;DEPRECATED^reset; Small Ship Booster",
+  "race": "generic",
+
+  "apexDescription": "A booster. These have been known to malfunction and explode.",
+  "avianDescription": "A booster, the wings of a ship.",
+  "floranDescription": "Ssscary fire.",
+  "glitchDescription": "Analyse. Temperature too high to measure.",
+  "humanDescription": "This thing eats through fuel.",
+  "hylotlDescription": "Propulsion.",
+  "novakidDescription": "This flame 'ere has a powerful kick.",
+
+  "category": "light",
+  "lightColor": [59, 183, 255],
+  "pointLight": true,
+  "flickerDistance": 0.2,
+  "flickerStrength": 0.05,
+  "flickerTiming": 4,
+  "inventoryIcon": "/objects/ship/fu_thrustericon.png",
+  "orientations": [
+    {
+      "image": "/objects/ship/fu_booster_small/fu_booster_small.png:on.1",
+      "imagePosition": [-16, -16],
+      "animationPosition": [-16, -16],
+      "animationParts": {"booster": "/objects/ship/fu_booster_small/fu_booster_small.png"},
+      "anchors": ["top"],
+      "spaces":[
+         [-2,  0],[-2, -1],[-2, -2],
+         [-1,  0],[-1, -1],[-1, -2],
+         [ 0,  0],[ 0, -1],[ 0, -2]
+      ]
+    },
+    {
+      "image": "/objects/ship/fu_booster_small/fu_booster_smallFlip.png:on.1",
+      "imagePosition": [-16, 0],
+      "animationPosition": [-16, 0],
+      "animationParts": {"booster": "/objects/ship/fu_booster_small/fu_booster_smallFlip.png"},
+      "anchors": ["bottom"],
+      "spaces":[
+         [-2, 0],[-2, 1],[-2, 2],
+         [-1, 0],[-1, 1],[-1, 2],
+         [ 0, 0],[ 0, 1],[ 0, 2]
+      ]
+    }
+  ],
+
+  "fullbright": true,
+
+  "animation": "/objects/ship/boosters/boosterflame.animation",
+
+  "soundEffect": "/sfx/objects/smallboosterflame.ogg",
+  "soundEffectRangeMultiplier": 0.5,
+
+  "scripts": [
+    "/objects/ship/boosters/boosterflame.lua",
+    "/objects/ship/fu_shipstatmodifier.lua",
+    "/objects/ship/deprecated/fu_deprecatedbyosobject.lua"
+  ],
+  "scriptDelta": 32,
+
+  "touchDamage": {
+    "poly": [
+      [-0.75, 1],
+      [-0.75, 0.5],
+      [1.75, 0.5],
+      [1.75, 1]
+    ],
+    "damage": 125,
+    "knockback": 50,
+    "damageType": "Environment",
+    "damageSourceKind": "plasma"
+  },
+
+  "flyingBoosterStates": {
+    "none": "turnOff",
+    "disembarking": "turnOn",
+    "warp": "turnOff",
+    "arriving": "turnOn"
+  },
+  "stats": {
+    "shipSpeed": 16
+  },
+  "byosOnly": true
+}

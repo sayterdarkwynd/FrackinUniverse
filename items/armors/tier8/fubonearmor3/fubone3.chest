@@ -1,0 +1,101 @@
+{
+  "itemName" : "fubonearmor3chest",
+  "price" : 3680,
+  "inventoryIcon" : "icons.png:chest",
+  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;250^reset;% Oxygen,
+^yellow;^reset; ^cyan;Undying Resolve^reset;: 30%
+^yellow;^reset; Elder/Precursor: +^green;3.5^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: All Radiation, Gas, Shadow Taint",
+  "shortdescription" : "Necrontir Plate",
+  "category" : "chestarmour",
+  "tooltipKind" : "armornew2",
+
+  "maleFrames" : {
+    "body" : "chest.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
+
+  "femaleFrames" : {
+    "body" : "chest.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
+
+  "level" : 8,
+  "itemTags" : [ "upgradeableWeapon", "offensive", "ranged", "specialist" ],
+
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.25
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.42
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 4
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 3
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.044445
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.044445
+    }
+  ],
+
+  "statusEffects" : [
+    "necrosetbonus",
+    {
+      "stat" : "fu_necroset_chest",
+      "amount" : 1
+    }
+  ],
+
+  "colorOptions" : [
+    /* IRON */
+    { "ffca8a" : "ebe1dc", "e0975c" : "ada197", "a85636" : "696f67", "6f2919" : "433539" },
+    /* BLACK */
+    { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515", "1aba2a" : "d88310", "6cdb40" : "ffc300", "c0f871" : "faff00" },
+    /* GREY */
+    { "ffca8a" : "b5b5b5", "e0975c" : "808080", "a85636" : "555555", "6f2919" : "303030" },
+    /* WHITE */
+    { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },
+    /* RED */
+    { "ffca8a" : "fa6262", "e0975c" : "f81717", "a85636" : "c80707", "6f2919" : "900505", "1aba2a" : "1aba2a", "6cdb40" : "6cdb40", "c0f871" : "c0f871" },
+    /* ORANGE */
+    { "ffca8a" : "ffd495", "e0975c" : "ea9931", "a85636" : "af4e00", "6f2919" : "6e2900" },
+    /* YELLOW */
+    { "ffca8a" : "ffcf40", "e0975c" : "ffbf00", "a85636" : "bf9b30", "6f2919" : "a67c00" },
+    /* GREEN */
+    { "ffca8a" : "b2e89d", "e0975c" : "51bd3b", "a85636" : "247824", "6f2919" : "144216", "1aba2a" : "1aba2a", "6cdb40" : "6cdb40", "c0f871" : "c0f871" },
+    /* BLUE */
+    { "ffca8a" : "a5dcff", "e0975c" : "58b4ee", "a85636" : "3e9dd9", "6f2919" : "0068aa" },
+    /* PURPLE */
+    { "ffca8a" : "d29ce7", "e0975c" : "a451c4", "a85636" : "6a2284", "6f2919" : "320c40" },
+    /* PINK */
+    { "ffca8a" : "ff5ef1", "e0975c" : "c649ba", "a85636" : "a82688", "6f2919" : "7d172c" },
+    /* BROWN */
+    { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
+}

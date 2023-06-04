@@ -1,9 +1,13 @@
 {
-  "name" : "blacktarimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "blacktarimmunity.lua"
-  ]
+	"name": "blacktarimmunity",
+	"effectConfig": {
+		"stats": [{
+			"stat": "blacktarImmunity",
+			"amount": 1
+		}]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

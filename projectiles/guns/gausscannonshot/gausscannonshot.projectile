@@ -6,19 +6,24 @@
   "frameNumber" : 6,
   "damageKindImage" : "icon.png",
   "pointLight" : true,
-  "lightColor" : [110, 80, 110],
+  "lightColor" : [165, 120, 40],
   "power" : 5,
   "speed" : 65,
   "timeToLive" : 0.6,
   "knockback" : 5,
   "knockbackDirectional" : true,
   "actionOnReap" : [
+    //{
+    //  "action" : "config",
+    //  "file" : "/projectiles/explosions/gaussrifleboom/gaussrifleboom.config"
+    //}
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/gaussrifleboom/gaussrifleboom.config"
+      "file" : "/projectiles/explosions/smallregularexplosion/smallregularexplosion.config"
     }
   ],
-  "damageKind" : "fireplasma",
+  //"damageKind" : "fireplasma",
+  "damageKind" : "nodamage",
   "physics" : "bullet",
   "emitters" : [ "sparks" ]
 }

@@ -1,0 +1,36 @@
+{
+  "projectileName" : "rngradioactivepowerarrow",
+  "physics" : "nebsrngarrow",
+  "bounces" : 0,
+  "image" : "rngradioactivepowerarrow.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "emitters" : [ "radioactivedrip","radioactivethrowertrail" ],
+  "power" : 20,
+  "fullbright" : true,
+  "knockback" : 10,
+  "knockbackDirectional" : true,
+  "piercing" : false,
+  "timeToLive" : 30,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/radioactiveimpact.config"
+    }
+  ],
+  "periodicActions": [
+    {
+      "action": "projectile",
+      "type": "smallpoisoncloud",
+      "time": 0.05,
+	  "repeat" : true,
+      "angleAdjust" : 0,
+      "inheritDamageFactor" : 0.1,
+      "inheritSpeedFactor" : 0.3
+    }
+  ],
+  "statusEffects" : ["radiationburn"],
+  "damageKind" : "radioactivebow",
+  "hydrophobic" : false
+}

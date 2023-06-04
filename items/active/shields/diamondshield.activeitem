@@ -2,12 +2,14 @@
   "itemName" : "diamondshield",
   "price" : 10220,
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "tooltipKind" : "shieldnew",  
-  "description" : "Exceptionally valuable diamond-plated shield.",
+  "level" : 4,
+  "rarity" : "rare",
+  "tooltipKind" : "shieldnew",
+  "description" : "^green;Immune: Shock^reset;",
   "shortdescription" : "Gishinanki Shield",
+  "category" : "shield",
   "twoHanded" : false,
-  "itemTags" : ["shield"],
+  "itemTags" : ["shield", "upgradeableWeapon","diamond"],
 
   "inventoryIcon" : "images/diamondshield.png:nearidle",
 
@@ -19,36 +21,71 @@
     "sounds" : {
       "raiseShield" : [ "/sfx/melee/sword_guard.ogg" ],
       "perfectBlock" : [ "/sfx/melee/shield_block_floran_perfect.ogg" ],
+      "shieldBash" : [ "/sfx/melee/blunt_hit_metal3.ogg", "/sfx/melee/dagger_hit_metal1.ogg" ],
       "block" : [ "/sfx/melee/shield_block_floran.ogg" ],
       "break" : [ "/sfx/melee/shield_break_floran.ogg" ]
     }
   },
 
-  "scripts" : ["/items/active/shields/shield.lua"],
+  "scripts" : [ "/items/active/shields/shield.lua" ],
+
+  // ***************   FU shield properties    *********************
+  // if using shield2.lua, you must include these values
+  "shieldHealthRegen" : 0,
+  "shieldEnergyRegen" : 0,
+  "shieldHealthBonus" : 0.07,
+  "shieldEnergyBonus" : 0.11,
+  "shieldProtection" : 0,
+  "shieldStamina" : 0,
+  "shieldFalling" : 0,
+  "shieldCritChance" : 0,
+  "shieldCritBonus" : 0,
+  "protectionBee" : 0,
+  "protectionAcid" : 1,
+  "protectionBlacktar" : 0,
+  "protectionBioooze" : 0,
+  "protectionPoison" : 0,
+  "protectionLava" : 0,
+  "protectionFire" : 0,
+  "protectionProto" : 0,
+  "protectionCold" : 0,
+  "protectionHeat" : 0,
+  "protectionRads" : 0,
+  "protectionXCold" : 0,
+  "protectionXHeat" : 0,
+  "protectionXRads" : 0,
+  "protectionInsanity" : 0,
+  "protectionShock" : 1,
+  "protectionSlime" : 0,
+  "shieldBash" : 2,
+  "shieldBashPush" : 4,
+  // end FU shield properties
+
+
 
   "minActiveTime" : 0.2,
 
-  "forceWalk" : true,
-  "baseShieldHealth" : 190,
-  "cooldownTime" : 0.45,
+  "forceWalk" : false,
+  "baseShieldHealth" : 90,
+  "cooldownTime" : 0.5,
 
   "perfectBlockDirectives" : "?border=2;AACCFFFF;00000000",
   "perfectBlockTime" : 0.32,
-  
+
   "stances" : {
     "idle" : {
       "armRotation" : -90,
       "shieldRotation" : 0,
-      "allowRotate" : false,
+      "allowRotate" : true,
       "allowFlip" : true
     },
     "raised" : {
       "armRotation" : 0,
       "shieldRotation" : 0,
-      "allowRotate" : false,
+      "allowRotate" : true,
       "allowFlip" : true
     }
   },
 
-  "builder" : "/items/buildscripts/buildunrandshield.lua"
+  "builder" : "/items/buildscripts/fubuildunrandshield.lua"
 }

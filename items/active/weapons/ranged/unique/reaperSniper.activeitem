@@ -1,0 +1,100 @@
+{
+  "itemName" : "reapersniper",
+  "price" : 600,
+  "inventoryIcon" : "reaperSniper_Sky.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Supercharged dark matter rounds.
+^yellow;Extremely fast rounds^reset;",
+  "shortdescription" : "Tk-7 Reaper",
+  "category" : "sniperRifle",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Sniper Rifle",
+  "itemTags" : ["weapon","ranged","sniperrifle","upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "reaperSniper_Sky.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlepurple.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/hvmarauder4.wav" ]
+    }
+  },
+
+  "baseOffset" : [1.4, 0.2],
+  "muzzleOffset" : [3.2, 0.4],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "hoarfrost",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.9,
+    "baseDps" : 12,
+    "energyUsage" : 35.0,
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "iceplasma",
+    "projectileParameters" : {
+      "speed" : 300,
+      "timeToLive" : 3,
+      "knockback" : 15,
+      "damageKind" : "hoarfrost",
+      "statusEffects" : [ "slow" ]
+    },
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.075,
+      "armRotation" : 5,
+      "weaponRotation" : 5,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  }
+  },
+
+  "critChance" : 4,
+  "critBonus" : 2,
+  "isSniper" : 1,
+  "isAmmoBased" : 1,
+  "magazineSize" : 7,
+  "reloadTime" : 1.2,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 900,
+
+  "altAbilityType" : "piercingshot",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

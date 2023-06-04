@@ -1,0 +1,53 @@
+{
+	"objectName" : "sciencelaptop2",
+	"rarity" : "uncommon",
+	"description" : "Performs more advanced research on items.\n^cyan;Research Rate^reset;: 5%, 1.5s",
+	"shortdescription" : "Advanced Computer",
+	"race" : "generic",
+	"category" : "^orange;Extraction Device^reset;",
+	"price" : 1750,
+	"printable" : false,
+	"objectType" : "container",
+	//"learnBlueprintsOnPickup" : [ "dataserver" ],
+	"inventoryIcon" : "sciencelaptop2icon.png",
+	"orientations" : [
+		{
+			"direction" : "left",
+			"imageLayers" : [ { "image" : "sciencelaptop2.png:<color>.<frame>", "fullbright" : true }, { "image" : "sciencelaptop2.png:<color>.<frame>" } ],
+			"flipImages" : true,
+			"imagePosition" : [0, 0],
+			"frames" : 11,
+			"animationCycle" : 1.0,
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+
+		},
+		{
+			"direction" : "right",
+			"imageLayers" : [ { "image" : "sciencelaptop2.png:<color>.<frame>", "fullbright" : true }, { "image" : "sciencelaptop2.png:<color>.<frame>" } ],
+
+			"imagePosition" : [0, 0],
+			"frames" : 11,
+			"animationCycle" : 1.0,
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+
+		}
+	],
+	"inputNodes" : [ [1, 0] ],
+	"outputNodes" : [ [2, 0] ],
+	"openSounds" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+	"closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ],
+	"scripts" : [ "/objects/generic/extractor_research.lua" ],
+	"powertype" : "input",
+	"scriptDelta" : 10,
+	"slotCount" : 2,
+	"uiConfig" : "/bees/interface/beeexaminer/beeexaminer2.config",
+	"frameCooldown" : 67,
+	"autoCloseCooldown" : 3600,
+	"fu_timerMod":1.5,
+	"fu_researchMult":0.05,
+	"fu_essenceMult":0.0
+}

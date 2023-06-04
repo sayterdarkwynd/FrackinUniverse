@@ -1,15 +1,17 @@
 {
   "itemName" : "isn_sunstream",
-  "level" : 5,
+  "level" : 6,
   "price" : 1500,
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "A gun that uses fusion power to launch a spread of superheated energy.",
+  "description" : "The sun, in your hands. Truly deadly, and unique.
+^yellow;Homing alt^reset;
+^green;Bouncing projectiles^reset;",
   "shortdescription" : "Polaris",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "rocketLauncher",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","rocketlauncher"],
+  "itemTags" : ["weapon","ranged","rocketlauncher", "plasma", "hellfire", "upgradeableWeapon"],
   "inventoryIcon" : "isn_sunstreamicon.png",
   "animation" : "isn_sunstream.animation",
   "animationParts" : {
@@ -17,7 +19,7 @@
     "middle" : "isn_sunstream.png",
     "middlefullbright" : "isn_sunstreamfullbright.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzleorange1.png"
   },
   "animationCustom" : {
     "lights" : { "glow" : {
@@ -26,11 +28,11 @@
       "color" : [70, 90, 0]
     }},
     "sounds" : {
-      "fire" : [ "/sfx/weapons/explosionsmall.wav" ]
+      "fire" : [ "/sfx/weapons/sunstream.ogg" ]
     }
   },
   "baseOffset" : [-0.3, 0.75],
-  "muzzleOffset" : [1.0, 0.125],
+  "muzzleOffset" : [1.4, 0.125],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -41,8 +43,8 @@
     "class" : "GunFire",
 
     "fireTime" : 1.2,
-    "baseDps" : 5.75,
-    "energyUsage" : 34,
+    "baseDps" : 4.75,
+    "energyUsage" : 30,
     "inaccuracy" : 0,
     "fireType" : "auto",
 
@@ -82,8 +84,84 @@
       }
     }
   },
+  "critChance" : 4,
+  "critBonus" : 7,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 1200,
 
   "altAbilityType" : "floatydeathball",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters" : {
+  "shortdescription" : "^cyan;Singularity^reset; ^yellow;^reset;",
+  "description" : "Even more powerful and boomy.
+^yellow;Homing alt^reset;
+^green;Bouncing projectiles^reset;",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "isn_sunstream2.png",
+    "middlefullbright" : "isn_sunstream2fullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+    },
+    "inventoryIcon" : [ { "image" : "isn_sunstream2.png:idle.1" } ],
+    "critChance" : 4.5,
+    "critBonus" : 8,
+          "projectileType" : "isn_sunstream",
+	  "primaryAbility" : {
+	    "fireTime" : 1.2,
+	    "baseDps" : 5.75,
+	    "energyUsage" : 30,
+
+	    "projectileParameters" : {
+	      "image" : "isn_sunstreamshot2.png",
+	      "knockback" : 20,
+ 	      "damageKind" : "electric",
+  	      "emitters" : [ "electricplasma" ],
+  	      "processing":"?hueshift=180",
+	      "speed" : 60,
+		  "periodicActions" : [
+		    {
+		      "time" : 0.30,
+		      "loop" : true,
+		      "action" : "projectile",
+		      "type" : "chargeshotboom",
+		      "inheritDamageFactor" :0.45,
+		      "fuzzAngle" : 0
+		   },
+		    {
+		      "time" : 0.15,
+		      "loop" : true,
+		      "action" : "projectile",
+		      "type" : "electricguardianbullet",
+		      "inheritDamageFactor" :0.45,
+		      "fuzzAngle" : 360,
+		      "projectileParameters" : { "speed" : 0 }
+		   }
+		  ],
+		  "actionOnReap" : [
+		    {
+			  "action" : "config",
+			  "file" : "/projectiles/explosions/plasmaboom/plasmaboom.config"
+		    },
+		    {
+		      "action" : "sound",
+		      "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
+		    }
+		  ]
+	    }
+	  },
+	  "altAbilityType" : "floatydeathball2",
+	  "altAbility" : {
+	    "fireTime" : 2,
+	    "baseDps" : 12,
+	    "energyUsage" : 40,
+	    "projectileParameters" : {
+	      "processing":"?hueshift=0"
+	    }
+	  }
+  }
 }

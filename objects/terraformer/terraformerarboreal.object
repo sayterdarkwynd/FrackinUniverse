@@ -1,0 +1,48 @@
+{
+  "objectName" : "terraformerarboreal",
+  "colonyTags" : [],
+  "rarity" : "Legendary",
+  "description" : "Transforms a planet's climate into a Primeval Forest.",
+  "shortdescription" : "Primeval Terraformer",
+  "race" : "ancient",
+  "category" : "terraformer",
+  "price" : 5000,
+  "printable" : false,
+
+  "inventoryIcon" : "terraformericon_poison.png",
+  "orientations" : [
+    {
+      "dualImage" : "terraformer.png:inactive",
+
+      "imagePosition" : [-16, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "health" : 8,
+  "rooting" : true,
+
+  "animation" : "terraformer.animation",
+  "animationPosition" : [-16, 0],
+  "animationParts" : {
+    "base" : "terraformer.png",
+    "baseFullbright" : "terraformerfullbright_poison.png",
+    "beam" : "beam/terraformer_beam_poison.png"
+  },
+
+  "scripts" : ["/objects/terraformer/terraformer.lua"],
+  "scriptDelta" : 10,
+
+  "terraformOffset" : [-15, 0],
+
+  "minPregenerateTime" : 5,
+  "basePregenerateTime" : 10,
+  "pregenerateTimePerTile" : 0.1,
+
+  "planetTypeChangeThreshold" : 0.5,
+
+  "terraformBiome" : "arboreal",
+  "terraformPlanetType" : "arboreal"
+}

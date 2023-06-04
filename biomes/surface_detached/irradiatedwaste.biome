@@ -1,34 +1,34 @@
 {
   "name" : "irradiatedwaste",
   "friendlyName" : "Irradiated Glade",
-  "hueShiftOptions" : [-40, -25, 0, 25, 40],
+  "hueShiftOptions" : [-40, -30, -20, -10, 0, 10, 20, 30, 40],
     "spawnProfile" : {
     "groups" : [
       {
         "select" : 3,
-        "pool" : [    
-          [ 0.1111, "fugiantbee" ],
-          [ 0.1111, "seedspawn2" ],        
-          [ 0.1111, "slime" ],
-          [ 0.1111, "pyromantle" ],     
-          [ 0.1111, "futoxicgolem" ],
-          [ 0.1111, "futoxicfly" ],
-	  [ 0.1111, "fuallergen" ]
+        "pool" : [
+          [ 0.08, "fugiantbee" ],
+          [ 0.08, "knifetop" ],
+          [ 0.08, "slime" ],
+          [ 0.02, "eyejellyking" ],
+          [ 0.08, "futoxicgolem" ],
+          [ 0.08, "futoxicflylarge" ],
+	  [ 0.08, "slimetop" ]
         ]
       },
       {
         "select" : 3,
         "pool" : [
-          [ 0.4, "junglebee" ],
-          [ 0.3, "aridbee" ],
+          [ 0.4, "bee_tunguskudae" ],
+          [ 0.3, "bee_digger" ],
           [ 0.3, "fireflyspawner" ],
-          [ 0.4, "junglebee" ],
-          [ 0.3, "aridbee" ],
+          [ 0.1, "bee_honey" ],
+          [ 0.1, "bee_stalwart" ],
           [ 0.3, "fireflyspawner" ],
-          [ 0.4, "junglebee" ],
+          [ 0.2, "bee_plasterer" ],
           [ 0.3, "sackbagcritter" ],
           [ 0.3, "hazmatcritter" ],
-          [ 0.4, "bowbirdcritter" ],
+          [ 0.2, "bowbirdcritter" ],
           [ 0.3, "blipcritter" ],
           [ 0.3, "toxiccrabcritter" ]
         ]
@@ -57,11 +57,30 @@
       }
     }
   },
-    "mainBlock" : "irradiatedtile2",
-    "subBlocks" : [ "retexaetherdust", "waste", "biorock2" ],
+
+    "mainBlock" : "mud",
+    "subBlocks" : [ "irradiatedtile2", "waste", "junk", "rustyblock" ],
     "ores" : "ff_radioactiveOres",
 
+  "parallax" : "/parallax/surface/jungle.parallax",
 
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/jungle_day.ogg", "/sfx/environmental/jungle_day2.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/jungle_night.ogg", "/sfx/environmental/jungle_night2.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/shores_of_tranquility.ogg", "/music/forsaken-grotto.ogg", "/music/lava-exploration1.ogg", "/music/drosera.ogg", "/music/crystal-exploration1.ogg", "/music/inviolate-loop.ogg", "/music/body-electric-loop.ogg", "/music/europa.ogg", "/music/haiku.ogg","/music/mira.ogg","/music/ultramarine.ogg", "/music/desert-exploration1.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mira.ogg", "/music/crystal-exploration1.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg","/music/lava-exploration2.ogg", "/music/Nomads.ogg", "/music/ultramarine.ogg", "/music/forsaken-grotto.ogg", "/music/desert-exploration2.ogg" ]
+    }
+  },
   "surfacePlaceables" : {
     "grassMod" : [ "toxicgrass" ],
     "grassModDensity" : 0.9,
@@ -91,7 +110,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "wildalgaeseed" ],
               [0.35, "wildtoxictopseed" ],
               [0.35, "wildoonfortaseed" ],
@@ -112,7 +131,7 @@
           "type" : "object",
           "objectSets" : [
             {
-        "pool" : [ 
+        "pool" : [
               [0.35, "toxicfern1" ],
               [0.35, "toxicflower1" ],
               [0.35, "toxicflower2" ],
@@ -127,7 +146,51 @@
             }
           ]
         },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
 
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "rustbush1" ], [0.35, "rustbush2" ], [0.35, "rustbush3" ], [0.35, "rustbush4" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffAverage",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.15, "metalbarrel1" ],
+              [0.35, "toxicwastebarrel" ]
+              ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "toxicgasprimer" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -135,23 +198,34 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "toxicChest" ]
         },
         {
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseLarge",
+          "distribution" : "/biomes/distributions.config:ffRare",
 
           "type" : "tree",
-          "treeStemList" : [ "barren", "old", "skeletal", "stripey" ],
-          "treeFoliageList" : [ "aridblank", "patchy", "weirdly", "willowy" ]
+          "treeFoliageHueShiftMax" : 0,
+          "treeStemHueShiftMax" : 30,
+          "treeStemList" : [ "twisty", "woody", "oldwood", "crackly", "palmlike" ],
+          "treeFoliageList" : [ "" ]
         },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -165,7 +239,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -179,7 +253,15 @@
           "type" : "microdungeon",
           "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
         },
-        
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:mainBiomeRareMicrodungeon",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "toxicmicrodungeons" ]
+        },
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -193,14 +275,29 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "toxiccreep",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
           "distribution" : "/biomes/distributions.config:denseMedium",
 
           "type" : "bush",
           "bushes" : [
             {
-              "name" : "testbush",
-              "baseHueShiftMax" : 50,
-              "modHueShiftMax" : 50
+              "name" : "rubble",
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
             }
           ]
         },
@@ -208,34 +305,54 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseLarge",
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "largerubble",
+              "baseHueShiftMax" : 0,
+              "modHueShiftMax" : 0
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:rareClumpySmall",
 
           "type" : "bush",
           "bushes" : [
             {
               "name" : "aridskeleton",
-              "baseHueShiftMax" : 120,
-              "modHueShiftMax" : 120
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
             },
             {
               "name" : "savannahbush",
-              "baseHueShiftMax" : 120,
-              "modHueShiftMax" : 120
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
             },
             {
-              "name" : "algae",
-              "baseHueShiftMax" : 120,
-              "modHueShiftMax" : 120
+              "name" : "testbush",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
             },
             {
               "name" : "slimebush",
-              "baseHueShiftMax" : 120,
-              "modHueShiftMax" : 120
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
             },
             {
               "name" : "testbush2",
-              "baseHueShiftMax" : 120,
-              "modHueShiftMax" : 120
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
+            },
+            {
+              "name" : "skulls",
+              "baseHueShiftMax" : 40,
+              "modHueShiftMax" : 180
             }
           ]
         },
@@ -243,11 +360,168 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseSmall",
+          "distribution" : "/biomes/distributions.config:ffunCommon",
 
           "type" : "grass",
-          "grasses" : [ "pods", "r", "savannahgrass", "seaweed", "glowmushroom", "minipod", "shrooms", "spikes", "spire" ]
+          "grasses" : [ "pods", "r", "savannahgrass", "toxicplains", "glowmushroom", "minipod", "shrooms", "spikes", "spire" ]
         }
+    ]
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "mossgrass1" ],
+    "grassModDensity" : 0.2,
+
+    "ceilingGrassMod" : [ "roots" ],
+    "ceilingGrassModDensity" : 0.3,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "toxicChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "rustbush1" ], [0.35, "rustbush2" ], [0.35, "rustbush3" ], [0.35, "rustbush4" ]],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffAverage",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [
+            [0.15, "metalbarrel1" ],
+            [0.35, "toxicwastebarrel" ]
+            ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "toxicplains" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "rubble",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "largerubble",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 40,
+        "treeStemList" : [ "rootvine", "rootvine2" ],
+        "treeFoliageList" : [ "" ]
+      }
     ]
   }
 }

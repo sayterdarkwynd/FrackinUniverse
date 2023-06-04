@@ -1,0 +1,43 @@
+{
+	"name" : "medicalimmunization",
+	"label" : "^orange;[E]^reset; Immunization",
+	"icon" : "/interface/statuses/medicalStationSpecials/immunization.png",
+
+	"defaultDuration" : 5,
+	"scripts" : [ "immunization.lua","/stats/effects/fu_genericStatApplier.lua" ],
+
+	"effectConfig" : {
+		"statusesWithoutBlockingStat" : [
+			"rootfu",
+			"freeze",
+			"freezefu",
+			"freezefu2",
+			"frozenburning",
+			"slow"
+		],
+		"stats": [
+			{"stat": "biooozeImmunity","amount": 1},
+			{"stat": "shadowgasImmunity","amount": 1},
+			{"stat": "sulphuricImmunity","amount": 1},
+			{"stat": "fireStatusImmunity","amount": 1},
+			{"stat": "liquidnitrogenImmunity","amount": 1},
+			{"stat": "poisonStatusImmunity","amount": 1},
+			{"stat": "slushslowImmunity","amount": 1},
+			{"stat": "snowslowImmunity","amount": 1},
+			{"stat": "protoImmunity","amount": 1},
+			{"stat": "shadowImmunity","amount": 1},
+			{"stat": "darknessImmunity","amount": 1},
+			{"stat": "radiationburnImmunity","amount": 1},
+			{"stat": "electricStatusImmunity","amount": 1},
+			{"stat": "iceStatusImmunity","amount": 1},
+			{"stat": "stunImmunity","amount": 1},
+			{"stat": "slimeImmunity","amount": 1},
+			{"stat": "tarStatusImmunity","amount": 1},
+			{"stat": "beestingImmunity","amount": 1},
+			{"stat": "boozeImmunity","amount": 1},
+			{"stat": "sandstormImmunity","amount": 1},
+			{"stat": "powerMultiplier","effectiveMultiplier": 0.9},
+			{"stat": "protection","effectiveMultiplier": 0.9}
+		]
+	}
+}

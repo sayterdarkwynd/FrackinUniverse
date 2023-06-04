@@ -1,0 +1,59 @@
+{
+  "itemName" : "hellfirelegs",
+  "price" : 300,
+  "inventoryIcon" : "icons.png:pants",
+  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "rare",
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; ^cyan;Fire Nova when hit^reset;
+^yellow;^reset; ^#ac522b;Glow^reset;
+^yellow;^reset; Flamethrower/Hellfire: Damage x^green;1.25^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Extreme Heat, Burning",
+  "shortdescription" : "Hellfire Greaves",
+  "category" : "legarmour",
+  "tooltipKind" : "armornew2",
+  "itemTags" : [ "upgradeableWeapon", "defensive", "melee", "hyper" ],
+  "maleFrames" : "pants.png",
+  "femaleFrames" : "pants.png",
+
+  "level" : 5,
+  //"collectablesOnPickup" : { "fu_armortank" : "hellfirelegs" },
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.05
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.3
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 1
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 8
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.033334
+    }
+  ],
+
+  "statusEffects" : [
+    "hellfiresetbonus",
+    {
+      "stat" : "fu_hellfireset_legs",
+      "amount" : 1
+    }
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
+}

@@ -1,0 +1,52 @@
+{
+  "itemName" : "advalloyspear",
+  "price" : 780,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A masterfully made alloy spear for puncturing enemies.
+^cyan;Hunting weapon^reset;",
+  "shortdescription" : "Master's Spear",
+  "tooltipKind" : "sword2",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear", "upgradeableWeapon"],
+
+  "inventoryIcon" : "advalloyspear.png",
+  //"collectablesOnPickup" : { "fu_weaponspear" : "advalloyspear" },
+  "animation" : "/items/active/weapons/melee/spear/spear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "advalloyspear.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : [],
+
+    "fireTime" : 0.8,
+    "baseDps" : 10.5,
+    "damageConfig" : {
+      "damageSourceKind" : "bow",
+      "statusEffects" : [ "bleedingshort" ],
+      "knockback" : 12
+    }
+  },
+  "altAbilityType" : "parry",
+  "altAbility" : { },
+
+  "critChance" : 3,
+  "critBonus" : 4,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

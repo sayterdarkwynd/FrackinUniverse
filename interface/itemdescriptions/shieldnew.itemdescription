@@ -1,75 +1,154 @@
 {
-  "objectImage" : {
-    "type" : "image",
-    "position" : [75, 125],
-    "file" : "",
-    "centered" : true,
-    "maxSize" : [38, 38],
-    "minSize" : [38, 38]
-  },
-  "moneyIcon" : {
-    "type" : "image",
-    "position" : [102, 30],
-    "file" : "/interface/money.png"
-  },
-  "priceLabel" : {
+  "levelLabelTitle" : {
     "type" : "label",
-    "position" : [115, 30],
+    "position" : [35, 176],
     "hAnchor" : "left",
-    "value" : "tree"
+    "vAnchor" : "top",
+    "color" : [185, 181, 178],
+    "value" : "Tier"
   },
-  "healthLabel" : {
-    "type" : "label",
-    "position" : [130, 80],
-    "hAnchor" : "right",
-    "value" : ""
+    "levelLabel" : {
+      "type" : "label",
+      "position" : [55, 176],
+      "hAnchor" : "left",
+      "vAnchor" : "top",
+      "color" : [185, 181, 178]
   },
-  "healthTitleLabel" : {
-    "type" : "label",
-    "position" : [20, 80],
-    "hAnchor" : "left",
-    "value" : "Shield Health:"
-  },
-  "cooldownLabel" : {
-    "type" : "label",
-    "position" : [130, 71],
-    "hAnchor" : "right",
-    "value" : ""
-  },
-  "cooldownTitleLabel" : {
-    "type" : "label",
-    "position" : [20, 71],
-    "hAnchor" : "left",
-    "value" : "Cooldown Time:"
-  },
-
+    //Position: of the items name
   "title" : {
     "type" : "label",
-    "position" : [35, 179],
+    "position" : [35, 176],
     "hAnchor" : "left",
-    "value" : ""
-  },
-  "subTitle" : {
-    "type" : "label",
-    "position" : [35, 169],
-    "hAnchor" : "left",
-    "color" : [185, 181, 178],
     "value" : ""
   },
   "titleIcon" : {
     "type" : "itemslot",
-    "position" : [9, 167],
+    "position" : [9, 166],
     "callback" : "null",
     "iconMode" : true,
     "backingImage" : "/interface/inventory/portrait.png",
     "showRarity" : false,
     "showBackingImageWhenFull" : true
   },
-  "rarityLabel" : {
-    "type" : "label",
-    "position" : [12, 30],
-    "hAnchor" : "left",
+  "objectImage" : {
+    "type" : "image",
+    "position" : [67, 129],
+    "file" : "",
     "centered" : true,
-    "wrapWidth" : 126
-  }
+    "maxSize" : [38, 38],
+    "minSize" : [38, 38]
+  },
+  "healthLabel" : {
+    "type" : "label",
+    "position" : [127, 91],
+    "hAnchor" : "right",
+    "value" : ""
+  },
+  "healthTitleLabel" : {
+    "type" : "label",
+    "position" : [12, 91],
+    "hAnchor" : "left",
+    "value" : "Shield Health:"
+  },
+  "shieldBashLabel" : {
+    "type" : "label",
+    "position" : [127, 82],
+    "hAnchor" : "right",
+    "value" : ""
+  },
+  "shieldBashTitleLabel" : {
+    "type" : "label",
+    "position" : [12, 82],
+    "hAnchor" : "left",
+    "value" : "Bash Bonus:"
+  },
+  "blockLabel" : {
+    "type" : "label",
+    "position" : [127, 73],
+    "hAnchor" : "right",
+    "value" : ""
+  },
+  "blockTitleLabel" : {
+    "type" : "label",
+    "position" : [12, 73],
+    "hAnchor" : "left",
+    "value" : "Perfect Block Time:"
+  },
+  "stamLabel" : {
+    "type" : "label",
+    "position" : [127, 64],
+    "hAnchor" : "right",
+    "value" : ""
+  },
+  "stamTitleLabel" : {
+    "type" : "label",
+    "position" : [12, 64],
+    "hAnchor" : "left",
+    "value" : "Shield Regen Bonus:"
+  },
+
+  "hpLabel" : {
+    "type" : "label",
+    "position" : [23, 112],
+    "hAnchor" : "right",
+    "value" : ""
+  },
+  "hp2Label" : {
+    "type" : "label",
+    "position" : [26, 112],
+    "hAnchor" : "left",
+    "value" : "%"
+  },
+  "hpTitleHealth" : {
+    "type" : "image",
+    "position" : [12, 128],
+    "file" : "/interface/stats/hpup.png"
+  },
+
+  "energyLabel" : {
+    "type" : "label",
+    "position" : [120, 112],
+    "hAnchor" : "right",
+    "value" : ""
+  },
+  "energy2Label" : {
+    "type" : "label",
+    "position" : [123, 112],
+    "hAnchor" : "left",
+    "value" : "%"
+  },
+  "energyTitleHealth" : {
+    "type" : "image",
+    "position" : [109, 128],
+    "file" : "/interface/stats/energyup.png"
+  },
+
+  "descriptionLabel" : {
+    "type" : "label",
+    "position" : [12, 60],
+    "hAnchor" : "left",
+    "vAnchor" : "top",
+    "wrapWidth" : 123,
+    "lineSpacing" : 1.0,
+    "value" : ""
+  },
+  "priceLabel" : {
+    "type" : "label",
+    "position" : [120, 23],
+    "hAnchor" : "left",
+    "value" : "tree"
+  },
+  "moneyIcon" : {
+    "type" : "image",
+    "position" : [107, 23],
+    "file" : "/interface/money.png"
+  }//,
+   //Position: of the rarity text
+ // "rarityLabel" : {
+ //   "type" : "label",
+ //   "position" : [35, 23],
+ //   "hAnchor" : "left",
+ //   "centered" : true,
+ //   "wrapWidth" : 126
+ // }
 }

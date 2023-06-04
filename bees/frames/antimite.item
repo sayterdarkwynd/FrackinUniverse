@@ -1,0 +1,29 @@
+{
+	"itemName" : "apiary_frame_antimite",
+	"description" : "<beeData>",
+	"shortdescription" : "Anti-Mite Frame I",
+	"inventoryIcon" : "amite.png",
+	"builder":"/items/buildscripts/buildbeeframe.lua",
+	"tooltipKind": "beeframe",
+
+	"rarity" : "common",
+	"maxStack" : 64,
+	"category" : "craftingMaterial",
+	"itemTags" : ["apiaryFrame"],
+	"dropCollision" : [-2.5, -2.0, 2.5, 2.0],
+
+	// Stats:
+	// Note that they serve as a direct modifier to the stats.
+	"baseProduction" : 0.5,
+	"droneToughness" : 0,
+	"droneBreedRate" : 0,
+	"queenBreedRate" : 0,
+	"queenLifespan" : 0.2,
+	"mutationChance" : 0.05,					// 15 = +15% chance
+	"miteResistance" : 0.12,				// Note that (currently) the normal range is -6.48 to 6.48, so use values smaller than 1 for balanced frames
+	"allowDay" : false,			// Set to true to enable bees working at day. Setting to false does not disable day time work.
+	"allowNight" : false,			// Set to true to enable bees working at night. Setting to false does not disable night time work.
+	"specialFunction" : "antimiteFrame",		// The function you want the frame to call every bee tick. Must define the function within the 'specialFrameFunctions' table inside 'apiary.lua'
+	"functionParams" : [120.0085, "distributing research"]	// The parameters to pass the function. Make sure the function in the 'apiary.lua' script fits the would-be passed data
+
+}

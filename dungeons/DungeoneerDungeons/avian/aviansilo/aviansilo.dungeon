@@ -1,7 +1,7 @@
 {
   "metadata" : {
     "name" : "aviansilo",
-    "species" : "dummy",
+    "species" : "avian",
     "rules" : [
     ],
     "anchor" : [ "entrance" ],
@@ -1443,61 +1443,61 @@
     {
       "value" : [255, 184, 153, 255],
       "comment" : "chestavian1 facing left",
-      "brush" : [ [ "clear" ], [ "object", "chestavian1", { "direction" : "left" } ] ]
+      "brush" : [ [ "clear" ], [ "object", "chestavian1", { "direction" : "left","parameters": {"treasurePools": ["ffbasicTreasure"]} } ] ]
     },
 
     {
       "value" : [245, 184, 153, 255],
       "comment" : "chestavian1 facing right",
-      "brush" : [ [ "clear" ], [ "object", "chestavian1", { "direction" : "right" } ] ]
+      "brush" : [ [ "clear" ], [ "object", "chestavian1", { "direction" : "right","parameters": {"treasurePools": ["ffbasicTreasure"]} } ] ]
     },
 
     {
       "value" : [255, 208, 153, 255],
       "comment" : "chestavian2 facing left",
-      "brush" : [ [ "clear" ], [ "object", "chestavian2", { "direction" : "left" } ] ]
+      "brush" : [ [ "clear" ], [ "object", "chestavian2", { "direction" : "left","parameters": {"treasurePools": ["ffbasicTreasure"]} } ] ]
     },
 
     {
       "value" : [245, 208, 153, 255],
       "comment" : "chestavian2 facing right",
-      "brush" : [ [ "clear" ], [ "object", "chestavian2", { "direction" : "right" } ] ]
+      "brush" : [ [ "clear" ], [ "object", "chestavian2", { "direction" : "right","parameters": {"treasurePools": ["ffbasicTreasure"]} } ] ]
     },
 
     {
       "value" : [255, 225, 153, 255],
       "comment" : "chestmedavian1 facing left",
-      "brush" : [ [ "clear" ], [ "object", "chestmedavian1", { "direction" : "left" } ] ]
+      "brush" : [ [ "clear" ], [ "object", "chestmedavian1", { "direction" : "left","parameters": {"treasurePools": ["ffbasicTreasure"]} } ] ]
     },
 
     {
       "value" : [245, 225, 153, 255],
       "comment" : "chestmedavian1 facing right",
-      "brush" : [ [ "clear" ], [ "object", "chestmedavian1", { "direction" : "right" } ] ]
+      "brush" : [ [ "clear" ], [ "object", "chestmedavian1", { "direction" : "right","parameters": {"treasurePools": ["ffbasicTreasure"]} } ] ]
     },
 
     {
       "value" : [255, 244, 153, 255],
       "comment" : "chestmedavian2 facing left",
-      "brush" : [ [ "clear" ], [ "object", "chestmedavian2", { "direction" : "left" } ] ]
+      "brush" : [ [ "clear" ], [ "object", "chestmedavian2", { "direction" : "left","parameters": {"treasurePools": ["ffbasicTreasure"]} } ] ]
     },
 
     {
       "value" : [245, 244, 153, 255],
       "comment" : "chestmedavian2 facing right",
-      "brush" : [ [ "clear" ], [ "object", "chestmedavian2", { "direction" : "right" } ] ]
+      "brush" : [ [ "clear" ], [ "object", "chestmedavian2", { "direction" : "right","parameters": {"treasurePools": ["ffbasicTreasure"]} } ] ]
     },
 
     {
       "value" : [228, 255, 87, 255],
       "comment" : "woodencrate1 facing left",
-      "brush" : [ [ "clear" ], [ "object", "woodencrate1", { "direction" : "left" } ] ]
+      "brush" : [ [ "clear" ], [ "object", "woodencrate1", { "direction" : "left","parameters": {"treasurePools": ["ffbasicTreasure"]} } ] ]
     },
 
     {
       "value" : [218, 255, 87, 255],
       "comment" : "woodencrate1 facing right",
-      "brush" : [ [ "clear" ], [ "object", "woodencrate1", { "direction" : "right" } ] ]
+      "brush" : [ [ "clear" ], [ "object", "woodencrate1", { "direction" : "right","parameters": {"treasurePools": ["ffbasicTreasure"]} } ] ]
     },
 
     {
@@ -1901,25 +1901,25 @@
 
     {
       "value" : [21, 75, 185, 255],
-      "comment" : "background pressurizedbeam",
+      "comment" : "background pressurisedbeam",
       "brush" : [ [ "clear" ], [ "back", "pressurisedbeam" ] ]
     },
 
     {
       "value" : [21, 94, 185, 255],
-      "comment" : "foreground pressurizedbeam",
+      "comment" : "foreground pressurisedbeam",
       "brush" : [ [ "clear" ], [ "front", "pressurisedbeam" ] ]
     },
 
     {
       "value" : [56, 21, 185, 255],
-      "comment" : "background pressurizedsteel",
+      "comment" : "background pressurisedsteel",
       "brush" : [ [ "clear" ], [ "back", "pressuriseddurasteel" ] ]
     },
 
     {
       "value" : [21, 56, 185, 255],
-      "comment" : "foreground pressurizedsteel",
+      "comment" : "foreground pressurisedsteel",
       "brush" : [ [ "clear" ], [ "front", "pressuriseddurasteel" ] ]
     },
 
@@ -2826,7 +2826,7 @@
                 "noticePlayersRadius" : 20.0,
                 "merchant" : {
                   "storeRadius" : 2,
-                  "categories" : [ "avianingredients" ],
+                  "categories" :{"default": [ "avianingredients" ]},
                   "priceVarianceRange" : [0.8, 1.2],
                   "numItems" : 6
                 },
@@ -2852,7 +2852,7 @@
                 "noticePlayersRadius" : 20.0,
                 "merchant" : {
                   "storeRadius" : 2,
-                  "categories" : [ "avianweaponblueprints", "randomswords" ],
+                  "categories" : {"default":[ "avianweaponblueprints", "randomswords" ]},
                   "priceVarianceRange" : [0.8, 1.2],
                   "numItems" : 10
                 },
@@ -2878,7 +2878,7 @@
                 "noticePlayersRadius" : 20.0,
                 "merchant" : {
                   "storeRadius" : 2,
-                  "categories" : [ "avianarmorblueprints", "avianclothes" ],
+                  "categories" :{ "default":[ "avianarmour", "avianclothes" ]},
                   "priceVarianceRange" : [0.8, 1.2],
                   "numItems" : 20
                 },
@@ -2927,7 +2927,7 @@
               "scriptConfig" : {
                 "noticePlayersRadius" : 20.0,
                 "merchant" : {
-                  "categories" : [ "avianweaponblueprints", "avianarmorblueprints", "randomguns", "randomswords" ],
+                  "categories" : {"default":[ "avianweaponblueprints", "avianarmorblueprints", "randomguns", "randomswords" ]},
                   "priceVarianceRange" : [0.8, 1]
                 }
               }

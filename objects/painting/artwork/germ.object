@@ -1,0 +1,82 @@
+{
+  "objectName" : "painting_germ",
+  "colonyTags" : ["odd", "valuable", "neon", "ccccc","science" , "painting" , "human"],
+  "rarity" : "Rare",
+  "category" : "decorative",
+  "price" : 190,
+
+  "health" : 1.5,
+
+  "description" : "This strange painting is titled ''Germ of an Idea''. I'll be stumped as to what I think about this.",
+  "shortdescription" : "Disturbing Painting",
+  "race" : "generic",
+
+  "apexDescription" : "A most disturbing painting that is reminiscent of Miniknog subliminal messaging.",
+  "avianDescription" : "A strangely done portrait of a human being.",
+  "bothanDescription" : "Something is not right with this painting.",
+  "floranDescription" : "Why iss painting even here? Sstupid.",
+  "glitchDescription" : "Liberal. Information wants to be free all the time.",
+  "humanDescription" : "I guess that thoughts can kill you, especially if you think about this artwork.",
+  "togrutaDescription" : "Another abstract painting, reputedly of Human provenance.",
+  "hylotlDescription" : "I've heard that Human flair for the arts can be unpredictable, and what survived the destruction of Earth has been its dregs.",
+  "utapaunDescription" : "It's reminiscent of Mind Tricks used by Force users.",
+  "novakidDescription" : "Why is this poor yellow dude impaled by some other yellow object? now that's not right.",
+  "feneroxDescription" : "WHAT? Eyes not focus on. Hurts brain. Burn!",
+  "felinDescription" : "Human artwork can never reach the same level of refinement as what we Felins can do.",
+  "radienDescription" : "Chk-vk vrrrrrrrr.",
+  "shadowDescription" : "...",
+  "kirhosDescription" : "This is oddly disturbing. It is impossible to focus on the image.",
+  "fukirhosDescription" : "This is oddly disturbing. It is impossible to focus on the image.",
+  "peglaciDescription" : "This reminds me of the cold deserts of Ithraax Var.",
+  "fupeglaciDescription" : "This reminds me of the cold deserts of Ithraax Var.",
+  "thelusianDescription" : "I do not understand art. I wish to do more violence instead.",
+  "fumantiziDescription" : "This is both wonderful and horrifying. Like a retirement home.",
+  "rodianDescription" : "This painting could well be worth a lot, if I knew the right people to sell it to.",
+  "inventoryIcon" : "/objects/apex/apexpainting2/apexpainting2icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "moba_germ.png:<color>.<frame>", "fullbright" : true }, { "image" : "moba_germ.png:<color>.<frame>" } ],
+      "imagePosition" : [-20, 0],
+      "direction" : "right",
+      "flipImages" : false,
+      "frames" : 1,
+      "animationCycle" : 26,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+
+    },
+    {
+      "imageLayers" : [ { "image" : "moba_germ.png:<color>.<frame>", "fullbright" : true }, { "image" : "moba_germ.png:<color>.<frame>" } ],
+      "imagePosition" : [-20, 0],
+      "direction" : "left",
+      "frames" : 1,
+      "animationCycle" : 26,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+
+    }
+  ],
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [0.25, "nosebleed"],
+        [0.25, "flee"],
+        [0.25, "creepyfollow"],
+        [0.25, "cry"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 2
+  },
+  "statusEffects"  : [ "madnessgainpainting2" ]
+}

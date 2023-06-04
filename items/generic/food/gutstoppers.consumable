@@ -1,0 +1,25 @@
+{
+	"itemName": "gutstoppers",
+	"rarity": "uncommon",
+	"price": 75,
+	"category": "preparedFood",
+	"inventoryIcon": "gutstoppers.png",
+	"description": "Which will last longer, you or them? \n^cyan;+^reset;20% ^green;Energy^reset; \n^yellow;Type: Robot Food^reset;",
+	"shortdescription": "Gutstoppers",
+	"effects": [
+        ["robot_food",
+        {
+            "effect": "maxenergyscalingboostfood",
+            "duration": 120,
+            "energyModifier": 1.20
+        }
+        ]
+    ],
+	"foodValue": 20,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 0.1,
+	"blockingEffects": ["wellfed"]
+}

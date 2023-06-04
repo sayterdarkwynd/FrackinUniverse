@@ -1,0 +1,27 @@
+{
+  "id" : "physicsfield",
+  "prerequisites" : [ ],
+  "title" : "Breaking Physics",
+  "text" : "I've devised a way to quite literally ignore physics to a mild degree!",
+  "completionText" : "With this tech I should be able to hold jump and reduce my inertia.",
+  "moneyRange" : [220, 320],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : false,
+
+    "conditions" : [ ],
+    "showTech" : [
+      "physicsfield"
+    ]
+  }
+}

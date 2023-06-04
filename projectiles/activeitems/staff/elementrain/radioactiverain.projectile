@@ -1,0 +1,22 @@
+{
+  "projectileName" : "radioactiverain",
+  "physics" : "rain",
+  "timeToLive" : 0.75,
+  "image" : "radioactiverain.png",
+  "animationCycle" : 1,
+  "lightColor" : [150, 150, 0],
+  "frameNumber" : 1,
+  "fullbright" : true,
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/poisonrain_impact.ogg" ]
+    }
+  ],
+  "speed" : 25,
+  "power" : 30,
+  "damageKind" : "radioactiveplasma",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "radiationburn" ],
+  "emitters" : [ "radioactivethrowertrail" ]
+}

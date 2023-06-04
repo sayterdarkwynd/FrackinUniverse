@@ -1,23 +1,28 @@
 {
-  "itemName" : "energiflower",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "energiflowericon.png",
-  "description" : "Regenerates some energy. Also acts as a minor fuel.",
-  "shortdescription" : "Energiflower",  
-    "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 5,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "fuelAmount" : 4,
-  "effects" : [ [
-      {
-        "effect" : "energyregenfu35",
-        "duration" : 20
-      }
-    ] ]
+	"itemName": "energiflower",
+	"inventoryIcon": "energiflowericon.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 5,
+	"fuelAmount": 4,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+17.5% E. Regen & -8.25% E. Regen Block^reset;: 2m\n^blue;+4 ^blue;Fuel^reset;",
+	"shortdescription": "Energiflower",
+
+	"effects": [
+		[{
+			"effect": "energyregenfu35",
+			"duration": 120
+		}]
+	],
+	"blockingEffects": [
+		"energyregenfu50",
+		"energyregenfu10",
+		"energyregenfu60",
+		"energyregenfu25",
+		"energyregenfu20",
+		"energyregenfu05",
+		"energyregenfu40"
+	]
 }

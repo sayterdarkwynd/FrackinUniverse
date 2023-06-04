@@ -1,0 +1,60 @@
+{
+  "type" : "armoredgrimdarkcultist",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "The Shadow will consume all!",
+            "I'll melt your face off!",
+            "The Corruption spreads!",
+            "Speak the shadow words of pain!",
+            "Nothing...everything!",
+            "No more tears. Only darkness."
+          ]
+        }
+      }
+    }
+  },
+
+  "movementParameters" : {
+    "runSpeed" : 16
+  },
+
+    "statusControllerSettings" : {
+    "stats" : {
+		"powerMultiplier" : {
+        "baseValue" : 1.5
+      },
+      "maxHealth" : {
+        "baseValue" : 130.0
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "armoredcultisthead", "parameters" : { "colorIndex" : 1 } } ],
+            "chest" : [ { "name" : "armoredcultistchest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "armoredcultistlegs", "parameters" : { "colorIndex" : 1 } } ],
+	    "back" : [ { "name" : "armoredcultistback", "parameters" : { "colorIndex" : 1 } } ],
+            "primary" : [
+              "rareshortsword"
+            ],
+			"alt" : [
+              "commonsmallshield",
+              "commonlargeshield"
+            ]
+          }
+        ] ]
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+[
+	[
+		{
+			"op" : "add",
+			"path" : "/effects",
+			"value" : [ [ "robot_food" ] ]
+		},
+		{
+			"op" : "replace",
+			"path" : "/foodValue",
+			"value" : 20
+		},
+		{
+			"op" : "replace",
+			"path" : "/description",
+			"value" : "Currentcorn, full of acid. Not good for fleshy creatures. ^yellow;Type: Robot Food^reset;"
+		}
+	],
+	[
+		{
+			"op" : "test",
+			"path" : "/maxStack"
+		},
+		{
+			"op" : "replace",
+			"path" : "/maxStack",
+			"value" : 20
+		}
+	],
+	[{"op":"test","path":"/learnBlueprintsOnPickup/0"},{"op":"remove","path":"/learnBlueprintsOnPickup/0"}]
+]

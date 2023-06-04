@@ -1,0 +1,113 @@
+{
+  "type" : "itamae",
+  "baseType" : "merchanttenant",
+
+  "damageTeam" : 1,
+
+  "scripts" : [
+    "/npcs/bmain.lua"
+  ],
+  "initialScriptDelta" : 5,
+  "scriptConfig" : {
+	"questGenerator" : {
+      "pools" : ["common", "tenant"]
+    },
+
+    "merchant" : {
+      "waitTime" : 40,
+      "storeRadius" : -1,
+      "categories" : {
+        "default" : [ "itamae" ],
+        "hylotl" : [ "itamae" ]
+      },
+      "buyFactorRange" : [ 2.0, 4.0 ],
+      "sellFactorRange" : [ 0.2, 0.2 ],
+      "numItems" : 10,
+      "paneLayoutOverride" : {
+        "windowtitle" : {
+          "title" : "  Itamae",
+          "subtitle" : "  Fish serving fish? Weird."
+        }
+      }
+    },
+
+    "dialog" : {
+      "merchant" : {
+	    "start" : {
+		  "default" : {
+            "default" : [
+              "Greetings. What can I make for you today?",
+              "All of our ingredients are locally grown and raised.",
+              "Please take your time in choosing."
+            ]
+          },
+		  "hyltol" : {
+            "default" : [
+              "Greetings. What can I make for you today?",
+              "All of our ingredients are locally grown and raised.",
+              "Please take your time in choosing."
+            ]
+          }
+		},
+		"welcome" : {
+		  "default" : {
+            "default" : [
+              "Right this way, if you please.",
+              "I can serve you right over here.",
+              "What can I start you off with today?"
+            ]
+          },
+		  "hylotl" : {
+            "default" : [
+              "Right this way, if you please.",
+              "I can serve you right over here.",
+              "What can I start you off with today?"
+            ]
+          }
+		},
+		"end" : {
+          "default" : {
+            "default" : [
+              "I hope you've had an enjoyable experience."
+            ]
+          }
+        },
+		"follow" : "/dialog/merchant.config:follow",
+        "tout" : "/dialog/merchant.config:tout"
+      },
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/merchant.config:tagCriteria",
+          "enclosedArea" : "/dialog/merchant.config:enclosedArea",
+          "otherDeed" : "/dialog/merchant.config:otherDeed",
+          "severe" : "/dialog/merchant.config:severe",
+          "final" : "/dialog/merchant.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/merchant.config:beacon",
+          "rent" : "/dialog/merchant.config:rent"
+        }
+      }
+    }
+  },
+
+  "matchColorIndices" : true,
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "headbandhead", "parameters" : { "colorIndex" : 1 } }
+	        ],
+            "chest" : [
+              { "name" : "kimonochest", "parameters" : { "colorIndex" : 1 } }
+	        ],
+            "legs" : [
+              { "name" : "cheflegs", "parameters" : { "colorIndex" : 1 } }
+            ]
+          }
+        ] ]
+    ]
+  }
+}

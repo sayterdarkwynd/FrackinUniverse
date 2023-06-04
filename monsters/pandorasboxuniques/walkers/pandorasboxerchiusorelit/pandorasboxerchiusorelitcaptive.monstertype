@@ -1,0 +1,247 @@
+{
+  "type" : "pandorasboxerchiusorelitcaptive",
+  "shortdescription" : "Erchius Orelit",
+  "description" : "Though Erchius is embedded in its body, it seems unaffected by the Erchius sickness.",
+
+  "categories" : [ "pandorasboxerchiusorelit" ],
+  "parts" : [ "body" ],
+
+  "animation" : "pandorasboxerchiusorelit.animation",
+
+  "dropPools" : [ { "default" : "pandorasboxerchiusorelitTreasure", "bow" : "pandorasboxerchiusorelitTreasure" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua",
+      "/monsters/pandorasboxmonsterscripts/pandorasboxsimplefarmablemonster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "harvestTime" : [600, 1000],
+    "harvestSpawnOffset" : [0, 0],
+    "harvestPool" : "pandorasboxerchiusorelitHarvest",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 15,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 15,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 3,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-invulnerable",
+          "cooldown" : [6, 12],
+          "parameters" : {
+            "windupTime" : 0.5,
+            "windupState" : "invulnerablewindup",
+            "winddownTime" : 0.5,
+            "winddownState" : "invulnerablewinddown",
+
+            "invulnerableEffect": "highprotection",
+            "invulnerableTime" : 20
+          }
+        }
+      ],
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-invulnerable",
+          "parameters" : {
+            "windupTime" : 0.5,
+            "windupState" : "invulnerablewindup",
+            "winddownTime" : 0.5,
+            "winddownState" : "invulnerablewinddown",
+
+            "invulnerableEffect": "highprotection",
+            "invulnerableTime" : 4
+          }
+        }
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 3,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 3,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 20]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.3125, 1.25], [0.8125, 0.75],  [0.8125, -0.75], [0.3125, -1.25],  [-0.3125, -1.25], [-0.8125, -0.75],  [-0.8125, 0.75], [-0.3125, 1.25] ],
+      "damage" : 9,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.3125, 1.25], [0.8125, 0.75],  [0.8125, -0.75], [0.3125, -1.25],  [-0.3125, -1.25], [-0.8125, -0.75],  [-0.8125, 0.75], [-0.3125, 1.25] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 3,
+      "runSpeed" : 5,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "stone",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "stone"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 400
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.5
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.25
+        },
+        "fireResistance" : {
+          "baseValue" : 0.5
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.5
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "wildHarvestable" : false,
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
+  }
+}

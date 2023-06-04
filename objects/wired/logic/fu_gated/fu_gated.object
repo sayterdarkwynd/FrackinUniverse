@@ -1,0 +1,40 @@
+{
+  "objectName" : "fu_gated",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "An overly-complicated gate! Who knows what inputs are needed...",
+  "shortdescription" : "Black Box Logic Gate",
+  "race" : "human",
+
+  "category" : "wire",
+  "price" : 100,
+
+  "inventoryIcon" : "fu_gated_icon.png",
+  "orientations" : [
+    {
+      "image" : "fu_gated.png:default.off",
+      "imagePosition" : [-32, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/logic/fu_gated/fu_gated.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/wired/logic/logic.animation",
+
+  "animationParts" : {
+    "switch" : "fu_gated.png"
+  },
+  "animationPosition" : [-32, -8],
+
+  "inputNodes" : [ [3, 0], [2, 0], [1, 0], [0, 0], [-1, 0], [-2, 0], [-3, 0], [-4, 0] ],
+  "outputNodes" : [ [3, -1] ],
+
+  "breakDropOptions" : []
+}

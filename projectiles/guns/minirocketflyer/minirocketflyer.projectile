@@ -1,0 +1,27 @@
+{
+  "projectileName" : "minirocketflyer",
+  "image" : "minirocket.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 3,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [255, 255, 128],
+  "pointLight" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/vsmallregularexplosion/vsmallregularexplosionknockback.config"
+    }
+  ],
+  "statusEffects" : [ ],
+  "emitters" : [ "tinyrocketsmoke" ],
+  "flippable" : true,
+  "power" : 1.0,
+  "speed" : 10.0,
+  "physics" : "rocket",
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+
+  "scripts" : [ "minirocket.lua" ],
+  "maxSpeed" : 55,
+  "controlForce" : 100
+}

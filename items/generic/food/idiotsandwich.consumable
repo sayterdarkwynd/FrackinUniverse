@@ -1,0 +1,23 @@
+{
+	"itemName": "idiotsandwich",
+	"rarity": "uncommon",
+	"price": 50,
+	"category": "preparedFood",
+	"inventoryIcon": "idiotsandwich.png",
+	"description": "IT'S FRACKIN RAW \n^blue;+Drunk^reset; 2m \n^red;Type: Raw Meat^reset;",
+	"shortdescription": "Idiot Sandwich",
+	"effects": [
+        ["madnessgain3", "meat_raw",
+        { "effect" : "booze2",
+            "duration": 120
+        }
+        ]
+    ],
+	"foodValue": 40,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}

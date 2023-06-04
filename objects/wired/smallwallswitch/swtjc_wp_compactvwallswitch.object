@@ -1,0 +1,64 @@
+{
+  "objectName" : "swtjc_wp_compactvwallswitch",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "Flippin' awesome! Can even be toggled when its input node is /'on'/.",
+  "shortdescription" : "Compact Wall Switch",
+  "race" : "generic",
+
+  "apexDescription" : "A switch. It activates something. It can even be toggled when its input node is /'on'/.",
+  "avianDescription" : "This switch must activate something. I can also see that it can be toggled when its input node is /'on'/.",
+  "floranDescription" : "Ssswitch! Can even be toggled when itsss input node isss /'on'/.",
+  "glitchDescription" : "Surprised. This small switch doesn't look that powerful, but I can toggle it either by hand, or when its input node is /'on'/.",
+  "humanDescription" : "How many times can I flip this switch on and off I wonder, either by hand, or when its input node is /'on'/?",
+  "hylotlDescription" : "A basic switch that can be used to activate something. It can even be toggled when its input node is /'on'/.",
+  "novakidDescription" : "I can flip this here switch, either by hand, or when its input node is /'on'/!",
+
+  "category" : "wire",
+  "price" : 20,
+
+  "inventoryIcon" : "swtjc_wp_compactvwallswitch.png:default.off",
+  "orientations" : [
+    {
+      "image" : "swtjc_wp_compactvwallswitch.png:default.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/switch/switchwithinput.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle2.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/apexconsole2switch.ogg" ],
+      "off" : [ "/sfx/objects/apexconsole2switch.ogg" ]
+    }
+  },
+
+  "animationParts" : {
+    "switch" : "swtjc_wp_compactvwallswitch.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [0, 1] ],
+  "outputNodes" : [ [0, 0] ],
+
+  "npcToy": {
+    "ownerOnly" : true,
+    "influence" : [
+      "wallswitch"
+    ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

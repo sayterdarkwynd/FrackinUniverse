@@ -1,0 +1,108 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "transformationGroups" : ["muzzle"],
+        "emissionRate" : 8,
+        "offsetRegion" : [0.0, 0.0, 0.0, 0.0],
+        "particles" : [
+          { "particle" : "fireswoosh1"},
+          { "particle" : "fireswoosh2"},
+          { "particle" : "fireswoosh3"}
+        ]
+      }
+    },
+    "sounds" : {
+      "altFire" : [  "/sfx/weapons/firearrow.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Scorching Spray",
+    "type" : "funapalmspray",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "projectileType" : "isn_napalmsprayer",
+    "elementalConfig" : {
+      "physical" : { "projectileParameters" : { } },
+      "fire" : { "projectileParameters" : { "statusEffects" : [ "burning" ] } },
+      "electric" : { "projectileParameters" : { "statusEffects" : [ "electrified" ] } },
+      "ice" : { "projectileParameters" : { "statusEffects" : [ "frostslow" ] } },
+      "poison" : { "projectileParameters" : { "statusEffects" : [ "weakpoison" ] } },
+      "radioactive" : { "projectileParameters" : { "statusEffects" : [ "radiationburn" ] } },
+      "shadow" : { "projectileParameters" : { "statusEffects" : [ "shadowgasfx" ] } },
+      "cosmic" : { "projectileParameters" : { "statusEffects" : [ "timeslip" ] } }
+    },
+
+    // use baseDps and fireTime from primary fire
+
+    "baseDps" : 8,
+    "energyUsage" : 42,
+    "fireTime" : 0.75,
+    "inaccuracy" : 0,
+    "fireType" : "auto",
+    "projectileCount" : 1,
+    "projectileParameters" : {
+      "timeToLive" : [0.001,0.4],
+	  "actionOnReap" : [
+	    { "action" : "liquid", "liquid" : "fuironliquid", "quantity" : 0.2 },
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/burstexplosion/fireburstexplosion.config"
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "magnorbhellfire2",
+	      "fuzzAngle" : 0,
+	      "angleAdjust" : -20,
+	      "config" : {
+	        "projectileParameters" : {
+	          "power" : 10
+	        }
+	      }
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "magnorbhellfire2",
+	      "fuzzAngle" : 0,
+	      "angleAdjust" : 0,
+	      "config" : {
+	        "projectileParameters" : {
+	          "power" : 10
+	        }
+	      }
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "magnorbhellfire2",
+	      "fuzzAngle" : 0,
+	      "angleAdjust" : 20,
+	      "config" : {
+	        "projectileParameters" : {
+	          "power" : 10
+	        }
+	      }
+	    }
+	  ]
+
+    },
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0.02,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true
+      },
+      "cooldown" : {
+        "duration" : 0.02,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true
+      }
+    }
+  }
+}

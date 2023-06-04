@@ -1,0 +1,162 @@
+{
+  "type" : "shadowvillager2",
+  "baseType" : "base",
+
+  "statusControllerSettings" : {
+    "statusProperties" : {
+      "effectDirectives" : ""
+    }
+  },
+
+  "persistent" : true,
+
+  "scriptConfig" : {
+    "behavior" : "villager",
+
+    "questGenerator" : {
+      "pools" : ["common", "shady"],
+      "enableParticipation" : true
+    },
+
+    "reactions" : {
+      "spontaneous" : [
+        [5.0, "sleep", { "timeRange" : [0.7, 0.9] }],
+        [1.0, "sit", { "timeRange" : [0.6,0.2]}],
+        [1.0, "wander"]
+      ]
+    },
+
+    "chatSounds" : {
+      "avian" : {
+        "male" : [
+          "/sfx/humanoid/shadowvillager_chatter1.ogg",
+          "/sfx/humanoid/shadowvillager_chatter2.ogg",
+          "/sfx/humanoid/shadowvillager_chatter3.ogg"
+        ],
+        "female" : [
+          "/sfx/humanoid/shadowvillager_chatter1.ogg",
+          "/sfx/humanoid/shadowvillager_chatter2.ogg",
+          "/sfx/humanoid/shadowvillager_chatter3.ogg"
+        ]
+      },
+      "apex" : {
+        "male" : [
+          "/sfx/humanoid/shadowvillager_chatter1.ogg",
+          "/sfx/humanoid/shadowvillager_chatter2.ogg",
+          "/sfx/humanoid/shadowvillager_chatter3.ogg"
+        ],
+        "female" : [
+          "/sfx/humanoid/shadowvillager_chatter1.ogg",
+          "/sfx/humanoid/shadowvillager_chatter2.ogg",
+          "/sfx/humanoid/shadowvillager_chatter3.ogg"
+        ]
+      },
+      "floran" : {
+        "male" : [
+          "/sfx/humanoid/shadowvillager_chatter1.ogg",
+          "/sfx/humanoid/shadowvillager_chatter2.ogg",
+          "/sfx/humanoid/shadowvillager_chatter3.ogg"
+        ],
+        "female" : [
+          "/sfx/humanoid/shadowvillager_chatter1.ogg",
+          "/sfx/humanoid/shadowvillager_chatter2.ogg",
+          "/sfx/humanoid/shadowvillager_chatter3.ogg"
+        ]
+      },
+      "glitch" : {
+        "male" : [
+          "/sfx/humanoid/shadowvillager_chatter1.ogg",
+          "/sfx/humanoid/shadowvillager_chatter2.ogg",
+          "/sfx/humanoid/shadowvillager_chatter3.ogg"
+        ],
+        "female" : [
+          "/sfx/humanoid/shadowvillager_chatter1.ogg",
+          "/sfx/humanoid/shadowvillager_chatter2.ogg",
+          "/sfx/humanoid/shadowvillager_chatter3.ogg"
+        ]
+      },
+      "human" : {
+        "male" : [
+          "/sfx/humanoid/shadowvillager_chatter1.ogg",
+          "/sfx/humanoid/shadowvillager_chatter2.ogg",
+          "/sfx/humanoid/shadowvillager_chatter3.ogg"
+        ],
+        "female" : [
+          "/sfx/humanoid/shadowvillager_chatter1.ogg",
+          "/sfx/humanoid/shadowvillager_chatter2.ogg",
+          "/sfx/humanoid/shadowvillager_chatter3.ogg"
+        ]
+      },
+      "hylotl" : {
+        "male" : [
+          "/sfx/humanoid/shadowvillager_chatter1.ogg",
+          "/sfx/humanoid/shadowvillager_chatter2.ogg",
+          "/sfx/humanoid/shadowvillager_chatter3.ogg"
+        ],
+        "female" : [
+          "/sfx/humanoid/shadowvillager_chatter1.ogg",
+          "/sfx/humanoid/shadowvillager_chatter2.ogg",
+          "/sfx/humanoid/shadowvillager_chatter3.ogg"
+        ]
+      },
+      "default" : {
+        "male" : [
+          "/sfx/humanoid/shadowvillager_chatter1.ogg",
+          "/sfx/humanoid/shadowvillager_chatter2.ogg",
+          "/sfx/humanoid/shadowvillager_chatter3.ogg"
+        ],
+        "female" : [
+          "/sfx/humanoid/shadowvillager_chatter1.ogg",
+          "/sfx/humanoid/shadowvillager_chatter2.ogg",
+          "/sfx/humanoid/shadowvillager_chatter3.ogg"
+        ]
+      }
+    },
+
+    "dialog" : {
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/frog.config:tagCriteria",
+          "enclosedArea" : "/dialog/frog.config:enclosedArea",
+          "otherDeed" : "/dialog/frog.config:otherDeed",
+          "severe" : "/dialog/frog.config:severe",
+          "final" : "/dialog/frog.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/frog.config:beacon",
+          "rent" : "/dialog/frog.config:rent"
+        }
+      },
+      "flee" : {
+        "helpme" : "/dialog/frog.config:helpme",
+        "helpthem" : "/dialog/frog.config:helpthem",
+        "encourage" : "/dialog/frog.config:encourage",
+        "safe" : "/dialog/frog.config:safe"
+      },
+      "converse" : "/dialog/frog.config:converse"
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+		{
+            "chest" : [ { "name" : "shadowuniformchest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "shadowuniformpants", "parameters" : { "colorIndex" : 1 } } ]
+		},
+		{
+            "chest" : [ { "name" : "fumantizitogachest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "fumantizitogalegs", "parameters" : { "colorIndex" : 1 } } ]
+		},
+		{
+            "chest" : [ { "name" : "fumantizidrapedchest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "fumantizidrapedlegs", "parameters" : { "colorIndex" : 1 } } ]
+		},
+		{
+            "chest" : [ { "name" : "celestaruniform4chest", "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "celestaruniform4pants", "parameters" : { "colorIndex" : 1 } } ]
+		}
+	  ] ]
+    ]
+  }
+}

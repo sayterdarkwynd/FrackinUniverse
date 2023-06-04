@@ -1,0 +1,258 @@
+{
+  "type" : "volpin",
+  "shortdescription" : "Volpin",
+  "description" : "It has a sticky texture that allows it to climb surfaces with ease.",
+
+  "categories" : [ "volpin" ],
+  "parts" : [ "body" ],
+
+  "animation" : "volpin.animation",
+
+   "dropPools" : [
+    {
+      "default" : "extraMonsterFire",
+      "bow" : "extraMonsterFireHunting",
+      "firebow" : "extraMonsterFireHunting",
+      "icebow" : "extraMonsterFireHunting",
+      "poisonbow" : "extraMonsterFireHunting",
+      "electricbow" : "extraMonsterFireHunting",
+      "cosmicbow" : "extraMonsterFireHunting",
+      "radioactivebow" : "extraMonsterFireHunting",
+      "shadowbow" : "extraMonsterFireHunting"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "facingMode" : "transformation",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "hurtWaitForGround" : false,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 40,
+      "targetOutOfSightTime" : 0.5,
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 0,
+            "windupState" : "firewindup",
+            "windupTime" : 0.25,
+            "windupStopForce" : 200,
+            "aimAtTarget" : false,
+            "aimDirection" : [0, 1],
+            "projectileType" : "dualflame",
+            "projectileCount" : 4,
+            "projectileInterval" : 0.01,
+            "power" : 5,
+            "fireOffset" : [0,0],
+            "fireSound" : "fire",
+            "fireState" : "fire",
+            "winddownState" : "idle",
+            "winddownTime" : 0.25
+          }
+        }
+      ],
+
+      "damageTakenActions" : [
+
+      ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-crawl",
+          "parameters" : {
+            "resetHeading" : false
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-crawl",
+          "parameters" : {
+            "resetHeading" : false
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-crawl",
+          "cooldown" : 1,
+          "parameters" : {
+            "wanderTime" : 1.5,
+            "stopForce" : 200,
+            "idleTime" : 1.0,
+            "resetHeading" : false
+          }
+        }
+      ],
+
+      "concurrentActions" : [
+
+      ],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "idle-crawl",
+          "parameters" : {
+            "resetHeading" : false
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.31, 0.75],  [0.75, 0.31],  [0.75, -0.31],  [0.31, -0.75],  [-0.31, -0.75],  [-0.75, -0.31],  [-0.75, 0.31],  [-0.31, 0.75] ],
+      "damage" : 9,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "fire",
+      "knockback" : 20,
+      "statusEffects" : [ "burning" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.31, 0.75],  [0.75, 0.31],  [0.75, -0.31],  [0.31, -0.75],  [-0.31, -0.75],  [-0.75, -0.31],  [-0.75, 0.31],  [-0.31, 0.75] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 5,
+      "runSpeed" : 5,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 36
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "lavaImmunity" : {
+          "baseValue" : 1.0
+        },
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : 0.5
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceResistance" : {
+          "baseValue" : -0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "volpin" }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "objectName" : "slimenpchumanconsole",
+  "colonyTags" : ["slimenpchuman","wired","slimenpc"],
+  "rarity" : "Common",
+  "description" : "A console made out of sticky slime.  How does it work?",
+  "shortdescription" : "Slime Console",
+//  "learnBlueprintsOnPickup" : [ "slimenpchumanconsole" ],
+  "race" : "slimenpchuman",
+  "category" : "wire",
+  "price" : 85,
+  "printable" : false,
+  "lightColor" : [20, 57, 31],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.1,
+  "flickerIntensityVariance" : 0.0,
+
+  "slimepersonDescription" : "It's strange how things like this work out, but at least they work.",
+  "apexDescription" : "Intriguing.  It's made of slime, yet it works just as well as any other console.",
+  "avianDescription" : "I hope my feathers don't get stuck on this.",
+  "floranDescription" : "Ssticky sslimy conssole.",
+  "glitchDescription" : "Concerned.  Will my fingers corrode from using this console?",
+  "humanDescription" : "Ew.  How does this even work?",
+  "hylotlDescription" : "A console made out of slime.  Huh.  I guess just about anything can work if you know what you're doing.",
+  "novakidDescription" : "A console made outta slime?  How's that work?",
+  "slimenpcDescription" : "Beep boop!",
+  "slimenpchumanDescription" : "What does this button do?",
+
+  "inventoryIcon" : "icon.png",
+  "orientations" : [
+    {
+      "image" : "slimenpchumanconsole.png:<color>.on",
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-8, 0],
+      "frames" : 3,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "slimenpchumanconsole.png:<color>.on",
+      "direction" : "right",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-8, 0],
+      "frames" : 3,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/switch/switch.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "slimenpchumanconsole.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "bg" : "slimenpchumanconsole.png",
+    "fg" : "slimenpchumanconsolelit.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "outputNodes" : [ [0, 0] ],
+
+  "npcToy" : {
+    "ownerOnly" : true,
+    "influence" : [
+      "console"
+    ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-0.5, 0.0],
+    "preciseStandPositionRight" : [2.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

@@ -3,32 +3,32 @@
   "materialName" : "fublueslime",
   "particleColor" : [44, 38, 46, 255],
   "itemDrop" : "fujellyblock",
-  "description" : "extremely viscous blue slime.",
-  "shortdescription" : "Interesting. This seems to be a healy-slime.",
+  "description" : "Extremely viscous blue slime.",
+  "shortdescription" : "Blue Slime",
   "footstepSound" : "/sfx/blocks/footstep_brains.ogg",
   "health" : 4,
   "category": "materials",
 
-  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderTemplate" : "/tiles/fuclassicnopaint.config",
   "renderParameters" : {
     "texture" : "fublueslime.png",
     "variants" : 5,
     "lightTransparent" : false,
     "occludesBelow" : true,
-    "multiColored" : false,
+    "multiColored" : true,
     "zLevel" : 0,
     "radiantLight" : [47, 117, 96]
   },
   "liquidInteractions" : [
     {
       "liquidId" : 50,
-      "consumeLiquid" : 0.25,
+      "consumeLiquid" : 0.15,
       "transformMaterialId" : 6629
     },
     {
       "liquidId" : 60,
-      "consumeLiquid" : 0.25,
+      "consumeLiquid" : 0.15,
       "transformMaterialId" : 6544
     }
-  ] 
+  ]
 }

@@ -1,22 +1,24 @@
 {
-  "itemName" : "darkrum",
-  "rarity" : "Common",
-  "price" : 100,
-  "category" : "drink",
-  "inventoryIcon" : "darkrum.png",
-  "description" : "Yo-ho-ho and a bottle of rum!",
-  "shortdescription" : "Dark Rum",
-  "handPosition" : [0, -2],
-  "effects" : [ [
-
-		{
-        "effect" : "slow",
-        "duration" : 60
-		},
-		{
-		"effect" : "booze",
-		"amount" : 3,
-		"duration" : 60
-        }
-    ] ]
+  "itemName": "darkrum",
+  "rarity": "Common",
+  "price": 4000,
+  "category": "drink",
+  "inventoryIcon": "darkrum.png",
+  "description": "Yo-ho-ho and a bottle of rum!\n^white;35% ^red;Slow ^gray;, ^red;Drunk ^gray;(^white;1m^gray;)^reset;",
+  "shortdescription": "Dark Rum",
+  "handPosition": [0, -2],
+  "tooltipKind": "food",
+  "effects": [
+    [
+      {
+        "effect": "slow",
+        "duration": 60
+      },
+      {
+        "effect": "booze",
+        "duration": 60
+      }
+    ]
+  ],
+  "emitters" : [ "drinking" ]
 }

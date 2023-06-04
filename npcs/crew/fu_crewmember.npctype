@@ -1,0 +1,295 @@
+{ //Crewmate for FU crew to be based on, killing racial dialogue for custom dialogue purposes and patching it with our effects. Use crewmember as the baseType if no dialogue is being specified. See "a_crewmembertemplate.npctype" and "a_crewmembertemplate_blank.npctype" if you're looking to make a crewmate.
+  "type" : "fu_crewmember",
+  "baseType" : "base",
+
+  "dropPools" : [ "villagertreasure" ],
+
+  "damageTeamType" : "friendly",
+
+  // Remove protection and powermultiplier gained from being level 1 as scaling is from player armor
+  "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20}, {"stat" : "fallDamageMultiplier", "effectiveMultiplier" : 0} ],
+
+  "persistent" : true,
+
+  "scriptConfig" : {
+    "behavior" : "crewmember",
+    "behaviorConfig" : {
+      "emptyHands" : false,
+
+      // Wander behavior config
+      "wanderTime" : 1,
+      "idleTime" : 10,
+      "outerHomeRange" : 20,
+      "innerHomeRange" : 15,
+
+      "hostileDamageTeam" : {"type" : "friendly", "team" : 1}
+    },
+
+    "crew" : {
+      "recruitable" : true,
+
+      "recruitInteractAction" : {
+        "messageType" : "recruits.offerRecruit",
+        "messageArgs" : []
+      },
+
+      "powerMultiplierExponent" : 1.0,
+
+      "role" : {
+        "type" : "soldier",
+        "name" : "Soldier",
+        "field" : "Security",
+        "uniformColorIndex" : 4
+      },
+
+      "ranks" : [
+        "Second-to-Last <role>",
+        "3rd Technical Assistant <field> Officer",
+        "Assistant Deputy <role> Guy/Gal",
+        "Trainee Apprentice <role>",
+        "Temporary Relief <role>",
+        "3rd Rear Lieutenant <role>",
+        "64th Commodore <role>",
+        "Standing <field> Officer",
+        "Sitting <field> Officer",
+        "Executive Coffee-Making <role>",
+        "Command Master Chief Petty <field> Officer",
+        "Independent <field> Auditor",
+        "Dependant <field> Auditor",
+        "Dreadnought <field> Officer",
+        "Trainee <field> Mastermind",
+        "Head of Petty <field> Arguments",
+        "Backup <role>",
+        "Reliable <field> Lacky",
+        "Theoretical <field> Advisor",
+        "Reliable <field> Lackey",
+        "Head of <field> operations",
+        "Wild Card <role>",
+        "Head of <field> Relations",
+        "Last-Minute <role>",
+        "Expert in <field> Diplomacy",
+        "<field> Innovation Manager",
+        "Loose Cannon <role>",
+        "Regional <field> Director",
+        "Private <field> Investigator",
+        "Temporal <field> Surveyor",
+        "Radical <field> Innovator",
+        "Independent Head of <field> Operations",
+        "Just your average <role>",
+        "Hobbyist <role>",
+        "Master of <field> Matters",
+        "Alternative <field> Advisory Representative",
+        "Runner-Up <field> Officer",
+        "Emergency <field> Officer",
+        "First Mate's Second-Cousin's Third <role>",
+        "Unpaid <field> Intern",
+        "<field> Student",
+        "<field> Forum Moderator",
+        "Rogue <field> Profiteer",
+        "Neutral Third Party <role>",
+        "Low Quality <field> Negotiations",
+        "Armchair <field> Expert"
+      ],
+
+      "defaultUniform" : {
+        "chest" : "protectoratechest",
+        "legs" : "protectoratepants"
+      },
+      "uniformSlots" : ["head", "headCosmetic", "chest", "chestCosmetic", "legs", "legsCosmetic", "back", "backCosmetic"]
+    },
+
+    "questGenerator" : {
+      // Disable participation of crewmembers in generated quests until the
+      // generated quest system knows how to deal with entities that can
+      // disappear from the world and/or change uniqueId.
+      "enableParticipation" : false
+    },
+
+    "dialog" : { //*Racial dialogue cannot be used here*. If any racial dialogue exists, the game will use that preferably over role-specific non-racial dialogue. Therefore, add new lines to the fields which already exist unless you know what you're doing.
+      "crewmember" : {
+        "offer" : {
+          "default" : {
+            "default" : [
+              "Hello adventurer, mind if I join you?",
+              "I'm <selfname>, and I really want to join a ship. Do you want to employ me?",
+              "You are JUST the kind of person I should work with! Fancy employing me?",
+              "I'm looking for a ship's crew to join. Are you interested?",
+              "I'm looking for a place among a crew. Can I join yours?",
+              "I have skills that may help you on your ventures. Would you like to hire me?",
+              "Perhaps the life aboard a ship is the one for me. Can I join you?",
+              "I'm looking to escape to a new life. Are you hiring?",
+              "You have a ship? Perhaps you're looking for people to join a crew?",
+              "Tell me, are you looking for crew members? To live among the stars would be wonderful.",
+              "Can I join you in the stars? I have skills that could help you!",
+              "A life among the stars is the one for me. Please, can I join your crew?",
+              "I'm a very useful person! Can I join you?"
+            ]
+          }
+        },
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'll be here for you if you need someone to help you fight bad guys!",
+              "If you need protection, you know where to find me!",
+              "If you need me in battle, I'll be here!",
+              "I'll stay posted here until you need backup.",
+              "I'll remain on guard here until you need me, captain.",
+              "If you need military support, I'll be here.",
+              "If you need me in battle, you know where I am.",
+              "I'll be here for you if you need someone to help you in battle.",
+              "If you need a hand in battle, you know where to find me!",
+              "I'll stay here so you know where I'll be if you need protection!",
+              "I'll be here if you need help to defend yourself",
+              "If you need assistance on your travels, I will be here.",
+              "I can always lend you my arms and skill in battle, should you need it.",
+              "When you need my protection, come get me."
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Let me give you a hand real quick!",
+              "Let me help you out!",
+              "Looks like you could use my assistance!",
+              "I can help!"
+            ]
+          }
+        },
+        "fieldBenefit" : {
+          "default" : {
+            "default" : [
+              "Let me give you a hand real quick!",
+              "Let me help you out!",
+              "Looks like you could use my assistance!",
+              "I can help!"
+            ]
+          }
+        },
+        "respawned" : {
+          "default" : {
+            "default" : [
+              "Heh... Dying tickles.",
+              "What just happened?",
+              "I'm back! And alive!",
+              "I'm back and in one piece!",
+              "I'm alive again! That's good.",
+              "I don't think I respawned properly...",
+              "My head hurts.",
+              "What was I doing just before I died?",
+              "Was I dead just now?",
+              "I hope I respawned properly. Do I look alright?",
+              "Respawning makes my head feel fuzzy. I like it.",
+              "Did I die, or just black out?"
+            ]
+          }
+        },
+        "unfollow" : {
+          "default" : {
+            "default" : [
+              "I'll just wait here.",
+              "I'll stay here. Come back when you need me, captain!",
+              "I'll stay here for now, captain.",
+              "Do you need me to stay here?",
+              "I'll remain here for now, then.",
+              "I can wait here, captain.",
+              "I'll hold the fort if you want, captain."
+            ]
+          }
+        },
+        "follow" : {
+          "default" : {
+            "default" : [
+              "Yes, captain!",
+              "Captain!",
+              "Let's get going!",
+              "Let's go, captain!",
+              "Are we going somewhere?",
+              "I shall follow, captain.",
+              "Shall we go, captain?",
+              "Is it time to move, captain?"
+            ]
+          }
+        },
+        "cantreach" : {
+          "default" : {
+            "default" : [
+              "I can't reach you!",
+              "You're too far!",
+              "Hey, wait up!",
+              "Don't go too far!",
+              "Let me catch up!",
+              "Wait for me!"
+            ]
+          }
+        }
+      },
+
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/grumble.config:tagCriteria",
+          "enclosedArea" : "/dialog/grumble.config:enclosedArea",
+          "otherDeed" : "/dialog/grumble.config:otherDeed",
+          "severe" : "/dialog/grumble.config:severe",
+          "final" : "/dialog/grumble.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/arrivedhome.config:beacon",
+          "rent" : "/dialog/arrivedhome.config:rent"
+        }
+      },
+
+      "converse" : "/dialog/crewmember.config:converse",
+
+      "attack" : "/dialog/combat.config:attack",
+      "reattack" : "/dialog/combat.config:reattack",
+      "killedTarget" : "/dialog/combat.config:killedTarget",
+      "lostTarget" : "/dialog/combat.config:lostTarget",
+      "outOfSight" : "/dialog/combat.config:outOfSight",
+      "cheerOn" : "/dialog/combat.config:cheerOn",
+      "cantReach" : "/dialog/combat.config:cantReach"
+    }
+  },
+
+  "movementParameters" : {
+    // Run at the same speed as the player
+    "runSpeed" : 14.0
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "fuprotectoraterifle", "fuprotectoratesniper" ],
+            "sheathedPrimary" : [ "tungstenbroadsword" ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "statusProperties" : {
+      "hitInvulnerability" : true,
+      "hitInvulnerabilityThreshold" : 0.0333,
+      "hitInvulnerabilityTime" : 1,
+      "hitInvulnerabilityFlash" : 0.15,
+      "damageFlashOnDirectives" : "",
+      "damageFlashOffDirectives" : ""
+    },
+
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 300.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.25
+      },
+      "healthRegen" : {
+        "baseValue" : 2.0
+      },
+      "specialStatusImmunity" : {
+        "baseValue" : 1.0
+      }
+    }
+  }
+}

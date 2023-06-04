@@ -1,0 +1,61 @@
+{
+  "projectileName" : "quietusbullet",
+  "image" : "quietusbullet.png",
+  "animationCycle" : 0.3,
+  "lightColor" : [12, 176, 44],
+  "frameNumber" : 4,
+  "flippable" : false,
+  "fullbright" : true,
+  "damageKindImage" : "icon.png",
+  "physics" : "boomerang",
+  "emitters" : [ ],
+  "actionOnReap" : [
+     {
+      "action" : "config",
+      "file" : "/projectiles/explosions/paintexplosionred/paintexplosionred.config"
+    }
+  ],
+
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
+    },
+    {
+      "time" : 0.01,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+          "type" : "ember",
+          "size" : 0.7,
+          "color" : [176, 2, 4],
+          "position" : [0, 0],
+          "destructionAction" : "fade",
+          "destructionTime" : 0.3,
+          "fade" : 0.75,
+          "layer" : "middle",
+          "timeToLive" : 0.2,
+          "variance" : {
+            "initialVelocity" : [4.0, -2.0],
+            "position" : [1, 1]
+          }
+      }
+    }
+  ],
+  "damagePoly" : [ [-4, 0], [1, 2], [4, 0], [1, -2] ],
+  "damageKind" : "bioweapon",
+  "statusEffects" : [
+    "shadowcharge",
+    "negativemiasma"
+  ],
+
+  "piercing" : false,
+
+  "speed" : 75,
+
+  "scripts" : [ "/projectiles/tracksourcestatus.lua" ],
+  "scriptDelta" : 1
+}

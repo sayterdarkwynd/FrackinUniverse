@@ -1,0 +1,48 @@
+{
+  "objectName" : "fupetshop",
+  "colonyTags" : [ "crafting", "avian" ],
+  "rarity" : "rare",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/fupetshop.config",
+    "filter" : [ "fupetshop" ]
+  },
+  "printable" : false,
+  "description" : "Clearly their primary goods are pet-related.",
+  "shortdescription" : "^orange;SuperPet^reset;",
+  "race" : "avian",
+  "category" : "crafting",
+  "price" : 0,
+  "inventoryIcon" : "fupetshop.png",
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "petstall.png:<color>.<frame>"} ],
+      "imagePosition" : [-56, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "frames" : 8,
+      "animationCycle" : 7.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "petstall.png:<color>.<frame>"} ],
+      "imagePosition" : [-56, 0],
+
+      "direction" : "right",
+
+      "frames" : 8,
+      "animationCycle" : 7.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/aquarium1.ogg"
+
+}

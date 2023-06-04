@@ -4,12 +4,13 @@
   "inventoryIcon" : "shockneedler.png",
     "maxStack" : 1,
     "rarity" : "rare",
-  "description" : "A black market customized special needler with razor sharp electrified crystals.",
-  "shortdescription" : "^cyan;Shock Needler",
+  "description" : "Electric needles are worth sharing. Don't be shy.
+^yellow;Inflicts electrified status^reset;",
+  "shortdescription" : "^cyan;Shock Needler^reset;",
   "level" : 3,
-  "category" : "uniqueWeapon",
-  "itemTags" : ["weapon","ranged","machinepistol"],
-  "tooltipKind" : "gun",
+  "category" : "machinePistol",
+  "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon","electric","energy", "crystal"],
+  "tooltipKind" : "gun2",
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
@@ -17,10 +18,10 @@
     "middle" : "shockneedler.png",
     "barrel" : "",
     "muzzleFlash" : ""
-  },      
+  },
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/projectiles/acid_hit.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }  
+    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }
   },
 
   "baseOffset" : [0.55, 0.34],
@@ -29,18 +30,17 @@
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "electric",
-  "learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ], 
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.1,
-    "baseDps" : 5.7,
+    "fireTime" : 0.12,
+    "baseDps" : 6,
     "energyUsage" : 25,
     "fireType" : "auto",
     "inaccuracy" : 0.08,
     "projectileCount" : 1,
-    "projectileType" : "razorneedlerthorns3",
+    "projectileType" : "razorneedlerthornselectric",
     "projectileParameters" : {
       "speed" : 65
     },
@@ -48,7 +48,7 @@
       "idle" : {
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : true,
         "allowFlip" : true
@@ -57,7 +57,7 @@
         "duration" : 0,
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : false,
         "allowFlip" : false
@@ -66,13 +66,18 @@
         "duration" : 0.0,
         "armRotation" : 0,
         "weaponRotation" : 0,
-        "twoHanded" : true,
+        "twoHanded" : false,
 
         "allowRotate" : false,
         "allowFlip" : false
       }
     }
   },
-
+  "critChance" : 2,
+  "critBonus" : 2,
+  "isAmmoBased" : 1,
+  "magazineSize" : 12,
+  "isMachinePistol" : 1,
+  "reloadTime": 1,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,0 +1,77 @@
+{
+  "itemName" : "durasteeldagger",
+  "price" : 400,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "A finely-crafted dagger made of durasteel.",
+  "shortdescription" : "Durasteel Dagger",
+  "tooltipKind" : "sword2",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","dagger", "upgradeableWeapon"],
+  "inventoryIcon" : "durasteeldagger.png",
+  //"collectablesOnPickup" : { "fu_weapondagger" : "durasteeldagger" },
+  "animation" : "/items/active/weapons/melee/dagger/dagger.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "durasteeldagger.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_dagger.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "aimOffset" : 0.0,
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
+    "class" : "MeleeSlash",
+
+    "fireTime" : 0.35,
+    "baseDps" : 9.0,
+    "damageConfig" : {
+      "damageSourceKind" : "dagger",
+      "statusEffects" : [ ],
+      "knockbackMode" : "aim",
+      "knockback" : 10,
+      "timeoutGroup" : "primary"
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "windup" : {
+        "duration" : 0.05,
+        "armRotation" : -20,
+        "weaponRotation" : -20,
+        "weaponOffset" : [0, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : false
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : -135,
+        "weaponRotation" : 40,
+        "weaponOffset" : [0, 2.5],
+
+        "allowFlip" : true,
+        "allowRotate" : false
+      }
+    }
+  },
+  "fireSounds" : [ "/sfx/melee/swing_dagger.ogg" ],
+  "critChance" : 1,
+  "critBonus" : 2,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

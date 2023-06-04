@@ -1,0 +1,77 @@
+{
+  "type" : "firebird",
+  "baseType" : "hostilefu",
+
+
+  "dropPools" : [ "templeguardtreasure" ],
+
+  "scriptConfig" : {
+
+
+    "dialog" : {
+
+      "attack" : {
+        "default" : {
+          "default" : [
+            "Be wreathed in holy flame!",
+			"You shall burn for your trespass!",
+			"Burn for the glory of Kluex!"
+          ]
+        }
+      },
+      "reattack" : {
+        "default" : {
+          "default" : [
+            "I shall purify your mind with my sacred flame!"
+          ]
+        }
+      },
+      "killedTarget" : {
+        "default" : {
+          "default" : [
+            "Ashes to ashes!"
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "aviantier5shead", "parameters" : { "colorIndex" : 4 } } ],
+            "chest" : [ { "name" : "aviantier5schest", "parameters" : { "colorIndex" : 4 } } ],
+            "legs" : [ { "name" : "aviantier5spants", "parameters" : { "colorIndex" : 4 } } ],
+            "primary" : [
+              "flamethrower"
+            ]
+          }
+        ] ]
+    ]
+  },
+
+
+  "movementParameters" : {
+    "runSpeed" : 14,
+    "airJumpProfile" : {
+      "jumpSpeed" : 45
+    }
+  },
+
+
+  "statusControllerSettings" : {
+
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 100.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.5
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      }
+    }
+  }
+}

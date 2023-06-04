@@ -1,0 +1,28 @@
+{
+  "itemName" : "fupearpie",
+  "rarity" : "uncommon",
+  "price" : 35,
+  "category" : "preparedFood",
+  "inventoryIcon" : "fupearpie.png",
+  "description" : "Pie.\n^cyan;+^white;25% ^cyan;EP ^gray;(^white;90s^gray;)^reset; \n^green;Type: Fruit Dessert^reset;",
+  "shortdescription" : "Pear Pie",
+  "effects" : [ [
+      {
+        "effect": "fruit_dessert"
+      },
+    {
+      "effect" : "maxenergyscalingboostfood",
+      "duration" : 90,
+      "energyModifier" : 1.25
+    }
+  ] ],
+  "foodValue" : 30,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 2.0,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

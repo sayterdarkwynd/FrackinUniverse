@@ -1,0 +1,222 @@
+{
+  "type" : "atropuseye",
+  "shortdescription" : "Atropal Eye",
+  "description" : "Spawned from some other creature.",
+  "reversed" : true,
+
+  "categories" : [ "atropuseye" ],
+  "parts" : [ "body" ],
+
+  "animation" : "atropuseye.animation",
+
+  "dropPools" : [
+    {
+      "default" : "wisperHunting",
+      "bow" : "wisperHunting",
+      "firebow" : "wisperHunting",
+      "icebow" : "wisperHunting",
+      "poisonbow" : "wisperHunting",
+      "electricbow" : "wisperHunting",
+      "cosmicbow" : "wisperHunting",
+      "radioactivebow" : "wisperHunting",
+      "shadowbow" : "bloodgolemLoot"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+   // "renderLayer" : "foregroundEntity",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 65,
+      "targetOnDamage" : true,
+      "targetEntityTypes" : [ "player", "npc", "monster" ],
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 70,
+      "targetOutOfSightTime" : 5.0,
+
+      "hurtTime" : 0.25,
+      "hurtWaitForGround" : false,
+
+      "damageTakenActions" : [],
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 5.0,
+          "parameters" : {
+            "minimumRange" : 7,
+            "maximumRange" : 50,
+            "windupStopForce" : 25,
+            "windupTime" : 1,
+
+            "onGround" : false,
+            "wallCollide" : false,
+            "aimAtTarget" : true,
+            "chargeTime" : 0.5,
+            "chargeSpeed" : 20,
+            "chargeControlForce" : 250,
+
+            "winddownState" : "charge",
+            "winddownStopForce" : 25,
+            "winddownTime" : 0.05
+          }
+        }
+      ],
+
+      "periodicActions" : [],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "usePathfinding" : false
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "emerge-fly"
+        },
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "wanderTime" : 4,
+            "groundDistance" : 8,
+            "ceilingDistance" : 8,
+            "xVelocity" : 12,
+            "yVelocity" : 12
+          }
+        }
+      ],
+
+      "concurrentActions" : [ ],
+
+      "concurrentHostileActions" : [ ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [2.25, 0.75], [2.625, 0.375], [2.625, -0.375], [2.25, -0.75], [-2.25, -0.75], [-2.625, -0.375], [-2.625, 0.375], [-2.25, 0.75] ],
+      "damage" : 8,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "shadow",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "selfDamagePoly" : [ [2.25, 0.75], [2.625, 0.375], [2.625, -0.375], [2.25, -0.75], [-2.25, -0.75], [-2.625, -0.375], [-2.625, 0.375], [-2.25, 0.75] ],
+
+    "movementSettings" : {
+      "collisionPoly" : [ [2.25, 0.75], [2.625, 0.375], [2.625, -0.375], [2.25, -0.75], [-2.25, -0.75], [-2.625, -0.375], [-2.625, 0.375], [-2.25, 0.75] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 3,
+      "runSpeed" : 6,
+      "gravityEnabled" : false,
+      "liquidBuoyancy" : 1.0,
+      "flySpeed" : 10,
+      "liquidFriction" : 2,
+      "liquidForce" : 80.0,
+      "airForce" : 50
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : false,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 30
+        },
+        "protection" : {
+          "baseValue" : 25.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "iceImmunity" : {
+          "baseValue" : 1.0
+        },
+        "liquidnitrogenImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "isWaterCreature" : {
+          "baseValue" : 1.0
+        },
+        "isSpawnedCreature" : {
+          "baseValue" : 1.0
+        },
+        "breathProtection" : {
+          "baseValue" : 1.0
+        },
+        "wetImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false,
+    "nametagColor" : [64, 200, 255]
+  }
+}

@@ -8,28 +8,29 @@
   "footstepSound" : "/sfx/blocks/footstep_sand.ogg",
   "falling" : true,
   "cascading" : false,
+  "soil" : true,
   "health" : 4,
   "category": "materials",
 
-  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderTemplate" : "/tiles/fuclassicnopaint.config",
   "renderParameters" : {
     "texture" : "retexaetherdust.png",
     "variants" : 5,
     "lightTransparent" : false,
     "occludesBelow" : true,
-    "multiColored" : false,
+    "multiColored" : true,
     "zLevel" : 430
   },
 
   "liquidInteractions" : [
     {
       "liquidId" : 2,
-      "consumeLiquid" : 0.55,
+      "consumeLiquid" : 0.25,
       "transformMaterialId" : 6540
     },
     {
       "liquidId" : 52,
-      "consumeLiquid" : 0.55,
+      "consumeLiquid" : 0.25,
       "transformMaterialId" : 6540
     }
   ]

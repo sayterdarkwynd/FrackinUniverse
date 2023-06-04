@@ -1,0 +1,45 @@
+{
+  "objectName" : "extrasmashablepersistentswitch",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "wire",
+  "price" : 0,
+  "health" : 0.1,
+  "description" : "...",
+  "shortdescription" : "Smashable Invisible Persistent Switch",
+  "race" : "generic",
+
+  "smashOnBreak" : true,
+
+  "inventoryIcon" : "extrasmashablepersistentswitchicon.png",
+  "orientations" : [
+    {
+      "image" : "extrasmashablepersistentswitch.png:<color>.off",
+      "imagePosition" : [-8, -8],
+      "spaceScan" : 0.1
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/switch/persistentswitch.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle.animation",
+
+  "animationParts" : {
+    "switch" : "extrasmashablepersistentswitchhidden.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "interactive" : false,
+
+  "inputNodes" : [ [-1, 0], [-1, -1] ],
+  "outputNodes" : [ [0, -1] ],
+
+  "smashable" : true,
+  "smashDropPool" : "empty",
+
+  "interval" : 15
+}

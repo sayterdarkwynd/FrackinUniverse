@@ -12,11 +12,27 @@
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/zapsplosion/zapsplosion.config"
+      "file" : "/projectiles/explosions/shadowfireboom/shadowfireboom.config"
     }
   ],
-  "power" : 50,
+  "actionOnCollide" : [
+    {
+      "action" : "projectile",
+      "type" : "hgravityexplosion",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.0,
+      "angleAdjust" : 35
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/weapons/magnorbproto_impact1.ogg",
+        "/sfx/weapons/magnorbproto_impact2.ogg",
+        "/sfx/weapons/magnorbproto_impact3.ogg"
+      ]
+    }
+  ],
+  "power" : 5,
   "emitters" : [ "defaultmagenta", "spectralsparkle" ],
-  "damageType" : "NoDamage",
-  "damageKind" : "slash"
+  "damageKind" : "shadowplasma"
 }

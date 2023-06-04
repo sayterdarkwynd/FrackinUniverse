@@ -1,15 +1,17 @@
 {
   "itemName" : "hailstrike",
-  "level" : 5,
+  "level" : 7,
   "price" : 1500,
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "A truly deadly weapon. Made of 100% awesome.",
-  "shortdescription" : "^#bb39ce;Hail Strike",
-  "tooltipKind" : "gun",
+  "description" : "Harness the power of the cosmos, in machinegun form.
+^yellow;Homing energy weapon.^reset;
+^green;Alt ignores walls^reset;",
+  "shortdescription" : "^#bb39ce;Hail Strike^reset;",
+  "tooltipKind" : "gun2aetherium",
   "category" : "assaultRifle",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "itemTags" : ["weapon","ranged","assaultrifle", "assaultrifle", "energy", "upgradeableWeapon"],
 
   "inventoryIcon" : [
     { "image" : "hailstrike.png:idle.1" }
@@ -27,33 +29,33 @@
     "lights" : { "glow" : {
       "active" : true,
       "position" : [0.75, 0.5],
-      "color" : [200, 12, 40]
+      "color" : [0, 120, 120]
     }},
     "sounds" : {
-      "fire" : [ "/sfx/weapons/irradiumrifle.ogg" ]
+      "fire" : [ "/sfx/weapons/hailstrike.ogg" ]
     }
   },
-  "baseOffset" : [0, -0.55],
-  "muzzleOffset" : [1.5, 0.125],
+  "baseOffset" : [0.8, -0.55],
+  "muzzleOffset" : [2.2, -0.25],
 
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+  "scripts" : ["/items/active/weapons/ranged/gun.lua", "/items/active/scripts/heavyweapon2.lua"],
 
-  "elementalType" : "fire",
+  "elementalType" : "cosmic",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 0.08,
-    "baseDps" : 10.0,
-    "energyUsage" : 26,
+    "fireTime" : 0.24,
+    "baseDps" : 6.25,
+    "energyUsage" : 40,
     "inaccuracy" : 0.056,
     "fireType" : "auto",
 
-    "projectileType" : "furavager",
+    "projectileType" : "fuhailstrikeshot",
     "projectileParameters" : {
       "knockback" : 1.5,
-      "speed" : 60
+      "speed" : 72
     },
     "projectileCount" : 1,
 
@@ -87,7 +89,82 @@
     }
   },
 
-  "altAbilityType" : "homingrocket",
+  "critChance" : 2,
+  "critBonus" : 2,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 1500,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+  "altAbilityType" : "hailstrikealt",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua", "/items/active/scripts/heavyweapon2.lua" ],
+    "shortdescription" : "^cyan;Deathstrike^reset; ^yellow;^reset;",
+  "description" : "Perfection.
+^cyan;+2 projectiles^reset;
+^yellow;Homing projectiles^reset;
+^green;Alt ignores walls^reset;",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "deathstrike.png",
+    "middlefullbright" : "deathstrikefullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+    },
+    "inventoryIcon" : [
+    { "image" : "deathstrike.png:idle.1" }
+    ],
+    "critChance" : 4,
+    "critBonus" : 4,
+	  "primaryAbility" : {
+	    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+	    "class" : "GunFire",
+
+	    "fireTime" : 0.24,
+	    "baseDps" : 7.4,
+	    "energyUsage" : 45,
+	    "inaccuracy" : 0.056,
+	    "fireType" : "auto",
+
+	    "projectileType" : "fuhailstrikeshot",
+	    "projectileParameters" : {
+	      "knockback" : 2.2,
+	      "speed" : 72
+	    },
+	    "projectileCount" : 2,
+
+	    "stances" : {
+	      "idle" : {
+		"armRotation" : 0,
+		"weaponRotation" : 0,
+		"twoHanded" : true,
+
+		"allowRotate" : true,
+		"allowFlip" : true
+	      },
+	      "fire" : {
+		"duration" : 0,
+		"armRotation" : 1,
+		"weaponRotation" : 1,
+		"twoHanded" : true,
+
+		"allowRotate" : false,
+		"allowFlip" : false
+	      },
+	      "cooldown" : {
+		"duration" : 0.0,
+		"armRotation" : 1,
+		"weaponRotation" : 1,
+		"twoHanded" : true,
+
+		"allowRotate" : false,
+		"allowFlip" : false
+	      }
+	    }
+	  }
+  }
 }

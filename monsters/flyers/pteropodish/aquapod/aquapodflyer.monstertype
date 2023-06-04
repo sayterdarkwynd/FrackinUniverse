@@ -1,0 +1,289 @@
+{
+  "type" : "aquapodflyer",
+  "shortdescription" : "Aquapod",
+  "description" : "In addition to wings, this monster can propel itself like a rocket.",
+
+  "categories" : [ "aquapodflyer" ],
+  "parts" : [ "body" ],
+
+  "animation" : "aquapodflyer.animation",
+
+  "dropPools" : [
+    {
+      "default" : "extraMonsterIce",
+      "bow" : "extraMonsterIceHunting",
+      "firebow" : "extraMonsterIceHunting",
+      "icebow" : "extraMonsterIceHunting",
+      "poisonbow" : "extraMonsterIceHunting",
+      "electricbow" : "extraMonsterIceHunting",
+      "cosmicbow" : "extraMonsterIceHunting",
+      "radioactivebow" : "extraMonsterIceHunting",
+      "shadowbow" : "extraMonsterIceHunting"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "seeThroughLiquid" : false,
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-swoop",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "skillName":"flyingSwoopApproach",
+            "minimumRange" : 0,
+            "maximumRange" : 30,
+            "onGround" : false,
+            "windupTime" : 0.25,
+            "windupState" : "firewindup",
+            "windupStopForce" : 50,
+            "gravityMultiplier" : -0.2,
+            "swoopVelocity" : 35,
+            "collisionCheck" : true,
+            "highArc" : false,
+            "swoopstate" : "idle",
+            "swoopTime" : 0.75,
+
+            "winddownTime" : 0.1,
+            "winddownState" : "fly",
+            "winddownStopForce" : 50
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-projectile",
+          "cooldown" : 1,
+          "parameters" : {
+            "projectileCount" : 6,
+            "skillName":"glitterBurst",
+            "projectileType" : "watersprinkledroplet",
+            "projectileParameters" : { "speed" :25 },
+            "aimAtTarget" : "true",
+            "inaccuracy" : 3.14,
+            "fireOffset" : [0, 0],
+            "power" : 0
+          }
+        }
+       ],
+
+      "approachActions" : [
+
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "targetOffset" : [0,5],
+            "minRange" : 5,
+            "maxRange" : 15
+          }
+        }
+
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {}
+        },
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "targetOffset" : [0,5],
+            "minRange" : 5,
+            "maxRange" : 15
+          }
+        }
+      ],
+
+      "wanderActions" : [
+
+      {
+          "name" : "wander-fly",
+          "cooldown" : [5,20],
+          "parameters" : {
+            "wanderTime" : [10,40],
+            "groundDistance" : 20,
+            "ceilingDistance" : 10,
+            "xVelocity" : 10,
+            "yVelocity" : 16
+          }
+        },
+        {
+          "name" : "land-fly",
+          "cooldown" : 2,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 10,
+            "flyControlForce" : 45,
+            "landCheckDistance" : 40,
+            "idleTime" : [10,40],
+            "landState" : "idle"
+          }
+        }
+      ],
+
+      "concurrentActions" : [ ],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-projectile",
+          "cooldown" : 4,
+          "parameters" : {
+            "skillName":"glitterBurst",
+            "projectileCount" : 1,
+            "projectileType" : "iceelementcloud",
+            "projectileParameters" : {
+             "speed" :0,
+             "damageTeam" : {"type":"enemy"},
+             "damageType" : "damage",
+             "damageKind" : "ice",
+             "timeToLive" : 2
+            },
+            "aimAtTarget" : "true",
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0],
+            "power" : 4
+          }
+        }
+       ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.26, 0.625],  [0.625, 0.26], [0.625, -1.26], [0.26, -1.625], [-0.26, -1.625], [-0.625, -1.26], [-0.625, 0.26], [-0.26, 0.625] ],
+      "damage" : 9,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 15,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.26, 0.625],  [0.625, 0.26], [0.625, -1.26], [0.26, -1.625], [-0.26, -1.625], [-0.625, -1.26], [-0.625, 0.26], [-0.26, 0.625] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 2,
+      "airForce" : 40,
+      "flySpeed" : 12
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+      "appliesWeatherStatusEffects" : false,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 64
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "lavaImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : -0.8
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "aquapodflyer" }
+  }
+}

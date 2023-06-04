@@ -1,0 +1,86 @@
+{
+	"itemName" : "magnorbproto",
+	"level" : 3,
+	"price" : 900,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "This unusual weapon is quite dangerous. ^cyan;Counts as 'energy' weapon^reset;",
+	"shortdescription" : "Tauntra Orbs",
+	"tooltipKind" : "magnorb",
+	"category" : "Magnorb",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","magnorb", "energy", "upgradeableWeapon", "proto"],
+
+	"inventoryIcon" : "iconproto.png",
+	"animation" : "magnorbsproto.animation",
+	"animationParts" : {
+		"glove" : "gloveproto.png",
+		"glovefullbright" : "gloveprotofullbright.png",
+		"orb1" : "orbproto.png",
+		"orb2" : "orbproto.png",
+		"orb3" : "orbproto.png",
+		"orb4" : "orbproto.png"
+	},
+	"animationCustom" : {
+
+		"lights" : {
+			"glow" : {
+			"active" : true,
+			"position" : [0.75, 0.5],
+			"color" : [25, 110, 12],
+			"flickerPeriod" : 0.3,
+			"flickerMinIntensity" : 0.95,
+			"flickerMaxIntensity" : 1,
+			"flickerPeriodVariance" : 0.075,
+			"flickerIntensityVariance" : 0.025
+			}
+		}
+
+	},
+
+	"scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
+
+	"orbitRate" : 3.02,
+
+	"elementalType" : "electric",
+
+	"projectileType" : "magnorbproto",
+
+	"projectileParameters" : {
+		"power" : 3.56,
+		"knockback" : 15,
+
+		"returnOnHit" : true,
+		"ignoreTerrain" : false,
+		"controlForce" : 40,
+		"pickupDistance" : 1.5,
+		"snapDistance" : 1.0
+	},
+
+	"count" : 4,
+	"shieldKnockback" : 20,
+	"shieldEnergyCost" : 40,
+	"shieldHealth" : 70,
+	"shieldPower" : "Force Field",
+	"shieldPersistentGroup":"magnorbProto",
+	"shieldPersistentEffects":[{"stat":"protoImmunity","amount":1}],
+	"shieldEphemeralEffects":["mage_shield_lvl1"],
+	"critChance" : 2,
+	"critBonus" : 6,
+
+	"stances" : {
+		"idle" : {
+			"armRotation" : 10,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		},
+		"shield" : {
+			"armRotation" : 0,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		}
+	},
+	"builder" : "/items/buildscripts/fubuildmagnorb.lua"
+}

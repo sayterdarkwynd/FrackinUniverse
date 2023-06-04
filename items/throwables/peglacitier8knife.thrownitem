@@ -1,0 +1,32 @@
+{
+  "itemName" : "peglacitier8knife",
+  "price" : 300,
+  "rarity" : "Rare",
+  "level" : 5,
+  "inventoryIcon" : "peglacitier8knife.png",
+  "image" : "peglacitier8knife.png",
+  "shortdescription" : "Backscatter",
+  "description" : "Launches a grenade that accelerates before firing off three missiles the other way.",
+
+  "ammoUsage" : 1,
+  "category" : "throwableItem",
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 0.4,
+
+  "projectileType" : "peglacitier8knife",
+  "projectileConfig" : {
+    "speed" : 45,
+    "power" : 18,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item.ogg" ]
+      }
+    ]
+  }
+}
+

@@ -1,0 +1,47 @@
+{
+  "objectName" : "sushibarlamp",
+  "printable" : false,
+  "lightColor" : [255, 188, 51],
+  "colonyTags" : ["misc"],
+  "rarity" : "Common",
+  "description" : "A rather morbid looking Hylotl lantern. Maybe don't touch it.",
+  "shortdescription" : "Pufferfish Lantern",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 100,
+
+  "apexDescription" : "Was that... made from an actual pufferfish?",
+  "avianDescription" : "Even after the fish has perished, those spikes remain sharp as ever.",
+  "floranDescription" : "Little fisssh looks fierce even in death.",
+  "glitchDescription" : "Disturbed. I'd have thought the Hyltol of all people were above \"novelty items\" like this.",
+  "humanDescription" : "My old driving teacher had a fish like this. She didn't like to talk about it.",
+  "hylotlDescription" : "A novelty lamp. I must hope the poor creature didn't suffer much before being made into... this.",
+  "novakidDescription" : "No hangin' off from this lampshade.",
+
+  "inventoryIcon" : "sushibarlampicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "sushibarlamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationPosition" : [-8, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "sushibarlamp.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallswitch.ogg" ],
+      "off" : [ "/sfx/objects/tinywallswitch.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ]
+}

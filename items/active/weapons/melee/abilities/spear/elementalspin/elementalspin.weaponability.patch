@@ -1,0 +1,215 @@
+[
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowSpin",
+    "value" : [ "/sfx/melee/elemental_spin_poison.ogg"]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowSpinFire",
+    "value" : [ "/sfx/melee/travelingslash_poison1.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/radioactiveSpin",
+    "value" :  ["/sfx/melee/elemental_spin_poison.ogg"]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/radioactiveSpinFire",
+    "value" : [ "/sfx/melee/travelingslash_poison1.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/cosmicSpin",
+    "value" :  ["/sfx/melee/elemental_spin_electric.ogg"]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/cosmicSpinFire",
+    "value" : [ "/sfx/melee/travelingslash_electric7.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/shadowSpin",
+    "value": {
+      "active": false,
+      "emissionRate": 12,
+      "offsetRegion": [ -3.5, -3.5, 3.5, 3.5],
+      "particles": [
+        { "particle": "shadowswoosh1"},
+        { "particle": "shadowswoosh2"},
+        { "particle": "shadowswoosh3"},
+        { "particle": "shadowswoosh1"},
+        { "particle": "shadowswoosh2"},
+        { "particle": "shadowswoosh3"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/shadow",
+    "value": {
+      "projectileType": "shadowspinswoosh",
+      "damageConfig": {
+        "statusEffects": [ "defenseboostneg20"]
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/radioactiveSpin",
+    "value": {
+      "active" : false,
+      "emissionRate" : 12,
+      "offsetRegion" : [-3.5, -3.5, 3.5, 3.5],
+      "particles" : [
+        { "particle" : "radioactiveswoosh1"},
+        { "particle" : "radioactiveswoosh2"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "radioactiveswoosh1"},
+        { "particle" : "radioactiveswoosh2"},
+        { "particle" : "poisonswoosh2"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/radioactive",
+    "value": {
+      "projectileType": "radioactivespinswoosh",
+      "damageConfig": {
+        "statusEffects": [ "radiationburn"]
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/cosmicSpin",
+    "value": {
+      "active" : false,
+      "emissionRate" : 12,
+      "offsetRegion" : [-3.5, -3.5, 3.5, 3.5],
+      "particles" : [
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/cosmic",
+    "value": {
+      "projectileType": "cosmicspinswoosh",
+      "damageConfig": {
+        "statusEffects": [  ]
+      }
+    }
+  },
+
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/hellfireSpin",
+    "value": {
+      "active" : false,
+      "emissionRate" : 12,
+      "offsetRegion" : [-3.5, -3.5, 3.5, 3.5],
+      "particles" : [
+        { "particle" : "fireswoosh1"},
+        { "particle" : "fireswoosh2"},
+        { "particle" : "fireswoosh3"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/hellfire",
+    "value": {
+      "projectileType": "firespinswoosh",
+      "damageConfig": {
+        "statusEffects": [  ]
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/hellfireSpin",
+    "value" :  ["/sfx/melee/elemental_spin_fire.ogg"]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/hellfireSpinFire",
+    "value" : [ "/sfx/melee/travelingslash_fire7.ogg" ]
+  },
+
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/bioweaponSpin",
+    "value": {
+      "active" : false,
+      "emissionRate" : 12,
+      "offsetRegion" : [-3.5, -3.5, 3.5, 3.5],
+      "particles" : [
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "poisonswoosh3"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/bioweapon",
+    "value": {
+      "projectileType": "poisonspinswoosh",
+      "damageConfig": {
+        "statusEffects": [  ]
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/bioweaponSpin",
+    "value" :  ["/sfx/melee/elemental_spin_poison.ogg"]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/bioweaponSpinFire",
+    "value" : [ "/sfx/melee/travelingslash_poison7.ogg" ]
+  },
+
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/silverweaponSpin",
+    "value": {
+      "active" : false,
+      "emissionRate" : 12,
+      "offsetRegion" : [-3.5, -3.5, 3.5, 3.5],
+      "particles" : [
+        { "particle" : "iceswoosh1"},
+        { "particle" : "iceswoosh2"},
+        { "particle" : "iceswoosh3"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/silverweapon",
+    "value": {
+      "projectileType": "icespinswoosh",
+      "damageConfig": {
+        "statusEffects": [  ]
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/silverweaponSpin",
+    "value" :  ["/sfx/melee/elemental_spin_poison.ogg"]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/silverweaponSpinFire",
+    "value" : [ "/sfx/melee/travelingslash_poison7.ogg" ]
+  }
+]

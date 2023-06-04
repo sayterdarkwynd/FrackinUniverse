@@ -1,0 +1,165 @@
+{
+  "itemName" : "pandorasboxprotectorateshield",
+  "price" : 50,
+  "maxStack" : 1,
+  "level" : 3,
+  "rarity" : "common",
+  "category" : "shield",
+  "description" : "A damaged shield bearing the Protectorate symbol. ^green;-10% Fall Damage^reset;, ^cyan;Immune: Shock^reset;",
+  "shortdescription" : "Rusty Protectorate Shield",
+  "tooltipKind" : "shieldnew",
+  "twoHanded" : false,
+  "itemTags" : ["shield", "upgradeableWeapon","protectorate"],
+
+  "inventoryIcon" : "images/pandorasboxprotectorateshield.png:nearidle",
+
+  "animation" : "shield.animation",
+  "animationParts" : {
+    "shield" : "images/pandorasboxprotectorateshield.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "shield" : { "properties" : {
+        "shieldPoly" : [ [-0.5, -2.0], [-0.5, 1.75], [0.75, 1.0], [0.75, -1.25] ]
+    }}}},
+    "sounds" : {
+      "raiseShield" : [ "/sfx/melee/sword_guard.ogg" ],
+      "perfectBlock" : [ "/sfx/melee/shield_block_metal_perfect.ogg" ],
+      "shieldBash" : [ "/sfx/melee/blunt_hit_metal3.ogg", "/sfx/melee/dagger_hit_metal1.ogg" ],
+      "block" : [ "/sfx/melee/shield_block_metal.ogg" ],
+      "break" : [ "/sfx/melee/shield_break_metal.ogg" ]
+    }
+  },
+
+  "radioMessagesOnPickup" : [ "pickupshield" ],
+  "scripts" : ["/items/active/shields/shield.lua"],
+
+  // ***************   FU shield properties    *********************
+  // if using shield2.lua, you must include these values
+  "shieldHealthRegen" : 0,
+  "shieldEnergyRegen" : 0,
+  "shieldHealthBonus" : 0.03,
+  "shieldEnergyBonus" : 0,
+  "shieldProtection" : 0,
+  "shieldStamina" : 0.1,
+  "shieldFalling" : -0.1,
+  "shieldCritChance" : 0,
+  "shieldCritBonus" : 0,
+  "protectionBee" : 0,
+  "protectionAcid" : 0,
+  "protectionBlacktar" : 0,
+  "protectionBioooze" : 0,
+  "protectionPoison" : 0,
+  "protectionLava" : 0,
+  "protectionFire" : 0,
+  "protectionProto" : 0,
+  "protectionCold" : 0,
+  "protectionHeat" : 0,
+  "protectionRads" : 0,
+  "protectionXCold" : 0,
+  "protectionXHeat" : 0,
+  "protectionXRads" : 0,
+  "protectionInsanity" : 0,
+  "protectionShock" : 1,
+  "protectionSlime" : 0,
+  "shieldBash" : 3,
+  "shieldBashPush" : 3,
+  // end FU shield properties
+
+  "minActiveTime" : 0.2,
+
+  "forceWalk" : true,
+  "baseShieldHealth" : 20,
+  "cooldownTime" : 0.6,
+
+  "perfectBlockDirectives" : "?border=2;AACCFFFF;00000000",
+  "perfectBlockTime" : 0.2,
+
+  "knockback" : 10,
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "shieldRotation" : 0,
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "raised" : {
+      "armRotation" : 0,
+      "shieldRotation" : 0,
+      "allowRotate" : true,
+      "allowFlip" : true
+    }
+  },
+
+  "builderConfig" : [
+    {
+      "animationParts" : {
+        "shield" : {
+          "path" : "images/pandorasboxprotectorateshield.png",
+          "variants" : 1
+        }
+      },
+      "animationCustom" : {
+        "sounds" : {
+          "perfectBlock" : [ "/sfx/melee/shield_block_metal_perfect.ogg" ],
+          "block" : [ "/sfx/melee/shield_block_metal.ogg" ],
+          "break" : [ "/sfx/melee/shield_break_metal.ogg" ]
+        }
+      },
+      "iconDrawables" : [ "shield" ]
+    }
+  ],
+
+  "builder" : "/items/buildscripts/fubuildunrandshield.lua",
+  "improveParameters" : {
+      "shortdescription" : "^cyan;Protectorate Shield^reset; ^white;^reset;",
+      "description" : "Much stronger than before.",
+      "shieldBash" : 4,
+      "shieldBashPush" : 4,
+      "shieldEnergyRegen" : 0.1,
+      "shieldHealthBonus" : 0.04,
+      "perfectBlockTime" : 0.21,
+      "knockback" : 11,
+      "baseShieldHealth" : 45,
+      "cooldownTime" : 0.58,
+      "shieldStamina" : 0.2,
+      "inventoryIcon" : "images/pandorasboxprotectorateshield2.png:nearidle",
+      "animationParts" : {
+        "shield" : "images/pandorasboxprotectorateshield2.png"
+      }
+  },
+  "upgradeParameters" : {
+      "shortdescription" : "^cyan;Protectorate Shield^reset; ^yellow;^reset;",
+      "description" : "Vastly improved defense.",
+      "shieldBash" : 8,
+      "shieldBashPush" : 8,
+      "shieldEnergyRegen" : 0.2,
+      "shieldHealthBonus" : 0.12,
+      "perfectBlockTime" : 0.22,
+      "knockback" : 15,
+      "baseShieldHealth" : 55,
+      "cooldownTime" : 0.55,
+      "shieldStamina" : 0.3,
+      "inventoryIcon" : "images/pandorasboxprotectorateshield3.png:nearidle",
+      "animationParts" : {
+        "shield" : "images/pandorasboxprotectorateshield3.png"
+      }
+  },
+  "upgradeParameters2" : {
+      "shortdescription" : "^cyan;Protectorate Shield^reset; ^green;^reset;",
+      "description" : "A shield for a true hero.",
+      "shieldBash" : 10,
+      "shieldBashPush" : 10,
+      "shieldEnergyRegen" : 0.3,
+      "shieldHealthBonus" : 0.2,
+      "perfectBlockTime" : 0.25,
+      "knockback" : 20,
+      "baseShieldHealth" : 65,
+      "cooldownTime" : 0.5,
+      "shieldStamina" : 0.5,
+      "inventoryIcon" : "images/pandorasboxprotectorateshield4.png:nearidle",
+      "animationParts" : {
+        "shield" : "images/pandorasboxprotectorateshield4.png"
+      }
+  }
+}

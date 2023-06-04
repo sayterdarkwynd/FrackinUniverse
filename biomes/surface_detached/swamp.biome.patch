@@ -1,0 +1,397 @@
+[
+{"op" : "add", "path" : "/parallax", "value" : "/parallax/surface/bog.parallax" },
+      {
+        "op": "add",
+        "path": "/ambientNoises",
+        "value": {
+          "day" : {
+            "tracks" : [ "/sfx/environmental/jungle_day.ogg" ]
+          },
+          "night" : {
+            "tracks" : [ "/sfx/environmental/jungle_night.ogg" ]
+          }
+        }
+      },
+      {
+        "op": "add",
+        "path": "/musicTrack",
+        "value": {
+          "day": {
+            "tracks": [
+              "/music/epsilon-indi.ogg",
+              "/music/hymn-to-the-stars.ogg",
+              "/music/planetarium.ogg",
+              "/music/procyon.ogg",
+              "/music/stellarformation.ogg",
+              "/music/vast-immortal-suns.ogg",
+              "/music/atlas.ogg",
+              "/music/blue-straggler.ogg",
+              "/music/cygnus-x1.ogg",
+              "/music/europa.ogg",
+              "/music/haiku.ogg",
+              "/music/M54.ogg",
+              "/music/on-the-beach-at-night.ogg"
+            ]
+          },
+          "night": {
+            "tracks": [
+              "/music/jupiter.ogg",
+              "/music/arctic-constellation1.ogg",
+              "/music/arctic-constellation2.ogg",
+              "/music/mercury.ogg",
+              "/music/mira.ogg",
+              "/music/procyon.ogg",
+              "/music/tranquility-base.ogg",
+              "/music/psyche.ogg",
+              "/music/accretion-disc.ogg",
+              "/music/cygnus-x1.ogg",
+              "/music/eridanus-supervoid.ogg",
+              "/music/horsehead-nebula.ogg",
+              "/music/large-magellanic-cloud.ogg",
+              "/music/M54.ogg",
+              "/music/Nomads.ogg",
+              "/music/on-the-beach-at-night.ogg"
+            ]
+          }
+        }
+      },
+  {
+    "op": "replace",
+    "path": "/surfacePlaceables/items/4/grasses",
+    "value": [ "leafsy", "signplant", "thickgrass", "vine", "viney" ]
+  },
+  {
+    "op": "replace",
+    "path": "/surfacePlaceables/items/6/distribution",
+    "value": "/biomes/distributions.config:denseMedium"
+  },
+  {
+    "op": "replace",
+    "path": "/surfacePlaceables/items/6/objectSets/0/pool",
+    "value": [ [0.35, "rootbush1" ], [0.35, "rootbush2" ], [0.35, "rootbush3" ], [0.35, "rootbush4" ], [0.35, "rootbush5" ], [0.35, "swamproot1" ], [0.35, "swamproot2" ], [0.35, "swamproot3" ], [0.35, "swamproot4" ], [0.35, "swamproot5" ] ]
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 1,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundRareChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "swampbush",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          },
+          {
+            "name" : "swampplant",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          },
+          {
+            "name" : "swampshrub",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
+          }
+        ]
+      }
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "reedseed1" ], [0.35, "reedseed2" ], [0.35, "reedseed3" ], [0.35, "reedseed4" ], [0.35, "reedseed5" ], [0.35, "tallgrass1" ], [0.35, "tallgrass2" ], [0.35, "tallgrass3" ], [0.35, "tallgrass4" ] ],
+            "parameters" : { }
+          }
+        ]
+      }
+  },
+  {
+    "op": "replace",
+    "path": "/undergroundPlaceables/items/0/distribution",
+    "value": "/biomes/distributions.config:denseMedium"
+  },
+  {
+    "op": "replace",
+    "path": "/undergroundPlaceables/items/1/distribution",
+    "value": "/biomes/distributions.config:denseMedium"
+  },
+  {
+    "op": "replace",
+    "path": "/undergroundPlaceables/items/1/objectSets/0/pool",
+    "value": [ [0.35, "rootbush1" ], [0.35, "rootbush2" ], [0.35, "rootbush3" ], [0.35, "rootbush4" ], [0.35, "rootbush5" ], [0.35, "swamproot1" ], [0.35, "swamproot2" ], [0.35, "swamproot3" ], [0.35, "swamproot4" ], [0.35, "swamproot5" ] ]
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:minibiomeChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "swampChest" ]
+      }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundtechChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "techChest" ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 1,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "weedy" ]
+      }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+      {
+        "mode" : "ceiling",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "ceilingweedy" ]
+      }
+  },
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "undergroundencounter" ]
+  }
+},
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "treasureroom" ]
+  }
+},
+
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "genericundergroundencounter" ]
+  }
+},
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "apexundergroundencounter" ]
+  }
+},
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "avianundergroundencounter" ]
+  }
+},
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "floranundergroundencounter" ]
+  }
+},
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "glitchundergroundencounter" ]
+  }
+},
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "humanundergroundencounter" ]
+  }
+},
+{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
+  "mode" : "floor",
+  "priority" : 1,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:ultraRare",
+
+  "type" : "microdungeon",
+  "microdungeons" : [ "outpostundergroundencounter" ]
+  }
+}
+]

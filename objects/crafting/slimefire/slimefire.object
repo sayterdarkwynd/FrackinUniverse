@@ -1,0 +1,109 @@
+{
+  "objectName" : "slimefire",
+  "colonyTags" : ["slimenpc","slimeperson","slimevillage","slimenpchuman","cooking","light"],
+  "printable" : false,
+  "price" : 30,
+  "rarity" : "Common",
+  "learnBlueprintsOnPickup" : [ "slimecookingtable" ],
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/craftingcampfire.config",
+    "filter" : [ "campfire" ]
+  },
+  "description" : "Flame engulfed in slime, how does it get oxygen?.",
+  "shortdescription" : "Slime Fire",
+  "race" : "slimeperson",
+  "category" : "crafting",
+
+  "apexDescription" : "A fire, inside a blob of slime.",
+  "avianDescription" : "This fire works like a stove, it's useful for very basic cooking.",
+  "floranDescription" : "Floran hate flamesss. Floran happy it's in slime.",
+  "glitchDescription" : "Informed. Heating meat with fire is a basic form of cooking.",
+  "humanDescription" : "I thought flames stop burning when they have no oxygen.",
+  "hylotlDescription" : "This flame is well protected. It could burn underwater!",
+  "novakidDescription" : "Seems like burning flames inside a slime forms different kind of plasma.",
+  "slimepersonDescription" : "Stove, I can cook here.",
+  "slimenpcDescription" : "Food...cook here...",
+  "slimenpchumanDescription" : "Flame heats up the plate, great for cooking.",
+
+  "lightColor" : [179, 149, 107],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "particleEmitter" : {
+    "emissionRate" : 1.0,
+    "emissionVariance" : 0.5,
+
+    "particle" : {
+      "type" : "ember",
+      "position" : [0.5, 0.3],
+      "size" : 1.0,
+      "color" : [90, 211, 133, 155],
+      "light" : [150, 50, 50],
+      "fade" : 0.9,
+      "initialVelocity" : [0.0, 5.0],
+      "finalVelocity" : [0.0, 3.0],
+      "approach" : [0, 20],
+      "timeToLive" : 2,
+      "layer" : "middle"
+    },
+
+    "particleVariance" : {
+      "initialVelocity" : [0.5, 2.0],
+      "position" : [0.4, 0]
+    }
+  },
+
+  "inventoryIcon" : "slimefireicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "slimefire.png:<color>.<frame>", "fullbright" : true }, { "image" : "slimefirelit.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "imagePosition" : [0, 0],
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [0, 1], [1, 0], [1, 1] ],
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "slimefire.png:<color>.<frame>", "fullbright" : true }, { "image" : "slimefirelit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [0, 1], [1, 0], [1, 1] ],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/campfire.ogg",
+  "soundEffectRangeMultiplier" : 0.5,
+
+  "statusEffects" : [ ],
+
+  "scripts" : [ "/scripts/npcToyObject.lua"],
+  "npcToy" : {
+    "influence" : [
+      "campfire",
+      "campfire"
+    ],
+    "defaultReactions" : {
+      "campfire" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-2.5, 0.0],
+    "preciseStandPositionRight" : [2.5, 0.0],
+    "maxNpcs" : 1
+  }
+}

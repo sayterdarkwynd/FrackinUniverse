@@ -1,0 +1,44 @@
+{
+  "objectName" : "atropusbookcase",
+  "colonyTags" : ["atropus","storage"],
+  "printable" : false,
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "rarity" : "legendary",
+  "description" : "A bookcase made from flesh and organs. The shelves drip with... something.",
+  "shortdescription" : "Atropus Bookcase",
+  "race" : "generic",
+  "category" : "furniture",
+  "price" : 300,
+  "health" : 1.5,
+
+  "apexDescription" : "This bookcase is vile.",
+  "avianDescription" : "This makes me want to vomit.",
+  "floranDescription" : "Not bookcassse! Isss food!",
+  "glitchDescription" : "Wary. This bookcase makes my circuits shake.",
+  "humanDescription" : "This bookcase makes me feel sick!",
+  "hylotlDescription" : "This bookcase is positively vile.",
+  "novakidDescription" : "This bookcase ain't right at all.",
+
+  "inventoryIcon" : "atropusbookcaseicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "atropusbookcase.png:<color>.<key>",
+      "imagePosition" : [-16, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "scripts" : [ "atropusfurniture.lua" ],
+  "scriptDelta" : 5,
+
+  "openSounds" : [ "/sfx/objects/fleshdoor_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/fleshdoor_close.ogg" ],
+  "slotCount" : 32,
+  "uiConfig" : "/interface/chests/cdx/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+}

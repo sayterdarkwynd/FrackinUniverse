@@ -1,0 +1,177 @@
+{
+  "itemName" : "atomsmasher",
+  "price" : 120000,
+  "inventoryIcon" : "atomsmashergun.png",
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "A hellishly powerful beam cannon.
+^yellow;Will decimate anything it hits.^reset;",
+  "shortdescription" : "Atom Smasher",
+  "category" : "energy",
+  "itemTags" : [ "weapon","ranged", "energy", "mininglaser", "upgradeableWeapon","theaUninfusable" ],
+  "twoHanded" : true,
+  "tooltipKind" : "gununique",
+
+  "animation" : "atomsmasher.animation",
+  "animationParts" : {
+    "beamorigin" : "rainbowmuzzle.png",
+    "gnome" : "atomsmasher.png",
+    "gnomefullbright" : "atomsmasherfullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fireStart" : [ "/sfx/gun/erchiuseyebeam_start.ogg" ],
+      "fireLoop" : [ "/sfx/gun/erchiuseyebeam_loop.ogg" ],
+      "fireEnd" : [ "/sfx/gun/erchiuseyebeam_stop.ogg" ],
+      "beamImpact" : [ "/sfx/gun/gnomebeam_hit_ground.ogg" ]
+    }
+  },
+  "animationScripts" : ["/items/active/effects/chain.lua"],
+  "muzzleOffset" : [4.5, 0.85],
+
+  "scripts" : [
+    "/items/active/weapons/ranged/gun.lua",
+    "/items/active/scripts/heavyweapon.lua"
+  ],
+
+  "level" : 8,
+  "upmax" : 20,
+  "elementalType" : "silverweapon",
+  "critBonus" : 10,
+  "critChance" : 5,
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/unique/atomsmasher/beamfire.lua"],
+    "class" : "BeamFire",
+
+    "fireTime" : 0.2,
+    "baseDps" : 40,
+    "energyUsage" : 90,
+
+    "damageConfig" : {
+      "statusEffects" : [ "electrified" ],
+      "damageSourceKind" : "silverweapon",
+      "knockback" : 5
+    },
+
+    "beamLength" : 100,
+
+    "chain" : {
+      "startOffset" : [0, 0],
+      "startSegmentImage" : "/items/active/weapons/ranged/unique/atomsmasher/rainbowstart.png",
+      "segmentImage" : "/items/active/weapons/ranged/unique/atomsmasher/rainbow.png",
+      "endSegmentImage" : "/items/active/weapons/ranged/unique/atomsmasher/rainbowend.png",
+      "segmentSize" : 0.48,
+      "overdrawLength" : 0.2,
+      "taper" : 0,
+      "waveform" : {
+        "frequency" : 0.01,
+        "amplitude" : 0.0,
+        "movement" : 0.0
+      },
+      "fullbright" : true
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true,
+
+        "animationStates" : {
+          "gnome" : "squirm",
+          "gnomefullbright" : "squirm"
+        }
+      },
+      "fire" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true,
+
+        "animationStates" : {
+          "gnome" : "fire",
+          "gnomefullbright" : "fire"
+        }
+      },
+      "cooldown" : {
+        "duration" : 0.5,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true,
+
+        "animationStates" : {
+          "gnome" : "idle",
+          "gnomefullbright" : "idle"
+        }
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+
+"upgradeParameters" : {
+    "inventoryIcon" : "atomsmashergun2.png",
+  "description" : "The second-most powerful beam cannon in existence.
+^yellow;Improved decimation ratio.^reset;",
+  "shortdescription" : "Dominus Smasher",
+  "animationParts" : {
+    "beamorigin" : "rainbowmuzzle2.png",
+    "gnome" : "atomsmasher2.png",
+    "gnomefullbright" : "atomsmasherfullbright2.png"
+  },
+	  "critBonus" : 10,
+	  "critChance" : 10,
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/unique/atomsmasher/beamfire.lua"],
+    "class" : "BeamFire",
+
+    "fireTime" : 0.19,
+    "baseDps" : 43,
+
+    "chain" : {
+      "startOffset" : [0, 0],
+      "startSegmentImage" : "/items/active/weapons/ranged/unique/atomsmasher/rainbowstart2.png",
+      "segmentImage" : "/items/active/weapons/ranged/unique/atomsmasher/rainbow2.png",
+      "endSegmentImage" : "/items/active/weapons/ranged/unique/atomsmasher/rainbowend2.png"
+      }
+    }
+  },
+
+  "upgradeParameters2" : {
+    "inventoryIcon" : "atomsmashergun3.png",
+  "description" : "The most powerful beam cannon in existence.
+^yellow;Why kill mortals when you can kill Gods?^reset;",
+  "shortdescription" : "Deus Smasher",
+  "animationParts" : {
+    "beamorigin" : "rainbowmuzzle2.png",
+    "gnome" : "atomsmasher3.png",
+    "gnomefullbright" : "atomsmasherfullbright3.png"
+  },
+    "critChance" : 12,
+    "critBonus" : 20,
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/unique/atomsmasher/beamfire.lua"],
+    "class" : "BeamFire",
+
+    "fireTime" : 0.18,
+    "baseDps" : 46,
+
+    "chain" : {
+      "startOffset" : [0, 0],
+      "startSegmentImage" : "/items/active/weapons/ranged/unique/atomsmasher/rainbowstart2.png",
+      "segmentImage" : "/items/active/weapons/ranged/unique/atomsmasher/rainbow2.png",
+      "endSegmentImage" : "/items/active/weapons/ranged/unique/atomsmasher/rainbowend2.png"
+      }
+    }
+  }
+}

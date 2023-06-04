@@ -1,0 +1,116 @@
+{
+  "itemName" : "swtjc_ewg_commonsawedoffshotgun",
+  "price" : 700,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A compact shotgun that sacrifices accuracy for the ability to be easily-concealable and held in one hand.",
+  "shortdescription" : "Common Short-Barreled Shotgun",
+  "tooltipKind" : "gun2",
+  "category" : "swtjc_ewg_sawedOffShotgun",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","ranged","shotgun","upgradeableWeapon"],
+  "level" : 1,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : { },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
+        ]
+      }
+    },
+      "sounds":{
+        "cooldown":[
+          "/sfx/weapons/shotgunreload.ogg"
+        ]
+    }
+  },
+  "baseOffset" : [-0.25, 0.25],
+  "muzzleOffset" : [0,0.375],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "isReloader" : 1,
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : [1.0, 2.5],
+    "baseDps" : [7.5, 8.5],
+    "energyUsage" : [22.5, 25.5],
+    "projectileCount" : [8,10],
+    "inaccuracy" : 0.15,
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "damageKind" : "shotgunbullet",
+      "knockbackRange" : [10,20]
+    },
+
+    "stances" : {
+      "idle":{
+        "armRotation":0,
+        "weaponRotation":0,
+        "twoHanded":false,
+        "allowRotate":true,
+        "allowFlip":true
+      },
+      "fire":{
+        "duration":0.1,
+        "armRotation":3,
+        "weaponRotation":8,
+        "twoHanded":false,
+        "allowRotate":false,
+        "allowFlip":true
+      },
+      "cooldown":{
+        "duration":0.3,
+        "armRotation":-7,
+        "weaponRotation":-360,
+        "twoHanded":false,
+        "allowRotate":false,
+        "allowFlip":true
+      }
+    }
+  },
+  "fireSounds" : [ "/sfx/gun/pistol1.ogg", "/sfx/gun/pistol2.ogg", "/sfx/gun/pistol3.ogg", "/sfx/gun/pistol4.ogg", "/sfx/gun/pulserifle1.ogg", "/sfx/gun/pulserifle2.ogg", "/sfx/gun/revolver1.ogg", "/sfx/gun/revolver2.ogg", "/sfx/gun/shotgun1.ogg", "/sfx/gun/shotgun2.ogg", "/sfx/gun/shotgun3.ogg", "/sfx/gun/shotgun4.ogg", "/sfx/gun/dragonhead_fire1.ogg" ],
+
+  "critChance" : 3,
+  "critBonus" : 2,
+  "isAmmoBased": [0,1],
+  "magazineSize" : [2,5],
+  "reloadTime" : [1.5,2.5],
+  "isShotgun" : 1,
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "nameGenerator" : "swtjc_ewg_sawedoffnames.config:nameGen",
+    "animationParts" : {
+      "butt" : {
+        "path" : "/items/active/weapons/ranged/pistol/butt/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "middle" : {
+        "path" : "/items/active/weapons/ranged/shotgun/middle/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "barrel" : {
+        "path" : "/items/active/weapons/ranged/pistol/barrel/<variant>.png",
+        "variants" : 20,
+        "paletteSwap" : true
+      },
+      "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+    },
+    "gunParts" : ["butt", "middle", "barrel"],
+    "altAbilities" : [ ],
+    "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
+    "iconDrawables" : ["butt", "middle", "barrel"]
+  }]
+}

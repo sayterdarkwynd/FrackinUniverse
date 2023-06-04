@@ -1,0 +1,67 @@
+{
+  "objectName" : "braingenerator",
+  "rarity" : "common",
+  "colonyTags" : [ "science" ],
+  "category" : "wire",
+  "objectType" : "container",
+  "price" : 3500,
+  "description" : "A product of mad science that appears to run from cannisters of still-living brains. ^orange;Gradually wakes up, consciousness determines output.^reset; Maximum power ^orange;60W^reset;. ^blue;Left Input^reset;: On/Off Switch",
+  "shortdescription" : "^cyan;Neuro-Psionic Generator^reset;",
+  "race" : "generic",
+  "printable" : false,
+  "tooltipKind" : "base",
+  "soundEffect" : "/objects/power/braingenerator/braingenerator.ogg",
+
+  "inventoryIcon" : "braingeneratoricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "braingenerator_base.png",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "braingenerator.animation",
+  "animationParts" : {
+    "screen" : "braingenerator_screen.png",
+    "fans" : "braingenerator_fans.png",
+    "base" : "braingenerator_base.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "slotCount" : 1,
+  "uiConfig" : "/objects/power/braingenerator/braingenerator.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "scripts" : [ "/scripts/fupower.lua","/scripts/fugenerator.lua"],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [2, 2],[0, 2] ],
+  "outputNodes" : [ [2, 1] ],
+
+  "powertype" : "output",
+  "acceptablefuel" : {
+	  "inferiorbrain" : 10,
+	  "brain" : 20,
+	  "artificialbrain" : 60,
+	  "brainpeerless" : 60,
+	  "apexbrainjar" : 200,
+	  "apexbrainjar2" : 360,
+	  "apexbrainjar3" : 480,
+	  "apexbrainjar4" : 520,
+	  "psionicenergy" : 60,
+	  "psionicenergy2" : 80,
+	  "psionicenergy3" : 100,
+	  "psionicenergy4" : 120
+  },
+  "heat" : [
+        {"minheat" : 90,"animator" : {"screen" : "fast"},"sound" : true,"power" : 60,"light" : [48,222,48]},
+	{"minheat" : 70,"animator" : {"screen" : "med","fans" : "fast"},"sound" : true,"power" : 40,"light" : [36,166,36]},
+	{"minheat" : 50,"animator" : {"screen" : "med","fans" : "fast"},"sound" : true,"power" : 20,"light" : [24,100,24]},
+	{"minheat" : 30,"animator" : {"screen" : "slow","fans" : "slow"},"sound" : false,"power" : 12,"light" : [12,50,12]},
+	{"minheat" : 10,"animator" : {"screen" : "slow","fans" : "slow"},"sound" : false,"power" : 6,"light" : [12,50,12]},
+	{"minheat" : 0,"animator" : {"screen" : "off","fans" : "off"},"sound" : false,"power" : 0,"light" : [0,0,0]}
+  ]
+}

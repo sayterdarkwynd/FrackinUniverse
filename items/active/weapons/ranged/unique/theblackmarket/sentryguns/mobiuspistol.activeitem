@@ -1,0 +1,140 @@
+{
+  "itemName" : "mobiuspistol",
+  "price" : 500,
+  "inventoryIcon" : "mobiuspistol.png",
+    "maxStack" : 1,
+    "rarity" : "uncommon",
+  "description" : "A pistol with shrouded origins.
+^yellow;Inflicts frozen-fire^reset;",
+  "shortdescription" : "Sentry Pistol",
+  "level" : 4,
+  "category" : "machinePistol",
+  "itemTags" : ["weapon","ranged","machinepistol", "energy", "upgradeableWeapon"],
+  "tooltipKind" : "gun2",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "mobiuspistol.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+  },
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/gun/pulsecannon2.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }
+  },
+
+  "baseOffset" : [0.65, 0.18],
+  "muzzleOffset" : [1.4, 0.12],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.5,
+    "baseDps" : 4.5,
+    "energyUsage" : 26,
+    "fireType" : "auto",
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "projectileType" : "standardbullet",
+    "projectileParameters":{
+    "statusEffects":[],
+    "bounces":0,
+    "speed":95,
+    "timeToLive":3.0,
+    "power" : 5,
+    "damageKind" : "electric",
+    "knockback":0,
+    "lightColor" : [255, 180, 0],
+      "periodicActions":[
+      {
+      "time":0.01,
+      "action":"projectile",
+      "type":"firelasershot2",
+      "config":{
+        "processing":"?hueshift=127",
+        "speed":0,
+        "physics" : "laser",
+        "bounces" :-1,
+        "timeToLive":0.4,
+        "power":1,
+        "knockback":0
+        }
+      }
+    ],
+    "actionOnReap" : [
+      {
+        "action" : "sound",
+        "options" : [ "/sfx/gun/pulsecannon_blast1.ogg" ]
+      },
+      {
+        "action" : "projectile",
+        "type" : "electricexplosion",
+        "inheritDamageFactor" : 0.2,
+        "fuzzAngle" : 0,
+        "angleAdjust" : 0,
+        "config" : {
+          "speed" : 0
+        }
+      },
+      {
+        "action" : "projectile",
+        "type" : "plasmaflame",
+        "fuzzAngle" : 0,
+        "inheritDamageFactor" : 0.2,
+        "timeToLive" : 0.5,
+        "angleAdjust" : 35
+      },
+          {
+        "action" : "projectile",
+        "type" : "plasmaflame",
+        "fuzzAngle" : 0,
+        "inheritDamageFactor" : 0.2,
+        "timeToLive" : 0.5,
+        "angleAdjust" : -35
+      }
+    ]
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.075,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "critChance" : 4,
+  "critBonus" : 6,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 500,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

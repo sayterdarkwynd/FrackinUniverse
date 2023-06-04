@@ -1,0 +1,26 @@
+{
+  "itemName" : "snarshedgarflipps",
+  "rarity" : "rare",
+  "price" : 650,
+  "category" : "preparedFood",
+  "inventoryIcon" : "snarshedgarflipps.png",
+  "description" : "A reality-challenging flavor. Is it meat? Is it fruit? Is it bike? It's all three\n^cyan;-^white;5% ^cyan;HP ^gray;(^white;70s^gray;)\n^cyan;-^white;60% ^cyan;Risk of Madness Effects^reset;",
+  "shortdescription" : "Snarshed Garflipp",
+  "effects" : [ [
+    "madnessloss3",
+    {
+      "effect" : "maxhealthscalingboostfood",
+      "duration" : 70,
+	    "healthModifier" : 1.05
+    }
+  ] ],
+  "foodValue" : 10,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.2,
+  "blockingEffects" : [
+    "wellfed", "maxhealthscalingboostfood"
+  ]
+}

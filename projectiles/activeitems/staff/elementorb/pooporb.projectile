@@ -1,0 +1,102 @@
+{
+  "projectileName" : "pooporb",
+  "physics" : "laser",
+  "timeToLive" : 5,
+  "image" : "pooporb.png",
+  "animationCycle" : 0.3,
+  "lightColor" : [0, 0, 0],
+  "frameNumber" : 4,
+  "periodicActions" : [
+    {
+    "time":0.8,
+    "action":"projectile",
+    "angleAdjust":-90,
+    "type":"poball",
+    "config":{
+      "speed":0,
+      "persistentAudio":"",
+      "timeToLive":1,
+      "power":2
+      }
+    },
+
+        {
+          "time":0.8,
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/dusttest/dusttest.animation",
+            "position" : [0, 0],
+            "initialVelocity" : [0.2, -10],
+            "finalVelocity" : [0.1, -50],
+            "approach" : [0, 10],
+            "fade" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2,
+            "layer" : "middle",
+            "size" : 0.3,
+            "timeToLive" : 1,
+            "variance" : {
+              "position" : [1, 1],
+              "size" : 0.2,
+              "initialVelocity" : [0, 4]
+            }
+          }
+        }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "loop",
+      "count" : 4,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/dusttest/dusttest.animation",
+            "position" : [0, 0],
+            "initialVelocity" : [0.2, -10],
+            "finalVelocity" : [0.1, -50],
+            "approach" : [0, 10],
+            "fade" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2,
+            "layer" : "middle",
+            "size" : 0.3,
+            "timeToLive" : 1,
+            "variance" : {
+              "position" : [1, 1],
+              "size" : 0.2,
+              "initialVelocity" : [0, 4]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/fireball_spit.ogg" ]
+    }
+  ],
+
+
+  "damagePoly" : [ [-10, 0], [-7, -7], [0, -10], [7, -7], [10, 0], [7, 7], [0, 10], [-7, 7] ],
+  "statusEffects" : [ "weakpoison" ],
+  "damageRepeatTimeout" : 0.25,
+
+  "orientationLocked" : true,
+  "fullbright" : false,
+  "emitters" : [ "poisonsickness" ],
+
+  "piercing" : true,
+  "bounces" : -1,
+  "baseDamage":2,
+  "power":2,
+  "damageKind":"poison",
+
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+
+  "controlMovement":{"maxSpeed":25, "controlForce":200},
+  "persistentAudio" : "/sfx/projectiles/zone_power_loop.ogg"
+}

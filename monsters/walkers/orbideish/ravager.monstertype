@@ -1,0 +1,352 @@
+{
+  "type" : "ravager",
+  "shortdescription" : "Ravager",
+  "description" : "Something about the way it limps makes you feel uncomfortable.",
+
+  "categories" : [ "ravager" ],
+  "parts" : [ "body" ],
+
+  "animation" : "ravager.animation",
+
+  "dropPools" : [
+    {
+    "default" : "orbideTreasure",
+    "bow" : "orbideHunting",
+    "firebow" : "orbideHunting",
+    "icebow" : "orbideHunting",
+    "poisonbow" : "orbideHunting",
+    "electricbow" : "orbideHunting",
+    "cosmicbow" : "orbideHunting",
+    "radioactivebow" : "orbideHunting",
+    "shadowbow" : "orbideHunting"
+    }
+  ],
+
+  "baseParameters" : {
+
+    "colorSwap":{
+    "1d1b30":"311212",
+    "1b2140" : "440e1c",
+    "404974" : "772b40",
+    "36405a" : "772b40",
+    "3a365b" : "5c2726",
+    "575086" : "873b39",
+    "505986" : "873b39",
+    "7872a2" : "9f5a58",
+    "6677a0" : "a04c6d",
+    "8696bd" : "ba6a89",
+    "727ca2" : "ba6a89",
+    "262f43" : "341f3d",
+    "435774" : "533769",
+    "6887a6" : "765897",
+    "99bee3" : "a582cd",
+    "d8e9fa" : "ccbfdb"
+    },
+
+
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [
+        {
+          "name" : "action-animate",
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "invulnerablewinddown",
+            "animationTimer" : 1.2
+          }
+        }
+      ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-trail-charge",
+          "cooldown" : 2.0,
+          "parameters" : {
+            "maximumRange" : 20,
+            "minimumRange" : 1,
+            "windupTime" : 1.1,
+            "winddownTime" : 0.6,
+            "chargeSpeed" : 100,
+            "chargeControlForce" : 1000,
+            "chargeTime" : 0.35,
+            "aimAtTarget" : true,
+            "wallKnockback" : false,
+            "wallCrashSound": "wallCrash",
+            "knockbackThreshold": 3,
+
+            "projectileType" : "invisibleprojectile",
+            "projectileParameters" : {
+              "power" : 0,
+              "timeToLive" : 0.2,
+              "actionOnReap" :  [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/fubloodexplosion/fubloodexplosion.config"
+		    }
+              ]
+              },
+            "projectileInterval" : 0.05,
+            "offset" : [0,-2],
+            "power" : 8,
+            "scalePower" : false
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name": "action-invulnerable",
+          "parameters": {
+            "invulnerableEffect": "maxprotection",
+            "invulnerableTime": 600,
+            "winddownTime": 1.2,
+            "windupTime": 1.2
+          }
+        }
+      ],
+
+      "approachActions" : [
+        {
+          "name": "approach-walk",
+          "parameters": {
+            "canJump": true,
+            "jumpXVelocity": 12,
+            "jumpYVelocity": 30
+          }
+        }
+      ],
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "fubloodexplosion",
+            "projectileParameters" : { "speed" : 0 },
+            "power" : 3,
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name": "approach-walk",
+          "parameters": {
+            "canJump": true,
+            "jumpXVelocity": 12,
+            "jumpYVelocity": 30
+          }
+        }
+      ],
+
+      "wanderActions" : [
+      ],
+
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "fubloodexplosion",
+            "projectileParameters" : { "speed" : 0 },
+            "power" : 3,
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        },
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "magnorbatropus2",
+            "projectileParameters" : { "speed" : 15 },
+            "power" : 3,
+            "aimDirection" : [0, 1],
+            "inaccuracy" : 0.3,
+            "fireOffset" : [0, 1]
+          }
+        },
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "magnorbatropus2",
+            "projectileParameters" : { "speed" : 15 },
+            "power" : 3,
+            "aimDirection" : [-1, 1],
+            "inaccuracy" : 0.3,
+            "fireOffset" : [0, 1]
+          }
+        },
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "magnorbatropus2",
+            "projectileParameters" : { "speed" : 15 },
+            "power" : 3,
+            "aimDirection" : [1, 1],
+            "inaccuracy" : 0.3,
+            "fireOffset" : [0, 1]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.3075, 1.5], [0.75, 1.06], [0.75, -2.93], [0.3075, -3.375], [-0.3075, -3.375], [-0.75, -2.93], [-0.75, 1.06], [-0.3075, 1.5] ],
+      "damage" : 16,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.3075, 1.5], [0.75, 1.06], [0.75, -2.93], [0.3075, -3.375], [-0.3075, -3.375], [-0.75, -2.93], [-0.75, 1.06], [-0.3075, 1.5] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 1,
+      "runSpeed" : 3,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.15
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 95
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : -0.35
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.5
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 1.0
+        },
+        "pusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "shadowResistance" : {
+          "baseValue" : 0.7
+        },
+        "insanityImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "fallDamageMultiplier" : {
+          "baseValue" : 0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "ravager" }
+  }
+}

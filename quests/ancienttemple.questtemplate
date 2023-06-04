@@ -1,0 +1,34 @@
+{
+	"id": "ancienttemple.gearup",
+	"title": "^green;The Ancient Temple",
+	"text": "The map shows me the coordinates to an ancient Avian temple in the desert wilderness.",
+	"completionText": "Phew, that was quite a jaunt through the temple. Did I manage to find all the secret treasure?",
+	"portraits": {
+		"questStarted": "questGiver",
+		"questComplete": "questReceiver"
+	},
+	"moneyRange": [0, 0],
+	"missionUnlockedCinema": "/cinematics/coordinates.cinematic",
+	"rewards": [
+		[
+			["murdermanipulator"],
+			["ironbar", 30],
+			["temple_trophy", 1],
+			["trictusaf", 1],
+			["fuscienceresource", 400]
+		]
+	],
+
+	"updateDelta": 10,
+	"script": "/quests/scripts/main.lua",
+	"scriptConfig": {
+
+		"giveBlueprints": ["clawglove"],
+		"portraits": {
+			"default": "player"
+		},
+		"associatedMission": "ancienttemple",
+		"turnInDescription": "Go to the Ancient Temple and explore it.",
+		"requireTurnIn": true
+	}
+}

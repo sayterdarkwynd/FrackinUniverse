@@ -1,0 +1,88 @@
+{
+  "itemName" : "ff_bubblegun2",
+  "price" : 800,
+  "inventoryIcon" : "ff_bubblegun2.png",
+    "maxStack" : 1,
+    "rarity" : "legendary",
+  "description" : "It looks like a harmless bubble gun. It isn't.
+^yellow;Inflicts radiation burn^reset;",
+  "shortdescription" : "Jake",
+
+  "level" : 4,
+  "category" : "pistol",
+  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon"],
+  "tooltipKind" : "gununique",
+  "twoHanded" : false,
+  "classMultiplier" : 0.007,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "ff_bubblegun2.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/swing_electric1.ogg" ]
+    },
+    "lights" : {
+      "muzzleFlash" : {
+        "color" : [0, 60, 0]
+      }
+    }
+  },
+  "weaponType" : "pistol",
+  "baseOffset" : [0.75, 0.24],
+  "muzzleOffset" : [1.5, 0.225],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "radioactive",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.09,
+    "baseDps" : 7.75,
+    "energyUsage" : 12,
+    "fireType" : "auto",
+    "inaccuracy" : 0.09,
+    "projectileCount" : 1,
+    "projectileType" : "unfriendlybubble3",
+    "projectileParameters" : {
+      "speed" : 45,
+      "statusEffects" : [ "radiationburn" ]
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "critChance" : 1,
+  "critBonus" : 2,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

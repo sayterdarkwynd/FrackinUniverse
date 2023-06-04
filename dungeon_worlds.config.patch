@@ -1,61 +1,909 @@
 [
-
-{
-    "op": "add",
-    "path": "/scienceoutpost",
-    "value": 
-      {
-      "primaryDungeon":"scienceoutpost",
-    "weatherPool" : [
-        [1.0, "storm"]
-    ],      
-      "threatLevel":1,
-      "gravity":100,
-      "worldSize":[2000,2000],
-      "dungeonBaseHeight" : 1175,
-      "dungeonSurfaceHeight" : 1050,
-      "ambientLightLevel":[200,200,200],
-      "biome" : "thickjungle",
-      "musicTrack" : "/music/cygnus-x1.ogg",
-      "environmentStatusEffects" : ["dontstarve"]
-      }
-},
-
-{
-    "op": "add",
-    "path": "/shoggothdungeon",
-    "value": 
-      {"primaryDungeon":"shoggothdungeon",
-      "threatLevel":6,
-      "gravity":110,
-      "airless" : true,
-      "worldSize":[2000,2000],
-      "dungeonBaseHeight" : 1400,
-      "dungeonSurfaceHeight" : 1209,
-      "ambientLightLevel":[15,10,25],
-      "biome" : "shoggothbiome",
-      "musicTrack" : "/sfx/ambiance/shoggoth.ogg"
-      }
-},
-{
-    "op": "add",
-    "path": "/eldershoggoth",
-    "value": 
-      {
-      "primaryDungeon":"eldershoggoth",
-      
-      "threatLevel":6,
-      "gravity":110,
-      "airless" : true,
-      "worldSize":[2000,2000],
-      "dungeonBaseHeight" : 1400,
-      "dungeonSurfaceHeight" : 1209,
-      "ambientLightLevel":[15,10,25],
-    "weatherPool" : [
-        [1.0, "freezestorm"]
-    ],            
-      "biome" : "shoggothbiome",
-      "musicTrack" : "/sfx/ambiance/shoggoth.ogg"
-      }
-}
+  {
+		"op": "replace",
+		"path": "/lunarbase/musicTrack",
+		"value": "/sfx/environmental/moon_surface.ogg"
+	},
+	{
+		"op": "replace",
+		"path": "/lunarbase/dungeonBaseHeight",
+		"value": 500
+	},
+	{
+		"op": "replace",
+		"path": "/lunarbase/worldSize",
+		"value": [850, 950]
+	},
+	{
+		"op": "replace",
+		"path": "/lunarbase/threatLevel",
+		"value": 3
+	},
+	{
+		"op": "replace",
+		"path": "/lunarbase/musicTrack",
+		"value": "/sfx/environmental/moon_surface.ogg"
+	},
+	{
+		"op": "remove",
+		"path": "/lunarbase/environmentStatusEffects/0"
+	},
+	{
+		"op": "replace",
+		"path": "/cultistmission1/musicTrack",
+		"value": "/music/cybersphere_industrial.ogg"
+	},
+	{
+		"op": "replace",
+		"path": "/mechtestbasic/musicTrack",
+		"value": "/music/inviolate-loop.ogg"
+	},
+	{
+		"op": "replace",
+		"path": "/techchallenge_morphball/overrideTech/0",
+		"value": "distortionsphere2"
+	},
+	{
+		"op": "add",
+		"path": "/playerstation/environmentStatusEffects/-",
+		"value": "nofallinvis"
+	},
+	{
+		"op": "add",
+		"path": "/outpost/environmentStatusEffects",
+		"value": ["nofallinvis"]
+	},
+	{
+		"op": "replace",
+		"path": "/playerstation/worldSize/1",
+		"value": 24000
+	},
+	{
+		"op": "replace",
+		"path": "/playerstation/worldSize/0",
+		"value": 64000
+	},
+	{
+		"op": "replace",
+		"path": "/playerstation/dungeonBaseHeight",
+		"value": 12000
+	},
+	{
+		"op": "add",
+		"path": "/nightfort",
+		"value": {
+			"primaryDungeon": "nightfort",
+			"weatherPool": [
+				[1.0, "fog"]
+			],
+			"threatLevel": 5,
+			"gravity": 80,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 500,
+			"ambientLightLevel": [12, 12, 12],
+			"biome": "penumbra",
+			"musicTrack": "/music/hizzaque.ogg",
+			"environmentStatusEffects": []
+		}
+	},
+	{
+		"op": "add",
+		"path": "/scienceoutpost",
+		"value": {
+			"primaryDungeon": "scienceoutpost",
+			"weatherPool": [
+				[0.5, "clear"],
+				[0.3, "drizzle"]
+			],
+			"threatLevel": 1,
+			"gravity": 90,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 1175,
+			"dungeonSurfaceHeight": 1050,
+			"ambientLightLevel": [80, 80, 80],
+			"biome": "fungus",
+			"musicTrack": "/music/scienceoutpost.ogg",
+			"environmentStatusEffects": ["nofallinvis"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/shoggothdungeon",
+		"value": {
+			"primaryDungeon": "shoggothdungeon",
+			"threatLevel": 7,
+			"gravity": 110,
+			"airless": true,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 1400,
+			"dungeonSurfaceHeight": 1209,
+			"ambientLightLevel": [15, 25, 10],
+			"biome": "shoggothbiome",
+			"musicTrack": "/sfx/ambiance/shoggoth.ogg",
+			"environmentStatusEffects": ["ffbiomecold3"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/eldershoggoth",
+		"value": {
+			"primaryDungeon": "eldershoggoth",
+			"threatLevel": 7,
+			"gravity": 110,
+			"airless": true,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 1400,
+			"dungeonSurfaceHeight": 1209,
+			"ambientLightLevel": [15, 25, 10],
+			"weatherPool": [
+				[0.60, "freezestorm"],
+				[0.15, "freezestormlesser"],
+				[0.15, "cosmicblast"],
+				[0.10, "darkblast"]
+			],
+			"biome": "shoggothbiome",
+			"environmentStatusEffects": ["ffbiomecold3"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/eldershoggoth2",
+		"value": {
+			"primaryDungeon": "eldershoggoth2",
+			"threatLevel": 8,
+			"gravity": 110,
+			"airless": true,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 1400,
+			"dungeonSurfaceHeight": 1209,
+			"ambientLightLevel": [15, 25, 10],
+			"weatherPool": [
+				[1.0, "freezestorm"]
+			],
+			"biome": "shoggothbiome"
+		},
+		"environmentStatusEffects": ["ffbiomecold4"]
+	},
+	{
+		"op": "add",
+		"path": "/cavedungeon",
+		"value": {
+			"primaryDungeon": "cavedungeon",
+			"threatLevel": 1,
+			"gravity": 100,
+			"airless": false,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 1400,
+			"dungeonSurfaceHeight": 1500,
+			"ambientLightLevel": [25, 25, 25],
+			"biome": "mamapoptop"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/cavedungeon2",
+		"value": {
+			"primaryDungeon": "cavedungeon2",
+			"threatLevel": 2,
+			"gravity": 110,
+			"airless": false,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 1400,
+			"dungeonSurfaceHeight": 1500,
+			"ambientLightLevel": [15, 15, 15],
+			"biome": "mamapoptop"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/precursordungeon2",
+		"value": {
+			"primaryDungeon": "precursordungeon2",
+			"threatLevel": 5,
+			"gravity": 100,
+			"airless": false,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 1400,
+			"dungeonSurfaceHeight": 1500,
+			"ambientLightLevel": [25, 10, 25],
+			"biome": "irradiatedunderground"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/flyingpyramid",
+		"value": {
+			"primaryDungeon": "flyingpyramid",
+			"threatLevel": 3,
+			"gravity": 0,
+			"worldSize": [1300, 500],
+			"dungeonBaseHeight": 250,
+			"dungeonSurfaceHeight": 250,
+			"ambientLightLevel": [32, 32, 32],
+			"ambientNoises": "/sfx/environmental/space_loop4.ogg",
+			"musicTrack": "/music/flyingpyramid.ogg",
+			"environmentStatusEffects": ["dontstarve"],
+			"worldEdgeForceRegions": "TopAndBottom",
+			"biome": "space"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/ninjapagoda",
+		"value": {
+			"primaryDungeon": "ninjapagoda",
+			"threatLevel": 3,
+			"gravity": 0,
+			"worldSize": [1300, 500],
+			"dungeonBaseHeight": 250,
+			"dungeonSurfaceHeight": 250,
+			"ambientLightLevel": [32, 32, 32],
+			"ambientNoises": "/sfx/environmental/space_loop4.ogg",
+			"musicTrack": "/music/ninjapagoda.ogg",
+			"environmentStatusEffects": ["dontstarve"],
+			"worldEdgeForceRegions": "TopAndBottom",
+			"biome": "space"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/ixolinggrounds",
+		"value": {
+			"primaryDungeon": "ixolinggrounds",
+			"threatLevel": 1,
+			"gravity": 0,
+			"worldSize": [1300, 500],
+			"dungeonBaseHeight": 250,
+			"dungeonSurfaceHeight": 250,
+			"ambientLightLevel": [32, 32, 32],
+			"ambientNoises": "/sfx/environmental/space_loop4.ogg",
+			"musicTrack": "/music/ixolinggrounds.ogg",
+			"environmentStatusEffects": ["biomeairless"],
+			"worldEdgeForceRegions": "TopAndBottom",
+			"biome": "space"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/letheiafleet",
+		"value": {
+			"primaryDungeon": "letheiafleet",
+			"threatLevel": 6,
+			"gravity": 0,
+			"worldSize": [4000, 750],
+			"dungeonBaseHeight": 400,
+			"dungeonSurfaceHeight": 400,
+			"ambientLightLevel": [32, 32, 32],
+			"ambientNoises": "/sfx/environmental/space_loop4.ogg",
+			"musicTrack": "/music/onslaught.ogg",
+			"environmentStatusEffects": ["biomeairless"],
+			"worldEdgeForceRegions": "TopAndBottom",
+			"biome": "space"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/outlawmine",
+		"value": {
+			"primaryDungeon": "outlawmine",
+			"threatLevel": 1,
+			"gravity": 0,
+			"worldSize": [1300, 500],
+			"dungeonBaseHeight": 250,
+			"dungeonSurfaceHeight": 250,
+			"ambientLightLevel": [32, 32, 32],
+			"ambientNoises": "/sfx/environmental/space_loop4.ogg",
+			"musicTrack": "/music/desert-battle-2.ogg",
+			"environmentStatusEffects": ["biomeairless"],
+			"worldEdgeForceRegions": "TopAndBottom",
+			"biome": "space"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/wizardabode",
+		"value": {
+			"primaryDungeon": "wizardabode",
+			"threatLevel": 1,
+			"gravity": 0,
+			"worldSize": [750, 500],
+			"dungeonBaseHeight": 250,
+			"dungeonSurfaceHeight": 250,
+			"ambientLightLevel": [32, 32, 32],
+			"ambientNoises": "/sfx/environmental/space_loop4.ogg",
+			"musicTrack": "/music/wizardabode.ogg",
+			"environmentStatusEffects": ["biomeairless"],
+			"worldEdgeForceRegions": "TopAndBottom",
+			"biome": "space"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/apexweaponsplatform",
+		"value": {
+			"primaryDungeon": "apexweaponsplatform",
+			"threatLevel": 1,
+			"gravity": 0,
+			"worldSize": [1300, 500],
+			"dungeonBaseHeight": 250,
+			"dungeonSurfaceHeight": 250,
+			"ambientLightLevel": [32, 32, 32],
+			"ambientNoises": "/sfx/environmental/space_loop4.ogg",
+			"musicTrack": "/music/lethfleet.ogg",
+			"environmentStatusEffects": ["biomeairless"],
+			"worldEdgeForceRegions": "TopAndBottom",
+			"biome": "space"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/japaneseruins",
+		"value": {
+			"primaryDungeon": "japaneseruins",
+			"threatLevel": 8,
+			"gravity": 80,
+			"worldSize": [3000, 3000],
+			"dungeonBaseHeight": 200,
+			"ambientLightLevel": [24, 24, 24],
+			"musicTrack": "/music/japaneseruins.ogg",
+			"biome": "forest",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/letheiafacility",
+		"value": {
+			"primaryDungeon": "letheiafacility",
+			"threatLevel": 8,
+			"gravity": 80,
+			"worldSize": [3000, 1000],
+			"dungeonBaseHeight": 500,
+			"dungeonSurfaceHeight": 500,
+			"ambientLightLevel": [230, 121, 49],
+			"musicTrack": "/music/wasteland.ogg",
+			"biome": "scorched",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/extrachallengelabs",
+		"value": {
+			"primaryDungeon": "extrachallengelabs",
+			"threatLevel": 1,
+			"gravity": 80,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 500,
+			"ambientLightLevel": [200, 200, 200],
+			"ambientNoises": "/sfx/environmental/space_loop4.ogg",
+			"musicTrack": "/music/command.ogg",
+			"environmentStatusEffects": ["dontstarve", "nofalldamage"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/penguinhighway",
+		"value": {
+			"primaryDungeon": "penguinhighway",
+			"threatLevel": 8,
+			"gravity": 80,
+			"worldSize": [4000, 2500],
+			"dungeonBaseHeight": 1500,
+			"dungeonSurfaceHeight": 1500,
+			"ambientLightLevel": [32, 32, 32],
+			"musicTrack": "/music/penguinhighway.ogg",
+			"biome": "earth",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/avianhydro",
+		"value": {
+			"primaryDungeon": "avianhydro",
+			"threatLevel": 8,
+			"gravity": 80,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 500,
+			"ambientLightLevel": [200, 200, 200],
+			"musicTrack": "/music/floodedcomplex.ogg",
+			"biome": "extraoceanfloormission",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/extrahome",
+		"value": {
+			"primaryDungeon": "extrahome",
+			"threatLevel": 1,
+			"gravity": 80,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 500,
+			"ambientLightLevel": [200, 200, 200],
+			"musicTrack": "/music/svetlana.ogg",
+			"biome": "extraskymission",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/ancienttemple",
+		"value": {
+			"primaryDungeon": "ancienttemple",
+			"threatLevel": 2,
+			"gravity": 80,
+			"worldSize": [1500, 1500],
+			"dungeonBaseHeight": 1000,
+			"ambientLightLevel": [200, 200, 200],
+			"musicTrack": "/music/desert-exploration2.ogg",
+			"biome": "desert",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/sunsetriders",
+		"value": {
+			"primaryDungeon": "sunsetriders",
+			"threatLevel": 3,
+			"gravity": 80,
+			"worldSize": [1500, 1500],
+			"dungeonBaseHeight": 1000,
+			"ambientLightLevel": [32, 32, 32],
+			"musicTrack": "/music/sunset_riders.ogg",
+			"biome": "savannah",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/snowcrash",
+		"value": {
+			"primaryDungeon": "snowcrash",
+			"threatLevel": 4,
+			"gravity": 80,
+			"worldSize": [1500, 1500],
+			"dungeonBaseHeight": 1000,
+			"ambientLightLevel": [200, 200, 200],
+			"musicTrack": "/music/arctic-battle3-loop.ogg",
+			"biome": "snow",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/forestoffae",
+		"value": {
+			"primaryDungeon": "forestoffae",
+			"threatLevel": 5,
+			"gravity": 80,
+			"worldSize": [500, 1500],
+			"dungeonBaseHeight": 500,
+			"ambientLightLevel": [200, 200, 200],
+			"musicTrack": "/music/triesteforest.ogg",
+			"biome": "forest",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/grandarena",
+		"value": {
+			"primaryDungeon": "grandarena",
+			"threatLevel": 5,
+			"gravity": 80,
+			"worldSize": [1000, 1000],
+			"dungeonBaseHeight": 500,
+			"ambientLightLevel": [200, 200, 200],
+			"musicTrack": "/music/empireupperhand.ogg",
+			"biome": "jungle",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/evernight",
+		"value": {
+			"primaryDungeon": "evernight",
+			"threatLevel": 5,
+			"gravity": 80,
+			"worldSize": [1500, 1000],
+			"dungeonBaseHeight": 500,
+			"ambientLightLevel": [32, 32, 32],
+			"musicTrack": "/music/everlightjungle.ogg",
+			"biome": "extraswampmission",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/volcanobase",
+		"value": {
+			"primaryDungeon": "volcanobase",
+			"threatLevel": 6,
+			"gravity": 80,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 1000,
+			"ambientLightLevel": [32, 32, 32],
+			"musicTrack": "/music/thetowerinvincible.ogg",
+			"biome": "volcanic",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/lethialabs",
+		"value": {
+			"primaryDungeon": "lethialabs",
+			"threatLevel": 6,
+			"gravity": 80,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 1500,
+			"ambientLightLevel": [32, 32, 32],
+			"musicTrack": "/music/lethialabs.ogg",
+			"biome": "lunarbase",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/skytemple",
+		"value": {
+			"primaryDungeon": "skytemple",
+			"threatLevel": 6,
+			"gravity": 80,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 500,
+			"ambientLightLevel": [200, 200, 200],
+			"musicTrack": "/music/temple.ogg",
+			"biome": "extraskymission",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/infiltration",
+		"value": {
+			"primaryDungeon": "infiltration",
+			"threatLevel": 6,
+			"gravity": 80,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 1000,
+			"ambientLightLevel": [32, 32, 32],
+			"musicTrack": "/music/infiltration.ogg",
+			"biome": "toxic",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/verdantruins",
+		"value": {
+			"primaryDungeon": "verdantruins",
+			"threatLevel": 2,
+			"gravity": 80,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 400,
+			"ambientLightLevel": [255, 230, 128],
+			"musicTrack": "/music/ruinedmonastery.ogg",
+			"biome": "forest",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/pavillion",
+		"value": {
+			"primaryDungeon": "pavillion",
+			"threatLevel": 3,
+			"gravity": 80,
+			"worldSize": [3000, 1000],
+			"dungeonBaseHeight": 200,
+			"ambientLightLevel": [200, 200, 200],
+			"musicTrack": "/music/chalkywoods.ogg",
+			"biome": "forest",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/magickaforest",
+		"value": {
+			"primaryDungeon": "magickaforest",
+			"threatLevel": 3,
+			"gravity": 80,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 400,
+			"ambientLightLevel": [200, 200, 200],
+			"musicTrack": "/music/magickaforest.ogg",
+			"biome": "extraalpinemission",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/alienjungle",
+		"value": {
+			"primaryDungeon": "alienjungle",
+			"threatLevel": 6,
+			"gravity": 80,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 1500,
+			"ambientLightLevel": [90, 188, 44],
+			"musicTrack": "/music/alienitem.ogg",
+			"biome": "extraalienjungle",
+			"environmentStatusEffects": ["dontstarve"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/fastfoodspace",
+		"value": {
+			"primaryDungeon": "fastfoodspace",
+			"threatLevel": 1,
+			"gravity": 0,
+			"worldSize": [1300, 500],
+			"dungeonBaseHeight": 250,
+			"dungeonSurfaceHeight": 250,
+			"ambientLightLevel": [32, 32, 32],
+			"ambientNoises": "/sfx/environmental/space_loop4.ogg",
+			"musicTrack": "/music/home-concept-loop.ogg",
+			"environmentStatusEffects": ["biomeairless"],
+			"worldEdgeForceRegions": "TopAndBottom",
+			"biome": "space"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/fuavianmission1t10",
+		"value": {
+			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew", "sulphuricweathernew4", "desertweathernewdeadly"],
+			"dungeonSurfaceHeight": 960,
+			"primaryDungeon": "avianmission1",
+			"biome": "sulphuricdark",
+			"threatLevel": 10,
+			"gravity": 80,
+			"dungeonBaseHeight": 1000,
+			"worldSize": [2000,2000],
+			"ambientLightLevel": [32, 32, 32],
+			"musicTrack": "/music/casiopeia.ogg"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/fueldershoggotht10",
+		"value": {
+			"primaryDungeon": "eldershoggoth",
+			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew2", "ffbiomecold4"],
+			"threatLevel": 10,
+			"gravity": 110,
+			"airless": true,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 1400,
+			"dungeonSurfaceHeight": 1209,
+			"ambientLightLevel": [15, 25, 10],
+			"weatherPool": [
+				[0.60, "freezestorm"],
+				[0.15, "freezestormlesser"],
+				[0.15, "cosmicblast"],
+				[0.10, "darkblast"]
+			],
+			"biome": "shoggothbiome"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/fufloranmission1t10",
+		"value": {
+			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew", "jungleweathernew", "ffbiomeheat3"],
+			"primaryDungeon": "floranmission1",
+			"biome": "arborealdark",
+			"threatLevel": 10,
+			"gravity": 80,
+			"dungeonBaseHeight": 1200,
+			"worldSize": [3000,2000],
+			"ambientLightLevel": [32, 32, 32],
+			"musicTrack": "/music/lava-exploration2.ogg"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/fuglitchmission1t10",
+		"value": {
+			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew", "ffbiomeelectric3", "radioactiveweathernew3", "aetherweathernew3"],
+			"dungeonSurfaceHeight": 1070,
+			"primaryDungeon": "glitchmission1",
+			"biome": "astral",
+			"threatLevel": 10,
+			"gravity": 80,
+			"dungeonBaseHeight": 1230,
+			"worldSize": [2000,2000],
+			"ambientLightLevel": [32, 32, 32],
+			"musicTrack": ""
+		}
+	},
+	{
+		"op": "add",
+		"path": "/fucavedungeont10",
+		"value": {
+			"environmentStatusEffects": ["superdarkstatmidUnblockable", "insanitynew"],
+			"dungeonSurfaceHeight": 1500,
+			"airless": false,
+			"biome": "mamapoptop",
+			"primaryDungeon": "cavedungeon",
+			"threatLevel": 10,
+			"gravity": 100,
+			"dungeonBaseHeight": 1400,
+			"worldSize": [2000,2000],
+			"ambientLightLevel": [25, 25, 25]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/fucultistmission1t10",
+		"value": {
+			"airless": true,
+			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew2"],
+			"dungeonSurfaceHeight": 810,
+			"worldEdgeForceRegions": "TopAndBottom",
+			"primaryDungeon": "cultistmission1",
+			"biome": "elderasteroid",
+			"threatLevel": 10,
+			"gravity": 80,
+			"dungeonBaseHeight": 1000,
+			"worldSize": [2500,2000],
+			"ambientLightLevel": [32, 32, 32],
+			"musicTrack": "/music/cybersphere_industrial.ogg"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/fupenguinmission1t10",
+		"value": {
+			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew", "ffbiomecold3"],
+			"dungeonSurfaceHeight": 810,
+			"primaryDungeon": "penguinmission1",
+			"biome": "arcticdark",
+			"threatLevel": 10,
+			"gravity": 80,
+			"dungeonBaseHeight": 1000,
+			"worldSize": [2000,2000],
+			"ambientLightLevel": [32, 32, 32],
+			"musicTrack": "/music/arctic-battle2-loop.ogg",
+			"weatherPool": [[1,"snow"]]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/fuprecursordungeon2t10",
+		"value": {
+			"dungeonSurfaceHeight": 1500,
+			"airless": true,
+			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew", "radioactiveweathernew3", "ffbiomeelectric3"],
+			"biome": "irradiatedunderground",
+			"primaryDungeon": "precursordungeon2",
+			"threatLevel": 10,
+			"gravity": 100,
+			"dungeonBaseHeight": 1400,
+			"worldSize": [2000,2000],
+			"ambientLightLevel": [25,10,25]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/fuarena1t10",
+		"value": {
+			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew3arena"],
+			"dungeonSurfaceHeight": 1115,
+			"primaryDungeon": "arena1",
+			"biome": "arborealdark",
+			"threatLevel": 10,
+			"gravity": 80,
+			"dungeonBaseHeight": 1200,
+			"ambientNoises": "/sfx/environmental/garden_day.ogg",
+			"worldSize": [2000,2000],
+			"ambientLightLevel": [200,200,200],
+			"musicTrack": "/music/i-was-the-sun.ogg"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/fuarena2t10",
+		"value": {
+			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew3arena"],
+			"dungeonSurfaceHeight": 1115,
+			"primaryDungeon": "arena2",
+			"biome": "arborealdark",
+			"threatLevel": 10,
+			"gravity": 80,
+			"dungeonBaseHeight": 1200,
+			"ambientNoises": "/sfx/environmental/garden_day.ogg",
+			"worldSize": [2000,2000],
+			"ambientLightLevel": [200,200,200],
+			"musicTrack": "/music/i-was-the-sun.ogg"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/fuarena3t10",
+		"value": {
+			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew3arena"],
+			"dungeonSurfaceHeight": 1115,
+			"primaryDungeon": "arena3",
+			"biome": "arborealdark",
+			"threatLevel": 10,
+			"gravity": 80,
+			"dungeonBaseHeight": 1200,
+			"ambientNoises": "/sfx/environmental/garden_day.ogg",
+			"worldSize": [2000,2000],
+			"ambientLightLevel": [200,200,200],
+			"musicTrack": "/music/i-was-the-sun.ogg"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/fuapexmission1t10",
+		"value": {
+			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew2", "biomepoison3", "jungleweathernew"],
+			"dungeonSurfaceHeight": 1050,
+			"primaryDungeon": "apexmission1",
+			"biome": "fungus",
+			"threatLevel": 10,
+			"gravity": 80,
+			"dungeonBaseHeight": 1230,
+			"worldSize": [2000,2000],
+			"ambientLightLevel": [32, 32, 32],
+			"musicTrack": "/music/arctic-battle1-loop.ogg",
+			"weatherPool": [[1,"storm"]]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/fuhylotlmission1t10",
+		"value": {
+			"primaryDungeon": "hylotlmission1",
+			"threatLevel": 10,
+			"gravity": 80,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 1400,
+			"dungeonSurfaceHeight": 1209,
+			"biome": "tidewater",
+			"ambientLightLevel": [32, 32, 32],
+			"musicTrack": "/music/the-deep.ogg",
+			"environmentStatusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew", "ffbiomecold3"]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/fulunarbaset10",
+		"value": {
+			"environmentStatusEffects" : ["superdarkstatsuperlargeUnblockable", "insanitynew"],
+			"airless" : true,
+			"primaryDungeon" : "lunarbase",
+			"threatLevel" : 3,
+			"biome" : "lunarbase",
+			"gravity" : 40,
+			"dungeonBaseHeight" : 500,
+			"worldSize" : [850, 950],
+			"ambientLightLevel" : [32, 32, 32],
+			"musicTrack" : "/sfx/environmental/moon_surface.ogg"
+		}
+	},
+	{
+		"op": "add",
+		"path": "/fu_techtrials_emergencybounce",
+		"value": {
+			"primaryDungeon": "fu_techtrials_emergencybounce",
+			"threatLevel": 1,
+			"gravity": 80,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 500,
+			"ambientLightLevel": [200, 200, 200],
+			"musicTrack": "/music/command.ogg",
+			"overrideTech" : ["emergencybounce"],
+			"environmentStatusEffects": ["dontstarve", "extraenergising", "maxenergyboost145"]
+		}
+	}
 ]

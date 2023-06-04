@@ -1,0 +1,25 @@
+{
+  "itemName" : "pandorasboxcaketopcake",
+  "rarity" : "Common",
+  "price" : 1,
+  "category" : "preparedFood",
+  "inventoryIcon" : "pandorasboxcaketopcake.png",
+  "description" : "A delicious cake-like pastery produced by Caketops.",
+  "shortdescription" : "Caketop Cake",
+  "effects" : [ [
+    {
+        "effect" : "maxenergyscalingboostfood",
+        "duration" : 40
+    }
+  ] ],
+  "foodValue" : 30,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [
+    "wellfed"
+  ]//,
+  //"learnBlueprintsOnPickup" : [ "carrotcake", "coffeecake", "chocolatecake" ]
+}

@@ -1,0 +1,119 @@
+{
+  "itemName" : "poopstaff",
+  "price" : 1440,
+  "maxStack" : 1,
+  "level" : 5,
+  "rarity" : "Legendary",
+  "description" : "Its composition is truly repulsive.",
+  "shortdescription" : "Excremental Staff",
+  "tooltipKind" : "base",
+  "category" : "staff",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","staff","upgradeableWeapon","poop"],
+
+  "animation" : "/items/active/weapons/staff/poopstaff/poopstaff.animation",
+  "animationParts" : {
+    "staff" : "poopstaff.png",
+    "stone" : "stone.png",
+    "chargeEffect" : "staffglow.png"
+  },
+  "animationCustom" : {
+    "lights" : {
+      "glow" : {
+        "color" : [185, 24, 185]
+      }
+    },
+    "particleEmitters" : {
+      "shadowcharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 10,
+        "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
+        "particles" : [
+          {"particle" : "shadowsmoke"}
+        ]
+      }
+    },
+
+    "sounds" : {
+      "shadowactivate" : ["/sfx/melee/staff_aura_activate.ogg"]
+    }
+  },
+
+  "inventoryIcon" : "poopstaff.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 1.1,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "duration" : 0.5,
+      "armRotation" : -10,
+      "weaponRotation" : -50,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "cooldown" : {
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "elementalType" : "shadow",
+
+"primaryAbilityType":"elementorb",
+"primaryAbility":{
+  "energyCost":100,
+  "maxCastRange":50,
+  "projectileType":"pooporb"
+},
+
+  "altAbilityType" : "elementorb",
+  "altAbility" : {
+    "energyCost":70,
+    "maxCastRange":50,
+    "projectileType":"poopbreathstaff",
+    "projectileParameters" : { "power" : 3,"baseDamage" : 3}
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters" : {
+    "shortdescription" : "The Poopmaster^yellow;^reset;",
+    "controlMovement":{
+      "maxSpeed":35,
+      "controlForce":1100
+    }
+  }
+}

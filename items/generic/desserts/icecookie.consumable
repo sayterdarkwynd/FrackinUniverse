@@ -1,0 +1,28 @@
+{
+  "itemName": "icecookie",
+  "rarity": "Rare",
+  "price": 255,
+  "category": "preparedFood",
+  "inventoryIcon": "icecookie.png",
+  "description": "These cookies are as solid and as cold as ice. \n^pink;Moderate Cold^gray;, ^pink;Liquid Nitrogen ^cyan;Immunity ^gray;(^white;5m^gray;)^reset;",
+  "shortdescription": "Frozen Cookie",
+  "effects": [
+    [
+      {
+        "effect": "coldimmunity",
+        "duration": 300
+      },
+      {
+        "effect": "liquidnitrogenimmunity",
+        "duration": 300
+      }
+    ]
+  ],
+  "foodValue": 55,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1.0,
+  "blockingEffects": ["wellfed"]
+}

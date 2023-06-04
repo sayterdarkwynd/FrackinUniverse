@@ -1,23 +1,28 @@
 {
   "itemName" : "neonhoneystraw",
   "rarity" : "Common",
-  "category" : "food",
   "price" : 60,
+  "category" : "food",
   "inventoryIcon" : "neonhoneystraw.png",
-  "description" : "A glowing honey straw. What flavor is it again?",
-  "shortdescription" : "Honey Straw Neon",
- 
+  "description" : "A glowing honey straw. What flavor is it again?\n^green;Heal ^white;160 ^gray;(^white;2m^gray;)^reset; \n^green;Type: Fruit Dessert^reset;",
+  "shortdescription" : "Neon Honey Straw",
   "effects" : [ [
     {
         "effect" : "honeyheal2",
-        "duration" :120  },
+        "duration" : 120
+    },
     {
         "effect" : "fedhoney",
         "duration" : 120
+    },
+    {
+        "effect" : "fruit_dessert"
     }
   ] ],
-  "blockingEffects" : [
-     "fedhoney"
-  ]
-
+  "foodValue" : 7,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 5,
+  "blockingEffects" : [ "wellfed", "fedhoney" ]
 }

@@ -41,7 +41,7 @@
       "part" : "foreground",
       "partAnchor" : "drivingSeatPosition",
       "orientation" : "sit",
-      "statusEffects" : ["highprotection", "lowgrav"],
+      "statusEffects" : ["maxprotection" , "airimmunity"],
       "emote" : "happy",
       "dance" : "warmhands"
     },
@@ -49,24 +49,35 @@
       "part" : "foreground",
       "partAnchor" : "passengerSeatPosition",
       "orientation" : "sit",
-      "statusEffects" : ["maxprotection" , "lowgrav"],
+      "statusEffects" : ["maxprotection" , "airimmunity" ],
       "emote" : "neutral",
       "dance" : "typing"
     }
   },
+
+
+
+
+  "AimLimit" : 60,
+  "shuttleFireCycle" : 0.25,
+  "shuttleProjectile" : "gausspistolshotreaver",
+  "shuttleProjectileConfig" : { "power" : 10 },
+
+
 
   "levelApproachFactor" : 0.01,
   "angleApproachFactor" : 0.025,
   "maxGroundSearchDistance" : 10,
   "maxAngle" : 60,
   "hoverTargetDistance" : 2,
-  "hoverVelocityFactor" : 22,
+  "hoverVelocityFactor" : 12,
   "hoverControlForce" : 950,
-  "targetHorizontalVelocity" : 80,
+  "targetHorizontalVelocity" : 30,
+  "targetVerticalVelocity" : 30,
   "horizontalControlForce" : 320,
 
   "nearGroundDistance" : 12,
-  "jumpVelocity" : 40,
+  "jumpVelocity" : 20,
   "jumpTimeout" : 0.01,
 
   //Health and damage
@@ -104,7 +115,7 @@
   "fireParticleHealthThreshold" : 0.25,
   "fireRateAtZeroHealth" : 120,
 
-  "onFireHealthThreshold" : 0.125,
+  "onFireHealthThreshold" : 0.225,
   "damagePerSecondWhenOnFire" : 1.0,
   "explosionConfig" : "/projectiles/explosions/regularexplosion2/regularexplosionknockback.config",
   "explosionDamage" : 10,
@@ -150,7 +161,7 @@
   ],
 
   "movementSettings" : {
-    "collisionPoly" : [[-4.0, 0.5], [-2.0, -1.5], [2.0, -1.5], [4.0, 0.5]],
+    "collisionPoly" : [[-4.0, 4.5], [-4.0, -4.5], [4.0, -4.5], [4.0, 4.5]],
     "mass" : 4,
     "airFriction" : 2,
     "ignorePlatformCollision" : true,
@@ -159,9 +170,9 @@
   },
 
   "occupiedMovementSettings" : {
-    "collisionPoly" : [[-4.0, 0.5], [-2.0, -1.5], [2.0, -1.5], [4.0, 0.5]],
+    "collisionPoly" : [[-6.7, 0.7], [-6.7, -2.7], [6.7, -2.7], [6.7, 0.7]],
     "mass" : 4,
-    "gravityEnabled" : true,
+    "gravityEnabled" : false,
     "collisionEnabled" : true
   }
 

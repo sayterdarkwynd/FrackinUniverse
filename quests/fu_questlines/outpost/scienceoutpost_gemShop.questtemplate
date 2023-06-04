@@ -1,0 +1,33 @@
+{
+	"id" : "scienceoutpost_gemShop",
+	"prerequisites" : [ "1beestation" ],
+	"title" : "Crystalline Perfection",
+	"text" : "Good day, being of carbon and flesh. I wonder if you might give aid to this Eld'uukhar? I seek the glorious aspect of a ^orange;Crystalline Trophy^reset;. I've heard that they can be found in ^orange;Ancient Temples^reset;. If you find one, I would reward you handsomely for your efforts.",
+	"completionText" : "Ah, most exceptional, fleshling. My gratitude showers upon you, and the glory of the Shards will shine on your soul forevermore.",
+	"moneyRange" : [0, 0],
+	"rewards" : [ [ [ "ultrastim", 10 ] ] ],
+	"speaker" : "questGiver",
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
+
+		"requireTurnIn" : true,
+
+		"turnInDescription" : "Bring a ^orange;Crystalline Trophy^reset; to the ^green;Gem Shop^reset; at the ^orange;Science Outpost^reset;",
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "temple_trophy",
+				"count" : 1,
+				"consume" : true
+			}
+		]
+	}
+}

@@ -1,0 +1,29 @@
+{
+  "projectileName" : "scb-watertrap-shot",
+  "image" : "scb-watertrap-shot.png",
+  "physics" : "grenade",
+  "animationCycle" : 1,
+  "frameNumber" : 5,
+  "timeToLive" : 1.0,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/blocks/water_getout.ogg" ]
+    },
+    {
+      "action" : "projectile",
+      "type" : "scb-watersplash",
+      "fuzzAngle" : 3,
+      "inheritDamageFactor" : 1,
+      "inheritSpeedFactor" : 0.9,
+      "angleAdjust" : -5
+    }
+  ],
+  "power" : 0.0,
+  "speed" : 50,
+  //  "emitters" : [ "scb-waterslowdrip" ],
+  "damageKind" : "default"
+
+}

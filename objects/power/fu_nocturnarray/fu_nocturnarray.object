@@ -1,0 +1,38 @@
+{
+  "objectName" : "fu_nocturnarray",
+  "rarity" : "rare",
+  "colonyTags" : [ "science","macabre","madness" ],
+  "category" : "wire",
+  "price" : 300,
+  "description" : "Generates energy out of darkness. Can potentially generate ^orange;10W^reset;.",
+  "shortdescription" : "^cyan;Nocturn Array^reset;",
+  "race" : "generic",
+  "printable" : false,
+  "tooltipKind" : "base",
+
+  "inventoryIcon" : "fu_nocturnarray_icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_nocturnarray_base.png",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "fu_nocturnarray.animation",
+  "animationParts" : {
+    "meter" : "fu_nocturnarray_meter.png",
+    "base" : "fu_nocturnarray_base.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/scripts/fupower.lua","/objects/power/isn_nocturnpanel.lua" ],
+  "scriptDelta" : 60,
+
+  "outputNodes" : [ [2, 1] ],
+
+  "isn_powerSupplier" : true,
+  "powertype" : "output",
+  "powerLevel" : 1
+}

@@ -1,0 +1,79 @@
+{
+	"itemName": "fuatropusaxe",
+	"price": 740,
+	"maxStack": 1,
+	"rarity": "rare",
+	"description": "A revolting bio-weapon.\n^cyan;Plague Bearing^reset;",
+	"shortdescription": "Fleshweave Hatchet",
+	"tooltipKind": "sword2",
+	"category": "axe",
+	"twoHanded": false,
+	"itemTags": ["weapon", "melee", "axe", "atropus", "bioweapon", "upgradeableWeapon"],
+	"level": 5,
+	"inventoryIcon": "fuatropusaxe.png",
+	//"collectablesOnPickup" : { "fu_weaponaxe" : "fuatropusaxe" },
+	"animation": "axe.animation",
+	"animationParts": {
+		"blade": "fuatropusaxe.png",
+		"handle": ""
+	},
+	"animationCustom": {
+		"animatedParts": {
+			"parts": {
+				"swoosh": {
+					"properties": {
+						"offset": [-1.0, 1.75]
+					}
+				}
+			}
+		},
+		"sounds": {
+			"fire": ["/sfx/melee/swing_axe.ogg"]
+		}
+	},
+
+	"scripts": ["/items/active/weapons/melee/meleeweapon.lua"],
+
+	"elementalType": "bioweapon",
+
+	"aimOffset": -1.0,
+
+	"primaryAbilityType": "axecleave",
+	"primaryAbility": {
+		"fireTime": 0.67,
+		"baseDps": 10,
+		"damageConfig": {
+			"knockback": 12,
+			"statusEffects": ["fuwanderingplague"],
+			"damageSourceKind": "bioweaponaxe"
+		},
+		"stances": {
+			"idle": {
+				"weaponOffset": [0.25, 2.5]
+			},
+			"windup": {
+				"duration": 0.5,
+				"weaponOffset": [0.25, 2.5],
+
+				"minWindup": 0.5,
+
+				"weaponAngle": [
+					[0.7, "linear", -20, 0],
+					[0.85, "linear", 0, 50],
+					[0.925, "sin", 50, 45],
+					[1.0, "cos", 50, 45]
+				],
+
+				"armAngle": [
+					[1.0, "sin", -90, 50]
+				]
+			},
+			"fire": {
+				"weaponOffset": [0.25, 1.5]
+			}
+		}
+	},
+	"critChance": 2,
+	"critBonus": 6,
+	"builder": "/items/buildscripts/buildunrandweapon.lua"
+}

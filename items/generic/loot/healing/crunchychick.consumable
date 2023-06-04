@@ -1,12 +1,17 @@
 {
-  "itemName" : "crunchychick",
-  "rarity" : "uncommon",
-  "category" : "food",
-  "price" : 20,
-  "inventoryIcon" : "crunchychick.png",
-  "description" : "Floran delicacy. A live baby chicken.",
-  "shortdescription" : "Crunchy Chick",
-  "effects" : [ [
-     "regeneration1"
-    ] ]
+  "itemName": "crunchychick",
+  "inventoryIcon": "crunchychick.png",
+  "category": "food",
+  "rarity": "uncommon",
+  "price": 2000,
+  "foodValue": 20,
+
+  "description": "Floran delicacy. A live baby chicken.\n^green;Heals ^white;5% ^green;HP ^gray;(^white;5s^gray;)^reset;\n^red;Type: Raw Meat^reset;",
+  "shortdescription": "Crunchy Chick",
+  "builder": "/items/buildscripts/buildfood.lua",
+
+  "effects": [ ["regeneration1", "meat_raw"] ],
+  "learnBlueprintsOnPickup": [ "cockblock" ],
+  //"learnBlueprintsOnPickup": [ "crunchychickpie","cockblock" ]
+  "blockingEffects" : [ "wellfed" ]
 }

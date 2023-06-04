@@ -1,0 +1,85 @@
+{
+  "itemName" : "profishingrod",
+  "level" : 1,
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A pro-level rod with long line length and fast reeling time. Also durable.",
+  "shortdescription" : "Pro Fishing Rod",
+  "tooltipKind" : "fishingrod",
+  "category" : "fishingRod",
+  "twoHanded" : true,
+  "itemTags" : [],
+  "inventoryIcon" : "profishingrod.png:light",
+
+  "animation" : "fishingrod.animation",
+  "animationParts" : {
+    "fishingrod" : "profishingrod.png"
+  },
+  "animationScripts" : ["/items/active/effects/renderrope.lua"],
+
+  "ropeWidth" : 0.5,
+  "ropeColor" : [200, 20, 250, 100],
+  "ropeFlashColor" : [0, 255, 0, 200],
+
+  "scripts" : ["fishingrod.lua"],
+
+  "corrodeLiquidIds" : [],
+  "corrodeParticle" : "poisonswoosh2",
+
+  "burnLiquidIds" : [8],
+  "burnParticle" : "fireswoosh1",
+
+  "usesFishingUpgrades" : true,
+
+  "lureType" : "basic",
+  "lureName" : "Basic Lure",
+  "lureIcon" : "/items/augments/fishing/lurebasic.png",
+  "lureProjectile" : "fishinglure",
+
+  "reelType" : "basic",
+  "reelName" : "Basic Reel",
+  "reelIcon" : "/items/augments/fishing/reelbasic.png",
+  "reelParameters" : {
+    "reelOutLength" : 100,
+    "lineBreakMargin" : 16,
+    "reelSpeed" : 18,
+    "lineBreakTime" : 1.2
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -80,
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "armRotation" : -80,
+      "twoHanded" : true,
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cast" : {
+      "armRotation" : -40,
+      "twoHanded" : true,
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "reel" : {
+      "armRotation" : -35,
+      "twoHanded" : true,
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "catch" : {
+      "duration" : 0.25,
+      "transition" : "idle",
+      "armRotation" : -30,
+      "twoHanded" : true,
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildfishingrod.lua"
+}

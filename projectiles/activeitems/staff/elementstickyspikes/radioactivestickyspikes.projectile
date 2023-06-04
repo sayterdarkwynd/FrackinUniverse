@@ -1,0 +1,92 @@
+{
+  "projectileName" : "radioactivestickyspikes",
+  "physics" : "wallsticky",
+  "timeToLive" : 5,
+  "image" : "radioactivespikes.png",
+  "animationCycle" : 0.6,
+  "animationLoops" : false,
+  "lightColor" : [150, 150, 0],
+  "frameNumber" : 6,
+  "actionOnReap" : [
+    {
+      "action" : "loop",
+      "count" : 4,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "slimeshard"
+        }
+      ]
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/poisonstickyspikes_break1.ogg", "/sfx/projectiles/poisonstickyspikes_break2.ogg", "/sfx/projectiles/poisonstickyspikes_break3.ogg" ]
+    }
+  ],
+    "periodicActions" : [
+    {
+      "time" : 0.3,
+      "action" : "loop",
+      "count" : 2,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/radioactivefx/radioactivefx.animation",
+            "initialVelocity" : [0.0, 7.0],
+            "finalVelocity" : [0.0, 3.0],
+            "approach" : [0.3, 60],
+            "timeToLive" : 0.7,
+            "layer" : "back",
+            "size" : 0.7,
+            "collidesForeground" : true,
+            "variance" : {
+            "position" : [0.5, 0.5],
+            "size" : 0.2,
+            "initialVelocity" : [5, 3],
+            "finalVelocity" : [0, 0],
+            "rotation" : 180,
+            "angularVelocity" : 180
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/statuseffects/radiationburn2/radiationburn2.animation",
+            "initialVelocity" : [0.0, 7.0],
+            "finalVelocity" : [0.0, 3.0],
+            "approach" : [0.3, 60],
+            "timeToLive" : 0.7,
+            "layer" : "back",
+            "size" : 0.7,
+            "collidesForeground" : true,
+            "variance" : {
+            "position" : [0.5, 0.5],
+            "size" : 0.2,
+            "initialVelocity" : [5, 3],
+            "finalVelocity" : [0, 0],
+            "rotation" : 180,
+            "angularVelocity" : 180
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "speed" : 0,
+  "power" : 30,
+  "damageKind" : "radioactivebarrier",
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "damageRepeatTimeout" : 0.5,
+  "statusEffects" : [ "radiationburn" ],
+
+  "fullbright" : true,
+  "emitters" : ["radioactiveslowdrip"],
+
+  "bounces" : -1,
+  "piercing" : true,
+  "persistentAudio" : "/sfx/projectiles/poisonstickyspikes_loop.ogg"
+}

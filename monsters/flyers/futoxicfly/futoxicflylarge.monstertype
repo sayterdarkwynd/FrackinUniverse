@@ -1,0 +1,197 @@
+{
+  "type" : "futoxicflylarge",
+  "shortdescription" : "Large Toxic Fly",
+  "description" : "You do have to wonder how it grew to that size.",
+
+  "categories" : [ "futoxicfly" ],
+  "parts" : [ "body", "head" ],
+
+  "animation" : "futoxicfly.animation",
+  "reversed" : true,
+
+  "dropPools" : [ {
+  "default" : "toxicflyLoot",
+    "bow" : "huntingchitin",
+    "firebow" : "huntingchitin",
+    "icebow" : "huntingchitin",
+    "poisonbow" : "huntingchitin",
+    "electricbow" : "huntingchitin",
+    "cosmicbow" : "huntingchitin",
+    "radioactivebow" : "huntingchitin",
+    "shadowbow" : "huntingchitin"
+  } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {"name":"approach-swarm",
+          "parameters":{ "usePathfinding": true }
+        }
+      ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly"
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {"name":"approach-fly", "parameters":{"usePathfinding":true}}
+      ],
+
+      "wanderActions" : [
+	{
+	"name":"wander-fly",
+	"cooldown":[5,20],
+	"parameters":{
+		"wanderTime":[10,40],
+		"groundDistance":20,
+		"ceilingDistance":10,
+		"xVelocity":8,
+		"yVelocity":12
+	        }
+	},
+
+	{
+	"name":"land-fly",
+	"parameters":{
+	  "flySpeed":8,
+	  "flyControlForce":25,
+	  "landCheckDistance":40,
+	  "idleTime":40
+	  }
+	}
+      ],
+
+      "concurrentActions" : [ ],
+
+      "concurrentHostileActions" : [
+	{
+	"name":"action-spawncompanions",
+	"parameters":{
+	  "spawnCooldown":0.2,
+	  "monsterType":"futoxicfly",
+	  "maxCount":5,
+	  "monsterParameters":{"level":[1]}
+	  }
+	}
+      ]
+    },
+
+
+    "metaBoundBox" : [-1.625, -1.25, 1.875, 1.625],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "gravityEnabled" : false,
+      "collisionPoly" : [ [-1.625, -1.25], [1.875, -1.25], [1.875, 1.625], [-1.0, 1.625] ],
+
+      "mass" : 0.8,
+      "flySpeed" : 10,
+      "airFriction" : 0.25,
+      "airForce" : 15.0
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathPoof",
+
+    "touchDamage" : {
+      "poly" : [ [-1.625, -1.25], [1.875, -1.25], [1.875, 1.625], [-1.0, 1.625] ],
+      "damage" : 15,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ "weakpoison" ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 75
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "futoxicflylarge" }
+  }
+}

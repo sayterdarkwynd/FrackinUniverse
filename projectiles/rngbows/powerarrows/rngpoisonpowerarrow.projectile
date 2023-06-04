@@ -1,0 +1,46 @@
+{
+  "projectileName" : "rngpoisonpowerarrow",
+  "physics" : "nebsrngarrow",
+  "bounces" : 0,
+  "image" : "rngpoisonpowerarrow.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "emitters" : [ "poisondrip", "poisonplasma" ],
+  "power" : 20,
+  "fullbright" : true,
+  "knockback" : 10,
+  "knockbackDirectional" : true,
+  "piercing" : false,
+  "timeToLive" : 30,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+    },
+    {
+      "action": "projectile",
+      "type": "largepoisoncloud",
+      "time": 0.25,
+      "angleAdjust" : 0,
+      "inheritDamageFactor" : 0.4,
+      "inheritSpeedFactor" : 0.0
+    }
+  ],
+  "periodicActions": [
+    {
+      "action": "projectile",
+      "type": "smallpoisoncloud",
+      "time": 0.05,
+	  "repeat" : true,
+      "angleAdjust" : 0,
+      "inheritDamageFactor" : 0.1,
+      "inheritSpeedFactor" : 0.3
+    }
+  ],
+  "statusEffects" : [
+    "weakpoison"
+  ],
+  "damageKind" : "poisonbow",
+  "hydrophobic" : false
+}

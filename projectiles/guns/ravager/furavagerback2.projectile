@@ -1,0 +1,27 @@
+{
+  "projectileName" : "furavagerback2",
+  "image" : "fusplitravager2.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "timeToLive" : 0.2,
+  "speed" :50,
+  "fullbright" : true,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "power" : 1,
+  "lightColor" : [0, 222, 222],
+  "piercing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "furavagerrepeat2",
+      "inheritDamageFactor" : 1,
+      "angleAdjust" : 180
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/paintexplosionpurple/paintexplosionpurple.config"
+    }
+  ],
+  "damageKind" : "shadowbow"
+}

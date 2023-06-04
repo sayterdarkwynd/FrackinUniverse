@@ -10,13 +10,13 @@
   "actionOnReap" : [ ],
   "statusEffects" : [ ],
   "periodicActions" : [
-  
+
       {
       "time" : 0.08,
-      "loop" : true,      
+      "loop" : true,
         "action" : "config",
         "file" : "/projectiles/explosions/teslaboom/teslaboomsmall2.config"
-    },  
+    },
     {
       "time" : 0.1,
       "loop" : true,
@@ -31,10 +31,20 @@
   "damageKind" : "electric",
   "physics" : "laser",
   "bounces" : -1,
-  "piercing" : true,
+  "piercing" : false,
   "timeToLive" : 5,
   "emitters" : [ "electricplasma" ],
   "persistentAudio" : "/sfx/melee/spear_twirl_loop.ogg",
 
-  "scripts" : [ "boomerangprojectile.lua" ]
+  "scripts" : [ "boomerangprojectile.lua" ],
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 5,
+      "innerRadius" : 0,
+      "targetRadialVelocity" : -50,
+      "controlForce" : 1500,
+      "categoryWhitelist" : ["itemdrop"]
+    }
+  }
 }

@@ -1,0 +1,37 @@
+{
+  "itemName" : "wavyslimesword",
+  "price" : 500,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "A wobbly-looking sword made of slime.",
+  "shortdescription" : "Slime Rapier",
+  "tooltipKind" : "sword2",
+//  "learnBlueprintsOnPickup" : [ "wavyslimesword","wavyslimesword2" ],
+  "category" : "Rapier",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","rapier","slime", "bioweapon","upgradeableWeapon"],
+
+  "inventoryIcon" : "wavyslimesword.png",
+
+  "animation" : "/items/active/weapons/melee/rapier/piercecombo.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "wavyslimesword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "piercecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.42,
+    "baseDps" : 5.7
+  },
+  "critChance" : 1,
+  "critBonus" : 2,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

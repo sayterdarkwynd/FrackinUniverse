@@ -1,0 +1,26 @@
+{
+  "itemName": "slew",
+  "rarity": "common",
+  "price": 2,
+  "category": "preparedFood",
+  "inventoryIcon": "slew.png",
+  "description": "A food that carnivores just love. Not for sapient ingestion. You'll get sick.\n^red;-^white;5% ^red;HP^gray;, ^red;Poisoned ^gray;(^white;1m^gray;)^reset;",
+  "shortdescription": "Carnivore Slew",
+  //"learnBlueprintsOnPickup": ["cattlefeed2", "slew", "slew2"],
+    "effects" : [ [
+    {
+        "effect" : "negativehealth5",
+        "duration" : 60
+    },
+    {
+        "effect" : "cattlepoison",
+        "duration" : 60
+    }
+  ] ],
+  "foodValue": 20,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+
+  "maxStack": 1000,
+  "blockingEffects": ["wellfed"]
+}

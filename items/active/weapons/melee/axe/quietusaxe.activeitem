@@ -5,13 +5,13 @@
   "rarity" : "rare",
   "description" : "Swift and sure, this sucker will keep you alive and well.",
   "shortdescription" : "Quietus Axe",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "axe",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","axe"],
-"level" : 5,
+  "itemTags" : ["weapon","melee","axe","quietus", "upgradeableWeapon"],
+  "level" : 4,
   "inventoryIcon" : "quietusaxe.png",
-
+  //"collectablesOnPickup" : { "fu_weaponaxe" : "quietusaxe" },
   "animation" : "axe.animation",
   "animationParts" : {
     "blade" : "quietusaxe.png",
@@ -34,10 +34,10 @@
 
   "primaryAbilityType" : "axecleave",
   "primaryAbility" : {
-    "fireTime" : 0.6,
+    "fireTime" : 0.5,
     "baseDps" : 11,
     "damageConfig" : {
-      "damageSourceKind" : "fireaxe",
+      "damageSourceKind" : "poisonaxe",
       "knockback" : 10
     },
     "stances" : {
@@ -66,6 +66,7 @@
       }
     }
   },
-
+  "critChance" : 2,
+  "critBonus" : 9,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

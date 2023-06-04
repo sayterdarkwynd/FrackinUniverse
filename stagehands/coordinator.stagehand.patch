@@ -1,0 +1,7877 @@
+[
+// note that maxRange does -absolutely nothing- as far as scripts are concerned and can be ignored. Assume forceMoveRange = max range instead
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/spiderdroidbeam",
+    "value": {
+      "minRange": 1,
+      "maxRange": 32,
+      "forceMoveRange": 60
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/spiderdroidblast",
+    "value": {
+      "minRange": 6,
+      "maxRange": 52,
+      "forceMoveRange": 60
+    }
+  },
+
+  {
+    "op": "replace",
+    "path": "/npcCombat/rangedWeaponRanges/default/forceMoveRange",
+    "value": 50
+  },
+
+  {
+    "op": "replace",
+    "path": "/npcCombat/rangedWeaponRanges/npcassaultrifle",
+    "value": {
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/npcCombat/rangedWeaponRanges/npcpistol",
+    "value": {
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/npcCombat/rangedWeaponRanges/npcmachinepistol",
+    "value": {
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/npcCombat/rangedWeaponRanges/npcshotgun",
+    "value": {
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/npcCombat/rangedWeaponRanges/npcsniperrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange" : 80
+    }
+  },
+
+  {
+    "op": "replace",
+    "path": "/npcCombat/rangedWeaponRanges/npcbow/forceMoveRange",
+    "value": 45
+  },
+
+
+  // ............................
+  // Frackin Weapon editions.
+  // This is not an ideal solution by any means, but it'll suffice untill we come up with a tag-based alternative system. Once we do that, we can get rid of this whole section.
+  // ............................
+
+
+  // Frackin RaNGen Range Weapons
+
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/commonassaultrifle",
+    "value": {
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/uncommonassaultrifle",
+    "value": {
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/rareassaultrifle",
+    "value": {
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcbattlerifle",
+    "value": {
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonbattlerifle",
+    "value": {
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonbattlerifle",
+    "value": {
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_rarebattlerifle",
+    "value": {
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/epicbattlerifle",
+    "value": {
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcsaw",
+    "value": {
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonsaw",
+    "value": {
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonsaw",
+    "value": {
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_raresaw",
+    "value": {
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/npcdeadbeatassaultrifle",
+    "value": {
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/npcfloranassaultrifle",
+    "value": {
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/floranneedler",
+    "value": {
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/commonpistol",
+    "value": {
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/uncommonpistol",
+    "value": {
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/rarepistol",
+    "value": {
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcbeampistol",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonbeampistol",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonbeampistol",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_rarebeampistol",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcrevolver",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonrevolver",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonrevolver",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_rarerevolver",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/commonmachinepistol",
+    "value": {
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/uncommonmachinepistol",
+    "value": {
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/raremachinepistol",
+    "value": {
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcsubmachinegun",
+    "value": {
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonsubmachinegun",
+    "value": {
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonsubmachinegun",
+    "value": {
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/commonshotgun",
+    "value": {
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/uncommonshotgun",
+    "value": {
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/rareshotgun",
+    "value": {
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcautoshotgun",
+    "value": {
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonautoshotgun",
+    "value": {
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonautoshotgun",
+    "value": {
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_rareautoshotgun",
+    "value": {
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcflakcannon",
+    "value": {
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonflakcannon",
+    "value": {
+      "minRange": 8,
+      "maxRange": 16,
+      "forceMoveRange" : 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonflakcannon",
+    "value": {
+      "minRange": 8,
+      "maxRange": 16,
+      "forceMoveRange" : 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_rareflakcannon",
+    "value": {
+      "minRange": 8,
+      "maxRange": 16,
+      "forceMoveRange" : 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcsawedoffshotgun",
+    "value": {
+      "minRange": 2,
+      "maxRange": 16,
+      "forceMoveRange" : 18
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/commonsniperrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 150
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/uncommonsniperrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 150
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/raresniperrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 150
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcbeamrifle",
+    "value": {
+      "minRange": 36,
+      "maxRange": 64,
+      "forceMoveRange": 80
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonbeamrifle",
+    "value": {
+      "minRange": 36,
+      "maxRange": 64,
+      "forceMoveRange": 80
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonbeamrifle",
+    "value": {
+      "minRange": 36,
+      "maxRange": 64,
+      "forceMoveRange": 80
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_rarebeamrifle",
+    "value": {
+      "minRange": 36,
+      "maxRange": 64,
+      "forceMoveRange": 80
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcantimaterialrifle",
+    "value": {
+      "minRange": 36,
+      "maxRange": 90,
+      "forceMoveRange": 150
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonantimaterialrifle",
+    "value": {
+      "minRange": 36,
+      "maxRange": 90,
+      "forceMoveRange": 150
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonantimaterialrifle",
+    "value": {
+      "minRange": 36,
+      "maxRange": 90,
+      "forceMoveRange": 150
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_rareantimaterialrifle",
+    "value": {
+      "minRange": 36,
+      "maxRange": 90,
+      "forceMoveRange": 150
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/npcrocketlauncher",
+    "value": {
+      "minRange": 36,
+      "maxRange": 90,
+      "forceMoveRange": 150
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/commonrocketlauncher",
+    "value": {
+      "minRange": 36,
+      "maxRange": 90,
+      "forceMoveRange": 150
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/uncommonrocketlauncher",
+    "value": {
+      "minRange": 36,
+      "maxRange": 90,
+      "forceMoveRange": 150
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/rarerocketlauncher",
+    "value": {
+      "minRange": 36,
+      "maxRange": 90,
+      "forceMoveRange": 150
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcminirocketlauncher",
+    "value": {
+      "minRange": 48,
+      "maxRange": 72,
+      "forceMoveRange": 80
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonminirocketlauncher",
+    "value": {
+      "minRange": 48,
+      "maxRange": 72,
+      "forceMoveRange": 80
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonminirocketlauncher",
+    "value": {
+      "minRange": 48,
+      "maxRange": 72,
+      "forceMoveRange": 80
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_rareminirocketlauncher",
+    "value": {
+      "minRange": 48,
+      "maxRange": 72,
+      "forceMoveRange": 80
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcmultigrenadelauncher",
+    "value": {
+      "minRange": 24,
+      "maxRange": 36,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonmultigrenadelauncher",
+    "value": {
+      "minRange": 24,
+      "maxRange": 64,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonmultigrenadelauncher",
+    "value": {
+      "minRange": 24,
+      "maxRange": 64,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_raremultigrenadelauncher",
+    "value": {
+      "minRange": 24,
+      "maxRange": 64,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/commongrenadelauncher",
+    "value": {
+      "minRange": 24,
+      "maxRange": 64,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/uncommongrenadelauncher",
+    "value": {
+      "minRange": 24,
+      "maxRange": 64,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/raregrenadelauncher",
+    "value": {
+      "minRange": 24,
+      "maxRange": 64,
+      "forceMoveRange": 90
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/npcfirebow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 50
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/commonbow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 50
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/neb-commonbow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 50
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/uncommonbow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 50
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/neb-uncommonbow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 50
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/rarebow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 50
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/neb-rarebow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 50
+    }
+  },
+
+  // Frackin UNIQUE pistols
+
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/aegisaltpistol2",
+    "value": {
+      "minRange": 8,
+      "maxRange": 30,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/aegisaltpistol3",
+    "value": {
+      "minRange": 8,
+      "maxRange": 30,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/classiczapper",
+    "value": {
+      "minRange": 15,
+      "maxRange": 30,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/crankpistol",
+    "value": {
+      "minRange": 15,
+      "maxRange": 30,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/cutepistol",
+    "value": {
+      "minRange": 15,
+      "maxRange": 30,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ff_bubblegun",
+    "value": {
+      "minRange": 4,
+      "maxRange": 8,
+      "forceMoveRange": 10
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ff_bubblegun2",
+    "value": {
+      "minRange": 4,
+      "maxRange": 8,
+      "forceMoveRange": 10
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ff_icechucker",
+    "value": {
+      "minRange": 24,
+      "maxRange": 36,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/flaregun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 15,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fualienlaser",
+    "value": {
+      "minRange": 24,
+      "maxRange": 36,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fucarbonhandcannon",
+    "value": {
+      "minRange": 4,
+      "maxRange": 20,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fuobliterator",
+    "value": {
+      "minRange": 8,
+      "maxRange": 36,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fupyreitepistol",
+    "value": {
+      "minRange": 16,
+      "maxRange": 24,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fuspawngun",
+    "value": {
+      "minRange": 16,
+      "maxRange": 24,
+      "forceMoveRange": 36
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/futriangliumpistol",
+    "value": {
+      "minRange": 16,
+      "maxRange": 24,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/gravitonpistolunique",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 32
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/hellfiregun",
+    "value": {
+      "minRange": 24,
+      "maxRange": 36,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/lunaripistol",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/manstopper",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/penumbritepistol",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/pistolaegisaltfu",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/pistoldurasteelfu",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/pistoleffigiumfu",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/pistolferoziumfu",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/pistolironfu",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/pistolirradiumfu",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/pistolprotofu",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/pistolquietusfu",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/pistoltitaniumfu",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/pistoltitaniumfucustom",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/pistoltungstenfu",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/pistolvioliumfu",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/quietuspistol",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/reaperpistol",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/telebriumpistol",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/xithricitepistol",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/zenith",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/zerchesiumpistol",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/elderpistol",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/kirhospistol",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/chargepistol",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/radienpistol",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/radienpistol2",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fugoldengun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/isn_flintlock",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/isn_plasmapistol",
+    "value": {
+      "minRange": 8,
+      "maxRange": 32,
+      "forceMoveRange": 40
+    }
+  },
+
+  // Frackin UNIQUE Machine Pistol
+
+
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/aetheriumpistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/arconcannon",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/biopistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/blisterpistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/curvepistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/cutearmgun",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/cutesmg",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/densiniumpistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fucyclone",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fugausspistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fuisogenpistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fustingergun",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/futriangliumsmg",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/futritaniumpistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/gravitonpistol",
+    "value": {
+      "minRange": 6,
+      "maxRange": 35,
+      "forceMoveRange": 20
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/irradiumpistol2",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/laspistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/lunarismg",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 40
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/manstoppersmg",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/mechpistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/mineralpistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/murdermanipulator",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/murdermanipulator2",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/nitrogenpistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/penumbritesmg",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/protopistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/quietussmg",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/reapermachinepistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/sniperknife",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/sniperknife2",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/snubber",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/spawngun",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/telebriummachinepistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/tinydancer",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/xithricitesmg",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/zerchesiumsmg",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/elderrepeater",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/biooozegun",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/honeygun",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/liquidacidgun",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/liquidpoisongun",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fuenergyblaster",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/irradiumpistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/chargesmg",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/armcannonfire",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/crystallineneedler",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/radneedler",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/razorneedler",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/scorchneedler",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/shockneedler",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/toxicneedler",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/mobiuspistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/veluupistol",
+    "value": {
+      "minRange": 9,
+      "maxRange": 35,
+      "forceMoveRange": 64
+    }
+  },
+
+  //Frackin UNIQUE Shotguns
+
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/advalloyshotgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/aetheriumshotgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/blastgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/bonethresher",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/carbonshotgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/crankgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/crystalgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/curveblaster",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/cuteorblauncher",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/cuteshotgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/densiniumshotgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fugaussshotgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/longarm",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/longarmpistol",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/lunarishotgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/npclongarm",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/penumbriteshotgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/precursorcannon",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/protogun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/quietusshotgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/reapershotgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/shurikencannon",
+    "value": {
+      "minRange": 16,
+      "maxRange": 36,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/sluggun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/telebriumshotgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/veilbreaker",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/xithriciteshotgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/zerchesiumshotgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/eldershotgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/advalloyshotgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/chargeshotgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/chargecannon",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fufreezecannon",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/irradiumshotgun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/splittergun",
+    "value": {
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange": 64
+    }
+  },
+
+  // Frackin UNIQUE Assault Rifle
+
+
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/aetheriumassaultrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 42
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ancientcarbine",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/arconrifle",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/crankrifle",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/curvesmg",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/cutemachinegun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/densiniumrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/discrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/energyassault",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fugaussmachinegun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fugaussrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fugrinder",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/funomadassaultrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fuplasmagun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fustingergun2",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fuvaporizer",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/goregun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/gumballgun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/invisipuke",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/invisiswarmgun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ionrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/k3rifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/lasrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/lunaririfle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/mechgun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/mineralcannon",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/napalmcannon",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/nitrogengun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/penumbriteassaultrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/quietusassaultrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/reaperassault",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/reapercarbine",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/rimecutter",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/shoggothgun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/silverslayer",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swarmgun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/swarmgun2",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/telebriumrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/teslagun2",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/thornslinger",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/verdantcarbine",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/xithriciteassaultrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/zerchesiumassaultrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/crossgun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/eldercarbine",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/chargemachinegun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fufreezecannonKhe",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fuenergymachinegun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/chargemachinegun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fuaegisaltminigun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fuaegisaltminigunnpc",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/isn_annihilator",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/isn_flamethrower4",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/flamethrower",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/kineticrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/isn_microwaveray",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/isn_terawattlaser",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/hailstrike",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/mobiusrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/mobiusrifle2",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/warden",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/spaceplasmarifleminiknog",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/furainbowgun",
+    "value": {
+      "minRange": 4,
+      "maxRange": 36,
+      "forceMoveRange": 40
+    }
+  },
+
+  // Frackin UNIQUE Sniper Rifles
+
+
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/aetheriumsniperrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/bigdaddy",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/carvelle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/cutesniperrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/densiniumsniper",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/farsight",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/farsight2",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fucellgun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fugausssniper",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fuhuntingrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fuhuntingrifle2",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fuhuntingrifle3",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/funomadrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fusteampunkgun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/hellraiser",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/irradiumrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/longinus",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/lunarisniper",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/penumbritesniperrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/protorifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/quietussniper",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/randomharpoongun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/randomharpoongun2",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/reaperrailgun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/reaperSniper",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/rifleaegisaltfu",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/rifledurasteelfu",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/rifleeffigiumfu",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/rifleferoziumfu",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/rifleironfu",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/rifleirradiumfu",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/riflepyreitefu",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/riflequietusfu",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/rifletitaniumfu",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/rifletriangliumfu",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/rifletungstenfu",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/riflevioliumfu",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/telebriumsniperrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/tentabane",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/teslagun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/thornrifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/verdantrailgun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/xithricitesniper",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/zerchesiumsniper",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/elderripper",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/kirhossniper",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 90
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/furailgun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 80
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fushocklance",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/veluurifle",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 60
+    }
+  },
+
+  //Frackin UNIQUE rocket launcher
+
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/aetheriumrocketlauncher",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/biogun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/blastcannon",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/blastcannoncustom",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/blizzardcannon",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/cuterocketlauncher",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/energycutter",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/freedombird",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/friendmaker",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/friendmaker2",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fuplasmacannon",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/gravgun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/gravitongun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/hellfirecannon",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/lunarirocketlauncher",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/mineralcannonadv",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/mineralcannonadv2",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/minirocketlauncher",
+    "value": {
+      "minRange": 5,
+      "maxRange": 30,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/minirocketlauncher2",
+    "value": {
+      "minRange": 5,
+      "maxRange": 30,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/penumbriterocketlauncher",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/quietusrocketlauncher",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/reaperrocket",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/vashtagun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/xithriciterocketlauncher",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/zerchesiumrocketlauncher",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/airstrike",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/crappyartillery",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ionstrike",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/artillerygun1",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/extramissile",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fucloudgun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/isn_fusioncannon",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/isn_irradiator",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/isn_plasmabeam",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/isn_sunstream",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/mobiusrifle2",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/mobiusrailgun",
+    "value": {
+      "minRange": 12,
+      "maxRange": 90,
+      "forceMoveRange": 50
+    }
+  },
+
+  // Frackin UNIQUE Grenade Launchers
+
+
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/blistergun",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 45
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/burster",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 45
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/bushmaster",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 45
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/catapult",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 45
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/eyecannon",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 45
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/isn_magmavulcan",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 45
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/mrscorchy",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 45
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/mushroomgun",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 45
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/slimelauncher",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 45
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/stormwarden",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 45
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/eldergrenadelauncher",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 45
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fuminelayer",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 45
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/radiengrenadelauncher",
+    "value": {
+      "minRange": 10,
+      "maxRange": 90,
+      "forceMoveRange": 45
+    }
+  },
+
+  // Frackin UNIQUE Crossbow
+
+
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/advalloycrossbow",
+    "value": {
+      "minRange": 10,
+      "maxRange": 240,
+      "forceMoveRange": 40
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/aetheriumcrossbow",
+    "value": {
+      "minRange": 10,
+      "maxRange": 240,
+      "forceMoveRange": 40
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/autocrossbow",
+    "value": {
+      "minRange": 10,
+      "maxRange": 240,
+      "forceMoveRange": 40
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/carboncrossbow",
+    "value": {
+      "minRange": 10,
+      "maxRange": 240,
+      "forceMoveRange": 40
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ironcrossbow",
+    "value": {
+      "minRange": 10,
+      "maxRange": 240,
+      "forceMoveRange": 40
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/lightningcrossbow",
+    "value": {
+      "minRange": 10,
+      "maxRange": 240,
+      "forceMoveRange": 40
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/lunaricrossbow",
+    "value": {
+      "minRange": 10,
+      "maxRange": 240,
+      "forceMoveRange": 40
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/telebriumcrossbow",
+    "value": {
+      "minRange": 10,
+      "maxRange": 240,
+      "forceMoveRange": 40
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/tungstencrossbow",
+    "value": {
+      "minRange": 10,
+      "maxRange": 240,
+      "forceMoveRange": 40
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/woodencrossbow",
+    "value": {
+      "minRange": 10,
+      "maxRange": 240,
+      "forceMoveRange": 40
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/xithricitecrossbow",
+    "value": {
+      "minRange": 10,
+      "maxRange": 240,
+      "forceMoveRange": 40
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/zerchesiumcrossbow",
+    "value": {
+      "minRange": 10,
+      "maxRange": 240,
+      "forceMoveRange": 40
+    }
+  },
+
+  // Frackin UNIQUE Bow
+
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/bonebow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/carbonbow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/carnagebow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/corruptionpump",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/fucultistbow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/cutebow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/elderbow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/hellfirebow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/irradiumbow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/lunaribow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/nigtarbow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/penumbrabow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/prismaticbow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/protobow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/rimewind",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/shadowstring",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/telebriumbow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/neb-artemis",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/xithricitebow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/zerchesiumbow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 45
+    }
+  },
+
+
+  // Frackin UNIQUE Stynger
+
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/advalloystynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/aetheriumstynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/carbonstynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ironstynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/lightningstynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/lunaristynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/telebriumstynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/tungstenstynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/xithricitestynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 64
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/zerchesiumstynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 64
+    }
+  },
+
+  //
+  //Thrown Weapons
+  //
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/crystalliteshardnpc",
+    "value": {
+      "minRange": 5,
+      "maxRange": 50,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/deathblossomnpc",
+    "value": {
+      "minRange": 5,
+      "maxRange": 20,
+      "forceMoveRange": 20
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ignuschilinpc",
+    "value": {
+      "minRange": 5,
+      "maxRange": 19,
+      "forceMoveRange": 20
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ignuschili2npc",
+    "value": {
+      "minRange": 5,
+      "maxRange": 30,
+      "forceMoveRange": 35
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/magmabombnpc",
+    "value": {
+      "minRange": 5,
+      "maxRange": 20,
+      "forceMoveRange": 20
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/shockshroomnpc",
+    "value": {
+      "minRange": 5,
+      "maxRange": 20,
+      "forceMoveRange": 20
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/throwingkunainpc",
+    "value": {
+      "minRange": 5,
+      "maxRange": 50,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/throwingspearnpc",
+    "value": {
+      "minRange": 5,
+      "maxRange": 35,
+      "forceMoveRange": 35
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/throwingstarnpc",
+    "value": {
+      "minRange": 5,
+      "maxRange": 50,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/woodenboomerangnpc",
+    "value": {
+      "minRange": 5,
+      "maxRange": 30,
+      "forceMoveRange": 30
+    }
+  },
+
+  //...
+  //Melees
+  //
+
+  // Vanilla weapons that NPCs use that CF forgot to add entries for. ... Really, CF? REALLY?!
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npcavianbroadsword",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npcbruisersword",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npccultistbroadsword",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npccultistshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npcdeadbeataxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npceyesword",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npcfeneroxspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npcgangbroadsword",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npcwrench",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+
+  // Frackin RNG Melees
+
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/commondagger",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/uncommondagger",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/raredagger",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/commonshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/uncommonshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/rareshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/commonaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/uncommonaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/rareaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/commonhammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/uncommonhammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/rarehammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/commonbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/uncommonbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/rarebroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/commonspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/uncommonspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/rarespear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucommongreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuuncommongreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/furaregreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/commonlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/uncommonlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/rarelongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucommonmace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuuncommonmace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/furaremace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucommonrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuuncommonrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/furarerapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/commonshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/uncommonshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/rareshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/commonqs",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/uncommonqs",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/rareqs",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+
+  // Frackin UNIQUE Daggers
+
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/advalloydagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/aetheriumdagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/bloodyknife.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/carbondagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/curvedagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/cutedagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/effigiumdagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/feneroxdagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuatropusdagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fubonepickaxe.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucultistdagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fushadowdagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/glowstickgreendagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/glowstickyellowdagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/irradiumdagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/isogendagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/lunaridagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/nightardagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/penumbriredagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/pyreitedagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/quietusknave.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/quietusrogue.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/radiendagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/silverseablade.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/stonedagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/telebriumdagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/uraniumdagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/veluudagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/xithricitedagger.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/zerchesiumknife.activeitem",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+
+  // Frackin UNIQUE Shortsword
+
+
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/advalloyshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/aetheriumshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/blackedge",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/boneblade",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/carbonblade",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/coralsword2",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/corruptblade",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/cuteshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/densiniumshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/diamondblade",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/effigiumshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/elderblade",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/frostblade",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuatropusshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucultistshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fusavethequeen",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fushroomsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/goldenseascion",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/blackedge",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/greenedge",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/hardenedsteelblade",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/heliosblade",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/hellfire1hand",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/hylotllesserscion",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/irradiumblade",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/isogenshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/moltenblade",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/murdermachete",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/nightarshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/obsidianblade",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/penumbriteshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/pyreiteshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/quietusassassin",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/quietuscaptain",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/quietusmercenary",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/redwaxsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/shadowblade",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/shadowburst",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/solariblade",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/stoneshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/telebriumshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/uraniumshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/veluushortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/waxsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/xithriciteshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/zerchesiumsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+
+  // Frackin UNIQUE Axe
+
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/advalloyaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/aetheriumaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/bountyaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/carbonaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/cinder",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/cuteaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/deathbringer",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/effigiumaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/elderaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuatropusaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuboneaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucoralcleaver",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucultaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucultistaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/irradiumaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/isogenaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/lunariaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/moltenaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/nomadaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/panishment",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/penumbriteaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/poptopclaw",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/poweraxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/pyreiteaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/quietusaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/radienaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/stoneaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/telebriumaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/thelusaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/uraniumaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/xithriciteaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/zerchesiumaxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/veluushortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/veluushortsword2",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/veluushortsword3",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/veluushortsword4",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+
+  //Frackin UNIQUE Hammer
+
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/advalloyhammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/aetheriumhammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/cutehammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/effigiumhammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/elderhammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fishboneheadbasher",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/flyingv",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuatropushammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fubonehammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucarbonhammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuhoneyhammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fumegahoneyhammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuquantumhammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/irradiumhammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/isogenhammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/kelpsteelhatchet",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/metallichammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/mystichammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/penumbritehammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/pyreitehammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/solarihammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/soulreader",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/stonehammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/telebriumhammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/uraniumhammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/xithricitehammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/zerchesiumhammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/dolphinhammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/meathammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/rockethammer",
+    "value": {
+      "minRange": 2,
+      "maxRange": 24
+    }
+  },
+
+  //Frackin UNIQUE Broadsword
+
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/densiniumsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/precursorbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/negablade",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/slimenpcbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/slimepersonbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuchainsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/advalloybroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/aetheriumbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/aetheriumcleaver",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 5
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ancientbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/coralstinger",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/coralsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/curvebroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/cutebroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/deadbeatbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/effigiumbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/elderbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/energyblade",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/energyblade2",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuatropusbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucultistbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fugoldenblade",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/hellfireblade",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/hylotlgreatscion",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/irradiumsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/isogenbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/lunaribroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/metalliccleaver",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/metallicsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/mineralblade",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/penumbritebroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/phaseblade",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/pyreitebroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/quietusemperor",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/quietusknight",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/radienbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/slimesword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/slimesword2",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/slimesword3",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/spikesword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/stonebroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/telebriumbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/titaniumbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/tungstenbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/uraniumbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/warcleaver",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/wavyslimesword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/wavyslimesword2",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/wavyslimesword3",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/xithricitebroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/zerchesiumbroadsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+
+  // Frackin UNIQUE spear
+
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fudrillspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/precursorspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/advalloyspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/aetheriumspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ancientspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/banespear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/bonespear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/carbonspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/coralspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/corruptspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/cultiststaffmelee",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/cutespear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/deadbeatspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/densiniumspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/effigiumspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/elderspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/flightfire",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuatropusspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucrystalspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucultistspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuqueenstinger",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/hellfirespear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/injector",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/injectorbio",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/irradiumspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/isogenspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/lavaspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/mantizispear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/marinerspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/metallicspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npchuntingspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/penumbritespear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/pincerspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/pyreitespear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/quietusspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/radienspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/shovelspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/siliconspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/solarispear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/stonespear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/telebriumspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/tristab",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/tritaniumspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/uraniumspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/wraithwind",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/xithricitespear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/zerchesiumspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 25
+    }
+  },
+
+  // Frackin UNIQUE Greataxe
+
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/cutegreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/durasteelgreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuatropusgreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucultistgreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/irongreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/irradiumgreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/lunarigreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/penumbritegreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/radiengreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/stonegreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/telebriumgreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/titaniumgreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/tungstengreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/xithricitegreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/zerchesiumgreataxe",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+
+  // Frackin UNIQUE Longsword
+
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/advalloylongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/aetheriumlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ancientlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/bleakblade",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/blooddiamondlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/carbonlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/coraldullblade",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/crystallineblade",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/cutelongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/deadbeatlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/densiniumlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/effigiumlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fiendefeller",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuambersword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fubonesword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucellsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fupetalsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ironlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/irradiumlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/kaicleaver",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/klinokrov",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/penumbritelongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/quietusgeneral",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/silverlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/solarisword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/telebriumlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/theluslongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/titaniumlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/triangliumlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/tungstenlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/vai",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/veluulongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/violiumlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/xithricitelongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/yinyang",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/zerchesiumlongsword",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+
+  // Frackin UNIQUE Mace
+
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/aegisaltmace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/aetheriummace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ballmace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/bonemace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/cutemace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/deadbeatmace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/densealloymace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/densiniummace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/durasteelmace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/effigiummace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/eldermace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/facebreaker",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fu_wrenchweapon",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucultistmace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/goldmace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/hellfiremace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/honeymace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ironmace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/irradiummace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/isogenmace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/lunarimace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/obsidianmace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/penumbramace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/pyreitemace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/quantummace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/quietusmace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/solariummace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/stonemace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/stonemace2",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/telebriummace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/titaniummace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/triangliummace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/tungstenmace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/uraniummace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/woodenmace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/xithricitemace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/zerchesiummace",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 23
+    }
+  },
+
+  // Frackin UNIQUE Rapier
+
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/advalloyrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/aetheriumrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ancientrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/cuterapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/deadbeatrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/diamondrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/effigiumrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/goldrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/hellfirerapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ironrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/irradiumrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/isogenrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/lunarirapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/mineralrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/penumbriterapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/precursorrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/pyreiterapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/quietusrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/silverrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/telebriumrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/tungstenrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/xithriciterapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/zerchesiumrapier",
+    "value": {
+      "minRange": 1.7,
+      "maxRange": 23.25
+    }
+  },
+
+  // Frackin UNIQUE Shortspear
+
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/advalloyshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/coreshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/cuteshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/densiniumshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/durasteelshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuatropusshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucultistshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ironshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/irradiumshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/lunarishortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/penumbriteshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/stoneshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/telebriumshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/thelusshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/titaniumshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/tritaniumshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/tungstenshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/xithriciteshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/zerchesiumshortspear",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24.25
+    }
+  },
+
+  // Frackin UNIQUE Katana
+
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/advalloykatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/aetheriumkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/blooddiamondkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/carbonkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/coralkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/cutekatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/densiniumkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/diamondkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/durasteelkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucultistkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fusoluskatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ironkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ironkatana2",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/irradiumkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/isogenkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/lunarikatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/penumbritekatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/pyreitekatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/quietuskatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/solariumkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/telebriumkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/titaniumkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/triangliumkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/tungstenkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/woodenkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/xithricitekatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/zerchesiumkatana",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+
+  // Frackin UNIQUE Scythe
+
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/aetheriumscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ancientscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/cutescythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/densiniumscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fuatropusscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fubonescythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucultistscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/goldscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/honeyscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ironscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/irradiumscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/kirhosscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/lunariscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/penumbralscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/predatorscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/quietusscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/stonescythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/telebriumscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/thelusscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/titaniumscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/xithricitescythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/zerchesiumscythe",
+    "value": {
+      "minRange": 4,
+      "maxRange": 25
+    }
+  },
+
+  // Frackin UNIQUE Quarterstaff
+
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ancientquarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/carbonquarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/copperquarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/curvestaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/cutequarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/deadbeatquarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/densiniumquarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/diamondquarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/fucultistquarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/goldquarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ironquarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/irradiumquarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/lunariquarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/penumbritestaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/radienquarteraff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/silverquarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/solariumquarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/telebriumquarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/tungstenquarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/xithricitequarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/zerchesiumquarterstaff",
+    "value": {
+      "minRange": 2.5,
+      "maxRange": 24
+    }
+  }
+]

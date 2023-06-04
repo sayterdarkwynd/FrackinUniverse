@@ -1,0 +1,70 @@
+{
+  "objectName" : "slimecookingtable",
+  "colonyTags" : ["slimenpc","slimeperson","slimevillage","slimenpchuman","slime","cooking"],
+  "price" : 100,
+  "rarity" : "Common",
+  "category" : "crafting",
+  "printable" : false,
+  "description" : "This slimy counter seems to be used for food preparation.",
+  "shortdescription" : "Slime Cooking Table",
+  "race" : "slimeperson",
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/craftingfood.config",
+    "filter" : [ "craftingfood" ],
+    "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : " Slime Cooking Table",
+        "subtitle" : " ^#b9b5b2;Prepare and cook food"
+      }
+    }
+  },
+
+  "apexDescription" : "Slimy cooking table.",
+  "avianDescription" : "I can use this to make delicious food. But it might turn sticky.",
+  "floranDescription" : "Floran can use thisss to make very very tasty food!",
+  "glitchDescription" : "Shocked. A cooking table covered in slime.",
+  "humanDescription" : "Messy cooking table!",
+  "hylotlDescription" : "A slimy table, to be used for the preparation of food.",
+  "novakidDescription" : "These Slimes never cease to surprise me, such a messy kitchen!",
+  "slimepersonDescription" : "Very good stove, I can make good food here.",
+  "slimenpcDescription" : "Food...cook here...very good...",
+  "slimenpchumanDescription" : "Flame inside to produce heat, very good for cooking.",
+
+
+    "lightColor" : [100, 80, 60],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "inventoryIcon" : "icon.png",
+  "orientations" : [
+    {
+	  "imageLayers" : [ { "image" : "slimecookingtable.png:<color>.<frame>", "fullbright" : true }, { "image" : "slimecookingtablelit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, 0],
+	  "direction" : "left",
+	  "flipImages" : true,
+
+	  "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+	{
+	  "imageLayers" : [ { "image" : "slimecookingtable.png:<color>.<frame>", "fullbright" : true }, { "image" : "slimecookingtablelit.png:<color>.<frame>" } ],
+	  "direction" : "right",
+      "imagePosition" : [-16, 0],
+
+	  "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+}

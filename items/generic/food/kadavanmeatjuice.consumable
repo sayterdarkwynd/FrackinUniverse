@@ -1,0 +1,30 @@
+{
+  "itemName": "kadavanmeatjuice",
+  "rarity": "Common",
+  "price": 120,
+  "category": "drink",
+  "inventoryIcon": "kadavanmeatjuice.png",
+  "description": "Prickly cactus juice blended with poorly cooked meat. What could go wrong? ^cyan;+^white;20% ^cyan;HP ^gray;(^white;150s^gray;), ^cyan;+^white;100% ^pink;Physical ^cyan;Thorns ^gray;(^white;2m^gray;)^reset; ^orange;Type: Cooked Meat + Vegetables^reset;",
+  "shortdescription": "Kadavan Meat Juice",
+  "effects": [
+    [
+	  { "effect": "meatc_plant_meal" },
+      {
+        "effect": "thorns",
+        "duration": 120
+      },
+      {
+        "effect": "maxhealthscalingboostfood",
+        "duration": 150
+      }
+    ]
+  ],
+  "foodValue": 40,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1.0,
+  "blockingEffects": ["wellfed"],
+  "emitters": ["drinking"]
+}

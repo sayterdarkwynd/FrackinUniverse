@@ -1,0 +1,235 @@
+{
+  "type" : "chimkin",
+  "shortdescription" : "Chimkin",
+  "description" : "Part chicken. Part stilt. 100% useless.",
+  "categories" : [ "chimkin" ],
+  "parts" : [ "body" ],
+
+  "animation" : "chimkin.animation",
+
+  "dropPools" : [ {
+    "default" : "trictusTreasure",
+    "bow" : "cockblockTreasure",
+    "firebow" : "cockblockTreasure",
+    "icebow" : "cockblockTreasure",
+    "poisonbow" : "cockblockTreasure",
+    "electricbow" : "cockblockTreasure",
+    "cosmicbow" : "cockblockTreasure",
+    "radioactivebow" : "cockblockTreasure",
+    "shadowbow" : "cockblockTreasure"
+  } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 7,
+      "targetQueryCooldown" : 0.2,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 10,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [
+        {
+          "name" : "action-animate",
+          "parameters" : {
+            "type" : "body",
+            "state" : "winddown",
+            "animationTime" : 0.5
+          }
+        }
+      ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 0.0,
+          "parameters" : {
+            "maximumRange" : 10,
+            "windupState" : "winddown",
+            "windupTime" : 0.6,
+
+            "chargeTime" : 0.4,
+            "chargeSpeed" : 10,
+            "chargeControlForce" : 200,
+            "chargeState" : "slash",
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownStopForce" : 200,
+            "winddownState" : "windup",
+            "winddownTime" : 0.6
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-invulnerable",
+          "cooldown" : [6, 12],
+          "parameters" : {
+            "windupTime" : 0,
+            "windupState" : "",
+            "winddownTime" : 0.7,
+            "winddownState" : "winddown",
+
+            "invulnerableState" : "windup",
+            "invulnerableTime" : 0.2
+          }
+        }
+      ],
+
+      "approachActions" : [],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        }
+      ],
+
+      "wanderActions" : []
+    },
+
+    "damageParts" : {
+      "body" : {
+        "damage" : 13,
+
+        "teamType" : "enemy",
+        "damageSourceKind" : "slash",
+        "knockback" : 20,
+        "statusEffects" : [ ]
+      }
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.8, 3.7], [1.2, 3.5], [1.2, -2.05], [0.8, -2.6], [-0.8, -2.6], [-1.2, -2.05], [-1.2, 3.5], [-0.8, 3.7] ],
+      "damage" : 13,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.8, 3.7], [1.2, 3.5], [1.2, -2.05], [0.8, -2.6], [-0.8, -2.6], [-1.2, -2.05], [-1.2, 3.5], [-0.8, 3.7] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 3,
+      "runSpeed" : 5,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 80
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : 0.5
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : -0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "chimkin" }
+  }
+}

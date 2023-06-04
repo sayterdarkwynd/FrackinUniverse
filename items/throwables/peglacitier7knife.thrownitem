@@ -1,0 +1,32 @@
+{
+  "itemName" : "peglacitier7knife",
+  "price" : 375,
+  "rarity" : "Legendary",
+  "level" : 6,
+   "inventoryIcon" : "peglacitier7knife.png",
+  "image" : "peglacitier7knife.png",
+  "shortdescription" : "Typhoon Harpoon",
+  "description" : "Freezes the air around the throwing point and then sticks and erupts into ice balls.",
+
+  "ammoUsage" : 1,
+  "category" : "throwableItem",
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 0.7,
+
+  "projectileType" : "peglacitier7knife",
+  "projectileConfig" : {
+    "speed" : 45,
+    "power" : 18,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item.ogg" ]
+      }
+    ]
+  }
+}
+

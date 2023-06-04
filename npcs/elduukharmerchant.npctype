@@ -1,0 +1,97 @@
+{
+  "type" : "elduukharmerchant",
+  "baseType" : "base",
+
+  "persistent" : true,
+  "damageTeamType" : "friendly",
+
+  "dropPools" : [ "basicMonsterTreasure" ],
+
+  "scripts" : [
+    "/npcs/bmain.lua"
+  ],
+  "initialScriptDelta" : 5,
+  "scriptConfig" : {
+    "behavior" : "merchant",
+
+	"behaviorConfig" : {
+      "noticePlayersRadius" : 20,
+
+      "hostileDamageTeam" : { "type" : "enemy", "team" : 1 }
+    },
+
+	"questGenerator" : {
+      "pools" : ["common", "merchant"],
+      "enableParticipation" : true,
+
+      "timeLimit" : 30,
+      "chance" : 0.02,
+      "nearbyQuestLimit" : 2,
+      "nearbyQuestRange" : 50
+    },
+
+    "reactions" : {
+      "spontaneous" : [
+        [5.0, "sleep", { "timeRange" : [0.7, 0.9] }]
+      ]
+    },
+
+    "merchant" : {
+	  "waitTime" : 40,
+      "storeRadius" : 16,
+      "poolsFile" : "/npcs/merchantpools.config",
+      "categories" : {
+        "default" : ["basicmerchant", "randomguns", "randomswords", "humaningredients" ],
+        "elduukhar" : ["basicmerchant", "randomguns", "randomswords" ]
+      },
+      "buyFactorRange" : [ 0.9, 1.2 ],
+      "sellFactorRange" : [ 0.2, 0.2 ],
+      "numItems" : 10
+    },
+
+    "dialog" : {
+      "merchant" : {
+        "start" : "/dialog/merchant.config:merchantStart",
+        "end" : "/dialog/merchant.config:merchantEnd",
+        "follow" : "/dialog/merchant.config:follow",
+        "welcome" : "/dialog/merchant.config:welcome",
+        "tout" : "/dialog/merchant.config:tout"
+      },
+      "flee" : {
+        "helpme" : "/dialog/flee.config:helpme",
+        "safe" : "/dialog/flee.config:safe"
+      },
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/merchant.config:tagCriteria",
+          "enclosedArea" : "/dialog/merchant.config:enclosedArea",
+          "otherDeed" : "/dialog/merchant.config:otherDeed",
+          "severe" : "/dialog/merchant.config:severe",
+          "final" : "/dialog/merchant.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/merchant.config:beacon",
+          "rent" : "/dialog/merchant.config:rent"
+        }
+      },
+	  "accuse" : "/dialog/thief.config:accuse",
+      "alert" : "/dialog/thief.config:alert"
+    }
+  },
+
+  "items" : {
+    "elduukhar" : [
+      [0, [
+        {
+		  "head" : [ "bandithat2" ],
+          "chest" : [
+		  { "name" : "sweatervestchest", "parameters" : { "colorIndex" : 11 } }
+		  ],
+          "legs" : [
+		  { "name" : "traditionallegs", "data" : { "colorIndex" : 2 } }
+		  ]
+        }
+      ]]
+    ]
+  }
+}

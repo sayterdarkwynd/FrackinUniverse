@@ -1,0 +1,191 @@
+{
+  "name" : "hurricaneelectric",
+  "icon" : "/interface/cockpit/weather/windstorm.png",
+
+   "particles" : [
+     {
+       "density" : 0.15,
+       "particle" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [160, 77, 220, 230],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, -5.0],
+            "finalVelocity" : [0, -10],
+            "approach" : [0, 10],
+            "timeToLive" : 0.6,
+            "variance" : {
+              "initialVelocity" : [0.2, 0],
+              "size" : 0.5
+            }
+       }
+ 	},
+     {
+       "density" : 0.01,
+       "particle" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [214, 20, 244, 230],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, -5.0],
+            "finalVelocity" : [0, -10],
+            "approach" : [0, 10],
+            "timeToLive" : 0.6,
+            "variance" : {
+              "initialVelocity" : [0.2, 0],
+              "size" : 0.5
+            }
+       }
+ 	},
+     {
+       "density" : 0.005,
+       "particle" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [180, 41, 144, 230],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, -5.0],
+            "finalVelocity" : [0, -10],
+            "approach" : [0, 10],
+            "timeToLive" : 0.6,
+            "variance" : {
+              "initialVelocity" : [0.2, 0],
+              "size" : 0.5
+            }
+       }
+     },
+ 	{
+
+       "density" : 0.0025,
+       "particle" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [180, 8, 144, 230],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, -5.0],
+            "finalVelocity" : [0, -10],
+            "approach" : [0, 10],
+            "timeToLive" : 0.6,
+            "variance" : {
+              "initialVelocity" : [0.2, 0],
+              "size" : 0.5
+            }
+       }
+     },
+ 	{
+       "density" : 0.03,
+       "particle" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [177, 177, 44, 230],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, -5.0],
+            "finalVelocity" : [0, -10],
+            "approach" : [0, 10],
+            "timeToLive" : 0.6,
+            "variance" : {
+              "initialVelocity" : [0.2, 0],
+              "size" : 0.5
+            }
+       }
+     },
+ 	{
+       "density" : 0.03,
+       "particle" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [80, 77, 254, 230],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, -5.0],
+            "finalVelocity" : [0, -10],
+            "approach" : [0, 10],
+            "timeToLive" : 0.6,
+            "variance" : {
+              "initialVelocity" : [0.2, 0],
+              "size" : 0.5
+            }
+       }
+     }
+  ],
+
+  "projectiles" : [
+    {
+      "projectile" : "fogprimerelectric",
+      "parameters" : {
+        "power" : 1
+      },
+      "velocity" : [0, -50],
+      "ratePerX" : 0.008,
+      "spawnAboveRegion" : 24,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    },
+    {
+      "projectile" : "fogprimerelectric",
+      "parameters" : {
+        "power" : 1
+      },
+      "velocity" : [0, -50],
+      "ratePerX" : 0.008,
+      "spawnAboveRegion" : 22,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    },
+    {
+      "projectile" : "fogprimerelectric",
+      "parameters" : {
+        "power" : 1
+      },
+      "velocity" : [0, -50],
+      "ratePerX" : 0.008,
+      "spawnAboveRegion" : 20,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    },
+    {
+      "projectile" : "fogprimerelectric",
+      "parameters" : {
+        "power" : 1
+      },
+      "velocity" : [0, -50],
+      "ratePerX" : 0.01,
+      "spawnAboveRegion" : 15,
+      "spawnHorizontalPad" : 30,
+      "windAffectAmount" : 1.0
+    }
+  ],
+
+  "statusEffects" : ["windslow"],
+
+  "duration" : [50, 220],
+  "maximumWind" : 90.0,
+  "weatherNoises" : [ "/sfx/weather/weatherhurricane.ogg" ]
+}
+
+
+
+

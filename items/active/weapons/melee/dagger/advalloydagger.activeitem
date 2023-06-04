@@ -1,0 +1,49 @@
+{
+  "itemName" : "advalloydagger",
+  "price" : 640,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Sleek and shadowy. Cool to the touch.",
+  "shortdescription" : "Master's Dagger",
+  "tooltipKind" : "sword2",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","dagger","upgradeableWeapon"],
+  //"collectablesOnPickup" : { "fu_weapondagger" : "advalloydagger" },
+  "inventoryIcon" : "advalloydagger.png",
+  "animation" : "daggercombo.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "advalloydagger.png"
+  },
+
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "swoosh" : { "properties" : {"offset" : [1, 2]}}
+      }
+    }
+  },
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbilityType" : "daggercombo",
+  "primaryAbility" : {
+    "fireTime" : 0.3,
+    "baseDps" : 7.72,
+    "damageConfig" : {
+      "knockback" : 10,
+      "statusEffects" : [ "bleedingshort" ]
+    }
+  },
+  "critChance" : 2,
+  "critBonus" : 4,
+  "stunChance" : 50,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

@@ -1,0 +1,100 @@
+{
+  "type" : "fuhorsecritter",
+  "shortdescription" : "Horse",
+  "description" : "A large hooved, maned herbivore. They can run swiftly and many are domesticated as steeds.",
+
+  "categories" : [ "fuhorsecritter" ],
+  "parts" : [ "body" ],
+
+  "animation" : "fuhorsecritter.animation",
+  "reversed" : true,
+
+  "dropPools" : [
+    {
+      "default" : "empty",
+      "bow" : "huntingquadruped",
+      "brain" : "brain"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "walkingcritter",
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.958,1.167], [-2.292,0.917], [-3.375,-0.333], [-3.333,-2.292], [-1.917,-3.708], [2.708,-3.708], [3.75,-2.292], [3.667,-0.083], [2.417,1], [-1.542,1.042] ],
+
+      "mass" : 1.5,
+      "walkSpeed" : 12,
+      "runSpeed" : 30,
+      "jumpSpeed" : 5
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "",
+
+    "deathParticles" : "deathPoof",
+    "damageTeamType" : "passive",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 0,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 60
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "relocatable" : true,
+    "nametagColor" : [64, 200, 255]
+  }
+}

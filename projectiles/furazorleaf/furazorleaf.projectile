@@ -1,0 +1,21 @@
+{
+  "projectileName" : "furazorleaf",
+  "image" : "furazorleaf.png",
+  "flippable" : true,
+  "animationCycle" : 0.35,
+  "frameNumber" : 4,
+  "timeToLive" : 0.15,
+  "emitters" : [ "poisondrip" ],
+  "damageKindImage" : "icon.png",
+  "physics" : "gas",
+  "speed" : 40,
+  "damagePoly" : [ [-8, 0], [-5, -5], [0, -8], [5, -5], [8, 0], [5, 5], [0, 8], [-5, 5] ],
+  "damageKind" : "dagger",
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "snotbubblepop",
+      "inheritDamageFactor" : 1
+    }
+  ]
+}

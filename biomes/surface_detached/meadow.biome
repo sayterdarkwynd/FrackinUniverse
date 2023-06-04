@@ -1,29 +1,34 @@
 {
   "name" : "meadow",
   "friendlyName" : "Meadow",
-  "hueShiftOptions" : [-40, -25, 0, 25, 40],
+  "hueShiftOptions" : [-30, -20, -15, -10, 0, 10, 15, 20, 30],
 
     "mainBlock" : "floweryblock",
-    "subBlocks" : [ "retexdirt", "mud" ],
+    "subBlocks" : [ "grassy", "dirt" ],
     "ores" : "surface",
 
   "spawnProfile" : {
     "groups" : [
       {
-        "select" : 4,
-        "pool" : [ 
-          [ 1.0, "gleap" ],
-          [ 1.0, "nutmidge" ],
-          [ 1.0, "poptop" ],
-          [ 1.0, "aggroDenseSmallQuadrupedNightExposed"]
+        "select" : 3,
+        "pool" : [
+          [ 0.5, "fuhen" ],
+          [ 0.5, "fufluffalo" ],
+          [ 0.5, "fumooshi" ],
+          [ 0.5, "fuallergen" ],
+          [ 0.5, "furatthing" ],
+          [ 0.5, "aggroDenseSmallQuadrupedNightExposed"],
+          [ 0.5, "warmdeer" ]
         ]
       },
       {
-        "select" : 1,
+        "select" : 3,
         "pool" : [
-          [ 0.4, "butterbee" ],
-          [ 0.3, "fawnfly" ],
-          [ 0.3, "mudstag" ]
+          [ 0.24, "bee_bumblebee" ],
+          [ 0.24, "bee_honey" ],
+          [ 0.05, "bee_goldensaint" ],
+          [ 0.24, "fawnfly" ],
+          [ 0.24, "mudstag" ]
         ]
       },
       {
@@ -43,8 +48,27 @@
     }
   },
 
+   "parallax" : "/parallax/surface/garden.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/garden_day.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/garden_night.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
   "surfacePlaceables" : {
-    "grassMod" : [ "mossgrass2", "flowerygrass" ],
+    "grassMod" : [ "mossgrass2", "flowerygrass", "grass" ],
     "grassModDensity" : 0.9,
 
     "items" : [
@@ -67,24 +91,40 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:rareClumpyLarge",
 
           "type" : "tree",
           "treeFoliageHueShiftMax" : 180,
           "treeStemHueShiftMax" : 15,
-          "treeStemList" : [ "birch", "cocoa", "fleshy", "grumpy", "metal", "pine", "roottree", "slimey", "something", "spikey", "twisted", "wood", "slobby", "pineytree" ],
-          "treeFoliageList" : [ "rose", "brains", "bubbles", "cloudy", "frumpy", "greenleaves", "hanging", "leafy", "lotus", "lushgreen", "orangeflower", "pinefoliage", "redleaves", "scraggy", "spikeyfoliage" ]
+          "treeStemList" : [ "birch", "cocoa", "fleshy", "grumpy", "pine", "roottree", "slimey", "something", "spikey", "twisted", "wood", "slobby", "pineytree" ],
+          "treeFoliageList" : [ "rose", "bubbles", "cloudy", "frumpy", "greenleaves", "hanging", "leafy", "lotus", "lushgreen", "orangeflower", "pinefoliage", "redleaves", "scraggy", "spikeyfoliage" ]
         },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseSmall",
+          "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ [0.35, "flowerred" ], [0.35, "flowerblue" ], [0.35, "floweryellow" ] ],
+              "pool" : [
+              [0.35, "flowerred" ],
+              [0.35, "flowerblue" ],
+              [0.35, "floweryellow" ],
+              [0.35, "flowerspring" ],
+              [0.35, "flowerblack" ],
+              [0.35, "flowerbrown" ],
+              [0.35, "flowergreen" ],
+              [0.35, "flowergrey" ],
+              [0.35, "flowerorange" ],
+              [0.35, "flowerorchid" ],
+              [0.35, "flowerorchid2" ],
+              [0.35, "flowerorchid3" ],
+              [0.35, "flowerpink" ],
+              [0.35, "flowerpurple" ],
+              [0.35, "flowerwhite" ]
+              ],
               "parameters" : { }
             }
           ]
@@ -96,7 +136,7 @@
           "distribution" : "/biomes/distributions.config:denseSmall",
 
           "type" : "grass",
-          "grasses" : [ "weedy", "thinstem", "thickgrass", "savannahgrass", "pebbles", "rockstacks", "grass", "testflower", "testflower2", "testflower3", "testflower4", "testflower5", "testflower6", "testflower7" ]
+          "grasses" : [ "weedy", "thinstem", "thickgrass", "savannahgrass", "grass", "testflower", "testflower2", "testflower3", "testflower4", "testflower5", "testflower6", "testflower7" ]
         },
         {
           "mode" : "floor",
@@ -105,15 +145,22 @@
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "basicChest" ]
+          "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
         },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
 
-
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "gardenChest" ]
+        },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:overgroundRareChests",
 
           "type" : "object",
           "objectSets" : [
@@ -127,7 +174,7 @@
           "mode" : "floor",
           "priority" : 0.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:overgroundChests",
+          "distribution" : "/biomes/distributions.config:undergroundweaponChests",
 
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
@@ -143,14 +190,22 @@
         },
         {
           "mode" : "floor",
+          "priority" : 1,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:mainBiomeRareMicrodungeon",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "gardenmicrodungeons" ]
+        },
+        {
+          "mode" : "floor",
           "priority" : 0.5,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:randomEncounter",
           "type" : "microdungeon",
-          "microdungeons" : [ "randomencounter" ]
+          "microdungeons" : [ "fushops","randomencounter" ]
 
         },
-        
         {
           "mode" : "floor",
           "priority" : 3.0,
@@ -164,7 +219,7 @@
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseMedium",
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
 
           "type" : "bush",
           "bushes" : [
@@ -175,6 +230,93 @@
             }
           ]
         }
+    ]
+  },
+  "undergroundPlaceables" : {
+    "grassMod" : [ "grass" ],
+    "grassModDensity" : 0.3,
+
+    "ceilingGrassMod" : [ "undergrowth" ],
+    "ceilingGrassModDensity" : 0.3,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:potsRare",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
+      },
+	  {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "gardenChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundweaponChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "weaponChest" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChests",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "statuspod" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+	  {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "period" : 5,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "grass" ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 40,
+        "treeStemList" : [ "vine", "vine2", "vine3", "vine4" ],
+        "treeFoliageList" : [ "flowery", "starry", "dreamy" ]
+      }
     ]
   }
 }

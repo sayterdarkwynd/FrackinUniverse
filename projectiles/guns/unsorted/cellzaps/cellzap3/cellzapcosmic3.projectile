@@ -1,0 +1,32 @@
+{
+  "projectileName" : "cellzapcosmic3",
+  "physics" : "hover",
+  "bounces" : 0,
+  "speed" : 60,
+  "timeToLive" : 0.2,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [20, 90, 65],
+  "image" : "cellzapcosmic3.png",
+  "animationCycle" : 0.2,
+  "statusEffects" : [ "percentarmorboostneg2" ],
+  "frameNumber" : 3,
+  "animationLoops" : false,
+  "power" : 7,
+  "damagePoly" : [ [-3, 3], [-3, -3], [3, -3], [3, 3] ],
+  "piercing" : true,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/cellexplosion/cellexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "cellzapcosmic4",
+      "fuzzAngle" : 30,
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : 0
+    }
+  ],
+  "damageKind" : "cosmicplasma"
+}

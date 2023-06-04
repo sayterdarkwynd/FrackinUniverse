@@ -1,0 +1,65 @@
+{
+	"stats": [
+		{"stat": "maxHealth","effectiveMultiplier": 1.1},
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 0.75
+		},
+		{
+			"stat": "physicalResistance",
+			"amount": -0.10
+		},
+		{
+			"stat": "shadowResistance",
+			"amount": 0.15
+		},
+		{
+			"stat": "cosmicResistance",
+			"amount": 0.15
+		},
+		{
+			"stat": "fireResistance",
+			"amount": -0.35
+		},
+		{
+			"stat": "poisonResistance",
+			"amount": -0.2
+		}
+	],
+	"diet" : [ { "ORGANIC" : false, "PLANT" : true, "HIGH_GLUCOSE" : true }, { "MEAT" : true } ],
+	"controlModifiers": {
+		"airJumpModifier": 1.15
+	},
+
+	"envEffects": [{
+		"biomes": ["lush","forest","thickjungle","arboreal","arborealdark"],
+		"stats": [{"stat": "maxHealth","effectiveMultiplier": 1.15}]
+	}],
+
+	"weaponEffects": [
+			{
+			"weapons": ["wand","staff"],
+			"stats": [{
+				"stat": "protection",
+				"effectiveMultiplier": 1.2
+			}]
+		},
+		{
+			"weapons": [ "crossbow","bow" ],
+			"stats": [{
+					"stat": "critChance",
+					"amount": 5
+				},
+				{
+					"stat": "critDamage",
+					"amount": 0.05
+				}
+			]
+		},
+		{
+			"weapons": ["scythe"],
+			"stats": [{"stat": "powerMultiplier","effectiveMultiplier": 1.12}]
+		}
+	],
+	"tech" : [ "flight_saturnianmoth" ]
+}

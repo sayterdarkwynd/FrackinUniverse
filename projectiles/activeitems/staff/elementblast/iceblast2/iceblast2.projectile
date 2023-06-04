@@ -1,0 +1,23 @@
+{
+  "projectileName" : "iceblast2",
+  "image" : "iceblast2.png",
+  "physics" : "laser",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "windupFrames" : 5,
+  "pointLight" : true,
+  "lightColor" : [40, 0, 120],
+  "power" : 10,
+  "speed" : 35,
+  "damageKind" : "iceplasma",
+  "damagePoly" : [ [0, -8], [16, -8], [16, 8], [0, 8] ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/iceexplosionknockbackstatus.config"
+    }
+  ],
+  "emitters" : [ "iceplasma" ],
+  "statusEffects" : [ "frostslow" ],
+  "bounces" : 0
+}

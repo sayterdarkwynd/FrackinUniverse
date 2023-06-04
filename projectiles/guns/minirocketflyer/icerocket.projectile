@@ -1,0 +1,30 @@
+{
+  "projectileName" : "icerocket",
+  "image" : "minirocketice.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 3,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [122, 88, 222],
+  "pointLight" : true,
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/cbeamex1.wav" ]
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/iceexplosion1/iceexplosion1.config"
+    }
+  ],
+  "statusEffects" : [ "slow" ],
+  "emitters" : [ "tinyrocketsmoke" ],
+  "flippable" : true,
+  "power" : 1.0,
+  "speed" : 10.0,
+  "physics" : "rocket",
+  "damageKind" : "ice",
+
+  "scripts" : [ "minirocket.lua" ],
+  "maxSpeed" : 55,
+  "controlForce" : 100
+}

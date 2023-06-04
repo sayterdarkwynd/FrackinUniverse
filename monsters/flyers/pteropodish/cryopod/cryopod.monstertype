@@ -1,0 +1,282 @@
+
+{
+  "type" : "cryopod",
+  "shortdescription" : "Cryopod",
+  "description" : "It compresses moisture in its pod to form a powerful cold blast. Flies erratically.",
+
+  "categories" : [ "cryopod" ],
+  "parts" : [ "body" ],
+
+  "animation" : "cryopod.animation",
+
+  "dropPools" : [
+    {
+      "default" : "extraMonsterIce",
+      "bow" : "extraMonsterIceHunting",
+      "firebow" : "extraMonsterIceHunting",
+      "icebow" : "extraMonsterIceHunting",
+      "poisonbow" : "extraMonsterIceHunting",
+      "electricbow" : "extraMonsterIceHunting",
+      "cosmicbow" : "extraMonsterIceHunting",
+      "radioactivebow" : "extraMonsterIceHunting",
+      "shadowbow" : "extraMonsterIceHunting"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "seeThroughLiquid" : false,
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-offset-swoop",
+          "cooldown" : 0.1,
+          "parameters" : {
+            "targetOffset": [0,6],
+            "minimumRange" : 0,
+            "maximumRange" : 20,
+            "onGround" : false,
+            "windupTime" : 0.5,
+            "windupState" : "fly",
+            "gravityMultiplier" : -0.33,
+            "swoopVelocity" : 40,
+            "collisionCheck" : true,
+            "highArc" : false,
+            "swoopState" : "fly",
+            "swoopTime" : 0.25,
+            "winddownTime" : 0.0,
+            "winddownState" : "fly",
+            "winddownStopForce" : 20
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 3,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 30,
+            "minimumRange" : 10,
+            "windupState" : "firewindup",
+            "windupTime" : 0.75,
+            "projectileType" : "fuicebullet",
+            "inaccuracy" : 0.5,
+            "power" : 4,
+            "fireOffset" : [0, 0],
+            "projectileCount" : 3,
+            "projectileInterval" : 0.01,
+            "fireSound" : "fire",
+            "fireState" : "fire",
+            "winddownState" : "",
+            "winddownTime" : 0.5,
+            "aimAtTarget" : true,
+            "aimDirection" : [1,-1],
+            "onGround" : false,
+            "fireDelay" : 0.1
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 0.6,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 0,
+            "windupState" : "firewindup",
+            "windupTime" : 0.75,
+            "projectileType" : "cryopodbreath",
+            "power" : 12,
+            "fireOffset" : [0, 0],
+            "projectileCount" : 1,
+            "projectileInterval" : 0.01,
+            "fireSound" : "fire",
+            "fireState" : "fire",
+            "winddownState" : "",
+            "winddownTime" : 0.5,
+            "aimAtTarget" : false,
+            "aimDirection" : [1,-1],
+            "onGround" : false,
+            "fireDelay" : 0.1
+          }
+        }
+      ],
+
+
+      "concurrentHostileActions" : [
+      ],
+
+      "periodicActions" : [
+       ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "minRange" : 10,
+            "maxRange" : 18
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly"
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "wanderTime" : [2,4],
+            "groundDistance" : 8,
+            "ceilingDistance" : 8,
+            "xVelocity" : 4,
+            "yVelocity" : 12
+          }
+        }
+      ],
+
+      "concurrentActions" : [ ]
+
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.26, 0.625],  [0.625, 0.26], [0.625, -1.26], [0.26, -1.625], [-0.26, -1.625], [-0.625, -1.26], [-0.625, 0.26], [-0.26, 0.625] ],
+      "damage" : 9,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "lash",
+      "knockback" : 20,
+      "statusEffects" : [  ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.26, 0.625],  [0.625, 0.26], [0.625, -1.26], [0.26, -1.625], [-0.26, -1.625], [-0.625, -1.26], [-0.625, 0.26], [-0.26, 0.625] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 4,
+      "airForce" : 40,
+      "flySpeed" : 15
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+      "appliesWeatherStatusEffects" : false,
+
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 96
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : -0.5
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "cryopod" }
+  }
+}

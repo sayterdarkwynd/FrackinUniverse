@@ -1,0 +1,152 @@
+{
+  "particleEmitters" : {
+     "dashParticles" : {
+      "emissionRate" : 40.0,
+      "particles" : [
+        {
+          "particle" : "dash",
+          "flip" : true
+        }
+      ]
+    },
+    "flutterParticles" : {
+      "emissionRate" : 20.0,
+      "particles" : [
+        {
+          "particle" : "jetboots3",
+          "offset" : [-0.15, -1]
+        },
+        {
+          "particle" : "jetboots3",
+          "offset" : [0.15, -1]
+        }
+      ]
+    },
+    "wallJump.left" : {
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.4,
+            "position" : [-0.5, -1.5],
+            "rotation" : -90,
+            "timeToLive" : 0.7
+          }
+        }
+      ]
+    },
+    "wallJump.right" : {
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.5,
+            "position" : [0.5, -1.5],
+            "rotation" : 90,
+            "timeToLive" : 0.7
+          }
+        }
+      ]
+    },
+    "wallSlide.left" : {
+      "emissionRate" : 15,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/dust1/dust1.animation",
+            "layer" : "front",
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.4,
+            "position" : [-0.5, -1.5],
+            "initialVelocity" : [0, -1],
+            "timeToLive" : 0.6,
+            "variance" : {
+              "initialVelocity" : [2, 1]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/dust1/dust1.animation",
+            "layer" : "front",
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.4,
+            "position" : [-0.5, -2.25],
+            "initialVelocity" : [0, -1],
+            "timeToLive" : 0.4,
+            "variance" : {
+              "initialVelocity" : [2, 1]
+            }
+          }
+        }
+      ]
+    },
+    "wallSlide.right" : {
+      "emissionRate" : 15,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/dust1/dust1.animation",
+            "layer" : "front",
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.4,
+            "position" : [0.5, -1.5],
+            "initialVelocity" : [0, -1],
+            "timeToLive" : 0.4,
+            "variance" : {
+              "initialVelocity" : [2, 1]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/dust1/dust1.animation",
+            "layer" : "front",
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.4,
+            "position" : [0.5, -2.25],
+            "initialVelocity" : [0, -1],
+            "timeToLive" : 0.4,
+            "variance" : {
+              "initialVelocity" : [2, 1]
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "flutter" : [ "/sfx/tech/tech_sprint_start.ogg" ],
+    "multiJumpSound" : ["/sfx/tech/tech_doublejump.ogg"],
+    "wallJumpSound" : ["/sfx/tech/tech_walljump.ogg"],
+    "wallGrab" : [ "/sfx/blocks/footstep_stone.ogg" ],
+    "wallSlideLoop" : [ "/sfx/tech/tech_wallslide.ogg" ],
+    "startDash" : [ "/sfx/tech/tech_dash.ogg" ],
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ]
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "dashing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {}
+        }
+      }
+    }
+  }
+
+
+}

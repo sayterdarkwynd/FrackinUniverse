@@ -1,0 +1,112 @@
+{
+  "type" : "catvillager",
+  "baseType" : "base",
+
+  "levelVariance" : [3, 3],
+  "persistent" : true,
+
+  "damageTeamType" : "friendly",
+
+  "scriptConfig" : {
+    "behavior" : "villager",
+
+    "behaviorConfig" : {
+      "greetingChance" : 0.5,
+
+      "hostileDamageTeam" : { "type" : "enemy", "team" : 1 }
+    },
+
+    "questGenerator" : {
+      "pools" : ["common"],
+      "enableParticipation" : true,
+
+      // Every 30 seconds, decide whether to generate a quest and if so, spend
+      // the rest of the 30s window trying to generate it.
+      "timeLimit" : 30,
+
+      // Don't generate new quests if there are already more than <nearbyQuestLimit>
+      // questmanager stagehands nearby, within a <nearbyQuestRange> tile range.
+      "nearbyQuestLimit" : 2,
+      "nearbyQuestRange" : 50,
+      "questCountRange" : [1, 4],
+
+      "graduation" : {
+        "nextNpcType" : [
+          [1, "catcrewmemberengineer"],
+		  [1, "catcrewmembertailor"],
+          [1, "catcrewmembermedic"],
+          [1, "catcrewmemberjanitor"]
+        ]
+      }
+    },
+
+    "reactions" : {
+      "spontaneous" : [
+        [5.0, "sleep", { "timeRange" : [0.7, 0.9] }],
+        [1.0, "sit", { "timeRange" : [0.6,0.2]}],
+        [1.0, "wander"]
+      ]
+    },
+
+    "dialog" : {
+      "tenant" : {
+        "grumbles" : {
+          "tagCriteria" : "/dialog/catgrumble.config:tagCriteria",
+          "enclosedArea" : "/dialog/catgrumble.config:enclosedArea",
+          "otherDeed" : "/dialog/catgrumble.config:otherDeed",
+          "severe" : "/dialog/catgrumble.config:severe",
+          "final" : "/dialog/catgrumble.config:final"
+        },
+        "arrivedHome" : {
+          "beacon" : "/dialog/arrivedhome.config:beacon",
+          "rent" : "/dialog/arrivedhome.config:rent"
+        }
+      },
+      "flee" : {
+        "helpme" : "/dialog/catflee.config:helpme",
+        "safe" : "/dialog/catflee.config:safe"
+      },
+      "breakObject" : "/dialog/catconverse.config:breakObject",
+      "greeting" : "/dialog/catconverse.config:greeting",
+      "converse" : "/dialog/catconverse.config:converse",
+      "accuse" : "/dialog/catthief.config:accuse",
+      "alert" : "/dialog/catthief.config:alert"
+    }
+  },
+
+  "matchColorIndices" : true,
+  "items" : {
+    "cat" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "hiderhead", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } }, { "name" : "hiderhead", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } }, { "name" : "hiderhead", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } }, { "name" : "hiderhead", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } }
+            ],
+            "chest" : [
+              { "name" : "hiderchest", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } }
+            ],
+            "legs" : [
+              { "name" : "hiderlegs", "parameters" : { "colorIndex" : [1, 3, 4, 5, 6, 7, 8, 9] } }
+            ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 50.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.0
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      }
+    }
+  }
+}

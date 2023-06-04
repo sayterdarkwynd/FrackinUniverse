@@ -1,0 +1,52 @@
+{
+  "objectName" : "hydraulicdynamo",
+  "rarity" : "common",
+  "colonyTags" : [ "science", "foundry" ],
+  "category" : "wire",
+  "objectType" : "container",
+  "price" : 300,
+  "description" : "Boils water to drive an enormous piston. Generates up to ^orange;21W^reset; using thermal fuels such as lava or core fragments. Each slot outputs independently. ^Red;Needs water coolant.^reset; ^blue;Left Input^reset;: On/Off Switch",
+  "shortdescription" : "^cyan;Hydraulic Dynamo^reset;",
+  "race" : "generic",
+  "printable" : false,
+  "tooltipKind" : "base",
+
+  "inventoryIcon" : "hydraulicdynamoicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "hydraulicdynamo.png:on.15",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "hydraulicdynamo.animation",
+  "animationParts" : {
+    "screen" : "hydraulicdynamo.png",
+    "base" : "hydraulicdynamo_base.png",
+    "fullbright" : "hydraulicdynamo_fullbright.png"
+  },
+  "animationPosition" : [0, 0],
+
+	"slotCount" : 4,
+    "uiConfig" : "/objects/power/hydraulicdynamo/hydraulicdynamo.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "scripts" : [ "/scripts/fupower.lua","hydraulicdynamo.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [5, 2], [6,2]],
+  "outputNodes" : [ [4, 2] ],
+  "isn_powerSupplier" : true,
+  "powertype" : "output",
+  "fuels" : {
+      "corefragmentore" :  { "power" : 5,  "decayRate" : 40  },
+      "liquidnitrogenitem" : { "power" : 6,  "decayRate" : 20 },
+      "liquidlava" :  { "power" : 4,  "decayRate" : 10  },
+      "liquidironfu" :  { "power" : 6,  "decayRate" : 32  },
+      "volatilepowder" :  { "power" : 7,  "decayRate" : 40  },
+      "scorchedcore" :  { "power" : 7,  "decayRate" : 180  }
+  }
+}

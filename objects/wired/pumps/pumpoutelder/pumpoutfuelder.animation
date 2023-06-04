@@ -1,0 +1,41 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "outputState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1
+          },
+          "on" : {
+            "frames" : 1
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "outputPump" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "outputState" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.off"
+              }
+            },
+
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.on"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

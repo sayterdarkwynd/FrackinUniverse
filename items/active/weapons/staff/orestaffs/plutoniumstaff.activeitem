@@ -1,0 +1,88 @@
+{
+  "itemName" : "plutoniumstaff",
+  "level" : 6,
+  "price" : 1440,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "A highly radioactive staff.",
+  "shortdescription" : "Nuclear Staff",
+  "category" : "staff",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","staff","upgradeableWeapon","plutonium","radioactive"],
+  "tooltipKind" : "staff",
+
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "plutoniumstaff.png",
+    "stone" : "/items/active/weapons/staff/generated/stone/plutoniumstaff.png",
+    "chargeEffect" : "/items/active/weapons/staff/generated/glow/radioactive.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "radioactivecharge" : {
+        "offsetRegion" : [-0.5, 1.75, 0.5, 3.25]
+      }
+    }
+  },
+
+  "inventoryIcon" : "plutoniumstaff.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 1.3,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "discharge" : {
+      "duration" : 0.5,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "elementalType" : "radioactive",
+
+  "primaryAbilityType" : "nuclearburst",
+  "primaryAbility" : {},
+  "altAbilityType" : "elementalaura",
+  "altAbility" : {
+    "name" : "Radiation Bubble"
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

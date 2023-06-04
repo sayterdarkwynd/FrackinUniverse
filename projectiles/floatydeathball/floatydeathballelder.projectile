@@ -1,0 +1,40 @@
+{
+  "projectileName" : "floatydeathballelder",
+  "physics" : "floatydeath",
+  "speed" : 2,
+  "bounces" : 1,
+  "timeToLive" : 3,
+  "image" : "floatydeathballelder.png",
+  "animationCycle" : 1.5,
+  "animationLoops" : false,
+  "orientationLocked" : true,
+  "flippable" : true,
+  "fullbright" : true,
+  "scripts" : [ "homingarrow.lua" ],
+  "baseHomingControlForce" : 9,
+  "lightColor" : [160, 160, 0],
+  "frameNumber" : 2,
+  "periodicActions" : [
+    {
+      "time" : 0.034,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "shoggothbeamgun",
+      "config" : { "projectileParameters" : {"statusEffects" : ["superdarkstat"] } },
+      "inheritDamageFactor" : 0.85,
+      "fuzzAngle" : 360
+   }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/vsmallregularexplosion/vsmallregularexplosion.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
+    }
+  ],
+  "power" : 1,
+  "damageKind" : "fireplasma"
+}

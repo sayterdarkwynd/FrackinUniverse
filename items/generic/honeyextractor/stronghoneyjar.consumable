@@ -1,22 +1,24 @@
 {
-  "itemName" : "stronghoneyjar",
-  "rarity" : "Common",
-  "category" : "food",
-  "price" : 200,
-  "inventoryIcon" : "stronghoneyjar.png",
-  "description" : "An extra strong jar of honey! Just what you needed!",
-  "shortdescription" : "Strong Honey Jar",
- 
-  "effects" : [ [
-    {
-        "effect" : "honeyheal4",
-        "duration" :180  },
-    {
-        "effect" : "fedhoney",
-        "duration" : 180
-    }
-  ] ],
-  "blockingEffects" : [
-     "fedhoney"
-  ]
+  "itemName": "stronghoneyjar",
+  "rarity": "Common",
+  "category": "food",
+  "price": 50,
+  "inventoryIcon": "stronghoneyjar.png",
+  "description": "Grants a massive health boost.\n^cyan;+^white;70 ^cyan;HP ^gray;(^white;3m^gray;)^reset;",
+  "shortdescription": "Strong Honey Jar",
+
+  "tooltipKind": "food",
+  "effects": [
+    [
+      {
+        "effect": "maxhealthboost70",
+        "duration": 180
+      },
+      {
+        "effect": "fedhoney",
+        "duration": 180
+      }
+    ]
+  ],
+  "blockingEffects": ["fedhoney"]
 }

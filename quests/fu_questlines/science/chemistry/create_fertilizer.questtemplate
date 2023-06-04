@@ -1,0 +1,33 @@
+{
+	"id" : "create_fertilizer",
+	"prerequisites" : [ "create_iodine" ],
+	"title" : "Fertile Ground",
+	"text" : "^orange;Fertilizer^reset; is essential to produce plants of any real value. To make some, you will first need an ^orange;Alchemy Table^reset;. I need 1 barrel of ^orange;Fertilizer^reset; for this project. Bring me some, would you?",
+	"completionText" : "Now you can create some more advanced chemicals, and grow even better crops! Upgrade your ^orange;Alchemy Table^reset; into a ^orange;Chemistry Lab^reset; as soon as you are able.",
+	"moneyRange" : [220, 320],
+	"rewards" : [ [ [ "ff_gasmask", 1 ] ] ],
+	"speaker" : "questGiver",
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
+
+		"requireTurnIn" : true,
+
+		"turnInDescription" : "Bring the ^orange;Fertilizer^reset; to the green-tailed cat at the ^orange;Science Outpost^reset;",
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "ff_fertilizer",
+				"count" : 1,
+				"consume" : true
+			}
+		]
+	}
+}

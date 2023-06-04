@@ -1,21 +1,24 @@
 {
-  "itemName" : "appleschnapps",
-  "price" : 100,
-  "rarity" : "Common",
-  "category" : "drink",
-  "inventoryIcon" : "appleschnapps.png",
-  "description" : "A bottle of apple flavored schnapps!",
-  "shortdescription" : "Apple Schnapps",
-  "handPosition" : [0, -2],
-  "effects" : [ [
-		{
-        "effect" : "slow",
-        "duration" : 60
-		},
-		{
-		"effect" : "booze",
-		"amount" : 3,
-		"duration" : 60
-        }
-    ] ]
+  "itemName": "appleschnapps",
+  "price": 1100,
+  "rarity": "Common",
+  "category": "drink",
+  "inventoryIcon": "appleschnapps.png",
+  "description": "A bottle of apple flavored schnapps!\n^white;35% ^red;Slow ^gray;, ^red;Drunk ^gray;(^white;1m^gray;)^reset;",
+  "shortdescription": "Apple Schnapps",
+  "handPosition": [0, -2],
+  "tooltipKind": "food",
+  "effects": [
+    [
+      {
+        "effect": "slow",
+        "duration": 60
+      },
+      {
+        "effect": "booze",
+        "duration": 60
+      }
+    ]
+  ],
+  "emitters" : [ "drinking" ]
 }

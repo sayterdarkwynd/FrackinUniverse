@@ -1,0 +1,92 @@
+{
+  "itemName" : "quietuswand",
+  "level" : 4,
+  "price" : 960,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Sufficiently Advanced Technology.",
+  "shortdescription" : "Quietus Wand",
+  "category" : "wand",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","wand","upgradeableWeapon", "quietus"],
+  "tooltipKind" : "staff",
+
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "quietuswand.png",
+    "stone" : "/items/active/weapons/wand/generated/stone/quietuswand.png",
+    "chargeEffect" : "/items/active/weapons/staff/generated/glow/physical.png"
+  },
+
+  "inventoryIcon" : "quietuswand.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "baseDamageFactor" : 0.5,
+
+  "stances" : {
+    "idle" : {
+      "weaponOffset" : [0, 1.0],
+
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "weaponOffset" : [0, 1.5],
+
+      "duration" : 1.0,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "weaponOffset" : [0, 1.5],
+
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "weaponOffset" : [0, 1.5],
+
+      "duration" : 0.5,
+      "armRotation" : -10,
+      "weaponRotation" : -50,
+      "twoHanded" : false,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "cooldown" : {
+      "weaponOffset" : [0, 1.0],
+
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "plasmabarrage",
+  "primaryAbility" : {
+    "name" : "Blood Barrage",
+    "projectileType" : "quietusball"
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

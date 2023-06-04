@@ -1,0 +1,73 @@
+{
+  "itemName" : "fireslimetendrils3",
+  "level" : 5,
+  "price" : 750,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Reach out and hit somebody.",
+  "shortdescription" : "Fire Slime Tendrils III",
+  "tooltipKind" : "gun",
+//  "learnBlueprintsOnPickup" : [ "fireslimetendrils3" ],
+  "category" : "uniqueWeapon",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","ranged","livingweapon","upgradeableWeapon","slime"],
+
+  "inventoryIcon" : "fireslimetendrilsicon.png",
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "slimetendrils.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/slimetendril1.ogg", "/sfx/gun/slimetendril2.ogg", "/sfx/gun/slimetendril3.ogg" ]
+    }
+  },
+  "baseOffset" : [0, 0],
+  "muzzleOffset" : [0, 0],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "fire",
+
+  "primaryAbilityType" : "tentaclegun",
+  "primaryAbility" : {
+    "chain" : {
+      "taper" : 0.3,
+      "segmentImage" : "/items/active/weapons/other/tentaclegun/fireslimetendrilsegment.png",
+      "endSegmentImage" : "/items/active/weapons/other/tentaclegun/fireslimetendrilend.png",
+      "segmentSize" : 1.0
+    },
+
+    "guideProjectiles" : true,
+    "maxLength" : 30,
+
+    "baseDps" : 5.4,
+    "fireTime" : 0.2,
+    "maxProjectiles" : 4,
+    "energyUsage" : 40,
+    "inaccuracy" : 0.01,
+
+    "projectileType" : "invisiblefiretentaclefist",
+    "projectileParameters" : {
+      "knockback" : 0,
+      "speed" : 40,
+      "timeToLive" : 10,
+  "statusEffects" : [
+{"effect" : "burning", "duration" : 10 }
+  ]
+    }
+
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+    "critChance" : 2,
+  "critBonus" : 4,
+    "upgradeParameters" : {
+    "inventoryIcon" : "fireslimetendrilsstaricon.png",
+    "shortdescription" : "Fire Slime Tendrils ^yellow;^reset;"
+  }
+}

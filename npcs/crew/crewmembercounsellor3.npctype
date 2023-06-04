@@ -1,0 +1,121 @@
+{
+  "type" : "crewmembercounsellor3",
+  "baseType" : "fu_crewmember",
+
+  "scriptConfig" : {
+    "crew" : {
+      "defaultUniform" : {
+        "chest" : "startrekchest",
+        "legs" : "startrekpants"
+      },
+
+      "role" : {
+        "type" : "soldier",
+        "name" : "Head Counsellor",
+        "field" : "Fixing Heads",
+        "uniformColorIndex" : 8,
+
+        "benefits" : [
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "fuelEfficiency",
+            "value" : 0.02
+          },
+          {
+            "type" : "EphemeralEffect",
+            "effect" : "madnessloss3",
+            "duration" : 120
+          },
+          {
+            "type" : "PersistentEffect",
+            "effect" : "madnessloss3"
+          }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "Tell me your problems and I'll help soothe your worries. With science!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Tell Floran your problems and Floran will sssoothe your worries. With ssscience!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Reassuring. Tell me your problems and I'll help soothe your worries. With science!"
+            ]
+          }
+        },
+        "fieldBenefit" : {
+          "default" : {
+            "default" : [
+              "Tell me what you're feeling.",
+              "If you don't share your problems, I cannot help you.",
+              "Have you seen a bearded, sexy commander lately? I'm asking for a friend.",
+              "This isn't the first time I've been exposed to this, it's okay to open up."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Tell me what you're feeling.",
+              "If you don't share your problemsss, Floran cannot help you.",
+              "Have you sseen a bearded, sssexy commander lately? Floran iss asking for a friend.",
+              "This issn't the firsst time Floran hass sseen this, it'ss okay to open up."
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Sympathetic. Tell me what you're feeling.",
+              "Tender. If you don't share your problems, I cannot help you.",
+              "Casual. Have you seen a bearded, sexy commander lately? I'm asking for a friend.",
+              "Reassuring. This isn't the first time I've been exposed to this, it's okay to open up."
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Tell me what you're feeling.",
+              "If you don't share your problems, I cannot help you.",
+              "Have you seen a bearded, sexy commander lately? I'm asking for a friend.",
+              "This isn't the first time I've been exposed to this, it's okay to open up."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Tell me what you're feeling.",
+              "If you don't share your problemsss, Floran cannot help you.",
+              "Have you sseen a bearded, sssexy commander lately? Floran iss asking for a friend.",
+              "This issn't the firsst time Floran hass sseen this, it'ss okay to open up."
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Sympathetic. Tell me what you're feeling.",
+              "Tender. If you don't share your problems, I cannot help you.",
+              "Casual. Have you seen a bearded, sexy commander lately? I'm asking for a friend.",
+              "Reassuring. This isn't the first time I've been exposed to this, it's okay to open up."
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "weaponminer" ]
+          }
+        ] ]
+    ]
+  }
+}

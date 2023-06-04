@@ -1,0 +1,55 @@
+{
+  "objectName" : "feyaseed",
+  "colonyTags" : ["nature"],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "Used to store thermal energy for later use.",
+  "shortdescription" : "Feya Crystal Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 285,
+
+  "apexDescription" : "This crystal barely sparkles.",
+  "avianDescription" : "These stones remind me of the night sky.",
+  "floranDescription" : "Floran doesssn't like. Sss'not ssshiny...",
+  "glitchDescription" : "Uninterested. These don't appear to be very valuable.",
+  "humanDescription" : "They're dull, but the colour is nice.",
+  "hylotlDescription" : "These crystals are like the night sky.",
+  "elduukharDescription" : "We use these to keep thermal energy stored.",
+
+  "lightColor" : [69, 32, 156],
+
+  "inventoryIcon" : "feyaseedicon.png",
+
+  "tooltipKind" : "seed",
+  "largeImage" : "feyaseed.png:default.2.3",
+  "orientations" : [
+    {
+      "dualImage" : "feyaseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+"stages" : [
+    {
+      "duration" : [220, 620]
+    },
+    {
+      "duration" : [920, 1220]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "feyaHarvest"
+    }
+  ],
+
+  "consumeSoilMoisture" : false
+
+}

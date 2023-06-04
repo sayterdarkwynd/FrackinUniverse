@@ -6,25 +6,25 @@
   "shortdescription" : "Honey Material",
   "description" : "The walls are dripping in gold!",
 
-  "footstepSound" : "/sfx/blocks/footstep_brains.ogg",
+  "footstepSound" : "/sfx/blocks/footstep_mud.ogg",
   "health" : 2,
   "soil" : true,
   "category": "materials",
 
-  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderTemplate" : "/tiles/fuclassicnopaint.config",
   "renderParameters" : {
     "texture" : "honeycombmaterial.png",
     "variants" : 5,
     "lightTransparent" : false,
     "occludesBelow" : true,
-    "multiColored" : false,
+    "multiColored" : true,
     "zLevel" : 0
   },
   "liquidInteractions" : [
       {
         "liquidId": 60,
-        "consumeLiquid": 0.45,
+        "consumeLiquid": 0.25,
         "transformMaterialId": 6580
       }
-  ] 
+  ]
 }

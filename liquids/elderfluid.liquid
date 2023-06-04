@@ -1,67 +1,20 @@
 {
   "name" : "elderfluid",
   "liquidId" : 45,
-  "description" : "Strange, otherwordly liquid.",
-	"tickDelta" : 6,		
-	"color" : [55, 205, 161, 225],
-	"radiantLight" : [35, 125, 101],
-	"itemDrop" : "liquidelderfluid",
-        "statusEffects" : [ "swimming", "insanity" ],
-        "interactions" : [
-          {
-            "liquid" : 1,
-            "liquidResult" : 45
-          },
-          {
-            "liquid" : 3,
-            "liquidResult" : 45
-          },
-          {
-            "liquid" : 8,
-            "liquidResult" : 45
-          },
-          {
-          //bioooze
-            "liquid" : 41,
-            "liquidResult" : 45
-          },  
-          {
-          //black tar
-            "liquid" : 42,
-            "liquidResult" : 45
-          },      
-          {
-          //soup
-            "liquid" : 43,
-            "liquidResult" : 45
-          },  
-          {
-          //proto
-            "liquid" : 44,
-            "liquidResult" : 45
-          },     
-          {
-          //acid
-            "liquid" : 46,
-            "liquidResult" : 45
-          }, 
-          {
-          //irradium
-            "liquid" : 47,
-            "liquidResult" : 45
-          },   
-          {
-          //mercury
-            "liquid" : 48,
-            "liquidResult" : 45
-          },
-          {
-          //aether
-            "liquid" : 100,
-            "materialResult" : "protorock"
-          }
-        ],
- 	"texture" : "/liquids/watertex.png",
-	"bottomLightMix" : [60, 10, 50],
-	"textureMovementFactor" : 2.6
+  "description" : "Strange, otherworldly liquid.",
+  "tickDelta" : 1,
+  "color" : [5, 225, 161, 205],
+  "radiantLight" : [55, 125, 101],
+  "itemDrop" : "liquidelderfluid",
+  "statusEffects" : [ "swimming", "insanity", "wetelder" ],
+  "interactions" : [
+    {
+      //aether
+      "liquid" : 100,
+      "materialResult" : "protorock"
+    }
+  ],
+  "texture" : "/liquids/eldertex.png",
+  "bottomLightMix" : [0, 30, 90],
+  "textureMovementFactor" : 2.6
 }

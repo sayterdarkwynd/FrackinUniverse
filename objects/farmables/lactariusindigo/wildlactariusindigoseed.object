@@ -1,0 +1,44 @@
+{
+  "objectName" : "wildlactariusindigoseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Rare",
+  "category" : "seed",
+  "description" : "Resistant to Shadow effects.",
+  "shortdescription" : "Lactarius Indigo",
+  "objectType" : "farmable",
+  "printable" : false,
+//    "learnBlueprintsOnPickup" : [ "lactariusindigoseed" ],
+  "inventoryIcon" : "lactariusindigoseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "lactariusindigoseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [1, 0], [2, 0], [0, 1], [1, 1], [2, 1], [0, 2], [1, 2], [2, 2] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [120, 360]
+    },
+    {
+      "duration" : [120, 360]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "lactariusindigoHarvest",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125,
+  "breakDropOptions" : [
+    [ [ "lactariusindigoseed", 1, { } ] ]
+  ],
+  "beeLikeness" : { "shrouded" : 1}
+}

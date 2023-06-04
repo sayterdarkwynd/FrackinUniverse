@@ -1,0 +1,157 @@
+{
+	"stats": [
+		{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 0.95
+		},
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 1.1
+		},
+		{
+			"stat": "physicalResistance",
+			"amount": -0.1
+		},
+		{
+			"stat": "grit",
+			"amount": 0.05
+		},
+		{
+			"stat": "fireResistance",
+			"amount": 0.25
+		},
+		{
+			"stat": "iceResistance",
+			"amount": 0.25
+		},
+		{
+			"stat": "electricResistance",
+			"amount": 0.25
+		},
+		{
+			"stat": "shadowResistance",
+			"amount": -0.4
+		},
+		{
+			"stat": "radioactiveResistance",
+			"amount": 0.4
+		},
+		{
+			"stat": "snowslowImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "iceslipImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "fallDamageMultiplier",
+			"effectiveMultiplier": 0.30
+		},
+		{
+			"stat": "iceStatusImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "fireStatusImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "radiationburnImmunity",
+			"amount": 1
+		}
+	],
+	"diet" : "entity",
+	"controlModifiers": {
+		"speedModifier": 1.12,
+		"airJumpModifier": 1.15
+	},
+	"envEffects": [
+
+		{
+			"biomes": [ "alien", "jungle", "irradiated", "chromatic" ],
+			"stats": [
+				{ "stat": "maxHealth", "effectiveMultiplier": 1.15 },
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.15 }
+			]
+		}
+	],
+	"weaponEffects": [{
+			"weapons": [ "sniperrifle", "rifle" ],
+			"stats": [
+				{ "stat": "critChance", "amount": 2 },
+				{ "stat": "critDamage", "amount": 0.1 }
+			]
+		},
+		{
+			"weapons": [
+				"energy"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.12
+			}]
+		},
+		{
+			"weapons": [
+				"grenadelauncher"
+			],
+			"stats": [{
+				"stat": "critDamage",
+				"amount": 0.2
+			}]
+		}
+	],
+	"scripts" : [
+		{
+			"script" : "/scripts/fr_scripts/novakidStuff.lua",
+			"args" : {
+				"daytimeConfig" : {
+					"stats" : [                  // Applied during the day
+						{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 1.20 }
+					],
+					"hungerRegen" : 0.006,       // Hunger% gained/s during the day
+					"hungerThreshold" : 0.40,    // Hunger% required for regen to start
+					"maxHunger" : 0.85,          // Maximum hunger level for regen (stops increasing here, keeps regenning above this)
+					"minHunger" : 0.50,          // Minimum hunger level for regen (starts here, no regen below this)
+					"maxRegen" : 0.015,          // Regen/s at maximum hunger level
+					"minRegen" : 0.010           // Regen/s at minimum hunger level
+				},
+				"nightConfig" : {
+					"stats" : [                  // Applied at night
+						{ "stat" : "maxEnergy", "effectiveMultiplier" : 0.75 },
+						{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 1.0 }
+					],
+					"hungerThreshold" : 0.5,     // Hunger% at which regeneration is allowed at night
+					"hungerLoss" : -0.004,      // Hunger%/s lost at night
+					"regen" : 0.009              // Health%/s gained at night
+				}
+			}
+		}
+	],
+	"aerialEffect": {
+		"airStats": {
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.1
+			}]
+		},
+		"windEffects": {
+			"windLow": {
+				"speed": 70,
+				"controlModifiers": {
+					"speedModifier": 1.12,
+					"airJumpModifier": 1.15
+				}
+			},
+			"windHigh": {
+				"speed": 7,
+				"controlModifiers": {
+					"speedModifier": 1.25,
+					"airJumpModifier": 1.25
+				}
+			}
+		}
+	},
+	"tech" : [ "flight_avali" ]
+}

@@ -1,0 +1,71 @@
+{
+	"itemName": "fusteampunkhead",
+	"inventoryIcon": "icons.png:head",
+	"dropCollision": [-4.0, -3.0, 4.0, 3.0],
+	"maxStack": 1,
+	"rarity": "uncommon",
+	"description": "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;5^reset;% Speed^reset;
+^yellow;^reset; Electric/Energy: Damage x^green;1.2^reset;, Energy x^green;1.25^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Burning, Electrified",
+	"shortdescription": "Steampunk Mask",
+	"category": "headarmour",
+	"tooltipKind": "armornew2",
+	"maleFrames": "head.png",
+	"femaleFrames": "head.png",
+	"mask": "mask.png",
+	"itemTags": [ "upgradeableWeapon", "offensive", "ranged", "hyper" ],
+	"level": 3,
+	//"collectablesOnPickup": { "fu_armorpowerranged": "fusteampunkhead" },
+	"leveledStatusEffects": [
+		{
+			"levelFunction": "standardArmorLevelPowerMultiplierMultiplier",
+			"stat": "powerMultiplier",
+			"baseMultiplier": 1.15
+		},
+		{
+			"levelFunction": "standardArmorLevelProtectionMultiplier",
+			"stat": "protection",
+			"amount": 0.25
+		},
+		{
+			"levelFunction": "standardArmorLevelMaxEnergyMultiplier",
+			"stat": "maxEnergy",
+			"amount": 5
+		},
+		{
+			"levelFunction": "standardArmorLevelMaxHealthMultiplier",
+			"stat": "maxHealth",
+			"amount": 1
+		},
+		{
+			"levelFunction": "fuArmorResistMultiplier",
+			"stat": "electricResistance",
+			"amount": 0.05
+		}
+	],
+
+	"statusEffects": [
+		"steampunksetbonus",
+		{
+			"stat": "fu_steampunkset_head",
+			"amount": 1
+		}
+	],
+
+	"colorOptions": [
+		{ "ffca8a": "fffdb0", "e0975c": "cbc234", "a85636": "926e19", "6f2919": "563f0f" },
+		{ "ffca8a": "727272", "e0975c": "414141", "a85636": "1c1c1c", "6f2919": "0b0b0b" },
+		{ "ffca8a": "e9e9e9", "e0975c": "727272", "a85636": "333333", "6f2919": "161616" },
+		{ "ffca8a": "fa5f53", "e0975c": "bc1d1d", "a85636": "76141b", "6f2919": "460c12" },
+		{ "ffca8a": "ffb05a", "e0975c": "c36a22", "a85636": "833d12", "6f2919": "512209" },
+		{ "ffca8a": "fae153", "e0975c": "b1981c", "a85636": "7d6214", "6f2919": "47340a" },
+		{ "ffca8a": "8ed563", "e0975c": "498737", "a85636": "1e4b19", "6f2919": "0b200a" },
+		{ "ffca8a": "47c8f8", "e0975c": "1b79b5", "a85636": "10386d", "6f2919": "091d3f" },
+		{ "ffca8a": "be69f4", "e0975c": "8532bf", "a85636": "4e187c", "6f2919": "290c46" },
+		{ "ffca8a": "fc72f8", "e0975c": "a239a3", "a85636": "681f6f", "6f2919": "35103b" },
+		{ "ffca8a": "bb8b4d", "e0975c": "75522d", "a85636": "463319", "6f2919": "1c140a" }
+	],
+	"builder": "/items/buildscripts/fubuildarmor.lua"
+
+}

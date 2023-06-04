@@ -1,0 +1,42 @@
+{
+  "type" : "airshipcrew",
+  "baseType" : "airshipcaptain",
+
+  "dropPools" : [ "airshipguardtreasure" ],
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "piratehead" } ],
+            "chest" : [ { "name" : "piratechest" } ],
+            "legs" : [ { "name" : "piratelegs" } ],
+            "back" : [ { "name" : "pilotback" } ],
+            "primary" : [
+              "npcassaultrifle"
+            ],
+            "sheathedprimary" : [
+              "npcbroadsword"
+            ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 70.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.5
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      }
+    }
+  }
+}

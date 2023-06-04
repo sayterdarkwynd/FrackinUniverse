@@ -1,0 +1,52 @@
+{
+  "objectName" : "fu_ftldrivesmall",
+  "rarity" : "essential",
+  "colonyTags" : [ "science" ],
+  "category" : "furniture",
+  "description" : "An FTL drive for a space ship. Allows interstellar travel. ^orange;Ship Speed: +3, Ship Mass: +1^reset;. ^red;BYOS Only^reset;",
+  "shortdescription" : "^cyan;Small FTL Drive^reset;",
+  "race" : "generic",
+  "printable" : false,
+//  "learnBlueprintsOnPickup" : [ "fu_ftldrivemk1a", "fu_ftldrivemk1b", "fu_ftldrivemk1c" ],
+
+  "apexDescription" : "Smaller than most models, but it works. For now.",
+  "avianDescription" : "This small device gathers electricity and converts it into motion.",
+  "floranDescription" : "FTL drive sssmall, but Floran make do.",
+  "glitchDescription" : "Content. This FTL drive works enough for space travel.",
+  "humanDescription" : "Small, but an FTL drive is a must have for any ship.",
+  "hylotlDescription" : "A smaller model FTL drive for intergalactic travel.",
+  "novakidDescription" : "This faster'n 'light machine is workin' fine, though it's quite small.",
+
+  "inventoryIcon" : "/objects/ship/fu_ftldriveicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_ftldrivesmall.png",
+      "imagePosition" : [-30, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "fu_ftldrivesmall.animation",
+  "animationParts" : {
+    "base" : "fu_ftldrivesmall.png",
+	"fullbright" : "fu_ftldrivesmallfullbright.png"
+  },
+  "animationPosition" : [-30, 0],
+
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua", "/objects/ship/fu_ftldriveanimation.lua" ],
+  "scriptDelta" : 60,
+
+  "stats" : {
+    "shipSpeed" : 3,
+    "shipMass" : 1
+  },
+  "capabilities" : [
+    "systemTravel",
+    "planetTravel"
+  ],
+  "maxAmountGroups" : {
+    "ftlDrive" : 1
+  },
+  "byosOnly" : true
+}

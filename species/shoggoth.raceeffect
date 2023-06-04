@@ -1,0 +1,78 @@
+{
+
+	"stats" : [
+		{ "stat" : "iceResistance", "amount" : 0.30 },
+		{ "stat" : "shadowResistance", "amount" : 0.15 },
+		{ "stat" : "cosmicResistance","amount" : 0.15 },
+		{ "stat" : "slimeImmunity","amount" : 1 },
+		{ "stat" : "slimestickImmunity","amount" : 1 },
+		{ "stat" : "insanityImmunity","amount" : 1 },
+		{ "stat" : "fireResistance", "amount" : -0.30 },
+		{ "stat" : "electricResistance", "amount" : -0.10 },
+		{ "stat" : "foodDelta", "baseMultiplier": 1.20 },
+		{"stat": "maxBreath","amount": 1920 }
+	],
+
+	"diet" : "entity",
+	"tech" : ["shoggothmadnesstech"],
+
+	"envEffects": [{
+			"biomes": [
+				"slimeworld",
+				"atropus",
+				"atropusdark",
+				"tentacle",
+				"bloodstonesea",
+				"bloodstoneseafloor",
+				"strangesea",
+				"strangeseafloor"
+			],
+			"stats": [{
+				"stat": "maxHealth",
+				"effectiveMultiplier": 1.25
+			}]
+		},
+		{
+			"biomes": "cold",
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.15
+			},
+			{
+				"stat": "protection",
+				"effectiveMultiplier": 1.15
+			}]
+		},
+		{
+			"biomes": "hot",
+			"stats": [{
+				"stat": "maxEnergy",
+				"effectiveMultiplier": 0.8
+			},
+			{
+				"stat": "protection",
+				"effectiveMultiplier": 0.8
+			}]
+		}
+
+	],
+
+	"weaponEffects": [
+		{
+			"weapons": [ "fist" ],
+			"controlModifiers": { "speedModifier": 1.25 }
+		},
+		{
+			"weapons": ["livingweapon","bioweapon","slime"],
+			"stats": [
+			{
+				"stat": "energyRegenPercentageRate",
+				"baseMultiplier": 1.15
+			},
+			{
+				"stat": "protection",
+				"effectiveMultiplier": 1.15
+			}]
+		}
+	]
+}

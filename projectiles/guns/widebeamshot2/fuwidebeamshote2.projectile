@@ -1,0 +1,49 @@
+{
+  "projectileName" : "fuwidebeamshote2",
+  "physics" : "laser",
+  "piercing" : true,
+  "bounces" : 0,
+  "level" : 3,
+  "damageKindImage" : "widebeamshoticon.png",
+  "image" : "widebeamshot.png",
+  "animationCycle" : 0.1,
+  "frameNumber" : 2,
+  "power" : 40,
+  "timeToLive" : 0,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+
+  {
+      "action" : "projectile",
+      "type" : "fuwidebeamshot",
+      "timeToLive" : 0.1,
+      "fuzzAngle" : 1,
+      "inheritDamageFactor" : 1,
+      "angleAdjust" : 0
+
+    },
+  {
+      "action" : "projectile",
+      "type" : "fuwidebeamshot",
+      "timeToLive" : 0.1,
+      "fuzzAngle" : 1,
+      "inheritDamageFactor" : 1,
+      "angleAdjust" : 18
+
+    },
+  {
+      "action" : "projectile",
+      "type" : "fuwidebeamshot",
+      "timeToLive" : 0.1,
+      "fuzzAngle" : -1,
+      "inheritDamageFactor" : 1,
+      "angleAdjust" : -18
+
+    }
+
+
+   ],
+
+  "lightColor" : [221, 93, 192],
+  "damageKind" : "plasma"
+}

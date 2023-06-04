@@ -1,0 +1,44 @@
+{
+  "itemName" : "skathtier3hammer",
+  "price" : 960,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "This hammer strikes like the waves of a tsunami.",
+  "shortdescription" : "Skath Tsunami Hammer",
+  "tooltipKind" : "sword2",
+  "category" : "hammer",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","hammer","upgradeableWeapon"],
+
+  "inventoryIcon" : "skathtier3hammer.png",
+
+  "animation" : "/items/active/weapons/melee/hammer/hammer.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "skathtier3hammer.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 1.1,
+    "baseDps" : 16
+  },
+  "critChance" : 2,
+  "critBonus" : 15,
+  "stunChance" : 15,
+  "palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
+
+  "altAbilityType" : "superspinslash",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

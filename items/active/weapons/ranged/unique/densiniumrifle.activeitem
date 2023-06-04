@@ -4,15 +4,18 @@
   "inventoryIcon" : "densiniumrifle.png",
   "maxStack" : 1,
   "rarity" : "legendary",
-    "description" : "Fires miniaturized rifts.",
+  "description" : "Superior weaponry offering unsurpassed utility.
+^yellow;4-round bursts^reset;
+^green;Piercing alt-fire^reset;",
     "shortdescription" : "Densinium Rifle",
-  "level" : 5,
-  "tooltipKind" : "gun",
+  "category" : "energy",
+  "level" : 6,
+  "tooltipKind" : "gun2",
   "weaponType" : "Energy",
-  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "itemTags" : ["weapon","ranged","assaultrifle", "energy", "densinium", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/unique/densiniumrifle.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "densiniumrifle.png",
@@ -21,34 +24,58 @@
     "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.25, 0.1875]
+		  }
+		}
+      }
+    },
     "sounds" : {
       "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
+    },
+    "lights" : { "muzzleFlash" : {"color" : [92, 41, 123] } },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "frozenflames", "offset" : [0.0, 0.0] },
+          { "particle" : "frozenfiretrail", "offset" : [0.0, 0.0] },
+          { "particle" : "teslaboltpurple", "offset" : [0.0, 0.0] }
+        ]
+      }
     }
   },
 
-  "baseOffset" : [0.68, -0.22],
-  "muzzleOffset" : [2.845, 0.325],
+  "baseOffset" : [1.25, 0.1875],
+  "muzzleOffset" : [2.375, 0.25],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "electric",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
     "fireTime" : 0.11,
-    "baseDps" : 9.95,
-    "energyUsage" : 24.5,
+    "baseDps" : 8.7,
+    "useEnergy" : true,
+    "energyUsage" : 30.5,
+    "runSlowWhileShooting" : true,
+
     "inaccuracy" : 0.012,
+    "burstCooldown" : 0.4,
     "burstTime" : 0.075,
-    "burstCount" : 3,
+    "burstCount" : 4,
     "projectileCount" : 1,
     "fireType" : "burst",
 
     "projectileType" : "densiniumrifleshot",
-    "projectileParameters" : { 
-      "speed" : 60,
-      "knockback" : 4
+    "projectileParameters" : {
+      "knockback" : 4,
+      "damageSourceKind" : "electric"
     },
 	  "stances" : {
 	    "idle" : {
@@ -61,25 +88,31 @@
 	    },
 	    "fire" : {
 	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
+	      "armRotation" : 4,
+	      "weaponRotation" : 4,
 	      "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
+	      "allowRotate" : true,
+	      "allowFlip" : true
 	    },
 	    "cooldown" : {
-	      "duration" : 0.075,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
+	      "duration" : 0.055,
+	      "armRotation" : 4,
+	      "weaponRotation" : 4,
 	      "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
+	      "allowRotate" : true,
+	      "allowFlip" : true
 	    }
 	  }
   },
 
+  "critChance" : 3,
+  "critBonus" : 6,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 400,
   "altAbilityType" : "densiniumaltshot",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

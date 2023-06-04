@@ -1,0 +1,50 @@
+{
+  "objectName" : "slimepersonshiplight",
+  "colonyTags" : ["light", "slimeperson", "slimenpc", "slimenpchuman"],
+  "rarity" : "Common",
+  "category" : "light",
+  "lightColor" : [230, 230, 230],
+  "price" : 60,
+  "description" : "A type of ship light that seems to have a thin layer of slime.",
+  "shortdescription" : "Slime Ship Light",
+  "race" : "slimeperson",
+
+  "apexDescription" : "These types of lights are commonly used on ships.",
+  "avianDescription" : "A vibrant light.",
+  "floranDescription" : "Ship light is harsh on Floran eyesss.",
+  "glitchDescription" : "Impressed. This lighting fixture generates more light than heat.",
+  "humanDescription" : "A bright, white light.",
+  "hylotlDescription" : "A bright, white light. It creates a neutral atmosphere.",
+  "novakidDescription" : "That's one bright lightbulb.",
+  "slimepersonDescription" : "Shiny!",
+
+  "inventoryIcon" : "slimepersonshiplighticon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "slimepersonshiplight.png:<color>.<frame>", "fullbright" : true }, { "image" : "slimepersonshiplightlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-8, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/fluorescent_light_quiet.ogg",
+  "soundEffectRangeMultiplier" : 0.5,
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "slimepersonshiplight.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

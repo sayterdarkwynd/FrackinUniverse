@@ -1,0 +1,103 @@
+{
+	"stats": [
+		{ "stat": "maxHealth", "effectiveMultiplier": 0.95 },
+		{ "stat": "protection", "effectiveMultiplier": 0.9 },
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.1 },
+		{ "stat": "powerMultiplier", "effectiveMultiplier": 1.05 },
+		{ "stat": "foodDelta", "baseMultiplier": 1.05 },
+		{ "stat": "maxBreath", "amount": 1500 },
+		{ "stat": "electricResistance", "amount": -0.3 },
+		{ "stat": "iceResistance", "amount": 0.1 },
+		{ "stat": "shadowResistance", "amount": 0.2 },
+		{ "stat": "radioactiveResistance", "amount": -0.2 }
+	],
+	"diet" : "omnivore",
+	"controlModifiers": {
+		"speedModifier": 1.05
+	},
+	"envEffects": [
+		{
+			"biomes": [ "ocean", "oceanfloor", "flooded", "floodedoceanfloor", "arctic", "arcticdark", "tidewater" ],
+			"stats": [
+				{ "stat": "maxHealth", "effectiveMultiplier": 1.05 },
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.1 },
+				{ "stat": "energyRegenPercentageRate", "baseMultiplier": 1.15 }
+			],
+			"controlModifiers": {
+				"speedModifier": 1.2
+			}
+		},
+		{
+			"biomes": [ "jungle", "penumbra", "bog", "rainforest" ],
+			"stats": [
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.05 }
+			]
+		},
+		{
+			"biomes": [ "scorchedcity", "desert", "desertwastes", "desertwastesdark", "magma", "magmadark", "volcanic", "volcanicdark" ],
+			"stats": [
+				{ "stat": "maxEnergy", "effectiveMultiplier": 0.85 },
+				{ "stat": "maxHealth", "effectiveMultiplier": 0.85 },
+				{ "stat": "energyRegenPercentageRate", "baseMultiplier": 0.7 }
+			]
+		}
+	],
+	"weaponEffects": [
+		{
+			"weapons": [ "broadsword", "shortsword", "dagger" ],
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.15 },
+				{ "stat": "critChance", "amount": 5 }
+			]
+		},
+		{
+			"weapons": [ "shortspear", "spear", "quarterstaff" ],
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.1 },
+				{ "stat": "protection", "amount": 5 }
+			]
+		},
+		{
+			"weapons": [ "wand", "staff" ],
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.08 },
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.08 }
+			]
+		},
+		{
+			"combos": [ [ "dagger", "dagger" ] ],
+			"stats": [
+				{ "stat": "critChance", "amount": 8 },
+				{ "stat": "critDamage", "amount": 0.25 }
+			],
+			"controlModifiers": {
+				"speedModifier": 1.08
+			}
+		},
+		{
+			"combos": [
+				[ "shortsword", "shield" ]
+			],
+			"stats": [
+				{ "stat": "protection", "amount": 8 }
+			],
+			"controlModifiers": {
+				"speedModifier": 0.9
+			}
+		}
+	],
+	"special": [
+		"swimboost1"
+	],
+	"liquidEffects": [
+		{
+			"liquids": [ "water", "healingliquid", "wastewater", "swampwater" ],
+			"stats": [
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.35 }
+			],
+			"statusEffects": [
+				"regenerationminor"
+			]
+		}
+	]
+}

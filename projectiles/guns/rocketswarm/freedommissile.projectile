@@ -1,0 +1,262 @@
+{
+  "projectileName" : "freedommissile",
+  "image" : "freedommissile.png",
+  "animationCycle" : 0.15,
+  "physics" : "rocket",
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "fallSpeed" : 0,
+  "lightColor" : [100, 100, 100],
+  "timeToLive" : 5,
+  "knockback" : 60,
+  "knockbackDirectional" : true,
+  "pointLight" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/freedomexplosion.config"
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.3,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fufireworkgunred",
+      "config" : {
+        "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "fufireworkred2",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 360
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "fufireworkred2",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 360
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "fufireworkred2",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 360
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "hellfireexplosion",
+	      "inheritDamageFactor" :0.1
+	    },
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/weapons/explosion-large01.ogg" ]
+	    },
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 6,
+	      "backgroundRadius" : 4,
+	      "explosiveDamageAmount" : 12,
+	      "harvestLevel" : 99,
+	      "delaySteps" : 2
+	    }
+        ]
+      },
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   },
+    {
+      "time" : 0.5,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fufireworkgungreen",
+      "config" : {
+        "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "fufireworkgreen3",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 360
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "fufireworkgreen3",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 360
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "fufireworkgreen3",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 360
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "hellfireexplosion",
+	      "inheritDamageFactor" :0.1
+	    },
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/weapons/explosion-large01.ogg" ]
+	    },
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 6,
+	      "backgroundRadius" : 4,
+	      "explosiveDamageAmount" : 12,
+	      "harvestLevel" : 99,
+	      "delaySteps" : 2
+	    }
+        ]
+      },
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   },
+    {
+      "time" : 0.8,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fufireworkgunyellow",
+      "config" : {
+        "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "fufireworkgunyellow2",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 360
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "fufireworkgunyellow2",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 360
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "fufireworkgunyellow2",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 360
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "hellfireexplosion",
+	      "inheritDamageFactor" :0.1
+	    },
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/weapons/explosion-large01.ogg" ]
+	    },
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 6,
+	      "backgroundRadius" : 4,
+	      "explosiveDamageAmount" : 12,
+	      "harvestLevel" : 99,
+	      "delaySteps" : 2
+	    }
+        ]
+      },
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   },
+    {
+      "time" : 1.1,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fufireworkgunblue",
+      "config" : {
+        "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "fufireworkblue3",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 360
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "fufireworkblue3",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 360
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "fufireworkblue3",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 360
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "hellfireexplosion",
+	      "inheritDamageFactor" :0.1
+	    },
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/weapons/explosion-large01.ogg" ]
+	    },
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 6,
+	      "backgroundRadius" : 4,
+	      "explosiveDamageAmount" : 12,
+	      "harvestLevel" : 99,
+	      "delaySteps" : 2
+	    }
+        ]
+      },
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   },
+    {
+      "time" : 1.5,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fufireworkgun",
+      "config" : {
+        "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "fufireworkgun3",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 360
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "fufireworkgun3",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 360
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "fufireworkgun3",
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 360
+	    },
+	    {
+	      "action" : "projectile",
+	      "type" : "hellfireexplosion",
+	      "inheritDamageFactor" :0.1
+	    },
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/weapons/explosion-large01.ogg" ]
+	    },
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 6,
+	      "backgroundRadius" : 4,
+	      "explosiveDamageAmount" : 12,
+	      "harvestLevel" : 99,
+	      "delaySteps" : 2
+	    }
+        ]
+      },
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   }
+  ],
+
+  "power" : 5.0,
+  "damageType" : "NoDamage",
+  "damageKind" : "NoDamage",
+  "emitters" : [ "smoke", "fireplasma" ]
+}

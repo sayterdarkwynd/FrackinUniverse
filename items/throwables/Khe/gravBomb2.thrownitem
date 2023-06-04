@@ -1,0 +1,30 @@
+{
+  "itemName" : "gravgrenade",
+  "price" : 50,
+  "rarity" : "Common",
+  "category" : "throwableItem",
+  "inventoryIcon" : "kheGravBombs2.png",
+  "image" : "kheGravBombs2.png",
+  "shortdescription" : "Anti-Gravity Bomb",
+  "description" : "Weaponized orange grav-liquid container.",
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.25,
+  "cooldown" : 0.5,
+
+  "projectileType" : "gravbomb",
+  "projectileConfig" : {
+    "speed" : 35,
+    "power" : 0,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item.ogg" ]
+      }
+    ]
+  }
+}

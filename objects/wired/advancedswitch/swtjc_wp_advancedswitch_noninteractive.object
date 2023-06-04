@@ -1,0 +1,65 @@
+{
+  "objectName" : "swtjc_wp_advancedswitch_noninteractive",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A Small Wall Switch, Persistent Switch, Data Latch, and Not Gate, all in a single package!",
+  "shortdescription" : "Advanced Wall Switch (Non-Interactive)",
+  "race" : "generic",
+
+  "category" : "wire",
+  "price" : 20,
+
+  "apexDescription" : "So many features! It doesn't help that I can't manually interact with it!",
+  "avianDescription" : "So many features! It doesn't help that I can't manually interact with it!",
+  "floranDescription" : "Ssso many featuresss! It doesssn't help that Floran can't manually interact with thisss!",
+  "glitchDescription" : "Frustrated. So many features! It doesn't help that I can't manually interact with it!",
+  "humanDescription" : "So many features! It doesn't help that I can't manually interact with it!",
+  "hylotlDescription" : "So many features! It doesn't help that I can't manually interact with it!",
+  "novakidDescription" : "So many features! It doesn't help that I can't manually interact with it!",
+  "penguinDescription" : "So many features! It doesn't help that I can't manually interact with it!",
+  "avaliDescription" : "So many features! It doesn't help that I can't manually interact with it!",
+
+  "inventoryIcon" : "swtjc_wp_advancedswitch_noninteractive.png:default.off",
+  "orientations" : [
+    {
+      "image" : "swtjc_wp_advancedswitch_noninteractive.png:default.off",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/advancedswitch/swtjc_wp_advancedswitch.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle.animation",
+
+  "animationParts" : {
+    "switch" : "swtjc_wp_advancedswitch_noninteractive.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "interactive" : false,
+
+  "inputNodes" : [ [-1, 0], [-1, -1], [-1, 1], [0, 0] ],
+  "outputNodes" : [ [0, -1], [0, 1] ],
+
+  "hasNotGate" : true,
+  "notGateNode" : 1,
+  "hasStateToggle" : true,
+  "stateToggleNode" : 0,
+  "hasPersistentSwitchFunctionality" : true,
+  "persistentSwitchOnNode" : 1,
+  "persistentSwitchOffNode" : 2,
+  "hasInteractiveToggle" : false,
+  "hasLatch" : true,
+  "latchNode" : 3,
+
+  "interval" : 15
+}

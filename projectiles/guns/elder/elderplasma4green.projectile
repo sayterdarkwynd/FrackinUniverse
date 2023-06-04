@@ -6,42 +6,52 @@
   "image" : "elderplasma4green.png",
   "animationCycle" : 0.2,
   "frameNumber" : 2,
-  "power" : 50,
+  "power" : 7,
   "speed" : 75,
   "supportsProcessing" : true,
   "lightColor" : [79, 128, 78],
-  "damageKind" : "poison",
+    "fullbright" : true,
+  "damageKind" : "shadowplasma",
+
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/eldercarbineexplosion/eldercarbineexplosionnospawn.config"
+    }
+  ],
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/plasmabulletexplosion/plasmabulletexplosion.config"
+      "file" : "/projectiles/explosions/eldercarbineexplosion/eldercarbineexplosionnospawn.config"
     },
     {
       "action" : "projectile",
-      "type" : "elderflamethrowerflameff",
-      "inheritDamageFactor" : 0.15
+      "type" : "shadowguardianpellet",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.5,
+      "config" : { "timeToLive" : 0.15}
     },
     {
       "action" : "projectile",
-      "type" : "parasiteshot",
-      "inheritDamageFactor" : 0.3,
-      "fuzzAngle" : 10,
-      "angleAdjust" : 25
+      "type" : "shadowguardianpellet",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.5,
+      "config" : { "timeToLive" : 0.15}
     },
     {
       "action" : "projectile",
-      "type" : "parasiteshot",
-      "inheritDamageFactor" : 0.3,
-      "fuzzAngle" : 10,
-      "angleAdjust" : 25
+      "type" : "shadowguardianpellet",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.5,
+      "config" : { "timeToLive" : 0.15}
     },
     {
       "action" : "projectile",
-      "type" : "parasiteshot",
-      "inheritDamageFactor" : 0.3,
-      "fuzzAngle" : 10,
-      "angleAdjust" : 0
+      "type" : "shadowguardianpellet",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.5,
+      "config" : { "timeToLive" : 0.15}
     }
   ],
-  "statusEffects" : [ "paralysis" ]
+  "statusEffects" : [ "shadowgasfx2" ]
 }

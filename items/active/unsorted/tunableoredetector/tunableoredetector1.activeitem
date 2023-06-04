@@ -1,0 +1,318 @@
+{
+  "itemName" : "tunableoredetector1",
+  "price" : 2500,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Shift+click to configure. Scans one ore at a time. Upgrade using your ^orange;Tricorder^reset;.",
+  "shortdescription" : "Precision Ore Detector",
+  "twoHanded" : false,
+  "category" : "detector",
+  "itemTags" : ["tool","upgradeableTool","detector"],
+
+  "inventoryIcon" : "tunableoredetectoricon1.png",
+  "animation" : "tunableoredetector1.animation",
+  "animationParts" : {
+    "detector" : "tunableoredetector1.png",
+    "detectorfullbright" : "tunableoredetectorfullbright1.png"
+  },
+  "animationCustom" : {},
+  "level" : 1,
+  "upmax" : 9,
+  "upmod" : 2,
+
+  "animationScripts" : ["detectorscan.lua"],
+  "animationDelta" : 5,
+
+  "scripts" : ["tunableoredetector.lua"],
+  "scriptDelta" : 1,
+
+  "currentTargetOre" : ["none", 1],
+
+  "targetOreColor" : [0, 255, 0, 255],
+  "nonTargetOreColor" : [150, 150, 150, 50],
+
+  "oreList" : {
+	//template: "Name" : ["materialModName", requiredUpgradeLevel]
+		//vanilla ores
+			"solidfuel" : 			["erchius", 1],
+			"coalore" : 			["coal", 1],
+			"copperore" : 			["copper", 1],
+			"ironore" : 			["iron", 1],
+			"silverore" : 			["silver", 1],
+			"goldore" : 			["gold", 1],
+			"tungstenore" : 		["tungsten", 1],
+			"bone" :		 		["fossilbone", 1],
+			"corefragmentore" : 	["corefragment", 1],
+			"titaniumore" : 		["titanium", 2],
+			"durasteelore" : 		["durasteel", 2],
+			"diamond" : 			["diamond", 2],
+			"platinumore" : 		["platinum", 2],
+			"aegisaltore" : 		["aegisalt", 3],
+			"feroziumore" :			["ferozium", 3],
+			"violiumore" : 			["violium", 3],
+			"solariumore" : 		["solarium", 3],
+		//vanilla bars
+			"copperbar" : 			["copper", 1],
+			"ironbar" : 			["iron", 1],
+			"silverbar" : 			["silver", 1],
+			"goldbar" :  			["gold", 1],
+			"tungstenbar" :			["tungsten", 1],
+			"platinumbar" :			["platinum", 2],
+			"titaniumbar" : 		["titanium", 2],
+			"durasteelbar" :		["durasteel", 2],
+			"refinedferozium" :		["ferozium", 3],
+			"refinedviolium" : 		["violium", 3],
+			"refinedaegisalt" : 	["aegisalt", 3],
+			"solariumstar" : 		["solarium", 3],
+		//FU ores
+			"cinnabarore" : 		["cinnabar", 1],
+			"ff_spareparts" : 		["junkmod", 1],
+			"mascagniteore" : 		["mascagnite", 1],
+			"magnesiumore" : 		["magnesium", 1],
+			"moonstoneore" : 		["moonstone", 1],
+			"lead" : 				["lead", 1],
+			"sulphur" : 			["sulphur", 1],
+			"crystal" : 			["crystal", 1],
+			"solarishard" : 		["lunariore", 1],
+			"zerchesiumore" : 		["zerchesium", 2],
+			"siviteore" : 			["sivite", 2],
+			"koaniteore" : 			["koanite", 2],
+			"uraniumore" : 			["uranium", 2],
+			"plutoniumore" : 		["plutonium", 2],
+			"neptuniumore" : 		["neptunium", 2],
+			"thoriumore" : 			["thorium", 2],
+			"penumbriteore" : 		["penumbrite", 2],
+			"protociteore" : 		["protocite", 2],
+			"triangliumore" : 		["trianglium", 2],
+			"corruptionore" : 		["corruption", 3],
+			"blooddiamond" : 		["fublooddiamond", 3],
+			"irradiumore" : 		["irradium", 3],
+			"prisiliteore" : 		["prisilite", 3],
+			"quietusore" : 			["quietus", 3],
+			"densiniumore" : 		["densinium", 4],
+			"effigiumore" : 		["effigium", 4],
+			"xithriciteore" : 		["xithricite", 4],
+			"isogenore" : 			["isogen", 4],
+			"nocxiumore" : 			["nocxium", 4],
+			"pyreiteore" : 			["pyreite", 4],
+		//FU bars
+			"moonstonebar" : 		["moonstone", 1],
+			"solaricrystal" :		["lunariore", 1],
+			"zerchesiumbar" :		["zerchesium", 2],
+			"plutoniumrod" : 		["plutonium", 2],
+			"uraniumrod" : 			["uranium", 2],
+			"neptuniumrod" : 		["neptunium", 2],
+			"thoriumrod" : 			["thorium", 2],
+			"protocitebar" : 		["protocite", 2],
+			"penumbriteshard" : 	["penumbrite", 2],
+			"triangliumpyramid" :	["trianglium", 2],
+			"corruptionseed" : 		["corruption", 3],
+			"quietusbar" : 			["quietus", 3],
+			"irradiumbar" :			["irradium", 3],
+			"prisilitestar" : 		["prisilite", 3],
+			"isogenbar" : 			["isogen", 4],
+			"pyreitebar" : 			["pyreite", 4],
+			"densiniumbar" : 		["densinium", 4],
+			"effigiumbar" : 		["effigium", 4],
+			"xithricitecrystal" : 	["xithricite", 4],
+			"nocxiumbar" : 			["nocxium", 4],
+		//Elithian races ores
+			"ferroveriumore" : ["ferroverium", 4]
+		},
+
+  "pingDetectConfig" : {
+    "type" : "ore",
+    "image" : "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
+    "variants" : 4
+	},
+
+	"pingRange" : 30,
+    "pingBandWidth" : 12,
+	"pingDuration" : 2.5,
+	"pingCooldown" : 1.0,
+
+
+  "upgradeParameters" : {
+	  "description" : "Shift+click to configure. Scans one ore at a time. Upgrade using your ^orange;Tricorder^reset;.",
+	  "shortdescription" : "Precision Ore Detector MKII ^cyan;^reset;",
+
+	  "inventoryIcon" : "tunableoredetectoricon2.png",
+	  "animation" : "tunableoredetector2.animation",
+	  "animationParts" : {
+	    "detector" : "tunableoredetector2.png",
+	    "detectorfullbright" : "tunableoredetectorfullbright2.png"
+	  },
+
+	  "pingDetectConfig" : {
+	    "type" : "ore",
+	    "image" : "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
+	    "variants" : 4
+		},
+
+		"pingRange" : 30,
+		"pingBandWidth" : 12,
+		"pingDuration" : 2.5,
+		"pingCooldown" : 0.8
+  },
+
+"upgradeParameters2" : {
+	"description" : "Shift+click to configure. Scans one ore at a time. Upgrade using your ^orange;Tricorder^reset;.",
+	"shortdescription" : "Precision Ore Detector MKIII ^yellow;^reset;",
+
+	"inventoryIcon" : "tunableoredetectoricon3.png",
+	"animation" : "tunableoredetector3.animation",
+	"animationParts" : {
+	"detector" : "tunableoredetector3.png",
+	"detectorfullbright" : "tunableoredetectorfullbright3.png"
+	  },
+
+	"pingDetectConfig" : {
+	    "type" : "ore",
+	    "image" : "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
+	    "variants" : 4
+		},
+
+	"pingRange" : 50,
+	"pingBandWidth" : 12,
+	"pingDuration" : 2.5,
+	"pingCooldown" : 0.5
+  },
+
+  "upgradeParameters3" : {
+	  "description" : "Shift+click to configure. Scans one ore at a time. Upgrade using your ^orange;Tricorder^reset;.",
+	  "shortdescription" : "Precision Ore Detector MKIV ^yellow;^reset;",
+
+	  "inventoryIcon" : "tunableoredetectoricon3.png",
+	  "animation" : "tunableoredetector3.animation",
+	  "animationParts" : {
+	    "detector" : "tunableoredetector3.png",
+	    "detectorfullbright" : "tunableoredetectorfullbright3.png"
+	  },
+
+	  "pingDetectConfig" : {
+	    "type" : "ore",
+	    "image" : "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
+	    "variants" : 4
+	},
+
+	"pingRange" : 52,
+	"pingBandWidth" : 12,
+	"pingDuration" : 2.5,
+	"pingCooldown" : 0.45
+  },
+
+  "upgradeParameters4" : {
+	  "description" : "Shift+click to configure. Scans one ore at a time. Upgrade using your ^orange;Tricorder^reset;.",
+	  "shortdescription" : "Precision Ore Detector MKV ^cyan;^reset;",
+
+	  "inventoryIcon" : "tunableoredetectoricon3.png",
+	  "animation" : "tunableoredetector3.animation",
+	  "animationParts" : {
+	    "detector" : "tunableoredetector3.png",
+	    "detectorfullbright" : "tunableoredetectorfullbright3.png"
+	  },
+
+	  "pingDetectConfig" : {
+	    "type" : "ore",
+	    "image" : "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
+	    "variants" : 4
+		},
+
+	"pingRange" : 54,
+	"pingBandWidth" : 13,
+	"pingDuration" : 2.5,
+	"pingCooldown" : 0.4
+  },
+
+  "upgradeParameters5" : {
+	  "description" : "Shift+click to configure. Scans one ore at a time. Upgrade using your ^orange;Tricorder^reset;.",
+	  "shortdescription" : "Precision Ore Detector MKVI ^red;^reset;",
+
+	  "inventoryIcon" : "tunableoredetectoricon3.png",
+	  "animation" : "tunableoredetector3.animation",
+	  "animationParts" : {
+	    "detector" : "tunableoredetector3.png",
+	    "detectorfullbright" : "tunableoredetectorfullbright3.png"
+	  },
+
+	  "pingDetectConfig" : {
+	    "type" : "ore",
+	    "image" : "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
+	    "variants" : 4
+		},
+
+	"pingRange" : 56,
+	"pingBandWidth" : 14,
+	"pingDuration" : 2.5,
+	"pingCooldown" : 0.35
+  },
+
+  "upgradeParameters6" : {
+	  "description" : "Shift+click to configure. Scans one ore at a time. Upgrade using your ^orange;Tricorder^reset;.",
+	  "shortdescription" : "Precision Ore Detector MKVII ^red;^reset;",
+
+	  "inventoryIcon" : "tunableoredetectoricon3.png",
+	  "animation" : "tunableoredetector3.animation",
+	  "animationParts" : {
+	    "detector" : "tunableoredetector3.png",
+	    "detectorfullbright" : "tunableoredetectorfullbright3.png"
+	  },
+
+	  "pingDetectConfig" : {
+	    "type" : "ore",
+	    "image" : "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
+	    "variants" : 4
+		},
+
+	"pingRange" : 58,
+	"pingBandWidth" : 14,
+	"pingDuration" : 2.5,
+	"pingCooldown" : 0.3
+  },
+
+  "upgradeParameters7" : {
+	  "description" : "Shift+click to configure. Scans one ore at a time. Upgrade using your ^orange;Tricorder^reset;.",
+	  "shortdescription" : "Precision Ore Detector MKVIII ^#e43774;^reset;",
+
+	  "inventoryIcon" : "tunableoredetectoricon3.png",
+	  "animation" : "tunableoredetector3.animation",
+	  "animationParts" : {
+	    "detector" : "tunableoredetector3.png",
+	    "detectorfullbright" : "tunableoredetectorfullbright3.png"
+	  },
+
+	  "pingDetectConfig" : {
+	    "type" : "ore",
+	    "image" : "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
+	    "variants" : 4
+		},
+
+	"pingRange" : 60,
+	"pingBandWidth" : 14,
+	"pingDuration" : 2.5,
+	"pingCooldown" : 0.25
+  },
+
+  "upgradeParameters8" : {
+	  "description" : "Shift+click to configure. Scans one ore at a time. ^green;Fully Upgraded^reset;.",
+	  "shortdescription" : "Precision Ore Detector MKIX ^#e43774;^reset;",
+
+	  "inventoryIcon" : "tunableoredetectoricon3.png",
+	  "animation" : "tunableoredetector3.animation",
+	  "animationParts" : {
+	    "detector" : "tunableoredetector3.png",
+	    "detectorfullbright" : "tunableoredetectorfullbright3.png"
+	  },
+
+	  "pingDetectConfig" : {
+	    "type" : "ore",
+	    "image" : "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
+	    "variants" : 4
+		},
+
+	  "pingRange" : 65,
+	  "pingBandWidth" : 15,
+	  "pingDuration" : 2.5,
+	  "pingCooldown" : 0.2
+  }
+}

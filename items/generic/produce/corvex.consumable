@@ -1,0 +1,23 @@
+{
+	"itemName": "corvex",
+	"inventoryIcon": "corvex.png",
+	"category": "food",
+	"rarity": "Legendary",
+	"foodValue": 20,
+	"price": 20,
+	"maxStack": 10,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+100% Leech^reset;: 30s",
+	"shortdescription": "Corvex Blob",
+
+	"builder": "/items/buildscripts/buildfood.lua",
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 3.0,
+	"effects": [
+		[{
+			"effect": "draincorvex",
+			"duration": 30
+		}]
+	]
+}

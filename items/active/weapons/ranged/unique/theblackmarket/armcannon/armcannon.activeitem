@@ -3,13 +3,15 @@
   "price" : 500,
   "inventoryIcon" : "armcannon.png",
     "maxStack" : 1,
-    "rarity" : "rare",
-  "description" : "Attaches to the forearm. Fires energy blasts.",
+    "rarity" : "common",
+  "description" : "Attaches to the forearm. Fires energy blasts.
+^yellow;Counts as 'energy' for set bonuses^reset;",
   "shortdescription" : "Arm Cannon",
   "level" : 2,
-  "category" : "uniqueWeapon",
-  "itemTags" : ["weapon","ranged","machinepistol"],
-  "tooltipKind" : "gun",
+  "category" : "armcannon",
+  "itemTags" : ["weapon","ranged","upgradeableWeapon","armcannon","energy"],
+  "tooltipKind" : "gun2",
+
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
@@ -17,32 +19,32 @@
     "middle" : "armcannon.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
-  },      
+  },
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/gun/needler1.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }  
+    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }
   },
 
-  "baseOffset" : [0.75, 0.34],
-  "muzzleOffset" : [1.0, 0.125],
-
+  "baseOffset" : [0.0, 0.34],
+  "muzzleOffset" : [1.0, 0.05],
+  "handGrip" : "wrap",
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "physical",
-  "learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ], 
+  "learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ], //keeping em here for now.
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.2,
-    "baseDps" : 9,
-    "energyUsage" : 22,
+    "fireTime" : 0.24,
+    "baseDps" : 6.5,
+    "energyUsage" : 24,
     "fireType" : "auto",
-    "inaccuracy" : 0.001,
+    "inaccuracy" : 0,
     "projectileCount" : 1,
     "projectileType" : "chargeshotsmall",
     "projectileParameters" : {
-      "speed" : 65
+      "speed" : 60
     },
     "stances" : {
       "idle" : {
@@ -74,5 +76,8 @@
     }
   },
 
+
+  "critChance" : 1,
+  "critBonus" : 3,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,0 +1,48 @@
+{
+  "projectileName" : "dragonprojectile2",
+  "image" : "dragonprojectile.png",
+  "animationCycle" : 0.3,
+  "physics" : "bullet",
+  "movementSettings" : {
+    "collisionPoly" : [ [1, -2], [-2, 0], [1, 2], [2, 0] ]
+  },
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "frameNumber" : 4,
+  "pointLight" : true,
+  "lightColor" : [255, 113, 0],
+  "renderLayer" : "Monster+10",
+  "speed" : 50,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/regularexplosionknockback.config"
+    },
+    {
+      "action" : "loop",
+      "count" : 7,
+      "body" : [
+        {
+          "action" : "projectile",
+          "type" : "molotovflamemonster",
+          "fuzzAngle" : 180,
+          "inheritDamageFactor" : 0.05,
+          "angleAdjust" : 0
+        }
+      ]
+    },
+    {
+      "action" : "explosion",
+      "foregroundRadius" : 4,
+      "backgroundRadius" : 0,
+      "explosiveDamageAmount" : 40,
+      "delaySteps" : 2
+    }
+  ],
+  "power" : 10.0,
+  "damageKind" : "fire",
+  "emitters" : [ "javelinred" ],
+
+  "persistentAudio" : "/sfx/projectiles/dragonprojectile_loop.ogg"
+}
+
+

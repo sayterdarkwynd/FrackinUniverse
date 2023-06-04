@@ -1,0 +1,59 @@
+{
+  "objectName" : "swtjc_wp_advancedxor3i",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "An /'XOR'/ gate with 3 inputs and a built-in Data Latch and Not Gate. Only activates when an odd number of inputs are live.",
+  "shortdescription" : "Advanced XOR Gate (3 Inputs, Odd-Hot)",
+  "race" : "human",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "apexDescription" : "I'd wager that the input node to the right is the Data Latch.",
+  "avianDescription" : "I'd wager that the input node to the right is the Data Latch.",
+  "floranDescription" : "Floran guesssesss that the right input node isss the Data Latch.",
+  "glitchDescription" : "Analyzing. I'd wager that the input node to the right is the Data Latch.",
+  "humanDescription" : "I'd wager that the input node to the right is the Data Latch.",
+  "hylotlDescription" : "I'd wager that the input node to the right is the Data Latch.",
+  "novakidDescription" : "I'd wager that the input node to the right is the Data Latch.",
+  "penguinDescription" : "I'd wager that the input node to the right is the Data Latch.",
+  "avaliDescription" : "I'd wager that the input node to the right is the Data Latch.",
+
+  "inventoryIcon" : "swtjc_wp_advancedxor3i.png:default.on",
+  "orientations" : [
+    {
+      "image" : "swtjc_wp_advancedxor3i.png:default.on",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/advancedlogic/swtjc_wp_advancedlogic.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/wired/advancedlogic/swtjc_wp_advancedlogic.animation",
+
+  "animationParts" : {
+    "switch" : "swtjc_wp_advancedxor3i.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "inputNodes" : [ [0, 0], [-1, -1], [-1, 0], [-1, 1] ],
+  "outputNodes" : [ [0, -1], [0, 1] ],
+
+  "hasNotGate" : true,
+  "notGateNode" : 1,
+  "hasLatch" : true,
+  "latchNode" : 0,
+
+  "gates" : 3,
+  "truthtable" : [ [ [ false, true ], [ true, false ] ], [ [ true, false ], [ false, true ] ] ],
+  "gateNode1" : 1,
+  "gateNode2" : 2,
+  "gateNode3" : 3
+}

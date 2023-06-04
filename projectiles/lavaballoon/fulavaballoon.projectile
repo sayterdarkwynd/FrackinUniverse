@@ -1,0 +1,20 @@
+{
+  "projectileName" : "fulavaballoon",
+  "physics" : "grenade",
+  "image" : "lavaballoon.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 2,
+  "fullbright" : true,
+
+  "actionOnReap" : [
+    {
+      "action" : "liquid",
+      "liquid" : "lava", "quantity" : 0.5
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
+    }
+  ],
+  "damageKind" : "default"
+}

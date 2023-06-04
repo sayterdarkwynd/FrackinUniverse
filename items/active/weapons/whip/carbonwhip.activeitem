@@ -1,0 +1,58 @@
+{
+  "itemName" : "carbonwhip",
+  "price" : 400,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "A whip fashioned from finely woven carbon fibers.
+^cyan;Inflicts bleeding^reset;",
+  "shortdescription" : "Carbon Whip",
+  "tooltipKind" : "sword2",
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","whip","upgradeableWeapon"],
+
+  "inventoryIcon" : "carbonwhip.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "carbonwhip.png",
+	"weaponFullbright" : ""
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : { "particles" : [ ]}},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/whip_swing1.ogg", "/sfx/melee/whip_swing2.ogg", "/sfx/melee/whip_swing3.ogg" ],
+      "crack" : [ "/sfx/melee/whip_impact1.ogg", "/sfx/melee/whip_impact2.ogg", "/sfx/melee/whip_impact3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [0.625, 0],
+    "length" : [3, 9],
+    "segmentImage" : "/items/active/weapons/whip/carbonwhiplink.png",
+    "endSegmentImage" : "/items/active/weapons/whip/carbonwhipend.png",
+    "segmentSize" : 0.375,
+    "fullbright" : false
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 0.7,
+    "chainDps" : 1.0,
+    "crackDps" : 3.5,
+
+    "damageConfig" : {
+      "statusEffects" : [ "bleedingshort" ]
+    },
+
+    "projectileType" : "whipcrackphysical"
+  },
+
+  "critChance" : 2,
+  "critBonus" : 2,
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}

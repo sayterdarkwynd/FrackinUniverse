@@ -1,0 +1,125 @@
+{
+	"stats": [
+		{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 1.15
+		},
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 1.15
+		},
+		{
+			"stat": "powerMultiplier",
+			"effectiveMultiplier": 1.05
+		},
+		{
+			"stat": "electricResistance",
+			"amount": -0.4
+		},
+		{
+			"stat": "fireResistance",
+			"amount": 0.4
+		},
+		{
+			"stat": "iceResistance",
+			"amount": 0.2
+		},
+		{
+			"stat": "poisonResistance",
+			"amount": 0.25
+		},
+		{
+			"stat": "shadowResistance",
+			"amount": -0.15
+		},
+		{
+			"stat": "cosmicResistance",
+			"amount": -0.15
+		},
+		{
+			"stat": "fumudslowImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "breathProtection",
+			"amount": 1
+		},
+		{
+			"stat": "wetImmunity",
+			"amount": 1
+		}
+	],
+	"diet" : [ { "ORGANIC" : false, "FISH" : true, "MEAT_RAW" : true } ],
+	"envEffects": [{
+		"biomes": "ocean",
+		"stats": [{
+				"stat": "maxEnergy",
+				"effectiveMultiplier": 1.1
+			},
+			{
+				"stat": "physicalResistance",
+				"amount": 0.2
+			}
+		]
+	}],
+	"weaponEffects": [{
+			"weapons": [
+				"spear"
+			],
+			"stats": [{
+					"stat": "critChance",
+					"amount": 2
+				},
+				{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.1
+				}
+			]
+		},
+		{
+			"weapons": [
+				"shortspear"
+			],
+			"stats": [{
+					"stat": "critChance",
+					"amount": 2
+				},
+				{
+					"stat": "physicalResistance",
+					"amount": 0.05
+				}
+			]
+		},
+		{
+			"combos": [
+				[
+					"fist",
+					"fist"
+				]
+			],
+			"stats": [{
+				"stat": "critChance",
+				"amount": 3
+			}],
+			"controlModifiers": {
+				"speedModifier": 1.05
+			}
+		}
+	],
+	"special": [
+		"swimboost2"
+	],
+	"liquidEffects": [{
+		"liquids": ["water", "fusaltwater","healingliquid", "wastewater", "swampwater"],
+		"stats": [{
+				"stat": "foodDelta",
+				"baseMultiplier": 0.65
+			},
+			{
+				"stat": "fallDamageMultiplier",
+				"effectiveMultiplier": 0
+			}
+		],
+		"statusEffects": ["regenerationminor2"]
+	}]
+}

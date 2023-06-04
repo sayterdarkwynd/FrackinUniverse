@@ -1,0 +1,37 @@
+{
+  "objectName" : "tntcrate",
+  "colonyTags" : ["novakid","novakidvillage"],
+  "rarity" : "Common",
+  "description" : "Take a guess at what's inside.",
+  "shortdescription" : "TNT Crate",
+  "race" : "novakid",
+  "category" : "decorative",
+  "price" : 200,
+  "breakDropOptions" : [],
+
+  "apexDescription" : "An Apex rebel is no stranger to explosives.",
+  "avianDescription" : "Well at least the packager makes it very clear what's inside.",
+  "floranDescription" : "Crate goesss boom boom!",
+  "glitchDescription" : "Cautious. I'm detecting explosives within this crate.",
+  "humanDescription" : "Not writing ACME on this crate was a great show of restraint on behalf of the packager.",
+  "hylotlDescription" : "Best to not drop this.",
+  "novakidDescription" : "Decidedly not to be trifled with.",
+
+  "inventoryIcon" : "tntcrateicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "tntcrate.png:<color>",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+  "smashable" : true,
+  "smashOnBreak" : false,
+  "smashSounds" : [ "/sfx/gun/grenadeblast1.ogg", "/sfx/gun/grenadeblast2.ogg", "/sfx/gun/grenadeblast3.ogg" ],
+  "smashDropPool" : "empty",
+  "scripts" : [
+    "/objects/scripts/explodingsmashable.lua"
+  ]
+}

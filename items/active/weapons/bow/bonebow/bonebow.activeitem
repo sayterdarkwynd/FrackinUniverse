@@ -1,0 +1,74 @@
+{
+  "itemName" : "bonebow",
+  "price" : 50,
+  "inventoryIcon" : "bonebowicon.png",
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "tooltipKind" : "bow2",
+  "category" : "bow",
+  "description" : "A primitive bone bow, almost too stiff to draw.
+^cyan;Floran^reset;",
+  "shortdescription" : "Bone Bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow", "upgradeableWeapon","bone","floran"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "level" : 1,
+
+  "animation" : "/items/active/weapons/bow/fubow.animation",
+  "animationParts" : {
+    "bow" : "bonebow.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0.25, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+  //"collectablesOnPickup" : { "fu_weaponbow" : "bonebow" },
+
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : {
+    "drawTime" : 0.87,
+	"powerProjectileTime" : 0.325,
+	"dynamicDamageMultiplier" : 1.0,
+	"energyPerShot" : 25,
+	"holdEnergyUsage" : 3,
+	"airborneBonus" : 1.45,
+	"projectileType" : "bonearrow",
+    "powerProjectileType" : "chargedbonearrow",
+    "projectileParameters" : {
+      "power" : 7.5
+    },
+    "powerProjectileParameters" : {
+      "power" : 7.5,
+      "piercing" : true
+    }
+  },
+
+  "altAbilityType" : "tripleshot",
+  "altAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "drawFrameSelector" : "bowImageSelectorNoPower",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "chargedbonearrow",
+    "projectileParameters" : {
+      "power" : 6.5,
+      "piercing" : true
+    },
+    "splitDelay" : 0.04,
+    "splitAngle" : 5
+  },
+
+  "critChance" : 3,
+  "critBonus" : 7,
+
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
+}

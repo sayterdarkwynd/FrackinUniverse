@@ -1,0 +1,49 @@
+{
+  "objectName" : "nightarshiplight",
+  "colonyTags" : ["light","nightar"],
+  "rarity" : "legendary",
+  "category" : "light",
+  "lightColor" : [60, 197, 220],
+  "price" : 60,
+  "description" : "A small green light.",
+  "shortdescription" : "Green Ship Light",
+  "race" : "nightar",
+
+  "apexDescription" : "These lights are commonly used on ships.",
+  "avianDescription" : "A vibrant light.",
+  "floranDescription" : "Ship light is harsh on Floran eyesss.",
+  "glitchDescription" : "Impressed. This lighting fixture generates more light than heat.",
+  "humanDescription" : "A bright, white light.",
+  "hylotlDescription" : "A bright, white light. It creates a neutral atmosphere.",
+  "novakidDescription" : "That's one bright lightbulb.",
+
+  "inventoryIcon" : "nightarshiplighticon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "nightarshiplight.png:<color>.<frame>", "fullbright" : true }, { "image" : "nightarshiplightlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-8, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/fluorescent_light_quiet.ogg",
+  "soundEffectRangeMultiplier" : 0.5,
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "nightarshiplight.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

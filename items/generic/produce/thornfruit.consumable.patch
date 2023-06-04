@@ -1,3 +1,33 @@
 [
-  {"op":"add","path":"/learnBlueprintsOnPickup","value": [ "thornjuice", "blexplantseed", "yellowfootseed" ] }
+	[
+		{ "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+		{ "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
+	],
+	[
+		{
+			"op" : "add",
+			"path" : "/effects",
+			"value" : [ [ "fruit_food" ] ]
+		},
+		{
+			"op" : "replace",
+			"path" : "/description",
+			"value" : "So long as you watch out for the thorns, these are delicious. ^green;Type: Fruit^reset;"
+		}//,
+	//	{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "thornjuice" },
+	//	{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "blexplantseed" },
+	//	{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "yellowfootseed" }
+	],
+	[
+		{
+			"op" : "test",
+			"path" : "/maxStack"
+		},
+		{
+			"op" : "replace",
+			"path" : "/maxStack",
+			"value" : 20
+		}
+	],
+	[{"op":"test","path":"/learnBlueprintsOnPickup/0"},{"op":"remove","path":"/learnBlueprintsOnPickup/0"}]
 ]

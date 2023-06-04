@@ -1,0 +1,46 @@
+{
+  "itemName" : "randolphcarterhat",
+  "price" : 5000,
+  "inventoryIcon" : "icons.png:head",
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "category" : "headarmour",
+  "description" : "Face the foulest creatures bravely.
+^green;20^reset;% Mental Resist",
+  "shortdescription" : "Randolph Carter Hat",
+  "tooltipKind" : "armornew2",
+  "itemTags" : [ "upgradeableWeapon" ],
+  "maleFrames" : "head.png",
+  "femaleFrames" : "head.png",
+  "mask" : "mask.png",
+  "level" : 3,
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.05
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.2
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 5
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 5
+    }
+  ],
+  "statusEffects" : [
+    {
+      "stat" : "mentalProtection",
+      "amount" : 0.2
+    }
+  ],
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
+}

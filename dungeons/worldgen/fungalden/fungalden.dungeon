@@ -1,0 +1,280 @@
+{
+  "metadata" : {
+    "name" : "fungalden",
+    "species" : "generic",
+    "rules" : [
+    ],
+    "anchor" : [ "anchor1", "anchor2" ],
+    "gravity" : 80,
+    "maxRadius" : 1000000,
+    "maxParts" : 20,
+    "protected" : true
+  },
+
+  "parts" : [
+    {
+      "name" : "anchor1",
+      "rules" : [
+		[ "doNotCombineWith", [ "anchor2" ] ],
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "anchor1.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "anchor2",
+      "rules" : [
+		[ "doNotCombineWith", [ "anchor1" ] ],
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "anchor2.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "bridge",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "bridge" ] ]
+      ],
+      "def" : [ "tmx", "bridge.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "connector1",
+      "rules" : [
+        [ "maxSpawnCount", [3] ],
+		[ "doNotConnectToPart", [ "connector1" ] ]
+      ],
+      "def" : [ "tmx", "connector1.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "connector2",
+      "rules" : [
+        [ "maxSpawnCount", [3] ],
+		[ "doNotConnectToPart", [ "connector2" ] ]
+      ],
+      "def" : [ "tmx", "connector2.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "connector3",
+      "rules" : [
+        [ "maxSpawnCount", [3] ],
+		[ "doNotConnectToPart", [ "connector3" ] ]
+      ],
+      "def" : [ "tmx", "connector3.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "connector4",
+      "rules" : [
+        [ "maxSpawnCount", [3] ],
+		[ "doNotConnectToPart", [ "connector4" ] ]
+      ],
+      "def" : [ "tmx", "connector4.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "connector5",
+      "rules" : [
+        [ "maxSpawnCount", [3] ],
+		[ "doNotConnectToPart", [ "connector5" ] ]
+      ],
+      "def" : [ "tmx", "connector5.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "darktunnel",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "darktunnel.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "fungalhomes1",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "fungalhomes1" ] ]
+      ],
+      "def" : [ "tmx", "fungalhomes1.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "fungalhomes2",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "fungalhomes2" ] ]
+      ],
+      "def" : [ "tmx", "fungalhomes2.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "tunnel1",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "tunnel1" ] ]
+      ],
+      "def" : [ "tmx", "tunnel1.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "tunnel2",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "tunnel2" ] ]
+      ],
+      "def" : [ "tmx", "tunnel2.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "tunnel3",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "tunnel3" ] ]
+      ],
+      "def" : [ "tmx", "tunnel3.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "sporguspit",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "sporguspit.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "darkcellsgenerator",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "darkcellsgenerator.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "endcapleft",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "endcapleft.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "endcapright",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "endcapright.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "fungalhomeinterior1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "fungalhomeinterior1.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "fungalhomeinterior2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "fungalhomeinterior2.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "fungalhomeinterior3",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "fungalhomeinterior3.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "fungalhomeinterior4",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "fungalhomeinterior4.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "fungalhomeinterior5",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "fungalhomeinterior5.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "fungalhomeinterior6",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "fungalhomeinterior6.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "fungalhomeinterior7",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "fungalhomeinterior7.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "fungalhomeinterior8",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+        [ "maxSpawnCount", [2] ]
+      ],
+      "def" : [ "tmx", "fungalhomeinterior8.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "generator1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "generator1.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "generator2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "generator2.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "generator3",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "generator3.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "generator4",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "generator4.json" ],
+      "chance" : 0
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "objectName" : "fu_fuelpurifiert5",
+  "colonyTags" : [ "science", "machines","precursor" ],
+  "printable" : false,
+  "rarity" : "legendary",
+  "description" : "Exceptionally effective. Reduces fuel cost by ^green;40^reset;%.",
+  "shortdescription" : "^cyan;Precursor Fuel Purifier^reset;",
+  "race" : "generic",
+  "category" : "furniture",
+
+  "inventoryIcon" : "fu_fuelpurifiericon5.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_fuelpurifiert5.png:<color>.<frame>",
+
+      "imagePosition" : [0, 0],
+      "frames" : 4,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "fu_fuelpurifiert5.animation",
+  "animationParts" : {
+    "centrifuge" : "fu_fuelpurifiert5.png",
+    "centrifugefullbright" : "fu_fuelpurifiert5fullbright.png"
+  },
+
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua", "/scripts/npcToyObject.lua" ],
+  "scriptDelta" : 60,
+  "stats" : {
+    "fuelEfficiency" : 0.40
+  },
+  "maxAmountGroups" : {
+    "fuelPurifierPrecursor" : 1
+  },
+  "byosOnly" : false,
+
+    "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "crouchwarm"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

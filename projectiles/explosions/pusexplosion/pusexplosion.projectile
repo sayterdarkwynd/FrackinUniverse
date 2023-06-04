@@ -9,11 +9,15 @@
   "piercing" : true,
   "flippable" : true,
   "universalDamage" : true,
-  "damageKind" : "default",
+  "damageKind" : "poison",
   "actionOnReap" : [
     {
       "action" : "sound",
       "options" : [ "/sfx/projectiles/goocluster_pop.ogg" ]
+    },
+    {
+      "action" : "liquid",
+      "liquid" : "pus", "quantity" : 1
     }
   ],
   "emitters" : [ "corrosive" ]

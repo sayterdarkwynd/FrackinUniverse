@@ -1,0 +1,26 @@
+{
+  "projectileName" : "shadowbarrier",
+  "image" : "shadowbarrier.png",
+  "physics" : "gas",
+  "frameNumber" : 3,
+  "animationCycle" : 0.3,
+  "lightColor" : [160, 50, 50],
+  "power" : 2,
+  "speed" : 0,
+  "timeToLive" : 2.0,
+  "bounces" : -1,
+  "knockback" : 25,
+  "knockbackDirectional" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [ [2, 4],  [2, -4],  [-2, -4],  [-2, 4] ],
+  "piercing" : true,
+  "damageKind" : "shadowbarrier",
+  "emitters" : [ "shadowsmoke2" ],
+  "statuseffects": ["defensebooseneg20"],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/fire_out.ogg" ]
+    }
+  ]
+}

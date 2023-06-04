@@ -1,0 +1,76 @@
+{
+  "objectName" : "fucolonydeed",
+  "colonyTags" : [],
+  "rarity" : "Common",
+  "description" : "Place in an enclosed building with at least one door and light source and someone will move in!",
+  "shortdescription" : "^yellow;Colony Deed (Tiny)^reset;",
+  "race" : "generic",
+  "printable" : false,
+  "category" : "spawner",
+  "price" : 750,
+
+  "apexDescription" : "If placed in a building with a door and a light it will encourage someone to move in.",
+  "avianDescription" : "This device will invite someone to move into the building. Just make sure there's a door and a light.",
+  "floranDescription" : "Ssscreen to hang on building wall. Makes sssomeone move into home!",
+  "glitchDescription" : "Observant. If placed in a correctly structured building, this colony deed will encourage someone to move in.",
+  "humanDescription" : "These are great for expanding a colony. Place it in a building with a door and a light and someone will move in.",
+  "hylotlDescription" : "If hung in an enclosed building with a door and a light, someone will move in and make it their home.",
+  "novakidDescription" : "With a colony deed someone'll move into the building. Just make sure the building has a door an' a light source.",
+
+  "inventoryIcon" : "colonydeedicon.png",
+  "orientations" : [
+    {
+      "image" : "fucolonydeed.png:scanning.<frame>",
+      "direction": "right",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/spawner/colonydeed.lua",
+    "/objects/spawner/colonydeed/scanning.lua",
+    "/objects/spawner/colonydeed/timer.lua",
+    "/scripts/util.lua"
+  ],
+  "scriptDelta" : 10,
+
+  "animation" : "/objects/spawner/futinydeed/fucolonydeed.animation",
+
+  "animationParts" : {
+    "deed" : "fucolonydeed.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "deed" : {
+    "debug" : false,
+    "interactive" : true, //whether interaction (to trigger a scan / call home the NPC) is possible
+    "requireFilledBackground" : true, //whether tenants require the background to be filled,
+    "hashHouseAsSeed" : false, //whether the seed for tenants should be based on the precise layout of the house
+    "npcsDeliverRent" : true, //whether NPC tenants or the colonydeed should deliver the rent
+    "position" : [0, 1], //relative position to spawn at
+    "positionVariance" : [1, 0], //[x,y] size of randomized spawn area, centered on position
+    "firstScan" : [1.0, 2.0], //delay before the first scan occurs
+    "scanFrequency" : [5.0, 15.0], //cooldown time between scans (random within range)
+    "questScanFrequency" : [1.0, 2.0], //cooldown time between scans (during quests)
+    "maxPerimeter" : 500, //scan limit
+    "healthCheckFrequency" : [1.0, 2.0], //cooldown time between checking if tenants need respawning
+    "healingStateDuration": [5.0, 10.0], //length of time before tenants are respawned
+    "repairTimeRange" : [180.0, 180.0], //seconds before tenants move out when the house loses integrity
+
+    // If haveVacatedState is true, once a tenant is chosen, the deed will only ever
+    // spawn that tenant. Otherwise, if a tenant moves out, it can spawn a different
+    // different tenant.
+    // If it is true, and the requirements for that tenant are not met, the deed goes
+    // into a 'house vacated' state until they are met, rather than going back into the
+    // scanning state.
+    "haveVacatedState" : false,
+
+    // Distance to search for 'nearby' deeds. Used to produce a count of nearby
+    // deeds for an achievement-related event.
+    "nearbyQueryRange" : 20
+  },
+  "isDeed" : true
+}

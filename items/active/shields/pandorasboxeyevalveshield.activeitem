@@ -1,0 +1,93 @@
+{
+  "itemName" : "pandorasboxeyevalveshield",
+  "fixedLevel" : false,
+  "price" : 1100,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "category" : "shield",
+  "description" : "A bivalve shell of extreme durability. It's a little heavy though.",
+  "shortdescription" : "Eyevalve Shield",
+  "tooltipKind" : "shield",
+  "twoHanded" : false,
+  "itemTags" : ["shield"],
+
+  "inventoryIcon" : "images/pandorasboxeyevalveshield.png:nearidle",
+
+  "animation" : "shield.animation",
+  "animationParts" : {
+    "shield" : "images/pandorasboxeyevalveshield.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "shield" : { "properties" : {
+        "shieldPoly" : [ [-0.5, -1.75], [-0.5, 2.0], [0.75, 1.25], [0.75, -1.0] ]
+    }}}},
+    "sounds" : {
+      "raiseShield" : [ "/sfx/melee/sword_guard.ogg" ],
+      "perfectBlock" : [ "/sfx/melee/shield_block_ice_perfect.ogg" ],
+      "block" : [ "/sfx/melee/shield_block_ice.ogg" ],
+      "break" : [ "/sfx/melee/shield_break_ice.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/shields/shield.lua"],
+
+  "minActiveTime" : 0.2,
+
+  "forceWalk" : true,
+  "baseShieldHealth" : 60,
+  "cooldownTime" : 1.5,
+
+  "perfectBlockDirectives" : "?border=2;AACCFFFF;00000000",
+  "perfectBlockTime" : 0.1,
+
+ // ***************   FU shield properties    *********************
+  // if using shield2.lua, you must include these values
+  "shieldHealthRegen" : 0,
+  "shieldEnergyRegen" : 0.05,
+  "shieldHealthBonus" : 0.05,
+  "shieldEnergyBonus" : 0.2,
+  "shieldProtection" : 0.2,
+  "shieldStamina" : 0,
+  "shieldFalling" : 0,
+  "shieldCritChance" : 0,
+  "shieldCritBonus" : 0,
+  "protectionBee" : 0,
+  "protectionAcid" : 0,
+  "protectionBlacktar" : 0,
+  "protectionBioooze" : 0,
+  "protectionPoison" : 0,
+  "protectionLava" : 0,
+  "protectionFire" : 0,
+  "protectionProto" : 0,
+  "protectionCold" : 0,
+  "protectionHeat" : 0,
+  "protectionRads" : 0,
+  "protectionXCold" : 0,
+  "protectionXHeat" : 0,
+  "protectionXRads" : 0,
+  "protectionInsanity" : 1,
+  "protectionShock" : 0,
+  "protectionSlime" : 0,
+  "shieldBash" : 6,
+  "shieldBashPush" : 1,
+  // end FU shield properties
+
+  "knockback" : 15,
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "shieldRotation" : 0,
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "raised" : {
+      "armRotation" : 0,
+      "shieldRotation" : 0,
+      "allowRotate" : true,
+      "allowFlip" : true
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandshield.lua"
+}

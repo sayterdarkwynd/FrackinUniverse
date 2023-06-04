@@ -1,0 +1,42 @@
+{
+  "projectileName" : "futarball3",
+  "image" : "futarball2.png",
+  "animationCycle" : 0.5,
+  "level" : 1,
+  "frameNumber" : 2,
+  "damageKindImage" : "icon.png",
+  "physics" : "floatystickybomb",
+  "pointLight" : false,
+  "timeToLive" : 1.2,
+  "speed" : 30,
+  "bounces" : 0,
+  "lightColor" : [1, 1, 1],
+
+  "actionOnReap" : [
+     {
+      "action" : "config",
+      "file" : "/projectiles/explosions/ectoboom/ectoboom.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/goocluster_pop.ogg" ]
+    },
+    { "action" : "liquid", "liquid" : "blacktar", "quantity" : 0.4 },
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : "metamod:none",
+      "newMod" : "blackslimegrass",
+      "radius" : 2
+    }
+  ],
+
+  "statusEffects" : [ "blacktarslow" ],
+
+  "power" : 1,
+  "damageType" : "IgnoresDef",
+  "damageKind" : "poisonplasma"
+}
+
+
+
+

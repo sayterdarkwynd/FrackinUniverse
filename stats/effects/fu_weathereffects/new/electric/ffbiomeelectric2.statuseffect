@@ -1,0 +1,62 @@
+{
+	"name": "ffbiomeelectric2",
+	"effectConfig": {
+		"resistanceTypes": {
+			"electricResistance": 1.0
+		},
+		"resistanceThreshold": 0.4,
+		"immunityStats": [
+			"biomeelectricImmunity"
+		],
+
+		"healthDrain": 0,
+		"hungerDrain": 0,
+		"energyDrain": 0,
+		"speedPenalty": 0.05,
+		"jumpPenalty": 0.05,
+
+		"debuffRate": 2,
+		"debuffStartDelay": 0,
+		"debuffs": {
+			"energyRegenPercentageRate": {
+				"amount": -0.32,
+				"constant": true
+			},
+			"energyRegenBlockTime": {
+				"amount": 1.0,
+				"constant": true
+			}
+		},
+
+		"modifiers": {
+			"wet": 1.35,
+			"windy": 1.3
+		},
+
+		"messages": {
+			"intro": "ffbiomeelectric",
+			"wet": "ffbiomeelectricwater"
+		},
+
+		"configPath": "/stats/effects/fu_weathereffects/new/electric/ffbiomeelectric2.statuseffect",
+
+		"shockParams": {
+			"baseHealth": 8,
+			"randomHealth": 12,
+			"baseEnergy": 0.15,
+			"randomEnergy": 0.7,
+			"baseDelay": 3,
+			"randomDelay": 13
+		}
+	},
+
+	"defaultDuration": 5,
+
+	"scripts": [
+		"electricweathernew.lua"
+	],
+
+	"animationConfig": "electricweathernew.animation",
+	"label": "Moderate Electrical Storm (Resist: ^#f477ff;Electric^reset;)",
+	"icon": "/interface/statuses/electric2.png"
+}

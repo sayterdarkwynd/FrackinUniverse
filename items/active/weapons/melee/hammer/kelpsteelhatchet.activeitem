@@ -2,16 +2,16 @@
   "itemName" : "kelpsteelhatchet",
   "price" : 900,
   "maxStack" : 1,
-  "rarity" : "rare",
+  "rarity" : "uncommon",
   "description" : "Hylotl engineering. A plant as a weapon. Odd.",
   "shortdescription" : "Kelp Hammer",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "hammer",
   "category" : "hammer",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer"],
-  "level" : 4,
+  "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon"],
+  "level" : 3,
   "inventoryIcon" : "kelpsteelhatchet.png",
-
+  //"collectablesOnPickup" : { "fu_weaponhammer" : "kelpsteelhatchet" },
   "animation" : "hammer.animation",
   "animationParts" : {
     "handle" : "",
@@ -19,7 +19,7 @@
   },
   "animationCustom" : {
     "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-3.0, 1.5]
+      "offset" : [-1.2, 1.5]
     }}}},
     "sounds" : {
       "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
@@ -28,52 +28,20 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "poison",
 
   "primaryAbilityType" : "hammersmash",
   "primaryAbility" : {
     "fireTime" : 1.0,
-    "baseDps" : 13.45,
-    "stances" : {
-      "idle" : {
-        "armRotation" : -10,
-        "weaponRotation" : -10,
-        "weaponOffset" : [0.5, 1.75]
-      },
-      "windup" : {
-        "duration" : 0.8,
-        "armRotation" : 90,
-        "weaponRotation" : -10,
-        "weaponOffset" : [0.4, 1.75],
-
-        // Windup animation
-        "idleHammerAngle" : -10,
-        "windupHammerAngle" : 0,
-        "dropHammerAngle" : 60,
-        "bounceHammerAngle" : 55,
-
-        "minWindup" : 0.7,
-        "windupBaseAngle" : -10,
-        "windupAngleRange" : 70
-      },
-      "preslash" : {
-        "duration" : 0.025,
-        "armRotation" : 55,
-        "weaponRotation" : -45,
-        "weaponOffset" : [0.4, 2.0]
-      },
-      "fire" : {
-        "duration" : 0.4,
-        "armRotation" : -35,
-        "weaponRotation" : -55,
-        "smashTimer" : 1.5,
-        "weaponOffset" : [0.6, 2.0]
-      }
-    }
+    "baseDps" : 13.45
   },
 
   "altAbilityType" : "elementalaura",
   "altAbility" : { },
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "critChance" : 3,
+  "critBonus" : 6,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "stunChance" : 6
 }

@@ -1,0 +1,246 @@
+{
+  "type" : "chromingo",
+  "shortdescription" : "Chromingo",
+  "description" : "The long legs allow it to stand in water to catch fish.",
+
+  "categories" : [ "chromingo" ],
+  "parts" : [ "body" ],
+
+  "animation" : "chromingo.animation",
+
+  "dropPools" : [
+    {
+    "default" : "toumingoTreasure",
+    "bow" : "toumingoHunting",
+    "firebow" : "toumingoHunting",
+    "icebow" : "toumingoHunting",
+    "poisonbow" : "toumingoHunting",
+    "electricbow" : "toumingoHunting",
+    "cosmicbow" : "toumingoHunting",
+    "radioactivebow" : "toumingoHunting",
+    "shadowbow" : "toumingoHunting"
+    }
+  ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : false,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+
+        {
+          "name" : "action-landing-projectile-hop",
+          "cooldown" : 1.0,
+          "parameters" : {
+            "verticalSpeed" : 35,
+            "horizontalSpeed" : 25,
+            "hopSequence" : 1,
+            "windupTime" : 0,
+            "landTime" : 0.2,
+            "timeBetweenHops" : 0.00,
+            "hopAwayFromWall" : false,
+            "projectileType" : "fuwidebeamshote",
+            "projectileParameters" : {
+              "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/prismaticexplosion/prismaticexplosion.config"
+		    }
+              ],
+
+              "speed" : 0,
+              "timeToLive" : 0
+            },
+            "power" : 8,
+            "fireOffset" : [0,0]
+          }
+        }
+      ],
+
+      "periodicActions" : [],
+
+      "approachActions" : [],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 5,
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10,
+            "run" : true
+          }
+        }
+      ],
+      "concurrentHostileActions" : [],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 15]
+          }
+        }
+      ]
+    },
+
+    "collisionParts" : [
+      "body"
+    ],
+
+    "damageParts" : {
+      "body" : {
+        "damage" : 16,
+
+        "teamType" : "enemy",
+        "damageSourceKind" : "slash",
+        "knockback" : 20,
+        "statusEffects" : [ ]
+      }
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.25, 1.6875], [0.625, 1.3125], [0.625, -1.3125], [0.25, -1.6875], [-0.25, -1.6875], [-0.625, -1.3125], [-0.625, 1.3125], [-0.25, 1.6875] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 12,
+      "runSpeed" : 25,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 55
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : 0.2
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 1.0
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 1.0
+        },
+        "biomeradiationImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "fallDamageMultiplier" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "chromingo" }
+  }
+}

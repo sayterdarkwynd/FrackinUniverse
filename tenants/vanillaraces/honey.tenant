@@ -1,0 +1,27 @@
+{
+  "name": "honey",
+  "priority": 5,
+
+  "colonyTagCriteria": {
+    "light": 1,
+    "door": 1,
+    "honey": 6,
+    "bees" : 5
+  },
+
+  "tenants": [
+    {
+      "spawn": "npc",
+      "species": "human",
+      "type": "honeyciv",
+      "overrides": {
+        "damageTeamType" : "friendly"
+       }
+     }
+   ],
+
+  "rent": {
+    "periodRange": [900.0, 1800.0],
+    "pool": "villagerGift"
+  }
+}

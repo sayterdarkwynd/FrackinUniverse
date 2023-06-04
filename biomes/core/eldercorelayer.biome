@@ -1,0 +1,273 @@
+{
+  "name" : "eldercorelayer",
+  "friendlyName" : "Elder Core",
+
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 3,
+        "pool" : [
+          [ 0.111, "starspawn" ],
+          [ 0.111, "deepone" ],
+          [ 0.111, "doomspirit" ],
+          [ 0.111, "fleshreaper" ],
+          [ 0.111, "ravager" ],
+          [ 0.111, "fleshleech" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedGround"
+      },
+      {
+        "select" : 2,
+        "pool" : [
+          [ 0.4, "elderbeetle" ],
+          [ 0.3, "glowingball2critter" ],
+          [ 0.4, "fubat" ],
+          [ 0.3, "wurmcritter" ]
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "colors" : "forest"
+    }
+  },
+
+  "parallax" : "/parallax/underground/icewasteunderground.parallax",
+
+    "mainBlock" : "elderstone",
+    "subBlocks" : [ "elderstone2", "hive", "protorock" ],
+    "ores" : "ff_elderOres",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/desert_underground.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/desert_underground.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+
+  "undergroundPlaceables" : {
+    "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [
+              [0.35, "wildalgaeseed" ],
+              [0.35, "wildtoxictopseed" ],
+              [0.35, "wildoonfortaseed" ],
+              [0.35, "wilddeathblossomseed" ],
+              [0.35, "wildvashtaplantseed" ],
+              [0.35, "wildalgaeseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+        "pool" : [
+              [0.35, "toxicfern1" ],
+              [0.35, "toxicflower1" ],
+              [0.35, "toxicflower2" ],
+              [0.35, "toxicflower3" ],
+              [0.35, "toxicflower4" ],
+              [0.35, "toxicsprout1" ],
+              [0.35, "toxicsprout2" ],
+              [0.35, "toxicsprout3" ],
+              [0.35, "toxicsprout4" ]
+              ],
+              "parameters" : {  }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+        "pool" : [
+              [0.35, "elderidol" ],
+              [0.35, "elderstatue" ],
+              [0.35, "mound3" ],
+              [0.35, "monolith3" ],
+              [0.35, "plynth1" ],
+              [0.35, "pillar1" ],
+              [0.35, "pillar2" ]
+              ],
+              "parameters" : {  }
+            }
+          ]
+        },
+
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "basicChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "ffelderChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "ice", "fuelders", "icewastemini" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseLarge",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 170,
+          "treeStemHueShiftMax" : 170,
+          "treeStemList" : [ "energyorbstem", "edelwood" ],
+          "treeFoliageList" : [ "energyorbfoliage", "edelwoodleaves", "edelwoodleaves2"  ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ], [0.01, "elderaltar" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDist",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
+        },
+
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "terrainfeatures" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredLarge",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "aridskeleton",
+              "baseHueShiftMax" : 120,
+              "modHueShiftMax" : 120
+            },
+            {
+              "name" : "savannahbush",
+              "baseHueShiftMax" : 120,
+              "modHueShiftMax" : 120
+            },
+            {
+              "name" : "algae",
+              "baseHueShiftMax" : 120,
+              "modHueShiftMax" : 120
+            },
+            {
+              "name" : "slimebush",
+              "baseHueShiftMax" : 120,
+              "modHueShiftMax" : 120
+            },
+            {
+              "name" : "testbush2",
+              "baseHueShiftMax" : 120,
+              "modHueShiftMax" : 120
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "grass",
+          "grasses" : [ "spire", "eldergrass" ]
+        }
+    ]
+  }
+}
+

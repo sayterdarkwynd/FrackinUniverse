@@ -1,0 +1,99 @@
+{
+  "objectName" : "imperialwalllight",
+  "colonyTags" : ["mantizi","mantizivilla","light"],
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 45,
+  "description" : "A bronze lantern.",
+  "shortdescription" : "Mantizi Wall Light",
+  "race" : "mantizi",
+
+  "maximumLiquidLevel" : 0.2,
+
+  "apexDescription" : "A small lantern.",
+  "avianDescription" : "A simple bronze lantern.",
+  "floranDescription" : "No flame inssside.",
+  "glitchDescription" : "Identify. An electric lantern made of bronze.",
+  "humanDescription" : "A small lantern that emits bright light.",
+  "hylotlDescription" : "A bright lantern.",
+  "fumantiziDescription" : "Fight back the tide of shadows.",
+
+  "lightColor" : [179, 149, 107],
+
+  "inventoryIcon" : "imperialwalllighticon.png",
+  "orientations" : [
+    {
+      "image" : "imperialwalllight.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+
+      "animationParts" : {
+        "bg" : "imperialwalllight.png",
+        "fg" : "imperialwalllightlit.png"
+      },
+      "animationPosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "fgAnchors" : [ [0, -1] ],
+
+      "direction" : "right"
+    },
+
+    {
+      "image" : "imperialwalllightleft.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+
+      "animationParts" : {
+        "bg" : "imperialwalllightleft.png",
+        "fg" : "imperialwalllightleftlit.png"
+      },
+      "animationPosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "fgAnchors" : [ [-1, 0] ],
+
+      "direction" : "right"
+    },
+
+    {
+      "image" : "imperialwalllightright.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+
+      "animationParts" : {
+        "bg" : "imperialwalllightright.png",
+        "fg" : "imperialwalllightrightlit.png"
+      },
+      "animationPosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "fgAnchors" : [ [1, 0] ],
+
+      "direction" : "right"
+    },
+
+    {
+      "image" : "imperialwalllight.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+
+      "animationParts" : {
+        "bg" : "imperialwalllight.png",
+        "fg" : "imperialwalllightlit.png"
+      },
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "bgAnchors" : [ [0, 0] ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "imperialwalllight.png",
+    "fg" : "imperialwalllightlit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inboundNodes" : [ [0, 0] ]
+}

@@ -1,0 +1,69 @@
+[
+	[
+		{
+			"op": "add",
+			"path": "/price",
+			"value": 5000
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/itemTags",
+			"inverse": true
+		},
+		{
+			"op": "add",
+			"path": "/itemTags",
+			"value": []
+		},
+		{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "upgradeableWeapon"
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/itemTags"
+		},
+		{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "upgradeableWeapon"
+		},
+		{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "balanced"
+		}
+
+	],
+	[{
+			"op": "replace",
+			"path": "/description",
+			"value": "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;10^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Pressure"
+		},
+		{
+			"op": "add",
+			"path": "/statusEffects",
+			"value": [
+				    "perfectsetbonusnew",
+				{
+					"stat" : "fu_perfectsetnew_chest",
+					"amount" : 1
+				}
+			]
+		},
+		{
+			"op": "replace",
+			"path": "/tooltipKind",
+			"value": "armornew2"
+		}, {
+			"op": "add",
+			"path": "/builder",
+			"value": "/items/buildscripts/fubuildarmor.lua"
+		}
+	]
+]

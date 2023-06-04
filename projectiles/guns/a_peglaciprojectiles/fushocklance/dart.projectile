@@ -5,22 +5,19 @@
   "armorPenetration" : 3,
   "physics" : "bullet",
   "bounces" : 0,
-  "frameNumber" : 8,  
+  "frameNumber" : 8,
   "pointLight" : false,
   "speed" :35,
    "lightColor" : [40, 40, 70],
   "actionOnReap" : [
-   {
-      "action" : "config",
-      "file" : "/projectiles/explosions/pulsecannonexplosion/pulsecannonexplosion.config"
-    },
-	 {
+    {
       "action" : "config",
       "file" : "/projectiles/explosions/zapsplosion/zapsplosion.config"
     }
   ],
-  "damageKind" : "slash",
-  "emitters" : [ "peglacitrail" ]
+  "damageKind" : "electric",
+  "emitters" : [ "peglacitrail" ],
+  "statusEffects" : [ "electrified" ]
 }
 
 

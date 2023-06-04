@@ -1,0 +1,227 @@
+{
+  "type" : "anglure2",
+  "shortdescription" : "Rotting Anglure",
+  "description" : "This type of anglure spews noxious gore. Charming.",
+
+  "categories" : [ "anglure2" ],
+  "parts" : [ "body" ],
+
+  "animation" : "anglure2.animation",
+
+  "dropPools" : [ { "default" : "anglureTreasure",
+    "bow" : "huntingglow",
+    "firebow" : "huntingglow",
+    "icebow" : "huntingglow",
+    "poisonbow" : "huntingglow",
+    "electricbow" : "huntingglow",
+    "cosmicbow" : "huntingglow",
+    "radioactivebow" : "huntingglow",
+    "shadowbow" : "huntingglow" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 5.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 25,
+            "minimumRange" : 4,
+            "maxYRange" : 4,
+            "windupTime" : 0.6,
+
+            "aimAtTarget" : true,
+            "projectileType" : "oonfortagas",
+            "power" : 6,
+            "aimDirection" : [0.7, 0.4],
+            "fireOffset" : [0.25, 0.0],
+            "projectileCount" : 5,
+            "projectileInterval" : 0.3,
+            "projectileParameters" : {
+              "speed": 15,
+              "timeToLive" : 3
+            },
+            "fireState" : "fire",
+            "fireSound" : "fire",
+
+            "winddownState" : "firewinddown",
+            "winddownTime" : 0.3
+          }
+        }
+      ],
+
+      "periodicActions" : [],
+
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "cooldown" :  1.0,
+          "parameters" : {
+            "canJump" : false,
+            "run" : true
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "cooldown" :  0.3,
+          "parameters" : {
+            "canJump" : false,
+            "run" : true
+          }
+        }
+      ],
+
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "anglurebulb",
+            "projectileParameters" : {},
+            "power" : 0,
+            "aimDirection" : [1, 1],
+            "inaccuracy" : 0,
+            "fireOffset" : [2, 1]
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 15]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.75, 2.125], [1.25, 1.625], [1.0, -1.375], [0.5, -1.875], [-0.5, -1.875], [-1.0, -1.375], [-1.25, 1.625], [-0.75, 2.125] ],
+      "damage" : 7,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.75, 2.125], [1.25, 1.625], [1.0, -1.375], [0.5, -1.875], [-0.5, -1.875], [-1.0, -1.375], [-1.25, 1.625], [-0.75, 2.125] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 3,
+      "runSpeed" : 5,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 80
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : { "baseValue" : 0.5 },
+        "fireResistance" : { "baseValue" : 0 },
+        "iceResistance" : { "baseValue" : 0 },
+        "electricResistance" : { "baseValue" : 0 },
+        "physicalResistance" : { "baseValue" : 0 },
+        "shadowResistance" : { "baseValue" : 0 }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "anglure2" }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "screen" : {
+        "default" : "off",
+        "states" : {
+          "off" : {"frames" : 1},
+          "slow" : {"frames" : 9, "cycle" : 8, "mode" : "loop"},
+          "med" : {"frames" : 9, "cycle" : 4, "mode" : "loop"},
+          "fast" : {"frames" : 9, "cycle" : 2, "mode" : "loop"}
+        }
+      },
+      "fans" : {
+        "default" : "off",
+        "states" : {
+          "off" : {"frames" : 1},
+          "slow" : {"frames" : 4, "cycle" : 0.1, "mode" : "loop"},
+          "fast" : {"frames" : 2, "cycle" : 0.01, "mode" : "loop"}
+        }
+      },
+	  "base" : {
+	    "default" : "base",
+		"states" : { "base" : {"frames" : 1}}
+	  }
+    },
+
+    "parts" : {
+      "screen" : {
+	    "properties" : {
+	"zLevel" : 3,
+	"centered" : false,
+	"fullbright" : true
+	    },
+        "partStates" : {
+          "screen" : {
+            "off" : {"properties" : {"image" : "<partImage>:off"}},
+            "slow" : {"properties" : {"image" : "<partImage>:slow.<frame>"}},
+            "med" : {"properties" : {"image" : "<partImage>:med.<frame>"}},
+            "fast" : {"properties" : {"image" : "<partImage>:fast.<frame>"}}
+          }
+        }
+      },
+      "fans" : {
+	    "properties" : {"centered" : false},
+        "partStates" : {
+          "fans" : {
+            "off" : {"properties" : {"image" : "<partImage>:off"}},
+            "slow" : {"properties" : {"image" : "<partImage>:slow.<frame>"}},
+            "fast" : {"properties" : {"image" : "<partImage>:fast.<frame>"}}
+          }
+        }
+      },
+	  "base" : {
+	    "properties" : {"centered" : false},
+        "partStates" : {
+          "base" : { "base" : {"properties" : {"image" : "<partImage>:base"}}}
+		}
+	  }
+    }
+  }
+}

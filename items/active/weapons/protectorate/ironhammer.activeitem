@@ -1,0 +1,43 @@
+{
+  "itemName" : "ironhammer",
+  "price" : 350,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A somewhat-crude iron hammer.",
+  "shortdescription" : "Iron Hammer",
+  "tooltipKind" : "sword2",
+  "category" : "hammer",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon"],
+
+  "inventoryIcon" : "ironhammer.png",
+  //"collectablesOnPickup" : { "fu_weaponhammer" : "ironhammer" },
+  "animation" : "/items/active/weapons/melee/hammer/hammer.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "ironhammer.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 1.2,
+    "baseDps" : 11.5
+  },
+
+  "palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
+
+  "altAbilityType" : "physicalshockwave",
+  "critChance" : 2,
+  "critBonus" : 5,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

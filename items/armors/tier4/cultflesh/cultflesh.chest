@@ -1,0 +1,65 @@
+{
+  "itemName" : "cultfleshchest",
+  "inventoryIcon" : "icons.png:chest",
+  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Scythe/Bio-Weapon: +^green;3^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Insanity",
+  "shortdescription" : "Flesh Chestplate",
+  "category" : "chestarmour",
+  "tooltipKind" : "armornew2",
+
+  "maleFrames" : {
+    "body" : "chestm.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
+
+  "femaleFrames" : {
+    "body" : "chestf.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
+  "itemTags" : [ "upgradeableWeapon", "balanced" ],
+  "level" : 4,
+  //"collectablesOnPickup" : { "fu_armorranged" : "cultfleshchest" },
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.25
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.45
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 7
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 3
+    },
+  {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.02
+    }
+  ],
+
+  "statusEffects" : [
+    "fleshsetbonus",
+    {
+      "stat" : "fu_fleshset_chest",
+      "amount" : 1
+    }
+  ],
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
+
+}

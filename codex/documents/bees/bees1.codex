@@ -1,0 +1,33 @@
+{
+  "id" : "bees1",
+    "species" : "fu",
+  "title" : "Bee Genomes",
+  "description" : "How to read genomes",
+  "icon" : "beecodex.png",
+  "contentPages" : ["Use the Enhanced Codex Viewer in your Tricorder to view this codex."],
+   "longContentPages" : [ "^orange;Genomes^reset;\n
+A string composed of numbers and characters similar to hexidecimal, but going up to Z instead of F (0-35 instead of 0-15 | 0-1295 instead of 0-255 with two characters)\n
+A genome is composed of (number of stats * 2) characters, where every two characters store the value of a stat. Each such pair is called a gene. The way a stat is translated from stat to string varies, but here's the general idea:\n
+Value * 100 -> char (0 = 00, 12.95 = ZZ, 2 = 5J)\n
+Here is an example set of stats and their genome:\n
+Base Production: 3, Drone Toughness: 1, Drone Breed Rate: 1, Queen Breed Rate: 5, Queen Lifespan: 3, Mutation Chance: 1 (out of 100), Mite Resistance: 0\n
+Final Genome: 030101050301HZ\n\n
+
+^orange;Stats^reset;\n
+-Subtype: A bee's strain within its given breed. These typically have different production output or behaviors.
+-Base Production: Resource production at 100% hive efficiency, excluding other modifiers.
+-Drone Toughness: Number of mites required to kill a drone. Also used in bee rivalries.
+-Drone Breed Rate: Base drone breeding rate.
+-Queen Breed Rate: Base queen breeding rate.
+-Queen Lifespan: How many bee production ticks before the queen dies (up to 1295).
+-Mutation Chance: Chance for a drastic mutation to occur. Jumps by (math.floor(100/1295*100*n)*0.01) each increment. (As example: '00': 0 | '01': 0.07 | 'HZ': 49.96 | 'ZZ': 100)
+-Mite Resistance: Mite birth rate modifier. (Represented in the genome with values of this range: 'ZZ': 64.7, 'HZ': 0, '00': -64.7).
+-Work Time: Some bees are diurnal, some are nocturnal, some are both.
+"
+   ],
+
+    "itemConfig" : {
+    "rarity" : "uncommon",
+    "price" : 0
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "name" : "futargetedprojectile",
+  "preconditions" : [
+    ["Ability", "MovingAbility"]
+  ],
+  "postconditions" : [
+    ["Ability", "StaticAbility"],
+    ["!Ability", "MovingAbility"]
+  ],
+  "statemodifiers" : [
+    ["Ability", "LongRange"]
+  ],
+
+  "actions" : [ "guardian-targetedprojectile" ], // actions to apply the binding to
+  "behaviorHandler" : "targetedProjectileHandler",
+
+  "projectileConfig" : {
+    "<element>guardianpellet" : {
+      "count" : 30,
+      "speed" : 45,
+      "explosion" : "/projectiles/boss/guardianboss/guardianexplosion/<element>guardianexplosion.config",
+      "explosiveCount" : 20
+    },
+    "<element>guardianbullet" : {
+      "count" : 20,
+      "speed" : 40,
+      "explosion" : "/projectiles/boss/guardianboss/guardianlargeexplosion/<element>guardianlargeexplosion.config",
+      "explosiveCount" : 12
+    }
+  },
+
+  "angleFuzzMultiplier" : 0.15, // multiplier for transforming fuzzAimPosition to fuzzAngle
+
+  "windup" : 1.0,
+  "explosiveChance" : 0.5,
+  "explosiveSpeedMultiplier" : 0.7,
+  "fixedDistanceChance" : 0.5,
+  "fixedDistanceWindupModifier" : -0.8,
+
+  "outerRepeatChance" : 0.49,
+  "outerRepeatTime" : 1.5,
+  "outerRepeat" : [3, 5],
+
+  "innerRepeatChance" : 0.33,
+  "innerRepeatTime" : 0.2,
+  "trackInnerChance" : 0.5,
+
+  "baseAimFuzz" : 10,
+
+  "sequenceActions" : [
+    {
+      "name" : "guardian-targetedprojectile",
+      "parameters" : {
+        "handPart" : "righthand",
+        "aimTime" : 1.0,
+
+        // defaults, can be modified by targetedProjectileHandler
+        "projectileType" : "guardianpellet",
+        "projectileParameters" : {
+          "power" : 10
+        },
+        "projectileCount" : 0,
+        "fuzzAimPosition" : 0,
+        "fixedDistance" : false,
+        "fuzzAngle" : 0,
+        "windup" : 1.0,
+        "fuzzSpeed" : 10,
+
+        "innerRepeat" : 1,
+        "innerInterval" : 0,
+        "trackInner" : false,
+
+        "outerRepeat" : 1,
+        "outerInterval" : 0,
+        "trackOuter" : false
+      }
+    }
+  ]
+}

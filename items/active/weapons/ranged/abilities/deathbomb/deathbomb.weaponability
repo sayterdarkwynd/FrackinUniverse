@@ -1,0 +1,111 @@
+{
+	"animationCustom": {
+		"animatedParts": {
+			"parts": {
+				"grenadelauncher": {
+					"properties": {
+						"zLevel": -1,
+						"centered": true,
+						"offset": [-0.75, -0.375],
+						"transformationGroups": ["muzzle"],
+						"firePosition": [0.75, -0.125],
+						"image": "/items/active/weapons/ranged/abilities/grenadelauncher/grenadelauncher.png"
+					}
+				}
+			}
+		},
+		"sounds": {
+			"altFire": ["/sfx/gun/needler1.ogg"]
+		},
+		"particleEmitters": {
+			"altMuzzleFlash": {
+				"active": false,
+				"emissionRate": 8,
+				"transformationGroups": ["muzzle"],
+				"offsetRegion": [0, 0, 0, 0],
+				"particles": []
+			}
+		}
+	},
+
+	"ability": {
+		"name": "Enemy Bomb",
+		"type": "deathbomb",
+		"scripts": ["/items/active/weapons/ranged/abilities/altfire.lua"],
+		"class": "AltFireAttack",
+		"projectileType": "deathbombdart<elementalType>",
+		"elementalConfig": {
+			"physical": {
+				"projectileType": "deathbombdart"
+			},
+			"silverweapon": {
+				"projectileType": "deathbombdart",
+				"projectileParameters": {
+					"damageKind": "<elementalType>"
+				}
+			},
+			"fire": {},
+			"hellfire": {
+				"projectileType": "deathbombdartfire",
+				"projectileParameters": {
+					"damageKind": "<elementalType>"
+				}
+			},
+			"electric": {},
+			"ice": {},
+			"hoarfrost": {
+				"projectileType": "deathbombdartice",
+				"projectileParameters": {
+					"damageKind": "<elementalType>"
+				}
+			},
+			"poison": {},
+			"bioweapon": {
+				"projectileType": "deathbombdartpoison",
+				"projectileParameters": {
+					"damageKind": "<elementalType>"
+				}
+			},
+			"radioactive": {},
+			"shadow": {},
+			"cosmic": {},
+			"aether": {
+				"projectileType": "deathbombdartcosmic",
+				"projectileParameters": {
+					"damageKind": "<elementalType>"
+				}
+			}
+		},
+		"projectileParameters": {
+			"knockback": 10,
+			"statusEffects": []
+		},
+		"projectileCount": 1,
+		"inaccuracy": 0,
+		"baseDps": 0,
+		"energyUsage": 25.0,
+		"fireTime": 1.0,
+		"fireType": "auto",
+
+		"stances": {
+			"fire": {
+				"duration": 0,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
+
+				"allowRotate": false,
+				"allowFlip": false
+			},
+			"cooldown": {
+				"duration": 0.11,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
+
+				"allowRotate": false,
+				"allowFlip": false
+			}
+		}
+	}
+}

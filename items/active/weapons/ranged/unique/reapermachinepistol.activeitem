@@ -1,0 +1,105 @@
+{
+  "itemName" : "reapermachinepistol",
+  "price" : 600,
+  "inventoryIcon" : "reapermachinepistol.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A devastating dark matter sidearm.
+^yellow;Extremely fast rounds^reset;",
+    "shortdescription" : "Tk-4 Keter",
+  "category" : "machinePistol",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Machine Pistol",
+  "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon"],
+  "twoHanded" : false,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "reapermachinepistol.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlepurple.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/dkmarauder3.wav" ]
+    }
+  },
+
+  "baseOffset" : [0.0, 0.0],
+  "muzzleOffset" : [1.1, 0.6],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "hoarfrost",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.08,
+    "baseDps" : 7,
+    "energyUsage" : 24,
+    "inaccuracy" : 0.03,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "iceplasma",
+    "projectileParameters" : {
+      "speed" : 110,
+      "knockback" : 2,
+      "damageKind" : "hoarfrost",
+	  "statusEffects" : [ "slow" ]
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : false,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 1,
+	      "weaponRotation" : 1,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 1,
+	      "weaponRotation" : 1,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "smallfirecloud1", "offset" : [0.0, 0.0] },
+          { "particle" : "smallfirecloud2", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+
+  "critChance" : 2,
+  "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : 44,
+  "reloadTime" : 1,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

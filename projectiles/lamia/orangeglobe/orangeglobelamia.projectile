@@ -1,0 +1,56 @@
+{
+  "projectileName" : "orangeglobelamia",
+  "physics" : "laser",
+  "bounces" : 3,
+  "speed" : 5,
+  "timeToLive" : 1,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [255, 120, 0],
+  "image" : "orangeglobe.png",
+  "animationCycle" : 1.0,
+  "frameNumber" : 2,
+  "power" : 3,
+  "damagePoly" : [ [-5, 5], [-5, -5], [5, -5], [5, 5] ],
+  "supportsProcessing" : true,
+
+  "periodicActions" : [
+    {
+      "time" : 0.55,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "magnorbhellfire3",
+      "inheritDamageFactor" :0.35,
+      "fuzzAngle" : 360,
+      "projectileParameters" : { "damageSourceKind" : "fireplasma" }
+   }
+  ],
+
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/globeexplosions/orangeglobeexplosion/orangeglobeexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "orangeglobemini",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.2,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "orangeglobemini",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.2,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "orangeglobemini",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.2,
+      "angleAdjust" : 0
+    }
+  ],
+  "damageKind" : "plasma"
+}

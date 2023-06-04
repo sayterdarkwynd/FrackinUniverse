@@ -3,12 +3,12 @@
   "price" : 1440,
   "maxStack" : 1,
   "level" : 4,
-  "rarity" : "Legendary",
+  "rarity" : "Uncommon",
   "description" : "A fairly interesting technological weapon.",
   "shortdescription" : "Cane of Eyes",
   "category" : "staff",
   "twoHanded" : true,
-  "itemTags" : ["weapon","staff"],
+  "itemTags" : ["weapon","staff","upgradeableWeapon"],
   "tooltipKind" : "staff",
 
   "animation" : "/items/active/weapons/staff/staff.animation",
@@ -24,19 +24,15 @@
       }
     },
     "particleEmitters" : {
-      "physicalcharge" : {
+      "electriccharge" : {
         "active" : false,
         "transformationGroups" : ["weapon"],
         "emissionRate" : 10,
         "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
         "particles" : [
-          {"particle" : "kluexstaff"}
+          {"particle" : "lasereyestaff"}
         ]
       }
-    },
-
-    "sounds" : {
-      "physicalactivate" : ["/sfx/npc/boss/cultistboss_recharge.ogg"]
     }
   },
 
@@ -49,7 +45,7 @@
       "armRotation" : -90,
       "weaponRotation" : 0,
       "twoHanded" : false,
-
+      "weaponOffset" : [0,1],
       "allowRotate" : false,
       "allowFlip" : true
     },
@@ -58,7 +54,7 @@
       "armRotation" : 20,
       "weaponRotation" : -20,
       "twoHanded" : true,
-
+      "weaponOffset" : [0,1],
       "allowRotate" : false,
       "allowFlip" : true
     },
@@ -66,7 +62,7 @@
       "armRotation" : 20,
       "weaponRotation" : -20,
       "twoHanded" : true,
-
+      "weaponOffset" : [0,1],
       "allowRotate" : false,
       "allowFlip" : true
     },
@@ -75,7 +71,7 @@
       "armRotation" : -10,
       "weaponRotation" : -50,
       "twoHanded" : true,
-
+      "weaponOffset" : [0,1],
       "allowRotate" : true,
       "allowFlip" : true
     },
@@ -84,7 +80,7 @@
       "armRotation" : -45,
       "weaponRotation" : 0,
       "twoHanded" : true,
-
+      "weaponOffset" : [0,1],
       "allowRotate" : false,
       "allowFlip" : true
     }
@@ -95,7 +91,7 @@
   "primaryAbilityType" : "laserrain",
   "primaryAbility" : {},
 
-  "altAbilityType" : "healingzone",
+  "altAbilityType" : "laserorb",
   "altAbility" : {},
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

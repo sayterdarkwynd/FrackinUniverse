@@ -1,0 +1,149 @@
+{
+  "itemName" : "fugaussmachinegun",
+  "price" : 160,
+  "inventoryIcon" : "fugaussmachinegun.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Brutally effective magnet-based weaponry.
+^yellow;Area damage^reset;
+^yellow;Hunting weapon^reset;",
+  "shortdescription" : "Gauss Machinegun",
+  "category" : "swtjc_ewg_squadAutomaticWeapon",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Coilgun",
+  "itemTags" : ["weapon","ranged","assaultrifle", "upgradeableWeapon","gauss"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "fugaussmachinegun.png",
+    "middlefullbright" : "fugaussmachinegunfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.875, 0.4375]
+		  }
+		}
+      }
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+		  { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] },
+          { "particle" : "dust2", "offset" : [0.4, -0.4] },
+          { "particle" : "electricalburn", "offset" : [0.4, -0.4] },
+          { "particle" : "electricenergy", "offset" : [0.4, -0.4] }
+        ]
+      }
+    },
+    "sounds" : { "fire" : [ "/sfx/weapons/fugausspistol.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [175, 135, 50] } }
+  },
+
+
+  "baseOffset" : [0.875, 0.4375],
+  "muzzleOffset" : [3.0, 0.0625],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.15,
+    "baseDps" : 8.2,
+    "energyUsage" : 33.0,
+    "inaccuracy" : 0.03,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "gausspistolshot",
+    "projectileParameters" : {
+      "speed" : 90,
+      "knockback" : 4
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.04,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "tinyrocketsmoke", "offset" : [0.0, 0.0] },
+          { "particle" : "tinyrocketsmoke", "offset" : [0.0, 0.0] },
+          { "particle" : "tinyrocketsmoke", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+
+
+  "critChance" : 1,
+  "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : 50,
+  "reloadTime" : 3.7,
+  "isAssaultRifle" : 1,
+
+  "altAbilityType" : "explosiveburst",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+   	"upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "description" : "Overclocked capacitors take Gaussian mechanics to the extreme.
+^yellow;Area damage^reset;
+^yellow;Hunting weapon^reset;",
+ "animationParts" : {
+   "middle" : "fugaussmachinegun2.png",
+   "middlefullbright" : "fugaussmachinegun2_fullbright.png"},
+
+    "inventoryIcon" : [ { "image" : "fugaussmachinegun2.png" } ],
+
+    "primaryAbility" : {
+        "fireTime" : 0.12,
+        "baseDps" : 14.1,
+        "energyUsage" : 30.5,
+        "inaccuracy" : 0.025,
+
+		"projectileType" : "gausspistolshot",
+        "projectileParameters" : {
+            "speed" : 95,
+            "knockback" : 8
+            }
+        }
+    }
+}

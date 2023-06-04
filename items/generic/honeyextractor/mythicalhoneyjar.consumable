@@ -1,19 +1,22 @@
 {
   "itemName" : "mythicalhoneyjar",
   "rarity" : "Rare",
-  "price" : 200,
+  "price" : 40,
   "category" : "food",
   "inventoryIcon" : "mythicalhoneyjar.png",
-  "description" : "A delicious jar of imaginary honey!",
+  "description" : "A delicious jar of imaginary honey!\n^cyan;+^white;30% ^pink;Cosmic ^cyan;Resistance ^gray;(^white;5m^gray;)\n^green;Heal ^white;57.5 ^gray;(^white;30s^gray;)^reset;",
   "shortdescription" : "Mythical Honey Jar",
- 
+
+  "tooltipKind": "food",
   "effects" : [ [
+    "fucosmicresistance3",
     {
-        "effect" : "honeyheal6",
-        "duration" :180  },
+      "effect" : "honeyheal4",
+      "duration" : 30
+    },
     {
-        "effect" : "fedhoney",
-        "duration" : 180
+      "effect" : "fedhoney",
+      "duration" : 300
     }
   ] ],
   "blockingEffects" : [

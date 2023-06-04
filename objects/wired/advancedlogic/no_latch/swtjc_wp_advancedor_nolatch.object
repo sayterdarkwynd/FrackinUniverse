@@ -1,0 +1,57 @@
+{
+  "objectName" : "swtjc_wp_advancedor_nolatch",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "An /'OR'/ gate with 2 inputs and a built-in Not Gate, but no built-in Data Latch.",
+  "shortdescription" : "Advanced OR Gate (2 Inputs, No Latch)",
+  "race" : "human",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "apexDescription" : "Not all that different from a normal OR Gate, but the built-in Not Gate is convenient.",
+  "avianDescription" : "Not all that different from a normal OR Gate, but the built-in Not Gate is convenient.",
+  "floranDescription" : "Not all that different from a normal OR Gate, but the built-in Not Gate isss convenient.",
+  "glitchDescription" : "Content. Not all that different from a normal OR Gate, but the built-in Not Gate is convenient.",
+  "humanDescription" : "Not all that different from a normal OR Gate, but the built-in Not Gate is convenient.",
+  "hylotlDescription" : "Not all that different from a normal OR Gate, but the built-in Not Gate is convenient.",
+  "novakidDescription" : "Not all that different from a normal OR Gate, but the built-in Not Gate is convenient.",
+  "penguinDescription" : "Not all that different from a normal OR Gate, but the built-in Not Gate is convenient.",
+  "avaliDescription" : "Not all that different from a normal OR Gate, but the built-in Not Gate is convenient.",
+
+  "inventoryIcon" : "swtjc_wp_advancedor_nolatch.png:default.on",
+  "orientations" : [
+    {
+      "image" : "swtjc_wp_advancedor_nolatch.png:default.on",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/advancedlogic/swtjc_wp_advancedlogic.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/wired/advancedlogic/swtjc_wp_advancedlogic.animation",
+
+  "animationParts" : {
+    "switch" : "swtjc_wp_advancedor_nolatch.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "inputNodes" : [ [-1, -1], [-1, 0] ],
+  "outputNodes" : [ [0, -1], [0, 0] ],
+
+  "hasNotGate" : true,
+  "notGateNode" : 1,
+  "hasLatch" : false,
+
+  "gates" : 2,
+  "truthtable" : [ [ false, true ], [ true, true ] ],
+  "gateNode1" : 0,
+  "gateNode2" : 1
+}

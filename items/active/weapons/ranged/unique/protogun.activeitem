@@ -1,84 +1,150 @@
 {
-  "itemName" : "protogun",
-  "price" : 160,
-  "inventoryIcon" : "protogun.png",
-  "maxStack" : 1,
-  "rarity" : "rare",
-    "description" : "A lovely energy shotgun.",
-    "shortdescription" : "Proto Gun",
-  "level" : 3,
-  "tooltipKind" : "gun",
-  "weaponType" : "Energy",
-  "itemTags" : ["weapon","ranged","shotgun"],
-  "twoHanded" : true,
-
-  "animation" : "/items/active/weapons/ranged/gun.animation",
-  "animationParts" : {
-    "butt" : "",
-    "middle" : "protogun.png",
-    "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/protomuzzle.png"
+  "itemName": "protogun",
+  "price": 160,
+  "inventoryIcon": "protogun.png",
+  "maxStack": 1,
+  "rarity": "uncommon",
+  "description": "Blast foes happily with this energy shotgun.
+^yellow;Bouncing projectiles^reset;",
+  "shortdescription": "Proto Gun",
+  "level": 3,
+  "tooltipKind": "gun2",
+  "weaponType": "Energy",
+  "itemTags": ["weapon", "ranged", "shotgun", "energy", "upgradeableWeapon", "proto"],
+  "twoHanded": true,
+  "category": "shotgun",
+  "animation": "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts": {
+    "butt": "",
+    "middle": "protogun.png",
+    "middlefullbright": "protogunfullbright.png",
+    "barrel": "",
+    "muzzleFlash": "/animations/muzzleflash/protomuzzle.png"
   },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/weapons/protopistol.ogg" ]
+  "animationCustom": {
+    "animatedParts": {
+      "parts": {
+        "middlefullbright": {
+          "properties": {
+            "offset": [1.5, 0.32]
+          }
+        }
+      }
+    },
+    "sounds": {
+      "fire": ["/sfx/weapons/protopistol.ogg"]
     }
   },
 
-  "baseOffset" : [1.7, 0.32],
-  "muzzleOffset" : [1.645, -0.225],
+  "baseOffset": [1.5, 0.32],
+  "muzzleOffset": [1.2, 0.15],
 
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+  "scripts": ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+  "elementalType": "electric",
 
-  "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
-    "fireTime" : 0.80,
-    "baseDps" : 9.4,
-    "energyUsage" : 25.0,
-    "inaccuracy" : 0.20,
+  "primaryAbility": {
+    "scripts": ["/items/active/weapons/ranged/gunfire.lua"],
+    "class": "GunFire",
+    "fireTime": 0.80,
+    "baseDps": 11,
+    "energyUsage": 35.0,
+    "inaccuracy": 0.07,
 
-    "projectileCount" : 3,
-    "fireType" : "auto",
+    "projectileCount": 3,
+    "fireType": "auto",
 
-    "projectileType" : "protoshot3",
-    "projectileParameters" : { 
-      "speed" : 50,
-      "knockback" : 5
+    "projectileType": "protoshot3",
+    "projectileParameters": {
+      "speed": 50,
+      "knockback": 8,
+      "actionOnCollide": [{
+        "action": "config",
+        "file": "/projectiles/explosions/elder/protoboom.config"
+      }],
+      "actionOnHit": [{
+        "action": "config",
+        "file": "/projectiles/explosions/elder/protoboom.config"
+      }],
+      "actionOnReap": [{
+        "action": "config",
+        "file": "/projectiles/explosions/elder/protoboom.config"
+      }]
     },
-  "stances" : {
-    "idle" : {
-      "armRotation" : 0,
-      "weaponRotation" : 0,
-      "twoHanded" : true,
+    "stances": {
+      "idle": {
+        "armRotation": 0,
+        "weaponRotation": 0,
+        "twoHanded": true,
 
-      "allowRotate" : true,
-      "allowFlip" : true
-    },
-    "fire" : {
-      "duration" : 0,
-      "armRotation" : 5,
-      "weaponRotation" : 5,
-      "twoHanded" : true,
+        "allowRotate": true,
+        "allowFlip": true
+      },
+      "fire": {
+        "duration": 0,
+        "armRotation": 5,
+        "weaponRotation": 5,
+        "twoHanded": true,
 
-      "allowRotate" : false,
-      "allowFlip" : false
-    },
-    "cooldown" : {
-      "duration" : 0.075,
-      "armRotation" : 5,
-      "weaponRotation" : 5,
-      "twoHanded" : true,
+        "allowRotate": false,
+        "allowFlip": false
+      },
+      "cooldown": {
+        "duration": 0.075,
+        "armRotation": 5,
+        "weaponRotation": 5,
+        "twoHanded": true,
 
-      "allowRotate" : false,
-      "allowFlip" : false
+        "allowRotate": false,
+        "allowFlip": false
+      }
     }
-  }
   },
 
-  "altAbilityType" : "protobomb",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "critChance": 5,
+  "critBonus": 3,
+
+  "hasRecoil": 1,
+  "recoilSpeed": 200,
+  "recoilForce": 500,
+
+  "altAbilityType": "protobomb",
+  "altAbility": {
+    "fireTime": 3,
+    "name": "Blaster Ball",
+    "baseDps": 10,
+    "projectileParameters": {
+      "timeToLive": 10,
+      "knockback": 20,
+      "piercing": true,
+      "periodicActions": [{
+          "time": 0.1,
+          "action": "sound",
+          "options": ["/sfx/weapons/protopistol.ogg"]
+        },
+        {
+          "time": 0.1,
+          "action": "projectile",
+          "type": "protoshot",
+          "fuzzAngle": 360,
+          "inheritDamageFactor": 0.1
+        }
+      ],
+      "actionOnCollide": [{
+        "action": "config",
+        "file": "/projectiles/explosions/elder/protoboom.config"
+      }],
+      "actionOnHit": [{
+        "action": "config",
+        "file": "/projectiles/explosions/elder/protoboom.config"
+      }],
+      "actionOnReap": [{
+        "action": "config",
+        "file": "/projectiles/explosions/elder/protoboom.config"
+      }]
+    }
+  },
+
+  "builder": "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,0 +1,67 @@
+{
+  "objectName" : "nightarmedievalfurnace",
+  "colonyTags" : ["nightar","glitchvillage","crafting","light"],
+  "rarity" : "Common",
+  "category" : "crafting",
+  "price" : 195,
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/craftingfurnace.config",
+    "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : "  Medieval Furnace",
+        "subtitle" : "  Ye olde fashioned smelting.",
+        "icon" : {
+          "file" : "/interface/crafting/medievalfurnace.png"
+        }
+      }
+    },
+    "filter" : [ "craftingfurnace" ]
+  },
+
+  "description" : "A old fashioned furnace for tempering tools.",
+  "shortdescription" : "Medieval Furnace",
+  "race" : "nightar",
+
+  "maximumLiquidLevel" : 0.2,
+
+  "statusEffects" : [ ],
+
+  "lightColor" : [179, 149, 107],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "inventoryIcon" : "medievalfurnaceicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "medievalfurnace.png:<color>.<frame>", "fullbright" : true }, { "image" : "medievalfurnacelit.png:<color>.<frame>" } ],
+      "imagePosition" : [-24, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "medievalfurnace.png:<color>.<frame>", "fullbright" : true }, { "image" : "medievalfurnacelit.png:<color>.<frame>" } ],
+      "imagePosition" : [-24, 0],
+      "direction" : "right",
+
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/furnace.ogg"
+
+}

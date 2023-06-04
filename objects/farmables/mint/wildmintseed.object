@@ -1,0 +1,44 @@
+{
+  "objectName" : "wildmintseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Uncommon",
+  "category" : "seed",
+  "description" : "Restores natural energy reserves.",
+  "shortdescription" : "Star Mint Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+ //   "learnBlueprintsOnPickup" : [ "mintseed" ],
+  "inventoryIcon" : "mintseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "mintseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [100, 120]
+    },
+    {
+      "duration" : [100, 120]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "mintHarvest",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125,
+  "breakDropOptions" : [
+    [ [ "mintseed", 1, { } ] ]
+  ]
+}

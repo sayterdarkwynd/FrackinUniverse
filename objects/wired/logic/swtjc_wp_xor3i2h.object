@@ -1,0 +1,44 @@
+{
+  "objectName" : "swtjc_wp_xor3i2h",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "An /'XOR'/ gate. Requires exactly 2 inputs to be on, and the rest off.",
+  "shortdescription" : "XOR Gate (3 Inputs, 2-Hot)",
+  "race" : "human",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "floranDescription" : "An /'XOR'/ gate. Requiresss exxactly 2 inputsss to be on, and the ressst off.",
+  "glitchDescription" : "Observation. An /'XOR'/ gate. Requires exactly 2 inputs to be on, and the rest off.",
+
+  "inventoryIcon" : "swtjc_wp_xor3i.png:default.1",
+  "orientations" : [
+    {
+      "image" : "swtjc_wp_xor3i.png:<color>.off",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/logic/swtjc_wp_logic.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/wired/logic/logic.animation",
+
+  "animationParts" : {
+    "switch" : "swtjc_wp_xor3i.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "inputNodes" : [ [-1, -1], [-1, 0], [0, 0] ],
+  "outputNodes" : [ [0, -1] ],
+
+  "gates" : 3,
+  "truthtable" : [ [ [ false, false ], [ false, true ] ], [ [ false, true ], [ true, false ] ] ]
+}

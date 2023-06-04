@@ -6,13 +6,13 @@
   "rarity" : "rare",
   "description" : "Unpleasant",
   "shortdescription" : "Corrupted Blade",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "shortsword",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword"],
+  "itemTags" : ["weapon","melee","shortsword","shadow", "upgradeableWeapon"],
 
   "inventoryIcon" : "corruptblade.png",
-
+  //"collectablesOnPickup" : { "fu_weaponshortsword" : "corruptblade" },
   "animation" : "comboshortsword.animation",
   "animationParts" : {
     "handle" : "",
@@ -31,9 +31,10 @@
   },
 
   //"altAbilityType" : "risingslash",
-
+  "critChance" : 3,
+  "critBonus" : 2,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
-  
-  
-  
+
+
+
 }

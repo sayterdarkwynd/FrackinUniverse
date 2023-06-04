@@ -1,0 +1,112 @@
+{
+  "type" : "crewmembershadow",
+  "baseType" : "fu_crewmember",
+
+  "scriptConfig" : {
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "darkhead",
+        "chest" : "darkchest",
+        "legs" : "darklegs"
+      },
+
+      "role" : {
+        "type" : "chemist",
+        "name" : "Shadow Being",
+        "field" : "Shadow-Walk",
+        "uniformColorIndex" : 1,
+
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "shadowimmunity",
+            "duration" : 300
+          },
+          {
+            "type" : "Regeneration",
+            "value" : 1
+          }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "offer" : {
+          "default" : {
+            "default" : [
+              "...?"
+            ]
+          }
+        },
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "..."
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "!!!",
+              "...",
+              "... ..",
+              "... .. .... ."
+            ]
+          }
+        },
+	    "fieldBenefit" : {
+          "default" : {
+            "default" : [
+              "!!!",
+              "...",
+              "... ..",
+              "... .. .... ."
+            ]
+          }
+        },
+        "respawned" : {
+          "default" : {
+            "default" : [
+              "..... ..."
+            ]
+          }
+        },
+        "unfollow" : {
+          "default" : {
+            "default" : [
+              "..? ..."
+            ]
+          }
+        },
+        "follow" : {
+          "default" : {
+            "default" : [
+              "..? ..!"
+            ]
+          }
+        },
+        "cantreach" : {
+          "default" : {
+            "default" : [
+              "..!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "penumbrabow" ],
+            "sheathedprimary" : [ "effigiumhammer" ]
+          }
+        ] ]
+    ]
+  }
+}

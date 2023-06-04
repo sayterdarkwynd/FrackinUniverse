@@ -1,19 +1,18 @@
 {
-  "itemName" : "lactariusindigo",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "lactariusindigo.png",
-  "description" : "Heals 25% damage and increases energy.",
-  "shortdescription" : "Lactarius Indigo Mushroom",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      "heal_25", "maxenergyboost2"
-    ] ]
+	"itemName": "lactariusindigo",
+	"inventoryIcon": "lactariusindigo.png",
+	"category": "food",
+	"rarity": "Rare",
+	"price": 10,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immune: Shadow Taint & +10% Shadow Res^reset;: 2m",
+	"shortdescription": "Lactarius Indigo Mushroom",
+
+	"effects": [
+		[{
+			"effect": "shadowblock",
+			"duration": 120
+		}]
+	]
 }

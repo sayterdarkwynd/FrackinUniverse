@@ -1,0 +1,102 @@
+{
+  "itemName" : "lunariwand",
+  "level" : 2,
+  "price" : 960,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Sufficiently Advanced Technology.",
+  "shortdescription" : "Lunari Wand",
+  "category" : "wand",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","wand","upgradeableWeapon","lunari"],
+  "tooltipKind" : "staff",
+
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "lunariwand.png",
+    "stone" : "/items/active/weapons/wand/generated/stone/lunariwand.png",
+    "chargeEffect" : "/items/active/weapons/staff/generated/glow/ice.png"
+  },
+
+  "inventoryIcon" : "lunariwand.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "baseDamageFactor" : 0.5,
+
+  "stances" : {
+    "idle" : {
+      "weaponOffset" : [0, 1.0],
+
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "weaponOffset" : [0, 1.5],
+
+      "duration" : 1.0,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "weaponOffset" : [0, 1.5],
+
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "weaponOffset" : [0, 1.5],
+
+      "duration" : 0.5,
+      "armRotation" : -10,
+      "weaponRotation" : -50,
+      "twoHanded" : false,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "cooldown" : {
+      "weaponOffset" : [0, 1.0],
+
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "elementalType" : "ice",
+
+  "primaryAbility" : {
+    "type" : "elementorb",
+    "name" : "Ice Orb",
+    "scripts" : ["/items/active/weapons/staff/abilities/controlprojectile/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 75,
+
+    "maxCastRange" : 25,
+
+    "projectileType" : "iceorb",
+    "projectileParameters" : {
+      "baseDamage" : 4
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

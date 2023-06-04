@@ -1,0 +1,31 @@
+{
+  "objectName" : "fuwarpdetector",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "wire",
+  "price" : 80,
+  "description" : "Outputs from ^red;node 1^reset; when not in flight, and ^red;node 2^reset; when the ship is moving.",
+  "shortdescription" : "Warp Detector",
+  "race" : "generic",
+
+  "inventoryIcon" : "fuwarpdetectoricon.png",
+  "orientations" : [
+    {
+      "image" : "fuwarpdetector.png:<color>",
+      "imagePosition" : [0, 0],
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/fuwarpdetector/fuwarpdetector.lua" ],
+  "scriptDelta" : 5,
+  "outputNodes" : [ [0, 0], [1, 0] ],
+
+  "flyingOutputStates" : {
+    "none" : false,
+    "disembarking" : true,
+    "warp" : true,
+    "arriving" : true
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "projectileName" : "fucloudgunshot3aice",
+  "image" : "icecloud.png",
+  "animationCycle" : 1.2,
+  "frameNumber" : 8,
+  "armorPenetration" : 3,
+  "physics" : "gas",
+  "bounces" : 3,
+  "pointLight" : false,
+  "speed" :15,
+    "lightColor" : [255, 150, 0],
+	 "timeToLive" : 0.5,
+  "actionOnReap" : [
+    {
+         "action" : "config",
+         "file" : "/projectiles/explosions/iceboom/iceboom.config"
+    }
+  ],
+  "statusEffects" : ["frozenburning"],
+  "damageKind" : "ice",
+  "emitters" : [ "cloudtrail" ]
+}
+
+

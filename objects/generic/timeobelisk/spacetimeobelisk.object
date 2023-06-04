@@ -1,0 +1,83 @@
+{
+  	"objectName" : "spacetimeobelisk",
+  	"colonyTags" : ["ancient","electronic","elder"],
+	  "description" : "A strange artifact of unknown use.",
+	  "shortdescription" : "Mysterious Pillar",
+	"rarity" : "legendary",
+	"race" : "generic",
+	"category" : "other",
+	"printable" : false,
+	"price" : 0,
+	  "lightColor" : [22, 51, 177],
+	  "hasObjectItem" : false,
+	  "unbreakable" : true,
+	  "health" : 90,
+	  "consumeOnPickup" : true,
+	  "flickerPeriod" : 0.5,
+	  "flickerMinIntensity" : 0.95,
+	  "flickerMaxIntensity" : 1,
+	  "flickerPeriodVariance" : 0.0,
+	  "flickerIntensityVariance" : 0.0,
+	"inventoryIcon" : "spacetimeobeliskicon.png",
+	"orientations" : [
+	    {
+	      "image" : "spacetimeobelisk.png:<color>.on",
+	      "flipImages" : true,
+	      "direction" : "left",
+	      "lightPosition" : [0, 1],
+
+	      "imagePosition" : [-8, 0],
+	      "frames" : 1,
+	      "animationCycle" : 1.0,
+
+	      "spaceScan" : 0.1,
+	      "anchors" : [ "bottom" ]
+	    },
+	    {
+	      "image" : "spacetimeobelisk.png:<color>.on",
+	      "direction" : "right",
+	      "lightPosition" : [0, 1],
+
+	      "imagePosition" : [-8, 0],
+	      "frames" : 1,
+	      "animationCycle" : 1.0,
+
+	      "spaceScan" : 0.1,
+	      "anchors" : [ "bottom" ]
+	    }
+	],
+
+	"scripts" : [ "obeliskscan.lua","/scripts/npcToyObject.lua" ],
+	  "animation" : "spacetimeobelisk.animation",
+	  "animationCustom" : {
+	    "sounds" : {
+	      "on" : [ "/sfx/objects/console_button.ogg" ],
+	      "off" : [ "/sfx/objects/console_button.ogg" ]
+	    }
+	  },
+	  "animationParts" : {
+	    "bg" : "spacetimeobelisk.png",
+	    "fg" : "spacetimeobelisklit.png"
+	  },
+	  "animationPosition" : [-8, 0],
+
+  "npcToy" : {
+    "influence" : [ "console" ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-0.5, 0.0],
+    "preciseStandPositionRight" : [2.0, 0.0],
+    "maxNpcs" : 1
+  },
+
+  "smashable" : true,
+  "smashOnBreak" : true,
+  "smashSounds" : [  ],
+  "smashDropPool" : "fuprecursorResources",
+  "explosionProjectile" : "plasmaboom",
+  "explosionOffset" : [1, 2],
+  "inactiveVariant":"spacetimeobeliskinactive",
+  "treasure" : {
+    "pool" : "ffmetallicChestSurprise",
+    "level" : 1
+  }
+}

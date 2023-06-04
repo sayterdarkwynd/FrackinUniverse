@@ -1,0 +1,72 @@
+{
+  "objectName" : "isn_atmosregulatorwarped",
+  "rarity" : "essential",
+  "colonyTags" : [ "science" ],
+  "description" : "Generates a mysterious field at significantly higher range. ^cyan;Requires ^orange;320W^cyan; of power^reset;.",
+  "shortdescription" : "^cyan;Warped Regulator^reset;",
+  "race" : "generic",
+  "price" : 412001,
+  "category" : "wire",
+  "printable" : false,
+  "health" : 30,
+  "rooting" : true,
+  "inventoryIcon" : "isn_atmosregulator_inv.png",
+  "orientations" : [
+    {
+      "image" : "isn_atmosregulatorwarped_base.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+
+      "imagePosition" : [-80, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "lightPosition" : [-2, 2],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "isn_atmosregulatorwarped_base.png:<color>.<frame>",
+      "direction" : "right",
+
+      "imagePosition" : [-80, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "lightPosition" : [1, 2],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [ "/scripts/fupower.lua","/objects/power/fu_atmosfilter/fu_atmosfilterwarped.lua" ],
+  "scriptDelta" : 60,
+
+  "objectType" : "container",
+  "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
+  "slotCount" : 3,
+  "uiConfig" : "/interface/objectcrafting/fu_warped<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+
+  "atmos" : {
+	"range" : 500,
+	"objectEffects":["warpedregulatordummy"]
+  },
+
+  "animation" : "isn_atmosregulatorwarped.animation",
+
+  "animationParts" : {
+    "fg" : "isn_atmosregulatorwarped_base.png",
+    "bg" : "isn_atmosregulatorwarped_lit.png"
+  },
+
+  "animationPosition" : [-80, 0],
+
+  "inputNodes" : [ [1, 2] ],
+  "powertype" : "input",
+  "isn_requiredPower" : 320
+}

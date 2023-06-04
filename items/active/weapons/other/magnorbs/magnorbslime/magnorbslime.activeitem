@@ -1,0 +1,68 @@
+{
+	"itemName" : "magnorbslime",
+	"level" : 3,
+	"price" : 500,
+	"maxStack" : 1,
+	"rarity" : "common",
+	"description" : "Releases globs of delicious slime.",
+	"shortdescription" : "Slime Lobber",
+	"tooltipKind" : "magnorb",
+	"category" : "Magnorb",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","magnorb","slime", "upgradeableWeapon"],
+
+	"inventoryIcon" : "iconslime.png",
+	"animation" : "magnorbslime.animation",
+	"animationParts" : {
+		"glove" : "gloveslime.png",
+		"orb1" : "magnorbslime.png",
+		"orb2" : "magnorbslime.png",
+		"orb3" : "magnorbslime.png"
+	},
+	"animationCustom" : { },
+
+	"scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
+
+	"orbitRate" : 0.35,
+
+	"elementalType" : "poison",
+
+	"projectileType" : "magnorbslime",
+	"projectileParameters" : {
+		"power" : 3.82,
+		"knockback" : 10,
+
+		"returnOnHit" : true,
+		"ignoreTerrain" : false,
+		"controlForce" : 60,
+		"pickupDistance" : 2.5,
+		"snapDistance" : 2.0
+	},
+
+	"count" : 3,
+	"shieldKnockback" : 20,
+	"shieldEnergyCost" : 35,
+	"shieldHealth" : 70,
+	"shieldPower" : "Slimey Defense",
+	"shieldPersistentGroup":"magnorbSlime",
+	"shieldPersistentEffects":[{"stat":"slimestickImmunity","amount":1},{"stat":"slimefrictionImmunity","amount":1},{"stat":"poisonResistance","amount":0.15}],
+	"shieldEphemeralEffects":["percentarmorboost10"],
+	"critChance" : 1,
+	"critBonus" : 3,
+
+	"stances" : {
+		"idle" : {
+			"armRotation" : 10,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		},
+		"shield" : {
+			"armRotation" : 0,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		}
+	},
+	"builder" : "/items/buildscripts/fubuildmagnorb.lua"
+}

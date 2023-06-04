@@ -3,28 +3,31 @@
   "price" : 500,
   "inventoryIcon" : "isn_flamethrower.png",
     "maxStack" : 1,
-    "rarity" : "rare",
-  "description" : "A nifty flame-throwing sidearm.",
+    "rarity" : "uncommon",
+  "description" : "What greater joy than cooking flesh?
+^yellow;Inflicts burning^reset;",
   "shortdescription" : "Incinerator",
-  "level" : 2,
-  "category" : "uniqueWeapon",
-  "itemTags" : ["weapon","ranged","flamethrower"],
-  "tooltipKind" : "gun",
+  "level" : 3,
+  "category" : "flamethrower",
+  "itemTags" : ["weapon","ranged","flamethrower", "upgradeableWeapon"],
+ // "learnBlueprintsOnPickup" : [ "isn_flamethrower4", "fuflamearm" ],
+  "tooltipKind" : "gun2",
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "isn_flamethrower.png",
+    "middlefullbright" : "",
     "barrel" : "",
     "muzzleFlash" : ""
-  },      
+  },
   "animationCustom" : {
     "sounds" : { "fire" : [ "/items/active/weapons/ranged/unique/science/flamepistol/isn_flamethrower.wav" ] },
-    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }  
+    "lights" : { "muzzleFlash" : {"color" : [90, 55, 70] } }
   },
 
-  "baseOffset" : [0.7, 0.34],
-  "muzzleOffset" : [1.5, 0.125],
+  "baseOffset" : [0.8, 0.14],
+  "muzzleOffset" : [1.5, 0.3],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -33,15 +36,16 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.05,
-    "baseDps" : 9.5,
-    "energyUsage" : 15,
+    "fireTime" : 0.1,
+    "baseDps" : 7,
+    "energyUsage" : 35,
     "fireType" : "auto",
     "inaccuracy" : 0.02,
     "projectileCount" : 1,
-    "projectileType" : "isn_flamethrower_shot",
+    "projectileType" : "flamethrower",
     "projectileParameters" : {
-      "speed" : 32
+      "speed" : 22,
+      "timeToLive" : 0.3
     },
     "stances" : {
       "idle" : {
@@ -72,6 +76,46 @@
       }
     }
   },
+  "critChance" : 2,
+  "critBonus" : 2,
+  "isAmmoBased" : 1,
+  "reloadTime" : 2,
+  "magazineSize" : 36,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+    "upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "shortdescription" : "^cyan;Burninator^reset; ^yellow;^reset;",
+  "description" : "What greater joy than cooking flesh?
+^yellow;Inflicts burning^reset;
+^cyan;Dual-flames and increased range^reset;",
+  "animationParts" : {"middle" : "isn_flamethrower2.png"},
+  "inventoryIcon" : [ { "image" : "isn_flamethrower2.png" } ],
+    "primaryAbility" : {
+      "inaccuracy" : 0.07,
+            "projectileCount" : 1,
+      "projectileParameters" : {
+        "timeToLive" : 1.05
+      }
+
+    }
+      },
+    "upgradeParameters2" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "shortdescription" : "^cyan;Roastmaster^reset; ^yellow;^reset;",
+  "description" : "What greater joy than cooking flesh?
+^yellow;Inflicts burning^reset;
+^cyan;Dual-flames and increased range^reset;",
+  "animationParts" : {"middle" : "isn_flamethrower3.png"},
+  "inventoryIcon" : [ { "image" : "isn_flamethrower3.png" } ],
+    "primaryAbility" : {
+      "inaccuracy" : 0.09,
+            "projectileCount" : 2,
+      "projectileParameters" : {
+        "timeToLive" : 1.1
+      }
+
+    }
+      }
 }

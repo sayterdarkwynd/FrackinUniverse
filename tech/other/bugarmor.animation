@@ -1,0 +1,226 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "boosting" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+          },
+          "on" : {
+            "properties" : {
+              "persistentSound" : "/sfx/tech/tech_particlethrust.ogg"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "powerStance" : {
+      "enabled" : false,
+      "emissionRate" : 0.25,
+      "emissionRateVariance" : 1.5,
+      "particles" : [
+       {
+          "particle" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [222, 66, 30, 230],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 5.0],
+            "finalVelocity" : [0, 10],
+            "approach" : [0, 10],
+            "timeToLive" : 0.6,
+            "variance" : {
+              "initialVelocity" : [0.2, 0],
+              "size" : 0.5
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "textured",
+            "image" : "/interface/statuses/attack.png",
+            "size" : 0.5,
+            "color" : [255, 255, 255, 255],
+            "fade" : 0.9,
+            "initialVelocity" : [0.0, 2],
+            "rotation" : 0,
+            "angularVelocity" : 0,
+            "timeToLive" : 1,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.5,
+            "layer" : "back",
+            "variance" : {
+              "initialVelocity" : [1, 0.5],
+              "size" : 0.2,
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          }
+        }
+      ]
+    },
+    "shieldStance" : {
+      "enabled" : false,
+      "emissionRate" : 0.25,
+      "emissionRateVariance" : 1.5,
+      "particles" : [
+       {
+          "particle" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [122, 122, 122, 230],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 5.0],
+            "finalVelocity" : [0, 10],
+            "approach" : [0, 10],
+            "timeToLive" : 0.6,
+            "variance" : {
+              "initialVelocity" : [0.2, 0],
+              "size" : 0.5
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "textured",
+            "image" : "/interface/statuses/defense.png",
+            "size" : 0.5,
+            "color" : [255, 255, 255, 255],
+            "fade" : 0.9,
+            "initialVelocity" : [0.0, 2],
+            "rotation" : 0,
+            "angularVelocity" : 0,
+            "timeToLive" : 1,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.5,
+            "layer" : "back",
+            "variance" : {
+              "initialVelocity" : [1, 0.5],
+              "size" : 0.2,
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          }
+        }
+      ]
+    },
+    "defenseStance" : {
+      "enabled" : false,
+      "emissionRate" : 0.25,
+      "emissionRateVariance" : 1.5,
+      "particles" : [
+       {
+          "particle" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [22, 55, 222, 230],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 5.0],
+            "finalVelocity" : [0, 10],
+            "approach" : [0, 10],
+            "timeToLive" : 0.6,
+            "variance" : {
+              "initialVelocity" : [0.2, 0],
+              "size" : 0.5
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "textured",
+            "image" : "/interface/statuses/bugarmor.png",
+            "size" : 0.5,
+            "color" : [255, 255, 255, 255],
+            "fade" : 0.9,
+            "initialVelocity" : [0.0, 2],
+            "rotation" : 0,
+            "angularVelocity" : 0,
+            "timeToLive" : 1,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.5,
+            "layer" : "back",
+            "variance" : {
+              "initialVelocity" : [1, 0.5],
+              "size" : 0.2,
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          }
+        }
+      ]
+    },
+    "bugarmor" : {
+      "enabled" : false,
+      "emissionRate" : 2.0,
+      "emissionRateVariance" : 1.5,
+      "particles" : [
+       {
+          "particle" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [22, 22, 22, 230],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 5.0],
+            "finalVelocity" : [0, 10],
+            "approach" : [0, 10],
+            "timeToLive" : 0.6,
+            "variance" : {
+              "initialVelocity" : [0.2, 0],
+              "size" : 0.5
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "textured",
+            "image" : "/interface/statuses/bugarmor.png",
+            "size" : 0.5,
+            "color" : [255, 255, 255, 255],
+            "fade" : 0.9,
+            "initialVelocity" : [0.0, -1],
+            "rotation" : 0,
+            "angularVelocity" : 0,
+            "timeToLive" : 1,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.5,
+            "layer" : "back",
+            "variance" : {
+              "initialVelocity" : [1, 0.5],
+              "size" : 0.2,
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "activate" : [ "/sfx/tech/tech_multijump.ogg" ],
+    "activate2" : [ "/sfx/tech/tramplatform_close.ogg" ],
+    "activate3" : [ "/sfx/tech/vehicle_appear3.ogg" ]
+  }
+
+
+}
+

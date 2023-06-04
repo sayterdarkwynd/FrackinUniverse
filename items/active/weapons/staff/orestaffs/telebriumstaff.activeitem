@@ -1,0 +1,93 @@
+{
+  "itemName" : "telebriumstaff",
+  "level" : 2,
+  "price" : 240,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Powerful toxins emit from this weapon.",
+  "shortdescription" : "Telebrium Staff",
+  "category" : "staff",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","staff","upgradeableWeapon","telebrium"],
+  "tooltipKind" : "staff",
+
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "telebriumstaff.png",
+    "stone" : "/items/active/weapons/staff/generated/stone/telebriumstaff.png",
+    "chargeEffect" : "/items/active/weapons/staff/generated/glow/poison.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "poisoncharge" : {
+        "offsetRegion" : [-0.5, 1.0, 0.5, 2.5]
+      }
+    },
+    "animatedParts" : {
+      "parts" : {
+        "staff" : { "properties" : { "offset" : [0, 0.5] } },
+        "stone" : { "properties" : { "offset" : [0, 0.5] } },
+        "chargeEffect" : { "properties" : { "offset" : [0, 0.5] } }
+      }
+    }
+  },
+
+  "inventoryIcon" : "telebriumstaff.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 1.3,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "discharge" : {
+      "duration" : 0.5,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "telebriumwand",
+  "primaryAbility" : {},
+  "altAbilityType" : "energyzone",
+  "altAbility" : {},
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

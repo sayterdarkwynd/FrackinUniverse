@@ -1,21 +1,19 @@
 {
   "itemName" : "fieldgenerator",
+  "price" : 1500,
   "inventoryIcon" : "fieldgenerator.png",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "rarity" : "rare",
-  "description" : "Protects you from all heat, cold, proto-poison and radiation.",
+  "description" : "Protects you from extreme heat/cold/radiation, proto-poison and electric storms. +25% to Fire, Ice and Radiation Resist.",
   "shortdescription" : "Field Generator",
   "tooltipKind" : "baseaugment",
   "category" : "enviroProtectionPack",
-  
+  "maxStack" : 1,
   "maleFrames" : "back.png",
   "femaleFrames" : "back.png",
-
   "acceptsAugmentType" : "back",
   "radioMessagesOnPickup" : [ "pickupepp" ],
-  
   "statusEffects" : [
-    "ffextremeradiationimmunityicon",
     {
       "stat" : "ffextremeradiationImmunity",
       "amount" : 1.0
@@ -25,10 +23,13 @@
       "amount" : 1.0
     },
     {
+      "stat" : "biomeelectricImmunity",
+      "amount" : 1.0
+    },
+    {
       "stat" : "biomeradiationImmunity",
       "amount" : 1.0
     },
-      "ffextremeheatimmunityicon",
       {
         "stat" : "ffextremeheatImmunity",
         "amount" : 1.0
@@ -37,7 +38,6 @@
         "stat" : "biomeheatImmunity",
         "amount" : 1.0
       },
-    "ffextremecoldimmunityicon",
     {
       "stat" : "ffextremecoldImmunity",
       "amount" : 1.0
@@ -45,8 +45,44 @@
     {
       "stat" : "biomecoldImmunity",
       "amount" : 1.0
+    },
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.25
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.25
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.25
     }
-  ]
-  
-  
+  ],
+	"colorOptions" : [
+	// DEFAULT
+	{ "ffca8a" : "c7c7c7", "e0975c" : "c7c7c7", "a85636" : "b4b4b4", "6f2919" : "939393" },
+	// BLACK
+	{ "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },
+	// GREY
+	{ "ffca8a" : "b5b5b5", "e0975c" : "808080", "a85636" : "555555", "6f2919" : "303030" },
+	// WHITE
+	{ "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },
+	// RED
+	{ "ffca8a" : "f4988c", "e0975c" : "d93a3a", "a85636" : "932625", "6f2919" : "601119" },
+	// ORANGE
+	{ "ffca8a" : "ffd495", "e0975c" : "ea9931", "a85636" : "af4e00", "6f2919" : "6e2900" },
+	// YELLOW
+	{ "ffca8a" : "ffffa7", "e0975c" : "e2c344", "a85636" : "a46e06", "6f2919" : "642f00" },
+	// GREEN
+	{ "ffca8a" : "b2e89d", "e0975c" : "51bd3b", "a85636" : "247824", "6f2919" : "144216" },
+	// BLUE
+	{ "ffca8a" : "96cbe7", "e0975c" : "5588d4", "a85636" : "344495", "6f2919" : "1a1c51" },
+	// PURPLE
+	{ "ffca8a" : "d29ce7", "e0975c" : "a451c4", "a85636" : "6a2284", "6f2919" : "320c40" },
+	// PINK
+	{ "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
+	// BROWN
+	{ "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
+]
 }

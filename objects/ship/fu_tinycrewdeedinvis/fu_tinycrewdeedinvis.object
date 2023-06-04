@@ -1,0 +1,59 @@
+{
+  "objectName" : "fu_tinycrewdeedinvis",
+  "colonyTags" : [],
+  "rarity" : "Common",
+  "description" : "Place in an enclosed building with at least one door, a light source and some furniture to gain ^yellow;Crew +1^reset;! ^red;BYOS Only^reset;",
+  "shortdescription" : "^yellow;Crew Deed (Tiny, Invis)^reset;",
+  "race" : "generic",
+  "printable" : false,
+  "category" : "spawner",
+  "price" : 750,
+
+  "inventoryIcon" : "fu_tinycrewdeedinvisicon.png",
+  "orientations" : [
+    {
+      "image" : "fu_tinycrewdeedinvis.png:scanning.<frame>",
+      "direction": "right",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/ship/fu_crewdeed/fu_crewdeed.lua"
+  ],
+  "scriptDelta" : 10,
+
+  "animation" : "/objects/ship/fu_tinycrewdeedinvis/fu_tinycrewdeedinvis.animation",
+
+  "animationParts" : {
+    "deed" : "fu_tinycrewdeedinvis.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "deed" : {
+	"maxPerimeter" : 500, //scan limit
+	"scanDelay" : 5, //in seconds
+	"interactive" : true,
+	"tagCriteria" : {
+      "light": 1,
+      "door": 1,
+      "bed": 1
+    },
+	"requireFilledBackground" : true,
+	"grumbleText" : {
+	  "enclosedArea" : "Area not enclosed",
+	  "otherDeed" : "Another deed in room",
+	  "tagCriteria" : "Requires <tagAmount> more tiles of <tagName> objects",
+	  "notShip" : "Must be placed on your ship",
+	  "notByos" : "BYOS only"
+	}
+  },
+  "stats" : {
+    "crewSize" : 1
+  },
+  "byosOnly" : true,
+  "isDeed" : true
+}

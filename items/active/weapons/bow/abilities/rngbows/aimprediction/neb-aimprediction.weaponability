@@ -1,0 +1,104 @@
+{
+  "animationCustom" : {
+    "sounds" : {
+      "enterAimMode" : [ "/sfx/interface/sniper_mark_start2.ogg" ],
+      "targetAcquired1" : [ "/sfx/interface/sniper_mark_pitch1.ogg" ],
+      "targetAcquired2" : [ "/sfx/interface/sniper_mark_pitch2.ogg" ],
+      "targetAcquired3" : [ "/sfx/interface/sniper_mark_pitch3.ogg" ],
+      "targetAcquired4" : [ "/sfx/interface/sniper_mark_pitch4.ogg" ],
+      "targetAcquired5" : [ "/sfx/interface/sniper_mark_pitch5.ogg" ],
+      "targetAcquired6" : [ "/sfx/interface/sniper_mark_pitch6.ogg" ],
+      "targetAcquired7" : [ "/sfx/interface/sniper_mark_pitch7.ogg" ],
+      "targetAcquired8" : [ "/sfx/interface/sniper_mark_pitch8.ogg" ],
+      "targetAcquired9" : [ "/sfx/interface/sniper_mark_pitch9.ogg" ],
+      "targetAcquired10" : [ "/sfx/interface/sniper_mark_pitch10.ogg" ],
+      "disengage" : [ "/sfx/interface/sniper_mark_stop2.ogg"]
+    }
+  },
+  "animationScripts" : [ "/items/active/effects/nebsenhancedentitymarker.lua" ],
+
+  "ability" : {
+    "name" : "Dead Eye",
+    "type" : "rngbows_aimprediction",
+    "scripts" : ["/items/active/weapons/bow/abilities/rngbows/aimprediction/neb-aimprediction.lua"],
+    "class" : "NebRNGAimBot",
+
+	"fireOffset" : [0.75, 0],
+
+    "targetQueryDistance" : 2,
+
+	//Config for animated cursor
+	"cursorFrames" : [
+	  "/cursors/animated/rngbowsinvert/neb-rngbowaltreticle1.cursor",
+	  "/cursors/animated/rngbowsinvert/neb-rngbowaltreticle2.cursor",
+	  "/cursors/animated/rngbowsinvert/neb-rngbowaltreticle3.cursor",
+	  "/cursors/animated/rngbowsinvert/neb-rngbowaltreticle4.cursor",
+	  "/cursors/animated/rngbowsinvert/neb-rngbowaltreticle5.cursor",
+	  "/cursors/animated/rngbowsinvert/neb-rngbowaltreticle6.cursor",
+	  "/cursors/animated/rngbowsinvert/neb-rngbowaltreticle7.cursor"
+	],
+
+    "entityMarker" : {
+      "markerImage" : "/items/active/weapons/bow/abilities/rngbows/aimprediction/targetoverlay.png",
+      "fullbright" : true
+    },
+
+    "drawTime" : [0.9, 1.6],				//Time to fully draw the bow
+		"powerProjectileTime" : [0.05, 0.1],	//After fully drawing, the bow is super-charged for this long
+		"energyPerShot" : [35, 45],			//Total energy consumption for a full draw
+		"holdEnergyUsage" : [4, 12],			//Energy consumption per second while fully drawn
+		"airborneBonus" : 1.35,			//A dmg multiplier for when airborne
+
+    "cooldownTime" : 0.67,			//Time between firing and drawing the next arrow
+    "inaccuracy" : 0.0,				//Inaccuracy of the shot
+
+		"walkWhileFiring" : true,		//If true, prevents the player from running while drawing the bow
+		"useQuiverDamageBonus" : true,	//If true, allows this bow to use quiver damage bonuses
+
+		"drainEnergyWhilePowerful" : false,	//If true, consume energy while at max power
+		"staticDamageMultiplier" : null,	//If this value is set, arrow damage is independent of draw time and is instead multiplied by this value
+		"dynamicDamageMultiplier" : 1.1,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+
+    "drawArmFrames" : ["rotation", "run.2", "swim.2", "swimIdle.1", "swim.1", "swim.1"],
+
+		"projectileCount" : 1,	//Amount of arrows to shoot at once
+    "projectileParameters" : {
+      "knockbackRange" : [2,4],
+      "speed" : 85,
+      "power" : 8
+    },
+    "powerProjectileType" : "rng<elementalType>powerarrow",
+    "powerProjectileParameters" : {
+      "knockbackRange" : [2,4],
+      "speed" : 100,
+      "power" : 9.25
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : -30,
+        "weaponRotation" : 0,
+        "allowRotate" : true,
+        "allowFlip" : true,
+        "twoHanded" : true
+      },
+      "draw" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "allowRotate" : true,
+        "allowFlip" : true,
+        "twoHanded" : true
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "allowRotate" : false,
+        "allowFlip" : true,
+        "twoHanded" : true,
+
+        "frontArmFrame" : "idle.3"
+      }
+    }
+  }
+}

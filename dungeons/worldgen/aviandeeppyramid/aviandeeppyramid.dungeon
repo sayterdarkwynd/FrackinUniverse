@@ -1,0 +1,227 @@
+{
+  "metadata" : {
+    "name" : "aviandeeppyramid",
+    "species" : "avian",
+    "rules" : [
+    ],
+    "anchor" : [ "anchor1", "anchor2" ],
+    "gravity" : 80,
+    "maxRadius" : 1000000,
+    "maxParts" : 12,
+    "protected" : true
+  },
+
+  "parts" : [
+    {
+      "name" : "anchor1",
+      "rules" : [
+		[ "doNotCombineWith", [ "anchor2" ] ],
+	    [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "anchor1.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "anchor2",
+      "rules" : [
+		[ "doNotCombineWith", [ "anchor1" ] ],
+	    [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "anchor1.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "depths1",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "depths1", "depths1a", "depths2", "depths2a" ] ]
+      ],
+      "def" : [ "tmx", "depths1.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "depths1a",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "depths1", "depths1a", "depths2", "depths2a" ] ]
+      ],
+      "def" : [ "tmx", "depths1a.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "depths2",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "depths1", "depths1a", "depths2", "depths2a" ] ]
+      ],
+      "def" : [ "tmx", "depths2.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "depths2a",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "depths1", "depths1a", "depths2", "depths2a" ] ]
+      ],
+      "def" : [ "tmx", "depths2a.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "depths3",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "depths3" ] ]
+      ],
+      "def" : [ "tmx", "depths3.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "depths4",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "depths4" ] ]
+      ],
+      "def" : [ "tmx", "depths4.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "depths5",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "depths5" ] ]
+      ],
+      "def" : [ "tmx", "depths5.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "depths6",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "depths6" ] ]
+      ],
+      "def" : [ "tmx", "depths6.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "depths7",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+		[ "doNotConnectToPart", [ "depths7" ] ]
+      ],
+      "def" : [ "tmx", "depths7.json" ],
+      "chance" : 10
+    },
+    {
+      "name" : "depthsmap1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "doNotCombineWith", [ "depthsmap2", "depthsmap3", "depthsmap4" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "depthsmap1.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "depthsmap2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "doNotCombineWith", [ "depthsmap1", "depthsmap3", "depthsmap4" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "depthsmap2.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "depthsmap3",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "doNotCombineWith", [ "depthsmap2", "depthsmap1", "depthsmap4" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "depthsmap3.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "depthsmap4",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "doNotCombineWith", [ "depthsmap2", "depthsmap1", "depthsmap3" ] ],
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "depthsmap4.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "pyramid1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "pyramid1.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "pyramid2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "pyramid2.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "pyramid3",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "pyramid3.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "pyramid4",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "pyramid4.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "pyramid5",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "pyramid5.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "pyramid6",
+      "rules" : [
+        [ "ignorePartMaximumRule" ],
+		[ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "pyramid6.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "depthsend1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "depthsend1.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "depthsend2",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "depthsend2.json" ],
+      "chance" : 0
+    }
+  ]
+}

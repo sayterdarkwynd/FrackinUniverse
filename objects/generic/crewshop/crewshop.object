@@ -1,0 +1,45 @@
+{
+  "objectName" : "crewshop",
+  "colonyTags" : ["crafting"],
+  "rarity" : "Uncommon",
+  "race" : "generic",
+  "category" : "crafting",
+  "description" : "Get your meat shields here. ^green;Research^reset; contracts in the ^orange;Craftsmanship^reset; tree.",
+  "shortdescription" : "^orange;Hiring Office^reset;",
+  "price" : 50,
+  "printable" : false,
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/craftingcrewshop.config",
+    "paneLayoutOverride" : {
+      "windowtitle" : {"title" : "","subtitle" : "","icon" : {"file" : ""}}
+    },
+    "filter" : [ "crewcontract" ]
+  },
+
+  "inventoryIcon" : "crewshopIcon.png",
+  "placementImage" : "crewshop.png:default.default",
+  "placementImagePosition" : [-64, 0],
+
+  "animation" : "crewshop.animation",
+  "animationPosition" : [0, 28],
+
+  "orientations" : [
+    {
+      "image" : "crewshop.png:<color>.<frame>",
+      "imagePosition" : [-64, 0],
+      "direction" : "left",
+      "flipImages" : true,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "crewshop.png:<color>.<frame>",
+      "imagePosition" : [-64, 0],
+      "direction" : "right",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+}

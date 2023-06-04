@@ -1,0 +1,51 @@
+{
+  "objectName" : "avianWallLamp2",
+  "colonyTags" : ["avian","light"],
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 50,
+  "description" : "A beautiful small wall-mounted lamp built from Avian crystal tech.",
+  "shortdescription" : "Small Avian Wall Lamp",
+  "race" : "avian",
+
+  "apexDescription" : "This tiny lamp glows brightly without power.",
+  "avianDescription" : "Crystal lamps never run out of light.",
+  "floranDescription" : "Light remind Floran of red ssssunsset.",
+  "glitchDescription" : "Observant. This tiny lamp is its own powersource.",
+  "humanDescription" : "The glow from these lamps is ominous.",
+  "hylotlDescription" : "The Hylotl could make great use of this crystal technology beneath the waves.",
+  "novakidDescription" : "A tiny glowin' crystal. How does it do that?",
+
+  "statusEffects" : [ ],
+
+  "lightColor" : [100, 0, 0],
+  "lightPosition" : [4,4],
+
+  "inventoryIcon" : "avianWallLamp2.png:on.1",
+  "orientations" : [
+    {
+      "image" : "avianWallLamp2.png:off.1",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+
+  "animation" : "/objects/wired/light/lightToggle2.animation",
+  "animationParts" : {
+   "light" : "avianWallLamp2.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/mechbeacon_pulse2.ogg" ],
+      "off" : [ "/sfx/objects/mechbeacon_pulse1.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ]
+}

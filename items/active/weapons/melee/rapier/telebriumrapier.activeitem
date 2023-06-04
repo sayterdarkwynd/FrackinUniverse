@@ -1,0 +1,37 @@
+{
+  "itemName" : "telebriumrapier",
+  "price" : 210,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "Stab faster than a ninja.",
+  "shortdescription" : "Telebrium Rapier",
+  "tooltipKind" : "sword2",
+  "category" : "Rapier",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon","telebrium"],
+  "handGrip" : "wrap",
+  "inventoryIcon" : "telebriumrapier.png",
+  "animation" : "piercecombo.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "telebriumrapier.png"
+  },
+  "animationCustom" : { },
+  "critChance" : 1,
+  "critBonus" : 1,
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "piercecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.4,
+    "baseDps" : 5.9,
+    "damageConfig" : {
+      "damageSourceKind" : "poison"
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

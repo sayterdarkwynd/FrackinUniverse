@@ -1,0 +1,56 @@
+{
+	"objectName" : "fm_musicplayerwall",
+	"colonyTags" : ["musical"],
+	"rarity" : "Common",
+	"category" : "decorative",
+
+	"description" : "A wall mounted music player, for playing music.",
+	"shortdescription" : "Music Player (Wall)",
+	"race" : "generic",
+
+	"inventoryIcon" : "fm_musicplayericon.png",
+	"orientations" : [
+		{
+			"image" : "fm_musicplayerwallfull.png",
+			"imagePosition" : [-12, 0],
+			"animationPosition" : [-12, 0],
+			"animationParts" : {
+				"bg" : "fm_musicplayerwall.png",
+				"fg" : "fm_musicplayerwalllit.png"
+			},
+			"direction" : "left",
+			"flipImages" : true,
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ]
+		},
+		{
+			"image" : "fm_musicplayerwallfull.png",
+			"imagePosition" : [-12, 0],
+			"animationPosition" : [-12, 0],
+			"animationParts" : {
+				"bg" : "fm_musicplayerwall.png",
+				"fg" : "fm_musicplayerwalllit.png"
+			},
+			"direction" : "right",
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ]
+		}
+	],
+
+	"animation" : "fm_musicplayerwall.animation",
+	"animationParts" : {
+		"bg" : "fm_musicplayerwall.png",
+		"fg" : "fm_musicplayerwalllit.png"
+	},
+	"animationPosition" : [-8, 0],
+	"interactAction" : "ScriptPane",
+	"interactData" : "/interface/scripted/fm_musicplayer/fm_musicplayer.config",
+
+	"inputNodes" : [ [-1, 0] ],
+	"outputNodes" : [ [1, 0] ],
+
+	"scripts" : [ "/objects/generic/fm_musicplayer/fm_musicplayer.lua"],
+	"scriptDelta" : 7,
+
+	"musicRadius" : 30
+}

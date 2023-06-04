@@ -1,0 +1,25 @@
+{
+  "projectileName" : "acidexplosionshoggoth",
+  "image" : "acidexplosionshoggoth.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 5,
+  "speed" : 0,
+  "damagePoly" : [ [-16, 0], [-10, -10], [0, -16], [10, -10], [16, 0], [10, 10], [0, 16], [-10, 10] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "flippable" : true,
+  "universalDamage" : true,
+  "damageKind" : "shadow",
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weather/acidburn.ogg" ]
+    }
+  ],
+  "emmiters" : [ "corrosive" ],
+  "statusEffects" : [ "shoggothburn" ]
+}

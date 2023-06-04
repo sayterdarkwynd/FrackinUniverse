@@ -1,63 +1,56 @@
 {
-  "animationCustom" : {
-    "sounds" : {
-      "altFire" : [ "/sfx/gun/needler1.ogg" ]
-    },
-    "particleEmitters" : {
-      "altMuzzleFlash" : {
-        "active" : false,
-        "emissionRate" : 8,
-        "transformationGroups" : ["muzzle"],
-        "offsetRegion" : [0, 0, 0, 0],
-        "particles" : [ ]
-      }
-    }
-  },
+	"animationCustom": {
+		"sounds": {
+			"altFire": ["/sfx/gun/needler1.ogg"]
+		},
+		"particleEmitters": {
+			"altMuzzleFlash": {
+				"active": false,
+				"emissionRate": 8,
+				"transformationGroups": ["muzzle"],
+				"offsetRegion": [0, 0, 0, 0],
+				"particles": []
+			}
+		}
+	},
 
-  "ability" : {
-    "name" : "Frost Bomb",
-    "type" : "freezecannon",
-    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
-    "class" : "AltFireAttack",
+	"ability": {
+		"name": "Frost Burst",
+		"type": "freezecannon",
+		"scripts": ["/items/active/weapons/ranged/abilities/altfire.lua"],
+		"class": "AltFireAttack",
 
-    "elementalConfig" : {
-      "physical" : { "projectileType" : "fufreezecannonshot2" },
-      "fire" : { "projectileType" : "fufreezecannonshot2" },
-      "electric" : { "projectileType" : "fufreezecannonshot2" },
-      "ice" : { "projectileType" : "fufreezecannonshot2" },
-      "poison" : { "projectileType" : "fufreezecannonshot2" }
-    },
-    "projectileParameters" : {
-      "knockback" : 10,
-      "statusEffects" : [ ] // don't inherit from primary fire
-    },
-    "projectileCount" : 4,
-    "inaccuracy" : 0.2,
-    "baseDps" : 8,
-    "energyUsage" : 25.0,
-    "fireTime" : 1.0,
-    "speed" : 25,
-    "fireType" : "auto",
+		"projectileType": "fufreezecannonshot2",
+		"projectileParameters": {
+			"knockback": 10
+		},
+		"projectileCount": 4,
+		"inaccuracy": 0.3,
+		"baseDps": 8,
+		"energyUsage": 25.0,
+		"fireTime": 0.08,
+		"speed": 8,
+		"fireType": "auto",
 
-    "stances" : {
-      "fire" : {
-        "duration" : 0,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
+		"stances": {
+			"fire": {
+				"duration": 0,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "cooldown" : {
-        "duration" : 0.11,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
+				"allowRotate": false,
+				"allowFlip": false
+			},
+			"cooldown": {
+				"duration": 0.11,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      }
-    }
-  }
+				"allowRotate": false,
+				"allowFlip": false
+			}
+		}
+	}
 }

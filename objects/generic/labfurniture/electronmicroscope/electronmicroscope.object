@@ -1,13 +1,17 @@
 {
   "objectName" : "electronmicroscope",
-  "colonyTags" : [ "fu", "science", "discovery" ],
+  "colonyTags" : [ "fu", "science", "research", "bees" ],
   "rarity" : "Common",
   "printable" : false,
   "description" : "Examine things really, really close up.",
   "shortdescription" : "Electron Microscope",
+  "subtitle" : "Inspect Bees & Items",
   "race" : "generic",
-  "category" : "science!",
-  "price" : 1450,
+  "category" : "crafting",
+  "price" : 450,
+  "objectType" : "container",
+  "health" : 0.1,
+//  "learnBlueprintsOnPickup":["electronmicroscope2"],
 
   "lightColor" : [60, 60, 60],
   "inventoryIcon" : "electronmicroscopeicon.png",
@@ -27,7 +31,23 @@
 
     }
   ],
-  "scripts" : [ "/scripts/npcToyObject.lua" ],
+  "scripts" : [ "/scripts/npcToyObject.lua","/bees/beeExaminer.lua" ],
+
+	"recipeGroup" : "beetrap",
+	"openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+
+	"frameCooldown" : 67,
+	"autoCloseCooldown" : 3600,
+
+	"selfWorking" : true, // Whether it can work while the player is not interacting with it
+	"selfWorkingEfficiency" : 12, // 5 per sec up to 100
+	"playerWorkingEfficiency" : 22, // 10 per sec up to 100
+
+	"uiConfig" : "/bees/interface/beeexaminer/beeexaminer3.config",
+	"slotCount" : 5,
+        "bonusResearch" : 10,
+	"scriptDelta" : 10,
+
   "npcToy" : {
     "influence" : [
       "sink",

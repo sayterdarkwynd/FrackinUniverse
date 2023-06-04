@@ -1,0 +1,121 @@
+{
+  "itemName" : "botpod",
+  "price" : 100,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "category" : "throwableItem",
+  "description" : "Activate to deploy the stored bot.",
+  "shortdescription" : "Bot Pod",
+  "tooltipKind" : "filledcapturepod",
+  "twoHanded" : false,
+  "itemTags" : ["weapon"],
+
+  "inventoryIcon" : "botpodicon.png",
+  "animation" : "botpod.animation",
+  "animationParts" : {
+    "botpod" : "botpod.png"
+  },
+  "animationCustom" : { },
+  "scripts" : ["botpod.lua"],
+
+  "icons" : {
+    "healthy" : "/items/active/unsorted/botpod/botpodicon.png",
+    "dead" : "/items/active/unsorted/botpod/botpodicondead.png"
+  },
+
+  "deadPodShake" : {
+    "frequency" : 1.5,
+    "phase" : 0, // degrees
+    "amplitude" : 30 // degrees
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transitionFunction" : "fire",
+      "armRotation" : 70,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "dead" : {
+      "duration" : 0.5,
+      "transition" : "idle",
+      "armRotation" : 50,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "monsterEnergyCatch" : {
+      "duration" : 1.5,
+      "transition" : "podTeleportCatch",
+      "transitionFunction" : "showEnergyBall",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "podTeleportCatch" : {
+      "duration" : 0.3,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "projectileType" : "botpod",
+  "projectileParameters" : {
+    "speed" : 40,
+    "level" : 0
+  },
+
+  "podUuid" : null,
+  "pets" : [],
+  "currentCollar" : null,
+
+  // The player script stores the pet's state while the botpod is
+  // inactive. When the botpod becomes active again, it updates
+  // its own version of the state.
+  // But if the botpod has been updated via a pettether or
+  // pethealingstation then the botpod should take priority and
+  // update the player script's state instead.
+  // If anything makes changes to the parameters on a botpod, e.g.
+  // to heal the pets, it should set podItemHasPriority to true.
+  "podItemHasPriority" : false
+}

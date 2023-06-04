@@ -1,0 +1,66 @@
+{
+  "itemName" : "extrachargebeam",
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "An ancient Avian weapon that fires chargeable blasts of energy.",
+  "shortdescription" : "Charge Beam",
+  "tooltipKind" : "gun2",
+  "category" : "uniqueWeapon",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","ranged","upgradeableWeapon"],
+  "level" : 6,
+
+  "inventoryIcon" : "extrachargebeamicon.png",
+
+  "animation" : "extrabeamweapon.animation",
+  "animationParts" : {
+    "gun" : "extrachargebeam.png",
+    "gunfullbright" : "extrachargebeamfullbright.png"
+  },
+  "animationCustom" : {},
+  "muzzleOffset" : [1.875, 0.25],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "critChance" : 4,
+  "critBonus" : 4,
+
+  "primaryAbilityType" : "chargefire",
+  "primaryAbility" : {
+    "chargeLevels" : [
+      {
+        "time" : 0,
+        "energyCost" : 10.0,
+        "cooldown" : 0.05,
+        "projectileType" : "chargeshotsmall",
+        "projectileParameters" : {},
+        "inaccuracy" : 0,
+        "baseDamage" : 3.0,
+        "fireSound" : "fire"
+      },
+      {
+        "time" : 1.0,
+        "energyCost" : 50,
+        "cooldown" : 0.5,
+        "projectileType" : "chargeshotlarge",
+        "projectileParameters" : {
+		"actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/pulsecannonexplosion/pulsecannonexplosion.config"
+		    }
+		 ],
+	"damageType" : "NoDamage"
+        },
+        "inaccuracy" : 0,
+        "baseDamage" : 14,
+        "fireSound" : "fire2"
+      }
+    ]
+  },
+  "learnBlueprintsOnPickup" : [ "extrachargebeam" ],
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,68 @@
+{
+  "objectName" : "medievalworkstation",
+  "rarity" : "common",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/medievalworkstation.config",
+    "filter" : [ "craftingwheel", "craftingfurnace", "craftinganvil", "craftingfurnace2", "craftingfarm", "craftingfurniture" , "wolfpottery" ],
+    "craftingSound" : "/sfx/interface/crafting_sewing.ogg"
+  },
+  "price" : 888,
+  "description" : "A large, somewhat primitive workstation. Crafts basic gear, but can't be upgraded.",
+  "glitchDescription" : "Wistful. This brings back memories of the village I was built in.",
+  "feneroxDescription" : "Large. Is solid. Make manyt sorts of basic things. Is good!",
+
+  "shortdescription" : "Medieval Workstation",
+  "race" : "generic",
+  "category" : "Primitive Crafting",
+  "lightColor" : [80, 10, 20],
+  "inventoryIcon" : "medievalworkstationicon.png",
+  "orientations" : [
+    {
+
+      "imageLayers" : [ { "image" : "medievalworkstation.png:<color>", "fullbright" : true }, { "image" : "medievalworkstationlit.png:<color>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [-1, 1],
+
+      "imagePosition" : [-83, 0],
+      "frames" : 4,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+
+      "imageLayers" : [ { "image" : "medievalworkstation.png:<color>", "fullbright" : true }, { "image" : "medievalworkstationlit.png:<color>" } ],
+      "direction" : "right",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-83, 0],
+      "frames" : 4,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "scripts" : [ "/scripts/npcToyObject.lua" ],
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [1.0, "typing"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 2
+  }
+}
+

@@ -1,0 +1,46 @@
+{
+  "name" : "heatweathernew",
+
+  "effectConfig" : {
+    "resistanceTypes" : {
+      "fireResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.25,
+    "immunityStats" : [
+      "biomeheatImmunity",
+      "ffextremeheatImmunity"
+    ],
+
+    "healthDrain" : 2,
+    "hungerDrain" : 0.2,
+    "energyDrain" : 0,
+    "speedPenalty" : 0.4,
+    "jumpPenalty" : 0.4,
+
+    "debuffRate" : 5,
+    "debuffStartDelay" : 0,
+    "debuffs" : {},
+
+    "modifiers" : {
+      "night" : 0.8,
+      "wet" : 0.7,
+      "underground" : 1.1
+    },
+
+    "messages" : {
+      "intro" : "biomeheat",
+      "underground" : "ffbiomeheatcavern"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/heat/heatweathernew.statuseffect"
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "heatweathernew.lua"
+  ],
+
+  "animationConfig" : "heatweathernew.animation",
+  "label" : "Heat Wave",
+  "icon" : "/interface/statuses/heat.png"
+}

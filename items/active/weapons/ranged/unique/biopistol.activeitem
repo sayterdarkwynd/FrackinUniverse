@@ -4,12 +4,13 @@
   "inventoryIcon" : "biopistol.png",
     "maxStack" : 1,
     "rarity" : "rare",
-  "description" : "Made with your worst enemies in mind.",
+  "description" : "Ejects poisonous clouds. Fun.
+^yellow;Inflicts poison status^reset;",
   "shortdescription" : "Poison Ejector",
   "level" : 4,
-  "category" : "uniqueWeapon",
-  "itemTags" : ["weapon","ranged","machinepistol"],
-  "tooltipKind" : "gun",
+  "category" : "bioweapon",
+  "itemTags" : ["weapon","ranged","machinepistol","bioweapon", "upgradeableWeapon"],
+  "tooltipKind" : "gun2",
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
@@ -17,10 +18,10 @@
     "middle" : "biopistol.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/greenburstmuzzle.png"
-  },      
+  },
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/gun/needler1.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }  
+    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }
   },
 
   "baseOffset" : [1.0, 0.34],
@@ -28,7 +29,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "poison",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -72,6 +73,9 @@
       }
     }
   },
+
+  "critChance" : 2,
+  "critBonus" : 3,
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

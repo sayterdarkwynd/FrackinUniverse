@@ -1,9 +1,13 @@
 {
-  "name" : "lavaimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 60,
-
-  "scripts" : [
-    "lavaimmunity.lua"
-  ]
+	"name": "lavaimmunity",
+	"effectConfig": {
+		"stats": [{
+			"stat": "lavaImmunity",
+			"amount": 1
+		}]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

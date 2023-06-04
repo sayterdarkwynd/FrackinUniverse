@@ -1,0 +1,56 @@
+{
+	"objectName" : "tenebrhaebox",
+	"colonyTags" : ["tenebrhae", "musical"],
+	"rarity" : "Common",
+	"category" : "decorative",
+//    "lightColor" : [255, 0, 0],
+	"description" : "A music player, for playing music.",
+	"shortdescription" : "Tenebrhae Music Player",
+	"race" : "generic",
+
+	"inventoryIcon" : "tenebrhaeboxicon.png",
+	"orientations" : [
+		{
+			"image" : "tenebrhaebox.png",
+			"imagePosition" : [-12, 0],
+			"animationPosition" : [-12, 0],
+			"animationParts" : {
+				"bg" : "tenebrhaebox.png",
+				"fg" : "tenebrhaeboxlit.png"
+			},
+			"direction" : "left",
+			"flipImages" : true,
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		},
+		{
+			"image" : "tenebrhaebox.png",
+			"imagePosition" : [-12, 0],
+			"animationPosition" : [-12, 0],
+			"animationParts" : {
+				"bg" : "tenebrhaebox.png",
+				"fg" : "tenebrhaeboxlit.png"
+			},
+			"direction" : "right",
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		}
+	],
+
+	"animation" : "racialmusicbox.animation",
+	"animationParts" : {
+		"bg" : "tenebrhaebox.png",
+		"fg" : "tenebrhaeboxlit.png"
+	},
+	"animationPosition" : [-8, 0],
+	"interactAction" : "ScriptPane",
+	"interactData" : "/interface/scripted/fm_musicplayer/fm_musicplayer.config",
+
+	"inputNodes" : [ [-1, 0] ],
+	"outputNodes" : [ [1, 0] ],
+
+	"scripts" : [ "/objects/generic/fm_musicplayer/fm_musicplayer.lua"],
+	"scriptDelta" : 7,
+
+	"musicRadius" : 30
+}

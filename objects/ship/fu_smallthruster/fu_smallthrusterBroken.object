@@ -1,0 +1,126 @@
+{
+  "objectName" : "fu_smallthrusterBroken",
+  "colonyTags" : [],
+  "scannable" : false,
+  "rarity" : "Common",
+  "category" : "decorative",
+  "description" : "A thruster used for non-FTL travel. It's broken.",
+  "shortdescription" : "Small Ship Thruster (Broken)",
+  "race" : "generic",
+
+  "apexDescription" : "A booster. These have been known to malfunction and explode.",
+  "avianDescription" : "A booster, the wings of a ship.",
+  "floranDescription" : "Ssscary fire.",
+  "glitchDescription" : "Analyse. Temperature too high to measure.",
+  "humanDescription" : "This thing eats through fuel.",
+  "hylotlDescription" : "Propulsion.",
+
+  "particleEmitter" : {
+    "emissionRate" : 0.3,
+    "emissionVariance" : 0.3,
+    "pixelOrigin" : [0, 0],
+
+    "particle" : {
+      "type" : "ember",
+      "size" : 1.0,
+      "color" : [255, 226, 67, 255],
+      "light" : [191, 181, 120],
+      "fade" : 0.9,
+      "initialVelocity" : [0.0, 0.0],
+      "finalVelocity" : [0.0, -50.0],
+      "approach" : [0, 20],
+      "timeToLive" : 2,
+      "layer" : "front",
+      "fullbright" : true
+    },
+
+    "particleVariance" : {
+      "initialVelocity" : [5.0, 10.0]
+    }
+  },
+
+  "inventoryIcon" : "fu_smallthrustericon.png",
+  "orientations" : [
+    {
+      "image" : "fu_smallthrusterBroken.png:on.1",
+      "imagePosition" : [-11, -21],
+
+      "animationParts" : {
+        "booster" : "fu_smallthrusterBroken.png"
+      },
+      "animationPosition" : [-11, -21],
+      "fullbright" : true,
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaces" : [
+        [-1, 0], [0, 0], [1, 0],
+        [-1, -1], [0, -1], [1, -1],
+        [-1, -2], [0, -2], [1, -2]
+      ],
+      "anchors" : [ "top" ]
+    },
+    {
+      "image" : "fu_smallthrusterBroken.png:on.1",
+      "imagePosition" : [-10, -21],
+
+      "animationParts" : {
+        "booster" : "fu_smallthrusterBroken.png"
+      },
+      "animationPosition" : [-10, -21],
+      "fullbright" : true,
+
+      "direction" : "right",
+
+      "spaces" : [
+        [-1, 0], [0, 0], [1, 0],
+        [-1, -1], [0, -1], [1, -1],
+        [-1, -2], [0, -2], [1, -2]
+      ],
+      "anchors" : [ "top" ]
+    },
+    {
+      "image" : "fu_smallthrusterBroken.png:on.1",
+      "imagePosition" : [-11, 1],
+
+      "animationParts" : {
+        "booster" : "fu_smallthrusterBroken.png"
+      },
+      "animationPosition" : [-11, 1],
+      "fullbright" : true,
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaces" : [
+        [-1, 2], [0, 2], [1, 2],
+        [-1, 1], [0, 1], [1, 1],
+        [-1, 0], [0, 0], [1, 0]
+      ],
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "fu_smallthrusterBroken.png:on.1",
+      "imagePosition" : [-10, 1],
+
+      "animationParts" : {
+        "booster" : "fu_smallthrusterBroken.png"
+      },
+      "animationPosition" : [-10, 1],
+      "fullbright" : true,
+
+      "direction" : "right",
+
+      "spaces" : [
+        [-1, 2], [0, 2], [1, 2],
+        [-1, 1], [0, 1], [1, 1],
+        [-1, 0], [0, 0], [1, 0]
+      ],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/ship/boosters/boosterflame.animation",
+  "byosBootupReplacement" : "fu_smallthruster"
+}

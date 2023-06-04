@@ -1,0 +1,59 @@
+{
+  "itemName" : "isogenwhip",
+  "price" : 1500,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Hit 'em with the snap freeze.
+^cyan;Inflicts Freezing^reset;",
+  "shortdescription" : "Isogen Whip",
+  "tooltipKind" : "sword2",
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","whip","upgradeableWeapon","isogen","ice"],
+
+  "inventoryIcon" : "isogenwhip.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "isogenwhip.png",
+	"weaponFullbright" : "isogenwhipfullbright.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : { "particles" : [ ]}},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/whip_swing1.ogg", "/sfx/melee/whip_swing2.ogg", "/sfx/melee/whip_swing3.ogg" ],
+      "crack" : [ "/sfx/melee/whip_impact1.ogg", "/sfx/melee/whip_impact2.ogg", "/sfx/melee/whip_impact3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [0.625, 0],
+    "length" : [3, 14],
+    "segmentImage" : "/items/active/weapons/whip/isogenwhiplink.png",
+    "endSegmentImage" : "/items/active/weapons/whip/isogenwhipend.png",
+    "segmentSize" : 0.375,
+    "fullbright" : true
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 1.3,
+    "chainDps" : 1.0,
+    "crackDps" : 7.3,
+
+    "damageConfig" : {
+	  "damageSourceKind" : "ice",
+      "statusEffects" : [ "freezefu" ]
+    },
+
+    "projectileType" : "whipcrackice"
+  },
+
+  "critChance" : 2,
+  "critBonus" : 8,
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}

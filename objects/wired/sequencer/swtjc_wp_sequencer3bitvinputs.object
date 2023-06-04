@@ -1,0 +1,49 @@
+{
+  "objectName" : "swtjc_wp_sequencer3bitvinputs",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A 3-bit sequencer. Can directly change to one of its 8 inputs, as well as cycle between them.",
+  "shortdescription" : "3-Bit Sequencer (With Inputs)",
+  "race" : "human",
+
+  "category" : "wire",
+  "price" : 10,
+
+  "floranDescription" : "3-bit sssequencccer. Can directly change to one of itsss 8 inputsss, asss well asss cccycle between them.",
+  "glitchDescription" : "Fascinated. A 3-bit sequencer. Can directly change to one of its 8 inputs, as well as cycle between them.",
+
+  "inventoryIcon" : "swtjc_wp_sequencer3bitvinputs.png:default.7",
+  "orientations" : [
+    {
+      "image" : "swtjc_wp_sequencer3bitvinputs.png:default.7",
+      "imagePosition" : [-8, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/sequencer/swtjc_wp_sequencer.lua" ],
+  "scriptDelta" : 1,
+
+  "animation" : "/objects/wired/sequencer/swtjc_wp_sequencer.animation",
+
+  "animationParts" : {
+    "switch" : "swtjc_wp_sequencer3bitvinputs.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "hasStateInputs" : true,
+  "stateCount" : 8,
+  "inputNodes" : [ [-1, 3], [1, 3], [-1, 2], [1, 2], [-1, 1], [1, 1], [-1, 0], [1, 0], [-1, -1], [-0, -1], [2, -1] ],
+  "outputNodes" : [ [0, 3], [2, 3], [0, 2], [2, 2], [0, 1], [2, 1], [0, 0], [2, 0] ],
+  "incrementingNode" : 9,
+  "decrementingNode" : 8,
+
+  "hasLatch" : true,
+  "latchNode" : 10,
+  "defaultSwitchState" : 0
+}

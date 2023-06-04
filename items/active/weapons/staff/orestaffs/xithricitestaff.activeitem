@@ -1,0 +1,99 @@
+{
+  "itemName" : "xithricitestaff",
+  "level" : 6,
+  "price" : 1440,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Interdimensional Destruction.",
+  "shortdescription" : "Xithricite Staff",
+  "category" : "staff",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","staff","upgradeableWeapon","xithricite"],
+  "tooltipKind" : "staff",
+
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "xithricitestaff.png",
+    "stone" : "/items/active/weapons/staff/generated/stone/xithricitestaff.png",
+    "chargeEffect" : "/items/active/weapons/staff/generated/glow/cosmic.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "cosmiccharge" : {
+        "offsetRegion" : [-0.5, 1.75, 0.5, 3.25]
+      }
+    }
+  },
+
+  "inventoryIcon" : "xithricitestaff.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 1.3,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "discharge" : {
+      "duration" : 0.5,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "elementalType" : "cosmic",
+
+  "primaryAbility" : {
+    "type" : "elementportal",
+    "name" : "Cosmic Portal",
+    "scripts" : ["/items/active/weapons/staff/abilities/controlprojectile/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 100,
+
+    "maxCastRange" : 25,
+
+    "projectileType" : "cosmicportal",
+    "projectileParameters" : {
+      "baseDamage" : 9
+    }
+  },
+  "altAbilityType" : "elementalaura",
+  "altAbility" : {},
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

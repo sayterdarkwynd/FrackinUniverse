@@ -1,19 +1,19 @@
 {
-  "itemName" : "darklightblossom",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "darklightblossom.png",
-  "description" : "It's said that this flower can cure insanity.",
-  "shortdescription" : "Darklight Blossom",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-      "effects" : [ [
-          "insanityimmunity"
-    ] ]
+	"itemName": "darklightblossom",
+	"inventoryIcon": "darklightblossom.png",
+	"category": "food",
+	"rarity": "Rare",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"shortdescription": "Darklight Blossom",
+	"description": "^yellow;^reset;^cyan;Immune^reset;: Insanity, Darkness: 1.5m",
+
+	//"learnBlueprintsOnPickup": ["insanityimmunityaug", "darknessimmunityaug"],
+	"effects": [
+		[{
+			"effect": "darklightimmunity",
+			"duration": 90
+		}]
+	]
 }

@@ -1,0 +1,52 @@
+{
+	"objectName" : "network_grabber",
+	"colonyTags" : ["wired"],
+	"printable" : false,
+	"rarity" : "Common",
+	"description" : "Basic Grabber. Grabs items from the world. Range: 4.
+^blue;Input: ^white;On/Off Switch^reset;
+^red;Output: ^white;item network^reset;",
+	"shortdescription" : "Grabber v1",
+	"objectType" : "container",
+	"tooltipKind" : "container",
+	"race" : "generic",
+
+//	"learnBlueprintsOnPickup":["network_grabber2"],
+	"category" : "wire",
+	"price" : 15,
+
+	"inventoryIcon" : "kheAA_grabbericon.png",
+	"orientations" : [
+		{
+			"image" : "kheAA_grabber.png:<color>.off",
+			"imagePosition" : [0, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ]
+		}
+	],
+
+	"scripts" : [ "/objects/kheAA/kheAA_grabber/kheAA_grabber.lua"],
+	"scriptDelta" : 1,
+
+	"animation" : "/objects/kheAA/kheAA_grabber/kheAA_grabber.animation",
+
+	"animationParts" : {
+		"grabber" : "kheAA_grabber.png"
+	},
+	"animationPosition" : [0, 0],
+	"openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+	"closeSounds" : [ "/sfx/objects/woodenbox_close.ogg" ],
+	"slotCount" : 4,
+	"uiConfig" : "/objects/kheAA/kheAA_grabber/kheAA_grabber.config",
+	"frameCooldown" : 5,
+	"autoCloseCooldown" : 3600,
+	"kheAA_logicNode":0,
+	"kheAA_outDataNode":0,
+	"kheAA_isVacuum":true,
+	"kheAA_vacuumDelay":1,
+	"kheAA_vacuumRange":4,
+
+	"inputNodes" : [ [0, 0] ],
+	"outputNodes" : [ [0, 1] ]
+}

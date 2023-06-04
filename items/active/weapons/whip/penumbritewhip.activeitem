@@ -1,0 +1,63 @@
+{
+  "itemName" : "penumbritewhip",
+  "price" : 200,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "A chain knife fashioned from penumbrite, also makes a great glowstick.
+^cyan;Universal damage^reset;",
+  "shortdescription" : "Penumbrite Chain Knife",
+  "tooltipKind" : "sword2",
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","whip","upgradeableWeapon","penumbrite","silver"],
+
+  "inventoryIcon" : "penumbritewhip.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "penumbritewhip.png",
+	"weaponFullbright" : "penumbritewhipfullbright.png"
+  },
+  "animationCustom" : {
+      "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [0, 60, 70]
+    }},
+    "particleEmitters" : { "crack" : { "particles" : [ ]}},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/whip_swing1.ogg", "/sfx/melee/whip_swing2.ogg", "/sfx/melee/whip_swing3.ogg" ],
+      "crack" : [ "/sfx/melee/energywhip_impact1.ogg", "/sfx/melee/energywhip_impact2.ogg", "/sfx/melee/energywhip_impact3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [1, 0],
+    "length" : [3, 14],
+    "segmentImage" : "/items/active/weapons/whip/penumbritewhiplink.png",
+    "endSegmentImage" : "/items/active/weapons/whip/penumbritewhipend.png",
+    "segmentSize" : 0.375,
+    "fullbright" : "true"
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "silverweapon",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 1.5,
+    "chainDps" : 1.0,
+    "crackDps" : 5.0,
+
+    "damageConfig" : {
+      "damageSourceKind" : "silverweapon"
+    },
+
+    "projectileType" : "whipcracksilver"
+  },
+
+  "critChance" : 1,
+  "critBonus" : 7,
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}

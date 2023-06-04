@@ -9,16 +9,16 @@ function staticProjectileAttack.update(dt, stateData)
   monster.setDamageOnTouch(true)
   monster.setAggressive(true)
   monster.setActiveSkillName(monster.configParameter("staticSkillName"))
-  
+
   if stateData.cooldown > 0 then
     stateData.cooldown = stateData.cooldown - dt
   end
-  
+
   if stateData.firing and not monster.isFiring() then
     stateData.firing = false
     return true
   end
-  
+
   toTargetX = data.toTarget[1]
   toTargetY = data.toTarget[2]
 

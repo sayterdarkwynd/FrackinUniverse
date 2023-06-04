@@ -1,0 +1,45 @@
+{
+  "objectName" : "vanusflowerseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "Protects the user from harm.",
+  "shortdescription" : "Vanus Flower Seed",
+  "objectType" : "farmable",
+  "printable" : false,
+  "price" : 25,
+//  "learnBlueprintsOnPickup" : [ "vanusflowerseed", "rockrootseed" ],
+  "inventoryIcon" : "vanusflowerseedicon.png",
+  "largeImage" : "vanusflowerseed.png:default.3.0",
+  //"collectablesOnPickup" : { "fu_plant" : "vanusflower" },
+  "orientations" : [
+    {
+      "dualImage" : "vanusflowerseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [360, 520]
+    },
+    {
+      "duration" : [360, 520]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "vanusflowerHarvest",
+      "resetToStage" : 0
+    }
+  ],
+    "maxImmersion" : 0.125,
+  "beeLikeness" : { "mason" : 1}
+}

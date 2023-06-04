@@ -1,0 +1,37 @@
+{
+  "projectileName" : "floatydeathballeldergun",
+  "physics" : "floatydeath",
+  "speed" : 1,
+  "bounces" : 1,
+  "timeToLive" : 3,
+  "image" : "floatydeathballelder.png",
+  "animationCycle" : 1.5,
+  "animationLoops" : false,
+  "orientationLocked" : true,
+  "flippable" : true,
+  "fullbright" : true,
+  "scripts" : [ "homingarrow.lua" ],
+  "baseHomingControlForce" : 9,
+  "lightColor" : [25, 160, 0],
+  "frameNumber" : 2,
+  "emitters" : [ "defaultgreen", "shadowsmoke2" ],
+
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "astralteargun",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 1.14
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/eldercarbineexplosion/eldercarbineexplosionnospawn.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
+    }
+  ],
+  "power" : 1,
+  "damageKind" : "shadow"
+}

@@ -1,0 +1,91 @@
+{
+  "projectileName" : "nebartemisarrow",
+  "physics" : "nebsrngarrow",
+  "bounces" : 0,
+  "image" : "artemisarrow.png",
+  "animationCycle" : 0.3,
+  "frameNumber" : 6,
+  "emitters" : [ ],
+  "power" : 20,
+  "knockback" : 30,
+  "knockbackDirectional" : true,
+  "flippable" : true,
+  "timeToLive" : 30,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "spark"
+    },
+    {
+      "action" : "spark"
+    },
+    {
+      "action" : "spark"
+    },
+    {
+      "action" : "spark"
+    },
+		{
+			"action" : "particle",
+			"specification" : "tinyrocketsmoke"
+		},
+		{
+			"action" : "particle",
+			"specification" : "tinyrocketsmoke"
+		},
+		{
+			"action" : "particle",
+      "rotate" : true,
+			"specification" : {
+				"type" : "animated",
+				"animation" : "/animations/artemislandingsmoke/artemislandingsmoke.animation",
+				"approach" : [0, 0],
+				"timeToLive" : 0.4,
+				"collidesForeground" : false,
+				"variance" : {}
+			}
+		},
+		{
+			"action" : "particle",
+      "rotate" : true,
+			"specification" : {
+				"type" : "animated",
+				"animation" : "/animations/artemislandingsmokehalf/artemislandingsmokehalf.animation",
+				"approach" : [0, 0],
+				"timeToLive" : 0.4,
+				"collidesForeground" : false,
+				"variance" : {}
+			}
+		},
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/arrowexplosion/arrowexplosion.config"
+    }
+  ],
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/ropehook_impact1.ogg",
+        "/sfx/projectiles/ropehook_impact2.ogg",
+        "/sfx/projectiles/ropehook_impact3.ogg",
+        "/sfx/projectiles/ropehook_impact4.ogg",
+        "/sfx/projectiles/ropehook_impact5.ogg",
+        "/sfx/projectiles/ropehook_impact6.ogg",
+        "/sfx/projectiles/ropehook_impact7.ogg",
+        "/sfx/projectiles/ropehook_impact8.ogg",
+        "/sfx/projectiles/ropehook_impact9.ogg",
+        "/sfx/projectiles/ropehook_impact10.ogg",
+        "/sfx/projectiles/ropehook_impact11.ogg",
+        "/sfx/projectiles/ropehook_impact12.ogg"
+      ]
+    }
+  ],
+  "damageKind" : "bow",
+  "hydrophobic" : false,
+
+  "scripts" : [ "/projectiles/rngbows/arrowfunctions.lua", "/projectiles/rngbows/uniquearrows/artemisarrow/artemisarrowutility.lua" ],
+  "searchRadius" : 0.1,
+
+	"projectileOnDeath"	: "nebartemisarrowsticking"
+}

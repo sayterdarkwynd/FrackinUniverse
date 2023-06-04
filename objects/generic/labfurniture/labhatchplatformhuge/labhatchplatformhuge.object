@@ -1,0 +1,73 @@
+{
+  "objectName" : "labhatchplatformhuge",
+  "colonyTags" : ["fu","science","door"],
+  "rarity" : "uncommon",
+
+  "category" : "door",
+  "price" : 250,
+  "description" : "This platformed hatch is made of some sort of bulletproof material.",
+  "shortdescription" : "Huge Lab Platform Hatch",
+  "race" : "apex",
+
+  "inventoryIcon" : "labhatchplatformhugeicon.png",
+  "orientations" : [
+    {
+      "image" : "labhatchplatformhuge.png:default",
+      "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "left", "right" ],
+      "direction" : "left"
+    },
+    {
+      "image" : "labhatchplatformhuge.png:default",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "left", "right" ],
+      "direction" : "right"
+    }
+  ],
+
+
+
+
+
+  "platformDoors" : true,
+  "openMaterials" : [ ],
+
+
+  "openMaterialSpaces" : [
+	  [[0,2],"metamaterial:objectplatform"],
+	  [[1,2],"metamaterial:objectplatform"],
+	  [[2,2],"metamaterial:objectplatform"],
+	  [[3,2],"metamaterial:objectplatform"],
+	  [[4,2],"metamaterial:objectplatform"],
+	  [[5,2],"metamaterial:objectplatform"],
+	  [[6,2],"metamaterial:objectplatform"],
+	  [[7,2],"metamaterial:objectplatform"],
+	  [[8,2],"metamaterial:objectplatform"],
+	  [[9,2],"metamaterial:objectplatform"]
+  ],
+
+
+
+
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+      "close" : [ "/sfx/objects/apexcooldoor_close.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "door" : "labhatchplatformhuge.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [9, 2] ],
+  "outputNodes" : [ [0, 0] ]
+}

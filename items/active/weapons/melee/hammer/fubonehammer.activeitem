@@ -1,0 +1,48 @@
+{
+  "itemName" : "fubonehammer",
+  "price" : 60,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Primitive murder in the palm of your hand.
+^cyan;Floran^reset;",
+  "shortdescription" : "Bone Cudgel",
+  "tooltipKind" : "hammer",
+  "category" : "hammer",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon","bone", "floran"],
+  "level" : 1,
+  "inventoryIcon" : "fubonehammer.png",
+  //"collectablesOnPickup" : { "fu_weaponhammer" : "fubonehammer" },
+  "animation" : "hammer.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "fubonehammer.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [-2.0, 1.5]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 1.1,
+    "baseDps" : 11.0
+  },
+
+  "altAbilityType" : "uppercut",
+  "altAbility" : { },
+
+  "critChance" : 3,
+  "critBonus" : 5,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "stunChance" : 5
+}

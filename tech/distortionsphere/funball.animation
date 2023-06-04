@@ -29,12 +29,15 @@
 
     "parts" : {
       "ballGlow" : {
+        "properties" : {
+          "transformationGroups" : [ "ball" ],
+          "centered" : true
+        },
         "partStates" : {
           "ballState" : {
             "on" : {
               "properties" : {
-                "zLevel" : 3,
-                "centered" : true,
+                "zLevel" : 1,
                 "fullbright" : true,
                 "image" : "<partImage>:<rotationFrame><ballDirectives>"
               }
@@ -43,11 +46,14 @@
         }
       },
       "ball" : {
+        "properties" : {
+          "transformationGroups" : [ "ball" ],
+          "centered" : true
+        },
         "partStates" : {
           "ballState" : {
             "deactivate" : {
               "properties" : {
-                "centered" : true,
                 "offset" : [0, 0],
                 "fullbright" : true,
                 "image" : "transform.png:deactivate.<frame>"
@@ -55,7 +61,6 @@
             },
             "activate" : {
               "properties" : {
-                "centered" : true,
                 "offset" : [0, 1.5],
                 "fullbright" : true,
                 "image" : "transform.png:activate.<frame>"
@@ -63,7 +68,6 @@
             },
             "on" : {
               "properties" : {
-                "centered" : true,
                 "image" : "<partImage>:<rotationFrame><ballDirectives>"
               }
             }
@@ -71,6 +75,10 @@
         }
       }
     }
+  },
+
+  "transformationGroups" : {
+    "ball" : { "interpolated" : true }
   },
 
   "particleEmitters" : {
@@ -84,6 +92,7 @@
 
   "sounds" : {
     "activate" : [ "/sfx/tech/tech_sphere_transform.ogg" ],
-    "deactivate" : [ "/sfx/tech/tech_sphere_transform.ogg" ]
+    "deactivate" : [ "/sfx/tech/tech_sphere_transform.ogg" ],
+    "forceDeactivate" : [ "/sfx/tech/tech_sonicsphere_charge1.ogg" ]
   }
 }

@@ -1,0 +1,103 @@
+{
+	"stats": [
+		{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 0.9
+		},
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 1.15
+		},
+		{
+			"stat": "mentalProtection",
+			"amount": 0.30
+		},
+		{
+			"stat": "physicalResistance",
+			"amount": -0.10
+		},
+		{
+			"stat": "electricResistance",
+			"amount": 0.15
+		},
+		{
+			"stat": "fireResistance",
+			"amount": 0.30
+		},
+		{
+			"stat": "iceResistance",
+			"amount": -0.30
+		},
+		{
+			"stat": "poisonResistance",
+			"amount": -0.20
+		},
+		{
+			"stat": "cosmicResistance",
+			"amount": 0.15
+		},
+		{
+			"stat": "biomeheatImmunity",
+			"amount": 1
+		}
+	],
+	"diet" : "omnivore",
+	"controlModifiers": {
+		"speedModifier": 1.08,
+		"airJumpModifier": 1.08
+	},
+	"envEffects": [
+		{
+			"biomes": [ "snow", "snowdark", "tundra", "arctic", "arcticdark", "nitrogensea", "icemoon", "frozenvolcanic", "icewaste", "icewastedark" ],
+			"stats": [
+				{ "stat": "protection", "effectiveMultiplier": 0.4 },
+				{ "stat": "maxHealth", "effectiveMultiplier": 0.75 }
+			],
+			"scripts" : [
+				{
+					"script" : "/scripts/fr_scripts/healthRegen.lua",
+					"args" : {
+						"healingRate" : -0.003,
+						"label":"env1"
+					}
+				}
+			]
+		}
+	],
+	"weaponEffects": [{
+			"weapons": [
+				"energy"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.25
+			}]
+		},
+		{
+			"weapons": [
+				"pistol"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.1
+			}]
+		},
+		{
+			"weapons": [
+				"assaultrifle"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.2
+			}]
+		}
+	],
+	"scripts" : [
+		{
+			"script" : "/scripts/fr_scripts/healthRegen.lua",
+			"args" : {
+				"healingRate" : 0.003
+			}
+		}
+	]
+}

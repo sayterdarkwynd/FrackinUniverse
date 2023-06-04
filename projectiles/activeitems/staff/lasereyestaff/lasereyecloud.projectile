@@ -1,0 +1,106 @@
+{
+  "projectileName" : "lasereyecloud",
+  "physics" : "hover",
+  "timeToLive" : 6,
+  "image" : "lasereyecloud.png",
+  "animationCycle" : 0.4,
+  "lightColor" : [90, 60, 110],
+  "frameNumber" : 5,
+  "windupFrames" : 7,
+  "periodicActions" : [
+    {
+      "time" : 0.2,
+      "action" : "loop",
+      "count" : 5,
+      "fuzzAngle" : 360,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/electriccharge/electriccharge.animation",
+            "position" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [3.5, 3.5],
+            "destructionAction" : "fade",
+            "destructionTime" : 0.85,
+            "fade" : 1,
+            "size" : 0.8,
+            "layer" : "middle",
+            "timeToLive" : 0.45,
+            "variance" : {
+              "size" : 0.3,
+              "position" : [2.3, 1.0],
+              "initialVelocity" : [2.0, 2.0]
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/energybeamimpact/energybeamimpact.animation",
+            "position" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1.5, 1.5],
+            "destructionAction" : "fade",
+            "destructionTime" : 0.85,
+            "fade" : 1,
+            "size" : 0.3,
+            "layer" : "front",
+            "timeToLive" : 0.45,
+            "variance" : {
+              "size" : 0.2,
+              "position" : [2.3, 1.0],
+              "initialVelocity" : [2.0, 2.0]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "speed" : 0,
+  "power" : 30,
+  "damageKind" : "electric",
+  "damagePoly" : [ ],
+  "emitters" : [ "iceplasma" ],
+
+  "renderLayer" : "Projectile+1",
+  "orientationLocked" : true,
+
+  "bounces" : -1,
+  "onlyHitTerrain" : true,
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+  "scriptDelta" : 1,
+
+  "controlMovement" : {
+    "maxSpeed" : 60,
+    "controlForce" : 80
+  },
+
+  "timedActions" : [
+    {
+      "delayTime" : 0.5,
+      "loopTime" : 0.2,
+      "loopTimeVariance" : 0.05,
+      "action" : "projectile",
+      "type" : "fu_lasereyeshot",
+      "config" : {},
+      "inheritDamageFactor" : 0.15,
+      "direction" : [0, -1],
+      "offsetRange" : [-1.75, -3.125, 1.75, -3.125]
+    },
+    {
+      "delayTime" : 0.6,
+      "loopTime" : 0.2,
+      "loopTimeVariance" : 0.05,
+      "action" : "projectile",
+      "type" : "fu_lasereyeshot",
+      "config" : {},
+      "inheritDamageFactor" : 0.15,
+      "direction" : [0, -1],
+      "offsetRange" : [-1.75, -3.125, 1.75, -3.125]
+    }
+  ]
+}

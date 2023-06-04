@@ -1,0 +1,32 @@
+{
+  "objectName" : "madnesspoptop",
+  "rarity" : "common",
+  "description" : "An adorable poptop companion.",
+  "shortdescription" : "Poptop",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 150,
+  "printable" : false,
+
+  "inventoryIcon" : "madnesspoptop.png",
+  "orientations" : [
+    {
+      "dualImage" : "madnesspoptop.png:<color>",
+      "imagePosition" : [-10, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "spaces" : [  [0, 0], [-1, 0], [0, 1], [-1, 1]],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "botspawner" : {
+      "type" : "poptopmadnesspet",
+	  "monsterImage":"/monsters/walkers/poptopish/poptopmicro/poptopmicro.png:idle.1?"
+  },
+
+  "scripts" : [
+    "/spawners/fuminionspawner.lua"
+  ],
+  "scriptDelta" : 5
+}

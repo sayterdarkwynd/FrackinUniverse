@@ -1,0 +1,58 @@
+{
+  "objectName" : "fuaetherwalllamp",
+  "colonyTags" : ["fu","aether","pretty","valuable","wired","light"],
+  "rarity" : "Legendary",
+  "description" : "A pretty wall light.",
+  "shortdescription" : "Aether Wall Light",
+  "race" : "generic",
+
+  "category" : "light",
+  "price" : 45,
+  "lightColor" : [120, 20, 180],
+
+  "inventoryIcon" : "fuaetherwalllampicon.png",
+  "orientations" : [
+    {
+      "image" : "fuaetherwalllamp.png:<color>.<frame>",
+      "imagePosition" : [-2, -2],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "animationParts" : {
+        "bg" : "fuaetherwalllamp.png",
+        "fg" : "fuaetherwalllamplit.png"
+      },
+      "animationPosition" : [-2, -2],
+
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "fuaetherwalllamp.png:<color>.<frame>",
+      "imagePosition" : [-2, -2],
+
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "fuaetherwalllamp.png",
+        "fg" : "fuaetherwalllamplit.png"
+      },
+      "animationPosition" : [-2, -2],
+
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "fuaetherwalllamp.png",
+    "fg" : "fuaetherwalllamplit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+}

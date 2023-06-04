@@ -1,0 +1,82 @@
+[
+  {
+    "op": "remove",
+    "path": "/scripts"
+  },
+  {
+    "op": "remove",
+    "path": "/scriptDelta"
+  },
+  {
+    "op": "remove",
+    "path": "/chatOptions"
+  },
+  {
+    "op": "remove",
+    "path": "/mouthPosition"
+  },
+  {
+    "op": "add",
+    "path": "/interactAction",
+    "value": "OpenMerchantInterface"
+  },
+  {
+    "op": "add",
+    "path": "/interactData",
+    "value": {
+      "config": "/interface/windowconfig/merchant.config",
+      "paneLayoutOverride": {
+        "windowtitle": {
+          "title": "Vork the Penguin's Scrap Yard",
+          "subtitle": "I buy -your- junk!"
+        }
+      },
+      "buyFactor": 1,
+      "sellFactor": 0.25,
+      "items": [
+        {
+          "item": "slopedrustypanel", "price" : 4
+        },
+        {
+          "item": "slopedscrappanel", "price" : 4
+        },
+        {
+          "item": "rustymetal", "price" : 2
+        },
+        {
+          "item": "wreckplatform", "price" : 2
+        },
+        {
+          "item": "wreckbed"
+        },
+        {
+          "item": "wreckdoor"
+        },
+        {
+          "item": "wrecklocker"
+        },
+        {
+          "item": "wreckchair"
+        },
+        {
+          "item": "wrecktable"
+        },
+        {
+          "item": "wrecksmalltable"
+        },
+        {
+          "item": "redlight"
+        },
+        {
+          "item": "scorchedcitycrate"
+        },
+        {
+          "item": "autochip"
+        },
+        {
+          "item": {"name": "warpmanifold"}, "price" : 3000, "prerequisiteQuest": "fu_byosftldrive"
+        }
+      ]
+    }
+  }
+]

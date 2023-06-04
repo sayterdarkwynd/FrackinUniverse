@@ -1,0 +1,58 @@
+{
+  "itemName" : "fireslimeconcwhip",
+  "price" : 1600,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "A concealed whip made of sticky slime, producing immense heat.",
+  "shortdescription" : "Concealed Fire Slime Whip",
+  "tooltipKind" : "sword2",
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "whip", "upgradeableWeapon", "slime"],
+
+  "inventoryIcon" : "fireslimeconcwhip.png:extend.1",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "fireslimeconcwhip.png",
+    "weaponFullbright" : ""
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : {
+      "burstCount" : 3,
+      "particles" : [{"particle" : "fireswoosh1"}]
+    }},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/whip_swing1.ogg", "/sfx/melee/whip_swing2.ogg", "/sfx/melee/whip_swing3.ogg" ],
+      "crack" : [ "/sfx/melee/whip_impact1.ogg", "/sfx/melee/whip_impact2.ogg", "/sfx/melee/whip_impact3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [0.625, 0.0625],
+    "length" : [3, 25],
+    "segmentImage" : "/items/active/weapons/whip/fireslimewhiplink.png",
+    "endSegmentImage" : "/items/active/weapons/whip/fireslimewhipend.png",
+    "segmentSize" : 0.375
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "fire",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "fireTime" : 1.2,
+    "chainDps" : 1.6,
+    "crackDps" : 6.1,
+
+    "damageConfig" : {
+      "damageSourceKind" : "fire"
+    },
+
+    "projectileType" : "fireplasmaexplosionstatus"
+  },
+  "critChance" : 2,
+  "critBonus" : 4,
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}

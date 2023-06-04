@@ -1,0 +1,85 @@
+{
+  "objectName" : "peglacishipscreensmall2",
+  "colonyTags" : [ "peglaci", "peglacivillage", "electronic" ],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 75,
+  "printable" : true,
+
+  "lightColor" : [0, 100, 150],
+  "pointLight" : true,
+  "pointBeam" : 2.25,
+  "beamAmbience" : 0.7,
+
+  "flickerPeriod" : 0.4,
+  "flickerMinIntensity" : 0.975,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0,
+  "flickerIntensityVariance" : 0,
+
+  "description" : "A small display monitor made of a metallic alloy.",
+  "shortdescription" : "Alloy Monitor",
+  "race" : "peglaci",
+
+  "apexDescription" : "There's something odd with this display configuration.",
+  "avianDescription" : "This display is mounted firmly on the wall.",
+  "floranDescription" : "Shinny blue wordss on televission.",
+  "glitchDescription" : "Informative. This display shows some information.",
+  "humanDescription" : "Man, this monitor is huge!",
+  "hylotlDescription" : "This screen is able to display some information. Shame I can't read any of it.",
+  "novakidDescription" : "This screen is just hangin' there.",
+  "fupeglaciDescription" : "Screens like this are very useful on our ships.",
+
+
+  "inventoryIcon" : "peglacishipscreensmall2icon.png",
+  "orientations" : [
+    {
+      "image" : "peglacishipscreensmall2.png:<color>.<frame>",
+      "imagePosition" : [-16, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+      "animationPosition" : [-16, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "lightPosition" : [0, 1],
+      "beamAngle" : 225
+    },
+    {
+      "image" : "peglacishipscreensmall2.png:<color>.<frame>",
+      "imagePosition" : [-16, 0],
+
+      "direction" : "right",
+      "animationPosition" : [-16, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "lightPosition" : [0, 1],
+      "beamAngle" : 270
+    }
+  ],
+
+  // "soundEffect" : "/sfx/objects/tv_static.ogg",
+
+  "animation" : "peglacishipscreensmall2.animation",
+  "animationParts" : {
+    "bg" : "peglacishipscreensmall2.png",
+    "fg" : "peglacishipscreensmall2lit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+}

@@ -1,0 +1,43 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Wave Blast",
+    "type" : "furocketboom",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "energyUsage" : 30,
+    "baseDps" : 5,
+    "fireTime" : 1,
+    "inaccuracy" : 0,
+    "fireType" : "auto",
+
+    "projectileType" : [ "waveblast" ],
+    "projectileParameters" : {
+      "knockback" : 30
+    },
+
+    "usePrimaryFireSound" : false,
+    "useParticleEmitter" : false,
+    "stances" : {
+      "fire" : {
+        "duration" : 0.02,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true
+      },
+      "cooldown" : {
+        "duration" : 0.02,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true
+      }
+    }
+  }
+}

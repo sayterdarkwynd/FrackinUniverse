@@ -1,0 +1,81 @@
+[
+  {"op": "add","path": "/critChance","value": 1},
+  {"op": "add","path": "/critBonus","value": 2},
+  {"op" : "replace","path" : "/tooltipKind","value" : "sword2"},
+  {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "upgradeableWeapon"
+  },
+  {"op": "add","path": "/builderConfig/0/elementalType/-","value" : "shadow"},
+  {"op": "add","path": "/builderConfig/0/elementalType/-","value" : "radioactive"},
+  {"op": "add","path": "/builderConfig/0/elementalType/-","value" : "cosmic"},
+  {"op": "add","path": "/builderConfig/0/elementalConfig/shadow",
+    "value" : { "fireSounds" : [ [ "/sfx/melee/swing_dagger_poison1.ogg", "/sfx/melee/swing_dagger_poison2.ogg", "/sfx/melee/swing_dagger_poison3.ogg" ] ] }
+  },
+  {"op": "add","path": "/builderConfig/0/elementalConfig/radioactive",
+    "value" : { "fireSounds" : [ [ "/sfx/melee/swing_dagger_poison1.ogg", "/sfx/melee/swing_dagger_poison2.ogg", "/sfx/melee/swing_dagger_poison3.ogg" ] ] }
+  },
+  {"op": "add","path": "/builderConfig/0/elementalConfig/cosmic",
+    "value" : { "fireSounds" : [ [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ] ] }
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbilityType",
+    "value": "daggercombo"
+  },
+  {
+    "op": "replace",
+    "path": "/animation",
+    "value": "daggercombo.animation"
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/animatedParts",
+    "value": {
+      "parts": {
+        "blade": {
+          "properties": {
+            "offset": [
+              0.4,
+              2.2
+            ]
+          }
+        },
+        "handle": {
+          "properties": {
+            "offset": [
+              0.4,
+              2.2
+            ]
+          }
+        },
+        "swoosh": {
+          "properties": {
+            "offset": [
+              1,
+              2
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/aimOffset",
+    "value": -1
+  },
+  {
+    "op": "remove",
+    "path": "/primaryAbility/scripts"
+  },
+  {
+    "op": "remove",
+    "path": "/primaryAbility/class"
+  },
+  {
+    "op": "remove",
+    "path": "/primaryAbility/stances"
+  }
+]

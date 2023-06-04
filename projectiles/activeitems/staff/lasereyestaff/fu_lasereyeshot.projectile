@@ -1,0 +1,36 @@
+{
+  "projectileName" : "fu_lasereyeshot",
+  "image" : "fu_lasereyeshot.png",
+  "physics" : "laser",
+  "animationCycle" : 1,
+  "damageKindImage" : "fu_lasereyeshot.png",
+  "frameNumber" : 1,
+  "level" : 5,
+  "power" : 5,
+  "speed" : 60,
+  "timeToLive" : 0.5,
+  "piercing" : true,
+  "damagePoly" : [ [-25, 1], [25, 1], [25, -1], [-25, -1] ],
+
+
+  "fullbright" : true,
+  "pointLight" : true,
+  "lightColor" : [19, 120, 44],
+
+  "damageKind" : "electricplasma",
+
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmabulletexplosion/plasmabulletexplosion.config"
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.5,
+      "loop" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/laserblast.ogg" ]
+    }
+  ]
+}

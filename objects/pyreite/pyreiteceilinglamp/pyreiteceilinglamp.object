@@ -1,0 +1,46 @@
+{
+  "objectName" : "pyreiteceilinglamp",
+  "colonyTags" : ["pyreite", "light"],
+  "rarity" : "rare",
+  "category" : "light",
+  "lightColor" : [190, 41, 6],
+  "price" : 160,
+  "description" : "An orange ceiling light. It feels like it's on fire.",
+  "shortdescription" : "Pyreite Ceiling Lamp",
+  "race" : "generic",
+
+  "apexDescription" : "This light doesn't seem practical.",
+  "avianDescription" : "A harsh light.",
+  "floranDescription" : "Light is bright, too hot for Floran.",
+  "glitchDescription" : "Wary. This lighting fixture generates an absurd amount of heat.",
+  "humanDescription" : "A hot, orange light.",
+  "hylotlDescription" : "A hot, orange light. It creates a warm atmosphere. Literally.",
+  "novakidDescription" : "That's mighty hot. I could cook some eggs.",
+
+  "inventoryIcon" : "pyreiteceilinglampicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "pyreiteceilinglamp.png:<color>.<frame>", "fullbright" : true }, { "image" : "pyreiteceilinglamplit.png:<color>.<frame>" } ],
+      "imagePosition" : [0, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "pyreiteceilinglamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

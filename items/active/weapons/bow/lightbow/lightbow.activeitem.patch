@@ -1,0 +1,76 @@
+[
+{"op": "replace","path": "/tooltipKind","value": "bow2"},
+{"op": "add","path": "/critChance","value": 6},
+{"op": "add","path": "/critBonus","value": 3},
+{"op": "add","path": "/elementalType","value": "cosmic"},
+
+  {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "upgradeableWeapon"
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbility",
+    "value": {
+      "dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+      "drawTime" : 0.75,				//Time to fully draw the bow
+      "powerProjectileTime" : 0.240,		//After fully drawing, the bow is super-charged for this long
+      "energyPerShot" : 32,				//Total energy consumption for a full draw
+      "holdEnergyUsage" : 6,			//Energy consumption per second while fully drawn
+      "airborneBonus" : 1.60,				//A dmg multiplier for when airborne
+      "projectileType": "cosmicarrow",
+      "powerProjectileType": "rngcosmicpowerarrow"
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/animation",
+    "value": "/items/active/weapons/bow/fubow.animation"
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbility/projectileParameters",
+    "value": {
+      "power": 8.5,
+      "piercing" : false
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/primaryAbilityType",
+    "value": "rngbows_enhancedbowshot"
+  },
+  {
+    "op": "replace",
+    "path": "/builder",
+    "value": "/items/buildscripts/neb-buildbow.lua"
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbility/powerProjectileParameters",
+    "value": {
+      "power": 9,
+      "piercing" : false
+    }
+  },
+
+  {
+    "op": "add",
+    "path": "/altAbilityType",
+    "value": "rngbows_enhancedbowshot"
+  },
+  {
+    "op": "add",
+    "path": "/altAbility",
+    "value": {
+      "name" : "Lightning Bolt",
+      "projectileType": "ffteslasmall",
+      "powerProjectileType": "ffteslasmall",
+      "projectileParameters": {
+        "power": 10.525,
+        "piercing" : false
+      }
+    }
+  }
+]

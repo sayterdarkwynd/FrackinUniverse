@@ -1,0 +1,79 @@
+{
+	"stats": [
+		{ "stat": "maxHealth", "effectiveMultiplier": 0.90 },
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.10 },
+	    { "stat": "maxFood", "baseMultiplier": 0.90 },
+
+		{ "stat": "fireResistance", "amount": 0.20 },
+		{ "stat": "iceResistance", "amount": -0.20 },
+		{ "stat": "electricResistance", "amount": -0.05 },
+		{ "stat": "radioactiveResistance", "amount": 0.35 },
+		{ "stat": "shadowResistance", "amount": -0.20 },
+
+		{ "stat": "fireStatusImmunity", "amount": 1 },
+		{ "stat": "radiationburnImmunity", "amount": 1 },
+
+		{ "stat": "pistolMastery", "amount": 0.15 },
+		{ "stat": "sniperrifleMastery", "amount": 0.15 },
+		{ "stat": "shotgunMastery", "amount": 0.15 }
+	],
+	"diet" : "entity",
+	"controlModifiers": {},
+
+	"envEffects": [
+		{
+			"biomes": [ "alien", "jungle", "irradiated", "chromatic" ],
+			"stats": [
+				{ "stat": "maxHealth", "effectiveMultiplier": 1.15 }
+			]
+		}
+	],
+	"weaponEffects": [
+		{
+			"combos": [ [ "pistol", "pistol" ] ],
+			"controlModifiers": {"speedModifier": 1.08}
+		}
+	],
+	"weaponScripts": [
+		//{  disabled this ability. too OP.
+		//	"script": "/scripts/fr_weaponscripts/novakidspeed.lua",
+		//	"weapons": [ "pistol" ],
+		//	"contexts": [ "gunfire-update", "gunfire-postauto", "gunfire-postburst" ],
+		//	"args": {
+		//		"damageProportion": 0.5,
+		//		"damageFloor": 0.5,
+		//		"damageCeiling": 1,
+		//		"lightValue": 200,
+		//		"minSpeed": 1,
+		//		"maxSpeed": 0
+		//	}
+		//}
+	],
+	"scripts" : [
+		{
+			"script" : "/scripts/fr_scripts/novakidStuff.lua",
+			"args" : {
+				"daytimeConfig" : {
+					"stats": [                  // Applied during the day
+						{ "stat": "energyRegenPercentageRate", "baseMultiplier": 1.20 }
+					],
+					"hungerRegen" : 0.008,       // Hunger% gained/s during the day
+					"hungerThreshold" : 0.40,    // Hunger% required for regen to start
+					"maxHunger" : 0.85,          // Maximum hunger level for regen (stops increasing here, keeps regenning above this)
+					"minHunger" : 0.50,          // Minimum hunger level for regen (starts here, no regen below this)
+					"maxRegen" : 0.015,          // Regen/s at maximum hunger level
+					"minRegen" : 0.010           // Regen/s at minimum hunger level
+				},
+				"nightConfig" : {
+					"stats": [                  // Applied at night
+						{ "stat": "maxEnergy", "effectiveMultiplier": 0.75 },
+						{ "stat": "energyRegenPercentageRate", "baseMultiplier": 1.0 }
+					],
+					"hungerThreshold" : 0.5,     // Hunger% at which regeneration is allowed at night
+					"hungerLoss" : -0.002,      // Hunger%/s lost at night
+					"regen" : 0.010              // Health%/s gained at night
+				}
+			}
+		}
+	]
+}

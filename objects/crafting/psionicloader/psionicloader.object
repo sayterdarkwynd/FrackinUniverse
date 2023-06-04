@@ -1,0 +1,58 @@
+{
+	"objectName": "psionicloader",
+	"colonyTags": ["combat", "madness", "psionics"],
+	"rarity": "Legendary",
+	"printable": false,
+
+	"category": "storage",
+	"price": 750,
+	"description": "Loads Psionic Focii.",
+	"shortdescription": "Psionic Focus Loader",
+
+	"race": "generic",
+	"health": 1.5,
+
+	"objectType": "container",
+	"slotCount": 2,
+	"uiConfig": "/interface/objectcrafting/generic2slotPointerNoButtons.config",
+	"subtitle": "Fill Empty Focii",
+	"frameCooldown": 5,
+	"autoCloseCooldown": 3600,
+	"scripts": ["psionicloader.lua"],
+
+
+	"inventoryIcon": "psionicloadericon.png",
+	"orientations": [{
+			"imageLayers": [{
+				"image": "psionicloader.png:<color>.<frame>",
+				"fullbright": true
+			}, {
+				"image": "psionicloaderfullbright.png:<color>.<frame>"
+			}],
+			"direction": "left",
+			"flipImages": true,
+			"animationParts": {"samplingarrayanim": "psionicloader.png"},
+			"imagePosition": [-12, 0],
+			"frames": 4,
+			"animationCycle": 1,
+			"spaceScan": 0.1,
+			"anchors": ["bottom"]
+		},
+		{
+			"imageLayers": [{
+				"image": "psionicloader.png:<color>.<frame>",
+				"fullbright": true
+			}, {
+				"image": "psionicloaderfullbright.png:<color>.<frame>"
+			}],
+			"direction": "right",
+			"animationParts": {"samplingarrayanim": "psionicloader.png"},
+			"imagePosition": [-12, 0],
+			"frames": 4,
+			"animationCycle": 1,
+			"spaceScan": 0.1,
+			"anchors": ["bottom"]
+		}
+
+	]
+}

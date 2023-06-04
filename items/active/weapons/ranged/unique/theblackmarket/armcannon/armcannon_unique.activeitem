@@ -1,0 +1,83 @@
+{
+  "itemName" : "squelcher",
+  "price" : 2500,
+  "inventoryIcon" : "armcannon_unique.png",
+    "maxStack" : 1,
+    "rarity" : "legendary",
+  "description" : "A strange name for such amazeness.
+^yellow;Counts as 'energy' for set bonuses^reset;",
+  "shortdescription" : "Squelch",
+  "level" : 5,
+  "category" : "armcannon",
+  "itemTags" : ["weapon","ranged","upgradeableWeapon","armcannon","energy"],
+  "tooltipKind" : "gununique",
+
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "armcannon_unique.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+  },
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/weapons/squelcher.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [122, 88, 32] } }
+  },
+
+  "baseOffset" : [0.0, 0.34],
+  "muzzleOffset" : [1.0, 0.05],
+  "handGrip" : "wrap",
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+ // "learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.4,
+    "baseDps" : 7,
+    "energyUsage" : 34,
+    "fireType" : "auto",
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "projectileType" : "ultrashot",
+    "projectileParameters" : {
+      "speed" : 60
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+
+  "critChance" : 1,
+  "critBonus" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

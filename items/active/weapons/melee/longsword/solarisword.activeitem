@@ -1,0 +1,47 @@
+{
+  "itemName" : "solarisword",
+  "price" : 200,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Pure lunari fashioned to a stabby point.",
+  "shortdescription" : "Lunari Longsword",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : [ "weapon", "melee", "longsword", "lunari", "upgradeableWeapon" ],
+
+  "inventoryIcon" : "solarisword.png",
+  //"collectablesOnPickup" : { "fu_weaponlongsword" : "solarisword" },
+  "animation" : "combolongsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "solarisword.png"
+  },
+  "animationCustom" : {
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.89,
+    "baseDps" : 6.45,
+    "damageConfig" : {
+      "damageSourceKind" : "ice"
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 14,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

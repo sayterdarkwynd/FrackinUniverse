@@ -1,0 +1,70 @@
+{
+	"itemName" : "magnorbatropus",
+	"level" : 5,
+	"price" : 1200,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Gruesome, yet fun.",
+	"shortdescription" : "Flesh Bola",
+	"tooltipKind" : "magnorb",
+	"category" : "Magnorb",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","magnorb","atropus","bioweapon", "upgradeableWeapon"],
+	"emitters" : [ "blood" ],
+	"inventoryIcon" : "iconatropus.png",
+	"animation" : "magnorbsatropus.animation",
+	"animationParts" : {
+		"glove" : "gloveatropus.png",
+		"orb1" : "orbatropus.png",
+		"orb2" : "orbatropus.png",
+		"orb3" : "orbatropus.png",
+		"orb4" : "orbatropus.png",
+		"orb5" : "orbatropus.png"
+	},
+	"animationCustom" : { },
+
+	"scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
+
+	"orbitRate" : 0.45,
+
+	"elementalType" : "poison",
+
+	"projectileType" : "magnorbatropus",
+	"projectileParameters" : {
+		"power" : 3.75,
+		"knockback" : 5,
+
+		"returnOnHit" : true,
+		"ignoreTerrain" : false,
+		"controlForce" : 50,
+		"pickupDistance" : 2.5,
+		"snapDistance" : 2.0
+	},
+
+	"count" : 5,
+	"shieldKnockback" : 14,
+	"shieldEnergyCost" : 40,
+	"shieldHealth" : 50,
+	"shieldPower" : "Regenerate",
+	"shieldPersistentGroup":"magnorbAtropus",
+	"shieldPersistentEffects":[{"stat":"healthRegen","amount":2},{"stat":"poisonResistance","amount":0.15}],
+	//"shieldEphemeralEffects":[""],//doesn't have any
+	"critChance" : 1,
+	"critBonus" : 4,
+
+	"stances" : {
+		"idle" : {
+			"armRotation" : 10,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		},
+		"shield" : {
+			"armRotation" : 0,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		}
+	},
+	"builder" : "/items/buildscripts/fubuildmagnorb.lua"
+}

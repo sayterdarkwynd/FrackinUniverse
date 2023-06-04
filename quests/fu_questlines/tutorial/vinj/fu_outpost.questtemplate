@@ -1,0 +1,28 @@
+{
+	"id": "fu_outpost",
+	"prerequisites": [],
+	"mainQuest" : true,
+	"showInLog" : false,
+	"showAcceptDialog" : false,
+	"showCompleteDialog" : false,
+	"showFailDialog" : false,
+	"canBeAbandoned" : false,
+	"title": "The Outpost",
+	"text": "In the furthest reaches of the galaxy is the Ark, a structure built by the Ancients to seal away the Ruin. I've marked the location ^green;in my ships SAIL^reset; so I can teleport there.",
+	"completionText": "In the furthest reaches of the galaxy is the Ark, a structure built by the Ancients to seal away the Ruin. I've marked the location ^green;in my ships SAIL^reset; so I can teleport there.",
+	"moneyRange" : [50, 50],
+	"rewards" : [ ],
+	"speaker": "questGiver",
+
+	"updateDelta": 10,
+	"script": "/quests/scripts/main.lua",
+	"scriptConfig": {
+		"portraits": {
+			"questStarted": "questGiver",
+			"questComplete": "questGiver"
+		},
+		"requireTurnIn": false,
+		"conditions": [],
+		"associatedMission": "fu_outpost"
+	}
+}

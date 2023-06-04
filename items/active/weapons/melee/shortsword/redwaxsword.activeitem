@@ -4,15 +4,15 @@
   "level" : 3,
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Still Useless",
+  "description" : "Still useless.",
   "shortdescription" : "Red Wax Sword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "shortsword",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword"],
+  "itemTags" : ["weapon","melee","shortsword", "upgradeableWeapon", "bees"],
 
   "inventoryIcon" : "redwaxsword.png",
-
+  //"collectablesOnPickup" : { "fu_weaponshortsword" : "redwaxsword" },
   "animation" : "comboshortsword.animation",
   "animationParts" : {
     "handle" : "",
@@ -28,9 +28,10 @@
   "primaryAbilityType" : "shortswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.43,
-    "baseDps" : 2.5
+    "baseDps" : 5.5
   },
-
+  "critChance" : 2,
+  "critBonus" : 1,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

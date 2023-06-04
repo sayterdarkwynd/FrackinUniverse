@@ -1,0 +1,102 @@
+{
+  "objectName" : "fu_harpsichord",
+  "colonyTags" : ["mechanical","musical","pretty","valuable","odd","rococo","phox"],
+  "rarity" : "Rare",
+  "category" : "decorative",
+  "description" : "In space, nobody can hear the music of the spheres - until you play this!",
+  "shortdescription" : "Rococo Harpsichord",
+  "race" : "novakid",
+  "price" : 1200,
+
+"phoxDescription" : "All of a sudden I am feeling the urge to dance...my paws too. Music anyone?",
+  "kirhosDescription" : "Why in the Slip would anyone dream of playing music on this?",
+  "fukirhosDescription" : "Why in the Slip would anyone dream of playing music on this?",
+  "humanDescription" : "Isn't this musical instrument too anachronistic to be in a futuristic space setting?",
+  "felinDescription" : "Anyone who plays so grim and aberrant an instrument like this needs to be shot on sight.",
+  "hylotlDescription" : "This looks to be an Apex attempt to replicate antique Human musical sensibilities.",
+  "bothanDescription" : "A keyboard instrument that plucks strings, instead of hitting wires.",
+  "feneroxDescription" : "Perfect machine. Imperfect music. Auditory assault!",
+  "rodianDescription" : "The music that could be performed on this keyboard instrument fell out of date many aeons ago.",
+  "zabrakDescription" : "I can't bring myself to think of what tunes should be played on this device.",
+  "togrutaDescription" : "Looks like some sort of Human musical instrument",
+  "apexDescription" : "A musical frivolity that best describes the excesses of life in the Miniknog's immediate circle.",
+  "novakidDescription" : "Sure looks like a piano, but it ain't one!",
+  "glitchDescription" : "Whimsical. I suppose I could try to play this contraption.",
+  "avianDescription" : "Never have I ever in my life ever heard such an awful cacophony.",
+  "floranDescription" : "Big wooden box makessss lotssss of noissse!",
+  "sithDescription" : "Music cannot soothe that breast made savage by the Dark Side.",
+  "tuskanDescription" : "Not many of my kind on my own planet have had the chance to practise working with these machines.",
+
+  "skathDescription" : "There must be a way to convert the discordant and jarring sounds of this instrument into a sonic-based weapon.",
+  "diathimDescription" : "I've never understood how these devices work.",
+
+
+  "mawgDescription" : "I'm gettin' a lotta bad vibes simply by listenin' to a single note from this monster.",
+
+"printable" : false
+,
+  "inventoryIcon" : "rococoharpsichord.png",
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "rococoharpsichordleft.png:<color>.<frame>", "fullbright" : true }, { "image" : "rococoharpsichordleft.png:<color>.<frame>" } ],
+      "direction" : "left",
+      "flipImages" : false,
+      "sitCoverImage" : "/objects/themed/rococo/harpsichord/rococoharpsichord.png",
+      "imagePosition" : [-46, 0],
+
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "rococoharpsichordright.png:<color>.<frame>", "fullbright" : true }, { "image" : "rococoharpsichordright.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "imagePosition" : [-18, 0],
+      "sitCoverImage" : "",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/noisy/noisy.animation",
+
+  "scripts" : [
+    "/objects/noisy/noisy.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+
+  "sounds" : [
+    "/sfx/instruments/cornu/clav_addams.ogg",
+    "/sfx/instruments/cornu/clav_BWV971-1a.ogg",
+    "/sfx/instruments/cornu/clav_BWV971-1b.ogg",
+    "/sfx/instruments/cornu/clav_BWV1050-3a.ogg",
+    "/sfx/instruments/cornu/clav_cortada2.ogg",
+    "/sfx/instruments/cornu/clav_forq3.ogg",
+    "/sfx/instruments/cornu/clav_xen2.ogg",
+    "/sfx/instruments/cornu/clav_hendrix2.ogg",
+    "/sfx/instruments/cornu/clav_pesrev.ogg",
+    "/sfx/instruments/cornu/clav_phelps1.ogg",
+    "/sfx/instruments/cornu/clav_phelps2.ogg",
+    "/sfx/instruments/cornu/clav_robaina1.ogg",
+    "/sfx/instruments/cornu/clav_joplin.ogg"
+  ],
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : true,
+  "sitPosition" : [-21, 21],
+
+  "npcToy" : {
+    "influence" : [
+      "piano"
+    ],
+    "defaultReactions" : {
+      "piano" : [
+        [1.0, "pianoparty"]
+      ]
+    },
+    "interactOnNpcPlayStart": false,
+    "randomStandXRange" : [-8, 8]
+  }
+}

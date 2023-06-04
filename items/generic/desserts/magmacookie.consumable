@@ -1,0 +1,28 @@
+{
+  "itemName": "magmacookie",
+  "rarity": "Rare",
+  "price": 255,
+  "category": "preparedFood",
+  "inventoryIcon": "magmacookie.png",
+  "description": "These cookies are almost on fire. \n^pink;Lava^gray;, ^pink;Burning ^cyan;Immunity ^gray;(^white;5m^gray;)^reset;",
+  "shortdescription": "Magma Cookie",
+  "effects": [
+    [
+      {
+        "effect": "lavaimmunity",
+        "duration": 300
+      },
+      {
+        "effect": "fireStatusImmunity",
+        "duration": 300
+      }
+    ]
+  ],
+  "foodValue": 55,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1.0,
+  "blockingEffects": ["wellfed"]
+}

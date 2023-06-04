@@ -1,0 +1,15 @@
+{
+	"name" : "medicalglasscannon",
+	"label" : "^orange;[E]^reset; Glass Cannon",
+	"icon" : "/interface/statuses/medicalStationSpecials/glasscannon.png",
+
+	"defaultDuration" : 5,
+	"scripts" : [ "/stats/effects/medicalStationSpecials/medicalStatusBase.lua","/stats/effects/fu_genericStatApplier.lua" ],
+
+	"effectConfig" : {
+		"stats": [
+			{"stat": "protection","effectiveMultiplier": 0.1},
+			{"stat": "powerMultiplier","effectiveMultiplier": 2.0}
+		]
+	}
+}

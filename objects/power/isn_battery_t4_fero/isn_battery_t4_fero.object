@@ -1,0 +1,41 @@
+{
+	"objectName" : "isn_battery_t4_fero",
+	"rarity" : "legendary",
+	"colonyTags" : [ "science" ],
+	"category" : "wire",
+	"price" : 1200,
+	"description" : "A huge, powerful battery perfect for massive energy storage.^truncate; ^red;Scan for Info^reset;\nStorage Capacity: ^green;18000^reset;J",
+	"shortdescription" : "^#a94db3;Ultra^reset; Battery",
+	"race" : "generic",
+	"printable" : false,
+
+	"inventoryIcon" : "isn_battery_t4_fero_inv.png",
+	"orientations" : [
+		{
+			"dualImage" : "isn_battery_t4_fero_base.png",
+			"imagePosition" : [0, 0],
+			"spaceScan" : 0.1,
+			"collision" : "platform",
+			"anchors" : [ "bottom" ]
+		}
+	],
+
+	"breakDropOptions" : [],
+
+	"animation" : "isn_battery_t4_fero.animation",
+	"animationParts" : {
+		"meter" : "isn_battery_t4_fero_meter.png",
+		"status" : "isn_battery_t4_fero_status.png",
+		"base" : "isn_battery_t4_fero_base.png"
+	},
+	"animationPosition" : [0, 0],
+
+	"scripts" : [ "/scripts/fupower.lua","/objects/power/isn_battery.lua" ],
+	"scriptDelta" : 60,
+
+	"outputNodes" : [ [0, 0], [1, 0] ],
+	"inputNodes" : [ [0, 1], [1, 1] ],
+
+	"isn_batteryCapacity" : 18000,
+	"powertype" : "battery"
+}

@@ -1,0 +1,106 @@
+{
+  "type" : "seedspawn2",
+  "shortdescription" : "Spikespawn",
+  "description" : "Watch your step.",
+  "categories" : [ "seedspawn" ],
+  "parts" : [ "body" ],
+
+  "animation" : "seedspawn.animation",
+  "colors" : "/monsters/colors.config",
+  "reversed" : true,
+
+  "dropPools" : [],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/walkers/seedspawn/behavior.lua",
+      "/scripts/sensors.lua",
+      "/scripts/stateMachine.lua",
+      "/scripts/util.lua",
+      "/scripts/vec2.lua"
+    ],
+
+    "metaBoundBox" : [-1.0, -0.65, 1.0, 0.65],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.0, -0.65], [1.0, -0.65], [1.0, 0.65], [-1.0, 0.65] ],
+
+      "mass" : 0.2,
+      "walkSpeed" : 3,
+      "runSpeed" : 4,
+      "jumpSpeed" : 5,
+      "flySpeed" : 15,
+      "airFriction" : 0.25,
+      "airForce" : 50.0
+    },
+
+    "knockoutTime" : 1,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathPoof",
+
+    "touchDamage" : {
+      "poly" : [ [-1.0, -0.65], [1.0, -0.65], [1.0, 0.65], [-1.0, 0.65] ],
+      "damage" : 5,
+      "damageType" : "IgnoresDef",
+      "damageSourceKind" : "spear",
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesWeatherStatusEffects" : true,
+      "appliesEnvironmentStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 0,
+
+      "stats" : {
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "maxHealth" : {
+          "baseValue" : 30
+        },
+        "protection" : {
+          "baseValue" : 1.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+
+    "collisionSensors" : [ [1.25, 0.0] ],
+
+    "nearGroundSensor" : [ [0.0, -1.0] ],
+    "midGroundSensor" : [ [0.0, -4.0] ],
+
+    "moveTimeRange" : [2.5, 5.0],
+    "cleanTimeRange" : [1.0, 3.0],
+
+    "attackTargetHoldTime" : 5.0,
+    "attackDistance" : 2.0,
+    "attackHoldTime" : 2.0
+  }
+}

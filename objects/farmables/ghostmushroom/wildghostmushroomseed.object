@@ -1,0 +1,43 @@
+{
+  "objectName" : "wildghostmushroomseed",
+    "colonyTags" : [ "nature" ],
+  "rarity" : "Rare",
+  "category" : "seed",
+  "description" : "These buggers are almost invisible!",
+  "shortdescription" : "Ghost Mushroom",
+  "objectType" : "farmable",
+  "printable" : false,
+
+  "inventoryIcon" : "ghostmushroomseedicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "ghostmushroomseed.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1] ],
+      "requireTilledAnchors" : false,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "stages" : [
+    {
+      "duration" : [120, 240]
+    },
+    {
+      "duration" : [120, 240]
+    },
+
+    {
+      "alts" : 5,
+      "harvestPool" : "ghostmushroomHarvest",
+      "resetToStage" : 0
+    }
+  ],
+  "breakDropOptions" : [
+    [ [ "ghostmushroomseed", 1, { } ] ]
+  ]
+}

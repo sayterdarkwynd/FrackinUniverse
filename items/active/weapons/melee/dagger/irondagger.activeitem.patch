@@ -1,0 +1,65 @@
+[
+  {"op": "add","path": "/critChance","value": 1},
+  {"op": "add","path": "/critBonus","value": 2},
+  {"op" : "replace","path" : "/tooltipKind","value" : "sword2"},
+  {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "upgradeableWeapon"
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbilityType",
+    "value": "daggercombo"
+  },
+  {
+    "op": "replace",
+    "path": "/animation",
+    "value": "/items/active/weapons/melee/dagger/daggercombo.animation"
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/animatedParts",
+    "value": {
+      "parts": {
+        "blade": {
+          "properties": {
+            "offset": [
+              0.4,
+              2.2
+            ]
+          }
+        },
+        "handle": {
+          "properties": {
+            "offset": [
+              0.4,
+              2.2
+            ]
+          }
+        },
+        "swoosh": {
+          "properties": {
+            "offset": [
+              1,
+              2
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/aimOffset",
+    "value": -1
+  },
+  {
+    "op": "remove",
+    "path": "/primaryAbility/scripts"
+  },
+  {
+    "op": "remove",
+    "path": "/primaryAbility/class"
+  }
+]

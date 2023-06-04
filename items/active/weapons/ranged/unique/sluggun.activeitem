@@ -1,0 +1,113 @@
+{
+  "itemName" : "fusluggun",
+  "price" : 1160,
+  "inventoryIcon" : "sluggun.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Ew.
+^cyan;Bio Weapon^reset;",
+  "shortdescription" : "Slug Gun",
+  "category" : "shotgun",
+  "level" : 4,
+  "tooltipKind" : "gununique",
+  "weaponType" : "shotgun",
+  "itemTags" : ["weapon","ranged","shotgun","bio","upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "sluggun.png",
+    "middlefullbright" : "",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/goreflash1.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+			//Same as BaseOffset
+		    "offset" : [2, 0.15]
+		  }
+		}
+      }
+    },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "oozesquirt", "offset" : [0.4, -0.4] },
+          { "particle" : "jellydrip1", "offset" : [0.4, -0.2] },
+          { "particle" : "poisonsquirt", "offset" : [0.4, -0.2] }
+        ]
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/energyassault.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.8, 0.25],
+  "muzzleOffset" : [0.4, 0.2],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
+    "fireTime" : 1,
+    "baseDps" : 8,
+    "energyUsage" : 65.0,
+    "useEnergy" : true,
+    "runSlowWhileShooting" : true,
+    "fireType" : "auto",
+    "inaccuracy" : 0.1,
+
+    "projectileCount" : 1,
+    "projectileType" : "alienball",
+
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.03,
+	      "armRotation" : -2,
+	      "weaponRotation" : -2,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+
+  "critChance" : 1,
+  "critBonus" : 2,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300,
+
+  "altAbilityType" : "swtjc_ewg_attractgrenades",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

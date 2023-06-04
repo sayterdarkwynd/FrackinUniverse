@@ -1,0 +1,71 @@
+{
+  "name" : "slimeasteroid",
+  "friendlyName" : "Slime Asteroids",
+
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 2,
+        "pool" : [
+          [ 0.06, "eyeslime" ],
+          [ 0.02, "eyeslimeking" ],
+          [ 0.06, "eyejelly" ],
+          [ 0.02, "eyejellyking" ],
+	  [ 0.1, "fualien" ],
+          [ 0.10, "oculob" ]
+        ]
+      },
+      {
+        "select" : 2,
+        "pool" : "generatedFlying"
+      }
+    ],
+    "monsterParameters" : {
+      "statusSettings" : {
+        "stats" : {
+            "poisonStatusImmunity" : {
+              "baseValue" : 1.0
+            },
+            "tarImmunity" : {
+              "baseValue" : 1.0
+            },
+            "biooozeImmunity" : {
+              "baseValue" : 1.0
+            },
+            "slimestickImmunity" : {
+              "baseValue" : 1.0
+            },
+            "slimefrictionImmunity" : {
+              "baseValue" : 1.0
+            }
+        }
+      }
+    }
+  },
+
+    "mainBlock" : "slimedirt",
+    "subBlocks" : [ "slime", "jellystone", "fujellyblock" ],
+    "ores" : "ff_deepsurfaceslimeOres",
+
+  "parallax" : "/parallax/space/asteroids.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/space_loop1.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/space_loop1.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+    }
+  },
+
+  "hueShiftOptions" : [0]
+}

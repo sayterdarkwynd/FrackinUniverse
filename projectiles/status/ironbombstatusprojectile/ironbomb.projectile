@@ -1,0 +1,30 @@
+{
+  "projectileName" : "ironbomb",
+  "physics" : "grenade",
+  "bounces" : 1,
+  "timeToLive" : 1.5,
+  "image" : "ironbomb.png",
+  "speed" : 20,
+  "animationCycle" : 1.5,
+  "lightColor" : [105, 64, 0],
+  "frameNumber" : 7,
+  "piercing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/defensiveexplosion/defensiveexplosion.config"
+    },
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : null,
+      // "previousMod" : null,
+      "newMod" : "iron",
+      "radius" : 5
+    }
+  ],
+  "power" : 0,
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "emitters" : [ "sparks" ]
+}

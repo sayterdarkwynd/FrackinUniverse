@@ -1,0 +1,55 @@
+{
+  "type" : "magickaguard",
+  "baseType" : "base",
+
+  "damageTeamType" : "ghostly",
+  "levelVariance" : [0, 0],
+
+  "persistent" : true,
+
+  "dropPools" : [ "villagertreasure" ],
+
+  "scriptConfig" : {
+    "behavior" : "spectator",
+
+    "dialog" : {
+      "converse" : {
+        "default" : {
+          "default" : [
+            "You shouldn't be seeing this."
+          ]
+        },
+        "glitch" : {
+          "default" : [
+			"Nervous. This is my first tour of duty.",
+			"Apprehensive. We have asked the monks to retreat to safety until the raiders are defeated.",
+			"Optimistic. The monastery walls will confer us a significant defensive advantage.",
+			"Uncertain. The alpaca are very good at hiding in the ruins.",
+			"Adventurous. I hear the ruins go much deeper than one might think. I would like to explore someday.",
+			"Grim. Alpaca raiders have troubled Glitch settlements for generations.",
+			"Hopeful. Perhaps a seasoned adventurer like you will deal with the problem without us needing to intervene.",
+			"Earnest. Shear a handful of those overgrown sheep for me, will you?",
+			"Determined. These monasteries preserve much knowledge and culture in these dark times. They must be protected.",
+            ""
+          ]
+        }
+      }
+    }
+  },
+
+  "matchColorIndices" : true,
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "glitchtier3head" } ],
+            "chest" : [ { "name" : "glitchtier3chest" } ],
+            "legs" : [ { "name" : "glitchtier3pants" } ],
+            "primary" : [
+              "npcbroadsword"
+            ]
+          }
+        ] ]
+    ]
+  }
+}

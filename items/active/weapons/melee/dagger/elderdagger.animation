@@ -1,0 +1,160 @@
+{
+  "globalTagDefaults" : {
+    "paletteSwaps" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "swoosh" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+          },
+          "fire" : {
+            "frames" : 3,
+            "cycle" : 0.08,
+            "mode" : "transition",
+            "transition" : "idle"
+          }
+        }
+      }
+    },
+    "parts" : {
+      "blade" : {
+        "properties" : {
+          "zLevel" : 0,
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "transformationGroups" : ["weapon"],
+          "rotationCenter" : [0, 0]
+        }
+      },
+      "handle" : {
+        "properties" : {
+          "zLevel" : 1,
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "transformationGroups" : ["weapon"],
+          "rotationCenter" : [0, 0]
+        }
+      },
+      "swoosh" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [0.5, 0.75],
+          "transformationGroups" : ["swoosh"],
+          "rotationCenter" : [0, 0]
+        },
+
+        "partStates" : {
+          "swoosh" : {
+            "idle" : {
+              "properties" : {
+                "image" : ""
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "/items/active/weapons/melee/dagger/swoosh/shadowswoosh.png:<frame>",
+                "damageArea" : [[0.25, 1.125], [0.75, 1.125], [2.0, 0.25], [2.0, -0.5], [0.5, -1.5], [-1.0, -1.5], [-2.0, -0.75]]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {},
+    "swoosh" : {}
+  },
+
+  "particleEmitters" : {
+    "physicalswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-1.5, -0.25, 1.5, 2.0],
+      "particles" : [
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"}
+      ]
+    },
+    "fireswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-1.5, -0.25, 1.5, 2.0],
+      "particles" : [
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"}
+      ]
+    },
+    "electricswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-1.5, -0.25, 1.5, 2.0],
+      "particles" : [
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"}
+      ]
+    },
+    "iceswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-1.5, -0.25, 1.5, 2.0],
+      "particles" : [
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"}
+      ]
+    },
+    "poisonswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-1.5, -0.25, 1.5, 2.0],
+      "particles" : [
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"}
+      ]
+    },
+    "shadowswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
+      "particles" : [
+        { "particle" : "shadowswoosh1"},
+        { "particle" : "shadowswoosh2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"}
+      ]
+    }
+  },
+
+  "sounds" : {
+    "fire" : [ ],
+    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ],
+    "avian" : [ "/sfx/weapons/energypew.ogg" ]
+  }
+}

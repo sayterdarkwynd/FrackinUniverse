@@ -1,0 +1,52 @@
+{
+  "itemName" : "fushadowdagger",
+  "price" : 40,
+  "maxStack" : 1,
+  "level" : 5,
+  "rarity" : "rare",
+  "description" : "Shadow-forged dagger.
+^cyan;Shadow Damage^reset;",
+  "shortdescription" : "Shadeclaw",
+  "tooltipKind" : "sword2",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","dagger","shadow", "upgradeableWeapon"],
+  "inventoryIcon" : "shadowdagger.png",
+
+  "animation" : "daggercomboglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "shadowdagger.png",
+    "bladefullbright" : "shadowdagger.png"
+  },
+
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "swoosh" : { "properties" : {"offset" : [1, 2]}}
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "shadow",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "daggercombo",
+  "primaryAbility" : {
+    "fireTime" : 0.35,
+    "baseDps" : 7.24,
+    "damageConfig" : {
+      "knockback" : 10,
+	  "damageSourceKind" : "shadowdagger",
+      "statusEffects" : [ "shadowgasfx" ]
+    }
+  },
+  "critChance" : 3,
+  "critBonus" : 3,
+  "stunChance" : 50,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

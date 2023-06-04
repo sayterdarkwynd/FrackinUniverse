@@ -1,0 +1,324 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 10,
+            "cycle" : 1.4,
+            "mode" : "loop"
+          },
+          "walk" : {
+            "frames" : 12,
+            "cycle" : 1.2,
+            "mode" : "loop",
+            "properties" : {
+            "particleEmittersOff" : [ "spindust" ]
+            }
+          },
+          "jump" : {
+            "frames" : 4,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "fall" : {
+            "frames" : 4,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "chargewindup" : {
+            "frames" : 15,
+            "cycle" : 1.5,
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/lion_attack2.ogg",
+              "persistentSoundStopTime" : 2.2,
+              "particleEmittersOff" : [ "spindust" ]
+            }
+          },
+          "chargewinddown" : {
+            "frames" : 15,
+            "cycle" : 1.5,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/lion_idle2.ogg",
+              "persistentSoundStopTime" : 2.2,
+              "particleEmittersOff" : [ "spindust" ]
+            }
+          },
+          "charge" : {
+            "frames" : 12,
+            "cycle" : 1.2,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/monsters/troll3.ogg",
+              "persistentSoundStopTime" : 2.0,
+              "immediateSound" : "/sfx/npc/monsters/oogler_charge.ogg",
+              "immediateSoundRangeMultiplier" : 1.5,
+              "particleEmittersOff" : [ "spindust" ],
+		    "frameProperties" : {
+		      "particleEmittersOff" : [ [ "spindust" ], [], [], [], [], [], [], ["spindust"], [], [], [], [] ],
+		      "particleEmittersOn" : [ [], [], ["spindust"], [], [], [], [], [], [], [], [], [] ],
+		      "immediateSoundRangeMultiplier" : 5.5,
+		      "immediateSound" : [ "/sfx/objects/rock_big_break1.ogg", "/sfx/objects/rock_crumble1.ogg", "/sfx/objects/rock_crumble2.ogg", "/sfx/objects/rock_big_break2.ogg", "/sfx/objects/rock_crumble3.ogg", "/sfx/objects/rock_crumble4.ogg", "/sfx/objects/rock_big_break3.ogg", "/sfx/objects/rock_crumble5.ogg", "/sfx/objects/rock_break1.ogg", "/sfx/objects/rock_break2.ogg", "/sfx/objects/rock_big_break4.ogg", "/sfx/objects/rock_break3.ogg" ]
+		    }
+            }
+          },
+          "firewindup" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "fire"
+          },
+          "firewinddown" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "idle"
+          },
+          "fire" : {
+            "frames" : 6,
+            "cycle" : 0.6,
+            "mode" : "transition",
+            "transition" : "firewinddown",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/monsters/troll5.ogg",
+              "persistentSoundStopTime" : 1.25
+            },
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "spindust" ], [], [], [], [], [], [], ["spindust"], [], [], [], [] ],
+              "particleEmittersOn" : [ [], [], ["spindust"], [], [], [], [], [], [], [], [], [] ]
+            }
+          },
+          "roarwindup" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "roar"
+          },
+          "roarwinddown" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "loop"
+          },
+          "roar" : {
+            "frames" : 6,
+            "cycle" : 0.6,
+            "mode" : "transition",
+            "transition" : "roarwinddown",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/monsters/troll5.ogg",
+              "persistentSoundStopTime" : 1.25
+            },
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "spindust" ], [], [], [], [], [], [], ["spindust"], [], [], [], [] ],
+              "particleEmittersOn" : [ [], [], ["spindust"], [], [], [], [], [], [], [], [], [] ]
+            }
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "offset" : [0,0]
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:charge.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:fall.<frame>"
+              }
+            },
+            "leap" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:fall.<frame>"
+              }
+            },
+            "roarwindup" : {
+              "properties" : {
+                "image" : "<partImage>:roarwindup.<frame>"
+              }
+            },
+            "roarwinddown" : {
+              "properties" : {
+                "image" : "<partImage>:roarwinddown.<frame>"
+              }
+            },
+            "roar" : {
+              "properties" : {
+                "image" : "<partImage>:roar.<frame>"
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:roarwindup.<frame>"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:roarwinddown.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:roar.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:chargewindup.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:chargewinddown.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:charge.<frame>",
+                "damageArea" : [ [-1.958,1.2], [-1.625,0.55], [-1.9,-2.5], [-1.0,-3.7], [1.0,-3.7], [1.9,-2.5], [1.6,0.55], [1.942,1.2] ]
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "particleEmitters" : {
+    "spindust" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [ 1.0, -1.0, 2.0, -0.0 ],
+      "particles" : [
+        { "particle" : "mandrafloradust" }
+      ]
+    },
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ "/sfx/npc/monsters/troll1.ogg", "/sfx/npc/monsters/troll3.ogg", "/sfx/npc/monsters/troll4.ogg", "/sfx/npc/monsters/troll5.ogg" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg", "/sfx/npc/monsters/troll2.ogg", "/sfx/npc/monsters/troll2.ogg" ],
+    "wallCrashSound" : [ "/sfx/melee/blunt_hit_metal6.ogg" ],
+    "turnHostile" : [ "/sfx/npc/monsters/troll1.ogg", "/sfx/npc/monsters/troll3.ogg", "/sfx/npc/monsters/troll4.ogg", "/sfx/npc/monsters/troll5.ogg" ],
+    "attackSound" : [ "/sfx/npc/monsters/troll1.ogg", "/sfx/npc/monsters/troll3.ogg", "/sfx/npc/monsters/troll4.ogg", "/sfx/npc/monsters/troll5.ogg" ],
+    "fire" : [ "/sfx/npc/monsters/troll1.ogg", "/sfx/npc/monsters/troll3.ogg", "/sfx/npc/monsters/troll4.ogg", "/sfx/npc/monsters/troll5.ogg" ]
+  }
+}

@@ -1,37 +1,24 @@
 {
-  "itemName" : "neuropod",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "neuropod.png",
-  "description" : "A powerhouse of effects.",
-  "shortdescription" : "Neuropod Bulb",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 6,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      {
-        "effect" : "energyregenfu50",
-        "duration" : 35
-      },
-      {
-        "effect" : "runboost",
-        "amount" : 0.35,
-        "duration" : 35
-      },
-      {
-        "effect" : "lowgrav",
-        "amount" : 0.15,
-        "duration" : 35
-      },
-      {
-        "effect" : "jumpboost",
-        "amount" : 0.35,
-        "duration" : 35
-      }
-    ] ]
+	"itemName": "neuropod",
+	"inventoryIcon": "neuropod.png",
+	"category": "food",
+	"rarity": "legendary",
+	"price": 95,
+
+	"tooltipKind": "food",
+	"description": "Ingesting this 'fruit' alters your brain chemistry for a short time at the expense of defense. \n^yellow;^reset;^cyan;Research Bonus^reset;: ^cyan;+5 ^reset;,^yellow;^reset;^cyan;Defense x0.5^reset;: 300s",
+	"shortdescription": "Neuropod Bulb",
+
+	"effects": [
+		[
+			{
+				"effect": "researchBonus3",
+				"duration": 300
+			},
+			{
+				"effect": "percentarmorboostneg5",
+				"duration": 300
+			}
+		]
+	]
 }

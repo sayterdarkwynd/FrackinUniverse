@@ -1,16 +1,16 @@
-function init(virtual)
-	self.placed = not virtual
+function init()
+	self.placed = true
 end
 
 function update(dt)
 	if not self.placed then return end
-	
+
 	local gelPosi = getSurroundingTileList()
-	for key, value in pairs(gelPosi) do
+	for _, value in pairs(gelPosi) do
 		applyGel(value)
 	end
-	
-	entity.smash()
+
+	--entity.smash()
 end
 
 function getSurroundingTileList()

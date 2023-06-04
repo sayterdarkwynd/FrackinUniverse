@@ -1,0 +1,54 @@
+{
+  "objectName" : "flagpeglaci",
+  "colonyTags" : ["peglaci"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "teleporter",
+  "category" : "teleportMarker",
+  "price" : 70,
+  "twoHanded" : false,
+  "radioMessagesOnPickup" : [ "pickupflag" ],
+
+  "description" : "The flag of the Peglaci. Use ^green;[E]^reset; to bookmark a teleportation location.",
+  "shortdescription" : "Peglaci Flag",
+  "race" : "peglaci",
+
+  "apexDescription" : "Ah, the Peacekeeper's flag - Peglaci must be nearby.",
+  "avianDescription" : "This symbol of the Peglaci seems almost religious - how curious.",
+  "floranDescription" : "Flag of the Peglaccci!",
+  "glitchDescription" : "Mild Interest. The flag of the Peglaci.",
+  "humanDescription" : "The Peglaci flag. I like the blinky lights.",
+  "hylotlDescription" : "The Peglaci are nearby. How... lovely.",
+  "novakidDescription" : "I can bookmark this Peglaci flag for quick teleportin'.",
+  "fupeglaciDescription" : "The flag of our race. Perhaps a bit ostentatious!",
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/destinationonly.config",
+
+  "inventoryIcon" : "flagpeglaciicon.png",
+  "orientations" : [
+    {
+      "image" : "flagpeglaci.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+      "imagePosition" : [-17, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "flagpeglaci.png:<color>.<frame>",
+      "direction" : "right",
+      "imagePosition" : [1, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+
+  //"soundEffect" : "/sfx/objects/flag_flap_loop.ogg"
+}

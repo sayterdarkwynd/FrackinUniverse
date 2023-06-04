@@ -1,0 +1,61 @@
+{
+  	"objectName" : "fumechbanpillar",
+  	"colonyTags" : ["dev"],
+  	"description" : "Despawns all mechs in range.",
+  	"shortdescription" : "FU Mech Ban Pillar",
+	"rarity" : "legendary",
+	"race" : "generic",
+	"category" : "decorative",
+	"printable" : false,
+	"price" : 200,
+	  "lightColor" : [22, 51, 177],
+	  "hasObjectItem" : true,
+	  "health" : 9,
+	  "flickerPeriod" : 0.5,
+	  "flickerMinIntensity" : 0.95,
+	  "flickerMaxIntensity" : 1,
+	  "flickerPeriodVariance" : 0.0,
+	  "flickerIntensityVariance" : 0.0,
+	"inventoryIcon" : "timeobeliskicon.png",
+	"orientations" : [
+	    {
+	      "image" : "timeobelisk.png:<color>.on",
+	      "flipImages" : true,
+	      "direction" : "left",
+	      "lightPosition" : [0, 1],
+
+	      "imagePosition" : [-8, 0],
+	      "frames" : 1,
+	      "animationCycle" : 1.0,
+
+	      "spaceScan" : 0.1,
+	      "anchors" : [ "bottom" ]
+	    },
+	    {
+	      "image" : "timeobelisk.png:<color>.on",
+	      "direction" : "right",
+	      "lightPosition" : [0, 1],
+
+	      "imagePosition" : [-8, 0],
+	      "frames" : 1,
+	      "animationCycle" : 1.0,
+
+	      "spaceScan" : 0.1,
+	      "anchors" : [ "bottom" ]
+	    }
+	],
+
+	"scripts" : ["mechban.lua" ],
+	  "animation" : "timeobelisk.animation",
+	  "animationCustom" : {
+	    "sounds" : {
+	      "on" : [ "/sfx/objects/console_button.ogg" ],
+	      "off" : [ "/sfx/objects/console_button.ogg" ]
+	    }
+	  },
+	  "animationParts" : {
+	    "bg" : "timeobelisk.png",
+	    "fg" : "timeobelisklit.png"
+	  },
+	  "animationPosition" : [-8, 0]
+}

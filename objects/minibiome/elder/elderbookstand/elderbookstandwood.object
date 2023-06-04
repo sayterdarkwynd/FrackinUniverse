@@ -1,0 +1,51 @@
+{
+  "objectName" : "elderbookstandwood",
+  "colonyTags" : ["madness","insanity","elder"],
+  "rarity" : "common",
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/tomedais.config",
+    "filter" : [ "tomedais","tomedais1" ],
+		"paneLayoutOverride": {
+			"windowtitle": {
+				"title": "Writing Desk"
+			}
+		}
+  },
+
+  "description" : "Secrets can be gleaned from lost knowledge.",
+  "category":"crafting",
+  "shortdescription" : "Writing Desk",
+
+  "price" : 120,
+"printable" : false,
+  "inventoryIcon" : "elderbookstandicon.png",
+  "orientations" : [
+    {
+
+      "imageLayers" : [ { "image" : "elderbookstandwood.png:<color>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+
+      "imageLayers" : [ { "image" : "elderbookstandwood.png:<color>" } ],
+      "direction" : "right",
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ]
+}

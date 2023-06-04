@@ -1,0 +1,32 @@
+{
+  "projectileName" : "cellzapice2",
+  "physics" : "hover",
+  "bounces" : 0,
+  "speed" : 70,
+  "timeToLive" : 0.15,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [20, 95, 60],
+  "image" : "cellzapice2.png",
+  "animationCycle" : 0.15,
+  "frameNumber" : 3,
+  "animationLoops" : false,
+  "power" : 6,
+  "statusEffects" : [ "frostslow" ],
+  "damagePoly" : [ [-3, 3], [-3, -3], [3, -3], [3, 3] ],
+  "piercing" : true,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/cellexplosion/cellexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "cellzapice3",
+      "fuzzAngle" : 20,
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : 0
+    }
+  ],
+  "damageKind" : "iceplasma"
+}

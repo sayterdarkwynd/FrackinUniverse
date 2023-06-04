@@ -1,19 +1,23 @@
 {
-  "itemName" : "silverleaf",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "silverleaf.png",
-  "description" : "A fantastic energy booster!",
-  "shortdescription" : "Silverleaf Herb",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      "percentenergyboost35"
-    ] ]  
+	"itemName": "silverleaf",
+	"category": "food",
+	"inventoryIcon": "silverleaf.png",
+	"rarity": "Rare",
+	"price": 10,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Energy x1.35^reset;: 1m",
+	"shortdescription": "Silverleaf Herb",
+
+	"effects": [
+		[{
+			"effect": "percentenergyboost35",
+			"duration": 60
+		}]
+	],
+	"blockingEffects": [
+		"percentenergyboost15",
+		"percentenergyboost20",
+		"percentenergyboost25"
+	]
 }

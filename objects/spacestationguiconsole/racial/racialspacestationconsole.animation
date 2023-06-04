@@ -1,0 +1,137 @@
+{
+	"animatedParts" : {
+		"stateTypes" : {
+			"base" : {
+				"default" : "random",
+				"states" :
+				{
+					"random"		: { "frames" : 1 },
+					"military"		: { "frames" : 1 },
+					"scientific"	: { "frames" : 1 },
+					"trading"		: { "frames" : 1 },
+					"medical"		: { "frames" : 1 }
+				}
+			},
+
+			"baseFullbright" : {
+				"default" : "random",
+				"states" :
+				{
+					"random"		: { "frames" : 1 },
+					"military"		: { "frames" : 1 },
+					"scientific"	: { "frames" : 1 },
+					"trading"		: { "frames" : 1 },
+					"medical"		: { "frames" : 1 }
+				}
+			},
+
+			"race" : {
+				"default" : "empty",
+				"states" : {
+					"empty" : { "frames" : 1 },
+					"apex" : {
+						"frames" : 7,
+						"cycle" : 2,
+						"mode" : "loop"
+					},
+					"avian" : {
+						"frames" : 7,
+						"cycle" : 2,
+						"mode" : "loop"
+					},
+					"floran" : {
+						"frames" : 7,
+						"cycle" : 2,
+						"mode" : "loop"
+					},
+					"glitch" : {
+						"frames" : 7,
+						"cycle" : 2,
+						"mode" : "loop"
+					},
+					"human" : {
+						"frames" : 7,
+						"cycle" : 2,
+						"mode" : "loop"
+					},
+					"hylotl" : {
+						"frames" : 7,
+						"cycle" : 2,
+						"mode" : "loop"
+					},
+					"novakid" : {
+						"frames" : 7,
+						"cycle" : 2,
+						"mode" : "loop"
+					},
+					"cari" : {
+						"frames" : 7,
+						"cycle" : 2,
+						"mode" : "loop"
+					},
+					"generic" : {
+						"frames" : 2,
+						"cycle" : 2,
+						"mode" : "loop"
+					},
+					"sacotl" : {
+						"frames" : 7,
+						"cycle" : 2,
+						"mode" : "loop"
+					}
+				}
+			}
+		},
+
+		"parts" : {
+			"base" : {
+				"properties" : { "centered" : false },
+				"partStates" : {
+					"base" : {
+						"random"		: { "properties" : { "image" : "<partImage>:random" } },
+						"military"		: { "properties" : { "image" : "<partImage>:military" } },
+						"scientific"	: { "properties" : { "image" : "<partImage>:scientific" } },
+						"trading"		: { "properties" : { "image" : "<partImage>:trading" } },
+						"medical"		: { "properties" : { "image" : "<partImage>:medical" } }
+					}
+				}
+			},
+
+			"baseFullbright" : {
+				"properties" : {
+					"centered" : false,
+					"fullbright" : true,
+					"zLevel" : 2
+				},
+				"partStates" : {
+					"baseFullbright" : {
+						"random"		: { "properties" : { "image" : "<partImage>:random" } },
+						"military"		: { "properties" : { "image" : "<partImage>:military" } },
+						"scientific"	: { "properties" : { "image" : "<partImage>:scientific" } },
+						"trading"		: { "properties" : { "image" : "<partImage>:trading" } },
+						"medical"		: { "properties" : { "image" : "<partImage>:medical" } }
+					}
+				}
+			},
+
+			"race" : {
+				"properties" : { "centered" : false },
+				"partStates" : {
+					"race" : {
+						"empty"		: { "properties" : { "image" : "<partImage>:empty.<frame>" } }, // Yup, gonna give an error. Not a problem since it has to be empty.
+						"apex"		: { "properties" : { "image" : "<partImage>:apex.<frame>" } },
+						"avian"		: { "properties" : { "image" : "<partImage>:avian.<frame>" } },
+						"floran"	: { "properties" : { "image" : "<partImage>:floran.<frame>" } },
+						"glitch"	: { "properties" : { "image" : "<partImage>:glitch.<frame>" } },
+						"human"		: { "properties" : { "image" : "<partImage>:human.<frame>" } },
+						"hylotl"	: { "properties" : { "image" : "<partImage>:hylotl.<frame>" } },
+						"novakid"	: { "properties" : { "image" : "<partImage>:novakid.<frame>" } },
+						"cari"		: { "properties" : { "image" : "<partImage>:cari.<frame>" } },
+						"generic"	: { "properties" : { "image" : "<partImage>:generic.<frame>" } },
+						"sacotl"	: { "properties" : { "image" : "<partImage>:sacotl.<frame>" } }
+					}
+				}
+			}
+		}
+	}
+}

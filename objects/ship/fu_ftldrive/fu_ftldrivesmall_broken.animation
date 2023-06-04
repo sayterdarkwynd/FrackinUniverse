@@ -1,0 +1,135 @@
+{
+	"animatedParts": {
+		"stateTypes": {
+			"base": {
+				"default": "off",
+				"states": {
+					"off": {
+						"frames": 1,
+						"mode": "loop",
+                  "properties" : {
+                     "particleEmitters" : ["sparks", "smoke"]
+                  }
+					}
+				}
+			}
+		},
+
+		"parts": {
+			"base": {
+				"properties": {
+					"zLevel": 2,
+					"centered": false,
+					"fullbright": true
+				},
+				"partStates": {
+					"base": {
+						"off": {
+							"properties": {
+								"image": "<partImage>:off"
+							}
+						},
+						"powerup": {
+							"properties": {
+								"image": "<partImage>:powerup.<frame>"
+							}
+						},
+						"powered": {
+							"properties": {
+								"image": "<partImage>:powered.<frame>"
+							}
+						},
+						"powerdown": {
+							"properties": {
+								"image": "<partImage>:powerdown.<frame>"
+							}
+						}
+					}
+				}
+			},
+			"fullbright": {
+				"properties": {
+					"zLevel": 3,
+					"centered": false
+				},
+				"partStates": {
+					"base": {
+						"off": {
+							"properties": {
+								"image": "<partImage>:off"
+							}
+						},
+						"powerup": {
+							"properties": {
+								"image": "<partImage>:powerup.<frame>"
+							}
+						},
+						"powered": {
+							"properties": {
+								"image": "<partImage>:powered.<frame>"
+							}
+						},
+						"powerdown": {
+							"properties": {
+								"image": "<partImage>:powerdown.<frame>"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+
+	"particleEmitters": {
+		"sparks": {
+			"emissionRate": 5.50,
+			"emissionRateVariance": 5.50,
+			"active": true,
+			"particles": [{
+				"particle": {
+					"type": "ember",
+					"position": [1.0, 4.25],
+					"size": 1.0,
+					"color": [253, 160, 57, 255],
+					"fade": 0.9,
+					"initialVelocity": [-2.0, -4.0],
+					"finalVelocity": [-1.0, -1.0],
+					"approach": [10, 6],
+					"timeToLive": 0.3,
+					"layer": "middle",
+               "fullbright": true,
+					"variance": {
+						"initialVelocity": [2.0, 4.0],
+						"color": [253, 218, 19, 255],
+						"position": [0.25, 0.25]
+					}
+				}
+			}]
+		},
+      "smoke": {
+			"emissionRate": 2.0,
+			"emissionRateVariance": 2.0,
+			"active": true,
+			"particles": [{
+				"particle": {
+					"type" : "animated",
+                "animation" : "/animations/energy/energy.animation",
+                "position" : [6.5, 3],
+                "initialVelocity": [1.0, 1.0],
+                "finalVelocity" : [0, 0],
+                "approach" : [0, 0],
+                "destructionAction" : "shrink",
+                "destructionTime" : 2.4,
+                "fade" : 1,
+                "size" : 1,
+                "layer" : "front",
+                "timeToLive" : 2.5,
+                "variance" : {
+                  "initialVelocity": [0.5, 0.5],
+						"position": [0.25, 0.25]
+               }
+            }
+			}]
+		}
+	}
+}

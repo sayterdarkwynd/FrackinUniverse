@@ -2,21 +2,33 @@
   "projectileName" : "icedragon3",
   "image" : "icedragon3.png",
   "animationCycle" : 0.5,
-  "timeToLive" : 2,
+  "timeToLive" : 4,
   "frameNumber" : 3,
   "power" : 5,
-  "speed" : 50,
+  "speed" : 30,
   "physics" : "laser",
   "flippable" : true,
   "lightColor" : [40, 62, 178],
+  "damagePoly" : [ [-28, 0], [0, 12], [16, 16], [28, 0], [-16, -16], [0, -12] ],
   "damageKind" : "ice",
   "statusEffects" : [ "freeze" ],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/npc/monsters/dino1.ogg","/sfx/npc/monsters/dino2.ogg","/sfx/npc/monsters/dino3.ogg","/sfx/npc/monsters/dino4.ogg" ]
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/iceboom/iceboom.config"
+    }
+  ],
   "periodicActions" : [
     {
-      "time" : 0.35,
+      "time" : 0.1,
       "loop" : true,
       "action" : "projectile",
       "type" : "icecloudburst",
+      "inheritDamageFactor" : 0.1,
       "fuzzAngle" : 360
    }
   ],

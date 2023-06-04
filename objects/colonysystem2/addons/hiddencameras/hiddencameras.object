@@ -1,0 +1,75 @@
+{
+  "objectName" : "c_hiddencameras",
+  "rarity" : "Common",
+  "category" : "storage",
+  "price" : 500,
+  "objectType" : "container",
+  "description" : "Generate research by spying on your tenants. Makes your tenants paranoid. \n^red;-5 Happiness^reset;",
+  "shortdescription" : "Hidden Camera Network",
+  "race" : "generic",
+  "printable" : false,
+
+  "inventoryIcon" : "hiddencamerasicon.png",
+
+  "orientations" : [
+		{
+			"dualImage" : "hiddencameras.png:default",
+			"imagePosition" : [-16, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
+		}
+	],
+	"openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
+    "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
+
+	"scripts" : [ "/scripts/fupower.lua","/objects/colonysystem2/addons/hiddencameras/hiddencameras.lua"],
+    "scriptDelta" : 60,
+
+
+	"inputNodes" : [ [0, 2] ],
+	"outputNodes" : [ [1, 2] ],
+	"powertype" : "input",
+	"isn_requiredPower" : 0,
+	"isn_liquidCollector" : false,
+
+
+
+	"airWellRange":256,
+	"productionTime":1500,
+	"slotCount" : 1,
+    "uiConfig" : "/interface/chests/chest<slots>.config",
+    "frameCooldown" : 67,
+    "autoCloseCooldown" : 3600,
+
+	"happiness":-5,
+
+    // Named weight categories (changing one will change all of the same weight)
+    // Numbered weights can be used instead of names for customization purposes
+
+	//this doesn't do anything any more but I'm leaving it here anyways in case something breaks without it.
+   "namedWeights" : {
+
+        "common" : 100,
+        "uncommon" : 0,
+        "rare" : 0
+    },
+
+	"rarityInfoLevel":3,
+	"overrideScanTooltip":true,
+
+   "outputs" : {
+
+        "default" : [
+            { "weight" : "common",   "items" : [ "fuscienceresource" ] },
+            { "weight" : "uncommon", "items" : [ "fuscienceresource" ] },
+            { "weight" : "rare",     "items" : [ "fuscienceresource" ] }
+        ]
+
+	}
+
+
+
+
+
+}

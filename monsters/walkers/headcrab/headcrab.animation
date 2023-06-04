@@ -1,0 +1,270 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "particleEmittersOn" : [ "blood" ],
+            "frames" : 4,
+            "cycle" : 0.8,
+            "mode" : "loop"
+          },
+          "jump" : {
+            "frames" : 4,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "blood" ]
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "", "/sfx/npc/monsters/oogler_hop.ogg", "", "" ]
+            }
+          },
+          "fall" : {
+            "frames" : 4,
+            "mode" : "loop"
+          },
+          "hurt" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "loop"
+          },
+          "walk" : {
+            "frames" : 8,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOn" : [ "blood" ]
+            }
+          },
+          "run" : {
+            "frames" : 8,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOn" : [ "blood" ]
+            }
+          },
+          "melee" : {
+            "frames" : 4,
+            "mode" : "end",
+            "properties" : {
+              "particleEmittersOff" : [ "blood" ]
+            }
+          },
+          "firewindup" : {
+            "frames" : 4,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "fire",
+            "properties" : {
+              "particleEmittersOff" : [ "blood" ]
+            }
+          },
+          "fire" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "idle"
+          },
+          "chargewindup" : {
+            "frames" : 8,
+            "cycle" : 0.375,
+            "mode" : "transition",
+            "transition" : "charge",
+            "properties" : {
+              "particleEmittersOn" : [ "blood" ]
+            }
+          },
+          "charge" : {
+            "frames" : 8,
+            "cycle" : 0.275,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/monsters/oogler_charge.ogg",
+              "persistentSoundStopTime" : 1
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "/sfx/npc/monsters/oogler_step.ogg", "", "", "", "" , ""]
+            }
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "offset" : [0.625, 0.75]
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "run" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:firewindup.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "particleEmitters" : {
+    "blood" : {
+      "emissionRate" : 0.5,
+      "offsetRegion" : [ 0.3, 1, 0.3, 1 ],
+      "particles" : [
+        { "particle" : "waterdrip" }
+      ]
+    },
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    },
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
+    "wallCrash" : [ "/sfx/npc/monsters/peblit_drop1.ogg" ],
+    "fire" : [ "/sfx/projectiles/bloodvomit1.ogg", "/sfx/projectiles/bloodvomit2.ogg", "/sfx/projectiles/bloodvomit3.ogg", "/sfx/projectiles/bloodvomit4.ogg", "/sfx/projectiles/bloodvomit5.ogg", "/sfx/projectiles/bloodvomit6.ogg", "/sfx/projectiles/bloodvomit7.ogg" ]
+  }
+}

@@ -3,14 +3,15 @@
   "price" : 500,
   "inventoryIcon" : "ff_bubblegunicon.png",
     "maxStack" : 1,
-    "rarity" : "rare",
-  "description" : "A bubble gun! Of course, the bubbles are acid...so...yea.",
+    "rarity" : "common",
+  "description" : "It looks like a harmless bubble gun. It isn't.
+^yellow;Inflicts poison^reset;",
   "shortdescription" : "Bubblegun",
 
-  "level" : 3,
-  "category" : "uniqueWeapon",
-  "itemTags" : ["weapon","ranged","tool"],
-    "tooltipKind" : "gun",
+  "level" : 2,
+  "category" : "pistol",
+  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon"],
+    "tooltipKind" : "gun2",
   "twoHanded" : false,
   "classMultiplier" : 0.007,
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -36,7 +37,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "poison",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -47,9 +48,9 @@
     "fireType" : "auto",
     "inaccuracy" : 0.05,
     "projectileCount" : 1,
-    "projectileType" : "friendlybubble",
+    "projectileType" : "unfriendlybubble2",
     "projectileParameters" : {
-      "speed" : 34
+      "speed" : 35
     },
     "stances" : {
       "idle" : {
@@ -80,6 +81,7 @@
       }
     }
   },
-
+  "critChance" : 1,
+  "critBonus" : 2,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

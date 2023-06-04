@@ -1,0 +1,58 @@
+{
+  "itemName" : "cuteshortsword",
+  "level" : 4,
+  "price" : 400,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Power flows through this adorably sharp blade.
+^yellow;Counts as 'energy' for set bonuses^reset;",
+  "shortdescription" : "Prismatic Shortsword",
+  "tooltipKind" : "sword2",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword","energy","upgradeableWeapon", "cute","cosmic"],
+
+  "inventoryIcon" : "cuteshortsword.png",
+
+  "animation" : "/items/active/weapons/melee/shortsword/comboglowshortsword.animation",
+  "animationParts" : {
+    "blade" : "cuteshortsword.png",
+    "bladefullbright" : "cuteshortswordfullbright.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "swoosh" : {
+      "fire" : { "properties" : { "image" : "/items/active/weapons/melee/shortsword/swoosh/cuteswoosh.png:<frame>" }},
+      "fire2" : { "properties" : { "image" : "/items/active/weapons/melee/shortsword/swoosh2/cuteswoosh.png:<frame>" }}
+    }}}}},
+    "particleEmitters" : {
+      "cosmicswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "emissionRate" : 50,
+        "particles" : [
+          { "particle" : "cuteswoosh1"},
+          { "particle" : "cuteswoosh2"},
+          { "particle" : "cuteswoosh3"}
+        ]
+      }
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.625,
+    "baseDps" : 6.4,
+    "damageConfig" : {
+      "damageSourceKind" : "cosmicshortsword"
+    }
+  },
+
+  "critChance" : 4,
+  "critBonus" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

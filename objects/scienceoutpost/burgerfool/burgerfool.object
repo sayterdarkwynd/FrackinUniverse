@@ -1,0 +1,60 @@
+{
+  "objectName" : "burgerfool",
+  "colonyTags" : [ "crafting", "food" ],
+  "rarity" : "rare",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/fuburgerfool.config",
+    "filter" : [ "fuburgerfool" ]
+  },
+  "printable" : false,
+  "description" : "Overpriced, crappy burgers, fries and expired milk with bees.",
+  "shortdescription" : "^orange;Burger Fool^reset;",
+  "category" : "crafting",
+  "price" : 0,
+  "inventoryIcon" : "burgerfool.png",
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "burgerfool.png:<color>", "fullbright" : true}, { "image" : "burgerfoollit.png:<color>" } ],
+      "imagePosition" : [0, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "frames" : 1,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "burgerfool.png:<color>", "fullbright" : true}, { "image" : "burgerfoollit.png:<color>" } ],
+      "imagePosition" : [0, 0],
+
+      "direction" : "right",
+
+      "frames" : 1,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/aquarium1.ogg",
+
+  "scripts" : [ "/objects/outpost/repairo/repairo.lua" ],
+  "scriptDelta" : 20,
+  "chatRadius" : 10,
+  "chatCooldown" : 10,
+  "chatOptions" : [
+    "...",
+    ".. ..... ....",
+    ".",
+    ".. ...... ... . . ..... ... .. . ......",
+    ".. .. . .... .. . .. .. ..... . .... ............ ..",
+    "... .",
+    ".. ... .... .. . . . ... ."
+  ]
+}

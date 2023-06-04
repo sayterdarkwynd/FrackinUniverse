@@ -1,0 +1,66 @@
+{
+  "objectName" : "xithricitedesklamp",
+  "colonyTags" : ["xithricite", "light"],
+  "rarity" : "legendary",
+  "category" : "light",
+  "lightColor" : [120, 20, 180],
+  "price" : 300,
+  "description" : "A desk lamp made from xithricite.",
+  "shortdescription" : "Xithricite Desk Lamp",
+  "race" : "generic",
+
+  "apexDescription" : "A lamp seemingly made from star matter.",
+  "avianDescription" : "I feel like I'm looking into the night sky.",
+  "floranDescription" : "Ssstarry light!",
+  "glitchDescription" : "Thoughtful. This lamp seems to be made from the stars themselves.",
+  "humanDescription" : "This lamp looks like it's made from stars!",
+  "hylotlDescription" : "This lamp makes me think fondly of the night sky.",
+  "novakidDescription" : "This lamp is mighty pretty.",
+
+  "inventoryIcon" : "xithricitedesklampicon.png",
+  "orientations" : [
+    {
+      "image" : "xithricitedesklamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "xithricitedesklamp.png",
+        "fg" : "xithricitedesklamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "xithricitedesklamp.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationParts" : {
+        "bg" : "xithricitedesklamp.png",
+        "fg" : "xithricitedesklamplit.png"
+      },
+      "animationPosition" : [-8, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "xithricitedesklamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : true,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

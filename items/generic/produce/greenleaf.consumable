@@ -1,19 +1,27 @@
 {
-  "itemName" : "greenleaf",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "greenleaf.png",
-  "description" : "A potent energy source.",
-  "shortdescription" : "Greenleaf Herb",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 2,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 20.0,
-  "effects" : [ [
-      "energyregenfu40"
-    ] ]
+	"itemName": "greenleaf",
+	"inventoryIcon": "greenleaf.png",
+	"category": "food",
+	"rarity": "uncommon",
+	"price": 10,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+20% E. Regen & -10% E. Regen Block^reset;: 1m",
+	"shortdescription": "Greenleaf Herb",
+
+	"effects": [
+		[{
+			"effect": "energyregenfu40",
+			"duration": 60
+		}]
+	],
+	"blockingEffects": [
+		"energyregenfu50",
+		"energyregenfu10",
+		"energyregenfu60",
+		"energyregenfu25",
+		"energyregenfu35",
+		"energyregenfu20",
+		"energyregenfu05"
+	]
 }

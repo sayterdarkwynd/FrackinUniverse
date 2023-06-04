@@ -1,0 +1,46 @@
+{
+  "objectName" : "effigiumdesklamp",
+  "colonyTags" : ["effigium", "light"],
+  "rarity" : "legendary",
+  "category" : "light",
+  "lightColor" : [165, 56, 255],
+  "price" : 160,
+  "description" : "A purple desk lamp.",
+  "shortdescription" : "Effigium Desk Lamp",
+  "race" : "generic",
+
+  "apexDescription" : "This light doesn't seem practical.",
+  "avianDescription" : "A soft light.",
+  "floranDescription" : "Light is ssspooky, but sssoft on Floran eyesss.",
+  "glitchDescription" : "Impressed. This lighting fixture generates more light than heat.",
+  "humanDescription" : "A soft, purple light.",
+  "hylotlDescription" : "A soft, purple light. It creates a strangely haunting atmosphere.",
+  "novakidDescription" : "That's mighty spooky.",
+
+  "inventoryIcon" : "effigiumdesklampicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "effigiumdesklamp.png:<color>.<frame>", "fullbright" : true }, { "image" : "effigiumdesklamplit.png:<color>.<frame>" } ],
+      "imagePosition" : [0, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttoggle.animation",
+  "animationParts" : {
+    "light" : "effigiumdesklamp.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

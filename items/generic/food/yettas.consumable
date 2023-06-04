@@ -1,0 +1,24 @@
+{
+  "itemName" : "yettas",
+  "rarity" : "legendary",
+  "price" : 1622,
+  "category" : "preparedFood",
+  "inventoryIcon" : "yettas.png",
+  "description" : "Thought to exist only in legend, until the recipe was found after 4000 years.\n^cyan;+^white;30% ^pink;Radiation ^cyan;Res ^gray;(^white;5m^gray;)\n^red;-^white;5% ^red;HP ^gray;(^white;220s^gray;)\n^blue;+^white;3 ^blue;Madness^reset;",
+  "shortdescription" : "Yettas",
+  "foodValue" : 70,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 12.0,
+  "effects" : [ [
+    "furadioactiveresistance3",
+    "madnessgain3",
+    {
+      "effect" : "negativehealth5",
+      "duration" : 220
+    }
+  ] ],
+  "blockingEffects" : ["negativehealth5"]
+}

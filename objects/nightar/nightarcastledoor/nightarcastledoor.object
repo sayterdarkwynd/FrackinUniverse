@@ -1,0 +1,59 @@
+{
+  "objectName" : "nightarcastledoor",
+  "colonyTags" : ["nightar","door"],
+  "rarity" : "legendary",
+
+  "category" : "door",
+  "price" : 125,
+  "description" : "A strong and secure door.",
+  "shortdescription" : "Nightar Castle Door",
+  "race" : "glitch",
+
+  "apexDescription" : "A strong and secure door, made for castles.",
+  "avianDescription" : "A strong and secure door, made for castles.",
+  "floranDescription" : "Door sso sstrong.",
+  "glitchDescription" : "Proud. This door is reinforced to make it more secure.",
+  "humanDescription" : "A strong and secure door, made for castles.",
+  "hylotlDescription" : "The perfect door for a defensive structure.",
+  "novakidDescription" : "A solid, sturdy door.",
+
+  "inventoryIcon" : "nightarcastledooricon.png",
+
+  "tooltipKind" : "door",
+  "largeImage" : "nightarcastledoor.png:right",
+
+  "orientations" : [
+    {
+      "dualImage" : "nightarcastledoor.png:default",
+      "imagePosition" : [-16, 0],
+      "renderLayer" : "Object+5",
+
+      "spaces" : [ [0, 0], [0, 1], [0, 2], [0, 3], [0, 4] ],
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/woodendoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/woodendoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "nightarcastledoor.png"
+  },
+  "animationPosition" : [-16, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

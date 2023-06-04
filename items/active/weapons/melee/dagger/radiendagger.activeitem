@@ -1,0 +1,54 @@
+{
+  "itemName" : "radiendagger",
+  "level" : 2,
+  "price" : 4,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "A X'ian weapon for close combat,",
+  "shortdescription" : "X'ian Dagger",
+  "tooltipKind" : "sword2",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","dagger","radien","upgradeableWeapon"],
+
+  "inventoryIcon" : "radiendagger.png",
+
+  "animation" : "daggercomboglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "radiendagger.png",
+    "bladefullbright" : "radiendaggerfullbright.png"
+  },
+
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "swoosh" : { "properties" : {"offset" : [1, 2]}}
+      }
+    }
+  },
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "radioactive",
+
+  "aimOffset" : 0.0,
+  "primaryAbilityType" : "daggercombo",
+  "primaryAbility" : {
+    "fireTime" : 0.42,
+    "baseDps" : 9.0,
+    "damageConfig" : {
+      "damageSourceKind" : "radioactive",
+      "statusEffects" : [ ],
+      "knockbackMode" : "aim",
+      "knockback" : 15,
+      "timeoutGroup" : "primary"
+    }
+  },
+
+  "critChance" : 1,
+  "critBonus" : 3,
+  "stunChance" : 50,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

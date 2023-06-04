@@ -1,0 +1,66 @@
+{
+	"itemName" : "magnorbxithricite",
+	"level" : 6,
+	"price" : 800,
+	"maxStack" : 1,
+	"rarity" : "legendary",
+	"description" : "Erase them from existence with cosmic power.",
+	"shortdescription" : "Cosmic Magnorb",
+	"tooltipKind" : "magnorb",
+	"category" : "Magnorb",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","magnorb","xithricite", "upgradeableWeapon"],
+
+	"inventoryIcon" : "iconxithricite.png",
+	"animation" : "magnorbxithricite.animation",
+	"animationParts" : {
+		"glove" : "glovexithricite.png",
+		"orb1" : "orbxithricite.png",
+		"orb2" : "orbxithricite.png",
+		"orb3" : "orbxithricite.png"
+	},
+	"animationCustom" : { },
+
+	"scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
+
+	"orbitRate" : 0.15,
+
+	"projectileType" : "magnorbxithricite",
+	"projectileParameters" : {
+		"power" : 3.6,
+		"knockback" : 10,
+
+		"returnOnHit" : true,
+		"ignoreTerrain" : false,
+		"controlForce" : 50,
+		"pickupDistance" : 2.5,
+		"snapDistance" : 2.0
+	},
+
+	"count" : 3,
+	"shieldKnockback" : 15,
+	"shieldEnergyCost" : 40,
+	"shieldHealth" : 60,
+	"shieldPower" : "Cosmic Absorbtion",
+	"shieldPersistentGroup":"magnorbCosmic",
+	"shieldPersistentEffects":[{"stat":"aetherImmunity","amount":1},{"stat":"cosmicResistance","amount":0.25}],
+	//"shieldEphemeralEffects":[""],//doesn't have any
+	"critChance" : 2,
+	"critBonus" : 2,
+
+	"stances" : {
+		"idle" : {
+			"armRotation" : 10,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		},
+		"shield" : {
+			"armRotation" : 0,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		}
+	},
+	"builder" : "/items/buildscripts/fubuildmagnorb.lua"
+}

@@ -1,0 +1,44 @@
+{
+  "itemName" : "skathtier1hammer",
+  "price" : 100,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "This hammer strikes like the waves of a tsunami.",
+  "shortdescription" : "Rustic Skath Hammer",
+  "tooltipKind" : "sword2",
+  "category" : "hammer",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","hammer","upgradeableWeapon"],
+
+  "inventoryIcon" : "skathtier1hammer.png",
+
+  "animation" : "/items/active/weapons/melee/hammer/hammer.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "skathtier1hammer.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 1.1,
+    "baseDps" : 16
+  },
+
+  "palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
+
+  "altAbilityType" : "uppercut",
+  "critChance" : 1,
+  "critBonus" : 15,
+  "stunChance" : 7,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

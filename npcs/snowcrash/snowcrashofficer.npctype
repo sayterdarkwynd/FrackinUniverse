@@ -1,0 +1,65 @@
+{
+  "type" : "snowcrashofficer",
+  "baseType" : "hostilefu",
+
+  "levelVariance" : [0, 0],
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : {
+        "default" : {
+          "default" : [
+            "You are not allowed here!",
+			"I love you Winter-Chan!",
+			"You made a big mistake!",
+            "Halt! You are trespassing on private property!"
+          ]
+        },
+        "apex" : {
+          "default" : [
+            "You die today!",
+			"Your struggle is futile.",
+			"You sure have a lot of gall coming here!",
+			"There's a thought reassignment room waiting for you!",
+			"I love you Winter-Chan!",
+            "You made a big mistake coming here!"
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "captainshead", "parameters" : { "colorIndex" : 1 } } ],
+            "chest" : [ { "name" : "apexofficerjacket" } ],
+            "legs" : [ { "name" : "apexofficerpants" } ],
+            "primary" : [
+              "rarepistol"
+            ]
+
+          }
+         ]
+    ]
+	]
+  },
+
+  "statusControllerSettings" : {
+
+    "stats" : {
+      "powerMultiplier" : {
+        "baseValue" : 1.3
+      },
+	  "maxHealth" : {
+        "baseValue" : 100.0
+      },
+	  "maxEnergy" : {
+        "baseValue" : 400.0
+      }
+    }
+  }
+}

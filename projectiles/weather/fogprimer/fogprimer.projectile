@@ -1,0 +1,39 @@
+{
+  "projectileName" : "fogprimer",
+  "image" : "fogprimer.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "renderLayer" : "Player+1",
+  "actionOnReap" : [
+    {
+      "action" : "loop",
+      "count" : 4,
+      "body" : [
+        {
+          "action" : "option",
+          "options" : [
+            {
+              "action" : "particle",
+              "specification" : {
+                "type" : "animated",
+                "animation" : "/animations/fog/fog.animation",
+                "size" : 1.0,
+                "timeToLive" : 20.0,
+                "variance" : {
+                  "position" : [3, 0],
+                  "rotation" : 180
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "onlyHitTerrain" : true,
+  "power" : 0.0,
+  "damageKind" : "default"
+}

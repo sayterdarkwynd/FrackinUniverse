@@ -1,0 +1,33 @@
+{
+	"id" : "create_clothingfabricator",
+	"prerequisites" : [ "create_matterassembler" ],
+	"title" : "Why do they hate Kevin?",
+	"text" : "I need to remind someone they aren't young and attractive anymore. Can you make me a ^orange;Booster Croptop^reset; that I can mail them? You can make one on a ^green;Sewing Wheel^reset;! I'll pay you.",
+	"completionText" : "Now for phase two! She'll never see it coming! Thanks for the help. Take this awesome briefcase. Don't open it here, or everyone will get ^green;super jealous^reset; and try to steal it. Trust me.",
+	"moneyRange" : [0, 0],
+	"rewards" : [ [ [ "madness_codex-codex", 1 ],[ "crewcontract_fullama", 1 ], [ "fu_beebriefcasekevin", 1 ] ] ],
+	"speaker" : "questGiver",
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
+
+		"requireTurnIn" : true,
+
+		"turnInDescription" : "Bring the ^orange;Booster Croptop^reset; to ^red;Kevin^reset; at the ^orange;Science Outpost^reset;",
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "boosterchest",
+				"count" : 1,
+				"consume" : true
+			}
+		]
+	}
+}

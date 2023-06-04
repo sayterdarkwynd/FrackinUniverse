@@ -1,0 +1,79 @@
+{
+  "projectileName" : "flamewandblast",
+  "physics" : "default",
+  "timeToLive" : 1,
+  "image" : "flamewandblast.png",
+  "animationCycle" : 0.2,
+  "lightColor" : [80, 20, 10],
+  "frameNumber" : 1,
+  "speed" : 0,
+  "power" : 30,
+  "damageKind" : "fire",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "burning" ],
+  "fullbright" : true,
+  "emitters" : ["fireflames"],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/fireball_poof.ogg"
+      ]
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.33,
+      "angleAdjust" : 35
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.33,
+      "angleAdjust" : -35
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.33,
+      "angleAdjust" : 1
+    },
+    {
+      "action" : "loop",
+      "count" : 5,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "firesmoke",
+          "time" : 0.1,
+          "repeat" : true
+        },
+        {
+          "action" : "particle",
+          "specification" : "firesmoke",
+          "time" : 0.1,
+          "repeat" : true
+        }
+      ]
+    }
+  ],
+
+  "bounces" : 5,
+
+  "scripts" : [ "/projectiles/activeitems/staff/flamewandblast/flamewandblast.lua" ],
+
+  "triggerSpeed" : 80,
+
+  "controlRotation" : {
+    "maxSpeed" : 26,
+    "controlForce" : 3,
+    "friction" : 7
+  }
+}

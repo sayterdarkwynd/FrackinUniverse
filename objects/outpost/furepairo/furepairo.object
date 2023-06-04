@@ -1,0 +1,52 @@
+{
+  "objectName" : "furepairo",
+  "colonyTags" : ["outpost"],
+  "rarity" : "Legendary",
+  "category" : "other",
+  "printable" : false,
+  "subtitle" : "Vehicle repairs",
+  "description" : "It's Roger Repairo, who repairs lost or broken vehicles for pixels.",
+  "shortdescription" : "Roger Repairo",
+  "race" : "generic",
+
+  "statusEffects" : [ ],
+  "price" : 4000,
+
+  "apexDescription" : "This mechanical man is an expert at fixing things.",
+  "avianDescription" : "This mechanical merchant will skilfully fix broken vehicles.",
+  "floranDescription" : "Shiny metalman fixesss things.",
+  "glitchDescription" : "Relieved. This mechanical man can expertly fix broken vehicles.",
+  "humanDescription" : "Good old Roger Repairo. He's got a cheerful face, and he fixes things like an expert!",
+  "hylotlDescription" : "This mechanical merchant is disconcertingly cheerful, but undoubtedly effective.",
+  "novakidDescription" : "He sure does look happy to be fixin' things all day.",
+
+  "inventoryIcon" : "furepairoicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "furepairo.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "frames" : 8,
+      "animationCycle" : 2.2,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/interface/scripted/fuvehiclerepair/fuvehiclerepairgui.config",
+
+  "scripts" : [ "/objects/outpost/furepairo/furepairo.lua" ],
+  "scriptDelta" : 20,
+
+  "chipRepairFactor" : 0.003,
+
+  "chatRadius" : 10,
+  "chatCooldown" : 15,
+  "chatOptions" : [
+    "Get your fixer-upper fixed up here - a few pixels and you're ready to ride!",
+    "Can't remember where you parked your hoverbike? Just reconstitute it from raw pixels!",
+    "With a few pixels, we can polish out those unsightly nicks and dents in a jiffy!",
+    "I taught my brother everything he knows, you know!"
+  ]
+}

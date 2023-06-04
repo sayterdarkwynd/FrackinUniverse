@@ -1,0 +1,82 @@
+{
+  "projectileName" : "astralteargun",
+  "image" : "astraltear2.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "timeToLive" : 5,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [12, 111, 12],
+  "pointLight" : true,
+  "flippable" : true,
+  "piercing" : true,
+  "statusEffects" : [ "insanitynew" ],
+  "emitters" : [ ],
+  "power" : 5.0,
+  "speed" : 0,
+  "knockback" : 20,
+  "movementSettings" : {
+    "collisionEnabled" : false
+  },
+  "damageKind" : "shadow",
+  "fullbright" : true,
+  "damagePoly" : [[-16, 24], [8, 16], [16, -24], [-8, -16]],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "astraltearstop2",
+      "inheritDamageFactor" : 1,
+      "inheritSpeedFactor" : 1
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/npc/monsters/orbide_creepy_loop.ogg" ]
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.3,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "magnorbwraith3",
+      "inheritDamageFactor" : 0.6,
+      "fuzzAngle" : 360
+   },
+    {
+      "time" : 0.2,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "shoggothbeamgun",
+      "inheritDamageFactor" : 0.6,
+      "fuzzAngle" : 360
+   },
+    {
+      "time" : 0.08,
+      "repeat" : true,
+      "action" : "explosion",
+      "foregroundRadius" : 3,
+      "backgroundRadius" : 2,
+      "explosiveDamageAmount" : 0.4,
+      "delaySteps" : 2
+    },
+    {
+      "action" : "particle",
+      "specification" : "poisonsicknessdust",
+      "time" : 0.1,
+      "repeat" : true
+    },
+    {
+      "action" : "particle",
+      "specification" : "madnessstaff",
+      "time" : 0.1,
+      "repeat" : true
+    },
+    {
+      "action" : "particle",
+      "specification" : "plasmafireflames",
+      "time" : 0.1,
+      "repeat" : true
+    }
+  ],
+
+  "persistentAudio" : "/sfx/projectiles/iceorb_loop.ogg"
+}

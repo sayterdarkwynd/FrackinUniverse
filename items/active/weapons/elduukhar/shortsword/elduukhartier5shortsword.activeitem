@@ -1,0 +1,41 @@
+{
+  "itemName" : "elduukhartier5shortsword",
+  "level" : 4,
+  "price" : 540,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "An elegantblade, more compact than its predecessor.",
+  "shortdescription" : "Fused Thanatite Shortsword",
+  "tooltipKind" : "sword2",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword","crystal", "upgradeableWeapon"],
+
+  "inventoryIcon" : "elduukhartier5shortsword.png",
+
+  "animation" : "/items/active/weapons/melee/shortsword/comboshortsword.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "elduukhartier5shortsword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "fire",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.625,
+    "baseDps" : 7.5,
+    "damageConfig" : {
+      "damageSourceKind" : "fire"
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 7,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}
