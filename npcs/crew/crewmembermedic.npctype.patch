@@ -1,7 +1,16 @@
 [
-  {
-    "op": "replace",
-    "path": "/scriptConfig/crew/role/benefits/0/value",
-    "value": "1"
-  }
+	[{
+		"op": "replace",
+		"path": "/scriptConfig/crew/role/benefits/0/value",
+		"value": "1"
+	}],
+	[{
+		"op": "add",
+		"path": "/scriptConfig/crew/role/benefits/-",
+		"value": {
+			"type": "EphemeralEffect",
+			"effect": "healingbonuscrew1",
+			"duration": 300
+		}
+	}]
 ]

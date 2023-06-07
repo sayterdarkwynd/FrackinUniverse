@@ -11,5 +11,32 @@
 		"op": "replace",
 		"path": "/scriptConfig/dialog/crewmember/roleDescription/default/default/0",
 		"value": "I'll keep clearing out the carborator while I'm here. Fuel costs reduced by 10%!"
+	}],
+	[{
+		"op": "add",
+		"path": "/scriptConfig/crew/role/benefits/-",
+		"value": {
+			"type": "EphemeralEffect",
+			"effect": "fuenergytickupcrew1",
+			"duration": 300
+		}
+	}],
+	[{
+		"op": "add",
+		"path": "/scriptConfig/dialog/crewmember/combatBenefit/default/-",
+		"value": {
+			"default": [
+				"Coffee time!"
+			]
+		}
+	}],
+	[{
+		"op": "add",
+		"path": "/scriptConfig/dialog/crewmember/fieldBenefit/default/-",
+		"value": {
+			"default": [
+				"Coffee time!"
+			]
+		}
 	}]
 ]
