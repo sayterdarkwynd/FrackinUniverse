@@ -84,7 +84,7 @@ function apply(input)
 		output:setInstanceValue("ammoFireRate",inputAmmoRate or config.getParameter("ammoFireRate") or outputAmmoRate)
 
 		output:setInstanceValue("ammoAmount",inputAmmo or config.getParameter("ammoMax") or outputMax) --probably won't work right
-	elseif not outputMagazine == not not inputMagazine then --hopefuly does xor of "if either of these exists"
+	elseif (not outputMagazine) == (not not inputMagazine) then --hopefuly does xor of "if either of these exists"
 		return nil
 	else
 

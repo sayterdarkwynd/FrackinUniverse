@@ -31,7 +31,7 @@ function update(dt)
 		animator.setParticleEmitterActive("healing", true)
 	else
 		effect.setStatModifierGroup(self.statHandler,{})
-		if (self.frEnabled or not self.species == "radien") and ((self.tickTimer or 0) <= 0) then
+		if (self.frEnabled or (not (self.species == "radien"))) and ((self.tickTimer or 0) <= 0) then
 			applyPenalty()
 			animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
 			animator.setParticleEmitterActive("drips", true)
