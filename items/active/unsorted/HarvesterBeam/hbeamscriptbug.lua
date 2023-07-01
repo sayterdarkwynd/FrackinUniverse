@@ -36,12 +36,17 @@ function init(args)
 end
 
 function update(dt)
-	if silenceTime > 4 then
+	if (silenceTime) and (silenceTime > 4) then
 		kill()
 	else
 		silenceTime = silenceTime + dt
 		monster.setDamageBar("None")
 	end
+	--[[if (takeCooldown and takeCooldown<=0) then
+		takeCooldown=nil
+	elseif takeCooldown
+		takeCooldown=takeCooldown-dt
+	end]]
 end
 
 function keepAlive()
@@ -49,9 +54,11 @@ function keepAlive()
 end
 
 function takeItems(pos, radius, playerID, plantName)
+	--if takeCooldown then return end
 	local itemList = world.getProperty("HarvesterBeamgunItemDropList") or {}
 	local replantTree = false
 	local foundItemDrops = world.itemDropQuery(pos, radius, {order = "nearest"})
+	--sb.logInfo("foundItemDrops %s",foundItemDrops)
 	for _,drop in ipairs(foundItemDrops) do
 		local data = nil
 		if world.entityName(drop) ~= "sapling" or not replantTree then
@@ -59,7 +66,7 @@ function takeItems(pos, radius, playerID, plantName)
 		end
 		if data and itemList[drop] == nil then
 			local cd = vec2.mag(world.distance(world.entityPosition(drop), world.entityPosition(playerID)))/33
-			if data.name == "sapling" and not plantName then
+			if (not (world.objectAt(pos))) and (data.name == "sapling" and not plantName) then
 				replantTree = data.parameters
 				if data.count > 1 then
 					data.count = data.count - 1
@@ -73,18 +80,21 @@ function takeItems(pos, radius, playerID, plantName)
 	--sb.logInfo("Bug find: %s", itemList)
 	local dirInt = 1
 	if math.random() <= 0.5 then dirInt = -1 end
-	if replantTree then
+	if (not (world.objectAt(pos))) and replantTree then
 		world.placeObject("sapling", pos, dirInt, replantTree)
 	end
 
 	if plantName then
 		local seedConfig = root.itemConfig(plantName)
-		if seedConfig and (seedConfig.hasObjectItem == nil or seedConfig.hasObjectItem == true) then
+		if (not (world.objectAt(pos))) and (seedConfig and (seedConfig.hasObjectItem == nil or seedConfig.hasObjectItem == true)) then
 			world.placeObject(plantName, pos, dirInt)
 		end
 	end
 
 	world.setProperty("HarvesterBeamgunItemDropList", itemList)
+	--[[if (type(itemList)=="table") and (util.tableSize(itemList)>0) then
+		takeCooldown=1
+	end]]
 end
 
 function kill()

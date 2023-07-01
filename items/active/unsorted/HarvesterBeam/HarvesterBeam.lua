@@ -123,7 +123,9 @@ function beamgunUpdate(dt)
 		end
 	end
 
-	if harvestBlacklist ~= {} then
+	if (type(harvestBlacklist)=="table") and (util.tableSize(harvestBlacklist)>0) then
+		--sb.logInfo("harvestBlacklist %s",harvestBlacklist)
+
 		for i,j in pairs(harvestBlacklist) do
 			if j[1] < 5 then
 				harvestBlacklist[i][1] = j[1] + dt
@@ -131,7 +133,9 @@ function beamgunUpdate(dt)
 					lookForDrops(j[2],j[3],4)
 					harvestBlacklist[i][4] = false
 					--sb.logInfo("Place: %s, %s, %s, %s", j[3], j[2], self.aimDirection)
-					world.placeObject(j[3], j[2], self.aimDirection)
+					--[[if not (world.objectAt(j[2]) then
+						world.placeObject(j[3], j[2], self.aimDirection)
+					end]]
 				elseif j[4] == "farm" and j[1] >= 0.25 then
 					lookForDrops(j[2],j[3],4)
 					harvestBlacklist[i][4] = false
@@ -144,7 +148,8 @@ function beamgunUpdate(dt)
 			end
 		end
 	end
-	if d ~= {} then
+	if (type(waterBlacklist)=="table") and (util.tableSize(waterBlacklist)>0) then
+		--sb.logInfo("waterBlacklist %s",waterBlacklist)
 		for i, j in pairs(waterBlacklist) do
 			if j[1] < 2 then
 				waterBlacklist[i][1] = j[1] + dt
