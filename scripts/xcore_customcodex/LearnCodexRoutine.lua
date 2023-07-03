@@ -33,12 +33,10 @@ function LearnCodex(itemName)
 	if type(itemName) ~= "string" then
 		warn("Something called LearnCodex with an item name that wasn't a string. Aborting the learning procedure. (itemName is nil? " .. tostring(itemName == nil):upper() .. ").")
 		return 2
-	end
-	if (not (itemName == nil)) or (#itemName <= 6) then
-		warn("Something called LearnCodex with an item name that was either nil or had a length less than or equal to 6 (and by extension, it would be impossible for its name to end in -codex and still have content beforehand as a result). Aborting the learning procedure. The item name is: " .. tostring(itemName))
+	elseif (#itemName) <= 6 then
+		warn("Something called LearnCodex with an item name that had a length less than or equal to 6 (and by extension, it would be impossible for its name to end in -codex and still have content beforehand as a result). Aborting the learning procedure. The item name is: " .. tostring(itemName))
 		return 2
-	end
-	if itemName:sub(-6) ~= "-codex" then
+	elseif itemName:sub(-6) ~= "-codex" then
 		warn("Player attempted to learn codex, but held item name did not end in -codex! Aborting the learning procedure. The item name is: " .. tostring(itemName))
 		return 2
 	end
