@@ -22,21 +22,93 @@
 		}
 	}],
 	[{
-		"op": "add",
-		"path": "/scriptConfig/dialog/crewmember/combatBenefit/default/-",
-		"value": {
-			"default": [
-				"Coffee time!"
-			]
+			"op": "test",
+			"inverse": true,
+			"path": "/scriptConfig/dialog/crewmember/combatBenefit"
+		},
+		{
+			"op": "add",
+			"path": "/scriptConfig/dialog/crewmember/combatBenefit",
+			"value": {}
 		}
-	}],
+	],
 	[{
-		"op": "add",
-		"path": "/scriptConfig/dialog/crewmember/fieldBenefit/default/-",
-		"value": {
-			"default": [
-				"Coffee time!"
-			]
+			"op": "test",
+			"inverse": true,
+			"path": "/scriptConfig/dialog/crewmember/combatBenefit/default"
+		},
+		{
+			"op": "add",
+			"path": "/scriptConfig/dialog/crewmember/combatBenefit/default",
+			"value": {}
 		}
-	}]
+	],
+	[{
+			"op": "test",
+			"path": "/scriptConfig/dialog/crewmember/combatBenefit/default/default"
+		},
+		{
+			"op": "add",
+			"path": "/scriptConfig/dialog/crewmember/combatBenefit/default/default/-",
+			"value": "Coffee time!"
+		}
+	],
+	[{
+			"op": "test",
+			"inverse": true,
+			"path": "/scriptConfig/dialog/crewmember/combatBenefit/default/default"
+		},
+		{
+			"op": "add",
+			"path": "/scriptConfig/dialog/crewmember/combatBenefit/default",
+			"value": {
+				"default": ["Coffee time!"]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"inverse": true,
+			"path": "/scriptConfig/dialog/crewmember/fieldBenefit"
+		},
+		{
+			"op": "add",
+			"path": "/scriptConfig/dialog/crewmember/fieldBenefit",
+			"value": {}
+		}
+	],
+	[{
+			"op": "test",
+			"inverse": true,
+			"path": "/scriptConfig/dialog/crewmember/fieldBenefit/default"
+		},
+		{
+			"op": "add",
+			"path": "/scriptConfig/dialog/crewmember/fieldBenefit/default",
+			"value": {}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/scriptConfig/dialog/crewmember/fieldBenefit/default/default"
+		},
+		{
+			"op": "add",
+			"path": "/scriptConfig/dialog/crewmember/fieldBenefit/default/default/-",
+			"value": "Coffee time!"
+		}
+	],
+	[{
+			"op": "test",
+			"inverse": true,
+			"path": "/scriptConfig/dialog/crewmember/fieldBenefit/default/default"
+		},
+		{
+			"op": "add",
+			"path": "/scriptConfig/dialog/crewmember/fieldBenefit/default",
+			"value": {
+				"default": ["Coffee time!"]
+			}
+		}
+	]
 ]
