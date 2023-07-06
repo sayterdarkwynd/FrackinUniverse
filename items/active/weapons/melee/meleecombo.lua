@@ -77,7 +77,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 		if fireMode=="none" then
 			self.edgeTriggerTimer=0
 		end
-		sb.logInfo("%s",fireMode)
+		--sb.logInfo("%s",fireMode)
 	end
 	if (status.resourceLocked("energy")) or (status.resource("energy") <= 1) then
 		self.edgeTriggerTimer = 0.0
