@@ -36,7 +36,7 @@ function update(dt)
 	self.playerTypingTimer=math.max(0,(self.playerTypingTimer or upgradeButtonLockout)-dt)
 	self.textboxPulseTimer=math.max(0,(self.textboxPulseTimer or textboxPulseInterval)-dt)
 	populateItemList()
-	itemSelected()
+	itemSelectionUpdate()
 	pulseTextbox()
 end
 
@@ -273,6 +273,12 @@ function getSelectedItem()
 end
 
 function itemSelected()
+	self.playerTypingTimer=upgradeButtonLockout/4
+	self.buttonTimer=upgradeButtonLockout/4
+	widget.setButtonEnabled("btnUpgrade", false)
+end
+
+function itemSelectionUpdate()
 	local listItem = widget.getListSelected(self.itemList)
 	local changed = false
 	local localItem = {}
