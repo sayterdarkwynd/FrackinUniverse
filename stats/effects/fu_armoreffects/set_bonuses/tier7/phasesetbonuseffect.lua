@@ -9,7 +9,6 @@ armorBonus={
 	{stat ="critChance" , amount = 3 },
 	{stat = "snowslowImmunity", amount = 1},
 	{stat = "slushslowImmunity", amount = 1},
-	{stat = "clayslowImmunity", amount = 1},
 	{stat = "blacktarImmunity", amount = 1},
 	{stat = "fumudslowImmunity", amount = 1},
 	{stat = "fujungleslowImmunity", amount = 1},
