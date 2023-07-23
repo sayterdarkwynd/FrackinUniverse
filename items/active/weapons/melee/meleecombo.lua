@@ -70,8 +70,14 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	end
 
 	self.edgeTriggerTimer = math.max(0, self.edgeTriggerTimer - dt)
-	if self.lastFireMode ~= (self.activatingFireMode or self.abilitySlot) and fireMode == (self.activatingFireMode or self.abilitySlot) then
-		self.edgeTriggerTimer = self.edgeTriggerGrace
+	if (self.lastFireMode ~= (self.activatingFireMode or self.abilitySlot)) and (fireMode == (self.activatingFireMode or self.abilitySlot)) then
+		self.edgeTriggerTimer = ((self.recordedFireTime<=0.5) and 999999) or self.edgeTriggerGrace
+	end
+	if ((self.lastFireMode) and (fireMode)) and (self.lastFireMode~=fireMode) then
+		if fireMode=="none" then
+			self.edgeTriggerTimer=0
+		end
+		--sb.logInfo("%s",fireMode)
 	end
 	if (status.resourceLocked("energy")) or (status.resource("energy") <= 1) then
 		self.edgeTriggerTimer = 0.0
@@ -125,7 +131,7 @@ function MeleeCombo:windup()
 	local stance = self.stances["windup"..self.comboStep]
 
 	self.weapon:setStance(stance)
-	self.edgeTriggerTimer = 0
+	self.edgeTriggerTimer = ((self.recordedFireTime<=0.5) and 999999) or 0
 
 	if stance.hold then
 		while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
@@ -272,7 +278,7 @@ function MeleeCombo:fire()
 end
 
 function MeleeCombo:shouldActivate()
-	if self.cooldownTimer == 0 and (self.energyUsage == 0 or not status.resourceLocked("energy")) then
+	if (self.cooldownTimer == 0) and ((self.energyUsage == 0) or (not status.resourceLocked("energy"))) then
 		if self.comboStep and (self.comboStep > 1) then
 			return self.edgeTriggerTimer > 0
 		else
