@@ -9,10 +9,20 @@ function init()
 	message.setHandler("setInvertSlots", function (_, _, inverted) storage.invertSlots = inverted end)
 	message.setHandler("setInputSlots", function (msg, _, slots) storage.inputSlots = slots end)
 	message.setHandler("setOutputSlots", function (msg, _, slots) storage.outputSlots = slots end)
+	-- 'Even Split'
 	message.setHandler("setRR", function (msg, _, rr) storage.roundRobin = rr end)
-	message.setHandler("setRRS", function (msg, _, rr) storage.roundRobinSlots = rr end)
+	-- 'Slot Split'
+	message.setHandler("setRRS", function (msg, _, rrs)
+		storage.roundRobinSlots = rrs
+		if rrs then storage.onlyStack = false end
+	end)
+	--'Leave One'
 	message.setHandler("setLO", function (msg, _, leaveOne) storage.leaveOne = leaveOne end)
-	message.setHandler("setOS", function (msg, _, onlyStack) storage.onlyStack = onlyStack end)
+	--'Stack Only'
+	message.setHandler("setOS", function (msg, _, onlyStack)
+		storage.onlyStack = onlyStack
+		if onlyStack then storage.roundRobinSlots = false end
+	end)
 	object.setInteractive(true)
 end
 
@@ -73,6 +83,9 @@ function initVars()
 	end
 	if not storage.invertSlots then
 		storage.invertSlots={false,false}
+	end
+	if storage.roundRobinSlots and storage.onlyStack then
+		storage.onlyStack=false
 	end
 	self.init=true
 end
@@ -194,6 +207,10 @@ function routeItems(dt)
 																end
 															end
 														else
+															local itemBefore=world.containerItemAt(sourceContainer,indexIn-1)
+															if not itemBefore then
+																break
+															end
 															world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
 															originalCount=originalCount-item.count
 															if not (storage.roundRobinSlots) then

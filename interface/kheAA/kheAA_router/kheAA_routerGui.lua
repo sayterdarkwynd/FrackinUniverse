@@ -3,6 +3,13 @@ local outputList = "outputSlotScrollArea.outputSlotList";
 local filterFunctionsLabelDefault = "Functions: ^yellow;Use these to help divide outputs for automation.^reset;"
 local helpMode=false
 
+local buttonNames={
+	evenSplit="roundRobinMode",
+	slotSplit="roundRobinSlotMode",
+	leaveOne="leaveOneItemMode",
+	onlyStack="onlyStackMode"
+}
+
 buttons = {
 	invertButtons = {
 		item1ButtonInvert = 1,
@@ -45,10 +52,12 @@ function initialize(conf)
 	filterInverted=conf[3]
 	filterType=conf[4]
 	invertSlots=conf[5]
-	widget.setChecked("roundRobinMode", conf[6])
-	widget.setChecked("roundRobinSlotMode", conf[7])
-	widget.setChecked("leaveOneItemMode", conf[8])
-	widget.setChecked("onlyStackMode", conf[9])
+	--round robin slots and only stack are mutually exclusive because spaghetti mess
+	if conf[7] and conf[9] then conf[9]=false end
+	widget.setChecked(buttonNames.evenSplit, conf[6])
+	widget.setChecked(buttonNames.slotSplit, conf[7])
+	widget.setChecked(buttonNames.leaveOne, conf[8])
+	widget.setChecked(buttonNames.onlyStack, conf[9])
 	redrawListSlots(inputList, inputSlots);
 	redrawListSlots(outputList, outputSlots);
 	redrawItemFilters()
@@ -240,18 +249,22 @@ function roundRobinToggle(name)
 		widget.setText("filterFunctionsLabel","^orange;Only matches a single item^reset;")
 		return
 	end
-	roundRobin = widget.getChecked(name)
-	world.sendEntityMessage(myBox, "setRR", roundRobin)
+	local buttonState = widget.getChecked(buttonNames.evenSplit)
+	world.sendEntityMessage(myBox, "setRR", buttonState)
 end
 
 function roundRobinSlotToggle(name)
 	if helpMode then
 		widget.setText("filterFunctionsLabel2","Slot Split: Splits a stack between slots in a container.")
-		widget.setText("filterFunctionsLabel","")
+		widget.setText("filterFunctionsLabel","^orange;Mutually exclusive with Stack Only^reset;")
 		return
 	end
-	roundRobin = widget.getChecked(name)
-	world.sendEntityMessage(myBox, "setRRS", roundRobin)
+	local buttonState = widget.getChecked(buttonNames.slotSplit)
+	--only stack and slot split are mutually exclusive.
+	if buttonState then
+		widget.setChecked(buttonNames.onlyStack,false)
+	end
+	world.sendEntityMessage(myBox, "setRRS", buttonState)
 end
 
 function leaveOneItemToggle(name)
@@ -260,18 +273,23 @@ function leaveOneItemToggle(name)
 		widget.setText("filterFunctionsLabel","^orange;Do you really need help with this?^reset;")
 		return
 	end
-	leaveOne = widget.getChecked(name)
-	world.sendEntityMessage(myBox, "setLO", leaveOne)
+	local buttonState = widget.getChecked(buttonNames.leaveOne)
+	world.sendEntityMessage(myBox, "setLO", buttonState)
 end
 
 function onlyStackToggle(name)
 	if helpMode then
 		widget.setText("filterFunctionsLabel2","Only Stack: Only attempts to add to already present stacks.")
-		widget.setText("filterFunctionsLabel","^orange;Only matches a single item^reset;")
+		widget.setText("filterFunctionsLabel","^orange;Only matches a single item^reset;. ^orange;Mutually exclusive with Slot Split^reset;.")
 		return
 	end
-	onlyStack = widget.getChecked(name)
-	world.sendEntityMessage(myBox, "setOS", onlyStack)
+
+	local buttonState = widget.getChecked(buttonNames.onlyStack)
+	--only stack and slot split are mutually exclusive.
+	if buttonState then
+		widget.setChecked(buttonNames.slotSplit,false)
+	end
+	world.sendEntityMessage(myBox, "setOS", buttonState)
 end
 
 function dbg(args)
