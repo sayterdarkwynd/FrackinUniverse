@@ -196,7 +196,7 @@ function build(directory, config, parameters, level, seed)
 		-- Staff and Wand specific --
 		if primaryAbility and primaryAbility.projectileParameters then
 			if primaryAbility.projectileParameters.baseDamage then
-				config.tooltipFields.staffDamageLabel = primaryAbility.projectileParameters.baseDamage
+				config.tooltipFields.staffDamageLabel = (primaryAbility.projectileParameters.baseDamage) * configParameterDeep("damageLevelMultiplier",1)
 			end
 		end
 
