@@ -57,7 +57,7 @@ function moveLiquid(inputLocation,outputLocation)
             end
 			local destroyed
 			if world.isTileProtected(inputLocation) then
-				destroyed=world.forceDestroyLiquid(isTileProtected)
+				destroyed=world.forceDestroyLiquid(inputLocation)
 			else
 				destroyed=world.destroyLiquid(inputLocation)
 			end
