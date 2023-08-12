@@ -149,6 +149,7 @@ function BeamArm:fireState()
 	--had to do some funny magic math to make it sync better with tick rate, while still maintaining that 'snappiness'.
 	beamParams.speed = 360
 	beamParams.power = self.applyBeamDamage
+	--distance=speed*time
 	beamParams.timeToLive = ((self.beamLength or 10)/(beamParams.speed))
 	--0.9 times TTL to sync hidden with rendered
 	--works unless the beam is too long (sin sniper) or too short (mining cannon), idk why. cant do anything about the mining cannon though.
