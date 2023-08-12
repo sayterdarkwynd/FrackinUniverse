@@ -316,9 +316,9 @@ function build(directory, config, parameters, level, seed)
 	config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"
 
 	-- Staff and Wand specific --
-	if primaryAbility.projectileParameters then
+	if primaryAbility and primaryAbility.projectileParameters then
 		if primaryAbility.projectileParameters.baseDamage then
-			config.tooltipFields.staffDamageLabel = primaryAbility.projectileParameters.baseDamage
+			config.tooltipFields.staffDamageLabel = (primaryAbility.projectileParameters.baseDamage) * configParameterDeep("damageLevelMultiplier",1) * configParameterDeep("baseDamageFactor",1)
 		end
 	end
 

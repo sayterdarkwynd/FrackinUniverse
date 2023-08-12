@@ -50,7 +50,7 @@ end
 
 function outputnodes()
 
-	object.setOutputNodeLevel(transferUtil.vars.outDataNode,not transferUtil.vars.containerId==nil)
+	object.setOutputNodeLevel(transferUtil.vars.outDataNode,not (transferUtil.vars.containerId==nil))
 	if transferUtil.vars and transferUtil.vars.containerId and (self.outPartialFillNode or self.outCompleteFillNode) then
 		self.containerSize=world.containerSize(transferUtil.vars.containerId)
 		self.containerFill=util.tableSize(world.containerItems(transferUtil.vars.containerId) or {})

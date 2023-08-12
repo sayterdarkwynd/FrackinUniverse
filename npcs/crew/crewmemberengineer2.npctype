@@ -1,43 +1,61 @@
 {
-  "type" : "crewmemberengineer2",
-  "baseType" : "fu_crewmember",
+	"type": "crewmemberengineer2",
+	"baseType": "fu_crewmember",
 
-  "scriptConfig" : {
-    "crew" : {
-      "defaultUniform" : {
-      },
+	"scriptConfig": {
+		"crew": {
+			"defaultUniform": {},
 
-      "role" : {
-        "type" : "engineer",
-        "name" : "Chief Engineer",
-        "field" : "Engineering",
-        "uniformColorIndex" : 5,
+			"role": {
+				"type": "engineer",
+				"name": "Chief Engineer",
+				"field": "Engineering",
+				"uniformColorIndex": 5,
 
-        "benefits" : [
-          {
-            "type" : "ShipUpgradeBenefit",
-            "property" : "shipSpeed",
-            "value" : 3.75
-          },
-          {
-            "type" : "ShipUpgradeBenefit",
-            "property" : "fuelEfficiency",
-            "value" : 0.2
-          }
-        ]
-      }
-    },
+				"benefits": [{
+						"type": "ShipUpgradeBenefit",
+						"property": "shipSpeed",
+						"value": 3.75
+					},
+					{
+						"type": "ShipUpgradeBenefit",
+						"property": "fuelEfficiency",
+						"value": 0.2
+					},
+					{
+						// Ephemeral effects gained upon leaving the ship
+						"type": "EphemeralEffect",
+						"effect": "fuenergytickupcrew2",
+						"duration": 300
+					}
+				]
+			}
+		},
 
-    "dialog" : {
-      "crewmember" : {
-        "roleDescription" : {
-          "default" : {
-            "default" : [
-              "I'll keep your engines in good shape. Thrust velocity is up by 25% and fuel costs are down by 20%."
-            ]
-          }
-        }
-      }
-    }
-  }
+		"dialog": {
+			"crewmember": {
+				"roleDescription": {
+					"default": {
+						"default": [
+							"I'll keep your engines in good shape. Thrust velocity is up by 25% and fuel costs are down by 20%."
+						]
+					}
+				},
+				"combatBenefit": {
+					"default": {
+						"default": [
+							"Coffee time, extra strong!"
+						]
+					}
+				},
+				"fieldBenefit": {
+					"default": {
+						"default": [
+							"Coffee time, extra strong!"
+						]
+					}
+				}
+			}
+		}
+	}
 }
