@@ -23,7 +23,7 @@ function onInteraction()
 		cadaverRoll = cadaverRoll + 1
 		object.setConfigParameter("cadaverRoll",cadaverRoll)
 		world.spawnNpc(object.position(), crewrace, crewtype, 1, seed, parameters)
-		object.smash(true)
+		object.smash()
 	end
 end
 
