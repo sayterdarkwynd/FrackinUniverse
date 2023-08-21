@@ -1,35 +1,30 @@
 {
-  "objectName" : "sarcoavian1deco",
-  "colonyTags" : ["avian","aviantomb"],
-  "rarity" : "Common",
-  "category" : "decorative",
-  "price" : 85,
+	"objectName" : "sarcoavian1deco",
+	"colonyTags" : ["avian","aviantomb"],
+	"rarity" : "Common",
+	"category" : "decorative",
+	"price" : 85,
 
-  "description" : "An expertly crafted Avian sarcophagus. This one is clearly empty.",
-  "shortdescription" : "Avian Sarcophagus (Empty)",
-  "race" : "avian",
-  "tooltipKind": "codex",
+	"description" : "^red;This object is being deprecated. Just place it down to get the normal version^reset;.",
+	"shortdescription" : "Avian Sarcophagus (Deprecated)",
+	"race" : "avian",
+	"tooltipKind": "codex",
 
-  "apexDescription" : "A sarcophagus. No-one is inside.",
-  "avianDescription" : "The richest and most revered of Avians preserve their entire bodies in these.",
-  "floranDescription" : "No sssnack insside.",
-  "glitchDescription" : "Neutral. It's empty.",
-  "humanDescription" : "A dusty sarcophagus.",
-  "hylotlDescription" : "The Hylotl give their dead to the ocean.",
-  "novakidDescription" : "A place for a dead body.",
+	"scripts" : ["/objects/noisy/sarconinjadeprecate.lua"],
+	"targetForReplace":"sarcoavian1",
+	"targetCadaverRoll":2,
+	"inventoryIcon" : "sarcoavian1icon.png",
+	"orientations" : [
+		{
+			"dualImage" : "sarcoavian1.png:<color>",
 
-  "inventoryIcon" : "sarcoavian1icon.png",
-  "orientations" : [
-    {
-      "dualImage" : "sarcoavian1.png:<color>",
+			"imagePosition" : [-8, 0],
+			"frames" : 1,
+			"animationCycle" : 0.5,
 
-      "imagePosition" : [-8, 0],
-      "frames" : 1,
-      "animationCycle" : 0.5,
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-
-    }
-  ]
+		}
+	]
 }
