@@ -1,35 +1,30 @@
 {
-  "objectName" : "sarcohumandeco",
-  "colonyTags" : ["avian","aviantomb"],
-  "rarity" : "Common",
-  "category" : "decorative",
-  "price" : 85,
+	"objectName" : "sarcohumandeco",
+	"colonyTags" : ["avian","aviantomb"],
+	"rarity" : "Common",
+	"category" : "decorative",
+	"price" : 85,
 
-  "description" : "Avians have been known to attempt to take human companions with them to the afterlife.",
-  "shortdescription" : "Human Sarcophagus (Empty)",
-  "race" : "avian",
-  "tooltipKind": "codex",
+	"description" : "^red;This object is being deprecated. Just place it down to get the normal version^reset;.",
+	"shortdescription" : "Human Sarcophagus (Deprecated)",
+	"race" : "avian",
+	"tooltipKind": "codex",
 
-  "apexDescription" : "A sarcophagus. It's human-shaped.",
-  "avianDescription" : "Some of the first Avians amongst the stars had deep friendships with humans. This is an attempt to bring humans to the aether so they might also gain wings.",
-  "floranDescription" : "Sssmells of human.",
-  "glitchDescription" : "Observant. A human sat inside this sarcophagus.",
-  "humanDescription" : "Did this have a human in it?",
-  "hylotlDescription" : "This is not an Avian sarcophagus.",
-  "novakidDescription" : "A sarcophagus shaped like a human, with no human body inside.",
+	"scripts" : ["/objects/noisy/sarconinjadeprecate.lua"],
+	"targetForReplace":"sarcohuman",
+	"targetCadaverRoll":4,
+	"inventoryIcon" : "sarcohumanicon.png",
+	"orientations" : [
+		{
+			"dualImage" : "sarcohuman.png:<color>",
 
-  "inventoryIcon" : "sarcohumanicon.png",
-  "orientations" : [
-    {
-      "dualImage" : "sarcohuman.png:<color>",
+			"imagePosition" : [-8, 0],
+			"frames" : 1,
+			"animationCycle" : 0.5,
 
-      "imagePosition" : [-8, 0],
-      "frames" : 1,
-      "animationCycle" : 0.5,
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-
-    }
-  ]
+		}
+	]
 }
