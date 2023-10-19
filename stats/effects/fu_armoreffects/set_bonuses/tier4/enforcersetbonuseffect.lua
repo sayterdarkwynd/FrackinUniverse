@@ -29,9 +29,9 @@ function checkWeapons()
 	local weaponShotgun=weaponCheck({"shotgun","assaultrifle"})
 
 	if (weaponShotgun["primary"] and weaponShotgun["alt"]) or (weaponShotgun["twoHanded"] and weaponShotgun["primary"]) then
-		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,setBonusMultiply(weaponBonus1,2))
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus1)
 	elseif weaponShotgun ["either"] then
-			effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus1)
+			effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,setBonusMultiply(weaponBonus1,0.5))
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end

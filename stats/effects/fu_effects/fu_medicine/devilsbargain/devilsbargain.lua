@@ -7,8 +7,8 @@ function init()
 		{stat = "poisonResistance", amount = 0.2},
 		{stat = "electricResistance", amount = 0.2},
 		{stat = "radioactiveResistance", amount = 0.2},
-		{stat = "shadowMultiplier", amount = 0.2},
-		{stat = "cosmicMultiplier", amount = 0.2},
+		{stat = "shadowResistance", amount = 0.2},
+		{stat = "cosmicResistance", amount = 0.2},
 		{stat = "maxHealth", baseMultiplier = 0.75},
 		{stat = "maxEnergy", baseMultiplier = 0.75}
 	})
