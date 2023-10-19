@@ -1,4 +1,5 @@
 require "/scripts/effectUtil.lua"
+require "/scripts/fupower.lua"
 
 function init()
 	power.init()
@@ -7,12 +8,13 @@ function init()
 	end
 	self=util.mergeTable(self or {},config.getParameter("atmos") or {})
 	itemList=root.assetJson("/objects/power/fu_atmosfilter/warpedItemList.json")
+	self.interval=1.0
 end
 
 function update(dt)
-	if self and self.range and itemList and (storage.effects or self.objectEffects) then
-		if not deltaTime or deltaTime > 1.0 then
-			if power.consume(config.getParameter('isn_requiredPower')) then
+	if (not deltaTime) or (deltaTime >= self.interval) then
+		if self and self.range and itemList and (storage.effects or self.objectEffects) then
+			if power.consume(config.getParameter('isn_requiredPower')*(deltaTime or self.interval)) then
 				animator.setAnimationState("switchState", "on")
 				if storage.effects then
 					for _,effect in pairs(storage.effects) do
@@ -34,10 +36,10 @@ function update(dt)
 			end
 			deltaTime=0
 		else
-			deltaTime=deltaTime+dt
+			animator.setAnimationState("switchState", "off")
 		end
 	else
-		animator.setAnimationState("switchState", "off")
+		deltaTime=deltaTime+dt
 	end
 	power.update(dt)
 end
