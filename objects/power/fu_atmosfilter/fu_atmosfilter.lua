@@ -1,4 +1,5 @@
 require "/scripts/effectUtil.lua"
+require "/scripts/fupower.lua"
 
 function init()
 	power.init()
