@@ -1,13 +1,19 @@
 {
-  "itemName" : "redsnow",
-  "rarity" : "Common",
-  "price" : 25,
-  "inventoryIcon" : "redsnow.png",
-  "description" : "Slow, long-lasting healing in convenient popsicle format. \n^green;Heal ^white;31.5% ^green;HP ^gray;over ^white;1m^reset;",
-  "category":"food",
-  "shortdescription" : "Red Snow",
-  "handPosition" : [0, 4],
-  "effects" : [ [
-    "regeneration01"
-  ] ]
+    "itemName": "redsnow",
+    "rarity": "Common",
+    "price": 330,
+    "inventoryIcon": "redsnow.png",
+    "description": "Three red stimpacks, in a long-lasting popsicle form.\n^green;Heal ^white;3.3% ^green;HP^gray;/S for ^white;3m^reset;",
+    "category": "food",
+    "shortdescription": "Red Snow",
+    "handPosition": [0,4],
+    "effects": [
+        [
+            {
+                "effect": "redstim",
+                "duration": 180
+            }
+        ]
+    ],
+    "blockingEffects": ["redstim"]
 }
