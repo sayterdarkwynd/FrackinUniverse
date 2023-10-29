@@ -45,7 +45,7 @@ end
 function moveLiquid(inputLocation,outputLocation)
     local inputLiquid = world.liquidAt(inputLocation)
 
-    if inputLiquid and inputLiquid[2] > 0.1 then
+    if (inputLiquid and inputLocation) and (type(inputLocation[1])=="number") and (type(inputLocation[2])=="number") and (inputLiquid[2] > 0.1) then
         local outputLiquid = world.liquidAt(outputLocation)
 
         if (self.liquidPressurized or (not outputLiquid or (outputLiquid[1] == inputLiquid[1] and outputLiquid[2] < 1))) then
