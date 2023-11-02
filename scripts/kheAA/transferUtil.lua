@@ -115,6 +115,7 @@ function transferUtil.throwItemsAt(target,targetPos,item,drop)
 	local awake,ping=transferUtil.containerAwake(target,targetPos)
 	if awake then
 		if ping ~= nil then
+			--sb.logInfo("%s:%s reporting: %s at %s changed ID: %s",object.name(),entity.id(),target,targetPos,ping)
 			target=ping
 		end
 	elseif drop then
@@ -126,6 +127,7 @@ function transferUtil.throwItemsAt(target,targetPos,item,drop)
 
 	if world.containerSize(target) == nil or world.containerSize(target) == 0 then
 		if drop then
+			--sb.logInfo("%s:%s reporting that %s at %s has a nil or zero container size",world.entityName(target),entity.id(),target,targetPos)
 			world.spawnItem(item,targetPos)
 			return true,item.count,true
 		else
@@ -150,20 +152,27 @@ function transferUtil.updateInputs()
 	if not transferUtil.vars or not transferUtil.vars.didInit then
 		transferUtil.init()
 	end
-	transferUtil.vars.input={}
+	--transferUtil.vars.input={}
 	transferUtil.vars.inContainers={}
 	if self.disabled then return end
 	if not transferUtil.vars.inDataNode then
 		return
 	end
-	transferUtil.vars.input=object.getInputNodeIds(transferUtil.vars.inDataNode);
+	--transferUtil.vars.input=copy(object.getInputNodeIds(transferUtil.vars.inDataNode))
 	local buffer={}
-	for inputSource in pairs(transferUtil.vars.input) do
-		local temp=world.callScriptedEntity(inputSource,"transferUtil.sendContainerInputs")
-		if temp ~= nil then
-			for entId,position in pairs(temp) do
-				buffer[entId]=position
+	--for inputSource in pairs(transferUtil.vars.input) do
+	for inputSource in pairs(copy(object.getInputNodeIds(transferUtil.vars.inDataNode))) do
+		local source=inputSource
+		if source then
+			local temp=world.callScriptedEntity(source,"transferUtil.sendContainerInputs")
+			--sb.logInfo("%s:%s reporting inputs %s",world.entityName(source),source,temp)
+			if temp ~= nil then
+				for entId,position in pairs(temp) do
+					buffer[entId]=position
+				end
 			end
+		--else
+			--sb.logInfo("ITD %s found a nil in inputnodeids",entity.id())
 		end
 	end
 	transferUtil.vars.inContainers=buffer
@@ -173,20 +182,27 @@ function transferUtil.updateOutputs()
 	if not transferUtil.vars or not transferUtil.vars.didInit then
 		transferUtil.init()
 	end
-	transferUtil.vars.output={}
+	--transferUtil.vars.output={}
 	transferUtil.vars.outContainers={}
 	if self.disabled then return end
 	if not transferUtil.vars.outDataNode then
 		return
 	end
-	transferUtil.vars.output=object.getOutputNodeIds(transferUtil.vars.outDataNode);
+	--transferUtil.vars.output=copy(object.getOutputNodeIds(transferUtil.vars.outDataNode))
 	local buffer={}
-	for outputSource in pairs(transferUtil.vars.output) do
-		local temp=world.callScriptedEntity(outputSource,"transferUtil.sendContainerOutputs")
-		if temp then
-			for entId,position in pairs(temp) do
-				buffer[entId]=position
+	--for outputSource in pairs(transferUtil.vars.output) do
+	for outputSource in pairs(copy(object.getOutputNodeIds(transferUtil.vars.outDataNode))) do
+		local source=outputSource
+		if source then
+			local temp=world.callScriptedEntity(source,"transferUtil.sendContainerOutputs")
+			--sb.logInfo("%s:%s reporting outputs %s",world.entityName(source),source,temp)
+			if temp ~= nil then
+				for entId,position in pairs(temp) do
+					buffer[entId]=position
+				end
 			end
+		--else
+			--sb.logInfo("ITD %s found a nil in outputnodeids",entity.id())
 		end
 	end
 	transferUtil.vars.outContainers=buffer
@@ -267,11 +283,11 @@ function transferUtil.recvConfig(conf)
 end
 
 function transferUtil.sendContainerInputs()
-	return transferUtil and transferUtil.vars and transferUtil.vars.inContainers or {}
+	return transferUtil and transferUtil.vars and (not transferUtil.vars.isRouter) and transferUtil.vars.inContainers or {}
 end
 
 function transferUtil.sendContainerOutputs()
-	return transferUtil and transferUtil.vars and transferUtil.vars.outContainers or {}
+	return transferUtil and transferUtil.vars and (not transferUtil.vars.isRouter) and transferUtil.vars.outContainers or {}
 end
 
 function transferUtil.powerLevel(node,explicit)

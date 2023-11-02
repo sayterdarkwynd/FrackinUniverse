@@ -103,6 +103,7 @@ function move(args, board, node)
 				for _,yDir in pairs({0, -1, 1}) do
 					--util.debugRect(rect.translate(groundRect, {direction * x, y + yDir}), "blue")
 					if world.rectTileCollision(rect.translate(groundRect, {direction * x, y + yDir}), {"Null", "Block", "Dynamic", "Platform"}) then
+						--util.debugRect(rect.translate(groundRect, {direction * x, y + yDir}), "green")
 						move = true
 						y = y + yDir
 						break
@@ -267,7 +268,7 @@ function moveToPosition(args, board, node)
 		end
 
 		if entity.entityType() == "npc" then
-			--openDoorsAhead()
+			openDoorsAhead()
 			if args.closeDoors then
 				closeDoorsBehind()
 			end

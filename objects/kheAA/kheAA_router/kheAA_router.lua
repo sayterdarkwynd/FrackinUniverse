@@ -61,6 +61,7 @@ end
 
 function initVars()
 	self.routerItems={}
+	transferUtil.vars.isRouter=true
 	transferUtil.vars.inContainers={}
 	transferUtil.vars.outContainers={}
 	if storage.inputSlots == nil then
