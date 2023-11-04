@@ -213,7 +213,6 @@ function transferUtil.updateOutputs()
 
 	transferUtil.vars.outputList=copy(object.getOutputNodeIds(transferUtil.vars.outDataNode))
 	local buffer={}
-	local loopCheck=false
 	for outputSource in pairs(transferUtil.vars.outputList) do
 		local source=outputSource
 		if source then
@@ -224,7 +223,6 @@ function transferUtil.updateOutputs()
 				transferUtil.vars.outContainers={}
 				transferUtil.vars.inContainers={}
 				transferUtil.vars.upstreamCount=0
-				loopCheck=true
 				return false
 			end
 
@@ -241,9 +239,7 @@ function transferUtil.updateOutputs()
 			end
 		end
 	end
-	if not loopCheck then
-		transferUtil.vars.outContainers=buffer
-	end
+	transferUtil.vars.outContainers=buffer
 	return true
 end
 
