@@ -213,7 +213,7 @@ function transferUtil.updateOutputs()
 
 	transferUtil.vars.outputList=copy(object.getOutputNodeIds(transferUtil.vars.outDataNode))
 	local buffer={}
-	local loopCheck
+	local loopCheck=false
 	for outputSource in pairs(transferUtil.vars.outputList) do
 		local source=outputSource
 		if source then
