@@ -21,7 +21,7 @@ placing this in lua demo:
 
 --results in an output like this:
 
-	Pass R1 	2.0105	 Pass R2 	0.9941
+	Pass R1 	2.0105	Pass R2 	0.9941
 --translated, this output means that when attempting to get a roll out of 100, the average roll will be these.
 --in other words, math.random(100)>=99 means 2% chance, not 1%.
 --changing the comparison from >= to > thus results in reducing the 'success' chance over an average of 1 million samples by ~1.0.
@@ -29,7 +29,7 @@ placing this in lua demo:
 
 function Crits:setCritDamage(damage)
     local critChance = config.getParameter("critChance", 1) + status.stat("critChance")  -- Integer % chance to activate crit
-    local critBonus = config.getParameter("critBonus", 0) + status.stat("critBonus")     --  flat damage bonus to critical hits
+    local critBonus = config.getParameter("critBonus", 0) + status.stat("critBonus")     --  it's just critDamage (below). should mostly phase out except for on weapon configs.
     local critDamage = status.stat("critDamage")  -- % increase to crit damage multiplier (0.10 == +10% or 110% total additional damage)
 	--status.stat ONLY accepts ONE argument. and returns 0.0 if it is not found
 
@@ -42,7 +42,7 @@ function Crits:setCritDamage(damage)
 
 	local crit = (math.random(100)<=critChance) -- Chance out of 100
     -- Crit damage bonus is 50% + critDamage%
-	damage = crit and (damage * (1.5 + critDamage) + critBonus) or damage -- Inherent 50% damage boost further increased by critBonus
+	damage = crit and (damage * (1.5 + critDamage + (critBonus/100.0))) or damage -- Inherent 50% damage boost further increased by critBonus
 
 	if crit then
 		--sb.logInfo("sum.critChance:%s, config.critChance:%s stat.critChance:%s",config.getParameter("critChance", 1)+status.stat("critChance"),config.getParameter("critChance", 1),status.stat("critChance"))
@@ -61,32 +61,32 @@ function Crits:setCritDamage(damage)
                 -- *****************************************************************
                 local stunRoll = (math.random(100)) + status.stat("stunChance") + config.getParameter("stunChance",0)
                 --local daggerChance = math.random(100) + status.stat("daggerChance") + config.getParameter("daggerChance",0)--unused
-
+				local params={power=1,damageKind = "default"}
                 if stunRoll > 99 and root.itemHasTag(heldItem, "dagger") then
-                    params = { speed=14, power = 1, damageKind = "default"}
+                    params.speed=14
                     world.spawnProjectile("daggerCrit",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),true,params)
                 end
                 if stunRoll > 99 and root.itemHasTag(heldItem, "spear") then
-                    params = { speed=55, power = 1, damageKind = "default"}
+					params.speed=55
                     world.spawnProjectile("spearCrit",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,params)
                 end
                 if stunRoll > 99 and root.itemHasTag(heldItem, "shortspear") then
-                    params = { speed=22, power = 1, damageKind = "default"}
+					params.speed=22
                     world.spawnProjectile("spearCrit",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,params)
                 end
                 if stunRoll > 99 and root.itemHasTag(heldItem, "rapier") or root.itemHasTag(heldItem, "shortsword") then
-                    params = { speed=30, power = 1, damageKind = "default"}
+                    params.speed=30
                     world.spawnProjectile("rapierCrit",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,params)
                 end
                 if stunRoll > 99 and (root.itemHasTag(heldItem, "fist") or root.itemHasTag(heldItem, "hammer") or root.itemHasTag(heldItem, "greataxe") or root.itemHasTag(heldItem, "quarterstaff") or root.itemHasTag(heldItem, "mace")) then -- Stun!!!!
                     --sb.logInfo("sum.stunRoll:%s, random.stunRoll:%s, stat.stunChance:%s, config.stunChance:%s",stunRoll,stunRoll-(status.stat("stunChance") + config.getParameter("stunChance",0)),status.stat("stunChance"),config.getParameter("stunChance",0))
-					params = { speed=35, power = 1, damageKind = "default"}
+					params.speed=35
                     world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,params)
                 end
             end
         end
 	end
-
+	--sb.logInfo("crits.lua::final values %s",{c=crit,d=damage,cc=critChance,cb=critBonus,cd=critDamage,sumCD=(1.5 + critDamage + (critBonus/100.0))})
 	return damage
 end
 

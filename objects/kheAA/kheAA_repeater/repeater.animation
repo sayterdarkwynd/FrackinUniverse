@@ -1,41 +1,51 @@
 {
-	"animatedParts" : {
-		"stateTypes" : {
-			"repeaterState" : {
-				"default" : "off",
-				"states" : {
-					"off" : {
-						"frames" : 1
-					},
-					"on" : {
-						"frames" : 1
-					}
-				}
-			}
-		},
-
-		"parts" : {
-			"repeater" : {
-				"properties" : {
-					"centered" : false
-				},
-
-				"partStates" : {
-					"repeaterState" : {
-						"off" : {
-							"properties" : {
-								"image" : "<partImage>:<color>.off"
-							}
-						},
-
-						"on" : {
-							"properties" : {
-								"image" : "<partImage>:<color>.on"
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+    "animatedParts": {
+        "stateTypes": {
+            "repeaterState": {
+                "default": "off",
+                "states": {
+                    "off": {
+                        "frames": 1
+                    },
+                    "on": {
+                        "frames": 1
+                    },
+                    "error": {
+                        "frames": 1
+                    }
+                }
+            }
+        },
+        "parts": {
+            "repeater": {
+                "properties": {
+                    "centered": false
+                },
+                "partStates": {
+                    "repeaterState": {
+                        "off": {
+                            "properties": {
+                                "image": "<partImage>:<color>.off"
+                            }
+                        },
+                        "on": {
+                            "properties": {
+                                "image": "<partImage>:<color>.on"
+                            }
+                        },
+                        "error": {
+                            "properties": {
+                                "image": "<partImage>:<color>.error"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sounds": {
+        "alarm": [
+            "/sfx/objects/redalert.ogg"
+        ]
+    }
 }
