@@ -104,7 +104,6 @@ end
 
 
 function checkGate()
-	--if player.hasItem({name = "fuancientkey", count = 1}) then
 	if player.hasCompletedQuest("create_matterassembler") then
 		self.gateUid = "ancientgate2"
 	else
@@ -197,7 +196,6 @@ function repairGate()
 		else
 			storage.stage = 3
 			quest.setObjectiveList({{self.descriptions.makeTable, false}})
-			player.radioMessage("fu_start_needstricorder")
 			self.state:set(self.stages[storage.stage])
 		end
 

@@ -48,7 +48,6 @@ function setStage(newStage)
 			player.radioMessage("fu_start_Complete1a", 1)
 			player.radioMessage("fu_start_Complete1b", 1)
 			player.radioMessage("fu_start_Complete1c", 1)
-			player.giveItem("fuancientkey")
 		end
 		storage.missionStage = newStage
 	end
