@@ -1,15 +1,15 @@
 require "/scripts/fumementomori.lua"
 
-if not _mm_wrapped then
-	_applyDamageRequest = applyDamageRequest
-	_init = init
-	_update = update
-	_teleportOut = teleportOut
-	_mm_wrapped = true
-end
+local fummApplyDamageRequest = applyDamageRequest
+local fummInit = init
+local fummUpdate = update
+local fummTeleportOut = teleportOut
+local promise
+local promise2
+local mm_timer=5.0
 
 function applyDamageRequest(damageRequest)
-    local r = _applyDamageRequest(damageRequest)
+    local r = fummApplyDamageRequest(damageRequest)
     if (not playerIsAdmin) and next(r) ~= nil and r[1].hitType == "kill" and worldId then
 		status.setStatusProperty("fuEnhancerActive", false)
 		status.setStatusProperty(mementomori.deathPositionKey.."."..worldId,{position=mcontroller.position()})
@@ -18,12 +18,11 @@ function applyDamageRequest(damageRequest)
     return r
 end
 
-function init()
-	mm_timer=5.0
-	_init()
+function init(...)
+	if fummInit then fummInit(...) end
 end
 
-function update(dt)
+function update(dt,...)
 	if not mm_timer then
 		mm_timer=0.0
 	elseif mm_timer > 5.0 then
@@ -47,10 +46,10 @@ function update(dt)
 			end
 		end
 	end
-	_update(dt)
+	if fummUpdate then fummUpdate(dt,...) end
 end
 
 function teleportOut(...)
 	mm_timer=0.0
-	_teleportOut(...)
+	if fummTeleportOut then fummTeleportOut(...) end
 end
