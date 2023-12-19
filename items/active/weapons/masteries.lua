@@ -241,7 +241,7 @@ function masteries.apply(args)
 
 			--shortspears: modifiers based on what else is or isn't wielded. none when combo'd.
 			if tagCaching[currentHand.."TagCache"]["shortspear"] then
-				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) then --solo shortspear, no other weapons: boost crit damage.
+				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"] or tagCaching[otherHand.."TagCache"]["shield"]) then --solo shortspear, no other weapons: boost crit damage.
 					masteryBuffer[#masteryBuffer + 1]={stat="critDamage", amount=0.3*(1+masteries.stats.shortspearMastery) }
 				else
 					-- using shortspear with a shield: boost shield and defense tech stats.
@@ -273,7 +273,7 @@ function masteries.apply(args)
 					masteryBuffer[#masteryBuffer + 1]={stat="critDamage", amount=0.15*(1+masteries.stats.longswordMastery)*handMultiplier}
 				end
 				-- longsword solo, no other weapons: attack speed.
-				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) then
+				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) or tagCaching[otherHand.."TagCache"]["shield"]) then
 					--this would be funny to apply at full value if wielding alongside another longsword. especially with a minor damage penalty.
 					masteryBuffer[#masteryBuffer + 1]={stat="attackSpeedUp", amount=0.7*masteries.stats.longswordMastery}
 				else
@@ -311,7 +311,7 @@ function masteries.apply(args)
 				local gritModifier=masteries.stats.shortswordMastery*handMultiplier
 
 				-- solo shortsword, no other weapons: increased damage, dash/dodge tech bonuses, and knockback resistance
-				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) then
+				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) or tagCaching[otherHand.."TagCache"]["shield"]) then
 					powerModifier=(powerModifier/1.5)
 					dashModifier=0.1*dashModifier/2
 					dodgeModifier=0.1*masteries.stats.shortswordMastery/2
