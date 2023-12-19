@@ -273,7 +273,7 @@ function masteries.apply(args)
 					masteryBuffer[#masteryBuffer + 1]={stat="critDamage", amount=0.15*(1+masteries.stats.longswordMastery)*handMultiplier}
 				end
 				-- longsword solo, no other weapons: attack speed.
-				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) or tagCaching[otherHand.."TagCache"]["shield"]) then
+				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"] or tagCaching[otherHand.."TagCache"]["shield"]) then
 					--this would be funny to apply at full value if wielding alongside another longsword. especially with a minor damage penalty.
 					masteryBuffer[#masteryBuffer + 1]={stat="attackSpeedUp", amount=0.7*masteries.stats.longswordMastery}
 				else
