@@ -311,7 +311,7 @@ function masteries.apply(args)
 				local gritModifier=masteries.stats.shortswordMastery*handMultiplier
 
 				-- solo shortsword, no other weapons: increased damage, dash/dodge tech bonuses, and knockback resistance
-				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) or tagCaching[otherHand.."TagCache"]["shield"]) then
+				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"] or tagCaching[otherHand.."TagCache"]["shield"]) then
 					powerModifier=(powerModifier/1.5)
 					dashModifier=0.1*dashModifier/2
 					dodgeModifier=0.1*masteries.stats.shortswordMastery/2
