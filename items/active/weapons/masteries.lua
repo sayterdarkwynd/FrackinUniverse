@@ -255,8 +255,8 @@ function masteries.apply(args)
 					-- with another shortspear: penalize protection and crit chance (crit one is a joke.)
 					if tagCaching[otherHand.."TagCache"]["shortspear"] then
 						--yes, the awkward looking math is needed. this ensures that the system doesn't apply the same 0.8x twice, but instead splits it.
-						masteryBuffer[#masteryBuffer + 1]={stat="protection", effectiveMultiplier=1+((-1*(0.2*(1+masteries.stats.shortspearMastery)))*handMultiplier) }
-						masteryBuffer[#masteryBuffer + 1]={stat="critChance", effectiveMultiplier=1+((-1*(0.5*(1+masteries.stats.shortspearMastery)))*handMultiplier) }
+						masteryBuffer[#masteryBuffer + 1]={stat="protection", effectiveMultiplier=1+((0.2*(masteries.stats.shortspearMastery-1))*handMultiplier) }
+						masteryBuffer[#masteryBuffer + 1]={stat="critChance", effectiveMultiplier=1+((0.5*(masteries.stats.shortspearMastery-1))*handMultiplier) }
 					end
 				end
 			end
@@ -289,7 +289,7 @@ function masteries.apply(args)
 					-- dual wielding longsword with any other weapon: reduced protection, increased movespeed
 					--yes, the awkward looking math is needed. this ensures that the system doesn't apply the same 0.8x twice, but instead splits it.
 					if tagCaching[otherHand.."TagCache"]["weapon"] then
-						masteryBuffer[#masteryBuffer + 1]={stat="protection", effectiveMultiplier=1+((-1*(0.2*(1+masteries.stats.longswordMastery)))*handMultiplier) }
+						masteryBuffer[#masteryBuffer + 1]={stat="protection", effectiveMultiplier=1+((0.2*(masteries.stats.longswordMastery-1))*handMultiplier) }
 						table.insert(masteries.vars.ephemeralEffects,{{effect="runboost5", duration=0.02}})
 					end
 				end
@@ -351,8 +351,8 @@ function masteries.apply(args)
 				else
 					-- dual wielding heavy weapons: reduced damage and protection --you really hate these don't you?
 					if tagCaching[otherHand.."TagCache"]["longsword"] or tagCaching[otherHand.."TagCache"]["katana"] or tagCaching[otherHand.."TagCache"]["axe"] or tagCaching[otherHand.."TagCache"]["flail"] or tagCaching[otherHand.."TagCache"]["shortspear"] or tagCaching[otherHand.."TagCache"]["mace"] then
-						masteryBuffer[#masteryBuffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+((-1*(0.2*(1+masteries.stats.katanaMastery)))*handMultiplier) }
-						masteryBuffer[#masteryBuffer + 1]={stat="protection", effectiveMultiplier=1+((-1*(0.1*(1+masteries.stats.katanaMastery)))*handMultiplier) }
+						masteryBuffer[#masteryBuffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+((0.2*(masteries.stats.katanaMastery-1))*handMultiplier) }
+						masteryBuffer[#masteryBuffer + 1]={stat="protection", effectiveMultiplier=1+((0.1*(masteries.stats.katanaMastery-1))*handMultiplier) }
 					end
 					-- dual wielding with a short blade: increased energy
 					if tagCaching[otherHand.."TagCache"]["shortsword"] or tagCaching[otherHand.."TagCache"]["dagger"] or tagCaching[otherHand.."TagCache"]["rapier"] then
