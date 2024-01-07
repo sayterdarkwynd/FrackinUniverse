@@ -31,7 +31,7 @@ function init()
 		if diff>0 then
 			diff=math.floor(math.min(diff,maxOfflineSeconds)/rentTime)
 			offlineTicks=math.max(-1, diff - 1)
-            rentTimer=rentTime+1
+            rentTimer=rentTime-10
 		end
 	end
 end
