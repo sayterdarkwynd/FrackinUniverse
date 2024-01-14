@@ -18,7 +18,7 @@ jobs:
         env:
           PRDESC: ${{ github.event.pull_request.body }}
         run: |
-          echo "$PRDESC" | grep -qv '"' || ( echo "::error:: Description of Pull Request shouldn't contain quote symbols [\"], please replace them with single quote [']."; false )
+          echo "$PRDESC" | grep -qvz '"' || ( echo "::error:: Description of Pull Request shouldn't contain quote symbols [\"], please replace them with single quote [']."; false )
 
   # Check Lua files with "luacheck" tool (Lua static analyzer).
   luacheck:
