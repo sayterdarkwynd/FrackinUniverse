@@ -86,12 +86,6 @@ end
 function loadGPS()
 	player.interact("ScriptPane", "/interface/kukagps/kukagps.config", player.id())
 end
-function loadGPS2()
-	player.interact("ScriptPane", "/interface/kukagps/kukadungeon.config", player.id())
-end
-function loadGPS3()
-	player.interact("ScriptPane", "/interface/kukagps/kukadatetime.config", player.id())
-end
 
 function populateRacialDescription(race,notRecognized)
 	widget.clearListItems("racialDesc.textList")
