@@ -12,6 +12,10 @@ function addText(text)
 	widget.setText(path, text)
 end
 
+function addSeparator()
+        addText("-------------------------------------------------------------------------------")
+end
+
 function populateMaterialsList()
         widget.clearListItems(MATERIALS)
         local worldId = string_split(player.worldId(),":")
@@ -19,11 +23,58 @@ function populateMaterialsList()
         local system ={location = {tonumber(worldId[2]),tonumber(worldId[3]),tonumber(worldId[4])}}
 
         if worldId[1]=="InstanceWorld" then
-            addText("This is a Instance World")
+            addText("This is an Instance World")
+
             -- More info about the dungeon could be added here
         elseif worldId[1]=="ClientShipWorld" then
                 addText("This is a Ship World")
-                -- More info about the ship could be added here
+
+                local shipInfo = player.shipUpgrades()
+                local isBYOS = world.getProperty("fu_byos")
+
+                if isBYOS then
+                    addText("^green;Ship type:^reset; BYOS (Build Your Own Ship)")
+                    addText("Can be expanded by mining the exterior of the ship. There are no upgrade quests.")
+
+                    if (world.getProperty("fu_byos.systemTravel") or 0) > 0 then
+                        addText("^green;Engine status^reset;: fully operational ^yellow;FTL drive^reset; (can travel anywhere).")
+                    elseif (world.getProperty("fu_byos.planetTravel") or 0) > 0 then
+                        addText("^green;Engine status^reset;: ^yellow;STL drive^reset; (can travel within the system).")
+                        addText("Replace with ^yellow;Small FTL drive^reset; to travel to other systems.")
+                        addText("Note: travel within the system (regardless of engine) doesn't use fuel.")
+                    else
+                        addText("^green;Engine status^reset;: ^red;inactive^reset; (no working engine detected).")
+                        addText("Can be repaired by placing either ^yellow;STL Drive^reset; or ^yellow;Small FTL Drive^reset; anywhere on the ship.")
+                    end
+                else
+                    addText("^green;Ship type:^reset; Vanilla ship (not BYOS)")
+
+                    local shipLevel = shipInfo.shipLevel or 0
+                    addText("^green;Ship tier:^reset; " .. shipLevel)
+
+                    if not contains(player.shipUpgrades().capabilities, "systemTravel") then
+                        addText("^green;Engine status^reset;: ^red;inactive^reset; (not repaired).")
+                        addText("Ship will be immediately repaired upon meeting Esther Bright on the vanilla Outpost.")
+                    else
+                        addText("^green;Engine status^reset;: ^yellow;fully operational^reset;.")
+                        if shipLevel < 8 then
+                            addText("Upgraded the same way as in vanilla (either ^yellow;crew^reset; or ^yellow;licenses^reset;).")
+                        else
+                            addText("Maximum size reached (ship can't be expanded further).")
+                        end
+                    end
+                end
+
+                addSeparator()
+
+                addText(string.format(
+                    "^green;Fuel cost discount:^reset; %.f%%",
+                    100 * (shipInfo.fuelEfficiency or 0)
+                ))
+                addText("^green;Max fuel:^reset; " .. (shipInfo.maxFuel or '?'))
+                addText("^green;Ship speed (within the system):^reset; " .. (shipInfo.shipSpeed or '?'))
+
+                -- TODO: add information about the crew limits, etc.
         elseif worldId[1]=="CelestialWorld" then
             dungeons =root.assetJson("/interface/kukagps/dungeons.config")
             weather =root.assetJson("/interface/kukagps/weather.config")
@@ -168,7 +219,7 @@ function populateMaterialsList()
                 addText("       "..localOres)
             end
 
-            addText("-------------------------------------------------------------------------------")
+            addSeparator()
 
             if parameters.primaryBiome then -- asteroid fields don't have time in the typical sense
                 -- print date
@@ -201,12 +252,12 @@ function populateMaterialsList()
                 end
             end
 
-            addText("-------------------------------------------------------------------------------")
+            addSeparator()
 
             enviro = enviro.."."
             addText("^green;Enviroment Status Effects:^reset; "..enviro)
 
-            addText("-------------------------------------------------------------------------------")
+            addSeparator()
 
             addText("^green;Weather:^reset; ")
 
@@ -236,7 +287,7 @@ function populateMaterialsList()
                 addText("          "..weatherItem)
             end
 
-            addText("-------------------------------------------------------------------------------")
+            addSeparator()
 
             -- print dungeons
             addText("^green;Dungeons on Planet:^reset; ")
