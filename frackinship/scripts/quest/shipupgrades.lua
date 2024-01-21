@@ -97,9 +97,9 @@ function update(dt)
 		end
 
 		--crewStats is set in /scripts/companions/player.lua
-		local crewStats=status.statusProperty("fu_shipUpgradeStatProperty") or {shipmass=10,fuelEfficiency=0,shipSpeed=15,maxFuel=10000}
+		local crewStats=status.statusProperty("fu_shipUpgradeStatProperty") or {fuelEfficiency=0,shipSpeed=15,maxFuel=10000}
 		--sb.logInfo("crewStats=%s",crewStats)
-		--[09:00:44.604] [Info] crewStats={shipMass: 10, fuelEfficiency: 0, shipSpeed: 15, maxFuel: 10000}
+		--[09:00:44.604] [Info] crewStats={fuelEfficiency: 0, shipSpeed: 15, maxFuel: 10000}
 
 		local crewSizeBYOS = world.getProperty("fu_byos.crewSize") or 0
 		local shipMaxFuel = world.getProperty("ship.maxFuel")
@@ -111,7 +111,6 @@ function update(dt)
 		local shipShipSpeed = shipUpgrades.shipSpeed
 		local shipSpeedStat = status.stat("shipSpeed")
 		local shipSpeedBYOS = world.getProperty("fu_byos.shipSpeed") or 0
-		local shipMassBYOS = world.getProperty("fu_byos.shipMass") or 0
 
 		if crewSizeBYOS then
 			crewSizeNew, crewSizeBYOSNew = calculateNew("crewSize", crewSizeBYOS, crewSizeBYOSOld, shipCrewSize)
@@ -175,22 +174,6 @@ function update(dt)
 				player.upgradeShip({shipSpeed = shipSpeedNew})
 				shipSpeedBYOSOld = shipSpeedBYOSNew
 			end]]
-		end
-		if shipMassBYOS then
-			--local newShipMass=clampStat("shipMass",((crewStats and crewStats.shipMass) or 0)+shipMassBYOS-status.stat("shipMass"))
-			--crew modifier for ship mass is basically unused, go figure.
-			status.clearPersistentEffects("byos")
-			local shipMassStat = status.stat("shipMass")
-			--shipMassStat = status.stat("shipMass")
-			--sb.logInfo("ship mass stat %s, shipMassBYOS %s",shipMassStat,shipMassBYOS)
-			shipMassTotal, shipMassModifier = calculateNew("shipMass", shipMassBYOS, 0, shipMassStat)
-			--sb.logInfo("ship mass total, ship mass modifier, pre calc %s %s",shipMassTotal, shipMassModifier)
-			if shipMassStat + shipMassModifier ~= shipMassTotal then
-				shipMassModifier = shipMassTotal - shipMassStat
-			end
-			--sb.logInfo("ship mass total, ship mass modifier, post calc %s %s",shipMassTotal, shipMassModifier)
-			status.addPersistentEffect("byos", {stat = "shipMass", amount = shipMassModifier})
-			--status.addPersistentEffect("byos", {stat = "shipMass", amount = newShipMass})
 		end
 		--[[if maxFuelNew and world.getProperty("ship.fuel") > maxFuelNew then
 			world.setProperty("ship.fuel", maxFuelNew)
