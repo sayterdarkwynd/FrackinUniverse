@@ -19,7 +19,7 @@ function update(dt)
 			scanTimer=scanTimer+dt
 		end
 
-		storage.waterCount = math.min((storage.waterCount or 0) + (dt/math.sqrt(1+wellsDrawing)),100)
+		storage.waterCount = math.min((storage.waterCount or 0) + (dt/math.sqrt(wellsDrawing)),100)
 
 		for i=2,#config.getParameter('wellslots') do
 			local slotItem=world.containerItemAt(entity.id(),i-1)

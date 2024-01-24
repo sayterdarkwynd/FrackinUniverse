@@ -37,7 +37,7 @@ function update(dt)
 		self.transferUtilTimer=self.transferUtilTimer+dt
 	end
 
-	self.timer = self.timer - (dt/math.sqrt(1+wellsDrawing))
+	self.timer = self.timer - (dt/math.sqrt(wellsDrawing))
 	if self.timer <= 0 then
 		storage.waterCount = math.min((storage.waterCount or 0) + dt,1200)
 

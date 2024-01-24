@@ -100,7 +100,7 @@ function update(dt)
 		end
 		storage.timer=0
 	else
-		storage.timer=storage.timer+(dt/math.sqrt(1+wellsDrawing))
+		storage.timer=storage.timer+(dt/math.sqrt(wellsDrawing))
 	end
 end
 
