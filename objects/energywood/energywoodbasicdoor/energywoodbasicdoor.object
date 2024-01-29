@@ -1,0 +1,51 @@
+{
+  "objectName" : "energywoodbasicdoor",
+  "colonyTags" : ["energywood","door"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 95,
+  "description" : "A basic energy wood door.",
+  "shortdescription" : "Energy Wood Basic Door",
+  "race" : "generic",
+
+  "inventoryIcon" : "energywoodbasicdooricon.png",
+
+  "tooltipKind" : "door",
+  "largeImage" : "energywoodbasicdoor.png:right",
+  
+  "orientations" : [
+    {
+      "image" : "energywoodbasicdoor.png:default",
+      "imagePosition" : [-16, 0],
+      "renderLayer" : "Object+5",
+
+      "spaces" : [ [0, 0], [0, 1], [0, 2], [0, 3], [0, 4] ],
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/woodendoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/woodendoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "energywoodbasicdoor.png"
+  },
+  "animationPosition" : [-16, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}
