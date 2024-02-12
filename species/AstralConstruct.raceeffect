@@ -1,21 +1,43 @@
 {
 	"stats": [
-		{ "stat": "maxFood", "amount": 50 },
+		{"stat": "maxFood", "amount": 50},
 		{"stat": "maxHealth", "effectiveMultiplier": 1.20},
-		{"stat": "maxEnergy","effectiveMultiplier": 0.85},
+		{"stat": "maxEnergy", "effectiveMultiplier": 0.85},
 
-		{ "stat": "fuCharisma", "baseMultiplier": 0.85 },
-
-		{ "stat": "mentalProtection", "amount": 0.25 },
-		{ "stat": "physicalResistance", "amount": 0.05 },
-		{ "stat": "fireResistance", "amount": 0.15 },
-		{ "stat": "iceResistance", "amount": -0.25 },
-		{ "stat": "poisonResistance", "amount": 0.20 },
-		{ "stat": "electricResistance", "amount": 0.15 },
-		{ "stat": "radioactiveResistance", "amount": 0.50 },
-		{ "stat": "shadowResistance", "amount": -0.55 },
+		{"stat": "physicalResistance", "amount": 0.05},
+		{"stat": "fireResistance", "amount": 0.15},
+		{"stat": "iceResistance", "amount": -0.25},
+		{"stat": "poisonResistance", "amount": 0.20},
+		{"stat": "electricResistance", "amount": 0.15},
+		{"stat": "radioactiveResistance", "amount": 0.50},
+		{"stat": "shadowResistance", "amount": -0.55},
+	
+		{"stat": "breathProtection", "amount": 1} //No visual studio, I DON'T care that you think it'd be better to spread this shit.
+		{"stat": "fuCharisma", "baseMultiplier": 0.85},
 	],
-	"diet" : "omnivore",
-	"controlModifiers" : { "speedModifier" : 0.9 },
-	"weaponEffects" : []
+
+	"envEffects": [
+		{
+			"biomes": [ "astral", "aethersea", "aetherseafloor" ], //They like the aether
+			"stats": [
+				{
+					"stat": "maxEnergy",
+					"effectiveMultiplier": 1.1765
+				}
+			]
+		},
+		{
+			"biomes": [ "penumbra", "lightless" ], //They REALLY don't like the dark tho
+			"stats": [
+				{
+					"stat": "maxEnergy",
+					"effectiveMultiplier": 0.8235
+				}
+			]
+		}
+	],
+
+	"diet": [{}, { "ORGANIC": true, "INORGANIC": true, "ROBOT_PLANT": true } ], //They can eat basically anything.
+	"controlModifiers": { "speedModifier": 0.9 }, //slow AF
+	"weaponEffects": []
 }
