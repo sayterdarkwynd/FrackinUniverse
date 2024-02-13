@@ -12,5 +12,104 @@
 		"op": "replace",
 		"path": "/scriptConfig/dialog/crewmember/roleDescription/default/default/0",
 		"value": "I'll keep your engines in good shape. Thrust velocity is up by 25%, fuel costs reduced by 10%!"
-	}]
+	}],
+	[{
+		"op": "add",
+		"path": "/scriptConfig/crew/role/benefits/-",
+		"value": {
+			"type": "EphemeralEffect",
+			"effect": "fuenergytickupcrew1",
+			"duration": 300
+		}
+	}],
+	[{
+			"op": "test",
+			"inverse": true,
+			"path": "/scriptConfig/dialog/crewmember/combatBenefit"
+		},
+		{
+			"op": "add",
+			"path": "/scriptConfig/dialog/crewmember/combatBenefit",
+			"value": {}
+		}
+	],
+	[{
+			"op": "test",
+			"inverse": true,
+			"path": "/scriptConfig/dialog/crewmember/combatBenefit/default"
+		},
+		{
+			"op": "add",
+			"path": "/scriptConfig/dialog/crewmember/combatBenefit/default",
+			"value": {}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/scriptConfig/dialog/crewmember/combatBenefit/default/default"
+		},
+		{
+			"op": "add",
+			"path": "/scriptConfig/dialog/crewmember/combatBenefit/default/default/-",
+			"value": "Coffee time!"
+		}
+	],
+	[{
+			"op": "test",
+			"inverse": true,
+			"path": "/scriptConfig/dialog/crewmember/combatBenefit/default/default"
+		},
+		{
+			"op": "add",
+			"path": "/scriptConfig/dialog/crewmember/combatBenefit/default",
+			"value": {
+				"default": ["Coffee time!"]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"inverse": true,
+			"path": "/scriptConfig/dialog/crewmember/fieldBenefit"
+		},
+		{
+			"op": "add",
+			"path": "/scriptConfig/dialog/crewmember/fieldBenefit",
+			"value": {}
+		}
+	],
+	[{
+			"op": "test",
+			"inverse": true,
+			"path": "/scriptConfig/dialog/crewmember/fieldBenefit/default"
+		},
+		{
+			"op": "add",
+			"path": "/scriptConfig/dialog/crewmember/fieldBenefit/default",
+			"value": {}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/scriptConfig/dialog/crewmember/fieldBenefit/default/default"
+		},
+		{
+			"op": "add",
+			"path": "/scriptConfig/dialog/crewmember/fieldBenefit/default/default/-",
+			"value": "Coffee time!"
+		}
+	],
+	[{
+			"op": "test",
+			"inverse": true,
+			"path": "/scriptConfig/dialog/crewmember/fieldBenefit/default/default"
+		},
+		{
+			"op": "add",
+			"path": "/scriptConfig/dialog/crewmember/fieldBenefit/default",
+			"value": {
+				"default": ["Coffee time!"]
+			}
+		}
+	]
 ]

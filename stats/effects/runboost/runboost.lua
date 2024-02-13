@@ -8,7 +8,7 @@ function update(dt)
 	if delayInit then delayInit=false init() end
 	animator.setParticleEmitterActive("flames", config.getParameter("particles", true) and mcontroller.onGround() and mcontroller.running())
 	mcontroller.controlModifiers({
-		speedModifier = 1.5
+		speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.5
 	})
 end
 

@@ -15,12 +15,18 @@
   "windupTime" : 0.0,
   "cooldown" : 0.4,
 
-
-
   "projectileType" : "peglacitier0knife",
   "projectileConfig" : {
     "speed" : 45,
-    "power" : 5
+    "power" : 5,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item.ogg" ]
+      }
+    ]
   }
 }
 

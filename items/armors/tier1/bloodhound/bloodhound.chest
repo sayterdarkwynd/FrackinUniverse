@@ -4,8 +4,7 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "+^green;5^reset;% Charisma
-^orange;Set Bonuses^reset;:
+  "description" : "^orange;Set Bonuses^reset;:
 ^yellow;^reset; Damage x^green;1.05^reset;
 ^yellow;^reset; Scythe/Sniper: +^green;2^reset;% Crit Chance, Damage x^green;1.15^reset;
 ^yellow;^reset; Wasteland/Eden: Damage/Health x^green;1.25^reset;",
@@ -55,6 +54,11 @@
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "radioactiveResistance",
       "amount" : 0.02
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fuCharisma",
+      "baseMultiplier" : 1.05
     }
   ],
   "statusEffects" : [
@@ -62,10 +66,6 @@
     {
       "stat" : "fu_bloodhoundset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "fuCharisma",
-      "baseMultiplier" : 1.05
     }
   ],
 

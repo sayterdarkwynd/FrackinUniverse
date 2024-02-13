@@ -39,8 +39,7 @@ function update(dt)
 		if storage.timer > 0 then
 			if power.consume(config.getParameter('isn_requiredPower')*dt) then
 				animator.setAnimationState("machineState", "active")
-				--storage.timer = storage.timer - (dt/wellsDrawing)
-				storage.timer=storage.timer-(dt/math.sqrt(1+wellsDrawing))
+				storage.timer=storage.timer-(dt/math.sqrt(wellsDrawing))
 			else
 				animator.setAnimationState("machineState", "idle")
 			end
@@ -88,8 +87,8 @@ function setDesc()
 end
 
 function toHex(num)
-	local hex = string.format("%X", math.floor(num + 0.5))
-	if num < 16 then hex = "0"..hex end
+	local num2=math.floor(num + 0.5)
+	local hex = string.format("%02X", num2)
 	return hex
 end
 

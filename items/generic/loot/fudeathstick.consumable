@@ -4,14 +4,15 @@
   "price" : 100,
   "category" : "medicine",
   "inventoryIcon" : "deathstick.png",
-  "description" : "A narcotic extracted from the Gemglow seed.\n^cyan;+^white;20 ^cyan;EP^gray;, ^cyan;Heavily Intoxicated^gray;, ^red;-^white;20 ^red;Defense^reset; (220s)",
+  "description" : "A narcotic extracted from the Gemglow seed.\n^cyan;+^white;20 ^cyan;EP^gray;, ^cyan;Heavily Intoxicated^gray;, ^red;-^white;20 ^red;Defense^reset; (220s) ^blue;Madness Gain^reset; 2",
   "shortdescription" : "Telk Death-Stick",
   "effects" : [ [
     "madnessgain",
     {"effect" : "booze2", "duration" : 220},
     {"effect" : "defenseboostneg20", "duration" : 220},
-    {"effect" : "maxenergyboost2", "duration" : 220}
+    {"effect" : "maxenergyboost3", "duration" : 220}
   ] ],
   "tooltipKind" : "food",
+  "emitters" : [ "bandageuse" ],
   "blockingEffects" : [ "strongcoffee4" ]
 }

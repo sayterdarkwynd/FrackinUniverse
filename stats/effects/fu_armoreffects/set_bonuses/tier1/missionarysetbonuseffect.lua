@@ -23,13 +23,13 @@ function update(dt)
 		effect.expire()
 	else
 		checkWeapons()
-		mcontroller.controlModifiers({speed=1.05,jump=1.05})
+		mcontroller.controlModifiers({speedModifier=(status.statPositive("spikeSphereActive") and 1.0) or 1.05,jumpModifier=1.05})
 	end
 end
 
 function checkWeapons()
 	local weapons=weaponCheck({ "quarterstaff","fist" })
-	if (weapons["either"] and weapons["twoHanded"]) or weapons["both"] then
+	if (weapons["either"] and (weapons["twoHanded"] or weapons["both"])) then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonus1Handle,weaponBonus1)
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonus1Handle,{})

@@ -1,0 +1,45 @@
+{
+  "projectileName" : "corrosivegrenadefloran",
+  "image" : "corrosivegrenade.png",
+  "animationCycle" : 0.25,
+  "physics" : "grenade",
+  "frameNumber" : 4,
+  "pointLight" : false,
+  "speed" : 50,
+  "piercing" : false,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/acidexplosion/acidexplosion.config"
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/poisonsmoke/poisonsmoke.config"
+    },    
+    {
+      "action" : "projectile",
+      "type" : "corrosiveparticle",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 35
+    },
+    {
+      "action" : "projectile",
+      "type" : "corrosiveparticle",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : -35
+    },
+    {
+      "action" : "projectile",
+      "type" : "corrosiveparticle",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 0
+    }
+  ],
+  "power" : 3.0,
+  "damageKind" : "poison"
+}
+
+

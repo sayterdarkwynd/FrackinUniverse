@@ -78,7 +78,12 @@ end
 
 function modeButton()
 	if viewing == "##albums##" then
-		viewing = widget.getData("scrollArea.list."..widget.getListSelected("scrollArea.list")..".name")
+		local selected=widget.getListSelected("scrollArea.list")
+		if not selected then
+			widget.setButtonEnabled("modeButton", false)
+			return
+		end
+		viewing = widget.getData("scrollArea.list."..selected..".name")
 		widget.setText("titleText", viewing or "All")
 
 		local img = "/interface/scripted/fm_musicplayer/controls.png:album"

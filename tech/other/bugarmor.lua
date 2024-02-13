@@ -55,7 +55,6 @@ function setStance()
 			"foodcostarmor",
 			"thelusiantechdummyshield",
 			{stat = "shieldBash", amount = 25},
-			{stat = "shieldStaminaRegenBlock", effectiveMultiplier = 0.5},
 			{stat = "perfectBlockLimit", effectiveMultiplier = 2},
 			{stat = "shieldBashPush", amount = 5},
 			{stat = "maxEnergy", effectiveMultiplier = 0.50}
@@ -98,13 +97,13 @@ function update(args)
 	end
 
 	if self.stance == "defense" then -- in defense stance, we are slow
-		mcontroller.controlModifiers({speedModifier = 0.75})
+		mcontroller.controlModifiers({speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 0.75})
 	elseif self.stance == "shield" then -- in shield stance we are slightly slower
-		mcontroller.controlModifiers({speedModifier = 0.90})
+		mcontroller.controlModifiers({speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 0.90})
 	elseif self.stance == "attack" then -- in attack stance we are faster
-		mcontroller.controlModifiers({speedModifier = 1.1})
+		mcontroller.controlModifiers({speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.1})
 	elseif self.stance == "jump" then -- in jump stance we are faster and jump higher
-		mcontroller.controlModifiers({speedModifier = 1.1, airJumpModifier = 1.1})
+		mcontroller.controlModifiers({speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.1, airJumpModifier = 1.1})
 	end
 end
 

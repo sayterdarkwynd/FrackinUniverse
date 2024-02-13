@@ -23,7 +23,7 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		mcontroller.controlModifiers({jump=1.8})
+		mcontroller.controlModifiers({jump=1.08})
 		checkWeapons()
 	end
 end

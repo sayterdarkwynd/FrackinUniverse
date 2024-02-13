@@ -22,7 +22,5 @@ end
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
-	else
-		--fart
 	end
 end

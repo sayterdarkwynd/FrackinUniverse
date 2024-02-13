@@ -109,16 +109,16 @@ function update(dt)
 	end
 	self.helper:runScripts("racialscript", self, dt)
 
-	-- Breath handling
-	-- which, as it happens, is already handled by the vanilla script. so this applies TWICE.
+	-- Waterbreathing: negate the breath loss when submerged in liquid.
 	if entity.entityType() ~= "npc" then
 		local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-		if status.statPositive("breathProtection") or world.breathable(mouthPosition)
-		or status.statPositive("waterbreathProtection") and world.liquidAt(mouthPosition)
+
+		-- We don't need to do anything if there is "breathProtection" or location is breathable,
+		-- because vanilla Lua script already handles this case.
+		if not status.statPositive("breathProtection") and status.statPositive("waterbreathProtection")
+			and not world.breathable(mouthPosition) and world.liquidAt(mouthPosition)
 		then
 			status.modifyResource("breath", status.stat("breathRegenerationRate") * dt)
-		else
-			status.modifyResource("breath", -status.stat("breathDepletionRate") * dt)
 		end
 	end
 	tagCaching.update()

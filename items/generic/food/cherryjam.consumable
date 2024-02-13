@@ -4,7 +4,7 @@
   "price" : 15,
   "category" : "preparedFood",
   "inventoryIcon" : "cherryjam.png",
-  "description" : "Super sweet. Great on toast. ^green;Type: Fruit Dessert^reset;",
+  "description" : "Super sweet. Great on toast.\n^cyan;+^white;20% ^cyan;EP ^gray;(^white;150s^gray;)\n^green;Type: Fruit Dessert^reset;",
   "shortdescription" : "Cherry Jam",
   "foodValue" : 30,
   "tooltipKind" : "food",
@@ -13,5 +13,13 @@
   "itemAgingScripts" : ["/scripts/items/rotting.lua"],
   "rottingMultiplier" : 1,
   "blockingEffects" : ["wellfed"],
-  "effects": [ [ {"effect": "fruit_dessert"} ] ]
+  "effects" : [ [
+    {
+        "effect" : "maxenergyscalingboostfood",
+        "duration" : 150
+    },
+    {
+        "effect" : "fruit_dessert"
+    }
+  ] ]
 }

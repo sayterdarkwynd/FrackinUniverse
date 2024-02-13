@@ -12,7 +12,7 @@ function update(dt)
 			{stat = "maxHealth", baseMultiplier = 0.95},
 			{stat = "powerMultiplier", baseMultiplier = 0.95}
 		})
-		mcontroller.controlModifiers({speedModifier=1.1})
+		mcontroller.controlModifiers({speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.1})
 	else
 		effect.setStatModifierGroup(nightFearEffects,{})
 	end

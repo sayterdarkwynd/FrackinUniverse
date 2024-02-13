@@ -25,13 +25,13 @@ function update(dt)
 
 		checkWeapons()
 		mcontroller.controlModifiers({
-			speedModifier = 1.10
+			speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.10
 		})
 	end
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"melee","shortsword","broadsword","whip","axe","hammer","spear","shortspear","dagger","longsword","rapier","mace","scythe","quarterstaff","katana","daikatana"})
+	local weapons=weaponCheck({"melee","dagger","knife","sword","shortsword","longsword","broadsword","rapier","katana","axe","greataxe","scythe","mace","hammer","spear","shortspear","quarterstaff","flail"})
 	if weapons["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else

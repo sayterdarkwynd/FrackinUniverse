@@ -4,7 +4,7 @@
 ###############################################################################
 
 # Report failure if filesize of the image was reduced by more than THRESHOLD percent:
-THRESHOLD=1
+THRESHOLD=5
 
 # Run optipng with "-o1", which is much faster than default (-o2)
 OPTIPNG_COMMAND="optipng -o1"

@@ -15,8 +15,8 @@ armorBonus={
 	{stat = "slushslowImmunity", amount = 1},
 	{stat = "fireStatusImmunity", amount = 1},
 	{stat = "biomeradiationImmunity", amount = 1},
-	{stat = "radburnImmunity", amount = 1},
 	{stat = "ffextremeradiationImmunity", amount = 1},
+	{stat = "radiationburnImmunity", amount = 1},
 	{stat = "sulphuricImmunity", amount = 1}
 }
 
@@ -41,7 +41,7 @@ function update(dt)
 		checkWeapons()
 		checkPlanet()
 		mcontroller.controlModifiers({
-			speedModifier = 1.05
+			speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.05
 		})
 	end
 end

@@ -9,10 +9,20 @@ function init()
 	message.setHandler("setInvertSlots", function (_, _, inverted) storage.invertSlots = inverted end)
 	message.setHandler("setInputSlots", function (msg, _, slots) storage.inputSlots = slots end)
 	message.setHandler("setOutputSlots", function (msg, _, slots) storage.outputSlots = slots end)
+	-- 'Even Split'
 	message.setHandler("setRR", function (msg, _, rr) storage.roundRobin = rr end)
-	message.setHandler("setRRS", function (msg, _, rr) storage.roundRobinSlots = rr end)
+	-- 'Slot Split'
+	message.setHandler("setRRS", function (msg, _, rrs)
+		storage.roundRobinSlots = rrs
+		if rrs then storage.onlyStack = false end
+	end)
+	--'Leave One'
 	message.setHandler("setLO", function (msg, _, leaveOne) storage.leaveOne = leaveOne end)
-	message.setHandler("setOS", function (msg, _, onlyStack) storage.onlyStack = onlyStack end)
+	--'Stack Only'
+	message.setHandler("setOS", function (msg, _, onlyStack)
+		storage.onlyStack = onlyStack
+		if onlyStack then storage.roundRobinSlots = false end
+	end)
 	object.setInteractive(true)
 end
 
@@ -24,9 +34,10 @@ function update(dt)
 	end
 	deltatime = 0
 	self.routerItems=world.containerItems(entity.id())
-	transferUtil.updateInputs()
-	transferUtil.updateOutputs()
+	-- local nodeUpdatePassed=transferUtil.updateNodeLists()
+	transferUtil.updateNodeLists()
 
+	-- if (not nodeUpdatePassed) and transferUtil.powerLevel(transferUtil.vars.logicNode) then
 	if transferUtil.powerLevel(transferUtil.vars.logicNode) then
 		backflowInstances=0
 		routeItems(dt)
@@ -51,6 +62,8 @@ end
 
 function initVars()
 	self.routerItems={}
+	transferUtil.vars.isRouter=true
+	-- transferUtil.vars.isRelayNode=true
 	transferUtil.vars.inContainers={}
 	transferUtil.vars.outContainers={}
 	if storage.inputSlots == nil then
@@ -73,6 +86,9 @@ function initVars()
 	end
 	if not storage.invertSlots then
 		storage.invertSlots={false,false}
+	end
+	if storage.roundRobinSlots and storage.onlyStack then
+		storage.onlyStack=false
 	end
 	self.init=true
 end
@@ -121,12 +137,12 @@ function routeItems(dt)
 
 		if sourceItems then
 			for indexIn,item in pairs(sourceItems or {}) do
-				if not storage.leaveOne or item.count > 1 then
+				if (not storage.leaveOne) or (item.count > 1) then
 					if storage.leaveOne then
 						item.count = item.count - 1
 					end
 					local pass,mod = checkFilter(item)
-					if pass and (not storage.roundRobin or item.count>=(mod*outputSizeG)) then
+					if pass and ((not storage.roundRobin) or (item.count>=(mod*outputSizeG))) then
 						local outputSlotCountG = util.tableSize(storage.outputSlots)
 						local originalCount=item.count
 						if storage.roundRobin then
@@ -151,7 +167,6 @@ function routeItems(dt)
 								local containerSize=world.containerSize(targetContainer)
 								local outputSlotsBuffer={}
 
-
 								for _,v in pairs(storage.outputSlots) do
 									if v <= containerSize then
 										table.insert(outputSlotsBuffer,v)
@@ -159,7 +174,6 @@ function routeItems(dt)
 								end
 
 								local outputSlotCount=util.tableSize(outputSlotsBuffer)
-
 
 								local subCount=item.count
 								if storage.roundRobinSlots and storage.invertSlots[2] then
@@ -170,29 +184,36 @@ function routeItems(dt)
 									item.count = math.floor(buffer)
 								end
 
-								if validInputSlot(indexIn) then
-									if outputSlotCount > 0 or storage.onlyStack then
-										local buffer=item.count * (storage.roundRobin and outputSize or 1) * (storage.roundRobinSlots and outputSlotCount or 1)
+								if ((#storage.outputSlots==0) or (#outputSlotsBuffer>0)) and validInputSlot(indexIn) then
+									if (outputSlotCount > 0) or storage.onlyStack then
+										local buffer=item.count * ((storage.roundRobin and outputSize) or 1) * ((storage.roundRobinSlots and outputSlotCount) or 1)
 										if item.count>0 and buffer<=originalCount then
 											for indexOut=1,containerSize do
 												if validOutputSlot(indexOut) then
-													if storage.onlyStack and not world.containerItemAt(targetContainer,indexOut-1) then
-														if not storage.roundRobinSlots and storage.roundRobin then
+													if (storage.onlyStack) and (not world.containerItemAt(targetContainer,indexOut-1)) then
+														if (not storage.roundRobinSlots) and (storage.roundRobin) then
 															break
 														end
 													else
 														local leftOverItems=world.containerPutItemsAt(targetContainer,item,indexOut-1)
 														if leftOverItems then
-															world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
-															originalCount=originalCount-(item.count-leftOverItems.count)
+															local leftCount=item.count-leftOverItems.count
+															if leftCount>0 then
+																world.containerTakeNumItemsAt(sourceContainer,indexIn-1,leftCount)
+																originalCount=originalCount-leftCount
+															end
 															if not storage.roundRobinSlots then
 																if not storage.roundRobin then
 																	item = leftOverItems
 																else
-																	break
+																	--break--commenting out until someone says something about a bug to do with it. this was causing transfers to abort w/o transferring past first item
 																end
 															end
 														else
+															local itemBefore=world.containerItemAt(sourceContainer,indexIn-1)
+															if not itemBefore then
+																break
+															end
 															world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
 															originalCount=originalCount-item.count
 															if not (storage.roundRobinSlots) then

@@ -1,3 +1,13 @@
+local efficient
+local wasteful
+local lethal
+local overConsume
+local healPercent
+local resource1
+local resource2
+local ratio
+local flat
+local active
 
 function init()
 	resource1=config.getParameter("resource1","health")--the one to convert to
@@ -6,40 +16,60 @@ function init()
 	efficient=config.getParameter("efficient",true)--efficient means it will not waste any resource.
 	wasteful=config.getParameter("wasteful",false)--if this is true, efficient is ignored. will continually drain regardless.
 	lethal=config.getParameter("lethal",false)--if this is true, efficient doesn't matter nor does wasteful. when the resource runs dry, it drains instead of restores.
+	overConsume=config.getParameter("overConsume",false)--whether to use overconsume or not. requires efficient,wasteful and lethal to be false.
 
 	ratio = config.getParameter("ratio", 1.0)--resource2 per resource1 (both percentages)
-	flat = config.getParameter("flat",false)--healPercent is per second instead of over the duration if this is false
-	self.healingRate = config.getParameter("healPercent", 0)
+	flat = config.getParameter("flat",false)--healPercent is per second instead of over the duration if this is false. if no duration, this is ignored
+	healPercent = config.getParameter("healPercent", 0)--amount to restore
 
 	if (not flat) and effect.duration() and (effect.duration()>0) then
-		self.healingRate=self.healingRate / effect.duration()
+		healPercent=healPercent / effect.duration()
 	end
-	active=status.isResource(resource1) and status.isResource(resource2)
+	if (ratio==0.0) then ratio=false end--scriptopt shenanigans?
+	local a1=status.isResource(resource1)
+	local a2=status.isResource(resource2)
+	active=a1 and ((not ratio) or a2)
 end
 
 function update(dt)
 	if active then
-		if status.isResource(resource2) and ratio ~= 0.0 then
+		if ratio then
 			if lethal or wasteful then
-				if status.consumeResource(resource2, math.abs(status.resourceMax(resource2)*self.healingRate*dt*ratio)) then
-					status.modifyResourcePercentage(resource1, self.healingRate * dt)
+				if consume(resource2, calcR2(dt*ratio)) then
+					modR1(dt)
 				elseif lethal then
-					status.modifyResourcePercentage(resource1, self.healingRate * dt*-1)
+					modR1(dt*-1)
 				end
 			elseif (not efficient) then
 				if status.resourcePercentage(resource1)<1.0 then
-					if status.consumeResource(resource2, math.abs(status.resourceMax(resource2)*self.healingRate*dt*ratio)) then
-						status.modifyResourcePercentage(resource1, self.healingRate * dt)
+					if consume(resource2, calcR2(dt*ratio),overConsume) then
+						modR1(dt)
 					end
 				end
 			else
-				local delta=math.min(1.0-status.resourcePercentage(resource1),self.healingRate*dt)/(self.healingRate*dt)
-				if status.consumeResource(resource2, math.abs(status.resourceMax(resource2)*self.healingRate*dt*ratio*delta)) then
-					status.modifyResourcePercentage(resource1, self.healingRate * dt  * delta)
+				local delta=math.min(1.0-status.resourcePercentage(resource1),healPercent*dt)/(healPercent*dt)
+				if consume(resource2, calcR2(dt*ratio*delta)) then
+					modR1(dt*delta)
 				end
 			end
 		else
-			status.modifyResourcePercentage(resource1, self.healingRate*dt)
+			modR1(dt)
 		end
 	end
+end
+
+function consume(resource,amount,over)
+	if over then
+		return status.overConsumeResource(resource,amount)
+	else
+		return status.consumeResource(resource,amount)
+	end
+end
+
+function calcR2(mult)
+	return math.abs(status.resourceMax(resource2)*healPercent*mult)
+end
+
+function modR1(mult)
+	status.modifyResourcePercentage(resource1, mult*healPercent)
 end

@@ -1,12 +1,12 @@
 {
   "itemName" : "peglacitier2knife",
-  "price" : 150,
+  "price" : 50,
   "rarity" : "Common",
   "level" : 2,
   "inventoryIcon" : "peglacitier2knife.png",
   "image" : "peglacitier2knife.png",
   "shortdescription" : "Burster",
-  "description" : "The standard issue Peglaci hunting grenade.",
+  "description" : "The standard issue Peglaci explosive hunting dart.",
 
   "ammoUsage" : 1,
   "category" : "throwableItem",
@@ -17,10 +17,16 @@
 
   "projectileType" : "peglacitier2knife",
   "projectileConfig" : {
-    "speed" : 45,
-    "power" : 8
-
-
+    "speed" : 65,
+    "power" : 8.5,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item.ogg" ]
+      }
+    ]
   }
 }
 

@@ -10,6 +10,7 @@ canvasSize = nil
 verified = false
 canvas = nil
 data = nil
+enableCheats=false
 
 -- variables
 searchListRepopulationCooldown = 0
@@ -79,7 +80,7 @@ function init()
 		end
 	end
 
-	-- Check if the tree was updated, and reaquire blueprints for already learned research
+	-- Check if the tree was updated, and reacquire blueprints for already learned research
 	for tree, dataString in pairs(researchedTable) do
 		if data.versions[tree] then
 			local oldVersion = ""
@@ -145,7 +146,12 @@ function update(dt)
 	end
 
 	if player.isAdmin() then
-		widget.setVisible("cheatBox", true)
+		if enableCheats then
+			widget.setVisible("cheatBox", true)
+		else
+			widget.setText("cheatBox", "")
+			widget.setVisible("cheatBox", false)
+		end
 	else
 		widget.setText("cheatBox", "")
 		widget.setVisible("cheatBox", false)

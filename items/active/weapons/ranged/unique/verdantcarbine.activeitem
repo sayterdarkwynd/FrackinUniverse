@@ -5,14 +5,14 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "A deadly mix of plant and machine.
-^yellow;Inflicts poison^reset;
+^yellow;Inflicts poison, ^cyan;Floran^reset;
 ^#e43774;6-round microbursts (x6 dmg)^reset;",
   "shortdescription" : "Verdant Carbine",
   "category" : "assaultRifle",
   "level" : 3,
   "tooltipKind" : "gun2",
   "weaponType" : "Carbine",
-  "itemTags" : ["weapon","ranged","assaultrifle","bioweapon", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","assaultrifle","bioweapon", "upgradeableWeapon","floran"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -22,11 +22,7 @@
     "barrel" : "",
     "muzzleFlash" : "/items/active/weapons/ranged/bulletmuzzle.png"
   },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/weapons/verdantcarbine.ogg" ]
-    }
-  },
+  "animationCustom" : {"sounds" : {"fire" : [ "/sfx/weapons/verdantcarbine.ogg" ]}},
 
   "baseOffset" : [1.5, 0.35],
   "muzzleOffset" : [1.25, 0.125],
@@ -46,7 +42,8 @@
     "projectileCount" : 1,
     "fireType" : "burst",
     "burstCount" : 6,
-    "burstTime" : 0.01,
+    "burstInterval" : 1.5,
+    "burstTime" : 0.05,
 
     "projectileType" : "toxicdart",
     "projectileParameters" : {
@@ -87,7 +84,7 @@
   "critBonus" : 3,
   "isAmmoBased" : 1,
   "magazineSize" : 12,
-  "reloadTime" : 1.2,
+  "reloadTime" : 0.8,
   //recoil
   "hasRecoil" : 1,
   "recoilSpeed" : 200,

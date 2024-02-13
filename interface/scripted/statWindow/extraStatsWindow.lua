@@ -10,16 +10,9 @@ function init()
 end
 
 function update()
-	-- Breath calculated separately
-	local breatRegen = status.stat("breathRegenerationRate")
-	local breathMax = status.stat("maxBreath")
-
 	-- for stat, type in pairs(self.stats) do
 	for stat, type in pairs(self.data.stats) do
 		local value = status.stat(stat)
-		--[[if stat=="healthRegen" then
-			sb.logInfo("%s",{stat=stat,value=value})
-		end]]
 
 		-- Getting rid of the redundant .0's
 		local fraction = math.abs(math.floor(value) - value)
@@ -32,7 +25,10 @@ function update()
 			widget.setText(stat, value)
 
 		elseif type == "percent" then
-			value = tostring(average(value * 100)).."%"
+			value=average(value * 100)
+			local sign=""
+			if value>0 then sign="+" elseif value<0 then sign="-" end
+			value = sign..tostring(value).."%"
 			widget.setText(stat, value)
 
 		elseif type == "crit" then
@@ -52,7 +48,6 @@ function update()
 		elseif type == "food" then
 			local foodVal=status.isResource("food") and status.resourceMax("food") or 0
 			if foodVal~=0 then
-				--value = math.abs(shorten(1 / (value / status.resourceMax("food")) * 0.01))--blatantly wrong
 				value=math.abs(shorten(foodVal/(value*60.0)))
 				if value % 1 == 0 then
 					widget.setText(stat, tostring(math.floor(value)))
@@ -63,13 +58,24 @@ function update()
 				widget.setText(stat, "---")
 			end
 
+		elseif type == "charisma" then
+			local v2=(value-1)*100
+			if v2>0 then
+				v2 = "+"..tostring(util.round(v2,1)).."%"
+			elseif v2<0 then
+				v2 = "-"..tostring(util.round(v2,1)).."%"
+			else
+				v2="0%"
+			end
+			widget.setText(stat, v2)
+
 		elseif type == "breath" then
-			local breathRate = value
+			-- Breath calculated separately. this only is fired off breathDepletionRate and should NOT fire off breathRegenerationRate or maxBreath
+			local breathRegen = status.stat("breathRegenerationRate")
+			local breathMax = status.stat("maxBreath")
 			if breathMax > 0 then
-				-- Why divided by 2 you ask? Fuck if I know, it returns double the right value otherwise. <-zimber's note
-				--khe: that's because breath timer is decremented twice per update; once in vanilla code, once in FR code.
-				widget.setText("breathMaxTime", breathMax / breathRate / 2)
-				widget.setText("breathRegenTime", breathMax / breatRegen / 2)
+				widget.setText("breathMaxTime", breathMax / value)
+				widget.setText("breathRegenTime", breathMax / breathRegen)
 			end
 		end
 	end

@@ -19,13 +19,16 @@ armorBonus={
 
 	{stat = "biomeradiationImmunity", amount = 1},
 	{stat = "ffextremeradiationImmunity", amount = 1},
-	{stat = "radiationburnImmunity", amount = 1.0},
+	{stat = "radiationburnImmunity", amount = 1},
 
 	{stat = "biomecoldImmunity", amount = 1},
 	{stat = "ffextremecoldImmunity", amount = 1},
 
 	{stat = "fallDamageMultiplier", effectiveMultiplier = 0.25},
-	{stat = "grit", amount=0.75}
+	{stat = "grit", amount=0.75},
+
+	{stat = "energyRegenPercentageRate", effectiveMultiplier = 0.80},
+	{stat = "energyRegenBlockTime", effectiveMultiplier = 1.2}
 }
 
 function init()
@@ -39,11 +42,13 @@ end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
-		status.removeEphemeralEffect("convert_energy-health_10_1-1")
+		status.removeEphemeralEffect("convert_energy-health_10_1-1_inefficientover")
+		status.removeEphemeralEffect("devaarmorpenalty")
 		effect.expire()
 	else
-		status.addEphemeralEffect("convert_energy-health_10_1-1")
-		mcontroller.controlModifiers({speedModifier = 1.10})
+		status.addEphemeralEffect("convert_energy-health_10_1-1_inefficientover")
+		status.addEphemeralEffect("devaarmorpenalty")
+		mcontroller.controlModifiers({speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.15})
 		checkWeapons()
 	end
 

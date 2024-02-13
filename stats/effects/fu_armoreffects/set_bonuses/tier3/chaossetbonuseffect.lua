@@ -23,7 +23,7 @@ function update(dt)
 		setRegen(0.0)
 		effect.expire()
 	else
-		mcontroller.controlModifiers({speedModifier = 1.1})
+		mcontroller.controlModifiers({speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.1})
 
 		checkWeapons()
 		setRegen(0.005)

@@ -31,7 +31,7 @@ function init()
 		if diff>0 then
 			diff=math.floor(math.min(diff,maxOfflineSeconds)/rentTime)
 			offlineTicks=math.max(-1, diff - 1)
-            rentTimer=rentTime+1
+            rentTimer=rentTime-10
 		end
 	end
 end
@@ -50,6 +50,7 @@ function update(dt)
 		world.containerPutItemsAt(entity.id(),{name=wellSlots[1].name,count=(10 * (wellsDrawing) * (bonusHappiness/10))*(1+offlineTicks)},0)
 		offlineTicks=0
 		rentTimer = 0
+		object.setConfigParameter("leftTime", os.time() )
 	end
 end
 
@@ -77,8 +78,6 @@ end
 
 function uninit()
 	object.setConfigParameter("leftTime", os.time() )
-	--sb.logInfo( tostring( config.getParameter("leftTime", "LMAO NOPE") ) )
-	--sb.logInfo("uninit")
 end
 
 function fu_isColonyCore() return true end

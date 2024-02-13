@@ -3,10 +3,10 @@
   "price" : 300,
   "rarity" : "Rare",
   "level" : 5,
-    "inventoryIcon" : "peglacitier5knife.png",
+  "inventoryIcon" : "peglacitier5knife.png",
   "image" : "peglacitier5knife.png",
   "shortdescription" : "Fanblade",
-  "description" : "Throws a spread of deadly razor-sharp darts.",
+  "description" : "Throws a swift dart that chills foes.",
 
   "ammoUsage" : 1,
   "category" : "throwableItem",
@@ -17,8 +17,16 @@
 
   "projectileType" : "peglacitier5knife",
   "projectileConfig" : {
-    "speed" : 45,
-    "power" : 20
+    "speed" : 75,
+    "power" : 18,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item.ogg" ]
+      }
+    ]
   }
 }
 

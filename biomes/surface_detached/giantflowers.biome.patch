@@ -23,7 +23,17 @@
             "tracks" : [ "/music/Pure.ogg","/music/Temporis.ogg","/music/vangelis.ogg","/music/depthsOfDespair.ogg","/music/ambient_reformed.ogg","/music/scorian-flow.ogg","/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
           }
         }
-      },   
+      },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/4/treeFoliageList/-",
+    "value": "pinkflower2"
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/4/treeFoliageList/-",
+    "value": "whitepetals"
+  },
   {
     "op": "add",
     "path": "/surfacePlaceables/items/-",
@@ -75,6 +85,25 @@
     "op": "add",
     "path": "/undergroundPlaceables/items/-",
     "value":
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+            "parameters" : { }
+          }
+        ]
+      }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
     {
         "mode" : "floor",
         "priority" : 0,
@@ -84,6 +113,20 @@
         "type" : "treasureBox",
         "treasureBoxSets" : [ "basicChest", "ffbasicChest", "ffbasicChest2" ]
     }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:minibiomeChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "giantflowerChest" ]
+      }
   },
   {
     "op": "add",
@@ -131,6 +174,20 @@
           }
         ]
     }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "jungleflower1", "jungleflower2", "jungleflower3" ]
+      }
   },
 {"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
   "mode" : "floor",

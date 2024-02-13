@@ -2,11 +2,14 @@ require("/scripts/FRHelper.lua")
 require "/scripts/status.lua" --for damage listener
 require "/items/active/tagCaching.lua"
 require "/stats/effects/fu_statusUtil.lua"
+require "/scripts/util.lua"
 
 -- Melee primary ability
 MeleeCombo = WeaponAbility:new()
 
 function MeleeCombo:init()
+	self.baseStanceData=copy(self.stances)
+	self.stances=self:regurgitateStances(copy(self.baseStanceData),self.fireTime)
 	self.comboStep = 1
 	status.setStatusProperty(activeItem.hand().."ComboStep",self.comboStep)
 
@@ -32,7 +35,7 @@ function MeleeCombo:init()
 	-- **************************************************
 	self.species = world.sendEntityMessage(activeItem.ownerEntityId(), "FR_getSpecies")
 	self.foodValue=(status.isResource("food") and status.resource("food")) or 60
-	attackSpeedUp = 0 -- base attackSpeed. This acts as the timer between *combos* , not individual attacks
+	attackSpeedUp = status.stat("attackSpeedUp") -- base attackSpeed. This acts as the timer between *combos* , not individual attacks
 	--only use tag caching in meleecombo for energy costs.
 	tagCaching.update()
 end
@@ -40,6 +43,9 @@ end
 
 -- Ticks on every update regardless of whether this is the active ability
 function MeleeCombo:update(dt, fireMode, shiftHeld)
+	if self.fireTime~=self.recordedFireTime then
+		self.stances=self:regurgitateStances(copy(self.baseStanceData),self.fireTime)
+	end
 	tagCaching.update()
 	if self.delayLoad then
 		fuLoadSwooshData(self)
@@ -47,11 +53,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
 	setupHelper(self, "meleecombo-fire")
-	if not attackSpeedUp then
-		attackSpeedUp = 0
-	else
-		attackSpeedUp = status.stat("attackSpeedUp")
-	end
+	attackSpeedUp = status.stat("attackSpeedUp")
 
 	if self.cooldownTimer > 0 then
 		self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
@@ -68,8 +70,14 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	end
 
 	self.edgeTriggerTimer = math.max(0, self.edgeTriggerTimer - dt)
-	if self.lastFireMode ~= (self.activatingFireMode or self.abilitySlot) and fireMode == (self.activatingFireMode or self.abilitySlot) then
-		self.edgeTriggerTimer = self.edgeTriggerGrace
+	if (self.lastFireMode ~= (self.activatingFireMode or self.abilitySlot)) and (fireMode == (self.activatingFireMode or self.abilitySlot)) then
+		self.edgeTriggerTimer = ((self.recordedFireTime<=0.5) and 999999) or self.edgeTriggerGrace
+	end
+	if ((self.lastFireMode) and (fireMode)) and (self.lastFireMode~=fireMode) then
+		if fireMode=="none" then
+			self.edgeTriggerTimer=0
+		end
+		--sb.logInfo("%s",fireMode)
 	end
 	if (status.resourceLocked("energy")) or (status.resource("energy") <= 1) then
 		self.edgeTriggerTimer = 0.0
@@ -123,7 +131,7 @@ function MeleeCombo:windup()
 	local stance = self.stances["windup"..self.comboStep]
 
 	self.weapon:setStance(stance)
-	self.edgeTriggerTimer = 0
+	self.edgeTriggerTimer = ((self.recordedFireTime<=0.5) and 999999) or 0
 
 	if stance.hold then
 		while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
@@ -270,7 +278,7 @@ function MeleeCombo:fire()
 end
 
 function MeleeCombo:shouldActivate()
-	if self.cooldownTimer == 0 and (self.energyUsage == 0 or not status.resourceLocked("energy")) then
+	if (self.cooldownTimer == 0) and ((self.energyUsage == 0) or (not status.resourceLocked("energy"))) then
 		if self.comboStep and (self.comboStep > 1) then
 			return self.edgeTriggerTimer > 0
 		else
@@ -298,7 +306,11 @@ function MeleeCombo:computeDamageAndCooldowns()
 	local totalAttackTime = 0
 	local totalDamageFactor = 0
 	for i, attackTime in ipairs(attackTimes) do
-		self.stepDamageConfig[i] = util.mergeTable(copy(self.damageConfig), self.stepDamageConfig[i])
+		if (self.damageConfig.overrideStepDamage) or (self.stepDamageConfig[i].overrideStepDamage) then
+			self.stepDamageConfig[i] = util.mergeTable(self.stepDamageConfig[i],copy(self.damageConfig))
+		else
+			self.stepDamageConfig[i] = util.mergeTable(copy(self.damageConfig), self.stepDamageConfig[i])
+		end
 		self.stepDamageConfig[i].timeoutGroup = "primary"..i
 
 		local damageFactor = self.stepDamageConfig[i].baseDamageFactor
@@ -354,4 +366,14 @@ function fuLoadSwooshData(self)
 		end
 	end
 	self.delayLoad=false
+end
+
+function MeleeCombo:regurgitateStances(stances,fireTime)
+	local buffer={}
+	for stanceName,stanceData in pairs(stances) do
+		if stanceData.duration then stanceData.duration=stanceData.duration * fireTime end
+		buffer[stanceName]=stanceData
+	end
+	self.recordedFireTime=fireTime
+	return(buffer)
 end

@@ -33,6 +33,9 @@ function init()
 		self.legacy=true
 		self.damageListener = damageListener("damageTaken", checkDamageLegacy)
 	end
+	if not self.legacy then
+		self.duration=effect.duration()
+	end
 	self.initialized=true
 end
 
@@ -43,6 +46,11 @@ function update(dt)
 		animator.setAnimationState("aura", "on")
 		setTransparency(1.0-(math.random()*0.25))
 	else
+		local dur=effect.duration()
+		self.duration=self.duration-dt
+		if (self.duration~=dur) and (math.abs(self.duration-dur)>(2*dt)) then
+			init()
+		end
 		if self.active and not self.broke then
 			self.damageListener:update()
 			self.currentDA = status.resource(self.resource)

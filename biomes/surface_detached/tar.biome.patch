@@ -246,6 +246,11 @@
   }
 },
   {
+    "op": "replace",
+    "path": "/undergroundPlaceables/items/1/distribution",
+    "value": "/biomes/distributions.config:denseLarge"
+  },
+  {
     "op": "add",
     "path": "/undergroundPlaceables/items/-",
     "value":
@@ -302,6 +307,26 @@
           {
             "pool" : [ [1, "statuspod" ] ],
             "parameters" : { }
+          }
+        ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "ceilingtardrip",
+            "baseHueShiftMax" : 0,
+            "modHueShiftMax" : 0
           }
         ]
     }

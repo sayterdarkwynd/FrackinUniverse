@@ -1,0 +1,35 @@
+[
+  {
+    "op": "add",
+    "path": "/animatedParts/stateTypes/body/states/eye",
+    "value": {
+      "frames": 1,
+      "mode": "loop",
+      "transition": "idle",
+      "properties": {
+        "persistentSound": "/sfx/npc/monsters/shadowtopsnarl2.ogg",
+        "particleEmmitersOn" : ["groundBurstEmitter"],
+        "particleEmmitersOff" : ["groundBurstEmitter","releaseParticles"]
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/animatedParts/parts/body/partStates/body/eye",
+    "value": {
+      "properties": {
+        "image": "<partImage>:hurt.<frame>"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/sounds/trailCharge",
+    "value": ["/sfx/npc/monsters/skill_chargeup2.ogg"]
+  },
+  {
+    "op": "add",
+    "path": "/sounds/eyeCharge",
+    "value": ["/sfx/npc/monsters/nocttop_attack1.ogg"]
+  }  
+]

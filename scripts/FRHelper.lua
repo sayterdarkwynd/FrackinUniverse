@@ -188,14 +188,20 @@ function FRHelper:applyControlModifiers(cM, cP)
 	if type(cM)=="table" then
 		--sb.logInfo("FRHelper:applyControlModifiers:cM %s",cM)
 		--mcontroller.controlModifiers(cM or self.controlModifiers or {})
-		mcontroller.controlModifiers(cM)
+		mcontroller.controlModifiers(filterModifiers(copy(cM)))
 	end
 	if type(cP)=="table" then
-		--sb.logInfo("FRHelper:applyControlModifiers:cP %s",cP)
+		--sb.logInfo("FRHelper:applyControlParameters:cP %s",cP)
 		--mcontroller.controlParameters(cP or self.controlParameters or {})
 		mcontroller.controlParameters(cP)
 	end
 end
+
+function filterModifiers(stuff)
+	if (status.statPositive("spikeSphereActive") and 1.0) and stuff["speedModifier"] then stuff["speedModifier"]=1.0 end
+	return stuff
+end
+
 
 -- Load the given script (scripts without context are added to "racialscript" instead)
 function FRHelper:loadScript(script)

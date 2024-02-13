@@ -160,7 +160,7 @@ function masteries.apply(args)
 			--bows: crit chance, crit damage, faster draw time, reduced cost to fire/hold, increased damage.
 			if tagCaching[currentHand.."TagCache"]["bow"] then
 				masteryBuffer[#masteryBuffer + 1]={stat="critChance", amount=2*masteries.stats.bowMastery*handMultiplier}
-				masteryBuffer[#masteryBuffer + 1]={stat="critDamage", amount=7*masteries.stats.bowMastery*handMultiplier}
+				masteryBuffer[#masteryBuffer + 1]={stat="critDamage", amount=0.35*masteries.stats.bowMastery*handMultiplier}
 				masteryBuffer[#masteryBuffer + 1]={stat="bowDrawTimeBonus", amount=(0.01/2)*masteries.stats.bowMastery*handMultiplier}
 				masteryBuffer[#masteryBuffer + 1]={stat="bowEnergyBonus", amount=(1/2)*masteries.stats.bowMastery*handMultiplier}
 				masteryBuffer[#masteryBuffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.bowMastery*handMultiplier) }
@@ -241,7 +241,7 @@ function masteries.apply(args)
 
 			--shortspears: modifiers based on what else is or isn't wielded. none when combo'd.
 			if tagCaching[currentHand.."TagCache"]["shortspear"] then
-				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) then --solo shortspear, no other weapons: boost crit damage.
+				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"] or tagCaching[otherHand.."TagCache"]["shield"]) then --solo shortspear, no other weapons: boost crit damage.
 					masteryBuffer[#masteryBuffer + 1]={stat="critDamage", amount=0.3*(1+masteries.stats.shortspearMastery) }
 				else
 					-- using shortspear with a shield: boost shield and defense tech stats.
@@ -255,8 +255,8 @@ function masteries.apply(args)
 					-- with another shortspear: penalize protection and crit chance (crit one is a joke.)
 					if tagCaching[otherHand.."TagCache"]["shortspear"] then
 						--yes, the awkward looking math is needed. this ensures that the system doesn't apply the same 0.8x twice, but instead splits it.
-						masteryBuffer[#masteryBuffer + 1]={stat="protection", effectiveMultiplier=1+((-1*(0.2*(1+masteries.stats.shortspearMastery)))*handMultiplier) }
-						masteryBuffer[#masteryBuffer + 1]={stat="critChance", effectiveMultiplier=1+((-1*(0.5*(1+masteries.stats.shortspearMastery)))*handMultiplier) }
+						masteryBuffer[#masteryBuffer + 1]={stat="protection", effectiveMultiplier=1+((0.2*(masteries.stats.shortspearMastery-1))*handMultiplier) }
+						masteryBuffer[#masteryBuffer + 1]={stat="critChance", effectiveMultiplier=1+((0.5*(masteries.stats.shortspearMastery-1))*handMultiplier) }
 					end
 				end
 			end
@@ -273,7 +273,7 @@ function masteries.apply(args)
 					masteryBuffer[#masteryBuffer + 1]={stat="critDamage", amount=0.15*(1+masteries.stats.longswordMastery)*handMultiplier}
 				end
 				-- longsword solo, no other weapons: attack speed.
-				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) then
+				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"] or tagCaching[otherHand.."TagCache"]["shield"]) then
 					--this would be funny to apply at full value if wielding alongside another longsword. especially with a minor damage penalty.
 					masteryBuffer[#masteryBuffer + 1]={stat="attackSpeedUp", amount=0.7*masteries.stats.longswordMastery}
 				else
@@ -289,7 +289,7 @@ function masteries.apply(args)
 					-- dual wielding longsword with any other weapon: reduced protection, increased movespeed
 					--yes, the awkward looking math is needed. this ensures that the system doesn't apply the same 0.8x twice, but instead splits it.
 					if tagCaching[otherHand.."TagCache"]["weapon"] then
-						masteryBuffer[#masteryBuffer + 1]={stat="protection", effectiveMultiplier=1+((-1*(0.2*(1+masteries.stats.longswordMastery)))*handMultiplier) }
+						masteryBuffer[#masteryBuffer + 1]={stat="protection", effectiveMultiplier=1+((0.2*(masteries.stats.longswordMastery-1))*handMultiplier) }
 						table.insert(masteries.vars.ephemeralEffects,{{effect="runboost5", duration=0.02}})
 					end
 				end
@@ -311,7 +311,7 @@ function masteries.apply(args)
 				local gritModifier=masteries.stats.shortswordMastery*handMultiplier
 
 				-- solo shortsword, no other weapons: increased damage, dash/dodge tech bonuses, and knockback resistance
-				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) then
+				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"] or tagCaching[otherHand.."TagCache"]["shield"]) then
 					powerModifier=(powerModifier/1.5)
 					dashModifier=0.1*dashModifier/2
 					dodgeModifier=0.1*masteries.stats.shortswordMastery/2
@@ -351,8 +351,8 @@ function masteries.apply(args)
 				else
 					-- dual wielding heavy weapons: reduced damage and protection --you really hate these don't you?
 					if tagCaching[otherHand.."TagCache"]["longsword"] or tagCaching[otherHand.."TagCache"]["katana"] or tagCaching[otherHand.."TagCache"]["axe"] or tagCaching[otherHand.."TagCache"]["flail"] or tagCaching[otherHand.."TagCache"]["shortspear"] or tagCaching[otherHand.."TagCache"]["mace"] then
-						masteryBuffer[#masteryBuffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+((-1*(0.2*(1+masteries.stats.katanaMastery)))*handMultiplier) }
-						masteryBuffer[#masteryBuffer + 1]={stat="protection", effectiveMultiplier=1+((-1*(0.1*(1+masteries.stats.katanaMastery)))*handMultiplier) }
+						masteryBuffer[#masteryBuffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+((0.2*(masteries.stats.katanaMastery-1))*handMultiplier) }
+						masteryBuffer[#masteryBuffer + 1]={stat="protection", effectiveMultiplier=1+((0.1*(masteries.stats.katanaMastery-1))*handMultiplier) }
 					end
 					-- dual wielding with a short blade: increased energy
 					if tagCaching[otherHand.."TagCache"]["shortsword"] or tagCaching[otherHand.."TagCache"]["dagger"] or tagCaching[otherHand.."TagCache"]["rapier"] then
@@ -384,6 +384,9 @@ function masteries.apply(args)
 
 			-- hammers: increased damage. crit, stun chance. crit damage.
 			--special bonuses while doing charged attacks, like greataxes.
+			--note:
+			---greataxes are exclusively handled in /items/active/weapons/melee/abilities/greataxe/greataxesmash.lua which provides timer-scaling crit chance and crit damage --#greataxeMastery
+			---hammers also have similar code in /items/active/weapons/melee/abilities/hammer/hammersmash.lua which provides timer-scaling crit chance and stun chance -#hammerMastery
 			if tagCaching[currentHand.."TagCache"]["hammer"] then
 				masteryBuffer[#masteryBuffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.hammerMastery*handMultiplier/2) }
 				masteryBuffer[#masteryBuffer + 1]={stat="critChance", amount=2*masteries.stats.hammerMastery*handMultiplier}

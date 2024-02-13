@@ -6,22 +6,22 @@ function TryGetPlayerId()
 
 	local playerId
 	if #entities == 1 then
-		sb.logInfo("One player entity located. Directly referencing.")
+		--sb.logInfo("One player entity located. Directly referencing.")
 		playerId = entities[1]
 	elseif #entities > 1 then
-		sb.logInfo("More than one player entity located. Checking player held items...")
+		--sb.logInfo("More than one player entity located. Checking player held items...")
 		for _, id in ipairs(entities) do
 			local itemL = world.entityHandItem(id, "primary")
 			local itemR = world.entityHandItem(id, "alt")
 
 			if itemL == item.name() or itemR == item.name() then
-				sb.logInfo("Player " .. tostring(id) .. " is holding an item with this item's name. Assuming this is the right player. This might be inaccurate!")
+				--sb.logInfo("Player " .. tostring(id) .. " is holding an item with this item's name. Assuming this is the right player. This might be inaccurate!")
 				playerId = id
 				break
 			end
 		end
 	else
-		sb.logWarn("No player found in player query!")
+		--sb.logWarn("No player found in player query!")
 	end
 
 	return playerId
@@ -37,7 +37,7 @@ function activate()
 	--sb.logInfo(tostring(world.entityUniqueId(playerId)))
 
 	world.sendEntityMessage(playerId, "xcodexLearnCodex", item.name()) -- This has the "-codex"
-	sb.logInfo("Sent message.")
+	--sb.logInfo("Sent message.")
 end
 
 function update()

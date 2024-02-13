@@ -45,9 +45,10 @@ end
 -- output angle
 -- output direction
 function entityAngle(args, board)
-	if args.position == nil or args.entity == nil then return false end
-
-	local toEntity = world.distance(world.entityPosition(args.entity), args.position)
+	if (args.position == nil) or (args.entity == nil) then return false end
+	local entPos=world.entityPosition(args.entity)
+	if not entPos then return false end
+	local toEntity = world.distance(entPos, args.position)
 	toEntity = vec2.norm(vec2.rotate(toEntity, -args.heading))
 
 	return true, {angle = math.atan(toEntity[2], math.abs(toEntity[1])), direction = toEntity[1]}
@@ -102,6 +103,7 @@ function move(args, board, node)
 				for _,yDir in pairs({0, -1, 1}) do
 					--util.debugRect(rect.translate(groundRect, {direction * x, y + yDir}), "blue")
 					if world.rectTileCollision(rect.translate(groundRect, {direction * x, y + yDir}), {"Null", "Block", "Dynamic", "Platform"}) then
+						--util.debugRect(rect.translate(groundRect, {direction * x, y + yDir}), "green")
 						move = true
 						y = y + yDir
 						break
@@ -266,7 +268,7 @@ function moveToPosition(args, board, node)
 		end
 
 		if entity.entityType() == "npc" then
-			--openDoorsAhead()
+			openDoorsAhead()
 			if args.closeDoors then
 				closeDoorsBehind()
 			end

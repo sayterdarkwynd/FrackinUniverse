@@ -1,0 +1,48 @@
+{
+	"objectName" : "smartbox_comparer",
+	"colonyTags" : [ "smart", "box" ],
+	"rarity" : "common",
+	"race" : "generic",
+	"category" : "Smart Box",
+	"printable" : false,
+	"objectType" : "container",
+	"price" : 100,
+
+	"description" : "Compares two items and sends a signal on ^red;Output 2^reset; if both are identical.
+Item-Network compatible.",
+	"shortdescription" : "Item Comparer",
+	"subtitle" : "Smartbox",
+	"animation" : "/objects/smartbox/comparer/comparer.animation",
+	"animationParts" : {
+		"router" : "sprite.png"
+	},
+	"inventoryIcon" : "icon.png",
+	"orientations" : [
+		{
+			"dualImage" : "sprite.png:off",
+			"imagePosition" : [0, 0],
+			"frames" : 1,
+			"animationCycle" : 1.0,
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ]
+		}
+	],
+
+	"inputSlot" : 1,
+
+	"inputNodes" : [ [0, 0] ],
+	"outputNodes" : [ [1, 0],[2,0] ],
+
+	"acceptsItems" : true,
+	"itemAgeMultiplier" : 0.0,
+
+	"openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+	"slotCount" : 2,
+	"uiConfig" : "/interface/smartbox/comparer.config",
+	"frameCooldown" : 67,
+	"autoCloseCooldown" : 3600,
+
+	"scripts" : [ "/objects/smartbox/comparer/comparer.lua" ],
+	"scriptDelta" : 1,
+	"containerCallback":"containerCallback"
+}

@@ -224,7 +224,8 @@ function update(dt)
 		if storage.lastActive then
 			setAnimationStates(false, false, true)
 			object.setInteractive(false)
-			ticksToSimulate = beeData and beeData.unloadedUpdateInterval and (storage.unfinishedTicks or 0) + math.floor((world.time() - storage.lastActive) / beeData.unloadedUpdateInterval) or 0
+			local buffer=(world.time() - storage.lastActive)
+			ticksToSimulate = (buffer>=0) and beeData and beeData.unloadedUpdateInterval and math.min((storage.unfinishedTicks or 0) + math.floor(buffer / beeData.unloadedUpdateInterval),beeData.totalMaxSimulatedTicks or 60) or 0
 			storage.unfinishedTicks = nil
 		else
 			object.setInteractive(true)
@@ -326,8 +327,22 @@ function beeTick(dt)
 				-- If the slot has a young queen, convert it into a normal queen and reset queen production progress
 				youngQueenProgress = 0
 				droneProgress = 0
-
 				queen = youngQueenToQueen(contents[queenSlot])
+				--need to check item count, if there's more than 1 we gotta not void 'em.
+				if contents[queenSlot].count>1 then
+					local leftovers=copy(contents[queenSlot])
+					leftovers.count=leftovers.count-1
+					local incr=firstInventorySlot
+					local size=world.containerSize(entity.id())
+					while incr<=size do
+						leftovers=world.containerPutItemsAt(entity.id(),leftovers,incr-1)
+						if not leftovers then break end
+						incr=incr+1
+					end
+					if leftovers then
+						world.spawnItem(leftovers,entity.position())
+					end
+				end
 				world.containerTakeAt(entity.id(), queenSlot-1)
 				world.containerPutItemsAt(entity.id(), queen, queenSlot-1)
 				contents[queenSlot] = world.containerItemAt(entity.id(), queenSlot-1)
@@ -357,6 +372,22 @@ function beeTick(dt)
 			elseif root.itemHasTag(contents[queenSlot].name, "youngQueen") then
 				-- Convert to a queen and index it if its a young queen
 				queen = youngQueenToQueen(contents[queenSlot])
+				--need to check item count, if there's more than 1 we gotta not void 'em.
+				if contents[queenSlot].count>1 then
+					local leftovers=copy(contents[queenSlot])
+					leftovers.count=leftovers.count-1
+					local incr=firstInventorySlot
+					local size=world.containerSize(entity.id())
+					while incr<=size do
+						leftovers=world.containerPutItemsAt(entity.id(),leftovers,incr-1)
+						if not leftovers then break end
+						incr=incr+1
+					end
+					if leftovers then
+						world.spawnItem(leftovers,entity.position())
+					end
+				end
+
 				world.containerTakeAt(entity.id(), queenSlot-1)
 				world.containerPutItemsAt(entity.id(), queen, queenSlot-1)
 				contents[queenSlot] = world.containerItemAt(entity.id(), queenSlot-1)
@@ -406,7 +437,7 @@ function beeTick(dt)
 			end
 
 			-- Kill drones if there are mites present
-			if storage.mites > 0 and contents[slot] then
+			if storage.mites > 0.98 and contents[slot] then
 				miteDamage(slot)
 				item = contents[slot]
 			end
@@ -434,7 +465,7 @@ function beeTick(dt)
 		end
 	else
 		noQueenTimer = noQueenTimeAllowed
-		if storage.mites > 0 and queen then
+		if storage.mites > 0.99 and queen then
 			world.containerTakeAt(entity.id(), queenSlot-1)
 			queen = nil
 		end
@@ -893,34 +924,31 @@ end
 
 -- Roll for mite infestation, or increment mite count if there's an infestation
 function miteGrowth()
+	-- local fartstick=math.random()
+	-- sb.logInfo("mite Roll: %s, vs: %s",fartstick,beeData.mites.infestationChance)
 	if storage.mites > 0 then
-
-	        --display an infested hive image over the normal hive appearance if its infested enough
-		if storage.mites > 50 then  --if mites pass 100, display a rotten looking apiary
-		  animator.setAnimationState("base", "infested", true)
-		  animator.setAnimationState("warning", "on", true)
-		elseif storage.mites > 200 then  --if mites pass 200, display a really rotten looking apiary
-		  animator.setAnimationState("base", "infested2", true)
-		  animator.setAnimationState("warning", "on", true)
-		else
-		  animator.setAnimationState("base", "default", true)
-		  animator.setAnimationState("warning", "off", true)
-		end
 
 		-- The growth multiplier. responsible for increasing mites by [current amount of mites] * this value
 		local mult = beeData.mites.growthPercentile
-
 		-- Get the hives total mite resistance (all drone resistances / number of drones occupying drone slots)
 		local hiveMiteResistance = 0
 		local droneCount = 0
+		-- local hiveMiteResistanceB = 0
+		-- local droneCountB = 0
+		-- local multB = mult
+		-- local sDBG=""..entity.id()..":: storage.mites: "..storage.mites.."::"
 
 		for _, slot in ipairs(droneSlots) do
 			local item = contents[slot]
 			if item and root.itemHasTag(item.name, "bee") and root.itemHasTag(item.name, "drone") then
 				hiveMiteResistance = hiveMiteResistance + genelib.statFromGenomeToValue(item.parameters.genome, "miteResistance") + frameBonuses.miteResistance
-				droneCount = droneCount + 1
+				droneCount = droneCount + contents[slot].count --loops through drone slots and adds them together
+				-- droneCountB = 1000*droneCount/(1000+droneCount)
 			end
 		end
+
+		-- hiveMiteResistanceB = hiveMiteResistance
+		-- sDBG=sDBG.."mitegrowth(): mult first: ".mult.", droneCount first: "..droneCount..", droneCountB: "..droneCountB.."::"
 
 		-- miteResistance stat range at the time of writing this: -6.475 to 6.475
 		-- If the value is positive, the hive is resistant to mites, and the multiplier is reduced to [mult]/([stat]*100), can't be lower than 0.0001
@@ -930,19 +958,54 @@ function miteGrowth()
 
 			-- we create a little function that improves as resistance does
 			if hiveMiteResistance > 0 then
-				mult = math.max(mult / (hiveMiteResistance*100), beeData.mites.growthPercentileMinimum)
+				mult = math.max(mult / (hiveMiteResistance*3125), beeData.mites.growthPercentileMinimum)
+				-- 3125 makes mite resist 4.0 stop mites with full apiary, 50 drones balances at 0.2 mite resist. Change if different balance desired
 			elseif hiveMiteResistance < 0 then
 				mult = mult + mult * math.abs(hiveMiteResistance)
 			end
+			-- sDBG=sDBG.."mitegrowth():mult second: "..mult..", hiveMiteResistance: "..hiveMiteResistance..", droneCount: "..droneCount.."::"
 		end
+
+		-- if droneCountB > 0 then
+			-- hiveMiteResistanceB = hiveMiteResistanceB / droneCountB
+			-- if hiveMiteResistanceB > 0 then
+				-- multB = math.max(multB / (hiveMiteResistanceB*3125), beeData.mites.growthPercentileMinimum)
+			-- elseif hiveMiteResistanceB < 0 then
+				-- multB = multB + multB * math.abs(hiveMiteResistanceB)
+			-- end
+			-- sDBG=sDBG.."mitegrowth():multB second: "..multB..", hiveMiteResistanceB: "..hiveMiteResistanceB..", droneCountB: "..droneCountB.."::"
+		-- end
 
 		-- remove the hive resistance from the mite total if over a certain threshold, otherwise increment them
 		if hiveMiteResistance > 0 then
-		  storage.mites = storage.mites - (hiveMiteResistance)
+			storage.mites = storage.mites + (storage.mites * mult) - (hiveMiteResistance) -- added storage.mites*mult to balance mite growth against hive resistance
+			-- sDBG=sDBG.."mites aU: "..(storage.mites + (storage.mites * mult) - (hiveMiteResistance))
 		else
-	          storage.mites = storage.mites + (storage.mites * mult) + beeData.mites.growthStatic
+			storage.mites = storage.mites + (storage.mites * mult) + beeData.mites.growthStatic
+			-- sDBG=sDBG.."mites aD: "..(storage.mites + (storage.mites * mult) + beeData.mites.growthStatic)
 		end
 
+		-- if hiveMiteResistanceB > 0 then
+			-- sDBG=sDBG.."fake mites bU: "..(storage.mites + (storage.mites * multB) - (hiveMiteResistanceB))
+		-- else
+			-- sDBG=sDBG.."fake mites bD: "..(storage.mites + (storage.mites * mult) + beeData.mites.growthStatic)
+		-- end
+		--sb.logInfo("%s",sDBG)
+
+		--display an infested hive image over the normal hive appearance if its infested enough
+		if storage.mites > 20 then  --if mites pass 20, display a really rotten looking apiary
+		  animator.setAnimationState("base", "infested2", true)
+		  animator.setAnimationState("warning", "on", true)
+		elseif storage.mites > 6 then  --if mites pass 6, display a rotten looking apiary
+		  animator.setAnimationState("base", "infested", true)
+		  animator.setAnimationState("warning", "on", true)
+		elseif storage.mites > 0.98 then
+		  animator.setAnimationState("warning", "on", true) --show symbol for mite infestation, but dont change apiary look
+		else
+		  animator.setAnimationState("base", "default", true)
+		  animator.setAnimationState("warning", "off", true)
+		end
+	-- elseif fartstick <= beeData.mites.infestationChance then
 	elseif math.random() <= beeData.mites.infestationChance then
 	    storage.mites = beeData.mites.growthStatic --storage.mites = storage.mites + (storage.mites*mult) - (hiveMiteResistance)
 	end

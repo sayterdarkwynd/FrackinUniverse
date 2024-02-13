@@ -36,7 +36,7 @@ function update(dt)
 	self.playerTypingTimer=math.max(0,(self.playerTypingTimer or upgradeButtonLockout)-dt)
 	self.textboxPulseTimer=math.max(0,(self.textboxPulseTimer or textboxPulseInterval)-dt)
 	populateItemList()
-	itemSelected()
+	itemSelectionUpdate()
 	pulseTextbox()
 end
 
@@ -273,6 +273,12 @@ function getSelectedItem()
 end
 
 function itemSelected()
+	self.playerTypingTimer=upgradeButtonLockout/4
+	self.buttonTimer=upgradeButtonLockout/4
+	widget.setButtonEnabled("btnUpgrade", false)
+end
+
+function itemSelectionUpdate()
 	local listItem = widget.getListSelected(self.itemList)
 	local changed = false
 	local localItem = {}
@@ -437,7 +443,7 @@ function upgradeWeapon(upgradeItem,target)
 				local oldRarity=itemConfig.parameters.rarity or itemConfig.config.rarity
 				mergeBuffer.rarity=oldRarity
 
-				sb.logInfo("Pre-Upgrade Stats: \n"..sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug
+				sb.logInfo("Pre-Upgrade Stats:\n%s", sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug
 
 				--set level
 				local maxLvl=maxLvl(itemConfig, "weapon")
@@ -497,7 +503,7 @@ function upgradeWeapon(upgradeItem,target)
 			if upgradeStates.completed then
 				player.giveItem(upgradedItem)
 				checkResearchBonus()
-				sb.logInfo("Upgraded Stats: \n"..sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug
+				sb.logInfo("Upgraded Stats:\n%s", sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug
 			end
 			--player.giveItem(upgradedItem)
 			return upgradeStates
@@ -524,7 +530,7 @@ function upgradeTool(upgradeItem, target)
 				local oldRarity=itemConfig.parameters.rarity or itemConfig.config.rarity
 				mergeBuffer.rarity=oldRarity
 
-				sb.logInfo("Pre-Upgrade Stats: \n"..sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug
+				sb.logInfo("Pre-Upgrade Stats:\n%s", sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug
 				--set level
 				local maxLvl=maxLvl(itemConfig, "tool")
 				--mergeBuffer.level = math.min((itemConfig.parameters.level or itemConfig.config.level or 1)+1,maxLvl)
@@ -586,7 +592,7 @@ function upgradeTool(upgradeItem, target)
 			if upgradeStates.completed then
 				player.giveItem(upgradedItem)
 				checkResearchBonus()
-				sb.logInfo("Upgraded Stats: \n"..sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug
+				sb.logInfo("Upgraded Stats:\n%s", sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug
 			end
 			--player.giveItem(upgradedItem)
 			return upgradeStates

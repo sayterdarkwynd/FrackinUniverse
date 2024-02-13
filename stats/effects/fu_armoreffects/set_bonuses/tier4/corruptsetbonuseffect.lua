@@ -2,8 +2,8 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_corruptset"
 
 armorBonus={
-	{stat = "maxHealth", effectiveMultiplier = 1.25},
-	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15},
+	{stat = "maxHealth", effectiveMultiplier = 1.25}
 }
 
 armorEffect={
@@ -30,8 +30,8 @@ function update(dt)
 end
 
 function checkArmor()
-	if checkBiome({"lightless","penumbra","aethersea","moon_shadow","shadow","midnight"}) then
-
+	if checkBiome({"astral","aethersea","lightless","moon_shadow","shadow","midnight"}) then
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 	else
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,{})
 	end

@@ -54,11 +54,36 @@
             ]
           }
         }
-      },    
+      },
+  {
+    "op": "add",
+    "path": "/hueShiftOptions",
+    "value": [-30, -20, -15, -10, 0, 10, 15, 20, 30]
+  },
   {
     "op": "add",
     "path": "/subBlocks/-",
     "value": "clay"
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/3/treeStemList/-",
+    "value": "pine"
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/3/treeStemList/-",
+    "value": "roottree"
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/3/treeStemList/-",
+    "value": "something"
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/3/treeStemList/-",
+    "value": "twisted"
   },
   {
     "op": "replace",
@@ -145,6 +170,16 @@
     }
   },
   {
+    "op": "replace",
+    "path": "/undergroundPlaceables/items/1/treeStemList/0",
+    "value": "floweryvine2"
+  },
+  {
+    "op": "replace",
+    "path": "/undergroundPlaceables/items/1/treeFoliageList/0",
+    "value": "nofoliagevine"
+  },
+  {
     "op": "add",
     "path": "/undergroundPlaceables/items/-",
     "value":
@@ -204,6 +239,20 @@
           }
         ]
     }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "grass" ]
+      }
   },
 {"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
   "mode" : "floor",

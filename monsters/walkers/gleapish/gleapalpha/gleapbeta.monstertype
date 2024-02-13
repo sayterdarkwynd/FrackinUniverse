@@ -1,0 +1,292 @@
+{
+  "type" : "gleapbeta",
+  "shortdescription" : "Beta Gleap",
+  "description" : "A gleap mutation on its way to becoming an Alpha.",
+
+  "categories" : [ "gleapalpha" ],
+  "parts" : [ "body" ],
+
+  "animation" : "gleapalpha.animation",
+
+  "dropPools" : [ { "default" : "gleapalphaTreasure", "bow" : "gleapalphaHunting" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "deathActions" : [
+
+        {
+         "name":"action-projectile",
+         "parameters" : {
+          "projectileType" : "healingzone",
+          "aimDirection" : [0,0],
+          "aimAtTarget" : false
+         }
+        }
+
+      ],
+
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 60,
+          "parameters" : {
+          "effect" : "bouncy",
+          "duration" : 61
+          }
+        },
+        {
+          "name" : "action-projectile",
+          "cooldown" : 0.08,
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "radioactivetrailweak",
+            "projectileParameters" : {
+              "timeToLive" : 0.5
+            },
+            "onGround" : true,
+            "power" : 1,
+            "aimDirection" : [0.3, -1],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0.5]
+          }
+        }
+      ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-hop",
+          "cooldown" : 0.0,
+          "parameters" : {
+            "verticalSpeed" : 40,
+            "horizontalSpeed" : 15,
+            "hopSequence" : 1,
+            "timeBetweenHops" : 0.0,
+            "windupTime" : 0.1,
+            "landTime" : 0.1,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 45
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 1.2,
+          "parameters" : {
+
+            "windupState" : "blink",
+            "windupTime" : 0.01,
+            "projectileType" : "radioactiveelementcloud",
+            "fireSound" : "", //needs explosion sound or in projectile?
+            "fireState" : "hop",
+            "winddownState" : "blink",
+            "winddownTime" : 0.01,
+            "aimAtTarget" : false,
+            "aimDirection" : [0,-1],
+            "onGround" : true,
+            "fireDelay" : 0.01,
+            "projectileParameters" : {
+
+              "statusEffects" : [
+                "bouncy"
+              ]
+            }
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 4,
+          "parameters" : {
+
+            "windupState" : "blink",
+            "windupTime" : 0.01,
+            "projectileType" : "pushzone2",
+            "fireSound" : "", //needs explosion sound or in projectile?
+            "fireState" : "hop",
+            "winddownState" : "blink",
+            "winddownTime" : 0.01,
+            "aimAtTarget" : false,
+            "aimDirection" : [0,-1],
+            "onGround" : true,
+            "fireDelay" : 0.01
+          }
+        }
+      ],
+
+      "periodicActions" : [
+        {
+          "name" : "action-hop",
+          "cooldown" : 0.0,
+          "parameters" : {
+            "verticalSpeed" : 55,
+            "horizontalSpeed" : 10,
+            "hopSequence" : 3,
+            "timeBetweenHops" : 0.25,
+            "hopAwayFromWall" : true
+          }
+        }
+      ],
+
+      "damageTakenActions" : [
+
+        {
+         "name":"action-projectile",
+         "parameters" : {
+          "projectileType" : "smallpoisoncloud",
+          "aimDirection" : [0,0],
+          "aimAtTarget" : false
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {}
+        },
+        {
+          "name" : "action-hop",
+          "cooldown" : 0.0,
+          "parameters" : {
+            "verticalSpeed" : 45,
+            "horizontalSpeed" : 20,
+            "hopSequence" : 1,
+            "timeBetweenHops" : 0.0,
+            "windupTime" : 0.1,
+            "landTime" : 0.1,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 60
+          }
+        }
+      ]
+
+    },
+
+    "touchDamage" : {
+      "poly" : [ [-0.6875, -0.375], [-0.4375, -0.625], [0.4375, -0.625], [0.6875, -0.375], [0.6875, 0.25], [0.4375, 0.5], [-0.4375, 0.5], [-0.6875, 0.25] ],
+      "damage" : 8,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "radioactive",
+      "knockback" : 20,
+      "statusEffects" : [ "bouncy" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.3,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-0.6875, -0.375], [-0.4375, -0.625], [0.4375, -0.625], [0.6875, -0.375], [0.6875, 0.25], [0.4375, 0.5], [-0.4375, 0.5], [-0.6875, 0.25] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 8,
+      "runSpeed" : 8,
+      "jumpSpeed" : 8
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 75
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
+  }
+}

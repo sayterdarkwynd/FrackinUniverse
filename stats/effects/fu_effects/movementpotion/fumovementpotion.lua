@@ -13,7 +13,7 @@ end
 function update(dt)
 	animator.setParticleEmitterActive("dust", mcontroller.onGround() and mcontroller.running())
 	mcontroller.controlModifiers({
-		speedModifier = self.speedModifier,
+		speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or self.speedModifier,
 		airJumpModifier = self.airJumpModifier
 	})
 end

@@ -8,7 +8,12 @@
 
   "animation" : "fuallergen.animation",
 
-  "dropPools" : [ "huntingplant" ],
+  "dropPools" : [
+    {
+      "default" : "fuallergen3Treasure",
+      "bow" : "fuallergen3Hunting"
+    }
+  ],
 
   "baseParameters" : {
     "scripts" : [
@@ -200,7 +205,7 @@
           "baseValue" : 45
         },
         "protection" : {
-          "baseValue" : 0.2
+          "baseValue" : 20
         },
         "fireResistance" : {
           "baseValue" : -0.35
@@ -254,8 +259,6 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.50,
-    "capturedMonsterName" : "Seeder Trap",
-    "capturedMonsterType" : "fuallergen3",
     "nametagColor" : [64, 200, 255]
   }
 }

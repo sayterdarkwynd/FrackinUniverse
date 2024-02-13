@@ -2,7 +2,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_copperarmorsetnew"
 
 weaponBonus1={
-	{stat = "powerMultiplier", effectiveMultiplier = 1.4}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.5}
 }
 
 weaponBonus2={

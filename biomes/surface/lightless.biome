@@ -2,6 +2,7 @@
   "name" : "lightless",
   "friendlyName" : "Lightless Sphere",
   "statusEffects" : [ "erchiussickness2", "biomeairless", "superdarkstatlarge" ],
+  "breathable" : false,
   "spawnProfile" : {
     "groups" : [
       {
@@ -227,16 +228,16 @@
           "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredLarge",
+          "distribution" : "/biomes/distributions.config:denseMedium",
 
           "type" : "grass",
-          "grasses" : [ "shadowy" ]
+          "grasses" : [ "lightlessgrass" ]
         },
         {
           "mode" : "floor",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
+          "distribution" : "/biomes/distributions.config:denseMedium",
 
           "type" : "bush",
           "bushes" : [
@@ -399,31 +400,16 @@
           "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffAverage",
+          "distribution" : "/biomes/distributions.config:denseMedium",
 
           "type" : "grass",
-          "grasses" : [ "shadowy" ]
-        },
-        {
-          "mode" : "floor",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffAverage",
-
-          "type" : "bush",
-          "bushes" : [
-            {
-              "name" : "lightless",
-              "baseHueShiftMax" : 0,
-              "modHueShiftMax" : 0
-            }
-          ]
+          "grasses" : [ "lightlessgrass" ]
         },
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffAverage",
+          "distribution" : "/biomes/distributions.config:ffCommon",
 
           "type" : "object",
           "objectSets" : [
@@ -451,18 +437,45 @@
           ]
         },
         {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "buglike1" ], [0.35, "buglike2" ], [0.35, "buglike3" ], [0.35, "buglike4" ], [0.35, "buglike5" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "buglike6" ], [0.35, "buglike7" ], [0.35, "buglike8" ], [0.35, "buglike9" ], [0.35, "buglike10" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
           "mode" : "ceiling",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:denseLarge",
+          "distribution" : "/biomes/distributions.config:denseMedium",
 
           "type" : "tree",
-          "treeFoliageHueShiftMax" : 180,
-          "treeStemHueShiftMax" : 0,
-          "treeStemList" : [ "shadowvine" ],
-          "treeFoliageList" : [ "" ]
+          "treeFoliageHueShiftMax" : 0,
+          "treeStemHueShiftMax" : 30,
+          "treeStemList" : [ "lightlessvine" ],
+          "treeFoliageList" : [ "nofoliagevine" ]
         }
       ]
     }
-
 }

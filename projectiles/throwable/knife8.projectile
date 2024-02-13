@@ -6,52 +6,58 @@
   "physics" : "bullet",
   "bounces" : 0,
   "frameNumber" : 4,
-  "lightColor" : [0, 255, 255],
+  "lightColor" : [0, 80, 120],
   "speed" : 10,
   "timeToLive" : 0.8,
-"actionOnReap" : [
+  "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
+      "file" : "/projectiles/explosions/coldsplosion/coldsplosion4.config"
     },
-	{
+	  {
       "action" : "projectile",
-      "type" : "icecloud",
+      "type" : "fuicecloud3",
       "inheritDamageFactor" : 0.05,
       "angleAdjust" : 10
     },
-	{
+	  {
       "action" : "projectile",
-      "type" : "icecloud",
+      "type" : "fuicecloud3",
       "inheritDamageFactor" : 0.05,
-      "angleAdjust" : 10
+      "angleAdjust" : 30
     },
-	{
+	  {
       "action" : "projectile",
-      "type" : "icecloud",
+      "type" : "fuicecloud3",
       "inheritDamageFactor" : 0.05,
-      "angleAdjust" : 10
+      "angleAdjust" : -10
     },
+    {
+      "action" : "projectile",
+      "type" : "fuicecloud3",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : -30
+    },    
     {
       "action" : "projectile",
       "type" : "peglacitier8knife-2",
-      "inheritDamageFactor" : 0.5,
+      "inheritDamageFactor" : 0.10,
       "angleAdjust" : 180
     },
 	{
       "action" : "projectile",
       "type" : "peglacitier8knife-2",
-      "inheritDamageFactor" : 0.5,
+      "inheritDamageFactor" : 0.10,
       "angleAdjust" : 195
     },
 	{
       "action" : "projectile",
       "type" : "peglacitier8knife-2",
-      "inheritDamageFactor" : 0.5,
+      "inheritDamageFactor" : 0.10,
       "angleAdjust" : 165
     }
   ],
-  "damageKind" : "default",
+  "damageKind" : "ice",
   "emitters" : [ "peglacitrail" ]
 }
 

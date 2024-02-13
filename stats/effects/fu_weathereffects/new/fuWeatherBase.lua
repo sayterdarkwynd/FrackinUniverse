@@ -372,10 +372,8 @@ end
 --============================= GRAPHICAL EFFECTS ============================--
 
 function fuWeatherBase.toHex(self, num)
-	local hex = string.format("%X", math.floor(num + 0.5))
-	if num < 16 then
-		hex = "0" .. hex
-	end
+	local num2=math.floor(num + 0.5)
+	local hex = string.format("%02X",num2)
 	return hex
 end
 

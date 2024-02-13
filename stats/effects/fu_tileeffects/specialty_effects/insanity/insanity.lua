@@ -5,30 +5,27 @@ function init()
 	self.tickTimer = self.tickTime
 	activateVisualEffects()
 	self.timers = {}
-	--this section is actually useless since the effects dont have this parameter. also, badly implemented.
-	--[[_x = config.getParameter("defenseModifier", 0)
-	baseValue = config.getParameter("defenseModifier",0)*(status.stat("protection"))
-	effect.addStatModifierGroup({{stat = "protection", amount = baseValue }})]]
+	animator.setParticleEmitterOffsetRegion("statustext", { 0, 1, 0, 1 })
+	--animator.setParticleEmitterOffsetRegion("statustext2", { 0, 1, 0, 1 })
+	typerParticle.init()
 end
 
 function activateVisualEffects()
 	if entity.entityType()=="player" then
-		local statusTextRegion = { 0, 1, 0, 1 }
-		animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
 		animator.burstParticleEmitter("statustext")
 	end
 end
 function activateVisualEffects2()
 	if entity.entityType()=="player" then
-		local statusTextRegion = { 0, 1, 0, 1 }
-		animator.setParticleEmitterOffsetRegion("statustext2", statusTextRegion)
 		animator.burstParticleEmitter("statustext2")
 	end
 end
 
 function update(dt)
-	if ( status.stat("shadowResistance")	>= 0.60 ) and ( status.stat("cosmicResistance")	>= 0.60 ) then
-		effect.expire()
+	if ( status.stat("shadowResistance") >= 0.60 ) and ( status.stat("cosmicResistance") >= 0.60 ) then
+		--effect.expire()--used in an effect zone, do not use this.
+		self.tickTimer=self.tickTime
+		return
 	end
 
 	if world.entityType(entity.id()) == "player" then
@@ -39,15 +36,11 @@ function update(dt)
 		self.tickTimer = self.tickTime
 		status.applySelfDamageRequest({
 			damageType = "IgnoresDef",
-			--effect.addStatModifierGroup({{stat = "protection", amount = baseValue }}),
 			damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage) + 1,
 			damageSourceKind = "poison",
-			sourceEntityId = entity.id(),
-			activateVisualEffects2()
+			sourceEntityId = entity.id()
 		})
+		activateVisualEffects2()
 	end
-end
-
-function uninit()
-
+	typerParticle.update(dt)
 end

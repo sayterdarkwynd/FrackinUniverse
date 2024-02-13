@@ -76,7 +76,7 @@ function BeamArm:fireState()
 	self.basePower = self.stats.basePower or 1
 	self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
 
-	self.largeLaser = self.stats.largeLaser or 0	-- non-mining lasers use this stat. Default is 10.
+	self.largeLaser = self.stats.largeLaser or 0	-- non-mining lasers use this stat. Default is 0.
 	if self.largeLaser > 0 then
 		self.basePower = 10 -- make sure our base power is easily computed
 		self.applyBeamDamage = self.basePower * (1 + self.mechTier/10) * self.largeLaser
@@ -129,9 +129,8 @@ function BeamArm:fireState()
 		world.damageTiles(damagePositions, "background", self.firePosition, "beamish", self.beamTileDamage, 99)
 	end
 	beamParams = {}
-
-	beamParams.timeToLive =	1
-	if self.basePower == 0.05 then
+	--this is incompatible kludge and does not belong here unless ordered appropriately, this must PRECEDE changing the rendered beam distance and MUST MODIFY IN TURN.
+	--[[if self.basePower == 0.05 then
 		beamParams.timeToLive =	0.1
 	elseif self.basePower == 0.15 then
 		beamParams.timeToLive =	0.1
@@ -145,17 +144,25 @@ function BeamArm:fireState()
 		beamParams.timeToLive =	0.475
 	elseif (self.basePower) > 33 then
 		beamParams.timeToLive =	1
+	end]]
+
+	--had to do some funny magic math to make it sync better with tick rate, while still maintaining that 'snappiness'.
+	beamParams.speed = 360
+	beamParams.power = self.applyBeamDamage
+	--distance=speed*time
+	beamParams.timeToLive = ((self.beamLength or 10)/(beamParams.speed))
+	--0.9 times TTL to sync hidden with rendered
+	--works unless the beam is too long (sin sniper) or too short (mining cannon), idk why. cant do anything about the mining cannon though.
+	if (self.beamLength<=100) then
+		beamParams.timeToLive=beamParams.timeToLive*0.9
 	end
 
-	beamParams.speed =	120
-	beamParams.power =	self.applyBeamDamage
-
 	--set damage kind properly.
-	local gleap=pParams.damageSources and pParams.damageSources[self.armName.."Beam"]
-	gleap=gleap and gleap.damageSourceKind
-	beamParams.damageKind=gleap
+	local buffer=pParams.damageSources and pParams.damageSources[self.armName.."Beam"]
+	buffer=buffer and buffer.damageSourceKind
+	beamParams.damageKind=buffer
 	--FU Projectile spawn, to do scaled damage *******************************************************************************
-	world.spawnProjectile("fu_genericBlankProjectile", self.firePosition, self.driverId, self.aimVector , false, beamParams)
+	world.spawnProjectile("fu_genericBlankProjectileTiny", self.firePosition, self.driverId, self.aimVector , false, beamParams)
 	-- ***********************************************************************************************************************
 
 	coroutine.yield()

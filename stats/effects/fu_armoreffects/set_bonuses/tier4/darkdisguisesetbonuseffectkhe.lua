@@ -10,10 +10,9 @@ shellBonus={
 
 	{stat = "snowslowImmunity", amount = 1},
 	{stat = "slushslowImmunity", amount = 1},
-	{stat = "clayslowImmunity", amount = 1},
 	{stat = "blacktarImmunity", amount = 1},
 	{stat = "fumudslowImmunity", amount = 1},
-	{stat = "jungleslowImmunity", amount = 1},
+	{stat = "fujungleslowImmunity", amount = 1},
 	{stat = "quicksandImmunity", amount = 1},
 	{stat = "honeyslowImmunity", amount = 1},
 	{stat = "iceslipImmunity", amount = 1},
@@ -32,7 +31,6 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		status.removeEphemeralEffect("regeneratingshield_energy-2_2-ereg_eblock-10")
 		status.removeEphemeralEffect("regeneratingshieldindicatorwraith")
-		status.removeEphemeralEffect("camouflage25")
 		effect.expire()
 	else
 		checkShell()
@@ -45,9 +43,9 @@ function checkShell()
 	local rsp=status.stat("regeneratingshieldpercent")
 	if rsp > 0.05 then
 		effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,shellBonus)
-		status.addEphemeralEffect("camouflage25")
+		effect.setParentDirectives(string.format("?multiply=ffffff%02x", math.floor(255-(rsp*200))))
 	else
 		effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,{})
-		status.removeEphemeralEffect("camouflage25")
+		effect.setParentDirectives()
 	end
 end

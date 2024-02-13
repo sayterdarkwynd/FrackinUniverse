@@ -49,9 +49,11 @@ class JsonAssetsTest {
 		this.checkCentrifuges();
 		this.checkSmelters();
 		this.checkSpaceStations();
+		this.checkPixelShops();
 		this.checkTreasurePools();
 		this.checkTreeUnlocks();
 		this.checkLiquidInteractions();
+		this.checkMonsters();
 
 		console.log( 'Checked ' + totalAssetCount + ' JSON files. Errors: ' + this.failedCount + '.\n' );
 		return this.failedCount === 0;
@@ -195,6 +197,13 @@ class JsonAssetsTest {
 
 				if ( data.materialId ) {
 					this.placeableMaterials.add( data.materialId );
+				}
+
+				// Check if any of the racial scan descriptions are exactly the same as default scan text.
+				for ( let [ key, value ] of Object.entries( data ) ) {
+					if ( key.endsWith( 'Description' ) && value === data.description ) {
+						this.fail( '\n', filename, 'Unnecessary key: ' + key + ': value is exactly the same as default scan text.' );
+					}
 				}
 
 				// No more checks for items.
@@ -476,6 +485,33 @@ class JsonAssetsTest {
 	}
 
 	/**
+	 * Check if pixel shops have unknown item codes.
+	 */
+	checkPixelShops() {
+		for ( var [ filename, data ] of this.knownAssets ) {
+			let interactData = data.interactData;
+			if ( !interactData || !interactData.items ) {
+				continue;
+			}
+
+			interactData.items.forEach( ( shopSlot ) => {
+				var itemCode = shopSlot.item;
+				if ( typeof itemCode === 'object' ) {
+					if ( Array.isArray( itemCode ) ) {
+						itemCode = itemCode[0];
+					} else {
+						itemCode = itemCode.name;
+					}
+				}
+
+				if ( !this.knownItemCodes.has( itemCode ) ) {
+					this.fail( filename, 'Unknown item sold at the shop: ' + itemCode );
+				}
+			} );
+		}
+	}
+
+	/**
 	 * Check if TreasurePools have unknown item codes.
 	 */
 	checkTreasurePools() {
@@ -653,7 +689,7 @@ class JsonAssetsTest {
 			}
 
 			if ( resultMaterial && inputItems.includes( outputItem ) ) {
-				// This is of the cosmetic interactions like "jellystone -> fublueslimestone",
+				// This is one of the cosmetic interactions like "jellystone -> fublueslimestone",
 				// where the resulting material yields the same item as the input material.
 				// This is not usable in Liquid Mixer (which is for changing item and/or quantity of liquid).
 				return;
@@ -718,6 +754,31 @@ class JsonAssetsTest {
 		if ( recommendedMixerRecipesToAdd.size > 0 ) {
 			console.log( 'Recommendation: you might want to add these recipes to Liquid Mixer:\n\t' +
 				[...recommendedMixerRecipesToAdd].sort().join( ',\n\t' ) );
+		}
+	}
+
+	/**
+	 * Check monsters for common errors.
+	 */
+	checkMonsters() {
+		for ( var [ filename, data ] of this.knownAssets ) {
+			if ( !filename.endsWith( '.monstertype' ) ) {
+				continue;
+			}
+
+			var statusSettings = data.baseParameters.statusSettings;
+			if ( !statusSettings ) {
+				continue;
+			}
+
+			var stats = statusSettings.stats;
+			var protection = ( stats.protection && stats.protection.baseValue );
+			if ( protection && protection > 0 && protection < 1 ) {
+				// A common typo (easy for human to not notice):
+				// "protection" stat must be a larger number (e.g. 25 or 40), not something like 0.25.
+				this.fail( filename, 'Monster has incorrect protection (between 0 and 1): ' +
+					protection + ': should probably be ' + ( protection * 100 ) + '.' );
+			}
 		}
 	}
 

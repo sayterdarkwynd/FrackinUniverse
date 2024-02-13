@@ -1,34 +1,30 @@
 {
-  "objectName" : "sarcobunnydeco",
-  "colonyTags" : ["avian","aviantomb"],
-  "rarity" : "Common",
-  "category" : "decorative",
-  "price" : 100,
+	"objectName" : "sarcobunnydeco",
+	"colonyTags" : ["avian","aviantomb"],
+	"rarity" : "Common",
+	"category" : "decorative",
+	"price" : 100,
 
-  "description" : "Is it wrong to take your bunny to the afterlife with you?",
-  "shortdescription" : "Bunny Sarcophagus",
-  "race" : "avian",
+	"description" : "^red;This object is being deprecated. Just place it down to get the normal version^reset;.",
+	"shortdescription" : "Bunny Sarcophagus (Deprecated)",
+	"race" : "avian",
+	"tooltipKind": "codex",
 
-  "apexDescription" : "Why is this sarcophagus rabbit-shaped?",
-  "avianDescription" : "A sarcophagus for criminals and heretics. The Avian inside will lose their wings in the afterlife.",
-  "floranDescription" : "Long earsss, long dead.",
-  "glitchDescription" : "Observant. Despite the design of the sarcophagus, there is an Avian inside.",
-  "humanDescription" : "A bunny sarcophagus! Cute!",
-  "hylotlDescription" : "The crystals in this sarcophagus appear to hold it closed. Was the inhabitant still alive when they were shut in?",
-  "novakidDescription" : "An Avian sarcophagus. But why is it shaped like a rabbit?",
+	"scripts" : ["/objects/noisy/sarconinjadeprecate.lua"],
+	"targetForReplace":"sarcobunny",
+	"targetCadaverRoll":2,
+	"inventoryIcon" : "sarcobunnyicon.png",
+	"orientations" : [
+		{
+			"dualImage" : "sarcobunny.png:<color>",
 
-  "inventoryIcon" : "sarcobunnyicon.png",
-  "orientations" : [
-    {
-      "dualImage" : "sarcobunny.png:<color>",
+			"imagePosition" : [-8, 0],
+			"frames" : 1,
+			"animationCycle" : 0.5,
 
-      "imagePosition" : [-8, 0],
-      "frames" : 1,
-      "animationCycle" : 0.5,
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-
-    }
-  ]
+		}
+	]
 }

@@ -13,8 +13,8 @@ function update(dt)
 				type=self.monsterId,
 				offset={0,0},
 				arguments={
-					damageTeamType=sourceTeamData.type,
-					damageTeam=sourceTeamData.team,
+					damageTeamType=(sourceTeamData and sourceTeamData.type) or nil,
+					damageTeam=(sourceTeamData and sourceTeamData.team) or nil,
 					level = 4
 				}
 			}

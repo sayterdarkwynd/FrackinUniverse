@@ -1,45 +1,47 @@
 {
-  "animatedParts" : {
-    "stateTypes" : {
-      "aura" : {
-        "default" : "on",
-        "states" : {
-          "on" : {
-            "frames" : 4,
-            "cycle" : 0.5,
-            "mode" : "loop"
-          }
-        }
-      }
-    },
-    "parts" : {
-      "aura" : {
-        "properties" : {
-          "zLevel" : 0
-        },
-        "partStates" : {
-          "aura" : {
-            "on" : {
-              "properties" : {
-                "image" : "entropicward.png:on.<frame>"
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "particleEmitters" : {
-    "entropicWard" : {
-      "active" : true,
-      "emissionRate" : 20,
-      "offsetRegion" : [-3.0, -3.0, 3.0, 3.0],
-      "particles" : [
-        { "particle" : "electricswoosh1"},
-        { "particle" : "electricswoosh2"},
-        { "particle" : "electricswoosh2"},
-        { "particle" : "fastrisingelectric"}
-      ]
-    }
-  }
+	"animatedParts" : {
+		"stateTypes" : {
+			"aura" : {
+				"default" : "off",
+				"states" : {
+					"on" : {
+						"frames" : 4,
+						"cycle" : 0.5,
+						"mode" : "loop"
+					},
+					"off":{
+					}
+				}
+			}
+		},
+		"parts" : {
+			"aura" : {
+				"properties" : {
+					"zLevel" : 0
+				},
+				"partStates" : {
+					"aura" : {
+						"on" : {
+							"properties" : {
+								"image" : "entropicward.png:on.<frame>"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"particleEmitters" : {
+		"entropicWard" : {
+			"active" : true,
+			"emissionRate" : 20,
+			"offsetRegion" : [-3.0, -3.0, 3.0, 3.0],
+			"particles" : [
+				{ "particle" : "electricswoosh1"},
+				{ "particle" : "electricswoosh2"},
+				{ "particle" : "electricswoosh2"},
+				{ "particle" : "fastrisingelectric"}
+			]
+		}
+	}
 }

@@ -1,139 +1,174 @@
 {
-  "itemName" : "floatstaff",
-  "price" : 1440,
-  "maxStack" : 1,
-  "level" : 4,
-  "rarity" : "uncommon",
-  "description" : "Forged by ^cyan;quiqksilver^reset;. Control gravity!",
-  "shortdescription" : "Gravity Wand",
-  "category" : "wand",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","wand","gravity"],
-  "tooltipKind" : "base",
-  "emitters" : [ "electricpillar" ],
-  "animation" : "/items/active/weapons/staff/staff.animation",
+	"itemName": "floatstaff",
+	"price": 1440,
+	"maxStack": 1,
+	"level": 4,
+	"rarity": "uncommon",
+	"description": "Forged by ^cyan;quiqksilver^reset;. Control gravity!",
+	"shortdescription": "Gravity Wand",
+	"category": "wand",
+	"twoHanded": false,
+	"itemTags": ["weapon", "wand", "gravity"],
+	"tooltipKind": "base",
+	"emitters": ["electricpillar"],
+	"animation": "/items/active/weapons/staff/staff.animation",
 
-  "animationParts" : {
-    "staff" : "floatstaff.png",
-    "stone" : "/items/active/weapons/wand/generated/stone/floatstaff.png",
-    "chargeEffect" : "floatstaffglow.png"
-  },
-  "animationCustom":{
-      "lights" : {
-        "glow" : {
-    "color" : [35, 14, 72]
-        }
-      },
-      "particleEmitters" : {
-        "physicalcharge" : {
-    "active" : false,
-    "transformationGroups" : ["weapon"],
-    "emissionRate" : 10,
-    "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
-    "particles" : [
-      {"particle" : "castphysical"}
-    ]
-        }
-      },
+	"animationParts": {
+		"staff": "floatstaff.png",
+		"stone": "/items/active/weapons/wand/generated/stone/floatstaff.png",
+		"chargeEffect": "floatstaffglow.png"
+	},
+	"animationCustom": {
+		"lights": {
+			"glow": {
+				"color": [35, 14, 72]
+			}
+		},
+		"particleEmitters": {
+			"physicalcharge": {
+				"active": false,
+				"transformationGroups": ["weapon"],
+				"emissionRate": 10,
+				"offsetRegion": [-0.5, 1.0, 0.5, 2.5],
+				"particles": [{
+					"particle": "castphysical"
+				}]
+			}
+		},
 
-      "sounds" : {
-        "physicalactivate" : ["/sfx/npc/boss/cultistboss_recharge.ogg"]
-      },
-    "animatedParts":{
-      "stateTypes":{
-        "charge":{
-    "states":{
-      "charge":{
-        "frames":13,
-        "cycle":0.05
-      },
-        "spark":{"frames":3, "cycle":0.05},
-        "charged":{"frames":4,"cycle":0.5},
-        "discharge":{"frames":1, "cycle":0.05}
-      }
-        }
-      }
-    }
-  },
+		"sounds": {
+			"physicalactivate": ["/sfx/npc/boss/cultistboss_recharge.ogg"]
+		},
+		"animatedParts": {
+			"stateTypes": {
+				"charge": {
+					"states": {
+						"charge": {
+							"frames": 13,
+							"cycle": 0.05
+						},
+						"spark": {
+							"frames": 3,
+							"cycle": 0.05
+						},
+						"charged": {
+							"frames": 4,
+							"cycle": 0.5
+						},
+						"discharge": {
+							"frames": 1,
+							"cycle": 0.05
+						}
+					}
+				}
+			}
+		}
+	},
 
-  "inventoryIcon" : "floatstaff.png",
+	"inventoryIcon": "floatstaff.png",
 
-  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+	"scripts": ["/items/active/weapons/staff/staff.lua"],
 
-  "stances" : {
-    "idle" : {
-      "armRotation" : -90,
-      "weaponRotation" : 0,
-      "twoHanded" : false,
+	"stances": {
+		"idle": {
+			"armRotation": -90,
+			"weaponRotation": 0,
+			"twoHanded": false,
 
-      "allowRotate" : false,
-      "allowFlip" : true
-    },
-    "charge" : {
-      "duration" : 1.0,
-      "armRotation" : 20,
-      "weaponRotation" : -20,
-      "twoHanded" : false,
+			"allowRotate": false,
+			"allowFlip": true
+		},
+		"charge": {
+			"duration": 1.0,
+			"armRotation": 20,
+			"weaponRotation": -20,
+			"twoHanded": false,
 
-      "allowRotate" : false,
-      "allowFlip" : true
-    },
-    "charged" : {
-      "armRotation" : 20,
-      "weaponRotation" : -20,
-      "twoHanded" : false,
+			"allowRotate": false,
+			"allowFlip": true
+		},
+		"charged": {
+			"armRotation": 20,
+			"weaponRotation": -20,
+			"twoHanded": false,
 
-      "allowRotate" : false,
-      "allowFlip" : true
-    },
-    "discharge" : {
-      "duration" : 0.05,
-      "armRotation" : -10,
-      "weaponRotation" : -50,
-      "twoHanded" : false,
+			"allowRotate": false,
+			"allowFlip": true
+		},
+		"discharge": {
+			"duration": 0.05,
+			"armRotation": -10,
+			"weaponRotation": -50,
+			"twoHanded": false,
 
-      "allowRotate" : true,
-      "allowFlip" : true
-    },
-    "cooldown" : {
-      "duration" : 0.05,
-      "armRotation" : -45,
-      "weaponRotation" : 0,
-      "twoHanded" : false,
+			"allowRotate": true,
+			"allowFlip": true
+		},
+		"cooldown": {
+			"duration": 0.05,
+			"armRotation": -45,
+			"weaponRotation": 0,
+			"twoHanded": false,
 
-      "allowRotate" : false,
-      "allowFlip" : true
-    }
-  },
+			"allowRotate": false,
+			"allowFlip": true
+		}
+	},
 
-  "elementalType" : "electric",
+	"elementalType": "electric",
 
 
-  "primaryAbilityType":"elementorb",
+	"primaryAbilityType": "elementorb",
 
-  "primaryAbility":{
-    "energyCost":100,
-    "maxCastRange":50,
-    "projectileType":"invisibleorb",
-    "projectileParameters":{
-      "baseDamage":0,
-      "persistentAudio":"",
+	"primaryAbility": {
+		"disableProjectileCountBonus":true,
+		"energyCost": 100,
+		"maxCastRange": 50,
+		"projectileType": "invisibleorb",
+		"projectileParameters": {
+			"baseDamage": 0,
+			"persistentAudio": "",
 
-      "power":0,
-      "damageKind":"noDamage",
-      "damageType":"noDamage",
-        "controlMovement":{
-    "maxSpeed":35,
-    "controlForce":1000
-        },
-      "timeToLive":60,
+			"power": 0,
+			"damageKind": "noDamage",
+			"damageType": "noDamage",
+			"controlMovement": {
+				"maxSpeed": 35,
+				"controlForce": 1000
+			},
+			"timeToLive": 60,
 
-      "periodicActions":[
-    {"time":0.01, "action":"projectile", "type":"pullzone", "config":{"speed":0, "processing":"?0", "persistentAudio":"", "knockback":0, "timeToLive":0.01, "power":10.0}},
-    {"time":0.01, "action":"projectile", "type":"frozengravityball", "angleAdjust":-90, "config":{"speed":0, "damageTeam":{"type":"ghostly"}, "knockback":0, "timeToLive":0.01, "power":0.0}}
-      ]
-      }
-    },
+			"periodicActions": [{
+					"time": 0.01,
+					"action": "projectile",
+					"type": "pullzone",
+					"config": {
+						"speed": 0,
+						"processing": "?multiply=00000000",
+						"persistentAudio": "",
+						"knockback": 0,
+						"timeToLive": 0.01,
+						"power": 10.0
+					}
+				},
+				{
+					"time": 0.01,
+					"action": "projectile",
+					"type": "frozengravityball",
+					"angleAdjust": -90,
+					"config": {
+						"speed": 0,
+						"damageTeam": {
+							"type": "ghostly"
+						},
+						"knockback": 0,
+						"timeToLive": 0.01,
+						"power": 0.0
+					}
+				}
+			]
+		}
+	},
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder": "/items/buildscripts/buildunrandweapon.lua"
 }

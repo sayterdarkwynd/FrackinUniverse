@@ -910,12 +910,12 @@
 	{
 		"op": "replace",
 		"path": "/planetTypes/garden/layers/surface/dungeonCountRange/0",
-		"value": 4
+		"value": 10
 	},
 	{
 		"op": "replace",
 		"path": "/planetTypes/garden/layers/surface/dungeonCountRange/1",
-		"value": 4
+		"value": 10
 	},
 	{
 		"op": "add",
@@ -2718,7 +2718,7 @@
 				},
 				"surface": {
 					"primaryRegion": ["midnight", "chromatic", "arborealdark", "icewastedark", "sulphuricdark", "eden", "tarball", "arboreal2", "desertwastes", "mountainous", "tidewater", "arboreal", "atropus", "bloodstone", "bog", "crystalmoon", "icemoon", "icewaste", "infernus", "irradiated", "lightless", "metallicmoon", "nitrogensea", "penumbra", "protoworld", "sulphuric", "thickjungle", "urbanwasteland", "alien", "barren", "desert", "forest", "jungle", "savannah", "scorchedcity", "snow", "tundra", "volcanic"],
-					"secondaryRegions": ["futentacle", "wartfield", "wastelandmini", "magicsnowland", "eden", "fieldofbracken", "supermatterzone", "aliendesert", "goreforest", "cactiplace", "metalworks", "metalhive", "metalworks2", "metalworks3", "metalworks4", "metaljungle", "crystalswamp", "ffhive", "corruptmoon", "birchforest", "alienforest", "sulphuricmagma", "cellfield", "reddesert", "finesand", "cloudforest", "hauntedforest", "hauntedgraveyard", "rainbowforest", "swamp", "mountainous", "tidewater", "estuary", "breakwater", "corrupt", "spring", "mushroom", "oasis", "tar", "alpine", "bioluminescence", "colourful", "bones", "giantflowers", "eyepatch", "ice", "rust", "alien", "arctic", "barren", "desert", "forest", "steamspring", "prism", "hiveold", "jungle", "magma", "ocean", "savannah", "scorchedcity", "snow", "toxic", "tundra", "volcanic", "ashgarden", "badlands", "blackslimebog", "blisterbushfield", "bloodgulch", "calichefield", "bloodstonefield", "corruptedforest", "crystalplain", "deadwood", "desertoasis", "dryriverbed", "elder", "energyorbforest", "flowerforest", "hellfirefield", "hellhive", "icefire", "irradiatedwaste", "meadow", "orchardapple", "orchardcherry", "orchardpeach", "orchardpear", "pineforest", "pitchfield", "primevalforest", "snowyforest", "sulphuricplain", "taiga", "precursorsurface"],
+					"secondaryRegions": ["futentacle", "wartfield", "wastelandmini", "magicsnowland", "eden", "fieldofbracken", "supermatterzone", "aliendesert", "goreforest", "cactiplace", "metalworks", "metalhive", "metalworks2", "metalworks3", "metalworks4", "metaljungle", "crystalswamp", "ffhive", "corruptmoon", "birchforest", "alienforest", "sulphuricmagma", "cellfield", "reddesert", "finesand", "cloudforest", "hauntedforest", "hauntedgraveyard", "rainbowforest", "swamp", "mountainous", "tidewater", "estuary", "breakwater", "corrupt", "spring", "mushroom", "oasis", "tar", "alpine", "bioluminescence", "colourful", "bones", "giantflowers", "eyepatch", "ice", "rust", "alien", "arctic", "barren", "desert", "forest", "steamspring", "prism", "jungle", "magma", "ocean", "savannah", "scorchedcity", "snow", "toxic", "tundra", "volcanic", "ashgarden", "badlands", "blackslimebog", "blisterbushfield", "bloodgulch", "calichefield", "bloodstonefield", "corruptedforest", "crystalplain", "deadwood", "desertoasis", "dryriverbed", "elder", "energyorbforest", "flowerforest", "hellfirefield", "hellhive", "icefire", "irradiatedwaste", "meadow", "orchardapple", "orchardcherry", "orchardpeach", "orchardpear", "pineforest", "pitchfield", "primevalforest", "snowyforest", "sulphuricplain", "taiga", "precursorsurface"],
 					"dungeons": [
 						[1.0, "gregbase"],
 						[0.5, "fuwreck"],
@@ -5951,7 +5951,7 @@
 				},
 				"surface": {
 					"primaryRegion": ["moon_shadow"],
-					"secondaryRegions": ["futentacle", "corruptmoon", "sulphuricmagma", "cellfield", "hellhive", "elder", "hiveold"],
+					"secondaryRegions": ["futentacle", "corruptmoon", "sulphuricmagma", "cellfield", "hellhive", "elder"],
 
 					"dungeons": [
 						[1.0, "apexspaceelevator"],
@@ -6023,6 +6023,11 @@
 		"value": ["empty"]
 	},
 	{
+		"op": "replace",
+		"path": "/regionTypes/oasis/fgCaveSelector/0",
+		"value": "sparseCaves"
+	},
+	{
 		"op": "add",
 		"path": "/regionTypes/prism/bgCaveSelector",
 		"value": ["empty"]
@@ -6031,6 +6036,16 @@
 		"op": "add",
 		"path": "/regionTypes/steamspring/bgCaveSelector",
 		"value": ["empty"]
+	},
+	{
+		"op": "replace",
+		"path": "/regionTypes/swamp/fgCaveSelector/0",
+		"value": "sparseCaves"
+	},
+	{
+		"op": "replace",
+		"path": "/regionTypes/tar/fgCaveSelector/0",
+		"value": "sparseCaves"
 	},
 
 

@@ -7,6 +7,7 @@ function init()
 	storage.timer = 1
 	self.mintick = 1
 	storage.crafting = storage.crafting or false
+	object.setAllOutputNodes(storage.crafting)
 	storage.output = storage.output or {}
 	storage.inputs = storage.inputs or {}
 end
@@ -111,6 +112,7 @@ function update(dt)
 				end
 			end
 			storage.crafting = false
+			object.setAllOutputNodes(storage.crafting)
 			storage.output = nil
 			storage.inputs = nil
 			storage.timer = self.mintick --reset timer to a safe minimum
@@ -139,6 +141,7 @@ function startCrafting(result)
 		end
 
 		storage.crafting = true
+		object.setAllOutputNodes(storage.crafting)
 		storage.timer = result.time
 		storage.output = result.outputs
 		--animator.setAnimationState("samplingarrayanim", "working")

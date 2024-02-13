@@ -1,6 +1,6 @@
 {
   "itemName" : "peglacitier1knife",
-  "price" : 50,
+  "price" : 25,
   "rarity" : "Common",
   "level" : 1,
   "inventoryIcon" : "peglacitier1knife.png",
@@ -18,7 +18,15 @@
   "projectileType" : "peglacitier1knife",
   "projectileConfig" : {
     "speed" : 45,
-    "power" : 5
+    "power" : 7,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item.ogg" ]
+      }
+    ]
   }
 }
 

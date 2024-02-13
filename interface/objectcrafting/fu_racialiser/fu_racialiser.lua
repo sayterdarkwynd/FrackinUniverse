@@ -11,10 +11,16 @@ function init()
 end
 
 function update(dt)
-	item = root.itemConfig(world.containerItemAt(pane.containerEntityId(),0))
-	if item then
-		itemType = item.config.racialiserType
+	local itemBuffer=world.containerItemAt(pane.containerEntityId(),0)
+	if itemBuffer and itemBuffer.name then
+		item = root.itemConfig(itemBuffer)
+		if item then
+			itemType = item.config.racialiserType
+		else
+			itemType = nil
+		end
 	else
+		item=nil
 		itemType = nil
 	end
 	itemNew = reload()
@@ -72,8 +78,10 @@ end
 function racialise()
 	if itemType then
 		itemOld = world.containerItemAt(pane.containerEntityId(),0)
-		world.containerTakeAt(pane.containerEntityId(),0)
-		world.containerAddItems(pane.containerEntityId(), {name = itemOld.name, count = itemOld.count, parameters = getNewParameters(root.itemConfig(itemOld).config.shipPetType)})
+		if itemOld and itemOld.name then
+			world.containerTakeAt(pane.containerEntityId(),0)
+			world.containerAddItems(pane.containerEntityId(), {name = itemOld.name, count = itemOld.count, parameters = getNewParameters(root.itemConfig(itemOld).config.shipPetType)})
+		end
 	end
 end
 

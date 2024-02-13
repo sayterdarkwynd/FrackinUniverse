@@ -6,19 +6,27 @@
    "inventoryIcon" : "peglacitier6knife.png",
   "image" : "peglacitier6knife.png",
   "shortdescription" : "Hobbler",
-  "description" : "Emits a freezing gas to slow targets before firing off razor-sharp Frosteel blades.",
+  "description" : "A specially crafted orb that emits freezing bursts to slow targets and cover an area with pain.",
 
   "ammoUsage" : 1,
   "category" : "throwableItem",
 
   "edgeTrigger" : true,
   "windupTime" : 0.0,
-  "cooldown" : 0.4,
+  "cooldown" : 1,
 
   "projectileType" : "peglacitier6knife",
   "projectileConfig" : {
-    "speed" : 45,
-    "power" : 24
+    "speed" : 25,
+    "power" : 18,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item.ogg" ]
+      }
+    ]
   }
 }
 

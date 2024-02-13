@@ -10,11 +10,11 @@ function init()
 	self.outPartialFillNode=config.getParameter("kheAA_outPartialFillNode")
 	self.outCompleteFillNode=config.getParameter("kheAA_outCompleteFillNode")
 
-	local desc="^blue;Input: ^white;item network^reset;\n^red;Output: ^white;item network^reset;"
-	if self.outPartialFillNode then
-		desc=desc.."\n^red;Lower output: ^white;item network^reset;\n^red;Upper outputs: ^white;Partial/Complete Fill^reset;"
-	end
-	object.setConfigParameter('description',desc)
+	-- local desc="^blue;Input: ^white;item network^reset;\n^red;Output: ^white;item network^reset;"
+	-- if self.outPartialFillNode then
+		-- desc=desc.."\n^red;Lower output: ^white;item network^reset;\n^red;Upper outputs: ^white;Partial/Complete Fill^reset;"
+	-- end
+	-- object.setConfigParameter('description',desc)
 end
 
 function update(dt)
@@ -50,7 +50,7 @@ end
 
 function outputnodes()
 
-	object.setOutputNodeLevel(transferUtil.vars.outDataNode,not transferUtil.vars.containerId==nil)
+	object.setOutputNodeLevel(transferUtil.vars.outDataNode,not (transferUtil.vars.containerId==nil))
 	if transferUtil.vars and transferUtil.vars.containerId and (self.outPartialFillNode or self.outCompleteFillNode) then
 		self.containerSize=world.containerSize(transferUtil.vars.containerId)
 		self.containerFill=util.tableSize(world.containerItems(transferUtil.vars.containerId) or {})

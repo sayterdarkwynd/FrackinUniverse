@@ -84,8 +84,8 @@ function swapTool(name)
         wiretool = "wiremode",
         painttool = "paintmode"
     }
-
-    if not swapItem and toolItem.name == origTool(tool) then return end
+    if (not toolItem) then sb.logError("mmutility.lua: Could not swap tool. tool=%s,toolItem=%s,swapItem=%s. You may need to use console commands to fix your tool slot.",tool,toolItem,swapItem) return end
+	if (not swapItem and toolItem.name == origTool(tool)) then return end
 
     if tool == "inspectiontool" and toolItem.name == "inspectionmode" then return end
     if tool ~= "inspectiontool" and not (self.currentMM.parameters.upgrades and contains(self.currentMM.parameters.upgrades, mmupgrade[tool])) then return end

@@ -1,0 +1,125 @@
+{
+  "projectileName" : "plaguepillar",
+  "image" : "poisonpillar.png",
+  "physics" : "gas",
+  "frameNumber" : 4,
+  "animationCycle" : 0.4,
+  "lightColor" : [50, 160, 50],
+  "power" : 2,
+  "speed" : 0,
+  "timeToLive" : 2.0,
+  "bounces" : -1,
+  "knockback" : 25,
+  "knockbackDirectional" : true,
+  "orientationLocked" : true,
+  "flippable" : true,
+  "damagePoly" : [ [8, 4],  [8, -4],  [-8, -4],  [-8, 4] ],
+  "piercing" : true,
+  "damageKind" : "poisonbarrier",
+  "emitters" : [ "poisonpillar" ],
+  "statusEffects":["fuwanderingplague"],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/poison_barrier_break1.ogg" ]
+    },
+    {
+      "action" : "loop",
+      "count" : 2,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/statuseffects/poison/poisonshort.animation",
+            "finalVelocity" : [0, 2],
+            "timeToLive" : 0.45,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.425,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [2.0, 2.0],
+              "position" : [1.5, 1.0]
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "looping" : true,
+            "animation" : "/animations/shards/slimeshard.animation",
+            "size" : 1,
+            "approach" : [30, 30],
+            "timeToLive" : 1,
+            "destructionAction" : "shrink",
+            "destructionTime" : 1,
+            "layer" : "middle",
+            "variance" : {
+              "position" : [0, 1.0],
+              "finalVelocity" : [5, 5],
+              "timeToLive" : 1
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "looping" : true,
+            "animation" : "/animations/shards/slimeshard.animation",
+            "size" : 1,
+            "approach" : [30, 30],
+            "timeToLive" : 1,
+            "destructionAction" : "shrink",
+            "destructionTime" : 1,
+            "layer" : "middle",
+            "variance" : {
+              "position" : [0, 1.0],
+              "finalVelocity" : [5, 5],
+              "timeToLive" : 1
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/elementalaura/poisonaura/poisonaura.animation",
+            "initialVelocity" : [0, 1],
+            "finalVelocity" : [0, 3],
+            "approach" : [1, 1],
+            "timeToLive" : 1.0,
+            "size" : 0.7,
+            "layer" : "back",
+            "variance" : {
+              "initialVelocity" : [4, 1],
+              "rotation" : 180,
+              "angularVelocity" : 20
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/poisondrip/poisondrip1.animation",
+            "initialVelocity" : [0, -5],
+            "finalVelocity" : [0, -10],
+            "timeToLive" : 0.45,
+            "fade" : 0.5,
+            "light" : [70, 160, 30],
+            "destructionAction" : "shrink",
+            "destructionTime" : 1,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [1.0, 3.0],
+              "position" : [2.0, 1.0],
+              "timeToLive" : 0.3
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

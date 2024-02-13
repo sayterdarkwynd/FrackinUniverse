@@ -22,5 +22,5 @@ function FRHelper:call(args)
     end
 
     foodValue = foodValue / args.speedFactor
-    mcontroller.controlModifiers({ util.lerp(foodValue, args.minSpeed, args.maxSpeed) })
+    mcontroller.controlModifiers({ speedModifier=(status.statPositive("spikeSphereActive") and 1.0) or util.lerp(foodValue, args.minSpeed, args.maxSpeed) })
 end

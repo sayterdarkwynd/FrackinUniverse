@@ -8,7 +8,7 @@ object.setInteractive(true)
       storage.waterCount = 0
     end
 
-    if not world.type() == 'playerstation' and not world.type == 'unknown' then
+    if (not (world.type() == 'playerstation')) and (not (world.type == 'unknown')) then
       storage.waterCount = storage.waterCount + dt
     end
 

@@ -39,22 +39,24 @@
     "path": "/baseParameters/behaviorConfig/damageTakenActions",
     "value": [
       {
-        "name": "action-swoop",
-        "cooldown": 4,
-        "parameters": {
-          "minimumRange": 3,
-          "maximumRange": 10,
-          "onGround": false,
-          "windupTime": 0.6,
-          "gravityMultiplier": -0.5,
-          "swoopVelocity": 25,
-          "collisionCheck": false,
-          "highArc": false,
-          "swoopTime": 0.5,
-          "winddownTime": 0.5,
-          "winddownState": "fly",
-          "winddownStopForce": 20
-        }
+          "name" : "action-fire",
+          "cooldown" : 0,
+          "parameters" : {
+            "windupState" : "fly",
+            "windupTime" : 0.01,
+            "minimumRange" : 0,
+            "maximumRange" : 50,
+            "projectileType" : "fuenergyshardexplosion",
+            "fireSound" : "",
+            "fireState" : "fly",
+            "winddownState" : "fly",
+            "winddownTime" : 0.01,
+            "aimAtTarget" : false,
+            "aimDirection" : [0,-1],
+            "onGround" : false,
+            "fireDelay" : 0.01,
+            "projectileParameters" : { "statusEffects" : ["electrified"] }
+          }
       }
     ]
   },
@@ -62,22 +64,27 @@
     "op": "add",
     "path": "/baseParameters/behaviorConfig/hostileActions/-",
     "value": {
-      "name": "action-swoop",
-      "cooldown": 1,
-      "parameters": {
-        "minimumRange": 3,
-        "maximumRange": 10,
-        "onGround": false,
-        "windupTime": 0.6,
-        "gravityMultiplier": -0.5,
-        "swoopVelocity": 25,
-        "collisionCheck": true,
-        "highArc": false,
-        "swoopTime": 0.5,
-        "winddownTime": 0.5,
-        "winddownState": "fly",
-        "winddownStopForce": 20
-      }
+          "name" : "action-swoop",
+          "cooldown" : 3,
+          "parameters" : {
+            "skillName":"flyingSwoopApproach",
+            "minimumRange" : 0,
+            "maximumRange" : 30,
+            "onGround" : false,
+            "windupTime" : 0.25,
+            "windupState" : "fly",
+            "windupStopForce" : 50,
+            "gravityMultiplier" : -0.2,
+            "swoopVelocity" : 37,
+            "collisionCheck" : true,
+            "highArc" : false,
+            "swoopstate" : "fly",
+            "swoopTime" : 0.75,
+
+            "winddownTime" : 0.1,
+            "winddownState" : "fly",
+            "winddownStopForce" : 150
+          }
     }
   },
   {
@@ -88,7 +95,7 @@
   {
     "op": "replace",
     "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
-    "value": 110
+    "value": 90
   },
   {
     "op": "replace",

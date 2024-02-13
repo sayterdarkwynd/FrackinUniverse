@@ -4,7 +4,8 @@
   "maxStack" : 1,
   "level" : 7,
   "rarity" : "legendary",
-  "description" : "It slices, it dices...and acts as a makeshift walking stick.",
+  "description" : "It slices, it dices...and acts as a makeshift walking stick.
+^cyan;Inflicts bleeding^reset;",
   "shortdescription" : "Chain Staff",
   "tooltipKind" : "sword2",
   "category" : "Quarterstaff",
@@ -39,7 +40,7 @@
   "primaryAbility" : {
     "fireTime" : 0.75,
     "baseDps" : 6.25,
-    "damageConfig":{"knockback":10},
+    "damageConfig":{"knockback":10,"statusEffects" : [ "bleedingshort" ]},
       "comboSteps":6,
       "swooshOffsetRegions":[
         [0.75, 0.0, 4.25, 5.0],

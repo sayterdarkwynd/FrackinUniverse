@@ -1,3 +1,5 @@
+require("/scripts/util.lua")
+
 function init()
     self.species = world.entitySpecies(entity.id())
     if not self.species then return end
@@ -20,7 +22,7 @@ function update(dt)
     underground = undergroundCheck()
     if underground then
         status.setPersistentEffects("undergroundBonus", self.raceConfig.undergroundBonus.stats)
-        mcontroller.controlModifiers(self.raceConfig.undergroundBonus.stats)
+        mcontroller.controlModifiers(filterModifiers(copy(self.raceConfig.undergroundBonus.stats)))
     else
         status.clearPersistentEffects("undergroundBonus")
     end
@@ -28,4 +30,9 @@ end
 
 function uninit()
     status.clearPersistentEffects("undergroundBonus")
+end
+
+function filterModifiers(stuff)
+	if (status.statPositive("spikeSphereActive") and 1.0) and stuff["speedModifier"] then stuff["speedModifier"]=1.0 end
+	return stuff
 end

@@ -77,8 +77,10 @@ function changeMusic(_,_, dir, name, direction, time)
 		local input = object.getInputNodeIds(0)
 		if not direction or direction == "input" then
 			for id, _ in pairs(input) do
-				if world.entityName(id) == "fm_musicplayer" or world.entityName(id) == "fm_musicplayerwall" then
-					world.sendEntityMessage(id, "changeMusic", dir, name, "input", self.lastWireModified)
+				for _,musicboxid in pairs(self.musicboxlist) do
+					if world.entityName(id) == musicboxid then
+						world.sendEntityMessage(id, "changeMusic", dir, name, "input", self.lastWireModified)
+					end
 				end
 			end
 		end
@@ -102,8 +104,10 @@ function turnOff(_,_, direction, time)
 		local output = object.getOutputNodeIds(0)
 		if not direction or direction == "output" then
 			for id, _ in pairs(output) do
-				if world.entityName(id) == "fm_musicplayer" or world.entityName(id) == "fm_musicplayerwall" then
-					world.sendEntityMessage(id, "turnOff", "output", self.lastWireModified)
+				for _,musicboxid in pairs(self.musicboxlist) do
+					if world.entityName(id) == musicboxid then
+						world.sendEntityMessage(id, "turnOff", "output", self.lastWireModified)
+					end
 				end
 			end
 		end
@@ -111,8 +115,10 @@ function turnOff(_,_, direction, time)
 		local input = object.getInputNodeIds(0)
 		if not direction or direction == "input" then
 			for id, _ in pairs(input) do
-				if world.entityName(id) == "fm_musicplayer" or world.entityName(id) == "fm_musicplayerwall" then
-					world.sendEntityMessage(id, "turnOff", "input", self.lastWireModified)
+				for _,musicboxid in pairs(self.musicboxlist) do
+					if world.entityName(id) == musicboxid then
+						world.sendEntityMessage(id, "turnOff", "input", self.lastWireModified)
+					end
 				end
 			end
 		end

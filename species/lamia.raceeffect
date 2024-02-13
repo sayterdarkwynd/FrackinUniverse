@@ -1,103 +1,56 @@
 {
 	"stats": [
-		{
-			"stat": "foodDelta",
-			"baseMultiplier": 0.5
-		},
-		{
-			"stat": "maxHealth",
-			"effectiveMultiplier": 0.8
-		},
-		{
-			"stat": "maxEnergy",
-			"effectiveMultiplier": 1.2
-		},
-		{
-			"stat": "physicalResistance",
-			"amount": 0.1
-		},
-		{
-			"stat": "fireResistance",
-			"amount": 0.2
-		},
-		{
-			"stat": "iceResistance",
-			"amount": -0.4
-		},
-		{
-			"stat": "poisonResistance",
-			"amount": 0.3
-		},
-		{
-			"stat": "shadowResistance",
-			"amount": 0.3
-		},
-		{
-			"stat": "cosmicResistance",
-			"amount": -0.2
-		},
-		{
-			"stat": "blacktarImmunity",
-			"amount": 1
-		},
-		{
-			"stat": "jungleslowImmunity",
-			"amount": 1
-		}
+		{"stat": "foodDelta","baseMultiplier": 0.5},
+		{"stat": "maxHealth","effectiveMultiplier": 0.8},
+		{"stat": "maxEnergy","effectiveMultiplier": 1.2},
+
+		{"stat": "physicalResistance","amount": 0.1},
+		{"stat": "fireResistance","amount": 0.2},
+		{"stat": "iceResistance","amount": -0.4},
+		{"stat": "poisonResistance","amount": 0.3},
+		{"stat": "shadowResistance","amount": 0.3},
+		{"stat": "cosmicResistance","amount": -0.2},
+
+		{"stat": "blacktarImmunity","amount": 1},
+		{"stat": "fujungleslowImmunity","amount": 1},
+
+		{"stat": "bowMastery","amount": 0.25},
+		{"stat": "whipMastery","amount": 0.2}
 	],
 	"diet" : "carnivore",
 	"controlModifiers": {
 		"airJumpModifier": 1.2
 	},
 	"weaponEffects": [{
-			"weapons": [ "chakram" ],
-			"stats": [{
-					"stat": "powerMultiplier",
-					"effectiveMultiplier": 1.1
-				},
-				{
-					"stat": "maxHealth",
-					"effectiveMultiplier": 1.1
-				},
-				{
-					"stat": "grit",
-					"amount": 0.12
-				}
-			]
-		},
-		{
-			"combos": [["chakram","chakram"]],
-			"stats": [{
+		"weapons": [ "chakram" ],
+		"stats": [{
 				"stat": "powerMultiplier",
 				"effectiveMultiplier": 1.1
-			}]
-		},
-		{
-			"weapons": [
-				"bow"
-			],
-			"stats": [{
-				"stat": "powerMultiplier",
-				"effectiveMultiplier": 1.25
-			}],
-			"controlModifiers": {
-				"speedModifier": 1.2
+			},
+			{
+				"stat": "maxHealth",
+				"effectiveMultiplier": 1.1
+			},
+			{
+				"stat": "grit",
+				"amount": 0.12
 			}
-		},
-		{
-			"weapons": [
-				"whip"
-			],
-			"stats": [{
-				"stat": "protection",
-				"amount": 6
-			}]
-		}
-	],
+		]
+	},
+	{
+		"combos": [["chakram","chakram"]],
+		"stats": [{
+			"stat": "powerMultiplier",
+			"effectiveMultiplier": 1.1
+		}]
+	}
+
+],
 	"weaponScripts": [{
 		"script": "/scripts/fr_weaponscripts/lamiabows.lua",
 		"contexts": [
 			"bowshot-fire"
 		]
 	}]
+	
 }

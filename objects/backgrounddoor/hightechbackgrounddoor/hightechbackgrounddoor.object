@@ -1,0 +1,48 @@
+{
+  "objectName" : "hightechbackgrounddoor",
+  "colonyTags" : ["lab","door"],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "printable" : false,
+  "price" : 40,
+  "description" : "A high-tech teleporter door. Connect to another door to teleport between them.\n^blue;Input 1^reset;: Lock\n^blue;Input 2^reset;/^red;Output^reset;: Door connections",
+  "shortdescription" : "High Tech Background Door",
+  "tooltipKind" : "base",
+
+  "inventoryIcon" : "hightechbackgrounddooricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "hightechbackgrounddoor.png:<color>",
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "/animations/bgdoor/backgrounddoor.animation",
+    "animationCustom" : {
+     "sounds" : {
+       "open" : {
+           "pool" : ["/sfx/objects/apexcooldoor_open.ogg"],
+           "rangeMultiplier" : 0.25
+       },
+       "close" : {
+         "pool" : ["/sfx/objects/apexcooldoor_close.ogg"],
+         "rangeMultiplier" : 0.25
+       }
+     }
+   },
+   "animationParts" : {
+     "door" : "hightechbackgrounddoor.png"
+   },
+   "animationPosition" : [-8,0],
+
+  "scripts" : ["/scripts/decorations/bgdoor/bgdoortele.lua"],
+  "openAoe" : [[-2,0],[2,5]],
+
+  "allowTele" : true,
+  "telePos" : [0,-1],
+  "inputNodes" : [ [-1, 0], [-1, 1] ],
+  "outputNodes" : [ [1, 4] ]
+}

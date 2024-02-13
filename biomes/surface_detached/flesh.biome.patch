@@ -23,7 +23,12 @@
             "tracks" : [ "/music/atropusambiance3a.ogg", "/music/atropusambiance4a.ogg" ]
           }
         }
-      },   
+      },
+  {
+    "op": "replace",
+    "path": "/subBlocks",
+    "value": [ "corruptdirt", "magmarock" ]
+  },
   {
     "op": "add",
     "path": "/surfacePlaceables/items/-",
@@ -69,6 +74,20 @@
             "parameters" : { }
           }
         ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "heckflower" ]
     }
   },
 {"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
@@ -172,6 +191,16 @@
   }
 },
   {
+    "op": "replace",
+    "path": "/undergroundPlaceables/grassModDensity",
+    "value": 0.3
+  },
+  {
+    "op": "replace",
+    "path": "/undergroundPlaceables/ceilingGrassModDensity",
+    "value": 0.3
+  },
+  {
     "op": "add",
     "path": "/undergroundPlaceables/items/-",
     "value":
@@ -230,6 +259,20 @@
             "parameters" : { }
           }
         ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/undergroundPlaceables/items/-",
+    "value":
+    {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "heckflower" ]
     }
   },
 {"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
