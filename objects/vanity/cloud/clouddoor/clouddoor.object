@@ -1,0 +1,51 @@
+{
+  "objectName" : "clouddoor",
+  "colonyTags" : ["fu","cloud","pretty","valuable","door"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 95,
+  "description" : "A fluffy door made from clouds.",
+  "shortdescription" : "Cloud Door",
+  "race" : "generic",
+
+  "inventoryIcon" : "clouddooricon.png",
+
+  "tooltipKind" : "door",
+  "largeImage" : "clouddoor.png:right",
+  
+  "orientations" : [
+    {
+      "image" : "clouddoor.png:default",
+      "imagePosition" : [-16, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/birddoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/birddoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "clouddoor.png"
+  },
+  "animationPosition" : [-16, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}
