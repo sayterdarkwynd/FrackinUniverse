@@ -1,0 +1,78 @@
+{
+    "objectName": "cloudlight",
+    "colonyTags": [
+        "cloud",
+        "light"
+    ],
+    "rarity": "Common",
+    "description": "A light made from clouds. It's kind-of wet.",
+    "shortdescription": "Cloud Light",
+    "race": "generic",
+    "category": "light",
+    "price": 45,
+    "lightColor": [
+        249,
+        255,
+        255
+    ],
+    "inventoryIcon": "cloudlighticon.png",
+    "orientations": [
+        {
+            "image": "cloudlight.png:<color>.<frame>",
+            "imagePosition": [
+                -8,
+                0
+            ],
+            "frames": 1,
+            "animationCycle": 0.3,
+            "direction": "left",
+            "flipImages": true,
+            "animationPosition": [
+                -8,
+                0
+            ],
+            "spaceScan": 0.1
+        },
+        {
+            "image": "cloudlight.png:<color>.<frame>",
+            "imagePosition": [
+                -8,
+                0
+            ],
+            "frames": 1,
+            "animationCycle": 0.3,
+            "direction": "right",
+            "animationPosition": [
+                -8,
+                0
+            ],
+            "spaceScan": 0.1
+        }
+    ],
+    "animation": "/objects/wired/light/lighttogglebgfullbright.animation",
+    "animationParts": {
+        "bg": "cloudlight.png",
+        "fg": "cloudlightlit.png"
+    },
+    "animationCustom": {
+        "sounds": {
+            "on": [
+                "/sfx/objects/tinywallswitch.ogg"
+            ],
+            "off": [
+                "/sfx/objects/tinywallswitch.ogg"
+            ]
+        }
+    },
+    "soundEffect": "/sfx/weather/rain_light.ogg",
+    "scripts": [
+        "/objects/wired/light/light.lua"
+    ],
+    "scriptDelta": 60,
+    "inputNodes": [
+        [
+            0,
+            0
+        ]
+    ]
+}

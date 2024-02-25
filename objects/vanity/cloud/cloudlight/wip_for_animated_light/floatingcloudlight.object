@@ -1,0 +1,66 @@
+{
+    "objectName": "floatingcloudlight",
+    "colonyTags": [
+        "cloud",
+        "light"
+    ],
+    "rarity": "Common",
+    "description": "A light made from clouds. It floats gently.",
+    "shortdescription": "Floating Cloud Light",
+    "race": "generic",
+    "category": "light",
+    "price": 45,
+    "lightColor": [
+        249,
+        255,
+        255
+    ],
+    "inventoryIcon": "floatingcloudlighticon.png",
+    "orientations": [
+        {
+            "image": "floatingcloudlight.png:<color>.<frame>",
+            "imagePosition": [
+                -8,
+                0
+            ],
+			"animationPosition" : [-8, 0],
+            "direction": "left",
+            "flipImages": true,
+            "spaceScan": 0.1
+        },
+        {
+            "image": "floatingcloudlight.png:<color>.<frame>",
+            "imagePosition": [
+                -8,
+                0
+            ],
+			"animationPosition" : [-8, 0],
+            "direction": "right",
+            "spaceScan": 0.1
+        }
+    ],
+    "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+    "animation": "floatingcloudlight.animation",
+    "animationCustom": {
+        "sounds": {
+            "on": [
+                "/sfx/objects/tinywallswitch.ogg"
+            ],
+            "off": [
+                "/sfx/objects/tinywallswitch.ogg"
+            ]
+        }
+    },
+    "soundEffect": "/sfx/weather/rain_light.ogg",
+    "animationParts": {
+        "bg": "floatingcloudlight.png",
+        "fg": "floatingcloudlightlit.png"
+    },    
+    "inputNodes": [
+        [
+            0,
+            0
+        ]
+    ]
+}
