@@ -17,7 +17,7 @@
     "comboSteps" : 3,
 
     "flashTime" : 0.25,
-    "flashDirectives" : "fade=FF0000FF=0.15",
+    "flashDirectives" : "fade=22CCFFFF=0.05",
 
     "swooshOffsetRegions" : [
       [-1.0, -0.25, 2.5, 2.0],
@@ -26,7 +26,7 @@
     ],
 
     // cooldown time multiplier for steps after the first, compounded per combo step
-    "comboSpeedFactor" : 0.17,
+    "comboSpeedFactor" : 0.3,
 
     "edgeTriggerGrace" : 0.23,
 
@@ -55,8 +55,8 @@
 
     "stances" : {
       "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : -10,
+        "armRotation" : -45,
+        "weaponRotation" : -35,
         "weaponOffset" : [0, 2.25],
 
         "allowFlip" : true,
@@ -99,9 +99,18 @@
         "allowRotate" : true
       },
       "fire2" : {
-        "duration" : 0.3,
+        "duration" : 0.2,
         "armRotation" : 0,
         "weaponRotation" : -90,
+        "weaponOffset" : [0, 2.25],
+        "twoHanded" : false,
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "wait2" : {
+        "duration" : 0.3,
+        "armRotation" : -45,
+        "weaponRotation" : -35,
         "weaponOffset" : [0, 2.25],
         "twoHanded" : false,
         "allowFlip" : true,
@@ -118,7 +127,7 @@
         "allowFlip" : true
       },
       "fire3" : {
-        "duration" : 0.1,
+        "duration" : 0.2,
         "armRotation" : -10,
         "weaponRotation" : -90,
         "weaponOffset" : [0, 2.25],
@@ -128,7 +137,7 @@
         "allowFlip" : true
       },
       "wait3" : {
-        "duration" : 0.1,
+        "duration" : 0.2,
         "armRotation" : -15,
         "weaponRotation" : -75,
         "weaponOffset" : [0, 2.25],
