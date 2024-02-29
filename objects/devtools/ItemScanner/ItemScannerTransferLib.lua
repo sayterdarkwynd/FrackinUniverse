@@ -7,9 +7,9 @@ function scanButton()
 	bag=widget.itemGridItems("itemGrid")
 	if bag and #bag then
 		for _,item in pairs(bag) do
-			sb.logInfo("%s",item)
-			sb.logInfo("%s",root.itemConfig(item))
-			sb.logInfo("%s",{ transferUtil.getType(item), transferUtil.getCategory(item)})
+			sb.logInfo("%s",sb.printJson(item))
+			sb.logInfo("%s",sb.printJson(root.itemConfig(item)))
+			sb.logInfo("%s",sb.printJson({ transferUtil.getType(item), transferUtil.getCategory(item)}))
 		end
 	end
 end
