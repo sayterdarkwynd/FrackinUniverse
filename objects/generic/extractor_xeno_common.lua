@@ -20,7 +20,6 @@ function init()
 	for i=0,self.inputSlot-1 do
 		table.insert(self.outputSlots,i)
 	end
-	self.inputSlot = config.getParameter("inputSlot",1)
 	self.techLevel = config.getParameter("fu_stationTechLevel", 1)
 
 	storage.activeConsumption = storage.activeConsumption or false
