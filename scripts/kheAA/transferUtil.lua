@@ -32,6 +32,8 @@ function transferUtil.init()
 	transferUtil.vars.logicNode=config.getParameter("kheAA_logicNode")
 	transferUtil.vars.inDataNode=config.getParameter("kheAA_inDataNode")
 	transferUtil.vars.outDataNode=config.getParameter("kheAA_outDataNode")
+	transferUtil.vars.defaultMaxStack = root.assetJson("/items/defaultParameters.config").defaultMaxStack
+	transferUtil.vars.itemDataCache = {}
 	transferUtil.vars.didInit=true
 end
 
@@ -109,7 +111,10 @@ end
 
 function transferUtil.throwItemsAt(target,targetPos,item,drop)
 	if item.count~=math.floor(item.count) or item.count<=0 then return false end
-
+	local stackCap=handleCache(item).maxStack
+	if item.count>stackCap then
+		item.count=stackCap
+	end
 	drop=drop or false
 
 	if target==nil and targetPos==nil then
@@ -364,34 +369,46 @@ function transferUtil.powerLevel(node,explicit)
 	end
 end
 
+function handleCache(item)
+	if (not transferUtil.vars.itemDataCache[item.name])
+	or (item.parameters.category and (item.parameters.category~=transferUtil.vars.itemDataCache[item.name].itemCat)) then
+
+		local buffer=root.itemConfig(item)
+		local buffer2={}
+		if item.name == "sapling" then
+			buffer2.itemCat=item.name
+		elseif buffer.parameters.currency or buffer.config.currency or item.currency then
+			buffer2.itemCat="currency"
+		elseif buffer.parameters and buffer.parameters.category then
+			buffer2.itemCat=buffer.parameters.category
+		elseif buffer.config.category then
+			buffer2.itemCat=buffer.config.category
+		elseif buffer.config.category then
+			buffer2.itemCat=buffer.config.category
+		elseif buffer.category then
+			buffer2.itemCat=buffer.category
+		elseif buffer.config.projectileType then
+			buffer2.itemCat="throwableitem"
+		--[[elseif buffer.config.itemTags then
+			for _,tag in pairs(buffer.config.itemTags) do
+
+			end]]
+		end
+		buffer2.maxStack=buffer.parameters.maxStack or buffer.config.maxStack or transferUtil.vars.defaultMaxStack
+		transferUtil.vars.itemDataCache[item.name]=buffer2
+	end
+	return transferUtil.vars.itemDataCache[item.name]
+end
+
 function transferUtil.getType(item)
 	if not item.name then
 		return "unhandled"
-	elseif item.name == "sapling" then
-		return item.name
-	elseif item.currency then
-		return "currency"
 	end
-	local itemRoot = root.itemConfig(item)--implement cache maybe?
-	if itemRoot.config.currency then
-		return "currency"
-	end
-	local itemCat
-	if itemRoot.category then
-		itemCat=itemRoot.category
-	elseif itemRoot.config.category then
-		itemCat=itemRoot.config.category
-	elseif itemRoot.config.projectileType then
-		itemCat="throwableitem"
-	--[[elseif itemRoot.config.itemTags then
-		for _,tag in pairs(itemRoot.config.itemTags) do
-
-		end]]
-	end
-	if itemCat then
-		return string.lower(itemCat)
+	local itemCache=handleCache(item)
+	if itemCache and itemCache.itemCat then
+		return string.lower(itemCache.itemCat)
 	elseif not unhandled[item.name] then
-		--sb.logInfo("Unhandled Item:\n%s",itemRoot)
+		--sb.logInfo("Unhandled Item:\n%s\n%s",item,itemCache)
 		unhandled[item.name]=true
 	end
 	return "unhandled"
