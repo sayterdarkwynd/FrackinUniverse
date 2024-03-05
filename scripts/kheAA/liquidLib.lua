@@ -11,19 +11,35 @@ function liquidLib.init()
 			storage.liquids[i]=nil
 		end
 	end
+	liquidLib.vars.liquidDataBuffer={}
+	liquidLib.vars.defaultMaxStack=root.assetJson("/items/defaultParameters.config").defaultMaxStack
 end
 
 function liquidLib.itemToLiquidId(item)
-	local itemBuffer=root.itemConfig(item)
-	if itemBuffer.config.liquid then
-		local liquidBuffer=root.liquidConfig(itemBuffer.config.liquid)
-		if liquidBuffer.config.liquidId then
-			return tonumber(liquidBuffer.config.liquidId)
+	if liquidLib.vars.liquidDataBuffer[item.name] then
+		if liquidLib.vars.liquidDataBuffer[item.name].id>0 then
+			return liquidLib.vars.liquidDataBuffer[item.name].id
 		else
 			return
 		end
 	else
-		return
+		local itemBuffer=root.itemConfig(item)
+		if itemBuffer.config.liquid then
+			local liquidBuffer=root.liquidConfig(itemBuffer.config.liquid)
+			if liquidBuffer.config.liquidId then
+				liquidLib.vars.liquidDataBuffer[item.name]={}
+				liquidLib.vars.liquidDataBuffer[item.name].id=tonumber(liquidBuffer.config.liquidId)
+				--local stackGrab=9999
+				--liquidLib.vars.liquidDataBuffer[item.name].stackSize=stackGrab
+				return tonumber(liquidLib.vars.liquidDataBuffer[item.name].id)
+			else
+				liquidLib.vars.liquidDataBuffer[item.name]={id=-1}
+				return
+			end
+		else
+			liquidLib.vars.liquidDataBuffer[item.name]={id=-1}
+			return
+		end
 	end
 end
 
