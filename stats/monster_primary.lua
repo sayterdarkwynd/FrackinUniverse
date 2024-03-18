@@ -154,7 +154,8 @@ function update(dt)
 			local damage = (self.fallDistance - minimumFallDistance) * fallDistanceDamageFactor
 			damage = damage * (1.0 + (world.gravity(mcontroller.position()) - baseGravity) * gravityDiffFactor)
 			damage = damage * healthRatio
-			damage = damage * status.stat("fallDamageMultiplier")
+			-- values are shifted by one because you can't easily add a stat base value to every monster
+			damage = damage * (status.stat("monsterFallDamageMultiplier") + 1.0)
 			status.applySelfDamageRequest({
 				damageType = "IgnoresDef",
 				damage = damage,
