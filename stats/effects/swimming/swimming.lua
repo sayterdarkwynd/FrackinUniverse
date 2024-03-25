@@ -1,5 +1,10 @@
 require "/scripts/unifiedGravMod.lua"
 function init()
+	self.baseparams = mcontroller.baseParameters()
+	if not (self.baseparams.gravityEnabled and self.baseparams.collisionEnabled) then
+		effect.expire()
+		return
+	end
 	-- params
 	unifiedGravMod.init()
 	handle=effect.addStatModifierGroup({})
@@ -100,6 +105,10 @@ function allowedType() -- check entity type from provided list
 end
 
 function update(dt)
+	if not (self.baseparams.gravityEnabled and self.baseparams.collisionEnabled) then
+		effect.expire()
+		return
+	end
 	-- params
 	applyBonusSpeed() -- check if bonus speed is active
 
@@ -235,5 +244,7 @@ function setMonsterAbilities()
 end
 
 function uninit()
-	effect.removeStatModifierGroup(handle)
+	if handle then
+		effect.removeStatModifierGroup(handle)
+	end
 end
