@@ -51,7 +51,7 @@ function update(dt)
 		rentTimer = 0
 		if happy>0 then
 			world.containerPutItemsAt(entity.id(),{name=wellSlots[1].name,count=(10 * (wellsDrawing) * (happy/10))*(1+offlineTicks)},0)
-		elseif happy<0 then
+		elseif bonusHappiness<0 then
 			rentTimer=rentTimer-happy
 		end
 		offlineTicks=0
