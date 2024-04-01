@@ -47,9 +47,14 @@ function update(dt)
 	end
 	rentTimer = rentTimer + dt
 	if (rentTimer > rentTime) then
-		world.containerPutItemsAt(entity.id(),{name=wellSlots[1].name,count=(10 * (wellsDrawing) * (bonusHappiness/10))*(1+offlineTicks)},0)
-		offlineTicks=0
+		local happy=math.max(0,bonusHappiness)
 		rentTimer = 0
+		if happy>0 then
+			world.containerPutItemsAt(entity.id(),{name=wellSlots[1].name,count=(10 * (wellsDrawing) * (happy/10))*(1+offlineTicks)},0)
+		elseif bonusHappiness<0 then
+			rentTimer=rentTimer-happy
+		end
+		offlineTicks=0
 		object.setConfigParameter("leftTime", os.time() )
 	end
 end
