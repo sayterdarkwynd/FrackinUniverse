@@ -71,31 +71,31 @@ end
 
 function setDesc()
 	if not self.overrideScanTooltip then return end
-	local tooltipString="^white;Range:^gray; "..wellRange.."\n^white;Tenants: ^"
+	local tooltipString="^white;Range:^gray; "..wellRange.."\n^white;Tenants: "
 	local wellCount=((wellsDrawing or 0)-1)
 
 	--colony stuff calc
 	if tenantNumber>0 then
-		tooltipString=tooltipString.."green"
+		tooltipString=tooltipString.."^green;"
 	else
-		tooltipString=tooltipString.."red"
+		tooltipString=tooltipString.."^red;"
 	end
-	tooltipString=tooltipString..";"..tenantNumber.." ^white;\nSimilar Objects:^"
+	tooltipString=tooltipString..tenantNumber.." ^white;\nSimilar Objects: "
 
 	if wellCount>0 then
-		tooltipString=tooltipString.."red"
+		tooltipString=tooltipString.."^red;"
 	else
-		tooltipString=tooltipString.."green"
+		tooltipString=tooltipString.."^green;"
 	end
-	tooltipString=tooltipString.."; "..wellCount.."\n^white;Happiness Factor:^"
+	tooltipString=tooltipString..wellCount.."\n^white;Happiness: "
 
 	local happy=amountHappiness()
 	if happy>0 then
-		tooltipString=tooltipString.."green"
+		tooltipString=tooltipString.."^green;+"
 	else
-		tooltipString=tooltipString.."white"
+		tooltipString=tooltipString.."^white;+"
 	end
-	tooltipString=tooltipString.."; "..happy.."^reset;"
+	tooltipString=tooltipString..happy.."^reset;"
 
 	object.setConfigParameter('description',tooltipString)
 end

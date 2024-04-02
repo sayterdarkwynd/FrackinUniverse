@@ -231,38 +231,38 @@ function handleTooltip(args)
 	end
 
 	--colony stuff calc
-	local tenantsString = "\n^white;Tenants:^"
+	local tenantsString = "\n^white;Tenants: "
 	if tenantNumber>0 then
-		tenantsString=tenantsString.."green"
+		tenantsString=tenantsString.."^green;"
 	else
-		tenantsString=tenantsString.."white"
+		tenantsString=tenantsString.."^white;"
 	end
-	tenantsString=tenantsString.."; "..tenantNumber.." ^white;(Yield Multiplier:^"
+	tenantsString=tenantsString..tenantNumber.." ^white;(Yield: x"
 	if tenantNumberModifier>1 then
-		tenantsString=tenantsString.."green"
+		tenantsString=tenantsString.."^green;"
 	elseif tenantNumberModifier==0 then
-		tenantsString=tenantsString.."red"
+		tenantsString=tenantsString.."^red;"
 	else
-		tenantsString=tenantsString.."white"
+		tenantsString=tenantsString.."^white;"
 	end
 	local tenantModRounded=util.round(tenantNumberModifier,2)
-	tenantsString=tenantsString.."; "..tenantModRounded.."^white;)"
+	tenantsString=tenantsString..tenantModRounded.."^white;)"
 
-	local similarObjectsString = "\n^white;Similar Objects: ^"
+	local similarObjectsString = "\n^white;Similar Objects: "
 	if wellsDrawing-1>0 then
-		similarObjectsString=similarObjectsString.."red"
+		similarObjectsString=similarObjectsString.."^red;"
 	else
-		similarObjectsString=similarObjectsString.."green"
+		similarObjectsString=similarObjectsString.."^green;"
 	end
-	similarObjectsString=similarObjectsString..";"..(wellsDrawing - 1)
+	similarObjectsString=similarObjectsString..(wellsDrawing - 1)
 
-	local happinessString = "\n^white;Happiness Factor: ^"
+	local happinessString = "\n^white;Happiness: "
 	if happinessAmount>0 then
-		happinessString=happinessString.."green"
+		happinessString=happinessString.."^green;+"
 	else
-		happinessString=happinessString.."red"
+		happinessString=happinessString.."^white;"
 	end
-	happinessString=happinessString..";"..happinessAmount.."^reset;"
+	happinessString=happinessString..happinessAmount.."^reset;"
 
 	--set desc!
 	local desc = powerString..seedString..yieldString..growthString..waterUseString..waterValueString..similarObjectsString..tenantsString..happinessString
