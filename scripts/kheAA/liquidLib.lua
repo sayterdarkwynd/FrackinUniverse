@@ -2,6 +2,14 @@ liquidLib = {}
 
 function liquidLib.init()
 	storage.liquids = storage.liquids or {}
+	local buffer={}
+	for id,amount in pairs(storage.liquids) do
+		local id2=tonumber(id)
+		if not buffer[id2] then buffer[id2] = 0 end
+		buffer[id2]=buffer[id2]+amount
+	end
+	storage.liquids=buffer
+
 	self.liquidOuts = self.liquidOuts or {}
 	liquidLib.vars={}
 	liquidLib.vars.inLiquidNode=config.getParameter("kheAA_inLiquidNode")--doesn't actually do anything, doesn't matter at this point.
