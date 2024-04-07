@@ -21,11 +21,11 @@ end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
-		status.removeEphemeralEffect("fireburst")
+		status.removeEphemeralEffect("fireburst_armorsetbonus")
 		effect.expire()
 	else
 
-		status.addEphemeralEffect("fireburst")
+		status.addEphemeralEffect("fireburst_armorsetbonus")
 		checkWeapons()
 	end
 end
