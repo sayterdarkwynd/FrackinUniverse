@@ -56,7 +56,7 @@ function checkWeapons()
 
 	if weaponSword["both"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle2,weaponBonus2)
-		status.addEphemeralEffect("ghostburst",1)
+		status.addEphemeralEffect("ghostburst_armorset",1)
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle2,{})
 	end

@@ -83,7 +83,7 @@ end
 
 function upgradeCost(itemConfig,type,targetLvl)
 	local costValue=0
-	local itemLvl = math.floor((itemConfig.parameters.level or itemConfig.config.level) or 1)
+	local itemLvl = math.floor(tonumber(itemConfig.parameters.level or itemConfig.config.level or 1))
 	if not targetLvl then
 		targetLvl = itemLvl
 	end
@@ -218,14 +218,14 @@ function populateItemList(forceRepop)
 		for i, item in pairs(self.upgradableItems) do
 			local config = root.itemConfig(item.itemData)
 			local entryLevelMax=maxLvl(config,item.itemType)
-			if (self.isCrucible and not self.isUpgradeKit) or (config.parameters.level or config.config.level or 1) < entryLevelMax then
+			if (self.isCrucible and not self.isUpgradeKit) or tonumber(config.parameters.level or config.config.level or 1) < entryLevelMax then
 				local listItem = string.format("%s.%s", self.itemList, widget.addListItem(self.itemList))
 				local name = config.parameters.shortdescription or config.config.shortdescription
 
 				widget.setText(string.format("%s.itemName", listItem), name)
 				widget.setItemSlotItem(string.format("%s.itemIcon", listItem), item.itemData)
 
-				local price = upgradeCost(config,item.itemType,math.min(item.itemLevel+1, entryLevelMax))
+				local price = upgradeCost(config,item.itemType,math.min(tonumber(item.itemLevel)+1, entryLevelMax))
 				widget.setData(listItem, { index = i,itemType = item.itemType,itemLevel = item.itemLevel })
 				if self.isUpgradeKit or not self.isCrucible then
 					widget.setVisible(string.format("%s.unavailableoverlay", listItem), getCurrency(item.itemType)<price)
@@ -255,7 +255,7 @@ function showItem(item,price,itemType)
 		widget.setText("essenceCost", string.format("0 / --"))
 	end
 	local downgrade=""
-	if item and item.parameters.level and (item.parameters.level > maxLvl(item, itemType)) then
+	if item and item.parameters.level and (tonumber(item.parameters.level) > maxLvl(item, itemType)) then
 		downgrade="Warning: Item will be downgraded"
 	end
 	widget.setText("warningLabel",isWorn and "Error: "..isWorn or downgrade)
@@ -307,7 +307,7 @@ function fixTargetText(changed, item, itemType)
 		self.upgradeTargetLevel=nil
 	else
 		item=root.itemConfig(item)
-		local itemLevel=math.floor(item.parameters.level or item.config.level or 1)
+		local itemLevel=math.floor(tonumber(item.parameters.level or item.config.level or 1))
 		if self.isUpgradeKit or not self.isCrucible then
 			num=math.max(itemLevel+1,num)
 		else
@@ -449,7 +449,7 @@ function upgradeWeapon(upgradeItem,target)
 				local maxLvl=maxLvl(itemConfig, "weapon")
 				local defaultLvl=(itemConfig.config.level or 1)
 				--mergeBuffer.level = math.min((itemConfig.parameters.level or itemConfig.config.level or 1)+1,maxLvl)
-				mergeBuffer.level = math.min((itemConfig.parameters.level or itemConfig.config.level or 1),maxLvl)
+				mergeBuffer.level = math.min(tonumber(itemConfig.parameters.level or itemConfig.config.level or 1),maxLvl)
 				if target then
 					mergeBuffer.level=math.min(math.max(mergeBuffer.level,target),maxLvl)
 				end
@@ -534,7 +534,7 @@ function upgradeTool(upgradeItem, target)
 				--set level
 				local maxLvl=maxLvl(itemConfig, "tool")
 				--mergeBuffer.level = math.min((itemConfig.parameters.level or itemConfig.config.level or 1)+1,maxLvl)
-				mergeBuffer.level = math.min((itemConfig.parameters.level or itemConfig.config.level or 1),maxLvl)
+				mergeBuffer.level = math.min(tonumber(itemConfig.parameters.level or itemConfig.config.level or 1),maxLvl)
 				if target then
 					mergeBuffer.level=math.min(math.max(mergeBuffer.level,target),maxLvl)
 				end
