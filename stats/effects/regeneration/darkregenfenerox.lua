@@ -23,7 +23,6 @@ function update(dt)
 
 	if nighttime or underground and (self.foodValue >= 45) then
 		self.healingRate = 1.007 / config.getParameter("healTime", 220)
-		--status.modifyResourcePercentage("health", self.healingRate * dt)
 		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*self.healingRate*math.max(0,1+status.stat("healingBonus"))}})
 
 		status.setPersistentEffects("feneroxEffects", {

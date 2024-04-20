@@ -9,7 +9,6 @@ function init()
 end
 
 function update(dt)
-	--status.modifyResourcePercentage("health", self.healingRate * dt)
 	if (world.entityType(entity.id())=="player") or status.resource("health")>=1 then
 		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.resourceMax("health")*self.healingRate*math.max(0,1+status.stat("healingBonus"))}})
 	else

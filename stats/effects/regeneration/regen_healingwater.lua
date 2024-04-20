@@ -26,7 +26,6 @@ end
 
 function update(dt)
 	if (not self.didInit) or (not self.healingRate) then init() end
-	--sb.logInfo("regenhealingwater")
 	if self.frEnabled and (self.species == "fragmentedruin") then
 		self.tickTimer = self.tickTimer - dt
 		if self.tickTimer <= 0 then
@@ -41,8 +40,6 @@ function update(dt)
 		effect.setParentDirectives(string.format("fade=00AA00=%.1f", self.tickTimer * 0.4))
 	else
 		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.resourceMax("health")*self.healingRate*math.max(0,1+status.stat("healingBonus"))}})
-
-		--status.modifyResourcePercentage("health", self.healingRate * dt)
 	end
 
 end
