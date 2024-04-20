@@ -115,7 +115,7 @@ function batteryUpdate(dt)
 		self.oldPowerStored=power.getStoredEnergy()
 		batteryUpdateThrottle=batteryUpdateThrottleBase*throttleMult
 		--object.setOutputNodeLevel(0,self.oldPowerStored>0)
-		object.setOutputNodeLevel(0,self.oldPowerStored>=power.getMaxEnergy()*0.01)
+		object.setOutputNodeLevel(0,self.oldPowerStored>=power.getMaxEnergy()*0.1)
 		object.setOutputNodeLevel(1,power.getStoredEnergy() >= power.getMaxEnergy())
 	end
 end
