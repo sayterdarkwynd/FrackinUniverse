@@ -314,6 +314,8 @@ function build(directory, config, parameters, level, seed)
 	config.tooltipFields.reloadTimeImage = "/interface/statuses/reload.png"
 	config.tooltipFields.critChanceImage = "/interface/statuses/crit2.png"
 	config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"
+	config.tooltipFields.projectileCountImage = "/interface/statuses/fu_multishot.png"
+	config.tooltipFields.burstCountImage = "/interface/statuses/fu_burst.png"
 
 	-- Staff and Wand specific --
 	if primaryAbility and primaryAbility.projectileParameters then
@@ -333,10 +335,26 @@ function build(directory, config, parameters, level, seed)
 	--else
 		--config.tooltipFields.staffRangeLabel = 25
 	end
-	if primaryAbility.projectileCount then
+
+	--also applies to guns now
+	if primaryAbility and primaryAbility.projectileCount then
 		config.tooltipFields.staffProjectileLabel = primaryAbility.projectileCount
-	--else
-		--config.tooltipFields.staffProjectileLabel = 1
+		config.tooltipFields.projectileCountLabel = primaryAbility.projectileCount
+		if primaryAbility.projectileCount>1 then
+			config.tooltipFields.damagePerShotLabel=util.round(config.tooltipFields.damagePerShotLabel/primaryAbility.projectileCount,2)
+			config.tooltipFields.damagePerShotTitleLabel="Damage Per Projectile:"
+		end
+	else
+		config.tooltipFields.staffProjectileLabel = 1
+		config.tooltipFields.projectileCountLabel = 1
+	end
+	if primaryAbility and primaryAbility.burstCount then
+		config.tooltipFields.burstCountLabel = primaryAbility.burstCount
+		if primaryAbility.burstCount>1 then
+			config.tooltipFields.damagePerShotTitleLabel="Damage Per Projectile:"
+		end
+	else
+		config.tooltipFields.burstCountLabel = 1
 	end
 	--
 
