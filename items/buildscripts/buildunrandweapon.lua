@@ -60,25 +60,6 @@ function build(directory, config, parameters, level, seed)
 	if (type(config.altAbility)=="table") and (type(config.altAbility.elementalConfig)=="table") and (type(elementalType)=="string") and ((type(config.altAbility.elementalConfig[elementalType])=="table") or (type(config.altAbility.elementalConfig["physical"])=="table")) then
 		--The difference is here, i added an if null-coalescing operation that checks if the alt ability has the elementalType in the elementalConfig list and replaces it with the physical type if it doesn't exist.
 		util.mergeTable(config.altAbility, config.altAbility.elementalConfig[elementalType] or config.altAbility.elementalConfig["physical"] or {})
-		--[[elseif config.altAbility then
-			--debug code in case it's needed later.
-		local buffer={}
-		buffer["itemid"]=config.itemName
-		--sb.logInfo("%s",config)
-		buffer["elementalType"]=type(elementalType)
-		if config.altAbility then
-			buffer["altAbility"]=type(config.altAbility)
-			if config.altAbility.elementalConfig then
-				buffer["elementalConfig"]=type(config.altAbility.elementalConfig)
-				if elementalType and config.altAbility.elementalConfig[elementalType] then
-					buffer["eTypeConfig"]=type(config.altAbility.elementalConfig[elementalType])
-				end
-				if config.altAbility.elementalConfig["physical"] then
-					buffer["physConfig"]=type(config.altAbility.elementalConfig["physical"])
-				end
-			end
-		end
-		sb.logInfo("REE %s",buffer)]]
 	end
 
 	-- calculate damage level multiplier
