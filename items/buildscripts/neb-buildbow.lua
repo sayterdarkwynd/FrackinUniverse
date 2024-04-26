@@ -91,9 +91,9 @@ function build(directory, config, parameters, level, seed)
 
 		--Frackin' Universe critical fields
 		if config.tooltipFields.critChanceLabel then
-			config.tooltipFields.critChanceTitleLabel = "^orange;Crit %^reset;"
+			config.tooltipFields.critChanceTitleLabel = "^orange;Crit%^reset;"
 			config.tooltipFields.critChanceLabel = util.round(configParameter("critChance", 0), 0)
-			config.tooltipFields.critBonusTitleLabel = "^yellow;Dmg +^reset;"
+			config.tooltipFields.critBonusTitleLabel = "^yellow;C.Dmg%^reset;"
 			config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus", 0), 0)
 		end
 
@@ -104,9 +104,9 @@ function build(directory, config, parameters, level, seed)
 
 	-- *******************************
 	-- FU ADDITIONS
-	config.tooltipFields.critChanceTitleLabel = "^orange;Crit %^reset;"
+	config.tooltipFields.critChanceTitleLabel = "^orange;Crit%^reset;"
 	config.tooltipFields.critChanceLabel = util.round(configParameter("critChance", 0), 0)
-	config.tooltipFields.critBonusTitleLabel = "^yellow;Dmg +^reset;"
+	config.tooltipFields.critBonusTitleLabel = "^yellow;C.Dmg%^reset;"
 	config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus", 0), 0)
 	config.tooltipFields.stunChance = util.round(configParameter("stunChance",0), 0)
 	-- *******************************
