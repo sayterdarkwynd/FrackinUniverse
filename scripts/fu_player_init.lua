@@ -8,7 +8,7 @@ local unknownWorlds={
 	ffunknown="/scripts/ffunknownconfig.config",
 	shadow="/scripts/ffshadowconfig.config",
 	superdense="/scripts/ffsuperdenseconfig.config",
-	strangesea="/scripts/ffunknownconfig.config"
+	strangesea="/scripts/ffstrangeseaconfig.config"
 }
 local ffunknownConfig
 

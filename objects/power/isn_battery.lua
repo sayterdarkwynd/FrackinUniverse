@@ -66,7 +66,7 @@ function isn_makeBatteryDescription(desc, charge, onDeath)
 	-- append charge state to default description; ensure that it's on a line of its own
 	local str=string_split(desc,"^truncate;")
 	if str[1] then str=str[1] else str="" end
-	str=str..((onDeath and " ^red;Scan for Info^reset;") or "\n^blue;Upper Right Input^reset;: On/Off Switch\n^red;Output 1^reset;: Partial Power, ^red;Output 2^reset;: Full Power")
+	str=str..((onDeath and " ^red;Scan for Info^reset;") or "\n^blue;Upper Right Input^reset;: On/Off Switch\n^red;Battery Logic outputs:\nLeft^reset;: Has Power, ^red;Right^reset;: Is Full")
 	str = str .. (desc ~= '' and "\n" or '') .. "Power Stored: ^yellow;"..util.round(power.getStoredEnergy(),1).."^reset;/^green;"..util.round(power.getMaxEnergy(),1).."^reset;J (^yellow;" .. charge .. '^reset;%)'
 	return str
 end
@@ -115,7 +115,7 @@ function batteryUpdate(dt)
 		self.oldPowerStored=power.getStoredEnergy()
 		batteryUpdateThrottle=batteryUpdateThrottleBase*throttleMult
 		--object.setOutputNodeLevel(0,self.oldPowerStored>0)
-		object.setOutputNodeLevel(0,self.oldPowerStored>=power.getMaxEnergy()*0.01)
+		object.setOutputNodeLevel(0,self.oldPowerStored>=power.getMaxEnergy()*0.1)
 		object.setOutputNodeLevel(1,power.getStoredEnergy() >= power.getMaxEnergy())
 	end
 end

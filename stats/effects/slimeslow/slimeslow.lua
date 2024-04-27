@@ -14,9 +14,7 @@ function update(dt)
 
 	if self.frEnabled and (self.species == "slimeperson") then
 		self.healingRate = 0.025
-		--status.modifyResourcePercentage("health", self.healingRate * dt)
 		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*self.healingRate*math.max(0,1+status.stat("healingBonus"))}})
-		--sb.logInfo("slimeslow")
 		mcontroller.controlModifiers({
 			groundMovementModifier = 0.9,
 			speedModifier = 0.9,

@@ -37,12 +37,12 @@ function uninit()
     stopAbility(nil)
 end
 
-function applyTechBonus()
+--[[function applyTechBonus()--the stat isnt actually used for anything at all.
     self.jumpBonus = 1 + status.stat("jumptechBonus") -- apply bonus from certain items and armor
-end
+end]]
 
 function update(args)
-    applyTechBonus()
+    --applyTechBonus()
     self.disabled = disabled(args)
     if not self.disabled and args.moves["jump"] and canAbility(args) then
         if not self.doingAbility then
