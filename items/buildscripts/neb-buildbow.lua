@@ -115,28 +115,6 @@ function build(directory, config, parameters, level, seed)
 		end
 	end
 
-	-- *******************************
-	-- FU ADDITIONS
-	local cChance=util.round(configParameter("critChance", 0), 0)
-	if cChance == 0 then
-		config.tooltipFields.critChanceTitleLabel = ""
-		config.tooltipFields.critChanceLabel = ""
-	else
-		config.tooltipFields.critChanceTitleLabel = "^orange;Crit %^reset;"
-		config.tooltipFields.critChanceLabel = util.round(configParameter("critChance", 0), 0)
-	end
-
-	local cBonus=util.round(configParameter("critBonus", 0), 0)
-	if cBonus == 0 then
-		config.tooltipFields.critBonusTitleLabel = ""
-		config.tooltipFields.critBonusLabel = ""
-	else
-		config.tooltipFields.critBonusTitleLabel = "^yellow;C.Dmg%^reset;"
-		config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus", 0), 0)
-	end
-	config.tooltipFields.stunChance = util.round(configParameter("stunChance",0), 0)
-	-- *******************************
-
 	-- set price
 	config.price = (config.price or 0) * root.evalFunction("itemLevelPriceMultiplier", configParameter("level", 1))
 
