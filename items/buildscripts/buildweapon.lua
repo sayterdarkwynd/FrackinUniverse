@@ -4,6 +4,9 @@ require "/scripts/versioningutils.lua"
 require "/scripts/staticrandom.lua"
 require "/items/buildscripts/abilities.lua"
 
+local emptyimage="/projectiles/fu_genericBlankProjectile/blankpng.png"
+local dividercolon="^gray;:^reset;"
+
 function build(directory, config, parameters, level, seed)
 	local function split(str, pat)
 		local t = {}	-- NOTE: use {n = 0} in Lua-5.0
@@ -251,6 +254,19 @@ function build(directory, config, parameters, level, seed)
 		parameters.magazineSizeFactor = valueOrRandom(parameters.magazineSizeFactor, seed, "magazineSizeFactor")
 		parameters.reloadTimeFactor = valueOrRandom(parameters.reloadTimeFactor, seed, "reloadTimeFactor")
 		config.magazineSize = scaleConfig(parameters.primaryAbility.energyUsageFactor, config.magazineSize) or 0
+		config.tooltipFields.magazineSizeImage = "/interface/statuses/ammo.png"
+		config.tooltipFields.magazineSizeDivLabel = dividercolon
+		config.tooltipFields.reloadTimeImage = "/interface/statuses/reload.png"
+		config.tooltipFields.reloadTimeDivLabel = dividercolon
+	else
+		config.tooltipFields.magazineSizeLabel = ""
+		config.tooltipFields.magazineSizeTitleLabel = ""
+		config.tooltipFields.magazineSizeDivLabel = ""
+		config.tooltipFields.magazineSizeImage = emptyimage
+		config.tooltipFields.reloadTimeLabel = ""
+		config.tooltipFields.reloadTimeTitleLabel = ""
+		config.tooltipFields.reloadTimeDivLabel = ""
+		config.tooltipFields.reloadTimeImage = emptyimage
 	end
 
 	local newMagSize = ((parameters.isAmmoBased == 1) and configParameter("magazineSize",0)) or 0
@@ -276,30 +292,61 @@ function build(directory, config, parameters, level, seed)
 		config.tooltipFields.energyPerShotLabel = util.round((energyUsage * fireTime)/2, 1)	-- these weapons have 50% energy cost
 		config.tooltipFields.magazineSizeLabel = newMagSize -- label it!
 		config.tooltipFields.reloadTimeLabel = util.round(configParameter("reloadTime",1),1) .. "s"
+		config.tooltipFields.magazineSizeImage = "/interface/statuses/ammo.png"
+		config.tooltipFields.magazineSizeDivLabel = dividercolon
+		config.tooltipFields.reloadTimeImage = "/interface/statuses/reload.png"
+		config.tooltipFields.reloadTimeDivLabel = dividercolon
 	else
 		parameters.isAmmoBased = 0
 		config.tooltipKind = oldCTooltip
 		parameters.tooltipKind = oldPTooltip
 
 		config.magazineSize = 0
-		config.tooltipFields.magazineSizeLabel = "--"
 		parameters.magazineSizeFactor = 0
 
 		parameters.reloadTimeFactor = 0
 		config.reloadTime = 0
-		config.tooltipFields.reloadTimeLabel = "--"
+
+		config.tooltipFields.magazineSizeLabel = ""
+		config.tooltipFields.magazineSizeTitleLabel = ""
+		config.tooltipFields.magazineSizeImage = emptyimage
+		config.tooltipFields.reloadTimeLabel = ""
+		config.tooltipFields.reloadTimeTitleLabel = ""
+		config.tooltipFields.reloadTimeImage = emptyimage
 	end
 
 	if (configParameter("critChance")) then
 		config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)
+		if config.tooltipFields.critChanceLabel == 0 then
+			config.tooltipFields.critChanceLabel = ""
+			config.tooltipFields.critChanceImage = emptyimage
+			config.tooltipFields.critChanceLabel = ""
+			config.tooltipFields.critChanceTitleLabel = ""
+		else
+			config.tooltipFields.critChanceImage = "/interface/statuses/crit2.png"
+			config.tooltipFields.critChanceDivLabel = dividercolon
+		end
 	else
-		config.tooltipFields.critChanceLabel = "--"
+		config.tooltipFields.critChanceImage = emptyimage
+		config.tooltipFields.critChanceLabel = ""
+		config.tooltipFields.critChanceTitleLabel = ""
 	end
 
 	if (configParameter("critBonus")) then
 		config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)
+		if config.tooltipFields.critBonusLabel == 0 then
+			config.tooltipFields.critBonusLabel = ""
+			config.tooltipFields.critBonusImage = emptyimage
+			config.tooltipFields.critBonusLabel = ""
+			config.tooltipFields.critBonusTitleLabel = ""
+		else
+			config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"
+			config.tooltipFields.critBonusDivLabel = dividercolon
+		end
 	else
-		config.tooltipFields.critBonusLabel = "--"
+		config.tooltipFields.critBonusImage = emptyimage
+		config.tooltipFields.critBonusLabel = ""
+		config.tooltipFields.critBonusTitleLabel = ""
 	end
 
 	if (configParameter("stunChance")) then
@@ -309,13 +356,6 @@ function build(directory, config, parameters, level, seed)
 	end
 
 	config.tooltipFields.damagePerEnergyLabel = util.round(damagePerShot / energyPerShot, 1)
-
-	config.tooltipFields.magazineSizeImage = "/interface/statuses/ammo.png"
-	config.tooltipFields.reloadTimeImage = "/interface/statuses/reload.png"
-	config.tooltipFields.critChanceImage = "/interface/statuses/crit2.png"
-	config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"
-	config.tooltipFields.projectileCountImage = "/interface/statuses/fu_multishot.png"
-	config.tooltipFields.burstCountImage = "/interface/statuses/fu_burst.png"
 
 	-- Staff and Wand specific --
 	if primaryAbility and primaryAbility.projectileParameters then
@@ -337,6 +377,8 @@ function build(directory, config, parameters, level, seed)
 	end
 
 	--also applies to guns now
+	config.tooltipFields.projectileCountImage = "/interface/statuses/fu_multishot.png"
+	config.tooltipFields.projectileCountDivLabel = dividercolon
 	if primaryAbility and primaryAbility.projectileCount then
 		config.tooltipFields.staffProjectileLabel = primaryAbility.projectileCount
 		config.tooltipFields.projectileCountLabel = primaryAbility.projectileCount
@@ -348,6 +390,9 @@ function build(directory, config, parameters, level, seed)
 		config.tooltipFields.staffProjectileLabel = 1
 		config.tooltipFields.projectileCountLabel = 1
 	end
+
+	config.tooltipFields.burstCountImage = "/interface/statuses/fu_burst.png"
+	config.tooltipFields.burstCountDivLabel = dividercolon
 	if primaryAbility and primaryAbility.burstCount then
 		config.tooltipFields.burstCountLabel = primaryAbility.burstCount
 		if primaryAbility.burstCount>1 then

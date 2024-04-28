@@ -121,7 +121,7 @@ function build(directory, config, parameters, level, seed)
 	--Populate tooltip fields
 	if config.tooltipKind ~= "base" then
 		config.tooltipFields = {}
-								config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
+		config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
 		config.tooltipFields.subtitle = parameters.category
 		config.tooltipFields.damageLabel = util.round(config.primaryAbility.projectileParameters.power * config.primaryAbility.dynamicDamageMultiplier * config.primaryAbility.drawTime * config.damageLevelMultiplier, 2) or 0
 		config.tooltipFields.perfectDrawTimeLabel = util.round(config.primaryAbility.powerProjectileTime, 2)
@@ -144,10 +144,23 @@ function build(directory, config, parameters, level, seed)
 
 		--Frackin' Universe critical fields
 		if config.tooltipFields.critChanceLabel then
-			config.tooltipFields.critChanceTitleLabel = "^orange;Crit %^reset;"
-			config.tooltipFields.critChanceLabel = util.round(configParameter("critChance", 0), 0)
-			config.tooltipFields.critBonusTitleLabel = "^yellow;Dmg +^reset;"
-			config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus", 0), 0)
+			local cChance=util.round(configParameter("critChance", 0), 0)
+			if cChance == 0 then
+				config.tooltipFields.critChanceTitleLabel = ""
+				config.tooltipFields.critChanceLabel = ""
+			else
+				config.tooltipFields.critChanceTitleLabel = "^orange;Crit %^reset;"
+				config.tooltipFields.critChanceLabel = util.round(configParameter("critChance", 0), 0)
+			end
+
+			local cBonus=util.round(configParameter("critBonus", 0), 0)
+			if cBonus == 0 then
+				config.tooltipFields.critBonusTitleLabel = ""
+				config.tooltipFields.critBonusLabel = ""
+			else
+				config.tooltipFields.critBonusTitleLabel = "^yellow;C.Dmg%^reset;"
+				config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus", 0), 0)
+			end
 		end
 
 		if config.tooltipFields.stunChance then
@@ -237,15 +250,6 @@ function build(directory, config, parameters, level, seed)
 			table.insert(config.inventoryIcon, drawable)
 		end
 	end
-
-	-- *******************************
-	-- FU ADDITIONS
-	config.tooltipFields.critChanceTitleLabel = "^orange;Crit %^reset;"
-	config.tooltipFields.critChanceLabel = util.round(configParameter("critChance", 0), 0)
-	config.tooltipFields.critBonusTitleLabel = "^yellow;Dmg +^reset;"
-	config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus", 0), 0)
-	config.tooltipFields.stunChance = util.round(configParameter("stunChance",0), 0)
-	-- *******************************
 
 	--Set price
 	config.price = (config.price or 0) * root.evalFunction("itemLevelPriceMultiplier", configParameter("level", 1)) + 7
