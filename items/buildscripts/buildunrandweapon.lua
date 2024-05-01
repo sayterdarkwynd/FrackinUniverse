@@ -3,6 +3,9 @@ require "/scripts/vec2.lua"
 require "/scripts/versioningutils.lua"
 require "/items/buildscripts/abilities.lua"
 
+local emptyimage="/projectiles/fu_genericBlankProjectile/blankpng.png"
+local dividercolon="^gray;:^reset;"
+
 function build(directory, config, parameters, level, seed)
 	local function split(str, pat)
 		local t = {}	-- NOTE: use {n = 0} in Lua-5.0
@@ -60,25 +63,6 @@ function build(directory, config, parameters, level, seed)
 	if (type(config.altAbility)=="table") and (type(config.altAbility.elementalConfig)=="table") and (type(elementalType)=="string") and ((type(config.altAbility.elementalConfig[elementalType])=="table") or (type(config.altAbility.elementalConfig["physical"])=="table")) then
 		--The difference is here, i added an if null-coalescing operation that checks if the alt ability has the elementalType in the elementalConfig list and replaces it with the physical type if it doesn't exist.
 		util.mergeTable(config.altAbility, config.altAbility.elementalConfig[elementalType] or config.altAbility.elementalConfig["physical"] or {})
-		--[[elseif config.altAbility then
-			--debug code in case it's needed later.
-		local buffer={}
-		buffer["itemid"]=config.itemName
-		--sb.logInfo("%s",config)
-		buffer["elementalType"]=type(elementalType)
-		if config.altAbility then
-			buffer["altAbility"]=type(config.altAbility)
-			if config.altAbility.elementalConfig then
-				buffer["elementalConfig"]=type(config.altAbility.elementalConfig)
-				if elementalType and config.altAbility.elementalConfig[elementalType] then
-					buffer["eTypeConfig"]=type(config.altAbility.elementalConfig[elementalType])
-				end
-				if config.altAbility.elementalConfig["physical"] then
-					buffer["physConfig"]=type(config.altAbility.elementalConfig["physical"])
-				end
-			end
-		end
-		sb.logInfo("REE %s",buffer)]]
 	end
 
 	-- calculate damage level multiplier
@@ -155,23 +139,61 @@ function build(directory, config, parameters, level, seed)
 		end
 		-- *******************************
 		-- FU ADDITIONS
+
 		if isAmmo then
 			config.tooltipFields.magazineSizeLabel = util.round(configParameter("magazineSize",0), 0)
 			config.tooltipFields.reloadTimeLabel = configParameter("reloadTime",1) .. "s"
+			config.tooltipFields.magazineSizeImage = "/interface/statuses/ammo.png"
+			config.tooltipFields.magazineSizeDivLabel = dividercolon
+			config.tooltipFields.reloadTimeImage = "/interface/statuses/reload.png"
+			config.tooltipFields.reloadTimeDivLabel = dividercolon
 		else
-			config.tooltipFields.magazineSizeLabel = "--"
-			config.tooltipFields.reloadTimeLabel = "--"
+			config.tooltipFields.magazineSizeLabel = ""
+			config.tooltipFields.magazineSizeTitleLabel = ""
+			config.tooltipFields.magazineSizeImage = emptyimage
+			config.tooltipFields.reloadTimeLabel = ""
+			config.tooltipFields.reloadTimeTitleLabel = ""
+			config.tooltipFields.reloadTimeImage = emptyimage
+			--sb.logInfo(sb.printJson(config.tooltipFields))
 		end
 		config.tooltipFields.energyPerShotLabel=energyCost
 		config.tooltipFields.damagePerShotLabel=damagePerShot
 		config.tooltipFields.speedLabel = speed
 
-		config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)		-- rather than not applying a bonus to non-crit-enabled weapons, we just set it to always be at least 1 --no. -Khe
+		--config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)		-- rather than not applying a bonus to non-crit-enabled weapons, we just set it to always be at least 1 --no. -Khe
+
+		if (configParameter("critChance")) then
+			config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)
+			if config.tooltipFields.critChanceLabel == 0 then
+				config.tooltipFields.critChanceLabel = ""
+				config.tooltipFields.critChanceImage = emptyimage
+				config.tooltipFields.critChanceLabel = ""
+				config.tooltipFields.critChanceTitleLabel = ""
+			else
+				config.tooltipFields.critChanceImage = "/interface/statuses/crit2.png"
+				config.tooltipFields.critChanceDivLabel = dividercolon
+			end
+		else
+			config.tooltipFields.critChanceImage = emptyimage
+			config.tooltipFields.critChanceLabel = ""
+			config.tooltipFields.critChanceTitleLabel = ""
+		end
 
 		if (configParameter("critBonus")) then
 			config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)
+			if config.tooltipFields.critBonusLabel == 0 then
+				config.tooltipFields.critBonusLabel = ""
+				config.tooltipFields.critBonusImage = emptyimage
+				config.tooltipFields.critBonusLabel = ""
+				config.tooltipFields.critBonusTitleLabel = ""
+			else
+				config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"
+				config.tooltipFields.critBonusDivLabel = dividercolon
+			end
 		else
-			config.tooltipFields.critBonusLabel = "--"
+			config.tooltipFields.critBonusImage = emptyimage
+			config.tooltipFields.critBonusLabel = ""
+			config.tooltipFields.critBonusTitleLabel = ""
 		end
 
 		if (configParameter("stunChance")) then
@@ -179,11 +201,6 @@ function build(directory, config, parameters, level, seed)
 		else
 			config.tooltipFields.stunChanceLabel = "--"
 		end
-
-		config.tooltipFields.magazineSizeImage = "/interface/statuses/ammo.png"
-		config.tooltipFields.reloadTimeImage = "/interface/statuses/reload.png"
-		config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"
-		config.tooltipFields.critChanceImage = "/interface/statuses/crit2.png"
 
 		-- weapon abilities
 
@@ -211,10 +228,31 @@ function build(directory, config, parameters, level, seed)
 		else
 			config.tooltipFields.staffRangeLabel = 25
 		end
+
+		--also applies to guns now
+		config.tooltipFields.projectileCountImage = "/interface/statuses/fu_multishot.png"
+		config.tooltipFields.projectileCountDivLabel = dividercolon
 		if primaryAbility and primaryAbility.projectileCount then
 			config.tooltipFields.staffProjectileLabel = primaryAbility.projectileCount
+			config.tooltipFields.projectileCountLabel = primaryAbility.projectileCount
+			if primaryAbility.projectileCount>1 then
+				config.tooltipFields.damagePerShotLabel=util.round(config.tooltipFields.damagePerShotLabel/primaryAbility.projectileCount,2)
+				config.tooltipFields.damagePerShotTitleLabel="Damage Per Projectile:"
+			end
 		else
 			config.tooltipFields.staffProjectileLabel = 1
+			config.tooltipFields.projectileCountLabel = 1
+		end
+
+		config.tooltipFields.burstCountImage = "/interface/statuses/fu_burst.png"
+		config.tooltipFields.burstCountDivLabel = dividercolon
+		if primaryAbility and primaryAbility.burstCount then
+			config.tooltipFields.burstCountLabel = primaryAbility.burstCount
+			if primaryAbility.burstCount>1 then
+				config.tooltipFields.damagePerShotTitleLabel="Damage Per Projectile:"
+			end
+		else
+			config.tooltipFields.burstCountLabel = 1
 		end
 
 		-- Recoil
