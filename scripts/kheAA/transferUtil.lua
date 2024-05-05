@@ -271,7 +271,7 @@ function transferUtil.findNearest(source,sourcePos,targetList)
 end
 
 function transferUtil.checkUpstreamContainers()
-	return (transferUtil.vars.upstreamCount or 0)>0
+	return ((transferUtil.vars and transferUtil.vars.upstreamCount) or 0)>0
 end
 
 function transferUtil.hasUpstreamContainers()
