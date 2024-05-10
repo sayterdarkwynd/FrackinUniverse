@@ -21,6 +21,11 @@ function init()
 			end
 		end
 	end
+	local shipParams=config.getParameter("upgradeShip")
+	if shipParams and shipParams.shipLevel and (player.shipUpgrades().shipLevel==0) then
+		storage.questStarted=false
+		storage.queueFailShip=true
+	end
 end
 
 function buildConditions()
@@ -81,6 +86,12 @@ end
 
 function questStart()
 	storage.questStarted=true
+	local shipParams=config.getParameter("upgradeShip")
+	if shipParams and shipParams.shipLevel and (player.shipUpgrades().shipLevel==0) then
+		storage.questStarted=false
+		storage.queueFailShip=true
+		return
+	end
 	for _, condition in pairs(self.conditions) do
 		if condition.onQuestStart then condition:onQuestStart() end
 	end
@@ -114,6 +125,10 @@ function update(dt)
 			storage.queueStart=false
 		elseif storage.queueFail then
 			quest.setFailureText("Due to code changes from an exploit fix you need to pick up the quest again. Sorry for the inconvenience. -Kherae")
+			storage.queueFail=false
+			quest.fail()
+		elseif storage.queueFailShip then
+			quest.setFailureText("BYOS is not permitted to use ship licenses.")
 			storage.queueFail=false
 			quest.fail()
 		end
