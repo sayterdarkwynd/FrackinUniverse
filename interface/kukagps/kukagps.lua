@@ -193,7 +193,8 @@ function populateMaterialsList()
             addText("^green;Width:^reset; "..worldSize[1].."                                            ^green;Height:^reset; "..worldSize[2])
 
             -- print planet threat and gravity
-            addText("^green;Threat:^reset; "..ThreatToString(parameters.threatLevel).."                                   ^green;Gravity:^reset; "..parameters.gravity or 0)
+            addText(string.format("^green;Planet tier / Threat:^reset; %.2f", parameters.threatLevel))
+            addText("^green;Gravity:^reset; "..(parameters.gravity or 0))
 
             -- print planet ores names
             addText("^green;Ores:^reset; ")
@@ -338,26 +339,6 @@ function populateMaterialsList()
 end
 
 -- contribution of zimberzimber
-strs = {
-    "Harmless (I)",
-    "Low (II)",
-    "Moderate (III)",
-    "Risky (IV)",
-    "Dangerous (V)",
-    "Extreme (VI)",
-    "Lethal (VII)",
-    "Impossible (VIII)",
-    "Immeasurable (IX)",
-    "Just No (X)",
-    "No (XI)",
-}
-
-function ThreatToString(threat)
-    local floored = math.max(math.floor(threat) + 1, 1)
-    return strs[floored] or strs[#strs]
-end
--- contribution of zimberzimber
-
 function string_split(str, pat)
     local t = {}  -- NOTE: use {n = 0} in Lua-5.0
     local fpat = "(.-)" .. pat
