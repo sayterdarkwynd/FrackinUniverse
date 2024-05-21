@@ -5,9 +5,9 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   # Check JSON assets for syntax errors.
   json-linter:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Install dependencies
         run: ( cd tests/travis && npm install )
 
@@ -22,9 +22,9 @@ jobs:
 
   # Check Lua files with "luacheck" tool (Lua static analyzer).
   luacheck:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Install dependencies
         run: sudo apt-get install -y luarocks && sudo luarocks install luacheck
       - name: RUN -- luacheck .
@@ -33,9 +33,9 @@ jobs:
   # Detect non-optimized PNG images (where lossless compression can seriously reduce their filesize).
   unoptimized-png-images:
     if: ${{ github.base_ref || github.ref != 'refs/heads/master' }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Install dependencies
         run: sudo apt-get install -y optipng
       - run: .github/scripts/detect-unoptimized-png-images.sh
@@ -43,9 +43,9 @@ jobs:
   # Create .pak file for each GitHub release.
   pack-assets:
     if: startsWith(github.ref, 'refs/tags/')
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Remove directories that are not needed inside PAK file (e.g. ".git" or "tests")
         run: rm -rf .git a_modders tests
       - uses: edwardspec/github-action-pack-starbound-mod@v1
