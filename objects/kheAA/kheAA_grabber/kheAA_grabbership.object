@@ -1,0 +1,51 @@
+{
+	"objectName" : "network_grabbership",
+	"objectType" : "physics",
+	"colonyTags" : ["wired"],
+	"printable" : false,
+	"rarity" : "legendary",
+	"description" : "Hybrid grabber designed for ships. Absolutely massive range, but has no storage.
+^blue;Input: ^white;On/Off Switch",
+	"shortdescription" : "Grabber (Ship)",
+	"tooltipKind" : "basenew",
+	"race" : "generic",
+
+	"category" : "wire",
+	"price" : 64,
+
+	"inventoryIcon" : "kheAA_grabbericon.png",
+	"orientations" : [
+		{
+			"image" : "kheAA_grabber.png:<color>.off",
+			"imagePosition" : [0, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ]
+		}
+	],
+
+	"scripts" : [ "/objects/kheAA/kheAA_grabber/kheAA_grabber.lua"],
+	"scriptDelta" : 1,
+	"physicsForces":{
+		"pull":{
+			"type":"RadialForceRegion",
+			"categoryWhitelist":["itemdrop"],
+			"outerRadius":40,
+			"innerRadius":3,
+			"targetRadialVelocity":-20,
+			"controlForce":1200
+		}
+	},
+	"animationParts" : {
+		"grabber" : "kheAA_grabber.png"
+	},
+	"animationPosition" : [0, 0],
+	"kheAA_logicNode":0,
+	"kheAA_isVacuum":true,
+	"kheAA_vacuumDelay":1,
+	"kheAA_vacuumRange":10000,
+	"kheAA_vacuumMinRange":4,
+	"kheAA_limitToShip":true,
+	"vacuumRegion":"pull",
+	"inputNodes" : [ [0, 0] ]
+}

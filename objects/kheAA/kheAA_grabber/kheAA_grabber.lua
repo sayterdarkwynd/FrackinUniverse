@@ -1,7 +1,10 @@
 require "/scripts/kheAA/excavatorCommon.lua"
 
+local vacuumRegion
+
 function init()
 	excavatorCommon.init()
+	vacuumRegion = config.getParameter("vacuumRegion")
 end
 
 function update(dt)
@@ -18,6 +21,8 @@ function anims()
 
 end
 
-function setRunning()
-
+function setRunning(bState)
+	if vacuumRegion then
+		physics.setForceEnabled(vacuumRegion, bState)
+	end
 end
