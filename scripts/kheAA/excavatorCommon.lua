@@ -32,6 +32,10 @@ function excavatorCommon.init()
 		sb.logInfo("excavatorCommon disabled on non-objects (current is \"%s\") for safety reasons.",entityType.entityType())
 		return
 	end
+	if (config.getParameter("kheAA_limitToShip")==true) and not (type(world.getProperty("ship.level"))=="number") then
+		storage.state="disabled"
+		return
+	end
 	excavatorCommon.vars={}
 	excavatorCommon.vars.direction=util.clamp(object.direction(),0,1)
 	excavatorCommon.vars.facing=object.direction()
@@ -67,6 +71,7 @@ function excavatorCommon.init()
 
 	if excavatorCommon.vars.isVacuum then
 		excavatorCommon.vars.vacuumRange=config.getParameter("kheAA_vacuumRange",4)
+		excavatorCommon.vars.vacuumMinRange=config.getParameter("kheAA_vacuumMinRange")
 		excavatorCommon.vars.vacuumDelay=config.getParameter("kheAA_vacuumDelay",0)--in seconds
 	end
 
@@ -245,6 +250,17 @@ function excavatorCommon.grab(grabPos)
 		return
 	end
 	local drops = world.itemDropQuery(grabPos,excavatorCommon.vars.vacuumRange)
+	if excavatorCommon.vars.vacuumMinRange then
+		drops = util.filter(drops,
+			function(entityId)
+				if world.magnitude(grabPos, world.entityPosition(entityId)) < excavatorCommon.vars.vacuumMinRange then
+					--sb.logInfo("eid %s too close",entityId)
+					return false
+				end
+				return true
+			end
+		)
+	end
 	--local size=world.containerItemsCanFit(transferUtil.vars.containerId,drops[i])
 	for _,id in pairs(drops) do
 		--if entity.entityInSight(drops[i])
