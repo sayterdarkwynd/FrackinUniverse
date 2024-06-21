@@ -112,7 +112,7 @@ end
 
 function giveItems(items,isOutput)
 	if #items>0 then
-		for i,item in pairs(items) do
+		for _,item in pairs(items) do
 			throwItemIn(item,isOutput)
 		end
 	end
