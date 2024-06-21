@@ -1,60 +1,69 @@
 local recipes =
 {
-{inputs = { wrappedbody=1 }, outputs = { brain=1,fuscienceresource=120,bone=8,leather=1,alienmeat=4,faceskin=1,rawribmeat=2,liquidblood=40 }, time = 5.0},
-{inputs = { wrappedbodyputrid=1 }, outputs = { brain=1,fumadnessresource=5,bone=8,leather=1,rottingfleshmaterial=4,slew2=12,biospore=2,liquidbioooze=40 }, time = 5.0},
-{inputs = { wrappedbodyalien=1 }, outputs = { brain=1,fuprecursorresource=5,bone=8,leather=1,slew4=12,rawribmeat=2,cellmateria=4,liquidalienjuice=40 }, time = 5.0},
-{inputs = { cthulureward=1,elderrelic7=1,elderrelic11=1 }, outputs = { elderripper=1 }, time = 15.0},
-{inputs = { cthulureward=1, elderrelic5=1, elderrelic11=1 }, outputs = { eldercarbine=1 }, time = 15.0},
-{inputs = { cthulureward=1, elderrelic12=1, elderrelic11=1 }, outputs = { elderpistol=1 }, time = 15.0 },
-{inputs = { cthulureward=1, elderrelic6=1, elderrelic8=1 }, outputs = { elderrepeater=1 }, time = 15.0 },
-{inputs = { eldertome=1,elderrelic7=1,elderrelic3=3 }, outputs = { elderspear=1 }, time = 15.0},
-{inputs = { eldertome=1, elderrelic2=1, elderrelic3=5 }, outputs = { elderblade=1 }, time = 15.0},
-{inputs = { elderrelic3=6, elderrelic5=2, elderrelic7=1 }, outputs = { elderbroadsword=1 }, time = 15.0 },
-{inputs = { cthulureward=1, eldertome=1, elderrelic3=5 }, outputs = { elderbow=1 }, time = 15.0},
-{inputs = { nocxiumbar=5, elderrelic2=1, elderrelic7=1 }, outputs = { elderwhip=1 }, time = 15.0 },
-{inputs = { eldertome=1, elderrelic7=2, cthulureward=1 }, outputs = { cultiststaff1=1 }, time = 15.0 },
-{inputs = { eldertome=1, elderrelic6=2, elderrelic9=1 }, outputs = { cultiststaff2=1 }, time = 15.0 },
-{inputs = { eldertome=1, elderrelic12=2, elderrelic14=1 }, outputs = { cultiststaff3=1 }, time = 15.0 },
-{inputs = { nocxiumbar=5, elderrelic6=1, elderrelic3=4 }, outputs = { elderaxe=1 }, time = 15.0 },
-{inputs = { cthulureward=1, elderrelic8=1, elderrelic12=1 }, outputs = { eldergrappler=1 }, time = 15.0},
-{inputs = { nocxiumbar=5, eldertome=1, elderrelic12=5 }, outputs = { eldershield=1 }, time = 15.0 },
-{inputs = { nocxiumbar=6, elderrelic12=1, elderrelic6=1 }, outputs = { elderarmorhead=1 }, time = 15.0 },
-{inputs = { nocxiumbar=7, elderrelic2=1, elderrelic14=1 }, outputs = { elderarmorchest=1 }, time = 15.0},
-{inputs = { nocxiumbar=5, elderrelic1=1, elderrelic5=1 }, outputs = { elderarmorpants=1 }, time = 15.0 },
-{inputs = { nocxiumbar=6, elderrelic6=1, elderrelic11=1 }, outputs = { cultarmorhead=1 }, time = 15.0 },
-{inputs = { nocxiumbar=7, elderrelic7=1, elderrelic12=1 }, outputs = { cultarmorchest=1 }, time = 15.0 },
-{inputs = { nocxiumbar=5, elderrelic8=1, elderrelic14=1 }, outputs = { cultarmorpants=1 }, time = 15.0 },
-{inputs = { cthulureward=1, elderrelic3=2, elderrelic14=1 }, outputs = { eldermace=1 }, time = 15.0 },
-{inputs = { elderrelic12=5, elderrelic4=1, elderrelic8=1 }, outputs = { eldershotgun=1 }, time = 15.0 },
-{inputs = { cthulureward=1, elderrelic1=3, elderrelic11=2 }, outputs = { eldergrenadelauncher=1 }, time = 15.0 },
-{inputs = { shoggothessence=5}, outputs = { shoggothflesh=1 }, time = 1.0 },
-{inputs = { shoggothflesh=1}, outputs = { essence=1000,fuscienceresource=1000 }, time = 1.0 }
+	{inputs = { wrappedbody=1 }, outputs = { brain=1,fuscienceresource=120,bone=8,leather=1,alienmeat=4,faceskin=1,rawribmeat=2,liquidblood=40 }, time = 5.0},
+	{inputs = { wrappedbodyputrid=1 }, outputs = { brain=1,fumadnessresource=5,bone=8,leather=1,rottingfleshmaterial=4,slew2=12,biospore=2,liquidbioooze=40 }, time = 5.0},
+	{inputs = { wrappedbodyalien=1 }, outputs = { brain=1,fuprecursorresource=5,bone=8,leather=1,slew4=12,rawribmeat=2,cellmateria=4,liquidalienjuice=40 }, time = 5.0},
+	{inputs = { cthulureward=1,elderrelic7=1,elderrelic11=1 }, outputs = { elderripper=1 }, time = 15.0},
+	{inputs = { cthulureward=1, elderrelic5=1, elderrelic11=1 }, outputs = { eldercarbine=1 }, time = 15.0},
+	{inputs = { cthulureward=1, elderrelic12=1, elderrelic11=1 }, outputs = { elderpistol=1 }, time = 15.0 },
+	{inputs = { cthulureward=1, elderrelic6=1, elderrelic8=1 }, outputs = { elderrepeater=1 }, time = 15.0 },
+	{inputs = { eldertome=1,elderrelic7=1,elderrelic3=3 }, outputs = { elderspear=1 }, time = 15.0},
+	{inputs = { eldertome=1, elderrelic2=1, elderrelic3=5 }, outputs = { elderblade=1 }, time = 15.0},
+	{inputs = { elderrelic3=6, elderrelic5=2, elderrelic7=1 }, outputs = { elderbroadsword=1 }, time = 15.0 },
+	{inputs = { cthulureward=1, eldertome=1, elderrelic3=5 }, outputs = { elderbow=1 }, time = 15.0},
+	{inputs = { nocxiumbar=5, elderrelic2=1, elderrelic7=1 }, outputs = { elderwhip=1 }, time = 15.0 },
+	{inputs = { eldertome=1, elderrelic7=2, cthulureward=1 }, outputs = { cultiststaff1=1 }, time = 15.0 },
+	{inputs = { eldertome=1, elderrelic6=2, elderrelic9=1 }, outputs = { cultiststaff2=1 }, time = 15.0 },
+	{inputs = { eldertome=1, elderrelic12=2, elderrelic14=1 }, outputs = { cultiststaff3=1 }, time = 15.0 },
+	{inputs = { nocxiumbar=5, elderrelic6=1, elderrelic3=4 }, outputs = { elderaxe=1 }, time = 15.0 },
+	{inputs = { cthulureward=1, elderrelic8=1, elderrelic12=1 }, outputs = { eldergrappler=1 }, time = 15.0},
+	{inputs = { nocxiumbar=5, eldertome=1, elderrelic12=5 }, outputs = { eldershield=1 }, time = 15.0 },
+	{inputs = { nocxiumbar=6, elderrelic12=1, elderrelic6=1 }, outputs = { elderarmorhead=1 }, time = 15.0 },
+	{inputs = { nocxiumbar=7, elderrelic2=1, elderrelic14=1 }, outputs = { elderarmorchest=1 }, time = 15.0},
+	{inputs = { nocxiumbar=5, elderrelic1=1, elderrelic5=1 }, outputs = { elderarmorpants=1 }, time = 15.0 },
+	{inputs = { nocxiumbar=6, elderrelic6=1, elderrelic11=1 }, outputs = { cultarmorhead=1 }, time = 15.0 },
+	{inputs = { nocxiumbar=7, elderrelic7=1, elderrelic12=1 }, outputs = { cultarmorchest=1 }, time = 15.0 },
+	{inputs = { nocxiumbar=5, elderrelic8=1, elderrelic14=1 }, outputs = { cultarmorpants=1 }, time = 15.0 },
+	{inputs = { cthulureward=1, elderrelic3=2, elderrelic14=1 }, outputs = { eldermace=1 }, time = 15.0 },
+	{inputs = { elderrelic12=5, elderrelic4=1, elderrelic8=1 }, outputs = { eldershotgun=1 }, time = 15.0 },
+	{inputs = { cthulureward=1, elderrelic1=3, elderrelic11=2 }, outputs = { eldergrenadelauncher=1 }, time = 15.0 },
+	{inputs = { shoggothessence=5}, outputs = { shoggothflesh=1 }, time = 1.0 },
+	{inputs = { shoggothflesh=1}, outputs = { essence=1000,fuscienceresource=1000 }, time = 1.0 }
 }
 
 function init()
-    self.timer = 1
+    storage.timer = storage.timer or 1
     self.mintick = 1
-    self.crafting = false
-    self.output = {}
+	self.inputStart=config.getParameter("inputSlotsStart") or 0
+	self.inputEnd=math.max(self.inputStart,config.getParameter("inputSlotsEnd") or 2)
+	self.outputStart=config.getParameter("outputSlotsStart") or 3
+	self.outputEnd=config.getParameter("outputSlotsEnd") or -1
+	if (self.outputEnd<self.outputStart) then
+		self.outputEnd = world.containerSize(entity.id())
+	end
+    storage.crafting = storage.crafting or false
+    storage.output = storage.output or {}
+	storage.inputs = storage.inputs or {}
+	animator.setAnimationState("samplingarrayanim", storage.crafting and "working" or "idle")
 end
 
 function getInputContents()
-        local id = entity.id()
+	local id = entity.id()
 
-        local contents = {}
-        for i=0,2 do
-            local stack = world.containerItemAt(id, i)
-            if stack ~=nil then
-                if contents[stack.name] ~= nil then
-                  contents[stack.name] = contents[stack.name] + stack.count
-                else
-                  contents[stack.name] = stack.count
-                end
-            end
-        end
+	local contents = {}
+	for i=self.inputStart,self.inputEnd do
+		local stack = world.containerItemAt(id, i)
+		if stack ~=nil then
+			if contents[stack.name] ~= nil then
+			  contents[stack.name] = contents[stack.name] + stack.count
+			else
+			  contents[stack.name] = stack.count
+			end
+		end
+	end
 
-        return contents
-    end
+	return contents
+end
 
 function map(l,f)
     local res = {}
@@ -65,7 +74,7 @@ function map(l,f)
 end
 
 function filter(l,f)
-  return map(l, function(e) return f(e) and e or nil end)
+	return map(l, function(e) return f(e) and e or nil end)
 end
 
 function getValidRecipes(query)
@@ -85,7 +94,7 @@ function getValidRecipes(query)
         return true
     end
 
-return filter(recipes, function(l) return subset(l.inputs, query) end)
+	return filter(recipes, function(l) return subset(l.inputs, query) end)
 
 end
 
@@ -93,70 +102,101 @@ end
 function getOutSlotsFor(something)
     local empty = {} -- empty slots in the outputs
     local slots = {} -- slots with a stack of "something"
-
-    for i = 3, 11 do -- iterate all output slots
+	if self.outputEnd == nil then
+		self.outputEnd = world.containerSize(entity.id())
+	end
+    for i = self.outputStart,self.outputEnd do -- iterate all output slots
         local stack = world.containerItemAt(entity.id(), i) -- get the stack on i
         if stack ~= nil then -- not empty
             if stack.name == something then -- its "something"
-                table.insert(slots,i) -- possible drop slot
+                -- possible drop slot
+				slots[#slots+1]=i
             end
         else -- empty
-            table.insert(empty, i)
+            empty[#empty+1]=i
         end
     end
 
     for _,e in pairs(empty) do -- add empty slots to the end
-        table.insert(slots,e)
+        slots[#slots+1]=e
     end
     return slots
 end
 
+function throwItemIn(item,isOutput)
+	if isOutput then
+		local possibleSlots=getOutSlotsFor(item.name)
+		for _,slot in pairs(possibleSlots) do
+			if item then
+				item=world.containerPutItemsAt(entity.id(), item, slot)
+			else
+				break
+			end
+		end
+	else
+		item=world.containerStackItems(entity.id(), item)
+	end
+	if item ~= nil then
+		world.spawnItem(item.name, entity.position(), item.count)
+	end
+end
+
+function giveItems(items,isOutput)
+	if #items>0 then
+		for i,item in pairs(items) do
+			throwItemIn(item,isOutput)
+		end
+	end
+end
+
+function refund()
+	giveItems(storage.inputs)
+	storage.inputs={}
+end
+
+function die(smash)
+	refund()
+end
 
 function update(dt)
-    self.timer = self.timer - dt
-    if self.timer <= 0 then
-        if self.crafting then
-            for k,v in pairs(self.output) do
-                local leftover = {name = k, count = v}
-                local slots = getOutSlotsFor(k)
-                for _,i in pairs(slots) do
-                    leftover = world.containerPutItemsAt(entity.id(), leftover, i)
-                    if leftover == nil then
-                        break
-                    end
-                end
-
-                if leftover ~= nil then
-                    world.spawnItem(leftover.name, entity.position(), leftover.count)
-                end
-            end
-            self.crafting = false
-            self.output = {}
-            self.timer = self.mintick --reset timer to a safe minimum
-            animator.setAnimationState("samplingarrayanim", "idle")
+    storage.timer = storage.timer - dt
+    if storage.timer <= 0 then
+        if storage.crafting then
+            giveItems(storage.output,true)
+            storage.crafting = false
+            storage.output = {}
+            storage.inputs = {}
+            storage.timer = self.mintick --reset timer to a safe minimum
+			animator.setAnimationState("samplingarrayanim", storage.crafting and "working" or "idle")
             animator.playSound("active")
         end
 
-        if not self.crafting and self.timer <= 0 then --make sure we didn't just finish crafting
-            if not startCrafting(getValidRecipes(getInputContents())) then self.timer = self.mintick end --set timeout if there were no recipes
+        if not storage.crafting and storage.timer <= 0 then --make sure we didn't just finish crafting
+            if not startCrafting(getValidRecipes(getInputContents())) then storage.timer = self.mintick end --set timeout if there were no recipes
         end
     end
 end
-
-
 
 function startCrafting(result)
 
     if next(result) == nil then return false
     else _,result = next(result)
         for k,v in pairs(result.inputs) do
-            if not world.containerConsume(entity.id(), {item = k , count = v}) then return false end
+            if not world.containerConsume(entity.id(), {item = k , count = v}) then
+				--honestly this should never fire, but...just in case.
+				refund()
+				return false
+			else
+				storage.inputs[#storage.inputs+1]={item = k , count = v}
+			end
         end
 
-        self.crafting = true
-        self.timer = result.time
-        self.output = result.outputs
-        animator.setAnimationState("samplingarrayanim", "working")
+        storage.crafting = true
+        storage.timer = result.time
+		for name,quantity in pairs(result.outputs) do
+			storage.output[#storage.output+1]={name=name,count=quantity}
+		end
+        animator.setAnimationState("samplingarrayanim", storage.crafting and "working" or "idle")
         return true
     end
 end
