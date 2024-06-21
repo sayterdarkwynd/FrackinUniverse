@@ -1,8 +1,8 @@
 local recipes = {}
 
 function init()
-    storage.timer = storage.timer or 1
-    self.mintick = 1
+	storage.timer = storage.timer or 1
+	self.mintick = 1
 	self.inputStart=config.getParameter("inputSlotsStart") or 0
 	self.inputEnd=math.max(self.inputStart,config.getParameter("inputSlotsEnd") or 2)
 	self.outputStart=config.getParameter("outputSlotsStart") or 3
@@ -10,8 +10,8 @@ function init()
 	if (self.outputEnd<self.outputStart) then
 		self.outputEnd = world.containerSize(entity.id())
 	end
-    storage.crafting = storage.crafting or false
-    storage.output = storage.output or {}
+	storage.crafting = storage.crafting or false
+	storage.output = storage.output or {}
 	storage.inputs = storage.inputs or {}
 	animator.setAnimationState("samplingarrayanim", storage.crafting and "working" or "idle")
 	recipes=config.getParameter("recipes") or {}
@@ -25,9 +25,9 @@ function getInputContents()
 		local stack = world.containerItemAt(id, i)
 		if stack ~=nil then
 			if contents[stack.name] ~= nil then
-			  contents[stack.name] = contents[stack.name] + stack.count
+				contents[stack.name] = contents[stack.name] + stack.count
 			else
-			  contents[stack.name] = stack.count
+				contents[stack.name] = stack.count
 			end
 		end
 	end
@@ -36,11 +36,11 @@ function getInputContents()
 end
 
 function map(l,f)
-    local res = {}
-    for k,v in pairs(l) do
-        res[k] = f(v)
-    end
-    return res
+	local res = {}
+	for k,v in pairs(l) do
+		res[k] = f(v)
+	end
+	return res
 end
 
 function filter(l,f)
@@ -49,48 +49,47 @@ end
 
 function getValidRecipes(query)
 
-    local function subset(t1,t2)
-        if next(t2) == nil then
-          return false
-        end
-        if t1 == t2 then
-          return true
-        end
-            for k,_ in pairs(t1) do
-                if not t2[k] or t1[k] > t2[k] then
-                  return false
-                end
-            end
-        return true
-    end
+	local function subset(t1,t2)
+		if next(t2) == nil then
+			return false
+		end
+		if t1 == t2 then
+			return true
+		end
+			for k,_ in pairs(t1) do
+				if not t2[k] or t1[k] > t2[k] then
+					return false
+				end
+			end
+		return true
+	end
 
 	return filter(recipes, function(l) return subset(l.inputs, query) end)
 
 end
 
-
 function getOutSlotsFor(something)
-    local empty = {} -- empty slots in the outputs
-    local slots = {} -- slots with a stack of "something"
+	local empty = {} -- empty slots in the outputs
+	local slots = {} -- slots with a stack of "something"
 	if self.outputEnd == nil then
 		self.outputEnd = world.containerSize(entity.id())
 	end
-    for i = self.outputStart,self.outputEnd do -- iterate all output slots
-        local stack = world.containerItemAt(entity.id(), i) -- get the stack on i
-        if stack ~= nil then -- not empty
-            if stack.name == something then -- its "something"
-                -- possible drop slot
+	for i = self.outputStart,self.outputEnd do -- iterate all output slots
+		local stack = world.containerItemAt(entity.id(), i) -- get the stack on i
+		if stack ~= nil then -- not empty
+			if stack.name == something then -- its "something"
+				-- possible drop slot
 				slots[#slots+1]=i
-            end
-        else -- empty
-            empty[#empty+1]=i
-        end
-    end
+			end
+		else -- empty
+			empty[#empty+1]=i
+		end
+	end
 
-    for _,e in pairs(empty) do -- add empty slots to the end
-        slots[#slots+1]=e
-    end
-    return slots
+	for _,e in pairs(empty) do -- add empty slots to the end
+		slots[#slots+1]=e
+	end
+	return slots
 end
 
 function throwItemIn(item,isOutput)
@@ -129,44 +128,43 @@ function die(smash)
 end
 
 function update(dt)
-    storage.timer = storage.timer - dt
-    if storage.timer <= 0 then
-        if storage.crafting then
-            giveItems(storage.output,true)
-            storage.crafting = false
-            storage.output = {}
-            storage.inputs = {}
-            storage.timer = self.mintick --reset timer to a safe minimum
+	storage.timer = storage.timer - dt
+	if storage.timer <= 0 then
+		if storage.crafting then
+			giveItems(storage.output,true)
+			storage.crafting = false
+			storage.output = {}
+			storage.inputs = {}
+			storage.timer = self.mintick --reset timer to a safe minimum
 			animator.setAnimationState("samplingarrayanim", storage.crafting and "working" or "idle")
-            animator.playSound("active")
-        end
+			animator.playSound("active")
+		end
 
-        if not storage.crafting and storage.timer <= 0 then --make sure we didn't just finish crafting
-            if not startCrafting(getValidRecipes(getInputContents())) then storage.timer = self.mintick end --set timeout if there were no recipes
-        end
-    end
+		if not storage.crafting and storage.timer <= 0 then --make sure we didn't just finish crafting
+			if not startCrafting(getValidRecipes(getInputContents())) then storage.timer = self.mintick end --set timeout if there were no recipes
+		end
+	end
 end
 
 function startCrafting(result)
-
-    if next(result) == nil then return false
-    else _,result = next(result)
-        for k,v in pairs(result.inputs) do
-            if not world.containerConsume(entity.id(), {item = k , count = v}) then
+	if next(result) == nil then return false
+	else _,result = next(result)
+		for k,v in pairs(result.inputs) do
+			if not world.containerConsume(entity.id(), {item = k , count = v}) then
 				--honestly this should never fire, but...just in case.
 				refund()
 				return false
 			else
 				storage.inputs[#storage.inputs+1]={item = k , count = v}
 			end
-        end
+		end
 
-        storage.crafting = true
-        storage.timer = result.time
+		storage.crafting = true
+		storage.timer = result.time
 		for name,quantity in pairs(result.outputs) do
 			storage.output[#storage.output+1]={name=name,count=quantity}
 		end
-        animator.setAnimationState("samplingarrayanim", storage.crafting and "working" or "idle")
-        return true
-    end
+		animator.setAnimationState("samplingarrayanim", storage.crafting and "working" or "idle")
+		return true
+	end
 end
