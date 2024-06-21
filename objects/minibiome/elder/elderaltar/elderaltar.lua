@@ -1,35 +1,4 @@
-local recipes =
-{
-	{inputs = { wrappedbody=1 }, outputs = { brain=1,fuscienceresource=120,bone=8,leather=1,alienmeat=4,faceskin=1,rawribmeat=2,liquidblood=40 }, time = 5.0},
-	{inputs = { wrappedbodyputrid=1 }, outputs = { brain=1,fumadnessresource=5,bone=8,leather=1,rottingfleshmaterial=4,slew2=12,biospore=2,liquidbioooze=40 }, time = 5.0},
-	{inputs = { wrappedbodyalien=1 }, outputs = { brain=1,fuprecursorresource=5,bone=8,leather=1,slew4=12,rawribmeat=2,cellmateria=4,liquidalienjuice=40 }, time = 5.0},
-	{inputs = { cthulureward=1,elderrelic7=1,elderrelic11=1 }, outputs = { elderripper=1 }, time = 15.0},
-	{inputs = { cthulureward=1, elderrelic5=1, elderrelic11=1 }, outputs = { eldercarbine=1 }, time = 15.0},
-	{inputs = { cthulureward=1, elderrelic12=1, elderrelic11=1 }, outputs = { elderpistol=1 }, time = 15.0 },
-	{inputs = { cthulureward=1, elderrelic6=1, elderrelic8=1 }, outputs = { elderrepeater=1 }, time = 15.0 },
-	{inputs = { eldertome=1,elderrelic7=1,elderrelic3=3 }, outputs = { elderspear=1 }, time = 15.0},
-	{inputs = { eldertome=1, elderrelic2=1, elderrelic3=5 }, outputs = { elderblade=1 }, time = 15.0},
-	{inputs = { elderrelic3=6, elderrelic5=2, elderrelic7=1 }, outputs = { elderbroadsword=1 }, time = 15.0 },
-	{inputs = { cthulureward=1, eldertome=1, elderrelic3=5 }, outputs = { elderbow=1 }, time = 15.0},
-	{inputs = { nocxiumbar=5, elderrelic2=1, elderrelic7=1 }, outputs = { elderwhip=1 }, time = 15.0 },
-	{inputs = { eldertome=1, elderrelic7=2, cthulureward=1 }, outputs = { cultiststaff1=1 }, time = 15.0 },
-	{inputs = { eldertome=1, elderrelic6=2, elderrelic9=1 }, outputs = { cultiststaff2=1 }, time = 15.0 },
-	{inputs = { eldertome=1, elderrelic12=2, elderrelic14=1 }, outputs = { cultiststaff3=1 }, time = 15.0 },
-	{inputs = { nocxiumbar=5, elderrelic6=1, elderrelic3=4 }, outputs = { elderaxe=1 }, time = 15.0 },
-	{inputs = { cthulureward=1, elderrelic8=1, elderrelic12=1 }, outputs = { eldergrappler=1 }, time = 15.0},
-	{inputs = { nocxiumbar=5, eldertome=1, elderrelic12=5 }, outputs = { eldershield=1 }, time = 15.0 },
-	{inputs = { nocxiumbar=6, elderrelic12=1, elderrelic6=1 }, outputs = { elderarmorhead=1 }, time = 15.0 },
-	{inputs = { nocxiumbar=7, elderrelic2=1, elderrelic14=1 }, outputs = { elderarmorchest=1 }, time = 15.0},
-	{inputs = { nocxiumbar=5, elderrelic1=1, elderrelic5=1 }, outputs = { elderarmorpants=1 }, time = 15.0 },
-	{inputs = { nocxiumbar=6, elderrelic6=1, elderrelic11=1 }, outputs = { cultarmorhead=1 }, time = 15.0 },
-	{inputs = { nocxiumbar=7, elderrelic7=1, elderrelic12=1 }, outputs = { cultarmorchest=1 }, time = 15.0 },
-	{inputs = { nocxiumbar=5, elderrelic8=1, elderrelic14=1 }, outputs = { cultarmorpants=1 }, time = 15.0 },
-	{inputs = { cthulureward=1, elderrelic3=2, elderrelic14=1 }, outputs = { eldermace=1 }, time = 15.0 },
-	{inputs = { elderrelic12=5, elderrelic4=1, elderrelic8=1 }, outputs = { eldershotgun=1 }, time = 15.0 },
-	{inputs = { cthulureward=1, elderrelic1=3, elderrelic11=2 }, outputs = { eldergrenadelauncher=1 }, time = 15.0 },
-	{inputs = { shoggothessence=5}, outputs = { shoggothflesh=1 }, time = 1.0 },
-	{inputs = { shoggothflesh=1}, outputs = { essence=1000,fuscienceresource=1000 }, time = 1.0 }
-}
+local recipes = {}
 
 function init()
     storage.timer = storage.timer or 1
@@ -45,6 +14,7 @@ function init()
     storage.output = storage.output or {}
 	storage.inputs = storage.inputs or {}
 	animator.setAnimationState("samplingarrayanim", storage.crafting and "working" or "idle")
+	recipes=config.getParameter("recipes") or {}
 end
 
 function getInputContents()
