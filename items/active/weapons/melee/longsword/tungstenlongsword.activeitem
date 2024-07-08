@@ -1,45 +1,45 @@
 {
-  "itemName" : "tungstenlongsword",
-  "price" : 70,
-  "level" : 2,
-  "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "A large, heavy tungsten blade.",
-  "shortdescription" : "Tungsten Longsword",
-  "tooltipKind" : "sword2",
-  "category" : "longsword",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee", "longsword", "upgradeableWeapon"],
+	"itemName" : "tungstenlongsword",
+	"price" : 70,
+	"level" : 2,
+	"maxStack" : 1,
+	"rarity" : "Common",
+	"description" : "A large, heavy tungsten blade.",
+	"shortdescription" : "Tungsten Longsword",
+	"tooltipKind" : "sword2",
+	"category" : "longsword",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee", "longsword", "upgradeableWeapon"],
 
-  "inventoryIcon" : "tungstenlongsword.png",
+	"inventoryIcon" : "tungstenlongsword.png",
 
-  "animation" : "combolongsword.animation",
+	"animation" : "combolongsword.animation",
 
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "tungstenlongsword.png"
-  },
-  "animationCustom" : {
-	  "sounds" : {
-	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
-	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
-	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
-	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
-	  }
-  },
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "tungstenlongsword.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+			"fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+			"fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+			"crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "primaryAbilityType" : "battlebladecombo",
-  "primaryAbility" : {
-    "fireTime" : 0.91,
-    "baseDps" : 6.14
-  },
-  "critChance" : 1,
-  "critBonus" : 9,
+	"primaryAbilityType" : "battlebladecombo",
+	"primaryAbility" : {
+		"fireTime" : 0.91,
+		"baseDps" : 6.14
+	},
+	"critChance" : 1,
+	"critBonus" : 9,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"//,
-  //"collectablesOnPickup" : { "fu_weaponlongsword" : "tungstenlongsword" }
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"//,
+	//"collectablesOnPickup" : { "fu_weaponlongsword" : "tungstenlongsword" }
 }

@@ -1,50 +1,50 @@
 {
-  "itemName" : "fuhoneyhammer",
-  "price" : 900,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Truly solid amber condensed into a mallet.
+	"itemName" : "fuhoneyhammer",
+	"price" : 900,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "Truly solid amber condensed into a mallet.
 ^cyan;Floran^reset;",
-  "shortdescription" : "Amber Hammer",
-  "tooltipKind" : "hammer",
-  "category" : "hammer",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon", "bioweapon", "bees", "floran"],
-  "level": 4,
-  "inventoryIcon" : "honeyhammer.png",
-  //"collectablesOnPickup" : { "fu_weaponhammer" : "fuhoneyhammer" },
-  "animation" : "hammer.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "honeyhammer.png"
-  },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-1.25, 1.5]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
-    }
-  },
+	"shortdescription" : "Amber Hammer",
+	"tooltipKind" : "hammer",
+	"category" : "hammer",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","hammer", "upgradeableWeapon", "bioweapon", "bees", "floran"],
+	"level": 4,
+	"inventoryIcon" : "honeyhammer.png",
+	//"collectablesOnPickup" : { "fu_weaponhammer" : "fuhoneyhammer" },
+	"animation" : "hammer.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "honeyhammer.png"
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+			"offset" : [-1.25, 1.5]
+		}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "primaryAbilityType" : "hammersmash",
-  "primaryAbility" : {
-    "fireTime" : 0.852,
-    "baseDps" : 12.6,
-    "damageConfig" : {
-      "damageSourceKind" : "hammer"
-    }
-  },
+	"primaryAbilityType" : "hammersmash",
+	"primaryAbility" : {
+		"fireTime" : 0.852,
+		"baseDps" : 12.6,
+		"damageConfig" : {
+			"damageSourceKind" : "hammer"
+		}
+	},
 
-  "altAbilityType" : "uppercut",
-  "altAbility" : { },
-  "critChance" : 5,
-  "critBonus" : 1,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"altAbilityType" : "uppercut",
+	"altAbility" : { },
+	"critChance" : 5,
+	"critBonus" : 1,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "stunChance" : 7
+	"stunChance" : 7
 }

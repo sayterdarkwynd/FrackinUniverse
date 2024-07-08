@@ -1,45 +1,45 @@
 {
-  "itemName" : "triangliumkatana",
-  "price" : 1500,
-  "level" : 4,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Light as air, sharp as a razor.
+	"itemName" : "triangliumkatana",
+	"price" : 1500,
+	"level" : 4,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Light as air, sharp as a razor.
 ^cyan;Massive 10-hit combo!^reset;",
-  "shortdescription" : "Trianglium Katana",
-  "tooltipKind" : "sword2",
-  "category" : "katana",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","katana", "upgradeableWeapon","trianglium"],
+	"shortdescription" : "Trianglium Katana",
+	"tooltipKind" : "sword2",
+	"category" : "katana",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","katana", "upgradeableWeapon","trianglium"],
 
-  "inventoryIcon" : "triangliumkatana.png",
+	"inventoryIcon" : "triangliumkatana.png",
 
-  "animation" : "combokatanaglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "triangliumkatana.png",
-    "bladefullbright" : "triangliumkatanafullbright.png"
-  },
-  "animationCustom":{},
+	"animation" : "combokatanaglow.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "triangliumkatana.png",
+		"bladefullbright" : "triangliumkatanafullbright.png"
+	},
+	"animationCustom":{},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "radioactive",
+	"elementalType" : "radioactive",
 
-  "primaryAbilityType" : "katanacombo",
-  "primaryAbility":{
-    "fireTime":0.72,
-    "baseDps":7.4,
-    "damageConfig":{
-      "knockback":15,
-      "damageSourceKind" : "radioactive"
-      },
-      "comboSteps":10
-    },
+	"primaryAbilityType" : "katanacombo",
+	"primaryAbility":{
+		"fireTime":0.72,
+		"baseDps":7.4,
+		"damageConfig":{
+			"knockback":15,
+			"damageSourceKind" : "radioactive"
+		},
+		"comboSteps":10
+	},
 
-  "critChance" : 4,
-  "critBonus" : 2,
+	"critChance" : 4,
+	"critBonus" : 2,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

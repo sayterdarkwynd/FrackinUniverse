@@ -1,47 +1,47 @@
 {
-  "itemName" : "coraldullblade",
-  "price" : 1500,
-  "level" : 3,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Made from the depths. And hate. Lots and lots of hate.
+	"itemName" : "coraldullblade",
+	"price" : 1500,
+	"level" : 3,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "Made from the depths. And hate. Lots and lots of hate.
 ^cyan;Inflicts Poison^reset;",
-  "shortdescription" : "Coral Longsword",
-  "tooltipKind" : "sword2",
-  "category" : "longsword",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee", "longsword", "upgradeableWeapon","coral"],
-  "inventoryIcon" : "coraldullblade.png",
-  //"collectablesOnPickup" : { "fu_weaponlongsword" : "coraldullblade" },
-  "animation" : "combolongsword.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "coraldullblade.png"
-  },
-  "animationCustom" : {
-	  "sounds" : {
-	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
-	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
-	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
-	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
-	  }
-  },
+	"shortdescription" : "Coral Longsword",
+	"tooltipKind" : "sword2",
+	"category" : "longsword",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee", "longsword", "upgradeableWeapon","coral"],
+	"inventoryIcon" : "coraldullblade.png",
+	//"collectablesOnPickup" : { "fu_weaponlongsword" : "coraldullblade" },
+	"animation" : "combolongsword.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "coraldullblade.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+			"fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+			"fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+			"crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+	"elementalType" : "poison",
 
-  "primaryAbilityType" : "battlebladecombo",
-  "primaryAbility" : {
-    "fireTime" : 0.9,
-    "baseDps" : 6.3,
-    "damageConfig" : {
-      "damageSourceKind" : "poisonshortsword",
-      "statusEffects" : [ "weakpoison" ]
-    }
-  },
+	"primaryAbilityType" : "battlebladecombo",
+	"primaryAbility" : {
+		"fireTime" : 0.9,
+		"baseDps" : 6.3,
+		"damageConfig" : {
+			"damageSourceKind" : "poisonshortsword",
+			"statusEffects" : [ "weakpoison" ]
+		}
+	},
 
-  "critChance" : 1,
-  "critBonus" : 9,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"critChance" : 1,
+	"critBonus" : 9,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

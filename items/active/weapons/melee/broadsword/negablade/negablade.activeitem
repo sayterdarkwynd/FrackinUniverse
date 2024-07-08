@@ -1,112 +1,112 @@
 {
-  "itemName" : "negablade",
-  "price" : 11500,
-  "level" : 6,
-  "maxStack" : 1,
-  "rarity" : "Legendary",
-  "description" : "Said to house the screaming, corrupted essence of a thousand innocents.
+	"itemName" : "negablade",
+	"price" : 11500,
+	"level" : 6,
+	"maxStack" : 1,
+	"rarity" : "Legendary",
+	"description" : "Said to house the screaming, corrupted essence of a thousand innocents.
 ^cyan;Heavy. Slows wielder^reset;
 ^green;Friggin Huge^reset;",
-  "shortdescription" : "The Negablade",
-  "tooltipKind" : "sword2",
-  "category" : "broadsword",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword", "upgradeableWeapon"],
-  //"collectablesOnPickup" : { "fu_weaponbroadsword" : "negablade" },
-  "inventoryIcon" : "negablade.png",
+	"shortdescription" : "The Negablade",
+	"tooltipKind" : "sword2",
+	"category" : "broadsword",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","broadsword", "upgradeableWeapon"],
+	//"collectablesOnPickup" : { "fu_weaponbroadsword" : "negablade" },
+	"inventoryIcon" : "negablade.png",
 
-  "animation" : "negablade.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "negablade.png",
-    "bladefullbright" : "negabladefullbright.png",
-    "muzzleFlash" : ""
-  },
-  "animationCustom" : {
-    "lights" : { "glow" : {
-      "active" : true,
-      "position" : [0.75, 0.5],
-      "color" : [34, 117, 22],
-      "flickerPeriod" : 0.3,
-      "flickerMinIntensity" : 0.95,
-      "flickerMaxIntensity" : 1,
-      "flickerPeriodVariance" : 0.075,
-      "flickerIntensityVariance" : 0.025
-    }},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_broadsword_fire1.ogg", "/sfx/melee/swing_broadsword_fire2.ogg", "/sfx/melee/swing_broadsword_fire3.ogg" ],
-      "fireStart" : [ "/sfx/tech/tech_jetpack_thrust1.ogg" ],
-      "fireLoop" : [ "/sfx/melee/rocketspear_loop_fire.ogg" ],
-      "fireEnd" : [ "/sfx/melee/rocketspear_stop_fire.ogg" ]
-    }
-  },
+	"animation" : "negablade.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "negablade.png",
+		"bladefullbright" : "negabladefullbright.png",
+		"muzzleFlash" : ""
+	},
+	"animationCustom" : {
+		"lights" : { "glow" : {
+			"active" : true,
+			"position" : [0.75, 0.5],
+			"color" : [34, 117, 22],
+			"flickerPeriod" : 0.3,
+			"flickerMinIntensity" : 0.95,
+			"flickerMaxIntensity" : 1,
+			"flickerPeriodVariance" : 0.075,
+			"flickerIntensityVariance" : 0.025
+		}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_broadsword_fire1.ogg", "/sfx/melee/swing_broadsword_fire2.ogg", "/sfx/melee/swing_broadsword_fire3.ogg" ],
+			"fireStart" : [ "/sfx/tech/tech_jetpack_thrust1.ogg" ],
+			"fireLoop" : [ "/sfx/melee/rocketspear_loop_fire.ogg" ],
+			"fireEnd" : [ "/sfx/melee/rocketspear_stop_fire.ogg" ]
+		}
+	},
 
-  "scripts" : [
-    "/items/active/weapons/melee/meleeweapon.lua",
-    "/items/active/scripts/heavyweapon.lua"
-  ],
+	"scripts" : [
+		"/items/active/weapons/melee/meleeweapon.lua",
+		"/items/active/scripts/heavyweapon.lua"
+	],
 
-  "muzzleOffset" : [0, 3.75],
+	"muzzleOffset" : [0, 3.75],
 
-  "elementalType" : "poison",
-  "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
-    "class" : "MeleeSlash",
+	"elementalType" : "poison",
+	"primaryAbility" : {
+		"scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
+		"class" : "MeleeSlash",
 
-    "fireTime" : 1.5,
-    "baseDps" : 15,
-    "damageConfig" : {
-      "damageSourceKind" : "poisonbroadsword",
-      "statusEffects" : [ "radiationburn" ],
-      "knockback" : 50,
-      "knockbackMode" : "facing",
-      "timeoutGroup" : "primary"
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : -10,
-        "aimAngle" : 0,
-        "allowRotate" : false,
-        "allowFlip" : true
-      },
-      "windup" : {
-        "duration" : 0.1,
-        "armRotation" : 90,
-        "weaponRotation" : -10,
-        "twoHanded" : true,
-        "aimAngle" : 0,
+		"fireTime" : 1.5,
+		"baseDps" : 15,
+		"damageConfig" : {
+			"damageSourceKind" : "poisonbroadsword",
+			"statusEffects" : [ "radiationburn" ],
+			"knockback" : 50,
+			"knockbackMode" : "facing",
+			"timeoutGroup" : "primary"
+		},
+		"stances" : {
+			"idle" : {
+				"armRotation" : -90,
+				"weaponRotation" : -10,
+				"aimAngle" : 0,
+				"allowRotate" : false,
+				"allowFlip" : true
+			},
+			"windup" : {
+				"duration" : 0.1,
+				"armRotation" : 90,
+				"weaponRotation" : -10,
+				"twoHanded" : true,
+				"aimAngle" : 0,
 
-        "allowRotate" : false,
-        "allowFlip" : true
-      },
-      "preslash" : {
-        "duration" : 0.025,
-        "armRotation" : 55,
-        "weaponRotation" : -45,
-        "twoHanded" : true,
-        "aimAngle" : 0,
+				"allowRotate" : false,
+				"allowFlip" : true
+			},
+			"preslash" : {
+				"duration" : 0.025,
+				"armRotation" : 55,
+				"weaponRotation" : -45,
+				"twoHanded" : true,
+				"aimAngle" : 0,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "fire" : {
-        "duration" : 0.4,
-        "armRotation" : -45,
-        "weaponRotation" : -55,
-        "twoHanded" : true,
-        "aimAngle" : 0,
+				"allowRotate" : false,
+				"allowFlip" : false
+			},
+			"fire" : {
+				"duration" : 0.4,
+				"armRotation" : -45,
+				"weaponRotation" : -55,
+				"twoHanded" : true,
+				"aimAngle" : 0,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      }
-    }
-  },
+				"allowRotate" : false,
+				"allowFlip" : false
+			}
+		}
+	},
 
-  "aimOffset" : 0.0,
+	"aimOffset" : 0.0,
 
-  "altAbilityType" : "flamethrowersword",
-  "critChance" : 10,
-  "critBonus" : 32,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"altAbilityType" : "flamethrowersword",
+	"critChance" : 10,
+	"critBonus" : 32,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

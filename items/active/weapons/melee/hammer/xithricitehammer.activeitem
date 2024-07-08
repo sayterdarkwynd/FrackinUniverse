@@ -1,53 +1,53 @@
 {
-  "itemName" : "xithricitehammer",
-  "price" : 900,
-  "maxStack" : 1,
-  "level" : 6,
-  "rarity" : "legendary",
-  "description" : "Slam them with cosmic force.
+	"itemName" : "xithricitehammer",
+	"price" : 900,
+	"maxStack" : 1,
+	"level" : 6,
+	"rarity" : "legendary",
+	"description" : "Slam them with cosmic force.
 ^cyan;Inflicts Minor Vulnerability^reset;",
-  "shortdescription" : "Cosmic Hammer",
-  "tooltipKind" : "hammer",
-  "category" : "hammer",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer","xithricite", "upgradeableWeapon"],
-  "inventoryIcon" : "xithricitehammer.png",
-  //"collectablesOnPickup" : { "fu_weaponhammer" : "xithricitehammer" },
-  "animation" : "hammerglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "xithricitehammer.png",
-    "bladefullbright" : "xithricitehammerfullbright.png"
-  },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-2.0, 1.5]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
-    }
-  },
+	"shortdescription" : "Cosmic Hammer",
+	"tooltipKind" : "hammer",
+	"category" : "hammer",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","hammer","xithricite", "upgradeableWeapon"],
+	"inventoryIcon" : "xithricitehammer.png",
+	//"collectablesOnPickup" : { "fu_weaponhammer" : "xithricitehammer" },
+	"animation" : "hammerglow.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "xithricitehammer.png",
+		"bladefullbright" : "xithricitehammerfullbright.png"
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+			"offset" : [-2.0, 1.5]
+		}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "cosmic",
+	"elementalType" : "cosmic",
 
-  "primaryAbilityType" : "hammersmash",
-  "primaryAbility" : {
-    "fireTime" : 0.72,
-    "baseDps" : 11.5,
-    "damageConfig" : {
-      "statusEffects" : [ "defenseboostneg20" ],
-       "damageSourceKind" : "cosmichammer"
-    }
-  },
+	"primaryAbilityType" : "hammersmash",
+	"primaryAbility" : {
+		"fireTime" : 0.72,
+		"baseDps" : 11.5,
+		"damageConfig" : {
+			"statusEffects" : [ "defenseboostneg20" ],
+			 "damageSourceKind" : "cosmichammer"
+		}
+	},
 
-  "altAbilityType" : "elementalaura",
-  "altAbility" : { },
+	"altAbilityType" : "elementalaura",
+	"altAbility" : { },
 
-  "critChance" : 3,
-  "critBonus" : 7,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"critChance" : 3,
+	"critBonus" : 7,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "stunChance" : 8
+	"stunChance" : 8
 }

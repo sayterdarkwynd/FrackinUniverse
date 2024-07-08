@@ -1,48 +1,48 @@
 {
-  "itemName" : "zerchesiumhammer",
-  "price" : 900,
-  "maxStack" : 1,
-  "level" : 3,
-  "rarity" : "uncommon",
-  "description" : "Shiny, dangerous, and fun!",
-  "shortdescription" : "Zerchesium Hammer",
-  "tooltipKind" : "hammer",
-  "category" : "hammer",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer","zerchesium", "upgradeableWeapon"],
-  "inventoryIcon" : "zerchesiumhammer.png",
-  //"collectablesOnPickup" : { "fu_weaponhammer" : "zerchesiumhammer" },
-  "animation" : "hammer.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "zerchesiumhammer.png"
-  },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-2.0, 1.5]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
-    }
-  },
+	"itemName" : "zerchesiumhammer",
+	"price" : 900,
+	"maxStack" : 1,
+	"level" : 3,
+	"rarity" : "uncommon",
+	"description" : "Shiny, dangerous, and fun!",
+	"shortdescription" : "Zerchesium Hammer",
+	"tooltipKind" : "hammer",
+	"category" : "hammer",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","hammer","zerchesium", "upgradeableWeapon"],
+	"inventoryIcon" : "zerchesiumhammer.png",
+	//"collectablesOnPickup" : { "fu_weaponhammer" : "zerchesiumhammer" },
+	"animation" : "hammer.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "zerchesiumhammer.png"
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+			"offset" : [-2.0, 1.5]
+		}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+	"elementalType" : "ice",
 
-  "primaryAbilityType" : "hammersmash",
-  "primaryAbility" : {
-    "fireTime" : 0.9,
-    "baseDps" : 11.5,
-    "damageConfig" : { "damageSourceKind" : "ice" }
-  },
+	"primaryAbilityType" : "hammersmash",
+	"primaryAbility" : {
+		"fireTime" : 0.9,
+		"baseDps" : 11.5,
+		"damageConfig" : { "damageSourceKind" : "ice" }
+	},
 
-  "altAbilityType" : "fugroundslamice",
-  "altAbility" : { },
+	"altAbilityType" : "fugroundslamice",
+	"altAbility" : { },
 
-  "critChance" : 3,
-  "critBonus" : 7,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"critChance" : 3,
+	"critBonus" : 7,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "stunChance" : 6
+	"stunChance" : 6
 }

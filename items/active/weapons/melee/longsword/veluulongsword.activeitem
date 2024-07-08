@@ -1,44 +1,44 @@
 {
-  "itemName" : "veluulongsword",
-  "price" : 60,
-  "level" : 2,
-  "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Charged with purrpose.",
-  "shortdescription" : "Vel'uuish Longsword",
-  "tooltipKind" : "sword2",
-  "category" : "longsword",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","longsword","upgradeableWeapon","veluu"],
-  "inventoryIcon" : "veluulongsword.png",
-  "animation" : "combolongsword.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "veluulongsword.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
-      "fire2" : [ "/sfx/melee/swing_shortsword.ogg" ],
-      "fire3" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"itemName" : "veluulongsword",
+	"price" : 60,
+	"level" : 2,
+	"maxStack" : 1,
+	"rarity" : "common",
+	"description" : "Charged with purrpose.",
+	"shortdescription" : "Vel'uuish Longsword",
+	"tooltipKind" : "sword2",
+	"category" : "longsword",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","longsword","upgradeableWeapon","veluu"],
+	"inventoryIcon" : "veluulongsword.png",
+	"animation" : "combolongsword.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "veluulongsword.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+			"fire2" : [ "/sfx/melee/swing_shortsword.ogg" ],
+			"fire3" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "electric",
+	"elementalType" : "electric",
 
-  "primaryAbilityType" : "battlebladecombo",
-  "primaryAbility" : {
-    "fireTime" : 0.93,
-    "baseDps" : 6.4,
-    "damageConfig" : {
-      "damageSourceKind": "electricbroadsword",
-      "statusEffects" : [ ]
-    }
-  },
+	"primaryAbilityType" : "battlebladecombo",
+	"primaryAbility" : {
+		"fireTime" : 0.93,
+		"baseDps" : 6.4,
+		"damageConfig" : {
+			"damageSourceKind": "electricbroadsword",
+			"statusEffects" : [ ]
+		}
+	},
 
-  "critChance" : 1,
-  "critBonus" : 7,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"critChance" : 1,
+	"critBonus" : 7,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,74 +1,74 @@
 {
-  "itemName" : "irradiumaxe",
-  "price" : 640,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Purified irradium weapon.
+	"itemName" : "irradiumaxe",
+	"price" : 640,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Purified irradium weapon.
 ^cyan;Inflicts Rad-Burn^reset;",
-  "shortdescription" : "Irradium Axe",
-  "tooltipKind" : "sword2",
-  "category" : "axe",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","axe","irradium", "upgradeableWeapon","radioactive"],
-  "level" : 4,
-  "inventoryIcon" : "irradiumaxe.png",
-  //"collectablesOnPickup" : { "fu_weaponaxe" : "irradiumaxe" },
-  "animation" : "axe.animation",
-  "animationParts" : {
-    "blade" : "irradiumaxe.png",
-    "handle" : ""
-  },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-1.0, 1.75]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_axe.ogg" ]
-    }
-  },
+	"shortdescription" : "Irradium Axe",
+	"tooltipKind" : "sword2",
+	"category" : "axe",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","axe","irradium", "upgradeableWeapon","radioactive"],
+	"level" : 4,
+	"inventoryIcon" : "irradiumaxe.png",
+	//"collectablesOnPickup" : { "fu_weaponaxe" : "irradiumaxe" },
+	"animation" : "axe.animation",
+	"animationParts" : {
+		"blade" : "irradiumaxe.png",
+		"handle" : ""
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+			"offset" : [-1.0, 1.75]
+		}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_axe.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "radioactive",
+	"elementalType" : "radioactive",
 
-  "aimOffset" : -1.0,
+	"aimOffset" : -1.0,
 
-  "primaryAbilityType" : "axecleave",
-  "primaryAbility" : {
-    "fireTime" : 0.51,
-    "baseDps" : 10,
-    "damageConfig" : {
-      "damageSourceKind" : "radioactiveaxe",
-      "statusEffects" : [ "radiationburn" ],
-      "knockback" : 15
-    },
-    "stances" : {
-      "idle" : {
-        "weaponOffset" : [0.25, 1.5]
-      },
-      "windup" : {
-        "duration" : 0.7,
-        "weaponOffset" : [0.25, 1.5],
+	"primaryAbilityType" : "axecleave",
+	"primaryAbility" : {
+		"fireTime" : 0.51,
+		"baseDps" : 10,
+		"damageConfig" : {
+			"damageSourceKind" : "radioactiveaxe",
+			"statusEffects" : [ "radiationburn" ],
+			"knockback" : 15
+		},
+		"stances" : {
+			"idle" : {
+				"weaponOffset" : [0.25, 1.5]
+			},
+			"windup" : {
+				"duration" : 0.7,
+				"weaponOffset" : [0.25, 1.5],
 
-        "minWindup" : 0.6,
+				"minWindup" : 0.6,
 
-        "weaponAngle" : [
-          [0.7, "linear", -20, 0],
-          [0.85, "linear", 0, 50],
-          [0.925, "sin", 50, 45],
-          [1.0, "cos", 50, 45]
-        ],
+				"weaponAngle" : [
+					[0.7, "linear", -20, 0],
+					[0.85, "linear", 0, 50],
+					[0.925, "sin", 50, 45],
+					[1.0, "cos", 50, 45]
+				],
 
-        "armAngle" : [
-          [1.0, "sin", -90, 50]
-        ]
-      },
-      "fire" : {
-        "weaponOffset" : [0.25, 1.5]
-      }
-    }
-  },
-  "critChance" : 2,
-  "critBonus" : 4,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+				"armAngle" : [
+					[1.0, "sin", -90, 50]
+				]
+			},
+			"fire" : {
+				"weaponOffset" : [0.25, 1.5]
+			}
+		}
+	},
+	"critChance" : 2,
+	"critBonus" : 4,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

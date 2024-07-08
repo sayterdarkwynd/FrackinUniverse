@@ -1,88 +1,88 @@
 {
-  "itemName" : "skathtier3broadsword",
-  "price" : 1250,
-  "level" : 6,
-  "maxStack" : 1,
-  "rarity" : "Legendary",
-  "description" : "A powerful Plasmablade forged by the Skath.",
-  "shortdescription" : "Skath Plasmablade",
-  "tooltipKind" : "sword2",
-  "category" : "broadsword",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","upgradeableWeapon"],
+	"itemName" : "skathtier3broadsword",
+	"price" : 1250,
+	"level" : 6,
+	"maxStack" : 1,
+	"rarity" : "Legendary",
+	"description" : "A powerful Plasmablade forged by the Skath.",
+	"shortdescription" : "Skath Plasmablade",
+	"tooltipKind" : "sword2",
+	"category" : "broadsword",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","broadsword","upgradeableWeapon"],
 
-  "inventoryIcon" : "skathtier3broadswordicon.png",
+	"inventoryIcon" : "skathtier3broadswordicon.png",
 
-  "animation" : "/items/active/weapons/protectorate/protectoratebroadsword/protectoratebroadsword.animation",
-  "animationParts" : {
-    "sword" : "skathtier3broadsword.png",
-    "swordfullbright" : "skathtier3broadswordfullbright.png"
-  },
-  "animationCustom" : { },
+	"animation" : "/items/active/weapons/protectorate/protectoratebroadsword/protectoratebroadsword.animation",
+	"animationParts" : {
+		"sword" : "skathtier3broadsword.png",
+		"swordfullbright" : "skathtier3broadswordfullbright.png"
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/protectorate/protectoratebroadsword/protectoratebroadsword.lua"],
+	"scripts" : ["/items/active/weapons/protectorate/protectoratebroadsword/protectoratebroadsword.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "primaryAbilityType" : "broadswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.85,
-    "baseDps" : 11.5,
+	"primaryAbilityType" : "broadswordcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.85,
+		"baseDps" : 11.5,
 
-    "animKeyPrefix" : "inactive"
-  },
+		"animKeyPrefix" : "inactive"
+	},
 
-  "inactiveBaseDps" : 10,
-  "activeBaseDps" : 14,
+	"inactiveBaseDps" : 10,
+	"activeBaseDps" : 14,
 
-  "altAbility" : {
-    "name" : "Plasma Charge",
-    "type" : "empowerment",
-    "scripts" : ["/items/active/weapons/protectorate/protectoratebroadsword/empowerment.lua"],
-    "class" : "Empowerment",
+	"altAbility" : {
+		"name" : "Plasma Charge",
+		"type" : "empowerment",
+		"scripts" : ["/items/active/weapons/protectorate/protectoratebroadsword/empowerment.lua"],
+		"class" : "Empowerment",
 
-    "energyPerSecond" : 15,
+		"energyPerSecond" : 15,
 
-    "projectileOffset" : [1, 0],
-    "projectileType" : "energytravelingswoosh",
-    "baseDamage" : 8,
+		"projectileOffset" : [1, 0],
+		"projectileType" : "energytravelingswoosh",
+		"baseDamage" : 8,
 
-    "cooldownTime" : 1.0,
+		"cooldownTime" : 1.0,
 
-    "stances" : {
-      "empower" : {
-        "durationBefore" : 0.2,
-        "durationAfter" : 0.5,
-        "armRotation" : 90,
-        "weaponRotation" : -90,
-        "twoHanded" : true,
+		"stances" : {
+			"empower" : {
+				"durationBefore" : 0.2,
+				"durationAfter" : 0.5,
+				"armRotation" : 90,
+				"weaponRotation" : -90,
+				"twoHanded" : true,
 
-        "weaponOffset" : [0.5, -0.375],
+				"weaponOffset" : [0.5, -0.375],
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "windup" : {
-        "duration" : 0.25,
-        "armRotation" : 70,
-        "weaponRotation" : 0,
-        "twoHanded" : true,
+				"allowRotate" : false,
+				"allowFlip" : false
+			},
+			"windup" : {
+				"duration" : 0.25,
+				"armRotation" : 70,
+				"weaponRotation" : 0,
+				"twoHanded" : true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "fire" : {
-        "duration" : 0.4,
-        "armRotation" : -45,
-        "weaponRotation" : -55,
-        "twoHanded" : true,
+				"allowRotate" : false,
+				"allowFlip" : false
+			},
+			"fire" : {
+				"duration" : 0.4,
+				"armRotation" : -45,
+				"weaponRotation" : -55,
+				"twoHanded" : true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      }
-    }
-  },
-  "critChance" : 3,
-  "critBonus" : 9,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+				"allowRotate" : false,
+				"allowFlip" : false
+			}
+		}
+	},
+	"critChance" : 3,
+	"critBonus" : 9,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

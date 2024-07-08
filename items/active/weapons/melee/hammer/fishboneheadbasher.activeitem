@@ -1,47 +1,47 @@
 {
-  "itemName" : "fishboneheadbasher",
-  "price" : 900,
-  "maxStack" : 2,
-  "rarity" : "common",
-  "description" : "Fishbone, sea-steel and tears.",
-  "shortdescription" : "Fishbone Basher",
-  "tooltipKind" : "hammer",
-  "category" : "hammer",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon","bone"],
-  "level" : 2,
-  "inventoryIcon" : "fishboneheadbasher.png",
-  //"collectablesOnPickup" : { "fu_weaponhammer" : "fishboneheadbasher" },
-  "animation" : "hammer.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "fishboneheadbasher.png"
-  },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-2.0, 1.5]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
-    }
-  },
+	"itemName" : "fishboneheadbasher",
+	"price" : 900,
+	"maxStack" : 2,
+	"rarity" : "common",
+	"description" : "Fishbone, sea-steel and tears.",
+	"shortdescription" : "Fishbone Basher",
+	"tooltipKind" : "hammer",
+	"category" : "hammer",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","hammer", "upgradeableWeapon","bone"],
+	"level" : 2,
+	"inventoryIcon" : "fishboneheadbasher.png",
+	//"collectablesOnPickup" : { "fu_weaponhammer" : "fishboneheadbasher" },
+	"animation" : "hammer.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "fishboneheadbasher.png"
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+			"offset" : [-2.0, 1.5]
+		}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+	"elementalType" : "poison",
 
-  "primaryAbilityType" : "hammersmash",
-  "primaryAbility" : {
-    "fireTime" : 0.9,
-    "baseDps" : 13.1
-  },
+	"primaryAbilityType" : "hammersmash",
+	"primaryAbility" : {
+		"fireTime" : 0.9,
+		"baseDps" : 13.1
+	},
 
-  "altAbilityType" : "blinkexplosion",
-  "altAbility" : { },
+	"altAbilityType" : "blinkexplosion",
+	"altAbility" : { },
 
-  "critChance" : 2,
-  "critBonus" : 2,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"critChance" : 2,
+	"critBonus" : 2,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "stunChance" : 14
+	"stunChance" : 14
 }

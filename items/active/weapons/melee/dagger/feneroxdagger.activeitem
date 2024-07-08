@@ -1,49 +1,49 @@
 {
-  "itemName" : "feneroxdagger",
-  "price" : 10,
-  "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Strange shape, but actually quite useful.
+	"itemName" : "feneroxdagger",
+	"price" : 10,
+	"maxStack" : 1,
+	"rarity" : "common",
+	"description" : "Strange shape, but actually quite useful.
 ^cyan;Hunting Weapon^reset;",
-  "shortdescription" : "Fenerox Knife",
-  "tooltipKind" : "sword2",
-  "category" : "dagger",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger", "upgradeableWeapon"],
-  "level" : 1,
-  "inventoryIcon" : "feneroxdagger.png",
-  "animation" : "daggercombo.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "feneroxdagger.png"
-  },
+	"shortdescription" : "Fenerox Knife",
+	"tooltipKind" : "sword2",
+	"category" : "dagger",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","dagger", "upgradeableWeapon"],
+	"level" : 1,
+	"inventoryIcon" : "feneroxdagger.png",
+	"animation" : "daggercombo.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "feneroxdagger.png"
+	},
 
-  "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}
-      }
-    }
-  },
+	"animationCustom" : {
+		"animatedParts" : {
+			"parts" : {
+				"blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"swoosh" : { "properties" : {"offset" : [1, 2]}}
+			}
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
 
-  "aimOffset" : -1.0,
+	"aimOffset" : -1.0,
 
-   "elementalType" : "physical",
-  "primaryAbilityType" : "daggercombo",
-  "primaryAbility" : {
-    "fireTime" : 0.5,
-    "baseDps" : 9,
-    "damageConfig" : {
-      "knockback" : 10,
-      "damageSourceKind" : "bow"
-    }
-  },
-  "critChance" : 1,
-  "critBonus" : 2,
-  "stunChance" : 50,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	 "elementalType" : "physical",
+	"primaryAbilityType" : "daggercombo",
+	"primaryAbility" : {
+		"fireTime" : 0.5,
+		"baseDps" : 9,
+		"damageConfig" : {
+			"knockback" : 10,
+			"damageSourceKind" : "bow"
+		}
+	},
+	"critChance" : 1,
+	"critBonus" : 2,
+	"stunChance" : 50,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,56 +1,56 @@
 {
-  "itemName" : "quietusspear",
-  "price" : 1000,
-  "level" : 4,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "A fantastic foe-stabber.
+	"itemName" : "quietusspear",
+	"price" : 1000,
+	"level" : 4,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "A fantastic foe-stabber.
 ^cyan;Hunting weapon^reset;",
-  "shortdescription" : "Quietus Spear",
-  "tooltipKind" : "sword2",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear","quietus", "upgradeableWeapon"],
+	"shortdescription" : "Quietus Spear",
+	"tooltipKind" : "sword2",
+	"category" : "spear",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear","quietus", "upgradeableWeapon"],
 
-  "inventoryIcon" : "quietusspear.png",
-  //"collectablesOnPickup" : { "fu_weaponspear" : "quietusspear" },
-  "animation" : "/items/active/weapons/melee/spear/spear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "quietusspear.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"inventoryIcon" : "quietusspear.png",
+	//"collectablesOnPickup" : { "fu_weaponspear" : "quietusspear" },
+	"animation" : "/items/active/weapons/melee/spear/spear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "quietusspear.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "scripts" : [],
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "spearstab",
+	"primaryAbility" : {
+		"scripts" : [],
 
-    "fireTime" : 1.04,
-    "baseDps" : 9.74,
-    "damageConfig" : {
-      "damageSourceKind" : "bow",
-      "statusEffects" : [ ],
-      "knockback" : 20
-    }
-  },
-  "altAbilityType" : "flurry",
-  "altAbility" : {
-    "damageConfig" : {
-      "damageSourceKind" : "bow"
-    }
-  },
+		"fireTime" : 1.04,
+		"baseDps" : 9.74,
+		"damageConfig" : {
+			"damageSourceKind" : "bow",
+			"statusEffects" : [ ],
+			"knockback" : 20
+		}
+	},
+	"altAbilityType" : "flurry",
+	"altAbility" : {
+		"damageConfig" : {
+			"damageSourceKind" : "bow"
+		}
+	},
 
-  "critChance" : 1,
-  "critBonus" : 16,
+	"critChance" : 1,
+	"critBonus" : 16,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

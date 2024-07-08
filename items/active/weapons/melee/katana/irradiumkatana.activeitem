@@ -1,52 +1,52 @@
 {
-  "itemName" : "irradiumkatana",
-  "price" : 1400,
-  "level" : 4,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Radioactive stabby fun. Two-handed.
+	"itemName" : "irradiumkatana",
+	"price" : 1400,
+	"level" : 4,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Radioactive stabby fun. Two-handed.
 ^cyan;Inflicts Rad-Burn^reset;
 ^yellow;5 hit combo^reset;",
-  "shortdescription" : "Irradium Katana",
-  "tooltipKind" : "sword2",
-  "category" : "katana",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","katana","daikatana", "upgradeableWeapon","irradium","radioactive"],
+	"shortdescription" : "Irradium Katana",
+	"tooltipKind" : "sword2",
+	"category" : "katana",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","katana","daikatana", "upgradeableWeapon","irradium","radioactive"],
 
-  "inventoryIcon" : "irradiumkatana.png",
-  //"collectablesOnPickup" : { "fu_weaponkatana" : "irradiumkatana" },
-  "animation" : "combokatanaglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "irradiumkatana.png",
-    "bladefullbright" : "irradiumkatanafullbright.png"
-  },
-  "animationCustom":{},
+	"inventoryIcon" : "irradiumkatana.png",
+	//"collectablesOnPickup" : { "fu_weaponkatana" : "irradiumkatana" },
+	"animation" : "combokatanaglow.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "irradiumkatana.png",
+		"bladefullbright" : "irradiumkatanafullbright.png"
+	},
+	"animationCustom":{},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "radioactive",
+	"elementalType" : "radioactive",
 
-  "primaryAbilityType" : "katanacombo2h",
-  "primaryAbility":{
-    "fireTime":0.72,
-    "baseDps":6.7,
-    "damageConfig":{
-      "knockback":20,
-      "damageSourceKind" : "radioactive",
-      "statusEffects" : [ "radiationburn" ]
-      },
-      "comboSteps":5
-    },
+	"primaryAbilityType" : "katanacombo2h",
+	"primaryAbility":{
+		"fireTime":0.72,
+		"baseDps":6.7,
+		"damageConfig":{
+			"knockback":20,
+			"damageSourceKind" : "radioactive",
+			"statusEffects" : [ "radiationburn" ]
+			},
+			"comboSteps":5
+		},
 
-  "altAbilityType" : "parrykatana",
-  "altAbility" : {
-    "parryTime" : 0.225,
-    "cooldownTime" : 0.2
-  },
-  "critChance" : 1,
-  "critBonus" : 12,
+	"altAbilityType" : "parrykatana",
+	"altAbility" : {
+		"parryTime" : 0.225,
+		"cooldownTime" : 0.2
+	},
+	"critChance" : 1,
+	"critBonus" : 12,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

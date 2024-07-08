@@ -1,42 +1,42 @@
 {
-  "itemName" : "advalloyshortsword",
-  "price" : 700,
-  "level" : 4,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Finely made.
+	"itemName" : "advalloyshortsword",
+	"price" : 700,
+	"level" : 4,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Finely made.
 ^cyan;Inflicts bleeding^reset;",
-  "shortdescription" : "Master's Shortsword",
-  "tooltipKind" : "sword2",
-  "category" : "shortsword",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword", "upgradeableWeapon"],
+	"shortdescription" : "Master's Shortsword",
+	"tooltipKind" : "sword2",
+	"category" : "shortsword",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","shortsword", "upgradeableWeapon"],
 
-  "inventoryIcon" : "advalloyshortsword.png",
-  //"collectablesOnPickup" : { "fu_weaponshortsword" : "advalloyshortsword" },
-  "animation" : "comboshortsword.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "advalloyshortsword.png"
-  },
-  "animationCustom" : {
+	"inventoryIcon" : "advalloyshortsword.png",
+	//"collectablesOnPickup" : { "fu_weaponshortsword" : "advalloyshortsword" },
+	"animation" : "comboshortsword.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "advalloyshortsword.png"
+	},
+	"animationCustom" : {
 
-  },
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	},
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
-  "primaryAbilityType" : "shortswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.63,
-    "baseDps" : 7,
-    "damageConfig" : {
-      "statusEffects" : [ "bleedingshort" ]
-    }
-  },
+	"elementalType" : "physical",
+	"primaryAbilityType" : "shortswordcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.63,
+		"baseDps" : 7,
+		"damageConfig" : {
+			"statusEffects" : [ "bleedingshort" ]
+		}
+	},
 
-  "critChance" : 2,
-  "critBonus" : 1,
+	"critChance" : 2,
+	"critBonus" : 1,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

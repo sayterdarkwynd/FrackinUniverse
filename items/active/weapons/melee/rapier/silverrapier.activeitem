@@ -1,37 +1,37 @@
 {
-  "itemName" : "silverrapier",
-  "price" : 170,
-  "level" : 2,
-  "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Pierces through any elemental defenses.",
-  "shortdescription" : "Silver Rapier",
-  "tooltipKind" : "sword2",
-  "category" : "Rapier",
-  "twoHanded" : false,
-  "itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon"],
-  "inventoryIcon" : "silverrapier.png",
-  //"collectablesOnPickup" : { "fu_weaponrapier" : "silverrapier" },
-  "animation" : "piercecombo.animation",
-  "animationParts" : {
-    "handle": "",
-    "blade" : "silverrapier.png"
-  },
-  "animationCustom" : { },
-  "critChance" : 1,
-  "critBonus" : 1,
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"itemName" : "silverrapier",
+	"price" : 170,
+	"level" : 2,
+	"maxStack" : 1,
+	"rarity" : "common",
+	"description" : "Pierces through any elemental defenses.",
+	"shortdescription" : "Silver Rapier",
+	"tooltipKind" : "sword2",
+	"category" : "Rapier",
+	"twoHanded" : false,
+	"itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon"],
+	"inventoryIcon" : "silverrapier.png",
+	//"collectablesOnPickup" : { "fu_weaponrapier" : "silverrapier" },
+	"animation" : "piercecombo.animation",
+	"animationParts" : {
+		"handle": "",
+		"blade" : "silverrapier.png"
+	},
+	"animationCustom" : { },
+	"critChance" : 1,
+	"critBonus" : 1,
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "silverweapon",
+	"elementalType" : "silverweapon",
 
-  "primaryAbilityType" : "piercecombo",
-  "primaryAbility" : {
-    "fireTime" : 0.42,
-    "baseDps" : 5.25,
-    "damageConfig" : {
-      "damageSourceKind":"silverweapon"
-    }
-  },
+	"primaryAbilityType" : "piercecombo",
+	"primaryAbility" : {
+		"fireTime" : 0.42,
+		"baseDps" : 5.25,
+		"damageConfig" : {
+			"damageSourceKind":"silverweapon"
+		}
+	},
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

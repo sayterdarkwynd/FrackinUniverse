@@ -1,65 +1,65 @@
 {
-  "itemName" : "nightarwarblade",
-  "price" : 1200,
-  "level" : 4,
-  "maxStack" : 1,
-  "rarity" : "Uncommon",
-  "description" : "Easily the heaviest and most valuable of Nightar weapons.
+	"itemName" : "nightarwarblade",
+	"price" : 1200,
+	"level" : 4,
+	"maxStack" : 1,
+	"rarity" : "Uncommon",
+	"description" : "Easily the heaviest and most valuable of Nightar weapons.
 ^green;Counts as Greataxe or Broadsword^reset;
 ^cyan;Inflicts bleeding^reset;",
-  "shortdescription" : "Nightar War Cleaver",
-  "tooltipKind" : "hammer",
-  "category" : "greataxe",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","greataxe", "upgradeableWeapon", "broadsword" ],
+	"shortdescription" : "Nightar War Cleaver",
+	"tooltipKind" : "hammer",
+	"category" : "greataxe",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","greataxe", "upgradeableWeapon", "broadsword" ],
 
-  "inventoryIcon" : "nightarwarblade.png",
-  "animation" : "/items/active/weapons/melee/greataxe/greataxe.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "nightarwarblade.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ]
-    },
-    "animatedParts" : {
-      "parts" : {
-        "blade" : { "properties" : {"offset" : [0, 1.4]}},
-        "swoosh" : { "properties" : {"offset" : [0, 2]}}
-      }
-    }
-  },
+	"inventoryIcon" : "nightarwarblade.png",
+	"animation" : "/items/active/weapons/melee/greataxe/greataxe.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "nightarwarblade.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_broadsword.ogg" ]
+		},
+		"animatedParts" : {
+			"parts" : {
+				"blade" : { "properties" : {"offset" : [0, 1.4]}},
+				"swoosh" : { "properties" : {"offset" : [0, 2]}}
+			}
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "silverweapon",
+	"elementalType" : "silverweapon",
 
-  "primaryAbilityType" : "greataxesmash",
-  "primaryAbility" : {
-    "fireTime" : 0.8,
-    "baseDps" : 13,
-    "damageConfig" : {
-    	"damageSourceKind" : "silverweapon",
-    	"statusEffects" : [ "bleedingshort" ]
-    }
-  },
+	"primaryAbilityType" : "greataxesmash",
+	"primaryAbility" : {
+		"fireTime" : 0.8,
+		"baseDps" : 13,
+		"damageConfig" : {
+			"damageSourceKind" : "silverweapon",
+			"statusEffects" : [ "bleedingshort" ]
+		}
+	},
 
-  "palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
+	"palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
 
-  "altAbilityType" : "futravelingslash",
-  "altAbility" : {
-  	"baseDamage" : 16,
-  	"elementalConfig" : {
-  		"silverweapon" : {
-  			"projectileType" : "nightarclaw"
-  		}
-  	}
-  },
+	"altAbilityType" : "futravelingslash",
+	"altAbility" : {
+		"baseDamage" : 16,
+		"elementalConfig" : {
+			"silverweapon" : {
+				"projectileType" : "nightarclaw"
+			}
+		}
+	},
 
-  "critChance" : 3,
-  "critBonus" : 5,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"critChance" : 3,
+	"critBonus" : 5,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "stunChance" : 7
+	"stunChance" : 7
 }

@@ -1,47 +1,47 @@
 {
-  "itemName" : "metallichammer",
-  "price" : 900,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Sturdy. These junk parts make a solid weapon.",
-  "shortdescription" : "Junk Hammer",
-  "tooltipKind" : "hammer",
-  "category" : "hammer",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon"],
-  "level" : 3,
-  "inventoryIcon" : "metallichammer.png",
-  //"collectablesOnPickup" : { "fu_weaponhammer" : "metallichammer" },
-  "animation" : "hammer.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "metallichammer.png"
-  },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-2.0, 1.5]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
-    }
-  },
+	"itemName" : "metallichammer",
+	"price" : 900,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "Sturdy. These junk parts make a solid weapon.",
+	"shortdescription" : "Junk Hammer",
+	"tooltipKind" : "hammer",
+	"category" : "hammer",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","hammer", "upgradeableWeapon"],
+	"level" : 3,
+	"inventoryIcon" : "metallichammer.png",
+	//"collectablesOnPickup" : { "fu_weaponhammer" : "metallichammer" },
+	"animation" : "hammer.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "metallichammer.png"
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+			"offset" : [-2.0, 1.5]
+		}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "primaryAbilityType" : "hammersmash",
-  "primaryAbility" : {
-    "fireTime" : 1.0,
-    "baseDps" : 13.5
-  },
+	"primaryAbilityType" : "hammersmash",
+	"primaryAbility" : {
+		"fireTime" : 1.0,
+		"baseDps" : 13.5
+	},
 
-  "altAbilityType" : "uppercut",
-  "altAbility" : { },
+	"altAbilityType" : "uppercut",
+	"altAbility" : { },
 
-  "critChance" : 3,
-  "critBonus" : 12,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"critChance" : 3,
+	"critBonus" : 12,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "stunChance" : 7
+	"stunChance" : 7
 }

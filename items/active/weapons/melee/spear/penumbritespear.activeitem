@@ -1,51 +1,51 @@
 {
-  "itemName" : "penumbritespear",
-  "price" : 120,
-  "level" : 3,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "The shadowy tip is great for poking.
+	"itemName" : "penumbritespear",
+	"price" : 120,
+	"level" : 3,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "The shadowy tip is great for poking.
 ^cyan;Universal Damage^reset;",
-  "shortdescription" : "Penumbral Spear",
-  "tooltipKind" : "sword2",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear","penumbrite", "upgradeableWeapon","silver"],
+	"shortdescription" : "Penumbral Spear",
+	"tooltipKind" : "sword2",
+	"category" : "spear",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear","penumbrite", "upgradeableWeapon","silver"],
 
-  "inventoryIcon" : "penumbritespear.png",
-  "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "penumbritespear.png",
-    "bladefullbright" : "penumbritespearfullbright.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"inventoryIcon" : "penumbritespear.png",
+	"animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "penumbritespear.png",
+		"bladefullbright" : "penumbritespearfullbright.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "silverweapon",
+	"elementalType" : "silverweapon",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "scripts" : [],
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "spearstab",
+	"primaryAbility" : {
+		"scripts" : [],
 
-    "fireTime" : 0.875,
-    "baseDps" : 8.65,
-    "damageConfig" : {
-      "damageSourceKind" : "silverweaponbow",
-      "knockback" : 35
-    }
-  },
-  "altAbilityType" : "barrier",
-  "altAbility" : { },
+		"fireTime" : 0.875,
+		"baseDps" : 8.65,
+		"damageConfig" : {
+			"damageSourceKind" : "silverweaponbow",
+			"knockback" : 35
+		}
+	},
+	"altAbilityType" : "barrier",
+	"altAbility" : { },
 
-  "critChance" : 1,
-  "critBonus" : 8,
+	"critChance" : 1,
+	"critBonus" : 8,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

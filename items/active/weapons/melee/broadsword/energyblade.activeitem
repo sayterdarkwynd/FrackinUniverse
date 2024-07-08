@@ -1,39 +1,39 @@
 {
-  "itemName" : "energyblade",
-  "price" : 1500,
-  "level" : 4,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "A weapon from the kingdom of Fife.",
-  "shortdescription" : "Energy Blade",
-  "tooltipKind" : "sword2",
-  "category" : "broadsword",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","energy", "upgradeableWeapon"],
-//  "learnBlueprintsOnPickup" : [ "energyblade2" ],
-  "inventoryIcon" : "energyblade.png",
-  //"collectablesOnPickup" : { "fu_weaponbroadsword" : "energyblade" },
-  "animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "energyblade.png",
-    "bladefullbright" : "energybladefullbright.png"
-  },
-  "animationCustom" : { },
+	"itemName" : "energyblade",
+	"price" : 1500,
+	"level" : 4,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "A weapon from the kingdom of Fife.",
+	"shortdescription" : "Energy Blade",
+	"tooltipKind" : "sword2",
+	"category" : "broadsword",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","broadsword","energy", "upgradeableWeapon"],
+//	"learnBlueprintsOnPickup" : [ "energyblade2" ],
+	"inventoryIcon" : "energyblade.png",
+	//"collectablesOnPickup" : { "fu_weaponbroadsword" : "energyblade" },
+	"animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "energyblade.png",
+		"bladefullbright" : "energybladefullbright.png"
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "electric",
+	"elementalType" : "electric",
 
-  "primaryAbilityType" : "broadswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.73,
-    "baseDps" : 10.9,
-    "damageSourceKind" : "electric"
-  },
+	"primaryAbilityType" : "broadswordcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.73,
+		"baseDps" : 10.9,
+		"damageSourceKind" : "electric"
+	},
 
-  "altAbilityType" : "flipslash",
-  "critChance" : 3,
-  "critBonus" : 7,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"altAbilityType" : "flipslash",
+	"critChance" : 3,
+	"critBonus" : 7,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

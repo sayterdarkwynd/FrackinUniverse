@@ -1,44 +1,44 @@
 {
-  "itemName" : "densiniumshortsword",
-  "price" : 530,
-  "level" : 6,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "Superior craftsmanship. Nearly unbreakable.
+	"itemName" : "densiniumshortsword",
+	"price" : 530,
+	"level" : 6,
+	"maxStack" : 1,
+	"rarity" : "legendary",
+	"description" : "Superior craftsmanship. Nearly unbreakable.
 ^cyan;Inflicts Electrified^reset;",
-  "shortdescription" : "Densinium Shortsword",
-  "tooltipKind" : "sword2",
-  "category" : "shortsword",
-  "twoHanded" : false,
-  "itemTags" : [ "weapon", "melee", "shortsword", "densinium", "upgradeableWeapon" ],
+	"shortdescription" : "Densinium Shortsword",
+	"tooltipKind" : "sword2",
+	"category" : "shortsword",
+	"twoHanded" : false,
+	"itemTags" : [ "weapon", "melee", "shortsword", "densinium", "upgradeableWeapon" ],
 
-  "inventoryIcon" : "densiniumshortsword.png",
-  "animation" : "comboglowshortsword.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "densiniumshortsword.png",
-    "bladefullbright" : "densiniumshortswordfullbright.png"
-  },
-  "animationCustom" : { },
+	"inventoryIcon" : "densiniumshortsword.png",
+	"animation" : "comboglowshortsword.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "densiniumshortsword.png",
+		"bladefullbright" : "densiniumshortswordfullbright.png"
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "electric",
+	"elementalType" : "electric",
 
-  "primaryAbilityType" : "shortswordcombo2",
-  "primaryAbility" : {
-    "fireTime" : 0.63,
-    "baseDps" : 6.2,
-    "damageConfig" : {
-      "damageSourceKind": "electricshortsword",
-      "statusEffects" : [ "electrified" ],
-      "knockback" : 4
-    }
-  },
+	"primaryAbilityType" : "shortswordcombo2",
+	"primaryAbility" : {
+		"fireTime" : 0.63,
+		"baseDps" : 6.2,
+		"damageConfig" : {
+			"damageSourceKind": "electricshortsword",
+			"statusEffects" : [ "electrified" ],
+			"knockback" : 4
+		}
+	},
 
-  "critChance" : 3,
-  "critBonus" : 5,
+	"critChance" : 3,
+	"critBonus" : 5,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

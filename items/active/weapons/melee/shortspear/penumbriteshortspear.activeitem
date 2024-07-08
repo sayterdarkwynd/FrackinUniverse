@@ -1,88 +1,88 @@
 {
-  "itemName" : "penumbriteshortspear",
-  "price" : 100,
-  "level" : 3,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Stab from the shadows...with shadow.
+	"itemName" : "penumbriteshortspear",
+	"price" : 100,
+	"level" : 3,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "Stab from the shadows...with shadow.
 ^cyan;Universal Damage^reset;",
-  "shortdescription" : "Penumbral Shortspear",
-  "tooltipKind" : "sword2",
-  "category" : "shortspear",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortspear", "spear", "penumbrite", "upgradeableWeapon","silver"],
+	"shortdescription" : "Penumbral Shortspear",
+	"tooltipKind" : "sword2",
+	"category" : "shortspear",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","shortspear", "spear", "penumbrite", "upgradeableWeapon","silver"],
 
-  "inventoryIcon" : "penumbriteshortspear.png",
-  "animation" : "/items/active/weapons/melee/shortspear/comboshortspearfullbright.animation",
-  "animationParts" : {
-    "handle": "",
-    "blade" : "penumbriteshortspear.png",
-    "bladefullbright" : "penumbriteshortspearfullbright.png"
-  },
-  "animationCustom" : { },
+	"inventoryIcon" : "penumbriteshortspear.png",
+	"animation" : "/items/active/weapons/melee/shortspear/comboshortspearfullbright.animation",
+	"animationParts" : {
+		"handle": "",
+		"blade" : "penumbriteshortspear.png",
+		"bladefullbright" : "penumbriteshortspearfullbright.png"
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "silverweapon",
+	"elementalType" : "silverweapon",
 
-  "aimOffset" : -1.0,
-  "muzzleOffset" : [0, 1.05],
+	"aimOffset" : -1.0,
+	"muzzleOffset" : [0, 1.05],
 
-  "fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
+	"fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
 
-  "critChance" : 1,
-  "critBonus" : 2,
+	"critChance" : 1,
+	"critBonus" : 2,
 
-  "primaryAbilityType" : "shortspearcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.625,
-    "baseDps" : 5.1,
-    "damageConfig" : {
-      "damageSourceKind" : "silverweaponbow",
-      "knockback" : 6
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : 0,
-        "twoHanded" : false,
-        "weaponOffset" : [-0.3, 0.5],
+	"primaryAbilityType" : "shortspearcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.625,
+		"baseDps" : 5.1,
+		"damageConfig" : {
+			"damageSourceKind" : "silverweaponbow",
+			"knockback" : 6
+		},
+		"stances" : {
+			"idle" : {
+				"armRotation" : -90,
+				"weaponRotation" : 0,
+				"twoHanded" : false,
+				"weaponOffset" : [-0.3, 0.5],
 
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "windup" : {
-        "hold" : true,
-        "duration" : 0.55,
-        "armRotation" : -110,
-        "weaponRotation" : 20,
-        "twoHanded" : false,
-        "weaponOffset" : [-0.3, 0.5],
+				"allowRotate" : true,
+				"allowFlip" : true
+			},
+			"windup" : {
+				"hold" : true,
+				"duration" : 0.55,
+				"armRotation" : -110,
+				"weaponRotation" : 20,
+				"twoHanded" : false,
+				"weaponOffset" : [-0.3, 0.5],
 
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "fire" : {
-        "duration" : 0.3,
-        "armRotation" : -20,
-        "weaponRotation" : -70,
-        "twoHanded" : false,
-        "weaponOffset" : [0.3, 2.5],
+				"allowRotate" : true,
+				"allowFlip" : true
+			},
+			"fire" : {
+				"duration" : 0.3,
+				"armRotation" : -20,
+				"weaponRotation" : -70,
+				"twoHanded" : false,
+				"weaponOffset" : [0.3, 2.5],
 
-        "allowRotate" : true,
-        "allowFlip" : false
-      },
-      "hold" : {
-        "armRotation" : -30,
-        "weaponRotation" : -60,
-        "twoHanded" : false,
-        "weaponOffset" : [-0.3, 2.0],
+				"allowRotate" : true,
+				"allowFlip" : false
+			},
+			"hold" : {
+				"armRotation" : -30,
+				"weaponRotation" : -60,
+				"twoHanded" : false,
+				"weaponOffset" : [-0.3, 2.0],
 
-        "allowRotate" : true,
-        "allowFlip" : true
-      }
-    }
-  },
+				"allowRotate" : true,
+				"allowFlip" : true
+			}
+		}
+	},
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

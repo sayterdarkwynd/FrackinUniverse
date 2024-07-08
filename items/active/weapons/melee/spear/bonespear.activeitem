@@ -1,53 +1,53 @@
 {
-  "itemName" : "fubonespear",
-  "price" : 10,
-  "level" : 1,
-  "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Primitive hunting weapon.
+	"itemName" : "fubonespear",
+	"price" : 10,
+	"level" : 1,
+	"maxStack" : 1,
+	"rarity" : "common",
+	"description" : "Primitive hunting weapon.
 ^cyan;Hunting weapon, Floran^reset;",
-  "shortdescription" : "Bone Spear",
-  "tooltipKind" : "sword",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear", "upgradeableWeapon","bone", "floran"],
+	"shortdescription" : "Bone Spear",
+	"tooltipKind" : "sword",
+	"category" : "spear",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear", "upgradeableWeapon","bone", "floran"],
 
-  "inventoryIcon" : "bonespear.png",
-  //"collectablesOnPickup" : { "fu_weaponspear" : "fubonespear" },
-  "animation" : "/items/active/weapons/melee/spear/spear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "bonespear.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"inventoryIcon" : "bonespear.png",
+	//"collectablesOnPickup" : { "fu_weaponspear" : "fubonespear" },
+	"animation" : "/items/active/weapons/melee/spear/spear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "bonespear.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : [
-  "/items/active/weapons/melee/meleeweapon.lua"
-  ],
+	"scripts" : [
+	"/items/active/weapons/melee/meleeweapon.lua"
+	],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "scripts" : [],
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "spearstab",
+	"primaryAbility" : {
+		"scripts" : [],
 
-    "fireTime" : 0.9,
-    "baseDps" : 9.45,
-    "damageConfig" : {
-      "damageSourceKind" : "bow",
-      "statusEffects" : [ ],
-      "knockback" : 25
-    }
-  },
-  "altAbilityType" : "huntspearstab",
-  "altAbility" : { },
+		"fireTime" : 0.9,
+		"baseDps" : 9.45,
+		"damageConfig" : {
+			"damageSourceKind" : "bow",
+			"statusEffects" : [ ],
+			"knockback" : 25
+		}
+	},
+	"altAbilityType" : "huntspearstab",
+	"altAbility" : { },
 
-  "critChance" : 1,
-  "critBonus" : 5,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"critChance" : 1,
+	"critBonus" : 5,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

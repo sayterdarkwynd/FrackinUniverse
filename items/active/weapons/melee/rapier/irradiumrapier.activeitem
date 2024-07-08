@@ -1,42 +1,42 @@
 {
-  "itemName" : "irradiumrapier",
-  "price" : 400,
-  "level" : 4,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "A swift and dangerous radioactive blade.
+	"itemName" : "irradiumrapier",
+	"price" : 400,
+	"level" : 4,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "A swift and dangerous radioactive blade.
 ^cyan;Inflicts Rad-Burn^reset;",
-  "shortdescription" : "Irradium Rapier",
-  "tooltipKind" : "sword2",
-  "category" : "Rapier",
-  "twoHanded" : false,
-  "itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon","irradium" ,"radioactive"],
-  "handGrip" : "wrap",
-  "inventoryIcon" : "irradiumrapier.png",
-  //"collectablesOnPickup" : { "fu_weaponrapier" : "irradiumrapier" },
+	"shortdescription" : "Irradium Rapier",
+	"tooltipKind" : "sword2",
+	"category" : "Rapier",
+	"twoHanded" : false,
+	"itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon","irradium" ,"radioactive"],
+	"handGrip" : "wrap",
+	"inventoryIcon" : "irradiumrapier.png",
+	//"collectablesOnPickup" : { "fu_weaponrapier" : "irradiumrapier" },
 
-  "animation" : "piercecomboglow.animation",
-  "animationParts" : {
-    "handle": "",
-    "blade" : "irradiumrapier.png",
-    "bladefullbright" : "irradiumrapierfullbright.png"
-  },
-  "animationCustom" : { },
-  "critChance" : 1,
-  "critBonus" : 1,
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"animation" : "piercecomboglow.animation",
+	"animationParts" : {
+		"handle": "",
+		"blade" : "irradiumrapier.png",
+		"bladefullbright" : "irradiumrapierfullbright.png"
+	},
+	"animationCustom" : { },
+	"critChance" : 1,
+	"critBonus" : 1,
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "radioactive",
+	"elementalType" : "radioactive",
 
-  "primaryAbilityType" : "piercecombo",
-  "primaryAbility" : {
-    "fireTime" : 0.4,
-    "baseDps" : 6,
-    "damageConfig" : {
-      "damageSourceKind":"radioactive",
-      "statusEffects":["radiationburn"]
-    }
-  },
+	"primaryAbilityType" : "piercecombo",
+	"primaryAbility" : {
+		"fireTime" : 0.4,
+		"baseDps" : 6,
+		"damageConfig" : {
+			"damageSourceKind":"radioactive",
+			"statusEffects":["radiationburn"]
+		}
+	},
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

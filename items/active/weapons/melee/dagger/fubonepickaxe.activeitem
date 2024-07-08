@@ -1,47 +1,47 @@
 {
-  "itemName" : "fubonepickaxe",
-  "price" : 640,
-  "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "Primitive weaponry.",
-  "shortdescription" : "Curved Bone Blade",
-  "tooltipKind" : "sword",
-  "category" : "dagger",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger", "upgradeableWeapon","bone"],
-  "level" : 1,
-  "inventoryIcon" : "bonepickaxe.png",
-  //"collectablesOnPickup" : { "fu_weapondagger" : "fubonepickaxe" },
-  "animation" : "daggercombo.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "bonepickaxe.png"
-  },
+	"itemName" : "fubonepickaxe",
+	"price" : 640,
+	"maxStack" : 1,
+	"rarity" : "Common",
+	"description" : "Primitive weaponry.",
+	"shortdescription" : "Curved Bone Blade",
+	"tooltipKind" : "sword",
+	"category" : "dagger",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","dagger", "upgradeableWeapon","bone"],
+	"level" : 1,
+	"inventoryIcon" : "bonepickaxe.png",
+	//"collectablesOnPickup" : { "fu_weapondagger" : "fubonepickaxe" },
+	"animation" : "daggercombo.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "bonepickaxe.png"
+	},
 
-  "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}
-      }
-    }
-  },
+	"animationCustom" : {
+		"animatedParts" : {
+			"parts" : {
+				"blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"swoosh" : { "properties" : {"offset" : [1, 2]}}
+			}
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "daggercombo",
-  "primaryAbility" : {
-    "fireTime" : 0.5,
-    "baseDps" : 9,
-    "damageConfig" : {
-      "knockback" : 10
-    }
-  },
-  "critChance" : 1,
-  "critBonus" : 2,
-  "stunChance" : 50,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "daggercombo",
+	"primaryAbility" : {
+		"fireTime" : 0.5,
+		"baseDps" : 9,
+		"damageConfig" : {
+			"knockback" : 10
+		}
+	},
+	"critChance" : 1,
+	"critBonus" : 2,
+	"stunChance" : 50,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,53 +1,53 @@
 {
-  "itemName" : "isogenhammer",
-  "price" : 1200,
-  "maxStack" : 1,
-  "level" : 6,
-  "rarity" : "legendary",
-  "description" : "Clearly a tool of friendship and tolerance.
+	"itemName" : "isogenhammer",
+	"price" : 1200,
+	"maxStack" : 1,
+	"level" : 6,
+	"rarity" : "legendary",
+	"description" : "Clearly a tool of friendship and tolerance.
 ^cyan;Inflicts Freezing^reset;",
-  "shortdescription" : "Isogen Sledge",
-  "tooltipKind" : "hammer",
-  "category" : "hammer",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer","isogen", "upgradeableWeapon","ice"],
-  "inventoryIcon" : "isogenhammer.png",
-  //"collectablesOnPickup" : { "fu_weaponhammer" : "isogenhammer" },
-  "animation" : "hammerglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "isogenhammer.png",
-    "bladefullbright" : "isogenhammerfullbright.png"
-  },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-2.0, 1.5]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
-    }
-  },
+	"shortdescription" : "Isogen Sledge",
+	"tooltipKind" : "hammer",
+	"category" : "hammer",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","hammer","isogen", "upgradeableWeapon","ice"],
+	"inventoryIcon" : "isogenhammer.png",
+	//"collectablesOnPickup" : { "fu_weaponhammer" : "isogenhammer" },
+	"animation" : "hammerglow.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "isogenhammer.png",
+		"bladefullbright" : "isogenhammerfullbright.png"
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+			"offset" : [-2.0, 1.5]
+		}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+	"elementalType" : "ice",
 
-  "primaryAbilityType" : "hammersmash",
-  "primaryAbility" : {
-    "fireTime" : 0.9,
-    "baseDps" : 11.5,
-    "damageConfig" : {
-      "damageSourceKind" : "ice",
-      "statusEffects" : [ "freezefu" ]
-    }
-  },
+	"primaryAbilityType" : "hammersmash",
+	"primaryAbility" : {
+		"fireTime" : 0.9,
+		"baseDps" : 11.5,
+		"damageConfig" : {
+			"damageSourceKind" : "ice",
+			"statusEffects" : [ "freezefu" ]
+		}
+	},
 
-  "altAbilityType" : "fugroundslamice",
-  "altAbility" : { },
+	"altAbilityType" : "fugroundslamice",
+	"altAbility" : { },
 
-  "critChance" : 4,
-  "critBonus" : 5,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"critChance" : 4,
+	"critBonus" : 5,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "stunChance" : 7
+	"stunChance" : 7
 }

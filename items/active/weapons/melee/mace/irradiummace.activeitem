@@ -1,42 +1,42 @@
 {
-  "itemName" : "irradiummace",
-  "price" : 200,
-  "level" : 4,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Radiation-laced for extra merriment.
+	"itemName" : "irradiummace",
+	"price" : 200,
+	"level" : 4,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Radiation-laced for extra merriment.
 ^cyan;Inflicts Rad-Burn^reset;",
-  "shortdescription" : "Irradium Mace",
-  "tooltipKind" : "hammer",
-  "category" : "mace",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon","irradium","radioactive"],
+	"shortdescription" : "Irradium Mace",
+	"tooltipKind" : "hammer",
+	"category" : "mace",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","mace", "upgradeableWeapon","irradium","radioactive"],
 
-  "inventoryIcon" : "irradiummace_gezbo.png",
-  //"collectablesOnPickup" : { "fu_weaponmace" : "irradiummace" },
-  "animation" : "combomace.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "irradiummace_gezbo.png"
-  },
-  "animationCustom":{},
+	"inventoryIcon" : "irradiummace_gezbo.png",
+	//"collectablesOnPickup" : { "fu_weaponmace" : "irradiummace" },
+	"animation" : "combomace.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "irradiummace_gezbo.png"
+	},
+	"animationCustom":{},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "radioactive",
+	"elementalType" : "radioactive",
 
-  "primaryAbilityType" : "macecombo",
-  "primaryAbility":{
-    "fireTime":0.97,
-    "baseDps":7.44,
-    "damageConfig" : {
-      "damageSourceKind" : "radioactivehammer",
-      "statusEffects" : [ "radiationburn" ]
-    }
-  },
-  "critChance" : 1,
-  "critBonus" : 5,
-  "stunChance" : 80,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"primaryAbilityType" : "macecombo",
+	"primaryAbility":{
+		"fireTime":0.97,
+		"baseDps":7.44,
+		"damageConfig" : {
+			"damageSourceKind" : "radioactivehammer",
+			"statusEffects" : [ "radiationburn" ]
+		}
+	},
+	"critChance" : 1,
+	"critBonus" : 5,
+	"stunChance" : 80,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

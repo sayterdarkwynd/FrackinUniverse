@@ -1,42 +1,42 @@
 {
-  "itemName" : "phaseblade",
-  "price" : 800,
-  "level" : 7,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "Shiny and perfect.
+	"itemName" : "phaseblade",
+	"price" : 800,
+	"level" : 7,
+	"maxStack" : 1,
+	"rarity" : "legendary",
+	"description" : "Shiny and perfect.
 ^cyan;Inflicts Bleeding^reset;",
-  "shortdescription" : "Phase Blade",
-  "tooltipKind" : "sword2",
-  "category" : "broadsword",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword", "phase", "upgradeableWeapon"],
-  //"collectablesOnPickup" : { "fu_weaponbroadsword" : "phaseblade" },
-  "inventoryIcon" : "phaseblade.png",
+	"shortdescription" : "Phase Blade",
+	"tooltipKind" : "sword2",
+	"category" : "broadsword",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","broadsword", "phase", "upgradeableWeapon"],
+	//"collectablesOnPickup" : { "fu_weaponbroadsword" : "phaseblade" },
+	"inventoryIcon" : "phaseblade.png",
 
-  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "phaseblade.png"
-  },
-  "animationCustom" : { },
+	"animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "phaseblade.png"
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "cosmic",
+	"elementalType" : "cosmic",
 
-  "primaryAbilityType" : "broadswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.9,
-    "baseDps" : 12.67,
-    "damageConfig" : {
-      "statusEffects" : [ "bleedingshort" ]
-    }
-  },
+	"primaryAbilityType" : "broadswordcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.9,
+		"baseDps" : 12.67,
+		"damageConfig" : {
+			"statusEffects" : [ "bleedingshort" ]
+		}
+	},
 
-  "altAbilityType" : "phasecharge",
+	"altAbilityType" : "phasecharge",
 
-  "critChance" : 4,
-  "critBonus" : 12,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"critChance" : 4,
+	"critBonus" : 12,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

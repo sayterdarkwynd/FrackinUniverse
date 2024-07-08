@@ -1,45 +1,45 @@
 {
-  "itemName" : "elderblade",
-  "price" : 1500,
-  "level" : 7,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "^#a5ff00;Looking at this blade causes dizziness, for it endlessly undulates.^reset;",
-  "shortdescription" : "^#a5ff00;Elder Blade^reset;",
-  "tooltipKind" : "swordelder",
-  "category" : "shortsword",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword","elder", "upgradeableWeapon","shadow"],
+	"itemName" : "elderblade",
+	"price" : 1500,
+	"level" : 7,
+	"maxStack" : 1,
+	"rarity" : "legendary",
+	"description" : "^#a5ff00;Looking at this blade causes dizziness, for it endlessly undulates.^reset;",
+	"shortdescription" : "^#a5ff00;Elder Blade^reset;",
+	"tooltipKind" : "swordelder",
+	"category" : "shortsword",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","shortsword","elder", "upgradeableWeapon","shadow"],
 
-  "inventoryIcon" : "elderblade.png",
-  //"collectablesOnPickup" : { "fu_weaponshortsword" : "elderblade" },
-  "animation" : "comboeldershortsword.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "elderblade.png",
-    "bladefullbright" : "elderbladefullbright.png"
-  },
+	"inventoryIcon" : "elderblade.png",
+	//"collectablesOnPickup" : { "fu_weaponshortsword" : "elderblade" },
+	"animation" : "comboeldershortsword.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "elderblade.png",
+		"bladefullbright" : "elderbladefullbright.png"
+	},
 
-  "animationCustom" : { },
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "shadow",
+	"elementalType" : "shadow",
 
-  "primaryAbilityType" : "shortswordcombo2",
-  "primaryAbility" : {
-    "fireTime" : 0.63,
-    "baseDps" : 7.6,
-    "damageConfig" : {
-      "damageSourceKind" : "shadowshortsword",
-      "statusEffects" : [ "insanity" ],
-      "knockback" : 10,
-      "knockbackMode" : "facing",
-      "timeoutGroup" : "primary"
-    }
-  },
-  "critChance" : 4,
-  "critBonus" : 4,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"primaryAbilityType" : "shortswordcombo2",
+	"primaryAbility" : {
+		"fireTime" : 0.63,
+		"baseDps" : 7.6,
+		"damageConfig" : {
+			"damageSourceKind" : "shadowshortsword",
+			"statusEffects" : [ "insanity" ],
+			"knockback" : 10,
+			"knockbackMode" : "facing",
+			"timeoutGroup" : "primary"
+		}
+	},
+	"critChance" : 4,
+	"critBonus" : 4,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

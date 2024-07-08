@@ -1,50 +1,50 @@
 {
-  "itemName" : "kirhosispear",
-  "price" : 200,
-  "level" : 3,
-  "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Used to burn through ship hulls for deep-space boarding.
+	"itemName" : "kirhosispear",
+	"price" : 200,
+	"level" : 3,
+	"maxStack" : 1,
+	"rarity" : "common",
+	"description" : "Used to burn through ship hulls for deep-space boarding.
 ^cyan;Hunting weapon^reset;",
-  "shortdescription" : "Kirhosi Boarding Pike",
-  "tooltipKind" : "swordunique",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear", "upgradeableWeapon","shovel"],
+	"shortdescription" : "Kirhosi Boarding Pike",
+	"tooltipKind" : "swordunique",
+	"category" : "spear",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear", "upgradeableWeapon","shovel"],
 
-  "inventoryIcon" : "kirhosispear.png",
-  "animation" : "/items/active/weapons/melee/spear/spear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "kirhosispear.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"inventoryIcon" : "kirhosispear.png",
+	"animation" : "/items/active/weapons/melee/spear/spear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "kirhosispear.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "fire",
+	"elementalType" : "fire",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "scripts" : [],
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "spearstab",
+	"primaryAbility" : {
+		"scripts" : [],
 
-    "fireTime" : 0.7,
-    "baseDps" : 9.75,
-    "damageConfig" : {
-      "damageSourceKind" : "bow",
-      "statusEffects" : [ "bleedingshort" ],
-      "knockback" : 20
-    }
-  },
-  "altAbilityType" : "rocketspearwhite",
+		"fireTime" : 0.7,
+		"baseDps" : 9.75,
+		"damageConfig" : {
+			"damageSourceKind" : "bow",
+			"statusEffects" : [ "bleedingshort" ],
+			"knockback" : 20
+		}
+	},
+	"altAbilityType" : "rocketspearwhite",
 
-  "critChance" : 2,
-  "critBonus" : 7,
+	"critChance" : 2,
+	"critBonus" : 7,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

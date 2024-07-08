@@ -1,68 +1,68 @@
 {
-  "itemName" : "tristab",
-  "price" : 22000,
-  "level" : 5,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "A fantastic foe-stabber.
+	"itemName" : "tristab",
+	"price" : 22000,
+	"level" : 5,
+	"maxStack" : 1,
+	"rarity" : "legendary",
+	"description" : "A fantastic foe-stabber.
 ^cyan;Hunting weapon^reset;",
-  "shortdescription" : "Trimark",
-  "tooltipKind" : "swordunique",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear","quietus", "upgradeableWeapon"],
+	"shortdescription" : "Trimark",
+	"tooltipKind" : "swordunique",
+	"category" : "spear",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear","quietus", "upgradeableWeapon"],
 
-  "emitters" : [ "ancientenergytrail", "barrierelectric" ],
+	"emitters" : [ "ancientenergytrail", "barrierelectric" ],
 
-  "inventoryIcon" : "tristab.png",
-  //"collectablesOnPickup" : { "fu_weaponspear" : "tristab" },
-  "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "tristab.png",
-    "bladefullbright" : "tristabfullbright.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ],
-      "fire2" : [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ],
-      "fire3" : [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ]
-    }
-  },
+	"inventoryIcon" : "tristab.png",
+	//"collectablesOnPickup" : { "fu_weaponspear" : "tristab" },
+	"animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "tristab.png",
+		"bladefullbright" : "tristabfullbright.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ],
+			"fire2" : [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ],
+			"fire3" : [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "electric",
+	"elementalType" : "electric",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "scripts" : [],
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "spearstab",
+	"primaryAbility" : {
+		"scripts" : [],
 
-    "fireTime" : 0.9,
-    "baseDps" : 12.84,
-    "damageConfig" : {
-      "damageSourceKind" : "electricbow",
-      "statusEffects" : [ "bleedinglong" ],
-      "knockback" : 30
-    }
-  },
+		"fireTime" : 0.9,
+		"baseDps" : 12.84,
+		"damageConfig" : {
+			"damageSourceKind" : "electricbow",
+			"statusEffects" : [ "bleedinglong" ],
+			"knockback" : 30
+		}
+	},
 
-  "altAbilityType" : "rocketspear",
-  "altAbility" : {
-    "name" : "Cosmic Blast",
-    "statusEffects" : [ "bleedinglong" ],
-    "baseDps" : 12,
-    "cooldownTime" : 0.2,
-    "energyUsage" : 75,
-    "fireTime" : 1,
-    "inaccuracy" : 0,
-    "boostSpeed" : 120,
-    "boostForce" : 50
-  },
+	"altAbilityType" : "rocketspear",
+	"altAbility" : {
+		"name" : "Cosmic Blast",
+		"statusEffects" : [ "bleedinglong" ],
+		"baseDps" : 12,
+		"cooldownTime" : 0.2,
+		"energyUsage" : 75,
+		"fireTime" : 1,
+		"inaccuracy" : 0,
+		"boostSpeed" : 120,
+		"boostForce" : 50
+	},
 
-  "critChance" : 3,
-  "critBonus" : 12,
+	"critChance" : 3,
+	"critBonus" : 12,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

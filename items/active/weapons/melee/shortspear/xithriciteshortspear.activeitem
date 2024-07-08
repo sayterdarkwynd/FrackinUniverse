@@ -1,90 +1,90 @@
 {
-  "itemName" : "xithriciteshortspear",
-  "price" : 600,
-  "level" : 6,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "Rend and stab with cosmic potence.
+	"itemName" : "xithriciteshortspear",
+	"price" : 600,
+	"level" : 6,
+	"maxStack" : 1,
+	"rarity" : "legendary",
+	"description" : "Rend and stab with cosmic potence.
 ^cyan;Hunting weapon^reset;",
-  "shortdescription" : "Xithricite Shortspear",
-  "tooltipKind" : "sword2",
-  "category" : "shortspear",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortspear", "spear", "xithricite", "upgradeableWeapon"],
+	"shortdescription" : "Xithricite Shortspear",
+	"tooltipKind" : "sword2",
+	"category" : "shortspear",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","shortspear", "spear", "xithricite", "upgradeableWeapon"],
 
-  "inventoryIcon" : "xithriciteshortspear.png",
-  "animation" : "/items/active/weapons/melee/shortspear/comboshortspearfullbright.animation",
-  "animationParts" : {
-    "handle": "",
-    "blade" : "xithriciteshortspear.png",
-    "bladefullbright" : "xithriciteshortspearfullbright.png"
-  },
-  "animationCustom" : { },
+	"inventoryIcon" : "xithriciteshortspear.png",
+	"animation" : "/items/active/weapons/melee/shortspear/comboshortspearfullbright.animation",
+	"animationParts" : {
+		"handle": "",
+		"blade" : "xithriciteshortspear.png",
+		"bladefullbright" : "xithriciteshortspearfullbright.png"
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "cosmic",
+	"elementalType" : "cosmic",
 
-  "aimOffset" : -1.0,
-  "muzzleOffset" : [0, 1.05],
+	"aimOffset" : -1.0,
+	"muzzleOffset" : [0, 1.05],
 
-  "fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
+	"fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
 
-  "critChance" : 1,
-  "critBonus" : 2,
+	"critChance" : 1,
+	"critBonus" : 2,
 
-  "primaryAbilityType" : "shortspearcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.625,
-    "baseDps" : 6.1,
-    "damageConfig" : {
-      "statusEffects" : [ "defenseboostneg20" ],
-      "knockback" : 6,
-      "knockbackMode" : "facing",
-       "damageSourceKind" : "cosmicbow"
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : 0,
-        "twoHanded" : false,
-        "weaponOffset" : [-0.3, 0.5],
+	"primaryAbilityType" : "shortspearcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.625,
+		"baseDps" : 6.1,
+		"damageConfig" : {
+			"statusEffects" : [ "defenseboostneg20" ],
+			"knockback" : 6,
+			"knockbackMode" : "facing",
+			 "damageSourceKind" : "cosmicbow"
+		},
+		"stances" : {
+			"idle" : {
+				"armRotation" : -90,
+				"weaponRotation" : 0,
+				"twoHanded" : false,
+				"weaponOffset" : [-0.3, 0.5],
 
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "windup" : {
-        "hold" : true,
-        "duration" : 0.55,
-        "armRotation" : -110,
-        "weaponRotation" : 20,
-        "twoHanded" : false,
-        "weaponOffset" : [-0.3, 0.5],
+				"allowRotate" : true,
+				"allowFlip" : true
+			},
+			"windup" : {
+				"hold" : true,
+				"duration" : 0.55,
+				"armRotation" : -110,
+				"weaponRotation" : 20,
+				"twoHanded" : false,
+				"weaponOffset" : [-0.3, 0.5],
 
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "fire" : {
-        "duration" : 0.3,
-        "armRotation" : -20,
-        "weaponRotation" : -70,
-        "twoHanded" : false,
-        "weaponOffset" : [0.3, 2.5],
+				"allowRotate" : true,
+				"allowFlip" : true
+			},
+			"fire" : {
+				"duration" : 0.3,
+				"armRotation" : -20,
+				"weaponRotation" : -70,
+				"twoHanded" : false,
+				"weaponOffset" : [0.3, 2.5],
 
-        "allowRotate" : true,
-        "allowFlip" : false
-      },
-      "hold" : {
-        "armRotation" : -30,
-        "weaponRotation" : -60,
-        "twoHanded" : false,
-        "weaponOffset" : [-0.3, 2.0],
+				"allowRotate" : true,
+				"allowFlip" : false
+			},
+			"hold" : {
+				"armRotation" : -30,
+				"weaponRotation" : -60,
+				"twoHanded" : false,
+				"weaponOffset" : [-0.3, 2.0],
 
-        "allowRotate" : true,
-        "allowFlip" : true
-      }
-    }
-  },
+				"allowRotate" : true,
+				"allowFlip" : true
+			}
+		}
+	},
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

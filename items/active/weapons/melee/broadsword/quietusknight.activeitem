@@ -1,81 +1,81 @@
 {
-  "itemName" : "quietusknight",
-  "price" : 1500,
-  "level" : 4,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Heavy-duty quietus weapon.",
-  "shortdescription" : "Knight Blade",
-  "tooltipKind" : "sword2",
-  "category" : "broadsword",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","quietus", "upgradeableWeapon"],
+	"itemName" : "quietusknight",
+	"price" : 1500,
+	"level" : 4,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Heavy-duty quietus weapon.",
+	"shortdescription" : "Knight Blade",
+	"tooltipKind" : "sword2",
+	"category" : "broadsword",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","broadsword","quietus", "upgradeableWeapon"],
 
-  "inventoryIcon" : "quietusknight.png",
-  //"collectablesOnPickup" : { "fu_weaponbroadsword" : "quietusknight" },
-  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "quietusknight.png"
-  },
-  "animationCustom" : { },
+	"inventoryIcon" : "quietusknight.png",
+	//"collectablesOnPickup" : { "fu_weaponbroadsword" : "quietusknight" },
+	"animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "quietusknight.png"
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+	"elementalType" : "poison",
 
-  "primaryAbilityType" : "broadswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.82,
-    "baseDps" : 11.12,
-    "stances" : {
-      "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : -10,
-        "aimAngle" : 0,
-        "allowRotate" : false,
-        "allowFlip" : true,
-        "weaponOffset":[0,0.8]
-      },
-      "windup" : {
-        "duration" : 0.1,
-        "armRotation" : 90,
-        "weaponRotation" : -10,
-        "twoHanded" : true,
-        "aimAngle" : 0,
+	"primaryAbilityType" : "broadswordcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.82,
+		"baseDps" : 11.12,
+		"stances" : {
+			"idle" : {
+				"armRotation" : -90,
+				"weaponRotation" : -10,
+				"aimAngle" : 0,
+				"allowRotate" : false,
+				"allowFlip" : true,
+				"weaponOffset":[0,0.8]
+			},
+			"windup" : {
+				"duration" : 0.1,
+				"armRotation" : 90,
+				"weaponRotation" : -10,
+				"twoHanded" : true,
+				"aimAngle" : 0,
 
-        "allowRotate" : false,
-        "allowFlip" : true,
-        "weaponOffset":[0,0.8]
-      },
-      "preslash" : {
-        "duration" : 0.025,
-        "armRotation" : 55,
-        "weaponRotation" : -45,
-        "twoHanded" : true,
-        "aimAngle" : 0,
+				"allowRotate" : false,
+				"allowFlip" : true,
+				"weaponOffset":[0,0.8]
+			},
+			"preslash" : {
+				"duration" : 0.025,
+				"armRotation" : 55,
+				"weaponRotation" : -45,
+				"twoHanded" : true,
+				"aimAngle" : 0,
 
-        "allowRotate" : false,
-        "allowFlip" : false,
-        "weaponOffset":[0,0.8]
-      },
-      "fire" : {
-        "duration" : 0.4,
-        "armRotation" : -45,
-        "weaponRotation" : -55,
-        "twoHanded" : true,
-        "aimAngle" : 0,
+				"allowRotate" : false,
+				"allowFlip" : false,
+				"weaponOffset":[0,0.8]
+			},
+			"fire" : {
+				"duration" : 0.4,
+				"armRotation" : -45,
+				"weaponRotation" : -55,
+				"twoHanded" : true,
+				"aimAngle" : 0,
 
-        "allowRotate" : false,
-        "allowFlip" : false,
-        "weaponOffset":[0,0.8]
-      }
-    }
-  },
+				"allowRotate" : false,
+				"allowFlip" : false,
+				"weaponOffset":[0,0.8]
+			}
+		}
+	},
 
-  "altAbilityType" : "flamethrowersword",
-  "altAbility" : {"name" : "Poison Spout"},
-  "critChance" : 1,
-  "critBonus" : 15,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"altAbilityType" : "flamethrowersword",
+	"altAbility" : {"name" : "Poison Spout"},
+	"critChance" : 1,
+	"critBonus" : 15,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

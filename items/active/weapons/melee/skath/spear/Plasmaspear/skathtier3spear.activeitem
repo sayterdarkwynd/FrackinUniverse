@@ -1,47 +1,47 @@
 {
-  "itemName" : "skathtier3spear",
-  "price" : 1250,
-  "level" : 6,
-  "maxStack" : 1,
-  "rarity" : "Legendary",
-  "description" : "A powerful Plasma polearm forged in Skathi style.",
-  "shortdescription" : "Skath Plasmaspear",
-  "tooltipKind" : "sword2",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear","plasma","upgradeableWeapon"],
+	"itemName" : "skathtier3spear",
+	"price" : 1250,
+	"level" : 6,
+	"maxStack" : 1,
+	"rarity" : "Legendary",
+	"description" : "A powerful Plasma polearm forged in Skathi style.",
+	"shortdescription" : "Skath Plasmaspear",
+	"tooltipKind" : "sword2",
+	"category" : "spear",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear","plasma","upgradeableWeapon"],
 
-  "inventoryIcon" : "skathtier3spearicon.png",
-  "emitters" : [ "barrierelectric" ],
-  "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "skathtier3spear.png",
-    "bladefullbright" : "skathtier3spearfullbright.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/mech_energysword_swing1.ogg" ],
-      "fire2" : ["/sfx/melee/mech_energysword_swing2.ogg"],
-      "fire3" : [ "/sfx/melee/mech_energysword_swing3.ogg"],
-      "crit" : [ "/sfx/melee/energywhip_impact3.ogg" ]
-    }
-  },
+	"inventoryIcon" : "skathtier3spearicon.png",
+	"emitters" : [ "barrierelectric" ],
+	"animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "skathtier3spear.png",
+		"bladefullbright" : "skathtier3spearfullbright.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/mech_energysword_swing1.ogg" ],
+			"fire2" : ["/sfx/melee/mech_energysword_swing2.ogg"],
+			"fire3" : [ "/sfx/melee/mech_energysword_swing3.ogg"],
+			"crit" : [ "/sfx/melee/energywhip_impact3.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
-  "aimOffset" : -1.0,
+	"elementalType" : "physical",
+	"aimOffset" : -1.0,
 
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "fireTime" : 0.95,
-    "baseDps" : 11.5,
-    "damageConfig" : {"knockback" : 20}
-  },
+	"primaryAbilityType" : "spearstab",
+	"primaryAbility" : {
+		"fireTime" : 0.95,
+		"baseDps" : 11.5,
+		"damageConfig" : {"knockback" : 20}
+	},
 
-  "altAbilityType" : "drillcharge",
-  "critChance" : 8,
-  "critBonus" : 8,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"altAbilityType" : "drillcharge",
+	"critChance" : 8,
+	"critBonus" : 8,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
