@@ -6,6 +6,8 @@ function init()
 
   self.defaultOnAnimation = config.getParameter("defaultOnAnimation","other")
   self.defaultOffAnimation = config.getParameter("defaultOffAnimation","off")
+
+  liquidLib.init()
 end
 
 -- Compares the stored object's 'liquid' field against the sampled liquid's name.
