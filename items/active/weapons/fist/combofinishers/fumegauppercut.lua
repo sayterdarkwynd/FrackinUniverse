@@ -59,7 +59,16 @@ function Uppercut:fire()
 
 	status.addEphemeralEffect("invulnerable", self.stances.fire.duration + 0.2)
 	local effectList=util.mergeTable(self.damageConfigMerged.statusEffects,{"bleedingshort"})
-	local uppercutPower = { power = 0.25, timeToLive = 0.05, damageSourceKind = self.damageConfigMerged.damageSourceKind, piercing = true, statusEffects=effectList }
+	--local uppercutPower = { power = 0.25, timeToLive = 0.05, damageSourceKind = self.damageConfigMerged.damageSourceKind, piercing = true, statusEffects=effectList }
+	local uppercutPower = {
+		powerMultiplier = activeItem.ownerPowerMultiplier(),
+		power = self:damageAmount(),
+		timeToLive = 0.05,
+		damageSourceKind = self.damageConfigMerged.damageSourceKind,
+		speed = 120,
+		piercing = true,
+		statusEffects=effectList
+	}
 	world.spawnProjectile("uppercutspecial", mcontroller.position(), activeItem.ownerEntityId(), {0, 1}, true, uppercutPower)
 
 	util.wait(self.stances.fire.duration, function()
@@ -76,4 +85,8 @@ end
 
 function Uppercut:uninit(unloaded)
 	self.weapon:setDamage()
+end
+
+function Uppercut:damageAmount()
+	return (self.baseDamage or self.damageConfigMerged.baseDamage) * config.getParameter("damageLevelMultiplier")
 end
