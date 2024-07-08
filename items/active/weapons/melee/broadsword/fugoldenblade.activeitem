@@ -4,7 +4,8 @@
 	"level" : 5,
 	"maxStack" : 1,
 	"rarity" : "rare",
-	"description" : "Impossible. Weaponized honey.",
+	"description" : "Impossible. Weaponized honey.
+Normal Strikes deal ^red;Physical Damage^reset; and inflict ^red;Bee Stings^reset; and ^orange;Burning^reset;",
 	"shortdescription" : "Golden Honey Blade",
 	"tooltipKind" : "sword2",
 	"category" : "broadsword",
@@ -27,7 +28,10 @@
 	"primaryAbilityType" : "broadswordcombo",
 	"primaryAbility" : {
 		"fireTime" : 0.63,
-		"baseDps" : 9.2
+		"baseDps" : 9.2,
+		"damageConfig" : {
+			"statusEffects" : [ "fubeesting","burning" ]
+		}
 	},
 
 	"altAbilityType" : "futravelingslash",
