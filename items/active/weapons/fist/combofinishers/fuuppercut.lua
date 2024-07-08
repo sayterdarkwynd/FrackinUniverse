@@ -61,7 +61,7 @@ function Uppercut:fire()
 
 	util.wait(self.stances.fire.duration, function()
 		local damageArea = partDamageArea("specialswoosh")
-		
+
 		self.weapon:setDamage(self.damageConfigMerged, damageArea, self.fireTime)
 
 		if self.stances.fire.velocity and math.abs(world.gravity(mcontroller.position())) > 0 then

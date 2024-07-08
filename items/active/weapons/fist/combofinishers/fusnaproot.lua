@@ -61,7 +61,7 @@ function Snaproot:fire()
 
 	util.wait(self.stances.fire.duration, function()
 		local damageArea = partDamageArea("weapon")
-		
+
 		self.weapon:setDamage(self.damageConfigMerged, damageArea, self.fireTime)
 	end)
 

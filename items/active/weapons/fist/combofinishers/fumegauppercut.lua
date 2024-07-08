@@ -1,9 +1,9 @@
 require "/scripts/util.lua"
 require "/items/active/weapons/weapon.lua"
 
-PowerPunch = WeaponAbility:new()
+Uppercut = WeaponAbility:new()
 
-function PowerPunch:init()
+function Uppercut:init()
 	self.freezeTimer = 0
 
 	self.weapon.onLeaveAbility = function()
@@ -14,7 +14,7 @@ function PowerPunch:init()
 end
 
 -- Ticks on every update regardless if this is the active ability
-function PowerPunch:update(dt, fireMode, shiftHeld)
+function Uppercut:update(dt, fireMode, shiftHeld)
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
 	self.freezeTimer = math.max(0, self.freezeTimer - self.dt)
@@ -24,7 +24,7 @@ function PowerPunch:update(dt, fireMode, shiftHeld)
 end
 
 -- used by fist weapon combo system
-function PowerPunch:startAttack()
+function Uppercut:startAttack()
 	self:setState(self.windup)
 
 	self.weapon.freezesLeft = 0
@@ -32,7 +32,7 @@ function PowerPunch:startAttack()
 end
 
 -- State: windup
-function PowerPunch:windup()
+function Uppercut:windup()
 	self.weapon:setStance(self.stances.windup)
 
 	util.wait(self.stances.windup.duration)
@@ -41,7 +41,7 @@ function PowerPunch:windup()
 end
 
 -- State: windup2
-function PowerPunch:windup2()
+function Uppercut:windup2()
 	self.weapon:setStance(self.stances.windup2)
 
 	util.wait(self.stances.windup2.duration)
@@ -50,25 +50,30 @@ function PowerPunch:windup2()
 end
 
 -- State: special
-function PowerPunch:fire()
+function Uppercut:fire()
 	self.weapon:setStance(self.stances.fire)
 	self.weapon:updateAim()
 
 	animator.setAnimationState("attack", "special")
 	animator.playSound("special")
 
-	status.addEphemeralEffect("invulnerable", self.stances.fire.duration + 0.1)
+	status.addEphemeralEffect("invulnerable", self.stances.fire.duration + 0.2)
+	local effectList=util.mergeTable(self.damageConfigMerged.statusEffects,{"bleedingshort"})
+	local uppercutPower = { power = 0.25, timeToLive = 0.05, damageSourceKind = self.damageConfigMerged.damageSourceKind, piercing = true, statusEffects=effectList }
+	world.spawnProjectile("uppercutspecial", mcontroller.position(), activeItem.ownerEntityId(), {0, 1}, true, uppercutPower)
 
 	util.wait(self.stances.fire.duration, function()
-		local damageArea = partDamageArea("specialswoosh")
+		partDamageArea("specialswoosh")
 
-		self.weapon:setDamage(self.damageConfigMerged, damageArea, self.fireTime)
+		if self.stances.fire.velocity and math.abs(world.gravity(mcontroller.position())) > 0 then
+			mcontroller.controlApproachVelocity({self.stances.fire.velocity[1] * self.weapon.aimDirection, self.stances.fire.velocity[2]}, 1000)
+		end
 	end)
 
 	finishFistCombo()
 	activeItem.callOtherHandScript("finishFistCombo")
 end
 
-function PowerPunch:uninit(unloaded)
+function Uppercut:uninit(unloaded)
 	self.weapon:setDamage()
 end

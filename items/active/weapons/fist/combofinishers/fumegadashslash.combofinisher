@@ -6,7 +6,7 @@
 					"states" : {
 						"special" : {
 							"frames" : 4,
-							"cycle" : 0.19,
+							"cycle" : 0.29,
 							"mode" : "transition",
 							"transition" : "idle"
 						}
@@ -16,9 +16,9 @@
 			"parts" : {
 				"specialswoosh" : {
 					"properties" : {
-						"transformationGroups" : ["weapon"],
+						"transformationGroups" : ["weapon","swoosh"],
 						"centered" : true,
-						"offset" : [0.5, 0.125],
+						"offset" : [-0.5, 0.0],
 						"zLevel" : 1
 					},
 
@@ -28,8 +28,8 @@
 							"fire" : { },
 							"special" : {
 								"properties" : {
-									"image" : "swoosh/crossslash.png:<frame>",
-									"damageArea" : [[0, 0], [0, 0], [0, 0], [0, 0]]
+									"image" : "swoosh/dashswoosh.png:<frame>",
+									"damageArea" : [[-1.0, -1.0], [1.0, -1.5], [4.0, -0.75], [4.0, 0.5], [1.0, 1.5], [-1.0, 1.0]]
 								}
 							}
 						}
@@ -42,23 +42,14 @@
 		}
 	},
 
-
-
 	"comboFinisher" : {
-		"name" : "Ice Slash",
-		"type" : "iceslash",
-		"scripts" : ["/items/active/weapons/fist/combofinishers/zerchslash.lua"],
-		"class" : "SonicSlash",
-
-	"projectileOffset" : [0,0],
-	"baseDamage" : 7,
+		"name" : "Dash Slash",
+		"type" : "megadashslash",
+		"scripts" : ["/items/active/weapons/fist/combofinishers/fudashslash.lua"],
+		"class" : "DashSlash",
 
 		"damageConfig" : {
-			"statusEffects" : [ ],
-			"baseDamage" : 6.0,
-			"damageSourceKind" : "fiststrong",
-			"knockback" : 30,
-			"knockbackMode" : "facing",
+			"baseDamage" : 8.0,
 			"timeoutGroup" : "primary",
 			"timeout" : 0.2
 		},
@@ -106,8 +97,8 @@
 
 				"recoil" : true
 			},
-			"fire" : {
-				"duration" : 0.2,
+			"dash" : {
+				"duration" : 0.4,
 				"armRotation" : 0,
 				"weaponRotation" : 0,
 				"weaponRotationCenter" : [-1.0, 0.0],
@@ -119,7 +110,7 @@
 				"frontArmFrame" : "rotation",
 				"backArmFrame" : "rotation",
 
-				"velocity" : [0, 0]
+				"velocity" : [40, 0]
 			}
 		}
 	}

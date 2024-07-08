@@ -1,9 +1,10 @@
 require "/scripts/util.lua"
+require "/scripts/vec2.lua"
 require "/items/active/weapons/weapon.lua"
 
-PowerPunch = WeaponAbility:new()
+SonicSlash = WeaponAbility:new()
 
-function PowerPunch:init()
+function SonicSlash:init()
 	self.freezeTimer = 0
 
 	self.weapon.onLeaveAbility = function()
@@ -14,7 +15,7 @@ function PowerPunch:init()
 end
 
 -- Ticks on every update regardless if this is the active ability
-function PowerPunch:update(dt, fireMode, shiftHeld)
+function SonicSlash:update(dt, fireMode, shiftHeld)
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
 	self.freezeTimer = math.max(0, self.freezeTimer - self.dt)
@@ -24,7 +25,7 @@ function PowerPunch:update(dt, fireMode, shiftHeld)
 end
 
 -- used by fist weapon combo system
-function PowerPunch:startAttack()
+function SonicSlash:startAttack()
 	self:setState(self.windup)
 
 	self.weapon.freezesLeft = 0
@@ -32,7 +33,7 @@ function PowerPunch:startAttack()
 end
 
 -- State: windup
-function PowerPunch:windup()
+function SonicSlash:windup()
 	self.weapon:setStance(self.stances.windup)
 
 	util.wait(self.stances.windup.duration)
@@ -41,7 +42,7 @@ function PowerPunch:windup()
 end
 
 -- State: windup2
-function PowerPunch:windup2()
+function SonicSlash:windup2()
 	self.weapon:setStance(self.stances.windup2)
 
 	util.wait(self.stances.windup2.duration)
@@ -50,7 +51,7 @@ function PowerPunch:windup2()
 end
 
 -- State: special
-function PowerPunch:fire()
+function SonicSlash:fire()
 	self.weapon:setStance(self.stances.fire)
 	self.weapon:updateAim()
 
@@ -58,17 +59,36 @@ function PowerPunch:fire()
 	animator.playSound("special")
 
 	status.addEphemeralEffect("invulnerable", self.stances.fire.duration + 0.1)
-
+	self.damageConfigMerged.statusEffects=self.damageConfigMerged.statusEffects or {}
+	table.insert(self.damageConfigMerged.statusEffects,"fushieldbreaker")
 	util.wait(self.stances.fire.duration, function()
 		local damageArea = partDamageArea("specialswoosh")
 
 		self.weapon:setDamage(self.damageConfigMerged, damageArea, self.fireTime)
 	end)
 
+			local position = vec2.add(mcontroller.position(), {self.projectileOffset[1] * mcontroller.facingDirection(), self.projectileOffset[2]})
+	local params = {
+		powerMultiplier = activeItem.ownerPowerMultiplier(),
+		power = self:damageAmount(),
+	speed = 120
+	}
+	world.spawnProjectile("sonic", position, activeItem.ownerEntityId(), self:aimVector(), false, params)
+
 	finishFistCombo()
 	activeItem.callOtherHandScript("finishFistCombo")
 end
 
-function PowerPunch:uninit(unloaded)
+function SonicSlash:aimVector()
+	local aimVector = vec2.rotate({1, 0}, self.weapon.aimAngle)
+	aimVector[1] = aimVector[1] * mcontroller.facingDirection()
+	return aimVector
+end
+
+function SonicSlash:damageAmount()
+	return self.baseDamage * config.getParameter("damageLevelMultiplier")
+end
+
+function SonicSlash:uninit(unloaded)
 	self.weapon:setDamage()
 end

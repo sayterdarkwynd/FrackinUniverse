@@ -18,7 +18,7 @@
 					"properties" : {
 						"transformationGroups" : ["weapon"],
 						"centered" : true,
-						"offset" : [0.5, 0.125],
+						"offset" : [-0.875, 0],
 						"zLevel" : 1
 					},
 
@@ -28,8 +28,8 @@
 							"fire" : { },
 							"special" : {
 								"properties" : {
-									"image" : "swoosh/crossslash.png:<frame>",
-									"damageArea" : [[0, 0], [0, 0], [0, 0], [0, 0]]
+									"image" : "swoosh/uppercutswoosh.png:<frame>",
+									"damageArea" : [ [-2.0, 0.0], [1.25, 1.0], [2.25, 0.5], [2.5, -0.5], [1.5, -1.5], [-0.5, -1.5] ]
 								}
 							}
 						}
@@ -42,28 +42,20 @@
 		}
 	},
 
-
-
 	"comboFinisher" : {
-		"name" : "Ice Slash",
-		"type" : "iceslash",
-		"scripts" : ["/items/active/weapons/fist/combofinishers/zerchslash.lua"],
-		"class" : "SonicSlash",
-
-	"projectileOffset" : [0,0],
-	"baseDamage" : 7,
+		"name" : "Power Uppercut",
+		"type" : "megauppercut",
+		"scripts" : ["/items/active/weapons/fist/combofinishers/fumegauppercut.lua"],
+		"class" : "Uppercut",
 
 		"damageConfig" : {
-			"statusEffects" : [ ],
 			"baseDamage" : 6.0,
-			"damageSourceKind" : "fiststrong",
-			"knockback" : 30,
-			"knockbackMode" : "facing",
+			"knockback" : [0, 45],
 			"timeoutGroup" : "primary",
 			"timeout" : 0.2
 		},
 
-		"freezeTime" : 0.25,
+		"freezeTime" : 0.2,
 
 		"stances" : {
 			"idle" : {
@@ -79,47 +71,47 @@
 				"backArmFrame" : "jump.3"
 			},
 			"windup" : {
-				"duration" : 0.05,
+				"duration" : 0.1,
 				"armRotation" : 0,
-				"weaponRotation" : 0,
+				"weaponRotation" : -90,
 				"weaponRotationCenter" : [-1.0, 0.0],
-				"weaponOffset" : [-0.625, -0.125],
+				"weaponOffset" : [-0.25, -0.875],
 
 				"allowRotate" : false,
 				"allowFlip" : false,
 
-				"frontArmFrame" : "swimIdle.1",
-				"backArmFrame" : "swim.1"
+				"frontArmFrame" : "jump.2",
+				"backArmFrame" : "jump.1",
+				"velocity" : [0, 0]
 			},
 			"windup2" : {
-				"duration" : 0.05,
-				"armRotation" : 0,
-				"weaponRotation" : 0,
+				"duration" : 0.1,
+				"armRotation" : 20,
+				"weaponRotation" : 25,
 				"weaponRotationCenter" : [-1.0, 0.0],
-				"weaponOffset" : [-0.75, -0.125],
+				"weaponOffset" : [0.125, -0.375],
 
 				"allowRotate" : false,
 				"allowFlip" : false,
 
-				"frontArmFrame" : "swimIdle.1",
-				"backArmFrame" : "swim.1",
-
-				"recoil" : true
+				"frontArmFrame" : "run.1",
+				"backArmFrame" : "run.5",
+				"velocity" : [0, 0]
 			},
 			"fire" : {
 				"duration" : 0.2,
-				"armRotation" : 0,
-				"weaponRotation" : 0,
+				"armRotation" : 50,
+				"weaponRotation" : 10,
 				"weaponRotationCenter" : [-1.0, 0.0],
-				"weaponOffset" : [0.125, -0.25],
+				"weaponOffset" : [0.25, -0.125],
 
 				"allowRotate" : false,
 				"allowFlip" : false,
 
-				"frontArmFrame" : "rotation",
-				"backArmFrame" : "rotation",
+				"frontArmFrame" : "swim.3",
+				"backArmFrame" : "swim.3",
 
-				"velocity" : [0, 0]
+				"velocity" : [0, 25]
 			}
 		}
 	}
