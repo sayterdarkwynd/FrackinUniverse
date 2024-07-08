@@ -4,7 +4,8 @@
 	"level" : 5,
 	"maxStack" : 1,
 	"rarity" : "rare",
-	"description" : "A soul-cleaver of ageless, unknown materials.",
+	"description" : "A soul-cleaver of ageless, unknown materials.
+^red;Inflicts Bleeding^reset;",
 	"shortdescription" : "Shadow Reaper",
 	"tooltipKind" : "sword2",
 	"category" : "shortsword",
@@ -29,7 +30,10 @@
 	"primaryAbilityType" : "shortswordcombo3",
 	"primaryAbility" : {
 		"fireTime" : 0.7,
-		"baseDps" :	7.3
+		"baseDps" :	7.3,
+		"damageConfig" : {
+			"damageSourceKind": "electricshortsword"
+		}
 	},
 	"critChance" : 3,
 	"critBonus" : 3,

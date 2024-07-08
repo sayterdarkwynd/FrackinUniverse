@@ -4,7 +4,8 @@
 	"maxStack" : 1,
 	"rarity" : "rare",
 	"description" : "So mystic.",
-	"shortdescription" : "Mystichammer",
+	"shortdescription" : "Mystichammer
+^red;Deals Physical Damage^reset;",
 	"tooltipKind" : "hammerunique",
 	"category" : "hammer",
 	"twoHanded" : true,
@@ -33,7 +34,10 @@
 	"primaryAbilityType" : "hammersmash",
 	"primaryAbility" : {
 		"fireTime" : 0.78,
-		"baseDps" : 13
+		"baseDps" : 13,
+		"damageConfig" : {
+			"damageSourceKind": "poisonhammer"
+		}
 	},
 
 	"altAbilityType" : "elementalaura",

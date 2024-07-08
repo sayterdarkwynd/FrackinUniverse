@@ -1,34 +1,37 @@
 {
-  "itemName" : "zerchesiumrapier",
-  "price" : 360,
-  "level" : 3,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Sturdy, fine, freezing metal.",
-  "shortdescription" : "Zerchesium Rapier",
-  "tooltipKind" : "sword2",
-  "category" : "Rapier",
-  "twoHanded" : false,
-  "itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon","zerchesium"],
-  "handGrip" : "wrap",
-  "inventoryIcon" : "zerchesiumrapier_ycar.png",
-  "animation" : "piercecombo.animation",
-  "animationParts" : {
-    "handle": "",
-    "blade" : "zerchesiumrapier_ycar.png"
-  },
-  "animationCustom" : { },
-  "critChance" : 2,
-  "critBonus" : 2,
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"itemName" : "zerchesiumrapier",
+	"price" : 360,
+	"level" : 3,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "Sturdy, fine, freezing metal.",
+	"shortdescription" : "Zerchesium Rapier",
+	"tooltipKind" : "sword2",
+	"category" : "Rapier",
+	"twoHanded" : false,
+	"itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon","zerchesium"],
+	"handGrip" : "wrap",
+	"inventoryIcon" : "zerchesiumrapier_ycar.png",
+	"animation" : "piercecombo.animation",
+	"animationParts" : {
+		"handle": "",
+		"blade" : "zerchesiumrapier_ycar.png"
+	},
+	"animationCustom" : { },
+	"critChance" : 2,
+	"critBonus" : 2,
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+	"elementalType" : "ice",
 
-  "primaryAbilityType" : "piercecombo",
-  "primaryAbility" : {
-    "fireTime" : 0.41,
-    "baseDps" : 5.81
-  },
+	"primaryAbilityType" : "piercecombo",
+	"primaryAbility" : {
+		"fireTime" : 0.41,
+		"baseDps" : 5.81,
+		"damageConfig" : {
+			 "damageSourceKind" : "ice"
+		}
+	},
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
