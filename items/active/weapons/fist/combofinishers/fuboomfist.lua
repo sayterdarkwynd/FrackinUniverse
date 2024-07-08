@@ -32,10 +32,13 @@ function SonicSlash:startAttack()
 	self.freezeTimer = self.freezeTime or 0
 
 	local position = vec2.add(mcontroller.position(), {self.projectileOffset[1] * mcontroller.facingDirection(), self.projectileOffset[2]})
+	local effectList=self.damageConfigMerged.statusEffects--util.mergeTable(self.damageConfigMerged.statusEffects,{"bleedingshort"})
 	local params = {
 		powerMultiplier = activeItem.ownerPowerMultiplier(),
 		power = self:damageAmount(),
-	    speed = 20
+		damageSourceKind = self.damageConfigMerged.damageSourceKind,
+		speed = 20,
+		statusEffects=effectList
 	}
 	world.spawnProjectile("fistexplosiontelebrium", position, activeItem.ownerEntityId(), self:aimVector(), false, params)
 
