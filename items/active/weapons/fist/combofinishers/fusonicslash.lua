@@ -67,12 +67,16 @@ function SonicSlash:fire()
 		self.weapon:setDamage(self.damageConfigMerged, damageArea, self.fireTime)
 	end)
 
-			local position = vec2.add(mcontroller.position(), {self.projectileOffset[1] * mcontroller.facingDirection(), self.projectileOffset[2]})
+	local position = vec2.add(mcontroller.position(), {self.projectileOffset[1] * mcontroller.facingDirection(), self.projectileOffset[2]})
+	--local effectList=self.damageConfigMerged.statusEffects--util.mergeTable(self.damageConfigMerged.statusEffects,{})
 	local params = {
 		powerMultiplier = activeItem.ownerPowerMultiplier(),
 		power = self:damageAmount(),
-	speed = 120
+		--damageSourceKind = self.damageConfigMerged.damageSourceKind,
+		--statusEffects=effectList
+		speed = 120
 	}
+
 	world.spawnProjectile("sonic", position, activeItem.ownerEntityId(), self:aimVector(), false, params)
 
 	finishFistCombo()
