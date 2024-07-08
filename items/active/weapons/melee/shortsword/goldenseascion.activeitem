@@ -4,7 +4,8 @@
 	"level" : 2,
 	"maxStack" : 1,
 	"rarity" : "common",
-	"description" : "A classy and deadly-looking weapon.",
+	"description" : "A classy and deadly-looking weapon.
+^green;Inflicts Poison^reset;",
 	"shortdescription" : "Gold Sea Scion",
 	"tooltipKind" : "sword2",
 	"category" : "shortsword",
@@ -28,7 +29,11 @@
 	"primaryAbilityType" : "shortswordcombo",
 	"primaryAbility" : {
 		"fireTime" : 0.55,
-		"baseDps" : 6.5
+		"baseDps" : 6.5,
+		"damageConfig" : {
+			"damageSourceKind": "poisonshortsword",
+			"statusEffects" : [ "weakpoison" ]
+		}
 	},
 	"critChance" : 2,
 	"critBonus" : 2,
