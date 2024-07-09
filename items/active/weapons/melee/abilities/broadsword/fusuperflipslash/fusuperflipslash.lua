@@ -7,6 +7,8 @@ FlipSlash = WeaponAbility:new()
 
 function FlipSlash:init()
 	self.cooldownTimer = self.cooldownTime
+	self.primaryAbility = getPrimaryAbility()
+	self.damageConfigMerged=util.mergeTable(self.primaryAbility.damageConfig,self.damageConfig)
 end
 
 function FlipSlash:update(dt, fireMode, shiftHeld)
@@ -78,7 +80,7 @@ function FlipSlash:flip()
 		end
 
 		local damageArea = partDamageArea("swoosh")
-		self.weapon:setDamage(self.damageConfig, damageArea, self.fireTime)
+		self.weapon:setDamage(self.damageConfigMerged, damageArea, self.fireTime)
 
 		mcontroller.setRotation(-math.pi * 2 * self.weapon.aimDirection * (self.flipTimer / self.rotationTime))
 
