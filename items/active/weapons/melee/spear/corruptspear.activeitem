@@ -1,53 +1,53 @@
 {
-  "itemName" : "corruptspear",
-  "price" : 100,
-  "level" : 5,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Laced with the entropic force of Corruption.
+	"itemName" : "corruptspear",
+	"price" : 100,
+	"level" : 5,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Laced with the entropic force of Corruption.
 ^cyan;Hunting weapon^reset;",
-  "shortdescription" : "Corrupted Spear",
-  "tooltipKind" : "sword2",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear","shadow", "upgradeableWeapon"],
+	"shortdescription" : "Corrupted Spear",
+	"tooltipKind" : "sword2",
+	"category" : "spear",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear","shadow", "upgradeableWeapon"],
 
-  "inventoryIcon" : "corruptspear.png",
-  //"collectablesOnPickup" : { "fu_weaponspear" : "corruptspear" },
-  "animation" : "/items/active/weapons/melee/spear/spear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "corruptspear.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"inventoryIcon" : "corruptspear.png",
+	//"collectablesOnPickup" : { "fu_weaponspear" : "corruptspear" },
+	"animation" : "/items/active/weapons/melee/spear/spear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "corruptspear.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+	"elementalType" : "poison",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "scripts" : [],
-    "class" : "SpearStab",
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "spearstab",
+	"primaryAbility" : {
+		"scripts" : [],
+		"class" : "SpearStab",
 
-    "fireTime" : 1.0,
-    "baseDps" : 11.0,
-    "damageConfig" : {
-      "damageSourceKind" : "poisonbow",
-      "statusEffects" : [ ],
-      "knockback" : 20
-    }
-  },
-  "altAbilityType" : "elementalspin",
-  "altAbility" : { },
+		"fireTime" : 1.0,
+		"baseDps" : 11.0,
+		"damageConfig" : {
+			"damageSourceKind" : "poisonbow",
+			"statusEffects" : [ ],
+			"knockback" : 20
+		}
+	},
+	"altAbilityType" : "elementalspin",
+	"altAbility" : { },
 
-  "critChance" : 1,
-  "critBonus" : 8,
+	"critChance" : 1,
+	"critBonus" : 8,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

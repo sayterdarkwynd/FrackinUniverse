@@ -1,39 +1,42 @@
 {
-  "itemName" : "corruptblade",
-  "price" : 1500,
-  "level" : 4,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Unpleasant",
-  "shortdescription" : "Corrupted Blade",
-  "tooltipKind" : "sword2",
-  "category" : "shortsword",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword","shadow", "upgradeableWeapon"],
+	"itemName" : "corruptblade",
+	"price" : 1500,
+	"level" : 4,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Unpleasant",
+	"shortdescription" : "Corrupted Blade",
+	"tooltipKind" : "sword2",
+	"category" : "shortsword",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","shortsword","shadow", "upgradeableWeapon"],
 
-  "inventoryIcon" : "corruptblade.png",
-  //"collectablesOnPickup" : { "fu_weaponshortsword" : "corruptblade" },
-  "animation" : "comboshortsword.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "corruptblade.png"
-  },
-  "animationCustom" : { },
+	"inventoryIcon" : "corruptblade.png",
+	//"collectablesOnPickup" : { "fu_weaponshortsword" : "corruptblade" },
+	"animation" : "comboshortsword.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "corruptblade.png"
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+	"elementalType" : "poison",
 
-  "primaryAbilityType" : "shortswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.68,
-    "baseDps" : 7.4
-  },
+	"primaryAbilityType" : "shortswordcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.68,
+		"baseDps" : 7.4,
+		"damageConfig" : {
+			"damageSourceKind": "poisonshortsword"
+		}
+	},
 
-  //"altAbilityType" : "risingslash",
-  "critChance" : 3,
-  "critBonus" : 2,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	//"altAbilityType" : "risingslash",
+	"critChance" : 3,
+	"critBonus" : 2,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 
 

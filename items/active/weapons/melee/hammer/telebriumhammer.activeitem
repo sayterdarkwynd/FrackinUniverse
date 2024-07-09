@@ -1,48 +1,48 @@
 {
-  "itemName" : "telebriumhammer",
-  "price" : 220,
-  "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Infused with moon-laced hate.",
-  "shortdescription" : "Telebrium Hammer",
-  "tooltipKind" : "hammer",
-  "category" : "hammer",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer","telebrium", "upgradeableWeapon"],
-  "level" : 2,
-  "inventoryIcon" : "telebriumhammer.png",
-  "animation" : "hammer.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "telebriumhammer.png"
-  },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-1.25, 1.5]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
-    }
-  },
+	"itemName" : "telebriumhammer",
+	"price" : 220,
+	"maxStack" : 1,
+	"rarity" : "common",
+	"description" : "Infused with moon-laced hate.",
+	"shortdescription" : "Telebrium Hammer",
+	"tooltipKind" : "hammer",
+	"category" : "hammer",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","hammer","telebrium", "upgradeableWeapon"],
+	"level" : 2,
+	"inventoryIcon" : "telebriumhammer.png",
+	"animation" : "hammer.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "telebriumhammer.png"
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+			"offset" : [-1.25, 1.5]
+		}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+	"elementalType" : "poison",
 
-  "primaryAbilityType" : "hammersmash",
-  "primaryAbility" : {
-    "fireTime" : 1.2,
-    "baseDps" : 12,
-    "damageConfig" : {
-      "damageSourceKind" : "poison"
-    }
-  },
+	"primaryAbilityType" : "hammersmash",
+	"primaryAbility" : {
+		"fireTime" : 1.2,
+		"baseDps" : 12,
+		"damageConfig" : {
+			"damageSourceKind" : "poison"
+		}
+	},
 
-  "altAbilityType" : "shockwave",
-  "altAbility" : { },
-  "critChance" : 3,
-  "critBonus" : 2,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"altAbilityType" : "shockwave",
+	"altAbility" : { },
+	"critChance" : 3,
+	"critBonus" : 2,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "stunChance" : 7
+	"stunChance" : 7
 }

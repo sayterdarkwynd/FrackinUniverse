@@ -1,37 +1,40 @@
 {
-  "itemName" : "heliosblade",
-  "price" : 150,
-  "level" : 5,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Morphite honed to dangerous perfection.",
-  "shortdescription" : "Helios",
-  "tooltipKind" : "sword2",
-  "category" : "shortsword",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword", "upgradeableWeapon"],
+	"itemName" : "heliosblade",
+	"price" : 150,
+	"level" : 5,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Morphite honed to dangerous perfection.",
+	"shortdescription" : "Helios",
+	"tooltipKind" : "sword2",
+	"category" : "shortsword",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","shortsword", "upgradeableWeapon"],
 
-  "inventoryIcon" : "heliosblade.png",
-  //"collectablesOnPickup" : { "fu_weaponshortsword" : "heliosblade" },
-  "animation" : "comboshortsword.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "heliosblade.png"
-  },
+	"inventoryIcon" : "heliosblade.png",
+	//"collectablesOnPickup" : { "fu_weaponshortsword" : "heliosblade" },
+	"animation" : "comboshortsword.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "heliosblade.png"
+	},
 
-  "animationCustom" : { },
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "electric",
+	"elementalType" : "electric",
 
-  "primaryAbilityType" : "shortswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.63,
-    "baseDps" : 6.5
-  },
-  "critChance" : 3,
-  "critBonus" : 3,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"primaryAbilityType" : "shortswordcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.63,
+		"baseDps" : 6.5,
+		"damageConfig" : {
+			"damageSourceKind": "electricshortsword"
+		}
+	},
+	"critChance" : 3,
+	"critBonus" : 3,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

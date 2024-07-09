@@ -1,48 +1,48 @@
 {
-  "itemName" : "lunaridagger",
-  "price" : 140,
-  "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "Keen, sharp edge.",
-  "shortdescription" : "Lunari Knife",
-  "tooltipKind" : "sword2",
-  "category" : "dagger",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger","lunari", "upgradeableWeapon"],
-  "level" : 2,
-  "inventoryIcon" : "lunaridagger.png",
-  "animation" : "daggercombo.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "lunaridagger.png"
-  },
+	"itemName" : "lunaridagger",
+	"price" : 140,
+	"maxStack" : 1,
+	"rarity" : "Common",
+	"description" : "Keen, sharp edge.",
+	"shortdescription" : "Lunari Knife",
+	"tooltipKind" : "sword2",
+	"category" : "dagger",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","dagger","lunari", "upgradeableWeapon"],
+	"level" : 2,
+	"inventoryIcon" : "lunaridagger.png",
+	"animation" : "daggercombo.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "lunaridagger.png"
+	},
 
-  "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}
-      }
-    }
-  },
+	"animationCustom" : {
+		"animatedParts" : {
+			"parts" : {
+				"blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"swoosh" : { "properties" : {"offset" : [1, 2]}}
+			}
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+	"elementalType" : "ice",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "daggercombo",
-  "primaryAbility" : {
-    "fireTime" : 0.3,
-    "baseDps" : 7.72,
-    "damageConfig" : {
-      "knockback" : 10,
-      "damageSourceKind" : "iceplasma",
-      "statusEffects" : [ "slow" ]
-    }
-  },
-  "critChance" : 3,
-  "critBonus" : 1,
-  "stunChance" : 50,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "daggercombo",
+	"primaryAbility" : {
+		"fireTime" : 0.3,
+		"baseDps" : 7.72,
+		"damageConfig" : {
+			"knockback" : 10,
+			"damageSourceKind" : "iceplasma",
+			"statusEffects" : [ "slow" ]
+		}
+	},
+	"critChance" : 3,
+	"critBonus" : 1,
+	"stunChance" : 50,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

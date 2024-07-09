@@ -1,37 +1,40 @@
 {
-  "itemName" : "quietusmercenary",
-  "price" : 150,
-  "level" : 4,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Quietus forged for a warrior.",
-  "shortdescription" : "Mercenary's Blade",
-  "tooltipKind" : "sword2",
-  "category" : "shortsword",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword","quietus", "upgradeableWeapon"],
+	"itemName" : "quietusmercenary",
+	"price" : 150,
+	"level" : 4,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Quietus forged for a warrior.",
+	"shortdescription" : "Mercenary's Blade",
+	"tooltipKind" : "sword2",
+	"category" : "shortsword",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","shortsword","quietus", "upgradeableWeapon"],
 
-  "inventoryIcon" : "quietusmercenary.png",
-  //"collectablesOnPickup" : { "fu_weaponshortsword" : "quietusmercenary" },
-  "animation" : "comboshortsword.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "quietusmercenary.png"
-  },
+	"inventoryIcon" : "quietusmercenary.png",
+	//"collectablesOnPickup" : { "fu_weaponshortsword" : "quietusmercenary" },
+	"animation" : "comboshortsword.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "quietusmercenary.png"
+	},
 
-  "animationCustom" : { },
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "fire",
+	"elementalType" : "fire",
 
-  "primaryAbilityType" : "shortswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.55,
-    "baseDps" : 6.25
-  },
-  "critChance" : 3,
-  "critBonus" : 4,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"primaryAbilityType" : "shortswordcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.55,
+		"baseDps" : 6.25,
+		"damageConfig" : {
+			"damageSourceKind": "fireshortsword"
+		}
+	},
+	"critChance" : 3,
+	"critBonus" : 4,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

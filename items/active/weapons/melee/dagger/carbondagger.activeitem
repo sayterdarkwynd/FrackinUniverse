@@ -1,49 +1,49 @@
 {
-  "itemName" : "fucarbondagger",
-  "price" : 140,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Sturdy, and keeps a keen edge.
+	"itemName" : "fucarbondagger",
+	"price" : 140,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "Sturdy, and keeps a keen edge.
 ^cyan;Inflicts bleeding^reset;",
-  "shortdescription" : "Carbon Knife",
-  "tooltipKind" : "sword2",
-  "category" : "dagger",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger", "upgradeableWeapon"],
-  "level" : 3,
-  "inventoryIcon" : "carbondagger.png",
-  //"collectablesOnPickup" : { "fu_weapondagger" : "fucarbondagger" },
-  "animation" : "daggercombo.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "carbondagger.png"
-  },
+	"shortdescription" : "Carbon Knife",
+	"tooltipKind" : "sword2",
+	"category" : "dagger",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","dagger", "upgradeableWeapon"],
+	"level" : 3,
+	"inventoryIcon" : "carbondagger.png",
+	//"collectablesOnPickup" : { "fu_weapondagger" : "fucarbondagger" },
+	"animation" : "daggercombo.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "carbondagger.png"
+	},
 
-  "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}
-      }
-    }
-  },
+	"animationCustom" : {
+		"animatedParts" : {
+			"parts" : {
+				"blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"swoosh" : { "properties" : {"offset" : [1, 2]}}
+			}
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "daggercombo",
-  "primaryAbility" : {
-    "fireTime" : 0.3,
-    "baseDps" : 6.72,
-    "damageConfig" : {
-      "knockback" : 10,
-      "statusEffects" : [ "bleedingshort" ]
-    }
-  },
-  "critChance" : 3,
-  "critBonus" : 1,
-  "stunChance" : 50,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "daggercombo",
+	"primaryAbility" : {
+		"fireTime" : 0.3,
+		"baseDps" : 6.72,
+		"damageConfig" : {
+			"knockback" : 10,
+			"statusEffects" : [ "bleedingshort" ]
+		}
+	},
+	"critChance" : 3,
+	"critBonus" : 1,
+	"stunChance" : 50,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,48 +1,48 @@
 {
-  "itemName" : "bloodyknife",
-  "price" : 640,
-  "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "Covered in blood and creepy carvings",
-  "shortdescription" : "Sacrificial Blade",
-  "tooltipKind" : "sword2",
-  "category" : "dagger",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger","elder", "upgradeableWeapon"],
-  "level" : 3,
-  "inventoryIcon" : "bloodyknife.png",
-  //"collectablesOnPickup" : { "fu_weapondagger" : "bloodyknife" },
-  "animation" : "daggercombo.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "bloodyknife.png"
-  },
+	"itemName" : "bloodyknife",
+	"price" : 640,
+	"maxStack" : 1,
+	"rarity" : "Common",
+	"description" : "Covered in blood and creepy carvings",
+	"shortdescription" : "Sacrificial Blade",
+	"tooltipKind" : "sword2",
+	"category" : "dagger",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","dagger","elder", "upgradeableWeapon"],
+	"level" : 3,
+	"inventoryIcon" : "bloodyknife.png",
+	//"collectablesOnPickup" : { "fu_weapondagger" : "bloodyknife" },
+	"animation" : "daggercombo.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "bloodyknife.png"
+	},
 
-  "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}
-      }
-    }
-  },
+	"animationCustom" : {
+		"animatedParts" : {
+			"parts" : {
+				"blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"swoosh" : { "properties" : {"offset" : [1, 2]}}
+			}
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "daggercombo",
-  "primaryAbility" : {
-    "fireTime" : 0.3,
-    "baseDps" : 9,
-    "damageConfig" : {
-      "knockback" : 10
-    }
-  },
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "daggercombo",
+	"primaryAbility" : {
+		"fireTime" : 0.3,
+		"baseDps" : 9,
+		"damageConfig" : {
+			"knockback" : 10
+		}
+	},
 
-  "critChance" : 2,
-  "critBonus" : 6,
-  "stunChance" : 50,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"critChance" : 2,
+	"critBonus" : 6,
+	"stunChance" : 50,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,72 +1,72 @@
 {
-  "itemName" : "quietusaxe",
-  "price" : 640,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Swift and sure, this sucker will keep you alive and well.",
-  "shortdescription" : "Quietus Axe",
-  "tooltipKind" : "sword2",
-  "category" : "axe",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","axe","quietus", "upgradeableWeapon"],
-  "level" : 4,
-  "inventoryIcon" : "quietusaxe.png",
-  //"collectablesOnPickup" : { "fu_weaponaxe" : "quietusaxe" },
-  "animation" : "axe.animation",
-  "animationParts" : {
-    "blade" : "quietusaxe.png",
-    "handle" : ""
-  },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-1.0, 1.75]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_axe.ogg" ]
-    }
-  },
+	"itemName" : "quietusaxe",
+	"price" : 640,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Swift and sure, this sucker will keep you alive and well.",
+	"shortdescription" : "Quietus Axe",
+	"tooltipKind" : "sword2",
+	"category" : "axe",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","axe","quietus", "upgradeableWeapon"],
+	"level" : 4,
+	"inventoryIcon" : "quietusaxe.png",
+	//"collectablesOnPickup" : { "fu_weaponaxe" : "quietusaxe" },
+	"animation" : "axe.animation",
+	"animationParts" : {
+		"blade" : "quietusaxe.png",
+		"handle" : ""
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+			"offset" : [-1.0, 1.75]
+		}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_axe.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+	"elementalType" : "poison",
 
-  "aimOffset" : -1.0,
+	"aimOffset" : -1.0,
 
-  "primaryAbilityType" : "axecleave",
-  "primaryAbility" : {
-    "fireTime" : 0.5,
-    "baseDps" : 11,
-    "damageConfig" : {
-      "damageSourceKind" : "poisonaxe",
-      "knockback" : 10
-    },
-    "stances" : {
-      "idle" : {
-        "weaponOffset" : [0.25, 1.5]
-      },
-      "windup" : {
-        "duration" : 0.7,
-        "weaponOffset" : [0.25, 1.5],
+	"primaryAbilityType" : "axecleave",
+	"primaryAbility" : {
+		"fireTime" : 0.5,
+		"baseDps" : 11,
+		"damageConfig" : {
+			"damageSourceKind" : "poisonaxe",
+			"knockback" : 10
+		},
+		"stances" : {
+			"idle" : {
+				"weaponOffset" : [0.25, 1.5]
+			},
+			"windup" : {
+				"duration" : 0.7,
+				"weaponOffset" : [0.25, 1.5],
 
-        "minWindup" : 0.6,
+				"minWindup" : 0.6,
 
-        "weaponAngle" : [
-          [0.7, "linear", -20, 0],
-          [0.85, "linear", 0, 50],
-          [0.925, "sin", 50, 45],
-          [1.0, "cos", 50, 45]
-        ],
+				"weaponAngle" : [
+					[0.7, "linear", -20, 0],
+					[0.85, "linear", 0, 50],
+					[0.925, "sin", 50, 45],
+					[1.0, "cos", 50, 45]
+				],
 
-        "armAngle" : [
-          [1.0, "sin", -90, 50]
-        ]
-      },
-      "fire" : {
-        "weaponOffset" : [0.25, 1.5]
-      }
-    }
-  },
-  "critChance" : 2,
-  "critBonus" : 9,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+				"armAngle" : [
+					[1.0, "sin", -90, 50]
+				]
+			},
+			"fire" : {
+				"weaponOffset" : [0.25, 1.5]
+			}
+		}
+	},
+	"critChance" : 2,
+	"critBonus" : 9,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

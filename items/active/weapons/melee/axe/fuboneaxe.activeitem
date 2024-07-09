@@ -1,73 +1,73 @@
 {
-  "itemName" : "fuboneaxe",
-  "price" : 64,
-  "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Great for those lost in the wilds.
+	"itemName" : "fuboneaxe",
+	"price" : 64,
+	"maxStack" : 1,
+	"rarity" : "common",
+	"description" : "Great for those lost in the wilds.
 ^cyan;Floran^reset;",
-  "shortdescription" : "Bone Axe",
-  "tooltipKind" : "sword",
-  "category" : "axe",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","axe", "upgradeableWeapon","bone","floran"],
-  "level" : 1,
-  "inventoryIcon" : "boneaxe.png",
-  //"collectablesOnPickup" : { "fu_weaponaxe" : "fuboneaxe" },
-  "animation" : "axe.animation",
-  "animationParts" : {
-    "blade" : "boneaxe.png",
-    "handle" : ""
-  },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-1.0, 1.75]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_axe.ogg" ]
-    }
-  },
+	"shortdescription" : "Bone Axe",
+	"tooltipKind" : "sword",
+	"category" : "axe",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","axe", "upgradeableWeapon","bone","floran"],
+	"level" : 1,
+	"inventoryIcon" : "boneaxe.png",
+	//"collectablesOnPickup" : { "fu_weaponaxe" : "fuboneaxe" },
+	"animation" : "axe.animation",
+	"animationParts" : {
+		"blade" : "boneaxe.png",
+		"handle" : ""
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+			"offset" : [-1.0, 1.75]
+		}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_axe.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "aimOffset" : -1.0,
+	"aimOffset" : -1.0,
 
-  "primaryAbilityType" : "axecleave",
-  "primaryAbility" : {
-    "fireTime" : 0.43,
-    "baseDps" : 10,
-    "damageConfig" : {
-      "damageSourceKind" : "axe",
-      "knockback" : 15
-    },
-    "stances" : {
-      "idle" : {
-        "weaponOffset" : [0.25, 1.5]
-      },
-      "windup" : {
-        "duration" : 0.7,
-        "weaponOffset" : [0.25, 1.5],
+	"primaryAbilityType" : "axecleave",
+	"primaryAbility" : {
+		"fireTime" : 0.43,
+		"baseDps" : 10,
+		"damageConfig" : {
+			"damageSourceKind" : "axe",
+			"knockback" : 15
+		},
+		"stances" : {
+			"idle" : {
+				"weaponOffset" : [0.25, 1.5]
+			},
+			"windup" : {
+				"duration" : 0.7,
+				"weaponOffset" : [0.25, 1.5],
 
-        "minWindup" : 0.6,
+				"minWindup" : 0.6,
 
-        "weaponAngle" : [
-          [0.7, "linear", -20, 0],
-          [0.85, "linear", 0, 50],
-          [0.925, "sin", 50, 45],
-          [1.0, "cos", 50, 45]
-        ],
+				"weaponAngle" : [
+					[0.7, "linear", -20, 0],
+					[0.85, "linear", 0, 50],
+					[0.925, "sin", 50, 45],
+					[1.0, "cos", 50, 45]
+				],
 
-        "armAngle" : [
-          [1.0, "sin", -90, 50]
-        ]
-      },
-      "fire" : {
-        "weaponOffset" : [0.25, 1.5]
-      }
-    }
-  },
-  "critChance" : 2,
-  "critBonus" : 5,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+				"armAngle" : [
+					[1.0, "sin", -90, 50]
+				]
+			},
+			"fire" : {
+				"weaponOffset" : [0.25, 1.5]
+			}
+		}
+	},
+	"critChance" : 2,
+	"critBonus" : 5,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

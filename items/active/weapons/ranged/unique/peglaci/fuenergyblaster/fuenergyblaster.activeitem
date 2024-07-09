@@ -1,97 +1,97 @@
 {
-  "itemName" : "fuenergyblaster",
-  "level" : 5,
-  "price" : 1500,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "An extremely useful weapon utilizing controlled energy.
+	"itemName" : "fuenergyblaster",
+	"level" : 5,
+	"price" : 1500,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "An extremely useful weapon utilizing controlled energy.
 ^yellow;Exceptional utility^reset;
 ^cyan;Inflicts Electrified status^reset;",
-  "shortdescription" : "Energy Lobber",
-  "tooltipKind" : "gun2",
-  "category" : "machinePistol",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","machinepistol", "energy", "upgradeableWeapon"],
+	"shortdescription" : "Energy Lobber",
+	"tooltipKind" : "gun2",
+	"category" : "machinePistol",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","ranged","machinepistol", "energy", "upgradeableWeapon"],
 
-  "inventoryIcon" : [
-    { "image" : "fuenergyblaster.png:idle.1" }
-  ],
+	"inventoryIcon" : [
+		{ "image" : "fuenergyblaster.png:idle.1" }
+	],
 
-  "animation" : "fuenergyblaster.animation",
-  "animationParts" : {
-    "butt" : "",
-    "middle" : "fuenergyblaster.png",
-    "middlefullbright" : "fuenergyblasterfullbright.png",
-    "barrel" : "",
-    "muzzleFlash" : ""
-  },
-  "animationCustom" : {
-    "lights" : { "glow" : {
-      "active" : true,
-      "position" : [0.75, 0.5],
-      "color" : [101, 52, 120]
-    }},
-    "sounds" : {
-      "fire" : [ "/sfx/weapons/irradiumrifle.ogg" ]
-    }
-  },
-  "baseOffset" : [0.9, -0.35],
-  "muzzleOffset" : [1.5, 0.125],
+	"animation" : "fuenergyblaster.animation",
+	"animationParts" : {
+		"butt" : "",
+		"middle" : "fuenergyblaster.png",
+		"middlefullbright" : "fuenergyblasterfullbright.png",
+		"barrel" : "",
+		"muzzleFlash" : ""
+	},
+	"animationCustom" : {
+		"lights" : { "glow" : {
+			"active" : true,
+			"position" : [0.75, 0.5],
+			"color" : [101, 52, 120]
+		}},
+		"sounds" : {
+			"fire" : [ "/sfx/weapons/irradiumrifle.ogg" ]
+		}
+	},
+	"baseOffset" : [0.9, -0.35],
+	"muzzleOffset" : [1.5, 0.125],
 
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+	"scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+	"elementalType" : "electric",
 
-  "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
+	"primaryAbility" : {
+		"scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+		"class" : "GunFire",
 
-    "fireTime" : 0.2,
-    "baseDps" : 7.0,
-    "energyUsage" : 26,
-    "inaccuracy" : 0.008,
-    "fireType" : "auto",
+		"fireTime" : 0.2,
+		"baseDps" : 7.0,
+		"energyUsage" : 26,
+		"inaccuracy" : 0.008,
+		"fireType" : "auto",
 
-    "projectileType" : "lobbershot",
-    "projectileParameters" : {
-      "knockback" : 2,
-      "speed" : 75,
-      "statusEffects" : [ "electrified" ]
-    },
-    "projectileCount" : 1,
+		"projectileType" : "lobbershot",
+		"projectileParameters" : {
+			"knockback" : 2,
+			"speed" : 75,
+			"statusEffects" : [ "electrified" ]
+		},
+		"projectileCount" : 1,
 
-    "stances" : {
-      "idle" : {
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "twoHanded" : true,
+		"stances" : {
+			"idle" : {
+				"armRotation" : 0,
+				"weaponRotation" : 0,
+				"twoHanded" : true,
 
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "fire" : {
-        "duration" : 0,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
+				"allowRotate" : true,
+				"allowFlip" : true
+			},
+			"fire" : {
+				"duration" : 0,
+				"armRotation" : 5,
+				"weaponRotation" : 5,
+				"twoHanded" : true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "cooldown" : {
-        "duration" : 0.11,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
+				"allowRotate" : false,
+				"allowFlip" : false
+			},
+			"cooldown" : {
+				"duration" : 0.11,
+				"armRotation" : 5,
+				"weaponRotation" : 5,
+				"twoHanded" : true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      }
-    }
-  },
-  "critChance" : 2,
-  "critBonus" : 8,
-  "altAbilityType" : "energynet",
+				"allowRotate" : false,
+				"allowFlip" : false
+			}
+		}
+	},
+	"critChance" : 2,
+	"critBonus" : 8,
+	"altAbilityType" : "energynet",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

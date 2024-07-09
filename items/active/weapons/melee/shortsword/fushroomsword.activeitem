@@ -1,38 +1,41 @@
 {
-  "itemName" : "fushroomsword",
-  "price" : 250,
-  "level" : 3,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Fungus, somehow turned into a weapon.
+	"itemName" : "fushroomsword",
+	"price" : 250,
+	"level" : 3,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "Fungus, somehow turned into a weapon.
 ^cyan;Floran^reset;",
-  "shortdescription" : "Mushroom Blade",
-  "tooltipKind" : "sword2",
-  "category" : "shortsword",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword","bioweapon", "upgradeableWeapon","floran"],
+	"shortdescription" : "Mushroom Blade",
+	"tooltipKind" : "sword2",
+	"category" : "shortsword",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","shortsword","bioweapon", "upgradeableWeapon","floran"],
 
-  "inventoryIcon" : "fushroomsword.png",
-  //"collectablesOnPickup" : { "fu_weaponshortsword" : "fushroomsword" },
-  "animation" : "comboshortsword.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "fushroomsword.png"
-  },
+	"inventoryIcon" : "fushroomsword.png",
+	//"collectablesOnPickup" : { "fu_weaponshortsword" : "fushroomsword" },
+	"animation" : "comboshortsword.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "fushroomsword.png"
+	},
 
-  "animationCustom" : { },
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+	"elementalType" : "poison",
 
-  "primaryAbilityType" : "shortswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.43,
-    "baseDps" : 6.21
-  },
-  "critChance" : 2,
-  "critBonus" : 1,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"primaryAbilityType" : "shortswordcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.43,
+		"baseDps" : 6.21,
+		"damageConfig" : {
+			"damageSourceKind": "poisonshortsword"
+		}
+	},
+	"critChance" : 2,
+	"critBonus" : 1,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

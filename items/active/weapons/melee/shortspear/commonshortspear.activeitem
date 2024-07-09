@@ -1,101 +1,101 @@
 {
-  "itemName" : "commonshortspear",
-  "price" : 900,
-  "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "This swift melee weapon will make them bleed.",
-  "shortdescription" : "Common Shortspear",
-  "tooltipKind" : "sword2",
-  "category" : "shortspear",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortspear", "spear", "upgradeableWeapon"],
+	"itemName" : "commonshortspear",
+	"price" : 900,
+	"maxStack" : 1,
+	"rarity" : "Common",
+	"description" : "This swift melee weapon will make them bleed.",
+	"shortdescription" : "Common Shortspear",
+	"tooltipKind" : "sword2",
+	"category" : "shortspear",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","shortspear", "spear", "upgradeableWeapon"],
 
-  "animation" : "comboshortspear.animation",
-  "animationParts" : { },
-  "animationCustom" : { },
+	"animation" : "comboshortspear.animation",
+	"animationParts" : { },
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "aimOffset" : -1.0,
+	"aimOffset" : -1.0,
 
-  "muzzleOffset" : [0, 1.05],
+	"muzzleOffset" : [0, 1.05],
 
-  "primaryAbilityType" : "shortspearcombo",
-  "primaryAbility" : {
-    "fireTime" : [0.72, 1.15],
-    "baseDps" : [4.4, 5.8],
-    "damageConfig" : {
-      "knockbackRange" : [7, 10],
-	  "damageSourceKind":"bow"
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : 0,
-        "twoHanded" : false,
-        "weaponOffset" : [-0.3, 0.5],
+	"primaryAbilityType" : "shortspearcombo",
+	"primaryAbility" : {
+		"fireTime" : [0.72, 1.15],
+		"baseDps" : [4.4, 5.8],
+		"damageConfig" : {
+			"knockbackRange" : [7, 10],
+		"damageSourceKind":"bow"
+		},
+		"stances" : {
+			"idle" : {
+				"armRotation" : -90,
+				"weaponRotation" : 0,
+				"twoHanded" : false,
+				"weaponOffset" : [-0.3, 0.5],
 
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "windup" : {
-        "hold" : true,
-        "duration" : 0.55,
-        "armRotation" : -110,
-        "weaponRotation" : 20,
-        "twoHanded" : false,
-        "weaponOffset" : [-0.3, 0.5],
+				"allowRotate" : true,
+				"allowFlip" : true
+			},
+			"windup" : {
+				"hold" : true,
+				"duration" : 0.55,
+				"armRotation" : -110,
+				"weaponRotation" : 20,
+				"twoHanded" : false,
+				"weaponOffset" : [-0.3, 0.5],
 
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "fire" : {
-        "duration" : 0.3,
-        "armRotation" : -20,
-        "weaponRotation" : -70,
-        "twoHanded" : false,
-        "weaponOffset" : [0.3, 2.5],
+				"allowRotate" : true,
+				"allowFlip" : true
+			},
+			"fire" : {
+				"duration" : 0.3,
+				"armRotation" : -20,
+				"weaponRotation" : -70,
+				"twoHanded" : false,
+				"weaponOffset" : [0.3, 2.5],
 
-        "allowRotate" : true,
-        "allowFlip" : false
-      },
-      "hold" : {
-        "armRotation" : -30,
-        "weaponRotation" : -60,
-        "twoHanded" : false,
-        "weaponOffset" : [-0.3, 2.0],
+				"allowRotate" : true,
+				"allowFlip" : false
+			},
+			"hold" : {
+				"armRotation" : -30,
+				"weaponRotation" : -60,
+				"twoHanded" : false,
+				"weaponOffset" : [-0.3, 2.0],
 
-        "allowRotate" : true,
-        "allowFlip" : true
-      }
-    }
-  },
-  "fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
+				"allowRotate" : true,
+				"allowFlip" : true
+			}
+		}
+	},
+	"fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
 
-  "critChance" : 1,
-  "critBonus" : 2,
+	"critChance" : 1,
+	"critBonus" : 2,
 
-  "builder" : "/items/buildscripts/buildweapon.lua",
-  "builderConfig" : [{
-    "nameGenerator" : "shortspearnames.config:nameGen",
-    "animationParts" : {
-      "blade" : {
-        "path" : "shortspear/<variant>.png",
-        "variants" : 87,
-        "paletteSwap" : true
-      },
-      "handle" : {
-        "path" : "handle/<variant>.png",
-        "variants" : 54,
-        "paletteSwap" : true
-      }
-    },
-    "altAbilities" : [
+	"builder" : "/items/buildscripts/buildweapon.lua",
+	"builderConfig" : [{
+		"nameGenerator" : "shortspearnames.config:nameGen",
+		"animationParts" : {
+			"blade" : {
+				"path" : "shortspear/<variant>.png",
+				"variants" : 87,
+				"paletteSwap" : true
+			},
+			"handle" : {
+				"path" : "handle/<variant>.png",
+				"variants" : 54,
+				"paletteSwap" : true
+			}
+		},
+		"altAbilities" : [
 
-    ],
-    "palette" : "/items/active/weapons/colors/melee.weaponcolors",
-    "iconDrawables" : [ "handle", "blade" ]
-  }]
+		],
+		"palette" : "/items/active/weapons/colors/melee.weaponcolors",
+		"iconDrawables" : [ "handle", "blade" ]
+	}]
 }

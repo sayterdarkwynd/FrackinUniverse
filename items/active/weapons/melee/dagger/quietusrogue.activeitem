@@ -1,47 +1,47 @@
 {
-  "itemName" : "quietusrogue",
-  "price" : 640,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "A fine quietus weapon.",
-  "shortdescription" : "Rogue's Blade",
-  "tooltipKind" : "sword2",
-  "category" : "dagger",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger","quietus", "upgradeableWeapon"],
-  "level" : 4,
-  "inventoryIcon" : "quietusrogue.png",
-  //"collectablesOnPickup" : { "fu_weapondagger" : "quietusrogue" },
-  "animation" : "daggercombo.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "quietusrogue.png"
-  },
+	"itemName" : "quietusrogue",
+	"price" : 640,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "A fine quietus weapon.",
+	"shortdescription" : "Rogue's Blade",
+	"tooltipKind" : "sword2",
+	"category" : "dagger",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","dagger","quietus", "upgradeableWeapon"],
+	"level" : 4,
+	"inventoryIcon" : "quietusrogue.png",
+	//"collectablesOnPickup" : { "fu_weapondagger" : "quietusrogue" },
+	"animation" : "daggercombo.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "quietusrogue.png"
+	},
 
-  "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}
-      }
-    }
-  },
+	"animationCustom" : {
+		"animatedParts" : {
+			"parts" : {
+				"blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"swoosh" : { "properties" : {"offset" : [1, 2]}}
+			}
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "daggercombo",
-  "primaryAbility" : {
-    "fireTime" : 0.3,
-    "baseDps" : 8,
-    "damageConfig" : {
-      "knockback" : 10
-    }
-  },
-  "critChance" : 2,
-  "critBonus" : 3,
-  "stunChance" : 50,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "daggercombo",
+	"primaryAbility" : {
+		"fireTime" : 0.3,
+		"baseDps" : 8,
+		"damageConfig" : {
+			"knockback" : 10
+		}
+	},
+	"critChance" : 2,
+	"critBonus" : 3,
+	"stunChance" : 50,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

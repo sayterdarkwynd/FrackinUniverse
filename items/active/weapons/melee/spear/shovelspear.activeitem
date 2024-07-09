@@ -1,102 +1,105 @@
 {
-  "itemName" : "shovelspear",
-  "price" : 100,
-  "level" : 4,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "A dangerous shovel for the discerning knight.
-^cyan;Hunting weapon^reset;",
-  "shortdescription" : "David Spade",
-  "tooltipKind" : "swordunique",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear", "upgradeableWeapon","shovel"],
+	"itemName" : "shovelspear",
+	"price" : 100,
+	"level" : 4,
+	"maxStack" : 1,
+	"rarity" : "legendary",
+	"description" : "A dangerous shovel for the discerning knight.
+^cyan;Hunting weapon^reset;
+^red;Inflicts Bleeding^reset;",
+	"shortdescription" : "David Spade",
+	"tooltipKind" : "swordunique",
+	"category" : "spear",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear", "upgradeableWeapon","shovel"],
 
-  "inventoryIcon" : "shovelspear.png",
-  "animation" : "/items/active/weapons/melee/spear/spear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "shovelspear.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"inventoryIcon" : "shovelspear.png",
+	"animation" : "/items/active/weapons/melee/spear/spear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "shovelspear.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "scripts" : [],
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "spearstab",
+	"primaryAbility" : {
+		"scripts" : [],
 
-    "fireTime" : 0.7,
-    "baseDps" : 9.75,
-    "damageConfig" : {
-      "damageSourceKind" : "bow",
-      "statusEffects" : [ "bleedingshort" ],
-      "knockback" : 20
-    }
-  },
-  "altAbilityType" : "fusuperflipslash",
-  "altAbility" : { },
+		"fireTime" : 0.7,
+		"baseDps" : 9.75,
+		"damageConfig" : {
+			"damageSourceKind" : "bow",
+			"statusEffects" : [ "bleedingshort" ],
+			"knockback" : 20
+		}
+	},
+	"altAbilityType" : "fusuperflipslash",
+	"altAbility" : { },
 
-  "critChance" : 2,
-  "critBonus" : 4,
+	"critChance" : 2,
+	"critBonus" : 4,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "upgradeParameters" : {
-    "description" : "The greatest shovel in the universe. ^yellow;It's true.^reset;",
-    "shortdescription" : "Shovel of Crail",
-    "inventoryIcon" : [{"image" : "shovelspear8.png"}],
+	"upgradeParameters" : {
+		"description" : "The greatest shovel in the universe. ^yellow;It's true.^reset;
+^cyan;Hunting weapon^reset;
+^red;Inflicts Bleeding^reset;",
+		"shortdescription" : "Shovel of Crail",
+		"inventoryIcon" : [{"image" : "shovelspear8.png"}],
 
-    "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
-    "animationParts" : {
-      "blade" : "shovelspear8.png",
-      "bladefullbright" : "shovelspear8fullbright.png"
-    },
+		"animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+		"animationParts" : {
+			"blade" : "shovelspear8.png",
+			"bladefullbright" : "shovelspear8fullbright.png"
+		},
 
-    "animationCustom" : {
-      "animatedParts" : {
-        "parts" : {
-          "swoosh" : {
-            "partStates" : {
-              "swoosh" : {
-                "fire" : {
-                  "properties" : {
-                    "image" : "/animations/cultpoof/cultpoof.png:<frame>"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
+		"animationCustom" : {
+			"animatedParts" : {
+				"parts" : {
+					"swoosh" : {
+						"partStates" : {
+							"swoosh" : {
+								"fire" : {
+									"properties" : {
+										"image" : "/animations/cultpoof/cultpoof.png:<frame>"
+									}
+								}
+							}
+						}
+					}
+				}
+			},
 
-      "sounds" : { "fire" : [ "/sfx/weapons/laserblast.ogg" ] },
-      "particleEmitters" : {
-        "physicalswoosh" : {
-          "active" : false,
-          "transformationGroups" : ["swoosh"],
-          "emissionRate" : 60,
-          "offsetRegion" : [3.5, -1.0, 7.5, 1.0],
-          "particles" : [
-            { "particle" : "lightredphaseparticle"},
-            { "particle" : "lightredphaseparticle"},
-            { "particle" : "lightredphaseparticle"},
-            { "particle" : "lightredparticle"},
-            { "particle" : "lightredparticle"},
-            { "particle" : "lightredparticle"}
-          ]
-        }
-      }
-    },
-    "critChance" : 6,
-    "critBonus" : 4,
-    "altAbilityType" : "fusuperflipslashchaos"
-  }
+			"sounds" : { "fire" : [ "/sfx/weapons/laserblast.ogg" ] },
+			"particleEmitters" : {
+				"physicalswoosh" : {
+					"active" : false,
+					"transformationGroups" : ["swoosh"],
+					"emissionRate" : 60,
+					"offsetRegion" : [3.5, -1.0, 7.5, 1.0],
+					"particles" : [
+						{ "particle" : "lightredphaseparticle"},
+						{ "particle" : "lightredphaseparticle"},
+						{ "particle" : "lightredphaseparticle"},
+						{ "particle" : "lightredparticle"},
+						{ "particle" : "lightredparticle"},
+						{ "particle" : "lightredparticle"}
+					]
+				}
+			}
+		},
+		"critChance" : 6,
+		"critBonus" : 4,
+		"altAbilityType" : "fusuperflipslashchaos"
+	}
 }

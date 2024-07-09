@@ -1,48 +1,48 @@
 {
-  "itemName" : "kaicleaver",
-  "price" : 400,
-  "level" : 3,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "A brutal-looking zerchesium cleaver.
+	"itemName" : "kaicleaver",
+	"price" : 400,
+	"level" : 3,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "A brutal-looking zerchesium cleaver.
 ^cyan;Causes long bleed^reset;
 ^green;Counts as Hunting weapon^reset;",
-  "shortdescription" : "Kai Cleaver",
-  "tooltipKind" : "sword2",
-  "category" : "longsword",
-  "twoHanded" : false,
-  "itemTags" : [ "weapon", "melee", "broadsword", "longsword", "upgradeableWeapon" ],
+	"shortdescription" : "Kai Cleaver",
+	"tooltipKind" : "sword2",
+	"category" : "longsword",
+	"twoHanded" : false,
+	"itemTags" : [ "weapon", "melee", "broadsword", "longsword", "upgradeableWeapon" ],
 
-  "inventoryIcon" : "kaicleaver.png",
-  "animation" : "combolongsword.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "kaicleaver.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
-      "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
-      "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
-      "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
-    }
-  },
+	"inventoryIcon" : "kaicleaver.png",
+	"animation" : "combolongsword.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "kaicleaver.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+			"fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+			"fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+			"crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "primaryAbilityType" : "battlebladecombo",
-  "primaryAbility" : {
-    "fireTime" : 0.87,
-    "baseDps" : 7,
-    "damageConfig" : {
-      "damageSourceKind" : "bow",
-      "statusEffects" : [ "bleedinglong" ]
-    }
-  },
+	"primaryAbilityType" : "battlebladecombo",
+	"primaryAbility" : {
+		"fireTime" : 0.87,
+		"baseDps" : 7,
+		"damageConfig" : {
+			"damageSourceKind" : "bow",
+			"statusEffects" : [ "bleedinglong" ]
+		}
+	},
 
-  "critChance" : 3,
-  "critBonus" : 7,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"critChance" : 3,
+	"critBonus" : 7,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

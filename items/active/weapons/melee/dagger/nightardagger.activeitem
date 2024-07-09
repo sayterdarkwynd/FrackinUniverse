@@ -1,133 +1,133 @@
 {
-  "itemName" : "nightardagger",
-  "price" : 240,
-  "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Dull and nearly lifeless, but still dangerous. Upgrade for lethality.",
-  "shortdescription" : "Nightarian Knife",
-  "tooltipKind" : "sword2",
-  "category" : "dagger",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger", "upgradeableWeapon","nightar"],
-  "level" : 1,
-  "inventoryIcon" : "nightardagger.png",
-  "animation" : "daggercombo.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "nightardagger.png"
-  },
+	"itemName" : "nightardagger",
+	"price" : 240,
+	"maxStack" : 1,
+	"rarity" : "common",
+	"description" : "Dull and nearly lifeless, but still dangerous. Upgrade for lethality.",
+	"shortdescription" : "Nightarian Knife",
+	"tooltipKind" : "sword2",
+	"category" : "dagger",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","dagger", "upgradeableWeapon","nightar"],
+	"level" : 1,
+	"inventoryIcon" : "nightardagger.png",
+	"animation" : "daggercombo.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "nightardagger.png"
+	},
 
-  "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}
-      }
-    }
-  },
+	"animationCustom" : {
+		"animatedParts" : {
+			"parts" : {
+				"blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"swoosh" : { "properties" : {"offset" : [1, 2]}}
+			}
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "daggercombo",
-  "primaryAbility" : {
-    "fireTime" : 0.6,
-    "baseDps" : 7.5,
-    "damageConfig" : {
-      "knockback" : 10
-    }
-  },
-  "critChance" : 1,
-  "critBonus" : 2,
-  "stunChance" : 50,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "daggercombo",
+	"primaryAbility" : {
+		"fireTime" : 0.6,
+		"baseDps" : 7.5,
+		"damageConfig" : {
+			"knockback" : 10
+		}
+	},
+	"critChance" : 1,
+	"critBonus" : 2,
+	"stunChance" : 50,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "improvedParameters" : {
-    "animation" : "daggercomboglow.animation",
-	  "animationParts" : {
-	    "handle" : "",
-	    "blade" : "nightardagger.png",
-	    "bladefullbright" : "nightardaggerfullbright.png"
-	  },
-	  "inventoryIcon" : "nightardagger.png",
-	  "shortdescription" : "Honed Nightar Knife",
-	  "description" : "Sharpened and improved.",
-    "critBonus" : 3,
-    "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}
-      }
-    }
-    },
-    "elementalType" : "silverweapon",
-    "primaryAbility" : {
-      "damageConfig" : {
-        "damageSourceKind" : "silverweapon"
-      }
-    }
-  },
+	"improvedParameters" : {
+		"animation" : "daggercomboglow.animation",
+		"animationParts" : {
+			"handle" : "",
+			"blade" : "nightardagger.png",
+			"bladefullbright" : "nightardaggerfullbright.png"
+		},
+		"inventoryIcon" : "nightardagger.png",
+		"shortdescription" : "Honed Nightar Knife",
+		"description" : "Sharpened and improved.",
+		"critBonus" : 3,
+		"animationCustom" : {
+		"animatedParts" : {
+			"parts" : {
+				"blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"swoosh" : { "properties" : {"offset" : [1, 2]}}
+			}
+		}
+		},
+		"elementalType" : "silverweapon",
+		"primaryAbility" : {
+			"damageConfig" : {
+				"damageSourceKind" : "silverweapon"
+			}
+		}
+	},
 
-  "upgradeParameters" : {
-    "animation" : "daggercomboglow.animation",
-    "animationParts" : {
-      "handle" : "",
-      "blade" : "nightardagger.png",
-      "bladefullbright" : "nightardaggerfullbright.png"
-    },
-    "inventoryIcon" : "nightardagger.png",
-    "shortdescription" : "Peerless Nightar Blade",
-    "description" : "Gleams with a bright darkness.",
-    "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}
-      }
-    }
-    },
-    "critChance" : 2,
-    "critBonus" : 3.5,
-    "elementalType" : "silverweapon",
-    "primaryAbility" : {
-      "damageConfig" : {
-        "damageSourceKind" : "silverweapon"
-      }
-    }
-  },
+	"upgradeParameters" : {
+		"animation" : "daggercomboglow.animation",
+		"animationParts" : {
+			"handle" : "",
+			"blade" : "nightardagger.png",
+			"bladefullbright" : "nightardaggerfullbright.png"
+		},
+		"inventoryIcon" : "nightardagger.png",
+		"shortdescription" : "Peerless Nightar Blade",
+		"description" : "Gleams with a bright darkness.",
+		"animationCustom" : {
+		"animatedParts" : {
+			"parts" : {
+				"blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"swoosh" : { "properties" : {"offset" : [1, 2]}}
+			}
+		}
+		},
+		"critChance" : 2,
+		"critBonus" : 3.5,
+		"elementalType" : "silverweapon",
+		"primaryAbility" : {
+			"damageConfig" : {
+				"damageSourceKind" : "silverweapon"
+			}
+		}
+	},
 
-  "upgradeParameters2" : {
-    "animation" : "daggercomboglow.animation",
-    "animationParts" : {
-      "handle" : "",
-      "blade" : "nightardagger.png",
-      "bladefullbright" : "nightardaggerfullbright.png"
-    },
-    "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}
-      }
-    }
-    },
-    "inventoryIcon" : "nightardagger.png",
-	  "shortdescription" : "Legendary Nightar Blade",
-	  "description" : "The finest edge possible.",
-	  "critChance" : 2,
-	  "critBonus" : 5,
-    "elementalType" : "silverweapon",
-    "primaryAbility" : {
-      "damageConfig" : {
-        "damageSourceKind" : "silverweapon"
-      }
-    }
-  }
+	"upgradeParameters2" : {
+		"animation" : "daggercomboglow.animation",
+		"animationParts" : {
+			"handle" : "",
+			"blade" : "nightardagger.png",
+			"bladefullbright" : "nightardaggerfullbright.png"
+		},
+		"animationCustom" : {
+		"animatedParts" : {
+			"parts" : {
+				"blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"swoosh" : { "properties" : {"offset" : [1, 2]}}
+			}
+		}
+		},
+		"inventoryIcon" : "nightardagger.png",
+		"shortdescription" : "Legendary Nightar Blade",
+		"description" : "The finest edge possible.",
+		"critChance" : 2,
+		"critBonus" : 5,
+		"elementalType" : "silverweapon",
+		"primaryAbility" : {
+			"damageConfig" : {
+				"damageSourceKind" : "silverweapon"
+			}
+		}
+	}
 }

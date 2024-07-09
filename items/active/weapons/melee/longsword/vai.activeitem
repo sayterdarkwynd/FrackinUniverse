@@ -1,57 +1,57 @@
 {
-  "itemName" : "vai",
-  "price" : 600,
-  "level" : 4,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "Glistens like diamond, cuts like glass.
+	"itemName" : "vai",
+	"price" : 600,
+	"level" : 4,
+	"maxStack" : 1,
+	"rarity" : "legendary",
+	"description" : "Glistens like diamond, cuts like glass.
 ^cyan;Inflicts Caliginous Gas^reset;",
-  "shortdescription" : "Vai",
-  "tooltipKind" : "swordunique",
-  "category" : "longsword",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","broadsword","longsword","upgradeableWeapon","crystal"],
-  "inventoryIcon" : "vai.png",
-  "animation" : "combolongswordglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "vai.png",
-    "bladefullbright" : "vaifullbright.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
-      "fire2" : [ "/sfx/melee/swing_shortsword.ogg" ],
-      "fire3" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"shortdescription" : "Vai",
+	"tooltipKind" : "swordunique",
+	"category" : "longsword",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","broadsword","longsword","upgradeableWeapon","crystal"],
+	"inventoryIcon" : "vai.png",
+	"animation" : "combolongswordglow.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "vai.png",
+		"bladefullbright" : "vaifullbright.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+			"fire2" : [ "/sfx/melee/swing_shortsword.ogg" ],
+			"fire3" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+	"elementalType" : "ice",
 
-  "primaryAbilityType" : "battlebladecombo",
-  "primaryAbility" : {
-    "fireTime" : 1.1,
-    "baseDps" : 6.52,
-    "damageConfig" : {
-      "damageSourceKind": "iceplasma",
-      "statusEffects" : [ "shadowgasfx" ]
-    }
-  },
+	"primaryAbilityType" : "battlebladecombo",
+	"primaryAbility" : {
+		"fireTime" : 1.1,
+		"baseDps" : 6.52,
+		"damageConfig" : {
+			"damageSourceKind": "iceplasma",
+			"statusEffects" : [ "shadowgasfx" ]
+		}
+	},
 
-  "critChance" : 2,
-  "critBonus" : 10,
+	"critChance" : 2,
+	"critBonus" : 10,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "upgradeParameters" : {
-    "shortdescription" : "^cyan;Daravai^reset; ^yellow;^reset;",
-    "animationParts" : {"blade" : "vai2.png","bladefullbright" : "vai2fullbright.png"},
-    "inventoryIcon" : [ { "image" : "vai2.png" } ],
-    "primaryAbility" : {
-      "fireTime" : 1.0,
-      "baseDps" : 8.2
-    }
-  }
+	"upgradeParameters" : {
+		"shortdescription" : "^cyan;Daravai^reset; ^yellow;^reset;",
+		"animationParts" : {"blade" : "vai2.png","bladefullbright" : "vai2fullbright.png"},
+		"inventoryIcon" : [ { "image" : "vai2.png" } ],
+		"primaryAbility" : {
+			"fireTime" : 1.0,
+			"baseDps" : 8.2
+		}
+	}
 }

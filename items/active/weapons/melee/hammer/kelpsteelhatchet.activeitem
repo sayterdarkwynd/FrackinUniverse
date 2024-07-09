@@ -1,47 +1,50 @@
 {
-  "itemName" : "kelpsteelhatchet",
-  "price" : 900,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Hylotl engineering. A plant as a weapon. Odd.",
-  "shortdescription" : "Kelp Hammer",
-  "tooltipKind" : "hammer",
-  "category" : "hammer",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon"],
-  "level" : 3,
-  "inventoryIcon" : "kelpsteelhatchet.png",
-  //"collectablesOnPickup" : { "fu_weaponhammer" : "kelpsteelhatchet" },
-  "animation" : "hammer.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "kelpsteelhatchet.png"
-  },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-1.2, 1.5]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
-    }
-  },
+	"itemName" : "kelpsteelhatchet",
+	"price" : 900,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "Hylotl engineering. A plant as a weapon. Odd.",
+	"shortdescription" : "Kelp Hammer",
+	"tooltipKind" : "hammer",
+	"category" : "hammer",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","hammer", "upgradeableWeapon"],
+	"level" : 3,
+	"inventoryIcon" : "kelpsteelhatchet.png",
+	//"collectablesOnPickup" : { "fu_weaponhammer" : "kelpsteelhatchet" },
+	"animation" : "hammer.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "kelpsteelhatchet.png"
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+			"offset" : [-1.2, 1.5]
+		}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+	"elementalType" : "poison",
 
-  "primaryAbilityType" : "hammersmash",
-  "primaryAbility" : {
-    "fireTime" : 1.0,
-    "baseDps" : 13.45
-  },
+	"primaryAbilityType" : "hammersmash",
+	"primaryAbility" : {
+		"fireTime" : 1.0,
+		"baseDps" : 13.45,
+		"damageConfig" : {
+			"damageSourceKind": "poisonbroadsword"
+		}
+	},
 
-  "altAbilityType" : "elementalaura",
-  "altAbility" : { },
+	"altAbilityType" : "elementalaura",
+	"altAbility" : { },
 
-  "critChance" : 3,
-  "critBonus" : 6,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"critChance" : 3,
+	"critBonus" : 6,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "stunChance" : 6
+	"stunChance" : 6
 }

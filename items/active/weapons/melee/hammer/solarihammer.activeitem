@@ -1,47 +1,50 @@
 {
-  "itemName" : "solarihammer",
-  "price" : 200,
-  "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Crystalling impact weapon.",
-  "shortdescription" : "Lunari Hammer",
-  "tooltipKind" : "hammer",
-  "category" : "hammer",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer","lunari", "upgradeableWeapon"],
-  "level" : 2,
-  "inventoryIcon" : "solarihammer.png",
-  //"collectablesOnPickup" : { "fu_weaponhammer" : "solarihammer" },
-  "animation" : "hammer.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "solarihammer.png"
-  },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-2.0, 1.5]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
-    }
-  },
+	"itemName" : "solarihammer",
+	"price" : 200,
+	"maxStack" : 1,
+	"rarity" : "common",
+	"description" : "Crystalling impact weapon.",
+	"shortdescription" : "Lunari Hammer",
+	"tooltipKind" : "hammer",
+	"category" : "hammer",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","hammer","lunari", "upgradeableWeapon"],
+	"level" : 2,
+	"inventoryIcon" : "solarihammer.png",
+	//"collectablesOnPickup" : { "fu_weaponhammer" : "solarihammer" },
+	"animation" : "hammer.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "solarihammer.png"
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+			"offset" : [-2.0, 1.5]
+		}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+	"elementalType" : "ice",
 
-  "primaryAbilityType" : "hammersmashlunari",
-  "primaryAbility" : {
-    "fireTime" : 1,
-    "baseDps" : 13.6
-  },
+	"primaryAbilityType" : "hammersmashlunari",
+	"primaryAbility" : {
+		"fireTime" : 1,
+		"baseDps" : 13.6,
+		"damageConfig" : {
+			"damageSourceKind": "icehammer"
+		}
+	},
 
-  "altAbilityType" : "fugroundslamice",
-  "altAbility" : { },
+	"altAbilityType" : "fugroundslamice",
+	"altAbility" : { },
 
-  "critChance" : 3,
-  "critBonus" : 5,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"critChance" : 3,
+	"critBonus" : 5,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "stunChance" : 9
+	"stunChance" : 9
 }

@@ -1,64 +1,64 @@
 {
-  "itemName" : "fucommongreataxe",
-  "price" : 100,
-  "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "This might harm foes.",
-  "shortdescription" : "Common Greataxe",
-  "tooltipKind" : "hammer",
-  "category" : "greataxe",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","axe", "greataxe", "upgradeableWeapon"],
+	"itemName" : "fucommongreataxe",
+	"price" : 100,
+	"maxStack" : 1,
+	"rarity" : "common",
+	"description" : "This might harm foes.",
+	"shortdescription" : "Common Greataxe",
+	"tooltipKind" : "hammer",
+	"category" : "greataxe",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","axe", "greataxe", "upgradeableWeapon"],
 
-  "animation" : "greataxe.animation",
-  "animationParts" : {},
-  "animationCustom" : { },
+	"animation" : "greataxe.animation",
+	"animationParts" : {},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
-  "elementalType" : "physical",
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"elementalType" : "physical",
 
-  "primaryAbilityType" : "greataxesmash",
-  "primaryAbility" : {
-    "fireTime" : [0.9,1.7],
-    "baseDps" : [10,12],
-    "damageConfig" : {
-      "damageSourceKind" : "axe"
-    }
-  },
+	"primaryAbilityType" : "greataxesmash",
+	"primaryAbility" : {
+		"fireTime" : [0.9,1.7],
+		"baseDps" : [10,12],
+		"damageConfig" : {
+			"damageSourceKind" : "axe"
+		}
+	},
 
-  "altAbilities" : [
-      "uppercut",
-      "physicalshockwave",
-      "groundslam"
-  ],
+	"altAbilities" : [
+			"uppercut",
+			"physicalshockwave",
+			"groundslam"
+	],
 
-  "critChance" : 3,
-  "critBonus" : 5,
-  "stunChance" : 5,
+	"critChance" : 3,
+	"critBonus" : 5,
+	"stunChance" : 5,
 
-  "builder" : "/items/buildscripts/buildweapon.lua",
-  "builderConfig" : [{
-    "nameGenerator" : "greataxenames.config:nameGen",
+	"builder" : "/items/buildscripts/buildweapon.lua",
+	"builderConfig" : [{
+		"nameGenerator" : "greataxenames.config:nameGen",
 
-    "animationParts" : {
-      "blade" : {
-        "path" : "blade/<variant>.png",
-        "variants" : 50,
-        "paletteSwap" : true
-      },
-      "handle" : {
-        "path" : "handle/<variant>.png",
-        "variants" : 50,
-        "paletteSwap" : true
-      }
-    },
-    "altAbilities" : [
-      "uppercut",
-      "physicalshockwave",
-      "groundslam"
-    ],
+		"animationParts" : {
+			"blade" : {
+				"path" : "blade/<variant>.png",
+				"variants" : 50,
+				"paletteSwap" : true
+			},
+			"handle" : {
+				"path" : "handle/<variant>.png",
+				"variants" : 50,
+				"paletteSwap" : true
+			}
+		},
+		"altAbilities" : [
+			"uppercut",
+			"physicalshockwave",
+			"groundslam"
+		],
 
-    "palette" : "/items/active/weapons/colors/melee.weaponcolors",
-    "iconDrawables" : [ "blade", "handle" ]
-  }]
+		"palette" : "/items/active/weapons/colors/melee.weaponcolors",
+		"iconDrawables" : [ "blade", "handle" ]
+	}]
 }

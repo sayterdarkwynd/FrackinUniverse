@@ -1,53 +1,53 @@
 {
-  "itemName" : "densiniumspear",
-  "price" : 1200,
-  "level" : 6,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "Superior craftsmanship. Also, purple.
+	"itemName" : "densiniumspear",
+	"price" : 1200,
+	"level" : 6,
+	"maxStack" : 1,
+	"rarity" : "legendary",
+	"description" : "Superior craftsmanship. Also, purple.
 ^cyan;Inflicts Electrified^reset;
 ^cyan;Hunting weapon^reset;",
-  "shortdescription" : "Densinium Spear",
-  "tooltipKind" : "sword2",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear","densinium", "upgradeableWeapon"],
+	"shortdescription" : "Densinium Spear",
+	"tooltipKind" : "sword2",
+	"category" : "spear",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear","densinium", "upgradeableWeapon"],
 
-  "inventoryIcon" : "densiniumspear.png",
-  "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "densiniumspear.png",
-    "bladefullbright" : "densiniumspearfullbright.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"inventoryIcon" : "densiniumspear.png",
+	"animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "densiniumspear.png",
+		"bladefullbright" : "densiniumspearfullbright.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "electric",
+	"elementalType" : "electric",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "scripts" : [],
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "spearstab",
+	"primaryAbility" : {
+		"scripts" : [],
 
-    "fireTime" : 0.85,
-    "baseDps" : 11.95,
-    "damageConfig" : {
-      "damageSourceKind" : "electricbow",
-      "statusEffects" : [ "electrified" ],
-      "knockback" : 45
-    }
-  },
-  "altAbilityType" : "barrier",
-  "altAbility" : { },
+		"fireTime" : 0.85,
+		"baseDps" : 11.95,
+		"damageConfig" : {
+			"damageSourceKind" : "electricbow",
+			"statusEffects" : [ "electrified" ],
+			"knockback" : 45
+		}
+	},
+	"altAbilityType" : "barrier",
+	"altAbility" : { },
 
-  "critChance" : 2,
-  "critBonus" : 8,
+	"critChance" : 2,
+	"critBonus" : 8,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

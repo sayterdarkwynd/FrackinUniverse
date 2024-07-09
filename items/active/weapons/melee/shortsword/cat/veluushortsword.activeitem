@@ -1,35 +1,38 @@
 {
-  "itemName" : "veluushortsword",
-  "price" : 480,
-  "level" : 1,
-  "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "A sword to be wielded telepathically.",
-  "shortdescription" : "Erchius Telekinetic Blade",
-  "tooltipKind" : "sword2",
-  "category" : "shortsword",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword","veluu","upgradeableWeapon"],
+	"itemName" : "veluushortsword",
+	"price" : 480,
+	"level" : 1,
+	"maxStack" : 1,
+	"rarity" : "Common",
+	"description" : "A sword to be wielded telepathically.",
+	"shortdescription" : "Erchius Telekinetic Blade",
+	"tooltipKind" : "sword2",
+	"category" : "shortsword",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","shortsword","veluu","upgradeableWeapon"],
 
-  "inventoryIcon" : "veluushortsword.png",
+	"inventoryIcon" : "veluushortsword.png",
 
-  "animation" : "/items/active/weapons/melee/shortsword/comboshortsword.animation",
-  "animationParts" : {
-    "handle": "veluushortsword.png",
+	"animation" : "/items/active/weapons/melee/shortsword/comboshortsword.animation",
+	"animationParts" : {
+		"handle": "veluushortsword.png",
 	"handleFullbright" : "veluushortswordfullbright.png",
 	"blade" : ""
-  },
-  "animationCustom" : { },
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+	"elementalType" : "poison",
 
-  "primaryAbilityType" : "shortswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.67,
-    "baseDps" : 6.0
-  },
+	"primaryAbilityType" : "shortswordcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.67,
+		"baseDps" : 6.0,
+		"damageConfig" : {
+			"damageSourceKind": "poisonshortsword"
+		}
+	},
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

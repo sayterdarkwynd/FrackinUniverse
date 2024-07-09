@@ -1,51 +1,51 @@
 {
-  "itemName" : "fucultaxe",
-  "price" : 240,
-  "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Sturdy iron. Deadly edge.",
-  "shortdescription" : "Cruel Axe",
-  "tooltipKind" : "sword2",
-  "category" : "axe",
-  "twoHanded" : false,
+	"itemName" : "fucultaxe",
+	"price" : 240,
+	"maxStack" : 1,
+	"rarity" : "common",
+	"description" : "Sturdy iron. Deadly edge.",
+	"shortdescription" : "Cruel Axe",
+	"tooltipKind" : "sword2",
+	"category" : "axe",
+	"twoHanded" : false,
 
-  "itemTags" : ["weapon","melee","axe", "upgradeableWeapon"],
-  "level" : 1,
+	"itemTags" : ["weapon","melee","axe", "upgradeableWeapon"],
+	"level" : 1,
 
-  "inventoryIcon" : "fucultaxe.png",
-  //"collectablesOnPickup" : { "fu_weaponaxe" : "fucultaxe" },
+	"inventoryIcon" : "fucultaxe.png",
+	//"collectablesOnPickup" : { "fu_weaponaxe" : "fucultaxe" },
 
-  "animation" : "axe.animation",
-  "animationParts" : {
-    "blade" : "fucultaxe.png",
-    "handle" : ""
-  },
+	"animation" : "axe.animation",
+	"animationParts" : {
+		"blade" : "fucultaxe.png",
+		"handle" : ""
+	},
 
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-1.0, 1.75]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_axe.ogg" ]
-    }
-  },
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+			"offset" : [-1.0, 1.75]
+		}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_axe.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "aimOffset" : -1.0,
+	"aimOffset" : -1.0,
 
-  "primaryAbilityType" : "axecleave",
-  "primaryAbility" : {
-    "fireTime" : 0.44,
-    "baseDps" : 8.5,
-    "damageConfig" : {
-      "damageSourceKind" : "axe",
-      "knockback" : 15
-    }
-  },
-  "critChance" : 1,
-  "critBonus" : 4,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"primaryAbilityType" : "axecleave",
+	"primaryAbility" : {
+		"fireTime" : 0.44,
+		"baseDps" : 8.5,
+		"damageConfig" : {
+			"damageSourceKind" : "axe",
+			"knockback" : 15
+		}
+	},
+	"critChance" : 1,
+	"critBonus" : 4,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

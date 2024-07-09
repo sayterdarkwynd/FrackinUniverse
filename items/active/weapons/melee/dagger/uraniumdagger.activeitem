@@ -1,51 +1,51 @@
 {
-  "itemName" : "uraniumdagger",
-  "price" : 900,
-  "maxStack" : 1,
-  "rarity" : "Rare",
-  "description" : "Swift and radioactive.",
-  "shortdescription" : "Uranium Knife",
-  "tooltipKind" : "sword2",
-  "category" : "dagger",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger","radioactive", "upgradeableWeapon","uranium"],
-  "level" : 5,
-  "inventoryIcon" : "uraniumdagger.png",
-  //"collectablesOnPickup" : { "fu_weapondagger" : "uraniumdagger" },
+	"itemName" : "uraniumdagger",
+	"price" : 900,
+	"maxStack" : 1,
+	"rarity" : "Rare",
+	"description" : "Swift and radioactive.",
+	"shortdescription" : "Uranium Knife",
+	"tooltipKind" : "sword2",
+	"category" : "dagger",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","dagger","radioactive", "upgradeableWeapon","uranium"],
+	"level" : 5,
+	"inventoryIcon" : "uraniumdagger.png",
+	//"collectablesOnPickup" : { "fu_weapondagger" : "uraniumdagger" },
 
-  "animation" : "daggercomboglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "uraniumdagger.png",
-    "bladefullbright" : "uraniumdaggerfullbright.png"
-  },
+	"animation" : "daggercomboglow.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "uraniumdagger.png",
+		"bladefullbright" : "uraniumdaggerfullbright.png"
+	},
 
-  "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}
-      }
-    }
-  },
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"animationCustom" : {
+		"animatedParts" : {
+			"parts" : {
+				"blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"swoosh" : { "properties" : {"offset" : [1, 2]}}
+			}
+		}
+	},
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "radioactive",
+	"elementalType" : "radioactive",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "daggercombo",
-  "primaryAbility" : {
-    "fireTime" : 0.32,
-    "baseDps" : 9.1,
-    "damageConfig" : {
-      "damageSourceKind": "radioactivedagger",
-      "statusEffects" : [ "radiationburn" ],
-      "knockback" : 10
-    }
-  },
-  "critChance" : 1,
-  "critBonus" : 3,
-  "stunChance" : 50,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "daggercombo",
+	"primaryAbility" : {
+		"fireTime" : 0.32,
+		"baseDps" : 9.1,
+		"damageConfig" : {
+			"damageSourceKind": "radioactivedagger",
+			"statusEffects" : [ "radiationburn" ],
+			"knockback" : 10
+		}
+	},
+	"critChance" : 1,
+	"critBonus" : 3,
+	"stunChance" : 50,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

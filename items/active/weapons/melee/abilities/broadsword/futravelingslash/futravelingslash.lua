@@ -36,9 +36,10 @@ function TravelingSlash:fire()
 		power = self:damageAmount()
 	}
 	world.spawnProjectile(self.projectileType, position, activeItem.ownerEntityId(), self:aimVector(), false, params)
-
 	if self:slashSound() then
-	animator.playSound(self:slashSound())
+		if animator.hasSound(self:slashSound()) then
+			animator.playSound(self:slashSound())
+		end
 	end
 
 	util.wait(self.stances.fire.duration)

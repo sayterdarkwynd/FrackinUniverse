@@ -2,14 +2,16 @@ require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 require "/items/active/weapons/weapon.lua"
 
-ElementalSpin = WeaponAbility:new()
+FUElementalSpin = WeaponAbility:new()
 
-function ElementalSpin:init()
+function FUElementalSpin:init()
 	self:reset()
 	self.cooldownTimer = self.cooldownTime
+	self.primaryAbility = getPrimaryAbility()
+	self.damageConfigMerged=util.mergeTable(self.primaryAbility.damageConfig,self.damageConfig)
 end
 
-function ElementalSpin:update(dt, fireMode, shiftHeld)
+function FUElementalSpin:update(dt, fireMode, shiftHeld)
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
 	self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
@@ -19,7 +21,7 @@ function ElementalSpin:update(dt, fireMode, shiftHeld)
 	end
 end
 
-function ElementalSpin:windup()
+function FUElementalSpin:windup()
 	self.weapon:setStance(self.stances.windup)
 	self.weapon:updateAim()
 
@@ -39,7 +41,7 @@ function ElementalSpin:windup()
 
 		if status.overConsumeResource("energy", self.energyUsage * self.dt) then
 			local damageArea = partDamageArea("spinSwoosh")
-			self.weapon:setDamage(self.damageConfig, damageArea)
+			self.weapon:setDamage(self.damageConfigMerged, damageArea)
 		elseif duration == 0 then
 			break
 		end
@@ -56,7 +58,7 @@ function ElementalSpin:windup()
 	self.cooldownTimer = self.cooldownTime
 end
 
-function ElementalSpin:fire()
+function FUElementalSpin:fire()
 	self.weapon:setStance(self.stances.fire)
 	self.weapon:updateAim()
 
@@ -75,13 +77,13 @@ function ElementalSpin:fire()
 	util.wait(self.stances.fire.duration)
 end
 
-function ElementalSpin:reset()
+function FUElementalSpin:reset()
 	animator.setAnimationState("spinSwoosh", "idle")
 	animator.setParticleEmitterActive(self.weapon.elementalType.."Spin", false)
 	activeItem.setOutsideOfHand(false)
 	animator.stopAllSounds(self.weapon.elementalType.."Spin")
 end
 
-function ElementalSpin:uninit()
+function FUElementalSpin:uninit()
 	self:reset()
 end

@@ -1,37 +1,40 @@
 {
-  "itemName" : "radienbroadsword",
-  "price" : 4,
-  "level" : 2,
-  "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Fresh from your body, ready to slaughter.",
-  "shortdescription" : "X'ian Broadsword",
-  "tooltipKind" : "sword2",
-  "category" : "broadsword",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","radien","upgradeableWeapon"],
-  "inventoryIcon" : "radienbroadsword.png",
-  "animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "radienbroadsword.png",
-    "bladefullbright" : "radienbroadswordfullbright.png"
-  },
-  "animationCustom" : { },
+	"itemName" : "radienbroadsword",
+	"price" : 4,
+	"level" : 2,
+	"maxStack" : 1,
+	"rarity" : "common",
+	"description" : "Fresh from your body, ready to slaughter.",
+	"shortdescription" : "X'ian Broadsword",
+	"tooltipKind" : "sword2",
+	"category" : "broadsword",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","broadsword","radien","upgradeableWeapon"],
+	"inventoryIcon" : "radienbroadsword.png",
+	"animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "radienbroadsword.png",
+		"bladefullbright" : "radienbroadswordfullbright.png"
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "radioactive",
+	"elementalType" : "radioactive",
 
-  "primaryAbilityType" : "broadswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.9,
-    "baseDps" : 9
-  },
+	"primaryAbilityType" : "broadswordcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.9,
+		"baseDps" : 9,
+		"damageConfig" : {
+			"damageSourceKind": "radioactive"
+		}
+	},
 
-  "altAbilityType" : "flamethrowersword",
+	"altAbilityType" : "flamethrowersword",
 
-  "critChance" : 2,
-  "critBonus" : 9,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"critChance" : 2,
+	"critBonus" : 9,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

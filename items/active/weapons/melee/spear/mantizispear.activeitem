@@ -1,85 +1,85 @@
 {
-  "itemName" : "mantizispear",
-  "level" : 6,
-  "price" : 6250,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "A legendary weapon of war.
+	"itemName" : "mantizispear",
+	"level" : 6,
+	"price" : 6250,
+	"maxStack" : 1,
+	"rarity" : "legendary",
+	"description" : "A legendary weapon of war.
 ^yellow;Counts as 'energy' for set bonuses^reset;
 ^cyan;Hunting weapon^reset;",
-  "shortdescription" : "Mantizi Light Spear",
-  "tooltipKind" : "sword2",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear","energy","upgradeableWeapon","mantizi"],
+	"shortdescription" : "Mantizi Light Spear",
+	"tooltipKind" : "sword2",
+	"category" : "spear",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear","energy","upgradeableWeapon","mantizi"],
 
-  "inventoryIcon" : "mantizispear.png",
+	"inventoryIcon" : "mantizispear.png",
 
-  "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
-  "animationParts" : {
-    "blade" : "mantizispear.png",
-    "bladefullbright" : "mantizispearfullbright.png",
-    "handle" : ""
-  },
-  "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "swoosh" : {
-          "partStates" : {
-            "swoosh" : {
-      		"fire" : { "properties" : { "image" : "/items/active/weapons/melee/spear/swoosh/cosmicswoosh.png:<frame>" }}
-    	    }
-    	  }
-    	 }
-       }
-    },
-    "particleEmitters" : {
-      "radioactiveswoosh" : {
-        "active" : false,
-        "transformationGroups" : ["swoosh"],
-        "emissionRate" : 60,
-        "offsetRegion" : [3.5, -1.0, 7.5, 1.0],
-        "particles" : [
-          { "particle" : "cosmicswoosh1"},
-          { "particle" : "cosmicswoosh2"},
-          { "particle" : "cosmicswoosh3"}
-        ]
-      }
-    },
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+	"animationParts" : {
+		"blade" : "mantizispear.png",
+		"bladefullbright" : "mantizispearfullbright.png",
+		"handle" : ""
+	},
+	"animationCustom" : {
+		"animatedParts" : {
+			"parts" : {
+				"swoosh" : {
+					"partStates" : {
+						"swoosh" : {
+					"fire" : { "properties" : { "image" : "/items/active/weapons/melee/spear/swoosh/cosmicswoosh.png:<frame>" }}
+					}
+				}
+			 }
+			 }
+		},
+		"particleEmitters" : {
+			"radioactiveswoosh" : {
+				"active" : false,
+				"transformationGroups" : ["swoosh"],
+				"emissionRate" : 60,
+				"offsetRegion" : [3.5, -1.0, 7.5, 1.0],
+				"particles" : [
+					{ "particle" : "cosmicswoosh1"},
+					{ "particle" : "cosmicswoosh2"},
+					{ "particle" : "cosmicswoosh3"}
+				]
+			}
+		},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "radioactive",
+	"elementalType" : "radioactive",
 
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "fireTime" : 0.95,
-    "baseDps" : 10.5,
-    "damageConfig" : {
-      "damageSourceKind" : "radioactivebow"
-    }
-  },
+	"primaryAbilityType" : "spearstab",
+	"primaryAbility" : {
+		"fireTime" : 0.95,
+		"baseDps" : 10.5,
+		"damageConfig" : {
+			"damageSourceKind" : "radioactivebow"
+		}
+	},
 
-  "altAbilityType" : "rocketspear",
-  "altAbility" : {
-    "name" : "Light Blast",
-    "baseDps" : 16,
-    "energyUsage" : 50,
-    "fireTime" : 0.1,
-    "boostSpeed":0,
-    "boostForce" : 0,
-    "elementalConfig" : { "radioactive" : {
-      "projectileType" : "energybeam2",
-      "projectileParameters" : { "power" : 6, "speed" : 80}
-    }}
-  },
+	"altAbilityType" : "rocketspear",
+	"altAbility" : {
+		"name" : "Light Blast",
+		"baseDps" : 16,
+		"energyUsage" : 50,
+		"fireTime" : 0.1,
+		"boostSpeed":0,
+		"boostForce" : 0,
+		"elementalConfig" : { "radioactive" : {
+			"projectileType" : "energybeam2",
+			"projectileParameters" : { "power" : 6, "speed" : 80}
+		}}
+	},
 
 
-  "critChance" : 2,
-  "critBonus" : 6,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"critChance" : 2,
+	"critBonus" : 6,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

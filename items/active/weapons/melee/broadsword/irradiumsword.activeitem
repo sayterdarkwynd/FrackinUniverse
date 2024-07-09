@@ -1,43 +1,43 @@
 {
-  "itemName" : "irradiumsword",
-  "price" : 1500,
-  "level" : 4,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Forged from irradium.
+	"itemName" : "irradiumsword",
+	"price" : 1500,
+	"level" : 4,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Forged from irradium.
 ^cyan;Inflicts Rad-Burn^reset;",
-  "shortdescription" : "Irradium Blade",
-  "tooltipKind" : "sword2",
-  "category" : "broadsword",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","irradium", "upgradeableWeapon","radioactive"],
+	"shortdescription" : "Irradium Blade",
+	"tooltipKind" : "sword2",
+	"category" : "broadsword",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","broadsword","irradium", "upgradeableWeapon","radioactive"],
 
-  "inventoryIcon" : "irradiumsword.png",
-  //"collectablesOnPickup" : { "fu_weaponbroadsword" : "irradiumsword" },
-  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "irradiumsword.png"
-  },
-  "animationCustom" : { },
+	"inventoryIcon" : "irradiumsword.png",
+	//"collectablesOnPickup" : { "fu_weaponbroadsword" : "irradiumsword" },
+	"animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "irradiumsword.png"
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "radioactive",
+	"elementalType" : "radioactive",
 
-  "primaryAbilityType" : "broadswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.93,
-    "baseDps" : 10.67,
-    "damageConfig" : {
-      "damageSourceKind": "radioactivebroadsword",
-      "statusEffects" : [ "radiationburn" ]
-    }
-  },
+	"primaryAbilityType" : "broadswordcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.93,
+		"baseDps" : 10.67,
+		"damageConfig" : {
+			"damageSourceKind": "radioactivebroadsword",
+			"statusEffects" : [ "radiationburn" ]
+		}
+	},
 
-  "altAbilityType" : "parry",
+	"altAbilityType" : "parry",
 
-  "critChance" : 2,
-  "critBonus" : 8,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"critChance" : 2,
+	"critBonus" : 8,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

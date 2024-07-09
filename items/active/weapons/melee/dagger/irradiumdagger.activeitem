@@ -1,50 +1,50 @@
 {
-  "itemName" : "irradiumdagger",
-  "price" : 640,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Swift and deadly.
+	"itemName" : "irradiumdagger",
+	"price" : 640,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Swift and deadly.
 ^cyan;Inflicts Rad-Burn^reset;",
-  "shortdescription" : "Irradium Dagger",
-  "tooltipKind" : "sword2",
-  "category" : "dagger",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger","irradium", "upgradeableWeapon","radioactive"],
-  "level" : 4,
-  "inventoryIcon" : "irradiumdagger.png",
-  //"collectablesOnPickup" : { "fu_weapondagger" : "irradiumdagger" },
-  "animation" : "daggercombo.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "irradiumdagger.png"
-  },
+	"shortdescription" : "Irradium Dagger",
+	"tooltipKind" : "sword2",
+	"category" : "dagger",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","dagger","irradium", "upgradeableWeapon","radioactive"],
+	"level" : 4,
+	"inventoryIcon" : "irradiumdagger.png",
+	//"collectablesOnPickup" : { "fu_weapondagger" : "irradiumdagger" },
+	"animation" : "daggercombo.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "irradiumdagger.png"
+	},
 
-  "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}
-      }
-    }
-  },
+	"animationCustom" : {
+		"animatedParts" : {
+			"parts" : {
+				"blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"swoosh" : { "properties" : {"offset" : [1, 2]}}
+			}
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "radioactive",
+	"elementalType" : "radioactive",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "daggercombo",
-  "primaryAbility" : {
-    "fireTime" : 0.32,
-    "baseDps" : 9.1,
-    "damageConfig" : {
-      "damageSourceKind": "radioactivedagger",
-      "statusEffects" : [ "radiationburn" ],
-      "knockback" : 10
-    }
-  },
-  "critChance" : 2,
-  "critBonus" : 3,
-  "stunChance" : 50,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "daggercombo",
+	"primaryAbility" : {
+		"fireTime" : 0.32,
+		"baseDps" : 9.1,
+		"damageConfig" : {
+			"damageSourceKind": "radioactivedagger",
+			"statusEffects" : [ "radiationburn" ],
+			"knockback" : 10
+		}
+	},
+	"critChance" : 2,
+	"critBonus" : 3,
+	"stunChance" : 50,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,45 +1,45 @@
 {
-  "itemName" : "stonehammer",
-  "price" : 80,
-  "level" : 1,
-  "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "Great for early meat and hide gathering.",
-  "shortdescription" : "Primitive Hammer",
-  "tooltipKind" : "hammer",
-  "category" : "hammer",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon","stone"],
+	"itemName" : "stonehammer",
+	"price" : 80,
+	"level" : 1,
+	"maxStack" : 1,
+	"rarity" : "Common",
+	"description" : "Great for early meat and hide gathering.",
+	"shortdescription" : "Primitive Hammer",
+	"tooltipKind" : "hammer",
+	"category" : "hammer",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","hammer", "upgradeableWeapon","stone"],
 
-  "inventoryIcon" : "stonehammer.png",
-  //"collectablesOnPickup" : { "fu_weaponhammer" : "stonehammer" },
-  "animation" : "/items/active/weapons/melee/hammer/hammer.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "stonehammer.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
-    }
-  },
+	"inventoryIcon" : "stonehammer.png",
+	//"collectablesOnPickup" : { "fu_weaponhammer" : "stonehammer" },
+	"animation" : "/items/active/weapons/melee/hammer/hammer.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "stonehammer.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "primaryAbilityType" : "hammersmash",
-  "primaryAbility" : {
-    "fireTime" : 1.2,
-    "baseDps" : 9
-  },
+	"primaryAbilityType" : "hammersmash",
+	"primaryAbility" : {
+		"fireTime" : 1.2,
+		"baseDps" : 9
+	},
 
-  "palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
+	"palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
 
-  "altAbilityType" : "physicalshockwave",
-  "critChance" : 2,
-  "critBonus" : 2,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"altAbilityType" : "physicalshockwave",
+	"critChance" : 2,
+	"critBonus" : 2,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "stunChance" : 8
+	"stunChance" : 8
 }

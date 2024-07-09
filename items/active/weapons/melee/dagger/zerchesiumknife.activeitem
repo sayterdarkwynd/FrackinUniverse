@@ -1,48 +1,49 @@
 {
-  "itemName" : "zerchesiumdagger",
-  "price" : 240,
-  "maxStack" : 1,
-  "level" : 3,
-  "rarity" : "uncommon",
-  "description" : "Impale and stab with razor-sharp zerchesium steel.",
-  "shortdescription" : "Zerchesium Knife",
-  "tooltipKind" : "sword2",
-  "category" : "dagger",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger","zerchesium", "upgradeableWeapon"],
-  "inventoryIcon" : "zerchesiumdagger.png",
-  //"collectablesOnPickup" : { "fu_weapondagger" : "zerchesiumdagger" },
+	"itemName" : "zerchesiumdagger",
+	"price" : 240,
+	"maxStack" : 1,
+	"level" : 3,
+	"rarity" : "uncommon",
+	"description" : "Impale and stab with razor-sharp zerchesium steel.",
+	"shortdescription" : "Zerchesium Knife",
+	"tooltipKind" : "sword2",
+	"category" : "dagger",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","dagger","zerchesium", "upgradeableWeapon"],
+	"inventoryIcon" : "zerchesiumdagger.png",
+	//"collectablesOnPickup" : { "fu_weapondagger" : "zerchesiumdagger" },
 
-  "animation" : "daggercombo.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "zerchesiumdagger.png"
-  },
+	"animation" : "daggercombo.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "zerchesiumdagger.png"
+	},
 
-  "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}
-      }
-    }
-  },
+	"animationCustom" : {
+		"animatedParts" : {
+			"parts" : {
+				"blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"swoosh" : { "properties" : {"offset" : [1, 2]}}
+			}
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+	"elementalType" : "ice",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "daggercombo",
-  "primaryAbility" : {
-    "fireTime" : 0.45,
-    "baseDps" : 8.24,
-    "damageConfig" : {
-      "knockback" : 10
-    }
-  },
-  "critChance" : 1,
-  "critBonus" : 3,
-  "stunChance" : 50,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "daggercombo",
+	"primaryAbility" : {
+		"fireTime" : 0.45,
+		"baseDps" : 8.24,
+		"damageConfig" : {
+			"knockback" : 10,
+			"damageSourceKind" : "ice"
+		}
+	},
+	"critChance" : 1,
+	"critBonus" : 3,
+	"stunChance" : 50,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,52 +1,52 @@
 {
-  "itemName" : "isogendagger",
-  "price" : 404,
-  "maxStack" : 1,
-  "level" : 6,
-  "rarity" : "legendary",
-  "description" : "Share your cold feelings.
+	"itemName" : "isogendagger",
+	"price" : 404,
+	"maxStack" : 1,
+	"level" : 6,
+	"rarity" : "legendary",
+	"description" : "Share your cold feelings.
 ^cyan;Inflicts Freezing^reset;",
-  "shortdescription" : "Isogen Knife",
-  "tooltipKind" : "sword2",
-  "category" : "dagger",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger","isogen", "upgradeableWeapon","ice"],
-  "inventoryIcon" : "isogendagger.png",
-  //"collectablesOnPickup" : { "fu_weapondagger" : "isogendagger" },
-  "animation" : "daggercomboglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "isogendagger.png",
-    "bladefullbright" : "isogendaggerfullbright.png"
-  },
+	"shortdescription" : "Isogen Knife",
+	"tooltipKind" : "sword2",
+	"category" : "dagger",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","dagger","isogen", "upgradeableWeapon","ice"],
+	"inventoryIcon" : "isogendagger.png",
+	//"collectablesOnPickup" : { "fu_weapondagger" : "isogendagger" },
+	"animation" : "daggercomboglow.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "isogendagger.png",
+		"bladefullbright" : "isogendaggerfullbright.png"
+	},
 
-  "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}
-      }
-    }
-  },
+	"animationCustom" : {
+		"animatedParts" : {
+			"parts" : {
+				"blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"swoosh" : { "properties" : {"offset" : [1, 2]}}
+			}
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+	"elementalType" : "ice",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "daggercombo",
-  "primaryAbility" : {
-    "fireTime" : 0.45,
-    "baseDps" : 6.24,
-    "damageConfig" : {
-      "damageSourceKind" : "ice",
-      "knockback" : 10,
-       "statusEffects" : [ "freezefu" ]
-    }
-  },
-  "critChance" : 3,
-  "critBonus" : 3,
-  "stunChance" : 50,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "daggercombo",
+	"primaryAbility" : {
+		"fireTime" : 0.45,
+		"baseDps" : 6.24,
+		"damageConfig" : {
+			"damageSourceKind" : "ice",
+			"knockback" : 10,
+			 "statusEffects" : [ "freezefu" ]
+		}
+	},
+	"critChance" : 3,
+	"critBonus" : 3,
+	"stunChance" : 50,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

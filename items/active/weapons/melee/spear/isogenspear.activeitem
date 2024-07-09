@@ -1,54 +1,54 @@
 {
-  "itemName" : "isogenspear",
-  "price" : 1200,
-  "level" : 6,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "Chillingly cold metal. Loves the taste of flesh.
+	"itemName" : "isogenspear",
+	"price" : 1200,
+	"level" : 6,
+	"maxStack" : 1,
+	"rarity" : "legendary",
+	"description" : "Chillingly cold metal. Loves the taste of flesh.
 ^cyan;Inflicts Freezing^reset;
 ^cyan;Hunting weapon^reset;",
-  "shortdescription" : "Isogen Lance",
-  "tooltipKind" : "sword2",
-  "category" : "lance",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear","isogen", "upgradeableWeapon","ice"],
+	"shortdescription" : "Isogen Lance",
+	"tooltipKind" : "sword2",
+	"category" : "lance",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear","isogen", "upgradeableWeapon","ice"],
 
-  "inventoryIcon" : "isogenspear.png",
-  //"collectablesOnPickup" : { "fu_weaponspear" : "isogenspear" },
-  "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "isogenspear.png",
-    "bladefullbright" : "isogenspearfullbright.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"inventoryIcon" : "isogenspear.png",
+	//"collectablesOnPickup" : { "fu_weaponspear" : "isogenspear" },
+	"animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "isogenspear.png",
+		"bladefullbright" : "isogenspearfullbright.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+	"elementalType" : "ice",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "heavyspearcombo",
-  "primaryAbility" : {
-    "scripts" : [],
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "heavyspearcombo",
+	"primaryAbility" : {
+		"scripts" : [],
 
-    "fireTime" : 1,
-    "baseDps" : 12.5,
-    "damageConfig" : {
-      "damageSourceKind" : "icebow",
-      "statusEffects" : [ "freezefu" ],
-      "knockback" : 45
-    }
-  },
-  "altAbilityType" : "barrier",
-  "altAbility" : { },
+		"fireTime" : 1,
+		"baseDps" : 12.5,
+		"damageConfig" : {
+			"damageSourceKind" : "icebow",
+			"statusEffects" : [ "freezefu" ],
+			"knockback" : 45
+		}
+	},
+	"altAbilityType" : "barrier",
+	"altAbility" : { },
 
-  "critChance" : 2,
-  "critBonus" : 8,
+	"critChance" : 2,
+	"critBonus" : 8,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

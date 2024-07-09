@@ -1,89 +1,89 @@
 {
-  "itemName" : "pyreitebroadsword",
-  "price" : 1200,
-  "level" : 6,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "Hot and melty blade.
+	"itemName" : "pyreitebroadsword",
+	"price" : 1200,
+	"level" : 6,
+	"maxStack" : 1,
+	"rarity" : "legendary",
+	"description" : "Hot and melty blade.
 ^cyan;Inflicts Napalm^reset;",
-  "shortdescription" : "Pyreite Broadsword",
-  "tooltipKind" : "sword2",
-  "category" : "broadsword",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","pyreite", "upgradeableWeapon"],
-  "inventoryIcon" : "pyreitebroadsword.png",
-  //"collectablesOnPickup" : { "fu_weaponbroadsword" : "pyreitebroadsword" },
-  "animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "pyreitebroadsword.png",
-    "bladefullbright" : "pyreitebroadswordfullbright.png"
-  },
-  "animationCustom" : { },
+	"shortdescription" : "Pyreite Broadsword",
+	"tooltipKind" : "sword2",
+	"category" : "broadsword",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","broadsword","pyreite", "upgradeableWeapon"],
+	"inventoryIcon" : "pyreitebroadsword.png",
+	//"collectablesOnPickup" : { "fu_weaponbroadsword" : "pyreitebroadsword" },
+	"animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "pyreitebroadsword.png",
+		"bladefullbright" : "pyreitebroadswordfullbright.png"
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "hellfire",
-  "damageKindImage" : "/interface/statuses/hellfire.png",
-  "primaryAbilityType" : "broadswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.9,
-    "baseDps" : 11,
-    "damageConfig" : {
-      "knockback" : 10,
-       "damageSourceKind" : "hellfire",
-       "statusEffects" : [ "burningnapalm" ]
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : -10,
-        "aimAngle" : 0,
-        "allowRotate" : false,
-        "allowFlip" : true
-      },
-      "windup" : {
-        "duration" : 0.1,
-        "armRotation" : 90,
-        "weaponRotation" : -10,
-        "twoHanded" : true,
-        "aimAngle" : 0,
+	"elementalType" : "hellfire",
+	"damageKindImage" : "/interface/statuses/hellfire.png",
+	"primaryAbilityType" : "broadswordcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.9,
+		"baseDps" : 11,
+		"damageConfig" : {
+			"knockback" : 10,
+			 "damageSourceKind" : "hellfire",
+			 "statusEffects" : [ "burningnapalm" ]
+		},
+		"stances" : {
+			"idle" : {
+				"armRotation" : -90,
+				"weaponRotation" : -10,
+				"aimAngle" : 0,
+				"allowRotate" : false,
+				"allowFlip" : true
+			},
+			"windup" : {
+				"duration" : 0.1,
+				"armRotation" : 90,
+				"weaponRotation" : -10,
+				"twoHanded" : true,
+				"aimAngle" : 0,
 
-        "allowRotate" : false,
-        "allowFlip" : true
-      },
-      "preslash" : {
-        "duration" : 0.025,
-        "armRotation" : 55,
-        "weaponRotation" : -45,
-        "twoHanded" : true,
-        "aimAngle" : 0,
+				"allowRotate" : false,
+				"allowFlip" : true
+			},
+			"preslash" : {
+				"duration" : 0.025,
+				"armRotation" : 55,
+				"weaponRotation" : -45,
+				"twoHanded" : true,
+				"aimAngle" : 0,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "fire" : {
-        "duration" : 0.4,
-        "armRotation" : -45,
-        "weaponRotation" : -55,
-        "twoHanded" : true,
-        "aimAngle" : 0,
+				"allowRotate" : false,
+				"allowFlip" : false
+			},
+			"fire" : {
+				"duration" : 0.4,
+				"armRotation" : -45,
+				"weaponRotation" : -55,
+				"twoHanded" : true,
+				"aimAngle" : 0,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      }
-    }
-  },
+				"allowRotate" : false,
+				"allowFlip" : false
+			}
+		}
+	},
 
-  "altAbilityType" : "poptopslash",
-  "altAbility" : {
-    "fireTime" : 2,
-    "cooldownTime" : 3,
-    "name" : "Burning Portal",
-    "projectileType" : "pyreiteswordsetup"
-  },
+	"altAbilityType" : "poptopslash",
+	"altAbility" : {
+		"fireTime" : 2,
+		"cooldownTime" : 3,
+		"name" : "Burning Portal",
+		"projectileType" : "pyreiteswordsetup"
+	},
 
-  "critChance" : 2,
-  "critBonus" : 7,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"critChance" : 2,
+	"critBonus" : 7,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

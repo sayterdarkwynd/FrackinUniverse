@@ -1,47 +1,47 @@
 {
-  "itemName" : "xithriciteaxe",
-  "price" : 940,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "The stuff of stars.
+	"itemName" : "xithriciteaxe",
+	"price" : 940,
+	"maxStack" : 1,
+	"rarity" : "legendary",
+	"description" : "The stuff of stars.
 ^cyan;Inflicts Minor Vulnerability^reset;",
-  "shortdescription" : "Cosmic Axe",
-  "tooltipKind" : "sword2",
-  "category" : "axe",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","axe","xithricite", "upgradeableWeapon"],
-  "level" : 6,
-  "inventoryIcon" : "xithriciteaxe.png",
-  //"collectablesOnPickup" : { "fu_weaponaxe" : "xithriciteaxe" },
-  "animation" : "axeglow.animation",
-  "animationParts" : {
-    "blade" : "xithriciteaxe.png",
-    "bladefullbright" : "xithriciteaxefullbright.png",
-    "handle" : ""
-  },
-  "animationCustom" : {
-    "sounds" : { "fire" : [ "/sfx/melee/swing_axe.ogg" ]}
-  },
+	"shortdescription" : "Cosmic Axe",
+	"tooltipKind" : "sword2",
+	"category" : "axe",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","axe","xithricite", "upgradeableWeapon"],
+	"level" : 6,
+	"inventoryIcon" : "xithriciteaxe.png",
+	//"collectablesOnPickup" : { "fu_weaponaxe" : "xithriciteaxe" },
+	"animation" : "axeglow.animation",
+	"animationParts" : {
+		"blade" : "xithriciteaxe.png",
+		"bladefullbright" : "xithriciteaxefullbright.png",
+		"handle" : ""
+	},
+	"animationCustom" : {
+		"sounds" : { "fire" : [ "/sfx/melee/swing_axe.ogg" ]}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "cosmic",
+	"elementalType" : "cosmic",
 
-  "aimOffset" : -1.0,
+	"aimOffset" : -1.0,
 
-  "primaryAbilityType" : "axecleave",
-  "primaryAbility" : {
-    "fireTime" : 0.55,
-    "baseDps" : 7.2,
+	"primaryAbilityType" : "axecleave",
+	"primaryAbility" : {
+		"fireTime" : 0.55,
+		"baseDps" : 7.2,
 
-    "damageConfig" : {
-      "statusEffects" : [ "defenseboostneg20" ],
-      "knockback" : 15,
-      "knockbackMode" : "facing",
-       "damageSourceKind" : "cosmicaxe"
-    }
-  },
-  "critChance" : 2,
-  "critBonus" : 6,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+		"damageConfig" : {
+			"statusEffects" : [ "defenseboostneg20" ],
+			"knockback" : 15,
+			"knockbackMode" : "facing",
+			 "damageSourceKind" : "cosmicaxe"
+		}
+	},
+	"critChance" : 2,
+	"critBonus" : 6,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

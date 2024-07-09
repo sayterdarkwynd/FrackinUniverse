@@ -1,51 +1,51 @@
 {
-  "itemName" : "uraniumhammer",
-  "price" : 1600,
-  "maxStack" : 1,
-  "rarity" : "Rare",
-  "description" : "Forged from uranium and advanced alloy. Quite radioactive.",
-  "shortdescription" : "Uranium Hammer",
-  "tooltipKind" : "hammer",
-  "category" : "hammer",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer","radioactive", "upgradeableWeapon","uranium"],
-  "level" : 5,
-  "inventoryIcon" : "uraniumhammer.png",
-  //"collectablesOnPickup" : { "fu_weaponhammer" : "uraniumhammer" },
-  "animation" : "hammerglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "uraniumhammer.png",
-    "bladefullbright" : "uraniumhammerfullbright.png"
-  },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-2.0, 1.5]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
-    }
-  },
+	"itemName" : "uraniumhammer",
+	"price" : 1600,
+	"maxStack" : 1,
+	"rarity" : "Rare",
+	"description" : "Forged from uranium and advanced alloy. Quite radioactive.",
+	"shortdescription" : "Uranium Hammer",
+	"tooltipKind" : "hammer",
+	"category" : "hammer",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","hammer","radioactive", "upgradeableWeapon","uranium"],
+	"level" : 5,
+	"inventoryIcon" : "uraniumhammer.png",
+	//"collectablesOnPickup" : { "fu_weaponhammer" : "uraniumhammer" },
+	"animation" : "hammerglow.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "uraniumhammer.png",
+		"bladefullbright" : "uraniumhammerfullbright.png"
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+			"offset" : [-2.0, 1.5]
+		}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "radioactive",
+	"elementalType" : "radioactive",
 
-  "primaryAbilityType" : "hammersmash",
-  "primaryAbility" : {
-    "fireTime" : 1.2,
-    "baseDps" : 12,
-    "damageConfig" : {
-      "damageSourceKind" : "radioactive",
-      "statusEffects" : [ "radiationburn" ]
-    }
-  },
+	"primaryAbilityType" : "hammersmash",
+	"primaryAbility" : {
+		"fireTime" : 1.2,
+		"baseDps" : 12,
+		"damageConfig" : {
+			"damageSourceKind" : "radioactive",
+			"statusEffects" : [ "radiationburn" ]
+		}
+	},
 
-  "altAbilityType" : "elementalpillar",
-  "altAbility" : { },
-  "critChance" : 3,
-  "critBonus" : 5,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"altAbilityType" : "elementalpillar",
+	"altAbility" : { },
+	"critChance" : 3,
+	"critBonus" : 5,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "stunChance" : 5
+	"stunChance" : 5
 }

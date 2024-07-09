@@ -1,40 +1,43 @@
 {
-  "itemName" : "mineralblade",
-  "price" : 1500,
-  "level" : 4,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "A durable energy blade.
+	"itemName" : "mineralblade",
+	"price" : 1500,
+	"level" : 4,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "A durable energy blade.
 ^cyan;High-damage energy weapon^reset;",
-  "shortdescription" : "Particle Blade",
-  "tooltipKind" : "sword2",
-  "category" : "broadsword",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","energy", "upgradeableWeapon"],
-  //"collectablesOnPickup" : { "fu_weaponbroadsword" : "mineralblade" },
-  "inventoryIcon" : "mineralblade.png",
+	"shortdescription" : "Particle Blade",
+	"tooltipKind" : "sword2",
+	"category" : "broadsword",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","broadsword","energy", "upgradeableWeapon"],
+	//"collectablesOnPickup" : { "fu_weaponbroadsword" : "mineralblade" },
+	"inventoryIcon" : "mineralblade.png",
 
-  "animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "mineralblade.png",
-    "bladefullbright" : "mineralbladefullbright.png"
-  },
-  "animationCustom" : { },
+	"animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "mineralblade.png",
+		"bladefullbright" : "mineralbladefullbright.png"
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "electric",
+	"elementalType" : "electric",
 
-  "primaryAbilityType" : "broadswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.8,
-    "baseDps" : 11.0
-  },
+	"primaryAbilityType" : "broadswordcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.8,
+		"baseDps" : 11.0,
+		"damageConfig" : {
+			"damageSourceKind": "electricbroadsword"
+		}
+	},
 
-  "altAbilityType" : "bladecharge",
+	"altAbilityType" : "bladecharge",
 
-  "critChance" : 2,
-  "critBonus" : 12,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"critChance" : 2,
+	"critBonus" : 12,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

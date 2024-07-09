@@ -1,47 +1,47 @@
 {
-  "itemName" : "effigiumbroadsword",
-  "price" : 300,
-  "level" : 5,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Ghostly as a spirit.
+	"itemName" : "effigiumbroadsword",
+	"price" : 300,
+	"level" : 5,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Ghostly as a spirit.
 ^cyan;Inflicts Caliginous Gas^reset;",
-  "shortdescription" : "Phantasm Greatblade",
-  "tooltipKind" : "sword2",
-  "category" : "broadsword",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","effigium", "upgradeableWeapon","shadow"],
-  "inventoryIcon" : "effigiumbroadsword.png",
-  "animation" : "combobroadswordglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "effigiumbroadsword.png",
-    "bladefullbright" : "effigiumbroadswordfullbright.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
-      "fire2" : [ "/sfx/melee/swing_shortsword.ogg" ],
-      "fire3" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"shortdescription" : "Phantasm Greatblade",
+	"tooltipKind" : "sword2",
+	"category" : "broadsword",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","broadsword","effigium", "upgradeableWeapon","shadow"],
+	"inventoryIcon" : "effigiumbroadsword.png",
+	"animation" : "combobroadswordglow.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "effigiumbroadsword.png",
+		"bladefullbright" : "effigiumbroadswordfullbright.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+			"fire2" : [ "/sfx/melee/swing_shortsword.ogg" ],
+			"fire3" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "shadow",
+	"elementalType" : "shadow",
 
-  "primaryAbilityType" : "battlebladecombo",
-  "primaryAbility" : {
-    "fireTime" : 0.89,
-    "baseDps" : 9.4,
-    "damageConfig" : {
-      "damageSourceKind": "shadowbroadsword",
-      "statusEffects" : [ "shadowgasfx" ]
-    }
-  },
-  "altAbilityType" : "phasecharge",
-  "altAbility" : {},
-  "critChance" : 1,
-  "critBonus" : 7,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"primaryAbilityType" : "battlebladecombo",
+	"primaryAbility" : {
+		"fireTime" : 0.89,
+		"baseDps" : 9.4,
+		"damageConfig" : {
+			"damageSourceKind": "shadowbroadsword",
+			"statusEffects" : [ "shadowgasfx" ]
+		}
+	},
+	"altAbilityType" : "phasecharge",
+	"altAbility" : {},
+	"critChance" : 1,
+	"critBonus" : 7,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

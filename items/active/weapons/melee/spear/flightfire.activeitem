@@ -1,52 +1,52 @@
 {
-  "itemName" : "flightfire",
-  "price" : 100,
-  "level" : 2,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Well, this is super-fun!
+	"itemName" : "flightfire",
+	"price" : 100,
+	"level" : 2,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Well, this is super-fun!
 ^cyan;Hunting weapon^reset;",
-  "shortdescription" : "Flightfire",
-  "tooltipKind" : "sword2",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear", "upgradeableWeapon"],
+	"shortdescription" : "Flightfire",
+	"tooltipKind" : "sword2",
+	"category" : "spear",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear", "upgradeableWeapon"],
 
-  "inventoryIcon" : "flightfire.png",
-  //"collectablesOnPickup" : { "fu_weaponspear" : "flightfire" },
-  "animation" : "/items/active/weapons/melee/spear/spear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "flightfire.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"inventoryIcon" : "flightfire.png",
+	//"collectablesOnPickup" : { "fu_weaponspear" : "flightfire" },
+	"animation" : "/items/active/weapons/melee/spear/spear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "flightfire.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "fire",
+	"elementalType" : "fire",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "scripts" : [],
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "spearstab",
+	"primaryAbility" : {
+		"scripts" : [],
 
-    "fireTime" : 1.2,
-    "baseDps" : 5.5,
-    "damageConfig" : {
-      "damageSourceKind" : "firebow",
-      "statusEffects" : [ ],
-      "knockback" : 10
-    }
-  },
-  "altAbilityType" : "rocketspear4",
-  "altAbility" : { },
+		"fireTime" : 1.2,
+		"baseDps" : 5.5,
+		"damageConfig" : {
+			"damageSourceKind" : "firebow",
+			"statusEffects" : [ ],
+			"knockback" : 10
+		}
+	},
+	"altAbilityType" : "rocketspear4",
+	"altAbility" : { },
 
-  "critChance" : 1,
-  "critBonus" : 1,
+	"critChance" : 1,
+	"critBonus" : 1,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

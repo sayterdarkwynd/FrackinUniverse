@@ -1,63 +1,63 @@
 {
-  "itemName" : "lavaspear",
-  "price" : 100,
-  "level" : 1,
-  "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Searing heat, and puncture-fresh lethality.
+	"itemName" : "lavaspear",
+	"price" : 100,
+	"level" : 1,
+	"maxStack" : 1,
+	"rarity" : "common",
+	"description" : "Searing heat, and puncture-fresh lethality.
 ^orange;Inflicts Burning^reset;
 ^cyan;Hunting weapon^reset;",
-  "shortdescription" : "Core Lance",
-  "tooltipKind" : "sword2",
-  "category" : "lance",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear","upgradeableWeapon"],
+	"shortdescription" : "Core Lance",
+	"tooltipKind" : "sword2",
+	"category" : "lance",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear","upgradeableWeapon"],
 
-  "inventoryIcon" : "lavaspear.png",
-  "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "lavaspear.png",
-    "bladefullbright" : "lavaspearfullbright.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"inventoryIcon" : "lavaspear.png",
+	"animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "lavaspear.png",
+		"bladefullbright" : "lavaspearfullbright.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "fire",
-  "fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "heavyspearcombo",
-  "primaryAbility" : {
-    "scripts" : [],
+	"elementalType" : "fire",
+	"fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "heavyspearcombo",
+	"primaryAbility" : {
+		"scripts" : [],
 
-    "fireTime" : 0.9,
-    "baseDps" : 10.84,
-    "damageConfig" : {
-      "damageSourceKind" : "firebow",
-      "statusEffects" : [ "burning" ],
-      "knockback" : 10
-    }
-  },
-  "altAbilityType" : "rocketspear",
-  "altAbility" : {
-    "name" : "Flame Blast",
-    "statusEffects" : [ "burning" ],
-    "baseDps" : 8,
-    "cooldownTime" : 0.1,
-    "energyUsage" : 75,
-    "fireTime" : 0.05,
-    "inaccuracy" : 0,
-    "boostSpeed" : 120,
-    "boostForce" : 50
-  },
+		"fireTime" : 0.9,
+		"baseDps" : 10.84,
+		"damageConfig" : {
+			"damageSourceKind" : "firebow",
+			"statusEffects" : [ "burning" ],
+			"knockback" : 10
+		}
+	},
+	"altAbilityType" : "rocketspear",
+	"altAbility" : {
+		"name" : "Flame Blast",
+		"statusEffects" : [ "burning" ],
+		"baseDps" : 8,
+		"cooldownTime" : 0.1,
+		"energyUsage" : 75,
+		"fireTime" : 0.05,
+		"inaccuracy" : 0,
+		"boostSpeed" : 120,
+		"boostForce" : 50
+	},
 
-  "critChance" : 3,
-  "critBonus" : 12,
+	"critChance" : 3,
+	"critBonus" : 12,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

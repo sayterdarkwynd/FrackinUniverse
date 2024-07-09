@@ -1,38 +1,38 @@
 {
-  "itemName" : "goldrapier",
-  "price" : 300,
-  "level" : 2,
-  "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "Flash em with flashy gold!",
-  "shortdescription" : "Gold Rapier",
-  "tooltipKind" : "sword2",
-  "category" : "Rapier",
-  "twoHanded" : false,
-  "itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon"],
-  "inventoryIcon" : "goldrapier_frann.png",
-  //"collectablesOnPickup" : { "fu_weaponrapier" : "goldrapier" },
-  "animation" : "piercecombo.animation",
-  "animationParts" : {
-    "handle": "",
-    "blade" : "goldrapier_frann.png"
-  },
-  "animationCustom" : { },
+	"itemName" : "goldrapier",
+	"price" : 300,
+	"level" : 2,
+	"maxStack" : 1,
+	"rarity" : "Common",
+	"description" : "Flash em with flashy gold!",
+	"shortdescription" : "Gold Rapier",
+	"tooltipKind" : "sword2",
+	"category" : "Rapier",
+	"twoHanded" : false,
+	"itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon"],
+	"inventoryIcon" : "goldrapier_frann.png",
+	//"collectablesOnPickup" : { "fu_weaponrapier" : "goldrapier" },
+	"animation" : "piercecombo.animation",
+	"animationParts" : {
+		"handle": "",
+		"blade" : "goldrapier_frann.png"
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "fire",
+	"elementalType" : "fire",
 
-  "primaryAbilityType" : "piercecombo",
-  "primaryAbility" : {
-    "fireTime" : 0.42,
-    "baseDps" : 5.75,
-    "damageConfig" : {
-      "damageSourceKind":"fire",
-      "statusEffects":["burning"]
-    }
-  },
-  "critChance" : 3,
-  "critBonus" : 1,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"primaryAbilityType" : "piercecombo",
+	"primaryAbility" : {
+		"fireTime" : 0.42,
+		"baseDps" : 5.75,
+		"damageConfig" : {
+			"damageSourceKind":"fire",
+			"statusEffects":["burning"]
+		}
+	},
+	"critChance" : 3,
+	"critBonus" : 1,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,37 +1,40 @@
 {
-  "itemName" : "zerchesiumsword",
-  "price" : 150,
-  "level" : 3,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Finely honed zerchesium steel.",
-  "shortdescription" : "Zerchesium Shortsword",
-  "tooltipKind" : "sword2",
-  "category" : "shortsword",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword","zerchesium", "upgradeableWeapon"],
+	"itemName" : "zerchesiumsword",
+	"price" : 150,
+	"level" : 3,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "Finely honed zerchesium steel.",
+	"shortdescription" : "Zerchesium Shortsword",
+	"tooltipKind" : "sword2",
+	"category" : "shortsword",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","shortsword","zerchesium", "upgradeableWeapon"],
 
-  "inventoryIcon" : "zerchesiumsword.png",
-  //"collectablesOnPickup" : { "fu_weaponshortsword" : "zerchesiumsword" },
-  "animation" : "comboshortsword.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "zerchesiumsword.png"
-  },
+	"inventoryIcon" : "zerchesiumsword.png",
+	//"collectablesOnPickup" : { "fu_weaponshortsword" : "zerchesiumsword" },
+	"animation" : "comboshortsword.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "zerchesiumsword.png"
+	},
 
-  "animationCustom" : { },
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+	"elementalType" : "ice",
 
-  "primaryAbilityType" : "shortswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.53,
-    "baseDps" : 7.2
-  },
-  "critChance" : 3,
-  "critBonus" : 2,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"primaryAbilityType" : "shortswordcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.53,
+		"baseDps" : 7.2,
+		"damageConfig" : {
+			 "damageSourceKind" : "iceshortsword"
+		}
+	},
+	"critChance" : 3,
+	"critBonus" : 2,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

@@ -1,51 +1,51 @@
 {
-  "itemName" : "hylotlgreatscion",
-  "price" : 1500,
-  "level" : 3,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "A traditional Hylotl weapon of war.
+	"itemName" : "hylotlgreatscion",
+	"price" : 1500,
+	"level" : 3,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "A traditional Hylotl weapon of war.
 ^cyan;Huge striking power. Cold edged^reset;.
 ^green;Slowing Alt^reset;",
-  "shortdescription" : "Great Scion",
-  "tooltipKind" : "sword2",
-  "category" : "broadsword",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword", "upgradeableWeapon"],
+	"shortdescription" : "Great Scion",
+	"tooltipKind" : "sword2",
+	"category" : "broadsword",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","broadsword", "upgradeableWeapon"],
 
-  "inventoryIcon" : "hylotlgreatscion.png",
-  //"collectablesOnPickup" : { "fu_weaponbroadsword" : "hylotlgreatscion" },
-  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "hylotlgreatscion.png"
-  },
-  "animationCustom" : { },
+	"inventoryIcon" : "hylotlgreatscion.png",
+	//"collectablesOnPickup" : { "fu_weaponbroadsword" : "hylotlgreatscion" },
+	"animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "hylotlgreatscion.png"
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+	"elementalType" : "ice",
 
-  "primaryAbilityType" : "broadswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.83,
-    "baseDps" : 10.0,
-    "damageConfig" : {
-      "damageSourceKind" : "ice"
-    }
-  },
+	"primaryAbilityType" : "broadswordcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.83,
+		"baseDps" : 10.0,
+		"damageConfig" : {
+			"damageSourceKind" : "ice"
+		}
+	},
 
-  "altAbilityType" : "fuwaterslash",
-  "altAbility" : {
-    "baseDps" : 7,
-    "projectileParameters" : {
-      "baseDamage" : 16
-    },
-    "damageConfig" : {
-      "damageSourceKind" : "ice"
-    }
-  },
-  "critChance" : 2,
-  "critBonus" : 4,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"altAbilityType" : "fuwaterslash",
+	"altAbility" : {
+		"baseDps" : 7,
+		"projectileParameters" : {
+			"baseDamage" : 16
+		},
+		"damageConfig" : {
+			"damageSourceKind" : "ice"
+		}
+	},
+	"critChance" : 2,
+	"critBonus" : 4,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,52 +1,52 @@
 {
-  "itemName" : "pincerspear",
-  "price" : 100,
-  "level" : 3,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "A two-sided blade for twice the fun.
+	"itemName" : "pincerspear",
+	"price" : 100,
+	"level" : 3,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "A two-sided blade for twice the fun.
 ^cyan;Hunting weapon, Floran^reset;",
-  "shortdescription" : "Pincer Spear",
-  "tooltipKind" : "sword2",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear","bioweapon", "upgradeableWeapon","floran"],
+	"shortdescription" : "Pincer Spear",
+	"tooltipKind" : "sword2",
+	"category" : "spear",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear","bioweapon", "upgradeableWeapon","floran"],
 
-  "inventoryIcon" : "pincerspear.png",
-  //"collectablesOnPickup" : { "fu_weaponspear" : "pincerspear" },
-  "animation" : "/items/active/weapons/melee/spear/spear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "pincerspear.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"inventoryIcon" : "pincerspear.png",
+	//"collectablesOnPickup" : { "fu_weaponspear" : "pincerspear" },
+	"animation" : "/items/active/weapons/melee/spear/spear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "pincerspear.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+	"elementalType" : "ice",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "scripts" : [],
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "spearstab",
+	"primaryAbility" : {
+		"scripts" : [],
 
-    "fireTime" : 0.6,
-    "baseDps" : 9.24,
-    "damageConfig" : {
-      "damageSourceKind" : "icebow",
-      "statusEffects" : [ ],
-      "knockback" : 24
-    }
-  },
-  "altAbilityType" : "rocketspear3",
-  "altAbility" : { },
+		"fireTime" : 0.6,
+		"baseDps" : 9.24,
+		"damageConfig" : {
+			"damageSourceKind" : "icebow",
+			"statusEffects" : [ ],
+			"knockback" : 24
+		}
+	},
+	"altAbilityType" : "rocketspear3",
+	"altAbility" : { },
 
-  "critChance" : 2,
-  "critBonus" : 7,
+	"critChance" : 2,
+	"critBonus" : 7,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

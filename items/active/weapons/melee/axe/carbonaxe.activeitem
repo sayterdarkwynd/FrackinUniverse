@@ -1,74 +1,74 @@
 {
-  "itemName" : "carbonaxe",
-  "price" : 640,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Sturdy, and ideal for survivalists.
+	"itemName" : "carbonaxe",
+	"price" : 640,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "Sturdy, and ideal for survivalists.
 ^cyan;Inflicts bleeding^reset;",
-  "shortdescription" : "Carbon Hatchet",
-  "tooltipKind" : "sword2",
-  "category" : "axe",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","axe", "upgradeableWeapon"],
-  "level" : 3,
-  "inventoryIcon" : "carbonaxe.png",
-  //"collectablesOnPickup" : { "fu_weaponaxe" : "carbonaxe" },
-  "animation" : "axe.animation",
-  "animationParts" : {
-    "blade" : "carbonaxe.png",
-    "handle" : ""
-  },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-1.0, 1.75]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_axe.ogg" ]
-    }
-  },
+	"shortdescription" : "Carbon Hatchet",
+	"tooltipKind" : "sword2",
+	"category" : "axe",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","axe", "upgradeableWeapon"],
+	"level" : 3,
+	"inventoryIcon" : "carbonaxe.png",
+	//"collectablesOnPickup" : { "fu_weaponaxe" : "carbonaxe" },
+	"animation" : "axe.animation",
+	"animationParts" : {
+		"blade" : "carbonaxe.png",
+		"handle" : ""
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+			"offset" : [-1.0, 1.75]
+		}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_axe.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "aimOffset" : -1.0,
+	"aimOffset" : -1.0,
 
-  "primaryAbilityType" : "axecleave",
-  "primaryAbility" : {
-    "fireTime" : 0.52,
-    "baseDps" : 8.75,
-    "damageConfig" : {
-      "damageSourceKind" : "axe",
-      "knockback" : 12,
-      "statusEffects" : [ "bleedingshort" ]
-    },
-    "stances" : {
-      "idle" : {
-        "weaponOffset" : [0.25, 1.5]
-      },
-      "windup" : {
-        "duration" : 0.7,
-        "weaponOffset" : [0.25, 1.5],
+	"primaryAbilityType" : "axecleave",
+	"primaryAbility" : {
+		"fireTime" : 0.52,
+		"baseDps" : 8.75,
+		"damageConfig" : {
+			"damageSourceKind" : "axe",
+			"knockback" : 12,
+			"statusEffects" : [ "bleedingshort" ]
+		},
+		"stances" : {
+			"idle" : {
+				"weaponOffset" : [0.25, 1.5]
+			},
+			"windup" : {
+				"duration" : 0.7,
+				"weaponOffset" : [0.25, 1.5],
 
-        "minWindup" : 0.6,
+				"minWindup" : 0.6,
 
-        "weaponAngle" : [
-          [0.7, "linear", -20, 0],
-          [0.85, "linear", 0, 50],
-          [0.925, "sin", 50, 45],
-          [1.0, "cos", 50, 45]
-        ],
+				"weaponAngle" : [
+					[0.7, "linear", -20, 0],
+					[0.85, "linear", 0, 50],
+					[0.925, "sin", 50, 45],
+					[1.0, "cos", 50, 45]
+				],
 
-        "armAngle" : [
-          [1.0, "sin", -90, 50]
-        ]
-      },
-      "fire" : {
-        "weaponOffset" : [0.25, 1.5]
-      }
-    }
-  },
-  "critChance" : 4,
-  "critBonus" : 4,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+				"armAngle" : [
+					[1.0, "sin", -90, 50]
+				]
+			},
+			"fire" : {
+				"weaponOffset" : [0.25, 1.5]
+			}
+		}
+	},
+	"critChance" : 4,
+	"critBonus" : 4,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

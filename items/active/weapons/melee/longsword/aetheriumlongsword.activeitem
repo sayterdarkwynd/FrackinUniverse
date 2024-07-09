@@ -1,46 +1,46 @@
 {
-  "itemName" : "aetheriumlongsword",
-  "price" : 2600,
-  "level" : 7,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "A weapon infused with the power of the cosmos.",
-  "shortdescription" : "Aetherium Longsword",
-  "tooltipKind" : "swordaetherium",
-  "category" : "longsword",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","longsword","upgradeableWeapon","aetherium","cosmic"],
-  "inventoryIcon" : "aetheriumlongsword.png",
-  "animation" : "combolongswordglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "aetheriumlongsword.png",
-    "bladefullbright" : "aetheriumlongswordfullbright.png"
-  },
-  "animationCustom" : {
-	  "sounds" : {
-	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
-	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
-	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
-	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
-	  }
-  },
-  "emitters" : [ "ancientenergytrail", "barrierelectric" ],
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"itemName" : "aetheriumlongsword",
+	"price" : 2600,
+	"level" : 7,
+	"maxStack" : 1,
+	"rarity" : "legendary",
+	"description" : "A weapon infused with the power of the cosmos.",
+	"shortdescription" : "Aetherium Longsword",
+	"tooltipKind" : "swordaetherium",
+	"category" : "longsword",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","longsword","upgradeableWeapon","aetherium","cosmic"],
+	"inventoryIcon" : "aetheriumlongsword.png",
+	"animation" : "combolongswordglow.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "aetheriumlongsword.png",
+		"bladefullbright" : "aetheriumlongswordfullbright.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+			"fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+			"fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+			"crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+		}
+	},
+	"emitters" : [ "ancientenergytrail", "barrierelectric" ],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "aether",
+	"elementalType" : "aether",
 
-  "primaryAbilityType" : "battlebladecombo",
-  "primaryAbility" : {
-    "fireTime" : 0.92,
-    "baseDps" : 7.12,
-    "damageConfig" : {
-      "damageSourceKind": "aethershortsword",
-      "statusEffects":["defenseboostneg20"]
-    }
-  },
+	"primaryAbilityType" : "battlebladecombo",
+	"primaryAbility" : {
+		"fireTime" : 0.92,
+		"baseDps" : 7.12,
+		"damageConfig" : {
+			"damageSourceKind": "aethershortsword",
+			"statusEffects":["defenseboostneg20"]
+		}
+	},
 
-  "critChance" : 2,
-  "critBonus" : 7,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"critChance" : 2,
+	"critBonus" : 7,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

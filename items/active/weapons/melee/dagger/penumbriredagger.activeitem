@@ -1,51 +1,51 @@
 {
-  "itemName" : "penumbritedagger",
-  "price" : 90,
-  "maxStack" : 1,
-  "level" : 3,
-  "rarity" : "uncommon",
-  "description" : "Forged from lustrous penumbrite.
+	"itemName" : "penumbritedagger",
+	"price" : 90,
+	"maxStack" : 1,
+	"level" : 3,
+	"rarity" : "uncommon",
+	"description" : "Forged from lustrous penumbrite.
 ^cyan;Universal Damage^reset;",
-  "shortdescription" : "Penumbral Dagger",
-  "tooltipKind" : "sword2",
-  "category" : "dagger",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger","penumbrite", "upgradeableWeapon","silver"],
-  "inventoryIcon" : "penumbritedagger.png",
+	"shortdescription" : "Penumbral Dagger",
+	"tooltipKind" : "sword2",
+	"category" : "dagger",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","dagger","penumbrite", "upgradeableWeapon","silver"],
+	"inventoryIcon" : "penumbritedagger.png",
 
-  "animation" : "daggercomboglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "penumbritedagger.png",
-    "bladefullbright" : "penumbritedaggerfullbright.png"
-  },
+	"animation" : "daggercomboglow.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "penumbritedagger.png",
+		"bladefullbright" : "penumbritedaggerfullbright.png"
+	},
 
-  "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}
-      }
-    }
-  },
+	"animationCustom" : {
+		"animatedParts" : {
+			"parts" : {
+				"blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"swoosh" : { "properties" : {"offset" : [1, 2]}}
+			}
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "silverweapon",
+	"elementalType" : "silverweapon",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "daggercombo",
-  "primaryAbility" : {
-    "fireTime" : 0.35,
-    "baseDps" : 5.5,
-    "damageConfig" : {
-      "knockback" : 10,
-      "damageSourceKind" : "silverweapon"
-    }
-  },
-  "critChance" : 3,
-  "critBonus" : 3,
-  "stunChance" : 50,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "daggercombo",
+	"primaryAbility" : {
+		"fireTime" : 0.35,
+		"baseDps" : 5.5,
+		"damageConfig" : {
+			"knockback" : 10,
+			"damageSourceKind" : "silverweapon"
+		}
+	},
+	"critChance" : 3,
+	"critBonus" : 3,
+	"stunChance" : 50,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

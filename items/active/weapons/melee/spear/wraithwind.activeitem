@@ -1,53 +1,53 @@
 {
-  "itemName" : "wraithwind",
-  "price" : 680,
-  "level" : 3,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "A specially designed spear laced with various metals.
+	"itemName" : "wraithwind",
+	"price" : 680,
+	"level" : 3,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "A specially designed spear laced with various metals.
 ^cyan;Inflicts poison^reset;.
 ^cyan;Hunting weapon^reset;.",
-  "shortdescription" : "Wraithveil Spear",
-  "tooltipKind" : "sword2",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear", "upgradeableWeapon"],
+	"shortdescription" : "Wraithveil Spear",
+	"tooltipKind" : "sword2",
+	"category" : "spear",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear", "upgradeableWeapon"],
 
-  "inventoryIcon" : "wraithwind.png",
-  "animation" : "/items/active/weapons/melee/spear/spear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "wraithwind.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"inventoryIcon" : "wraithwind.png",
+	"animation" : "/items/active/weapons/melee/spear/spear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "wraithwind.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "scripts" : [],
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "spearstab",
+	"primaryAbility" : {
+		"scripts" : [],
 
-    "fireTime" : 0.8,
-    "baseDps" : 10.5,
-    "damageConfig" : {
-      "damageSourceKind" : "bow",
-      "statusEffects" : [ "weakpoison" ],
-      "knockback" : 12
-    }
-  },
+		"fireTime" : 0.8,
+		"baseDps" : 10.5,
+		"damageConfig" : {
+			"damageSourceKind" : "bow",
+			"statusEffects" : [ "weakpoison" ],
+			"knockback" : 12
+		}
+	},
 
-  "altAbilityType" : "huntspearstab",
-  "altAbility" : { },
+	"altAbilityType" : "huntspearstab",
+	"altAbility" : { },
 
-  "critChance" : 3,
-  "critBonus" : 4,
+	"critChance" : 3,
+	"critBonus" : 4,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

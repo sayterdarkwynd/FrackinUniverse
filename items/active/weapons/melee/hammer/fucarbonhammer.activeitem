@@ -1,47 +1,47 @@
 {
-  "itemName" : "fucarbonhammer",
-  "price" : 400,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "A heavy, reliable carbon hammer.",
-  "shortdescription" : "Carbon Hammerpick",
-  "tooltipKind" : "hammer",
-  "category" : "hammer",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon"],
-  "level" : 3,
-  "inventoryIcon" : "carbonhammer.png",
-  //"collectablesOnPickup" : { "fu_weaponhammer" : "fucarbonhammer" },
-  "animation" : "hammer.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "carbonhammer.png"
-  },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-2.0, 1.5]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
-    }
-  },
+	"itemName" : "fucarbonhammer",
+	"price" : 400,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "A heavy, reliable carbon hammer.",
+	"shortdescription" : "Carbon Hammerpick",
+	"tooltipKind" : "hammer",
+	"category" : "hammer",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","hammer", "upgradeableWeapon"],
+	"level" : 3,
+	"inventoryIcon" : "carbonhammer.png",
+	//"collectablesOnPickup" : { "fu_weaponhammer" : "fucarbonhammer" },
+	"animation" : "hammer.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "carbonhammer.png"
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+			"offset" : [-2.0, 1.5]
+		}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "primaryAbilityType" : "hammersmash",
-  "primaryAbility" : {
-    "fireTime" : 0.875,
-    "baseDps" : 14.52
-  },
+	"primaryAbilityType" : "hammersmash",
+	"primaryAbility" : {
+		"fireTime" : 0.875,
+		"baseDps" : 14.52
+	},
 
-  "altAbilityType" : "uppercut",
-  "altAbility" : { },
+	"altAbilityType" : "uppercut",
+	"altAbility" : { },
 
-  "critChance" : 4,
-  "critBonus" : 5,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"critChance" : 4,
+	"critBonus" : 5,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "stunChance" : 10
+	"stunChance" : 10
 }

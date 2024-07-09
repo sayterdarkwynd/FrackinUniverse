@@ -1,37 +1,42 @@
 {
-  "itemName" : "goldenseascion",
-  "price" : 150,
-  "level" : 2,
-  "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "A classy and deadly-looking weapon.",
-  "shortdescription" : "Gold Sea Scion",
-  "tooltipKind" : "sword2",
-  "category" : "shortsword",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword", "upgradeableWeapon"],
+	"itemName" : "goldenseascion",
+	"price" : 150,
+	"level" : 2,
+	"maxStack" : 1,
+	"rarity" : "common",
+	"description" : "A classy and deadly-looking weapon.
+^green;Inflicts Poison^reset;",
+	"shortdescription" : "Gold Sea Scion",
+	"tooltipKind" : "sword2",
+	"category" : "shortsword",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","shortsword", "upgradeableWeapon"],
 
-  "inventoryIcon" : "goldenseascion.png",
-  //"collectablesOnPickup" : { "fu_weaponshortsword" : "goldenseascion" },
-  "animation" : "comboshortsword.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "goldenseascion.png"
-  },
+	"inventoryIcon" : "goldenseascion.png",
+	//"collectablesOnPickup" : { "fu_weaponshortsword" : "goldenseascion" },
+	"animation" : "comboshortsword.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "goldenseascion.png"
+	},
 
-  "animationCustom" : { },
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+	"elementalType" : "poison",
 
-  "primaryAbilityType" : "shortswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.55,
-    "baseDps" : 6.5
-  },
-  "critChance" : 2,
-  "critBonus" : 2,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"primaryAbilityType" : "shortswordcombo",
+	"primaryAbility" : {
+		"fireTime" : 0.55,
+		"baseDps" : 6.5,
+		"damageConfig" : {
+			"damageSourceKind": "poisonshortsword",
+			"statusEffects" : [ "weakpoison" ]
+		}
+	},
+	"critChance" : 2,
+	"critBonus" : 2,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

@@ -1,51 +1,51 @@
 {
-  "itemName" : "irongreataxe",
-  "price" : 300,
-  "level" : 1,
-  "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "A somewhat crude iron greataxe.",
-  "shortdescription" : "Iron Greataxe",
-  "tooltipKind" : "hammer",
-  "category" : "greataxe",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","greataxe", "upgradeableWeapon"],
+	"itemName" : "irongreataxe",
+	"price" : 300,
+	"level" : 1,
+	"maxStack" : 1,
+	"rarity" : "Common",
+	"description" : "A somewhat crude iron greataxe.",
+	"shortdescription" : "Iron Greataxe",
+	"tooltipKind" : "hammer",
+	"category" : "greataxe",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","greataxe", "upgradeableWeapon"],
 
-  "inventoryIcon" : "irongreataxe.png",
-  //"collectablesOnPickup" : { "fu_weapongreataxe" : "irongreataxe" },
-  "animation" : "/items/active/weapons/melee/greataxe/greataxe.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "irongreataxe.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ]
-    },
-    "animatedParts" : {
-      "parts" : {
-        "blade" : { "properties" : {"offset" : [0, 0.5]}},
-        "swoosh" : { "properties" : {"offset" : [0, 2]}}
-      }
-    }
-  },
+	"inventoryIcon" : "irongreataxe.png",
+	//"collectablesOnPickup" : { "fu_weapongreataxe" : "irongreataxe" },
+	"animation" : "/items/active/weapons/melee/greataxe/greataxe.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "irongreataxe.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_broadsword.ogg" ]
+		},
+		"animatedParts" : {
+			"parts" : {
+				"blade" : { "properties" : {"offset" : [0, 0.5]}},
+				"swoosh" : { "properties" : {"offset" : [0, 2]}}
+			}
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "primaryAbilityType" : "greataxesmash",
-  "primaryAbility" : {
-    "fireTime" : 0.8,
-    "baseDps" : 11.5
-  },
+	"primaryAbilityType" : "greataxesmash",
+	"primaryAbility" : {
+		"fireTime" : 0.8,
+		"baseDps" : 11.5
+	},
 
-  "palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
+	"palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
 
-  "altAbilityType" : "physicalshockwave",
-  "critChance" : 3,
-  "critBonus" : 5,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"altAbilityType" : "physicalshockwave",
+	"critChance" : 3,
+	"critBonus" : 5,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "stunChance" : 5
+	"stunChance" : 5
 }

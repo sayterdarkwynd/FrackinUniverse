@@ -1,51 +1,51 @@
 {
-  "itemName" : "banehammer",
-  "price" : 900,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Forged from carbon and irradium. Quite dangerous.
+	"itemName" : "banehammer",
+	"price" : 900,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Forged from carbon and irradium. Quite dangerous.
 ^cyan;Inflicts Rad-Burn^reset;",
-  "shortdescription" : "Irradium Hammer",
-  "tooltipKind" : "hammer",
-  "category" : "hammer",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer","irradium", "upgradeableWeapon","radioactive"],
-  "level" : 4,
-  "inventoryIcon" : "irradiumhammer.png",
-  //"collectablesOnPickup" : { "fu_weaponhammer" : "banehammer" },
-  "animation" : "hammer.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "irradiumhammer.png"
-  },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-2.0, 1.5]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
-    }
-  },
+	"shortdescription" : "Irradium Hammer",
+	"tooltipKind" : "hammer",
+	"category" : "hammer",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","hammer","irradium", "upgradeableWeapon","radioactive"],
+	"level" : 4,
+	"inventoryIcon" : "irradiumhammer.png",
+	//"collectablesOnPickup" : { "fu_weaponhammer" : "banehammer" },
+	"animation" : "hammer.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "irradiumhammer.png"
+	},
+	"animationCustom" : {
+		"animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+			"offset" : [-2.0, 1.5]
+		}}}},
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "radioactive",
+	"elementalType" : "radioactive",
 
-  "primaryAbilityType" : "hammersmash",
-  "primaryAbility" : {
-    "fireTime" : 1.2,
-    "baseDps" : 12,
-    "damageConfig" : {
-      "damageSourceKind" : "radioactivehammer",
-      "statusEffects" : [ "radiationburn" ]
-    }
-  },
+	"primaryAbilityType" : "hammersmash",
+	"primaryAbility" : {
+		"fireTime" : 1.2,
+		"baseDps" : 12,
+		"damageConfig" : {
+			"damageSourceKind" : "radioactivehammer",
+			"statusEffects" : [ "radiationburn" ]
+		}
+	},
 
-  "altAbilityType" : "shockwave",
-  "altAbility" : { },
-  "critChance" : 4,
-  "critBonus" : 5,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"altAbilityType" : "shockwave",
+	"altAbility" : { },
+	"critChance" : 4,
+	"critBonus" : 5,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
 
-  "stunChance" : 9
+	"stunChance" : 9
 }

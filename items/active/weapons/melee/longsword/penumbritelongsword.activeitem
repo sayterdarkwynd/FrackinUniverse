@@ -1,45 +1,45 @@
 {
-  "itemName" : "penumbritelongsword",
-  "price" : 160,
-  "level" : 3,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Cuts with shadowy purpose.
+	"itemName" : "penumbritelongsword",
+	"price" : 160,
+	"level" : 3,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "Cuts with shadowy purpose.
 ^cyan;Universal Damage^reset;",
-  "shortdescription" : "Penumbral Longsword",
-  "tooltipKind" : "sword2",
-  "category" : "longsword",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","longsword","penumbrite", "upgradeableWeapon","silver"],
-  "inventoryIcon" : "penumbritelongsword.png",
-  "animation" : "combolongswordglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "penumbritelongsword.png",
-    "bladefullbright" : "penumbritelongswordfullbright.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
-      "fire2" : [ "/sfx/melee/swing_shortsword.ogg" ],
-      "fire3" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"shortdescription" : "Penumbral Longsword",
+	"tooltipKind" : "sword2",
+	"category" : "longsword",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","longsword","penumbrite", "upgradeableWeapon","silver"],
+	"inventoryIcon" : "penumbritelongsword.png",
+	"animation" : "combolongswordglow.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "penumbritelongsword.png",
+		"bladefullbright" : "penumbritelongswordfullbright.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+			"fire2" : [ "/sfx/melee/swing_shortsword.ogg" ],
+			"fire3" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "silverweapon",
+	"elementalType" : "silverweapon",
 
-  "primaryAbilityType" : "battlebladecombo",
-  "primaryAbility" : {
-    "fireTime" : 0.93,
-    "baseDps" : 5.8,
-    "damageConfig" : {
-      "damageSourceKind": "silverweapon"
-    }
-  },
+	"primaryAbilityType" : "battlebladecombo",
+	"primaryAbility" : {
+		"fireTime" : 0.93,
+		"baseDps" : 5.8,
+		"damageConfig" : {
+			"damageSourceKind": "silverweapon"
+		}
+	},
 
-  "critChance" : 1,
-  "critBonus" : 7,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"critChance" : 1,
+	"critBonus" : 7,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,56 +1,56 @@
 {
-  "itemName" : "aetheriumkatana",
-  "price" : 4500,
-  "level" : 7,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "There isn't any katana that can top this.
+	"itemName" : "aetheriumkatana",
+	"price" : 4500,
+	"level" : 7,
+	"maxStack" : 1,
+	"rarity" : "legendary",
+	"description" : "There isn't any katana that can top this.
 ^cyan;Massive 10-hit combo!^reset;",
-  "shortdescription" : "Aetherium Katana",
-  "tooltipKind" : "swordaetherium",
-  "category" : "katana",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","katana", "upgradeableWeapon","aetherium","cosmic"],
+	"shortdescription" : "Aetherium Katana",
+	"tooltipKind" : "swordaetherium",
+	"category" : "katana",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","katana", "upgradeableWeapon","aetherium","cosmic"],
 
-  "inventoryIcon" : "aetheriumkatana.png",
-  //"collectablesOnPickup" : { "fu_weaponkatana" : "aetheriumkatana" },
-  "animation" : "combokatanaglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "aetheriumkatana.png",
-    "bladefullbright" : "aetheriumkatanafullbright.png"
-  },
-  "animationCustom":{},
-
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
-
-  "elementalType" : "aether",
-
-  "primaryAbilityType" : "katanacombo",
-  "primaryAbility":{
-    "fireTime":0.72,
-    "baseDps":8,
-    "damageConfig":{
-      "knockback":20,
-      "damageSourceKind" : "aetherbroadsword"
-      },
-      "comboSteps":10
-    },
-
-  "critChance" : 1,
-  "critBonus" : 8,
-  "upgradeParameters": {
-    "description" : "A real hard sword for a real hard dude.",
-	"shortdescription" : "Aetherium Soulslasher",
-	"inventoryIcon" : "aetheriumkatanat8.png",
+	"inventoryIcon" : "aetheriumkatana.png",
+	//"collectablesOnPickup" : { "fu_weaponkatana" : "aetheriumkatana" },
+	"animation" : "combokatanaglow.animation",
 	"animationParts" : {
-      "blade" : "aetheriumkatanat8.png",
-      "bladefullbright" : "aetheriumkatanafullbrightt8.png"
-    },
+		"handle" : "",
+		"blade" : "aetheriumkatana.png",
+		"bladefullbright" : "aetheriumkatanafullbright.png"
+	},
+	"animationCustom":{},
+
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+	"elementalType" : "aether",
+
+	"primaryAbilityType" : "katanacombo",
 	"primaryAbility":{
-	  "fireTime":0.6
-	  }
-  },
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+		"fireTime":0.72,
+		"baseDps":8,
+		"damageConfig":{
+			"knockback":20,
+			"damageSourceKind" : "aetherbroadsword"
+			},
+			"comboSteps":10
+		},
+
+	"critChance" : 1,
+	"critBonus" : 8,
+	"upgradeParameters": {
+		"description" : "A real hard sword for a real hard dude.",
+		"shortdescription" : "Aetherium Soulslasher",
+		"inventoryIcon" : "aetheriumkatanat8.png",
+		"animationParts" : {
+			"blade" : "aetheriumkatanat8.png",
+			"bladefullbright" : "aetheriumkatanafullbrightt8.png"
+		},
+		"primaryAbility":{
+			"fireTime":0.6
+		}
+	},
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }
