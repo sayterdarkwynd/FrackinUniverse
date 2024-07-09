@@ -2,14 +2,15 @@ require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 require "/items/active/weapons/weapon.lua"
 
-ElementalSpin = WeaponAbility:new()
+StaffElementalSpin = WeaponAbility:new()
 
-function ElementalSpin:init()
+function StaffElementalSpin:init()
 	self:reset()
 	self.cooldownTimer = self.cooldownTime
+	--sb.logInfo("elementalspin %s",self.damageConfig)
 end
 
-function ElementalSpin:update(dt, fireMode, shiftHeld)
+function StaffElementalSpin:update(dt, fireMode, shiftHeld)
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
 	self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
@@ -19,7 +20,7 @@ function ElementalSpin:update(dt, fireMode, shiftHeld)
 	end
 end
 
-function ElementalSpin:windup()
+function StaffElementalSpin:windup()
 	self.weapon:setStance(self.stances.windup)
 	self.weapon:updateAim()
 
@@ -56,7 +57,7 @@ function ElementalSpin:windup()
 	self.cooldownTimer = self.cooldownTime
 end
 
-function ElementalSpin:fire()
+function StaffElementalSpin:fire()
 	self.weapon:setStance(self.stances.fire)
 	self.weapon:updateAim()
 
@@ -75,13 +76,13 @@ function ElementalSpin:fire()
 	util.wait(self.stances.fire.duration)
 end
 
-function ElementalSpin:reset()
+function StaffElementalSpin:reset()
 	animator.setAnimationState("spinSwoosh", "idle")
 	animator.setParticleEmitterActive(self.weapon.elementalType.."Spin", false)
 	activeItem.setOutsideOfHand(false)
 	animator.stopAllSounds(self.weapon.elementalType.."Spin")
 end
 
-function ElementalSpin:uninit()
+function StaffElementalSpin:uninit()
 	self:reset()
 end

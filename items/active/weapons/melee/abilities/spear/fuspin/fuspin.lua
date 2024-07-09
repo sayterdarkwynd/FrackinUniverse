@@ -1,16 +1,16 @@
 require "/scripts/util.lua"
 require "/items/active/weapons/weapon.lua"
 
-Spin = WeaponAbility:new()
+FUSpin = WeaponAbility:new()
 
-function Spin:init()
+function FUSpin:init()
 	self.cooldownTimer = self.cooldownTime
 	self:reset()
 	self.primaryAbility = getPrimaryAbility()
 	self.damageConfigMerged=util.mergeTable(self.primaryAbility.damageConfig,self.damageConfig)
 end
 
-function Spin:update(dt, fireMode, shiftHeld)
+function FUSpin:update(dt, fireMode, shiftHeld)
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
 	self.cooldownTimer = math.max(0, self.cooldownTimer - dt)
@@ -24,7 +24,7 @@ function Spin:update(dt, fireMode, shiftHeld)
 	end
 end
 
-function Spin:spin()
+function FUSpin:spin()
 	self.weapon:setStance(self.stances.spin)
 	self.weapon:updateAim()
 
@@ -43,11 +43,11 @@ function Spin:spin()
 	self.cooldownTimer = self.cooldownTime
 end
 
-function Spin:reset()
+function FUSpin:reset()
 	animator.setAnimationState("spinSwoosh", "idle")
 	activeItem.setOutsideOfHand(false)
 end
 
-function Spin:uninit()
+function FUSpin:uninit()
 	self:reset()
 end

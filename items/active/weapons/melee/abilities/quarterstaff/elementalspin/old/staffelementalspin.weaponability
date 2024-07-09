@@ -118,37 +118,37 @@
 					{ "particle" : "iceswoosh3"}
 				]
 			},
-			"shadowSpin" : {
-				"active" : false,
-				"transformationGroups" : ["swoosh"],
-				"emissionRate" : 50,
-				"burstCount" : 3,
-				"particles" : [
-					{ "particle" : "shadowswoosh1"},
-					{ "particle" : "shadowswoosh2"},
-					{ "particle" : "shadowswoosh3"}
-				]
-			},
-			"radioactiveSpin" : {
-				"active" : false,
-				"transformationGroups" : ["swoosh"],
-				"emissionRate" : 40,
-				"particles" : [
-					{ "particle" : "radioactiveswoosh1"},
-					{ "particle" : "radioactiveswoosh2"},
-					{ "particle" : "poisonswoosh2"}
-				]
-			},
-			"cosmicSpin" : {
-				"active" : false,
-				"transformationGroups" : ["swoosh"],
-				"emissionRate" : 40,
-				"particles" : [
-					{ "particle" : "cosmicswoosh1"},
-					{ "particle" : "cosmicswoosh2"},
-					{ "particle" : "cosmicswoosh3"}
-				]
-			},
+		"shadowSpin" : {
+			"active" : false,
+			"transformationGroups" : ["swoosh"],
+			"emissionRate" : 50,
+			"burstCount" : 3,
+			"particles" : [
+				{ "particle" : "shadowswoosh1"},
+				{ "particle" : "shadowswoosh2"},
+				{ "particle" : "shadowswoosh3"}
+			]
+		},
+		"radioactiveSpin" : {
+			"active" : false,
+			"transformationGroups" : ["swoosh"],
+			"emissionRate" : 40,
+			"particles" : [
+				{ "particle" : "radioactiveswoosh1"},
+				{ "particle" : "radioactiveswoosh2"},
+				{ "particle" : "poisonswoosh2"}
+			]
+		},
+		"cosmicSpin" : {
+			"active" : false,
+			"transformationGroups" : ["swoosh"],
+			"emissionRate" : 40,
+			"particles" : [
+				{ "particle" : "cosmicswoosh1"},
+				{ "particle" : "cosmicswoosh2"},
+				{ "particle" : "cosmicswoosh3"}
+			]
+		},
 			"bioweaponSpin" : {
 				"active" : false,
 				"emissionRate" : 12,
@@ -192,10 +192,10 @@
 	},
 
 	"ability" : {
-		"name" : "Energy Whirl",
-		"type" : "fustaffelementalspin",
-		"scripts" : ["/items/active/weapons/melee/abilities/quarterstaff/elementalspin/fustaffelementalspin.lua"],
-		"class" : "FUElementalSpin",
+		"name" : "E. Whirl",
+		"type" : "staffelementalspin",
+		"scripts" : ["/items/active/weapons/melee/abilities/quarterstaff/elementalspin/old/elementalspin.lua"],
+		"class" : "StaffElementalSpin",
 
 		"energyUsage" : 60,
 		"projectileEnergyCost" : 30,
@@ -247,6 +247,8 @@
 		},
 
 		"damageConfig" : {
+			"damageSourceKind" : "<elementalType>spear",
+			"statusEffects" : [ ],
 			"baseDamage" : 6,
 			"knockbackMode" : "none",
 			"knockback" : 30,
