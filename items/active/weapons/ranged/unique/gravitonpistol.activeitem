@@ -1,91 +1,91 @@
 {
-  "itemName" : "gravitonpistol",
-  "price" : 120,
-  "inventoryIcon" : "gravitonpistol.png",
-    "maxStack" : 1,
-    "rarity" : "rare",
-  "description" : "Micro-gravity turned into a weapon.
+	"itemName" : "gravitonpistol",
+	"price" : 120,
+	"inventoryIcon" : "gravitonpistol.png",
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Micro-gravity turned into a weapon.
 ^yellow;Short-ranged^reset;
 ^green;Huge knockback^reset;",
-  "shortdescription" : "Graviton Pistol",
-  "level" : 5,
-  "category" : "machinePistol",
-  "itemTags" : ["weapon","ranged","machinepistol", "energy", "upgradeableWeapon","gravity"],
-  "tooltipKind" : "gun2",
-  "twoHanded" : false,
-  "weaponType" : "Energy",
-//  "learnBlueprintsOnPickup" : [ "gravitongun" ],
+	"shortdescription" : "Graviton Pistol",
+	"level" : 5,
+	"category" : "machinePistol",
+	"itemTags" : ["weapon","ranged","machinepistol", "energy", "upgradeableWeapon","gravity"],
+	"tooltipKind" : "gun2",
+	"twoHanded" : false,
+	"weaponType" : "Energy",
+//	"learnBlueprintsOnPickup" : [ "gravitongun" ],
 
 
-  "animation" : "/items/active/weapons/ranged/gun.animation",
-  "animationParts" : {
-    "butt" : "",
-    "middle" : "gravitonpistol.png",
-    "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlepurple.png"
-  },
+	"animation" : "/items/active/weapons/ranged/gun.animation",
+	"animationParts" : {
+		"butt" : "",
+		"middle" : "gravitonpistol.png",
+		"barrel" : "",
+		"muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlepurple.png"
+	},
 
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/weapons/gravitongun.ogg" ],
-      "cooldown" : [ "/sfx/interface/aichatter2.ogg" ]
-    },
-    "lights" : { "muzzleFlash" : {"color" : [75, 0, 124] } }
-  },
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/weapons/gravitongun.ogg" ],
+			"cooldown" : [ "/sfx/interface/aichatter2.ogg" ]
+		},
+		"lights" : { "muzzleFlash" : {"color" : [75, 0, 124] } }
+	},
 
-  "baseOffset" : [0.67, 0.3],
-  "muzzleOffset" : [1.5, 0.125],
+	"baseOffset" : [0.67, 0.3],
+	"muzzleOffset" : [1.5, 0.125],
 
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+	"scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+	"elementalType" : "cosmic",
 
-  "isReloader" : 1,
+	"isReloader" : 1,
 
-  "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
-    "fireTime" : 0.5,
-    "baseDps" : 5.5,
-    "energyUsage" : 30,
-    "fireType" : "auto",
-    "inaccuracy" : 0,
-    "projectileCount" : 1,
-    "projectileType" : "gravitonorbsmall4",
-    "projectileParameters" : {
-      "speed" : 42,
-      "knockback" : 12,
-      "timeToLive" : 0.6
-    },
-    "stances" : {
-      "idle":{
-        "armRotation":0,
-        "weaponRotation":0,
-        "twoHanded":false,
-        "allowRotate":true,
-        "allowFlip":true
-      },
-      "fire":{
-        "duration":0.1,
-        "armRotation":3,
-        "weaponRotation":8,
-        "twoHanded":false,
-        "allowRotate":false,
-        "allowFlip":true
-      },
-      "cooldown":{
-        "duration":0.2,
-        "armRotation":-7,
-        "weaponRotation":-360,
-        "twoHanded":false,
-        "allowRotate":false,
-        "allowFlip":true
-      }
-    }
-  },
+	"primaryAbility" : {
+		"scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+		"class" : "GunFire",
+		"fireTime" : 0.5,
+		"baseDps" : 5.5,
+		"energyUsage" : 30,
+		"fireType" : "auto",
+		"inaccuracy" : 0,
+		"projectileCount" : 1,
+		"projectileType" : "gravitonorbsmall4",
+		"projectileParameters" : {
+			"speed" : 42,
+			"knockback" : 12,
+			"timeToLive" : 0.6
+		},
+		"stances" : {
+			"idle":{
+				"armRotation":0,
+				"weaponRotation":0,
+				"twoHanded":false,
+				"allowRotate":true,
+				"allowFlip":true
+			},
+			"fire":{
+				"duration":0.1,
+				"armRotation":3,
+				"weaponRotation":8,
+				"twoHanded":false,
+				"allowRotate":false,
+				"allowFlip":true
+			},
+			"cooldown":{
+				"duration":0.2,
+				"armRotation":-7,
+				"weaponRotation":-360,
+				"twoHanded":false,
+				"allowRotate":false,
+				"allowFlip":true
+			}
+		}
+	},
 
-  "critChance" : 1,
-  "critBonus" : 5,
+	"critChance" : 1,
+	"critBonus" : 5,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
