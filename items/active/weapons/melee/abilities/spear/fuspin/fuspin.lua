@@ -8,6 +8,7 @@ function FUSpin:init()
 	self:reset()
 	self.primaryAbility = getPrimaryAbility()
 	self.damageConfigMerged=util.mergeTable(self.primaryAbility.damageConfig,self.damageConfig)
+	sb.logInfo("fuspin %s",self.damageConfigMerged)
 end
 
 function FUSpin:update(dt, fireMode, shiftHeld)
