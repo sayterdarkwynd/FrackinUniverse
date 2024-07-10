@@ -1,209 +1,209 @@
 {
-  "type" : "sporgus3",
-  "shortdescription" : "Nikaw",
-  "description" : "A nasty fungal mutation that just can't stop spewing explosive spores.",
+	"type" : "sporgus3",
+	"shortdescription" : "Nikaw",
+	"description" : "A nasty fungal mutation that just can't stop spewing explosive spores.",
 
-  "categories" : [ "sporgus3" ],
-  "parts" : [ "body" ],
+	"categories" : [ "sporgus3" ],
+	"parts" : [ "body" ],
 
-  "animation" : "sporgus3.animation",
+	"animation" : "sporgus3.animation",
 
-  "dropPools" : [
-    {
-    "default" : "sporgus2Treasure",
-    "bow" : "sporgusHunting",
-    "firebow" : "sporgusHunting",
-    "icebow" : "sporgusHunting",
-    "poisonbow" : "sporgusHunting",
-    "electricbow" : "sporgusHunting",
-    "cosmicbow" : "sporgusHunting",
-    "radioactivebow" : "sporgusHunting",
-    "shadowbow" : "sporgusHunting"
-    }
-  ],
+	"dropPools" : [
+		{
+			"default" : "sporgus2Treasure",
+			"bow" : "sporgusHunting",
+			"firebow" : "sporgusHunting",
+			"icebow" : "sporgusHunting",
+			"poisonbow" : "sporgusHunting",
+			"electricbow" : "sporgusHunting",
+			"cosmicbow" : "sporgusHunting",
+			"radioactivebow" : "sporgusHunting",
+			"shadowbow" : "sporgusHunting"
+		}
+	],
 
-  "baseParameters" : {
-    "scripts" : [
-      "/monsters/monster.lua"
-    ],
+	"baseParameters" : {
+		"scripts" : [
+			"/monsters/monster.lua"
+		],
 
-    "behavior" : "monster",
+		"behavior" : "monster",
 
-    "behaviorConfig" : {
-      "damageOnTouch" : true,
+		"behaviorConfig" : {
+			"damageOnTouch" : true,
 
-      "targetQueryRange" : 20,
-      "targetOnDamage" : true,
-      "keepTargetInSight" : true,
-      "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 2.5,
+			"targetQueryRange" : 20,
+			"targetOnDamage" : true,
+			"keepTargetInSight" : true,
+			"keepTargetInRange" : 50,
+			"targetOutOfSightTime" : 2.5,
 
-      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+			"foundTargetActions" : [ { "name" : "action-aggrohop" } ],
 
-      "fleeActions" : [],
+			"fleeActions" : [],
 
-      "hostileActions" : [
-        {
-          "name" : "action-fire",
-          "cooldown" : 3.0,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 6,
-            "minimumRange" : 0,
-            "windupState" : "",
-            "windupTime" : 0.0,
+			"hostileActions" : [
+				{
+					"name" : "action-fire",
+					"cooldown" : 3.0,
+					"parameters" : {
+						"requireLineOfSight" : true,
+						"maximumRange" : 6,
+						"minimumRange" : 0,
+						"windupState" : "",
+						"windupTime" : 0.0,
 
-            "projectileType" : "floatyshroom",
-            "projectileParameters" : {
-            "speed" : 40
-            },
-            "power" : 7,
-            "fireOffset" : [0.0, 0.0],
-            "aimAtTarget" : false,
-            "aimDirection" : [0, 1],
-            "inaccuracy" : 0.5,
-            "projectileCount" : 8,
-            "projectileInterval" : 0.15,
-            "fireState" : "fire",
-            "fireDelay" : 0.25,
-            "fireSound" : "fire",
+						"projectileType" : "floatyshroom",
+							"projectileParameters" : {
+							"speed" : 40
+						},
+						"power" : 7,
+						"fireOffset" : [0.0, 0.0],
+						"aimAtTarget" : false,
+						"aimDirection" : [0, 1],
+						"inaccuracy" : 0.5,
+						"projectileCount" : 8,
+						"projectileInterval" : 0.15,
+						"fireState" : "fire",
+						"fireDelay" : 0.25,
+						"fireSound" : "fire",
 
-            "winddownState" : "",
-            "winddownTime" : 0.2
-          }
-        }
-      ],
+						"winddownState" : "",
+						"winddownTime" : 0.2
+					}
+				}
+			],
 
-      "periodicActions" : [],
+			"periodicActions" : [],
 
-      "approachActions" : [
-        {
-          "name" : "approach-walk",
-          "parameters" : {
-            "canJump" : false
-          }
-        }
-      ],
+			"approachActions" : [
+				{
+					"name" : "approach-walk",
+					"parameters" : {
+						"canJump" : false
+					}
+				}
+			],
 
-      "followActions" : [
-        {
-          "name" : "approach-teleport",
-          "parameters" : {
-          }
-        },
-        {
-          "name" : "approach-walk",
-          "parameters" : {
-            "canJump" : false
-          }
-        }
-      ],
+			"followActions" : [
+				{
+					"name" : "approach-teleport",
+					"parameters" : {
+					}
+				},
+				{
+					"name" : "approach-walk",
+					"parameters" : {
+						"canJump" : false
+					}
+				}
+			],
 
-      "wanderActions" : [
-        {
-          "name" : "wander-walk",
-          "cooldown" : 6.0,
-          "parameters" : {
-            "wanderTime" : [5, 15]
-          }
-        }
-      ]
-    },
+			"wanderActions" : [
+				{
+					"name" : "wander-walk",
+					"cooldown" : 6.0,
+					"parameters" : {
+						"wanderTime" : [5, 15]
+					}
+				}
+			]
+		},
 
-    "touchDamage" : {
-      "poly" : [ [0.4375, 1.125], [0.9375, 0.625], [0.9375, -0.625], [0.4375, -1.125], [-0.4375, -1.125], [-0.9375, -0.625], [-0.9375, 0.625], [-0.4375, 1.125] ],
-      "damage" : 12,
+		"touchDamage" : {
+			"poly" : [ [0.4375, 1.125], [0.9375, 0.625], [0.9375, -0.625], [0.4375, -1.125], [-0.4375, -1.125], [-0.9375, -0.625], [-0.9375, 0.625], [-0.4375, 1.125] ],
+			"damage" : 12,
 
-      "teamType" : "enemy",
-      "damageSourceKind" : "slash",
-      "knockback" : 20,
-      "statusEffects" : [ "biooozepoison" ]
-    },
+			"teamType" : "enemy",
+			"damageSourceKind" : "slash",
+			"knockback" : 20,
+			"statusEffects" : [ "biooozepoison" ]
+		},
 
-    "metaBoundBox" : [-4, -4, 4, 4],
-    "scale" : 1.0,
+		"metaBoundBox" : [-4, -4, 4, 4],
+		"scale" : 1.0,
 
-    "movementSettings" : {
-      "collisionPoly" : [ [0.4375, 1.125], [0.9375, 0.625], [0.9375, -0.625], [0.4375, -1.125], [-0.4375, -1.125], [-0.9375, -0.625], [-0.9375, 0.625], [-0.4375, 1.125] ],
+		"movementSettings" : {
+			"collisionPoly" : [ [0.4375, 1.125], [0.9375, 0.625], [0.9375, -0.625], [0.4375, -1.125], [-0.4375, -1.125], [-0.9375, -0.625], [-0.9375, 0.625], [-0.4375, 1.125] ],
 
-      "mass" : 1.0,
-      "walkSpeed" : 3,
-      "runSpeed" : 5,
+			"mass" : 1.0,
+			"walkSpeed" : 3,
+			"runSpeed" : 5,
 
-      "airFriction" : 0,
+			"airFriction" : 0,
 
-      "airJumpProfile" : {
-        "jumpSpeed" : 45.0,
-        "jumpInitialPercentage" : 1.0,
-        "jumpHoldTime" : 0.0
-      }
-    },
+			"airJumpProfile" : {
+				"jumpSpeed" : 45.0,
+				"jumpInitialPercentage" : 1.0,
+				"jumpHoldTime" : 0.0
+			}
+		},
 
-    "bodyMaterialKind" : "organic",
+		"bodyMaterialKind" : "organic",
 
-    "knockoutTime" : 0.3,
-    "knockoutAnimationStates" : {
-      "damage" : "stunned"
-    },
-    "deathParticles" : "deathPoof",
-    "knockoutEffect" : "",
+		"knockoutTime" : 0.3,
+		"knockoutAnimationStates" : {
+			"damage" : "stunned"
+		},
+		"deathParticles" : "deathPoof",
+		"knockoutEffect" : "",
 
-    "statusSettings" : {
-      "statusProperties" : {
-        "targetMaterialKind" : "organic"
-      },
+		"statusSettings" : {
+			"statusProperties" : {
+				"targetMaterialKind" : "organic"
+			},
 
-      "appliesWeatherStatusEffects" : true,
-      "appliesEnvironmentStatusEffects" : false,
-      "minimumLiquidStatusEffectPercentage" : 0.1,
+			"appliesWeatherStatusEffects" : true,
+			"appliesEnvironmentStatusEffects" : false,
+			"minimumLiquidStatusEffectPercentage" : 0.1,
 
-      "primaryScriptSources" : [
-        "/stats/monster_primary.lua"
-      ],
-      "primaryScriptDelta" : 5,
+			"primaryScriptSources" : [
+				"/stats/monster_primary.lua"
+			],
+			"primaryScriptDelta" : 5,
 
-      "stats" : {
-        "knockbackStunTime" : {
-          "baseValue" : 0.25
-        },
-        "knockbackThreshold" : {
-          "baseValue" : 9
-        },
-        "maxHealth" : {
-          "baseValue" : 75
-        },
-        "protection" : {
-          "baseValue" : 0.0
-        },
-        "healthRegen" : {
-          "baseValue" : 0.0
-        },
-        "poisonStatusImmunity" : {
-          "baseValue" : 1.0
-        },
-        "powerMultiplier" : {
-          "baseValue" : 1.0
-        }
-      },
+			"stats" : {
+				"knockbackStunTime" : {
+					"baseValue" : 0.25
+				},
+				"knockbackThreshold" : {
+					"baseValue" : 9
+				},
+				"maxHealth" : {
+					"baseValue" : 75
+				},
+				"protection" : {
+					"baseValue" : 0.0
+				},
+				"healthRegen" : {
+					"baseValue" : 0.0
+				},
+				"poisonStatusImmunity" : {
+					"baseValue" : 1.0
+				},
+				"powerMultiplier" : {
+					"baseValue" : 1.0
+				}
+			},
 
-      "resources" : {
-        "stunned" : {
-          "deltaValue" : -1.0,
-          "initialValue" : 0.0
-        },
-        "health" : {
-          "maxStat" : "maxHealth",
-          "deltaStat" : "healthRegen",
-          "defaultPercentage" : 100
-        }
-      }
-    },
+			"resources" : {
+				"stunned" : {
+					"deltaValue" : -1.0,
+					"initialValue" : 0.0
+				},
+				"health" : {
+					"maxStat" : "maxHealth",
+					"deltaStat" : "healthRegen",
+					"defaultPercentage" : 100
+				}
+			}
+		},
 
-    "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -8],
-    "capturable" : true,
-    "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255]//,
-    //"captureCollectables" : { "fu_monster" : "sporgus3" }
-  }
+		"mouthOffset" : [0, 0],
+		"feetOffset" : [0, -8],
+		"capturable" : true,
+		"captureHealthFraction" : 0.5,
+		"nametagColor" : [64, 200, 255]//,
+		//"captureCollectables" : { "fu_monster" : "sporgus3" }
+	}
 }
