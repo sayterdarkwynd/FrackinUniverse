@@ -1,94 +1,95 @@
 {
-  "itemName" : "eyecannon",
-  "price" : 160,
-  "inventoryIcon" : "eyecannon.png",
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "A powerful and bizarre biological weapon.
+	"itemName" : "eyecannon",
+	"price" : 160,
+	"inventoryIcon" : "eyecannon.png",
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "A powerful and bizarre biological weapon.
 ^yellow;Inflicts pus effect, morphs tiles^reset;
 ^green;Multi-explosion, weird physics^reset;",
-  "shortdescription" : "Ocu Cannon",
-  "category" : "bioweapon",
-  "level" : 5,
-  "tooltipKind" : "gun2",
-  "weaponType" : "Bio-Tech",
-  "itemTags" : ["weapon","ranged","grenadelauncher", "bioweapon", "upgradeableWeapon"],
-  "twoHanded" : true,
+	"shortdescription" : "Ocu Cannon",
+	"category" : "bioweapon",
+	"level" : 5,
+	"tooltipKind" : "gun2",
+	"weaponType" : "Bio-Tech",
+	"itemTags" : ["weapon","ranged","grenadelauncher", "bioweapon", "upgradeableWeapon"],
+	"twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/gun.animation",
-  "animationParts" : {
-    "butt" : "",
-    "middle" : "eyecannon.png",
-    "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/goreflash1.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/projectiles/goo_spit1.ogg" ]
-    }
-  },
+	"animation" : "/items/active/weapons/ranged/gun.animation",
+	"animationParts" : {
+		"butt" : "",
+		"middle" : "eyecannon.png",
+		"barrel" : "",
+		"muzzleFlash" : "/animations/muzzleflash/goreflash1.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/projectiles/goo_spit1.ogg" ]
+		}
+	},
 
-  "baseOffset" : [1.26, 0.4],
-  "muzzleOffset" : [1, 0.125],
-  "handGrip" : "wrap",
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+	"baseOffset" : [1.26, 0.4],
+	"muzzleOffset" : [1, 0.125],
+	"handGrip" : "wrap",
+	"scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "bioweapon",
+	"elementalType" : "bioweapon",
 
-  "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
-    "fireTime" : 1.2,
-    "baseDps" : 5.35,
-    "energyUsage" : 47.5,
-    "inaccuracy" : 0.05,
+	"primaryAbility" : {
+		"scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+		"class" : "GunFire",
+		"fireTime" : 1.2,
+		"baseDps" : 5.35,
+		"energyUsage" : 47.5,
+		"inaccuracy" : 0.05,
 
-    "projectileCount" : 1,
-    "fireType" : "auto",
+		"projectileCount" : 1,
+		"fireType" : "auto",
 
-    "projectileType" : "ocucannonshot",
-    "projectileParameters" : {
-      "damageKind" : "bioweapon",
-      "speed" : 50,
-      "knockback" : 9
-    },
-	  "stances" : {
-	    "idle" : {
-	      "armRotation" : 0,
-	      "weaponRotation" : 0,
-	      "twoHanded" : true,
+		"projectileType" : "ocucannonshot",
+		"projectileParameters" : {
+			"damageKind" : "bioweapon",
+			"speed" : 50,
+			"knockback" : 9,
+			"statusEffects":["puseffect","weakpoison"]
+		},
+		"stances" : {
+			"idle" : {
+				"armRotation" : 0,
+				"weaponRotation" : 0,
+				"twoHanded" : true,
 
-	      "allowRotate" : true,
-	      "allowFlip" : true
-	    },
-	    "fire" : {
-	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+				"allowRotate" : true,
+				"allowFlip" : true
+			},
+			"fire" : {
+				"duration" : 0,
+				"armRotation" : 5,
+				"weaponRotation" : 5,
+				"twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    },
-	    "cooldown" : {
-	      "duration" : 0.075,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+				"allowRotate" : false,
+				"allowFlip" : false
+			},
+			"cooldown" : {
+				"duration" : 0.075,
+				"armRotation" : 5,
+				"weaponRotation" : 5,
+				"twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    }
-	  }
-  },
+				"allowRotate" : false,
+				"allowFlip" : false
+			}
+		}
+	},
 
-  "critChance" : 8,
-  "critBonus" : 12,
-  "isAmmoBased" : 1,
-  "magazineSize" : 20,
-  "reloadTime" : 1.2,
+	"critChance" : 8,
+	"critBonus" : 12,
+	"isAmmoBased" : 1,
+	"magazineSize" : 20,
+	"reloadTime" : 1.2,
 
-  "altAbilityType" : "vomitrage",
+	"altAbilityType" : "vomitrage",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

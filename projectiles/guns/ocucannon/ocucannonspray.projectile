@@ -1,37 +1,38 @@
 {
-  "projectileName" : "ocucannonspray",
-  "image" : "ocucannonshot.png",
-  "physics" : "bullet",
-  "animationCycle" : 1,
-  "frameNumber" : 1,
-  "power" : 0,
-  "speed" : 30,
-  "timeToLive" : 0.01,
-  "piercing" : true,
-  "damagePoly" : [  ],
-  "damageKind" : "poison",
-  "actionOnReap" : [
-    {
-      "action" : "config",
-      "file" : "/projectiles/explosions/pusexplosion/pusexplosion2.config"
-    },
-    {
-      "action" : "projectile",
-      "type" : "ocucannonshot2",
-      "fuzzAngle" : 20,
-      "inheritDamageFactor" : 0.05
-    },
-    {
-      "action" : "projectile",
-      "type" : "ocucannonshot2",
-      "fuzzAngle" : 20,
-      "inheritDamageFactor" : 0.05
-    },
-    {
-      "action" : "projectile",
-      "type" : "ocucannonshot2",
-      "fuzzAngle" : 20,
-      "inheritDamageFactor" : 0.05
-    }
-  ]
+	"projectileName" : "ocucannonspray",
+	"image" : "ocucannonshot.png",
+	"physics" : "bullet",
+	"animationCycle" : 1,
+	"frameNumber" : 1,
+	"power" : 0,
+	"speed" : 30,
+	"timeToLive" : 0.01,
+	"piercing" : true,
+	"damagePoly" : [],
+	"damageKind" : "poison",
+	"statusEffects":["puseffect"],
+	"actionOnReap" : [
+		{
+			"action" : "config",
+			"file" : "/projectiles/explosions/pusexplosion/pusexplosion2.config"
+		},
+		{
+			"action" : "projectile",
+			"type" : "ocucannonshot2",
+			"fuzzAngle" : 20,
+			"inheritDamageFactor" : 0.05
+		},
+		{
+			"action" : "projectile",
+			"type" : "ocucannonshot2",
+			"fuzzAngle" : 20,
+			"inheritDamageFactor" : 0.05
+		},
+		{
+			"action" : "projectile",
+			"type" : "ocucannonshot2",
+			"fuzzAngle" : 20,
+			"inheritDamageFactor" : 0.05
+		}
+	]
 }
