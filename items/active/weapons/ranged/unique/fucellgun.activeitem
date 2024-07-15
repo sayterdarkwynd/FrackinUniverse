@@ -1,89 +1,89 @@
 {
-  "itemName" : "fucellgun",
-  "price" : 160,
-  "inventoryIcon" : "fucellgun.png",
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "A truly unique long-ranged rifle, firing freezing blasts of cellular matter.",
-  "shortdescription" : "Cellular Rifle",
-  "category" : "bioweapon",
-  "level" : 4,
-  "tooltipKind" : "gun2",
-  "weaponType" : "Bio-Weaopn",
-  "itemTags" : ["weapon","ranged","sniperrifle", "energy", "bioweapon", "upgradeableWeapon"],
-  "twoHanded" : true,
+	"itemName" : "fucellgun",
+	"price" : 160,
+	"inventoryIcon" : "fucellgun.png",
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "A truly unique long-ranged rifle, firing ^cyan;freezing^reset;, ^green;poisonous^reset; blasts of cellular matter.",
+	"shortdescription" : "Cellular Rifle",
+	"category" : "bioweapon",
+	"level" : 4,
+	"tooltipKind" : "gun2",
+	"weaponType" : "Bio-Weaopn",
+	"itemTags" : ["weapon","ranged","sniperrifle", "energy", "bioweapon", "upgradeableWeapon"],
+	"twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/gun.animation",
-  "animationParts" : {
-    "butt" : "",
-    "middle" : "fucellgun.png",
-    "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3blue.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/weapons/fucellgun.ogg" ]
-    }
-  },
+	"animation" : "/items/active/weapons/ranged/gun.animation",
+	"animationParts" : {
+		"butt" : "",
+		"middle" : "fucellgun.png",
+		"barrel" : "",
+		"muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3blue.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/weapons/fucellgun.ogg" ]
+		}
+	},
 
-  "baseOffset" : [0.86, 0.4],
-  "muzzleOffset" : [2.445, 0.125],
+	"baseOffset" : [0.86, 0.4],
+	"muzzleOffset" : [2.445, 0.125],
 
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+	"scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "bioweapon",
+	"elementalType" : "bioweapon",
 
-  "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
-    "fireTime" : 0.7,
-    "baseDps" : 8.214,
-    "energyUsage" : 20.5,
-    "inaccuracy" : 0,
+	"primaryAbility" : {
+		"scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+		"class" : "GunFire",
+		"fireTime" : 0.7,
+		"baseDps" : 8.214,
+		"energyUsage" : 20.5,
+		"inaccuracy" : 0,
 
-    "projectileCount" : 1,
-    "fireType" : "auto",
+		"projectileCount" : 1,
+		"fireType" : "auto",
 
-    "projectileType" : "cellblast",
-    "projectileParameters" : {
-      "speed" : 30,
-      "knockback" : 5,
-      "statusEffects" : [ "weakpoison" ]
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "twoHanded" : true,
+		//status effect and element type handled on projectile.
+		"projectileType" : "fucellrifleshot",
+		"projectileParameters" : {
+			"speed" : 30,
+			"knockback" : 5
+		},
+		"stances" : {
+			"idle" : {
+				"armRotation" : 0,
+				"weaponRotation" : 0,
+				"twoHanded" : true,
 
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "fire" : {
-        "duration" : 0,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
+				"allowRotate" : true,
+				"allowFlip" : true
+			},
+			"fire" : {
+				"duration" : 0,
+				"armRotation" : 5,
+				"weaponRotation" : 5,
+				"twoHanded" : true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "cooldown" : {
-        "duration" : 0.075,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
+				"allowRotate" : false,
+				"allowFlip" : false
+			},
+			"cooldown" : {
+				"duration" : 0.075,
+				"armRotation" : 5,
+				"weaponRotation" : 5,
+				"twoHanded" : true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      }
-    }
-  },
+				"allowRotate" : false,
+				"allowFlip" : false
+			}
+		}
+	},
 
-  "critChance" : 3,
-  "critBonus" : 8,
+	"critChance" : 3,
+	"critBonus" : 8,
 
-  "altAbilityType" : "explosiveburst",
+	"altAbilityType" : "explosiveburst",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,120 +1,120 @@
 {
-  "itemName" : "blistergun",
-  "price" : 160,
-  "inventoryIcon" : "blistergun.png",
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Fires repulsive glowy goo-globs.
+	"itemName" : "blistergun",
+	"price" : 160,
+	"inventoryIcon" : "blistergun.png",
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "Fires repulsive glowy goo-globs.
 ^green;Targets glow
 ^yellow;+Pus effect^reset;",
-  "shortdescription" : "Blister Gun",
-  "category" : "bioweapon",
-  "level" : 3,
-  "tooltipKind" : "gun2",
-  "weaponType" : "Grenade Launcher",
-  "itemTags" : ["weapon","ranged","grenadelauncher","bioweapon","blister", "upgradeableWeapon"],
-  "twoHanded" : true,
+	"shortdescription" : "Blister Gun",
+	"category" : "bioweapon",
+	"level" : 3,
+	"tooltipKind" : "gun2",
+	"weaponType" : "Grenade Launcher",
+	"itemTags" : ["weapon","ranged","grenadelauncher","bioweapon","blister", "upgradeableWeapon"],
+	"twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
-  "animationParts" : {
-    "butt" : "",
-    "middle" : "blistergun.png",
-    "middlefullbright" : "blistergunfullbright.png",
-    "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/purplemuzzle.png"
-  },
-  "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "middlefullbright" : {
-		  "properties" : {
-		    "offset" : [1.5, 0.0]
-		  }
+	"animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+	"animationParts" : {
+		"butt" : "",
+		"middle" : "blistergun.png",
+		"middlefullbright" : "blistergunfullbright.png",
+		"barrel" : "",
+		"muzzleFlash" : "/animations/muzzleflash/purplemuzzle.png"
+	},
+	"animationCustom" : {
+		"animatedParts" : {
+			"parts" : {
+				"middlefullbright" : {
+			"properties" : {
+				"offset" : [1.5, 0.0]
+			}
 		}
-      }
-    },
-    "sounds" : {
-      "fire" : [ "/sfx/projectiles/goo_spit2.ogg" ]
-    },
-    "lights" : { "glow" : {
-      "active" : true,
-      "position" : [0.75, 0.5],
-      "color" : [108, 24, 76],
-      "flickerPeriod" : 0.3,
-      "flickerMinIntensity" : 0.95,
-      "flickerMaxIntensity" : 1,
-      "flickerPeriodVariance" : 0.075,
-      "flickerIntensityVariance" : 0.025
-    }}
-  },
+			}
+		},
+		"sounds" : {
+			"fire" : [ "/sfx/projectiles/goo_spit2.ogg" ]
+		},
+		"lights" : { "glow" : {
+			"active" : true,
+			"position" : [0.75, 0.5],
+			"color" : [108, 24, 76],
+			"flickerPeriod" : 0.3,
+			"flickerMinIntensity" : 0.95,
+			"flickerMaxIntensity" : 1,
+			"flickerPeriodVariance" : 0.075,
+			"flickerIntensityVariance" : 0.025
+		}}
+	},
 
-  "baseOffset" : [1.5, 0.0],
-  "muzzleOffset" : [1.645, 0.125],
+	"baseOffset" : [1.5, 0.0],
+	"muzzleOffset" : [1.645, 0.125],
 
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+	"scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "bioweapon",
+	"elementalType" : "bioweapon",
 
-  "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
-    "fireTime" : 1.0,
-    "baseDps" : 5,
-    "energyUsage" : 21.0,
-    "inaccuracy" : 0.008,
+	"primaryAbility" : {
+		"scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+		"class" : "GunFire",
+		"fireTime" : 1.0,
+		"baseDps" : 5,
+		"energyUsage" : 21.0,
+		"inaccuracy" : 0.008,
 
-    "projectileCount" : 1,
-    "fireType" : "auto",
+		"projectileCount" : 1,
+		"fireType" : "auto",
 
-    "projectileType" : "blistergunshot",
-    "projectileParameters" : {
-      "speed" : 50,
-      "bounces" : 1,
-      "knockback" : 10,
-      "statusEffects" : [ "weakpoison" ]
-    },
-	  "stances" : {
-	    "idle" : {
-	      "armRotation" : 0,
-	      "weaponRotation" : 0,
-	      "twoHanded" : true,
+		//moved status effects to the explosion, not hte projectile.
+		"projectileType" : "blistergunshot",
+		"projectileParameters" : {
+			"speed" : 50,
+			"bounces" : 1,
+			"knockback" : 10
+		},
+		"stances" : {
+			"idle" : {
+				"armRotation" : 0,
+				"weaponRotation" : 0,
+				"twoHanded" : true,
 
-	      "allowRotate" : true,
-	      "allowFlip" : true
-	    },
-	    "fire" : {
-	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+				"allowRotate" : true,
+				"allowFlip" : true
+			},
+			"fire" : {
+				"duration" : 0,
+				"armRotation" : 5,
+				"weaponRotation" : 5,
+				"twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    },
-	    "cooldown" : {
-	      "duration" : 0.075,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
-	      "twoHanded" : true,
+				"allowRotate" : false,
+				"allowFlip" : false
+			},
+			"cooldown" : {
+				"duration" : 0.075,
+				"armRotation" : 5,
+				"weaponRotation" : 5,
+				"twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    }
-	  }
-  },
+				"allowRotate" : false,
+				"allowFlip" : false
+			}
+		}
+	},
 
 
-  "critChance" : 5,
-  "critBonus" : 3,
-  "isAmmoBased" : 1,
-  "magazineSize" : 12,
-  "reloadTime" : 1,
+	"critChance" : 5,
+	"critBonus" : 3,
+	"isAmmoBased" : 1,
+	"magazineSize" : 12,
+	"reloadTime" : 1,
 
-  "altAbilityType" : "blisteraltshot",
-  "altAbility" : {
-	  "isAmmoBased" : 1,
-	  "magazineSize" : 2,
-	  "reloadTime" : 1
-  },
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"altAbilityType" : "blisteraltshot",
+	"altAbility" : {
+		"isAmmoBased" : 1,
+		"magazineSize" : 2,
+		"reloadTime" : 1
+	},
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

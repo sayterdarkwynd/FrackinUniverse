@@ -1,0 +1,22 @@
+{
+	"projectileName" : "fucellrifleshot",
+	"physics" : "bullet",
+	"speed" : 60,
+	"bounces" : 0,
+	"timeToLive" : 2.0,
+	"image" : "cellblast.png",
+	"animationCycle" : 0.3,
+	"lightColor" : [0, 20, 50],
+	"frameNumber" : 10,
+	"emitters" : [ "electricplasma" ],
+	"actionOnReap" : [
+		{
+			"action" : "config",
+			"file" : "/projectiles/explosions/pulsecannonexplosion/fucellrifleexplosion.config"
+		}
+	],
+	"power" : 200,
+	"damagePoly" : [ [-3, 3], [-3, -3], [3, -3], [3, 3] ],
+	"damageType" : "NoDamage",
+	"damageKind" : "default"
+}
