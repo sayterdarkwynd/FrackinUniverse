@@ -1,111 +1,113 @@
 {
-  "itemName" : "goregun",
-  "price" : 160,
-  "inventoryIcon" : "goregun.png",
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "A repulsive weapon that spews putrid blood. Awesome.
+	"itemName" : "goregun",
+	"price" : 160,
+	"inventoryIcon" : "goregun.png",
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "A repulsive weapon that spews putrid blood. Awesome.
 ^yellow;Alt shoots vomit! Fun!^reset;",
-  "shortdescription" : "Gore Gun",
-  "category" : "bioweapon",
-  "level" : 4,
-  "tooltipKind" : "gun2",
-  "weaponType" : "Gore Chucker",
-  "itemTags" : ["weapon","ranged","assaultrifle", "bioweapon", "upgradeableWeapon"],
-  "twoHanded" : true,
+	"shortdescription" : "Gore Gun",
+	"category" : "bioweapon",
+	"level" : 4,
+	"tooltipKind" : "gun2",
+	"weaponType" : "Gore Chucker",
+	"itemTags" : ["weapon","ranged","assaultrifle", "bioweapon", "upgradeableWeapon"],
+	"twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/gun.animation",
-  "animationParts" : {
-    "butt" : "",
-    "middle" : "goregun.png",
-    "barrel" : "",
-    "muzzleFlash" : ""
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/gun/impact_flesh.ogg" ]
-    }
-  },
+	"animation" : "/items/active/weapons/ranged/gun.animation",
+	"animationParts" : {
+		"butt" : "",
+		"middle" : "goregun.png",
+		"barrel" : "",
+		"muzzleFlash" : ""
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/gun/impact_flesh.ogg" ]
+		}
+	},
 
-    "particleEmitters" : {
-      "muzzleFlash" : {
-        "particles" : [
-          { "particle" : "dripslime", "offset" : [0.0, 0.0] },
-          { "particle" : "dripslime", "offset" : [0.0, 0.0] },
-          { "particle" : "dripslime", "offset" : [0.0, 0.0] }
-        ]
-      }
-    },
+		"particleEmitters" : {
+			"muzzleFlash" : {
+				"particles" : [
+					{ "particle" : "dripslime", "offset" : [0.0, 0.0] },
+					{ "particle" : "dripslime", "offset" : [0.0, 0.0] },
+					{ "particle" : "dripslime", "offset" : [0.0, 0.0] }
+				]
+			}
+		},
 
-  "baseOffset" : [0.4, 0.2],
-  "muzzleOffset" : [2.645, 0.225],
+	"baseOffset" : [0.4, 0.2],
+	"muzzleOffset" : [2.645, 0.225],
 
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+	"scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "bioweapon",
+	"elementalType" : "bioweapon",
 
-  "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
-    "fireTime" : 0.08,
-    "baseDps" : 10,
-    "energyUsage" : 20.0,
-    "inaccuracy" : 0.02,
+	"primaryAbility" : {
+		"scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+		"class" : "GunFire",
+		"fireTime" : 0.08,
+		"baseDps" : 10,
+		"energyUsage" : 20.0,
+		"inaccuracy" : 0.02,
 
-    "projectileCount" : 1,
-    "fireType" : "auto",
+		"projectileCount" : 1,
+		"fireType" : "auto",
 
-    "projectileType" : "bloodvomit",
-    "projectileParameters" : {
-      "speed" : 50,
-      "knockback" : 0
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "twoHanded" : true,
+		"projectileType" : "bloodvomit",
+		"projectileParameters" : {
+			"speed" : 50,
+			"knockback" : 0,
+			"damageKind":"bioweapon",
+			"statusEffects":["weakpoison"]
+		},
+		"stances" : {
+			"idle" : {
+				"armRotation" : 0,
+				"weaponRotation" : 0,
+				"twoHanded" : true,
 
-        "allowRotate" : true,
-        "allowFlip" : true
-      },
-      "fire" : {
-        "duration" : 0,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "twoHanded" : true,
+				"allowRotate" : true,
+				"allowFlip" : true
+			},
+			"fire" : {
+				"duration" : 0,
+				"armRotation" : 0,
+				"weaponRotation" : 0,
+				"twoHanded" : true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "cooldown" : {
-        "duration" : 0.015,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "twoHanded" : true,
+				"allowRotate" : false,
+				"allowFlip" : false
+			},
+			"cooldown" : {
+				"duration" : 0.015,
+				"armRotation" : 0,
+				"weaponRotation" : 0,
+				"twoHanded" : true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      }
-    }
-  },
+				"allowRotate" : false,
+				"allowFlip" : false
+			}
+		}
+	},
 
-  "critChance" : 2,
-  "critBonus" : 4,
+	"critChance" : 2,
+	"critBonus" : 4,
 
-  "altAbilityType" : "vomitrage",
+	"altAbilityType" : "vomitrage",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  "upgradeParameters2" : {
-    "description" : "Absolutely -spews- gore.",
-    "shortdescription" : "Ol' Pukey",
-      "critChance" : 4,
-      "critBonus" : 6,
-      "baseDps" : 8,
-      "primaryAbility" : {
-      "projectileCount" : 3,
-      "inaccuracy" : 0.25,
-      "energyUsage" : 30.0
-    }
-  }
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
+	"upgradeParameters2" : {
+		"description" : "Absolutely -spews- gore.",
+		"shortdescription" : "Ol' Pukey",
+			"critChance" : 4,
+			"critBonus" : 6,
+			"baseDps" : 8,
+			"primaryAbility" : {
+			"projectileCount" : 3,
+			"inaccuracy" : 0.25,
+			"energyUsage" : 30.0
+		}
+	}
 }

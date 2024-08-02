@@ -1,75 +1,75 @@
 {
-  "projectileName" : "ocucannonshot",
-  "image" : "ocucannonshot.png",
-  "physics" : "fu_eyeball",
-  "animationCycle" : 1,
-  "frameNumber" : 8,
-  "power" : 0,
-  "speed" : 35,
-  "timeToLive" : 2.5,
-  "bounces" : 12,
-  "piercing" : false,
-  "damagePoly" : [ [-4, 0], [-3, -3], [0, -4], [3, -3], [4, 0], [3, 3], [0, 4], [-3, 3] ],
-  "damageKind" : "poison",
+	"projectileName" : "ocucannonshot",
+	"image" : "ocucannonshot.png",
+	"physics" : "fu_eyeball",
+	"animationCycle" : 1,
+	"frameNumber" : 8,
+	"power" : 0,
+	"speed" : 35,
+	"timeToLive" : 2.5,
+	"bounces" : 12,
+	"piercing" : false,
+	"damagePoly" : [ [-4, 0], [-3, -3], [0, -4], [3, -3], [4, 0], [3, 3], [0, 4], [-3, 3] ],
+	"damageKind" : "poison",
+	"statusEffects":["puseffect"],
+	"actionOnCollide" : [
+		{
+			"action" : "config",
+			"file" : "/projectiles/explosions/fubloodexplosion/fubloodexplosion.config"
+		},
+		{
+			"action" : "sound",
+			"options" : [
+				"/sfx/blocks/footstep_brains.ogg",
+				"/sfx/projectiles/goocluster_pop.ogg",
+				"/sfx/projectiles/bonebounce1.ogg",
+				"/sfx/projectiles/bonebounce3.ogg",
+				"/sfx/projectiles/bonebounce5.ogg"
+			]
+		}
+	],
 
-  "actionOnCollide" : [
-    {
-      "action" : "config",
-      "file" : "/projectiles/explosions/fubloodexplosion/fubloodexplosion.config"
-    },
-    {
-      "action" : "sound",
-      "options" : [
-        "/sfx/blocks/footstep_brains.ogg",
-        "/sfx/projectiles/goocluster_pop.ogg",
-        "/sfx/projectiles/bonebounce1.ogg",
-        "/sfx/projectiles/bonebounce3.ogg",
-        "/sfx/projectiles/bonebounce5.ogg"
-      ]
-    }
-  ],
-
-  "actionOnReap" : [
-    {
-      "action" : "config",
-      "file" : "/projectiles/explosions/fubloodexplosion/fubloodexplosion.config"
-    },
-    {
-      "action" : "liquid",
-      "liquid" : "pus",
-      "quantity" : 0.2
-    },
-    {
-      "action" : "applySurfaceMod",
-      "previousMod" : "metamod:none",
-      "newMod" : "tentaclegrass",
-      "radius" : 1
-    },
-    {
-      "action" : "projectile",
-      "type" : "ocucannonspray",
-      "fuzzAngle" : 20,
-      "inheritDamageFactor" : 0.3
-    },
-    {
-      "action" : "loop",
-      "count" : 6,
-      "body" : [
-        {
-          "action" : "particle",
-          "specification" : {
-            "type" : "ember",
-            "size" : 3,
-            "color" : [240, 50, 80, 200],
-            "initialVelocity" : [0.0, -500.0],
-            "timeToLive" : 0.25,
-            "fade" : 0.8,
-            "destructionAction" : "shrink",
-            "destructionTime" : 0.25,
-            "layer" : "middle"
-          }
-        }
-      ]
-    }
-  ]
+	"actionOnReap" : [
+		{
+			"action" : "config",
+			"file" : "/projectiles/explosions/fubloodexplosion/fubloodexplosion.config"
+		},
+		{
+			"action" : "liquid",
+			"liquid" : "pus",
+			"quantity" : 0.2
+		},
+		{
+			"action" : "applySurfaceMod",
+			"previousMod" : "metamod:none",
+			"newMod" : "tentaclegrass",
+			"radius" : 1
+		},
+		{
+			"action" : "projectile",
+			"type" : "ocucannonspray",
+			"fuzzAngle" : 20,
+			"inheritDamageFactor" : 0.3
+		},
+		{
+			"action" : "loop",
+			"count" : 6,
+			"body" : [
+				{
+					"action" : "particle",
+					"specification" : {
+						"type" : "ember",
+						"size" : 3,
+						"color" : [240, 50, 80, 200],
+						"initialVelocity" : [0.0, -500.0],
+						"timeToLive" : 0.25,
+						"fade" : 0.8,
+						"destructionAction" : "shrink",
+						"destructionTime" : 0.25,
+						"layer" : "middle"
+					}
+				}
+			]
+		}
+	]
 }

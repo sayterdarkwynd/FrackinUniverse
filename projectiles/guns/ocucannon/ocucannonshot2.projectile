@@ -1,51 +1,52 @@
 {
-  "projectileName" : "ocucannonshot2",
-  "image" : "ocucannonshot.png",
-  "physics" : "grenade",
-  "animationCycle" : 1,
-  "frameNumber" : 8,
-  "power" : 0,
-  "speed" : 35,
-  "timeToLive" : 0.5,
-  "bounces" : 12,
-  "piercing" : false,
-  "damagePoly" : [ [-4, 0], [-3, -3], [0, -4], [3, -3], [4, 0], [3, 3], [0, 4], [-3, 3] ],
-  "damageKind" : "poison",
-  "actionOnReap" : [
-    {
-      "action" : "liquid",
-      "liquid" : "pus",
-      "quantity" : 1
-    },
-    {
-      "action" : "applySurfaceMod",
-      "previousMod" : "metamod:none",
-      "newMod" : "tentaclegrass",
-      "radius" : 3
-    },
-    {
-      "action" : "config",
-      "file" : "/projectiles/explosions/fubloodexplosion/fubloodexplosion.config"
-    },
-    {
-      "action" : "loop",
-      "count" : 6,
-      "body" : [
-        {
-          "action" : "particle",
-          "specification" : {
-            "type" : "ember",
-            "size" : 3,
-            "color" : [240, 50, 80, 200],
-            "initialVelocity" : [0.0, -500.0],
-            "timeToLive" : 0.25,
-            "fade" : 0.8,
-            "destructionAction" : "shrink",
-            "destructionTime" : 0.25,
-            "layer" : "middle"
-          }
-        }
-      ]
-    }
-  ]
+	"projectileName" : "ocucannonshot2",
+	"image" : "ocucannonshot.png",
+	"physics" : "grenade",
+	"animationCycle" : 1,
+	"frameNumber" : 8,
+	"power" : 0,
+	"speed" : 35,
+	"timeToLive" : 0.5,
+	"bounces" : 12,
+	"piercing" : false,
+	"damagePoly" : [ [-4, 0], [-3, -3], [0, -4], [3, -3], [4, 0], [3, 3], [0, 4], [-3, 3] ],
+	"damageKind" : "poison",
+	"statusEffects":["puseffect"],
+	"actionOnReap" : [
+		{
+			"action" : "liquid",
+			"liquid" : "pus",
+			"quantity" : 1
+		},
+		{
+			"action" : "applySurfaceMod",
+			"previousMod" : "metamod:none",
+			"newMod" : "tentaclegrass",
+			"radius" : 3
+		},
+		{
+			"action" : "config",
+			"file" : "/projectiles/explosions/fubloodexplosion/fubloodexplosion.config"
+		},
+		{
+			"action" : "loop",
+			"count" : 6,
+			"body" : [
+				{
+					"action" : "particle",
+					"specification" : {
+						"type" : "ember",
+						"size" : 3,
+						"color" : [240, 50, 80, 200],
+						"initialVelocity" : [0.0, -500.0],
+						"timeToLive" : 0.25,
+						"fade" : 0.8,
+						"destructionAction" : "shrink",
+						"destructionTime" : 0.25,
+						"layer" : "middle"
+					}
+				}
+			]
+		}
+	]
 }
