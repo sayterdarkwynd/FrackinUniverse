@@ -24,6 +24,10 @@ function liquidLib.init()
 end
 
 function liquidLib.itemToLiquidId(item)
+	if not liquidLib.vars then
+		--sb.logInfo("LiquidLib.lua: Object %s called itemToLiquidId before init. what?",object.name())
+		liquidLib.init()
+	end
 	if liquidLib.vars.liquidDataBuffer[item.name] then
 		if liquidLib.vars.liquidDataBuffer[item.name].id>0 then
 			return liquidLib.vars.liquidDataBuffer[item.name].id
