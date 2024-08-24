@@ -34,7 +34,7 @@ end
 
 function checkWorld()
 	if checkBiome({"ocean", "sulphuricocean", "aethersea", "tidewater", "nitrogensea", "strangesea"}) then
-		mcontroller.controlModifiers({speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.05})
+		applyFilteredModifiers({speedModifier = 1.05})
 		effect.setStatModifierGroup(effectHandlerList.armorBonus2Handle,armorBonus2)
 	else
 		effect.setStatModifierGroup(effectHandlerList.armorBonus2Handle,{})

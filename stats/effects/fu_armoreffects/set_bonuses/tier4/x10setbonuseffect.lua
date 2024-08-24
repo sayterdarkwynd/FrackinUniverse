@@ -6,9 +6,9 @@ weaponBonus={
 	{stat = "critChance", amount = 2}
 }
 
-armorBonus={
+-- armorBonus={
 
-}
+-- }
 
 armorEffect={
 	{stat = "breathProtection", amount = 1.0},
@@ -33,7 +33,7 @@ function update(dt)
 	else
 		checkWeapons()
 	end
-	mcontroller.controlModifiers({
+	applyFilteredModifiers({
 		airJumpModifier = 1.2
 	})
 end

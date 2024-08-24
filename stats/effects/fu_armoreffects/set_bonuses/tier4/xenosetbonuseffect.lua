@@ -27,7 +27,7 @@ function update(dt)
 	else
 		checkWeapons()
 	end
-	mcontroller.controlModifiers({
+	applyFilteredModifiers({
 		airJumpModifier = 1.2
 	})
 end
