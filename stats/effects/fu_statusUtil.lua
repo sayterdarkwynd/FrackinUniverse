@@ -29,3 +29,12 @@ function round(num, idp)
   local mult = 10^(idp or 0)
   return math.floor(num * mult + 0.5) / mult
 end
+
+function filterSpeed(speed)
+	return (status.statPositive("spikeSphereActive") and 1.0) or speed
+end
+
+function filterModifiers(stuff)
+	if status.statPositive("spikeSphereActive") and stuff["speedModifier"] then stuff["speedModifier"]=1.0 end
+	return stuff
+end
