@@ -1,3 +1,4 @@
+require "/stats/effects/fu_statusUtil.lua"
 require("/scripts/util.lua")
 
 FRHelper = {}
@@ -196,12 +197,6 @@ function FRHelper:applyControlModifiers(cM, cP)
 		mcontroller.controlParameters(cP)
 	end
 end
-
-function filterModifiers(stuff)
-	if status.statPositive("spikeSphereActive") and stuff["speedModifier"] then stuff["speedModifier"]=1.0 end
-	return stuff
-end
-
 
 -- Load the given script (scripts without context are added to "racialscript" instead)
 function FRHelper:loadScript(script)
