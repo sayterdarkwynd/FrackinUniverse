@@ -1,4 +1,5 @@
 require "/items/active/tagCaching.lua" --integral to mastery identification
+require "/stats/effects/fu_statusUtil.lua"--used for filtering speed bonuses
 require "/scripts/util.lua"
 
 function setSEBonusInit(setBonusName, SetBonusEffects)
@@ -125,6 +126,7 @@ function setBonusUninit()
 	end
 	effectHandlerList={}
 	removePetBuffs()
+	filterModifiers({},true)
 end
 
 function uninit()
