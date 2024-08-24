@@ -7,7 +7,7 @@ end
 
 function update(dt)
 	local lightLevel = getLight()
-	local speedValue=1.0
+	local speedValue
 	if lightLevel <= 55 then
 		status.setPersistentEffects("trollEffects", {
 			{stat = "maxHealth", baseMultiplier = self.powerBonus + 1.2}
