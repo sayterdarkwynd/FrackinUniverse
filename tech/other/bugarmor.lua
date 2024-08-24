@@ -1,3 +1,4 @@
+require "/stats/effects/fu_statusUtil.lua"
 require "/scripts/vec2.lua"
 
 function init()
@@ -97,13 +98,13 @@ function update(args)
 	end
 
 	if self.stance == "defense" then -- in defense stance, we are slow
-		mcontroller.controlModifiers({speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 0.75})
+		applyFilteredModifiers({speedModifier = 0.75})
 	elseif self.stance == "shield" then -- in shield stance we are slightly slower
-		mcontroller.controlModifiers({speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 0.90})
+		applyFilteredModifiers({speedModifier = 0.90})
 	elseif self.stance == "attack" then -- in attack stance we are faster
-		mcontroller.controlModifiers({speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.1})
+		applyFilteredModifiers({speedModifier = 1.1})
 	elseif self.stance == "jump" then -- in jump stance we are faster and jump higher
-		mcontroller.controlModifiers({speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.1, airJumpModifier = 1.1})
+		applyFilteredModifiers({speedModifier = 1.1, airJumpModifier = 1.1})
 	end
 end
 
@@ -123,4 +124,5 @@ end
 
 function uninit()
 	attemptActivation(false)
+	filterModifiers({},true)
 end
