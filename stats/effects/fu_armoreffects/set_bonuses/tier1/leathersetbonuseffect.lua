@@ -33,7 +33,7 @@ function update(dt)
 	else
 		checkArmor()
 		checkWeapons()
-		mcontroller.controlModifiers({speed=1.025})
+		applyFilteredModifiers({speed=1.025})
 	end
 end
 
