@@ -9,9 +9,7 @@ function init()
 		effect.setParentDirectives("fade=DDDDFF=0.5")
 	end
 
-	local stuns = status.statusProperty("stuns", {})
-	stuns["freeze"] = true
-	status.setStatusProperty("stuns", stuns)
+	legacyStun("freeze")
 	didInit=true
 end
 
@@ -23,8 +21,6 @@ end
 
 function uninit()
 	if didInit then
-		local stuns = status.statusProperty("stuns", {})
-		stuns["freeze"] = nil
-		status.setStatusProperty("stuns", stuns)
+		legacyStun("freeze")
 	end
 end

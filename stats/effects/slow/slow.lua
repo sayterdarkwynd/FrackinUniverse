@@ -1,21 +1,17 @@
-function init()
-  effect.setParentDirectives("fade=404040=0.5")
+require "/stats/effects/fu_statusUtil.lua"
 
-  local slows = status.statusProperty("slows", {})
-  slows["leoslow"] = 0.65
-  status.setStatusProperty("slows", slows)
+function init()
+	effect.setParentDirectives("fade=404040=0.5")
 end
 
 function update(dt)
-  mcontroller.controlModifiers({
-      groundMovementModifier = 0.6,
-      runModifier = 0.65,
-      jumpModifier = 0.65
-    })
+	applyFilteredModifiers({
+		groundMovementModifier = 0.6,
+		speedModifier = 0.65,
+		airJumpModifier = 0.65
+	})
 end
 
 function uninit()
-  local slows = status.statusProperty("slows", {})
-  slows["leoslow"] = nil
-  status.setStatusProperty("slows", slows)
+	filterModifiers({},true)
 end

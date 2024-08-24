@@ -1,3 +1,5 @@
+require "/stats/effects/fu_statusUtil.lua"
+
 function init()
 	script.setUpdateDelta(5)
 	self.tickTime = 1.0
@@ -34,7 +36,11 @@ function update(dt)
 	if self.tickTimer <= 0 then
 		self.tickTimer = self.tickTime
 	end
-	mcontroller.controlModifiers({groundMovementModifier = 0.80,runModifier = 0.80,jumpModifier = 0.80})
+	applyFilteredModifiers({
+		groundMovementModifier = 0.8,
+		speedModifier = 0.8,
+		airJumpModifier = 0.8
+	})
 
 	effect.setParentDirectives("fade=AA00AA="..self.tickTimer * 0.4)
 end
@@ -44,4 +50,6 @@ function uninit()
 		effect.removeStatModifierGroup(shrubbery)
 		shrubbery=nil
 	end
+
+	filterModifiers({},true)
 end

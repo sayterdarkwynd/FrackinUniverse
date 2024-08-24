@@ -1,3 +1,5 @@
+require "/stats/effects/fu_statusUtil.lua"
+
 function init()
   animator.setParticleEmitterOffsetRegion("slug", mcontroller.boundBox())
   animator.setParticleEmitterActive("slug", true)
@@ -20,8 +22,8 @@ function update(dt)
 		groundForce = 23.5,
 		runSpeed = 17.0
 	})
-	mcontroller.controlModifiers({
-		speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.40
+	applyFilteredModifiers({
+		speedModifier = 1.4
 	})
 
 	self.activateTimer = self.activateTimer -1
@@ -33,5 +35,5 @@ function update(dt)
 end
 
 function uninit()
-
+	filterModifiers({},true)
 end

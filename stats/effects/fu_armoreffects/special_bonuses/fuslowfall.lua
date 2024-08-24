@@ -1,3 +1,5 @@
+require "/stats/effects/fu_statusUtil.lua"
+
 function init()
 	script.setUpdateDelta(10)
 	self.controlParameters=config.getParameter("fallingParameters")
@@ -14,19 +16,18 @@ function update(dt)
 		end
 	end
 
+	local speedValue=1.0
+	local airJumpValue=1.0
 	if (world.windLevel(mcontroller.position()) >= 70 ) then
-		mcontroller.controlModifiers({
-			speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.12,
-			airJumpModifier = 1.12
-		})
+		speedValue = 1.12
+		airJumpValue = 1.12
 	elseif (world.windLevel(mcontroller.position()) >= 7 ) then
-		mcontroller.controlModifiers({
-			speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.15,
-			airJumpModifier = 1.20
-		})
+		speedValue = 1.15
+		airJumpValue = 1.2
 	end
+	applyFilteredModifiers({speedModifier=speedValue,airJumpModifier=airJumpValue})
 end
 
 function uninit()
-
+	filterModifiers({},true)
 end

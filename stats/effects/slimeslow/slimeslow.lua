@@ -1,3 +1,5 @@
+require "/stats/effects/fu_statusUtil.lua"
+
 function init()
 	if not world.entityType(entity.id()) then return end
 	animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
@@ -15,13 +17,13 @@ function update(dt)
 	if self.frEnabled and (self.species == "slimeperson") then
 		self.healingRate = 0.025
 		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*self.healingRate*math.max(0,1+status.stat("healingBonus"))}})
-		mcontroller.controlModifiers({
+		applyFilteredModifiers({
 			groundMovementModifier = 0.9,
 			speedModifier = 0.9,
 			airJumpModifier = 1.4
 		})
 	else
-		mcontroller.controlModifiers({
+		applyFilteredModifiers({
 			groundMovementModifier = 0.5,
 			speedModifier = 0.25
 		})
@@ -32,4 +34,5 @@ function uninit()
 	if bonusHandler then
 		effect.removeStatModifierGroup(bonusHandler)
 	end
+	filterModifiers({},true)
 end

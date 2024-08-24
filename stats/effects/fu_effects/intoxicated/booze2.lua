@@ -1,17 +1,16 @@
+require "/stats/effects/fu_statusUtil.lua"
+
 function init()
 	activateVisualEffects()
-	local slows = status.statusProperty("slows", {})
-	slows["booze2"] = 0.65
-	status.setStatusProperty("slows", slows)
 	script.setUpdateDelta(1)
 	setParticleConfig(0)
 end
 
 function update(dt)
-	mcontroller.controlModifiers({
+	applyFilteredModifiers({
 		groundMovementModifier = 0.75,
-		runModifier = 0.75,
-		jumpModifier = 0.65
+		speedModifier = 0.75,
+		airJumpModifier = 0.65
 	})
 	setParticleConfig(dt)
 	world.sendEntityMessage(entity.id(),"fu_specialAnimator.spawnParticle",particleConfig)
@@ -38,7 +37,5 @@ function activateVisualEffects()
 end
 
 function uninit()
-	local slows = status.statusProperty("slows", {})
-	slows["booze2"] = nil
-	status.setStatusProperty("slows", slows)
+	filterModifiers({},true)
 end

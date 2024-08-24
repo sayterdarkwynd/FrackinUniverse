@@ -1,3 +1,5 @@
+require "/stats/effects/fu_statusUtil.lua"
+
 --[[
 Provides a speed bonus that increases when you're well fed.
 
@@ -20,7 +22,7 @@ function FRHelper:call(args)
     else
         foodValue = args.foodDefault
     end
-
+	statusUtilHandle("foodRush")
     foodValue = foodValue / args.speedFactor
-    mcontroller.controlModifiers({ speedModifier=(status.statPositive("spikeSphereActive") and 1.0) or util.lerp(foodValue, args.minSpeed, args.maxSpeed) })
+	applyFilteredModifiers({ speedModifier=util.lerp(foodValue, args.minSpeed, args.maxSpeed) })
 end
