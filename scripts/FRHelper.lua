@@ -189,7 +189,7 @@ function FRHelper:applyControlModifiers(cM, cP)
 	if type(cM)=="table" then
 		--sb.logInfo("FRHelper:applyControlModifiers:cM %s",cM)
 		--mcontroller.controlModifiers(cM or self.controlModifiers or {})
-		mcontroller.controlModifiers(filterModifiers(copy(cM)))
+		applyFilteredModifiers(cM)
 	end
 	if type(cP)=="table" then
 		--sb.logInfo("FRHelper:applyControlParameters:cP %s",cP)

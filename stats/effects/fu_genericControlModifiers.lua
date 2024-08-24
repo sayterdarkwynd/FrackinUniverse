@@ -12,7 +12,7 @@ function init()
 end
 
 function update(dt)
-	mcontroller.controlModifiers(filterModifiers(controlModifierValues))
+	applyFilteredModifiers(controlModifierValues)
 	if oldUpdateControlModifier then oldUpdateControlModifier(dt) end
 end
 
