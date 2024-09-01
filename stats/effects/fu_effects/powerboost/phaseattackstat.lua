@@ -1,32 +1,44 @@
 require "/scripts/vec2.lua"
 
 function init()
-	local alpha = math.floor(config.getParameter("alpha") * 255)
-	effect.setParentDirectives(string.format("?multiply=ffffff%02x", alpha))
 	script.setUpdateDelta(10)
-	self.damageBonus=1.0+(getTechBonus()*0.01)
+
+	effect.setParentDirectives(string.format("?multiply=ffffff%02x", (math.floor(config.getParameter("alpha") * 255))))
+
+	self.timeElapsed=0
+	self.flatCost=5.0
+	self.percentCost=0.05
+	self.damageGainRate=0.3
+	self.multCap=3.0
+	self.speedCostMult=0.1
+	self.speedPenalty=0.75
+	self.timeElapsedThreshold=6.0
+	self.timeElapsedMult=1.0
+	self.damageBonus=1.0+((1 + status.stat("phasetechBonus"))*0.01)
+
 	powerHandler=effect.addStatModifierGroup({{stat = "powerMultiplier", effectiveMultiplier = self.damageBonus}})
 end
 
-function getTechBonus()
-	return 1 + status.stat("phasetechBonus")
-end
-
 function update(dt)
+	self.timeElapsed=(self.timeElapsed or 0)+dt
 	mcontroller.controlModifiers({speedModifier = 0.75})
 	status.setResourcePercentage("energyRegenBlock", 1.0)
-	local cost=5
-	local vel=vec2.mag(mcontroller.velocity())/10.0
-	cost=cost+vel
-	cost=dt*((status.resourceMax("energy")*0.01*cost)+cost)
 
-	if status.overConsumeResource("energy",cost) then
+	if status.overConsumeResource("energy",
+		dt
+		*(
+			(status.resourceMax("energy")*self.percentCost)+
+			(self.flatCost+(vec2.mag(mcontroller.velocity())*self.speedCostMult))
+		)
+		*self.damageBonus
+		*(1+(math.max(0,self.timeElapsed-self.timeElapsedThreshold)*self.timeElapsedMult))
+	) then
 		if status.resourcePositive("energyRegenBlock") then
-			self.damageBonus=math.min(self.damageBonus*(1+(0.08*dt)),3.0)
+			self.damageBonus=math.min(self.damageBonus*(1+(self.damageGainRate*dt)),self.multCap)
 		end
-	else
 	end
-	if self.damageBonus==3.0 then
+
+	if self.damageBonus==self.multCap then
 		status.removeEphemeralEffect("phaseattackindicatorcharging")
 		status.addEphemeralEffect("phaseattackindicatorcharged",1)
 	else
