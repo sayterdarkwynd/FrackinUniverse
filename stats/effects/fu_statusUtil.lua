@@ -67,7 +67,7 @@ end
 
 function statusUtilHandle(fill)
 	if not fuStatusUtil.vars.handle then
-		fuStatusUtil.vars.handle=config.getParameter("statusUtilHandle") or fill or "generic"..(math.floor(math.random(0,1000000)*1000000))
+		fuStatusUtil.vars.handle=(config and config.getParameter("statusUtilHandle")) or fill or "generic"..(math.floor(math.random(0,1000000)*1000000))
 	end
 	return fuStatusUtil.vars.handle
 end
