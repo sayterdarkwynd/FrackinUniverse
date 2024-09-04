@@ -1,51 +1,73 @@
 require "/stats/effects/medicalStationSpecials/medicalStatusBase.lua"
 
+		-- "toxiccloudconfig":{
+			-- "cloudInterval" : 3,
+			-- "cloudDamage" : 5,
+			-- "cloudDamageType" : "poison",
+			-- "selfDamage" : 5,
+			-- "selfDamageType" : "poison",
+			-- "cloudDuration" : 5
+		-- },
+
 function init()
-	self.cloudInterval = 0
-	self.baseCloudInterval = config.getParameter("cloudInterval", 0)
-	self.onShip = false
-	self.useMedStationCode=config.getParameter("useMedStationCode",true)
-	self.damage=config.getParameter("selfDamage", 0)
-	self.damageSourceKind=config.getParameter("selfDamageType", 0)
+	if not toxSystemDidInit then
+		toxInit()
+	end
+	if not medStationDidInit then
+		medStationInit()
+	end
+end
 
-	local data = root.assetJson("/projectiles/medicalStationSpecials/toxicCloud/toxiccloud.projectile")
-	self.baseDamage = data.power
-
-
+function toxInit()
 	if world.type() == "unknown" then
 		self.onShip = true
+	else
+		self.toxiccloudconfig=config.getParameter("toxiccloudconfig")
 	end
 
-	if self.useMedStationCode then
-		baseInit()
+	if self.toxiccloudconfig then
+		toxSystemDidInit=true
+	else
+		self.onShip=true
 	end
-	didInit=true
+end
+
+function medStationInit()
+	if self.toxiccloudconfig.useMedStationCode then
+		baseInit()
+		medStationDidInit=true
+	end
 end
 
 function update(dt)
-	if not didInit then
-		init()
-		return
+	if not toxSystemDidInit then
+		toxInit()
+	end
+	if not medStationDidInit then
+		medStationInit()
 	end
 
 	if not self.onShip then
-		if self.cloudInterval <= 0 then
+		self.cloudTimer=(self.cloudTimer or 0)+dt
+		if self.cloudTimer >= self.toxiccloudconfig.cloudInterval then
 			status.applySelfDamageRequest({
 				damageType = "IgnoresDef",
-				damage = self.damage,
-				damageSourceKind = self.damageSourceKind,
+				damage = self.toxiccloudconfig.selfDamage,
+				damageSourceKind = self.toxiccloudconfig.selfDamageType,
 				sourceEntityId = entity.id()
 			})
 
-			world.spawnProjectile("medicaltoxiccloud", entity.position(), entity.id(), nil, nil, {power = self.baseDamage * status.stat("powerMultiplier")})
+			world.spawnProjectile("medicaltoxiccloud", entity.position(), entity.id(), nil, nil, {
+				power = self.toxiccloudconfig.cloudDamage * status.stat("powerMultiplier"),
+				timeToLive = self.toxiccloudconfig.cloudDuration,
+				damageKind = self.toxiccloudconfig.cloudDamageType
+			})
 
-			self.cloudInterval = self.baseCloudInterval
-		else
-			self.cloudInterval = self.cloudInterval - dt
+			self.cloudTimer = 0
 		end
 	end
 
-	if self.useMedStationCode then
+	if self.toxiccloudconfig.useMedStationCode then
 		baseUpdate(dt)
 	end
 end

@@ -1,3 +1,5 @@
+require "/stats/effects/fu_statusUtil.lua"
+
 function init()
 	effect.addStatModifierGroup({
 		{stat = "powerMultiplier", amount = 0.2},
@@ -15,7 +17,11 @@ function init()
 end
 
 function update(dt)
-	mcontroller.controlModifiers({
-		speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.55
+	applyFilteredModifiers({
+		speedModifier = 1.55
 	})
+end
+
+function uninit()
+	filterModifiers({},true)
 end

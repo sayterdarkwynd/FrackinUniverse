@@ -1,15 +1,11 @@
-function init()
-	effect.addStatModifierGroup({
-		{stat = "jumpModifier", amount = 0.5}
-	})
-end
+require "/stats/effects/fu_statusUtil.lua"
 
 function update(dt)
-	mcontroller.controlModifiers({
+	applyFilteredModifiers({
 		airJumpModifier = 1.5
 	})
 end
 
 function uninit()
-
+	filterModifiers({},true)
 end

@@ -1,3 +1,5 @@
+require "/stats/effects/fu_statusUtil.lua"
+
 function init()
 	if not mcontroller.boundBox() then delayInit=true return end
 	local bounds = mcontroller.boundBox()
@@ -7,11 +9,11 @@ end
 function update(dt)
 	if delayInit then delayInit=false init() end
 	animator.setParticleEmitterActive("flames", config.getParameter("particles", true) and mcontroller.onGround() and mcontroller.running())
-	mcontroller.controlModifiers({
-		speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.5
+	applyFilteredModifiers({
+		speedModifier = 1.5
 	})
 end
 
 function uninit()
-
+	filterModifiers({},true)
 end

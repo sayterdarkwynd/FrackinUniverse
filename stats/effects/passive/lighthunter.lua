@@ -8,60 +8,44 @@ end
 
 function update(dt)
 	local lightLevel = getLight()
+	local speedValue=1.0
+	local specialValue=0
 	if lightLevel >= 95 then
-		effect.setStatModifierGroup(lightHunterEffects, {
-			{stat = "energyRegenPercentageRate", amount = 1.08 + self.powerBonus},
-			{stat = "maxHealth", baseMultiplier = self.powerBonus + 1.08},
-			{stat = "powerMultiplier", baseMultiplier = self.powerBonus + 1.08}
-		})
-		mcontroller.controlModifiers({ speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.20 })
+		specialValue=0.08
+		speedValue = 1.2
 	elseif lightLevel >= 80 then
-		effect.setStatModifierGroup(lightHunterEffects, {
-			{stat = "energyRegenPercentageRate", amount = 1.08 + self.powerBonus},
-			{stat = "maxHealth", baseMultiplier = self.powerBonus + 1.07},
-			{stat = "powerMultiplier", baseMultiplier = self.powerBonus + 1.07}
-		})
-		mcontroller.controlModifiers({ speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.18 })
+		specialValue=0.07
+		speedValue = 1.18
 	elseif lightLevel >= 70 then
-		effect.setStatModifierGroup(lightHunterEffects, {
-			{stat = "energyRegenPercentageRate", amount = 1.08 + self.powerBonus},
-			{stat = "maxHealth", baseMultiplier = self.powerBonus + 1.06},
-			{stat = "powerMultiplier", baseMultiplier = self.powerBonus + 1.06}
-		})
-		mcontroller.controlModifiers({ speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.16 })
+		specialValue=0.06
+		speedValue = 1.16
 	elseif lightLevel >= 60 then
-		effect.setStatModifierGroup(lightHunterEffects, {
-			{stat = "energyRegenPercentageRate", amount = 1.08 + self.powerBonus},
-			{stat = "maxHealth", baseMultiplier = self.powerBonus + 1.05},
-			{stat = "powerMultiplier", baseMultiplier = self.powerBonus + 1.05}
-		})
-		mcontroller.controlModifiers({ speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.14 })
+		specialValue=0.05
+		speedValue = 1.14
 	elseif lightLevel >= 50 then
-		effect.setStatModifierGroup(lightHunterEffects, {
-			{stat = "energyRegenPercentageRate", amount = 1.08 + self.powerBonus},
-			{stat = "maxHealth", baseMultiplier = self.powerBonus + 1.04},
-			{stat = "powerMultiplier", baseMultiplier = self.powerBonus + 1.04}
-		})
-		mcontroller.controlModifiers({ speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.11 })
+		specialValue=0.04
+		speedValue = 1.11
 	elseif lightLevel >= 40 then
-		effect.setStatModifierGroup(lightHunterEffects, {
-			{stat = "energyRegenPercentageRate", amount = 1.08 + self.powerBonus},
-			{stat = "maxHealth", baseMultiplier = self.powerBonus + 1.02},
-			{stat = "powerMultiplier", baseMultiplier = self.powerBonus + 1.02}
-		})
-		mcontroller.controlModifiers({ speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.09 })
+		specialValue=0.02
+		speedValue = 1.09
 	elseif lightLevel >= 30 then
+		speedValue = 1.06
+	end
+	if lightLevel>=30 then
 		effect.setStatModifierGroup(lightHunterEffects, {
 			{stat = "energyRegenPercentageRate", amount = 1.08 + self.powerBonus},
-			{stat = "maxHealth", baseMultiplier = self.powerBonus + 1.00},
-			{stat = "powerMultiplier", baseMultiplier = self.powerBonus + 1.00}
+			{stat = "maxHealth", baseMultiplier = self.powerBonus + 1.00+specialValue},
+			{stat = "powerMultiplier", baseMultiplier = self.powerBonus + 1.00+specialValue}
 		})
-		mcontroller.controlModifiers({ speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.06 })
 	else
 		effect.setStatModifierGroup(lightHunterEffects,{})
 	end
+	applyFilteredModifiers({
+		speedModifier = speedValue
+	})
 end
 
 function uninit()
 	effect.removeStatModifierGroup(lightHunterEffects)
+	filterModifiers({},true)
 end

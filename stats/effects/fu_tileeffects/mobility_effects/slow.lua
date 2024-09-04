@@ -1,3 +1,5 @@
+require "/stats/effects/fu_statusUtil.lua"
+
 function init()
 	animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
 	animator.setParticleEmitterActive("drips", true)
@@ -15,7 +17,7 @@ function init()
 end
 
 function update(dt)
-	mcontroller.controlModifiers({
+	applyFilteredModifiers({
 		groundMovementModifier = self.groundMovementModifier,
 		speedModifier = self.speedModifier,
 		airJumpModifier = self.airJumpModifier
@@ -28,4 +30,8 @@ function activateVisualEffects(directives)
 	animator.setParticleEmitterOffsetRegion("statustext", { 0, 1, 0, 1 })
 	animator.burstParticleEmitter("statustext")
 	end
+end
+
+function uninit()
+	filterModifiers({},true)
 end

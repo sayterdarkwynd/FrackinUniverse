@@ -20,11 +20,22 @@ function init()
 	end
 end
 
+function resolveStageDuration(dur)
+	if type(dur)=="table" then
+		return math.max(unpack(dur))
+	else
+		return dur
+	end
+end
+
 function update(dt)
 	storage.groundPositions = storage.groundPositions or getGroundPositions()
 	if storage.lastHarvest then
 		if storage.stage and not storage.harvestable then
-			if world.time() - storage.lastHarvest >= storage.harvestTime then
+			local harvestMath=(world.time() - storage.lastHarvest)
+			if (harvestMath<0) or (harvestMath>(resolveStageDuration(stages[stage].duration))*100) then
+				storage.harvestTime=util.randomInRange(stages[stage].duration)+world.time()
+			elseif harvestMath >= storage.harvestTime then
 				if checkForMoisture(true) then
 					grow()
 				end

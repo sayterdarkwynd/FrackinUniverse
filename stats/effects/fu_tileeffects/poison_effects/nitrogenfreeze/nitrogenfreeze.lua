@@ -1,3 +1,5 @@
+require "/stats/effects/fu_statusUtil.lua"
+
 function init()
 	animator.setParticleEmitterOffsetRegion("snow", mcontroller.boundBox())
 	animator.setParticleEmitterActive("snow", true)
@@ -8,31 +10,35 @@ function init()
 end
 
 function update(dt)
-		if ( status.stat("iceResistance")	>= 0.75 ) then
+	if ( status.stat("iceResistance")	>= 0.75 ) then
 		effect.expire()
 	end
-	mcontroller.controlModifiers({
-				groundForce = 60.5,
-				slopeSlidingFactor = 0.6,
-				groundMovementModifier = 0.45,
-				runModifier = 0.65,
-				jumpModifier = 0.75
-		})
+	applyFilteredModifiers({
+		groundForce = 60.5,
+		slopeSlidingFactor = 0.6,
+		groundMovementModifier = 0.45,
+		speedModifier = 0.65,
+		airJumpModifier = 0.75
+	})
 
 	mcontroller.controlParameters({
-			normalGroundFriction = 4.675
-		})
+		normalGroundFriction = 4.675
+	})
 
 	self.tickTimer = self.tickTimer - dt
 	if self.tickTimer <= 0 then
 		self.tickTimer = self.tickTime
 		status.applySelfDamageRequest({
-				damageType = "IgnoresDef",
-				damage = self.baseDamage,
-				damageSourceKind = "hoarfrost",
-				sourceEntityId = entity.id()
-			})
+			damageType = "IgnoresDef",
+			damage = self.baseDamage,
+			damageSourceKind = "hoarfrost",
+			sourceEntityId = entity.id()
+		})
 	end
 
 	effect.setParentDirectives("fade=66FFFF="..self.tickTimer * 0.4)
+end
+
+function uninit()
+	filterModifiers({},true)
 end

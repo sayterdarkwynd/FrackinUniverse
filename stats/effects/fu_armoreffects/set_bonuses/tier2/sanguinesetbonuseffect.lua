@@ -21,7 +21,7 @@ function update(dt)
 		--setRegen(0)
 		effect.expire()
 	else
-		mcontroller.controlModifiers({speedModifier = 1.10})
+		applyFilteredModifiers({speedModifier = 1.10})
 		checkWeapons()
 		--setRegen(0.005)
 	end

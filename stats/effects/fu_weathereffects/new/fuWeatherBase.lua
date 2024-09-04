@@ -1,3 +1,4 @@
+require "/stats/effects/fu_statusUtil.lua"
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 
@@ -294,7 +295,7 @@ function fuWeatherBase.applyMovementPenalties(self, modifier)
 	if (self.baseJumpPenalty > 0) then
 		jumpPenalty = self.baseJumpPenalty * math.min(modifier, 1.0)
 	end
-	mcontroller.controlModifiers({
+	applyFilteredModifiers({
 		speedModifier = 1.0 - speedPenalty,
 		airJumpModifier = 1.0 - jumpPenalty
 	})

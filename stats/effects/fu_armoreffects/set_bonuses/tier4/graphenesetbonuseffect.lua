@@ -26,9 +26,9 @@ function update(dt)
 
 		checkWeapons()
 	end
-	mcontroller.controlModifiers({
+	applyFilteredModifiers({
 		airJumpModifier = 1.05,
-		speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.05
+		speedModifier = 1.05
 	})
 end
 

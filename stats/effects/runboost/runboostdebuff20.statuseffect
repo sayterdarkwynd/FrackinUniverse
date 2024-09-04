@@ -3,16 +3,17 @@
   "blockingStat" : "stunImmunity",
 	"effectConfig": {
 		"controlModifiers": {
-			"runModifier": 0.8
+			"speedModifier": 0.8
 		}
 	},
-	"defaultDuration": 30,
+	"defaultDuration": 5,
 
 	"scripts": [
+		"runboostdebuffvfx.lua",
 		"/stats/effects/fu_genericControlModifiers.lua"
 	],
 
-  "animationConfig" : "runboost.animation",
+  "animationConfig" : "/stats/effects/sandstorm/sandstorm.animation",
 
   "label" : "-20% Run",
   "icon" : "/interface/statuses/haste.png"

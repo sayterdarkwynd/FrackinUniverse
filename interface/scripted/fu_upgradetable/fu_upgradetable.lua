@@ -169,40 +169,44 @@ function populateItemList(forceRepop)
 	local upgradableItems={}
 
 	for i = 1, #upgradeableWeaponItems do
-		local monkeys=deepSizeOf(upgradeableWeaponItems[i])
-		if monkeys <=250 then
-			upgradeableWeaponItems[i].count = 1
-			local itemLevel
-			if upgradeableWeaponItems[i].parameters.level then
-				itemLevel = upgradeableWeaponItems[i].parameters.level
-			else
-				local itemConfig = root.itemConfig(upgradeableWeaponItems[i])
-				if itemConfig.config.level then
-					itemLevel = itemConfig.config.level
+		if (not upgradeableWeaponItems[i].parameters.itemTags) or contains(upgradeableWeaponItems[i].parameters.itemTags,"upgradeableWeapon") then
+			local monkeys=deepSizeOf(upgradeableWeaponItems[i])
+			if monkeys <=250 then
+				upgradeableWeaponItems[i].count = 1
+				local itemLevel
+				if upgradeableWeaponItems[i].parameters.level then
+					itemLevel = upgradeableWeaponItems[i].parameters.level
 				else
-					itemLevel = 1
+					local itemConfig = root.itemConfig(upgradeableWeaponItems[i])
+					if itemConfig.config.level then
+						itemLevel = itemConfig.config.level
+					else
+						itemLevel = 1
+					end
 				end
+				table.insert(upgradableItems,{itemData=upgradeableWeaponItems[i],itemType="weapon",itemLevel=itemLevel})
 			end
-			table.insert(upgradableItems,{itemData=upgradeableWeaponItems[i],itemType="weapon",itemLevel=itemLevel})
 		end
 	end
 
 	for i = 1, #upgradeableToolItems do
-		local monkeys=deepSizeOf(upgradeableToolItems[i])
-		if monkeys <=250 then
-			upgradeableToolItems[i].count = 1
-			local itemLevel
-			if upgradeableToolItems[i].parameters.level then
-				itemLevel = upgradeableToolItems[i].parameters.level
-			else
-				local itemConfig = root.itemConfig(upgradeableToolItems[i])
-				if itemConfig.config.level then
-					itemLevel = itemConfig.config.level
+		if (not upgradeableToolItems[i].parameters.itemTags) or contains(upgradeableToolItems[i].parameters.itemTags,"upgradeableWeapon") then
+			local monkeys=deepSizeOf(upgradeableToolItems[i])
+			if monkeys <=250 then
+				upgradeableToolItems[i].count = 1
+				local itemLevel
+				if upgradeableToolItems[i].parameters.level then
+					itemLevel = upgradeableToolItems[i].parameters.level
 				else
-					itemLevel = 1
+					local itemConfig = root.itemConfig(upgradeableToolItems[i])
+					if itemConfig.config.level then
+						itemLevel = itemConfig.config.level
+					else
+						itemLevel = 1
+					end
 				end
+				table.insert(upgradableItems,{itemData=upgradeableToolItems[i],itemType="tool", itemLevel=itemLevel})
 			end
-			table.insert(upgradableItems,{itemData=upgradeableToolItems[i],itemType="tool", itemLevel=itemLevel})
 		end
 	end
 

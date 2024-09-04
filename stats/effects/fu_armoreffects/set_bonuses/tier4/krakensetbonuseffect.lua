@@ -36,7 +36,7 @@ end
 function checkBiomeBonus()
 	if checkBiome({"ocean","sulphuricocean","aethersea","nitrogensea","strangesea","tidewater"}) then
 		effect.setStatModifierGroup(effectHandlerList.armorBonus2Handle,armorBonus2)
-		mcontroller.controlModifiers({speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.05})
+		applyFilteredModifiers({speedModifier = 1.05})
 	else
 		effect.setStatModifierGroup(effectHandlerList.armorBonus2Handle,{})
 	end

@@ -1,4 +1,4 @@
-
+require "/stats/effects/fu_statusUtil.lua"
 require "/stats/effects/medicalStationSpecials/medicalStatusBase.lua"
 
 function init()
@@ -33,14 +33,14 @@ function update(dt)
 		local revPcnt = 1 - (currPcnt / fullPcnt)
 		local pcntOfSpeedBonus = revPcnt * self.maxSpeedBonus
 
-		mcontroller.controlModifiers({ speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or (1 + pcntOfSpeedBonus) })
+		applyFilteredModifiers({ speedModifier = (1 + pcntOfSpeedBonus) })
 	else
-		mcontroller.controlModifiers({ speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or (1 + self.maxSpeedBonus) })
+		applyFilteredModifiers({ speedModifier = (1 + self.maxSpeedBonus) })
 	end
 
 	baseUpdate(dt)
 end
 
 function uninit()
-	--baseUninit(self.modifierGroupID)
+	filterModifiers({},true)
 end

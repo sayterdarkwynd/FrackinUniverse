@@ -1,3 +1,6 @@
+require "/scripts/furesearchGenerators.lua"
+require "/stats/effects/fu_statusUtil.lua"
+
 local tileEffects_Init = init
 local tileEffects_Update = update
 local applyTileEffects
@@ -7,8 +10,6 @@ local brittleTiles
 tileEffects = {}
 currentTile = {}
 collisionParams = {}
-
-require "/scripts/furesearchGenerators.lua"
 
 function init(...)
 	tileMaterials()
@@ -29,7 +30,7 @@ function update(dt,...)
 	local softness = 1
 	self.position = mcontroller.position()
 	if not onGround and self.airJumpModifier ~= 1 then
-		mcontroller.controlModifiers({airJumpModifier = self.airJumpModifier})
+		applyFilteredModifiers({airJumpModifier = self.airJumpModifier})
 	end
 
 
@@ -88,7 +89,7 @@ end
 applyTileEffects = function(groundMat)
 
 	status.addEphemeralEffects(currentTile["effects"])
-	mcontroller.controlModifiers(currentTile["controlModifiers"])
+	applyFilteredModifiers(currentTile["controlModifiers"])
 	mcontroller.controlParameters(currentTile["controlParameters"])
 
 	local airJumpModifier = currentTile.controlModifiers.airJumpModifier

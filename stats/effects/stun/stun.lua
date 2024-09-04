@@ -1,10 +1,11 @@
+require "/stats/effects/fu_statusUtil.lua"
+
 function init()
 	effect.setParentDirectives("fade=7733AA=0.25")
-	effect.addStatModifierGroup({{stat = "jumpModifier", amount = -0.3}})
 end
 
 function update(dt)
-	mcontroller.controlModifiers({
+	applyFilteredModifiers({
 		ToolUsageSuppressed = true,
 		facingSuppressed = true,
 		movementSuppressed = true,
@@ -15,5 +16,5 @@ function update(dt)
 end
 
 function uninit()
-
+	filterModifiers({},true)
 end

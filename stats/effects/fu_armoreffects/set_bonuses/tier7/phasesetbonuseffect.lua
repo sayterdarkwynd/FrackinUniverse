@@ -27,7 +27,7 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		mcontroller.controlModifiers({speedModifier = (status.statPositive("spikeSphereActive") and 1.0) or 1.20,airJumpModifier = 1.20})
+		applyFilteredModifiers({speedModifier = 1.2,airJumpModifier = 1.2})
 		setRegen(0.008)
 	end
 end

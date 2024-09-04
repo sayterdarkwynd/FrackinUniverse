@@ -1,3 +1,5 @@
+require "/stats/effects/fu_statusUtil.lua"
+
 function init()
 	script.setUpdateDelta(5)
 	if not world.entitySpecies(entity.id()) then return end
@@ -38,6 +40,7 @@ function update(dt)
 		else
 			self.tickTimer = (self.tickTimer or 0) - dt
 		end
+		applyFilteredModifiers({ airJumpModifier = 1.0, speedModifier = 1.0 })
 	end
 end
 
@@ -50,7 +53,7 @@ function applyPenalty()
 		sourceEntityId = entity.id()
 	})
 	effect.setParentDirectives("fade=806e4f="..self.tickTimer * 0.25)
-	mcontroller.controlModifiers({ airJumpModifier = 0.08, speedModifier = 0.08 })
+	applyFilteredModifiers({ airJumpModifier = 0.08, speedModifier = 0.08 })
 end
 
 function applyEffects()
@@ -66,4 +69,5 @@ function uninit()
 	if not self.didInit then return end
 	effect.removeStatModifierGroup(self.statHandler)
 	animator.setParticleEmitterActive("drips", false)
+	filterModifiers({},true)
 end
