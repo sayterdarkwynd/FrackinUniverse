@@ -64,7 +64,7 @@ function GreataxeSmash:windup(windupProgress)
 			else
 				if self.timerGreataxe < 100 then --otherwise, add bonus. crit chance scales from 0 to 100%, reaching it quicker with higher mastery. crit damage reaches 1% at max, multiplied by mastery value (30% makes it 1.3% CD)
 					self.timerGreataxe = self.timerGreataxe + 0.5
-					local greataxeMastery=1+status.stat("greataxeMastery")
+					local greataxeMastery=1+status.stat("axeMastery")
 					status.setPersistentEffects("greataxeMasteryBonus", {{stat = "critChance", amount = self.timerGreataxe * 1.05 * greataxeMastery },{stat = "critDamage", amount = greataxeMastery*self.timerGreataxe/100}})
 					world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","greataxeMasteryBonus")
 				end
@@ -165,7 +165,7 @@ function GreataxeSmash:fire()
 					end
 					if self.timerGreataxe > 75 and self.timerGreataxe < 101 then
 						local bombBonus = status.stat("bombtechBonus")
-						local greataxeMastery = status.stat("greataxeMastery")
+						local greataxeMastery = status.stat("axeMastery")
 						local primaryStrike = { power = (self.timerGreataxe / 4) * bombBonus}
 						local secondaryStrike = { power = 0 + bombBonus}
 						world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+2,mcontroller.position()[2]-1}, entity.id(), {0, 0}, false, primaryStrike)
