@@ -3,6 +3,7 @@ setName="fu_bearset"
 
 armorBonus={
 	{stat="hammerMastery",amount=0.2 },
+	{stat="greataxeMastery",amount=0.2 },
 	{stat="iceStatusImmunity",amount=1},
 	{stat="slushslowImmunity",amount=1},
 	{stat="grit",amount=0.2 }

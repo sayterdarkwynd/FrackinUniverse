@@ -6,6 +6,7 @@ weaponBonus={
 }
 
 armorBonus={
+	{stat = "magnorbMastery", amount = 0.19},
 	{stat = "radiationburnImmunity", amount = 1}
 }
 
@@ -28,7 +29,7 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"magnorb","thrown"})
+	local weapons=weaponCheck({"thrown"})
 
 	if weapons["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
