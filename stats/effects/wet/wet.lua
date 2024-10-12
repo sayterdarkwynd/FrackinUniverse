@@ -6,8 +6,8 @@ function init()
 	-- floran buff
 	self.healingRate = 0.005
 	bonusHandler=effect.addStatModifierGroup({})
-	self.frEnabled=status.statusProperty("fr_enabled")
-	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
+	-- self.frEnabled=status.statusProperty("fr_enabled")
+	-- self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
 	self.didInit=true
 end
 
@@ -19,13 +19,13 @@ function update(dt)
 	else
 		animator.setParticleEmitterActive("drips", false)
 	end
-	if self.frEnabled and (self.species == "hylotl") then
+	if status.statPositive("fuFishFood") then
 		self.foodRate = 0.001
 		if status.isResource("food") then
 			status.modifyResourcePercentage("food", self.foodRate * dt)
 		end
 	end
-	if self.frEnabled and (self.species == "floran") then
+	if status.statPositive("fuWaterPlants") then
 		self.healingRate = 0.001
 		self.foodRate = 0.001
 		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*self.healingRate*math.max(0,1+status.stat("healingBonus"))}})
