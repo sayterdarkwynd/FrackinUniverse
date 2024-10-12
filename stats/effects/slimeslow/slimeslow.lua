@@ -14,7 +14,7 @@ end
 function update(dt)
 	if not self.didInit then init() end
 
-	ifstatus.statPositive("fuSlimeHeals") then
+	if status.statPositive("fuSlimeHeals") then
 		self.healingRate = 0.025
 		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*self.healingRate*math.max(0,1+status.stat("healingBonus"))}})
 		applyFilteredModifiers({

@@ -10,7 +10,7 @@ function init()
 end
 
 function update(dt)
-	local species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
+	-- local species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
 
 	-- if (species == "radien") or (species == "novakid") or (species == "shadow") then
 	if (status.statPositive("fuRadiationHeal")) then
