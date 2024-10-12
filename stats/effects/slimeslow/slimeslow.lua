@@ -6,15 +6,15 @@ function init()
 	animator.setParticleEmitterActive("drips", true)
 	effect.setParentDirectives("fade=347857=0.8")
 	bonusHandler=effect.addStatModifierGroup({})
-	self.frEnabled=status.statusProperty("fr_enabled")
-	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
+	-- self.frEnabled=status.statusProperty("fr_enabled")
+	-- self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
 	self.didInit=true
 end
 
 function update(dt)
 	if not self.didInit then init() end
 
-	if self.frEnabled and (self.species == "slimeperson") then
+	ifstatus.statPositive("fuSlimeHeals") then
 		self.healingRate = 0.025
 		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*self.healingRate*math.max(0,1+status.stat("healingBonus"))}})
 		applyFilteredModifiers({
