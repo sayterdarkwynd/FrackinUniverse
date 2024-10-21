@@ -1,8 +1,8 @@
 function init()
 	if not world.entityType(entity.id()) then return end
-	self.frEnabled=status.statusProperty("fr_enabled")
-	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
-	if self.frEnabled and (self.species == "fragmentedruin") then
+	-- self.frEnabled=status.statusProperty("fr_enabled")
+	-- self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
+	if status.statPositive("fuPoisonHeals") then
 		animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
 		animator.setParticleEmitterActive("healing", config.getParameter("particles", true))
 	else
@@ -25,7 +25,7 @@ end
 function update(dt)
 	if not self.didInit then init() end
 	if not self.didInit then return end
-	if self.frEnabled and (self.species == "fragmentedruin") then
+	if status.statPositive("fuPoisonHeals") then
 		--sb.logInfo("weakpoison")
 		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=((self.healingRate*( 1 + status.stat("healingBonus") )) - self.penaltyRate)}})
 		--status.modifyResource("health", (self.healingRate - self.penaltyRate) * dt)

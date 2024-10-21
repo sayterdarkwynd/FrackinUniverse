@@ -6,16 +6,16 @@ function init()
 	animator.setParticleEmitterOffsetRegion("sparks", mcontroller.boundBox())
 	animator.setParticleEmitterActive("sparks", true)
 	effect.setParentDirectives("fade=7733AA=0.25")
-	self.species = status.statusProperty("fr_enabled") and (status.statusProperty("fr_race") or world.entitySpecies(entity.id()))
+	-- self.species = status.statusProperty("fr_enabled") and (status.statusProperty("fr_race") or world.entitySpecies(entity.id()))
 
 	-- *** FU additions
-	if self.species == "glitch" then -- when electrified, glitch lose 50% power and Energy
+	if status.statPositive("fuElectrifiedPenaltyEnergy") then -- when electrified, glitch lose 50% power and Energy
 		self.statHandler=effect.addStatModifierGroup({
-			{stat = "powerMultiplier", baseMultiplier = 0.5 },
+			-- {stat = "powerMultiplier", baseMultiplier = 0.5 },
 			{stat = "maxEnergy", baseMultiplier = 0.5 }
 		})
 	end
-	if self.species == "trink" then -- when electrified, trinks lose 50% power
+	if status.statPositive("fuElectrifiedPenaltyDamage") then -- when electrified, trinks lose 50% power
 		self.statHandler=effect.addStatModifierGroup({
 			{stat = "powerMultiplier", baseMultiplier = 0.5 }
 		})

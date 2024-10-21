@@ -10,9 +10,10 @@ function init()
 end
 
 function update(dt)
-	local species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
+	-- local species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
 
-	if (species == "radien") or (species == "novakid") or (species == "shadow") then
+	-- if (species == "radien") or (species == "novakid") or (species == "shadow") then
+	if (status.statPositive("fuRadiationHeal")) then
 		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=((self.healingRate*math.max(0, 1 + status.stat("healingBonus") )) - self.penaltyRate)}})
 		--status.modifyResource("health", (self.healingRate - self.penaltyRate) * dt)
 	else
