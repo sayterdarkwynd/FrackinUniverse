@@ -7,12 +7,9 @@ function init()
 	-- egg type?
 	self.entityId=entity.id()
 	self.centrifugeType = config.getParameter("centrifugeType")
-
 	incubation = config.getParameter("incubation")
-
 	spawnMod = math.random(10) -- + config.getParameter("spawnModValue") -- change this to check the egg instead. each egg has a spawnMod that influences its hatch time
 end
-
 
 function fillAmount()
 	if type(self.entityId) ~= "number" then return nil end
