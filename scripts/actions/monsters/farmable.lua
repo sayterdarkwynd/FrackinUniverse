@@ -186,7 +186,7 @@ end
 
 function removeFood(args)
 	storage.food = math.max((storage.food or 100) - 0.277777778/config.getParameter('hungerTime',20),0)
-	storage.mateTimer = math.max((storage.mateTimer or 120) - 5/config.getParameter('mateTimer',120),0)
+	storage.mateTimer = math.max((storage.mateTimer or 120) - 5/config.getParameter('mateTime',120),0)
 	self.timerPoop = (self.timerPoop or 90) - 1
 
 	if self.timerPoop <= 0 and storage.food >= 50 then
