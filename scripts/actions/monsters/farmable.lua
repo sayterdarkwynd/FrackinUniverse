@@ -186,7 +186,7 @@ end
 
 function removeFood(args)
 	storage.food = math.max((storage.food or 100) - 0.277777778/config.getParameter('hungerTime',20),0)
-	storage.mateTimer = math.max((storage.mateTimer or 60) - 0.277777778/config.getParameter('mateTimer',60),0)
+	storage.mateTimer = math.max((storage.mateTimer or 120) - 5/config.getParameter('mateTimer',120),0)
 	self.timerPoop = (self.timerPoop or 90) - 1
 
 	if self.timerPoop <= 0 and storage.food >= 50 then
@@ -243,14 +243,16 @@ function displayHappiness()
 	end
 end
 
+-- Fed livestock breed more often. Breeding removes most of their current food. They must be ready to mate, 70% happy, and beat the difficulty class of the roll
 function checkMate()
-	self.randChance = math.random(100) * (1 - storage.food/1000) --current happiness level determines breeding chances
+	self.d20 = math.random(20) + (storage.happiness/10) --roll a d20. Happiness increases value of roll, increasing likelihood of success by up to 50%
 	self.eggType = config.getParameter("eggType")
-	if self.eggType then
-	 -- Fed livestock breed more often. Breeding removes most of their current food.
-		if (storage.mateTimer <= 0) and (self.randChance == 0) and (self.canMate) and (storage.happiness >= 70) then
+	--is egg, and the d20 roll exceeds or equals the difficulty (19)
+	if (self.eggType) and (self.d20 >= 19) then 
+		--creature is full enough, the wait timer is up, and the creature is currently capable of mating (has eaten at least once)
+		if (storage.mateTimer <= 0) and (self.canMate) and (storage.food >= 45) then 
+			storage.mateTimer = 120 - (storage.food/5)
 			world.spawnItem( self.eggType, mcontroller.position(), 1 )
-			storage.mateTimer = 60 - (storage.food/5)
 			world.spawnProjectile("fu_egglay",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop)
 			animator.playSound("harvest")
 			storage.food = storage.food - 45
