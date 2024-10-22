@@ -566,7 +566,8 @@ function update(dt)
 
 	self.timerDegrade = math.max(self.timerDegrade - dt,0.0) - (self.protheonCount * 4)
 
-	if (status.stat("freudBonus") > 0 ) then  -- player is inside an Instafreud
+	if (status.stat("freudBonus") > 0 ) then  -- player is inside an Instafreud or has consumed an item that temporarily acts like one
+		self.degradeTotal = self.madnessCount / 300 + (self.protheonCount) + status.stat("freudBonus") + (status.stat("mentalProtection")/20)
 		displayBar()
 		--sb.logInfo("Instafreud is active. Reducing madness.")
 		player.radioMessage("fu_useFreud")
