@@ -566,7 +566,7 @@ function update(dt)
 		displayBar()
 		--sb.logInfo("Instafreud is active. Reducing madness.")
 		player.radioMessage("fu_useFreud")
-		player.consumeCurrency("fumadnessresource", self.degradeTotal)	
+		player.consumeCurrency("fumadnessresource", self.degradeTotal)
 	else
 		disableBar()
 	end
@@ -577,7 +577,7 @@ function update(dt)
 		if (status.statPositive("mentalProtection")) then
 			player.consumeCurrency("fumadnessresource", self.protectionBonus)
 		end
-		self.bonusTimer = 30.0 
+		self.bonusTimer = 30.0
 	end
 end
 ----------------------------------------------------------------------------------
