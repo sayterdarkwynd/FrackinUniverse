@@ -251,7 +251,7 @@ function checkMate()
 	if (self.eggType) and (self.d20 >= 19) then 
 		--creature is full enough, the wait timer is up, and the creature is currently capable of mating (has eaten at least once)
 		if (storage.mateTimer <= 0) and (self.canMate) and (storage.food >= 45) then 
-			storage.mateTimer = 120 - (storage.food/5)
+			storage.mateTimer = 240 - (storage.food/5)
 			world.spawnItem( self.eggType, mcontroller.position(), 1 )
 			world.spawnProjectile("fu_egglay",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop)
 			animator.playSound("harvest")
