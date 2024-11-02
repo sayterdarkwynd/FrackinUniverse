@@ -27,7 +27,7 @@ end
 function update(dt)
 	if not self.didInit then init() end
 	if not self.didInit then return end
-	if status.statPositive("fuRadPlantHeal") then
+	if status.statPositive("fuRadPlantHeal") or status.stat("isXi") then
 		applyEffects()
 		animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
 		animator.setParticleEmitterActive("healing", true)
