@@ -35,7 +35,8 @@ function GunFire:init()
 	--self.magazineAmount = math.min(config.getParameter("magazineAmount",defaultMag),self.magazineSize) -- current number of bullets in the magazine
 	--self.magazineAmount=config.getParameter("magazineAmount",defaultMag)
 	self.magazineAmount=config.getParameter("magazineAmount"..self.abilitySlot,defaultMag)
-	self.reloadTime = math.max(0,config.getParameter("reloadTime",1) + status.stat("reloadTime")) -- how long does reloading mag take?
+	-- how long does reloading mag take? Ensure reloadTime config value is a number with tonumber fallback
+	self.reloadTime = math.max(0, (tonumber(config.getParameter("reloadTime", 1)) or 1) + (tonumber(status.stat("reloadTime")) or 0))
 
 	if (self.isAmmoBased==1) then
 		self.timerRemoveAmmoBar = 0
@@ -78,10 +79,14 @@ function GunFire:init()
 end
 
 function GunFire:calcAmmo()
-	local oldSize=self.magazineSize
-	local magazineTemp=(self.ammoInheritanceMult or 1.0)*config.getParameter("magazineSize",1)
-	self.magazineSize = magazineTemp*(1+status.stat("magazineMultiplier")) + math.max(0,status.stat("magazineSize")) -- total count of the magazine
-	if (oldSize and oldSize~= self.magazineSize) then return true,oldSize end
+	local oldSize = self.magazineSize
+	-- Ensure config value is a number with tonumber fallback
+	local magazineTemp = (self.ammoInheritanceMult or 1.0) * (tonumber(config.getParameter("magazineSize", 1)) or 1)
+	self.magazineSize = magazineTemp * (1 + (tonumber(status.stat("magazineMultiplier")) or 0)) + math.max(0, (tonumber(status.stat("magazineSize")) or 0))
+
+	if oldSize and oldSize ~= self.magazineSize then
+		return true, oldSize
+	end
 end
 
 -- ***********************************************************************************************************
