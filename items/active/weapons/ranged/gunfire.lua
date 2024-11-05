@@ -38,7 +38,7 @@ function GunFire:init()
 	-- how long does reloading mag take?
 	local reloadTimeConfig = config.getParameter("reloadTime", 1)
 	if type(reloadTimeConfig) == "table" then
-		reloadTimeConfig = math.random(reloadTimeConfig[1], reloadTimeConfig[2]) - Ensure reloadTime config value is a number
+		reloadTimeConfig = math.random(reloadTimeConfig[1], reloadTimeConfig[2]) -- Ensure reloadTime config value is a number
 	end
 	self.reloadTime = math.max(0, (tonumber(reloadTimeConfig) or 1) + (tonumber(status.stat("reloadTime")) or 0))
 
