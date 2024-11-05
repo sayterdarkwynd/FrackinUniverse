@@ -35,8 +35,13 @@ function GunFire:init()
 	--self.magazineAmount = math.min(config.getParameter("magazineAmount",defaultMag),self.magazineSize) -- current number of bullets in the magazine
 	--self.magazineAmount=config.getParameter("magazineAmount",defaultMag)
 	self.magazineAmount=config.getParameter("magazineAmount"..self.abilitySlot,defaultMag)
-	-- how long does reloading mag take? Ensure reloadTime config value is a number with tonumber fallback
-	self.reloadTime = math.max(0, (tonumber(config.getParameter("reloadTime", 1)) or 1) + (tonumber(status.stat("reloadTime")) or 0))
+	-- how long does reloading mag take?
+	local reloadTimeConfig = config.getParameter("reloadTime", 1)
+	if type(reloadTimeConfig) == "table" then
+		reloadTimeConfig = math.random(reloadTimeConfig[1], reloadTimeConfig[2]) - Ensure reloadTime config value is a number
+	end
+	self.reloadTime = math.max(0, (tonumber(reloadTimeConfig) or 1) + (tonumber(status.stat("reloadTime")) or 0))
+
 
 	if (self.isAmmoBased==1) then
 		self.timerRemoveAmmoBar = 0
@@ -80,14 +85,18 @@ end
 
 function GunFire:calcAmmo()
 	local oldSize = self.magazineSize
-	-- Ensure config value is a number with tonumber fallback
-	local magazineTemp = (self.ammoInheritanceMult or 1.0) * (tonumber(config.getParameter("magazineSize", 1)) or 1)
+	local magazineSizeConfig = config.getParameter("magazineSize", 1)
+	if type(magazineSizeConfig) == "table" then
+		magazineSizeConfig = math.random(magazineSizeConfig[1], magazineSizeConfig[2]) -- Should done this when creating weapon, check it here if it doesn't
+	end
+	local magazineTemp = (self.ammoInheritanceMult or 1.0) * (tonumber(magazineSizeConfig) or 1)
 	self.magazineSize = magazineTemp * (1 + (tonumber(status.stat("magazineMultiplier")) or 0)) + math.max(0, (tonumber(status.stat("magazineSize")) or 0))
 
 	if oldSize and oldSize ~= self.magazineSize then
 		return true, oldSize
 	end
 end
+
 
 -- ***********************************************************************************************************
 -- ***********************************************************************************************************
