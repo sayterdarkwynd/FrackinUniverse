@@ -494,7 +494,7 @@ function update(dt)
 		if self.timerCounterGenes >= (1+afkLvl) then
 			if afkLvl <= 3 then
 				self.rewardedGenes = status.stat("isXi")
-				if status.stat("isXi") then
+				if self.rewardedGenes>0 then
 					if self.timerCounterGenes >= (25 - self.rewardedGenes) then
 						if player.currency("fugeneticmaterial") <= 99 then  -- dont generate more unless below 100 genes to prevent abusing for profit
 							player.addCurrency("fugeneticmaterial", self.rewardedGenes)
