@@ -170,7 +170,6 @@ function handleTooltip(args)
 
 	--seed use and seed display
 	local seedString=""
-	local seedTimeString=""
 	if args.seed and args.seed.name then
 		seedString=root.itemConfig(args.seed.name).config.shortdescription
 		seedString=" (^yellow;" .. seedString .. "^reset;)"
