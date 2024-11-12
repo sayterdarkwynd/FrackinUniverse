@@ -150,7 +150,6 @@ function closePanel()
 	local oreSlotItem =  widget.itemSlotItem("oreSlot")
 	if oreSlotItem then
 		player.giveItem(oreSlotItem)
-		oreSlotItem=nil
 	end
 	pane.dismiss()
 end
@@ -159,6 +158,5 @@ function uninit()
 	local oreSlotItem =  widget.itemSlotItem("oreSlot")
 	if oreSlotItem then
 		player.giveItem(oreSlotItem)
-		oreSlotItem=nil
 	end
 end
