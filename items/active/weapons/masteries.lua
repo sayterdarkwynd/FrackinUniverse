@@ -444,7 +444,7 @@ function masteries.apply(args)
 				masteryBuffer[#masteryBuffer + 1]={stat="focalProjectileCountBonus", amount=math.min(1.0,math.floor(masteries.stats.wandMastery*6))*handMultiplier }
 			end
 
-			--wands: increased damage, reduced cast time, increased projectiles (+1 per 20% mastery, up to 100%), increased range.
+			--staves: increased damage, reduced cast time, increased projectiles (+1 per 20% mastery, up to 100%), increased range.
 			--khe's take: staves are the more cast range and damage focused weapon, less about speed and many hits.
 			--notes: projectile count does not increase total damage, as the damage is split per projectile.
 			--math: 20% mastery grants: 10% range, 6% damage, 0.98 charge time multiplier. +1 projectile.
