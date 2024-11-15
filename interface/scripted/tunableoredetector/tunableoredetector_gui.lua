@@ -154,3 +154,9 @@ function closePanel()
 	pane.dismiss()
 end
 
+function uninit()
+	local oreSlotItem =  widget.itemSlotItem("oreSlot")
+	if oreSlotItem then
+		player.giveItem(oreSlotItem)
+	end
+end
