@@ -5,7 +5,7 @@
   "description" : "A cozy bath that stands on four brass feet",
   "shortdescription" : "Clawfoot Tub",
   "race" : "novakid",
-  "category" : "decorative",
+  "category" : "furniture",
   "price" : 200,
 
   "apexDescription" : "The lip of this bath gives it the look of a teacup.",
@@ -19,10 +19,32 @@
   "inventoryIcon" : "frontiertubicon.png",
   "orientations" : [
     {
-      "dualImage" : "frontiertub.png:<color>",
-      "imagePosition" : [-16, 0],
+      "image" : "frontiertub.png",
+      "imagePosition" : [0, 0],
+      "direction" : "left",
+      "flipImages" : true,
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+      "anchors" : ["bottom"],
+      "sitPosition" : [-16, 22]
+    },
+    {
+      "image" : "frontiertub.png",
+      "imagePosition" : [0, 0],
+	    "direction" : "right",
+      "spaceScan" : 0.1,
+      "anchors" : ["bottom"],
+      "sitPosition" : [16, 22]
     }
-  ]
+  ],
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : false,
+  "sitOrientation" : "sit",
+  "sitAngle" : 0,
+  "sitCoverImage" : "/objects/novakid/frontiertub/frontiertubcover.png",
+  "sitEmote" : "happy",
+  "sitStatusEffects" : [
+    "nude"
+  ],
+  "sitEffectEmitters" : [ ]
 }
