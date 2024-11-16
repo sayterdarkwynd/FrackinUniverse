@@ -48,7 +48,7 @@ function swapMM(name)
     if not swapItem then
         swapItem = self.currentMM.parameters.originalMM or root.createItem(getBaseManip())
     else
-        swapItem.parameters.originalMM = currentlyBase and self.currentMM or self.currentMM.parameters.originalMM
+        swapItem.parameters.originalMM = (currentlyBase and self.currentMM or self.currentMM.parameters.originalMM) or root.createItem(getBaseManip())
     end
 
     paintSizeCap(getMaxSize(swapItem)+1)
