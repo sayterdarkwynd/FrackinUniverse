@@ -48,7 +48,7 @@ function update()
 		elseif type == "food" then
 			local foodVal=status.isResource("food") and status.resourceMax("food") or 0
 			if foodVal~=0 then
-				value=math.abs(shorten(foodVal/(value*60.0)))
+				value=shorten(foodVal/(value*60.0))*-1
 				if value % 1 == 0 then
 					widget.setText(stat, tostring(math.floor(value)))
 				else
