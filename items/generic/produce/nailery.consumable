@@ -4,18 +4,22 @@
 	"category": "food",
 	"rarity": "Common",
 	"price": 5,
-	"maxStack": 1000,
+	"foodValue": 10,
 
 	"tooltipKind": "food",
-	"description": "Craft into bombs, or extract for iron.\n^yellow;^reset;^red;Poisons^reset;: 5s",
+	"description": "Craft into bombs, or extract for iron.\n^yellow;^reset;^red;Poison^reset;: 5s\n^yellow;Type: Robot Food^reset;",
 	"shortdescription": "Nailery",
 
-	//"learnBlueprintsOnPickup": ["nailbomb"],
+	"eventCategory": "eventCrop",
+	"builder": "/items/buildscripts/buildfood.lua",
 	"effects": [
 		[{
 			"effect": "weakpoison",
 			"duration": 5
+		},
+		{
+			"effect": "robot_food"
 		}]
 	],
-	"blockingEffects": ["weakpoison"]
+	"blockingEffects": ["wellfed"]
 }
