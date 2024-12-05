@@ -7,7 +7,7 @@ weaponBonus={
 }
 
 armorBonus={
-	{stat = "shipMass", baseMultiplier = 0.85}
+
 }
 
 

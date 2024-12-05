@@ -413,10 +413,6 @@ end
 
 
 -- For FU
-function shipMassFind()
-    self.shipMass = status.stat("shipMass") /10
-end
-
 function fuelBonusFind()
     self.fuelBonus = status.stat("maxFuel")
 end
@@ -445,17 +441,16 @@ function fuelCost(travel)
     self.one =  celestial.currentSystem()
     self.two =  {location = travel or self.travel.system, planet = 0, satellite = 0, system = self.travel.target}
     local distanceMath = math.sqrt( ( (self.one.location[1] - self.two.location[1]) ^ 2 ) + ( (self.one.location[2] - self.two.location[2]) ^ 2 ) )
-    shipMassFind()
-	local shipMass=self.shipMass or 0
+
     local cost
     if distanceMath < 30 then
-      cost = 50 + ((config.getParameter("jumpFuelCost") + distanceMath) * (shipMass + 2)) -- nearby systems are relatively cheap to travel to
+      cost = 50 + ((config.getParameter("jumpFuelCost") + distanceMath) * 4) -- nearby systems are relatively cheap to travel to
     elseif distanceMath < 200 then
-      cost = 70 + ((config.getParameter("jumpFuelCost") + distanceMath) * (shipMass + 4)) -- a bit farther out
+      cost = 70 + ((config.getParameter("jumpFuelCost") + distanceMath) * 6) -- a bit farther out
     elseif distanceMath < 400 then
-      cost = 140 + ((config.getParameter("jumpFuelCost") + distanceMath) * (shipMass + 6)) -- mid/long range
+      cost = 140 + ((config.getParameter("jumpFuelCost") + distanceMath) * 8) -- mid/long range
     else
-      cost = 300 + ((config.getParameter("jumpFuelCost") + distanceMath) * (shipMass + 10)) -- long range value
+      cost = 300 + ((config.getParameter("jumpFuelCost") + distanceMath) * 12) -- long range value
     end
 
 	if cost < 1000 and isConnected(self.one,self.two) then
