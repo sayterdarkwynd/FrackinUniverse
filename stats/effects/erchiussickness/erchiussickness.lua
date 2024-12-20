@@ -27,6 +27,7 @@ function init()
 	self.findMonster = util.uniqueEntityTracker(self.monsterUniqueId, 0.2)
 	self.saturation = 0
 	self.dps = 0
+	self.didSpawn = false
 
 	self.spawnTimer = 0.5
 end
@@ -55,7 +56,7 @@ function update(dt)
 
 	local monsterPosition = self.findMonster()
 	if monsterPosition then
-		if not self.messaged then
+		if not self.messaged and self.didSpawn then
 			world.sendEntityMessage(entity.id(), "queueRadioMessage", "erchiussickness")
 			self.messaged = true
 		end
@@ -99,6 +100,7 @@ function update(dt)
 				keepAlive = true
 			}
 			world.spawnMonster(self.spawnGhost, vec2.add(mcontroller.position(), config.getParameter("ghostSpawnOffset")), parameters)
+			self.didSpawn = true
 			self.spawnTimer = 1.0
 		end
 	end
