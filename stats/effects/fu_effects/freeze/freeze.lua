@@ -1,3 +1,5 @@
+require "/stats/effects/fu_statusUtil.lua"
+
 function init()
 	if (status.stat("iceResistance")>=config.getParameter("resistanceThreshold",0.75)) then
 		effect.expire()
