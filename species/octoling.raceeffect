@@ -1,0 +1,109 @@
+{
+	"stats": [
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.1 },
+		{ "stat": "maxBreath", "amount": 220 },
+
+		{ "stat": "poisonResistance", "amount": 0.3 },
+		{ "stat": "radioactiveResistance", "amount": 0.3 },
+		{ "stat": "cosmicResistance", "amount": -0.25 },
+		{ "stat": "iceResistance", "amount": -0.25 },
+
+		{ "stat": "slimeImmunity", "amount": 1 },
+		{ "stat": "slimestickImmunity", "amount": 1 },
+		{ "stat": "wetImmunity", "amount": 1 },
+		{ "stat": "fallDamageMultiplier", "effectiveMultiplier": 0.65 },
+
+    { "stat": "shotgunMastery", "amount": 0.1 },
+    { "stat": "fuSlimeHeals", "amount": 1 }
+	],
+
+	"diet" : [ { "ORGANIC" : false, "MEAT_RAW" : true, "FISH" : true } ],
+  
+	"controlModifiers": { "airJumpModifier": 1.2 },
+  
+	"envEffects": [{
+			"biomes": [ "ocean", "oceanfloor" ],
+			"stats": [
+				{ "stat": "maxHealth", "effectiveMultiplier": 1.15 },
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.15 },
+				{ "stat": "breathProtection", "amount": 1 },
+				{ "stat": "fallDamageMultiplier", "effectiveMultiplier": 0 }
+			],
+			"controlModifiers": { "speedModifier": 1.2 }
+		},
+    
+		{
+			"biomes": "cold",
+			"stats": [
+        { "stat": "maxHealth", "effectiveMultiplier": 0.8 },
+				{	"stat": "maxEnergy",	"effectiveMultiplier": 0.8 },
+				{	"stat": "energyRegenPercentageRate", "baseMultiplier": 0.8 } 
+      ],
+				"controlModifiers": {	"speedModifier": 0.8 } 
+		},
+                 
+			{
+			"biomes": "hot",
+			"stats": [
+        { "stat": "maxHealth",	"effectiveMultiplier": 1.1 },
+				{	"stat": "maxEnergy", "effectiveMultiplier": 1.1 },
+				{	"stat": "energyRegenPercentageRate", "baseMultiplier": 1.1 } 
+      ],
+				"controlModifiers": { "speedModifier": 1.1 } 
+		}
+		],
+  
+	"liquidEffects": [{
+			"liquids": [
+				5, 6, 13, 60
+			],
+			"stats": [
+        { "stat": "maxHealth", "effectiveMultiplier": 1.1 },
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.1 },
+				{	"stat": "breathProtection", "amount": 1 },
+				{ "stat": "fallDamageMultiplier", "effectiveMultiplier": 0 }
+			]
+		},
+		{
+			"liquids": [
+				3, 12, 58, 88
+			],
+			"stats": [
+        { "stat": "maxHealth", "effectiveMultiplier": 0.7	},
+				{ "stat": "maxEnergy", "effectiveMultiplier": 0.7 },
+				{ "stat": "maxBreath", "amount": -100 }
+			]
+		}
+	],
+	"weaponEffects": [{
+			"weapons": [
+				"fistWeapon", "pistol"
+			],
+			"stats": [
+        { "stat": "powerMultiplier", "effectiveMultiplier": 1.2 },
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.15 }
+			]
+		},
+		{
+			"weapons": [
+				"sniperrifle", "shotgun", "broadsword"
+			],
+			"stats": [
+        { "stat": "critChance", "amount": 2 },
+				{	"stat": "critDamage", "amount": 0.05 }
+			]
+		},
+		{
+			"weapons": [
+				"energy"
+			],
+			"stats": [
+        {	"stat": "powerMultiplier", "effectiveMultiplier": 1.05 },
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.05 }
+			]
+		}
+	],
+	"special": [
+		"swimboost1"
+	]
+}
