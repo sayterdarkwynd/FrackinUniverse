@@ -131,7 +131,7 @@ function populateMaterialsList()
 
                 local listedBiomeNames = {}
                 for _, biomeCode in ipairs(uniqueBiomeCodes) do
-                    if BiomeCheck(forbiddenBiomes, biomeCode) then
+                    if isHiddenBiome(biomeCode) then
                         -- Semi-secret biomes like Precursor Underground are not listed.
                         anomaliesFound = true
                     else
@@ -401,21 +401,24 @@ function getDate(days)
     return "Year "..year..", Month "..month.." and Day "..days
 end
 
--- check list of biomes already printed
-function BiomeCheck(tbl, biome)
-    for _, value in pairs(tbl) do
-        if (value == biome) then
-            -- forbidden biome
-            if (biome=="precursorsurface" or biome=="precursorunderground") then
-                -- precursor
-                if player.hasCompletedQuest("precursor_unlock") then
-                    return false
-            else
-                -- elder
-                if player.hasQuest('create_elder') then
-                    return false
-            return true
-        end
+local precursorBiomes = {
+    precursorsurface = true,
+    precursorunderground = true
+}
+local elderBiomes = {
+    atropuselder = true,
+    atropuselderunderground = true,
+    elder = true,
+    elderunderground = true,
+    shoggothbiome = true
+}
+
+function isHiddenBiome(biomeCode)
+    if precursorBiomes[biomeCode] then
+        return not player.hasCompletedQuest("precursor_unlock")
+    elseif elderBiomes[biomeCode] then
+        return not player.hasQuest('create_elder')
     end
+
     return false
 end
