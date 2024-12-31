@@ -30,10 +30,6 @@ function init(...)
 		sb.logInfo("Re-added 'zb_scaninteraction' quest")
 		player.startQuest("zb_scaninteraction")
 	end
-
-	-- require "/zb/zb_util.lua"
-	-- zbutil.DeepPrintTable(player)
-
 	sb.logInfo("----- end ZB player init -----")
 end
 

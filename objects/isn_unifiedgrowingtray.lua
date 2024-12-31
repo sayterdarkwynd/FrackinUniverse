@@ -184,6 +184,11 @@ function handleTooltip(args)
 	end
 	seedString='Seeds Used: ' .. seedUseWith .. seedString .. "\n"
 
+	--seed min and max duration display
+	if args.seed and args.seed.name then
+		seedString=seedString.."Stage ^yellow;"..storage.currentStage.."^reset; ^green;"..math.floor(storage.growth).."^reset; / ^green;"..storage.stage[storage.currentStage].val.."^reset;\n"
+	end
+
 	--yield calc
 	local yieldWith=getFertSum('yield', args.fert, args.water)
 	local yieldWithout=getFertSum('yield', "absolutelynothing", "absolutelynothing")

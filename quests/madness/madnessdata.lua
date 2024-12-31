@@ -22,7 +22,6 @@ function init()
 	self.timerCounter = 0
 	self.timerCounterGenes = 0 --xi specific
 	self.environmentTimer = 0
-
 	self.timer = 10.0 -- was zero, instant event on plopping in. giving players a short grace period. some of us teleport around a LOT.
 	for _,effect in ipairs(status.activeUniqueStatusEffectSummary()) do
 		if effect[1]=="mad" then
@@ -39,7 +38,6 @@ function init()
 	self.bonusTimer = 1
 
     storage.crazycarrycooldown=math.max(storage.crazycarrycooldown or 0,10.0)
-
 
 	--make sure the annoying sounds dont flood
 	status.removeEphemeralEffect("partytime5madness")
@@ -62,7 +60,6 @@ function init()
 
 	local elementalTypes=root.assetJson("/damage/elementaltypes.config")
 	local buffer={}
-
 
 	--storage.armorSetData=storage.armorSetData or {}--moved into a separate setup
 	fuPersistentEffectRecorder.init()
@@ -497,7 +494,7 @@ function update(dt)
 		if self.timerCounterGenes >= (1+afkLvl) then
 			if afkLvl <= 3 then
 				self.rewardedGenes = status.stat("isXi")
-				if status.stat("isXi") then
+				if self.rewardedGenes>0 then
 					if self.timerCounterGenes >= (25 - self.rewardedGenes) then
 						if player.currency("fugeneticmaterial") <= 99 then  -- dont generate more unless below 100 genes to prevent abusing for profit
 							player.addCurrency("fugeneticmaterial", self.rewardedGenes)
@@ -563,19 +560,16 @@ function update(dt)
 			self.degradeTotal = 1
 		end
 	end
-
 	self.timerDegrade = math.max(self.timerDegrade - dt,0.0) - (self.protheonCount * 4)
-
 	if (status.stat("freudBonus") > 0 ) then  -- player is inside an Instafreud or has consumed an item that temporarily acts like one
 		self.degradeTotal = self.madnessCount / 300 + (self.protheonCount) + status.stat("freudBonus") + (status.stat("mentalProtection")/20)
 		displayBar()
 		--sb.logInfo("Instafreud is active. Reducing madness.")
 		player.radioMessage("fu_useFreud")
-		player.consumeCurrency("fumadnessresource", self.degradeTotal)	
+		player.consumeCurrency("fumadnessresource", self.degradeTotal)
 	else
 		disableBar()
 	end
-
 	-- apply bonus loss from anti-madness effects even if not above X madness. This always applies, as a benefit of the Mental Protection stat.
 	self.bonusTimer = math.max(self.bonusTimer - dt,0)
 	if self.bonusTimer <= 0.0 then
@@ -583,11 +577,9 @@ function update(dt)
 		if (status.statPositive("mentalProtection")) then
 			player.consumeCurrency("fumadnessresource", self.protectionBonus)
 		end
-		self.bonusTimer = 30.0 
+		self.bonusTimer = 30.0
 	end
-
 end
-
 ----------------------------------------------------------------------------------
 -- passive research gain based on Play Time
 function checkPassiveTimerBonus()

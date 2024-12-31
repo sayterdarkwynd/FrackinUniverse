@@ -149,12 +149,16 @@ function update(dt)
 
 		if self.fallDistance > minimumFallDistance and -self.lastYVelocity > minimumFallVel and mcontroller.onGround() and not inLiquid() then
 			--fall damage is proportional to max health, with 100.0 being the player's standard
-			local healthRatio = math.sqrt(status.stat("maxHealth") / 100.0)
+			local healthRatio = status.stat("maxHealth") / 100.0
+			if healthRatio > 1.0 then
+				healthRatio = math.sqrt(healthRatio)
+			end
 
 			local damage = (self.fallDistance - minimumFallDistance) * fallDistanceDamageFactor
 			damage = damage * (1.0 + (world.gravity(mcontroller.position()) - baseGravity) * gravityDiffFactor)
 			damage = damage * healthRatio
-			damage = damage * status.stat("fallDamageMultiplier")
+			-- values are shifted by one because you can't easily add a stat base value to every monster
+			damage = damage * (status.stat("monsterFallDamageMultiplier") + 1.0)
 			status.applySelfDamageRequest({
 				damageType = "IgnoresDef",
 				damage = damage,

@@ -1,4 +1,5 @@
 function init()
+  self.source=effect.sourceEntity()
   animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
   animator.setParticleEmitterEmissionRate("healing", config.getParameter("emissionRate", 3))
   animator.setParticleEmitterActive("healing", true)
@@ -24,7 +25,7 @@ function update(dt)
         damageType = "IgnoresDef",
         damage = damageVal,
         damageSourceKind = "bow",
-        sourceEntityId = entity.id()
+        sourceEntityId = self.source
       })
 	  end
 	end

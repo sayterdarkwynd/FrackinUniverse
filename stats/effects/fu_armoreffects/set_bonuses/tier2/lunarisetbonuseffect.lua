@@ -3,8 +3,7 @@ setName="fu_lunariset"
 
 armorBonus={
 	{stat="energyRegenPercentageRate",baseMultiplier=1.12 },
-	{stat="energyRegenBlockTime",baseMultiplier=0.85 },
-	{stat="shipMass",baseMultiplier=0.9 }
+	{stat="energyRegenBlockTime",baseMultiplier=0.85 }
 }
 
 weaponBonus={

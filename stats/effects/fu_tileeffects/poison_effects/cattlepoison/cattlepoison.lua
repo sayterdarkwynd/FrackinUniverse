@@ -30,6 +30,8 @@ function update(dt)
 			damageSourceKind = "poison",
 			sourceEntityId = entity.id()
 		})
+		status.removeEphemeralEffect("wellfed")
+		if status.resourcePercentage("food") > 0.60 then status.setResourcePercentage("food", 0.60) end
 	end
 	effect.setParentDirectives("fade=EEEEEE="..self.tickTimer * 0.4)
 end

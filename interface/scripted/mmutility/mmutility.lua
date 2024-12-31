@@ -48,13 +48,13 @@ function swapMM(name)
     if not swapItem then
         swapItem = self.currentMM.parameters.originalMM or root.createItem(getBaseManip())
     else
-        swapItem.parameters.originalMM = currentlyBase and self.currentMM or self.currentMM.parameters.originalMM
+        swapItem.parameters.originalMM = (currentlyBase and self.currentMM or self.currentMM.parameters.originalMM) or root.createItem(getBaseManip())
     end
 
     paintSizeCap(getMaxSize(swapItem)+1)
 
     -- Set the bonus radius to that of the new MM
-    status.setStatusProperty("bonusBeamGunRadius", getMMRange(swapItem))
+    status.setStatusProperty("bonusBeamGunRadius", (root.itemConfig(swapItem).config.rangeBonus or 0)+getStatBonus(swapItem, "bonusBeamGunRadius"))
 
     -- Transfer wiremode and paintmode upgrades (as they should be permanent)
     -- Also handles granting of the liquidcollection upgrade if it is enabled by default on the new MM
@@ -65,15 +65,6 @@ function swapMM(name)
     player.setSwapSlotItem(not currentlyBase and self.currentMM or nil)
     self.currentMM = swapItem
     updateMM()
-end
-
-function getMMRange(mm)
-    if mm.config then
-        mmConfig = mm
-    else
-        mmConfig = root.itemConfig(mm)
-    end
-    return (mmConfig.config.rangeBonus or 0)+getStatBonus(mmConfig, "bonusBeamGunRadius")
 end
 
 function swapTool(name)
@@ -256,8 +247,6 @@ end
 function getStat(item, stat)
     if item.parameters[stat] ~= nil then
         return item.parameters[stat]
-    elseif item.config then
-        return item.config[stat]
     else
         return root.itemConfig(item).config[stat]
     end
