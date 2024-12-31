@@ -405,6 +405,15 @@ end
 function BiomeCheck(tbl, biome)
     for _, value in pairs(tbl) do
         if (value == biome) then
+            -- forbidden biome
+            if (biome=="precursorsurface" or biome=="precursorunderground") then
+                -- precursor
+                if player.hasCompletedQuest("precursor_unlock") then
+                    return false
+            else
+                -- elder
+                if player.hasQuest('create_elder') then
+                    return false
             return true
         end
     end
