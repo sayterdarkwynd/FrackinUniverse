@@ -100,7 +100,6 @@ function populateMaterialsList()
             local parameters = celestial.visitableParameters(planet)
             addText("                                                ^green;BIOMES:^reset; ")
 
-            -- local forbiddenBiomes={"atropuselder","atropuselderunderground","elder","elderunderground","precursorsurface","precursorunderground","shoggothbiome"}
             local anomaliesFound=false
             local worldSize = world.size() or {0,0}
 
