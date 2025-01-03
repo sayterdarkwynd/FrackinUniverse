@@ -84,7 +84,7 @@ function build(directory, config, parameters, level, seed)
 
 		--if changing this, make sure it matches in apiary.lua
 		---24.4992 is the total for 2 stacks of Tech frames at 64 units
-        local fullLifespan = genelib.statFromGenomeToValue(parameters.genome, "queenLifespan") *2 
+        local fullLifespan = genelib.statFromGenomeToValue(parameters.genome, "queenLifespan") *2
 
 		if not parameters.lifespan then
 			parameters.lifespan = fullLifespan

@@ -521,11 +521,10 @@ function getFrames(dt)
 				    local consumed = world.containerTakeNumItemsAt(entity.id(), frameSlot-1, 1)
 				    if consumed then
 				        contents[frameSlot].count = contents[frameSlot].count - consumed.count
-				    end                	
+				    end            	
                 end
                 self.frameTakeTimers[frameCounter]=0.0
             end
-
 		end
 	end
 end
@@ -753,26 +752,26 @@ function youngQueenToQueen(youngQueen)
 	return newQueen
 end
 
--- Kill drones based on their amount when no queen is present
-function droneDecay(slot) 
-	local toughness = math.max(genelib.statFromGenomeToValue(contents[slot].parameters.genome, "droneToughness") + frameBonuses.droneToughness, 1)
-	local amount = contents[slot].count -- set the amount
-	if (math.random( 8000 ) / 1000) > math.log( 1 + toughness ) then --toughness directly influcences chances of drones dying 
+-- Kill drones based on their amount when no queen is present. Use toughness to determine how bad it gets.
+function droneDecay(slot)
+	local toughness = math.max(genelib.statFromGenomeToValue(contents[slot].parameters.genome,"droneToughness") + frameBonuses.droneToughness,1)
+	local amount = contents[slot].count
+	if (math.random( 8000 )/1000) > math.log( 1 + toughness ) then
 		world.containerTakeNumItemsAt(entity.id(), slot-1, math.floor(amount * beeData.droneDecayPercentile + beeData.droneDecayFlat))
 		contents[slot] = world.containerItemAt(entity.id(), slot-1)
 	end
 end
 
 -- Receives a slot and reduces the amount of drones there based on the drones mite resistance stat and the amount of mites
-function miteDamage(slot) 
-	--local toughness = math.max(genelib.statFromGenomeToValue(contents[slot].parameters.genome, "droneToughness") + frameBonuses.droneToughness, 1) -- Having this be 0 will instantly kill all drones as soon as a mite is added
+function miteDamage(slot)
+	--local toughness = math.max(genelib.statFromGenomeToValue(contents[slot].parameters.genome, "droneToughness") + frameBonuses.droneToughness, 1)
 	--world.containerTakeNumItemsAt(entity.id(), slot-1, math.floor(storage.mites / toughness))
 	--contents[slot] = world.containerItemAt(entity.id(), slot-1)
 end
 
 -- Checks if the passed drone is active
-function isDroneActive(drone) 
-	if not hasFrame or not queen then -- No frames = no activity
+function isDroneActive(drone)
+	if not hasFrame or not queen then
 		return false
 	end
 
@@ -798,8 +797,9 @@ function isDroneActive(drone)
 end
 
 -- Function to check if the hive has any currently active drones. Used by other apiary instances to determine their own drone efficiency.
-function areDronesActive() 
-	if not contents then return false end -- Return false if the object haven't even inited
+function areDronesActive()
+	if not contents then return false end
+
 	for _, slot in ipairs(droneSlots) do
 		local item = contents[slot]
 		if item and root.itemHasTag(item.name, "bee") and root.itemHasTag(item.name, "drone") then
@@ -812,7 +812,7 @@ function areDronesActive()
 end
 
 -- Progress drones production based on the drone received
-function droneProduction(drone) 
+function droneProduction(drone)
 	local biomeFavor = getBiomeFavor(drone.name) -- Get biome favor. Do nothing else if its considered deadly for the bee.
 	if biomeFavor == -1 then return end
 
@@ -855,11 +855,11 @@ function droneProduction(drone)
 	end
 end
 
--- Removed from mod. 
+-- Removed from mod
 function miteGrowth()
 -- New (2024, November)
--- Check against a d100 roll. 
--- * On a success, Drones reduce Mite total by the Bees Mite Resistance. 
+-- Check against a d100 roll.
+-- * On a success, Drones reduce Mite total by the Bees Mite Resistance.
 -- * On a failure, Mites increase by MiteTotal + (Mite Total * Growth %)
 --
 -- New Calculation (Resistance)
