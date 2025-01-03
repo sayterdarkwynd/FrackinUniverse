@@ -100,7 +100,6 @@ function populateMaterialsList()
             local parameters = celestial.visitableParameters(planet)
             addText("                                                ^green;BIOMES:^reset; ")
 
-            local forbiddenBiomes={"atropuselder","atropuselderunderground","elder","elderunderground","precursorsurface","precursorunderground","shoggothbiome"}
             local anomaliesFound=false
             local worldSize = world.size() or {0,0}
 
@@ -131,7 +130,7 @@ function populateMaterialsList()
 
                 local listedBiomeNames = {}
                 for _, biomeCode in ipairs(uniqueBiomeCodes) do
-                    if BiomeCheck(forbiddenBiomes, biomeCode) then
+                    if isHiddenBiome(biomeCode) then
                         -- Semi-secret biomes like Precursor Underground are not listed.
                         anomaliesFound = true
                     else
@@ -401,12 +400,24 @@ function getDate(days)
     return "Year "..year..", Month "..month.." and Day "..days
 end
 
--- check list of biomes already printed
-function BiomeCheck(tbl, biome)
-    for _, value in pairs(tbl) do
-        if (value == biome) then
-            return true
-        end
+local precursorBiomes = {
+    precursorsurface = true,
+    precursorunderground = true
+}
+local elderBiomes = {
+    atropuselder = true,
+    atropuselderunderground = true,
+    elder = true,
+    elderunderground = true,
+    shoggothbiome = true
+}
+
+function isHiddenBiome(biomeCode)
+    if precursorBiomes[biomeCode] then
+        return not player.hasCompletedQuest("precursor_unlock")
+    elseif elderBiomes[biomeCode] then
+        return not player.hasQuest('create_elder')
     end
+
     return false
 end
