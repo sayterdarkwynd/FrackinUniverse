@@ -22,8 +22,6 @@ function build(directory, config, parameters, level, seed)
 		config.tooltipFields.objectImage = "/assetmissing.png"
 	end
 
-	-- parameters.genomeInspected = true
-
 	-- Display the genome if the bee was inspected
 	if parameters.genomeInspected then
 		require "/bees/genomeLibrary.lua"
@@ -75,7 +73,7 @@ function build(directory, config, parameters, level, seed)
 		config.tooltipFields.queenBreedRateLabel = "???"
 		config.tooltipFields.queenLifespanLabel = "???"
 		config.tooltipFields.mutationChanceLabel = "???"
-		config.tooltipFields.miteResistanceLabel = "???"
+		--config.tooltipFields.miteResistanceLabel = "???"  mites disabled
 		config.tooltipFields.workTimeLabel = "???"
 		config.tooltipFields.genomeLabel = "^gray;Unidentified Bee"
 	end
@@ -86,7 +84,7 @@ function build(directory, config, parameters, level, seed)
 
 		--if changing this, make sure it matches in apiary.lua
 		---24.4992 is the total for 2 stacks of Tech frames at 64 units
-        local fullLifespan = genelib.statFromGenomeToValue(parameters.genome, "queenLifespan") *2 --* ((frameBonuses.queenLifespan or 0 / 8) + 1)
+        local fullLifespan = genelib.statFromGenomeToValue(parameters.genome, "queenLifespan") *2 
 
 		if not parameters.lifespan then
 			parameters.lifespan = fullLifespan
@@ -94,14 +92,6 @@ function build(directory, config, parameters, level, seed)
 
 		if parameters.genomeInspected then
 			local color
-			--[[
-				100% green rgb(11,191,0)
-				80% (green/yellow) rgb(172,227,69)
-				60% (yellow) rgb(229,209,0)
-				40%(orange) rgb(229,134,0)
-				20% red rgb(229,4,0)
-			]]
-
 			local pcntLeft = parameters.lifespan / fullLifespan
 			if pcntLeft > 0.8 then
 				color="0bbf00"
