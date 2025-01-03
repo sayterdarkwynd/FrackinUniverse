@@ -521,7 +521,7 @@ function getFrames(dt)
 				    local consumed = world.containerTakeNumItemsAt(entity.id(), frameSlot-1, 1)
 				    if consumed then
 				        contents[frameSlot].count = contents[frameSlot].count - consumed.count
-				    end            	
+				    end
                 end
                 self.frameTakeTimers[frameCounter]=0.0
             end
