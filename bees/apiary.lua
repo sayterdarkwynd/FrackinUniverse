@@ -73,7 +73,6 @@ specialFrameFunctions = {
 		if not advancedFrameTimer then
 			advancedFrameTimer = data[1]
 		elseif advancedFrameTimer <= 0 then
-			--sb.logInfo(data[2])
 			advancedFrameTimer = data[1]
 		else
 			advancedFrameTimer = advancedFrameTimer - beeTickDelta
@@ -92,7 +91,7 @@ specialFrameFunctions = {
 		end
 	end,
 	copperFrame = function(data)
-		self.randAmount = math.random(1,2)
+		self.randAmount = math.random(1,6)
 		if isHiveQueenActive(true) and areDronesActive() then
 			if not ironFrameTimer then
 				ironFrameTimer = data[1]
@@ -105,7 +104,7 @@ specialFrameFunctions = {
 		end
 	end,
 	ironFrame = function(data)
-		self.randAmount = math.random(1,2)
+		self.randAmount = math.random(1,6)
 		if isHiveQueenActive(true) and areDronesActive() then
 			if not ironFrameTimer then
 				ironFrameTimer = data[1]
@@ -118,7 +117,7 @@ specialFrameFunctions = {
 		end
 	end,
 	tungstenFrame = function(data)
-		self.randAmount = math.random(1,2)
+		self.randAmount = math.random(1,6)
 		if isHiveQueenActive(true) and areDronesActive() then
 			if not ironFrameTimer then
 				ironFrameTimer = data[1]
@@ -131,7 +130,7 @@ specialFrameFunctions = {
 		end
 	end,
 	titaniumFrame = function(data)
-		self.randAmount = math.random(1,2)
+		self.randAmount = math.random(1,6)
 		if isHiveQueenActive(true) and areDronesActive() then
 			if not ironFrameTimer then
 				ironFrameTimer = data[1]
@@ -144,7 +143,7 @@ specialFrameFunctions = {
 		end
 	end,
 	durasteelFrame = function(data)
-		self.randAmount = math.random(1,2)
+		self.randAmount = math.random(1,6)
 		if isHiveQueenActive(true) and areDronesActive() then
 			if not ironFrameTimer then
 				ironFrameTimer = data[1]
@@ -155,8 +154,20 @@ specialFrameFunctions = {
 				ironFrameTimer = ironFrameTimer - beeTickDelta
 			end
 		end
+	end,
+	zerchesiumFrame = function(data)
+		self.randAmount = math.random(1,6)
+		if isHiveQueenActive(true) and areDronesActive() then
+			if not zerchesiumFrameTimer then
+				zerchesiumFrameTimer = data[1]
+			elseif zerchesiumFrameTimer <= 0 then
+				world.spawnItem("zerchesiumore",entity.position(),self.randAmount)
+				zerchesiumFrameTimer = math.random(100,540)
+			else
+				zerchesiumFrameTimer = zerchesiumFrameTimer - beeTickDelta
+			end
+		end
 	end
-
 }
 
 -- Variables responsible for holding old animation states to prevent restarting animations
@@ -271,13 +282,7 @@ end
 
 -- Called when the object is broken.
 function die()
-	-- Made object not drop itself upon breaking to handle it through here so mites remain.
-	if storage.mites and storage.mites > 0 then
-		local icon = config.getParameter("inventoryIcon").."?border=1;FF0000?fade=007800;0.1"
-		world.spawnItem(object.name(), entity.position(), 1, {mites = storage.mites, inventoryIcon = icon})
-	else
 		world.spawnItem(object.name(), entity.position(), 1)
-	end
 end
 
 -- Called when the object is unloaded.
@@ -286,14 +291,9 @@ function uninit()
 	storage.lastActive = world.time()
 end
 
--- Bee ticks that should happen while the object is not loaded
--- Called on init if there are any ticks that need simulating
--- While just calling update a bunch of times in a row is easy, it has a lot of stuff going on that you don't need
 function beeTick(dt)
 	contents = world.containerItems(entity.id())
 
-	-- Get amount of hives with active drones in the areas
-	-- NOTE TO SELF: Can call functions inside other objects in a synced manner using this method:
 	local hives = world.objectQuery(entity.position(), 10, {withoutEntityId = entity.id(), callScript = "areDronesActive", callScriptResult = true})
 	hivesAroundHive = #hives
 
@@ -305,9 +305,6 @@ function beeTick(dt)
 
 	-- Check if there was a queen in the queen slot last time the object updated
 	if queen then
-		-- If last update had a queen, see if the item currently placed in the queen slot is a queen
-		-- If it is, compare indexed and in slot queens genetic code and age, because those are the only differences queens can have
-		-- If its not, clear the index, marking the hive as queenless, and init the noQueenTimer
 		if contents[queenSlot] and root.itemHasTag(contents[queenSlot].name, "bee") then
 			if root.itemHasTag(contents[queenSlot].name, "queen") then
 				sameStats,sameAge=isSameQueen(queen, contents[queenSlot])--returns sameQueen only if sameStats is true
@@ -426,27 +423,15 @@ function beeTick(dt)
 						world.containerPutItemsAt(entity.id(), item, slot-1)
 						contents[slot] = world.containerItemAt(entity.id(), slot-1)
 					end
-				--else
-					--droneDecay(slot)
 				end
 			else
-				-- Kill drones if there's no queen present, and the no queen timer ran out
 				if noQueenTimer <= 0 then
 					droneDecay(slot)
 				end
 			end
 
-			-- Kill drones if there are mites present
-			if storage.mites > 0.98 and contents[slot] then
-				miteDamage(slot)
-				item = contents[slot]
-			end
-
-			-- Check if there are drones remaining after the mite attack
 			if item then
 				hasDrones = true
-
-				-- Get if this specific instance of drones is active
 				if not haltProduction and isDroneActive(item) then
 					droneProduction(item)
 				end
@@ -454,21 +439,13 @@ function beeTick(dt)
 		end
 	end
 
-	-- Mites reproduce only if there are drones in the hive
-	-- Kill the queen if there are mites but no drones
-	if hasDrones then
-		miteGrowth()
 
-		-- Decay the no queen timer if there's no queen but drones are present
+	if hasDrones then
 		if not queen and noQueenTimer > 0 then
 			noQueenTimer = noQueenTimer - beeTickDelta
 		end
 	else
 		noQueenTimer = noQueenTimeAllowed
-		if storage.mites > 0.99 and queen then
-			world.containerTakeAt(entity.id(), queenSlot-1)
-			queen = nil
-		end
 	end
 
 	-- If simulated ticks, check whether there are still bees to be simulated, and stop simulating if there are none
@@ -521,7 +498,7 @@ function getFrames(dt)
 			local cfg = root.itemConfig(contents[frameSlot].name)
 			--local amountcheck = contents[frameSlot].count--currently unused
 
-			for stat, _ in pairs(frameBonuses) do--value in pairs(frameBonuses) do
+			for stat, _ in pairs(frameBonuses) do
 				if stat == "allowDay" or stat == "allowNight" or stat== "frameWorktimeModifierDay" or stat=="frameWorktimeModifierNight" or stat == "coldResistance" or stat=="heatResistance" or stat=="radResistance" or stat=="physicalResistance" or stat=="cosmicResistance" then
 					if cfg.config[stat] then
 						frameBonuses[stat] = true
@@ -536,24 +513,21 @@ function getFrames(dt)
 				specialFrameFunctions[cfg.config.specialFunction](cfg.config.functionParams)
 			end
 
-			-- we remove frames randomly based on a rare diceroll. all frames use the same rate. This keeps stacks replenishing via crafting rather than a one-time bit of crafting
-			self.frameTakeTimers[frameCounter]=(self.frameTakeTimers[frameCounter] or 0) + (dt or 0)
-			if self.frameTakeTimers[frameCounter] >= 180.0 and hasDrone and queen then
-				local randomChanceToTake = math.random(50)
-				if randomChanceToTake == 1 then
-					world.containerTakeNumItemsAt(entity.id(), frameSlot-1, 1)
-					contents[frameSlot] = world.containerItemAt(entity.id(), frameSlot-1)
-				end
-				self.frameTakeTimers[frameCounter]=0.0
-			end
+			-- check if any frames are consumed over time
+            self.frameTakeTimers[frameCounter]=(self.frameTakeTimers[frameCounter] or 0) + (dt or 0)
+            if (self.frameTakeTimers[frameCounter] >= 20) and hasDrones and queen then
+                local randomChanceToTake = math.random(40)
+                if randomChanceToTake == 1 and contents[frameSlot].count > 1 then
+				    local consumed = world.containerTakeNumItemsAt(entity.id(), frameSlot-1, 1)
+				    if consumed then
+				        contents[frameSlot].count = contents[frameSlot].count - consumed.count
+				    end
+                end
+                self.frameTakeTimers[frameCounter]=0.0
+            end
 		end
 	end
-	--not including, it'd be too easy to cheese
-	--[[while #self.frameTakeTimers>frameCounter do
-		self.frameTakeTimers[frameCounter+1]=nil
-	end]]
 end
-
 
 -- Function used by external sources to get current time remaining until next bee production
 function GetUpdateTimer() return beeUpdateTimer end
@@ -652,9 +626,7 @@ function queenProduction()
 
 	-- adjusted to 50% instead of 25% on 11-04-2020
 	-- also added a divider to the droneProgress so drone births are 75% less frequent. This will lower production rates as a consequence as bees breed.
-	--youngQueenProgress = youngQueenProgress + productionQueen * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01) * 0.25
 	youngQueenProgress = youngQueenProgress + productionQueen * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01) * 0.5
-	--sb.logInfo(youngQueenProgress)
 	droneProgress = droneProgress + productionDrone * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01) * 0.25
 
 	if youngQueenProgress >= beeData.youngQueenProductionRequirement then
@@ -737,13 +709,9 @@ end
 function ageQueen(amount)
 	--if changing this, make sure it matches in beeBuilder.lua
 	local fullLifespan = genelib.statFromGenomeToValue(queen.parameters.genome, "queenLifespan") * ((frameBonuses.queenLifespan or 0 / 8) + 1)
-	--sb.logInfo(fullLifespan)
-
 	if not queen.parameters.lifespan or queen.parameters.lifespan < 0 then
 		queen.parameters.lifespan = fullLifespan
 	end
-
-
 	queen.parameters.lifespan = queen.parameters.lifespan - (amount or 1)
 	world.containerTakeAt(entity.id(), queenSlot-1)
 
@@ -777,29 +745,6 @@ function generateYoungQueen()
 	return descriptor
 end
 
--- Function for randomizing a stat value for when a new queen is generated--totally unused
---[[function randomMod(num)
-	local rnd = math.random()
-
-	if rnd <= 0.05 then -- 5% -3
-		num = num - 3
-	elseif rnd <= 0.15 then -- 10% -2
-		num = num - 2
-	elseif rnd <= 0.30 then -- 15% -1
-		num = num - 1
-	elseif rnd <= 0.70 then -- 40% 0
-		-- Do nothing
-	elseif rnd <= 0.85 then -- 15% +1
-		num = num + 1
-	elseif rnd <= 0.95 then -- 10% +2
-		num = num + 2
-	else-- rnd <= 1.00 -- 5% +3
-		num = num + 3
-	end
-
-	return num
-end]]
-
 -- Returns a queen version of the young queen, with exactly the same stats and parameters
 function youngQueenToQueen(youngQueen)
 	local newQueen = root.createItem(string.gsub(youngQueen.name, "youngQueen", "queen"))
@@ -807,11 +752,11 @@ function youngQueenToQueen(youngQueen)
 	return newQueen
 end
 
--- Kill drones based on their amount when no queen is present
+-- Kill drones based on their amount when no queen is present. Use toughness to determine how bad it gets.
 function droneDecay(slot)
-	self.chanceRemove = math.random(100) --remove chance of drones
-	local amount = contents[slot].count -- set the amount
-	if self.chanceRemove > 75 then--25% chance of removal
+	local toughness = math.max(genelib.statFromGenomeToValue(contents[slot].parameters.genome,"droneToughness") + frameBonuses.droneToughness,1)
+	local amount = contents[slot].count
+	if (math.random( 8000 )/1000) > math.log( 1 + toughness ) then
 		world.containerTakeNumItemsAt(entity.id(), slot-1, math.floor(amount * beeData.droneDecayPercentile + beeData.droneDecayFlat))
 		contents[slot] = world.containerItemAt(entity.id(), slot-1)
 	end
@@ -819,26 +764,19 @@ end
 
 -- Receives a slot and reduces the amount of drones there based on the drones mite resistance stat and the amount of mites
 function miteDamage(slot)
-	-- Having this be 0 will instantly kill all drones as soon as a mite is added
-	local toughness = math.max(genelib.statFromGenomeToValue(contents[slot].parameters.genome, "droneToughness") + frameBonuses.droneToughness, 1)
-
-	world.containerTakeNumItemsAt(entity.id(), slot-1, math.floor(storage.mites / toughness))
-	contents[slot] = world.containerItemAt(entity.id(), slot-1)
+	--local toughness = math.max(genelib.statFromGenomeToValue(contents[slot].parameters.genome, "droneToughness") + frameBonuses.droneToughness, 1)
+	--world.containerTakeNumItemsAt(entity.id(), slot-1, math.floor(storage.mites / toughness))
+	--contents[slot] = world.containerItemAt(entity.id(), slot-1)
 end
 
 -- Checks if the passed drone is active
 function isDroneActive(drone)
-
-	-- No frames = no activity
 	if not hasFrame or not queen then
 		return false
 	end
 
-	-- Always active for simulated ticks. Whether anything actually happens is determined within the production function
-	if ticksToSimulate then return true end
-
-	-- Get the worktime stat, and check if the drones should be active, taking work time modifying frames into account
-	local workTime = genelib.statFromGenomeToValue(drone.parameters.genome, "workTime")
+	if ticksToSimulate then return true end -- Always active for simulated ticks. Whether anything actually happens is determined within the production function
+	local workTime = genelib.statFromGenomeToValue(drone.parameters.genome, "workTime") -- Get the worktime stat, and check if the drones should be active, taking work time modifying frames into account
 	local timeOfDay = world.timeOfDay()
 
 	if workTime == "both" then
@@ -860,7 +798,6 @@ end
 
 -- Function to check if the hive has any currently active drones. Used by other apiary instances to determine their own drone efficiency.
 function areDronesActive()
-	-- Return false if the object haven't even inited
 	if not contents then return false end
 
 	for _, slot in ipairs(droneSlots) do
@@ -871,15 +808,12 @@ function areDronesActive()
 			end
 		end
 	end
-
 	return false
 end
 
 -- Progress drones production based on the drone received
 function droneProduction(drone)
-
-	-- Get biome favor. Do nothing else if its considered deadly for the bee.
-	local biomeFavor = getBiomeFavor(drone.name)
+	local biomeFavor = getBiomeFavor(drone.name) -- Get biome favor. Do nothing else if its considered deadly for the bee.
 	if biomeFavor == -1 then return end
 
 	-- Get flower favor. Do nothing else if the flower requirements are not met.
@@ -888,14 +822,13 @@ function droneProduction(drone)
 	local flowerFavor = getFlowerLikeness(beeData.stats[family][subtypeID].name)
 	if flowerFavor == -1 then return end
 
-	-- If simulating ticks, ignore every odd tick
-	if ticksToSimulate and ticksToSimulate % 2 == 1 and genelib.statFromGenomeToValue(drone.parameters.genome, "workTime") ~= "both" then
+	if ticksToSimulate and ticksToSimulate % 2 == 1 and genelib.statFromGenomeToValue(drone.parameters.genome, "workTime") ~= "both" then 	-- If simulating ticks, ignore every odd tick
 		return
 	end
 
 	local productionStat = genelib.statFromGenomeToValue(drone.parameters.genome, "baseProduction") + frameBonuses.baseProduction
 	local production = productionStat * (((drone.count / 1000) + math.min(1 / ((1 + hivesAroundHive) * 0.75), 1) + flowerFavor + biomeFavor) / 4) * 0.5
-	--sb.logInfo(production)
+
 	for product, requirement in pairs(beeData.stats[family][subtypeID].production) do
 		if not droneProductionProgress[product] then
 			droneProductionProgress[product] = production
@@ -922,76 +855,25 @@ function droneProduction(drone)
 	end
 end
 
--- Roll for mite infestation, or increment mite count if there's an infestation
+-- Removed from mod
 function miteGrowth()
-	-- local fartstick=math.random()
-	-- sb.logInfo("mite Roll: %s, vs: %s",fartstick,beeData.mites.infestationChance)
-	if storage.mites > 0 then
+-- New (2024, November)
+-- Check against a d100 roll.
+-- * On a success, Drones reduce Mite total by the Bees Mite Resistance.
+-- * On a failure, Mites increase by MiteTotal + (Mite Total * Growth %)
+--
+-- New Calculation (Resistance)
+-- local biomeFavor = getBiomeFavor(drone.name)
+-- local baseMiteResistance = 20
+-- local updatedResistance = baseMiteResistance  * biomeFavor
+-- local toughnessModifier = genelib.statFromGenomeToValue(bee1.parameters.genome, "droneToughness") + genelib.statFromGenomeToValue(bee2.parameters.genome, "droneToughness")
+-- local droneCountModifier = (droneCount/100) + (toughnessModifier/10)
+-- local finalResistance = genelib.statFromGenomeToValue(item.parameters.genome, "miteResistance") + toughnessModifier
 
-		-- The growth multiplier. responsible for increasing mites by [current amount of mites] * this value
-		local mult = beeData.mites.growthPercentile
-		-- Get the hives total mite resistance (all drone resistances / number of drones occupying drone slots)
-		local hiveMiteResistance = 0
-		local droneCount = 0
-		-- local hiveMiteResistanceB = 0
-		-- local droneCountB = 0
-		-- local multB = mult
-		-- local sDBG=""..entity.id()..":: storage.mites: "..storage.mites.."::"
+-- local totalBaseResistance = updatedResistance + ((droneCount/100) + finalResistance)
+end
 
-		for _, slot in ipairs(droneSlots) do
-			local item = contents[slot]
-			if item and root.itemHasTag(item.name, "bee") and root.itemHasTag(item.name, "drone") then
-				hiveMiteResistance = hiveMiteResistance + genelib.statFromGenomeToValue(item.parameters.genome, "miteResistance") + frameBonuses.miteResistance
-				droneCount = droneCount + contents[slot].count --loops through drone slots and adds them together
-				-- droneCountB = 1000*droneCount/(1000+droneCount)
-			end
-		end
-
-		-- hiveMiteResistanceB = hiveMiteResistance
-		-- sDBG=sDBG.."mitegrowth(): mult first: ".mult.", droneCount first: "..droneCount..", droneCountB: "..droneCountB.."::"
-
-		-- miteResistance stat range at the time of writing this: -6.475 to 6.475
-		-- If the value is positive, the hive is resistant to mites, and the multiplier is reduced to [mult]/([stat]*100), can't be lower than 0.0001
-		-- If the value is negative, the hive is weaker to mites, and the multiplier is multiplied by the stat (a non-negative version of it that is)
-		if droneCount > 0 then
-			hiveMiteResistance = hiveMiteResistance / droneCount
-
-			-- we create a little function that improves as resistance does
-			if hiveMiteResistance > 0 then
-				mult = math.max(mult / (hiveMiteResistance*3125), beeData.mites.growthPercentileMinimum)
-				-- 3125 makes mite resist 4.0 stop mites with full apiary, 50 drones balances at 0.2 mite resist. Change if different balance desired
-			elseif hiveMiteResistance < 0 then
-				mult = mult + mult * math.abs(hiveMiteResistance)
-			end
-			-- sDBG=sDBG.."mitegrowth():mult second: "..mult..", hiveMiteResistance: "..hiveMiteResistance..", droneCount: "..droneCount.."::"
-		end
-
-		-- if droneCountB > 0 then
-			-- hiveMiteResistanceB = hiveMiteResistanceB / droneCountB
-			-- if hiveMiteResistanceB > 0 then
-				-- multB = math.max(multB / (hiveMiteResistanceB*3125), beeData.mites.growthPercentileMinimum)
-			-- elseif hiveMiteResistanceB < 0 then
-				-- multB = multB + multB * math.abs(hiveMiteResistanceB)
-			-- end
-			-- sDBG=sDBG.."mitegrowth():multB second: "..multB..", hiveMiteResistanceB: "..hiveMiteResistanceB..", droneCountB: "..droneCountB.."::"
-		-- end
-
-		-- remove the hive resistance from the mite total if over a certain threshold, otherwise increment them
-		if hiveMiteResistance > 0 then
-			storage.mites = storage.mites + (storage.mites * mult) - (hiveMiteResistance) -- added storage.mites*mult to balance mite growth against hive resistance
-			-- sDBG=sDBG.."mites aU: "..(storage.mites + (storage.mites * mult) - (hiveMiteResistance))
-		else
-			storage.mites = storage.mites + (storage.mites * mult) + beeData.mites.growthStatic
-			-- sDBG=sDBG.."mites aD: "..(storage.mites + (storage.mites * mult) + beeData.mites.growthStatic)
-		end
-
-		-- if hiveMiteResistanceB > 0 then
-			-- sDBG=sDBG.."fake mites bU: "..(storage.mites + (storage.mites * multB) - (hiveMiteResistanceB))
-		-- else
-			-- sDBG=sDBG.."fake mites bD: "..(storage.mites + (storage.mites * mult) + beeData.mites.growthStatic)
-		-- end
-		--sb.logInfo("%s",sDBG)
-
+function displayInfection()
 		--display an infested hive image over the normal hive appearance if its infested enough
 		if storage.mites > 20 then --if mites pass 20, display a really rotten looking apiary
 			animator.setAnimationState("base", "infested2", true)
@@ -1005,10 +887,6 @@ function miteGrowth()
 			animator.setAnimationState("base", "default", true)
 			animator.setAnimationState("warning", "off", true)
 		end
-	-- elseif fartstick <= beeData.mites.infestationChance then
-	elseif math.random() <= beeData.mites.infestationChance then
-		storage.mites = beeData.mites.growthStatic --storage.mites = storage.mites + (storage.mites*mult) - (hiveMiteResistance)
-	end
 end
 
 -- Check for rivalries within the hive
