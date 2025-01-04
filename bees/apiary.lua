@@ -516,7 +516,7 @@ function getFrames(dt)
 			-- check if any frames are consumed over time
             self.frameTakeTimers[frameCounter]=(self.frameTakeTimers[frameCounter] or 0) + (dt or 0)
             if (self.frameTakeTimers[frameCounter] >= 20) and hasDrones and queen then
-                local randomChanceToTake = math.random(1)
+                local randomChanceToTake = math.random(40)
                 if randomChanceToTake == 1 and contents[frameSlot].count > 1 then
 				    local consumed = world.containerTakeNumItemsAt(entity.id(), frameSlot-1, 1)
 				    if consumed then
