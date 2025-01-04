@@ -46,7 +46,7 @@ function build(directory, config, parameters, level, seed)
 					config.tooltipFields[stat.."Label"] = "Day & Night"
 				end
 
-			else
+			elseif stat ~= "miteResistance" then
 				config.tooltipFields[stat.."Label"] = tostring(value)
 			end
 		end

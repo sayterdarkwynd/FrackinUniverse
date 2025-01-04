@@ -19,7 +19,6 @@ function build(directory, config, parameters, level, seed)
 		droneBreedRate="Drone Breed Rate",
 		queenBreedRate="Queen Breed Rate",
 		queenLifespan="Queen Lifespan",
-		miteResistance="Mite Resistance",
 	}
 	local intStats={
 		baseProduction = configParameter("baseProduction",0),
@@ -27,7 +26,6 @@ function build(directory, config, parameters, level, seed)
 		droneBreedRate = configParameter("droneBreedRate",0),
 		queenBreedRate = configParameter("queenBreedRate",0),
 		queenLifespan = configParameter("queenLifespan",0),
-		miteResistance = configParameter("miteResistance",0), -- Note that (currently) the normal range is -6.48 to 6.48, so use values smaller than 1 for balanced frames
 	}
 
 	local percentStatsStrings={
