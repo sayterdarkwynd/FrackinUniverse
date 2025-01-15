@@ -9,6 +9,9 @@ THRESHOLD=5
 # Run optipng with "-o1", which is much faster than default (-o2)
 OPTIPNG_COMMAND="optipng -o1"
 
+# Check only files that don't already exist in the master branch of this repository.
+UPSTREAM_GIT_URL="https://github.com/sayterdarkwynd/FrackinUniverse.git"
+
 ###############################################################################
 
 fails=0
@@ -16,8 +19,9 @@ IFS=$'\n' # To iterate over filenames with spaces.
 
 # If some image wasn't added/modified compared to the master branch, then it won't be checked,
 # because we have 30k+ images, and rechecking them every time would take ~8 minutes.
-git fetch --depth=1 origin master
-FILES=$(git diff origin/master --name-only --no-renames --diff-filter=ACM | grep -E '\.png$' | sort)
+git remote add upstream "$UPSTREAM_GIT_URL"
+git fetch --depth=1 upstream master
+FILES=$(git diff upstream/master --name-only --no-renames --diff-filter=ACM | grep -E '\.png$' | sort)
 
 if [ "x$FILES" == 'x' ]; then
 	echo "Nothing to check: no images changed since the master branch."
