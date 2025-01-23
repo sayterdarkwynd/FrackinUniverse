@@ -24,19 +24,14 @@ function update(dt)
 			damageSourceKind = "poison",
 			sourceEntityId = entity.id()
 		})
-		local modifierSet=self.foodControlMods or {}
-		modifierSet.airJumpModifier=0.08
-		modifierSet.speedModifier=0.08
-		applyFilteredModifiers(modifierSet)
 		effect.setParentDirectives("fade=806e4f="..self.tickTimer * 0.25)
 		status.removeEphemeralEffect("wellfed")
 		if status.resourcePercentage("food") > 0.85 then status.setResourcePercentage("food", 0.85) end
-	else
-		if self.foodControlMods then
-			applyFilteredModifiers(self.foodControlMods)
-		end
 	end
 
+	if self.foodControlMods then
+		applyFilteredModifiers(self.foodControlMods)
+	end
 end
 
 function uninit()
