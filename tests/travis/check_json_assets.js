@@ -51,6 +51,7 @@ class JsonAssetsTest {
 		this.checkSpaceStations();
 		this.checkPixelShops();
 		this.checkTreasurePools();
+		this.checkMerchantPools();
 		this.checkTreeUnlocks();
 		this.checkLiquidInteractions();
 		this.checkMonsters();
@@ -560,6 +561,45 @@ class JsonAssetsTest {
 		itemCode = itemCode.replace( /-recipe$/, '' );
 		if ( !this.knownItemCodes.has( itemCode ) ) {
 			this.fail( sourceFilename, 'Unknown item in TreasurePool: ' + itemCode );
+		}
+	}
+
+	/**
+	 * Check if merchant pools have unknown item codes.
+	 */
+	checkMerchantPools() {
+		var patch = this.knownAssets.get( 'npcs/merchantpools.config.patch' );
+
+		for ( var instruction of patch ) {
+			if ( instruction.op !== 'add' ) {
+				continue;
+			}
+
+			if ( instruction.path.endsWith( '/1/-' ) ) {
+				this.checkMerchantPoolElement( instruction.value, instruction.path );
+			} else {
+				for ( var tieredPool of instruction.value ) {
+					for ( var elem of tieredPool[1] ) {
+						this.checkMerchantPoolElement( elem, instruction.path );
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * Check if 1 element of MerchantPool refers to unknown item.
+	 *
+	 * @param {Object} elem
+	 * @param {string} patchPath
+	 */
+	checkMerchantPoolElement( elem, patchPath ) {
+		var itemCode = elem.item.name || elem.item;
+		itemCode = itemCode.replace( /-recipe$/, '' );
+
+		if ( !this.knownItemCodes.has( itemCode ) ) {
+			this.fail( 'npcs/merchantpools.config.patch',
+				'Unknown item in MerchantPool (' + patchPath + '): ' + itemCode );
 		}
 	}
 
