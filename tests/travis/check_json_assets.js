@@ -911,9 +911,9 @@ class JsonAssetsTest {
 		var lines = [];
 		filenames.forEach( ( filename ) => {
 			var moreLines = fs.readFileSync( __dirname + '/' + filename ).toString().split( /[\r\n]+/ )
-				.filter( function ( x ) {
-					return x !== '' && !x.startsWith( '#' ) && !x.startsWith( '//' );
-				} );
+				.filter( ( x ) => (
+					x !== '' && !x.startsWith( '#' ) && !x.startsWith( '//' )
+				) );
 			lines.push( ...moreLines );
 		} );
 		return lines;
