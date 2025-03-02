@@ -794,6 +794,10 @@ function addHeadingItem(item, list)
 end
 
 function canonicalise(file, directory)
+	if not file then
+		return '/objects/generic/perfectlygenericitem/perfectlygenericitem.png'
+	end
+
 	if string.sub(file, 1, 1) == '/' then return file end
 	return directory .. file
 end
