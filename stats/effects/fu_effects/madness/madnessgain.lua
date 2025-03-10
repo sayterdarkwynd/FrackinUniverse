@@ -20,7 +20,13 @@ function update(dt)
 	end
 
 	if (math.abs(mcontroller.xVelocity()) < 5) and (math.abs(mcontroller.yVelocity()) < 5) then
-		self.randVal = math.floor((((math.random(1,4-afkLvl)+self.baseVal)*(1.0 - status.stat("mentalProtection")))*self.valBonus) * self.penaltyAmount)
+    local mentalProtection = status.stat("mentalProtection")
+    local afkLvlRand = 0
+    if (afkLvl < 4) then
+      afkLvlRand = math.random(1, 4 - afkLvl)
+    end
+
+		self.randVal = math.floor((((afkLvlRand + self.baseVal) * (1.0 - mentalProtection)) * self.valBonus) * self.penaltyAmount)
 		if (self.randVal > 0) then
 			world.spawnItem("fumadnessresource",entity.position(),self.randVal)
 		end
@@ -28,5 +34,10 @@ function update(dt)
 end
 
 function afkLevel()
-	return ((status.statusProperty("fu_afk_720s") and 4) or (status.statusProperty("fu_afk_360s") and 3) or (status.statusProperty("fu_afk_240s") and 2) or (status.statusProperty("fu_afk_120s") and 1) or 0)
+  local afk720s = status.statusProperty("fu_afk_720s")
+  local afk360s = status.statusProperty("fu_afk_360s")
+  local afk240s = status.statusProperty("fu_afk_240s")
+  local afk120s = status.statusProperty("fu_afk_120s")
+
+	return ((afk720s and 4) or (afk360s and 3) or (afk240s and 2) or (afk_120s and 1) or 0)
 end
