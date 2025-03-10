@@ -39,5 +39,5 @@ function afkLevel()
   local afk240s = status.statusProperty("fu_afk_240s")
   local afk120s = status.statusProperty("fu_afk_120s")
 
-	return ((afk720s and 4) or (afk360s and 3) or (afk240s and 2) or (afk_120s and 1) or 0)
+	return ((afk720s and 4) or (afk360s and 3) or (afk240s and 2) or (afk120s and 1) or 0)
 end
