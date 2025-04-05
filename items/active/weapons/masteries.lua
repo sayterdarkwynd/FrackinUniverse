@@ -542,7 +542,14 @@ function masteries.listenerBonuses(notifications,dt)
 	end
 
 	--leech calculation
-	local leechValue=math.min(status.stat("maxHealth")*leechMaxRate,(totalDamage*leechPercent)/leechDuration)
+	local leechValue=totalDamage*leechPercent
+	--short leeches get squished to fit in 1 second so they have more meaningful effect at lower levels.
+	if leechValue>=10 then
+		leechValue=leechValue/leechDuration
+	else
+		leechDuration=1
+	end
+	leechValue=math.min(status.stat("maxHealth")*leechMaxRate,leechValue)
 	--sb.logInfo
 	--handle leech instances
 	local leechBuffer={}
@@ -661,7 +668,9 @@ function masteries.listenerBonuses(notifications,dt)
 		--sb.logInfo("leechValue %s",leechValue)
 		world.sendEntityMessage(entity.id(),"recordFUPersistentEffect","fuLeeching")
 		status.setPersistentEffects("fuLeeching",{{stat="healthRegen",amount=leechValue}})
+		--status.setPersistentEffects("fuLeeching",{{stat="healthRegen",amount=0.05}})
 	end
+	--sb.logInfo("leechdata: hp %s, lmr %s, lp %s, lv %s, ld %s",status.resource("health"),leechMaxRate,leechPercent,leechValue,leechDuration)
 
 	--using the temporary persistent effect system, to make it wear off
 	status.setPersistentEffects("listenerMasteryBonus", listenerbonus)
