@@ -1,5 +1,6 @@
 require "/scripts/util.lua"
 Crits = {}
+local noRoot
 --Crits.specialCritConfig=root.assetJson("/items/active/weapons/Crits.specialCritConfig")
 
 --[[
@@ -122,10 +123,14 @@ function fetchTags(iConf)
 end
 
 function itemHasTag(item,tag)
-	local tagData=fetchTags(item)
-	for _,v in pairs(tagData) do
-		if string.lower(v)==string.lower(tag) then
-			return true
+	if noRoot then
+		return root.itemHasTag(item,tag)
+	else
+		local tagData=fetchTags(item)
+		for _,v in pairs(tagData) do
+			if string.lower(v)==string.lower(tag) then
+				return true
+			end
 		end
 	end
 	return false
