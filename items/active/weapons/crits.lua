@@ -1,4 +1,6 @@
+require "/scripts/util.lua"
 Crits = {}
+--Crits.specialCritConfig=root.assetJson("/items/active/weapons/Crits.specialCritConfig")
 
 --[[
 placing this in lua demo:
@@ -28,65 +30,70 @@ placing this in lua demo:
 ]]
 
 function Crits:setCritDamage(damage)
-    local critChance = config.getParameter("critChance", 1) + status.stat("critChance")  -- Integer % chance to activate crit
-    local critBonus = config.getParameter("critBonus", 0) + status.stat("critBonus")     --  it's just critDamage (below). should mostly phase out except for on weapon configs.
-    local critDamage = status.stat("critDamage")  -- % increase to crit damage multiplier (0.10 == +10% or 110% total additional damage)
-	--status.stat ONLY accepts ONE argument. and returns 0.0 if it is not found
+	local owner=activeItem.ownerEntityId()
 
-	--sb.logInfo("crits.lua: crit chance: %s, crit bonus %s, crit damage %s",critChance,critBonus,critDamage)
-	local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-    -- Magnorbs get an inherent +1% crit chance
-    if heldItem and root.itemHasTag(heldItem, "magnorb") then
-        critChance = critChance + 1
-    end
-
-	local crit = (math.random(100)<=critChance) -- Chance out of 100
-    -- Crit damage bonus is 50% + critDamage%
-	damage = crit and (damage * (1.5 + critDamage + (critBonus/100.0))) or damage -- Inherent 50% damage boost further increased by critBonus
-
-	if crit then
-		--sb.logInfo("sum.critChance:%s, config.critChance:%s stat.critChance:%s",config.getParameter("critChance", 1)+status.stat("critChance"),config.getParameter("critChance", 1),status.stat("critChance"))
-        if heldItem then
-            -- exclude mining lasers
-            if not root.itemHasTag(heldItem, "mininggun") or root.itemHasTag(heldItem, "bugnet") then
-
-				-- Glitch ability
-				local race = world.sendEntityMessage(activeItem.ownerEntityId(), "FR_getSpecies")
-                if race:succeeded() and race:result() == "glitch" and (root.itemHasTag(heldItem, "mace") or root.itemHasTag(heldItem, "axe") or root.itemHasTag(heldItem, "greataxe")) then
-                    damage = damage + math.random(10) + 2  -- 1d10 + 2 bonus damage
-                end
-
-                -- *****************************************************************
-                --	weapon specific crit abilities!
-                -- *****************************************************************
-                local stunRoll = (math.random(100)) + status.stat("stunChance") + config.getParameter("stunChance",0)
-                --local daggerChance = math.random(100) + status.stat("daggerChance") + config.getParameter("daggerChance",0)--unused
-				local params={power=1,damageKind = "default"}
-                if stunRoll > 99 and root.itemHasTag(heldItem, "dagger") then
-                    params.speed=14
-                    world.spawnProjectile("daggerCrit",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),true,params)
-                end
-                if stunRoll > 99 and root.itemHasTag(heldItem, "spear") then
-					params.speed=55
-                    world.spawnProjectile("spearCrit",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,params)
-                end
-                if stunRoll > 99 and root.itemHasTag(heldItem, "shortspear") then
-					params.speed=22
-                    world.spawnProjectile("spearCrit",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,params)
-                end
-                if stunRoll > 99 and root.itemHasTag(heldItem, "rapier") or root.itemHasTag(heldItem, "shortsword") then
-                    params.speed=30
-                    world.spawnProjectile("rapierCrit",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,params)
-                end
-                if stunRoll > 99 and (root.itemHasTag(heldItem, "fist") or root.itemHasTag(heldItem, "hammer") or root.itemHasTag(heldItem, "greataxe") or root.itemHasTag(heldItem, "quarterstaff") or root.itemHasTag(heldItem, "mace")) then -- Stun!!!!
-                    --sb.logInfo("sum.stunRoll:%s, random.stunRoll:%s, stat.stunChance:%s, config.stunChance:%s",stunRoll,stunRoll-(status.stat("stunChance") + config.getParameter("stunChance",0)),status.stat("stunChance"),config.getParameter("stunChance",0))
-					params.speed=35
-                    world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,params)
-                end
-            end
-        end
+	--here we do some fancy magic to smuggle an otherwise inaccessible table into an activeitem script.
+	if not Crits.specialCritConfig then
+		if not root then
+			local getRoot=world.sendEntityMessage(owner,"sendRoot")
+			if getRoot.succeeded() then
+				root=getRoot.result()
+			end
+		end
+		if not root then noRoot=true end
+		Crits.specialCritConfig=root.assetJson("/items/active/weapons/Crits.config")
 	end
-	--sb.logInfo("crits.lua::final values %s",{c=crit,d=damage,cc=critChance,cb=critBonus,cd=critDamage,sumCD=(1.5 + critDamage + (critBonus/100.0))})
+
+	local heldItem = world.entityHandItem(owner, activeItem.hand())
+	local canCrit=Crits.canCrit(heldItem)
+	local canStun=Crits.canStun(heldItem)
+
+	if (canCrit or canStun) then
+		local critChance = config.getParameter("critChance", 1) + status.stat("critChance") + Crits.getBaseCritMod(item)  -- Integer % chance to activate crit
+		local critBonus = config.getParameter("critBonus", 0) + status.stat("critBonus")     --  it's just critDamage (below). should mostly phase out except for on weapon configs.
+		local critDamage = status.stat("critDamage")  -- % increase to crit damage multiplier (0.10 == +10% or 110% total additional damage)
+		local stunChance = status.stat("stunChance") + config.getParameter("stunChance",0) + Crits.getBaseStunMod(item)
+
+		local crit = canCrit and (math.random(100)<=critChance) or false -- Chance out of 100
+		local stun = canStun and (math.random(100)<=stunChance) or false
+
+		damage = crit and (damage * (1.5 + critDamage + (critBonus/100.0))) or damage -- Inherent 50% damage boost further increased by critBonus
+
+		-- local race = world.sendEntityMessage(activeItem.ownerEntityId(), "FR_getSpecies")
+		-- if race:succeeded then race=race:result() else race=nil end
+
+		-- if crit then
+			-- if race == "glitch" and (itemHasTag(heldItem("mace")) or itemHasTag(heldItem, "axe") or itemHasTag(heldItem, "greataxe")) then
+				-- damage = damage + math.random(10) + 2  -- 1d10 + 2 bonus damage
+			-- end
+		-- end
+		--sb.logInfo("crits.lua 1: %s",{itemname=config.getParameter("shortdescription"),canCrit=canCrit,canStun=canStun,critChance=critChance,critDamage=critDamage,stunChance=stunChance,crit=crit,stun=stun})
+
+		if stun then
+			local projectile
+			local paramsStun
+			local statusEffectsStun
+
+			if(crit) then
+				projectile=config.getParameter("critStunProjectile") or Crits.specialCritConfig.defaultProjectileCrit
+				--sb.logInfo("stunCrit %s %s %s",config.getParameter("critStunProjectileParams"),Crits.getBaseParams(item,crit),Crits.specialCritConfig.defaultParamsCrit)
+				paramsStun=config.getParameter("critStunProjectileParams") or Crits.getBaseParams(item,crit) or copy(Crits.specialCritConfig.defaultParamsCrit)
+				statusEffectsStun=config.getParameter("critStunStatusEffects")
+			else
+				projectile=config.getParameter("stunProjectile") or Crits.specialCritConfig.defaultProjectile
+				--sb.logInfo("stun %s %s %s",config.getParameter("critStunProjectileParams"),Crits.getBaseParams(item,crit),Crits.specialCritConfig.defaultParams)
+				paramsStun=config.getParameter("stunProjectileParams") or Crits.getBaseParams(item,crit) or copy(Crits.specialCritConfig.defaultParams)
+				statusEffectsStun=config.getParameter("stunStatusEffects")
+			end
+			if statusEffectsStun then
+				paramsStun.statusEffects=statusEffectsStun
+			end
+
+			--sb.logInfo("crits.lua stun: %s",{itemname=config.getParameter("shortdescription"),projectile=projectile,paramsStun=paramsStun,statusEffectsStun=statusEffectsStun})
+			world.spawnProjectile(projectile,mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,paramsStun)
+		end
+	end
+
 	return damage
 end
 
@@ -94,4 +101,91 @@ function Crits:aimVectorSpecial()
     local aimVector = vec2.rotate({1, 0}, self.aimAngle)
 	aimVector[1] = aimVector[1] * self.aimDirection
 	return aimVector
+end
+
+function fetchTags(iConf)
+	if not Crits.tagCache then
+		local tags={}
+		for k,v in pairs(iConf.config or {}) do
+			if string.lower(k)=="itemtags" then
+				tags=util.mergeTable(tags,copy(v))
+			end
+		end
+		for k,v in pairs(iConf.parameters or {}) do
+			if string.lower(k)=="itemtags" then
+				tags=util.mergeTable(tags,copy(v))
+			end
+		end
+		Crits.tagCache=tags
+	end
+	return Crits.tagCache
+end
+
+function itemHasTag(item,tag)
+	local tagData=fetchTags(item)
+	for _,v in pairs(tagData) do
+		if string.lower(v)==string.lower(tag) then
+			return true
+		end
+	end
+	return false
+end
+
+function Crits.canCrit(item)
+	if item then
+		for _,tag in pairs(Crits.specialCritConfig.critExclusions) do
+			if(itemHasTag(item,tag)) then
+				return false
+			end
+		end
+		return true
+	end
+	return false
+end
+
+function Crits.canStun(item)
+	if item then
+		for _,tag in pairs(Crits.specialCritConfig.stunExclusions) do
+			if(itemHasTag(item,tag)) then
+				return false
+			end
+		end
+		return true
+	end
+	return false
+end
+
+function Crits.getBaseStunMod(item)
+	local base=0
+	if item then
+		for tag,value in pairs(Crits.specialCritConfig.baseStunChanceModifiers) do
+			if itemHasTag(item,tag) then
+				base = math.max(base,value)
+			end
+		end
+	end
+	return base
+end
+
+function Crits.getBaseCritMod(item)
+	local base=0
+	if item then
+		for tag,value in pairs(Crits.specialCritConfig.baseCritChanceModifiers) do
+			if itemHasTag(item,tag) then
+				base = math.max(base,value)
+			end
+		end
+	end
+	return base
+end
+
+function Crits.getBaseParams(item,crit)
+	if item then
+		for tag,value in pairs((crit and (Crits.specialCritConfig.critStunProjectileParams)) or (Crits.specialCritConfig.stunProjectileParams)) do
+			if itemHasTag(item,tag) then
+				--sb.logInfo("getbaseparams %s",value)
+				return copy(value)
+			end
+		end
+	end
 end
