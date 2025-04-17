@@ -1,6 +1,6 @@
 require "/scripts/util.lua"
 Crits = {}
-local noRoot
+--no. root doesnt exist at this point.
 --Crits.specialCritConfig=root.assetJson("/items/active/weapons/Crits.specialCritConfig")
 
 --[[
@@ -33,15 +33,7 @@ placing this in lua demo:
 function Crits:setCritDamage(damage)
 	local owner=activeItem.ownerEntityId()
 
-	--here we do some fancy magic to smuggle an otherwise inaccessible table into an activeitem script.
 	if not Crits.specialCritConfig then
-		if not root then
-			local getRoot=world.sendEntityMessage(owner,"sendRoot")
-			if getRoot.succeeded() then
-				root=getRoot.result()
-			end
-		end
-		if not root then noRoot=true end
 		Crits.specialCritConfig=root.assetJson("/items/active/weapons/Crits.config")
 	end
 
@@ -77,20 +69,16 @@ function Crits:setCritDamage(damage)
 
 			if(crit) then
 				projectile=config.getParameter("critStunProjectile") or Crits.specialCritConfig.defaultProjectileCrit
-				--sb.logInfo("stunCrit %s %s %s",config.getParameter("critStunProjectileParams"),Crits.getBaseParams(item,crit),Crits.specialCritConfig.defaultParamsCrit)
 				paramsStun=config.getParameter("critStunProjectileParams") or Crits.getBaseParams(item,crit) or copy(Crits.specialCritConfig.defaultParamsCrit)
 				statusEffectsStun=config.getParameter("critStunStatusEffects")
 			else
 				projectile=config.getParameter("stunProjectile") or Crits.specialCritConfig.defaultProjectile
-				--sb.logInfo("stun %s %s %s",config.getParameter("critStunProjectileParams"),Crits.getBaseParams(item,crit),Crits.specialCritConfig.defaultParams)
 				paramsStun=config.getParameter("stunProjectileParams") or Crits.getBaseParams(item,crit) or copy(Crits.specialCritConfig.defaultParams)
 				statusEffectsStun=config.getParameter("stunStatusEffects")
 			end
 			if statusEffectsStun then
 				paramsStun.statusEffects=statusEffectsStun
 			end
-
-			--sb.logInfo("crits.lua stun: %s",{itemname=config.getParameter("shortdescription"),projectile=projectile,paramsStun=paramsStun,statusEffectsStun=statusEffectsStun})
 			world.spawnProjectile(projectile,mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,paramsStun)
 		end
 	end
@@ -123,14 +111,10 @@ function fetchTags(iConf)
 end
 
 function itemHasTag(item,tag)
-	if noRoot then
-		return root.itemHasTag(item,tag)
-	else
-		local tagData=fetchTags(item)
-		for _,v in pairs(tagData) do
-			if string.lower(v)==string.lower(tag) then
-				return true
-			end
+	local tagData=fetchTags(item)
+	for _,v in pairs(tagData) do
+		if string.lower(v)==string.lower(tag) then
+			return true
 		end
 	end
 	return false
@@ -188,7 +172,6 @@ function Crits.getBaseParams(item,crit)
 	if item then
 		for tag,value in pairs((crit and (Crits.specialCritConfig.critStunProjectileParams)) or (Crits.specialCritConfig.stunProjectileParams)) do
 			if itemHasTag(item,tag) then
-				--sb.logInfo("getbaseparams %s",value)
 				return copy(value)
 			end
 		end
