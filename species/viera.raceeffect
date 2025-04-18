@@ -1,156 +1,100 @@
 {
-	"stats": [
-		{
-			"stat": "maxFood",
-			"effectiveMultiplier": 0.8
-		},
-		{
-			"stat": "maxHealth",
-			"effectiveMultiplier": 0.8
-		},
-		{
-			"stat": "maxEnergy",
-			"effectiveMultiplier": 1.2
-		},
-		{
-			"stat": "shadowResistance",
-			"amount": -0.3
-		},
-		{
-			"stat": "cosmicResistance",
-			"amount": 0.3
-		},
-		{
-			"stat": "slimestickImmunity",
-			"amount": 1
-		},
-		{
-			"stat": "slimefrictionImmunity",
-			"amount": 1
-		}
-	],
-	"diet" : "omnivore",
-	"controlModifiers": {
-		"speedModifier": 1.12
-	},
-	"envEffects": [{
-		"biomes": [
-			"forest",
-			"thickjungle",
-			"arboreal",
-			"arborealdark"
-		],
-		"stats": [{
-				"stat": "maxEnergy",
-				"effectiveMultiplier": 1.15
-			},
-			{
-				"stat": "protection",
-				"effectiveMultiplier": 1.1
-			}
-		],
-		"controlModifiers": {
-			"speedModifier": 1.18
-		}
-	}],
-	"weaponEffects": [{
-			"weapons": [
-				"bow"
-			],
-			"stats": [{
-					"stat": "powerMultiplier",
-					"effectiveMultiplier": 1.15
-				},
-				{
-					"stat": "maxEnergy",
-					"effectiveMultiplier": 1.15
-				}
-			]
-		},
-		{
-			"weapons": [
-				"rapier"
-			],
-			"stats": [{
-					"stat": "protection",
-					"amount": 1
-				},
-				{
-					"stat": "powerMultiplier",
-					"effectiveMultiplier": 1.1
-				}
-			]
-		},
-		{
-			"combos": [
-				[
-					"rapier",
-					"dagger"
-				]
-			],
-			"stats": [{
-					"stat": "physicalResistance",
-					"amount": 0.05
-				},
-				{
-					"stat": "critChance",
-					"amount": 2
-				}
-			]
-		},
-		{
-			"weapons": [
-				"rapier",
-				"dagger",
-				"shortsword"
-			],
-			"stats": [{
-					"stat": "physicalResistance",
-					"amount": 0.15
-				},
-				{
-					"stat": "powerMultiplier",
-					"effectiveMultiplier": 1.12
-				}
-			]
-		}
-	],
-	"weaponScripts": [{
-			"weapons": [
-				"rapier",
-				"dagger",
-				"shortsword"
-			],
-			"script": "/scripts/fr_weaponscripts/randprojectile.lua",
-			"contexts": [
-				"meleecombo-fire"
-			],
-			"args": {
-				"projectile": "meleelash",
-				"chance": 5,
-				"params": {
-					"power": 7,
-					"speed": 25,
-					"damageKind": "electric"
-				}
-			}
-		},
-		{
-			"script": "/scripts/fr_weaponscripts/freebonus.lua",
-			"contexts": [
-				"staff-init"
-			],
-			"args": {
-				"stats": [{
-						"stat": "powerMultiplier",
-						"effectiveMultiplier": 1.15
-					},
-					{
-						"stat": "maxEnergy",
-						"effectiveMultiplier": 1.15
-					}
-				]
-			}
-		}
-	]
+  "stats": [
+    {"stat": "maxFood",   "effectiveMultiplier": 1.02},
+    {"stat": "maxHealth", "effectiveMultiplier": 0.8},
+    {"stat": "maxEnergy", "effectiveMultiplier": 1.2},
+    
+    {"stat": "cosmicResistance",   "amount":  0.3},
+    {"stat": "shadowResistance",   "amount": -0.3},
+    
+    {"stat": "slimestickImmunity",     "amount": 1},
+    {"stat": "slimefrictionImmunity",  "amount": 1},
+    {"stat": "fujungleslowImmunity",   "amount": 1},
+    {"stat": "fumudslowImmunity",      "amount": 1},   
+    
+    {"stat": "fallDamageMultiplier", "effectiveMultiplier": 0.6}
+  ],
+  
+  
+  "diet" : "omnivore",
+  
+  
+  "controlModifiers": {
+    "speedModifier": 1.15,
+  	"airJumpModifier" : 1.25
+  },
+  
+  
+  "envEffects": [
+    {
+  	  "biomes": ["lush", "arboreal", "arborealunderground", "forest", "birchforest", "pineforest", "snowyforest", "vieramajesticforest", "primevalforest", "rainforest", "jungle", "thickjungle", "thickjungleunderground", "eden"],
+      "stats": [
+        {"stat": "maxEnergy", "effectiveMultiplier": 1.15},
+        {"stat": "protection", "effectiveMultiplier": 1.1}
+      ],
+      "controlModifiers": {"speedModifier": 1.18}
+    },
+    {
+      "biomes": [
+	    "shadow", "moon_shadow", "midnight", "penumbra", "lightless", "atropus", "tentacle", "bloodstonesea", "bloodstoneseafloor", "strangesea", "strangeseafloor",
+		"kelpforestdark", "deepseaventdark", "coralreefdark", "estuarydark", "snowdark", "arcticdark", "desertwastesdark", "magmadark", "volcanicdark", "tundradark", "sulphuricdark", "icewastedark", "infernusdark", "atropusdark",
+		"metaljungle", "metallicunderground", "metalworks", "metalworks2", "metalworks3", "metalworks4", "metalworksunderground", "metalworksunderground2", "metalworksunderground3", "metalworksunderground4", "scorchedcity", "metallicmoon"
+      ],
+      "stats": [
+        {"stat": "energyRegenPercentageRate", "amount": 0.75},
+        {"stat": "protection", "effectiveMultiplier": 0.85}
+      ],
+      "controlModifiers": { "speedModifier": 1.12}
+    }
+  ],
+  
+  
+  "weaponEffects": [
+    {
+      "weapons": [ "rapier","katana","shortsword" ],
+      "stats": [
+        {"stat": "powerMultiplier", "effectiveMultiplier": 1.1},
+	    {"stat": "critChance", "amount": 0.15}
+      ]
+    },
+	{
+      "weapons": ["hammer","mace"],
+      "stats": [
+        {"stat": "powerMultiplier", "effectiveMultiplier": 1.1},
+        {"stat": "protection", "amount": 1}
+      ]
+    },
+    {
+      "weapons": ["bow"],
+      "stats": [
+        {"stat": "maxEnergy", "effectiveMultiplier": 1.15},
+        {"stat": "critChance", "amount": 1}
+      ]
+	}, 
+    {
+      "weapons": ["staff","wand"],
+      "stats": [
+        {"stat": "powerMultiplier", "effectiveMultiplier": 1.1},
+        {"stat": "maxEnergy", "effectiveMultiplier": 1.15}
+      ]
+	}
+  ],
+  
+  
+  "weaponScripts": [
+    {
+      "weapons": ["rapier", "katana", "shortsword"],
+      "script": "/scripts/fr_weaponscripts/randprojectile.lua",
+      "contexts": ["meleecombo-fire"],
+      "args": {
+        "projectile": "meleelash",
+        "chance": 5,
+        "params": {
+          "power": 7,
+          "speed": 25,
+          "damageKind": "cosmic"
+        }
+      }
+    }
+  ]
 }
