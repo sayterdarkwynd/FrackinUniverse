@@ -9,7 +9,9 @@ tagCaching.mergedTagCacheOld={}
 
 function tagCaching.update()
 	local primaryItem=world.entityHandItem(entity.id(), "primary") --check what they have in hand
+	local primaryItemDescriptor=world.entityHandItemDescriptor(entity.id(), "primary") --check what they have in hand
 	local altItem=world.entityHandItem(entity.id(), "alt")
+	local altItemDescriptor=world.entityHandItemDescriptor(entity.id(), "alt")
 	local doMerge=false
 
 	--these are set for one update only, so that any dependent scripts can check if something has changed.
@@ -28,7 +30,7 @@ function tagCaching.update()
 
 	if tagCaching.primaryTagCacheItem~=primaryItem then
 		tagCaching.primaryTagCacheOld=copy(tagCaching.primaryTagCache)
-		local pass,result=pcall(root.itemConfig,primaryItem)
+		local pass,result=pcall(root.itemConfig,primaryItemDescriptor)
 		tagCaching.primaryTagCache=tagCaching.tagsToKeys(tagCaching.fetchTags(pass and result))
 		if pass and result then
 			local dummy=nil
@@ -48,7 +50,7 @@ function tagCaching.update()
 	end
 	if tagCaching.altTagCacheItem~=altItem then
 		tagCaching.altTagCacheOld=copy(tagCaching.altTagCache)
-		local pass,result=pcall(root.itemConfig,altItem)
+		local pass,result=pcall(root.itemConfig,altItemDescriptor)
 		tagCaching.altTagCache=tagCaching.tagsToKeys(tagCaching.fetchTags(pass and result))
 		if pass and result then
 			local dummy=nil
