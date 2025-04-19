@@ -1,5 +1,6 @@
 require "/scripts/util.lua"
 require "/stats/effects/fu_statusUtil.lua"
+require "/items/active/tagCaching.lua"
 
 function init()
 	script.setUpdateDelta(10)
@@ -19,27 +20,32 @@ end
 function update(dt)
 	if not self.didInit then init() end
 	if not self.didInit then return end
+	tagCaching.update()
+
 	local daytime = daytimeCheck()
 	local underground = undergroundCheck()
 	local lightLevel = getLight()
 
-	if (self.species == "nightar") then
-		if status.resource("health") == status.stat("maxHealth") then
-			--used for checking sword setups
-		    local primaryItem = world.entityHandItem(entity.id(), "primary")
-		    local altItem = world.entityHandItem(entity.id(), "alt")
-
-			if (primaryItem and root.itemHasTag(primaryItem, "broadsword")) or (altItem and root.itemHasTag(altItem,  "broadsword")) or
-		   (primaryItem and root.itemHasTag(primaryItem, "dagger")) or (altItem and root.itemHasTag(altItem,  "dagger")) or
-		   (primaryItem and root.itemHasTag(primaryItem, "shortsword")) or (altItem and root.itemHasTag(altItem,  "shortsword")) or
-		   (primaryItem and root.itemHasTag(primaryItem, "longsword")) or (altItem and root.itemHasTag(altItem,  "longsword")) or
-		   (primaryItem and root.itemHasTag(primaryItem, "rapier")) or (altItem and root.itemHasTag(altItem,  "rapier")) or
-		   (primaryItem and root.itemHasTag(primaryItem, "katana")) or (altItem and root.itemHasTag(altItem,  "katana")) then
-				effect.setStatModifierGroup(nightarDarkHunterEffects2, {
-					{stat = "powerMultiplier", baseMultiplier = 1.1}
-				})
-			end
-		end
+	if (self.species == "nightar") and (
+		(status.resourcePercentage("health") >= 1.0) and (
+				--used for checking sword setups
+				tagCaching.mergedCache["broadsword"]
+				or tagCaching.mergedCache["dagger"]
+				or tagCaching.mergedCache["knife"]
+				or tagCaching.mergedCache["shortsword"]
+				or tagCaching.mergedCache["longsword"]
+				or tagCaching.mergedCache["rapier"]
+				or tagCaching.mergedCache["katana"]
+			)
+		)
+	then
+		effect.setStatModifierGroup(nightarDarkHunterEffects2, {
+			{stat = "powerMultiplier", effectiveMultiplier = 1.01}
+		})
+	else
+		effect.setStatModifierGroup(nightarDarkHunterEffects2, {
+			{stat = "powerMultiplier", effectiveMultiplier = 1}
+		})
 	end
 
 	if (lightLevel <= 50) then
