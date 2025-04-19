@@ -6,26 +6,17 @@ function Crits:setCritDamage(damage)
 	if not Crits.initialLoadDone then
 		Crits.initialLoad()
 	end
-
-	if (canCrit or canStun) then
+	if (Crits.canCrit or Crits.canStun) then
 		local critChance = Crits.weaponCritChance + status.stat("critChance")  -- Integer % chance to activate crit
 		local critBonus = Crits.weaponCritBonus + status.stat("critBonus")     --  it's just critDamage (below). should mostly phase out except for on weapon configs.
 		local critDamage = status.stat("critDamage")  -- % increase to crit damage multiplier (0.10 == +10% or 110% total additional damage)
 		local stunChance = status.stat("stunChance") + Crits.weaponStunChance
 
-		local crit = Crits.canCrit and (math.random(100)<=critChance) or false -- Chance out of 100
-		local stun = Crits.canStun and (math.random(100)<=stunChance) or false
+		local crit = Crits.canCrit and (math.random(100)<=critChance) -- Chance out of 100
+		local stun = Crits.canStun and (math.random(100)<=stunChance)
+		sb.logInfo("%s",{stunChance,stun})
 
 		damage = crit and (damage * (1.5 + critDamage + (critBonus/100.0))) or damage -- Inherent 50% damage boost further increased by critBonus
-
-		-- local race = world.sendEntityMessage(activeItem.ownerEntityId(), "FR_getSpecies")
-		-- if race:succeeded then race=race:result() else race=nil end
-
-		-- if crit then
-			-- if race == "glitch" and (itemHasTag(heldItem("mace")) or itemHasTag(heldItem, "axe") or itemHasTag(heldItem, "greataxe")) then
-				-- damage = damage + math.random(10) + 2  -- 1d10 + 2 bonus damage
-			-- end
-		-- end
 
 		if stun then
 			local projectile
