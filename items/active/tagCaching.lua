@@ -82,7 +82,7 @@ function tagCaching.update()
 end
 
 --this function fetches tags for the weapon, parameters if there, otherwise config. category and element are also taken, to same effect, and merged into tags.
-function tagCaching.fetchTags(iConf)
+function tagCaching.fetchTags(iConf,slimMode)
     if not iConf or not iConf.config then return {} end
     local tags={}
 	local category
@@ -107,8 +107,10 @@ function tagCaching.fetchTags(iConf)
 			elementaltype=v
         end
     end
-	if category then table.insert(tags,category) end
-	if elementaltype then table.insert(tags,elementaltype) end
+	if not slimMode then
+		if category then table.insert(tags,category) end
+		if elementaltype then table.insert(tags,elementaltype) end
+	end
     return tags
 end
 
@@ -119,4 +121,14 @@ function tagCaching.tagsToKeys(tags)
         buffer[v:lower()]=true
     end
     return buffer
+end
+
+function tagCaching.itemHasTag(item,tag,slimMode)
+	local tagData=tagCaching.fetchTags(item,slimMode)
+	for _,v in pairs(tagData) do
+		if string.lower(v)==string.lower(tag) then
+			return true
+		end
+	end
+	return false
 end
