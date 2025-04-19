@@ -1,5 +1,6 @@
 require "/stats/effects/fu_statusUtil.lua"
 require("/scripts/util.lua")
+require "/items/active/tagCaching.lua"
 
 FRHelper = {}
 DynamicScripts = {}
@@ -99,10 +100,10 @@ function FRHelper:validCombo(item1, item2, combo)
 		if ((combo[1].tag == "nothing") and (combo[1].condition=="is")) or ((combo[2].tag == "nothing") and (combo[2].condition=="is")) then
 			return false
 		else
-			local combo1item1=root.itemHasTag(item1, combo[1].tag)
-			local combo1item2=root.itemHasTag(item2, combo[1].tag)
-			local combo2item1=root.itemHasTag(item1, combo[2].tag)
-			local combo2item2=root.itemHasTag(item2, combo[2].tag)
+			local combo1item1=tagCaching.itemHasTag(item1, combo[1].tag)
+			local combo1item2=tagCaching.itemHasTag(item2, combo[1].tag)
+			local combo2item1=tagCaching.itemHasTag(item1, combo[2].tag)
+			local combo2item2=tagCaching.itemHasTag(item2, combo[2].tag)
 			if combo[1].condition=="not" then
 				combo1item1=not combo1item1
 				combo1item2=not combo1item2
@@ -116,7 +117,7 @@ function FRHelper:validCombo(item1, item2, combo)
 		end
 	elseif ((item1 and not item2) or (item2 and not item1)) then	-- single-weapon combos
 		if (#combo == 1) then
-			local test=root.itemHasTag(item1 or item2, combo[1].tag)
+			local test=tagCaching.itemHasTag(item1 or item2, combo[1].tag)
 			if combo[1].condition=="not" then
 				test=not test
 			end
@@ -125,13 +126,13 @@ function FRHelper:validCombo(item1, item2, combo)
 			if (combo[1].tag == "nothing") and (combo[2].tag == "nothing") then
 				return false
 			elseif (combo[1].tag == "nothing") and (combo[1].condition=="is") then
-				local test=root.itemHasTag(item1 or item2, combo[2].tag)
+				local test=tagCaching.itemHasTag(item1 or item2, combo[2].tag)
 				if combo[2].condition=="not" then
 					test=not test
 				end
 				return test
 			elseif (combo[2].tag == "nothing") and (combo[2].condition=="is") then
-				local test=root.itemHasTag(item1 or item2, combo[1].tag)
+				local test=tagCaching.itemHasTag(item1 or item2, combo[1].tag)
 				if combo[2].condition=="not" then
 					test=not test
 				end
@@ -230,7 +231,7 @@ function FRHelper:loadWeaponScripts(contexts)
 				if thing.weapons then
 					local doLoad = false
 					for _,weap in ipairs(thing.weapons) do
-						if root.itemHasTag(world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand()), weap) then
+						if tagCaching.itemHasTag(world.entityHandItemDescriptor(activeItem.ownerEntityId(), activeItem.hand()), weap) then
 							doLoad = true
 							break
 						end

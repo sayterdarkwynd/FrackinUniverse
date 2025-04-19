@@ -1,3 +1,5 @@
+require "/items/active/tagCaching.lua"
+
 -- HELPERS
 function entityLevel()
 	if entity.entityType() == "monster" then
@@ -170,15 +172,15 @@ end
 function entityHoldingWeapon(args, board)
 	if args.entity == nil then return false end
 
-	local primaryItem = world.entityHandItem(args.entity, "primary")
-	local altItem = world.entityHandItem(args.entity, "alt")
-	return (primaryItem and root.itemHasTag(primaryItem, "weapon")) or (altItem and root.itemHasTag(altItem, "weapon")) or false
+	local primaryItem = world.entityHandItemDescriptor(args.entity, "primary")
+	local altItem = world.entityHandItemDescriptor(args.entity, "alt")
+	return (primaryItem and tagCaching.itemHasTag(primaryItem, "weapon")) or (altItem and tagCaching.itemHasTag(altItem, "weapon")) or false
 end
 -- param entity
 -- param itemTag
 function entityHandItemTag(args, board)
-	local primary, alt = world.entityHandItem(args.entity, "primary"), world.entityHandItem(args.entity, "alt")
-	if (primary and root.itemHasTag(primary, args.itemTag)) or (alt and root.itemHasTag(alt, args.itemTag)) then
+	local primary, alt = world.entityHandItemDescriptor(args.entity, "primary"), world.entityHandItemDescriptor(args.entity, "alt")
+	if (primary and tagCaching.itemHasTag(primary, args.itemTag)) or (alt and tagCaching.itemHasTag(alt, args.itemTag)) then
 		return true
 	else
 		return false

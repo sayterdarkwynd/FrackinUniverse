@@ -112,7 +112,6 @@ end
 -- FU adds an encapsulating check in Windup, for energy. If there is no energy to consume, the weapon cannot combo
 function MeleeCombo:windup()
 	self.energyMax = math.max(status.resourceMax("energy"),0) -- due to weather and other cases it is possible to have a maximum of under 0.
-	--root.itemHasTag(world.entityHandItem(activeItem.ownerEntityId(),"primary"),"melee")
 	if tagCaching.primaryTagCache["melee"] and tagCaching.altTagCache["melee"] then
 		self.energyTotal = (self.energyMax * 0.025)
 	else
@@ -344,7 +343,7 @@ function fuLoadSwooshData(self)
 		animationData=root.assetJson(animationData)
 	elseif type(animationData)=="string" then
 		if world.entityType(activeItem.ownerEntityId()) then
-			local buffer=world.entityHandItem(activeItem.ownerEntityId(),activeItem.hand())
+			local buffer=world.entityHandItemDescriptor(activeItem.ownerEntityId(),activeItem.hand())
 			buffer=root.itemConfig(buffer).directory..animationData
 			animationData=root.assetJson(buffer)
 		else

@@ -3,6 +3,7 @@ require "/scripts/epoch.lua"
 require "/scripts/vec2.lua"
 require "/scripts/effectUtil.lua"
 require "/scripts/fuPersistentEffectRecorder.lua"
+require "/items/active/tagCaching.lua"
 
 function init()
 	-- passive research gain
@@ -129,8 +130,8 @@ end
 function randomEvent()
 	if not self.madnessCount then init() end
 	status.setPersistentEffects("madnessEffectsMain",{})--reset persistent effects the next time one pops up.
-	self.currentPrimary = world.entityHandItem(entity.id(), "primary") --what are we carrying in the right hand?
-	self.currentSecondary = world.entityHandItem(entity.id(), "alt") --what are we carrying in the left hand?
+	-- self.currentPrimary = world.entityHandItemDescriptor(entity.id(), "primary") --what are we carrying in the right hand?
+	-- self.currentSecondary = world.entityHandItemDescriptor(entity.id(), "alt") --what are we carrying in the left hand?
 
 	self.isProtectedRandVal =(math.random(1,100)) / 100
 	self.currentProtection = status.stat("mentalProtection")
@@ -220,7 +221,7 @@ function randomEvent()
 	end
 	if self.madnessCount > 750 then
 		if self.randEvent == 37 and self.madnessCount > 800 then
-			if (self.currentPrimary and root.itemHasTag(self.currentPrimary, "dagger")) or (self.currentSecondary and root.itemHasTag(self.currentSecondary, "dagger")) then --if holding a knife, cut yourself
+			if (tagCaching.mergedCache["dagger"] or tagCaching.mergedCache["knife"]) then --if holding a knife, cut yourself
 				if (not isPositiveEffect) then
 					status.addEphemeralEffect("bleeding05",self.curseDuration_status) -- You just can't stop stabbing yourself
 					player.radioMessage("madnessharm")
@@ -428,6 +429,7 @@ function afkLevel()
 end
 
 function update(dt)
+	tagCaching.update()
 	storage.crazycarrycooldown=math.max(0,(storage.crazycarrycooldown or 0) - dt)
 	fuPersistentEffectRecorder.update(dt)
 	--anti-afk concept: check vs a set of 8 points, referring to the 8 'cardinal' directions. If a person moves far enough past one of the last recorded point, the afk timer is reset.

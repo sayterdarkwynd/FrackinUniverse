@@ -1,3 +1,5 @@
+require "/items/active/tagCaching.lua"
+
 --[[
 This is intended to be run from raceability.lua through a mapping in frackinraces.config
 Structure:
@@ -21,8 +23,8 @@ Structure:
 ]]
 
 function FRHelper:call(args, ...)
-    local primaryItem = world.entityHandItem(entity.id(), "primary")
-    local altItem = world.entityHandItem(entity.id(), "alt")
+    local primaryItem = world.entityHandItemDescriptor(entity.id(), "primary")
+    local altItem = world.entityHandItemDescriptor(entity.id(), "alt")
     for i,weap in ipairs(args or {}) do
         local appliedbonus
         local name
@@ -38,7 +40,7 @@ function FRHelper:call(args, ...)
         elseif weap.weapons then -- Single weapons
             name = weap.name or "FR_weaponEffect"..i
             for _,thing in ipairs(weap.weapons) do
-                if (primaryItem and root.itemHasTag(primaryItem, thing)) or (altItem and root.itemHasTag(altItem, thing)) then
+                if (primaryItem and tagCaching.itemHasTag(primaryItem, thing)) or (altItem and tagCaching.itemHasTag(altItem, thing)) then
                     self:applyStats(weap, name, ...)
                     appliedbonus = true
                     break

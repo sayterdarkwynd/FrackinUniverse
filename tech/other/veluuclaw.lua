@@ -2,6 +2,7 @@ require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
 require "/stats/effects/fu_statusUtil.lua"
+require "/items/active/tagCaching.lua"
 local foodThreshold=10--used by checkFood
 
 function init()
@@ -47,8 +48,7 @@ function spawnPos()
 end
 
 function update(args)
-	local primaryItem = world.entityHandItem(entity.id(), "primary")
-	local altItem = world.entityHandItem(entity.id(), "alt")
+	tagCaching.update()
 	self.firetimer = math.max(0, self.firetimer - args.dt)
 
 	if self.flashCooldownTimer > 0 then
@@ -71,7 +71,7 @@ function update(args)
 		end
 	end
 
-	if args.moves["special1"] and self.firetimer == 0 and not (primaryItem and root.itemHasTag(primaryItem, "weapon")) and not (altItem and root.itemHasTag(altItem, "weapon")) then
+	if args.moves["special1"] and self.firetimer == 0 and (not tagCaching.mergedCache["weapon"]) then
 		local upDown=((args.moves["down"] and -1) or 0) + ((args.moves["up"] and 1) or 0)
 		local leftRight=((args.moves["left"] and -1) or 0) + ((args.moves["right"] and 1) or 0)
 		local foodValue=checkFood() or foodThreshold
