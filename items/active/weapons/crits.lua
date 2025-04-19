@@ -37,7 +37,7 @@ function Crits:setCritDamage(damage)
 		Crits.specialCritConfig=root.assetJson("/items/active/weapons/Crits.config")
 	end
 
-	local heldItem = world.entityHandItem(owner, activeItem.hand())
+	local heldItem = world.entityHandItemDescriptor(owner, activeItem.hand())
 	local canCrit=Crits.canCrit(heldItem)
 	local canStun=Crits.canStun(heldItem)
 
