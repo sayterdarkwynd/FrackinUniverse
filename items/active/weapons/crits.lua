@@ -14,7 +14,6 @@ function Crits:setCritDamage(damage)
 
 		local crit = Crits.canCrit and (math.random(100)<=critChance) -- Chance out of 100
 		local stun = Crits.canStun and (math.random(100)<=stunChance)
-		sb.logInfo("%s",{stunChance,stun})
 
 		damage = crit and (damage * (1.5 + critDamage + (critBonus/100.0))) or damage -- Inherent 50% damage boost further increased by critBonus
 
