@@ -112,7 +112,7 @@ function Crits.initialLoad()
 				break
 			end
 		end
-		Crits.canStun=stunCheck
+		Crits.canStun=buffer
 		buffer=0
 		for tag,value in pairs(specialCritConfig.baseStunChanceModifiers) do
 			if itemHasTag(item,tag) then
