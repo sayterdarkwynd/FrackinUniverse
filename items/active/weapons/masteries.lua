@@ -515,7 +515,8 @@ end
 function masteries.functions.mastery.flailMastery(currentHand,otherHand,handMultiplier,dualWield)
 	local buffer={}
 	--flails
-	buffer[#buffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.flailMastery*handMultiplier/2) }
+	buffer[#buffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.flailMastery*handMultiplier/4) }
+	buffer[#buffer + 1]={stat="stunChance", amount=100.0*(masteries.stats.flailMastery*handMultiplier/2) }
 	return buffer
 end
 
