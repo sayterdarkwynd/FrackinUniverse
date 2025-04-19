@@ -57,32 +57,8 @@ function Crits:aimVectorSpecial()
 	return aimVector
 end
 
-function fetchTags(iConf)
-	if not Crits.tagCache then
-		local tags={}
-		if iConf.config then
-			for k,v in pairs(iConf.config) do
-				if string.lower(k)=="itemtags" then
-					tags=copy(v)
-					break
-				end
-			end
-		end
-		if iConf.parameters and iConf.parameters then
-			for k,v in pairs(iConf.parameters) do
-				if string.lower(k)=="itemtags" then
-					tags=copy(v)
-					break
-				end
-			end
-		end
-		Crits.tagCache=tags
-	end
-	return Crits.tagCache
-end
-
 function itemHasTag(item,tag)
-	local tagData=fetchTags(item)
+	local tagData=tagCaching.fetchTags(item,true)
 	for _,v in pairs(tagData) do
 		if string.lower(v)==string.lower(tag) then
 			return true
@@ -105,6 +81,7 @@ function Crits.initialLoad()
 			end
 		end
 		Crits.canCrit=buffer
+
 		buffer=true
 		for _,tag in pairs(specialCritConfig.stunExclusions) do
 			if(itemHasTag(heldItem,tag)) then
@@ -113,6 +90,7 @@ function Crits.initialLoad()
 			end
 		end
 		Crits.canStun=buffer
+
 		buffer=0
 		for tag,value in pairs(specialCritConfig.baseStunChanceModifiers) do
 			if itemHasTag(item,tag) then
@@ -120,6 +98,7 @@ function Crits.initialLoad()
 			end
 		end
 		local baseStunMod=buffer
+
 		buffer=0
 		for tag,value in pairs(specialCritConfig.baseCritChanceModifiers) do
 			if itemHasTag(item,tag) then
