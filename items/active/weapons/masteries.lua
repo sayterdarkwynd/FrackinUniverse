@@ -516,6 +516,7 @@ function masteries.functions.mastery.flailMastery(currentHand,otherHand,handMult
 	local buffer={}
 	--flails
 	buffer[#buffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.flailMastery*handMultiplier/4) }
+	--note that the stun chance here is a macguffin to 'please' sayter. it doesnt actually work. because it realistically can't due to how strikers mechanically function, without substantially overhauling things.
 	buffer[#buffer + 1]={stat="stunChance", amount=100.0*(masteries.stats.flailMastery*handMultiplier/2) }
 	return buffer
 end

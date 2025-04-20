@@ -17,6 +17,7 @@ function Crits:setCritDamage(damage)
 
 		damage = crit and (damage * (1.5 + critDamage + (critBonus/100.0))) or damage -- Inherent 50% damage boost further increased by critBonus
 
+		--note that stuns don't actually reliably on most weapons
 		if stun then
 			local projectile
 			local paramsStun
@@ -34,6 +35,7 @@ function Crits:setCritDamage(damage)
 			if statusEffectsStun then
 				paramsStun.statusEffects=statusEffectsStun
 			end
+			--the problem with this is that it's a crappy, haphazardly spawned projectile with fixed parameters. wont work for all weapons. hell, it barely works for anything.
 			world.spawnProjectile(projectile,mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,paramsStun)
 		end
 	end
