@@ -42,8 +42,8 @@ function Crits:setCritDamage(damage)
 end
 
 function Crits:aimVectorSpecial()
-    local aimVector = vec2.rotate({1, 0}, self.aimAngle)
-	aimVector[1] = aimVector[1] * self.aimDirection
+    local aimVector = vec2.rotate({1, 0}, self.aimAngle or self.weapon.aimAngle or 0)
+	aimVector[1] = aimVector[1] * (self.aimDirection or self.weapon.aimDirection or 1)
 	return aimVector
 end
 
