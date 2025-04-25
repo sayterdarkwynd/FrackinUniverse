@@ -197,6 +197,8 @@ function removeField()
 			end
 			setStatus("Error: Failed to load field region", "red")
 			incDirty()
+
+			handleRemoveFail()
 		else
 			world.setDungeonId(storage.fieldActive, 65531)
 			if (storage.dungeonId ~= -1) then
@@ -207,6 +209,8 @@ function removeField()
 			storage.fieldActive = nil
 			world.setProperty(tostring(storage.dungeonId), propertyRecord())
 			setActive(false)
+
+			handleEitherSuccess()
 		end
 	end
 end
@@ -219,6 +223,8 @@ function applyField()
 		end
 		setStatus("Error: Failed to load field region", "red")
 		incDirty()
+
+		handleApplyFail()
 	else
 		world.setDungeonId(storage.targetRect, storage.dungeonId)
 		world.setTileProtection(storage.dungeonId, storage.applyProtected)
@@ -231,6 +237,8 @@ function applyField()
 		storage.fieldActive = storage.targetRect
 		world.setProperty(tostring(storage.dungeonId), propertyRecord())
 		setActive(true)
+
+		handleEitherSuccess()
 	end
 end
 
@@ -249,7 +257,7 @@ function checkArea()
 			if (dId >= LOWID) and (dId <= HIGHID) then
 				overlaps = overlaps + 1
 				if storage.debugMode then
-					table.insert("\n"..overlapList,tostring(dId) .. " @ " .. tostring(x) .. ", " .. tostring(y))
+					table.insert(overlapList,"\n"..tostring(dId) .. " @ " .. tostring(x) .. ", " .. tostring(y))
 				end
 			end
 			iterations = iterations + 1
@@ -311,6 +319,60 @@ function setGravity(msgName, isLocal, gravity, level)
 	incDirty()
 end
 
+function handleQueueRetries(dt)
+	if (self.reApplyTimer) then
+		self.reApplyTimer=self.reApplyTimer+dt
+		if (self.reApplyTimer>=(dt*2)) then
+			applyField()
+		end
+	end
+	if (self.reRemoveTimer) then
+		self.reRemoveTimer=self.reRemoveTimer+dt
+		if (self.reRemoveTimer>=(dt*2)) then
+			removeField()
+		end
+	end
+end
+
+function handleEitherSuccess()
+	self.reRemoveRetries=nil
+	self.reApplyTimer=nil
+	self.reApplyRetries=nil
+	self.reRemoveTimer=nil
+end
+
+function handleApplyFail()
+	self.reRemoveRetries=nil
+	if (self.reApplyRetries==2) then
+		object.setAllOutputNodes(false)
+		self.reApplyTimer=nil
+	else
+		if(self.reApplyRetries==nil) then
+			self.reApplyRetries=0
+		else
+			self.reApplyRetries=self.reApplyRetries+1
+		end
+		self.reApplyTimer=0.0
+		object.setAllOutputNodes(true)
+	end
+end
+
+function handleRemoveFail()
+	self.reApplyRetries=nil
+	if (self.reRemoveRetries==2) then
+		object.setAllOutputNodes(true)
+		self.reRemoveTimer=nil
+	else
+		if(self.reRemoveRetries==nil) then
+			self.reRemoveRetries=0
+		else
+			self.reRemoveRetries=self.reRemoveRetries+1
+		end
+		self.reRemoveTimer=0.0
+		object.setAllOutputNodes(true)
+	end
+end
+
 function setActive(isActive)
 	object.setConfigParameter("pilch_shieldgenerator_active", isActive)
 	if (isActive) then
@@ -340,8 +402,7 @@ function setStatus(message, colour)
 end
 
 function incDirty()
-	self.dirtyCounter = self.dirtyCounter or 0
-	self.dirtyCounter = self.dirtyCounter + 1
+	self.dirtyCounter = (self.dirtyCounter or 0) + 1
 	object.setConfigParameter("pilch_shieldgenerator_dirty", self.dirtyCounter)
 end
 
@@ -350,6 +411,7 @@ function update(dt)
 	if (coroutine.status(self.cor) == "suspended") then
 		assert(coroutine.resume(self.cor))
 	end
+	handleQueueRetries(dt)
 end
 
 -- ping for markers when wires are connected/disconnected

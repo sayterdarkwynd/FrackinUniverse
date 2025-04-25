@@ -27,8 +27,8 @@ function fu_configureShipPet()
 	local petConfigPane = root.assetJson("/interface/objectcrafting/fu_pethouse/fu_pethouse.config")
 	if petConfigPane and petConfigPane.gui then
 		petConfigPane.gui.itemGrid = nil
-		petConfigPane.gui.changeObjectPet.disabled = true
-		petConfigPane.gui.addObjectPetToList.disabled = true
+		petConfigPane.gui.changeObjectPet = nil
+		petConfigPane.gui.addObjectPetToList = nil
 		petConfigPane.containerId = pane.sourceEntity()
 		player.interact("ScriptPane", petConfigPane)
 	end
