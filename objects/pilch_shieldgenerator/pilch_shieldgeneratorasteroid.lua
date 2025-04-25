@@ -343,7 +343,7 @@ end
 
 function handleApplyFail()
 	self.reRemoveRetries=nil
-	if (self.reApplyRetries==2) then
+	if (self.reApplyRetries==40) then
 		object.setAllOutputNodes(false)
 		self.reApplyTimer=nil
 	else
