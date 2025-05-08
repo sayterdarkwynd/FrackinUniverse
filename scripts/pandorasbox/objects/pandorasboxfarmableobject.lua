@@ -22,7 +22,7 @@ end
 
 function resolveStageDuration(dur)
 	if type(dur)=="table" then
-		return math.max(unpack(dur))
+		return math.max(table.unpack(dur))
 	else
 		return dur
 	end
@@ -33,8 +33,8 @@ function update(dt)
 	if storage.lastHarvest then
 		if storage.stage and not storage.harvestable then
 			local harvestMath=(world.time() - storage.lastHarvest)
-			if (harvestMath<0) or (harvestMath>(resolveStageDuration(stages[stage].duration))*100) then
-				storage.harvestTime=util.randomInRange(stages[stage].duration)+world.time()
+			if (harvestMath<0) or (harvestMath>(resolveStageDuration(stages[storage.stage].duration))*100) then
+				storage.harvestTime=util.randomInRange(stages[storage.stage].duration)+world.time()
 			elseif harvestMath >= storage.harvestTime then
 				if checkForMoisture(true) then
 					grow()
