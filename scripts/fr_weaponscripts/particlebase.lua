@@ -47,7 +47,7 @@ function fuParticleBaseLoadParticleData()
 		animationData=root.assetJson(animationData)
 	elseif type(animationData)=="string" then
 		if world.entityType(activeItem.ownerEntityId()) then
-			local buffer=world.entityHandItem(activeItem.ownerEntityId(),activeItem.hand())
+			local buffer=world.entityHandItemDescriptor(activeItem.ownerEntityId(),activeItem.hand())
 			buffer=root.itemConfig(buffer).directory..animationData
 			animationData=root.assetJson(buffer)
 		else

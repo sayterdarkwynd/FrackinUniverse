@@ -3,10 +3,11 @@ setName="fu_sanguineset"
 
 weaponBonus={
 	{stat = "critChance", amount = 4},
-	{stat = "fuLeechPercent", amount = 0.005}
+	{stat = "fuLeechPercent", amount = 0.05}
 }
 armorBonus={
-	{stat = "fuLeechPercent", amount = 0.005}
+	{stat = "fuLeechPercent", amount = 0.05},
+	--{stat = "fuLeechMaxRate", amount = 0.1}--not necessary
 }
 
 function init()

@@ -56,6 +56,9 @@ function init(...)
 	message.setHandler("playerIsInMech", playerIsInMech)
 	message.setHandler("playerIsInVehicle", playerIsInVehicle)
 
+	--used to smuggle the root table outside its normal locations. basically allows running it inside activeitems and the like.
+	message.setHandler("sendRoot", function (_,_,...) return root end)
+
 	message.setHandler("player.equippedItem",function (_,_,...) return player.equippedItem(...) end)
 	message.setHandler("player.hasItem",function (_,_,...) return player.hasItem(...) end)
 	message.setHandler("player.hasCountOfItem",function (_,_,...) return player.hasCountOfItem(...) end)

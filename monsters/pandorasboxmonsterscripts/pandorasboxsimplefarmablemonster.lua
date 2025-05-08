@@ -29,15 +29,20 @@ end
 
 function resolveStageDuration(dur)
 	if type(dur)=="table" then
-		return math.max(unpack(dur))
+		return math.max(table.unpack(dur))
 	else
 		return dur
 	end
 end
 
 function hasMonsterHarvest(args, board)
+	if (not storage.lastHarvest) or (not cacheHarvestTime) then
+		resetMonsterHarvest()
+		return false
+	end
+
 	local harvestMath=(world.time() - storage.lastHarvest)
-	if (not storage.lastHarvest) or ((not cacheHarvestTime) or (harvestMath<0) or (harvestMath>=(resolveStageDuration(cacheHarvestTime))*100)) then
+	if (harvestMath<0) or (harvestMath>=(resolveStageDuration(cacheHarvestTime))*100) then
 		resetMonsterHarvest()
 		return false
 	end
