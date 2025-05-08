@@ -1,6 +1,6 @@
 function FRHelper:call(args, main, ...)
-    local heldItem = world.entityHandItem(activeItem.ownerEntityId(), "primary")
-    local altItem = world.entityHandItem(activeItem.ownerEntityId(), "alt")
+    local heldItem = world.entityHandItemDescriptor(activeItem.ownerEntityId(), "primary")
+    local altItem = world.entityHandItemDescriptor(activeItem.ownerEntityId(), "alt")
     if self:validCombo(heldItem, altItem, { "wand", "dagger" }) then
         local energyValue = status.resource("energy") or 50
         local randValue = math.random(100)

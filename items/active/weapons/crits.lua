@@ -1,97 +1,148 @@
+require "/scripts/util.lua"
+require "/items/active/tagCaching.lua"
 Crits = {}
 
---[[
-placing this in lua demo:
-	local passR1=0
-	local passR2=0
-	local sampleSize=1000000
-	local comparisonValue=99
-
-	for i=1,sampleSize do
-		rand=math.random(100)--y=math.random(x): 1<=y<=100
-		if(rand)>=comparisonValue then
-			passR1=passR1+1
-		end
-		if(rand)>comparisonValue then
-			passR2=passR2+1
-		end
-	end
-
-	print("Pass R1 ",passR1*(100/sampleSize)," Pass R2 ",passR2*(100/sampleSize))
-
---results in an output like this:
-
-	Pass R1 	2.0105	Pass R2 	0.9941
---translated, this output means that when attempting to get a roll out of 100, the average roll will be these.
---in other words, math.random(100)>=99 means 2% chance, not 1%.
---changing the comparison from >= to > thus results in reducing the 'success' chance over an average of 1 million samples by ~1.0.
-]]
-
 function Crits:setCritDamage(damage)
-    local critChance = config.getParameter("critChance", 1) + status.stat("critChance")  -- Integer % chance to activate crit
-    local critBonus = config.getParameter("critBonus", 0) + status.stat("critBonus")     --  it's just critDamage (below). should mostly phase out except for on weapon configs.
-    local critDamage = status.stat("critDamage")  -- % increase to crit damage multiplier (0.10 == +10% or 110% total additional damage)
-	--status.stat ONLY accepts ONE argument. and returns 0.0 if it is not found
-
-	--sb.logInfo("crits.lua: crit chance: %s, crit bonus %s, crit damage %s",critChance,critBonus,critDamage)
-	local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-    -- Magnorbs get an inherent +1% crit chance
-    if heldItem and root.itemHasTag(heldItem, "magnorb") then
-        critChance = critChance + 1
-    end
-
-	local crit = (math.random(100)<=critChance) -- Chance out of 100
-    -- Crit damage bonus is 50% + critDamage%
-	damage = crit and (damage * (1.5 + critDamage + (critBonus/100.0))) or damage -- Inherent 50% damage boost further increased by critBonus
-
-	if crit then
-		--sb.logInfo("sum.critChance:%s, config.critChance:%s stat.critChance:%s",config.getParameter("critChance", 1)+status.stat("critChance"),config.getParameter("critChance", 1),status.stat("critChance"))
-        if heldItem then
-            -- exclude mining lasers
-            if not root.itemHasTag(heldItem, "mininggun") or root.itemHasTag(heldItem, "bugnet") then
-
-				-- Glitch ability
-				local race = world.sendEntityMessage(activeItem.ownerEntityId(), "FR_getSpecies")
-                if race:succeeded() and race:result() == "glitch" and (root.itemHasTag(heldItem, "mace") or root.itemHasTag(heldItem, "axe") or root.itemHasTag(heldItem, "greataxe")) then
-                    damage = damage + math.random(10) + 2  -- 1d10 + 2 bonus damage
-                end
-
-                -- *****************************************************************
-                --	weapon specific crit abilities!
-                -- *****************************************************************
-                local stunRoll = (math.random(100)) + status.stat("stunChance") + config.getParameter("stunChance",0)
-                --local daggerChance = math.random(100) + status.stat("daggerChance") + config.getParameter("daggerChance",0)--unused
-				local params={power=1,damageKind = "default"}
-                if stunRoll > 99 and root.itemHasTag(heldItem, "dagger") then
-                    params.speed=14
-                    world.spawnProjectile("daggerCrit",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),true,params)
-                end
-                if stunRoll > 99 and root.itemHasTag(heldItem, "spear") then
-					params.speed=55
-                    world.spawnProjectile("spearCrit",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,params)
-                end
-                if stunRoll > 99 and root.itemHasTag(heldItem, "shortspear") then
-					params.speed=22
-                    world.spawnProjectile("spearCrit",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,params)
-                end
-                if stunRoll > 99 and root.itemHasTag(heldItem, "rapier") or root.itemHasTag(heldItem, "shortsword") then
-                    params.speed=30
-                    world.spawnProjectile("rapierCrit",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,params)
-                end
-                if stunRoll > 99 and (root.itemHasTag(heldItem, "fist") or root.itemHasTag(heldItem, "hammer") or root.itemHasTag(heldItem, "greataxe") or root.itemHasTag(heldItem, "quarterstaff") or root.itemHasTag(heldItem, "mace")) then -- Stun!!!!
-                    --sb.logInfo("sum.stunRoll:%s, random.stunRoll:%s, stat.stunChance:%s, config.stunChance:%s",stunRoll,stunRoll-(status.stat("stunChance") + config.getParameter("stunChance",0)),status.stat("stunChance"),config.getParameter("stunChance",0))
-					params.speed=35
-                    world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,params)
-                end
-            end
-        end
+	if not Crits.initialLoadDone then
+		Crits.initialLoad()
 	end
-	--sb.logInfo("crits.lua::final values %s",{c=crit,d=damage,cc=critChance,cb=critBonus,cd=critDamage,sumCD=(1.5 + critDamage + (critBonus/100.0))})
+	if (Crits.canCrit or Crits.canStun) then
+		local critChance = Crits.weaponCritChance + status.stat("critChance")  -- Integer % chance to activate crit
+		local critBonus = Crits.weaponCritBonus + status.stat("critBonus")     --  it's just critDamage (below). should mostly phase out except for on weapon configs.
+		local critDamage = status.stat("critDamage")  -- % increase to crit damage multiplier (0.10 == +10% or 110% total additional damage)
+		local stunChance = status.stat("stunChance") + Crits.weaponStunChance
+
+		local crit = Crits.canCrit and (math.random(100)<=critChance) -- Chance out of 100
+		local stun = Crits.canStun and (math.random(100)<=stunChance)
+
+		damage = crit and (damage * (1.5 + critDamage + (critBonus/100.0))) or damage -- Inherent 50% damage boost further increased by critBonus
+
+		--note that stuns don't actually reliably on most weapons
+		if stun then
+			local projectile
+			local paramsStun
+			local statusEffectsStun
+
+			if(crit) then
+				projectile=Crits.critStunProjectile
+				paramsStun=Crits.critStunProjectileParams
+				statusEffectsStun=Crits.critStunStatusEffects
+			else
+				projectile=Crits.stunProjectile
+				paramsStun=Crits.stunProjectileParams
+				statusEffectsStun=Crits.stunStatusEffects
+			end
+			if statusEffectsStun then
+				paramsStun.statusEffects=statusEffectsStun
+			end
+			--the problem with this is that it's a crappy, haphazardly spawned projectile with fixed parameters. wont work for all weapons. hell, it barely works for anything.
+			world.spawnProjectile(projectile,mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),false,paramsStun)
+		end
+	end
+
 	return damage
 end
 
 function Crits:aimVectorSpecial()
-    local aimVector = vec2.rotate({1, 0}, self.aimAngle)
-	aimVector[1] = aimVector[1] * self.aimDirection
+    local aimVector = vec2.rotate({1, 0}, self.aimAngle or self.weapon.aimAngle or 0)
+	aimVector[1] = aimVector[1] * (self.aimDirection or self.weapon.aimDirection or 1)
 	return aimVector
+end
+
+function itemHasTag(item,tag)
+	local tagData=tagCaching.fetchTags(item,true)
+	for _,v in pairs(tagData) do
+		if string.lower(v)==string.lower(tag) then
+			return true
+		end
+	end
+	return false
+end
+
+function Crits.initialLoad()
+	local heldItem = world.entityHandItemDescriptor(activeItem.ownerEntityId(), activeItem.hand())
+	if heldItem then
+		local specialCritConfig=root.assetJson("/items/active/weapons/Crits.config")
+		heldItem=root.itemConfig(heldItem)
+
+		local buffer=true
+		for _,tag in pairs(specialCritConfig.critExclusions) do
+			if(itemHasTag(heldItem,tag)) then
+				buffer=false
+				break
+			end
+		end
+		Crits.canCrit=buffer
+
+		buffer=true
+		for _,tag in pairs(specialCritConfig.stunExclusions) do
+			if(itemHasTag(heldItem,tag)) then
+				buffer=false
+				break
+			end
+		end
+		Crits.canStun=buffer
+
+		buffer=0
+		for tag,value in pairs(specialCritConfig.baseStunChanceModifiers) do
+			if itemHasTag(item,tag) then
+				buffer = math.max(buffer,value)
+			end
+		end
+		local baseStunMod=buffer
+
+		buffer=0
+		for tag,value in pairs(specialCritConfig.baseCritChanceModifiers) do
+			if itemHasTag(item,tag) then
+				buffer = math.max(buffer,value)
+			end
+		end
+		local baseCritMod=buffer
+
+		buffer=nil
+		for tag,value in pairs(specialCritConfig.critStunProjectileParams) do
+			if itemHasTag(item,tag) then
+				buffer=copy(value)
+			end
+		end
+		local baseCritStunParams=buffer
+
+		buffer=nil
+		for tag,value in pairs(specialCritConfig.stunProjectileParams) do
+			if itemHasTag(item,tag) then
+				buffer=copy(value)
+			end
+		end
+		local baseStunParams=buffer
+
+		buffer=nil
+		for tag,value in pairs(specialCritConfig.stunStatusEffects) do
+			if itemHasTag(item,tag) then
+				buffer=copy(value)
+			end
+		end
+		local stunStatusEffects=buffer
+
+		buffer=nil
+		for tag,value in pairs(specialCritConfig.critStunStatusEffects) do
+			if itemHasTag(item,tag) then
+				buffer=copy(value)
+			end
+		end
+		local critStunStatusEffects=buffer
+
+		Crits.critStunProjectile=config.getParameter("critStunProjectile") or specialCritConfig.defaultProjectileCrit
+		Crits.critStunProjectileParams=config.getParameter("critStunProjectileParams") or baseCritStunParams or specialCritConfig.defaultParamsCrit
+		Crits.critStunStatusEffects=config.getParameter("critStunStatusEffects") or critStunStatusEffects
+
+		Crits.stunProjectile=config.getParameter("stunProjectile") or specialCritConfig.defaultProjectile
+		Crits.stunProjectileParams=config.getParameter("stunProjectileParams") or baseStunParams or specialCritConfig.defaultParams
+		Crits.stunStatusEffects=config.getParameter("stunStatusEffects") or stunStatusEffects
+
+		Crits.weaponCritChance=config.getParameter("critChance", 1)+baseCritMod
+		Crits.weaponStunChance=config.getParameter("stunChance",0)+baseStunMod
+		Crits.weaponCritBonus=config.getParameter("critBonus", 0)
+
+		Crits.initialLoadDone=true
+	end
 end
