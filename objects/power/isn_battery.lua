@@ -66,7 +66,7 @@ function isn_makeBatteryDescription(desc, charge, onDeath)
 	-- append charge state to default description; ensure that it's on a line of its own
 	local str=string_split(desc,"^truncate;")
 	if str[1] then str=str[1] else str="" end
-	str=str..((onDeath and " ^red;Scan for Info^reset;") or "\n^blue;Upper Right Input^reset;: On/Off Switch\n^red;Battery Logic outputs:\nLeft^reset;: Has Power, ^red;Right^reset;: Is Full")
+	str=str..((onDeath and " ^red;Scan for Info^reset;") or "\n^red;Battery Logic outputs:\nLeft^reset;: Has Power, ^red;Right^reset;: Is Full")
 	str = str .. (desc ~= '' and "\n" or '') .. "Power Stored: ^yellow;"..util.round(power.getStoredEnergy(),1).."^reset;/^green;"..util.round(power.getMaxEnergy(),1).."^reset;J (^yellow;" .. charge .. '^reset;%)'
 	return str
 end
@@ -99,8 +99,7 @@ end
 
 function batteryUpdate(dt)
 	batteryUpdateThrottle=math.max(0,(batteryUpdateThrottle or batteryUpdateThrottleBase)-(dt or 0))
-	local on=(not object.isInputNodeConnected(1)) or object.getInputNodeLevel(1)
-	power.setPower(on and power.getStoredEnergy() or 0)
+	power.setPower(power.getStoredEnergy())
 	if batteryUpdateThrottle <= 0 then
 		local throttleMult=(math.sqrt(#(world.objectQuery(entity.position(),16,{callScript="isFuBattery"}))))
 		object.setConfigParameter('description', isn_makeBatteryDescription())
