@@ -1,29 +1,37 @@
 {
   "name" : "strangeseadrain",
-	"effectConfig": {
-		"stats": [
-		        {
-				"stat": "shadowResistance",
-				"amount": -0.20
-			},
-		        {
-				"stat": "radioactiveResistance",
-				"amount": -0.20
-			},
-		        {
-				"stat": "cosmicResistance",
-				"amount": -0.20
-			},
-		        {
-				"stat": "poisonResistance",
-				"amount": -0.20
-			}
-		]
-	},
-	"defaultDuration": 300,
-	"scripts": [
-		"/stats/effects/fu_genericStatApplier.lua"
-	],
-  "label" : "Plasmic Disruption - Lowered resistances.",
+  "effectConfig": {
+    "stats": [
+      {
+        "stat": "shadowResistance",
+        "amount": -0.20
+      },
+      {
+        "stat": "radioactiveResistance",
+        "amount": -0.20
+      },
+      {
+        "stat": "cosmicResistance",
+        "amount": -0.20
+      },
+      {
+        "stat": "electricResistance",
+        "amount": -0.20
+      }
+    ],
+    "resistanceTypes" : {
+      "poisonResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.6,
+    "immunityStats" : [
+      "poisongasImmunity",
+      "gasImmunity"
+    ]
+  },
+  "defaultDuration": 300,
+  "scripts": [
+    "/stats/effects/fu_genericStatApplier.lua"
+  ],
+  "label" : "Plasmic Disruption - Lowered resistances. Resist: ^green;Poison^reset;, Immunity: ^green;Gas^reset;",
   "icon" : "/interface/statuses/denseclouds.png"
 }
