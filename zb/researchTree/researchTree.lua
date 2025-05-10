@@ -883,6 +883,14 @@ function buildStates(tree)
 
 	researchTree = copy(data.researchTree[selectedTree])
 
+	-- Increase/decrease costs of all nodes if a required item (including currencies) has a configured multiplier.
+	-- Third-party mods can set the multipliers by patching "data.config".
+	for _, node in pairs(researchTree) do
+		for _, tbl in ipairs(node.price) do
+			tbl[2] = math.floor(tbl[2] * math.max(0, data.priceMultiplier[tbl[1]] or 1))
+		end
+	end
+
 	local researchedTable = status.statusProperty("zb_researchtree_researched", {}) or {}
 	local dataString = researchedTable[selectedTree] or ""
 
