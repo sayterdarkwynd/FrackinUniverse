@@ -10,6 +10,7 @@ function init()
 	self.threatBonus=0
 	self.madnessResearchBonus = 0
 	self.researchBonus = 0
+	self.researchGainMultiplier = math.max(0, config.getParameter("researchGainMultiplier") or 1)
 
 	self.researchCount = player.currency("fuscienceresource")
 	self.protheonCount = player.currency("fuprecursorresource")/10
@@ -19,7 +20,6 @@ function init()
 	self.madnessCount = player.currency("fumadnessresource")
 	self.geneCount = player.currency("fugeneticmaterial")
 
-	self.baseVal = config.getParameter("baseValue") or 1
 	self.timerCounter = 0
 	self.timerCounterGenes = 0 --xi specific
 	self.environmentTimer = 0
@@ -38,7 +38,7 @@ function init()
 	self.degradeTotal = 0
 	self.bonusTimer = 1
 
-    storage.crazycarrycooldown=math.max(storage.crazycarrycooldown or 0,10.0)
+	storage.crazycarrycooldown = math.max(storage.crazycarrycooldown or 0,10.0)
 
 	--make sure the annoying sounds dont flood
 	status.removeEphemeralEffect("partytime5madness")
@@ -520,9 +520,9 @@ function update(dt)
 		self.bonus = self.researchBonus + (self.protheonCount) --status.stat("researchBonus") + self.researchBonus
 		if self.timerCounter >= (1+afkLvl) then
 			if afkLvl <= 3 then
-				player.addCurrency("fuscienceresource",1 + self.bonus)
+				player.addCurrency("fuscienceresource", (1 + self.bonus)*self.researchGainMultiplier)
 				if (math.random(1,20) + status.stat("researchBonus")) >= 18 then  -- only apply the bonus research from stat X amount of the time based on a d20 roll higher than 18. Bonus influences this.
-					player.addCurrency("fuscienceresource",status.stat("researchBonus"))
+					player.addCurrency("fuscienceresource",status.stat("researchBonus")*self.researchGainMultiplier)
 				end
 			end
 			self.timerCounter = 0
