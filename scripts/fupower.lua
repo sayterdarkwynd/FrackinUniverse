@@ -120,53 +120,45 @@ function power.onNodeConnectionChange(arg,iterations)
 				entitylist = {battery = {},output = {},all = {entity.id()}}
 			end
 		end
+
+		-- Update "entitylist" by querying every entity that has its IDs listed in "idlist" array.
+		local function updateEntityList(idlist, iterations2)
+			for value in pairs(idlist) do
+				powertype = callEntity(value,'isPower',iterations2)
+				if powertype then
+					for j=1,#entitylist.all+1 do
+						if j == #entitylist.all+1 then
+							if powertype == 'battery' then
+								table.insert(entitylist.battery,value)
+							elseif powertype == 'output' then
+								table.insert(entitylist.output,value)
+							end
+
+							table.insert(entitylist.all,value)
+							entitylist = (callEntity(value,'power.onNodeConnectionChange',entitylist,iterations2) or entitylist)
+						elseif entitylist.all[j] == value then
+							break
+						end
+					end
+				end
+			end
+		end
+
 		if iterations < 100 then
 			for i=0,object.inputNodeCount()-1 do
 				if object.isInputNodeConnected(i) then
 					local idlist = object.getInputNodeIds(i)
 					inputCounter=inputCounter+util.tableSize(idlist)
-					for value in pairs(idlist) do
-						powertype = callEntity(value,'isPower',iterations)
-						if powertype then
-							for j=1,#entitylist.all+1 do
-								if j == #entitylist.all+1 then
-									if powertype == 'battery' then
-										table.insert(entitylist.battery,value)
-									elseif powertype == 'output' then
-										table.insert(entitylist.output,value)
-									end
-									table.insert(entitylist.all,value)
-									entitylist = (callEntity(value,'power.onNodeConnectionChange',entitylist,iterations) or entitylist)
-								elseif entitylist.all[j] == value then
-									break
-								end
-							end
-						end
-					end
+
+					updateEntityList(idlist, iterations)
 				end
 			end
 			for i=0,object.outputNodeCount()-1 do
 				if object.isOutputNodeConnected(i) then
 					local idlist = object.getOutputNodeIds(i)
 					outputCounter=outputCounter+util.tableSize(idlist)
-					for value in pairs(idlist) do
-						powertype = callEntity(value,'isPower',iterations)
-						if powertype then
-							for j=1,#entitylist.all+1 do
-								if j == #entitylist.all+1 then
-									if powertype == 'battery' then
-										table.insert(entitylist.battery,value)
-									elseif powertype == 'output' then
-										table.insert(entitylist.output,value)
-									end
-									table.insert(entitylist.all,value)
-									entitylist = (callEntity(value,'power.onNodeConnectionChange',entitylist,iterations) or entitylist)
-								elseif entitylist.all[j] == value then
-									break
-								end
-							end
-						end
-					end
+
+					updateEntityList(idlist, iterations)
 				end
 			end
 		else
