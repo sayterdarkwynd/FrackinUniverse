@@ -177,54 +177,33 @@ function power.onNodeConnectionChange(arg,iterations)
 	end
 end
 
-function power.getTotalEnergy()
+function power.getTotalEnergy(excludeBatteries)
 	local energy = 0
 	if type(power.entitylist)=="table" then
 		if type(power.entitylist.output)=="table" then
 			for i=1,#power.entitylist.output do
-				energy = energy + power.getEnergy(power.entitylist.output[i])
+				energy = energy + power.getEnergy(power.entitylist.output[i], excludeBatteries)
 			end
 		end
 		if type(power.entitylist.battery)=="table" then
 			for i=1,#power.entitylist.battery do
-				energy = energy + power.getEnergy(power.entitylist.battery[i])
+				energy = energy + power.getEnergy(power.entitylist.battery[i], excludeBatteries)
 			end
 		end
 	end
 	return energy
 end
 
-function power.getTotalEnergyNoBattery()
-	local energy = 0
-	if type(power.entitylist)=="table" then
-		if type(power.entitylist.output)=="table" then
-			for i=1,#power.entitylist.output do
-				energy = energy + power.getEnergyNoBattery(power.entitylist.output[i])
-			end
-		end
-		if type(power.entitylist.battery)=="table" then
-			for i=1,#power.entitylist.battery do
-				energy = energy + power.getEnergyNoBattery(power.entitylist.battery[i])
-			end
-		end
+function power.getEnergy(id, excludeBatteries)
+	if id and id ~= entity.id() then
+		return callEntity(id, 'power.getEnergy', excludeBatteries) or 0
 	end
-	return energy
-end
 
-function power.getEnergy(id)
-	if not id or id == entity.id() then
-		return storage.energy or 0
-	else
-		return callEntity(id,'power.getEnergy') or 0
+	if excludeBatteries and power.objectPowerType == 'battery' then
+		return 0
 	end
-end
 
-function power.getEnergyNoBattery(id)
-	if not id or id == entity.id() then
-		return ((power.objectPowerType ~= 'battery') and storage.energy) or 0
-	else
-		return callEntity(id,'power.getEnergyNoBattery') or 0
-	end
+	return storage.energy or 0
 end
 
 function onNodeConnectionChange(arg)
