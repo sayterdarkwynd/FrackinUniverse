@@ -182,25 +182,22 @@ function power.getTotalEnergy(excludeBatteries)
 	if type(power.entitylist)=="table" then
 		if type(power.entitylist.output)=="table" then
 			for i=1,#power.entitylist.output do
-				energy = energy + power.getEnergy(power.entitylist.output[i], excludeBatteries)
+				energy = energy + power.getEnergy(power.entitylist.output[i])
 			end
 		end
-		if type(power.entitylist.battery)=="table" then
+
+		if not excludeBatteries and type(power.entitylist.battery)=="table" then
 			for i=1,#power.entitylist.battery do
-				energy = energy + power.getEnergy(power.entitylist.battery[i], excludeBatteries)
+				energy = energy + power.getEnergy(power.entitylist.battery[i])
 			end
 		end
 	end
 	return energy
 end
 
-function power.getEnergy(id, excludeBatteries)
+function power.getEnergy(id)
 	if id and id ~= entity.id() then
-		return callEntity(id, 'power.getEnergy', excludeBatteries) or 0
-	end
-
-	if excludeBatteries and power.objectPowerType == 'battery' then
-		return 0
+		return callEntity(id, 'power.getEnergy') or 0
 	end
 
 	return storage.energy or 0
