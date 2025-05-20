@@ -6,6 +6,7 @@ tagCaching.mergedCache={}
 tagCaching.primaryTagCacheOld={}
 tagCaching.altTagCacheOld={}
 tagCaching.mergedTagCacheOld={}
+tagCaching.itemCache={}
 
 --this should only be called ONCE per update per script context. otherwise change tracking breaks.
 function tagCaching.update()
@@ -131,9 +132,20 @@ function tagCaching.tagsToKeys(tags)
     return buffer
 end
 
+function tagCaching.resolveItemCache(item,mode)
+	local buffer=tagCaching.itemCache[item.name]
+	if (not buffer) or (buffer.slimMode~=mode) or (not buffer.tags) then
+		buffer=tagCaching.fetchTags(item,mode)
+		tagCaching.itemCache[item.name]={slimMode=mode,tags=buffer}
+	else
+		buffer=buffer.tags
+	end
+	return copy(buffer)
+end
+
 --not really intended to be used much. this one is basically only used for the crit system. not very performant, but with the given context (running on a weapon) what can one do?
 function tagCaching.itemHasTag(item,tag,slimMode)
-	local tagData=tagCaching.fetchTags(item,slimMode)
+	local tagData=tagCaching.resolveItemCache(item,slimMode)
 	for _,v in pairs(tagData) do
 		if string.lower(v)==string.lower(tag) then
 			return true
