@@ -7,6 +7,7 @@ tagCaching.primaryTagCacheOld={}
 tagCaching.altTagCacheOld={}
 tagCaching.mergedTagCacheOld={}
 
+--this should only be called ONCE per update per script context. otherwise change tracking breaks.
 function tagCaching.update()
 	local primaryItem=world.entityHandItem(entity.id(), "primary") --check what they have in hand
 	local primaryItemDescriptor=world.entityHandItemDescriptor(entity.id(), "primary") --check what they have in hand
@@ -83,7 +84,10 @@ end
 
 --this function fetches tags for the weapon, parameters if there, otherwise config. category and element are also taken, to same effect, and merged into tags.
 function tagCaching.fetchTags(iConf,slimMode)
-    if not iConf or not iConf.config then return {} end
+    if not iConf then return {} end
+    if not iConf.config then
+		iConf=root.itemConfig(iConf)
+	end
     local tags={}
 	local category
 	local elementaltype
@@ -91,21 +95,25 @@ function tagCaching.fetchTags(iConf,slimMode)
 		local kL=string.lower(k)
         if kL=="itemtags" then
 			tags=v
-		elseif kL=="category" then
-			category=v
-		elseif kL=="elementaltype" then
-			elementaltype=v
-        end
+		elseif not slimMode then
+			if kL=="category" then
+				category=v
+			elseif kL=="elementaltype" then
+				elementaltype=v
+			end
+		end
     end
     for k,v in pairs(iConf.parameters or {}) do
 		local kL=string.lower(k)
         if kL=="itemtags" then
 			tags=v
-		elseif kL=="category" then
-			category=v
-		elseif kL=="elementaltype" then
-			elementaltype=v
-        end
+		elseif not slimMode then
+			if kL=="category" then
+				category=v
+			elseif kL=="elementaltype" then
+				elementaltype=v
+			end
+		end
     end
 	if not slimMode then
 		if category then table.insert(tags,category) end
@@ -123,6 +131,7 @@ function tagCaching.tagsToKeys(tags)
     return buffer
 end
 
+--not really intended to be used much. this one is basically only used for the crit system. not very performant, but with the given context (running on a weapon) what can one do?
 function tagCaching.itemHasTag(item,tag,slimMode)
 	local tagData=tagCaching.fetchTags(item,slimMode)
 	for _,v in pairs(tagData) do
