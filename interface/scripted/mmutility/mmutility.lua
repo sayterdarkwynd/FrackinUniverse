@@ -6,6 +6,10 @@ function init()
         painttoolSlot = "painttool",
         inspectiontoolSlot = "inspectiontool"
     }
+    self.toolUpgradeName = {
+        wiretoolSlot = "wiremode",
+        painttoolSlot = "paintmode"
+    }
 
     -- Used for upgrade checking on status changes (range specifically)
     self.upgrades = root.assetJson("/interface/scripted/mmupgrade/mmupgradegui.config").upgrades
@@ -38,6 +42,18 @@ function swapMM(name)
     -- Reset stats for picked up item (or for the base MM getting stored for later)
     self.currentMM.parameters.blockRadius = self.maxSize
     self.currentMM.parameters.altBlockRadius = 1
+
+	--failsafe. if a player receives a MM with paint/wire tool but hasnt the slots yet, they're permanently locked out w/o console commands.
+	if (self.currentMM.parameters.upgrades) then
+		for slotID,upName in pairs(self.toolUpgradeName) do
+			local toolItem = player.essentialItem(self.tools[slotID])
+			if (not toolItem) and contains(self.currentMM.parameters.upgrades, upName) then
+				player.giveEssentialItem(self.tools[slotID],self.tools[slotID])
+			end
+		end
+	end
+
+
     if self.currentMM.parameters.upgrades and contains(self.currentMM.parameters.upgrades, "liquidcollection") then
         self.currentMM.parameters.canCollectLiquid = true
     end
