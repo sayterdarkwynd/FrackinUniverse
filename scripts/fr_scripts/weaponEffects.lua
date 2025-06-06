@@ -23,6 +23,7 @@ Structure:
 ]]
 
 function FRHelper:call(args, ...)
+	--tagCaching.update()--do not put this here. this should run only ONCE per script update per script context. this is called in fr_raceeffects
     local primaryItem = world.entityHandItemDescriptor(entity.id(), "primary")
     local altItem = world.entityHandItemDescriptor(entity.id(), "alt")
     for i,weap in ipairs(args or {}) do
@@ -40,14 +41,14 @@ function FRHelper:call(args, ...)
         elseif weap.weapons then -- Single weapons
             name = weap.name or "FR_weaponEffect"..i
             for _,thing in ipairs(weap.weapons) do
-                if (primaryItem and tagCaching.itemHasTag(primaryItem, thing)) or (altItem and tagCaching.itemHasTag(altItem, thing)) then
+				if tagCaching.primaryTagCache[thing] or tagCaching.altTagCache[thing] then
                     self:applyStats(weap, name, ...)
                     appliedbonus = true
                     break
                 end
             end
         end
-        if name and not appliedbonus then
+        if name and (not appliedbonus) then
             self:clearPersistent(name)
         end
     end
