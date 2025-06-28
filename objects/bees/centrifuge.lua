@@ -232,11 +232,11 @@ end
 function sortPacksAscending(tableToSort)
 	local bufferTable={}
 
-	while((next(tableToSort))~=nil) do
+	while next(tableToSort) do
 		local comparator=math.huge
 		local keyOf
 		local indexOf
-		for _,pack in pairs(tableToSort) do
+		for i, pack in ipairs(tableToSort) do
 			local key,value=table.unpack(pack)
 			if(tonumber(value)<comparator) then
 				indexOf=i
@@ -244,8 +244,10 @@ function sortPacksAscending(tableToSort)
 				comparator=tonumber(value)
 			end
 		end
-		bufferTable[#bufferTable+1]={keyOf,comparator}
-		tableToSort[indexOf]=nil
+		if indexOf then
+			bufferTable[#bufferTable+1]={keyOf,comparator}
+			table.remove(tableToSort,indexOf)
+		end
 	end
 
 	return bufferTable
