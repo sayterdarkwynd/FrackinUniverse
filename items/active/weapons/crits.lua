@@ -85,7 +85,7 @@ function Crits.initialLoad()
 
 		buffer=0
 		for tag,value in pairs(specialCritConfig.baseStunChanceModifiers) do
-			if itemHasTag(item,tag) then
+			if itemHasTag(heldItem,tag) then
 				buffer = math.max(buffer,value)
 			end
 		end
@@ -93,7 +93,7 @@ function Crits.initialLoad()
 
 		buffer=0
 		for tag,value in pairs(specialCritConfig.baseCritChanceModifiers) do
-			if itemHasTag(item,tag) then
+			if itemHasTag(heldItem,tag) then
 				buffer = math.max(buffer,value)
 			end
 		end
@@ -101,7 +101,7 @@ function Crits.initialLoad()
 
 		buffer=nil
 		for tag,value in pairs(specialCritConfig.critStunProjectileParams) do
-			if itemHasTag(item,tag) then
+			if itemHasTag(heldItem,tag) then
 				buffer=copy(value)
 			end
 		end
@@ -109,7 +109,7 @@ function Crits.initialLoad()
 
 		buffer=nil
 		for tag,value in pairs(specialCritConfig.stunProjectileParams) do
-			if itemHasTag(item,tag) then
+			if itemHasTag(heldItem,tag) then
 				buffer=copy(value)
 			end
 		end
@@ -117,7 +117,7 @@ function Crits.initialLoad()
 
 		buffer=nil
 		for tag,value in pairs(specialCritConfig.stunStatusEffects) do
-			if itemHasTag(item,tag) then
+			if itemHasTag(heldItem,tag) then
 				buffer=copy(value)
 			end
 		end
@@ -125,7 +125,7 @@ function Crits.initialLoad()
 
 		buffer=nil
 		for tag,value in pairs(specialCritConfig.critStunStatusEffects) do
-			if itemHasTag(item,tag) then
+			if itemHasTag(heldItem,tag) then
 				buffer=copy(value)
 			end
 		end

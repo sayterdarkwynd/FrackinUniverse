@@ -54,6 +54,10 @@ function hasMonsterHarvest(args, board)
 	end
 end
 
+function isMonsterHarvestable(args, board)
+	return hasMonsterHarvest(args, board)
+end
+
 function update(dt)
 	originalUpdate(dt)
 	if config.getParameter("wildHarvestable") or config.getParameter("ownerUuid") then

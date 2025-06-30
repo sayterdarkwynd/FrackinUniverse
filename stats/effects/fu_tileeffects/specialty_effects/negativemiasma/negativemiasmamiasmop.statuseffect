@@ -1,14 +1,26 @@
 {
-  "name" : "negativemiasmamiasmop",
+	"name" : "negativemiasmamiasmop",
 
-  "effectConfig" : {},
-  "defaultDuration" : 4,
+	"effectConfig": {
+		"stats": [{
+				"stat": "healingBonus",
+				"amount": -1.0
+			},
+			{
+				"stat": "healingStatusImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "healthRegen",
+				"effectiveMultiplier": 0
+			}
+		]
+	},
+	"defaultDuration" : 4,
 
-  "scripts" : [
-    "negativemiasma.lua"
-  ],
+	"scripts" : ["/stats/effects/fu_genericStatApplier.lua"],
 
 
-  "label" : "Negative Miasma - Blocks pressure protection and healing",
-  "icon" : "/interface/statuses/fuweb.png"
+	"label" : "Negative Miasma - Blocks most healing",
+	"icon" : "/interface/statuses/fuweb.png"
 }

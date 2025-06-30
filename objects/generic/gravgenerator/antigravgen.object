@@ -11,12 +11,13 @@
 	"category": "wire",
 
 	"inventoryIcon": "antigravgenicon.png",
-	"orientations": [{
+	"orientations": [
+		{
 			"imageLayers": [{
 				"image": "antigravgen.png:<color>.<frame>",
 				"fullbright": true
 			}, {
-				"image": "antigravgenlit.png:<color>.<frame>"
+				"image": "gravgenlit.png:<color>.<frame>"
 			}],
 			"direction": "left",
 			"flipImages": true,
@@ -34,7 +35,7 @@
 				"image": "antigravgen.png:<color>.<frame>",
 				"fullbright": true
 			}, {
-				"image": "antigravgenlit.png:<color>.<frame>"
+				"image": "gravgenlit.png:<color>.<frame>"
 			}],
 			"direction": "right",
 
@@ -47,6 +48,10 @@
 			"metaBoundBox": [-30, -30, 30, 30]
 		}
 	],
+	"animation" : "gravgen.animation",
+	"animationParts" : {
+		"samplingarrayanim" : "antigravgen.png"
+	},
 
 	"scripts": [
 		"/scripts/npcToyObject.lua",

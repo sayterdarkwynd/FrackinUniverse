@@ -132,13 +132,18 @@ function update(dt)
 	if not (allowedType()) then	-- if not the allowed type of entity (a monster that isn't a fish)
 		setMonsterAbilities()
 	else
-		if (mcontroller.liquidPercentage() < 0.25) and (status.stat("boostAmount") <= 1) then --are we barely in the water?
+		local liquidPercent=mcontroller.liquidPercentage()
+		local boostAmount=status.stat("boostAmount")
+		--sb.logInfo("liquidpercent %s, boostamount %s",liquidPercent,boostAmount)
+		--funny enough, if you crouch in 2 block high water the collision poly gets stuck as a 2x2 box. this has silly results.
+
+		if (liquidPercent < 0.25) and (boostAmount <= 1) then --are we barely in the water?
 			mcontroller.controlParameters(self.submergedParameters)
 			effect.setStatModifierGroup(handle,{{stat="gravityMod",amount=self.gravityMultipliers.submerged},{stat="fuswimming",amount=1}})
-		elseif (mcontroller.liquidPercentage() < self.shoulderHeight) and (status.stat("boostAmount") <=1) then --are half submerged and not boosted
+		elseif (liquidPercent < self.shoulderHeight) and (boostAmount <=1) then --are half submerged and not boosted
 			effect.setStatModifierGroup(handle,{{stat="gravityMod",amount=self.gravityMultipliers.monsterWater},{stat="fuswimming",amount=1}})
 			mcontroller.controlParameters(self.monsterWaterParameters)
-		elseif (mcontroller.liquidPercentage() >= self.shoulderHeight) or ((mcontroller.liquidPercentage() >= self.shoulderHeight) and (status.stat("boostAmount") > 1)) then	--if the player is shoulder depth, or shallow depth+boosted
+		elseif (liquidPercent >= self.shoulderHeight) then --the following is redundant or ((liquidPercent >= self.shoulderHeight) and (boostAmount > 1)) then	--if the player is shoulder depth, or shallow depth+boosted
 			effect.setStatModifierGroup(handle,{{stat="gravityMod",amount=self.gravityMultipliers.basic},{stat="fuswimming",amount=1}})
 			mcontroller.controlModifiers({speedModifier = self.finalValue})
 			mcontroller.controlParameters(self.basicWaterParameters)
@@ -182,23 +187,23 @@ end
 --this function is never actually called usually. let's do something else with it!
 --function onExpire()	 --now we call on the set tags above to produce corresponding wet effect
 function applyWet()
-		if self.isBlood == 1 then
-			status.addEphemeralEffect("wetblood")
-		elseif self.isPus == 1 then
-			status.addEphemeralEffect("wetpus")
-		elseif self.isHealingWater == 1 then
-			status.addEphemeralEffect("wethealingwater")
-		elseif self.isElder == 1 then
-			status.addEphemeralEffect("wetelder")
-		elseif self.isWater == 1 then
-			status.addEphemeralEffect("wet")
-		elseif self.isSaltWater == 1 then
-			status.addEphemeralEffect("wet")
+	if self.isBlood == 1 then
+		status.addEphemeralEffect("wetblood")
+	elseif self.isPus == 1 then
+		status.addEphemeralEffect("wetpus")
+	elseif self.isHealingWater == 1 then
+		status.addEphemeralEffect("wethealingwater")
+	elseif self.isElder == 1 then
+		status.addEphemeralEffect("wetelder")
+	elseif self.isWater == 1 then
+		status.addEphemeralEffect("wet")
+	elseif self.isSaltWater == 1 then
+		status.addEphemeralEffect("wet")
 	elseif self.isGeneric == 1 then
 		--kinda a space filler.
 		status.addEphemeralEffect("wet")
-		end
-		clearWetEffects()
+	end
+	clearWetEffects()
 end
 
 function clearWetEffects()

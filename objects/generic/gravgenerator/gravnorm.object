@@ -1,20 +1,20 @@
 {
-	"objectName": "gravgen",
+	"objectName": "gravnorm",
 	"colonyTags": ["fu", "science", "scienceoutpost", "hitech"],
 	"printable": false,
 	"price": 1600,
 	"rarity": "rare",
 	"objectType": "physics",
-	"description": "Amplifies effects of gravity within 30 tiles.\n^blue;Input^reset;: On/Off Switch.",
-	"shortdescription": "^orange;Gravity Generator^reset;",
+	"description": "Regulates effects of gravity within 30 tiles.\n^blue;Input^reset;: On/Off Switch.",
+	"shortdescription": "^orange;Gravity Normalizer^reset;",
 	"race": "generic",
 	"category": "wire",
 
-	"inventoryIcon": "gravgenicon.png",
+	"inventoryIcon": "gravnormicon.png",
 	"orientations": [
 		{
 			"imageLayers": [{
-				"image": "gravgen.png:<color>.<frame>",
+				"image": "gravnorm.png:<color>.<frame>",
 				"fullbright": true
 			}, {
 				"image": "gravgenlit.png:<color>.<frame>"
@@ -32,7 +32,7 @@
 		},
 		{
 			"imageLayers": [{
-				"image": "gravgen.png:<color>.<frame>",
+				"image": "gravnorm.png:<color>.<frame>",
 				"fullbright": true
 			}, {
 				"image": "gravgenlit.png:<color>.<frame>"
@@ -50,7 +50,7 @@
 	],
 	"animation" : "gravgen.animation",
 	"animationParts" : {
-		"samplingarrayanim" : "gravgen.png"
+		"samplingarrayanim" : "gravnorm.png"
 	},
 
 	"scripts": [
@@ -78,6 +78,6 @@
 	"inputNodes": [
 		[0, 0]
 	],
-	"generatorEffect": "gravitygenfield",
+	"generatorEffect": "gravitynormalization",
 	"effectRange": 30
 }
