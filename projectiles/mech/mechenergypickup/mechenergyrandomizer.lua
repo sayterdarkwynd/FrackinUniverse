@@ -12,9 +12,9 @@ function spawnProjectile()
 	for i = 1, 2 do
 		randomNumber = math.random(1, 2)
 		if randomNumber == 1 then
-			world.spawnNpc ("mechenergypickupf", mcontroller.position(), entity.id(), false)
+			world.spawnProjectile("mechenergypickupf", mcontroller.position())
 		else
-			world.spawnNpc ("mechenergypickup3", mcontroller.position(), entity.id(), false)
+			world.spawnProjectile("mechenergypickup3", mcontroller.position())
 		end		
 	end
 end
