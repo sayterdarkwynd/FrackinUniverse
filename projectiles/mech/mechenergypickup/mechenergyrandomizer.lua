@@ -1,6 +1,5 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
-local randomnumbermax = 2
 
 function init()
 	self = config.getParameter("spawner")
@@ -9,12 +8,10 @@ function init()
 end
 
 function spawnProjectile()
-	for i = 1, 2 do
-		randomNumber = math.random(1, 2)
-		if randomNumber == 1 then
-			world.spawnProjectile("mechenergypickupf", mcontroller.position())
-		else
-			world.spawnProjectile("mechenergypickup3", mcontroller.position())
-		end		
-	end
+	randomNumber = math.random(1, 2)
+	if randomNumber == 1 then
+		world.spawnProjectile("mechenergypickupf", mcontroller.position())
+	else
+		world.spawnProjectile("mechenergypickup3", mcontroller.position())
+	end		
 end
