@@ -15,7 +15,7 @@ function initCommonParameters()
 
 	-- for status bar filling, below are required
 	self.playerId = entity.id()
-	self.maxXibulbValue = 350
+	self.maxXibulbValue = 250
 	self.barName = "conshakBar"
 	self.barColor = {150,77,250,125}
 	self.timerRemoveXibulbBar = 0
@@ -45,13 +45,13 @@ end
 function displayBar()
 	self.xibulbPercent = math.min(1.0,self.xibulbTimer / self.maxXibulbValue)
 
-	if self.xibulbTimer > 300 then
+	if self.xibulbTimer > 200 then
 		self.barColor = {71,255,212,222}
-	elseif self.xibulbTimer > 250 then
-		self.barColor = {79,217,255,199}
 	elseif self.xibulbTimer > 150 then
-		self.barColor = {193,217,11,170}
+		self.barColor = {79,217,255,199}
 	elseif self.xibulbTimer > 100 then
+		self.barColor = {193,217,11,170}
+	elseif self.xibulbTimer > 75 then
 		self.barColor = {179,135,11,125}
 	elseif self.xibulbTimer > 50 then
 		self.barColor = {147,71,14,90}
@@ -122,12 +122,11 @@ function update(args)
 			end
 
 			if (self.xibulbTimer >= self.maxXibulbValue) then
-				self.rand = math.random(1,3)	-- how many Bulbs can we potentially spawn?
+				self.rand = math.random(1,4)	-- how many Bulbs can we potentially spawn?
 				self.onehundred = math.random(1,100)	 --chance to spawn rarer bulb types
 				if (foodValue > foodThreshold) or tookEnergy then		--must have sufficient food, or drain energy to grow a seed.challenge race doesn't mean nonfunctional.
 					animator.setParticleEmitterActive("bulbStance", false)
 					animator.setParticleEmitterActive("bulb", true)
-					--world.placeObject("xi_bulb",mcontroller.position(),1) -- doesnt seem to work with that position
 					if self.onehundred == 100 then
 						world.spawnItem("xi_bulb3", mcontroller.position(), 1)
 					elseif self.onehundred > 80 then
