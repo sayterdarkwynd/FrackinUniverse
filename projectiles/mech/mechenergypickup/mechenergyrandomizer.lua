@@ -13,5 +13,5 @@ function spawnProjectile()
 		world.spawnProjectile("mechenergypickupf", mcontroller.position())
 	else
 		world.spawnProjectile("mechenergypickup3", mcontroller.position())
-	end		
+	end
 end
