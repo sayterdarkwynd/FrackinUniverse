@@ -41,10 +41,6 @@
 			"amount": 1
 		},
 		{
-			"stat": "breathProtection",
-			"amount": 1
-		},
-		{
 			"stat": "wetImmunity",
 			"amount": 1
 		}
@@ -116,10 +112,18 @@
 				"baseMultiplier": 0.65
 			},
 			{
-				"stat": "fallDamageMultiplier",
-				"effectiveMultiplier": 0
+				"stat": "breathProtection",
+				"amount": 1
 			}
 		],
-		"statusEffects": ["regenerationminor2"]
+		"scripts" : [
+			{
+				"contexts" : [ "munariregen" ],
+				"script" : "/scripts/fr_scripts/healthRegen.lua",
+				"args" : {
+					"healingRate" : 0.0053
+				}
+			}
+		]
 	}]
 }
