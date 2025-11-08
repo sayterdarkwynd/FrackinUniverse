@@ -736,7 +736,7 @@ function masteries.listenerBonuses(notifications,dt)
 	else
 		leechDuration=1
 	end
-	leechValue=math.min(status.stat("maxHealth")*leechMaxRate,leechValue)
+	--leechValue=math.min(status.stat("maxHealth")*leechMaxRate,leechValue) WRONG PLACE!
 	--sb.logInfo
 	--handle leech instances
 	local leechBuffer={}
@@ -813,7 +813,7 @@ function masteries.listenerBonuses(notifications,dt)
 	if leechValue>0 then
 		--sb.logInfo("leechValue %s",leechValue)
 		world.sendEntityMessage(entity.id(),"recordFUPersistentEffect","fuLeeching")
-		status.setPersistentEffects("fuLeeching",{{stat="healthRegen",amount=leechValue}})
+		status.setPersistentEffects("fuLeeching",{{stat="healthRegen",amount=math.min(status.stat("maxHealth")*leechMaxRate,leechValue)}})
 		--status.setPersistentEffects("fuLeeching",{{stat="healthRegen",amount=0.05}})
 	end
 	--sb.logInfo("leechdata: hp %s, lmr %s, lp %s, lv %s, ld %s",status.resource("health"),leechMaxRate,leechPercent,leechValue,leechDuration)
