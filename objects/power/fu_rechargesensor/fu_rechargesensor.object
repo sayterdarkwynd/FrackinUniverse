@@ -1,0 +1,43 @@
+{
+  "objectName" : "fu_rechargesensor",
+  "printable" : false,
+  "colonyTags" : [ "science", "power", "tech" ],
+  "rarity" : "Common",
+  "description" : "Starts sending ^green;ON^reset; signal if all batteries are less than 10% full. Doesn't stop sending ^green;ON^reset; signal until all batteries become completely full. Knows about all batteries on this power conduit.\n^cyan;Useful for turning the reactors On/Off.^reset;",
+  "shortdescription" : "Empty Batteries Sensor",
+  "race" : "generic",
+  "category" : "wire",
+  "price" : 150,
+  "tooltipKind" : "base",
+
+  "chatStrings" : {
+    "noBatteries": "No batteries found.",
+    "tooltip": "Found batteries: ^green;%s^reset; (^yellow;%s%%^reset; full)\nCurrent state: %s.",
+    "statusOn": "^green;ON^reset; (needs charging) until all batteries become ^yellow;%s%%^reset; full",
+    "statusOff": "^red;OFF^reset; (doesn't need charging) until all batteries are less than ^yellow;%s%%^reset; full"
+  },
+
+  "inventoryIcon" : "fu_rechargesensor.png:default.on",
+  "orientations" : [
+    {
+      "image" : "fu_rechargesensor.png:<color>.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/scripts/fupower.lua", "fu_rechargesensor.lua" ],
+  "scriptDelta" : 60,
+
+  "animation" : "fu_rechargesensor.animation",
+  "animationParts" : { "switch" : "fu_rechargesensor.png" },
+  "animationPosition" : [0, 0],
+
+  "outputNodes" : [ [0, -1] ],
+
+  "powertype" : "input"
+}
