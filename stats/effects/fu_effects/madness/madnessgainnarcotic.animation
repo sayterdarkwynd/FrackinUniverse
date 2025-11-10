@@ -1,0 +1,107 @@
+{
+
+  "particleEmitters" : {
+
+    "statustext" : {
+      "enabled" : true,
+      "emissionRate" : 1.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "text",
+            "text" : "^red;-^reset;Mind Break",
+            "size" : 0.85,
+            "color" : [255, 255, 255, 255],
+            "fade" : 1,
+            "destructionAction" : "shrink",
+            "destructionTime" : 1.2,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 2],
+            "finalVelocity" : [0, 1],
+            "approach" : [0, 10],
+            "timeToLive" : 2,
+            "variance" : {
+            }
+          }
+        }
+      ]
+    },
+
+    "insane" : {
+      "enabled" : true,
+      "emissionRate" : 3.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "mode" : "LoopForever",
+            "animation" : "/animations/shadowcloudpuff/shadowcloudpuff.animation",
+            "size" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 0.0],
+            "finalVelocity" : [0, 2.0],
+            "approach" : [0, 10],
+            "timeToLive" : 0.85,
+            "variance" : {
+              "initialVelocity" : [0.5, 1.0],
+              "size" : 0.3
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "mode" : "LoopForever",
+            "animation" : "/animations/shadowdrip/shadowdrip2.animation",
+            "size" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, -1.0],
+            "finalVelocity" : [0, -2.0],
+            "approach" : [0, 10],
+            "timeToLive" : 0.85,
+            "variance" : {
+              "initialVelocity" : [0.5, 1.0],
+              "size" : 0.3
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "mode" : "LoopForever",
+            "animation" : "/animations/shadowdrip/shadowdrip1.animation",
+            "size" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 1.0],
+            "finalVelocity" : [0, 5.0],
+            "approach" : [0, 10],
+            "timeToLive" : 0.85,
+            "variance" : {
+              "initialVelocity" : [0.5, 1.0],
+              "size" : 0.3
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "lights" : {
+    "lantern" : {
+      "active" : true,
+      "position" : [-1.0, 1.0],
+      "color" : [80, 80, 40],
+      "pointLight" : true
+    }
+  },
+
+  "sounds" : {
+    "madness" : [ "/sfx/tools/elderaltar.ogg","/sfx/tools/elderaltar2.ogg" ]
+  }
+
+
+}
