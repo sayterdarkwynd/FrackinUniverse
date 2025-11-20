@@ -1,7 +1,10 @@
+require "/custom/Util.lua"
+
 function init()
 	if not status.isResource("damageAbsorption") then return end
 	self.opacityMultiplier=config.getParameter("opacityMultiplier",0.5)
 	self.color=config.getParameter("color","FFFFFF")
+	self.colorTable=hexToRGB(self.color)
 	self.invert=config.getParameter("invertGradient",false)
 	if string.len(self.color)<6 then
 		while string.len(self.color) < 6 do
@@ -26,8 +29,14 @@ function update(dt)
 			self.opacity="0"..self.opacity
 		end
 		effect.setParentDirectives("border=1;"..self.color..self.opacity..";00000000")
+		world.sendEntityMessage(entity.id(),"setBar","regeneratingshieldindicator"..self.color,rsp,self.colorTable)
 	else
 		--effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,{})
 		effect.setParentDirectives("")
+		world.sendEntityMessage(entity.id(),"removeBar","regeneratingshieldindicator"..self.color)
 	end
+end
+
+function uninit()
+	world.sendEntityMessage(entity.id(),"removeBar","regeneratingshieldindicator"..self.color)
 end
