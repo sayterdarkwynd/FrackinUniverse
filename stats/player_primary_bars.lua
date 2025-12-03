@@ -3,6 +3,10 @@ local barsOldInit = init
 
 function init()
 	if barsOldInit then barsOldInit() end
+	fu_bars_init()
+end
+
+function fu_bars_init()
 	self.barsList = {}
 	message.setHandler("setBar", function(_, l, barName, barPercentage, barColor)
 		if not l then return end
@@ -12,7 +16,7 @@ function init()
 		if not l then return end
 		removeBar(barName)
     end)
-    self.timerRemoveAmmoBar = 0
+    --self.timerRemoveAmmoBar = 0
 end
 
 
@@ -33,6 +37,8 @@ function overheadBars()
       color = status.resourcePositive("perfectBlock") and {255, 255, 200, 255} or {200, 200, 0, 255}
     })
   end
+
+  if not self.barsList then fu_bars_init() end
 
   for _,v in pairs(self.barsList) do
 	table.insert(bars,{
