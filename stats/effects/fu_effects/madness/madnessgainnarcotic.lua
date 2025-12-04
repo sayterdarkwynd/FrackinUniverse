@@ -18,7 +18,7 @@ function update(dt)
 	if (self.timer <= 0) then
 		self.timer = 1
 		world.spawnItem("fumadnessresource",entity.position(),self.researchPerSecond)--create the Madness item here in the amount of baseValue.
-		animator.playSound("madness")	
+		animator.playSound("madness")
 		self.healthDamage = ((math.max(1.0 - status.stat("mentalProtection"),0))*self.damageAmount) + status.stat("madnessModifier")
 		status.applySelfDamageRequest({damageType = "IgnoresDef",damage = self.healthDamage,damageSourceKind = "shadow",sourceEntityId = entity.id()})
 		activateVisualEffects()
