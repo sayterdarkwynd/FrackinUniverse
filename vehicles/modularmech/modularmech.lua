@@ -197,23 +197,24 @@ function init()
 
 	-- check for environmental hazards / protection
 
-	local hazards = config.getParameter("hazardVulnerabilities")
+	self.hazardVulnerabilities = config.getParameter("hazardVulnerabilities")
 	--self.hazardImmunityList={}
 	for _, statusEffect in pairs(self.parts.body.hazardImmunities or {}) do
-		hazards[statusEffect] = nil
+		self.hazardVulnerabilities[statusEffect] = nil
 		--self.hazardImmunityList[statusEffect]=true
 	end
-
+	self.worldEnvironmentStatusEffects = world.environmentStatusEffects(mcontroller.position())
 
 	local applyEnvironmentStatuses = config.getParameter("applyEnvironmentStatuses")
 	local seatStatusEffects = config.getParameter("loungePositions.seat.statusEffects")
 
-	for _, statusEffect in pairs(world.environmentStatusEffects(mcontroller.position())) do
-		if hazards[statusEffect] then
-			self.regenPenalty = hazards[statusEffect].energyDrain or 0 -- Mechs can have regen, but not if they are in hostile environs.
-			self.energyDrain = self.energyDrain + hazards[statusEffect].energyDrain  --increased energy use in uncertified environments
+	for _, statusEffect in pairs(self.worldEnvironmentStatusEffects) do
+		local hazard = self.hazardVulnerabilities[statusEffect]
+		if hazard then
+			self.regenPenalty = hazard.energyDrain or 0 -- Mechs can have regen, but not if they are in hostile environs.
+			self.energyDrain = self.energyDrain + hazard.energyDrain  --increased energy use in uncertified environments
 			self.healthDrain = 0.1 --health also gets penalized when on these worlds. Apply a base decrement of 0.1, and modify in update()
-			world.sendEntityMessage(self.ownerEntityId, "queueRadioMessage", hazards[statusEffect].message, 1.5)
+			world.sendEntityMessage(self.ownerEntityId, "queueRadioMessage", hazard.message, 1.5)
 		end
 
 		for _, applyEffect in ipairs(applyEnvironmentStatuses) do
@@ -244,6 +245,7 @@ function init()
 		AltFire = false,
 		Special1 = false
 	}
+	self.hasTouchedControlsRecently = false
 
 	-- mech follows player gravity rules in the shipworld
 	  if world.type() == "unknown" then
@@ -630,6 +632,8 @@ function update(dt)
 				end
 			end
 
+			self.hasTouchedControlsRecently = hasTouched(newControls) or hasTouched(oldControls)
+
 			if self.flightMode then
 				--disable manual flight mode on no energy
 				if storage.energy <= 0 and self.manualFlightMode then
@@ -642,7 +646,7 @@ function update(dt)
 					self.manualFlightMode = false
 				end
 
-						if not hasTouched(newControls) and not hasTouched(oldControls) and self.manualFlightMode then
+						if not self.hasTouchedControlsRecently and self.manualFlightMode then
 							local vel = mcontroller.velocity()
 							if vel[1] ~= 0 or vel[2] ~= 0 then
 								--mcontroller.approachVelocity({0, 0}, self.flightControlForce*2)
@@ -777,6 +781,7 @@ function update(dt)
 
 			newControls = self.lastControls
 			oldControls = self.lastControls
+			self.hasTouchedControlsRecently = false
 
 			self.aimPosition = nil
 		end
@@ -878,7 +883,7 @@ function update(dt)
 		end
 
 		--set energy drain to 0 if null movement
-		if not hasTouched(newControls) and not hasTouched(oldControls) and not self.manualFlightMode then
+		if not self.hasTouchedControlsRecently and not self.manualFlightMode then
 
 			eMult = vec2.mag(newVelocity) < 1.2 and 1 or 0 -- mag of vel in grav while idle = 1.188~
 			eMult = eMult
