@@ -7,9 +7,9 @@ function init()
 	-- are at less than "activatePercent" of their maximum capacity.
 	-- Then it keeps sending "On" signal until they reach at least "deactivatePercent"
 	-- of their maximum capacity.
-	-- Note: we can add UI to allow the player to choose these numbers. 10%/100% is a sensible default.
+	-- Note: we can add UI to allow the player to choose these numbers. 10%/98% is a sensible default.
 	-- We use 10% instead of 0%, because there can be a small leftover charge in the battery (too little to spend).
-	-- Also 98%, because the device can't reliable detect 100% if power is constantly drawn by other machines.	
+	-- Also 98%, because the device can't reliable detect 100% if power is constantly drawn by other machines.
 	self.activatePercent = config.getParameter("activatePercent") or 10
 	self.deactivatePercent = config.getParameter("deactivatePercent") or 98
 	self.chatStrings = config.getParameter("chatStrings")
