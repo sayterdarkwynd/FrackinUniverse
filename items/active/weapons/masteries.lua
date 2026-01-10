@@ -259,7 +259,7 @@ function masteries.functions.mastery.shortspearMastery(currentHand,otherHand,han
 		if tagCaching[otherHand.."TagCache"]["shortspear"] then
 			--yes, the awkward looking math is needed. this ensures that the system doesn't apply the same 0.8x twice, but instead splits it.
 			buffer[#buffer + 1]={stat="protection", effectiveMultiplier=1+((0.2*(masteries.stats.shortspearMastery-1))*handMultiplier) }
-			buffer[#buffer + 1]={stat="critChance", amount=2+((0.5*(masteries.stats.shortspearMastery-1))*handMultiplier) }
+			buffer[#buffer + 1]={stat="critChance", effectiveMultiplier=1+((0.5*(masteries.stats.shortspearMastery-1))*handMultiplier) }
 		end
 	end
 	return buffer
