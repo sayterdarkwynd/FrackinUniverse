@@ -9,7 +9,7 @@
   "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","nightar","densinium"],
+  "itemTags" : ["weapon","melee","broadsword","nightar","densinium", "upgradeableWeapon"],
  // "learnBlueprintsOnPickup" : [ "densiniumsword" ],
 
   "inventoryIcon" : "brokennightarblade.png",
@@ -33,6 +33,23 @@
 
   "critChance" : 1,
   "critBonus" : 4,
+
+  "upgradeParameters" : {
+    "shortdescription" : "Reforged Densinium Sword",
+    "description" : "An old, tarnished blade now reforged and glowing with an otherworldly light.",
+    "critChance" : 2,
+    "critBonus" : 8,
+    "elementalType" : "silverweapon",
+    "primaryAbility" : {
+      "damageConfig" : {
+        "damageSourceKind" : "silverweapon"
+      }
+    },
+	"animationParts" : {
+      "handle" : "",
+      "blade" : "brokennightarbladereforged.png"
+    }
+  },
 
   "altAbilityType" : "risingslash",
 
