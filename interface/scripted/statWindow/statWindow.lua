@@ -40,6 +40,8 @@ function update()
 	end
 
 	widget.clearListItems("immunitiesList.textList")
+	bufferList={}
+	bufferPrioritiesFound={}
 	for thing,stuff in pairs(self.statuses) do
 		local skipping = false
 
@@ -52,8 +54,26 @@ function update()
 
 		if not skipping then
 			if status.stat(thing) >= 1 then
+				bufferList[thing]={name=stuff.name,priority=stuff.priority or -1}
+				bufferPrioritiesFound[stuff.priority]=true
+			end
+		end
+	end
+
+	bufferPrioritiesRemapped={}
+	for prio in pairs(bufferPrioritiesFound) do
+		bufferPrioritiesRemapped[#bufferPrioritiesRemapped+1]=prio
+	end
+
+	table.sort(bufferPrioritiesRemapped)
+	bufferPrioritiesRemapped[#bufferPrioritiesRemapped+1]=-1
+
+	for _,priority in ipairs(bufferPrioritiesRemapped) do
+		for thing,stuff in pairs(bufferList) do
+			if(priority==stuff.priority) then
 				local listItem = "immunitiesList.textList."..widget.addListItem("immunitiesList.textList")
 				widget.setText(listItem..".immunity", stuff.name)
+				bufferList[thing]=null
 			end
 		end
 	end
