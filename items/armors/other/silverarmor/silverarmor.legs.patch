@@ -3,33 +3,41 @@
 			"op": "test",
 			"path": "/itemTags",
 			"inverse": true
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/itemTags",
 			"value": []
-		},
-		{
-			"op": "add",
-			"path": "/itemTags/-",
-			"value": "upgradeableWeapon"
 		}
 	],
 	[{
 			"op": "test",
-			"path": "/itemTags"
-		},
-		{
+			"path": "/statusEffects",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/statusEffects",
+			"value": []
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/leveledStatusEffects",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/leveledStatusEffects",
+			"value": []
+		}
+	],
+	[{
 			"op": "add",
 			"path": "/itemTags/-",
 			"value": "upgradeableWeapon"
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/itemTags/-",
 			"value": "balanced"
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/itemTags/-",
 			"value": "ranged"
@@ -39,22 +47,23 @@
 	[{
 			"op": "replace",
 			"path": "/description",
-			"value": "^orange;Set Bonuses^reset;:
-^yellow;^reset; Chakram/Boomerang: Damage x^green;1.1^reset;, +^green;2^reset;% Crit
-^yellow;^reset; Fall Damage x^green;0.75^reset;"
-		},
-		{
+			"value": "^orange;Set Bonuses^reset;:\n^yellow;^reset; Chakram/Boomerang: Damage x^green;1.1^reset;, +^green;2^reset;% Crit\n^yellow;^reset; Fall Damage x^green;0.75^reset;"
+		}
+	],
+	[{
 			"op": "add",
-			"path": "/statusEffects",
-			"value": [
-				    "silverarmorsetbonusnew",
-				{
-					"stat" : "fu_silverarmorsetnew_legs",
-					"amount" : 1
-				}
-			]
-		},
-		{
+			"path": "/statusEffects/-",
+			"value": "silverarmorsetbonusnew"
+		}, {
+			"op": "add",
+			"path": "/statusEffects/-",
+			"value": {
+				"stat": "fu_silverarmorsetnew_legs",
+				"amount": 1
+			}
+		}
+	],
+	[{
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -62,8 +71,7 @@
 				"stat": "radioactiveResistance",
 				"amount": 0.025
 			}
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -71,8 +79,9 @@
 				"stat": "electricResistance",
 				"amount": 0.025
 			}
-		},
-		{
+		}
+	],
+	[{
 			"op": "replace",
 			"path": "/tooltipKind",
 			"value": "armornew2"

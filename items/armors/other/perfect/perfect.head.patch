@@ -1,6 +1,5 @@
 [
-	[
-		{
+	[{
 			"op": "add",
 			"path": "/price",
 			"value": 5000
@@ -10,28 +9,27 @@
 			"op": "test",
 			"path": "/itemTags",
 			"inverse": true
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/itemTags",
 			"value": []
-		},
-		{
-			"op": "add",
-			"path": "/itemTags/-",
-			"value": "upgradeableWeapon"
 		}
 	],
 	[{
 			"op": "test",
-			"path": "/itemTags"
-		},
-		{
+			"path": "/statusEffects",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/statusEffects",
+			"value": []
+		}
+	],
+	[{
 			"op": "add",
 			"path": "/itemTags/-",
 			"value": "upgradeableWeapon"
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/itemTags/-",
 			"value": "balanced"
@@ -41,22 +39,23 @@
 	[{
 			"op": "replace",
 			"path": "/description",
-			"value": "^orange;Set Bonuses^reset;:
-^yellow;^reset; +^green;10^reset;% Crit Chance
-^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Pressure"
-		},
-		{
+			"value": "^orange;Set Bonuses^reset;:\n^yellow;^reset; +^green;10^reset;% Crit Chance\n^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Pressure"
+		}
+	],
+	[{
 			"op": "add",
-			"path": "/statusEffects",
-			"value": [
-				    "perfectsetbonusnew",
-				{
-					"stat" : "fu_perfectsetnew_head",
-					"amount" : 1
-				}
-			]
-		},
-		{
+			"path": "/statusEffects/-",
+			"value": "perfectsetbonusnew"
+		}, {
+			"op": "add",
+			"path": "/statusEffects/-",
+			"value": {
+				"stat": "fu_perfectsetnew_head",
+				"amount": 1
+			}
+		}
+	],
+	[{
 			"op": "replace",
 			"path": "/tooltipKind",
 			"value": "armornew2"

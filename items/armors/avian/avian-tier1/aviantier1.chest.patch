@@ -3,62 +3,69 @@
 			"op": "test",
 			"path": "/itemTags",
 			"inverse": true
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/itemTags",
 			"value": []
-		},
-		{
-			"op": "add",
-			"path": "/itemTags/-",
-			"value": "upgradeableWeapon"
 		}
 	],
 	[{
 			"op": "test",
-			"path": "/itemTags"
-		},
-		{
+			"path": "/statusEffects",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/statusEffects",
+			"value": []
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/leveledStatusEffects",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/leveledStatusEffects",
+			"value": []
+		}
+	],
+	[{
 			"op": "add",
 			"path": "/itemTags/-",
 			"value": "upgradeableWeapon"
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/itemTags/-",
 			"value": "balanced"
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/itemTags/-",
 			"value": "ranged"
 		}
-
 	],
 	[{
 			"op": "replace",
 			"path": "/description",
-			"value": "^orange;Set Bonuses^reset;:
-^yellow;^reset; Wand/Staff: Damage x^green;1.1^reset;"
-		},
-		{
+			"value": "^orange;Set Bonuses^reset;:\n^yellow;^reset; Wand/Staff: Damage x^green;1.1^reset;"
+		}
+	], [{
 			"op": "replace",
 			"path": "/tooltipKind",
 			"value": "armornew2"
-		},
-		{
+		}
+	], [{
 			"op": "add",
-			"path": "/statusEffects",
-			"value": [
-				    "aviantier1setbonusnew",
-				{
-					"stat" : "fu_aviantier1setnew_chest",
-					"amount" : 1
-				}
-			]
-		},
-		{
+			"path": "/statusEffects/-",
+			"value": "aviantier1setbonusnew"
+		}, {
+			"op": "add",
+			"path": "/statusEffects/-",
+			"value": {
+				"stat": "fu_aviantier1setnew_chest",
+				"amount": 1
+			}
+		}
+	], [{
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -66,8 +73,7 @@
 				"stat": "iceResistance",
 				"amount": 0.033334
 			}
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -75,10 +81,7 @@
 				"stat": "poisonResistance",
 				"amount": 0.033334
 			}
-		},
-
-
-		{
+		}, {
 			"op": "add",
 			"path": "/builder",
 			"value": "/items/buildscripts/fubuildarmor.lua"

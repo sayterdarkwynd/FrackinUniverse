@@ -3,57 +3,64 @@
 			"op": "test",
 			"path": "/itemTags",
 			"inverse": true
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/itemTags",
 			"value": []
-		},
-		{
-			"op": "add",
-			"path": "/itemTags/-",
-			"value": "upgradeableWeapon"
 		}
 	],
 	[{
 			"op": "test",
-			"path": "/itemTags"
-		},
-		{
+			"path": "/statusEffects",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/statusEffects",
+			"value": []
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/leveledStatusEffects",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/leveledStatusEffects",
+			"value": []
+		}
+	],
+	[{
 			"op": "add",
 			"path": "/itemTags/-",
 			"value": "upgradeableWeapon"
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/itemTags/-",
 			"value": "balanced"
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/itemTags/-",
 			"value": "melee"
 		}
-
 	],
 	[{
 			"op": "replace",
 			"path": "/description",
-			"value": "^orange;Set Bonuses^reset;:
-^yellow;^reset; Whip/Rapier: Damage x^green;1.25^reset;"
-		},
-		{
+			"value": "^orange;Set Bonuses^reset;:\n^yellow;^reset; Whip/Rapier: Damage x^green;1.25^reset;"
+		}
+	], [{
 			"op": "add",
-			"path": "/statusEffects",
-			"value": [
-				    "bonussetbonusnew",
-				{
-					"stat" : "fu_bonussetnew_legs",
-					"amount" : 1
-				}
-			]
-		},
-		{
+			"path": "/statusEffects/-",
+			"value": "bonussetbonusnew"
+		}, {
+			"op": "add",
+			"path": "/statusEffects/-",
+			"value": {
+				"stat": "fu_bonussetnew_legs",
+				"amount": 1
+			}
+		}
+	], [{
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -61,8 +68,7 @@
 				"stat": "shadowResistance",
 				"amount": 0.04
 			}
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -70,8 +76,7 @@
 				"stat": "cosmicResistance",
 				"amount": 0.04
 			}
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -79,8 +84,7 @@
 				"stat": "fireResistance",
 				"amount": 0.04
 			}
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -88,8 +92,8 @@
 				"stat": "iceResistance",
 				"amount": 0.04
 			}
-		},
-		{
+		}
+	], [{
 			"op": "replace",
 			"path": "/tooltipKind",
 			"value": "armornew2"

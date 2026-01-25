@@ -3,23 +3,33 @@
 			"op": "test",
 			"path": "/itemTags",
 			"inverse": true
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/itemTags",
 			"value": []
-		},
-		{
-			"op": "add",
-			"path": "/itemTags/-",
-			"value": "upgradeableWeapon"
 		}
 	],
 	[{
 			"op": "test",
-			"path": "/itemTags"
-		},
-		{
+			"path": "/statusEffects",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/statusEffects",
+			"value": []
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/leveledStatusEffects",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/leveledStatusEffects",
+			"value": []
+		}
+	],
+	[{
 			"op": "add",
 			"path": "/itemTags/-",
 			"value": "upgradeableWeapon"
@@ -28,26 +38,27 @@
 	[{
 			"op": "replace",
 			"path": "/description",
-			"value": "^orange;Set Bonuses^reset;:
-^yellow;^reset; Assault Rifle/Shortsword: Damage x^green;1.13^reset;"
-		},
-		{
+			"value": "^orange;Set Bonuses^reset;:\n^yellow;^reset; Assault Rifle/Shortsword: Damage x^green;1.13^reset;"
+		}
+	], [{
+
 			"op": "add",
-			"path": "/statusEffects",
-			"value": [
-				    "humantier2setbonusnew",
-				{
-					"stat" : "fu_humantier2setnew_chest",
-					"amount" : 1
-				}
-			]
-		},
-		{
+			"path": "/statusEffects/-",
+			"value": "humantier2setbonusnew"
+		}, {
+			"op": "add",
+			"path": "/statusEffects/-",
+			"value": {
+				"stat": "fu_humantier2setnew_chest",
+				"amount": 1
+			}
+
+		}
+	], [{
 			"op": "replace",
 			"path": "/tooltipKind",
 			"value": "armornew2"
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -55,8 +66,7 @@
 				"stat": "fireResistance",
 				"amount": 0.016667
 			}
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -64,8 +74,7 @@
 				"stat": "iceResistance",
 				"amount": 0.016667
 			}
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -73,8 +82,7 @@
 				"stat": "electricResistance",
 				"amount": 0.016667
 			}
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -82,8 +90,7 @@
 				"stat": "poisonResistance",
 				"amount": 0.016667
 			}
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -91,8 +98,7 @@
 				"stat": "radioactiveResistance",
 				"amount": 0.016667
 			}
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -100,8 +106,7 @@
 				"stat": "physicalResistance",
 				"amount": 0.016667
 			}
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -109,8 +114,7 @@
 				"stat": "shadowResistance",
 				"amount": 0.016667
 			}
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -118,8 +122,7 @@
 				"stat": "cosmicResistance",
 				"amount": 0.016667
 			}
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/builder",
 			"value": "/items/buildscripts/fubuildarmor.lua"
