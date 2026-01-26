@@ -3,52 +3,56 @@
 			"op": "test",
 			"path": "/itemTags",
 			"inverse": true
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/itemTags",
 			"value": []
-		},
-		{
-			"op": "add",
-			"path": "/itemTags/-",
-			"value": "upgradeableWeapon"
 		}
 	],
 	[{
 			"op": "test",
-			"path": "/itemTags"
-		},
-		{
+			"path": "/statusEffects",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/statusEffects",
+			"value": []
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/leveledStatusEffects",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/leveledStatusEffects",
+			"value": []
+		}
+	],
+	[{
 			"op": "add",
 			"path": "/itemTags/-",
 			"value": "upgradeableWeapon"
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/itemTags/-",
 			"value": "offensive"
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/itemTags/-",
 			"value": "melee"
 		}
-
 	],
 	[{
 			"op": "replace",
 			"path": "/description",
-			"value": "^orange;Set Bonuses^reset;:
-^yellow;^reset; Mace/Hammer/Axe/Greataxe: Mastery +^green;22^reset;%
-^yellow;^reset; ^cyan;Immune^reset;: Electrified"
-		},
-		{
+			"value": "^orange;Set Bonuses^reset;:\n^yellow;^reset; Mace/Hammer/Axe/Greataxe: Mastery +^green;22^reset;%\n^yellow;^reset; ^cyan;Immune^reset;: Electrified"
+		}
+	], [{
 			"op": "replace",
 			"path": "/tooltipKind",
 			"value": "armornew2"
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -56,8 +60,7 @@
 				"stat": "electricResistance",
 				"amount": 0.033334
 			}
-		},
-		{
+		}, {
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
 			"value": {
@@ -65,18 +68,21 @@
 				"stat": "cosmicResistance",
 				"amount": 0.033334
 			}
-		},
-		{
+		}
+	], [{
+
 			"op": "add",
-			"path": "/statusEffects",
-			"value": [
-				    "glitchtier5setbonusnew",
-				{
-					"stat" : "fu_glitchtier5setnew_legs",
-					"amount" : 1
-				}
-			]
-		},{
+			"path": "/statusEffects/-",
+			"value": "glitchtier5setbonusnew"
+		}, {
+			"op": "add",
+			"path": "/statusEffects/-",
+			"value": {
+				"stat": "fu_glitchtier5setnew_legs",
+				"amount": 1
+			}
+
+		}, {
 			"op": "add",
 			"path": "/builder",
 			"value": "/items/buildscripts/fubuildarmor.lua"

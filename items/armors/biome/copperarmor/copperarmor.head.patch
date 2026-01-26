@@ -1,163 +1,128 @@
 [
-  [
-    {
-      "op": "test",
-      "path": "/itemTags",
-      "inverse": true
-    },
-    {
-      "op": "add",
-      "path": "/itemTags",
-      "value": []
-    },
-    {
-      "op": "add",
-      "path": "/itemTags/-",
-      "value": "upgradeableWeapon"
-    },
-    {
-      "op": "add",
-      "path": "/itemTags/-",
-      "value": "tier1armor"
-    }
-  ],
-  [{
-      "op": "test",
-      "path": "/level",
-      "inverse": true
-    },
-    {
-      "op": "add",
-      "path": "/level",
-      "value": 1
-    }
-  ],
-  [	{
-      "op": "test",
-      "path": "/itemTags"
-    },
-    {
-      "op": "add",
-      "path": "/itemTags/-",
-      "value": "upgradeableWeapon"
-    },
-    {
-      "op": "add",
-      "path": "/itemTags/-",
-      "value": "explorer"
-    },
-    {
-      "op": "add",
-      "path": "/itemTags/-",
-      "value": "ranged"
-    },
-    {
-      "op": "add",
-      "path": "/itemTags/-",
-      "value": "balanced"
-    }
-
-
-
-  ],
-  [{
-      "op": "replace",
-      "path": "/description",
-      "value": "^orange;Set Bonuses^reset;:
-^yellow;^reset; Mining Laser: Combat Damage x^green;1.5^reset;, Energy x^green;1.2^reset;
-^yellow;^reset; ^cyan;Immune^reset;: Mud"
-    },
-    {
-      "op": "replace",
-      "path": "/price",
-      "value": "500"
-    },
-    {
-      "op": "test",
-      "path": "/statusEffects",
-      "inverse": true
-    },
-    {
-      "op": "add",
-      "path": "/statusEffects",
-      "value": []
-    },
-    {
-      "op": "add",
-      "path": "/statusEffects",
-      "value": [
-            "copperarmorsetbonusnew",
-        {
-          "stat" : "fu_copperarmorsetnew_head",
-          "amount" : 1
-        }
-      ]
-    },
-    {
-      "op": "test",
-      "path": "/leveledStatusEffects",
-      "inverse": true
-    },
-    {
-      "op": "add",
-      "path": "/leveledStatusEffects",
-      "value": []
-    },
-    {
-      "op": "add",
-      "path": "/leveledStatusEffects/-",
-      "value": {
-        "levelFunction": "standardArmorLevelPowerMultiplierMultiplier",
-        "stat": "powerMultiplier",
-        "baseMultiplier": 1.1
-      }
-    },
-    {
-      "op": "add",
-      "path": "/leveledStatusEffects/-",
-      "value": {
-        "levelFunction": "standardArmorLevelPowerMultiplierMultiplier",
-        "stat": "protection",
-        "amount": 2
-      }
-    },
-    {
-      "op": "add",
-      "path": "/leveledStatusEffects/-",
-      "value": {
-        "levelFunction": "standardArmorLevelPowerMultiplierMultiplier",
-        "stat": "maxEnergy",
-        "amount": 7
-      }
-    },
-    {
-      "op": "add",
-      "path": "/leveledStatusEffects/-",
-      "value": {
-        "levelFunction": "standardArmorLevelPowerMultiplierMultiplier",
-        "stat": "maxHealth",
-        "amount": 1.2
-      }
-    },
-    {
-      "op": "replace",
-      "path": "/tooltipKind",
-      "value": "armornew2"
-    },
-    {
-      "op": "replace",
-      "path": "/rarity",
-      "value": "common"
-    },
-    {
-      "op": "test",
-      "path": "/builder",
-      "inverse": true
-    },
-    {
-      "op": "add",
-      "path": "/builder",
-      "value": "/items/buildscripts/fubuildarmor.lua"
-    }
-  ]
+	[{
+			"op": "test",
+			"path": "/itemTags",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/itemTags",
+			"value": []
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/level",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/level",
+			"value": 1
+		}
+	],
+	[{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "upgradeableWeapon"
+		}, {
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "explorer"
+		}, {
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "ranged"
+		}, {
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "balanced"
+		}
+	],
+	[{
+			"op": "replace",
+			"path": "/description",
+			"value": "^orange;Set Bonuses^reset;:\n^yellow;^reset; Mining Laser: Combat Damage x^green;1.5^reset;, Energy x^green;1.2^reset;\n^yellow;^reset; ^cyan;Immune^reset;: Mud"
+		}, {
+			"op": "replace",
+			"path": "/price",
+			"value": "500"
+		}, {
+			"op": "test",
+			"path": "/statusEffects",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/statusEffects",
+			"value": []
+		}
+	], [{
+			"op": "add",
+			"path": "/statusEffects/-",
+			"value": "copperarmorsetbonusnew"
+		}, {
+			"op": "add",
+			"path": "/statusEffects/-",
+			"value": {
+				"stat": "fu_copperarmorsetnew_head",
+				"amount": 1
+			}
+		}, {
+			"op": "test",
+			"path": "/leveledStatusEffects",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/leveledStatusEffects",
+			"value": []
+		}
+	], [{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "standardArmorLevelPowerMultiplierMultiplier",
+				"stat": "powerMultiplier",
+				"baseMultiplier": 1.1
+			}
+		}, {
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "standardArmorLevelPowerMultiplierMultiplier",
+				"stat": "protection",
+				"amount": 2
+			}
+		}, {
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "standardArmorLevelPowerMultiplierMultiplier",
+				"stat": "maxEnergy",
+				"amount": 7
+			}
+		}, {
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "standardArmorLevelPowerMultiplierMultiplier",
+				"stat": "maxHealth",
+				"amount": 1.2
+			}
+		}
+	], [{
+			"op": "replace",
+			"path": "/tooltipKind",
+			"value": "armornew2"
+		}, {
+			"op": "replace",
+			"path": "/rarity",
+			"value": "common"
+		}, {
+			"op": "test",
+			"path": "/builder",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/builder",
+			"value": "/items/buildscripts/fubuildarmor.lua"
+		}
+	]
 ]
