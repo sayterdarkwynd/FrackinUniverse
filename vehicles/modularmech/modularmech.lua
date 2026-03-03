@@ -641,19 +641,19 @@ function update(dt)
 					self.manualFlightMode = false
 				end
 
-				if self.manualFlightMode and mcontroller.yVelocity() > 0 and mcontroller.isColliding() then
-					setFlightMode(false)
-					self.manualFlightMode = false
-				end
+				-- if self.manualFlightMode and mcontroller.yVelocity() > 0 and mcontroller.isColliding() then
+					-- setFlightMode(false)
+					-- self.manualFlightMode = false
+				-- end
 
-						if not self.hasTouchedControlsRecently and self.manualFlightMode then
-							local vel = mcontroller.velocity()
-							if vel[1] ~= 0 or vel[2] ~= 0 then
-								--mcontroller.approachVelocity({0, 0}, self.flightControlForce*2)
-								mcontroller.approachVelocity({0, 0}, self.flightControlForce*1.5)
-								boost(vec2.mul(vel, -1))
-							end
-						end
+				if not self.hasTouchedControlsRecently and self.manualFlightMode then
+					local vel = mcontroller.velocity()
+					if vel[1] ~= 0 or vel[2] ~= 0 then
+						--mcontroller.approachVelocity({0, 0}, self.flightControlForce*2)
+						mcontroller.approachVelocity({0, 0}, self.flightControlForce*1.5)
+						boost(vec2.mul(vel, -1))
+					end
+				end
 
 						--set controls to only working on positive energy
 				if newControls.jump then
@@ -1311,29 +1311,26 @@ function update(dt)
 
 		-- ************************************ MECH MASS IMPACT (FU) ************************************
 		if vehicle.entityLoungingIn("seat") then	-- only check mech mass application on terrain if the player is within the mech, to prevent weird cratering issues
-
-
-			self.explosivedamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,55)
-			self.baseDamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,300)
-			self.appliedDamage = self.baseDamage /2
-
-			-- if it falls too hard, the mech takes some damage based on how far its gone
-			self.baseDamageMechfall = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass)/2
-
-			if self.mechMass >= 15 and (self.baseDamageMechfall) >= 220 and (self.jumpBoostTimer) == 0 then		--mech takes damage from stomps
-				storage.health = math.max(0, storage.health - (self.baseDamage /100))
-			end
+			self.baseDamage = math.abs(mcontroller.velocity()[2]) * self.mechMass
+			self.explosivedamage = math.min(self.baseDamage,55)
+			self.stompDamage = math.min(self.baseDamage,300) / 2
 
 			if self.mechMass > 0 and time <= 0 then
+				-- if it falls too hard, the mech takes some damage based on how far its gone
+				self.mechfallDamage = self.baseDamage/200
+				if self.mechMass >= 15 and (self.mechfallDamage) >= 2.2 and (self.jumpBoostTimer) == 0 then
+					storage.health = math.max(0, storage.health - self.mechfallDamage)
+				end
+
 				time = 1
 				local thumpParamsBig = {
-				power = self.appliedDamage,
+				power = self.stompDamage,
 				damageTeam = {type = "friendly"},
 				actionOnReap = {{action='explosion',foregroundRadius=math.abs(mcontroller.velocity()[2]),backgroundRadius=0,explosiveDamageAmount= self.explosivedamage,harvestLevel = 99,delaySteps=2}}}
 
 				if self.mechMass >= 20 then
 					thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / (6 - (self.mechMass/24))
-					thumpParamsBig.actionOnReap[1].backgroundRadius = thumpParamsBig.actionOnReap[1].backgroundRadius / 6
+					thumpParamsBig.actionOnReap[1].backgroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / 6
 					thumpParamsBig.actionOnReap[1].explosiveDamageAmount = thumpParamsBig.actionOnReap[1].explosiveDamageAmount * 1.5
 				elseif self.mechMass >= 11 then
 					thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / 7.4

@@ -1,18 +1,28 @@
 [
-	[
-		{ "op": "test", "path": "/itemTags", "inverse" : true },
-		{"op": "add","path": "/itemTags","value": []}
+	[{
+			"op": "test",
+			"path": "/itemTags",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/itemTags",
+			"value": []
+		}
 	],
-	[
-		{"op": "add","path": "/itemTags/-","value": "upgradeableWeapon"},
-		{
+	[{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "upgradeableWeapon"
+		}, {
 			"op": "add",
 			"path": "/itemTags/-",
 			"value": "balanced"
 		}
-
 	],
-	[
-		{"op": "replace","path": "/category","value": "chestarmour"}
+	[{
+			"op": "replace",
+			"path": "/category",
+			"value": "chestarmour"
+		}
 	]
 ]

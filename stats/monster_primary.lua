@@ -7,6 +7,7 @@ function init()
 	self.lastYVelocity = 0
 	self.fallDistance = 0
 
+
 	self.fallDamagePreferences = settings.stringToInteger[settings.getSetting("monsters", "all")] or 0
 
 	--end of fall damage code
@@ -101,16 +102,23 @@ function applyDamageRequest(damageRequest)
 			damageRequest.damageSourceKind="bow"
 		end]]
 		--instead, we take a smarter workaround that functions, albeit annoyingly
-		if string.find(damageRequest.damageSourceKind,"bow") and not (damageRequest.damageSourceKind=="bow") then
-			if damage>=1 then
-				status.setResource("health",1)
-				--set resistances to nil so at least the damage number is represented properly
-				status.addEphemeralEffect("vulnerability",1,damageRequest.sourceEntityId)
-				--then spawn a projectile and gib 'em.
-				world.spawnProjectile("fuinvisibleprojectiletiny", entity.position(), damageRequest.sourceEntityId,nil,nil,{damageType="IgnoresDef",damageKind="bow",damageTeam={type="friendly"},power=damage})
-				return {}
+		if not (status.statusProperty("fuHuntingOverrideTriggered")) then
+			if string.find(damageRequest.damageSourceKind,"bow") and not (damageRequest.damageSourceKind=="bow") then
+				local resistGet=root.assetJson("/damage/elementaltypes.config")[root.assetJson("/damage/bow.damage").elementalType or "default"]
+				local bowResistName=(resistGet and resistGet.elementalType) or "physicalResistance"
+				if (damage>=1) and (status.stat(bowResistName)<100.0) then
+					status.setStatusProperty("fuHuntingOverrideTriggered",true)
+					status.setResource("health",1)
+					--set resistances to zero so at least the damage number is represented properly
+					status.addEphemeralEffect("fuvulnerabilityhunting",1,damageRequest.sourceEntityId)
+					--then spawn a projectile and gib 'em.
+					world.spawnProjectile("fuinvisibleprojectiletiny", entity.position(), damageRequest.sourceEntityId,nil,nil,{damageType="IgnoresDef",damageKind="bow",damageTeam={type="friendly"},power=damage})
+					return {}
+				end
 			end
 		end
+	elseif status.statusProperty("fuHuntingOverrideTriggered") then
+		status.setStatusProperty("fuHuntingOverrideTriggered",false)
 	end
 	return {{
 		sourceEntityId = damageRequest.sourceEntityId,
