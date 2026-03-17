@@ -96,12 +96,12 @@ function excavatorCommon.cycle(dt)
 	end
 
 	if storage.state=="off" or not transferUtil.powerLevel(transferUtil.vars.logicNode) then
-		setRunning(false)
+		excavatorCommon.setRunning(false)
 		excavatorCommon.mainDelta=0
 		return
 	elseif transferUtil.powerLevel(transferUtil.vars.logicNode) then
 		if storage.state=="stop" then
-			setRunning(true)
+			excavatorCommon.setRunning(true)
 			storage.state="start"
 			return
 		end
@@ -113,7 +113,7 @@ function excavatorCommon.cycle(dt)
 		return
 	end
 	if storage.state=="disabled" then return end
-	setRunning(true)
+	excavatorCommon.setRunning(true)
 	time = (time or (dt*-1)) + dt
 	if time > 10 then
 		local pos = storage.position
@@ -186,7 +186,7 @@ function states.moveDrillBar(dt)
 			renderDrill(storage.drillPos)
 			storage.state = "moveDrill"
 			storage.drillTarget = excavatorCommon.getNextDrillTarget()
-			setRunning(false)
+			excavatorCommon.setRunning(false)
 		end
 	end
 
@@ -345,7 +345,7 @@ function states.mine(dt)
 		--sb.logInfo(".p %s, .mD %s",storage.position,excavatorCommon.vars.maxDepth)
 		drillReset()
 		anims()
-		setRunning(false)
+		excavatorCommon.setRunning(false)
 		storage.state="stop"
 		return
 	end
@@ -491,7 +491,7 @@ function states.pump(dt)
 	end]]
 
 	if (storage.depth*-1) > excavatorCommon.vars.maxDepth then
-		setRunning(false)
+		excavatorCommon.setRunning(false)
 		if excavatorCommon.vars.isDrill then
 			storage.state = "mine"
 		end
@@ -603,4 +603,8 @@ function transferUtil.findCorners()
 		end
 	end
 	return rVal
+end
+
+function excavatorCommon.setRunning(val)
+	if setRunning then setRunning(val) end
 end
