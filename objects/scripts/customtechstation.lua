@@ -1,6 +1,8 @@
 require "/scripts/util.lua"
+require "/scripts/kheAA/excavatorCommon.lua"
 
 local CSAILoldInit = init
+local CSAILoldUpdate = update
 
 function init()
 	if world.type() ~= "unknown" and config.getParameter("uniqueId") then
@@ -18,6 +20,7 @@ function init()
 	message.setHandler("setFallback", function(_,_, value) self.fallback = value end)
 	message.setHandler("storeData", function(_,_, widget, data) storage.data[widget] = data end)
 	message.setHandler("returnData", function() return storage.data end)
+	message.setHandler("toggleShipGrabber", function() storage.state = (storage.state=="disabled") and "start" or "disabled" end)
 	message.setHandler("screwdriverInteraction", function() return {config.getParameter("screwdriverInteractAction"), config.getParameter("screwdriverInteractData")} end) --also this is probably a super shitty way to handle this but maybe I'll use that screwdriver for other things later
 	message.setHandler("setImage", function(_,_, imageconfig)
 		storage.imageconfig = imageconfig
@@ -25,6 +28,18 @@ function init()
 	end)
 	message.setHandler("setInterfaceObj", function(_,_, itemDesc) storage.interfaceObjIDesc = itemDesc end)
 	message.setHandler("gibInterfaceObj", function() return storage.interfaceObjIDesc end)
+
+	if not (type(world.getProperty("ship.level"))=="number") then
+		storage.state="disabled"
+		return
+	else
+		excavatorCommon.init()
+		excavatorCommon.vars.isVacuum=true
+		excavatorCommon.vars.vacuumRange=10000
+		excavatorCommon.vars.vacuumMinRange=4
+		excavatorCommon.vars.vacuumDelay=1
+		storage.state="start"
+	end
 end
 
 function onInteraction()
@@ -43,4 +58,9 @@ function onInteraction()
 			return {config.getParameter("fallbackInteractAction"), config.getParameter("fallbackInteractData")}
 		end
 	end
+end
+
+function update(dt,...)
+	if CSAILoldUpdate then CSAILoldUpdate(dt,...) end
+	excavatorCommon.cycle(dt)
 end

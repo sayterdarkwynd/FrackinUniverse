@@ -16,3 +16,7 @@ function changeSailImage()
 		widget.setData(listItem, {race = race})
 	end
 end
+
+function toggleShipGrabber()
+	world.sendEntityMessage(pane.sourceEntity(),"toggleShipGrabber")
+end
