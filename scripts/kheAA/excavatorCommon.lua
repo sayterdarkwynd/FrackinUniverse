@@ -27,14 +27,23 @@ node list:
 
 function excavatorCommon.init()
 	transferUtil.loadSelfContainer()
-	if self.disabled then
-		storage.state="disabled"
+	if transferUtil.disabled then
+		storage.excavatorState="disabled"
 		sb.logInfo("excavatorCommon disabled on non-objects (current is \"%s\") for safety reasons.",entityType.entityType())
+		excavatorCommon.initSuccessful=false
 		return
 	end
 	if (config.getParameter("kheAA_limitToShip")==true) and not (type(world.getProperty("ship.level"))=="number") then
-		storage.state="disabled"
+		storage.excavatorState="disabled"
+		excavatorCommon.initSuccessful=false
 		return
+	end
+	if (not transferUtil.vars) or (not transferUtil.vars.didInit) then
+		transferUtil.init()
+	end
+	if (not transferUtil.vars) or (not transferUtil.vars.didInit) then
+		storage.excavatorState="disabled"
+		excavatorCommon.initSuccessful=false
 	end
 	excavatorCommon.vars={}
 	excavatorCommon.vars.direction=util.clamp(object.direction(),0,1)
@@ -76,15 +85,22 @@ function excavatorCommon.init()
 	end
 
 	if excavatorCommon.vars.isDrill or excavatorCommon.vars.isPump or excavatorCommon.vars.isVacuum then
-		storage.state=storage.state or "start"
+		storage.excavatorState=storage.excavatorState or "start"
 		anims()
 	else
-		storage.state="off"
+		storage.excavatorState="off"
 	end
+	excavatorCommon.initSuccessful=true
 end
 
 function excavatorCommon.cycle(dt)
-	if self.disabled then return end
+	if (transferUtil.disabled) then return end
+	if (excavatorCommon.initSuccessful==nil) then--didn't init yet, used in case of race condition or other problem cases.
+		excavatorCommon.init()
+		return
+	elseif not excavatorCommon.initSuccessful then--init failed due to conditions.
+		return
+	end
 	if not excavatorCommon.loadSelfTimer or excavatorCommon.loadSelfTimer > 1.0 then
 		transferUtil.loadSelfContainer()
 		if excavatorCommon.vars.isPump then
@@ -95,24 +111,25 @@ function excavatorCommon.cycle(dt)
 		excavatorCommon.loadSelfTimer=excavatorCommon.loadSelfTimer+dt
 	end
 
-	if storage.state=="off" or not transferUtil.powerLevel(transferUtil.vars.logicNode) then
+	if (storage.excavatorState=="disabled") then
+		return
+	elseif storage.excavatorState=="off" or not transferUtil.powerLevel(transferUtil.vars.logicNode) then
 		excavatorCommon.setRunning(false)
 		excavatorCommon.mainDelta=0
 		return
 	elseif transferUtil.powerLevel(transferUtil.vars.logicNode) then
-		if storage.state=="stop" then
+		if storage.excavatorState=="stop" then
 			excavatorCommon.setRunning(true)
-			storage.state="start"
+			storage.excavatorState="start"
 			return
 		end
 	end
 
 	excavatorCommon.mainDelta = (excavatorCommon.mainDelta or 100) + dt--DO NOT INCREMENT ELSEWHERE
-	if not storage.state then
+	if not storage.excavatorState then
 		excavatorCommon.init()
 		return
 	end
-	if storage.state=="disabled" then return end
 	excavatorCommon.setRunning(true)
 	time = (time or (dt*-1)) + dt
 	if time > 10 then
@@ -129,7 +146,7 @@ function excavatorCommon.cycle(dt)
 		end
 		time=0
 	end
-	states[storage.state](dt)
+	states[storage.excavatorState](dt)
 end
 
 function states.disabled(dt)
@@ -138,11 +155,11 @@ end
 
 function states.start(dt)
 	if excavatorCommon.vars.isDrill then
-		storage.state="moveDrillBar"
+		storage.excavatorState="moveDrillBar"
 	elseif excavatorCommon.vars.isPump then
-		storage.state="movePump"
+		storage.excavatorState="movePump"
 	elseif excavatorCommon.vars.isVacuum then
-		storage.state="vacuum"
+		storage.excavatorState="vacuum"
 	end
 	storage.box=transferUtil.findCorners()
 end
@@ -157,7 +174,7 @@ function states.vacuum(dt)
 			end
 			--end
 			excavatorCommon.mainDelta=0
-			storage.state="start"
+			storage.excavatorState="start"
 		end
 	else
 		excavatorCommon.mainDelta=0
@@ -184,7 +201,7 @@ function states.moveDrillBar(dt)
 		if storage.width >= excavatorCommon.vars.maxWidth or world.material(searchPos, "foreground") then
 			animator.setAnimationState("drillState", "on")
 			renderDrill(storage.drillPos)
-			storage.state = "moveDrill"
+			storage.excavatorState = "moveDrill"
 			storage.drillTarget = excavatorCommon.getNextDrillTarget()
 			excavatorCommon.setRunning(false)
 		end
@@ -209,9 +226,9 @@ function states.moveDrill(dt)
 	end
 	if storage.drillPos[1] == drillTarget[1] and storage.drillPos[2] == drillTarget[2] then
 		if excavatorCommon.vars.isPump then
-			storage.state = "pump"
+			storage.excavatorState = "pump"
 		else
-			storage.state = "mine"
+			storage.excavatorState = "mine"
 		end
 	end
 end
@@ -223,7 +240,7 @@ function states.movePump(dt)
 	if step >= 1 then
 		step = 0
 		storage.depth = storage.depth - 1
-		storage.state = "pump"
+		storage.excavatorState = "pump"
 		renderPump(step)
 	end
 	if (excavatorCommon.mainDelta * excavatorCommon.vars.excavatorRate) >= 0.1 then
@@ -346,7 +363,7 @@ function states.mine(dt)
 		drillReset()
 		anims()
 		excavatorCommon.setRunning(false)
-		storage.state="stop"
+		storage.excavatorState="stop"
 		return
 	end
 	local absdrillPos = excavatorCommon.combineWrap({storage.drillPos,storage.position})
@@ -385,7 +402,7 @@ function states.mine(dt)
 	end
 	storage.drillTarget = excavatorCommon.getNextDrillTarget()
 	excavatorCommon.mainDelta=0.1
-	storage.state = "moveDrill"
+	storage.excavatorState = "moveDrill"
 	if excavatorCommon.vars.isVacuum then
 		if absdrillPos then
 			excavatorCommon.grab(absdrillPos)
@@ -404,7 +421,7 @@ function states.pump(dt)
 
 	--storage.pumpThrottler=math.max(storage.pumpThrottler-(tempDelta*excavatorCommon.vars.excavatorRate*2),0)
 	if not storage.box then
-		storage.state="start"
+		storage.excavatorState="start"
 		return
 	end
 	local pos = excavatorCommon.combineWrap({{excavatorCommon.vars.facing, storage.depth},storage.position,{excavatorCommon.vars.facing==-1 and storage.box.xMax or 0,0}})
@@ -486,14 +503,14 @@ function states.pump(dt)
 	end
 
 	--[[if excavatorCommon.vars.throttleInfinite or (storage.pumpThrottler > (tempDelta * 10 * excavatorCommon.vars.excavatorRate)) then
-		storage.state="pumpStutter"
+		storage.excavatorState="pumpStutter"
 		return
 	end]]
 
 	if (storage.depth*-1) > excavatorCommon.vars.maxDepth then
 		excavatorCommon.setRunning(false)
 		if excavatorCommon.vars.isDrill then
-			storage.state = "mine"
+			storage.excavatorState = "mine"
 		end
 		return
 	end
@@ -502,9 +519,9 @@ function states.pump(dt)
 	end
 	if liquid == nil then
 		if excavatorCommon.vars.isDrill then
-			storage.state = "moveDrill"
+			storage.excavatorState = "moveDrill"
 		else
-			storage.state = "movePump"
+			storage.excavatorState = "movePump"
 		end
 	end
 end
@@ -523,7 +540,7 @@ end
 	end
 
 	excavatorCommon.mainDelta = 0
-	storage.state="pump"
+	storage.excavatorState="pump"
 end]]
 
 function states.stop()
@@ -543,7 +560,7 @@ function excavatorCommon.getNextDrillTarget()
 		target[1] = target[1] + excavatorCommon.vars.direction
 	end
 	if pos[2] + target[2] <= 1 then
-		storage.state = "stop"
+		storage.excavatorState = "stop"
 	end
 
 	storage.drillDir = excavatorCommon.getDir()
