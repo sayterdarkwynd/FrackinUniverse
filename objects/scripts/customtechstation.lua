@@ -20,7 +20,7 @@ function init()
 	message.setHandler("setFallback", function(_,_, value) self.fallback = value end)
 	message.setHandler("storeData", function(_,_, widget, data) storage.data[widget] = data end)
 	message.setHandler("returnData", function() return storage.data end)
-	message.setHandler("toggleShipGrabber", function() storage.state = (storage.state=="disabled") and "start" or "disabled" end)
+	message.setHandler("toggleShipGrabber", function() storage.excavatorState = (storage.excavatorState=="disabled") and "start" or "disabled" end)
 	message.setHandler("screwdriverInteraction", function() return {config.getParameter("screwdriverInteractAction"), config.getParameter("screwdriverInteractData")} end) --also this is probably a super shitty way to handle this but maybe I'll use that screwdriver for other things later
 	message.setHandler("setImage", function(_,_, imageconfig)
 		storage.imageconfig = imageconfig
@@ -30,15 +30,18 @@ function init()
 	message.setHandler("gibInterfaceObj", function() return storage.interfaceObjIDesc end)
 
 	if not (type(world.getProperty("ship.level"))=="number") then
-		storage.state="disabled"
+		storage.excavatorState="disabled"
 		return
 	else
+		-- transferUtil.init()--done as part of excavator init
 		excavatorCommon.init()
-		excavatorCommon.vars.isVacuum=true
-		excavatorCommon.vars.vacuumRange=10000
-		excavatorCommon.vars.vacuumMinRange=4
-		excavatorCommon.vars.vacuumDelay=1
-		storage.state="start"
+		if excavatorCommon.initSuccessful then
+			excavatorCommon.vars.isVacuum=true
+			excavatorCommon.vars.vacuumRange=10000
+			excavatorCommon.vars.vacuumMinRange=4
+			excavatorCommon.vars.vacuumDelay=1
+			storage.excavatorState="start"
+		end
 	end
 end
 

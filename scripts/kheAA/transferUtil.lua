@@ -22,8 +22,8 @@ function transferUtil.init()
 	--[[if storage.init==nil then
 		storage.init=true
 	end]]
-	self.disabled=(entity.entityType() ~= "object") or nil
-	if self.disabled then
+	transferUtil.disabled=(entity.entityType() ~= "object") or nil
+	if transferUtil.disabled then
 		sb.logInfo("transferUtil automation functions are disabled on non-objects (current is \"%s\") for safety reasons.",entity.entityType())
 		return
 	end
@@ -72,7 +72,7 @@ function transferUtil.containerAwake(targetContainer,targetPos)
 end
 
 function transferUtil.zoneAwake(targetBox)
-	if self.disabled then return end
+	if transferUtil.disabled then return end
 	if not targetBox then return end
 	if not transferUtil.vars or not transferUtil.vars.didInit then
 		transferUtil.init()
@@ -178,7 +178,7 @@ function transferUtil.updateInputs()
 	--transferUtil.vars.inContainersOld=transferUtil.vars.inContainers
 	transferUtil.vars.inContainers={}
 
-	if self.disabled then return end
+	if transferUtil.disabled then return end
 	if not transferUtil.vars.inDataNode then
 		return false
 	end
@@ -211,7 +211,7 @@ function transferUtil.updateOutputs()
 	transferUtil.vars.outContainers={}
 	transferUtil.vars.upstreamCount=0
 
-	if self.disabled then return end
+	if transferUtil.disabled then return end
 	if not transferUtil.vars.outDataNode then
 		return false
 	end
