@@ -40,7 +40,7 @@ function init()
 			excavatorCommon.vars.vacuumRange=10000
 			excavatorCommon.vars.vacuumMinRange=4
 			excavatorCommon.vars.vacuumDelay=1
-			storage.excavatorState="start"
+			storage.excavatorState=storage.excavatorState or "start"
 		end
 	end
 end
