@@ -18,22 +18,23 @@ function init()
 end
 
 function update(dt)
-	if self.drainTimer <= 0 then
-		if status.resourcePercentage("health") > self.minHealthPcnt then
-			local drain = status.resource("health") * self.healthDrainPcnt
-			status.consumeResource("health", drain)
-		end
-		self.drainTimer = self.drainInterval
-	else
-		self.drainTimer = self.drainTimer - dt
-	end
+	-- if self.drainTimer <= 0 then
+		-- if status.resourcePercentage("health") > self.minHealthPcnt then
+			-- local drain = status.resource("health") * self.healthDrainPcnt
+			-- status.consumeResource("health", drain)
+		-- end
+		-- self.drainTimer = self.drainInterval
+	-- else
+		-- self.drainTimer = self.drainTimer - dt
+	-- end
 	if self.spawnTimer <= 0 then
 		local damageCalc=(status.stat("maxHealth")*(self.spawnBaseDamage*self.healthDrainPcnt*(self.spawnInterval/self.drainInterval))) * (((status.stat("powerMultiplier")-1.0)*0.5)+1.0)
 		local monsters = world.entityQuery(entity.position(), self.spawnSearchRadius, { order = "nearest",includedTypes={"creature"}})
 		for _, monsterID in ipairs(monsters) do
-			if entity.isValidTarget(monsterID) and entity.entityInSight(monsterID) then
+			if status.resourcePercentage("health") > self.minHealthPcnt and entity.isValidTarget(monsterID) and entity.entityInSight(monsterID) then
 				local dir =  vec2.rotate({1, 0}, vec2.angle(vec2.sub(world.entityPosition(monsterID), entity.position())))
 				world.spawnProjectile("hivemindspawn", entity.position(), entity.id(), dir, nil, {controlForce=self.controlForce,maxSpeed=self.maxSpeed,spawnSearchRadius=self.spawnSearchRadius,target=monsterID,power = damageCalc})
+				status.consumeResource("health", status.resource("health") * self.healthDrainPcnt)
 				break
 			end
 		end
