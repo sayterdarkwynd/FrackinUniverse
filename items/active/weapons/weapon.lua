@@ -167,7 +167,8 @@ function Weapon:updateAim()
 	end
 
 	--activeItem.setArmAngle(self.aimAngle + self.relativeArmRotation)
-	activeItem.setArmAngle(self.aimAngle + self.relativeArmRotation, not self.stance.noAimCompensation)	 -- StardustLib edit; added allowRotate parameter
+	-- activeItem.setArmAngle(self.aimAngle + self.relativeArmRotation, not self.stance.noAimCompensation)	 -- StardustLib edit; added allowRotate parameter
+	activeItem.setArmAngle(self.aimAngle + self.relativeArmRotation, self.stance.noAimCompensation==false) --khe note: fucking idiot. the above screws over other mods badly.
 
 	local isPrimary = activeItem.hand() == "primary"
 	if isPrimary then
