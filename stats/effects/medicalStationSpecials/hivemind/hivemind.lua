@@ -4,38 +4,58 @@ require "/scripts/vec2.lua"
 
 function init()
 	self.dummyStatus = "medicalhiveminddummy"
-	self.healthDrainPcnt = config.getParameter("healthDrainPcnt", 0)
-	self.minHealthPcnt = config.getParameter("minHealthPcnt", 0)
+	self.healthDrainPcnt = config.getParameter("healthDrainPcnt") or 0
+	self.damagePercent = config.getParameter("damagePercent") or 0
+	self.minHealthPcnt = config.getParameter("minHealthPcnt") or 0
+	self.powerScalar= config.getParameter("powerScalar") or 0.5
 	self.drainTimer = 0
-	self.spawnSearchRadius = config.getParameter("spawnSearchRadius", 0)
+	self.spawnSearchRadius = config.getParameter("spawnSearchRadius") or 0
 	self.spawnTimer = 0
-	self.drainInterval=config.getParameter("drainInterval", 0)
-	self.spawnInterval=config.getParameter("spawnInterval", 0)
-	self.spawnBaseDamage = config.getParameter("spawnBaseDamage", 5)
-	self.controlForce=config.getParameter("controlForce",30)
-	self.maxSpeed=config.getParameter("maxSpeed",14)
+	self.spawnInterval=config.getParameter("spawnInterval") or 0
+	self.controlForce=config.getParameter("controlForce") or 30
+	self.maxSpeed=config.getParameter("maxSpeed") or 14
+	self.recentTargets={}
 	baseInit()
 end
 
 function update(dt)
-	-- if self.drainTimer <= 0 then
-		-- if status.resourcePercentage("health") > self.minHealthPcnt then
-			-- local drain = status.resource("health") * self.healthDrainPcnt
-			-- status.consumeResource("health", drain)
-		-- end
-		-- self.drainTimer = self.drainInterval
-	-- else
-		-- self.drainTimer = self.drainTimer - dt
-	-- end
 	if self.spawnTimer <= 0 then
-		local damageCalc=(status.stat("maxHealth")*(self.spawnBaseDamage*self.healthDrainPcnt*(self.spawnInterval/self.drainInterval))) * (((status.stat("powerMultiplier")-1.0)*0.5)+1.0)
-		local monsters = world.entityQuery(entity.position(), self.spawnSearchRadius, { order = "nearest",includedTypes={"creature"}})
-		for _, monsterID in ipairs(monsters) do
-			if status.resourcePercentage("health") > self.minHealthPcnt and entity.isValidTarget(monsterID) and entity.entityInSight(monsterID) then
-				local dir =  vec2.rotate({1, 0}, vec2.angle(vec2.sub(world.entityPosition(monsterID), entity.position())))
-				world.spawnProjectile("hivemindspawn", entity.position(), entity.id(), dir, nil, {controlForce=self.controlForce,maxSpeed=self.maxSpeed,spawnSearchRadius=self.spawnSearchRadius,target=monsterID,power = damageCalc})
-				status.consumeResource("health", status.resource("health") * self.healthDrainPcnt)
+		for id,timer in pairs(self.recentTargets) do
+			self.recentTargets[id]=timer-self.spawnInterval
+			if self.recentTargets[id]<=0 then
+				self.recentTargets[id]=nil
+			end
+		end
+
+		local currentTarget
+		local targets=world.entityQuery(entity.position(), self.spawnSearchRadius, { order = "nearest",includedTypes={"creature"}})
+		for _, monsterID in ipairs(targets) do
+			if not self.recentTargets[monsterID] then
+				self.recentTargets[monsterID]=self.spawnInterval*5
+				currentTarget=monsterID
 				break
+			end
+		end
+		if not currentTarget then
+			local incr=1
+			for _, monsterID in ipairs(targets) do
+				if self.recentTargets[monsterID]<=self.spawnInterval*incr then
+					self.recentTargets[monsterID]=self.spawnInterval*5
+					currentTarget=monsterID
+					break
+				end
+			end
+			incr=incr+1
+		end
+
+		if currentTarget then
+			if status.resourcePercentage("health") > self.minHealthPcnt and entity.isValidTarget(currentTarget) and entity.entityInSight(currentTarget) then
+				world.spawnProjectile("hivemindspawn", entity.position(), entity.id(), vec2.rotate({1, 0}, vec2.angle(vec2.sub(world.entityPosition(currentTarget), entity.position()))), nil,{
+						controlForce=self.controlForce,maxSpeed=self.maxSpeed,spawnSearchRadius=self.spawnSearchRadius,target=currentTarget,
+						power = status.stat("maxHealth") * self.damagePercent * (((status.stat("powerMultiplier")-1.0)*self.powerScalar)+1.0)
+					}
+				)
+				status.consumeResource("health", status.resourceMax("health") * self.healthDrainPcnt)
 			end
 		end
 
