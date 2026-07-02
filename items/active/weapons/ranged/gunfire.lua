@@ -75,6 +75,10 @@ function GunFire:init()
 	self.hasRecoil = (config.getParameter("hasRecoil",0))--when fired, does the weapon have recoil?
 	self.recoilSpeed = (config.getParameter("recoilSpeed",0))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
 	self.recoilForce = (config.getParameter("recoilForce",0)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
+	if (self.abilitySlot=="primary") then
+		self.canTriggerNotice=true
+		self.triggerNotice=true
+	end
 end
 
 function GunFire:calcAmmo()
@@ -111,6 +115,14 @@ function GunFire:update(dt, fireMode, shiftHeld)
 			elseif self.magazineSize < from then
 				self.magazineAmount=math.min(self.magazineSize,self.magazineAmount)
 			end
+			-- self.triggerNotice=true
+		end
+		if self.canTriggerNotice and self.triggerNotice then
+			if animator.hasSound("fuReload") then
+				animator.playSound("fuReload")
+			end
+
+			self.triggerNotice=false
 		end
 		self.isReloading = false
 		-- set the cursor to the FU White cursor
@@ -385,8 +397,10 @@ end
 function GunFire:hasShotgunReload()
 	self.isReloader = config.getParameter("isReloader",0) -- is this a shotgun style reload?
 	if self.isReloader >= 1 then
-		animator.playSound("cooldown") -- adds sound to shotgun reload
-		if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then
+		if animator.hasSound("cooldown") then
+			animator.playSound("cooldown") -- adds sound to shotgun reload
+		end
+		if animator.hasSound("fuReload") and (self.isAmmoBased==1) and (self.magazineAmount <= 0) then
 			animator.playSound("fuReload") -- adds new sound to reload
 		end
 	end
