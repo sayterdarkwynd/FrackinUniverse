@@ -38,7 +38,7 @@ function findOldest(tab)
 end
 
 function findTarget()
-	for monsterID,timer in pairs(self.recentTargets) do
+	for monsterID in pairs(self.recentTargets) do
 		if (not entity.isValidTarget(monsterID)) or (not entity.entityInSight(monsterID)) then
 			self.recentTargets[monsterID]=nil
 		end
@@ -81,7 +81,7 @@ end
 
 function updateTimers(dt)
 	self.fireTimer=math.max(0,(self.fireTimer or 0)-dt)
-	for id,timer in pairs(self.recentTargets) do
+	for id in pairs(self.recentTargets) do
 		self.recentTargets[id]=self.recentTargets[id]-dt
 		if self.recentTargets[id]<=0 then
 			self.recentTargets[id]=nil
