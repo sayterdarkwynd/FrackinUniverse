@@ -1,6 +1,7 @@
 require "/scripts/util.lua"
 
 local didInit=false
+local shipworldIDChecks=false
 local origInit = init
 local origUninit = uninit
 local oldUpdate=update
@@ -45,8 +46,22 @@ function init(...)
 	message.setHandler("player.uniqueId",player.uniqueId)
 	message.setHandler("player.worldId",player.worldId)
 	message.setHandler("player.hasCompletedQuest",function (_,_,...) return player.hasCompletedQuest(...) end)
-	status.setStatusProperty("player.worldId",player.worldId())
-	status.setStatusProperty("player.ownShipWorldId",player.ownShipWorldId())
+
+	-- local pwId=player.worldId()
+	-- local poSWId=player.ownShipWorldId()
+
+	-- shipworldIDChecks=((pwId~=nil) and (poSWId~=nil))
+
+	-- status.setStatusProperty("player.worldId",pwId)
+	-- status.setStatusProperty("player.ownShipWorldId",player.ownShipWorldId())
+
+	handleShipWorldIDs(0)
+
+	message.setHandler("player.worldId", player.worldId)
+	message.setHandler("player.ownShipWorldId", player.ownShipWorldId)
+	message.setHandler("refresh.player.worldId", function() status.setStatusProperty("player.worldId",player.worldId()) end)
+	message.setHandler("refresh.player.ownShipWorldId",  function() status.setStatusProperty("player.ownShipWorldId",player.ownShipWorldId()) end)
+
 	message.setHandler("player.availableTechs", player.availableTechs)
 	message.setHandler("player.enabledTechs", player.enabledTechs)
 	message.setHandler("player.shipUpgrades", player.shipUpgrades)
@@ -100,6 +115,20 @@ function update(dt)
 		if not pass then sb.logError("%s",result) end
 		pass,result=pcall(handleFoodTracking,dt)
 		if not pass then sb.logError("%s",result) end
+		pass,result=pcall(handleShipWorldIDs,dt)
+		if not pass then sb.logError("%s",result) end
+	end
+end
+
+function handleShipWorldIDs(dt)
+	if not shipworldIDChecks then
+		local pwId=player.worldId()
+		local poSWId=player.ownShipWorldId()
+
+		shipworldIDChecks=((pwId~=nil) and (poSWId~=nil))
+
+		status.setStatusProperty("player.worldId",pwId)
+		status.setStatusProperty("player.ownShipWorldId",player.ownShipWorldId())
 	end
 end
 

@@ -561,7 +561,7 @@ function commandProcessor(wd)
 			end
 
 		elseif type == "medical" then
-			modifyButtons("Acquire", "Remove", false, false, false, "Back")
+			modifyButtons("Acquire", "Remove", "Med Brochure", false, false, "Back")
 			widget.setButtonEnabled("button1", false)
 
 			if not status.statusProperty("fuEnhancerActive", false) then
@@ -653,6 +653,9 @@ function commandProcessor(wd)
 				textTyper.init(textData, textData[objectData.stationRace]["cantAfford"..math.random(1,textData[objectData.stationRace].cantAffordCount)])
 			end
 		end
+	elseif command ==  "Med Brochure" then
+		player.giveItem("ffguide4-codex")
+		textTyper.init(textData, textData[objectData.stationRace].medBrochure)
 	elseif command == "Buy" then
 		resetGUI()
 

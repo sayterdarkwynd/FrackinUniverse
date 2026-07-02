@@ -17,8 +17,9 @@ end
 function update(args)
 	if not self.checkWorldOnce then
 		self.onOwnShip = status.statusProperty("player.ownShipWorldId") == status.statusProperty("player.worldId")
-		self.checkWorldOnce=true
+		self.checkWorldOnce=not ((not status.statusProperty("player.ownShipWorldId")) or (not status.statusProperty("player.worldId")))
 	end
+
 	local jumpBonus = 1 + status.stat("jumptechBonus")
 	local jumpActivated = args.moves["jump"] and not self.lastJump
 	self.lastJump = args.moves["jump"]
