@@ -1,0 +1,48 @@
+{
+  "id": "fuquickstart",
+  "prerequisites": [ ],
+  "title": "FU Quickstart",
+  "text": "The tutorial sequence has been skipped, speak to Esther to continue the vanilla questline. Have fun!",
+  "completionText": "The tutorial sequence has been skipped, speak to Esther to continue the vanilla questline. Have fun!",
+  "moneyRange": [0, 0],
+  "rewards": [[ ["fuscienceresource", 5000], ["craftingfarm", 1], ["craftingfurnace", 1], ["prototyper", 1] ]],
+  "mainQuest" : true,
+  "showAcceptDialog": false,
+  "canBeAbandoned": false,
+  "requireTurnIn": false,
+
+  "updateDelta": 10,
+  "script": "/quests/scripts/story/fuquickstart.lua",
+  "scriptConfig": {
+    "portraits": {
+      "questStarted": "sail",
+      "questComplete": "sail"
+    },
+
+    "descriptions": {
+      "gaterepair": "Interact with SAIL to continue"
+    },
+
+    "shipRepairMessage": "Please interact with SAIL before continuing!",
+
+    "BYOSRewards": ["fu_ftldrivesmall"],
+    "vanillaCompletionText": "The tutorial sequence has been skipped, speak to Esther to continue the vanilla questline. Your ship has been repaired, have fun!",
+
+    "questList": ["outpostclue", "create_matterassembler", "create_matterassembler2"],
+    "questList2": ["fu_scienceoutpost", "combatmaneuvering1", "longjump0", "fudistortionsphere"],
+
+    "outpostBookmark": {
+      "bookmarkName": "Outpost - The Ark",
+      "targetName": "",
+      "icon": "outpost",
+      "target": ["instanceworld:outpost", "arkteleporter"]
+    },
+
+    "outpostBookmark2": {
+      "bookmarkName": "Science Outpost",
+      "targetName": "",
+      "icon": "scienceoutpost",
+      "target": ["instanceworld:scienceoutpost", "scienceoutpost"]
+    }
+  }
+}
