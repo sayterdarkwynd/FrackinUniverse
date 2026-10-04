@@ -231,6 +231,8 @@ function researchButton()
 				break
 			end
 		end
+
+		updateInfoPanel()
 	end
 
 	buildStates()
@@ -351,9 +353,14 @@ function updateInfoPanel()
 		end
 
 		if selected then
-			if data.strings.research[selected] then
-				widget.setText("title", data.strings.research[selected][1])
-				widget.setText("infoList.text", data.strings.research[selected][2])
+			local researchStrings = data.strings.research[selected]
+			if researchStrings then
+				widget.setText("title", researchStrings[1])
+				if researchTree[selected].state == "researched" and researchStrings[3] then
+					widget.setText("infoList.text", researchStrings[3])
+				else
+					widget.setText("infoList.text", researchStrings[2])
+				end
 			else
 				widget.setText("title", selected)
 				widget.setText("infoList.text", "ERROR - Missing text data for selected research")
